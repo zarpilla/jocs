@@ -79,6 +79,9 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
   `<sala>-2.png`... (`meta.pages` al JSON i `page` a cada fotograma); el motor carrega les imatges i, en crear la
   sala, en fa una sola textura de diverses fonts (`room/roomSheetPages.ts`).
 
-`adapters/benne/patches/motor-benne.patch` en recull una part. Si mai s'actualitza el motor des d'un
-Benne nou (`npm run benne:create -- --from <benne> --motor`), revisa `git diff packages/benne` i torna a
-posar el que s'hagi perdut.
+`adapters/benne/patches/motor-benne.patch` els recull tots: és la diferència entre aquest motor i el Benne
+d'on surt (`BENNE_BASE` a `adapters/benne/motor-paths.ts`). **Cada cop que es toca el motor**, refés-lo amb
+`npm run benne:pegat` (des de `games/<joc>/`): baixa aquell Benne, fa el pegat i comprova que, aplicat, dona
+exactament aquesta carpeta. Per actualitzar el motor a un Benne nou, `npm run benne:create -- --from <benne> --motor`
+el copia i hi aplica el pegat; on no entri net, cal resoldre-ho a mà, i després posar la versió nova a
+`BENNE_BASE` i tornar a fer `benne:pegat`.

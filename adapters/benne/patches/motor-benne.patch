@@ -1,3 +1,331 @@
+diff -ruN electron-builder.config.cjs electron-builder.config.cjs
+--- electron-builder.config.cjs
++++ electron-builder.config.cjs
+@@ -25,7 +25,8 @@
+   directories: { output: 'releases/windows', buildResources: '.benne/desktop-build' },
+   files: ['dist/**/*', 'electron/main.cjs', 'electron/preload.cjs', 'electron/protocol-path.cjs',
+     'electron/game-info.cjs', 'src/game/game-config.json', 'package.json', '!node_modules/**/*'],
+-  extraFiles: [{ from: itchManifest, to: '.itch.toml' }],
++  // LLICENCIES.txt (avisos MIT de Benne i Phaser) al costat de l'executable, on el jugador el pot veure.
++  extraFiles: [{ from: itchManifest, to: '.itch.toml' }, { from: 'public/LLICENCIES.txt', to: 'LLICENCIES.txt' }],
+   ...(info.hasIcon ? { extraResources: [{ from: info.iconPath, to: 'icon.png' }] } : {}),
+   asar: true,
+   npmRebuild: false,
+diff -ruN index.html index.html
+--- index.html
++++ index.html
+@@ -1,12 +1,49 @@
+ <!doctype html>
+-<html lang="en">
++<html lang="ca">
+   <head>
+     <meta charset="UTF-8" />
++    <link rel="icon" href="/favicon.ico" sizes="any" />
+     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Benne — Adventure Engine</title>
++    <style>
++      /* Pantalla de càrrega: aquí dins perquè es vegi abans que arribi res més (vegeu src/engine/bootLoadingScreen.ts).
++         Els colors de cada joc: `colors` al bloc `benne` del package.json (fons, text, nom, nom2, barra, vora). */
++      html, body { margin: 0; height: 100%; background: var(--fons, #0f0f1a); }
++      #carregant {
++        position: fixed; inset: 0; z-index: 9000;
++        display: grid; place-content: center; justify-items: center; gap: 18px;
++        background: var(--fons, #0f0f1a); color: var(--text, #c9c4d8);
++        font: 700 13px/1 ui-monospace, "Courier New", monospace; letter-spacing: .2em; text-transform: uppercase;
++        transition: opacity .4s steps(4);
++      }
++      #carregant.fet { opacity: 0; pointer-events: none; }
++      #carregant .nom {
++        font-size: 30px; letter-spacing: .14em;
++        background: linear-gradient(var(--nom, #f4f4f8) 55%, var(--nom2, var(--nom, #f4f4f8)) 55%);
++        -webkit-background-clip: text; background-clip: text; color: transparent;
++        filter: drop-shadow(3px 3px 0 #000);
++      }
++      #carregant .barra { box-sizing: border-box; width: 172px; height: 20px; padding: 4px; border: 2px solid var(--vora, #5c5670); box-shadow: 3px 3px 0 #000; overflow: hidden; }
++      #carregant .barra i {
++        display: block; height: 100%; width: 30px;
++        background: repeating-linear-gradient(90deg, var(--barra, #9cc46a) 0 8px, transparent 8px 10px);
++        animation: carregant-va 1.2s steps(13) infinite alternate;
++      }
++      #carregant.amb-progres .barra i { animation: none; width: calc(var(--progres, 0) * 160px); }
++      #carregant .text::after { content: "_"; animation: carregant-cursor 1s steps(1) infinite; }
++      @keyframes carregant-va { from { transform: translateX(0); } to { transform: translateX(130px); } }
++      @keyframes carregant-cursor { 50% { opacity: 0; } }
++      @media (prefers-reduced-motion: reduce) { #carregant .barra i, #carregant .text::after { animation: none; } }
++    </style>
++    <!--benne:colors-->
+   </head>
+   <body>
++    <div id="carregant" role="status" aria-live="polite">
++      <span class="nom"><!--benne:nom--></span>
++      <span class="barra" aria-hidden="true"><i></i></span>
++      <span class="text">Carregant</span>
++    </div>
+     <div id="game-container"></div>
+     <script type="module" src="/src/main.ts"></script>
+   </body>
+diff -ruN src/editor/preview/createCharacterPreviewGame.ts src/editor/preview/createCharacterPreviewGame.ts
+--- src/editor/preview/createCharacterPreviewGame.ts
++++ src/editor/preview/createCharacterPreviewGame.ts
+@@ -2,6 +2,7 @@
+ import { applyBootAudioSettings } from '../../engine/applyAudioFromSettings';
+ import { applyCharacterAnimationClips } from '../../engine/characterAnimationPlayback';
+ import {
++  characterArtScale,
+   placeSpriteByFeet,
+   resolveCharacterFeetLocal,
+   type CharacterFeetLocal,
+@@ -340,7 +341,11 @@
+       }
+     });
+ 
+-    this.feetLocal = { ...resolveCharacterFeetLocal(this.character, this.sprite) };
++    // Everything here is in 1× frame units (the JSON's): a sheet drawn at `artScale`× is shown at 1/artScale.
++    const artScale = characterArtScale(this.character);
++    this.sprite.setScale(1 / artScale);
++    const feetTex = resolveCharacterFeetLocal(this.character, this.sprite);
++    this.feetLocal = { x: feetTex.x / artScale, y: feetTex.y / artScale };
+     const wtp = this.character.walkToPoint;
+     this.walkLocal = wtp ? { x: wtp.x, y: wtp.y } : { ...this.feetLocal };
+     const ttp = this.character.talkPoint;
+@@ -350,7 +355,7 @@
+ 
+     const feetWx = WORLD_PAD + this.feetLocal.x;
+     const feetWy = WORLD_PAD + this.feetLocal.y;
+-    placeSpriteByFeet(this.sprite, this.feetLocal, feetWx, feetWy);
++    placeSpriteByFeet(this.sprite, feetTex, feetWx, feetWy);
+ 
+     const mount = this.game.canvas.parentElement;
+     if (mount) {
+@@ -428,8 +433,8 @@
+   private computeContentAabbWorld(): { minX: number; minY: number; maxX: number; maxY: number } {
+     const sx = this.sprite.x;
+     const sy = this.sprite.y;
+-    const fw = this.sprite.frame.width;
+-    const fh = this.sprite.frame.height;
++    const fw = this.sprite.displayWidth;
++    const fh = this.sprite.displayHeight;
+     let minX = sx;
+     let minY = sy;
+     let maxX = sx + fw;
+@@ -496,8 +501,8 @@
+     if (this.colliderLocal.length < MIN_COLLIDER_POINTS) {
+       return null;
+     }
+-    const fw = this.sprite.frame.width;
+-    const fh = this.sprite.frame.height;
++    const fw = this.sprite.displayWidth;
++    const fh = this.sprite.displayHeight;
+     const points = this.colliderLocal.map((p) => ({
+       x: Math.round(Phaser.Math.Clamp(p.x, 0, fw)),
+       y: Math.round(Phaser.Math.Clamp(p.y, 0, fh)),
+@@ -513,8 +518,8 @@
+ 
+   /** Feet and collider vertices stay inside the cel (texture hit-test space). */
+   private clampFeetOrColliderLocal(lx: number, ly: number): Point2 {
+-    const fw = this.sprite.frame.width;
+-    const fh = this.sprite.frame.height;
++    const fw = this.sprite.displayWidth;
++    const fh = this.sprite.displayHeight;
+     return { x: Phaser.Math.Clamp(lx, 0, fw), y: Phaser.Math.Clamp(ly, 0, fh) };
+   }
+ 
+diff -ruN src/engine/ConfigManager.ts src/engine/ConfigManager.ts
+--- src/engine/ConfigManager.ts
++++ src/engine/ConfigManager.ts
+@@ -169,6 +169,7 @@
+     msPerCharacter: s.msPerCharacter ?? SPEECH_DEFAULTS.msPerCharacter,
+     maxDurationMs: s.maxDurationMs ?? SPEECH_DEFAULTS.maxDurationMs,
+     durationMultiplier: s.durationMultiplier ?? SPEECH_DEFAULTS.durationMultiplier,
++    clickProtectMs: s.clickProtectMs ?? 0,
+   };
+ }
+ 
+@@ -219,6 +220,9 @@
+       throw new Error(`game-config speech.${key} must be a finite number when present`);
+     }
+   }
++  if (s.clickProtectMs !== undefined && !(Number.isFinite(s.clickProtectMs) && s.clickProtectMs >= 0)) {
++    throw new Error('game-config speech.clickProtectMs must be a number >= 0 when present');
++  }
+   const merged = mergeSpeechSettings(data);
+   if (merged.minDurationMs < 0 || merged.maxDurationMs < 0 || merged.msPerCharacter < 0 || merged.durationMultiplier <= 0) {
+     throw new Error(
+@@ -327,11 +331,23 @@
+         `game-config inputProfile.secondaryButtonVerb "${ip.secondaryButtonVerb}" must be listed in verbs, or one of "${WALK_TO_VERB_ID}" / "${DEFAULT_VERB_TOKEN}"`,
+       );
+     }
++    if (ip.holdVerb !== undefined && (typeof ip.holdVerb !== 'string' || !isValidSlotValue(ip.holdVerb))) {
++      throw new Error(
++        `game-config inputProfile.holdVerb "${String(ip.holdVerb)}" must be listed in verbs, or one of "${WALK_TO_VERB_ID}" / "${DEFAULT_VERB_TOKEN}"`,
++      );
++    }
++    if (ip.holdMs !== undefined && (typeof ip.holdMs !== 'number' || !(ip.holdMs > 0))) {
++      throw new Error('game-config inputProfile.holdMs must be a positive number when present');
++    }
+   }
+ 
+   if (data.defaultFallbackLine !== undefined && typeof data.defaultFallbackLine !== 'string') {
+     throw new Error('game-config defaultFallbackLine must be a string when present');
+   }
++
++  if (data.walkToLabel !== undefined && typeof data.walkToLabel !== 'string') {
++    throw new Error('game-config walkToLabel must be a string when present');
++  }
+ }
+ 
+ function assertInitialGameState(data: GameSettings): void {
+@@ -451,10 +467,13 @@
+ }
+ 
+ function assertGameSettings(data: GameSettings): void {
+-  const { width, height } = data.resolution;
++  const { width, height, minHeight } = data.resolution;
+   if (!Number.isFinite(width) || width < 1 || !Number.isFinite(height) || height < 1) {
+     throw new Error(`Invalid game-config resolution: ${width} x ${height}`);
+   }
++  if (minHeight !== undefined && (!Number.isFinite(minHeight) || minHeight < 1 || minHeight > height)) {
++    throw new Error(`Invalid game-config resolution.minHeight: ${minHeight} (expected 1–${height})`);
++  }
+   const { masterVolume, sfxVolume, musicVolume, dialogueVolume } = data.audio;
+   for (const [key, v] of Object.entries({
+     masterVolume,
+@@ -564,6 +583,39 @@
+ const settings = rawSettings as GameSettings;
+ assertGameSettings(settings);
+ 
++/** The height GUIs are authored at: `resolution.minHeight` when adaptive, else `resolution.height`. */
++const designHeight = settings.resolution.minHeight ?? settings.resolution.height;
++export function getGuiDesignHeight(): number {
++  return designHeight;
++}
++
++/**
++ * Adaptive height (`resolution.minHeight`): picks the game's height for a `viewW`×`viewH` screen, taken as
++ * landscape (a phone held upright still gets the height it will have once turned), between `minHeight` and
++ * `height`. Call once, before the Phaser game is created; everything else reads the result from
++ * `resolution.height`.
++ */
++export function applyAdaptiveResolution(viewW: number, viewH: number): void {
++  const next = adaptiveHeightFor(viewW, viewH);
++  if (next !== null) {
++    settings.resolution.height = next;
++  }
++}
++
++/** The tallest the game gets (`resolution.height` as authored, before {@link applyAdaptiveResolution}). */
++const maxHeight = settings.resolution.height;
++
++/** The adaptive height for a `viewW`×`viewH` screen, or `null` when the game has no `resolution.minHeight`. */
++export function adaptiveHeightFor(viewW: number, viewH: number): number | null {
++  const r = settings.resolution;
++  if (r.minHeight === undefined || viewW <= 0 || viewH <= 0) {
++    return null;
++  }
++  const long = Math.max(viewW, viewH);
++  const short = Math.min(viewW, viewH);
++  return Math.min(maxHeight, Math.max(r.minHeight, Math.round((r.width * short) / long)));
++}
++
+ /**
+  * Synchronous access to `src/game/game-config.json` (bundled by Vite at build time).
+  */
+diff -ruN src/engine/Game.ts src/engine/Game.ts
+--- src/engine/Game.ts
++++ src/engine/Game.ts
+@@ -11,6 +11,8 @@
+ import { setActiveGameStateManager } from './gameState/resolveGameStateManager.js';
+ import { wireBenneRuntimeHiDpiCanvasScale } from './benneRuntimeHiDpiScale.js';
+ import { getBennePhaserGameConfigBase } from './gameConfig.js';
++import { applyAdaptiveResolution } from './ConfigManager.js';
++import { wireAdaptiveResolutionResize } from './adaptiveResize.js';
+ import {
+   BENNE_SOUND_MANAGER_KEY,
+   setBenneSoundManager,
+@@ -40,8 +42,12 @@
+  * Registers {@link GameStateManager} on `game.registry` for cross-room state.
+  */
+ export function createBenneGame(parent: HTMLElement | string): Phaser.Game {
++  if (typeof window !== 'undefined') {
++    applyAdaptiveResolution(window.innerWidth, window.innerHeight);
++  }
+   const game = new Phaser.Game(createGameConfig(parent));
+   wireBenneRuntimeHiDpiCanvasScale(game);
++  wireAdaptiveResolutionResize(game);
+   const gameState = new GameStateManager(gameEvents, buildBootGameStateSlice());
+   game.registry.set(BENNE_GAME_STATE_REGISTRY_KEY, gameState);
+   setActiveGameStateManager(gameState);
+diff -ruN src/engine/adaptiveResize.ts src/engine/adaptiveResize.ts
+--- src/engine/adaptiveResize.ts
++++ src/engine/adaptiveResize.ts
+@@ -0,0 +1,66 @@
++import * as Phaser from 'phaser';
++import { adaptiveHeightFor, applyAdaptiveResolution, getGameSettings } from './ConfigManager.js';
++import { tryGetActiveGameStateManager } from './gameState/resolveGameStateManager.js';
++import { isGameplayInteractionRunning } from './interaction/interactionActivity.js';
++import { getActiveDialogSession } from './dialog/dialogSession.js';
++import { isRoomTransitionInProgress, tryGetRoomTransitionOrchestrator } from './scenes/roomTransitionGlobals.js';
++import { SCENE_ROOM } from './content/constants.js';
++import type { RoomScene } from './scenes/RoomScene.js';
++
++/** How long the window must stay the same size before the height is chosen again. */
++const SETTLE_MS = 300;
++
++/**
++ * Adaptive height (`resolution.minHeight`) after boot: when the window changes shape (a resize, full screen, a phone
++ * turned), the height is chosen again and the room is rebuilt for it, the way a loaded game enters its room: the game
++ * state goes out to JSON and back in (no save slot is touched), so GUIs, anchors and the camera are all laid out anew.
++ * It waits for a quiet moment: no interaction, dialog, cutscene, room transition or modal GUI (a menu) under way.
++ */
++export function wireAdaptiveResolutionResize(game: Phaser.Game): void {
++  if (getGameSettings().resolution.minHeight === undefined || typeof window === 'undefined') {
++    return;
++  }
++  let timer = 0;
++  let pending = false;
++  const onResize = (): void => {
++    window.clearTimeout(timer);
++    timer = window.setTimeout(() => {
++      const next = adaptiveHeightFor(window.innerWidth, window.innerHeight);
++      pending = next !== null && next !== getGameSettings().resolution.height;
++    }, SETTLE_MS);
++  };
++  const onStep = (): void => {
++    if (!pending) {
++      return;
++    }
++    const room = game.scene.getScene(SCENE_ROOM) as RoomScene | null;
++    const manager = tryGetActiveGameStateManager();
++    const orchestrator = tryGetRoomTransitionOrchestrator();
++    if (
++      !room?.sys.isActive() ||
++      !manager ||
++      !orchestrator ||
++      isGameplayInteractionRunning() ||
++      getActiveDialogSession() != null ||
++      isRoomTransitionInProgress(game) ||
++      !room.isQuietForRebuild()
++    ) {
++      return;
++    }
++    pending = false;
++    const snapshot = manager.exportSnapshotJson();
++    applyAdaptiveResolution(window.innerWidth, window.innerHeight);
++    if (manager.importSnapshotJson(snapshot)) {
++      void orchestrator.transitionToLoadedRoom(true);
++    }
++  };
++  window.addEventListener('resize', onResize);
++  document.addEventListener('fullscreenchange', onResize);
++  game.events.on(Phaser.Core.Events.POST_STEP, onStep);
++  game.events.once(Phaser.Core.Events.DESTROY, () => {
++    window.clearTimeout(timer);
++    window.removeEventListener('resize', onResize);
++    document.removeEventListener('fullscreenchange', onResize);
++    game.events.off(Phaser.Core.Events.POST_STEP, onStep);
++  });
++}
 diff -ruN src/engine/bennescript/actions.ts src/engine/bennescript/actions.ts
 --- src/engine/bennescript/actions.ts
 +++ src/engine/bennescript/actions.ts
@@ -48,6 +376,193 @@ diff -ruN src/engine/bennescript/actions.ts src/engine/bennescript/actions.ts
  /** Fades the screen to `color` (black by default) over `seconds`. Waits. */
  export const fadeOut = timed((seconds?: number, color?: number): Task => screenFade(1, seconds, color));
  
+diff -ruN src/engine/bennescript/dialogs.ts src/engine/bennescript/dialogs.ts
+--- src/engine/bennescript/dialogs.ts
++++ src/engine/bennescript/dialogs.ts
+@@ -292,12 +292,32 @@
+   startHandlers.set(dialogId, list);
+ }
+ 
++/**
++ * Runs the `onStart` handlers with the choices hidden, like a choice handler: otherwise the menu
++ * shows (and can be clicked) while the opening lines are still being said.
++ */
++async function runStartHandlers(dialogId: string, guiId: string, handlers: readonly Handler[]): Promise<void> {
++  // The room shows the choice overlay from its own DIALOG_STARTED listener, which runs after this one.
++  await Promise.resolve();
++  liveRoomScene()?.hideDialogChoicesWhileChoiceRuns(guiId);
++  try {
++    await Promise.all(
++      handlers.map((handler) =>
++        runHandler(`dialog ${dialogId} onStart`, liveRoomScene(), null, handler, [], { gameplay: false }),
++      ),
++    );
++  } finally {
++    liveRoomScene()?.showDialogChoicesAfterChoice(guiId, dialogId);
++  }
++}
++
+ gameEvents.on(DIALOG_STARTED_EVENT, (payload: unknown) => {
+   const p = payload as DialogStartedPayload;
+   detach();
+   attach(p.dialogId, p.guiId);
+-  for (const handler of startHandlers.get(p.dialogId) ?? []) {
+-    void runHandler(`dialog ${p.dialogId} onStart`, liveRoomScene(), null, handler, [], { gameplay: false });
++  const handlers = startHandlers.get(p.dialogId) ?? [];
++  if (handlers.length > 0) {
++    void runStartHandlers(p.dialogId, p.guiId, handlers);
+   }
+ });
+ 
+diff -ruN src/engine/bennescript/game.ts src/engine/bennescript/game.ts
+--- src/engine/bennescript/game.ts
++++ src/engine/bennescript/game.ts
+@@ -40,6 +40,7 @@
+ import type { CutsceneOptions } from '../../types/cutscene.js';
+ import type { GameSettings } from '../../types/game.js';
+ import { activeRoomScene } from './actions.js';
++import { liveRoomScene } from './scene.js';
+ import { registerAnyRoomHandler } from './globalHandlers.js';
+ import { endHandler, runDetached, warnIfUntransformed } from './interactionContext.js';
+ import type { ItemHandle, VerbHandle } from './handles.js';
+@@ -59,6 +60,11 @@
+ 
+ /** The running game (§4.16, §4.17). */
+ export const game = {
++  /** The game's version, from the `version` field of its package.json (e.g. "0.9.0"). */
++  get version(): string {
++    return (import.meta.env.VITE_BENNE_GAME_VERSION as string | undefined)?.trim() || '0.0.0';
++  },
++
+   /** True in the desktop (Electron) build, where `quit()` closes the window. */
+   get isDesktop(): boolean {
+     return getBenneEnvironment() === 'electron';
+@@ -70,6 +76,20 @@
+   },
+ 
+   /**
++   * Marks, for a moment, everything that can be clicked in the room right now (touch screens have no
++   * hover). Doesn't wait: the game goes on while the markers show.
++   */
++  /** The game's screen size in pixels: with an adaptive height (`resolution.minHeight`), the one chosen at boot. */
++  get screenSize(): { width: number; height: number } {
++    const { width, height } = getGameSettings().resolution;
++    return { width, height };
++  },
++
++  showClickables(seconds = 1.6): void {
++    liveRoomScene()?.showClickableMarkers(Math.round(seconds * 1000));
++  },
++
++  /**
+    * Starts a fresh game: resets all state, then goes to `startRoom` (the configured starting room
+    * by default). Ends the handler.
+    */
+@@ -124,6 +144,11 @@
+     return activeRoomScene()?.isCutsceneActive() ?? false;
+   },
+ 
++  /** True while the world takes no clicks: a line being said, a conversation open, a cutscene or a room video. */
++  get isBusy(): boolean {
++    return activeRoomScene()?.isScriptBusy() ?? false;
++  },
++
+   /** Every room change, before the room is left. */
+   onLeaveAnyRoom(handler: () => void): void {
+     registerAnyRoomHandler('leave', handler);
+@@ -377,6 +402,21 @@
+     }
+   },
+ 
++  /**
++   * Where the pointer is (or was last), in game screen pixels: what a GUI control's `x` / `y` mean (0..width,
++   * 0..height), whatever the camera scroll or the letterbox around the game.
++   */
++  get screen(): { x: number; y: number } {
++    const scene = liveRoomScene();
++    const p = scene?.input.activePointer;
++    if (!scene || !p) {
++      return { x: 0, y: 0 };
++    }
++    const cam = scene.cameras.main;
++    const w = cam.getWorldPoint(p.x, p.y);
++    return { x: w.x - cam.worldView.x, y: w.y - cam.worldView.y };
++  },
++
+   /** What the pointer is over (`{ kind, id, description, defaultVerb }`), or `null`. */
+   get hover(): PointerHover | null {
+     const target = getBenneVerbContextHoverTarget();
+diff -ruN src/engine/bennescript/handles.ts src/engine/bennescript/handles.ts
+--- src/engine/bennescript/handles.ts
++++ src/engine/bennescript/handles.ts
+@@ -41,7 +41,7 @@
+ import type { CharacterFollowOptions } from '../../types/characterFollow.js';
+ import type { Point2 } from '../../types/room.js';
+ import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
+-import type { MusicPlayOptions, SoundPlayOptions } from '../sound/benneSoundTypes.js';
++import type { AmbientPlayOptions, MusicPlayOptions, SoundPlayOptions } from '../sound/benneSoundTypes.js';
+ import type { VideoPlayOptions } from '../video/benneVideoTypes.js';
+ import {
+   activeRoomScene,
+@@ -966,11 +966,15 @@
+     return tryGetActiveGameStateManager()?.getLastRoom() === room.id;
+   }
+ 
+-  /** Starts the transition to this room and ends the handler (§4.4). */
+-  goTo(): never {
++  /**
++   * Starts the transition to this room and ends the handler (§4.4). With `{ cut: true }` there is no fade
++   * and no black: a straight cut, for a room that continues the same shot (a title screen that becomes the
++   * intro).
++   */
++  goTo(options?: { cut?: boolean }): never {
+     const orch = tryGetRoomTransitionOrchestrator();
+     if (orch) {
+-      void orch.changeTo(this.id, false);
++      void orch.changeTo(this.id, options?.cut ? 'cut' : false);
+     } else {
+       warnOnce('goTo:no-orchestrator', `rooms.${this.id}.goTo(): no room transitions here (preview?) — ignored.`);
+     }
+@@ -1272,6 +1276,12 @@
+     this.control('y')?.setY(value);
+   }
+ 
++  /** Width in GUI pixels (a text control: the width of the text it shows now). Read-only. */
++  get width(): number {
++    const w = (this.object as { width?: unknown } | null)?.width;
++    return typeof w === 'number' && Number.isFinite(w) ? w : 0;
++  }
++
+   /** Buttons, text inputs and checkboxes. A disabled control ignores the pointer and looks disabled. */
+   get enabled(): boolean {
+     return this.resolve()?.enabled ?? false;
+@@ -1607,6 +1617,26 @@
+ }
+ 
+ /**
++ * The looping background sound of the place (`ambient.play('mar')`, from `assets/audio/sfx/`): one at a
++ * time, at the SFX volume, crossfading from the one before. Unlike `sfx`, room changes and dialog ends
++ * do not stop it.
++ */
++export const ambient = {
++  /** Plays this background sound (or only changes its volume, if it already plays). */
++  play(id: string, options?: AmbientPlayOptions): void {
++    soundManager()?.playAmbient(id, options);
++  },
++  /** Fades the background sound out. */
++  stop(fadeSeconds = 1.5): void {
++    soundManager()?.playAmbient(null, { fadeSeconds });
++  },
++  /** The background sound playing now, or `null`. */
++  get current(): string | null {
++    return soundManager()?.getCurrentAmbientId() ?? null;
++  },
++};
++
++/**
+  * A video under `assets/videos/` (`video.x`). `VideoPlayOptions`: `loop`, `volume` (0–1),
+  * `clickToSkip`, `ignoreCameraZoom` (fill the screen even while the camera is zoomed in) and
+  * `onComplete`.
 diff -ruN src/engine/bennescript/index.ts src/engine/bennescript/index.ts
 --- src/engine/bennescript/index.ts
 +++ src/engine/bennescript/index.ts
@@ -60,63 +575,2126 @@ diff -ruN src/engine/bennescript/index.ts src/engine/bennescript/index.ts
    wait,
    waitForClick,
    walkToClicked,
-diff -ruN src/engine/ConfigManager.ts src/engine/ConfigManager.ts
---- src/engine/ConfigManager.ts
-+++ src/engine/ConfigManager.ts
-@@ -332,6 +332,10 @@
-   if (data.defaultFallbackLine !== undefined && typeof data.defaultFallbackLine !== 'string') {
-     throw new Error('game-config defaultFallbackLine must be a string when present');
-   }
+@@ -24,6 +26,7 @@
+ } from './actions.js';
+ export { background, cutscene, input, together, withInputDisabled } from './blocks.js';
+ export { camera } from './camera.js';
++export { shade, type ShadeOptions } from './shade.js';
+ export { events, type EngineEventName, type EventName } from './events.js';
+ export { game, pointer, settings, type PointerHover } from './game.js';
+ export { onUpdate } from './globalHandlers.js';
+@@ -46,6 +49,7 @@
+   VerbHandle,
+   VideoHandle,
+   WalkableHandle,
++  ambient,
+   defineFlags,
+   defineVars,
+   flag,
+diff -ruN src/engine/bennescript/shade.ts src/engine/bennescript/shade.ts
+--- src/engine/bennescript/shade.ts
++++ src/engine/bennescript/shade.ts
+@@ -0,0 +1,30 @@
++import { activeRoomScene } from './actions.js';
++import { getRoomShade, setRoomShadeState } from '../scenes/roomShade.js';
 +
-+  if (data.walkToLabel !== undefined && typeof data.walkToLabel !== 'string') {
-+    throw new Error('game-config walkToLabel must be a string when present');
++export interface ShadeOptions {
++  /** Tint colour (`0x0a1020`). Defaults to the current one (black at first). */
++  color?: number;
++  /** Seconds to get there; `0` (the default) is instant. */
++  seconds?: number;
++}
++
++/**
++ * The room shade: a tint over the room and its characters, below the HUD and the speech. It stays from room
++ * to room until it is changed. Doesn't wait.
++ *
++ * ```ts
++ * shade.set(0.6, { color: 0x05080f, seconds: 1.5 }) // the lights go out
++ * shade.set(0, { seconds: 1.5 })                     // and come back
++ * ```
++ */
++export const shade = {
++  set(alpha: number, options: ShadeOptions = {}): void {
++    setRoomShadeState({ alpha, color: options.color ?? getRoomShade().color });
++    activeRoomScene()?.applyRoomShade(options.seconds ?? 0);
++  },
++
++  /** The current shade (0: none). */
++  get alpha(): number {
++    return getRoomShade().alpha;
++  },
++};
+diff -ruN src/engine/bootLoadingScreen.ts src/engine/bootLoadingScreen.ts
+--- src/engine/bootLoadingScreen.ts
++++ src/engine/bootLoadingScreen.ts
+@@ -0,0 +1,24 @@
++/**
++ * La pantalla de càrrega de l'index.html (`#carregant`): es veu des del primer moment, mentre es baixa el
++ * JavaScript. Quan Phaser comença a carregar, la barra en segueix el progrés; quan arrenca la primera sala,
++ * s'esvaeix. Als editors i a les previsualitzacions no hi és, i aquí no fa res.
++ */
++const element = (): HTMLElement | null =>
++  typeof document === 'undefined' ? null : document.getElementById('carregant');
++
++/** `value`: de 0 a 1 (l'esdeveniment `progress` del loader de Phaser). */
++export function setBootLoadingProgress(value: number): void {
++  const el = element();
++  if (!el) return;
++  el.classList.add('amb-progres');
++  // A blocs sencers (n'hi ha 16, vegeu .barra a index.html)
++  el.style.setProperty('--progres', String(Math.floor(Math.max(0, Math.min(1, value)) * 16) / 16));
++}
++
++export function hideBootLoadingScreen(): void {
++  const el = element();
++  if (!el || el.classList.contains('fet')) return;
++  setBootLoadingProgress(1);
++  el.classList.add('fet');
++  window.setTimeout(() => el.remove(), 500);
++}
+diff -ruN src/engine/characterFeet.ts src/engine/characterFeet.ts
+--- src/engine/characterFeet.ts
++++ src/engine/characterFeet.ts
+@@ -6,12 +6,19 @@
+ const FEET_LOCAL_X = 'feetLocalX';
+ const FEET_LOCAL_Y = 'feetLocalY';
+ 
++/** The character sheet's `artScale` (1 when omitted or invalid). */
++export function characterArtScale(data: { artScale?: number } | undefined): number {
++  const k = data?.artScale;
++  return typeof k === 'number' && k > 0 ? k : 1;
++}
++
+ /**
+- * Resolves feet in frame space: explicit `character.feet`, else bottom-centre of the current frame.
++ * Resolves feet in frame (texture) space: explicit `character.feet`, else bottom-centre of the current frame.
+  */
+ export function resolveCharacterFeetLocal(data: CharacterData, sprite: Phaser.GameObjects.Sprite): CharacterFeetLocal {
+   if (data.feet) {
+-    return { x: data.feet.x, y: data.feet.y };
++    const k = characterArtScale(data);
++    return { x: data.feet.x * k, y: data.feet.y * k };
+   }
+   const f = sprite.frame;
+   return { x: f.width * 0.5, y: f.height };
+diff -ruN src/engine/directionalCharacterAnimation.ts src/engine/directionalCharacterAnimation.ts
+--- src/engine/directionalCharacterAnimation.ts
++++ src/engine/directionalCharacterAnimation.ts
+@@ -166,13 +166,18 @@
+     return true;
+   };
+ 
+-  for (const d of facingFallbackOrder(direction)) {
+-    if (tryPlay(`${baseName}${d}`, false)) {
+-      return;
+-    }
+-    const m = mirrorHorizontalFacing(d);
+-    if (m !== null && tryPlay(`${baseName}${m}`, true)) {
+-      return;
++  // Vestuari (pegat de Suma Zero): si el sprite té `outfit`, primer prova `<outfit><base><dir>` (p. ex.
++  // `BarWalkL`) i, si no existeix, la normal. Així un personatge pot canviar de roba sense canviar de sprite.
++  const outfit = (sprite.getData('outfit') as string | undefined) ?? '';
++  for (const prefix of outfit ? [outfit, ''] : ['']) {
++    for (const d of facingFallbackOrder(direction)) {
++      if (tryPlay(`${prefix}${baseName}${d}`, false)) {
++        return;
++      }
++      const m = mirrorHorizontalFacing(d);
++      if (m !== null && tryPlay(`${prefix}${baseName}${m}`, true)) {
++        return;
++      }
+     }
+   }
+ }
+diff -ruN src/engine/gameState/GameStateManager.ts src/engine/gameState/GameStateManager.ts
+--- src/engine/gameState/GameStateManager.ts
++++ src/engine/gameState/GameStateManager.ts
+@@ -39,10 +39,17 @@
+   GAME_STATE_ROOM_CONTEXT_CHANGED_EVENT,
+   GAME_STATE_VARIABLE_CHANGED_EVENT,
+ } from '../../types/gameState.js';
+-import { mergePreserveDialogSettingsVariables } from '../dialog/dialogGameState.js';
+-import { mergePreserveSpeechSettingsVariables } from '../dialog/speechGameState.js';
++import {
++  mergePreserveDialogSettingsVariables,
++  PERSISTED_DIALOG_SETTINGS_VARIABLE_KEYS,
++} from '../dialog/dialogGameState.js';
++import {
++  mergePreserveSpeechSettingsVariables,
++  PERSISTED_SPEECH_SETTINGS_VARIABLE_KEYS,
++} from '../dialog/speechGameState.js';
+ import {
+   mergePreserveAudioVolumeVariables,
++  PERSISTED_AUDIO_VOLUME_VARIABLE_KEYS,
+   SETTINGS_CURRENT_MUSIC_VARIABLE,
+ } from '../sound/audioGameState.js';
+ import {
+@@ -157,12 +164,68 @@
+   return name ? `"${itemId}" (${name})` : `"${itemId}"`;
+ }
+ 
++/**
++ * Each game gets its own key namespace, so two BENNE games on the same origin
++ * (localhost, itch.io…) never see each other's saves. The id comes from package.json.
++ */
++const GAME_STORAGE_ID: string =
++  (import.meta.env.VITE_BENNE_GAME_ID as string | undefined)?.trim() || 'benne-game';
++const STORAGE_KEY_PREFIX = `${GAME_STORAGE_ID}:`;
++
+ function localStorageKey(slot: number): string {
+-  return `benne-save-${slot}`;
++  return `${STORAGE_KEY_PREFIX}save-${slot}`;
++}
++
++const SAVE_MANIFEST_STORAGE_KEY = `${STORAGE_KEY_PREFIX}saves-manifest-v1`;
++const NAMED_SAVE_STORAGE_KEY_PREFIX = `${STORAGE_KEY_PREFIX}save-v1-`;
++
++/**
++ * Player options (volumes, speech and dialog settings) live under their own key, apart from
++ * save slots, so they survive a reload and win over whatever an older save carries.
++ */
++const PLAYER_SETTINGS_STORAGE_KEY = `${STORAGE_KEY_PREFIX}settings-v1`;
++
++const PLAYER_SETTINGS_VARIABLE_KEYS: ReadonlySet<string> = new Set([
++  ...PERSISTED_AUDIO_VOLUME_VARIABLE_KEYS,
++  ...PERSISTED_SPEECH_SETTINGS_VARIABLE_KEYS,
++  ...PERSISTED_DIALOG_SETTINGS_VARIABLE_KEYS,
++]);
++
++function readStoredPlayerSettings(): Record<string, unknown> {
++  try {
++    const raw = localStorage.getItem(PLAYER_SETTINGS_STORAGE_KEY);
++    if (!raw) {
++      return {};
++    }
++    const parsed: unknown = JSON.parse(raw);
++    if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
++      return {};
++    }
++    const out: Record<string, unknown> = {};
++    for (const [key, value] of Object.entries(parsed)) {
++      if (PLAYER_SETTINGS_VARIABLE_KEYS.has(key)) {
++        out[key] = value;
++      }
++    }
++    return out;
++  } catch {
++    return {};
 +  }
  }
  
- function assertInitialGameState(data: GameSettings): void {
+-const SAVE_MANIFEST_STORAGE_KEY = 'benne-saves-manifest-v1';
+-const NAMED_SAVE_STORAGE_KEY_PREFIX = 'benne-save-v1-';
++function writeStoredPlayerSettings(variables: Record<string, unknown>): void {
++  const out: Record<string, unknown> = {};
++  for (const key of PLAYER_SETTINGS_VARIABLE_KEYS) {
++    if (Object.prototype.hasOwnProperty.call(variables, key)) {
++      out[key] = variables[key];
++    }
++  }
++  try {
++    localStorage.setItem(PLAYER_SETTINGS_STORAGE_KEY, JSON.stringify(out));
++  } catch {
++    // Storage full or blocked: the options still apply for this session.
++  }
++}
+ 
+ function normalizeSaveName(raw: string): string {
+   return raw.trim();
+@@ -181,7 +244,10 @@
+ }
+ 
+ function parseLegacySlotFromStorageKey(storageKey: string): number | null {
+-  const m = /^benne-save-(\d+)$/.exec(storageKey);
++  if (!storageKey.startsWith(STORAGE_KEY_PREFIX)) {
++    return null;
++  }
++  const m = /^save-(\d+)$/.exec(storageKey.slice(STORAGE_KEY_PREFIX.length));
+   if (!m) {
+     return null;
+   }
+@@ -234,7 +300,7 @@
+     this.state = {
+       version: 2,
+       flags: initial?.flags != null ? { ...initial.flags } : {},
+-      variables: initial?.variables != null ? { ...initial.variables } : {},
++      variables: { ...(initial?.variables ?? {}), ...readStoredPlayerSettings() },
+       inventoryByCharacter,
+       activePlayerCharacterId: resolveActivePlayerCharacterId(
+         initial?.activePlayerCharacterId,
+@@ -280,6 +346,7 @@
+       ),
+       this.state.variables,
+     );
++    Object.assign(mergedVariables, readStoredPlayerSettings());
+     const startingPlayer = getStartingPlayerCharacterId();
+     if (snapshotVersion === 1) {
+       const migrated = migrateV1SnapshotToPersistedState(snapshot as SerializableBenneGameStateV1);
+@@ -382,6 +449,7 @@
+       ),
+       this.state.variables,
+     );
++    Object.assign(mergedVariables, readStoredPlayerSettings());
+     if (!Object.prototype.hasOwnProperty.call(seededVariables, SETTINGS_CURRENT_MUSIC_VARIABLE)) {
+       mergedVariables[SETTINGS_CURRENT_MUSIC_VARIABLE] = null;
+     }
+@@ -528,6 +596,9 @@
+   setVariable(key: string, value: unknown): void {
+     const previousValue = this.state.variables[key];
+     this.state.variables[key] = value;
++    if (PLAYER_SETTINGS_VARIABLE_KEYS.has(key)) {
++      writeStoredPlayerSettings(this.state.variables);
++    }
+     const payload: GameStateVariableChangedPayload = { key, previousValue, value };
+     this.events.emit(GAME_STATE_VARIABLE_CHANGED_EVENT, payload);
+   }
+@@ -546,6 +617,9 @@
+     }
+     const previousValue = this.state.variables[key];
+     delete this.state.variables[key];
++    if (PLAYER_SETTINGS_VARIABLE_KEYS.has(key)) {
++      writeStoredPlayerSettings(this.state.variables);
++    }
+     const payload: GameStateVariableChangedPayload = { key, previousValue, value: undefined };
+     this.events.emit(GAME_STATE_VARIABLE_CHANGED_EVENT, payload);
+   }
+diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
+--- src/engine/gui/buildGuiOverlay.ts
++++ src/engine/gui/buildGuiOverlay.ts
+@@ -8,7 +8,7 @@
+ import { getInternalHeight, getInternalWidth } from '../content/constants';
+ import { isBenneGameCursorAsepriteEnabled } from '../content/cursorAseprite';
+ import { guiPhaserAnimationKey } from '../content/asepritePhaserAnimationKeys';
+-import { getGameSettings } from '../ConfigManager';
++import { getGameSettings, getGuiDesignHeight } from '../ConfigManager';
+ import { getAsepriteTextureKey, usesAsepriteDisplay } from '../content/guiAseprite';
+ import {
+   getPerItemInventoryTextureKey,
+@@ -30,6 +30,7 @@
+   GuiCheckboxControl,
+   GuiSliderControl,
+   GuiControl,
++  GuiAnchorY,
+   GuiData,
+   GuiGridControl,
+   GuiGridPlacement,
+@@ -117,7 +118,8 @@
+   shouldDropActiveInventoryOnUse,
+ } from '../verbs/dispatchInventoryVerb';
+ import { getEffectiveInputProfile } from '../verbs/verbConfig';
+-import { resolvePointerVerbForInventoryItem } from '../verbs/resolvePointerVerb';
++import { resolvePointerVerbForInventoryItem, type PointerSlot } from '../verbs/resolvePointerVerb';
++import { deferPressForHold } from '../verbs/holdGesture';
+ import { inventoryItemLabel } from '../verbs/targetLabel';
+ import {
+   getAsepriteSpriteSourceInset,
+@@ -848,6 +850,9 @@
+   const z = c.zIndex ?? 0;
+   const d = baseDepth + z;
+   const overlayVisible = startVisible && c.visible !== false;
++  // El `visible` del JSON el porta el contenidor (`hitTarget`), que és el que canvia `control.visible`; les peces de
++  // dins (fons, text) només segueixen la GUI. Si no, un botó amagat al JSON no es veuria mai en mostrar-lo des de l'script.
++  const partsVisible = startVisible;
+   const bgAnchor = guiSpriteAnchorOrDefault(c.backgroundAnchor);
+   const bgOffX = c.backgroundOffsetX ?? 0;
+   const bgOffY = c.backgroundOffsetY ?? 0;
+@@ -872,7 +877,7 @@
+     const rect = scene.add.rectangle(w / 2, h / 2, w, h, hexStringToTint(defaultBgColor));
+     rect.setDepth(GUI_BUTTON_BG_DEPTH);
+     rect.setScrollFactor(0, 0);
+-    rect.setVisible(overlayVisible);
++    rect.setVisible(partsVisible);
+     placeGuiButtonBackgroundRectLocal(rect, bgAnchor, w, h, worldTL, bgOffX, bgOffY);
+     hitTarget.add(rect);
+     bg = rect;
+@@ -884,7 +889,7 @@
+     if (!tryApplyGuiSheetTag(scene, sprite, guiTextureKey, defaultBgTag, gui.id)) {
+       sprite.destroy();
+     } else {
+-      sprite.setVisible(overlayVisible);
++      sprite.setVisible(partsVisible);
+       if (import.meta.env.DEV) {
+         warnDevIfAsepriteJsonMissingSpriteSourceSize(
+           sprite.frame,
+@@ -925,12 +930,12 @@
+       }
+     }
+     bt.setScrollFactor(0, 0);
+-    bt.setVisible(overlayVisible);
++    bt.setVisible(partsVisible);
+     const outs = createGuiBitmapTextOutlines(
+       scene,
+       bt,
+       c.textOutline,
+-      overlayVisible,
++      partsVisible,
+       GUI_BUTTON_OUTLINE_DEPTH_BELOW_LABEL,
+     );
+     for (const o of outs) {
+@@ -1368,10 +1373,12 @@
+     wireBenneGuiAsepriteTrimmedPlacementAfterFrameChanges(sprite);
+   }
+   /** Opaque pixels block room input unless a higher-priority GUI widget occupies the pointer (see defer list). */
+-  sprite.setInteractive({
+-    hitArea: {},
+-    hitAreaCallback: makeBenneGuiImagePixelPerfectHitCallback(scene, 8, imageInputDeferBelow),
+-  });
++  if (c.clickable !== false) {
++    sprite.setInteractive({
++      hitArea: {},
++      hitAreaCallback: makeBenneGuiImagePixelPerfectHitCallback(scene, 8, imageInputDeferBelow),
++    });
++  }
+   sprite.setData('benneGuiControl', true);
+   const cid = c.id?.trim();
+   if (cid) {
+@@ -1841,8 +1848,8 @@
+         }
+         slotContainer.setData('benneInventorySlot', true);
+         slotContainer.setData('benneInventoryItemId', itemId);
+-        slotContainer.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
+-          if (invPointerCtx.tryConsumeDialogClickToSkip(pointer)) {
++        const onSlotPress = (pointer: Phaser.Input.Pointer, slot?: PointerSlot): void => {
++          if (slot === undefined && invPointerCtx.tryConsumeDialogClickToSkip(pointer)) {
+             return;
+           }
+           if (invPointerCtx.isInputSuppressed()) {
+@@ -1853,6 +1860,17 @@
+           }
+           const profile = getEffectiveInputProfile(getGameSettings());
+           const manager = resolveGameStateManager(scene.game);
++          if (
++            slot === undefined &&
++            deferPressForHold(
++              pointer,
++              profile,
++              manager.getActiveInventoryItemId() !== null || manager.getActiveVerb() !== null,
++              (pressSlot) => onSlotPress(pointer, pressSlot),
++            )
++          ) {
++            return;
++          }
+           const invDef = getInventoryDefinition(itemId) as InventoryItemData | undefined;
+           const resolution = resolvePointerVerbForInventoryItem(
+             pointer,
+@@ -1860,6 +1878,7 @@
+             { defaultVerb: invDef?.defaultVerb },
+             manager.getActiveVerb(),
+             manager.getActiveInventoryItemId(),
++            slot,
+           );
+           if (resolution.kind === 'none') {
+             return;
+@@ -1915,7 +1934,8 @@
+               manager.clearActiveVerb();
+             });
+           }
+-        });
++        };
++        slotContainer.on('pointerdown', (pointer: Phaser.Input.Pointer) => onSlotPress(pointer));
+       }
+ 
+       panel.add(slotContainer);
+@@ -2025,11 +2045,48 @@
+   };
+ }
+ 
++/**
++ * Adaptive height (`resolution.minHeight`): moves each control of `gui` for the game's actual height, by its
++ * `anchorY` (or the GUI's). Grid-placed controls follow their grid. Returns `gui` itself when nothing moves.
++ */
++export function anchorGuiForHeight(gui: GuiData, height: number, designHeight: number): GuiData {
++  const extra = height - designHeight;
++  if (extra === 0) {
++    return gui;
++  }
++  const guiAnchor = gui.anchorY;
++  const controls = (gui.controls ?? []).map((control) => {
++    const c = control as typeof control & {
++      anchorY?: GuiAnchorY;
++      y?: number;
++      height?: number;
++      backgroundAnchor?: string;
++      backgroundOffsetY?: number;
++      gridPlacement?: unknown;
++    };
++    const anchor = c.anchorY ?? guiAnchor;
++    if (!anchor || anchor === 'top' || c.gridPlacement) {
++      return control;
++    }
++    if (anchor === 'stretch') {
++      return typeof c.height === 'number' ? { ...c, height: c.height + extra } : control;
++    }
++    const dy = Math.round(anchor === 'bottom' ? extra : extra / 2);
++    const moved = { ...c, y: (c.y ?? 0) + dy };
++    if (c.backgroundAnchor === 'screen') {
++      moved.backgroundOffsetY = (c.backgroundOffsetY ?? 0) + dy;
++    }
++    return moved;
++  });
++  return { ...gui, controls } as GuiData;
++}
++
+ export function buildGuiOverlay(
+   scene: Phaser.Scene,
+-  gui: GuiData,
++  authoredGui: GuiData,
+   options?: BuildGuiOverlayOptions,
+ ): BuiltGuiOverlay | null {
++  const gui = anchorGuiForHeight(authoredGui, getGameSettings().resolution.height, getGuiDesignHeight());
+   const depth = options?.depth ?? GUI_TEXT_OVERLAY_DEPTH;
+   const startVisible = options?.startVisible ?? false;
+   const placeholder = options?.emptyTextPlaceholder;
+diff -ruN src/engine/gui/buildGuiSlider.ts src/engine/gui/buildGuiSlider.ts
+--- src/engine/gui/buildGuiSlider.ts
++++ src/engine/gui/buildGuiSlider.ts
+@@ -92,12 +92,66 @@
+   return { track: trackDefault, handle: handleDefault };
+ }
+ 
+-function getHandleTravelBounds(hitWidth: number): { minX: number; maxX: number } {
+-  const minX = 0;
+-  const maxX = Math.max(minX, hitWidth);
+-  return { minX, maxX };
++interface FrameOpaqueBounds {
++  readonly left: number;
++  readonly top: number;
++  readonly right: number;
++  readonly bottom: number;
+ }
+ 
++const frameOpaqueBoundsCache = new Map<string, FrameOpaqueBounds | null>();
++
++/**
++ * Bounding box of the non-transparent pixels of a frame, in the frame's visible (cut) bitmap
++ * coordinates. Untrimmed Aseprite cels keep the whole sheet canvas (e.g. a 3px handle painted in
++ * the corner of a 70×20 cel), so the slider must measure the pixels to place them correctly.
++ * Returns `null` when the pixels can't be read; callers then fall back to the full frame.
++ */
++function getFrameOpaqueBounds(frame: Phaser.Textures.Frame): FrameOpaqueBounds | null {
++  const cacheKey = `${frame.texture.key}::${String(frame.name)}`;
++  if (frameOpaqueBoundsCache.has(cacheKey)) {
++    return frameOpaqueBoundsCache.get(cacheKey) ?? null;
++  }
++  let result: FrameOpaqueBounds | null = null;
++  try {
++    const image = frame.source.image as CanvasImageSource | undefined;
++    const cw = Math.round(frame.cutWidth);
++    const ch = Math.round(frame.cutHeight);
++    if (image && cw > 0 && ch > 0 && typeof document !== 'undefined') {
++      const canvas = document.createElement('canvas');
++      canvas.width = cw;
++      canvas.height = ch;
++      const ctx = canvas.getContext('2d', { willReadFrequently: true });
++      if (ctx) {
++        ctx.drawImage(image, frame.cutX, frame.cutY, cw, ch, 0, 0, cw, ch);
++        const data = ctx.getImageData(0, 0, cw, ch).data;
++        let left = cw;
++        let top = ch;
++        let right = -1;
++        let bottom = -1;
++        for (let y = 0; y < ch; y++) {
++          for (let x = 0; x < cw; x++) {
++            if (data[(y * cw + x) * 4 + 3] > 0) {
++              if (x < left) left = x;
++              if (x > right) right = x;
++              if (y < top) top = y;
++              if (y > bottom) bottom = y;
++            }
++          }
++        }
++        if (right >= left && bottom >= top) {
++          result = { left, top, right: right + 1, bottom: bottom + 1 };
++        }
++      }
++    }
++  } catch {
++    result = null;
++  }
++  frameOpaqueBoundsCache.set(cacheKey, result);
++  return result;
++}
++
++/** Visible-pixel bounds of `sprite` in its parent's local space (sprite origin taken into account). */
+ function getVisibleSpriteLocalBounds(sprite: Phaser.GameObjects.Sprite): {
+   left: number;
+   top: number;
+@@ -106,47 +160,69 @@
+ } {
+   const inset = getAsepriteSpriteSourceInset(sprite.frame);
+   const visible = getAsepriteVisibleFrameSize(sprite.frame);
+-  const left = sprite.x - sprite.displayOriginX + inset.x;
+-  const top = sprite.y - sprite.displayOriginY + inset.y;
++  const opaque = getFrameOpaqueBounds(sprite.frame) ?? {
++    left: 0,
++    top: 0,
++    right: visible.w,
++    bottom: visible.h,
++  };
++  const originLeft = sprite.x - sprite.displayOriginX + inset.x;
++  const originTop = sprite.y - sprite.displayOriginY + inset.y;
+   return {
+-    left,
+-    top,
+-    right: left + visible.w,
+-    bottom: top + visible.h,
++    left: originLeft + opaque.left,
++    top: originTop + opaque.top,
++    right: originLeft + opaque.right,
++    bottom: originTop + opaque.bottom,
+   };
+ }
+ 
++/**
++ * Horizontal range for the handle's visible centre: the track's visible pixels, shrunk by half
++ * the handle width so the handle never sticks out past either end.
++ */
+ function resolveSliderTravelBounds(
+   hitWidth: number,
+   hitHeight: number,
+   trackSprite: Phaser.GameObjects.Sprite | null,
++  handleSprite: Phaser.GameObjects.Sprite | null,
+ ): { minX: number; maxX: number; centerY: number } {
+-  const fallback = getHandleTravelBounds(hitWidth);
+-  const fallbackY = hitHeight / 2;
+   const b = trackSprite != null ? getVisibleSpriteLocalBounds(trackSprite) : null;
+-  const rawMinX = b && Number.isFinite(b.left) ? b.left : fallback.minX;
+-  const rawMaxX = b && Number.isFinite(b.right) ? b.right : fallback.maxX;
++  const trackLeft = b && Number.isFinite(b.left) ? b.left : 0;
++  const trackRight = b && Number.isFinite(b.right) ? b.right : Math.max(0, hitWidth);
+   const centerY =
+-    b && Number.isFinite(b.top) && Number.isFinite(b.bottom) ? (b.top + b.bottom) / 2 : fallbackY;
+-  return {
+-    minX: Math.min(rawMinX, rawMaxX),
+-    maxX: Math.max(rawMinX, rawMaxX),
+-    centerY,
+-  };
++    b && Number.isFinite(b.top) && Number.isFinite(b.bottom)
++      ? (b.top + b.bottom) / 2
++      : hitHeight / 2;
++  const left = Math.min(trackLeft, trackRight);
++  const right = Math.max(trackLeft, trackRight);
++  const handleHalfW = handleSprite ? getHandleOpaqueBox(handleSprite).w / 2 : 0;
++  if (right - left > handleHalfW * 2) {
++    return { minX: left + handleHalfW, maxX: right - handleHalfW, centerY };
++  }
++  return { minX: left, maxX: right, centerY };
+ }
+ 
+-function resolveHandlePlacementOffsetX(
+-  hitWidth: number,
+-  handleSprite: Phaser.GameObjects.Sprite | null,
+-): number {
+-  if (!handleSprite) {
+-    return 0;
+-  }
+-  const frameData = (handleSprite.frame as unknown as { data?: { trim?: boolean } }).data;
+-  const isTrimmed = frameData?.trim === true;
+-  const handleVisibleW = getAsepriteVisibleFrameSize(handleSprite.frame).w;
+-  const isFullWidthCanvasHandle = !isTrimmed && handleVisibleW >= Math.max(1, hitWidth) * 0.9;
+-  return isFullWidthCanvasHandle ? handleVisibleW / 2 : 0;
++/** Handle's visible pixel box relative to the sprite's top-left with origin (0, 0). */
++function getHandleOpaqueBox(handleSprite: Phaser.GameObjects.Sprite): {
++  x: number;
++  y: number;
++  w: number;
++  h: number;
++} {
++  const inset = getAsepriteSpriteSourceInset(handleSprite.frame);
++  const visible = getAsepriteVisibleFrameSize(handleSprite.frame);
++  const opaque = getFrameOpaqueBounds(handleSprite.frame) ?? {
++    left: 0,
++    top: 0,
++    right: visible.w,
++    bottom: visible.h,
++  };
++  return {
++    x: inset.x + opaque.left,
++    y: inset.y + opaque.top,
++    w: opaque.right - opaque.left,
++    h: opaque.bottom - opaque.top,
++  };
+ }
+ 
+ function valueToHandleLocalX(
+@@ -279,12 +355,15 @@
+     if (!handleSprite) {
+       return;
+     }
+-    const { minX, maxX, centerY } = resolveSliderTravelBounds(w, h, trackSprite);
+-    const handleOffsetX = resolveHandlePlacementOffsetX(w, handleSprite);
++    const { minX, maxX, centerY } = resolveSliderTravelBounds(w, h, trackSprite, handleSprite);
+     const hx = valueToHandleLocalX(value, range, minX, maxX);
+-    const hy = centerY;
+-    handleSprite.setOrigin(0.5, 0.5);
+-    handleSprite.setPosition(Math.round(hx + handleOffsetX), Math.round(hy));
++    // Put the centre of the handle's visible pixels on (hx, centerY), whatever its cel padding.
++    const box = getHandleOpaqueBox(handleSprite);
++    handleSprite.setOrigin(0, 0);
++    handleSprite.setPosition(
++      Math.round(hx - box.x - box.w / 2),
++      Math.round(centerY - box.y - box.h / 2),
++    );
+   };
+ 
+   const repositionTrack = (): void => {
+@@ -385,7 +464,7 @@
+     }
+     const matrix = hitTarget.getWorldTransformMatrix();
+     const local = matrix.applyInverse(pointer.worldX, pointer.worldY);
+-    const { minX, maxX } = resolveSliderTravelBounds(w, h, trackSprite);
++    const { minX, maxX } = resolveSliderTravelBounds(w, h, trackSprite, handleSprite);
+     const next = localXToValue(local.x, range, minX, maxX);
+     setValueInternal(next, true);
+   };
+diff -ruN src/engine/idleActions.ts src/engine/idleActions.ts
+--- src/engine/idleActions.ts
++++ src/engine/idleActions.ts
+@@ -0,0 +1,180 @@
++/**
++ * Idle micro-actions: a character standing still now and then blinks, looks around or does its own tic, then goes
++ * back to its `Idle` loop (the breathing).
++ *
++ * A character's `idleActions` (see {@link CharacterIdleActionData}) names base animations such as `Blink` or `Look`.
++ * The tag played is the current idle tag with `Idle` replaced by that name, so it keeps the outfit / size prefix,
++ * the facing and the mirror: `LlunyGalaIdleDL` → `LlunyGalaBlinkDL`. When that tag does not exist the action is
++ * skipped (no falling back to another outfit's art). Anything else the character plays (a walk, a line, a script
++ * animation) cuts the action, and the stillness count starts again.
++ *
++ * Several characters in a room never do the same thing at the same moment: each comes to rest at a random point of
++ * its `Idle` loop (frame and time within it) and breathes at its own pace (±12%, only while idle), and an action
++ * waits while another character's has just started.
++ */
++import type * as Phaser from 'phaser';
++
++import type { CharacterData, CharacterIdleActionData } from '../types/character';
++import { BENNE_CHARACTER_ANIMATION_OVERRIDE_KEY } from './benneAnimationRuntime';
++
++/** Sprite data key: the idle action tag this layer is playing on the sprite. */
++export const IDLE_ACTION_DATA_KEY = 'benneIdleAction';
++
++const DEFAULT_EVERY: [number, number] = [5, 12];
++/** Gap between two actions of the same character that come due together. */
++const ACTION_GAP_MS = 600;
++/** No two characters start an action closer than this. */
++const ROOM_GAP_MS = 1500;
++/** Personal breathing pace: idle `timeScale` in `1 ± PACE_SPREAD`. */
++const PACE_SPREAD = 0.12;
++
++/** The subset of a Phaser sprite this layer touches (kept small so it can be tested without Phaser). */
++export interface IdleActionSprite {
++  active: boolean;
++  visible: boolean;
++  anims: {
++    currentAnim: { key: string; frames: unknown[] } | null;
++    isPlaying: boolean;
++    timeScale: number;
++    accumulator: number;
++    nextTick: number;
++    exists(key: string): boolean;
++    setProgress(value: number): unknown;
++  };
++  play(key: string): unknown;
++  getData(key: string): unknown;
++  setData(key: string, value: unknown): unknown;
++}
++
++interface SpriteState {
++  /** `now` when the character came to rest; `null` while it moves, talks or plays anything else. */
++  stillSince: number | null;
++  /** The idle tag to go back to after an action. */
++  idleKey: string | null;
++  /** Per action: `now` when it is next due. */
++  next: number[];
++  /** This character's breathing pace (idle `timeScale`). */
++  pace: number;
++}
++
++/** `Idle` replaced by `action` in an idle tag (the last occurrence, so prefixes stay): `GalaIdleDL` → `GalaBlinkDL`. */
++export function idleActionTag(idleKey: string, action: string): string | null {
++  const i = idleKey.lastIndexOf('Idle');
++  return i < 0 ? null : idleKey.slice(0, i) + action + idleKey.slice(i + 4);
++}
++
++function rangeMs(a: CharacterIdleActionData, rand: () => number): number {
++  const [lo, hi] = Array.isArray(a.every) && a.every.length === 2 ? a.every : DEFAULT_EVERY;
++  const min = Math.max(0.1, Math.min(lo, hi));
++  const max = Math.max(min, Math.max(lo, hi));
++  return (min + (max - min) * rand()) * 1000;
++}
++
++export class CharacterIdleActions {
++  private readonly states = new WeakMap<IdleActionSprite, SpriteState>();
++  private readonly rand: () => number;
++  /** When the last action in the room started, and on whom. */
++  private lastActionAt = -Infinity;
++  private lastActionSprite: IdleActionSprite | null = null;
++
++  constructor(rand: () => number = Math.random) {
++    this.rand = rand;
++  }
++
++  /** Once per frame, with the room's character sprites and the scene clock (ms). */
++  update(sprites: Iterable<IdleActionSprite>, now: number): void {
++    for (const sprite of sprites) {
++      this.updateOne(sprite, now);
++    }
++  }
++
++  private updateOne(sprite: IdleActionSprite, now: number): void {
++    if (!sprite.active || !sprite.anims) {
++      return;
++    }
++    let st = this.states.get(sprite);
++    if (!st) {
++      st = { stillSince: null, idleKey: null, next: [], pace: 1 + (this.rand() * 2 - 1) * PACE_SPREAD };
++      this.states.set(sprite, st);
++    }
++    const key = sprite.anims.currentAnim?.key ?? null;
++    const action = sprite.getData(IDLE_ACTION_DATA_KEY) as string | null | undefined;
++
++    if (action) {
++      if (key === action && sprite.anims.isPlaying) {
++        return; // still playing
++      }
++      sprite.setData(IDLE_ACTION_DATA_KEY, null);
++      if (key === action) {
++        // Finished: back to breathing, still counting as rest.
++        if (st.idleKey && sprite.anims.exists(st.idleKey)) {
++          sprite.play(st.idleKey);
++        }
++        return;
++      }
++      // Something else took over (a walk, a line, a script animation).
++    }
++
++    const isIdle =
++      key !== null &&
++      sprite.visible &&
++      sprite.getData('facingBase') === 'Idle' &&
++      key.includes('Idle') &&
++      !sprite.getData(BENNE_CHARACTER_ANIMATION_OVERRIDE_KEY);
++    if (!isIdle) {
++      if (st.stillSince !== null) {
++        sprite.anims.timeScale = 1; // the pace is only for breathing
++      }
++      st.stillSince = null;
++      return;
++    }
++    sprite.anims.timeScale = st.pace;
++
++    const actions = (sprite.getData('character') as CharacterData | undefined)?.idleActions ?? [];
++    if (st.stillSince === null) {
++      st.stillSince = now;
++      // Desync the breathing: a random frame, and a random time already spent in it.
++      if ((sprite.anims.currentAnim?.frames.length ?? 0) > 1) {
++        sprite.anims.setProgress(this.rand());
++        sprite.anims.accumulator = this.rand() * sprite.anims.nextTick;
++      }
++      st.next = actions.map((a) => now + (a.after ?? 0) * 1000 + rangeMs(a, this.rand));
++    }
++    st.idleKey = key;
++
++    for (let i = 0; i < actions.length; i++) {
++      const due = st.next[i] ?? Infinity;
++      if (now < due) {
++        continue;
++      }
++      const a = actions[i]!;
++      const tag = idleActionTag(key, a.animation);
++      if (!tag || !sprite.anims.exists(tag)) {
++        st.next[i] = now + rangeMs(a, this.rand);
++        continue;
++      }
++      if (this.lastActionSprite !== sprite && now - this.lastActionAt < ROOM_GAP_MS) {
++        // Someone else just did something: wait a moment, not all together.
++        st.next[i] = this.lastActionAt + ROOM_GAP_MS + this.rand() * 2000;
++        continue;
++      }
++      st.next[i] = now + rangeMs(a, this.rand);
++      sprite.play(tag);
++      sprite.setData(IDLE_ACTION_DATA_KEY, tag);
++      this.lastActionAt = now;
++      this.lastActionSprite = sprite;
++      // Anything else due about now waits a little, so two actions don't run back to back.
++      for (let j = 0; j < actions.length; j++) {
++        if (j !== i && (st.next[j] ?? Infinity) < now + ACTION_GAP_MS) {
++          st.next[j] = now + ACTION_GAP_MS + rangeMs(actions[j]!, this.rand) * 0.25;
++        }
++      }
++      return;
++    }
++  }
++}
++
++/** Narrowing helper for the room stack (static characters are Images without animations). */
++export function isIdleActionSprite(o: Phaser.GameObjects.GameObject): o is Phaser.GameObjects.Sprite {
++  return 'anims' in o && (o as Phaser.GameObjects.Sprite).anims !== undefined;
++}
+diff -ruN src/engine/rendering/benneCharacterPerspectiveBatch.ts src/engine/rendering/benneCharacterPerspectiveBatch.ts
+--- src/engine/rendering/benneCharacterPerspectiveBatch.ts
++++ src/engine/rendering/benneCharacterPerspectiveBatch.ts
+@@ -24,7 +24,14 @@
+ /** Companion submitter that brackets each draw with {@link benneCharacterBatchObjectStack}. */
+ export const BENNE_CHARACTER_SUBMITTER_NAME = 'SubmitterBenneCharacterQuad';
+ 
+-const PERSP_EPS = 0.00015;
++
++/** `CharacterData.artScale` of the sprite being drawn (1 when it has none). */
++function characterSheetArtScale(obj: object): number {
++  const getData = (obj as { getData?: (key: string) => unknown }).getData;
++  const data = typeof getData === 'function' ? (getData.call(obj, 'character') as { artScale?: number } | undefined) : undefined;
++  const k = data?.artScale;
++  return typeof k === 'number' && k > 0 ? k : 1;
++}
+ 
+ const benneCharacterPerspectiveShaderAddition = {
+   name: 'BenneCharacterPerspective',
+@@ -32,30 +39,61 @@
+     vertexDefine: 'attribute float inPerspMag;\n',
+     outVariables: 'varying float outPerspMag;\n',
+     vertexProcess: 'outPerspMag = inPerspMag;\n',
++  },
++  disable: false,
++};
++
++/**
++ * Pixel art at a non-integer size. A character is drawn at whatever size its perspective scale and the screen give
++ * (scale 0.37–1.25 in a deep room, × 2 to 3.7 screen px per room px), and with plain nearest sampling some texels
++ * then cover one screen pixel and others two, or are skipped: the figure looks ragged, and blocky when it is small.
++ * This samples by the texel footprint of each screen pixel (`fwidth`):
++ * - **magnified** (a texel covers more than a pixel): "sharp bilinear" — each texel stays solid and only the one-pixel
++ *   seam between two texels is blended, so every texel looks the same size;
++ * - **minified** (several texels per pixel, a figure in the distance): the average of the footprint (up to 4×4
++ *   samples), like a smaller drawing.
++ * Colours are premultiplied, so averaging them blends the edges of the silhouette correctly.
++ */
++const benneCharacterPixelArtSamplingAddition = {
++  name: 'BenneCharacterPixelArtSampling',
++  additions: {
++    extensions: '#extension GL_OES_standard_derivatives : enable',
+     fragmentHeader: [
+-      '// mag = sprite scale (e.g. 0.25). Bucket width ≈ 1/mag source pixels; integer plateau keeps',
+-      '// snap stable while mag drifts (region scale vs feet Y), so LINEAR does not smear mid-motion.',
+-      'vec2 bennePerspectiveTexCoord(vec2 uv, float mag, vec2 texWH) {',
+-      '    float m = clamp(mag, 0.0001, 1.0);',
+-      '    float rawStep = 1.0 / m;',
+-      '    float stepPx = max(1.0, floor(rawStep + 0.5));',
+-      '    vec2 cont = uv * texWH;',
+-      '    vec2 g = floor(cont / stepPx);',
+-      '    vec2 maxG = max(floor((texWH - vec2(1.0)) / stepPx), vec2(0.0));',
+-      '    g = clamp(g, vec2(0.0), maxG);',
+-      '    vec2 atlasPix = g * stepPx + stepPx * 0.5;',
+-      '    atlasPix = min(atlasPix, texWH - vec2(0.5));',
+-      '    vec2 snapped = floor(atlasPix + vec2(1e-3)) + vec2(0.5);',
+-      '    return snapped / texWH;',
++      'vec4 benneTexel(vec2 t, vec2 texWH) {',
++      '    t = clamp(t, vec2(0.0), texWH - vec2(1.0));',
++      '    return getTexture((t + vec2(0.5)) / texWH);',
+       '}',
+-    ].join('\n'),
+-    // Runs after SmoothPixelArt when enabled: near-scale-1 keeps prior texCoord (blocky path);
+-    // scaled-down sprites replace with perspective UVs from linear outTexCoord.
+-    texCoord: [
+-      'if (outPerspMag < (1.0 - ' + String(PERSP_EPS) + ')) {',
+-      '    texCoord = bennePerspectiveTexCoord(outTexCoord, outPerspMag, uMainResolution[0]);',
++      'vec4 bennePixelArtSample(vec2 uv, vec2 texWH) {',
++      '    vec2 px = uv * texWH;',
++      '    vec2 fw = max(fwidth(px), vec2(1e-4));',
++      '    float foot = max(fw.x, fw.y);',
++      '    if (foot > 1.2) {',
++      '        float n = min(4.0, ceil(foot));',
++      '        vec4 acc = vec4(0.0);',
++      '        float k = 0.0;',
++      '        for (int j = 0; j < 4; j++) {',
++      '            for (int i = 0; i < 4; i++) {',
++      '                if (float(i) < n && float(j) < n) {',
++      '                    vec2 o = (vec2(float(i), float(j)) + 0.5) / n - 0.5;',
++      '                    acc += benneTexel(floor(px + o * fw), texWH);',
++      '                    k += 1.0;',
++      '                }',
++      '            }',
++      '        }',
++      '        return acc / k;',
++      '    }',
++      '    vec2 p = px - 0.5;',
++      '    vec2 i0 = floor(p);',
++      '    vec2 f = p - i0;',
++      '    vec2 w = clamp((f - 0.5) / fw + 0.5, 0.0, 1.0);',
++      '    vec4 a = benneTexel(i0, texWH);',
++      '    vec4 b = benneTexel(i0 + vec2(1.0, 0.0), texWH);',
++      '    vec4 c = benneTexel(i0 + vec2(0.0, 1.0), texWH);',
++      '    vec4 d = benneTexel(i0 + vec2(1.0, 1.0), texWH);',
++      '    return mix(mix(a, b, w.x), mix(c, d, w.x), w.y);',
+       '}',
+     ].join('\n'),
++    fragmentProcess: 'fragColor = bennePixelArtSample(outTexCoord, getTexRes());',
+   },
+   disable: false,
+ };
+@@ -74,6 +112,7 @@
+     benneCharacterPerspectiveShaderAddition,
+     benneMakeDefineTexCount(1),
+     benneMakeGetTexture1(),
++    benneCharacterPixelArtSamplingAddition,
+     benneMakeApplyTint(),
+     benneMakeDefineLights(true),
+     benneMakeRotationDatum(true),
+@@ -164,9 +203,11 @@
+       renderOptions: Phaser.Types.Renderer.WebGL.RenderNodes.BatchHandlerQuadRenderOptions,
+     ): void {
+       const top = benneCharacterBatchObjectStack[benneCharacterBatchObjectStack.length - 1];
++      // The magnification in 1× frame units: a sheet drawn at `artScale`× is shown at 1/artScale on purpose (its
++      // detail is denser, not something to bucket away), so only the perspective part of the scale counts.
+       const mag =
+         top && 'scaleX' in top && 'scaleY' in top
+-          ? Math.max(Math.abs(top.scaleX as number), Math.abs(top.scaleY as number))
++          ? Math.max(Math.abs(top.scaleX as number), Math.abs(top.scaleY as number)) * characterSheetArtScale(top)
+           : 1;
+ 
+       if (this.instanceCount === 0) {
+diff -ruN src/engine/room/characterLights.ts src/engine/room/characterLights.ts
+--- src/engine/room/characterLights.ts
++++ src/engine/room/characterLights.ts
+@@ -0,0 +1,133 @@
++/**
++ * Character lights: the room's light falls on its characters at runtime.
++ *
++ * The room art is lit when it is drawn (in the content tools); the characters are separate sprites, so without
++ * this they look the same everywhere. A room's {@link RoomCharacterLightsData} lists an ambient and point lights;
++ * each frame the light is sampled at the four corners of every character sprite and set as a per-corner tint in
++ * Phaser's **overlay** tint mode, where `0.5` grey is neutral: below it darkens, above it lightens, and a colour
++ * colours. So one tint both dims a character in a dark corner and lights the side that faces a screen.
++ *
++ * When a room has character lights they replace the region tint (`tintEnabled` regions) for its characters.
++ */
++import * as Phaser from 'phaser';
++
++import type { RoomCharacterLightsData, RoomCharacterLightData } from '../../types/room';
++
++type Rgb = [number, number, number];
++
++function parseHexRgb(hex: string | undefined, fallback: Rgb): Rgb {
++  if (typeof hex !== 'string') {
++    return fallback;
++  }
++  const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
++  if (!m) {
++    return fallback;
++  }
++  const n = parseInt(m[1], 16);
++  return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
++}
++
++interface CompiledLight {
++  x: number;
++  y: number;
++  radius: number;
++  squash: number;
++  power: number;
++  rgb: Rgb;
++  whenPropVisible?: string;
++}
++
++export interface CompiledCharacterLights {
++  ambient: Rgb;
++  lights: CompiledLight[];
++  /** Fraction of the sprite height, from the top, that samples the light for the top corners. */
++  topSample: number;
++}
++
++const cache = new WeakMap<RoomCharacterLightsData, CompiledCharacterLights>();
++
++/** Parses (once per room data object) the room's character lights; `null` when the room has none. */
++export function compileCharacterLights(data: RoomCharacterLightsData | undefined): CompiledCharacterLights | null {
++  if (!data) {
++    return null;
++  }
++  const hit = cache.get(data);
++  if (hit) {
++    return hit;
++  }
++  const lights = (data.lights ?? []).map((l: RoomCharacterLightData): CompiledLight => {
++    const rgb = parseHexRgb(l.color, [1, 1, 1]);
++    const k = typeof l.intensity === 'number' ? l.intensity : 1;
++    return {
++      x: l.x,
++      y: l.y,
++      radius: Math.max(1, l.radius),
++      squash: l.squash ?? 1,
++      power: l.power ?? 1.6,
++      rgb: [rgb[0] * k, rgb[1] * k, rgb[2] * k],
++      whenPropVisible: l.whenPropVisible,
++    };
++  });
++  const out: CompiledCharacterLights = {
++    ambient: parseHexRgb(data.ambient, [1, 1, 1]),
++    lights,
++    topSample: Math.max(0, Math.min(1, data.topSample ?? 0.15)),
++  };
++  cache.set(data, out);
++  return out;
++}
++
++/** Light (`1` = unlit, per channel) at a room point. */
++export function sampleCharacterLight(
++  cl: CompiledCharacterLights,
++  x: number,
++  y: number,
++  isPropVisible: (propId: string) => boolean,
++): Rgb {
++  const v: Rgb = [cl.ambient[0], cl.ambient[1], cl.ambient[2]];
++  for (const l of cl.lights) {
++    if (l.whenPropVisible && !isPropVisible(l.whenPropVisible)) {
++      continue;
++    }
++    const d = Math.hypot(x - l.x, (y - l.y) * l.squash) / l.radius;
++    if (d >= 1) {
++      continue;
++    }
++    const f = Math.pow(1 - d, l.power);
++    v[0] += l.rgb[0] * f;
++    v[1] += l.rgb[1] * f;
++    v[2] += l.rgb[2] * f;
++  }
++  return v;
++}
++
++/** Overlay tint for a light value: half of it (so `1`, unlit, is the neutral `0.5` grey), packed `0xRRGGBB`. */
++function overlayTint(v: Rgb): number {
++  const c = (n: number): number => Math.max(0, Math.min(255, Math.round(n * 0.5 * 255)));
++  return (c(v[0]) << 16) | (c(v[1]) << 8) | c(v[2]);
++}
++
++/**
++ * Lights a character sprite: samples the light at its left and right edges, near the head and at the feet, and
++ * sets the four corner tints in overlay mode.
++ */
++export function applyCharacterLights(
++  sprite: Phaser.GameObjects.Sprite | Phaser.GameObjects.Image,
++  cl: CompiledCharacterLights,
++  isPropVisible: (propId: string) => boolean,
++): void {
++  const b = sprite.getBounds();
++  const top = b.top + b.height * cl.topSample;
++  const bottom = b.bottom;
++  const tl = overlayTint(sampleCharacterLight(cl, b.left, top, isPropVisible));
++  const tr = overlayTint(sampleCharacterLight(cl, b.right, top, isPropVisible));
++  const bl = overlayTint(sampleCharacterLight(cl, b.left, bottom, isPropVisible));
++  const br = overlayTint(sampleCharacterLight(cl, b.right, bottom, isPropVisible));
++  // a flipped sprite swaps its corners: the tint is in room space, so swap them back
++  if (sprite.flipX) {
++    sprite.setTint(tr, tl, br, bl);
++  } else {
++    sprite.setTint(tl, tr, bl, br);
++  }
++  sprite.setTintMode(Phaser.TintModes.OVERLAY);
++}
+diff -ruN src/engine/room/characterOutline.ts src/engine/room/characterOutline.ts
+--- src/engine/room/characterOutline.ts
++++ src/engine/room/characterOutline.ts
+@@ -0,0 +1,146 @@
++/**
++ * Character outline: a dark rim around each character, for rooms whose floor or walls are so bright (white marble,
++ * sunlit water) that the sprites' own edges get lost against them.
++ *
++ * A room's {@link RoomCharacterOutlineData} turns on four copies of each character's current frame, filled with the
++ * outline colour and shifted one step left, right, up and down, just under the character in the room stack: only the
++ * rim around the silhouette shows. The copies use the character's own render nodes and data, so they are sampled
++ * exactly like the character (perspective scale, `artScale` sheets) and stay aligned with it; the room's front
++ * layers cover them the way they cover the character.
++ */
++import * as Phaser from 'phaser';
++
++import type { CharacterData } from '../../types/character';
++import type { RoomCharacterOutlineData } from '../../types/room';
++import { attachBenneCharacterPerspectiveRenderNodes } from '../rendering/benneCharacterPerspectiveBatch';
++
++export interface CompiledCharacterOutline {
++  /** Fill colour (0xRRGGBB). */
++  color: number;
++  /** Opacity of the rim (times the character's own alpha). */
++  alpha: number;
++  /** Thickness in room pixels. */
++  width: number;
++}
++
++const cache = new WeakMap<RoomCharacterOutlineData, CompiledCharacterOutline>();
++
++function num(v: unknown, fallback: number): number {
++  return typeof v === 'number' && Number.isFinite(v) ? v : fallback;
++}
++
++/** Parses (once per room data object) the room's character outline; `null` when the room has none. */
++export function compileCharacterOutline(data: RoomCharacterOutlineData | undefined): CompiledCharacterOutline | null {
++  if (!data || data.enabled === false) {
++    return null;
++  }
++  const hit = cache.get(data);
++  if (hit) {
++    return hit;
++  }
++  const m = typeof data.color === 'string' ? /^#?([0-9a-f]{6})$/i.exec(data.color.trim()) : null;
++  const out: CompiledCharacterOutline = {
++    color: m ? parseInt(m[1], 16) : 0x000000,
++    alpha: Math.max(0, Math.min(1, num(data.alpha, 0.7))),
++    width: Math.max(0.25, num(data.width, 1)),
++  };
++  cache.set(data, out);
++  return out;
++}
++
++type CharacterSprite = Phaser.GameObjects.Sprite | Phaser.GameObjects.Image;
++
++/** The four offsets of the rim copies (left, right, up, down), in units of the outline width. */
++export const OUTLINE_OFFSETS: ReadonlyArray<readonly [number, number]> = [[-1, 0], [1, 0], [0, -1], [0, 1]];
++
++/** Owns the rim copies of each character sprite and keeps them in step with the character every frame. */
++export class CharacterOutlineLayer {
++  private readonly outlines = new Map<CharacterSprite, Phaser.GameObjects.Image[]>();
++
++  private readonly scene: Phaser.Scene;
++
++  constructor(scene: Phaser.Scene) {
++    this.scene = scene;
++  }
++
++  /** Drops every outline (scene teardown destroys the Images themselves). */
++  clear(): void {
++    this.outlines.clear();
++  }
++
++  /** `outline` null = the room has none. */
++  update(outline: CompiledCharacterOutline | null, sprites: Iterable<CharacterSprite>): void {
++    const seen = new Set<CharacterSprite>();
++    if (outline) {
++      for (const sprite of sprites) {
++        if (!sprite.active) {
++          continue;
++        }
++        seen.add(sprite);
++        this.updateOne(outline, sprite);
++      }
++    }
++    for (const [sprite, imgs] of this.outlines) {
++      if (!seen.has(sprite)) {
++        for (const img of imgs) {
++          img.destroy();
++        }
++        this.outlines.delete(sprite);
++      }
++    }
++  }
++
++  private drop(sprite: CharacterSprite): void {
++    for (const img of this.outlines.get(sprite) ?? []) {
++      img.destroy();
++    }
++    this.outlines.delete(sprite);
++  }
++
++  private updateOne(outline: CompiledCharacterOutline, sprite: CharacterSprite): void {
++    const data = sprite.getData('character') as CharacterData | undefined;
++    if (data?.outline === false) {
++      this.drop(sprite);
++      return;
++    }
++    let imgs = this.outlines.get(sprite);
++    if (!imgs) {
++      const created = OUTLINE_OFFSETS.map(() => {
++        const img = this.scene.add.image(0, 0, sprite.texture.key, sprite.frame.name);
++        attachBenneCharacterPerspectiveRenderNodes(img);
++        return img;
++      });
++      imgs = created;
++      this.outlines.set(sprite, created);
++      sprite.once(Phaser.GameObjects.Events.DESTROY, () => {
++        if (this.outlines.get(sprite) === created) {
++          this.drop(sprite);
++        }
++      });
++    }
++    const alpha = outline.alpha * sprite.alpha;
++    const visible = sprite.visible && alpha > 0.001;
++    // Just under the character, above its contact shadow (at depth − 0.5).
++    const depth = sprite.depth - 0.25;
++    OUTLINE_OFFSETS.forEach(([dx, dy], i) => {
++      const img = imgs[i];
++      img.setVisible(visible);
++      if (!visible) {
++        return;
++      }
++      if (img.texture.key !== sprite.texture.key || img.frame.name !== sprite.frame.name) {
++        img.setTexture(sprite.texture.key, sprite.frame.name);
++      }
++      // (the batch reads the character data: the sheet's artScale)
++      img.setData('character', data);
++      img.setDepth(depth);
++      img.setFlipX(sprite.flipX);
++      img.setDisplayOrigin(sprite.displayOriginX, sprite.displayOriginY);
++      img.setScale(sprite.scaleX, sprite.scaleY);
++      img.setPosition(sprite.x + dx * outline.width, sprite.y + dy * outline.width);
++      img.setTintMode(Phaser.TintModes.FILL);
++      img.setTint(outline.color);
++      img.setAlpha(alpha);
++    });
++  }
++}
+diff -ruN src/engine/room/characterReflection.ts src/engine/room/characterReflection.ts
+--- src/engine/room/characterReflection.ts
++++ src/engine/room/characterReflection.ts
+@@ -0,0 +1,156 @@
++/**
++ * Floor reflection: a polished floor (marble, wet tiles) mirrors the characters that stand on it.
++ *
++ * The room art already carries the reflection of the room itself (drawn by the content tools); the characters are
++ * separate sprites, so a room's {@link RoomCharacterReflectionData} turns on a copy of each character's current frame
++ * mirrored about its feet: same texture, frame, facing, scale and light tint, faint and fading away from the feet.
++ *
++ * Every reflection sits just above the room background, under all props and characters: the reflection always falls
++ * towards the camera (below the feet on screen), where anything that stands on the floor is in front of the
++ * character anyway, and the room's front layers cover it the way they cover the character.
++ *
++ * Phaser flips a sprite about the middle of its frame, so the mirror is a negative `scaleY` with the display origin
++ * on the feet instead. With a negative scale the frame's top row is drawn at the bottom, so the per-corner tint and
++ * alpha are set in frame space: the "bottom" corners are the ones next to the feet.
++ */
++import * as Phaser from 'phaser';
++
++import type { CharacterData } from '../../types/character';
++import type { RoomCharacterReflectionData } from '../../types/room';
++import { getCharacterWorldFeet } from '../characterFeet';
++
++export interface CompiledCharacterReflection {
++  /** Opacity next to the feet. */
++  alpha: number;
++  /** Opacity at the far end, as a fraction of `alpha` (0 = fades out completely). */
++  fade: number;
++  /** Height of the reflection ÷ height of the character (a high camera sees it shorter). */
++  length: number;
++  /** Below this room y the floor is not polished (or the room ends): the reflection is cut there. */
++  maxY: number | null;
++}
++
++const cache = new WeakMap<RoomCharacterReflectionData, CompiledCharacterReflection>();
++
++function num(v: unknown, fallback: number): number {
++  return typeof v === 'number' && Number.isFinite(v) ? v : fallback;
++}
++
++/** Parses (once per room data object) the room's floor reflection; `null` when the room has none. */
++export function compileCharacterReflection(
++  data: RoomCharacterReflectionData | undefined,
++): CompiledCharacterReflection | null {
++  if (!data || data.enabled === false) {
++    return null;
++  }
++  const hit = cache.get(data);
++  if (hit) {
++    return hit;
++  }
++  const out: CompiledCharacterReflection = {
++    alpha: Math.max(0, Math.min(1, num(data.alpha, 0.2))),
++    fade: Math.max(0, Math.min(1, num(data.fade, 0))),
++    length: Math.max(0.05, num(data.length, 1)),
++    maxY: typeof data.maxY === 'number' && Number.isFinite(data.maxY) ? data.maxY : null,
++  };
++  cache.set(data, out);
++  return out;
++}
++
++type CharacterSprite = Phaser.GameObjects.Sprite | Phaser.GameObjects.Image;
++
++/** Owns one mirrored Image per character sprite and keeps it in step with the character every frame. */
++export class CharacterReflectionLayer {
++  private readonly reflections = new Map<CharacterSprite, Phaser.GameObjects.Image>();
++
++  private readonly scene: Phaser.Scene;
++
++  constructor(scene: Phaser.Scene) {
++    this.scene = scene;
++  }
++
++  /** Drops every reflection (scene teardown destroys the Images themselves). */
++  clear(): void {
++    this.reflections.clear();
++  }
++
++  /**
++   * `reflection` null = the room has no polished floor. `depth`: just above the room background (the lowest sprite
++   * of the room stack).
++   */
++  update(reflection: CompiledCharacterReflection | null, sprites: Iterable<CharacterSprite>, depth: number): void {
++    const seen = new Set<CharacterSprite>();
++    if (reflection) {
++      for (const sprite of sprites) {
++        if (!sprite.active) {
++          continue;
++        }
++        seen.add(sprite);
++        this.updateOne(reflection, sprite, depth);
++      }
++    }
++    for (const [sprite, img] of this.reflections) {
++      if (!seen.has(sprite)) {
++        img.destroy();
++        this.reflections.delete(sprite);
++      }
++    }
++  }
++
++  private updateOne(reflection: CompiledCharacterReflection, sprite: CharacterSprite, depth: number): void {
++    const data = sprite.getData('character') as CharacterData | undefined;
++    let img = this.reflections.get(sprite);
++    if (data?.reflection === false) {
++      if (img) {
++        img.destroy();
++        this.reflections.delete(sprite);
++      }
++      return;
++    }
++    if (!img) {
++      const created = this.scene.add.image(0, 0, sprite.texture.key, sprite.frame.name);
++      img = created;
++      this.reflections.set(sprite, created);
++      sprite.once(Phaser.GameObjects.Events.DESTROY, () => {
++        if (this.reflections.get(sprite) === created) {
++          created.destroy();
++          this.reflections.delete(sprite);
++        }
++      });
++    }
++    const alpha = reflection.alpha * sprite.alpha;
++    const visible = sprite.visible && alpha > 0.001;
++    img.setVisible(visible);
++    if (!visible) {
++      return;
++    }
++    img.setDepth(depth);
++    if (img.texture.key !== sprite.texture.key || img.frame.name !== sprite.frame.name) {
++      img.setTexture(sprite.texture.key, sprite.frame.name);
++    }
++    const feet = getCharacterWorldFeet(sprite as Phaser.GameObjects.Sprite);
++    const sy = sprite.scaleY;
++    // The feet row in frame pixels (from the frame's top), then the mirror about it.
++    const top = sprite.y - sprite.displayOriginY * sy;
++    const feetRow = (feet.y - top) / sy;
++    img.setFlipX(sprite.flipX);
++    img.setDisplayOrigin(sprite.displayOriginX, feetRow);
++    img.setScale(sprite.scaleX, -sy * reflection.length);
++    img.setPosition(sprite.x, feet.y);
++    // Only the part of the frame under the feet would mirror onto the wall: crop the frame to the feet row, and to
++    // the end of the polished floor.
++    const fh = sprite.frame.height;
++    let rows = Math.max(0, Math.min(fh, feetRow));
++    if (reflection.maxY !== null) {
++      const room = (reflection.maxY - feet.y) / (sy * reflection.length);
++      rows = Math.max(0, Math.min(rows, room));
++    }
++    img.setCrop(0, feetRow - rows, sprite.frame.width, rows);
++    // The light falls on the reflection as on the character (frame space: the tints copy as they are).
++    img.setTintMode(sprite.tintMode);
++    img.setTint(sprite.tintTopLeft, sprite.tintTopRight, sprite.tintBottomLeft, sprite.tintBottomRight);
++    // Faint next to the feet (the frame's bottom corners), fading towards the mirrored head (its top corners).
++    const far = alpha * reflection.fade;
++    img.setAlpha(far, far, alpha, alpha);
++  }
++}
+diff -ruN src/engine/room/characterShadow.ts src/engine/room/characterShadow.ts
+--- src/engine/room/characterShadow.ts
++++ src/engine/room/characterShadow.ts
+@@ -0,0 +1,244 @@
++/**
++ * Contact shadow: a dark, semi-transparent ellipse on the floor under each character's feet.
++ *
++ * It is drawn by the engine, not in the character sheet, so it follows the character's perspective scale and the
++ * room's light: a room's {@link RoomCharacterShadowData} turns it on and may name a dominant light (a lamp, a window,
++ * the sun); the shadow then stretches across the floor away from it. The ellipse lives in floor coordinates (x to
++ * the right, z into the room) and is squashed vertically onto the screen, so a stretched shadow keeps lying flat.
++ *
++ * The shadow is a Phaser Graphics just below the character in the room stack (depth − 0.5), redrawn only when its
++ * shape changes.
++ */
++import * as Phaser from 'phaser';
++
++import type { CharacterData } from '../../types/character';
++import type { RoomCharacterShadowData } from '../../types/room';
++import { characterArtScale, getCharacterWorldFeet } from '../characterFeet';
++
++export interface CompiledCharacterShadow {
++  color: number;
++  alpha: number;
++  squash: number;
++  /** Fraction of the width taken by the darker core (0 = one flat ellipse). */
++  core: number;
++  /** Floor point under the dominant light, room px. */
++  lightPoint: { x: number; y: number } | null;
++  /** Floor direction the shadow falls in (screen px, normalised in floor space) for a far light such as the sun. */
++  direction: { x: number; y: number } | null;
++  stretch: number;
++  reach: number;
++}
++
++const cache = new WeakMap<RoomCharacterShadowData, CompiledCharacterShadow>();
++
++function num(v: unknown, fallback: number): number {
++  return typeof v === 'number' && Number.isFinite(v) ? v : fallback;
++}
++
++/** Parses (once per room data object) the room's contact shadow; `null` when the room has none. */
++export function compileCharacterShadow(data: RoomCharacterShadowData | undefined): CompiledCharacterShadow | null {
++  if (!data || data.enabled === false) {
++    return null;
++  }
++  const hit = cache.get(data);
++  if (hit) {
++    return hit;
++  }
++  const m = typeof data.color === 'string' ? /^#?([0-9a-f]{6})$/i.exec(data.color.trim()) : null;
++  const light = data.light;
++  const out: CompiledCharacterShadow = {
++    color: m ? parseInt(m[1], 16) : 0x000000,
++    alpha: Math.max(0, Math.min(1, num(data.alpha, 0.35))),
++    squash: Math.max(0.05, num(data.squash, 0.3)),
++    core: Math.max(0, Math.min(0.95, num(data.core, 0.6))),
++    lightPoint: light && light.direction !== true ? { x: num(light.x, 0), y: num(light.y, 0) } : null,
++    direction: light && light.direction === true ? { x: num(light.x, 0), y: num(light.y, 0) } : null,
++    stretch: Math.max(0, num(light?.stretch, 0.8)),
++    reach: Math.max(1, num(light?.reach, 120)),
++  };
++  cache.set(data, out);
++  return out;
++}
++
++/** Shadow width at scale 1 (room px): `character.shadow.width`, else from the collider, else from the frame. */
++export function characterShadowBaseWidth(data: CharacterData | undefined, frameWidth: number): number {
++  const s = data?.shadow;
++  if (s && typeof s === 'object' && typeof s.width === 'number' && s.width > 0) {
++    return s.width;
++  }
++  const pts = data?.collider?.points;
++  if (pts && pts.length >= 3) {
++    let lo = Infinity;
++    let hi = -Infinity;
++    for (const p of pts) {
++      lo = Math.min(lo, p.x);
++      hi = Math.max(hi, p.x);
++    }
++    if (hi > lo) {
++      return (hi - lo) * 0.85;
++    }
++  }
++  return (frameWidth / characterArtScale(data)) * 0.4;
++}
++
++export interface ShadowEllipse {
++  /** Centre on screen, room px. */
++  cx: number;
++  cy: number;
++  /** Screen-space outline (room px), closed. */
++  points: { x: number; y: number }[];
++}
++
++/**
++ * The shadow outline for feet at `(feetX, feetY)` and half-width `rx` (room px, already scaled): a floor ellipse
++ * stretched by `1 + stretch` away from the light, with its near end still under the feet.
++ */
++export function shadowEllipse(
++  shadow: CompiledCharacterShadow,
++  feetX: number,
++  feetY: number,
++  rx: number,
++  segments = 24,
++): ShadowEllipse {
++  const q = shadow.squash;
++  // Unit direction the shadow falls in, in floor space (screen y unsquashed), and how far it stretches.
++  let fx = 0;
++  let fz = 0;
++  let stretch = 0;
++  if (shadow.direction) {
++    const len = Math.hypot(shadow.direction.x, shadow.direction.y / q);
++    if (len > 1e-6) {
++      fx = shadow.direction.x / len;
++      fz = shadow.direction.y / q / len;
++      stretch = shadow.stretch;
++    }
++  } else if (shadow.lightPoint) {
++    const dx = feetX - shadow.lightPoint.x;
++    const dz = (feetY - shadow.lightPoint.y) / q;
++    const len = Math.hypot(dx, dz);
++    if (len > 1e-6) {
++      fx = dx / len;
++      fz = dz / len;
++      // Right under the light the shadow is round; it grows to full stretch at `reach`.
++      stretch = shadow.stretch * Math.min(1, len / shadow.reach);
++    }
++  }
++  const along = rx * (1 + stretch);
++  // Centre in floor space: shifted along the fall so the near edge stays under the feet.
++  const czx = fx * rx * stretch;
++  const czz = fz * rx * stretch;
++  const nx = -fz;
++  const nz = fx;
++  const points: { x: number; y: number }[] = [];
++  for (let i = 0; i < segments; i++) {
++    const t = (i / segments) * Math.PI * 2;
++    const c = Math.cos(t);
++    const s = Math.sin(t);
++    // Unstretched (no light): plain circle of radius rx (fx = fz = 0 → use x axis).
++    const ax = stretch > 0 ? fx : 1;
++    const az = stretch > 0 ? fz : 0;
++    const bx = stretch > 0 ? nx : 0;
++    const bz = stretch > 0 ? nz : 1;
++    const px = czx + ax * along * c + bx * rx * s;
++    const pz = czz + az * along * c + bz * rx * s;
++    points.push({ x: feetX + px, y: feetY + pz * q });
++  }
++  return { cx: feetX + czx, cy: feetY + czz * q, points };
++}
++
++type CharacterSprite = Phaser.GameObjects.Sprite | Phaser.GameObjects.Image;
++
++/** Owns one Graphics per character sprite and keeps it under its feet. */
++export class CharacterShadowLayer {
++  private readonly shadows = new Map<CharacterSprite, { g: Phaser.GameObjects.Graphics; key: string }>();
++
++  private readonly scene: Phaser.Scene;
++
++  constructor(scene: Phaser.Scene) {
++    this.scene = scene;
++  }
++
++  /** Drops every shadow (scene teardown destroys the Graphics themselves). */
++  clear(): void {
++    this.shadows.clear();
++  }
++
++  /** Call after the room stack depths are set. `shadow` null = the room has no contact shadow. */
++  update(shadow: CompiledCharacterShadow | null, sprites: Iterable<CharacterSprite>): void {
++    const seen = new Set<CharacterSprite>();
++    if (shadow) {
++      for (const sprite of sprites) {
++        if (!sprite.active) {
++          continue;
++        }
++        seen.add(sprite);
++        this.updateOne(shadow, sprite);
++      }
++    }
++    for (const [sprite, entry] of this.shadows) {
++      if (!seen.has(sprite)) {
++        entry.g.destroy();
++        this.shadows.delete(sprite);
++      }
++    }
++  }
++
++  private updateOne(shadow: CompiledCharacterShadow, sprite: CharacterSprite): void {
++    const data = sprite.getData('character') as CharacterData | undefined;
++    let entry = this.shadows.get(sprite);
++    if (data?.shadow === false) {
++      if (entry) {
++        entry.g.destroy();
++        this.shadows.delete(sprite);
++      }
++      return;
++    }
++    if (!entry) {
++      const g = this.scene.add.graphics();
++      entry = { g, key: '' };
++      this.shadows.set(sprite, entry);
++      sprite.once(Phaser.GameObjects.Events.DESTROY, () => {
++        const e = this.shadows.get(sprite);
++        if (e) {
++          e.g.destroy();
++          this.shadows.delete(sprite);
++        }
++      });
++    }
++    const { g } = entry;
++    const alpha = shadow.alpha * sprite.alpha;
++    const visible = sprite.visible && alpha > 0.001;
++    g.setVisible(visible);
++    g.setDepth(sprite.depth - 0.5);
++    if (!visible) {
++      return;
++    }
++    const artScale = characterArtScale(data);
++    const perspective = Math.abs(sprite.scaleX) * artScale;
++    const feet = getCharacterWorldFeet(sprite as Phaser.GameObjects.Sprite);
++    const cfg = data?.shadow && typeof data.shadow === 'object' ? data.shadow : undefined;
++    const fx = feet.x + num(cfg?.offsetX, 0) * perspective;
++    const fy = feet.y + num(cfg?.offsetY, 0) * perspective;
++    const rx = (characterShadowBaseWidth(data, sprite.frame.width) * perspective) / 2;
++    const key = `${fx.toFixed(2)},${fy.toFixed(2)},${rx.toFixed(3)},${alpha.toFixed(3)}`;
++    if (key === entry.key) {
++      return;
++    }
++    entry.key = key;
++    g.clear();
++    // Two tones: a lighter rim and a darker core, together reaching `alpha` at the centre.
++    const core = shadow.core;
++    const rim = core > 0 ? 1 - Math.sqrt(1 - alpha) : alpha;
++    g.fillStyle(shadow.color, rim);
++    const fill = (r: number): void => {
++      g.fillPoints(
++        shadowEllipse(shadow, fx, fy, r).points.map((p) => new Phaser.Math.Vector2(p.x, p.y)),
++        true,
++      );
++    };
++    fill(rx);
++    if (core > 0) {
++      fill(rx * core);
++    }
++  }
++}
+diff -ruN src/engine/room/releaseRoomSheets.ts src/engine/room/releaseRoomSheets.ts
+--- src/engine/room/releaseRoomSheets.ts
++++ src/engine/room/releaseRoomSheets.ts
+@@ -0,0 +1,40 @@
++/**
++ * Frees the sheets of the rooms that are not on screen.
++ *
++ * A room's sheet (`images/rooms/<id>/<id>.png`, with `artScale: 2` up to 4096 px a side) is loaded when the room is
++ * entered and, without this, stays in GPU memory for the rest of the session: on a phone, after half the game, that
++ * is enough to lose the WebGL context. When a room is created, the sheets of every other room are released: the
++ * texture, the Aseprite JSON in the loader cache (or the loader would skip it next time, as a duplicate key), and the
++ * room's animation clips (the ones whose frames are on that texture). Entering a room again loads it again
++ * ({@link import('../scenes/roomSceneBootstrap').queueRoomSceneAssetLoads} checks `textures.exists`).
++ */
++import type * as Phaser from 'phaser';
++
++import { getRoomAsepriteTextureKey } from '../content/roomAseprite';
++import { isRoomSheetPageTextureKey } from './roomSheetPages';
++
++const SHEET_PREFIX = getRoomAsepriteTextureKey('');
++
++export function releaseOtherRoomSheets(scene: Phaser.Scene, keepRoomId: string): string[] {
++  const keep = getRoomAsepriteTextureKey(keepRoomId);
++  const released: string[] = [];
++  for (const key of scene.textures.getTextureKeys()) {
++    if (isRoomSheetPageTextureKey(key)) {
++      scene.textures.remove(key); // a page of a sheet that was never put together (room/roomSheetPages.ts)
++      continue;
++    }
++    if (!key.startsWith(SHEET_PREFIX) || key === keep) {
++      continue;
++    }
++    const roomId = key.slice(SHEET_PREFIX.length);
++    for (const animKey of scene.anims.getAnimsFromTexture(key)) {
++      scene.anims.remove(animKey);
++    }
++    if (scene.cache.json.exists(key)) {
++      scene.cache.json.remove(key);
++    }
++    scene.textures.remove(key);
++    released.push(roomId);
++  }
++  return released;
++}
+diff -ruN src/engine/room/roomSheetPages.ts src/engine/room/roomSheetPages.ts
+--- src/engine/room/roomSheetPages.ts
++++ src/engine/room/roomSheetPages.ts
+@@ -0,0 +1,80 @@
++/**
++ * A room sheet in several pages.
++ *
++ * A room sheet that does not fit in one 4096×4096 image (the safe maximum on phones), typically with `artScale: 2`
++ * and many animations, comes as pages: `images/rooms/<id>/<id>.png`, `<id>-2.png`... The Aseprite JSON lists them in
++ * `meta.pages`, and each frame says its page (`"page": n`, 0 = the first; the frame rectangle is in that page).
++ *
++ * Each page is loaded as a plain image, and when the room is created they are put together as **one** texture with
++ * several sources (Phaser's multi-source atlas), under the usual room sheet key. Everything else (frame names,
++ * Aseprite animation clips, release when leaving the room) works as with a single page.
++ */
++import type * as Phaser from 'phaser';
++
++import { getNormalizedRoomAsepriteAtlasData } from '../content/loadAsepriteAtlasData';
++import { resolveGameAssetUrl } from '../content/resolveGameAssetUrl';
++import { getRoomAsepriteTextureKey } from '../content/roomAseprite';
++
++const PAGE_PREFIX = 'roomSheetPage:';
++
++/** Texture key of one page while it loads (removed once the pages are put together). */
++export function roomSheetPageTextureKey(roomId: string, page: number): string {
++  return `${PAGE_PREFIX}${roomId}:${page}`;
++}
++
++export function isRoomSheetPageTextureKey(key: string): boolean {
++  return key.startsWith(PAGE_PREFIX);
++}
++
++/** Page image paths (under `assets/`), or `null` for a sheet in one image. */
++export function getRoomSheetPagePaths(roomId: string): string[] | null {
++  const data = getNormalizedRoomAsepriteAtlasData(roomId);
++  const pages = (data.meta as { pages?: unknown } | undefined)?.pages;
++  if (!Array.isArray(pages) || pages.length < 2) {
++    return null;
++  }
++  return pages.map((file) => `images/rooms/${roomId}/${String(file)}`);
++}
++
++/** Queues the page images of a multi-page room sheet. */
++export function queueRoomSheetPages(load: Phaser.Loader.LoaderPlugin, roomId: string, paths: string[]): void {
++  paths.forEach((p, n) => {
++    load.image(roomSheetPageTextureKey(roomId, n), resolveGameAssetUrl(p));
++  });
++}
++
++type FrameEntry = Record<string, unknown> & { page?: number };
++
++/**
++ * When the room sheet comes in pages and they are loaded, builds the room sheet texture from them (and the Aseprite
++ * JSON in the loader cache, for `createFromAseprite`). No-op for a single-page sheet or one already built.
++ */
++export function assembleRoomSheetPages(scene: Phaser.Scene, roomId: string): void {
++  const key = getRoomAsepriteTextureKey(roomId);
++  const paths = getRoomSheetPagePaths(roomId);
++  if (!paths || scene.textures.exists(key)) {
++    return;
++  }
++  const pageKeys = paths.map((_, n) => roomSheetPageTextureKey(roomId, n));
++  if (!pageKeys.every((k) => scene.textures.exists(k))) {
++    console.warn(`[Benne] Room "${roomId}": the pages of its sheet are not loaded.`);
++    return;
++  }
++  const data = getNormalizedRoomAsepriteAtlasData(roomId);
++  const frames = data.frames as Record<string, FrameEntry>;
++  const perPage: Record<string, FrameEntry>[] = paths.map(() => ({}));
++  for (const [name, f] of Object.entries(frames)) {
++    const { page, ...frame } = f;
++    perPage[typeof page === 'number' ? page : 0][name] = frame;
++  }
++  const sources = pageKeys.map((k) => scene.textures.get(k).getSourceImage() as HTMLImageElement);
++  scene.textures.addAtlasJSONHash(
++    key,
++    sources,
++    perPage.map((fr) => ({ frames: fr })),
++  );
++  scene.cache.json.add(key, data);
++  for (const k of pageKeys) {
++    scene.textures.remove(k);
++  }
++}
+diff -ruN src/engine/scenes/BootScene.ts src/engine/scenes/BootScene.ts
+--- src/engine/scenes/BootScene.ts
++++ src/engine/scenes/BootScene.ts
+@@ -1,5 +1,6 @@
+ import * as Phaser from 'phaser';
+ import { applyBootAudioSettings } from '../applyAudioFromSettings';
++import { hideBootLoadingScreen, setBootLoadingProgress } from '../bootLoadingScreen';
+ import {
+   getAsepriteFrameTagNames,
+   getCursorAsepriteFrameTagNames,
+@@ -215,7 +216,12 @@
+       queueBenneVideoForBootLoader(this.load);
+     }
+ 
++    // La pantalla de càrrega de l'index.html: segueix el loader i s'esvaeix quan la primera sala ja és creada
++    this.load.on(Phaser.Loader.Events.PROGRESS, setBootLoadingProgress);
++    this.game.scene.getScene(SCENE_ROOM)?.events.once(Phaser.Scenes.Events.CREATE, hideBootLoadingScreen);
++
+     this.load.once(Phaser.Loader.Events.COMPLETE, () => {
++      this.load.off(Phaser.Loader.Events.PROGRESS, setBootLoadingProgress);
+       void (async () => {
+         await ensureRoomScriptLoaded(startData.room.id);
+         const orch = tryGetRoomTransitionOrchestrator();
 diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
 --- src/engine/scenes/RoomScene.ts
 +++ src/engine/scenes/RoomScene.ts
-@@ -230,6 +230,7 @@
+@@ -109,6 +109,7 @@
+   getGameSettings,
+   getPerspectiveSettings,
+   getSpeechSettings,
++  getSpeechSettingsFromConfig,
+ } from '../ConfigManager';
+ import {
+   applyGameCursorSpriteHotspot,
+@@ -132,11 +133,19 @@
+ } from '../benneRuntimeHiDpiScale.js';
+ import {
+   cameraFollowOffsetForFeet,
++  characterArtScale,
+   getCharacterWorldFeet,
+   placeSpriteByFeet,
+   resolveCharacterFeetLocal,
+   type CharacterFeetLocal,
+ } from '../characterFeet';
++import { applyCharacterLights, compileCharacterLights } from '../room/characterLights';
++import { CharacterShadowLayer, compileCharacterShadow } from '../room/characterShadow';
++import { CharacterReflectionLayer, compileCharacterReflection } from '../room/characterReflection';
++import { CharacterOutlineLayer, compileCharacterOutline } from '../room/characterOutline';
++import { CharacterIdleActions, isIdleActionSprite } from '../idleActions';
++import { releaseOtherRoomSheets } from '../room/releaseRoomSheets';
++import { assembleRoomSheetPages } from '../room/roomSheetPages';
+ import {
+   applyCharacterSpriteRegionTintFromWinningRegion,
+   computeRoomRegionPerspective,
+@@ -158,7 +167,8 @@
+   getPropVerbHandlers,
+ } from '../verbs/normalizeHandlers';
+ import { getEffectiveInputProfile } from '../verbs/verbConfig';
+-import { resolvePointerVerbForTarget, type PointerVerbTarget } from '../verbs/resolvePointerVerb';
++import { resolvePointerVerbForTarget, type PointerSlot, type PointerVerbTarget } from '../verbs/resolvePointerVerb';
++import { deferPressForHold } from '../verbs/holdGesture';
+ import { resolveGameStateManager } from '../gameState/resolveGameStateManager';
+ import { BENNE_USER_INPUT_DISABLED_REGISTRY_KEY } from '../input/userInputDisabledRegistry';
+ import { incrementRoomVisitCount } from '../gameState/roomVisitState';
+@@ -173,7 +183,7 @@
+ import type { GuiButtonControl, GuiData, GuiGridControl } from '../../types/gui';
+ import type { RoomCharacterSpawn, RoomPropSpawn, RoomSceneStartData } from './BootScene';
+ import { attachRoomHandlers } from '../bennescript/roomHandlers.js';
+-import { notifyGuiBuilt } from '../bennescript/guis.js';
++import { notifyGuiBuilt, notifyGuiVisibility } from '../bennescript/guis.js';
+ import { runOnUpdateHandlers } from '../bennescript/onUpdateRegistry.js';
+ import {
+   buildGuiOverlay,
+@@ -230,9 +240,12 @@
    BENNE_SCREEN_FADE_DEFAULT_COLOR,
    BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC,
    BENNE_SCREEN_FADE_OVERLAY_DEPTH,
 +  DISPLAY_TEXT_OVERLAY_DEPTH,
    SPEAKING_TEXT_OVERLAY_DEPTH,
++  PAUSE_GUI_OVERLAY_DEPTH,
  } from './roomScreenFadeConstants';
  import { ROOM_VIDEO_LAYER_DEPTH } from './roomVideoConstants';
-@@ -345,6 +346,9 @@
++import { ROOM_SHADE_LAYER_DEPTH, getRoomShade } from './roomShade';
+ import { benneVideoCacheKey } from '../video/benneVideoCacheKeys.js';
+ import { BENNE_VIDEO_ENDED_EVENT } from '../video/benneVideoEvents.js';
+ import type { VideoPlayOptions } from '../video/benneVideoTypes.js';
+@@ -303,6 +316,16 @@
+ /** Renders above typical room + GUI depth so the custom pointer stays on top (shipped game). */
+ const CUSTOM_CURSOR_DEPTH = 500_000;
+ 
++/** The room's `cameraFollow`, with the defaults (a centred deadzone of 30% of the screen and a soft lerp). */
++export function cameraFollowOptions(data: RoomData['cameraFollow']): { deadzone: number; lerp: number } {
++  const dz = data?.deadzone;
++  const lp = data?.lerp;
++  return {
++    deadzone: typeof dz === 'number' && Number.isFinite(dz) ? Math.min(0.9, Math.max(0, dz)) : 0.3,
++    lerp: typeof lp === 'number' && Number.isFinite(lp) && lp > 0 ? Math.min(1, lp) : 0.1,
++  };
++}
++
+ /** `startFollow` offset so the camera tracks {@link getCharacterWorldFeet}, not the sprite top-left. */
+ function getFeetFollowOffset(player: Phaser.GameObjects.Sprite): { x: number; y: number } {
+   const sx = player.scaleX;
+@@ -345,6 +368,12 @@
    return v && v.length > 0 ? { defaultVerb: v } : {};
  }
  
-+/** Suma Zero patch: a line can't be clicked away during its first half second. */
-+const SCRIPTED_SKIP_GUARD_MS = 500;
++/** Pixels of the room sheet per room pixel ({@link RoomData.artScale}). */
++function roomArtScale(room: { artScale?: number }): number {
++  const k = room.artScale;
++  return typeof k === 'number' && Number.isFinite(k) && k > 0 ? k : 1;
++}
 +
  export class RoomScene extends Phaser.Scene {
    private roomData!: RoomData;
  
-@@ -684,6 +688,11 @@
+@@ -442,6 +471,16 @@
+    */
+   private roomStackEntities: RoomStackEntity[] = [];
+ 
++  /** Contact shadows under the characters (`RoomData.characterShadow`). */
++  private readonly characterShadows = new CharacterShadowLayer(this);
++  /** Characters mirrored in a polished floor (`RoomData.characterReflection`). */
++  private readonly characterReflections = new CharacterReflectionLayer(this);
++  /** A dark rim around the characters (`RoomData.characterOutline`). */
++  private readonly characterOutlines = new CharacterOutlineLayer(this);
++
++  /** Blinks, glances and tics while characters stand still (`CharacterData.idleActions`). */
++  private readonly characterIdleActions = new CharacterIdleActions();
++
+   /** Prop id → sprite (every placed prop, for Bennescript). */
+   private propSpritesById = new Map<string, Phaser.GameObjects.Sprite>();
+ 
+@@ -534,6 +573,9 @@
+    */
+   private screenFadeRect: Phaser.GameObjects.Rectangle | null = null;
+ 
++  /** Room shade (Bennescript `shade.set()`, see `roomShade.ts`): above the room art, below every GUI. */
++  private roomShadeRect: Phaser.GameObjects.Rectangle | null = null;
++
+   /**
+    * Single-slot cinematic video layer (`video.x.play()`). Created hidden in {@link create} (no source) and
+    * reused across `play` calls; renders at {@link ROOM_VIDEO_LAYER_DEPTH} (above room art, below all
+@@ -684,6 +726,10 @@
     * before the room's own `pointerdown` handler sees the same click.
     */
    private scriptedDialogClickToSkipArmedDuringDown: number | null = null;
-+  /**
-+   * Suma Zero patch: when the current click-to-skip hook was armed (scene time, ms). Clicks in the first
-+   * {@link SCRIPTED_SKIP_GUARD_MS} are swallowed, so a double click or a stray click doesn't eat a line unread.
-+   */
-+  private scriptedDialogClickToSkipSince = 0;
++  /** Shown GUIs with `pauseGame`: while any is, the room's timers and tweens are paused. */
++  private readonly pausingGuiIds = new Set<string>();
++  /** `time.now` when the click-to-skip hook was armed: clicks before `speech.clickProtectMs` are swallowed. */
++  private scriptedDialogClickToSkipArmedAt = 0;
  
    /** Screen-space sprite when `game-config.json` enables `cursor.display.aseprite`. */
    private customCursorSprite: Phaser.GameObjects.Sprite | null = null;
-@@ -874,7 +883,7 @@
+@@ -707,6 +753,16 @@
+     if (event.key !== 'Escape') {
+       return;
+     }
++    // Esc closes a pausing GUI (a line history) instead of skipping the cutscene underneath.
++    if (this.pausingGuiIds.size > 0) {
++      event.preventDefault();
++      event.stopPropagation();
++      for (const id of [...this.pausingGuiIds]) {
++        this.guiOverlayHandleByGuiId.get(id)?.setVisible(false);
++        notifyGuiVisibility(id, false);
++      }
++      return;
++    }
+     // A skippable cutscene wins over the video handler: skipping fast-forwards the whole cutscene,
+     // which stops any video playing inside it as part of finishing the in-flight step.
+     if (this.canSkipActiveCutscene()) {
+@@ -749,6 +805,10 @@
+   create(data: RoomSceneStartData): void {
+     registerBenneCharacterPerspectiveBatch(this.game);
+     this.roomData = data.room;
++    // A sheet in several pages becomes one texture now that its images are loaded (room/roomSheetPages.ts).
++    assembleRoomSheetPages(this, data.room.id);
++    // The previous room's scene is already shut down: free every other room's sheet (GPU memory on phones).
++    releaseOtherRoomSheets(this, data.room.id);
+     this.player = null;
+     this.playerMoveTween = null;
+     this.currentPlayerPath = null;
+@@ -760,6 +820,9 @@
+     this.previewHiddenCharacterVisibility = null;
+     this.parallaxProps = [];
+     this.roomStackEntities = [];
++    this.characterShadows.clear();
++    this.characterReflections.clear();
++    this.characterOutlines.clear();
+     this.propSpritesById.clear();
+     this.characterSpritesByDefId.clear();
+     this.characterJsonVisibleByDefId.clear();
+@@ -874,7 +937,14 @@
        const isGenericHud = !isSpeakingText && !isDisplayText && !isChoiceDialog;
  
        const stackDepth = GUI_TEXT_OVERLAY_DEPTH + stackIndex * GUI_OVERLAY_DEPTH_STRIDE;
 -      const guiDepth = isSpeakingText ? SPEAKING_TEXT_OVERLAY_DEPTH : stackDepth;
-+      const guiDepth = isSpeakingText ? SPEAKING_TEXT_OVERLAY_DEPTH : isDisplayText ? DISPLAY_TEXT_OVERLAY_DEPTH : stackDepth;
++      const pausesGame = isGenericHud && gui.modal === true && gui.pauseGame === true;
++      const guiDepth = isSpeakingText
++        ? SPEAKING_TEXT_OVERLAY_DEPTH
++        : isDisplayText
++          ? DISPLAY_TEXT_OVERLAY_DEPTH
++          : pausesGame
++            ? PAUSE_GUI_OVERLAY_DEPTH + stackIndex
++            : stackDepth;
        const guiStartVisible =
          isSpeakingText || isDisplayText || isChoiceDialog
            ? false
-@@ -1866,6 +1875,12 @@
+@@ -888,7 +958,7 @@
+         this.makeGuiOverlayBuildOptions(guiDepth, {
+           startVisible: guiStartVisible,
+           inventoryPanelPointerContext,
+-          isButtonClickSuppressed,
++          isButtonClickSuppressed: pausesGame ? () => this.isUserInputDisabled() : isButtonClickSuppressed,
+           previewGuiAsepriteSheetJson: data.previewGuiAsepriteSheetJsonById?.[gui.id],
+         }),
+       );
+@@ -898,6 +968,9 @@
+       }
+ 
+       this.registerModalGuiOverlay(gui, guiDepth, built.handle, guiStartVisible);
++      if (pausesGame) {
++        this.registerPauseGuiOverlay(gui.id, built.handle, guiStartVisible);
++      }
+       this.guiOverlayHandleByGuiId.set(gui.id, built.handle);
+ 
+       // Every GUI gets a runtime, so `guis.x.controls.y` handles can reach its controls.
+@@ -924,6 +997,7 @@
+     this.wireDialogChoiceUi();
+ 
+     this.createRoomVideoLayer();
++    this.createRoomShadeLayer();
+     this.createScreenFadeOverlay();
+     const startKind: BenneRoomStartKind =
+       (this.game.registry.get(BENNE_ROOM_START_KIND_KEY) as BenneRoomStartKind | undefined) ?? 'boot';
+@@ -1006,6 +1080,8 @@
+       this.dialogChoiceInputSuppressionActive = false;
+       this.scriptedDialogInputSuppressionDepth = 0;
+       this.scriptedDialogClickToSkip = null;
++      this.pausingGuiIds.clear();
++      this.applyGuiPause();
+       this.scale.off('resize', this.onScaleResize, this);
+       this.input.off('pointerdown', this.handleRoomPointerDown);
+       this.input.off('pointermove', this.onRoomPointerMove);
+@@ -1018,6 +1094,11 @@
+         this.screenFadeRect.destroy();
+         this.screenFadeRect = null;
+       }
++      if (this.roomShadeRect) {
++        this.tweens.killTweensOf(this.roomShadeRect);
++        this.roomShadeRect.destroy();
++        this.roomShadeRect = null;
++      }
+       this.teardownRoomVideoLayer();
+       this.missingVideoKeysWarned.clear();
+       this.editorUiChildListenerOff?.();
+@@ -1617,6 +1698,40 @@
+     this.refreshDialogChoiceOverlay();
+   }
+ 
++  private createRoomShadeLayer(): void {
++    const { alpha, color } = getRoomShade();
++    this.roomShadeRect = this.add
++      .rectangle(0, 0, getInternalWidth(), getInternalHeight(), color, 1)
++      .setOrigin(0, 0)
++      .setScrollFactor(0, 0)
++      .setDepth(ROOM_SHADE_LAYER_DEPTH)
++      .setAlpha(alpha)
++      .setVisible(alpha > 0);
++  }
++
++  /** Brings the shade layer to the current {@link getRoomShade} state over `seconds` (0: now). */
++  applyRoomShade(seconds = 0): void {
++    const rect = this.roomShadeRect;
++    if (!rect) {
++      return;
++    }
++    const { alpha, color } = getRoomShade();
++    this.tweens.killTweensOf(rect);
++    rect.setFillStyle(color, 1);
++    if (seconds <= 0 || rect.alpha === alpha) {
++      rect.setAlpha(alpha).setVisible(alpha > 0);
++      return;
++    }
++    rect.setVisible(true);
++    this.tweens.add({
++      targets: rect,
++      alpha,
++      duration: seconds * 1000,
++      ease: 'Sine.easeInOut',
++      onComplete: () => rect.setVisible(alpha > 0),
++    });
++  }
++
+   private createScreenFadeOverlay(): void {
+     const w = getInternalWidth();
+     const h = getInternalHeight();
+@@ -1831,6 +1946,19 @@
+   }
+ 
+   /** True while a cinematic video is loaded and playing/paused. */
++  /**
++   * Whether the room can be rebuilt without anyone noticing (adaptive height after a window resize): no modal GUI
++   * (menu, save list) open, no cutscene, video or blocked input. The caller also checks for running interactions.
++   */
++  isQuietForRebuild(): boolean {
++    return (
++      !hasAnyVisibleModal(this.modalGuiEntries) &&
++      !this.isCutsceneActive() &&
++      !this.isRoomVideoPlaying() &&
++      !this.isUserInputDisabled()
++    );
++  }
++
+   isRoomVideoPlaying(): boolean {
+     return this.roomVideoActiveKey !== null;
+   }
+@@ -1866,6 +1994,12 @@
    }
  
    /**
@@ -129,50 +2707,656 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
     * @param toAlpha 0 = transparent, 1 = fully opaque. Kills any running fade tweens on the overlay first.
     * @param fillColor RGB (`0xRRGGBB`); the overlay fill is set before the tween; animation uses game object alpha.
     */
-@@ -2314,6 +2329,7 @@
-    */
-   setScriptedDialogClickToSkip(fn: (() => void) | null): void {
+@@ -2047,6 +2181,14 @@
+     );
+   }
+ 
++  /**
++   * Public view of {@link isInputSuppressed} for scripts (`game.isBusy`): a line being said, a
++   * conversation open, a cutscene or a room video. (Own change: patrols pause while it is true.)
++   */
++  isScriptBusy(): boolean {
++    return this.isInputSuppressed();
++  }
++
+   /** True while `input.disabled` is set. Survives room changes; not part of save snapshots. */
+   private isUserInputDisabled(): boolean {
+     return this.game.registry.get(BENNE_USER_INPUT_DISABLED_REGISTRY_KEY) === true;
+@@ -2233,7 +2375,7 @@
+     }
+     const final = path[path.length - 1]!;
+     const prev = path.length >= 2 ? path[path.length - 2]! : getCharacterWorldFeet(sprite);
+-    const facing = facingFromWorldDelta(final.x - prev.x, final.y - prev.y);
++    const facing = this.facingOnFloor(final.x - prev.x, final.y - prev.y);
+     // Clearing the field first makes the running leg tween's onUpdate / onStop guards bail out,
+     // so only finishPlayerWalk below resolves the walk.
+     const tween = this.playerMoveTween;
+@@ -2259,7 +2401,7 @@
+     const final = path[path.length - 1]!;
+     const prev =
+       path.length >= 2 ? path[path.length - 2]! : getCharacterWorldFeet(sprite as Phaser.GameObjects.Sprite);
+-    const facing = facingFromWorldDelta(final.x - prev.x, final.y - prev.y);
++    const facing = this.facingOnFloor(final.x - prev.x, final.y - prev.y);
+     // Dropping the map entry first makes the running leg tween's onStop guard bail out.
+     const tween = this.npcWalkTweens.get(sprite);
+     this.npcWalkTweens.delete(sprite);
+@@ -2308,6 +2450,37 @@
+     this.modalGuiEntries.push({ depth, isVisible: () => overlayVisible });
+   }
+ 
++  /** Pauses the room while a `pauseGame` GUI is visible (see {@link GuiData.pauseGame}). */
++  private registerPauseGuiOverlay(guiId: string, handle: GuiOverlayHandle, startVisible: boolean): void {
++    const setVisible = handle.setVisible.bind(handle);
++    handle.setVisible = (visible: boolean) => {
++      setVisible(visible);
++      if (visible) {
++        this.pausingGuiIds.add(guiId);
++      } else {
++        this.pausingGuiIds.delete(guiId);
++      }
++      this.applyGuiPause();
++    };
++    if (startVisible) {
++      this.pausingGuiIds.add(guiId);
++      this.applyGuiPause();
++    }
++  }
++
++  private applyGuiPause(): void {
++    const paused = this.pausingGuiIds.size > 0;
++    if (this.time.paused === paused) {
++      return;
++    }
++    this.time.paused = paused;
++    if (paused) {
++      this.tweens.pauseAll();
++    } else {
++      this.tweens.resumeAll();
++    }
++  }
++
+   /**
+    * While a skippable scripted dialog line is showing, left-clicks invoke **`fn`** once (same cleanup as the timer).
+    * Cleared when the line ends or when {@link clearScriptedDialogClickToSkip} runs.
+@@ -2316,6 +2489,7 @@
      this.scriptedDialogClickToSkip = fn;
-+    this.scriptedDialogClickToSkipSince = this.time?.now ?? 0;
      const pointer = this.input?.activePointer;
      this.scriptedDialogClickToSkipArmedDuringDown = fn && pointer?.isDown ? pointer.downTime : null;
++    this.scriptedDialogClickToSkipArmedAt = this.time?.now ?? 0;
    }
-@@ -2342,6 +2358,9 @@
+ 
+   clearScriptedDialogClickToSkip(): void {
+@@ -2339,9 +2513,19 @@
+     if (!pointer.leftButtonDown()) {
+       return false;
+     }
++    // Paused under a line history: the click is for its buttons, not for the line.
++    if (this.pausingGuiIds.size > 0) {
++      return false;
++    }
      if (this.scriptedDialogClickToSkipArmedDuringDown != null && pointer.downTime === this.scriptedDialogClickToSkipArmedDuringDown) {
        return false;
      }
-+    if (this.time.now - this.scriptedDialogClickToSkipSince < SCRIPTED_SKIP_GUARD_MS) {
++    // Protected click: the line has only just appeared. Swallow the click so it skips nothing
++    // and reaches nothing else either.
++    const protectMs = getSpeechSettingsFromConfig().clickProtectMs ?? 0;
++    if (protectMs > 0 && this.time.now - this.scriptedDialogClickToSkipArmedAt < protectMs) {
 +      return true;
 +    }
      const fn = this.scriptedDialogClickToSkip;
      this.scriptedDialogClickToSkip = null;
      fn();
-diff -ruN src/engine/scenes/roomScreenFadeConstants.ts src/engine/scenes/roomScreenFadeConstants.ts
---- src/engine/scenes/roomScreenFadeConstants.ts
-+++ src/engine/scenes/roomScreenFadeConstants.ts
-@@ -4,7 +4,7 @@
- export const BENNE_SCREEN_FADE_DEFAULT_COLOR = 0x000000;
+@@ -2425,7 +2609,7 @@
+     if (data?.talkPoint) {
+       return { x: sprite.x + data.talkPoint.x, y: sprite.y + data.talkPoint.y };
+     }
+-    return { x: sprite.x + f.width * 0.5, y: sprite.y - 4 };
++    return { x: sprite.x + (f.width * 0.5) / characterArtScale(data), y: sprite.y - 4 };
+   }
  
- /**
-- * Renders above HUD, choice-dialog, and display-text GUI overlays; below Speaking Text
-+ * Renders above HUD and choice-dialog GUI overlays; below Display Text, Speaking Text
-  * ({@link SPEAKING_TEXT_OVERLAY_DEPTH}) and the {@link RoomScene} custom game cursor
-  * (see `CUSTOM_CURSOR_DEPTH` in `RoomScene.ts`).
-  */
-@@ -15,3 +15,9 @@
-  * stay readable during `fadeOut()`, and below the custom cursor (`CUSTOM_CURSOR_DEPTH`).
-  */
- export const SPEAKING_TEXT_OVERLAY_DEPTH = 460_000;
+   /**
+@@ -2890,7 +3074,7 @@
+     if (Math.hypot(dx, dy) < 1e-2) {
+       return;
+     }
+-    const facing = facingFromWorldDelta(dx, dy);
++    const facing = this.facingOnFloor(dx, dy);
+     if (getCharacterAnimationOverrideTag(observer)) {
+       observer.setData('facing', facing);
+       return;
+@@ -3884,12 +4068,22 @@
+       this.roomData.regions,
+       getPerspectiveSettings(),
+     );
+-    const s = perspective.characterScale;
++    // A sheet drawn at `artScale`× is shown at 1/artScale on top of the perspective scale.
++    const s = perspective.characterScale / characterArtScale(sprite.getData('character') as CharacterData | undefined);
+     sprite.setScale(s, s);
+     placeSpriteByFeet(sprite as Phaser.GameObjects.Sprite, feetLocal, worldFeetX, worldFeetY);
+-    applyCharacterSpriteRegionTintFromWinningRegion(sprite, perspective.tintRegion);
++    const lights = compileCharacterLights(this.roomData.characterLights);
++    if (lights) {
++      applyCharacterLights(sprite, lights, this.isPropShownForLights);
++    } else {
++      applyCharacterSpriteRegionTintFromWinningRegion(sprite, perspective.tintRegion);
++    }
+   }
+ 
++  /** For {@link applyCharacterLights}: a light with `whenPropVisible` only shines while that prop is shown. */
++  private readonly isPropShownForLights = (propId: string): boolean =>
++    this.propSpritesById.get(propId)?.visible === true;
 +
-+/**
-+ * Display Text (`display-text`, Bennescript `display`) also draws above the screen fade, so a
-+ * title or an ending can be shown over black (`fadeOut()` then `display()`).
-+ */
-+export const DISPLAY_TEXT_OVERLAY_DEPTH = 455_000;
+   /**
+    * Applies region perspective scale for characters that are not mid–feet-interpolating walk tween.
+    */
+@@ -4077,7 +4271,7 @@
+     if (Math.hypot(dx, dy) < 1e-2) {
+       return;
+     }
+-    const facing = facingFromWorldDelta(dx, dy);
++    const facing = this.facingOnFloor(dx, dy);
+     if (getCharacterAnimationOverrideTag(sprite)) {
+       sprite.setData('facing', facing);
+       return;
+@@ -4094,7 +4288,7 @@
+     const dx = newFeet.x - oldFeet.x;
+     const dy = newFeet.y - oldFeet.y;
+     if (Math.hypot(dx, dy) >= 1e-2) {
+-      const facing = facingFromWorldDelta(dx, dy);
++      const facing = this.facingOnFloor(dx, dy);
+       if (!getCharacterAnimationOverrideTag(sprite)) {
+         playDirectionalAnimation(sprite, 'Idle', facing);
+       } else {
+@@ -4567,6 +4761,30 @@
+       sb?.width ?? roomW,
+       sb?.height ?? roomH,
+     );
++    this.applyViewAnchorY(roomH);
++  }
++
++  /**
++   * `viewAnchorY`: the camera's fixed height in a room taller than the screen. Returns whether it applies.
++   * Kept every frame (`update`): the hi-DPI layout resets the scroll when the viewport changes.
++   */
++  private applyViewAnchorY(roomH: number): boolean {
++    const anchor = this.roomData?.viewAnchorY;
++    if (anchor === undefined) {
++      return false;
++    }
++    if (this.scriptCameraFocusActive) {
++      return true;
++    }
++    const cam = this.cameras.main;
++    const sb = this.roomData.scrollBounds;
++    const top = (sb?.y ?? 0) + Math.max(0, (sb?.height ?? roomH) - getInternalHeight()) * Math.min(1, Math.max(0, anchor));
++    // With zoom, Phaser's scroll isn't the top of what is seen (`worldView.y`): it is offset by the origin.
++    const scrollY = Math.round(top) - (cam.height - cam.displayHeight) * cam.originY;
++    if (cam.scrollY !== scrollY) {
++      cam.scrollY = scrollY;
++    }
++    return true;
+   }
+ 
+   /** Starts follow on the player’s feet (see `CharacterData.feet`). */
+@@ -4576,21 +4794,37 @@
+     }
+     const vW = getInternalWidth();
+     const vH = getInternalHeight();
+-    if (!this.player || (roomW <= vW && roomH <= vH)) {
++    const fixedY = this.roomData.viewAnchorY !== undefined;
++    if (!this.player || (roomW <= vW && (roomH <= vH || fixedY))) {
++      this.applyViewAnchorY(roomH);
+       return;
+     }
+     const feet = getFeetFollowOffset(this.player);
+-    this.cameras.main.startFollow(this.player, true, 1, 1, feet.x, feet.y);
++    const { deadzone, lerp } = cameraFollowOptions(this.roomData.cameraFollow);
++    const cam = this.cameras.main;
++    // (startFollow puts the camera on the player at once; the lerp and the deadzone only apply from then on)
++    cam.startFollow(this.player, true, lerp, fixedY ? 0 : lerp, feet.x, feet.y);
++    if (deadzone > 0) {
++      cam.setDeadzone(vW * deadzone, vH * deadzone);
++    } else {
++      cam.deadzone = null;
++    }
++    this.applyViewAnchorY(roomH);
+   }
+ 
+   update(): void {
++    if (this.roomData?.viewAnchorY !== undefined) {
++      this.applyViewAnchorY(this.roomData.size?.height ?? getInternalHeight());
++    }
+     this.snapWalkingSpritesToPixelGrid();
+     this.updateCharacterFaceTowardCharacterLocks();
+     this.updateCharacterFollowers();
++    this.updateCharacterIdleActions();
+     this.syncIdleCharacterRegionScales();
+     this.syncCharacterRegionEnterExit();
+     this.updateParallaxProps();
+     this.updateRoomStackDepths();
++    this.updateCharacterShadows();
+     this.updatePathDebug();
+     this.invokeOnUpdateHandlers(this.game.loop.delta / 1000);
+   }
+@@ -4609,6 +4843,65 @@
+     }
+   }
+ 
++  /** Plays the idle micro-actions of characters standing still (and desyncs their breathing). */
++  private updateCharacterIdleActions(): void {
++    const sprites: Phaser.GameObjects.Sprite[] = [];
++    for (const e of this.roomStackEntities) {
++      if (e.kind === 'character' && isIdleActionSprite(e.sprite)) {
++        sprites.push(e.sprite);
++      }
++    }
++    this.characterIdleActions.update(sprites, this.time.now);
++  }
++
++  /** Keeps each character's contact shadow under its feet, just below it in the room stack. */
++  private updateCharacterShadows(): void {
++    const shadow = compileCharacterShadow(this.roomData?.characterShadow);
++    const sprites: Array<Phaser.GameObjects.Sprite | Phaser.GameObjects.Image> = [];
++    if (shadow) {
++      for (const e of this.roomStackEntities) {
++        if (e.kind === 'character') {
++          sprites.push(e.sprite);
++        }
++      }
++    }
++    this.characterShadows.update(shadow, sprites);
++    this.updateCharacterReflections();
++    this.updateCharacterOutlines();
++  }
++
++  /** Keeps the dark rim of each character in step with it (very bright rooms). */
++  private updateCharacterOutlines(): void {
++    const outline = compileCharacterOutline(this.roomData?.characterOutline);
++    const sprites: Array<Phaser.GameObjects.Sprite | Phaser.GameObjects.Image> = [];
++    if (outline) {
++      for (const e of this.roomStackEntities) {
++        if (e.kind === 'character') {
++          sprites.push(e.sprite);
++        }
++      }
++    }
++    this.characterOutlines.update(outline, sprites);
++  }
++
++  /** Keeps each character's floor reflection under its feet (after the light tint of this frame). */
++  private updateCharacterReflections(): void {
++    const reflection = compileCharacterReflection(this.roomData?.characterReflection);
++    const sprites: Array<Phaser.GameObjects.Sprite | Phaser.GameObjects.Image> = [];
++    // just above the room background: the lowest sprite of the room stack
++    let floor = Infinity;
++    if (reflection) {
++      for (const e of this.roomStackEntities) {
++        if (e.kind === 'character') {
++          sprites.push(e.sprite);
++        } else if (e.kind !== 'hotspot') {
++          floor = Math.min(floor, e.sprite.depth);
++        }
++      }
++    }
++    this.characterReflections.update(reflection, sprites, (Number.isFinite(floor) ? floor : 0) + 0.5);
++  }
++
+   /** Re-sorts props, characters, and hotspot zones by `zIndex` and optional `baseline` rules. */
+   private updateRoomStackDepths(): void {
+     if (this.roomStackEntities.length === 0) {
+@@ -5082,11 +5375,11 @@
+         this.beginPlayerWalkLeg(sprite, path, legIndex + 1);
+         return;
+       }
+-      this.finishPlayerWalk(sprite, facingFromWorldDelta(dx, dy));
++      this.finishPlayerWalk(sprite, this.facingOnFloor(dx, dy));
+       return;
+     }
+ 
+-    const facing = facingFromWorldDelta(dx, dy);
++    const facing = this.facingOnFloor(dx, dy);
+     if (!getCharacterAnimationOverrideTag(sprite)) {
+       playDirectionalAnimation(sprite, 'Walk', facing);
+     } else {
+@@ -5154,6 +5447,16 @@
+     this.playerMoveTween = moveTween;
+   }
+ 
++  /**
++   * The facing for a walk step of (dx, dy) room px, chosen on the floor rather than on the screen: in a room drawn
++   * in perspective the camera flattens the floor (`RoomData.floorSquash`), so a diagonal step into the room looks
++   * almost horizontal on screen. Un-squashing dy picks the 3/4 facings (DL, UL…) when the walk really is diagonal.
++   */
++  private facingOnFloor(dx: number, dy: number): CharacterFacing {
++    const k = this.roomData?.floorSquash;
++    return facingFromWorldDelta(dx, typeof k === 'number' && k > 0 && k < 1 ? dy / k : dy);
++  }
++
+   private finishPlayerWalk(sprite: DirectionalCharacterSprite, facing: CharacterFacing): void {
+     this.currentPlayerPath = null;
+     if (!getCharacterAnimationOverrideTag(sprite)) {
+@@ -5260,7 +5563,7 @@
+         this.beginNpcWalkLeg(sprite, path, legIndex + 1, onArrive);
+         return;
+       }
+-      const facing = facingFromWorldDelta(dx, dy);
++      const facing = this.facingOnFloor(dx, dy);
+       if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims) {
+         if (!getCharacterAnimationOverrideTag(sprite as Phaser.GameObjects.Sprite)) {
+           playDirectionalAnimation(sprite as DirectionalCharacterSprite, 'Idle', facing);
+@@ -5272,7 +5575,7 @@
+       return;
+     }
+ 
+-    const facing = facingFromWorldDelta(dx, dy);
++    const facing = this.facingOnFloor(dx, dy);
+     if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims) {
+       if (!getCharacterAnimationOverrideTag(sprite as Phaser.GameObjects.Sprite)) {
+         playDirectionalAnimation(sprite as DirectionalCharacterSprite, 'Walk', facing);
+@@ -5594,6 +5897,11 @@
+       // sheets (the typical BENNE workflow) each frame already covers the full room width
+       // and height, so no explicit setDisplaySize is needed.
+       const sprite = this.add.sprite(spawnX, spawnY, textureKey).setOrigin(0, 0);
++      // Room art drawn at `artScale`× (a denser sheet): shown at 1/artScale, so it still covers the room.
++      const artScale = roomArtScale(data.room);
++      if (artScale !== 1) {
++        sprite.setScale(1 / artScale);
++      }
+       const jsonVisible = spawn.data.visible !== false;
+       const jsonAlpha = spawn.data.alpha ?? 1;
+       sprite.setVisible(readSavedPropVisible(manager, data.room.id, spawn.id, jsonVisible));
+@@ -5675,7 +5983,9 @@
+       return;
+     }
+ 
+-    const flat = pts.flatMap((p) => [p.x - sprite.x, p.y - sprite.y]);
++    // Hit areas are in the sprite's local (texture) space: room pixels × the sprite's inverse scale.
++    const k = 1 / (sprite.scaleX || 1);
++    const flat = pts.flatMap((p) => [(p.x - sprite.x) * k, (p.y - sprite.y) * k]);
+     const poly = new Phaser.Geom.Polygon(flat);
+     sprite.setInteractive({
+       hitArea: poly,
+@@ -5683,8 +5993,8 @@
+       useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()),
+     });
+ 
+-    sprite.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
+-      if (this.tryConsumeRoomVideoOrScriptedDialogClickToSkip(pointer)) {
++    const onPress = (pointer: Phaser.Input.Pointer, slot?: PointerSlot): void => {
++      if (slot === undefined && this.tryConsumeRoomVideoOrScriptedDialogClickToSkip(pointer)) {
+         return;
+       }
+       if (this.isPlayerPointerBlocked()) {
+@@ -5692,12 +6002,24 @@
+       }
+       const profile = getEffectiveInputProfile(getGameSettings());
+       const manager = resolveGameStateManager(this.game);
++      if (
++        slot === undefined &&
++        deferPressForHold(
++          pointer,
++          profile,
++          manager.getActiveInventoryItemId() !== null || manager.getActiveVerb() !== null,
++          (pressSlot) => onPress(pointer, pressSlot),
++        )
++      ) {
++        return;
++      }
+       const resolution = resolvePointerVerbForTarget(
+         pointer,
+         profile,
+         { defaultVerb: spawn.data.defaultVerb },
+         manager.getActiveVerb(),
+         manager.getActiveInventoryItemId(),
++        { slot },
+       );
+       if (resolution.kind === 'none') {
+         return;
+@@ -5742,10 +6064,65 @@
+       if (resolution.consumeActive) {
+         manager.clearActiveVerb();
+       }
+-    });
++    };
++    sprite.on('pointerdown', (pointer: Phaser.Input.Pointer) => onPress(pointer));
+     sprite.setData('bennePropInteractionAttached', true);
+   }
+ 
++  /** Markers drawn by {@link showClickableMarkers}, removed when they fade or the room changes. */
++  private clickableMarkers: Phaser.GameObjects.Graphics | null = null;
++
++  /**
++   * Shows, for a moment, a marker on every thing that can be clicked right now: the visible clickable
++   * props, the active hotspots and the clickable characters other than the player. Touch screens have
++   * no hover, so this is how the player finds what is clickable. Calling it again restarts it.
++   */
++  showClickableMarkers(durationMs = 1600): void {
++    this.clickableMarkers?.destroy();
++    this.clickableMarkers = null;
++    const centers: { x: number; y: number }[] = [];
++    for (const e of this.roomStackEntities) {
++      if (e.kind === 'hotspot') {
++        const area = e.zone.input?.hitArea as Phaser.Geom.Polygon | undefined;
++        if (!e.zone.input?.enabled || !area?.points?.length) continue;
++        const b = Phaser.Geom.Polygon.GetAABB(area);
++        // The middle of the box may fall outside an L-shaped polygon: then the polygon's first point.
++        const mid = { x: b.centerX, y: b.centerY };
++        centers.push(Phaser.Geom.Polygon.Contains(area, mid.x, mid.y) ? mid : { x: area.points[0]!.x, y: area.points[0]!.y });
++        continue;
++      }
++      const sprite = e.sprite as Phaser.GameObjects.Sprite;
++      if (!sprite.input?.enabled || !sprite.visible || sprite.alpha <= 0.05) continue;
++      if (e.kind === 'character' && sprite.getData('isPlayer') === true) continue;
++      const b = sprite.getBounds();
++      centers.push({ x: b.centerX, y: e.kind === 'character' ? b.top + b.height * 0.35 : b.centerY });
++    }
++    if (centers.length === 0) return;
++    const g = this.add.graphics();
++    g.setDepth(1_000_000);
++    for (const c of centers) {
++      g.fillStyle(0x000000, 0.45);
++      g.fillCircle(c.x, c.y, 7);
++      g.lineStyle(2, 0xffffff, 0.95);
++      g.strokeCircle(c.x, c.y, 5);
++      g.fillStyle(0xffffff, 0.95);
++      g.fillCircle(c.x, c.y, 1.5);
++    }
++    this.clickableMarkers = g;
++    g.setAlpha(0);
++    this.tweens.add({ targets: g, alpha: 1, duration: 150 });
++    this.tweens.add({
++      targets: g,
++      alpha: 0,
++      delay: Math.max(0, durationMs - 300),
++      duration: 300,
++      onComplete: () => {
++        if (this.clickableMarkers === g) this.clickableMarkers = null;
++        g.destroy();
++      },
++    });
++  }
++
+   /**
+    * Dispatches the **look** verb on this prop (same as a primary-button look click). Does not move or rotate the player.
+    */
+@@ -5808,8 +6185,8 @@
+       return;
+     }
+ 
+-    const onHotspotPointer = (pointer: Phaser.Input.Pointer): void => {
+-      if (this.tryConsumeRoomVideoOrScriptedDialogClickToSkip(pointer)) {
++    const onHotspotPointer = (pointer: Phaser.Input.Pointer, slot?: PointerSlot): void => {
++      if (slot === undefined && this.tryConsumeRoomVideoOrScriptedDialogClickToSkip(pointer)) {
+         return;
+       }
+       if (this.isPlayerPointerBlocked()) {
+@@ -5818,12 +6195,24 @@
+       const handlers = getHotspotVerbHandlers(hotspot);
+       const profile = getEffectiveInputProfile(getGameSettings());
+       const manager = resolveGameStateManager(this.game);
++      if (
++        slot === undefined &&
++        deferPressForHold(
++          pointer,
++          profile,
++          manager.getActiveInventoryItemId() !== null || manager.getActiveVerb() !== null,
++          (pressSlot) => onHotspotPointer(pointer, pressSlot),
++        )
++      ) {
++        return;
++      }
+       const resolution = resolvePointerVerbForTarget(
+         pointer,
+         profile,
+         { defaultVerb: hotspot.defaultVerb },
+         manager.getActiveVerb(),
+         manager.getActiveInventoryItemId(),
++        { slot },
+       );
+       if (resolution.kind === 'none') {
+         return;
+@@ -5887,7 +6276,7 @@
+     const geom = new Phaser.Geom.Polygon(flat);
+     zone.setInteractive(geom, Phaser.Geom.Polygon.Contains);
+     zone.input!.cursor = isBenneGameCursorAsepriteEnabled(getGameSettings()) ? 'none' : 'pointer';
+-    zone.on('pointerdown', onHotspotPointer);
++    zone.on('pointerdown', (pointer: Phaser.Input.Pointer) => onHotspotPointer(pointer));
+ 
+     this.roomStackEntities.push({
+       kind: 'hotspot',
+@@ -5918,6 +6307,7 @@
+     }
+ 
+     const sprite = this.add.image(0, 0, spawn.textureKey);
++    sprite.setData('character', spawn.data);
+     const feet = resolveCharacterFeetLocal(spawn.data, sprite as Phaser.GameObjects.Sprite);
+     const manager = resolveGameStateManager(this.game);
+     // Saved feet world position (from a prior flush) overrides the room JSON `(x, y)` — same
+@@ -6026,7 +6416,9 @@
+ 
+     const colliderPts = spawn.data.collider?.points;
+     if (colliderPts && colliderPts.length >= 3) {
+-      const flat = colliderPts.flatMap((p) => [p.x, p.y]);
++      // Hit areas are in texture space; the collider is in 1× frame units.
++      const k = characterArtScale(spawn.data);
++      const flat = colliderPts.flatMap((p) => [p.x * k, p.y * k]);
+       const poly = new Phaser.Geom.Polygon(flat);
+       sprite.setInteractive({
+         hitArea: poly,
+@@ -6036,8 +6428,8 @@
+     } else {
+       sprite.setInteractive({ useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()) });
+     }
+-    sprite.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
+-      if (this.tryConsumeRoomVideoOrScriptedDialogClickToSkip(pointer)) {
++    const onPress = (pointer: Phaser.Input.Pointer, slot?: PointerSlot): void => {
++      if (slot === undefined && this.tryConsumeRoomVideoOrScriptedDialogClickToSkip(pointer)) {
+         return;
+       }
+       if (this.isPlayerPointerBlocked()) {
+@@ -6045,12 +6437,24 @@
+       }
+       const profile = getEffectiveInputProfile(getGameSettings());
+       const manager = resolveGameStateManager(this.game);
++      if (
++        slot === undefined &&
++        deferPressForHold(
++          pointer,
++          profile,
++          manager.getActiveInventoryItemId() !== null || manager.getActiveVerb() !== null,
++          (pressSlot) => onPress(pointer, pressSlot),
++        )
++      ) {
++        return;
++      }
+       const resolution = resolvePointerVerbForTarget(
+         pointer,
+         profile,
+         { defaultVerb: spawn.data.defaultVerb },
+         manager.getActiveVerb(),
+         manager.getActiveInventoryItemId(),
++        { slot },
+       );
+       if (resolution.kind === 'none') {
+         return;
+@@ -6118,7 +6522,8 @@
+       if (resolution.consumeActive) {
+         manager.clearActiveVerb();
+       }
+-    });
++    };
++    sprite.on('pointerdown', (pointer: Phaser.Input.Pointer) => onPress(pointer));
+     sprite.setData('benneCharacterInteractionAttached', true);
+   }
+ 
 diff -ruN src/engine/scenes/RoomTransitionOrchestrator.ts src/engine/scenes/RoomTransitionOrchestrator.ts
 --- src/engine/scenes/RoomTransitionOrchestrator.ts
 +++ src/engine/scenes/RoomTransitionOrchestrator.ts
-@@ -406,7 +406,11 @@
+@@ -44,7 +44,7 @@
+    * `changeTo` requested from those scripts. Started after the current run finishes so the
+    * script queue is not awaiting the same transition that is awaiting the queue.
+    */
+-  private deferredReentrantChange: { id: string; immediate: boolean; freshStart: boolean } | null =
++  private deferredReentrantChange: { id: string; immediate: boolean | 'cut'; freshStart: boolean } | null =
+     null;
+   private readonly hooks: RoomTransitionHookRegistry;
+ 
+@@ -82,7 +82,7 @@
+   /**
+    * Main transition.
+    */
+-  async changeTo(targetRoomId: string, immediate: boolean): Promise<void> {
++  async changeTo(targetRoomId: string, immediate: boolean | 'cut'): Promise<void> {
+     const id = String(targetRoomId);
+     const freshStart = this.pendingFreshStart;
+     this.pendingFreshStart = false;
+@@ -96,7 +96,7 @@
+     return this.transitionChain;
+   }
+ 
+-  private enqueueChange(id: string, immediate: boolean, freshStart: boolean): void {
++  private enqueueChange(id: string, immediate: boolean | 'cut', freshStart: boolean): void {
+     this.transitionChain = this.transitionChain
+       .then(() =>
+         this.runChangeToImpl(id, immediate, {
+@@ -151,7 +151,7 @@
+ 
+   private async runChangeToImpl(
+     targetRoomId: string,
+-    immediate: boolean,
++    immediate: boolean | 'cut',
+     options: {
+       startKind: BenneRoomStartKind;
+       forceRestart: boolean;
+@@ -175,7 +175,8 @@
+ 
+   private async runChangeToImplBody(
+     targetRoomId: string,
+-    immediate: boolean,
++    /** `true`: to black at once, no fade in. `'cut'`: no black at all (the next room continues the same shot). */
++    immediate: boolean | 'cut',
+     options: {
+       startKind: BenneRoomStartKind;
+       forceRestart: boolean;
+@@ -194,7 +195,7 @@
+       return;
+     }
+ 
+-    this.lastChangeImmediate = immediate;
++    this.lastChangeImmediate = immediate !== false;
+     setRoomTransitionInProgress(this.game, true);
+     const manager = resolveGameStateManager(this.game);
+     try {
+@@ -231,7 +232,7 @@
+           BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC,
+           BENNE_SCREEN_FADE_DEFAULT_COLOR,
+         );
+-      } else {
++      } else if (immediate !== 'cut') {
+         fromScene.screenFadeLayer?.setAlpha(1);
+       }
+ 
+@@ -406,7 +407,11 @@
          await entranceSound.prepareForPlayback();
        }
  
@@ -185,6 +3369,481 @@ diff -ruN src/engine/scenes/RoomTransitionOrchestrator.ts src/engine/scenes/Room
          roomScene.screenFadeLayer?.setAlpha(0);
        } else {
          syncBenneRuntimeHiDpiSceneMainCameras(this.game);
+diff -ruN src/engine/scenes/roomSceneBootstrap.ts src/engine/scenes/roomSceneBootstrap.ts
+--- src/engine/scenes/roomSceneBootstrap.ts
++++ src/engine/scenes/roomSceneBootstrap.ts
+@@ -7,6 +7,7 @@
+ } from '../content/loadAsepriteAtlasData';
+ import { getAsepriteAssetPaths, getAsepriteTextureKey, usesAsepriteDisplay } from '../content/characterAseprite';
+ import { getRoomAsepriteAssetPaths, getRoomAsepriteTextureKey } from '../content/roomAseprite';
++import { getRoomSheetPagePaths, queueRoomSheetPages } from '../room/roomSheetPages';
+ import { loadCharacterData } from '../content/loadCharacterData';
+ import { resolveGameAssetUrl } from '../content/resolveGameAssetUrl';
+ import type { RoomCharacterInstance, RoomData } from '../../types/room';
+@@ -83,11 +84,17 @@
+ 
+   if (roomPropsTextureKey && (room.props?.length ?? 0) > 0 && !tex.exists(roomPropsTextureKey)) {
+     const paths = getRoomAsepriteAssetPaths(room.id);
+-    load.aseprite({
+-      key: roomPropsTextureKey,
+-      textureURL: resolveGameAssetUrl(paths.png),
+-      atlasURL: getNormalizedRoomAsepriteAtlasData(room.id),
+-    });
++    // A sheet in several pages (room/roomSheetPages.ts): the images now, the texture when the room is created.
++    const pages = getRoomSheetPagePaths(room.id);
++    if (pages) {
++      queueRoomSheetPages(load, room.id, pages);
++    } else {
++      load.aseprite({
++        key: roomPropsTextureKey,
++        textureURL: resolveGameAssetUrl(paths.png),
++        atlasURL: getNormalizedRoomAsepriteAtlasData(room.id),
++      });
++    }
+   }
+ 
+   const dedupeAsepriteCharIds = new Set<string>();
+diff -ruN src/engine/scenes/roomScreenFadeConstants.ts src/engine/scenes/roomScreenFadeConstants.ts
+--- src/engine/scenes/roomScreenFadeConstants.ts
++++ src/engine/scenes/roomScreenFadeConstants.ts
+@@ -4,7 +4,7 @@
+ export const BENNE_SCREEN_FADE_DEFAULT_COLOR = 0x000000;
+ 
+ /**
+- * Renders above HUD, choice-dialog, and display-text GUI overlays; below Speaking Text
++ * Renders above HUD and choice-dialog GUI overlays; below Display Text, Speaking Text
+  * ({@link SPEAKING_TEXT_OVERLAY_DEPTH}) and the {@link RoomScene} custom game cursor
+  * (see `CUSTOM_CURSOR_DEPTH` in `RoomScene.ts`).
+  */
+@@ -15,3 +15,15 @@
+  * stay readable during `fadeOut()`, and below the custom cursor (`CUSTOM_CURSOR_DEPTH`).
+  */
+ export const SPEAKING_TEXT_OVERLAY_DEPTH = 460_000;
++
++/**
++ * Display Text (`display-text`, Bennescript `display`) also draws above the screen fade, so a
++ * title or an ending can be shown over black (`fadeOut()` then `display()`).
++ */
++export const DISPLAY_TEXT_OVERLAY_DEPTH = 455_000;
++
++/**
++ * A GUI with `pauseGame` (e.g. a line history) draws above the speech and display text it pauses,
++ * and above the screen fade, so it can be opened during a title over black.
++ */
++export const PAUSE_GUI_OVERLAY_DEPTH = 470_000;
+diff -ruN src/engine/scenes/roomShade.ts src/engine/scenes/roomShade.ts
+--- src/engine/scenes/roomShade.ts
++++ src/engine/scenes/roomShade.ts
+@@ -0,0 +1,27 @@
++/**
++ * Room shade: a full-screen tint drawn above the room art and its characters, and below every GUI (so the HUD,
++ * the inventory and Speaking Text stay as they are). For a room without light (a power cut, the night).
++ *
++ * The shade belongs to the game, not to one room: it is kept here and every new {@link RoomScene} starts with it.
++ * Bennescript `shade.set()` changes it.
++ */
++import { ROOM_VIDEO_LAYER_DEPTH } from './roomVideoConstants';
++
++/** Above the room stack and the dev debug overlays (`20_000`), below the video layer and every GUI. */
++export const ROOM_SHADE_LAYER_DEPTH = ROOM_VIDEO_LAYER_DEPTH - 10;
++
++export interface RoomShadeState {
++  /** 0 (no shade) to 1 (the room is not seen). */
++  alpha: number;
++  color: number;
++}
++
++let current: RoomShadeState = { alpha: 0, color: 0x000000 };
++
++export function getRoomShade(): RoomShadeState {
++  return current;
++}
++
++export function setRoomShadeState(state: RoomShadeState): void {
++  current = { alpha: Math.max(0, Math.min(1, state.alpha)), color: state.color };
++}
+diff -ruN src/engine/sound/SoundManager.ts src/engine/sound/SoundManager.ts
+--- src/engine/sound/SoundManager.ts
++++ src/engine/sound/SoundManager.ts
+@@ -7,7 +7,7 @@
+ import { tryGetActiveGameStateManager } from '../gameState/resolveGameStateManager.js';
+ import { writePersistedCurrentMusicId } from './audioGameState.js';
+ import { BENNE_AUDIO_SCRIPT_DISABLED_KEY } from './benneSoundRegistry.js';
+-import type { MusicPlayOptions, SoundPlayOptions } from './benneSoundTypes.js';
++import type { AmbientPlayOptions, MusicPlayOptions, SoundPlayOptions } from './benneSoundTypes.js';
+ import { benneMusicCacheKey, benneSfxCacheKey, benneVoiceCacheKey } from './benneAudioCacheKeys.js';
+ 
+ /** Author basename — must stay under `audio/sfx`, `audio/music`, or `audio/voice`. */
+@@ -131,6 +131,17 @@
+   /** Music starts held until the context is running. Cleared on {@link stopMusic}. */
+   private readonly deferredMusicStarts = new Set<() => void>();
+ 
++  /**
++   * Background loop of the current place (`ambient.play()`): one at a time, uses the SFX volume, and
++   * unlike SFX it is not stopped by room changes or dialog ends.
++   */
++  private ambientSound: Phaser.Sound.BaseSound | null = null;
++  private ambientId: string | null = null;
++  private ambientVolume = 1;
++  /** Volume ramps in progress (timer per sound): fade-ins, fade-outs and volume changes. */
++  private readonly ambientRamps = new Map<Phaser.Sound.BaseSound, ReturnType<typeof setTimeout>>();
++  private readonly deferredAmbientStarts = new Set<() => void>();
++
+   constructor(game: Phaser.Game) {
+     this.game = game;
+     if (shouldKeepWebAudioRunning()) {
+@@ -544,6 +555,9 @@
+       }
+       this.setInstanceVolume(sound, voiceVol);
+     }
++    if (this.ambientSound && !this.ambientRamps.has(this.ambientSound)) {
++      this.setInstanceVolume(this.ambientSound, this.ambientTarget());
++    }
+     // Crossfade tweens own music volumes until the fade completes.
+     if (this.musicFadeOutSound != null) {
+       return;
+@@ -1008,6 +1022,95 @@
+     }
+   }
+ 
++  /**
++   * Plays `id` (from `assets/audio/sfx/`) as the looping background sound, crossfading from the one
++   * before. Same `id`: only the volume changes. `null` fades the background sound out.
++   */
++  playAmbient(id: string | null, options?: AmbientPlayOptions): void {
++    const fade = Math.max(0, options?.fadeSeconds ?? 1.5);
++    const volume = clamp01(options?.volume ?? 1);
++    if (id === this.ambientId) {
++      this.ambientVolume = volume;
++      if (this.ambientSound) this.rampAmbient(this.ambientSound, this.ambientTarget(), fade, false);
++      return;
++    }
++    this.cancelDeferred(this.deferredAmbientStarts);
++    const old = this.ambientSound;
++    this.ambientSound = null;
++    this.ambientId = id;
++    this.ambientVolume = volume;
++    if (old) this.rampAmbient(old, 0, fade, true);
++    if (id === null || this.isScriptAudioDisabled() || !validateAudioId(id)) {
++      return;
++    }
++    const key = benneSfxCacheKey(id);
++    if (!this.game.cache.audio.has(key)) {
++      if (import.meta.env.DEV) {
++        console.warn(`[Benne] ambient.play("${id}"): missing audio (expected assets/audio/sfx/${id}.*).`);
++      }
++      return;
++    }
++    const start = (): void => {
++      if (this.ambientId !== id || this.ambientSound) {
++        return;
++      }
++      const sound = this.game.sound.add(key, { volume: 0, loop: true });
++      let started = false;
++      try {
++        started = sound.play();
++      } catch {
++        started = false;
++      }
++      if (!started) {
++        this.stopAndRemoveSound(sound);
++        return;
++      }
++      this.ambientSound = sound;
++      this.rampAmbient(sound, this.ambientTarget(), fade, false);
++    };
++    const ctx = this.audioContext();
++    if (ctx && ctx.state !== 'running') {
++      this.deferUntilRunning(ctx, this.deferredAmbientStarts, start);
++      void this.prepareForPlayback();
++      return;
++    }
++    start();
++  }
++
++  /** The background sound playing now (or about to start), or `null`. */
++  getCurrentAmbientId(): string | null {
++    return this.ambientId;
++  }
++
++  private ambientTarget(): number {
++    return this.effectiveSfxVolume({ volume: this.ambientVolume });
++  }
++
++  /** Takes `sound` to `target` volume in `seconds` (with timers, so it also ends in a hidden tab). */
++  private rampAmbient(sound: Phaser.Sound.BaseSound, target: number, seconds: number, thenStop: boolean): void {
++    const pending = this.ambientRamps.get(sound);
++    if (pending !== undefined) clearTimeout(pending);
++    this.ambientRamps.delete(sound);
++    const from = (sound as Phaser.Sound.WebAudioSound).volume ?? 0;
++    const ms = seconds * 1000;
++    const t0 = performance.now();
++    const tick = (): void => {
++      const u = ms > 0 ? Math.min(1, (performance.now() - t0) / ms) : 1;
++      try {
++        this.setInstanceVolume(sound, from + (target - from) * u);
++      } catch {
++        /* the sound may be gone */
++      }
++      if (u < 1) {
++        this.ambientRamps.set(sound, setTimeout(tick, 30));
++        return;
++      }
++      this.ambientRamps.delete(sound);
++      if (thenStop) this.stopAndRemoveSound(sound);
++    };
++    tick();
++  }
++
+   stopMusic(): void {
+     this.cancelDeferred(this.deferredMusicStarts);
+     if (this.isScriptAudioDisabled()) {
+@@ -1065,5 +1168,7 @@
+     this.stopAllSfx();
+     this.stopAllVoice();
+     this.stopMusic();
++    this.cancelDeferred(this.deferredAmbientStarts);
++    this.playAmbient(null, { fadeSeconds: 0 });
+   }
+ }
+diff -ruN src/engine/sound/benneSoundTypes.ts src/engine/sound/benneSoundTypes.ts
+--- src/engine/sound/benneSoundTypes.ts
++++ src/engine/sound/benneSoundTypes.ts
+@@ -20,3 +20,11 @@
+    */
+   sync?: boolean;
+ }
++
++/** Options for `ambient.play()`: the looping background sound of a place. */
++export interface AmbientPlayOptions {
++  /** Extra multiplier (0–1) on top of effective SFX volume. Default 1. */
++  volume?: number;
++  /** Crossfade from the background sound before (or to the new volume) over this many seconds. Default 1.5. */
++  fadeSeconds?: number;
++}
+diff -ruN src/engine/testing/benneTestHooks.ts src/engine/testing/benneTestHooks.ts
+--- src/engine/testing/benneTestHooks.ts
++++ src/engine/testing/benneTestHooks.ts
+@@ -16,7 +16,8 @@
+ import { resolveGameStateManager } from '../gameState/resolveGameStateManager';
+ import { BENNE_GUI_BUTTON_ID_DATA_KEY, benneGuiButtonReadEnabled, type BenneGuiButtonIdData } from '../gui/guiButtonRuntime';
+ import { isInteractionActivityRunning } from '../interaction/interactionActivity';
+-import { isRoomTransitionInProgress } from '../scenes/roomTransitionGlobals';
++import { isRoomTransitionInProgress, tryGetRoomTransitionOrchestrator } from '../scenes/roomTransitionGlobals';
++import { getRoomAsepriteTextureKey } from '../content/roomAseprite';
+ import type { RoomScene } from '../scenes/RoomScene';
+ import { dialogChoiceSyntheticButtonId } from '../events/dialogEvents';
+ import { resolveDefaultItemVerbId } from '../verbs/verbConfig';
+@@ -60,6 +61,10 @@
+   inventoryVerb(verbId: string, itemId: string): void;
+   /** Pick a dialog option by its id in `*.dialog.json`. */
+   choose(optionId: string): void;
++  /** Go to a room directly, as `rooms.x.goTo()` with a cut (to test a room without playing up to it). */
++  goToRoom(roomId: string): Promise<void>;
++  /** Room ids whose sheet (`images/rooms/<id>/<id>.png`) is loaded in the texture manager. */
++  roomSheets(): string[];
+   /** Click a GUI button by GUI id and control id. */
+   clickGui(guiId: string, controlId: string): void;
+   /** Left-click to skip the current speech line (or other click-to-skip). Returns false if nothing to skip. */
+@@ -455,6 +460,20 @@
+     speech() {
+       return [...speechLog];
+     },
++    async goToRoom(roomId) {
++      const orch = tryGetRoomTransitionOrchestrator();
++      if (!orch) {
++        throw new HookError('goToRoom: no room transition orchestrator');
++      }
++      await orch.changeTo(roomId, 'cut');
++    },
++    roomSheets() {
++      const prefix = getRoomAsepriteTextureKey('');
++      return game.textures
++        .getTextureKeys()
++        .filter((k) => k.startsWith(prefix))
++        .map((k) => k.slice(prefix.length));
++    },
+   };
+ 
+   game.events.on(Phaser.Core.Events.POST_STEP, () => {
+diff -ruN src/engine/verbs/holdGesture.ts src/engine/verbs/holdGesture.ts
+--- src/engine/verbs/holdGesture.ts
++++ src/engine/verbs/holdGesture.ts
+@@ -0,0 +1,65 @@
++import type * as Phaser from 'phaser';
++import type { VerbInputProfile } from '../../types/game';
++import type { PointerSlot } from './resolvePointerVerb';
++
++/** Default press-and-hold delay ({@link VerbInputProfile.holdMs}). */
++export const DEFAULT_HOLD_MS = 450;
++
++/** A press that moves farther than this (screen px) before the delay is a drag, not a hold. */
++const HOLD_MOVE_TOLERANCE = 14;
++
++/**
++ * Press-and-hold for touch screens (`inputProfile.holdVerb`). Call it at the top of a target's
++ * pointer-down handler, after the click-to-skip and input-blocked checks. When the profile has a
++ * hold slot, the pointer is a primary press and nothing is armed, it takes over and returns `true`:
++ * the caller returns, and `run` is called later with the slot the press turned out to be —
++ * `'primary'` when released before the delay (on pointer-up), `'hold'` when still down at the delay.
++ * A press dragged away, or cancelled by the browser, runs nothing. Otherwise it returns `false` and
++ * the caller resolves the press right away, as before.
++ */
++export function deferPressForHold(
++  pointer: Phaser.Input.Pointer,
++  profile: VerbInputProfile,
++  armed: boolean,
++  run: (slot: PointerSlot) => void,
++): boolean {
++  if (!profile.holdVerb || armed || !pointer.leftButtonDown()) {
++    return false;
++  }
++  if (typeof window === 'undefined') {
++    return false;
++  }
++  const delay = profile.holdMs ?? DEFAULT_HOLD_MS;
++  const startX = pointer.event && 'clientX' in pointer.event ? pointer.event.clientX : null;
++  const startY = pointer.event && 'clientY' in pointer.event ? pointer.event.clientY : null;
++  let done = false;
++
++  const finish = (slot: PointerSlot | null): void => {
++    if (done) {
++      return;
++    }
++    done = true;
++    window.clearTimeout(timer);
++    window.removeEventListener('pointerup', onUp, true);
++    window.removeEventListener('pointercancel', onCancel, true);
++    window.removeEventListener('pointermove', onMove, true);
++    if (slot) {
++      run(slot);
++    }
++  };
++  const onUp = (): void => finish('primary');
++  const onCancel = (): void => finish(null);
++  const onMove = (e: PointerEvent): void => {
++    if (startX === null || startY === null) {
++      return;
++    }
++    if (Math.hypot(e.clientX - startX, e.clientY - startY) > HOLD_MOVE_TOLERANCE * (window.devicePixelRatio || 1)) {
++      finish(null);
++    }
++  };
++  const timer = window.setTimeout(() => finish('hold'), delay);
++  window.addEventListener('pointerup', onUp, true);
++  window.addEventListener('pointercancel', onCancel, true);
++  window.addEventListener('pointermove', onMove, true);
++  return true;
++}
+diff -ruN src/engine/verbs/resolvePointerVerb.ts src/engine/verbs/resolvePointerVerb.ts
+--- src/engine/verbs/resolvePointerVerb.ts
++++ src/engine/verbs/resolvePointerVerb.ts
+@@ -3,6 +3,7 @@
+ import { getGameSettings } from '../ConfigManager';
+ import {
+   DEFAULT_VERB_TOKEN,
++  isItemVerbId,
+   resolveDefaultItemVerbId,
+   resolveGameDefaultVerbId,
+   WALK_TO_VERB_ID,
+@@ -24,8 +25,17 @@
+    * @default true
+    */
+   coerceWalkToUseWhenArmed?: boolean;
++  /**
++   * Which `inputProfile` slot the press stands for, instead of reading the pointer's buttons. Set by
++   * the press-and-hold gesture ({@link import('./holdGesture.js').deferPressForHold}), which resolves
++   * on pointer-up or after the hold delay, when the buttons no longer say what happened.
++   */
++  slot?: PointerSlot;
+ };
+ 
++/** An `inputProfile` slot: the two buttons and the optional press-and-hold. */
++export type PointerSlot = 'primary' | 'secondary' | 'hold';
++
+ /**
+  * Outcome of resolving a pointer click over a clickable target.
+  *
+@@ -72,8 +82,9 @@
+   activeInventoryItemId: string | null = null,
+   options?: ResolvePointerVerbForTargetOptions,
+ ): PointerVerbResolution {
+-  const left = pointer.leftButtonDown();
+-  const right = pointer.rightButtonDown();
++  const slot = options?.slot;
++  const left = slot ? slot !== 'secondary' : pointer.leftButtonDown();
++  const right = slot ? slot === 'secondary' : pointer.rightButtonDown();
+   if (!left && !right) {
+     return { kind: 'none' };
+   }
+@@ -90,7 +101,22 @@
+   }
+ 
+   const coerceWalkToUseWhenArmed = options?.coerceWalkToUseWhenArmed !== false;
+-  const slotValue = left ? profile.primaryButtonVerb : profile.secondaryButtonVerb;
++  const slotValue = slot === 'hold' && profile.holdVerb
++    ? profile.holdVerb
++    : left ? profile.primaryButtonVerb : profile.secondaryButtonVerb;
++  // An armed item meets a primary press whose slot is itself an item verb (a "tap" verb on a touch
++  // profile, which arms items from the inventory): use the item on the target.
++  const settings = getGameSettings();
++  const armedItemVerbSlot =
++    activeInventoryItemId !== null &&
++    left &&
++    slotValue !== WALK_TO_VERB_ID &&
++    slotValue !== DEFAULT_VERB_TOKEN &&
++    isItemVerbId(settings, slotValue) &&
++    slotValue !== resolveDefaultItemVerbId(settings);
++  if (armedItemVerbSlot) {
++    return { kind: 'verb', verbId: resolveDefaultItemVerbId(settings), consumeActive: false };
++  }
+   if (
+     coerceWalkToUseWhenArmed &&
+     activeInventoryItemId !== null &&
+@@ -99,7 +125,7 @@
+   ) {
+     return {
+       kind: 'verb',
+-      verbId: resolveDefaultItemVerbId(getGameSettings()),
++      verbId: resolveDefaultItemVerbId(settings),
+       consumeActive: false,
+     };
+   }
+@@ -137,6 +163,7 @@
+   target: PointerVerbTarget,
+   activeVerbId: string | null,
+   activeInventoryItemId: string | null = null,
++  slot?: PointerSlot,
+ ): PointerVerbResolution {
+   const base = resolvePointerVerbForTarget(
+     pointer,
+@@ -144,11 +171,25 @@
+     target,
+     activeVerbId,
+     activeInventoryItemId,
+-    { coerceWalkToUseWhenArmed: false },
++    { coerceWalkToUseWhenArmed: false, slot },
+   );
+   if (base.kind === 'verb' && base.consumeActive && activeInventoryItemId !== null) {
+     return { kind: 'verb', verbId: base.verbId, consumeActive: false };
+   }
++  // An item verb (one that arms the item for "use X with...") on the primary button, over an item that has its own
++  // `defaultVerb`: the item is used on its own, not armed (a map that opens with one tap). Only without an armed
++  // item and without an active verb, so combining two items still works.
++  if (
++    base.kind === 'verb' &&
++    (slot ? slot === 'primary' : pointer.leftButtonDown()) &&
++    activeInventoryItemId === null &&
++    activeVerbId === null &&
++    target.defaultVerb &&
++    target.defaultVerb !== base.verbId &&
++    isItemVerbId(getGameSettings(), base.verbId)
++  ) {
++    return { kind: 'verb', verbId: target.defaultVerb, consumeActive: false };
++  }
+   if (base.kind !== 'walkToTarget') {
+     return base;
+   }
 diff -ruN src/engine/verbs/verbConfig.ts src/engine/verbs/verbConfig.ts
 --- src/engine/verbs/verbConfig.ts
 +++ src/engine/verbs/verbConfig.ts
@@ -228,10 +3887,107 @@ diff -ruN src/engine/verbs/verbConfig.ts src/engine/verbs/verbConfig.ts
    }
    if (useInventoryPrepLine) {
      const verbWord = resolveVerbLineLeadingVerbWord(settings, trimmedVerb);
+diff -ruN src/types/character.ts src/types/character.ts
+--- src/types/character.ts
++++ src/types/character.ts
+@@ -45,6 +45,23 @@
+   aseprite?: boolean;
+ }
+ 
++/**
++ * One idle micro-action (see `CharacterData.idleActions`): a short one-shot animation the character plays now and
++ * then while standing still, before going back to its `Idle` loop.
++ */
++export interface CharacterIdleActionData {
++  /**
++   * Base name, e.g. `Blink`, `Look`, `Tap`. The tag played is the current idle tag with `Idle` replaced by this
++   * (`IdleDL` → `BlinkDL`, `LlunyGalaIdleD` → `LlunyGalaBlinkD`); when the sheet lacks it, the action is skipped.
++   * Make the tag non-looping (the default when `animations` doesn't say `loop: true`).
++   */
++  animation: string;
++  /** Seconds between two plays, picked at random in `[min, max]`. Omitted = `[5, 12]`. */
++  every?: [number, number];
++  /** Extra seconds of stillness before the first play, on top of `every` (a tic only after a long wait). Omitted = `0`. */
++  after?: number;
++}
++
+ export interface CharacterData {
+   id: string;
+   /** BenneScript handle name, when the generated one doesn't fit (docs/bennescript-ergonomics-refactor.md §7.2). */
+@@ -57,6 +74,24 @@
+    */
+   feet?: { x: number; y: number };
+   /**
++   * The sheet is drawn at `artScale`× (a denser texture) and shown at 1/artScale, so the character keeps its size.
++   * `feet`, `collider`, `walkToPoint` and `talkPoint` stay in the 1× frame units (the sheet's pixels ÷ artScale).
++   * Default 1. Same idea as the room `artScale`.
++   */
++  artScale?: number;
++  /** Idle micro-actions (blink, look around, a tic) played at random while the character stands still. */
++  idleActions?: CharacterIdleActionData[];
++  /**
++   * Contact shadow in rooms that have one (`RoomData.characterShadow`). `false` = none for this character (a ghost, a
++   * screen). `width` is in 1× frame units at scale 1 (default: 85% of the collider width, else 40% of the frame);
++   * `offsetX` / `offsetY` move it from the feet, in the same units.
++   */
++  shadow?: false | { width?: number; offsetX?: number; offsetY?: number };
++  /** `false` = no reflection in polished floors (`RoomData.characterReflection`): a ghost, a vampire. */
++  reflection?: false;
++  /** `false` = no dark rim in rooms with `RoomData.characterOutline` (a character that already has one). */
++  outline?: false;
++  /**
+    * Click hit area in **texture / frame pixel space** (same origin as `feet`). When omitted and the
+    * character is clickable, the full sprite rectangle is used. Requires at least three vertices.
+    */
 diff -ruN src/types/game.ts src/types/game.ts
 --- src/types/game.ts
 +++ src/types/game.ts
-@@ -213,6 +213,10 @@
+@@ -34,7 +34,15 @@
+ /** Loaded from `src/game/game-config.json` (authoritative game bootstrap settings). */
+ export interface GameSettingsResolution {
+   width: number;
++  /** Height; with {@link minHeight}, the tallest the game gets (on a 16:9 screen, for 640 wide: 360). */
+   height: number;
++  /**
++   * Optional adaptive height: when set, the game picks its height at boot from the screen's (landscape)
++   * aspect, between this and {@link height}, so a phone (20:9) and a monitor (16:9) are both filled.
++   * GUIs are authored at this height and moved with `anchorY`; rooms painted taller than it place
++   * their camera with `viewAnchorY`.
++   */
++  minHeight?: number;
+ }
+ 
+ export interface GameSettingsAudio {
+@@ -109,6 +117,12 @@
+   msPerCharacter: number;
+   maxDurationMs: number;
+   durationMultiplier: number;
++  /**
++   * Milliseconds after a click-to-skip line (speech, Display Text, `waitForClick`) appears during which
++   * left-clicks are swallowed instead of skipping it, so a double click or one click too many does not
++   * eat the next line unread. 0 or omitted = no protection.
++   */
++  clickProtectMs?: number;
+ }
+ 
+ /**
+@@ -168,6 +182,15 @@
+   primaryButtonVerb: string;
+   /** Verb id / `"walkTo"` / `"defaultVerb"` for the secondary (typically right) mouse button. */
+   secondaryButtonVerb: string;
++  /**
++   * Optional **press-and-hold** slot (touch screens have no second button). When set, a primary press
++   * on a clickable target is not dispatched on pointer-down: releasing it within {@link holdMs} runs
++   * {@link primaryButtonVerb} (on pointer-up), and keeping it pressed runs this verb instead. Same
++   * values as the other slots. Not applied while an inventory item or a verb is armed.
++   */
++  holdVerb?: string;
++  /** How long a press must last to count as a hold, in milliseconds (default 450). */
++  holdMs?: number;
+ }
+ 
+ /**
+@@ -213,6 +236,10 @@
     */
    defaultFallbackLine?: string;
    /**
@@ -242,32 +3998,357 @@ diff -ruN src/types/game.ts src/types/game.ts
     * Global default policy for whether the **active inventory item** is "dropped" (active inventory +
     * active verb both cleared) after it is used on a clickable target (prop / hotspot / character).
     *
-diff -ruN src/engine/directionalCharacterAnimation.ts src/engine/directionalCharacterAnimation.ts
---- src/engine/directionalCharacterAnimation.ts
-+++ src/engine/directionalCharacterAnimation.ts
-@@ -166,13 +166,18 @@
-     return true;
-   };
- 
--  for (const d of facingFallbackOrder(direction)) {
--    if (tryPlay(`${baseName}${d}`, false)) {
--      return;
--    }
--    const m = mirrorHorizontalFacing(d);
--    if (m !== null && tryPlay(`${baseName}${m}`, true)) {
--      return;
-+  // Vestuari (pegat de Suma Zero): si el sprite té `outfit`, primer prova `<outfit><base><dir>` (p. ex.
-+  // `BarWalkL`) i, si no existeix, la normal. Així un personatge pot canviar de roba sense canviar de sprite.
-+  const outfit = (sprite.getData('outfit') as string | undefined) ?? '';
-+  for (const prefix of outfit ? [outfit, ''] : ['']) {
-+    for (const d of facingFallbackOrder(direction)) {
-+      if (tryPlay(`${prefix}${baseName}${d}`, false)) {
-+        return;
-+      }
-+      const m = mirrorHorizontalFacing(d);
-+      if (m !== null && tryPlay(`${prefix}${baseName}${m}`, true)) {
-+        return;
-+      }
-     }
-   }
+diff -ruN src/types/gameState.ts src/types/gameState.ts
+--- src/types/gameState.ts
++++ src/types/gameState.ts
+@@ -41,7 +41,7 @@
+ export interface SaveMetadata {
+   /** Player-facing save name. */
+   name: string;
+-  /** Slot id when the entry maps to fixed-slot storage (`benne-save-<slot>`). */
++  /** Slot id when the entry maps to fixed-slot storage (`<gameId>:save-<slot>`). */
+   slot?: number;
+   /** Last write/load touch time in epoch milliseconds. */
+   timestamp: number;
+@@ -50,13 +50,13 @@
+ /** Internal manifest row persisted in localStorage for named saves. */
+ export interface SaveManifestEntry extends SaveMetadata {
+   /**
+-   * Storage key for the snapshot payload. For legacy slots this is `benne-save-<slot>`,
+-   * for named saves this is `benne-save-v1-<sanitized-name>`.
++   * Storage key for the snapshot payload. For legacy slots this is `<gameId>:save-<slot>`,
++   * for named saves this is `<gameId>:save-v1-<sanitized-name>`.
+    */
+   storageKey: string;
  }
+ 
+-/** Internal manifest payload persisted under `benne-saves-manifest-v1`. */
++/** Internal manifest payload persisted under `<gameId>:saves-manifest-v1`. */
+ export interface SaveManifest {
+   version: 1;
+   saves: SaveManifestEntry[];
+diff -ruN src/types/gui.ts src/types/gui.ts
+--- src/types/gui.ts
++++ src/types/gui.ts
+@@ -287,6 +287,11 @@
+   /** Optional extra clips from the GUI sheet (Aseprite tags). */
+   animations?: GuiSpriteAnimationsMap;
+   gridPlacement?: GuiGridPlacement;
++  /**
++   * Default `true`: opaque pixels catch the pointer (so the room behind is not clicked). `false` for a
++   * decoration drawn over another control (a face inside a button): clicks go through to what is below.
++   */
++  clickable?: boolean;
+ }
+ 
+ /** Per-interaction sheet tags; values are Aseprite tag names on this GUI’s sheet. */
+@@ -583,8 +588,17 @@
+   | GuiTriggerControl
+   | GuiGridControl;
+ 
++/**
++ * Adaptive height (`resolution.minHeight`): GUIs are authored at the minimum height, and when the game is taller
++ * a control moves with the screen's top (default), centre or bottom; `stretch` keeps its `y` and grows its height
++ * (a full-screen backdrop). Set on the GUI (all its controls) or on a control (overrides the GUI's).
++ */
++export type GuiAnchorY = 'top' | 'center' | 'bottom' | 'stretch';
++
+ export interface GuiData {
+   id: string;
++  /** Adaptive height: where this GUI's controls go when the game is taller than it was authored ({@link GuiAnchorY}). */
++  anchorY?: GuiAnchorY;
+   /** BenneScript handle name, when the generated one doesn't fit (docs/bennescript-ergonomics-refactor.md §7.2). */
+   scriptName?: string;
+   name: string;
+@@ -621,6 +635,12 @@
+    */
+   modal?: boolean;
+   /**
++   * When **`true`** (with **`modal`**), the room is paused while this GUI is shown: timers (speech lines,
++   * waits), tweens and walks stop where they are and resume when it hides. Drawn above speech and
++   * Display Text; its buttons work during cutscenes, and Esc hides it. For a line history or similar.
++   */
++  pauseGame?: boolean;
++  /**
+    * Stack order among GUI overlays (lower = behind). Omitted = **0**.
+    * Distinct from per-control **`zIndex`** in **`controls[]`**, which only layers widgets inside this GUI.
+    */
+diff -ruN src/types/room.ts src/types/room.ts
+--- src/types/room.ts
++++ src/types/room.ts
+@@ -125,6 +125,101 @@
+   tintAlpha?: number;
+ }
+ 
++/** A point light that falls on the room's characters (see {@link RoomCharacterLightsData}). */
++export interface RoomCharacterLightData {
++  x: number;
++  y: number;
++  /** Reach in room pixels: the light fades to nothing here. */
++  radius: number;
++  /** Hex RGB (e.g. `#50e6d2`). */
++  color: string;
++  /** Strength; `1` adds the full colour at the centre. Omitted = `1`. */
++  intensity?: number;
++  /** Vertical stretch of the distance (`> 1` = flatter light). Omitted = `1`. */
++  squash?: number;
++  /** Falloff exponent. Omitted = `1.6`. */
++  power?: number;
++  /** Only while this prop is visible (a lamp that is switched on, a hatch that is open). */
++  whenPropVisible?: string;
++}
++
++/**
++ * The room's light on its characters, evaluated at runtime at the corners of each sprite. The light is
++ * `ambient + Σ light` per channel, where `#ffffff` ambient and no light leave the sprite as drawn; it is set as an
++ * overlay tint (below 1 darkens, above 1 lightens). Replaces region tint (`tintEnabled`) in the room.
++ */
++export interface RoomCharacterLightsData {
++  /** Hex RGB; `#ffffff` = as drawn, darker = a darker room. Omitted = `#ffffff`. */
++  ambient?: string;
++  lights?: RoomCharacterLightData[];
++  /** Where the top corners sample the light, as a fraction of the sprite height from its top. Omitted = `0.15`. */
++  topSample?: number;
++}
++
++/**
++ * Contact shadow under the room's characters: a dark, semi-transparent floor ellipse the engine draws under each
++ * character's feet (not part of the sheet), scaled with the character. Width per character: `CharacterData.shadow`.
++ */
++export interface RoomCharacterShadowData {
++  /** `false` turns it off (same as omitting the object). Omitted = on. */
++  enabled?: boolean;
++  /** Hex RGB. Omitted = `#000000`. */
++  color?: string;
++  /** Opacity at the centre. Omitted = `0.35`. */
++  alpha?: number;
++  /** Ellipse height ÷ width: how much of the floor the camera sees from above. Omitted = `0.3`. */
++  squash?: number;
++  /** Width of the darker core as a fraction of the shadow (two tones); `0` = one flat ellipse. Omitted = `0.6`. */
++  core?: number;
++  /**
++   * The dominant light: the shadow stretches across the floor away from it. `x, y` is the floor point under the
++   * light (room px: a lamp, the foot of a window); with `direction: true` it is instead the direction the shadow
++   * falls in (screen px, e.g. `{ x: 1, y: 0.3 }` for a low sun on the left).
++   */
++  light?: {
++    x: number;
++    y: number;
++    direction?: boolean;
++    /** Extra length along the fall, as a fraction of the width (`1` = twice as long). Omitted = `0.8`. */
++    stretch?: number;
++    /** Floor distance (room px) from the light at which the stretch is full; under it the shadow is round. Omitted = `120`. */
++    reach?: number;
++  };
++}
++
++/**
++ * A dark rim around the characters, for very bright rooms (white floors, sunlit water) where their own edges get
++ * lost: copies of the character's frame filled with `color`, shifted `width` room px left, right, up and down, under
++ * the character.
++ */
++export interface RoomCharacterOutlineData {
++  /** `false` turns it off (same as omitting the object). Omitted = on. */
++  enabled?: boolean;
++  /** Hex RGB. Omitted = `#000000`. */
++  color?: string;
++  /** Opacity of the rim. Omitted = `0.7`. */
++  alpha?: number;
++  /** Thickness in room px. Omitted = `1`. */
++  width?: number;
++}
++
++/**
++ * A polished floor (marble, wet tiles): each character gets a faint copy of itself mirrored about its feet, fading
++ * away from them. The room art carries the reflection of the room itself; this is the characters'.
++ */
++export interface RoomCharacterReflectionData {
++  /** `false` turns it off (same as omitting the object). Omitted = on. */
++  enabled?: boolean;
++  /** Opacity next to the feet. Omitted = `0.2`. */
++  alpha?: number;
++  /** Opacity at the far end (the mirrored head), as a fraction of `alpha`. Omitted = `0` (fades out). */
++  fade?: number;
++  /** Height of the reflection ÷ height of the character (a high camera sees it shorter). Omitted = `1`. */
++  length?: number;
++  /** Room y below which the floor does not reflect (where the polished floor ends). Omitted = no limit. */
++  maxY?: number;
++}
++
+ export interface RoomCharacterInstance {
+   /** Unique id for this placement in the room (Phaser texture key suffix). */
+   instanceId: string;
+@@ -245,6 +340,19 @@
+    * The character can walk beyond scroll bounds but the camera stops panning before reaching the room edge.
+    */
+   scrollBounds?: { x: number; y: number; width: number; height: number };
++  /**
++   * Adaptive height (`resolution.minHeight`): when the scroll bounds are taller than the screen, the camera
++   * doesn't follow the player up and down but stays here: 0 = top of the bounds, 1 = bottom, 0.5 = middle.
++   * For a room painted for the tallest screen whose playable part fits the shortest.
++   */
++  viewAnchorY?: number;
++  /**
++   * How the camera follows the player in a room larger than the screen. `deadzone`: the fraction of the screen
++   * (centred, both axes) the player can move in without the camera moving (`0.3` = between 35% and 65%); `lerp`:
++   * how much of the remaining distance the camera covers each frame (`1` = it sticks to the player). Omitted =
++   * `{ deadzone: 0.3, lerp: 0.1 }`; `{ deadzone: 0, lerp: 1 }` is the old rigid follow.
++   */
++  cameraFollow?: { deadzone?: number; lerp?: number };
+   walkable: {
+     polygons: WalkablePolygon[];
+   };
+@@ -253,6 +361,27 @@
+   points?: RoomPointData[];
+   /** Closed polygons for regions (optional; editor + future gameplay). */
+   regions?: RoomRegionData[];
++  /** Runtime light on the characters (optional). */
++  characterLights?: RoomCharacterLightsData;
++  /** Contact shadow under the characters (optional; off when omitted). */
++  characterShadow?: RoomCharacterShadowData;
++  /** Characters mirrored in a polished floor. */
++  characterReflection?: RoomCharacterReflectionData;
++  /** A dark rim around the characters (very bright rooms). */
++  characterOutline?: RoomCharacterOutlineData;
++  /**
++   * How much the camera flattens the floor: screen height ÷ floor depth of a small patch of floor (the same idea as
++   * `characterShadow.squash`; e.g. `0.25` for a high camera far away). Walk facings are then chosen on the floor, so a
++   * diagonal walk into the room gets the 3/4 facings even when it looks almost horizontal on screen. Omitted = `1`
++   * (facings chosen on the screen, as before).
++   */
++  floorSquash?: number;
++  /**
++   * Pixels of the room sheet (`images/rooms/<id>/<id>.png`) per room pixel. `2` = the room art is drawn at twice the
++   * room resolution and shown at half scale: the geometry, scripts and characters stay in room pixels, and on a
++   * screen of at least twice the internal resolution the art shows all its detail. Omitted = `1`.
++   */
++  artScale?: number;
+   /**
+    * Layered Aseprite props from `images/rooms/<id>/<id>.png` + `.json` (one sheet per room).
+    */
+diff -ruN vite.config.ts vite.config.ts
+--- vite.config.ts
++++ vite.config.ts
+@@ -1,20 +1,83 @@
+ import path from 'node:path';
+ import fs from 'node:fs';
+ import { fileURLToPath } from 'node:url';
+-import { defineConfig } from 'vite';
++import { defineConfig, type Plugin } from 'vite';
+ import { benneGenerateGameIdsPlugin } from './vite-plugin-bennegame-ids';
+ import { benneScriptPlugin } from './vite-plugin-bennescript';
+ 
+ const dir = path.dirname(fileURLToPath(import.meta.url));
+ const pkg = JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8')) as {
+   name?: string;
+-  benne?: { displayName?: string };
++  version?: string;
++  benne?: { displayName?: string; description?: string; url?: string; colors?: Record<string, string> };
+ };
+ const slug = (pkg.name || 'benne-game').replace(/[^a-zA-Z0-9-]+/g, '-').replace(/^-|-$/g, '');
+ const displayName = pkg.benne?.displayName?.trim() || slug.split('-').map(
+   (part: string) => part.slice(0, 1).toUpperCase() + part.slice(1),
+ ).join(' ');
+ const iconExists = fs.existsSync(path.join(dir, 'src/game/assets/images/icon.png'));
++const attr = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
++
++/**
++ * Descripció i targeta per compartir l'enllaç (Google, Open Graph), del bloc `benne` del package.json:
++ * `description` i `url` (l'adreça pública del joc, amb la barra final). La imatge és `public/portada.png`.
++ */
++function pageMeta(): string {
++  const { description, url } = pkg.benne ?? {};
++  if (!description) return '';
++  const tags = [
++    `<meta name="description" content="${attr(description)}" />`,
++    `<meta property="og:type" content="website" />`,
++    `<meta property="og:title" content="${attr(displayName)}" />`,
++    `<meta property="og:description" content="${attr(description)}" />`,
++    `<meta property="og:locale" content="ca_ES" />`,
++  ];
++  if (url) {
++    tags.push(`<link rel="canonical" href="${attr(url)}" />`, `<meta property="og:url" content="${attr(url)}" />`);
++    if (fs.existsSync(path.join(dir, 'public/portada.png'))) {
++      tags.push(`<meta property="og:image" content="${attr(new URL('portada.png', url).href)}" />`,
++        `<meta property="og:image:width" content="1440" />`, `<meta property="og:image:height" content="810" />`,
++        `<meta name="twitter:card" content="summary_large_image" />`);
++    }
++  }
++  return tags.map((t) => `\n    ${t}`).join('');
++}
++
++/**
++ * Els colors de la pantalla de càrrega (`colors` al bloc `benne` del package.json: fons, text, nom, nom2, barra,
++ * vora), com a variables CSS. Sense, es queden els d'index.html.
++ */
++function loadingColors(): string {
++  const vars = Object.entries(pkg.benne?.colors ?? {})
++    .filter(([k, v]) => /^[a-z0-9]+$/.test(k) && /^#[0-9a-fA-F]{3,8}$/.test(v))
++    .map(([k, v]) => `--${k}: ${v};`).join(' ');
++  return vars ? `<style>:root { ${vars} }</style>` : '';
++}
++
++/**
++ * El motor és compartit (packages/benne) i aquí n'hi ha una còpia (`npm run motor`). Amb `npm run dev`,
++ * cada fitxer del motor que canvia es torna a copiar, i Vite el recarrega com qualsevol altre.
++ */
++function benneMotorSyncPlugin(): Plugin {
++  return {
++    name: 'benne-motor-sync',
++    apply: 'serve',
++    async configureServer(server) {
++      const manifest = path.join(dir, '.motor-copiat.json');
++      if (!fs.existsSync(manifest)) return;
++      const origen = path.resolve(dir, (JSON.parse(fs.readFileSync(manifest, 'utf8')) as { origen: string }).origen);
++      const { copyOne } = (await import(path.join(origen, 'copia.mjs'))) as { copyOne: (project: string, rel: string) => boolean };
++      const sync = (file: string) => {
++        const rel = path.relative(origen, file);
++        if (rel.startsWith('..') || path.isAbsolute(rel) || /^(copia\.mjs|package\.base\.json|README\.md|node_modules)/.test(rel)) return;
++        if (copyOne(dir, rel.split(path.sep).join('/'))) server.config.logger.info(`motor: ${rel}`, { timestamp: true });
++      };
++      server.watcher.add(origen);
++      server.watcher.on('change', sync);
++      server.watcher.on('add', sync);
++    },
++  };
++}
+ 
+ /**
+  * Phaser publishes `browser` → UMD (`phaser.js`) and `module` → ESM (`phaser.esm.js`).
+@@ -24,13 +87,18 @@
+   // Allow itch.io and other static hosts to serve a game under a generated subdirectory.
+   base: './',
+   // BENNE Play and the editor previews merge this config, so they get the BenneScript transform too.
+-  plugins: [benneGenerateGameIdsPlugin(), benneScriptPlugin(), {
++  plugins: [benneMotorSyncPlugin(), benneGenerateGameIdsPlugin(), benneScriptPlugin(), {
+     name: 'benne-game-page',
+-    transformIndexHtml(html: string) {
+-      return html.replace(/<title>[^<]*<\/title>/, `<title>${displayName.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>`)
+-        .replace(/<link rel="icon"[^>]*\/>/, iconExists
++    transformIndexHtml(html: string, ctx) {
++      // La descripció només a la pàgina del joc (no als editors ni a les previsualitzacions)
++      const meta = path.basename(ctx.filename) === 'index.html' ? pageMeta() : '';
++      return html.replace(/<title>[^<]*<\/title>/, `<title>${displayName.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>${meta}`)
++        .replace('<!--benne:nom-->', attr(displayName))                  // la pantalla de càrrega
++        .replace('<!--benne:colors-->', loadingColors())
++        // Sense icona pròpia del joc, es queda el favicon de Mala Herba Soft (public/favicon.*)
++        .replace(/<link rel="icon"[^>]*\/>(\s*<link rel="icon"[^>]*\/>)*/, (m) => iconExists
+           ? '<link rel="icon" type="image/png" href="./src/game/assets/images/icon.png" />'
+-          : '');
++          : m);
+     },
+   }],
+   resolve: {
+@@ -41,6 +109,12 @@
+       '@game': path.join(dir, 'src/game/game.ids.ts'),
+     },
+   },
++  // Namespace for localStorage saves, so games on the same origin don't share them.
++  define: {
++    'import.meta.env.VITE_BENNE_GAME_ID': JSON.stringify(slug),
++    // La versió del joc (camp `version` del package.json), per a `game.version`.
++    'import.meta.env.VITE_BENNE_GAME_VERSION': JSON.stringify(pkg.version ?? '0.0.0'),
++  },
+   build: {
+     chunkSizeWarningLimit: 2000,
+   },

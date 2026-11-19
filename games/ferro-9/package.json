@@ -16,6 +16,7 @@
     "font": "python3 tools/font/ferro_font.py",
     "benne:create": "tsx ../../adapters/benne/create-project.ts",
     "benne:sync": "tsx ../../adapters/benne/sync.ts",
+    "benne:pegat": "tsx ../../adapters/benne/refes-pegat.ts",
     "dev": "npm run dev --prefix ferro-9",
     "build": "npm run build --prefix ferro-9"
   }

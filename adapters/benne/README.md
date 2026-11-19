@@ -23,7 +23,8 @@ Un esquema visual de tot plegat (capes, sync, un clic de punta a punta, i les po
 | `benne-content.ts` | Sales, personatges, objectes, configuració i GUI de Benne a partir del JSON (el fa servir el sync). |
 | `create-project.ts` | Crea el projecte Benne d'un joc nou; amb `--motor`, actualitza el motor compartit. |
 | `joc-benne.ts` | Què pot configurar cada joc (vegeu més avall). |
-| `patches/` | Canvis propis al motor de Benne, per quan s'actualitzi des d'un Benne nou. |
+| `patches/` | Canvis propis al motor de Benne, per quan s'actualitzi des d'un Benne nou. Els refà `refes-pegat.ts` (`npm run benne:pegat`). |
+| `motor-paths.ts` | Quins fitxers del checkout de Benne són el motor, i de quina versió surt el nostre. |
 
 ### El que és de cada joc: `games/<joc>/adapters/benne/`
 
@@ -155,8 +156,9 @@ etiquetes `<roba>IdleD`, `<roba>WalkL`... abans que les normals), `speech.clickP
 primers mil·lisegons d'una línia no la salta), `pauseGame` a les GUI (el joc s'atura mentre és oberta)
 i les partides desades amb una clau per joc. Vegeu `packages/benne/README.md`.
 
-`patches/motor-benne.patch` en recull només una part: `benne:create --motor` l'aplica, però després
-cal comprovar amb `git diff packages/benne` que no s'ha perdut cap dels altres.
+`patches/motor-benne.patch` els recull tots, respecte del Benne d'on surt el motor (`BENNE_BASE` a
+`motor-paths.ts`): `benne:create --motor` l'aplica. Cada cop que es toca el motor, cal refer-lo amb
+`npm run benne:pegat`.
 
 Per a la GUI: `switchProtagonist()` (botó de canviar entre l'Iri i la Vet), `sayHint()` (botó de
 pista) i `playEnding()`.

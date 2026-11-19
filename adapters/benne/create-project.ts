@@ -10,8 +10,8 @@
  *  - hi copia el motor compartit (packages/benne, `npm run motor`).
  *
  * Amb `--motor`, a més, **actualitza el motor compartit** (packages/benne) des del checkout de Benne
- * i hi aplica els pegats propis (patches/). Afecta tots els jocs: revisa el diff abans de fer-ne commit,
- * perquè el pegat no recull tots els canvis que s'han fet al motor (vegeu packages/benne/README.md).
+ * i hi aplica els pegats propis (patches/motor-benne.patch, tots els canvis nostres; `npm run benne:pegat` el refà).
+ * Afecta tots els jocs: revisa el diff abans de fer-ne commit.
  *
  * No executa cap codi de Benne: només copia fitxers. Després: `npm run benne:sync -- --init`
  * i, dins del projecte, `npm install && npm run dev`.
@@ -22,6 +22,7 @@ import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { spawnSync } from 'node:child_process';
 import { jocAdapterDir, loadJocBenne } from './joc-benne.js';
+import { SHARED_DIRS, SHARED_FILES } from './motor-paths.js';
 import { ROOT, jocDir } from '../../tools/joc.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -59,17 +60,6 @@ const benneVersion = JSON.parse(readFileSync(join(src, 'benne-editor/package.jso
 // ─── 1. Motor compartit (només amb --motor; com scripts/bundle-extension-scaffold.mjs) ─
 
 if (values.motor) {
-  const SHARED_DIRS = ['src/engine', 'src/editor', 'src/types', 'electron', 'scripts/lib'];
-  const SHARED_FILES = [
-    'src/main.ts', 'src/style.css',
-    'scripts/generate-game-ids.mjs', 'scripts/resolveBennePreviewOutDir.mjs', 'scripts/package-itch.mjs',
-    'scripts/prepare-desktop.mjs', 'scripts/smoke-desktop.cjs', 'scripts/run-electron-test.cjs', 'scripts/test-webgl-recovery.cjs',
-    'electron-builder.config.cjs',
-    'vite.config.ts', 'vite.room-preview.config.ts', 'vite.character-preview.config.ts', 'vite.gui-preview.config.ts',
-    'vite.inventory-preview.config.ts', 'vite.benne-play.config.ts', 'vite-plugin-bennegame-ids.ts', 'vite-plugin-bennescript.ts',
-    'tsconfig.json', 'index.html', 'room-editor.html', 'character-editor.html', 'gui-editor.html', 'inventory-editor.html',
-    'benne-play.html', '.claude/skills/bennescript/SKILL.md', '.agents/skills/bennescript/SKILL.md',
-  ];
   for (const dir of SHARED_DIRS) {
     rmSync(join(MOTOR, dir), { recursive: true, force: true });
     cpSync(join(src, dir), join(MOTOR, dir), { recursive: true });

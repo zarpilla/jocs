@@ -16,6 +16,7 @@
     "font": "python3 tools/font/aiguaverne_font.py",
     "benne:create": "tsx ../../adapters/benne/create-project.ts",
     "benne:sync": "tsx ../../adapters/benne/sync.ts",
+    "benne:pegat": "tsx ../../adapters/benne/refes-pegat.ts",
     "dev": "npm run dev --prefix aigua-verne",
     "build": "npm run build --prefix aigua-verne",
     "textos": "tsx ../../tools/textos.ts"

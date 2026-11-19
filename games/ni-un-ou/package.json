@@ -16,6 +16,7 @@
     "font": "python3 tools/font/niunou_font.py",
     "benne:create": "tsx ../../adapters/benne/create-project.ts",
     "benne:sync": "tsx ../../adapters/benne/sync.ts",
+    "benne:pegat": "tsx ../../adapters/benne/refes-pegat.ts",
     "dev": "npm run dev --prefix ni-un-ou",
     "build": "npm run build --prefix ni-un-ou",
     "textos": "tsx ../../tools/textos.ts"
