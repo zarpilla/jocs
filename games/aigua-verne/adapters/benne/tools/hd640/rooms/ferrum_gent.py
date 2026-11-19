@@ -41,13 +41,16 @@ _CABELL = (COAL, PLANKF, RUSTF, IRONF, MUSTARD)
 _PELL = (SKINF, SKINF, SKINF)
 
 
+SEIENT = 0.25                                                         # l'alçada d'una caixa per seure, per h
+
+
 def _row(cv, y, xa, xb, ramp, lvl):
     for x in range(int(round(xa)), int(round(xb)) + 1):
         cv.put(x, y, ramp, lvl(x) if callable(lvl) else lvl)
 
 
 def persona(cv, x, yf, h=80, facing=-1, var=0, tipus='miner', hold=None, light_from=1, casc=None, lamp=True,
-            cua=False, mocador=None):
+            cua=False, mocador=None, seated=False, cap=None, ample=None):
     s = h / 80.0
     f, lf = facing, light_from
     nen = tipus in ('nen', 'nena')
@@ -62,17 +65,20 @@ def persona(cv, x, yf, h=80, facing=-1, var=0, tipus='miner', hold=None, light_f
         u = (xx - cx) / max(1.0, half)
         return base + u * lf * 0.9 - (0.7 if u * lf < -0.8 else 0)
 
-    cap_h = h / (5.6 if nen else 7.4)
+    cap_h = h / (cap or (5.6 if nen else 7.4))                        # `cap`: quants caps fa d'alt
     head_rx, head_ry = cap_h * 0.40, cap_h * 0.5
-    top = yf - h
+    # assegut (en una caixa d'alçada SEIENT·h, amb els peus a terra a `yf`): el cos baixa fins que el maluc toca el
+    # seient; les cuixes van endavant, horitzontals, i les canyelles avall
+    drop = h * ((0.47 if not nen else 0.44) - SEIENT) if seated else 0.0
+    top = yf - h + drop
     lean = (2.2 * s if vell else 0.6 * s) * f                         # el vell, una mica corbat endavant
     hcx = x + lean * 1.4 + f * 0.6 * s
     hcy = top + head_ry
     neck_y = top + cap_h * 0.98
     sh_y = top + cap_h * 1.18                                         # les espatlles
-    hip_y = yf - h * (0.47 if not nen else 0.44)
+    hip_y = yf - h * (0.47 if not nen else 0.44) + drop
     knee_y = yf - h * 0.26
-    sw = h * (0.105 if not nen else 0.12)                             # mitja amplada de les espatlles (tres quarts)
+    sw = h * (ample or (0.105 if not nen else 0.12))                  # mitja amplada de les espatlles (tres quarts)
     if tipus == 'dona':
         sw *= 0.88
     hw = sw * 0.78                                                    # mitja amplada dels malucs
@@ -80,7 +86,7 @@ def persona(cv, x, yf, h=80, facing=-1, var=0, tipus='miner', hold=None, light_f
     # ── les cames ──
     faldilla = tipus == 'dona' or tipus == 'nena'
     peu_dav = x + f * 1.6 * s                                         # la cama de davant, una mica avançada
-    for k, lx in ((1, x - f * 2.6 * s), (0, peu_dav + f * 0.8 * s)):  # primer la del darrere
+    for k, lx in (() if seated else ((1, x - f * 2.6 * s), (0, peu_dav + f * 0.8 * s))):  # primer la del darrere
         for yy in range(int(hip_y), int(yf - 2.5 * s) + 1):
             t = (yy - hip_y) / max(1.0, yf - hip_y)
             w = (3.5 - 1.6 * t) * s if not (nen and tipus == 'nen' and yy > knee_y - 3 * s) else 1.7 * s
@@ -99,8 +105,11 @@ def persona(cv, x, yf, h=80, facing=-1, var=0, tipus='miner', hold=None, light_f
             a, b = cx - 2.4 * s - max(0, -f) * 2.6 * s, cx + 2.4 * s + max(0, f) * 2.6 * s
             _row(cv, yy, a, b, COAL, lambda xx: 2.0 + (1.0 if yy == int(yf - 2.5 * s) else 0) - k * 0.6)
 
+    if seated:
+        _cames_assegut(cv, x, yf, hip_y, h, s, f, tipus, var, baix, skin, sh)
+
     # ── la faldilla (les dones fins al turmell, les nenes fins als genolls) ──
-    if faldilla:
+    if faldilla and not seated:
         y1 = yf - (5 * s if tipus == 'dona' else h * 0.24)
         for yy in range(int(hip_y - 4 * s), int(y1) + 1):
             t = (yy - hip_y) / max(1.0, y1 - hip_y)
@@ -116,7 +125,9 @@ def persona(cv, x, yf, h=80, facing=-1, var=0, tipus='miner', hold=None, light_f
     # ── el tors ──
     bot = hip_y + (h * 0.07 if tipus in ('miner', 'nen') else h * 0.02)    # la jaqueta tapa el maluc
     if vell:
-        bot = knee_y - 2 * s                                          # l'abric, fins sota el genoll
+        bot = knee_y - 2 * s
+    if seated:
+        bot = min(bot, hip_y - 1.5 * s)                               # assegut, la jaqueta no tapa la cuixa                                          # l'abric, fins sota el genoll
     for yy in range(int(sh_y), int(bot) + 1):
         t = (yy - sh_y) / max(1.0, hip_y - sh_y)
         if t < 0.12:                                                  # les espatlles, arrodonides
@@ -156,10 +167,14 @@ def persona(cv, x, yf, h=80, facing=-1, var=0, tipus='miner', hold=None, light_f
     # el braç del darrere (del costat contrari a on mira), quasi tot amagat
     brac(1, x - f * sw * 0.55 + lean, x - f * sw * 0.7, hip_y - 1 * s, jack)
     # el de davant
-    if hold == 'bidon':
+    if hold == 'bidon' and seated:
+        hx, hy = x + f * h * 0.14, hip_y - 4 * s
+    elif hold == 'bidon':
         hx, hy = x + f * sw * 0.45 + lean * 0.3, hip_y + 2 * s
     elif hold == 'got':
         hx, hy = x + f * sw * 0.9 + lean, sh_y + 9 * s
+    elif seated:                                                      # la mà, sobre la cuixa
+        hx, hy = x + f * h * 0.11, hip_y - 1.5 * s
     elif hold == 'butxaca':
         hx, hy = x + f * sw * 0.2, hip_y - 2 * s
     else:
@@ -255,6 +270,43 @@ def persona(cv, x, yf, h=80, facing=-1, var=0, tipus='miner', hold=None, light_f
         cv.disc(hcx - f * head_rx * 0.1, cy, head_rx * 1.12, head_ry * 0.45, JACK if vell else jack,
                 lambda nx, ny: 2.2 + nx * lf * 0.7 - ny * 0.4)
         _row(cv, int(cy + head_ry * 0.3), hcx, hcx + f * head_rx * 1.45, COAL, 2.0)
+
+
+def _cames_assegut(cv, x, yf, hip_y, h, s, f, tipus, var, baix, skin, sh):
+    """Les cames d'algú assegut, de tres quarts: la cuixa endavant (horitzontal), el genoll, la canyella avall i la
+    sabata a terra. Primer la del darrere (més fosca i una mica enrere)."""
+    thigh = h * 0.24
+    for k, dx in ((1, -f * 2.2 * s), (0, f * 0.6 * s)):
+        kx = x + f * thigh + dx                                       # el genoll
+        # la canyella: del genoll a terra, una mica enrere (els peus sota el genoll)
+        sx = kx - f * 1.2 * s
+        for yy in range(int(hip_y), int(yf - 2.5 * s) + 1):
+            t = (yy - hip_y) / max(1.0, yf - hip_y)
+            w = (2.9 - 0.9 * t) * s
+            cx = kx + (sx - kx) * t
+            if tipus == 'nena':
+                ramp, lvl = (GREYH, 2.0) if var % 2 else (COAL, 2.6)
+            elif tipus == 'nen':                                      # pantalons curts: el genoll i el mitjó
+                ramp = GREYH if t > 0.45 else skin
+                lvl = 2.6 if ramp is GREYH else 3.2
+            else:
+                ramp, lvl = baix, 2.2
+            _row(cv, yy, cx - w, cx + w, ramp, lambda xx, cx=cx, w=w, lvl=lvl: sh(xx, cx, w, lvl - k * 0.8))
+        for yy in range(int(yf - 2.5 * s), int(yf) + 1):              # la sabata, la punta endavant
+            a, b = sx - 2.4 * s - max(0, -f) * 2.6 * s, sx + 2.4 * s + max(0, f) * 2.6 * s
+            _row(cv, yy, a, b, COAL, lambda xx: 2.0 + (1.0 if yy == int(yf - 2.5 * s) else 0) - k * 0.6)
+        # la cuixa: del maluc al genoll, horitzontal (la de davant tapa la del darrere)
+        ramp = baix
+        for yy in range(int(hip_y - 3.6 * s), int(hip_y + 2.6 * s) + 1):
+            a, b = sorted((x - f * 2.5 * s + dx, kx + f * 2.4 * s))
+            top_ = yy < hip_y - 2.4 * s
+            _row(cv, yy, a, b, ramp, lambda xx: 2.6 + (0.7 if top_ else 0) - (0.6 if yy > hip_y + 1.6 * s else 0)
+                 - k * 0.8 + (xx - x) * f * 0.03)
+    if tipus == 'nena':                                               # el vestit, sobre la falda i fins al genoll
+        for yy in range(int(hip_y - 8 * s), int(hip_y + 3.4 * s) + 1):
+            a, b = sorted((x - f * 4 * s, x + f * (thigh + 3.4 * s)))
+            _row(cv, yy, a, b, baix, lambda xx: 2.6 + (0.6 if yy < hip_y - 2.6 * s else 0)
+                 - (0.6 if int(xx) % 5 == 0 and yy > hip_y else 0))
 
 
 def persona_c(cv, *a, **kw):

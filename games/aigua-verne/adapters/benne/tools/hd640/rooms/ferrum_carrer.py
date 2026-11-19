@@ -374,7 +374,7 @@ def piquet(e, tex):
     e.quad('pancarta', A, B, (B[0], yb, B[2]), (A[0], yb, A[2]), tex=(T['pancarta'], (x0f, 126, x1f, 218)),
            dues_cares=True)
     # la canalla, en caixes, i el bidó
-    peus = ((206, 160, 244, 229, 224, 226), (258, 160, 296, 231, 278, 228), (292, 160, 314, 225, 302, 222))
+    peus = ((204, 140, 242, 229, 224, 226), (262, 140, 298, 231, 282, 228), (298, 140, 320, 225, 308, 222))
     for i, ((nx, nz), (x0, y0, x1, y1, fx, fy)) in enumerate(zip(NENS, peus)):
         e.sprite(f'nen{i}', T['canalla'].crop((x0, y0, x1, y1)), (fx - x0, fy - y0), (nx, 0, nz), escala_img=KP)
     e.sprite('bido', T['bido'].crop((236, 192, 268, 227)), (16, 32), (BIDO[0], 0, BIDO[1]), escala_img=KP)

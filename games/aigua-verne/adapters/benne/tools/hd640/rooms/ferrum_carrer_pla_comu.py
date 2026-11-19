@@ -24,7 +24,8 @@ from hd640.rooms.ferrum_comu import (
     RH, SMOG, HAZE, SLAGF, SOOT, MORTAR, COB, COAL, IRONF, RUSTF, TIN, PLANKF, WHITEV, BLUEV, REDV, BLACKT, LED,
     FIREF, GLOWF, CLOTH, REDP, WATER, HELM, WARMG,
     smog_sky, canonada, far_skyline, brick_wall, brick_lvl, soot_top, window, cobbles, panell, font_verne,
-    pila_comptadors, miner, smoke_frames, chimney, qtext, miner_c)
+    pila_comptadors, smoke_frames, chimney, qtext)
+from hd640.rooms.ferrum_gent import persona_c
 
 Canvas1x = Canvas                 # (llenços auxiliars en píxels de sala: figures, textos)
 
@@ -463,12 +464,14 @@ def caixa(cv, x0, y0, x1, y1, seed=0):
 
 def canalla(cv):
     """La canalla del piquet, asseguda vora el foc (figures de fons)."""
-    caixa(cv, 216, 214, 232, 226, 1)
-    miner_c(cv, 226, 216, h=54, facing=1, var=1, kid=True, seated=True, light_from=1, lamp=False)
-    caixa(cv, 270, 216, 286, 228, 2)
-    miner_c(cv, 278, 218, h=56, facing=-1, var=3, kid=True, seated=True, light_from=-1, hold='got')
+    # criatures de 8–10 anys a la mida dels personatges (un adult fa ≈98): ≈0,7 d'alt, el cap gran i el cos prim
+    kw = dict(cap=4.6, ample=0.085)
+    caixa(cv, 214, 209, 234, 226, 1)
+    persona_c(cv, 220, 226, h=68, facing=1, var=1, tipus='nen', seated=True, light_from=1, **kw)
+    caixa(cv, 272, 211, 292, 228, 2)
+    persona_c(cv, 286, 228, h=66, facing=-1, var=3, tipus='nena', seated=True, light_from=-1, hold='got', **kw)
     # una nena dreta, amb una garrafa buida, mirant la font
-    miner_c(cv, 302, 222, h=58, facing=1, var=2, kid=True, light_from=-1, hold='bidon', lamp=False)
+    persona_c(cv, 308, 222, h=72, facing=1, var=2, tipus='nena', light_from=-1, hold='bidon', **kw)
 
 
 # ─── El terra, les ombres ──────────────────────────────────────────────────
