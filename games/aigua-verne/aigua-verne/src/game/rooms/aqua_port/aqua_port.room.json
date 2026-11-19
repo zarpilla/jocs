@@ -18,24 +18,48 @@
         "active": true,
         "points": [
           {
-            "x": 150,
+            "x": 0,
             "y": 251
           },
           {
-            "x": 154,
-            "y": 234
+            "x": 0,
+            "y": 250
           },
           {
-            "x": 142,
-            "y": 198
+            "x": 71,
+            "y": 236
           },
           {
-            "x": 304,
-            "y": 185
+            "x": 102,
+            "y": 251
+          },
+          {
+            "x": 116,
+            "y": 251
+          },
+          {
+            "x": 176,
+            "y": 237
+          },
+          {
+            "x": 137,
+            "y": 222
+          },
+          {
+            "x": 233,
+            "y": 203
+          },
+          {
+            "x": 272,
+            "y": 192
+          },
+          {
+            "x": 294,
+            "y": 186
           },
           {
             "x": 639,
-            "y": 168
+            "y": 166
           },
           {
             "x": 639,
@@ -46,7 +70,7 @@
             "y": 236
           },
           {
-            "x": 540,
+            "x": 555,
             "y": 251
           }
         ],
@@ -56,43 +80,43 @@
             "active": true,
             "points": [
               {
-                "x": 254,
+                "x": 453,
                 "y": 194
               },
               {
-                "x": 245,
+                "x": 437,
                 "y": 191
               },
               {
-                "x": 227,
+                "x": 417,
                 "y": 190
               },
               {
-                "x": 207,
+                "x": 399,
                 "y": 191
               },
               {
-                "x": 190,
+                "x": 389,
                 "y": 194
               },
               {
-                "x": 184,
+                "x": 392,
                 "y": 199
               },
               {
-                "x": 192,
+                "x": 407,
                 "y": 202
               },
               {
-                "x": 212,
+                "x": 430,
                 "y": 204
               },
               {
-                "x": 235,
+                "x": 450,
                 "y": 203
               },
               {
-                "x": 251,
+                "x": 458,
                 "y": 199
               }
             ]
@@ -102,36 +126,36 @@
             "active": true,
             "points": [
               {
-                "x": 491,
-                "y": 193
+                "x": 342,
+                "y": 210
               },
               {
-                "x": 467,
-                "y": 189
+                "x": 321,
+                "y": 204
               },
               {
-                "x": 440,
-                "y": 189
+                "x": 291,
+                "y": 204
               },
               {
-                "x": 423,
-                "y": 192
+                "x": 265,
+                "y": 208
               },
               {
-                "x": 427,
-                "y": 198
+                "x": 258,
+                "y": 216
               },
               {
-                "x": 451,
-                "y": 203
+                "x": 277,
+                "y": 223
               },
               {
-                "x": 482,
-                "y": 203
+                "x": 313,
+                "y": 224
               },
               {
-                "x": 498,
-                "y": 199
+                "x": 340,
+                "y": 218
               }
             ]
           },
@@ -207,29 +231,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 0,
-          "y": 2
+          "x": 49,
+          "y": 60
         },
         {
-          "x": 152,
-          "y": 2
+          "x": 165,
+          "y": 60
         },
         {
-          "x": 152,
-          "y": 234
+          "x": 165,
+          "y": 249
         },
         {
-          "x": 0,
-          "y": 234
+          "x": 49,
+          "y": 249
         }
       ],
       "walkToPoint": {
-        "x": 171,
-        "y": 237
+        "x": 152,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 76,
-        "y": 234
+        "x": 107,
+        "y": 249
       },
       "defaultVerb": "open"
     },
@@ -240,29 +264,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 298,
-          "y": 86
+          "x": 282,
+          "y": 85
         },
         {
-          "x": 317,
-          "y": 86
+          "x": 303,
+          "y": 85
         },
         {
-          "x": 317,
-          "y": 111
+          "x": 303,
+          "y": 112
         },
         {
-          "x": 298,
-          "y": 111
+          "x": 282,
+          "y": 112
         }
       ],
       "walkToPoint": {
-        "x": 365,
-        "y": 184
+        "x": 334,
+        "y": 186
       },
       "lookAtPoint": {
-        "x": 307,
-        "y": 111
+        "x": 292,
+        "y": 112
       },
       "defaultVerb": "open"
     },
@@ -305,28 +329,28 @@
       "zIndex": 3,
       "points": [
         {
-          "x": 167,
+          "x": 376,
           "y": 43
         },
         {
-          "x": 255,
+          "x": 472,
           "y": 43
         },
         {
-          "x": 255,
+          "x": 472,
           "y": 202
         },
         {
-          "x": 167,
+          "x": 376,
           "y": 202
         }
       ],
       "walkToPoint": {
-        "x": 259,
+        "x": 473,
         "y": 206
       },
       "lookAtPoint": {
-        "x": 211,
+        "x": 424,
         "y": 202
       }
     },
@@ -337,20 +361,20 @@
       "zIndex": 4,
       "points": [
         {
-          "x": 398,
-          "y": 134
+          "x": 334,
+          "y": 131
         },
         {
-          "x": 463,
-          "y": 134
+          "x": 390,
+          "y": 131
         },
         {
-          "x": 463,
-          "y": 165
+          "x": 390,
+          "y": 159
         },
         {
-          "x": 398,
-          "y": 165
+          "x": 334,
+          "y": 159
         }
       ],
       "walkToPoint": {
@@ -358,8 +382,8 @@
         "y": 180
       },
       "lookAtPoint": {
-        "x": 430,
-        "y": 165
+        "x": 362,
+        "y": 159
       }
     },
     {
@@ -418,8 +442,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 172,
-        "y": 202
+        "x": 355,
+        "y": 198
       },
       "lookAtPoint": {
         "x": 244,
@@ -434,16 +458,16 @@
       "active": true,
       "scaleEnabled": true,
       "scaleWalkSpeed": true,
-      "scaleTop": 0.529,
+      "scaleTop": 0.514,
       "scaleBottom": 1.15,
       "points": [
         {
           "x": 0,
-          "y": 166
+          "y": 164
         },
         {
           "x": 639,
-          "y": 166
+          "y": 164
         },
         {
           "x": 639,
@@ -541,7 +565,7 @@
       "animations": {
         "davant_panell": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 182
     },
     {
@@ -553,8 +577,8 @@
       "animations": {
         "davant_caixes": {}
       },
-      "zIndex": 22,
-      "baseline": 199
+      "zIndex": 28,
+      "baseline": 217
     },
     {
       "id": "davant_grua",
@@ -565,8 +589,8 @@
       "animations": {
         "davant_grua": {}
       },
-      "zIndex": 23,
-      "baseline": 200
+      "zIndex": 24,
+      "baseline": 196
     },
     {
       "id": "davant",
@@ -577,16 +601,40 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 24,
+      "zIndex": 32,
       "baseline": 999
+    },
+    {
+      "id": "davant_nau",
+      "tag": "davant_nau",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_nau": {}
+      },
+      "zIndex": 26,
+      "baseline": 204
+    },
+    {
+      "id": "davant_rampa",
+      "tag": "davant_rampa",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_rampa": {}
+      },
+      "zIndex": 30,
+      "baseline": 233
     }
   ],
   "characters": [
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 201,
-      "y": 233,
+      "x": 208,
+      "y": 245,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -595,8 +643,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 243,
-      "y": 227,
+      "x": 248,
+      "y": 230,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

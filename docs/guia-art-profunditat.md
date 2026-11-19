@@ -291,9 +291,9 @@ personatges en 3/4, la respiració i les micro-accions. Queda pendent:
 
 - Rètols petits que no es llegeixen en escorç: el «C-7» de la nau al jardí de Verdant. S'ha de dibuixar més gros al
   pla.
-- La Cantimplora canònica (`cantimplora_comu.py`) ja és al port de Terra-2, a la portada i al pròleg; falta posar-la
-  al carrer de Ferrum, al port d'Aqua, al jardí de Verdant i als crèdits (quan hi sigui, cal treure aquest ítem).
-- Al port d'Aqua no es pot passar per darrere de la grua.
+- La Cantimplora canònica (`cantimplora_comu.py`) ja és al port de Terra-2, a la portada, al pròleg i al port
+  d'Aqua; falta posar-la al carrer de Ferrum, al jardí de Verdant i als crèdits (quan hi sigui, cal treure aquest
+  ítem).
 - Els crèdits i els postcrèdits no s'han tocat.
 
 - **Pati de la granja (Aigua Verne).** Fet en 3D (`granja_pati.py`): la casa girada amb el teulat, el pou vist des de

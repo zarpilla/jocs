@@ -7,14 +7,20 @@ on hi ha el far: dos punts de fuga. On hi havia l'aigua del port, ara hi ha un f
 la vora i el fons del mar sec (la plana de sal, amb la barca encallada al peu de l'escullera i els mercants lluny) només
 es veu de lluny. A la cara de l'escullera, les ratlles de sal de l'aigua de cada any i l'**escala del port**, que baixa
 graó a graó i s'acaba a l'aire. Al moll: la **grua** vella (el pedestal, la caseta girada amb tres cares, la ploma de
-gelosia que surt per damunt del buit) amb la **cistella** penjada sobre el forat, norais, caixes de peix, el rètol
-PROHIBIT BANYAR-SE i el **panell del preu**, girat. A l'esquerra, la Cantimplora aparcada, tallada pel quadre (primer
-pla), amb la **rampa** estesa fins al moll; a baix a la dreta, un norai i una corda en primer pla. La **Canonada**, a
-l'horitzó.
+gelosia que surt cap a l'esquerra per damunt del buit, per davant del far) amb la **cistella** penjada sobre el forat;
+norais, caixes de peix, el rètol PROHIBIT BANYAR-SE i el **panell del preu**, girat. A l'esquerra, la **Cantimplora**
+(el model canònic de cantimplora_comu.py), aparcada de biaix: la popa amb els motors cap a la vora del moll, i el buc
+panxut (el nom, la matrícula, els dipòsits) que ve cap a la càmera i surt del quadre per l'esquerra (el primer pla de
+l'esquerra); la porta de la bodega oberta i encesa, i la **rampa** estesa fins al moll. A baix a la dreta, un norai i
+una corda en primer pla. La **Canonada**, a l'horitzó.
 
-Llum freda de migdia: el sol alt, una mica darrere a la dreta: ombres curtes cap endavant i a l'esquerra.
+Es passa per darrere de la grua (el moll continua entre el pedestal i la vora), de les caixes, del panell, del rètol, de
+la rampa i de la popa de la nau.
 
-El detall (el casc de la Cantimplora, la caseta de la grua, la cistella, el far, la barca, els vaixells, el rètol i el
+Llum freda de migdia: el sol alt, una mica darrere a la dreta: ombres curtes cap endavant i a l'esquerra (també la de
+la nau); la nau, barrejada amb el blanc fred del cel i la sal (`to`).
+
+El detall (la caseta de la grua, la cistella, el far, la barca, els vaixells, el rètol i el
 panell) ve del port pla de sempre (aqua_port_pla_comu.py), dibuixat de cara i projectat.
 Decorat: `grua_arreglada` (llum verd a la cabina, projectat per la cara de la caseta). ANIMS: `calitja` (l'horitzó
 tremola), `pols` (pols de sal), `llum_canonada` (el llum vermell del cim).
@@ -32,8 +38,8 @@ from hd.rooms.exterior import fbm, smooth
 from hd640.rooms import aqua_port_pla_comu as PL
 from hd640.rooms.aqua_comu import (RH, SALT, SAND, STONEA, ALGA, WOODG, PAINTW, RUSTA, OCHRE, STEELA, BLACKT, ROPEA,
                                    cel, canonada, canonada_llum, panell, calitja_frames, pols_frames, _voronoi)
+from hd640.rooms.cantimplora_comu import Cantimplora
 from hd640.tres_d import Camera, Escena, Llum
-from hd1280.canvas2x import Canvas2x
 
 BOTTOM = RH - 1                                    # la sala acaba aquí (a sota, la barra de verbs)
 HOR = 92                                           # l'horitzó (la càmera no mira avall: les verticals, verticals)
@@ -53,20 +59,24 @@ _EL = math.hypot(ESC_T[0] - ESC_N[0], ESC_T[1] - ESC_N[1])
 ESC_D = ((ESC_T[0] - ESC_N[0]) / _EL, 0.0, (ESC_T[1] - ESC_N[1]) / _EL)   # al llarg de la cara (cap a la punta)
 ESC_NN = (ESC_D[2], 0.0, -ESC_D[0])                # la normal de la cara (cap a la càmera)
 ESC_ANG = math.atan2(ESC_D[2], ESC_D[0])
-GRUA = (70.0, 680.0)                               # l'eix del pedestal de la grua (x, z)
+GRUA = (330.0, 600.0)                             # l'eix del pedestal de la grua (x, z)
 PED_R, PED_H = 24.0, 118.0
 CAS_ANG = -0.5                                     # la caseta, girada: el davant (la cabina) mira cap a la càmera
-TIP = (300.0, 270.0, 1060.0)                       # la punta de la ploma, damunt el buit
+TIP = (250.0, 270.0, 1000.0)                       # la punta de la ploma, damunt el buit (cap a l'esquerra)
 CIST_Y = 150.0                                     # l'alçada del ganxo de la cistella
-CAIXES = (380.0, 590.0)                            # les caixes de peix (x, z)
+CAIXES = (150.0, 560.0)                            # les caixes de peix (x, z)
 RETOL = (470.0, 712.0)
 PANELL = (590.0, 630.0)                            # el panell del preu (x, z), girat cap al moll
 PANELL_ANG = -0.75
 NORAIS = ((-10.0, ZE - 14), (700.0, ZE - 14))
 NORAI_PROP = (395.0, 372.0)                        # el norai del primer pla, a baix a la dreta
-# la Cantimplora: el costat del casc és un pla dret de A a B (x, z), amb el dibuix pla de 86 × 196 px
-CAN_A, CAN_B = (-190.0, 560.0), (-100.0, 660.0)
-CAN_TOP = 336.0
+# La Cantimplora (el model canònic, cantimplora_comu): aparcada a l'esquerra, de biaix, amb la popa (els motors) cap
+# a la vora del moll i la proa que ve cap a la càmera i surt del quadre per l'esquerra; la porta, a babord (el costat
+# que es veu), amb la rampa estesa fins al moll. (Les potes de l'altre costat, a popa, queden amagades darrere el buc.)
+NAU = Cantimplora(popa=(-8.0, 731.0), rumb=math.radians(210), porta='babord')
+PORTA_L, RAMPA_OUT, NR = NAU.PORTA_L, NAU.RAMPA_OUT, NAU.NR
+SOL = (0.146, 0.973, 0.243)                        # cap al sol (el de LLUMS): ombres cap endavant i a l'esquerra
+TO = ((214, 226, 242), 0.14)                       # la llum freda d'Aqua (el cel blanc, la sal): la nau s'hi barreja
 VAIXELLS = ((-300.0, 9000.0, 1), (-2600.0, 15000.0, 2))
 VELERO = (60.0, 6200.0)
 
@@ -76,7 +86,7 @@ def _esc(s, y=0.0, n=0.0):
     return (ESC_N[0] + ESC_D[0] * s + ESC_NN[0] * n, y, ESC_N[1] + ESC_D[2] * s + ESC_NN[2] * n)
 
 
-BARCA = _esc(_EL - 1000, -D, 340)                  # la barca encallada, al peu de l'escullera
+BARCA = _esc(_EL - 200, -D, 340)                   # la barca encallada, al peu de l'escullera
 STAIR = [(_EL - 2300 + i * 70, TOPW - 4 - i * 38) for i in range(13)]   # els graons (s, y del trepig), de dalt a baix
 
 QUAY = PL.QUAY
@@ -108,7 +118,6 @@ def _pla(fn, C=Canvas):
 @functools.lru_cache(maxsize=None)
 def _textures():
     return {
-        'casc': _pla(PL.cantimplora_casc, Canvas2x),          # (a 2×: es veu de molt a prop)
         'caseta': _pla(PL.caseta),
         'cistella': _pla(PL.cistella),
         'far': _pla(PL.far),
@@ -434,8 +443,8 @@ def grua(e, tex):
            tex=(tex['caseta'], (x0 - 1, y0 - 5, x1 + 1, y1 + 1)))
     e.quad('grua', _cas(-a - 4, Y1 + 5, b + 4), _cas(a + 4, Y1 + 5, b + 4), _cas(a + 4, Y1 + 5, -b - 4),
            _cas(-a - 4, Y1 + 5, -b - 4), ramp=OCHRE, lvl=lambda s, t, P: 5.4 - (1.0 if s % 30 < 1.5 else 0))
-    # la ploma de gelosia: del peu (davant la cabina, a baix a la dreta) fins a la punta, damunt el buit
-    foot = _cas(a - 10, Y0 + 14, -b - 6)
+    # la ploma de gelosia: del peu (davant la caseta, a baix a l'esquerra) fins a la punta, damunt el buit
+    foot = _cas(-a + 10, Y0 + 14, -b - 6)
     n = 14
     dx, dy, dz = TIP[0] - foot[0], TIP[1] - foot[1], TIP[2] - foot[2]
     L = math.sqrt(dx * dx + dy * dy + dz * dz)
@@ -474,48 +483,10 @@ def cistella(e, tex):
     e.sprite('cistella', tex['cistella'], (hx, hy), (TIP[0], CIST_Y, TIP[2]), escala_img=1.6)
 
 
-def _can(t, y):
-    """Un punt del costat del casc de la Cantimplora: `t` = 0..86 px del dibuix pla (d'esquerra a dreta), `y` (món)."""
-    k = t / 86
-    return (CAN_A[0] + (CAN_B[0] - CAN_A[0]) * k, y, CAN_A[1] + (CAN_B[1] - CAN_A[1]) * k)
-
-
-_CAN_LEN = math.hypot(CAN_B[0] - CAN_A[0], CAN_B[1] - CAN_A[1])
-CAN_K = _CAN_LEN / 86                                              # unitats del món per px del dibuix pla
-CAN_N = ((CAN_B[1] - CAN_A[1]) / _CAN_LEN, 0.0, -(CAN_B[0] - CAN_A[0]) / _CAN_LEN)   # cap al moll (i la càmera)
-HINGE_Y = CAN_TOP - 168 * CAN_K                                    # la frontissa de la rampa (y del món)
-RAMPA_L = 160.0
-
-
-def cantimplora(e, tex):
-    # l'ombra del casc i de la rampa al moll
-    m = _add(_can(43, 0.4), CAN_N, 60)
-    _ombra(e, m[0], m[2], 120, 70, 0.55, dx=-0.2, dz=0.0)
-    e.quad('cantimplora', _can(0, CAN_TOP), _can(86, CAN_TOP), _can(86, CAN_TOP - 196 * CAN_K),
-           _can(0, CAN_TOP - 196 * CAN_K), tex=(tex['casc'], (0, 0, 86, 196), 2))
-    # la pota d'aterratge i els pistons de la rampa
-    pe = _add(_can(72, 0), CAN_N, 70)
-    e.cable('cantimplora', [_can(72, CAN_TOP - 150 * CAN_K), _add(pe, (0, 8, 0))], STEELA, 3.4, gruix=6)
-    cilindre(e, 'cantimplora', pe[0], pe[2], 16, 0, 6, STEELA, lambda a, y, P: 3.6 + math.cos(a + 0.6), n=12)
-    # la rampa: de la frontissa (la vora de baix de la bodega) fins al moll, xapa de llàgrima i vores ratllades
-    A, B = _can(6, HINGE_Y), _can(56, HINGE_Y)
-    C, Dd = _add(_add(B, CAN_N, RAMPA_L), (0, -HINGE_Y, 0)), _add(_add(A, CAN_N, RAMPA_L), (0, -HINGE_Y, 0))
-    wr = _CAN_LEN * 50 / 86
-
-    def rampa(s, t, P):
-        lvl = 3.6 - t / 400
-        if (int(s / 3) + int(t / 3)) % 3 == 0:
-            lvl += 0.9                                             # la llàgrima
-        return lvl
-    e.quad('rampa', A, B, C, Dd, ramp=STEELA, lvl=rampa)
-    e.quad('rampa_vores', A, _add(A, (B[0] - A[0], 0, B[2] - A[2]), 6 / wr), _add(Dd, (B[0] - A[0], 0, B[2] - A[2]), 6 / wr),
-           Dd, ramp=PL.ORANGEN, lvl=lambda s, t, P: 3.6 if int(t / 14) % 2 else 0.4)
-    e.quad('rampa_vores', _add(B, (A[0] - B[0], 0, A[2] - B[2]), 6 / wr), B, C,
-           _add(C, (A[0] - B[0], 0, A[2] - B[2]), 6 / wr), ramp=PL.ORANGEN,
-           lvl=lambda s, t, P: 3.6 if int(t / 14) % 2 else 0.4)
-    for p0, p1 in ((_can(60, CAN_TOP - 132 * CAN_K), _add(_add(B, CAN_N, 110), (0, -HINGE_Y * 110 / RAMPA_L, 0))),):
-        e.cable('rampa', [p0, p1], STEELA, 4.4, gruix=5)
-        e.cable('rampa', [p0, p1], STEELA, 2.6, gruix=2.5)
+def cantimplora(e):
+    """La Cantimplora canònica, amb la porta oberta i encesa, la rampa estesa fins al moll i l'ombra del sol alt; tota
+    la nau, barrejada amb la llum freda d'Aqua."""
+    NAU.dibuixa(e, ombra={'sol': SOL, 'k': 0.5}, to=TO)
 
 
 def primer_pla(e):
@@ -539,12 +510,13 @@ def escena(cv, tex):
     moll(e)
     for k, (x, z) in enumerate(NORAIS):
         norai(e, 'norai', x, z, corda=[(x + 20, 8, ZE + 2), (x + 26, -30, ZE + 6)] if k == 1 else None)
+    cantimplora(e)                                                 # (la nau té el seu z-buffer: abans del que és davant)
     panell_preu(e, tex)
     retol(e, tex)
     caixes(e)
     grua(e, tex)
-    cantimplora(e, tex)
     primer_pla(e)
+    NAU.resplendor(cv, k=0.7)                                      # la claror càlida de la porta i del finestral
     return e
 
 
@@ -562,6 +534,9 @@ def bg(cv):
     cv.P = cv.img.load()
 
 
+PILOT = _uv((GRUA[0] + (PED_R + 3) * math.sin(CAS_ANG), PED_H - 30, GRUA[1] - (PED_R + 3) * math.cos(CAS_ANG)))
+
+
 def grua_arreglada(cv):
     """La grua arreglada: el finestral de la cabina amb el llum verd del quadre, projectat per la cara de la caseta, i
     el pilot verd del pedestal."""
@@ -569,7 +544,7 @@ def grua_arreglada(cv):
     flat = Canvas(light=PL.LIGHT, transparent=True)
     PL.grua_arreglada(flat)
     cv.img.alpha_composite(e.capa(flat.img, {'grua_caseta'}))
-    u, v = _uv((GRUA[0] + (PED_R + 3) * math.sin(CAS_ANG), PED_H - 30, GRUA[1] - (PED_R + 3) * math.cos(CAS_ANG)))
+    u, v = PILOT
     cv.flat(u, v, (170, 250, 190))
     for dx, dy in ((-1, 0), (1, 0), (0, -1), (0, 1)):
         cv.P[int(u) + dx, int(v) + dy] = (70, 200, 100, 170)
@@ -600,9 +575,12 @@ ANIMS = {'calitja': {'frames': _frames_calitja, 'frameDuration': 160},
          'llum_canonada': {'frames': _frames_llum, 'frameDuration': 250}}
 
 
-def _amo(ids):
+def _amo(ids, menys=None):
+    """La màscara d'una capa del davant: els píxels de les superfícies `ids` (sense la caixa de pantalla `menys`)."""
     def mask(x, y):
         _, e = _base()
+        if menys and menys[0] <= x <= menys[2] and menys[1] <= y <= menys[3]:
+            return False
         return e.ids[e.amo[y * e.cv.w + x]] in ids
     return mask
 
@@ -611,9 +589,17 @@ def _v(x, z):
     return CAM.projecta((x, 0, z))[1]
 
 
+_PU, _PV = int(PILOT[0]), int(PILOT[1])
+
 # Capes del davant: el personatge hi passa per darrere si té els peus més amunt (més lluny) que la seva base.
+# (A la de la grua no hi va el pilot del pedestal ni la caseta: són el decorat `grua_arreglada`, que va per sota.)
 FRONT = [
-    {'id': 'davant_grua', 'mask': _amo({'grua'}), 'baseline': round(_v(GRUA[0], GRUA[1] - PED_R)), 'zIndex': 20},
+    {'id': 'davant_grua', 'mask': _amo({'grua'}, (_PU - 2, _PV - 2, _PU + 2, _PV + 2)),
+     'baseline': round(_v(*GRUA)), 'zIndex': 20},
+    {'id': 'davant_nau', 'mask': _amo({'nau', 'porta', 'cabina_finestres'}),
+     'baseline': round(_v(*NAU.terra(0, NR + 10))), 'zIndex': 20},
+    {'id': 'davant_rampa', 'mask': _amo({'rampa'}),
+     'baseline': round(_v(*NAU.terra(sum(PORTA_L) / 2, RAMPA_OUT * 0.75))), 'zIndex': 20},
     {'id': 'davant_caixes', 'mask': _amo({'caixes'}), 'baseline': round(_v(CAIXES[0], CAIXES[1] - 20)), 'zIndex': 20},
     {'id': 'davant_panell', 'mask': _amo({'panell'}), 'baseline': round(_v(*PANELL)), 'zIndex': 20},
     {'id': 'davant_retol', 'mask': _amo({'retol'}), 'baseline': round(_v(*RETOL)), 'zIndex': 20},
@@ -644,25 +630,67 @@ def _cercle(cx, cz, r, n=10):
     return [_p(cx + r * math.cos(2 * math.pi * i / n), cz + r * math.sin(2 * math.pi * i / n)) for i in range(n)]
 
 
-# El terra on es camina (al món): el moll, de la rampa fins a la dreta, sense arribar a la vora ni al primer pla.
-# El terra on es camina (en pantalla): el moll, del peu de la rampa fins a la dreta, sense pujar a la rampa, sense arribar
-# a la vora (a 34 unitats) ni al primer pla de baix a la dreta.
-_RP = _add(_can(56, 0), CAN_N, RAMPA_L)                            # el peu de la rampa, a la banda del moll
-_WALK = [(150, 251), (round(_uv(_RP)[0]) + 2, round(_uv(_RP)[1])), (142, 198), (304, 185), (639, 168), (639, 222),
-         (575, 236), (540, 251)]
+def _x_u(u, z):
+    """La x del món que cau a la columna `u` de la pantalla, a la fondària z del món (a terra)."""
+    k = (u - CAM.centre[0]) / CAM.f
+    return z * (CAM._sy + k * CAM._cy) / (CAM._cy - k * CAM._sy)
+
+
+def _retalla(poli, dins, tall):
+    """Sutherland–Hodgman: retalla un polígon de pantalla amb un semiplà (`dins(p)`, `tall(a, b)` → el punt de tall)."""
+    out = []
+    for i, p in enumerate(poli):
+        q = poli[i - 1]
+        if dins(p):
+            if not dins(q):
+                out.append(tall(q, p))
+            out.append(p)
+        elif dins(q):
+            out.append(tall(q, p))
+    return out
+
+
+def _tall_v(v0):
+    return lambda a, b: (a[0] + (b[0] - a[0]) * (v0 - a[1]) / (b[1] - a[1]), v0)
+
+
+def _tall_u(u0):
+    return lambda a, b: (u0, a[1] + (b[1] - a[1]) * (u0 - a[0]) / (b[0] - a[0]))
+
+
+# El terra on es camina (al món): el moll, del costat de la nau (sense les potes) i el peu de la rampa fins a la dreta,
+# per davant i per darrere de la grua, fins a 34 unitats de la vora; a baix, la vora de la sala; a la dreta, sense el
+# primer pla. Es projecta i es retalla amb la pantalla.
+_ZB = ZE - 34                                                       # el fons on es camina
+_V_BAIX = 251
+_SL = sum(PORTA_L) / 2
+WALK_MON = [NAU.terra(PORTA_L[1] + 140, 128), NAU.terra(PORTA_L[1] + 6, 128),
+            NAU.terra(PORTA_L[1] + 6, RAMPA_OUT + 6), NAU.terra(PORTA_L[0] - 6, RAMPA_OUT + 6),
+            NAU.terra(PORTA_L[0] - 6, 128), NAU.terra(-30, 128), NAU.terra(-110, 112), (NAU.terra(-110, 112)[0] + 40, _ZB),
+            (_x_u(639, _ZB), _ZB)]
+_W = [CAM.projecta((x, 0, z))[:2] for x, z in WALK_MON] + [(639, 222), (575, 236), (540, 262)]
+_W = _retalla(_W, lambda p: p[1] <= _V_BAIX, _tall_v(_V_BAIX))
+_W = _retalla(_W, lambda p: p[0] >= 0, _tall_u(0))
+_WALK = []
+for u, v in _W:
+    q = (min(639, max(0, round(u))), round(v))
+    if not _WALK or _WALK[-1] != q:
+        _WALK.append(q)
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
-_SPAWN = _uv(_add(_can(56, 0), CAN_N, RAMPA_L + 24))
+_SPAWN = _p(*NAU.terra(_SL, RAMPA_OUT + 22))
+_RAMPA = NAU.rampa_cantons()
 
 GEOMETRIA = {
     'things': {
-        'rampa': {'rect': _rect(_can(0, CAN_TOP - 70 * CAN_K), _can(60, HINGE_Y), _add(_can(56, 0), CAN_N, RAMPA_L)),
-                  'walk': (round(_SPAWN[0]), round(_SPAWN[1]))},
+        'rampa': {'rect': _rect(NAU.buc(PORTA_L[0] - 6, NAU.PORTA_T[1] + 0.06), NAU.buc(PORTA_L[1] + 6, NAU.PORTA_T[1] + 0.06),
+                                *_RAMPA),
+                  'walk': _SPAWN},
         'escala_port': {'rect': _rect(_esc(STAIR[0][0] - 40, TOPW + 50), _esc(STAIR[-1][0] + 40, STAIR[-1][1] - 30, 60)),
                         'walk': _p(560, ZE - 54)},
         'grua': {'rect': _rect((GRUA[0] - PED_R - 8, 0, GRUA[1] - PED_R), (GRUA[0] + PED_R + 8, 0, GRUA[1] - PED_R),
                                _cas(-CAS_W / 2, CAS_Y0 + CAS_H + 5, -CAS_D / 2), _cas(CAS_W / 2, CAS_Y0 + CAS_H + 5, -CAS_D / 2),
                                _cas(-CAS_W / 2, CAS_Y0, CAS_D / 2)),
-                 'walk': _p(GRUA[0] + 40, GRUA[1] - 70)},
+                 'walk': _p(GRUA[0] + 30, GRUA[1] - 70)},
         'cistella': {'rect': _rect((TIP[0] - 22, CIST_Y + 4, TIP[2]), (TIP[0] + 22, CIST_Y - 52, TIP[2])),
                      'walk': _p(TIP[0] - 10, ZE - 54)},
         'vaixells': {'rect': _rect(_add(BARCA, ESC_D, -360), _add(_add(BARCA, ESC_D, 340), (0, 280, 0))),
@@ -670,9 +698,9 @@ GEOMETRIA = {
         'panell_preu': {'rect': _rect(_add((PANELL[0], 70 + 24 * 1.35, PANELL[1]), (math.cos(PANELL_ANG), 0, math.sin(PANELL_ANG)), -34),
                                       _add((PANELL[0], 70, PANELL[1]), (math.cos(PANELL_ANG), 0, math.sin(PANELL_ANG)), 34)),
                         'walk': _p(PANELL[0] - 40, PANELL[1] - 80)},
-        'canonada': {'rect': (CAN_U - 6, 0, CAN_U + 6, HOR - 1), 'walk': (172, 202)},
+        'canonada': {'rect': (CAN_U - 6, 0, CAN_U + 6, HOR - 1), 'walk': _p(GRUA[0] - 90, GRUA[1] + 20)},
     },
-    'spawns': {'iri': (round(_SPAWN[0]) + 30, round(_SPAWN[1]) - 4), 'vet': (round(_SPAWN[0]) + 72, round(_SPAWN[1]) - 10)},
+    'spawns': {'iri': _p(*NAU.terra(_SL - 40, RAMPA_OUT + 50)), 'vet': _p(*NAU.terra(_SL - 95, RAMPA_OUT + 40))},
     'walkable': _WALK,
     'forats': [_cercle(GRUA[0], GRUA[1], PED_R + 22, 10), _cercle(CAIXES[0], CAIXES[1], 50, 8),
                _cercle(PANELL[0], PANELL[1], 22, 6), _cercle(RETOL[0], RETOL[1], 10, 6)],
