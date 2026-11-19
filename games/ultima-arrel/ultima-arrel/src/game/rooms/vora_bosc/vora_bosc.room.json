@@ -242,39 +242,6 @@
       "defaultVerb": "open"
     },
     {
-      "id": "estaca",
-      "active": true,
-      "description": "estaca",
-      "zIndex": 2,
-      "points": [
-        {
-          "x": 238,
-          "y": 191
-        },
-        {
-          "x": 263,
-          "y": 191
-        },
-        {
-          "x": 263,
-          "y": 224
-        },
-        {
-          "x": 238,
-          "y": 224
-        }
-      ],
-      "walkToPoint": {
-        "x": 252,
-        "y": 230
-      },
-      "lookAtPoint": {
-        "x": 250,
-        "y": 224
-      },
-      "defaultVerb": "open"
-    },
-    {
       "id": "bustia",
       "active": true,
       "description": "bústia",
@@ -525,6 +492,48 @@
         "y": 214
       },
       "description": "cargol"
+    },
+    {
+      "id": "estaca",
+      "tag": "estaca",
+      "animations": {
+        "estaca": {}
+      },
+      "zIndex": 3,
+      "baseline": 224,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 238,
+            "y": 191
+          },
+          {
+            "x": 263,
+            "y": 191
+          },
+          {
+            "x": 263,
+            "y": 224
+          },
+          {
+            "x": 238,
+            "y": 224
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 252,
+        "y": 230
+      },
+      "lookAtPoint": {
+        "x": 250,
+        "y": 224
+      },
+      "description": "estaca",
+      "defaultVerb": "open"
     },
     {
       "id": "llum",

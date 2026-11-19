@@ -209,7 +209,7 @@ bolets aixafats»).
 > IRI: Vet, Vet, em sents? Canvi.
 > VET: Et sento! Has trobat un os? Canvi.
 > IRI: He trobat una porta. En un arbre. Canvi.
-> VET: ...Truca. I si hi ha un gnom, pregunta-li si menja melmelada. Canvi i tancat.
+> VET: ...Truca. I si hi ha un gnom, pregunta-li si menja melmelada. Canvi i fora.
 
 **Trencaclosques 1.1 — La porta (mirar, agafar, empènyer).** A la bústia hi ha una nota escrita a mà: «CENTRALETA
 TANCADA PER AVARIA. NO INSISTIU.» La Iri toca la campaneta, i una veu respon des de dins, rondinant: «Està tancat!
@@ -288,7 +288,7 @@ walkie amb el corn (té un botó de gravar), el grava.
 La Iri crida la Vet pel walkie:
 
 > IRI: Vet, Vet. Demà coneixeràs unes fades. Viuen dalt de tot del roure gros. Canvi.
-> VET: *(un silenci molt llarg)* ...Porto la melmelada. Canvi i tancat.
+> VET: *(un silenci molt llarg)* ...Porto la melmelada. Canvi i fora.
 
 ---
 
@@ -349,7 +349,7 @@ no té el pot buit: «He de portar alguna cosa per tancar-ho. Alguna cosa buida.
 > VET: I si no hi soc? Dilluns he d'ajudar l'àvia a la parada de melmelada.
 > URTICA: Doncs que xiuli qui hi sigui. Però que xiuli.
 
-La Vet, al walkie: «Iri. Tinc un xiulet de fada. No et diré com. Canvi i tancat.»
+La Vet, al walkie: «Iri. Tinc un xiulet de fada. No et diré com. Canvi i fora.»
 
 ### Escena 4 — El toll dels gripaus buròcrates (Iri)
 
@@ -404,7 +404,7 @@ La Iri, al walkie, prepara l'escena següent:
 > IRI: Vet. Ens falta l'altaveu de la del vestit blanc. És a la caseta d'obra. Canvi.
 > VET: I per què hi he d'anar jo? Canvi.
 > IRI: Perquè a les nenes de nou anys els regala polseres. Canvi.
-> VET: ...Ja hi vaig. Canvi i tancat.
+> VET: ...Ja hi vaig. Canvi i fora.
 
 ### Escena 5 — La caseta d'obra de NaturaPlus (Vet)
 
@@ -442,7 +442,7 @@ el seu walkie: canal 7. Posa l'altaveu al canal 7 i fa la prova:
 
 > VET: *(al walkie, xiuxiuejant)* Iri. Digues alguna cosa. Canvi.
 > ALTAVEU: *(la veu de la Iri, fortíssima)* QUÈ VOLS QUE DIGUI? CANVI.
-> VET: *(tapant l'altaveu amb el cos)* Perfecte. Canvi i tancat.
+> VET: *(tapant l'altaveu amb el cos)* Perfecte. Canvi i fora.
 
 (Si la Vet fa servir el walkie amb l'altaveu, va directa al canal 7. Si només gira la ruleta, prova canals a l'atzar:
 música d'ascensor, un partit de futbol, un anunci de NaturaPlus... i a la tercera, o si abans ha mirat el walkie,
