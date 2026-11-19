@@ -581,6 +581,11 @@
           }
         ]
       }
+    },
+    "motlle_posat": {
+      "visibleIf": {
+        "flag": "claus_fetes"
+      }
     }
   },
   "onEnter": [

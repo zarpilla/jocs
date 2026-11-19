@@ -10,8 +10,11 @@ campana de ferro (un tronc de piràmide) i la xemeneia que travessa el sostre. A
 de cuir en falca sobre el cavallet, el broc a la tovera del forn i la palanca amb la cadena. Les columnes de ferro
 colat aguanten les bigues del carril de la grua, que fugen cap al fons: a la de l'esquerra hi ha el **termòmetre**
 (el capil·lar va pel terra fins al forn); a la de la dreta, recolzat, el **rascle**. Al costat de la porta, la pila de
-**comptadors** (el **metall**) i una carretilla girada. En primer pla, fosc i tallat per la vora, un pilar de maó, la
-cadena d'un polispast que penja i un munt de carbó.
+**comptadors** (el **metall**) i una carretilla girada. Pel terra, la brossa de la foneria: una pila de lingots
+damunt un palet, el bidó d'aigua amb la cullera, el munt d'escòria amb les tenalles i una filera de lingoteres (es
+passa per darrere dels lingots, el bidó i l'escòria). En primer pla, fosc i tallat per la vora, les caixes de motlles,
+la cadena d'un polispast que penja, un munt de carbó i una enclusa damunt la soca. Les capes del davant tenen la seva
+versió amb el foc (`variants`): si no, la capa, retallada del fons apagat, taparia la llum.
 
 La llum: sense foc, la nau és fosca, amb la claror freda de la porta i dels finestrals (les cares que miren la porta,
 més clares; els racons i el sostre, negres). Amb el forn encès (`forn_ences`, `forn_fort`) la llum del foc ve de la
@@ -57,6 +60,11 @@ MANXA = (536.0, 772.0, -0.62, 112.0, 40.0)         # el fol: la frontissa (x, z)
 METALL = (118.0, 520.0)                            # la pila de comptadors (x, z)
 CARRET = (214.0, 494.0, 0.55)                      # la carretilla (x, z, angle)
 DIAL_Y = 128.0                                     # l'altura del termòmetre a la columna
+LINGOTS = (476.0, 552.0, 0.35)                     # la pila de lingots al palet (x, z, angle)
+LINGOTERES = (580.0, 474.0, -0.18)                 # la filera de lingoteres, a terra, davant (x, z, angle)
+ESCORIA = (628.0, 592.0, 26.0)                     # el munt d'escòria tret del forn (x, z, radi), amb les tenalles
+BIDO = (292.0, 528.0)                              # el bidó d'aigua per refredar les eines (x, z)
+ENCLUSA = (318.0, 388.0, 0.45)                     # l'enclusa damunt la soca, en primer pla (x, z, angle)
 
 CAM = Camera(pos=(520, 185, 60), yaw=-0.16, pitch=0.11, f=430, centre=(330, 108))
 
@@ -379,8 +387,137 @@ def metall(e):
         e.cable('metall', [L(22, 28, w), L(56, 22, w * 1.1), L(58, 0, w * 1.1)], PLANKF, 3.6, gruix=2.2)
 
 
+# ─── La brossa de la foneria (també la fa servir la colada) ───────────────────
+
+def lingots(e, sid, cx, cz, ang, files=4, capes=3, ombra=True):
+    """Una pila de lingots de ferro colat damunt un palet, en capes creuades (cada capa girada 90°), amb la seva
+    ombra. Cada lingot: 30 × 9 × 7, amb els cantons de dalt bisellats (la cara de dalt, més clara)."""
+    L = _local((cx, cz), ang)
+    if ombra:
+        e.foscor(f'ombra_{sid}', L(-38, 0.6, -34), L(38, 0.6, -34), L(38, 0.6, 34), L(-38, 0.6, 34),
+                 lambda s, t: 0.6 * max(0.0, 1 - ((s - 38) / 40) ** 2 - ((t - 34) / 36) ** 2) * 1.5)
+    for u in (-24, 0, 24):                                                                # el palet
+        x, _, z = L(u, 0, 0)
+        e.caixa_girada(sid, x, z, 8, 40, 5, ang, PLANKF, 2.2)
+    e.caixa_girada(sid, cx, cz, 58, 42, 3, ang, PLANKF, 4.2, y0=5,
+                   cares={'dalt': {'ramp': PLANKF, 'lvl': lambda s, t, P: 4.6 - (1.6 if s % 11 < 1.4 else 0)}})
+    lv = {'dalt': {'ramp': IRONF, 'lvl': lambda s, t, P: 6.0 + (fbm(s / 3, t / 3, 13) - 0.5) * 1.4
+                   - (1.6 if s < 1.2 or t < 1.2 else 0)},
+          'davant': {'ramp': RUSTF, 'lvl': lambda s, t, P: 3.6 - t * 0.12 + (fbm(s / 3, t / 2, 14) - 0.5) * 1.2},
+          'dreta': {'ramp': IRONF, 'lvl': 3.0}, 'esquerra': {'ramp': IRONF, 'lvl': 4.4}, 'darrere': {'ramp': IRONF, 'lvl': 3.0}}
+    for k in range(capes):
+        y = 8 + k * 7
+        n = files - (1 if k == capes - 1 and capes > 2 else 0)
+        for i in range(n):
+            off = (i - (n - 1) / 2) * 11
+            if k % 2 == 0:                                                                # al llarg
+                x, _, z = L(0, 0, off)
+                e.caixa_girada(sid, x, z, 44, 9, 7, ang, IRONF, 3.0, y0=y, cares=lv)
+            else:                                                                         # creuats
+                x, _, z = L(off * 1.3, 0, 0)
+                e.caixa_girada(sid, x, z, 9, 36, 7, ang, IRONF, 3.0, y0=y, cares=lv)
+
+
+def lingoteres(e, sid, cx, cz, ang, n=3, ple=0):
+    """Una filera de lingoteres (els motlles oberts dels lingots, de ferro) a terra, una al costat de l'altra; les
+    `ple` primeres, amb un lingot refredat a dins."""
+    L = _local((cx, cz), ang)
+    e.foscor(f'ombra_{sid}', L(-n * 19 - 6, 0.6, -18), L(n * 19 + 6, 0.6, -18), L(n * 19 + 6, 0.6, 18),
+             L(-n * 19 - 6, 0.6, 18), lambda s, t: 0.5 * min(1.0, min(s, t, 2 * n * 19 + 12 - s, 36 - t) / 8))
+    for i in range(n):
+        x, _, z = L((i - (n - 1) / 2) * 38, 0, 0)
+        dins = (lambda s, t: 3 < s < 31 and 3 < t < 15)
+        e.caixa_girada(sid, x, z, 34, 18, 8, ang, IRONF, 2.8,
+                       cares={'dalt': {'ramp': IRONF, 'lvl': lambda s, t, P, d=dins: (0.8 + t * 0.06) if d(s, t)
+                                       else 3.8 + (fbm(s / 3, t / 3, 17 + i) - 0.5)},
+                              'davant': {'ramp': RUSTF, 'lvl': lambda s, t, P: 2.6 + (fbm(s / 4, t / 2, 19) - 0.5) * 1.6},
+                              'dreta': {'ramp': IRONF, 'lvl': 2.0}, 'esquerra': {'ramp': IRONF, 'lvl': 3.0}})
+        if i < ple:
+            e.caixa_girada(sid, x, z, 26, 10, 3, ang, IRONF, 4.0, y0=5.5,
+                           cares={'dalt': {'ramp': IRONF, 'lvl': lambda s, t, P: 4.6 - (1.2 if s < 1 or t < 1 else 0)}})
+
+
+def escoria(e, sid, x, z, r, seed=1, llum_dir=(-0.6, -0.6)):
+    """Un munt d'escòria (la crosta que es treu del metall fos): un bony negre i vidriat amb trossos al voltant."""
+    e.foscor(f'ombra_{sid}', (x - r * 1.6, 0.6, z + r), (x + r * 1.6, 0.6, z + r), (x + r * 1.6, 0.6, z - r * 1.3),
+             (x - r * 1.6, 0.6, z - r * 1.3),
+             lambda s, t: 0.55 * max(0.0, 1 - ((s - r * 1.6) / (r * 1.6)) ** 2 - ((t - r) / (r * 1.15)) ** 2) * 1.5)
+    e.roca(sid, (x, 0, z), r, SLAGF, 2.9, llum_dir=llum_dir, aplana=0.55, seed=seed)
+    for k in range(5):
+        a = hr(k, seed, 7) * 6.28
+        d = r * (0.95 + hr(k, seed, 8) * 0.6)
+        e.roca(sid, (x + math.cos(a) * d * 1.3, 0, z + math.sin(a) * d * 0.8), r * (0.16 + hr(k, seed, 9) * 0.14),
+               SLAGF if k % 2 else RUSTF, 3.2, llum_dir=llum_dir, aplana=0.6, seed=seed * 10 + k)
+
+
+def tenalles(e, sid, x, z, ang, llarg=90):
+    """Unes tenalles de foneria (o una espumadora), llargues, estirades a terra."""
+    L = _local((x, z), ang)
+    for w in (-2.5, 2.5):
+        e.cable(sid, [L(-llarg / 2, 1.2, w), L(llarg / 2 - 16, 1.6, w * 0.6), L(llarg / 2, 2.2, w * 3.2)], IRONF, 5.0,
+                gruix=1.8)
+
+
+def carretilla(e, sid, cx, cz, a, carrega=None):
+    """Una carretilla de foneria de ferro, girada, amb la roda i els mànecs; `carrega`: fn(e, Lo) que hi posa coses."""
+    L = _local((cx, cz), a)
+    e.foscor(f'ombra_{sid}', L(-36, 0.6, -24), L(36, 0.6, -24), L(36, 0.6, 24), L(-36, 0.6, 24),
+             lambda s, t: 0.55 * max(0.0, 1 - ((s - 36) / 36) ** 2 - ((t - 24) / 24) ** 2) * 1.5)
+    e.caixa_girada(sid, cx, cz, 50, 32, 16, a, IRONF, 2.8, y0=14,
+                   cares={'dalt': {'ramp': COB, 'lvl': lambda s, t, P: 1.0 if 3 < s < 47 and 3 < t < 29 else 4.4},
+                          'davant': {'ramp': IRONF, 'lvl': lambda s, t, P: 3.2 - t * 0.08},
+                          'dreta': {'ramp': IRONF, 'lvl': 2.2}, 'esquerra': {'ramp': IRONF, 'lvl': 3.6}})
+    e.quad(sid, L(-34, 16, 0), L(-18, 16, 0), L(-18, 0, 0), L(-34, 0, 0), ramp=RUSTF, dues_cares=True,
+           lvl=lambda s, t, P: 2.4 + (1.4 if math.hypot(s - 8, t - 8) > 5.6 else -0.6),
+           forma=lambda s, t: math.hypot(s - 8, t - 8) <= 8)                               # la roda
+    for w in (-12, 12):                                                                   # els mànecs
+        e.cable(sid, [L(22, 28, w), L(56, 22, w * 1.1), L(58, 0, w * 1.1)], PLANKF, 3.6, gruix=2.2)
+    if carrega:
+        carrega(e, L)
+
+
+def bido(e, sid, x, z, r=17, h=44):
+    """Un bidó d'aigua per refredar les eines: el cos amb els cèrcols, l'aigua negra a dins (amb el reflex) i una
+    cullera de colada recolzada a la vora."""
+    e.foscor(f'ombra_{sid}', (x - r * 2, 0.6, z + r * 1.4), (x + r * 2, 0.6, z + r * 1.4), (x + r * 2, 0.6, z - r * 2),
+             (x - r * 2, 0.6, z - r * 2),
+             lambda s, t: 0.6 * max(0.0, 1 - ((s - r * 2) / (r * 2)) ** 2 - ((t - r * 1.7) / (r * 1.7)) ** 2) * 1.5)
+    cilindre(e, sid, x, z, r, 0, h, RUSTF, lambda a, y, P: 3.4 - math.cos(a - 2.2) * 1.4
+             + (1.2 if abs(y - 8) < 2 or abs(y - h + 6) < 2 else 0) + (fbm(a * 4, y / 6, 23) - 0.5) * 1.2, n=16)
+    e.quad(sid, (x - r, h, z + r), (x + r, h, z + r), (x + r, h, z - r), (x - r, h, z - r), ramp=IRONF,
+           lvl=lambda s, t, P: 4.6 if math.hypot(s - r, t - r) > r - 1.6 else
+           (1.2 + (2.6 if abs(s - r * 0.7 - (t - r) * 0.4) < 2 else 0)),
+           forma=lambda s, t: math.hypot(s - r, t - r) <= r)
+    e.cable(sid, [(x + 4, h - 6, z + 2), (x + r + 6, h + 26, z - 10), (x + r + 30, 0.5, z - 30)], PLANKF, 4.0,
+            gruix=2.2)                                                                    # el mànec de la cullera
+
+
+def enclusa(e, sid, x, z, ang):
+    """Una enclusa damunt una soca (per al primer pla, fosca)."""
+    cilindre(e, sid, x, z, 20, 0, 34, PLANKF, lambda a_, y, P: 1.4 - math.cos(a_ - 2.3) * 0.6
+             + (0.6 if y % 9 < 1 else 0), n=14)
+    e.caixa_girada(sid, x, z, 22, 16, 10, ang, IRONF, 1.6, y0=34)
+    e.caixa_girada(sid, x, z, 44, 18, 9, ang, IRONF, 1.4, y0=44,
+                   cares={'dalt': {'ramp': IRONF, 'lvl': 2.6}, 'davant': {'ramp': IRONF, 'lvl': 1.0}})
+    L = _local((x, z), ang)
+    tx, _, tz = L(30, 0, 0)
+    e.caixa_girada(sid, tx, tz, 16, 10, 6, ang, IRONF, 1.4, y0=47,
+                   cares={'dalt': {'ramp': IRONF, 'lvl': 2.2}})                            # la banya
+
+
+def brossa(e):
+    """El que omple el terra de la nau: la pila de lingots, l'escòria amb les tenalles i les lingoteres."""
+    escoria(e, 'escoria', *ESCORIA, seed=3)
+    tenalles(e, 'tenalles', ESCORIA[0] - 46, ESCORIA[1] - 30, 0.5, llarg=100)
+    lingots(e, 'lingots', *LINGOTS, files=4, capes=4)
+    bido(e, 'bido', *BIDO)
+    lingoteres(e, 'lingoteres', *LINGOTERES, n=4, ple=2)
+
+
 def primer_pla(e):
-    """Fosc i tallat per la vora: les caixes de motlles de la dreta, la cadena del polispast i el munt de carbó."""
+    """Fosc i tallat per la vora: les caixes de motlles de la dreta, la cadena del polispast, el munt de carbó i
+    l'enclusa."""
+    enclusa(e, 'primer_pla', *ENCLUSA)
     for (cx, cz, w, d, h, ang, y0) in ((640, 420, 96, 60, 44, 0.32, 0), (700, 470, 80, 56, 40, -0.2, 0),
                                        (650, 424, 70, 46, 30, 0.5, 44)):
         e.caixa_girada('primer_pla', cx, cz, w, d, h, ang, PLANKF, 1.4, y0=y0,
@@ -436,6 +573,7 @@ def escena(cv, fire=0, foc=False):
     columna(e, 'columna_esq', *COL1)
     termometre(e, fire)
     metall(e)
+    brossa(e)
     primer_pla(e)
     return e
 
@@ -578,15 +716,33 @@ def _vfront(*xz):
     return round(max(_p(x, z)[1] for x, z in xz))
 
 
+def _peu(cx, cz, ang, L, A, m=0.0):
+    """Els quatre cantons de terra (x, z) d'una caixa girada de L × A (amb un marge m)."""
+    Lo = _local((cx, cz), ang)
+    return [(Lo(u, 0, w)[0], Lo(u, 0, w)[2]) for u, w in ((-L / 2 - m, -A / 2 - m), (L / 2 + m, -A / 2 - m),
+                                                         (L / 2 + m, A / 2 + m), (-L / 2 - m, A / 2 + m))]
+
+
+def _base_girada(cx, cz, ang, L, A):
+    """La línia base d'una cosa girada: la del cantó de davant que queda més al fons (el segon més avall)."""
+    return round(sorted(_p(x, z)[1] for x, z in _peu(cx, cz, ang, L, A))[-2])
+
+
+_FOC = ('forn_ences', 'forn_fort')               # (amb el forn encès, cada capa té la seva versió il·luminada)
+
 FRONT = [
-    {'id': 'davant_manxa', 'mask': _amo({'manxa'}), 'baseline': _vfront(*_MP), 'zIndex': 20},
+    {'id': 'davant_lingots', 'mask': _amo({'lingots'}), 'baseline': _base_girada(*LINGOTS, 58, 42), 'zIndex': 20, 'variants': _FOC},
+    {'id': 'davant_bido', 'mask': _amo({'bido'}), 'baseline': _vfront((BIDO[0], BIDO[1] - 12)), 'zIndex': 20, 'variants': _FOC},
+    {'id': 'davant_escoria', 'mask': _amo({'escoria'}), 'baseline': _vfront((ESCORIA[0], ESCORIA[1] - ESCORIA[2] * 0.6)),
+     'zIndex': 20, 'variants': _FOC},
+    {'id': 'davant_manxa', 'mask': _amo({'manxa'}), 'baseline': _vfront(*_MP), 'zIndex': 20, 'variants': _FOC},
     {'id': 'davant_columna_esq', 'mask': _amo({'columna_esq', 'termometre'}),
-     'baseline': _vfront((COL1[0], COL1[1] - 13)), 'zIndex': 20},
+     'baseline': _vfront((COL1[0], COL1[1] - 13)), 'zIndex': 20, 'variants': _FOC},
     {'id': 'davant_columna_dreta', 'mask': _amo({'columna_dreta', 'rascle'}),
-     'baseline': _vfront((COL2[0], COL2[1] - 13), (COL2[0] - 34, COL2[1] - 24)), 'zIndex': 20},
+     'baseline': _vfront((COL2[0], COL2[1] - 13), (COL2[0] - 34, COL2[1] - 24)), 'zIndex': 20, 'variants': _FOC},
     {'id': 'davant_metall', 'mask': _amo({'metall'}),
-     'baseline': _vfront((METALL[0], METALL[1] - 10), (CARRET[0] + 30, CARRET[1] - 30)), 'zIndex': 20},
-    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+     'baseline': _vfront((METALL[0], METALL[1] - 10), (CARRET[0] + 30, CARRET[1] - 30)), 'zIndex': 20, 'variants': _FOC},
+    {'id': 'davant', 'mask': _amo({'primer_pla', 'lingoteres'}), 'baseline': 999, 'zIndex': 20, 'variants': _FOC},
 ]
 
 _DIAL = CAM.projecta((COL1[0], DIAL_Y, COL1[1] - 12))
@@ -609,10 +765,12 @@ GEOMETRIA = {
                                 round(_DIAL[1] + _DR + 2)),
                        'walk': _p(COL1[0] + 50, COL1[1] - 60)},
     },
-    'spawns': {'iri': _p(380, 500), 'vet': _p(500, 540)},
+    'spawns': {'iri': _p(380, 500), 'vet': _p(570, 650)},
     'walkable': _WALK,
     'forats': [[_p(x, z) for x, z in _MP], _cercle(*COL1, 22, 8), _cercle(*COL2, 22, 8),
-               _cercle(METALL[0], METALL[1], 56, 10), _cercle(CARRET[0], CARRET[1], 40, 8)],
+               _cercle(METALL[0], METALL[1], 56, 10), _cercle(CARRET[0], CARRET[1], 40, 8),
+               [_p(x, z) for x, z in _peu(*LINGOTS, 58, 42, 8)], _cercle(*BIDO, 26, 8),
+               _cercle(ESCORIA[0], ESCORIA[1], ESCORIA[2] * 1.25, 8)],
     # La càmera, a 1,85 m i mirant avall, aixafa el terra: 185 d'alçada a ≈500 de fons (on es camina).
     'floorSquash': 0.4,
     # L'ombra de contacte: la llum dominant és la claror del carrer, per la porta (l'ombra cau cap a la dreta).

@@ -293,9 +293,7 @@ personatges en 3/4, la respiració i les micro-accions. Queda pendent:
   pla.
 - La Cantimplora canònica (`cantimplora_comu.py`) ja és al port de Terra-2, a la portada i al pròleg; falta posar-la
   al carrer de Ferrum, al port d'Aqua, al jardí de Verdant i als crèdits (quan hi sigui, cal treure aquest ítem).
-- A la galeria del palau no es pot passar per darrere de l'aquari, ni al port d'Aqua per darrere de la grua.
-- La fosa: la meitat de baix del terra és força buida; el motlle no s'il·lumina amb el gresol ple, i
-  `motlle_posat` no és al `.room.json` de la colada (ja era així abans).
+- Al port d'Aqua no es pot passar per darrere de la grua.
 - Els crèdits i els postcrèdits no s'han tocat.
 
 - **Pati de la granja (Aigua Verne).** Fet en 3D (`granja_pati.py`): la casa girada amb el teulat, el pou vist des de

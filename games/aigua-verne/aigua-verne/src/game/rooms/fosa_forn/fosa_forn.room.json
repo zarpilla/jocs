@@ -268,6 +268,104 @@
                 "y": 234
               }
             ]
+          },
+          {
+            "id": "forat-6",
+            "active": true,
+            "points": [
+              {
+                "x": 334,
+                "y": 229
+              },
+              {
+                "x": 398,
+                "y": 224
+              },
+              {
+                "x": 382,
+                "y": 207
+              },
+              {
+                "x": 324,
+                "y": 211
+              }
+            ]
+          },
+          {
+            "id": "forat-7",
+            "active": true,
+            "points": [
+              {
+                "x": 225,
+                "y": 217
+              },
+              {
+                "x": 225,
+                "y": 211
+              },
+              {
+                "x": 214,
+                "y": 208
+              },
+              {
+                "x": 197,
+                "y": 210
+              },
+              {
+                "x": 184,
+                "y": 214
+              },
+              {
+                "x": 183,
+                "y": 220
+              },
+              {
+                "x": 194,
+                "y": 224
+              },
+              {
+                "x": 212,
+                "y": 222
+              }
+            ]
+          },
+          {
+            "id": "forat-8",
+            "active": true,
+            "points": [
+              {
+                "x": 515,
+                "y": 214
+              },
+              {
+                "x": 502,
+                "y": 208
+              },
+              {
+                "x": 482,
+                "y": 204
+              },
+              {
+                "x": 464,
+                "y": 206
+              },
+              {
+                "x": 459,
+                "y": 211
+              },
+              {
+                "x": 470,
+                "y": 219
+              },
+              {
+                "x": 492,
+                "y": 223
+              },
+              {
+                "x": 511,
+                "y": 221
+              }
+            ]
           }
         ]
       }
@@ -626,7 +724,7 @@
       "animations": {
         "davant_columna_esq": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 196
     },
     {
@@ -638,7 +736,7 @@
       "animations": {
         "davant_metall": {}
       },
-      "zIndex": 22,
+      "zIndex": 30,
       "baseline": 234
     },
     {
@@ -650,7 +748,7 @@
       "animations": {
         "davant_columna_dreta": {}
       },
-      "zIndex": 23,
+      "zIndex": 32,
       "baseline": 243
     },
     {
@@ -662,7 +760,235 @@
       "animations": {
         "davant": {}
       },
+      "zIndex": 34,
+      "baseline": 999
+    },
+    {
+      "id": "forn_ences__davant_manxa",
+      "tag": "forn_ences__davant_manxa",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_ences__davant_manxa": {}
+      },
+      "zIndex": 21,
+      "baseline": 195
+    },
+    {
+      "id": "forn_fort__davant_manxa",
+      "tag": "forn_fort__davant_manxa",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_fort__davant_manxa": {}
+      },
+      "zIndex": 21,
+      "baseline": 195
+    },
+    {
+      "id": "forn_ences__davant_columna_esq",
+      "tag": "forn_ences__davant_columna_esq",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_ences__davant_columna_esq": {}
+      },
+      "zIndex": 23,
+      "baseline": 196
+    },
+    {
+      "id": "forn_fort__davant_columna_esq",
+      "tag": "forn_fort__davant_columna_esq",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_fort__davant_columna_esq": {}
+      },
+      "zIndex": 23,
+      "baseline": 196
+    },
+    {
+      "id": "davant_escoria",
+      "tag": "davant_escoria",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_escoria": {}
+      },
       "zIndex": 24,
+      "baseline": 217
+    },
+    {
+      "id": "forn_ences__davant_escoria",
+      "tag": "forn_ences__davant_escoria",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_ences__davant_escoria": {}
+      },
+      "zIndex": 25,
+      "baseline": 217
+    },
+    {
+      "id": "forn_fort__davant_escoria",
+      "tag": "forn_fort__davant_escoria",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_fort__davant_escoria": {}
+      },
+      "zIndex": 25,
+      "baseline": 217
+    },
+    {
+      "id": "davant_bido",
+      "tag": "davant_bido",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_bido": {}
+      },
+      "zIndex": 26,
+      "baseline": 219
+    },
+    {
+      "id": "forn_ences__davant_bido",
+      "tag": "forn_ences__davant_bido",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_ences__davant_bido": {}
+      },
+      "zIndex": 27,
+      "baseline": 219
+    },
+    {
+      "id": "forn_fort__davant_bido",
+      "tag": "forn_fort__davant_bido",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_fort__davant_bido": {}
+      },
+      "zIndex": 27,
+      "baseline": 219
+    },
+    {
+      "id": "davant_lingots",
+      "tag": "davant_lingots",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_lingots": {}
+      },
+      "zIndex": 28,
+      "baseline": 222
+    },
+    {
+      "id": "forn_ences__davant_lingots",
+      "tag": "forn_ences__davant_lingots",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_ences__davant_lingots": {}
+      },
+      "zIndex": 29,
+      "baseline": 222
+    },
+    {
+      "id": "forn_fort__davant_lingots",
+      "tag": "forn_fort__davant_lingots",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_fort__davant_lingots": {}
+      },
+      "zIndex": 29,
+      "baseline": 222
+    },
+    {
+      "id": "forn_ences__davant_metall",
+      "tag": "forn_ences__davant_metall",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_ences__davant_metall": {}
+      },
+      "zIndex": 31,
+      "baseline": 234
+    },
+    {
+      "id": "forn_fort__davant_metall",
+      "tag": "forn_fort__davant_metall",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_fort__davant_metall": {}
+      },
+      "zIndex": 31,
+      "baseline": 234
+    },
+    {
+      "id": "forn_ences__davant_columna_dreta",
+      "tag": "forn_ences__davant_columna_dreta",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_ences__davant_columna_dreta": {}
+      },
+      "zIndex": 33,
+      "baseline": 243
+    },
+    {
+      "id": "forn_fort__davant_columna_dreta",
+      "tag": "forn_fort__davant_columna_dreta",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_fort__davant_columna_dreta": {}
+      },
+      "zIndex": 33,
+      "baseline": 243
+    },
+    {
+      "id": "forn_ences__davant",
+      "tag": "forn_ences__davant",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_ences__davant": {}
+      },
+      "zIndex": 35,
+      "baseline": 999
+    },
+    {
+      "id": "forn_fort__davant",
+      "tag": "forn_fort__davant",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_fort__davant": {}
+      },
+      "zIndex": 35,
       "baseline": 999
     }
   ],
@@ -680,8 +1006,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 379,
-      "y": 222,
+      "x": 434,
+      "y": 196,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

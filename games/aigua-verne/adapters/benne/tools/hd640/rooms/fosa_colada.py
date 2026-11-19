@@ -10,15 +10,21 @@ polispast, del qual penja el **gresol** (un tronc de con de ferro, amb l'ansa, e
 escorç i el broc), vist una mica des de dalt: se'n veu la boca. Del pont penja la **botonera** groga (`grua_pont`). A
 terra, sota el gresol, el **llit de colada**: una fossa de sorra negra amb el marc de ferro, girada, on va el motlle.
 A la dreta, la pila de grava i els sacs de la **sorra** d'aquí (`sorra_pedra`), amb la pala. Una columna de ferro
-colat aguanta la biga del carril de l'esquerra. En primer pla, fosc i tallat per la vora: un pilar de maó a
-l'esquerra, un gresol vell a terra a la dreta i les cadenes d'un altre polispast.
+colat aguanta la biga del carril de l'esquerra. Pel terra (es passa per darrere de tot): una pila de lingots, una
+pila de caixes de motlle buides, una filera de lingoteres davant del llit, una carretilla de ferralla i unes tenalles.
+En primer pla, fosc i tallat per la vora: un pilar de maó a l'esquerra, un gresol vell a terra a la dreta, les
+cadenes d'un altre polispast i un munt de sorra negra amb la pala.
 
 La llum: la claror freda dels finestrals, el llum de taller penjat sobre el llit (el bassal de llum i l'ombra de
 contacte dels personatges en surten) i la claror càlida del pas. Amb el gresol ple (`gresol_ple`), el metall fos
 il·lumina la nau des de la boca del gresol: la mateixa escena il·luminada amb aquesta llum, i la diferència tenyida de
-taronja (cada cara segons com la mira), amb les ombres llargues pel terra.
+taronja (cada cara segons com la mira), amb les ombres llargues pel terra. El motlle preparat (sempre al llit quan el
+gresol és ple) també s'encén: `gresol_ple` el porta pintat a dins, i al `.room.json` va per sobre de
+`motlle_preparat` (zIndex 5; `claus_fetes`, 5; `fum_gresol`, 6). Les capes del davant tenen la versió amb el metall
+fos (`variants`); la de davant del gresol no porta la boca, on bull el metall (`fum_gresol`).
 
-Decorats (PROPS): `motlle_posat` (la caixa del motlle, buida, al llit), `motlle_preparat` (plena de sorra fina, amb les
+Decorats (PROPS): `motlle_posat` (la caixa del motlle, buida, al llit: hi queda quan ja s'han tret les claus,
+`claus_fetes`), `motlle_preparat` (plena de sorra fina, amb les
 tres claus marcades i el bebedor), `gresol_ple`, `claus_fetes` (les tres claus, roents, al motlle): tots al món, damunt
 el llit. ANIMS: `fum_gresol` (el metall fos que bull a la boca del gresol, el vapor i les guspires).
 
@@ -39,8 +45,9 @@ from hd.pix import Canvas, Light, W, H, hr, B4
 from hd.rooms.comu import _diff
 from hd.rooms.exterior import fbm
 from hd640.rooms import fosa_colada_pla_comu as PL
-from hd640.rooms.ferrum_comu import (RH, SLAGF, SOOT, MORTAR, COB, COAL, IRONF, PLANKF, nave_wall, crane_rail)
-from hd640.rooms.fosa_forn import _brick, _terra, _local, cilindre, columna, tronc
+from hd640.rooms.ferrum_comu import (RH, SLAGF, SOOT, MORTAR, COB, COAL, IRONF, PLANKF, RUSTF, nave_wall, crane_rail)
+from hd640.rooms.fosa_forn import (_brick, _terra, _local, _peu, cilindre, columna, tronc, lingots, lingoteres,
+                                   carretilla, tenalles, escoria)
 from hd640.tres_d import Camera, Escena, Llum
 
 BOTTOM = RH - 1
@@ -60,7 +67,13 @@ COL = (440.0, 560.0)                               # la columna de ferro colat (
 SORRA = (990.0, 690.0)                             # la pila de grava (x, z)
 LAMP = (856.0, 176.0, 520.0)
 OLD_LADLE = (912.0, 396.0)
-BANC = (512.0, 752.0, -0.5, 116.0, 46.0)            # el banc dels motlles: centre (x, z), angle, llarg, ample                         # el gresol vell, a terra, en primer pla                       # el llum de taller
+BANC = (512.0, 752.0, -0.5, 116.0, 46.0)           # el banc dels motlles: centre (x, z), angle, llarg, ample
+LINGOTS = (372.0, 524.0, 0.3)                      # la pila de lingots al palet, a l'esquerra de la columna
+LINGOTERES = (804.0, 470.0, 0.14)                  # la filera de lingoteres, davant del llit
+CARRETO = (910.0, 512.0, -0.65)                    # la carretilla amb ferralla i bebedors tallats
+TENALLES = (610.0, 470.0, -0.35)                   # unes tenalles a terra
+CAIXES = (530.0, 650.0, 0.25)                      # una pila de caixes de motlle buides (x, z, angle)
+MUNT = (600.0, 418.0, 54.0)                        # un munt de sorra negra, en primer pla (x, z, radi)
 
 CAM = Camera(pos=(560, 185, 60), yaw=0.17, pitch=0.11, f=430, centre=(310, 108))
 
@@ -348,7 +361,13 @@ def llum_taller(e):
 
 
 def primer_pla(e):
-    """Fosc i tallat per la vora: el pilar de maó de l'esquerra, un gresol vell a terra a la dreta i les cadenes."""
+    """Fosc i tallat per la vora: el pilar de maó de l'esquerra, un gresol vell a terra a la dreta, les cadenes i un
+    munt de sorra negra amb la pala."""
+    mx, mz, mr = MUNT
+    e.roca('primer_pla', (mx, 0, mz), mr, COAL, 2.0, llum_dir=(-0.6, -0.7), aplana=0.55, seed=31)
+    e.cable('primer_pla', [(mx + 8, 22, mz + 4), (mx + 34, 46, mz - 14)], PLANKF, 1.6, gruix=3)
+    e.quad('primer_pla', (mx - 4, 24, mz + 10), (mx + 12, 24, mz), (mx + 14, 8, mz + 2), (mx - 2, 8, mz + 12), ramp=IRONF,
+           lvl=1.8, dues_cares=True)
     e.caixa('primer_pla', 320, 392, 0, HW + 40, 400, 456, SOOT, 1.0,
             cares={'dreta': {'ramp': SOOT, 'lvl': lambda s, t, P: _brick(33, 1.2)(P[2], P[1])},
                    'davant': {'ramp': SOOT, 'lvl': lambda s, t, P: _brick(34, 0.6)(P[0], P[1])}})
@@ -381,8 +400,44 @@ def escena(cv, ple=False):
     banc(e)
     botonera(e)
     columna(e, 'columna', *COL)
+    brossa(e)
     primer_pla(e)
     return e
+
+
+def _ferralla(e, L):
+    """La càrrega de la carretilla: bebedors i rebaves tallats d'altres colades, i un parell de lingots."""
+    for k in range(6):
+        u, w = -14 + (k % 3) * 12, -7 + (k // 3) * 12
+        x, _, z = L(u, 0, w)
+        e.roca('carreto', (x, 26, z), 7 + hr(k, 41) * 4, RUSTF if k % 2 else IRONF, 3.4, llum_dir=(-0.6, -0.6),
+               aplana=0.7, seed=40 + k)
+    x, _, z = L(4, 0, -4)
+    e.caixa_girada('carreto', x, z, 30, 9, 7, CARRETO[2] + 0.3, IRONF, 4.2, y0=30,
+                   cares={'dalt': {'ramp': IRONF, 'lvl': 5.6}})
+
+
+def brossa(e):
+    """El que omple el terra de la nau: la pila de lingots, les lingoteres, la carretilla de ferralla, les tenalles i
+    un rastre d'escòria."""
+    lingots(e, 'lingots', *LINGOTS, files=4, capes=4)
+    cx, cz, a = CAIXES
+    e.foscor('ombra_caixes', *[(x, 0.6, z) for x, z in _peu(cx, cz, a, 70, 52)],
+             lambda s, t: 0.55 * min(1.0, min(s, t, 70 - s, 52 - t) / 10))
+    for k in range(3):                                                                    # les caixes de motlle
+        e.caixa_girada('caixes', cx + k * 2, cz - k, 56, 40, 14, a + k * 0.12, IRONF, 3.2, y0=k * 14,
+                       cares={'dalt': {'ramp': IRONF, 'lvl': lambda s, t, P: 1.0 if 4 < s < 52 and 4 < t < 36 else 4.8},
+                              'davant': {'ramp': RUSTF, 'lvl': lambda s, t, P: 3.0 + (1.2 if t < 1.5 else 0)
+                                         + (fbm(s / 4, t / 2, 44) - 0.5) * 1.4},
+                              'dreta': {'ramp': IRONF, 'lvl': 2.2}, 'esquerra': {'ramp': IRONF, 'lvl': 3.4}})
+    for u in (-31, 31):                                                                   # les nanses de dalt
+        x, _, z = _local((cx + 4, cz - 2), a + 0.24)(u, 0, 0)
+        e.caixa_girada('caixes', x, z, 5, 12, 4, a + 0.24, IRONF, 4.4, y0=36)
+    lingoteres(e, 'lingoteres', *LINGOTERES, n=3, ple=1)
+    carretilla(e, 'carreto', *CARRETO, carrega=_ferralla)
+    tenalles(e, 'tenalles', *TENALLES, llarg=100)
+    for k, (x, z) in enumerate(((560, 500), (640, 520), (470, 640))):             # trossos d'escòria pel terra
+        e.roca('tenalles', (x, 0, z), 4 + hr(k, 43) * 3, SLAGF, 2.8, llum_dir=(-0.6, -0.6), aplana=0.6, seed=50 + k)
 
 
 def ombres_fos(e):
@@ -405,25 +460,35 @@ def _negre(img):
 
 
 @functools.lru_cache(maxsize=None)
-def _base(ple=False):
-    """La sala; amb el gresol ple, la llum del metall fos tenyida de taronja (la diferència amb la sala sense)."""
+def _escena(ple):
+    """La sala dibuixada tal qual: sense el metall fos, o amb la seva llum (sense tenyir)."""
     cv = Canvas(light=LIGHT)
-    e = escena(cv, False)
+    e = escena(cv, ple)
     _negre(cv.img)
-    if not ple:
-        return cv.img, e
-    lit = Canvas(light=LIGHT)
-    e2 = escena(lit, True)
-    _negre(lit.img)
-    a = np.asarray(lit.img).astype(np.float32)
-    b = np.asarray(cv.img).astype(np.float32)
+    return cv.img, e
+
+
+def _tenyeix(a, b):
+    """La llum del metall fos tenyida de taronja: b (sense) + la diferència de llum amb a (amb), en taronja."""
+    a = np.asarray(a).astype(np.float32)
+    b = np.asarray(b).astype(np.float32)
     dl = np.clip((a[..., :3] - b[..., :3]).mean(axis=2, keepdims=True), 0, None)
     out = b[..., :3] + dl * np.array(TARONJA, np.float32) * 1.6
+    return np.concatenate([np.clip(out, 0, 255), b[..., 3:]], axis=2).astype(np.uint8)
+
+
+@functools.lru_cache(maxsize=None)
+def _base(ple=False):
+    """La sala; amb el gresol ple, la llum del metall fos tenyida de taronja (la diferència amb la sala sense)."""
+    img, e = _escena(False)
+    if not ple:
+        return img, e
+    lit, e2 = _escena(True)
+    out = _tenyeix(lit, img)
     # la boca del gresol: tal com l'ha pintat l'escena il·luminada (el metall fos)
-    boca = np.frombuffer(bytes(e2.amo), np.uint8).reshape(H, W) == e2.ids.index('gresol_boca') \
+    boca = np.frombuffer(e2.amo, np.uint16).reshape(H, W) == e2.ids.index('gresol_boca') \
         if 'gresol_boca' in e2.ids else np.zeros((H, W), bool)
-    out = np.where(boca[..., None], a[..., :3], out)
-    out = np.concatenate([np.clip(out, 0, 255), b[..., 3:]], axis=2).astype(np.uint8)
+    out = np.where(boca[..., None], np.asarray(lit), out)
     return Image.fromarray(out, 'RGBA'), e2
 
 
@@ -519,25 +584,26 @@ def _claus_roents(e):
 
 
 @functools.lru_cache(maxsize=None)
-def _mascara_motlle():
-    """Els píxels on es dibuixen el motlle i les claus (decorats a part), una mica eixamplats."""
-    cv = Canvas(transparent=True)
-    e = Escena(cv, CAM, [], 0)
-    _motlle_buit(e)
-    _motlle_ple(e)
-    m = np.asarray(cv.img)[..., 3] > 0
-    for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-        m = m | np.roll(np.roll(m, dx, axis=1), dy, axis=0)
-    return m
+def _motlle_ences():
+    """El motlle preparat il·luminat pel metall fos del gresol: dibuixat damunt la sala sense i amb aquesta llum, i
+    la diferència tenyida de taronja, com la resta de la nau. → (imatge RGBA de la sala, màscara del motlle)."""
+    b = Canvas(light=LIGHT, img=_escena(False)[0].copy())
+    _motlle_ple(Escena(b, CAM, LLUMS, ambient=AMBIENT))
+    a = Canvas(light=LIGHT, img=_escena(True)[0].copy())
+    _motlle_ple(Escena(a, CAM, LLUMS + [FOS], ambient=AMBIENT))
+    m = np.any(np.asarray(b.img) != np.asarray(_escena(False)[0]), axis=2)
+    return _tenyeix(a.img, b.img), m
 
 
 def gresol_ple(cv):
-    """El gresol ple de metall fos: lluu taronja i il·lumina la nau (on va el motlle, que és un altre decorat, no)."""
+    """El gresol ple de metall fos: lluu taronja i il·lumina la nau, i també el motlle preparat que l'espera al llit
+    (el decorat `motlle_preparat` sempre hi és quan el gresol és ple; aquest, al damunt, el pinta encès)."""
     full, _ = _base(True)
     base, _ = _base(False)
-    d = np.asarray(_diff(full, base)).copy()
-    d[_mascara_motlle()] = 0
-    cv.img.alpha_composite(Image.fromarray(d, 'RGBA'))
+    out = np.asarray(full).copy()
+    lit, m = _motlle_ences()
+    out[m] = lit[m]
+    cv.img.alpha_composite(_diff(Image.fromarray(out, 'RGBA'), base))
 
 
 PROPS = {'motlle_posat': _prop(_motlle_buit), 'motlle_preparat': _prop(_motlle_ple), 'gresol_ple': gresol_ple,
@@ -653,16 +719,29 @@ _WALK = [_p(x, z) for x, z in WALK_MON]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 _LP = _llit_peu(0)
 
+def _base_girada(cx, cz, ang, L, A):
+    """La línia base d'una cosa girada: la del cantó de davant que queda més al fons (el segon més avall)."""
+    return round(sorted(_p(x, z)[1] for x, z in _peu(cx, cz, ang, L, A))[-2])
+
+
+_FOS = ('gresol_ple',)                            # (amb el gresol ple, cada capa té la seva versió il·luminada)
+
 FRONT = [
-    {'id': 'davant_gresol', 'mask': _amo({'gresol', 'gresol_boca', 'grua'}),
-     'baseline': _vfront((LADLE[0], LADLE[1] - LADLE[5])), 'zIndex': 20},
+    {'id': 'davant_lingots', 'mask': _amo({'lingots'}), 'baseline': _base_girada(*LINGOTS, 58, 42), 'zIndex': 20, 'variants': _FOS},
+    {'id': 'davant_lingoteres', 'mask': _amo({'lingoteres'}), 'baseline': _base_girada(*LINGOTERES, 114, 18),
+     'zIndex': 20, 'variants': _FOS},
+    {'id': 'davant_caixes', 'mask': _amo({'caixes'}), 'baseline': _base_girada(*CAIXES, 56, 40), 'zIndex': 20, 'variants': _FOS},
+    {'id': 'davant_carreto', 'mask': _amo({'carreto'}), 'baseline': _base_girada(*CARRETO, 60, 32), 'zIndex': 20, 'variants': _FOS},
+    # (la boca no: s'hi veu el metall fos que bull, `fum_gresol`, i queda per sobre del cap de qui passa per sota)
+    {'id': 'davant_gresol', 'mask': _amo({'gresol', 'grua'}),
+     'baseline': _vfront((LADLE[0], LADLE[1] - LADLE[5])), 'zIndex': 20, 'variants': _FOS},
     {'id': 'davant_botonera', 'mask': _amo({'botonera'}), 'baseline': _vfront((PENDANT[0], PENDANT[1] - 5)),
-     'zIndex': 20},
-    {'id': 'davant_banc', 'mask': _amo({'banc'}), 'baseline': _vfront(*_banc_peu()), 'zIndex': 20},
-    {'id': 'davant_columna', 'mask': _amo({'columna'}), 'baseline': _vfront((COL[0], COL[1] - 13)), 'zIndex': 20},
+     'zIndex': 20, 'variants': _FOS},
+    {'id': 'davant_banc', 'mask': _amo({'banc'}), 'baseline': _vfront(*_banc_peu()), 'zIndex': 20, 'variants': _FOS},
+    {'id': 'davant_columna', 'mask': _amo({'columna'}), 'baseline': _vfront((COL[0], COL[1] - 13)), 'zIndex': 20, 'variants': _FOS},
     {'id': 'davant_sorra', 'mask': _amo({'sorra'}),
-     'baseline': _vfront((SORRA[0] - 60, SORRA[1] - 40), (SORRA[0] - 110, SORRA[1] - 40)), 'zIndex': 20},
-    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+     'baseline': _vfront((SORRA[0] - 60, SORRA[1] - 40), (SORRA[0] - 110, SORRA[1] - 40)), 'zIndex': 20, 'variants': _FOS},
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20, 'variants': _FOS},
 ]
 
 GEOMETRIA = {
@@ -679,10 +758,12 @@ GEOMETRIA = {
         'sorra_pedra': {'rect': _rect_mon((SORRA[0] - 140, 110, SORRA[1] - 50), (XW, 0, SORRA[1] - 50)),
                         'walk': _p(SORRA[0] - 120, SORRA[1] - 110)},
     },
-    'spawns': {'iri': _p(560, 480), 'vet': _p(480, 610)},
+    'spawns': {'iri': _p(600, 505), 'vet': _p(480, 610)},
     'walkable': _WALK,
     'forats': [[_p(x, z) for x, z in _llit_peu(12)], _cercle(*COL, 22, 8), [_p(x, z) for x, z in _banc_peu(10)],
-               [_p(x, z) for x, z in ((860, 630), (1000, 600), (1050, 650), (1050, 790), (880, 720))]],
+               [_p(x, z) for x, z in ((860, 630), (1000, 600), (1050, 650), (1050, 790), (880, 720))],
+               [_p(x, z) for x, z in _peu(*LINGOTS, 58, 42, 8)], [_p(x, z) for x, z in _peu(*LINGOTERES, 114, 18, 6)],
+               [_p(x, z) for x, z in _peu(*CARRETO, 60, 34, 8)], [_p(x, z) for x, z in _peu(*CAIXES, 56, 40, 8)]],
     'floorSquash': 0.4,
     # L'ombra de contacte: la llum dominant és el llum de taller penjat sobre el llit.
     'characterShadow': {'enabled': True, 'color': '#120a08', 'alpha': 0.42, 'squash': 0.4, 'core': 0.6,

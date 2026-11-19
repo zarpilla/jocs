@@ -174,6 +174,94 @@
                 "y": 172
               }
             ]
+          },
+          {
+            "id": "forat-5",
+            "active": true,
+            "points": [
+              {
+                "x": 6,
+                "y": 260
+              },
+              {
+                "x": 94,
+                "y": 245
+              },
+              {
+                "x": 94,
+                "y": 225
+              },
+              {
+                "x": 15,
+                "y": 237
+              }
+            ]
+          },
+          {
+            "id": "forat-6",
+            "active": true,
+            "points": [
+              {
+                "x": 426,
+                "y": 247
+              },
+              {
+                "x": 527,
+                "y": 232
+              },
+              {
+                "x": 506,
+                "y": 222
+              },
+              {
+                "x": 410,
+                "y": 235
+              }
+            ]
+          },
+          {
+            "id": "forat-7",
+            "active": true,
+            "points": [
+              {
+                "x": 496,
+                "y": 215
+              },
+              {
+                "x": 569,
+                "y": 226
+              },
+              {
+                "x": 566,
+                "y": 213
+              },
+              {
+                "x": 499,
+                "y": 203
+              }
+            ]
+          },
+          {
+            "id": "forat-8",
+            "active": true,
+            "points": [
+              {
+                "x": 193,
+                "y": 205
+              },
+              {
+                "x": 247,
+                "y": 198
+              },
+              {
+                "x": 237,
+                "y": 187
+              },
+              {
+                "x": 186,
+                "y": 193
+              }
+            ]
           }
         ]
       }
@@ -383,6 +471,17 @@
       "alpha": 1
     },
     {
+      "id": "motlle_posat",
+      "tag": "motlle_posat",
+      "animations": {
+        "motlle_posat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
       "id": "motlle_preparat",
       "tag": "motlle_preparat",
       "animations": {
@@ -399,7 +498,7 @@
       "animations": {
         "gresol_ple": {}
       },
-      "zIndex": 4,
+      "zIndex": 5,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -410,7 +509,7 @@
       "animations": {
         "claus_fetes": {}
       },
-      "zIndex": 4,
+      "zIndex": 5,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -424,7 +523,7 @@
           "frameDuration": 110
         }
       },
-      "zIndex": 4,
+      "zIndex": 6,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -450,7 +549,7 @@
       "animations": {
         "davant_botonera": {}
       },
-      "zIndex": 22,
+      "zIndex": 26,
       "baseline": 213
     },
     {
@@ -462,7 +561,7 @@
       "animations": {
         "davant_gresol": {}
       },
-      "zIndex": 23,
+      "zIndex": 30,
       "baseline": 214
     },
     {
@@ -474,7 +573,7 @@
       "animations": {
         "davant_columna": {}
       },
-      "zIndex": 24,
+      "zIndex": 32,
       "baseline": 228
     },
     {
@@ -486,7 +585,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 25,
+      "zIndex": 38,
       "baseline": 999
     },
     {
@@ -498,16 +597,184 @@
       "animations": {
         "davant_banc": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 184
+    },
+    {
+      "id": "gresol_ple__davant_sorra",
+      "tag": "gresol_ple__davant_sorra",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gresol_ple__davant_sorra": {}
+      },
+      "zIndex": 21,
+      "baseline": 183
+    },
+    {
+      "id": "gresol_ple__davant_banc",
+      "tag": "gresol_ple__davant_banc",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gresol_ple__davant_banc": {}
+      },
+      "zIndex": 23,
+      "baseline": 184
+    },
+    {
+      "id": "davant_caixes",
+      "tag": "davant_caixes",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_caixes": {}
+      },
+      "zIndex": 24,
+      "baseline": 197
+    },
+    {
+      "id": "gresol_ple__davant_caixes",
+      "tag": "gresol_ple__davant_caixes",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gresol_ple__davant_caixes": {}
+      },
+      "zIndex": 25,
+      "baseline": 197
+    },
+    {
+      "id": "gresol_ple__davant_botonera",
+      "tag": "gresol_ple__davant_botonera",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gresol_ple__davant_botonera": {}
+      },
+      "zIndex": 27,
+      "baseline": 213
+    },
+    {
+      "id": "davant_carreto",
+      "tag": "davant_carreto",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_carreto": {}
+      },
+      "zIndex": 28,
+      "baseline": 214
+    },
+    {
+      "id": "gresol_ple__davant_carreto",
+      "tag": "gresol_ple__davant_carreto",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gresol_ple__davant_carreto": {}
+      },
+      "zIndex": 29,
+      "baseline": 214
+    },
+    {
+      "id": "gresol_ple__davant_gresol",
+      "tag": "gresol_ple__davant_gresol",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gresol_ple__davant_gresol": {}
+      },
+      "zIndex": 31,
+      "baseline": 214
+    },
+    {
+      "id": "gresol_ple__davant_columna",
+      "tag": "gresol_ple__davant_columna",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gresol_ple__davant_columna": {}
+      },
+      "zIndex": 33,
+      "baseline": 228
+    },
+    {
+      "id": "davant_lingoteres",
+      "tag": "davant_lingoteres",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_lingoteres": {}
+      },
+      "zIndex": 34,
+      "baseline": 237
+    },
+    {
+      "id": "gresol_ple__davant_lingoteres",
+      "tag": "gresol_ple__davant_lingoteres",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gresol_ple__davant_lingoteres": {}
+      },
+      "zIndex": 35,
+      "baseline": 237
+    },
+    {
+      "id": "davant_lingots",
+      "tag": "davant_lingots",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_lingots": {}
+      },
+      "zIndex": 36,
+      "baseline": 243
+    },
+    {
+      "id": "gresol_ple__davant_lingots",
+      "tag": "gresol_ple__davant_lingots",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gresol_ple__davant_lingots": {}
+      },
+      "zIndex": 37,
+      "baseline": 243
+    },
+    {
+      "id": "gresol_ple__davant",
+      "tag": "gresol_ple__davant",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gresol_ple__davant": {}
+      },
+      "zIndex": 39,
+      "baseline": 999
     }
   ],
   "characters": [
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 239,
-      "y": 246,
+      "x": 277,
+      "y": 233,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
