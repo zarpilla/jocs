@@ -227,24 +227,9 @@ def escena(cv, tex, estat=frozenset()):
     for x in (hx0 + 2, hx1 - 2):
         e.tub('escala', (x, HW - 22, ZW - 40), (x, HW, ZW - 40), 1.2, [(36, 28, 6), (100, 76, 20), (180, 140, 40),
                                                                     (230, 190, 90)], 2.6)
-    # les bombes: les bancades en 3D, la bomba (el dibuix pla) dreta damunt i la sortida que puja i torna a la paret
+    # les bombes, en volum (vegeu _bomba): de l'esquerra (més lluny) a la dreta (més a prop de la càmera)
     for cx, body, tag in PUMPS:
-        x = _w(cx)
-        _foscor_el(e, 'ombra_bombes', x - 4, PZ - 2, 44, 22, 0.55)
-        e.foscor('ombra_bombes', (x - 70, 0.6, PZ + 4), (x + 10, 0.6, PZ + 4), (x - 10, 0.6, PZ - 50),
-                 (x - 90, 0.6, PZ - 50), lambda s, t: 0.3 * max(0.0, 1 - abs(t - 27) / 27) * max(0.0, 1 - abs(s - 40) / 40))
-        e.caixa('bombes', x - 33, x + 33, 0, 12, PZ - 16, PZ + 16, CAB, 2.8,
-                cares={'dalt': {'ramp': CAB, 'lvl': lambda s, t, P: 3.4 + (1.2 if (abs(s - 5) < 1.2 or abs(s - 61) < 1.2) and abs(t - 16) < 8 and int(t) % 8 < 2 else 0)},
-                       'davant': {'ramp': CAB, 'lvl': lambda s, t, P: 2.6 + (1.0 if t < 1.2 else 0)}})
-        bx = _pump_box(cx)
-        e.sprite('bombes', bom.crop(bx), (cx - bx[0], PL.FLOOR_Y + 3 - 11 - bx[1]), (x, 12, PZ))
-        ox = x + 40
-        e.tub('bombes', (ox, _y(PL.FLOOR_Y + 3 - 27), PZ), (ox, _y(59), PZ), 5, body, 2.8, brides=46)
-        e.tub('bombes', (ox, _y(59), PZ), (ox, _y(59), ZW - 2), 5, body, 3.0)
-        e.caixa('bombes', ox - 6, ox + 6, _y(134), _y(122), PZ - 6, PZ + 6, body, 3.0)
-        e.tub('bombes', (x + 19, _y(PL.FLOOR_Y + 3 - 27), PZ), (ox, _y(PL.FLOOR_Y + 3 - 27), PZ), 5, body, 3.0)
-        e.cable('bombes', [(x + 23, _y(PL.FLOOR_Y + 3 - 114), PZ - 2), (x + 23, HW - 30, PZ + 6), (x + 23, HW - 4, ZW - 6)],
-                CAB, 2.4, gruix=1.6)
+        _bomba(e, cx, body, tag, bom, tex['motors'][tag])
     # el llibre i la llanterna (els props)
     if 'llibre' in estat:
         _llibre(e)
@@ -252,6 +237,168 @@ def escena(cv, tex, estat=frozenset()):
         _llanterna(e)
     _primer_pla(e)
     return e
+
+
+# ─── Les bombes, en volum ───────────────────────────────────────────────────
+#
+# Cada bomba és la del dibuix pla (PL.pump) feta peces: la bancada (el davant, amb els perns, del dibuix pla), la
+# voluta (un cilindre el·líptic ajagut, de cara a la sala: la tapa amb el cercle de perns és el dibuix pla), la
+# llanterna d'acoblament (una caixa amb la finestra i la protecció groga del dibuix pla al davant), el motor (un
+# cilindre vertical de facetes amb les aletes i la placa del nom, desenrotllades a `_motor_pla`), la brida del motor,
+# la tapa del ventilador amb la reixeta, la caixa de borns al costat i el cable que puja a la safata. L'aspiració surt
+# per l'esquerra i torna enrere fins a la paret; la impulsió surt per la dreta, puja amb la vàlvula de retenció i torna
+# a la paret per dalt, al col·lector pintat. La contraincendis és vermella (voluta i canonades) i porta «C.I.».
+
+MOTOR_R = 19.5                                     # el radi del motor (el dibuix pla en fa 39 d'ample)
+MOTOR_H = 53                                       # l'alçada del cos del motor, sense la brida
+MOTOR_TW = round(2 * math.pi * MOTOR_R)            # el motor desenrotllat: l'amplada de la textura
+PLACA = (21, 13, 1.25)                             # la placa del nom: amplada i alçada al dibuix pla, i com s'amplia
+
+
+def _yb(fy):
+    """Una y del dibuix pla de les bombes → la y del món (la bancada fa 12 i el seu cantó de dalt és base_y - 11)."""
+    return PL.FLOOR_Y + 4 - fy
+
+
+@functools.lru_cache(maxsize=None)
+def _motor_pla(tag):
+    """El motor desenrotllat (la volta sencera, amb el davant al mig): les aletes i la fletxa del sentit de gir; a sota
+    (y ≥ MOTOR_H + 4), la placa amb el nom, que va a part (plana). Llum plana: la del món la fa cada faceta."""
+    from hd.rooms.arenga import ENG_LIGHT, box
+    from hd.rooms.comu import text, text_width
+    cv = Canvas(light=TEXL)
+    TW, H_ = MOTOR_TW, MOTOR_H
+    for y in range(H_):
+        for x in range(TW):
+            v = 3.3 + (0.35 if x % 4 < 2 else 0) - (0.35 if x % 4 == 3 else 0)
+            if y == 0:
+                v += 0.6
+            elif y >= H_ - 2:
+                v -= 0.5
+            cv.put(x, y, ENG_LIGHT, v)
+    cx = TW // 2
+    py = H_ + 4
+    box(cv, 0, py, PLACA[0] - 1, py + PLACA[1] - 1, WHITEP, 3.8)
+    w = text_width(tag)
+    text(cv, tag, PLACA[0] // 2 - w // 2, py + 2, None, 0, flat=PL.INK)
+    for x in range(2, PLACA[0] - 2, 2):
+        cv.put(x, py + 9, DARK, 1.6)
+    cv.line(cx - 8, 44, cx + 6, 44, REDP, 3.6)
+    cv.line(cx + 6, 44, cx + 3, 41, REDP, 3.6)
+    cv.line(cx + 6, 44, cx + 3, 47, REDP, 3.6)
+    return cv.img
+
+
+def _cara(e, sid, Ps, fora, **kw):
+    """Un quad del món amb la cara de fora cap a `fora` (es reordenen els cantons si cal)."""
+    P0, P1, P2, P3 = Ps
+    a = (P1[0] - P0[0], P1[1] - P0[1], P1[2] - P0[2])
+    b = (P3[0] - P0[0], P3[1] - P0[1], P3[2] - P0[2])
+    n = (a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0])
+    if n[0] * fora[0] + n[1] * fora[1] + n[2] * fora[2] < 0:
+        P0, P1, P2, P3 = P1, P0, P3, P2
+    e.quad(sid, P0, P1, P2, P3, **kw)
+
+
+def _disc(e, sid, x, y, z, r, ramp, lvl):
+    """Una tapa rodona horitzontal (de cara amunt), de radi r."""
+    e.quad(sid, (x - r, y, z + r), (x + r, y, z + r), (x + r, y, z - r), (x - r, y, z - r), ramp=ramp, lvl=lvl,
+           forma=lambda s, t: (s - r) ** 2 + (t - r) ** 2 <= r * r)
+
+
+def _cilindre(e, sid, x, z, r, y0, y1, ramp, lvl=3.0, tex=None, n=20, a0=0.0):
+    """Un cilindre vertical de facetes (els costats; la tapa, a part). `tex` = (imatge, amplada, alçada): la volta
+    sencera desenrotllada, amb el mig de la imatge mirant cap a `a0`."""
+    for i in range(n):
+        a, b = a0 - math.pi + 2 * math.pi * i / n, a0 - math.pi + 2 * math.pi * (i + 1) / n
+        Ps = ((x + r * math.sin(a), y1, z - r * math.cos(a)), (x + r * math.sin(b), y1, z - r * math.cos(b)),
+              (x + r * math.sin(b), y0, z - r * math.cos(b)), (x + r * math.sin(a), y0, z - r * math.cos(a)))
+        if tex is not None:
+            img, tw, th = tex
+            e.quad(sid, *Ps, tex=(img, (tw * i / n, 0, tw * (i + 1) / n, th)))
+        else:
+            e.quad(sid, *Ps, ramp=ramp, lvl=lvl)
+
+
+def _voluta(e, sid, x, yc, z0, z1, rx, ry, ramp, lvl=3.0, n=18):
+    """La voluta: un cilindre el·líptic ajagut al llarg de z (de z0, el davant, a z1), només els costats."""
+    for i in range(n):
+        a, b = 2 * math.pi * i / n, 2 * math.pi * (i + 1) / n
+        m = (a + b) / 2
+        Pa = (x + rx * math.cos(a), yc + ry * math.sin(a))
+        Pb = (x + rx * math.cos(b), yc + ry * math.sin(b))
+        _cara(e, sid, ((Pa[0], Pa[1], z0), (Pb[0], Pb[1], z0), (Pb[0], Pb[1], z1), (Pa[0], Pa[1], z1)),
+              (math.cos(m) / rx, math.sin(m) / ry, 0), ramp=ramp,
+              lvl=lambda s, t, P, lvl=lvl: lvl + (0.9 if t < 1.6 else 0) - (0.5 if 2.4 < t < 3.6 else 0))
+
+
+def _bomba(e, cx, body, tag, bom, motor):
+    """Una bomba en volum. `cx`: la x del dibuix pla; `bom`: el dibuix pla de les bombes; `motor`: `_motor_pla(tag)`."""
+    from hd.rooms.arenga import ENG_LIGHT
+    sid = 'bombes'
+    x, z = _w(cx), PZ
+    base_y = PL.FLOOR_Y + 3
+    vy = base_y - 27                               # el centre de la voluta, al dibuix pla
+    yv, rx, ry = _yb(vy), 23, 16                   # (la voluta s'assenta a la bancada)
+    ly0, ly1 = base_y - 69, base_y - 43            # la llanterna d'acoblament
+    my0, my1 = base_y - 128, base_y - 70           # el motor (amb la brida a baix, de 5)
+    ym0, ym1 = _yb(my1), _yb(my0)
+    ix, ox = x - 32, x + 39                        # l'aspiració (esquerra) i la impulsió (dreta)
+    yt = _y(59)                                    # el col·lector pintat de dalt
+    # l'ombra a terra (sota la bancada, i la que fa cap enrere a l'esquerra, lluny de les bombetes)
+    _foscor_el(e, 'ombra_bombes', x - 2, z - 2, 44, 22, 0.55)
+    e.foscor('ombra_bombes', (x - 70, 0.6, z + 4), (x + 10, 0.6, z + 4), (x - 10, 0.6, z - 50),
+             (x - 90, 0.6, z - 50), lambda s, t: 0.3 * max(0.0, 1 - abs(t - 27) / 27) * max(0.0, 1 - abs(s - 40) / 40))
+    # el que va cap a la paret (de lluny a prop): la impulsió per dalt i l'aspiració per baix, amb les brides de paret
+    e.tub(sid, (ox, yt, z), (ox, yt, ZW - 1), 5, body, 3.0)
+    e.tub(sid, (ox, yt, ZW - 5), (ox, yt, ZW - 1), 7.5, body, 3.4)
+    e.tub(sid, (ix, yv, ZW - 1), (ix, yv, z - 2), 5, body, 2.8, brides=40)
+    e.tub(sid, (ix, yv, ZW - 5), (ix, yv, ZW - 1), 8, body, 3.4)
+    # la bancada: el davant, amb els perns, del dibuix pla
+    e.caixa(sid, x - 33, x + 33, 0, 12, z - 16, z + 16, CAB, 2.8,
+            cares={'dalt': {'ramp': CAB, 'lvl': lambda s, t, P: 3.4 + (1.2 if (abs(s - 5) < 1.2 or abs(s - 61) < 1.2) and abs(t - 16) < 8 and int(t) % 8 < 2 else 0)},
+                   'davant': {'tex': (bom, (cx - 32, base_y - 11, cx + 33, base_y + 1))},
+                   'dreta': {'ramp': CAB, 'lvl': lambda s, t, P: 2.4 + (0.8 if t < 1.2 else 0)}})
+    # l'aspiració: el colze i la brida doble, fins a la voluta
+    e.tub(sid, (ix, yv, z - 2), (x - rx + 4, yv, z - 2), 5, body, 3.0)
+    for bx in (x - 26, ix):
+        e.tub(sid, (bx - 1.2, yv, z - 2), (bx + 1.2, yv, z - 2), 8, body, 3.6)
+    # la voluta, amb la tapa de davant del dibuix pla (el cercle de perns i el tap de purga)
+    _voluta(e, sid, x, yv, z - 12, z + 10, rx, ry, body, 2.8)
+    e.quad(sid, (x - rx, yv + ry, z - 12), (x + rx, yv + ry, z - 12), (x + rx, yv - ry, z - 12),
+           (x - rx, yv - ry, z - 12), tex=(bom, (cx - 23, vy - 16, cx + 24, vy + 17)),
+           forma=lambda s, t: ((s - rx) / rx) ** 2 + ((t - ry) / ry) ** 2 <= 1.0)
+    # la llanterna d'acoblament: la finestra amb l'eix i la protecció groga, del dibuix pla
+    e.caixa(sid, x - 12, x + 12, _yb(ly1), _yb(ly0), z - 9, z + 9, CAB, 2.8,
+            cares={'davant': {'tex': (bom, (cx - 12, ly0, cx + 13, ly1 + 1))},
+                   'dreta': {'ramp': CAB, 'lvl': lambda s, t, P: 2.2 + (0.9 if s < 1.2 else 0)}})
+    # el motor: la brida, el cos d'aletes (amb la placa i la fletxa) i la tapa del ventilador amb la reixeta
+    _cilindre(e, sid, x, z, 21, ym0, ym0 + 5, ENG_LIGHT, 3.0, n=20)
+    _disc(e, sid, x, ym0 + 5, z, 21, ENG_LIGHT, lambda s, t, P: 3.8)
+    ap = 0.7 * math.atan2(CAM.pos[0] - x, -(CAM.pos[2] - z))   # el davant del motor, girat una mica cap a la càmera
+    _cilindre(e, sid, x, z, MOTOR_R, ym0 + 5, ym1, None, tex=(motor, MOTOR_TW, MOTOR_H), n=20, a0=ap)
+    # la placa del nom, plana, cargolada al davant del motor
+    pw, ph = PLACA[0] * PLACA[2] / 2, PLACA[1] * PLACA[2] / 2
+    rr, yc = MOTOR_R + 0.6, ym1 - 26
+    C = (x + rr * math.sin(ap), z - rr * math.cos(ap))
+    tx, tz = math.cos(ap), math.sin(ap)
+    e.quad(sid, (C[0] - tx * pw, yc + ph, C[1] - tz * pw), (C[0] + tx * pw, yc + ph, C[1] + tz * pw),
+           (C[0] + tx * pw, yc - ph, C[1] + tz * pw), (C[0] - tx * pw, yc - ph, C[1] - tz * pw),
+           tex=(motor, (0, MOTOR_H + 4, PLACA[0], MOTOR_H + 4 + PLACA[1])))
+    _disc(e, sid, x, ym1, z, MOTOR_R, ENG_LIGHT, lambda s, t, P: 3.6)
+    _cilindre(e, sid, x, z, 17, ym1, ym1 + 4, ENG_LIGHT, 3.4, n=18)
+    _disc(e, sid, x, ym1 + 4, z, 17, ENG_LIGHT,
+          lambda s, t, P: 2.0 if int(math.hypot(s - 17, t - 17)) % 3 == 0 and math.hypot(s - 17, t - 17) < 14 else 3.9)
+    # la caixa de borns, al costat del motor, amb el premsaestopes i el cable que puja a la safata
+    e.caixa(sid, x + 16, x + 27, _yb(my0 + 37), _yb(my0 + 17), z - 6, z + 6, ENG_LIGHT, 3.0,
+            cares={'dalt': {'ramp': ENG_LIGHT, 'lvl': 4.0}})
+    e.caixa(sid, x + 19, x + 24, _yb(my0 + 17), _yb(my0 + 14), z - 2, z + 2, CAB, 3.4)
+    e.cable(sid, [(x + 21.5, _yb(my0 + 14), z), (x + 22, HW - 30, z + 6), (x + 22, HW - 4, ZW - 6)], CAB, 2.4, gruix=1.6)
+    # la impulsió: surt per la dreta de la voluta, colze, puja (amb la vàlvula de retenció) fins al col·lector
+    e.tub(sid, (x + rx - 4, yv, z), (ox, yv, z), 5, body, 3.0)
+    e.tub(sid, (ox, yv, z), (ox, yt, z), 5, body, 2.8, brides=46)
+    e.caixa(sid, ox - 6, ox + 6, _y(134), _y(122), z - 6, z + 6, body, 3.0)
+    e.tub(sid, (ox, yt, z), (ox, yt, z), 5.6, body, 3.2)              # (el colze de dalt)
 
 
 def _gira(cx, cz, a):
@@ -366,7 +513,8 @@ def _penjolls(e):
 
 @functools.lru_cache(maxsize=None)
 def _textures():
-    return {'paret': _paret_base(), 'llisa': _llisa(), 'bombes': _bombes()}
+    return {'paret': _paret_base(), 'llisa': _llisa(), 'bombes': _bombes(),
+            'motors': {tag: _motor_pla(tag) for _, _, tag in PUMPS}}
 
 
 def _render(estat=frozenset(), tex=None):
@@ -502,18 +650,21 @@ def _z_a_v(x, v):
     return (lo + hi) / 2
 
 
-FRONT = [
-    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
-    {'id': 'davant_bombes', 'mask': _amo({'bombes'}), 'baseline': _p(_w(501), PZ - 18)[1], 'zIndex': 20,
-     'props': ('llanterna',)},                     # (la llum de la llanterna a la bancada de la bomba vermella)
-]
-
 V_PROP = 250
 WALK_MON = ([(10, 60), (10, ZW - 12), (_w(285), ZW - 12), (_w(285), ZW - 22), (_w(380), PZ - 26), (XR - 10, PZ - 26)]
             + [(x, _z_a_v(x, V_PROP)) for x in (XR - 10, 340, 280, 200, 120, 60)] + [(10, _z_a_v(10, V_PROP))])
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 _PW = (_w(380), _w(640))
+
+# Les bombes: el terra on es camina no passa mai per darrere de cap peça (s'acaba davant les bancades, i a l'esquerra
+# de la vermella hi ha l'aspiració, més enrere), així que el personatge hi és sempre davant. (Abans la línia era a
+# PZ - 18 de la bomba del mig, i davant de la vermella, on el terra s'acaba més amunt, el personatge hi quedava darrere.)
+FRONT = [
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+    {'id': 'davant_bombes', 'mask': _amo({'bombes'}), 'baseline': _V_FONS - 1, 'zIndex': 20,
+     'props': ('llanterna',)},                     # (la llum de la llanterna a la bancada de la bomba vermella)
+]
 
 GEOMETRIA = {
     'things': {
