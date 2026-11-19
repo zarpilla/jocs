@@ -48,11 +48,28 @@ detall, el salt és enorme.
 | Decorats i animacions | Es dibuixen plans i es projecten per les mateixes superfícies amb `Escena.capa(...)`: el que hi ha davant els continua tapant. |
 | Llum per cara, bassals | `Llum(pos, r, k)` del món: il·lumina cada cara segons cap on mira. `foscor(...)`: racons, ombres sota els mobles. |
 | Primer pla i capes caminables | `FRONT`: una capa o una llista de capes `{'id', 'mask', 'baseline', 'zIndex'}` (la màscara, a partir de qui ha pintat cada píxel: `Escena.amo`). Amb `baseline` 999 tapa sempre (el primer pla); amb la y de la base d'un moble (el pou, la bomba, l'olivera al pati), el personatge hi passa per darrere o per davant (les eines posen a cada capa un `zIndex` creixent segons la línia base: si l'ordre de les capes no és el de la profunditat, el motor no pot complir totes les línies base i deixa el personatge darrere de totes). Al terra, `GEOMETRIA['forats']`: el moble no es trepitja però s'hi pot fer la volta. |
-| Personatges que s'allunyen | `GEOMETRIA['regions']` amb una regió `scaleEnabled`: al terra, l'escala d'un personatge només depèn de la y de pantalla, i amb `Camera.escala()` es calcula exacta. Que no passi de ≈1,2 a prop (els personatges són a 2×). |
+| Personatges que s'allunyen | `GEOMETRIA['regions']` amb una regió `scaleEnabled`: al terra, l'escala d'un personatge només depèn de la y de pantalla, i amb `Camera.escala()` es calcula exacta. Que no passi de ≈1,2 a prop (els fulls dels personatges són a 1×: ampliats, es pixelen). |
 | Sales més amples que la pantalla | `ROOM_W` al mòdul de la sala (p. ex. el pati de la granja, 1280): la càmera segueix el personatge. |
 
-Les eines són d'Aigua Verne; per fer-les servir en un altre joc, cal copiar `tres_d.py` al seu `hd640/` (o pujar-lo a
-una carpeta compartida quan un segon joc el necessiti).
+Els quatre jocs tenen les mateixes eines: `hd640/tres_d.py` (una còpia a cada joc), el soroll `fbm` a
+`hd/rooms/exterior.py`, `redibuixa_sala.py`, i `hd/render.py` i `draw_placeholders.py` amb les capes del davant, les
+regions, els forats, l'ombra i `floorSquash`. A Ferro-9, la geometria de les sales que no són en 3D és a
+`room_designs.py` (352×198); una sala en 3D porta la seva `GEOMETRIA` en píxels de 640 i la substitueix.
+
+Més sobre les capes del davant (`FRONT`), après fent les sales:
+
+- **Variants.** Una capa és un retall del fons de sempre, i es dibuixa per sobre: un decorat que canvia tota la sala
+  (de dia, a les fosques, una alarma) quedaria tapat i el moble de davant sortiria «de nit» en una sala «de dia».
+  `'variants': ('dia', 'fosc')` a la capa: les eines en fan la versió amb cada decorat (`dia__davant_timo`, retallada
+  per la màscara, just a sobre i amb la mateixa línia base), i el runtime la mostra i l'amaga amb el decorat.
+- **Props de damunt d'una capa** (el portàtil damunt del taulell): `'props': (...)` a la capa. Les capes van de 2 en
+  2 de zIndex, i el d'enmig és per a aquests props i les variants.
+- **Cap hotspot ni prop amb zIndex ≥ 10** a les sales amb capes del davant (els personatges són a 9–10): el motor no
+  pot complir les línies base i deixa el personatge darrere de totes les capes.
+- **Mobles que fan diagonal** a la pantalla (una consola, un banc girats): una sola línia base no deixa passar per
+  davant d'una punta i per darrere de l'altra. La capa es talla en franges verticals, cadascuna amb la seva línia
+  base (`_llesques`, a `fabrica_magatzem.py` de Ferro-9). La línia base d'un moble girat és la del cantó de davant
+  que queda més al fons.
 
 ### Números que han funcionat (el pont)
 
@@ -79,6 +96,13 @@ una carpeta compartida quan un segon joc el necessiti).
 - Paranys: els forats del terra que la càmera aixafa fins a ≈2 px fan fallar el camí (millor treure'ls); `e.linia`
   amb punts darrere la càmera pinta milions de píxels; el `fbm` de la llibreria és lent per a superfícies grans (el
   palau en fa servir un de numpy); una sala amb un decorat al `PROPS` que no és al `.room.json` no el porta al joc.
+- **Les coordenades fixes del guió** (`stage` amb `at`/`walk` `{x, y}` a `game/data/rooms/<sala>.json`, i `place` a
+  `characters.json`) són en píxels de sala: quan el terra on es camina canvia, cal mirar que hi caiguin a dins (si
+  no, el motor porta el personatge al punt més proper), i passar el sync perquè arribin al joc.
+- Amb una càmera picada, la franja on es camina és estreta i l'escala hi creix de pressa: el terra on es camina es
+  talla on el personatge arriba a ≈1,2, i el terra de més a prop queda per al primer pla.
+- Els rètols petits, en escorç, no es llegeixen: s'han de dibuixar més grossos al pla (a Suma Zero, la font a 2× amb
+  una N de 5 px: la de 4, en escorç, semblava una M).
 
 ### Números que han funcionat (el pati de la granja)
 
@@ -125,8 +149,9 @@ enganxat sobre el fons. Quatre ajustos el fan seure a l'espai, i el cinquè el f
    `"shadow": false`.
 4. **Escala contínua i ordre de dibuix.**
    - L'escala ja és contínua: una regió `scaleEnabled` interpola linealment entre `scaleTop` i `scaleBottom` segons
-     la y dels peus (`Camera.escala()` dona els valors exactes). Res de dues mides fixes amb un salt al mig. Com que
-     els fulls són a 2× (`artScale`), reduir no deforma la cara; el límit és per dalt (≈1,2, vegeu més amunt). En
+     la y dels peus (`Camera.escala()` dona els valors exactes). Res de dues mides fixes amb un salt al mig. Els fulls
+     són a 1×: reduir no deforma gaire la cara (el motor fa la mitjana dels píxels), i el límit és per dalt (≈1,2,
+     vegeu més amunt). En
      sales molt profundes (el carreró, el desert), on al fons el personatge baixa de ≈0,55, es pot dibuixar a mà una
      segona mida petita del full i deixar l'escalat només per als trams intermedis.
    - Ordre de dibuix: els mobles del pla mitjà (el llit, el pou, les caixes) van en capes pròpies amb una línia base
@@ -136,10 +161,9 @@ enganxat sobre el fons. Quatre ajustos el fan seure a l'espai, i el cinquè el f
    barata a més cara:
    - **Respiració (la base).** Dos fotogrames per direcció: les espatlles, el pit i els braços pugen 1 px. El cap i
      els peus no es mouen. El ritme és lent: ≈800 ms cada fotograma, un cicle de 1,5–2 s
-     (`animations.IdleD.frameDuration` al `.character.json`). **A Aigua Verne ja es fa:** `draw_characters.py`
-     (`respira`) en treu el segon fotograma del mateix dibuix, amb la franja de sota el coll fins al maluc 1 px més
-     amunt, i posa `frameDuration` 800 a tots els `Idle` de les persones. Als altres jocs, l'`Idle` encara és d'un sol
-     fotograma.
+     (`animations.IdleD.frameDuration` al `.character.json`). **Als quatre jocs ja es fa**, però no movent el cos: a
+     1×, pujar el tors 1 px semblava arronsar les espatlles. `draw_characters.py` (`respira`) fa un `Idle` de quatre
+     fotogrames on només la clariana del pit puja i baixa (+5 %, +10 %, +5 %), a 650 ms cada fotograma.
    - **Micro-accions aleatòries (el toc LucasArts).** Cada 5–12 s de quietud, una animació curta d'un sol cop i
      tornada a respirar.
      - **Parpelleig:** els ulls tancats 100–150 ms, cada 2,5–5 s.
@@ -160,8 +184,8 @@ enganxat sobre el fons. Quatre ajustos el fan seure a l'espai, i el cinquè el f
      l'atzar dins `every`, en segons, més `after` segons la primera vegada), la reprodueix un cop i el torna a
      l'`Idle`. L'etiqueta és la de l'`Idle` que sona amb `Idle` canviat pel nom de l'acció, i conserva la roba, la
      mida i la direcció: `LlunyGalaIdleDL` → `LlunyGalaBlinkDL`. Si el full no la té, l'acció se salta. Caminar,
-     parlar o una animació de guió la tallen, i el compte torna a començar. Encara no hi ha cap full amb aquestes
-     etiquetes: queden per dibuixar.
+     parlar o una animació de guió la tallen, i el compte torna a començar. Als quatre jocs, totes les
+     persones tenen `Blink` (on es veu la cara: D, L i DL) i `Look` (D i DL).
    - **Mai tots alhora.** Amb diverses persones a la sala, ningú no fa el mateix en el mateix moment, i el motor ho
      garanteix sense que s'hagi de configurar. Cada personatge comença la respiració en un punt a l'atzar del cicle
      (el fotograma i el temps que ja hi porta) i respira al seu ritme (±12%, només mentre és quiet): encara que dos
@@ -242,6 +266,20 @@ girada, pou des de dalt, tanca en diagonal, esquerdes, roques en primer pla),
 [l'habitació 404](referencies/sala-habitacio-404.png) (dues parets que fugen, llit girat, llum de persiana en
 franges, caixes en silueta) i [el pont de control](referencies/sala-pont-control.png) (finestral inclinat, consola amb
 tres cares, comporta oberta a un passadís il·luminat, barana i canonada en primer pla).
+
+**Suma Zero, Ni un ou i Ferro-9: també totes les sales i les cinemàtiques en 3D, a 1×** (novembre del 2026), amb els
+personatges en 3/4, la respiració i les micro-accions. Queda pendent:
+
+- Rètols petits que no es llegeixen en escorç: a Suma Zero, el panell de sortides i «FACTURACIÓ» de la terminal i la
+  placa «DIRECTOR»; a Ni un ou, «COBERTA», «CUINA», «MUNTACÀRREGUES», «RÀDIO», «PONT» i els noms de les portes del
+  passadís; a Ferro-9, «ACCÉS RESTRINGIT», «HANGAR», les normes del Cargol i «ALDAIA · FERRO-9» al museu.
+- Ni un ou, la coberta de popa: la càmera mira cap a popa i la plataforma queda a babord, però el text diu «a
+  estribord».
+- Escenes amb gent asseguda que no s'han vist al joc: la reunió del menjador i la infermeria de Ni un ou.
+- Els personatges no surten als reflexos del terra (el vestíbul del banc de Suma Zero).
+- Alguns mobles i objectes encara són dibuixos plans drets (sprites), no volums: els tamborets del bar, les bombes de
+  la sala de bombes, la llançadora de l'hangar.
+- Aigua Verne, la bodega de la Cantimplora: el hotspot `carrega` té zIndex 10 (vegeu més amunt).
 
 **Aigua Verne: totes les sales i les cinemàtiques són en 3D, a 1×** (novembre del 2026). Queda pendent:
 
