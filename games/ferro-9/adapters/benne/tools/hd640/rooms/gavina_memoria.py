@@ -1,657 +1,512 @@
 """
-Sala de la Memòria (La Gavina, Vet), a 640×360 (hd/rooms/gavina_memoria.py redibuixat a ×4/3): el museu de
-propaganda de la corporació. Plafons nets, terra polit que reflecteix, focus de museu sobre les peces i
-l'holograma del Director Aldaia fent de guia.
-Llums: l'holograma (cian, la més forta), focus sobre la foto i sobre la vitrina, i la pantalla del mapa.
+Sala de la Memòria (La Gavina, Vet). EN 3D (hd640/tres_d.py), a 1×.
+
+El museu de propaganda de la corporació. Una càmera alta, a la dreta, mira de biaix la cantonada del fons a
+l'esquerra:
+  - a la paret de l'esquerra, en escorç, la **porta de sortida** cap al passadís, amb el rètol verd;
+  - a la paret del fons, la **foto del torn de nit**, el **mapa de La Gavina** (la pantalla), el rètol del sostre i
+    el carril dels focus;
+  - al mig de la sala, separat de tot, el **sòcol** de l'holograma i l'**holograma del Director** fent de guia: llum
+    cian que se suma al que hi ha darrere (s'hi passa per darrere del sòcol);
+  - la **vitrina**, girada, amb el pedestal, la caixa de vidre i el buit de la clau anglesa; l'**expositor de
+    fullets**, girat, prop de la cantonada de la dreta;
+  - el terra de resina polida, amb els bassals dels focus i la claror de l'holograma;
+  - primer pla: el cordó de vellut entre dos pals daurats, a baix a l'esquerra, i la columna fosca de la dreta.
+
+El detall de les parets, del sòcol, de la vitrina i dels fullets ve del dibuix pla de sempre
+(gavina_memoria_pla_comu.py), projectat; els decorats, la diferència amb la sala de sempre.
+
+El món: x a la dreta (0 = la paret de la porta), y amunt (0 = el terra), z cap al fons (300 = la paret del fons);
+1 unitat = 1 píxel de sala a la distància on un personatge fa ≈110 px (escala 1).
 """
+import functools
 import math
 
+import numpy as np
+from PIL import Image
+
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
-from hd.pix import Canvas, B4, W, H, mix, STEEL, CYAN, WARN, RED, PAPER, IRON, NAVY
-from hd.rooms.gavina_memoria import MUSE, RESIN, SEPIA, FRAME, VELVET, HOLO, SPOT  # noqa: F401
-from hd640.rooms.gavina_passadis_pla_comu import (LAMPW, SIGN, CORPG, PILOT, FLOOR_Y, WALL_B, CachedLight, hr, text,
-                                         text_w, smile, ambient_frames)
+from hd.pix import Canvas, Light, W, H, STEEL, CYAN, WARN, PAPER, IRON, GOLD  # noqa: F401
+from hd.rooms.gavina_memoria import MUSE, RESIN, FRAME, VELVET, HOLO  # noqa: F401
+from hd640.rooms import gavina_memoria_pla_comu as PL
+from hd640.rooms.gavina_passadis_pla_comu import FLOOR_Y, hr, diff
+from hd640.tres_d import Camera, Escena, Llum
 
-HX, HY = 408, 123                    # centre de l'holograma
-SPOT_FOTO = (173, 16)
-SPOT_VITRINA = (509, 16)
-
-
-def spot_cone(sx, sy, tx, ty, rx, k):
-    """Taca el·líptica d'un focus de museu sobre la paret (centrada a tx, ty) amb el con que hi baixa."""
-    def f(x, y):
-        if y < sy:
-            return 0.0
-        d = math.hypot((x - tx) / rx, (y - ty) / (rx * 0.9))
-        v = k * max(0.0, 1 - d) ** 1.2 if d < 1 else 0.0
-        # con suau entre el focus i la taca
-        if sy < y < ty:
-            t = (y - sy) / (ty - sy)
-            w = 4 + t * rx * 0.9
-            if abs(x - (sx + (tx - sx) * t)) < w:
-                v += 0.35 * k * (1 - abs(x - (sx + (tx - sx) * t)) / w) * t
-        return v
-    return f
+BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
+ZW = 300                                           # la paret del fons
+HW = FLOOR_Y                                       # l'alçada de les parets
+XC = 110                                           # al dibuix pla, la cantonada (a l'esquerra, la paret de la porta)
+XR = 900                                           # on s'acaba la paret del fons (fora de la pantalla)
+HOLO_P = (PL.HX - XC, 196)                         # el sòcol de l'holograma (x, z): davant del seu lloc a la paret
+VITRINA = (404, 196, 0.38)                         # la vitrina: x, z, gir
+FULLETS = (500, 262, 0.62)                         # l'expositor de fullets: x, z, gir
 
 
-def holo_light(x, y):
-    d = math.hypot(x - HX, (y - HY) * 0.7)
-    return 2.4 * max(0.0, 1 - d / 160) ** 1.6
+def _w(fx):
+    """Una x del dibuix pla de la paret del fons → la x del món."""
+    return fx - XC
 
 
-LIGHT = CachedLight(ambient=0.0, vignette=(85, 40), floor_fade=(264, 45))
-LIGHT.add(spot_cone(*SPOT_FOTO, 173, 88, 112, 2.4))
-LIGHT.add(spot_cone(*SPOT_VITRINA, 509, 128, 83, 2.4))
-LIGHT.add(lambda x, y: 0.9 * max(0.0, 1 - math.hypot((x - 293) / 267, (y - 233) / 40)) if y >= FLOOR_Y else 0.0)
-LIGHT.add(holo_light)
-LIGHT.point(292, 85, r=93, k=0.8)                                     # pantalla del mapa
+def _wz(fx):
+    """Una x del dibuix pla de la paret de la porta → la z del món."""
+    return ZW - XC + fx
 
 
-def museum_wall(cv, x0, x1):
-    pw = 64
-    SOC = [3.6, 2.6, 1.6, 1.4, 1.3, 1.2, 1.1, 1.0, 0.8, 0.4]
-    for y in range(0, FLOOR_Y):
-        for x in range(x0, x1 + 1):
-            px = (x - 5) % pw
-            lvl = 2.7 + (hr((x - 5) // pw, 2) - 0.5) * 0.15 + (hr(x // 2, y // 3, 4) - 0.5) * 0.06
-            if y < 13:
-                lvl = 1.2 + (0.8 if y in (9, 10) else 0)
-            elif y == 13:
-                lvl = 4.0
-            elif y == 14:
-                lvl = 3.0
-            elif y < 17:
-                lvl = 1.0
-            elif y < 149:
-                if px == 0:
-                    lvl = 1.2                                               # junta d'ombra entre plafons
-                elif px == 1:
-                    lvl += 0.8
-                elif px == pw - 1:
-                    lvl -= 0.6
-                lvl -= max(0.0, 1 - (y - 17) / 21) * 1.2
-            elif y < 154:
-                lvl = [4.6, 4.2, 3.6, 2.6, 1.4][y - 149]                    # passamà
-            elif y < 195:
-                lvl = 2.6 + (0.2 if px < 2 else 0)
-                if px == 0:
-                    lvl = 1.4
-                if y == 154:
-                    lvl -= 0.6
-            else:
-                lvl = SOC[y - 195]                                          # sòcol fosc
-            cv.put(x, y, MUSE, lvl)
-    for x in range(x0, x1 + 1):                                             # cargolets del passamà
-        if (x - 5) % pw == pw // 2:
-            cv.put(x, 151, MUSE, 6.0)
+def _y(fy):
+    """Una y del dibuix pla (el terra, a 205) → l'alçada del món."""
+    return HW - fy
 
 
-def resin_floor(cv):
-    vx, vy, S, K = 320, 40, 1.7, 933.3
-    for y in range(FLOOR_Y, H):
-        d = y - vy
-        v = K / d
-        vi = math.floor(v)
-        fv = (vi + 1 - v) * d * d / K
-        for x in range(W):
-            u = (x - vx) / d * S
-            ui = math.floor(u)
-            fu = (u - ui) * d / S
-            lvl = 3.0 + (hr(ui, vi, 7) - 0.5) * 0.25
-            if fu < 1 or fv < 1:
-                lvl = 1.4
-            elif fu < 2 or fv < 2:
-                lvl += 0.2                                                  # el cantell polit de la junta
-            if y < 213:
-                lvl -= (213 - y) / 8 * 0.9
-            cv.put(x, y, RESIN, lvl)
+CAM = Camera(pos=(320, 185, -260), yaw=-0.22, pitch=0.16, f=440, centre=(320, 100))
+
+LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)  # (la llum és la del món: la de l'Escena)
+HOLO_C = (HOLO_P[0], 100, HOLO_P[1])
+SPOT_F = (_w(173), 150, ZW - 30)                   # el focus de la foto
+SPOT_V = (VITRINA[0], 150, VITRINA[1])             # el focus de la vitrina
+LLUMS = [Llum(HOLO_C, 260, 1.8, power=1.4), Llum(SPOT_F, 200, 1.4, power=1.5), Llum(SPOT_V, 200, 1.5, power=1.5),
+         Llum((_w(292), 90, ZW - 20), 120, 0.6)]
 
 
-def reflect(cv, k=0.18):
-    """Reflex del terra polit: barreja amb la paret capgirada."""
-    for y in range(FLOOR_Y, 275):
-        sy = 2 * WALL_B - y
-        a = k * max(0.0, 1 - (y - FLOOR_Y) / 64)
-        for x in range(W):
-            if a > B4[y & 3][x & 3] * 0.45:
-                s = cv.P[x, sy]
-                o = cv.P[x, y]
-                if sum(s[:3]) > sum(o[:3]):
-                    cv.P[x, y] = mix(o, s, a) + (255,)
+class _Canvas(Canvas):
+    S = 1                                          # (tres_d: píxels reals per píxel de sala)
 
 
-def bg(cv, mira=False, t=0.0):
-    tt = t                                   # (dins la funció, `t` es fa servir per a altres coses)
-    ph = 2 * math.pi * tt
-    museum_wall(cv, 0, W - 1)
-    resin_floor(cv)
+# ─── Les textures: el dibuix pla de sempre ───────────────────────────────────
 
-    # ─── Rètol del sostre ─────────────────────────────────────────────────
-    title = 'LA GAVINA · AQUÍ VA COMENÇAR TOT'
-    tw = text_w(title)
-    tx = 293 - tw // 2
-    cv.rect(tx - 19, 18, tx + tw + 5, 32, CORPG, lambda x, y: 2.5 - (0.5 if y == 32 else 0), 0.2)
-    cv.hline(tx - 19, tx + tw + 5, 18, CORPG, 4.5, 0.2)
-    text(cv, tx, 22, title, SIGN, 4.5, 0)
-    smile(cv, tx - 10, 25, 5, lit=0, lvl=3.8)
-    cv.darken(tx - 19, 33, tx + tw + 5, 35, 0.4)
-    for sx in (tx - 4, tx + tw - 8):                                        # els cables que el pengen
-        cv.vline(sx, 16, 17, IRON, 2.0)
+def _llum_pla():
+    """La llum del dibuix pla, sense la vinyeta ni l'enfosquiment de baix (la llum és la de l'escena)."""
+    l = Light(ambient=0.4, vignette=None, floor_fade=None)
+    l.points = list(PL.LIGHT.points)
+    l.extra = list(PL.LIGHT.extra)
+    return l
 
-    # ─── Focus de museu al carril del sostre ──────────────────────────────
-    cv.hline(93, 560, 14, IRON, 3.0)
-    cv.hline(93, 560, 15, IRON, 1.4)
-    for sx, sy in (SPOT_FOTO, SPOT_VITRINA):
-        cv.rect(sx - 3, 14, sx + 3, 17, IRON, lambda x, y: 3.4 if y == 14 else 2.6)
-        cv.poly([(sx - 7, 19), (sx + 4, 17), (sx + 7, 25), (sx - 4, 28)], IRON, lambda x, y: 3.6 - (x - sx) * 0.2)
-        cv.line(sx - 6, 19, sx + 3, 17, IRON, 4.8)                           # el cantell de dalt, amb llum
-        for k in range(3):
-            cv.line(sx - 6 + k * 3, 21 + k, sx - 3 + k * 3, 20 + k, IRON, 1.6)   # aletes de refredar
-        cv.line(sx - 4, 28, sx + 7, 25, SPOT, 0, 0)
-        cv.line(sx - 3, 27, sx + 6, 24, SPOT, 0, 0)
-        cv.glow(sx + 1, 28, 13, (255, 240, 210), 0.6)
 
-    # ─── Porta cap al passadís (10..88 × 61..208) ─────────────────────────
-    DX0, DX1, DT = 16, 81, 80
-    cv.rect(DX0 - 5, DT - 5, DX1 + 5, WALL_B, MUSE, lambda x, y: 4.6 if x < DX0 - 3 or y < DT - 3 else (1.6 if x > DX1 + 2 else 3.0))
-    cv.rect(DX0 - 1, DT - 1, DX1 + 1, WALL_B, STEEL, 0.4)
-    mid = (DX0 + DX1) // 2
-    for y in range(DT, FLOOR_Y):
-        for x in range(DX0, DX1 + 1):
-            side = x <= mid
-            u = (x - DX0) / (mid - DX0) if side else (x - mid - 1) / (DX1 - mid - 1)
-            lvl = 3.2 + (0.6 - u * 0.9) - (0.3 if not side else 0)
-            if x in (mid, mid + 1):
-                lvl = 1.0 if x == mid else 4.2
-            if 128 <= y <= 149 and (x - DX0 in range(7, 25) or DX1 - x in range(7, 25)):
-                lvl = 2.0 + (0.8 if y == 128 else 0) + (0.4 if (x + y) % 7 == 0 else 0)   # vidre esmerilat
-            if y > 196:
-                lvl -= 0.5                                                  # la xapa de peu
-            cv.put(x, y, STEEL, lvl)
-    for hx in (mid - 5, mid + 4):
-        cv.rect(hx, 144, hx + 1, 163, STEEL, lambda x, y: 6.0 if x == hx else 4.4)
-        cv.hline(hx, hx + 1, 164, STEEL, 1.2)
-    # rètol de sortida
-    cv.rect(29, 63, 69, 74, PILOT, 1.5, 0)
-    cv.hline(29, 69, 63, PILOT, 2.0, 0)
-    text(cv, 33, 65, 'SORTIDA', PILOT, 3.5, 0)
-    cv.glow(49, 69, 24, (90, 255, 140), 0.35)
-    # lector d'accés
-    cv.rect(DX1 + 9, 131, DX1 + 16, 144, MUSE, lambda x, y: 1.6 if x == DX1 + 16 else 4.0)
-    cv.rect(DX1 + 11, 138, DX1 + 14, 141, MUSE, 2.2)
-    on = 1.0 if (tt * 2 + 0.37) % 1 < 0.1 else 3.0                        # el pilot s'apaga un instant
-    cv.put(DX1 + 12, 134, PILOT, on, 0)
-    cv.put(DX1 + 13, 134, PILOT, on - 0.6, 0)
+@functools.lru_cache(maxsize=None)
+def _pla(t=0.0, mira=False):
+    """El dibuix pla sencer (amb l'holograma, la vitrina i els fullets, que en surten com a retalls)."""
+    cv = Canvas(light=_llum_pla())
+    PL.bg(cv, mira=mira, t=t)
+    return cv.img
 
-    # ─── Foto del torn de nit (120..226 × 47..136) ────────────────────────
-    FX0, FY0, FX1, FY1 = 123, 49, 223, 123
-    cv.rect(FX0 + 3, FY0 + 3, FX1 + 4, FY1 + 4, MUSE, 1.4)                  # ombra
-    for y in range(FY0, FY1 + 1):
-        for x in range(FX0, FX1 + 1):
-            dd = min(x - FX0, FX1 - x, y - FY0, FY1 - y)
-            if dd > 4:
-                continue
-            lvl = [2.0, 4.6, 4.0, 3.2, 2.4][dd]
-            if (FX1 - x) < 5 or (FY1 - y) < 5:
-                lvl -= 0.8
-            if dd == 2 and (x + y) % 5 == 0:
-                lvl += 0.5                                                  # el daurat gravat del marc
-            cv.put(x, y, FRAME, lvl)
-    PX0, PY0, PX1, PY1 = FX0 + 5, FY0 + 5, FX1 - 5, FY1 - 5               # 128..218 × 54..118
-    # fons de la foto: la nau de la fàbrica, amb la boca d'un forn encesa
-    for y in range(PY0, PY1 + 1):
-        for x in range(PX0, PX1 + 1):
-            lvl = 2.6 + (y - PY0) / 53 + (hr(x // 3, y // 3, 3) - 0.5) * 0.2 + (hr(x, y, 9) - 0.5) * 0.15
-            if (x - PX0) % 16 == 0 and y < PY0 + 35:
-                lvl -= 0.6                                                  # pilars de la nau
-            if y < PY0 + 5:
-                lvl -= 0.6
-            if (y - PY0) == 14 and (x - PX0) % 16 < 14:
-                lvl -= 0.3                                                  # la biga del pont grua
-            fd = math.hypot(x - 203, y - 75)
-            if fd < 12:
-                lvl += (1 - fd / 12) * 2.8                                 # la boca del forn
-            cv.put(x, y, SEPIA, lvl, 0.3)
-    # el torn de nit, en fila
-    people = [(139, 0, 37, True), (152, 1, 36, False), (164, 2, 31, False), (177, 3, 39, True), (191, 4, 36, True)]
-    for px, k, h, cap in people:
-        if k == 2 and not mira:
-            continue                                                        # la M. d'Orís: retallada (vegeu el forat)
-        top = PY1 - h
-        # cos (granota de treball fosca)
-        for y in range(top + 9, PY1 + 1):
-            half = 4 + (1 if y > top + 12 else 0)
-            for x in range(px - half, px + half + 1):
-                lvl = 1.4 - (x - px) * 0.08 + (0.6 if x == px - half else 0)
-                if y == top + 22 and abs(x - px) < half:
-                    lvl -= 0.5                                              # el cinturó
-                if x == px and top + 11 < y < top + 21:
-                    lvl += 0.3                                              # la cremallera
-                cv.put(x, y, SEPIA, lvl, 0.3)
-        cv.rect(px - 1, top + 7, px + 1, top + 9, SEPIA, 3.6, 0.3)        # coll
-        cv.disc(px, top + 4, 3.3, 4, SEPIA, lambda nx, ny: 4.6 - nx * 0.8 - ny * 0.4, 0.3)
-        if cap:
-            cv.rect(px - 4, top, px + 3, top + 1, SEPIA, 1.2, 0.3)        # gorra de treball
-            cv.hline(px - 5, px - 2, top + 2, SEPIA, 0.8, 0.3)
-        else:
-            cv.rect(px - 3, top, px + 3, top + 1, SEPIA, 0.8, 0.3)        # cabells
-            cv.vline(px - 4, top + 1, top + 5, SEPIA, 0.8, 0.3)
-    # la I. (segona): cara ratllada
-    ix, itop = 152, PY1 - 36
-    for i in range(-4, 5):
-        cv.put(ix + i, itop + 4 + i // 2, SEPIA, 6.4, 0.3)
-        cv.put(ix + i, itop + 5 - i // 2, SEPIA, 6.0, 0.3)
-        cv.put(ix + i + 1, itop + 3 + (i * 3) // 4, SEPIA, 0.4, 0.3)
-    # la del costat (M. d'Orís): més baixeta, somrient, amb una trena
-    mx, mtop = 164, PY1 - 31
-    if mira:
-        cv.vline(mx + 4, mtop + 3, mtop + 11, SEPIA, 0.8, 0.3)            # trena
-        cv.put(mx + 5, mtop + 11, SEPIA, 1.4, 0.3)
-        cv.hline(mx - 1, mx + 1, mtop + 6, SEPIA, 2.0, 0.3)                # somriure
-    else:
-        # algú la va retallar amb tisores: un forat amb la seva silueta, i a dins el cartró fosc del darrere
-        def cut(x, y):
-            j = (hr(x, y, 71) - 0.5) * 1.1                                 # tall de tisora, no gaire net
-            if y <= mtop + 8:
-                return math.hypot((x - mx) / 5.0, (y - mtop - 4) / 5.7) + j * 0.2 < 1
-            if y <= mtop + 12:
-                return abs(x - mx) <= 3.5 + j
-            return abs(x - mx) <= 6.7 + j + (1 if y > mtop + 15 else 0)
-        for y in range(mtop - 3, PY1 + 1):
-            for x in range(mx - 11, mx + 12):
-                if not cut(x, y):
-                    continue
-                edge = not cut(x - 1, y) or not cut(x, y - 1)
-                if edge:
-                    cv.put(x, y, SEPIA, 6.2, 0.3)                          # vora blanca del paper tallat
-                else:
-                    cv.put(x, y, FRAME, 0.9 + (y - mtop) / 40 + (hr(x, y, 72) - 0.5) * 0.3, 0.3)
-    # el Cargol, nou de trinca, a la dreta
-    cv.rect(204, PY1 - 29, 213, PY1 - 13, SEPIA, lambda x, y: 5.0 - (x - 204) * 0.22, 0.3)   # cos
-    cv.hline(204, 213, PY1 - 21, SEPIA, 3.6, 0.3)                                            # la junta del pit
-    cv.rect(205, PY1 - 36, 212, PY1 - 31, SEPIA, 5.4, 0.3)                                   # cap
-    cv.put(207, PY1 - 34, SEPIA, 0.6, 0.3); cv.put(210, PY1 - 34, SEPIA, 0.6, 0.3)          # ulls
-    cv.vline(208, PY1 - 40, PY1 - 37, SEPIA, 4.0, 0.3)                                       # antena
-    cv.put(208, PY1 - 41, SEPIA, 6.0, 0.3)
-    cv.rect(205, PY1 - 12, 206, PY1, SEPIA, 3.6, 0.3); cv.rect(211, PY1 - 12, 212, PY1, SEPIA, 3.6, 0.3)
-    cv.rect(208, PY1 - 26, 209, PY1 - 25, SEPIA, 6.4, 0.3)                                   # la placa, nova
-    # taques i vinyeta de foto vella
-    cv.darken(PX0, PY0, PX1, PY1, lambda x, y: max(0.0, 0.5 - min(x - PX0, PX1 - x, y - PY0, PY1 - y) / 9), dither=False)
-    for i in range(5):                                                      # rascades del paper
-        sx, sy = PX0 + int(hr(i, 81) * (PX1 - PX0)), PY0 + int(hr(i, 82) * (PY1 - PY0 - 6))
-        cv.line(sx, sy, sx + 2, sy + 4, SEPIA, 5.6, 0.3)
-    # cartel·la
-    cv.rect(144, 127, 201, 133, PAPER, 4.5, 0.3)
-    cv.hline(144, 201, 133, PAPER, 3.0, 0.3)
-    cv.hline(147, 199, 129, MUSE, 2.5, 0)
-    cv.hline(149, 181, 131, MUSE, 3.5, 0)
 
-    # ─── Mapa de La Gavina (232..354 × 40..136) ───────────────────────────
-    MX0, MY0, MX1, MY1 = 235, 43, 349, 131
-    cv.rect(MX0 - 3, MY0 - 3, MX1 + 3, MY1 + 3, STEEL, lambda x, y: 1.4 if x > MX1 or y > MY1 else (4.4 if x < MX0 - 1 or y < MY0 - 1 else 3.4))
-    for y in range(MY0, MY1 + 1):
-        for x in range(MX0, MX1 + 1):
-            lvl = 1.6 + (0.25 if (x - MX0) % 11 == 0 or (y - MY0) % 11 == 0 else 0) + (y - MY0) / 160
-            cv.put(x, y, NAVY, lvl + 1.0, 0.2)
+@functools.lru_cache(maxsize=None)
+def _paret(t=0.0, mira=False):
+    """Les parets, de cara: la porta, la foto, el mapa, el rètol i els focus; on hi havia l'holograma, la vitrina i
+    els fullets (que ara són al mig de la sala), la paret de plafons."""
+    img = _pla(t, mira).copy()
+    nua = Canvas(light=_llum_pla())
+    PL.museum_wall(nua, 0, W - 1)
+    src, dst = nua.img.load(), img.load()
+    for x0, x1 in ((360, 456), (468, 552), (562, 628)):
+        for y in range(36, FLOOR_Y):
+            for x in range(x0, x1):
+                dst[x, y] = src[x, y]
+    return img
 
-    def mp(x, y, lvl=4.5, rmp=CYAN):
-        cv.put(x, y, rmp, lvl, 0)
 
-    text(cv, MX0 + 5, MY0 + 4, 'LA GAVINA', CYAN, 4.5, 0)
-    # l'estació: anell de mòduls al voltant d'un nucli
-    cx, cy = 284, 83
-    for a in range(0, 360, 2):
-        mp(round(cx + math.cos(math.radians(a)) * 32), round(cy + math.sin(math.radians(a)) * 17), 3.5)
-    for a in range(0, 360, 30):                                             # radis de l'anell
-        for k in range(9, 30, 3):
-            mp(round(cx + math.cos(math.radians(a)) * k), round(cy + math.sin(math.radians(a)) * k * 0.53), 2.6)
-    MODS = [('A', -40), ('B', 30), ('C', 100), ('D', 170), ('E', 240)]
-    for name, a in MODS:
-        mx_, my_ = round(cx + math.cos(math.radians(a)) * 32), round(cy + math.sin(math.radians(a)) * 17)
-        cv.rect(mx_ - 6, my_ - 5, mx_ + 6, my_ + 5, NAVY, 2.5, 0)
-        for xx in range(mx_ - 6, mx_ + 7):
-            mp(xx, my_ - 5); mp(xx, my_ + 5)
-        for yy in range(my_ - 5, my_ + 6):
-            mp(mx_ - 6, yy); mp(mx_ + 6, yy)
-        text(cv, mx_ - 1, my_ - 3, name, CYAN, 4.5 if name != 'C' else 5.5, 0)
-    cv.disc(cx, cy, 7, 4, CYAN, lambda nx, ny: 2.5 + (1.0 if nx * nx + ny * ny > 0.6 else 0), 0)
-    # «Vostè és aquí» (estrella al mòdul C)
-    sx_, sy_ = round(cx + math.cos(math.radians(100)) * 32) + 10, round(cy + math.sin(math.radians(100)) * 17) - 1
-    star_dim = (tt * 3) % 1 >= 0.75                                    # parpelleja
-    STAR = ((0, -3), (0, -2), (0, -1), (-3, 0), (-2, 0), (-1, 0), (0, 0), (1, 0), (2, 0), (3, 0), (-1, 1), (0, 1),
-            (1, 1), (-1, 2), (1, 2), (-2, 3), (2, 3))
-    for dx, dy in STAR:
-        cv.put(sx_ + dx, sy_ + dy, WARN, (2.6 if star_dim else 4.5) + (0.6 if (dx, dy) == (0, 0) else 0), 0)
-    cv.glow(sx_, sy_, 7, (255, 220, 80), 0.2 if star_dim else 0.6)
-    # conducte de servei en discontínua, per sota del mòdul C fins a l'hangar
-    hx_, hy_ = 325, 120
-    cmx, cmy = round(cx + math.cos(math.radians(100)) * 32), round(cy + math.sin(math.radians(100)) * 17) + 6
-    off = int(tt * 12) % 6                                             # la ruta avança cap a l'hangar
-    for i in range(0, 46):
-        t = i / 45
-        if ((i - off) // 3) % 2 == 0:
-            x = round(cmx + (hx_ - cmx) * t)
-            y = round(cmy + 13 * math.sin(t * math.pi) * 0.8 + (hy_ - cmy) * t)
-            cv.put(x, y, WARN, 3.5, 0)
-    cv.rect(hx_ - 4, hy_ - 3, hx_ + 7, hy_ + 3, NAVY, 2.5, 0)
-    for xx in range(hx_ - 4, hx_ + 8):
-        mp(xx, hy_ - 3, 3.5); mp(xx, hy_ + 3, 3.5)
-    for yy in range(hy_ - 3, hy_ + 4):
-        mp(hx_ - 4, yy, 3.5); mp(hx_ + 7, yy, 3.5)
-    # llegenda
-    for y in (121, 125):
-        cv.hline(MX0 + 5, MX0 + 5 + int(hr(y, 1) * 27) + 13, y, CYAN, 3.5, 0)
-    cv.rect(MX0 + 5, 128, MX0 + 7, 129, WARN, 3.5, 0)
-    # línia d'escaneig que baixa per la pantalla
-    f = tt % 1
+@functools.lru_cache(maxsize=None)
+def _nua():
+    cv = Canvas(light=Light(ambient=0.4, vignette=None, floor_fade=None))
+    PL.museum_wall(cv, 0, W - 1)
+    return cv.img
+
+
+@functools.lru_cache(maxsize=None)
+def _socol(nota=False):
+    """El sòcol de l'holograma, sobre transparent (amb la placa descargolada i el paper, si cal)."""
+    cv = Canvas(light=_llum_pla(), transparent=True)
+    PL._socol(cv, 0.0)
+    if nota:
+        PL.socol(cv)
+    return cv.img
+
+
+SOCOL_BOX = (366, 178, 452, 214)
+FOOT = (PL.HX, PL.SY1)                             # (al dibuix pla: el peu del sòcol, al mig)
+
+
+def _holo(t=0.0):
+    """L'holograma del Director i el raig del projector, sobre negre: es suma a l'escena (és llum)."""
+    cv = Canvas(light=_llum_pla())
+    ph = 2 * math.pi * t
+    kc = 0.22 * (1 + 0.15 * math.sin(ph * 2) + 0.06 * math.sin(ph * 5))
+    cone = lambda x, y: max(0.0, 1 - abs(x - PL.HX) / (11 + (195 - y) * 0.26)) if y < 195 else 0  # noqa: E731
+    cv.tint(363, 53, 453, 195, (140, 230, 255), lambda x, y: kc * cone(x, y))
+    f = (t * 2) % 1
     env = math.sin(math.pi * f)
     if env > 0.02:
-        ys = int(MY0 + f * (MY1 - MY0))
-        cv.tint(MX0, ys, MX1, ys, (150, 215, 255), 0.28 * env)
-        cv.tint(MX0, ys - 1, MX1, ys - 1, (150, 215, 255), 0.14 * env)
-        cv.tint(MX0, ys - 2, MX1, ys - 2, (150, 215, 255), 0.06 * env)
-    cv.glow(292, 87, 61, (90, 170, 255), 0.25)
-
-    # ─── Holograma del Director (370..448 × 47..190) i el sòcol ───────────
-    # con de llum del projector
-    kc = 0.22 * (1 + 0.15 * math.sin(ph * 2) + 0.06 * math.sin(ph * 5))      # el raig respira
-    cone = lambda x, y: max(0.0, 1 - abs(x - HX) / (11 + (195 - y) * 0.26)) if y < 195 else 0  # noqa: E731
-    cv.tint(363, 53, 453, 195, (140, 230, 255), lambda x, y: kc * cone(x, y))
-    # polsos de llum que pugen pel raig des del sòcol (dos per cicle)
-    for f in ((tt * 2) % 1,):
-        env = math.sin(math.pi * f)
-        if env > 0.02:
-            yb = 192 - f * 133
-            cv.tint(363, yb - 7, 453, yb + 7, (170, 240, 255),
-                    lambda x, y: 0.2 * env * (1 - abs(y - yb) / 8) * cone(x, y))
-    _director(cv, tt)
-    _socol(cv, tt)
-
-    # ─── Vitrina (472..547 × 116..205) ────────────────────────────────────
-    VX0, VX1 = 475, 543
-    # pedestal
-    cv.rect(VX0 + 3, 161, VX1 - 3, WALL_B, MUSE, lambda x, y: 4.4 - (x - VX0) / 53 - (2.4 if y > 199 else 0) + (0.8 if x == VX0 + 3 else 0))
-    cv.hline(VX0 + 1, VX1 - 1, 160, MUSE, 5.2)
-    cv.hline(VX0 + 3, VX1 - 3, 161, MUSE, 3.4)
-    cv.vline(VX1 - 3, 161, WALL_B, MUSE, 2.0)
-    # placa de la peça, al pedestal
-    cv.rect(491, 171, 527, 181, SIGN, lambda x, y: 3.5 - (0.6 if y == 181 or x == 527 else 0), 0.3)
-    cv.hline(494, 524, 173, MUSE, 2.5, 0)
-    cv.hline(494, 515, 176, MUSE, 2.5, 0)
-    cv.hline(494, 520, 179, MUSE, 3.0, 0)
-    # caixa de vidre
-    GT = 119
-    for y in range(GT, 160):
-        for x in range(VX0, VX1 + 1):
-            lvl = 2.6 + (y - GT) / 80
-            cv.put(x, y, MUSE, lvl, 0.6)
-    # base de vellut i el buit de la clau anglesa
-    cv.rect(VX0 + 3, 144, VX1 - 3, 159, VELVET, lambda x, y: 3.4 - (y - 144) * 0.09 + (0.3 if hr(x, y, 51) > 0.85 else 0))
-    cv.hline(VX0 + 3, VX1 - 3, 144, VELVET, 4.6)
-    for x in range(485, 523):                                         # silueta de la clau (buida)
-        cv.put(x, 150, VELVET, 0.6)
-        cv.put(x, 151, VELVET, 0.6)
-        cv.put(x, 152, VELVET, 1.2)
-    cv.disc(485, 151, 4.3, 3.5, VELVET, lambda nx, ny: 0.6 + (0.6 if ny > 0.5 else 0))
-    cv.disc(523, 151, 4.5, 3.7, VELVET, lambda nx, ny: 0.6 + (0.6 if ny > 0.5 else 0))
-    cv.rect(481, 149, 485, 153, VELVET, 3.4)                         # boca oberta de la clau
-    cv.rect(524, 149, 528, 153, VELVET, 3.4)
-    # buit de la placa del robot, petit, a la dreta (la placa és un prop)
-    cv.rect(529, 145, 537, 151, VELVET, lambda x, y: 2.2 + (y - 145) * 0.12)
-    cv.hline(529, 537, 145, VELVET, 1.0)
-    cv.vline(529, 145, 151, VELVET, 1.2)
-    # cartellet dins la vitrina
-    cv.poly([(488, 156), (504, 156), (503, 158), (489, 158)], PAPER, 4.0)
-    cv.hline(491, 499, 157, MUSE, 3.0, 0.3)
-    # marc d'acer, tapa amb llum interior i reflexos
-    cv.rect(VX0 - 1, GT - 4, VX1 + 1, GT - 1, STEEL, lambda x, y: 5.0 - (y - GT + 4) * 0.8)
-    cv.hline(VX0 + 3, VX1 - 3, GT, LAMPW, 3.5, 0)
-    cv.hline(VX0 + 3, VX1 - 3, GT + 1, LAMPW, 2.0, 0)
-    for x in (VX0, VX1):
-        cv.vline(x, GT, 159, STEEL, 5.0 if x == VX0 else 2.4)
-    cv.vline(VX0 + 1, GT, 159, STEEL, 3.0)
-    for i in range(19):
-        cv.put(VX0 + 8 + i, 133 - i, LAMPW, 3.0, 0)
-        cv.put(VX0 + 12 + i, 139 - i, LAMPW, 2.0, 0)
-        cv.put(VX0 + 40 + i // 2, 131 - i, LAMPW, 2.0, 0)
-    cv.glow(508, 131, 35, (255, 245, 220), 0.25)
-    cv.darken(VX0, WALL_B, VX1 + 5, 211, lambda x, y: 0.8 - (y - WALL_B) / 8)
-
-    # ─── Expositor de fullets (567..623 × 134..205) ───────────────────────
-    EX0, EX1 = 571, 617
-    for lx in (EX0 + 4, EX1 - 5):
-        cv.rect(lx, 181, lx + 1, 208, STEEL, lambda x, y: 3.4 if x == lx else 2.4)
-    cv.rect(EX0 + 3, 205, EX1 - 3, 208, STEEL, lambda x, y: 3.2 if y == 205 else 2.2)
-    cv.rect(EX0, 141, EX1, 184, STEEL, lambda x, y: 2.2 - (x - EX0) / 80)
-    cv.hline(EX0, EX1, 141, STEEL, 4.6)
-    cv.hline(EX0, EX1, 184, STEEL, 1.2)
-    # capçalera
-    cv.rect(EX0 - 1, 132, EX1 + 1, 141, CORPG, lambda x, y: 2.5 + (0.6 if y == 132 else 0), 0.3)
-    text(cv, (EX0 + EX1) // 2 - text_w('GAVINA') // 2, 133, 'GAVINA', SIGN, 4.5, 0)
-    for row, y0 in enumerate((143, 156, 169)):
-        for col, x0 in enumerate((EX0 + 3, EX0 + 25)):
-            # fullet: capçalera verda, el somriure i text
-            cv.rect(x0, y0, x0 + 19, y0 + 12, SIGN, lambda x, y: 4.5 - (0.6 if x == x0 + 19 else 0), 0.4)
-            cv.rect(x0, y0, x0 + 19, y0 + 3, CORPG, 2.5 + (row % 2), 0.2)
-            smile(cv, x0 + 5, y0 + 8, 3, lit=0, lvl=3.6)
-            cv.hline(x0 + 10, x0 + 16, y0 + 6, MUSE, 2.5, 0)
-            cv.hline(x0 + 10, x0 + 15, y0 + 8, MUSE, 2.5, 0)
-            cv.hline(x0 + 10, x0 + 16, y0 + 10, MUSE, 3.0, 0)
-            # butxaca de plàstic
-            cv.hline(x0 - 1, x0 + 20, y0 + 12, STEEL, 4.0)
-            cv.hline(x0 - 1, x0 + 20, y0 + 13, STEEL, 2.6)
-            cv.put(x0 + 2, y0 + 10, LAMPW, 1.6, 0)                        # lluu del plàstic
-    cv.darken(EX0, 208, EX1 + 4, 212, 0.6)
-
-    # Ombres de contacte paret-terra
-    cv.darken(0, FLOOR_Y, W - 1, FLOOR_Y + 4, lambda x, y: 0.5 - (y - FLOOR_Y) * 0.11)
-    # reflex del terra polit
-    reflect(cv)
-    # la llum de l'holograma, també al terra
-    cv.tint(320, FLOOR_Y, 496, 273, (110, 220, 255), lambda x, y: 0.28 * max(0.0, 1 - math.hypot((x - HX) / 85, (y - 213) / 29)))
+        yb = 192 - f * 133
+        cv.tint(363, yb - 7, 453, yb + 7, (170, 240, 255), lambda x, y: 0.2 * env * (1 - abs(y - yb) / 8) * cone(x, y))
+    glow = cv.glow
+    cv.glow = lambda *a, **k: None                                        # (sense la vora brillant del pla: retallada)
+    PL._director(cv, t)
+    cv.glow = glow
+    p = 0.6 * math.sin(4 * math.pi * t)                                   # l'emissor del sòcol batega
+    cv.disc(PL.HX, PL.SY0 + 4, 27, 4, HOLO, lambda nx, ny: 3.6 + p - (nx * nx + ny * ny) * 1.5, 0)
+    cv.glow(PL.HX, PL.SY0 + 3, 32, (150, 235, 255), 0.4)
+    return cv.img.crop(HOLO_BOX)
 
 
-def _holo_shape(x, y):
-    """Silueta del Director: retorna un nivell de to (o None si és fora)."""
-    cx = HX
-    # cap
-    dx, dy = (x - cx) / 8.0, (y - 71) / 9.6
-    if dx * dx + dy * dy <= 1:
-        return 3.4 - dx * 0.8 - dy * 0.3
-    # orelles
-    if 69 <= y <= 74 and abs(abs(x - cx) - 8.5) < 1:
-        return 2.8
-    # coll
-    if 80 <= y <= 84 and abs(x - cx) <= 3:
-        return 2.6
-    # tors (americana)
-    if 84 <= y <= 131:
-        t = (y - 84) / 47
-        half = 17 - t * 4
-        if abs(x - cx) <= half:
-            return 2.6 - (x - cx) / half * 0.7 + (0.6 if abs(x - cx) > half - 2 else 0)
-    # braços: l'esquerre alçat (gest de benvinguda), el dret avall
-    for (ax, ay), (bx, by), r in (((cx - 16, 88), (cx - 29, 109), 4.0), ((cx - 29, 109), (cx - 40, 99), 3.5),
-                                  ((cx + 16, 88), (cx + 19, 128), 4.0)):
-        vx, vy = bx - ax, by - ay
-        t = max(0.0, min(1.0, ((x - ax) * vx + (y - ay) * vy) / (vx * vx + vy * vy)))
-        if math.hypot(x - ax - vx * t, y - ay - vy * t) <= r:
-            return 2.8 - (x - cx) / 27
-    # mà oberta (i els dits)
-    if math.hypot(x - (cx - 43), y - 95) <= 3.5:
-        return 3.6
-    if 89 <= y <= 92 and x in (cx - 45, cx - 43, cx - 41):
-        return 3.4
-    # cames
-    if 131 < y <= 184:
-        for lx in (cx - 7, cx + 7):
-            if abs(x - lx) <= 5.3 - (y - 131) / 30:
-                return 2.2 - (x - cx) / 19
-    # sabates
-    if 181 <= y <= 185 and (abs(x - (cx - 8)) <= 5 or abs(x - (cx + 8)) <= 5):
-        return 1.8
-    return None
+HOLO_BOX = (340, 40, 476, 206)
 
 
-def _director(cv, tt=0.0):
-    ph = 2 * math.pi * tt
-    so = int(tt * 12) % 3                                                 # les línies d'escaneig pugen
-    yb = 53 + (41 + int(tt * 135)) % 135                                  # franja de glitch que baixa
-    g149 = round(3 * math.cos(ph * 2))
-    seed = 77 + int(tt * 6) % 6                                           # guspires que canvien
-    jolt = 0.375 <= tt < 0.417                                            # una sacsejada de tant en tant
-    head = 0.79 <= tt < 0.83
-    fa = 1 + 0.06 * math.sin(ph * 5) + 0.04 * math.sin(ph * 3)            # tremolor de la intensitat
-    for y in range(53, 188):
-        glitch = 3 if y in (yb, yb + 1, yb + 2) else (g149 if y in (149, 150) else 0)
-        if jolt:
-            glitch += 1 + (-5 if 112 <= y <= 123 else 0)
-        if head and 64 <= y <= 75:
-            glitch += 3
-        scan = (y + so) % 3 == 0
-        for x in range(365, 454):
-            v = _holo_shape(x - glitch, y)
-            if v is None:
-                continue
-            # detalls de la cara i el vestit (la mateixa cara del retrat del despatx)
-            cx = HX + glitch
-            ax = abs(x - cx)
-            if 61 <= y <= 67 and ax >= 4:
-                v += 1.0                                                  # cabells grisos
-            if y == 62 and ax < 4:
-                v += 0.6                                                  # el clatell, pentinat enrere
-            if y == 68 and 2 <= ax <= 5:
-                v -= 0.8                                                  # celles
-            if y == 70 and ax in (3, 4):
-                v = 0.8                                                   # ulls
-            if y == 76 and ax <= 5:
-                v = 4.2                                                   # bigoti
-            if y == 79 and ax <= 4:
-                v = 4.6 if ax <= 3 else 1.2                               # el somriure
-            if 84 <= y <= 104 and ax <= 1:
-                v = 4.0 if y < 88 else 1.4                                # camisa i corbata
-            if 85 <= y <= 99 and abs(ax - (3 + (y - 85) // 3)) < 0.6:
-                v += 1.2                                                  # solapes
-            if y in (110, 119) and x == cx + 3:
-                v += 1.4                                                  # botons
-            if scan:
-                v -= 0.9                                                  # línies d'escaneig
-            if hr(x, y, seed) > 0.94:
-                v += 1.2
-            o = cv.P[x, y]
-            col = HOLO[max(0, min(len(HOLO) - 1, math.floor(v + B4[y & 3][x & 3] - 0.5)))]
-            a = min(1.0, (0.5 if scan else 0.78) * fa * (0.8 if jolt else 1))
-            cv.P[x, y] = mix(o, col, a) + (255,)
-    # vora brillant
-    cv.glow(HX, 117, 61, (150, 235, 255), 0.22)
+@functools.lru_cache(maxsize=None)
+def _vitrina_tex(placa=True):
+    """El pedestal de la vitrina (el davant) i el vellut de dins, de cara, amb la placa del robot si hi és."""
+    cv = Canvas(light=_llum_pla())
+    PL.bg(cv)
+    if placa:
+        PL.placa_robot(cv)
+    return cv.img
 
 
-SX0, SX1, SY0, SY1 = 375, 441, 189, 209
+PED_BOX = (478, 161, 541, 204)                     # el davant del pedestal (amb la placa de la peça)
+VEL_BOX = (478, 144, 541, 160)                     # el vellut, amb el buit de la clau (i el de la placa)
+FUL_BOX = (570, 132, 619, 185)                     # l'expositor de fullets (la capçalera i les butxaques)
 
 
-def _socol(cv, tt=0.0):
-    # cos cilíndric amb plaques
-    for y in range(SY0 + 5, SY1 + 1):
-        for x in range(SX0, SX1 + 1):
-            nx = (x - HX) / ((SX1 - SX0) / 2)
-            if abs(nx) > 1:
-                continue
-            lvl = 5.6 - nx * 1.4 - abs(nx) ** 3 * 2.0 - (y - SY0) / 13
-            ang = math.degrees(math.asin(max(-1, min(1, nx))))
-            if abs((ang + 90) % 30 - 15) > 14:
-                lvl = 2.0                                                  # juntes entre plaques
-            if y >= SY1 - 2:
-                lvl -= 1.6
-            if y == SY1 - 3:
-                lvl += 0.6                                                 # el bisell de baix
-            cv.put(x, y, MUSE, lvl)
-    # cargols de les plaques
-    for ang in range(-75, 90, 30):
-        x = round(HX + math.sin(math.radians(ang)) * 32)
-        for yy in (SY0 + 9, SY1 - 5):
-            cv.put(x, yy, MUSE, 7.6)
-            cv.put(x + 1, yy, MUSE, 4.0)
-            cv.put(x, yy + 1, MUSE, 3.0)
-            cv.put(x + 1, yy + 1, MUSE, 1.6)
-    # tapa amb l'anell emissor
-    cv.disc(HX, SY0 + 4, 35, 5.6, MUSE, lambda nx, ny: 6.4 - ny * 0.8 - nx * 0.6)
-    p = 0.6 * math.sin(4 * math.pi * tt)                                   # l'emissor batega amb els polsos
-    cv.disc(HX, SY0 + 4, 27, 4, HOLO, lambda nx, ny: 4.6 + p - (nx * nx + ny * ny) * 1.5, 0)
-    cv.disc(HX, SY0 + 4, 12, 1.9, HOLO, 5.5 + p * 0.5, 0)
-    cv.glow(HX, SY0 + 3, 32, (150, 235, 255), 0.5)
-    # ombra al terra
-    cv.darken(SX0 - 3, SY1 + 1, SX1 + 3, SY1 + 5, lambda x, y: 0.7 - (y - SY1 - 1) * 0.15)
+# ─── Les superfícies ────────────────────────────────────────────────────────
+
+def _terra(s, t, P):
+    """La resina polida, en rajoles grans: juntes fines i un brill que s'esvaeix."""
+    x, z = P[0], P[2]
+    ui, vi = math.floor(x / 80), math.floor(z / 80)
+    fu, fv = x - ui * 80, z - vi * 80
+    v = 3.0 + (hr(ui, vi, 7) - 0.5) * 0.25
+    if fu < 1.0 or fv < 1.0:
+        return 1.4
+    if fu < 2.2 or fv < 2.2:
+        v += 0.2
+    return v
 
 
-# ─── Sòcol (prop): una de les plaques descargolada, amb un paper amagat ──────
-
-def socol(cv):
-    # la placa de davant a la dreta (entre 15° i 45°), oberta i tort
-    x0 = round(HX + math.sin(math.radians(15)) * 33)
-    x1 = round(HX + math.sin(math.radians(45)) * 33)
-    # forat fosc
-    cv.rect(x0 + 1, SY0 + 8, x1, SY1 - 1, MUSE, 0.2, 0)
-    cv.hline(x0 + 1, x1, SY0 + 8, MUSE, 1.0, 0)
-    # cables a dins
-    cv.line(x0 + 2, SY0 + 12, x1 - 1, SY0 + 16, RED, 2.4, 0.3)
-    cv.line(x0 + 2, SY0 + 15, x1 - 2, SY0 + 11, HOLO, 2.2, 0)
-    cv.line(x0 + 3, SY0 + 10, x1 - 3, SY0 + 13, MUSE, 3.0, 0.3)
-    # el paper doblegat, amagat al forat
-    cv.rect(x0 + 4, SY1 - 7, x0 + 11, SY1 - 3, PAPER, 4.2, 0.6)
-    cv.hline(x0 + 4, x0 + 11, SY1 - 3, PAPER, 2.4, 0.6)
-    cv.vline(x0 + 8, SY1 - 7, SY1 - 4, PAPER, 3.4, 0.6)
-    # la placa, penjant d'un sol cargol i girada
-    pts = [(x1 - 1, SY0 + 9), (x1 + 8, SY0 + 13), (x1 + 5, SY1 + 3), (x1 - 4, SY1)]
-    cv.poly(pts, MUSE, lambda x, y: 4.8 - (y - SY0) / 13)
-    cv.line(pts[0][0], pts[0][1], pts[1][0], pts[1][1], MUSE, 7.0)
-    cv.line(pts[1][0], pts[1][1], pts[2][0], pts[2][1], MUSE, 2.2)
-    cv.line(pts[3][0], pts[3][1], pts[2][0], pts[2][1], MUSE, 1.6)
-    cv.put(x1, SY0 + 11, MUSE, 8.0)
-    cv.put(x1 + 1, SY0 + 11, MUSE, 3.0)
-    # cargol caigut al terra
-    cv.put(x1 + 12, SY1 + 4, MUSE, 7.6)
-    cv.put(x1 + 13, SY1 + 4, MUSE, 2.6)
-    cv.put(x1 + 12, SY1 + 5, MUSE, 1.6)
+FOSC = [(4, 4, 8), (8, 8, 14), (13, 13, 20), (19, 19, 28), (27, 27, 38), (37, 37, 50)]
 
 
-# ─── Placa del robot (prop): a la vitrina, fins que s'obre ─────────────────
-
-def placa_robot(cv):
-    cv.rect(529, 145, 537, 151, IRON, lambda x, y: 4.4 - (y - 145) * 0.3)
-    cv.hline(529, 537, 145, IRON, 5.4)
-    cv.put(530, 146, IRON, 6.0); cv.put(536, 146, IRON, 6.0)
-    for x in range(531, 536):                                       # el nom gravat a mà, ratllat
-        cv.put(x, 148 + (x & 1), IRON, 1.6)
-    cv.hline(529, 537, 152, VELVET, 1.0)                            # ombra sota la placa
-
-
-# ─── La M. d'Orís a la foto (prop): torna a ser-hi ──────────────────────────
-# Es dibuixa la sala amb ella i sense (amb el forat) i es copia la diferència dins la foto.
-_FOTO = []
-
-
-def foto_mira(cv):
-    if not _FOTO:
-        on, off = Canvas(light=LIGHT), Canvas(light=LIGHT)
-        bg(on, mira=True)
-        bg(off)
-        _FOTO.append((on, off))
-    on, off = _FOTO[0]
-    for y in range(49, 124):
-        for x in range(123, 224):
-            p = on.P[x, y]
-            if p != off.P[x, y]:
-                cv.P[x, y] = p
+def _sprite_alfa(e, img, peu_img, peu, mask=None, base=None):
+    """Un dibuix pla dret que es **suma** a l'escena (llum: l'holograma), escalat a la seva distància; `mask`: on
+    es pot sumar (no al que hi ha davant). Torna la imatge de la suma (RGBA, negre on no hi ha res)."""
+    k = e.cam.escala(peu)
+    u, v, _ = e.cam.projecta(peu)
+    w, h = max(1, round(img.width * k)), max(1, round(img.height * k))
+    im = img.convert('RGB').resize((w, h), Image.Resampling.BOX)
+    ox, oy = round(u - peu_img[0] * k), round(v - peu_img[1] * k)
+    add = Image.new('RGB', (e.cv.w, e.cv.h), (0, 0, 0))
+    add.paste(im, (ox, oy))
+    a = np.asarray(add, dtype=np.int32)
+    if mask is not None:
+        a = a * mask[..., None]
+    return a
 
 
-PROPS = {'socol': socol, 'foto_mira': foto_mira, 'placa_robot': placa_robot}
+def escena(cv, tex, estat=frozenset()):
+    """Tota la sala, de lluny a prop. `estat`: els decorats que hi són ('nota', 'placa', 'mira'). → l'Escena."""
+    e = Escena(cv, CAM, LLUMS, ambient=-0.2)
+    zn = CAM.pos[2] + 60
+    paret, nua = tex['paret'], tex['nua']
+    # ── les parets ──
+    e.quad('sostre', (0, HW, zn), (XR, HW, zn), (XR, HW, ZW), (0, HW, ZW), ramp=MUSE, lvl=1.0, dues_cares=True)
+    zc = ZW - XC
+    e.quad('paret_esq_prop', (0, HW, zn), (0, HW, zc), (0, 0, zc), (0, 0, zn), tex=(nua, (W - (zc - zn), 0, W, HW)))
+    e.quad('paret_esq', (0, HW, zc), (0, HW, ZW), (0, 0, ZW), (0, 0, zc), tex=(paret, (0, 0, XC, HW)))
+    e.quad('paret_fons', (0, HW, ZW), (_w(W), HW, ZW), (_w(W), 0, ZW), (0, 0, ZW), tex=(paret, (XC, 0, W, HW)))
+    e.quad('paret_fons_lluny', (_w(W), HW, ZW), (XR, HW, ZW), (XR, 0, ZW), (_w(W), 0, ZW),
+           tex=(nua, (0, 0, XR - _w(W), HW)))
+    # ── el terra polit: les rajoles, els bassals dels focus i la claror cian de l'holograma ──
+    e.quad('terra', (0, 0, ZW), (XR, 0, ZW), (XR, 0, zn), (0, 0, zn), ramp=RESIN, lvl=_terra)
+    hx, hz = HOLO_P
+    e.claror((hx - 170, 0.4, hz + 110), (hx + 170, 0.4, hz + 110), (hx + 170, 0.4, hz - 170), (hx - 170, 0.4, hz - 170),
+             (110, 220, 255), lambda s, t: 0.34 * max(0.0, 1 - math.hypot((s - 170) / 160, (t - 110) / 150)) ** 1.4)
+    for (sx, _, sz), k in ((SPOT_F, 0.18), (SPOT_V, 0.2)):
+        e.claror((sx - 80, 0.5, sz + 30), (sx + 80, 0.5, sz + 30), (sx + 80, 0.5, sz - 90), (sx - 80, 0.5, sz - 90),
+                 (255, 240, 214), lambda s, t, k=k: k * max(0.0, 1 - math.hypot((s - 80) / 70, (t - 40) / 70)) ** 1.3)
+    # el reflex de la paret al terra polit (una franja clara que s'esvaeix)
+    e.claror((0, 0.6, ZW), (XR, 0.6, ZW), (XR, 0.6, ZW - 40), (0, 0.6, ZW - 40), (150, 160, 180),
+             lambda s, t: 0.16 * max(0.0, 1 - t / 40) * (0.6 + 0.4 * (int(s + XC - 5) % 64 > 2)))
+    e.foscor('racons', (0, 0.5, ZW), (XR, 0.5, ZW), (XR, 0.5, zn), (0, 0.5, zn),
+             lambda s, t: max(0.45 * max(0.0, 1 - t / 16), 0.45 * max(0.0, 1 - s / 18)))
+    e.foscor('sostre_fosc', (0, HW - 0.5, ZW - 0.6), (XR, HW - 0.5, ZW - 0.6), (XR, 0, ZW - 0.6), (0, 0, ZW - 0.6),
+             lambda s, t: 0.3 * max(0.0, 1 - t / 30))
+    # ── l'expositor de fullets, girat, amb les potes ──
+    fx, fz, fa = FULLETS
+    fw = FUL_BOX[2] - FUL_BOX[0]
+    e.foscor('ombra_fullets', (fx - 34, 0.6, fz + 20), (fx + 34, 0.6, fz + 20), (fx + 34, 0.6, fz - 26),
+             (fx - 34, 0.6, fz - 26), lambda s, t: 0.5 * max(0.0, 1 - ((s - 34) / 32) ** 2 - ((t - 22) / 20) ** 2) * 1.4)
+    c, s_ = math.cos(fa), math.sin(fa)
+    for lx in (-fw / 2 + 6, fw / 2 - 6):
+        e.caixa_girada('fullets', fx + lx * c, fz + lx * s_, 3, 3, _y(185), fa, STEEL, 2.6)
+    e.caixa_girada('fullets', fx, fz, fw, 6, FUL_BOX[3] - FUL_BOX[1], fa, STEEL, 1.6, y0=_y(185),
+                   cares={'davant': {'tex': (tex['pla'], FUL_BOX)}, 'dalt': {'ramp': STEEL, 'lvl': 3.6}})
+    e.caixa_girada('fullets', fx, fz, fw - 6, 14, 3, fa, STEEL, 2.4)
+    # ── la vitrina, girada: el pedestal, el vellut, la caixa de vidre amb la tapa il·luminada ──
+    vx, vz, va = VITRINA
+    pw, ph = PED_BOX[2] - PED_BOX[0], PED_BOX[3] - PED_BOX[1]
+    e.foscor('ombra_vitrina', (vx - 50, 0.6, vz + 40), (vx + 50, 0.6, vz + 40), (vx + 50, 0.6, vz - 40),
+             (vx - 50, 0.6, vz - 40), lambda s, t: 0.55 * max(0.0, 1 - ((s - 50) / 46) ** 2 - ((t - 40) / 36) ** 2) * 1.5)
+    vt = tex['vitrina_placa'] if 'placa' in estat else tex['vitrina']
+    e.caixa_girada('vitrina', vx, vz, pw, 40, ph, va, MUSE, 3.0,
+                   cares={'davant': {'tex': (vt, PED_BOX)}, 'dalt': {'tex': (vt, VEL_BOX)},
+                          'esquerra': {'ramp': MUSE, 'lvl': 3.6}, 'dreta': {'ramp': MUSE, 'lvl': 2.2}})
+    gh = 40
+    c, s_ = math.cos(va), math.sin(va)
+
+    def Pv(lx, y, lz):
+        return (vx + lx * c - lz * s_, y, vz + lx * s_ + lz * c)
+    a, b = pw / 2, 20
+    for lx, lz in ((-a, b), (a, b), (-a, -b), (a, -b)):                   # els muntants d'acer
+        P = Pv(lx, 0, lz)
+        e.caixa_girada('vitrina', P[0], P[2], 2, 2, gh, va, STEEL, 4.0, y0=ph)
+    e.caixa_girada('vitrina', vx, vz, pw + 2, 42, 4, va, STEEL, 4.2, y0=ph + gh,
+                   cares={'sota': {'ramp': [(200, 190, 160), (255, 245, 220)], 'lvl': 1.0}})
+    for P0, P1, P2, P3 in ((Pv(-a, ph + gh, -b), Pv(a, ph + gh, -b), Pv(a, ph, -b), Pv(-a, ph, -b)),
+                           (Pv(a, ph + gh, -b), Pv(a, ph + gh, b), Pv(a, ph, b), Pv(a, ph, -b))):
+        e.claror(P0, P1, P2, P3, (190, 220, 235),
+                 lambda s, t: 0.16 + (0.3 if 6 < (s + t * 0.8) % 46 < 9 else 0))   # el vidre, amb els reflexos
+    # ── el sòcol de l'holograma (el dibuix pla, dret), amb la seva ombra ──
+    e.foscor('ombra_socol', (hx - 50, 0.6, hz + 34), (hx + 50, 0.6, hz + 34), (hx + 50, 0.6, hz - 34),
+             (hx - 50, 0.6, hz - 34), lambda s, t: 0.5 * max(0.0, 1 - ((s - 50) / 46) ** 2 - ((t - 34) / 30) ** 2) * 1.4)
+    soc = tex['socol_nota'] if 'nota' in estat else tex['socol']
+    e.sprite('socol', soc.crop(SOCOL_BOX), (FOOT[0] - SOCOL_BOX[0], FOOT[1] - SOCOL_BOX[1]), (hx, 0, hz))
+    # ── primer pla: el cordó de vellut entre dos pals daurats i la columna fosca de la dreta ──
+    for px, pz in ((40, -14), (196, -30)):
+        e.caixa('primer_pla', px - 2.5, px + 2.5, 0, 62, pz - 2.5, pz + 2.5, GOLD, 2.6,
+                cares={'esquerra': {'ramp': GOLD, 'lvl': 3.6}, 'dreta': {'ramp': GOLD, 'lvl': 1.6}})
+        e.caixa('primer_pla', px - 5, px + 5, 62, 68, pz - 5, pz + 5, GOLD, 3.4)
+        e.caixa('primer_pla', px - 8, px + 8, 0, 3, pz - 8, pz + 8, GOLD, 2.0)
+    e.cable('primer_pla', [(40, 58, -14), (90, 40, -19), (140, 38, -24), (196, 58, -30)], VELVET, 2.4, gruix=3.4)
+    e.caixa('primer_pla', 396, 436, 0, HW, -90, -56, FOSC, 1.6,
+            cares={'esquerra': {'ramp': FOSC, 'lvl': lambda s, t, P: 2.2 - (1.0 if int(P[1]) % 60 < 3 else 0)},
+                   'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: 1.2 + (0.6 if s < 3 else 0)}})
+    return e
 
 
-# ─── Animació de fons: l'holograma tremola (línies d'escaneig que pugen, franges de glitch, alguna
-# sacsejada), el raig del sòcol respira i hi pugen polsos, i al mapa la ruta avança i l'estrella parpelleja ──
+# ─── Composició ─────────────────────────────────────────────────────────────
+
+def _tex(t=0.0, mira=False):
+    return {'paret': _paret(t, mira), 'nua': _nua(), 'pla': _pla(), 'socol': _socol(), 'socol_nota': _socol(True),
+            'vitrina': _vitrina_tex(False), 'vitrina_placa': _vitrina_tex(True)}
+
+
+@functools.lru_cache(maxsize=None)
+def _escena(*estat):
+    """La sala sense l'holograma (que es suma després): imatge i Escena."""
+    cv = _Canvas(light=LIGHT)
+    e = escena(cv, _tex(mira='mira' in estat), frozenset(estat))
+    cv.rect(0, BOTTOM + 1, W - 1, H - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
+    return cv.img, e
+
+
+@functools.lru_cache(maxsize=None)
+def _mascara():
+    """On es pot sumar l'holograma: arreu menys el primer pla (que hi és davant)."""
+    _, e = _escena('placa')
+    ids = np.frombuffer(e.amo, dtype=np.uint16).reshape(e.cv.h, e.cv.w)
+    fp = [i for i, s in enumerate(e.ids) if s == 'primer_pla']
+    m = ~np.isin(ids, fp)
+    m[BOTTOM + 1:] = False
+    return m.astype(np.int32)
+
+
+def _amb_holo(img, t=0.0):
+    _, e = _escena('placa')
+    add = _sprite_alfa(e, _holo(t), (FOOT[0] - HOLO_BOX[0], FOOT[1] - HOLO_BOX[1]), (HOLO_P[0], 0, HOLO_P[1]),
+                       mask=_mascara())
+    a = np.asarray(img, dtype=np.int32).copy()
+    a[..., :3] = np.clip(a[..., :3] + add, 0, 255)
+    return Image.fromarray(a.astype(np.uint8), 'RGBA')
+
+
+@functools.lru_cache(maxsize=None)
+def _estat(*estat):
+    return _amb_holo(_escena(*estat)[0])
+
+
+def _base():
+    """La sala de sempre: amb la placa del robot a la vitrina (el decorat `placa_robot` és la placa)."""
+    return _estat('placa'), _escena('placa')[1]
+
+
+@functools.lru_cache(maxsize=None)
+def _sense_placa():
+    return _estat()
+
+
+def bg(cv):
+    cv.img.paste(_sense_placa())
+    cv.P = cv.img.load()
+
+
+def _decorat(*estat):
+    def draw(cv):
+        cv.img.alpha_composite(diff(_estat(*sorted(estat)), _sense_placa()))
+        cv.P = cv.img.load()
+    return draw
+
+
+PROPS = {'socol': _decorat('nota'), 'foto_mira': _decorat('mira'), 'placa_robot': _decorat('placa')}
+
+
+# ─── Animació de fons: l'holograma tremola i el raig respira; al mapa, la ruta avança i l'estrella parpelleja ──
+
+def _relleu(img, c0, ct):
+    """On la capa del moment `ct` canvia respecte de la de l'inici `c0`, el fons escalat pel mateix factor."""
+    a0, at = np.asarray(c0, dtype=np.float32), np.asarray(ct, dtype=np.float32)
+    m = (np.abs(at[..., :3] - a0[..., :3]).sum(-1) > 0) & (at[..., 3] > 0) & (a0[..., 3] > 0)
+    if not m.any():
+        return img
+    out = np.asarray(img, dtype=np.float32).copy()
+    k = at[..., :3] / np.maximum(a0[..., :3], 8.0)
+    out[..., :3][m] = np.clip(out[..., :3][m] * k[m], 0, 255)
+    return Image.fromarray(out.astype(np.uint8), 'RGBA')
+
 
 def _ambient_frames(n=24):
-    return ambient_frames(bg, LIGHT, n)
+    img0, e = _escena()
+    base = _sense_placa()
+    parets = {'paret_esq', 'paret_fons'}
+    c0 = e.capa(_paret(0.0), parets)
+    out = []
+    for i in range(n):
+        t = i / n
+        fr = _amb_holo(_relleu(img0, c0, e.capa(_paret(t), parets)), t)
+        out.append(diff(fr, base))
+    return out
 
 
 ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 120}}
+
+
+# ─── Capes del davant ───────────────────────────────────────────────────────
+
+def _amo(ids):
+    def mask(x, y):
+        _, e = _escena()
+        return e.ids[e.amo[y * e.cv.w + x]] in ids
+    return mask
+
+
+def _p(x, z, y=0.0):
+    u, v, _ = CAM.projecta((x, y, z))
+    return round(u), round(v)
+
+
+# El primer pla (sempre davant), el sòcol, la vitrina i els fullets (qui hi passa per darrere, hi queda darrere).
+FRONT = [
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+    {'id': 'davant_socol', 'mask': _amo({'socol'}), 'baseline': _p(HOLO_P[0], HOLO_P[1] - 10)[1], 'zIndex': 20,
+     'props': ('socol',)},
+    {'id': 'davant_vitrina', 'mask': _amo({'vitrina'}), 'baseline': _p(VITRINA[0], VITRINA[1] - 12)[1], 'zIndex': 20,
+     'props': ('placa_robot',)},
+    {'id': 'davant_fullets', 'mask': _amo({'fullets'}), 'baseline': _p(FULLETS[0], FULLETS[1] - 4)[1], 'zIndex': 20},
+]
+
+
+# ─── Geometria (coordenades de sala, projectades) ────────────────────────────
+
+def _rect_mon(*Ps):
+    pts = [CAM.projecta(P) for P in Ps]
+    return (max(0, round(min(p[0] for p in pts))), max(0, round(min(p[1] for p in pts))),
+            min(W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
+
+
+def _escala_a(v):
+    """L'escala d'un personatge amb els peus a la y de pantalla `v` (al terra, la profunditat només depèn de v)."""
+    lo, hi = 1.0, 4000.0
+    for _ in range(60):
+        z = (lo + hi) / 2
+        if CAM.projecta((200, 0, z))[1] > v:
+            lo = z
+        else:
+            hi = z
+    return CAM.escala((200, 0, (lo + hi) / 2))
+
+
+def _z_a(x, v):
+    """La z del terra que cau a la y de pantalla `v`, a la x del món `x`."""
+    lo, hi = CAM.pos[2] + 20, 4000.0
+    for _ in range(60):
+        z = (lo + hi) / 2
+        if CAM.projecta((x, 0, z))[1] > v:
+            lo = z
+        else:
+            hi = z
+    return (lo + hi) / 2
+
+
+def _v_escala(k):
+    """La y de pantalla on un personatge fa escala k."""
+    lo, hi = 0.0, float(BOTTOM)
+    for _ in range(50):
+        v = (lo + hi) / 2
+        if _escala_a(v) > k:
+            hi = v
+        else:
+            lo = v
+    return (lo + hi) / 2
+
+
+_VP = min(_v_escala(1.2), BOTTOM - 4)               # el límit de prop: escala 1,2
+WALK_MON = [(16, _z_a(16, _VP)), (16, 286), (540, 286), (540, _z_a(540, _VP))]
+_WALK = [_p(x, z) for x, z in WALK_MON]
+_V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
+
+
+def _forat(cx, cz, w, d, ang, m=8):
+    c, s_ = math.cos(ang), math.sin(ang)
+    return [_p(cx + lx * c - lz * s_, cz + lx * s_ + lz * c)
+            for lx, lz in ((-w / 2 - m, -d / 2 - m), (w / 2 + m, -d / 2 - m), (w / 2 + m, d / 2 + m - 2), (-w / 2 - m, d / 2 + m - 2))]
+
+
+def _sprite_rect(peu, peu_img, box, fbox):
+    """El rectangle de pantalla d'un tros (`fbox`, al dibuix pla) d'un dibuix dret (retall `box`, peu `peu_img`)."""
+    k = CAM.escala(peu)
+    u, v, _ = CAM.projecta(peu)
+    ox, oy = u - peu_img[0] * k, v - peu_img[1] * k
+    return (round(ox + (fbox[0] - box[0]) * k), round(oy + (fbox[1] - box[1]) * k),
+            round(ox + (fbox[2] - box[0]) * k), round(oy + (fbox[3] - box[1]) * k))
+
+
+_HP = ((HOLO_P[0], 0, HOLO_P[1]), (FOOT[0] - HOLO_BOX[0], FOOT[1] - HOLO_BOX[1]), HOLO_BOX)
+
+
+def _caixa_rect(cx, cz, w, d, h, ang, y0=0.0):
+    c, s_ = math.cos(ang), math.sin(ang)
+    return _rect_mon(*[(cx + lx * c - lz * s_, y, cz + lx * s_ + lz * c)
+                       for lx in (-w / 2, w / 2) for lz in (-d / 2, d / 2) for y in (y0, y0 + h)])
+
+
+GEOMETRIA = {
+    'things': {
+        'porta_passadis': {'rect': _rect_mon((0, _y(75), _wz(10)), (0, 0, _wz(87))), 'walk': _p(32, _wz(50))},
+        'foto': {'rect': _rect_mon((_w(120), _y(47), ZW), (_w(226), _y(135), ZW)), 'walk': _p(_w(173), 262)},
+        'mapa': {'rect': _rect_mon((_w(232), _y(40), ZW), (_w(354), _y(136), ZW)), 'walk': _p(_w(293), 262)},
+        'holograma': {'rect': _sprite_rect(*_HP, (366, 58, 452, 188)), 'walk': _p(HOLO_P[0] - 10, HOLO_P[1] - 60)},
+        'socol': {'rect': _sprite_rect(*_HP, (372, 188, 444, 210)), 'walk': _p(HOLO_P[0] - 10, HOLO_P[1] - 60)},
+        'vitrina': {'rect': _caixa_rect(VITRINA[0], VITRINA[1], 64, 42, 88, VITRINA[2]),
+                    'walk': _p(VITRINA[0] - 30, VITRINA[1] - 64)},
+        'fullets': {'rect': _caixa_rect(FULLETS[0], FULLETS[1], 50, 10, 74, FULLETS[2]),
+                    'walk': _p(FULLETS[0] - 40, FULLETS[1] - 52)},
+    },
+    'spawns': {'vet': _p(60, 170), 'cargol_vell': _p(180, 150)},
+    'walkable': _WALK,
+    'forats': [_forat(HOLO_P[0], HOLO_P[1], 66, 30, 0.0, m=6), _forat(VITRINA[0], VITRINA[1], 64, 42, VITRINA[2], m=6),
+               _forat(FULLETS[0], FULLETS[1], 50, 14, FULLETS[2], m=6)],
+    'floorSquash': 0.42,
+    # L'ombra de contacte: la llum dominant és l'holograma, al mig de la sala.
+    'characterShadow': {'enabled': True, 'color': '#060812', 'alpha': 0.4, 'squash': 0.4, 'core': 0.6,
+                        'light': {'x': _p(*HOLO_P)[0], 'y': _p(*HOLO_P)[1], 'stretch': 0.7, 'reach': 200}},
+    'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
+                 'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
+                 'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    'characterLights': {
+        'ambient': '#8e94a8',
+        'lights': [
+            {'x': _p(HOLO_P[0], HOLO_P[1], 100)[0], 'y': _p(HOLO_P[0], HOLO_P[1], 100)[1], 'radius': 220,
+             'color': '#78dcff', 'intensity': 1.1},                                     # l'holograma
+            {'x': _p(SPOT_F[0], SPOT_F[2], SPOT_F[1])[0], 'y': _p(SPOT_F[0], SPOT_F[2], SPOT_F[1])[1], 'radius': 170,
+             'color': '#fff0d6', 'intensity': 0.6},                                     # el focus de la foto
+            {'x': _p(SPOT_V[0], SPOT_V[2], SPOT_V[1])[0], 'y': _p(SPOT_V[0], SPOT_V[2], SPOT_V[1])[1], 'radius': 170,
+             'color': '#fff0d6', 'intensity': 0.6},                                     # el focus de la vitrina
+        ],
+    },
+}

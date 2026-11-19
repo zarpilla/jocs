@@ -25,16 +25,16 @@
       "frame": {
         "x": 1280,
         "y": 0,
-        "w": 341,
-        "h": 170
+        "w": 329,
+        "h": 195
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 290,
-        "y": 32,
-        "w": 341,
-        "h": 170
+        "x": 281,
+        "y": 18,
+        "w": 329,
+        "h": 195
       },
       "sourceSize": {
         "w": 640,
@@ -44,18 +44,18 @@
     },
     "gavina_hangar 2.aseprite": {
       "frame": {
-        "x": 3820,
+        "x": 2771,
         "y": 360,
-        "w": 34,
-        "h": 51
+        "w": 23,
+        "h": 34
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 377,
-        "y": 109,
-        "w": 34,
-        "h": 51
+        "x": 419,
+        "y": 95,
+        "w": 23,
+        "h": 34
       },
       "sourceSize": {
         "w": 640,
@@ -65,18 +65,18 @@
     },
     "gavina_hangar 3.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1636,
         "y": 0,
-        "w": 640,
-        "h": 219
+        "w": 565,
+        "h": 144
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 141,
-        "w": 640,
-        "h": 219
+        "x": 29,
+        "y": 116,
+        "w": 565,
+        "h": 144
       },
       "sourceSize": {
         "w": 640,
@@ -86,18 +86,18 @@
     },
     "gavina_hangar 4.aseprite": {
       "frame": {
-        "x": 3854,
+        "x": 2794,
         "y": 360,
-        "w": 56,
-        "h": 29
+        "w": 57,
+        "h": 22
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 107,
-        "y": 195,
-        "w": 56,
-        "h": 29
+        "x": 172,
+        "y": 152,
+        "w": 57,
+        "h": 22
       },
       "sourceSize": {
         "w": 640,
@@ -107,7 +107,7 @@
     },
     "gavina_hangar 5.aseprite": {
       "frame": {
-        "x": 3938,
+        "x": 2885,
         "y": 360,
         "w": 1,
         "h": 1
@@ -128,18 +128,18 @@
     },
     "gavina_hangar 6.aseprite": {
       "frame": {
-        "x": 3910,
+        "x": 2851,
         "y": 360,
-        "w": 18,
-        "h": 12
+        "w": 16,
+        "h": 10
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 241,
-        "y": 106,
-        "w": 18,
-        "h": 12
+        "x": 266,
+        "y": 108,
+        "w": 16,
+        "h": 10
       },
       "sourceSize": {
         "w": 640,
@@ -149,18 +149,18 @@
     },
     "gavina_hangar 7.aseprite": {
       "frame": {
-        "x": 3928,
+        "x": 2867,
         "y": 360,
-        "w": 8,
-        "h": 5
+        "w": 17,
+        "h": 8
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 581,
-        "y": 201,
-        "w": 8,
-        "h": 5
+        "x": 559,
+        "y": 209,
+        "w": 17,
+        "h": 8
       },
       "sourceSize": {
         "w": 640,
@@ -170,7 +170,7 @@
     },
     "gavina_hangar 8.aseprite": {
       "frame": {
-        "x": 3938,
+        "x": 2885,
         "y": 360,
         "w": 1,
         "h": 1
@@ -191,18 +191,18 @@
     },
     "gavina_hangar 9.aseprite": {
       "frame": {
-        "x": 1232,
+        "x": 902,
         "y": 360,
-        "w": 210,
-        "h": 76
+        "w": 169,
+        "h": 56
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 268,
-        "y": 0,
-        "w": 210,
-        "h": 76
+        "x": 300,
+        "y": 19,
+        "w": 169,
+        "h": 56
       },
       "sourceSize": {
         "w": 640,
@@ -212,18 +212,18 @@
     },
     "gavina_hangar 10.aseprite": {
       "frame": {
-        "x": 376,
-        "y": 360,
-        "w": 428,
-        "h": 77
+        "x": 3378,
+        "y": 0,
+        "w": 330,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 0,
-        "w": 428,
-        "h": 77
+        "x": 185,
+        "y": 19,
+        "w": 330,
+        "h": 58
       },
       "sourceSize": {
         "w": 640,
@@ -233,18 +233,18 @@
     },
     "gavina_hangar 11.aseprite": {
       "frame": {
-        "x": 1442,
+        "x": 1071,
         "y": 360,
-        "w": 376,
-        "h": 76
+        "w": 284,
+        "h": 56
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 0,
-        "w": 376,
-        "h": 76
+        "x": 185,
+        "y": 19,
+        "w": 284,
+        "h": 56
       },
       "sourceSize": {
         "w": 640,
@@ -254,18 +254,18 @@
     },
     "gavina_hangar 12.aseprite": {
       "frame": {
-        "x": 3597,
+        "x": 2613,
         "y": 360,
-        "w": 223,
-        "h": 57
+        "w": 158,
+        "h": 40
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 0,
-        "w": 223,
-        "h": 57
+        "x": 185,
+        "y": 19,
+        "w": 158,
+        "h": 40
       },
       "sourceSize": {
         "w": 640,
@@ -275,18 +275,18 @@
     },
     "gavina_hangar 13.aseprite": {
       "frame": {
-        "x": 1818,
+        "x": 1639,
         "y": 360,
-        "w": 223,
-        "h": 76
+        "w": 158,
+        "h": 52
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 0,
-        "w": 223,
-        "h": 76
+        "x": 185,
+        "y": 19,
+        "w": 158,
+        "h": 52
       },
       "sourceSize": {
         "w": 640,
@@ -296,18 +296,18 @@
     },
     "gavina_hangar 14.aseprite": {
       "frame": {
-        "x": 2041,
+        "x": 1797,
         "y": 360,
-        "w": 262,
-        "h": 76
+        "w": 175,
+        "h": 52
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 63,
-        "y": 0,
-        "w": 262,
-        "h": 76
+        "x": 168,
+        "y": 19,
+        "w": 175,
+        "h": 52
       },
       "sourceSize": {
         "w": 640,
@@ -317,18 +317,18 @@
     },
     "gavina_hangar 15.aseprite": {
       "frame": {
-        "x": 2303,
+        "x": 1972,
         "y": 360,
-        "w": 223,
-        "h": 76
+        "w": 158,
+        "h": 52
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 0,
-        "w": 223,
-        "h": 76
+        "x": 185,
+        "y": 19,
+        "w": 158,
+        "h": 52
       },
       "sourceSize": {
         "w": 640,
@@ -338,18 +338,18 @@
     },
     "gavina_hangar 16.aseprite": {
       "frame": {
-        "x": 3936,
+        "x": 2886,
         "y": 360,
         "w": 1,
-        "h": 2
+        "h": 1
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 59,
+        "x": 185,
+        "y": 58,
         "w": 1,
-        "h": 2
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -359,18 +359,18 @@
     },
     "gavina_hangar 17.aseprite": {
       "frame": {
-        "x": 0,
+        "x": 619,
         "y": 360,
-        "w": 376,
-        "h": 84
+        "w": 283,
+        "h": 57
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 0,
-        "w": 376,
-        "h": 84
+        "x": 186,
+        "y": 19,
+        "w": 283,
+        "h": 57
       },
       "sourceSize": {
         "w": 640,
@@ -380,18 +380,18 @@
     },
     "gavina_hangar 18.aseprite": {
       "frame": {
-        "x": 2717,
+        "x": 2974,
         "y": 0,
-        "w": 428,
-        "h": 120
+        "w": 328,
+        "h": 82
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 0,
-        "w": 428,
-        "h": 120
+        "x": 187,
+        "y": 19,
+        "w": 328,
+        "h": 82
       },
       "sourceSize": {
         "w": 640,
@@ -401,18 +401,18 @@
     },
     "gavina_hangar 19.aseprite": {
       "frame": {
-        "x": 2076,
+        "x": 2516,
         "y": 0,
-        "w": 379,
-        "h": 133
+        "w": 283,
+        "h": 91
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 99,
-        "y": 0,
-        "w": 379,
-        "h": 133
+        "x": 186,
+        "y": 19,
+        "w": 283,
+        "h": 91
       },
       "sourceSize": {
         "w": 640,
@@ -422,18 +422,18 @@
     },
     "gavina_hangar 20.aseprite": {
       "frame": {
-        "x": 1621,
+        "x": 2201,
         "y": 0,
-        "w": 228,
-        "h": 134
+        "w": 158,
+        "h": 92
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 97,
-        "y": 0,
-        "w": 228,
-        "h": 134
+        "x": 185,
+        "y": 19,
+        "w": 158,
+        "h": 92
       },
       "sourceSize": {
         "w": 640,
@@ -443,18 +443,18 @@
     },
     "gavina_hangar 21.aseprite": {
       "frame": {
-        "x": 2526,
+        "x": 2130,
         "y": 360,
-        "w": 210,
-        "h": 76
+        "w": 150,
+        "h": 52
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 115,
-        "y": 0,
-        "w": 210,
-        "h": 76
+        "x": 193,
+        "y": 19,
+        "w": 150,
+        "h": 52
       },
       "sourceSize": {
         "w": 640,
@@ -464,18 +464,18 @@
     },
     "gavina_hangar 22.aseprite": {
       "frame": {
-        "x": 2736,
+        "x": 2280,
         "y": 360,
-        "w": 262,
-        "h": 76
+        "w": 175,
+        "h": 52
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 63,
-        "y": 0,
-        "w": 262,
-        "h": 76
+        "x": 168,
+        "y": 19,
+        "w": 175,
+        "h": 52
       },
       "sourceSize": {
         "w": 640,
@@ -485,18 +485,18 @@
     },
     "gavina_hangar 23.aseprite": {
       "frame": {
-        "x": 3368,
+        "x": 3708,
         "y": 0,
-        "w": 233,
-        "h": 85
+        "w": 163,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 92,
-        "y": 0,
-        "w": 233,
-        "h": 85
+        "x": 180,
+        "y": 19,
+        "w": 163,
+        "h": 58
       },
       "sourceSize": {
         "w": 640,
@@ -506,7 +506,7 @@
     },
     "gavina_hangar 24.aseprite": {
       "frame": {
-        "x": 3937,
+        "x": 2884,
         "y": 360,
         "w": 1,
         "h": 2
@@ -514,8 +514,8 @@
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 48,
+        "x": 185,
+        "y": 50,
         "w": 1,
         "h": 2
       },
@@ -527,18 +527,18 @@
     },
     "gavina_hangar 25.aseprite": {
       "frame": {
-        "x": 3601,
-        "y": 0,
-        "w": 386,
-        "h": 85
+        "x": 0,
+        "y": 360,
+        "w": 289,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 92,
-        "y": 0,
-        "w": 386,
-        "h": 85
+        "x": 180,
+        "y": 19,
+        "w": 289,
+        "h": 58
       },
       "sourceSize": {
         "w": 640,
@@ -548,18 +548,18 @@
     },
     "gavina_hangar 26.aseprite": {
       "frame": {
-        "x": 804,
+        "x": 289,
         "y": 360,
-        "w": 428,
-        "h": 77
+        "w": 330,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 0,
-        "w": 428,
-        "h": 77
+        "x": 185,
+        "y": 19,
+        "w": 330,
+        "h": 58
       },
       "sourceSize": {
         "w": 640,
@@ -569,18 +569,18 @@
     },
     "gavina_hangar 27.aseprite": {
       "frame": {
-        "x": 2998,
+        "x": 1355,
         "y": 360,
-        "w": 376,
-        "h": 76
+        "w": 284,
+        "h": 56
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 0,
-        "w": 376,
-        "h": 76
+        "x": 185,
+        "y": 19,
+        "w": 284,
+        "h": 56
       },
       "sourceSize": {
         "w": 640,
@@ -590,18 +590,18 @@
     },
     "gavina_hangar 28.aseprite": {
       "frame": {
-        "x": 3374,
+        "x": 2455,
         "y": 360,
-        "w": 223,
-        "h": 71
+        "w": 158,
+        "h": 44
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 0,
-        "w": 223,
-        "h": 71
+        "x": 185,
+        "y": 19,
+        "w": 158,
+        "h": 44
       },
       "sourceSize": {
         "w": 640,
@@ -611,18 +611,18 @@
     },
     "gavina_hangar 29.aseprite": {
       "frame": {
-        "x": 3145,
-        "y": 0,
-        "w": 223,
-        "h": 100
+        "x": 2130,
+        "y": 360,
+        "w": 150,
+        "h": 52
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 102,
-        "y": 0,
-        "w": 223,
-        "h": 100
+        "x": 193,
+        "y": 19,
+        "w": 150,
+        "h": 52
       },
       "sourceSize": {
         "w": 640,
@@ -632,18 +632,18 @@
     },
     "gavina_hangar 30.aseprite": {
       "frame": {
-        "x": 2455,
+        "x": 2799,
         "y": 0,
-        "w": 262,
-        "h": 133
+        "w": 175,
+        "h": 90
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 63,
-        "y": 0,
-        "w": 262,
-        "h": 133
+        "x": 168,
+        "y": 19,
+        "w": 175,
+        "h": 90
       },
       "sourceSize": {
         "w": 640,
@@ -653,18 +653,81 @@
     },
     "gavina_hangar 31.aseprite": {
       "frame": {
-        "x": 1849,
+        "x": 2359,
         "y": 0,
-        "w": 227,
-        "h": 134
+        "w": 157,
+        "h": 92
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 98,
+        "x": 186,
+        "y": 19,
+        "w": 157,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_hangar 32.aseprite": {
+      "frame": {
+        "x": 1609,
         "y": 0,
-        "w": 227,
-        "h": 134
+        "w": 27,
+        "h": 153
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 259,
+        "y": 40,
+        "w": 27,
+        "h": 153
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_hangar 33.aseprite": {
+      "frame": {
+        "x": 3302,
+        "y": 0,
+        "w": 76,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 512,
+        "y": 193,
+        "w": 76,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_hangar 34.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
         "w": 640,
@@ -679,8 +742,8 @@
     "image": "gavina_hangar.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3987,
-      "h": 444
+      "w": 3871,
+      "h": 418
     },
     "scale": "1",
     "frameTags": [
@@ -744,6 +807,27 @@
         "name": "ambient",
         "from": 8,
         "to": 31,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_pilar",
+        "from": 32,
+        "to": 32,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_caixa",
+        "from": 33,
+        "to": 33,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 34,
+        "to": 34,
         "direction": "forward",
         "color": "#000000ff"
       }
