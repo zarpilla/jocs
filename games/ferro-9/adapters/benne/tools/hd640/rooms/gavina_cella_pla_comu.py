@@ -539,18 +539,8 @@ def _tier(cv, top):
     cv.hline(FL + 4, FR + 1, top + 22, STEEL, 1.0)
 
 
-def _bunk(cv):
-    # ombra al terra i a la paret
-    cv.darken(BL - 3, FLOOR_Y, BR + 5, 216, lambda x, y: 0.7 - (y - FLOOR_Y) * 0.09, dither=False)
-    for y in range(216, 235):
-        for x in range(FL - 3, FR + 11):
-            a = 0.75 * max(0, 1 - abs(y - 223) / 12) * min(1, (x - FL + 4) / 8, (FR + 11 - x) / 8)
-            o = cv.get(x, y)
-            cv.P[x, y] = tuple(int(c * (1 - a * 0.6)) for c in o[:3]) + (255,)
-    # pals del darrere
-    for x in (BL, BR):
-        cv.rect(x, 88, x + 3, 213, STEEL, lambda xx, yy: [2.6, 2.2, 1.6, 1.0][xx - x])
-
+def bunk_wall(cv):
+    """El que hi ha a la paret de darrere la llitera: les ratlles dels dies i la foto (la sala en 3D també ho fa servir)."""
     # ratlles de dies a la paret (en Mos ho compta tot)
     for i in range(6):
         tx = 523 + i * 11
@@ -567,6 +557,21 @@ def _bunk(cv):
     cv.rect(607, 129, 611, 130, NAVY, 2.0)                                 # les espatlles
     cv.rect(607, 118, 611, 120, MANILA, lambda x, y: 4.0 - (y - 118) * 0.3)   # cinta adhesiva
     cv.put(615, 135, PAPER, 1.6)                                           # la punta, doblegada
+
+
+def _bunk(cv):
+    # ombra al terra i a la paret
+    cv.darken(BL - 3, FLOOR_Y, BR + 5, 216, lambda x, y: 0.7 - (y - FLOOR_Y) * 0.09, dither=False)
+    for y in range(216, 235):
+        for x in range(FL - 3, FR + 11):
+            a = 0.75 * max(0, 1 - abs(y - 223) / 12) * min(1, (x - FL + 4) / 8, (FR + 11 - x) / 8)
+            o = cv.get(x, y)
+            cv.P[x, y] = tuple(int(c * (1 - a * 0.6)) for c in o[:3]) + (255,)
+    # pals del darrere
+    for x in (BL, BR):
+        cv.rect(x, 88, x + 3, 213, STEEL, lambda xx, yy: [2.6, 2.2, 1.6, 1.0][xx - x])
+
+    bunk_wall(cv)
 
     # pis de dalt (el d'en Mos)
     _tier(cv, 103)

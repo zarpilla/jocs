@@ -23,18 +23,18 @@
     },
     "gavina_cella 1.aseprite": {
       "frame": {
-        "x": 1688,
+        "x": 670,
         "y": 360,
-        "w": 38,
-        "h": 23
+        "w": 25,
+        "h": 16
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 100,
-        "y": 232,
-        "w": 38,
-        "h": 23
+        "x": 188,
+        "y": 141,
+        "w": 25,
+        "h": 16
       },
       "sourceSize": {
         "w": 640,
@@ -44,18 +44,18 @@
     },
     "gavina_cella 2.aseprite": {
       "frame": {
-        "x": 1735,
+        "x": 695,
         "y": 360,
-        "w": 31,
-        "h": 13
+        "w": 21,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 159,
-        "y": 215,
-        "w": 31,
-        "h": 13
+        "x": 250,
+        "y": 148,
+        "w": 21,
+        "h": 9
       },
       "sourceSize": {
         "w": 640,
@@ -65,18 +65,18 @@
     },
     "gavina_cella 3.aseprite": {
       "frame": {
-        "x": 1605,
+        "x": 619,
         "y": 360,
-        "w": 52,
-        "h": 28
+        "w": 43,
+        "h": 24
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 425,
-        "y": 217,
-        "w": 52,
-        "h": 28
+        "x": 355,
+        "y": 163,
+        "w": 43,
+        "h": 24
       },
       "sourceSize": {
         "w": 640,
@@ -86,18 +86,18 @@
     },
     "gavina_cella 4.aseprite": {
       "frame": {
-        "x": 3417,
+        "x": 3652,
         "y": 0,
-        "w": 53,
-        "h": 61
+        "w": 35,
+        "h": 41
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 324,
-        "y": 111,
-        "w": 53,
-        "h": 61
+        "x": 331,
+        "y": 90,
+        "w": 35,
+        "h": 41
       },
       "sourceSize": {
         "w": 640,
@@ -107,18 +107,18 @@
     },
     "gavina_cella 5.aseprite": {
       "frame": {
-        "x": 754,
+        "x": 1493,
         "y": 0,
-        "w": 114,
-        "h": 101
+        "w": 80,
+        "h": 74
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 324,
-        "y": 111,
-        "w": 114,
-        "h": 101
+        "x": 331,
+        "y": 90,
+        "w": 80,
+        "h": 74
       },
       "sourceSize": {
         "w": 640,
@@ -128,18 +128,18 @@
     },
     "gavina_cella 6.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1413,
         "y": 0,
-        "w": 114,
-        "h": 130
+        "w": 80,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 324,
-        "y": 82,
-        "w": 114,
-        "h": 130
+        "x": 331,
+        "y": 71,
+        "w": 80,
+        "h": 93
       },
       "sourceSize": {
         "w": 640,
@@ -149,18 +149,18 @@
     },
     "gavina_cella 7.aseprite": {
       "frame": {
-        "x": 3289,
+        "x": 3157,
         "y": 0,
-        "w": 128,
-        "h": 71
+        "w": 74,
+        "h": 47
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 112,
-        "y": 140,
-        "w": 128,
-        "h": 71
+        "x": 209,
+        "y": 105,
+        "w": 74,
+        "h": 47
       },
       "sourceSize": {
         "w": 640,
@@ -170,18 +170,18 @@
     },
     "gavina_cella 8.aseprite": {
       "frame": {
-        "x": 1791,
+        "x": 735,
         "y": 360,
-        "w": 10,
-        "h": 10
+        "w": 6,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 279,
-        "y": 129,
-        "w": 10,
-        "h": 10
+        "x": 303,
+        "y": 101,
+        "w": 6,
+        "h": 7
       },
       "sourceSize": {
         "w": 640,
@@ -191,18 +191,18 @@
     },
     "gavina_cella 9.aseprite": {
       "frame": {
-        "x": 1766,
+        "x": 716,
         "y": 360,
-        "w": 25,
-        "h": 11
+        "w": 19,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 571,
-        "y": 167,
-        "w": 25,
-        "h": 11
+        "x": 526,
+        "y": 146,
+        "w": 19,
+        "h": 9
       },
       "sourceSize": {
         "w": 640,
@@ -212,18 +212,18 @@
     },
     "gavina_cella 10.aseprite": {
       "frame": {
-        "x": 868,
+        "x": 1573,
         "y": 0,
-        "w": 114,
-        "h": 101
+        "w": 83,
+        "h": 74
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 324,
-        "y": 111,
-        "w": 114,
-        "h": 101
+        "x": 328,
+        "y": 90,
+        "w": 83,
+        "h": 74
       },
       "sourceSize": {
         "w": 640,
@@ -233,18 +233,18 @@
     },
     "gavina_cella 11.aseprite": {
       "frame": {
-        "x": 1726,
+        "x": 662,
         "y": 360,
-        "w": 9,
-        "h": 21
+        "w": 8,
+        "h": 18
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 544,
-        "y": 186,
-        "w": 9,
-        "h": 21
+        "x": 500,
+        "y": 172,
+        "w": 8,
+        "h": 18
       },
       "sourceSize": {
         "w": 640,
@@ -254,7 +254,7 @@
     },
     "gavina_cella 12.aseprite": {
       "frame": {
-        "x": 1808,
+        "x": 767,
         "y": 360,
         "w": 1,
         "h": 1
@@ -275,7 +275,7 @@
     },
     "gavina_cella 13.aseprite": {
       "frame": {
-        "x": 1808,
+        "x": 767,
         "y": 360,
         "w": 1,
         "h": 1
@@ -296,18 +296,18 @@
     },
     "gavina_cella 14.aseprite": {
       "frame": {
-        "x": 1657,
+        "x": 741,
         "y": 360,
-        "w": 31,
-        "h": 25
+        "w": 23,
+        "h": 5
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 427,
-        "y": 48,
-        "w": 31,
-        "h": 25
+        "x": 402,
+        "y": 51,
+        "w": 23,
+        "h": 5
       },
       "sourceSize": {
         "w": 640,
@@ -317,18 +317,18 @@
     },
     "gavina_cella 15.aseprite": {
       "frame": {
-        "x": 1070,
+        "x": 292,
         "y": 360,
-        "w": 38,
-        "h": 41
+        "w": 28,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 427,
-        "y": 48,
-        "w": 38,
-        "h": 41
+        "x": 402,
+        "y": 51,
+        "w": 28,
+        "h": 27
       },
       "sourceSize": {
         "w": 640,
@@ -338,18 +338,18 @@
     },
     "gavina_cella 16.aseprite": {
       "frame": {
-        "x": 982,
+        "x": 1826,
         "y": 0,
-        "w": 273,
-        "h": 85
+        "w": 181,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 200,
-        "y": 4,
-        "w": 273,
-        "h": 85
+        "x": 255,
+        "y": 20,
+        "w": 181,
+        "h": 58
       },
       "sourceSize": {
         "w": 640,
@@ -359,18 +359,18 @@
     },
     "gavina_cella 17.aseprite": {
       "frame": {
-        "x": 1255,
+        "x": 2007,
         "y": 0,
-        "w": 337,
-        "h": 85
+        "w": 216,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 4,
-        "w": 337,
-        "h": 85
+        "x": 220,
+        "y": 20,
+        "w": 216,
+        "h": 58
       },
       "sourceSize": {
         "w": 640,
@@ -380,18 +380,18 @@
     },
     "gavina_cella 18.aseprite": {
       "frame": {
-        "x": 2694,
+        "x": 2223,
         "y": 0,
-        "w": 337,
-        "h": 81
+        "w": 216,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 8,
-        "w": 337,
-        "h": 81
+        "x": 220,
+        "y": 20,
+        "w": 216,
+        "h": 58
       },
       "sourceSize": {
         "w": 640,
@@ -401,18 +401,18 @@
     },
     "gavina_cella 19.aseprite": {
       "frame": {
-        "x": 1592,
+        "x": 2439,
         "y": 0,
-        "w": 321,
-        "h": 85
+        "w": 203,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 4,
-        "w": 321,
-        "h": 85
+        "x": 220,
+        "y": 20,
+        "w": 203,
+        "h": 58
       },
       "sourceSize": {
         "w": 640,
@@ -422,18 +422,18 @@
     },
     "gavina_cella 20.aseprite": {
       "frame": {
-        "x": 1011,
+        "x": 216,
         "y": 360,
-        "w": 31,
-        "h": 42
+        "w": 22,
+        "h": 31
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 426,
+        "x": 401,
         "y": 47,
-        "w": 31,
-        "h": 42
+        "w": 22,
+        "h": 31
       },
       "sourceSize": {
         "w": 640,
@@ -443,18 +443,18 @@
     },
     "gavina_cella 21.aseprite": {
       "frame": {
-        "x": 1042,
+        "x": 238,
         "y": 360,
-        "w": 28,
-        "h": 42
+        "w": 20,
+        "h": 31
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 429,
+        "x": 403,
         "y": 47,
-        "w": 28,
-        "h": 42
+        "w": 20,
+        "h": 31
       },
       "sourceSize": {
         "w": 640,
@@ -464,18 +464,18 @@
     },
     "gavina_cella 22.aseprite": {
       "frame": {
-        "x": 1491,
+        "x": 320,
         "y": 360,
-        "w": 30,
-        "h": 37
+        "w": 21,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 427,
+        "x": 402,
         "y": 47,
-        "w": 30,
-        "h": 37
+        "w": 21,
+        "h": 27
       },
       "sourceSize": {
         "w": 640,
@@ -485,18 +485,18 @@
     },
     "gavina_cella 23.aseprite": {
       "frame": {
-        "x": 1521,
+        "x": 341,
         "y": 360,
-        "w": 38,
-        "h": 37
+        "w": 28,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 427,
+        "x": 402,
         "y": 47,
-        "w": 38,
-        "h": 37
+        "w": 28,
+        "h": 27
       },
       "sourceSize": {
         "w": 640,
@@ -506,18 +506,18 @@
     },
     "gavina_cella 24.aseprite": {
       "frame": {
-        "x": 1559,
+        "x": 369,
         "y": 360,
-        "w": 46,
-        "h": 37
+        "w": 34,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 427,
+        "x": 402,
         "y": 47,
-        "w": 46,
-        "h": 37
+        "w": 34,
+        "h": 27
       },
       "sourceSize": {
         "w": 640,
@@ -527,18 +527,18 @@
     },
     "gavina_cella 25.aseprite": {
       "frame": {
-        "x": 337,
-        "y": 360,
-        "w": 337,
-        "h": 52
+        "x": 3687,
+        "y": 0,
+        "w": 216,
+        "h": 38
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 32,
-        "w": 337,
-        "h": 52
+        "x": 220,
+        "y": 36,
+        "w": 216,
+        "h": 38
       },
       "sourceSize": {
         "w": 640,
@@ -548,18 +548,18 @@
     },
     "gavina_cella 26.aseprite": {
       "frame": {
-        "x": 674,
+        "x": 0,
         "y": 360,
-        "w": 337,
-        "h": 52
+        "w": 216,
+        "h": 38
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 32,
-        "w": 337,
-        "h": 52
+        "x": 220,
+        "y": 36,
+        "w": 216,
+        "h": 38
       },
       "sourceSize": {
         "w": 640,
@@ -569,18 +569,18 @@
     },
     "gavina_cella 27.aseprite": {
       "frame": {
-        "x": 3470,
+        "x": 3231,
         "y": 0,
-        "w": 322,
-        "h": 57
+        "w": 205,
+        "h": 42
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 32,
-        "w": 322,
-        "h": 57
+        "x": 220,
+        "y": 36,
+        "w": 205,
+        "h": 42
       },
       "sourceSize": {
         "w": 640,
@@ -590,18 +590,18 @@
     },
     "gavina_cella 28.aseprite": {
       "frame": {
-        "x": 1913,
+        "x": 2642,
         "y": 0,
-        "w": 258,
-        "h": 85
+        "w": 170,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 200,
-        "y": 4,
-        "w": 258,
-        "h": 85
+        "x": 255,
+        "y": 20,
+        "w": 170,
+        "h": 58
       },
       "sourceSize": {
         "w": 640,
@@ -611,18 +611,18 @@
     },
     "gavina_cella 29.aseprite": {
       "frame": {
-        "x": 2171,
+        "x": 1656,
         "y": 0,
-        "w": 258,
-        "h": 85
+        "w": 170,
+        "h": 62
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 200,
-        "y": 4,
-        "w": 258,
-        "h": 85
+        "x": 255,
+        "y": 16,
+        "w": 170,
+        "h": 62
       },
       "sourceSize": {
         "w": 640,
@@ -632,18 +632,18 @@
     },
     "gavina_cella 30.aseprite": {
       "frame": {
-        "x": 3031,
+        "x": 2812,
         "y": 0,
-        "w": 258,
-        "h": 81
+        "w": 170,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 200,
-        "y": 8,
-        "w": 258,
-        "h": 81
+        "x": 255,
+        "y": 20,
+        "w": 170,
+        "h": 58
       },
       "sourceSize": {
         "w": 640,
@@ -653,18 +653,18 @@
     },
     "gavina_cella 31.aseprite": {
       "frame": {
-        "x": 2429,
+        "x": 2982,
         "y": 0,
-        "w": 265,
-        "h": 85
+        "w": 175,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 200,
-        "y": 4,
-        "w": 265,
-        "h": 85
+        "x": 255,
+        "y": 20,
+        "w": 175,
+        "h": 58
       },
       "sourceSize": {
         "w": 640,
@@ -674,18 +674,18 @@
     },
     "gavina_cella 32.aseprite": {
       "frame": {
-        "x": 1108,
+        "x": 258,
         "y": 360,
-        "w": 46,
-        "h": 40
+        "w": 34,
+        "h": 29
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 427,
+        "x": 402,
         "y": 49,
-        "w": 46,
-        "h": 40
+        "w": 34,
+        "h": 29
       },
       "sourceSize": {
         "w": 640,
@@ -695,18 +695,18 @@
     },
     "gavina_cella 33.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 360,
-        "w": 337,
-        "h": 57
+        "x": 3436,
+        "y": 0,
+        "w": 216,
+        "h": 42
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 32,
-        "w": 337,
-        "h": 57
+        "x": 220,
+        "y": 36,
+        "w": 216,
+        "h": 42
       },
       "sourceSize": {
         "w": 640,
@@ -716,18 +716,18 @@
     },
     "gavina_cella 34.aseprite": {
       "frame": {
-        "x": 1154,
+        "x": 403,
         "y": 360,
-        "w": 337,
-        "h": 40
+        "w": 216,
+        "h": 26
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 32,
-        "w": 337,
-        "h": 40
+        "x": 220,
+        "y": 36,
+        "w": 216,
+        "h": 26
       },
       "sourceSize": {
         "w": 640,
@@ -737,18 +737,60 @@
     },
     "gavina_cella 35.aseprite": {
       "frame": {
-        "x": 1801,
+        "x": 764,
         "y": 360,
-        "w": 7,
-        "h": 7
+        "w": 3,
+        "h": 5
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 32,
-        "w": 7,
-        "h": 7
+        "x": 220,
+        "y": 36,
+        "w": 3,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 36.aseprite": {
+      "frame": {
+        "x": 1274,
+        "y": 0,
+        "w": 139,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 445,
+        "y": 77,
+        "w": 139,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 37.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 634,
+        "h": 341
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 634,
+        "h": 341
       },
       "sourceSize": {
         "w": 640,
@@ -763,8 +805,8 @@
     "image": "gavina_cella.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3792,
-      "h": 417
+      "w": 3903,
+      "h": 398
     },
     "scale": "1",
     "frameTags": [
@@ -856,6 +898,20 @@
         "name": "ambient",
         "from": 12,
         "to": 35,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_llitera",
+        "from": 36,
+        "to": 36,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 37,
+        "to": 37,
         "direction": "forward",
         "color": "#000000ff"
       }

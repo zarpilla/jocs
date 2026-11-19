@@ -155,6 +155,8 @@ class Canvas:
     def get(self, x, y):
         return self.P[int(x), int(y)]
 
+    S = 1   # píxels reals per píxel de sala (hd640/tres_d.py el fa servir; els altres jocs tenen també l'art a 2×)
+
     # formes (nivell constant o funció lvl(x, y))
     def rect(self, x0, y0, x1, y1, ramp, lvl, lit=1.0):
         for y in range(int(y0), int(y1) + 1):

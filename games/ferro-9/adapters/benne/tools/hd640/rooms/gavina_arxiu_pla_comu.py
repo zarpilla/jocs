@@ -26,32 +26,8 @@ LIGHT.add(pool(547, 229, 93, 24, 1.0))
 LIGHT.add(pool(53, 229, 80, 24, 1.2))
 
 
-def _walls(cv, t=0.0):
-    tt = t                                   # (dins la funció, `t` es fa servir per a altres coses)
-    ph = 2 * math.pi * tt
-    # ─── Paret i sostre ───────────────────────────────────────────────────
-    wall(cv, 0, W - 1, seed=5, base=2.6)
-    cv.rect(0, 0, W - 1, 9, HULL, lambda x, y: 0.7 + (0.5 if y in (7, 8) else 0))
-    cv.hline(0, W - 1, 10, HULL, 3.0)
-    cv.hline(0, W - 1, 11, HULL, 1.6)
-    cv.hline(0, W - 1, 12, HULL, 0.8)
-    # conducte de ventilació al llarg del sostre
-    DL = [1.0, 3.4, 3.2, 3.0, 2.8, 2.6, 2.4, 2.1, 1.8, 1.5, 1.0, 0.6]
-    for x in range(93, W):
-        for y in range(15, 27):
-            lvl = DL[y - 15]
-            j = (x - 93) % 61
-            if j in (0, 1, 2):
-                lvl += (0.8, 0.3, -0.8)[j]                                  # brides entre trams
-            cv.put(x, y, HULL, lvl)
-        if (x - 93) % 61 == 30:
-            for y in (17, 23):
-                cv.put(x, y, HULL, 4.4)                                     # cargols de la brida del mig
-    for x in range(400, 425):                                               # reixeta del conducte
-        if x % 3 == 0:
-            cv.vline(x, 18, 24, HULL, 0.8)
-    cv.darken(93, 27, W - 1, 29, 0.5)
-
+def _canonada(cv):
+    """La canonada de coure de l'antiga fàbrica, amb el manòmetre."""
     # ─── Canonada de coure de l'antiga fàbrica (el despatx del director era aquí) ──
     PL = [1.8, 3.0, 3.6, 3.2, 2.6, 1.8, 1.0]
     for y in range(27, FLOOR_Y):
@@ -80,54 +56,9 @@ def _walls(cv, t=0.0):
     for x in (279, 293):
         cv.put(x, 25, HULL, 5.0)
 
-    # ─── Escala cap al moll de l'hangar (10..92 × 50..208) ────────────────
-    SX0, SX1, ST = 13, 88, 53
-    cv.rect(SX0 - 3, ST - 5, SX1 + 3, WALL_B, HULL, lambda x, y: 3.6 if x < SX0 or y < ST else (1.0 if x > SX1 else 2.0))
-    cv.hline(SX0 - 3, SX1 + 3, ST - 5, HULL, 4.4)
-    # buc fosc, amb la claror de l'hangar que baixa de dalt
-    for y in range(ST, FLOOR_Y):
-        for x in range(SX0, SX1 + 1):
-            lvl = 0.6 + max(0.0, 1 - (y - ST) / 93) * 2.4 - (x - SX0) / 93
-            if (y - ST) % 27 == 0 and y > ST + 30:
-                lvl -= 0.3                                                  # costures de la paret del buc
-            cv.put(x, y, SPACE, lvl + 0.8, 0.3)
-    cv.tint(SX0, ST, SX1, WALL_B, (90, 140, 190), lambda x, y: max(0.0, 0.35 - (y - ST) / 400))
-    # trapa oberta al sostre, per on entra la llum
-    cv.rect(SX0 + 3, ST, SX1 - 3, ST + 4, LAMPW, lambda x, y: 2.5 - (y - ST) * 0.4, 0)
-    cv.glow((SX0 + SX1) / 2, ST + 2, 30, (170, 210, 240), 0.25)
-    # graons d'acer pujant cap a l'esquerra
-    steps = 12
-    for i in range(steps):
-        t = i / (steps - 1)
-        sy = round(200 - t * 133)
-        sx0 = round(SX1 - 8 - t * 51)
-        cv.rect(sx0 - 21, sy, sx0, sy + 3, STEEL, lambda x, y: [6.4, 5.2, 3.8, 2.4][y - sy] - (sx0 - x) / 40)
-        cv.rect(sx0 - 21, sy + 4, sx0, sy + 6, STEEL, 0.6)
-        for x in range(sx0 - 18, sx0, 4):
-            cv.put(x, sy, STEEL, 3.4)                                       # trama antilliscant
-            cv.put(x + 1, sy + 1, STEEL, 3.6)
-    # llimonera (planxa lateral de l'escala)
-    for k in range(5):
-        cv.line(SX1 - 2 + k, WALL_B, SX1 - 61 + k, 61, STEEL, [5.0, 4.0, 3.0, 2.2, 1.2][k])
-    for i in range(1, 6):                                                   # reblons de la llimonera
-        x, y = SX1 - i * 10, WALL_B - i * 24
-        cv.put(x + 2, y, STEEL, 6.4)
-    # barana
-    cv.line(SX1, 160, SX1 - 56, 56, STEEL, 5.0)
-    cv.line(SX1, 161, SX1 - 56, 57, STEEL, 3.0)
-    cv.line(SX1, 162, SX1 - 56, 58, STEEL, 1.6)
-    for t in (0.0, 0.33, 0.66):
-        x = round(SX1 - t * 56)
-        y = round(160 - t * 104)
-        cv.vline(x, y, y + 40, STEEL, 3.4)
-        cv.vline(x + 1, y + 1, y + 40, STEEL, 1.6)
-    # rètol de l'hangar
-    cv.rect(SX0 + 3, ST + 10, SX0 + 37, ST + 21, SIGN, lambda x, y: 3.5 - (0.6 if y == ST + 21 else 0), 0.3)
-    text(cv, SX0 + 6, ST + 12, 'HANGAR', HULL, 0.5, 0)
-    cv.put(SX0 + 4, ST + 11, SIGN, 1.6, 0.3)
-    cv.put(SX0 + 36, ST + 11, SIGN, 1.6, 0.3)
-    hazard(cv, SX0 - 3, 200, SX1 + 3, WALL_B, lvl=3.0, w=4)
 
+def _arxivadors(cv):
+    """Els quatre arxivadors, amb les caixes al damunt i el calaix obert."""
     # ─── Arxivadors (105..274 × 50..205) ──────────────────────────────────
     CABS = [(107, 147), (149, 189), (192, 232), (235, 271)]
     CT = 67
@@ -191,6 +122,9 @@ def _walls(cv, t=0.0):
                 cv.line(rx, ry + 1, rx + 5, ry + 2, OLIVE, 2.0)
     cv.darken(104, 200, 275, WALL_B, 0.7)
 
+
+def _prestatge(cv):
+    """Els dos prestatges de caixes d'arxiu, damunt la taula."""
     # ─── Prestatge de caixes d'arxiu sobre la taula ───────────────────────
     for sy, boxes in ((93, 7), (128, 6)):
         cv.rect(309, sy, 437, sy + 3, HULL, lambda x, y: [4.4, 3.4, 2.4, 1.2][y - sy])
@@ -218,6 +152,9 @@ def _walls(cv, t=0.0):
     cv.hline(408, 432, 83, MANILA, 3.2)
     cv.rect(412, 85, 420, 89, PAPER, 3.2)
 
+
+def _taula_moble(cv):
+    """La taula dels expedients: el tauler, les potes i la calaixera (sense res al damunt)."""
     # ─── Taula dels expedients (305..430 × 141..176) ──────────────────────
     TX0, TX1, TT, TF = 301, 435, 163, 169
     # ombra al terra
@@ -242,6 +179,10 @@ def _walls(cv, t=0.0):
         cv.rect(TX1 - 31, y0 + 5, TX1 - 25, y0 + 5, IRON, 1.6)
     cv.vline(TX1 - 11, TF + 1, 200, PANEL, 1.0)
 
+
+def _taula_objectes(cv, tt=0.0):
+    """El que hi ha damunt la taula: els expedients, la tassa, el flexo, la pols i la bombeta."""
+    ph = 2 * math.pi * tt
     # expedients: piles de carpetes, una d'oberta amb la fitxa de la I.
     def folder(x0, y0, w, h, lvl, ramp_=MANILA, tab=True):
         cv.rect(x0, y0, x0 + w, y0 + h, ramp_, lambda x, y: lvl + (0.8 if y == y0 else 0) - (0.8 if y == y0 + h else 0))
@@ -311,6 +252,10 @@ def _walls(cv, t=0.0):
     cv.hline(397, 401, 138, BULB, 3.6 - fl, 0)
     cv.glow(399, 141, 40, (255, 220, 150), 0.4 - fl * 0.1)
 
+
+def _taula_llum(cv, tt=0.0):
+    """La taula de llum amb els plànols del Projecte Gavina (i la línia d'escaneig)."""
+    ph = 2 * math.pi * tt
     # ─── Taula de llum amb els plànols (469..623 × 109..183) ──────────────
     LX0, LX1 = 472, 617
     LB, LT = 160, 115                                                 # vora de davant / del fons
@@ -390,6 +335,101 @@ def _walls(cv, t=0.0):
             tl = (y - LT) / (LB - LT)
             cv.tint(GX0 - tl * 8, y, GX1 + tl * 8, y, (190, 245, 255), env * a)
     cv.glow(544, 136, 72, (120, 210, 255), 0.35)
+
+
+def _walls(cv, t=0.0, mobles=True):
+    """La paret amb tot el que hi ha; amb `mobles` = False, sense la canonada, els arxivadors, els prestatges, la
+    taula ni la taula de llum (la sala en 3D els fa a part)."""
+    tt = t                                   # (dins la funció, `t` es fa servir per a altres coses)
+    ph = 2 * math.pi * tt
+    # ─── Paret i sostre ───────────────────────────────────────────────────
+    wall(cv, 0, W - 1, seed=5, base=2.6)
+    cv.rect(0, 0, W - 1, 9, HULL, lambda x, y: 0.7 + (0.5 if y in (7, 8) else 0))
+    cv.hline(0, W - 1, 10, HULL, 3.0)
+    cv.hline(0, W - 1, 11, HULL, 1.6)
+    cv.hline(0, W - 1, 12, HULL, 0.8)
+    # conducte de ventilació al llarg del sostre
+    DL = [1.0, 3.4, 3.2, 3.0, 2.8, 2.6, 2.4, 2.1, 1.8, 1.5, 1.0, 0.6]
+    for x in range(93, W):
+        for y in range(15, 27):
+            lvl = DL[y - 15]
+            j = (x - 93) % 61
+            if j in (0, 1, 2):
+                lvl += (0.8, 0.3, -0.8)[j]                                  # brides entre trams
+            cv.put(x, y, HULL, lvl)
+        if (x - 93) % 61 == 30:
+            for y in (17, 23):
+                cv.put(x, y, HULL, 4.4)                                     # cargols de la brida del mig
+    for x in range(400, 425):                                               # reixeta del conducte
+        if x % 3 == 0:
+            cv.vline(x, 18, 24, HULL, 0.8)
+    cv.darken(93, 27, W - 1, 29, 0.5)
+
+    if mobles:
+        _canonada(cv)
+
+    # ─── Escala cap al moll de l'hangar (10..92 × 50..208) ────────────────
+    SX0, SX1, ST = 13, 88, 53
+    cv.rect(SX0 - 3, ST - 5, SX1 + 3, WALL_B, HULL, lambda x, y: 3.6 if x < SX0 or y < ST else (1.0 if x > SX1 else 2.0))
+    cv.hline(SX0 - 3, SX1 + 3, ST - 5, HULL, 4.4)
+    # buc fosc, amb la claror de l'hangar que baixa de dalt
+    for y in range(ST, FLOOR_Y):
+        for x in range(SX0, SX1 + 1):
+            lvl = 0.6 + max(0.0, 1 - (y - ST) / 93) * 2.4 - (x - SX0) / 93
+            if (y - ST) % 27 == 0 and y > ST + 30:
+                lvl -= 0.3                                                  # costures de la paret del buc
+            cv.put(x, y, SPACE, lvl + 0.8, 0.3)
+    cv.tint(SX0, ST, SX1, WALL_B, (90, 140, 190), lambda x, y: max(0.0, 0.35 - (y - ST) / 400))
+    # trapa oberta al sostre, per on entra la llum
+    cv.rect(SX0 + 3, ST, SX1 - 3, ST + 4, LAMPW, lambda x, y: 2.5 - (y - ST) * 0.4, 0)
+    cv.glow((SX0 + SX1) / 2, ST + 2, 30, (170, 210, 240), 0.25)
+    # graons d'acer pujant cap a l'esquerra
+    steps = 12
+    for i in range(steps):
+        t = i / (steps - 1)
+        sy = round(200 - t * 133)
+        sx0 = round(SX1 - 8 - t * 51)
+        cv.rect(sx0 - 21, sy, sx0, sy + 3, STEEL, lambda x, y: [6.4, 5.2, 3.8, 2.4][y - sy] - (sx0 - x) / 40)
+        cv.rect(sx0 - 21, sy + 4, sx0, sy + 6, STEEL, 0.6)
+        for x in range(sx0 - 18, sx0, 4):
+            cv.put(x, sy, STEEL, 3.4)                                       # trama antilliscant
+            cv.put(x + 1, sy + 1, STEEL, 3.6)
+    # llimonera (planxa lateral de l'escala)
+    for k in range(5):
+        cv.line(SX1 - 2 + k, WALL_B, SX1 - 61 + k, 61, STEEL, [5.0, 4.0, 3.0, 2.2, 1.2][k])
+    for i in range(1, 6):                                                   # reblons de la llimonera
+        x, y = SX1 - i * 10, WALL_B - i * 24
+        cv.put(x + 2, y, STEEL, 6.4)
+    # barana
+    cv.line(SX1, 160, SX1 - 56, 56, STEEL, 5.0)
+    cv.line(SX1, 161, SX1 - 56, 57, STEEL, 3.0)
+    cv.line(SX1, 162, SX1 - 56, 58, STEEL, 1.6)
+    for t in (0.0, 0.33, 0.66):
+        x = round(SX1 - t * 56)
+        y = round(160 - t * 104)
+        cv.vline(x, y, y + 40, STEEL, 3.4)
+        cv.vline(x + 1, y + 1, y + 40, STEEL, 1.6)
+    # rètol de l'hangar
+    cv.rect(SX0 + 3, ST + 10, SX0 + 37, ST + 21, SIGN, lambda x, y: 3.5 - (0.6 if y == ST + 21 else 0), 0.3)
+    text(cv, SX0 + 6, ST + 12, 'HANGAR', HULL, 0.5, 0)
+    cv.put(SX0 + 4, ST + 11, SIGN, 1.6, 0.3)
+    cv.put(SX0 + 36, ST + 11, SIGN, 1.6, 0.3)
+    hazard(cv, SX0 - 3, 200, SX1 + 3, WALL_B, lvl=3.0, w=4)
+
+    if mobles:
+        _arxivadors(cv)
+
+    if mobles:
+        _prestatge(cv)
+
+    if mobles:
+        _taula_moble(cv)
+
+    if mobles:
+        _taula_objectes(cv, tt)
+
+    if mobles:
+        _taula_llum(cv, tt)
 
     # ─── Detalls de paret ─────────────────────────────────────────────────
     # rètol de l'arxiu
