@@ -366,10 +366,37 @@ def llibreta(cv):
         if i < 12:
             cv.put(X0 + 17 + i, Y0 + 32 - i, [(236, 220, 196)], 0, 0)
     # títol a la paret, a sota
-    s = 'LLIBRETA DE TORN'
-    tx = cx - text_w(s) // 2
-    text(cv, tx, Y1 + 8, s, WALNUT, 1.2, 0)
-    cv.hline(tx, tx + text_w(s) - 1, Y1 + 17, GOLD, 3.2, 0.4)
+    cartellet(cv, cx, Y1 + 6, 'LLIBRETA DE TORN')
+
+
+class _Ample:
+    """Un canvas que dibuixa cada píxel dues vegades d'ample (a partir de x0): lletra eixamplada, per als rètols
+    de la paret que fuig, que l'escorç aprima."""
+    def __init__(self, cv, x0):
+        self.cv, self.x0 = cv, x0
+
+    def put(self, x, y, *a):
+        x = self.x0 + 2 * (x - self.x0)
+        self.cv.put(x, y, *a)
+        self.cv.put(x + 1, y, *a)
+
+
+def cartellet(cv, cx, y0, *linies, ample=False):
+    """Un peu de quadre: cartellet de paper centrat a cx, com el de «DESAPAREGUDA» (sobre la paret, la lletra
+    fosca no es llegeix en escorç). Amb `ample`, la lletra fa el doble d'ample."""
+    k = 2 if ample else 1
+    tw = max(text_w(s) for s in linies) * k
+    x0 = cx - (tw + 7) // 2
+    x1 = x0 + tw + 7
+    y1 = y0 + 12 + 10 * (len(linies) - 1)
+    cv.darken(x0 + 2, y0 + 2, x1 + 2, y1 + 2, 0.6)
+    cv.rect(x0, y0, x1, y1, PAPER, lambda x, y: 4.8 - (y - y0) * 0.06)
+    cv.hline(x0, x1, y0, PAPER, 5.8)
+    cv.vline(x1, y0, y1, PAPER, 3.0)
+    cv.hline(x0, x1, y1, PAPER, 2.6)
+    for i, s in enumerate(linies):
+        lx = cx - text_w(s) * k // 2
+        text(_Ample(cv, lx) if ample else cv, lx, y0 + 3 + 10 * i, s, WALNUT, 1.0, 0)
 
 
 # ─── La fàbrica Aldaia: fotografia gran on abans hi havia l'holograma ──────
@@ -414,8 +441,7 @@ def fabrica(cv):
             cv.put(x, y, SEPIA, lvl, 0.3)
     cv.darken(X0 + 5, Y0 + 5, X1 - 5, Y1 - 5,
               lambda x, y: max(0.0, 0.5 - min(x - X0 - 5, X1 - 5 - x, y - Y0 - 5, Y1 - 5 - y) / 8), dither=False)
-    s = 'ALDAIA · FERRO-9'
-    text(cv, (X0 + X1) // 2 - text_w(s) // 2, Y1 + 8, s, WALNUT, 1.2, 0)
+    cartellet(cv, (X0 + X1) // 2 - 12, Y1 + 5, 'ALDAIA', 'FERRO-9', ample=True)   # a l'esquerra: el faristol el tapava
 
 
 # ─── Vitrina: la clau anglesa del Lot 1, que no s'ha rovellat mai ──────────

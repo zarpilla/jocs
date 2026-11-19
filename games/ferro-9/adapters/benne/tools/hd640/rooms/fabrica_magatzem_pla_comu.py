@@ -29,6 +29,18 @@ LAMP_X = 517                       # el llum penjant del banc
 BULB_X = 316                       # la bombeta de la prestatgeria
 
 
+
+class _Ample:
+    """Un canvas que dibuixa els píxels 1,5 vegades d'ample (a partir de x0): lletra eixamplada per als rètols de
+    les parets que fugen, que l'escorç aprima."""
+    def __init__(self, cv, x0, k=1.5):
+        self.cv, self.x0, self.k = cv, x0, k
+
+    def put(self, x, y, *a):
+        i = x - self.x0
+        for xx in range(self.x0 + int(i * self.k), self.x0 + int((i + 1) * self.k)):
+            self.cv.put(xx, y, *a)
+
 def plank_floor(cv, y0):
     """Terra de taulons gastats, en perspectiva, amb la veta, els claus i les taques d'oli."""
     VPX, VPY = 320, -200
@@ -191,14 +203,16 @@ def room(cv, parts=PARTS):
         cv.vline(LX1 - 6, 158, 160, GOLD, 0.2)
 
         # Rètol de les normes del Cargol, damunt les portes
-        cv.rect(19, 37, 139, 67, ENAMEL, lambda x, y: (1.4 if x in (19, 139) or y in (37, 67) else 3.9) - (y - 37) * 0.015, 0.5)
-        cv.rect(21, 39, 137, 65, ENAMEL, lambda x, y: 4.0 + (hr(x // 3, y // 3, 7) - 0.5) * 0.15 if not (x in (21, 137) or y in (39, 65)) else 2.6, 0.5)
+        # (la lletra, fosca i a 1,5 d'ample: a la paret de l'esquerra, en escorç, la vermella no es llegia)
+        cv.rect(11, 37, 147, 67, ENAMEL, lambda x, y: (1.4 if x in (11, 147) or y in (37, 67) else 3.9) - (y - 37) * 0.015, 0.5)
+        cv.rect(13, 39, 145, 65, ENAMEL, lambda x, y: 4.0 + (hr(x // 3, y // 3, 7) - 0.5) * 0.15 if not (x in (13, 145) or y in (39, 65)) else 2.6, 0.5)
         for s, y in (('SENSE FORMULARI', 44), ('NO HI HA MATERIAL', 55)):
-            text(cv, 79 - text_w(s) // 2, y, s, RED, 2.6, 0.3)
-        for cx, cy in ((24, 42), (134, 42), (24, 62), (134, 62)):
+            w = text_w(s) * 3 // 2
+            text(_Ample(cv, 79 - w // 2), 79 - w // 2, y, s, RED, 0.9, 0.2)
+        for cx, cy in ((16, 42), (142, 42), (16, 62), (142, 62)):
             cv.put(cx, cy, IRON, 1.0, 0.3)
             cv.put(cx + 1, cy + 1, ENAMEL, 2.0, 0.3)
-        for x, y in ((40, 66), (41, 66), (112, 38), (127, 66)):           # l'esmalt saltat
+        for x, y in ((40, 66), (41, 66), (112, 38), (135, 66)):           # l'esmalt saltat
             cv.put(x, y, IRON, 0.8, 0.3)
 
         # ─── Ganxo del plomall (el plomall és un prop) ───────────────────────────

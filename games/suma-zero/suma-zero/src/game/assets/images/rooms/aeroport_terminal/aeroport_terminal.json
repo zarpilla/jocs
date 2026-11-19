@@ -23,7 +23,7 @@
     },
     "aeroport_terminal 1.aseprite": {
       "frame": {
-        "x": 1460,
+        "x": 1461,
         "y": 0,
         "w": 177,
         "h": 179
@@ -65,7 +65,7 @@
     },
     "aeroport_terminal 3.aseprite": {
       "frame": {
-        "x": 2250,
+        "x": 2251,
         "y": 0,
         "w": 272,
         "h": 167
@@ -86,7 +86,7 @@
     },
     "aeroport_terminal 4.aseprite": {
       "frame": {
-        "x": 2522,
+        "x": 2523,
         "y": 0,
         "w": 272,
         "h": 167
@@ -107,7 +107,7 @@
     },
     "aeroport_terminal 5.aseprite": {
       "frame": {
-        "x": 2794,
+        "x": 2795,
         "y": 0,
         "w": 272,
         "h": 167
@@ -128,7 +128,7 @@
     },
     "aeroport_terminal 6.aseprite": {
       "frame": {
-        "x": 3066,
+        "x": 3067,
         "y": 0,
         "w": 272,
         "h": 167
@@ -149,7 +149,7 @@
     },
     "aeroport_terminal 7.aseprite": {
       "frame": {
-        "x": 3338,
+        "x": 3339,
         "y": 0,
         "w": 272,
         "h": 167
@@ -170,7 +170,7 @@
     },
     "aeroport_terminal 8.aseprite": {
       "frame": {
-        "x": 3610,
+        "x": 3611,
         "y": 0,
         "w": 272,
         "h": 167
@@ -319,7 +319,7 @@
       "frame": {
         "x": 1280,
         "y": 0,
-        "w": 180,
+        "w": 181,
         "h": 183
       },
       "rotated": false,
@@ -327,7 +327,7 @@
       "spriteSourceSize": {
         "x": 90,
         "y": 0,
-        "w": 180,
+        "w": 181,
         "h": 183
       },
       "sourceSize": {
@@ -359,7 +359,7 @@
     },
     "aeroport_terminal 17.aseprite": {
       "frame": {
-        "x": 1637,
+        "x": 1638,
         "y": 0,
         "w": 159,
         "h": 171
@@ -380,7 +380,7 @@
     },
     "aeroport_terminal 18.aseprite": {
       "frame": {
-        "x": 1796,
+        "x": 1797,
         "y": 0,
         "w": 152,
         "h": 171
@@ -401,7 +401,7 @@
     },
     "aeroport_terminal 19.aseprite": {
       "frame": {
-        "x": 1948,
+        "x": 1949,
         "y": 0,
         "w": 141,
         "h": 171
@@ -422,7 +422,7 @@
     },
     "aeroport_terminal 20.aseprite": {
       "frame": {
-        "x": 2089,
+        "x": 2090,
         "y": 0,
         "w": 161,
         "h": 169
@@ -679,7 +679,7 @@
     "image": "aeroport_terminal.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3882,
+      "w": 3883,
       "h": 527
     },
     "scale": "1",

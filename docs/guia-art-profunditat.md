@@ -102,7 +102,12 @@ Més sobre les capes del davant (`FRONT`), après fent les sales:
 - Amb una càmera picada, la franja on es camina és estreta i l'escala hi creix de pressa: el terra on es camina es
   talla on el personatge arriba a ≈1,2, i el terra de més a prop queda per al primer pla.
 - Els rètols petits, en escorç, no es llegeixen: s'han de dibuixar més grossos al pla (a Suma Zero, la font a 2× amb
-  una N de 5 px: la de 4, en escorç, semblava una M).
+  una N de 5 px: la de 4, en escorç, semblava una M). Si no hi caben, la lletra eixamplada (×1,5 o ×2 d'ample només:
+  l'escorç aprima en horitzontal), i sempre fosca sobre clar (paper, esmalt, llautó): la lletra de color sobre la paret
+  és la primera que es perd. Poden quedar una mica borrosos; n'hi ha prou que es llegeixin.
+- Quins rètols cal que es llegeixin: els que diuen alguna cosa que no surt enlloc més (peus de quadre, normes,
+  avisos, cartells que orienten). Els noms de les portes no cal: el hotspot ja dona el nom en passar-hi per sobre, i
+  fan de textura.
 
 ### Números que han funcionat (el pati de la granja)
 
@@ -270,9 +275,10 @@ tres cares, comporta oberta a un passadís il·luminat, barana i canonada en pri
 **Suma Zero, Ni un ou i Ferro-9: també totes les sales i les cinemàtiques en 3D, a 1×** (novembre del 2026), amb els
 personatges en 3/4, la respiració i les micro-accions. Queda pendent:
 
-- Rètols petits que no es llegeixen en escorç: a Suma Zero, el panell de sortides i «FACTURACIÓ» de la terminal i la
-  placa «DIRECTOR»; a Ni un ou, «COBERTA», «CUINA», «MUNTACÀRREGUES», «RÀDIO», «PONT» i els noms de les portes del
-  passadís; a Ferro-9, «ACCÉS RESTRINGIT», «HANGAR», les normes del Cargol i «ALDAIA · FERRO-9» al museu.
+- Rètols petits: ja es llegeixen els que informen («FACTURACIÓ» i «DIRECTOR» a Suma Zero, «ANTENA / PERILL» a la
+  ràdio de Ni un ou, les normes del Cargol i els peus del museu a Ferro-9). Els noms de les portes (Ni un ou, la sala
+  de calderes de Ferro-9) i el panell de sortides de la terminal es queden com a textura, perquè no es llegeixen
+  però tampoc cal.
 - Escenes amb gent asseguda que no s'han vist al joc: la reunió del menjador i la infermeria de Ni un ou.
 - Els personatges no surten als reflexos del terra (el vestíbul del banc de Suma Zero).
 - Alguns mobles i objectes encara són dibuixos plans drets (sprites), no volums: els tamborets del bar, les bombes de

@@ -379,6 +379,31 @@ def radio(cv):
     cv.put(372, DESK_TOP - 4, WOOD, 2.0)
 
 
+N5 = ['10001', '11001', '10101', '10011', '10001']      # (la N de 4 px, a 2× i en escorç, semblava una M)
+
+
+def text2_w(s):
+    from hd.rooms.comu import text_width
+    return 2 * text_width(s) + 2 * s.count('N')
+
+
+def text2(cv, s, x, y, ramp, lvl):
+    """La font petita a 2× (blocs de 2×2), per als rètols que han de llegir-se a la sala en 3D."""
+    from hd.rooms.comu import _glyph
+    cx = x
+    for ch in s:
+        g, top = _glyph(ch)
+        if ch == 'N':
+            g = N5
+        for j, row in enumerate(g, start=top):
+            for i, bit in enumerate(row):
+                if bit == '1':
+                    for dx in (0, 1):
+                        for dy in (0, 1):
+                            cv.put(cx + 2 * i + dx, y + 2 * j + dy, ramp, lvl)
+        cx += 2 * (len(g[0]) + 1)
+
+
 # ─── Panell de l'antena ───────────────────────────────────────────────────────
 
 PANEL = (440, 80, 520, 160)
@@ -402,10 +427,11 @@ def panel(cv):
             cv.put(bx + dx, by + dy, WHITEP, 2.6)
     cv.poly([(480, 92), (491, 111), (469, 111)], YELL, 4.2)
     cv.poly([(482, 96), (477, 104), (481, 104), (478, 109), (484, 101), (480, 101)], DARK, 0.4)
-    box(cv, 452, 118, 508, 127, WHITEP, 3.8)
-    text(cv, 'ANTENA', 463, 120, BRI, 1.0)
-    box(cv, 456, 132, 504, 138, YELL, 3.4, edge=False)
-    text(cv, 'PERILL', 466, 133, DARK, 0.6)
+    # (la font a 2×: a 1×, a la sala en 3D, no es llegia)
+    box(cv, 447, 115, 513, 129, WHITEP, 3.8)
+    text2(cv, 'ANTENA', 480 - text2_w('ANTENA') // 2, 117, BRI, 1.0)
+    box(cv, 451, 132, 509, 146, YELL, 3.4, edge=False)
+    text2(cv, 'PERILL', 480 - text2_w('PERILL') // 2, 134, DARK, 0.6)
 
 
 # ─── El racó dret ────────────────────────────────────────────────────────────

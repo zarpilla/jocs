@@ -108,12 +108,13 @@ def _parets(cig='sencera', fum=None, panell=False, maleti=False):
 
 def _rètol(cv):
     """El rètol «FACTURACIÓ», penjat de la paret (al pla era dins el taulell)."""
-    PL.obox(cv, 88, 61, 157, 77, BLUE, 3.0)
-    cv.hline(90, 155, 63, BLUE, 3.8)
-    w = PL.text_width('FACTURACIÓ')
-    PL.text(cv, 'FACTURACIÓ', 123 - w // 2, 67, [(240, 244, 250)], 0, flat=(240, 244, 250))
-    cv.vline(107, 52, 61, PL.STEELB, 2.4)
-    cv.vline(139, 52, 61, PL.STEELB, 2.4)
+    from hd640.rooms.bcmu_passadis_pla_comu import text2      # la font a 2×: a 1×, en escorç, no es llegia
+    w = 2 * PL.text_width('FACTURACIÓ') + 1
+    PL.obox(cv, 123 - w // 2 - 6, 51, 123 + w // 2 + 6, 77, BLUE, 3.0)   # (alt: l’accent de la Ó)
+    cv.hline(123 - w // 2 - 4, 123 + w // 2 + 4, 53, BLUE, 3.8)
+    text2(cv, "FACTURACIÓ", 123 - w // 2, 63, (240, 244, 250))
+    cv.vline(107, 44, 51, PL.STEELB, 2.4)
+    cv.vline(139, 44, 51, PL.STEELB, 2.4)
 
 
 def _fum(cv, i):

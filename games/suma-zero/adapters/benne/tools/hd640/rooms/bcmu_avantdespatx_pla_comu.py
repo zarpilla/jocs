@@ -524,11 +524,12 @@ def door(cv):
         cv.flat(px, 139, MAHOG[0])
     # la placa
     s = 'DIRECTOR'
-    w = text_width(s)
-    obox(cv, cx - w // 2 - 7, 75, cx + w // 2 + 7, 88, BRASS, 4.4, top=1.0)
-    for sx in (cx - w // 2 - 5, cx + w // 2 + 5):                     # els cargols
+    from hd640.rooms.bcmu_passadis_pla_comu import text2      # la font a 2×: a 1×, en escorç, no es llegia
+    w = 2 * text_width(s) + 2 * s.count('N') + 1
+    obox(cv, cx - w // 2 - 7, 72, cx + w // 2 + 7, 91, BRASS, 4.4, top=1.0)
+    for sx in (cx - w // 2 - 4, cx + w // 2 + 4):                     # els cargols
         cv.flat(sx, 81, BRASS[1])
-    text(cv, s, cx - w // 2, 79, [(40, 26, 10)], 0, flat=(50, 32, 12))
+    text2(cv, s, cx - w // 2, 76, (36, 22, 8))
     cv.darken(x0 - 5, FLOOR_Y, x1 + 8, FLOOR_Y + 4, 0.45)
 
 
