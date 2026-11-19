@@ -310,7 +310,7 @@ def draw_designed(dir_: Path, game_dir: Path, design):
                 LABELS['font'].draw_centered(bg, (x0 + x1) / 2, max(1, y0 - 9), names[tid], (255, 240, 200), x1 - x0 + 40)
     frames, tags = [bg], ['BG']
     for prop in room['props']:
-        if prop['id'] == 'BG' or (hd and (prop['id'] in hd_anims or prop['id'] == 'davant' or prop['id'].startswith('davant_'))):
+        if prop['id'] == 'BG' or (hd and (prop['id'] in hd_anims or prop['id'] == 'davant' or prop['id'].startswith('davant_') or '__davant' in prop['id'])):
             continue
         frame = Image.new('RGBA', (w * s, h * s), (0, 0, 0, 0))
         if hd:
@@ -358,7 +358,8 @@ def draw_designed(dir_: Path, game_dir: Path, design):
     # línia base es contradiuen i el personatge queda darrere de totes.
     fronts = sorted(render_hd_fronts(name, bg) if hd else [], key=lambda fr: fr[1]['baseline'])
     for rank, (img, f, fid) in enumerate(fronts):
-        f = {**f, 'zIndex': f.get('zIndex', 20) + (rank if len(fronts) > 1 else 0)}
+        # (de 2 en 2: el d'enmig és per als props de damunt la capa i les seves variants)
+        f = {**f, 'zIndex': f.get('zIndex', 20) + (2 * rank if len(fronts) > 1 else 0)}
         frames.append(img)
         tags.append(fid)
         prop = next((p for p in room['props'] if p['id'] == fid), None)
@@ -374,6 +375,29 @@ def draw_designed(dir_: Path, game_dir: Path, design):
                 p['zIndex'], p['baseline'] = z, f['baseline']
             elif p['id'] in f.get('props', ()):
                 p['zIndex'], p['baseline'] = z + 1, f['baseline']
+        # Les variants de la capa (`variants`: decorats que canvien tota la sala, com `dia` o `fosc`): el decorat
+        # retallat per la màscara de la capa, just a sobre i amb la mateixa línia base. El runtime el mostra i l'amaga
+        # amb el decorat (`<decorat>__<capa>`): si no, la capa, que és un retall del fons de sempre, el taparia.
+        for v in f.get('variants', ()):
+            vimg = hd_props.get(v)
+            if vimg is None:
+                continue
+            msk = Image.new('RGBA', vimg.size, (0, 0, 0, 0))
+            sc = vimg.size[1] // HD_H
+            src, dst = vimg.load(), msk.load()
+            for yy in range(vimg.size[1]):
+                for xx in range(vimg.size[0]):
+                    if f['mask'](xx // sc, yy // sc):
+                        dst[xx, yy] = src[xx, yy]
+            vid = f'{v}__{fid}'
+            frames.append(msk)
+            tags.append(vid)
+            vp = next((q for q in room['props'] if q['id'] == vid), None)
+            if vp is None:
+                vp = {'id': vid, 'tag': vid, 'visible': False, 'alpha': 1, 'clickable': False}
+                room['props'].append(vp)
+            vp['animations'] = {vid: {}}
+            vp['zIndex'], vp['baseline'] = z + 1, f['baseline']
 
     sheets, meta = packed_sheet(name, frames, tags, w * s, h * s, spans)
     if s != 1:

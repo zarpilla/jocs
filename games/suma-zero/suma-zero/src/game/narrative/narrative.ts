@@ -430,6 +430,13 @@ export function facingToward(kind: 'prop' | 'hotspot' | 'character' | 'item', be
   return Math.abs(dx) >= Math.abs(dy) ? (dx < 0 ? 'L' : 'R') : dy < 0 ? 'U' : 'D';
 }
 
+/** Les capes de l'art lligades a la cosa `id` d'una sala (props `<id>__<capa>`): es mostren i s'amaguen amb ella. */
+function linkedLayers(room: string, id: string): PropHandle[] {
+  const file = roomFiles.find((r) => r.id === toBenne('rooms', room));
+  const prefix = `${toBenne('hotspots', id)}__`;
+  return (file?.props ?? []).filter((p) => p.id.startsWith(prefix)).map((p) => new PropHandle(toBenne('rooms', room), p.id));
+}
+
 /** La capa `id` del decorat d'una sala (un prop de l'art, p. ex. el títol de la portada), si la sala la té. */
 export function roomProp(room: string, id: string): PropHandle | undefined {
   const file = roomFiles.find((r) => r.id === toBenne('rooms', room));
@@ -544,6 +551,9 @@ export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
     const handle = boundHotspots[id] ?? character ?? zone ?? new PropHandle(toBenne('rooms', room), toBenne('hotspots', id));
     if ('visible' in handle) handle.visible = visible;
     else handle.active = visible;
+    // Les capes de l'art que l'acompanyen (`<id>__<capa>`): la versió d'una capa del davant amb aquell decorat (p. ex.
+    // el timó de dia, `dia__davant_timo`). La capa del davant és un retall del fons i, si no, el taparia.
+    for (const layer of linkedLayers(room, id)) layer.visible = visible;
   }
   applyCharacterVisibility(room, keepSpeakers);
   // El so de fons també depèn de l'estat (p. ex. el generador parat).
