@@ -649,7 +649,7 @@
       "animations": {
         "valvula_tancada": {}
       },
-      "zIndex": 24,
+      "zIndex": 27,
       "visible": false,
       "alpha": 1,
       "clickable": false,
@@ -672,7 +672,7 @@
       "animations": {
         "fosc": {}
       },
-      "zIndex": 25,
+      "zIndex": 29,
       "visible": false,
       "alpha": 1,
       "clickable": false,
@@ -750,7 +750,7 @@
     {
       "id": "bomba_marxa",
       "tag": "bomba_marxa",
-      "zIndex": 22,
+      "zIndex": 23,
       "visible": false,
       "alpha": 1,
       "clickable": false,
@@ -783,7 +783,7 @@
       "animations": {
         "davant_bomba": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 206
     },
     {
@@ -795,7 +795,7 @@
       "animations": {
         "davant_escala": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 212
     },
     {
@@ -807,7 +807,7 @@
       "animations": {
         "davant_valvula": {}
       },
-      "zIndex": 23,
+      "zIndex": 26,
       "baseline": 213
     },
     {
@@ -819,7 +819,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 24,
+      "zIndex": 28,
       "baseline": 999
     }
   ],
@@ -857,8 +857,8 @@
     {
       "instanceId": "bastida-1",
       "definition": "bastida/bastida.character.json",
-      "x": 127,
-      "y": 211,
+      "x": 80,
+      "y": 225,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

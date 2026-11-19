@@ -329,7 +329,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 31,
+      "zIndex": 32,
       "baseline": 999
     },
     {
@@ -514,8 +514,8 @@
     {
       "instanceId": "bastida-1",
       "definition": "bastida/bastida.character.json",
-      "x": 451,
-      "y": 200,
+      "x": 457,
+      "y": 208,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

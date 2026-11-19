@@ -978,7 +978,7 @@ GEOMETRIA = {
         'valvula': {'rect': _caixa_mon(_VX - 34, _VX + 34, 0, 62, _VZ - 16, _VZ + 16), 'walk': _p(_VX + 50, _VZ - 6)},
         'sentina': {'rect': _rect_mon((SENT[0], 0, SENT[2] - 6), (SENT[1], 8, SENT[3])), 'walk': _p(SENT[1] + 14, SENT[2] + 6)},
     }),
-    'spawns': {'iri': _p(230, 140), 'vet': _p(360, 170), 'bastida': _p(60, 126),
+    'spawns': {'iri': _p(230, 140), 'vet': _p(360, 170), 'bastida': _p(36, LADDER[2] + (LADDER[3] - LADDER[2]) * 3 / 14),   # assegut al tercer graó
                'diu': _p(*DIU_)},
     'walkable': _WALK,
     'forats': [_forat(_VX - 36, _VX + 36, _VZ - 18, _VZ + 18), _forat_girat(PUMP[0], PUMP[1], 82, 30, PUMP[2])],

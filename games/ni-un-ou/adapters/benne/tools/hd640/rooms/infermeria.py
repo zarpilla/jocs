@@ -91,7 +91,7 @@ def _terra_de(u, v):
 
 # On seuen a la llitera (els peus, en coordenades de sala: les del guió) i la llitera, a partir d'aquí.
 SEU_JUANA = PL.JUANA
-SEU_BASTIDA = (451, 200)
+SEU_BASTIDA = (457, 208)   # al cantell de davant, amb les cames penjant (a 451,200 quedava sota el matalàs)
 _JX, _JZ = _terra_de(*SEU_JUANA)
 _LJ = PL.JUANA[0] - PL.LL_X0                        # al pla, la Juana seu a aquesta distància del cap de la llitera
 _C, _S = math.cos(LL[2]), math.sin(LL[2])
