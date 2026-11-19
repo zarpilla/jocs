@@ -4,104 +4,188 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "credits 1.aseprite": {
       "frame": {
         "x": 1280,
-        "y": 720,
-        "w": 167,
-        "h": 102
+        "y": 360,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 204,
-        "y": 404,
-        "w": 167,
-        "h": 102
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "credits 2.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 640,
         "y": 0,
-        "w": 1280,
-        "h": 316
+        "w": 640,
+        "h": 130
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 404,
-        "w": 1280,
-        "h": 316
+        "y": 230,
+        "w": 640,
+        "h": 130
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "credits 3.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1280,
         "y": 0,
-        "w": 1280,
-        "h": 316
+        "w": 640,
+        "h": 130
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 404,
-        "w": 1280,
-        "h": 316
+        "y": 230,
+        "w": 640,
+        "h": 130
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "credits 4.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 720,
-        "w": 1280,
-        "h": 316
+        "x": 1920,
+        "y": 0,
+        "w": 640,
+        "h": 130
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 404,
-        "w": 1280,
-        "h": 316
+        "y": 230,
+        "w": 640,
+        "h": 130
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "credits 5.aseprite": {
+      "frame": {
+        "x": 3200,
+        "y": 0,
+        "w": 398,
+        "h": 126
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 159,
+        "y": 230,
+        "w": 398,
+        "h": 126
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "credits 6.aseprite": {
+      "frame": {
+        "x": 2560,
+        "y": 0,
+        "w": 640,
+        "h": 130
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 230,
+        "w": 640,
+        "h": 130
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "credits 7.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 360,
+        "w": 640,
+        "h": 126
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 234,
+        "w": 640,
+        "h": 126
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "credits 8.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 360,
+        "w": 640,
+        "h": 122
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 238,
+        "w": 640,
+        "h": 122
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -112,8 +196,8 @@
     "image": "credits.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3840,
-      "h": 1036
+      "w": 3598,
+      "h": 486
     },
     "scale": "1",
     "frameTags": [
@@ -127,7 +211,7 @@
       {
         "name": "mar",
         "from": 1,
-        "to": 4,
+        "to": 8,
         "direction": "forward",
         "color": "#000000ff"
       }

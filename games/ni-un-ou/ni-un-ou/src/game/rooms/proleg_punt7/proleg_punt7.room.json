@@ -137,8 +137,8 @@
     {
       "instanceId": "juana-veu",
       "definition": "juana/juana.character.json",
-      "x": 106,
-      "y": 205,
+      "x": 195,
+      "y": 222,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,
@@ -148,14 +148,13 @@
     {
       "instanceId": "bastida-veu",
       "definition": "bastida/bastida.character.json",
-      "x": 128,
-      "y": 186,
+      "x": 192,
+      "y": 200,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,
       "clickable": false,
       "zIndex": 1
     }
-  ],
-  "artScale": 2
+  ]
 }

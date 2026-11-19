@@ -12,7 +12,7 @@ silueta de la plataforma («vigia_on») i en Bastida, a popa, treu el missatger 
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
 from hd.pix import Light
-import hd640.rooms.portada as portada
+import hd640.rooms.portada_pla_comu as portada
 
 from hd.pix import Canvas  # noqa: E402,F811  (a 1×: és la font de les textures de la sala en 3D)
 Canvas1x = Canvas

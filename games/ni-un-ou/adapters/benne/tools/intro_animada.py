@@ -40,7 +40,7 @@ import room_designs  # noqa: E402,F401  (carrega les sales en l'ordre bo)
 from hd.pix import Light, W, H, mix, hr  # noqa: E402
 from hd1280.canvas2x import Canvas2x as Canvas, S as ART  # noqa: E402  (art a 2×: 1280×720)
 from hd.rooms.exterior import arenga, platform, reflection, sheer, STEELX, ROPE, GLOW_WARM  # noqa: E402
-from hd640.rooms import portada as po  # noqa: E402
+from hd640.rooms import portada_pla_comu as po  # noqa: E402
 
 GAME = HERE.parent.parent.parent
 MUSIC = GAME / 'game' / 'audio' / 'music' / 'tema.ogg'
