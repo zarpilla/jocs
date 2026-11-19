@@ -70,7 +70,7 @@ PANC = ((X0 + 186, ZR - 92), (X0 + 346, ZR - 126))  # els dos pals de la pancart
 FONT = (X0 + 168, ZR - 62)
 COMPT = (X0 + 132, ZR - 40)
 COND = (FX0 + 120, ZR - 96, 0.42)                  # (x, z, gir)
-FANAL = (-45.0, 340.0)                            # (a la vora: deixa veure la porta de la nau)
+FANAL = (-34.0, 340.0)                            # (a la vora: deixa veure la porta de la nau)
 VAGO = (500.0, 300.0)
 BARRIL = (X0 + 360, ZR - 200)
 
