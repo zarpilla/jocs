@@ -259,14 +259,47 @@ def standing(cid, p, thin=False):
     })
 
 
-def protagonist(cid, draw, feet=(25, 83), outfits=('',)):
+# De lluny (prefix `Lluny`, com a Aigua Verne): la figura dibuixada directament a LLUNY de la mida (no encongida; la
+# cara de píxel solt és la petita, la del nen), enganxada dins el fotograma gran amb els peus al mateix punt (Benne té
+# un sol punt de peus per personatge). És per a les sales on la perspectiva deixa la figura a ≈0,4 (bcmu_contenidor),
+# on el motor, encongint el full d'1×, perd la cara. Ho dibuixa hd640/draw_characters.py (`DE_LLUNY`: dibuixa amb
+# `fn()` a ×LLUNY; a 480, None). ENCARA NO ES FA SERVIR: el motor escala tot el full amb un sol `artScale`, i una
+# figura petita dins el fotograma gran demana dividir l'escala de la regió per LLUNY (i llavors la velocitat de
+# caminar, el `collider` i el `talkPoint`, que en surten, s'espatllen). Cal un `artScale` per a les etiquetes `Lluny`
+# al motor; mentrestant, les robes de `lluny` de cada protagonista són buides.
+LLUNY = 0.56
+DE_LLUNY = None
+
+
+def _peus(feet, h):
+    """Els peus de disseny `feet` (fotograma de 87 d'alt) en una figura de `h` píxels reals d'alt."""
+    k = h / 87
+    return round((feet[0] + 0.5) * k - 0.5), round((feet[1] + 0.5) * k - 0.5)
+
+
+def _enganxa(img, w, h, feet):
+    """La figura de lluny (`img`, dibuixada a ×LLUNY) dins un fotograma de w×h, amb els peus de disseny `feet` al
+    mateix lloc que els de la gran."""
+    (X, Y), (x, y) = _peus(feet, h), _peus(feet, img.height)
+    out = Image.new('RGBA', (w, h), CLEAR)
+    out.alpha_composite(img, (X - x, Y - y))
+    return out
+
+
+def protagonist(cid, draw, feet=(25, 83), outfits=('',), lluny=()):
     """Protagonista de Suma Zero (hd/personatges.py): 49×87, peus a (25, 83), com a Ferro-9.
-    `outfits`: les robes (prefix de les etiquetes: `BarIdleD`...); `draw(f, walk, talk, roba)` les dibuixa."""
+    `outfits`: les robes (prefix de les etiquetes: `BarIdleD`...); `draw(f, walk, talk, roba)` les dibuixa.
+    `lluny`: les robes que també es dibuixen de lluny (etiquetes `Lluny<roba>IdleD`...; vegeu LLUNY)."""
     tags = []
     for o in outfits:
         d = (lambda f, walk=None, talk=False: draw(f, walk=walk, talk=talk)) if not o else \
             (lambda f, walk=None, talk=False, o=o: draw(f, walk=walk, talk=talk, roba=o))
         tags += quiet_tags(d, o)
+    w0, h0 = tags[0][1][0].size
+    for o in lluny if DE_LLUNY else ():
+        # la respiració (respira) es fa a la figura petita, abans d'enganxar-la: la clariana del pit és la seva
+        d = (lambda f, walk=None, talk=False, o=o: DE_LLUNY(lambda: draw(f, walk=walk, talk=talk, roba=o)))
+        tags += [(t, [_enganxa(img, w0, h0, feet) for img in imgs]) for t, imgs in quiet_tags(d, f'Lluny{o}')]
     anims = durations(tags, walk=(90, 100))
     w, h = tags[0][1][0].size
     fx, fy = feet
@@ -284,6 +317,9 @@ def vet(f, walk=None, talk=False, roba=''):
 
 
 VET_OUTFITS = tuple(personatges.VET_ROBA) + tuple(f'{o}Ulleres' for o in personatges.VET_ULLERES)
+# Les robes de la Vet de lluny (vegeu LLUNY): a bcmu_contenidor, la d'auditora (amb ulleres o sense) i, després de
+# l'escapada, la de casa. Buit fins que el motor ho pugui mostrar.
+VET_LLUNY = ()
 
 
 def secundari(cid):
@@ -376,7 +412,7 @@ def robot(cid='neta'):
 def main():
     """Els personatges de Suma Zero amb art definitiu (els altres surten amb la plantilla de Benne)."""
     protagonist('iri', personatges.iri, outfits=('', 'SenseAuriculars'))
-    protagonist('vet', vet, outfits=VET_OUTFITS)
+    protagonist('vet', vet, outfits=VET_OUTFITS, lluny=VET_LLUNY)
     gat('diu')
     for cid in personatges.NPCS:
         secundari(cid)

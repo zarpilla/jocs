@@ -373,12 +373,18 @@ def _eye(fg, x0, ey, inner_right, spec, closed):
 
 
 def _small_front_face(fg, p, spec):
-    """Una cara petita (el nen, a ×0,83): ulls de 2 píxels, com els de 480."""
+    """Una cara petita (el nen, a ×0,83; les figures de lluny): ulls de 2 píxels, com els de 480. Tancats (`closed`):
+    només la parpella, a la fila de l'iris; mirant a un costat (`mira`): l'iris dels dos ulls, a aquella banda."""
     S = spec['skin']
     HX, ey = face_xy(fg, p)
     eye, iris, brow = spec.get('eye', (34, 22, 30)), spec.get('iris', (70, 50, 40)), spec.get('brow', (40, 24, 28))
     lx, rx, nx = round(HX - 3.5), round(HX + 1.5), round(HX - 0.5)
     for x0, inner in ((lx, lx + 1), (rx, rx)):
+        if spec.get('closed'):
+            fg.rpx(x0, ey, eye, 0); fg.rpx(x0 + 1, ey, eye, 0)
+            continue
+        if spec.get('mira'):
+            inner = x0 if spec['mira'] < 0 else x0 + 1
         fg.rpx(x0, ey - 1, eye, 0); fg.rpx(x0 + 1, ey - 1, eye, 0)
         fg.rpx(inner, ey, iris, 0)
         fg.rpx(x0 + 1 if inner == x0 else x0, ey, C.EYE_W, 0)
@@ -591,6 +597,8 @@ def _ganxos(P):
     def vet_glasses(fg, p, spec):
         """Les ulleres de pasta de la cafeteria de l'aeroport: una vora gruixuda al voltant de cada ull."""
         FR = P.FRAME
+        if fg.k < 1:
+            return _vet_glasses_small(fg, p, FR)
         lx, rx, ey, _ = front_eyes(fg, p)
         if p.f == 'D':
             for x0 in (lx, rx):
@@ -611,6 +619,32 @@ def _ganxos(P):
                 fg.rpx(x, ey - 2, FR, 2.2)
                 fg.rpx(x, ey + 2, FR, 1.2)
             for y in range(ey - 1, ey + 2):
+                fg.rpx(ex - 2, y, FR, 1.6)
+                fg.rpx(ex + 2, y, FR, 1.6)
+            hx, hy = p.head
+            fg.rline(ex + 3, ey - 1, rx_(fg, hx + 2.5), ey - 1, FR, 1.2)       # la patilla, fins a l'orella
+
+    def _vet_glasses_small(fg, p, FR):
+        """Les mateixes ulleres a la cara petita (ulls de 2 píxels, vegeu _small_front_face): la vora al voltant de
+        cada ull, el pont i, de perfil, la patilla."""
+        HX, ey = face_xy(fg, p)
+        if p.f == 'D':
+            lx, rx = round(HX - 3.5), round(HX + 1.5)
+            for x0 in (lx, rx):
+                for x in range(x0 - 1, x0 + 3):
+                    fg.rpx(x, ey - 2, FR, 2.2)
+                    fg.rpx(x, ey + 1, FR, 1.2)
+                for y in (ey - 1, ey):
+                    fg.rpx(x0 - 1, y, FR, 1.6)
+                    fg.rpx(x0 + 2, y, FR, 1.4)
+            for x in range(lx + 3, rx - 1):
+                fg.rpx(x, ey - 1, FR, 1.4)                                       # el pont
+        elif p.f == 'L':
+            ex = round(HX - 3.5)
+            for x in range(ex - 2, ex + 3):
+                fg.rpx(x, ey - 2, FR, 2.2)
+                fg.rpx(x, ey + 1, FR, 1.2)
+            for y in (ey - 1, ey):
                 fg.rpx(ex - 2, y, FR, 1.6)
                 fg.rpx(ex + 2, y, FR, 1.6)
             hx, hy = p.head
@@ -874,6 +908,14 @@ def _stamp_at(img, pat, pat480, x0, y0, col, q=None):
         for dx, ch in enumerate(row):
             if ch == 'X':
                 _poke(img, X0 + dx, Y0 + dy, col, q)
+
+
+def _stamp_petit(img, pat480, x0, y0, col, k, q=None):
+    """L'estampat de 480 en una figura dibuixada a ×k < 1: cada píxel de disseny, al píxel real on cau."""
+    for dy, row in enumerate(pat480):
+        for dx, ch in enumerate(row):
+            if ch == 'X':
+                _poke(img, round((x0 + dx + 0.5) * k - 0.5), round((y0 + dy + 0.5) * k - 0.5), col, q)
 
 
 # ─── En Diu, a la mida nova ──────────────────────────────────────────────────
@@ -1189,9 +1231,14 @@ def install(art_scale=1):
         img = C.person(spec, facing, walk=walk, talk=talk)
         if facing in ('D', 'DL'):
             b = C.Pose(facing, walk, talk, stoop=spec.get('stoop', 0)).bob
+            k = FigK.k_escala or K
             for pattern, x, y, col in prints:
+                q = 'DL' if facing == 'DL' else None
+                if k < 1:                                   # una figura petita (de lluny): l'estampat de 480, a ×k
+                    _stamp_petit(img, pattern, x, y + b, col, k, q)
+                    continue
                 name = next(n for n in STAMPS if getattr(P, n) is pattern)
-                _stamp_at(img, STAMPS[name], pattern, x, y + b, col, 'DL' if facing == 'DL' else None)
+                _stamp_at(img, STAMPS[name], pattern, x, y + b, col, q)
         return img
 
     def npc(cid, facing, talk=False, walk=None):
@@ -1263,12 +1310,20 @@ def scaled_extra(extra):
     return o
 
 
+def de_lluny(fn):
+    """`fn()` (una figura) dibuixada directament a la mida de lluny, ×K×LLUNY de draw_characters (vegeu-hi LLUNY)."""
+    import draw_characters as D
+    with escala(K * D.LLUNY):
+        return fn()
+
+
 def main():
     install(ART_SCALE)
     import draw_characters as D
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parent / 'characters'
     D.OUT = out
     D.scaled_extra = scaled_extra
+    D.DE_LLUNY = de_lluny
     D.main()
 
 
