@@ -35,7 +35,19 @@ BOTTOM = 259                                       # la sala acaba aquí (a sota
 ZW = 300                                           # la paret del fons (la vidriera)
 HW = 200                                           # l'alçada del dibuix pla de les parets (fins al terra)
 XL = 215                                           # al dibuix pla, fins aquí és la paret de l'esquerra
-XR = 720                                           # on s'acaba la paret del fons per la dreta (fora de la pantalla)
+XR = 1100                                          # on s'acaba la paret del fons per la dreta (fora de la pantalla)
+ROOM_W = 960                                       # més ampla que la pantalla: la càmera la recorre
+PARALLAX = 1.25                                    # el primer pla es mou un 25% més de pressa que la sala
+SIGN_BOX = (10, 10, 190, 30)                       # (al dibuix pla de l'atrezzo) el rètol de les portes
+AD_BOX = (10, 40, 130, 140)                        #   el panell publicitari
+PHONE_BOX = (10, 150, 96, 200)                     #   els telèfons
+WIN2 = (470, 720, 30, 160)                         # la segona vidriera, a la paret del fons: x0, x1, y0, y1
+SEATS2 = (600, 270, -0.06)                         # la segona fila de seients: x, z del centre, gir
+SIGN = (590, 166, 220)                             # el rètol penjat: x del centre, y de baix, z
+AD_Z = (-50, 20)                                   # el panell, a la paret de l'esquerra: z0, z1
+PHONE_Z = -130                                     # els telèfons, a la paret de l'esquerra: z del primer
+DAWN_T = [(10, 12, 18), (18, 20, 30), (30, 28, 50), (60, 54, 104), (100, 76, 120), (150, 100, 126), (200, 130, 120),
+          (236, 170, 120), (252, 210, 150)]          # la pista (fosca) i el cel de l'alba
 DESK3 = (46, 72, 124, 250, 61)                     # el taulell de facturació: x0, x1, z0, z1, alt
 SEATS = (150, 272, 0.12)                           # la fila de seients: x, z del centre, gir
 TAULA = (372, 196, 26, 66)                         # la taula alta: x, z, radi, alçada
@@ -63,7 +75,7 @@ GARITA = (_wx(440), _wx(568), 30)                  # la garita: x0, x1, quant so
 GAR_TOP = _y(149)                                  # l'alçada del taulell de la garita
 CAFE3 = (_wx(CAFE[0]), _wx(CAFE[2] + 1), 40)       # la màquina de cafè: x0, x1, fons
 
-CAM = Camera(pos=(410, 200, -240), yaw=-0.42, pitch=0.2, f=470, centre=(320, 84))
+CAM = Camera(pos=(440, 205, -300), yaw=-0.36, pitch=0.17, f=450, centre=(ROOM_W // 2, 92))
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)  # (la llum és la del món: la de l'Escena)
 TEXL = Light(ambient=-0.1, vignette=None, floor_fade=None)   # la dels dibuixos plans (les textures): neutra
@@ -173,7 +185,46 @@ def _ulleres():
 
 @functools.lru_cache(maxsize=None)
 def _textures():
-    return {'parets': _parets(), 'coses': _coses()}
+    return {'parets': _parets(), 'coses': _coses(), 'atrezzo': _atrezzo_tex()}
+
+
+@functools.lru_cache(maxsize=None)
+def _atrezzo_tex():
+    """El que omple els extrems de la terminal (la sala és més ampla que la pantalla), dibuixat pla: el rètol de les
+    portes d'embarcament, el panell publicitari del banc i els telèfons de la paret."""
+    from hd.rooms.comu import obox, text, text_width
+    from hd.rooms.bcmu import NAVYB
+    from hd640.rooms.bcmu import logo
+    cv = Canvas(light=TEXL, transparent=True)
+    # el rètol que penja: «PORTES B1-B14» i la fletxa
+    x0, y0, x1, y1 = SIGN_BOX
+    obox(cv, x0, y0, x1, y1, BLUE, 3.0)
+    cv.hline(x0 + 2, x1 - 2, y0 + 2, BLUE, 3.8)
+    t = 'PORTES B1-B14'
+    text(cv, t, x0 + 8, y0 + 7, [(240, 244, 250)], 0, flat=(240, 244, 250))
+    ax = x0 + 14 + text_width(t)
+    for k in range(7):
+        cv.hline(ax + k, ax + 12 - k, (y0 + y1) // 2 - 6 + k, [(250, 210, 80)], 0, lit=0)
+        cv.hline(ax + k, ax + 12 - k, (y0 + y1) // 2 + 6 - k, [(250, 210, 80)], 0, lit=0)
+    cv.rect(ax - 8, (y0 + y1) // 2 - 1, ax + 4, (y0 + y1) // 2 + 1, [(250, 210, 80)], 0, lit=0)
+    # el panell publicitari, encès: el logotip del banc i el lema
+    x0, y0, x1, y1 = AD_BOX
+    obox(cv, x0, y0, x1, y1, CHROME, 3.0)
+    cv.rect(x0 + 3, y0 + 3, x1 - 3, y1 - 3, NAVYB, lambda x, y: 3.0 + 1.6 * (1 - abs(y - (y0 + y1) / 2) / ((y1 - y0) / 2)), lit=0)
+    logo(cv, (x0 + x1) // 2, y0 + 30, k=3, lvl=4.4, lit=0.0)
+    for t, yy in (('BCMU', y0 + 56), ('EL FUTUR', y0 + 72), ('ÉS TEU', y0 + 84)):
+        text(cv, t, (x0 + x1) // 2 - text_width(t) // 2, yy, [(250, 220, 130)], 0, flat=(250, 220, 130))
+    # tres telèfons de paret: la caixa, l'auricular, el teclat
+    x0, y0, x1, y1 = PHONE_BOX
+    for k in range(3):
+        px = x0 + k * 30
+        obox(cv, px, y0, px + 26, y1, [(30, 32, 38), (60, 64, 72), (100, 106, 116), (150, 156, 166), (200, 206, 214)], 2.4)
+        cv.rect(px + 3, y0 + 4, px + 8, y0 + 34, [(10, 10, 12), (30, 30, 34), (60, 60, 66)], 1.4)            # l'auricular
+        for r in range(4):
+            for c in range(3):
+                cv.rect(px + 11 + c * 4, y0 + 10 + r * 5, px + 13 + c * 4, y0 + 12 + r * 5, CHROME, 4.0)
+        cv.rect(px + 11, y0 + 3, px + 23, y0 + 7, [(20, 60, 30), (60, 200, 90)], 1.0, lit=0)               # la pantalleta
+    return cv.img
 
 
 # ─── Les superfícies ────────────────────────────────────────────────────────
@@ -232,6 +283,66 @@ def _ombra(e, sid, cx, cz, rx, rz, k=0.5):
              lambda s, t: k * min(1.0, max(0.0, 1 - ((s - rx) / rx) ** 2 - ((t - rz) / rz) ** 2) * 1.6))
 
 
+def _seients(e, sid, seats, diari=False):
+    """Una fila de cinc seients de plàstic blau, amb la barra i els peus de cromat (i el diari, si de cas)."""
+    sx, sz, sa = seats
+    P = _en_caixa(sx, sz, sa)
+    _ombra(e, 'ombra_' + sid, sx, sz + 2, 92, 16, 0.5)
+    e.caixa_girada(sid, *_xz(P(0, 0, 4)), 164, 4, 3, sa, CHROME, 3.6, y0=15)                 # la barra
+    for lx in (-72, 0, 72):
+        q = P(lx, 0, 4)
+        e.caixa(sid, q[0] - 1, q[0] + 1, 0, 15, q[2] - 1, q[2] + 1, CHROME, 3.0)
+    for i in range(5):
+        lx = -64 + i * 32
+        e.caixa_girada(sid, *_xz(P(lx, 0, 9)), 28, 4, 22, sa, BLUE, 2.4, y0=22,
+                       cares={'davant': {'ramp': BLUE, 'lvl': lambda s, t, P_: 2.6 + (0.8 if t < 3 else 0)
+                                         + (0.3 if (int(s) + int(t)) % 5 == 0 else 0)}})
+        e.caixa_girada(sid, *_xz(P(lx, 0, 0)), 28, 18, 5, sa, BLUE, 2.8, y0=17,
+                       cares={'dalt': {'ramp': BLUE, 'lvl': lambda s, t, P_: 3.4 - t * 0.04}})
+        if i < 4:
+            q = P(lx + 16, 0, 0)
+            e.caixa(sid, q[0] - 1.2, q[0] + 1.2, 22, 30, q[2] - 6, q[2] + 6, CHROME, 3.6)
+    if diari:
+        e.quad(sid, P(-8, 22.4, 5), P(10, 22.4, 4), P(10, 22.4, -4), P(-8, 22.4, -3), ramp=SHEET,
+               lvl=lambda s, t, P_: 4.2 - (1.4 if int(t) % 3 == 0 and 2 < s < 15 else 0))              # el diari
+
+
+def atrezzo(e, tex):
+    """Els extrems de la terminal: a la paret de l'esquerra, el panell del banc i els telèfons; a la paret del fons,
+    a la dreta, la segona vidriera (l'alba sobre la pista), la segona fila de seients i el rètol de les portes."""
+    at = tex['atrezzo']
+    # el panell publicitari, a la paret de l'esquerra, de cara al passadís (i la seva claror a la paret)
+    za, zb = AD_Z
+    e.caixa('panell', 0, 6, 70, 150, za, zb, CHROME, 2.6, cares={'dreta': {'tex': (at, AD_BOX)}})
+    # els telèfons
+    zp = PHONE_Z
+    e.caixa('telefons', 0, 7, 70, 116, zp, zp + (PHONE_BOX[2] - PHONE_BOX[0]) * 0.55, SLATE, 2.2,
+            cares={'dreta': {'tex': (at, PHONE_BOX)}})
+    # la segona vidriera: el cel de l'alba, la pista amb les llums i els travessers
+    x0, x1, y0, y1 = WIN2
+    hor = y0 + 34
+    def vidre(s, t, P_):
+        y = y1 - t
+        if (int(s) % 62) < 3 or t < 3 or t > (y1 - y0) - 3:
+            return -9                                                 # (els travessers: es pinten a part)
+        if y < hor:
+            k = 1.0 if (y > hor - 6 and int(s * 0.7) % 23 == 0) else 0.0      # les llums de la pista
+            return 0.6 + 0.5 * (y - y0) / 34 + k * 7
+        return 8.0 - 6.4 * min(1.0, (y - hor) / (y1 - hor)) ** 0.8 + (hr(int(s) // 9, int(t) // 3, 41) - 0.5) * 0.2
+    e.quad('vidriera2', (x0, y1, ZW - 0.3), (x1, y1, ZW - 0.3), (x1, y0, ZW - 0.3), (x0, y0, ZW - 0.3),
+           ramp=DAWN_T, lvl=lambda s, t, P_: max(0.0, vidre(s, t, P_)))
+    e.quad('vidriera2', (x0, y1, ZW - 0.4), (x1, y1, ZW - 0.4), (x1, y0, ZW - 0.4), (x0, y0, ZW - 0.4), ramp=CHROME,
+           lvl=3.2, forma=lambda s, t: (int(s) % 62) < 3 or t < 3 or t > (y1 - y0) - 3)
+    # la segona fila de seients
+    _seients(e, 'seients2', SEATS2)
+    # el rètol de les portes, penjat del sostre amb dos cables
+    cx, cy, cz = SIGN
+    w, h = (SIGN_BOX[2] - SIGN_BOX[0]) * 0.55, (SIGN_BOX[3] - SIGN_BOX[1]) * 0.55
+    e.caixa('retol', cx - w / 2, cx + w / 2, cy, cy + h, cz - 2, cz + 2, BLUE, 2.4, cares={'davant': {'tex': (at, SIGN_BOX)}})
+    for dx in (-w / 2 + 8, w / 2 - 8):
+        e.cable('retol', [(cx + dx, cy + h, cz), (cx + dx, HW + 40, cz)], CHROME, 2.6, gruix=1.0)
+
+
 def escena(cv, tex, estat=frozenset()):
     """Tota la sala, de lluny a prop. `estat`: els decorats que hi són ('ulleres'). → l'Escena."""
     e = Escena(cv, CAM, LLUMS, ambient=-0.6)
@@ -283,26 +394,8 @@ def escena(cv, tex, estat=frozenset()):
     e.caixa('cafe', cx0, cx1, 0, _y(CAFE[1]), ZW - cd, ZW, VEND, 2.4,
             cares={'davant': {'tex': (coses, (CAFE[0], CAFE[1], CAFE[2] + 1, CAFE[3] + 1))},
                    'dalt': {'ramp': VEND, 'lvl': 3.0}, 'esquerra': {'ramp': VEND, 'lvl': 1.8}})
-    # la fila de seients, davant la vidriera, una mica girada
-    sx, sz, sa = SEATS
-    P = _en_caixa(sx, sz, sa)
-    _ombra(e, 'ombra_seients', sx, sz + 2, 92, 16, 0.5)
-    e.caixa_girada('seients', *_xz(P(0, 0, 4)), 164, 4, 3, sa, CHROME, 3.6, y0=15)                 # la barra
-    for lx in (-72, 0, 72):
-        q = P(lx, 0, 4)
-        e.caixa('seients', q[0] - 1, q[0] + 1, 0, 15, q[2] - 1, q[2] + 1, CHROME, 3.0)
-    for i in range(5):
-        lx = -64 + i * 32
-        e.caixa_girada('seients', *_xz(P(lx, 0, 9)), 28, 4, 22, sa, BLUE, 2.4, y0=22,
-                       cares={'davant': {'ramp': BLUE, 'lvl': lambda s, t, P_: 2.6 + (0.8 if t < 3 else 0)
-                                         + (0.3 if (int(s) + int(t)) % 5 == 0 else 0)}})
-        e.caixa_girada('seients', *_xz(P(lx, 0, 0)), 28, 18, 5, sa, BLUE, 2.8, y0=17,
-                       cares={'dalt': {'ramp': BLUE, 'lvl': lambda s, t, P_: 3.4 - t * 0.04}})
-        if i < 4:
-            q = P(lx + 16, 0, 0)
-            e.caixa('seients', q[0] - 1.2, q[0] + 1.2, 22, 30, q[2] - 6, q[2] + 6, CHROME, 3.6)
-    e.quad('seients', P(-8, 22.4, 5), P(10, 22.4, 4), P(10, 22.4, -4), P(-8, 22.4, -3), ramp=SHEET,
-           lvl=lambda s, t, P_: 4.2 - (1.4 if int(t) % 3 == 0 and 2 < s < 15 else 0))                  # el diari
+    # la fila de seients, davant la vidriera, una mica girada (amb el diari)
+    _seients(e, 'seients', SEATS, diari=True)
     # el taulell de facturació, separat de la paret de l'esquerra: el frontal blau (el dibuix pla), la tapa i els
     # monitors (de cara al passadís)
     dx0, dx1, dz0, dz1, dh = DESK3
@@ -336,6 +429,9 @@ def escena(cv, tex, estat=frozenset()):
     if 'ulleres' in estat:
         e.quad('ulleres', (tx - 16, th + 0.4, tz + 2), (tx + 12, th + 0.4, tz + 2), (tx + 12, th + 0.4, tz - 8),
                (tx - 16, th + 0.4, tz - 8), tex=(_ulleres(), (0, 0, 35, 12)))
+    atrezzo(e, tex)
+    if 'sense_primer_pla' in estat:
+        return e
     # primer pla: un pilar de formigó i un carro de maletes, en silueta
     e.caixa('primer_pla', 440, 486, 0, 400, -50, -6, FOSC, 2.0,
             cares={'esquerra': {'ramp': FOSC, 'lvl': lambda s, t, P_: 2.8 - (1.0 if int(t) % 48 == 0 else 0)},
@@ -395,9 +491,9 @@ def _fx():
 
 
 def _render(estat=frozenset(), tex=None):
-    cv = Canvas(light=LIGHT)
+    cv = Canvas(ROOM_W, light=LIGHT)
     e = escena(cv, tex or _textures(), estat)
-    cv.rect(0, BOTTOM + 1, W - 1, H - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
+    cv.rect(0, BOTTOM + 1, ROOM_W - 1, H - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
     return cv.img, e
 
 
@@ -416,9 +512,28 @@ def _base_llum():
     return _amb_llum(_base()[0])
 
 
+@functools.lru_cache(maxsize=None)
+def _fons_llum():
+    """El fons de la sala sense el primer pla (que és una capa a part, amb parallax)."""
+    return _amb_llum(_render(estat=frozenset({'sense_primer_pla'}))[0])
+
+
 def bg(cv):
-    cv.img.paste(_base_llum())
+    cv.img.paste(_fons_llum())
     cv.P = cv.img.load()
+
+
+def _capa_primer_pla():
+    """El primer pla, amb la llum, retallat de la sala sencera (la capa del davant que fa parallax)."""
+    from PIL import Image
+    full, (_, e) = _base_llum(), _base()
+    out = Image.new('RGBA', full.size, (0, 0, 0, 0))
+    src, dst, ids, amo, w = full.load(), out.load(), e.ids, e.amo, e.cv.w
+    for y in range(BOTTOM + 1):
+        for x in range(full.width):
+            if ids[amo[y * w + x]] == 'primer_pla':
+                dst[x, y] = src[x, y]
+    return out
 
 
 def _fotograma(capes):
@@ -501,7 +616,10 @@ ZG = ZW - GARITA[2] - 8                                 # davant la garita, on s
 # Capes del davant: el primer pla (sempre davant), la garita (l'empleat hi és darrere; qui hi és davant, la tapa) i
 # la taula alta (s'hi passa per darrere).
 FRONT = [
-    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+    # el primer pla: una capa a part (el fons no el porta) que es mou més de pressa que la sala; alineada a mig recorregut
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'image': _capa_primer_pla, 'baseline': 999, 'zIndex': 20,
+     'parallaxDepth': PARALLAX, 'x': round((PARALLAX - 1) * (ROOM_W - W) / 2 / PARALLAX)},
+    {'id': 'davant_seients2', 'mask': _amo({'seients2'}), 'baseline': _p(SEATS2[0], SEATS2[1] - 16)[1], 'zIndex': 20},
     # (la línia base, la de la vora més llunyana d'on es pot parar la gent davant la garita: l'empleat queda més amunt)
     {'id': 'davant_garita', 'mask': _amo({'garita'}), 'baseline': _p(GARITA[0], ZG)[1] + 1, 'zIndex': 20},
     {'id': 'davant_taula', 'mask': _amo({'taula'}), 'baseline': _p(TAULA[0], TAULA[1] - 6)[1], 'zIndex': 20},
@@ -513,17 +631,26 @@ FRONT = [
 def _rect_mon(*Ps):
     pts = [CAM.projecta(P) for P in Ps]
     return (max(0, round(min(p[0] for p in pts))), max(0, round(min(p[1] for p in pts))),
-            min(W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
+            min(ROOM_W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
 
 
 # El terra on es camina (al món): de la porta de personal (pel passadís de darrere el taulell) a la cafeteria, davant
 # el taulell, els seients i la garita, i per darrere de la taula alta; el davant, fins on l'escala arriba a ≈1,2.
 WALK_MON = [(8, 40), (8, 136), (40, 136), (40, 112), (82, 110), (82, 252), (232, 258), (240, ZG), (346, ZG),
-            (352, 250), (440, 248), (470, 236), (470, 178), (350, 122), (240, 77), (120, 24), (60, 20)]
-_WALK = [_p(x, z) for x, z in WALK_MON]
-_V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
+            (352, 250), (440, 248), (470, 236), (530, 240), (780, 240), (780, -60), (60, -60), (60, 20)]
 
 
+def _talla(poly, a, b, c):
+    """Retalla el polígon (de pantalla) pel semiplà a·u + b·v + c ≥ 0."""
+    out = []
+    for P, Q in zip(poly, poly[1:] + poly[:1]):
+        fp, fq = a * P[0] + b * P[1] + c, a * Q[0] + b * Q[1] + c
+        if fp >= 0:
+            out.append(P)
+        if (fp >= 0) != (fq >= 0):
+            k = fp / (fp - fq)
+            out.append((P[0] + (Q[0] - P[0]) * k, P[1] + (Q[1] - P[1]) * k))
+    return out
 def _escala_a(v):
     """L'escala d'un personatge amb els peus a la y de pantalla `v` (al terra, la profunditat només depèn de v)."""
     lo, hi = -200.0, 2000.0
@@ -535,6 +662,25 @@ def _escala_a(v):
             hi = z
     return CAM.escala((260, 0, (lo + hi) / 2))
 
+
+def _v_escala(k):
+    """La y de pantalla on un personatge fa escala `k`."""
+    lo, hi = 0.0, float(BOTTOM)
+    for _ in range(40):
+        m = (lo + hi) / 2
+        if _escala_a(m) < k:
+            lo = m
+        else:
+            hi = m
+    return lo
+
+
+# (retallat per on un personatge passaria d'escala 1,2 i per les vores de la sala)
+_WALK = [_p(x, z) for x, z in WALK_MON]
+for _a, _b, _c in ((1, 0, -4), (-1, 0, ROOM_W - 5), (0, -1, min(BOTTOM - 4, _v_escala(1.2)))):
+    _WALK = _talla(_WALK, _a, _b, _c)
+_WALK = [(round(u), round(v)) for u, v in _WALK]
+_V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 
 _TR = TAULA
 
@@ -559,7 +705,7 @@ GEOMETRIA = {
                                   'stretch': 0.7, 'reach': 200}},
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
-                 'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+                 'points': [(0, _V_FONS - 2), (ROOM_W - 1, _V_FONS - 2), (ROOM_W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
     # la llum de la sala sobre els personatges, en temps d'execució
     'characterLights': {
         'ambient': '#a4acbc',                                                           # fluorescents, freds

@@ -4,7 +4,7 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "rotated": false,
@@ -12,179 +12,179 @@
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 1.aseprite": {
       "frame": {
-        "x": 1461,
+        "x": 1600,
         "y": 0,
-        "w": 177,
-        "h": 179
+        "w": 243,
+        "h": 211
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 352,
-        "y": 11,
-        "w": 177,
-        "h": 179
+        "x": 422,
+        "y": 1,
+        "w": 243,
+        "h": 211
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 2.aseprite": {
       "frame": {
-        "x": 2562,
-        "y": 360,
-        "w": 23,
-        "h": 5
+        "x": 1002,
+        "y": 551,
+        "w": 21,
+        "h": 4
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 460,
-        "y": 135,
-        "w": 23,
-        "h": 5
+        "x": 567,
+        "y": 139,
+        "w": 21,
+        "h": 4
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 3.aseprite": {
       "frame": {
-        "x": 2251,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 0,
+        "y": 360,
+        "w": 352,
+        "h": 191
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 209,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 236,
+        "y": 1,
+        "w": 352,
+        "h": 191
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 4.aseprite": {
       "frame": {
-        "x": 2523,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 352,
+        "y": 360,
+        "w": 352,
+        "h": 191
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 209,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 236,
+        "y": 1,
+        "w": 352,
+        "h": 191
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 5.aseprite": {
       "frame": {
-        "x": 2795,
-        "y": 0,
-        "w": 272,
+        "x": 3411,
+        "y": 360,
+        "w": 352,
         "h": 167
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 209,
-        "y": 0,
-        "w": 272,
+        "x": 236,
+        "y": 1,
+        "w": 352,
         "h": 167
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 6.aseprite": {
       "frame": {
-        "x": 3067,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 947,
+        "y": 360,
+        "w": 352,
+        "h": 169
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 209,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 236,
+        "y": 1,
+        "w": 352,
+        "h": 169
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 7.aseprite": {
       "frame": {
-        "x": 3339,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 1299,
+        "y": 360,
+        "w": 352,
+        "h": 169
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 209,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 236,
+        "y": 1,
+        "w": 352,
+        "h": 169
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 8.aseprite": {
       "frame": {
-        "x": 3611,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 1651,
+        "y": 360,
+        "w": 352,
+        "h": 169
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 209,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 236,
+        "y": 1,
+        "w": 352,
+        "h": 169
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
@@ -192,154 +192,154 @@
     "aeroport_terminal 9.aseprite": {
       "frame": {
         "x": 0,
-        "y": 360,
-        "w": 272,
+        "y": 551,
+        "w": 352,
         "h": 167
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 209,
-        "y": 0,
-        "w": 272,
+        "x": 236,
+        "y": 1,
+        "w": 352,
         "h": 167
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 10.aseprite": {
       "frame": {
-        "x": 272,
+        "x": 2003,
         "y": 360,
-        "w": 272,
-        "h": 167
+        "w": 352,
+        "h": 169
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 209,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 236,
+        "y": 1,
+        "w": 352,
+        "h": 169
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 11.aseprite": {
       "frame": {
-        "x": 544,
+        "x": 2355,
         "y": 360,
-        "w": 272,
-        "h": 167
+        "w": 352,
+        "h": 169
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 209,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 236,
+        "y": 1,
+        "w": 352,
+        "h": 169
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 12.aseprite": {
       "frame": {
-        "x": 816,
+        "x": 2707,
         "y": 360,
-        "w": 272,
-        "h": 167
+        "w": 352,
+        "h": 169
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 209,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 236,
+        "y": 1,
+        "w": 352,
+        "h": 169
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 13.aseprite": {
       "frame": {
-        "x": 1088,
+        "x": 3059,
         "y": 360,
-        "w": 272,
-        "h": 167
+        "w": 352,
+        "h": 169
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 209,
-        "y": 0,
-        "w": 272,
-        "h": 167
+        "x": 236,
+        "y": 1,
+        "w": 352,
+        "h": 169
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 14.aseprite": {
       "frame": {
-        "x": 1360,
-        "y": 360,
-        "w": 272,
+        "x": 352,
+        "y": 551,
+        "w": 352,
         "h": 167
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 209,
-        "y": 0,
-        "w": 272,
+        "x": 236,
+        "y": 1,
+        "w": 352,
         "h": 167
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 15.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 0,
-        "w": 181,
-        "h": 183
+        "x": 704,
+        "y": 360,
+        "w": 243,
+        "h": 186
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 90,
-        "y": 0,
-        "w": 181,
-        "h": 183
+        "x": 236,
+        "y": 1,
+        "w": 243,
+        "h": 186
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 16.aseprite": {
       "frame": {
-        "x": 2585,
-        "y": 360,
+        "x": 1023,
+        "y": 551,
         "w": 1,
         "h": 1
       },
@@ -352,204 +352,204 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 17.aseprite": {
       "frame": {
-        "x": 1638,
+        "x": 1843,
         "y": 0,
-        "w": 159,
-        "h": 171
+        "w": 209,
+        "h": 207
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 414,
-        "y": 33,
-        "w": 159,
-        "h": 171
+        "x": 456,
+        "y": 5,
+        "w": 209,
+        "h": 207
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 18.aseprite": {
       "frame": {
-        "x": 1797,
+        "x": 2052,
         "y": 0,
-        "w": 152,
-        "h": 171
+        "w": 190,
+        "h": 207
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 421,
-        "y": 33,
-        "w": 152,
-        "h": 171
+        "x": 475,
+        "y": 5,
+        "w": 190,
+        "h": 207
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 19.aseprite": {
       "frame": {
-        "x": 1949,
+        "x": 2242,
         "y": 0,
-        "w": 141,
-        "h": 171
+        "w": 268,
+        "h": 207
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 432,
-        "y": 33,
-        "w": 141,
-        "h": 171
+        "x": 479,
+        "y": 5,
+        "w": 268,
+        "h": 207
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 20.aseprite": {
       "frame": {
-        "x": 2090,
+        "x": 2510,
         "y": 0,
-        "w": 161,
-        "h": 169
+        "w": 195,
+        "h": 207
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 412,
-        "y": 37,
-        "w": 161,
-        "h": 169
+        "x": 470,
+        "y": 5,
+        "w": 195,
+        "h": 207
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 21.aseprite": {
       "frame": {
-        "x": 1632,
-        "y": 360,
-        "w": 152,
-        "h": 161
+        "x": 2705,
+        "y": 0,
+        "w": 195,
+        "h": 207
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 421,
-        "y": 45,
-        "w": 152,
-        "h": 161
+        "x": 470,
+        "y": 5,
+        "w": 195,
+        "h": 207
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 22.aseprite": {
       "frame": {
-        "x": 1784,
-        "y": 360,
-        "w": 151,
-        "h": 159
+        "x": 2900,
+        "y": 0,
+        "w": 253,
+        "h": 207
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 426,
-        "y": 47,
-        "w": 151,
-        "h": 159
+        "x": 492,
+        "y": 5,
+        "w": 253,
+        "h": 207
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 23.aseprite": {
       "frame": {
-        "x": 1935,
-        "y": 360,
-        "w": 151,
-        "h": 153
+        "x": 3153,
+        "y": 0,
+        "w": 181,
+        "h": 207
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 422,
-        "y": 53,
-        "w": 151,
-        "h": 153
+        "x": 484,
+        "y": 5,
+        "w": 181,
+        "h": 207
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 24.aseprite": {
       "frame": {
-        "x": 2086,
-        "y": 360,
-        "w": 155,
-        "h": 153
+        "x": 3334,
+        "y": 0,
+        "w": 181,
+        "h": 207
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 418,
-        "y": 53,
-        "w": 155,
-        "h": 153
+        "x": 484,
+        "y": 5,
+        "w": 181,
+        "h": 207
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 25.aseprite": {
       "frame": {
-        "x": 2241,
-        "y": 360,
-        "w": 139,
-        "h": 153
+        "x": 3515,
+        "y": 0,
+        "w": 261,
+        "h": 207
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 434,
-        "y": 53,
-        "w": 139,
-        "h": 153
+        "x": 484,
+        "y": 5,
+        "w": 261,
+        "h": 207
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 26.aseprite": {
       "frame": {
-        "x": 2585,
-        "y": 360,
+        "x": 1023,
+        "y": 551,
         "w": 1,
         "h": 1
       },
@@ -562,15 +562,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 27.aseprite": {
       "frame": {
-        "x": 2585,
-        "y": 360,
+        "x": 1023,
+        "y": 551,
         "w": 1,
         "h": 1
       },
@@ -583,15 +583,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 28.aseprite": {
       "frame": {
-        "x": 2585,
-        "y": 360,
+        "x": 1023,
+        "y": 551,
         "w": 1,
         "h": 1
       },
@@ -604,70 +604,91 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 29.aseprite": {
       "frame": {
-        "x": 2380,
-        "y": 360,
-        "w": 122,
-        "h": 121
+        "x": 704,
+        "y": 551,
+        "w": 102,
+        "h": 101
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 351,
-        "y": 52,
-        "w": 122,
-        "h": 121
+        "x": 477,
+        "y": 72,
+        "w": 102,
+        "h": 101
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 30.aseprite": {
       "frame": {
-        "x": 2502,
-        "y": 360,
-        "w": 60,
-        "h": 81
+        "x": 806,
+        "y": 551,
+        "w": 47,
+        "h": 67
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 446,
-        "y": 127,
-        "w": 60,
-        "h": 81
+        "x": 556,
+        "y": 132,
+        "w": 47,
+        "h": 67
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "aeroport_terminal 31.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 853,
+        "y": 551,
+        "w": 149,
+        "h": 56
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 738,
+        "y": 154,
+        "w": 149,
+        "h": 56
       },
       "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "aeroport_terminal 32.aseprite": {
+      "frame": {
+        "x": 960,
+        "y": 0,
         "w": 640,
+        "h": 260
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 116,
+        "y": 0,
+        "w": 640,
+        "h": 260
+      },
+      "sourceSize": {
+        "w": 960,
         "h": 360
       },
       "duration": 100
@@ -679,8 +700,8 @@
     "image": "aeroport_terminal.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3883,
-      "h": 527
+      "w": 3776,
+      "h": 718
     },
     "scale": "1",
     "frameTags": [
@@ -755,9 +776,16 @@
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_seients2",
         "from": 31,
         "to": 31,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 32,
+        "to": 32,
         "direction": "forward",
         "color": "#000000ff"
       }

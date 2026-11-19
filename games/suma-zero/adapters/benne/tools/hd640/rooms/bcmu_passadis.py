@@ -38,9 +38,14 @@ HW = PL.FLOOR_Y - FY0                              # l'alçada de les parets: 18
 XC = 100                                           # al dibuix pla, la cantonada: a l'esquerra, la paret de l'escala
 LL = 636                                           # l'amplada de la paret llisa (12 plafons de l'arrimador)
 XR = W - XC + 2 * LL                               # on s'acaba la paret llarga, a la dreta (fora de la pantalla)
+ROOM_W = 960                                       # més ampla que la pantalla: la càmera la recorre
+PARALLAX = 1.25                                    # el primer pla es mou un 25% més de pressa que la sala
+BIE = (130, 166)                                   # l'armari de la mànega, a la paret de l'escala: z0, z1
+FICUS2 = (604, 268)                                # el ficus del test, a la dreta (x, z)
+PLANOL = (636, 92)                                 # el plànol d'evacuació, a la paret llarga (x, y de baix)
 BENCH = (236, 176, 92, 32, 0.38)                   # el banc: x, z del centre, llarg, fons, gir
 PLANT = (44, 30)                                   # la jardinera del primer pla (x, z)
-COLUMN = (560, 40)                                 # la columna del primer pla (x, z)
+COLUMNS = ((160, -100), (630, 60))                               # les columnes del primer pla (x, z)
 CARTELL = (52, 268)                                # el cartell de terra (x, z dels peus)
 GALLEDA = (184, 276)                               # la galleda (x, z)
 
@@ -67,7 +72,7 @@ def _fw(fx, fy):
     return (_w(fx), _y(fy), ZW)
 
 
-CAM = Camera(pos=(540, 200, -160), yaw=-0.55, pitch=0.22, f=420, centre=(320, 88))
+CAM = Camera(pos=(540, 200, -160), yaw=-0.55, pitch=0.22, f=420, centre=(ROOM_W // 2, 88))
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)  # (la llum és la del món: la de l'Escena)
 TUBS = [(_w(x), HW - 4, ZW - 60) for x in PL.TUBES] + [(-40 + 0, HW - 4, ZW - 180), (720, HW - 4, ZW - 60)]
@@ -131,6 +136,20 @@ def _textures():
 
 
 @functools.lru_cache(maxsize=None)
+@functools.lru_cache(maxsize=None)
+def _ficus_clar_img():
+    """El ficus del test de la dreta: el mateix dibuix, il·luminat (no és silueta)."""
+    from PIL import Image
+    img = _ficus_img().copy()
+    px = img.load()
+    for y in range(img.height):
+        for x in range(img.width):
+            r, g, b, a = px[x, y]
+            if a:
+                px[x, y] = (min(255, r * 3 + 6), min(255, g * 3 + 10), min(255, b * 3 + 6), a)
+    return img
+
+
 def _ficus_img():
     """Un ficus en silueta (el primer pla): tiges fosques i una copa espessa de fulles allargades, amb el cantell de
     la dreta que agafa la llum del passadís. A escala 1 (fa 130 d'alt), sobre transparent; el peu, a (60, 129)."""
@@ -188,8 +207,36 @@ def _terra(e, zn):
            forma=lambda s, t: _or(s - 400, ZW - t))
 
 
+def atrezzo(e):
+    """El que omple els dos extrems del passadís (la sala és més ampla que la pantalla): a la paret de l'escala,
+    l'armari de la mànega; a la paret llarga, a la dreta, un ficus en un test i el plànol d'evacuació."""
+    RED = [(40, 6, 10), (80, 14, 18), (130, 24, 26), (180, 40, 36), (220, 70, 60), (246, 120, 100)]
+    VIDRE = [(30, 40, 50), (60, 80, 96), (110, 130, 146), (170, 186, 196), (220, 230, 236)]
+    BLANC = [(60, 62, 66), (120, 124, 128), (180, 184, 186), (220, 222, 222), (244, 244, 240)]
+    TEST = [(24, 20, 18), (44, 36, 30), (70, 58, 46), (100, 84, 66), (130, 112, 90)]
+    # l'armari de la mànega (BIE): caixa vermella a la paret de l'escala, amb el vidre i el rodet a dins
+    z0, z1 = BIE
+    e.caixa('bie', 0, 9, 56, 122, z0, z1, RED, 3.0,
+            cares={'dreta': {'ramp': RED, 'lvl': lambda s, t, P: 3.8 if s < 2.5 or s > z1 - z0 - 2.5 or t < 2.5 or t > 63.5 else 2.6}})
+    e.quad('bie', (9.2, 116, z0 + 4), (9.2, 116, z1 - 4), (9.2, 62, z1 - 4), (9.2, 62, z0 + 4), ramp=VIDRE,
+           lvl=lambda s, t, P: 1.0 + (2.6 if abs(s - t * 0.6 - 4) < 2 else 0) + (1.2 if ((s - 18) ** 2 + (t - 22) ** 2) < 140 and ((s - 18) ** 2 + (t - 22) ** 2) > 60 else 0))
+    # el ficus, en un test (s'hi passa per darrere)
+    fx, fz = FICUS2
+    e.caixa_girada('ficus2', fx, fz, 30, 30, 34, 0.2, TEST, 2.4,
+                   cares={'dalt': {'ramp': TEST, 'lvl': 0.8}, 'davant': {'ramp': TEST, 'lvl': lambda s, t, P: 2.8 + (0.8 if t < 3 else 0)}})
+    e.sprite('ficus2', _ficus_clar_img(), (60, 129), (fx, 30, fz), escala_img=0.85)
+    # el plànol d'evacuació: un marc blanc amb el plànol verd i el punt vermell («sou aquí»)
+    ex, ey = PLANOL
+    e.quad('planol', (ex, ey + 30, ZW - 0.5), (ex + 40, ey + 30, ZW - 0.5), (ex + 40, ey, ZW - 0.5), (ex, ey, ZW - 0.5),
+           ramp=BLANC, lvl=lambda s, t, P: 1.0 if s < 1.5 or s > 38.5 or t < 1.5 or t > 28.5 else
+           (1.6 if (abs(t - 15) < 0.8 and 4 < s < 36) or (abs(s - 12) < 0.8 and 5 < t < 26) or (abs(s - 27) < 0.8 and 5 < t < 15) else 3.6))
+    e.quad('planol', (ex + 17, ey + 12, ZW - 0.6), (ex + 20, ey + 12, ZW - 0.6), (ex + 20, ey + 9, ZW - 0.6),
+           (ex + 17, ey + 9, ZW - 0.6), ramp=RED, lvl=4.4)
+
+
 def escena(cv, tex, estat=frozenset()):
-    """Tota la sala, de lluny a prop. `estat`: res de moment (els decorats es fan amb capes). → l'Escena."""
+    """Tota la sala, de lluny a prop. `estat`: 'sense_primer_pla' (el fons de la sala, sense la capa del davant,
+    que va a part i fa parallax). → l'Escena."""
     e = Escena(cv, CAM, LLUMS, ambient=-0.9)
     zn = CAM.pos[2] + 60
     paret, llisa = tex['paret'], tex['llisa']
@@ -269,19 +316,23 @@ def escena(cv, tex, estat=frozenset()):
     e.caixa_girada('banc', rx, rz, 16, 12, 0.8, ba + 0.3, [(20, 20, 30), (50, 60, 90), (110, 120, 150), (160, 160, 170)],
                    2.6, y0=27, cares={'dalt': {'ramp': [(20, 20, 30), (50, 60, 90), (110, 120, 150), (160, 160, 170)],
                                                'lvl': lambda s, t, P: 3.0 if t < 4 else (1.4 if int(t) % 3 == 0 else 2.2)}})
-    # primer pla: la jardinera amb el ficus (en silueta), a baix a l'esquerra, i una columna fosca a la dreta
+    atrezzo(e)
     FOSC = [(4, 4, 8), (9, 9, 15), (15, 15, 23), (22, 22, 32), (31, 31, 42), (42, 42, 54)]
-    FULLA = [(2, 6, 4), (6, 13, 9), (10, 21, 14), (15, 30, 20), (22, 42, 28), (32, 56, 36)]
+    # la jardinera amb el ficus (en silueta), a l'esquerra: amb la sala ampla ja no és primer pla (s'hi passa per
+    # davant i per darrere)
     jx, jz = PLANT
-    e.caixa_girada('primer_pla', jx, jz, 50, 50, 44, 0.3, FOSC, 1.6,
+    e.caixa_girada('jardinera', jx, jz, 50, 50, 44, 0.3, FOSC, 1.6,
                    cares={'dalt': {'ramp': FOSC, 'lvl': 0.6},
                           'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: 1.4 + (1.0 if t < 3 else 0)},
                           'dreta': {'ramp': FOSC, 'lvl': lambda s, t, P: 2.2 + (1.0 if t < 3 else 0)}})
-    e.sprite('primer_pla', _ficus_img(), (60, 129), (jx, 40, jz))
-    cx_, cz_ = COLUMN
-    e.caixa('primer_pla', cx_ - 18, cx_ + 18, 0, HW, cz_ - 18, cz_ + 18, FOSC, 1.4,
-            cares={'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: 1.6 + (0.8 if s < 3 else 0)},
-                   'esquerra': {'ramp': FOSC, 'lvl': lambda s, t, P: 2.4 + (0.6 if t > HW - 8 else 0)}})
+    e.sprite('jardinera', _ficus_img(), (60, 129), (jx, 40, jz))
+    if 'sense_primer_pla' in estat:
+        return e
+    # primer pla: dues columnes fosques, a tocar de la càmera, que emmarquen els dos extrems
+    for cx_, cz_ in COLUMNS:
+        e.caixa('primer_pla', cx_ - 18, cx_ + 18, 0, HW, cz_ - 18, cz_ + 18, FOSC, 1.4,
+                cares={'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: 1.6 + (0.8 if s < 3 else 0)},
+                       'esquerra': {'ramp': FOSC, 'lvl': lambda s, t, P: 2.4 + (0.6 if t > HW - 8 else 0)}})
     return e
 
 
@@ -305,9 +356,9 @@ def _fx():
 
 
 def _render(tex=None, estat=frozenset()):
-    cv = Canvas(light=LIGHT)
+    cv = Canvas(ROOM_W, light=LIGHT)
     e = escena(cv, tex or _textures(), estat)
-    cv.rect(0, BOTTOM + 1, W - 1, H - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
+    cv.rect(0, BOTTOM + 1, ROOM_W - 1, H - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
     return cv.img, e
 
 
@@ -326,9 +377,28 @@ def _base_llum():
     return _amb_llum(_base()[0])
 
 
+@functools.lru_cache(maxsize=None)
+def _fons_llum():
+    """El fons de la sala sense el primer pla (que és una capa a part, amb parallax)."""
+    return _amb_llum(_render(estat=frozenset({'sense_primer_pla'}))[0])
+
+
 def bg(cv):
-    cv.img.paste(_base_llum())
+    cv.img.paste(_fons_llum())
     cv.P = cv.img.load()
+
+
+def _capa_primer_pla():
+    """El primer pla, amb la llum, retallat de la sala sencera (la capa del davant que fa parallax)."""
+    from PIL import Image
+    full, (_, e) = _base_llum(), _base()
+    out = Image.new('RGBA', full.size, (0, 0, 0, 0))
+    src, dst, ids, amo, w = full.load(), out.load(), e.ids, e.amo, e.cv.w
+    for y in range(BOTTOM + 1):
+        for x in range(full.width):
+            if ids[amo[y * w + x]] == 'primer_pla':
+                dst[x, y] = src[x, y]
+    return out
 
 
 def _fotograma(capes):
@@ -356,13 +426,13 @@ def _drets(img, peu_img, peu, escala_img=1.0):
     w, h = max(1, round(img.width * k)), max(1, round(img.height * k))
     im = nearest(img, (w, h)) if k >= 1 else img.resize((w, h), Image.Resampling.BOX)
     ox, oy = round(u - peu_img[0] * k), round(v - peu_img[1] * k)
-    out = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    out = Image.new('RGBA', (ROOM_W, H), (0, 0, 0, 0))
     dst = out.load()
     rx, ry = w * 0.62, max(2.0, w * 0.16)
     for Y in range(int(v - ry), int(v + ry) + 1):
         for X in range(int(u - rx), int(u + rx) + 1):
             d = ((X - u) / rx) ** 2 + ((Y - v) / ry) ** 2
-            if d < 1 and 0 <= X < W and 0 <= Y < H:
+            if d < 1 and 0 <= X < ROOM_W and 0 <= Y < H:
                 dst[X, Y] = (6, 6, 14, int(150 * (1 - d) ** 0.7))
     out.alpha_composite(im, (ox, oy))
     return out
@@ -439,7 +509,12 @@ def _baseline_banc():
 
 # El primer pla (sempre davant) i el banc (qui hi passa per darrere, hi queda darrere).
 FRONT = [
-    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+    # el primer pla: una capa a part (el fons no el porta), que es mou més de pressa que la sala quan la càmera
+    # l'escombra; alineada amb el fons a mig recorregut
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'image': _capa_primer_pla, 'baseline': 999, 'zIndex': 20,
+     'parallaxDepth': PARALLAX, 'x': round((PARALLAX - 1) * (ROOM_W - W) / 2 / PARALLAX)},
+    {'id': 'davant_jardinera', 'mask': _amo({'jardinera'}), 'baseline': _p(PLANT[0] + 20, PLANT[1] - 20)[1], 'zIndex': 20},
+    {'id': 'davant_ficus2', 'mask': _amo({'ficus2'}), 'baseline': _p(FICUS2[0], FICUS2[1] - 14)[1], 'zIndex': 20},
     {'id': 'davant_banc', 'mask': _amo({'banc'}), 'baseline': _baseline_banc(), 'zIndex': 20},
 ]
 
@@ -449,7 +524,7 @@ FRONT = [
 def _rect_mon(*Ps):
     pts = [CAM.projecta(P) for P in Ps]
     return (max(0, round(min(p[0] for p in pts))), max(0, round(min(p[1] for p in pts))),
-            min(W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
+            min(ROOM_W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
 
 
 def _rect_pla(x0, y0, x1, y1):
@@ -503,11 +578,12 @@ def _v_escala(k):
 
 # El terra on es camina: al món, de la paret de l'escala fins a la dreta, arran de la paret llarga; retallat per la
 # pantalla i per on un personatge passaria d'escala 1,2 (més a prop, el primer pla).
-WALK_MON = [(14, 284), (700, 284), (700, -100), (14, -100)]
+WALK_MON = [(14, 284), (720, 284), (720, -100), (14, -100)]
 V_MAX = _v_escala(1.2)
-U_MAX = 575                                        # (més a la dreta, la columna del primer pla la tapa sencera)
+U_MIN = 60                                         # (més a l'esquerra, la columna de l'esquerra)
+U_MAX = ROOM_W - 70                                # (més a la dreta, la columna del primer pla la taparia sencera)
 _WALK = [_p(x, z) for x, z in WALK_MON]
-for _a, _b, _c in ((1, 0, -4), (-1, 0, U_MAX), (0, -1, V_MAX)):
+for _a, _b, _c in ((1, 0, -U_MIN), (-1, 0, U_MAX), (0, -1, V_MAX)):
     _WALK = _talla(_WALK, _a, _b, _c)
 _WALK = [(round(u), round(v)) for u, v in _WALK]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
@@ -545,7 +621,7 @@ GEOMETRIA = {
                                   'reach': 200}},
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
-                 'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+                 'points': [(0, _V_FONS - 2), (ROOM_W - 1, _V_FONS - 2), (ROOM_W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
     # la llum de la sala sobre els personatges, en temps d'execució
     'characterLights': {
         'ambient': '#b4b8c8',                                                           # oficina, llum freda

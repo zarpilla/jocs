@@ -187,13 +187,13 @@
           "flag": "soler_distret"
         },
         "room": "aeroport_terminal",
-        "x": 440,
-        "y": 192
+        "x": 552,
+        "y": 188
       },
       {
         "room": "aeroport_terminal",
-        "x": 126,
-        "y": 177
+        "x": 282,
+        "y": 182
       }
     ]
   },
@@ -348,12 +348,12 @@
         "room": "bcmu_passadis",
         "path": [
           {
-            "x": 100,
-            "y": 182
+            "x": 313,
+            "y": 150
           },
           {
-            "x": 403,
-            "y": 229
+            "x": 712,
+            "y": 233
           }
         ],
         "pause": 1

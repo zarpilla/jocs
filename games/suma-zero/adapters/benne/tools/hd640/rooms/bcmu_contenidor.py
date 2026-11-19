@@ -32,8 +32,8 @@ from hd.pix import Canvas, Light, W, H, hr
 from hd.rooms.comu import _diff, PLASTIC, SHEET
 from hd.rooms.exterior import fbm
 from hd640.rooms import bcmu_contenidor_pla_comu as PL
-from hd640.rooms.bcmu_contenidor_pla_comu import (STONEW, CONC, ASPH, ZINC, BIN, SHRED, FACADE, CARD, BAG, PAPER,
-                                                  TRAM)
+from hd640.rooms.bcmu_contenidor_pla_comu import (STONEW, CONC, ASPH, ZINC, BIN, SHRED, SKYD, FACADE, CARD, BAG,
+                                                  PAPER, TRAM)
 from hd640.tres_d import Camera, Escena, Llum
 
 BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
@@ -41,12 +41,15 @@ KZ = 0.88                                          # unitats del món per píxel
 FZ0 = 40                                           # la x del pla que cau a z = 0
 ZS = round((PL.STREET_X - FZ0) * KZ)               # la boca del carreró (on s'acaba la façana del banc)
 XO = 330                                           # la paret de l'altra casa, a l'altra banda del carreró
-HF = 520                                           # l'alçada de les façanes (fora de la pantalla)
+HF = 700                                           # l'alçada de les façanes (fora de la pantalla)
+NPIS = 5                                           # els pisos de dalt (el dibuix pla del primer, repetit)
+TRAM_X = (240, 360)                                # el tram de façana que es repeteix (al dibuix pla: una finestra)
+TRAM_F = TRAM_X[1] - TRAM_X[0]
 ZV = ZS + 26                                       # la vorera de la boca: fins aquí
 ZC = ZV + 170                                      # la calçada (amb les vies): fins aquí
 ZF = ZC + 26                                       # l'altra vorera, i la façana de l'altre banc
 
-CAM = Camera(pos=(290, 205, -260), yaw=-0.48, pitch=0.19, f=410, centre=(320, 68))
+CAM = Camera(pos=(300, 190, -560), yaw=-0.42, pitch=0.04, f=400, centre=(320, 120))   # de lluny: la persona, petita
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)  # (la llum és la del món: la de l'Escena)
 TL = Light(ambient=-0.1, vignette=None, floor_fade=None)    # la del dibuix pla de les textures
 
@@ -57,6 +60,8 @@ CAMV = (6, 176, 150)                               # la càmera de vigilància: 
 BOX = (22, CONT[1] + 110)                          # la caixa de cartró (x, z del centre)
 BAGS = ((18, CONT[1] + 144, 1.0), (CONT[0] + 40, CONT[1] - 92, 0.85))   # les bosses (x, z, mida)
 PALS = ((90, ZS - 26), (220, ZS - 26))             # les pilones de la boca
+PILONA = (60, -150)                                # la pilona de més ençà (x, z)
+FIRE = (-150, -40)                                 # l'escala d'incendis, a la façana del banc: z0, z1
 
 SUN = (255, 236, 196)
 SHADE = (150, 170, 200)
@@ -170,6 +175,9 @@ def carrer(e, tex):
     fw = (FACADE_BOX[2] - FACADE_BOX[0]) * 2.0
     fh = (FACADE_BOX[3] - FACADE_BOX[1]) * 2.0
     fx0 = 130
+    # el cel de migdia, darrere de tot (més clar arran dels terrats)
+    e.quad('cel', (-1400, 1400, ZF + 600), (2000, 1400, ZF + 600), (2000, 0, ZF + 600), (-1400, 0, ZF + 600),
+           ramp=SKYD, lvl=lambda s, t, P: 1.0 + 3.6 * min(1.0, P[1] / 900) + (hr(int(s) // 40, int(t) // 14, 51) - 0.5) * 0.2)
     # les façanes del costat (estuc, finestres senzilles) i, al mig, l'altre banc
     def estuc(base, seed):
         def L(s, t, P):
@@ -177,15 +185,15 @@ def carrer(e, tex):
             if t < 10:
                 return base + 1.4                                          # la cornisa
             fx, fy = s % 60, (t - 30) % 70
-            if 18 < fx < 42 and 10 < fy < 52 and t < 260:
+            if 18 < fx < 42 and 10 < fy < 52 and t < 420:
                 return 1.4 + (0.8 if fx - 18 < 3 else 0)                   # les finestres
             return v
         return L
-    e.quad('carrer', (-600, fh + 30, ZF), (fx0, fh + 30, ZF), (fx0, 0, ZF), (-600, 0, ZF), ramp=FACADE, lvl=estuc(4.0, 3))
+    e.quad('carrer', (-600, fh + 150, ZF), (fx0, fh + 150, ZF), (fx0, 0, ZF), (-600, 0, ZF), ramp=FACADE, lvl=estuc(4.0, 3))
     e.quad('carrer', (fx0, fh, ZF), (fx0 + fw, fh, ZF), (fx0 + fw, 0, ZF), (fx0, 0, ZF), tex=(fac, FACADE_BOX))
-    e.quad('carrer', (fx0, fh + 60, ZF + 2), (fx0 + fw, fh + 60, ZF + 2), (fx0 + fw, fh, ZF + 2), (fx0, fh, ZF + 2),
+    e.quad('carrer', (fx0, fh + 120, ZF + 2), (fx0 + fw, fh + 120, ZF + 2), (fx0 + fw, fh, ZF + 2), (fx0, fh, ZF + 2),
            ramp=FACADE, lvl=estuc(4.4, 4))
-    e.quad('carrer', (fx0 + fw, fh - 20, ZF), (1200, fh - 20, ZF), (1200, 0, ZF), (fx0 + fw, 0, ZF), ramp=FACADE,
+    e.quad('carrer', (fx0 + fw, fh + 90, ZF), (1200, fh + 90, ZF), (1200, 0, ZF), (fx0 + fw, 0, ZF), ramp=FACADE,
            lvl=estuc(3.6, 5))
     # les voreres i la calçada, al sol
     vorera = lambda s, t, P: 5.4 + (hr(int(P[0]) // 20, int(P[2]) // 20, 3) - 0.5) * 0.4 - (1.6 if P[0] % 20 < 1 else 0)  # noqa: E731
@@ -247,13 +255,26 @@ def facana(e, tex):
     zn = CAM.pos[2] + 40
     # la façana: el dibuix pla fins a la cantonada (de la z de la càmera a la boca)
     fx_n = FZ0 + zn / KZ
-    e.quad('facana', (0, PL.FLOOR_Y, zn), (0, PL.FLOOR_Y, ZS), (0, 0, ZS), (0, 0, zn),
+    za = max(zn, _z(0))
+    e.quad('facana', (0, PL.FLOOR_Y, za), (0, PL.FLOOR_Y, ZS), (0, 0, ZS), (0, 0, za),
            tex=(fa, (max(0, fx_n), 0, PL.STREET_X, PL.FLOOR_Y)))
     # els pisos de dalt: les finestres del primer pis, repetides
-    for k in range(3):
+    for k in range(NPIS):
         y0 = PL.FLOOR_Y + k * (PL.CORNICE - 2)
-        e.quad('facana', (0, y0 + PL.CORNICE - 2, zn), (0, y0 + PL.CORNICE - 2, ZS), (0, y0, ZS), (0, y0, zn),
+        e.quad('facana', (0, y0 + PL.CORNICE - 2, za), (0, y0 + PL.CORNICE - 2, ZS), (0, y0, ZS), (0, y0, za),
                tex=(fa, (max(0, fx_n), 0, PL.STREET_X, PL.CORNICE - 2)))
+    # més ençà del dibuix pla (la càmera és lluny): un tram de la façana amb una finestra, repetit cap a la càmera
+    z1 = za
+    while z1 > zn:
+        z0 = max(zn, z1 - TRAM_F * KZ)
+        f0 = TRAM_X[1] - (z1 - z0) / KZ
+        e.quad('facana', (0, PL.FLOOR_Y, z0), (0, PL.FLOOR_Y, z1), (0, 0, z1), (0, 0, z0),
+               tex=(fa, (f0, 0, TRAM_X[1], PL.FLOOR_Y)))
+        for k in range(NPIS):
+            y0 = PL.FLOOR_Y + k * (PL.CORNICE - 2)
+            e.quad('facana', (0, y0 + PL.CORNICE - 2, z0), (0, y0 + PL.CORNICE - 2, z1), (0, y0, z1), (0, y0, z0),
+                   tex=(fa, (f0, 0, TRAM_X[1], PL.CORNICE - 2)))
+        z1 = z0
     # el gruix de la cantonada (es veu el cantell, de pedra)
     e.quad('facana', (0, HF, ZS), (-40, HF, ZS), (-40, 0, ZS), (0, 0, ZS), ramp=STONEW,
            lvl=lambda s, t, P: 4.6 + (0.9 if int(t) % 16 == 0 else 0) + (hr(int(s) // 4, int(t) // 16, 2) - 0.5) * 0.4,
@@ -451,19 +472,50 @@ def primer_pla(e):
     """L'escala de gat de la paret del davant, una pilona a l'esquerra, i els cables que travessen el carreró."""
     FOSC = [(4, 5, 8), (9, 11, 16), (15, 18, 25), (22, 26, 34), (31, 36, 46), (42, 48, 60)]
     # l'escala de gat de la paret del davant, tallada per la vora
+    # (de lluny, l'escala de gat i la pilona ja no són primer pla: tenen la seva capa, amb la seva línia de base)
     for z in (-6, 26):
-        e.tub('primer_pla', (XO - 10, 0, z), (XO - 10, HF, z), 2.6, FOSC, 2.6, llum_dir=(-0.8, 0.3))
+        e.tub('escala_gat', (XO - 10, 0, z), (XO - 10, HF, z), 2.6, FOSC, 2.6, llum_dir=(-0.8, 0.3))
     for y in range(14, 400, 22):
-        e.cable('primer_pla', [(XO - 10, y, -6), (XO - 10, y, 26)], FOSC, 2.4, gruix=2.0)
+        e.cable('escala_gat', [(XO - 10, y, -6), (XO - 10, y, 26)], FOSC, 2.4, gruix=2.0)
     for y in (16, 220):
-        e.caixa('primer_pla', XO - 10, XO, y, y + 4, 8, 12, FOSC, 2.0)
+        e.caixa('escala_gat', XO - 10, XO, y, y + 4, 8, 12, FOSC, 2.0)
     # la pilona
-    e.tub('primer_pla', (56, 0, -40), (56, 70, -40), 8, FOSC, 2.4, llum_dir=(0.8, 0.4))
-    e.tub('primer_pla', (56, 70, -40), (56, 76, -40), 9, FOSC, 3.2)
+    e.tub('pilona_pp', (PILONA[0], 0, PILONA[1]), (PILONA[0], 70, PILONA[1]), 8, FOSC, 2.4, llum_dir=(0.8, 0.4))
+    e.tub('pilona_pp', (PILONA[0], 70, PILONA[1]), (PILONA[0], 76, PILONA[1]), 9, FOSC, 3.2)
     # els cables que travessen el carreró per dalt, penjant
     for y, z0, z1 in ((236, -30, 0), (250, -10, 40)):
         e.cable('primer_pla', [(0, y, z0), (90, y - 50, (2 * z0 + z1) / 3), (200, y - 54, (z0 + 2 * z1) / 3),
                                (XO, y - 8, z1)], FOSC, 1.6, gruix=2.2)
+
+
+def escala_incendis(e):
+    """L'escala d'incendis de la façana del banc: replans de reixa a cada pis, la barana i els trams en ziga-zaga;
+    a baix, l'última escala, plegada (no arriba a terra)."""
+    FERRO = [(10, 12, 16), (20, 23, 28), (32, 36, 42), (46, 51, 58), (62, 68, 76), (82, 88, 96)]
+    z0, z1 = FIRE
+    D = 26                                                          # el que surt de la paret
+    ys = [PL.FLOOR_Y + 8 + k * (PL.CORNICE - 2) for k in range(NPIS)]
+    for k, y in enumerate(ys):
+        e.caixa('incendis', 0, D, y - 2, y, z0, z1, FERRO, 2.6,
+                cares={'dalt': {'ramp': FERRO, 'lvl': lambda s, t, P: 1.6 if int(s) % 4 == 0 or int(t) % 4 == 0 else 3.0}})
+        for yy in (y + 12, y + 24):                                 # la barana
+            e.cable('incendis', [(0, yy, z0), (D, yy, z0), (D, yy, z1), (0, yy, z1)], FERRO, 3.0, gruix=1.2)
+        for z in range(int(z0), int(z1) + 1, 10):
+            e.cable('incendis', [(D, y, z), (D, y + 24, z)], FERRO, 2.6, gruix=1.0)
+        if k + 1 < len(ys):                                         # el tram cap al replà de dalt
+            a, b = (z0 + 6, z1 - 30) if k % 2 == 0 else (z1 - 6, z0 + 30)
+            yb = ys[k + 1]
+            for x in (3, D - 3):
+                e.cable('incendis', [(x, y, a), (x, yb - 2, b)], FERRO, 2.4, gruix=1.6)
+            for j in range(1, 12):
+                f = j / 12
+                zz, yy = a + (b - a) * f, y + (yb - 2 - y) * f
+                e.cable('incendis', [(3, yy, zz), (D - 3, yy, zz)], FERRO, 3.2, gruix=1.2)
+    # l'escala plegada, sota el primer replà
+    for x in (6, 18):
+        e.cable('incendis', [(x, ys[0] - 2, z0 + 10), (x, ys[0] - 70, z0 + 10)], FERRO, 2.4, gruix=1.4)
+    for yy in range(int(ys[0]) - 66, int(ys[0]) - 2, 9):
+        e.cable('incendis', [(6, yy, z0 + 10), (18, yy, z0 + 10)], FERRO, 3.0, gruix=1.0)
 
 
 def pilones(e):
@@ -483,6 +535,7 @@ def escena(cv, tex, estat=frozenset()):
     terra(e)
     porta(e)
     baixants(e)
+    escala_incendis(e)
     camera_vigilancia(e, led='led_apagat' not in estat)
     pilones(e)
     brossa(e, tex)
@@ -653,6 +706,8 @@ def _p(x, z, y=0.0):
 
 FRONT = [
     {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+    {'id': 'davant_escala', 'mask': _amo({'escala_gat'}), 'baseline': _p(XO - 10, -6)[1], 'zIndex': 20},
+    {'id': 'davant_pilona', 'mask': _amo({'pilona_pp'}), 'baseline': _p(*PILONA)[1], 'zIndex': 20},
     {'id': 'davant_contenidor', 'mask': _amo({'contenidor', 'conducte', 'cortina'}),
      'baseline': _p(CONT[0] + 10, CONT[1])[1], 'zIndex': 20},
     *[{'id': f'davant_pilona{i}', 'mask': _amo({f'pilona{i}'}), 'baseline': _p(*p)[1], 'zIndex': 20}

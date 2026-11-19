@@ -39,8 +39,14 @@ HW = 248                                           # l'alçada de les parets
 FX = 186                                           # al pla, la x que cau a x = 0 del món (paret del fons)
 RX = 423                                           # al pla de la paret de la dreta, la x que cau a la cantonada
 DOCK = -60                                         # el pati de fora, més avall que el moll
+ROOM_W = 960                                       # més ampla que la pantalla: la càmera la recorre
+PARALLAX = 1.25                                    # el primer pla es mou un 25% més de pressa que la sala
+STENCIL_BOX = (10, 10, 48, 24)                     # (al dibuix pla de l'atrezzo) el rètol pintat
+EXT_BOX = (10, 40, 50, 120)                        #   l'armari de l'extintor
+STENCIL_Z = (-190, 0)                              # el rètol, a la paret de la dreta: z0, z1
+EXT_Z = 50                                         # l'armari de l'extintor, a la paret de la dreta: z del centre
 
-CAM = Camera(pos=(0, 190, -260), yaw=0.34, pitch=0.16, f=410, centre=(320, 78))
+CAM = Camera(pos=(60, 200, -360), yaw=0.3, pitch=0.15, f=420, centre=(ROOM_W // 2, 84))
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)  # (la llum és la del món: la de l'Escena)
 TL = Light(ambient=-0.2, vignette=None, floor_fade=None)    # la del dibuix pla de les textures
 
@@ -450,8 +456,50 @@ def ascensor(e):
     e.caixa('ascensor', XR - 4, XR, yt - 6, yt, z0, z1, STEEL, 3.0, cares={'sota': {'ramp': STEEL, 'lvl': 1.4}})
 
 
+def paret_dreta_atrezzo(e, tex):
+    """A la paret de la dreta, més ençà de l'ascensor: el rètol del moll pintat a la paret i l'armari de l'extintor."""
+    at = tex['atrezzo']
+    za, zb = STENCIL_Z
+    h = (zb - za) * (STENCIL_BOX[3] - STENCIL_BOX[1]) / (STENCIL_BOX[2] - STENCIL_BOX[0])
+    e.quad('paret_dreta', (XR - 0.4, 120 + h, zb), (XR - 0.4, 120 + h, za), (XR - 0.4, 120, za), (XR - 0.4, 120, zb),
+           tex=(at, STENCIL_BOX))
+    zc = EXT_Z
+    e.caixa('extintor', XR - 10, XR, 50, 112, zc - 14, zc + 14, RED, 3.0,
+            cares={'esquerra': {'tex': (at, EXT_BOX)}})
+
+
+@functools.lru_cache(maxsize=None)
+def _tex_atrezzo():
+    """El rètol pintat «MOLL B-2» (lletres de plantilla, grogues) i el frontal de l'armari de l'extintor."""
+    cv = Canvas(light=TL, transparent=True)
+    x0, y0, x1, y1 = STENCIL_BOX
+    t = 'MOLL B-2'
+    text(cv, t, x0 + 3, y0 + 3, [(230, 190, 40)], 0, flat=(230, 190, 40))
+    x0, y0, x1, y1 = EXT_BOX
+    obox(cv, x0, y0, x1, y1, RED, 3.0)
+    cv.rect(x0 + 3, y0 + 3, x1 - 3, y1 - 12, [(60, 70, 80), (120, 136, 150), (190, 200, 210)], 1.2)     # el vidre
+    cv.rect(x0 + 8, y0 + 8, x1 - 8, y1 - 16, RED, 4.0)                                                 # l'extintor
+    t = 'FOC'
+    text(cv, t, (x0 + x1) // 2 - text_width(t) // 2, y1 - 10, [(250, 250, 250)], 0, flat=(250, 250, 250))
+    return cv.img
+
+
+def palets(e):
+    """El pilot de palets i la tanca groga, a la dreta: amb la càmera més enrere ja no són primer pla (s'hi passa
+    per davant i per darrere)."""
+    for k in range(6):
+        e.caixa_girada('palets', 360 + (k % 2) * 3, -30, 90, 70, 9, 0.35 + (k % 3) * 0.03, FOSC, 2.0, y0=k * 10,
+                       cares={'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: 0.6 if 2 < t < 6 and int(s) % 30 > 9 else 2.6},
+                              'esquerra': {'ramp': FOSC, 'lvl': lambda s, t, P: 0.6 if 2 < t < 6 and int(s) % 24 > 8 else 2.2},
+                              'dalt': {'ramp': FOSC, 'lvl': lambda s, t, P: 3.0 if int(s) % 18 < 10 else 1.0}})
+    TANCA = [(30, 22, 4), (60, 46, 8), (110, 84, 14), (160, 124, 22), (200, 160, 30)]
+    for x in (250, 320):
+        e.tub('palets', (x, 0, -60), (x, 64, -60), 4, TANCA, 2.2)
+    e.tub('palets', (246, 60, -60), (324, 60, -60), 3.4, TANCA, 2.6)
+
+
 def primer_pla(e):
-    """Una columna d'acer a l'esquerra, i un pilot de palets i una tanca groga a la dreta."""
+    """Una columna d'acer a l'esquerra, a tocar de la càmera (amb parallax)."""
     # la columna (un perfil en H), tallada per la vora
     cx, cz = -70, -60
     e.caixa('primer_pla', cx - 10, cx + 10, 0, HW + 40, cz - 4, cz + 4, FOSC, 1.6,
@@ -461,17 +509,6 @@ def primer_pla(e):
                 cares={'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: (3.6 if s > 19 else 2.6) - (1.4 if int(t) % 60 < 2 else 0)},
                        'dreta': {'ramp': FOSC, 'lvl': 3.2}})
     e.caixa('primer_pla', cx - 16, cx + 16, 0, 10, cz - 18, cz + 18, FOSC, 2.4)
-    # el pilot de palets a la dreta, una mica girat
-    for k in range(6):
-        e.caixa_girada('primer_pla', 360 + (k % 2) * 3, -30, 90, 70, 9, 0.35 + (k % 3) * 0.03, FOSC, 2.0, y0=k * 10,
-                       cares={'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: 0.6 if 2 < t < 6 and int(s) % 30 > 9 else 2.6},
-                              'esquerra': {'ramp': FOSC, 'lvl': lambda s, t, P: 0.6 if 2 < t < 6 and int(s) % 24 > 8 else 2.2},
-                              'dalt': {'ramp': FOSC, 'lvl': lambda s, t, P: 3.0 if int(s) % 18 < 10 else 1.0}})
-    # la tanca groga (desenfocada a prop): dos pals i una barra
-    TANCA = [(30, 22, 4), (60, 46, 8), (110, 84, 14), (160, 124, 22), (200, 160, 30)]
-    for x in (250, 320):
-        e.tub('primer_pla', (x, 0, -60), (x, 64, -60), 4, TANCA, 2.2)
-    e.tub('primer_pla', (246, 60, -60), (324, 60, -60), 3.4, TANCA, 2.6)
 
 
 def escena(cv, tex, estat=frozenset()):
@@ -487,7 +524,10 @@ def escena(cv, tex, estat=frozenset()):
     caixes_raco(e, tex)
     maquina(e, tex)
     toro(e, tex)
-    primer_pla(e)
+    paret_dreta_atrezzo(e, tex)
+    palets(e)
+    if 'sense_primer_pla' not in estat:
+        primer_pla(e)
     return e
 
 
@@ -512,13 +552,14 @@ def _fx():
 
 @functools.lru_cache(maxsize=None)
 def _textures():
-    return {'fons': _tex_fons(), 'dreta': _tex_dreta(), 'fora': _tex_fora(), 'coses': _tex_coses()}
+    return {'fons': _tex_fons(), 'dreta': _tex_dreta(), 'fora': _tex_fora(), 'coses': _tex_coses(),
+            'atrezzo': _tex_atrezzo()}
 
 
 def _render(estat=frozenset(), tex=None):
-    cv = Canvas(light=LIGHT)
+    cv = Canvas(ROOM_W, light=LIGHT)
     e = escena(cv, tex or _textures(), estat)
-    cv.rect(0, BOTTOM + 1, W - 1, H - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
+    cv.rect(0, BOTTOM + 1, ROOM_W - 1, H - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
     return cv.img, e
 
 
@@ -537,9 +578,28 @@ def _base_llum():
     return _amb_llum(_base()[0])
 
 
+@functools.lru_cache(maxsize=None)
+def _fons_llum():
+    """El fons de la sala sense el primer pla (que és una capa a part, amb parallax)."""
+    return _amb_llum(_render(estat=frozenset({'sense_primer_pla'}))[0])
+
+
 def bg(cv):
-    cv.img.paste(_base_llum())
+    cv.img.paste(_fons_llum())
     cv.P = cv.img.load()
+
+
+def _capa_primer_pla():
+    """El primer pla, amb la llum, retallat de la sala sencera (la capa del davant que fa parallax)."""
+    from PIL import Image
+    full, (_, e) = _base_llum(), _base()
+    out = Image.new('RGBA', full.size, (0, 0, 0, 0))
+    src, dst, ids, amo, w = full.load(), out.load(), e.ids, e.amo, e.cv.w
+    for y in range(BOTTOM + 1):
+        for x in range(full.width):
+            if ids[amo[y * w + x]] == 'primer_pla':
+                dst[x, y] = src[x, y]
+    return out
 
 
 PROPS = {}
@@ -636,7 +696,10 @@ def _p(x, z, y=0.0):
 
 
 FRONT = [
-    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+    # el primer pla: una capa a part (el fons no el porta) que es mou més de pressa que la sala; alineada a mig recorregut
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'image': _capa_primer_pla, 'baseline': 999, 'zIndex': 20,
+     'parallaxDepth': PARALLAX, 'x': round((PARALLAX - 1) * (ROOM_W - W) / 2 / PARALLAX)},
+    {'id': 'davant_palets', 'mask': _amo({'palets'}), 'baseline': _p(330, -72)[1], 'zIndex': 20},
     {'id': 'davant_toro', 'mask': _amo({'toro', 'palet', 'llum_toro'}),
      'baseline': _p(*_local(FORK_C[0], FORK_C[1], FORK_C[2], -20, 0, -40)[::2])[1], 'zIndex': 20},
     {'id': 'davant_maquina', 'mask': _amo({'maquina'}), 'baseline': _p(COFFEE_C[0], COFFEE_C[1] - 20)[1], 'zIndex': 20},
@@ -648,7 +711,7 @@ FRONT = [
 def _rect_mon(*Ps):
     pts = [CAM.projecta(P) for P in Ps]
     return (max(0, round(min(p[0] for p in pts))), max(0, round(min(p[1] for p in pts))),
-            min(W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
+            min(ROOM_W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
 
 
 def _escala_a(v):
@@ -665,7 +728,7 @@ def _escala_a(v):
 
 # El terra on es camina (al món): del primer pla (on l'escala arriba a ≈1,2) fins al peu de la paret del fons (sense
 # caure del moll), deixant els tècnics, la màquina, les caixes del racó i el muntant de l'ascensor; el toro, un forat.
-Z_NEAR = -40                                       # (a prop, es retalla on l'escala arriba a ≈1,2: V_MAX)
+Z_NEAR = -160                                      # (a prop, es retalla on l'escala arriba a ≈1,2: V_MAX)
 WALK_MON = [(-150, Z_NEAR), (-150, ZW - 18), (OPEN[1] + 4, ZW - 18), (OPEN[1] + 4, ZW - 52), (140, ZW - 58),
             (300, ZW - 50), (320, ZW - 64), (372, ZW - 66), (XR - 14, ZW - 62), (XR - 14, Z_NEAR)]
 def _retalla_v(poly, vmax):
@@ -692,8 +755,23 @@ def _v_a_escala(k):
 
 
 V_MAX = min(BOTTOM - 4, _v_a_escala(1.2))
-_WALK = _retalla_v([_p(x, z) for x, z in WALK_MON], V_MAX)
-_WALK = [(min(W - 1, max(0, u)), v) for u, v in _WALK]
+U_MIN = 200                                        # (més a l'esquerra, la columna del primer pla la taparia sencera)
+
+
+def _talla_u(poly, umin):
+    """El polígon de pantalla retallat a l'esquerra de la x `umin`."""
+    out = []
+    for (ax, ay), (bx, by) in zip(poly, poly[1:] + poly[:1]):
+        if ax >= umin:
+            out.append((ax, ay))
+        if (ax >= umin) != (bx >= umin):
+            k = (umin - ax) / (bx - ax)
+            out.append((umin, round(ay + (by - ay) * k)))
+    return out
+
+
+_WALK = _talla_u(_retalla_v([_p(x, z) for x, z in WALK_MON], V_MAX), U_MIN)
+_WALK = [(min(ROOM_W - 1, max(0, u)), v) for u, v in _WALK]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 _FORAT_TORO = [_p(*_local(FORK_C[0], FORK_C[1], FORK_C[2], lx, 0, lz)[::2]) for lx, lz in
                ((-104, -40), (78, -40), (78, 40), (-104, 40))]
@@ -723,7 +801,7 @@ GEOMETRIA = {
                         'light': {'x': _p(-60, ZW + 40)[0], 'y': _p(-60, ZW + 40)[1], 'stretch': 0.7, 'reach': 200}},
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
-                 'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+                 'points': [(0, _V_FONS - 2), (ROOM_W - 1, _V_FONS - 2), (ROOM_W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
     # la llum de la sala sobre els personatges, en temps d'execució
     'characterLights': {
         'ambient': '#a8acb4',

@@ -2,13 +2,13 @@
   "id": "aeroport_terminal",
   "name": "La terminal",
   "size": {
-    "width": 640,
+    "width": 960,
     "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 640,
+    "width": 960,
     "height": 360
   },
   "walkable": {
@@ -18,72 +18,72 @@
         "active": true,
         "points": [
           {
-            "x": 56,
-            "y": 201
+            "x": 223,
+            "y": 203
           },
           {
-            "x": 133,
-            "y": 167
+            "x": 288,
+            "y": 174
           },
           {
-            "x": 155,
-            "y": 172
+            "x": 307,
+            "y": 177
           },
           {
-            "x": 138,
-            "y": 180
+            "x": 294,
+            "y": 184
           },
           {
-            "x": 168,
-            "y": 187
+            "x": 320,
+            "y": 189
           },
           {
-            "x": 244,
-            "y": 146
+            "x": 385,
+            "y": 155
           },
           {
-            "x": 354,
-            "y": 161
+            "x": 481,
+            "y": 165
           },
           {
-            "x": 362,
-            "y": 161
+            "x": 488,
+            "y": 165
           },
           {
-            "x": 454,
+            "x": 565,
             "y": 175
           },
           {
-            "x": 458,
-            "y": 180
+            "x": 568,
+            "y": 178
           },
           {
-            "x": 549,
+            "x": 641,
+            "y": 188
+          },
+          {
+            "x": 668,
             "y": 195
           },
           {
-            "x": 585,
-            "y": 206
+            "x": 726,
+            "y": 201
           },
           {
-            "x": 592,
-            "y": 235
+            "x": 955,
+            "y": 230
           },
           {
-            "x": 433,
-            "y": 236
+            "x": 955,
+            "y": 255
           },
           {
-            "x": 289,
-            "y": 234
+            "x": 168,
+            "y": 255
           },
           {
-            "x": 132,
-            "y": 233
-          },
-          {
-            "x": 77,
-            "y": 221
+            "x": 243,
+            "y": 217
           }
         ],
         "holes": []
@@ -98,29 +98,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 144,
-          "y": 75
+          "x": 299,
+          "y": 93
         },
         {
-          "x": 242,
-          "y": 75
+          "x": 383,
+          "y": 93
         },
         {
-          "x": 242,
-          "y": 182
+          "x": 383,
+          "y": 186
         },
         {
-          "x": 144,
-          "y": 182
+          "x": 299,
+          "y": 186
         }
       ],
       "walkToPoint": {
-        "x": 225,
-        "y": 164
+        "x": 369,
+        "y": 170
       },
       "lookAtPoint": {
-        "x": 193,
-        "y": 182
+        "x": 341,
+        "y": 186
       }
     },
     {
@@ -130,29 +130,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 216,
-          "y": 15
+          "x": 360,
+          "y": 41
         },
         {
-          "x": 341,
-          "y": 15
+          "x": 470,
+          "y": 41
         },
         {
-          "x": 341,
-          "y": 108
+          "x": 470,
+          "y": 121
         },
         {
-          "x": 216,
-          "y": 108
+          "x": 360,
+          "y": 121
         }
       ],
       "walkToPoint": {
-        "x": 275,
-        "y": 154
+        "x": 413,
+        "y": 161
       },
       "lookAtPoint": {
-        "x": 278,
-        "y": 108
+        "x": 415,
+        "y": 121
       }
     }
   ],
@@ -163,24 +163,24 @@
       "active": true,
       "scaleEnabled": true,
       "scaleWalkSpeed": true,
-      "scaleTop": 0.761,
-      "scaleBottom": 1.222,
+      "scaleTop": 0.665,
+      "scaleBottom": 1.165,
       "points": [
         {
           "x": 0,
-          "y": 144
+          "y": 153
         },
         {
-          "x": 639,
-          "y": 144
+          "x": 959,
+          "y": 153
         },
         {
-          "x": 639,
-          "y": 238
+          "x": 959,
+          "y": 257
         },
         {
           "x": 0,
-          "y": 238
+          "y": 257
         }
       ]
     }
@@ -209,30 +209,30 @@
       "collider": {
         "points": [
           {
-            "x": 429,
-            "y": 87
+            "x": 544,
+            "y": 101
           },
           {
-            "x": 459,
-            "y": 87
+            "x": 569,
+            "y": 101
           },
           {
-            "x": 459,
-            "y": 115
+            "x": 569,
+            "y": 124
           },
           {
-            "x": 429,
-            "y": 115
+            "x": 544,
+            "y": 124
           }
         ]
       },
       "walkToPoint": {
-        "x": 434,
-        "y": 172
+        "x": 549,
+        "y": 173
       },
       "lookAtPoint": {
-        "x": 444,
-        "y": 115
+        "x": 556,
+        "y": 124
       },
       "description": "maletí"
     },
@@ -249,30 +249,30 @@
       "collider": {
         "points": [
           {
-            "x": 457,
-            "y": 124
+            "x": 564,
+            "y": 130
           },
           {
-            "x": 491,
-            "y": 124
+            "x": 591,
+            "y": 130
           },
           {
-            "x": 491,
-            "y": 145
+            "x": 591,
+            "y": 146
           },
           {
-            "x": 457,
-            "y": 145
+            "x": 564,
+            "y": 146
           }
         ]
       },
       "walkToPoint": {
-        "x": 430,
-        "y": 207
+        "x": 543,
+        "y": 199
       },
       "lookAtPoint": {
-        "x": 474,
-        "y": 145
+        "x": 577,
+        "y": 146
       },
       "description": "ulleres"
     },
@@ -321,8 +321,11 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 24,
-      "baseline": 999
+      "zIndex": 26,
+      "baseline": 999,
+      "parallaxDepth": 1.25,
+      "x": 32,
+      "y": 0
     },
     {
       "id": "panell",
@@ -362,7 +365,7 @@
         "davant_garita": {}
       },
       "zIndex": 20,
-      "baseline": 160
+      "baseline": 165
     },
     {
       "id": "davant_taula",
@@ -374,15 +377,27 @@
         "davant_taula": {}
       },
       "zIndex": 22,
-      "baseline": 207
+      "baseline": 198
+    },
+    {
+      "id": "davant_seients2",
+      "tag": "davant_seients2",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_seients2": {}
+      },
+      "zIndex": 24,
+      "baseline": 206
     }
   ],
   "characters": [
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 333,
-      "y": 201,
+      "x": 463,
+      "y": 196,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -391,8 +406,8 @@
     {
       "instanceId": "soler-1",
       "definition": "soler/soler.character.json",
-      "x": 126,
-      "y": 177,
+      "x": 282,
+      "y": 182,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -401,8 +416,8 @@
     {
       "instanceId": "empleat-1",
       "definition": "empleat/empleat.character.json",
-      "x": 377,
-      "y": 155,
+      "x": 501,
+      "y": 160,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -411,8 +426,8 @@
     {
       "instanceId": "nen-1",
       "definition": "nen/nen.character.json",
-      "x": 315,
-      "y": 166,
+      "x": 448,
+      "y": 170,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -435,15 +450,15 @@
     "ambient": "#a4acbc",
     "lights": [
       {
-        "x": 276,
-        "y": 80,
+        "x": 413,
+        "y": 97,
         "radius": 260,
         "color": "#e0a0a0",
         "intensity": 0.6
       },
       {
-        "x": 512,
-        "y": 100,
+        "x": 610,
+        "y": 110,
         "radius": 120,
         "color": "#ff6e5a",
         "intensity": 0.7
@@ -457,8 +472,8 @@
     "squash": 0.4,
     "core": 0.6,
     "light": {
-      "x": 278,
-      "y": 137,
+      "x": 415,
+      "y": 148,
       "stretch": 0.7,
       "reach": 200
     }
