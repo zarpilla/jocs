@@ -23,7 +23,7 @@
     },
     "final_palau 1.aseprite": {
       "frame": {
-        "x": 3857,
+        "x": 3898,
         "y": 0,
         "w": 69,
         "h": 92
@@ -44,7 +44,7 @@
     },
     "final_palau 2.aseprite": {
       "frame": {
-        "x": 3926,
+        "x": 3967,
         "y": 0,
         "w": 69,
         "h": 92
@@ -65,27 +65,6 @@
     },
     "final_palau 3.aseprite": {
       "frame": {
-        "x": 3995,
-        "y": 0,
-        "w": 69,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 516,
-        "y": 104,
-        "w": 69,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "final_palau 4.aseprite": {
-      "frame": {
         "x": 0,
         "y": 360,
         "w": 69,
@@ -105,7 +84,7 @@
       },
       "duration": 100
     },
-    "final_palau 5.aseprite": {
+    "final_palau 4.aseprite": {
       "frame": {
         "x": 69,
         "y": 360,
@@ -126,7 +105,7 @@
       },
       "duration": 100
     },
-    "final_palau 6.aseprite": {
+    "final_palau 5.aseprite": {
       "frame": {
         "x": 138,
         "y": 360,
@@ -147,7 +126,7 @@
       },
       "duration": 100
     },
-    "final_palau 7.aseprite": {
+    "final_palau 6.aseprite": {
       "frame": {
         "x": 207,
         "y": 360,
@@ -168,7 +147,7 @@
       },
       "duration": 100
     },
-    "final_palau 8.aseprite": {
+    "final_palau 7.aseprite": {
       "frame": {
         "x": 276,
         "y": 360,
@@ -189,7 +168,7 @@
       },
       "duration": 100
     },
-    "final_palau 9.aseprite": {
+    "final_palau 8.aseprite": {
       "frame": {
         "x": 345,
         "y": 360,
@@ -210,7 +189,7 @@
       },
       "duration": 100
     },
-    "final_palau 10.aseprite": {
+    "final_palau 9.aseprite": {
       "frame": {
         "x": 414,
         "y": 360,
@@ -231,7 +210,7 @@
       },
       "duration": 100
     },
-    "final_palau 11.aseprite": {
+    "final_palau 10.aseprite": {
       "frame": {
         "x": 483,
         "y": 360,
@@ -252,7 +231,7 @@
       },
       "duration": 100
     },
-    "final_palau 12.aseprite": {
+    "final_palau 11.aseprite": {
       "frame": {
         "x": 552,
         "y": 360,
@@ -273,7 +252,7 @@
       },
       "duration": 100
     },
-    "final_palau 13.aseprite": {
+    "final_palau 12.aseprite": {
       "frame": {
         "x": 621,
         "y": 360,
@@ -294,7 +273,7 @@
       },
       "duration": 100
     },
-    "final_palau 14.aseprite": {
+    "final_palau 13.aseprite": {
       "frame": {
         "x": 690,
         "y": 360,
@@ -315,7 +294,7 @@
       },
       "duration": 100
     },
-    "final_palau 15.aseprite": {
+    "final_palau 14.aseprite": {
       "frame": {
         "x": 759,
         "y": 360,
@@ -336,7 +315,7 @@
       },
       "duration": 100
     },
-    "final_palau 16.aseprite": {
+    "final_palau 15.aseprite": {
       "frame": {
         "x": 828,
         "y": 360,
@@ -357,7 +336,7 @@
       },
       "duration": 100
     },
-    "final_palau 17.aseprite": {
+    "final_palau 16.aseprite": {
       "frame": {
         "x": 897,
         "y": 360,
@@ -378,7 +357,7 @@
       },
       "duration": 100
     },
-    "final_palau 18.aseprite": {
+    "final_palau 17.aseprite": {
       "frame": {
         "x": 966,
         "y": 360,
@@ -399,7 +378,7 @@
       },
       "duration": 100
     },
-    "final_palau 19.aseprite": {
+    "final_palau 18.aseprite": {
       "frame": {
         "x": 1035,
         "y": 360,
@@ -420,7 +399,7 @@
       },
       "duration": 100
     },
-    "final_palau 20.aseprite": {
+    "final_palau 19.aseprite": {
       "frame": {
         "x": 1104,
         "y": 360,
@@ -441,7 +420,7 @@
       },
       "duration": 100
     },
-    "final_palau 21.aseprite": {
+    "final_palau 20.aseprite": {
       "frame": {
         "x": 1173,
         "y": 360,
@@ -462,7 +441,7 @@
       },
       "duration": 100
     },
-    "final_palau 22.aseprite": {
+    "final_palau 21.aseprite": {
       "frame": {
         "x": 1242,
         "y": 360,
@@ -483,7 +462,7 @@
       },
       "duration": 100
     },
-    "final_palau 23.aseprite": {
+    "final_palau 22.aseprite": {
       "frame": {
         "x": 1311,
         "y": 360,
@@ -504,7 +483,7 @@
       },
       "duration": 100
     },
-    "final_palau 24.aseprite": {
+    "final_palau 23.aseprite": {
       "frame": {
         "x": 1380,
         "y": 360,
@@ -525,9 +504,30 @@
       },
       "duration": 100
     },
+    "final_palau 24.aseprite": {
+      "frame": {
+        "x": 1449,
+        "y": 360,
+        "w": 69,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 516,
+        "y": 104,
+        "w": 69,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
     "final_palau 25.aseprite": {
       "frame": {
-        "x": 3351,
+        "x": 3418,
         "y": 360,
         "w": 266,
         "h": 52
@@ -548,7 +548,7 @@
     },
     "final_palau 26.aseprite": {
       "frame": {
-        "x": 3203,
+        "x": 3270,
         "y": 360,
         "w": 148,
         "h": 56
@@ -569,7 +569,7 @@
     },
     "final_palau 27.aseprite": {
       "frame": {
-        "x": 2159,
+        "x": 2226,
         "y": 360,
         "w": 217,
         "h": 70
@@ -590,7 +590,7 @@
     },
     "final_palau 28.aseprite": {
       "frame": {
-        "x": 2376,
+        "x": 2443,
         "y": 360,
         "w": 270,
         "h": 70
@@ -611,7 +611,7 @@
     },
     "final_palau 29.aseprite": {
       "frame": {
-        "x": 3617,
+        "x": 3684,
         "y": 360,
         "w": 325,
         "h": 49
@@ -653,7 +653,7 @@
     },
     "final_palau 31.aseprite": {
       "frame": {
-        "x": 1535,
+        "x": 1602,
         "y": 360,
         "w": 251,
         "h": 75
@@ -674,7 +674,7 @@
     },
     "final_palau 32.aseprite": {
       "frame": {
-        "x": 1786,
+        "x": 1853,
         "y": 360,
         "w": 298,
         "h": 74
@@ -695,7 +695,7 @@
     },
     "final_palau 33.aseprite": {
       "frame": {
-        "x": 2924,
+        "x": 2991,
         "y": 360,
         "w": 279,
         "h": 61
@@ -716,7 +716,7 @@
     },
     "final_palau 34.aseprite": {
       "frame": {
-        "x": 2646,
+        "x": 2713,
         "y": 360,
         "w": 278,
         "h": 63
@@ -905,7 +905,7 @@
     },
     "final_palau 43.aseprite": {
       "frame": {
-        "x": 2084,
+        "x": 2151,
         "y": 360,
         "w": 75,
         "h": 74
@@ -928,16 +928,16 @@
       "frame": {
         "x": 3779,
         "y": 0,
-        "w": 78,
-        "h": 147
+        "w": 119,
+        "h": 149
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 509,
-        "y": 87,
-        "w": 78,
-        "h": 147
+        "x": 416,
+        "y": 85,
+        "w": 119,
+        "h": 149
       },
       "sourceSize": {
         "w": 640,
@@ -947,18 +947,18 @@
     },
     "final_palau 45.aseprite": {
       "frame": {
-        "x": 1449,
+        "x": 1518,
         "y": 360,
-        "w": 86,
-        "h": 77
+        "w": 84,
+        "h": 76
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 410,
+        "x": 370,
         "y": 178,
-        "w": 86,
-        "h": 77
+        "w": 84,
+        "h": 76
       },
       "sourceSize": {
         "w": 640,
@@ -994,7 +994,7 @@
     "image": "final_palau.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4064,
+      "w": 4036,
       "h": 501
     },
     "scale": "1",
