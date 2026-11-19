@@ -668,7 +668,7 @@ l'ordre que es vulgui; a cadascun hi ha algú (o alguna cosa) i una pista:
 | Lloc | Qui hi ha | Què passa |
 |---|---|---|
 | **Coberta de popa** | En Bastida, amb una llanterna, «ajudant a buscar». | «A proa ja hi he mirat jo. Deu ser per aquí, a popa: li agrada el vent.» No hi és. (Pista a l'inrevés: ell envia les dues lluny de proa. I el racó de la Juana, des de l'Escena 2, se sap que és a proa.) Exterior, de nit: els llums de popa, l'estela blanca i, a l'horitzó, cap a on van, res. |
-| **Pallol** | El Marcel, assegut a terra, i **en Diu**, menjant sardines. | El secret del Marcel (vegeu sota). «Aquesta tarda he sentit cops a proa. Pensava que eren fantasmes. Jo crec en fantasmes.» A l'inventari, sobre la porta: falta un **cadenat**. |
+| **Pallol** | El Marcel, recolzat a les caixes, i **en Diu**, als seus peus, menjant sardines. | El secret del Marcel (vegeu sota). «Aquesta tarda he sentit cops a proa. Pensava que eren fantasmes. Jo crec en fantasmes.» A l'inventari, sobre la porta: falta un **cadenat**. |
 | **Cuina** | En Tomàs, fent pa. | «Algú m'ha robat un entrepà de truita de la safata del berenar. Si és la Juana, li perdono.» |
 | **Cabina de la Capitana** | La Capitana, llegint una novel·la romàntica. | «La Juana sempre torna.» Damunt la taula, el contracte de Blau Net, amb el lema a la capçalera («Per un mar més net, junts»): «Condició 4: embarcar N. Vidal.» |
 | **Caixa de cadenes** (proa) | Un cadenat nou a la porta. | Cops a dins. «Juana? Juana, ets tu?» Tres cops, més forts. «Aguanta.» |
@@ -886,7 +886,7 @@ Valmark, cada cop més a prop, i el missatger d'en Bastida s'encén de tant en t
 («Recordi el nostre acord.»). Si és aliada, pel vidre només es veu el mar fosc: el guardacostes s'ha quedat
 enrere, i la Lind ja no escriu.
 
-**En Bastida i el relé.** És assegut a l'escala de la sala de màquines, amb el registre de la sentina obert als peus
+**En Bastida i el relé.** És dret al peu de l'escala de la sala de màquines, amb el registre de la sentina obert als peus
 i el relé a la mà, damunt de l'aigua bruta. «Si s'acosta ningú, va a la sentina. I l'Iri sap que a la sentina no s'hi
 fica la mà.» Per això ningú no l'hi pot prendre per la força, i per això ha de baixar la Vet sola: «A tu no et tinc
 por, doctora. Ets l'única que no sap on és la proa.» L'Iri no pot fer un pont al relé: «És el de sincronització. Si

@@ -108,6 +108,9 @@ Més sobre les capes del davant (`FRONT`), après fent les sales:
   una N de 5 px: la de 4, en escorç, semblava una M). Si no hi caben, la lletra eixamplada (×1,5 o ×2 d'ample només:
   l'escorç aprima en horitzontal), i sempre fosca sobre clar (paper, esmalt, llautó): la lletra de color sobre la paret
   és la primera que es perd. Poden quedar una mica borrosos; n'hi ha prou que es llegeixin.
+- Gent asseguda, poca: un personatge assegut en un seient en 3D (llitera, escala, caixa) no acaba de quedar real
+  (el seient i el maluc no casen, les cames suren). Només quan un moble tapa les cames (la taula de la reunió del
+  menjador, la Juana a la llitera amb les mantes); si no, dret o recolzat, i el text que ho digui.
 - Quins rètols cal que es llegeixin: els que diuen alguna cosa que no surt enlloc més (peus de quadre, normes,
   avisos, cartells que orienten). Els noms de les portes no cal: el hotspot ja dona el nom en passar-hi per sobre, i
   fan de textura.

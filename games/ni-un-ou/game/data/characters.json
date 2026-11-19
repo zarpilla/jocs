@@ -176,42 +176,6 @@
         "name": "Pijama"
       }
     ],
-    "appearance": [
-      {
-        "if": {
-          "all": [
-            {
-              "var": "escena",
-              "op": "==",
-              "value": 9
-            },
-            {
-              "flag": "rele_posat",
-              "is": false
-            },
-            {
-              "inRoom": "sala_maquines"
-            }
-          ]
-        },
-        "anim": "Seu"
-      },
-      {
-        "if": {
-          "all": [
-            {
-              "var": "escena",
-              "op": "==",
-              "value": 3
-            },
-            {
-              "inRoom": "infermeria"
-            }
-          ]
-        },
-        "anim": "Seu"
-      }
-    ],
     "patrol": [
       {
         "if": {
@@ -245,7 +209,10 @@
     ]
   },
   "marcel": {
-    "name": "pj.marcel.nom",
+    "name": "pj.marcel.nom"
+  },
+  "juana": {
+    "name": "pj.juana.nom",
     "appearance": [
       {
         "if": {
@@ -253,58 +220,10 @@
             {
               "var": "escena",
               "op": "==",
-              "value": 6
+              "value": 7
             },
             {
-              "inRoom": "pallol"
-            }
-          ]
-        },
-        "anim": "Seu"
-      }
-    ]
-  },
-  "juana": {
-    "name": "pj.juana.nom",
-    "appearance": [
-      {
-        "if": {
-          "any": [
-            {
-              "all": [
-                {
-                  "var": "escena",
-                  "op": "==",
-                  "value": 2
-                },
-                {
-                  "inRoom": "coberta_proa"
-                }
-              ]
-            },
-            {
-              "all": [
-                {
-                  "var": "escena",
-                  "op": "==",
-                  "value": 6
-                },
-                {
-                  "inRoom": "caixa_cadenes"
-                }
-              ]
-            },
-            {
-              "all": [
-                {
-                  "var": "escena",
-                  "op": "==",
-                  "value": 7
-                },
-                {
-                  "inRoom": "infermeria"
-                }
-              ]
+              "inRoom": "infermeria"
             }
           ]
         },
