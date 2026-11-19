@@ -208,16 +208,35 @@ enganxat sobre el fons. Quatre ajustos el fan seure a l'espai, i el cinquè el f
      vegeu més amunt). El màxim es mira on es camina de debò (la vora de baix de la zona caminable o els llocs on
      els personatges són quiets), no a la vora de la regió, que pot anar més avall (a final_galway semblava 1,85 i
      era 1,22). A 0,42 la cara de la Vet encara es llegeix; per sota de ≈0,4 cal mirar-ho a la pantalla.
-   - **Mides de full diferents (`Lluny`).** El motor les tria per sala, no per franja: són una roba més
-     (`outfit` amb `inRoom` a `characters.json`), i tot el full s'escala amb un sol `artScale`. Una figura molt
-     més petita (o més gran) dins el mateix fotograma espatlla la velocitat de caminar, el `collider` i el
-     `talkPoint`, que en surten; a Aigua Verne funciona perquè les dues mides només es porten 1,2×. Abans de
-     dibuixar-ne una: si la punta caminable que baixa tant no té res a fer, és més barat retallar-la. Suma Zero
-     té els fulls de lluny de la Vet dibuixats però apagats (`VET_LLUNY`) fins que el motor ho sàpiga fer.
-   - **La mida dels personatges es decideix abans de les sales.** A L'Última Arrel, la caseta d'obra i el
-     campament es van dibuixar per a personatges de 97 px i els fulls van quedar a 68: escalats a 1,75, cada píxel
-     del personatge és el doble que els del decorat (`K_FULLS`). Arreglar-ho després vol dir allunyar la càmera
-     (la sala es perd) o dibuixar una mida gran dels fulls.
+   - **Mides de full diferents (`Gran`, `Lluny`).** El motor les tria per sala, no per franja: són una roba més
+     (`outfit` amb `inRoom` a `characters.json`, que fa sonar `<roba><Idle|Walk|Talk><dir>`). Una mida dibuixada
+     més gran o més petita es declara al `.character.json`:
+
+     ```json
+     "sizeVariants": { "Gran": 1.5 }
+     ```
+
+     Les etiquetes que comencen pel prefix (`GranIdleD`, `GranWalkL`; si n'hi ha més d'un, guanya el més llarg) són
+     la mateixa figura dibuixada a aquella escala, en fotogrames que són els d'1× escalats: la mateixa cantonada de
+     dalt a l'esquerra i els peus a `feet` × 1,5 (poden anar al mateix full, en files a sota, amb fotogrames més
+     grans). L'escala de la regió continua dient com de gran és el personatge a la sala: el motor mostra aquests
+     fotogrames a escala ÷ 1,5, i els peus, el `collider`, el `talkPoint`, l'ombra i la velocitat de caminar fan el
+     mateix que amb el full d'1× a aquella escala (`engine/characterFeet.ts`, `sizeVariants`). Si la mida canvia
+     amb el personatge quiet (una roba nova, una animació de guió), els peus no es mouen. `npm run profunditat`
+     divideix l'escala de la sala per la de la mida que hi porta la protagonista.
+     - **Quan cal:** una sala on el personatge hauria d'anar a més de ≈1,25 (el full es pixela; els píxels del
+       personatge més grans que els del decorat) o a molt menys de 0,5 (la cara es perd). Abans de dibuixar-ne una:
+       si la punta caminable que baixa tant no té res a fer, és més barat retallar-la.
+     - **Com es dibuixa:** redibuixada, no ampliada (mai `resize` amb NEAREST). A L'Última Arrel, `hd/gran.py`
+       (×1,5: FigYK, FigY a la mida gran; la cara es refà píxel a píxel amb els ulls de 3 px; la de la Iri i la Vet és
+       la de sempre). A Aigua Verne, FigK (×1,2). Escaleu-ho de manera que la cantonada del fotograma d'1× caigui en
+       un píxel enter (`sub` a `hd/gran.py`), o els peus es mouen mig píxel en canviar de mida.
+     - A L'Última Arrel, la caseta d'obra i el campament es van dibuixar per a personatges de 97 px i els fulls van
+       quedar a 68 (`K_FULLS`): escalats a 1,75, cada píxel del personatge era el doble que els del decorat. Ara la
+       Vet hi porta la mida `Gran` (×1,5) i el motor la mostra a 0,7–1,2. Suma Zero té els fulls de lluny de la Vet
+       dibuixats però apagats (`VET_LLUNY`): amb `sizeVariants` ja es poden encendre.
+   - **La mida dels personatges es decideix abans de les sales.** Una mida de full nova és feina (totes les
+     animacions i robes que s'hi porten, i la cara refeta); si es decideix abans de pintar la sala, no cal.
    - Ordre de dibuix: els mobles del pla mitjà (el llit, el pou, les caixes) van en capes pròpies amb una línia base
      (`baseline`). Si els peus del personatge queden per sobre de la línia base (més al fons), el moble el tapa; si
      queden per sota, el personatge passa per davant. Sense això no hi ha superposició de plans (principi 5).

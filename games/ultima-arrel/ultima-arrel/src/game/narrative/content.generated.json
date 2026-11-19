@@ -143,6 +143,17 @@
               }
             ]
           }
+        ],
+        "outfit": [
+          {
+            "if": {
+              "inRoom": [
+                "caseta_obra",
+                "campament_fades"
+              ]
+            },
+            "name": "Gran"
+          }
         ]
       },
       "avia": {

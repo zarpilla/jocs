@@ -7,6 +7,11 @@ Una sola mida, a 1× (com les sales en 3D): cada personatge es dibuixa a la seva
 s'escala. A les sales «de lluny», la Iri fa ≈68 px, la Vet ≈60, l'àvia ≈78, la Senyora Pla i la Txell ≈85,
 l'Espora ≈35, les fades ≈32 (més la cresta) i els gripaus ≈34-39.
 
+La Vet té, a més, una **mida gran** (prefix `Gran`: GranIdleD, GranWalkL...; hd/gran.py), redibuixada a ×1,5 per a la
+caseta d'obra i el campament de les Fades (es van pintar per a personatges de 97 px). Va al mateix full, en files a
+sota, amb fotogrames que són els d'1× escalats (`sizeVariants: {"Gran": 1.5}` al .character.json; la roba `Gran`
+amb `inRoom` a game/data/characters.json la tria a aquestes sales).
+
 Animacions (L, D, U; Benne fa el mirall per a R):
   - **persones** (iri, vet, avia, pla, txell): IdleL/D/U/DL/UL (4: respira), WalkL/D/U/DL/UL (6), TalkL/D/U/DL/UL (2),
     BlinkD/L/DL i LookD/DL (les micro-accions de quan són quietes; `idleActions`). El 3/4 (DL, UL; DR i UR són el
@@ -26,6 +31,7 @@ els camps del sprite al .character.json), com faria el sync.
 La làmina de revisió: python3 ../../../guio/art/personatges.py
 """
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -33,12 +39,18 @@ from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from hd import arrel as A  # noqa: E402
+from hd import gran as G  # noqa: E402
 
 OUT = Path(__file__).resolve().parent.parent / 'placeholder-art'
 GAME = Path(__file__).resolve().parents[3] / 'ultima-arrel/src/game'
 CLEAR = (0, 0, 0, 0)
 SPRITE_FIELDS = ['walkSpeed', 'walkToPoint', 'talkPoint', 'feet', 'collider', 'animations', 'clickable', 'display',
-                 'artScale', 'idleActions']
+                 'artScale', 'idleActions', 'sizeVariants']
+
+# La mida gran (hd/gran.py): la Vet, a la caseta d'obra i al campament de les Fades (les sales que es van pintar per a
+# personatges de 97 px). Etiquetes amb el prefix `Gran` (GranIdleD, GranWalkL...), al mateix full.
+GRAN = 'Gran'
+AMB_GRAN = {'vet'}
 
 # La respiració (Idle de quatre fotogrames): no es mou cap píxel de la silueta; només la clariana del pit puja i baixa
 # (+5 %, +10 %, +5 %). A 1×, moure el cos 1 px amunt o avall semblava arronsar les espatlles.
@@ -99,32 +111,72 @@ def collider(img, feet):
     return {'points': [{'x': round(x), 'y': round(y)} for x, y in pts]}
 
 
-def write(cid, tags, feet, extra):
-    """tags: [(nom, [imatges])]. Escriu <id>.png, <id>.json (Aseprite) i <id>.character.json a placeholder-art."""
+def retalla_gran(gran, crop, w, h):
+    """Retalla les figures grans al fotograma d'1× escalat: `crop` = (x0, y0), la cantonada d'1× dins la figura gran
+    (ja entera, gràcies a `sub`); w×h, el fotograma d'1×. Comprova que no en surti res."""
+    W, H = math.ceil(w * G.K), math.ceil(h * G.K)
+    x0, y0 = crop
+    out = []
+    for name, imgs in gran:
+        cut = []
+        for im in imgs:
+            b = im.getbbox()
+            assert b[0] >= x0 and b[1] >= y0 and b[2] <= x0 + W and b[3] <= y0 + H, (name, b, (x0, y0, W, H))
+            cut.append(im.crop((x0, y0, x0 + W, y0 + H)))
+        out.append((name, cut))
+    return out
+
+
+def gran_sub(feet_in, feet):
+    """La cantonada del fotograma d'1× dins el dibuix sense retallar, a ×K: (desplaçament `sub`, cantonada entera)."""
+    x0, y0 = feet_in[0] - feet[0], feet_in[1] - feet[1]
+    X, Y = x0 * G.K, y0 * G.K
+    sub = (math.ceil(X) - X, math.ceil(Y) - Y)
+    return sub, (math.ceil(X), math.ceil(Y))
+
+
+def write(cid, tags, feet, extra, gran=None):
+    """tags: [(nom, [imatges])]. Escriu <id>.png, <id>.json (Aseprite) i <id>.character.json a placeholder-art.
+    `gran(sub)` → les etiquetes de la mida gran sense retallar (hd/gran.py): van al mateix full, en files a sota, amb
+    fotogrames 1,5 vegades més grans (`sizeVariants` al .character.json)."""
+    feet_in = feet
     tags, feet = retalla(tags, feet)
-    frames = [img for _, imgs in tags for img in imgs]
-    w, h = frames[0].size
-    cols = min(len(frames), 4096 // w)              # una textura no pot fer més de 4096 d'ample
-    rows = -(-len(frames) // cols)
-    sheet = Image.new('RGBA', (w * cols, h * rows), CLEAR)
-    for i, img in enumerate(frames):
-        sheet.paste(img, ((i % cols) * w, (i // cols) * h))
+    w, h = tags[0][1][0].size
+    blocs = [tags]
+    if gran:
+        sub, crop = gran_sub(feet_in, feet)
+        blocs.append(retalla_gran(gran(sub), crop, w, h))
+    # cada mida, en files pròpies (una textura no pot fer més de 4096 d'ample)
+    places, y = [], 0
+    for bloc in blocs:
+        frames = [img for _, imgs in bloc for img in imgs]
+        fw, fh = frames[0].size
+        rows = -(-len(frames) // (4096 // fw))
+        cols = -(-len(frames) // rows)
+        places += [(img, (i % cols) * fw, y + (i // cols) * fh) for i, img in enumerate(frames)]
+        y += rows * fh
+    sheet = Image.new('RGBA', (max(x + img.width for img, x, _ in places), y), CLEAR)
+    for img, x, yy in places:
+        sheet.paste(img, (x, yy))
     d = OUT / cid
     d.mkdir(parents=True, exist_ok=True)
     sheet.save(d / f'{cid}.png')
     frame_tags, i = [], 0
-    for name, imgs in tags:
+    for name, imgs in (t for bloc in blocs for t in bloc):
         frame_tags.append({'name': name, 'from': i, 'to': i + len(imgs) - 1, 'direction': 'forward', 'color': '#000000ff'})
         i += len(imgs)
     meta = {
         'frames': {f'{cid} {n}.aseprite': {
-            'frame': {'x': (n % cols) * w, 'y': (n // cols) * h, 'w': w, 'h': h}, 'rotated': False, 'trimmed': False,
-            'spriteSourceSize': {'x': 0, 'y': 0, 'w': w, 'h': h}, 'sourceSize': {'w': w, 'h': h}, 'duration': 100,
-        } for n in range(len(frames))},
+            'frame': {'x': x, 'y': yy, 'w': img.width, 'h': img.height}, 'rotated': False, 'trimmed': False,
+            'spriteSourceSize': {'x': 0, 'y': 0, 'w': img.width, 'h': img.height},
+            'sourceSize': {'w': img.width, 'h': img.height}, 'duration': 100,
+        } for n, (img, x, yy) in enumerate(places)},
         'meta': {'app': 'https://www.aseprite.org/', 'version': 'draw_characters.py', 'image': f'{cid}.png',
                  'format': 'RGBA8888', 'size': {'w': sheet.width, 'h': sheet.height}, 'scale': '1',
                  'frameTags': frame_tags, 'layers': [], 'slices': []},
     }
+    frames = [img for _, imgs in tags for img in imgs]
+    tags = [t for bloc in blocs for t in bloc]
     (d / f'{cid}.json').write_text(json.dumps(meta, indent=2) + '\n')
     idle = dict(tags).get('IdleD', frames)[0]
     fx, fy = feet
@@ -138,7 +190,8 @@ def write(cid, tags, feet, extra):
         **extra,
     }
     (d / f'{cid}.character.json').write_text(json.dumps(character, indent=2) + '\n')
-    print(f'✔ {cid}: {len(frames)} fotogrames ({w}×{h}), {len(tags)} etiquetes, peus a {feet}')
+    print(f'✔ {cid}: {len(places)} fotogrames ({w}×{h}{" i grans" if gran else ""}), {len(tags)} etiquetes, '
+          f'peus a {feet}')
     return tags
 
 
@@ -172,32 +225,46 @@ DIRS = ('L', 'D', 'U', 'DL', 'UL')
 PERSONA_FEET = (25, 83 + A.PAD)
 
 
-def person_tags(spec, dirs=DIRS):
+def person_tags(spec, dirs=DIRS, figura=A.figura, respira=A.respira, prefix=''):
+    """Les etiquetes d'una persona; amb `figura` i `respira` de hd/gran.py (i `prefix`), les de la mida gran."""
     out = []
     for f in dirs:
-        base = A.figura(spec, f)
-        out.append((f'Idle{f}', [A.respira(base, spec, k) for k in RESPIRA]))
+        base = figura(spec, f)
+        out.append((f'Idle{f}', [respira(base, spec, k) for k in RESPIRA]))
     for f in dirs:
-        out.append((f'Walk{f}', [A.figura(spec, f, walk=k) for k in range(6)]))
+        out.append((f'Walk{f}', [figura(spec, f, walk=k) for k in range(6)]))
     for f in dirs:
-        out.append((f'Talk{f}', [A.figura(spec, f), A.figura(spec, f, talk=True)]))
+        out.append((f'Talk{f}', [figura(spec, f), figura(spec, f, talk=True)]))
     # micro-accions de quan és quiet (idleActions del motor): parpellejar i mirar al voltant (on es veu la cara)
     for f in dirs:
         if f in ('D', 'L', 'DL'):
-            out.append((f'Blink{f}', [A.figura({**spec, 'closed': True}, f)] * 2))
+            out.append((f'Blink{f}', [figura({**spec, 'closed': True}, f)] * 2))
     for f in dirs:
         if f in ('D', 'DL'):
-            out.append((f'Look{f}', [A.figura({**spec, 'mira': m}, f) for m in (-1, -1, -1, 0, 1, 1, 1, 0)]))
-    return out
+            out.append((f'Look{f}', [figura({**spec, 'mira': m}, f) for m in (-1, -1, -1, 0, 1, 1, 1, 0)]))
+    return [(prefix + n, imgs) for n, imgs in out]
+
+
+def gran_tags(spec):
+    """`gran(sub)` per a `write`: les mateixes etiquetes a ×1,5, amb el prefix `Gran`."""
+    def make(sub):
+        return person_tags(spec, figura=lambda s, f, **kw: G.figura(s, f, sub=sub, **kw),
+                           respira=lambda img, s, k: G.respira(img, s, k, sub=sub), prefix=GRAN)
+    return make
 
 
 def persona(cid, spec, walk_speed, verb, walk=(90, 100)):
     tags = person_tags(spec)
-    return write(cid, tags, PERSONA_FEET, {
-        'walkSpeed': walk_speed, 'animations': durations(tags, walk=walk), 'defaultVerb': verb,
+    gran = gran_tags(spec) if cid in AMB_GRAN else None
+    names = tags + ([(GRAN + n, imgs) for n, imgs in tags] if gran else [])
+    extra = {
+        'walkSpeed': walk_speed, 'animations': durations(names, walk=walk), 'defaultVerb': verb,
         # quan és quiet, de tant en tant parpelleja i, si fa estona, mira al voltant (el motor salta la que no hi és)
         'idleActions': [{'animation': 'Blink', 'every': [3, 8]}, {'animation': 'Look', 'every': [9, 18], 'after': 6}],
-    })
+    }
+    if gran:
+        extra['sizeVariants'] = {GRAN: G.K}
+    return write(cid, tags, PERSONA_FEET, extra, gran=gran)
 
 
 # ─── Criatures ──────────────────────────────────────────────────────────────

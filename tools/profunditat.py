@@ -12,7 +12,9 @@ Per a cada sala jugable (amb zona caminable i algun personatge que es veu), comp
     amb `scaleEnabled` que conté els peus; fora de tota regió, 1). No la de la vora de la regió, que pot anar més
     avall d'on es camina. Avisa si passa d'ESCALA_MAX (els fulls són a 1×: ampliats, es pixelen), si baixa
     d'ESCALA_MIN (la cara es comença a perdre: mireu-ho a la pantalla) o si l'escala canvia però la velocitat no
-    (`scaleWalkSpeed`).
+    (`scaleWalkSpeed`). Si la protagonista de la sala hi porta una mida de full pròpia (una roba, `outfit` amb `inRoom`
+    a game/data/characters.json, que és una mida de `sizeVariants` al seu .character.json; p. ex. `Gran`, ×1,5), el
+    motor la mostra a l'escala ÷ la de la mida: els límits es comproven amb aquesta.
   - **capes**: alguna capa amb línia base que no sigui la del primer pla (999), perquè el personatge pugui passar per
     darrere d'alguna cosa.
 
@@ -92,8 +94,42 @@ def es_veu(c):
     return '-veu' in d or '_veu' in d
 
 
-def revisa(sala):
-    """(avisos, notes, resum) d'una sala; None si no s'hi veu ningú."""
+def _sales_de(cond):
+    """Les sales que una condició (`if` de narrative-core) esmenta amb `inRoom`."""
+    if isinstance(cond, list):
+        return {r for c in cond for r in _sales_de(c)}
+    if not isinstance(cond, dict):
+        return set()
+    out = set()
+    for k, v in cond.items():
+        if k == 'inRoom':
+            out |= set(v if isinstance(v, list) else [v])
+        else:
+            out |= _sales_de(v)
+    return out
+
+
+def mida_full(joc, sala_id):
+    """(prefix, escala) de la mida de full que porta a la sala la seva protagonista (`outfit` amb `inRoom` que és una
+    mida de `sizeVariants`), o (None, 1)."""
+    dades = ARREL / 'games' / joc / 'game' / 'data'
+    try:
+        prot = json.loads((dades / 'rooms' / f'{sala_id}.json').read_text()).get('protagonist')
+        roba = json.loads((dades / 'characters.json').read_text()).get(prot, {}).get('outfit', [])
+        fitxa = ARREL / 'games' / joc / joc / 'src/game/characters' / prot / f'{prot}.character.json'
+        mides = json.loads(fitxa.read_text()).get('sizeVariants') or {}
+    except (OSError, ValueError, AttributeError, TypeError):
+        return None, 1.0
+    for regla in roba:
+        if sala_id in _sales_de(regla.get('if')):
+            nom = regla.get('name', '')
+            prefix = max((m for m in mides if nom.startswith(m)), key=len, default=None)
+            return (prefix, float(mides[prefix])) if prefix else (None, 1.0)
+    return None, 1.0
+
+
+def revisa(sala, mida=(None, 1.0)):
+    """(avisos, notes, resum) d'una sala; None si no s'hi veu ningú. `mida`: la de `mida_full`."""
     pers = [c for c in sala.get('characters', []) if not es_veu(c)]
     if not pers:
         return None
@@ -117,6 +153,10 @@ def revisa(sala):
     elif not sh.get('light'):
         notes.append('ombra sense punt de llum (light)')
     lo, hi = min(e for e, _ in esc), max(e for e, _ in esc)
+    rang = f'{lo:.2f}–{hi:.2f}'
+    if mida[0]:                                     # amb una mida de full pròpia, el motor la mostra a l'escala ÷ k
+        lo, hi = lo / mida[1], hi / mida[1]
+        rang += f' (full {mida[0]} ×{mida[1]:g}: {lo:.2f}–{hi:.2f})'
     if hi > ESCALA_MAX:
         avisos.append(f'escala fins a {hi:.2f} on es camina (màx. ≈{ESCALA_MAX})')
     if lo < ESCALA_MIN:
@@ -127,7 +167,7 @@ def revisa(sala):
     if not any(p['baseline'] != 999 for p in capes):
         notes.append('cap capa amb línia base al mig: no es passa per darrere de res')
     llum = 'sí' if cl else '-'
-    return avisos, notes, f'escala {lo:.2f}–{hi:.2f}  llum {llum}  ombra {"sí" if sh else "-"}  capes {len(capes)}'
+    return avisos, notes, f'escala {rang}  llum {llum}  ombra {"sí" if sh else "-"}  capes {len(capes)}'
 
 
 def jocs(args):
@@ -154,7 +194,7 @@ def main():
         print(f'== {joc}')
         cine = []
         for f in sales:
-            r = revisa(json.loads(f.read_text()))
+            r = revisa(json.loads(f.read_text()), mida_full(joc, f.parent.name))
             if r is None:
                 continue
             if r == 'cinematica':

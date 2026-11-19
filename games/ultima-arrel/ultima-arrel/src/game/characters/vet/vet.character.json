@@ -127,6 +127,86 @@
     "LookDL": {
       "loop": false,
       "frameDuration": 260
+    },
+    "GranIdleL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "GranIdleD": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "GranIdleU": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "GranIdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "GranIdleUL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "GranWalkL": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "GranWalkD": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "GranWalkU": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "GranWalkDL": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "GranWalkUL": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "GranTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "GranTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "GranTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "GranTalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "GranTalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "GranBlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "GranBlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "GranBlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "GranLookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "GranLookDL": {
+      "loop": false,
+      "frameDuration": 260
     }
   },
   "defaultVerb": "look",
@@ -147,5 +227,8 @@
       "after": 6
     }
   ],
+  "sizeVariants": {
+    "Gran": 1.5
+  },
   "speechColor": "#7fd8e6"
 }
