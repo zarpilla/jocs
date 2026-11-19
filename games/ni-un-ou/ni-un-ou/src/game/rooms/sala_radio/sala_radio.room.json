@@ -521,7 +521,7 @@
         "radius": 400,
         "color": "#e8eef4",
         "intensity": 0.45,
-        "power": 1.0,
+        "power": 1,
         "whenPropVisible": "dia"
       },
       {
@@ -530,7 +530,7 @@
         "radius": 380,
         "color": "#e8eef4",
         "intensity": 0.4,
-        "power": 1.0,
+        "power": 1,
         "whenPropVisible": "dia"
       }
     ]
