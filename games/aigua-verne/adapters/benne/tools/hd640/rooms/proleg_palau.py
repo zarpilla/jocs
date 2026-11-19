@@ -489,9 +489,10 @@ GEOMETRIA = {
     'characterLights': {
         'ambient': '#b8b4c0',
         'lights': [
-            # l'anunci, l'aquari, Terra-2 pel vidre i el focus (encès: el decorat `focus_apagat` no en treu la llum)
-            *[llum_personatges(CAM, l.pos, l.r, c, k) for l, c, k in zip(_llums(), ('#fff4e8', '#78d0ff', '#ffd8a8', '#fff8e8'),
-                                                              (0.25, 0.35, 0.2, 0.35))],
+            # l'anunci, l'aquari, Terra-2 pel vidre i el focus, que s'apaga quan es veu el decorat `focus_apagat`
+            *[llum_personatges(CAM, l.pos, l.r, c, k, **x) for l, c, k, x in
+              zip(_llums(), ('#fff4e8', '#78d0ff', '#ffd8a8', '#fff8e8'), (0.25, 0.35, 0.2, 0.35),
+                  ({}, {}, {}, {'whenPropHidden': 'focus_apagat'}))],
         ],
     },
 }

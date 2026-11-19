@@ -114,7 +114,7 @@ def llum_personatges(cam, pos, r, color, intensitat, alt=110, **extra):
     Els personatges són dibuixos plans: el motor mostreja la llum als cantons del sprite (el cap i els peus), en
     coordenades de sala. Una llum de sostre projectada tal qual quedaria molt per sobre dels caps, així que el punt
     baixa fins a `alt` (≈ el pit d'un personatge) i l'abast és el de l'escena a la profunditat d'aquell punt.
-    `extra`: `power`, `squash`, `whenPropVisible`.
+    `extra`: `power`, `squash`, `whenPropVisible`, `whenPropHidden`.
     """
     x, y, z = pos
     P = (x, min(y, alt), z)

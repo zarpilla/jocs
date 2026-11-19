@@ -141,6 +141,8 @@ export interface RoomCharacterLightData {
   power?: number;
   /** Only while this prop is visible (a lamp that is switched on, a hatch that is open). */
   whenPropVisible?: string;
+  /** Only while this prop is hidden (a lamp that goes out when a blackout prop is shown). */
+  whenPropHidden?: string;
 }
 
 /**

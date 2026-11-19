@@ -1565,7 +1565,7 @@ diff -ruN src/engine/rendering/benneCharacterPerspectiveBatch.ts src/engine/rend
 diff -ruN src/engine/room/characterLights.ts src/engine/room/characterLights.ts
 --- src/engine/room/characterLights.ts
 +++ src/engine/room/characterLights.ts
-@@ -0,0 +1,133 @@
+@@ -0,0 +1,138 @@
 +/**
 + * Character lights: the room's light falls on its characters at runtime.
 + *
@@ -1603,6 +1603,7 @@ diff -ruN src/engine/room/characterLights.ts src/engine/room/characterLights.ts
 +  power: number;
 +  rgb: Rgb;
 +  whenPropVisible?: string;
++  whenPropHidden?: string;
 +}
 +
 +export interface CompiledCharacterLights {
@@ -1634,6 +1635,7 @@ diff -ruN src/engine/room/characterLights.ts src/engine/room/characterLights.ts
 +      power: l.power ?? 1.6,
 +      rgb: [rgb[0] * k, rgb[1] * k, rgb[2] * k],
 +      whenPropVisible: l.whenPropVisible,
++      whenPropHidden: l.whenPropHidden,
 +    };
 +  });
 +  const out: CompiledCharacterLights = {
@@ -1655,6 +1657,9 @@ diff -ruN src/engine/room/characterLights.ts src/engine/room/characterLights.ts
 +  const v: Rgb = [cl.ambient[0], cl.ambient[1], cl.ambient[2]];
 +  for (const l of cl.lights) {
 +    if (l.whenPropVisible && !isPropVisible(l.whenPropVisible)) {
++      continue;
++    }
++    if (l.whenPropHidden && isPropVisible(l.whenPropHidden)) {
 +      continue;
 +    }
 +    const d = Math.hypot(x - l.x, (y - l.y) * l.squash) / l.radius;
@@ -2832,7 +2837,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (getCharacterAnimationOverrideTag(observer)) {
        observer.setData('facing', facing);
        return;
-@@ -3884,12 +4068,22 @@
+@@ -3884,12 +4068,23 @@
        this.roomData.regions,
        getPerspectiveSettings(),
      );
@@ -2850,14 +2855,15 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
 +    }
    }
  
-+  /** For {@link applyCharacterLights}: a light with `whenPropVisible` only shines while that prop is shown. */
++  /** For {@link applyCharacterLights}: a light with `whenPropVisible` only shines while that prop is shown (and one with
++   * `whenPropHidden`, only while it is hidden). */
 +  private readonly isPropShownForLights = (propId: string): boolean =>
 +    this.propSpritesById.get(propId)?.visible === true;
 +
    /**
     * Applies region perspective scale for characters that are not mid–feet-interpolating walk tween.
     */
-@@ -4077,7 +4271,7 @@
+@@ -4077,7 +4272,7 @@
      if (Math.hypot(dx, dy) < 1e-2) {
        return;
      }
@@ -2866,7 +2872,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (getCharacterAnimationOverrideTag(sprite)) {
        sprite.setData('facing', facing);
        return;
-@@ -4094,7 +4288,7 @@
+@@ -4094,7 +4289,7 @@
      const dx = newFeet.x - oldFeet.x;
      const dy = newFeet.y - oldFeet.y;
      if (Math.hypot(dx, dy) >= 1e-2) {
@@ -2875,7 +2881,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        if (!getCharacterAnimationOverrideTag(sprite)) {
          playDirectionalAnimation(sprite, 'Idle', facing);
        } else {
-@@ -4567,6 +4761,30 @@
+@@ -4567,6 +4762,30 @@
        sb?.width ?? roomW,
        sb?.height ?? roomH,
      );
@@ -2906,7 +2912,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    }
  
    /** Starts follow on the player’s feet (see `CharacterData.feet`). */
-@@ -4576,21 +4794,37 @@
+@@ -4576,21 +4795,37 @@
      }
      const vW = getInternalWidth();
      const vH = getInternalHeight();
@@ -2946,7 +2952,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.updatePathDebug();
      this.invokeOnUpdateHandlers(this.game.loop.delta / 1000);
    }
-@@ -4609,6 +4843,65 @@
+@@ -4609,6 +4844,65 @@
      }
    }
  
@@ -3012,7 +3018,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /** Re-sorts props, characters, and hotspot zones by `zIndex` and optional `baseline` rules. */
    private updateRoomStackDepths(): void {
      if (this.roomStackEntities.length === 0) {
-@@ -5082,11 +5375,11 @@
+@@ -5082,11 +5376,11 @@
          this.beginPlayerWalkLeg(sprite, path, legIndex + 1);
          return;
        }
@@ -3026,7 +3032,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (!getCharacterAnimationOverrideTag(sprite)) {
        playDirectionalAnimation(sprite, 'Walk', facing);
      } else {
-@@ -5154,6 +5447,16 @@
+@@ -5154,6 +5448,16 @@
      this.playerMoveTween = moveTween;
    }
  
@@ -3043,7 +3049,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    private finishPlayerWalk(sprite: DirectionalCharacterSprite, facing: CharacterFacing): void {
      this.currentPlayerPath = null;
      if (!getCharacterAnimationOverrideTag(sprite)) {
-@@ -5260,7 +5563,7 @@
+@@ -5260,7 +5564,7 @@
          this.beginNpcWalkLeg(sprite, path, legIndex + 1, onArrive);
          return;
        }
@@ -3052,7 +3058,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims) {
          if (!getCharacterAnimationOverrideTag(sprite as Phaser.GameObjects.Sprite)) {
            playDirectionalAnimation(sprite as DirectionalCharacterSprite, 'Idle', facing);
-@@ -5272,7 +5575,7 @@
+@@ -5272,7 +5576,7 @@
        return;
      }
  
@@ -3061,7 +3067,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims) {
        if (!getCharacterAnimationOverrideTag(sprite as Phaser.GameObjects.Sprite)) {
          playDirectionalAnimation(sprite as DirectionalCharacterSprite, 'Walk', facing);
-@@ -5594,6 +5897,11 @@
+@@ -5594,6 +5898,11 @@
        // sheets (the typical BENNE workflow) each frame already covers the full room width
        // and height, so no explicit setDisplaySize is needed.
        const sprite = this.add.sprite(spawnX, spawnY, textureKey).setOrigin(0, 0);
@@ -3073,7 +3079,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        const jsonVisible = spawn.data.visible !== false;
        const jsonAlpha = spawn.data.alpha ?? 1;
        sprite.setVisible(readSavedPropVisible(manager, data.room.id, spawn.id, jsonVisible));
-@@ -5675,7 +5983,9 @@
+@@ -5675,7 +5984,9 @@
        return;
      }
  
@@ -3084,7 +3090,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      const poly = new Phaser.Geom.Polygon(flat);
      sprite.setInteractive({
        hitArea: poly,
-@@ -5683,8 +5993,8 @@
+@@ -5683,8 +5994,8 @@
        useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()),
      });
  
@@ -3095,7 +3101,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
          return;
        }
        if (this.isPlayerPointerBlocked()) {
-@@ -5692,12 +6002,24 @@
+@@ -5692,12 +6003,24 @@
        }
        const profile = getEffectiveInputProfile(getGameSettings());
        const manager = resolveGameStateManager(this.game);
@@ -3120,7 +3126,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        );
        if (resolution.kind === 'none') {
          return;
-@@ -5742,10 +6064,161 @@
+@@ -5742,10 +6065,161 @@
        if (resolution.consumeActive) {
          manager.clearActiveVerb();
        }
@@ -3283,7 +3289,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * Dispatches the **look** verb on this prop (same as a primary-button look click). Does not move or rotate the player.
     */
-@@ -5808,8 +6281,8 @@
+@@ -5808,8 +6282,8 @@
        return;
      }
  
@@ -3294,7 +3300,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
          return;
        }
        if (this.isPlayerPointerBlocked()) {
-@@ -5818,12 +6291,24 @@
+@@ -5818,12 +6292,24 @@
        const handlers = getHotspotVerbHandlers(hotspot);
        const profile = getEffectiveInputProfile(getGameSettings());
        const manager = resolveGameStateManager(this.game);
@@ -3319,7 +3325,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        );
        if (resolution.kind === 'none') {
          return;
-@@ -5887,7 +6372,7 @@
+@@ -5887,7 +6373,7 @@
      const geom = new Phaser.Geom.Polygon(flat);
      zone.setInteractive(geom, Phaser.Geom.Polygon.Contains);
      zone.input!.cursor = isBenneGameCursorAsepriteEnabled(getGameSettings()) ? 'none' : 'pointer';
@@ -3328,7 +3334,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  
      this.roomStackEntities.push({
        kind: 'hotspot',
-@@ -5918,6 +6403,7 @@
+@@ -5918,6 +6404,7 @@
      }
  
      const sprite = this.add.image(0, 0, spawn.textureKey);
@@ -3336,7 +3342,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      const feet = resolveCharacterFeetLocal(spawn.data, sprite as Phaser.GameObjects.Sprite);
      const manager = resolveGameStateManager(this.game);
      // Saved feet world position (from a prior flush) overrides the room JSON `(x, y)` — same
-@@ -6026,7 +6512,9 @@
+@@ -6026,7 +6513,9 @@
  
      const colliderPts = spawn.data.collider?.points;
      if (colliderPts && colliderPts.length >= 3) {
@@ -3347,7 +3353,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        const poly = new Phaser.Geom.Polygon(flat);
        sprite.setInteractive({
          hitArea: poly,
-@@ -6036,8 +6524,8 @@
+@@ -6036,8 +6525,8 @@
      } else {
        sprite.setInteractive({ useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()) });
      }
@@ -3358,7 +3364,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
          return;
        }
        if (this.isPlayerPointerBlocked()) {
-@@ -6045,12 +6533,24 @@
+@@ -6045,12 +6534,24 @@
        }
        const profile = getEffectiveInputProfile(getGameSettings());
        const manager = resolveGameStateManager(this.game);
@@ -3383,7 +3389,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        );
        if (resolution.kind === 'none') {
          return;
-@@ -6118,7 +6618,8 @@
+@@ -6118,7 +6619,8 @@
        if (resolution.consumeActive) {
          manager.clearActiveVerb();
        }
@@ -4180,7 +4186,7 @@ diff -ruN src/types/gui.ts src/types/gui.ts
 diff -ruN src/types/room.ts src/types/room.ts
 --- src/types/room.ts
 +++ src/types/room.ts
-@@ -125,6 +125,101 @@
+@@ -125,6 +125,103 @@
    tintAlpha?: number;
  }
  
@@ -4200,6 +4206,8 @@ diff -ruN src/types/room.ts src/types/room.ts
 +  power?: number;
 +  /** Only while this prop is visible (a lamp that is switched on, a hatch that is open). */
 +  whenPropVisible?: string;
++  /** Only while this prop is hidden (a lamp that goes out when a blackout prop is shown). */
++  whenPropHidden?: string;
 +}
 +
 +/**
@@ -4282,7 +4290,7 @@ diff -ruN src/types/room.ts src/types/room.ts
  export interface RoomCharacterInstance {
    /** Unique id for this placement in the room (Phaser texture key suffix). */
    instanceId: string;
-@@ -245,6 +340,19 @@
+@@ -245,6 +342,19 @@
     * The character can walk beyond scroll bounds but the camera stops panning before reaching the room edge.
     */
    scrollBounds?: { x: number; y: number; width: number; height: number };
@@ -4302,7 +4310,7 @@ diff -ruN src/types/room.ts src/types/room.ts
    walkable: {
      polygons: WalkablePolygon[];
    };
-@@ -253,6 +361,27 @@
+@@ -253,6 +363,27 @@
    points?: RoomPointData[];
    /** Closed polygons for regions (optional; editor + future gameplay). */
    regions?: RoomRegionData[];

@@ -4080,7 +4080,8 @@ export class RoomScene extends Phaser.Scene {
     }
   }
 
-  /** For {@link applyCharacterLights}: a light with `whenPropVisible` only shines while that prop is shown. */
+  /** For {@link applyCharacterLights}: a light with `whenPropVisible` only shines while that prop is shown (and one with
+   * `whenPropHidden`, only while it is hidden). */
   private readonly isPropShownForLights = (propId: string): boolean =>
     this.propSpritesById.get(propId)?.visible === true;
 

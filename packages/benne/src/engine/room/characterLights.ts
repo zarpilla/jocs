@@ -35,6 +35,7 @@ interface CompiledLight {
   power: number;
   rgb: Rgb;
   whenPropVisible?: string;
+  whenPropHidden?: string;
 }
 
 export interface CompiledCharacterLights {
@@ -66,6 +67,7 @@ export function compileCharacterLights(data: RoomCharacterLightsData | undefined
       power: l.power ?? 1.6,
       rgb: [rgb[0] * k, rgb[1] * k, rgb[2] * k],
       whenPropVisible: l.whenPropVisible,
+      whenPropHidden: l.whenPropHidden,
     };
   });
   const out: CompiledCharacterLights = {
@@ -87,6 +89,9 @@ export function sampleCharacterLight(
   const v: Rgb = [cl.ambient[0], cl.ambient[1], cl.ambient[2]];
   for (const l of cl.lights) {
     if (l.whenPropVisible && !isPropVisible(l.whenPropVisible)) {
+      continue;
+    }
+    if (l.whenPropHidden && isPropVisible(l.whenPropHidden)) {
       continue;
     }
     const d = Math.hypot(x - l.x, (y - l.y) * l.squash) / l.radius;

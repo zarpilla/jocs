@@ -241,7 +241,8 @@
         "y": 120,
         "radius": 144,
         "color": "#fff8e8",
-        "intensity": 0.35
+        "intensity": 0.35,
+        "whenPropHidden": "focus_apagat"
       }
     ]
   }
