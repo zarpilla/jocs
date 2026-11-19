@@ -42,12 +42,12 @@
             "y": 180
           },
           {
-            "x": 173,
-            "y": 155
+            "x": 174,
+            "y": 154
           },
           {
             "x": 637,
-            "y": 210
+            "y": 209
           }
         ],
         "holes": [
@@ -78,20 +78,20 @@
             "active": true,
             "points": [
               {
-                "x": 498,
-                "y": 209
+                "x": 409,
+                "y": 207
               },
               {
-                "x": 624,
-                "y": 259
+                "x": 521,
+                "y": 239
               },
               {
-                "x": 646,
-                "y": 236
+                "x": 531,
+                "y": 215
               },
               {
-                "x": 526,
-                "y": 194
+                "x": 428,
+                "y": 189
               }
             ]
           },
@@ -100,19 +100,19 @@
             "active": true,
             "points": [
               {
-                "x": 402,
+                "x": 363,
                 "y": 229
               },
               {
-                "x": 490,
+                "x": 445,
                 "y": 261
               },
               {
-                "x": 502,
+                "x": 460,
                 "y": 243
               },
               {
-                "x": 418,
+                "x": 381,
                 "y": 215
               }
             ]
@@ -179,8 +179,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 410,
-        "y": 188
+        "x": 365,
+        "y": 182
       },
       "lookAtPoint": {
         "x": 405,
@@ -194,29 +194,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 507,
-          "y": 87
+          "x": 415,
+          "y": 85
         },
         {
-          "x": 639,
-          "y": 87
+          "x": 535,
+          "y": 85
         },
         {
-          "x": 639,
-          "y": 253
+          "x": 535,
+          "y": 235
         },
         {
-          "x": 507,
-          "y": 253
+          "x": 415,
+          "y": 235
         }
       ],
       "walkToPoint": {
-        "x": 462,
-        "y": 224
+        "x": 392,
+        "y": 194
       },
       "lookAtPoint": {
-        "x": 573,
-        "y": 253
+        "x": 475,
+        "y": 235
       }
     },
     {
@@ -291,16 +291,16 @@
       "active": true,
       "scaleEnabled": true,
       "scaleWalkSpeed": true,
-      "scaleTop": 0.621,
+      "scaleTop": 0.617,
       "scaleBottom": 1.076,
       "points": [
         {
           "x": 0,
-          "y": 153
+          "y": 152
         },
         {
           "x": 639,
-          "y": 153
+          "y": 152
         },
         {
           "x": 639,
@@ -338,7 +338,7 @@
     {
       "id": "peixos",
       "tag": "peixos",
-      "zIndex": 1,
+      "zIndex": 23,
       "visible": true,
       "alpha": 1,
       "clickable": false,
@@ -347,7 +347,8 @@
           "loop": true,
           "frameDuration": 140
         }
-      }
+      },
+      "baseline": 207
     },
     {
       "id": "estrelles",
@@ -398,8 +399,8 @@
       "animations": {
         "davant_aquari": {}
       },
-      "zIndex": 21,
-      "baseline": 222
+      "zIndex": 22,
+      "baseline": 207
     },
     {
       "id": "davant_gandula",
@@ -410,7 +411,7 @@
       "animations": {
         "davant_gandula": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 236
     },
     {
@@ -422,7 +423,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 23,
+      "zIndex": 26,
       "baseline": 999
     }
   ],
@@ -450,8 +451,8 @@
     {
       "instanceId": "dividend-1",
       "definition": "dividend/dividend.character.json",
-      "x": 394,
-      "y": 212,
+      "x": 548,
+      "y": 230,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

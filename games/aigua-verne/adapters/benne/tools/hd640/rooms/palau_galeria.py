@@ -10,7 +10,8 @@ marbre que hi puja, arran de la paret i amb la barana cromada; al terra de la ga
 fonda, amb les escales cromades a la vora del fons; a la dreta, l'**aquari** dels trenta-tres peixos, exempt i girat,
 damunt el peu del rètol «LOT 12», i una gandula. Dos llums d'aranya pengen del sostre. Primer pla: un pilar en ombra
 tallat per la vora de la dreta i un cordó de vellut entre dos pals daurats, a baix a l'esquerra. Es passa per darrere de la gandula
-(a la vora de la piscina central) i de les escales cromades de la piscina; l'aquari també fa de capa del davant.
+(a la vora de la piscina central), de les escales cromades de la piscina i de l'aquari (entre l'aquari i la primera
+terrassa hi ha un pas).
 
 El detall ve del dibuix pla (palau_galeria_pla_comu.py): el finestral, la porta, el vidre de l'aquari i el seu peu, les
 columnes i els llums. PROPS: `piscines_plenes` (aigua a totes, quan s'obre la reserva). ANIMS: `peixos`, `estrelles`, i
@@ -41,11 +42,12 @@ NPOOL = (5, 7, 10)                                 # piscines a cada terrassa (+
 POOL_D = 20                                        # la fondària de les piscines de les terrasses
 CEN = (262, 438, 150, 214, 56)                     # la piscina central: x0, x1, z0, z1, fondària
 ESC = (0, XT, 196, 7, 12, 29)                      # l'escala: x0, x1, z del primer graó, graons, alçada, petja
-AQ = (652, 238, -0.62)                             # l'aquari: centre (x, z) i gir
+AQ = (550, 232, -0.30)                             # l'aquari: centre (x, z) i gir (separat de la terrassa: s'hi
+#                                                    passa per darrere)
 ARANYES = ((420, 204, 140), (660, 214, 400))       # els llums d'aranya (x, y, z)
 ESCALETES = (CEN[0] + 40, CEN[1] - 56)             # les dues escales cromades de la piscina central (x)
 COLUMNA = (646, 96)                                # la columna del primer pla (x, z)
-GANDULA = (530, 170, -0.38)                         # la gandula, a la vora de la piscina central (x, z, gir)
+GANDULA = (490, 158, -0.38)                        # la gandula, a la vora de la piscina central (x, z, gir)
 PALS = ((176, 6), (326, 22))                      # els pals del cordó de vellut (x, z), en primer pla
 
 CAM = Camera(pos=(520, 230, -250), yaw=-0.30, pitch=0.16, f=420, centre=(320, 76))
@@ -458,7 +460,7 @@ def frames_reflexos(img, e, n=8):
     from PIL import Image
     ax, az, _ = AQ
     terra = [i for i, s in enumerate(e.ids) if s == 'terra']
-    mask = np.isin(np.frombuffer(bytes(e.amo), np.uint8).reshape(e.cv.h, e.cv.w), terra)[..., None]
+    mask = np.isin(np.frombuffer(e.amo, np.uint16).reshape(e.cv.h, e.cv.w), terra)[..., None]
     base = np.asarray(img)
     out = []
     for i in range(n):
@@ -512,12 +514,22 @@ def _v(x, z, y=0.0):
     return CAM.projecta((x, y, z))[1]
 
 
+def _caixa_girada_terra(cx, cz, w, d, ang, marge):
+    c, s = math.cos(ang), math.sin(ang)
+    a, b = w / 2 + marge, d / 2 + marge
+    return [(cx + lx * c - lz * s, cz + lx * s + lz * c) for lx, lz in ((-a, -b), (a, -b), (a, b), (-a, b))]
+
+
+_AQ_CANTO = _caixa_girada_terra(AQ[0], AQ[1], PL.AQ_W + 8, PL.AQ_D + 8, AQ[2], 0)[0]   # (x, z) davant-esquerra
+
+
 FRONT = [
     # les escales cromades de la piscina central: qui és darrere la piscina hi passa per darrere
     {'id': 'davant_escaleta', 'mask': _amo({'escaleta'}), 'baseline': round(_v(350, CEN[3] + 6)), 'zIndex': 20},
-    # l'aquari (el peu, el vidre i el capçal)
-    {'id': 'davant_aquari', 'mask': _amo({'aquari', 'aquari_vidre', 'aquari_costat'}), 'baseline': round(_v(AQ[0], AQ[1])),
-     'zIndex': 20},
+    # l'aquari (el peu, el vidre i el capçal): la línia base, la del cantó de davant que queda més al fons (el de
+    # l'esquerra); els peixos hi neden per sobre (si no, la capa els tapa)
+    {'id': 'davant_aquari', 'mask': _amo({'aquari', 'aquari_vidre', 'aquari_costat'}),
+     'baseline': round(_v(*_AQ_CANTO)), 'zIndex': 20, 'props': ('peixos',)},
     # la gandula
     {'id': 'davant_gandula', 'mask': _amo({'gandula'}), 'baseline': round(_v(GANDULA[0], GANDULA[1])), 'zIndex': 20},
     {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
@@ -537,15 +549,9 @@ def _rect_mon(*Ps):
             min(W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
 
 
-def _caixa_girada_terra(cx, cz, w, d, ang, marge):
-    c, s = math.cos(ang), math.sin(ang)
-    a, b = w / 2 + marge, d / 2 + marge
-    return [(cx + lx * c - lz * s, cz + lx * s + lz * c) for lx, lz in ((-a, -b), (a, -b), (a, b), (-a, b))]
-
-
 # El terra on es camina (al món): la galeria, davant les terrasses, fins a la paret de la porta i el peu de l'escala;
 # a prop, fins on el personatge no passa de ≈1,2. Forats: la piscina central i l'aquari (s'hi pot fer la volta).
-WALK_MON = [(14, 44), (14, ESC[2] - 8), (ESC[1] + 8, ESC[2] - 8), (ESC[1] + 8, ZT[0] - 8), (XR - 10, ZT[0] - 8),
+WALK_MON = [(14, 44), (14, ESC[2] - 8), (ESC[1] + 8, ESC[2] - 8), (ESC[1] + 8, ZT[0] - 6), (XR - 10, ZT[0] - 6),
             (XR - 10, 44)]
 _WALK = PL.retalla([CAM.projecta((x, 0, z))[:2] for x, z in WALK_MON])
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
@@ -565,7 +571,7 @@ def _escala_a(v):
 
 _CEN_FORAT = [_p(x, z) for x, z in ((CEN[0] - 8, CEN[2] - 8), (CEN[1] + 8, CEN[2] - 8), (CEN[1] + 8, CEN[3] + 8),
                                      (CEN[0] - 8, CEN[3] + 8))]
-_AQ_FORAT = [_p(x, z) for x, z in _caixa_girada_terra(AQ[0], AQ[1], PL.AQ_W + 8, PL.AQ_D + 8, AQ[2], 8)]
+_AQ_FORAT = [_p(x, z) for x, z in _caixa_girada_terra(AQ[0], AQ[1], PL.AQ_W + 8, PL.AQ_D + 8, AQ[2], 6)]
 _GAN_FORAT = [_p(x, z) for x, z in _caixa_girada_terra(GANDULA[0], GANDULA[1], 78, 26, GANDULA[2], 6)]
 _PZ = PL.PORTA[0] + PL.ESQ_Z0, PL.PORTA[1] + PL.ESQ_Z0     # la porta, en z del món
 _AQ_PUNTS = [(x, y, z) for x, z in _caixa_girada_terra(AQ[0], AQ[1], PL.AQ_W + 10, PL.AQ_D + 10, AQ[2], 0)
@@ -579,15 +585,15 @@ GEOMETRIA = {
                                         (PL.FONS_COLS[-1], YC - PL.WIN_Y1, ZW)),
                       'walk': _p(300, ZT[0] - 30)},
         'piscines': {'rect': _rect_mon((XT, TH[2], ZW), (XR, 0, ZT[0]), (XT, 0, ZT[0])),
-                     'walk': _p(480, ZT[0] - 24)},
+                     'walk': _p(420, ZT[0] - 24)},
         # les escales cromades de la piscina central (l'escala de marbre de l'esquerra no és clicable)
         'escales': {'rect': _rect_mon(*[(x, y, CEN[3] + dz) for x in (ESCALETES[0] - 6, ESCALETES[1] + 20)
                                         for y in (30, -20) for dz in (-6, 12)]),
                     'walk': _p((CEN[0] + CEN[1]) / 2, CEN[2] - 16)},
-        'aquari': {'rect': _rect_mon(*_AQ_PUNTS), 'walk': _p(AQ[0] - 110, AQ[1] - 40)},
+        'aquari': {'rect': _rect_mon(*_AQ_PUNTS), 'walk': _p(AQ[0] - 90, AQ[1] + 18)},
     },
     'spawns': {'iri': _p(60, (_PZ[0] + _PZ[1]) / 2 - 10), 'verne': _p(200, 150),
-               'dividend': _p(CEN[1] + 30, CEN[3] - 10)},
+               'dividend': _p(628, 212)},          # (entre l'aquari i la columna)
     'walkable': _WALK,
     'forats': [_CEN_FORAT, _AQ_FORAT, _GAN_FORAT],
     'floorSquash': 0.45,                           # (la càmera, a 2,3 m i picada: el terra es veu aixafat)
