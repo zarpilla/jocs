@@ -23,7 +23,7 @@
     },
     "proleg_cella 1.aseprite": {
       "frame": {
-        "x": 2854,
+        "x": 470,
         "y": 360,
         "w": 1,
         "h": 1
@@ -44,18 +44,18 @@
     },
     "proleg_cella 2.aseprite": {
       "frame": {
-        "x": 674,
-        "y": 360,
-        "w": 237,
-        "h": 243
+        "x": 3101,
+        "y": 0,
+        "w": 86,
+        "h": 207
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 230,
-        "y": 6,
-        "w": 237,
-        "h": 243
+        "x": 209,
+        "y": 32,
+        "w": 86,
+        "h": 207
       },
       "sourceSize": {
         "w": 640,
@@ -65,18 +65,18 @@
     },
     "proleg_cella 3.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 2055,
         "y": 0,
-        "w": 239,
-        "h": 244
+        "w": 119,
+        "h": 211
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 229,
-        "y": 5,
-        "w": 239,
-        "h": 244
+        "x": 204,
+        "y": 31,
+        "w": 119,
+        "h": 211
       },
       "sourceSize": {
         "w": 640,
@@ -86,18 +86,18 @@
     },
     "proleg_cella 4.aseprite": {
       "frame": {
-        "x": 879,
+        "x": 640,
         "y": 0,
-        "w": 237,
-        "h": 244
+        "w": 146,
+        "h": 213
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 230,
-        "y": 5,
-        "w": 237,
-        "h": 244
+        "x": 204,
+        "y": 31,
+        "w": 146,
+        "h": 213
       },
       "sourceSize": {
         "w": 640,
@@ -107,18 +107,18 @@
     },
     "proleg_cella 5.aseprite": {
       "frame": {
-        "x": 2014,
-        "y": 360,
-        "w": 257,
-        "h": 205
+        "x": 786,
+        "y": 0,
+        "w": 176,
+        "h": 213
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 216,
-        "y": 5,
-        "w": 257,
-        "h": 205
+        "x": 174,
+        "y": 31,
+        "w": 176,
+        "h": 213
       },
       "sourceSize": {
         "w": 640,
@@ -128,18 +128,18 @@
     },
     "proleg_cella 6.aseprite": {
       "frame": {
-        "x": 1116,
+        "x": 962,
         "y": 0,
-        "w": 337,
-        "h": 244
+        "w": 208,
+        "h": 213
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 5,
-        "w": 337,
-        "h": 244
+        "x": 142,
+        "y": 31,
+        "w": 208,
+        "h": 213
       },
       "sourceSize": {
         "w": 640,
@@ -149,18 +149,18 @@
     },
     "proleg_cella 7.aseprite": {
       "frame": {
-        "x": 1453,
+        "x": 2174,
         "y": 0,
-        "w": 337,
-        "h": 244
+        "w": 208,
+        "h": 211
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 5,
-        "w": 337,
-        "h": 244
+        "x": 142,
+        "y": 31,
+        "w": 208,
+        "h": 211
       },
       "sourceSize": {
         "w": 640,
@@ -170,18 +170,18 @@
     },
     "proleg_cella 8.aseprite": {
       "frame": {
-        "x": 1790,
+        "x": 3527,
         "y": 0,
-        "w": 331,
-        "h": 244
+        "w": 199,
+        "h": 205
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 5,
-        "w": 331,
-        "h": 244
+        "x": 142,
+        "y": 31,
+        "w": 199,
+        "h": 205
       },
       "sourceSize": {
         "w": 640,
@@ -191,18 +191,18 @@
     },
     "proleg_cella 9.aseprite": {
       "frame": {
-        "x": 2513,
-        "y": 360,
-        "w": 137,
-        "h": 197
+        "x": 3726,
+        "y": 0,
+        "w": 113,
+        "h": 205
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 320,
-        "y": 5,
-        "w": 137,
-        "h": 197
+        "x": 228,
+        "y": 31,
+        "w": 113,
+        "h": 205
       },
       "sourceSize": {
         "w": 640,
@@ -212,18 +212,18 @@
     },
     "proleg_cella 10.aseprite": {
       "frame": {
-        "x": 2121,
+        "x": 3839,
         "y": 0,
-        "w": 237,
-        "h": 244
+        "w": 132,
+        "h": 205
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 230,
-        "y": 5,
-        "w": 237,
-        "h": 244
+        "x": 209,
+        "y": 31,
+        "w": 132,
+        "h": 205
       },
       "sourceSize": {
         "w": 640,
@@ -233,18 +233,18 @@
     },
     "proleg_cella 11.aseprite": {
       "frame": {
-        "x": 2358,
+        "x": 2382,
         "y": 0,
-        "w": 239,
-        "h": 244
+        "w": 137,
+        "h": 211
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 229,
-        "y": 5,
-        "w": 239,
-        "h": 244
+        "x": 204,
+        "y": 31,
+        "w": 137,
+        "h": 211
       },
       "sourceSize": {
         "w": 640,
@@ -254,18 +254,18 @@
     },
     "proleg_cella 12.aseprite": {
       "frame": {
-        "x": 911,
-        "y": 360,
-        "w": 237,
-        "h": 243
+        "x": 1701,
+        "y": 0,
+        "w": 146,
+        "h": 212
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 230,
-        "y": 6,
-        "w": 237,
-        "h": 243
+        "x": 204,
+        "y": 32,
+        "w": 146,
+        "h": 212
       },
       "sourceSize": {
         "w": 640,
@@ -275,18 +275,18 @@
     },
     "proleg_cella 13.aseprite": {
       "frame": {
-        "x": 2650,
+        "x": 307,
         "y": 360,
-        "w": 198,
-        "h": 163
+        "w": 147,
+        "h": 185
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 275,
-        "y": 47,
-        "w": 198,
-        "h": 163
+        "x": 203,
+        "y": 59,
+        "w": 147,
+        "h": 185
       },
       "sourceSize": {
         "w": 640,
@@ -296,18 +296,18 @@
     },
     "proleg_cella 14.aseprite": {
       "frame": {
-        "x": 1148,
-        "y": 360,
-        "w": 337,
-        "h": 243
+        "x": 1847,
+        "y": 0,
+        "w": 208,
+        "h": 212
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 6,
-        "w": 337,
-        "h": 243
+        "x": 142,
+        "y": 32,
+        "w": 208,
+        "h": 212
       },
       "sourceSize": {
         "w": 640,
@@ -317,18 +317,18 @@
     },
     "proleg_cella 15.aseprite": {
       "frame": {
-        "x": 2597,
+        "x": 2519,
         "y": 0,
-        "w": 337,
-        "h": 244
+        "w": 208,
+        "h": 211
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 5,
-        "w": 337,
-        "h": 244
+        "x": 142,
+        "y": 31,
+        "w": 208,
+        "h": 211
       },
       "sourceSize": {
         "w": 640,
@@ -338,18 +338,18 @@
     },
     "proleg_cella 16.aseprite": {
       "frame": {
-        "x": 2934,
+        "x": 3187,
         "y": 0,
-        "w": 331,
-        "h": 244
+        "w": 186,
+        "h": 207
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 5,
-        "w": 331,
-        "h": 244
+        "x": 142,
+        "y": 31,
+        "w": 186,
+        "h": 207
       },
       "sourceSize": {
         "w": 640,
@@ -359,18 +359,18 @@
     },
     "proleg_cella 17.aseprite": {
       "frame": {
-        "x": 2271,
+        "x": 0,
         "y": 360,
-        "w": 242,
-        "h": 199
+        "w": 154,
+        "h": 205
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 216,
-        "y": 5,
-        "w": 242,
-        "h": 199
+        "x": 174,
+        "y": 31,
+        "w": 154,
+        "h": 205
       },
       "sourceSize": {
         "w": 640,
@@ -380,18 +380,18 @@
     },
     "proleg_cella 18.aseprite": {
       "frame": {
-        "x": 3265,
+        "x": 3373,
         "y": 0,
-        "w": 251,
-        "h": 244
+        "w": 154,
+        "h": 206
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 216,
-        "y": 5,
-        "w": 251,
-        "h": 244
+        "x": 174,
+        "y": 31,
+        "w": 154,
+        "h": 206
       },
       "sourceSize": {
         "w": 640,
@@ -401,18 +401,18 @@
     },
     "proleg_cella 19.aseprite": {
       "frame": {
-        "x": 3516,
+        "x": 2727,
         "y": 0,
-        "w": 252,
-        "h": 244
+        "w": 166,
+        "h": 211
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 216,
-        "y": 5,
-        "w": 252,
-        "h": 244
+        "x": 174,
+        "y": 31,
+        "w": 166,
+        "h": 211
       },
       "sourceSize": {
         "w": 640,
@@ -422,18 +422,18 @@
     },
     "proleg_cella 20.aseprite": {
       "frame": {
-        "x": 3768,
+        "x": 1170,
         "y": 0,
-        "w": 251,
-        "h": 244
+        "w": 176,
+        "h": 213
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 216,
-        "y": 5,
-        "w": 251,
-        "h": 244
+        "x": 174,
+        "y": 31,
+        "w": 176,
+        "h": 213
       },
       "sourceSize": {
         "w": 640,
@@ -443,18 +443,18 @@
     },
     "proleg_cella 21.aseprite": {
       "frame": {
-        "x": 1816,
-        "y": 360,
-        "w": 198,
-        "h": 216
+        "x": 1346,
+        "y": 0,
+        "w": 147,
+        "h": 213
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 275,
-        "y": 5,
-        "w": 198,
-        "h": 216
+        "x": 203,
+        "y": 31,
+        "w": 147,
+        "h": 213
       },
       "sourceSize": {
         "w": 640,
@@ -464,18 +464,18 @@
     },
     "proleg_cella 22.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 360,
-        "w": 337,
-        "h": 244
+        "x": 1493,
+        "y": 0,
+        "w": 208,
+        "h": 213
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 5,
-        "w": 337,
-        "h": 244
+        "x": 142,
+        "y": 31,
+        "w": 208,
+        "h": 213
       },
       "sourceSize": {
         "w": 640,
@@ -485,18 +485,18 @@
     },
     "proleg_cella 23.aseprite": {
       "frame": {
-        "x": 337,
-        "y": 360,
-        "w": 337,
-        "h": 244
+        "x": 2893,
+        "y": 0,
+        "w": 208,
+        "h": 211
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 5,
-        "w": 337,
-        "h": 244
+        "x": 142,
+        "y": 31,
+        "w": 208,
+        "h": 211
       },
       "sourceSize": {
         "w": 640,
@@ -506,18 +506,18 @@
     },
     "proleg_cella 24.aseprite": {
       "frame": {
-        "x": 1485,
+        "x": 154,
         "y": 360,
-        "w": 331,
-        "h": 243
+        "w": 153,
+        "h": 204
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 136,
-        "y": 6,
-        "w": 331,
-        "h": 243
+        "x": 142,
+        "y": 32,
+        "w": 153,
+        "h": 204
       },
       "sourceSize": {
         "w": 640,
@@ -527,7 +527,7 @@
     },
     "proleg_cella 25.aseprite": {
       "frame": {
-        "x": 2854,
+        "x": 470,
         "y": 360,
         "w": 1,
         "h": 1
@@ -548,7 +548,7 @@
     },
     "proleg_cella 26.aseprite": {
       "frame": {
-        "x": 2854,
+        "x": 470,
         "y": 360,
         "w": 1,
         "h": 1
@@ -569,7 +569,7 @@
     },
     "proleg_cella 27.aseprite": {
       "frame": {
-        "x": 2854,
+        "x": 470,
         "y": 360,
         "w": 1,
         "h": 1
@@ -590,18 +590,18 @@
     },
     "proleg_cella 28.aseprite": {
       "frame": {
-        "x": 2848,
+        "x": 454,
         "y": 360,
-        "w": 3,
-        "h": 2
+        "w": 8,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 596,
-        "y": 164,
-        "w": 3,
-        "h": 2
+        "x": 535,
+        "y": 217,
+        "w": 8,
+        "h": 6
       },
       "sourceSize": {
         "w": 640,
@@ -611,18 +611,18 @@
     },
     "proleg_cella 29.aseprite": {
       "frame": {
-        "x": 2851,
+        "x": 462,
         "y": 360,
-        "w": 3,
-        "h": 2
+        "w": 8,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 596,
-        "y": 164,
-        "w": 3,
-        "h": 2
+        "x": 535,
+        "y": 217,
+        "w": 8,
+        "h": 6
       },
       "sourceSize": {
         "w": 640,
@@ -632,18 +632,18 @@
     },
     "proleg_cella 30.aseprite": {
       "frame": {
-        "x": 2851,
+        "x": 462,
         "y": 360,
-        "w": 3,
-        "h": 2
+        "w": 8,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 596,
-        "y": 164,
-        "w": 3,
-        "h": 2
+        "x": 535,
+        "y": 217,
+        "w": 8,
+        "h": 6
       },
       "sourceSize": {
         "w": 640,
@@ -653,18 +653,18 @@
     },
     "proleg_cella 31.aseprite": {
       "frame": {
-        "x": 2851,
+        "x": 462,
         "y": 360,
-        "w": 3,
-        "h": 2
+        "w": 8,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 596,
-        "y": 164,
-        "w": 3,
-        "h": 2
+        "x": 535,
+        "y": 217,
+        "w": 8,
+        "h": 6
       },
       "sourceSize": {
         "w": 640,
@@ -674,18 +674,18 @@
     },
     "proleg_cella 32.aseprite": {
       "frame": {
-        "x": 2851,
+        "x": 462,
         "y": 360,
-        "w": 3,
-        "h": 2
+        "w": 8,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 596,
-        "y": 164,
-        "w": 3,
-        "h": 2
+        "x": 535,
+        "y": 217,
+        "w": 8,
+        "h": 6
       },
       "sourceSize": {
         "w": 640,
@@ -695,18 +695,18 @@
     },
     "proleg_cella 33.aseprite": {
       "frame": {
-        "x": 2851,
+        "x": 462,
         "y": 360,
-        "w": 3,
-        "h": 2
+        "w": 8,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 596,
-        "y": 164,
-        "w": 3,
-        "h": 2
+        "x": 535,
+        "y": 217,
+        "w": 8,
+        "h": 6
       },
       "sourceSize": {
         "w": 640,
@@ -716,7 +716,7 @@
     },
     "proleg_cella 34.aseprite": {
       "frame": {
-        "x": 2854,
+        "x": 470,
         "y": 360,
         "w": 1,
         "h": 1
@@ -737,18 +737,18 @@
     },
     "proleg_cella 35.aseprite": {
       "frame": {
-        "x": 2848,
+        "x": 454,
         "y": 360,
-        "w": 3,
-        "h": 2
+        "w": 8,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 596,
-        "y": 164,
-        "w": 3,
-        "h": 2
+        "x": 535,
+        "y": 217,
+        "w": 8,
+        "h": 6
       },
       "sourceSize": {
         "w": 640,
@@ -758,18 +758,18 @@
     },
     "proleg_cella 36.aseprite": {
       "frame": {
-        "x": 2851,
+        "x": 462,
         "y": 360,
-        "w": 3,
-        "h": 2
+        "w": 8,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 596,
-        "y": 164,
-        "w": 3,
-        "h": 2
+        "x": 535,
+        "y": 217,
+        "w": 8,
+        "h": 6
       },
       "sourceSize": {
         "w": 640,
@@ -784,8 +784,8 @@
     "image": "proleg_cella.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4019,
-      "h": 604
+      "w": 3971,
+      "h": 565
     },
     "scale": "1",
     "frameTags": [

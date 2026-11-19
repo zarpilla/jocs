@@ -37,11 +37,11 @@ import hd640  # noqa: E402,F401  (posa la llibreria a 640×360)
 import room_designs  # noqa: E402,F401  (carrega les sales en l'ordre bo)
 from hd.pix import Canvas, W, H  # noqa: E402
 from hd640.font import font640, text_width, draw_text  # noqa: E402
-from hd640.rooms import portada as po  # noqa: E402
-from hd640.rooms import proleg_gavina as ga  # noqa: E402
-from hd640.rooms import proleg_cella as ce  # noqa: E402
-from hd640.rooms import proleg_fabrica as fa  # noqa: E402
-from hd640.rooms import proleg_cambra as ca  # noqa: E402
+from hd640.rooms import portada_pla_comu as po  # noqa: E402
+from hd640.rooms import proleg_gavina_pla_comu as ga  # noqa: E402
+from hd640.rooms import proleg_cella_pla_comu as ce  # noqa: E402
+from hd640.rooms import proleg_fabrica_pla_comu as fa  # noqa: E402
+from hd640.rooms import proleg_cambra_pla_comu as ca  # noqa: E402
 
 GAME = HERE.parent.parent.parent
 AUDIO = GAME / 'game' / 'audio'
