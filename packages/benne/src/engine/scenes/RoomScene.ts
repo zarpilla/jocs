@@ -142,6 +142,7 @@ import {
 import { applyCharacterLights, compileCharacterLights } from '../room/characterLights';
 import { CharacterShadowLayer, compileCharacterShadow } from '../room/characterShadow';
 import { CharacterReflectionLayer, compileCharacterReflection } from '../room/characterReflection';
+import { CharacterOutlineLayer, compileCharacterOutline } from '../room/characterOutline';
 import { CharacterIdleActions, isIdleActionSprite } from '../idleActions';
 import { releaseOtherRoomSheets } from '../room/releaseRoomSheets';
 import { assembleRoomSheetPages } from '../room/roomSheetPages';
@@ -474,6 +475,8 @@ export class RoomScene extends Phaser.Scene {
   private readonly characterShadows = new CharacterShadowLayer(this);
   /** Characters mirrored in a polished floor (`RoomData.characterReflection`). */
   private readonly characterReflections = new CharacterReflectionLayer(this);
+  /** A dark rim around the characters (`RoomData.characterOutline`). */
+  private readonly characterOutlines = new CharacterOutlineLayer(this);
 
   /** Blinks, glances and tics while characters stand still (`CharacterData.idleActions`). */
   private readonly characterIdleActions = new CharacterIdleActions();
@@ -819,6 +822,7 @@ export class RoomScene extends Phaser.Scene {
     this.roomStackEntities = [];
     this.characterShadows.clear();
     this.characterReflections.clear();
+    this.characterOutlines.clear();
     this.propSpritesById.clear();
     this.characterSpritesByDefId.clear();
     this.characterJsonVisibleByDefId.clear();
@@ -4863,6 +4867,21 @@ export class RoomScene extends Phaser.Scene {
     }
     this.characterShadows.update(shadow, sprites);
     this.updateCharacterReflections();
+    this.updateCharacterOutlines();
+  }
+
+  /** Keeps the dark rim of each character in step with it (very bright rooms). */
+  private updateCharacterOutlines(): void {
+    const outline = compileCharacterOutline(this.roomData?.characterOutline);
+    const sprites: Array<Phaser.GameObjects.Sprite | Phaser.GameObjects.Image> = [];
+    if (outline) {
+      for (const e of this.roomStackEntities) {
+        if (e.kind === 'character') {
+          sprites.push(e.sprite);
+        }
+      }
+    }
+    this.characterOutlines.update(outline, sprites);
   }
 
   /** Keeps each character's floor reflection under its feet (after the light tint of this frame). */

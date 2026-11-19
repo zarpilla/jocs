@@ -89,6 +89,8 @@ export interface CharacterData {
   shadow?: false | { width?: number; offsetX?: number; offsetY?: number };
   /** `false` = no reflection in polished floors (`RoomData.characterReflection`): a ghost, a vampire. */
   reflection?: false;
+  /** `false` = no dark rim in rooms with `RoomData.characterOutline` (a character that already has one). */
+  outline?: false;
   /**
    * Click hit area in **texture / frame pixel space** (same origin as `feet`). When omitted and the
    * character is clickable, the full sprite rectangle is used. Requires at least three vertices.

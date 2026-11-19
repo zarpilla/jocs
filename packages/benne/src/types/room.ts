@@ -188,6 +188,22 @@ export interface RoomCharacterShadowData {
 }
 
 /**
+ * A dark rim around the characters, for very bright rooms (white floors, sunlit water) where their own edges get
+ * lost: copies of the character's frame filled with `color`, shifted `width` room px left, right, up and down, under
+ * the character.
+ */
+export interface RoomCharacterOutlineData {
+  /** `false` turns it off (same as omitting the object). Omitted = on. */
+  enabled?: boolean;
+  /** Hex RGB. Omitted = `#000000`. */
+  color?: string;
+  /** Opacity of the rim. Omitted = `0.7`. */
+  alpha?: number;
+  /** Thickness in room px. Omitted = `1`. */
+  width?: number;
+}
+
+/**
  * A polished floor (marble, wet tiles): each character gets a faint copy of itself mirrored about its feet, fading
  * away from them. The room art carries the reflection of the room itself; this is the characters'.
  */
@@ -351,6 +367,8 @@ export interface RoomData {
   characterShadow?: RoomCharacterShadowData;
   /** Characters mirrored in a polished floor. */
   characterReflection?: RoomCharacterReflectionData;
+  /** A dark rim around the characters (very bright rooms). */
+  characterOutline?: RoomCharacterOutlineData;
   /**
    * How much the camera flattens the floor: screen height ÷ floor depth of a small patch of floor (the same idea as
    * `characterShadow.squash`; e.g. `0.25` for a high camera far away). Walk facings are then chosen on the floor, so a
