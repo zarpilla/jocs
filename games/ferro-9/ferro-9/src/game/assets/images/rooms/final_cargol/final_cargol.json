@@ -23,8 +23,8 @@
     },
     "final_cargol 1.aseprite": {
       "frame": {
-        "x": 2275,
-        "y": 607,
+        "x": 2560,
+        "y": 612,
         "w": 1,
         "h": 1
       },
@@ -44,18 +44,18 @@
     },
     "final_cargol 2.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 0,
-        "w": 626,
-        "h": 248
+        "x": 1920,
+        "y": 612,
+        "w": 640,
+        "h": 241
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 626,
-        "h": 248
+        "x": 0,
+        "y": 119,
+        "w": 640,
+        "h": 241
       },
       "sourceSize": {
         "w": 640,
@@ -65,18 +65,18 @@
     },
     "final_cargol 3.aseprite": {
       "frame": {
-        "x": 1266,
-        "y": 0,
-        "w": 626,
-        "h": 247
+        "x": 1280,
+        "y": 612,
+        "w": 640,
+        "h": 242
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 626,
-        "h": 247
+        "x": 0,
+        "y": 118,
+        "w": 640,
+        "h": 242
       },
       "sourceSize": {
         "w": 640,
@@ -86,18 +86,18 @@
     },
     "final_cargol 4.aseprite": {
       "frame": {
-        "x": 1892,
+        "x": 640,
         "y": 0,
-        "w": 626,
-        "h": 247
+        "w": 640,
+        "h": 286
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 626,
-        "h": 247
+        "x": 0,
+        "y": 74,
+        "w": 640,
+        "h": 286
       },
       "sourceSize": {
         "w": 640,
@@ -107,18 +107,18 @@
     },
     "final_cargol 5.aseprite": {
       "frame": {
-        "x": 2518,
-        "y": 0,
-        "w": 625,
-        "h": 247
+        "x": 3200,
+        "y": 360,
+        "w": 640,
+        "h": 246
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 625,
-        "h": 247
+        "x": 0,
+        "y": 114,
+        "w": 640,
+        "h": 246
       },
       "sourceSize": {
         "w": 640,
@@ -128,18 +128,18 @@
     },
     "final_cargol 6.aseprite": {
       "frame": {
-        "x": 3143,
-        "y": 0,
-        "w": 626,
-        "h": 247
+        "x": 1920,
+        "y": 360,
+        "w": 640,
+        "h": 248
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 626,
-        "h": 247
+        "x": 0,
+        "y": 112,
+        "w": 640,
+        "h": 248
       },
       "sourceSize": {
         "w": 640,
@@ -149,18 +149,18 @@
     },
     "final_cargol 7.aseprite": {
       "frame": {
-        "x": 0,
+        "x": 640,
         "y": 360,
-        "w": 626,
-        "h": 247
+        "w": 640,
+        "h": 251
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 626,
-        "h": 247
+        "x": 0,
+        "y": 109,
+        "w": 640,
+        "h": 251
       },
       "sourceSize": {
         "w": 640,
@@ -170,18 +170,18 @@
     },
     "final_cargol 8.aseprite": {
       "frame": {
-        "x": 626,
-        "y": 360,
-        "w": 626,
-        "h": 247
+        "x": 3190,
+        "y": 0,
+        "w": 640,
+        "h": 253
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 626,
-        "h": 247
+        "x": 0,
+        "y": 107,
+        "w": 640,
+        "h": 253
       },
       "sourceSize": {
         "w": 640,
@@ -191,18 +191,18 @@
     },
     "final_cargol 9.aseprite": {
       "frame": {
-        "x": 1878,
-        "y": 607,
-        "w": 397,
-        "h": 211
+        "x": 1920,
+        "y": 0,
+        "w": 630,
+        "h": 254
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 18,
-        "y": 124,
-        "w": 397,
-        "h": 211
+        "x": 10,
+        "y": 106,
+        "w": 630,
+        "h": 254
       },
       "sourceSize": {
         "w": 640,
@@ -212,18 +212,18 @@
     },
     "final_cargol 10.aseprite": {
       "frame": {
-        "x": 1252,
-        "y": 360,
-        "w": 626,
-        "h": 247
+        "x": 1280,
+        "y": 0,
+        "w": 640,
+        "h": 256
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 626,
-        "h": 247
+        "x": 0,
+        "y": 104,
+        "w": 640,
+        "h": 256
       },
       "sourceSize": {
         "w": 640,
@@ -233,18 +233,18 @@
     },
     "final_cargol 11.aseprite": {
       "frame": {
-        "x": 1878,
-        "y": 360,
-        "w": 626,
-        "h": 247
+        "x": 2550,
+        "y": 0,
+        "w": 640,
+        "h": 254
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 626,
-        "h": 247
+        "x": 0,
+        "y": 106,
+        "w": 640,
+        "h": 254
       },
       "sourceSize": {
         "w": 640,
@@ -254,18 +254,18 @@
     },
     "final_cargol 12.aseprite": {
       "frame": {
-        "x": 2504,
+        "x": 0,
         "y": 360,
-        "w": 626,
-        "h": 247
+        "w": 640,
+        "h": 252
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 626,
-        "h": 247
+        "x": 0,
+        "y": 108,
+        "w": 640,
+        "h": 252
       },
       "sourceSize": {
         "w": 640,
@@ -275,18 +275,18 @@
     },
     "final_cargol 13.aseprite": {
       "frame": {
-        "x": 3130,
+        "x": 1280,
         "y": 360,
-        "w": 625,
-        "h": 247
+        "w": 640,
+        "h": 250
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 625,
-        "h": 247
+        "x": 0,
+        "y": 110,
+        "w": 640,
+        "h": 250
       },
       "sourceSize": {
         "w": 640,
@@ -296,17 +296,17 @@
     },
     "final_cargol 14.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 607,
-        "w": 626,
+        "x": 2560,
+        "y": 360,
+        "w": 640,
         "h": 247
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 626,
+        "x": 0,
+        "y": 113,
+        "w": 640,
         "h": 247
       },
       "sourceSize": {
@@ -317,18 +317,18 @@
     },
     "final_cargol 15.aseprite": {
       "frame": {
-        "x": 626,
-        "y": 607,
-        "w": 626,
-        "h": 247
+        "x": 0,
+        "y": 612,
+        "w": 640,
+        "h": 245
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 626,
-        "h": 247
+        "x": 0,
+        "y": 115,
+        "w": 640,
+        "h": 245
       },
       "sourceSize": {
         "w": 640,
@@ -338,18 +338,18 @@
     },
     "final_cargol 16.aseprite": {
       "frame": {
-        "x": 1252,
-        "y": 607,
-        "w": 626,
-        "h": 247
+        "x": 640,
+        "y": 612,
+        "w": 640,
+        "h": 243
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 14,
-        "y": 88,
-        "w": 626,
-        "h": 247
+        "x": 0,
+        "y": 117,
+        "w": 640,
+        "h": 243
       },
       "sourceSize": {
         "w": 640,
@@ -364,8 +364,8 @@
     "image": "final_cargol.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3769,
-      "h": 854
+      "w": 3840,
+      "h": 857
     },
     "scale": "1",
     "frameTags": [

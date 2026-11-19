@@ -1,353 +1,155 @@
 """
-Final · L'Anell de Baix: el carrer del barri pobre de l'anell, un congost de cases apilades sota la franja de
-llum del sostre (el dia artificial, càlid). El terra de l'anell s'enfila al fons fins que es perd entre la
-boirina daurada. Roba estesa d'una banda a l'altra, rètols, testos a les finestres, i els filtres d'aire que la
-Vet hi va instal·lar girant a les façanes, amb claus angleses pintades al costat. Al mig del carrer, d'esquena,
-la Vet hi torna caminant.
-Pantalla sencera (sense barra de verbs). Es dibuixa amb un petit traçador de raigs: cada píxel sap a quina
-paret, terra o sostre toca i a quina distància, i la boirina hi barreja l'or del fons.
+Final · L'Anell de Baix, EN PLA DE CINEMA (a 1×): el carrer del barri pobre de l'anell vist des del balcó d'un segon
+pis, a la dreta del carrer, mirant avall i de biaix cap al fons on l'anell s'enfila i es perd entre la boirina
+daurada (el dia artificial del sostre).
 
-A 640×360 (hd/rooms/final_anell.py a ×4/3): el mateix carrer i la mateixa càmera (focal ×4/3), traçat de nou a
-la resolució gran, de manera que les juntes, les pales dels filtres, la roba i la gent llunyana hi guanyen
-píxels. Els rètols (la pancarta, BAR, TALLER, PA) van amb la lletra de 4×7 de La Gavina, i la Vet és la de 640.
+- **Contrast d'escala:** a la dreta, a tocar, la façana de la casa del balcó amb el filtre d'aire gros que la Vet hi
+  va posar (la pala girant, la caixa i una clau anglesa pintada), en contrallum; a baix a la dreta, la barana i els
+  testos del balcó, en silueta. La Vet, petita, al mig del carrer i d'esquena, camina cap al fons.
+- **3/4:** la càmera és a un costat i girada: el carrer fuig en diagonal cap a un punt de fuga a la dreta del mig;
+  de les cases de l'altra banda se'n veuen les façanes en escorç, de les caixes de la vorera el davant, el costat i
+  la tapa, i les cordes de roba i les garlandes travessen el carrer en diagonal.
+- **Línies que guien l'ull:** la canal del mig del carrer, les voreres i les cordes de roba porten de baix a la
+  Vet i d'ella a la resplendor del fons; la roba estesa de la primera corda, gran i fosca, emmarca el quadre per dalt.
+- **Llum:** la franja del sostre, càlida; la boirina daurada s'hi menja el fons (perspectiva atmosfèrica).
+
+El quadre de text del final va al mig (≈145..495 × 155..222): la Vet és a sota i el rètol, a sobre.
+Es dibuixa amb el traçador de raigs de sempre (final_anell_pla_comu.py: materials, cases, roba, rètols),
+generalitzat a una càmera amb posició, gir (`YAW`) i picat (`PITCH`).
 """
 import math
 import random
-
+from functools import lru_cache
 
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
-from hd.pix import (Canvas, Light, B4, W, H, mix, ramp, STEEL, PANEL, RUST, TEAL, WARN, GRAY, SIL, IRON,
-                    PAPER, WALNUT, RED, SUIT, SKIN)
+from PIL import Image
+from hd.pix import Canvas, Light, B4, W, H, mix, STEEL, RUST, WARN, IRON, PAPER, WALNUT, RED, SUIT, SKIN
 from hd640.draw_characters import person, VET
-from hd640.rooms.gavina_passadis_pla_comu import hr, diff, FONT7
+from hd640.rooms import final_anell_pla_comu as PL
+from hd640.rooms.final_anell_pla_comu import (HAZE, ROSE, MINT, OCHRE, BLUE, LEAF, CLOTH, WD, HC, CURV, HAZE_Z,
+                                              hr, diff, glyph_pixels, wrench, garment, mat_floor, mat_ceil)
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
-K4 = 4 / 3                      # 480 → 640
-
-# Rampes pròpies (fosc → clar)
-HAZE = ramp((70, 40, 40), (130, 80, 60), (190, 130, 80), (232, 178, 110), (250, 218, 160), (255, 242, 210), n=9)
-SUNSTRIP = ramp((200, 150, 90), (250, 214, 150), (255, 240, 200), (255, 252, 240), n=4)
-DECK = ramp((20, 14, 16), (38, 28, 26), (60, 44, 36), (86, 64, 48), (114, 88, 64), (146, 116, 84), (180, 150, 110),
-            (214, 186, 140), n=8)
-OCHRE = ramp((30, 18, 14), (64, 38, 22), (108, 68, 34), (150, 102, 50), (190, 140, 72), (222, 178, 104), (244, 214, 146), n=8)
-PLASTER = ramp((34, 24, 26), (66, 50, 48), (104, 84, 74), (144, 122, 102), (184, 160, 132), (218, 198, 166), (242, 228, 200), n=8)
-MINT = ramp((14, 26, 26), (26, 50, 46), (44, 78, 68), (68, 110, 92), (100, 144, 118), (144, 180, 150), (196, 220, 190), n=8)
-ROSE = ramp((32, 14, 20), (64, 28, 34), (104, 48, 50), (146, 74, 68), (186, 106, 90), (218, 146, 120), (240, 190, 160), n=8)
-BLUE = ramp((14, 20, 40), (26, 40, 72), (40, 64, 108), (62, 96, 146), (96, 134, 182), (146, 180, 214), (200, 222, 240), n=8)
-WINLIT = ramp((90, 40, 20), (170, 90, 40), (230, 150, 70), (255, 206, 120), (255, 240, 190), n=5)
-LEAF = ramp((10, 24, 14), (20, 46, 22), (36, 76, 32), (60, 110, 44), (100, 150, 60), (150, 190, 90), n=6)
-
-HOUSE_RAMPS = [OCHRE, PLASTER, MINT, ROSE, RUST, PLASTER, OCHRE, TEAL]
-
-# Càmera i geometria (metres)
-CX, CY, F = 320, 133.5, 260 * K4  # punt de fuga i focal (els de 480, a ×4/3)
-CH = 3.3                        # alçada de la càmera
-WD = 8.0                        # mig ample del carrer
-HC = 19.0                       # alçada del sostre
-CURV = 1 / (2 * 300.0)          # curvatura de l'anell: el terra puja z²/(2R)
-HAZE_Z = 95.0                   # distància característica de la boirina
-STOREY = 3.0                    # alçada d'un pis
 TAU = 2 * math.pi
-_T = 0.0                        # temps del bucle d'animació (0..1); t=0 és el fons quiet
+
+# ─── La càmera ──────────────────────────────────────────────────────────────
+# El món (metres): x de través (0 = el mig del carrer), y amunt (des del terra de l'anell, que puja z²/(2R)),
+# z al llarg del carrer (0 = el balcó). Les parets de les cases són a x = ±WD.
+EYE = (5.6, 4.2, 0.0)            # l'ull: al balcó d'un primer pis, a la dreta
+YAW = -0.26                      # girada cap a l'esquerra (el carrer fuig cap a la dreta del mig)
+PITCH = 0.10                     # mirant avall
+F = 360.0                        # focal (píxels)
+CX, CY = 320, 150                # centre òptic
+
+_cy, _sy = math.cos(YAW), math.sin(YAW)
+_cp, _sp = math.cos(PITCH), math.sin(PITCH)
 
 
-def _houses(seed):
-    """Les cases d'una banda: [(z0, z1, pisos, rampa, llavor)]."""
-    rnd = random.Random(seed)
-    out, z = [], 2.0
-    while z < 600:
-        w = rnd.uniform(3.2, 6.5)
-        out.append((z, z + w, rnd.randint(2, 5), rnd.choice(HOUSE_RAMPS), rnd.randint(0, 9999)))
-        z += w
-    return out
+def ray(px, py):
+    """Direcció (unitària) del raig del píxel, al món."""
+    x, y, z = (px - CX) / F, (CY - py) / F, 1.0
+    y, z = y * _cp - z * _sp, y * _sp + z * _cp           # el picat
+    x, z = x * _cy + z * _sy, -x * _sy + z * _cy          # el gir
+    n = math.sqrt(x * x + y * y + z * z)
+    return x / n, y / n, z / n
 
 
-HOUSES = {-1: _houses(3), 1: _houses(8)}
-RIB = 26.0                       # costelles de l'anell
-
-
-def house_at(side, z):
-    hs = HOUSES[side]
-    lo, hi = 0, len(hs) - 1
-    while lo < hi:
-        m = (lo + hi) // 2
-        if hs[m][1] < z:
-            lo = m + 1
-        else:
-            hi = m
-    return hs[lo]
-
-
-# ─── El traçat: cada píxel → (superfície, coordenades) ─────────────────────
-
-def cast(px, py):
-    """→ (tipus, z, a, b): 'floor' (a=x lateral), 'wall' (a=z, b=alçada, side), 'ceil' (a=x lateral)."""
-    dx = (px - CX) / F
-    dy = (CY - py) / F
-    best = None
-    # terra: CH + dy z - c z² = 0
-    disc = dy * dy + 4 * CURV * CH
-    zf = (dy + math.sqrt(disc)) / (2 * CURV)
-    best = ('floor', zf)
-    # sostre: CH + dy z - c z² = HC
-    disc = dy * dy - 4 * CURV * (HC - CH)
-    if disc >= 0 and dy > 0:
-        zc = (dy - math.sqrt(disc)) / (2 * CURV)
-        if zc < best[1]:
-            best = ('ceil', zc)
-    if abs(dx) > 1e-6:
-        zw = WD / abs(dx)
-        yw = CH + dy * zw - CURV * zw * zw
-        if zw < best[1] and 0 <= yw <= HC:
-            best = ('wall', zw)
-    kind, z = best
-    y = CH + dy * z - CURV * z * z
-    return kind, z, dx * z, y
+def vista(x, y, z):
+    """Un punt del món (y des del terra) → coordenades de càmera."""
+    dx, dy, dz = x - EYE[0], y + CURV * z * z - EYE[1], z - EYE[2]
+    x1, z1 = dx * _cy - dz * _sy, dx * _sy + dz * _cy
+    y2, z2 = dy * _cp + z1 * _sp, -dy * _sp + z1 * _cp
+    return x1, y2, z2
 
 
 def proj(x, y, z):
-    """Punt del món (lateral, alçada, distància) → píxel."""
-    return CX + F * x / z, CY - F * (y - CH + CURV * z * z) / z
+    """Punt del món → píxel."""
+    a, b, c = vista(x, y, z)
+    c = max(c, 1e-3)
+    return CX + F * a / c, CY - F * b / c
 
 
-def floor_chalk(x, z):
-    """Guix a terra: una xarranca i una clau anglesa (els nens del barri)."""
-    col = None
-    # xarranca: caselles d'1×1 m, a l'esquerra del carrer
-    hx, hz = x + 4.6, z - 6.2
-    rows = [(0, 1), (1, 1), (2, 2), (3, 1), (4, 2), (5, 1)]
-    if -0.6 < hx < 1.6 and 0 <= hz < 6.6:
-        r = int(hz)
-        if r < len(rows):
-            n = rows[r][1]
-            w = 1.0
-            x0 = 0.5 - n * w / 2
-            fx, fz = (hx - x0), hz - r
-            if 0 <= fx <= n * w + 0.05:
-                e = 0.05 * max(1.0, z / 9.3)
-                if fz < e or fx < e or (n * w - fx) < e or (n == 2 and abs(fx - 1.0) < e / 2):
-                    col = (226, 220, 206)
-        elif r == 6 and math.hypot(hx - 0.5, hz - 6.3) < 0.5 and abs(math.hypot(hx - 0.5, hz - 6.3) - 0.45) < 0.06:
-            col = (226, 220, 206)
-    # una clau anglesa feta amb guix groc
-    du, dz = (x - 3.3) / 1.0, (z - 7.2) / 1.25
-    if abs(du) < 1.4 and abs(dz) < 1.4:
-        def wr(a, b):
-            return wrench(b * 0.45 + a * 0.9, a * 0.45 - b * 0.9)
-        e = 0.07 * max(1.0, z / 9.3)
-        if wr(du, dz) and not (wr(du + e, dz) and wr(du - e, dz) and wr(du, dz + e) and wr(du, dz - e)):
-            col = (240, 206, 110)
-    if col and hr(int(x * 14), int(z * 14), 6) < 0.18:
-        return None                                     # el guix, esborrat a trossos
-    return col
+def dist(x, y, z):
+    a, b, c = vista(x, y, z)
+    return math.sqrt(a * a + b * b + c * c)
 
 
-# ─── Materials ──────────────────────────────────────────────────────────────
-
-def mat_floor(x, z):
-    ax = abs(x)
-    chalk = floor_chalk(x, z)
-    if chalk:
-        return 'paint', chalk
-    if ax > WD - 1.6:                                   # voreres
-        u = (z * 1.0) % 1.0
-        lvl = 3.6 + (hr(int(z), int(x > 0), 2) - 0.5) * 0.4
-        if u < 0.06 * min(1, 8 / z) + 0.03:
-            lvl -= 0.9
-        if WD - 1.6 <= ax < WD - 1.45:
-            lvl += 1.3                                  # la vorada
-        return PLASTER, lvl - 0.3
-    u, v = (x + 0.5) % 2.0, z % 2.0
-    lvl = 3.7 - ax * 0.1 + (hr(int((x + 0.5) // 2), int(z // 2), 5) - 0.5) * 0.5
-    if u < 0.07 or v < 0.07 * max(1, z / 16):
-        lvl -= 1.0
-    if ax < 0.25:
-        lvl -= 1.4                                      # canal del mig
-    if (int(z * 3) + int(x * 3)) % 7 == 0:
-        lvl += 0.3
-    return DECK, lvl
-
-
-def wrench(p, q):
-    """Silueta d'una clau anglesa (coordenades locals: el mànec va de p=-1 a p=0.5, el cap a p≈0.75)."""
-    if -0.95 < p < 0.55 and abs(q) < 0.11 + max(0.0, p - 0.35) * 0.4:
-        return True
-    d = math.hypot(p - 0.75, q)
-    if d < 0.32 and not (d < 0.13 or (p > 0.74 and abs(q) < 0.13)):
-        return True
-    d = math.hypot(p + 1.0, q)
-    return 0.07 < d < 0.18
+def cast(px, py):
+    """→ (tipus, distància, x, y, z) del primer que toca el raig: 'floor', 'wall' o 'ceil'."""
+    dx, dy, dz = ray(px, py)
+    ox, oy, oz = EYE
+    best = None
+    a = CURV * dz * dz
+    if a > 1e-12:                                         # terra: oy + dy t = c (dz t)²
+        t = (dy + math.sqrt(dy * dy + 4 * a * oy)) / (2 * a)
+        best = ('floor', t)
+        disc = dy * dy - 4 * a * (HC - oy)                # sostre: oy + dy t = HC + c (dz t)²
+        if disc >= 0 and dy > 0:
+            t = (dy - math.sqrt(disc)) / (2 * a)
+            if 0 < t < best[1]:
+                best = ('ceil', t)
+    if abs(dx) > 1e-9:
+        t = ((WD if dx > 0 else -WD) - ox) / dx
+        z = oz + dz * t
+        y = oy + dy * t - CURV * z * z
+        if 0 < t < (best[1] if best else 1e9) and 0 <= y <= HC:
+            best = ('wall', t)
+    kind, t = best
+    z = oz + dz * t
+    return kind, t, ox + dx * t, oy + dy * t - CURV * z * z, z
 
 
-# Filtres grossos (els del barri, a les façanes) i claus angleses pintades: (costat, z, alçada, radi)
-FANS = [(-1, 11.4, 3.9, 1.35), (1, 10.4, 3.7, 1.2), (-1, 27.0, 8.6, 1.3), (1, 33.0, 10.2, 1.2)]
-WRENCHES = [(-1, 11.4, 6.25, 0.95, 0.0, (246, 206, 90)), (1, 10.6, 5.9, 0.8, 3.14, (236, 236, 222)),
-            (1, 21.0, 4.4, 1.1, -0.25, (246, 206, 90)), (-1, 19.0, 9.6, 1.2, 0.3, (236, 236, 222)),
-            (-1, 40.0, 5.0, 1.4, 0.0, (246, 206, 90))]
+# ─── El que s'hi afegeix: el filtre gros de la façana del balcó ─────────────
 
-
-def mat_fan(du, dv, r, z, spin=1):
-    """Ventilador d'un filtre d'aire, girant (les pales, mogudes)."""
-    d = math.hypot(du, dv)
-    if d > r + 0.32 or max(abs(du), abs(dv)) > r + 0.3:
-        return None
-    if d > r:                                           # la caixa, amb cargols
-        lvl = 3.4 + (dv / r) * 0.6
-        if abs(abs(du) - (r + 0.12)) < 0.07 and abs(abs(dv) - (r + 0.12)) < 0.07:
-            lvl += 2.0
-        return STEEL, lvl
-    if d > r - 0.12:
-        return STEEL, 5.0 - (du + dv) * 0.8               # el cèrcol, lluent
-    if d < 0.2:
-        return STEEL, 4.6 + (0.8 if d < 0.08 else 0)
-    if (d % 0.3) < 0.035 * max(1.0, z / 12):
-        return STEEL, 3.2                               # la reixa
-    a = math.atan2(dv, du)
-    ph = (a * 3 / (2 * math.pi) + d * 0.5 + spin * 2 * _T) % 1     # dues pales per bucle
-    blade = max(0.0, 1 - ph / 0.55)                     # pala nítida al davant, estela de moviment darrere
-    return IRON, 1.0 + blade ** 1.5 * 3.2 + (0.4 if ph < 0.05 else 0)
+NEAR_FAN = (1, 7.2, 6.4, 1.55)          # costat, z, alçada, radi
+NEAR_WRENCH = (1, 10.2, 7.5, 1.1, 2.6, (246, 206, 90))
 
 
 def mat_wall(side, z, y):
-    for i, (sd, zc, yc, r) in enumerate(FANS):
-        if sd == side and abs(z - zc) < r + 0.4 and abs(y - yc) < r + 0.4:
-            m = mat_fan(z - zc, y - yc, r, z, spin=1 if i % 2 else -1)
-            if m:
-                return m
-    paint = None
-    for sd, zc, yc, sc, ang, col in WRENCHES:
-        if sd == side and abs(z - zc) < sc * 1.3 and abs(y - yc) < sc * 1.3:
-            du, dv = (z - zc) / sc, (y - yc) / sc
-            c, sn = math.cos(ang), math.sin(ang)
-            if wrench(du * c + dv * sn, -du * sn + dv * c) and hr(int(z * 9), int(y * 9), 3) > 0.12:
-                paint = col
-    if paint:
-        return 'paint', paint
-    z0, z1, n, rmp, seed = house_at(side, z)
-    u = z - z0
-    w = z1 - z0
-    top = n * STOREY
-    rib = (z % RIB) < 1.0
-    if rib:                                              # costella de l'anell (acer)
-        return STEEL, 3.0 + (0.8 if (z % RIB) < 0.2 else 0) + (0.5 if int(y) % 3 == 0 else 0)
-    if y > top:                                          # paret de l'anell, per sobre de les cases
-        lvl = 1.8 + (hr(int(z // 4), int(y // 3), 6) - 0.5) * 0.5
-        if (y % 3) < 0.12 or (z % 4) < 0.12:
-            lvl -= 0.8
-        if y > top and y < top + 0.25:
-            lvl -= 0.8
-        # canonades al llarg de la paret
-        if abs(y - 13.2) < 0.18 or abs(y - 14.0) < 0.12:
-            return RUST, 2.8 + (0.6 if y > 13.2 else 0)
-        return PANEL, lvl + y * 0.06
-    st = int(y // STOREY)
-    v = y - st * STOREY
-    lvl = 3.0 + (hr(seed, st, 1) - 0.5) * 0.6 + (hr(int(z * 2), int(y * 2), seed) - 0.5) * 0.35
-    if u < 0.12 or w - u < 0.12:
-        return rmp, lvl - 1.6                            # junta entre cases
-    if v < 0.18 and st > 0:
-        return rmp, lvl - 1.4                            # ombra sota la llosa
-    if v > STOREY - 0.14:
-        return rmp, lvl + 1.0                            # cantell de la llosa
-    if abs(y - top) < 0.3:
-        return rmp, lvl + 0.8                            # ampit del terrat
-    rnd = hr(seed, st, 2)
-    # finestres
-    nwin = 1 if w < 4.6 else 2
-    for k in range(nwin):
-        wc = w * (k + 1) / (nwin + 1)
-        if st == 0 and k == 0:
-            # porta a la planta baixa
-            if abs(u - wc) < 0.55 and v < 2.2:
-                if abs(u - wc) > 0.45 or v > 2.1:
-                    return WALNUT, 4.0
-                return WALNUT, 1.6 + (0.6 if (u - wc) % 0.3 < 0.05 else 0)
-            continue
-        if abs(u - wc) < 0.55 and 1.0 < v < 2.2:
-            lit = hr(seed, st, k, 4) < 0.55
-            if abs(u - wc) > 0.47 or v > 2.12 or v < 1.08:
-                return rmp, lvl + 1.6                    # marc
-            if lit:
-                return WINLIT, 2.4 + (v - 1.0) * 0.8 + (0.6 if abs(u - wc) < 0.04 else 0)
-            return SIL, 2.0 + (v - 1.0) * 0.6
-        if abs(u - wc) < 0.7 and 0.88 < v < 1.0:
-            return rmp, lvl + 1.8                        # ampit
-        if abs(u - wc) < 0.6 and 0.66 < v < 0.88 and hr(seed, st, k, 9) < 0.5:
-            return LEAF, 2.6 + hr(int(z * 8), int(y * 8)) * 1.6     # test amb plantes
-    # el filtre d'aire de la casa (una caixa amb un ventilador rodó)
-    if hr(seed, st, 7) < 0.6:
-        fu, fv = w - 0.75, 1.55
-        d = math.hypot(u - fu, v - fv)
-        if abs(u - fu) < 0.38 and abs(v - fv) < 0.38:
-            if d < 0.27:
-                return IRON, 1.6 + (1.4 if d < 0.06 else 0) + (0.8 if (math.atan2(v - fv, u - fu) * 3 / math.pi + 2 * _T) % 1 < 0.4 else 0)
-            return GRAY, 3.2 - (v - fv) * 1.5
-    return rmp, lvl
+    sd, zc, yc, r = NEAR_FAN
+    if side == sd and abs(z - zc) < r + 0.4 and abs(y - yc) < r + 0.4:
+        m = PL.mat_fan(z - zc, y - yc, r, z, spin=-1)
+        if m:
+            return m
+    sd, zc, yc, sc, ang, col = NEAR_WRENCH
+    if side == sd and abs(z - zc) < sc * 1.3 and abs(y - yc) < sc * 1.3:
+        du, dv = (z - zc) / sc, (y - yc) / sc
+        c, sn = math.cos(ang), math.sin(ang)
+        if wrench(du * c + dv * sn, -du * sn + dv * c) and hr(int(z * 9), int(y * 9), 3) > 0.12:
+            return 'paint', col
+    return PL.mat_wall(side, z, y)
 
 
-def mat_ceil(x, z):
-    ax = abs(x)
-    if ax < 1.4:
-        return SUNSTRIP, 3.2 - ax * 0.5
-    if ax < 1.7:
-        return STEEL, 4.6
-    if (z % RIB) < 1.2:
-        return STEEL, 3.2
-    lvl = 1.6 + (hr(int(x // 3), int(z // 3), 8) - 0.5) * 0.4
-    if (x % 3) < 0.15 or (z % 3) < 0.15:
-        lvl -= 0.6
-    return PANEL, lvl + max(0.0, 1 - ax / 6) * 1.4
+# ─── El traçat ──────────────────────────────────────────────────────────────
 
-
-def hazeify(cv, px, py, z):
+def hazeify(cv, px, py, d):
     """Boirina daurada: barreja en esglaons (amb trama) cap al color de l'aire del fons."""
-    k = (1 - math.exp(-z / HAZE_Z)) * 0.92
+    k = (1 - math.exp(-d / HAZE_Z)) * 0.92
     kq = math.floor(k * 7 + B4[py & 3][px & 3] - 0.5) / 7
     if kq > 0:
-        hz = HAZE[min(8, max(0, int(4.6 + (CY - py) * 0.015 - abs(px - CX) * 0.003 + k * 2.4)))]
+        hz = HAZE[min(8, max(0, int(4.6 + (VP[1] - py) * 0.015 - abs(px - VP[0]) * 0.003 + k * 2.4)))]
         cv.flat(px, py, mix(cv.get(px, py), hz, kq))
 
 
-def wput(cv, zbuf, px, py, z, rmp, lvl=None):
-    """Píxel d'un objecte del món a distància z: amagat si hi ha alguna cosa més a prop, i amb boirina."""
+def wput(cv, zbuf, px, py, d, rmp, lvl=None):
+    """Píxel d'un objecte del món a distància d: amagat si hi ha alguna cosa més a prop, i amb boirina."""
     px, py = int(round(px)), int(round(py))
-    if not (0 <= px < W and 0 <= py < H) or z >= zbuf[py][px]:
+    if not (0 <= px < W and 0 <= py < H) or d >= zbuf[py][px]:
         return
     if lvl is None:
         cv.flat(px, py, rmp)
     else:
         cv.put(px, py, rmp, lvl, 0)
-    hazeify(cv, px, py, z)
-    zbuf[py][px] = z
+    hazeify(cv, px, py, d)
+    zbuf[py][px] = d
 
 
-def billboard(cv, zbuf, x0, y1, w, h, z, fn):
-    """Una cosa plana de cara a la càmera (x0..x0+w, de y1 cap avall h metres) a distància z.
-    fn(u, v) amb u, v en metres (v cap avall) → (rampa, nivell), color RGB o None."""
-    ax, ay = proj(x0, y1, z)
-    bx, by = proj(x0 + w, y1 - h, z)
-    k = F / z
-    for py in range(math.floor(ay), math.ceil(by) + 1):
-        for px in range(math.floor(ax), math.ceil(bx) + 1):
-            u, v = (px + 0.5 - ax) / k, (py + 0.5 - ay) / k
-            if 0 <= u <= w and 0 <= v <= h:
-                m = fn(u, v)
-                if m is None:
-                    continue
-                if isinstance(m[0], list):
-                    wput(cv, zbuf, px, py, z, m[0], m[1])
-                else:
-                    wput(cv, zbuf, px, py, z, m)
-
-
-_CAST = []
-
-
+@lru_cache(maxsize=None)
 def _casts():
-    """El traçat de tots els píxels (no canvia d'un fotograma a l'altre: es calcula un cop)."""
-    if not _CAST:
-        _CAST.extend([cast(px, py) for px in range(W)] for py in range(H))
-    return _CAST
+    return tuple(tuple(cast(px, py) for px in range(W)) for py in range(H))
+
+
+VP = proj(0.0, 3.0, 70.0)                  # (aprox.) on fuig el carrer: d'allà ve la claror
 
 
 def scene(cv):
@@ -356,7 +158,7 @@ def scene(cv):
     for py in range(H):
         row = casts[py]
         for px in range(W):
-            kind, z, a, b = row[px]
+            kind, d, a, b, z = row[px]
             if kind == 'floor':
                 rmp, lvl = mat_floor(a, z)
                 if rmp != 'paint':
@@ -365,72 +167,74 @@ def scene(cv):
                     if abs(a) < 1.2:                                 # el terra polit hi fa un reflex
                         lvl += 0.5 * (1 - abs(a) / 1.2) * (hr(int(z * 2), 0, 3) > 0.3)
             elif kind == 'wall':
-                rmp, lvl = mat_wall(-1 if a < 0 else 1, z, b)
+                side = -1 if a < 0 else 1
+                rmp, lvl = mat_wall(side, z, b)
                 if rmp != 'paint':
-                    lvl += 0.04 * b + (0.3 if a > 0 else 0)       # la llum del sostre: més clar a dalt
+                    lvl += 0.04 * b + (0.3 if side < 0 else -0.5)  # la façana de l'esquerra mira la llum
                     lvl -= 1.4 * max(0.0, 1 - b / 0.6) ** 2         # brutícia i ombra a peu de carrer
-                    if rmp not in (STEEL, IRON, GRAY, WINLIT, SIL, LEAF) and 0.6 < b < 2.0:
+                    if rmp not in (STEEL, IRON, PL.GRAY, PL.WINLIT, PL.SIL, LEAF) and 0.6 < b < 2.0:
                         if hr(int(z * 3), 1, 5) > 0.7:
                             lvl -= 0.35                              # regalims
+                    if side > 0:                                      # la de la dreta, de prop: a contrallum
+                        lvl -= 1.6 * max(0.0, 1 - (z - 5) / 12)
             else:
                 rmp, lvl = mat_ceil(a, z)
-            zbuf[py][px] = z
-            if rmp == 'paint':                                 # pintura a la paret (una mica gastada)
+            zbuf[py][px] = d
+            if rmp == 'paint':
                 cv.flat(px, py, mix(lvl, (120, 90, 70), 0.25 * hr(px // 2, py // 2, 4)))
             else:
                 cv.put(px, py, rmp, lvl, 0)
-            hazeify(cv, px, py, z)
+            hazeify(cv, px, py, d)
     return zbuf
 
 
-# ─── Coses del carrer ───────────────────────────────────────────────────────
+# ─── Coses del carrer (plans de z constant, travessant el carrer) ─────────
 
-CLOTH = [ROSE, MINT, PAPER, OCHRE, BLUE, PAPER, WARN, ROSE, BLUE]
-
-
-def garment(kind, w, h, rmp, seed):
-    def f(u, v):
-        fold = 0.35 * math.sin(u * 22 + seed - TAU * 2 * _T) + (hr(seed, int(u * 30)) - 0.5) * 0.2
-        base = 4.4 - v / h * 1.4 + fold
-        if kind == 'shirt':
-            body = abs(u - w / 2) < w * 0.3 and v < h
-            sleeve = v < h * 0.34 + (0.0 if abs(u - w / 2) < w * 0.3 else -abs(abs(u - w / 2) - w * 0.3) * 0.5) and v < h * 0.4
-            if body or sleeve:
-                if v < 0.05:
-                    return rmp, base + 0.8
-                return rmp, base
-            return None
-        if kind == 'trousers':
-            if v < h * 0.25 or (v < h and abs(u - w / 2) > w * 0.07):
-                return rmp, base - (0.6 if abs(u - w / 2) < w * 0.12 else 0)
-            return None
-        if kind == 'socks':
-            if (u < w * 0.4 or u > w * 0.6) and (v < h * 0.75 or (u % (w * 0.5)) > w * 0.12):
-                return rmp, base
-            return None
-        # llençol: la vora de baix fa ones
-        if v < h - 0.06 * (1 + math.sin(u * 9 + seed - TAU * _T)):
-            return rmp, base + (0.5 if v < 0.05 else 0) - (0.5 if u < 0.04 or w - u < 0.04 else 0)
-        return None
-    return f
+def billboard(cv, zbuf, x0, y1, w, h, z, fn):
+    """Una cosa plana al pla z (x0..x0+w, de y1 cap avall h metres). fn(u, v) amb u, v en metres (v cap avall) →
+    (rampa, nivell), color RGB o None."""
+    pts = [proj(x, y, z) for x in (x0, x0 + w) for y in (y1, y1 - h)]
+    us, vs = [p[0] for p in pts], [p[1] for p in pts]
+    ox, oy, oz = EYE
+    lift = CURV * z * z
+    for py in range(max(0, math.floor(min(vs))), min(H, math.ceil(max(vs)) + 1)):
+        for px in range(max(0, math.floor(min(us))), min(W, math.ceil(max(us)) + 1)):
+            dx, dy, dz = ray(px + 0.5, py + 0.5)
+            if dz <= 1e-6:
+                continue
+            t = (z - oz) / dz
+            u, v = ox + dx * t - x0, y1 - (oy + dy * t - lift)
+            if 0 <= u <= w and 0 <= v <= h:
+                m = fn(u, v)
+                if m is None:
+                    continue
+                if isinstance(m[0], list):
+                    wput(cv, zbuf, px, py, t, m[0], m[1])
+                else:
+                    wput(cv, zbuf, px, py, t, m)
 
 
 def cable_y(x, h, sag):
     return h - sag * (1 - (x / WD) ** 2)
 
 
-def wire(cv, zbuf, z, h, sag, col=(46, 32, 34)):
-    n = int(2 * WD * F / z * 1.5) + 4
+def wire(cv, zbuf, z, h, sag, col=(46, 32, 34), gruix=1):
+    a, b = proj(-WD, h, z), proj(WD, h, z)
+    n = int(math.hypot(b[0] - a[0], b[1] - a[1]) * 1.5) + 4
     for i in range(n + 1):
         x = -WD + 2 * WD * i / n
-        px, py = proj(x, cable_y(x, h, sag), z)
-        wput(cv, zbuf, px, py, z, col)
+        y = cable_y(x, h, sag)
+        px, py = proj(x, y, z)
+        d = dist(x, y, z)
+        for k in range(gruix):
+            wput(cv, zbuf, px, py + k, d, col)
 
 
-def estesa(cv, zbuf, z, h, sag, seed, gap=0.0):
-    """Una corda de roba estesa d'una paret a l'altra (sense roba a |x| < gap)."""
+def estesa(cv, zbuf, z, h, sag, seed, gap=0.0, fosc=0.0):
+    """Una corda de roba estesa d'una paret a l'altra (sense roba a |x| < gap). `fosc`: nivells de menys
+    (la de prop, a contrallum)."""
     rnd = random.Random(seed)
-    wire(cv, zbuf, z, h, sag, (70, 56, 50))
+    wire(cv, zbuf, z, h, sag, (70, 56, 50), gruix=2 if z < 10 else 1)
     x = -WD + rnd.uniform(0.2, 1.2)
     while x < WD - 0.6:
         kind = rnd.choice(['shirt', 'shirt', 'sheet', 'trousers', 'socks', 'sheet'])
@@ -441,10 +245,13 @@ def estesa(cv, zbuf, z, h, sag, seed, gap=0.0):
         if rnd.random() < 0.82 and (x > gap or x + w < -gap):
             top = cable_y(x + w / 2, h, sag)
             rmp = rnd.choice(CLOTH)
-            billboard(cv, zbuf, x, top + 0.02, w, hh, z - 0.01, garment(kind, w, hh, rmp, rnd.randint(0, 99)))
+            g = garment(kind, w, hh, rmp, rnd.randint(0, 99))
+            fn = g if not fosc else (lambda u, v, g=g: (lambda m: m if m is None else (m[0], m[1] - fosc))(g(u, v)))
+            billboard(cv, zbuf, x, top + 0.02, w, hh, z - 0.01, fn)
             for px_ in (x + 0.04, x + w - 0.06):                    # pinces
-                qx, qy = proj(px_, cable_y(px_, h, sag) + 0.04, z - 0.02)
-                wput(cv, zbuf, qx, qy, z - 0.02, (200, 170, 120))
+                y = cable_y(px_, h, sag) + 0.04
+                qx, qy = proj(px_, y, z - 0.02)
+                wput(cv, zbuf, qx, qy, dist(px_, y, z) - 0.02, (200, 170, 120) if not fosc else (90, 70, 50))
         x += w + rnd.uniform(0.15, 0.9)
 
 
@@ -456,75 +263,53 @@ def garlanda(cv, zbuf, z, h, sag, seed):
     glows = []
     for i in range(1, n):
         x = -WD + 2 * WD * i / n
-        px, py = proj(x, cable_y(x, h, sag) - 0.12, z)
+        y = cable_y(x, h, sag) - 0.12
+        px, py = proj(x, y, z)
+        d = dist(x, y, z)
         col = rnd.choice([(255, 214, 120), (255, 170, 90), (255, 236, 180), (250, 130, 90)])
-        if _T:                                           # parpellegen, cadascuna al seu ritme
+        if PL._T:                                        # parpellegen, cadascuna al seu ritme
             m = 1 + int(hr(seed, i, 3) * 3)
-            col = mix(col, (110, 60, 40), 0.7 * math.sin(math.pi * (m * _T)) ** 2 * (hr(seed, i, 4) < 0.6))
-        wput(cv, zbuf, px, py, z, col)
-        if z < 40:
-            wput(cv, zbuf, px, py + 1, z, mix(col, (120, 60, 40), 0.4))
-        if z < 25:                                       # de prop, la bombeta fa 2 píxels d'ample i el portalàmpades
-            wput(cv, zbuf, px + 1, py, z, mix(col, (120, 60, 40), 0.2))
-            wput(cv, zbuf, px, py - 1, z, (60, 44, 40))
-        glows.append((px, py, col))
-    for px, py, col in glows:
-        cv.glow(px, py, max(4, 80 / z), col, 0.45)
-
-
-GLYPHS = {'X': '#...#/#...#/.#.#./..#../.#.#./#...#/#...#'.split('/')}     # una X de veritat, per als rètols
-
-
-def glyph_pixels(text, x0, y0, k=1, gap=1, space=None):
-    """Píxels (x, y) d'un text amb la lletra de 4×7 de La Gavina, a escala k (cada punt, k×k píxels).
-    Torna (conjunt de píxels, amplada)."""
-    pix, x = set(), x0
-    for ch in text:
-        g = GLYPHS.get(ch) or FONT7.get(ch, FONT7[' '])
-        w = len(g[0]) if ch != ' ' or space is None else space
-        for j, row in enumerate(g):
-            for ii, c in enumerate(row):
-                if c == '#':
-                    for a in range(k):
-                        for b in range(k):
-                            pix.add((int(x + ii * k + a), int(y0 + j * k + b)))
-        x += (w + gap) * k
-    return pix, x - gap * k - x0
+            col = mix(col, (110, 60, 40), 0.7 * math.sin(math.pi * (m * PL._T)) ** 2 * (hr(seed, i, 4) < 0.6))
+        wput(cv, zbuf, px, py, d, col)
+        if d < 40:
+            wput(cv, zbuf, px, py + 1, d, mix(col, (120, 60, 40), 0.4))
+        if d < 25:
+            wput(cv, zbuf, px + 1, py, d, mix(col, (120, 60, 40), 0.2))
+            wput(cv, zbuf, px, py - 1, d, (60, 44, 40))
+        glows.append((px, py, col, d))
+    for px, py, col, d in glows:
+        if 0 <= int(px) < W and 0 <= int(py) < H and zbuf[int(py)][int(px)] >= d - 0.5:
+            cv.glow(px, py, max(4, 80 / d), col, 0.45)
 
 
 def pancarta(cv, zbuf):
     """La pancarta del barri, penjada d'una paret a l'altra: ANELL DE BAIX, entre dues claus angleses."""
-    z, h, sag = 12.6, 7.45, 0.25
+    z, h = 20.0, 7.9
     wire(cv, zbuf, z + 0.01, h + 0.35, 0.5)
     text = 'ANELL DE BAIX'
     k = 3
     bw, bh = 10.4, 1.3
     x0 = -bw / 2
-    ax, ay = proj(x0, h, z)
-    s = F / z
     _, tw = glyph_pixels(text, 0, 0, k, space=4)
-    rows, _ = glyph_pixels(text, ax + (bw * s - tw) / 2, 0, k, space=4)
+    rows, _ = glyph_pixels(text, (bw * 40 - tw) / 2, 0, k, space=4)    # (la lletra en una graella de 40 px/m)
 
     def f(u, v):
-        sagv = 0.12 * math.sin(u / bw * math.pi)            # la tela s'arrossega una mica al mig
+        sagv = 0.12 * math.sin(u / bw * math.pi)
         vv = v - sagv
         if vv < 0 or vv > bh - 0.05 * math.sin(u * 5):
             return None
-        px = int(ax + u * s)
-        py = int(vv * s - (bh * s - 7 * k) / 2)
-        lvl = 4.2 - vv * 0.8 + 0.3 * math.sin(u * 3.1 - TAU * _T) - (0.8 if u < 0.06 or bw - u < 0.06 else 0)
+        gx = int(u * 40)
+        gy = int(vv * 40 - (bh * 40 - 7 * k) / 2)
+        lvl = 4.2 - vv * 0.8 + 0.3 * math.sin(u * 3.1 - TAU * PL._T) - (0.8 if u < 0.06 or bw - u < 0.06 else 0)
         if vv < 0.08:
             return PAPER, lvl + 0.6
-        if (px, py) in rows:
-            # pintura a mà: el traç és més fosc a les vores de cada lletra
-            edge = not ((px - 1, py) in rows and (px + 1, py) in rows and (px, py - 1) in rows and (px, py + 1) in rows)
-            return RED, 3.6 - vv * 0.6 - (0.5 if edge else 0) + (hr(px, py, 21) - 0.5) * 0.3
-        if (px - 1, py - 1) in rows:
-            return PAPER, lvl - 1.0                         # la pintura ha calat i fa ombra a la tela
-        if abs(vv - (bh - 0.14)) < 0.03:
-            if int(u * s) % 4 < 2:
-                return PAPER, lvl - 0.7                     # el repunt de la vora
-        # dues claus angleses als costats
+        if (gx, gy) in rows:
+            edge = not ((gx - 1, gy) in rows and (gx + 1, gy) in rows and (gx, gy - 1) in rows and (gx, gy + 1) in rows)
+            return RED, 3.6 - vv * 0.6 - (0.5 if edge else 0) + (hr(gx, gy, 21) - 0.5) * 0.3
+        if (gx - 1, gy - 1) in rows:
+            return PAPER, lvl - 1.0
+        if abs(vv - (bh - 0.14)) < 0.03 and gx % 4 < 2:
+            return PAPER, lvl - 0.7
         for cu in (0.75, bw - 0.75):
             du, dv = (u - cu) / 0.42, (vv - bh / 2) / 0.42
             if abs(du) < 1.4 and abs(dv) < 1.4 and wrench(du * 0.7 - dv * 0.7, du * 0.7 + dv * 0.7):
@@ -534,18 +319,18 @@ def pancarta(cv, zbuf):
 
 
 def figura(cv, zbuf, x, z, top, legs=None, h=1.68, seed=0, hair=(40, 26, 26)):
-    """Una persona llunyana, de cara o d'esquena (a aquesta distància no se sap): pocs píxels, ben posats."""
+    """Una persona llunyana: pocs píxels, ben posats."""
     legs = legs or SUIT
     s = h / 1.68
 
     def f(u, v):
         uu = (u - 0.35) / s
-        vv = (h - v) / s                                    # alçada des de terra
-        if vv < 0.82:                                       # cames
+        vv = (h - v) / s
+        if vv < 0.82:
             if abs(abs(uu) - 0.09) < 0.075 + (0.02 if vv < 0.08 else 0):
                 return legs, 2.0 + vv
             return None
-        if vv < 1.42:                                       # tronc i braços
+        if vv < 1.42:
             half = 0.2 - (1.42 - vv) * 0.05
             if abs(uu) < half:
                 return top, 2.6 + (vv - 0.82) * 2.2
@@ -559,102 +344,90 @@ def figura(cv, zbuf, x, z, top, legs=None, h=1.68, seed=0, hair=(40, 26, 26)):
             return (hair if vv > 1.56 else mix(hair, (120, 80, 60), 0.5))
         return None
     billboard(cv, zbuf, x - 0.35, h, 0.7, h, z, f)
-    # ombra als peus
     for k in range(-2, 3):
         px, py = proj(x + k * 0.1, 0, z)
-        if 0 <= int(px) < W and 0 <= int(py) < H and z < zbuf[int(py)][int(px)] + 0.5:
+        if 0 <= int(px) < W and 0 <= int(py) < H and dist(x, 0, z) < zbuf[int(py)][int(px)] + 0.5:
             cv.darken(px, py, px, py, 0.6)
 
 
 def wbox(cv, zbuf, x0, x1, y0, y1, z0, z1, fn):
-    """Una capsa del món (alineada amb el carrer). fn(cara, a, b) → (rampa, nivell);
+    """Una capsa del món (alineada amb el carrer; el terra, pla a la seva z). fn(cara, a, b) → (rampa, nivell);
     cares: 'front' (a=x, b=y), 'side' (a=z, b=y), 'top' (a=x, b=z)."""
+    lift = CURV * ((z0 + z1) / 2) ** 2
     corners = [proj(x, y, z) for x in (x0, x1) for y in (y0, y1) for z in (z0, z1)]
     pxs = [c[0] for c in corners]
     pys = [c[1] for c in corners]
+    ox, oy, oz = EYE
     for py in range(max(0, math.floor(min(pys))), min(H, math.ceil(max(pys)) + 1)):
         for px in range(max(0, math.floor(min(pxs))), min(W, math.ceil(max(pxs)) + 1)):
-            dx = (px + 0.5 - CX) / F
-            dy = (CY - py - 0.5) / F
-            # el raig, en coordenades del carrer: x = dx t, y = CH + dy t - c t², z = t
-            lo, hi, face = z0, z1, 'front'
-            if abs(dx) > 1e-9:
-                ta, tb = sorted((x0 / dx, x1 / dx))
+            d = ray(px + 0.5, py + 0.5)
+            lo, hi, face = 0.0, 1e9, None
+            for axis, (a0, a1), o, nm in ((0, (x0, x1), ox, 'side'), (1, (y0 + lift, y1 + lift), oy, 'top'),
+                                          (2, (z0, z1), oz, 'front')):
+                if abs(d[axis]) < 1e-9:
+                    if not a0 <= o <= a1:
+                        lo = hi + 1
+                    continue
+                ta, tb = sorted(((a0 - o) / d[axis], (a1 - o) / d[axis]))
                 if ta > lo:
-                    lo, face = ta, 'side'
+                    lo, face = ta, nm
                 hi = min(hi, tb)
-            if lo > hi:
+            if lo > hi or face is None:
                 continue
-            hit = None
-            n = 12
-            for i in range(n + 1):
-                t = lo + (hi - lo) * i / n
-                y = CH + dy * t - CURV * t * t
-                if y0 <= y <= y1:
-                    hit = (t, face if i == 0 else 'top', y)
-                    break
-            if not hit:
-                continue
-            t, fc, y = hit
-            if fc == 'front':
-                m = fn('front', dx * t, y)
-            elif fc == 'side':
-                m = fn('side', t, y)
-            else:
-                m = fn('top', dx * t, t)
+            X, Y, Z = ox + d[0] * lo, oy + d[1] * lo - lift, oz + d[2] * lo
+            m = fn(face, X if face != 'side' else Z, Y if face != 'top' else Z)
             if m:
-                wput(cv, zbuf, px, py, t, m[0], m[1])
+                wput(cv, zbuf, px, py, lo, m[0], m[1])
 
 
 def caixes(cv, zbuf):
-    """Caixes, testos i un banc a les voreres, davant de les cases de prop."""
+    """Caixes, testos i un banc a les voreres."""
     def crate(rmp):
         def f(face, a, b):
-            base = {'front': 3.0, 'side': 2.4, 'top': 4.2}[face]
-            g = (a if face != 'side' else a) * 6
-            lvl = base + (0.4 if int(g) % 2 else 0) - (1.0 if (b * 6) % 1 < 0.15 and face != 'top' else 0)
+            base = {'front': 2.6, 'side': 3.4, 'top': 4.2}[face]
+            lvl = base + (0.4 if int(a * 6) % 2 else 0) - (1.0 if (b * 6) % 1 < 0.15 and face != 'top' else 0)
             return rmp, lvl
         return f
 
     def pot(face, a, b):
         if b > 0.38 or face == 'top':
             return LEAF, 2.8 + hr(int(a * 20), int(b * 20), 4) * 2.2
-        return RUST, {'front': 3.0, 'side': 2.2}[face] + (0.8 if b > 0.32 else 0)
+        return RUST, {'front': 2.4, 'side': 3.0}[face] + (0.8 if b > 0.32 else 0)
 
     for x0, x1, y1, z0, z1, f in ((-7.8, -6.9, 0.7, 10.2, 11.0, crate(WALNUT)), (-7.7, -7.0, 1.25, 10.3, 10.9, crate(OCHRE)),
                                   (-7.9, -7.3, 0.6, 15.0, 15.5, pot), (-7.9, -7.4, 0.55, 16.0, 16.4, pot),
-                                  (7.0, 7.8, 0.75, 9.0, 9.9, crate(WALNUT)), (7.3, 7.9, 0.55, 12.4, 12.9, pot),
-                                  (7.4, 7.9, 0.5, 13.3, 13.7, pot), (-7.9, -7.35, 0.6, 9.4, 9.9, pot)):
+                                  (-7.9, -7.35, 0.6, 9.4, 9.9, pot), (-7.8, -6.8, 0.8, 22.0, 23.2, crate(WALNUT)),
+                                  (6.9, 7.8, 0.75, 13.0, 13.9, crate(WALNUT)), (7.3, 7.9, 0.55, 16.4, 16.9, pot),
+                                  (7.4, 7.9, 0.5, 17.3, 17.7, pot), (7.0, 7.8, 1.1, 24.0, 24.8, crate(OCHRE))):
         wbox(cv, zbuf, x0, x1, 0.0, y1, z0, z1, f)
 
 
 def retol(cv, zbuf, side, z, y1, w, h, text, rmp, ink, glow=None):
-    """Un rètol que surt de la façana (de cara a la càmera), penjat d'un braç de ferro."""
+    """Un rètol que surt de la façana (al pla z), penjat d'un braç de ferro. La lletra, en una graella de 40 px/m."""
     x0 = side * WD - (w if side > 0 else 0) - side * 0.15
-    ax, ay = proj(x0, y1, z)
-    s = F / z
+    G = 40
     _, tw = glyph_pixels(text, 0, 0)
-    th = 7
-    pix, _ = glyph_pixels(text, ax + (w * s - tw) / 2, ay + (h * s - th) / 2)
+    pix, _ = glyph_pixels(text, (w * G - tw) / 2, (h * G - 7) / 2)
     shadow = {(x + 1, y + 1) for x, y in pix} - pix
 
     def f(u, v):
-        px, py = int(ax + u * s), int(ay + v * s)
-        if (px, py) in pix:
+        gx, gy = int(u * G), int(v * G)
+        if (gx, gy) in pix:
             return ink
-        if (px, py) in shadow:
+        if (gx, gy) in shadow:
             return rmp, 1.4
         edge = u < 0.06 or w - u < 0.06 or v < 0.06 or h - v < 0.06
         return rmp, (4.2 if v < 0.06 else 2.2) if edge else 3.2 - v * 0.8
-    # el braç
-    bx0, by0 = proj(side * WD, y1 + 0.18, z)
-    bx1, by1 = proj(x0 + (w if side < 0 else 0), y1 + 0.18, z)
-    for k in range(int(abs(bx1 - bx0)) + 1):
-        wput(cv, zbuf, bx0 + (bx1 - bx0) * k / max(1, abs(bx1 - bx0)), by0, z, IRON, 3.2)
-        wput(cv, zbuf, bx0 + (bx1 - bx0) * k / max(1, abs(bx1 - bx0)), by0 + 1, z, IRON, 1.6)
+    a, b = proj(side * WD, y1 + 0.18, z), proj(x0 + (w if side < 0 else 0), y1 + 0.18, z)
+    n = int(math.hypot(b[0] - a[0], b[1] - a[1])) + 1
+    d = dist(side * WD, y1, z)
+    for k in range(n + 1):
+        wput(cv, zbuf, a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n, d, IRON, 3.2)
+        wput(cv, zbuf, a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n + 1, d, IRON, 1.6)
     billboard(cv, zbuf, x0, y1, w, h, z, f)
     if glow:
-        cv.glow(ax + w * s / 2, ay + h * s / 2, w * s * 0.9, glow, 0.25)
+        gx, gy = proj(x0 + w / 2, y1 - h / 2, z)
+        cv.glow(gx, gy, w * F / d * 0.9, glow, 0.25)
 
 
 def carrer(cv, zbuf):
@@ -666,67 +439,152 @@ def carrer(cv, zbuf):
                               (-5.4, 50, BLUE, 1.68, 4), (5.8, 44, PAPER, 1.6, 5), (-0.8, 40, OCHRE, 1.7, 6),
                               (-1.4, 40, ROSE, 1.0, 7), (4.0, 34, MINT, 1.65, 8), (-6.0, 32, WARN, 1.6, 9)):
         figura(cv, zbuf, x, z, top, h=hh, seed=sd)
-    retol(cv, zbuf, 1, 24.0, 3.9, 1.6, 0.7, 'BAR', ROSE, (255, 230, 170), (255, 160, 110))
-    retol(cv, zbuf, -1, 21.0, 3.6, 1.9, 0.7, 'TALLER', MINT, (255, 236, 190), (150, 255, 200))
+    retol(cv, zbuf, 1, 28.0, 3.9, 1.6, 0.7, 'BAR', ROSE, (255, 230, 170), (255, 160, 110))
+    retol(cv, zbuf, -1, 25.0, 3.6, 1.9, 0.7, 'TALLER', MINT, (255, 236, 190), (150, 255, 200))
+    retol(cv, zbuf, -1, 16.6, 3.25, 1.3, 0.62, 'PA', RUST, (255, 236, 190), (255, 190, 120))
     caixes(cv, zbuf)
-    # una pilota vermella, al costat de la xarranca
-    bx, by = proj(-1.7, 0.16, 7.6)
-    cv.darken(bx - 7, by + 3, bx + 9, by + 8, lambda x, y: 0.9 - math.hypot((x - bx - 1.5) / 8, (y - by - 6) / 2.6))
-    cv.disc(bx, by, 6.1, 6.1, ROSE, lambda nx, ny: 3.6 - nx * 1.0 - ny * 1.6 + (0.5 if abs(nx * 0.7 + ny * 0.7) < 0.12 else 0), 0)
-    for dx, dy, c in ((-3, -3, (255, 236, 220)), (-2, -3, (255, 214, 196)), (-3, -2, (255, 214, 196))):
-        cv.flat(round(bx) + dx, round(by) + dy, c)                  # la lluentor
-    for a in range(-5, 6):                                          # la llum rebotada del terra, a sota
-        x = round(bx + a * 0.9)
-        y = round(by + 5.4 - abs(a) * 0.35)
-        if abs(a) < 4:
-            cv.put(x, y, ROSE, 2.6, 0)
-    retol(cv, zbuf, -1, 13.6, 3.25, 1.3, 0.62, 'PA', RUST, (255, 236, 190), (255, 190, 120))
     estesa(cv, zbuf, 30, 11.0, 0.9, 3)
-    garlanda(cv, zbuf, 22.0, 9.6, 1.2, 9)
-    estesa(cv, zbuf, 16.5, 8.9, 0.7, 2, gap=3.5)
+    garlanda(cv, zbuf, 22.0, 10.4, 1.2, 9)
     pancarta(cv, zbuf)
+
+
+def pilota(cv, zbuf):
+    """Una pilota vermella, a la vora de la xarranca."""
+    x, z, r = -2.6, 12.4, 0.16
+    bx, by = proj(x, r, z)
+    R = r * F / dist(x, r, z)
+    cv.darken(bx - R * 1.2, by + R * 0.5, bx + R * 1.8, by + R * 1.4,
+              lambda X, Y: 0.9 - math.hypot((X - bx - R * 0.3) / (R * 1.4), (Y - by - R) / (R * 0.45)))
+    cv.disc(bx, by, R, R, ROSE, lambda nx, ny: 3.6 - nx * 1.0 - ny * 1.6, 0)
+    cv.flat(round(bx - R * 0.4), round(by - R * 0.4), (255, 230, 214))
 
 
 def resplendor(cv, zbuf):
     """El fons del carrer, on l'anell s'enfila, brilla: l'aire hi és daurat."""
-    for py in range(0, 173):
-        for px in range(160, 480):
-            z = zbuf[py][px]
-            if z > 30:
-                d = math.hypot((px - CX) / 147, (py - 83) / 80)
-                k = max(0.0, 1 - d) ** 1.5 * 0.45 * min(1.0, (z - 30) / 30)
+    vx, vy = VP
+    for py in range(0, H):
+        for px in range(0, W):
+            d = zbuf[py][px]
+            if d > 30:
+                q = math.hypot((px - vx) / 150, (py - vy + 40) / 90)
+                k = max(0.0, 1 - q) ** 1.5 * 0.45 * min(1.0, (d - 30) / 30)
                 if k > B4[py & 3][px & 3] * 0.3:
                     cv.flat(px, py, mix(cv.get(px, py), (255, 232, 180), k))
-    # la franja de llum del sostre
-    cv.glow(CX, 0, 40, (255, 240, 200), 0.6)
+
+
+# ─── El primer pla: la roba de la corda del balcó i la barana ──────────────
+
+def balco(cv, zbuf):
+    """El balcó d'on mirem: la llosa, la barana de ferro i dos testos, a baix a la dreta, en silueta."""
+    def rail(face, a, b):
+        return IRON, {'front': 0.8, 'side': 1.2, 'top': 1.5}[face]
+
+    def slab(face, a, b):
+        return PL.PLASTER, {'front': 1.0, 'side': 0.8, 'top': 1.6}[face]
+    y0 = EYE[1] - 1.55                                    # el terra del balcó
+    wbox(cv, zbuf, 6.18, 6.32, y0 + 0.92, y0 + 1.04, 0.6, 3.2, rail)
+    wbox(cv, zbuf, 6.2, 8.0, y0 + 0.92, y0 + 1.04, 3.1, 3.22, rail)
+    for zz in (1.4, 2.2, 3.0):                                      # els barrots
+        wbox(cv, zbuf, 6.22, 6.28, y0, y0 + 1.0, zz, zz + 0.05, rail)
+    for x in (6.7, 7.3):
+        wbox(cv, zbuf, x - 0.03, x + 0.03, y0, y0 + 1.0, 3.12, 3.2, rail)
+
+    def pot(face, a, b):
+        if b > y0 + 0.36 or face == 'top':
+            return LEAF, 1.0 + hr(int(a * 30), int(b * 30), 4) * 1.4
+        return RUST, {'front': 1.2, 'side': 1.6}[face]
+    wbox(cv, zbuf, 6.5, 6.9, y0, y0 + 0.4, 2.5, 2.9, pot)
+    # les fulles del test, que sobresurten de la barana
+    rnd = random.Random(31)
+    for _ in range(140):
+        a, L = rnd.uniform(0.6, 2.5), rnd.uniform(0.25, 0.7)
+        bx, bz = 6.7 + rnd.uniform(-0.15, 0.15), 2.7 + rnd.uniform(-0.1, 0.1)
+        for k in range(10):
+            s = k / 9 * L
+            X, Y, Z = bx + math.cos(a) * s * 0.5, y0 + 0.4 + math.sin(a) * s, bz - math.cos(a) * s * 0.6
+            px, py = proj(X, Y, Z)
+            wput(cv, zbuf, px, py, dist(X, Y, Z), LEAF, 0.8 + k * 0.2)
+            wput(cv, zbuf, px + 1, py, dist(X, Y, Z), LEAF, 0.6 + k * 0.15)
+
+
+def roba_de_prop(cv, zbuf):
+    """La corda del balcó, de la nostra façana a la de l'altra banda: roba gran, a contrallum."""
+    estesa(cv, zbuf, 6.0, 6.7, 0.7, 12, fosc=1.6)
+
+
+# ─── La Vet ─────────────────────────────────────────────────────────────────
+
+VET_AT = (0.3, 6.6)                    # x, z: al mig del carrer, una mica a l'esquerra de la canal
+
+
+@lru_cache(maxsize=None)
+def _vet():
+    img = person(VET, 'U', walk=1)
+    x, z = VET_AT
+    k = 1.66 * F / dist(x, 0.8, z) / 106
+    w, h = max(1, round(img.width * k)), max(1, round(img.height * k))
+    return img.resize((w, h), Image.Resampling.BOX), k
+
+
+def vet(cv, zbuf):
+    img, k = _vet()
+    x, z = VET_AT
+    fx, fy = proj(x, 0, z)
+    # l'ombra: la franja del sostre és just a sobre; una taca curta i rodona
+    rx, ry = 20 * k, 5 * k
+    cv.darken(fx - rx, fy - ry, fx + rx, fy + ry, lambda X, Y: 1.4 * (1 - math.hypot((X - fx) / rx, (Y - fy) / ry)),
+              dither=False)
+    ox, oy = round(fx - 33 * k), round(fy - 113 * k)
+    cv.img.alpha_composite(img, (ox, oy))
+    cv.P = cv.img.load()
+    d = dist(x, 0.8, z)
+    for j in range(img.height):                                          # (la boirina, poca, també a ella)
+        for i in range(img.width):
+            if img.getpixel((i, j))[3] > 128 and 0 <= ox + i < W and 0 <= oy + j < H:
+                zbuf[oy + j][ox + i] = d
 
 
 def bg(cv, t=0.0):
-    global _T
-    _T = t % 1.0
+    PL._T = t % 1.0
     zbuf = scene(cv)
     resplendor(cv, zbuf)
     carrer(cv, zbuf)
-    # la Vet, d'esquena, caminant cap al fons
-    vet = person(VET, 'U', walk=1)
-    fx, fy = 320, 339
-    cv.darken(fx - 21, fy - 5, fx + 21, fy + 5, lambda x, y: 1.4 * (1 - math.hypot((x - fx) / 21, (y - fy) / 5)), dither=False)
-    cv.img.alpha_composite(vet, (fx - 34, fy - 111))
+    pilota(cv, zbuf)
+    vet(cv, zbuf)
+    roba_de_prop(cv, zbuf)
+    balco(cv, zbuf)
+    # la claror de la franja del sostre, a dalt, i una vinyeta suau als cantons
+    gx, gy = proj(0.0, HC, 40.0)
+    cv.glow(gx, max(0, gy), 60, (255, 240, 200), 0.35)
+    P = cv.P
+    for y in range(H):
+        for x in range(W):
+            q = math.hypot((x - 330) / 420, (y - 200) / 260)
+            k = max(0.0, q - 0.62) * 1.3
+            if k > 0:
+                o = P[x, y]
+                m = max(0.0, 1 - k)
+                P[x, y] = (int(o[0] * m), int(o[1] * m), int(o[2] * m), 255)
 
 
 PROPS = {}
 
 
+@lru_cache(maxsize=None)
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
+
+
 def _ambient_frames(n=16):
-    global _T
-    base = Canvas(light=LIGHT)
-    bg(base)
+    base = _base()
     frames = []
     for i in range(n):
         cv = Canvas(light=LIGHT)
         bg(cv, t=i / n)
-        frames.append(diff(cv.img, base.img))
-    _T = 0.0                                        # deixa l'estat del mòdul com el del fons quiet
+        frames.append(diff(cv.img, base))
+    PL._T = 0.0                                     # deixa l'estat com el del fons quiet
     return frames
 
 

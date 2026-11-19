@@ -23,8 +23,8 @@
     },
     "final_anell 1.aseprite": {
       "frame": {
-        "x": 1467,
-        "y": 558,
+        "x": 2242,
+        "y": 574,
         "w": 1,
         "h": 1
       },
@@ -44,18 +44,18 @@
     },
     "final_anell 2.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 558,
-        "w": 583,
-        "h": 197
+        "x": 3049,
+        "y": 360,
+        "w": 610,
+        "h": 189
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
-        "y": 1,
-        "w": 583,
-        "h": 197
+        "x": 16,
+        "y": 0,
+        "w": 610,
+        "h": 189
       },
       "sourceSize": {
         "w": 640,
@@ -67,16 +67,16 @@
       "frame": {
         "x": 640,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 609,
+        "h": 214
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
+        "x": 17,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 609,
+        "h": 214
       },
       "sourceSize": {
         "w": 640,
@@ -86,18 +86,18 @@
     },
     "final_anell 4.aseprite": {
       "frame": {
-        "x": 1223,
+        "x": 1249,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
+        "x": 16,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "sourceSize": {
         "w": 640,
@@ -107,18 +107,18 @@
     },
     "final_anell 5.aseprite": {
       "frame": {
-        "x": 1806,
+        "x": 1859,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
+        "x": 16,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "sourceSize": {
         "w": 640,
@@ -128,18 +128,18 @@
     },
     "final_anell 6.aseprite": {
       "frame": {
-        "x": 2389,
+        "x": 2469,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
+        "x": 16,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "sourceSize": {
         "w": 640,
@@ -149,18 +149,18 @@
     },
     "final_anell 7.aseprite": {
       "frame": {
-        "x": 2972,
+        "x": 3079,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
+        "x": 16,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "sourceSize": {
         "w": 640,
@@ -171,17 +171,17 @@
     "final_anell 8.aseprite": {
       "frame": {
         "x": 0,
-        "y": 360,
-        "w": 583,
-        "h": 198
+        "y": 574,
+        "w": 610,
+        "h": 189
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
+        "x": 16,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 189
       },
       "sourceSize": {
         "w": 640,
@@ -191,18 +191,18 @@
     },
     "final_anell 9.aseprite": {
       "frame": {
-        "x": 1166,
-        "y": 558,
-        "w": 301,
-        "h": 44
+        "x": 1830,
+        "y": 574,
+        "w": 412,
+        "h": 85
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 177,
-        "y": 8,
-        "w": 301,
-        "h": 44
+        "x": 21,
+        "y": 0,
+        "w": 412,
+        "h": 85
       },
       "sourceSize": {
         "w": 640,
@@ -212,18 +212,18 @@
     },
     "final_anell 10.aseprite": {
       "frame": {
-        "x": 583,
-        "y": 558,
-        "w": 583,
-        "h": 197
+        "x": 610,
+        "y": 574,
+        "w": 610,
+        "h": 189
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
-        "y": 1,
-        "w": 583,
-        "h": 197
+        "x": 16,
+        "y": 0,
+        "w": 610,
+        "h": 189
       },
       "sourceSize": {
         "w": 640,
@@ -233,18 +233,18 @@
     },
     "final_anell 11.aseprite": {
       "frame": {
-        "x": 583,
+        "x": 0,
         "y": 360,
-        "w": 583,
-        "h": 198
+        "w": 609,
+        "h": 214
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
+        "x": 17,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 609,
+        "h": 214
       },
       "sourceSize": {
         "w": 640,
@@ -254,18 +254,18 @@
     },
     "final_anell 12.aseprite": {
       "frame": {
-        "x": 1166,
+        "x": 609,
         "y": 360,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
+        "x": 16,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "sourceSize": {
         "w": 640,
@@ -275,18 +275,18 @@
     },
     "final_anell 13.aseprite": {
       "frame": {
-        "x": 1749,
+        "x": 1219,
         "y": 360,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
+        "x": 16,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "sourceSize": {
         "w": 640,
@@ -296,18 +296,18 @@
     },
     "final_anell 14.aseprite": {
       "frame": {
-        "x": 2332,
+        "x": 1829,
         "y": 360,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
+        "x": 16,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "sourceSize": {
         "w": 640,
@@ -317,18 +317,18 @@
     },
     "final_anell 15.aseprite": {
       "frame": {
-        "x": 2915,
+        "x": 2439,
         "y": 360,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
+        "x": 16,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 214
       },
       "sourceSize": {
         "w": 640,
@@ -338,18 +338,18 @@
     },
     "final_anell 16.aseprite": {
       "frame": {
-        "x": 3498,
-        "y": 360,
-        "w": 583,
-        "h": 198
+        "x": 1220,
+        "y": 574,
+        "w": 610,
+        "h": 189
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 35,
+        "x": 16,
         "y": 0,
-        "w": 583,
-        "h": 198
+        "w": 610,
+        "h": 189
       },
       "sourceSize": {
         "w": 640,
@@ -364,8 +364,8 @@
     "image": "final_anell.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4081,
-      "h": 755
+      "w": 3689,
+      "h": 763
     },
     "scale": "1",
     "frameTags": [
