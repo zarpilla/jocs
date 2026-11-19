@@ -18,7 +18,7 @@
 import { game, player, pointer } from '@benne/script';
 import { verbs } from '@game';
 import { clickablePrompt, isClickableCutscene, narrative, targetFromBenne } from '../../narrative/narrative';
-import { queFaElToc } from '../../narrative/accions';
+import { esSortida, queFaElToc } from '../../narrative/accions';
 import { esDit } from '../../narrative/tactil';
 import { esquerreMira } from '../../narrative/preferencies';
 import {
@@ -157,13 +157,13 @@ export function refreshLine() {
 /**
  * El verb que farà el clic esquerre (o el toc) sobre la cosa de sota (`ui.verb.*`: «Obre», «Parla amb»), o '' si el
  * clic mira o obre el menú. El mateix que decideix tactil.script.ts (`fesElToc`): amb el dit, el primer toc mira; amb
- * el ratolí girat (`esquerreMira`), l'esquerre sempre mira. Els objectes de l'inventari no: tocar-los els pren a la mà.
+ * el ratolí, per defecte (`esquerreMira`), l'esquerre mira (menys a les sortides: hi va). Els objectes de l'inventari no: tocar-los els pren a la mà.
  */
 function verbDelClic(): string {
   const hover = pointer.hover;
   if (!hover?.kind || !hover.id || hover.kind === 'item' || cartaOberta()) return '';
   const dit = esDit();
-  if (!dit && esquerreMira()) return '';
+  if (!dit && esquerreMira() && !esSortida(narrative, targetFromBenne(hover.kind, hover.id))) return '';
   const toc = queFaElToc(narrative, targetFromBenne(hover.kind, hover.id), undefined, { mirarPrimer: dit });
   return toc.fa === 'accio' ? narrative.t(`ui.verb.${toc.verb}`) : '';
 }

@@ -207,41 +207,12 @@
       "id": "intercanviaText",
       "x": 168,
       "y": 194,
-      "text": "Clic esquerre per mirar (i dret per fer)",
+      "text": "Clic esquerre per fer (i dret per mirar)",
       "font": "aiguaverne-regular",
       "fontSize": 8,
       "color": "#e6dcb6",
       "align": "left",
       "visible": false,
-      "zIndex": 3
-    },
-    {
-      "type": "checkbox",
-      "id": "noMostris",
-      "x": 142,
-      "y": 222,
-      "width": 21,
-      "height": 21,
-      "backgroundAnchor": "top-left",
-      "tag": "checkbox",
-      "states": {
-        "uncheckedHover": "checkbox-hover",
-        "checked": "checkbox-checked",
-        "checkedHover": "checkbox-checked-hover"
-      },
-      "checked": false,
-      "zIndex": 3
-    },
-    {
-      "type": "text",
-      "id": "noMostrisText",
-      "x": 168,
-      "y": 224,
-      "text": "No ho tornis a mostrar",
-      "font": "aiguaverne-regular",
-      "fontSize": 8,
-      "color": "#e6dcb6",
-      "align": "left",
       "zIndex": 3
     },
     {

@@ -8,7 +8,7 @@ import { pointer } from '@benne/script';
 import type { FallbackTarget } from '@benne/script';
 import { fromBenne, narrative, targetFromBenne } from './narrative';
 import { performInteraction } from './narrative.script';
-import { accions, marcaMirat, potAnarALaMa, queFaElToc, verbAmbObjecte } from './accions';
+import { accions, esSortida, marcaMirat, potAnarALaMa, queFaElToc, verbAmbObjecte } from './accions';
 import { MENU, esClicDret, esDit, label, openMenu, setMenu, type Opcio } from './tactil';
 import { esquerreMira } from './preferencies';
 
@@ -24,7 +24,7 @@ export function routeTouch(verb: string, target: FallbackTarget, item?: string) 
     performInteraction(amb, target, item);
     return;
   }
-  // amb el ratolí, per defecte el clic esquerre fa i el dret mira; amb `esquerreMira` (preferencies.ts), a l'inrevés
+  // amb el ratolí, per defecte el clic esquerre mira i el dret fa; amb `esquerreFa` (preferencies.ts), a l'inrevés
   const esquerrePerMirar = !esDit() && esquerreMira();
   if (verb === MENU) {
     // el clic dret del ratolí; mantenir premut (el dit o el botó esquerre) obre el menú
@@ -33,8 +33,8 @@ export function routeTouch(verb: string, target: FallbackTarget, item?: string) 
     else doVerb('look', target);
     return;
   }
-  // el clic esquerre (o el toc)
-  if (esquerrePerMirar) doVerb('look', target);
+  // el clic esquerre (o el toc); a les sortides, el que mira també hi va
+  if (esquerrePerMirar && !esSortida(narrative, targetFromBenne(target.kind, target.id))) doVerb('look', target);
   else fesElToc(target);
 }
 

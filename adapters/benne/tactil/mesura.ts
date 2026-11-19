@@ -9,7 +9,7 @@
  *  - mira primer: abans de l'acció, el primer toc ha mirat la cosa (un toc de més, però amb la descripció);
  *  - dret: amb el ratolí, mirar és un clic dret (un gest).
  *
- * `mode`: `dit` (el mòbil: el primer toc mira) o `ratoli` (l'ordinador: el clic esquerre fa l'acció, el dret mira).
+ * `mode`: `dit` (el mòbil: el primer toc mira) o `ratoli` (l'ordinador: un botó fa l'acció i l'altre mira; quin és quin no canvia la mesura).
  *
  * Si alguna interacció del camí no es pot fer de cap manera, `impossibles` no és buit. És pur (només el nucli):
  * serveix per a qualsevol joc de narrative-core.

@@ -14,7 +14,7 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from
 import { dirname, join } from 'node:path';
 import type { DialogueLineDef, GameContent, InteractionDef, LocaleTable, RoomDef } from '@aventura/narrative-core';
 import { jocAdapterDir, type JocBenne } from './joc-benne.js';
-import { configuraTactil, FES, opcionsTactils, portadaTactil, TACTIL_TEXTOS } from './tactil/index.js';
+import { configuraTactil, FES, opcionsTactils, TACTIL_TEXTOS } from './tactil/index.js';
 import { objecteSol } from './tactil/runtime/accions.js';
 
 /** Art provisional dels personatges del joc (games/<joc>/adapters/benne/placeholder-art/). */
@@ -145,7 +145,6 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   if (joc.tactil) opcionsTactils(gameDir);
   if (addSwitchButton(gameDir)) report.needsArt.push('guis/verbs');
   if (content.manifest.cover && addCoverGui(gameDir, joc)) report.needsArt.push('guis/portada');
-  if (joc.tactil) portadaTactil(gameDir);
   const guiTexts = structuredClone(GUI_TEXTS);
   // La interfície tàctil no té barra de verbs: la frase la posa el HUD (tactil/guis/verbs/hud.ts), que comença buida.
   if (joc.tactil) delete guiTexts.verbs;
@@ -358,6 +357,8 @@ function scaled480<T extends { x: number; y: number; width: number; height: numb
   return { ...b, x: Math.round(b.x * k), y: Math.round(b.y * k), width: Math.round(b.width * k), height: Math.round(b.height * k) };
 }
 
+const PORTADA_MARCA = '// Creat per adapters/benne (benne-content.ts): els botons de la portada.';
+
 function addCoverGui(gameDir: string, joc: JocBenne): boolean {
   const dir = join(gameDir, 'guis/portada');
   const jsonPath = join(dir, 'portada.gui.json');
@@ -379,8 +380,9 @@ function addCoverGui(gameDir: string, joc: JocBenne): boolean {
       }]),
     });
   }
-  if (!existsSync(tsPath)) {
-    writeFileSync(tsPath, `// Creat per adapters/benne (benne-content.ts): els botons de la portada.
+  // (si és el generat, porta la marca i es torna a fer: així s'hi treu el que hi posava abans la interfície tàctil)
+  if (!existsSync(tsPath) || readFileSync(tsPath, 'utf8').startsWith(PORTADA_MARCA)) {
+    writeFileSync(tsPath, `${PORTADA_MARCA}
 import { game, saves } from '@benne/script';
 import { guis } from '@game';
 import { gui, continua, comenca, carrega, version } from './portada.ids';

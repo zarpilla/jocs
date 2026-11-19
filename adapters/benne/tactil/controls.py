@@ -1,7 +1,7 @@
 """
-La targeta «Com es juga» de la interfície tàctil (GUI `controls`): com es juga amb el dit o amb el ratolí, la
-casella «No ho tornis a mostrar» i el botó «D'acord». La mostra el runtime (tactil/runtime/controls.ts) en començar
-el joc (en prémer «Comença», «Continua» o «Carrega» a la portada) i des de les opcions; el script és tactil/guis/controls/controls.gui.ts.
+La targeta «Com es juga» de la interfície tàctil (GUI `controls`): com es juga amb el dit o amb el ratolí, amb el
+ratolí la casella per girar-ne els botons, i el botó «D'acord». S'obre des de les opcions («Controls»: el runtime és
+tactil/runtime/controls.ts); el script és tactil/guis/controls/controls.gui.ts.
 
 Compartit: el crida el hud.py de cada joc amb les seves peces (el panell de 9 trossos, la casella i la tecla de
 gui_rest.py, les fonts i els colors), així la targeta té l'estil de cada joc. Les icones (el dit, el ratolí) es
@@ -126,7 +126,7 @@ def build_controls(game, *, write_sheet, nine_slice, nine_slices, checkbox, key_
                          'fontSize': 8, 'color': text, 'align': 'left', 'wordWrapWidth': pw - 66 - 22, 'zIndex': 3,
                          'textOutline': {'enabled': True, 'color': outline, 'sides': 'bottomRight'}})
     yb = py + ph - 40
-    # amb el ratolí: girar els botons ara mateix (el script només ho mostra amb el ratolí)
+    # amb el ratolí: girar els botons ara mateix (el script només ho mostra amb el ratolí), en una fila sencera
     yi = yb - 30
     controls += [
         {'type': 'checkbox', 'id': 'intercanvia', 'x': px + 22, 'y': yi + 4, 'width': 21, 'height': 21,
@@ -135,14 +135,6 @@ def build_controls(game, *, write_sheet, nine_slice, nine_slices, checkbox, key_
                     'checkedHover': 'checkbox-checked-hover'}, 'checked': False, 'visible': False, 'zIndex': 3},
         {'type': 'text', 'id': 'intercanviaText', 'x': px + 48, 'y': yi + 6, 'text': '', 'font': font, 'fontSize': 8,
          'color': text, 'align': 'left', 'visible': False, 'zIndex': 3},
-    ]
-    controls += [
-        {'type': 'checkbox', 'id': 'noMostris', 'x': px + 22, 'y': yb + 4, 'width': 21, 'height': 21,
-         'backgroundAnchor': 'top-left', 'tag': 'checkbox',
-         'states': {'uncheckedHover': 'checkbox-hover', 'checked': 'checkbox-checked',
-                    'checkedHover': 'checkbox-checked-hover'}, 'checked': False, 'zIndex': 3},
-        {'type': 'text', 'id': 'noMostrisText', 'x': px + 48, 'y': yb + 6, 'text': '', 'font': font, 'fontSize': 8,
-         'color': text, 'align': 'left', 'zIndex': 3},
         {'type': 'button', 'id': 'dacord', 'x': px + pw - 22 - kw, 'y': yb, 'width': kw, 'height': kh,
          'backgroundAnchor': 'top-left', 'text': '', 'font': font, 'fontSize': 8, 'textColor': text,
          'textAlign': 'center', 'textOffsetX': 0, 'textOffsetY': -2, 'backgroundTag': f'key-{kw}x{kh}',

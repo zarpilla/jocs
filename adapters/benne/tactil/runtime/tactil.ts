@@ -4,8 +4,8 @@
  *
  *  - Tocar una cosa amb el dit (`queFaElToc`, runtime/accions.ts): la primera vegada, la mira; després, si té una
  *    sola acció la fa, i si en té més d'una obre el menú d'accions (el jugador tria el verb). Les sortides, s'hi va.
- *  - Amb el ratolí, per defecte el clic esquerre fa (l'acció, o el menú si n'hi ha més d'una; sense mirar
- *    primer) i el dret mira. Es pot girar a les opcions i a la targeta «Com es juga» (preferencies.ts: `esquerreMira`).
+ *  - Amb el ratolí, per defecte el clic esquerre mira i el dret fa (l'acció, o el menú si n'hi ha més d'una; sense
+ *    mirar primer). Es pot girar a les opcions i a la targeta «Com es juga» (preferencies.ts: `esquerreFa`).
  *  - Mantenir premut (el dit o el botó esquerre): el menú d'accions, amb «Mira» i les accions que té la cosa ara.
  *  - Tocar un objecte de l'inventari: el pren a la mà (ho fa el motor: `toca` és un verb d'objecte). Llavors
  *    tocar una cosa el fa servir amb ella, o li dona si és un personatge. Tocar el mateix objecte o el terra, el deixa.

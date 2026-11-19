@@ -2,7 +2,7 @@
  * La interfície tàctil (sense barra de verbs, pensada per al mòbil), per als jocs amb `tactil: true` al seu joc.ts.
  *
  *  - Tocar una cosa amb el dit: la primera vegada la mira; després, si té una sola acció la fa, i si en té més d'una
- *    obre el menú d'accions. Amb el ratolí, per defecte el clic esquerre fa l'acció (o obre el menú) i el dret mira.
+ *    obre el menú d'accions. Amb el ratolí, per defecte el clic esquerre mira i el dret fa l'acció (o obre el menú).
  *    Mantenir premut (el dit o el botó esquerre): el menú d'accions. Regla: `queFaElToc` (runtime/accions.ts).
  *  - L'alçada de la pantalla s'adapta a l'aparell (de 640×288, un mòbil 20:9, a 640×360, un monitor 16:9), i el HUD
  *    es col·loca segons quanta franja queda sota l'escena (guis/verbs/hud.ts).
@@ -11,8 +11,7 @@
  *
  *   runtime/         → src/game/narrative/ (al costat del pont; el runtime propi del joc encara el pot substituir)
  *   guis/            → src/game/guis/ (els scripts del HUD `verbs`, del menú `accions` i de la targeta `controls`)
- *   opcionsTactils   → el menú d'opcions: «clic esquerre per mirar» i el botó «Controls»
- *   portadaTactil    → els botons de la portada passen per la targeta «Com es juga» abans de jugar
+ *   opcionsTactils   → el menú d'opcions: «clic esquerre per fer» (girar els botons) i el botó «Controls»
  *   controls.py      → per al hud.py de cada joc: l'art i el .gui.json de la targeta «Com es juga»
  *   GLOBAL_SCRIPT    → al bloc generat de globalScript.ts (l'encaminador dels clics)
  *   configuraTactil  → game-config.json (resolució adaptable, els verbs `toca` i `accions`, el perfil d'entrada)
@@ -41,8 +40,7 @@ export const TACTIL_GUIS = [
 /** Els textos fixos de les GUI de la interfície tàctil (GUI → control → clau), que el sync posa dels locales. */
 export const TACTIL_TEXTOS: Record<string, Record<string, string>> = {
   controls: {
-    titol: 'ui.controls.titol', noMostrisText: 'ui.controls.nomostris', dacord: 'ui.controls.dacord',
-    intercanviaText: 'ui.controls.intercanvia',
+    titol: 'ui.controls.titol', dacord: 'ui.controls.dacord', intercanviaText: 'ui.controls.intercanvia',
   },
   'settings-menu': { 'botons-text': 'ui.opcions.botons', controls: 'ui.opcions.controls' },
 };
@@ -85,51 +83,16 @@ import { touchRouter } from './narrative/tactil'
 setTouchRouter(touchRouter)
 `;
 
-// ─── La portada: la targeta «Com es juga» abans de jugar ─────────────────────
-
-const PORTADA_MARCA = '// Creat per adapters/benne (benne-content.ts): els botons de la portada.';
-
-/**
- * El script de la portada (el crea benne-content.ts) d'un joc tàctil: «Comença», «Continua» i «Carrega una partida»
- * passen per la targeta «Com es juga» (la primera vegada de la sessió, si no s'ha dit que no torni a sortir).
- * Només si el script és el generat (porta la marca).
- */
-export function portadaTactil(gameDir: string) {
-  const tsPath = join(gameDir, 'guis/portada/portada.gui.ts');
-  if (!existsSync(tsPath) || !readFileSync(tsPath, 'utf8').startsWith(PORTADA_MARCA)) return;
-  writeFileSync(tsPath, `${PORTADA_MARCA}
-// Interfície tàctil: abans de jugar, la targeta «Com es juga» (adapters/benne/tactil, controls.script.ts).
-import { game, saves } from '@benne/script';
-import { gui, continua, comenca, carrega, version } from './portada.ids';
-import { AUTOSAVE } from '../../narrative/narrative';
-import { abansDeJugar } from '../../narrative/controls.script';
-
-// «Continua» carrega la partida que es desa sola a cada sala; només surt si n'hi ha una.
-function syncContinua() {
-  continua.visible = saves.get(AUTOSAVE) != null
-}
-
-continua.onClick(() => abansDeJugar('continua'))
-comenca.onClick(() => abansDeJugar('comenca'))
-carrega.onClick(() => abansDeJugar('carrega'))
-
-gui.onBuilt(() => {
-  version.text = \`v\${game.version}\`
-  syncContinua()
-})
-gui.onShow(() => syncContinua())
-`);
-}
-
-// ─── Les opcions: «clic esquerre per mirar» i «Controls» ────────────────────
+// ─── Les opcions: «clic esquerre per fer» i «Controls» ────────────────────
 
 const OPCIONS_MARCA = '// Afegit per adapters/benne/tactil (index.ts, opcionsTactils)';
 
 type Control = Json & { id?: string; x?: number; y?: number; height?: number; rows?: number; gridPlacement?: Json };
 
 /**
- * Afegeix al menú d'opcions (GUI `settings-menu` de la plantilla) una fila més, «clic esquerre per mirar» (els botons
- * del ratolí: per defecte, l'esquerre fa i el dret mira), i el botó «Controls» (la targeta «Com es juga») al costat de «Torna». Es pot tornar a
+ * Afegeix al menú d'opcions (GUI `settings-menu` de la plantilla) una fila més, «clic esquerre per fer» (girar els
+ * botons del ratolí: per defecte, l'esquerre mira i el dret fa), i el botó «Controls» (la targeta «Com es juga») al
+ * costat de «Torna». Es pot tornar a
  * executar: si ja hi són, només es regenera el codi afegit al script.
  */
 export function opcionsTactils(gameDir: string) {
@@ -178,16 +141,16 @@ import { mostraControls } from '../../narrative/controls'
 import { preferencies, setPreferencia } from '../../narrative/preferencies'
 
 gui.onShow(() => {
-  intercanvia.checked = preferencies().esquerreMira
+  intercanvia.checked = preferencies().esquerreFa
 })
 
 intercanvia.onChange((on: boolean) => {
-  setPreferencia('esquerreMira', on)
+  setPreferencia('esquerreFa', on)
 })
 
 controls.onClick(() => {
   gui.hide()
-  mostraControls(true)
+  mostraControls()
 })
 `);
 }

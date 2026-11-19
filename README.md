@@ -11,7 +11,7 @@ motor i la història separada del motor.
 | **Aigua Verne**: l'Iri i la Vet volen el pou de la granja; el Magnat Verne s'ha endut l'aigua de tot un sistema planetari. | [games/aigua-verne](games/aigua-verne/README.md) |
 
 Suma Zero, Ni un ou i Aigua Verne es juguen sense barra de verbs, també amb el dit en un mòbil apaïsat: tocar una cosa
-la mira la primera vegada i després en fa l'acció (amb el ratolí, el clic esquerre fa l'acció i el dret mira), i
+la mira la primera vegada i després en fa l'acció (amb el ratolí, per defecte el clic esquerre mira i el dret fa l'acció), i
 mantenir premut obre el menú d'accions (la interfície tàctil
 compartida, [adapters/benne/tactil](adapters/benne/tactil/index.ts)). Ferro-9 manté la barra de verbs.
 

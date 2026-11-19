@@ -20,10 +20,10 @@ d'aquí va sortir la interfície tàctil compartida.
 | Gest | Què fa |
 |---|---|
 | Tocar una cosa (amb el dit) | La primera vegada, mirar-la (la descripció, amb la pista). Després: si té una sola acció, la fa (obrir, agafar, parlar...); si en té més d'una, encara que alguna sigui una broma, obre el menú i tries tu. Les sortides no es miren: s'hi va |
-| Amb el ratolí: clic esquerre, clic dret | El clic esquerre fa el mateix que el toc, però sense mirar primer (l'acció, o el menú si n'hi ha més d'una); el clic dret mira |
+| Amb el ratolí: clic esquerre, clic dret | Per defecte, el clic esquerre mira (a les sortides, hi va) i el dret fa el mateix que el toc, però sense mirar primer (l'acció, o el menú si n'hi ha més d'una) |
 | Mantenir premut (el dit o el botó esquerre) | El menú d'accions: «Mira» i les accions que té ara mateix (2–3 opcions) |
-| «Com es juga» | En prémer «Comença», «Continua» o «Carrega una partida» surt una targeta que ho explica, amb el dit o amb el ratolí segons l'aparell (amb el ratolí, s'hi pot triar què fa cada botó), fins que marques «No ho tornis a mostrar». Es torna a veure a Opcions → Controls |
-| Opcions → «clic esquerre per mirar» | Gira els botons del ratolí: l'esquerre mira i el dret fa. Es desa en aquell aparell |
+| «Com es juga» | A Opcions → Controls, una targeta que ho explica, amb el dit o amb el ratolí segons l'aparell (amb el ratolí, s'hi pot triar què fa cada botó). No surt sola en començar |
+| Opcions → «clic esquerre per fer» | Gira els botons del ratolí: l'esquerre fa i el dret mira. Es desa en aquell aparell |
 | Tocar el terra | Caminar |
 | Bossa (a baix a la dreta) | Desplega la safata de l'inventari |
 | Tocar un objecte de la safata | El pren a la mà («Usa X amb...»); tocar una cosa l'hi fa servir, o li dona si és un personatge. Tocar el terra o el mateix objecte, el deixa |
@@ -96,8 +96,8 @@ Regla del toc: la primera vegada mira; després, una sola acció la fa i més d'
 | Ni un ou | 109 | 109 | 0 | 0 | 15 | 1,14 | 1,00 |
 | Ferro-9 (amb barra de verbs; mesura del 15-11-2026) | 149 | 134 | 11 | 4 | 22 | 1,25 | — |
 
-Amb el ratolí (l'ordinador), el clic esquerre fa l'acció sense mirar primer i el clic dret mira: no hi ha tocs de més,
-i mirar és un gest quan el camí ho demana.
+Amb el ratolí (l'ordinador), un botó fa l'acció sense mirar primer i l'altre mira (per defecte, l'esquerre mira i el
+dret fa): no hi ha tocs de més, i mirar és un gest quan el camí ho demana.
 
 A Aigua Verne cap cosa del camí té dues accions diferents: el contingut ja agrupa els verbs en una sola interacció
 (`["walkTo", "use", "open"]`). Al Ferro-9, el menú surt just on el verb és el trencaclosques (el panell, la molla, la

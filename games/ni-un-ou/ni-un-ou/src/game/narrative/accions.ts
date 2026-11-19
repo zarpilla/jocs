@@ -218,12 +218,19 @@ export function queFaElToc(
   const mirarPrimer = opts.mirarPrimer ?? true;
   const totes = accions(narrative, target, room);
   const unica = totes.length === 1 ? totes[0] : undefined;
-  const sortida = unica?.verbs.includes('walkTo') === true;
+  const sortida = esSortida(narrative, target, room);
   const teMira = narrative.peek({ verb: 'look', target, room }) !== undefined;
   if (mirarPrimer && teMira && !sortida && !isMirat(narrative, target, room)) return { fa: 'mira' };
   if (unica) return { fa: 'accio', verb: unica.verb };
   if (totes.length === 0) return { fa: 'mira' };
   return { fa: 'menu' };
+}
+
+/** Si és una sortida (la seva única acció és anar-hi): s'hi va, no es mira, també amb el clic que mira. */
+export function esSortida(narrative: Narrative, target: InteractionTarget, room?: string): boolean {
+  if (target.kind === 'item') return false;
+  const totes = accions(narrative, target, room);
+  return totes.length === 1 && totes[0]!.verbs.includes('walkTo');
 }
 
 /**

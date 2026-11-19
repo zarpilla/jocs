@@ -21,10 +21,10 @@ Es juga sense barra de verbs, també amb el dit en un mòbil apaïsat (el camí 
 | Gest | Què fa |
 |---|---|
 | Tocar una cosa (amb el dit) | La primera vegada (o quan té una descripció nova), mirar-la. Després: si té una sola acció, la fa; si en té més d'una, obre el menú i tries tu. Les sortides no es miren: s'hi va |
-| Amb el ratolí: clic esquerre, clic dret | El clic esquerre fa el mateix que el toc, però sense mirar primer (l'acció, o el menú si n'hi ha més d'una); el clic dret mira |
+| Amb el ratolí: clic esquerre, clic dret | Per defecte, el clic esquerre mira (a les sortides, hi va) i el dret fa el mateix que el toc, però sense mirar primer (l'acció, o el menú si n'hi ha més d'una) |
 | Mantenir premut (el dit o el botó esquerre) | El menú d'accions: «Mira» i les accions que té ara mateix |
-| «Com es juga» | En prémer «Comença», «Continua» o «Carrega una partida» surt una targeta que ho explica, amb el dit o amb el ratolí segons l'aparell (amb el ratolí, s'hi pot triar què fa cada botó), fins que marques «No ho tornis a mostrar». Es torna a veure a Opcions → Controls |
-| Opcions → «clic esquerre per mirar» | Gira els botons del ratolí: l'esquerre mira i el dret fa. Es desa en aquell aparell |
+| «Com es juga» | A Opcions → Controls, una targeta que ho explica, amb el dit o amb el ratolí segons l'aparell (amb el ratolí, s'hi pot triar què fa cada botó). No surt sola en començar |
+| Opcions → «clic esquerre per fer» | Gira els botons del ratolí: l'esquerre fa i el dret mira. Es desa en aquell aparell |
 | Tocar el terra | Caminar |
 | Sac (a baix a la dreta) | Desplega la safata de l'inventari |
 | Tocar un objecte de la safata | El plànol s'obre, el walkie truca, les notes i el quadern es miren (el contingut no els combina mai amb res). La resta es prenen a la mà («Usa X amb...»): tocar una cosa l'hi fa servir, o li dona si és un personatge |
@@ -61,7 +61,7 @@ la llista). Cap pas és impossible.
 | Amb tots els aliats | 109 | 109 | 0 | 15 | 1,14 | 1,00 |
 | Amb les frontisses de l'Iri | 110 | 109 | 1 | 17 | 1,16 | 1,01 |
 
-Amb el ratolí no hi ha tocs de més per mirar: mirar és un clic dret (un gest, quan el camí ho demana).
+Amb el ratolí no hi ha tocs de més per mirar: mirar és un clic (l'esquerre, per defecte), i fer, l'altre (mesurat amb els botons girats: el resultat és el mateix).
 
 L'únic menú és el registre del rebost (s'hi pot fer més d'una cosa). És el joc que millor encaixa amb el toc.
 

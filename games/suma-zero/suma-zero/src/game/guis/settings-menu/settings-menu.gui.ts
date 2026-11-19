@@ -43,14 +43,14 @@ import { mostraControls } from '../../narrative/controls'
 import { preferencies, setPreferencia } from '../../narrative/preferencies'
 
 gui.onShow(() => {
-  intercanvia.checked = preferencies().esquerreMira
+  intercanvia.checked = preferencies().esquerreFa
 })
 
 intercanvia.onChange((on: boolean) => {
-  setPreferencia('esquerreMira', on)
+  setPreferencia('esquerreFa', on)
 })
 
 controls.onClick(() => {
   gui.hide()
-  mostraControls(true)
+  mostraControls()
 })
