@@ -277,7 +277,7 @@ NPCS = {
     # en Marcel: gran, calb amb cabells blancs als costats, ulleres, jersei de punt marró i camisa crema.
     # Sempre assegut de costat en un tamboret de la barra (el maluc a l'alçada del seient).
     'marcel': {'skin': SKIN_OLD, 'legs': TROUSER, 'top': TRENCH, 'shoes': BOOT, 'brow': (190, 186, 190), 'stoop': 1,
-               'seated': 49,
+               # (dret, a la punta de la barra: assegut al tamboret de la sala en 3D no quedava real)
                'hooks': {'hair': hooks(hair_cap(HAIR_WHITE, bald=True), glasses)}},
     # en Tomàs: vermellós, bigoti, camisa blanca i davantal negre
     'tomas': {'skin': SKIN_RUDDY, 'legs': TROUSER, 'top': WHITE, 'shoes': BOOT, 'thin': -1,

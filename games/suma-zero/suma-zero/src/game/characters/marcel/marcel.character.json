@@ -8,8 +8,8 @@
   },
   "walkSpeed": 93,
   "walkToPoint": {
-    "x": 88,
-    "y": 120
+    "x": 59,
+    "y": 111
   },
   "talkPoint": {
     "x": 34,
@@ -48,11 +48,11 @@
     ]
   },
   "animations": {
-    "IdleD": {
+    "IdleL": {
       "loop": true,
       "frameDuration": 650
     },
-    "IdleL": {
+    "IdleD": {
       "loop": true,
       "frameDuration": 650
     },
@@ -60,11 +60,39 @@
       "loop": true,
       "frameDuration": 650
     },
-    "TalkD": {
+    "IdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleUL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "WalkDL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "WalkUL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "TalkL": {
       "loop": true,
       "frameDuration": 140
     },
-    "TalkL": {
+    "TalkD": {
       "loop": true,
       "frameDuration": 140
     },
@@ -72,15 +100,31 @@
       "loop": true,
       "frameDuration": 140
     },
-    "BlinkD": {
-      "loop": false,
-      "frameDuration": 75
+    "TalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkUL": {
+      "loop": true,
+      "frameDuration": 140
     },
     "BlinkL": {
       "loop": false,
       "frameDuration": 75
     },
+    "BlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
     "LookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LookDL": {
       "loop": false,
       "frameDuration": 260
     },

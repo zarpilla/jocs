@@ -765,7 +765,8 @@ GEOMETRIA = {
                                                   for dz in (-8, 8) for dy in (0, 8)]),
                               'walk': _p(COM_P[0], 180)},
     },
-    'spawns': {'marcel': _p(STOOLS[0], STOOL_Z), 'tomas': _p(372, 276), 'vet': _p(330, 120)},
+    'spawns': {'marcel': _p(STOOLS[0] - 30, STOOL_Z + 8),   # dret a la punta de la barra, abans del primer tamboret
+                'tomas': _p(372, 276), 'vet': _p(330, 120)},
     'walkable': _WALK,
     'floorSquash': 0.42,
     # L'ombra de contacte: la llum dominant és el fluorescent (el punt del terra just a sota).

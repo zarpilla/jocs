@@ -2569,7 +2569,7 @@ COMENÇA A: hola
     ⇒ +pizza_demanada
 
 [marcel]
-    VET: Ve cada nit. Seu a la punta de la barra, demana un cafè amb llet i no el paga.
+    VET: Ve cada nit. Es planta a la punta de la barra, demana un cafè amb llet i no el paga.
     VET: Té opinió sobre tot. Sobretot sobre els bancs. Ara entenc per què.
     ↪ menu
 
