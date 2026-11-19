@@ -148,6 +148,18 @@
         {
           "verb": "look",
           "if": {
+            "flag": "porta_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.porta_roure.mira3"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
             "flag": "estaca_treta"
           },
           "lines": [

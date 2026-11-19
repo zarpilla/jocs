@@ -91,7 +91,9 @@ function match<T>(word: string, list: T[], keys: (x: T) => string[]): T | undefi
 }
 
 function findThing(word: string) {
-  return match(word, visibleThings(), ([id, h]) => [id, h.name ? n.t(h.name) : id])?.[0];
+  // una cosa de la sala o, si no, l'altra protagonista quan és a la mateixa sala (es pot mirar i parlar-hi)
+  return match(word, visibleThings(), ([id, h]) => [id, h.name ? n.t(h.name) : id])?.[0]
+    ?? match(word, altraAqui(), (id) => [id, n.characterName(id)]);
 }
 
 function findItem(word: string) {
