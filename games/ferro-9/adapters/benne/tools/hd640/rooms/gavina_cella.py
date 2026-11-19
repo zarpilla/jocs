@@ -524,9 +524,11 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # (la paret del fons és fosca: un fil de llum freda al voltant del personatge perquè s'hi retalli)
+    'characterOutline': {'color': '#a8c4e0', 'alpha': 0.35},
     # la llum de la sala sobre els personatges, en temps d'execució
     'characterLights': {
-        'ambient': '#9aa6b8',                                                           # acer fred
+        'ambient': '#a8b4c6',                                                           # acer fred
         'lights': [
             {'x': _p(_w(325), ZW - 30, HW - 10)[0], 'y': _p(_w(325), ZW - 30, HW - 10)[1], 'radius': 360,
              'color': '#d8f0ff', 'intensity': 0.7},                                     # el fluorescent

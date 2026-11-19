@@ -226,6 +226,16 @@ def escena(cv, estat=frozenset(), lampada=True):
                            ((CW - 0.5, HW, CD), (CW - 0.5, HW, ZN), (CW - 0.5, 0, ZN), (CW - 0.5, 0, CD)),
                            ((0, HW, CD - 0.5), (CW, HW, CD - 0.5), (CW, 0, CD - 0.5), (0, 0, CD - 0.5))):
         e.foscor('racons', P0, P1, P2, P3, lambda s, t: 0.35 * max(0.0, 1 - t / 50) + 0.3 * max(0.0, 1 - (HW - t) / 20))
+    # la claror de l'arc del fons, que llisca per les parets dels costats i pel terra (més com més a prop de l'arc)
+    for P0, P1, P2, P3 in (((0.6, HW, CD - 150), (0.6, HW, CD), (0.6, 0, CD), (0.6, 0, CD - 150)),
+                           ((CW - 0.6, HW, CD), (CW - 0.6, HW, CD - 150), (CW - 0.6, 0, CD - 150), (CW - 0.6, 0, CD))):
+        izq = P0[0] < 1
+        e.claror(P0, P1, P2, P3, (255, 196, 128),
+                 lambda s, t, izq=izq: 0.26 * (s / 150 if izq else 1 - s / 150) ** 2 * max(0.0, 1 - abs(t - 120) / 90))
+    e.claror((x0 - 90, 0.6, CD), (x1 + 90, 0.6, CD), (x1 + 90, 0.6, CD - 120), (x0 - 90, 0.6, CD - 120), (255, 196, 128),
+             lambda s, t: 0.22 * max(0.0, 1 - t / 120) ** 1.5 * max(0.0, 1 - abs(s - (x1 - x0 + 180) / 2) / 130))
+    # una costella de la galeria, entre els dos passadissos: els muntants arran de les parets i la biga del sostre
+    costella(e, 'costella', 205, 2.4)
     # les caixes de recanvis, apilades al racó del fons a la dreta (la paret es trenca)
     for bx, bz, w, d, hh, ang, y0 in CAIXES:
         if y0 == 0:
@@ -296,12 +306,29 @@ def escena(cv, estat=frozenset(), lampada=True):
                 cares={'davant': {'ramp': FOSC, 'lvl': boca},
                        'dreta': {'ramp': FOSC, 'lvl': lambda s, t, P: 3.6 - (1.2 if int(t) % 9 == 0 else 0)},
                        'esquerra': {'ramp': FOSC, 'lvl': lambda s, t, P: 3.2 - (1.2 if int(t) % 9 == 0 else 0)}})
+    # una costella molt a prop (només se'n veuen el muntant de l'esquerra i la biga del sostre), en silueta
+    costella(e, 'primer_pla', 18, 1.6)
     for k, xx in enumerate((CW - 96, CW - 80)):
         e.cable('primer_pla', [(xx, HW - 8, zf - 14), (xx - 10 - k * 8, HW - 50 - k * 14, zf - 16), (xx + 4, HW - 84 + k * 20, zf - 18)],
                 FOSC, 2.4, gruix=2.2)
     e.caixa('primer_pla', -60, CW + 80, HW - 8, HW + 40, zf - 10, zf, FOSC, 1.6,
             cares={'davant': {'ramp': FOSC, 'lvl': boca}, 'sota': {'ramp': FOSC, 'lvl': 3.6}})
+    e.silueta({'primer_pla'}, 0.25, col=(3, 3, 6))
     return e
+
+
+def costella(e, sid, z, lvl):
+    """Una costella de la galeria a la profunditat `z`: dos muntants en I arran de les parets, la biga del sostre i
+    les cartel·les dels cantons, de ferro fosc, amb els reblons."""
+    w, d = 14, 10
+    vora = {'ramp': FOSC, 'lvl': lambda s, t, P: lvl + (1.6 if s < 1.4 else 0) + (1.0 if int(t) % 14 == 7 else 0)}
+    for xa, xb in ((0, w), (CW - w, CW)):
+        e.caixa(sid, xa, xb, 0, HW, z, z + d, FOSC, lvl, cares={'davant': vora, 'esquerra': vora, 'dreta': vora})
+    e.caixa(sid, 0, CW, HW - 12, HW, z, z + d, FOSC, lvl, cares={'davant': vora, 'sota': {'ramp': FOSC, 'lvl': lvl + 0.8}})
+    for xa, sg in ((w, 1), (CW - w, -1)):                          # les cartel·les (triangles als cantons de dalt)
+        for k in range(8):
+            e.caixa(sid, min(xa, xa + sg * (24 - k * 3)), max(xa, xa + sg * (24 - k * 3)), HW - 12 - (k + 1) * 3,
+                    HW - 12 - k * 3, z + 2, z + d - 2, FOSC, lvl)
 
 
 def _lampada(e, swing=0.0):

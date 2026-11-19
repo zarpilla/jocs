@@ -160,12 +160,55 @@ def _terra(s, t, P):
     T = 46.0
     ui, vi = math.floor(x / T), math.floor(z / T)
     fu, fv = x - ui * T, z - vi * T
-    lvl = 3.0 + (hr(ui, vi, 7) - 0.5) * 0.3 + (hr(int(x) // 5, int(z) // 3, 9) - 0.5) * 0.1
-    if fu < 1.2 or fv < 1.2:
-        lvl = 1.8
-    elif fu < 2.4 or fv < 2.4:
-        lvl += 0.3
+    # (cada llosa de resina, d'un to una mica diferent, i les juntes ben marcades: el terra s'hi llegeix i els mobles
+    # s'hi assenten)
+    lvl = 3.0 + (hr(ui, vi, 7) - 0.5) * 0.6 + (0.25 if (ui + vi) % 2 else 0) + (hr(int(x) // 5, int(z) // 3, 9) - 0.5) * 0.1
+    if fu < 1.6 or fv < 1.6:
+        lvl = 1.2
+    elif fu < 3.0 or fv < 3.0:
+        lvl += 0.5
     return lvl
+
+
+# els focus del carril (x, y, z al món): d'on surten les ombres projectades dels mobles
+FOCUS = [(sx + OFF, 190.0, ZB - 120) for sx, _ in SPOTS.values()]
+
+
+def ombra_projectada(e, cx, cz, w, ang, h, k=0.42):
+    """L'ombra que un focus del carril (el més proper) projecta d'un moble de `w` d'ample i `h` d'alt, girat `ang`:
+    una falca que surt del peu i s'allarga cap a la banda contrària del focus, esvaïda."""
+    lx, ly, lz = min(FOCUS, key=lambda L: math.hypot(L[0] - cx, L[2] - cz))
+    dx, dz = cx - lx, cz - lz
+    n = math.hypot(dx, dz) or 1.0
+    ln = h * n / (ly - h) * 1.6 + 30                                # (una mica més llarga: es llegeix millor)
+    ux, uz = dx / n, dz / n
+    c, s_ = math.cos(ang), math.sin(ang)
+    hw = w / 2
+    A = (cx - hw * c, 0.25, cz - hw * s_)
+    B = (cx + hw * c, 0.25, cz + hw * s_)
+    e.foscor('ombra', A, B, (B[0] + ux * ln, 0.25, B[2] + uz * ln), (A[0] + ux * ln, 0.25, A[2] + uz * ln),
+             lambda s, t: k * max(0.0, 1 - t / ln) ** 1.3 * min(1.0, s / 10, (w - s) / 10))
+
+
+def catifa(e):
+    """Una catifa granat amb la sanefa, sota el banc i fins davant la vitrina: assenta els mobles al terra."""
+    cx, cz, ang = 185.0, 335.0, 0.32
+    w, d = 320.0, 110.0
+    c, s_ = math.cos(ang), math.sin(ang)
+
+    def P(lx, lz):
+        return (cx + lx * c - lz * s_, 0.3, cz + lx * s_ + lz * c)
+
+    def lvl(s, t, Q):
+        b = min(s, w - s, t, d - t)
+        if b < 4:
+            return 1.4
+        if b < 9:
+            return 3.4 if int(s / 6 + t / 6) % 2 else 2.8
+        if b < 11:
+            return 1.8
+        return 2.4 + (hr(int(s) // 3, int(t) // 3, 5) - 0.5) * 0.4
+    e.quad('catifa', P(-w / 2, d / 2), P(w / 2, d / 2), P(w / 2, -d / 2), P(-w / 2, -d / 2), ramp=pla.VELVET, lvl=lvl)
 
 
 def ombra_peu(e, x, z, rx, rz=None, k=0.55):
@@ -260,6 +303,12 @@ def scene(cv, mira=False, cargol=False):
         x = tx + OFF
         e.claror((x - 90, 0.3, ZB - 2), (x + 90, 0.3, ZB - 2), (x + 90, 0.3, ZB - 150), (x - 90, 0.3, ZB - 150),
                  (255, 214, 160), lambda s, t: 0.28 * max(0.0, 1 - math.hypot((s - 90) / 90, t / 140)))
+    catifa(e)
+    # les ombres que els focus projecten dels mobles (el banc, la vitrina, el faristol i el sòcol)
+    ombra_projectada(e, 165.0, 320.0, 190.0, 0.32, 27.0)
+    ombra_projectada(e, 400.0, 395.0, 70.0, -0.35, 120.0)
+    ombra_projectada(e, 300.0, 445.0, 40.0, -0.5, 90.0, k=0.32)
+    ombra_projectada(e, 330.0, 235.0, 70.0, 0.0, 70.0)
     e.foscor('ombra', (XR - 160, 0.2, ZB), (XR, 0.2, ZB), (XR, 0.2, ZB - 160), (XR - 160, 0.2, ZB - 160),
              lambda s, t: 0.45 * max(0.0, 1 - math.hypot(160 - s, t) / 160))
     e.foscor('ombra', _pw(-120, FLOOR_Y), _pw(W, FLOOR_Y), (W + OFF, 0.3, ZB - 10), (-120 + OFF, 0.3, ZB - 10),

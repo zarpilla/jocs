@@ -1607,7 +1607,8 @@ def _amb_geometria():
                          'walkable': list(geo.get('walkable') or [(0, 250), (639, 250), (639, 258), (0, 258)]),
                          'regions': list(geo.get('regions', [])), 'forats': list(geo.get('forats', [])),
                          'characterShadow': geo.get('characterShadow'), 'floorSquash': geo.get('floorSquash'),
-                         'characterLights': geo.get('characterLights')}
+                         'characterLights': geo.get('characterLights'),
+                         'characterOutline': geo.get('characterOutline')}
 
 
 _amb_geometria()

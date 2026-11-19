@@ -422,6 +422,11 @@ def draw_designed(dir_: Path, game_dir: Path, design):
         room['characterShadow'] = cs
     else:
         room.pop('characterShadow', None)
+    # El contorn dels personatges (characterOutline del motor): fosc a les sales molt clares, clar a les molt fosques.
+    if design.get('characterOutline'):
+        room['characterOutline'] = dict(design['characterOutline'])
+    else:
+        room.pop('characterOutline', None)
     # Quant aixafa la càmera el terra (floorSquash del motor): les direccions de caminar es trien sobre el terra.
     if design.get('floorSquash'):
         room['floorSquash'] = design['floorSquash']

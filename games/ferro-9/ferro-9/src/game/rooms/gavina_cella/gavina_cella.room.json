@@ -674,7 +674,7 @@
     }
   ],
   "characterLights": {
-    "ambient": "#9aa6b8",
+    "ambient": "#a8b4c6",
     "lights": [
       {
         "x": 325,
@@ -712,5 +712,9 @@
       "reach": 160
     }
   },
-  "floorSquash": 0.4
+  "floorSquash": 0.4,
+  "characterOutline": {
+    "color": "#a8c4e0",
+    "alpha": 0.35
+  }
 }

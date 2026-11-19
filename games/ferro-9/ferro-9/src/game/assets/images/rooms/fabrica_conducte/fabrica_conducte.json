@@ -23,7 +23,7 @@
     },
     "fabrica_conducte 1.aseprite": {
       "frame": {
-        "x": 1723,
+        "x": 1757,
         "y": 548,
         "w": 40,
         "h": 30
@@ -44,7 +44,7 @@
     },
     "fabrica_conducte 2.aseprite": {
       "frame": {
-        "x": 1783,
+        "x": 1817,
         "y": 548,
         "w": 28,
         "h": 15
@@ -65,7 +65,7 @@
     },
     "fabrica_conducte 3.aseprite": {
       "frame": {
-        "x": 1763,
+        "x": 1797,
         "y": 548,
         "w": 20,
         "h": 17
@@ -86,7 +86,7 @@
     },
     "fabrica_conducte 4.aseprite": {
       "frame": {
-        "x": 1673,
+        "x": 1707,
         "y": 548,
         "w": 50,
         "h": 56
@@ -107,18 +107,18 @@
     },
     "fabrica_conducte 5.aseprite": {
       "frame": {
-        "x": 1442,
+        "x": 860,
         "y": 548,
         "w": 114,
-        "h": 104
+        "h": 162
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 321,
-        "y": 88,
+        "y": 30,
         "w": 114,
-        "h": 104
+        "h": 162
       },
       "sourceSize": {
         "w": 640,
@@ -254,7 +254,7 @@
     },
     "fabrica_conducte 12.aseprite": {
       "frame": {
-        "x": 592,
+        "x": 558,
         "y": 360,
         "w": 277,
         "h": 186
@@ -275,7 +275,7 @@
     },
     "fabrica_conducte 13.aseprite": {
       "frame": {
-        "x": 1150,
+        "x": 1116,
         "y": 360,
         "w": 277,
         "h": 185
@@ -296,7 +296,7 @@
     },
     "fabrica_conducte 14.aseprite": {
       "frame": {
-        "x": 1704,
+        "x": 1670,
         "y": 360,
         "w": 277,
         "h": 184
@@ -317,7 +317,7 @@
     },
     "fabrica_conducte 15.aseprite": {
       "frame": {
-        "x": 1981,
+        "x": 1947,
         "y": 360,
         "w": 277,
         "h": 183
@@ -338,7 +338,7 @@
     },
     "fabrica_conducte 16.aseprite": {
       "frame": {
-        "x": 2531,
+        "x": 2497,
         "y": 360,
         "w": 273,
         "h": 182
@@ -359,7 +359,7 @@
     },
     "fabrica_conducte 17.aseprite": {
       "frame": {
-        "x": 3069,
+        "x": 3035,
         "y": 360,
         "w": 265,
         "h": 181
@@ -380,7 +380,7 @@
     },
     "fabrica_conducte 18.aseprite": {
       "frame": {
-        "x": 3334,
+        "x": 3300,
         "y": 360,
         "w": 257,
         "h": 180
@@ -401,7 +401,7 @@
     },
     "fabrica_conducte 19.aseprite": {
       "frame": {
-        "x": 3848,
+        "x": 3814,
         "y": 360,
         "w": 233,
         "h": 179
@@ -443,18 +443,18 @@
     },
     "fabrica_conducte 21.aseprite": {
       "frame": {
-        "x": 1556,
+        "x": 974,
         "y": 548,
         "w": 117,
-        "h": 96
+        "h": 147
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 318,
-        "y": 81,
+        "y": 30,
         "w": 117,
-        "h": 96
+        "h": 147
       },
       "sourceSize": {
         "w": 640,
@@ -464,7 +464,7 @@
     },
     "fabrica_conducte 22.aseprite": {
       "frame": {
-        "x": 663,
+        "x": 697,
         "y": 548,
         "w": 163,
         "h": 176
@@ -632,7 +632,7 @@
     },
     "fabrica_conducte 30.aseprite": {
       "frame": {
-        "x": 869,
+        "x": 835,
         "y": 360,
         "w": 281,
         "h": 186
@@ -653,7 +653,7 @@
     },
     "fabrica_conducte 31.aseprite": {
       "frame": {
-        "x": 1427,
+        "x": 1393,
         "y": 360,
         "w": 277,
         "h": 185
@@ -674,7 +674,7 @@
     },
     "fabrica_conducte 32.aseprite": {
       "frame": {
-        "x": 2258,
+        "x": 2224,
         "y": 360,
         "w": 273,
         "h": 183
@@ -695,7 +695,7 @@
     },
     "fabrica_conducte 33.aseprite": {
       "frame": {
-        "x": 2804,
+        "x": 2770,
         "y": 360,
         "w": 265,
         "h": 182
@@ -716,7 +716,7 @@
     },
     "fabrica_conducte 34.aseprite": {
       "frame": {
-        "x": 3591,
+        "x": 3557,
         "y": 360,
         "w": 257,
         "h": 180
@@ -758,7 +758,7 @@
     },
     "fabrica_conducte 36.aseprite": {
       "frame": {
-        "x": 502,
+        "x": 536,
         "y": 548,
         "w": 161,
         "h": 177
@@ -779,7 +779,7 @@
     },
     "fabrica_conducte 37.aseprite": {
       "frame": {
-        "x": 826,
+        "x": 1091,
         "y": 548,
         "w": 44,
         "h": 134
@@ -800,7 +800,7 @@
     },
     "fabrica_conducte 38.aseprite": {
       "frame": {
-        "x": 826,
+        "x": 1091,
         "y": 548,
         "w": 44,
         "h": 134
@@ -821,7 +821,7 @@
     },
     "fabrica_conducte 39.aseprite": {
       "frame": {
-        "x": 870,
+        "x": 1135,
         "y": 548,
         "w": 44,
         "h": 134
@@ -842,7 +842,7 @@
     },
     "fabrica_conducte 40.aseprite": {
       "frame": {
-        "x": 914,
+        "x": 1179,
         "y": 548,
         "w": 44,
         "h": 134
@@ -863,7 +863,7 @@
     },
     "fabrica_conducte 41.aseprite": {
       "frame": {
-        "x": 958,
+        "x": 1223,
         "y": 548,
         "w": 44,
         "h": 134
@@ -884,7 +884,7 @@
     },
     "fabrica_conducte 42.aseprite": {
       "frame": {
-        "x": 1002,
+        "x": 1267,
         "y": 548,
         "w": 44,
         "h": 134
@@ -905,7 +905,7 @@
     },
     "fabrica_conducte 43.aseprite": {
       "frame": {
-        "x": 1046,
+        "x": 1311,
         "y": 548,
         "w": 44,
         "h": 134
@@ -926,7 +926,7 @@
     },
     "fabrica_conducte 44.aseprite": {
       "frame": {
-        "x": 1090,
+        "x": 1355,
         "y": 548,
         "w": 44,
         "h": 134
@@ -947,7 +947,7 @@
     },
     "fabrica_conducte 45.aseprite": {
       "frame": {
-        "x": 1134,
+        "x": 1399,
         "y": 548,
         "w": 44,
         "h": 134
@@ -968,7 +968,7 @@
     },
     "fabrica_conducte 46.aseprite": {
       "frame": {
-        "x": 1178,
+        "x": 1443,
         "y": 548,
         "w": 44,
         "h": 134
@@ -989,7 +989,7 @@
     },
     "fabrica_conducte 47.aseprite": {
       "frame": {
-        "x": 1222,
+        "x": 1487,
         "y": 548,
         "w": 44,
         "h": 134
@@ -1010,7 +1010,7 @@
     },
     "fabrica_conducte 48.aseprite": {
       "frame": {
-        "x": 1266,
+        "x": 1531,
         "y": 548,
         "w": 44,
         "h": 134
@@ -1031,7 +1031,7 @@
     },
     "fabrica_conducte 49.aseprite": {
       "frame": {
-        "x": 1310,
+        "x": 1575,
         "y": 548,
         "w": 44,
         "h": 134
@@ -1052,7 +1052,7 @@
     },
     "fabrica_conducte 50.aseprite": {
       "frame": {
-        "x": 1354,
+        "x": 1619,
         "y": 548,
         "w": 44,
         "h": 134
@@ -1073,7 +1073,7 @@
     },
     "fabrica_conducte 51.aseprite": {
       "frame": {
-        "x": 1398,
+        "x": 1663,
         "y": 548,
         "w": 44,
         "h": 134
@@ -1094,7 +1094,7 @@
     },
     "fabrica_conducte 52.aseprite": {
       "frame": {
-        "x": 1398,
+        "x": 1663,
         "y": 548,
         "w": 44,
         "h": 134
@@ -1115,7 +1115,7 @@
     },
     "fabrica_conducte 53.aseprite": {
       "frame": {
-        "x": 1398,
+        "x": 1663,
         "y": 548,
         "w": 44,
         "h": 134
@@ -1136,7 +1136,7 @@
     },
     "fabrica_conducte 54.aseprite": {
       "frame": {
-        "x": 1398,
+        "x": 1663,
         "y": 548,
         "w": 44,
         "h": 134
@@ -1157,18 +1157,18 @@
     },
     "fabrica_conducte 55.aseprite": {
       "frame": {
-        "x": 558,
-        "y": 360,
+        "x": 502,
+        "y": 548,
         "w": 34,
-        "h": 187
+        "h": 178
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 131,
-        "y": 31,
+        "y": 40,
         "w": 34,
-        "h": 187
+        "h": 178
       },
       "sourceSize": {
         "w": 640,
@@ -1204,7 +1204,7 @@
     "image": "fabrica_conducte.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4081,
+      "w": 4070,
       "h": 727
     },
     "scale": "1",
