@@ -2,7 +2,7 @@
 Aigua Verne — la plaça de Ferrum dels postcrèdits, plana (de cara, a 1×): les textures de `postcredits` (en 3D).
 
 Les cases de maó ennegrit de la plaça (sense teulada: la teulada es fa en 3D), amb les finestres, les portes, el rètol
-pintat a mà AIGUA PER A TOTHOM i el panell nou «AIGUA VESPER · 4 ▲»; la font de Verne (blanca, amb el lector de
+pintat a mà AIGUA PER A TOTES i el panell nou «AIGUA VESPER · 4 ▲»; la font de Verne (blanca, amb el lector de
 targetes tapat amb un cartró i cinta) amb la pica plena; i els fotogrames plans del raig de la font.
 
 Cada peça es dibuixa sola en un llenç transparent per fer-ne una textura o un sprite.
@@ -51,9 +51,9 @@ def casa(cv, x0, x1, top, seed, door=None, wins=(), lit=()):
 
 
 def retol(cv):
-    """AIGUA PER A TOTHOM, pintat a mà a la paret, en blanc de calç, gros (en escorç s'ha de llegir): la lletra a 2×
+    """AIGUA PER A TOTES, pintat a mà a la paret, en blanc de calç, gros (en escorç s'ha de llegir): la lletra a 2×
     d'alt i d'ample, amb els regalims de la pintura."""
-    s = 'AIGUA PER A TOTHOM'
+    s = 'AIGUA PER A TOTES'
     tmp = Canvas(260, 12, light=TEXL, transparent=True)
     text(tmp, s, 1, 1, CLOTH, 4.4)
     tw = text_width(s) + 2
@@ -66,7 +66,7 @@ def retol(cv):
                 for dx in (0, 1):
                     for dy in (0, 1):
                         cv.flat(x0 + 2 * x + dx, y0 + 2 * y + dy, c)
-    for dx in (6, 42, 80, 116, 150):
+    for dx in (6, 42, 80):               # (cap al final: en escorç, un regalim sota TOTES fa una Ę o una Ş)
         for k in range(1 + int(hr(dx, 4) * 2)):
             cv.put(x0 + dx, y0 + 14 + k, CLOTH, 3.6)
 

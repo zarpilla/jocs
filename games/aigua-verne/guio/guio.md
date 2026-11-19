@@ -793,7 +793,7 @@ El Magnat cau i plou, però l'especulació no s'acaba: **els dipòsits canvien d
 
 ### Postcrèdits
 
-Ferrum. Cua a la font pública, que ara raja per a tothom. Al final de la cua, amb el vestit blanc brut, l'Aurelià
+Ferrum. Cua a la font pública, que ara raja per a totes. Al final de la cua, amb el vestit blanc brut, l'Aurelià
 Verne, amb en Dividend en braços (xop).
 
 > VERNE *(a la dona del davant, la Rosa)*: Li compro el lloc. Cent crèdits.

@@ -1,5 +1,5 @@
 """
-Aigua Verne — `postcredits` (L): la plaça de Ferrum, temps després. La font pública raja per a tothom. EN 3D
+Aigua Verne — `postcredits` (L): la plaça de Ferrum, temps després. La font pública raja per a totes. EN 3D
 (hd640/tres_d.py), a 1×.
 
 Una càmera alta, girada una mica cap a la dreta i mirant avall (picat), cap a una cantonada de la plaça: a l'esquerra
@@ -8,11 +8,12 @@ les xemeneies que fumen) fuig cap a la dreta. Entre les cases hi entra un carrer
 el castellet de la mina i la Canonada, que puja fins a dalt del cel. Ja ha plogut: el cel de fum és més clar, les
 llambordes són molles i fan tolls que fan de mirall. Una tira de banderetes de festa travessa la plaça.
 
-A la paret del fons, el rètol pintat a mà AIGUA PER A TOTHOM i el panell nou «AIGUA VESPER · 4 ▲». La font (la de
+A la paret del fons, el rètol pintat a mà AIGUA PER A TOTES i el panell nou «AIGUA VESPER · 4 ▲». La font (la de
 Verne, blanca, amb el lector de targetes tapat amb un cartró i cinta) és al fons, a prop de la cantonada, i raja; la
-pica plena i el terra mullat, amb un rierol cap a la claveguera. La cua de miners que hi espera torn (figures de fons:
-no són sprites ni es cliquen) surt de la font i ve cap a la càmera, en diagonal: les figures del fons són petites i les
-de prop, grans; la primera omple una garrafa. Ningú no fa el mateix alhora (l'animació `cua`: un es gira a fer petar
+pica plena i el terra mullat, amb un rierol cap a la claveguera. La cua de la gent del barri que hi espera torn
+(miners, dones amb mocador, un vell, canalla: figures de fons de ferrum_gent.py, no sprites ni es cliquen) surt de la
+font i ve cap a la càmera, en diagonal: les figures del fons són petites i les de prop, grans; la primera omple una
+garrafa. Ningú no fa el mateix alhora (l'animació `cua`: un es gira a fer petar
 la xerrada, la canalla no s'està quieta, un altre canvia la garrafa de mà).
 
 Al final de la cua hi van, com a sprites, la Rosa i en Verne (amb en Dividend): aquí no es dibuixen. Passen per
@@ -38,8 +39,9 @@ from hd.rooms.exterior import fbm, smooth
 from hd640.rooms import postcredits_pla_comu as PL
 from hd640.rooms.ferrum_comu import (
     SOOT, MORTAR, COB, COAL, IRONF, RUSTF, PLANKF, WHITEV, BLUEV, CLOTH, REDP, WATER, SLAGF,
-    smog_sky, canonada, far_skyline, brick_lvl, miner_c)
+    smog_sky, canonada, far_skyline, brick_lvl)
 from hd640.rooms.ferrum_carrer import _maons
+from hd640.rooms.ferrum_gent import persona_c
 from hd640.rooms.ferrum_carrer_pla_comu import _smoke_loop
 from hd640.tres_d import Camera, Escena, Llum
 
@@ -346,15 +348,15 @@ def _lloc(i, n=8):
 
 
 CUA = [
-    (FONT[0] - 32, FONT[1] - 4, 79, 1, dict(facing=1, hold='bidon', casc=False, cua=True), {}),      # omple la garrafa
-    (*_lloc(0), 81, 0, dict(hold='bidon'), {3: dict(facing=1), 4: dict(facing=1)}),
-    (*_lloc(1), 60, 3, dict(kid=True, lamp=False), {1: dict(facing=1), 6: dict(facing=1), 7: dict(facing=1)}),
-    (*_lloc(2), 82, 2, dict(facing=1, casc=False), {5: dict(facing=-1), 6: dict(facing=-1)}),   # fa petar la xerrada
-    (*_lloc(3), 78, 1, dict(lamp=False, casc=False, cua=True), {}),
-    (*_lloc(4), 83, 4, dict(hold='bidon'), {2: dict(hold='got'), 3: dict(hold='got')}),
-    (*_lloc(5), 54, 2, dict(kid=True, lamp=False), {0: dict(facing=1), 4: dict(facing=1)}),
-    (*_lloc(6), 81, 3, dict(hold='bidon', lamp=False), {7: dict(facing=1)}),
-    (*_lloc(7), 80, 5, dict(casc=False, cua=True, hold='bidon'), {}),
+    (FONT[0] - 32, FONT[1] - 4, 76, 0, dict(tipus='dona', facing=1, hold='bidon'), {}),                 # omple la garrafa
+    (*_lloc(0), 81, 0, dict(tipus='miner', hold='bidon'), {3: dict(facing=1), 4: dict(facing=1)}),
+    (*_lloc(1), 58, 1, dict(tipus='nen', lamp=False), {1: dict(facing=1), 6: dict(facing=1), 7: dict(facing=1)}),
+    (*_lloc(2), 79, 1, dict(tipus='dona', facing=1), {5: dict(facing=-1), 6: dict(facing=-1)}),     # fa petar la xerrada
+    (*_lloc(3), 78, 2, dict(tipus='miner', cua=True, hold='butxaca'), {}),
+    (*_lloc(4), 77, 1, dict(tipus='vell', hold='bidon'), {2: dict(hold='got'), 3: dict(hold='got')}),
+    (*_lloc(5), 52, 0, dict(tipus='nena'), {0: dict(facing=1), 4: dict(facing=1)}),
+    (*_lloc(6), 82, 3, dict(tipus='miner', hold='bidon', lamp=False), {7: dict(facing=1)}),
+    (*_lloc(7), 77, 3, dict(tipus='dona', hold='bidon'), {}),
 ]
 CUA_N = 8
 
@@ -364,7 +366,7 @@ def _figura(h, var, kw):
     cv = Canvas(70, 110, light=TEXL, transparent=True)
     k = dict(facing=-1, light_from=1)
     k.update(dict(kw))
-    miner_c(cv, 35, 104, h=h, var=var, **k)
+    persona_c(cv, 35, 104, h=h, var=var, **k)
     return cv.img
 
 
