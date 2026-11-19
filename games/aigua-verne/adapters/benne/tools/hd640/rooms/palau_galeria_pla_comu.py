@@ -206,6 +206,29 @@ def aquari_vidre(t=0.0, costat=False):
     return cv.img
 
 
+_GLIF_PLACA = {
+    'L': '10000 10000 10000 10000 11111', 'O': '01110 10001 10001 10001 01110', 'T': '11111 00100 00100 00100 00100',
+    '1': '00100 01100 00100 00100 01110', '2': '11110 00001 01110 10000 11111', 'D': '11110 10001 10001 10001 11110',
+    'A': '01110 10001 11111 10001 10001', 'R': '11110 10001 11110 10010 10001', 'E': '11111 10000 11110 10000 11111',
+    'S': '01111 10000 01110 00001 11110', ' ': '000 000 000 000 000',
+}
+
+
+def _placa_text(cv, s, cx, y, col, k=2):
+    """Lletres de 5×5 ampliades ×k, centrades a `cx` (el rètol de l'aquari)."""
+    gs = [_GLIF_PLACA[ch].split() for ch in s]
+    w = sum(len(g[0]) + 1 for g in gs) - 1
+    x = cx - w * k // 2
+    for g in gs:
+        for j, row in enumerate(g):
+            for i, b in enumerate(row):
+                if b == '1':
+                    for dy in range(k):
+                        for dx in range(k):
+                            cv.flat(x + i * k + dx, y + j * k + dy, col)
+        x += (len(g[0]) + 1) * k
+
+
 def aquari_peu():
     """El davant del peu de marbre, amb el plafó d'or i el rètol «LOT 12 / DARRERS»."""
     cv = Canvas(AQ_W + 8, AQ_PEU, light=None)
@@ -213,11 +236,13 @@ def aquari_peu():
     cv.rect(0, 0, AQ_W + 7, AQ_PEU - 1, MARB, lambda x, y: 5.8 - y * 0.03 + (n[y, x] - 0.5) * 0.5)
     motllura(cv, 0, AQ_W + 7, 0, h=3, lvl=4.8)
     motllura(cv, 0, AQ_W + 7, AQ_PEU - 4, h=3, lvl=3.6)
-    px0, px1, py0, py1 = 22, AQ_W - 14, 9, 30
-    cv.rect(px0, py0, px1, py1, ORP, lambda x, y: 5.0 - (y - py0) * 0.08)
+    # (el plafó gran i lletres de 5×5 a ×2: en escorç i a 1×, la lletra petita no es llegeix, i la R hi sembla una A)
+    px0, px1, py0, py1 = 6, AQ_W + 1, 5, 35
+    cv.rect(px0, py0, px1, py1, ORP, lambda x, y: 5.0 - (y - py0) * 0.05)
     marc_or(cv, px0, py0, px1, py1, t=2, lvl=4.0)
-    lletres_c(cv, 'LOT 12', (px0 + px1) // 2, py0 + 4, (60, 34, 12))
-    lletres_c(cv, 'DARRERS', (px0 + px1) // 2, py0 + 12, (100, 64, 22))
+    cx = (px0 + px1 + 1) // 2
+    _placa_text(cv, 'LOT 12', cx, py0 + 4, (54, 30, 10))
+    _placa_text(cv, 'DARRERS', cx, py0 + 17, (90, 56, 18))
     return cv.img
 
 
