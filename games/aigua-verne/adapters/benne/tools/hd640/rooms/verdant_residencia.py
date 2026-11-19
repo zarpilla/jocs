@@ -9,7 +9,8 @@ els apliques i el **finestral** al jardí, amb les cortines. L'**arxivador** bla
 paret, sota el quadre, amb el gerro de flors de plàstic i el telèfon d'or; la **paperera daurada**, al mig, i s'hi
 passa per darrere. El terra de marbre amb vetes d'or (les lloses s'empetiteixen cap al fons) i la catifa blanca amb
 la gota; el sol del finestral entra en diagonal i fa una taca pel terra. Primer pla: una columna blanca a l'ombra,
-a l'esquerra, i una butaca de pell blanca, a contrallum, a baix a la dreta.
+a l'esquerra, i una butaca de pell blanca capitonada
+(respatller, braços enrotllats, seient amb coixí, potes d'or), girada i a contrallum, a baix a la dreta.
 
 El detall ve del despatx pla de sempre (verdant_residencia_pla_comu.py), dibuixat de cara i projectat: la paret, la
 porta, el quadre, els apliques, el finestral, el davant de l'arxivador i de la calaixera, el trofeu, el gerro i el
@@ -44,6 +45,7 @@ CALAIX = (176, 272, 136, 34, 0.06)                 # la calaixera
 CAL_H = PL.FLOOR_Y - PL.CALAIX[1]
 PAPER = (318, 214)                                 # la paperera (x, z)
 CATIFA = (120, 120, 330, 230)                      # la catifa: x0, z0, x1, z1
+BUTACA = (446, 98, -0.6)                           # la butaca del primer pla: centre (x, z) i gir
 APLIQUES = [(ax - XL, 140, ZW - 6) for ax in (176, 372)]
 
 CAM = Camera(pos=(290, 190, -190), yaw=-0.12, pitch=0.16, f=380, centre=(330, 72))
@@ -168,6 +170,84 @@ def _ombra_el(e, sid, cx, cz, rx, rz, k=0.5):
              lambda s, t: k * min(1.0, 1.6 * max(0.0, 1 - ((s - rx) / rx) ** 2 - ((t - rz) / rz) ** 2)))
 
 
+def _butaca(e, cx, cz, ang, sid='primer_pla', W_=60, D=54, fosc=-1.4):
+    """La butaca de pell blanca, capitonada: quatre potes d'or, el seient amb el coixí, els dos braços enrotllats i
+    el respatller alt. Girada `ang`: es pinta de lluny a prop (el respatller, el braç de l'esquerra, el seient, el
+    coixí, el braç de la dreta), que és l'ordre en què la veu la càmera (de davant, a l'esquerra i des de dalt)."""
+    c, s_ = math.cos(ang), math.sin(ang)
+
+    def M(lx, lz):
+        return cx + lx * c - lz * s_, cz + lx * s_ + lz * c
+
+    def ofs(kw):
+        v = kw['lvl']
+        return {**kw, 'lvl': (lambda s, t, P: v(s, t, P) + fosc) if callable(v) else v + fosc}
+
+    def peca(lx0, lx1, lz0, lz1, y0, y1, cares=None, lvl=3.0):
+        wx, wz = M((lx0 + lx1) / 2, (lz0 + lz1) / 2)
+        cares = {k: ofs(v) for k, v in (cares or {}).items()}
+        lvl += fosc
+        e.caixa_girada(sid, wx, wz, lx1 - lx0, lz1 - lz0, y1 - y0, ang, WHITEV, lvl, y0=y0, cares=cares)
+
+    a, b = W_ / 2, D / 2
+    BR = 13                                         # el gruix dels braços
+    BK = 15                                         # el gruix del respatller
+    Y0, YS, YC, YB, YR = 8, 24, 31, 44, 64          # potes · seient · coixí · braços · respatller
+
+    def pell(base, plecs=0.0):
+        """Pell blanca, amb una mica de lluentor i, si cal, els botons del capitonat."""
+        def L(s, t, P):
+            v = base + (hr(int(s) // 3, int(t) // 3, 41) - 0.5) * 0.25
+            if plecs:
+                i, j = round(s / 11), round(t / 11)
+                if (i + j) % 2 == 0 and math.hypot(s - i * 11, t - j * 11) < 1.6:
+                    v -= 1.6                                       # el botó
+                elif (i + j) % 2 == 0 and math.hypot(s - i * 11, t - j * 11) < 4.5:
+                    v -= plecs * (4.5 - math.hypot(s - i * 11, t - j * 11)) / 4.5   # el plec cap al botó
+            return v
+        return L
+
+    def enrotllat(base):
+        """La cara de dalt d'un braç: el rotllo, més clar al mig i fosc a les vores."""
+        return lambda s, t, P: base + 0.9 * math.sin(math.pi * min(1.0, max(0.0, s / BR))) - 0.4
+
+    # les potes, d'or (primer les del fons)
+    for lx, lz in sorted(((-a + 5, b - 5), (a - 5, b - 5), (-a + 5, -b + 5), (a - 5, -b + 5)),
+                         key=lambda q: -(M(*q)[1])):
+        wx, wz = M(lx, lz)
+        e.caixa_girada(sid, wx, wz, 5, 5, Y0, ang, GOLDV, 3.2,
+                       cares={'dalt': {'ramp': GOLDV, 'lvl': 4.6}, 'davant': {'ramp': GOLDV, 'lvl': 3.8},
+                              'dreta': {'ramp': GOLDV, 'lvl': 2.6}})
+    # el respatller, alt, amb el capitonat al davant i la vora de dalt arrodonida
+    peca(-a, a, b - BK, b, Y0, YR,
+         cares={'davant': {'ramp': WHITEV, 'lvl': pell(3.4, 1.0)},
+                'dalt': {'ramp': WHITEV, 'lvl': lambda s, t, P: 4.4 + 0.6 * math.sin(math.pi * t / BK)},
+                'dreta': {'ramp': WHITEV, 'lvl': pell(2.4)}, 'esquerra': {'ramp': WHITEV, 'lvl': 3.0},
+                'darrere': {'ramp': WHITEV, 'lvl': 2.6}})
+    # el braç de l'esquerra (el del fons, vist per dins)
+    peca(-a, -a + BR, -b, b - BK, Y0, YB,
+         cares={'dreta': {'ramp': WHITEV, 'lvl': pell(3.0)}, 'davant': {'ramp': WHITEV, 'lvl': pell(3.4)},
+                'dalt': {'ramp': WHITEV, 'lvl': enrotllat(4.0)}})
+    # el seient (el bastidor) i el coixí, una mica bombat, amb el plec del davant
+    peca(-a + BR, a - BR, -b, b - BK, Y0, YS,
+         cares={'davant': {'ramp': WHITEV, 'lvl': lambda s, t, P: 2.8 - (0.8 if t > YS - Y0 - 2 else 0)},
+                'dalt': {'ramp': WHITEV, 'lvl': 3.4}})
+    peca(-a + BR + 1, a - BR - 1, -b - 2, b - BK, YS, YC,
+         cares={'dalt': {'ramp': WHITEV, 'lvl': lambda s, t, P: 4.4 + 0.5 * math.sin(math.pi * s / (W_ - 2 * BR - 2))
+                         + 0.4 * math.sin(math.pi * t / (D - BK + 2)) - (0.8 if abs(s - (W_ - 2 * BR - 2) / 2) < 0.7 else 0)},
+                'davant': {'ramp': WHITEV, 'lvl': lambda s, t, P: 3.6 - 0.8 * t / (YC - YS)},
+                'dreta': {'ramp': WHITEV, 'lvl': 2.8}, 'esquerra': {'ramp': WHITEV, 'lvl': 3.0}})
+    # el braç de la dreta (el de prop, vist per fora)
+    peca(a - BR, a, -b, b - BK, Y0, YB,
+         cares={'dreta': {'ramp': WHITEV, 'lvl': pell(2.6)}, 'davant': {'ramp': WHITEV, 'lvl': pell(3.2)},
+                'esquerra': {'ramp': WHITEV, 'lvl': pell(3.0)},
+                'dalt': {'ramp': WHITEV, 'lvl': enrotllat(4.2)}})
+    # el ribet d'or a la vora del seient (davant)
+    x0, z0 = M(-a + BR, -b - 0.2)
+    x1, z1 = M(a - BR, -b - 0.2)
+    e.linia((x0, YS - 1, z0), (x1, YS - 1, z1), GOLDV, 4.6, thin=True)
+
+
 def escena(cv, tex):
     """Tota la sala, de lluny a prop. → l'Escena (qui ha pintat què)."""
     e = Escena(cv, CAM, LLUMS, ambient=AMBIENT)
@@ -256,20 +336,16 @@ def escena(cv, tex):
         e.claror((x - 40, y + 40, ZW - 0.6), (x + 40, y + 40, ZW - 0.6), (x + 40, y - 40, ZW - 0.6),
                  (x - 40, y - 40, ZW - 0.6), (255, 236, 190),
                  lambda s, t: 0.25 * max(0.0, 1 - math.hypot(s - 40, (t - 40) * 1.2) / 40))
-    # primer pla: una columna blanca a l'ombra (esquerra) i el respatller d'una butaca de pell (baix a la dreta)
+    # primer pla: una columna blanca a l'ombra (esquerra) i la butaca de pell (baix a la dreta)
     cilindre(e, 'primer_pla', 46, 56, 15, 0, HW, WHITEV,
              lambda a, y, P: 1.2 + math.cos(a - 0.6) * 0.9 - (1.2 if (a * 24 / math.pi) % 3 < 0.4 else 0), n=36)
     for y0, h in ((0, 10), (HW - 12, 12)):
         e.caixa('primer_pla', 28, 64, y0, y0 + h, 38, 74, GOLDV, 1.6,
                 cares={'dalt': {'ramp': GOLDV, 'lvl': 2.6}, 'davant': {'ramp': GOLDV, 'lvl': 1.4},
                        'dreta': {'ramp': GOLDV, 'lvl': 2.0}})
-    e.caixa_girada('primer_pla', 444, 30, 84, 60, 40, -0.5, WHITEV, 1.2,
-                   cares={'dalt': {'ramp': WHITEV, 'lvl': lambda s, t, P: 2.2 + (0.6 if (s % 24 < 1.4) else 0)},
-                          'esquerra': {'ramp': WHITEV, 'lvl': 1.0}, 'davant': {'ramp': WHITEV, 'lvl': 0.8}})
-    e.caixa_girada('primer_pla', 426, 52, 84, 18, 50, -0.5, WHITEV, 1.4, y0=10,
-                   cares={'dalt': {'ramp': GOLDV, 'lvl': 2.4}, 'esquerra': {'ramp': WHITEV, 'lvl': 1.2},
-                          'davant': {'ramp': WHITEV, 'lvl': lambda s, t, P: 1.0 + (0.8 if abs(t - 30) < 1 else 0)
-                                     + (0.5 if (s % 24) < 1.2 else 0)}})
+    bx, bz, ba = BUTACA
+    _ombra_el(e, 'ombra_butaca', bx - 14, bz - 8, 44, 38, 0.45)
+    _butaca(e, bx, bz, ba)
     return e
 
 

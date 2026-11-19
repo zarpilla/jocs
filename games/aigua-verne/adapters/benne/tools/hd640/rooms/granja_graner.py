@@ -63,7 +63,7 @@ AMBIENT = -1.3
 
 # Els feixos de sol: (el forat del sostre (x, z), la taca a terra (x, z), el gruix a dalt i a baix)
 DIR = (-0.42, -1.0, -0.26)                         # cap on baixen (des de dalt a la dreta, cap a l'esquerra i endavant)
-FORATS = [(330, 290, 5, 15), (470, 286, 4, 12), (566, 214, 6, 17), (196, 150, 4, 12)]
+FORATS = [(330, 290, 5, 15), (470, 324, 4, 12), (566, 214, 6, 17), (196, 150, 4, 12)]   # (el 2n cau darrere el tractor)
 
 
 def _feixos():
@@ -328,24 +328,60 @@ def tractor(e, tex, obert=False):
     roda(e, 'tractor', fx - X0, -b + 2 - 8, fr, 0.01, img, fx, fy)
 
 
+TRAC_CAIXA = ((-90, 92), (0, 118), (-34, 64))      # el tractor, en el seu sistema (_T): lx, y, lz (per a la profunditat)
+
+
+def _prof_tractor(u, v):
+    """La profunditat (la z de la càmera) on el raig del píxel de sala (u, v) entra a la caixa del tractor, o None."""
+    cam = CAM
+    x, y = (u - cam.centre[0]) / cam.f, -(v - cam.centre[1]) / cam.f    # la direcció, a l'espai de la càmera (z = 1)
+    z1 = y * cam._sp + cam._cp
+    d = (x * cam._cy + z1 * cam._sy, y * cam._cp - cam._sp, -x * cam._sy + z1 * cam._cy)
+    cx, cz, a = TRAC
+    c, s_ = math.cos(a), math.sin(a)
+    ox, oz = cam.pos[0] - cx, cam.pos[2] - cz
+    o = (ox * c + oz * s_, cam.pos[1], -ox * s_ + oz * c)              # al sistema del tractor
+    dl = (d[0] * c + d[2] * s_, d[1], -d[0] * s_ + d[2] * c)
+    t0, t1 = 0.0, 1e9
+    for k, (lo, hi) in enumerate(TRAC_CAIXA):
+        if abs(dl[k]) < 1e-9:
+            if not lo <= o[k] <= hi:
+                return None
+            continue
+        ta, tb = (lo - o[k]) / dl[k], (hi - o[k]) / dl[k]
+        t0, t1 = max(t0, min(ta, tb)), min(t1, max(ta, tb))
+    return t0 if t0 <= t1 else None                                    # (amb z = 1 a la direcció, t és la profunditat)
+
+
 def feixos(e, mapa):
     """Els feixos de sol que baixen per les escletxes del sostre: es barregen amb el que hi ha (amb dither) i deixen la
-    densitat a `mapa` (per a la pols)."""
+    densitat a `mapa` (per a la pols). On hi ha el tractor, el tros de feix que en queda darrere no es pinta (el
+    tractor el tapa), ni la taca de sol a terra."""
     S = e.S
     w, h = e.cv.w, e.cv.h
     acc = [0.0] * (w * h)
+    trac = {i for i, sid in enumerate(e.ids) if sid == 'tractor'}
+    prof = {}
+
+    def tapat(X, Y, z):
+        if e.amo[Y * w + X] not in trac:
+            return False
+        if (X, Y) not in prof:
+            prof[X, Y] = _prof_tractor((X + 0.5) / S, (Y + 0.5) / S)
+        p = prof[X, Y]
+        return p is not None and z > p
     for A, B, ra, rb in FEIXOS:
         n = 160
         for i in range(n + 1):
             t = i / n
             P = (A[0] + (B[0] - A[0]) * t, A[1] + (B[1] - A[1]) * t, A[2] + (B[2] - A[2]) * t)
-            u, v, _ = e.cam.projecta(P)
+            u, v, zp = e.cam.projecta(P)
             R = (ra + (rb - ra) * t) * e.cam.escala(P)
             for Y in range(int((v - R) * S), int((v + R) * S) + 2):
                 for X in range(int((u - R) * S), int((u + R) * S) + 2):
                     if 0 <= X < w and 0 <= Y < min(h, BOTTOM * S):
                         d = math.hypot(X / S - u, Y / S - v) / max(0.5, R)
-                        if d < 1:
+                        if d < 1 and not tapat(X, Y, zp):
                             k = (1 - d * d) * (0.55 + 0.45 * t) * (1 - max(0.0, t - 0.93) / 0.07)
                             acc[Y * w + X] = max(acc[Y * w + X], k)
     P_ = e.cv.P
@@ -358,11 +394,15 @@ def feixos(e, mapa):
             kk = 0.32 * k
             if kk > B4[Y & 3][X & 3] * 0.25:
                 P_[X, Y] = mix(P_[X, Y], SUN, kk + 0.05) + (255,)
-    # les taques a terra
+    # les taques a terra (el terra que el tractor tapa no es veu: es torna a posar el tractor)
+    P_ = e.cv.P
+    desa = {(X, Y): P_[X, Y] for Y in range(h) for X in range(w) if e.amo[Y * w + X] in trac}
     for A, B, ra, rb in FEIXOS:
         r = rb * 1.6
         e.claror((B[0] - r, 0.6, B[2] + r), (B[0] + r, 0.6, B[2] + r), (B[0] + r, 0.6, B[2] - r), (B[0] - r, 0.6, B[2] - r),
                  SUN, lambda s, t, r=r: 0.4 * max(0.0, 1 - ((s - r) / r) ** 2 - ((t - r) / r / 0.8) ** 2) * 1.6)
+    for (X, Y), col in desa.items():
+        P_[X, Y] = col
 
 
 def primer_pla(e):

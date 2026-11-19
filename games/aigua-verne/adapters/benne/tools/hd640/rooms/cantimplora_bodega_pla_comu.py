@@ -69,6 +69,42 @@ LIGHT.point(32, 10, r=60, k=0.6, power=1.8)                         # la llum de
 
 # ─── Parets, sostre i terra ─────────────────────────────────────────────────
 
+_GLIF_GROS = {'V': ('10001', '10001', '01010', '01010', '00100')}
+
+
+def stencil_gros(cv, s, cx, y, k, ramp, lvl, flat=None, worn=0.06, seed=5):
+    """Rètol amb la font petita ampliada ×k (blocs de k×k), centrat a `cx`: en escorç, a 1×, la font petita no es
+    llegeix. Amb `flat`, de color pla (tinta); si no, pintura d'estergit gastada (falten alguns blocs). → l'amplada."""
+    tmp = []
+
+    class _Cap:
+        def put(self, px, py, *a, **kw):
+            tmp.append((px, py))
+
+        def flat(self, px, py, col):
+            tmp.append((px, py))
+    w, cx_ = 0, 0
+    for ch in s:                                   # (la V de la font petita, ampliada, sembla una U: una de 5)
+        if ch in _GLIF_GROS:
+            g = _GLIF_GROS[ch]
+            tmp.extend((cx_ + i, j) for j, row in enumerate(g) for i, b in enumerate(row) if b == '1')
+            cx_ += len(g[0]) + 1
+        else:
+            cx_ += text(_Cap(), ch, cx_, 0, None, 0) + 1
+    w = cx_ - 1
+    x0 = cx - (w * k) // 2
+    for px, py in tmp:
+        if flat is None and hr(px, py, seed) <= worn:
+            continue
+        for dy in range(k):
+            for dx in range(k):
+                if flat is None:
+                    cv.put(x0 + px * k + dx, y + py * k + dy, ramp, lvl)
+                else:
+                    cv.flat(x0 + px * k + dx, y + py * k + dy, flat)
+    return w * k
+
+
 def walls(cv):
     plate_wall(cv, 0, 0, W - 1, FLOOR_Y - 1, lvl=3.0, pw=64, ph=44, seed=21, rust=0.5)
     # quadernes (les costelles de la nau), amb el peu pintat de franges
@@ -255,7 +291,7 @@ def rampa(cv):
     cv.disc(x1 + 17, y0 + 36, 3, 3, REDK, 3.0, lit=0)
     cv.disc(x1 + 17, y0 + 45, 3, 3, GREENK, 4.0, lit=0)
     cv.glow(x1 + 17, y0 + 45, 7, (120, 255, 120), 0.4)
-    stencil(cv, 'RAMPA', x0 + (x1 - x0) // 2 - 9, y0 - 20, PAPERN, 3.4, worn=0.06)
+    stencil_gros(cv, 'RAMPA', (x0 + x1) // 2, y0 - 29, 3, PAPERN, 3.4)            # (gros: en escorç s'ha de llegir)
 
 
 def llum(planeta, col):
@@ -407,7 +443,7 @@ def motor(cv):
     cv.rect(x0 - 3, y0 - 3, x1 + 3, y1 + 1, OLIVE, 2.0)
     outline(cv, x0 - 4, y0 - 4, x1 + 4, y1 + 2, INK)
     motor_tancat(cv)
-    stencil(cv, 'MOTOR', x0 + 10, y0 - 13, PAPERN, 3.4, worn=0.06)
+    stencil_gros(cv, 'MOTOR', (x0 + x1) // 2, y0 - 21, 3, PAPERN, 3.4)
 
 
 def motor_tancat(cv):
@@ -530,9 +566,13 @@ def calaix(cv):
     outline(cv, x0 + 3, y0 - 10, x0 + 23, y0 - 1, INK)
     cv.rect(x1 - 12, y0 - 10, x1 - 4, y0 - 1, STEELN, lambda x, y: 4.6 - (x - x1 + 12) * 0.3)
     cv.rect(x0 + 6, y0 + 52, x0 + 6, y0 + 52, PAPERN, 5.0)
-    w = text_width('VET')
-    cv.rect(x1 - w - 8, y1 - 9, x1 - 3, y1 - 3, PAPERN, 5.0)
-    text(cv, 'VET', x1 - w - 6, y1 - 8, None, 0, flat=(30, 40, 120))
+    # (el paper, gros, damunt els dos calaixos de baix: a 1×, en escorç, la font petita no es llegeix)
+    w = (text_width('VET') + 2) * 3
+    cx = (x0 + x1) // 2
+    cv.rect(cx - w // 2 - 4, y1 - 26, cx + w // 2 + 4, y1 - 5, PAPERN, lambda x, y: 5.0 - (0.4 if (x + y) % 7 == 0 else 0))
+    outline(cv, cx - w // 2 - 5, y1 - 27, cx + w // 2 + 5, y1 - 4, INK)
+    cv.rect(cx - 4, y1 - 29, cx + 4, y1 - 25, TAPE, 4.0)                    # la cinta
+    stencil_gros(cv, 'VET', cx, y1 - 23, 3, None, 0, flat=(30, 40, 120))
 
 
 # ─── La cuineta ─────────────────────────────────────────────────────────────

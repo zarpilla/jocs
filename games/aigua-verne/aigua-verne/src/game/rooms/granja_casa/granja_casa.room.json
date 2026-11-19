@@ -22,8 +22,12 @@
             "y": 253
           },
           {
-            "x": 117,
-            "y": 205
+            "x": 92,
+            "y": 252
+          },
+          {
+            "x": 136,
+            "y": 204
           },
           {
             "x": 177,
@@ -431,7 +435,7 @@
       "animations": {
         "davant_escriptori": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 234
     },
     {
@@ -443,7 +447,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 999
     }
   ],

@@ -121,6 +121,41 @@ def floor(cv):
 
 # ─── La cuina ───────────────────────────────────────────────────────────────
 
+def hearth_boca(cv, x0, x1):
+    """El fons de la boca del foc (per a la llar de foc en volum de granja_casa.py): la pedra negra de sutge, la
+    cremallera amb l'olla i la cendra amb els tions i unes brases que encara fan caliu, entre x0 i x1."""
+    def soot(x, y):
+        row = y // 6
+        joint = y % 6 == 0 or (x + (row % 2) * 5) % 11 == 0
+        v = 2.0 + (hr(x // 11, row) - 0.5) * 1.2 + (y - MANTEL_Y) * 0.014 - (1.2 if joint else 0)
+        v -= 1.0 * smooth(0.45, 0.7, fbm(x / 14, y / 20, 44))
+        return v
+    cv.rect(x0, MANTEL_Y - 20, x1, FLOOR_Y, STONE, soot)
+    cv.darken(x0, MANTEL_Y - 20, x1, FLOOR_Y, lambda x, y: 0.7 * max(0.0, 1 - (y - MANTEL_Y + 20) / 90))
+    cx = (x0 + x1) // 2
+    for y in range(MANTEL_Y - 20, 160, 3):
+        cv.put(cx, y, IRONR, 2.8)
+        cv.put(cx + 1, y + 1, IRONR, 1.8)
+    cv.disc(cx, 170, 13, 11, BLACKT, lambda nx, ny: 1.6 + nx * 0.8 - ny * 0.4)
+    cv.rect(cx - 14, 160, cx + 14, 162, BLACKT, 2.8)
+    cv.line(cx - 12, 160, cx, 152, IRONR, 2.6)
+    cv.line(cx, 152, cx + 12, 160, IRONR, 2.6)
+    # la claror de les brases, a baix, sobre la pedra i la panxa de l'olla
+    cv.glow(cx, FLOOR_Y - 4, 30, (255, 120, 40), 0.35)
+
+
+def hearth_lleixa(cv, x0, x1):
+    """El que hi ha damunt la lleixa de la campana (dret, per fer-ne un sprite): plats, el llum d'oli, una ampolla.
+    La base de tot és a y = MANTEL_Y − 4."""
+    for px_, r in ((x0 + 20, 8), (x0 + 38, 7), (x1 - 34, 7)):
+        cv.disc(px_, MANTEL_Y - 4 - r, r, r, CREAM, lambda nx, ny: 3.8 + nx * 0.6)
+        cv.ring(px_, MANTEL_Y - 4 - r, r - 2, TILEB, 2.0, step=12)
+        cv.disc(px_, MANTEL_Y - 4 - r, 2, 2, TILEB, 2.4)
+    cv.rect(x0 + 60, MANTEL_Y - 12, x0 + 66, MANTEL_Y - 5, BRASSY, lambda x, y: 3.4 + (x - x0 - 60) * 0.2)
+    cv.line(x0 + 66, MANTEL_Y - 11, x0 + 70, MANTEL_Y - 13, BRASSY, 4.0)
+    cv.rect(x1 - 20, MANTEL_Y - 16, x1 - 16, MANTEL_Y - 5, GLASSJ, 2.6)
+
+
 def hearth(cv):
     """El foc a terra, apagat, sota la campana."""
     x0, x1 = HEARTH

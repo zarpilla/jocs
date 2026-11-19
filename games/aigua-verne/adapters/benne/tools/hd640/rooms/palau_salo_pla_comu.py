@@ -9,6 +9,7 @@ import math
 
 import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360)
 from hd.pix import Canvas, Light, hr, mix
+from hd.rooms.comu import text_width
 from hd640.rooms.palau_comu import (MARB, ORP, CROM, NEGRE, GRANAT, PLATA, lletres, lletres_c, lletres_grans,
                                     triangle, terra2, diposit, gota, motllura, marc_or, vidre)
 from hd640.rooms.palau_galeria_pla_comu import espai, soroll
@@ -66,11 +67,17 @@ def pantalla(cv):
     marc_or(cv, x0 - 8, y0 - 8, x1 + 8, y1 + 8, t=2, lvl=4.6)
     cv.rect(x0, y0, x1, y1, SCREEN_BG, lambda x, y: 1.4 + (y - y0) / (y1 - y0) * 1.4, lit=0)
     # base: el títol de la subhasta i la gota gran
-    gota(cv, (x0 + x1) // 2, y0 + 30, 30)
-    lletres_c(cv, 'GRAN SUBHASTA DE L\'AIGUA', (x0 + x1) // 2, y0 + 54, (220, 230, 246))
-    lletres_c(cv, 'VERNE S.A.', (x0 + x1) // 2, y0 + 64, (120, 160, 220))
-    lletres_c(cv, 'DEU ANYS D\'AIGUA DE VESPER', (x0 + x1) // 2, y0 + 78, (90, 110, 150))
+    # (els rètols, a ×2: a 1×, en escorç i a l'altra punta del saló, la lletra petita no es llegeix)
+    gota(cv, (x0 + x1) // 2, y0 + 19, 24)
+    _grans_c(cv, 'GRAN SUBHASTA DE L\'AIGUA', (x0 + x1) // 2, y0 + 38, (220, 230, 246))
+    _grans_c(cv, 'VERNE S.A.', (x0 + x1) // 2, y0 + 54, (120, 160, 220))
+    _grans_c(cv, 'DEU ANYS D\'AIGUA DE VESPER', (x0 + x1) // 2, y0 + 72, (110, 132, 176))
     _scan(cv)
+
+
+def _grans_c(cv, s, cx, y, col):
+    """Text a ×2, centrat a cx."""
+    return lletres_grans(cv, s, cx - text_width(s), y, col)
 
 
 def _scan(cv):
@@ -206,7 +213,7 @@ def grafic(cv, n):
     """La pantalla amb el gràfic del preu fins a `n`: eixos, la línia, la ratlla del LLINDAR a 30 i el número."""
     x0, y0, x1, y1 = SCR
     cv.rect(x0, y0, x1, y1, SCREEN_BG, lambda x, y: 1.2 + (y - y0) / (y1 - y0) * 1.0, lit=0)
-    gx0, gx1, gy0, gy1 = x0 + 20, x1 - 70, y0 + 12, y1 - 12
+    gx0, gx1, gy0, gy1 = x0 + 16, x1 - 74, y0 + 10, y1 - 22
 
     def Y(v):
         return gy1 - (v / 120) * (gy1 - gy0)
@@ -223,7 +230,7 @@ def grafic(cv, n):
         if (x // 4) % 2 == 0:
             cv.flat(x, yl, (230, 50, 40))
             cv.flat(x, yl + 1, (150, 26, 24))
-    lletres(cv, 'LLINDAR DEL BANC', gx0 + 4, yl + 4, (236, 80, 64))
+    lletres_grans(cv, 'LLINDAR DEL BANC', x0 + 4, y1 - 16, (236, 80, 64))      # (els rètols, a ×2: vegeu pantalla)
     # la línia del preu
     vals = SERIE + CAIGUDA[n]
     m = len(SERIE) + 4
@@ -246,13 +253,13 @@ def grafic(cv, n):
     numc = (250, 150, 50) if not baixa else (240, 70, 56) if n < 30 else (255, 200, 120)
     tw = lletres_grans(cv, s, x1 - 62, y0 + 18, numc, k=3)
     lletres(cv, 'C', x1 - 62 + tw + 2, y0 + 30, numc)
-    triangle(cv, x1 - 40, y0 + 46, 7, numc if not baixa else (240, 70, 56), amunt=not baixa)
-    lletres(cv, 'PER LITRE', x1 - 64, y0 + 58, (120, 140, 180))
+    triangle(cv, x1 - 40, y0 + 44, 7, numc if not baixa else (240, 70, 56), amunt=not baixa)
+    lletres_grans(cv, 'PER LITRE', x1 - 70, y0 + 54, (140, 160, 200))
     if n == 29:
-        lletres(cv, 'EXECUCIÓ', x1 - 64, y0 + 70, (240, 70, 56))
-        lletres(cv, 'DEL BANC', x1 - 64, y0 + 77, (240, 70, 56))
+        lletres_grans(cv, 'EXECUCIÓ', x1 - 70, y0 + 67, (240, 70, 56))
+        lletres_grans(cv, 'DEL BANC', x1 - 70, y0 + 79, (240, 70, 56))
     elif n == 31:
-        lletres(cv, 'PER POC', x1 - 64, y0 + 70, (200, 180, 120))
+        lletres_grans(cv, 'PER POC', x1 - 70, y0 + 68, (200, 180, 120))
     _scan(cv)
 
 

@@ -96,6 +96,9 @@ Més sobre les capes del davant (`FRONT`), après fent les sales:
 - Paranys: els forats del terra que la càmera aixafa fins a ≈2 px fan fallar el camí (millor treure'ls); `e.linia`
   amb punts darrere la càmera pinta milions de píxels; el `fbm` de la llibreria és lent per a superfícies grans (el
   palau en fa servir un de numpy); una sala amb un decorat al `PROPS` que no és al `.room.json` no el porta al joc.
+- **La Cantimplora vista de fora és sempre la mateixa**: el model 3D de `hd640/rooms/cantimplora_comu.py`
+  (`Cantimplora(popa, rumb, porta, escala, trams)` i `dibuixa(e, ...)`; el docstring en diu l'API, els punts i els
+  sids). Cada sala la posa on vol i a la distància que vol, però no l'escala respecte de la gent.
 - **Les coordenades fixes del guió** (`stage` amb `at`/`walk` `{x, y}` a `game/data/rooms/<sala>.json`, i `place` a
   `characters.json`) són en píxels de sala: quan el terra on es camina canvia, cal mirar que hi caiguin a dins (si
   no, el motor porta el personatge al punt més proper), i passar el sync perquè arribin al joc.
@@ -283,16 +286,13 @@ personatges en 3/4, la respiració i les micro-accions. Queda pendent:
 - Els personatges no surten als reflexos del terra (el vestíbul del banc de Suma Zero).
 - Alguns mobles i objectes encara són dibuixos plans drets (sprites), no volums: els tamborets del bar, les bombes de
   la sala de bombes, la llançadora de l'hangar.
-- Aigua Verne, la bodega de la Cantimplora: el hotspot `carrega` té zIndex 10 (vegeu més amunt).
 
 **Aigua Verne: totes les sales i les cinemàtiques són en 3D, a 1×** (novembre del 2026). Queda pendent:
 
-- Rètols petits que no es llegeixen en escorç: la bodega («RAMPA», «MOTOR», «VET»), els subtítols de la pantalla del
-  saló, el «C-7» de la nau al jardí de Verdant. S'han de dibuixar més grossos al pla.
-- La Cantimplora no és igual a tot arreu: al port de Terra-2 té cinc cúpules al llom i a la portada, nou dipòsits
-  curts; al carrer de Ferrum es veu gairebé de popa i al port d'Aqua és un pla amb textura.
-- Alguns volums encara són senzills: la butaca de la residència, la llar de foc de la casa de la granja (plana a la
-  paret), els feixos de llum del graner (es pinten per sobre del tractor).
+- Rètols petits que no es llegeixen en escorç: el «C-7» de la nau al jardí de Verdant. S'ha de dibuixar més gros al
+  pla.
+- La Cantimplora canònica (`cantimplora_comu.py`) ja és al port de Terra-2, a la portada i al pròleg; falta posar-la
+  al carrer de Ferrum, al port d'Aqua, al jardí de Verdant i als crèdits (quan hi sigui, cal treure aquest ítem).
 - A la galeria del palau no es pot passar per darrere de l'aquari, ni al port d'Aqua per darrere de la grua.
 - La fosa: la meitat de baix del terra és força buida; el motlle no s'il·lumina amb el gresol ple, i
   `motlle_posat` no és al `.room.json` de la colada (ja era així abans).

@@ -23,7 +23,7 @@
     },
     "verdant_residencia 1.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 1277,
         "y": 0,
         "w": 19,
         "h": 30
@@ -46,16 +46,16 @@
       "frame": {
         "x": 640,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 637,
+        "h": 294
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 637,
+        "h": 294
       },
       "sourceSize": {
         "w": 640,
@@ -70,7 +70,7 @@
     "image": "verdant_residencia.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1299,
+      "w": 1296,
       "h": 360
     },
     "scale": "1",

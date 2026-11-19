@@ -3,7 +3,8 @@ La casa del pare, per dins (Escena 1): la cuina i el despatx. Sala «de prop» (
 (hd640/tres_d.py), a 1×.
 
 La masia vista des de la porta de l'escala, una mica des de dalt i girada cap a la finestra: tres parets de calç que
-fugen. A l'esquerra, la paret de la llar de foc (el foc a terra apagat sota la campana) fuig cap a la cantonada; al
+fugen. A l'esquerra, la paret de la llar de foc fuig cap a la cantonada: la xemeneia surt de la paret
+(els muntants de pedra, la boca fosca amb l'olla i les brases que fan caliu, la lleixa amb els plats i la campana); al
 fons, la pica de pedra (un volum, amb la cortineta de quadres), les lleixes dels setanta pots i la caixa de pots a
 terra, la porta del pati (la llum s'escola per les juntes), el videotelèfon, el calendari i el quadre de la mare; a la
 dreta, la paret del finestró en escorç. La taula del despatx és separada de la paret i girada (se'n veuen el davant
@@ -53,7 +54,7 @@ WIN_Y = (FY - PL.WIN[3], FY - PL.WIN[1])                  # (de baix a dalt)
 LLUMS = [
     Llum((XR - 30, 120, WIN_Z), 340, 2.2, power=1.3),      # el sol del finestró
     Llum((172, 30, ZW - 16), 150, 0.8, power=1.6),         # la llum de les juntes de la porta
-    Llum((14, 40, 236), 120, 0.6, power=1.6),              # el foc a terra (la claror que baixa per la xemeneia)
+    Llum((16, 12, 215), 120, 1.7, power=1.4),              # les brases de la llar de foc
     Llum((200, 400, 150), 600, 0.4, power=1.0),            # una mica de llum de tot arreu
 ]
 AMBIENT = -1.7
@@ -68,6 +69,14 @@ TAULA2 = (418, 84, 120, 70, 44, -0.45)             # el segon escriptori, en pri
 PICA = (6, 82, 46, ZW - 28)                        # la pica: x0, x1, alt, davant (z)
 CAIXA_POTS = (90, 134, 15, ZW - 18)
 BOL = (58, 214)
+# La llar de foc, en volum contra la paret de l'esquerra: la xemeneia surt de la paret (z0..z1 i fins a x = LLAR_D),
+# la boca entre els muntants, la lleixa al damunt i la campana que s'estreny fins al sostre.
+LLAR = (164, 266)                                  # z dels cantons de fora dels muntants
+LLAR_D = 30                                        # quant surt de la paret
+LLAR_M = 10                                        # el gruix dels muntants
+LLAR_H = 96                                        # l'alçada de la boca (la sota de la lleixa)
+LLAR_PX = ZW - LX                                  # al pla de l'esquerra, x del pla = z del món − (ZW − LX)
+EMBER = [(30, 8, 4), (90, 24, 8), (170, 56, 14), (230, 110, 30), (255, 180, 70), (255, 230, 150)]
 
 
 def _mon_fons(fx, fy):
@@ -119,7 +128,7 @@ def _textures():
     cv = _cv()
     cv.img.paste(_paret_nua())
     cv.P = cv.img.load()
-    PL.hearth(cv)
+    PL.hearth_boca(cv, LLAR[0] + LLAR_M - LLAR_PX - 4, LLAR[1] - LLAR_M - LLAR_PX + 4)   # (el fons de la boca)
     esq = cv.img
     # la paret de la dreta: el finestró (sense el raig de sol pintat: el fa el món)
     cv = Canvas(W + 40, light=TL)
@@ -133,7 +142,8 @@ def _textures():
     cpots = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     cpots.paste(caixa_pots, (0, 186))
     return {'fons': fons, 'esq': esq, 'dreta': dreta, 'nua': _paret_nua(), 'taula': taula, 'pots': cpots,
-            'bombeta': _capa(PL.wiring).crop((314, 28, 331, 48)), 'bol': _capa(PL.bol).crop((134, 208, 166, 224))}
+            'bombeta': _capa(PL.wiring).crop((314, 28, 331, 48)), 'bol': _capa(PL.bol).crop((134, 208, 166, 224)),
+            'lleixa': _capa(lambda cv: PL.hearth_lleixa(cv, 20, 116))}
 
 
 # ─── Les superfícies procedurals ─────────────────────────────────────────────
@@ -294,9 +304,6 @@ def parets(e, tex):
              lambda s, t: 0.32 * max(0.0, 1 - t / 70) ** 1.5 * max(0.0, 1 - abs(s - 60 - t * 0.43) / (32 + t * 0.6)))
     e.claror((0, 0.3, ZW), (XR, 0.3, ZW), (XR, 0.3, 40), (0, 0.3, 40), SUN,
              lambda s, t: 0.55 * _taca_sol(s, ZW - t))
-    # el foc a terra: una mica de claror càlida damunt la cendra
-    e.claror((0.4, 70, 190), (0.4, 70, 280), (0.4, 0, 280), (0.4, 0, 190), (255, 170, 90),
-             lambda s, t: 0.16 * max(0.0, 1 - abs(s - 45) / 45) * (t / 70))
     # la foscor dels racons
     e.foscor('racons', (0, 0.5, ZW), (XR, 0.5, ZW), (XR, 0.5, zn), (0, 0.5, zn),
              lambda s, t: max(0.5 * max(0.0, 1 - t / 24), 0.5 * max(0.0, 1 - s / 22), 0.5 * max(0.0, 1 - (XR - s) / 22)))
@@ -309,7 +316,80 @@ def parets(e, tex):
              lambda s, t: 0.4 * max(0.0, 1 - (40 - s) / 40))
 
 
+def _pedra(lvl0, seed=1):
+    """Carreus de pedra (en coordenades del món): filades de 12, juntes fosques, cada pedra d'un to."""
+    def L(s, t, P):
+        y, h = P[1], P[2] + P[0]
+        row = int(y // 12)
+        col = int((h + (9 if row % 2 else 0)) // 18)
+        v = lvl0 + (hr(col, row, seed) - 0.5) * 1.0 + (fbm(h / 10, y / 10, seed) - 0.5) * 0.5
+        if y % 12 < 1.2 or (h + (9 if row % 2 else 0)) % 18 < 1.2:
+            v -= 1.4
+        return v
+    return L
+
+
+def llar(e, tex):
+    """La llar de foc: la xemeneia que surt de la paret de l'esquerra. La boca fosca (el fons, del dibuix pla, amb
+    l'olla), la llosa i la cendra amb les brases que fan caliu, els muntants de pedra, la lleixa de fusta amb els
+    plats i la campana de calç, ennegrida a baix, que s'estreny fins al sostre. Es pinta de lluny a prop."""
+    z0, z1 = LLAR
+    D, M, H = LLAR_D, LLAR_M, LLAR_H
+    zb0, zb1 = z0 + M, z1 - M                                      # la boca
+    YL = H + 8                                                     # el damunt de la lleixa
+    _ombra(e, D + 8, (z0 + z1) / 2, 18, (z1 - z0) / 2 + 4, 0.4, dx=-2)
+    # la llosa de la llar, a terra, que surt una mica més que la xemeneia
+    e.caixa('llar', 0, D + 5, 0, 3, z0 - 4, z1 + 4, STONE, 2.8,
+            cares={'dalt': {'ramp': STONE, 'lvl': lambda s, t, P: 2.6 + (hr(int(P[0] // 12), int(P[2] // 16), 4) - 0.5)
+                            - (1.2 if P[2] % 16 < 1 or P[0] % 12 < 1 else 0)
+                            - (1.2 if P[0] < D - 2 and zb0 < P[2] < zb1 else 0)},
+                   'dreta': {'ramp': STONE, 'lvl': 2.2}, 'davant': {'ramp': STONE, 'lvl': 2.4}})
+    # dins la boca: el sostre fosc (la gola de la xemeneia)
+    e.quad('llar', (0, H, zb0), (D - 2, H, zb0), (D - 2, H, zb1), (0, H, zb1), ramp=STONE, lvl=0.4, dues_cares=True)
+    # la cendra i les brases: tions creuats i caliu
+    e.quad('llar', (2, 3.4, zb0 + 6), (D - 6, 3.4, zb0 + 6), (D - 6, 3.4, zb1 - 6), (2, 3.4, zb1 - 6), ramp=EMBER,
+           lvl=lambda s, t, P: (1.2 + (fbm(P[0] / 5, P[2] / 5, 8) - 0.5) * 2.0
+                                + (2.6 if fbm(P[0] / 3, P[2] / 3, 9) > 0.62 else 0)),
+           forma=lambda s, t: ((s - (D - 8) / 2) / ((D - 8) / 2)) ** 2 + ((t - (zb1 - zb0 - 12) / 2)
+                                                                       / ((zb1 - zb0 - 12) / 2)) ** 2 < 1,
+           dues_cares=True)
+    zm = (zb0 + zb1) / 2
+    for (xa, za), (xb, zb_) in (((4, zm - 22), (22, zm + 8)), ((6, zm + 20), (20, zm - 10))):
+        e.cable('llar', [(xa, 6, za), (xb, 6, zb_)], BLACKT, 1.4, gruix=5)
+        e.cable('llar', [(xa + 1, 7.5, za + 2), (xb - 1, 7.5, zb_ - 2)], EMBER, 3.6, gruix=1.6)
+    # unes flametes baixes, que lluen damunt les brases (de cara a la sala)
+    for k, (fz, fh, fw) in enumerate(((zm - 12, 13, 7), (zm + 2, 18, 8), (zm + 14, 11, 6))):
+        e.quad('llar', (12, 6 + fh, fz - fw), (12, 6 + fh, fz + fw), (12, 6, fz + fw), (12, 6, fz - fw), ramp=EMBER,
+               lvl=lambda s, t, P, fh=fh: 2.8 + 2.6 * t / fh,
+               forma=lambda s, t, fh=fh, fw=fw, k=k: abs(s - fw) < fw * (t / fh) ** 0.8 * (0.8 + 0.2 * math.sin(t * 1.3 + k)),
+               dues_cares=True)
+    e.claror((0.6, 60, zb0), (0.6, 60, zb1), (0.6, 0, zb1), (0.6, 0, zb0), (255, 140, 60),
+             lambda s, t: 0.3 * max(0.0, 1 - abs(s - (zb1 - zb0) / 2) / ((zb1 - zb0) / 2)) * (t / 60) ** 2)
+    # els muntants de pedra (primer el del fons; el de prop tapa una mica la boca)
+    for za, zb_, dins in ((zb1, z1, True), (z0, zb0, False)):
+        # (el davant del muntant del fons és el costat de dins de la boca: ennegrit pel fum)
+        dav = (lambda s, t, P: _pedra(1.6, 6)(s, t, P) - (0.9 if P[1] > 50 else 0)) if dins else _pedra(2.6, 6)
+        e.caixa('llar', 0, D, 3, H, za, zb_, STONE, 3.0,
+                cares={'dreta': {'ramp': STONE, 'lvl': _pedra(3.4, 5)},
+                       'davant': {'ramp': STONE, 'lvl': dav},
+                       'darrere': {'ramp': STONE, 'lvl': lambda s, t, P: _pedra(1.6, 7)(s, t, P) - (0.8 if P[1] > 60 else 0)}})
+    # la campana: la cara de davant, inclinada, i el costat que mira cap a la càmera; ennegrida a baix pel fum
+    xt, zt0, zt1 = 14, z0 + 26, z1 - 22                            # a dalt, al sostre
+    calc = dict(ramp=LIME, lvl=lambda s, t, P: 3.4 + (fbm(P[2] / 10, P[1] / 10, 30) - 0.5) * 0.8
+                - 1.8 * max(0.0, 1 - (P[1] - YL) / 46) * (0.5 + 0.5 * fbm(P[2] / 8, P[1] / 20, 31)))
+    e.quad('llar', (D - 2, YL, z0 + 2), (D - 2, YL, z1 - 2), (xt, HS, zt1), (xt, HS, zt0), dues_cares=True, **calc)
+    e.quad('llar', (0, YL, z0 + 2), (D - 2, YL, z0 + 2), (xt, HS, zt0), (0, HS, zt0),
+           ramp=LIME, lvl=lambda s, t, P: calc['lvl'](s, t, P) - 0.6, dues_cares=True)
+    # la lleixa de fusta, que sobresurt, i el que hi ha al damunt (plats drets, el llum d'oli, una ampolla)
+    e.caixa('llar', 0, D + 6, H, YL, z0 - 6, z1 + 6, PLANK, 3.0,
+            cares={'dalt': {'ramp': PLANK, 'lvl': _fusta(3.8, 2)}, 'dreta': {'ramp': PLANK, 'lvl': _fusta(2.8, 3)},
+                   'davant': {'ramp': PLANK, 'lvl': 2.4}, 'sota': {'ramp': PLANK, 'lvl': 0.8}})
+    e.quad('llar', (D - 6, YL + 20, z0 + 2), (D - 6, YL + 20, z1 - 2), (D - 6, YL, z1 - 2), (D - 6, YL, z0 + 2),
+           tex=(tex['lleixa'], (20, PL.MANTEL_Y - 24, 116, PL.MANTEL_Y - 4)), dues_cares=True)
+
+
 def mobles(e, tex):
+    llar(e, tex)
     # la pica de pedra: el davant amb la cortineta del dibuix pla; la tapa de marbre amb el clot
     x0, x1, h, zf = PICA
     px0, px1 = x0 + FX, x1 + FX
@@ -514,7 +594,7 @@ def _v(x, z):
 # El terra on es camina (al món): de la llar de foc a la paret del finestró, de davant la pica i la porta fins on
 # comencen l'escala i el segon escriptori; la taula és un forat (s'hi fa la volta i s'hi passa per darrere).
 _T2_DARRERE = max(_T2, key=lambda p: p[1])                         # el cantó de més al fons del segon escriptori
-WALK_MON = [(24, 154), (24, 268), (PICA[1] + 8, 268), (CAIXA_POTS[1] + 8, ZW - 26), (XR - 16, ZW - 14),
+WALK_MON = [(24, 154), (LLAR_D + 14, LLAR[0] - 10), (LLAR_D + 14, 268), (PICA[1] + 8, 268), (CAIXA_POTS[1] + 8, ZW - 26), (XR - 16, ZW - 14),
             (XR - 16, 132), (round(_T2_DARRERE[0]) + 6, 152), (round(_T2_DARRERE[0]) - 14, 124), (300, 124)]
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
