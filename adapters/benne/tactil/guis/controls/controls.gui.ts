@@ -1,11 +1,12 @@
-// La interfície tàctil: la targeta «Com es juga» (el dit o el ratolí), que s'obre des de les opcions. Què diu:
+// La interfície tàctil: la targeta «Com es juga» (el dit o el ratolí), que surt sola després de «Comença» i s'obre des
+// de les opcions. Què diu i quan surt:
 // narrative/controls.ts. L'art i el .gui.json: tactil/controls.py (des del hud.py de cada joc). Els textos fixos (títol,
 // «D'acord», girar els botons) els posa el sync dels locales (`ui.controls.*`); els de les files, el script.
 import { onUpdate } from '@benne/script';
 import {
   gui, fons, dit0, dit1, dit2, ratoli0, ratoli1, ratoli2, text0, text1, text2, dacord, intercanvia, intercanviaText,
 } from './controls.ids';
-import { ambElDit, filesControls, tancaControls } from '../../narrative/controls';
+import { ambElDit, filesControls, tancaControls, vigilaControls } from '../../narrative/controls';
 import { preferencies, setPreferencia } from '../../narrative/preferencies';
 
 const FONS_ALFA = 0.6
@@ -33,6 +34,7 @@ gui.onBuilt(() => {
   icones()
 })
 onUpdate(() => {
+  vigilaControls()
   if (!gui.visible) return
   if (fons.alpha !== FONS_ALFA) fons.alpha = FONS_ALFA
   icones()

@@ -277,6 +277,14 @@ function playerActed() {
   saves.autosave(AUTOSAVE)
 }
 
+/** Qui vol saber que s'ha clicat «Comença» (la targeta «Com es juga», als jocs tàctils: vegeu controls.ts). */
+const enComencar: Array<() => void> = []
+
+/** Crida `fn` cada cop que es comença una partida nova des de la portada. */
+export function onNewGame(fn: () => void) {
+  enComencar.push(fn)
+}
+
 /** El botó «Comença» de la portada: el pròleg, si n'hi ha, o la sala de la primera protagonista. */
 export function startFromCover() {
   // Per provar els finals (només en desenvolupament): `?final=<id>` a l'adreça (vegeu `prepareEndingPreview`).
@@ -289,6 +297,7 @@ export function startFromCover() {
   }
   untouchedNewGame = true
   statsNewGame()
+  for (const fn of enComencar) fn()
   const manifest = narrative.content.manifest
   // Si la portada té el títol en una capa a part (`titol`), els botons se'n van i el títol s'esvaeix: el pròleg
   // comença al mateix pla (Ni un ou), i s'hi passa amb un tall net, sense fosa a negre.
