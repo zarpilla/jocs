@@ -18,12 +18,28 @@
         "active": true,
         "points": [
           {
-            "x": 0,
-            "y": 209
+            "x": 36,
+            "y": 184
           },
           {
-            "x": 99,
-            "y": 193
+            "x": 65,
+            "y": 178
+          },
+          {
+            "x": 89,
+            "y": 194
+          },
+          {
+            "x": 150,
+            "y": 181
+          },
+          {
+            "x": 117,
+            "y": 165
+          },
+          {
+            "x": 143,
+            "y": 162
           },
           {
             "x": 168,
@@ -59,7 +75,7 @@
           },
           {
             "x": 0,
-            "y": 223
+            "y": 190
           }
         ],
         "holes": [
@@ -294,28 +310,28 @@
             "active": true,
             "points": [
               {
-                "x": 129,
-                "y": 328
+                "x": 61,
+                "y": 344
               },
               {
-                "x": 116,
-                "y": 321
+                "x": 49,
+                "y": 337
               },
               {
-                "x": 93,
-                "y": 327
+                "x": 24,
+                "y": 343
               },
               {
-                "x": 82,
-                "y": 339
+                "x": 9,
+                "y": 357
               },
               {
-                "x": 95,
-                "y": 347
+                "x": 21,
+                "y": 365
               },
               {
-                "x": 119,
-                "y": 341
+                "x": 48,
+                "y": 359
               }
             ]
           },
@@ -353,29 +369,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 0,
-          "y": 37
+          "x": 44,
+          "y": 40
         },
         {
-          "x": 117,
-          "y": 37
+          "x": 136,
+          "y": 40
         },
         {
-          "x": 117,
-          "y": 203
+          "x": 136,
+          "y": 188
         },
         {
-          "x": 0,
-          "y": 203
+          "x": 44,
+          "y": 188
         }
       ],
       "walkToPoint": {
-        "x": 43,
-        "y": 203
+        "x": 123,
+        "y": 189
       },
       "lookAtPoint": {
-        "x": 58,
-        "y": 203
+        "x": 90,
+        "y": 188
       },
       "defaultVerb": "open"
     },
@@ -763,7 +779,7 @@
       "animations": {
         "davant_pancarta": {}
       },
-      "zIndex": 21,
+      "zIndex": 24,
       "baseline": 197
     },
     {
@@ -775,7 +791,7 @@
       "animations": {
         "davant_font": {}
       },
-      "zIndex": 22,
+      "zIndex": 26,
       "baseline": 198
     },
     {
@@ -787,7 +803,7 @@
       "animations": {
         "davant_nen1": {}
       },
-      "zIndex": 23,
+      "zIndex": 28,
       "baseline": 211
     },
     {
@@ -799,7 +815,7 @@
       "animations": {
         "davant_nen2": {}
       },
-      "zIndex": 24,
+      "zIndex": 30,
       "baseline": 218
     },
     {
@@ -811,7 +827,7 @@
       "animations": {
         "davant_bido": {}
       },
-      "zIndex": 25,
+      "zIndex": 32,
       "baseline": 224
     },
     {
@@ -823,7 +839,7 @@
       "animations": {
         "davant_nen0": {}
       },
-      "zIndex": 26,
+      "zIndex": 34,
       "baseline": 235
     },
     {
@@ -835,8 +851,20 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 27,
+      "zIndex": 36,
       "baseline": 999
+    },
+    {
+      "id": "davant_rampa",
+      "tag": "davant_rampa",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_rampa": {}
+      },
+      "zIndex": 22,
+      "baseline": 176
     }
   ],
   "characters": [
@@ -881,7 +909,7 @@
       "x": 33.31,
       "y": -8.74,
       "direction": true,
-      "stretch": 1
+      "stretch": 1.0
     }
   },
   "floorSquash": 0.3

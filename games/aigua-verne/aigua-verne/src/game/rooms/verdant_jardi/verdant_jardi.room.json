@@ -18,7 +18,7 @@
         "active": true,
         "points": [
           {
-            "x": 160,
+            "x": 99,
             "y": 249
           },
           {
@@ -46,8 +46,32 @@
             "y": 167
           },
           {
-            "x": 246,
+            "x": 251,
             "y": 169
+          },
+          {
+            "x": 228,
+            "y": 192
+          },
+          {
+            "x": 166,
+            "y": 199
+          },
+          {
+            "x": 134,
+            "y": 197
+          },
+          {
+            "x": 115,
+            "y": 202
+          },
+          {
+            "x": 179,
+            "y": 206
+          },
+          {
+            "x": 143,
+            "y": 219
           }
         ],
         "holes": [
@@ -275,29 +299,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 54,
-          "y": 130
+          "x": 47,
+          "y": 73
         },
         {
-          "x": 181,
-          "y": 130
+          "x": 164,
+          "y": 73
         },
         {
-          "x": 181,
-          "y": 249
+          "x": 164,
+          "y": 216
         },
         {
-          "x": 54,
-          "y": 249
+          "x": 47,
+          "y": 216
         }
       ],
       "walkToPoint": {
-        "x": 180,
-        "y": 235
+        "x": 168,
+        "y": 213
       },
       "lookAtPoint": {
-        "x": 117,
-        "y": 249
+        "x": 105,
+        "y": 216
       },
       "defaultVerb": "open"
     },
@@ -617,7 +641,7 @@
       "animations": {
         "davant_boix0": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 170
     },
     {
@@ -629,7 +653,7 @@
       "animations": {
         "davant_boix1": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 175
     },
     {
@@ -641,7 +665,7 @@
       "animations": {
         "davant_flamenc": {}
       },
-      "zIndex": 23,
+      "zIndex": 26,
       "baseline": 191
     },
     {
@@ -653,7 +677,7 @@
       "animations": {
         "davant_pal": {}
       },
-      "zIndex": 24,
+      "zIndex": 28,
       "baseline": 194
     },
     {
@@ -665,7 +689,7 @@
       "animations": {
         "davant_parterre": {}
       },
-      "zIndex": 25,
+      "zIndex": 32,
       "baseline": 215
     },
     {
@@ -677,8 +701,20 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 26,
+      "zIndex": 34,
       "baseline": 999
+    },
+    {
+      "id": "davant_rampa",
+      "tag": "davant_rampa",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_rampa": {}
+      },
+      "zIndex": 30,
+      "baseline": 209
     }
   ],
   "characters": [

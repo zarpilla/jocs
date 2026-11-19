@@ -8,11 +8,13 @@ impossible amb arbres de piruleta i viles blanques, i la bardissa retallada amb 
 les boles de boix a la porta (en Fidel s'hi posa al davant: és un sprite a part) i el **climatitzador**, que degota
 a una **reixa** a terra (l'única aigua de veritat del jardí). Al davant, a la dreta, el **cobert del jardiner**:
 fusta pintada de verd, vella, humana, girat cap a l'altra banda (la façana i la paret de l'esquerra), que tapa el
-cantó de la residència. A l'esquerra, la **Cantimplora** (el buc de la nau cisterna, que fuig cap al fons, amb la
-**rampa** abaixada a la gespa), la **plataforma de la llançadora** i el **panell del preu**. La **gespa
+cantó de la residència. A l'esquerra, la **Cantimplora** (el model canònic de cantimplora_comu.py: la popa tallada
+per la vora, la proa que fuig cap al fons a la dreta, el costat d'estribord amb la matrícula, la porta de la bodega
+encesa i el nom, i la **rampa** abaixada a la gespa; a contrallum, amb l'ombra llarga endavant), la **plataforma de
+la llançadora** i el **panell del preu**. La **gespa
 artificial**, a franges de segar que fugen cap a l'horitzó; el camí de marbre de la porta; el parterre de **flors de
 plàstic**, els **aspersors** i un flamenc. Primer pla: mates de boix retallades a les dues cantonades de baix, a
-l'ombra.
+l'ombra. Es passa per darrere de la rampa (entre la rampa i la proa, arran del buc).
 
 El detall (la façana, el cobert, el climatitzador, el panell, el rètol de la llançadora, les boles de boix, els
 aspersors i el flamenc) ve del jardí pla de sempre (verdant_jardi_pla_comu.py), dibuixat de cara i projectat.
@@ -29,12 +31,12 @@ import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from PIL import Image
 
 from hd.pix import Canvas, Light, W, H, hr
-from hd.rooms.comu import text
 from hd.rooms.exterior import fbm, smooth
 from hd640.rooms import verdant_jardi_pla_comu as PL
 from hd640.rooms.verdant_comu import (SKYV, TURF, HILLV, WHITEV, MARBLE, GOLDV, GLASSV, CYANF, SHEDG, ZINC, BLACKT,
                                       OLIVE, SAFETY, RUSTV, MAGENTA, YELLOWF, ORANGEF, VIOLETF, panell_preu, flor,
                                       arbre_rodo, galleda)
+from hd640.rooms.cantimplora_comu import Cantimplora
 from hd640.tres_d import Camera, Escena, Llum
 
 RH = 260                                           # la sala (per sota, la barra de verbs)
@@ -97,10 +99,11 @@ def _cobert(fx, fy, out=0.0):
 
 COBERT_PORTA = _cobert((PL.SDOOR[0] + PL.SDOOR[2]) / 2, CY1)
 
-# La Cantimplora: el buc, a l'esquerra, fuig cap al fons; la boca de la bodega i la rampa abaixada
-NAU_X, NAU_Z0, NAU_Z1, NAU_Y0, NAU_Y1 = -250.0, 360.0, 800.0, 26.0, 320.0
-BOCA = (470.0, 570.0, 26.0, 112.0)                 # z0, z1, y0, y1
-RAMPA_X = -158.0                                   # on la rampa toca la gespa
+# La Cantimplora (el model canònic, cantimplora_comu): a l'esquerra, la popa a prop (tallada per la vora) i la proa
+# que fuig cap al fons a la dreta; la porta, a estribord (el costat que es veu), amb la rampa abaixada a la gespa
+NAU = Cantimplora(popa=(-440.0, 560.0), rumb=math.pi / 2 - 0.3, porta='estribord')
+PORTA_L, PORTA_T, RAMPA_OUT = NAU.PORTA_L, NAU.PORTA_T, NAU.RAMPA_OUT
+SOL_DIR = (-9000.0, 7000.0, 12000.0)               # cap al sol (el de LLUMS): l'ombra de la nau, endavant i a la dreta
 LLANC = (-120.0, 730.0, 48.0)                      # la plataforma de la llançadora: centre i radi
 PAL = (-64.0, 744.0)
 PANELL = (-214.0, 1000.0)
@@ -131,14 +134,7 @@ def _textures():
         'aspersor': (_pla(lambda cv: PL.aspersor(cv, 20, 20)).crop((12, 8, 28, 24)), (8, 12)),
         'flamenc': (_pla(lambda cv: PL.flamenc(cv, 30, 40)).crop((18, 6, 44, 44)), (12, 34)),
         'galleda': (_pla(lambda cv: galleda(cv, 30, 30, s=0.62, plena=True)).crop((14, 2, 46, 34)), (16, 28)),
-        'c7': _c7(),
     }
-
-
-def _c7():
-    cv = Canvas(40, 12, light=None, transparent=True)
-    text(cv, 'C-7', 2, 2, None, 0, flat=(220, 210, 160))
-    return cv.img
 
 
 # ─── El fons (en pantalla): el cel, els turons ───────────────────────────────
@@ -334,53 +330,11 @@ def boix(e, tex):
         e.sprite(f'boix{k}', *tex['boix'], P, escala_img=FK * 1.4)
 
 
-def cantimplora(e, tex):
-    x, z0, z1, y0, y1 = NAU_X, NAU_Z0, NAU_Z1, NAU_Y0, NAU_Y1
-    bz0, bz1, by0, by1 = BOCA
-    ombra(e, x - 150, (z0 + z1) / 2 - 20, 170, (z1 - z0) / 2 + 20, 0.6, sid='nau')
-    # les potes d'aterratge
-    for pz in (z0 + 40, z1 - 40):
-        e.caixa('nau', x - 30, x - 12, 0, y0 + 2, pz - 9, pz + 9, ZINC, 2.6)
-        e.caixa('nau', x - 36, x - 6, 0, 3, pz - 14, pz + 14, OLIVE, 2.0)
-
-    def planxa(s, t, P):
-        y, zz = P[1], P[2]
-        v = 2.8 + (fbm(zz / 40, y / 60, 71) - 0.5) * 0.9 + (y - y0) / (y1 - y0) * 0.8
-        if y % 50 < 1.6 or zz % 64 < 1.6:
-            v -= 1.4
-        if (y % 50 < 5 or y % 50 > 45) and zz % 8 < 1.6:
-            v += 1.4                                               # els reblons
-        return v
-    # el costat del buc (mira cap a la dreta) i la panxa
-    e.quad('nau', (x, y1, z0), (x, y1, z1), (x, y0, z1), (x, y0, z0), ramp=OLIVE, lvl=planxa)
-    e.quad('nau', (x, y0, z0), (x, y0, z1), (x - 30, y0 - 10, z1), (x - 30, y0 - 10, z0), ramp=OLIVE, lvl=1.2,
-           dues_cares=True)
-    # regalims de rovell
-    e.quad('nau', (x + 0.3, y1, z0), (x + 0.3, y1, z1), (x + 0.3, y0, z1), (x + 0.3, y0, z0), ramp=RUSTV,
-           lvl=lambda s, t, P: 2.4 + (hr(int(P[2]), int(P[1]) // 3) - 0.5),
-           forma=lambda s, t: fbm(s / 8, t / 40, 73) > 0.68 and (t % 50) > 6)
-    # la franja de seguretat, taronja i negra en diagonal
-    e.quad('nau', (x + 0.5, 182, z0), (x + 0.5, 182, z1), (x + 0.5, 168, z1), (x + 0.5, 168, z0), ramp=SAFETY,
-           lvl=lambda s, t, P: 3.0 if int((P[2] + P[1]) // 8) % 2 else -2.0)
-    e.quad('nau', (x + 0.6, 260, z0 + 40), (x + 0.6, 260, z0 + 140), (x + 0.6, 230, z0 + 140), (x + 0.6, 230, z0 + 40),
-           tex=(tex['c7'], (0, 0, 20, 8)))
-    # la boca de la bodega, fosca amb llum càlida al fons, i el marc
-    e.quad('nau_boca', (x + 0.7, by1, bz0), (x + 0.7, by1, bz1), (x + 0.7, by0, bz1), (x + 0.7, by0, bz0), ramp=BLACKT,
-           lvl=lambda s, t, P: 0.4 + max(0.0, 1 - abs(s - (bz1 - bz0) / 2) / 50) * 1.6 + t / (by1 - by0) * 1.0)
-    e.claror((x + 0.8, by1, bz0), (x + 0.8, by1, bz1), (x + 0.8, by0, bz1), (x + 0.8, by0, bz0), (255, 196, 110),
-             lambda s, t: 0.4 * max(0.0, 1 - math.hypot(s - (bz1 - bz0) / 2, (t - (by1 - by0)) * 1.4) / 60))
-    for zz in (bz0 - 4, bz1):
-        e.caixa('nau', x, x + 4, by0, by1 + 4, zz, zz + 4, OLIVE, 3.6)
-    e.caixa('nau', x, x + 4, by1, by1 + 4, bz0 - 4, bz1 + 4, OLIVE, 4.0)
-    # la rampa: una planxa estriada de la boca fins a la gespa, amb les vores de seguretat
-    rx = RAMPA_X
-    e.foscor('nau', (x, 0.4, bz1 + 6), (rx + 26, 0.4, bz1 + 6), (rx + 26, 0.4, bz0 - 14), (x, 0.4, bz0 - 14),
-             lambda s, t: 0.45)
-    e.quad('rampa', (x, by0, bz1), (rx, 0.6, bz1), (rx, 0.6, bz0), (x, by0, bz0), ramp=OLIVE, dues_cares=True,
-           lvl=lambda s, t, P: 4.8 + (1.2 if s % 6 < 1.2 else 0) - (0.6 if s % 6 < 2.4 else 0)
-           + (-3.2 if (t < 5 or t > (bz1 - bz0) - 5) and int(s // 6) % 2 else 0))
-    # el pistó hidràulic
-    e.cable('rampa', [(x + 2, 70, bz1 - 6), ((x + rx) / 2, 14, bz1 - 6)], ZINC, 4.0, gruix=3.0)
+def cantimplora(e):
+    """La Cantimplora canònica: el costat de la porta, a contrallum (el sol és darrere a l'esquerra), la bodega encesa,
+    la rampa abaixada a la gespa i l'ombra llarga que cau endavant i a la dreta, per la gespa."""
+    NAU.dibuixa(e, ombra={'sol': SOL_DIR, 'k': 0.45})
+    NAU.resplendor(e.cv, k=0.6)
 
 
 def llancadora(e, tex):
@@ -477,7 +431,7 @@ def escena(cv, tex):
     sprites_petits(e, tex)
     llancadora(e, tex)
     parterre(e, *PARTERRE)
-    cantimplora(e, tex)
+    cantimplora(e)
     primer_pla(e)
     return e
 
@@ -614,6 +568,9 @@ FRONT = [
     {'id': 'davant_flamenc', 'mask': _amo({'flamenc'}), 'baseline': _v(FLAMENC[1]), 'zIndex': 20},
     {'id': 'davant_parterre', 'mask': _amo({'parterre'}), 'baseline': _v(PARTERRE[1]), 'zIndex': 20},
     {'id': 'davant_pal', 'mask': _amo({'llancadora_pal'}), 'baseline': _v(PAL[1]), 'zIndex': 20},
+    # la rampa de la Cantimplora: qui va entre la rampa i la proa, arran del buc, hi passa per darrere
+    {'id': 'davant_rampa', 'mask': _amo({'rampa'}), 'baseline': _v(NAU.terra(sum(PORTA_L) / 2, RAMPA_OUT * 0.75)[1]),
+     'zIndex': 20},
     {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
 ]
 
@@ -644,10 +601,14 @@ _F_R = _add(R, NF, 26)                             # davant la façana, a 26 uni
 _F_L = _add(LC, NF, 26)
 _C_L = _add(LCC, NFC, 22)                          # davant el cobert
 _C_LB = _add(_add(LCC, BKC), TFC, -20)             # al llarg de la paret de l'esquerra del cobert
-# El terra on es camina (al món): de la rampa fins al cobert, de baix fins a la façana. Forats: el parterre, el
+# El terra on es camina (al món): de la rampa fins al cobert, de baix fins a la façana; davant el peu de la rampa i,
+# per la banda de la proa, arran del buc (per darrere de la rampa) sense tocar les potes. Forats: el parterre, el
 # climatitzador, les boles de boix i el flamenc.
-WALK_MON = [(-150, Z_PROP), (380, Z_PROP), (388, 640), (_C_L[0], _C_L[2]), (_C_LB[0], _C_LB[2]), (_F_R[0], _F_R[2]),
-            (_F_L[0], _F_L[2]), (-150, 1010)]
+_SL = sum(PORTA_L) / 2
+_NAU_W = [(-140, 1010), (-140, 760), NAU.terra(205, 170), NAU.terra(205, 116), NAU.terra(PORTA_L[1] + 10, 112),
+          NAU.terra(PORTA_L[1] + 10, RAMPA_OUT + 14), NAU.terra(PORTA_L[0] - 10, RAMPA_OUT + 14)]
+WALK_MON = [(_NAU_W[-1][0], Z_PROP), (380, Z_PROP), (388, 640), (_C_L[0], _C_L[2]), (_C_LB[0], _C_LB[2]),
+            (_F_R[0], _F_R[2]), (_F_L[0], _F_L[2]), *_NAU_W]
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 
@@ -660,8 +621,9 @@ def _ac_forat():
 
 GEOMETRIA = {
     'things': {
-        'rampa': {'rect': _rect((NAU_X, BOCA[3], BOCA[0]), (RAMPA_X, 0, BOCA[1]), (NAU_X, 0, BOCA[0])),
-                  'walk': _p(RAMPA_X + 12, (BOCA[0] + BOCA[1]) / 2)},
+        'rampa': {'rect': _rect(NAU.buc(PORTA_L[0] - 6, PORTA_T[1] + 0.06), NAU.buc(PORTA_L[1] + 6, PORTA_T[1] + 0.06),
+                                *NAU.rampa_cantons()),
+                  'walk': _p(*NAU.terra(_SL, RAMPA_OUT + 22))},
         'porta_residencia': {'rect': _rect(_facana(PL.DOOR[0] - 4, PL.DOOR[1] - 4), _facana(PL.DOOR[2] + 4, FY1)),
                              'walk': _pP(_add(DOOR_C, NF, 34))},
         'porta_cobert': {'rect': _rect(_cobert(PL.SDOOR[0] - 4, PL.SDOOR[1] - 6), _cobert(PL.SDOOR[2] + 4, CY1)),

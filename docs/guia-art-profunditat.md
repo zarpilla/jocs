@@ -289,10 +289,8 @@ personatges en 3/4, la respiració i les micro-accions. Queda pendent:
 
 **Aigua Verne: totes les sales i les cinemàtiques són en 3D, a 1×** (novembre del 2026). Queda pendent:
 
-- Rètols petits que no es llegeixen en escorç: el «C-7» de la nau al jardí de Verdant. S'ha de dibuixar més gros al
-  pla.
-- La Cantimplora canònica (`cantimplora_comu.py`) ja és al port de Terra-2, a la portada, al pròleg i al port
-  d'Aqua; falta posar-la al carrer de Ferrum, al jardí de Verdant i als crèdits (quan hi sigui, cal treure aquest
+- La Cantimplora canònica (`cantimplora_comu.py`) ja és al port de Terra-2, a la portada, al pròleg, al port
+  d'Aqua, al carrer de Ferrum i al jardí de Verdant; falta posar-la als crèdits (quan hi sigui, cal treure aquest
   ítem).
 - Els crèdits i els postcrèdits no s'han tocat.
 

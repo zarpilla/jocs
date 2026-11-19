@@ -4,11 +4,14 @@ Aigua Verne — `ferrum_carrer` (L): un carrer de miners de Ferrum, a la tarda, 
 
 Una càmera alta, girada cap a la dreta i mirant una mica avall (picat), en una cantonada: la fila de façanes fuig cap
 a la dreta (el **sindicat** a la cantonada, les cases dels miners amb el **panell del preu**, la **fosa** amb el
-portal gran i la xemeneia, i un magatzem), i a l'esquerra el carrer del costat s'allunya cap al fons, on hi ha
-aparcada la Cantimplora amb la **rampa** de la bodega baixada; per sobre, la **Canonada**. Al mig del carrer, el
+portal gran i la xemeneia, i un magatzem), i a l'esquerra el carrer del costat, que just darrere el sindicat s'eixampla
+en una plaça on hi ha aparcada de través la Cantimplora (el model canònic de cantimplora_comu.py: la proa tallada per
+la vora, la popa amagada darrere el sindicat; se'n veu el costat de babord, amb la matrícula, el final del nom i la
+porta de la bodega encesa) amb la **rampa** baixada fins a les llambordes; per sobre, la **Canonada**. Al mig del carrer, el
 **piquet** (la pancarta girada, el bidó amb la foguera, la canalla en caixes); la **font** de Verne; la pila de
 **comptadors** arrencats; el **condensador** vell, girat. Primer pla: el fanal i unes caixes a l'esquerra, la
-vagoneta al carril a la dreta. El sol, baix a l'esquerra, fa ombres llargues en diagonal cap a la dreta.
+vagoneta al carril a la dreta. El sol, baix a l'esquerra, fa ombres llargues en diagonal cap a la dreta. Es passa per
+darrere de la rampa (entre la rampa i la vorera, arran del buc).
 
 Tot el detall ve del carrer pla de sempre (ferrum_carrer_pla_comu.py): les façanes, el condensador, la font, el
 piquet i la canalla es dibuixen de cara i es projecten (textures i sprites). Decorats (PROPS): `barril_piquet`,
@@ -29,6 +32,7 @@ from hd640.rooms import ferrum_carrer_pla_comu as PL
 from hd640.rooms.ferrum_carrer_pla_comu import _smoke_loop  # noqa: F401  (el fan servir els postcrèdits)
 from hd640.rooms.ferrum_comu import (
     SOOT, MORTAR, COB, COAL, IRONF, RUSTF, TIN, PLANKF, WATER, GLOWF, smog_sky, canonada, brick_lvl)
+from hd640.rooms.cantimplora_comu import Cantimplora
 from hd640.tres_d import Camera, Escena, Llum
 
 BOTTOM = 259
@@ -52,9 +56,13 @@ FC = (455, 22, 641, 193)
 FX0, FZ = CX1, ZR - 8
 FX1 = FX0 + (FC[2] - FC[0]) * KF
 FH = (FC[3] - FC[1]) * KF
-# la Cantimplora, aparcada al carrer del costat: l'eix (x, y = R) i la popa (z)
-NX, NZ, NR = -36.0, 800.0, 90.0
-RAMPA = (NX - 36, NX + 36, 12.0, NZ - 150)         # x0, x1, alçada a la boca, z del peu
+# la Cantimplora (el model canònic, cantimplora_comu), aparcada de través on el carrer del costat s'eixampla: la
+# proa cap a l'esquerra (i una mica cap a la càmera), la popa darrere les cases de la dreta; la porta, a babord (el
+# costat que es veu), amb la rampa baixada fins a les llambordes del carrer
+NAU = Cantimplora(popa=(110.0, 900.0), rumb=math.pi + 0.3, porta='babord')
+PORTA_L, PORTA_T, RAMPA_OUT = NAU.PORTA_L, NAU.PORTA_T, NAU.RAMPA_OUT
+ZE, ZF = ZR + 190, 1100.0                          # el carrer del costat s'eixampla en una plaça just darrere el
+                                                   # sindicat (la nau); les cases tornen a començar més enllà
 # el piquet, la font, els comptadors, el condensador (x, z)
 BIDO = (X0 + 266, ZR - 196)
 NENS = ((X0 + 218, ZR - 204), (X0 + 318, ZR - 182), (X0 + 140, ZR - 118))
@@ -62,7 +70,7 @@ PANC = ((X0 + 186, ZR - 92), (X0 + 346, ZR - 126))  # els dos pals de la pancart
 FONT = (X0 + 168, ZR - 62)
 COMPT = (X0 + 132, ZR - 40)
 COND = (FX0 + 120, ZR - 96, 0.42)                  # (x, z, gir)
-FANAL = (10.0, 340.0)
+FANAL = (-30.0, 340.0)                            # (a la vora: deixa veure la porta de la nau)
 VAGO = (500.0, 300.0)
 BARRIL = (X0 + 360, ZR - 200)
 
@@ -75,6 +83,7 @@ _D = (-SOL[0], -SOL[2])
 _n = math.hypot(*_D)
 OMBRA = (_D[0] / _n, _D[1] / _n)                   # cap on cauen les ombres, al terra (x, z)
 OMBRA_K = 1.7                                      # llargada de l'ombra per unitat d'alçada (el sol és baix)
+_SOL_DIR = (SOL[0] / 6000, 1.0 / OMBRA_K, SOL[2] / 6000)   # cap al sol (per a l'ombra de la nau: igual de llarga)
 
 TEXL = Light(ambient=0.8, vignette=None, floor_fade=None)        # la llum de les textures planes (neutra)
 
@@ -264,17 +273,28 @@ def facanes(e, tex):
            ramp=MORTAR, lvl=3.6)
 
 
-def carrer_costat(e):
-    """El carrer del costat, que s'allunya cap al fons: cases a les dues bandes, cada una d'una alçada."""
+def _tram_cases(z, w, lluny):
+    """El tros [z, z + w) d'una casa del carrer del costat que toca pintar: les de prop (fins a ZE) es pinten després
+    de la nau, les de lluny (des de ZF) abans; entre les dues, la plaça on és aparcada la nau. → (z0, z1) o None."""
+    a, b = (max(z, ZF), z + w) if lluny else (z, min(z + w, ZE))
+    return (a, b) if b - a > 4 else None
+
+
+def carrer_costat(e, lluny):
+    """El carrer del costat, que s'allunya cap al fons: cases a les dues bandes, cada una d'una alçada. S'obre en una
+    plaça on hi ha la Cantimplora (`lluny`: les cases de més enllà de la nau; si no, les d'abans)."""
     z = ZR + 190
     i = 0
     while z < 5200:
         w = 150 + hr(i, 1) * 120
         h = 150 + hr(i, 2) * 70
-        e.quad('fons_costat', (X0, h, z + w), (X0, h, z), (X0, 0, z), (X0, 0, z + w), ramp=SOOT,
-               lvl=_maons(2.6 - min(1.0, z / 4000), 50 + i,
-                          finestres=tuple((20 + k * 46, 40 + j * 50, 18, 24, hr(i, k, j) > 0.8)
-                                          for k in range(int(w // 46) - 1) for j in range(2))))
+        tr = _tram_cases(z, w, lluny)
+        if tr:
+            a, b = tr
+            e.quad('fons_costat', (X0, h, b), (X0, h, a), (X0, 0, a), (X0, 0, b), ramp=SOOT,
+                   lvl=_maons(2.6 - min(1.0, z / 4000), 50 + i,
+                              finestres=tuple((20 + k * 46, 40 + j * 50, 18, 24, hr(i, k, j) > 0.8)
+                                              for k in range(int((b - a) // 46) - 1) for j in range(2))))
         z += w
         i += 1
     z = ZR - 120
@@ -282,107 +302,43 @@ def carrer_costat(e):
     while z < 5200:
         w = 130 + hr(i, 7) * 140
         h = 140 + hr(i, 8) * 80
-        e.quad('fons_costat', (XO, h, z), (XO, h, z + w), (XO, 0, z + w), (XO, 0, z), ramp=SOOT,
-               lvl=_maons(3.0 - min(1.2, z / 3000), 70 + i,
-                          finestres=tuple((20 + k * 46, 40 + j * 50, 18, 24, hr(i, k, j, 3) > 0.8)
-                                          for k in range(int(w // 46) - 1) for j in range(2))))
+        tr = _tram_cases(z, w, lluny)
+        if tr:
+            a, b = tr
+            e.quad('fons_costat', (XO, h, a), (XO, h, b), (XO, 0, b), (XO, 0, a), ramp=SOOT,
+                   lvl=_maons(3.0 - min(1.2, z / 3000), 70 + i,
+                              finestres=tuple((20 + k * 46, 40 + j * 50, 18, 24, hr(i, k, j, 3) > 0.8)
+                                              for k in range(int((b - a) // 46) - 1) for j in range(2))))
         z += w
         i += 1
 
 
-def voreres(e):
-    """Les voreres: trenquen la línia de la paret amb el terra."""
+def voreres(e, lluny):
+    """Les voreres: trenquen la línia de la paret amb el terra (`lluny`: les del carrer del costat, més enllà de la
+    plaça; si no, les d'abans, que es pinten després de la nau)."""
     lv = {'ramp': MORTAR, 'lvl': lambda s, t, P: 3.8 - (1.4 if s % 28 < 1.2 else 0)}
+    if lluny:
+        e.caixa('vorera', X0 - 28, X0, 0, 4, ZF, 5200, MORTAR, 2.2,
+                cares={'dalt': lv, 'esquerra': {'ramp': MORTAR, 'lvl': 2.6}})
+        e.caixa('vorera', XO, XO + 26, 0, 4, ZF, 5200, MORTAR, 2.2,
+                cares={'dalt': lv, 'dreta': {'ramp': MORTAR, 'lvl': 2.0}})
+        return
     e.caixa('vorera', X0 - 28, 3000, 0, 4, ZR - 32, ZR, MORTAR, 2.2,
             cares={'dalt': lv, 'davant': {'ramp': MORTAR, 'lvl': lambda s, t, P: 2.6 - (1.0 if s % 28 < 1 else 0)}})
-    e.caixa('vorera', X0 - 28, X0, 0, 4, ZR - 32, 5200, MORTAR, 2.2,
-            cares={'dalt': lv, 'esquerra': {'ramp': MORTAR, 'lvl': 2.6}})
-    e.caixa('vorera', XO, XO + 26, 0, 4, ZR - 120, 5200, MORTAR, 2.2,
+    e.caixa('vorera', X0 - 28, X0, 0, 4, ZR - 32, ZE, MORTAR, 2.2,
+            cares={'dalt': lv, 'esquerra': {'ramp': MORTAR, 'lvl': 2.6}, 'darrere': {'ramp': MORTAR, 'lvl': 2.0}})
+    e.caixa('vorera', XO, XO + 26, 0, 4, ZR - 120, ZE, MORTAR, 2.2,
             cares={'dalt': lv, 'dreta': {'ramp': MORTAR, 'lvl': 2.0}})
 
 
 # ─── La Cantimplora ──────────────────────────────────────────────────────────
 
-def _casc(s, t, P):
-    """La planxa del casc: juntes, reblons, rovell i la franja de seguretat (amb l'angle `a` de la secció)."""
-    x, y, z = P
-    a = math.atan2(y - NR, x - NX)
-    v = 3.0 + (fbm(z / 40, a * 6, 61) - 0.5) * 1.0
-    if (z - NZ) % 64 < 1.6:
-        v -= 1.6
-    elif (z - NZ) % 64 < 3:
-        v += 0.6
-    elif (z - NZ) % 64 > 60 and int(a * 40) % 2:
-        v += 1.2                                                    # reblons
-    if abs(a - 0.2) < 0.09:
-        on = int((z + y * 1.5) // 10) % 2 == 0
-        v = 3.2 if on else 1.4
-    if fbm(z / 30, a * 4, 63) > 0.62:
-        v -= 0.7                                                    # rovell
-    return v
-
-
 def nau(e):
-    """La popa de la Cantimplora (un cilindre ajagut), amb la boca de la bodega oberta i la rampa baixada."""
-    n = 30
-    for i in range(n):
-        a0, a1 = 2 * math.pi * i / n, 2 * math.pi * (i + 1) / n
-        p0 = (NX + NR * math.cos(a0), NR + NR * math.sin(a0))
-        p1 = (NX + NR * math.cos(a1), NR + NR * math.sin(a1))
-        if p0[1] < -1 and p1[1] < -1:
-            continue
-        e.quad('nau', (p0[0], p0[1], NZ), (p1[0], p1[1], NZ), (p1[0], p1[1], NZ + 2200), (p0[0], p0[1], NZ + 2200),
-               ramp=PL.OLIVE, lvl=_casc, dues_cares=False)
-
-    # la popa: un disc de planxa amb anelles, l'ull de bou i la boca de la bodega
-    def popa(s, t, P):
-        x, y = P[0], P[1]
-        nx, ny = (x - NX) / NR, (y - NR) / NR
-        r = math.hypot(nx, ny)
-        nz = math.sqrt(max(0.0, 1 - r * r * 0.85))                   # (una mica bombada)
-        v = 1.6 + nz * 1.2 - nx * 0.9 + ny * 0.5 + (fbm(x / 20, y / 20, 65) - 0.5) * 0.9
-        if abs(r - 0.93) < 0.02 or abs(r - 0.6) < 0.015:
-            v -= 1.4                                                  # les anelles de planxa
-        if r > 0.97:
-            v += 1.2                                                  # el cantell
-        if abs(ny + 0.08) < 0.05:
-            v = 3.0 if int((x + y) // 6) % 2 == 0 else 1.0           # la franja de seguretat
-        d = math.hypot(x - NX - 44, y - NR - 30)
-        if d < 9:
-            v = 1.0 if d > 7 else 5.4 - d * 0.2                       # l'ull de bou, encès
-        if fbm(x / 9, y / 14, 63) > 0.64:
-            v -= 0.6                                                  # rovell
-        return v
-    e.quad('nau', (NX - NR, 2 * NR, NZ), (NX + NR, 2 * NR, NZ), (NX + NR, 0, NZ), (NX - NR, 0, NZ), ramp=PL.OLIVE,
-           lvl=popa, forma=lambda s, t: (s - NR) ** 2 + (t - NR) ** 2 <= NR * NR)
-    # la boca de la bodega, il·luminada per dins (caixes, llums de filament)
-    bx0, bx1, by0, by1 = RAMPA[0], RAMPA[1], RAMPA[2], 70
-
-    def boca(s, t, P):
-        x, y = P[0], P[1]
-        v = 0.8 + (y - by0) * 0.01 + max(0.0, 1 - math.hypot(x - NX + 14, y - 62) / 34) * 2.6
-        if y < 36 and (x - bx0) % 24 < 18 and x < NX + 14:
-            v = 1.4 - (0.6 if int(y) % 9 == 0 else 0)               # caixes, dins
-        return v
-    e.quad('nau_boca', (bx0, by1, NZ - 0.6), (bx1, by1, NZ - 0.6), (bx1, by0, NZ - 0.6), (bx0, by0, NZ - 0.6),
-           ramp=GLOWF, lvl=boca)
-    e.quad('nau', (bx0 - 4, by1 + 5, NZ - 0.8), (bx1 + 4, by1 + 5, NZ - 0.8), (bx1 + 4, by1, NZ - 0.8),
-           (bx0 - 4, by1, NZ - 0.8), ramp=PL.OLIVE, lvl=4.2)
-    # la rampa de xapa antilliscant, amb les vores de franges taronja
-    r0, r1, ry, rz = RAMPA
-
-    def rampa(s, t, P):
-        if s < 4 or s > (r1 - r0) - 4:
-            return 3.4 if int(t // 8) % 2 == 0 else 0.8
-        return 2.6 + (0.9 if (int(s) + int(t) * 2) % 7 == 0 else 0) - t * 0.004
-    e.quad('rampa', (r0, ry, NZ - 1), (r1, ry, NZ - 1), (r1, 0.6, rz), (r0, 0.6, rz), ramp=TIN, lvl=rampa)
-    e.caixa('rampa', r0 - 2, r1 + 2, 0, ry + 2, NZ - 4, NZ - 1, IRONF, 3.6)        # la frontissa
-    # la llum càlida de la bodega, que baixa per la rampa i s'escampa pel terra
-    e.claror((r0 - 40, 0.8, NZ - 2), (r1 + 40, 0.8, NZ - 2), (r1 + 80, 0.8, rz - 120), (r0 - 80, 0.8, rz - 120),
-             (255, 190, 110), lambda s, t: 0.45 * max(0.0, 1 - t / 280) * max(0.0, math.sin(math.pi * s / (r1 - r0 + 80))))
-    # l'ombra de la nau (cap a la dreta, pel carrer del costat)
-    e.foscor('ombres', (NX + NR - 10, 0.5, NZ + 1500), (NX + NR + 220, 0.5, NZ + 1500), (NX + NR + 220, 0.5, NZ - 40),
-             (NX + NR - 10, 0.5, NZ - 40), lambda s, t: 0.55 * max(0.0, 1 - s / 230) ** 0.8)
+    """La Cantimplora canònica, de través a la plaça: el costat de la porta, la bodega encesa i la rampa baixada. El
+    sol baix de l'esquerra la il·lumina de biaix i el fum de Ferrum l'empolsa (el to de la sala); l'ombra cau cap a
+    la dreta i enrere, per la plaça."""
+    NAU.dibuixa(e, ombra={'sol': _SOL_DIR, 'k': 0.5, 'esvaeix': 400}, to=((120, 86, 72), 0.22))
+    NAU.resplendor(e.cv, k=0.7)
 
 
 # ─── El piquet, la font, els comptadors, el condensador ─────────────────────────
@@ -512,11 +468,13 @@ def escena(cv, tex):
     e.claror((-80000, 0.2, 40000), (80000, 0.2, 40000), (80000, 0.2, 1400), (-80000, 0.2, 1400), (150, 112, 90),
              lambda s, t: 0.6 * smooth(600, 9000, 40000 - t))
     canonada(cv, CAN_U, 70)                                         # (la base, darrere les cases del carrer del costat)
-    carrer_costat(e)
-    voreres(e)
+    carrer_costat(e, lluny=True)
+    voreres(e, lluny=True)
+    nau(e)
+    carrer_costat(e, lluny=False)
+    voreres(e, lluny=False)
     e.foscor('racons', (X0 - 28, 4.5, ZR), (3000, 4.5, ZR), (3000, 4.5, ZR - 32), (X0 - 28, 4.5, ZR - 32),
              lambda s, t: 0.5 * max(0.0, 1 - t / 18))
-    nau(e)
     facanes(e, tex)
     carrils(e)
     comptadors(e, tex)
@@ -683,6 +641,9 @@ FRONT = [
     *[{'id': f'davant_nen{i}', 'mask': _amo({f'nen{i}'}), 'baseline': _v(*p), 'zIndex': 20} for i, p in enumerate(NENS)],
     {'id': 'davant_pancarta', 'mask': _amo({'pancarta'}),
      'baseline': _v((PANC[0][0] + PANC[1][0]) / 2, (PANC[0][1] + PANC[1][1]) / 2), 'zIndex': 20},
+    # la rampa de la Cantimplora: qui va entre la rampa i la vorera, cap al buc, hi passa per darrere
+    {'id': 'davant_rampa', 'mask': _amo({'rampa'}), 'baseline': _v(*NAU.terra(sum(PORTA_L) / 2, RAMPA_OUT * 0.75)),
+     'zIndex': 20},
     {'id': 'davant_condensador', 'mask': _amo({'cond', 'cond_cos', 'cond_diposit'}), 'baseline': _v(COND[0], COND[1] - 14),
      'zIndex': 20},
 ]
@@ -707,16 +668,20 @@ def _cercle(cx, cz, r, n=8):
 
 
 # El terra on es camina (al món): el carrer davant les façanes (sense pujar a la vorera), i el carrer del costat fins
-# al peu de la rampa; no arriba a les caixes del primer pla ni al fanal.
+# a la Cantimplora: el peu de la rampa, per davant, i entre la rampa i la vorera fins arran del buc (allà es passa
+# per darrere de la rampa: la càmera és a l'altra banda); no arriba a les caixes del primer pla ni al fanal.
 _VMAX = 256
 _ZV = ZR - 36                                     # davant la vorera
+_SL = sum(PORTA_L) / 2
+_NAU_W = [NAU.terra(PORTA_L[1] + 44, 130), NAU.terra(PORTA_L[1] + 10, 130), NAU.terra(PORTA_L[1] + 10, RAMPA_OUT + 14),
+          NAU.terra(PORTA_L[0] - 10, RAMPA_OUT + 14), NAU.terra(PORTA_L[0] - 8, 112)]
 WALK_MON = [
-    (RAMPA[0] - 30, RAMPA[3] - 6), (RAMPA[1] + 22, RAMPA[3] - 6), (X0 - 34, ZR - 4), (X0 - 34, _ZV),
+    *_NAU_W, (X0 - 34, _NAU_W[-1][1]), (X0 - 34, ZR - 4), (X0 - 34, _ZV),
     (FX0 - 10, _ZV), (FX0 - 10, FZ - 36), (FX1 + 300, FZ - 36),
 ]
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _WALK = [(min(W - 1, max(0, u)), v) for u, v in _WALK]
-_WALK += [(W - 1, _p(FX1 + 300, FZ - 36)[1]), (W - 1, _VMAX), (0, _VMAX), (0, _p(RAMPA[0] - 30, RAMPA[3] - 6)[1] + 14)]
+_WALK += [(W - 1, _p(FX1 + 300, FZ - 36)[1]), (W - 1, _VMAX), (0, _VMAX), (0, _p(*_NAU_W[0])[1] + 6)]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 
 
@@ -728,9 +693,9 @@ _U_SOMBRA0 = CAM.projecta((300, 0, 560))
 
 GEOMETRIA = {
     'things': {
-        'rampa': {'rect': _rect_mon((NX - NR, 2 * NR, NZ), (NX + NR, 0, NZ), (RAMPA[0], 0, RAMPA[3]),
-                                    (RAMPA[1], 0, RAMPA[3])),
-                  'walk': _p(NX, RAMPA[3] - 14)},
+        'rampa': {'rect': _rect_mon(NAU.buc(PORTA_L[0] - 6, PORTA_T[1] + 0.06), NAU.buc(PORTA_L[1] + 6, PORTA_T[1] + 0.06),
+                                    *NAU.rampa_cantons()),
+                  'walk': _p(*NAU.terra(_SL, RAMPA_OUT + 22))},
         'porta_sindicat': {'rect': _rect_mon(*_PORTA_S), 'walk': _p(_PORTA_S[0][0] + 26, ZR - 46)},
         'porta_fosa': {'rect': _rect_mon(*_PORTAL), 'walk': _p((_PORTAL[0][0] + _PORTAL[1][0]) / 2, FZ - 44)},
         'font': {'rect': _rect_mon((FONT[0] - 24, 78, FONT[1]), (FONT[0] + 24, 0, FONT[1])),

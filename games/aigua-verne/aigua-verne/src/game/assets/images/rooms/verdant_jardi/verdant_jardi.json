@@ -23,7 +23,7 @@
     },
     "verdant_jardi 1.aseprite": {
       "frame": {
-        "x": 3138,
+        "x": 3264,
         "y": 0,
         "w": 357,
         "h": 36
@@ -44,7 +44,7 @@
     },
     "verdant_jardi 2.aseprite": {
       "frame": {
-        "x": 3495,
+        "x": 3621,
         "y": 0,
         "w": 357,
         "h": 36
@@ -149,7 +149,7 @@
     },
     "verdant_jardi 7.aseprite": {
       "frame": {
-        "x": 2418,
+        "x": 2544,
         "y": 0,
         "w": 363,
         "h": 37
@@ -170,7 +170,7 @@
     },
     "verdant_jardi 8.aseprite": {
       "frame": {
-        "x": 1326,
+        "x": 1452,
         "y": 0,
         "w": 359,
         "h": 38
@@ -191,7 +191,7 @@
     },
     "verdant_jardi 9.aseprite": {
       "frame": {
-        "x": 1685,
+        "x": 1811,
         "y": 0,
         "w": 357,
         "h": 38
@@ -212,7 +212,7 @@
     },
     "verdant_jardi 10.aseprite": {
       "frame": {
-        "x": 2042,
+        "x": 2168,
         "y": 0,
         "w": 355,
         "h": 38
@@ -233,7 +233,7 @@
     },
     "verdant_jardi 11.aseprite": {
       "frame": {
-        "x": 2781,
+        "x": 2907,
         "y": 0,
         "w": 357,
         "h": 37
@@ -611,7 +611,7 @@
     },
     "verdant_jardi 29.aseprite": {
       "frame": {
-        "x": 2397,
+        "x": 2523,
         "y": 0,
         "w": 21,
         "h": 38
@@ -716,6 +716,27 @@
     },
     "verdant_jardi 34.aseprite": {
       "frame": {
+        "x": 1326,
+        "y": 0,
+        "w": 126,
+        "h": 60
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 156,
+        "w": 126,
+        "h": 60
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_jardi 35.aseprite": {
+      "frame": {
         "x": 3220,
         "y": 360,
         "w": 105,
@@ -735,7 +756,7 @@
       },
       "duration": 100
     },
-    "verdant_jardi 35.aseprite": {
+    "verdant_jardi 36.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -763,7 +784,7 @@
     "image": "verdant_jardi.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3852,
+      "w": 3978,
       "h": 396
     },
     "scale": "1",
@@ -825,16 +846,23 @@
         "color": "#000000ff"
       },
       {
-        "name": "davant_parterre",
+        "name": "davant_rampa",
         "from": 34,
         "to": 34,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_parterre",
         "from": 35,
         "to": 35,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 36,
+        "to": 36,
         "direction": "forward",
         "color": "#000000ff"
       }
