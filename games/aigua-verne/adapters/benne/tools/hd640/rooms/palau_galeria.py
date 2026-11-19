@@ -9,7 +9,7 @@ finestral, amb les piscines buides (5 + 7 + 10) enfonsades a la terrassa, vistes
 marbre que hi puja, arran de la paret i amb la barana cromada; al terra de la galeria, la **piscina central** (la 23a),
 fonda, amb les escales cromades a la vora del fons; a la dreta, l'**aquari** dels trenta-tres peixos, exempt i girat,
 damunt el peu del rètol «LOT 12», i una gandula. Dos llums d'aranya pengen del sostre. Primer pla: un pilar en ombra
-tallat per la vora de la dreta i un cordó de vellut entre dos pals daurats, a baix a l'esquerra. Es passa per darrere de la gandula
+tallat per la vora de la dreta (una capa amb parallax: la sala fa 960 px i la càmera la recorre) i un cordó de vellut entre dos pals daurats, a baix a l'esquerra. Es passa per darrere de la gandula
 (a la vora de la piscina central), de les escales cromades de la piscina i de l'aquari (entre l'aquari i la primera
 terrassa hi ha un pas).
 
@@ -50,7 +50,9 @@ COLUMNA = (646, 96)                                # la columna del primer pla (
 GANDULA = (490, 158, -0.38)                        # la gandula, a la vora de la piscina central (x, z, gir)
 PALS = ((176, 6), (326, 22))                      # els pals del cordó de vellut (x, z), en primer pla
 
-CAM = Camera(pos=(520, 230, -250), yaw=-0.30, pitch=0.16, f=420, centre=(320, 76))
+ROOM_W = 960                                       # més ampla que la pantalla: la càmera la recorre
+PARALLAX = 1.25                                    # la columna del primer pla es mou un 25% més de pressa
+CAM = Camera(pos=(520, 230, -250), yaw=-0.30, pitch=0.16, f=420, centre=(ROOM_W // 2, 76))
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)   # (la llum és la del món: la de l'Escena)
 LLUMS = [Llum((x, y - 10, z), 420, 1.5, power=1.3) for x, y, z in ARANYES] + [
@@ -230,7 +232,7 @@ def aigua_tex(frame=0):
     return PL.aigua_mapa(_rects_aigua(), frame, focus=[(x, z) for x, _, z in ARANYES])
 
 
-def escena(cv, plena=False):
+def escena(cv, plena=False, columna=False):
     """Tota la galeria, de lluny a prop. → l'Escena (qui ha pintat què)."""
     T = _tex()
     e = Escena(cv, CAM, LLUMS, ambient=AMBIENT)
@@ -360,14 +362,17 @@ def escena(cv, plena=False):
         'davant': {'ramp': MARB, 'lvl': 5.4}, 'dreta': {'ramp': MARB, 'lvl': 4.6}})
     e.caixa_girada('gandula', *Gg(22, 0, 2)[::2], 14, 18, 3, ga + 0.3, GRANAT, 4.6, y0=23)  # la tovallola plegada
     # primer pla: la columna en ombra (a la dreta, tallada per la vora) i el cordó de vellut entre dos pals daurats
+    # (la columna és una capa a part, amb parallax: el fons de la sala no la porta; vegeu _capa_columna)
     cx_, cz_ = COLUMNA
+
     def estries(base):
         return lambda s, t, P: base + (0.9 if s % 9 < 2 else -0.5 if s % 9 > 7 else 0) - (0.6 if t > YC - 30 else 0)
-    e.caixa('primer_pla', cx_ - 22, cx_ + 22, 0, YC, cz_ - 22, cz_ + 22, MARB, 1.6, cares={
-        'esquerra': {'ramp': MARB, 'lvl': estries(2.4)}, 'davant': {'ramp': MARB, 'lvl': estries(1.2)}})
-    for y0, h in ((0, 16), (YC - 60, 8)):                        # el sòcol i un anell d'or
-        e.caixa('primer_pla', cx_ - 24, cx_ + 24, y0, y0 + h, cz_ - 24, cz_ + 24, ORP, 1.8,
-                cares={'esquerra': {'ramp': ORP, 'lvl': 2.8}, 'davant': {'ramp': ORP, 'lvl': 1.6}})
+    if columna:
+        e.caixa('columna', cx_ - 22, cx_ + 22, 0, YC, cz_ - 22, cz_ + 22, MARB, 1.6, cares={
+            'esquerra': {'ramp': MARB, 'lvl': estries(2.4)}, 'davant': {'ramp': MARB, 'lvl': estries(1.2)}})
+        for y0, h in ((0, 16), (YC - 60, 8)):                    # el sòcol i un anell d'or
+            e.caixa('columna', cx_ - 24, cx_ + 24, y0, y0 + h, cz_ - 24, cz_ + 24, ORP, 1.8,
+                    cares={'esquerra': {'ramp': ORP, 'lvl': 2.8}, 'davant': {'ramp': ORP, 'lvl': 1.6}})
     # la foscor del primer pla: el terra de prop i el racó de la dreta, en ombra
     e.foscor('ombra_prop', (0, 0.7, 90), (XR, 0.7, 90), (XR, 0.7, -60), (0, 0.7, -60),
              lambda s, t: 0.6 * min(1.0, t / 110) ** 1.2)
@@ -386,11 +391,24 @@ def escena(cv, plena=False):
 # ─── Composició ─────────────────────────────────────────────────────────────
 
 @functools.lru_cache(maxsize=None)
-def _base(plena=False):
-    cv = Canvas(light=LIGHT)
-    e = escena(cv, plena)
-    cv.rect(0, BOTTOM + 1, W - 1, cv.h - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
+def _base(plena=False, columna=False):
+    cv = Canvas(ROOM_W, light=LIGHT)
+    e = escena(cv, plena, columna)
+    cv.rect(0, BOTTOM + 1, ROOM_W - 1, cv.h - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
     return cv.img, e
+
+
+def _capa_columna():
+    """La columna del primer pla, retallada de la sala sencera (la capa del davant que fa parallax)."""
+    from PIL import Image
+    full, e = _base(columna=True)
+    out = Image.new('RGBA', full.size, (0, 0, 0, 0))
+    src, dst, ids, amo, w = full.load(), out.load(), e.ids, e.amo, e.cv.w
+    for y in range(BOTTOM + 1):
+        for x in range(full.width):
+            if ids[amo[y * w + x]] == 'columna':
+                dst[x, y] = src[x, y]
+    return out
 
 
 def bg(cv):
@@ -533,6 +551,9 @@ FRONT = [
     # la gandula
     {'id': 'davant_gandula', 'mask': _amo({'gandula'}), 'baseline': round(_v(GANDULA[0], GANDULA[1])), 'zIndex': 20},
     {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+    # la columna, a la dreta: es mou més de pressa que la sala (alineada a mig recorregut)
+    {'id': 'davant_columna', 'mask': _amo({'columna'}), 'image': _capa_columna, 'baseline': 999, 'zIndex': 21,
+     'parallaxDepth': PARALLAX, 'x': round((PARALLAX - 1) * (ROOM_W - W) / 2 / PARALLAX)},
 ]
 
 
@@ -546,14 +567,14 @@ def _p(x, z, y=0.0):
 def _rect_mon(*Ps):
     pts = [CAM.projecta(P) for P in Ps]
     return (max(0, round(min(p[0] for p in pts))), max(0, round(min(p[1] for p in pts))),
-            min(W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
+            min(ROOM_W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
 
 
 # El terra on es camina (al món): la galeria, davant les terrasses, fins a la paret de la porta i el peu de l'escala;
 # a prop, fins on el personatge no passa de ≈1,2. Forats: la piscina central i l'aquari (s'hi pot fer la volta).
 WALK_MON = [(14, 44), (14, ESC[2] - 8), (ESC[1] + 8, ESC[2] - 8), (ESC[1] + 8, ZT[0] - 6), (XR - 10, ZT[0] - 6),
             (XR - 10, 44)]
-_WALK = PL.retalla([CAM.projecta((x, 0, z))[:2] for x, z in WALK_MON])
+_WALK = PL.retalla([CAM.projecta((x, 0, z))[:2] for x, z in WALK_MON], x1=ROOM_W - 3)
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 
 
@@ -597,10 +618,13 @@ GEOMETRIA = {
     'walkable': _WALK,
     'forats': [_CEN_FORAT, _AQ_FORAT, _GAN_FORAT],
     'floorSquash': 0.45,                           # (la càmera, a 2,3 m i picada: el terra es veu aixafat)
-    'characterShadow': {'enabled': True, 'color': '#3a3040', 'alpha': 0.38, 'squash': 0.45, 'core': 0.6,
+    # (el marbre blanc i els reflexos de l'aigua: l'ombra, ben fosca, i un contorn als personatges)
+    'characterOutline': {'color': '#1c1626', 'alpha': 0.75},
+    'characterShadow': {'enabled': True, 'color': '#1e1826', 'alpha': 0.58, 'squash': 0.45, 'core': 0.7,
                         'light': {'x': _p(ARANYES[0][0], ARANYES[0][2])[0], 'y': _p(ARANYES[0][0], ARANYES[0][2])[1],
                                   'stretch': 0.6, 'reach': 140}},
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
-                 'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+                 'points': [(0, _V_FONS - 2), (ROOM_W - 1, _V_FONS - 2), (ROOM_W - 1, _V_PROP + 2),
+                            (0, _V_PROP + 2)]}],
 }

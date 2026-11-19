@@ -39,7 +39,8 @@ from hd.rooms.exterior import fbm, smooth
 from hd640.rooms import postcredits_pla_comu as PL
 from hd640.rooms.ferrum_comu import (
     SOOT, MORTAR, COB, COAL, IRONF, RUSTF, PLANKF, WHITEV, BLUEV, CLOTH, REDP, WATER, SLAGF,
-    smog_sky, canonada, far_skyline, brick_lvl)
+    smog_sky, canonada, far_skyline, brick_lvl, finestres_enceses, llum_finestra, bassa_fanal, con_fanal,
+    fanal_paret, GLOWF)
 from hd640.rooms.ferrum_carrer import _maons
 from hd640.rooms.ferrum_gent import persona_c
 from hd640.rooms.ferrum_carrer_pla_comu import _smoke_loop
@@ -390,7 +391,8 @@ def fanal(e, sid, x, z, alt=300, apagat=True):
     e.caixa(sid, x - 8, x + 8, 0, 20, z - 8, z + 8, IRONF, 1.8)
     e.caixa(sid, x - 40, x, alt - 6, alt - 2, z - 2, z + 2, IRONF, 1.8)
     e.caixa(sid, x - 50, x - 34, alt - 26, alt - 6, z - 8, z + 8, IRONF, 1.4,
-            cares={'davant': {'ramp': [(60, 50, 40), (110, 96, 70), (160, 140, 100)], 'lvl': 1.0 if apagat else 2.6}})
+            cares={'davant': ({'ramp': [(60, 50, 40), (110, 96, 70), (160, 140, 100)], 'lvl': 1.0} if apagat else
+                              {'ramp': [(200, 120, 50), (255, 186, 80), (255, 236, 170)], 'lvl': 2.4})})
 
 
 def primer_pla(e):
@@ -418,6 +420,38 @@ def primer_pla(e):
             P[X, Y] = (int(o[0] * 0.5), int(o[1] * 0.48), int(o[2] * 0.5), 255)
 
 
+# ─── La llum càlida ─────────────────────────────────────────────────────────
+
+def llum_finestres(e, tex):
+    """La claror de les finestres enceses de les cases del fons, a les llambordes molles de davant."""
+    T = tex['cases']
+    for i, (x0, x1, top, seed, door, wins, lit) in enumerate(PL.CASES):
+        dx, z = (DX4, Z4) if x0 >= 500 else (0.0, ZB + (8 if i == 1 else 0))
+        box = (max(FX0, x0), top - 1, x1, PL.BASE)
+        X0 = _fx(box[0]) + dx
+        for fx0, fy0, fx1, fy1 in finestres_enceses(T, box):
+            llum_finestra(e, X0 + (fx0 - box[0]) * KF, X0 + (fx1 - box[0]) * KF, (PL.BASE - fy1) * KF,
+                          (PL.BASE - fy0) * KF, z, dx=-0.2, dz=1.8, k=0.55)
+
+
+FANAL_ALT = 200
+FANAL_CAP = (FANAL[0] - 42, FANAL_ALT - 16, FANAL[1])   # el llum del fanal del mig de la plaça
+# els fanals de paret de les cases del fons (x, alçada, z de la façana): a la del rètol i a la del panell
+FANALS_PARET = ((_fx(372), 100, ZB), (_fx(506) + DX4, 92, Z4))
+
+
+def llum_fanal(e):
+    """El fanal del mig de la plaça, encès: la bassa de llum a les llambordes i el con (abans de la cua: la gent
+    hi passa per davant)."""
+    x, _, z = FANAL_CAP
+    bassa_fanal(e, x, z - 10, r=150, k=0.5)
+    con_fanal(e, FANAL_CAP, r=80, k=0.2, salta=('primer_pla',))
+    for x, y, z in FANALS_PARET:
+        cap = fanal_paret(e, 'fanals', x, y, z, IRONF, GLOWF)
+        bassa_fanal(e, x - 10, z - 80, r=110, k=0.55)
+        con_fanal(e, cap, r=60, k=0.22, salta=('primer_pla',), terra=(x - 10, z - 80))
+
+
 # ─── Composició ─────────────────────────────────────────────────────────────
 
 def escena(cv, tex, amb_cua=True):
@@ -430,6 +464,7 @@ def escena(cv, tex, amb_cua=True):
     carrer(e)
     tolls(e)
     cases(e, tex)
+    llum_finestres(e, tex)
     # la línia de les parets amb el terra: la foscor dels racons, i la vorera trencada
     e.foscor('racons', (XC, 0.5, ZB), (2000, 0.5, ZB), (2000, 0.5, ZB - 40), (XC, 0.5, ZB - 40),
              lambda s, t: 0.45 * max(0.0, 1 - t / 30) * (0.6 + 0.4 * fbm(s / 20, 0.3, 4)))
@@ -441,10 +476,13 @@ def escena(cv, tex, amb_cua=True):
             continue
         e.roca('trastos', (x, 0, ZB - 14 - hr(k, 2) * 10), 8 + hr(k, 3) * 6, SLAGF, 2.6, seed=20 + k)
     font(e, tex)
+    llum_fanal(e)
     if amb_cua:
         cua(e)
-    fanal(e, 'fanal', FANAL[0], FANAL[1], alt=280)
-    ombra(e, FANAL[0], FANAL[1], 8, 280, 0.35)
+    fanal(e, 'fanal', FANAL[0], FANAL[1], alt=FANAL_ALT, apagat=False)
+    ombra(e, FANAL[0], FANAL[1], 8, FANAL_ALT, 0.35)
+    u, v, _ = CAM.projecta(FANAL_CAP)
+    cv.glow(u, v, 16, (255, 220, 160), 0.8)
     banderetes(e)
     primer_pla(e)
     return e
@@ -527,7 +565,7 @@ def _frames_cua():
         cv = Canvas(light=LIGHT, img=_base_sense_cua().copy())
         e = Escena(cv, CAM, LLUMS, ambient=AMBIENT)
         cua(e, f)
-        fanal(e, 'fanal', FANAL[0], FANAL[1], alt=280)
+        fanal(e, 'fanal', FANAL[0], FANAL[1], alt=FANAL_ALT, apagat=False)
         banderetes(e)
         primer_pla(e)
         cv.rect(0, BOTTOM + 1, W - 1, H - 1, [(0, 0, 0)], 0, lit=0)

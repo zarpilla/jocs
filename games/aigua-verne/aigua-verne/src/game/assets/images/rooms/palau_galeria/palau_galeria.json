@@ -4,7 +4,7 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "rotated": false,
@@ -12,39 +12,39 @@
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 1.aseprite": {
       "frame": {
-        "x": 1251,
+        "x": 1092,
         "y": 0,
-        "w": 379,
+        "w": 575,
         "h": 152
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 205,
+        "x": 365,
         "y": 80,
-        "w": 379,
+        "w": 575,
         "h": 152
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 2.aseprite": {
       "frame": {
-        "x": 3677,
+        "x": 1786,
         "y": 0,
         "w": 106,
         "h": 92
@@ -52,20 +52,20 @@
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 422,
+        "x": 582,
         "y": 103,
         "w": 106,
         "h": 92
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 3.aseprite": {
       "frame": {
-        "x": 3783,
+        "x": 1892,
         "y": 0,
         "w": 106,
         "h": 92
@@ -73,20 +73,20 @@
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 422,
+        "x": 582,
         "y": 103,
         "w": 106,
         "h": 92
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 4.aseprite": {
       "frame": {
-        "x": 3889,
+        "x": 1998,
         "y": 0,
         "w": 106,
         "h": 92
@@ -94,18 +94,396 @@
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 422,
+        "x": 582,
         "y": 103,
         "w": 106,
         "h": 92
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 5.aseprite": {
+      "frame": {
+        "x": 2104,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 6.aseprite": {
+      "frame": {
+        "x": 2210,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 7.aseprite": {
+      "frame": {
+        "x": 2316,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 8.aseprite": {
+      "frame": {
+        "x": 2422,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 9.aseprite": {
+      "frame": {
+        "x": 2528,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 10.aseprite": {
+      "frame": {
+        "x": 2634,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 11.aseprite": {
+      "frame": {
+        "x": 2740,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 12.aseprite": {
+      "frame": {
+        "x": 2846,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 13.aseprite": {
+      "frame": {
+        "x": 2952,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 14.aseprite": {
+      "frame": {
+        "x": 3058,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 15.aseprite": {
+      "frame": {
+        "x": 3164,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 16.aseprite": {
+      "frame": {
+        "x": 3270,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 17.aseprite": {
+      "frame": {
+        "x": 3376,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 18.aseprite": {
+      "frame": {
+        "x": 3482,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 19.aseprite": {
+      "frame": {
+        "x": 3588,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 20.aseprite": {
+      "frame": {
+        "x": 3694,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 21.aseprite": {
+      "frame": {
+        "x": 3800,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 22.aseprite": {
+      "frame": {
+        "x": 3906,
+        "y": 0,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 23.aseprite": {
       "frame": {
         "x": 0,
         "y": 360,
@@ -115,18 +493,18 @@
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 422,
+        "x": 582,
         "y": 103,
         "w": 106,
         "h": 92
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
-    "palau_galeria 6.aseprite": {
+    "palau_galeria 24.aseprite": {
       "frame": {
         "x": 106,
         "y": 360,
@@ -136,18 +514,18 @@
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 422,
+        "x": 582,
         "y": 103,
         "w": 106,
         "h": 92
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
-    "palau_galeria 7.aseprite": {
+    "palau_galeria 25.aseprite": {
       "frame": {
         "x": 212,
         "y": 360,
@@ -157,503 +535,125 @@
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 422,
+        "x": 582,
         "y": 103,
         "w": 106,
         "h": 92
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 8.aseprite": {
-      "frame": {
-        "x": 318,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 9.aseprite": {
-      "frame": {
-        "x": 424,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 10.aseprite": {
-      "frame": {
-        "x": 530,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 11.aseprite": {
-      "frame": {
-        "x": 636,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 12.aseprite": {
-      "frame": {
-        "x": 742,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 13.aseprite": {
-      "frame": {
-        "x": 848,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 14.aseprite": {
-      "frame": {
-        "x": 954,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 15.aseprite": {
-      "frame": {
-        "x": 1060,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 16.aseprite": {
-      "frame": {
-        "x": 1166,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 17.aseprite": {
-      "frame": {
-        "x": 1272,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 18.aseprite": {
-      "frame": {
-        "x": 1378,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 19.aseprite": {
-      "frame": {
-        "x": 1484,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 20.aseprite": {
-      "frame": {
-        "x": 1590,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 21.aseprite": {
-      "frame": {
-        "x": 1696,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 22.aseprite": {
-      "frame": {
-        "x": 1802,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 23.aseprite": {
-      "frame": {
-        "x": 1908,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 24.aseprite": {
-      "frame": {
-        "x": 2014,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "palau_galeria 25.aseprite": {
-      "frame": {
-        "x": 2120,
-        "y": 360,
-        "w": 106,
-        "h": 92
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 422,
-        "y": 103,
-        "w": 106,
-        "h": 92
-      },
-      "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 26.aseprite": {
       "frame": {
-        "x": 148,
-        "y": 452,
-        "w": 266,
-        "h": 52
+        "x": 2461,
+        "y": 360,
+        "w": 360,
+        "h": 74
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 300,
+        "x": 460,
         "y": 12,
-        "w": 266,
-        "h": 52
+        "w": 360,
+        "h": 74
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 27.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 452,
-        "w": 148,
-        "h": 56
+        "x": 1647,
+        "y": 360,
+        "w": 300,
+        "h": 77
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 360,
+        "x": 520,
         "y": 9,
-        "w": 148,
-        "h": 56
+        "w": 300,
+        "h": 77
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 28.aseprite": {
       "frame": {
-        "x": 2934,
+        "x": 3326,
         "y": 360,
-        "w": 217,
+        "w": 331,
         "h": 70
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 291,
+        "x": 451,
         "y": 8,
-        "w": 217,
+        "w": 331,
         "h": 70
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 29.aseprite": {
       "frame": {
-        "x": 3151,
+        "x": 3657,
         "y": 360,
-        "w": 270,
+        "w": 358,
         "h": 70
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 291,
+        "x": 451,
         "y": 8,
-        "w": 270,
+        "w": 358,
         "h": 70
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 30.aseprite": {
       "frame": {
-        "x": 414,
+        "x": 636,
         "y": 452,
-        "w": 325,
-        "h": 49
+        "w": 414,
+        "h": 52
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 236,
-        "y": 29,
-        "w": 325,
-        "h": 49
+        "x": 396,
+        "y": 26,
+        "w": 414,
+        "h": 52
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 31.aseprite": {
       "frame": {
-        "x": 739,
+        "x": 1050,
         "y": 452,
         "w": 290,
         "h": 49
@@ -661,272 +661,272 @@
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 230,
+        "x": 390,
         "y": 29,
         "w": 290,
         "h": 49
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 32.aseprite": {
       "frame": {
-        "x": 2310,
+        "x": 2031,
         "y": 360,
-        "w": 251,
+        "w": 430,
         "h": 75
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 227,
+        "x": 387,
         "y": 3,
-        "w": 251,
+        "w": 430,
         "h": 75
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 33.aseprite": {
       "frame": {
-        "x": 2561,
+        "x": 2821,
         "y": 360,
-        "w": 298,
+        "w": 430,
         "h": 74
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 227,
+        "x": 387,
         "y": 3,
-        "w": 298,
+        "w": 430,
         "h": 74
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 34.aseprite": {
       "frame": {
-        "x": 3699,
-        "y": 360,
+        "x": 357,
+        "y": 452,
         "w": 279,
         "h": 61
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 255,
+        "x": 415,
         "y": 4,
         "w": 279,
         "h": 61
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 35.aseprite": {
       "frame": {
-        "x": 3421,
-        "y": 360,
-        "w": 278,
+        "x": 0,
+        "y": 452,
+        "w": 357,
         "h": 63
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 288,
+        "x": 448,
         "y": 3,
-        "w": 278,
+        "w": 357,
         "h": 63
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 36.aseprite": {
       "frame": {
-        "x": 1749,
-        "y": 0,
-        "w": 241,
-        "h": 105
+        "x": 318,
+        "y": 360,
+        "w": 145,
+        "h": 91
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 335,
+        "x": 495,
         "y": 176,
-        "w": 241,
-        "h": 105
+        "w": 145,
+        "h": 91
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 37.aseprite": {
       "frame": {
-        "x": 1990,
-        "y": 0,
-        "w": 241,
-        "h": 105
+        "x": 463,
+        "y": 360,
+        "w": 145,
+        "h": 91
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 335,
+        "x": 495,
         "y": 176,
-        "w": 241,
-        "h": 105
+        "w": 145,
+        "h": 91
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 38.aseprite": {
       "frame": {
-        "x": 2231,
-        "y": 0,
-        "w": 241,
-        "h": 105
+        "x": 608,
+        "y": 360,
+        "w": 145,
+        "h": 91
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 335,
+        "x": 495,
         "y": 176,
-        "w": 241,
-        "h": 105
+        "w": 145,
+        "h": 91
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 39.aseprite": {
       "frame": {
-        "x": 2472,
-        "y": 0,
-        "w": 241,
-        "h": 105
+        "x": 753,
+        "y": 360,
+        "w": 145,
+        "h": 91
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 335,
+        "x": 495,
         "y": 176,
-        "w": 241,
-        "h": 105
+        "w": 145,
+        "h": 91
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 40.aseprite": {
       "frame": {
-        "x": 2713,
-        "y": 0,
-        "w": 241,
-        "h": 105
+        "x": 898,
+        "y": 360,
+        "w": 145,
+        "h": 91
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 335,
+        "x": 495,
         "y": 176,
-        "w": 241,
-        "h": 105
+        "w": 145,
+        "h": 91
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 41.aseprite": {
       "frame": {
-        "x": 2954,
-        "y": 0,
-        "w": 241,
-        "h": 105
+        "x": 1043,
+        "y": 360,
+        "w": 145,
+        "h": 91
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 335,
+        "x": 495,
         "y": 176,
-        "w": 241,
-        "h": 105
+        "w": 145,
+        "h": 91
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 42.aseprite": {
       "frame": {
-        "x": 3195,
-        "y": 0,
-        "w": 241,
-        "h": 105
+        "x": 1188,
+        "y": 360,
+        "w": 145,
+        "h": 91
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 335,
+        "x": 495,
         "y": 176,
-        "w": 241,
-        "h": 105
+        "w": 145,
+        "h": 91
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 43.aseprite": {
       "frame": {
-        "x": 3436,
-        "y": 0,
-        "w": 241,
-        "h": 105
+        "x": 1333,
+        "y": 360,
+        "w": 145,
+        "h": 91
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 335,
+        "x": 495,
         "y": 176,
-        "w": 241,
-        "h": 105
+        "w": 145,
+        "h": 91
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 44.aseprite": {
       "frame": {
-        "x": 2859,
+        "x": 3251,
         "y": 360,
         "w": 75,
         "h": 74
@@ -934,20 +934,20 @@
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 263,
+        "x": 423,
         "y": 168,
         "w": 75,
         "h": 74
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 45.aseprite": {
       "frame": {
-        "x": 1630,
+        "x": 1667,
         "y": 0,
         "w": 119,
         "h": 149
@@ -955,20 +955,20 @@
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 416,
+        "x": 576,
         "y": 85,
         "w": 119,
         "h": 149
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 46.aseprite": {
       "frame": {
-        "x": 2226,
+        "x": 1947,
         "y": 360,
         "w": 84,
         "h": 76
@@ -976,34 +976,55 @@
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 370,
+        "x": 530,
         "y": 178,
         "w": 84,
         "h": 76
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
         "h": 360
       },
       "duration": 100
     },
     "palau_galeria 47.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 0,
-        "w": 611,
-        "h": 335
+        "x": 1478,
+        "y": 360,
+        "w": 169,
+        "h": 83
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 29,
-        "y": 0,
-        "w": 611,
-        "h": 335
+        "x": 189,
+        "y": 209,
+        "w": 169,
+        "h": 83
       },
       "sourceSize": {
-        "w": 640,
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_galeria 48.aseprite": {
+      "frame": {
+        "x": 960,
+        "y": 0,
+        "w": 132,
+        "h": 260
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 730,
+        "y": 0,
+        "w": 132,
+        "h": 260
+      },
+      "sourceSize": {
+        "w": 960,
         "h": 360
       },
       "duration": 100
@@ -1015,8 +1036,8 @@
     "image": "palau_galeria.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3995,
-      "h": 508
+      "w": 4015,
+      "h": 515
     },
     "scale": "1",
     "frameTags": [
@@ -1080,6 +1101,13 @@
         "name": "davant",
         "from": 47,
         "to": 47,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_columna",
+        "from": 48,
+        "to": 48,
         "direction": "forward",
         "color": "#000000ff"
       }

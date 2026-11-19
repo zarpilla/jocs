@@ -424,10 +424,10 @@
   ],
   "characterShadow": {
     "enabled": true,
-    "color": "#5a5a78",
-    "alpha": 0.35,
+    "color": "#2a2438",
+    "alpha": 0.58,
     "squash": 0.45,
-    "core": 0.6,
+    "core": 0.7,
     "light": {
       "x": 479,
       "y": 168,
@@ -435,5 +435,9 @@
       "reach": 140
     }
   },
-  "floorSquash": 0.45
+  "floorSquash": 0.45,
+  "characterOutline": {
+    "color": "#1c1626",
+    "alpha": 0.75
+  }
 }

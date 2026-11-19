@@ -319,6 +319,7 @@ def escena(cv, tex, apagada=None):
                  (255, 190, 110), lambda s, t: 0.16 * max(0.0, 1 - math.hypot((s - 130) / 130, (t - 90) / 100)) ** 1.3)
     # primer pla: la quaderna i dues canonades a la dreta, i dues caixes a baix a l'esquerra (es veuen tallades)
     _primer_pla(e)
+    e.silueta({'primer_pla'}, 0.5)
     return e
 
 
@@ -363,6 +364,13 @@ def _primer_pla(e):
                           'dreta': {'ramp': WOODB, 'lvl': lambda s, t, P: 0.8 - (0.6 if t % 12 < 1.4 else 0)}})
     e.caixa_girada('primer_pla', 18, 32, 36, 28, 20, 0.15, WOODB, 1.8, y0=34,
                    cares={'dalt': tapa, 'davant': {'ramp': WOODB, 'lvl': 1.4}, 'dreta': {'ramp': WOODB, 'lvl': 1.0}})
+    # la canonada gruixuda de l'aigua de la bodega, molt a prop, travessant la cantonada de dalt a l'esquerra: ve de
+    # fora de quadre, fa colze i s'enfila al sostre, amb les brides i dos penjadors (en silueta)
+    e.tub('primer_pla', (-140, 183, -38), (240, 183, -38), 10, STEELN, 1.4, brides=60, llum_dir=(0.3, 1.0))
+    e.roca('primer_pla', (240, 183, -38), 11, STEELN, 1.4, llum_dir=(0.6, -0.5), aplana=1.0, seed=3)
+    e.tub('primer_pla', (240, 183, -38), (240, 320, -38), 10, STEELN, 1.4, brides=40, llum_dir=(0.8, 0.3))
+    for hx in (0, 110):
+        e.caixa('primer_pla', hx - 1.5, hx + 1.5, 192, 320, -39.5, -36.5, STEELN, 1.2)
 
 
 # ─── Composició ────────────────────────────────────────────────────────────

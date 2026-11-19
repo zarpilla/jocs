@@ -435,6 +435,7 @@ def _amb_geometria():
                            'regions': list(geo.get('regions', [])),
                            'forats': list(geo.get('forats', [])),
                            'characterShadow': geo.get('characterShadow'),
+                           'characterOutline': geo.get('characterOutline'),
                            'floorSquash': geo.get('floorSquash'),
                            'bg': lambda c: None, 'props': {}, 'etiquetes': False}
 

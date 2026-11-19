@@ -31,7 +31,8 @@ from hd.rooms.exterior import fbm, smooth
 from hd640.rooms import ferrum_carrer_pla_comu as PL
 from hd640.rooms.ferrum_carrer_pla_comu import _smoke_loop  # noqa: F401  (el fan servir els postcrèdits)
 from hd640.rooms.ferrum_comu import (
-    SOOT, MORTAR, COB, COAL, IRONF, RUSTF, TIN, PLANKF, WATER, GLOWF, smog_sky, canonada, brick_lvl)
+    SOOT, MORTAR, COB, COAL, IRONF, RUSTF, TIN, PLANKF, WATER, GLOWF, smog_sky, canonada, brick_lvl,
+    finestres_enceses, llum_finestra, bassa_fanal, con_fanal, fanal_paret)
 from hd640.rooms.cantimplora_comu import Cantimplora
 from hd640.tres_d import Camera, Escena, Llum
 
@@ -421,7 +422,7 @@ def condensador(e, tex):
 # ─── El primer pla ──────────────────────────────────────────────────────────
 
 def primer_pla(e):
-    # el fanal de ferro colat, molt a prop, a l'esquerra: el pal, el braç i el llum (apagat)
+    # el fanal de ferro colat, molt a prop, a l'esquerra: el pal, el braç i el llum (encès)
     fx, fz = FANAL
     e.caixa('primer_pla', fx - 5, fx + 5, 0, 330, fz - 5, fz + 5, IRONF, 1.4,
             cares={'davant': {'ramp': IRONF, 'lvl': lambda s, t, P: 1.0 + (1.2 if s > 7 else 0) - (0.8 if s < 2 else 0)
@@ -430,7 +431,7 @@ def primer_pla(e):
     e.caixa('primer_pla', fx - 9, fx + 9, 0, 22, fz - 9, fz + 9, IRONF, 1.6)                  # la base
     e.caixa('primer_pla', fx, fx + 60, 300, 305, fz - 2, fz + 2, IRONF, 1.6)                 # el braç
     e.caixa('primer_pla', fx + 52, fx + 68, 280, 300, fz - 8, fz + 8, IRONF, 1.2,
-            cares={'davant': {'ramp': GLOWF, 'lvl': 0.8}})
+            cares={'davant': {'ramp': GLOWF, 'lvl': 4.6}, 'dalt': {'ramp': IRONF, 'lvl': 1.2}})
     # els cables: del fanal a la cantonada del sindicat i a les cases, amb panxa
     for B in ((X0 + 8, SH - 10, ZR - 1), (CX0 + 60, CH - 6, CZ - 1), (FX0 + 100, FH - 30, FZ - 1)):
         A = (fx + 60, 296, fz)
@@ -458,6 +459,39 @@ def primer_pla(e):
         e.caixa_girada('primer_pla', vx + wx * c, vz + wx * s_ - 22, 14, 3, 14, -0.25, IRONF, 1.2)
 
 
+# ─── La llum càlida ─────────────────────────────────────────────────────────
+
+def llum_finestres(e, tex):
+    """La claror de les finestres enceses del sindicat, les cases i la fosa, a les llambordes de davant."""
+    for key, box, x0, z in (('sindicat', SC, X0, ZR), ('cases', CC, CX0, CZ), ('fosa', FC, FX0, FZ)):
+        for fx0, fy0, fx1, fy1 in finestres_enceses(tex[key], box):
+            llum_finestra(e, x0 + (fx0 - box[0]) * KF, x0 + (fx1 - box[0]) * KF, (box[3] - fy1) * KF,
+                          (box[3] - fy0) * KF, z, dx=0.35)
+
+
+# els fanals de paret (x a la façana, l'alçada, z de la façana): el del sindicat, entre la cantonada i la porta; el de
+# les cases; el del portal de la fosa
+FANALS_PARET = ((X0 + 26, 150, ZR), (CX0 + 104, 132, CZ), (FX0 + 36, 150, FZ))
+
+
+def fanals_paret(e):
+    return [fanal_paret(e, 'fanals', x, y, z, IRONF, GLOWF) for x, y, z in FANALS_PARET]
+
+
+def llum_fanals(e, caps, cons=True):
+    """Els fanals encesos: el del primer pla (la bassa de llum, a baix a l'esquerra) i els de paret (la bassa a les
+    llambordes, endavant i a la dreta, i el con en diagonal). `cons`: el con a l'aire (després de tot, menys el
+    primer pla)."""
+    fx, fz = FANAL
+    if not cons:
+        bassa_fanal(e, fx + 60, fz + 20, r=130, k=0.5)
+        for x, y, z in caps:
+            bassa_fanal(e, x + 30, z - 70, r=105, k=0.55)
+        return
+    for x, y, z in caps:
+        con_fanal(e, (x, y, z), r=60, k=0.22, salta=('primer_pla', 'cables'), terra=(x + 30, z - 70))
+
+
 # ─── Composició ─────────────────────────────────────────────────────────────
 
 def escena(cv, tex):
@@ -476,11 +510,15 @@ def escena(cv, tex):
     e.foscor('racons', (X0 - 28, 4.5, ZR), (3000, 4.5, ZR), (3000, 4.5, ZR - 32), (X0 - 28, 4.5, ZR - 32),
              lambda s, t: 0.5 * max(0.0, 1 - t / 18))
     facanes(e, tex)
+    llum_finestres(e, tex)
+    caps = fanals_paret(e)
+    llum_fanals(e, caps, cons=False)
     carrils(e)
     comptadors(e, tex)
     font(e, tex)
     condensador(e, tex)
     piquet(e, tex)
+    llum_fanals(e, caps)
     primer_pla(e)
     return e
 

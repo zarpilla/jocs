@@ -45,7 +45,7 @@ ULL = (242, 136, 30)                               # l'ull de bou: z, y del cent
 TUBS = ((196, 7, BLANC, 4.2), (180, 5, GRIS, 3.8), (169, 3.4, CROM, 3.6))   # y, radi, rampa, nivell
 VALV_X = 204                                       # la vàlvula vermella i el tub que baixa cap a l'ascensor
 
-CAM = Camera(pos=(290, 190, -190), yaw=-0.12, pitch=0.16, f=380, centre=(330, 72))
+CAM = Camera(pos=(150, 190, -170), yaw=0.18, pitch=0.16, f=380, centre=(330, 72))   # (de biaix: el fons fuig)
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 LLUMS = [Llum((150, 208, 170), 280, 1.9, power=1.3),       # els fluorescents
@@ -256,8 +256,8 @@ def escena(cv, tex):
                           'davant': {'ramp': cart, 'lvl': lambda s, t, P: 1.8 + (1.4 if 10 < s < 30 and 8 < t < 18 else 0)}})
     e.caixa_girada('primer_pla', 40, 70, 40, 30, 30, -0.2, cart, 1.4, y0=46,
                    cares={'dalt': {'ramp': cart, 'lvl': cinta(2.6)}})
-    e.tub('primer_pla', (452, -10, 64), (452, 260, 64), 11, GRIS, 1.6, brides=58, llum_dir=(-1.0, 0.2))
-    e.tub('primer_pla', (440, 238, 64), (300, 238, 64), 6, GRIS, 1.4)
+    e.tub('primer_pla', (408, -10, 64), (408, 260, 64), 11, GRIS, 1.6, brides=58, llum_dir=(-1.0, 0.2))
+    e.tub('primer_pla', (396, 238, 64), (260, 238, 64), 6, GRIS, 1.4)
     return e
 
 

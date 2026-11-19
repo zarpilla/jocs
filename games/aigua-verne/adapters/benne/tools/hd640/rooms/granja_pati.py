@@ -27,7 +27,8 @@ from hd.rooms.exterior import fbm, smooth
 from hd640.rooms import granja_estreta_comu as G
 from hd640.rooms.terra2_comu import (
     RH, EARTH, ADOBE, STONE, TILE, GREYW, WHITEP, BLACKT, GRASS, IRONR, HILL, PLANK, RUSTT,
-    dust_sky, canonada, cracks, dust_wind_frames, llum_canonada_frames)
+    dust_sky, canonada, cracks, dust_wind_frames, llum_canonada_frames, BLUE)
+from hd.rooms.comu import text
 from hd640.tres_d import Camera, Escena, Llum
 
 ROOM_W = 1280
@@ -265,6 +266,20 @@ def panell(e, tex):
     x0, y0 = G.PANEL
     e.quad('panell', _up(_add(c, tb, -hw), hh), _up(_add(c, tb, hw), hh), _up(_add(c, tb, hw), -hh),
            _up(_add(c, tb, -hw), -hh), tex=(tex['panell'], (x0 - 1, y0 - 1, x0 + 59, y0 + 25)))
+    # La marca, AIGUA VERNE, s'ha de llegir: deformada amb el panell, les lletres de 3×5 es dentarien. Es torna a
+    # pintar la franja (amb el seu color, projectada) i s'hi escriu el text pla, en píxels de pantalla, sense
+    # deformar (el panell fa l'escorç; les lletres, rectes).
+    def mon(fx, fy):
+        return _up(_add(c, tb, -hw + (fx - (x0 - 1)) * 2 * hw / 60), hh - (fy - (y0 - 1)) * 2 * hh / 26)
+    cv = e.cv
+    franja = [CAM.projecta(mon(fx, fy))[:2] for fx, fy in ((x0 + 8, y0), (x0 + 58, y0), (x0 + 58, y0 + 8),
+                                                            (x0 + 8, y0 + 8))]
+    fu, fv, _ = CAM.projecta(mon(x0 + 56, y0 + 1))
+    col = cv.P[int(fu), int(fv)][:3]
+    for X, Y in e._scan(franja):
+        cv.flat(X, Y, col)
+    u, v, _ = CAM.projecta(mon(x0 + 9, y0 + 4.5))
+    text(cv, 'AIGUA VERNE', round(u), round(v) - 2, None, 0, flat=BLUE[1])
 
 
 def graner(e, tex):

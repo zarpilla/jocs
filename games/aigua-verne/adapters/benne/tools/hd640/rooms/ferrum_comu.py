@@ -623,3 +623,147 @@ def miner_c(cv, *a, **kw):
         o = D[x, y]
         T[x, y] = tuple(int(c * 0.35) for c in o[:3]) + (255,)
     cv.img.alpha_composite(tmp.img)
+
+
+# ─── La llum càlida del capvespre: les finestres enceses i els fanals ─────────
+# Separen els plans: la claror taronja de les finestres cau a les llambordes de davant de cada casa, i els fanals
+# fan una bassa de llum a terra i un con tènue a l'aire.
+CALIDA = (255, 168, 76)
+
+
+def finestres_enceses(img, box, minim=10, junta=3):
+    """Les finestres enceses d'un dibuix pla (els vidres de GLOWF clars) dins `box`: [(x0, y0, x1, y1)] en píxels del
+    pla. Els vidres d'una mateixa finestra (separats pels muntants, a menys de `junta` píxels) fan una sola finestra."""
+    x0, y0, x1, y1 = box
+    P = img.load()
+    on = set()
+    for y in range(max(0, y0), min(img.height, y1)):
+        for x in range(max(0, x0), min(img.width, x1)):
+            r, g, b, a = P[x, y]
+            if a and r >= 150 and g >= 60 and r - b >= 80:
+                on.add((x, y))
+    caixes = []
+    while on:
+        pila = [on.pop()]
+        xs, ys = [], []
+        while pila:
+            x, y = pila.pop()
+            xs.append(x)
+            ys.append(y)
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    n = (x + dx, y + dy)
+                    if n in on:
+                        on.remove(n)
+                        pila.append(n)
+        caixes.append([min(xs), min(ys), max(xs) + 1, max(ys) + 1, len(xs)])
+    fet = True
+    while fet:                                                      # ajunta els vidres de la mateixa finestra
+        fet = False
+        for i in range(len(caixes)):
+            for j in range(i + 1, len(caixes)):
+                a, b = caixes[i], caixes[j]
+                if (a[0] - junta <= b[2] and b[0] - junta <= a[2] and a[1] - junta <= b[3] and b[1] - junta <= a[3]):
+                    caixes[i] = [min(a[0], b[0]), min(a[1], b[1]), max(a[2], b[2]), max(a[3], b[3]), a[4] + b[4]]
+                    del caixes[j]
+                    fet = True
+                    break
+            if fet:
+                break
+    return [tuple(c[:4]) for c in caixes if c[4] >= minim]
+
+
+def llum_finestra(e, xa, xb, ya, yb, z, dx=0.0, dz=0.9, col=CALIDA, k=0.5, halo=True):
+    """La claror d'una finestra encesa (x de `xa` a `xb`, alçada de `ya` a `yb`, a la façana z = `z`, que mira cap a
+    −z) a les llambordes de davant: la finestra projectada pels raigs del llum de dins, que baixen (`dx`, `dz` per
+    unitat d'alçada de la finestra), esvaïda a les vores i més tènue com més amunt és la finestra. `halo`: una mica
+    de resplendor a la mateixa finestra."""
+    n0 = 6 + 0.18 * ya                                              # (el llum de dins és a cada pis: no gaire lluny)
+    n1 = n0 + (yb - ya) * dz
+    P0 = (xa + n0 * dx, 0.4, z - n0)
+    P1 = (xb + n0 * dx, 0.4, z - n0)
+    P2 = (xb + n1 * dx, 0.4, z - n1)
+    P3 = (xa + n1 * dx, 0.4, z - n1)
+    w = xb - xa
+    L3 = math.hypot((n1 - n0) * dx, n1 - n0)
+    kk = k * max(0.35, 1 - ya / 260)
+
+    def fn(s, t):
+        es = min(1.0, s / 5, (w - s) / 5)
+        et = min(1.0, t / 3, (L3 - t) / 9)
+        return kk * max(0.0, es) * max(0.0, et)
+    e.claror(P0, P1, P2, P3, col, fn)
+    if halo:
+        u, v, _ = e.cam.projecta(((xa + xb) / 2, (ya + yb) / 2, z - 2))
+        r = max(4.0, e.cam.escala(((xa + xb) / 2, 0, z)) * max(w, yb - ya) * 0.9)
+        e.cv.glow(u, v, r, (255, 190, 110), 0.22)
+
+
+def _convex(pts):
+    pts = sorted(set(pts))
+    if len(pts) < 3:
+        return pts
+
+    def cross(o, a, b):
+        return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+    lo, up = [], []
+    for p in pts:
+        while len(lo) >= 2 and cross(lo[-2], lo[-1], p) <= 0:
+            lo.pop()
+        lo.append(p)
+    for p in reversed(pts):
+        while len(up) >= 2 and cross(up[-2], up[-1], p) <= 0:
+            up.pop()
+        up.append(p)
+    return lo[:-1] + up[:-1]
+
+
+def bassa_fanal(e, x, z, r=120, col=CALIDA, k=0.5):
+    """La bassa de llum d'un fanal a les llambordes (centrada a x, z del terra, de radi `r`)."""
+    e.claror((x - r, 0.5, z + r), (x + r, 0.5, z + r), (x + r, 0.5, z - r), (x - r, 0.5, z - r), col,
+             lambda s, t: k * max(0.0, 1 - math.hypot(s - r, t - r) / r) ** 1.2)
+
+
+def con_fanal(e, cap, r=90, col=(255, 200, 130), k=0.2, salta=(), terra=None):
+    """El con de llum d'un fanal (de `cap`, el llum, fins a un cercle de radi `r` a terra, sota el llum o a `terra`
+    = (x, z): en diagonal), a la pantalla: una claror tènue i tramada, més forta a prop del llum i al mig; no toca els
+    sids de `salta` (el primer pla)."""
+    cam, cv = e.cam, e.cv
+    au, av, _ = cam.projecta(cap)
+    x, _, z = cap
+    if terra:
+        x, z = terra
+    gu, gv, _ = cam.projecta((x, 0, z))
+    pts = [(au, av)] + [cam.projecta((x + r * math.cos(a), 0, z + r * math.sin(a)))[:2]
+                        for a in [i * math.pi / 12 for i in range(24)]]
+    poly = _convex([(round(p[0], 2), round(p[1], 2)) for p in pts])
+    rx = max(1.0, max(abs(p[0] - gu) for p in pts[1:]))
+    salta = {i for i, sid in enumerate(e.ids) if sid in salta}
+    P = cv.P
+    for X, Y in e._scan(poly):
+        if e.amo[Y * cv.w + X] in salta:
+            continue
+        d = max(0.0, min(1.0, (Y + 0.5 - av) / max(1.0, gv - av)))
+        half = 2 + rx * d
+        q = abs(X + 0.5 - (au + (gu - au) * d)) / half
+        if q >= 1:
+            continue
+        a = k * (1 - 0.55 * d) * (1 - q * q)
+        if a < 0.25 and a * 4 < B4[Y & 3][X & 3]:
+            continue
+        o = P[X, Y]
+        P[X, Y] = mix(o, col, min(1.0, a)) + (o[3],)
+    cv.glow(au, av, 14, (255, 220, 160), 0.9)
+    cv.glow(au, av, 5, (255, 248, 220), 1.0)
+
+
+def fanal_paret(e, sid, x, y, z, ramp_ferro, ramp_llum):
+    """Un fanal de paret (de ferro, amb el braç) a la façana z = `z` (que mira cap a −z), a l'alçada `y`: → el punt
+    del llum (per a la bassa i el con)."""
+    e.caixa(sid, x - 3, x + 3, y + 6, y + 9, z - 22, z, ramp_ferro, 1.8)                # el braç
+    e.caixa(sid, x - 4, x + 4, y - 14, y + 12, z - 1.5, z, ramp_ferro, 1.4)             # la placa
+    e.caixa(sid, x - 7, x + 7, y + 2, y + 6, z - 29, z - 15, ramp_ferro, 2.0)           # el barret
+    e.caixa(sid, x - 5, x + 5, y - 10, y + 2, z - 27, z - 17, ramp_llum, 4.6,          # el vidre, encès
+            cares={'davant': {'ramp': ramp_llum, 'lvl': 4.8}, 'esquerra': {'ramp': ramp_llum, 'lvl': 4.2},
+                   'dreta': {'ramp': ramp_llum, 'lvl': 4.2}})
+    return (x, y - 4, z - 22)

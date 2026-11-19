@@ -367,6 +367,11 @@ def draw_designed(dir_: Path, game_dir: Path, design):
             prop = {'id': fid, 'tag': fid, 'visible': True, 'alpha': 1, 'clickable': False}
             room['props'].append(prop)
         prop['animations'] = {fid: {}}
+        if 'parallaxDepth' in f:                  # un primer pla que es mou més de pressa que la sala
+            prop['parallaxDepth'] = f['parallaxDepth']
+            prop['x'], prop['y'] = f.get('x', 0), 0
+        else:
+            prop.pop('parallaxDepth', None)
         # Els props de damunt la barra, un nivell per sobre: amb el mateix zIndex el motor desempata
         # per id i la capa «davant» podria tapar-los (p. ex. «comandament_barra» < «davant»).
         z = f.get('zIndex', 20)
@@ -465,6 +470,11 @@ def draw_designed(dir_: Path, game_dir: Path, design):
         room['characterShadow'] = cs
     else:
         room.pop('characterShadow', None)
+    # El contorn fosc dels personatges a les sales molt clares (characterOutline del motor).
+    if design.get('characterOutline'):
+        room['characterOutline'] = dict(design['characterOutline'])
+    else:
+        room.pop('characterOutline', None)
     # Quant aixafa la càmera el terra (floorSquash del motor): les direccions de caminar es trien sobre el terra.
     if design.get('floorSquash'):
         room['floorSquash'] = design['floorSquash']

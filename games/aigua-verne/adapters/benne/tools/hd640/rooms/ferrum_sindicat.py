@@ -280,6 +280,18 @@ def primer_pla(e):
         px, pz = _gira(bx, bz, ang, lx, 0)
         e.caixa_girada('primer_pla', px, pz, 4, 4, 46, ang, PL.WOOD, 1.0, y0=44)
     e.caixa_girada('primer_pla', bx, bz, 32, 4, 12, ang, PL.WOOD, 1.4, y0=76)
+    # el marc de la porta per on mirem, molt a prop a l'esquerra (tallat per la vora), amb la fulla oberta cap a
+    # nosaltres i un casc penjat del brancal: tot en silueta
+    jx, jz = 166, -60
+    e.caixa('primer_pla', jx - 14, jx, 0, HW + 80, jz - 8, jz + 8, PL.WOOD, 1.2,
+            cares={'dreta': {'ramp': PL.WOOD, 'lvl': lambda s, t, P: 1.8 + (fbm(s / 2, t / 30, 17) - 0.5) * 0.8
+                             + (0.6 if s > 13 else 0)}})
+    a_ = 2.2                                                        # la fulla, oberta cap a la càmera
+    lx, lz = jx - 14 + math.cos(a_) * 90, jz + math.sin(a_) * -90
+    e.quad('primer_pla', (jx - 14, HW + 40, jz), (lx, HW + 40, lz), (lx, 0, lz), (jx - 14, 0, jz), ramp=PL.WOOD,
+           dues_cares=True, lvl=lambda s, t, P: 1.0 - (0.6 if s % 18 < 1.5 else 0) + (fbm(s / 4, t / 20, 19) - 0.5) * 0.5)
+    e.cable('primer_pla', [(jx + 1, 120, jz - 4), (jx + 6, 118, jz - 4)], IRONF, 2.0, gruix=1.6)
+    e.roca('primer_pla', (jx + 10, 100, jz - 4), 11, HELM, 1.6, llum_dir=(0.6, -0.4), aplana=0.7, seed=5)
 
 
 def escena(cv, tex):
@@ -319,6 +331,7 @@ def escena(cv, tex):
     taula(e)
     bombeta(e, tex)
     primer_pla(e)
+    e.silueta({'primer_pla'}, 0.5)
     return e
 
 

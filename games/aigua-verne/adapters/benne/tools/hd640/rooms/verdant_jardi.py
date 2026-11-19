@@ -36,7 +36,7 @@ from hd640.rooms import verdant_jardi_pla_comu as PL
 from hd640.rooms.verdant_comu import (SKYV, TURF, HILLV, WHITEV, MARBLE, GOLDV, GLASSV, CYANF, SHEDG, ZINC, BLACKT,
                                       OLIVE, SAFETY, RUSTV, MAGENTA, YELLOWF, ORANGEF, VIOLETF, panell_preu, flor,
                                       arbre_rodo, galleda)
-from hd640.rooms.cantimplora_comu import Cantimplora
+from hd640.rooms.cantimplora_comu import Cantimplora, _convex
 from hd640.tres_d import Camera, Escena, Llum
 
 RH = 260                                           # la sala (per sota, la barra de verbs)
@@ -66,7 +66,7 @@ TF = (math.cos(TH), 0.0, math.sin(TH))             # al llarg de la façana, d'e
 NF = (math.sin(TH), 0.0, -math.cos(TH))            # la normal de la façana (cap a la càmera)
 FX0, FX1, FY0, FY1 = PL.RX0 - 8, PL.RX1 + 8, 18, 208   # el retall del dibuix pla (la base, a y = 208)
 FW = (FX1 - FX0) * FK
-R = (300.0, 0.0, 900.0)                            # el cantó de baix a la dreta de la façana
+R = (200.0, 0.0, 960.0)                            # el cantó de baix a la dreta de la façana (separat del cobert)
 LC = _add(R, TF, -FW)                              # el cantó de l'esquerra
 BK = _add((0, 0, 0), NF, -240)                     # cap enrere (la fondària de la casa)
 
@@ -88,8 +88,8 @@ THC = 0.42
 TFC = (math.cos(THC), 0.0, math.sin(THC))
 NFC = (math.sin(THC), 0.0, -math.cos(THC))
 CX0, CX1, CY0, CY1 = PL.SX0 - 9, PL.SX1 + 9, 88, 205
-LCC = (250.0, 0.0, 640.0)
-BKC = _add((0, 0, 0), NFC, -130)
+LCC = (270.0, 0.0, 615.0)                          # (endavant i a la dreta: entre el cobert i la casa, gespa)
+BKC = _add((0, 0, 0), NFC, -90)
 
 
 def _cobert(fx, fy, out=0.0):
@@ -104,8 +104,8 @@ COBERT_PORTA = _cobert((PL.SDOOR[0] + PL.SDOOR[2]) / 2, CY1)
 NAU = Cantimplora(popa=(-440.0, 560.0), rumb=math.pi / 2 - 0.3, porta='estribord')
 PORTA_L, PORTA_T, RAMPA_OUT = NAU.PORTA_L, NAU.PORTA_T, NAU.RAMPA_OUT
 SOL_DIR = (-9000.0, 7000.0, 12000.0)               # cap al sol (el de LLUMS): l'ombra de la nau, endavant i a la dreta
-LLANC = (-120.0, 730.0, 48.0)                      # la plataforma de la llançadora: centre i radi
-PAL = (-64.0, 744.0)
+LLANC = (-150.0, 730.0, 48.0)                      # la plataforma de la llançadora: centre i radi
+PAL = (-96.0, 744.0)
 PANELL = (-214.0, 1000.0)
 PARTERRE = (14.0, 610.0, 60.0)
 SPRINK = ((236.0, 560.0), (-74.0, 520.0))
@@ -292,6 +292,27 @@ def cobert(e, tex):
            tex=(tex['cobert'], (CX0, CY0, CX1, CY1)))
 
 
+def ombra_cobert(e):
+    """L'ombra del cobert a la gespa: la que hi projecta el sol (endavant i a la dreta) i, més fosca, la del contacte
+    arran de les parets (que sembli assentat a terra i no enganxat a la casa)."""
+    L = math.sqrt(sum(c * c for c in SOL_DIR))
+    Ls = tuple(c / L for c in SOL_DIR)
+
+    def aterra(P):
+        t = P[1] / Ls[1]
+        return (P[0] - Ls[0] * t, P[2] - Ls[2] * t)
+    h_ra = (CY1 - 130) * CK
+    A = _cobert(PL.SAPEX[0], PL.SAPEX[1])
+    peu = [LCC, _cobert(CX1, CY1), _add(_cobert(CX1, CY1), BKC), _add(LCC, BKC)]
+    alt = [_up(P, h_ra) for P in peu] + [A, _add(A, BKC)]
+    eix = (LCC, _cobert(CX1, CY1))
+    NAU.cam = e.cam                                # (el polígon fosc de la nau, abans que es dibuixi)
+    NAU._fosc_poligon(e, _convex([aterra(P) for P in peu + alt]), 0.55, None, eix)
+    marge = [_add(_add(P, NFC, d1), TFC, d2) for P, d1, d2 in
+             zip(peu, (8, 8, -8, -8), (-8, 8, 8, -8))]
+    NAU._fosc_poligon(e, _convex([(P[0], P[2]) for P in marge]), 0.45, None, eix)
+
+
 def climatitzador(e, tex):
     x0, y0, x1, y1 = PL.AC
     w, h = (x1 - x0 + 1) * FK, (y1 - y0 + 1) * FK
@@ -427,6 +448,7 @@ def escena(cv, tex):
     climatitzador(e, tex)
     reixa(e)
     boix(e, tex)
+    ombra_cobert(e)
     cobert(e, tex)
     sprites_petits(e, tex)
     llancadora(e, tex)
@@ -607,7 +629,8 @@ _C_LB = _add(_add(LCC, BKC), TFC, -20)             # al llarg de la paret de l'e
 _SL = sum(PORTA_L) / 2
 _NAU_W = [(-140, 1010), (-140, 760), NAU.terra(205, 170), NAU.terra(205, 116), NAU.terra(PORTA_L[1] + 10, 112),
           NAU.terra(PORTA_L[1] + 10, RAMPA_OUT + 14), NAU.terra(PORTA_L[0] - 10, RAMPA_OUT + 14)]
-WALK_MON = [(_NAU_W[-1][0], Z_PROP), (380, Z_PROP), (388, 640), (_C_L[0], _C_L[2]), (_C_LB[0], _C_LB[2]),
+_C_R = _cobert(CX1, CY1, 22)                       # davant el cantó de la dreta del cobert
+WALK_MON = [(_NAU_W[-1][0], Z_PROP), (380, Z_PROP), (_C_R[0], _C_R[2]), (_C_L[0], _C_L[2]), (_C_LB[0], _C_LB[2]),
             (_F_R[0], _F_R[2]), (_F_L[0], _F_L[2]), *_NAU_W]
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)

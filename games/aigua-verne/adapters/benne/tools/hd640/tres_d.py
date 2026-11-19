@@ -500,6 +500,17 @@ class Escena:
             m = 1 - min(0.85, k)
             P[X, Y] = (int(o[0] * m), int(o[1] * m), int(o[2] * m), o[3])
 
+    def silueta(self, sids, k=0.5, col=(8, 6, 10)):
+        """Enfosqueix cap a `col` (factor `k`) tot el que és de `sids`: el primer pla en silueta, a contrallum."""
+        ids = {i for i, sid in enumerate(self.ids) if sid in sids}
+        P, W = self.cv.P, self.cv.w
+        for i, a in enumerate(self.amo):
+            if a in ids:
+                X, Y = i % W, i // W
+                o = P[X, Y]
+                P[X, Y] = (int(o[0] + (col[0] - o[0]) * k), int(o[1] + (col[1] - o[1]) * k),
+                           int(o[2] + (col[2] - o[2]) * k), o[3])
+
     # ── capes ──
     def capa(self, flat, sids=None):
         """Un dibuix pla del mateix sistema que les textures (un decorat, un fotograma: transparent on no hi ha res)

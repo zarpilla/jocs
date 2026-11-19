@@ -23,7 +23,7 @@
     },
     "ferrum_sindicat 1.aseprite": {
       "frame": {
-        "x": 1581,
+        "x": 1620,
         "y": 0,
         "w": 52,
         "h": 41
@@ -44,7 +44,7 @@
     },
     "ferrum_sindicat 2.aseprite": {
       "frame": {
-        "x": 1633,
+        "x": 1672,
         "y": 0,
         "w": 12,
         "h": 9
@@ -65,7 +65,7 @@
     },
     "ferrum_sindicat 3.aseprite": {
       "frame": {
-        "x": 1645,
+        "x": 1684,
         "y": 0,
         "w": 12,
         "h": 9
@@ -86,7 +86,7 @@
     },
     "ferrum_sindicat 4.aseprite": {
       "frame": {
-        "x": 1657,
+        "x": 1696,
         "y": 0,
         "w": 12,
         "h": 9
@@ -107,7 +107,7 @@
     },
     "ferrum_sindicat 5.aseprite": {
       "frame": {
-        "x": 1669,
+        "x": 1708,
         "y": 0,
         "w": 12,
         "h": 9
@@ -128,7 +128,7 @@
     },
     "ferrum_sindicat 6.aseprite": {
       "frame": {
-        "x": 1681,
+        "x": 1720,
         "y": 0,
         "w": 12,
         "h": 9
@@ -149,7 +149,7 @@
     },
     "ferrum_sindicat 7.aseprite": {
       "frame": {
-        "x": 1693,
+        "x": 1732,
         "y": 0,
         "w": 12,
         "h": 9
@@ -170,7 +170,7 @@
     },
     "ferrum_sindicat 8.aseprite": {
       "frame": {
-        "x": 1493,
+        "x": 1532,
         "y": 0,
         "w": 88,
         "h": 73
@@ -191,7 +191,7 @@
     },
     "ferrum_sindicat 9.aseprite": {
       "frame": {
-        "x": 1241,
+        "x": 1280,
         "y": 0,
         "w": 59,
         "h": 159
@@ -212,7 +212,7 @@
     },
     "ferrum_sindicat 10.aseprite": {
       "frame": {
-        "x": 1300,
+        "x": 1339,
         "y": 0,
         "w": 193,
         "h": 109
@@ -235,16 +235,16 @@
       "frame": {
         "x": 640,
         "y": 0,
-        "w": 601,
-        "h": 322
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
-      "trimmed": true,
+      "trimmed": false,
       "spriteSourceSize": {
-        "x": 39,
+        "x": 0,
         "y": 0,
-        "w": 601,
-        "h": 322
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
         "w": 640,
@@ -259,7 +259,7 @@
     "image": "ferrum_sindicat.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1705,
+      "w": 1744,
       "h": 360
     },
     "scale": "1",

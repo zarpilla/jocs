@@ -348,7 +348,33 @@ def escena(cv, tex):
         e.quad('primer_pla', (px - 8, 44.2, pz + 8), (px + 8, 44.2, pz + 8), (px + 8, 44.2, pz - 8), (px - 8, 44.2, pz - 8),
                ramp=TERRACOTA, lvl=0.2, forma=lambda s, t: (s - 8) ** 2 + (t - 8) ** 2 < 49)
     e.cable('primer_pla', [(392, HW, 58), (404, 150, 56), (388, 110, 54), (402, 84, 52)], HOSE, 1.2, gruix=3.0)
+    prestatgeria(e)
+    e.silueta({'primer_pla'}, 0.5)
     return e
+
+
+def prestatgeria(e):
+    """Primer pla, molt a prop, a baix a l'esquerra: una prestatgeria tallada per la vora (el muntant, dos prestatges
+    amb un test i una regadora), en silueta: com si espiéssim el cobert des de darrere."""
+    x1, z0, z1 = 168, -62, -26
+    e.caixa('primer_pla', x1 - 10, x1, 0, HW + 60, z0, z0 + 10, PLANK, 1.2,
+            cares={'dreta': {'ramp': PLANK, 'lvl': lambda s, t, P: 1.8 + (fbm(s / 3, t / 30, 15) - 0.5) * 0.8}})
+    e.caixa('primer_pla', x1 - 10, x1, 0, HW + 60, z1 - 10, z1, PLANK, 1.2,
+            cares={'dreta': {'ramp': PLANK, 'lvl': 1.8}})
+    for y in (58, 124):
+        e.caixa('primer_pla', -20, x1, y, y + 6, z0, z1, PLANK, 1.4,
+                cares={'dalt': {'ramp': PLANK, 'lvl': lambda s, t, P: 2.2 - (1.0 if s % 16 < 1.2 else 0)},
+                       'davant': {'ramp': PLANK, 'lvl': 1.2}})
+    cilindre(e, 'primer_pla', 130, -44, 13, 64, 88, TERRACOTA, lambda a, y, P: 0.8 + math.cos(a + 0.6) * 0.6
+             + (0.8 if y > 85 else 0))
+    for k in range(5):                                             # (una planta seca, que penja)
+        a = -0.9 + k * 0.45
+        e.cable('primer_pla', [(130, 88, -44), (130 + math.cos(a) * 16, 100 + k % 2 * 6, -44 + math.sin(a) * 6),
+                               (130 + math.cos(a) * 26, 92 - k * 2, -44 + math.sin(a) * 8)], WOODG, 1.4, gruix=1.6)
+    e.caixa('primer_pla', 80, 112, 130, 152, -52, -34, ZINC, 1.6,                     # la regadora
+            cares={'dreta': {'ramp': ZINC, 'lvl': 2.4}})
+    e.cable('primer_pla', [(112, 136, -43), (126, 150, -43), (132, 156, -43)], ZINC, 1.8, gruix=2.4)
+
 
 
 def cilindre(e, sid, cx, cz, r, y0, y1, ramp, lvl, n=24):

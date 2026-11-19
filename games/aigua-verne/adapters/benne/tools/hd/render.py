@@ -12,7 +12,9 @@ Cada mòdul de sala defineix:
   FRONT (opcional)   {'mask': fn(x, y) → bool, 'baseline': y, 'zIndex': n, 'props': (ids,)}: un retall
                      del fons que es dibuixa per davant dels personatges que hi ha darrere (p. ex. una
                      barra de bar). Qui té els peus per sota de `baseline` hi passa per davant. Els
-                     `props` (coses posades damunt del que tapa) van a la mateixa capa.
+                     `props` (coses posades damunt del que tapa) van a la mateixa capa. Amb `'image': fn() →
+                     RGBA` la capa és aquesta imatge i no un retall (el fons no la porta), i amb
+                     `'parallaxDepth'` (i `'x'`, el desplaçament) es mou amb la càmera a una altra velocitat.
 
 La geometria (zones clicables, punts on es camina, terra) continua a room_designs.py: el dibuix ha
 de coincidir amb `things` (vegeu pix.R per passar-los a píxels reals).
@@ -95,6 +97,9 @@ def fronts(name, bg):
         return []
     out = []
     for n, f in enumerate(fs if isinstance(fs, (list, tuple)) else [fs]):
+        if 'image' in f:                          # una capa que no és un retall del fons (el fons no la porta)
+            out.append((f['image'](), f, f.get('id', 'davant' if n == 0 else f'davant_{n + 1}')))
+            continue
         img = Image.new('RGBA', bg.size, (0, 0, 0, 0))
         src, dst = bg.load(), img.load()
         s = bg.size[1] // H                       # la màscara és en píxels de sala

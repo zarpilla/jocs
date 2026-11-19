@@ -66,7 +66,7 @@ TUB = (420, 166, 16)                               # el tub de la reserva: x, z,
 ARM = (470, 516, 254, 280)                         # l'armari de la palanca: x0, x1, z0, z1
 ARM_H = 124
 
-CAM = Camera(pos=(290, 190, -190), yaw=-0.12, pitch=0.16, f=380, centre=(330, 72))
+CAM = Camera(pos=(440, 190, -170), yaw=-0.40, pitch=0.16, f=380, centre=(330, 72))   # (de biaix: el fons fuig)
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)  # (la llum és la del món: la de l'Escena)
 LLUMS = [Llum((300, 230, 230), 330, 1.5, power=1.2),        # la claror que baixa per la piscina

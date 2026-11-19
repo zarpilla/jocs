@@ -9,6 +9,7 @@ import hd640  # noqa: F401
 from hd640.rooms import palau_galeria as G
 
 LIGHT = G.LIGHT
+ROOM_W = G.ROOM_W                                  # (la galeria és més ampla que la pantalla)
 
 
 def bg(cv):
