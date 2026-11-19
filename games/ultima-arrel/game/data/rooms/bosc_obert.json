@@ -268,33 +268,6 @@
         }
       ]
     },
-    "gespa": {
-      "name": "sala.bosc_obert.gespa.nom",
-      "interactions": [
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.bosc_obert.gespa.mira"
-            }
-          ]
-        },
-        {
-          "verb": [
-            "push",
-            "pull",
-            "use"
-          ],
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.bosc_obert.gespa.empeny"
-            }
-          ]
-        }
-      ]
-    },
     "forats": {
       "name": "sala.bosc_obert.forats.nom",
       "interactions": [

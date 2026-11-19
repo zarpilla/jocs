@@ -25,16 +25,16 @@
       "frame": {
         "x": 640,
         "y": 0,
-        "w": 228,
-        "h": 167
+        "w": 231,
+        "h": 169
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 345,
         "y": 70,
-        "w": 228,
-        "h": 167
+        "w": 231,
+        "h": 169
       },
       "sourceSize": {
         "w": 640,
@@ -212,7 +212,7 @@
     },
     "toll_gripaus 10.aseprite": {
       "frame": {
-        "x": 2676,
+        "x": 2679,
         "y": 0,
         "w": 106,
         "h": 32
@@ -233,7 +233,7 @@
     },
     "toll_gripaus 11.aseprite": {
       "frame": {
-        "x": 1976,
+        "x": 1979,
         "y": 0,
         "w": 99,
         "h": 33
@@ -296,7 +296,7 @@
     },
     "toll_gripaus 14.aseprite": {
       "frame": {
-        "x": 3972,
+        "x": 3975,
         "y": 0,
         "w": 78,
         "h": 29
@@ -548,7 +548,7 @@
     },
     "toll_gripaus 26.aseprite": {
       "frame": {
-        "x": 3850,
+        "x": 3853,
         "y": 0,
         "w": 122,
         "h": 30
@@ -590,7 +590,7 @@
     },
     "toll_gripaus 28.aseprite": {
       "frame": {
-        "x": 3016,
+        "x": 3019,
         "y": 0,
         "w": 132,
         "h": 31
@@ -611,7 +611,7 @@
     },
     "toll_gripaus 29.aseprite": {
       "frame": {
-        "x": 2075,
+        "x": 2078,
         "y": 0,
         "w": 133,
         "h": 33
@@ -737,7 +737,7 @@
     },
     "toll_gripaus 35.aseprite": {
       "frame": {
-        "x": 3148,
+        "x": 3151,
         "y": 0,
         "w": 234,
         "h": 31
@@ -758,7 +758,7 @@
     },
     "toll_gripaus 36.aseprite": {
       "frame": {
-        "x": 2208,
+        "x": 2211,
         "y": 0,
         "w": 234,
         "h": 33
@@ -779,7 +779,7 @@
     },
     "toll_gripaus 37.aseprite": {
       "frame": {
-        "x": 3382,
+        "x": 3385,
         "y": 0,
         "w": 234,
         "h": 31
@@ -800,7 +800,7 @@
     },
     "toll_gripaus 38.aseprite": {
       "frame": {
-        "x": 1508,
+        "x": 1511,
         "y": 0,
         "w": 234,
         "h": 34
@@ -821,7 +821,7 @@
     },
     "toll_gripaus 39.aseprite": {
       "frame": {
-        "x": 1742,
+        "x": 1745,
         "y": 0,
         "w": 234,
         "h": 34
@@ -842,7 +842,7 @@
     },
     "toll_gripaus 40.aseprite": {
       "frame": {
-        "x": 3616,
+        "x": 3619,
         "y": 0,
         "w": 234,
         "h": 31
@@ -863,7 +863,7 @@
     },
     "toll_gripaus 41.aseprite": {
       "frame": {
-        "x": 2782,
+        "x": 2785,
         "y": 0,
         "w": 234,
         "h": 32
@@ -884,7 +884,7 @@
     },
     "toll_gripaus 42.aseprite": {
       "frame": {
-        "x": 2442,
+        "x": 2445,
         "y": 0,
         "w": 234,
         "h": 33
@@ -905,18 +905,18 @@
     },
     "toll_gripaus 43.aseprite": {
       "frame": {
-        "x": 868,
+        "x": 871,
         "y": 0,
         "w": 640,
-        "h": 48
+        "h": 97
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 212,
+        "y": 163,
         "w": 640,
-        "h": 48
+        "h": 97
       },
       "sourceSize": {
         "w": 640,
@@ -931,7 +931,7 @@
     "image": "toll_gripaus.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4050,
+      "w": 4053,
       "h": 388
     },
     "scale": "1",

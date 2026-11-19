@@ -23,7 +23,7 @@
     },
     "zona_zero 1.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1280,
         "y": 0,
         "w": 187,
         "h": 156
@@ -212,18 +212,18 @@
     },
     "zona_zero 10.aseprite": {
       "frame": {
-        "x": 827,
+        "x": 1467,
         "y": 0,
         "w": 213,
-        "h": 85
+        "h": 91
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 2,
-        "y": 142,
+        "x": 3,
+        "y": 137,
         "w": 213,
-        "h": 85
+        "h": 91
       },
       "sourceSize": {
         "w": 640,
@@ -233,18 +233,18 @@
     },
     "zona_zero 11.aseprite": {
       "frame": {
-        "x": 1040,
+        "x": 640,
         "y": 0,
         "w": 640,
-        "h": 59
+        "h": 192
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 201,
+        "y": 68,
         "w": 640,
-        "h": 59
+        "h": 192
       },
       "sourceSize": {
         "w": 640,

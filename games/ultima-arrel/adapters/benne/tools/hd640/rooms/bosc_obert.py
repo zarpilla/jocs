@@ -2,15 +2,17 @@
 L'Última Arrel — el bosc obert (Escena 7, la Vet; la Iri hi és), una setmana després, de dia. Art definitiu, a 1×
 (640×360; l'escena fins a y = 260). És la vora del bosc de l'escena 1 sense la tanca (vora_comu.py, mode 'dia').
 
-  - El bosc és viu: el sol entra des de dalt a l'esquerra entre la capçada (raigs), la xarxa és encesa (els
-    filaments i els `bolets` brillen de turquesa, i n'han sortit de nous) i on hi havia l'obra hi ha herba nova, les
-    soques amb brots i tres plançons amb el tutor.
+  - El bosc és viu, i no ha de semblar la vora de l'escena 1 amb un altre llum: el sol del matí entra baix i daurat
+    per la dreta, per la clariana on hi havia l'obra (raigs llargs i tot el quadre cap a l'or), la xarxa és encesa
+    (els filaments i els `bolets` brillen de turquesa, i n'han sortit de nous), el prat ha florit (margarides, safrà
+    de tardor, botons d'or) i on hi havia l'obra hi ha herba nova, les soques amb brots i tres plançons amb el tutor.
+    De l'obra no en queda res més que els `forats`.
   - La `porta_oberta` del roure, amb llum turquesa (i el fanalet, ja turquesa); la `taula` feta d'una soca, amb les
-    tasses de te de menta, la tetera i el pot de melmelada (capa del davant: l'Espora hi és darrere); la `gespa`
-    artificial enrotllada i lligada, per endur-se-la; els `forats` on hi havia els pals de la tanca; el bassal del
-    Registrador, al davant a la dreta.
+    tasses de te de menta, la tetera i el pot de melmelada (capa del davant: l'Espora hi és darrere); els `forats`
+    on hi havia els pals de la tanca; el bassal del Registrador, al davant a la dreta.
   - ANIMS: `espores` (punts turquesa que pugen a poc a poc) i `fulles` (fulles de tardor que cauen).
-  - FRONT: la taula (amb la seva línia base) i el primer pla de falgueres, que tapa sempre.
+  - FRONT: la taula (amb la seva línia base) i el primer pla, que tapa sempre: les falgueres i, a dalt a la dreta,
+    una branca de roure a contrallum que emmarca el quadre.
 """
 import functools
 
@@ -59,7 +61,7 @@ FRONT = [
 ]
 
 # El terra on es camina (al món): el de l'escena 1, però ara arriba fins on hi havia la tanca, i més enllà, a la
-# clariana; sense els rotllos de gespa (s'hi passa per davant) ni la taula (un forat: s'hi fa la volta).
+# clariana; sense la taula (un forat: s'hi fa la volta).
 WALK = [(0, 238), (104, 240), (140, 251), (300, 251), (340, 248), (364, 251), (500, 251), (504, 232), (560, 230),
         (620, 244), (630, 256), (600, 264), (560, 272), (540, 281), (0, 281)]
 
@@ -77,7 +79,6 @@ GEOMETRIA = {
         'taula': {'rect': _r(316, 230, 386, 270), 'walk': _p(396, 272)},
         'porta_oberta': {'rect': _r(190, 182, 237, 241), 'walk': _p(226, 255)},
         'bolets': {'rect': _r(118, 198, 176, 226), 'walk': _p(150, 256)},
-        'gespa': {'rect': _r(358, 214, 498, 249), 'walk': _p(430, 256)},
         'forats': {'rect': _r(484, 214, 632, 266), 'walk': _p(560, 262)},
     },
     'spawns': {
@@ -90,9 +91,9 @@ GEOMETRIA = {
     },
     'walkable': [_p(x, y) for x, y in WALK],
     'forats': [_el(_TX, _TBASE, _TRX + 6, 7)],
-    # el sol és a dalt a l'esquerra: les ombres, curtes, cap a la dreta i una mica endavant
-    'characterShadow': {'enabled': True, 'color': '#1e1a0c', 'alpha': 0.38, 'squash': 0.28, 'core': 0.6,
-                        'light': {'x': 0.8, 'y': 0.3, 'direction': True, 'stretch': 0.45}},
+    # el sol del matí és baix a la dreta: les ombres, llargues, cap a l'esquerra
+    'characterShadow': {'enabled': True, 'color': '#2a1a08', 'alpha': 0.4, 'squash': 0.28, 'core': 0.6,
+                        'light': {'x': -1, 'y': 0.12, 'direction': True, 'stretch': 0.9}},
     'regions': [
         {'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
          'scaleTop': round(_alt(_Y0) / IRI_ALT, 3), 'scaleBottom': round(_alt(_Y1) / IRI_ALT, 3),

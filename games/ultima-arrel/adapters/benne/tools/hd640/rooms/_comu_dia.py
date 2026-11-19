@@ -358,76 +358,204 @@ def tronc(cv, cx, y0, y1, w0, w1, seed, ramp=BARK, base=3.0, lit=0.6, molsa=0.62
 
 # ─── Gent del poble, de lluny (figures de fons, sense animar) ───────────────
 
-def persona(cv, x, y, alt, seed, cara=1, polsera=True, gorra=False):
-    """Una figura de fons de `alt` px amb els peus a (x, y), de cara (`cara` 1) o d'esquena (-1): el cap, els cabells,
-    l'abric, els pantalons i les sabates, amb la llum de l'esquerra; i (`polsera`) una polsera de punts verd fluor."""
+def persona(cv, x, y, alt, seed, cara=1, polsera=True, gorra=False, sol=(-0.8, -0.35), ombra_llarga=(0.7, 0.1)):
+    """Una figura de fons de `alt` px amb els peus a (x, y), de cara (`cara` 1) o d'esquena (-1), amb volum: la llum
+    rasant de `sol` (de l'esquerra: la vora encesa, l'ombra pròpia a la dreta), plecs, braços i cames com a tubs,
+    sabates, un contorn fosc al cantó de l'ombra i l'ombra llarga a terra (`ombra_llarga`: cap on va, per alçada).
+    D'esquena, el cap es gira cap a la dreta (cap a l'escenari): se'n veu l'orella i un tros de galta. Cada figura
+    (segons `seed`) té la seva complexió, roba i complements: faldilla, motxilla, bufanda, gorro, boina, caputxa, o el
+    mòbil enlaire (gravant: d'esquena, se'n veu la pantalla encesa). `gorra`: la gorra vermella. `polsera`: la
+    polsera de punts verd fluor."""
     rnd = random.Random(seed)
     roba = CLOTH[rnd.choice(('vermell', 'blau', 'verd', 'ocre', 'gris', 'lila', 'groc'))]
     cames = CLOTH[rnd.choice(('blau', 'gris', 'ocre', 'verd'))]
     pell = rnd.choice(SKINS)
     cabell = rnd.choice(HAIRS)
     s = alt / 70.0
-    esp = (8.2 + rnd.random() * 1.6) * s                     # mitja amplada d'espatlles
-    cap_r = 5.0 * s
-    cy_cap = y - alt + cap_r + 0.5
-    coll = cy_cap + cap_r + 0.5
+    build = 0.85 + rnd.random() * 0.4
+    esp = 8.4 * s * build                                    # mitja amplada d'espatlles
+    cap_r = 5.6 * s
+    hy = y - alt + cap_r * 1.1
+    coll = hy + cap_r * 1.05
     cintura = y - alt * 0.47
-    abric = cintura + alt * (0.06 + rnd.random() * 0.12)     # on acaba l'abric
-    # les cames (amb un forat entre totes dues) i les sabates
-    for yy in range(int(cintura), int(y) + 1):
-        for k in (-1, 1):
-            cx = x + k * esp * 0.36
-            w = max(1.0, esp * 0.3)
-            for xx in range(int(cx - w), int(cx + w) + 1):
-                u = (xx - cx) / w
-                if yy >= y - 1.5 * s:
-                    cv.put(xx + k * 0.5, yy, IRON_SHOE, 1.6 - u * 0.4, lit=0.4)
-                else:
-                    cv.put(xx, yy, cames, 2.4 - u * 0.8 - (0.6 if k > 0 else 0), lit=0.5)
-    # el tronc (l'abric): les espatlles arrodonides, i s'eixampla una mica cap avall
+    faldilla = rnd.random() < 0.22
+    abric = cintura + alt * (0.04 + rnd.random() * 0.16) + (alt * 0.12 if faldilla else 0)
+    extra = rnd.choice(('res', 'res', 'motxilla', 'bufanda', 'gorro', 'boina', 'caputxa', 'mobil'))
+    tmp = Canvas(cv.w, cv.h, transparent=True)
+    # a tons plans, com els fulls dels personatges (sense el tramat de la llum): cada nivell, a la seva banda
+    tmp.put = lambda xx, yy, ramp, lvl, lit=0: Canvas.put(tmp, xx, yy, ramp, math.floor(lvl + 0.6) + 0.5, 0)
+    lx, ly = sol
+
+    def ll(nx, ny=0.0):
+        """La llum d'una superfície amb normal (nx, ny) de pantalla (el volum: 0 a l'ombra … 1 de cara al sol)."""
+        nz = math.sqrt(max(0.0, 1 - nx * nx - ny * ny))
+        return max(0.0, nx * lx + ny * ly + nz * 0.35)
+
+    def tub(x0, y0, x1, y1, r0, r1, ramp, base, fosc=0.0, sep=0):
+        """Un tub (un braç, una cama) de (x0, y0) a (x1, y1), amb el volum de la llum; `sep` (±1): el cantó que
+        toca el cos, fosc (separa el braç del tronc)."""
+        n = int(max(abs(x1 - x0), abs(y1 - y0)) * 2) + 2
+        for i in range(n + 1):
+            t = i / n
+            cx, cy = x0 + (x1 - x0) * t, y0 + (y1 - y0) * t
+            r = max(0.7, r0 + (r1 - r0) * t)
+            for xx in range(int(cx - r - 1), int(cx + r + 2)):
+                u = (xx + 0.5 - cx) / r
+                if abs(u) <= 1:
+                    lvl = base + 2.6 * ll(u) - fosc + (0.7 if u < -0.75 else 0)
+                    if sep and u * sep > 0.6:
+                        lvl = 0
+                    tmp.put(xx, cy, ramp, lvl, lit=0.3)
+
+    # ─ les cames (o la faldilla, fins més avall) i les sabates, de tres quarts cap a la dreta
+    for k in (-1, 1):
+        cx = x + k * esp * 0.34
+        tub(cx, cintura, cx + k * 0.3 * s, y - 2 * s, esp * 0.3, esp * 0.22, cames, 0.6, fosc=0.5 if k > 0 else 0)
+        for xx in range(int(cx - 2.4 * s), int(cx + 3.4 * s) + 1):
+            for yy in range(int(y - 2.2 * s), int(y) + 1):
+                nx, ny = (xx - cx - 0.5 * s) / (2.9 * s), (yy - y + 1 * s) / (1.4 * s)
+                if nx * nx + ny * ny <= 1.15:
+                    tmp.put(xx, yy, IRON_SHOE, 1.0 + 2.2 * ll(nx * 0.8, ny * 0.6), lit=0.3)
+    # ─ el braç del costat de l'ombra (darrere el cos)
+    mobil = extra == 'mobil'
+    sx_d = x + esp * 0.92
+    if mobil:                                                 # el braç dret enlaire, amb el mòbil
+        hx, hyy = x + esp * 0.7, hy - cap_r * 1.6
+        tub(sx_d, coll + 3 * s, hx, hyy + 2 * s, 2.0 * s, 1.5 * s, roba, 0.4, fosc=0.6)
+    else:
+        tub(sx_d, coll + 3 * s, sx_d + 0.6 * s, cintura + 2 * s, 2.1 * s, 1.7 * s, roba, 0.4, fosc=0.7)
+    # ─ el tronc (l'abric o la jaqueta): espatlles arrodonides, una mica de cintura, i s'eixampla cap avall
     for yy in range(int(coll), int(abric) + 1):
         t = (yy - coll) / max(1.0, abric - coll)
-        e = min(1.0, (yy - coll + 0.5) / (4.0 * s))           # les espatlles, arrodonides (un quart de cercle)
+        e = min(1.0, (yy - coll + 0.5) / (4.0 * s))
         sh = math.sqrt(max(0.0, 1 - (1 - e) ** 2))
-        cint = 1.0 - 0.12 * math.sin(math.pi * min(1.0, t * 1.4))   # una mica de cintura
-        vora = 1.0 - 0.25 * smooth(0.85, 1.0, t)                    # la vora de baix, arrodonida
-        w = esp * (0.45 + 0.55 * sh) * cint * vora * (1.0 + 0.12 * t)
+        cint = 1.0 - 0.1 * math.sin(math.pi * min(1.0, t * 1.4)) * (1 if not faldilla else 1.4)
+        vora = 1.0 - 0.2 * smooth(0.88, 1.0, t)
+        w = esp * (0.45 + 0.55 * sh) * cint * vora * (1.0 + (0.1 if not faldilla else 0.3) * t)
         for xx in range(int(round(x - w)), int(round(x + w)) + 1):
-            u = (xx - x) / max(w, 1)
-            lvl = 3.0 - u * 1.3 - t * 0.3 + math.sqrt(max(0.0, 1 - u * u)) * 0.6
-            if u > 0.8:
-                lvl -= 0.8                                        # el cantó de l'ombra
-            cv.put(xx, yy, roba, lvl, lit=0.5)
-    # els braços, separats del cos per una ratlla fosca
-    for k in (-1, 1):
-        for yy in range(int(coll + 2.5 * s), int(cintura + 3 * s)):
-            t = (yy - coll) / max(1.0, cintura - coll)
-            bx = x + k * (esp * (0.95 + 0.06 * t))                # el braç, una mica separat cap avall
-            cv.put(bx, yy, roba, 2.4 - k * 0.7, lit=0.5)
-            cv.put(bx + k, yy, roba, 1.8 - k * 0.7, lit=0.5)
-            cv.put(bx - k, yy, roba, 1.0, lit=0.4)
-        bx = x + k * esp * 1.01
-        mx, my = bx, cintura + 3 * s
-        cv.put(mx, my, pell, 2.8 - k * 0.4, lit=0.5)
-        cv.put(mx, my + 1, pell, 2.2, lit=0.5)
+            u = (xx + 0.5 - x) / max(w, 1)
+            if abs(u) > 1.05:
+                continue
+            ny = -0.5 * (1 - sh) if e < 1 else 0.0                # les espatlles miren amunt
+            lvl = 0.5 + 3.0 * ll(max(-1.0, min(1.0, u)), ny) + (0.6 if u < -0.82 else 0)
+            # els plecs: dues ratlles fosques que baixen, i a l'abric obert, la tapeta
+            for fu in (-0.35, 0.3):
+                if abs(u - fu - math.sin(t * 3 + seed) * 0.05) < 0.07 and t > 0.45:
+                    lvl -= 0.7
+            if cara > 0 and abs(u - 0.05) < 0.06 and not faldilla:
+                lvl -= 0.9
+            if yy >= abric - 0.5:
+                lvl -= 0.8                                       # la vora de baix
+            tmp.put(xx, yy, roba, lvl, lit=0.4)
+    # ─ la motxilla (d'esquena: damunt; de cara: les tires)
+    if extra == 'motxilla':
+        mc = CLOTH[rnd.choice(('vermell', 'verd', 'gris', 'groc'))]
+        if cara < 0:
+            for yy in range(int(coll + 3 * s), int(cintura + 1 * s)):
+                for xx in range(int(x - esp * 0.6), int(x + esp * 0.6) + 1):
+                    u = (xx + 0.5 - x) / (esp * 0.6)
+                    v = (yy - coll - 3 * s) / max(1.0, cintura - coll - 2 * s)
+                    if u * u + (2 * v - 1) ** 6 < 1:
+                        tmp.put(xx, yy, mc, 0.8 + 2.8 * ll(u, 2 * v - 1) - (0.8 if abs(v - 0.55) < 0.05 else 0), lit=0.3)
+        else:
+            for k in (-1, 1):
+                for yy in range(int(coll + 1), int(coll + 9 * s)):
+                    tmp.put(x + k * esp * 0.5, yy, mc, 1.2, lit=0.3)
+    # ─ el braç del costat del sol (davant)
+    sx_e = x - esp * 0.92
+    tub(sx_e, coll + 3 * s, sx_e - 0.5 * s, cintura + 2 * s, 2.2 * s, 1.8 * s, roba, 0.8, sep=1)
+    for k, (hx_, hy_) in enumerate(((sx_e - 0.5 * s, cintura + 3.2 * s),
+                                    (None, None) if mobil else (sx_d + 0.6 * s, cintura + 3.2 * s))):
+        if hx_ is None:
+            continue
+        tmp.disc(hx_, hy_, 1.4 * s, 1.5 * s, pell, lambda nx, ny, k=k: 1.4 + 2.2 * ll(nx, ny) - k * 0.6, lit=0.3)
         if polsera and k == 1:
-            cv.flat(mx, my - 1, (150, 255, 110))
-            cv.flat(mx - 1, my - 1, (90, 220, 70))
-    # el cap
-    cv.disc(x, cy_cap, cap_r, cap_r * 1.12, pell, lambda nx, ny: 3.2 - nx * 0.9 - ny * 0.4, lit=0.5)
-    if cara < 0:                                                  # d'esquena: tot cabell (i potser una cua)
-        cv.disc(x, cy_cap - 0.3, cap_r + 0.5, cap_r * 1.12, cabell, lambda nx, ny: 1.8 - nx * 0.7 - ny * 0.5, lit=0.5)
-        if rnd.random() < 0.4:
-            cv.rect(x - 1, cy_cap + cap_r * 0.6, x, cy_cap + cap_r * 1.8, cabell, 1.2, lit=0.5)
+            tmp.flat(hx_, hy_ - 1.6 * s, (150, 255, 110))
+            tmp.flat(hx_ - 1, hy_ - 1.6 * s, (90, 220, 70))
+    if mobil:                                                 # el mòbil, i (d'esquena) la pantalla encesa
+        px, py = x + esp * 0.7, hy - cap_r * 1.6
+        tmp.rect(px - 2 * s, py - 4 * s, px + 2 * s, py + 1 * s, IRON_SHOE, 1.0, lit=0)
+        if cara < 0:
+            tmp.rect(px - 1.4 * s, py - 3.4 * s, px + 1.4 * s, py + 0.4 * s, [(170, 220, 240), (220, 245, 255)], 0.6,
+                     lit=0)
+        tmp.disc(px, py + 1.6 * s, 1.3 * s, 1.3 * s, pell, 2.6, lit=0.3)
+    # ─ el coll: una ombra sota el cap, i la bufanda
+    tmp.rect(x - cap_r * 0.45, coll - 1.4 * s, x + cap_r * 0.45, coll + 0.4 * s, pell, 0.6, lit=0.2)
+    if extra == 'bufanda':
+        bc = CLOTH[rnd.choice(('vermell', 'groc', 'lila', 'verd'))]
+        for yy in range(int(coll - 1.5 * s), int(coll + 2.5 * s)):
+            for xx in range(int(x - cap_r * 1.1), int(x + cap_r * 1.1) + 1):
+                u = (xx + 0.5 - x) / (cap_r * 1.1)
+                tmp.put(xx, yy, bc, 0.8 + 2.8 * ll(u) - (0.6 if (yy + xx) % 3 == 0 else 0), lit=0.3)
+        for yy in range(int(coll + 2 * s), int(coll + 9 * s)):    # la punta que penja
+            tmp.put(x - cap_r * 0.6 * cara, yy, bc, 2.4, lit=0.3)
+            tmp.put(x - cap_r * 0.6 * cara + 1, yy, bc, 1.6, lit=0.3)
+    # ─ el cap: una esfera, amb el cabell (d'esquena, girat cap a la dreta: l'orella i un tros de galta)
+    tmp.disc(x, hy, cap_r, cap_r * 1.1, pell, lambda nx, ny: 0.8 + 3.0 * ll(nx, ny), lit=0.3)
+    if cara < 0:
+        def cab(nx, ny):
+            if nx > 0.55 and ny > -0.25:                          # la galta i l'orella, cap a l'escenari
+                return -9
+            return 0.3 + 2.4 * ll(nx, ny) + (0.6 if fbm(nx * 3, ny * 5, seed) > 0.6 else 0)
+        tmp.disc(x - 0.3 * s, hy - 0.3 * s, cap_r + 0.5, cap_r * 1.12, cabell, cab, lit=0.3)
+        tmp.disc(x + cap_r * 0.62, hy + 0.4 * s, 0.9 * s, 1.4 * s, pell, lambda nx, ny: 1.6 - nx * 0.4, lit=0.3)
+        if rnd.random() < 0.35 and extra not in ('caputxa', 'gorro'):          # una cua
+            tub(x - 0.4 * s, hy + cap_r * 0.6, x - 0.6 * s, hy + cap_r * 1.9, 1.1 * s, 0.7 * s, cabell, 0.4)
     else:
-        cv.disc(x, cy_cap - cap_r * 0.4, cap_r + 0.5, cap_r * 0.8, cabell,
-                lambda nx, ny: (1.8 - nx * 0.7) if ny < 0.2 else -9, lit=0.5)
-        cv.flat(x - cap_r * 0.4, cy_cap + 0.6, (30, 20, 20))
-        cv.flat(x + cap_r * 0.4, cy_cap + 0.6, (30, 20, 20))
+        tmp.disc(x, hy - cap_r * 0.4, cap_r + 0.5, cap_r * 0.8, cabell,
+                 lambda nx, ny: (0.4 + 2.2 * ll(nx, ny)) if ny < 0.2 else -9, lit=0.3)
+        for ex in (0.05, 0.55):                                    # els ulls, mirant cap a l'escenari
+            tmp.flat(x + cap_r * ex, hy + 0.6 * s, (30, 20, 20))
+    # ─ els barrets
     if gorra:
         g = CLOTH['vermell']
-        cv.disc(x, cy_cap - cap_r * 0.5, cap_r + 0.6, cap_r * 0.6, g, lambda nx, ny: 2.8 - nx * 0.6 if ny < 0.3 else -9,
-                lit=0.5)
+        tmp.disc(x, hy - cap_r * 0.5, cap_r + 0.6, cap_r * 0.6, g, lambda nx, ny: 1.0 + 2.6 * ll(nx, ny) if ny < 0.3 else -9,
+                 lit=0.3)
+        tmp.rect(x + cap_r * 0.3, hy - cap_r * 0.25, x + cap_r * 1.5, hy - cap_r * 0.05, g, 1.4, lit=0.3)   # la visera
+    elif extra == 'gorro':
+        g = CLOTH[rnd.choice(('vermell', 'groc', 'blau', 'lila'))]
+        tmp.disc(x, hy - cap_r * 0.35, cap_r + 0.7, cap_r * 0.85, g,
+                 lambda nx, ny: (0.6 + 3.0 * ll(nx, ny) - (0.7 if int((nx + 1) * 4) % 2 else 0)) if ny < 0.25 else -9, lit=0.3)
+        tmp.disc(x, hy - cap_r * 1.25, 1.5 * s, 1.4 * s, g, lambda nx, ny: 1.4 + 2.6 * ll(nx, ny), lit=0.3)     # la borla
+    elif extra == 'boina':
+        tmp.disc(x - 0.4 * s, hy - cap_r * 0.75, cap_r * 1.15, cap_r * 0.42, IRON_SHOE,
+                 lambda nx, ny: 0.6 + 2.6 * ll(nx, ny), lit=0.3)
+    elif extra == 'caputxa':
+        for yy in range(int(hy - cap_r * 1.2), int(coll + 2 * s)):
+            for xx in range(int(x - cap_r * 1.3), int(x + cap_r * 1.3) + 1):
+                nx, ny = (xx + 0.5 - x) / (cap_r * 1.3), (yy - hy + 0.2 * s) / (cap_r * 1.25)
+                if nx * nx + ny * ny <= 1 and (cara < 0 or nx * nx + (ny - 0.1) ** 2 > 0.5):
+                    tmp.put(xx, yy, roba, 0.4 + 2.8 * ll(nx, ny) - (0.6 if nx * nx + ny * ny > 0.8 and cara > 0 else 0),
+                            lit=0.3)
+    # ─ el contorn, al cantó de l'ombra (a la dreta i a baix): separa la figura del fons
+    T = tmp.img.load()
+    x0b, x1b = int(x - esp * 2.2), int(x + esp * 2.2)
+    y0b = int(y - alt - cap_r * 2)
+    vores = []
+    for yy in range(max(0, y0b), min(cv.h - 1, int(y) + 2)):
+        for xx in range(max(1, x0b), min(cv.w - 1, x1b)):
+            if T[xx, yy][3]:
+                continue
+            for dx, dy in ((-1, 0), (0, -1), (1, 0)):
+                c = T[xx + dx, yy + dy] if 0 <= yy + dy < cv.h else (0, 0, 0, 0)
+                if c[3] and (dx < 0 or dy < 0):
+                    vores.append((xx, yy, c))
+                    break
+    for xx, yy, c in vores:
+        T[xx, yy] = (int(c[0] * 0.35), int(c[1] * 0.3), int(c[2] * 0.3), 255)
+    # ─ l'ombra llarga a terra, abans de la figura: una llengua que surt dels peus i s'aprima i s'esvaeix
+    ox, oy = ombra_llarga
+    L = alt * ox
+
+    def om(xx, yy):
+        t = (xx - x + esp * 0.5) / (L + esp * 0.5)
+        if not 0 <= t <= 1:
+            return 0
+        yc = y + (xx - x) * oy / ox
+        return 0.6 * (1 - t) ** 0.7 if abs(yy - yc) <= 2.2 * s * (1 - 0.6 * t) + 0.3 else 0
+    cv.darken(x - esp, y - 4, x + L + 2, y + L * oy / ox + 4, om)
+    cv.img.alpha_composite(tmp.img)
+    cv.P = cv.img.load()
 
 
 IRON_SHOE = [(10, 8, 8), (24, 20, 18), (40, 34, 30), (60, 52, 46)]

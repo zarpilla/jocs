@@ -5,16 +5,20 @@ Un aiguamoll sec, calorós, amb la llum alta i blanca. La càmera és a l'alçad
 verticals, verticals), amb l'horitzó a y = 110: el terra fuig cap al fons i les esquerdes del fang s'empetiteixen.
 
   - Al mig a l'esquerra, l'**arxiu** dels gripaus: una soca buida enorme amb calaixets a l'escorça, una finestreta de
-    taquilla a l'alçada d'un gripau (amb el cartellet «VAGA») i els rètols «REGISTRE DEL BOSC» i «HORARI: QUAN HI HA
-    AIGUA». El Registrador (`bufo`) és davant la finestreta.
-  - Al mig a la dreta, el **toll** sec: fang clivellat, una línia de sal i els **joncs** grocs i caiguts.
+    taquilla a l'alçada d'un gripau (amb el cartellet «VAGA» i un ràfec de taulons), impresos clavats i els rètols
+    «REGISTRE DEL BOSC» i «HORARI: QUAN HI HA AIGUA». La façana mira cap a l'esquerra, cap al camí: es veu de tres
+    quarts (es dibuixa plana i s'embolcalla a la soca; els rètols, clavats, es tomben). El Registrador (`bufo`) és
+    davant la finestreta.
+  - Al mig a la dreta, el **toll** sec, amb fondària: la paret del fons, les pedres i el llavi de la vora, fang
+    clivellat, una línia de sal i els **joncs** grocs i caiguts (alguns, a la vora de davant).
   - Al fons a la dreta, el turó, i el **rierol** que en baixa per un llit de pedres i no arriba: el tapa el
     **tap de plàstics** (ampolles buides d'«Aire Pur»; prop `tap_plastics`, que desapareix), i just a sobre, el tub nou
     de NaturaPlus, blanc i gris, amb la roda de la **comporta** i la placa «ASPERSORS GESPA — SECTOR 4», que se'n va
     cap a la tanca del fons.
   - El gripau vaguista (`gripau`) amb la pancarta, i al costat un altre de fons (sense id) amb una altra pancarta.
   - A l'esquerra, el **camí** (sortida, que no surt), i el bosc càlid, que fa ombra.
-  - Primer pla (FRONT): joncs secs i un tronc caigut a les cantonades de baix, en silueta.
+  - Primer pla (FRONT): a les cantonades de baix, molt a prop i a l'ombra, falgueres, joncs i boga en silueta, el
+    tronc caigut i una pedra: emmarquen el quadre.
 
 Decorat `aigua` (sota els personatges): el toll ple, el rierol que corre fins al toll i els joncs redreçats.
 ANIMS: `libellules` (tres libèl·lules que volen sobre el toll) i `calor` (l'aire que tremola a l'horitzó).
@@ -28,7 +32,7 @@ from PIL import Image
 from hd.pix import Canvas, Light
 from hd640.rooms._comu_dia import (
     W, H, RH, Terra, fbm, hr, boira_px, esquerda, smooth, lletres, ample, arrel, ombra, jonc, mata_joncs, capcada, tronc,
-    diferencia, mascara, HAZE, LEAVES, BARK, MOSS, EARTH, PLANK, IRONK, STONE, CREAM, BRASS, PLASTIC, STEEL, NEON,
+    falguera, diferencia, mascara, HAZE, LEAVES, BARK, MOSS, EARTH, PLANK, IRONK, STONE, CREAM, BRASS, PLASTIC, STEEL, NEON,
     REDL, YELLOWM, SKYD, DRYG, CLAY, GREENL, WATER, FERN, TURQ)
 
 T = Terra(hor=110, h=140, f=500)
@@ -205,11 +209,52 @@ def toll_sec(cv):
             elif c < 0.09:
                 lvl += 0.8                                                       # la vora aixecada de cada placa
             cv.put(u, v, CLAY, lvl, lit=0.4)
+    vores_toll(cv)
     # unes petjades de gripau i una ampolla mig enterrada
     for (u, v) in ((420, 224), (428, 226), (436, 223)):
         cv.put(u, v, CLAY, 2.0, lit=0)
     cv.rect(500, 226, 505, 227, PLASTIC, 5.0, lit=0)
     cv.flat(506, 226, (90, 210, 70))
+
+
+def vores_toll(cv):
+    """La fondària del toll: la paret del fons (de cara a nosaltres i al sol: clara, amb les capes del fang i les
+    arrels que hi pengen), el llavi de terra de la vora de davant i pedres a la vora, amb la seva ombra."""
+    cx, cy, rx, ry = TOLL
+    for u in range(int(cx - rx), int(cx + rx) + 1):
+        n = (u - cx) / rx
+        if abs(n) >= 1:
+            continue
+        q = math.sqrt(1 - n * n)
+        yt, hw = cy - ry * q, 6.5 * q ** 0.7
+        for v in range(int(yt), int(yt + hw) + 1):
+            t = (v - yt) / max(1.0, hw)
+            lvl = 5.2 - t * 1.6 - (0.9 if int(v - n * 3) % 3 == 0 else 0) + (fbm(u / 5, v / 2, 81) - 0.5) * 1.0
+            cv.put(u, v, CLAY, lvl, lit=0.4)
+        cv.put(u, yt + hw + 1, CLAY, 1.4, lit=0)                                # l'ombra al peu de la paret
+        if hr(u, 3, 82) > 0.86:                                                   # arrels que pengen
+            for j in range(int(2 + hr(u, 4, 83) * hw)):
+                cv.put(u, yt + 1 + j, BARK, 2.0, lit=0)
+        yb = cy + ry * q                                                          # el llavi de davant
+        cv.put(u, yb, DRYG, 5.4, lit=0.4)
+        cv.put(u, yb + 1, DRYG, 4.0, lit=0.4)
+    for k, a in enumerate((3.5, 3.9, 4.4, 5.4, 5.9, 0.4, 1.0, 2.2, 2.7)):        # pedres a la vora
+        px, py = cx + math.cos(a) * rx * 1.02, cy + math.sin(a) * ry * 1.06
+        r = 2.5 + (py - (cy - ry)) / (2 * ry) * 3.5 + hr(k, 1, 84) * 2
+        ombra(cv, px + r * 0.5, py + r * 0.3, r * 1.1, r * 0.35, k=0.7)
+        cv.disc(px, py - r * 0.3, r, r * 0.6, STONE, lambda nx, ny: 4.6 - ny * 1.6 - nx * 0.8, lit=0.4)
+
+
+# Joncs de la vora de davant del toll: hi queden davant (i amb l'aigua, també: es tornen a pintar)
+JONCS_DAVANT = ((404, 238, 9, 22, 11), (526, 236, 11, 26, 12), (566, 230, 6, 18, 13))
+
+
+def joncs_davant(cv, verds=False):
+    for (x, y, n, h, sd) in JONCS_DAVANT:
+        if verds:
+            mata_joncs(cv, x, y, n + 3, h * 1.25, sd + 10, caiguts=False, ramp=GREENL, lvl=3.6, escala=1.0)
+        else:
+            mata_joncs(cv, x, y, n, h, sd, caiguts=True, escala=1.0, lvl=3.0)
 
 
 def _rierol_punts():
@@ -284,9 +329,99 @@ def arxiu(cv):
     for p1, p2, r0, s in (((cx - 70, base + 2), (cx - 92, base + 8), 7, 1), ((cx + 74, base), (cx + 96, base + 6), 6, 2),
                           ((cx - 30, base + 8), (cx - 40, base + 12), 5, 3), ((cx + 40, base + 6), (cx + 54, base + 10), 4, 4)):
         arrel(cv, (cx + (p2[0] - cx) * 0.4, base - 6), p1, p2, r0, 2, base=3.6, seed=s, lit=0.5)
-    calaixets(cv)
-    finestreta(cv)
-    retols(cv)
+    # la façana (els calaixets i la finestreta) es dibuixa plana i s'embolcalla a la soca, girada cap a l'esquerra
+    # (cap al camí per on s'arriba): així es veu de tres quarts i no de cara. Els rètols són taulons clavats: no
+    # s'arruguen, es tomben (la lletra no es remostreja, que es perdria: només es desplacen columnes senceres).
+    fac = Canvas(W, H, light=LIGHT, transparent=True)
+    calaixets(fac)
+    finestreta(fac)
+    impresos(fac)
+    _embolcalla(cv, fac)
+    rafec(cv)
+    x0, y0, x1, _ = FINESTRA
+    cartellet(cv, round(_a_pantalla((x0 + x1) // 2 + 2, y0)), y0)
+    pla = Canvas(W, H, light=LIGHT, transparent=True)
+    retols(pla)
+    _tomba(cv, pla, SOCA[0] + 4, round(_a_pantalla(SOCA[0] + 4, 140)), 0.07)
+
+
+# La façana: el seu mig (x = SOCA[0] al dibuix pla) mira cap a GIR (radiants; < 0, cap a l'esquerra). R_FAC és el
+# radi amb què s'embolcalla (una mica més gran que el de la soca: la façana no s'arrugui tant a la vora).
+GIR, R_FAC = -0.34, 74
+
+
+def _a_pantalla(sx, y):
+    """Un punt de la façana plana (x del dibuix, y) → la x de pantalla, embolcallat a la soca."""
+    cx = SOCA[0]
+    return cx + _soca_w(y) * math.sin(GIR + (sx - cx) / R_FAC)
+
+
+def _embolcalla(cv, fac):
+    """Copia la façana plana sobre el cilindre de la soca: cada píxel de pantalla busca el seu punt de la façana.
+    La llum ve de dalt a l'esquerra: el que gira cap a la dreta s'enfosqueix."""
+    cx, base, _ = SOCA
+    F = fac.img.load()
+    for y in range(96, base + 3):
+        w = _soca_w(y)
+        for x in range(int(cx - w), int(cx + w) + 1):
+            u = (x - cx) / w
+            if abs(u) >= 1:
+                continue
+            phi = math.asin(u)
+            sx = cx + (phi - GIR) * R_FAC
+            if not 0 <= sx < W - 1:
+                continue
+            c = F[int(sx), y]
+            if not c[3]:
+                continue
+            k = 0.62 + 0.38 * max(0.0, math.cos(phi + 0.5)) - 0.25 * abs(u) ** 6
+            cv.P[x, y] = (int(c[0] * k), int(c[1] * k), int(c[2] * k), 255)
+
+
+def _tomba(cv, pla, sx0, x0, pend):
+    """Un tauló pla (dibuixat a `pla` amb el mig a sx0) es posa amb el mig a x0 de pantalla i tombat: cada columna
+    puja `pend` px per px cap a la dreta (el cantó que fuig, cap a l'horitzó)."""
+    F = pla.img.load()
+    for sx in range(W):
+        x = sx - sx0 + x0
+        dy = -round((x - x0) * pend)
+        if not 0 <= x < W:
+            continue
+        for y in range(80, 230):
+            c = F[sx, y]
+            if c[3] and 0 <= y + dy < H:
+                cv.P[x, y + dy] = c[:3] + (255,)
+
+
+def _quad(cv, pts, ramp, lvl, lit=0.3):
+    """Un quadrilàter ple (pts en ordre), amb lvl(x, y) o un nombre."""
+    xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+    for y in range(int(min(ys)), int(max(ys)) + 1):
+        for x in range(int(min(xs)), int(max(xs)) + 1):
+            cr = [(bx - ax) * (y + 0.5 - ay) - (by - ay) * (x + 0.5 - ax)
+                  for (ax, ay), (bx, by) in zip(pts, pts[1:] + pts[:1])]
+            if all(c >= 0 for c in cr) or all(c <= 0 for c in cr):
+                cv.put(x, y, ramp, lvl(x, y) if callable(lvl) else lvl, lit)
+
+
+def rafec(cv):
+    """Un ràfec de taulons damunt la finestreta, que surt de la soca cap a fora (cap a l'esquerra i cap aquí): se'n
+    veu la cara de dalt, el cantell de davant i el costat de l'esquerra (la regla de les tres cares)."""
+    x0, y0, x1, _ = FINESTRA
+    yb = y0 - 9                                                        # on toca la soca
+    a, b = (_a_pantalla(x0 - 8, yb), yb), (_a_pantalla(x1 + 8, yb), yb)
+    out = (-9, 5)                                                      # cap a fora (la normal de la façana, en pantalla)
+    c, d = (b[0] + out[0], b[1] + out[1]), (a[0] + out[0], a[1] + out[1])
+    ombra(cv, (a[0] + b[0]) / 2 - 2, yb + 10, (b[0] - a[0]) / 2 + 2, 4, k=0.6)
+    _quad(cv, [a, b, c, d], PLANK, lambda x, y: 5.6 - (1.2 if int(x - (y - yb) * out[0] / out[1]) % 8 == 0 else 0)
+          + (fbm(x / 4, y, 70) - 0.5) * 0.8)                         # la cara de dalt, de taulons
+    _quad(cv, [d, c, (c[0], c[1] + 3), (d[0], d[1] + 3)], PLANK, 3.0)  # el cantell de davant
+    _quad(cv, [a, d, (d[0], d[1] + 3), (a[0], a[1] + 3)], PLANK, 3.8)  # el costat
+    for t in (0.12, 0.88):                                             # els tornapuntes, de la soca al cantell
+        px, py = d[0] + (c[0] - d[0]) * t, d[1] + (c[1] - d[1]) * t + 3
+        qx, qy = a[0] + (b[0] - a[0]) * t, a[1] + 16
+        for i in range(12):
+            cv.put(px + (qx - px) * i / 11, py + (qy - py) * i / 11, PLANK, 2.4, lit=0.3)
 
 
 def calaixets(cv):
@@ -328,8 +463,25 @@ def finestreta(cv):
     # el tampó, sec, i un timbre de taulell
     cv.rect(x1 - 4, y1 - 2, x1 + 1, y1 - 1, IRONK, 3.0, lit=0)
     cv.disc(x0 + 2, y1 - 2, 2, 1.4, BRASS, lambda nx, ny: 4.4 - ny * 1.4, lit=0)
-    # el cartellet «VAGA», penjat d'un cordill
-    cx = (x0 + x1) // 2 + 2
+
+
+def impresos(cv):
+    """Impresos clavats a l'escorça, a la dreta de la finestreta (fan la volta a la soca): formularis amb ratlles i
+    una caselleta, i un de grapat que fa punxa."""
+    for k, (x, y, w, h) in enumerate(((266, 150, 12, 16), (281, 156, 11, 15), (295, 148, 11, 17), (272, 170, 10, 13))):
+        cv.rect(x, y, x + w, y + h, CREAM, lambda xx, yy, x=x: 4.8 - (xx - x) * 0.05, lit=0.3)
+        for j in range(y + 3, y + h - 2, 2):
+            cv.rect(x + 2, j, x + w - 2 - (j * 7 + k) % 4, j, NOTE_INK, 0, lit=0)
+        cv.rect(x + w - 4, y + h - 4, x + w - 2, y + h - 2, NOTE_INK, 0, lit=0)
+        cv.flat(x + w // 2, y + 1, (120, 110, 100))                             # la xinxeta
+        cv.darken(x + 1, y + h + 1, x + w + 1, y + h + 1, 0.5)
+
+
+NOTE_INK = [(70, 62, 56)]
+
+
+def cartellet(cv, cx, y0):
+    """El cartellet «VAGA» de la finestreta, penjat d'un cordill (pla: no s'embolcalla)."""
     cv.line(cx - 6, y0 - 1, cx - 9, y0 + 4, IRONK, 3.0, lit=0)
     cv.line(cx + 6, y0 - 1, cx + 9, y0 + 4, IRONK, 3.0, lit=0)
     cv.rect(cx - 10, y0 + 4, cx + 10, y0 + 12, CREAM, 4.8, lit=0)
@@ -458,23 +610,33 @@ def tap(cv):
 # ─── El primer pla ───────────────────────────────────────────────────────────
 
 def primer_pla(cv):
-    # a l'esquerra: un tronc caigut, sec, i joncs a contrallum
-    arrel(cv, (-20, 252), (40, 246), (110, 264), 11, 8, ramp=BARK, base=1.6, seed=71, moss=True, lit=0)
-    for i, x in enumerate(range(-6, 70, 7)):
-        jonc(cv, x, 262, 40 + (i * 13) % 26, (0.5 if i % 2 else -0.3) * (1 + i % 3 * 0.4), DRYG, 1.6, gruix=2, lit=0)
-    # a la dreta: una pedra i una mata de joncs
-    cv.disc(616, 258, 34, 14, STONE, lambda nx, ny: 2.6 - ny * 1.2 - nx * 0.6 + (fbm(nx * 4, ny * 4, 3) - 0.5) * 1.4, lit=0)
-    for i, x in enumerate(range(572, 646, 6)):
-        jonc(cv, x, 262, 34 + (i * 11) % 30, (-0.6 if i % 2 else 0.4) * (1 + i % 3 * 0.3), DRYG, 1.4, gruix=2, lit=0)
+    """Les cantonades de baix, molt a prop i a l'ombra (en silueta, amb la vora de dalt tocada pel sol): emmarquen el
+    quadre com al campament de les fades."""
+    # a l'esquerra: el tronc caigut, falgueres grosses i joncs foscos
+    arrel(cv, (-20, 252), (40, 246), (110, 264), 11, 8, ramp=BARK, base=1.4, seed=71, moss=True, lit=0)
+    for i, (x, y, a, l, sd) in enumerate(((-14, 272, 1.15, 150, -1), (2, 272, 0.7, 160, -1), (26, 272, 1.45, 120, 1),
+                                          (-16, 230, 0.35, 110, -1), (58, 272, 1.95, 84, 1), (14, 272, 1.7, 136, 1),
+                                          (40, 272, 1.25, 104, -1))):
+        falguera(cv, x, y, a, l, side=sd, ramp=FERN, lvl=1.5 + i * 0.08, rim=1, seed=i)
+    for i, x in enumerate(range(44, 90, 5)):
+        jonc(cv, x, 264, 50 + (i * 13) % 34, (0.35 if i % 2 else -0.2) * (1 + i % 3 * 0.4), FERN, 2.0, gruix=2, lit=0)
+    # a la dreta: la pedra, falgueres i una mata alta de boga (amb la panotxa)
+    cv.disc(616, 258, 34, 14, STONE, lambda nx, ny: 2.2 - ny * 1.2 - nx * 0.6 + (fbm(nx * 4, ny * 4, 3) - 0.5) * 1.4, lit=0)
+    for i, (x, y, a, l, sd) in enumerate(((604, 272, 1.95, 140, 1), (632, 272, 2.35, 156, 1), (652, 240, 2.75, 120, 1),
+                                          (586, 272, 1.6, 96, -1), (620, 272, 1.75, 120, 1))):
+        falguera(cv, x, y, a, l, side=sd, ramp=FERN, lvl=1.7, rim=-1, seed=20 + i)
+    for i, x in enumerate(range(556, 646, 4)):
+        jonc(cv, x, 264, 60 + (i * 11) % 46, (-0.5 if i % 2 else 0.25) * (1 + i % 3 * 0.3), FERN, 2.0, gruix=2, lit=0,
+             cap=i % 3 == 0)
 
 
 # ─── Composició ─────────────────────────────────────────────────────────────
 
-IRI = (110, 238)
+IRI = (150, 236)                                   # (fora de les falgueres del primer pla)
 # Les mates de joncs del toll: x, y del peu, quants, alçada, llavor
 JONCS = ((376, 208, 18, 34, 1), (404, 205, 14, 30, 2), (430, 204, 8, 22, 7), (536, 210, 16, 30, 3),
          (556, 217, 8, 20, 4), (356, 218, 9, 24, 5), (480, 205, 7, 18, 6))
-BUFO = (237, 211)
+BUFO = (round(_a_pantalla(237, 192)), 211)                  # davant la finestreta (girada amb la façana)
 GRIPAU = (322, 216)
 
 
@@ -492,6 +654,7 @@ def _base():
     # els joncs del toll (secs i caiguts), del fons a prop
     for (x, y, n, h, s) in JONCS:
         mata_joncs(cv, x, y, n, h, s, caiguts=True, escala=1.0, lvl=4.0)
+    joncs_davant(cv)
     tub(cv)
     comporta(cv)
     arxiu(cv)
@@ -546,6 +709,7 @@ def _aigua(cv):
     for (x, y, n, h, s) in JONCS:
         cv.disc(x, y, 11, 3, MOSS, 2.2, lit=0.4)
         mata_joncs(cv, x, y, n + 4, h * 1.25, s + 10, caiguts=False, ramp=GREENL, lvl=4.4, escala=1.0)
+    joncs_davant(cv, verds=True)
 
 
 def _tap(cv):

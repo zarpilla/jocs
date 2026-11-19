@@ -1513,33 +1513,6 @@
               }
             ]
           },
-          "gespa": {
-            "name": "sala.bosc_obert.gespa.nom",
-            "interactions": [
-              {
-                "verb": "look",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.bosc_obert.gespa.mira"
-                  }
-                ]
-              },
-              {
-                "verb": [
-                  "push",
-                  "pull",
-                  "use"
-                ],
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.bosc_obert.gespa.empeny"
-                  }
-                ]
-              }
-            ]
-          },
           "forats": {
             "name": "sala.bosc_obert.forats.nom",
             "interactions": [
@@ -4147,6 +4120,18 @@
                   {
                     "who": "player",
                     "text": "sala.vora_bosc.porta_roure.tancada2"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "porta_oberta"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.vora_bosc.porta_roure.mira3"
                   }
                 ]
               },
@@ -7823,11 +7808,8 @@
       "sala.bosc_obert.bolets.nom": "bolets",
       "sala.bosc_obert.forats.mira": "Forats on hi havia els pals de la tanca. Un cargol de terra ja hi ha fet casa.",
       "sala.bosc_obert.forats.nom": "forats",
-      "sala.bosc_obert.gespa.empeny": "La faig rodolar un pam. Rasca i tot.",
-      "sala.bosc_obert.gespa.mira": "La gespa artificial, enrotllada. Se l'enduen a la Vall de Sorreu, diu l'etiqueta.",
-      "sala.bosc_obert.gespa.nom": "gespa enrotllada",
       "sala.bosc_obert.intro.1": "Una setmana després",
-      "sala.bosc_obert.intro.2": "Ja no hi ha tanca. Només forats on hi havia els pals, i la gespa artificial enrotllada, a punt per endur-se-la.",
+      "sala.bosc_obert.intro.2": "Ja no hi ha tanca, ni cartell, ni gespa de plàstic. Només uns forats on hi havia els pals, i ja hi torna a créixer l'herba.",
       "sala.bosc_obert.intro.3": "Al peu del roure, la porta és oberta. Els bolets brillen de turquesa.",
       "sala.bosc_obert.intro.4": "Vet! Seu, que el te es refreda.",
       "sala.bosc_obert.nom": "El bosc obert",
@@ -8130,6 +8112,7 @@
       "sala.vora_bosc.porta_roure.mira": "Una porta d'un metre al peu del roure. Té una campaneta, una bústia i un llum vermell que parpelleja.",
       "sala.vora_bosc.porta_roure.mira.b": "Davant hi ha una estaca clavada, amb una cinta de NaturaPlus.",
       "sala.vora_bosc.porta_roure.mira2": "Una porta d'un metre, amb una campaneta, una bústia i un llum vermell. Ara ja no hi ha res que la bloquegi.",
+      "sala.vora_bosc.porta_roure.mira3": "La porta del roure, oberta. A dins, l'escala baixa a la centraleta de l'Espora.",
       "sala.vora_bosc.porta_roure.nom": "porta del roure",
       "sala.vora_bosc.porta_roure.tancada": "Està tancada. I davant hi ha una estaca clavada que no la deixaria obrir.",
       "sala.vora_bosc.porta_roure.tancada2": "Està tancada per dins. Té una campaneta, però.",

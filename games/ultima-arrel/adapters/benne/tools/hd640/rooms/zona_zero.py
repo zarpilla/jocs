@@ -6,7 +6,7 @@ Un clar del bosc a mig desbrossar. El sol del matí entra per l'esquerra, baix i
 El bosc que queda (càlid, de tardor) envolta el clar; NaturaPlus hi ha plantat les seves coses, blanques i planes:
 
   - Al mig, l'**escenari** blanc (girat: se'n veuen la tapa, el davant i el costat), amb la cinta vermella per tallar
-    entre dos pals. Hi és la `pla`.
+    entre dos pals i el faristol de tres quarts, amb el micro. Hi és la `pla`.
   - Darrere, la **pantalla** gegant sobre una bastida: «BOSC 2.0» en verd fluor i «LA NATURA, PERÒ MILLOR».
   - A la dreta, els **sensors** d'aire: tres columnes blanques amb la lectura verda «AIRE: / PUR / 100%» (decorat
     `sensors_vermells`: «AIRE: / PICANT / !!!» en vermell, amb el núvol de pol·len); i l'**altaveu** de la caseta,
@@ -17,7 +17,10 @@ El bosc que queda (càlid, de tardor) envolta el clar; NaturaPlus hi ha plantat 
   - Al fons, entre els arbres, la **formigonera**, amb el motor engegat (ANIMS: el bombo que gira i el fum).
   - El bassal (on és el `bufo`), la `txell` amb el càmera (figura de fons) a la dreta, i les branques de dalt a
     l'esquerra, on és la `urtica`.
-  - Primer pla (FRONT): una soca gran acabada de tallar a l'esquerra i falgueres amb la cinta d'obra a la dreta.
+  - Primer pla (FRONT): una soca gran acabada de tallar a l'esquerra, falgueres amb la cinta d'obra a la dreta, i la
+    perxa de so de la TV, que entra per dalt a la dreta i apunta a la Pla.
+  - El públic té volum (`persona` de _comu_dia: llum rasant de l'esquerra, a tons plans com els fulls, ombres
+    llargues, i cada figura amb la seva roba i complements: motxilles, bufandes, gorros, mòbils gravant).
 """
 import functools
 import math
@@ -238,10 +241,27 @@ def escenari(cv):
         cv.put(x, y + 1, REDL, 2.6, lit=0)
     cv.disc(369, 181, 3, 2, REDL, 3.4, lit=0)
     cv.disc(373, 181, 3, 2, REDL, 3.0, lit=0)
-    # un faristol blanc amb el micro
-    cv.poly([(452, 172), (466, 171), (464, 186), (454, 187)], PLASTIC, 4.8, lit=0.3)
-    cv.rect(456, 162, 457, 172, STEEL, 4.0, lit=0)
-    cv.disc(457, 161, 1.6, 1.6, IRONK, 2.4, lit=0)
+    faristol(cv)
+
+
+def faristol(cv):
+    """El faristol de la Pla, de tres quarts (la regla de les tres cares): el davant (al sol, amb la fulla de NaturaPlus),
+    el costat de la dreta (a l'ombra), el tauló de dalt inclinat, i el micro de coll de cigne que va cap a ella."""
+    fl, fr, br = (446, 190), (461, 193), (471, 188)                      # la base: davant esquerra, davant dreta, darrere
+    tl, tr, tb, tk = (444, 165), (462, 168), (473, 162), (455, 159)      # dalt: davant esq., davant dreta, darrere dreta, darrere esq.
+    ombra(cv, 470, 192, 14, 2.4, k=0.7)
+    cv.poly([tr, tb, br, fr], PLASTIC, lambda x, y: 2.6 - (y - 165) * 0.01, lit=0.2)          # el costat, a l'ombra
+    cv.poly([tl, tr, fr, fl], PLASTIC, lambda x, y: 4.8 - (x - 444) * 0.04, lit=0.3)         # el davant
+    cv.poly([tk, tb, tr, tl], PLASTIC, 5.8, lit=0.3)                                         # el tauló de dalt
+    for x in range(446, 462):                                                                # la franja verda
+        y = 186 + (x - 446) * 0.2
+        cv.put(x, y, NEON, 3.4, lit=0)
+    cv.disc(453, 175, 3.4, 4.2, NEON, lambda nx, ny: 3.6 - nx * 0.6 - ny * 0.4, lit=0)        # la fulla
+    cv.line(453, 178, 455, 181, NEON, 2.0, lit=0)
+    for i in range(12):                                                                       # el coll de cigne
+        t = i / 11
+        cv.put(452 - t * 9, 160 - t * 9 + t * t * 4, IRONK, 2.4, lit=0)
+    cv.disc(442, 154, 2.2, 1.8, IRONK, lambda nx, ny: 1.4 - nx * 0.4 - ny * 0.8, lit=0)       # la bola del micro
 
 
 def pantalla(cv):
@@ -398,11 +418,40 @@ def primer_pla(cv):
     for i, (fx, fy, a, l, sd) in enumerate(((600, 264, 1.9, 90, 1), (630, 262, 2.3, 100, 1), (650, 264, 2.6, 80, 1),
                                             (578, 266, 1.6, 60, -1))):
         falguera(cv, fx, fy, a, l, side=sd, lvl=1.8, rim=1, seed=30 + i)
+    perxa(cv)
     for k in range(70):
         tx, ty = 566 + k, 230 + math.sin(k * 0.14) * 4 + k * 0.1
         on = (k // 5) % 2
         cv.flat(tx, ty, (230, 60, 40) if on else (240, 240, 236))
         cv.flat(tx, ty + 1, (170, 40, 30) if on else (190, 190, 190))
+
+
+def perxa(cv):
+    """La perxa de so de la TV Comarca, que entra pel cantó de dalt a la dreta (el tècnic és fora de quadre), molt a
+    prop: un pal fosc que s'aprima cap al fons i el micro amb el pelut, que apunta a la Pla."""
+    x0, y0, x1, y1 = 690, 54, 494, 118                      # (per sota dels rètols de la pantalla)
+    n = 220
+    for i in range(n + 1):
+        t = i / n
+        x, y = x0 + (x1 - x0) * t, y0 + (y1 - y0) * t
+        r = 3.4 - t * 2.0
+        for dy in range(-int(r) - 1, int(r) + 2):
+            v = dy / max(r, 0.8)
+            if abs(v) <= 1:
+                cv.put(x, y + dy, IRONK, 1.6 - v * 1.4 + (0.8 if int(x) % 34 < 2 else 0), lit=0)
+    # el pelut (el protector de vent), allargat en la direcció del pal: pèl gris clar, amb la vora encesa pel sol
+    ang = math.atan2(y1 - y0, x1 - x0)
+    ca, sa = math.cos(ang), math.sin(ang)
+    cx, cy = x1 - ca * 6, y1 - sa * 6
+    rnd = random.Random(91)
+    for yy in range(int(cy - 12), int(cy + 13)):
+        for xx in range(int(cx - 16), int(cx + 17)):
+            u = ((xx - cx) * ca + (yy - cy) * sa) / 13
+            v = (-(xx - cx) * sa + (yy - cy) * ca) / 6.0
+            d = u * u + v * v
+            if d <= 1 + (rnd.random() - 0.5) * 0.5:
+                pel = 0.6 if (xx * 3 + yy * 5) % 4 == 0 else 0
+                cv.put(xx, yy, STONE, 2.0 - v * 1.4 - u * 0.4 + pel + (1.6 if u < -0.5 and v < 0 else 0), lit=0)
 
 
 # ─── Composició ─────────────────────────────────────────────────────────────

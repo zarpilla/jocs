@@ -235,38 +235,6 @@
       }
     },
     {
-      "id": "gespa",
-      "active": true,
-      "description": "gespa enrotllada",
-      "zIndex": 3,
-      "points": [
-        {
-          "x": 358,
-          "y": 186
-        },
-        {
-          "x": 498,
-          "y": 186
-        },
-        {
-          "x": 498,
-          "y": 221
-        },
-        {
-          "x": 358,
-          "y": 221
-        }
-      ],
-      "walkToPoint": {
-        "x": 430,
-        "y": 228
-      },
-      "lookAtPoint": {
-        "x": 428,
-        "y": 221
-      }
-    },
-    {
       "id": "forats",
       "active": true,
       "description": "forats",
@@ -482,15 +450,15 @@
   ],
   "characterShadow": {
     "enabled": true,
-    "color": "#1e1a0c",
-    "alpha": 0.38,
+    "color": "#2a1a08",
+    "alpha": 0.4,
     "squash": 0.28,
     "core": 0.6,
     "light": {
-      "x": 0.8,
-      "y": 0.3,
+      "x": -1,
+      "y": 0.12,
       "direction": true,
-      "stretch": 0.45
+      "stretch": 0.9
     }
   }
 }

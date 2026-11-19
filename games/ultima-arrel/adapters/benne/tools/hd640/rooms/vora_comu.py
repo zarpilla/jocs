@@ -14,9 +14,10 @@ de la Iri a prop de la porta a y ≈ 250). Un `Llenc` és un Canvas de 640×360 
 el HUD), i a les pantalles senceres (crèdits, portada) se'n tria un altre i el cel, la capçada i el tronc continuen
 cap amunt. `sala(y)` passa una y del món a la de la sala.
 
-**Modes** (`Mode`): 'capvespre' (la tanca, l'obra, la xarxa apagada, el llum vermell), 'dia' (sense tanca: els
-forats dels pals, la gespa enrotllada, la taula de la soca, el bassal, la xarxa encesa, la porta oberta amb llum
-turquesa) i 'nit' (el de dia, enfosquit i blau, amb el turquesa a tota força). L'escena es fa per capes
+**Modes** (`Mode`): 'capvespre' (la tanca, l'obra, la xarxa apagada, el llum vermell), 'dia' (sense tanca ni res de
+l'obra: els forats dels pals, ja amb herba, la taula de la soca, el bassal, la xarxa encesa, la porta oberta amb llum
+turquesa; el sol del matí, baix i daurat, entra per la dreta, per la clariana on hi havia l'obra; flors al prat i
+una branca amb fulles en primer pla, a dalt a la dreta) i 'nit' (el de dia, enfosquit i blau, amb el turquesa a tota força). L'escena es fa per capes
 (`escena()`): el fons, la taula (capa del davant amb la seva línia base) i el primer pla (capa del davant que tapa
 sempre).
 """
@@ -74,6 +75,8 @@ HAZED = [(34, 40, 26), (50, 60, 34), (70, 82, 44), (94, 106, 56), (122, 132, 70)
          (214, 208, 134), (238, 230, 170)]
 TRUNKD = [(40, 42, 40), (56, 58, 54), (74, 76, 68), (94, 96, 84), (118, 120, 102), (144, 144, 122), (172, 170, 144),
           (200, 198, 170), (224, 222, 198)]
+TRUNKM = [(44, 36, 30), (62, 50, 40), (82, 68, 52), (104, 88, 66), (128, 108, 80), (154, 130, 96), (182, 156, 114),
+          (208, 184, 138), (230, 210, 168)]                                        # els troncs, amb la llum del matí
 GRASS = [(14, 22, 10), (24, 38, 14), (38, 58, 20), (56, 82, 28), (80, 108, 36), (108, 136, 48), (140, 164, 66),
          (176, 192, 92)]
 # La xarxa: blau i turquesa bioluminescent.
@@ -315,7 +318,9 @@ def ombra(cv, cx, cy, rx, ry, k=0.85):
 # ═══════════════════════════════════════════════════════════════════════════
 
 SUN = (96, 150)                # al capvespre, el sol es pon entre els troncs
-SUN_D = (40, 40)               # de dia, el sol és a dalt a l'esquerra, darrere la capçada
+SUN_D = (40, 40)               # de nit (crèdits), la llum ve de dalt a l'esquerra
+SUN_M = (618, 140)             # de dia (el bosc obert), el sol del matí, baix a la dreta: entra per la clariana
+GOLD = (255, 206, 120)         # la llum daurada del matí
 LAMP = (253, 198)              # el fanalet (vermell al capvespre, turquesa al bosc obert)
 
 
@@ -327,14 +332,15 @@ class Mode:
         self.glow = {'capvespre': 0.22, 'dia': 0.8, 'nit': 1.0, 'portada': 0.7}[nom]
         self.sky = SKYD if nom == 'dia' else DUSK
         self.haze = HAZED if nom in ('dia', 'nit') else HAZE
-        self.trunk = TRUNKD if nom in ('dia', 'nit') else HAZE
+        self.trunk = TRUNKM if nom == 'dia' else TRUNKD if nom == 'nit' else HAZE
 
 
 def llum(m):
     if m.nom in ('dia', 'nit'):
         L = Light(ambient=0.5 if m.nom == 'dia' else 0.2, vignette=(70, 20), floor_fade=None)
         L.width = W
-        L.point(SUN_D[0], SUN_D[1], r=640, k=1.2, squash=0.9, power=1.2)
+        sx, sy = SUN_M if m.nom == 'dia' else SUN_D
+        L.point(sx, sy, r=640, k=1.2, squash=0.9, power=1.2)
         return L
     L = Light(ambient=-0.2, vignette=(70, 30), floor_fade=None)
     L.width = W                # (la vinyeta, a 640 i no als 480 per defecte de la llibreria)
@@ -354,8 +360,8 @@ def cel(cv, m):
             for x in range(W):
                 t = (y - y0) / (HOR - y0)
                 lvl = 1.0 + 6.0 * t ** 1.2 + (fbm(x / 90, y / 18, 3) - 0.5) * 0.7
-                d = math.hypot(x - SUN_D[0], y - SUN_D[1])
-                lvl += 2.0 * max(0.0, 1 - d / 300) ** 2
+                d = math.hypot(x - SUN_M[0], (y - SUN_M[1]) * 1.4)
+                lvl += 3.0 * max(0.0, 1 - d / 360) ** 1.6
                 cv.put(x, y, SKYD, lvl, lit=0)
         # núvols blancs i alts (es veuen entre la capçada i a la dreta)
         for y in range(y0, HOR - 30):
@@ -363,6 +369,8 @@ def cel(cv, m):
                 c = fbm(x / 60, y / 14, 61, 4) - 0.56 + (y - y0) / (HOR - y0) * 0.1
                 if c > 0:
                     cv.put(x, y, SKYD, 6.5 + c * 8 - (fbm(x / 9, y / 5, 62) - 0.5), lit=0)
+        cv.glow(SUN_M[0], SUN_M[1], 190, GOLD, 0.75)                               # el sol, darrere els troncs
+        cv.glow(SUN_M[0], SUN_M[1], 40, (255, 246, 214), 0.9)
         return
     for y in range(y0, HOR + 2):
         for x in range(W):
@@ -409,13 +417,11 @@ def bosc_fons(cv, m):
         for y in range(int(top), HOR + 18):
             cv.put(x, y, m.haze, 2.4 + (y - top) * -0.02 + (fbm(x / 4, y / 4, 6) - 0.5) * 1.2, lit=0.6)
     # la capçada: fulles de tardor, amb forats per on passa la llum
-    cx1 = W if xmax == W and m.nom == 'dia' else 470                 # de nit, el cel de la dreta queda obert
+    cx1 = 470                                                        # el cel de la dreta queda obert (de dia, hi surt el sol)
     for y in range(cv.top, 110):
         for x in range(0, cx1):
             f = fbm(x / 34, y / 22, 21, 4)
             edge = 0.40 + max(0, y) / 110 * 0.22 + max(0, x - 330) / 140 * 0.3
-            if cx1 == W and x > 420:
-                edge = 0.44 + max(0, y) / 110 * 0.26 + max(0, 560 - x) / 140 * 0.12
             if f > edge:
                 lvl = 2.0 + (f - edge) * 9 + (fbm(x / 3, y / 3, 8) - 0.5) * 1.6 + (1.4 if m.dia else 0)
                 cv.put(x, y, LEAVES, lvl, lit=0.8)
@@ -653,6 +659,41 @@ def forats(cv, m):
             gx = x - rx - 2 + hr(i, k, 3) * (rx * 2 + 4)
             for j in range(int(2 + 3 * t)):
                 cv.put(gx, y - ry - 1 - j, GRASS, 4.4 - j * 0.3, lit=0.5)
+
+
+FLOR_LILA = [(40, 22, 56), (78, 46, 104), (122, 84, 160), (170, 132, 210), (214, 190, 240), (240, 228, 252)]
+FLOR_BLANCA = [(90, 86, 70), (150, 146, 126), (206, 202, 182), (238, 236, 220), (252, 252, 244)]
+_GRASS = set(GRASS)
+
+
+def flors(cv, m):
+    """Al bosc obert, el prat ha florit: margarides, safrà de tardor (lila) i botons d'or, a clapes. Més grosses a prop;
+    només damunt l'herba (no al camí ni a la terra nua)."""
+    rnd = random.Random(17)
+    for _ in range(1400):
+        x = rnd.uniform(0, W)
+        y = rnd.uniform(HOR + 10, 284)
+        t = (y - HOR) / (288 - HOR)
+        if fbm(x / 50, y / 14, 88) < 0.5 - max(0, x - 300) / 2000:                 # a clapes
+            continue
+        if (x - TC) ** 2 / 90 ** 2 + (y - TBASE) ** 2 / 14 ** 2 < 1:                # no a les arrels del roure
+            continue
+        if cv.get(x, y)[:3] not in _GRASS:
+            continue
+        kind = rnd.random()
+        ramp, core = ((FLOR_BLANCA, YELLOWM) if kind < 0.45 else (FLOR_LILA, YELLOWM) if kind < 0.8
+                      else (YELLOWM, YELLOWM))
+        h = int(1 + t * 5 + rnd.random() * 2)
+        for j in range(1, h + 1):                                                   # la tija
+            cv.put(x, y - j, GRASS, 3.4 - j * 0.1, lit=0.5)
+        fy = y - h - 1
+        if t < 0.45:                                                                # lluny: un punt
+            cv.put(x, fy, ramp, 3.6 + rnd.random(), lit=0.6)
+        else:                                                                       # a prop: la corol·la
+            r = 1.2 + t * 1.4
+            cv.disc(x, fy, r, r * 0.7, ramp, lambda nx, ny: 3.6 - ny * 0.8 - nx * 0.3, lit=0.6)
+            if ramp is not YELLOWM:
+                cv.put(x, fy, core, 4.2, lit=0.4)
 
 
 def bassal(cv, m):
@@ -1002,6 +1043,47 @@ def primer_pla(cv, m):
     cv.disc(612, 296, 46, 26, MOSS, lambda nx, ny: 1.0 if ny < -0.55 and fbm(nx * 5, 1, 9) > 0.5 else -9)
     for i, (x, y, a, l, s) in enumerate(((556, 300, 1.7, 80, 1), (596, 296, 2.1, 100, 1), (646, 300, 2.4, 90, 1))):
         falguera(cv, x, y, a, l, side=s, lvl=1.6, seed=10 + i)
+    if m.nom == 'dia':
+        branca_davant(cv)
+
+
+def branca_davant(cv):
+    """De dia: una branca de roure que entra per dalt a la dreta, molt a prop, a contrallum del sol del matí (la vora
+    de les fulles, daurada). Emmarca el quadre per dalt, on a la vora del bosc hi havia el cartell."""
+    p0, p1, p2 = (700, 18), (600, 58), (452, 36)
+    arrel(cv, p0, p1, p2, 9, 2, base=1.4, seed=61, moss=True)
+    arrel(cv, bezier(p0, p1, p2, 0.45), (560, 84), (520, 96), 3, 1, base=1.4, seed=62, moss=False)
+    # el fullatge: una massa amb forats (com la capçada del fons), que penja de la branca; a contrallum, fosc, amb la
+    # vora de cara al sol encesa i alguna fulla que la llum travessa
+    pts = [bezier(p0, p1, p2, i / 60) for i in range(61)] + [bezier((590, 66), (560, 84), (520, 96), i / 20)
+                                                              for i in range(21)]
+    sx, sy = SUN_M
+
+    def dens(x, y):
+        best = 1e9
+        for px, py in pts:
+            dy = y - py
+            dy = dy * 0.45 if dy > 0 else dy * 1.4                                 # penja cap avall
+            best = min(best, math.hypot(x - px, dy))
+        return fbm(x / 10, y / 7, 65, 4) - best / 34
+
+    E = 0.26
+    for y in range(cv.top, 150):
+        for x in range(420, W):
+            f = dens(x, y)
+            if f < E:
+                continue
+            # com la capçada del fons, però més a prop: més fosca a dins i la vora encesa
+            lvl = 1.6 + (f - E) * 7 + (fbm(x / 3, y / 3, 66) - 0.5) * 1.4
+            edge = min(dens(x + dx, y + dy) for dx, dy in ((2, 0), (-2, 0), (0, 2), (0, -2)))
+            if edge < E:
+                ux, uy = sx - x, sy - y
+                n = math.hypot(ux, uy)
+                lvl += 2.0 + (2.4 if dens(x + ux / n * 2, y + uy / n * 2) < E else 0)
+            if fbm(x / 5, y / 5, 68) > 0.64:                                        # fulles que la llum travessa
+                cv.put(x, y, LEAF, 2.4 + (f - E) * 6, lit=0)
+            else:
+                cv.put(x, y, LEAVES, lvl, lit=0)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -1058,21 +1140,26 @@ def escena(nom, oy=-DY, llum_ences=True):
     cel(cv, m if m.nom != 'nit' else Mode('dia'))
     after_sky = cv.img.copy()
     bosc_fons(cv, m)
+    if m.nom == 'dia':                                                              # la boira daurada del matí
+        cv.glow(SUN_M[0], SUN_M[1] + 10, 300, GOLD, 0.45)
     if m.tanca:
         obra(cv)
     terra(cv, m)
     if m.dia:
         clariana(cv, m)
+        flors(cv, m)
     if m.tanca:
         tanca(cv)
     if m.dia:
         forats(cv, m)
         bassal(cv, m)
-    gespa(cv, m)
+    else:
+        gespa(cv, m)
     roure(cv, m)
     porta(cv, m, llum_ences)
     if m.dia and m.nom == 'dia':
         raigs(cv)
+        matinada(cv)
     if m.nom == 'nit':
         # la nit: tot més fosc i blau, menys el cel (que ja és de nit) i el que fa llum
         a0, a1 = np.asarray(after_sky), np.asarray(cv.img)
@@ -1103,16 +1190,37 @@ def escena(nom, oy=-DY, llum_ences=True):
     return cv.img, tl, front
 
 
+def matinada(cv):
+    """De dia: tot el quadre, cap a l'or del matí; més a prop del sol i al fons (l'aire en té), menys al davant."""
+    a = np.asarray(cv.img).astype(np.float32)
+    h, w = a.shape[:2]
+    Y, X = np.mgrid[0:h, 0:w].astype(np.float32)
+    Y -= cv.oy                                                                      # (en y del món)
+    d = np.hypot(X - SUN_M[0], (Y - SUN_M[1]) * 1.3)
+    near = np.clip(1 - d / 520, 0, 1) ** 1.3
+    deep = np.clip(1 - np.abs(Y - HOR) / 90, 0, 1)                                  # l'aire, a l'alçada de l'horitzó
+    k = (0.28 + 0.4 * near + 0.18 * deep)[..., None]
+    warm = a[..., :3] * np.array([1.10, 0.98, 0.74], np.float32) + np.array([20, 12, 0], np.float32)
+    haze = np.array(GOLD, np.float32)
+    out = a[..., :3] * (1 - k) + warm * k
+    kh = (0.32 * near * deep + 0.12 * near)[..., None]
+    out = out * (1 - kh) + haze * kh
+    a[..., :3] = np.clip(out, 0, 255)
+    cv.img.paste(Image.fromarray(a.astype(np.uint8), 'RGBA'))
+    cv.P = cv.img.load()
+
+
 def raigs(cv):
-    """De dia: els raigs de sol que baixen en diagonal entre els troncs, des de dalt a l'esquerra."""
+    """De dia: els raigs del sol del matí, que entren baixos per la clariana de la dreta i travessen el prat."""
     def k(x, y):
         if y < HOR - 40:
             return 0
-        a = math.atan2(y - SUN_D[1], x - SUN_D[0])
+        a = math.atan2(y - SUN_M[1], x - SUN_M[0])
         b = math.sin(a * 23) * 0.5 + 0.5
         b *= fbm(a * 9, 0.5, 91)
-        return max(0.0, b - 0.55) * 0.5
-    cv.tint(0, HOR - 40, W - 1, 290, (255, 236, 170), k)
+        far = min(1.0, math.hypot(x - SUN_M[0], y - SUN_M[1]) / 600)
+        return max(0.0, b - 0.5) * 0.7 * (1 - far * 0.6)
+    cv.tint(0, HOR - 60, W - 1, 290, GOLD, k)
 
 
 def mascara(img):

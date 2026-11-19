@@ -96,7 +96,8 @@
 - **Quan i llum:** una setmana després, de dia. La vora del bosc de l'escena 1 **sense la tanca**: es pot fer a partir
   de `vora_bosc`. El bosc és viu: els `bolets` i les arrels brillen de turquesa.
 - **Coses:** la `porta_oberta` del roure (llum turquesa, ja no vermella); la `taula` feta d'una soca, amb tasses de te
-  de menta; la `gespa` artificial enrotllada, a punt per endur-se-la; els `forats` on hi havia els pals de la tanca.
+  de menta; els `forats` on hi havia els pals de la tanca, on ja torna a créixer l'herba. De l'obra no en queda res
+  més: el prat ha florit, i el sol del matí entra baix i daurat per la clariana de la dreta.
 - **Personatges:** l'`espora`, l'`avia` i la **Iri** a la taula (sala compartida: la Iri necessita un lloc a
   `spawns`); la `urtica` a una branca; el `bufo` en un bassal. La Vet entra per l'esquerra.
 

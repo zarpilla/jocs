@@ -505,8 +505,9 @@ qui.
 
 **Rètol:** «Una setmana després.»
 
-**Sala:** `bosc_obert`, la vora del bosc de l'escena 1 sense la tanca. Hi ha forats on hi havia els pals, la gespa
-artificial enrotllada a punt per endur-se-la i, al peu del roure, la porta oberta. Els bolets i les arrels brillen de
+**Sala:** `bosc_obert`, la vora del bosc de l'escena 1 sense la tanca. De l'obra només en queden els forats on hi havia
+els pals, i ja hi torna a créixer l'herba; el prat ha florit i hi entra el sol del matí. Al peu del roure, la porta
+oberta. Els bolets i les arrels brillen de
 turquesa. Hi ha una taula feta d'una soca amb tasses de te de menta: l'Espora, la Iri, l'àvia i, a les branques,
 les fades. Al bassal del costat, el Registrador.
 

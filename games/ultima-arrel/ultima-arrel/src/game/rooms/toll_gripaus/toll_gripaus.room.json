@@ -443,8 +443,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 110,
-      "y": 238,
+      "x": 150,
+      "y": 236,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -453,7 +453,7 @@
     {
       "instanceId": "bufo-1",
       "definition": "bufo/bufo.character.json",
-      "x": 237,
+      "x": 215,
       "y": 211,
       "initialFacing": "D",
       "initialAnimation": "Idle",
