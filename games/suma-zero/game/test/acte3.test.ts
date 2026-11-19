@@ -23,11 +23,11 @@ describe('Acte 3 · camins', () => {
     const alBar = n.hotspotsIn('final_bar');
     expect(alBar.map((h) => h.id).sort()).toEqual(['ballester', 'neta', 'pons', 'rius', 'tele_apagada']);
     expect(alBar.some((h) => h.visible)).toBe(false);
-    // en Diu, a la cistella; quan mossega el cable (una línia del final), damunt la barra i la tele s'apaga
-    expect(n.placeOf('diu', 'final_bar')).toMatchObject({ x: 430 });
+    // en Diu, a la cistella; quan mossega el cable (una línia del final), al moble de la regleta, i la tele s'apaga
+    expect(n.placeOf('diu', 'final_bar')).toMatchObject({ x: 573 });
     const mossegada = n.ending('final_base').scene.find((l) => l.key === 'final.diu1')!;
     n.apply(mossegada.effects!);
-    expect(n.placeOf('diu', 'final_bar')).toMatchObject({ x: 404 });
+    expect(n.placeOf('diu', 'final_bar')).toMatchObject({ x: 539 });
     expect(n.hotspotsIn('final_bar').find((h) => h.id === 'tele_apagada')?.visible).toBe(true);
     expect(n.outfitOf('vet')).toBe('');
     const estat = Object.fromEntries(n.quests().map((q) => [q.id, q.status]));
