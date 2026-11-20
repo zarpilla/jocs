@@ -104,7 +104,6 @@
         "entrepa_robat": false,
         "enviament_iniciat": false,
         "enviat": false,
-        "escora_vista": false,
         "esmorzar_fet": false,
         "falca_desencallada": false,
         "ferran_pis": false,
@@ -1297,6 +1296,10 @@
               {
                 "who": "player",
                 "text": "sala.camarot_iri.7"
+              },
+              {
+                "who": "player",
+                "text": "sala.camarot_iri.8"
               }
             ],
             "effects": [
@@ -1310,35 +1313,6 @@
           "porta": {
             "name": "sala.camarot_iri.porta.nom",
             "interactions": [
-              {
-                "verb": [
-                  "walkTo",
-                  "use",
-                  "open"
-                ],
-                "if": {
-                  "all": [
-                    {
-                      "var": "escena",
-                      "op": "==",
-                      "value": 1
-                    },
-                    {
-                      "protagonist": "iri"
-                    },
-                    {
-                      "flag": "escora_vista",
-                      "is": false
-                    }
-                  ]
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.camarot_iri.porta.2"
-                  }
-                ]
-              },
               {
                 "verb": [
                   "walkTo",
@@ -1418,11 +1392,6 @@
                   {
                     "who": "player",
                     "text": "sala.camarot_iri.got.2"
-                  }
-                ],
-                "effects": [
-                  {
-                    "setFlag": "escora_vista"
                   }
                 ]
               },
@@ -12297,33 +12266,6 @@
       }
     },
     "hints": {
-      "iri_escora": {
-        "priority": 1,
-        "when": {
-          "all": [
-            {
-              "var": "escena",
-              "op": "==",
-              "value": 1
-            },
-            {
-              "protagonist": "iri"
-            },
-            {
-              "flag": "escora_vista",
-              "is": false
-            }
-          ]
-        },
-        "doneWhen": {
-          "flag": "escora_vista"
-        },
-        "levels": [
-          "pista.iri_escora.1",
-          "pista.iri_escora.2",
-          "pista.iri_escora.3"
-        ]
-      },
       "iri_falca": {
         "priority": 1,
         "when": {
@@ -12335,9 +12277,6 @@
             },
             {
               "protagonist": "iri"
-            },
-            {
-              "flag": "escora_vista"
             },
             {
               "flag": "falca_desencallada",
@@ -12378,9 +12317,6 @@
             },
             {
               "protagonist": "iri"
-            },
-            {
-              "flag": "escora_vista"
             },
             {
               "flag": "falca_desencallada",
@@ -24592,9 +24528,6 @@
       "pista.usb_safata.1": "Ha pujat l'USB.",
       "pista.usb_safata.2": "Agafa l'USB de la safata del pont.",
       "pista.usb_safata.3": "Agafa l'USB de la safata del pont i fes-lo servir amb la impressora.",
-      "pista.iri_escora.1": "Per què t'has despertat? Comprova si el terra fa pendent de debò.",
-      "pista.iri_escora.2": "Al prestatge de damunt la llitera hi ha un got d'aigua.",
-      "pista.iri_escora.3": "Mira el got d'aigua del prestatge del camarot.",
       "pista.iri_falca.1": "La porta de màquines s'encalla des de l'agost. La falca de baix. I tu saps com es desencalla.",
       "pista.iri_falca.2": "La falca de baix s'encalla. Al camarot hi ha la maceta de goma.",
       "pista.iri_falca.3": "Agafa la maceta del camarot i fes-la servir amb la porta de la sala de màquines.",
@@ -25307,7 +25240,7 @@
       "sala.coberta_proa.escotilla.22": "Aguanta. Ara ho obro.",
       "sala.camarot_iri.6": "Un moment.",
       "sala.camarot_iri.7": "El terra fa pendent. Poquet. Però fa tres campanyes que dormo a bord d'aquest vaixell, i l'Arenga no dorm mai torçada.",
-      "sala.camarot_iri.porta.2": "Si surto a les quatre de la matinada per un pendent que m'he imaginat, en Bastida se'n riurà fins a Galway. El got del prestatge no s'imagina res.",
+      "sala.camarot_iri.8": "Primer, a buscar en Diu. I ja que hi som, a veure què li passa a l'Arenga.",
       "sala.camarot_iri.got.nom": "got d'aigua",
       "sala.camarot_iri.got.1": "L'aigua del got no està plana. Fa pendent cap a popa.",
       "sala.camarot_iri.got.2": "L'Arenga s'ha assegut de cul. I a popa, a sota de la línia de flotació, hi ha la meva sala de màquines.",

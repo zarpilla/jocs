@@ -291,12 +291,13 @@ el gat no hi és.
 > IRI: Diu? Diu! Si et troba la Capitana, ets sopa de peix.
 > IRI: Un moment. El terra fa pendent. Poquet. Però fa tres campanyes que dormo amb aquest vaixell, i l'Arenga no
 > dorm mai torçada.
+> IRI: Primer, a buscar en Diu. I ja que hi som, a veure què li passa a l'Arenga.
 
 Això és el que l'ha despertat: la maquinista nota el vaixell amb els peus. El gat és l'excusa per sortir.
 
 **El camarot (tutorial de mirar i agafar).** Al cap del prestatge hi ha un **got d'aigua**, i l'aigua no és plana:
-«L'Arenga s'ha assegut de cul. I a popa, a sota de la línia de flotació, hi ha la meva sala de màquines.» Fins que
-no l'ha mirat, l'Iri no surt («El got del prestatge no s'imagina res»). Sota l'ull de bou hi ha penjada la
+«L'Arenga s'ha assegut de cul. I a popa, a sota de la línia de flotació, hi ha la meva sala de màquines.» No és
+obligatori: la porta entreoberta per on ha marxat en Diu ja diu per on es va. Sota l'ull de bou hi ha penjada la
 **maceta** de goma: és per a la falca de baix de la porta de màquines, que s'encalla des de l'agost.
 
 **El passadís de baix (tutorial de fer servir un objecte).** Un miol darrere la porta de màquines. A terra, les

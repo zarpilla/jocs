@@ -252,7 +252,6 @@ describe('Pistes (revisió)', () => {
 
   it("Escena 1: a la cuina, la pista del muntacàrregues no explica com s'hi va", () => {
     const { n, p } = partida();
-    p.do('look', 'got');
     p.do('pickUp', 'maceta');
     anar(p, 'passadis_baix');
     p.do('look', 'repetidor');

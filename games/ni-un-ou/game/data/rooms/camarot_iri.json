@@ -80,6 +80,10 @@
         {
           "who": "player",
           "text": "sala.camarot_iri.7"
+        },
+        {
+          "who": "player",
+          "text": "sala.camarot_iri.8"
         }
       ],
       "effects": [
@@ -93,35 +97,6 @@
     "porta": {
       "name": "sala.camarot_iri.porta.nom",
       "interactions": [
-        {
-          "verb": [
-            "walkTo",
-            "use",
-            "open"
-          ],
-          "if": {
-            "all": [
-              {
-                "var": "escena",
-                "op": "==",
-                "value": 1
-              },
-              {
-                "protagonist": "iri"
-              },
-              {
-                "flag": "escora_vista",
-                "is": false
-              }
-            ]
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.camarot_iri.porta.2"
-            }
-          ]
-        },
         {
           "verb": [
             "walkTo",
@@ -201,11 +176,6 @@
             {
               "who": "player",
               "text": "sala.camarot_iri.got.2"
-            }
-          ],
-          "effects": [
-            {
-              "setFlag": "escora_vista"
             }
           ]
         },

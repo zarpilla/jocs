@@ -106,7 +106,6 @@ export interface Opcions {
 
 /** Escena 1: la vàlvula. */
 export function escena1(p: Jugador) {
-  p.do('look', 'got'); // el vaixell s'ha assegut de popa: ara ja pot sortir
   p.do('pickUp', 'maceta');
   anar(p, 'passadis_baix');
   p.do('look', 'repetidor');
