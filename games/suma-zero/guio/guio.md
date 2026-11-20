@@ -833,22 +833,23 @@ ROBIN HOOD 3.0.
 **L'escena del bar (comuna, amb línies condicionals):**
 
 > TELE: Els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
-> TELE: Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.
 > TELE (si repartit): ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix.
+> TELE: Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.
 > TOMÀS: Un compte que no existeix? Com la meva dona. I un dia va trucar.
 > VET: Era l'Iri, Tomàs.
 > TOMÀS: Ja ho sé. Però el divorci va ser de debò.
 > IRI: No hem canviat el món.
 > VET (si no repartit): Una mica, sí. El Director es va passar una hora amb dotze euros. Diu que encara en té malsons.
-> IRI (si repartit, en lloc de l'anterior): Tothom té el mateix.
-> VET (si repartit): Tothom menys un compte que no existeix. I el Director ara agafa el metro: diu que és més sostenible.
+> IRI (si repartit, en lloc de l'anterior): El sistema ha resistit, diuen.
+> VET (si repartit): Doncs el Director ara agafa el metro. Diu que és més sostenible.
 > BALLESTER (si aliat_ballester): Un tallat, sisplau. I aquest el pago jo.
 > VET (si li va canviar la clau a en Ballester): I a en Ballester li he enviat una postal: «No érem de la UE. Perdó pel collaret.» És la primera postal que escric sense mentir.
 > NETA-3 (si aliat_neta, amb un davantal): Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga.
 > RIUS (si aliada_rius): Avui hem fitxat a l'hora. Tota la colla.
 > PONS (si aliada_pons): He demanat un augment. M'han dit que sí. Encara no m'ho crec.
 > IRI: Això és un final feliç?
-> VET: És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.
+> VET (si no repartit): És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.
+> VET (si repartit, en lloc de l'anterior): Per a molta gent, sí. En Tomàs ha tornat a obrir el bar, en Marcel ha anat al dentista, i a final de mes cobra tothom. I nosaltres... tenim pizza.
 > MARCEL (si mentida_corporativa): Em van dir que una auditora va dir al Director que la banca és imprescindible.
 > VET: Era una auditora molt convincent.
 > MARCEL (si dignitat): Diuen que una auditora li va parlar de cordons de sabates.

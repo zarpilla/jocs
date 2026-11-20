@@ -3414,14 +3414,14 @@ vet_entretenir — quan juga vet i sync_mobil i NO mobil_resolt i coberta_mobil 
 final_taula «Final · La taula llarga» — quan escapada i (repartit i aliats ≥ 3)
     NARRADOR: Una setmana després. Bar La Propina.
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
-    NARRADOR: Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.
     NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
+    NARRADOR: Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.
     TOMÀS: Un compte que no existeix? Com la meva dona. I un dia va trucar.
     VET: Era l'Iri, Tomàs.
     TOMÀS: Ja ho sé. Però el divorci va ser de debò.
     IRI: No hem canviat el món. ⟨si NO repartit⟩
-    IRI: Tothom té el mateix. ⟨si repartit⟩
-    VET: Tothom menys un compte que no existeix. I el Director ara agafa el metro: diu que és més sostenible. ⟨si repartit⟩
+    IRI: El sistema ha resistit, diuen. ⟨si repartit⟩
+    VET: Doncs el Director ara agafa el metro. Diu que és més sostenible. ⟨si repartit⟩
     VET: Una mica, sí. El Director es va passar una hora amb dotze euros. Diu que encara en té malsons. ⟨si NO repartit⟩
     NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si repartit i aliats ≥ 3⟩
     BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
@@ -3430,7 +3430,8 @@ final_taula «Final · La taula llarga» — quan escapada i (repartit i aliats 
     RIUS: Avui hem fitxat a l'hora. Tota la colla. ⟨si aliada_rius⟩
     PONS: He demanat un augment. M'han dit que sí. Encara no m'ho crec. ⟨si aliada_pons⟩
     IRI: Això és un final feliç?
-    VET: És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.
+    VET: És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza. ⟨si NO repartit⟩
+    VET: Per a molta gent, sí. En Tomàs ha tornat a obrir el bar, en Marcel ha anat al dentista, i a final de mes cobra tothom. I nosaltres... tenim pizza. ⟨si repartit⟩
     MARCEL: Em van dir que una auditora va dir al Director que la banca és imprescindible. ⟨si mentida_corporativa⟩
     VET: Era una auditora molt convincent. ⟨si mentida_corporativa⟩
     MARCEL: Diuen que una auditora li va parlar de cordons de sabates. ⟨si dignitat⟩
@@ -3452,14 +3453,14 @@ final_taula «Final · La taula llarga» — quan escapada i (repartit i aliats 
 final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     NARRADOR: Una setmana després. Bar La Propina.
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
-    NARRADOR: Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.
     NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
+    NARRADOR: Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.
     TOMÀS: Un compte que no existeix? Com la meva dona. I un dia va trucar.
     VET: Era l'Iri, Tomàs.
     TOMÀS: Ja ho sé. Però el divorci va ser de debò.
     IRI: No hem canviat el món. ⟨si NO repartit⟩
-    IRI: Tothom té el mateix. ⟨si repartit⟩
-    VET: Tothom menys un compte que no existeix. I el Director ara agafa el metro: diu que és més sostenible. ⟨si repartit⟩
+    IRI: El sistema ha resistit, diuen. ⟨si repartit⟩
+    VET: Doncs el Director ara agafa el metro. Diu que és més sostenible. ⟨si repartit⟩
     VET: Una mica, sí. El Director es va passar una hora amb dotze euros. Diu que encara en té malsons. ⟨si NO repartit⟩
     NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si repartit i aliats ≥ 3⟩
     BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
@@ -3468,7 +3469,8 @@ final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     RIUS: Avui hem fitxat a l'hora. Tota la colla. ⟨si aliada_rius⟩
     PONS: He demanat un augment. M'han dit que sí. Encara no m'ho crec. ⟨si aliada_pons⟩
     IRI: Això és un final feliç?
-    VET: És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.
+    VET: És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza. ⟨si NO repartit⟩
+    VET: Per a molta gent, sí. En Tomàs ha tornat a obrir el bar, en Marcel ha anat al dentista, i a final de mes cobra tothom. I nosaltres... tenim pizza. ⟨si repartit⟩
     MARCEL: Em van dir que una auditora va dir al Director que la banca és imprescindible. ⟨si mentida_corporativa⟩
     VET: Era una auditora molt convincent. ⟨si mentida_corporativa⟩
     MARCEL: Diuen que una auditora li va parlar de cordons de sabates. ⟨si dignitat⟩
@@ -3492,14 +3494,14 @@ final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
 final_base «Final · Ni caos ni paradís» — quan escapada
     NARRADOR: Una setmana després. Bar La Propina.
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
-    NARRADOR: Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.
     NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
+    NARRADOR: Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.
     TOMÀS: Un compte que no existeix? Com la meva dona. I un dia va trucar.
     VET: Era l'Iri, Tomàs.
     TOMÀS: Ja ho sé. Però el divorci va ser de debò.
     IRI: No hem canviat el món. ⟨si NO repartit⟩
-    IRI: Tothom té el mateix. ⟨si repartit⟩
-    VET: Tothom menys un compte que no existeix. I el Director ara agafa el metro: diu que és més sostenible. ⟨si repartit⟩
+    IRI: El sistema ha resistit, diuen. ⟨si repartit⟩
+    VET: Doncs el Director ara agafa el metro. Diu que és més sostenible. ⟨si repartit⟩
     VET: Una mica, sí. El Director es va passar una hora amb dotze euros. Diu que encara en té malsons. ⟨si NO repartit⟩
     NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si repartit i aliats ≥ 3⟩
     BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
@@ -3508,7 +3510,8 @@ final_base «Final · Ni caos ni paradís» — quan escapada
     RIUS: Avui hem fitxat a l'hora. Tota la colla. ⟨si aliada_rius⟩
     PONS: He demanat un augment. M'han dit que sí. Encara no m'ho crec. ⟨si aliada_pons⟩
     IRI: Això és un final feliç?
-    VET: És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.
+    VET: És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza. ⟨si NO repartit⟩
+    VET: Per a molta gent, sí. En Tomàs ha tornat a obrir el bar, en Marcel ha anat al dentista, i a final de mes cobra tothom. I nosaltres... tenim pizza. ⟨si repartit⟩
     MARCEL: Em van dir que una auditora va dir al Director que la banca és imprescindible. ⟨si mentida_corporativa⟩
     VET: Era una auditora molt convincent. ⟨si mentida_corporativa⟩
     MARCEL: Diuen que una auditora li va parlar de cordons de sabates. ⟨si dignitat⟩

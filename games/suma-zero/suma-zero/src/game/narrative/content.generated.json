@@ -14331,14 +14331,14 @@
           },
           {
             "who": "narrator",
-            "text": "final.tele3"
-          },
-          {
-            "who": "narrator",
             "text": "final.tele2",
             "if": {
               "flag": "repartit"
             }
+          },
+          {
+            "who": "narrator",
+            "text": "final.tele3"
           },
           {
             "who": "tomas",
@@ -14439,7 +14439,18 @@
           },
           {
             "who": "vet",
-            "text": "final.vet2"
+            "text": "final.vet2",
+            "if": {
+              "flag": "repartit",
+              "is": false
+            }
+          },
+          {
+            "who": "vet",
+            "text": "final.vet2_repartit",
+            "if": {
+              "flag": "repartit"
+            }
           },
           {
             "who": "marcel",
@@ -14572,14 +14583,14 @@
           },
           {
             "who": "narrator",
-            "text": "final.tele3"
-          },
-          {
-            "who": "narrator",
             "text": "final.tele2",
             "if": {
               "flag": "repartit"
             }
+          },
+          {
+            "who": "narrator",
+            "text": "final.tele3"
           },
           {
             "who": "tomas",
@@ -14680,7 +14691,18 @@
           },
           {
             "who": "vet",
-            "text": "final.vet2"
+            "text": "final.vet2",
+            "if": {
+              "flag": "repartit",
+              "is": false
+            }
+          },
+          {
+            "who": "vet",
+            "text": "final.vet2_repartit",
+            "if": {
+              "flag": "repartit"
+            }
           },
           {
             "who": "marcel",
@@ -14826,14 +14848,14 @@
           },
           {
             "who": "narrator",
-            "text": "final.tele3"
-          },
-          {
-            "who": "narrator",
             "text": "final.tele2",
             "if": {
               "flag": "repartit"
             }
+          },
+          {
+            "who": "narrator",
+            "text": "final.tele3"
           },
           {
             "who": "tomas",
@@ -14934,7 +14956,18 @@
           },
           {
             "who": "vet",
-            "text": "final.vet2"
+            "text": "final.vet2",
+            "if": {
+              "flag": "repartit",
+              "is": false
+            }
+          },
+          {
+            "who": "vet",
+            "text": "final.vet2_repartit",
+            "if": {
+              "flag": "repartit"
+            }
           },
           {
             "who": "marcel",
@@ -24951,8 +24984,8 @@
       "final.tele3": "Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.",
       "final.tele2": "...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix.",
       "final.iri1": "No hem canviat el món.",
-      "final.iri1_repartit": "Tothom té el mateix.",
-      "final.vet1": "Tothom menys un compte que no existeix. I el Director ara agafa el metro: diu que és més sostenible.",
+      "final.iri1_repartit": "El sistema ha resistit, diuen.",
+      "final.vet1": "Doncs el Director ara agafa el metro. Diu que és més sostenible.",
       "final.vet1_tornat": "Una mica, sí. El Director es va passar una hora amb dotze euros. Diu que encara en té malsons.",
       "final.taula": "Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom.",
       "final.ballester": "Un tallat, sisplau. I aquest el pago jo.",
@@ -24961,6 +24994,7 @@
       "final.pons": "He demanat un augment. M'han dit que sí. Encara no m'ho crec.",
       "final.vet_postal": "I a en Ballester li he enviat una postal: «No érem de la UE. Perdó pel collaret.» És la primera postal que escric sense mentir.",
       "final.iri2": "Això és un final feliç?",
+      "final.vet2_repartit": "Per a molta gent, sí. En Tomàs ha tornat a obrir el bar, en Marcel ha anat al dentista, i a final de mes cobra tothom. I nosaltres... tenim pizza.",
       "final.vet2": "És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.",
       "final.marcel1": "Em van dir que una auditora va dir al Director que la banca és imprescindible.",
       "final.vet3": "Era una auditora molt convincent.",

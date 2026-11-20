@@ -15,14 +15,14 @@
       },
       {
         "who": "narrator",
-        "text": "final.tele3"
-      },
-      {
-        "who": "narrator",
         "text": "final.tele2",
         "if": {
           "flag": "repartit"
         }
+      },
+      {
+        "who": "narrator",
+        "text": "final.tele3"
       },
       {
         "who": "tomas",
@@ -123,7 +123,18 @@
       },
       {
         "who": "vet",
-        "text": "final.vet2"
+        "text": "final.vet2",
+        "if": {
+          "flag": "repartit",
+          "is": false
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.vet2_repartit",
+        "if": {
+          "flag": "repartit"
+        }
       },
       {
         "who": "marcel",
@@ -256,14 +267,14 @@
       },
       {
         "who": "narrator",
-        "text": "final.tele3"
-      },
-      {
-        "who": "narrator",
         "text": "final.tele2",
         "if": {
           "flag": "repartit"
         }
+      },
+      {
+        "who": "narrator",
+        "text": "final.tele3"
       },
       {
         "who": "tomas",
@@ -364,7 +375,18 @@
       },
       {
         "who": "vet",
-        "text": "final.vet2"
+        "text": "final.vet2",
+        "if": {
+          "flag": "repartit",
+          "is": false
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.vet2_repartit",
+        "if": {
+          "flag": "repartit"
+        }
       },
       {
         "who": "marcel",
@@ -510,14 +532,14 @@
       },
       {
         "who": "narrator",
-        "text": "final.tele3"
-      },
-      {
-        "who": "narrator",
         "text": "final.tele2",
         "if": {
           "flag": "repartit"
         }
+      },
+      {
+        "who": "narrator",
+        "text": "final.tele3"
       },
       {
         "who": "tomas",
@@ -618,7 +640,18 @@
       },
       {
         "who": "vet",
-        "text": "final.vet2"
+        "text": "final.vet2",
+        "if": {
+          "flag": "repartit",
+          "is": false
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.vet2_repartit",
+        "if": {
+          "flag": "repartit"
+        }
       },
       {
         "who": "marcel",
