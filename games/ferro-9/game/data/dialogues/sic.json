@@ -83,6 +83,16 @@
         {
           "who": "sic",
           "text": "dlg.sic.que_passa2"
+        },
+        {
+          "who": "sic",
+          "text": "dlg.sic.que_passa3",
+          "if": {
+            "all": [
+              { "var": "sospita_sic", "op": ">=", "value": 2 },
+              { "flag": "mira_salvada", "is": false }
+            ]
+          }
         }
       ],
       "goto": "menu"

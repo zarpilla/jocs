@@ -14382,6 +14382,13 @@
             }
           },
           {
+            "who": "vet",
+            "text": "final.vet_postal",
+            "if": {
+              "flag": "clau_canviada"
+            }
+          },
+          {
             "who": "neta",
             "text": "final.neta",
             "if": {
@@ -14597,6 +14604,13 @@
             "text": "final.ballester",
             "if": {
               "flag": "aliat_ballester"
+            }
+          },
+          {
+            "who": "vet",
+            "text": "final.vet_postal",
+            "if": {
+              "flag": "clau_canviada"
             }
           },
           {
@@ -14828,6 +14842,13 @@
             "text": "final.ballester",
             "if": {
               "flag": "aliat_ballester"
+            }
+          },
+          {
+            "who": "vet",
+            "text": "final.vet_postal",
+            "if": {
+              "flag": "clau_canviada"
             }
           },
           {
@@ -23811,7 +23832,21 @@
               },
               {
                 "who": "soler",
-                "text": "dlg.soler.fill2"
+                "text": "dlg.soler.fill2",
+                "if": {
+                  "var": "reinicis_aeroport",
+                  "op": "<",
+                  "value": 1
+                }
+              },
+              {
+                "who": "soler",
+                "text": "dlg.soler.fill2_altra",
+                "if": {
+                  "var": "reinicis_aeroport",
+                  "op": ">=",
+                  "value": 1
+                }
               }
             ],
             "goto": "nom"
@@ -24494,6 +24529,7 @@
       "dlg.soler.fill1": "Un nen perdut? Tranquil·la, senyora. El trobarem.",
       "dlg.soler.fill1_altra": "Un altre cop, senyora? ...Aquest nen s'escapa molt.",
       "dlg.soler.fill2": "Com es diu?",
+      "dlg.soler.fill2_altra": "Com es deia? Ho torno a apuntar.",
       "dlg.soler.hola": "Bon dia. Si busca la cua, és allà.",
       "dlg.soler.opt.adeu": "Res, gràcies.",
       "dlg.soler.opt.edat_curt": "Set.",
@@ -24639,7 +24675,7 @@
       "dlg.ballester.opt.serie": "Què mira, al mòbil?",
       "dlg.ballester.opt.adeu": "Continuï, continuï.",
       "dlg.ballester.seguretat1": "Càmeres, una ràdio i jo. Les càmeres no les miro. La ràdio, la sento. I jo hi soc.",
-      "dlg.ballester.seguretat2": "Si al banc sona res, jo ho sento.",
+      "dlg.ballester.seguretat2": "Cada sala tancada té un micròfon que va a parar a la ràdio. Si al banc sona res, jo ho sento.",
       "dlg.ballester.collaret1": "La clau del Llibre Major. El banc no es fia de ningú.",
       "dlg.ballester.collaret2": "Ni dels seus. Sobretot dels seus.",
       "dlg.ballester.serie1": "Ara no, senyora, estic de servei.",
@@ -24757,8 +24793,8 @@
       "dlg.llibre.ok2": "Vet: quan demani el codi, li arribarà al mòbil. Si el Director el mira, ho cancel·larà. Tingues-lo entretingut.",
       "dlg.llibre.ok3": "Entretenir un director. És el que faig millor, després de mentir.",
       "dlg.aturada.pregunta": "ROBIN HOOD 2.0: ATURAT. AL COMPTE ZERO HI HA TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?",
-      "dlg.aturada.rius": "El compte de la Rius! El de les nòmines: per aquí, els diners arriben a tothom alhora. Sense rondes de tres hores.",
-      "dlg.aturada.ballester": "El compte 0001, el d'en Ballester. Per aquí, els diners arriben a tothom alhora. Sense rondes de tres hores.",
+      "dlg.aturada.rius": "El compte de la Rius! El de les nòmines: no paga per rondes, ho paga tot d'un sol lot, a les dotze. Per aquí, arriba a tothom alhora.",
+      "dlg.aturada.ballester": "El compte 0001, el d'en Ballester. Les nòmines no van per rondes: surten totes d'un sol lot, a les dotze. Per aquí, arriba a tothom alhora.",
       "dlg.aturada.sense_compte": "Repartir-ho a tothom alhora? Em caldria un compte que arribi a tothom, i no en tinc cap. Doncs només queda una sortida.",
       "dlg.aturada.opt.tornar": "Tornar-ho al banc. Als comptes d'origen.",
       "dlg.aturada.tornar1": "TRANSFERÈNCIA: COMPTE ZERO → COMPTES D'ORIGEN. COMPLETADA.",
@@ -24769,10 +24805,10 @@
       "dlg.aturada.fi1": "Iri... ho has fet?",
       "dlg.aturada.fi2": "Ho hem fet. Espera...",
       "dlg.aturada.zero1": "La pantalla parpelleja. COMPTE ZERO: SALDO... el mateix d'abans. Com si no n'hagués sortit ni un euro.",
-      "dlg.aturada.zero2": "Això no pot ser. Els diners han sortit. I continuen aquí.",
+      "dlg.aturada.zero2": "Els diners han sortit: ja són als comptes, i a les dotze les pensions cobren. Però aquí n'hi continua havent el mateix.",
       "dlg.aturada.zero3": "COMPTE ZERO. TITULAR: CLASSIFICAT. CONTRASENYA: ********.",
       "dlg.aturada.zero4": "Prova Rockefeller.",
-      "dlg.aturada.zero5": "Ja ho he provat. Aquest compte no és del Director. És d'algú que té més que el Director.",
+      "dlg.aturada.zero5": "Ja ho he provat. Aquest compte ja hi era abans del virus, i no és del Director. És d'algú que té tant com tot el món junt.",
       "dlg.aturada.zero6": "Ja hi pensarem. Ara, a fugir.",
       "dlg.aturada.fi3": "Al despatx, el Director mira la gravació de l'ascensor de servei: «Una tècnica... amb dessuadora?»",
       "dlg.aturada.fi4": "Megafonia: «Atenció, personal de seguretat: busquem una noia amb dessuadora.»",
@@ -24853,6 +24889,7 @@
       "final.neta": "Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga.",
       "final.rius": "Avui hem fitxat a l'hora. Tota la colla.",
       "final.pons": "He demanat un augment. M'han dit que sí. Encara no m'ho crec.",
+      "final.vet_postal": "I a en Ballester li he enviat una postal: «No érem de la UE. Perdó pel collaret.» És la primera postal que escric sense mentir.",
       "final.iri2": "Això és un final feliç?",
       "final.vet2": "És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.",
       "final.marcel1": "Em van dir que una auditora va dir al Director que la banca és imprescindible.",
@@ -25871,7 +25908,7 @@
       "sala.bcmu_passadis.ascensor.no": "Baixar? El Llibre Major és aquí dalt.",
       "sala.bcmu_passadis.ascensor.look": "L'ascensor de servei. Per avall, només hi ha feina.",
       "sala.bcmu_escombraries.nom": "La sala d'escombraries",
-      "sala.bcmu_escombraries.intro1": "La sala d'escombraries. Bosses, olor de paper triturat i, al fons, un armari gris amb llums verds.",
+      "sala.bcmu_escombraries.intro1": "La sala d'escombraries. Bosses, olor de paper triturat, un micròfon al sostre amb una etiqueta («SEGURETAT ESCOLTA. PER LA SEVA SEGURETAT») i, al fons, un armari gris amb llums verds.",
       "sala.bcmu_escombraries.intro2": "Hola, preciós. Quaranta-dos anys i encara funciones. El Llibre Major.",
       "sala.bcmu_escombraries.intro3": "Vet, ja hi soc. On ets?",
       "sala.bcmu_escombraries.intro4": "A seguretat, amb en Ballester. Quan vulguis.",
@@ -25943,7 +25980,7 @@
       "sala.bcmu_seguretat.monitors.look": "Vint monitors i ningú que els miri. L'art contemporani de la seguretat.",
       "sala.bcmu_seguretat.radio.nom": "ràdio",
       "sala.bcmu_seguretat.radio.look_bips": "La ràdio d'en Ballester. Per aquí sent tots els bips del banc. Té l'oïda d'un ratpenat.",
-      "sala.bcmu_seguretat.radio.look": "La ràdio d'en Ballester. Sempre encesa, sempre a prop de la seva mà.",
+      "sala.bcmu_seguretat.radio.look": "La ràdio d'en Ballester. Hi van a parar els micròfons de totes les sales tancades. Sempre encesa, sempre a prop de la seva mà.",
       "sala.bcmu_seguretat.radio.usa": "Tocar la ràdio d'un guarda és com tocar el plat d'un gos.",
       "sala.bcmu_seguretat.got.nom": "got",
       "sala.bcmu_seguretat.got.trenca1": "Ui! Se m'ha escapat.",

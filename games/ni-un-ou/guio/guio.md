@@ -268,8 +268,8 @@ Cinemàtica, sala `proleg_punt7`.
 > JUANA: Ni un ou. *(Hi escriu amb retolador.)*
 > JUANA: Mostra 7. *(Mira la plataforma, que té el logotip tapat amb cinta americana. Als llums de la plataforma,
 > una silueta la mira amb uns prismàtics.)* Bona nit a tu també.
-> *(A popa, en Bastida també la mira. Quan la Juana aixeca el pot, ell treu de la butxaca una cosa petita amb una
-> pantalla que fa llum, i escriu.)*
+> *(A bord, algú més la mira. Quan la Juana aixeca el pot, en algun lloc del vaixell s'encén una pantalla petita.
+> Una mà hi escriu. No es veu de qui és: hi ha vuit persones a bord.)*
 > TÍTOL: Ni un ou
 > TÍTOL: Acte 1 · Aigua a la sentina
 
@@ -552,8 +552,8 @@ per a la Vet: «Si no torno, el portàtil. J.»
   massa curta.» (Si la prova: «Contrasenya incorrecta.»)
 - **La Vet té les fitxes mèdiques** de tothom a la infermeria (les de les revisions). L'Iri li ho demana pel
   walkie. La de la Juana: «Contacte d'emergència: Pilar Solà Puig, 65 anys. Parentiu: mare.» → **Pilar**.
-  (Ho han dit pel walkie, i la Nadia ho sent. Per això a l'Escena 5 s'endú el portàtil algú que ja en sap la
-  contrasenya.)
+  (Ho han dit pel walkie, i la Nadia ho sent. Com sent, després, «He obert el portàtil»: per això a l'Escena 5
+  el portàtil desapareix. En Bastida no el vol llegir; el llença al mar abans que les dades surtin del vaixell.)
 
 **Què hi ha:** les fotos de la plataforma, les coordenades del Punt 7, l'anàlisi del marcador de Skarn i el registre
 de la Juana. Tres coses:
@@ -591,7 +591,7 @@ primer, però sense clau.)
 
 **Què passa.** L'Iri torna al laboratori: algú s'ha endut el portàtil. (Li queda la còpia de l'USB.) L'Iri ho
 repassa al quadern: el laboratori remenat després de «amb la mostra a bord», les mostres d'en Bastida després de
-la Juana, el portàtil després de la contrasenya. Tot el que han dit pel walkie.
+la Juana, el portàtil just després de dir que l'havia obert. Tot el que han dit pel walkie.
 
 **Trencaclosques 5.0 — Sense walkie.** No ho pot dir pel walkie. L'Iri ha de trobar com parlar amb la Vet sense
 que ho senti ningú: baixa al rebost, escriu un paper i l'envia pel **muntacàrregues**. [SO: muntacarregues] Si
@@ -1045,7 +1045,8 @@ Perquè el culpable sigui just, el jugador ha de poder endevinar-lo abans de la 
 | Pista | On | Apunta a | Com es pot despistar |
 |---|---|---|---|
 | El nus Bastida a la brida | Esc. 1 | Algú de bord | «Ens el va ensenyar a tots.» |
-| Bastida baixa la zòdiac i escriu en un aparell | Pròleg | Bastida | És el contramestre: baixar la zòdiac és la seva feina. |
+| Bastida baixa la zòdiac | Pròleg | Bastida | És el contramestre: baixar la zòdiac és la seva feina. |
+| Una mà escriu en una pantalla quan la Juana aixeca el pot | Pròleg | Algú de bord | No es veu de qui és. |
 | La volta de més del nus | Esc. 1 i 2 | Bastida (ho veu la Vet a l'esmorzar) | «Algú que l'ha après malament.» |
 | En Bastida arriba just quan s'acaba | Esc. 1 | Bastida | «He sentit la bomba.» |
 | «L'hauries pogut tirar per la borda» | Esc. 1 | Bastida | Sembla un consell de mariner vell. |
@@ -1077,7 +1078,7 @@ A afinar quan es jugui (a Suma Zero els comptes van canviar dues vegades).
 ```
 ACTE 1
   [cisalla → brida (volta de més)] + [travesser (Vet) → muntacàrregues → palanca] → vàlvula tancada → separador
-  [3 revisions de 4, Capitana obligatòria] → Blau Net · [coberta de proa] → la Juana → «volen Valmark»
+  [les 4 revisions, la Capitana inclosa] → Blau Net · [coberta de proa] → la Juana → «volen Valmark»
   (opcional) [Bastida a la borda] → arengades
   [sincronia de la ràdio + revisió d'en Bastida] → tall amb osca + cambra freda + cafè
                                                 → «la banda és escoltada» + el metge comprat
@@ -1138,14 +1139,15 @@ ACTE 3
 10. **Febrer:** la campanya és a l'hivern, quan fresa l'arengada. Torna a sortir a l'abril. -> fixat
 11. **El final 1 (cap aliat) és rar a propòsit:** només hi arriba qui no fa cap missió ni tria «la veritat» a
     l'Escena 9. -> fixat
+12. **El Ferran no surt mai.** Ni escena ni veu: és un jersei que li va gran a la Vet, un pis a primera línia de mar
+    (la Rut, Escena 3) i un forat a la infermeria. Cap text no promet que se'l trobi. -> fixat
 
 ## Preguntes obertes
 
 1. **La xifra d'en Bastida:** 300.000 € i una feina d'assessor. Massa, poc?
-2. **El metge comprat** (el Ferran): queda com a detall o se'n fa una mini-escena?
-3. **El ganxo del final** («Mostra 8. No és al mar.», amb les anàlisis de sang dels pescadors): serveix per a un
+2. **El ganxo del final** («Mostra 8. No és al mar.», amb les anàlisis de sang dels pescadors): serveix per a un
    quart joc, o es treu?
-4. **El fons de Galway:** un bar real de port (genèric) o una ciutat que no es diu?
+3. **El fons de Galway:** un bar real de port (genèric) o una ciutat que no es diu?
 
 ---
 
@@ -1252,3 +1254,12 @@ més fàcil és recordar, no resoldre.
 | 6 | A l'Escena 7, la Juana repetia «El dipòsit 2. Pel rebost.» | Repeteix els dos camins i respon al pany forçat i a l'entrepà d'en Tomàs. |
 | 7 | L'Acte 3 començava sense que ningú digués què calia fer, i la Juana parlava d'«a la reunió». | El pla pel tub en acabar el títol; la Juana diu que la reunió la convoca la Capitana. |
 | 8 | L'inici no explicava per què l'Iri és desperta a les 3:40 ni per què va a màquines, i al camarot i al passadís no hi havia res a fer. | La nota amb els peus que el vaixell fa pendent; el got d'aigua torçat, les petjades mullades d'en Diu, el repetidor tot verd i la falca encallada de la porta de màquines (la maceta del camarot). |
+
+## Annex E: forats de coherència (novembre de 2026)
+
+| # | El forat | Arreglo |
+|---|---|---|
+| 1 | Al pròleg en Bastida treia el missatger i escrivia: el culpable se sabia abans de començar. | «A bord, algú més la mira»: una pantalla s'encén en algun lloc del vaixell i una mà hi escriu. No es veu de qui és. |
+| 2 | El mapa de dependències deia «3 revisions de 4»; el joc en demana quatre. | El mapa diu les quatre, la Capitana inclosa. |
+| 3 | El portàtil desapareixia «després de la contrasenya», però en Bastida el llença al mar sense obrir-lo. | Desapareix després que l'Iri digui «He obert el portàtil»: les dades hi són, i no han de sortir del vaixell. |
+| 4 | Pregunta oberta: escena per al Ferran? | No. Decisió 12. |

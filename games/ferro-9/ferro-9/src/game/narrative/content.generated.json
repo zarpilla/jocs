@@ -10553,6 +10553,10 @@
                 "text": "sala.gavina_passadis.fi2"
               },
               {
+                "who": "player",
+                "text": "sala.gavina_passadis.fi2b"
+              },
+              {
                 "who": "narrator",
                 "text": "sala.gavina_passadis.fi3"
               },
@@ -18398,6 +18402,23 @@
               {
                 "who": "sic",
                 "text": "dlg.sic.que_passa2"
+              },
+              {
+                "who": "sic",
+                "text": "dlg.sic.que_passa3",
+                "if": {
+                  "all": [
+                    {
+                      "var": "sospita_sic",
+                      "op": ">=",
+                      "value": 2
+                    },
+                    {
+                      "flag": "mira_salvada",
+                      "is": false
+                    }
+                  ]
+                }
               }
             ],
             "goto": "menu"
@@ -18568,6 +18589,7 @@
       "dlg.sic.opt.adeu": "Res, res.",
       "dlg.sic.que_passa1": "Falten coses. Una clau anglesa, un imant... i qui sap què més.",
       "dlg.sic.que_passa2": "I cada vegada que la cambra fa «zing», en falta una altra.",
+      "dlg.sic.que_passa3": "L'expedient ja té una sospitosa: la d'Orís, la seva companya de torn. Ja veurem si és l'única.",
       "dlg.sic.passar1": "No.",
       "dlg.sic.director1": "Al despatx. Esperant que vostè hi vagi a confessar.",
       "dlg.sic.director2": "Jo no hi aniria.",
@@ -18578,7 +18600,7 @@
       "dlg.sic.opt.enganyar": "Inspector, m'ha semblat veure algú al soterrani, al magatzem del ferro-9.",
       "dlg.sic.enganyar1": "Al magatzem? El lladre!",
       "dlg.sic.enganyar2": "No es mogui d'aquí, operària. I no toqui res.",
-      "dlg.directora.primera4": "Ah, i he fet treure el tub de la vàlvula de la teva llançadora. Per si et venien ganes de viatjar.",
+      "dlg.directora.primera4": "Ah, i he fet treure el tub de la vàlvula de la teva llançadora. Per si et venien ganes de viatjar: ara l'única sortida d'aquí és el meu pacte.",
       "dlg.cargol.opt.tub": "Necessito un tub de vàlvula de ferro-9.",
       "dlg.cargol.tub1": "Un tub de ferro-9, senyora Iri? El Director l'ha anomenada per megafonia. Segons el meu manual, això la converteix en fugitiva.",
       "dlg.cargol.tub2": "I els fugitius no omplen formularis. No hi ha casella.",
@@ -18678,7 +18700,7 @@
       "final.fugida.titol": "Final · La fugida",
       "final.fugida.text": "La Vet somriu. Ella sap on va anar la I. Després pren el camí de l'Anell de Baix, on encara respiren amb els seus filtres.",
       "final.veritat.titol": "Final · La veritat a temps",
-      "final.veritat.text": "En aquest món, la Vet no ha estat mai presa. Però ho recorda tot. I a l'altra banda de cent vint anys, una enginyera del torn de nit també.",
+      "final.veritat.text": "En aquest món, la Vet no ha estat mai presa. Però ho recorda tot: el camp no esborra qui hi ha estat a dins. I a l'altra banda de cent vint anys, una enginyera del torn de nit també.",
       "final.correspondencia.titol": "Final · Correspondència",
       "final.correspondencia.text": "La finestra torna a funcionar. Dins la cambra, una nota nova: «Hola, V. Tinc tantes coses per explicar-te. —I.»",
       "final.fugida.1": "La llançadora vella travessa la nit. A dins, una presonera, un tub de ferro-9 nou i una llibreta de torn de fa cent vint anys.",
@@ -18689,7 +18711,7 @@
       "final.fugida.mira": "Al seu costat, la Mira d'Orís somriu. Ella no va perdre mai la feina.",
       "final.fugida.cargol": "El conserge del museu és un robot vell i rovellat. Es diu Cargol, i ho explica a tothom qui hi entra.",
       "final.fugida.mos": "En Mos surt de la presó maquillat, com sempre. A fora l'espera una dona que té els seus ulls: la Nura.",
-      "final.oris.1": "La llançadora vella travessa la nit. La Vet té mal de cap: el pitjor de tots. Com si el món sencer s'hagués girat.",
+      "final.oris.1": "La llançadora vella travessa la nit. La Vet té mal de cap: el pitjor de tots. El món sencer es reescriu al seu voltant, i a ella no la toca: ha passat massa nits dins el camp.",
       "final.oris.2": "Cent vint anys abans, una ajudant del torn de nit, la Mira d'Orís, va fer públics uns plànols.",
       "final.oris.3": "La Corporació Aldaia no va arribar a construir mai cap presó. La Gavina és una estació orbital: l'Estació d'Orís.",
       "final.oris.4": "La Vet hi fa mitja volta. Al moll l'espera una dona jove amb el cabell coure i l'uniforme de directora de l'estació.",
@@ -19556,6 +19578,7 @@
       "sala.gavina_passadis.porta_cella.nom": "cel·la 9",
       "sala.gavina_passadis.fi1": "Fora de la cel·la!",
       "sala.gavina_passadis.fi2": "Ara només em falta sortir d'una presó orbital. Bufar i fer ampolles.",
+      "sala.gavina_passadis.fi2b": "Al mòdul C no hi ha guàrdies. Als del reciclatge no ens vigila ningú: on hem d'anar, en una presó orbital?",
       "sala.gavina_passadis.fi3": "Mentrestant, al passat, l'inventari del matí no quadra.",
       "sala.gavina_passadis.fi4": "Falten una clau anglesa i un imant de ferro-9. L'Inspector Sic obre un expedient.",
       "sala.gavina_passadis.nom": "Passadís del mòdul C",
@@ -19829,7 +19852,7 @@
       "sala.gavina_cella.reixa.look": "Una reixa de ventilació arran de terra. El rovell l'ha soldada a la paret.",
       "sala.gavina_cella.panell.mapa1": "Què hi envies, interna?",
       "sala.gavina_cella.panell.mapa2": "Un fullet de la Sala de la Memòria. Que vegi que m'he reformat.",
-      "sala.gavina_cella.panell.mapa3": "M'agrada. La reeducació funciona.",
+      "sala.gavina_cella.panell.mapa3": "Un fullet del museu del meu rebesavi. No cal girar-lo: me'l sé de memòria. La reeducació funciona.",
       "sala.gavina_cella.panell.mapa4": "MARE: quan acabi, tanca la cel·la. La interna no surt d'aquí fins al vespre.",
       "sala.gavina_cella.panell.no_vibra": "El panell no vibra. A l'altra banda no hi ha ningú: la I. no és a la cambra.",
       "sala.gavina_cella.panell.pacte_res": "Quan jo t'ho digui, interna. Ni un minut abans.",

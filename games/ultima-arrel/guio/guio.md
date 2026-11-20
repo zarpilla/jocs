@@ -92,7 +92,10 @@ Cada germana té el seu inventari. **No es passen objectes mentre es juga.** Qua
 l'altra (el xiulet de les fades), passa al final d'una escena, quan les dues coincideixen (escena 6a): és una línia
 més del final, no una acció del jugador.
 
-Cada germana en juga **quatre**: la Iri, les escenes 1, 2, 4 i 6b; la Vet, la 3, la 5, la 6a i la 7.
+Cada germana en juga **quatre**: la Iri, les escenes 1, 2, 4 i 6b; la Vet, la 3, la 5, la 6a i la 7. L'única
+vegada que una germana en juga dues de seguides és la Vet, la 5 i la 6a: hi ha un rètol de dia pel mig («Dilluns.
+Festa Major. Les nou del matí»), i la primera línia de la 6a ho explica (la Iri, pel walkie: «Soc al bus... Arribo a
+les nou i mitja. Tu prepara-ho tot»).
 
 ### El walkie
 
@@ -333,7 +336,7 @@ catapulta d'aglans.
 > CARD: És una trampa.
 > PICA: Brutal.
 
-La Vet té a la motxilla el **walkie** i el **pot de melmelada** de l'àvia (de préssec), «per a l'Espora». La Iri
+La Vet té a la motxilla el **walkie** i el **pot de melmelada** de l'àvia (de préssec), «per fer amics». La Iri
 no hi és: és a casa, ajudant l'àvia, i respon pel walkie.
 
 **Trencaclosques 3.1 — Guanyar-se les fades (parlar, donar).** Les fades no s'hi fien («Treballes per a la del
@@ -453,8 +456,8 @@ no es toca, que és de lloguer»). Si la Vet desendolla l'**arbre Wi-Fi**, la vi
 
 La Pla surt a fora amb la tauleta enlaire.
 
-**Trencaclosques 5.3 — L'altaveu (mirar, fer servir).** L'altaveu té una ruleta de «Ràdio» amb canals. La Vet mira
-el seu walkie: canal 7. Posa l'altaveu al canal 7 i fa la prova:
+**Trencaclosques 5.3 — L'altaveu (mirar, fer servir).** L'altaveu té una ruleta: «RÀDIO I WALKIES. CANALS 1 A 8».
+És el pla de la Iri de l'escena 2 («Doncs ho farem sortir per un altaveu»). La Vet mira el seu walkie: canal 7. Posa l'altaveu al canal 7 i fa la prova:
 
 > VET: *(al walkie, xiuxiuejant)* Iri. Digues alguna cosa. Canvi.
 > ALTAVEU: *(la veu de la Iri, fortíssima)* QUÈ VOLS QUE DIGUI? CANVI.
@@ -482,8 +485,8 @@ encara hi ha feina (escena 6a).
 l'àvia, que munta la parada de melmelada al fons, dos operaris que estenen la gespa artificial, i la **Txell** de TV
 Comarca amb el càmera, que prova plans de l'escenari amb el trípode. La **pantalla gegant** és muntada damunt
 d'una **bastida** de tubs, i al seu peu hi ha els tres **sensors d'aire** («AIRE: PUR 100%»). A les branques de
-dalt, si es miren de prop, tres crestes de fada. El bassal del costat és buit: el Registrador arribarà a les deu en
-punt, ni un minut abans («Horari: sempre que hi hagi aigua.»). La Senyora Pla no hi és: és a la caseta, maquillant-se.
+dalt, si es miren de prop, tres crestes de fada. Al bassal del costat, ple d'aigua, encara no hi ha ningú: el
+Registrador arribarà a les deu en punt, ni un minut abans. La Senyora Pla no hi és: és a la caseta, maquillant-se.
 
 **Entrada.**
 
@@ -519,8 +522,9 @@ una conversa amb opcions, i com a les fades, no es pot perdre: es pot tornar a p
 - «Passarà una cosa molt forta.» → «Sempre diuen això. Després és una cinta tallada.»
 - «La meva germana sap una cosa del bosc.» → «Tothom sap coses del bosc. Tinc el pla.»
 - «Jo soc la del canal 7.» *(ensenyant el walkie)* → la Txell s'atura. «...Canal 7? TV Comarca és el canal 7 de la
-  TDT local.» La Vet: «Ja ho sé. És el número més valent.» La Txell riu, i treu la càmera del trípode: «Doncs a
-  l'espatlla. Si no passa res, almenys tindré l'àvia de la melmelada.»
+  TDT local.» La Vet: «Ja ho sé. I l'altaveu de la senyora Pla també és al canal 7. L'hi he posat jo.» La Txell mira
+  l'altaveu, riu, i el càmera treu la càmera del trípode: «Doncs a l'espatlla. Si no passa res, almenys tindré l'àvia
+  de la melmelada.» (Que la tele també sigui el 7 és només la porta d'entrada: el que la convenç és l'altaveu.)
 
 (La tercera opció només surt quan la Vet ha mirat la Txell: el càmera té la càmera al trípode, i al costat hi posa
 «TV7». Si no ho veu, la pista de la Iri, pel walkie: «Mira bé la càmera de la tele. Quin número hi posa? Canvi.»)
@@ -575,7 +579,8 @@ Pla es repeteix amb gràcia («Ho repeteixo per als de darrere»). No es pot per
 > PLA: *(un silenci; somriure)* Molt bé. Gràcies a tots per venir. *(a la tauleta, en veu baixa)* Això no era a la
 > presentació.
 
-La Pla recull i se'n va. El conductor de la formigonera fa marxa enrere. La gent aplaudeix, i ningú no sap ben bé a
+La Pla recull i, abans d'anar-se'n, li diu al conductor de la formigonera: «Avui no. Fins que ho miri el jurídic.»
+La formigonera fa marxa enrere. La gent aplaudeix, i ningú no sap ben bé a
 qui.
 
 ### Escena 7 — El bosc obert (Vet, epíleg)
@@ -609,6 +614,9 @@ n'anem a la Vall de Sorreu, on la gent és més moderna. Bosc 3.0: pròximament.
 
 > VET: Vall de Sorreu, Vall de Sorreu, em sentiu? Som les del Bosc de la Coma. Canvi.
 > *(silenci; i després, molt fluix, un brunzit turquesa sota terra)*
+
+El rètol final ho tanca: la xarxa torna a parlar; «L'Ajuntament va mirar els plànols de 1923 i va treure el permís
+d'obres a NaturaPlus. El Registrador Bufó va arxivar el cas amb tres segells»; les fades tenen un gronxador nou.
 
 Crèdits.
 
@@ -670,7 +678,7 @@ Els objectes que ja no serveixen es treuen de l'inventari en acabar l'escena, pe
 
 | Element | Al nostre JSON / codi |
 |---|---|
-| Una escena, una germana | Cada sala amb `"protagonist"`. Les escenes 6b i 7, on l'altra hi és com a personatge, són sales compartides (`"protagonists": ["iri", "vet"]`), i s'hi situen totes dues. El canvi d'escena és un efecte al final de l'escena (`situar` + `protagonista`), i el rètol de temps és la primera línia (`title`) de l'`onEnter` de la sala nova. **Sense botó de canviar**: `switchWhen` no es compleix mai. La 6a és una sala a part (`zona_mati`, de la Vet), amb l'art de `zona_zero` (el mateix mòdul de dibuix amb un altre estat: sense públic, el trípode, el bassal buit i la bastida a punt de pujar-hi), perquè el motor fa una escena per sala. |
+| Una escena, una germana | Cada sala amb `"protagonist"`. Les escenes 6b i 7, on l'altra hi és com a personatge, són sales compartides (`"protagonists": ["iri", "vet"]`), i s'hi situen totes dues. El canvi d'escena és un efecte al final de l'escena (`situar` + `protagonista`), i el rètol de temps és la primera línia (`title`) de l'`onEnter` de la sala nova. **Sense botó de canviar**: `switchWhen` no es compleix mai. La 6a és una sala a part (`zona_mati`, de la Vet), amb l'art de `zona_zero` (el mateix mòdul de dibuix amb un altre estat: sense públic, el trípode, el bassal sense el Registrador i la bastida a punt de pujar-hi), perquè el motor fa una escena per sala. |
 | Walkie | Diàleg `walkie`, amb un node per sala (`inRoom`). Els passos (gravar, canal 7, el crit a la presentació) són interaccions de l'objecte `walkie` amb el `corn` i l'`altaveu`. |
 | Lupa | `hints.json`, amb `targets` (les coses on apunta) a cada pista. Al HUD, el botó «Canvia» és la lupa (`botoPista` a `joc.ts`): en prémer-lo, la pista i els filaments turquesa (`game.showThreads`). Per mirar una cosa amb la lupa (les arrels), es fa servir l'objecte `lupa` amb la cosa. |
 | Pistes de la Vet | Les pistes de les seves sales porten `"who": "iri"`: la Iri les diu pel walkie (a l'escena 7, de la taula estant). |
@@ -701,6 +709,7 @@ Els objectes que ja no serveixen es treuen de l'inventari en acabar l'escena, pe
 - El final és agredolç: la Pla se'n va a fer el Bosc 3.0 a una altra comarca.
 - Només en català.
 - Art: la referència 1 mana; de la 2, l'escena sí i el personatge no.
+- La Vet juga la 5 i la 6a seguides (la Iri és al bus); no s'intercanvien la 4 i la 5.
 
 ## Preguntes obertes
 
@@ -709,5 +718,3 @@ Els objectes que ja no serveixen es treuen de l'inventari en acabar l'escena, pe
 2. La Vet, amb gorra d'orelles d'os i botes grogues: és prou diferent de la Iri de silueta?
 3. L'ordre fix de l'acte 2 (fades, gripaus, caseta): o voleu que el jugador pugui triar entre fades i gripaus?
    (Ho complica una mica: s'hauria de triar qui juga.)
-4. Amb la 6a, la Vet juga dues escenes seguides (la 5 i la 6a, amb un rètol de dia pel mig). Si molesta, la 4 (gripaus)
-   i la 5 (caseta) no depenen l'una de l'altra i es poden intercanviar: Iri, Iri, Vet, Vet, Iri, Vet, Iri, Vet.

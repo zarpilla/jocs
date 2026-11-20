@@ -7,7 +7,8 @@ sense res clicable: l'Atlàntic Nord de nit, al Punt 7, a les tres de la matinad
 És el mateix pla que la portada, sense el títol: «Comença» esvaeix el títol i hi entra. La zòdiac hi fa la seva
 història a trossos, de fons i sense detall (vegeu `portada.CLIPS`): cada frase de rooms/proleg_punt7.json engega
 el seu tros amb una indicació d'escena (`{"prop": "zodiac", "anim": "z_baixa"}`). Al final s'encén el focus de la
-silueta de la plataforma («vigia_on») i en Bastida, a popa, treu el missatger i escriu («bastida_escriu»).
+silueta de la plataforma («vigia_on») i en Bastida, a popa, treu el missatger i escriu («bastida_escriu»; el
+guió ja no la fa servir: el pròleg no diu qui escriu).
 """
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 

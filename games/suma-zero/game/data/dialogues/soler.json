@@ -96,7 +96,21 @@
         },
         {
           "who": "soler",
-          "text": "dlg.soler.fill2"
+          "text": "dlg.soler.fill2",
+          "if": {
+            "var": "reinicis_aeroport",
+            "op": "<",
+            "value": 1
+          }
+        },
+        {
+          "who": "soler",
+          "text": "dlg.soler.fill2_altra",
+          "if": {
+            "var": "reinicis_aeroport",
+            "op": ">=",
+            "value": 1
+          }
         }
       ],
       "goto": "nom"

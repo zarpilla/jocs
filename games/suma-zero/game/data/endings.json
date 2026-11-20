@@ -78,6 +78,13 @@
         }
       },
       {
+        "who": "vet",
+        "text": "final.vet_postal",
+        "if": {
+          "flag": "clau_canviada"
+        }
+      },
+      {
         "who": "neta",
         "text": "final.neta",
         "if": {
@@ -293,6 +300,13 @@
         "text": "final.ballester",
         "if": {
           "flag": "aliat_ballester"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.vet_postal",
+        "if": {
+          "flag": "clau_canviada"
         }
       },
       {
@@ -524,6 +538,13 @@
         "text": "final.ballester",
         "if": {
           "flag": "aliat_ballester"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.vet_postal",
+        "if": {
+          "flag": "clau_canviada"
         }
       },
       {

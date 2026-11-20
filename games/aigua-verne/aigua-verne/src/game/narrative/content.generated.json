@@ -9903,6 +9903,10 @@
               {
                 "who": "verne",
                 "text": "sala.palau_galeria.entra.4"
+              },
+              {
+                "who": "iri",
+                "text": "sala.palau_galeria.entra.5"
               }
             ]
           }
@@ -14679,6 +14683,10 @@
             "text": "final.plou.14"
           },
           {
+            "who": "quim",
+            "text": "final.plou.55"
+          },
+          {
             "who": "iri",
             "text": "final.plou.15"
           },
@@ -14697,6 +14705,22 @@
           {
             "who": "iri",
             "text": "final.plou.19"
+          },
+          {
+            "who": "iri",
+            "text": "final.plou.56"
+          },
+          {
+            "who": "vet",
+            "text": "final.plou.57"
+          },
+          {
+            "who": "iri",
+            "text": "final.plou.58"
+          },
+          {
+            "who": "vet",
+            "text": "final.plou.59"
           },
           {
             "who": "narrator",
@@ -19298,6 +19322,10 @@
               },
               {
                 "who": "nil",
+                "text": "dlg.nil.palau.3"
+              },
+              {
+                "who": "nil",
                 "text": "dlg.nil.palau.2"
               }
             ],
@@ -21548,6 +21576,14 @@
                 "text": "dlg.trucada.inici.4"
               },
               {
+                "who": "iri",
+                "text": "dlg.trucada.inici.8"
+              },
+              {
+                "who": "verne",
+                "text": "dlg.trucada.inici.9"
+              },
+              {
                 "who": "verne",
                 "text": "dlg.trucada.inici.5"
               },
@@ -21878,9 +21914,9 @@
       "dlg.juana.on.3": "I si en vengués més?",
       "dlg.juana.on.4": "El preu baixaria. I el Magnat viu del preu.",
       "dlg.juana.tornar.1": "Els dipòsits tenen vàlvules d'emergència, per si s'esquerden. Si s'obren, el gel cau a l'atmosfera, es fon... i plou.",
-      "dlg.juana.tornar.2": "Tres setmanes de pluja a cada planeta. Ho he calculat.",
+      "dlg.juana.tornar.2": "El deixen anar a trossets, perquè es fongui abans de tocar a terra. Tres setmanes de pluja a cada planeta. Ho he calculat.",
       "dlg.juana.tornar.3": "I on s'obren, aquestes vàlvules?",
-      "dlg.juana.tornar.4": "A la sala de control del palau del Magnat, sota la piscina central. Amb tres claus.",
+      "dlg.juana.tornar.4": "A la sala de control del palau del Magnat, sota la piscina central: ho vol tot sota els peus. Amb tres claus.",
       "dlg.juana.tornar.5": "I on són, les claus?",
       "dlg.juana.tornar.6": "Les va fondre en Bru, a Ferrum, quan van fer els dipòsits. Ell m'ho va explicar. Encara en té els motlles.",
       "dlg.juana.tornar.7": "Ara en Bru és el cap de la vaga de Ferrum. I no es fia de ningú.",
@@ -21912,7 +21948,7 @@
       "dlg.juana.r3a.1": "Ets honesta. M'agrada.",
       "dlg.juana.r3b.1": "Bon ordre. Primer el pou. El món ja vindrà.",
       "dlg.juana.recorda.1": "El mar d'Aqua el bomben cap a l'òrbita, i es glaça en tres dipòsits: el de Terra-2, el d'Aqua i el de Ferrum.",
-      "dlg.juana.recorda.2": "Tenen vàlvules d'emergència. Si s'obren, el gel cau, es fon i plou.",
+      "dlg.juana.recorda.2": "Tenen vàlvules d'emergència. Si s'obren, el gel cau a trossets, es fon i plou.",
       "dlg.juana.recorda.3": "S'obren des de la sala de control del palau del Magnat, sota la piscina central. Amb tres claus que va fondre en Bru, a Ferrum.",
       "dlg.juana.recorda.4": "La carta per a en Bru ja la porteu.",
       "dlg.juana.adeu.1": "Si torneu, porteu-me sorra de Terra-2. Per comparar.",
@@ -22209,6 +22245,7 @@
       "dlg.nil.flors.1": "Aquestes no necessiten aigua. Són de plàstic. Per això duren.",
       "dlg.nil.palau.1": "Cada dijous. A treure la pols de les plantes de plàstic del palau. Les plantes de plàstic també fan pols.",
       "dlg.nil.palau.2": "Hi puc portar dos ajudants. Però no m'hi jugo la feina per desconegudes.",
+      "dlg.nil.palau.3": "El Magnat fa totes les festes en dijous. Vol la pols acabada de treure.",
       "dlg.nil.magnat.1": "El Magnat ho sap tot. Però prefereix les flors de plàstic. No es moren.",
       "dlg.nil.magnat.2": "I ell no vol que res es mori. Vol que tot duri. Que tot sigui seu.",
       "dlg.nil.tomaquera.1": "...Shhh. El Magnat no vol plantes de veritat. «Gasten aigua, es moren i no es revaloren.»",
@@ -22230,6 +22267,8 @@
       "dlg.trucada.inici.5": "Us faig una oferta. Les claus, a canvi del vostre pou. Ple. Per escrit.",
       "dlg.trucada.inici.6": "I una altra a la Capitana: el seu deute, perdonat, si la Cantimplora no torna a volar.",
       "dlg.trucada.inici.7": "La Capitana no diu res. Es mira les mans.",
+      "dlg.trucada.inici.8": "Ens està veient?",
+      "dlg.trucada.inici.9": "No, senyora. Mirar la gent és feina del servei.",
       "dlg.trucada.si.1": "Excel·lent. Envieu les claus amb el vostre mecànic.",
       "dlg.trucada.si.2": "No.",
       "dlg.trucada.si.3": "La Vet talla la comunicació. La pantalla s'encén tota sola: el Magnat no ha acabat.",
@@ -22393,7 +22432,7 @@
       "final.plou.9": "La Lia, la Vet i l'Iri surten pel moll de càrrega, on les espera la Cantimplora.",
       "final.plou.10": "Ningú no es fixa en en Diu, que passa per davant de l'aquari.",
       "final.plou.11": "Tres setmanes després. Terra-2.",
-      "final.plou.12": "Plou. Fa tres setmanes que plou.",
+      "final.plou.12": "Plou. Fa tres setmanes que plou. El pou és ple.",
       "final.plou.13": "Al panell de la carretera, el preu ja no és de Verne: «AIGUA VESPER · 4 ▼». A sota: «Banc de Vesper. Ara, més a prop teu.»",
       "final.plou.14": "Fa sis anys que guardo aquest paraigua per si de cas. Ara que plou, me'l guardo.",
       "final.plou.15": "El Magnat ho ha perdut tot.",
@@ -22436,6 +22475,11 @@
       "final.plou.52": "...Tot està en venda.",
       "final.plou.53": "Al panell de la plaça: «AIGUA VESPER · 4 ▲». La fletxa ha canviat de sentit.",
       "final.plou.54": "Kessel S.A. · Aire Kessel. Perquè respirar no espera.",
+      "final.plou.55": "A la residència em volien cobrar el suplement d'aigua. Els he dit que ara me la bec a casa.",
+      "final.plou.56": "I el contracte 7.788?",
+      "final.plou.57": "Ara és del Banc, amb tots els drets del Magnat. La bomba del pou l'he desconnectada, i l'he tornada a tancar amb cargols de cap de flor.",
+      "final.plou.58": "Que no obre cap tornavís del món.",
+      "final.plou.59": "Excepte el meu. Fins que el Banc se'n compri un.",
       "acte.1": "Acte 1 · L'aigua que no hi és",
       "acte.2": "Acte 2 · Qui no treballa no beu",
       "acte.3": "Acte 3 · Vint-i-tres piscines",
@@ -23539,6 +23583,7 @@
       "sala.palau_galeria.entra.2": "Senyora Pruna! Verdant Holdings. Quin honor. Quin... vestit.",
       "sala.palau_galeria.entra.3": "És avantguardista.",
       "sala.palau_galeria.entra.4": "Ho veig. Ho veig. La subhasta començarà al saló quan tothom tingui una copa a la mà.",
+      "sala.palau_galeria.entra.5": "(baix) Ni m'ha mirat la cara. Només el vestit.",
       "sala.palau_galeria.piscines.1": "Vint-i-tres piscines. Netes, brillants, sense aigua. El palau més sec de Vesper.",
       "sala.palau_galeria.piscines.2": "No hi baixo. Si em trenco una cama en una piscina buida, el Magnat em cobrarà la rajola.",
       "sala.palau_galeria.aquari.1": "Trenta-tres peixos d'Aqua. Un rètol: «Lot 12. Darrers exemplars. Preu de sortida: a la baixa d'exemplars.»",

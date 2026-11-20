@@ -7,7 +7,8 @@ en primer pla), sense el títol: «Comença» esvaeix el títol i hi entra. La z
 (vegeu `portada.CLIPS`): cada frase de rooms/proleg_punt7.json engega el seu tros amb una indicació d'escena
 (`{"prop": "zodiac", "anim": "z_baixa"}`). Ara és al món: penja gran a popa, la grua la baixa, i travessa en
 diagonal (l'estela en V) fins a davant de la plataforma, on es fa petita. Al final s'encén el focus de la silueta de
-la plataforma («vigia_on») i en Bastida, a popa, treu el missatger i escriu («bastida_escriu»).
+la plataforma («vigia_on») i en Bastida, a popa, treu el missatger i escriu («bastida_escriu»; el
+guió ja no la fa servir: el pròleg no diu qui escriu).
 """
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 

@@ -342,7 +342,8 @@ caixa d'eines, al graner; l'Iri la hi porta (primer **donar**). La Vet combina p
 > VET: La Capitana no et tornarà a parlar des que li vas vendre el seu propi motor.
 > IRI: Li vaig *llogar*.
 
-(L'escriptura i el contracte 7.788 queden a l'inventari de l'Iri: tornen a sortir a les Escenes 5 i 8.)
+(L'escriptura i el contracte 7.788 queden a l'inventari de l'Iri: tornen a sortir a l'Escena 5, davant d'en Fidel, i
+el contracte, al final.)
 
 ### Escena 2 — La Cantimplora (les dues)
 
@@ -427,9 +428,10 @@ Què sap (és un arbre de conversa, i el que diu queda al tauler de la cuina):
 - **Com baixa el mar:** dos metres al mes, des que hi ha la Canonada d'Aqua.
 - **On és l'aigua:** als tres dipòsits orbitals (T2, Aqua, Ferrum), glaçada. Els té en una llista, amb les òrbites.
 - **Com tornar-la:** els dipòsits tenen **vàlvules d'emergència**, per si s'esquerden. Si s'obren, el gel cau a
-  l'atmosfera, es fon, i plou. «Ho he calculat. Tres setmanes de pluja a cada planeta.»
-- **On s'obren:** a la sala de control del palau, sota la piscina central. Amb **tres claus** que es van fondre a
-  Ferrum. «En Bru les va fondre. Ell m'ho va explicar. I ell en té els motlles.»
+  l'atmosfera, es fon, i plou. «El deixen anar a trossets, perquè es fongui abans de tocar a terra. Tres setmanes de
+  pluja a cada planeta. Ho he calculat.»
+- **On s'obren:** a la sala de control del palau, sota la piscina central («ho vol tot sota els peus»). Amb
+  **tres claus** que es van fondre a Ferrum. «En Bru les va fondre. Ell m'ho va explicar. I ell en té els motlles.»
 - **Els peixos:** «Els últims peixos d'Aqua se'ls va endur el Magnat. En un aquari. Diu que valdran més quan en
   quedi un.»
 
@@ -529,8 +531,9 @@ entra ningú que no sigui ric o que no treballi per a ell. Busqueu en Nil, el ja
 despatx del Magnat). La Vet i l'Iri hi baixen per separat (els veïns de Verdant no saluden la gent amb granota).
 
 **Trencaclosques 5.1 — En Nil (Vet).** En Nil parla amb les flors. «Aquestes no necessiten aigua. Són de plàstic.
-Per això duren.» Cada dijous puja al palau amb la llançadora dels jardiners i hi pot portar dos ajudants. No s'hi
-juga la feina per dues desconegudes.
+Per això duren.» Cada dijous puja al palau amb la llançadora dels jardiners i hi pot portar dos ajudants. «El Magnat fa
+totes les festes en dijous. Vol la pols acabada de treure.» (Així la subhasta cau en dijous, i no és casualitat.) No
+s'hi juga la feina per dues desconegudes.
 
 Al cobert, darrere de sacs d'adob de plàstic (ningú no sap per a què), hi ha una tomaquera de veritat, mig seca. En
 Nil la rega amb la seva aigua de beure. El Magnat no vol plantes de veritat: «Gasten aigua, es moren i no es
@@ -580,6 +583,8 @@ Aquella nit, la pantalla del pont s'encén sola. El Magnat, per primer cop en di
 > al meu despatx i un sac de llavors. Molt emprenedor.
 > IRI: Com ho sap?
 > VERNE: Jo ho sé tot. És car, però ho sé tot.
+> IRI: Ens està veient?
+> VERNE: No, senyora. Mirar la gent és feina del servei.
 > VERNE: Us faig una oferta. Les claus, a canvi del vostre pou. Ple. Per escrit. *(pausa)* I una altra a la Capitana:
 > el seu deute, perdonat, si la Cantimplora no torna a volar.
 > VET: I si diem que no?
@@ -589,6 +594,10 @@ El panell del pont: **97 ₡ ▲**.
 
 Es pot dir que sí (una opció de l'arbre): VERNE: «Excel·lent. Envieu les claus amb el vostre mecànic.» I la Vet
 talla la comunicació: «No.» No passa res més: el joc no castiga, però el Magnat ja ha dit qui és el seu home.
+
+(El Magnat no els ha vist mai la cara: ho sap tot per en Tomàs, que escriu, no fa fotos. I no sap que la invitació de
+la Sra. Pruna ha sortit del seu despatx: era a la paperera, amb un «No hi aniré» al dors. Per això a l'Escena 7 no la
+reconeix ni reforça res.)
 
 El pare, per videotelèfon, just després: «Avui ens han donat mig got. Diuen que és per culpa vostra. *(pausa)* No
 sé què feu. Feu-ho bé.»
@@ -645,6 +654,8 @@ de plàstic. **Regla del palau: que no us vegin juntes.**
 **El palau.** Es pot explorar i és on el Magnat és més ell mateix:
 - **Les piscines buides.** Vint-i-tres. Netes, brillants, sense aigua. VERNE (si l'Iri li pregunta): «Una piscina
   plena és aigua que ja no es pot vendre.»
+- **L'arribada.** El Magnat la rep a la galeria: «Senyora Pruna! Verdant Holdings. Quin honor. Quin... vestit.» IRI
+  *(baix)*: «Ni m'ha mirat la cara. Només el vestit.» (A la trucada, «mirar la gent és feina del servei».)
 - **L'aquari.** Trenta-tres peixos d'Aqua. Un rètol: «Lot 12. Darrers exemplars. Preu de sortida a la baixa
   d'exemplars.» IRI: «Com menys en quedin...» VERNE: «...més valen. Ho ha entès a la primera, senyora Pruna.»
 - **En Dividend**, amb banyador, al costat de la piscina central. Mira la piscina. Mira el Magnat.
@@ -746,15 +757,22 @@ Cinemàtica a `granja_pati`, sota la pluja. Tres setmanes després. Un sol final
 línia de la Juana canvien segons la partida.
 
 El pou és ple. El pare, a la porta, amb una cadira i un paraigua que no obre («Fa sis anys que el guardo per si de
-cas. Ara que plou, me'l guardo»). Al panell de la carretera, el preu ja no és de Verne: «AIGUA VESPER · 1 litre ·
-4 ₡ ▼». Sota: «Banc de Vesper. Ara, més a prop teu.»
+cas. Ara que plou, me'l guardo»). Ha tornat de la residència: «A la residència em volien cobrar el suplement d'aigua.
+Els he dit que ara me la bec a casa.» La granja ja no es ven. Al panell de la carretera, el preu ja no és de Verne:
+«AIGUA VESPER · 1 litre · 4 ₡ ▼». Sota: «Banc de Vesper. Ara, més a prop teu.»
 
 > IRI: El Magnat ho ha perdut tot.
 > VET: I el gos ha après a nedar.
 > IRI: I nosaltres, que no es pot salvar el món.
-> VET: Però es pot salvar un pou. I un planeta. I una minera de Ferrum que es diu Lia.
-> IRI: Tres planetes.
-> VET: No ens hi posem medalles.
+> VET: Però es pot salvar un pou. I tres planetes. I una noia de Ferrum que es diu Lia.
+> IRI: No ens hi posem medalles. *(pausa)* I el contracte 7.788?
+> VET: Ara és del Banc, amb tots els drets del Magnat. La bomba del pou l'he desconnectada, i l'he tornada a tancar
+> amb cargols de cap de flor.
+> IRI: Que no obre cap tornavís del món.
+> VET: Excepte el meu. Fins que el Banc se'n compri un.
+
+(El pou és seu de fet, no de paper: és l'agredolç del final, en petit. Lliga amb els crèdits: el Banc torna a bombar
+Terra-2, però aquesta bomba no.)
 
 **L'últim barril.**
 - Si la Cantimplora encara el té (`barril_donat` és fals): la Vet el porta al pou, el mira, i l'hi buida. «Ja no cal
@@ -978,9 +996,7 @@ Les marcades amb «-> fixat» les ha confirmat l'usuari; la resta són provision
 
 ## Preguntes obertes
 
-1. **La física:** el gel que cau i fa ploure és ciència-ficció de comèdia. N'hi ha prou amb que la Juana digui «ho he
-   calculat»?
-2. **La Kessel al postcrèdits** («Aire Kessel»): ganxo per a un cinquè joc, o es treu?
+1. **La Kessel al postcrèdits** («Aire Kessel»): ganxo per a un cinquè joc, o es treu?
 
 ---
 
@@ -1054,3 +1070,4 @@ En construir-lo, el guió ha canviat en això:
 | 10 | El vestit de gala | Es demana a la Rosa, al piquet (no cal en Tomàs). La Vet l'estreny amb l'agulla, i ha d'arribar a l'Iri (en mà o amb la Mosca). |
 | 11 | El final al palau | Una cinemàtica pròpia (`final_palau`): la galeria amb totes les piscines plenes. |
 | 12 | El comunicador | Diu què toca fer ara; és el mateix que els paperets del tauler de la cuina de la nau. |
+| 13 | Forats de coherència | El Magnat no reconeix l'Iri al palau: a la trucada no les mira («Mirar la gent és feina del servei»), i a la galeria només mira el vestit. El final tanca el pou (el contracte 7.788 és del Banc, però la Vet ha tancat la bomba amb cargols de cap de flor) i el suplement de la residència (el pare torna a casa). La pluja: les vàlvules deixen anar el gel a trossets, perquè es fongui abans de tocar a terra (era una pregunta oberta). En Nil: el Magnat fa les festes en dijous. La sala de control, sota la piscina: «ho vol tot sota els peus». |

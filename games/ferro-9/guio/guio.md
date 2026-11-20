@@ -73,7 +73,7 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 | **Guàrdia d'Orís** | — | Guàrdia de La Gavina, besneta de la Mira. **Només existeix si la Mira es va salvar.** | Una aliada al present i una peça dels finals 2 i 3. |
 | **Director Aldaia** | Fundador de la corporació. Encantador i terrible. | Holograma de la Sala de la Memòria, fent de guia turístic. | L'antagonista del passat, i també un gag recurrent al present. |
 | **Directora Aldaia** | — | Rebesneta del fundador. Cita l'avantpassat a cada frase. | L'antagonista del present. A l'Acte 3 vol la finestra per a ella. |
-| **Inspector Sic** | Inspector d'inventari de la corporació. Té un humor de pedra. | — | L'amenaça que creix a l'Acte 2. Cada robatori de l'Iri li deixa una pista. |
+| **Inspector Sic** | Inspector d'inventari de la corporació. Té un humor de pedra. | — | Cada robatori de ferro-9 de l'Iri li deixa una pista. La sospita no atrapa mai l'Iri (a l'Acte 3 vigila la cambra per ordre del Director, hi hagi robat o no): qui la paga és la Mira. |
 | **Mos** | — | Company de cel·la de la Vet. Vell sincronitzador fallit. | Sap rumors sobre el reciclatge, i té una missió secundària. |
 
 ---
@@ -95,8 +95,10 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
    cosa passa en un sol sentit), ni enviar una molla o un diapasó que encara no estan afinats.
 5. Per tant, **la comunicació és només per escrit**: notes, dibuixos, objectes amb significat.
 6. **Cada encesa desgasta la cambra de l'Iri.** Això no és un recurs que el jugador pugui malgastar per
-   error, sinó un rellotge narratiu: el comptador no es veu mai, i a l'Acte 3 la cambra està a les últimes (el
-   pla en gasta dues, i el tub ha de ser l'últim enviament).
+   error, ni un rellotge que se senti: el comptador (`enceses_restants`) no es veu mai ni el diu ningú, i només
+   és una xarxa de seguretat (amb la cambra esgotada, «no passa res»), que el camí normal no toca. La tensió de
+   l'Acte 3 no ve de les enceses sinó de la fugida: el pla en gasta dues, i el tub ha de ser l'últim enviament
+   perquè després la Vet marxa.
 7. **El ritual s'aprèn una vegada.** El primer enviament que fa el jugador (la nota de la Vet) es fa sencer:
    posar-la al panell, armar, canviar de protagonista i sincronitzar des de l'altra banda. Quan l'Iri la rep,
    deixa la cambra sincronitzada ("no penso anar amunt i avall cada vegada"). Des d'aleshores, **posar un
@@ -177,7 +179,9 @@ per imitació, signa *"I."*. La tensió de "qui és l'altra?" sorgeix sola.
 4. **Sortir de la cel·la** (totes dues): la porta té un pany magnètic. La Vet descriu el pany amb un
    dibuix. L'Iri hi reconeix un model de la fàbrica i li envia un imant de ferro-9.
 
-**Final de l'Acte 1:** la Vet surt de la cel·la, però no de la presó. Mentrestant, l'inventari de la fàbrica
+**Final de l'Acte 1:** la Vet surt de la cel·la, però no de la presó. Al mòdul C no hi ha guàrdies («als del
+reciclatge no ens vigila ningú: on hem d'anar, en una presó orbital?»), i per això a l'Acte 2 pot anar de
+l'hangar a l'arxiu: només hi ha una càmera, i algú que dorm a l'altra banda. Mentrestant, l'inventari de la fàbrica
 registra que falten una clau anglesa i un imant de ferro-9, i l'Inspector Sic obre un expedient.
 
 **Comptes de les enceses:** n'hi ha vint-i-quatre. L'Acte 1 en gasta nou (cinc enviaments, dels quals només els dos primers amb
@@ -189,7 +193,9 @@ més llarga, en queden set; les notes dels noms en gasten dues, i n'arriben cinc
 
 **Objectiu:** l'única sortida és la vella llançadora de càrrega de la fàbrica, que encara és amarrada a
 l'hangar. Li falten **tres components** que eren de ferro-9 i que fa anys que algú va arrencar. L'Iri els ha
-de fer arribar, i cada component es pot resoldre **almenys de dues maneres**, amb costos diferents.
+de fer arribar, **per ordre** (la comporta, el pany de la porta que hi ha darrere i la pressió del motor que hi
+ha a dins). Només la palanca té dues solucions, amb costos diferents; el diapasó i la vàlvula en tenen una, però
+amb marge per equivocar-se (llimar massa, tancar massa).
 
 **Zones (cada lloc existeix a les dues èpoques):**
 
@@ -304,8 +310,10 @@ la inundació no és un error del jugador, és la lliçó.
 
 #### El cost humà
 
-- Cada robatori de ferro-9, de plànols o de peces del Cargol acosta l'Inspector Sic.
-- Al segon robatori **acusen la Mira**. Salvar-la és una missió secundària: l'Iri pot falsificar
+- Cada robatori de ferro-9 o de plànols acosta l'Inspector Sic (la clau anglesa i l'imant de l'Acte 1 ja en
+  compten un). La sospita no atrapa mai l'Iri: el camí més curt (palanca per peces, sense plànols) no en fa cap més.
+- Al segon robatori **acusen la Mira**. A l'Acte 3, si no s'ha salvat, el Sic ho diu a la porta de la cambra
+  («L'expedient ja té una sospitosa: la d'Orís»). Salvar-la és una missió secundària: l'Iri pot falsificar
   l'inventari, posar proves falses contra el capatàs o confessar.
 - Al present, la Sala de la Memòria **canvia amb el reajust**: el registre de l'empresonament de la Mira hi
   és o no hi és. Si la Mira es va salvar, la Guàrdia d'Orís existeix i tracta la Vet amb una amabilitat
@@ -348,8 +356,8 @@ la inundació no és un error del jugador, és la lliçó.
 ### Acte 3 — «La finestra» (clímax)
 
 **Situació:** al present, la Directora Aldaia pren la cambra de la Vet. Al passat, el Director Aldaia
-descobreix l'Iri. Les dues queden acorralades **al mateix moment, amb 120 anys de diferència**. La cambra
-de l'Iri està a les últimes: el pla només pot gastar **dues enceses**.
+descobreix l'Iri. Les dues queden acorralades **al mateix moment, amb 120 anys de diferència**. El pla
+només té temps per a **dues enceses**: després, totes dues marxen.
 
 **La idea clau: una sola nau, dues fugides.** La llançadora de l'hangar és la mateixa a les dues èpoques. Al
 passat és nova i funciona; al present és vella i la Vet l'ha reparada amb els components. **Totes dues
@@ -365,7 +373,8 @@ fugen amb la mateixa nau, amb 120 anys de diferència.**
    Els copia, amb la ruta, al dors d'un fullet de la Sala de la Memòria (vegeu «La ruta del conducte», més avall).
 2. **La Vet ha d'arribar a la cambra**, que ara té la Directora. Trencaclosques: **fa veure que accepta el
    seu pacte** ("Ho faré per vosaltres") per poder entrar-hi. La Directora no sap que l'Iri també ho sap.
-   Envia el mapa dient que és propaganda («que vegi que m'he reformat»), i la Directora fa tancar la cel·la.
+   Envia el mapa dient que és propaganda («que vegi que m'he reformat»). La Directora no gira el fullet: és del
+   museu del seu rebesavi, i se'l sap de memòria. Fa tancar la cel·la.
 2b. **La reixa del conducte: l'Iri obre el camí de la Vet sense la finestra.** El conducte de servei comença a la
    cambra de l'Iri, que al present és la cel·la 9. Al present, la reixa és soldada per cent vint anys de rovell, i
    la Vet hi ha de sortir tant com l'Iri. Per això el mapa porta una postdata: «fes que s'obri d'aquí a cent vint
@@ -442,7 +451,7 @@ història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia 
    entrat, i si l'encerta, torna gravant les fletxes. Reajust: la Vet obre la reixa i el conducte la porta fins a
    l'hangar, i en torna (la cel·la és tancada).
 3. **L'últim component**: fet. La Directora avisa que ha fet treure el tub de la vàlvula de la llançadora (també
-   ho diu una etiqueta a l'hangar), i la Vet ho afegeix al mapa com a segona postdata: així l'Acte 3 gasta
+   ho diu una etiqueta a l'hangar): és el que fa del pacte l'única sortida, i el panell, creu, és seu. La Vet ho afegeix al mapa com a segona postdata: així l'Acte 3 gasta
    exactament dues enceses. El Cargol dona a l'Iri un tub de ferro-9 sense formulari («els fugitius no omplen
    formularis») i l'Iri hi enrotlla la llibreta de torn; el tub sol no l'envia. Segona encesa. La Directora vol el
    tub i la Vet fuig per la reixa, desenrotlla la llibreta (les proves), munta el tub i marxa; l'Iri fuig pel
@@ -497,7 +506,7 @@ la victòria**, i depèn del que s'ha fet a les missions secundàries.
 | Final | Què passa | Requisits |
 |---|---|---|
 | **1 · La fugida** | Les dues escapen. La Vet fa pública la llibreta i La Gavina tanca: la corporació cau al present. Escena final: la Vet visita la Sala de la Memòria, ja convertida en museu de veritat, davant la foto de l'Iri, que ara no està ratllada, i un cartell que diu *"desapareguda"*. La Vet somriu, perquè ella sap on va anar. | Els tres components. És el final base. |
-| **2 · La veritat a temps** | La Mira i l'Iri fan públics els plànols al passat, i la corporació cau **120 anys abans**. Amb el reajust, La Gavina no arriba a ser mai una presó: és l'**Estació d'Orís**, fundada per la Mira. La Vet aterra en un món diferent, i la besneta de la Mira, que ja no és guàrdia sinó directora de l'estació, la rep: *"Tinc la sensació que et conec."* | La Mira salvada i els plànols lliurats a la Mira abans de fugir. |
+| **2 · La veritat a temps** | La Mira i l'Iri fan públics els plànols al passat, i la corporació cau **120 anys abans**. Amb el reajust, La Gavina no arriba a ser mai una presó: és l'**Estació d'Orís**, fundada per la Mira. Com a cada reajust, la Vet ho recorda tot perquè era dins el camp: el món es reescriu al seu voltant i a ella no la toca («ha passat massa nits dins el camp»). La Vet aterra en un món diferent, i la besneta de la Mira, que ja no és guàrdia sinó directora de l'estació, la rep: *"Tinc la sensació que et conec."* | La Mira salvada i els plànols lliurats a la Mira abans de fugir. |
 | **3 · Correspondència** | Tot el que passa al final 2, i a més el Cargol, que es va quedar al passat, **es passa 120 anys reparant la cambra** sense que ningú no ho sàpiga. Quan la Vet arriba a l'estació, el Cargol vell l'hi espera amb una carta de l'Iri: va viure una vida llarga i lliure. La finestra torna a funcionar, i **les dues es poden continuar escrivint**. *"Vaig esperar. Era la meva feina."* | Final 2, i també la memòria del Cargol (revisió segellada, nom gravat i placa retornada). |
 
 Com que sempre és la mateixa història amb més o menys coses arreglades, el jugador que acabi el final 1
@@ -553,7 +562,7 @@ ACTE 1
   (clau anglesa) → [Vet obre panell] → [Vet arma + nota] → [Iri sincronitza] → (nota → Iri)
   [notes creuades] → [dibuix del pany] → (imant ferro-9 → Vet) → [Vet surt de la cel·la]
 
-ACTE 2  (els tres components, en qualsevol ordre)
+ACTE 2  (els tres components, per ordre: cadascun obre el següent)
   Palanca:  [Vet mesura amb la clau anglesa] → (mida → Iri) → [trams] → (×N → Vet) → [munta]
             o bé [Iri roba ferro-9] → [amaga als fonaments] → [Vet ho troba] → (cost: Mira)
   Diapasó:  [Vet ajusta molla] → (molla → Iri) → [Iri afina] → (diapasó → Vet)

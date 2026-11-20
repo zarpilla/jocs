@@ -92,13 +92,7 @@
         },
         {
           "who": "narrator",
-          "text": "proleg.12",
-          "stage": [
-            {
-              "prop": "bastida_popa",
-              "anim": "bastida_escriu"
-            }
-          ]
+          "text": "proleg.12"
         },
         {
           "who": "title",

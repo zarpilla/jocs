@@ -67,7 +67,8 @@ Comèdia caòtica amb rerefons polític clar però no panfletari, per a adolesce
 - **Què vol:** que l'Iri no es fiqui en problemes. (Ja és tard.)
 - **Què necessita:** deixar de dir que tot li és igual.
 - **Arc:** comença fent el pla «per vigilar l'Iri» i acaba dient la veritat a en Ballester, que és l'única
-  vegada al joc que no menteix (i és l'opció que funciona millor).
+  vegada al joc que no menteix (i és l'opció que funciona millor). Si li menteix, la veritat li arriba tard, per
+  postal (al final: «No érem de la UE. Perdó pel collaret.»).
 - **Joc:** parla, enganya, distreu i treu coses de les butxaques dels altres. Les converses d'arbre són seves.
 - **Aspecte:** cabell castany fosc fins a les espatlles, amb clenxa al costat, i llavis pintats. **Canvia de roba a
   cada escena** (és cambrera d'un bar cutre i té l'armari que toca), i el canvi sempre té un motiu:
@@ -195,10 +196,11 @@ mòbil del Director (Escena 8). El joc les anuncia amb un títol: **«Ara necess
 - **Aturar-lo** deixa a les mans de l'Iri tot el que encara és al compte zero (el que ja s'ha repartit, es queda
   repartit). Pot **tornar-ho al banc**, als comptes d'origen, o **repartir-ho tot a parts iguals d'un sol cop**. Per
   repartir cal el **compte de nòmines** (que dona un aliat): és l'únic canal que paga tothom alhora, sense rondes
-  de tres hores.
-- **El gir:** triï el que triï, el compte zero continua ple. Els diners n'han sortit i continuen allà. I ara té un
-  titular classificat i una contrasenya que no sap ningú, ni tan sols el Director. Ningú no sap d'on ha sortit
-  aquest compte. És el ganxo de ROBIN HOOD 3.0.
+  de tres hores (les nòmines no van per rondes: surten totes d'un sol lot, a les dotze).
+- **El gir:** triï el que triï, el compte zero continua ple. El que es desfà és el buidatge: els diners han sortit
+  de debò (són als comptes d'origen o repartits) i a les dotze les pensions cobren. Però el compte zero no el va
+  crear el virus: ja hi era, i té tant com tot el món junt. Té un titular classificat i una contrasenya que no sap
+  ningú, ni tan sols el Director. Ningú no sap d'on ha sortit aquest compte. És el ganxo de ROBIN HOOD 3.0.
 
 ---
 
@@ -425,7 +427,7 @@ dins de tant en tant. Comença quan la Vet diu «He perdut el meu fill!»; abans
 vigilant mira cap aquí. Ara no.»
 
 1. **Vet:** «He perdut el meu fill!» (que no existeix; després d'un reinici, el vigilant: «Un altre cop, senyora?
-   ...Aquest nen s'escapa molt.»). El vigilant la segueix per la terminal i deixa la
+   ...Aquest nen s'escapa molt.» I, en lloc de «Com es diu?», «Com es deia? Ho torno a apuntar.»). El vigilant la segueix per la terminal i deixa la
    porta de personal sense vigilància. [SO: megafonia] Mentrestant, el vigilant li fa preguntes (el nom del nen,
    l'edat, la roba), i cada resposta és un torn. **Si la Vet parla massa** (tria les respostes llargues, que són
    més divertides), l'Ortega mira per la vidriera: la cigarreta perd un torn més per resposta.
@@ -579,6 +581,11 @@ les dues hi són.**
 **Iri:** el Llibre Major demana **tres codis de confirmació** que surten a la pantalla, un rere l'altre. Cada
 codi fa un **bip** fortíssim («És de 1984. Aleshores la gent volia que les màquines fessin soroll»).
 [SO: bip_llibre]
+
+**La ràdio, abans del primer bip.** En entrar a la sala d'escombraries, l'Iri veu un micròfon al sostre amb una
+etiqueta: «SEGURETAT ESCOLTA. PER LA SEVA SEGURETAT». A seguretat, la ràdio d'en Ballester és on van a parar els
+micròfons de totes les sales tancades (mirant-la, o si la Vet li pregunta per la seguretat: «Cada sala tancada té
+un micròfon que va a parar a la ràdio. Si al banc sona res, jo ho sento.»).
 
 **El primer bip** sempre s'escapa, sense sospita, i ensenya la regla:
 
@@ -741,18 +748,18 @@ TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?»
   «Dotze euros per persona. Una cervesa a tot el món.»
 - **Repartir-ho tot a parts iguals**, pel compte de les nòmines: només si l'Iri el té (el paper de la Rius, si és
   aliada, o el que en Ballester diu en veu alta al despatx, si és aliat: «Les nòmines van totes pel compte 0001.
-  Sempre ho han fet. Per això sempre arriben tard»). L'Iri: «Per aquí, els diners arriben a tothom alhora. Sense
-  rondes de tres hores.» Tothom té el mateix: el bilionari, el Director, la Rius i la subcontracta. `repartit`.
+  Sempre ho han fet. Per això sempre arriben tard»). L'Iri: «Les nòmines no van per rondes: surten totes d'un sol
+  lot, a les dotze. Per aquí, arriba a tothom alhora.» Tothom té el mateix: el bilionari, el Director, la Rius i la subcontracta. `repartit`.
 
 [SO: aturada]
 
 **El gir.** Triï el que triï, la pantalla parpelleja: el compte zero té el mateix saldo d'abans, com si no n'hagués
 sortit ni un euro.
 
-> IRI: Això no pot ser. Els diners han sortit. I continuen aquí.
+> IRI: Els diners han sortit: ja són als comptes, i a les dotze les pensions cobren. Però aquí n'hi continua havent el mateix.
 > LLIBRE MAJOR: COMPTE ZERO. TITULAR: CLASSIFICAT. CONTRASENYA: ********.
 > VET: Prova Rockefeller.
-> IRI: Ja ho he provat. Aquest compte no és del Director. És d'algú que té més que el Director.
+> IRI: Ja ho he provat. Aquest compte ja hi era abans del virus, i no és del Director. És d'algú que té tant com tot el món junt.
 > IRI: Ja hi pensarem. Ara, a fugir.
 
 ### Escena 9 — La sortida (les dues)
@@ -810,6 +817,7 @@ porta a ROBIN HOOD 3.0.
 > IRI (si repartit, en lloc de l'anterior): Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no?
 > VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible.
 > BALLESTER (si aliat_ballester): Un tallat, sisplau. I aquest el pago jo.
+> VET (si li va canviar la clau a en Ballester): I a en Ballester li he enviat una postal: «No érem de la UE. Perdó pel collaret.» És la primera postal que escric sense mentir.
 > NETA-3 (si aliat_neta, amb un davantal): Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga.
 > RIUS (si aliada_rius): Avui hem fitxat a l'hora. Tota la colla.
 > PONS (si aliada_pons): He demanat un augment. M'han dit que sí. Encara no m'ho crec.
@@ -941,7 +949,7 @@ perilloses són els `look` i les frases per defecte, que es poden dir en qualsev
 | La Vet és auditora (la mentida) | Director | Escena 4 | Al Dia de la Marmota, ell ho oblida; la Vet, no |
 | Els subcontractats no surten a les càmeres | Iri | Escena 5, `sap_cartell` (en mirar la càmera 1) | |
 | En Ballester sent els bips per la ràdio | Vet, Iri | Escena 6, primer bip, `regla_bips` | |
-| La Vet i l'Iri volen robar el banc | Ballester | Escena 6, `aliat_ballester` (només la veritat) | Si li menteixen, no ho sap mai |
+| La Vet i l'Iri volen robar el banc | Ballester | Escena 6, `aliat_ballester` (només la veritat) | Si li menteixen, no ho sap fins a la postal de la Vet, al final |
 | El virus deixa tothom a 12 € fins a la ronda següent, i a les dotze no cobren | Iri, Vet (monitors), Ballester | Escena 7, `virus_executat` | |
 | Només el Director pot aturar el Llibre Major; és al seu despatx | Iri; Vet | Escena 7, `cal_director` | |
 | El nom de la senyora Pons | Vet | Escena 8 (placa) | |
