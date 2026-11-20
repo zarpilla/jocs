@@ -167,7 +167,7 @@ export function performInteraction(verb: string, target: FallbackTarget, item?: 
     // Si li parla o li dona alguna cosa, el personatge també es gira cap a ella.
     if (target.kind === 'character' && (verb === 'talkTo' || verb === 'give' || item)) {
       const npcFacing = npcFacingPlayer(target.id)
-      const npc = benneCharacter(fromBenne('characters', target.id)) as unknown as { face: { now(d: 'L' | 'R'): unknown } } | undefined
+      const npc = benneCharacter(fromBenne('characters', target.id)) as unknown as { face: { now(d: 'L' | 'R' | 'DL' | 'DR'): unknown } } | undefined
       if (npcFacing && npc) npc.face.now(npcFacing)
     }
   }

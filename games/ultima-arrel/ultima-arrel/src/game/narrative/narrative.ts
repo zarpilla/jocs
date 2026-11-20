@@ -420,8 +420,23 @@ function lookPoint(kind: 'prop' | 'hotspot' | 'character', benneId: string): Poi
   return thing.lookAtPoint ?? (pts?.length ? centre(pts) : null);
 }
 
-/** Cap on s'ha de girar la protagonista (des d'on és ara) per mirar la cosa, o `null`. */
-export function facingToward(kind: 'prop' | 'hotspot' | 'character' | 'item', benneId: string): 'U' | 'D' | 'L' | 'R' | null {
+type CharacterFile = { id: string; walkToPoint?: Point; feet?: Point; animations?: Record<string, unknown> };
+const characterFiles = Object.values(import.meta.glob<CharacterFile>('../characters/*/*.character.json', { eager: true, import: 'default' }));
+
+/**
+ * De costat cap a `dx`: en 3/4 de cara (`DL`/`DR`) si el full del personatge en té (`IdleDL` i `TalkDL`), si no de
+ * perfil (`L`/`R`). En una conversa de costat, els dos es miren però s'obren a la càmera, com al teatre: el perfil
+ * estricte queda pla i amaga mitja cara.
+ */
+function sideFacing(benneId: string, dx: number): 'L' | 'R' | 'DL' | 'DR' {
+  const anims = characterFiles.find((c) => c.id === benneId)?.animations;
+  const tresQuarts = !!(anims?.IdleDL && anims?.TalkDL);
+  if (dx < 0) return tresQuarts ? 'DL' : 'L';
+  return tresQuarts ? 'DR' : 'R';
+}
+
+/** Cap on s'ha de girar la protagonista (des d'on és ara) per mirar la cosa, o `null`. Un personatge de costat, en 3/4 (`sideFacing`). */
+export function facingToward(kind: 'prop' | 'hotspot' | 'character' | 'item', benneId: string): 'U' | 'D' | 'L' | 'R' | 'DL' | 'DR' | null {
   if (kind === 'item') return null;
   const to = lookPoint(kind, benneId);
   if (!to) return null;
@@ -429,18 +444,17 @@ export function facingToward(kind: 'prop' | 'hotspot' | 'character' | 'item', be
   const dx = to.x - from.x;
   const dy = to.y - from.y;
   if (Math.hypot(dx, dy) < 2) return null;
-  return Math.abs(dx) >= Math.abs(dy) ? (dx < 0 ? 'L' : 'R') : dy < 0 ? 'U' : 'D';
+  if (Math.abs(dx) >= Math.abs(dy)) return kind === 'character' ? sideFacing(player.id, dx) : dx < 0 ? 'L' : 'R';
+  return dy < 0 ? 'U' : 'D';
 }
 
-type CharacterFile = { id: string; walkToPoint?: Point; feet?: Point; animations?: Record<string, unknown> };
-const characterFiles = Object.values(import.meta.glob<CharacterFile>('../characters/*/*.character.json', { eager: true, import: 'default' }));
-
 /**
- * Cap on s'ha de girar un personatge (L o R) per mirar la protagonista quan li parla o li dona alguna cosa,
- * o `null` si no s'ha de girar: no té animacions de costat, o el seu `walkToPoint` no és el de per defecte
- * (just a la dreta dels peus) perquè està posat a propòsit (assegut a una taula, d'esquena, de cara a algú).
+ * Cap on s'ha de girar un personatge per mirar la protagonista quan li parla o li dona alguna cosa (en 3/4 si en
+ * té, vegeu `sideFacing`), o `null` si no s'ha de girar: no té animacions de costat, o el seu `walkToPoint` no és
+ * el de per defecte (just a la dreta dels peus) perquè està posat a propòsit (assegut a una taula, d'esquena, de
+ * cara a algú).
  */
-export function npcFacingPlayer(benneId: string): 'L' | 'R' | null {
+export function npcFacingPlayer(benneId: string): 'L' | 'R' | 'DL' | 'DR' | null {
   const def = characterFiles.find((c) => c.id === benneId);
   if (!def?.animations?.IdleL || !def.walkToPoint || !def.feet) return null;
   if (def.walkToPoint.x <= def.feet.x || def.walkToPoint.y !== def.feet.y) return null;
@@ -448,7 +462,7 @@ export function npcFacingPlayer(benneId: string): 'L' | 'R' | null {
   const at = handle?.position;
   if (!at) return null;
   const dx = player.position.x - at.x;
-  return Math.abs(dx) < 2 ? null : dx < 0 ? 'L' : 'R';
+  return Math.abs(dx) < 2 ? null : sideFacing(benneId, dx);
 }
 
 /** Les capes de l'art lligades a la cosa `id` d'una sala (props `<id>__<capa>`): es mostren i s'amaguen amb ella. */

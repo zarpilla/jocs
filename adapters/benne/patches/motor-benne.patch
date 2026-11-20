@@ -634,6 +634,18 @@ diff -ruN src/engine/bennescript/index.ts src/engine/bennescript/index.ts
    defineFlags,
    defineVars,
    flag,
+diff -ruN src/engine/bennescript/saves.ts src/engine/bennescript/saves.ts
+--- src/engine/bennescript/saves.ts
++++ src/engine/bennescript/saves.ts
+@@ -56,7 +56,7 @@
+ 
+ function writeSave(save: SaveRef, name?: string): void {
+   if (typeof save === 'number') {
+-    manager('save')?.save(name ?? `Slot ${save + 1}`, save);
++    manager('save')?.save(name ?? `Posició ${save + 1}`, save);
+   } else {
+     manager('save')?.save(save);
+   }
 diff -ruN src/engine/bennescript/shade.ts src/engine/bennescript/shade.ts
 --- src/engine/bennescript/shade.ts
 +++ src/engine/bennescript/shade.ts
@@ -1050,6 +1062,33 @@ diff -ruN src/engine/gameState/GameStateManager.ts src/engine/gameState/GameStat
      const payload: GameStateVariableChangedPayload = { key, previousValue, value: undefined };
      this.events.emit(GAME_STATE_VARIABLE_CHANGED_EVENT, payload);
    }
+@@ -834,7 +908,7 @@
+           continue;
+         }
+         next.push({
+-          name: `Slot ${slot}`,
++          name: `Posició ${slot + 1}`,
+           slot,
+           storageKey: key,
+           timestamp: now,
+@@ -892,7 +966,7 @@
+       if (fromManifest) {
+         return fromManifest;
+       }
+-      return { name: `Slot ${slot}`, slot, storageKey, timestamp: Date.now() };
++      return { name: `Posició ${slot + 1}`, slot, storageKey, timestamp: Date.now() };
+     }
+     const normalized = normalizeSaveName(nameOrSlot);
+     if (normalized.length === 0) {
+@@ -982,7 +1056,7 @@
+           return entry;
+         });
+         if (!updated.some((entry) => entry.slot === nameOrSlot || entry.storageKey === storageKey)) {
+-          updated.push({ name: `Slot ${nameOrSlot}`, slot: nameOrSlot, storageKey, timestamp: now });
++          updated.push({ name: `Posició ${nameOrSlot + 1}`, slot: nameOrSlot, storageKey, timestamp: now });
+         }
+         this.writeSaveManifest({ version: 1, saves: this.sortManifestEntries(updated) });
+       }
 diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
 --- src/engine/gui/buildGuiOverlay.ts
 +++ src/engine/gui/buildGuiOverlay.ts
@@ -2687,7 +2726,20 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  import { benneVideoCacheKey } from '../video/benneVideoCacheKeys.js';
  import { BENNE_VIDEO_ENDED_EVENT } from '../video/benneVideoEvents.js';
  import type { VideoPlayOptions } from '../video/benneVideoTypes.js';
-@@ -303,6 +321,16 @@
+@@ -283,6 +301,12 @@
+ /** Ignore walk clicks when already within this many pixels of the target. */
+ const MIN_WALK_DISTANCE_PX = 6;
+ 
++/** Talking distance, feet to feet, as a fraction of the taller figure's height (see `characterStandSide`). */
++const TALK_GAP_OF_HEIGHT = 0.45;
++
++/** How far toward the camera the walker stands when talking, as a fraction of that height. */
++const TALK_STEP_OF_HEIGHT = 0.06;
++
+ /**
+  * Leader overlap slack for follow snap (see {@link updateCharacterFollowers} idle-leader handling).
+  */
+@@ -303,6 +327,16 @@
  /** Renders above typical room + GUI depth so the custom pointer stays on top (shipped game). */
  const CUSTOM_CURSOR_DEPTH = 500_000;
  
@@ -2704,7 +2756,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  /** `startFollow` offset so the camera tracks {@link getCharacterWorldFeet}, not the sprite top-left. */
  function getFeetFollowOffset(player: Phaser.GameObjects.Sprite): { x: number; y: number } {
    const sx = player.scaleX;
-@@ -314,7 +342,9 @@
+@@ -314,7 +348,9 @@
    }
    const data = player.getData('character') as CharacterData | undefined;
    const feet = data ? resolveCharacterFeetLocal(data, player) : { x: player.frame.width * 0.5, y: player.frame.height };
@@ -2715,7 +2767,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  }
  
  /** Outline color for `debug.showWalkable` (green). */
-@@ -345,6 +375,12 @@
+@@ -345,6 +381,12 @@
    return v && v.length > 0 ? { defaultVerb: v } : {};
  }
  
@@ -2728,7 +2780,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  export class RoomScene extends Phaser.Scene {
    private roomData!: RoomData;
  
-@@ -442,6 +478,16 @@
+@@ -442,6 +484,16 @@
     */
    private roomStackEntities: RoomStackEntity[] = [];
  
@@ -2745,7 +2797,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /** Prop id → sprite (every placed prop, for Bennescript). */
    private propSpritesById = new Map<string, Phaser.GameObjects.Sprite>();
  
-@@ -534,6 +580,9 @@
+@@ -534,6 +586,9 @@
     */
    private screenFadeRect: Phaser.GameObjects.Rectangle | null = null;
  
@@ -2755,7 +2807,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * Single-slot cinematic video layer (`video.x.play()`). Created hidden in {@link create} (no source) and
     * reused across `play` calls; renders at {@link ROOM_VIDEO_LAYER_DEPTH} (above room art, below all
-@@ -684,6 +733,10 @@
+@@ -684,6 +739,10 @@
     * before the room's own `pointerdown` handler sees the same click.
     */
    private scriptedDialogClickToSkipArmedDuringDown: number | null = null;
@@ -2766,7 +2818,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  
    /** Screen-space sprite when `game-config.json` enables `cursor.display.aseprite`. */
    private customCursorSprite: Phaser.GameObjects.Sprite | null = null;
-@@ -707,6 +760,16 @@
+@@ -707,6 +766,16 @@
      if (event.key !== 'Escape') {
        return;
      }
@@ -2783,7 +2835,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      // A skippable cutscene wins over the video handler: skipping fast-forwards the whole cutscene,
      // which stops any video playing inside it as part of finishing the in-flight step.
      if (this.canSkipActiveCutscene()) {
-@@ -749,6 +812,10 @@
+@@ -749,6 +818,10 @@
    create(data: RoomSceneStartData): void {
      registerBenneCharacterPerspectiveBatch(this.game);
      this.roomData = data.room;
@@ -2794,7 +2846,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.player = null;
      this.playerMoveTween = null;
      this.currentPlayerPath = null;
-@@ -760,6 +827,9 @@
+@@ -760,6 +833,9 @@
      this.previewHiddenCharacterVisibility = null;
      this.parallaxProps = [];
      this.roomStackEntities = [];
@@ -2804,7 +2856,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.propSpritesById.clear();
      this.characterSpritesByDefId.clear();
      this.characterJsonVisibleByDefId.clear();
-@@ -874,7 +944,14 @@
+@@ -874,7 +950,14 @@
        const isGenericHud = !isSpeakingText && !isDisplayText && !isChoiceDialog;
  
        const stackDepth = GUI_TEXT_OVERLAY_DEPTH + stackIndex * GUI_OVERLAY_DEPTH_STRIDE;
@@ -2820,7 +2872,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        const guiStartVisible =
          isSpeakingText || isDisplayText || isChoiceDialog
            ? false
-@@ -888,7 +965,7 @@
+@@ -888,7 +971,7 @@
          this.makeGuiOverlayBuildOptions(guiDepth, {
            startVisible: guiStartVisible,
            inventoryPanelPointerContext,
@@ -2829,7 +2881,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
            previewGuiAsepriteSheetJson: data.previewGuiAsepriteSheetJsonById?.[gui.id],
          }),
        );
-@@ -898,6 +975,9 @@
+@@ -898,6 +981,9 @@
        }
  
        this.registerModalGuiOverlay(gui, guiDepth, built.handle, guiStartVisible);
@@ -2839,7 +2891,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        this.guiOverlayHandleByGuiId.set(gui.id, built.handle);
  
        // Every GUI gets a runtime, so `guis.x.controls.y` handles can reach its controls.
-@@ -924,6 +1004,7 @@
+@@ -924,6 +1010,7 @@
      this.wireDialogChoiceUi();
  
      this.createRoomVideoLayer();
@@ -2847,7 +2899,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.createScreenFadeOverlay();
      const startKind: BenneRoomStartKind =
        (this.game.registry.get(BENNE_ROOM_START_KIND_KEY) as BenneRoomStartKind | undefined) ?? 'boot';
-@@ -1006,6 +1087,8 @@
+@@ -1006,6 +1093,8 @@
        this.dialogChoiceInputSuppressionActive = false;
        this.scriptedDialogInputSuppressionDepth = 0;
        this.scriptedDialogClickToSkip = null;
@@ -2856,7 +2908,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        this.scale.off('resize', this.onScaleResize, this);
        this.input.off('pointerdown', this.handleRoomPointerDown);
        this.input.off('pointermove', this.onRoomPointerMove);
-@@ -1018,6 +1101,11 @@
+@@ -1018,6 +1107,11 @@
          this.screenFadeRect.destroy();
          this.screenFadeRect = null;
        }
@@ -2868,7 +2920,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        this.teardownRoomVideoLayer();
        this.missingVideoKeysWarned.clear();
        this.editorUiChildListenerOff?.();
-@@ -1617,6 +1705,40 @@
+@@ -1617,6 +1711,40 @@
      this.refreshDialogChoiceOverlay();
    }
  
@@ -2909,7 +2961,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    private createScreenFadeOverlay(): void {
      const w = getInternalWidth();
      const h = getInternalHeight();
-@@ -1831,6 +1953,19 @@
+@@ -1831,6 +1959,19 @@
    }
  
    /** True while a cinematic video is loaded and playing/paused. */
@@ -2929,7 +2981,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    isRoomVideoPlaying(): boolean {
      return this.roomVideoActiveKey !== null;
    }
-@@ -1866,6 +2001,12 @@
+@@ -1866,6 +2007,12 @@
    }
  
    /**
@@ -2942,7 +2994,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
     * @param toAlpha 0 = transparent, 1 = fully opaque. Kills any running fade tweens on the overlay first.
     * @param fillColor RGB (`0xRRGGBB`); the overlay fill is set before the tween; animation uses game object alpha.
     */
-@@ -2047,6 +2188,14 @@
+@@ -2047,6 +2194,14 @@
      );
    }
  
@@ -2957,7 +3009,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /** True while `input.disabled` is set. Survives room changes; not part of save snapshots. */
    private isUserInputDisabled(): boolean {
      return this.game.registry.get(BENNE_USER_INPUT_DISABLED_REGISTRY_KEY) === true;
-@@ -2233,7 +2382,7 @@
+@@ -2233,7 +2388,7 @@
      }
      const final = path[path.length - 1]!;
      const prev = path.length >= 2 ? path[path.length - 2]! : getCharacterWorldFeet(sprite);
@@ -2966,7 +3018,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      // Clearing the field first makes the running leg tween's onUpdate / onStop guards bail out,
      // so only finishPlayerWalk below resolves the walk.
      const tween = this.playerMoveTween;
-@@ -2259,7 +2408,7 @@
+@@ -2259,7 +2414,7 @@
      const final = path[path.length - 1]!;
      const prev =
        path.length >= 2 ? path[path.length - 2]! : getCharacterWorldFeet(sprite as Phaser.GameObjects.Sprite);
@@ -2975,7 +3027,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      // Dropping the map entry first makes the running leg tween's onStop guard bail out.
      const tween = this.npcWalkTweens.get(sprite);
      this.npcWalkTweens.delete(sprite);
-@@ -2308,6 +2457,37 @@
+@@ -2308,6 +2463,37 @@
      this.modalGuiEntries.push({ depth, isVisible: () => overlayVisible });
    }
  
@@ -3013,7 +3065,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * While a skippable scripted dialog line is showing, left-clicks invoke **`fn`** once (same cleanup as the timer).
     * Cleared when the line ends or when {@link clearScriptedDialogClickToSkip} runs.
-@@ -2316,6 +2496,7 @@
+@@ -2316,6 +2502,7 @@
      this.scriptedDialogClickToSkip = fn;
      const pointer = this.input?.activePointer;
      this.scriptedDialogClickToSkipArmedDuringDown = fn && pointer?.isDown ? pointer.downTime : null;
@@ -3021,7 +3073,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    }
  
    clearScriptedDialogClickToSkip(): void {
-@@ -2339,9 +2520,19 @@
+@@ -2339,9 +2526,19 @@
      if (!pointer.leftButtonDown()) {
        return false;
      }
@@ -3041,7 +3093,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      const fn = this.scriptedDialogClickToSkip;
      this.scriptedDialogClickToSkip = null;
      fn();
-@@ -2425,7 +2616,7 @@
+@@ -2425,7 +2622,7 @@
      if (data?.talkPoint) {
        return { x: sprite.x + data.talkPoint.x, y: sprite.y + data.talkPoint.y };
      }
@@ -3050,7 +3102,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    }
  
    /**
-@@ -2890,7 +3081,7 @@
+@@ -2890,7 +3087,7 @@
      if (Math.hypot(dx, dy) < 1e-2) {
        return;
      }
@@ -3059,7 +3111,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (getCharacterAnimationOverrideTag(observer)) {
        observer.setData('facing', facing);
        return;
-@@ -3884,12 +4075,28 @@
+@@ -3884,12 +4081,28 @@
        this.roomData.regions,
        getPerspectiveSettings(),
      );
@@ -3092,7 +3144,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * Applies region perspective scale for characters that are not mid–feet-interpolating walk tween.
     */
-@@ -4077,7 +4284,7 @@
+@@ -4077,7 +4290,7 @@
      if (Math.hypot(dx, dy) < 1e-2) {
        return;
      }
@@ -3101,7 +3153,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (getCharacterAnimationOverrideTag(sprite)) {
        sprite.setData('facing', facing);
        return;
-@@ -4094,7 +4301,7 @@
+@@ -4094,7 +4307,7 @@
      const dx = newFeet.x - oldFeet.x;
      const dy = newFeet.y - oldFeet.y;
      if (Math.hypot(dx, dy) >= 1e-2) {
@@ -3110,7 +3162,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        if (!getCharacterAnimationOverrideTag(sprite)) {
          playDirectionalAnimation(sprite, 'Idle', facing);
        } else {
-@@ -4213,10 +4420,11 @@
+@@ -4213,10 +4426,11 @@
      if (charSprite) {
        const data = charSprite.getData('character') as CharacterData | undefined;
        if (data?.walkToPoint) {
@@ -3123,12 +3175,15 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        }
        return getCharacterWorldFeet(charSprite as Phaser.GameObjects.Sprite);
      }
-@@ -4234,6 +4442,28 @@
+@@ -4234,6 +4448,46 @@
    }
  
    /**
-+   * A `walkToPoint` straight to the right of the feet (the default: "stand beside them") is mirrored to
-+   * the side the walker comes from, if that side is walkable. Any other `walkToPoint` (left, in front,
++   * A `walkToPoint` straight to the right of the feet (the default: "stand beside them") becomes a
++   * conversation spot: on the side the walker comes from (if walkable), at a talking distance
++   * ({@link TALK_GAP_OF_HEIGHT} of the taller figure, never closer than the authored offset) and one small
++   * step toward the camera ({@link TALK_STEP_OF_HEIGHT}), so the two do not stand shoulder to shoulder on one
++   * line. All in world px at the character's current scale. Any other `walkToPoint` (left, in front,
 +   * behind) was placed on purpose and is kept as is.
 +   */
 +  private characterStandSide(
@@ -3137,22 +3192,37 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
 +    stand: Point2,
 +    walkerFeet: Point2,
 +  ): Point2 {
-+    const feet = getCharacterWorldFeet(sprite);
-+    const dx = stand.x - feet.x;
 +    const offset = data.feet ? { x: data.walkToPoint!.x - data.feet.x, y: data.walkToPoint!.y - data.feet.y } : null;
-+    if (!offset || offset.x <= 0 || offset.y !== 0 || walkerFeet.x >= feet.x - 2) {
++    if (!offset || offset.x <= 0 || offset.y !== 0) {
 +      return stand;
 +    }
-+    const mirrored = { x: feet.x - dx, y: stand.y };
++    const feet = getCharacterWorldFeet(sprite);
++    const height = (s: Phaser.GameObjects.Sprite | null): number => {
++      const d = s?.getData('character') as CharacterData | undefined;
++      return d?.feet ? d.feet.y * Math.abs(s!.scaleY) : 0;
++    };
++    const tallest = Math.max(height(sprite), height(this.player as Phaser.GameObjects.Sprite | null));
++    const gap = Math.max(offset.x * Math.abs(sprite.scaleX), TALK_GAP_OF_HEIGHT * tallest);
++    const step = TALK_STEP_OF_HEIGHT * tallest;
++    const fromLeft = walkerFeet.x < feet.x - 2;
++    const sides = fromLeft ? [-1, 1] : [1, -1];
 +    const polys = withNonWalkableRegionsAsHoles(this.roomData.walkable.polygons, this.roomData.regions);
-+    return isPointInWalkableArea(mirrored.x, mirrored.y, polys) ? mirrored : stand;
++    for (const side of sides) {
++      for (const dy of [step, 0, -step]) {
++        const p = { x: feet.x + side * gap, y: feet.y + dy };
++        if (isPointInWalkableArea(p.x, p.y, polys)) {
++          return p;
++        }
++      }
++    }
++    return stand;
 +  }
 +
 +  /**
     * Resolve a camera focus / zoom target in room space. String ids: prop → hotspot → character →
     * `room.points`. Props and hotspots use **`lookAtPoint`** (not **`walkToPoint`**); characters use
     * **`talkPoint`** in frame space when set, else world feet.
-@@ -4567,6 +4797,30 @@
+@@ -4567,6 +4821,30 @@
        sb?.width ?? roomW,
        sb?.height ?? roomH,
      );
@@ -3183,7 +3253,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    }
  
    /** Starts follow on the player’s feet (see `CharacterData.feet`). */
-@@ -4576,21 +4830,37 @@
+@@ -4576,21 +4854,37 @@
      }
      const vW = getInternalWidth();
      const vH = getInternalHeight();
@@ -3223,7 +3293,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.updatePathDebug();
      this.invokeOnUpdateHandlers(this.game.loop.delta / 1000);
    }
-@@ -4609,6 +4879,65 @@
+@@ -4609,6 +4903,65 @@
      }
    }
  
@@ -3289,7 +3359,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /** Re-sorts props, characters, and hotspot zones by `zIndex` and optional `baseline` rules. */
    private updateRoomStackDepths(): void {
      if (this.roomStackEntities.length === 0) {
-@@ -5032,14 +5361,16 @@
+@@ -5032,14 +5385,16 @@
      this.beginPlayerWalkLeg(sprite, path, 0);
    }
  
@@ -3311,7 +3381,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      }
      const data = sprite.getData('character') as CharacterData | undefined;
      const resolved = data
-@@ -5048,8 +5379,8 @@
+@@ -5048,8 +5403,8 @@
            x: (sprite as Phaser.GameObjects.Sprite).frame.width * 0.5,
            y: (sprite as Phaser.GameObjects.Sprite).frame.height,
          };
@@ -3322,7 +3392,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      sprite.setData('feetLocalX', lx);
      sprite.setData('feetLocalY', ly);
      return { x: lx, y: ly };
-@@ -5082,11 +5413,11 @@
+@@ -5082,11 +5437,11 @@
          this.beginPlayerWalkLeg(sprite, path, legIndex + 1);
          return;
        }
@@ -3336,7 +3406,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (!getCharacterAnimationOverrideTag(sprite)) {
        playDirectionalAnimation(sprite, 'Walk', facing);
      } else {
-@@ -5154,6 +5485,16 @@
+@@ -5154,6 +5509,16 @@
      this.playerMoveTween = moveTween;
    }
  
@@ -3353,7 +3423,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    private finishPlayerWalk(sprite: DirectionalCharacterSprite, facing: CharacterFacing): void {
      this.currentPlayerPath = null;
      if (!getCharacterAnimationOverrideTag(sprite)) {
-@@ -5260,7 +5601,7 @@
+@@ -5260,7 +5625,7 @@
          this.beginNpcWalkLeg(sprite, path, legIndex + 1, onArrive);
          return;
        }
@@ -3362,7 +3432,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims) {
          if (!getCharacterAnimationOverrideTag(sprite as Phaser.GameObjects.Sprite)) {
            playDirectionalAnimation(sprite as DirectionalCharacterSprite, 'Idle', facing);
-@@ -5272,7 +5613,7 @@
+@@ -5272,7 +5637,7 @@
        return;
      }
  
@@ -3371,7 +3441,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims) {
        if (!getCharacterAnimationOverrideTag(sprite as Phaser.GameObjects.Sprite)) {
          playDirectionalAnimation(sprite as DirectionalCharacterSprite, 'Walk', facing);
-@@ -5594,6 +5935,11 @@
+@@ -5594,6 +5959,11 @@
        // sheets (the typical BENNE workflow) each frame already covers the full room width
        // and height, so no explicit setDisplaySize is needed.
        const sprite = this.add.sprite(spawnX, spawnY, textureKey).setOrigin(0, 0);
@@ -3383,7 +3453,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        const jsonVisible = spawn.data.visible !== false;
        const jsonAlpha = spawn.data.alpha ?? 1;
        sprite.setVisible(readSavedPropVisible(manager, data.room.id, spawn.id, jsonVisible));
-@@ -5675,7 +6021,9 @@
+@@ -5675,7 +6045,9 @@
        return;
      }
  
@@ -3394,7 +3464,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      const poly = new Phaser.Geom.Polygon(flat);
      sprite.setInteractive({
        hitArea: poly,
-@@ -5683,8 +6031,8 @@
+@@ -5683,8 +6055,8 @@
        useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()),
      });
  
@@ -3405,7 +3475,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
          return;
        }
        if (this.isPlayerPointerBlocked()) {
-@@ -5692,12 +6040,24 @@
+@@ -5692,12 +6064,24 @@
        }
        const profile = getEffectiveInputProfile(getGameSettings());
        const manager = resolveGameStateManager(this.game);
@@ -3430,7 +3500,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        );
        if (resolution.kind === 'none') {
          return;
-@@ -5742,10 +6102,161 @@
+@@ -5742,10 +6126,161 @@
        if (resolution.consumeActive) {
          manager.clearActiveVerb();
        }
@@ -3593,7 +3663,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * Dispatches the **look** verb on this prop (same as a primary-button look click). Does not move or rotate the player.
     */
-@@ -5808,8 +6319,8 @@
+@@ -5808,8 +6343,8 @@
        return;
      }
  
@@ -3604,7 +3674,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
          return;
        }
        if (this.isPlayerPointerBlocked()) {
-@@ -5818,12 +6329,24 @@
+@@ -5818,12 +6353,24 @@
        const handlers = getHotspotVerbHandlers(hotspot);
        const profile = getEffectiveInputProfile(getGameSettings());
        const manager = resolveGameStateManager(this.game);
@@ -3629,7 +3699,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        );
        if (resolution.kind === 'none') {
          return;
-@@ -5887,7 +6410,7 @@
+@@ -5887,7 +6434,7 @@
      const geom = new Phaser.Geom.Polygon(flat);
      zone.setInteractive(geom, Phaser.Geom.Polygon.Contains);
      zone.input!.cursor = isBenneGameCursorAsepriteEnabled(getGameSettings()) ? 'none' : 'pointer';
@@ -3638,7 +3708,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  
      this.roomStackEntities.push({
        kind: 'hotspot',
-@@ -5918,6 +6441,7 @@
+@@ -5918,6 +6465,7 @@
      }
  
      const sprite = this.add.image(0, 0, spawn.textureKey);
@@ -3646,7 +3716,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      const feet = resolveCharacterFeetLocal(spawn.data, sprite as Phaser.GameObjects.Sprite);
      const manager = resolveGameStateManager(this.game);
      // Saved feet world position (from a prior flush) overrides the room JSON `(x, y)` — same
-@@ -5964,6 +6488,11 @@
+@@ -5964,6 +6512,11 @@
      const createdAnims = sprite.anims.createFromAseprite(spawn.textureKey);
      setupCharacterAsepritePlayback(sprite, spawn.data, createdAnims);
      attachDirectionalAnimationApi(sprite);
@@ -3658,7 +3728,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  
      const animBase = spawn.initialAnimation ?? 'Idle';
      const facing = resolveSpawnIdleFacing(sprite, spawn.initialFacing);
-@@ -6025,19 +6554,40 @@
+@@ -6025,19 +6578,40 @@
      const handlers = getCharacterVerbHandlers(spawn.data);
  
      const colliderPts = spawn.data.collider?.points;
@@ -3703,7 +3773,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
          return;
        }
        if (this.isPlayerPointerBlocked()) {
-@@ -6045,12 +6595,24 @@
+@@ -6045,12 +6619,24 @@
        }
        const profile = getEffectiveInputProfile(getGameSettings());
        const manager = resolveGameStateManager(this.game);
@@ -3728,7 +3798,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        );
        if (resolution.kind === 'none') {
          return;
-@@ -6118,7 +6680,8 @@
+@@ -6118,7 +6704,8 @@
        if (resolution.consumeActive) {
          manager.clearActiveVerb();
        }

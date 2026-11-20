@@ -301,6 +301,12 @@ const PREVIEW_DEBUG_OUTLINES_VISIBLE_REGISTRY_KEY = 'benneRoomPreviewDebugOutlin
 /** Ignore walk clicks when already within this many pixels of the target. */
 const MIN_WALK_DISTANCE_PX = 6;
 
+/** Talking distance, feet to feet, as a fraction of the taller figure's height (see `characterStandSide`). */
+const TALK_GAP_OF_HEIGHT = 0.45;
+
+/** How far toward the camera the walker stands when talking, as a fraction of that height. */
+const TALK_STEP_OF_HEIGHT = 0.06;
+
 /**
  * Leader overlap slack for follow snap (see {@link updateCharacterFollowers} idle-leader handling).
  */
@@ -4442,8 +4448,11 @@ export class RoomScene extends Phaser.Scene {
   }
 
   /**
-   * A `walkToPoint` straight to the right of the feet (the default: "stand beside them") is mirrored to
-   * the side the walker comes from, if that side is walkable. Any other `walkToPoint` (left, in front,
+   * A `walkToPoint` straight to the right of the feet (the default: "stand beside them") becomes a
+   * conversation spot: on the side the walker comes from (if walkable), at a talking distance
+   * ({@link TALK_GAP_OF_HEIGHT} of the taller figure, never closer than the authored offset) and one small
+   * step toward the camera ({@link TALK_STEP_OF_HEIGHT}), so the two do not stand shoulder to shoulder on one
+   * line. All in world px at the character's current scale. Any other `walkToPoint` (left, in front,
    * behind) was placed on purpose and is kept as is.
    */
   private characterStandSide(
@@ -4452,15 +4461,30 @@ export class RoomScene extends Phaser.Scene {
     stand: Point2,
     walkerFeet: Point2,
   ): Point2 {
-    const feet = getCharacterWorldFeet(sprite);
-    const dx = stand.x - feet.x;
     const offset = data.feet ? { x: data.walkToPoint!.x - data.feet.x, y: data.walkToPoint!.y - data.feet.y } : null;
-    if (!offset || offset.x <= 0 || offset.y !== 0 || walkerFeet.x >= feet.x - 2) {
+    if (!offset || offset.x <= 0 || offset.y !== 0) {
       return stand;
     }
-    const mirrored = { x: feet.x - dx, y: stand.y };
+    const feet = getCharacterWorldFeet(sprite);
+    const height = (s: Phaser.GameObjects.Sprite | null): number => {
+      const d = s?.getData('character') as CharacterData | undefined;
+      return d?.feet ? d.feet.y * Math.abs(s!.scaleY) : 0;
+    };
+    const tallest = Math.max(height(sprite), height(this.player as Phaser.GameObjects.Sprite | null));
+    const gap = Math.max(offset.x * Math.abs(sprite.scaleX), TALK_GAP_OF_HEIGHT * tallest);
+    const step = TALK_STEP_OF_HEIGHT * tallest;
+    const fromLeft = walkerFeet.x < feet.x - 2;
+    const sides = fromLeft ? [-1, 1] : [1, -1];
     const polys = withNonWalkableRegionsAsHoles(this.roomData.walkable.polygons, this.roomData.regions);
-    return isPointInWalkableArea(mirrored.x, mirrored.y, polys) ? mirrored : stand;
+    for (const side of sides) {
+      for (const dy of [step, 0, -step]) {
+        const p = { x: feet.x + side * gap, y: feet.y + dy };
+        if (isPointInWalkableArea(p.x, p.y, polys)) {
+          return p;
+        }
+      }
+    }
+    return stand;
   }
 
   /**
