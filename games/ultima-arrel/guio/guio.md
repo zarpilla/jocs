@@ -168,7 +168,7 @@ complicar res a les de 8.
   hi afegeix la dada («Apuntat. ...»).
 - **Com se sap.** En mirar una d'aquestes coses, mentre no és apuntada, la protagonista ho diu: «Amb la lupa, això
   aniria a la llibreta» / «Això, la Iri ho voldria apuntar. Li ho podria dir pel walkie.»
-- Després de cada una surt el recompte: «Llibreta de camp: 5 observacions de 12.» Mirar la llibreta també el diu.
+- Després de cada una surt el recompte: «Llibreta de camp: 5 de 12 observacions.» Mirar la llibreta també el diu.
 - Cada observació té una base real, en una línia, i acostuma a tenir un cop d'ull a NaturaPlus.
 
 | Escena | Qui | Cosa | L'observació |

@@ -28,7 +28,7 @@ describe("L'Última Arrel: la llibreta de camp", () => {
         const abans = n.getVar('observacions');
         const lines = p.use(eina, cosa);
         expect(n.getVar('observacions'), `${eina} → ${cosa}`).toBe(Number(abans) + 1);
-        expect(lines.at(-1)?.text).toContain(`${n.getVar('observacions')} observacions de 12`);
+        expect(lines.at(-1)?.text).toContain(`${n.getVar('observacions')} de 12 observacions`);
         // La segona vegada ja no suma.
         p.use(eina, cosa);
         expect(n.getVar('observacions')).toBe(Number(abans) + 1);
@@ -58,7 +58,7 @@ describe("L'Última Arrel: la llibreta de camp", () => {
     expect(n.getVar('observacions')).toBe(0);
     const final = n.ending('taula').scene;
     expect(final.map((l) => l.key)).toContain('final.taula.llibreta');
-    expect(final.find((l) => l.key === 'final.taula.llibreta')?.text).toContain('0 observacions de 12');
+    expect(final.find((l) => l.key === 'final.taula.llibreta')?.text).toContain('0 de 12 observacions');
   });
 
   it("la sorpresa de l'àvia parla de l'avi", () => {

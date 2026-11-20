@@ -58,6 +58,18 @@
         "fades_amigues": false,
         "fil_agafat": false,
         "final_taula": false,
+        "obs_aglans": false,
+        "obs_ampolla": false,
+        "obs_bolets": false,
+        "obs_cartell": false,
+        "obs_corn": false,
+        "obs_fils": false,
+        "obs_gespa": false,
+        "obs_maqueta": false,
+        "obs_ortiga": false,
+        "obs_sensors": false,
+        "obs_soques": false,
+        "obs_toll": false,
         "pla_fora": false,
         "plans_segellats": false,
         "pol_len_collit": false,
@@ -77,7 +89,8 @@
       },
       "vars": {
         "discurs": 0,
-        "canals_provats": 0
+        "canals_provats": 0,
+        "observacions": 0
       }
     },
     "characters": {
@@ -104,7 +117,21 @@
             "lines": [
               {
                 "who": "iri",
-                "text": "pj.iri.parla.1"
+                "text": "pj.iri.parla.1",
+                "if": {
+                  "var": "observacions",
+                  "op": ">=",
+                  "value": 12
+                }
+              },
+              {
+                "who": "iri",
+                "text": "pj.iri.parla.1b",
+                "if": {
+                  "var": "observacions",
+                  "op": "<",
+                  "value": 12
+                }
               },
               {
                 "who": "vet",
@@ -241,6 +268,30 @@
               {
                 "who": "avia",
                 "text": "sala.bosc_obert.secret.4"
+              },
+              {
+                "who": "espora",
+                "text": "sala.bosc_obert.avi.1"
+              },
+              {
+                "who": "espora",
+                "text": "sala.bosc_obert.avi.2"
+              },
+              {
+                "who": "player",
+                "text": "sala.bosc_obert.avi.3"
+              },
+              {
+                "who": "espora",
+                "text": "sala.bosc_obert.avi.4"
+              },
+              {
+                "who": "player",
+                "text": "sala.bosc_obert.avi.5"
+              },
+              {
+                "who": "avia",
+                "text": "sala.bosc_obert.avi.6"
               }
             ],
             "effects": [
@@ -900,6 +951,10 @@
               {
                 "who": "player",
                 "text": "obj.llibreta.mira.1"
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta.compte"
               }
             ]
           },
@@ -920,6 +975,10 @@
               {
                 "who": "player",
                 "text": "obj.llibreta.mira.2"
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta.compte"
               }
             ]
           },
@@ -940,6 +999,10 @@
               {
                 "who": "player",
                 "text": "obj.llibreta.mira.3"
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta.compte"
               }
             ]
           },
@@ -960,6 +1023,10 @@
               {
                 "who": "player",
                 "text": "obj.llibreta.mira.4"
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta.compte"
               }
             ]
           },
@@ -972,6 +1039,10 @@
               {
                 "who": "player",
                 "text": "obj.llibreta.mira.5"
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta.compte"
               }
             ]
           },
@@ -984,6 +1055,19 @@
               {
                 "who": "player",
                 "text": "obj.llibreta.mira.6"
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta.compte"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llibreta.compte"
               }
             ]
           }
@@ -1387,6 +1471,30 @@
                   {
                     "who": "avia",
                     "text": "sala.bosc_obert.secret.4"
+                  },
+                  {
+                    "who": "espora",
+                    "text": "sala.bosc_obert.avi.1"
+                  },
+                  {
+                    "who": "espora",
+                    "text": "sala.bosc_obert.avi.2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.bosc_obert.avi.3"
+                  },
+                  {
+                    "who": "espora",
+                    "text": "sala.bosc_obert.avi.4"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.bosc_obert.avi.5"
+                  },
+                  {
+                    "who": "avia",
+                    "text": "sala.bosc_obert.avi.6"
                   },
                   {
                     "who": "narrator",
@@ -1895,11 +2003,65 @@
             },
             "interactions": [
               {
+                "verb": "use",
+                "item": "walkie",
+                "if": {
+                  "flag": "obs_ortiga",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_ortiga.1",
+                    "sound": "walkie"
+                  },
+                  {
+                    "who": "iri",
+                    "text": "obs.obs_ortiga.2",
+                    "effects": [
+                      {
+                        "setFlag": "obs_ortiga"
+                      },
+                      {
+                        "addVar": "observacions",
+                        "amount": 1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "walkie",
+                "lines": [
+                  {
+                    "who": "iri",
+                    "text": "obs.obs_ortiga.2"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.campament_fades.flor.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.vet",
+                    "if": {
+                      "flag": "obs_ortiga",
+                      "is": false
+                    }
                   }
                 ]
               },
@@ -2131,11 +2293,65 @@
             "name": "sala.campament_fades.catapulta.nom",
             "interactions": [
               {
+                "verb": "use",
+                "item": "walkie",
+                "if": {
+                  "flag": "obs_aglans",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_aglans.1",
+                    "sound": "walkie"
+                  },
+                  {
+                    "who": "iri",
+                    "text": "obs.obs_aglans.2",
+                    "effects": [
+                      {
+                        "setFlag": "obs_aglans"
+                      },
+                      {
+                        "addVar": "observacions",
+                        "amount": 1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "walkie",
+                "lines": [
+                  {
+                    "who": "iri",
+                    "text": "obs.obs_aglans.2"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.campament_fades.catapulta.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.vet",
+                    "if": {
+                      "flag": "obs_aglans",
+                      "is": false
+                    }
                   }
                 ]
               },
@@ -2612,11 +2828,65 @@
             "name": "sala.caseta_obra.maqueta.nom",
             "interactions": [
               {
+                "verb": "use",
+                "item": "walkie",
+                "if": {
+                  "flag": "obs_maqueta",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_maqueta.1",
+                    "sound": "walkie"
+                  },
+                  {
+                    "who": "iri",
+                    "text": "obs.obs_maqueta.2",
+                    "effects": [
+                      {
+                        "setFlag": "obs_maqueta"
+                      },
+                      {
+                        "addVar": "observacions",
+                        "amount": 1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "walkie",
+                "lines": [
+                  {
+                    "who": "iri",
+                    "text": "obs.obs_maqueta.2"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.caseta_obra.maqueta.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.vet",
+                    "if": {
+                      "flag": "obs_maqueta",
+                      "is": false
+                    }
                   }
                 ]
               },
@@ -2639,11 +2909,65 @@
             "name": "sala.caseta_obra.cartell.nom",
             "interactions": [
               {
+                "verb": "use",
+                "item": "walkie",
+                "if": {
+                  "flag": "obs_cartell",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_cartell.1",
+                    "sound": "walkie"
+                  },
+                  {
+                    "who": "iri",
+                    "text": "obs.obs_cartell.2",
+                    "effects": [
+                      {
+                        "setFlag": "obs_cartell"
+                      },
+                      {
+                        "addVar": "observacions",
+                        "amount": 1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "walkie",
+                "lines": [
+                  {
+                    "who": "iri",
+                    "text": "obs.obs_cartell.2"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.caseta_obra.cartell.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.vet",
+                    "if": {
+                      "flag": "obs_cartell",
+                      "is": false
+                    }
                   }
                 ]
               }
@@ -3279,6 +3603,47 @@
             "interactions": [
               {
                 "verb": "use",
+                "item": "lupa",
+                "if": {
+                  "flag": "obs_corn",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_corn.1",
+                    "effects": [
+                      {
+                        "setFlag": "obs_corn"
+                      },
+                      {
+                        "addVar": "observacions",
+                        "amount": 1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "lupa",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_corn.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
                 "item": "walkie",
                 "if": {
                   "flag": "xarxa_encesa",
@@ -3541,6 +3906,14 @@
                   {
                     "who": "player",
                     "text": "sala.centraleta.corn.mira2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.iri",
+                    "if": {
+                      "flag": "obs_corn",
+                      "is": false
+                    }
                   }
                 ]
               },
@@ -3550,6 +3923,14 @@
                   {
                     "who": "player",
                     "text": "sala.centraleta.corn.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.iri",
+                    "if": {
+                      "flag": "obs_corn",
+                      "is": false
+                    }
                   }
                 ]
               }
@@ -3559,6 +3940,47 @@
             "name": "sala.centraleta.fils_paret.nom",
             "interactions": [
               {
+                "verb": "use",
+                "item": "lupa",
+                "if": {
+                  "flag": "obs_fils",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_fils.1",
+                    "effects": [
+                      {
+                        "setFlag": "obs_fils"
+                      },
+                      {
+                        "addVar": "observacions",
+                        "amount": 1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "lupa",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_fils.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "if": {
                   "flag": "xarxa_encesa"
@@ -3567,6 +3989,14 @@
                   {
                     "who": "player",
                     "text": "sala.centraleta.fils.mira2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.iri",
+                    "if": {
+                      "flag": "obs_fils",
+                      "is": false
+                    }
                   }
                 ]
               },
@@ -3576,6 +4006,14 @@
                   {
                     "who": "player",
                     "text": "sala.centraleta.fils.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.iri",
+                    "if": {
+                      "flag": "obs_fils",
+                      "is": false
+                    }
                   }
                 ]
               },
@@ -3765,6 +4203,47 @@
             "interactions": [
               {
                 "verb": "use",
+                "item": "lupa",
+                "if": {
+                  "flag": "obs_ampolla",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_ampolla.1",
+                    "effects": [
+                      {
+                        "setFlag": "obs_ampolla"
+                      },
+                      {
+                        "addVar": "observacions",
+                        "amount": 1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "lupa",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_ampolla.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
                 "item": "estaca",
                 "if": {
                   "flag": "ampolles_tretes"
@@ -3943,6 +4422,14 @@
                   {
                     "who": "player",
                     "text": "sala.toll_gripaus.tap.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.iri",
+                    "if": {
+                      "flag": "obs_ampolla",
+                      "is": false
+                    }
                   }
                 ]
               }
@@ -4065,6 +4552,47 @@
             "name": "sala.toll_gripaus.toll.nom",
             "interactions": [
               {
+                "verb": "use",
+                "item": "lupa",
+                "if": {
+                  "flag": "obs_toll",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_toll.1",
+                    "effects": [
+                      {
+                        "setFlag": "obs_toll"
+                      },
+                      {
+                        "addVar": "observacions",
+                        "amount": 1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "lupa",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_toll.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "if": {
                   "flag": "aigua_tornada"
@@ -4073,6 +4601,14 @@
                   {
                     "who": "player",
                     "text": "sala.toll_gripaus.toll.mira2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.iri",
+                    "if": {
+                      "flag": "obs_toll",
+                      "is": false
+                    }
                   }
                 ]
               },
@@ -4082,6 +4618,14 @@
                   {
                     "who": "player",
                     "text": "sala.toll_gripaus.toll.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.iri",
+                    "if": {
+                      "flag": "obs_toll",
+                      "is": false
+                    }
                   }
                 ]
               }
@@ -4867,11 +5411,60 @@
             "name": "sala.vora_bosc.gespa.nom",
             "interactions": [
               {
+                "verb": "use",
+                "item": "lupa",
+                "if": {
+                  "flag": "obs_gespa",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_gespa.1",
+                    "effects": [
+                      {
+                        "setFlag": "obs_gespa"
+                      },
+                      {
+                        "addVar": "observacions",
+                        "amount": 1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "lupa",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_gespa.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.vora_bosc.gespa.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.iri",
+                    "if": {
+                      "flag": "obs_gespa",
+                      "is": false
+                    }
                   }
                 ]
               },
@@ -4923,11 +5516,60 @@
             "name": "sala.vora_bosc.bolets.nom",
             "interactions": [
               {
+                "verb": "use",
+                "item": "lupa",
+                "if": {
+                  "flag": "obs_bolets",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_bolets.1",
+                    "effects": [
+                      {
+                        "setFlag": "obs_bolets"
+                      },
+                      {
+                        "addVar": "observacions",
+                        "amount": 1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "lupa",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_bolets.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.vora_bosc.bolets.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.iri",
+                    "if": {
+                      "flag": "obs_bolets",
+                      "is": false
+                    }
                   }
                 ]
               },
@@ -5411,11 +6053,65 @@
             "name": "sala.zona_zero.sensors.nom",
             "interactions": [
               {
+                "verb": "use",
+                "item": "walkie",
+                "if": {
+                  "flag": "obs_sensors",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_sensors.1",
+                    "sound": "walkie"
+                  },
+                  {
+                    "who": "iri",
+                    "text": "obs.obs_sensors.2",
+                    "effects": [
+                      {
+                        "setFlag": "obs_sensors"
+                      },
+                      {
+                        "addVar": "observacions",
+                        "amount": 1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "walkie",
+                "lines": [
+                  {
+                    "who": "iri",
+                    "text": "obs.obs_sensors.2"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.zona_mati.sensors.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.vet",
+                    "if": {
+                      "flag": "obs_sensors",
+                      "is": false
+                    }
                   }
                 ]
               }
@@ -6108,11 +6804,60 @@
             "name": "sala.zona_zero.soques.nom",
             "interactions": [
               {
+                "verb": "use",
+                "item": "lupa",
+                "if": {
+                  "flag": "obs_soques",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_soques.1",
+                    "effects": [
+                      {
+                        "setFlag": "obs_soques"
+                      },
+                      {
+                        "addVar": "observacions",
+                        "amount": 1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "lupa",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "obs.obs_soques.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "obs.compte"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.zona_zero.soques.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "obs.pista.iri",
+                    "if": {
+                      "flag": "obs_soques",
+                      "is": false
+                    }
                   }
                 ]
               }
@@ -6998,6 +7743,24 @@
           {
             "who": "narrator",
             "text": "final.taula.3"
+          },
+          {
+            "who": "narrator",
+            "text": "final.taula.llibreta.plena",
+            "if": {
+              "var": "observacions",
+              "op": ">=",
+              "value": 12
+            }
+          },
+          {
+            "who": "narrator",
+            "text": "final.taula.llibreta",
+            "if": {
+              "var": "observacions",
+              "op": "<",
+              "value": 12
+            }
           }
         ],
         "credits": [
@@ -8670,6 +9433,8 @@
       "final.taula.1": "Al Bosc de la Coma, els bolets brillen de turquesa. Sota terra, el nord torna a parlar amb el sud.",
       "final.taula.2": "L'Ajuntament va mirar els plànols de 1923 i va treure el permís d'obres a NaturaPlus. El Registrador Bufó va arxivar el cas amb tres segells. Diu que és el seu rècord.",
       "final.taula.3": "Les Fades d'Ortiga tenen un gronxador nou, de cinta rosa fluor. La Pica diu que és brutal. La Card diu que és una traïció, i s'hi gronxa cada dia.",
+      "final.taula.llibreta": "La llibreta de camp de la Iri: {observacions} de 12 observacions. Les pàgines en blanc esperen una altra visita al bosc.",
+      "final.taula.llibreta.plena": "La llibreta de camp de la Iri: 12 de 12 observacions. Plena. La Iri ja n'ha començat una altra.",
       "final.taula.text": "El bosc no té Wi-Fi. Té arrels.",
       "final.taula.titol": "L'Última Arrel",
       "joc.titol": "L'Última Arrel",
@@ -8832,6 +9597,7 @@
       "obj.kit.doblega.2": "Una caseta. Amb el logotip a fora. La polsera me la poso: té zero punts.",
       "obj.kit.mira.mati": "El Kit del Petit Guardabosc. El fullet té tres plecs: és quasi una tenda.",
       "obj.kit.nom": "Kit del Petit Guardabosc",
+      "obj.llibreta.compte": "Observacions: {observacions} de 12. Les coses que valen la pena, les miro amb la lupa.",
       "obj.llibreta.desc": "La llibreta de camp. Hi apunto observacions i hipòtesis.",
       "obj.llibreta.mira.1": "Observació u: una tanca nova. Observació dos: una porta en un roure. Pendent: saber qui hi viu.",
       "obj.llibreta.mira.2": "A l'última pàgina tinc apuntat un experiment de ciències: la pila de llimona. Dos metalls diferents clavats a una llimona fan una mica de corrent.",
@@ -8897,6 +9663,7 @@
       "pj.iri.mira": "La Iri, amb la llibreta oberta. Apunta com bufa el te.",
       "pj.iri.nom": "Iri",
       "pj.iri.parla.1": "Observació: tinc la llibreta plena.",
+      "pj.iri.parla.1b": "Observació: a la llibreta em queden pàgines en blanc. Hipòtesi: haurem de tornar al bosc.",
       "pj.iri.parla.2": "I jo tinc una polsera de punts.",
       "pj.iri.parla.3": "Hipòtesi: no te la treuràs mai.",
       "pj.pica.mira": "Una fada amb la cresta de pelussa de card. Ho troba tot brutal.",
@@ -8984,6 +9751,32 @@
       "pista.xiulet.1": "Ha dit «aire pur».",
       "pista.xiulet.2": "La Vet m'ha deixat el xiulet de les fades. Les fades esperen.",
       "pista.xiulet.3": "Fes servir el xiulet d'ortiga.",
+      "obs.compte": "Llibreta de camp: {observacions} de 12 observacions.",
+      "obs.obs_aglans.1": "Iri, apunta: les fades disparen aglans. Canvi.",
+      "obs.obs_aglans.2": "Apuntat. Els esquirols enterren aglans per a l'hivern i se n'obliden la meitat. D'aquí surten els roures nous. Canvi.",
+      "obs.obs_ampolla.1": "Observació: una ampolla de plàstic triga uns quatre-cents anys a desfer-se. Aquesta acabarà sent més vella que el roure gros.",
+      "obs.obs_bolets.1": "Observació: el bolet no és tot el fong. Només n'és la fruita. El fong de debò és sota terra, i n'hi ha de més grans que un camp de futbol.",
+      "obs.obs_cartell.1": "(xiuxiuejant al walkie) Iri, apunta: al cartell hi ha un arbre que somriu. Canvi.",
+      "obs.obs_cartell.2": "Apuntat. Els arbres de debò no somriuen, però s'avisen: si un insecte se'ls menja, fan una olor que posa en guàrdia els del costat. Canvi.",
+      "obs.obs_corn.1": "Observació: el so corre més de pressa per la fusta que per l'aire. Per això el corn és de roure.",
+      "obs.obs_fils.1": "Observació: els fongs i les arrels fan tractes. L'arbre dona sucre, i el fong li porta aigua. Hipòtesi: és el mercat més antic del món.",
+      "obs.obs_gespa.1": "Observació: en una cullerada de terra de bosc hi viuen més éssers que persones a tot el món. En una cullerada de gespa de plàstic, cap.",
+      "obs.obs_maqueta.1": "(xiuxiuejant al walkie) Iri, apunta: a la maqueta del Bosc 2.0 no hi ha cap ocell. Ni un. Canvi.",
+      "obs.obs_maqueta.2": "Apuntat. En un sol roure de debò hi poden viure centenars de menes de bestioles. Canvi.",
+      "obs.obs_ortiga.1": "Iri, apunta: la Flor de Pebre pica. Canvi.",
+      "obs.obs_ortiga.2": "Apuntat. Les ortigues també: tenen uns pèls com agulles petitíssimes, plens de picor. Canvi.",
+      "obs.obs_sensors.1": "Iri, apunta: els sensors diuen que l'aire és pur al cent per cent. Canvi.",
+      "obs.obs_sensors.2": "Apuntat. L'oxigen que respirem el fan les plantes. Gratis, i sense ampolla. Canvi.",
+      "obs.obs_soques.1": "Observació: compto els anells de la soca. Cada anell és un any. N'hi ha cent vint-i-tres. Era més gran que l'àvia.",
+      "obs.obs_toll.1": "Observació: els gripaus no beuen amb la boca. Beuen per la pell de la panxa. Hipòtesi: per això, sense toll, no treballen.",
+      "obs.pista.iri": "Amb la lupa, això aniria a la llibreta.",
+      "obs.pista.vet": "Això, la Iri ho voldria apuntar. Li ho podria dir pel walkie.",
+      "sala.bosc_obert.avi.1": "I el vostre avi. Venia cada dissabte amb aquell walkie, a gravar ocells.",
+      "sala.bosc_obert.avi.2": "No en va gravar mai cap. Seia a la porta, m'explicava coses del poble i jo li explicava coses del bosc.",
+      "sala.bosc_obert.avi.3": "(mirant el walkie) ...I el canal 7?",
+      "sala.bosc_obert.avi.4": "El va triar ell. Deia que era el número més valent.",
+      "sala.bosc_obert.avi.5": "(fluix) ...Això ho dic jo.",
+      "sala.bosc_obert.avi.6": "Ho dius tu perquè ho deia ell.",
       "sala.bosc_obert.bolets.agafa": "No! Són el wifi del bosc. Bé, una cosa així.",
       "sala.bosc_obert.bolets.mira": "Brillen de turquesa. La Iri diu que vol dir que la xarxa funciona.",
       "sala.bosc_obert.bolets.nom": "bolets",
