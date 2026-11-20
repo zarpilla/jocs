@@ -91,8 +91,11 @@ export default defineConfig({
     name: 'benne-game-page',
     transformIndexHtml(html: string, ctx) {
       // La descripció només a la pàgina del joc (no als editors ni a les previsualitzacions)
-      const meta = path.basename(ctx.filename) === 'index.html' ? pageMeta() : '';
-      return html.replace(/<title>[^<]*<\/title>/, `<title>${displayName.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>${meta}`)
+      const pagina = path.basename(ctx.filename) === 'index.html';
+      const meta = pagina ? pageMeta() : '';
+      // A la pestanya del navegador, la pàgina del joc diu també on és: «Ni un ou - malaherbasoft.cat»
+      const titol = pagina ? `${displayName} - malaherbasoft.cat` : displayName;
+      return html.replace(/<title>[^<]*<\/title>/, `<title>${titol.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>${meta}`)
         .replace('<!--benne:nom-->', attr(displayName))                  // la pantalla de càrrega
         .replace('<!--benne:colors-->', loadingColors())
         // Sense icona pròpia del joc, es queda el favicon de Mala Herba Soft (public/favicon.*)
