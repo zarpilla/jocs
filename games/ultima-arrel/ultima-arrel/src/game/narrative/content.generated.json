@@ -4305,7 +4305,13 @@
                   {
                     "who": "narrator",
                     "text": "sala.vora_bosc.truca.1",
-                    "sound": "campaneta"
+                    "sound": "campaneta",
+                    "stage": [
+                      {
+                        "prop": "porta_oberta",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "espora",
@@ -4322,7 +4328,13 @@
                   {
                     "who": "narrator",
                     "text": "sala.vora_bosc.obre.1",
-                    "sound": "porta_roure"
+                    "sound": "porta_roure",
+                    "stage": [
+                      {
+                        "prop": "porta_oberta",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "espora",
@@ -4515,12 +4527,24 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.vora_bosc.estaca.fora"
+                    "text": "sala.vora_bosc.estaca.fora",
+                    "stage": [
+                      {
+                        "prop": "porta_oberta",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
                     "text": "sala.vora_bosc.obre.1",
-                    "sound": "porta_roure"
+                    "sound": "porta_roure",
+                    "stage": [
+                      {
+                        "prop": "porta_oberta",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "espora",
