@@ -452,8 +452,8 @@
     {
       "instanceId": "capatas-1",
       "definition": "capatas/capatas.character.json",
-      "x": 424,
-      "y": 146,
+      "x": 355,
+      "y": 142,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -492,7 +492,7 @@
         "y": 31,
         "radius": 170,
         "color": "#ff3c28",
-        "intensity": 1,
+        "intensity": 1.0,
         "whenPropVisible": "alarma_encesa"
       }
     ]

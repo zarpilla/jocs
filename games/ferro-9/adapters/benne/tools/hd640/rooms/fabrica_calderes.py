@@ -588,7 +588,7 @@ GEOMETRIA = {
                    'walk': _p(SEGELL[0] - 26, SEGELL[1] - 12)},
         'porta_moll': {'rect': _rect_mon((_DOOR_L[0], _DOOR_L[2], ZW), (_DOOR_L[1], 0, ZW)), 'walk': _p(321, 276)},
     },
-    'spawns': {'iri': _p(200, 90), 'capatas': _p(DESK[0] + 30, DESK[1] - 40), 'sic': _p(452, 214)},
+    'spawns': {'iri': _p(200, 90), 'capatas': _p(DESK[0] - 48, DESK[1]), 'sic': _p(452, 214)},
     'walkable': _WALK,
     'forats': [_forat(*DESK[:4], DESK[5]), _forat(VAG[0], VAG[1], VAG[2], VAG[3], VAG[5], m=6)],
     'floorSquash': 0.4,                            # (la càmera, picada: el terra es veu aixafat)
