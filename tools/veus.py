@@ -37,9 +37,10 @@ SENSE_VEU = {"narrator", "title"}
 # Acotacions → etiquetes d'emoció del model v3. Una acotació és el parèntesi del començament de la línia
 # («(al walkie, xiuxiuejant) Iri…»), o un del mig que digui com es parla («Per si de cas. (sospira) Això…»).
 # Es treuen totes; les que diuen com es parla deixen l'etiqueta. La resta del parèntesi del mig es diu tal qual
-# (a les pistes, «(si n'hi ha més d'una, tries)» és text).
+# (a les pistes, «(si n'hi ha més d'una, tries)» és text). «Al walkie», «per ràdio», «per l'interfon»… no deixen etiqueta:
+# el v3 no fa so de ràdio de manera fiable; si cal, és un filtre del joc.
 ETIQUETES = [
-    (r"xiuxiuej|\bfluix\b|\bbaix\b", "[whispers]"),
+    (r"xiuxiuej|\bfluix\b|\bbaix\b|veu baixa|tapant el micròfon", "[whispers]"),
     (r"sospir", "[sighs]"),
     (r"somri", "[smiles]"),
     (r"rondin", "[grumbling]"),
@@ -48,6 +49,7 @@ ETIQUETES = [
     (r"boca plena", "[mouth full]"),
     (r"fortíssim|cridant|\bcrida\b", "[shouting]"),
     (r"de lluny", "[shouting from afar]"),
+    (r"^des de (dins|la porta)|^des del públic", "[from afar]"),
     (r"\ba part\b", "[quietly]"),
     (r"veu sintètica", "[robotic]"),
     (r"silenci", "[pause]"),
