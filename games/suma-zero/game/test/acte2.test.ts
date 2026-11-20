@@ -292,7 +292,7 @@ describe('Acte 2 · la sincronia del collaret', () => {
     p.talk('ballester', 'vidua', 'auditor', 'adeu');
     expect(n.getVar('coberta')).toBe(1);
     expect(n.getVar('sospita_ballester')).toBe(2);
-    expect(texts(p.do('use', 'got'))).toContain('Ja és trencat');
+    expect(texts(p.do('use', 'got'))).toContain('Ja està trencat');
   });
 
   it("«El violí mut» tapa un sol bip: el tercer codi necessita una altra eina", () => {

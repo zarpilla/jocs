@@ -12,7 +12,7 @@ function ambElVirus(o: { aliats?: boolean } = {}) {
 
 describe('Acte 3 · camins', () => {
   it('sense aliats: la Vet distreu el Director sola, i el final és «Ni caos ni paradís»', () => {
-    const { n, p } = ambElVirus();
+    const { n, p, world } = ambElVirus();
     expect(p.room).toBe('bcmu_escombraries');
     jugarActe3(p);
     expect(n.flag('virus_aturat')).toBe(true);
@@ -29,6 +29,9 @@ describe('Acte 3 · camins', () => {
     n.apply(mossegada.effects!);
     expect(n.placeOf('diu', 'final_bar')).toMatchObject({ x: 539 });
     expect(n.hotspotsIn('final_bar').find((h) => h.id === 'tele_apagada')?.visible).toBe(true);
+    // Acaba al contenidor, de lluny; al bar del final (el motor hi entra amb qui juga), sense roba.
+    expect(n.outfitOf('vet')).toBe('Lluny');
+    world.enter('final_bar');
     expect(n.outfitOf('vet')).toBe('');
     const estat = Object.fromEntries(n.quests().map((q) => [q.id, q.status]));
     expect(estat).toMatchObject({ acte3: 'completed', senyora_pons: 'failed' });
