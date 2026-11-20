@@ -280,11 +280,65 @@
       },
       "interactions": [
         {
+          "verb": "use",
+          "item": "walkie",
+          "if": {
+            "flag": "obs_ortiga",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_ortiga.1",
+              "sound": "walkie"
+            },
+            {
+              "who": "iri",
+              "text": "obs.obs_ortiga.2",
+              "effects": [
+                {
+                  "setFlag": "obs_ortiga"
+                },
+                {
+                  "addVar": "observacions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "walkie",
+          "lines": [
+            {
+              "who": "iri",
+              "text": "obs.obs_ortiga.2"
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
               "who": "player",
               "text": "sala.campament_fades.flor.mira"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.vet",
+              "if": {
+                "flag": "obs_ortiga",
+                "is": false
+              }
             }
           ]
         },
@@ -516,11 +570,65 @@
       "name": "sala.campament_fades.catapulta.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "walkie",
+          "if": {
+            "flag": "obs_aglans",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_aglans.1",
+              "sound": "walkie"
+            },
+            {
+              "who": "iri",
+              "text": "obs.obs_aglans.2",
+              "effects": [
+                {
+                  "setFlag": "obs_aglans"
+                },
+                {
+                  "addVar": "observacions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "walkie",
+          "lines": [
+            {
+              "who": "iri",
+              "text": "obs.obs_aglans.2"
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
               "who": "player",
               "text": "sala.campament_fades.catapulta.mira"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.vet",
+              "if": {
+                "flag": "obs_aglans",
+                "is": false
+              }
             }
           ]
         },

@@ -262,6 +262,10 @@
           {
             "who": "player",
             "text": "obj.llibreta.mira.1"
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta.compte"
           }
         ]
       },
@@ -282,6 +286,10 @@
           {
             "who": "player",
             "text": "obj.llibreta.mira.2"
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta.compte"
           }
         ]
       },
@@ -302,6 +310,10 @@
           {
             "who": "player",
             "text": "obj.llibreta.mira.3"
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta.compte"
           }
         ]
       },
@@ -322,6 +334,10 @@
           {
             "who": "player",
             "text": "obj.llibreta.mira.4"
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta.compte"
           }
         ]
       },
@@ -334,6 +350,10 @@
           {
             "who": "player",
             "text": "obj.llibreta.mira.5"
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta.compte"
           }
         ]
       },
@@ -346,6 +366,19 @@
           {
             "who": "player",
             "text": "obj.llibreta.mira.6"
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta.compte"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llibreta.compte"
           }
         ]
       }

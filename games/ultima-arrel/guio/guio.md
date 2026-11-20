@@ -157,7 +157,39 @@ La presentació és dilluns al matí, i el formigó arriba just després. Els r�
 recorden, i a la sala 1 hi ha un cartell amb el compte enrere. **És un rellotge narratiu**: no es pot perdre per
 culpa seu.
 
-### 4. El bosc viu i el bosc de plàstic
+### 4. La llibreta de camp (opcional)
+La Iri vol omplir la llibreta, i el joc la deixa. A cada escena (menys l'epíleg) hi ha una o dues coses que valen una
+**observació**: **12** en total. Són opcionals: no en cal cap per acabar, i les pistes de la lupa no hi apunten mai.
+Serveixen perquè el joc es vulgui tornar a jugar, i donen una mica més de feina a les nenes de 11 i 12 anys sense
+complicar res a les de 8.
+
+- **La Iri** fa servir la **lupa** amb la cosa, i ho diu com sempre: «Observació: ...».
+- **La Vet** no té lupa: fa servir el **walkie** amb la cosa i ho dicta («Iri, apunta: ...»). La Iri, des de casa,
+  hi afegeix la dada («Apuntat. ...»).
+- **Com se sap.** En mirar una d'aquestes coses, mentre no és apuntada, la protagonista ho diu: «Amb la lupa, això
+  aniria a la llibreta» / «Això, la Iri ho voldria apuntar. Li ho podria dir pel walkie.»
+- Després de cada una surt el recompte: «Llibreta de camp: 5 observacions de 12.» Mirar la llibreta també el diu.
+- Cada observació té una base real, en una línia, i acostuma a tenir un cop d'ull a NaturaPlus.
+
+| Escena | Qui | Cosa | L'observació |
+|---|---|---|---|
+| 1 | Iri | bolets | El bolet només és la fruita; el fong és sota terra, i n'hi ha de més grans que un camp de futbol. |
+| 1 | Iri | gespa | Una cullerada de terra de bosc té més éssers vius que persones al món; una de gespa de plàstic, cap. |
+| 2 | Iri | fils de la paret | Els fongs i les arrels fan tractes: sucre per aigua. «El mercat més antic del món.» |
+| 2 | Iri | corn | El so corre més per la fusta que per l'aire: per això el corn és de roure. |
+| 3 | Vet | catapulta | Els esquirols enterren aglans i se n'obliden la meitat: així neixen roures. |
+| 3 | Vet | Flor de Pebre | Les ortigues piquen amb pèls com agulles petitíssimes. |
+| 4 | Iri | toll | Els gripaus beuen per la pell de la panxa. |
+| 4 | Iri | tap de plàstics | Una ampolla triga uns quatre-cents anys a desfer-se: més que el roure gros. |
+| 5 | Vet | maqueta | A la maqueta no hi ha cap ocell; en un roure de debò hi viuen centenars de menes de bestioles. |
+| 5 | Vet | cartell | Els arbres no somriuen, però s'avisen amb olors quan un insecte se'ls menja. |
+| 6a | Vet | sensors | L'oxigen el fan les plantes. Gratis, i sense ampolla. |
+| 6b | Iri | soques | Cent vint-i-tres anells: «Era més gran que l'àvia.» |
+
+Al final, una línia diu quantes se n'han apuntat («...Les pàgines en blanc esperen una altra visita al bosc», o, amb
+les 12, «Plena. La Iri ja n'ha començat una altra»). A l'epíleg, la Iri ho diu també si la Vet hi parla.
+
+### 5. El bosc viu i el bosc de plàstic
 Tot el que és de NaturaPlus té colors freds i plans (blanc, gris acer, verd fluor) i fa sons de màquina (bips,
 música d'ascensor). Tot el que és del bosc és càlid, i quan va bé, brilla turquesa. El jugador ha de saber d'un cop
 d'ull què és de qui.
@@ -601,6 +633,16 @@ seure a la taula. Si parla amb l'àvia, que seu al costat de l'Espora, surt la s
 > VET: VOSALTRES DOS US CONEIXÍEU?
 > IRI: «Si veus algú estrany, sigues educada.» Àvia! Tu ho sabies!
 > ÀVIA: No m'ho havíeu preguntat.
+> ESPORA: I el vostre avi. Venia cada dissabte amb aquell walkie, a gravar ocells.
+> ESPORA: No en va gravar mai cap. Seia a la porta, m'explicava coses del poble i jo li explicava coses del bosc.
+> VET: *(mirant el walkie)* ...I el canal 7?
+> ESPORA: El va triar ell. Deia que era el número més valent.
+> VET: *(fluix)* ...Això ho dic jo.
+> ÀVIA: Ho dius tu perquè ho deia ell.
+
+És l'únic moment en què el joc parla de l'avi, que fins aquí només eren objectes (el walkie, la lupa, el cèntim).
+Paga el «7 és el número més valent» de la Vet, i fa que la darrera crida del joc, pel canal 7, sigui també la de
+l'avi.
 
 **El Bosc 3.0.** Quan la Vet seu a la taula, un missatger en patinet elèctric porta un paquet a nom de «La nena del canal 7». A dins hi ha una
 polsera de punts, i una targeta amb el somriure de la Pla i un codi QR: «Gràcies per la vostra opinió! Ens
@@ -681,7 +723,7 @@ ACTE 3
 |---|---|---|---|
 | Walkie | les dues | inici | Converses, pistes de la Vet, gravar (2) i reproduir (6b), canal 7 (5 i 6a) |
 | Lupa | Iri | inici | Mirar (pistes), l'arrel viva (2) |
-| Llibreta | Iri | inici | Notes de ciència (mirar-la recorda l'objectiu) |
+| Llibreta | Iri | inici | Notes de ciència (mirar-la recorda l'objectiu i diu quantes observacions hi ha) |
 | Cèntim de la sort | Iri | inici | Pila (2) |
 | Llimona | Iri | inici (l'àvia) | Pila (2) |
 | Estaca de topògraf | Iri | Esc. 1 | El plàstic encallat (4) |
@@ -707,6 +749,7 @@ Els objectes que ja no serveixen es treuen de l'inventari en acabar l'escena, pe
 | Pila de llimona | Combinacions d'objectes en qualsevol ordre (`llimona` + `centim` → `llimona_centim`, + `cargol` → `pila_llimona`, i a l'inrevés). |
 | Final | Un sol final a `endings.json`, en seure a la taula de l'escena 7 (si encara no ha sortit, la sorpresa de l'àvia hi surt abans). |
 | Missions | `acte1`, `acte2`, `acte3` (per a les estadístiques), amb un objectiu per escena. Sense secundàries. |
+| Llibreta de camp | `vars.observacions` i un flag `obs_<cosa>` per observació. A cada cosa: una interacció `use` amb `lupa` (Iri) o `walkie` (Vet) que suma, i una altra que la repeteix sense sumar; a la de mirar, una línia amb `if` que diu amb què s'apunta. El recompte és `obs.compte` (`{observacions}`). El final i la Iri de l'epíleg tenen línies amb `if` segons `observacions`. Test: `test/llibreta.test.ts`. |
 
 ## Abast (producció)
 

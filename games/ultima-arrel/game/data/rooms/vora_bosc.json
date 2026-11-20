@@ -691,11 +691,60 @@
       "name": "sala.vora_bosc.gespa.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "lupa",
+          "if": {
+            "flag": "obs_gespa",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_gespa.1",
+              "effects": [
+                {
+                  "setFlag": "obs_gespa"
+                },
+                {
+                  "addVar": "observacions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "lupa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_gespa.1"
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
               "who": "player",
               "text": "sala.vora_bosc.gespa.mira"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.iri",
+              "if": {
+                "flag": "obs_gespa",
+                "is": false
+              }
             }
           ]
         },
@@ -747,11 +796,60 @@
       "name": "sala.vora_bosc.bolets.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "lupa",
+          "if": {
+            "flag": "obs_bolets",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_bolets.1",
+              "effects": [
+                {
+                  "setFlag": "obs_bolets"
+                },
+                {
+                  "addVar": "observacions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "lupa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_bolets.1"
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
               "who": "player",
               "text": "sala.vora_bosc.bolets.mira"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.iri",
+              "if": {
+                "flag": "obs_bolets",
+                "is": false
+              }
             }
           ]
         },

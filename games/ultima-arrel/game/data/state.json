@@ -20,6 +20,18 @@
     "fades_amigues": false,
     "fil_agafat": false,
     "final_taula": false,
+    "obs_aglans": false,
+    "obs_ampolla": false,
+    "obs_bolets": false,
+    "obs_cartell": false,
+    "obs_corn": false,
+    "obs_fils": false,
+    "obs_gespa": false,
+    "obs_maqueta": false,
+    "obs_ortiga": false,
+    "obs_sensors": false,
+    "obs_soques": false,
+    "obs_toll": false,
     "pla_fora": false,
     "plans_segellats": false,
     "pol_len_collit": false,
@@ -39,6 +51,7 @@
   },
   "vars": {
     "discurs": 0,
-    "canals_provats": 0
+    "canals_provats": 0,
+    "observacions": 0
   }
 }

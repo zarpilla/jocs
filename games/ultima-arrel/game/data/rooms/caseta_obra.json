@@ -362,11 +362,65 @@
       "name": "sala.caseta_obra.maqueta.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "walkie",
+          "if": {
+            "flag": "obs_maqueta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_maqueta.1",
+              "sound": "walkie"
+            },
+            {
+              "who": "iri",
+              "text": "obs.obs_maqueta.2",
+              "effects": [
+                {
+                  "setFlag": "obs_maqueta"
+                },
+                {
+                  "addVar": "observacions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "walkie",
+          "lines": [
+            {
+              "who": "iri",
+              "text": "obs.obs_maqueta.2"
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
               "who": "player",
               "text": "sala.caseta_obra.maqueta.mira"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.vet",
+              "if": {
+                "flag": "obs_maqueta",
+                "is": false
+              }
             }
           ]
         },
@@ -389,11 +443,65 @@
       "name": "sala.caseta_obra.cartell.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "walkie",
+          "if": {
+            "flag": "obs_cartell",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_cartell.1",
+              "sound": "walkie"
+            },
+            {
+              "who": "iri",
+              "text": "obs.obs_cartell.2",
+              "effects": [
+                {
+                  "setFlag": "obs_cartell"
+                },
+                {
+                  "addVar": "observacions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "walkie",
+          "lines": [
+            {
+              "who": "iri",
+              "text": "obs.obs_cartell.2"
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
               "who": "player",
               "text": "sala.caseta_obra.cartell.mira"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.vet",
+              "if": {
+                "flag": "obs_cartell",
+                "is": false
+              }
             }
           ]
         }

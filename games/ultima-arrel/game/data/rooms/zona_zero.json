@@ -616,11 +616,60 @@
       "name": "sala.zona_zero.soques.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "lupa",
+          "if": {
+            "flag": "obs_soques",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_soques.1",
+              "effects": [
+                {
+                  "setFlag": "obs_soques"
+                },
+                {
+                  "addVar": "observacions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "lupa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_soques.1"
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
               "who": "player",
               "text": "sala.zona_zero.soques.mira"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.iri",
+              "if": {
+                "flag": "obs_soques",
+                "is": false
+              }
             }
           ]
         }

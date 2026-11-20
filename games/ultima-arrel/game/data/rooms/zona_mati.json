@@ -430,11 +430,65 @@
       "name": "sala.zona_zero.sensors.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "walkie",
+          "if": {
+            "flag": "obs_sensors",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_sensors.1",
+              "sound": "walkie"
+            },
+            {
+              "who": "iri",
+              "text": "obs.obs_sensors.2",
+              "effects": [
+                {
+                  "setFlag": "obs_sensors"
+                },
+                {
+                  "addVar": "observacions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "walkie",
+          "lines": [
+            {
+              "who": "iri",
+              "text": "obs.obs_sensors.2"
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
               "who": "player",
               "text": "sala.zona_mati.sensors.mira"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.vet",
+              "if": {
+                "flag": "obs_sensors",
+                "is": false
+              }
             }
           ]
         }

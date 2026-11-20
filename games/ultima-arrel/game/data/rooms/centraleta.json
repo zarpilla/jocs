@@ -574,6 +574,47 @@
       "interactions": [
         {
           "verb": "use",
+          "item": "lupa",
+          "if": {
+            "flag": "obs_corn",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_corn.1",
+              "effects": [
+                {
+                  "setFlag": "obs_corn"
+                },
+                {
+                  "addVar": "observacions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "lupa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_corn.1"
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
           "item": "walkie",
           "if": {
             "flag": "xarxa_encesa",
@@ -836,6 +877,14 @@
             {
               "who": "player",
               "text": "sala.centraleta.corn.mira2"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.iri",
+              "if": {
+                "flag": "obs_corn",
+                "is": false
+              }
             }
           ]
         },
@@ -845,6 +894,14 @@
             {
               "who": "player",
               "text": "sala.centraleta.corn.mira"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.iri",
+              "if": {
+                "flag": "obs_corn",
+                "is": false
+              }
             }
           ]
         }
@@ -854,6 +911,47 @@
       "name": "sala.centraleta.fils_paret.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "lupa",
+          "if": {
+            "flag": "obs_fils",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_fils.1",
+              "effects": [
+                {
+                  "setFlag": "obs_fils"
+                },
+                {
+                  "addVar": "observacions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "lupa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_fils.1"
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "if": {
             "flag": "xarxa_encesa"
@@ -862,6 +960,14 @@
             {
               "who": "player",
               "text": "sala.centraleta.fils.mira2"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.iri",
+              "if": {
+                "flag": "obs_fils",
+                "is": false
+              }
             }
           ]
         },
@@ -871,6 +977,14 @@
             {
               "who": "player",
               "text": "sala.centraleta.fils.mira"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.iri",
+              "if": {
+                "flag": "obs_fils",
+                "is": false
+              }
             }
           ]
         },

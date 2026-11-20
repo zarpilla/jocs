@@ -23,7 +23,21 @@
         "lines": [
           {
             "who": "iri",
-            "text": "pj.iri.parla.1"
+            "text": "pj.iri.parla.1",
+            "if": {
+              "var": "observacions",
+              "op": ">=",
+              "value": 12
+            }
+          },
+          {
+            "who": "iri",
+            "text": "pj.iri.parla.1b",
+            "if": {
+              "var": "observacions",
+              "op": "<",
+              "value": 12
+            }
           },
           {
             "who": "vet",
@@ -160,6 +174,30 @@
           {
             "who": "avia",
             "text": "sala.bosc_obert.secret.4"
+          },
+          {
+            "who": "espora",
+            "text": "sala.bosc_obert.avi.1"
+          },
+          {
+            "who": "espora",
+            "text": "sala.bosc_obert.avi.2"
+          },
+          {
+            "who": "player",
+            "text": "sala.bosc_obert.avi.3"
+          },
+          {
+            "who": "espora",
+            "text": "sala.bosc_obert.avi.4"
+          },
+          {
+            "who": "player",
+            "text": "sala.bosc_obert.avi.5"
+          },
+          {
+            "who": "avia",
+            "text": "sala.bosc_obert.avi.6"
           }
         ],
         "effects": [

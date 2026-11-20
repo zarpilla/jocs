@@ -15,6 +15,24 @@
       {
         "who": "narrator",
         "text": "final.taula.3"
+      },
+      {
+        "who": "narrator",
+        "text": "final.taula.llibreta.plena",
+        "if": {
+          "var": "observacions",
+          "op": ">=",
+          "value": 12
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.taula.llibreta",
+        "if": {
+          "var": "observacions",
+          "op": "<",
+          "value": 12
+        }
       }
     ],
     "credits": [

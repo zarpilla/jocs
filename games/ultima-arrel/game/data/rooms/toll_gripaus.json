@@ -57,6 +57,47 @@
       "interactions": [
         {
           "verb": "use",
+          "item": "lupa",
+          "if": {
+            "flag": "obs_ampolla",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_ampolla.1",
+              "effects": [
+                {
+                  "setFlag": "obs_ampolla"
+                },
+                {
+                  "addVar": "observacions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "lupa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_ampolla.1"
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
           "item": "estaca",
           "if": {
             "flag": "ampolles_tretes"
@@ -235,6 +276,14 @@
             {
               "who": "player",
               "text": "sala.toll_gripaus.tap.mira"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.iri",
+              "if": {
+                "flag": "obs_ampolla",
+                "is": false
+              }
             }
           ]
         }
@@ -357,6 +406,47 @@
       "name": "sala.toll_gripaus.toll.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "lupa",
+          "if": {
+            "flag": "obs_toll",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_toll.1",
+              "effects": [
+                {
+                  "setFlag": "obs_toll"
+                },
+                {
+                  "addVar": "observacions",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "lupa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "obs.obs_toll.1"
+            },
+            {
+              "who": "narrator",
+              "text": "obs.compte"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "if": {
             "flag": "aigua_tornada"
@@ -365,6 +455,14 @@
             {
               "who": "player",
               "text": "sala.toll_gripaus.toll.mira2"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.iri",
+              "if": {
+                "flag": "obs_toll",
+                "is": false
+              }
             }
           ]
         },
@@ -374,6 +472,14 @@
             {
               "who": "player",
               "text": "sala.toll_gripaus.toll.mira"
+            },
+            {
+              "who": "player",
+              "text": "obs.pista.iri",
+              "if": {
+                "flag": "obs_toll",
+                "is": false
+              }
             }
           ]
         }
