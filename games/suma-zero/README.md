@@ -29,7 +29,7 @@ Es juga sense barra de verbs, també amb el dit en un mòbil apaïsat (el camí 
 | Tocar una cosa (amb el dit) | La primera vegada, mirar-la. Després: si té una sola acció, la fa; si en té més d'una (la nevera: obrir o tancar; la impressora: empènyer o agafar), obre el menú i tries tu. Les sortides no es miren: s'hi va |
 | Amb el ratolí: clic esquerre, clic dret | Per defecte, el clic esquerre mira (a les sortides, hi va) i el dret fa el mateix que el toc, però sense mirar primer (l'acció, o el menú si n'hi ha més d'una) |
 | Mantenir premut (el dit o el botó esquerre) | El menú d'accions: «Mira» i les accions que té ara mateix |
-| «Com es juga» | A Opcions → Controls, una targeta que ho explica, amb el dit o amb el ratolí segons l'aparell (amb el ratolí, s'hi pot triar què fa cada botó); l'última fila diu on es demana una pista (menú → «Pista»). No surt sola en començar |
+| «Com es juga» | Una targeta que ho explica, amb el dit o amb el ratolí segons l'aparell (amb el ratolí, s'hi pot triar què fa cada botó); l'última fila diu on es demana una pista (menú → «Pista»). Surt sola un cop a cada partida nova, quan s'acaba l'entrada i ja es pot jugar, i també s'obre a Opcions → Controls |
 | Opcions → «clic esquerre per fer» | Gira els botons del ratolí: l'esquerre fa i el dret mira. Es desa en aquell aparell |
 | Tocar el terra | Caminar |
 | Carpeta (a baix a la dreta) | Desplega la safata de l'inventari |
