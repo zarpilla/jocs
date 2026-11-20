@@ -2247,7 +2247,15 @@
           {
             "verb": "look",
             "if": {
-              "protagonist": "vet"
+              "all": [
+                {
+                  "protagonist": "vet"
+                },
+                {
+                  "flag": "acte2_noms",
+                  "is": false
+                }
+              ]
             },
             "lines": [
               {
@@ -2288,6 +2296,22 @@
               },
               {
                 "setFlag": "acte3_iniciat"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "if": {
+              "protagonist": "vet"
+            },
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_iri_nom.text"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_iri_nom.vet1"
               }
             ]
           },
@@ -18870,7 +18894,7 @@
       "dlg.mos.veus.7": "Al motor no li arriba pressió? A la fàbrica tot anava per canonades. Pregunta-li a ella què hi pot fer, des d'allà.",
       "dlg.mos.veus.8": "Diuen a la galeria que el nivell de sota és una piscina. Jo no hi he vist mai aigua. Tu sí, oi? Doncs digues-li que afluixi.",
       "dlg.mos.veus.9": "Si el conducte ja vibra, prova d'engegar aquesta andròmina. Que se senti a tota La Gavina.",
-      "dlg.mos.veus.10": "Tens nau. Però abans de marxar, baixa a l'arxiu: l'escala del moll hi porta. Allà hi ha totes les respostes que la MARE no dona.",
+      "dlg.mos.veus.10": "Tens nau. Però abans de marxar, baixa a l'arxiu: l'escala de l'hangar hi porta. Allà hi ha totes les respostes que la MARE no dona.",
       "dlg.mos.veus.11": "Has vist alguna cosa a l'arxiu que no m'expliques. Si és d'ella, digues-l'hi. I digues-li com et dius: ja va sent hora.",
       "dlg.mos.veus3.1": "La MARE diu que t'esperen a la Sala de la Memòria. Hi ha galetes. I a la paret, un mapa de tota l'estació, fàbrica inclosa.",
       "dlg.mos.veus3.2": "Si la de la paret ha de fugir, li cal un camí. El mapa de la Sala de la Memòria el té, si saps mirar-lo.",
@@ -18895,7 +18919,7 @@
       "dlg.cargol.fabrica3.4": "Si marxa, senyora Iri, que no sigui amb les mans buides. Algú, a l'altra banda, encara espera una peça.",
       "dlg.cargol.fabrica3.5": "La peça ja ha arribat on havia d'arribar, oi? Doncs vostè, senyora Iri, també hauria de ser lluny. El moll, diuen, és molt bonic a aquesta hora.",
       "dlg.cargol.opt.fabrica": "Com va la fàbrica, Cargol?",
-      "dlg.directora.que_vol.3": "I no pensis en la teva llançadora: sense el tub de la vàlvula, no surt de l'hangar.",
+      "dlg.directora.que_vol.3": "Mentre sincronitzis, ningú no et reciclarà. Després, ja veurem.",
       "final.fugida.titol": "Final · La fugida",
       "final.fugida.text": "La Vet somriu. Ella sap on va anar la I. Després pren el camí de l'Anell de Baix, on encara respiren amb els seus filtres.",
       "final.veritat.titol": "Final · La veritat a temps",
@@ -18905,7 +18929,7 @@
       "final.fugida.1": "La llançadora vella travessa la nit. A dins, una presonera, un tub de ferro-9 nou i una llibreta de torn de fa cent vint anys.",
       "final.fugida.2": "La Vet fa pública la llibreta. Una operària desapareguda fa cent vint anys explica, amb la seva lletra, que la cambra no va ser cap accident. I la Vet, l'única sincronitzadora que n'ha sortit viva, explica la resta: el reciclatge.",
       "final.fugida.3": "La Corporació Aldaia s'aguantava sobre una sola història: l'accident i la lliçó. Sense la història, uns mesos després La Gavina tanca. La corporació, també.",
-      "final.fugida.4": "La Sala de la Memòria es converteix en un museu de veritat. L'holograma del Director, apagat per sempre. A la vitrina buida, un cartell nou: «Clau anglesa. Servia per apretar cargols».",
+      "final.fugida.4": "La Sala de la Memòria es converteix en un museu de veritat. L'holograma del Director, apagat per sempre. A la vitrina buida, un cartell nou: «Clau anglesa. Servia per collar cargols».",
       "final.fugida.5": "A la foto del torn de nit ja no hi ha cap cara ratllada. Sota l'Iri, un cartell nou: «Desapareguda».",
       "final.fugida.mira": "Al seu costat, la Mira d'Orís somriu. Ella no va perdre mai la feina.",
       "final.fugida.cargol": "El conserge del museu és un robot vell i rovellat. Es diu Cargol, i ho explica a tothom qui hi entra.",
@@ -19134,7 +19158,7 @@
       "obj.llibreta_torn.vet2": "Després ja no hi ha cap «res»: la cambra, el Director, la Mira... i jo.",
       "obj.llibreta_torn.iri1": "La meva llibreta de torn. Fins fa tres nits: «Torn de nit. Res.»",
       "obj.llibreta_torn.iri2_abans": "Ara hi ha l'alarma i la cambra. Tot amb data i amb la meva lletra.",
-      "obj.llibreta_torn.iri2": "Ara hi ha l'alarma, la cambra, les notes de la V., el Director. Tot amb data i amb la meva lletra.",
+      "obj.llibreta_torn.iri2": "Ara hi ha l'alarma, la cambra i les notes de la V. Tot amb data i amb la meva lletra.",
       "obj.llibreta_torn.iri_planols": "I hi he copiat els plànols: «Prova de camp: torn de nit, operària I.»",
       "obj.llibreta_torn.iri3": "Si jo desaparec, això és l'única cosa que dirà la veritat. Ha d'arribar a la V.",
       "obj.caixa_eines.nom": "caixa d'eines",
@@ -20295,7 +20319,7 @@
       "sala.final_nota.nom": "La nota",
       "sala.credits.nom": "Crèdits",
       "sala.gavina_memoria.vitrina.cargol": "Correcció: és una clau anglesa. Ús: cargols. Ho he notificat quaranta-tres vegades.",
-      "sala.gavina_memoria.vitrina.cargol_recorda": "Ús ritual: confirmat. La senyora Iri hi apretava cargols cada nit.",
+      "sala.gavina_memoria.vitrina.cargol_recorda": "Ús ritual: confirmat. La senyora Iri hi collava cargols cada nit.",
       "sala.gavina_memoria.holograma.cafe1": "«Els obrers de l'era de les fàbriques bevien un elixir ritual, el cafè, per resistir el torn de nit. La corporació l'hi oferia generosament.»",
       "sala.gavina_memoria.holograma.cafe2": "Inexacte. El cafè, se'l pagaven ells. Dues monedes, a la màquina del passadís.",
       "sala.gavina_memoria.holograma.casc1": "«El fundador treballava colze a colze amb els obrers. Ho demostra el seu casc de seguretat: ni una ratlla.»",
