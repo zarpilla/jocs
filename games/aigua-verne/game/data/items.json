@@ -241,20 +241,6 @@
       "mosca": true
     }
   },
-  "corretja": {
-    "name": "obj.corretja.nom",
-    "description": "obj.corretja.desc",
-    "props": {
-      "mosca": true
-    }
-  },
-  "filtre": {
-    "name": "obj.filtre.nom",
-    "description": "obj.filtre.desc",
-    "props": {
-      "mosca": true
-    }
-  },
   "reg": {
     "name": "obj.reg.nom",
     "description": "obj.reg.desc",
@@ -462,6 +448,13 @@
   "targeta": {
     "name": "obj.targeta.nom",
     "description": "obj.targeta.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "targeta_verne": {
+    "name": "obj.targeta_verne.nom",
+    "description": "obj.targeta_verne.desc",
     "props": {
       "mosca": true
     }

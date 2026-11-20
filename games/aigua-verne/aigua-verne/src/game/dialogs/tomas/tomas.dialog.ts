@@ -22,6 +22,10 @@ options.menu__paper.onChoose(() => {
   chooseNarrativeOption('tomas', dialog, 'menu', 'paper')
 })
 
+options.menu__mare.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'menu', 'mare')
+})
+
 options.menu__adeu.onChoose(() => {
   chooseNarrativeOption('tomas', dialog, 'menu', 'adeu')
 })
@@ -68,6 +72,10 @@ options.enxampat2__iri.onChoose(() => {
 
 options.girat__informe.onChoose(() => {
   chooseNarrativeOption('tomas', dialog, 'girat', 'informe')
+})
+
+options.girat__mare.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'girat', 'mare')
 })
 
 options.girat__adeu2.onChoose(() => {

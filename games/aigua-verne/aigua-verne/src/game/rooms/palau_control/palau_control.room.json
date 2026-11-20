@@ -529,6 +529,28 @@
       "visible": false,
       "clickable": false,
       "zIndex": 9
+    },
+    {
+      "instanceId": "lia-veu",
+      "definition": "lia/lia.character.json",
+      "x": 182,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "tomas-veu",
+      "definition": "tomas/tomas.character.json",
+      "x": 345,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
     }
   ],
   "characterShadow": {

@@ -14,6 +14,14 @@ options.menu__vestit.onChoose(() => {
   chooseNarrativeOption('rosa', dialog, 'menu', 'vestit')
 })
 
+options.menu__vestit_cas.onChoose(() => {
+  chooseNarrativeOption('rosa', dialog, 'menu', 'vestit_cas')
+})
+
+options.menu__vestit_tomas.onChoose(() => {
+  chooseNarrativeOption('rosa', dialog, 'menu', 'vestit_tomas')
+})
+
 options.menu__tomas.onChoose(() => {
   chooseNarrativeOption('rosa', dialog, 'menu', 'tomas')
 })

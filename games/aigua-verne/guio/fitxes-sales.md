@@ -91,6 +91,9 @@ La mostra (`guio/art/mostra/granja_pati.py`): s'hi parteix.
   `port_terra2`
 - `pou` (pedra, politja, galleda seca) · `bomba` (la bomba de Verne; decorat `bomba_oberta`: el panell obert, amb
   l'etiqueta) · `canonada` · `panell_preu` · `arbre` (l'olivera morta) · `tanca`
+- Des de l'Escena 5, la porta del graner té un **cadenat de Verne** (amb una ranura i un llum vermell) i un paper
+  groc: «PRECINTE PREVENTIU... Només hi pot entrar la propietat.» Ara és només text de `porta_graner` (fins que
+  s'obre, `graner_obert`); si es dibuixa, seria un decorat `precinte` amb `visibleIf` escena ≥ 5 i `graner_obert` fals.
 - Personatges: `iri`, `vet`, `diu` (a la vora del pou, només a l'Escena 1).
 
 ### `granja_casa` (P) — la cuina i el despatx del pare
@@ -157,6 +160,9 @@ blanca, nanses i xarxes velles, un bassal (l'única aigua), boies de mesurar amb
 casa de la Juana (una caseta feta amb un casc de vaixell bolcat, amb finestra rodona i llum a dins). Una platja de
 **sorra fina** (prop: `sorra`, sempre es veu).
 - `cistella` → `aqua_port` · `porta_juana` → `casa_juana` · `nanses` · `boies` · `bassal` · `sorra` · `ossos`
+- Quan s'hi torna a l'Acte 2 (`lot9`, en arribar a Ferrum), la platja té **estaques i una cinta de Verne** i un
+  cartell: «MAR D'AQUA · LOT 9. De la línia de l'aigua, amidada dimarts, cap amunt.» Ara és només text de `sorra`; si
+  es dibuixa, un decorat `lot9` amb `visibleIf` `lot9`.
 
 ### `casa_juana` (P)
 L'interior del casc bolcat: costelles de fusta, llibres per tot arreu, mapes del mar clavats a les parets amb línies
@@ -171,8 +177,10 @@ de nivell (cada any més avall), un aquari buit amb un rètol «PER QUAN TORNIN�
 ### `ferrum_carrer` (L)
 Un carrer de miners: cases de maó ennegrit, el cel de fum. Un **piquet**: pancartes («QUI NO TREBALLA NO BEU»
 ratllat i, a sota, «QUI NO BEU NO TREBALLA»), una foguera en un bidó, canalla asseguda. La **font** de Verne (blanca,
-amb un lector de targetes vermell, seca). El **condensador** vell de la mina (una màquina de llauna amb aletes;
-decorat `condensador_arreglat`: llum verd i una aixeta que goteja). Una pila de **comptadors** d'aigua arrencats. El
+amb un lector de targetes vermell, seca, i a sota una pantalla «VERNE S.A. CONTRACTA», que és el que encara funciona).
+El **condensador** vell de la mina (una màquina de llauna amb aletes, sencera, amb un lector de targetes de Verne
+cargolat al costat; decorat `condensador_arreglat`: llum verd i una aixeta que goteja). La pantalla de la font i el
+lector del condensador no són dibuixats: ara són només text. Una pila de **comptadors** d'aigua arrencats. El
 sindicat (porta) i la fosa (portal gran) al fons.
 - `rampa` → `cantimplora_bodega` · `porta_sindicat` → `ferrum_sindicat` · `porta_fosa` → `fosa_forn` · `font` ·
   `condensador` · `piquet` · `comptadors` · `panell_preu` · `canonada`
@@ -235,9 +243,9 @@ finestrals a l'espai, columnes blanques, i l'**aquari** (trenta-tres peixos d'Aq
 
 ### `palau_salo` (L)
 El saló de la subhasta: cadires daurades, inversors (dibuixats al fons, no clicables), un escenari amb faristol i
-martell, una **pantalla** gegant amb el gràfic del preu (decorats `grafic_112`, `grafic_84`, `grafic_52`, `grafic_31`,
-`grafic_29`: la línia baixa, i la ratlla vermella «LLINDAR DEL BANC» a 30), una taula amb copes de cava i la
-**safata**.
+martell, una **pantalla** gegant amb el gràfic del preu (decorats `grafic_<preu>`, un per a cada preu possible de la
+subhasta: 112, 102, 96, 86, 57, 47, 41, 31 i 29; la línia baixa, i la ratlla vermella «LLINDAR DEL BANC» a 30), una
+taula amb copes de cava i la **safata**.
 - `porta_galeria` → `palau_galeria` · `escenari` · `pantalla` · `safata` · `cava` · `martell`
 - Personatges: `verne` (a l'escenari, a l'Acte 3 durant la subhasta), `holm`, `kessel`.
 
@@ -250,7 +258,7 @@ flors de plàstic d'en Nil.
 
 ### `palau_control` (P)
 La sala de control, sota la piscina central: el sostre és el fons de vidre de la piscina (buida). Un tauler amb tres
-**panys** grans (rètols T2, AQUA, FERRUM; decorats `obert_t2`, `obert_aqua`, `obert_ferrum`: llum verd i agulla al
+**panys** grans (rètols T2, AQUA, FERRUM, cadascun amb l'indicador del gel del seu dipòsit; decorats `obert_t2`, `obert_aqua`, `obert_ferrum`: llum verd i agulla al
 màxim) i una **palanca vermella** «RESERVA» (decorat `reserva_oberta`). Un interfon, una càmera (decorat
 `flors_camera`: flors de plàstic tapant-la), pantalletes amb els dipòsits.
 - `ascensor` → `palau_servei` · `pany_t2` · `pany_aqua` · `pany_ferrum` · `palanca` · `interfon` · `camera`

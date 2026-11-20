@@ -196,18 +196,66 @@
           "who": "vet",
           "text": "dlg.nil.tomaquera.5",
           "if": {
-            "inRoom": "verdant_jardi",
-            "who": "vet"
+            "all": [
+              {
+                "inRoom": "verdant_jardi",
+                "who": "vet"
+              },
+              {
+                "flag": "reg_agafat",
+                "is": false
+              }
+            ]
           }
         },
         {
           "who": "player",
           "text": "dlg.nil.tomaquera.5",
           "if": {
-            "not": {
-              "inRoom": "verdant_jardi",
-              "who": "vet"
-            }
+            "all": [
+              {
+                "not": {
+                  "inRoom": "verdant_jardi",
+                  "who": "vet"
+                }
+              },
+              {
+                "flag": "reg_agafat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.nil.tomaquera.cas",
+          "if": {
+            "all": [
+              {
+                "inRoom": "verdant_jardi",
+                "who": "vet"
+              },
+              {
+                "flag": "reg_agafat"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.nil.tomaquera.cas",
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "inRoom": "verdant_jardi",
+                  "who": "vet"
+                }
+              },
+              {
+                "flag": "reg_agafat"
+              }
+            ]
           }
         }
       ],

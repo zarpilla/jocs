@@ -85,14 +85,6 @@
       "label": "les tres claus"
     },
     {
-      "id": "corretja",
-      "label": "corretja"
-    },
-    {
-      "id": "filtre",
-      "label": "filtre"
-    },
-    {
       "id": "reg",
       "label": "reg gota a gota"
     },
@@ -139,6 +131,10 @@
     {
       "id": "targeta",
       "label": "targeta de servei"
+    },
+    {
+      "id": "targeta_verne",
+      "label": "targeta de la Mosca"
     }
   ]
 }

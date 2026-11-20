@@ -1,0 +1,170 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "contractacio",
+  "with": "iri",
+  "start": [
+    {
+      "if": {
+        "flag": "mosca_contractada"
+      },
+      "node": "contractada"
+    },
+    {
+      "node": "inici"
+    }
+  ],
+  "nodes": {
+    "inici": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.contractacio.inici.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.contractacio.inici.2"
+        }
+      ],
+      "choices": [
+        {
+          "id": "no",
+          "text": "dlg.contractacio.opt.no",
+          "next": "p2"
+        },
+        {
+          "id": "si",
+          "text": "dlg.contractacio.opt.si",
+          "next": "vaga",
+          "end": true
+        },
+        {
+          "id": "deixa",
+          "text": "dlg.contractacio.opt.deixa",
+          "silent": true,
+          "end": true
+        }
+      ]
+    },
+    "vaga": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.contractacio.vaga"
+        }
+      ]
+    },
+    "p2": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.contractacio.p2"
+        }
+      ],
+      "choices": [
+        {
+          "id": "h24",
+          "text": "dlg.contractacio.opt.h24",
+          "next": "p3"
+        },
+        {
+          "id": "h9",
+          "text": "dlg.contractacio.opt.h9",
+          "next": "horari",
+          "end": true
+        }
+      ]
+    },
+    "horari": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.contractacio.horari"
+        }
+      ]
+    },
+    "p3": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.contractacio.p3"
+        }
+      ],
+      "choices": [
+        {
+          "id": "aigua_si",
+          "text": "dlg.contractacio.opt.aigua_si",
+          "next": "aigua",
+          "end": true
+        },
+        {
+          "id": "aigua_no",
+          "text": "dlg.contractacio.opt.aigua_no",
+          "next": "menteix",
+          "end": true
+        }
+      ]
+    },
+    "aigua": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.contractacio.aigua"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.contractacio.fi.iri",
+          "if": {
+            "protagonist": "iri"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.contractacio.fi.vet",
+          "if": {
+            "protagonist": "vet"
+          }
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "contractacio_vista"
+        }
+      ]
+    },
+    "menteix": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.contractacio.menteix"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.contractacio.fi.iri",
+          "if": {
+            "protagonist": "iri"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.contractacio.fi.vet",
+          "if": {
+            "protagonist": "vet"
+          }
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "contractacio_vista"
+        }
+      ]
+    },
+    "contractada": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.contractacio.contractada"
+        }
+      ]
+    }
+  }
+}

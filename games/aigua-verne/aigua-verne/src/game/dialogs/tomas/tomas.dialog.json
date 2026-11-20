@@ -31,6 +31,13 @@
       "say": false
     },
     {
+      "id": "menu__mare",
+      "scriptName": "menu__mare",
+      "text": "Tomàs, la teva mare vol que baixis tu a buscar el vestit de reina.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__adeu",
       "scriptName": "menu__adeu",
       "text": "Res, Tomàs.",
@@ -111,6 +118,13 @@
       "id": "girat__informe",
       "scriptName": "girat__informe",
       "text": "Què li has dit, al Magnat?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "girat__mare",
+      "scriptName": "girat__mare",
+      "text": "Tomàs, la teva mare vol que baixis tu a buscar el vestit de reina.",
       "enabled": false,
       "say": false
     },

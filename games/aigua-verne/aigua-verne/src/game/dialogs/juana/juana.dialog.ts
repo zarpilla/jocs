@@ -34,6 +34,10 @@ options.menu__preguntes.onChoose(() => {
   chooseNarrativeOption('juana', dialog, 'menu', 'preguntes')
 })
 
+options.menu__lot9.onChoose(() => {
+  chooseNarrativeOption('juana', dialog, 'menu', 'lot9')
+})
+
 options.menu__recorda.onChoose(() => {
   chooseNarrativeOption('juana', dialog, 'menu', 'recorda')
 })

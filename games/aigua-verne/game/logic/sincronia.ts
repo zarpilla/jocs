@@ -8,8 +8,10 @@
  * Dos rellotges:
  *  - **la temperatura del forn** (Escena 4, la colada): comença a 8 i baixa 1 per torn; la manxa la fa pujar.
  *    A 0, el metall s'endureix i es torna a començar el pas.
- *  - **els lots de la subhasta** (Escena 8): en queden 9 i se'n remata 1 per torn (i un de més a cada vàlvula,
- *    que el Magnat corre). L'Iri en pot afegir allargant la subhasta. A 0, es torna a començar el pas.
+ *  - **els lots de la subhasta** (Escena 8): n'hi ha 12 i se'n remata 1 per torn. A cada vàlvula, el Magnat en
+ *    remata uns quants més, corrent (`cuita`: 2, 3 o 4, segons com de prop de la ratlla vermella veu el preu). Les
+ *    objeccions de l'Iri aturen el martell uns torns (`pausa`): el que s'hauria de rematar es menja primer la pausa,
+ *    i mentrestant el lot de l'escenari (`lot`, de l'1 al 12) no canvia. A 0, es torna a començar el pas.
  *
  * Els textos (avisos i reinicis) són a `sincronies.json`, que escriu el contingut.
  */
@@ -34,6 +36,8 @@ export interface PasSincronia {
 const num = (n: Narrative, v: string) => Number(n.getVar(v) ?? 0);
 const TX = SINC as Record<string, TextosPas>;
 const off = (flags: string[]): Effect[] => flags.map((f) => ({ setFlag: f, value: false }));
+/** Els lots de la subhasta: del 1 (el subsòl de Terra-2) al 12 (els peixos d'Aqua). */
+export const LOTS = 12;
 
 export const PASSOS: Record<string, PasSincronia> = {
   colada: {
@@ -56,15 +60,22 @@ export const PASSOS: Record<string, PasSincronia> = {
     resolt: 'reserva_oberta',
     sales: ['palau_salo', 'palau_control'],
     torn(n) {
-      n.apply({ addVar: 'lots', amount: -1 });
-      return num(n, 'lots') <= 0 && !n.flag('reserva_oberta');
+      // El torn i el que el Magnat corre (`cuita`) es mengen primer la pausa de l'Iri, i després els lots.
+      let resta = 1 + num(n, 'cuita');
+      const pausa = Math.min(num(n, 'pausa'), resta);
+      resta -= pausa;
+      const lots = num(n, 'lots') - resta;
+      n.apply([{ setVar: 'cuita', value: 0 }, { setVar: 'pausa', value: num(n, 'pausa') - pausa },
+        { setVar: 'lots', value: lots }, { setVar: 'lot', value: Math.min(LOTS, Math.max(1, LOTS + 1 - lots)) }]);
+      return lots <= 0 && !n.flag('reserva_oberta');
     },
     avisos: { var: 'lots', linies: TX.subhasta!.avisos },
     reinici: {
       linies: TX.subhasta!.reinici,
-      efectes: [{ setVar: 'lots', value: 9 }, { setVar: 'valvules', value: 0 }, { setVar: 'preu_aigua', value: 112 },
-        ...off(['clau_t2', 'clau_aqua', 'clau_ferrum', 'obert_t2', 'obert_aqua', 'obert_ferrum', 'oferta_feta',
-          'contracte_llegit', 'cava_vessat', 'peixos_preguntat']),
+      efectes: [{ setVar: 'lots', value: LOTS }, { setVar: 'lot', value: 1 }, { setVar: 'pausa', value: 0 },
+        { setVar: 'cuita', value: 0 }, { setVar: 'valvules', value: 0 }, { setVar: 'preu_aigua', value: 112 },
+        ...off(['clau_t2', 'clau_aqua', 'clau_ferrum', 'obert_t2', 'obert_aqua', 'obert_ferrum', 'objeccio_7788',
+          'objeccio_anima', 'objeccio_peixos']),
         { addVar: 'reinicis_subhasta', amount: 1 }],
     },
   },

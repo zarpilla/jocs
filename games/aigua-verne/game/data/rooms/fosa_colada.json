@@ -352,11 +352,26 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fosa_colada.llit.3"
+              "text": "sala.fosa_colada.llit.altra",
+              "if": {
+                "flag": "sorra_agafada"
+              }
             },
             {
               "who": "player",
-              "text": "sala.fosa_colada.llit.4"
+              "text": "sala.fosa_colada.llit.3",
+              "if": {
+                "flag": "sorra_agafada",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.fosa_colada.llit.4",
+              "if": {
+                "flag": "sorra_agafada",
+                "is": false
+              }
             }
           ],
           "effects": [
@@ -369,6 +384,14 @@
           "verb": "use",
           "item": "motlle",
           "lines": [
+            {
+              "who": "player",
+              "text": "sala.fosa_colada.llit.cas",
+              "if": {
+                "flag": "cal_sorra",
+                "is": false
+              }
+            },
             {
               "who": "player",
               "text": "sala.fosa_colada.llit.5",

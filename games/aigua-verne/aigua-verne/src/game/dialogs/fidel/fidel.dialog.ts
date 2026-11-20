@@ -34,6 +34,10 @@ options.aval__sac.onChoose(() => {
   chooseNarrativeOption('fidel', dialog, 'aval', 'sac')
 })
 
+options.aval__tractor.onChoose(() => {
+  chooseNarrativeOption('fidel', dialog, 'aval', 'tractor')
+})
+
 options.aval__res.onChoose(() => {
   chooseNarrativeOption('fidel', dialog, 'aval', 'res')
 })

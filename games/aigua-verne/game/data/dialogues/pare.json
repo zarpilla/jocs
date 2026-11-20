@@ -178,7 +178,14 @@
           "if": {
             "all": [
               {
-                "flag": "cal_reg"
+                "any": [
+                  {
+                    "flag": "cal_reg"
+                  },
+                  {
+                    "flag": "reg_volgut"
+                  }
+                ]
               },
               {
                 "flag": "permis_reg",
@@ -294,11 +301,41 @@
         },
         {
           "who": "player",
-          "text": "dlg.pare.reg.2"
+          "text": "dlg.pare.reg.2",
+          "if": {
+            "flag": "cal_reg"
+          }
         },
         {
           "who": "quim",
-          "text": "dlg.pare.reg.3"
+          "text": "dlg.pare.reg.3",
+          "if": {
+            "flag": "cal_reg"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.pare.reg.cas.1",
+          "if": {
+            "flag": "cal_reg",
+            "is": false
+          }
+        },
+        {
+          "who": "quim",
+          "text": "dlg.pare.reg.cas.2",
+          "if": {
+            "flag": "cal_reg",
+            "is": false
+          }
+        },
+        {
+          "who": "quim",
+          "text": "dlg.pare.reg.cas.3",
+          "if": {
+            "flag": "cal_reg",
+            "is": false
+          }
         }
       ],
       "effects": [

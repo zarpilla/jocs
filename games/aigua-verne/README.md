@@ -91,7 +91,7 @@ Regla del toc: la primera vegada mira; després, una sola acció la fa i més d'
 
 | Joc | Passos | Un toc | Toc + menú | Mantenir premut | Toc de més (mira primer) | Gestos per pas (dit) | Gestos per pas (ratolí) |
 |---|---|---|---|---|---|---|---|
-| Aigua Verne (barril) | 171 | 171 | 0 | 0 | 29 | 1,17 | 1,00 |
+| Aigua Verne (barril) | 174 | 174 | 0 | 0 | 23 | 1,13 | 1,00 |
 | Suma Zero | 66 | 61 | 5 | 0 | 25 | 1,45 | 1,08 |
 | Ni un ou | 109 | 109 | 0 | 0 | 15 | 1,14 | 1,00 |
 | Ferro-9 (amb barra de verbs; mesura del 15-11-2026) | 149 | 134 | 11 | 4 | 22 | 1,25 | — |
@@ -121,14 +121,15 @@ Compte: `hd640/gui_rest.py` torna a fer la barra de verbs; no s'ha d'executar (o
 |---|---|
 | Estructura | Pròleg, 3 actes i 8 escenes, un final amb variacions (l'últim barril, les respostes a la Juana) |
 | Protagonistes | L'Iri i la Vet, amb canvi lliure; les sales són compartides |
-| Viatges | La Cantimplora: el mapa del pont (només el fa servir l'Iri) obre la carta de navegació, on es toca el planeta on es vol anar (només hi surt «Navega a...» si és obert) i la nau hi vola; alguns trencaclosques demanen tornar a un planeta |
+| Viatges | La Cantimplora: el mapa del pont (només el fa servir l'Iri) obre la carta de navegació, on es toca el planeta on es vol anar (només hi surt «Navega a...» si és obert) i la nau hi vola; alguns trencaclosques demanen tornar a un planeta, on el lloc ha canviat (el lot 9 d'Aqua, el graner precintat, el favor de la Rosa); qui ho preveu, ho agafa a la segona «per si de cas» i s'estalvia el viatge |
 | Comunicació | El comunicador de canell (repeteix què toca fer) i la Mosca, el dron que porta objectes a l'altra si són al mateix planeta |
-| Sincronies | Per torns: la colada de les claus (la temperatura del forn) i la subhasta (els lots) |
+| Sincronies | Per torns: la colada de les claus (la temperatura del forn) i la subhasta (12 lots: la Vet obre els dipòsits de petit a gran perquè el Magnat no corri, i l'Iri para el martell amb objeccions, cadascuna al seu lot; vegeu el guió, Escena 8) |
 | Resolució | 640×360, amb **dues mides de personatge**: ≈83 px a les sales de lluny i ≈100 px a les de prop (roba `Lluny` a `characters.json`) |
 
 ## Regles en codi (`game/logic/`)
 
-- `sincronia.ts`: els dos passos per torns; els textos són a `sincronies.json`.
+- `sincronia.ts`: els dos passos per torns; els textos són a `sincronies.json`. A la subhasta, el que corre el Magnat
+  (`cuita`, que posa cada pany) i les objeccions de l'Iri (`pausa`, que es gasta abans que els lots).
 - `escenes.ts`: canvis d'escena automàtics; les transicions són a `transicions.json`.
 - `mosca.ts`: la Mosca (mateix planeta, no al palau, `mosca: true` a items.json).
 - `safata.ts`: la safata de les copes del palau, de l'Iri (saló) a la Vet (servei).
@@ -138,7 +139,7 @@ Compte: `hd640/gui_rest.py` torna a fer la barra de verbs; no s'ha d'executar (o
 
 ```bash
 npm run jugar          # juga en mode text
-npm test               # el joc sencer pels dos camins, amb una pista a cada pas
+npm test               # el joc sencer per tots els camins (barril o condensador, sac o tractor, previsora), amb una pista a cada pas
 npm run validate       # comprova el contingut
 npm run sons           # efectes de so (tools/sons.py)
 npm run musica         # música (tools/musica.py)

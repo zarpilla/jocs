@@ -52,6 +52,13 @@
       "say": false
     },
     {
+      "id": "menu__lot9",
+      "scriptName": "menu__lot9",
+      "text": "Juana, a la platja hi ha estaques de Verne.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__recorda",
       "scriptName": "menu__recorda",
       "text": "Recorda'm el que ens has explicat.",

@@ -281,6 +281,74 @@
         },
         {
           "who": "narrator",
+          "text": "dlg.tauler.inici.33",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 4
+              },
+              {
+                "flag": "cal_targeta"
+              },
+              {
+                "flag": "mosca_contractada",
+                "is": false
+              },
+              {
+                "flag": "canalla_beu",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.tauler.inici.34",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 4
+              },
+              {
+                "flag": "contractacio_vista"
+              },
+              {
+                "flag": "mosca_contractada",
+                "is": false
+              },
+              {
+                "flag": "canalla_beu",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.tauler.inici.35",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 4
+              },
+              {
+                "flag": "mosca_contractada"
+              },
+              {
+                "flag": "canalla_beu",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
           "text": "dlg.tauler.inici.16",
           "if": {
             "all": [
@@ -338,6 +406,29 @@
               },
               {
                 "flag": "motlle_preparat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.tauler.inici.36",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 4
+              },
+              {
+                "flag": "cal_sorra"
+              },
+              {
+                "flag": "lot9_vist"
+              },
+              {
+                "flag": "sorra_agafada",
                 "is": false
               }
             ]
@@ -430,6 +521,26 @@
         },
         {
           "who": "narrator",
+          "text": "dlg.tauler.inici.37",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 5
+              },
+              {
+                "flag": "cal_aval"
+              },
+              {
+                "flag": "fidel_admet",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
           "text": "dlg.tauler.inici.23",
           "if": {
             "all": [
@@ -474,6 +585,46 @@
               },
               {
                 "flag": "nil_ajuda",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.tauler.inici.38",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 5
+              },
+              {
+                "flag": "cal_reg"
+              },
+              {
+                "flag": "reg_agafat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.tauler.inici.39",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 5
+              },
+              {
+                "flag": "precinte_vist"
+              },
+              {
+                "flag": "graner_obert",
                 "is": false
               }
             ]
@@ -534,6 +685,84 @@
                   "hasItem": "vestit_arreglat",
                   "who": "iri"
                 }
+              },
+              {
+                "flag": "vestit_agafat",
+                "is": false
+              },
+              {
+                "flag": "rosa_vol_tomas",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.tauler.inici.40",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              },
+              {
+                "flag": "rosa_vol_tomas"
+              },
+              {
+                "flag": "tomas_baixa",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.tauler.inici.41",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              },
+              {
+                "flag": "cal_gala"
+              },
+              {
+                "flag": "vestit_agafat"
+              },
+              {
+                "not": {
+                  "any": [
+                    {
+                      "hasItem": "vestit_arreglat",
+                      "who": "iri"
+                    },
+                    {
+                      "hasItem": "vestit_arreglat",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.tauler.inici.42",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              },
+              {
+                "hasItem": "vestit_arreglat",
+                "who": "vet"
               }
             ]
           }

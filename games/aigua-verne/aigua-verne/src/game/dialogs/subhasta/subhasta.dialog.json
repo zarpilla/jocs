@@ -3,30 +3,23 @@
   "displayName": "subhasta",
   "options": [
     {
-      "id": "inici__oferta",
-      "scriptName": "inici__oferta",
-      "text": "(Pujar l'oferta) Dos milions!",
+      "id": "inici__c7788",
+      "scriptName": "inici__c7788",
+      "text": "(Treure el contracte 7.788.) Tinc una objecció. Per escrit.",
       "enabled": false,
       "say": false
     },
     {
-      "id": "inici__contracte",
-      "scriptName": "inici__contracte",
-      "text": "Demano que es llegeixi el contracte del lot. Sencer.",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "inici__cava",
-      "scriptName": "inici__cava",
-      "text": "(Vessar el cava damunt del martell.)",
+      "id": "inici__anima",
+      "scriptName": "inici__anima",
+      "text": "Una pregunta per al Banc: accepten ànimes en garantia?",
       "enabled": false,
       "say": false
     },
     {
       "id": "inici__peixos",
       "scriptName": "inici__peixos",
-      "text": "I els peixos, quin preu de sortida tenen?",
+      "text": "I els peixos del lot 12? Van amb el mar, o a part?",
       "enabled": false,
       "say": false
     },

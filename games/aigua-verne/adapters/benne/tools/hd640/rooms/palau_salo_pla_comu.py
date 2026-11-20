@@ -206,7 +206,10 @@ def safata(cv, cx, cy):
 # ─── Gràfics de la pantalla ─────────────────────────────────────────────────
 
 SERIE = [40, 41, 43, 44, 46, 48, 52, 60, 66, 75, 88, 100, 112]
-CAIGUDA = {112: [], 84: [84], 52: [84, 52], 31: [84, 52, 31], 29: [84, 52, 31, 29]}
+# El preu de cada fotograma (guio: «La subhasta»). Cada dipòsit fa baixar el preu segons el gel que té (T2 10, Ferrum
+# 16, Aqua 55), i el camí del mig depèn de l'ordre: es dibuixa un dels possibles (el número és el que compta).
+CAIGUDA = {112: [], 102: [102], 96: [96], 57: [57], 86: [102, 86], 47: [102, 47], 41: [96, 41],
+           31: [102, 86, 31], 29: [102, 86, 31, 29]}
 
 
 def grafic(cv, n):

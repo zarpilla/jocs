@@ -17,6 +17,20 @@
       "say": false
     },
     {
+      "id": "menu__vestit_cas",
+      "scriptName": "menu__vestit_cas",
+      "text": "Rosa, el vestit de reina del bagul... ens el deixaries? Per si de cas.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__vestit_tomas",
+      "scriptName": "menu__vestit_tomas",
+      "text": "I el vestit, Rosa?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__tomas",
       "scriptName": "menu__tomas",
       "text": "En Tomàs... és bon noi.",

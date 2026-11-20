@@ -124,6 +124,35 @@
       "interactions": [
         {
           "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "lot9_vist"
+              },
+              {
+                "flag": "sorra_agafada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aqua_fons.boies.franja.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.aqua_fons.boies.franja.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "franja_vista"
+            }
+          ]
+        },
+        {
+          "verb": "look",
           "lines": [
             {
               "who": "player",
@@ -168,19 +197,10 @@
       "interactions": [
         {
           "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.aqua_fons.sorra.1"
-            }
-          ]
-        },
-        {
-          "verb": "pickUp",
           "if": {
             "all": [
               {
-                "flag": "cal_sorra"
+                "flag": "lot9"
               },
               {
                 "flag": "sorra_agafada",
@@ -191,15 +211,56 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.aqua_fons.sorra.2"
+              "text": "sala.aqua_fons.sorra.lot.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.aqua_fons.sorra.lot.2"
             }
           ],
           "effects": [
             {
-              "setFlag": "sorra_agafada"
-            },
+              "setFlag": "lot9_vist"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "lot9"
+              },
+              {
+                "flag": "franja_vista"
+              }
+            ]
+          },
+          "lines": [
             {
-              "giveItem": "sorra"
+              "who": "player",
+              "text": "sala.aqua_fons.sorra.lot.4"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "lot9"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aqua_fons.sorra.lot.5"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aqua_fons.sorra.1"
             }
           ]
         },
@@ -217,10 +278,98 @@
         },
         {
           "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "flag": "lot9"
+              },
+              {
+                "flag": "franja_vista"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aqua_fons.sorra.franja.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.aqua_fons.sorra.2",
+              "if": {
+                "flag": "cal_sorra"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.aqua_fons.sorra.franja.2",
+              "if": {
+                "flag": "cal_sorra",
+                "is": false
+              }
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sorra_agafada"
+            },
+            {
+              "giveItem": "sorra"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "flag": "lot9"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aqua_fons.sorra.lot.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.aqua_fons.sorra.lot.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "lot9_vist"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "flag": "sorra_refusada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aqua_fons.sorra.cas"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sorra_agafada"
+            },
+            {
+              "giveItem": "sorra"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
           "lines": [
             {
               "who": "player",
               "text": "sala.aqua_fons.sorra.4"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sorra_refusada"
             }
           ]
         }

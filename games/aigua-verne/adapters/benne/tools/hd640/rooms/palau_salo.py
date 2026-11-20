@@ -12,8 +12,8 @@ la **safata** d'argent a la punta. Primer pla: un pilar en ombra i el vellut d'u
 l'esquerra. Es passa per darrere de les files de cadires, de la taula del cava i del faristol.
 
 El detall ve del dibuix pla (palau_salo_pla_comu.py): la paret del fons sencera (com abans, de cara), les cadires amb
-els inversors, les copes i la safata. PROPS: `grafic_112`, `grafic_84`, `grafic_52`, `grafic_31`, `grafic_29` (el gràfic
-del preu, dibuixat pla i projectat per la pantalla). ANIMS: `estrelles`.
+els inversors, les copes i la safata. PROPS: `grafic_<preu>` (112, 102, 96, 86, 57, 47, 41, 31, 29: el gràfic
+del preu a cada pas de la subhasta, dibuixat pla i projectat per la pantalla). ANIMS: `estrelles`.
 
 El món: x a la dreta (0 = la paret de la porta), y amunt (0 = el terra), z cap al fons (520 = la paret de la pantalla);
 1 unitat = 1 píxel de sala a la distància on un personatge fa ≈83 px. La paret del fons és el dibuix pla de sempre
@@ -250,7 +250,7 @@ def _grafic(n):
     return fn
 
 
-PROPS = {f'grafic_{n}': _grafic(n) for n in (112, 84, 52, 31, 29)}
+PROPS = {f'grafic_{n}': _grafic(n) for n in (112, 102, 96, 86, 57, 47, 41, 31, 29)}
 
 
 def _frames_estrelles(n=10, seed=5):

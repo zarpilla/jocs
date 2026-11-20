@@ -16,7 +16,7 @@ it.skipIf(!process.env.EXPLORA)('exploració', () => {
   viatjar(p, n, 'ferrum');
   anar(p, n, 'ferrum_carrer');
   prova(() => p.do('walkTo', 'porta_fosa'));
-  p.do('look', 'piquet'); p.do('look', 'font'); p.do('look', 'condensador');
+  p.do('look', 'piquet'); p.do('look', 'font'); p.do('look', 'condensador'); p.talk('contractacio', 'no', 'h24', 'aigua_no');
   p.talk('rosa', 'vaga');
   p.talk('comunicador', 'fem');
   anar(p, n, 'ferrum_sindicat');
@@ -32,7 +32,7 @@ it.skipIf(!process.env.EXPLORA)('exploració', () => {
   marca('E4: colada fora d’ordre');
   anar(p, n, 'fosa_colada');
   p.use('motlle', 'llit');
-  viatjar(p, n, 'aqua'); anar(p, n, 'aqua_fons'); p.do('pickUp', 'sorra');
+  viatjar(p, n, 'aqua'); anar(p, n, 'aqua_fons'); p.do('pickUp', 'sorra'); p.talk('comunicador', 'fem'); p.do('look', 'boies'); p.do('pickUp', 'sorra');
   viatjar(p, n, 'ferrum'); anar(p, n, 'fosa_colada'); p.use('motlle', 'llit');
   amb(p, 'vet'); anar(p, n, 'fosa_forn');
   p.do('pickUp', 'metall');

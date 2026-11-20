@@ -45,7 +45,7 @@ describe('Aigua Verne: pistes del palau', () => {
     mira();
     anar(p, n, 'palau_control');
     expect(n.flag('sync_subhasta')).toBe(true);
-    expect(totes()).toEqual(['valvules', 'valvules']);
+    expect(totes()).toEqual(['subhasta_iri', 'subhasta_vet']);
     expect([...ids].filter((id) => !id || id.startsWith('gala'))).toEqual([]);
 
     // La Vet sola no hi arriba: els lots s'acaben i es torna a començar. La pista ho ha de dir.
@@ -55,18 +55,27 @@ describe('Aigua Verne: pistes del palau', () => {
     }
     expect(n.getVar('reinicis_subhasta')).toBe(1);
     expect(n.getVar('valvules')).toBe(0);
-    expect(totes()).toEqual(['valvules_reinici', 'valvules_reinici']);
+    expect(totes()).toEqual(['subhasta_sola', 'subhasta_sola']);
     expect(n.requestHint()!.text).toMatch(/Vet sola/);
 
+    // Amb la primera objecció, cadascuna torna a la seva: l'Iri, les objeccions; la Vet, l'ordre dels dipòsits.
     amb(p, 'iri');
     p.do('use', 'escenari');
-    p.talk('subhasta', 'oferta');
-    expect(totes()).toEqual(['valvules', 'valvules']);
+    p.talk('subhasta', 'c7788');
+    expect(totes()).toEqual(['subhasta_iri', 'subhasta_vet']);
+    expect(n.requestHint()!.text).toMatch(/Què tinc/);
     amb(p, 'vet');
-    for (const v of ['t2', 'aqua', 'ferrum']) {
+    expect(n.requestHint()!.text).toMatch(/Símptoma/);
+    for (const v of ['t2', 'ferrum']) {
       p.use('claus', `pany_${v}`);
       p.do('push', `pany_${v}`);
     }
+    amb(p, 'iri');
+    p.do('use', 'escenari');
+    p.talk('subhasta', 'anima');
+    amb(p, 'vet');
+    p.use('claus', 'pany_aqua');
+    p.do('push', 'pany_aqua');
     expect(n.getVar('valvules')).toBe(3);
     expect(totes()).toEqual(['reserva', 'reserva_vet']);
   });

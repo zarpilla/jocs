@@ -9,42 +9,95 @@
         {
           "who": "narrator",
           "text": "dlg.subhasta.inici.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.subhasta.inici.terra2",
+          "if": {
+            "var": "lot",
+            "op": "<=",
+            "value": 4
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.subhasta.inici.deutors",
+          "if": {
+            "all": [
+              {
+                "var": "lot",
+                "op": ">=",
+                "value": 5
+              },
+              {
+                "var": "lot",
+                "op": "<=",
+                "value": 8
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.subhasta.inici.mar",
+          "if": {
+            "all": [
+              {
+                "var": "lot",
+                "op": ">=",
+                "value": 9
+              },
+              {
+                "var": "lot",
+                "op": "<=",
+                "value": 11
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.subhasta.inici.peixos",
+          "if": {
+            "var": "lot",
+            "op": ">=",
+            "value": 12
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.subhasta.inici.pausa",
+          "if": {
+            "var": "pausa",
+            "op": ">",
+            "value": 0
+          }
         }
       ],
       "choices": [
         {
-          "id": "oferta",
-          "text": "dlg.subhasta.opt.oferta",
+          "id": "c7788",
+          "text": "dlg.subhasta.opt.c7788",
           "if": {
-            "flag": "oferta_feta",
+            "flag": "objeccio_7788",
             "is": false
           },
-          "next": "oferta"
+          "next": "c7788"
         },
         {
-          "id": "contracte",
-          "text": "dlg.subhasta.opt.contracte",
+          "id": "anima",
+          "text": "dlg.subhasta.opt.anima",
           "if": {
-            "flag": "contracte_llegit",
+            "flag": "objeccio_anima",
             "is": false
           },
-          "next": "contracte"
-        },
-        {
-          "id": "cava",
-          "text": "dlg.subhasta.opt.cava",
-          "if": {
-            "flag": "cava_vessat",
-            "is": false
-          },
-          "silent": true,
-          "next": "cava"
+          "next": "anima"
         },
         {
           "id": "peixos",
           "text": "dlg.subhasta.opt.peixos",
           "if": {
-            "flag": "peixos_preguntat",
+            "flag": "objeccio_peixos",
             "is": false
           },
           "next": "peixos"
@@ -57,79 +110,151 @@
         }
       ]
     },
-    "oferta": {
-      "lines": [
-        {
-          "who": "kessel",
-          "text": "dlg.subhasta.oferta.1"
-        },
-        {
-          "who": "iri",
-          "text": "dlg.subhasta.oferta.2"
-        },
-        {
-          "who": "kessel",
-          "text": "dlg.subhasta.oferta.3"
-        },
-        {
-          "who": "iri",
-          "text": "dlg.subhasta.oferta.4"
-        },
-        {
-          "who": "holm",
-          "text": "dlg.subhasta.oferta.5"
-        }
-      ],
-      "effects": [
-        {
-          "setFlag": "oferta_feta"
-        },
-        {
-          "addVar": "lots",
-          "amount": 3
-        }
-      ]
-    },
-    "contracte": {
+    "c7788": {
       "lines": [
         {
           "who": "holm",
-          "text": "dlg.subhasta.contracte.1"
+          "text": "dlg.subhasta.c7788.1",
+          "if": {
+            "var": "lot",
+            "op": "<=",
+            "value": 4
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.subhasta.c7788.2",
+          "if": {
+            "var": "lot",
+            "op": "<=",
+            "value": 4
+          }
+        },
+        {
+          "who": "holm",
+          "text": "dlg.subhasta.c7788.3",
+          "if": {
+            "var": "lot",
+            "op": "<=",
+            "value": 4
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.subhasta.c7788.4",
+          "if": {
+            "var": "lot",
+            "op": "<=",
+            "value": 4
+          }
+        },
+        {
+          "who": "holm",
+          "text": "dlg.subhasta.c7788.5",
+          "effects": [
+            {
+              "setFlag": "objeccio_7788"
+            },
+            {
+              "addVar": "pausa",
+              "amount": 3
+            }
+          ],
+          "if": {
+            "var": "lot",
+            "op": "<=",
+            "value": 4
+          }
         },
         {
           "who": "narrator",
-          "text": "dlg.subhasta.contracte.2"
-        }
-      ],
-      "effects": [
-        {
-          "setFlag": "contracte_llegit"
+          "text": "dlg.subhasta.c7788.6",
+          "if": {
+            "flag": "objeccio_7788"
+          }
         },
         {
-          "addVar": "lots",
-          "amount": 3
+          "who": "holm",
+          "text": "dlg.subhasta.c7788.no",
+          "if": {
+            "var": "lot",
+            "op": ">",
+            "value": 4
+          }
         }
       ]
     },
-    "cava": {
+    "anima": {
       "lines": [
         {
           "who": "iri",
-          "text": "dlg.subhasta.cava.1",
-          "sound": "cava"
+          "text": "dlg.subhasta.anima.1",
+          "if": {
+            "all": [
+              {
+                "var": "lot",
+                "op": ">=",
+                "value": 5
+              },
+              {
+                "var": "lot",
+                "op": "<=",
+                "value": 8
+              }
+            ]
+          }
         },
         {
-          "who": "verne",
-          "text": "dlg.subhasta.cava.2"
-        }
-      ],
-      "effects": [
-        {
-          "setFlag": "cava_vessat"
+          "who": "holm",
+          "text": "dlg.subhasta.anima.2",
+          "effects": [
+            {
+              "setFlag": "objeccio_anima"
+            },
+            {
+              "addVar": "pausa",
+              "amount": 3
+            }
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "lot",
+                "op": ">=",
+                "value": 5
+              },
+              {
+                "var": "lot",
+                "op": "<=",
+                "value": 8
+              }
+            ]
+          }
         },
         {
-          "addVar": "lots",
-          "amount": 2
+          "who": "narrator",
+          "text": "dlg.subhasta.anima.3",
+          "if": {
+            "flag": "objeccio_anima"
+          }
+        },
+        {
+          "who": "holm",
+          "text": "dlg.subhasta.anima.abans",
+          "if": {
+            "var": "lot",
+            "op": "<",
+            "value": 5
+          }
+        },
+        {
+          "who": "holm",
+          "text": "dlg.subhasta.anima.despres",
+          "if": {
+            "var": "lot",
+            "op": ">",
+            "value": 8
+          }
         }
       ]
     },
@@ -137,20 +262,73 @@
       "lines": [
         {
           "who": "verne",
-          "text": "dlg.subhasta.peixos.1"
+          "text": "dlg.subhasta.peixos.1",
+          "if": {
+            "all": [
+              {
+                "var": "lot",
+                "op": ">=",
+                "value": 9
+              },
+              {
+                "var": "lot",
+                "op": "<=",
+                "value": 11
+              }
+            ]
+          }
+        },
+        {
+          "who": "holm",
+          "text": "dlg.subhasta.peixos.2",
+          "effects": [
+            {
+              "setFlag": "objeccio_peixos"
+            },
+            {
+              "addVar": "pausa",
+              "amount": 3
+            }
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "lot",
+                "op": ">=",
+                "value": 9
+              },
+              {
+                "var": "lot",
+                "op": "<=",
+                "value": 11
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.subhasta.peixos.3",
+          "if": {
+            "flag": "objeccio_peixos"
+          }
         },
         {
           "who": "verne",
-          "text": "dlg.subhasta.peixos.2"
-        }
-      ],
-      "effects": [
-        {
-          "setFlag": "peixos_preguntat"
+          "text": "dlg.subhasta.peixos.abans",
+          "if": {
+            "var": "lot",
+            "op": "<",
+            "value": 9
+          }
         },
         {
-          "addVar": "lots",
-          "amount": 2
+          "who": "verne",
+          "text": "dlg.subhasta.peixos.ara",
+          "if": {
+            "var": "lot",
+            "op": ">=",
+            "value": 12
+          }
         }
       ]
     }

@@ -6,16 +6,12 @@ dialog.onStart(() => {
   startNarrativeDialog('subhasta', dialog)
 })
 
-options.inici__oferta.onChoose(() => {
-  chooseNarrativeOption('subhasta', dialog, 'inici', 'oferta')
+options.inici__c7788.onChoose(() => {
+  chooseNarrativeOption('subhasta', dialog, 'inici', 'c7788')
 })
 
-options.inici__contracte.onChoose(() => {
-  chooseNarrativeOption('subhasta', dialog, 'inici', 'contracte')
-})
-
-options.inici__cava.onChoose(() => {
-  chooseNarrativeOption('subhasta', dialog, 'inici', 'cava')
+options.inici__anima.onChoose(() => {
+  chooseNarrativeOption('subhasta', dialog, 'inici', 'anima')
 })
 
 options.inici__peixos.onChoose(() => {

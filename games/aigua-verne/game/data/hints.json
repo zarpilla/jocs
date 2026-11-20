@@ -810,6 +810,108 @@
       "pista.bru.3"
     ]
   },
+  "targeta": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_targeta"
+        },
+        {
+          "flag": "mosca_contractada",
+          "is": false
+        },
+        {
+          "flag": "canalla_beu",
+          "is": false
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "mosca_contractada"
+        },
+        {
+          "flag": "canalla_beu"
+        }
+      ]
+    },
+    "levels": [
+      "pista.targeta.1",
+      "pista.targeta.2",
+      "pista.targeta.3"
+    ]
+  },
+  "targeta_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_targeta"
+        },
+        {
+          "flag": "mosca_contractada",
+          "is": false
+        },
+        {
+          "flag": "canalla_beu",
+          "is": false
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "mosca_contractada"
+        },
+        {
+          "flag": "canalla_beu"
+        }
+      ]
+    },
+    "levels": [
+      "pista.targeta_vet.1",
+      "pista.targeta_vet.2",
+      "pista.targeta_vet.3"
+    ]
+  },
+  "targeta2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "any": [
+            {
+              "hasItem": "targeta_verne",
+              "who": "iri"
+            },
+            {
+              "hasItem": "targeta_verne",
+              "who": "vet"
+            }
+          ]
+        },
+        {
+          "flag": "canalla_beu",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "canalla_beu"
+    },
+    "levels": [
+      "pista.targeta2.1",
+      "pista.targeta2.2"
+    ]
+  },
   "canalla": {
     "priority": 5,
     "when": {
@@ -937,6 +1039,84 @@
       "pista.motlle.3"
     ]
   },
+  "lot9": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_sorra"
+        },
+        {
+          "flag": "lot9_vist"
+        },
+        {
+          "flag": "franja_vista",
+          "is": false
+        },
+        {
+          "flag": "sorra_agafada",
+          "is": false
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "franja_vista"
+        },
+        {
+          "flag": "sorra_agafada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.lot9.1",
+      "pista.lot9.2",
+      "pista.lot9.3"
+    ]
+  },
+  "lot9_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_sorra"
+        },
+        {
+          "flag": "lot9_vist"
+        },
+        {
+          "flag": "franja_vista",
+          "is": false
+        },
+        {
+          "flag": "sorra_agafada",
+          "is": false
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "franja_vista"
+        },
+        {
+          "flag": "sorra_agafada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.lot9_vet.1",
+      "pista.lot9_vet.2",
+      "pista.lot9_vet.3"
+    ]
+  },
   "sorra": {
     "priority": 5,
     "when": {
@@ -963,6 +1143,9 @@
     "priority": 5,
     "when": {
       "all": [
+        {
+          "flag": "promesa_lia"
+        },
         {
           "flag": "sorra_agafada"
         },
@@ -1228,6 +1411,124 @@
       "pista.tomaquera2.3"
     ]
   },
+  "precinte": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "all": [
+            {
+              "flag": "precinte_vist"
+            },
+            {
+              "flag": "graner_obert",
+              "is": false
+            },
+            {
+              "any": [
+                {
+                  "all": [
+                    {
+                      "flag": "cal_reg"
+                    },
+                    {
+                      "flag": "reg_agafat",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "flag": "cal_aval"
+                    },
+                    {
+                      "flag": "fidel_admet",
+                      "is": false
+                    },
+                    {
+                      "flag": "sac4_agafat",
+                      "is": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "graner_obert"
+    },
+    "levels": [
+      "pista.precinte.1",
+      "pista.precinte.2",
+      "pista.precinte.3"
+    ]
+  },
+  "precinte_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "all": [
+            {
+              "flag": "precinte_vist"
+            },
+            {
+              "flag": "graner_obert",
+              "is": false
+            },
+            {
+              "any": [
+                {
+                  "all": [
+                    {
+                      "flag": "cal_reg"
+                    },
+                    {
+                      "flag": "reg_agafat",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "flag": "cal_aval"
+                    },
+                    {
+                      "flag": "fidel_admet",
+                      "is": false
+                    },
+                    {
+                      "flag": "sac4_agafat",
+                      "is": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "graner_obert"
+    },
+    "levels": [
+      "pista.precinte_vet.1",
+      "pista.precinte_vet.2",
+      "pista.precinte_vet.3"
+    ]
+  },
   "reg": {
     "priority": 5,
     "when": {
@@ -1254,6 +1555,9 @@
     "priority": 5,
     "when": {
       "all": [
+        {
+          "flag": "cal_reg"
+        },
         {
           "any": [
             {
@@ -1288,6 +1592,9 @@
     "priority": 5,
     "when": {
       "all": [
+        {
+          "flag": "cal_reg"
+        },
         {
           "any": [
             {
@@ -1844,6 +2151,9 @@
         {
           "flag": "fidel_admet",
           "is": false
+        },
+        {
+          "protagonist": "iri"
         }
       ]
     },
@@ -1872,10 +2182,68 @@
       "pista.aval.3"
     ]
   },
+  "aval_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_aval"
+        },
+        {
+          "not": {
+            "any": [
+              {
+                "hasItem": "sac_llavors",
+                "who": "iri"
+              },
+              {
+                "hasItem": "sac_llavors",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        {
+          "flag": "fidel_admet",
+          "is": false
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "any": [
+            {
+              "hasItem": "sac_llavors",
+              "who": "iri"
+            },
+            {
+              "hasItem": "sac_llavors",
+              "who": "vet"
+            }
+          ]
+        },
+        {
+          "flag": "fidel_admet"
+        }
+      ]
+    },
+    "levels": [
+      "pista.aval_vet.1",
+      "pista.aval_vet.2",
+      "pista.aval_vet.3"
+    ]
+  },
   "aval2": {
     "priority": 5,
     "when": {
       "all": [
+        {
+          "flag": "cal_aval"
+        },
         {
           "any": [
             {
@@ -1910,6 +2278,9 @@
     "priority": 5,
     "when": {
       "all": [
+        {
+          "flag": "cal_aval"
+        },
         {
           "any": [
             {
@@ -2203,6 +2574,14 @@
         {
           "flag": "rosa_permis",
           "is": false
+        },
+        {
+          "flag": "rosa_vol_tomas",
+          "is": false
+        },
+        {
+          "flag": "vestit_agafat",
+          "is": false
         }
       ]
     },
@@ -2213,6 +2592,56 @@
       "pista.gala.1",
       "pista.gala.2",
       "pista.gala.3"
+    ]
+  },
+  "gala_tomas": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "rosa_vol_tomas"
+        },
+        {
+          "flag": "tomas_baixa",
+          "is": false
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "tomas_baixa"
+    },
+    "levels": [
+      "pista.gala_tomas.1",
+      "pista.gala_tomas.2",
+      "pista.gala_tomas.3"
+    ]
+  },
+  "gala_tomas_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "rosa_vol_tomas"
+        },
+        {
+          "flag": "tomas_baixa",
+          "is": false
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "tomas_baixa"
+    },
+    "levels": [
+      "pista.gala_tomas_vet.1",
+      "pista.gala_tomas_vet.2",
+      "pista.gala_tomas_vet.3"
     ]
   },
   "gala2": {
@@ -2240,6 +2669,9 @@
     "priority": 5,
     "when": {
       "all": [
+        {
+          "flag": "cal_gala"
+        },
         {
           "flag": "vestit_agafat"
         },
@@ -2290,6 +2722,9 @@
     "when": {
       "all": [
         {
+          "flag": "cal_gala"
+        },
+        {
           "flag": "vestit_agafat"
         },
         {
@@ -2339,6 +2774,9 @@
     "when": {
       "all": [
         {
+          "flag": "cal_gala"
+        },
+        {
           "hasItem": "vestit_arreglat",
           "who": "vet"
         },
@@ -2360,6 +2798,9 @@
     "priority": 5,
     "when": {
       "all": [
+        {
+          "flag": "cal_gala"
+        },
         {
           "hasItem": "vestit_arreglat",
           "who": "vet"
@@ -2758,7 +3199,7 @@
       "pista.control.3"
     ]
   },
-  "valvules_reinici": {
+  "subhasta_sola": {
     "priority": 5,
     "when": {
       "all": [
@@ -2771,27 +3212,38 @@
           "value": 3
         },
         {
-          "var": "reinicis_subhasta",
-          "op": ">=",
-          "value": 1
-        },
-        {
-          "flag": "oferta_feta",
-          "is": false
-        },
-        {
-          "flag": "contracte_llegit",
-          "is": false
+          "all": [
+            {
+              "var": "reinicis_subhasta",
+              "op": ">=",
+              "value": 1
+            },
+            {
+              "flag": "objeccio_7788",
+              "is": false
+            },
+            {
+              "flag": "objeccio_anima",
+              "is": false
+            },
+            {
+              "flag": "objeccio_peixos",
+              "is": false
+            }
+          ]
         }
       ]
     },
     "doneWhen": {
       "any": [
         {
-          "flag": "oferta_feta"
+          "flag": "objeccio_7788"
         },
         {
-          "flag": "contracte_llegit"
+          "flag": "objeccio_anima"
+        },
+        {
+          "flag": "objeccio_peixos"
         },
         {
           "var": "valvules",
@@ -2801,12 +3253,12 @@
       ]
     },
     "levels": [
-      "pista.valvules_reinici.1",
-      "pista.valvules_reinici.2",
-      "pista.valvules_reinici.3"
+      "pista.subhasta_sola.1",
+      "pista.subhasta_sola.2",
+      "pista.subhasta_sola.3"
     ]
   },
-  "valvules": {
+  "subhasta_iri": {
     "priority": 5,
     "when": {
       "all": [
@@ -2817,6 +3269,9 @@
           "var": "valvules",
           "op": "<",
           "value": 3
+        },
+        {
+          "protagonist": "iri"
         },
         {
           "not": {
@@ -2827,11 +3282,83 @@
                 "value": 1
               },
               {
-                "flag": "oferta_feta",
+                "flag": "objeccio_7788",
                 "is": false
               },
               {
-                "flag": "contracte_llegit",
+                "flag": "objeccio_anima",
+                "is": false
+              },
+              {
+                "flag": "objeccio_peixos",
+                "is": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "var": "valvules",
+          "op": ">=",
+          "value": 3
+        },
+        {
+          "all": [
+            {
+              "flag": "objeccio_7788"
+            },
+            {
+              "flag": "objeccio_anima"
+            },
+            {
+              "flag": "objeccio_peixos"
+            }
+          ]
+        }
+      ]
+    },
+    "levels": [
+      "pista.subhasta_iri.1",
+      "pista.subhasta_iri.2",
+      "pista.subhasta_iri.3"
+    ]
+  },
+  "subhasta_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_subhasta"
+        },
+        {
+          "var": "valvules",
+          "op": "<",
+          "value": 3
+        },
+        {
+          "protagonist": "vet"
+        },
+        {
+          "not": {
+            "all": [
+              {
+                "var": "reinicis_subhasta",
+                "op": ">=",
+                "value": 1
+              },
+              {
+                "flag": "objeccio_7788",
+                "is": false
+              },
+              {
+                "flag": "objeccio_anima",
+                "is": false
+              },
+              {
+                "flag": "objeccio_peixos",
                 "is": false
               }
             ]
@@ -2845,9 +3372,9 @@
       "value": 3
     },
     "levels": [
-      "pista.valvules.1",
-      "pista.valvules.2",
-      "pista.valvules.3"
+      "pista.subhasta_vet.1",
+      "pista.subhasta_vet.2",
+      "pista.subhasta_vet.3"
     ]
   },
   "reserva": {

@@ -329,45 +329,6 @@
             "open",
             "use"
           ],
-          "if": {
-            "all": [
-              {
-                "any": [
-                  {
-                    "flag": "cal_filtre"
-                  },
-                  {
-                    "flag": "bru_set"
-                  }
-                ]
-              },
-              {
-                "flag": "filtre_agafat",
-                "is": false
-              }
-            ]
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.cantimplora_bodega.cafetera.2"
-            }
-          ],
-          "effects": [
-            {
-              "setFlag": "filtre_agafat"
-            },
-            {
-              "giveItem": "filtre"
-            }
-          ]
-        },
-        {
-          "verb": [
-            "pickUp",
-            "open",
-            "use"
-          ],
           "lines": [
             {
               "who": "player",
@@ -583,7 +544,18 @@
             },
             {
               "who": "player",
-              "text": "sala.cantimplora_bodega.carmanyola.8"
+              "text": "sala.cantimplora_bodega.carmanyola.8",
+              "if": {
+                "flag": "fidel_tractor",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.8.tractor",
+              "if": {
+                "flag": "fidel_tractor"
+              }
             },
             {
               "who": "player",

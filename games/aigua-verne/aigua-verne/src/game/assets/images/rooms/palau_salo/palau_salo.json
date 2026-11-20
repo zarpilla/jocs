@@ -128,18 +128,18 @@
     },
     "palau_salo 6.aseprite": {
       "frame": {
-        "x": 3827,
+        "x": 2781,
         "y": 0,
-        "w": 2,
-        "h": 1
+        "w": 171,
+        "h": 81
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 219,
-        "y": 31,
-        "w": 2,
-        "h": 1
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
       },
       "sourceSize": {
         "w": 640,
@@ -149,8 +149,71 @@
     },
     "palau_salo 7.aseprite": {
       "frame": {
-        "x": 3829,
+        "x": 2952,
         "y": 0,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 8.aseprite": {
+      "frame": {
+        "x": 3123,
+        "y": 0,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 9.aseprite": {
+      "frame": {
+        "x": 3294,
+        "y": 0,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 10.aseprite": {
+      "frame": {
+        "x": 698,
+        "y": 360,
         "w": 2,
         "h": 1
       },
@@ -168,10 +231,31 @@
       },
       "duration": 100
     },
-    "palau_salo 8.aseprite": {
+    "palau_salo 11.aseprite": {
       "frame": {
-        "x": 3825,
-        "y": 0,
+        "x": 700,
+        "y": 360,
+        "w": 2,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 219,
+        "y": 31,
+        "w": 2,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 12.aseprite": {
+      "frame": {
+        "x": 696,
+        "y": 360,
         "w": 1,
         "h": 2
       },
@@ -189,10 +273,10 @@
       },
       "duration": 100
     },
-    "palau_salo 9.aseprite": {
+    "palau_salo 13.aseprite": {
       "frame": {
-        "x": 3473,
-        "y": 0,
+        "x": 344,
+        "y": 360,
         "w": 352,
         "h": 7
       },
@@ -210,10 +294,10 @@
       },
       "duration": 100
     },
-    "palau_salo 10.aseprite": {
+    "palau_salo 14.aseprite": {
       "frame": {
-        "x": 3129,
-        "y": 0,
+        "x": 0,
+        "y": 360,
         "w": 344,
         "h": 10
       },
@@ -231,10 +315,10 @@
       },
       "duration": 100
     },
-    "palau_salo 11.aseprite": {
+    "palau_salo 15.aseprite": {
       "frame": {
-        "x": 3831,
-        "y": 0,
+        "x": 702,
+        "y": 360,
         "w": 1,
         "h": 1
       },
@@ -252,10 +336,10 @@
       },
       "duration": 100
     },
-    "palau_salo 12.aseprite": {
+    "palau_salo 16.aseprite": {
       "frame": {
-        "x": 3832,
-        "y": 0,
+        "x": 703,
+        "y": 360,
         "w": 1,
         "h": 1
       },
@@ -273,10 +357,10 @@
       },
       "duration": 100
     },
-    "palau_salo 13.aseprite": {
+    "palau_salo 17.aseprite": {
       "frame": {
-        "x": 3826,
-        "y": 0,
+        "x": 697,
+        "y": 360,
         "w": 1,
         "h": 2
       },
@@ -294,9 +378,9 @@
       },
       "duration": 100
     },
-    "palau_salo 14.aseprite": {
+    "palau_salo 18.aseprite": {
       "frame": {
-        "x": 3115,
+        "x": 3799,
         "y": 0,
         "w": 14,
         "h": 33
@@ -315,10 +399,10 @@
       },
       "duration": 100
     },
-    "palau_salo 15.aseprite": {
+    "palau_salo 19.aseprite": {
       "frame": {
-        "x": 3833,
-        "y": 0,
+        "x": 704,
+        "y": 360,
         "w": 1,
         "h": 1
       },
@@ -336,9 +420,9 @@
       },
       "duration": 100
     },
-    "palau_salo 16.aseprite": {
+    "palau_salo 20.aseprite": {
       "frame": {
-        "x": 3087,
+        "x": 3771,
         "y": 0,
         "w": 28,
         "h": 38
@@ -357,9 +441,9 @@
       },
       "duration": 100
     },
-    "palau_salo 17.aseprite": {
+    "palau_salo 21.aseprite": {
       "frame": {
-        "x": 2781,
+        "x": 3465,
         "y": 0,
         "w": 306,
         "h": 76
@@ -378,7 +462,7 @@
       },
       "duration": 100
     },
-    "palau_salo 18.aseprite": {
+    "palau_salo 22.aseprite": {
       "frame": {
         "x": 1570,
         "y": 0,
@@ -399,7 +483,7 @@
       },
       "duration": 100
     },
-    "palau_salo 19.aseprite": {
+    "palau_salo 23.aseprite": {
       "frame": {
         "x": 1221,
         "y": 0,
@@ -420,7 +504,7 @@
       },
       "duration": 100
     },
-    "palau_salo 20.aseprite": {
+    "palau_salo 24.aseprite": {
       "frame": {
         "x": 822,
         "y": 0,
@@ -441,7 +525,7 @@
       },
       "duration": 100
     },
-    "palau_salo 21.aseprite": {
+    "palau_salo 25.aseprite": {
       "frame": {
         "x": 674,
         "y": 0,
@@ -462,7 +546,7 @@
       },
       "duration": 100
     },
-    "palau_salo 22.aseprite": {
+    "palau_salo 26.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -490,8 +574,8 @@
     "image": "palau_salo.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3834,
-      "h": 360
+      "w": 3813,
+      "h": 370
     },
     "scale": "1",
     "frameTags": [
@@ -510,86 +594,114 @@
         "color": "#000000ff"
       },
       {
-        "name": "grafic_84",
+        "name": "grafic_102",
         "from": 2,
         "to": 2,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "grafic_52",
+        "name": "grafic_96",
         "from": 3,
         "to": 3,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "grafic_31",
+        "name": "grafic_86",
         "from": 4,
         "to": 4,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "grafic_29",
+        "name": "grafic_57",
         "from": 5,
         "to": 5,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "estrelles",
+        "name": "grafic_47",
         "from": 6,
-        "to": 15,
+        "to": 6,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_faristol",
-        "from": 16,
-        "to": 16,
+        "name": "grafic_41",
+        "from": 7,
+        "to": 7,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_fila3",
-        "from": 17,
-        "to": 17,
+        "name": "grafic_31",
+        "from": 8,
+        "to": 8,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_fila2",
-        "from": 18,
-        "to": 18,
+        "name": "grafic_29",
+        "from": 9,
+        "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_fila1",
-        "from": 19,
+        "name": "estrelles",
+        "from": 10,
         "to": 19,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_fila0",
+        "name": "davant_faristol",
         "from": 20,
         "to": 20,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_taula",
+        "name": "davant_fila3",
         "from": 21,
         "to": 21,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_fila2",
         "from": 22,
         "to": 22,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_fila1",
+        "from": 23,
+        "to": 23,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_fila0",
+        "from": 24,
+        "to": 24,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_taula",
+        "from": 25,
+        "to": 25,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 26,
+        "to": 26,
         "direction": "forward",
         "color": "#000000ff"
       }

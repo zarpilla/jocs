@@ -79,10 +79,42 @@
       "interactions": [
         {
           "verb": "look",
+          "if": {
+            "flag": "reserva_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.palau_salo.pantalla.4"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "sync_subhasta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.palau_salo.pantalla.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.palau_salo.pantalla.3"
+            }
+          ]
+        },
+        {
+          "verb": "look",
           "lines": [
             {
               "who": "player",
               "text": "sala.palau_salo.pantalla.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.palau_salo.pantalla.3"
             }
           ]
         }
@@ -201,21 +233,49 @@
       "visibleIf": {
         "var": "preu_aigua",
         "op": ">=",
-        "value": 100
+        "value": 104
       }
     },
-    "grafic_84": {
+    "grafic_102": {
       "visibleIf": {
         "var": "preu_aigua",
         "op": "==",
-        "value": 84
+        "value": 102
       }
     },
-    "grafic_52": {
+    "grafic_96": {
       "visibleIf": {
         "var": "preu_aigua",
         "op": "==",
-        "value": 52
+        "value": 96
+      }
+    },
+    "grafic_86": {
+      "visibleIf": {
+        "var": "preu_aigua",
+        "op": "==",
+        "value": 86
+      }
+    },
+    "grafic_57": {
+      "visibleIf": {
+        "var": "preu_aigua",
+        "op": "==",
+        "value": 57
+      }
+    },
+    "grafic_47": {
+      "visibleIf": {
+        "var": "preu_aigua",
+        "op": "==",
+        "value": 47
+      }
+    },
+    "grafic_41": {
+      "visibleIf": {
+        "var": "preu_aigua",
+        "op": "==",
+        "value": 41
       }
     },
     "grafic_31": {
@@ -292,7 +352,7 @@
         },
         {
           "setVar": "lots",
-          "value": 9
+          "value": 12
         }
       ]
     }

@@ -5,6 +5,24 @@
   "start": [
     {
       "if": {
+        "all": [
+          {
+            "flag": "tomas_baixa"
+          },
+          {
+            "not": {
+              "seen": {
+                "dialogue": "rosa",
+                "node": "baixat"
+              }
+            }
+          }
+        ]
+      },
+      "node": "baixat"
+    },
+    {
+      "if": {
         "seen": {
           "dialogue": "rosa",
           "node": "hola"
@@ -29,7 +47,18 @@
         },
         {
           "who": "rosa",
-          "text": "dlg.rosa.hola.3"
+          "text": "dlg.rosa.hola.3",
+          "if": {
+            "flag": "cal_gala",
+            "is": false
+          }
+        },
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.hola.3.tard",
+          "if": {
+            "flag": "cal_gala"
+          }
         }
       ],
       "goto": "menu"
@@ -62,10 +91,54 @@
               {
                 "flag": "rosa_permis",
                 "is": false
+              },
+              {
+                "flag": "vestit_agafat",
+                "is": false
+              },
+              {
+                "flag": "rosa_vol_tomas",
+                "is": false
               }
             ]
           },
           "next": "vestit"
+        },
+        {
+          "id": "vestit_cas",
+          "text": "dlg.rosa.opt.vestit_cas",
+          "if": {
+            "all": [
+              {
+                "flag": "vestit_volgut"
+              },
+              {
+                "flag": "cal_gala",
+                "is": false
+              },
+              {
+                "flag": "rosa_permis",
+                "is": false
+              }
+            ]
+          },
+          "next": "vestit_cas"
+        },
+        {
+          "id": "vestit_tomas",
+          "text": "dlg.rosa.opt.vestit_tomas",
+          "if": {
+            "all": [
+              {
+                "flag": "rosa_vol_tomas"
+              },
+              {
+                "flag": "tomas_baixa",
+                "is": false
+              }
+            ]
+          },
+          "next": "espera"
         },
         {
           "id": "tomas",
@@ -91,12 +164,16 @@
         },
         {
           "who": "rosa",
-          "text": "dlg.rosa.vestit.2"
+          "text": "dlg.rosa.vestit.3"
+        },
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.vestit.4"
         }
       ],
       "effects": [
         {
-          "setFlag": "rosa_permis"
+          "setFlag": "rosa_vol_tomas"
         }
       ],
       "goto": "menu"
@@ -119,6 +196,46 @@
         {
           "who": "rosa",
           "text": "dlg.rosa.tomas.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "espera": {
+      "lines": [
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.espera"
+        }
+      ],
+      "goto": "menu"
+    },
+    "vestit_cas": {
+      "lines": [
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.cas.1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.rosa.cas.2"
+        },
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.cas.3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "rosa_permis"
+        }
+      ],
+      "goto": "menu"
+    },
+    "baixat": {
+      "lines": [
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.baixat"
         }
       ],
       "goto": "menu"

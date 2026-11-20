@@ -713,27 +713,6 @@
         "h": 36
       },
       "duration": 100
-    },
-    "inventory 34.aseprite": {
-      "frame": {
-        "x": 2210,
-        "y": 0,
-        "w": 65,
-        "h": 36
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 65,
-        "h": 36
-      },
-      "sourceSize": {
-        "w": 65,
-        "h": 36
-      },
-      "duration": 100
     }
   },
   "meta": {
@@ -742,7 +721,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2275,
+      "w": 2210,
       "h": 36
     },
     "scale": "1",
@@ -895,100 +874,93 @@
         "color": "#000000ff"
       },
       {
-        "name": "corretja",
+        "name": "reg",
         "from": 21,
         "to": 21,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "filtre",
+        "name": "reg_foradat",
         "from": 22,
         "to": 22,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "reg",
+        "name": "agulla",
         "from": 23,
         "to": 23,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "reg_foradat",
+        "name": "galleda",
         "from": 24,
         "to": 24,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "agulla",
+        "name": "galleda_plena",
         "from": 25,
         "to": 25,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "galleda",
+        "name": "carta_banc",
         "from": 26,
         "to": 26,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "galleda_plena",
+        "name": "invitacio",
         "from": 27,
         "to": 27,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "carta_banc",
+        "name": "contracte_capitana",
         "from": 28,
         "to": 28,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "invitacio",
+        "name": "pernil",
         "from": 29,
         "to": 29,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "contracte_capitana",
+        "name": "vestit",
         "from": 30,
         "to": 30,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "pernil",
+        "name": "vestit_arreglat",
         "from": 31,
         "to": 31,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "vestit",
+        "name": "targeta",
         "from": 32,
         "to": 32,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "vestit_arreglat",
+        "name": "targeta_verne",
         "from": 33,
         "to": 33,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "targeta",
-        "from": 34,
-        "to": 34,
         "direction": "forward",
         "color": "#000000ff"
       }

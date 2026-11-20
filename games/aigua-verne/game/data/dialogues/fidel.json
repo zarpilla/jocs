@@ -128,6 +128,21 @@
           "next": "sac"
         },
         {
+          "id": "tractor",
+          "text": "dlg.fidel.opt.tractor",
+          "if": {
+            "all": [
+              {
+                "hasItem": "contracte_7788"
+              },
+              {
+                "flag": "fidel_norma"
+              }
+            ]
+          },
+          "next": "tractor"
+        },
+        {
           "id": "res",
           "text": "dlg.fidel.opt.res",
           "next": "res"
@@ -173,15 +188,42 @@
           "who": "player",
           "text": "dlg.fidel.escriptura.2",
           "if": {
-            "not": {
-              "hasItem": "sac_llavors"
-            }
+            "all": [
+              {
+                "not": {
+                  "hasItem": "sac_llavors"
+                }
+              },
+              {
+                "flag": "sac4_agafat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.fidel.escriptura.2.vet",
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "hasItem": "sac_llavors"
+                }
+              },
+              {
+                "flag": "sac4_agafat"
+              }
+            ]
           }
         }
       ],
       "effects": [
         {
           "setFlag": "cal_aval"
+        },
+        {
+          "setFlag": "fidel_norma"
         }
       ],
       "goto": "menu"
@@ -196,9 +238,33 @@
           "who": "player",
           "text": "dlg.fidel.escriptura.2",
           "if": {
-            "not": {
-              "hasItem": "sac_llavors"
-            }
+            "all": [
+              {
+                "not": {
+                  "hasItem": "sac_llavors"
+                }
+              },
+              {
+                "flag": "sac4_agafat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.fidel.escriptura.2.vet",
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "hasItem": "sac_llavors"
+                }
+              },
+              {
+                "flag": "sac4_agafat"
+              }
+            ]
           }
         }
       ],
@@ -219,9 +285,33 @@
           "who": "player",
           "text": "dlg.fidel.escriptura.2",
           "if": {
-            "not": {
-              "hasItem": "sac_llavors"
-            }
+            "all": [
+              {
+                "not": {
+                  "hasItem": "sac_llavors"
+                }
+              },
+              {
+                "flag": "sac4_agafat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.fidel.escriptura.2.vet",
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "hasItem": "sac_llavors"
+                }
+              },
+              {
+                "flag": "sac4_agafat"
+              }
+            ]
           }
         }
       ],
@@ -231,6 +321,47 @@
         }
       ],
       "goto": "menu"
+    },
+    "tractor": {
+      "lines": [
+        {
+          "who": "fidel",
+          "text": "dlg.fidel.tractor.1",
+          "sound": "robot"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.fidel.tractor.2"
+        },
+        {
+          "who": "fidel",
+          "text": "dlg.fidel.tractor.3"
+        },
+        {
+          "who": "fidel",
+          "text": "dlg.fidel.tractor.4"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.fidel.tractor.5"
+        },
+        {
+          "who": "fidel",
+          "text": "dlg.fidel.tractor.6"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.fidel.tractor.7"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "fidel_admet"
+        },
+        {
+          "setFlag": "fidel_tractor"
+        }
+      ]
     }
   }
 }

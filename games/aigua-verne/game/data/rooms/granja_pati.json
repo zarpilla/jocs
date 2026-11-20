@@ -33,6 +33,208 @@
       "interactions": [
         {
           "verb": "look",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": ">=",
+                "value": 5
+              },
+              {
+                "flag": "graner_obert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_pati.porta_graner.precinte.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.granja_pati.porta_graner.precinte.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "precinte_vist"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "escriptura",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": ">=",
+                "value": 5
+              },
+              {
+                "flag": "graner_obert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_pati.porta_graner.precinte.3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.granja_pati.porta_graner.precinte.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.granja_pati.porta_graner.precinte.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "precinte_vist"
+            },
+            {
+              "setFlag": "graner_obert"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "contracte_7788",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": ">=",
+                "value": 5
+              },
+              {
+                "flag": "graner_obert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.granja_pati.porta_graner.precinte.6"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "precinte_vist"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tornavis_flor",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": ">=",
+                    "value": 5
+                  },
+                  {
+                    "flag": "graner_obert",
+                    "is": false
+                  }
+                ]
+              },
+              {
+                "protagonist": "vet"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_pati.porta_graner.precinte.7"
+            },
+            {
+              "who": "player",
+              "text": "sala.granja_pati.porta_graner.precinte.8"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "precinte_vist"
+            },
+            {
+              "setFlag": "graner_obert"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": ">=",
+                "value": 5
+              },
+              {
+                "flag": "graner_obert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_pati.porta_graner.precinte.9"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": ">=",
+                "value": 5
+              },
+              {
+                "flag": "graner_obert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_pati.porta_graner.precinte.10"
+            },
+            {
+              "who": "player",
+              "text": "sala.granja_pati.porta_graner.precinte.2",
+              "if": {
+                "flag": "precinte_vist",
+                "is": false
+              }
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "precinte_vist"
+            }
+          ]
+        },
+        {
+          "verb": "look",
           "lines": [
             {
               "who": "player",
@@ -487,6 +689,30 @@
         }
       ],
       "walkIn": "left"
+    },
+    {
+      "id": "precinte",
+      "verb": "*",
+      "once": true,
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": ">=",
+            "value": 5
+          },
+          {
+            "flag": "graner_obert",
+            "is": false
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.granja_pati.entra.precinte"
+        }
+      ]
     }
   ]
 }

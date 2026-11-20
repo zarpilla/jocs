@@ -307,6 +307,62 @@
         },
         {
           "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "flag": "sacs_agafats"
+              },
+              {
+                "flag": "sac4_refusat"
+              },
+              {
+                "flag": "sac4_agafat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_graner.llavors.cas"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sac4_agafat"
+            },
+            {
+              "giveItem": "sac_llavors"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "flag": "sacs_agafats"
+              },
+              {
+                "flag": "sac4_agafat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_graner.llavors.quart"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sac4_refusat"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
           "lines": [
             {
               "who": "player",
@@ -335,19 +391,23 @@
         {
           "verb": "pickUp",
           "if": {
-            "all": [
-              {
-                "flag": "cal_reg"
-              },
-              {
-                "flag": "permis_reg"
-              }
-            ]
+            "flag": "permis_reg"
           },
           "lines": [
             {
               "who": "player",
-              "text": "sala.granja_graner.reg.2"
+              "text": "sala.granja_graner.reg.2",
+              "if": {
+                "flag": "cal_reg"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.granja_graner.reg.cas.2",
+              "if": {
+                "flag": "cal_reg",
+                "is": false
+              }
             }
           ],
           "effects": [
@@ -373,10 +433,32 @@
         },
         {
           "verb": "pickUp",
+          "if": {
+            "flag": "reg_refusat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_graner.reg.cas.1"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "reg_volgut"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
           "lines": [
             {
               "who": "player",
               "text": "sala.granja_graner.reg.4"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "reg_refusat"
             }
           ]
         }

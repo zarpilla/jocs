@@ -12,7 +12,18 @@
         },
         {
           "who": "verne",
-          "text": "dlg.trucada.inici.2"
+          "text": "dlg.trucada.inici.2",
+          "if": {
+            "flag": "fidel_tractor",
+            "is": false
+          }
+        },
+        {
+          "who": "verne",
+          "text": "dlg.trucada.inici.2.tractor",
+          "if": {
+            "flag": "fidel_tractor"
+          }
         },
         {
           "who": "iri",
@@ -113,7 +124,18 @@
         },
         {
           "who": "iri",
-          "text": "dlg.trucada.no.7"
+          "text": "dlg.trucada.no.7",
+          "if": {
+            "flag": "fidel_tractor",
+            "is": false
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.trucada.no.7.tractor",
+          "if": {
+            "flag": "fidel_tractor"
+          }
         },
         {
           "who": "vet",
@@ -133,7 +155,32 @@
         },
         {
           "who": "iri",
-          "text": "dlg.trucada.no.12"
+          "text": "dlg.trucada.no.12",
+          "if": {
+            "flag": "vestit_agafat",
+            "is": false
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.trucada.no.12.cas",
+          "if": {
+            "flag": "vestit_agafat"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.trucada.no.13.cas",
+          "if": {
+            "flag": "vestit_agafat"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.trucada.no.14.cas",
+          "if": {
+            "flag": "vestit_agafat"
+          }
         }
       ],
       "effects": [

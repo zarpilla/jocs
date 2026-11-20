@@ -159,17 +159,24 @@ i es barallen com a tals.
 - **Tornar-hi és part del joc.** Alguns trencaclosques demanen una cosa que ja s'ha vist en un planeta anterior, quan
   no feia cap falta i la protagonista no la va voler agafar (amb una frase que ho justifica: no hi cap, no és seu, no
   serveix de res). Quan cal, la protagonista se'n recorda en veu alta, i la pista hi porta. Els quatre casos, un per
-  planeta de l'Acte 1 i 2:
+  planeta de l'Acte 1 i 2. Dues regles perquè la tornada no sigui un viatge buit:
+  - **Qui ho preveu, s'estalvia el viatge.** La primera vegada que s'intenta agafar, la protagonista diu que no (la
+    frase de la taula). La segona, sí, «per si de cas», cadascuna a la seva manera i d'acord amb el motiu de la
+    negativa (columna «A la segona»). Si ja ho porten, el trencaclosques de després ho fa servir directament i la
+    protagonista ho diu («En porto un sac.», «En portem un, el del graner del pare.»). Les pistes no en diuen mai res
+    abans que calgui: és un premi per a qui ho preveu, no un pas més.
+  - **Qui hi torna, troba el lloc canviat.** La història ha avançat (Verne mou fitxa, passen els dies) i hi ha un
+    trencaclosques petit, d'un o dos passos, que es resol amb el que ja es porta (columna «Quan s'hi torna»), amb les
+    seves pistes de tres nivells.
 
-  | Es veu | No s'agafa perquè... | Es necessita | Cal tornar a |
-  |---|---|---|---|
-  | La **sorra fina** del fons d'Aqua (Escena 3) | «Per què voldria sorra? En porto mig quilo a les botes.» | Per tapar el motlle de la colada (Escena 4) | Aqua |
-  | El **reg gota a gota** vell del pare, al graner (Escena 1) | «Un reg sense aigua. És un acte de fe.» I el pare: «Això no es toca, que encara serveix.» | La tomaquera d'en Nil (Escena 5) | Terra-2 |
-  | El **quart sac de llavors**, al graner (Escena 2) | El pare ha dit que en guardin un: es queda a casa. | L'aval per a en Fidel (Escena 5) | Terra-2 (el mateix viatge) |
-  | El **vestit de reina de la Festa Major**, al bagul del sindicat de Ferrum (Escena 4) | IRI: «No em posaria això ni morta.» I no és seu: és de la Rosa. | L'Iri, de gala, per entrar a la subhasta (final de l'Escena 6) | Ferrum |
+  | Es veu | No s'agafa perquè... | A la segona | Es necessita | Quan s'hi torna |
+  |---|---|---|---|---|
+  | La **sorra fina** del fons d'Aqua (Escena 3) | «Per què voldria sorra? En porto mig quilo a les botes.» | «Mig quilo a les botes i un sac a l'esquena. Per si de cas.» | Per preparar i tapar el motlle de la colada (Escena 4) | **El lot 9.** Verne ha fet amidar la platja per subhastar-la (els lots 9 a 11 de l'Escena 8): estaques, una cinta i un cartell: «MAR D'AQUA · LOT 9. De la línia de l'aigua, amidada dimarts, cap amunt. Prohibit endur-se'n res.» Però el mar baixa dos metres al mes: les boies diuen que des de dimarts ha baixat uns dits, i la franja nova, de sota la línia, no és del lot. Mirar les boies i agafar-ne la sorra: «Aquesta sorra, dimarts, era sota l'aigua. No és de ningú.» La Juana ho torna a dir: «El mar no s'està quiet perquè l'amidin.» |
+  | El **reg gota a gota** vell del pare, al graner (Escena 1) | VET: «Un reg sense aigua. És un acte de fe.» I: «El pare sempre diu: el reg no es toca, que encara serveix.» | «Algun dia servirà. Li ho demanaré al pare: "per si de cas" és un argument que entén.» PARE (videotelèfon): «...Per si de cas? Això ho heu après de mi. Endueu-vos-el.» | La tomaquera d'en Nil (Escena 5) | **El graner precintat** (vegeu la fila següent). |
+  | El **quart sac de llavors**, al graner (Escena 2) | «El quart sac es queda aquí. El pare ha dit que en guardem un.» | «El pare va dir que en guardéssim un. No va dir on. A la nau també és guardat. Per si de cas.» | L'aval per a en Fidel (Escena 5), si no se li ofereix el tractor | **El graner precintat.** Les germanes no han respost a l'oferta d'un crèdit, i Verne hi ha posat un cadenat amb una ranura i un paper groc: «PRECINTE PREVENTIU... Només hi pot entrar la propietat.» L'escriptura de la granja, que per a en Fidel no val res, per al cadenat és la propietat: «Benvinguda, propietat. Verne S.A. li recorda que l'oferta de compra continua vigent.» (El contracte 7.788, no: «diu de qui és l'aigua, no de qui és la finca». La Vet el pot desmuntar: va amb cargols de cap de flor.) |
+  | El **vestit de reina de la Festa Major**, al bagul del sindicat de Ferrum (Escena 4) | IRI: «No em posaria això ni morta. I no és meu.» | «Ni morta, he dit. Però viva i de gala, potser. Per si de cas.» Però és de la Rosa: cal demanar-l'hi. ROSA: «Per si de cas de què? De ser reina?» «Per si de cas.» «Fa trenta anys que espera un cas. Endueu-vos-el.» | L'Iri, de gala, per entrar a la subhasta (final de l'Escena 6) | **El favor de la Rosa.** Set dies després, el deixa, però: «Fa una setmana que en Tomàs és a la vostra nau i encara no ha baixat la rampa. Que el vingui a buscar ell.» Cal parlar amb en Tomàs, amb la nau a Ferrum: baixa, parla amb la seva mare i torna amb el vestit. És el primer que fa per elles. |
 
-  Les dues coses de Terra-2 es necessiten a la mateixa escena: un sol viatge, però s'han d'haver pensat totes dues
-  (el pare, per videotelèfon, ja no posa pegues: «Si és per a una tomaquera, endueu-vos-el.»).
+  Les dues coses de Terra-2 es necessiten a la mateixa escena: un sol viatge i un sol cadenat.
 
 ### 3. Les dues, el comunicador i la Mosca
 
@@ -313,8 +320,8 @@ contrasenya: «És qui ens esperava a la porta.» A la cuina, a terra, hi ha un 
 l'escola...») L'Iri hi escriu TITUS. [SO: caixa forta]
 
 (Al graner, al costat del tractor, hi ha el **reg gota a gota** vell del pare: rotllos de tub negre i goters. Si el
-miren: VET: «Un reg sense aigua. És un acte de fe.» Si el volen agafar, el pare, que ho veu per la càmera del
-videotelèfon: «Això no es toca, que encara serveix.» Es necessitarà a l'Escena 5.)
+miren: VET: «Un reg sense aigua. És un acte de fe.» Si el volen agafar: «El pare sempre diu: "El reg no es toca, que
+encara serveix."» A la segona, el demanen al pare «per si de cas» (regles del món, 2). Es necessitarà a l'Escena 5.)
 
 A dins: l'escriptura i un contracte vell, el **7.788**, signat per l'avi fa quaranta anys: «L'aigua del subsòl
 d'aquesta finca pertany a Verne S.A. a perpetuïtat. A canvi: un tractor (model Brau 40, vermell).»
@@ -375,8 +382,8 @@ trobar una càrrega que algú pagui a Aqua. La Capitana li dona la freqüència 
 > PARE: Les llavors són per sembrar, no per guardar. Ho deia la mare. *(pausa)* Però guarda'n un sac. Per si de cas.
 
 L'Iri carrega tres sacs (per a la Juana) i el quart el deixa al graner: «El pare ha dit que en guardem un. Doncs que
-es quedi a casa seva.» Firma l'albarà amb la Juana per ràdio. (El quart sac torna a sortir a l'Escena 5, i cal venir a
-buscar-lo.)
+es quedi a casa seva.» Firma l'albarà amb la Juana per ràdio. (El quart sac torna a sortir a l'Escena 5. A la segona,
+s'agafa: «No va dir on. A la nau també és guardat.» Si no, cal venir a buscar-lo.)
 
 **Trencaclosques 2.2 — L'injector (Vet).** L'injector de la Cantimplora té el broquet esquerdat. No n'hi ha de
 recanvi a tot el port («Verne S.A. les ha comprat totes. Per si de cas.»). La Vet sap on n'hi ha un de la mateixa
@@ -415,8 +422,8 @@ les fa servir per mesurar com baixa el mar. Seguir-les en ordre és el camí (si
 anterior, amb una altra pudor).
 
 Al costat del bassal hi ha una platja de **sorra fina**, blanca, la del fons de l'antic mar. Si el jugador la mira:
-VET: «Sorra de fons. Fina com farina.» Si la vol agafar: «Per què voldria sorra? En porto mig quilo a les botes.» (Es
-necessitarà a l'Escena 4.)
+VET: «Sorra de fons. Fina com farina.» Si la vol agafar: «Per què voldria sorra? En porto mig quilo a les botes.» A la
+segona, n'omple un sac: «Mig quilo a les botes i un sac a l'esquena. Per si de cas.» (Es necessitarà a l'Escena 4.)
 
 **La Juana.**
 
@@ -427,6 +434,7 @@ necessitarà a l'Escena 4.)
 Què sap (és un arbre de conversa, i el que diu queda al tauler de la cuina):
 - **Com baixa el mar:** dos metres al mes, des que hi ha la Canonada d'Aqua.
 - **On és l'aigua:** als tres dipòsits orbitals (T2, Aqua, Ferrum), glaçada. Els té en una llista, amb les òrbites.
+  El d'Aqua és el gros: «s'hi va endur un mar». (A l'Escena 8, l'ordre de les vàlvules en depèn.)
 - **Com tornar-la:** els dipòsits tenen **vàlvules d'emergència**, per si s'esquerden. Si s'obren, el gel cau a
   l'atmosfera, es fon, i plou. «El deixen anar a trossets, perquè es fongui abans de tocar a terra. Tres setmanes de
   pluja a cada planeta. Ho he calculat.»
@@ -479,8 +487,9 @@ piquet. No diu res. La Rosa tampoc.
 **El bagul.** Al sindicat, sota les pancartes, hi ha el bagul de la colla de teatre de la Festa Major de la Fosa. A
 dalt de tot, un vestit de reina de vellut granat, amb lluentons de llautó i una corona feta amb un engranatge fos. Si
 l'Iri el mira: «Això és el més lleig que he vist mai. I he estat a Verdant.» Si el vol agafar: «No em posaria això ni
-morta. I no és meu.» BRU (si hi és): «És de la Rosa. Va ser reina fa trenta anys. Encara en parla.» (Es necessitarà al
-final de l'Escena 6.)
+morta. I no és meu.» BRU (si hi és): «És de la Rosa. Va ser reina fa trenta anys. Encara en parla.» A la segona: «Ni
+morta, he dit. Però viva i de gala, potser. Per si de cas.» I l'hi demana a la Rosa, al piquet (regles del món, 2). (Es
+necessitarà al final de l'Escena 6.)
 
 **Trencaclosques 4.1 — Beure (dos camins; un de sol n'hi ha prou).** En Bru no parlarà de claus mentre la canalla
 del piquet tingui set.
@@ -488,11 +497,21 @@ del piquet tingui set.
   entre germanes, i el jugador tria qui insisteix i com. VET: «És el nostre. Per si de cas.» IRI: «Això és el cas.»
   Si l'Iri ho fa sola, la Vet: «...Fes-ho. Abans que m'ho pensi.» (No cap a la Mosca; es baixa amb el carro de la
   bodega.) `flags.barril_donat`.
-- **El condensador.** Al costat de la mina hi ha un condensador d'aire vell, que treia aigua de la humitat i que
-  Verne va fer tancar quan venia l'aigua «més barata». La Vet el pot arreglar: li falten una **corretja** (la de la
-  font seca de Verne, que ja no fa res) i **el filtre** (el de la cafetera de la Cantimplora, que porta l'Iri amb la
-  Mosca). Fa poca aigua, però en fa cada dia.
-  Més llarg, però la Cantimplora es queda el barril.
+- **El condensador (la lògica de Verne contra Verne).** Al costat de la mina hi ha un condensador d'aire vell, que
+  treia aigua de la humitat. Verne el va comprar quan venia l'aigua «més barata», i no el va espatllar: el va apagar.
+  VET: «No li falta cap peça. Li'n sobra una: un lector de targetes.» «Engegada reservada a treballadors actius de
+  Verne S.A.» Els vaguistes no en tenen. La font de Verne, seca, té a sota una pantalla, l'única cosa que hi
+  funciona: «VERNE S.A. CONTRACTA. Targeta de treballador actiu el mateix dia.» És un formulari de tres preguntes
+  que cap persona no passa: «Ha fet vaga alguna vegada?» · «Disponibilitat?» (de nou a cinc: «perfils compromesos»)
+  · «Necessita aigua per viure?» Si diu que sí: «Verne S.A. busca perfils sostenibles.» Si diu que no: «Llavors no
+  li cal la targeta de treballador actiu, que dona dret a aigua. Sol·licitud arxivada.»
+  IRI: «Volen algú que treballi tot el dia, que no faci vaga i que no begui.» VET: «Cap persona no passa aquest
+  control de qualitat.» Qui sí que el passa és **la Mosca** (fer servir la Mosca amb la font): «Vaga: mai.
+  Disponibilitat: vint-i-quatre hores. Necessitat d'aigua: cap. Benvinguda a la família Verne.» VET: «Fa un minut que
+  treballa per a Verne i ja té més drets que tot el piquet.» La targeta de la Mosca, al lector del condensador. (A la
+  font, la mateixa targeta dona la ració de la titular: «zero litres. La titular no en necessita».) Fa poca aigua,
+  però en fa cada dia, i la Cantimplora es queda el barril. BRU: «Una esquirola amb hèlices. Això, a l'assemblea, no
+  ho explico.»
 
 > BRU *(mirant la canalla beure)*: Bé. Ara parlem.
 
@@ -509,8 +528,9 @@ forn ple i a punt, i abocar al motlle de tres de cop. **Ara necessites les dues.
 - **L'Iri a la colada** (`fosa_colada`): posar el motlle, inclinar el gresol amb la grua, tapar amb sorra.
 - **Abans de la sincronia, la sorra.** El motlle de tres s'ha de preparar amb sorra fina, i a Ferrum no n'hi ha:
   «La d'aquí és pedra picada. Les claus sortirien amb grava.» (BRU) La Vet se'n recorda: «Al fons d'Aqua n'hi
-  havia una platja. Fina com farina.» Cal tornar a Aqua i omplir-ne un sac (el de la cuina de la nau). La sincronia
-  no comença fins que el motlle és preparat.
+  havia una platja. Fina com farina.» Cal tornar a Aqua, on ara la platja és el lot 9 de Verne (regles del món, 2), i
+  omplir-ne un sac. Si ja en porten un, «per si de cas», el motlle es prepara de seguida. La sincronia no comença fins
+  que el motlle és preparat.
 - **El metall:** els miners hi tiren els **comptadors d'aigua de Verne** que han arrencat de les cases. BRU: «Que
   serveixin per a alguna cosa.»
 - **Rellotge:** la temperatura (10). Cada torn baixa un grau; atiar el forn (Vet) en torna dos.
@@ -540,7 +560,8 @@ Nil la rega amb la seva aigua de beure. El Magnat no vol plantes de veritat: «G
 revaloren.» La Vet la vol salvar amb l'aigua que degota de l'aire condicionat de la residència (que es llença a una
 reixa), recollida amb la galleda d'en Nil. Però li cal un reg de veritat: els tubs dels aspersors de Verdant només
 fan boira de perfum. VET: «Necessito un reg gota a gota. *(pausa)* El pare en té un al graner. "Que encara
-serveix."» **Cal tornar a Terra-2** (vegeu regles del món, 2). Amb el reg, la galleda i una agulla de cosir del seu
+serveix."» **Cal tornar a Terra-2**, on Verne ha precintat el graner (regles del món, 2). Si ja el porten: «En portem
+un, el del graner del pare.» Amb el reg, la galleda i una agulla de cosir del seu
 calaix «per si de cas» (per foradar els goters), la Vet el munta. En Nil plora una mica i les porta al palau com a
 ajudants.
 
@@ -553,10 +574,28 @@ ajudants.
 d'un milió de crèdits. L'Iri fa veure que és una inversora que vol comprar Aqua. En Fidel li demana un aval.
 L'albarà de les llavors no val («Paper.»), l'escriptura de la granja tampoc («Terra sense aigua: valor, un crèdit.
 Ens consta.»). L'Iri té una idea: IRI (pel comunicador): «Vet. El quart sac de llavors. El del pare.» És al graner de
-Terra-2: cal tornar-hi (el mateix viatge que el reg, si s'hi pensa a temps). El que val és **el sac de llavors**:
+Terra-2: cal tornar-hi (el mateix viatge que el reg, si s'hi pensa a temps), si no se l'havien endut per si de cas.
+Hi ha dos avals que valen:
 
-> FIDEL: Llavors resistents a la secada. Actiu de futur. Valor estimat... *(bip)* Inestimable. Passi, senyora.
-> IRI *(baix)*: Gràcies, papa.
+- **El sac de llavors** (la lògica del pare):
+
+  > FIDEL: Llavors resistents a la secada. Actiu de futur. Valor estimat... *(bip)* Inestimable. Passi, senyora.
+  > IRI *(baix)*: Gràcies, papa.
+
+- **El tractor de l'avi** (la lògica de Verne contra Verne). En Fidel valora els actius pel preu de l'última operació
+  registrada: per això la granja val un crèdit («Última operació registrada: una oferta de compra de Verne S.A., d'un
+  crèdit»). Un cop ho ha dit, l'Iri pot oferir l'altra cosa que diu el contracte 7.788:
+
+  > IRI: I un tractor? Un Brau 40, vermell. Pagat amb un pou.
+  > FIDEL: Contracte 7.788. Preu pagat per Verne S.A.: l'aigua del subsòl d'una finca, a perpetuïtat. Al preu d'avui,
+  > un milió dos-cents mil crèdits. Estat de l'actiu?
+  > IRI: No arrenca. No ha arrencat mai.
+  > FIDEL: Els actius no arrenquen. Valen. Passi, senyora. Anoto l'aval: un tractor de luxe.
+  > IRI *(baix)*: L'avi, inversor.
+
+  El contracte es queda a l'Iri (a la subhasta hi farà una objecció). Amb el tractor, a Terra-2 només s'hi ha d'anar
+  pel reg. A la trucada, el Magnat ho sap: «...una visita al meu despatx i un tractor valorat en un milió»; i a la
+  carmanyola d'en Tomàs: «Han pagat l'entrada amb un tractor que no arrenca.»
 
 **Trencaclosques 5.3 — El despatx (Iri).** En Fidel la deixa esperant al despatx del Magnat. Hi troba (cal mirar i
 obrir: la calaixera, la paperera, el quadre del Magnat amb en Dividend):
@@ -580,7 +619,8 @@ Desconfia.»
 Aquella nit, la pantalla del pont s'encén sola. El Magnat, per primer cop en directe.
 
 > VERNE: Les germanes de la granja 7.788. La pilot i l'enginyera. *(somriu)* Tres claus de comptador fos, una visita
-> al meu despatx i un sac de llavors. Molt emprenedor.
+> al meu despatx i un sac de llavors. Molt emprenedor. *(o «un tractor valorat en un milió», si en Fidel les va
+> deixar passar pel tractor)*
 > IRI: Com ho sap?
 > VERNE: Jo ho sé tot. És car, però ho sé tot.
 > IRI: Ens està veient?
@@ -622,11 +662,20 @@ palau.
 **Trencaclosques 6.2 — De gala (Iri i Vet; cal tornar a Ferrum).** La invitació de la Sra. Pruna diu, a sota, en
 lletra daurada: «Etiqueta rigorosa. No s'admet roba de treball.» L'Iri només té la jaqueta de vol. VET: «I la
 Capitana té un impermeable.» Al tauler de la cuina, si es demana una pista, o quan l'Iri remena l'armari de la nau:
-IRI: «...Al sindicat de Ferrum hi havia un vestit. Horrible. *(pausa)* Perfecte.» Cal tornar a Ferrum i demanar-lo a
-la Rosa (en Tomàs la va a buscar al piquet: és el primer que fa per elles).
+IRI: «...Al sindicat de Ferrum hi havia un vestit. Horrible. *(pausa)* Perfecte.» (Si ja el té, per si de cas: «...Tinc
+el vestit de reina de la Rosa. Horrible.» VET: «El vas agafar per si de cas.» IRI: «No en parlem.») Si no, cal tornar a
+Ferrum i demanar-lo a la Rosa, al piquet. Ha passat una setmana:
 
-> ROSA: Me'l vaig posar quan vaig ser reina de la Festa Major de la Fosa. Fa trenta anys. *(pausa)* Per entrar a
-> casa del Magnat? Endú-te'l. I torna-me'l sense taques de cava.
+> ROSA: El de reina? Me'l vaig posar quan vaig ser reina de la Festa Major de la Fosa. Fa trenta anys. *(pausa)* Per
+> entrar a casa del Magnat? Us el deixo. Però una cosa.
+> ROSA: Fa una setmana que en Tomàs és a la vostra nau i encara no ha baixat la rampa. Que el vingui a buscar ell.
+
+A l'Escena 4 deia «que no cal que baixi»; ara sí. Amb la nau a Ferrum, qui parla amb en Tomàs l'hi diu, i en Tomàs
+baixa: «La mare? ...Vol que baixi jo? Des de la rampa ja la veig. Baixar és una altra cosa.» *(Al piquet, la Rosa li
+diu alguna cosa. Ell mira a terra. Ella li arregla el coll de la granota.)* Torna amb el vestit i la corona: «Diu que us
+el deixa. Que el torneu sense taques de cava. I que menjo poc.» És el primer que fa per elles (si encara no l'han
+descobert, també: no diu res de la carmanyola). Si després la Rosa hi torna a parlar: «Ha baixat. Ha crescut. Menja poc,
+però ha baixat.»
 
 Li va gran: la Vet l'hi estreny amb l'agulla del seu calaix (la de la tomaquera) i fil de pescar de la bodega. L'Iri
 porta el vestit i la corona d'engranatge a tot l'Acte 3 (`outfit` «Gala»). Al saló, en Holm: «Molt atrevit. Verdant
@@ -677,8 +726,8 @@ les deixa a la **safata de les copes** del saló; la Vet la recull a l'ascensor 
 safates). Primer cal que l'Iri s'hi acosti sense que en Holm la vegi: li ha de parlar de la seva «empresa» (arbre de
 conversa: l'Iri hi improvisa amb el que sap de les llavors, i en Holm ho anota).
 
-**Final de l'escena.** La Vet arriba a la sala de control. Tres panys: **T2, AQUA, FERRUM**, i una palanca
-vermella: **RESERVA**. Al saló, el Magnat puja a l'escenari.
+**Final de l'escena.** La Vet arriba a la sala de control. Tres panys: **T2, AQUA, FERRUM**, cadascun amb un
+indicador del gel que té el seu dipòsit (10, 55 i 16 milions de tones), i una palanca vermella: **RESERVA**. Al saló, el Magnat puja a l'escenari.
 
 > VERNE: Benvinguts a la Gran Subhasta de l'Aigua. Avui no venem aigua. Venem set. Que és el que no s'acaba mai.
 
@@ -686,40 +735,75 @@ vermella: **RESERVA**. Al saló, el Magnat puja a l'escenari.
 
 **Ara necessites les dues.**
 
-- **La Vet a la sala de control:** posar cada clau i girar-la (2 torns per vàlvula). **Ella tria l'ordre** dels tres
-  planetes (el que al primer guió era «què allibereu primer»). Al final, la reserva (1 torn): és obligatòria (vegeu
-  més avall).
-- **L'Iri al saló:** allargar la subhasta. Cada acció seva gasta un torn però **en cobreix més**: pujar una oferta i
-  fer-la pujar a la Kessel (+3), demanar de llegir el contracte del lot en veu alta (+3), vessar cava damunt del
-  martell (+2, un cop), preguntar pel preu de sortida dels peixos (+2, i el Magnat s'enfada una mica). (Les xifres
-  són el que cobreix l'acció, abans de restar-ne el torn que gasta: totes en guanyen almenys un. Obrir el menú de la
-  subhasta no gasta res.)
-- **Rellotge: els lots.** Queden 9. Cada torn es remata un lot. Al lot 0, el Magnat ven els deu anys d'aigua: ha
-  cobrat, i el preu ja no el pot arruïnar. (Si passa, es torna a començar el pas: «Lot nou... perdó, m'he descomptat.
-  Tornem a començar», diu en Holm, que vol revisar la paperassa.)
-- **El Magnat té pressa:** cada vàlvula que s'obre, el Magnat remata un lot de més, corrent, abans que el preu baixi
-  més. Per això la Vet sola no hi arriba: l'Iri ha de guanyar temps.
-- **Cadascú fa la seva part** (no depèn de res que hagi fet el jugador abans: tot és obligatori a la història):
-  - Al lot 6, el Magnat truca a la sala de control. Contesta la Lia: «Tot en ordre, senyor. Netejant.»
-  - Al lot 3, torna a trucar. En Tomàs, pel canal del Magnat: «Aquí el mecànic. Les germanes han plegat. Són a
-    Verdant, plorant. Hem menjat llenties.» El Magnat penja content.
-  - Quan s'obre la segona vàlvula, el Magnat envia seguretat a la sala de control. La Cantimplora fa una maniobra
-    «d'emergència» al moll de càrrega: SRA. PELL: «Seguretat és al moll, senyor. Hi ha una cisterna que diu que ha
-    perdut els frens.» CAPITANA (ràdio): «Perdoni. Soc vella i borni.»
+Dos trencaclosques que s'encaixen: la Vet tria **en quin ordre** obre els dipòsits, i l'Iri tria **quan** fa cada
+objecció. Tots dos es resolen amb el que el jugador ja sap, no amb números de menú.
+
+- **Rellotge: els lots.** El catàleg té **12 lots**, i surt a la pantalla del saló, sota el gràfic: **1 a 4**, el
+  subsòl de Terra-2 («deu anys, per comarques»); **5 a 8**, la cartera de deutors («préstecs lligats al preu de
+  l'aigua: dues-centes famílies, tres cooperatives i una nau cisterna»); **9 a 11**, el mar d'Aqua («el que en queda,
+  per metres»); **12**, els peixos d'Aqua. Cada torn es remata un lot. Quan es remata el 12, el Magnat ha venut els deu
+  anys d'aigua: ha cobrat, i el preu ja no el pot arruïnar. (Si passa, es torna a començar el pas: «Lot tretze...
+  perdó, m'he descomptat. Tornem a començar», diu en Holm, que vol revisar la paperassa.) En Holm anuncia cada bloc
+  quan hi arriba («Lots cinc a vuit: la cartera de deutors...»), i el menú de l'escenari diu quin lot hi ha al
+  faristol.
+- **La Vet a la sala de control:** posar la clau i girar-la (2 torns per vàlvula) i, al final, la reserva (1 torn,
+  obligatòria: vegeu més avall). **Ella tria l'ordre**, i ara compta.
+- **L'Iri al saló:** parar el martell amb **objeccions**, des de l'escenari. Obrir el menú de la subhasta no gasta
+  res; triar-hi una opció, un torn.
+
+**L'ordre de les vàlvules.** Cada dipòsit fa baixar el preu tants crèdits com milions de tones de gel té, i cada
+pany té un indicador que ho diu: **T2, 10** · **FERRUM, 16** · **AQUA, 55** (la Juana ja ho va dir a l'Escena 3: el
+d'Aqua és el gros, «s'hi va endur un mar»). Els tres sumen 81: de 112 a **31**, en qualsevol ordre. Però el Magnat
+mira la línia del gràfic, que té una ratlla a 60 i la vermella a 30: **mentre el preu és per sobre de 60, a cada
+vàlvula remata 2 lots més, corrent; per sota de 60, 4.** Qui ho entén obre els petits primer i deixa Aqua per al
+final: el preu aguanta lluny de la ratlla (102, 86) i cau de cop a 31, quan el Magnat ja només pot córrer una vegada.
+
+| Ordre | Preu | El Magnat corre | Total |
+|---|---|---|---|
+| T2 · Ferrum · Aqua, o Ferrum · T2 · Aqua | 102/96 → 86 → 31 | 2 + 2 + 4 | **8** (el bo) |
+| T2 · Aqua · Ferrum, o Ferrum · Aqua · T2 | 102/96 → 47/41 → 31 | 2 + 4 + 4 | 10 (just) |
+| Aqua primer | 57 → 47/41 → 31 | 4 + 4 + 4 | 12 (no s'hi arriba) |
+
+**Les objeccions de l'Iri.** Tres, i cadascuna només val **al seu lot**: amb el que l'Iri sap per força (el contracte
+de l'avi, Escena 1; el de la Capitana, Escenes 5–6; els peixos del lot 12, que són al catàleg i a l'aquari, Escena 7).
+Al despatx de Verdant ja ho havia vist: tres calaixos, DRETS, DEUTORS i PEIXOS. Una objecció al seu lot **para el
+martell tres torns** (el de l'objecció, inclòs): el que s'hauria de rematar, inclòs el que corre el Magnat, es menja
+primer la pausa, i mentrestant el lot no canvia. Fora del seu lot no para res, gasta el torn i es pot tornar a provar.
+
+| Objecció | Lot | Què passa | Fora del lot |
+|---|---|---|---|
+| «(Treure el contracte 7.788.) Tinc una objecció. Per escrit.» | 1–4, el subsòl de Terra-2 | L'Iri el llegeix: «L'aigua del subsòl d'aquesta finca pertany a Verne S.A. a perpetuïtat. A canvi: un tractor (model Brau 40, vermell).» HOLM: «Una contrapartida. S'ha de verificar que es va lliurar. ...I que arrenca.» IRI: «Des que tinc ús de raó, no.» En Holm truca a Terra-2 per saber si arrenca un tractor. | HOLM: «El subsòl de Terra-2 ja és venut, senyora. Les objeccions, al lot que toquen.» |
+| «Una pregunta per al Banc: accepten ànimes en garantia?» | 5–8, els deutors | IRI: «Entre aquests deutes hi ha el d'una nau cisterna. Interès lligat al preu de l'aigua. I una casella marcada: "Ànima (opcional)".» HOLM: «...El reglament no diu res d'ànimes. Lot en revisió.» Quatre-cents articles; els llegeix tots. | «Els deutors són més tard, senyora.» · «Els deutors ja són venuts, senyora. Amb ànima i tot.» |
+| «I els peixos del lot 12? Van amb el mar, o a part?» | 9–11, el mar d'Aqua | VERNE: «A part, senyora Pruna. El mar es ven buit.» HOLM: «Llavors s'ha de certificar que al mar no n'hi queda cap. I quants n'hi ha a l'aquari.» En Holm compta els peixos. Es mouen. Torna a començar. | VERNE: «Senyora Pruna, el lot dels peixos és més tard. No m'interrompi.» · «El mar ja és venut. Ara venem els peixos. Puja, o no puja?» |
+
+Les tres es fan en ordre natural: el 7.788 de seguida (Terra-2 és el primer que es ven), l'ànima quan arriben els
+deutors (després de la segona vàlvula, en el bon ordre) i els peixos quan arriba el mar (després de la tercera).
+
+- **Cadascú fa la seva part** (no depèn de res que hagi fet el jugador abans: tot és obligatori a la història). Ara
+  van lligades a les vàlvules, i no als lots, perquè passin sempre:
+  - **A la primera vàlvula**, el Magnat truca a la sala de control. Contesta la Lia, des del passadís: «Tot en
+    ordre, senyor. Netejant.»
+  - **A la segona**, el Magnat envia seguretat a la sala de control. La Cantimplora fa una maniobra «d'emergència» al
+    moll de càrrega: SRA. PELL: «Seguretat és al moll, senyor. Hi ha una cisterna que diu que ha perdut els frens.»
+    CAPITANA (ràdio): «Perdoni. Soc vella i bòrnia.»
+  - **A la tercera**, amb el preu a 31, el Magnat truca al seu home. En Tomàs, pel canal del Magnat: «Aquí el
+    mecànic. Les germanes han plegat. Són a Verdant, plorant. Hem menjat llenties.» El Magnat penja content, i per
+    això creu que és un error tècnic.
   - En Nil ha tapat la càmera de la sala de control amb flors de plàstic: «Feien pols. Les poso aquí.»
 
 **Cada vàlvula que s'obre** surt a la pantalla gran del saló: el dipòsit s'obre i, a sota, el planeta es tapa de
-núvols. El preu cau en directe. El Magnat diu una cosa diferent segons l'ordre:
+núvols. El preu cau en directe (el gràfic té un fotograma per a cada preu possible). El Magnat diu una cosa diferent
+segons l'ordre:
 
 | Ordre | Què diu el Magnat |
 |---|---|
 | T2 primer | «Terra-2. Pagesos. Que reguin. Encara em queden dos planetes.» |
-| Aqua primer | «Aqua? Cinquanta mil persones i ni un client solvent. Que plogui.» |
+| Aqua primer | «Aqua? Cinquanta mil persones i ni un client solvent. Que plogui.» (I tot seguit, per sota de 60, corre de debò.) |
 | Ferrum primer | «Ferrum. Els vaguistes. Ara tenen aigua i no tenen feina. Ja tornaran.» |
 | La segona | «Senyora Pell. Seguretat a la sala de control. *Ara*.» |
 | La tercera | *(la pantalla: 31 ₡ ▼)* «Holm. Holm, és un error tècnic. Demà torna a pujar.» |
 
-El preu: 112 → 84 → 52 → **31**. Per sobre del llindar. El Magnat respira.
+El preu, en el bon ordre: 112 → 102 → 86 → **31**. Per sobre del llindar. El Magnat respira.
 
 > HOLM: Trenta-un, senyor Verne. Per sobre de trenta. Per poc.
 > VERNE: I tinc la meva reserva. Garantia pròpia. *(somriu a la sala)* Senyors, el preu de l'aigua no baixa mai de
@@ -830,7 +914,9 @@ Tres bromes que tornen en moments tranquils i es tanquen al final (cap no toca e
 
 - **«Per si de cas».** Ja hi era per tot arreu (els pots del pare, el rètol del barril, la reserva del Magnat) i es
   tanca al final (el paraigua del pare, el barril buidat al pou o la nota d'en Bru). Ara també surt a les frases per
-  defecte de la Vet (agafar, donar): la manera de ser de la Vet, no una pista.
+  defecte de la Vet (agafar, donar): la manera de ser de la Vet, no una pista. I és la tornada de les quatre coses que
+  no es volen agafar (regles del món, 2): a la segona, cadascuna s'agafa «per si de cas», amb una frase pròpia (el
+  pare: «Això ho heu après de mi»; la Rosa: «Fa trenta anys que espera un cas»).
 - **«Hem menjat llenties».** Els informes d'en Tomàs al Magnat (els paperets de la carmanyola, els que li dicta l'Iri)
   sempre s'acaben amb el menú. Torna a la subhasta, pel canal del Magnat, i es tanca als crèdits: al quadern del
   seu primer vol, en Tomàs hi apunta l'hora, el rumb i el menú.
@@ -850,8 +936,10 @@ es resol un pas:
 
 | Pas | Camins | Què canvia |
 |---|---|---|
-| Que en Bru parli (Escena 4) | Donar l'últim barril al piquet · arreglar el condensador | L'escena del barril al final. |
-| L'ordre de les vàlvules (Escena 8) | Sis ordres | Què diu el Magnat a cada vàlvula. |
+| Que en Bru parli (Escena 4) | Donar l'últim barril al piquet · engegar el condensador amb la targeta de la Mosca, contractada per Verne | L'escena del barril al final. |
+| L'aval per a en Fidel (Escena 5) | El quart sac de llavors · el tractor de l'avi (després que en Fidel digui com valora: per l'última operació) | Si cal anar a Terra-2 pel sac; què en diu el Magnat a la trucada i el paperet de la carmanyola. |
+| El que no es vol agafar la primera vegada (Escenes 1–4) | Agafar-ho a la segona, «per si de cas» · tornar-hi quan cal | Qui ho preveu s'estalvia el viatge i el trencaclosques de la tornada (el lot 9, el graner precintat, el favor de la Rosa); la protagonista ho diu en veu alta quan ho fa servir. |
+| L'ordre de les vàlvules (Escena 8) | Sis ordres: dos de bons (els petits primer, Aqua l'últim), dos de justos, i amb Aqua primer no s'hi arriba | Què diu el Magnat a la primera vàlvula, i quants lots corre (vegeu «Comptes de les sincronies»). |
 | Les preguntes de la Juana (Escena 3) | Lliures | La línia de la Juana als crèdits. |
 | En Tomàs (Escena 6) | Diverses maneres d'encarar-lo | Les línies, no el resultat. |
 
@@ -866,7 +954,12 @@ es resol un pas:
 - **La Mosca avisa:** si l'altra hi ha enviat alguna cosa, la pista diu qui la té.
 - **Mai no surt cap pista** d'un trencaclosques que encara no és obert o ja s'ha resolt.
 - **Les pistes saben on és cada cosa:** si el que cal és en un altre planeta (la sorra, el reg, el sac), la pista
-  diu primer on es va veure («Al fons d'Aqua hi havia sorra...») i després que cal tornar-hi amb la Cantimplora.
+  diu primer on es va veure («Al fons d'Aqua hi havia sorra...») i després que cal tornar-hi amb la Cantimplora. Quan
+  s'hi torna i el lloc ha canviat, el trencaclosques de la tornada té les seves pistes, a la veu de cadascuna (IRI:
+  «Què tinc: un cartell que diu que la platja és de Verne. Què diu exactament?»; VET: «Símptoma: graner tancat.
+  Causa: un cadenat de Verne que només reconeix la propietat.»).
+- **El que es pot agafar abans, per si de cas, no té pista** fins que cal (`cal_sorra`, `cal_reg`, `cal_aval`,
+  `cal_gala`): és un premi, no un pas.
 - Cada pas té alguna pista disponible (el test de partida ho comprova, com als altres jocs).
 
 ## Pistes del misteri: qui informa el Magnat
@@ -886,9 +979,12 @@ es resol un pas:
 | Sincronia | Rellotge | Camí mínim | Marge |
 |---|---|---|---|
 | **4 · La colada** | temperatura 10 (−1 per torn; atiar +2) | Vet: manxa (1) · metall (2) · Iri: motlle (3) · Vet: escòria (4) · Iri: gresol (5) · sorra (6) | 4 |
-| **8 · La subhasta** | 9 lots (−1 per torn; −1 més per cada vàlvula oberta) | Vet: 3 vàlvules × 2 (6) + reserva (7) + el Magnat corre (3) = 10 lots · l'Iri n'ha de guanyar com a mínim 1: una acció de +3 (11 lots disponibles) | 1 amb una acció de l'Iri · 3 amb les dues grans |
+| **8 · La subhasta** | 12 lots (−1 per torn; a cada vàlvula el Magnat en corre 2 si el preu queda per sobre de 60, o 4 si queda per sota); cada objecció de l'Iri al seu lot para el martell 3 torns | 10 torns: Iri 7.788 (lot 1) · Vet T2 (2), Ferrum (2) · Iri ànima (lot 7) · Vet Aqua (2) · Iri peixos (lot 11) · Vet reserva. Gasta 10 torns + 8 que corre el Magnat = 18, de 12 lots + 9 de pausa = 21 | **3** en el bon ordre amb les tres objeccions · 0–1 amb dues · 0 en un ordre just (T2 o Ferrum primer, Aqua al mig), i només amb les tres · amb Aqua primer no hi ha cap camí |
 
-A afinar quan es jugui. La Vet sola no hi arriba mai (10 > 9): la sincronia necessita les dues de debò.
+A afinar quan es jugui. A la subhasta, la Vet sola no hi arriba mai (7 torns + 8 que corre el Magnat, com a mínim,
+són 15 > 12): la sincronia necessita les dues de debò. Els comptes de la subhasta es van comprovar provant tots els
+ordres de les vàlvules amb totes les maneres de fer (i de malgastar) les objeccions; el test `arreglos.test.ts`
+comprova que amb Aqua primer no s'hi arriba ni amb les tres objeccions.
 
 ## Mapa de dependències
 
@@ -897,25 +993,29 @@ ACTE 1
   [calaix: oferta d'1 ₡] · [videotelèfon (pare) + bol TITUS → caixa forta] → escriptura + contracte 7.788
   [tornavís (graner) → Iri dona → Vet combina amb la punta] → bomba: «Dipòsit orbital T2»
   [freqüència de la Juana + permís del pare → llavors] → albarà (3 sacs; el 4t es queda al graner)
-  (es veuen i no s'agafen: el reg gota a gota del graner, la sorra fina del fons d'Aqua)
+  (es veuen i no s'agafen a la primera: el reg gota a gota i el 4t sac del graner, la sorra fina d'Aqua, el vestit
+   de la Rosa; a la segona, «per si de cas», sí: el reg, amb permís del pare; el vestit, amb el de la Rosa)
   [oli + clau anglesa d'en Tomàs → injector del tractor → Mosca] → injector → la Cantimplora vola
   [fusible + paper de plata (Vet) → grua (Iri)] → el fons · [boies en ordre] → la Juana
       → dipòsits, vàlvules d'emergència, claus a Ferrum, carta per a en Bru
 ACTE 2
-  [l'últim barril | condensador (corretja de la font + filtre de la cafetera)] → en Bru parla
+  [l'últim barril | condensador: lector de Verne → formulari de la font (cap persona no el passa)
+      → la Mosca, contractada → la seva targeta al lector] → en Bru parla
   [promesa (Iri)] → motlles + nota per a la Lia
-  [TORNAR A AQUA: sorra fina] → motlle preparat → [SINCRONIA DE LA COLADA] → tres claus (set dies)
-  [TORNAR A TERRA-2: reg del pare + 4t sac] →
+  [sorra fina: ja a bord | TORNAR A AQUA: lot 9 → les boies (el mar ha baixat) → la franja nova] → motlle preparat → [SINCRONIA DE LA COLADA] → tres claus (set dies)
+  [reg del pare (+ 4t sac): ja a bord | TORNAR A TERRA-2: cadenat de Verne → escriptura (o tornavís de cap de flor)] →
       [reg + agulla + galleda + degoteig de l'aire condicionat] → tomaquera → la llançadora d'en Nil
-      [sac de llavors → Fidel] → despatx → carta del Banc + invitació + contracte de la Capitana
+      [sac de llavors | escriptura (en Fidel diu com valora) → tractor del 7.788] → Fidel → despatx → carta del Banc + invitació + contracte de la Capitana
   [trucada] → [pistes + pernil per a en Diu → carmanyola] → en Tomàs, girat
   [contracte → Capitana] → la Cantimplora anirà al moll del palau
-  [invitació: «etiqueta rigorosa»] → [TORNAR A FERRUM: vestit de la Rosa (vist al bagul, Escena 4)]
+  [invitació: «etiqueta rigorosa»] → [vestit: ja a bord | TORNAR A FERRUM: la Rosa vol que baixi en Tomàs → en Tomàs]
       → [agulla + fil de pescar (Vet)] → l'Iri, de gala
 ACTE 3
   [nota d'en Bru → la Lia] → targeta de servei
   [l'Iri parla amb en Holm → safata de les copes → ascensor de servei] → claus a la Vet
-  [SINCRONIA DE LA SUBHASTA: 3 vàlvules en l'ordre que vulguis] → 31 ₡ (el Magnat té reserva)
+  [SINCRONIA DE LA SUBHASTA: 3 vàlvules, de petit a gran (indicadors dels panys, la Juana: Aqua és el gros)
+      + objeccions de l'Iri al seu lot (contracte 7.788 → Terra-2, contracte de la Capitana → deutors,
+      peixos de l'aquari → el mar d'Aqua)] → 31 ₡ (el Magnat té reserva)
       → [reserva] → piscines plenes → 29 ₡ → el Banc executa
   → FINAL
 ```
@@ -929,12 +1029,14 @@ ACTE 3
 | Comunicador | Com l'auricular de Suma Zero i el walkie de Ni un ou |
 | Mosca | Com `tub.ts` / `muntacarregues.ts`: `props.cap_a_la_mosca` (pes < 2, ni líquid ni viu); funciona si `inRoom` de les dues és al mateix planeta i no al palau |
 | Que no us vegin juntes (palau) | `logic/separades.ts` de Ni un ou |
-| Sincronies | `sincronia.ts`: `PASSOS.colada` (temperatura) i `PASSOS.subhasta` (lots; el Magnat corre a cada vàlvula; els controls dels lots 6 i 3 els contesten la Lia i en Tomàs, sols) |
-| Ordre de les vàlvules | `vars.valvules_obertes` i un flag per dipòsit; les línies del Magnat amb `if` |
+| Sincronies | `sincronia.ts`: `PASSOS.colada` (temperatura) i `PASSOS.subhasta` (`lots` que queden, `lot` al faristol; el que corre el Magnat a cada vàlvula és `cuita`, i les objeccions de l'Iri sumen `pausa`, que es gasta abans que els lots) |
+| Ordre de les vàlvules | `vars.valvules` i un flag per dipòsit; cada pany resta el seu gel de `preu_aigua`, i les línies (el Magnat, la Lia, seguretat, en Tomàs, quant corre) van amb `if` sobre `valvules` i `preu_aigua` |
 | Final | Un sol final a `endings.json`; l'escena del barril i la línia de la Juana, amb `if` |
 | Barril, promesa | `flags.barril_donat`, `flags.promesa_lia` |
 | L'Iri de gala | `outfit` de l'Iri: «Gala» (vestit de reina i corona d'engranatge), quan porta el vestit arreglat |
-| Tornar a un planeta | Els objectes que no s'agafen la primera vegada (`sorra`, `reg_pare`, `sac_llavors`, `vestit_reina`): `pickUp` amb `if` que només deixa agafar-los quan ja se sap per a què (p. ex. `{ "flag": "cal_sorra" }`) |
+| Tornar a un planeta | Els objectes que no s'agafen la primera vegada (`sorra`, `reg`, `sac_llavors`, `vestit`): el primer `pickUp` diu que no i posa un flag (`sorra_refusada`, `reg_refusat`, `sac4_refusat`, `vestit_refusat`); el segon, l'agafa (o, si no és seu, en posa un altre, `reg_volgut` o `vestit_volgut`, que obre l'opció al pare o a la Rosa). Els canvis de la tornada: `lot9` (en arribar a Ferrum) i `franja_vista`; `graner_obert` (el precinte, des de l'Escena 5); `rosa_vol_tomas` i `tomas_baixa` |
+| Contractar la Mosca | El diàleg `contractacio` (la pantalla de la font) i fer servir la Mosca amb la `font`: `mosca_contractada` i l'objecte `targeta_verne`, que engega el `condensador` |
+| El tractor d'en Fidel | `fidel_norma` (en Fidel ha dit com valora, en ensenyar-li l'escriptura) obre l'opció `tractor`; `fidel_tractor` canvia la frase de la trucada i el paperet de la carmanyola |
 | Pistes | `hints.json`, tres nivells, amb `doneWhen` |
 | Missions | `acte1`, `acte2`, `acte3` (per a les estadístiques). Sense secundàries |
 
@@ -1002,7 +1104,8 @@ Les marcades amb «-> fixat» les ha confirmat l'usuari; la resta són provision
 9. **Sincronia per torns**, sense temps real, com a Suma Zero i Ni un ou.
 10. **Només català.**
 11. **Es pot tornar lliurement a qualsevol planeta obert**, i alguns trencaclosques ho demanen: la sorra d'Aqua, el
-    reg i el sac de llavors de Terra-2, i el vestit de la Rosa de Ferrum (regles del món, 2). -> fixat
+    reg i el sac de llavors de Terra-2, i el vestit de la Rosa de Ferrum (regles del món, 2). -> fixat. Qui ho preveu
+    ho agafa a la segona, per si de cas; qui hi torna, troba el lloc canviat (annex D, 15–16).
 14. **El preu, amb números i amb dibuix:** fletxa, barra i, a la subhasta, la ratlla del llindar (regles del món,
     1). -> fixat
 15. **Dues mides de càmera:** sales de prop, amb els personatges com als altres jocs, i sales de lluny (exteriors i
@@ -1071,7 +1174,7 @@ Vet, el gat Diu que no participa en l'economia i el peix del final.
 
 ## Annex D: canvis en fer el joc (novembre de 2026)
 
-El joc ja es juga sencer (`npm test` el fa de cap a peus pels dos camins de l'Escena 4, amb una pista a cada pas).
+El joc ja es juga sencer (`npm test` el fa de cap a peus per tots els camins: barril o condensador, sac o tractor, i la partida «previsora» que no torna enrere; amb una pista a cada pas).
 En construir-lo, el guió ha canviat en això:
 
 | # | Què | Canvi |
@@ -1083,9 +1186,14 @@ En construir-lo, el guió ha canviat en això:
 | 5 | Qui envia a la residència | En Bru, en acabar la colada: «El que el Magnat no guarda al palau, ho guarda a la residència. Papers.» |
 | 6 | La colada | El forn comença a 8 i cada acció el refreda un grau; la manxa el fa pujar. Si l'escòria va al motlle, surten bombolles i es torna a començar. El motlle es prepara amb la sorra abans de la sincronia, i la mateixa sorra el tapa al final. |
 | 7 | Les sincronies comencen soles | En entrar a la sala, quan totes dues són al seu lloc (no després d'una acció). |
-| 8 | La subhasta | Comença quan la Vet és a la sala de control amb les claus i l'Iri al saló. Queden 9 lots; a cada vàlvula el Magnat en remata un de més. L'Iri allarga la subhasta des de l'escenari o parlant amb en Holm, la Kessel o el Magnat. |
+| 8 | La subhasta | Comença quan la Vet és a la sala de control amb les claus i l'Iri al saló. (Refeta: vegeu el 14.) |
 | 9 | La safata | Per passar coses de l'Iri a la Vet al palau, primer l'Iri ha de parlar amb en Holm (que deixi de mirar-la). Hi cap una cosa cada vegada. |
 | 10 | El vestit de gala | Es demana a la Rosa, al piquet (no cal en Tomàs). La Vet l'estreny amb l'agulla, i ha d'arribar a l'Iri (en mà o amb la Mosca). |
 | 11 | El final al palau | Una cinemàtica pròpia (`final_palau`): la galeria amb totes les piscines plenes. |
 | 12 | El comunicador | Diu què toca fer ara; és el mateix que els paperets del tauler de la cuina de la nau. |
 | 13 | Forats de coherència | El Magnat no reconeix l'Iri al palau: a la trucada no les mira («Mirar la gent és feina del servei»), i a la galeria només mira el vestit. El final tanca el pou (el contracte 7.788 és del Banc, però la Vet ha tancat la bomba amb cargols de cap de flor) i el suplement de la residència (el pare torna a casa). La pluja: les vàlvules deixen anar el gel a trossets, perquè es fongui abans de tocar a terra (era una pregunta oberta). En Nil: el Magnat fa les festes en dijous. La sala de control, sota la piscina: «ho vol tot sota els peus». |
+| 14 | La subhasta, refeta (novembre de 2026) | No hi havia cap decisió: l'ordre de les vàlvules només canviava la frase del Magnat, i l'Iri guanyava temps amb un menú de +3/+3/+2/+2 (aritmètica). Ara **l'ordre compta**: cada dipòsit fa baixar el preu segons el gel que té (T2 10, Ferrum 16, Aqua 55: ho diuen els indicadors dels panys i la Juana), i el Magnat corre 2 lots si el preu queda per sobre de 60 i 4 si queda per sota; amb Aqua l'últim n'hi ha prou, amb Aqua primer no s'hi arriba. I l'Iri **para el martell amb el que sap**: el contracte 7.788 quan es ven el subsòl de Terra-2, l'ànima de la Capitana quan es venen els deutors, i els peixos del lot 12 quan es ven el mar d'Aqua (cada una, 3 torns; fora del seu lot no fa res). El catàleg de 12 lots és a la pantalla. La Lia, seguretat i en Tomàs van lligats a la primera, la segona i la tercera vàlvula (abans, als lots 6 i 3, i amb marge no sempre hi arribaven). El gràfic té un fotograma per a cada preu possible. Fora la Kessel pujant ofertes i el cava damunt del martell. |
+| 15 | Tornar-hi era un viatge buit | Les quatre coses que no es volen agafar (la sorra, el reg, el quart sac, el vestit) **s'agafen a la segona, «per si de cas»**, cadascuna amb una frase d'acord amb per què no es volia: la sorra i el sac, directament («No va dir on»); el reg, demanant-lo al pare («Això ho heu après de mi»); el vestit, demanant-lo a la Rosa («Fa trenta anys que espera un cas»). Si ja el porten, el trencaclosques de després el fa servir i ho diuen en veu alta, i les pistes no en parlen fins que cal. |
+| 16 | Quan s'hi torna, el lloc és igual | **Cada tornada té un trencaclosques petit** causat per la història: a Aqua, la platja és el lot 9 de Verne «fins a la línia de l'aigua de dimarts», i el mar ha baixat (les boies); a Terra-2, Verne ha precintat el graner perquè no han respost a l'oferta, i el cadenat obre a «la propietat» (l'escriptura); a Ferrum, la Rosa vol que en Tomàs, que fa una setmana que no baixa la rampa, vingui ell a buscar el vestit. Tres pistes a cada pas. Les estaques, el cadenat i la pantalla de la font encara no són dibuixats: ara són text. |
+| 17 | El condensador era un encàrrec (corretja de la font + filtre de la cafetera) | Ara és la lògica de Verne contra Verne: el condensador és sencer, però Verne hi ha posat un lector de «treballadors actius»; la pantalla de la font contracta, però cap persona no passa el formulari (sense vagues, vint-i-quatre hores, sense beure). **Contracten la Mosca**, i la seva targeta engega el condensador. Fora la corretja, el filtre i la cafetera com a peces. |
+| 18 | En Fidel només tenia una sortida (el sac) | **Segon camí: el tractor de l'avi.** En Fidel valora per l'última operació registrada (la granja, un crèdit: l'oferta de Verne); el contracte 7.788 diu que Verne va pagar el tractor amb l'aigua d'una finca a perpetuïtat. «Els actius no arrenquen. Valen.» |

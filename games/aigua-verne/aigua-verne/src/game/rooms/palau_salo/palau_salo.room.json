@@ -376,10 +376,10 @@
       "clickable": false
     },
     {
-      "id": "grafic_84",
-      "tag": "grafic_84",
+      "id": "grafic_102",
+      "tag": "grafic_102",
       "animations": {
-        "grafic_84": {}
+        "grafic_102": {}
       },
       "zIndex": 4,
       "visible": false,
@@ -387,10 +387,54 @@
       "clickable": false
     },
     {
-      "id": "grafic_52",
-      "tag": "grafic_52",
+      "id": "grafic_96",
+      "tag": "grafic_96",
       "animations": {
-        "grafic_52": {}
+        "grafic_96": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_86",
+      "tag": "grafic_86",
+      "animations": {
+        "grafic_86": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_57",
+      "tag": "grafic_57",
+      "animations": {
+        "grafic_57": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_47",
+      "tag": "grafic_47",
+      "animations": {
+        "grafic_47": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_41",
+      "tag": "grafic_41",
+      "animations": {
+        "grafic_41": {}
       },
       "zIndex": 4,
       "visible": false,

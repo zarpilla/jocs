@@ -54,6 +54,18 @@
         {
           "verb": "pickUp",
           "if": {
+            "flag": "vestit_agafat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_sindicat.bagul.ja"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
             "all": [
               {
                 "flag": "rosa_permis"
@@ -84,6 +96,26 @@
           "if": {
             "all": [
               {
+                "flag": "rosa_vol_tomas"
+              },
+              {
+                "flag": "vestit_agafat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_sindicat.bagul.tomas"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
                 "flag": "cal_gala"
               },
               {
@@ -102,12 +134,37 @@
         {
           "verb": "pickUp",
           "if": {
-            "protagonist": "iri"
+            "flag": "vestit_volgut"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_sindicat.bagul.volgut"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "vestit_refusat",
+                "is": false
+              }
+            ]
           },
           "lines": [
             {
               "who": "player",
               "text": "sala.ferrum_sindicat.bagul.6"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vestit_refusat"
             }
           ]
         },
@@ -117,6 +174,50 @@
             {
               "who": "player",
               "text": "sala.ferrum_sindicat.bagul.7"
+            }
+          ],
+          "if": {
+            "flag": "vestit_refusat",
+            "is": false
+          },
+          "effects": [
+            {
+              "setFlag": "vestit_refusat"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_sindicat.bagul.cas.iri"
+            },
+            {
+              "who": "player",
+              "text": "sala.ferrum_sindicat.bagul.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vestit_volgut"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_sindicat.bagul.cas.vet"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vestit_volgut"
             }
           ]
         }

@@ -149,6 +149,28 @@
           "next": "paper"
         },
         {
+          "id": "mare",
+          "text": "dlg.tomas.opt.mare",
+          "if": {
+            "all": [
+              {
+                "flag": "rosa_vol_tomas"
+              },
+              {
+                "flag": "tomas_baixa",
+                "is": false
+              },
+              {
+                "var": "planeta",
+                "op": "==",
+                "value": "ferrum"
+              }
+            ]
+          },
+          "next": "mare",
+          "end": true
+        },
+        {
           "id": "adeu",
           "text": "dlg.tomas.opt.adeu",
           "end": true
@@ -328,7 +350,18 @@
         },
         {
           "who": "tomas",
-          "text": "dlg.tomas.per_que.4"
+          "text": "dlg.tomas.per_que.4",
+          "if": {
+            "flag": "tomas_baixa",
+            "is": false
+          }
+        },
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.per_que.baixa",
+          "if": {
+            "flag": "tomas_baixa"
+          }
         }
       ],
       "goto": "enxampat_menu"
@@ -465,6 +498,28 @@
           "next": "informe"
         },
         {
+          "id": "mare",
+          "text": "dlg.tomas.opt.mare",
+          "if": {
+            "all": [
+              {
+                "flag": "rosa_vol_tomas"
+              },
+              {
+                "flag": "tomas_baixa",
+                "is": false
+              },
+              {
+                "var": "planeta",
+                "op": "==",
+                "value": "ferrum"
+              }
+            ]
+          },
+          "next": "mare",
+          "end": true
+        },
+        {
           "id": "adeu2",
           "text": "dlg.tomas.opt.adeu2",
           "end": true
@@ -479,6 +534,48 @@
         }
       ],
       "goto": "girat"
+    },
+    "mare": {
+      "lines": [
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.mare.1"
+        },
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.mare.2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.tomas.mare.3"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.tomas.mare.4"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.tomas.mare.5"
+        },
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.mare.6"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "tomas_baixa"
+        },
+        {
+          "setFlag": "rosa_permis"
+        },
+        {
+          "setFlag": "vestit_agafat"
+        },
+        {
+          "giveItem": "vestit"
+        }
+      ]
     }
   }
 }

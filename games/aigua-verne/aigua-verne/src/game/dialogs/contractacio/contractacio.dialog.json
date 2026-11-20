@@ -1,0 +1,55 @@
+{
+  "id": "contractacio",
+  "displayName": "contractacio",
+  "options": [
+    {
+      "id": "inici__no",
+      "scriptName": "inici__no",
+      "text": "No.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__si",
+      "scriptName": "inici__si",
+      "text": "Sí.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__deixa",
+      "scriptName": "inici__deixa",
+      "text": "(Deixar-ho estar.)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "p2__h24",
+      "scriptName": "p2__h24",
+      "text": "Vint-i-quatre hores.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "p2__h9",
+      "scriptName": "p2__h9",
+      "text": "De nou a cinc.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "p3__aigua_si",
+      "scriptName": "p3__aigua_si",
+      "text": "Sí.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "p3__aigua_no",
+      "scriptName": "p3__aigua_no",
+      "text": "...No.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

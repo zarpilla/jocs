@@ -340,6 +340,13 @@
         },
         {
           "who": "bru",
+          "text": "dlg.bru.canalla.mosca",
+          "if": {
+            "flag": "mosca_contractada"
+          }
+        },
+        {
+          "who": "bru",
           "text": "dlg.bru.canalla.3"
         },
         {
@@ -467,6 +474,21 @@
           "if": {
             "flag": "canalla_beu",
             "is": false
+          }
+        },
+        {
+          "who": "bru",
+          "text": "dlg.bru.recorda.condensador",
+          "if": {
+            "all": [
+              {
+                "flag": "cal_targeta"
+              },
+              {
+                "flag": "canalla_beu",
+                "is": false
+              }
+            ]
           }
         },
         {

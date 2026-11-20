@@ -52,6 +52,13 @@
       "say": false
     },
     {
+      "id": "aval__tractor",
+      "scriptName": "aval__tractor",
+      "text": "I un tractor? Un Brau 40, vermell. Pagat amb un pou.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "aval__res",
       "scriptName": "aval__res",
       "text": "No porto res a sobre.",

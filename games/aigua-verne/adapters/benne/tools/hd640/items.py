@@ -839,11 +839,27 @@ def targeta(f):
         f.shade(48 + i, 29 - i * 3, 0.8)
 
 
+def targeta_verne(f):
+    """La targeta de treballador actiu de Verne (la de la Mosca): plàstic blau d'Aqua, la gota blanca de Verne, la
+    franja magnètica fosca i el número de treballadora."""
+    S = f.R(9, 6, 55, 30) - {(9, 6), (55, 6), (9, 30), (55, 30)}
+    f.drop(S, -1.6)
+    f.fill(S, AQUAB, lambda x, y: 3.6 - (x - 9) * 0.012 - (y - 6) * 0.03, rim=(0.6, -1.4))
+    f.rect(10, 9, 54, 11, RUB, 2.2)                                       # la franja magnètica
+    gota = f.P([(18, 13), (19, 16), (21, 19), (22, 22), (21, 25), (18, 27), (15, 25), (14, 22), (15, 19), (17, 16)])
+    f.fill(gota, CARD, 4.8, rim=(0.6, -1.0))                              # la gota de Verne
+    f.rect(28, 16, 50, 17, CARD, 4.4)                                     # «TREBALLADOR ACTIU»
+    f.rect(28, 21, 46, 21, CARD, 3.0)                                     # titular i número
+    f.rect(28, 25, 40, 25, CARD, 2.6)
+    for i in range(6):                                                    # la brillantor del plàstic
+        f.shade(48 + i, 29 - i * 3, 0.8)
+
+
 ICONS = {fn.__name__: fn for fn in (
     comunicador, mosca, punta_flor, tornavis, tornavis_flor, escriptura, contracte_7788, sacs_llavors, sac_llavors,
     albara, oli, clau_anglesa, injector, fusible, paper_plata, fusible_apanyat, carta_juana, sorra, motlle, claus,
     corretja, filtre, reg, agulla, reg_foradat, galleda, galleda_plena, carta_banc, invitacio, contracte_capitana,
-    pernil, vestit, vestit_arreglat, targeta, nota_lia,
+    pernil, vestit, vestit_arreglat, targeta, nota_lia, targeta_verne,
 )}
 
 

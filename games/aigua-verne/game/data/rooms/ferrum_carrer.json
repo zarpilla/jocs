@@ -105,42 +105,98 @@
             {
               "who": "player",
               "text": "sala.ferrum_carrer.font.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.font.pantalla",
+              "if": {
+                "flag": "mosca_contractada",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.font.pantalla.mosca",
+              "if": {
+                "flag": "mosca_contractada"
+              }
             }
           ]
         },
         {
           "verb": "use",
-          "item": "clau_anglesa",
+          "item": "mosca",
           "if": {
-            "all": [
-              {
-                "any": [
-                  {
-                    "flag": "cal_corretja"
-                  },
-                  {
-                    "flag": "bru_set"
-                  }
-                ]
-              },
-              {
-                "flag": "corretja_agafada",
-                "is": false
-              }
-            ]
+            "flag": "mosca_contractada",
+            "is": false
           },
           "lines": [
             {
               "who": "player",
-              "text": "sala.ferrum_carrer.font.2"
+              "text": "sala.ferrum_carrer.font.mosca.1",
+              "if": {
+                "protagonist": "vet"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.font.mosca.1.iri",
+              "if": {
+                "protagonist": "iri"
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.ferrum_carrer.font.mosca.2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.ferrum_carrer.font.mosca.3",
+              "sound": "bip"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.ferrum_carrer.font.mosca.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.font.mosca.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.font.mosca.6"
             }
           ],
           "effects": [
             {
-              "setFlag": "corretja_agafada"
+              "setFlag": "mosca_contractada"
             },
             {
-              "giveItem": "corretja"
+              "giveItem": "targeta_verne"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "mosca",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.font.mosca.ja"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "targeta_verne",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.ferrum_carrer.font.targeta"
+            },
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.font.targeta.2"
             }
           ]
         },
@@ -148,14 +204,10 @@
           "verb": [
             "use",
             "push",
-            "open"
+            "open",
+            "pull"
           ],
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.ferrum_carrer.font.3"
-            }
-          ]
+          "dialogue": "contractacio"
         }
       ]
     },
@@ -177,51 +229,6 @@
         {
           "verb": "look",
           "if": {
-            "any": [
-              {
-                "flag": "corretja_posada"
-              },
-              {
-                "flag": "filtre_posat"
-              }
-            ]
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.ferrum_carrer.condensador.12",
-              "if": {
-                "flag": "filtre_posat",
-                "is": false
-              }
-            },
-            {
-              "who": "player",
-              "text": "sala.ferrum_carrer.condensador.13",
-              "if": {
-                "flag": "corretja_posada",
-                "is": false
-              }
-            },
-            {
-              "who": "player",
-              "text": "sala.ferrum_carrer.condensador.14",
-              "if": {
-                "all": [
-                  {
-                    "flag": "corretja_posada"
-                  },
-                  {
-                    "flag": "filtre_posat"
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "verb": "look",
-          "if": {
             "protagonist": "vet"
           },
           "lines": [
@@ -231,15 +238,12 @@
             },
             {
               "who": "player",
-              "text": "sala.ferrum_carrer.condensador.3"
+              "text": "sala.ferrum_carrer.condensador.lector"
             }
           ],
           "effects": [
             {
-              "setFlag": "cal_corretja"
-            },
-            {
-              "setFlag": "cal_filtre"
+              "setFlag": "cal_targeta"
             }
           ]
         },
@@ -248,94 +252,39 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.ferrum_carrer.condensador.4"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "item": "corretja",
-          "if": {
-            "protagonist": "vet"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.ferrum_carrer.condensador.5"
+              "text": "sala.ferrum_carrer.condensador.lector.iri"
             }
           ],
           "effects": [
             {
-              "setFlag": "corretja_posada"
+              "setFlag": "cal_targeta"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "targeta_verne",
+          "if": {
+            "flag": "condensador_arreglat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.targeta.1"
             },
             {
-              "takeItem": "corretja"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "item": "filtre",
-          "if": {
-            "protagonist": "vet"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.ferrum_carrer.condensador.6"
-            }
-          ],
-          "effects": [
-            {
-              "setFlag": "filtre_posat"
-            },
-            {
-              "takeItem": "filtre"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "item": "*",
-          "if": {
-            "protagonist": "iri"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.ferrum_carrer.condensador.7"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "if": {
-            "all": [
-              {
-                "flag": "corretja_posada"
-              },
-              {
-                "flag": "filtre_posat"
-              },
-              {
-                "flag": "condensador_arreglat",
-                "is": false
-              }
-            ]
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.ferrum_carrer.condensador.8",
+              "who": "narrator",
+              "text": "sala.ferrum_carrer.condensador.targeta.2",
               "sound": "condensador"
             },
             {
               "who": "narrator",
-              "text": "sala.ferrum_carrer.condensador.9"
+              "text": "sala.ferrum_carrer.condensador.10"
             },
             {
-              "who": "narrator",
-              "text": "sala.ferrum_carrer.condensador.10"
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.targeta.3"
             }
           ],
           "effects": [
@@ -344,46 +293,23 @@
             },
             {
               "setFlag": "canalla_beu"
+            },
+            {
+              "takeItem": "targeta_verne"
             }
           ]
         },
         {
           "verb": "use",
+          "item": "*",
           "if": {
-            "all": [
-              {
-                "flag": "corretja_posada"
-              },
-              {
-                "flag": "condensador_arreglat",
-                "is": false
-              }
-            ]
+            "flag": "condensador_arreglat",
+            "is": false
           },
           "lines": [
             {
               "who": "player",
-              "text": "sala.ferrum_carrer.condensador.12"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "if": {
-            "all": [
-              {
-                "flag": "filtre_posat"
-              },
-              {
-                "flag": "condensador_arreglat",
-                "is": false
-              }
-            ]
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.ferrum_carrer.condensador.13"
+              "text": "sala.ferrum_carrer.condensador.altra"
             }
           ]
         },
@@ -396,7 +322,12 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.ferrum_carrer.condensador.11"
+              "text": "sala.ferrum_carrer.condensador.sense"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cal_targeta"
             }
           ]
         }
@@ -519,6 +450,9 @@
             {
               "setVar": "preu_aigua",
               "value": 64
+            },
+            {
+              "setFlag": "lot9"
             }
           ]
         },

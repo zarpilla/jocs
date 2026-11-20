@@ -184,6 +184,22 @@
           "next": "q1"
         },
         {
+          "id": "lot9",
+          "text": "dlg.juana.opt.lot9",
+          "if": {
+            "all": [
+              {
+                "flag": "lot9_vist"
+              },
+              {
+                "flag": "sorra_agafada",
+                "is": false
+              }
+            ]
+          },
+          "next": "lot9"
+        },
+        {
           "id": "recorda",
           "text": "dlg.juana.opt.recorda",
           "if": {
@@ -573,6 +589,19 @@
           "text": "dlg.juana.adeu.1"
         }
       ]
+    },
+    "lot9": {
+      "lines": [
+        {
+          "who": "juana",
+          "text": "dlg.juana.lot9.1"
+        },
+        {
+          "who": "juana",
+          "text": "dlg.juana.lot9.2"
+        }
+      ],
+      "goto": "menu"
     }
   }
 }

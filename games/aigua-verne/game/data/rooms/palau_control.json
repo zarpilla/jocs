@@ -166,262 +166,176 @@
             {
               "who": "narrator",
               "text": "sala.palau_control.pany_t2.8",
-              "sound": "valvula"
+              "sound": "valvula",
+              "effects": [
+                {
+                  "setFlag": "obert_t2"
+                },
+                {
+                  "addVar": "valvules",
+                  "amount": 1
+                },
+                {
+                  "addVar": "preu_aigua",
+                  "amount": -10
+                }
+              ]
             },
             {
               "who": "verne",
               "text": "sala.palau_control.pany_t2.9",
-              "effects": [
-                {
-                  "setVar": "preu_aigua",
-                  "value": 84
-                }
-              ],
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_aqua",
-                    "is": false
-                  },
-                  {
-                    "flag": "obert_ferrum",
-                    "is": false
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 1
               }
             },
             {
               "who": "narrator",
-              "text": "sala.palau_control.pany_t2.10",
+              "text": "sala.palau_control.valvula.preu",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_aqua",
-                    "is": false
-                  },
-                  {
-                    "flag": "obert_ferrum",
-                    "is": false
-                  }
-                ]
+                "var": "valvules",
+                "op": "<",
+                "value": 3
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_control.valvula.31",
+              "if": {
+                "var": "valvules",
+                "op": "==",
+                "value": 3
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_control.valvula.cuita2",
+              "effects": [
+                {
+                  "setVar": "cuita",
+                  "value": 2
+                }
+              ],
+              "if": {
+                "var": "preu_aigua",
+                "op": ">=",
+                "value": 60
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_control.valvula.cuita4",
+              "effects": [
+                {
+                  "setVar": "cuita",
+                  "value": 4
+                }
+              ],
+              "if": {
+                "var": "preu_aigua",
+                "op": "<",
+                "value": 60
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_control.valvula.trucada",
+              "if": {
+                "var": "valvules",
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "lia",
+              "text": "sala.palau_control.valvula.lia",
+              "if": {
+                "var": "valvules",
+                "op": "==",
+                "value": 1
               }
             },
             {
               "who": "verne",
-              "text": "sala.palau_control.pany_t2.11",
-              "effects": [
-                {
-                  "setVar": "preu_aigua",
-                  "value": 52
-                }
-              ],
+              "text": "sala.palau_control.valvula.seguretat",
               "if": {
-                "any": [
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_aqua"
-                      },
-                      {
-                        "flag": "obert_ferrum",
-                        "is": false
-                      }
-                    ]
-                  },
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_aqua",
-                        "is": false
-                      },
-                      {
-                        "flag": "obert_ferrum"
-                      }
-                    ]
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 2
               }
             },
             {
               "who": "pell",
-              "text": "sala.palau_control.pany_t2.12",
+              "text": "sala.palau_control.valvula.pell",
               "if": {
-                "any": [
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_aqua"
-                      },
-                      {
-                        "flag": "obert_ferrum",
-                        "is": false
-                      }
-                    ]
-                  },
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_aqua",
-                        "is": false
-                      },
-                      {
-                        "flag": "obert_ferrum"
-                      }
-                    ]
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 2
               }
             },
             {
               "who": "capitana",
-              "text": "sala.palau_control.pany_t2.13",
+              "text": "sala.palau_control.valvula.capitana",
               "if": {
-                "any": [
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_aqua"
-                      },
-                      {
-                        "flag": "obert_ferrum",
-                        "is": false
-                      }
-                    ]
-                  },
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_aqua",
-                        "is": false
-                      },
-                      {
-                        "flag": "obert_ferrum"
-                      }
-                    ]
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 2
               }
             },
             {
               "who": "narrator",
-              "text": "sala.palau_control.pany_t2.14",
+              "text": "sala.palau_control.valvula.tomas_truca",
               "if": {
-                "any": [
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_aqua"
-                      },
-                      {
-                        "flag": "obert_ferrum",
-                        "is": false
-                      }
-                    ]
-                  },
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_aqua",
-                        "is": false
-                      },
-                      {
-                        "flag": "obert_ferrum"
-                      }
-                    ]
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
+              }
+            },
+            {
+              "who": "tomas",
+              "text": "sala.palau_control.valvula.tomas",
+              "if": {
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
             },
             {
               "who": "narrator",
-              "text": "sala.palau_control.pany_t2.15",
-              "effects": [
-                {
-                  "setVar": "preu_aigua",
-                  "value": 31
-                }
-              ],
+              "text": "sala.palau_control.valvula.penja",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_aqua"
-                  },
-                  {
-                    "flag": "obert_ferrum"
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
             },
             {
               "who": "verne",
-              "text": "sala.palau_control.pany_t2.16",
+              "text": "sala.palau_control.valvula.error",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_aqua"
-                  },
-                  {
-                    "flag": "obert_ferrum"
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
             },
             {
               "who": "holm",
-              "text": "sala.palau_control.pany_t2.17",
+              "text": "sala.palau_control.valvula.holm",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_aqua"
-                  },
-                  {
-                    "flag": "obert_ferrum"
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
             },
             {
               "who": "verne",
-              "text": "sala.palau_control.pany_t2.18",
+              "text": "sala.palau_control.valvula.reserva",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_aqua"
-                  },
-                  {
-                    "flag": "obert_ferrum"
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
-            },
-            {
-              "who": "narrator",
-              "text": "sala.palau_control.pany_t2.19",
-              "if": {
-                "not": {
-                  "all": [
-                    {
-                      "flag": "obert_aqua"
-                    },
-                    {
-                      "flag": "obert_ferrum"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "effects": [
-            {
-              "setFlag": "obert_t2"
-            },
-            {
-              "addVar": "valvules",
-              "amount": 1
-            },
-            {
-              "addVar": "lots",
-              "amount": -1
             }
           ]
         },
@@ -585,262 +499,176 @@
             {
               "who": "narrator",
               "text": "sala.palau_control.pany_aqua.8",
-              "sound": "valvula"
+              "sound": "valvula",
+              "effects": [
+                {
+                  "setFlag": "obert_aqua"
+                },
+                {
+                  "addVar": "valvules",
+                  "amount": 1
+                },
+                {
+                  "addVar": "preu_aigua",
+                  "amount": -55
+                }
+              ]
             },
             {
               "who": "verne",
               "text": "sala.palau_control.pany_aqua.9",
-              "effects": [
-                {
-                  "setVar": "preu_aigua",
-                  "value": 84
-                }
-              ],
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_t2",
-                    "is": false
-                  },
-                  {
-                    "flag": "obert_ferrum",
-                    "is": false
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 1
               }
             },
             {
               "who": "narrator",
-              "text": "sala.palau_control.pany_aqua.10",
+              "text": "sala.palau_control.valvula.preu",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_t2",
-                    "is": false
-                  },
-                  {
-                    "flag": "obert_ferrum",
-                    "is": false
-                  }
-                ]
+                "var": "valvules",
+                "op": "<",
+                "value": 3
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_control.valvula.31",
+              "if": {
+                "var": "valvules",
+                "op": "==",
+                "value": 3
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_control.valvula.cuita2",
+              "effects": [
+                {
+                  "setVar": "cuita",
+                  "value": 2
+                }
+              ],
+              "if": {
+                "var": "preu_aigua",
+                "op": ">=",
+                "value": 60
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_control.valvula.cuita4",
+              "effects": [
+                {
+                  "setVar": "cuita",
+                  "value": 4
+                }
+              ],
+              "if": {
+                "var": "preu_aigua",
+                "op": "<",
+                "value": 60
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_control.valvula.trucada",
+              "if": {
+                "var": "valvules",
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "lia",
+              "text": "sala.palau_control.valvula.lia",
+              "if": {
+                "var": "valvules",
+                "op": "==",
+                "value": 1
               }
             },
             {
               "who": "verne",
-              "text": "sala.palau_control.pany_aqua.11",
-              "effects": [
-                {
-                  "setVar": "preu_aigua",
-                  "value": 52
-                }
-              ],
+              "text": "sala.palau_control.valvula.seguretat",
               "if": {
-                "any": [
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2"
-                      },
-                      {
-                        "flag": "obert_ferrum",
-                        "is": false
-                      }
-                    ]
-                  },
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2",
-                        "is": false
-                      },
-                      {
-                        "flag": "obert_ferrum"
-                      }
-                    ]
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 2
               }
             },
             {
               "who": "pell",
-              "text": "sala.palau_control.pany_aqua.12",
+              "text": "sala.palau_control.valvula.pell",
               "if": {
-                "any": [
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2"
-                      },
-                      {
-                        "flag": "obert_ferrum",
-                        "is": false
-                      }
-                    ]
-                  },
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2",
-                        "is": false
-                      },
-                      {
-                        "flag": "obert_ferrum"
-                      }
-                    ]
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 2
               }
             },
             {
               "who": "capitana",
-              "text": "sala.palau_control.pany_aqua.13",
+              "text": "sala.palau_control.valvula.capitana",
               "if": {
-                "any": [
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2"
-                      },
-                      {
-                        "flag": "obert_ferrum",
-                        "is": false
-                      }
-                    ]
-                  },
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2",
-                        "is": false
-                      },
-                      {
-                        "flag": "obert_ferrum"
-                      }
-                    ]
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 2
               }
             },
             {
               "who": "narrator",
-              "text": "sala.palau_control.pany_aqua.14",
+              "text": "sala.palau_control.valvula.tomas_truca",
               "if": {
-                "any": [
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2"
-                      },
-                      {
-                        "flag": "obert_ferrum",
-                        "is": false
-                      }
-                    ]
-                  },
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2",
-                        "is": false
-                      },
-                      {
-                        "flag": "obert_ferrum"
-                      }
-                    ]
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
+              }
+            },
+            {
+              "who": "tomas",
+              "text": "sala.palau_control.valvula.tomas",
+              "if": {
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
             },
             {
               "who": "narrator",
-              "text": "sala.palau_control.pany_aqua.15",
-              "effects": [
-                {
-                  "setVar": "preu_aigua",
-                  "value": 31
-                }
-              ],
+              "text": "sala.palau_control.valvula.penja",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_t2"
-                  },
-                  {
-                    "flag": "obert_ferrum"
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
             },
             {
               "who": "verne",
-              "text": "sala.palau_control.pany_aqua.16",
+              "text": "sala.palau_control.valvula.error",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_t2"
-                  },
-                  {
-                    "flag": "obert_ferrum"
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
             },
             {
               "who": "holm",
-              "text": "sala.palau_control.pany_aqua.17",
+              "text": "sala.palau_control.valvula.holm",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_t2"
-                  },
-                  {
-                    "flag": "obert_ferrum"
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
             },
             {
               "who": "verne",
-              "text": "sala.palau_control.pany_aqua.18",
+              "text": "sala.palau_control.valvula.reserva",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_t2"
-                  },
-                  {
-                    "flag": "obert_ferrum"
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
-            },
-            {
-              "who": "narrator",
-              "text": "sala.palau_control.pany_aqua.19",
-              "if": {
-                "not": {
-                  "all": [
-                    {
-                      "flag": "obert_t2"
-                    },
-                    {
-                      "flag": "obert_ferrum"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "effects": [
-            {
-              "setFlag": "obert_aqua"
-            },
-            {
-              "addVar": "valvules",
-              "amount": 1
-            },
-            {
-              "addVar": "lots",
-              "amount": -1
             }
           ]
         },
@@ -1004,262 +832,176 @@
             {
               "who": "narrator",
               "text": "sala.palau_control.pany_ferrum.8",
-              "sound": "valvula"
+              "sound": "valvula",
+              "effects": [
+                {
+                  "setFlag": "obert_ferrum"
+                },
+                {
+                  "addVar": "valvules",
+                  "amount": 1
+                },
+                {
+                  "addVar": "preu_aigua",
+                  "amount": -16
+                }
+              ]
             },
             {
               "who": "verne",
               "text": "sala.palau_control.pany_ferrum.9",
-              "effects": [
-                {
-                  "setVar": "preu_aigua",
-                  "value": 84
-                }
-              ],
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_t2",
-                    "is": false
-                  },
-                  {
-                    "flag": "obert_aqua",
-                    "is": false
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 1
               }
             },
             {
               "who": "narrator",
-              "text": "sala.palau_control.pany_ferrum.10",
+              "text": "sala.palau_control.valvula.preu",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_t2",
-                    "is": false
-                  },
-                  {
-                    "flag": "obert_aqua",
-                    "is": false
-                  }
-                ]
+                "var": "valvules",
+                "op": "<",
+                "value": 3
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_control.valvula.31",
+              "if": {
+                "var": "valvules",
+                "op": "==",
+                "value": 3
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_control.valvula.cuita2",
+              "effects": [
+                {
+                  "setVar": "cuita",
+                  "value": 2
+                }
+              ],
+              "if": {
+                "var": "preu_aigua",
+                "op": ">=",
+                "value": 60
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_control.valvula.cuita4",
+              "effects": [
+                {
+                  "setVar": "cuita",
+                  "value": 4
+                }
+              ],
+              "if": {
+                "var": "preu_aigua",
+                "op": "<",
+                "value": 60
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_control.valvula.trucada",
+              "if": {
+                "var": "valvules",
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "lia",
+              "text": "sala.palau_control.valvula.lia",
+              "if": {
+                "var": "valvules",
+                "op": "==",
+                "value": 1
               }
             },
             {
               "who": "verne",
-              "text": "sala.palau_control.pany_ferrum.11",
-              "effects": [
-                {
-                  "setVar": "preu_aigua",
-                  "value": 52
-                }
-              ],
+              "text": "sala.palau_control.valvula.seguretat",
               "if": {
-                "any": [
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2"
-                      },
-                      {
-                        "flag": "obert_aqua",
-                        "is": false
-                      }
-                    ]
-                  },
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2",
-                        "is": false
-                      },
-                      {
-                        "flag": "obert_aqua"
-                      }
-                    ]
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 2
               }
             },
             {
               "who": "pell",
-              "text": "sala.palau_control.pany_ferrum.12",
+              "text": "sala.palau_control.valvula.pell",
               "if": {
-                "any": [
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2"
-                      },
-                      {
-                        "flag": "obert_aqua",
-                        "is": false
-                      }
-                    ]
-                  },
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2",
-                        "is": false
-                      },
-                      {
-                        "flag": "obert_aqua"
-                      }
-                    ]
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 2
               }
             },
             {
               "who": "capitana",
-              "text": "sala.palau_control.pany_ferrum.13",
+              "text": "sala.palau_control.valvula.capitana",
               "if": {
-                "any": [
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2"
-                      },
-                      {
-                        "flag": "obert_aqua",
-                        "is": false
-                      }
-                    ]
-                  },
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2",
-                        "is": false
-                      },
-                      {
-                        "flag": "obert_aqua"
-                      }
-                    ]
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 2
               }
             },
             {
               "who": "narrator",
-              "text": "sala.palau_control.pany_ferrum.14",
+              "text": "sala.palau_control.valvula.tomas_truca",
               "if": {
-                "any": [
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2"
-                      },
-                      {
-                        "flag": "obert_aqua",
-                        "is": false
-                      }
-                    ]
-                  },
-                  {
-                    "all": [
-                      {
-                        "flag": "obert_t2",
-                        "is": false
-                      },
-                      {
-                        "flag": "obert_aqua"
-                      }
-                    ]
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
+              }
+            },
+            {
+              "who": "tomas",
+              "text": "sala.palau_control.valvula.tomas",
+              "if": {
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
             },
             {
               "who": "narrator",
-              "text": "sala.palau_control.pany_ferrum.15",
-              "effects": [
-                {
-                  "setVar": "preu_aigua",
-                  "value": 31
-                }
-              ],
+              "text": "sala.palau_control.valvula.penja",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_t2"
-                  },
-                  {
-                    "flag": "obert_aqua"
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
             },
             {
               "who": "verne",
-              "text": "sala.palau_control.pany_ferrum.16",
+              "text": "sala.palau_control.valvula.error",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_t2"
-                  },
-                  {
-                    "flag": "obert_aqua"
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
             },
             {
               "who": "holm",
-              "text": "sala.palau_control.pany_ferrum.17",
+              "text": "sala.palau_control.valvula.holm",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_t2"
-                  },
-                  {
-                    "flag": "obert_aqua"
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
             },
             {
               "who": "verne",
-              "text": "sala.palau_control.pany_ferrum.18",
+              "text": "sala.palau_control.valvula.reserva",
               "if": {
-                "all": [
-                  {
-                    "flag": "obert_t2"
-                  },
-                  {
-                    "flag": "obert_aqua"
-                  }
-                ]
+                "var": "valvules",
+                "op": "==",
+                "value": 3
               }
-            },
-            {
-              "who": "narrator",
-              "text": "sala.palau_control.pany_ferrum.19",
-              "if": {
-                "not": {
-                  "all": [
-                    {
-                      "flag": "obert_t2"
-                    },
-                    {
-                      "flag": "obert_aqua"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "effects": [
-            {
-              "setFlag": "obert_ferrum"
-            },
-            {
-              "addVar": "valvules",
-              "amount": 1
-            },
-            {
-              "addVar": "lots",
-              "amount": -1
             }
           ]
         },
@@ -1520,7 +1262,7 @@
         },
         {
           "setVar": "lots",
-          "value": 9
+          "value": 12
         }
       ]
     },
