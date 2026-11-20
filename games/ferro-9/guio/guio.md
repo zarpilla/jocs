@@ -31,6 +31,28 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
   l'alegria d'un anunci de iogurts.
 - **Cargol** i les seves dues versions: nou i pedant al passat, vell i mig boig al present.
 
+### Gags recurrents
+
+- **L'argot de la Vet** (quatre paraules, sempre amb el mateix sentit, que s'entenen pel context): *brutal-plus*
+  (molt bo), *fer òrbita* (enrotllar-se), *de rovell* (antic, passat de moda; el ferro-9 no s'oxida, però la
+  paraula ha quedat), *zero-g* (tranquil·la; *gens zero-g*, de cap manera) i *deure un filtre* (estar en deute:
+  a l'Anell de Baix, els filtres d'aire valen més que els diners). Surten a les notes (el muntatge de l'Acte 1,
+  el pany, la mida, la molla, la pressió, el «MASSA») i a les frases per defecte de la Vet. L'Iri no les entén i
+  en fa un glossari a l'última pàgina de la llibreta de torn, que es va omplint («Filtre: moneda?»; *zero-g*
+  l'entén amb el «MASSA»). A l'Acte 3, la Vet llegeix el glossari i li respon: «Fer òrbita: ?» Vol dir
+  enrotllar-se, I.
+- **Les coses de l'Iri, arqueologia**: per a la Vet, la clau anglesa, l'imant o una llibreta de paper són peces
+  de museu («Ni pantalla, ni bateria, ni garantia»).
+- **El museu ho entén tot malament.** A la Sala de la Memòria, els objectes corrents de l'època de l'Iri són
+  rituals: la clau anglesa té un «ús ritual desconegut», el cafè era un «elixir ritual» que la corporació
+  regalava, i el casc del fundador, sense ni una ratlla, demostra que treballava colze a colze amb els obrers.
+  Corregeix-ho el Conserge (el Cargol vell), pedant fins i tot sense memòria: «Ni una ratlla perquè no se'l va
+  posar mai.» L'Iri ho veu a la portada del fullet del mapa de fuga: «És una clau anglesa.» Al final de la
+  fugida, el cartell de la vitrina buida ja diu la veritat. Els cartells no diuen cap segle: l'època de l'Iri és
+  «l'era de les fàbriques».
+- **Les frases per defecte** tenen tres variants per verb i per protagonista, que van per torns
+  (`ui.defecte.<verb>.<qui>`, `.2`, `.3`): l'Iri, de la feina que ningú no li reconeix; la Vet, de la presó.
+
 ---
 
 ## Protagonistes

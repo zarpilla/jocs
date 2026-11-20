@@ -1264,3 +1264,26 @@ més fàcil és recordar, no resoldre.
 | 2 | El mapa de dependències deia «3 revisions de 4»; el joc en demana quatre. | El mapa diu les quatre, la Capitana inclosa. |
 | 3 | El portàtil desapareixia «després de la contrasenya», però en Bastida el llença al mar sense obrir-lo. | Desapareix després que l'Iri digui «He obert el portàtil»: les dades hi són, i no han de sortir del vaixell. |
 | 4 | Pregunta oberta: escena per al Ferran? | No. Decisió 12. |
+
+## Annex F: més humor, als moments de calma (novembre de 2026)
+
+L'humor era l'eix més fluix. S'afegeix només on el joc respira: res al tancament de la Juana, a la reunió ni als
+moments agredolços del final.
+
+- **Frases per defecte que roden.** Cada verb té tres frases per protagonista (`ui.defecte.<verb>.<iri|vet>`, `.2`,
+  `.3`), que el motor diu per torns. L'Iri parla com a maquinista («Si estiro i cedeix, ho hauré d'arreglar jo.»); la
+  Vet, com a metgessa («No s'obre. Jo només obro tiretes.»). Cap no apunta a cap solució.
+- **Les revisions (Escena 2).** Dues preguntes més per pacient, opcionals i sense efectes: l'apendicitis de la
+  Capitana que «va passar» perquè tenia un vaixell; el forn amb caràcter d'en Tomàs i el que la gent deixa al plat;
+  la «mitja galeta» de la Nadia (que menteix: ha repetit croissant) i el seu metge, que és un cercador; el Marcel i
+  el xip de les vacunes, i la seva al·lèrgia als gats (no esternuda gens). No canvien cap pista ni cap flag.
+- **El flam.** Llavor: la mentida rebutjada de l'Escena 5. En Tomàs avisa que el flam és per demà («ha de reposar una
+  nit. Com les persones»); a l'Escena 7, el walkie (que ara és per dir mentides) estrena el **codi flam** («tot va
+  bé»; «gelatina» vol dir «corre», i a bord no n'hi ha), i des d'aleshores s'hi contesta «Flam.»; la cambra freda:
+  «Al final, ningú no se l'ha empassat.» Pagament als crèdits: el flam es va servir l'endemà, sense cap mostra.
+- **Gags que tornen.** El gat sense polzes (l'Iri, mirant en Diu des de l'Escena 3: «l'únic de bord amb coartada per
+  a tot»; als crèdits, «Cap gat no va obrir cap vàlvula... No té polzes.»). El motor molt expressiu (Escenes 4–8, a la
+  sala de màquines: l'Iri ho aprova; la Vet, que li va fer de coartada, «Ni les gràcies»; als crèdits, «Amb la
+  col·laboració del motor de l'Arenga»). L'entrepà d'en Tomàs (a l'Escena 7, content, n'ha fet un altre per a la
+  Juana, «amb el seu nom»; el pagament ja era al bar).
+- Els tres avisos dels crèdits (el gat, el flam) preparen el de sempre: «Cap oceà va ser ferit... Els de debò, sí.»

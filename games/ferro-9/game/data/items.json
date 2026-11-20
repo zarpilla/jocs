@@ -21,6 +21,10 @@
           {
             "who": "player",
             "text": "obj.clau_anglesa.vet2"
+          },
+          {
+            "who": "player",
+            "text": "obj.clau_anglesa.vet3"
           }
         ]
       }
@@ -260,6 +264,17 @@
           {
             "who": "player",
             "text": "obj.llibreta_torn.vet2"
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.vet0"
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.vet_glossari",
+            "if": {
+              "flag": "iri_sap_pany"
+            }
           }
         ]
       },
@@ -287,6 +302,43 @@
             "text": "obj.llibreta_torn.iri2",
             "if": {
               "flag": "iri_sap_pany"
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.iri_glossari",
+            "if": {
+              "all": [
+                {
+                  "flag": "iri_sap_pany"
+                },
+                {
+                  "flag": "iri_sap_diapaso",
+                  "is": false
+                }
+              ]
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.iri_glossari_zerog",
+            "if": {
+              "all": [
+                {
+                  "flag": "iri_sap_diapaso"
+                },
+                {
+                  "flag": "iri_sap_massa",
+                  "is": false
+                }
+              ]
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.iri_glossari_ple",
+            "if": {
+              "flag": "iri_sap_massa"
             }
           },
           {
@@ -321,7 +373,21 @@
       "pes": 0.3,
       "material": "ferro9",
       "finestra": "iri"
-    }
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.imant_ferro9.vet"
+          }
+        ]
+      }
+    ]
   },
   "nota_iri": {
     "name": "obj.nota_iri.nom",
@@ -826,6 +892,10 @@
           {
             "who": "player",
             "text": "obj.nota_pany.iri2"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_pany.iri3"
           }
         ],
         "effects": [
@@ -913,6 +983,10 @@
           {
             "who": "player",
             "text": "obj.nota_mida.iri2"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_mida.iri_rovell"
           },
           {
             "who": "player",
@@ -1419,6 +1493,10 @@
           {
             "who": "player",
             "text": "obj.molla.iri"
+          },
+          {
+            "who": "player",
+            "text": "obj.molla.iri_zerog"
           }
         ],
         "effects": [
@@ -1632,6 +1710,10 @@
           {
             "who": "player",
             "text": "obj.nota_pressio.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_pressio.iri_filtres"
           }
         ],
         "effects": [
@@ -1672,6 +1754,10 @@
           {
             "who": "player",
             "text": "obj.nota_massa.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_massa.iri_zerog"
           },
           {
             "who": "player",
@@ -1987,6 +2073,10 @@
           "protagonist": "iri"
         },
         "lines": [
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.iri0"
+          },
           {
             "who": "narrator",
             "text": "obj.mapa_fuga.text"

@@ -618,10 +618,20 @@ export class Narrative {
   /**
    * Frase quan una interacció no està prevista. Busca, per ordre:
    * `ui.defecte.<verb>.<protagonista>`, `ui.defecte.<verb>`, `ui.defecte`.
+   *
+   * Si la clau té variants numerades (`<clau>.2`, `<clau>.3`...), les va dient per torns, perquè la mateixa
+   * frase no surti sempre igual. El torn de cada clau va amb la partida desada.
    */
   defaultLine(verb: Id): ResolvedLine {
     const who = this.world.activeProtagonist();
-    const key = [`ui.defecte.${verb}.${who}`, `ui.defecte.${verb}`, 'ui.defecte'].find((k) => this.i18n.has(k) || this.i18n.has(k, this.i18n.defaultLocale)) ?? 'ui.defecte';
+    const has = (k: string) => this.i18n.has(k) || this.i18n.has(k, this.i18n.defaultLocale);
+    const base = [`ui.defecte.${verb}.${who}`, `ui.defecte.${verb}`, 'ui.defecte'].find(has) ?? 'ui.defecte';
+    const variants = [base];
+    while (has(`${base}.${variants.length + 1}`)) variants.push(`${base}.${variants.length + 1}`);
+    const torn = `@defecte/${base}`;
+    const n = this._state.interactions[torn] ?? 0;
+    if (variants.length > 1) this._state.interactions[torn] = n + 1;
+    const key = variants[n % variants.length] ?? base;
     return { who: 'player', key, text: this.t(key) };
   }
 

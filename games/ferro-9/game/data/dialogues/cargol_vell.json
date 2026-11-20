@@ -63,6 +63,12 @@
           "next": "qui"
         },
         {
+          "id": "peces",
+          "text": "dlg.cargol_vell.opt.peces",
+          "once": true,
+          "next": "peces"
+        },
+        {
           "id": "adeu",
           "text": "dlg.cargol_vell.opt.adeu",
           "next": "adeu",
@@ -90,6 +96,19 @@
           "text": "dlg.cargol_vell.adeu"
         }
       ]
+    },
+    "peces": {
+      "lines": [
+        {
+          "who": "cargol_vell",
+          "text": "dlg.cargol_vell.peces1"
+        },
+        {
+          "who": "cargol_vell",
+          "text": "dlg.cargol_vell.peces2"
+        }
+      ],
+      "goto": "menu"
     }
   }
 }

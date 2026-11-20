@@ -17,6 +17,20 @@
       "say": false
     },
     {
+      "id": "revisio_menu__vacunes",
+      "scriptName": "revisio_menu__vacunes",
+      "text": "Vacunes al dia?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio_menu__alergies",
+      "scriptName": "revisio_menu__alergies",
+      "text": "Al·lèrgies?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "revisio_menu__fi",
       "scriptName": "revisio_menu__fi",
       "text": "Ja està. Pots marxar.",

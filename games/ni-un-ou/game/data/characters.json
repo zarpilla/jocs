@@ -109,6 +109,20 @@
       },
       {
         "verb": "look",
+        "if": {
+          "var": "escena",
+          "op": ">=",
+          "value": 3
+        },
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.diu.look_coartada"
+          }
+        ]
+      },
+      {
+        "verb": "look",
         "lines": [
           {
             "who": "iri",

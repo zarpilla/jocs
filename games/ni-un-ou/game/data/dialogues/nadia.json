@@ -126,6 +126,18 @@
           "next": "feina"
         },
         {
+          "id": "esmorzar",
+          "text": "dlg.nadia.opt.esmorzar",
+          "once": true,
+          "next": "esmorzar"
+        },
+        {
+          "id": "capcalera",
+          "text": "dlg.nadia.opt.capcalera",
+          "once": true,
+          "next": "capcalera"
+        },
+        {
           "id": "fi",
           "text": "dlg.nadia.opt.fi",
           "next": "fi"
@@ -505,6 +517,40 @@
           "text": "dlg.nadia.res.1"
         }
       ]
+    },
+    "esmorzar": {
+      "lines": [
+        {
+          "who": "nadia",
+          "text": "dlg.nadia.esmorzar.1"
+        },
+        {
+          "who": "nadia",
+          "text": "dlg.nadia.esmorzar.2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.nadia.esmorzar.3"
+        }
+      ],
+      "goto": "revisio_menu"
+    },
+    "capcalera": {
+      "lines": [
+        {
+          "who": "nadia",
+          "text": "dlg.nadia.capcalera.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.nadia.capcalera.2"
+        },
+        {
+          "who": "nadia",
+          "text": "dlg.nadia.capcalera.3"
+        }
+      ],
+      "goto": "revisio_menu"
     }
   }
 }

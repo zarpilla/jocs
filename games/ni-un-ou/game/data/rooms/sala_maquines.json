@@ -798,12 +798,64 @@
         {
           "verb": "look",
           "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "escena",
+                "op": ">=",
+                "value": 4
+              },
+              {
+                "var": "escena",
+                "op": "<=",
+                "value": 8
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.motor.5"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
             "protagonist": "iri"
           },
           "lines": [
             {
               "who": "player",
               "text": "sala.sala_maquines.motor.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": ">=",
+                "value": 4
+              },
+              {
+                "var": "escena",
+                "op": "<=",
+                "value": 8
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.motor.6"
             }
           ]
         },

@@ -325,6 +325,20 @@
           },
           {
             "verb": "look",
+            "if": {
+              "var": "escena",
+              "op": ">=",
+              "value": 3
+            },
+            "lines": [
+              {
+                "who": "iri",
+                "text": "pj.diu.look_coartada"
+              }
+            ]
+          },
+          {
+            "verb": "look",
             "lines": [
               {
                 "who": "iri",
@@ -3086,6 +3100,20 @@
                   {
                     "who": "player",
                     "text": "sala.cuina.cambra_freda.1"
+                  }
+                ]
+              },
+              {
+                "verb": "open",
+                "if": {
+                  "var": "escena",
+                  "op": ">=",
+                  "value": 7
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.cuina.cambra_freda.4"
                   }
                 ]
               },
@@ -10414,12 +10442,64 @@
               {
                 "verb": "look",
                 "if": {
+                  "all": [
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "var": "escena",
+                      "op": ">=",
+                      "value": 4
+                    },
+                    {
+                      "var": "escena",
+                      "op": "<=",
+                      "value": 8
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_maquines.motor.5"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
                   "protagonist": "iri"
                 },
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.sala_maquines.motor.2"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "var": "escena",
+                      "op": ">=",
+                      "value": 4
+                    },
+                    {
+                      "var": "escena",
+                      "op": "<=",
+                      "value": 8
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_maquines.motor.6"
                   }
                 ]
               },
@@ -15412,6 +15492,18 @@
           },
           {
             "who": "narrator",
+            "text": "final.credits.1"
+          },
+          {
+            "who": "narrator",
+            "text": "final.credits.2"
+          },
+          {
+            "who": "narrator",
+            "text": "final.credits.3"
+          },
+          {
+            "who": "narrator",
             "text": "final.57"
           },
           {
@@ -15882,6 +15974,18 @@
           {
             "who": "narrator",
             "text": "final.56"
+          },
+          {
+            "who": "narrator",
+            "text": "final.credits.1"
+          },
+          {
+            "who": "narrator",
+            "text": "final.credits.2"
+          },
+          {
+            "who": "narrator",
+            "text": "final.credits.3"
           },
           {
             "who": "narrator",
@@ -16368,6 +16472,18 @@
           {
             "who": "narrator",
             "text": "final.56"
+          },
+          {
+            "who": "narrator",
+            "text": "final.credits.1"
+          },
+          {
+            "who": "narrator",
+            "text": "final.credits.2"
+          },
+          {
+            "who": "narrator",
+            "text": "final.credits.3"
           },
           {
             "who": "narrator",
@@ -17448,6 +17564,18 @@
                 "next": "gasoil"
               },
               {
+                "id": "antecedents",
+                "text": "dlg.capitana.opt.antecedents",
+                "once": true,
+                "next": "antecedents"
+              },
+              {
+                "id": "dormir",
+                "text": "dlg.capitana.opt.dormir",
+                "once": true,
+                "next": "dormir"
+              },
+              {
                 "id": "fi",
                 "text": "dlg.capitana.opt.fi",
                 "next": "fi"
@@ -17714,6 +17842,52 @@
                 }
               }
             ]
+          },
+          "antecedents": {
+            "lines": [
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.antecedents.1"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.capitana.antecedents.2"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.antecedents.3"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.capitana.antecedents.4"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.antecedents.5"
+              }
+            ],
+            "goto": "revisio_menu"
+          },
+          "dormir": {
+            "lines": [
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.dormir.1"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.capitana.dormir.2"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.dormir.3"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.capitana.dormir.4"
+              }
+            ],
+            "goto": "revisio_menu"
           }
         }
       },
@@ -18569,6 +18743,18 @@
                 "next": "nit"
               },
               {
+                "id": "vacunes",
+                "text": "dlg.marcel.opt.vacunes",
+                "once": true,
+                "next": "vacunes"
+              },
+              {
+                "id": "alergies",
+                "text": "dlg.marcel.opt.alergies",
+                "once": true,
+                "next": "alergies"
+              },
+              {
                 "id": "fi",
                 "text": "dlg.marcel.opt.fi",
                 "next": "fi"
@@ -18842,6 +19028,36 @@
                 "text": "dlg.marcel.res.1"
               }
             ]
+          },
+          "vacunes": {
+            "lines": [
+              {
+                "who": "marcel",
+                "text": "dlg.marcel.vacunes.1"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.marcel.vacunes.2"
+              },
+              {
+                "who": "marcel",
+                "text": "dlg.marcel.vacunes.3"
+              }
+            ],
+            "goto": "revisio_menu"
+          },
+          "alergies": {
+            "lines": [
+              {
+                "who": "marcel",
+                "text": "dlg.marcel.alergies.1"
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.marcel.alergies.2"
+              }
+            ],
+            "goto": "revisio_menu"
           }
         }
       },
@@ -18970,6 +19186,18 @@
                 "text": "dlg.nadia.opt.feina",
                 "once": true,
                 "next": "feina"
+              },
+              {
+                "id": "esmorzar",
+                "text": "dlg.nadia.opt.esmorzar",
+                "once": true,
+                "next": "esmorzar"
+              },
+              {
+                "id": "capcalera",
+                "text": "dlg.nadia.opt.capcalera",
+                "once": true,
+                "next": "capcalera"
               },
               {
                 "id": "fi",
@@ -19351,6 +19579,40 @@
                 "text": "dlg.nadia.res.1"
               }
             ]
+          },
+          "esmorzar": {
+            "lines": [
+              {
+                "who": "nadia",
+                "text": "dlg.nadia.esmorzar.1"
+              },
+              {
+                "who": "nadia",
+                "text": "dlg.nadia.esmorzar.2"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.nadia.esmorzar.3"
+              }
+            ],
+            "goto": "revisio_menu"
+          },
+          "capcalera": {
+            "lines": [
+              {
+                "who": "nadia",
+                "text": "dlg.nadia.capcalera.1"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.nadia.capcalera.2"
+              },
+              {
+                "who": "nadia",
+                "text": "dlg.nadia.capcalera.3"
+              }
+            ],
+            "goto": "revisio_menu"
           }
         }
       },
@@ -20982,6 +21244,18 @@
                 "next": "nit"
               },
               {
+                "id": "cremades",
+                "text": "dlg.tomas.opt.cremades",
+                "once": true,
+                "next": "cremades"
+              },
+              {
+                "id": "menjar",
+                "text": "dlg.tomas.opt.menjar",
+                "once": true,
+                "next": "menjar"
+              },
+              {
                 "id": "fi",
                 "text": "dlg.tomas.opt.fi",
                 "next": "fi"
@@ -21126,6 +21400,10 @@
               {
                 "who": "tomas",
                 "text": "dlg.tomas.esc5.3"
+              },
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.esc5.4"
               }
             ]
           },
@@ -21150,16 +21428,60 @@
             "lines": [
               {
                 "who": "tomas",
+                "text": "dlg.tomas.esc7.3",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "tomas_content"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.esc7.4",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "flag": "tomas_content"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "tomas",
                 "text": "dlg.tomas.esc7.1",
                 "if": {
-                  "protagonist": "vet"
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "tomas_content",
+                      "is": false
+                    }
+                  ]
                 }
               },
               {
                 "who": "tomas",
                 "text": "dlg.tomas.esc7.2",
                 "if": {
-                  "protagonist": "iri"
+                  "all": [
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "flag": "tomas_content",
+                      "is": false
+                    }
+                  ]
                 }
               }
             ],
@@ -21324,6 +21646,44 @@
                 "text": "dlg.tomas.res.1"
               }
             ]
+          },
+          "cremades": {
+            "lines": [
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.cremades.1"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.tomas.cremades.2"
+              },
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.cremades.3"
+              }
+            ],
+            "goto": "revisio_menu"
+          },
+          "menjar": {
+            "lines": [
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.menjar.1"
+              },
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.menjar.2"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.tomas.menjar.3"
+              },
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.menjar.4"
+              }
+            ],
+            "goto": "revisio_menu"
           }
         }
       },
@@ -22168,6 +22528,26 @@
               "value": 5
             },
             "node": "esc5"
+          },
+          {
+            "if": {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 7
+                },
+                {
+                  "not": {
+                    "seen": {
+                      "dialogue": "walkie",
+                      "node": "codi"
+                    }
+                  }
+                }
+              ]
+            },
+            "node": "codi"
           },
           {
             "node": "res"
@@ -23274,7 +23654,95 @@
             "lines": [
               {
                 "who": "player",
-                "text": "dlg.walkie.res.1"
+                "text": "dlg.walkie.res.3",
+                "if": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 7
+                    },
+                    {
+                      "seen": {
+                        "dialogue": "walkie",
+                        "node": "codi"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "vet",
+                "text": "dlg.walkie.res.3",
+                "if": {
+                  "all": [
+                    {
+                      "all": [
+                        {
+                          "var": "escena",
+                          "op": "==",
+                          "value": 7
+                        },
+                        {
+                          "seen": {
+                            "dialogue": "walkie",
+                            "node": "codi"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "protagonist": "iri"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "iri",
+                "text": "dlg.walkie.res.3",
+                "if": {
+                  "all": [
+                    {
+                      "all": [
+                        {
+                          "var": "escena",
+                          "op": "==",
+                          "value": 7
+                        },
+                        {
+                          "seen": {
+                            "dialogue": "walkie",
+                            "node": "codi"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "protagonist": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.walkie.res.1",
+                "if": {
+                  "not": {
+                    "all": [
+                      {
+                        "var": "escena",
+                        "op": "==",
+                        "value": 7
+                      },
+                      {
+                        "seen": {
+                          "dialogue": "walkie",
+                          "node": "codi"
+                        }
+                      }
+                    ]
+                  }
+                }
               },
               {
                 "who": "player",
@@ -23284,6 +23752,38 @@
                   "op": ">=",
                   "value": 6
                 }
+              }
+            ]
+          },
+          "codi": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.walkie.codi.1"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.walkie.codi.2"
+              },
+              {
+                "who": "iri",
+                "text": "dlg.walkie.codi.3"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.walkie.codi.4"
+              },
+              {
+                "who": "iri",
+                "text": "dlg.walkie.codi.5"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.walkie.codi.6"
+              },
+              {
+                "who": "iri",
+                "text": "dlg.walkie.codi.7"
               }
             ]
           }
@@ -23417,6 +23917,17 @@
       "dlg.capitana.opt.nadia": "I la periodista?",
       "dlg.capitana.opt.valvula": "La vàlvula d'aquesta nit...",
       "dlg.capitana.opt.fi": "Ja està. Tensió perfecta.",
+      "dlg.capitana.opt.antecedents": "Antecedents? Operacions, malalties...",
+      "dlg.capitana.antecedents.1": "Una apendicitis, el 2004. A l'altura de les Fèroe.",
+      "dlg.capitana.antecedents.2": "Qui te la va operar?",
+      "dlg.capitana.antecedents.3": "Ningú. Quan vam arribar a port, ja m'havia passat.",
+      "dlg.capitana.antecedents.4": "Les apendicitis no passen.",
+      "dlg.capitana.antecedents.5": "Tenia un vaixell, doctora.",
+      "dlg.capitana.opt.dormir": "Quantes hores dorms?",
+      "dlg.capitana.dormir.1": "Les que calen.",
+      "dlg.capitana.dormir.2": "En números.",
+      "dlg.capitana.dormir.3": "Quatre. Tres, si baixa el baròmetre.",
+      "dlg.capitana.dormir.4": "Apunto «poques».",
       "dlg.capitana.revisio.1": "Cinc minuts, doctora. Tinc un vaixell.",
       "dlg.capitana.juana.1": "La Juana és al laboratori. Sempre hi és. És com una planta, però amb més ansietat.",
       "dlg.capitana.gasoil.1": "Aquest any, el gasoil el paga una donació. La Fundació Blau Net.",
@@ -23447,6 +23958,15 @@
       "dlg.tomas.opt.clau": "Alguna cosa més? Al·lèrgies, manies, secrets?",
       "dlg.tomas.opt.nit": "Has dormit, aquesta nit?",
       "dlg.tomas.opt.fi": "Ja està. Pots tornar al pa.",
+      "dlg.tomas.opt.cremades": "Algun ensurt de salut?",
+      "dlg.tomas.cremades.1": "Em vaig cremar amb el forn el 2011. I el 2013. I el 2019.",
+      "dlg.tomas.cremades.2": "Sempre el mateix forn?",
+      "dlg.tomas.cremades.3": "És un forn amb caràcter. Com jo.",
+      "dlg.tomas.opt.menjar": "I tu, què menges?",
+      "dlg.tomas.menjar.1": "El que deixeu al plat.",
+      "dlg.tomas.menjar.2": "Que últimament és molt.",
+      "dlg.tomas.menjar.3": "No és personal, Tomàs.",
+      "dlg.tomas.menjar.4": "És menjar, doctora. Tot és personal.",
       "dlg.tomas.revisio.1": "Revisió? Jo estic bé. Faig pa.",
       "dlg.tomas.juana.1": "Ahir li vaig portar un entrepà. No el va agafar.",
       "dlg.tomas.juana.2": "M'ha ofès una mica, la veritat.",
@@ -23468,6 +23988,8 @@
       "dlg.tomas.opt.passa7": "Tomàs, què et passa?",
       "dlg.tomas.esc7.1": "Doctora. Avui no estic per ningú.",
       "dlg.tomas.esc7.2": "Maquinista. Avui no estic per ningú.",
+      "dlg.tomas.esc7.3": "Doctora! Li he fet un altre entrepà a la Juana. Doble de truita. I amb el seu nom.",
+      "dlg.tomas.esc7.4": "Maquinista! Avui estic per tothom. Vols pa?",
       "dlg.tomas.clau7.1": "Jo tinc una clau que no sé què obre. Era del cuiner d'abans.",
       "dlg.tomas.clau7.2": "Però avui no estic per ningú. Algú m'ha robat un entrepà de truita.",
       "dlg.tomas.clau7.3": "Un entrepà fet amb amor, doctora.",
@@ -23481,6 +24003,14 @@
       "dlg.nadia.opt.mareig": "Com estàs?",
       "dlg.nadia.opt.feina": "Què fas a bord, exactament?",
       "dlg.nadia.opt.fi": "Ja està. Beu aigua.",
+      "dlg.nadia.opt.esmorzar": "Què has esmorzat?",
+      "dlg.nadia.esmorzar.1": "Res. Amb aquest mareig...",
+      "dlg.nadia.esmorzar.2": "Un te. I una galeta. Mitja.",
+      "dlg.nadia.esmorzar.3": "Apuntat. Mitja galeta.",
+      "dlg.nadia.opt.capcalera": "Tens metge de capçalera?",
+      "dlg.nadia.capcalera.1": "Soc freelance. Tinc un cercador.",
+      "dlg.nadia.capcalera.2": "I què et diu?",
+      "dlg.nadia.capcalera.3": "Que em moriré de tot. Per això ja no li pregunto.",
       "dlg.nadia.revisio.1": "Hola, doctora. Vaig una mica marejada, eh.",
       "dlg.nadia.juana.1": "La Juana està bé.",
       "dlg.nadia.juana.2": "Una pausa.",
@@ -23534,6 +24064,13 @@
       "dlg.marcel.opt.valvula": "Qui ha obert la vàlvula, aquesta nit?",
       "dlg.marcel.opt.nit": "Què feies a les tres de la matinada?",
       "dlg.marcel.opt.fi": "Ja està. Pots marxar.",
+      "dlg.marcel.opt.vacunes": "Vacunes al dia?",
+      "dlg.marcel.vacunes.1": "Totes. I cap xip.",
+      "dlg.marcel.vacunes.2": "Les vacunes no porten xip.",
+      "dlg.marcel.vacunes.3": "Això és el que diria el xip.",
+      "dlg.marcel.opt.alergies": "Al·lèrgies?",
+      "dlg.marcel.alergies.1": "Als gats. Molt. Si n'hi hagués cap a bord, ja ho sabríem tots.",
+      "dlg.marcel.alergies.2": "No esternuda gens.",
       "dlg.marcel.revisio.1": "No sé res de res.",
       "dlg.marcel.valvula.1": "Si voleu saber qui ha obert la vàlvula: el Tomàs. O el vent. O tu.",
       "dlg.marcel.nit.1": "Dormia. Com un tronc. Un tronc que no s'aixeca per res.",
@@ -23847,6 +24384,7 @@
       "dlg.capitana.esc8g.2": "Si tens alguna cosa més a dir, digues-la a tothom. Al menjador.",
       "dlg.juana.mostra.11": "Valmark ens ofereix l'escorta d'un guardacostes. Per la nostra seguretat.",
       "dlg.tomas.esc5.3": "I no toquis les postres, que són per demà.",
+      "dlg.tomas.esc5.4": "És un flam. Un flam ha de reposar una nit. Com les persones.",
       "dlg.tub.esc6.7": "Ja la tenim. Ara, a la infermeria.",
       "dlg.tub.esc7.5": "Ja està obert.",
       "dlg.quadern.llegir.26": "El Marcel va sentir cops a proa, aquesta tarda.",
@@ -23911,6 +24449,14 @@
       "dlg.walkie.esc5.3": "Ara, a esperar qui té gana. Des d'un lloc on no em vegin.",
       "dlg.walkie.esc5.4": "I si ara sona el walkie, em troben dins l'armari.",
       "dlg.walkie.res.2": "Pel tub de veu: hi ha boca al pont, a la sala de màquines, a la cuina i a la infermeria.",
+      "dlg.walkie.codi.1": "Vet. Codi flam. Repeteixo: codi flam.",
+      "dlg.walkie.codi.2": "No tenim cap codi flam.",
+      "dlg.walkie.codi.3": "Ara sí. Vol dir «tot va bé». Si algú escolta, que s'hi entretingui.",
+      "dlg.walkie.codi.4": "I «gelatina»?",
+      "dlg.walkie.codi.5": "Vol dir «corre».",
+      "dlg.walkie.codi.6": "A bord no hi ha gelatina.",
+      "dlg.walkie.codi.7": "Doncs no correrem.",
+      "dlg.walkie.res.3": "Flam.",
       "dlg.walkie.esc5_vet.3": "Però a la cuina, el muntacàrregues ha fet clec. Ha pujat alguna cosa.",
       "dlg.portatil.pilar.13": "Però la Juana ho va escriure a les tres i deu. I ara són les nou passades.",
       "dlg.portatil.pilar.14": "Sis hores a la sala de bombes? Ningú no s'hi està sis hores. Ni la Juana.",
@@ -24010,6 +24556,9 @@
       "final.54": "Deixa'l. Ja hem vist prou notícies.",
       "final.55": "Les dues es queden mirant la badia, sense dir res. El sol surt per darrere seu, per damunt de la ciutat, i encén primer el pal de l'Arenga i després l'aigua.",
       "final.56": "Una aventura gràfica feta amb males herbes · malaherbasoft.cat",
+      "final.credits.1": "Amb la col·laboració del motor de l'Arenga, molt expressiu.",
+      "final.credits.2": "Cap gat no va obrir cap vàlvula durant la producció d'aquest joc. No té polzes.",
+      "final.credits.3": "El flam de la cambra freda es va servir l'endemà, com estava previst. Sense cap mostra.",
       "final.57": "Cap oceà va ser ferit durant la producció d'aquest joc. Els de debò, sí.",
       "final.58": "Un missatge al mòbil de la Vet. És de la Juana.",
       "final.59": "«Tinc una altra mostra. Mostra 8. No és al mar.»",
@@ -24138,20 +24687,68 @@
       "ui.historial.buit": "Encara no ha parlat ningú.",
       "ui.defecte": "Això no funciona.",
       "ui.defecte.close": "No cal tancar-ho.",
+      "ui.defecte.close.iri": "No cal. Ja està com ha d'estar.",
+      "ui.defecte.close.iri.2": "Tancar per tancar, no. Després ningú no troba res.",
+      "ui.defecte.close.iri.3": "Està bé així. Ho diu el reglament, i l'experiència.",
+      "ui.defecte.close.vet": "No cal tancar-ho. Ni suturar-ho.",
+      "ui.defecte.close.vet.2": "Ja està tancat. Més que la gerència del meu hospital.",
+      "ui.defecte.close.vet.3": "No cal. Ho deixo en observació.",
       "ui.defecte.give": "No crec que ho vulgui.",
+      "ui.defecte.give.iri": "No ho vol. Jo tampoc no ho voldria.",
+      "ui.defecte.give.iri.2": "No ho necessita. Aquí ningú no necessita res fins que s'espatlla.",
+      "ui.defecte.give.iri.3": "No. Cada eina, a qui la sap fer servir.",
+      "ui.defecte.give.vet": "No crec que ho vulgui. Ni amb recepta.",
+      "ui.defecte.give.vet.2": "No. No receptem el que no cal.",
+      "ui.defecte.give.vet.3": "No ho vol. L'entenc: jo tampoc no ho voldria.",
       "ui.defecte.look": "Res d'especial.",
       "ui.defecte.look.iri": "Res que s'hagi d'arreglar.",
+      "ui.defecte.look.iri.2": "Funciona. No m'ho acabo de creure, però funciona.",
+      "ui.defecte.look.iri.3": "Res. Ni un cargol fluix. Quin descans.",
       "ui.defecte.look.vet": "Res. Ni símptomes.",
+      "ui.defecte.look.vet.2": "Res de nou. Pronòstic: avorrit.",
+      "ui.defecte.look.vet.3": "Ho miro com una radiografia. Tot normal. Crec.",
       "ui.defecte.open": "No s'obre.",
+      "ui.defecte.open.iri": "Això no s'obre. O no s'ha d'obrir.",
+      "ui.defecte.open.iri.2": "En un vaixell, el que no s'obre, millor no obrir-ho.",
+      "ui.defecte.open.iri.3": "Tancat. Com ha d'estar, a alta mar.",
+      "ui.defecte.open.vet": "No s'obre. Jo només obro tiretes.",
+      "ui.defecte.open.vet.2": "Tancat. Respecto la seva intimitat.",
+      "ui.defecte.open.vet.3": "No cedeix. No insisteixo: aquí tot té quaranta anys.",
       "ui.defecte.pickUp": "No ho necessito.",
       "ui.defecte.pickUp.iri": "Això no és meu. I no s'ha espatllat.",
+      "ui.defecte.pickUp.iri.2": "A bord, tot està trincat per algun motiu. Ho deixo.",
+      "ui.defecte.pickUp.iri.3": "Si ho agafo, algú ho buscarà a les quatre de la matinada.",
       "ui.defecte.pickUp.vet": "No m'ho emportaré. Ja tinc prou coses que no sé on posar.",
+      "ui.defecte.pickUp.vet.2": "Ni ho toco. Encara no sé quin costat és babord.",
+      "ui.defecte.pickUp.vet.3": "No. Si ho agafo i cau al mar, segur que ho pago jo.",
       "ui.defecte.pull": "No es mou.",
+      "ui.defecte.pull.iri": "No ve. I estirar a l'atzar, en un vaixell, acaba malament.",
+      "ui.defecte.pull.iri.2": "Ni un mil·límetre. Ben fixat. Així m'agrada.",
+      "ui.defecte.pull.iri.3": "Si estiro i cedeix, ho hauré d'arreglar jo.",
+      "ui.defecte.pull.vet": "No ve. I no penso fer-me una hèrnia per curiositat.",
+      "ui.defecte.pull.vet.2": "No cedeix. Ni amb tracció.",
+      "ui.defecte.pull.vet.3": "Estira i arronsa. Bé, només estira. I res.",
       "ui.defecte.push": "No es mou.",
+      "ui.defecte.push.iri": "No es mou. En un vaixell, el que es mou sol és el que preocupa.",
+      "ui.defecte.push.iri.2": "No cedeix. Ben trincat. Algú va fer bé la feina.",
+      "ui.defecte.push.iri.3": "Empènyer no és reparar. Ho sé de primera mà.",
+      "ui.defecte.push.vet": "No es mou. I jo no faig força: faig diagnòstics.",
+      "ui.defecte.push.vet.2": "Ni un mil·límetre. Rigidesa total.",
+      "ui.defecte.push.vet.3": "No es mou. Ho anoto com a bona notícia.",
       "ui.defecte.talkTo": "No crec que em contesti.",
       "ui.defecte.talkTo.iri": "Només parlo amb les màquines que ho necessiten.",
+      "ui.defecte.talkTo.iri.2": "No contesta. Les màquines, almenys, grinyolen.",
+      "ui.defecte.talkTo.iri.3": "Hola. ...Res. Ni un grinyol.",
+      "ui.defecte.talkTo.vet": "Com es troba? ...Pols estable. Conversa nul·la.",
+      "ui.defecte.talkTo.vet.2": "No respon a estímuls verbals. Com mitja tripulació.",
+      "ui.defecte.talkTo.vet.3": "Hola? ...D'acord. Ja tornaré en horari de visita.",
       "ui.defecte.use": "Això no funciona.",
+      "ui.defecte.use.iri": "No. Això no va així.",
+      "ui.defecte.use.iri.2": "No encaixa. I forçar-ho és com es trenquen les coses.",
+      "ui.defecte.use.iri.3": "Ni amb una clau anglesa. I ho he pensat, eh.",
       "ui.defecte.use.vet": "No sé ni què és. No ho tocaré.",
+      "ui.defecte.use.vet.2": "Contraindicat. No sé per què, però contraindicat.",
+      "ui.defecte.use.vet.3": "No. Primer, no fer mal. Tampoc als vaixells.",
       "ui.fi": "Fi",
       "ui.pista.cap": "Ara mateix no se m'acut res. Potser cal mirar al voltant.",
       "ui.pista.altra.iri": "Jo ara mateix no tinc res a fer. Li toca a l'Iri: canviem.",
@@ -24297,6 +24894,7 @@
       "pj.diu.nom": "Diu",
       "pj.diu.look_vet": "Un gat. En un vaixell. Jo no he vist res.",
       "pj.diu.look": "En Diu. Polissó, mossegador de cables i l'únic de bord que no té por de la Capitana.",
+      "pj.diu.look_coartada": "En Diu. L'únic de bord amb coartada per a tot: no té polzes.",
       "pj.diu.parla": "Diu. Psst. Diu.",
       "pj.diu.miol": "Mrrau.",
       "pj.diu.agafa": "Ara no. Ja baixarà quan tingui gana. Sempre té gana.",
@@ -24634,6 +25232,8 @@
       "sala.sala_maquines.motor.2": "El motor principal. Ronca. Al mar no es veu, però se sent.",
       "sala.sala_maquines.motor.3": "Un motor. Gran. Ronca com el meu pare.",
       "sala.sala_maquines.motor.4": "No t'espatlles. Et queixes. Ja ho sé.",
+      "sala.sala_maquines.motor.5": "El motor principal. «Molt expressiu», diu la doctora. Tres campanyes escoltant-lo, i no ho havia sabut dir.",
+      "sala.sala_maquines.motor.6": "El motor. L'altre dia li vaig fer de coartada. Ni les gràcies.",
       "sala.sala_maquines.motor.nom": "motor principal",
       "sala.sala_maquines.boca.1": "La boca del tub de veu. De llautó, de 1984. Ningú no hi parla des que van posar els walkies.",
       "sala.sala_maquines.boca.2": "La boca del tub de veu: el pont, la cuina i la infermeria.",
@@ -24816,6 +25416,7 @@
       "sala.cuina.cambra_freda.1": "La cambra freda. Llet, ous, i el que queda de les postres.",
       "sala.cuina.cambra_freda.2": "Fa fred. Aquí no hi ha cap mostra. Només un flam trist.",
       "sala.cuina.cambra_freda.3": "Fa fred, i fa olor de peix. Normal.",
+      "sala.cuina.cambra_freda.4": "El flam continua aquí, sencer. Al final, ningú no se l'ha empassat.",
       "sala.cuina.cambra_freda.nom": "cambra freda",
       "sala.cuina.armari.1": "La Vet s'amaga dins l'armari de les olles i mira per l'escletxa.",
       "sala.cuina.armari.2": "Passa un minut. En passen tres.",

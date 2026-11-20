@@ -143,6 +143,18 @@
           "next": "gasoil"
         },
         {
+          "id": "antecedents",
+          "text": "dlg.capitana.opt.antecedents",
+          "once": true,
+          "next": "antecedents"
+        },
+        {
+          "id": "dormir",
+          "text": "dlg.capitana.opt.dormir",
+          "once": true,
+          "next": "dormir"
+        },
+        {
           "id": "fi",
           "text": "dlg.capitana.opt.fi",
           "next": "fi"
@@ -409,6 +421,52 @@
           }
         }
       ]
+    },
+    "antecedents": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.antecedents.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.capitana.antecedents.2"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.antecedents.3"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.capitana.antecedents.4"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.antecedents.5"
+        }
+      ],
+      "goto": "revisio_menu"
+    },
+    "dormir": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.dormir.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.capitana.dormir.2"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.dormir.3"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.capitana.dormir.4"
+        }
+      ],
+      "goto": "revisio_menu"
     }
   }
 }

@@ -22,6 +22,14 @@ options.revisio_menu__gasoil.onChoose(() => {
   chooseNarrativeOption('capitana', dialog, 'revisio_menu', 'gasoil')
 })
 
+options.revisio_menu__antecedents.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'revisio_menu', 'antecedents')
+})
+
+options.revisio_menu__dormir.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'revisio_menu', 'dormir')
+})
+
 options.revisio_menu__fi.onChoose(() => {
   chooseNarrativeOption('capitana', dialog, 'revisio_menu', 'fi')
 })

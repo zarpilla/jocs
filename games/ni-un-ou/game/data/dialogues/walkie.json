@@ -223,6 +223,26 @@
       "node": "esc5"
     },
     {
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 7
+          },
+          {
+            "not": {
+              "seen": {
+                "dialogue": "walkie",
+                "node": "codi"
+              }
+            }
+          }
+        ]
+      },
+      "node": "codi"
+    },
+    {
       "node": "res"
     }
   ],
@@ -1327,7 +1347,95 @@
       "lines": [
         {
           "who": "player",
-          "text": "dlg.walkie.res.1"
+          "text": "dlg.walkie.res.3",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 7
+              },
+              {
+                "seen": {
+                  "dialogue": "walkie",
+                  "node": "codi"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.res.3",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 7
+                  },
+                  {
+                    "seen": {
+                      "dialogue": "walkie",
+                      "node": "codi"
+                    }
+                  }
+                ]
+              },
+              {
+                "protagonist": "iri"
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.res.3",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 7
+                  },
+                  {
+                    "seen": {
+                      "dialogue": "walkie",
+                      "node": "codi"
+                    }
+                  }
+                ]
+              },
+              {
+                "protagonist": "vet"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.walkie.res.1",
+          "if": {
+            "not": {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 7
+                },
+                {
+                  "seen": {
+                    "dialogue": "walkie",
+                    "node": "codi"
+                  }
+                }
+              ]
+            }
+          }
         },
         {
           "who": "player",
@@ -1337,6 +1445,38 @@
             "op": ">=",
             "value": 6
           }
+        }
+      ]
+    },
+    "codi": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.walkie.codi.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.codi.2"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.codi.3"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.codi.4"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.codi.5"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.codi.6"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.codi.7"
         }
       ]
     }

@@ -59,6 +59,16 @@ describe('partida nova i sales', () => {
     expect(p.do('look', 'llum')[0]!.key).toBe('ui.defecte.look.bo');
   });
 
+  it('la frase per defecte va per torns entre les variants numerades', () => {
+    const world = new MemoryWorld();
+    const ca = { ...locales.ca!, 'ui.defecte.2': 'dos', 'ui.defecte.3': 'tres' };
+    const n = new Narrative({ content, locales: { ...locales, ca }, world });
+    const p = new HeadlessPlayer(n, world);
+    p.newGame();
+    const tria = () => p.do('push', 'barca')[0]!.key;
+    expect([tria(), tria(), tria(), tria()]).toEqual(['ui.defecte', 'ui.defecte.2', 'ui.defecte.3', 'ui.defecte']);
+  });
+
   it('interaccions de personatge valen a qualsevol sala; combinar objectes funciona en tots dos sentits', () => {
     const { p, n, world } = setup();
     expect(keys(p.do('look', 'pescador'))).toEqual(['pescador.look']);

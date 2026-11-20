@@ -10,6 +10,13 @@
       "say": false
     },
     {
+      "id": "menu__peces",
+      "scriptName": "menu__peces",
+      "text": "Què són totes aquestes coses de les vitrines?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__adeu",
       "scriptName": "menu__adeu",
       "text": "Adéu.",

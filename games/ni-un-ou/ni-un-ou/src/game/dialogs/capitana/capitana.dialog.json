@@ -31,6 +31,20 @@
       "say": false
     },
     {
+      "id": "revisio_menu__antecedents",
+      "scriptName": "revisio_menu__antecedents",
+      "text": "Antecedents? Operacions, malalties...",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio_menu__dormir",
+      "scriptName": "revisio_menu__dormir",
+      "text": "Quantes hores dorms?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "revisio_menu__fi",
       "scriptName": "revisio_menu__fi",
       "text": "Ja està. Tensió perfecta.",

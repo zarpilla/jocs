@@ -18,6 +18,14 @@ options.revisio_menu__nit.onChoose(() => {
   chooseNarrativeOption('tomas', dialog, 'revisio_menu', 'nit')
 })
 
+options.revisio_menu__cremades.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'revisio_menu', 'cremades')
+})
+
+options.revisio_menu__menjar.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'revisio_menu', 'menjar')
+})
+
 options.revisio_menu__fi.onChoose(() => {
   chooseNarrativeOption('tomas', dialog, 'revisio_menu', 'fi')
 })

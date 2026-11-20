@@ -10,6 +10,10 @@ options.menu__qui.onChoose(() => {
   chooseNarrativeOption('cargol_vell', dialog, 'menu', 'qui')
 })
 
+options.menu__peces.onChoose(() => {
+  chooseNarrativeOption('cargol_vell', dialog, 'menu', 'peces')
+})
+
 options.menu__adeu.onChoose(() => {
   chooseNarrativeOption('cargol_vell', dialog, 'menu', 'adeu')
 })

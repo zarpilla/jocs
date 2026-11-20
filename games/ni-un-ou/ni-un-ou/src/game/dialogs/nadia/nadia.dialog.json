@@ -24,6 +24,20 @@
       "say": false
     },
     {
+      "id": "revisio_menu__esmorzar",
+      "scriptName": "revisio_menu__esmorzar",
+      "text": "Què has esmorzat?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio_menu__capcalera",
+      "scriptName": "revisio_menu__capcalera",
+      "text": "Tens metge de capçalera?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "revisio_menu__fi",
       "scriptName": "revisio_menu__fi",
       "text": "Ja està. Beu aigua.",

@@ -14,6 +14,14 @@ options.revisio_menu__nit.onChoose(() => {
   chooseNarrativeOption('marcel', dialog, 'revisio_menu', 'nit')
 })
 
+options.revisio_menu__vacunes.onChoose(() => {
+  chooseNarrativeOption('marcel', dialog, 'revisio_menu', 'vacunes')
+})
+
+options.revisio_menu__alergies.onChoose(() => {
+  chooseNarrativeOption('marcel', dialog, 'revisio_menu', 'alergies')
+})
+
 options.revisio_menu__fi.onChoose(() => {
   chooseNarrativeOption('marcel', dialog, 'revisio_menu', 'fi')
 })

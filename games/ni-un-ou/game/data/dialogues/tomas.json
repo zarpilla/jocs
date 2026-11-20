@@ -115,6 +115,18 @@
           "next": "nit"
         },
         {
+          "id": "cremades",
+          "text": "dlg.tomas.opt.cremades",
+          "once": true,
+          "next": "cremades"
+        },
+        {
+          "id": "menjar",
+          "text": "dlg.tomas.opt.menjar",
+          "once": true,
+          "next": "menjar"
+        },
+        {
           "id": "fi",
           "text": "dlg.tomas.opt.fi",
           "next": "fi"
@@ -259,6 +271,10 @@
         {
           "who": "tomas",
           "text": "dlg.tomas.esc5.3"
+        },
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.esc5.4"
         }
       ]
     },
@@ -283,16 +299,60 @@
       "lines": [
         {
           "who": "tomas",
+          "text": "dlg.tomas.esc7.3",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "tomas_content"
+              }
+            ]
+          }
+        },
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.esc7.4",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "tomas_content"
+              }
+            ]
+          }
+        },
+        {
+          "who": "tomas",
           "text": "dlg.tomas.esc7.1",
           "if": {
-            "protagonist": "vet"
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "tomas_content",
+                "is": false
+              }
+            ]
           }
         },
         {
           "who": "tomas",
           "text": "dlg.tomas.esc7.2",
           "if": {
-            "protagonist": "iri"
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "tomas_content",
+                "is": false
+              }
+            ]
           }
         }
       ],
@@ -457,6 +517,44 @@
           "text": "dlg.tomas.res.1"
         }
       ]
+    },
+    "cremades": {
+      "lines": [
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.cremades.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tomas.cremades.2"
+        },
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.cremades.3"
+        }
+      ],
+      "goto": "revisio_menu"
+    },
+    "menjar": {
+      "lines": [
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.menjar.1"
+        },
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.menjar.2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tomas.menjar.3"
+        },
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.menjar.4"
+        }
+      ],
+      "goto": "revisio_menu"
     }
   }
 }

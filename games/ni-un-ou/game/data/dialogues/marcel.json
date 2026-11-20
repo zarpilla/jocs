@@ -78,6 +78,18 @@
           "next": "nit"
         },
         {
+          "id": "vacunes",
+          "text": "dlg.marcel.opt.vacunes",
+          "once": true,
+          "next": "vacunes"
+        },
+        {
+          "id": "alergies",
+          "text": "dlg.marcel.opt.alergies",
+          "once": true,
+          "next": "alergies"
+        },
+        {
           "id": "fi",
           "text": "dlg.marcel.opt.fi",
           "next": "fi"
@@ -351,6 +363,36 @@
           "text": "dlg.marcel.res.1"
         }
       ]
+    },
+    "vacunes": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.vacunes.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.marcel.vacunes.2"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.vacunes.3"
+        }
+      ],
+      "goto": "revisio_menu"
+    },
+    "alergies": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.alergies.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.marcel.alergies.2"
+        }
+      ],
+      "goto": "revisio_menu"
     }
   }
 }

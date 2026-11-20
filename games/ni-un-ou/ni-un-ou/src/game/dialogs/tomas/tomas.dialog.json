@@ -24,6 +24,20 @@
       "say": false
     },
     {
+      "id": "revisio_menu__cremades",
+      "scriptName": "revisio_menu__cremades",
+      "text": "Algun ensurt de salut?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio_menu__menjar",
+      "scriptName": "revisio_menu__menjar",
+      "text": "I tu, què menges?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "revisio_menu__fi",
       "scriptName": "revisio_menu__fi",
       "text": "Ja està. Pots tornar al pa.",

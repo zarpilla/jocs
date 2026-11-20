@@ -283,6 +283,10 @@
               {
                 "who": "player",
                 "text": "obj.clau_anglesa.vet2"
+              },
+              {
+                "who": "player",
+                "text": "obj.clau_anglesa.vet3"
               }
             ]
           }
@@ -522,6 +526,17 @@
               {
                 "who": "player",
                 "text": "obj.llibreta_torn.vet2"
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta_torn.vet0"
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta_torn.vet_glossari",
+                "if": {
+                  "flag": "iri_sap_pany"
+                }
               }
             ]
           },
@@ -549,6 +564,43 @@
                 "text": "obj.llibreta_torn.iri2",
                 "if": {
                   "flag": "iri_sap_pany"
+                }
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta_torn.iri_glossari",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "iri_sap_pany"
+                    },
+                    {
+                      "flag": "iri_sap_diapaso",
+                      "is": false
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta_torn.iri_glossari_zerog",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "iri_sap_diapaso"
+                    },
+                    {
+                      "flag": "iri_sap_massa",
+                      "is": false
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta_torn.iri_glossari_ple",
+                "if": {
+                  "flag": "iri_sap_massa"
                 }
               },
               {
@@ -583,7 +635,21 @@
           "pes": 0.3,
           "material": "ferro9",
           "finestra": "iri"
-        }
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "if": {
+              "protagonist": "vet"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.imant_ferro9.vet"
+              }
+            ]
+          }
+        ]
       },
       "nota_iri": {
         "name": "obj.nota_iri.nom",
@@ -1088,6 +1154,10 @@
               {
                 "who": "player",
                 "text": "obj.nota_pany.iri2"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_pany.iri3"
               }
             ],
             "effects": [
@@ -1175,6 +1245,10 @@
               {
                 "who": "player",
                 "text": "obj.nota_mida.iri2"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_mida.iri_rovell"
               },
               {
                 "who": "player",
@@ -1681,6 +1755,10 @@
               {
                 "who": "player",
                 "text": "obj.molla.iri"
+              },
+              {
+                "who": "player",
+                "text": "obj.molla.iri_zerog"
               }
             ],
             "effects": [
@@ -1894,6 +1972,10 @@
               {
                 "who": "player",
                 "text": "obj.nota_pressio.iri1"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_pressio.iri_filtres"
               }
             ],
             "effects": [
@@ -1934,6 +2016,10 @@
               {
                 "who": "player",
                 "text": "obj.nota_massa.iri1"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_massa.iri_zerog"
               },
               {
                 "who": "player",
@@ -2249,6 +2335,10 @@
               "protagonist": "iri"
             },
             "lines": [
+              {
+                "who": "player",
+                "text": "obj.mapa_fuga.iri0"
+              },
               {
                 "who": "narrator",
                 "text": "obj.mapa_fuga.text"
@@ -9781,6 +9871,70 @@
                   "use",
                   "push"
                 ],
+                "id": "visita1",
+                "once": true,
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_memoria.holograma.parla1",
+                    "sound": "holograma"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_memoria.holograma.parla2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_memoria.holograma.parla3"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "talkTo",
+                  "use",
+                  "push"
+                ],
+                "id": "visita2",
+                "once": true,
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_memoria.holograma.cafe1",
+                    "sound": "holograma"
+                  },
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.holograma.cafe2"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "talkTo",
+                  "use",
+                  "push"
+                ],
+                "id": "visita3",
+                "once": true,
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_memoria.holograma.casc1",
+                    "sound": "holograma"
+                  },
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.holograma.casc2"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "talkTo",
+                  "use",
+                  "push"
+                ],
                 "lines": [
                   {
                     "who": "narrator",
@@ -9910,6 +10064,21 @@
                     "text": "sala.gavina_memoria.vitrina.text"
                   },
                   {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.vitrina.cargol_recorda",
+                    "if": {
+                      "flag": "cargol_memoria"
+                    }
+                  },
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.vitrina.cargol",
+                    "if": {
+                      "flag": "cargol_memoria",
+                      "is": false
+                    }
+                  },
+                  {
                     "who": "player",
                     "text": "sala.gavina_memoria.vitrina.sense_placa"
                   }
@@ -9924,6 +10093,10 @@
                   {
                     "who": "narrator",
                     "text": "sala.gavina_memoria.vitrina.text"
+                  },
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.vitrina.cargol"
                   },
                   {
                     "who": "narrator",
@@ -9950,6 +10123,10 @@
                   {
                     "who": "narrator",
                     "text": "sala.gavina_memoria.vitrina.text"
+                  },
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.vitrina.cargol"
                   },
                   {
                     "who": "narrator",
@@ -16583,6 +16760,12 @@
                 "next": "qui"
               },
               {
+                "id": "peces",
+                "text": "dlg.cargol_vell.opt.peces",
+                "once": true,
+                "next": "peces"
+              },
+              {
                 "id": "adeu",
                 "text": "dlg.cargol_vell.opt.adeu",
                 "next": "adeu",
@@ -16610,6 +16793,19 @@
                 "text": "dlg.cargol_vell.adeu"
               }
             ]
+          },
+          "peces": {
+            "lines": [
+              {
+                "who": "cargol_vell",
+                "text": "dlg.cargol_vell.peces1"
+              },
+              {
+                "who": "cargol_vell",
+                "text": "dlg.cargol_vell.peces2"
+              }
+            ],
+            "goto": "menu"
           }
         }
       },
@@ -18643,6 +18839,9 @@
       "dlg.cargol_vell.opt.qui": "Qui ets?",
       "dlg.cargol_vell.qui1": "Un robot de manteniment, model C-1. Nom... no en tinc. Em diuen «el conserge».",
       "dlg.cargol_vell.qui2": "Abans de ser conserge vaig ser alguna cosa més. No ho recordo. Ningú no em va deixar recordar-ho.",
+      "dlg.cargol_vell.opt.peces": "Què són totes aquestes coses de les vitrines?",
+      "dlg.cargol_vell.peces1": "Peces de l'era de les fàbriques. Segons els cartells, tot era ritual.",
+      "dlg.cargol_vell.peces2": "Segons el meu inventari, tot eren eines. Mana el cartell.",
       "dlg.cargol_vell.opt.adeu": "Adéu.",
       "dlg.cargol_vell.adeu": "Adéu. No toqui les vitrines.",
       "dlg.guardia.fugitiva1": "Interna 9? Tu no eres a la cel·la, tancada amb clau?",
@@ -18706,7 +18905,7 @@
       "final.fugida.1": "La llançadora vella travessa la nit. A dins, una presonera, un tub de ferro-9 nou i una llibreta de torn de fa cent vint anys.",
       "final.fugida.2": "La Vet fa pública la llibreta. Una operària desapareguda fa cent vint anys explica, amb la seva lletra, que la cambra no va ser cap accident. I la Vet, l'única sincronitzadora que n'ha sortit viva, explica la resta: el reciclatge.",
       "final.fugida.3": "La Corporació Aldaia s'aguantava sobre una sola història: l'accident i la lliçó. Sense la història, uns mesos després La Gavina tanca. La corporació, també.",
-      "final.fugida.4": "La Sala de la Memòria es converteix en un museu de veritat. L'holograma del Director, apagat per sempre.",
+      "final.fugida.4": "La Sala de la Memòria es converteix en un museu de veritat. L'holograma del Director, apagat per sempre. A la vitrina buida, un cartell nou: «Clau anglesa. Servia per apretar cargols».",
       "final.fugida.5": "A la foto del torn de nit ja no hi ha cap cara ratllada. Sota l'Iri, un cartell nou: «Desapareguda».",
       "final.fugida.mira": "Al seu costat, la Mira d'Orís somriu. Ella no va perdre mai la feina.",
       "final.fugida.cargol": "El conserge del museu és un robot vell i rovellat. Es diu Cargol, i ho explica a tothom qui hi entra.",
@@ -18726,18 +18925,66 @@
       "joc.titol": "Ferro-9",
       "ui.defecte": "Això no funciona.",
       "ui.defecte.look": "Res d'especial.",
-      "ui.defecte.look.iri": "Res que no hagi vist mil vegades en aquest torn.",
-      "ui.defecte.look.vet": "Res d'especial. Com tota aquesta presó.",
-      "ui.defecte.pickUp.iri": "És propietat de la corporació. Bé, aquí tot ho és.",
-      "ui.defecte.pickUp.vet": "No em cap a la butxaca. I mira que tinc butxaques.",
-      "ui.defecte.use.iri": "No veig com.",
-      "ui.defecte.use.vet": "Ni amb paciència ni amb violència.",
       "ui.defecte.talkTo": "No crec que em respongui.",
       "ui.defecte.open": "No s'obre.",
       "ui.defecte.close": "No cal tancar-ho.",
       "ui.defecte.push": "No es mou.",
       "ui.defecte.pull": "No es mou.",
       "ui.defecte.give": "No crec que ho vulgui.",
+      "ui.defecte.look.iri": "Res que no hagi vist mil vegades en aquest torn.",
+      "ui.defecte.look.iri.2": "Res d'especial. Ho apunto a la llibreta: «Res».",
+      "ui.defecte.look.iri.3": "Ho he mirat bé. Continua sense ser problema meu.",
+      "ui.defecte.look.vet": "Res d'especial. Com tota aquesta presó.",
+      "ui.defecte.look.vet.2": "Ho miro bé. No val ni mig filtre.",
+      "ui.defecte.look.vet.3": "De rovell. Aquí dalt tot és de rovell, menys les reixes.",
+      "ui.defecte.pickUp.iri": "És propietat de la corporació. Bé, aquí tot ho és.",
+      "ui.defecte.pickUp.iri.2": "Per endur-me'n això caldria un formulari. I per al formulari, un altre.",
+      "ui.defecte.pickUp.iri.3": "No. L'inventari ho compta tot. Fins i tot el que no hi és.",
+      "ui.defecte.pickUp.vet": "No em cap a la butxaca. I mira que tinc butxaques.",
+      "ui.defecte.pickUp.vet.2": "No ho agafo. Fins i tot una lladre té criteri.",
+      "ui.defecte.pickUp.vet.3": "Si me l'emporto, MARE m'ho cobra. Amb molta alegria.",
+      "ui.defecte.use.iri": "No veig com.",
+      "ui.defecte.use.iri.2": "Soc enginyera, no maga. Això no va així.",
+      "ui.defecte.use.iri.3": "Ni el manual ho preveu. I el manual ho preveu tot.",
+      "ui.defecte.use.vet": "Ni amb paciència ni amb violència.",
+      "ui.defecte.use.vet.2": "No fa res. Com el comitè de reinserció.",
+      "ui.defecte.use.vet.3": "Ni idea de com va. I normalment ho desmunto tot.",
+      "ui.defecte.open.iri": "No s'obre. Segur que hi ha un formulari per a això.",
+      "ui.defecte.open.iri.2": "Ni s'obre ni té ganes d'obrir-se. Ens entenem.",
+      "ui.defecte.open.iri.3": "Tancat. Com totes les portes del meu ascens.",
+      "ui.defecte.open.vet": "No s'obre. Ofensiu, per a una professional.",
+      "ui.defecte.open.vet.2": "Tancat. Aquí dalt tot és tancat, menys la boca de MARE.",
+      "ui.defecte.open.vet.3": "No hi ha manera. I no és per falta de pràctica.",
+      "ui.defecte.close.iri": "No cal. Ja ho tancarà el torn de dia. Algun dia.",
+      "ui.defecte.close.iri.2": "Ja és prou tancat. Tancar-ho més seria zel excessiu.",
+      "ui.defecte.close.iri.3": "No cal tancar-ho. No és la meva feina, i ja en faig prou.",
+      "ui.defecte.close.vet": "Tancar coses és feina dels guàrdies. Jo obro.",
+      "ui.defecte.close.vet.2": "Ja és prou tancat. Com tota La Gavina.",
+      "ui.defecte.close.vet.3": "No cal tancar res. Zero-g.",
+      "ui.defecte.push.iri": "No es mou. Jo tampoc, de la meva categoria.",
+      "ui.defecte.push.iri.2": "Empenyo. Res. Ho anotaré com a esforç no remunerat.",
+      "ui.defecte.push.iri.3": "No es mou. Ni amb el reglament a la mà.",
+      "ui.defecte.push.vet": "No es mou. Com els meus drets.",
+      "ui.defecte.push.vet.2": "Empenyo. Res. Aquí dalt no es mou res sense permís de MARE.",
+      "ui.defecte.push.vet.3": "Res. És de rovell, però de rovell tossut.",
+      "ui.defecte.pull.iri": "Estiro. No cedeix. Ja som dues.",
+      "ui.defecte.pull.iri.2": "No es mou. Millor: si es trenca, me'l descompten del sou.",
+      "ui.defecte.pull.iri.3": "Res. Algú ho va fixar a consciència. No era del torn de dia.",
+      "ui.defecte.pull.vet": "Estiro. No cedeix. Ni jo, de fet.",
+      "ui.defecte.pull.vet.2": "No es mou. Ni que li pagui un filtre.",
+      "ui.defecte.pull.vet.3": "Res. Ho van soldar amb ganes.",
+      "ui.defecte.talkTo.iri": "No contesta. Com el meu supervisor.",
+      "ui.defecte.talkTo.iri.2": "Parlar-hi? Ja parlo prou sola en aquest torn.",
+      "ui.defecte.talkTo.iri.3": "Silenci. El més educat que trobaré en aquesta fàbrica.",
+      "ui.defecte.talkTo.vet": "No contesta. Millor: aquí dalt, qui contesta és MARE.",
+      "ui.defecte.talkTo.vet.2": "Hola? Res. La millor conversa que he tingut aquesta setmana.",
+      "ui.defecte.talkTo.vet.3": "No diu res. No el culpo.",
+      "ui.defecte.give.iri": "No ho vol. Aquí ningú no vol res que no dugui segell.",
+      "ui.defecte.give.iri.2": "Regalar material de la corporació? Ni que fos meu.",
+      "ui.defecte.give.iri.3": "No. Ja regalo prou hores extres.",
+      "ui.defecte.give.vet": "No ho vol. Ni regalat. Aquí dalt, això és un insult.",
+      "ui.defecte.give.vet.2": "Regalar coses? No és el meu estil. Jo les venc.",
+      "ui.defecte.give.vet.3": "No ho vol. Ni per un filtre.",
       "ui.pista.cap": "Ara mateix no se m'acut res. Potser cal explorar una mica més.",
       "ui.missio.nova": "Nova missió: {titol}",
       "ui.missio.completada": "Missió completada: {titol}",
@@ -18918,13 +19165,13 @@
       "obj.nota_iri.vet2": "...",
       "obj.nota_iri.vet3": "Oh. Oh, no. Oh, sí!",
       "obj.nota_iri.correspondencia.inici": "(Durant una hora, la cambra no para d'espetegar.)",
-      "obj.nota_iri.correspondencia.1": "«\"Brutal-plus\" vol dir que ets molt bona. \"Reciclar\" no ho sé: ningú no en torna. Pregunta rara: què veus per la finestra? —La de la cel·la 9»",
-      "obj.nota_iri.correspondencia.2": "«Xemeneies, fum i el canal. Com cada nit. I torna'm la clau anglesa, que és la meva preferida. —I.»",
-      "obj.nota_iri.correspondencia.3": "«Per la meva finestra hi ha estrelles, i la Terra, petita i blava. La Gavina dona voltes al món. I la teva clau porta un segell: \"Aldaia · Ferro-9 · Lot 1\". Aquest metall fa cent vint anys que no es fabrica. —La de la cel·la 9»",
+      "obj.nota_iri.correspondencia.1": "«\"Brutal-plus\" vol dir que ets molt bona. \"Reciclar\" no ho sé: ningú no en torna. Pregunta rara, i no facis òrbita: què veus per la finestra? —La de la cel·la 9»",
+      "obj.nota_iri.correspondencia.2": "«Xemeneies, fum i el canal. Com cada nit. «Fer òrbita»? Aquí només en fan les arnes, al fanal. I torna'm la clau anglesa, que és la meva preferida. —I.»",
+      "obj.nota_iri.correspondencia.3": "«Per la meva finestra hi ha estrelles, i la Terra, petita i blava. La Gavina dona voltes al món. I la teva clau porta un segell: \"Aldaia · Ferro-9 · Lot 1\". Aquest metall fa cent vint anys que no es fabrica: aquí dalt és tan de rovell que la posarien en un museu. —La de la cel·la 9»",
       "obj.nota_iri.correspondencia.4": "«... —I.»",
       "obj.nota_iri.correspondencia.vet1": "Un full en blanc i tres punts. Ja ho ha entès.",
       "obj.nota_iri.correspondencia.vet2": "Una enginyera de fa cent vint anys que em pot fer arribar coses. I a mi em queden tres dies.",
-      "obj.nota_pany.text": "«I.: Necessito sortir de la cel·la. El pany és com el del dibuix, hi posa \"Aldaia M-3\". Si és de la teva fàbrica, saps obrir-lo? —V.»",
+      "obj.nota_pany.text": "«I.: Necessito sortir de la cel·la. El pany és com el del dibuix, hi posa \"Aldaia M-3\". Si és de la teva fàbrica, saps obrir-lo? Et deuré un filtre. —V.»",
       "obj.nota_pany.iri1": "«V.» Ara ella també signa amb una lletra. I cent vint anys després, encara fan servir els nostres panys.",
       "obj.nota_pany.iri2": "Però aquest dibuix... És un M-3! N'hi ha a tota la fàbrica. S'obren amb un imant de ferro-9.",
       "obj.avis_reciclatge.text": "«AVÍS: La interna de la cel·la 9 (motiu de l'internament: sostracció de 40 filtres d'aire, propietat de la Corporació Aldaia) serà reciclada d'aquí a 3 dies. El reciclatge és una oportunitat! Amb afecte, MARE.»",
@@ -18943,7 +19190,7 @@
       "obj.llapis_ulls.fullet": "Podria pintar bigotis al Director Aldaia de la portada. Ho apunto per a més tard.",
       "obj.tros_cartell.nom": "tros de cartell",
       "obj.tros_cartell.desc": "Un tros del cartell del reciclatge. Per darrere, blanc.",
-      "obj.nota_mida.text": "«I.: per sortir d'aquí he d'obrir la comporta de l'hangar, i la palanca fa anys que no hi és. L'encaix fa sis claus angleses i mitja de llarg. La teva clau, la del segell. No tinc res més per mesurar. Soc al costat d'un pilar amb un 7 pintat, per si et diu alguna cosa. —V.»",
+      "obj.nota_mida.text": "«I.: per sortir d'aquí he d'obrir la comporta de l'hangar, i la palanca fa anys que no hi és. L'encaix fa sis claus angleses i mitja de llarg. La teva clau, la del segell. No tinc res més per mesurar: aquí dalt, els metres són de rovell. Soc al costat d'un pilar amb un 7 pintat, per si et diu alguna cosa. —V.»",
       "obj.nota_mida.iri1": "Sis claus i mitja. Una clau Lot 1 fa trenta centímetres...",
       "obj.nota_mida.iri2": "Uns dos metres de biga. Per una finestra on no hi passa res de més de dos quilos.",
       "obj.nota_mida.nom": "nota de la mida",
@@ -18982,7 +19229,7 @@
       "obj.molla.estirar": "L'estiro una mica.",
       "obj.molla.massa": "Més arronsada no pot estar.",
       "obj.molla.arronsar": "L'arronso una mica.",
-      "obj.molla.etiqueta": "Una molla de llit, amb una tira de tela lligada: «I.: fes-me una cosa de ferro-9 que soni EXACTAMENT com aquesta molla. És per obrir un pany. No la toquis, que està afinada. —V.»",
+      "obj.molla.etiqueta": "Una molla de llit, amb una tira de tela lligada: «I.: fes-me una cosa de ferro-9 que soni EXACTAMENT com aquesta molla. És per obrir un pany. No la toquis, que està afinada. I zero-g, eh. —V.»",
       "obj.molla.iri": "Una nota dins d'una molla. Necessito un diapasó de ferro-9 que soni igual.",
       "obj.molla.afinada": "La molla afinada, amb el missatge per a la I.",
       "obj.molla.nom": "molla",
@@ -19002,11 +19249,11 @@
       "obj.diapaso.desc": "Un diapasó de ferro-9.",
       "obj.diapaso_espatllat.nom": "diapasó espatllat",
       "obj.diapaso_espatllat.desc": "Un diapasó de ferro-9 llimat de més. Xiula com una tetera.",
-      "obj.nota_pressio.text": "«I.: la llançadora engega amb pressió, i li arriba per un conducte vell de la fàbrica, el que passa per la paret del moll. Està buit. Pots fer-hi alguna cosa, des d'allà? —V.»",
+      "obj.nota_pressio.text": "«I.: la llançadora engega amb pressió, i li arriba per un conducte vell de la fàbrica, el que passa per la paret del moll. Està buit. Pots fer-hi alguna cosa, des d'allà? Ja et dec dos filtres. —V.»",
       "obj.nota_pressio.iri1": "El conducte de pressió del moll. Si el tapo ara, cent vint anys de pressió s'hi aniran acumulant...",
       "obj.nota_pressio.nom": "nota de la pressió",
       "obj.nota_pressio.desc": "Un tros de cartell, escrit amb llapis d'ulls.",
-      "obj.nota_massa.text": "«MASSA!!! El conducte ha rebentat i el nivell de sota és una piscina. AFLUIXA. —V.»",
+      "obj.nota_massa.text": "«MASSA!!! El conducte ha rebentat i el nivell de sota és una piscina. AFLUIXA. Gens zero-g. —V.»",
       "obj.nota_massa.iri1": "Massa pressió. Cent vint anys és molt de temps.",
       "obj.nota_massa.iri2": "L'he d'obrir una mica. Només una mica.",
       "obj.nota_massa.nom": "nota «MASSA»",
@@ -19045,7 +19292,7 @@
       "obj.nota_iri_nom.mare2": "I abans, visita de reeducació obligatòria a la Sala de la Memòria. Hi ha galetes!",
       "obj.nota_iri_nom.directora": "No tan de pressa, MARE. Abans, la interna i jo hem de parlar.",
       "obj.fullet_memoria.nom": "fullet de la Sala de la Memòria",
-      "obj.fullet_memoria.desc": "«La Gavina: aquí va començar tot!» Per darrere, en blanc.",
+      "obj.fullet_memoria.desc": "«La Gavina: aquí va començar tot!» A la portada, una clau anglesa: «objecte ritual de l'era de les fàbriques». Per darrere, en blanc.",
       "obj.nota_mida.iri3": "Un pilar amb un 7 pintat. Al moll de la fàbrica, els pilars van numerats així.",
       "obj.nota_mida.iri4": "Si la V. és al costat del meu pilar 7, cent vint anys més tard, el que jo hi deixi ella ho podria trobar. La biga, per exemple.",
       "obj.nota_mida.iri5": "Però primer, que sàpiga que l'he rebuda. Una marca al pilar, gravada ben fonda: si dura cent vint anys, la V. la veurà. Vol dir: rebut, soc aquí.",
@@ -19146,6 +19393,19 @@
       "obj.nota_mos.nom": "nota vella",
       "obj.nota_mos.amb_article": "la nota vella",
       "obj.nota_mos.desc": "Una nota vella, signada «M., cel·la 9».",
+      "obj.nota_pany.iri3": "«Et deuré un filtre.» Un filtre de què? Si és de cafè, accepto.",
+      "obj.nota_mida.iri_rovell": "«Els metres són de rovell.» D'aquí a cent vint anys es mesura en claus angleses. Progrés.",
+      "obj.molla.iri_zerog": "«Zero-g.» Ho apunto al costat de «brutal-plus». Començo a tenir un diccionari.",
+      "obj.nota_pressio.iri_filtres": "I ja li he fet guanyar dos filtres. El deute creix, i encara no sé en quina moneda.",
+      "obj.nota_massa.iri_zerog": "«Gens zero-g.» Ara ja sé què vol dir zero-g.",
+      "obj.llibreta_torn.iri_glossari": "A l'última pàgina, un glossari: «Brutal-plus: molt bona. Fer òrbita: ? Filtre: moneda?»",
+      "obj.llibreta_torn.iri_glossari_zerog": "A l'última pàgina, un glossari: «Brutal-plus: molt bona. Fer òrbita: ? Filtre: moneda? Zero-g: ?»",
+      "obj.llibreta_torn.iri_glossari_ple": "A l'última pàgina, el glossari: «Brutal-plus: molt bona. Fer òrbita: ? Filtre: moneda? Zero-g: tranquil·la (vegeu «MASSA»).»",
+      "obj.llibreta_torn.vet0": "Paper de veritat, escrit a mà amb llapis. Aquí dalt, això aniria a una vitrina.",
+      "obj.llibreta_torn.vet_glossari": "I a l'última pàgina, un glossari de la meva manera de parlar. «Fer òrbita: ?» Vol dir enrotllar-se, I. Com tu ara.",
+      "obj.clau_anglesa.vet3": "Ni pantalla, ni bateria, ni garantia. Pura arqueologia.",
+      "obj.imant_ferro9.vet": "Un imant de ferro-9: obre els panys M-3. Sense bateria. A l'època de la I. tot funcionava per fe.",
+      "obj.mapa_fuga.iri0": "Per davant, el fullet d'un museu. Hi surt la meva clau anglesa: «objecte ritual de l'era de les fàbriques». És una clau anglesa.",
       "pj.iri.nom": "Iri",
       "pj.vet.nom": "Vet",
       "pj.cargol.nom": "Cargol",
@@ -19790,7 +20050,7 @@
       "sala.gavina_memoria.foto.vet2": "I la noia del costat, la M. d'Orís, somriu al costat de la I. Com una amiga.",
       "sala.gavina_memoria.foto.forat": "Al costat, un forat: algú en va retallar una altra persona.",
       "sala.gavina_memoria.vitrina.nom": "vitrina",
-      "sala.gavina_memoria.vitrina.text": "Una vitrina. El cartell diu: «Clau anglesa Lot 1, la primera peça de ferro-9 (desapareguda)». A dins, només l'espai buit de la clau.",
+      "sala.gavina_memoria.vitrina.text": "Una vitrina. El cartell diu: «Clau anglesa Lot 1, la primera peça de ferro-9 (desapareguda). Ús ritual desconegut». A dins, només l'espai buit de la clau.",
       "sala.gavina_memoria.vitrina.vet": "Desapareguda. Ja. Era a la meva cel·la, i ara la tinc a la butxaca.",
       "sala.gavina_memoria.vitrina.tocar": "Ja l'he buidada. No cal fer-ne més.",
       "sala.gavina_memoria.mapa.nom": "mapa de La Gavina",
@@ -19802,7 +20062,7 @@
       "sala.gavina_memoria.fullets.nom": "fullets",
       "sala.gavina_memoria.fullets.agafar": "N'agafo un. Per darrere està en blanc: hi cap un mapa.",
       "sala.gavina_memoria.fullets.prou": "Ja en tinc un.",
-      "sala.gavina_memoria.fullets.look": "Un expositor de fullets: «La Gavina: aquí va començar tot!»",
+      "sala.gavina_memoria.fullets.look": "Un expositor de fullets: «La Gavina: aquí va començar tot!» A la portada, la clau anglesa Lot 1: «objecte ritual de l'era de les fàbriques».",
       "sala.fabrica.descoberta1": "Mentrestant, cent vint anys abans...",
       "sala.fabrica.descoberta2": "«Atenció, operària I. Sé què ha fet amb la meva cambra. Inspector Sic: que no hi torni a entrar.»",
       "sala.fabrica.descoberta3": "M'ha descobert. És clar: la cambra la va fer ell.",
@@ -20033,7 +20293,13 @@
       "sala.final_estacio.nom": "L'Estació d'Orís",
       "sala.final_cargol.nom": "El Cargol",
       "sala.final_nota.nom": "La nota",
-      "sala.credits.nom": "Crèdits"
+      "sala.credits.nom": "Crèdits",
+      "sala.gavina_memoria.vitrina.cargol": "Correcció: és una clau anglesa. Ús: cargols. Ho he notificat quaranta-tres vegades.",
+      "sala.gavina_memoria.vitrina.cargol_recorda": "Ús ritual: confirmat. La senyora Iri hi apretava cargols cada nit.",
+      "sala.gavina_memoria.holograma.cafe1": "«Els obrers de l'era de les fàbriques bevien un elixir ritual, el cafè, per resistir el torn de nit. La corporació l'hi oferia generosament.»",
+      "sala.gavina_memoria.holograma.cafe2": "Inexacte. El cafè, se'l pagaven ells. Dues monedes, a la màquina del passadís.",
+      "sala.gavina_memoria.holograma.casc1": "«El fundador treballava colze a colze amb els obrers. Ho demostra el seu casc de seguretat: ni una ratlla.»",
+      "sala.gavina_memoria.holograma.casc2": "Ni una ratlla perquè no se'l va posar mai. Consta a l'inventari."
     }
   },
   "locale": "ca",

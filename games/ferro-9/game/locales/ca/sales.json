@@ -352,7 +352,7 @@
   "sala.gavina_memoria.foto.vet2": "I la noia del costat, la M. d'Orís, somriu al costat de la I. Com una amiga.",
   "sala.gavina_memoria.foto.forat": "Al costat, un forat: algú en va retallar una altra persona.",
   "sala.gavina_memoria.vitrina.nom": "vitrina",
-  "sala.gavina_memoria.vitrina.text": "Una vitrina. El cartell diu: «Clau anglesa Lot 1, la primera peça de ferro-9 (desapareguda)». A dins, només l'espai buit de la clau.",
+  "sala.gavina_memoria.vitrina.text": "Una vitrina. El cartell diu: «Clau anglesa Lot 1, la primera peça de ferro-9 (desapareguda). Ús ritual desconegut». A dins, només l'espai buit de la clau.",
   "sala.gavina_memoria.vitrina.vet": "Desapareguda. Ja. Era a la meva cel·la, i ara la tinc a la butxaca.",
   "sala.gavina_memoria.vitrina.tocar": "Ja l'he buidada. No cal fer-ne més.",
   "sala.gavina_memoria.mapa.nom": "mapa de La Gavina",
@@ -364,7 +364,7 @@
   "sala.gavina_memoria.fullets.nom": "fullets",
   "sala.gavina_memoria.fullets.agafar": "N'agafo un. Per darrere està en blanc: hi cap un mapa.",
   "sala.gavina_memoria.fullets.prou": "Ja en tinc un.",
-  "sala.gavina_memoria.fullets.look": "Un expositor de fullets: «La Gavina: aquí va començar tot!»",
+  "sala.gavina_memoria.fullets.look": "Un expositor de fullets: «La Gavina: aquí va començar tot!» A la portada, la clau anglesa Lot 1: «objecte ritual de l'era de les fàbriques».",
   "sala.fabrica.descoberta1": "Mentrestant, cent vint anys abans...",
   "sala.fabrica.descoberta2": "«Atenció, operària I. Sé què ha fet amb la meva cambra. Inspector Sic: que no hi torni a entrar.»",
   "sala.fabrica.descoberta3": "M'ha descobert. És clar: la cambra la va fer ell.",
@@ -595,5 +595,11 @@
   "sala.final_estacio.nom": "L'Estació d'Orís",
   "sala.final_cargol.nom": "El Cargol",
   "sala.final_nota.nom": "La nota",
-  "sala.credits.nom": "Crèdits"
+  "sala.credits.nom": "Crèdits",
+  "sala.gavina_memoria.vitrina.cargol": "Correcció: és una clau anglesa. Ús: cargols. Ho he notificat quaranta-tres vegades.",
+  "sala.gavina_memoria.vitrina.cargol_recorda": "Ús ritual: confirmat. La senyora Iri hi apretava cargols cada nit.",
+  "sala.gavina_memoria.holograma.cafe1": "«Els obrers de l'era de les fàbriques bevien un elixir ritual, el cafè, per resistir el torn de nit. La corporació l'hi oferia generosament.»",
+  "sala.gavina_memoria.holograma.cafe2": "Inexacte. El cafè, se'l pagaven ells. Dues monedes, a la màquina del passadís.",
+  "sala.gavina_memoria.holograma.casc1": "«El fundador treballava colze a colze amb els obrers. Ho demostra el seu casc de seguretat: ni una ratlla.»",
+  "sala.gavina_memoria.holograma.casc2": "Ni una ratlla perquè no se'l va posar mai. Consta a l'inventari."
 }

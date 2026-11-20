@@ -317,6 +317,20 @@
         {
           "verb": "open",
           "if": {
+            "var": "escena",
+            "op": ">=",
+            "value": 7
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.cambra_freda.4"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "if": {
             "any": [
               {
                 "var": "escena",

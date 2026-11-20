@@ -57,6 +57,70 @@
             "use",
             "push"
           ],
+          "id": "visita1",
+          "once": true,
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.holograma.parla1",
+              "sound": "holograma"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.holograma.parla2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.holograma.parla3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use",
+            "push"
+          ],
+          "id": "visita2",
+          "once": true,
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.holograma.cafe1",
+              "sound": "holograma"
+            },
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.holograma.cafe2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use",
+            "push"
+          ],
+          "id": "visita3",
+          "once": true,
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.holograma.casc1",
+              "sound": "holograma"
+            },
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.holograma.casc2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use",
+            "push"
+          ],
           "lines": [
             {
               "who": "narrator",
@@ -186,6 +250,21 @@
               "text": "sala.gavina_memoria.vitrina.text"
             },
             {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.vitrina.cargol_recorda",
+              "if": {
+                "flag": "cargol_memoria"
+              }
+            },
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.vitrina.cargol",
+              "if": {
+                "flag": "cargol_memoria",
+                "is": false
+              }
+            },
+            {
               "who": "player",
               "text": "sala.gavina_memoria.vitrina.sense_placa"
             }
@@ -200,6 +279,10 @@
             {
               "who": "narrator",
               "text": "sala.gavina_memoria.vitrina.text"
+            },
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.vitrina.cargol"
             },
             {
               "who": "narrator",
@@ -226,6 +309,10 @@
             {
               "who": "narrator",
               "text": "sala.gavina_memoria.vitrina.text"
+            },
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.vitrina.cargol"
             },
             {
               "who": "narrator",
