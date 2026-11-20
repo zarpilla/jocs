@@ -481,7 +481,8 @@ pitjor. Li dona el «**Kit del Petit Guardabosc**» (un fullet i una polsera de 
 La conversa ensenya la cosa que importa: l'**altaveu** farà sonar la «natura del futur» quan la Pla premi el botó.
 
 **Trencaclosques 5.2 — Fer-la sortir (estirar).** Amb la Pla a dins, la Vet no pot tocar l'altaveu («Bonica, això
-no es toca, que és de lloguer»). Si la Vet desendolla l'**arbre Wi-Fi**, la videotrucada es talla:
+no es toca, que és de lloguer»). Si encara no ha parlat amb la Pla, la Vet primer la saluda («L'àvia diu que
+s'ha de ser educada»): així té el kit, que necessita a la 6a. Si la Vet desendolla l'**arbre Wi-Fi**, la videotrucada es talla:
 
 > PLA: Oh, no. Oh, no, no. Sense cobertura. *(somriure)* Surto un moment a buscar senyal. És un bosc, ja se sap.
 > VET: Encara.
@@ -660,8 +661,8 @@ tinc dues. I zero punts.»
 > *(silenci; i després, molt fluix, un brunzit turquesa sota terra)*
 
 El rètol final ho tanca: la xarxa torna a parlar; «L'Ajuntament va mirar els plànols de 1923 i va treure el permís
-d'obres a NaturaPlus. El Registrador Bufó va arxivar el cas amb tres segells»; les fades tenen un gronxador nou
-(la Pica diu que és brutal; la Card, que és una traïció, i s'hi gronxa cada dia).
+d'obres a NaturaPlus. El Registrador Bufó va arxivar el cas amb tres segells»; les fades tenen un gronxador nou, fet amb
+el cable de l'arbre Wi-Fi (la Pica diu que és brutal; la Card, que és una traïció, i s'hi gronxa cada dia).
 
 ### Les bromes que tornen
 

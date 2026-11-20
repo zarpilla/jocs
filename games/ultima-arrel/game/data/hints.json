@@ -523,6 +523,36 @@
       "bufo"
     ]
   },
+  "saluda": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "inRoom": "caseta_obra"
+        },
+        {
+          "hasItem": "kit",
+          "who": "vet",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "kit",
+      "who": "vet"
+    },
+    "levels": [
+      "pista.saluda.1",
+      "pista.saluda.2"
+    ],
+    "targets": [
+      "pla"
+    ],
+    "who": "iri"
+  },
   "fora": {
     "priority": 6,
     "when": {
@@ -536,6 +566,10 @@
         {
           "flag": "pla_fora",
           "is": false
+        },
+        {
+          "hasItem": "kit",
+          "who": "vet"
         }
       ]
     },

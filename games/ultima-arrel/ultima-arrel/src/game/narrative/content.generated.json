@@ -2529,6 +2529,25 @@
                   "use",
                   "close"
                 ],
+                "if": {
+                  "hasItem": "kit",
+                  "who": "vet",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.caseta_obra.arbre_wifi.saluda"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pull",
+                  "pickUp",
+                  "use",
+                  "close"
+                ],
                 "lines": [
                   {
                     "who": "narrator",
@@ -7493,6 +7512,36 @@
           "bufo"
         ]
       },
+      "saluda": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "inRoom": "caseta_obra"
+            },
+            {
+              "hasItem": "kit",
+              "who": "vet",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "kit",
+          "who": "vet"
+        },
+        "levels": [
+          "pista.saluda.1",
+          "pista.saluda.2"
+        ],
+        "targets": [
+          "pla"
+        ],
+        "who": "iri"
+      },
       "fora": {
         "priority": 6,
         "when": {
@@ -7506,6 +7555,10 @@
             {
               "flag": "pla_fora",
               "is": false
+            },
+            {
+              "hasItem": "kit",
+              "who": "vet"
             }
           ]
         },
@@ -9063,6 +9116,19 @@
           },
           {
             "if": {
+              "all": [
+                {
+                  "inRoom": "zona_mati"
+                },
+                {
+                  "flag": "amagatall_fades"
+                }
+              ]
+            },
+            "node": "e6a2"
+          },
+          {
+            "if": {
               "inRoom": "zona_mati"
             },
             "node": "e6a"
@@ -9256,6 +9322,27 @@
               }
             ]
           },
+          "e6a2": {
+            "lines": [
+              {
+                "who": "player",
+                "text": "dlg.walkie.e6a2.1",
+                "sound": "walkie"
+              },
+              {
+                "who": "iri",
+                "text": "dlg.walkie.e6a2.2"
+              },
+              {
+                "who": "player",
+                "text": "dlg.walkie.e6a2.3"
+              },
+              {
+                "who": "iri",
+                "text": "dlg.walkie.e6a.4"
+              }
+            ]
+          },
           "e7": {
             "lines": [
               {
@@ -9426,13 +9513,16 @@
       "dlg.walkie.e6a.2": "El bus fa olor de bocata de truita. Com va? Canvi.",
       "dlg.walkie.e6a.3": "La Txell té la càmera clavada a un trípode. I les fades no volen baixar. Canvi.",
       "dlg.walkie.e6a.4": "Observació: tu convences tothom en deu segons. Hipòtesi: també la tele. Canvi i fora.",
+      "dlg.walkie.e6a2.1": "Iri, Iri, em sents? Canvi.",
+      "dlg.walkie.e6a2.2": "El bus ja entra al poble. Com va? Canvi.",
+      "dlg.walkie.e6a2.3": "Les fades ja tenen casa, amb moqueta i tot. Ara falta la tele. Canvi.",
       "dlg.walkie.e7.1": "Iri, Iri, em sents? Canvi.",
       "dlg.walkie.e7.2": "Soc aquí al costat, Vet. Canvi.",
       "dlg.walkie.e7.3": "Ja ho sé. És que m'agrada. Canvi i fora.",
       "final.credits.1": "L'Última Arrel. Un joc de Mala Herba Soft.",
       "final.taula.1": "Al Bosc de la Coma, els bolets brillen de turquesa. Sota terra, el nord torna a parlar amb el sud.",
       "final.taula.2": "L'Ajuntament va mirar els plànols de 1923 i va treure el permís d'obres a NaturaPlus. El Registrador Bufó va arxivar el cas amb tres segells. Diu que és el seu rècord.",
-      "final.taula.3": "Les Fades d'Ortiga tenen un gronxador nou, de cinta rosa fluor. La Pica diu que és brutal. La Card diu que és una traïció, i s'hi gronxa cada dia.",
+      "final.taula.3": "Les Fades d'Ortiga tenen un gronxador nou, fet amb el cable de l'arbre Wi-Fi. La Pica diu que és brutal. La Card diu que és una traïció, i s'hi gronxa cada dia.",
       "final.taula.llibreta": "La llibreta de camp de la Iri: {observacions} de 12 observacions. Les pàgines en blanc esperen una altra visita al bosc.",
       "final.taula.llibreta.plena": "La llibreta de camp de la Iri: 12 de 12 observacions. Plena. La Iri ja n'ha començat una altra.",
       "final.taula.text": "El bosc no té Wi-Fi. Té arrels.",
@@ -9592,12 +9682,12 @@
       "obj.estaca.nom": "estaca",
       "obj.fil_saba.desc": "Un fil de saba, tou i tebi. S'ha de lligar a una arrel viva.",
       "obj.fil_saba.nom": "fil de saba",
-      "obj.kit.desc": "Un fullet, «Com reconèixer un arbre: busca-li el codi QR», i una polsera de plàstic. Me la poso, per si de cas.",
-      "obj.kit.doblega.1": "El fullet: «Descobreix la natura del futur!». Un plec, dos plecs, tres plecs...",
+      "obj.kit.desc": "Un fullet, «Com reconèixer un arbre: busca-li el codi QR», i una polsera de punts. De moment, la guardo.",
+      "obj.kit.doblega.1": "El fullet: «Com reconèixer un arbre: busca-li el codi QR». Un plec, dos plecs, tres plecs...",
       "obj.kit.doblega.2": "Una caseta. Amb el logotip a fora. La polsera me la poso: té zero punts.",
       "obj.kit.mira.mati": "El Kit del Petit Guardabosc. El fullet té tres plecs: és quasi una tenda.",
       "obj.kit.nom": "Kit del Petit Guardabosc",
-      "obj.llibreta.compte": "Observacions: {observacions} de 12. Les coses que valen la pena, les miro amb la lupa.",
+      "obj.llibreta.compte": "Observacions de lupa: {observacions} de 12. Les coses que valen la pena, les miro de prop.",
       "obj.llibreta.desc": "La llibreta de camp. Hi apunto observacions i hipòtesis.",
       "obj.llibreta.mira.1": "Observació u: una tanca nova. Observació dos: una porta en un roure. Pendent: saber qui hi viu.",
       "obj.llibreta.mira.2": "A l'última pàgina tinc apuntat un experiment de ciències: la pila de llimona. Dos metalls diferents clavats a una llimona fan una mica de corrent.",
@@ -9642,7 +9732,7 @@
       "pj.avia.parla.vet": "El bosc té més memòria que l'Ajuntament. I jo també.",
       "pj.avia.parla.zz": "Jo no sé què tramaràs, però fes-ho bé. I sigues educada.",
       "pj.bufo.mira": "El Registrador Bufó, el cap de l'arxiu. Solemne, lent, i amb un segell de goma a la mà.",
-      "pj.bufo.mira.vet": "Un gripau amb armilla i visera, al bassal. Deu ser el Registrador que diu la Iri.",
+      "pj.bufo.mira.vet": "El Registrador, al bassal, amb armilla i visera. A la presentació va trigar tres minuts a arribar a l'escenari.",
       "pj.bufo.mira.zz": "El Registrador, a la vora del bassal, amb la carpeta sota el braç. Espera el seu moment.",
       "pj.bufo.nom": "Registrador Bufó",
       "pj.bufo.parla.vet": "Registre del Bosc. Horari: sempre que hi hagi aigua. És a dir: sempre.",
@@ -9739,6 +9829,8 @@
       "pista.pila.3": "Fes servir el cèntim amb la llimona, i després el cargol amb la llimona.",
       "pista.radar.1": "Ja tinc la pila. El radar té dos borns.",
       "pista.radar.2": "Fes servir la pila de llimona amb el radar.",
+      "pista.saluda.1": "Vet. Abans de tocar res, saluda la senyora. Sigues educada. Canvi.",
+      "pista.saluda.2": "Parla amb la senyora Pla. Canvi.",
       "pista.segell.1": "El toll té aigua. Ja hi ha tràmit!",
       "pista.segell.2": "Parla amb el Registrador Bufó.",
       "pista.tap.1": "El rierol no arriba al toll. Alguna cosa el tapa.",
@@ -9882,6 +9974,7 @@
       "sala.caseta_obra.arbre_wifi.mira": "Un arbret de plàstic amb llumetes. Fa pip cada tres segons. Està endollat a la paret.",
       "sala.caseta_obra.arbre_wifi.mira2": "L'arbre Wi-Fi, desendollat. Ja no fa pip.",
       "sala.caseta_obra.arbre_wifi.nom": "arbre Wi-Fi",
+      "sala.caseta_obra.arbre_wifi.saluda": "Abans de desendollar res, la saludo. L'àvia diu que s'ha de ser educada.",
       "sala.caseta_obra.canal7.1": "La Vet posa la ruleta de l'altaveu al canal 7, el del walkie.",
       "sala.caseta_obra.canal7.2": "(al walkie, xiuxiuejant) Iri. Digues alguna cosa. Canvi.",
       "sala.caseta_obra.canal7.3": "(per l'altaveu, fortíssim) QUÈ VOLS QUE DIGUI? CANVI.",

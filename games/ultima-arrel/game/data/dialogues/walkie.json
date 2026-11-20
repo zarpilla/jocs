@@ -107,6 +107,19 @@
     },
     {
       "if": {
+        "all": [
+          {
+            "inRoom": "zona_mati"
+          },
+          {
+            "flag": "amagatall_fades"
+          }
+        ]
+      },
+      "node": "e6a2"
+    },
+    {
+      "if": {
         "inRoom": "zona_mati"
       },
       "node": "e6a"
@@ -293,6 +306,27 @@
         {
           "who": "player",
           "text": "dlg.walkie.e6a.3"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.e6a.4"
+        }
+      ]
+    },
+    "e6a2": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.e6a2.1",
+          "sound": "walkie"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.e6a2.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.walkie.e6a2.3"
         },
         {
           "who": "iri",

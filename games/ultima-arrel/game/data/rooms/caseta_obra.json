@@ -63,6 +63,25 @@
             "use",
             "close"
           ],
+          "if": {
+            "hasItem": "kit",
+            "who": "vet",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.arbre_wifi.saluda"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp",
+            "use",
+            "close"
+          ],
           "lines": [
             {
               "who": "narrator",
