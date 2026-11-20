@@ -65,7 +65,13 @@
             {
               "who": "narrator",
               "text": "sala.toll_gripaus.tap.palanca.1",
-              "sound": "ampolles"
+              "sound": "ampolles",
+              "stage": [
+                {
+                  "prop": "aigua",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
@@ -81,6 +87,12 @@
               "effects": [
                 {
                   "setFlag": "aigua_tornada"
+                }
+              ],
+              "stage": [
+                {
+                  "prop": "aigua",
+                  "visible": true
                 }
               ]
             },
@@ -115,7 +127,13 @@
             {
               "who": "player",
               "text": "sala.toll_gripaus.tap.ampolles",
-              "sound": "ampolles"
+              "sound": "ampolles",
+              "stage": [
+                {
+                  "prop": "aigua",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "narrator",
@@ -136,6 +154,12 @@
               "effects": [
                 {
                   "setFlag": "aigua_tornada"
+                }
+              ],
+              "stage": [
+                {
+                  "prop": "aigua",
+                  "visible": true
                 }
               ]
             },

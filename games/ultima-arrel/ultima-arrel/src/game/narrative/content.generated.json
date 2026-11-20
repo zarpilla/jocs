@@ -3710,7 +3710,13 @@
                   {
                     "who": "narrator",
                     "text": "sala.toll_gripaus.tap.palanca.1",
-                    "sound": "ampolles"
+                    "sound": "ampolles",
+                    "stage": [
+                      {
+                        "prop": "aigua",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -3726,6 +3732,12 @@
                     "effects": [
                       {
                         "setFlag": "aigua_tornada"
+                      }
+                    ],
+                    "stage": [
+                      {
+                        "prop": "aigua",
+                        "visible": true
                       }
                     ]
                   },
@@ -3760,7 +3772,13 @@
                   {
                     "who": "player",
                     "text": "sala.toll_gripaus.tap.ampolles",
-                    "sound": "ampolles"
+                    "sound": "ampolles",
+                    "stage": [
+                      {
+                        "prop": "aigua",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -3781,6 +3799,12 @@
                     "effects": [
                       {
                         "setFlag": "aigua_tornada"
+                      }
+                    ],
+                    "stage": [
+                      {
+                        "prop": "aigua",
+                        "visible": true
                       }
                     ]
                   },
@@ -6787,7 +6811,13 @@
             "lines": [
               {
                 "who": "gripau",
-                "text": "dlg.gripau.ajuda.1"
+                "text": "dlg.gripau.ajuda.1",
+                "stage": [
+                  {
+                    "prop": "aigua",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "player",
@@ -6812,6 +6842,12 @@
                 "effects": [
                   {
                     "setFlag": "aigua_tornada"
+                  }
+                ],
+                "stage": [
+                  {
+                    "prop": "aigua",
+                    "visible": true
                   }
                 ]
               },
@@ -7601,10 +7637,10 @@
       "dlg.bufo.opt.rierol": "Per què no arriba l'aigua?",
       "dlg.bufo.opt.tramit": "Què és un tràmit?",
       "dlg.bufo.paper.1": "Això és el cadastre: el mapa de qui és cada tros de terra.",
-      "dlg.bufo.paper.2": "Tinc els plànols de 1923. Però sense segell no valen res, i el tampó és sec.",
+      "dlg.bufo.paper.2": "Tinc els plànols de 1923. Però sense segell no valen res, i el tampó està sec.",
       "dlg.bufo.paper.3": "Torni quan plogui. O quan algú torni el rierol.",
       "dlg.bufo.paper2.1": "Amb el tampó sec? Torni quan plogui. O quan algú torni el rierol.",
-      "dlg.bufo.rierol.1": "Pregunti a les ampolles. I al tub nou. Nosaltres som en vaga, no en investigació.",
+      "dlg.bufo.rierol.1": "Pregunti a les ampolles. I al tub nou. Nosaltres estem en vaga, no en investigació.",
       "dlg.bufo.segell.1": "El Registrador mulla el tampó al toll, molt a poc a poc. Clac.",
       "dlg.bufo.segell.10": "I amb taps a les orelles. Aquella senyora assaja cada tarda amb un altaveu enorme, a la caseta d'obra.",
       "dlg.bufo.segell.11": "Un altaveu? (al walkie) Vet. Ens falta l'altaveu de la del vestit blanc. És a la caseta d'obra. Canvi.",
@@ -7633,7 +7669,7 @@
       "dlg.espora.opt.que": "Què he de fer, ara?",
       "dlg.espora.opt.qui": "Qui ets?",
       "dlg.espora.que.corn": "Escolta pel corn. Arriben els missatges del nord.",
-      "dlg.espora.que.fil": "El fil de saba. Lliga'l a l'arrel viva. Només una de les tres ho és.",
+      "dlg.espora.que.fil": "El fil de saba. Lliga'l a l'arrel viva. Només una de les tres ho està.",
       "dlg.espora.que.grava": "Ho volies fer sortir per un altaveu, oi? Doncs primer ho hauràs de guardar.",
       "dlg.espora.que.pila": "El radar. Necessita una mica de corrent. Què portes en aquesta motxilla?",
       "dlg.espora.qui.1": "L'Espora. Micòleg: estudio els fongs. I els fongs m'estudien a mi.",
@@ -7641,18 +7677,18 @@
       "dlg.gripau.aigua.1": "L'aigua baixa pel rierol i omple el toll. Els joncs es redrecen.",
       "dlg.gripau.aigua.2": "(abaixant la pancarta) Senyores i senyors: s'ha acabat la vaga.",
       "dlg.gripau.aigua.3": "(des de la finestreta) Registre del Bosc. Obert. Passi, passi.",
-      "dlg.gripau.ajuda.1": "Som en vaga.",
+      "dlg.gripau.ajuda.1": "Estem en vaga.",
       "dlg.gripau.ajuda.2": "Si tanquem el tub, l'aigua tornarà al toll.",
       "dlg.gripau.ajuda.3": "...Això no és trencar la vaga. És fer exercici.",
       "dlg.gripau.ajuda.4": "La Iri i el gripau empenyen alhora. La roda grinyola, gira, i el tub deixa de beure.",
       "dlg.gripau.feta.1": "Bon toll, eh? Ara ja podem segellar. Bé, el Registrador. Nosaltres mirem.",
-      "dlg.gripau.hola.1": "Gripaus. No granotes. I som en vaga.",
+      "dlg.gripau.hola.1": "Gripaus. No granotes. I estem en vaga.",
       "dlg.gripau.opt.adeu": "Bona vaga.",
       "dlg.gripau.opt.ajuda": "M'ajudes amb la roda del tub?",
       "dlg.gripau.opt.pancarta": "Què diu la pancarta?",
       "dlg.gripau.opt.vaga": "Per què feu vaga?",
       "dlg.gripau.pancarta.1": "«SENSE AIGUA NO HI HA TRÀMIT». La del meu company diu «AVUI NO ES COMPULSA».",
-      "dlg.gripau.vaga.1": "El toll és sec. Un gripau sec és un gripau trist. I un gripau trist no segella res.",
+      "dlg.gripau.vaga.1": "El toll està sec. Un gripau sec és un gripau trist. I un gripau trist no segella res.",
       "dlg.pla.adeu.1": "Adeu, bonica! Jo segueixo assajant. Si trobo cobertura.",
       "dlg.pla.aire.1": "És per a la gent que no té temps d'anar al bosc.",
       "dlg.pla.aire.2": "I si van al bosc?",
@@ -7957,11 +7993,11 @@
       "pista.corn.2": "El corn de fusta serveix per escoltar la xarxa.",
       "pista.corn.3": "Fes servir el corn de fusta per escoltar.",
       "pista.crit.1": "Compta fins a tres. I l'altaveu és al canal 7.",
-      "pista.crit.2": "El crit dels arbres és gravat al walkie.",
+      "pista.crit.2": "El crit dels arbres està gravat al walkie.",
       "pista.crit.3": "Fes servir el walkie amb l'altaveu, ara.",
-      "pista.entrar.1": "La porta del roure és oberta. L'Espora m'espera a dins.",
+      "pista.entrar.1": "La porta del roure està oberta. L'Espora m'espera a dins.",
       "pista.estaca.1": "La porta topa amb l'estaca. L'he de treure.",
-      "pista.estaca.2": "L'estaca és molt clavada. Estirant, sola no surt. Primer l'hauria de bellugar.",
+      "pista.estaca.2": "L'estaca està molt clavada. Estirant, sola no surt. Primer l'hauria de bellugar.",
       "pista.estaca.3": "Empeny l'estaca per afluixar-la, i després estira-la.",
       "pista.fil.1": "El radar ensenya un fil solt.",
       "pista.fil.2": "Agafa el fil de saba que penja del tauler.",
@@ -7974,7 +8010,7 @@
       "pista.gravar.1": "Ho farem sortir per un altaveu. Però primer ho hem de guardar.",
       "pista.gravar.2": "El walkie té un botó de gravar, per enregistrar ocells.",
       "pista.gravar.3": "Fes servir el walkie amb el corn de fusta.",
-      "pista.gripau.1": "La roda és molt dura. Sola no puc.",
+      "pista.gripau.1": "La roda està molt dura. Sola no puc.",
       "pista.gripau.2": "El gripau vaguista ha dit que ho faig malament. Potser m'ajudaria.",
       "pista.gripau.3": "Parla amb el gripau vaguista i demana-li ajuda amb la roda.",
       "pista.melmelada.1": "Vet, Vet. Les fades no es fien de tu. Què portes a la motxilla? Canvi.",
@@ -7988,7 +8024,7 @@
       "pista.segell.1": "El toll té aigua. Ja hi ha tràmit!",
       "pista.segell.2": "Parla amb el Registrador Bufó.",
       "pista.tap.1": "El rierol no arriba al toll. Alguna cosa el tapa.",
-      "pista.tap.2": "Treu les ampolles del rierol. La de sota és encallada: s'hi ha de fer palanca.",
+      "pista.tap.2": "Treu les ampolles del rierol. La de sota està encallada: s'hi ha de fer palanca.",
       "pista.tap.3": "Fes servir l'estaca amb el tap d'ampolles.",
       "pista.taula.1": "Vet. Seu a la taula, que el te es refreda.",
       "pista.xiulet.1": "Ha dit «aire pur».",
@@ -8001,7 +8037,7 @@
       "sala.bosc_obert.forats.nom": "forats",
       "sala.bosc_obert.intro.1": "Una setmana després",
       "sala.bosc_obert.intro.2": "Ja no hi ha tanca, ni cartell, ni gespa de plàstic. Només uns forats on hi havia els pals, i ja hi torna a créixer l'herba.",
-      "sala.bosc_obert.intro.3": "Al peu del roure, la porta és oberta. Els bolets brillen de turquesa.",
+      "sala.bosc_obert.intro.3": "Al peu del roure, la porta està oberta. Els bolets brillen de turquesa.",
       "sala.bosc_obert.intro.4": "Vet! Seu, que el te es refreda.",
       "sala.bosc_obert.nom": "El bosc obert",
       "sala.bosc_obert.porta_oberta.entra": "Ara no. Primer, el te.",
@@ -8117,7 +8153,7 @@
       "sala.caseta_obra.maqueta.nom": "maqueta",
       "sala.caseta_obra.maqueta.toca": "Li giro el ninotet perquè miri cap a la paret. Així està millor.",
       "sala.caseta_obra.nom": "La caseta d'obra",
-      "sala.caseta_obra.porta.mira": "La porta és oberta: aquí dins fa calor.",
+      "sala.caseta_obra.porta.mira": "La porta està oberta: aquí dins fa calor.",
       "sala.caseta_obra.porta.no": "Encara no. He vingut per l'altaveu.",
       "sala.caseta_obra.porta.nom": "porta",
       "sala.caseta_obra.ruleta.1": "La Vet gira la ruleta a l'atzar. Per l'altaveu surt música d'ascensor.",
@@ -8136,10 +8172,10 @@
       "sala.centraleta.arrel_2.nom": "arrel del mig",
       "sala.centraleta.arrel_3.nom": "arrel dreta",
       "sala.centraleta.arrel_morta.encesa": "Una arrel morta. Fa olor de pneumàtic.",
-      "sala.centraleta.arrel_morta.fil": "Aquesta no, nena. És morta. Mira-les bé.",
+      "sala.centraleta.arrel_morta.fil": "Aquesta no, nena. Està morta. Mira-les bé.",
       "sala.centraleta.arrel_morta.lupa": "Observació: per dins és grisa i fa olor de pneumàtic. Està morta.",
       "sala.centraleta.arrel_viva.encesa": "L'arrel viva, amb el fil de saba lligat. Brilla de turquesa.",
-      "sala.centraleta.arrel_viva.lupa": "Observació: aquesta brilla per dins. És viva!",
+      "sala.centraleta.arrel_viva.lupa": "Observació: aquesta brilla per dins. Està viva!",
       "sala.centraleta.arrel_viva.vista": "L'arrel que brilla per dins. La viva.",
       "sala.centraleta.corn.altra": "El crit continua. Greu, llarg, trist.",
       "sala.centraleta.corn.altra.b": "Si el pogués guardar... El walkie té un botó de gravar.",
@@ -8183,7 +8219,7 @@
       "sala.centraleta.pila.1": "La Iri posa la pila de llimona als borns del radar. La pantalla s'encén, verda i tremolosa.",
       "sala.centraleta.pila.2": "(apuntant a la llibreta) Una llimona, una mica de coure i una mica de zinc fan una pila. Poc corrent.",
       "sala.centraleta.pila.3": "Prou per a un fong! Mira: el node 12, aixafat. I aquí... el fil de saba, solt.",
-      "sala.centraleta.pila.4": "El fil s'ha de lligar a una arrel viva. A la paret n'hi ha tres. Només una ho és.",
+      "sala.centraleta.pila.4": "El fil s'ha de lligar a una arrel viva. A la paret n'hi ha tres. Només una ho està.",
       "sala.centraleta.radar.classe": "Dos metalls diferents, nena. Un de cada mena, i la llimona al mig.",
       "sala.centraleta.radar.mira": "Un radar d'arrels: una pantalla rodona de mica. Està apagat. Té dos borns per connectar-hi una pila.",
       "sala.centraleta.radar.mira.ences": "Ensenya el node 12, aixafat. I un fil de saba solt, que penja del tauler.",
@@ -8218,7 +8254,7 @@
       "sala.toll_gripaus.cami.mira": "El camí del poble.",
       "sala.toll_gripaus.cami.no": "Encara no. Necessito el paper dels gripaus.",
       "sala.toll_gripaus.cami.nom": "camí",
-      "sala.toll_gripaus.comporta.dura": "La roda és molt dura. No gira ni un dit.",
+      "sala.toll_gripaus.comporta.dura": "La roda està molt dura. No gira ni un dit.",
       "sala.toll_gripaus.comporta.dura2": "Ni un dit. Sola no puc.",
       "sala.toll_gripaus.comporta.feta": "Tancada. El tub ja no es beu el rierol.",
       "sala.toll_gripaus.comporta.gripau": "(sense deixar la pancarta) Ho fas malament.",
@@ -8232,7 +8268,7 @@
       "sala.toll_gripaus.intro.4": "No els diré granotes. Canvi.",
       "sala.toll_gripaus.intro.5": "Gripaus.",
       "sala.toll_gripaus.intro.6": "No he dit res!",
-      "sala.toll_gripaus.intro.7": "Observació: el toll és sec. Hipòtesi: per això fan vaga.",
+      "sala.toll_gripaus.intro.7": "Observació: el toll està sec. Hipòtesi: per això fan vaga.",
       "sala.toll_gripaus.joncs.mira": "Joncs grocs i caiguts. Tenen set.",
       "sala.toll_gripaus.joncs.mira2": "Els joncs s'han redreçat. Verds altra vegada.",
       "sala.toll_gripaus.joncs.nom": "joncs",
@@ -8241,7 +8277,7 @@
       "sala.toll_gripaus.rierol.mira2": "El rierol torna a baixar fins al toll. Fa un soroll que relaxa.",
       "sala.toll_gripaus.rierol.nom": "rierol",
       "sala.toll_gripaus.tap.ampolles": "Trec les ampolles de dalt: «Aire Pur». Buides. Quin aire s'han begut?",
-      "sala.toll_gripaus.tap.encallada": "L'última és encallada sota una pedra. Amb les mans no surt. Necessito alguna cosa per fer palanca.",
+      "sala.toll_gripaus.tap.encallada": "L'última està encallada sota una pedra. Amb les mans no surt. Necessito alguna cosa per fer palanca.",
       "sala.toll_gripaus.tap.encallada1": "Però n'hi ha una d'encallada sota una pedra. Amb les mans no surt.",
       "sala.toll_gripaus.tap.mira": "Un tap d'ampolles buides d'«Aire Pur NaturaPlus». No deixen passar l'aigua del rierol.",
       "sala.toll_gripaus.tap.palanca.1": "La Iri fa palanca amb l'estaca sota la pedra... i l'última ampolla surt disparada.",
@@ -8263,7 +8299,7 @@
       "sala.vora_bosc.campaneta.altra.2": "Ja t'he sentit! L'estaca, nena. L'estaca!",
       "sala.vora_bosc.campaneta.mira": "Una campaneta de bronze, de la mida d'un didal.",
       "sala.vora_bosc.campaneta.nom": "campaneta",
-      "sala.vora_bosc.campaneta.oberta": "La porta ja és oberta. Tocar-la ara seria de mala educació.",
+      "sala.vora_bosc.campaneta.oberta": "La porta ja està oberta. Tocar-la ara seria de mala educació.",
       "sala.vora_bosc.cargol.agafa": "És un cargol galvanitzat: té una capa de zinc perquè no s'oxidi.",
       "sala.vora_bosc.cargol.agafa.b": "L'han perdut els de l'obra. Me'l quedo.",
       "sala.vora_bosc.cargol.mira": "Un cargol nou, entre el fang. Brilla massa per ser del bosc.",
