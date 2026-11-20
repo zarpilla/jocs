@@ -1,0 +1,127 @@
+{
+  "id": "proleg_roure",
+  "name": "El roure gros",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 150,
+            "y": 196
+          },
+          {
+            "x": 639,
+            "y": 196
+          },
+          {
+            "x": 639,
+            "y": 213
+          },
+          {
+            "x": 150,
+            "y": 213
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "porta_oberta",
+      "tag": "porta_oberta",
+      "animations": {
+        "porta_oberta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "espora-veu",
+      "definition": "espora/espora.character.json",
+      "x": 600,
+      "y": 207,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    }
+  ],
+  "characterLights": {
+    "ambient": "#9c8c98",
+    "lights": [
+      {
+        "x": 40,
+        "y": 150,
+        "radius": 520,
+        "color": "#ffa868",
+        "intensity": 0.6
+      },
+      {
+        "x": 251,
+        "y": 158,
+        "radius": 60,
+        "color": "#5ee6e0",
+        "intensity": 0.35
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#1c0e14",
+    "alpha": 0.42,
+    "squash": 0.28,
+    "core": 0.6,
+    "light": {
+      "x": 1,
+      "y": 0.08,
+      "direction": true,
+      "stretch": 1.0
+    }
+  },
+  "viewAnchorY": 0.167
+}

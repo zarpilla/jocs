@@ -16,7 +16,8 @@ Animacions (L, D, U; Benne fa el mirall per a R):
   - **persones** (iri, vet, avia, pla, txell): IdleL/D/U/DL/UL (4: respira), WalkL/D/U/DL/UL (6), TalkL/D/U/DL/UL (2),
     BlinkD/L/DL i LookD/DL (les micro-accions de quan són quietes; `idleActions`). El 3/4 (DL, UL; DR i UR són el
     mirall), perquè les sales tenen la càmera arran de terra i una mica de biaix.
-  - **l'Espora**: IdleL/D/U (4: respira), TalkL/D/U (2: la barba i la mà amunt), BlinkD/L (darrere les ulleres).
+  - **l'Espora**: IdleL/D/U (4: respira), WalkL/D/U (6: passes curtes; al pròleg torna a casa), TalkL/D/U (2: la
+    barba i la mà amunt), BlinkD/L (darrere les ulleres).
   - **les fades** (urtica, pica, card): IdleL/D/U (4: les ales baten i el cos sura), TalkL/D/U (4), BlinkD/L.
   - **els gripaus** (bufo, gripau): IdleL/D/U (4: la gola s'infla), TalkL/D/U (2), BlinkD/L.
 Els fotogrames es retallen al que ocupa el personatge (tots els d'un full, la mateixa capsa), i els peus, el punt
@@ -269,24 +270,36 @@ def persona(cid, spec, walk_speed, verb, walk=(90, 100)):
 
 # ─── Criatures ──────────────────────────────────────────────────────────────
 
-def criatura(cid, draw, feet, idle, talk, idle_ms, talk_ms, verb, davant, walk_speed=60):
-    """`draw(facing, talk=, closed=, k=)` → imatge. `idle`: els k de l'Idle; `talk`: [(talk, k)] de la Talk."""
+def criatura(cid, draw, feet, idle, talk, idle_ms, talk_ms, verb, davant, walk_speed=60, camina=False,
+             walk_ms=(110, 120)):
+    """`draw(facing, talk=, closed=, k=)` → imatge. `idle`: els k de l'Idle; `talk`: [(talk, k)] de la Talk.
+    `camina`: també WalkL/D/U, de sis fotogrames (`draw(facing, walk=0..5)`)."""
     tags = []
     for f in 'LDU':
         tags.append((f'Idle{f}', [draw(f, k=k) for k in idle]))
+    if camina:
+        for f in 'LDU':
+            tags.append((f'Walk{f}', [draw(f, walk=w) for w in range(6)]))
     for f in 'LDU':
         tags.append((f'Talk{f}', [draw(f, talk=t and f != 'U', k=k) for t, k in talk]))
     for f in 'DL':
         tags.append((f'Blink{f}', [draw(f, closed=True, k=idle[0])] * 2))
     return write(cid, tags, feet, {
         'walkSpeed': walk_speed, 'davant': davant, 'defaultVerb': verb,
-        'animations': durations(tags, talk=talk_ms, idle=idle_ms),
+        'animations': durations(tags, walk=walk_ms, talk=talk_ms, idle=idle_ms),
         'idleActions': [{'animation': 'Blink', 'every': [3, 7]}],
     })
 
 
-def espora_draw(f, talk=False, closed=False, k=0):
-    return A.espora_respira(A.espora(f, talk=talk, closed=closed), RESPIRA[k])
+def espora_draw(f, talk=False, closed=False, k=0, walk=None):
+    img = A.espora(f, talk=talk, closed=closed, walk=walk)
+    if walk is None:
+        return A.espora_respira(img, RESPIRA[k])
+    if walk % 3 == 0:                                   # quan les cames es creuen, puja un píxel: va fent tentines
+        out = Image.new('RGBA', img.size, CLEAR)
+        out.paste(img.crop((0, 1, img.width, img.height)), (0, 0))
+        return out
+    return img
 
 
 def fada_draw(qui):
@@ -308,7 +321,7 @@ def repartiment():
         'pla': lambda: persona('pla', A.PLA, 116, 'talkTo'),
         'txell': lambda: persona('txell', A.TXELL, 116, 'talkTo'),
         'espora': lambda: criatura('espora', espora_draw, A.ESPORA_FEET, (0, 1, 2, 3), [(False, 0), (True, 0)],
-                                   IDLE_MS, 150, 'talkTo', 20),
+                                   IDLE_MS, 150, 'talkTo', 20, walk_speed=48, camina=True),
         'urtica': lambda: criatura('urtica', fada_draw('urtica'), A.FADA_FEET, (0, 1, 2, 3),
                                    [(True, 0), (False, 1), (True, 2), (False, 3)], 110, 110, 'talkTo', 22),
         'pica': lambda: criatura('pica', fada_draw('pica'), A.FADA_FEET, (1, 2, 3, 0),

@@ -1058,20 +1058,24 @@ def _beard_lvl(x, y):
     return 0.45 * math.sin(x * 1.9 + y * 0.6) - (0.4 if (int(x) + int(y)) % 5 == 0 else 0)
 
 
-def espora(facing='D', talk=False, closed=False, k=0):
+def espora(facing='D', talk=False, closed=False, k=0, walk=None):
     """L'Espora: D (de cara), L (de perfil, mirant a l'esquerra) o U (d'esquena). `talk`: la boca oberta i la mà
-    amunt («Excel·lent hifa!»). `closed`: els ulls tancats (Blink)."""
+    amunt («Excel·lent hifa!»). `closed`: els ulls tancats (Blink). `walk` (0..5): el pas, de sis fotogrames (les
+    cames curtes fan passes curtes i el braç es gronxa; el pròleg, quan torna a casa)."""
     fg = Fig(ESPORA_W, ESPORA_H)
     S = SKIN_GNOME
     cx = 17.0
     if facing == 'L':
-        _espora_side(fg, S, talk, closed)
+        _espora_side(fg, S, talk, closed, walk)
     else:
         back = facing == 'U'
-        # cames i botes
+        # cames i botes (caminant de cara o d'esquena, cada peu s'aixeca a la seva meitat del pas)
         for sx in (-1, 1):
-            fg.limb((cx + sx * 2.2, 33.0), (cx + sx * 2.4, 37.0), 1.8, 1.7, TROUS_G, 2.4 - (0.4 if sx > 0 else 0))
-            fg.ell(cx + sx * 2.6, 38.4, 2.4, 1.7, BOOT, 2.6 - (0.4 if sx > 0 else 0), amp=1.6)
+            lift = 0.0
+            if walk is not None:
+                lift = max(0.0, math.sin(2 * math.pi * walk / 6 + (0 if sx < 0 else math.pi))) * 1.6
+            fg.limb((cx + sx * 2.2, 33.0), (cx + sx * 2.4, 37.0 - lift), 1.8, 1.7, TROUS_G, 2.4 - (0.4 if sx > 0 else 0))
+            fg.ell(cx + sx * 2.6, 38.4 - lift, 2.4, 1.7, BOOT, 2.6 - (0.4 if sx > 0 else 0), amp=1.6)
         # la bata de fulles
         top, bot = 20, 35
         e = lambda y: (cx - (5.2 + (y - top) * 0.2), cx + (5.2 + (y - top) * 0.2))  # noqa: E731
@@ -1094,7 +1098,8 @@ def espora(facing='D', talk=False, closed=False, k=0):
         for sx in (-1, 1):
             up = talk and sx > 0
             sh = (cx + sx * 5.0, 22.5)
-            hand = (cx + sx * 8.0, 23.0) if up else (cx + sx * 6.8, 30.0)
+            swing = math.sin(2 * math.pi * walk / 6 + (math.pi if sx < 0 else 0)) * 1.2 if walk is not None else 0.0
+            hand = (cx + sx * 8.0, 23.0) if up else (cx + sx * 6.8, 30.0 + swing)
             fg.limb(sh, hand, 1.9, 1.7, LEAF2, 2.6 - (0.5 if sx > 0 else 0), cont=(0.2, 0.8))
             fg.ell(hand[0], hand[1] + (-1.4 if up else 1.4), 1.6, 1.7, S, 2.8 - (0.4 if sx > 0 else 0), amp=1.2)
             if up:
@@ -1150,12 +1155,17 @@ def espora(facing='D', talk=False, closed=False, k=0):
     return fg.render()
 
 
-def _espora_side(fg, S, talk, closed):
-    """De perfil, mirant a l'esquerra."""
+def _espora_side(fg, S, talk, closed, walk=None):
+    """De perfil, mirant a l'esquerra. `walk` (0..5): el pas."""
     cx = 17.5
-    for d, dl in ((1.0, -0.6), (-1.0, 0.0)):                                      # cames: la del fons primer
-        fg.limb((cx + d, 33.0), (cx + d * 0.6, 37.0), 1.8, 1.7, TROUS_G, 2.4 + dl)
-        fg.ell(cx + d * 0.6 - 1.4, 38.4, 2.8, 1.6, BOOT, 2.6 + dl, amp=1.6)
+    a = 2 * math.pi * walk / 6 if walk is not None else None
+    for d, dl, ph in ((1.0, -0.6, math.pi), (-1.0, 0.0, 0.0)):                    # cames: la del fons primer
+        foot, lift = cx + d * 0.6, 0.0
+        if a is not None:
+            foot = cx - 3.2 * math.sin(a + ph)                                   # endavant (a l'esquerra) i enrere
+            lift = max(0.0, math.cos(a + ph)) * 1.4                               # el peu que avança, aixecat
+        fg.limb((cx + d * 0.5, 33.0), (foot, 37.0 - lift), 1.8, 1.7, TROUS_G, 2.4 + dl)
+        fg.ell(foot - 1.4, 38.4 - lift, 2.8, 1.6, BOOT, 2.6 + dl, amp=1.6)
     top, bot = 20, 35
     e = lambda y: (cx - (4.2 + (y - top) * 0.18), cx + (4.0 + (y - top) * 0.22))  # noqa: E731
     fg.lathe(top, bot, e, LEAF, 2.8, amp=1.6, lvlfn=_leaf_lvl, cont=(0.0, 0.6))
@@ -1192,7 +1202,7 @@ def _espora_side(fg, S, talk, closed):
     for i in range(3):
         fg.px(ex - 1 + i, 11.2 + (0.6 if i == 2 else 0), BEARD, 4.0)
     # el braç del davant
-    hand = (cx - 5.4, 24.0) if talk else (cx - 1.6, 30.0)
+    hand = (cx - 5.4, 24.0) if talk else (cx - 1.6 + (2.2 * math.sin(a) if a is not None else 0.0), 30.0)
     fg.limb((cx - 0.6, 22.5), hand, 1.9, 1.7, LEAF2, 2.6, cont=(0.2, 0.8))
     fg.ell(hand[0], hand[1] + (-1.4 if talk else 1.4), 1.6, 1.7, S, 2.8, amp=1.2)
     if talk:

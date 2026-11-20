@@ -32,6 +32,7 @@
         }
       },
       "cover": "portada",
+      "intro": "proleg_roure",
       "switchWhen": {
         "any": []
       }
@@ -3543,6 +3544,97 @@
       "portada": {
         "name": "sala.portada.nom",
         "hotspots": {}
+      },
+      "proleg_roure": {
+        "name": "sala.proleg_roure.nom",
+        "cutscene": {
+          "skipTo": "vora_bosc"
+        },
+        "onEnter": [
+          {
+            "verb": "*",
+            "lines": [
+              {
+                "who": "espora",
+                "text": "sala.proleg_roure.1",
+                "stage": [
+                  {
+                    "prop": "porta_oberta",
+                    "visible": false
+                  },
+                  {
+                    "who": "espora",
+                    "at": {
+                      "x": 654,
+                      "y": 207
+                    },
+                    "visible": true
+                  },
+                  {
+                    "who": "espora",
+                    "walk": {
+                      "x": 336,
+                      "y": 207
+                    }
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "who": "espora",
+                    "face": "R",
+                    "hold": 0.7
+                  }
+                ]
+              },
+              {
+                "who": "espora",
+                "text": "sala.proleg_roure.2",
+                "stageAfter": [
+                  {
+                    "who": "espora",
+                    "walk": {
+                      "x": 222,
+                      "y": 201
+                    }
+                  },
+                  {
+                    "who": "espora",
+                    "face": "U",
+                    "hold": 0.3
+                  },
+                  {
+                    "prop": "porta_oberta",
+                    "visible": true,
+                    "hold": 0.5
+                  },
+                  {
+                    "who": "espora",
+                    "visible": false,
+                    "hold": 0.6
+                  },
+                  {
+                    "prop": "porta_oberta",
+                    "visible": false,
+                    "hold": 1.2
+                  }
+                ]
+              },
+              {
+                "who": "title",
+                "text": "sala.proleg_roure.3"
+              }
+            ],
+            "goTo": "vora_bosc"
+          }
+        ],
+        "hotspots": {},
+        "decor": {
+          "porta_oberta": {
+            "visibleIf": {
+              "flag": "porta_oberta"
+            }
+          }
+        }
       },
       "toll_gripaus": {
         "name": "sala.toll_gripaus.nom",
@@ -8023,6 +8115,10 @@
       "sala.centraleta.xarxa.6": "Escolta... Arriben els missatges del nord. Tres dies de missatges.",
       "sala.credits.nom": "Crèdits",
       "sala.portada.nom": "L'Última Arrel",
+      "sala.proleg_roure.1": "Tres dies sense ni un missatge del nord.",
+      "sala.proleg_roure.2": "«Bosc 2.0». Hmf. Ja en tenim, de xarxa.",
+      "sala.proleg_roure.3": "Dissabte, al capvespre",
+      "sala.proleg_roure.nom": "El roure gros",
       "sala.toll_gripaus.aigua.tap.1": "L'aigua baixa pel rierol i omple el toll. Els joncs es redrecen.",
       "sala.toll_gripaus.aigua.tap.2": "(abaixant la pancarta) Senyores i senyors: s'ha acabat la vaga.",
       "sala.toll_gripaus.aigua.tap.3": "(des de la finestreta) Registre del Bosc. Obert. Passi, passi.",

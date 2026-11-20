@@ -171,7 +171,9 @@ d'ull què és de qui.
 | 6 | `zona_zero` | Iri | Dilluns, Festa Major, al matí | De lluny |
 | 7 | `bosc_obert` | Vet | Una setmana després | De lluny |
 
-A més: `portada` i `credits`.
+A més: `portada`, `proleg_roure` i `credits`. El pròleg és el mateix pla que la portada, sense el títol: l'Espora
+torna a casa, s'atura a mirar el cartell («“Bosc 2.0”. Hmf. Ja en tenim, de xarxa.») i entra per la porta del roure.
+Després, el rètol «Dissabte, al capvespre» i l'escena 1.
 
 ---
 

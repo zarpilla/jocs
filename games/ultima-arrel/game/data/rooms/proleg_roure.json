@@ -1,0 +1,92 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.proleg_roure.nom",
+  "cutscene": {
+    "skipTo": "vora_bosc"
+  },
+  "onEnter": [
+    {
+      "verb": "*",
+      "lines": [
+        {
+          "who": "espora",
+          "text": "sala.proleg_roure.1",
+          "stage": [
+            {
+              "prop": "porta_oberta",
+              "visible": false
+            },
+            {
+              "who": "espora",
+              "at": {
+                "x": 654,
+                "y": 207
+              },
+              "visible": true
+            },
+            {
+              "who": "espora",
+              "walk": {
+                "x": 336,
+                "y": 207
+              }
+            }
+          ],
+          "stageAfter": [
+            {
+              "who": "espora",
+              "face": "R",
+              "hold": 0.7
+            }
+          ]
+        },
+        {
+          "who": "espora",
+          "text": "sala.proleg_roure.2",
+          "stageAfter": [
+            {
+              "who": "espora",
+              "walk": {
+                "x": 222,
+                "y": 201
+              }
+            },
+            {
+              "who": "espora",
+              "face": "U",
+              "hold": 0.3
+            },
+            {
+              "prop": "porta_oberta",
+              "visible": true,
+              "hold": 0.5
+            },
+            {
+              "who": "espora",
+              "visible": false,
+              "hold": 0.6
+            },
+            {
+              "prop": "porta_oberta",
+              "visible": false,
+              "hold": 1.2
+            }
+          ]
+        },
+        {
+          "who": "title",
+          "text": "sala.proleg_roure.3"
+        }
+      ],
+      "goTo": "vora_bosc"
+    }
+  ],
+  "hotspots": {},
+  "decor": {
+    "porta_oberta": {
+      "visibleIf": {
+        "flag": "porta_oberta"
+      }
+    }
+  }
+}
