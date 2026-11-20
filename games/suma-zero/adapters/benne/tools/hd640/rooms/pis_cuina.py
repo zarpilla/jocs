@@ -1,16 +1,19 @@
 """
 La cuina del pis (Escena 1, la Vet), de nit. EN 3D (hd640/tres_d.py), a 1×.
 
-La càmera és alta i mira de biaix la cantonada del fons a l'esquerra, com a l'estudi (és l'habitació del costat):
+La càmera és alta i gairebé de cara a la paret del fons, una mica girada cap a l'esquerra: es veuen les tres parets.
+La del fons és la que comparteix amb l'estudi (d'esquena a esquena: el passaplats), i per això la porta del pis no hi
+pot ser (sortiria a l'estudi): és a la paret de la dreta.
   - a la paret de l'esquerra, en escorç, el **taulell** amb volum (la tapa de fusta, els armaris de formica, el
     sòcol enfonsat), els **armaris de dalt** que sobresurten, les rajoles verdes i la **finestra** al pati de llums;
     damunt del taulell, el microones, la cafetera, la pila de **plats** a l'aigüera i el fruiter;
   - a la paret del fons, el **passaplats** (la mateixa obertura que el de l'estudi, vista des de l'altre costat:
-    obert, s'hi veu l'estudi, lila i cian), el penjador amb la bomber i la **porta** del pis;
+    obert, s'hi veu l'estudi, lila i cian), el penjador amb la bomber, l'intèrfon i la **rentadora** al racó;
+  - a la paret de la dreta, en escorç, la **porta** del pis, amb l'estora;
   - la **nevera** separada de la paret i una mica girada (davant, costat i tapa, amb les capses de dalt); oberta,
     la porta gira cap a la càmera i es veu la llum de dins;
   - la **taula** de la cuina, girada, amb les cadires i l'hule a quadres: s'hi passa per darrere;
-  - el cubell, la capsa de pizza recolzada, el plat d'en Diu i l'estora de la porta, a terra;
+  - el cubell, la capsa de pizza recolzada i el plat d'en Diu, a terra;
   - el **mosaic hidràulic** del terra, en coordenades del món (les rajoles s'empetiteixen cap al fons);
   - el **llum penjant** al mig: fa el bassal de llum càlida al terra i les ombres; els racons, foscos;
   - primer pla: la bombona de butà, la canonada del gas i el respatller d'una cadira, en silueta.
@@ -19,7 +22,7 @@ Tot el detall ve del dibuix pla de sempre (pis_cuina_pla_comu.py), projectat; el
 cafetera, la nevera oberta, el passaplats obert) es dibuixen en 3D i en surt la diferència. Damunt de tot, la llum
 de Suma Zero (hd640/llum.py): el llum càlid, el cian del passaplats, el bloom i la corba de to.
 
-El món: x a la dreta (0 = la paret del taulell), y amunt (0 = el terra), z cap al fons (300 = la paret del fons);
+El món: x a la dreta (0 = la paret del taulell, XR = la de la porta), y amunt (0 = el terra), z cap al fons (300 = la paret del fons);
 1 unitat = 1 píxel de sala a la distància on un personatge fa ≈111 px (escala 1).
 """
 import functools
@@ -40,13 +43,13 @@ ZW = 300                                           # la paret del fons
 HW = 200                                           # l'alçada de les parets (el dibuix pla fa 200 fins al terra)
 XL = 290                                           # al dibuix pla, fins aquí és la paret del taulell (l'esquerra)
 XB0 = 200                                          # al dibuix pla, on comença la paret del fons
-XR = 640                                           # on s'acaba la paret del fons (fora de la pantalla)
+XR = 440                                           # la paret de la dreta, la de la porta (el fons fa 0..XR)
 CX = 40                                            # el fons del taulell (des de la paret)
 CTOP = 48                                          # l'alçada del taulell
 FRIDGE = (94, 264, 84, 54, 142, 0.07)              # la nevera: x, z del centre, ample, fons, alt, gir
 BIN = (156, 280)                                   # el cubell (x, z)
 TABLE = (178, 60, 72, 48, 46, 0.38)               # la taula: x, z del centre, ample, fons, alt, gir
-WASHER = (478, 268, 56, 50, 62, -0.1)              # la rentadora, al costat de la porta: x, z, ample, fons, alt, gir
+WASHER = (402, 268, 56, 50, 62, -0.06)             # la rentadora, al racó del fons a la dreta: x, z, ample, fons, alt, gir
 LAMPP = (214, 150, 168)                            # la bombeta del llum penjant
 DIU = (214, 196)                                    # el plat d'en Diu (x, z)
 
@@ -68,10 +71,15 @@ def _y(fy):
 
 HATCH = (_wx(PL.HATCH[0]), _wx(PL.HATCH[2]), _y(PL.HATCH[3]), _y(PL.HATCH[1]))      # x0, x1, y0, y1
 WIN = (_wz(PL.WINDOW[0]), _wz(PL.WINDOW[2]), _y(PL.WINDOW[3]), _y(PL.WINDOW[1]))   # z0, z1, y0, y1
-DOOR = (_wx(552), _wx(626), 0, _y(51))
+# La porta del pis és a la paret de la dreta (x = XR), no a la del fons: la del fons és la que comparteix amb
+# l'estudi (el passaplats), i una porta allà sortiria a l'estudi. Al dibuix pla de la paret de la dreta, la x
+# fx és la z = DZ - (fx - 552): la porta (fx 552..626) va de z = DZ fins a DZ - 74.
+DZ = 236
+DOOR = (DZ - 74, DZ, 0, _y(51))                                                     # z0, z1, y0, y1 (a x = XR)
+FDR = (552 - (ZW - DZ), 640)                                                        # el retall del dibuix pla
 SOCKET = (_wz(128), _y(137))                                                        # l'endoll de la cafetera (z, y)
 
-CAM = Camera(pos=(410, 200, -240), yaw=-0.42, pitch=0.2, f=470, centre=(320, 84))
+CAM = Camera(pos=(240, 200, -250), yaw=-0.08, pitch=0.2, f=440, centre=(320, 84))
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)  # (la llum és la del món: la de l'Escena)
 TEXL = Light(ambient=-0.2, vignette=None, floor_fade=None)  # la dels dibuixos plans (les textures): neutra
@@ -103,12 +111,20 @@ def _paret_esq(rain=0, tv=None):
 
 
 def _paret_fons():
-    """La paret del fons, de cara: arrebossat, el passaplats, el penjador i la porta."""
+    """La paret del fons, de cara: arrebossat, el passaplats i el penjador (amb l'intèrfon i el clauer)."""
     cv = Canvas(light=TEXL)
     PL.wall(cv)
     PL.hatch(cv)
     PL.coats(cv)
+    return cv.img
+
+
+def _paret_dreta():
+    """La paret de la dreta, de cara: arrebossat i la porta del pis (l'estora, la fa el 3D)."""
+    cv = Canvas(light=TEXL)
+    PL.wall(cv)
     PL.door(cv)
+    cv.rect(0, PL.FLOOR_Y + 1, W - 1, H - 1, PLASTER, 2.7)                   # (sota el sòcol, res: l'estora fora)
     return cv.img
 
 
@@ -191,7 +207,7 @@ def _terra_tex():
 
 @functools.lru_cache(maxsize=None)
 def _textures():
-    return {'esq': _paret_esq(), 'fons': _paret_fons(), 'mobles': _mobles(), 'terra': _terra_tex(),
+    return {'esq': _paret_esq(), 'fons': _paret_fons(), 'dreta': _paret_dreta(), 'mobles': _mobles(), 'terra': _terra_tex(),
             'llum': _llum_penjant()}
 
 
@@ -270,11 +286,14 @@ def escena(cv, tex, estat=frozenset()):
     # la paret del taulell (x = 0): de prop, arrebossat; cap a la cantonada, el dibuix pla
     e.quad('paret_esq_prop', (0, HW, zn), (0, HW, ZW - XL), (0, 0, ZW - XL), (0, 0, zn), ramp=PLASTER, lvl=_arrebossat(2.0))
     e.quad('paret_esq', (0, HW, ZW - XL), (0, HW, ZW), (0, 0, ZW), (0, 0, ZW - XL), tex=(esq, (0, 0, XL, HW)))
-    # la paret del fons (z = 300): el dibuix pla (x 236..640) i, a la dreta, més arrebossat
-    e.quad('paret_fons', (0, HW, ZW), (W - XB0, HW, ZW), (W - XB0, 0, ZW), (0, 0, ZW), tex=(fons, (XB0, 0, W, HW)),
+    # la paret del fons (z = 300): el dibuix pla (x XB0..XB0 + XR)
+    e.quad('paret_fons', (0, HW, ZW), (XR, HW, ZW), (XR, 0, ZW), (0, 0, ZW), tex=(fons, (XB0, 0, XB0 + XR, HW)),
            forma=forat if obert else None)
-    e.quad('paret_fons_dreta', (W - XB0, HW, ZW), (XR, HW, ZW), (XR, 0, ZW), (W - XB0, 0, ZW), ramp=PLASTER,
-           lvl=_arrebossat(2.6, seed=5))
+    # la paret de la dreta (x = XR), amb la porta del pis: cap al fons, el dibuix pla; de prop, arrebossat
+    zd = ZW - (FDR[1] - FDR[0])
+    e.quad('paret_dreta', (XR, HW, ZW), (XR, HW, zd), (XR, 0, zd), (XR, 0, ZW), tex=(tex['dreta'], (FDR[0], 0, FDR[1], HW)))
+    e.quad('paret_dreta_prop', (XR, HW, zd), (XR, HW, zn), (XR, 0, zn), (XR, 0, zd), ramp=PLASTER,
+           lvl=_arrebossat(2.4, seed=5))
     # el terra: el mosaic hidràulic
     e.quad('terra', (0, 0, ZW), (XR, 0, ZW), (XR, 0, -60), (0, 0, -60), tex=(tex['terra'], (0, 0, XR, ZW + 60)))
     # el bassal de llum càlida sota el llum, el cian del passaplats i la claror freda de la finestra
@@ -295,9 +314,9 @@ def escena(cv, tex, estat=frozenset()):
              lambda s, t: 0.55 * max(0.0, 1 - t / 70))
     e.foscor('sostre_fosc', (0.5, HW, zn), (0.5, HW, ZW), (0.5, 0, ZW), (0.5, 0, zn),
              lambda s, t: 0.55 * max(0.0, 1 - t / 70))
-    # l'estora de la porta
+    # l'estora de la porta (a terra, contra la paret de la dreta)
     d0, d1 = DOOR[0] + 4, DOOR[1] - 4
-    e.quad('estora', (d0, 0.4, ZW - 4), (d1, 0.4, ZW - 4), (d1 + 2, 0.4, ZW - 26), (d0 - 2, 0.4, ZW - 26),
+    e.quad('estora', (XR - 4, 0.4, d1), (XR - 4, 0.4, d0), (XR - 26, 0.4, d0 - 2), (XR - 26, 0.4, d1 + 2),
            ramp=[(20, 14, 10), (40, 30, 20), (64, 48, 30), (90, 70, 44), (120, 96, 60)],
            lvl=lambda s, t, P: 2.4 + (0.8 if (int(s) + int(t)) % 4 == 0 else 0) - (1.2 if s < 2 or t > 20 else 0))
     # el taulell: els armaris de sota (el davant, el dibuix pla), la tapa de fusta i l'aigüera
@@ -433,8 +452,8 @@ def escena(cv, tex, estat=frozenset()):
     BUTA = [(6, 2, 2), (16, 6, 4), (30, 12, 6), (50, 22, 8), (76, 34, 12), (104, 50, 18)]
     e.tub('primer_pla', (12, 0, -4), (12, 48, -4), 17, BUTA, 2.4, llum_dir=(0.8, -0.5))
     e.tub('primer_pla', (12, 48, -4), (12, 60, -4), 7, FOSC, 2.4, llum_dir=(0.8, -0.5))
-    e.tub('primer_pla', (446, 0, -22), (446, HW, -22), 4.5, FOSC, 1.8, brides=50, llum_dir=(-0.8, 0.3))   # el gas
-    _cadira(e, 'primer_pla', 462, 40, -0.5, fosc=True)
+    e.tub('primer_pla', (424, 0, 40), (424, HW, 40), 4.5, FOSC, 1.8, brides=50, llum_dir=(-0.8, 0.3))     # el gas
+    _cadira(e, 'primer_pla', 392, 6, -0.5, fosc=True)
     return e
 
 
@@ -669,8 +688,8 @@ def _nevera_rect(box):
 
 # El terra on es camina (al món): davant el taulell, la nevera i el cubell, fins a la porta, i per darrere de la
 # taula (per davant, ja és el primer pla: l'escala passaria d'1,2).
-WALK_MON = [(48, 96), (92, 92), (200, 132), (248, 84), (300, 104), (400, 148), (470, 176), (476, 230), (444, 236),
-            (434, 288), (200, 288), (180, 262), (138, 262), (138, 224), (48, 222)]
+WALK_MON = [(52, 100), (100, 100), (120, 122), (236, 122), (250, 92), (420, 92), (420, 232), (366, 236),
+            (370, 286), (205, 286), (200, 258), (146, 258), (144, 226), (52, 225)]
 
 
 def _cantons(cx, cz, ang, lx0, lx1, lz0, lz1):
@@ -708,8 +727,9 @@ GEOMETRIA = {
         'tonyina': {'rect': _nevera_rect((307, 133, 355, 153)), 'walk': _p(_FR[0] + 10, _FR[1] - _FR[3] / 2 - 40)},
         'passaplats': {'rect': _rect_mon((HATCH[0], HATCH[3], ZW), (HATCH[1], HATCH[2], ZW)),
                        'walk': _p((HATCH[0] + HATCH[1]) / 2 + 6, 272)},
-        'porta': {'rect': _rect_mon((DOOR[0], DOOR[3], ZW), (DOOR[1], DOOR[2], ZW)),
-                  'walk': _p((DOOR[0] + DOOR[1]) / 2, 282)},
+        'porta': {'rect': _rect_mon((XR, DOOR[3], DOOR[0]), (XR, DOOR[2], DOOR[1]), (XR, DOOR[3], DOOR[1]),
+                                    (XR, DOOR[2], DOOR[0])),
+                  'walk': _p(XR - 34, (DOOR[0] + DOOR[1]) / 2)},
     },
     'spawns': {'vet': _p(220, 150)},
     'walkable': _WALK,
