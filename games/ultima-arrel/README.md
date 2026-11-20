@@ -20,7 +20,8 @@ referències: [guio/art/](guio/art/).
 - **La lupa** és el botó de pista. Al HUD tàctil ocupa el lloc del botó «Canvia» (`botoPista` a
   [adapters/benne/joc.ts](adapters/benne/joc.ts)): en prémer-la, surt la pista i uns **filaments turquesa** que van de
   la protagonista a les coses on apunta (`targets` a [game/data/hints.json](game/data/hints.json),
-  `game.showThreads` al motor). Quan juga la Vet, la pista li diu la Iri pel walkie (`who`).
+  `game.showThreads` al motor). Quan juga la Vet, la pista li diu la Iri pel walkie (`who`). La targeta «Com es juga» ho diu a
+  l'última fila, amb la lupa.
 - Sense barra de verbs, amb la interfície tàctil compartida, com Suma Zero, Ni un ou i Aigua Verne.
 
 ## Ordres
