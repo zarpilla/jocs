@@ -32,7 +32,7 @@ from hd.pix import Light, Canvas, hr
 from hd.rooms.comu import obox, _diff, PLASTIC, SHEET
 from hd.rooms.aeroport_terminal import DAWN, CHROME
 from hd.rooms.exterior import fbm
-from hd.characters import M, ORANGE, BOOT, TROUSER, SKIN_VET, SKIN_RUDDY, HAIR_BROWN
+from hd.characters import M, ORANGE, BOOT, TROUSER, SKIN_VET, SKIN_FOSCA, SKIN_RUDDY, HAIR_BROWN
 from hd640.draw_characters import person
 from hd640.tres_d import Camera, Escena, Llum
 from hd import personatges as P
@@ -186,7 +186,7 @@ SPECS = {
     'tecnic': {'skin': SKIN_RUDDY, 'legs': ORANGE, 'top': ORANGE, 'shoes': BOOT, 'stoop': 2,
                'hooks': {'hair': P.hair_cap(HAIR_BROWN)}},
 }
-RIUS_SPEC = {'skin': SKIN_VET, 'legs': TROUSER, 'top': HIVIS,
+RIUS_SPEC = {'skin': SKIN_FOSCA, 'legs': TROUSER, 'top': HIVIS,
              'sleeve': M((20, 20, 26), (40, 40, 50), (62, 62, 74), (88, 88, 100), (116, 116, 128)),
              'shoes': BOOT, 'thin': 1, 'hooks': {'hair': P.hair_cap(HAIR_BROWN)}}
 

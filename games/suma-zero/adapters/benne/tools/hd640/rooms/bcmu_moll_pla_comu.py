@@ -26,7 +26,7 @@ from hd.rooms.comu import obox, outline, text, text_width, _diff, PLASTIC, SHEET
 from hd.rooms.pis_cuina import outline_poly
 from hd.rooms.bcmu_moll import (BLOCKW, FLOORC, STEEL, SKYD, LAKE, HILL, STONE, YELH, FORK, COFFEE, PALLET,  # noqa: F401
                                 BOXC, TYRE, OVERALL, CAPM)
-from hd.characters import BOOT, SKIN_PALE, SKIN_VET, SKIN_RUDDY, HAIR_BROWN, HAIR_COPPER
+from hd.characters import BOOT, SKIN_PALE, SKIN_VET, SKIN_FOSCA, SKIN_RUDDY, HAIR_BROWN, HAIR_COPPER
 from hd.personatges import hair_cap
 from hd640.rooms.bcmu import CONCB, NAVYB, BRASS, logo
 import hd640.draw_characters as DC
@@ -277,7 +277,7 @@ TECNICS = [
     # (spec, direcció, peus x, mirall)
     (_tecnic(SKIN_RUDDY, HAIR_BROWN), 'U', 253, False),
     (_tecnic(SKIN_PALE, HAIR_COPPER, cap=False), 'L', 273, True),
-    (_tecnic(SKIN_VET, HAIR_BROWN), 'L', 295, False),
+    (_tecnic(SKIN_FOSCA, HAIR_BROWN), 'L', 295, False),
 ]
 TK = 0.66      # al fons: més petits
 FEET_Y = 200

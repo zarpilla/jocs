@@ -196,7 +196,7 @@ def diu(cua=0, parpelleja=False):
 
 # ─── Secundaris de l'Acte 1 (provisionals: el mateix dibuix, sense els detalls finals) ──────────────
 
-from hd.characters import (SKIN_OLD, SKIN_RUDDY, SKIN_PALE, SKIN_VET, WHITE, TROUSER, GRAY_SHOE, BOOT, SUIT_D, TRENCH,  # noqa: E402
+from hd.characters import (SKIN_OLD, SKIN_RUDDY, SKIN_PALE, SKIN_VET, SKIN_FOSCA, WHITE, TROUSER, GRAY_SHOE, BOOT, SUIT_D, TRENCH,  # noqa: E402
                            CREAM, NAVY_U, FELT, HAIR_WHITE, HAIR_BROWN, HAIR_COPPER, RED, BRASS, STEELB, DENIM)
 from PIL import Image  # noqa: E402
 from pixels import nearest  # noqa: E402
@@ -286,7 +286,7 @@ NPCS = {
     'soler': {'skin': SKIN_PALE, 'legs': NAVY_U, 'top': NAVY_U, 'shoes': GRAY_SHOE,
               'hooks': {'hair': hooks(hair_cap(HAIR_COPPER), police_cap), 'over': badge}},
     # l'empleat d'objectes perduts: vestit gris, cansat
-    'empleat': {'skin': SKIN_VET, 'legs': SUIT_D, 'top': SUIT_D, 'shoes': GRAY_SHOE, 'closed': False, 'brow_dy': 1,
+    'empleat': {'skin': SKIN_FOSCA, 'legs': SUIT_D, 'top': SUIT_D, 'shoes': GRAY_SHOE, 'closed': False, 'brow_dy': 1,
                 'hooks': {'hair': hair_cap(HAIR_BROWN)}},
     # el nen: samarreta vermella (amb un dinosaure, en teoria) i texans
     'nen': {'skin': SKIN_PALE, 'legs': DENIM, 'top': RED, 'shoes': GRAY_SHOE,
@@ -824,7 +824,7 @@ def rius_vest(fg, p, spec):
 
 def _rius(contenta=False):
     face = smile if contenta else frown
-    return {'skin': SKIN_VET, 'legs': OVERALL, 'top': HIVIS, 'sleeve': OVERALL, 'shoes': BOOT, 'thin': 1,
+    return {'skin': SKIN_FOSCA, 'legs': OVERALL, 'top': HIVIS, 'sleeve': OVERALL, 'shoes': BOOT, 'thin': 1,
             'pose': pose_phone,
             'hooks': {'hair': hooks(hair_cap(HAIR_BROWN, fringe=1.4), face), 'torso': rius_vest, 'over': phone_in_hand}}
 

@@ -19,7 +19,7 @@ import math
 from PIL import Image
 from pixels import nearest
 
-from hd.characters import (M, Fig, person, SKIN_OLD, SKIN_PALE, SKIN_VET, SKIN_IRI, SKIN_RUDDY, BOOT, WHITE, HAIR_WHITE, HAIR_COPPER,
+from hd.characters import (M, Fig, person, SKIN_OLD, SKIN_PALE, SKIN_VET, SKIN_FOSCA, SKIN_IRI, SKIN_RUDDY, BOOT, WHITE, HAIR_WHITE, HAIR_COPPER,
                            HAIR_BROWN, STEELB, TROUSER, DENIM, RED, ORANGE, NAVY_U, CREAM, GRAY_SHOE, SNEAKER)
 
 # ─── Materials ─────────────────────────────────────────────────────────────
@@ -568,13 +568,13 @@ NPCS = {
     'juana': {'skin': SKIN_PALE, 'legs': DENIM, 'top': ANORAK, 'shoes': BOOT, 'thin': 0.6, 'brow': (90, 60, 40),
               'iris': (70, 100, 60), 'lip': (170, 90, 90),
               'hooks': {'hair': juana_hair, 'over': anorak_over}},
-    'nadia': {'skin': SKIN_VET, 'legs': DENIM, 'top': RAIN_RED, 'shoes': SNEAKER, 'thin': 0.6, 'lashes': True,
+    'nadia': {'skin': SKIN_FOSCA, 'legs': DENIM, 'top': RAIN_RED, 'shoes': SNEAKER, 'thin': 0.6, 'lashes': True,
               'iris': (40, 26, 20), 'brow': (14, 10, 12), 'lip': (140, 60, 70),
               'hooks': {'hair': nadia_hair, 'over': raincoat_over}},
     'marcel': {'skin': SKIN_RUDDY, 'legs': ORANGE, 'top': JERSEY_GREY, 'shoes': BOOT, 'thin': -0.6, 'stoop': 1,
                'brow': (60, 40, 30),
                'hooks': {'hair': marcel_hair, 'over': bib_over}},
-    'tomas': {'skin': SKIN_VET, 'legs': CHECK, 'top': WHITE, 'shoes': GRAY_SHOE, 'thin': -1.4,
+    'tomas': {'skin': SKIN_FOSCA, 'legs': CHECK, 'top': WHITE, 'shoes': GRAY_SHOE, 'thin': -1.4,
               'iris': (40, 26, 20), 'brow': (20, 14, 14),
               'hooks': {'hair': hair_cap(HAIR_BLACK, curls=True), 'over': tomas_over}},
 }

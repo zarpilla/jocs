@@ -391,7 +391,7 @@ def llancadora(dst):
         a = k * math.pi / 4 + 0.3
         cv.put(px_ + math.cos(a) * 9.6, py_ + math.sin(a) * 9.6, COPPER, 5.6 if math.sin(a) < 0 else 1.4)
     cv.disc(px_, py_, 8.3, 8.3, CABIN, lambda nx, ny: 3.2 - ny * 1.8 - math.hypot(nx - 0.3, ny + 0.4) * 1.2, 0)
-    leg = {'h': (232, 226, 210), 'H': (162, 158, 166), 's': (108, 64, 50), 'o': (190, 84, 26), 'O': (140, 54, 18)}
+    leg = {'h': (232, 226, 210), 'H': (162, 158, 166), 's': (139, 84, 68), 'o': (190, 84, 26), 'O': (140, 54, 18)}
     for j, row in enumerate(VET):
         for i, ch in enumerate(row):
             x, y = px_ - 7 + i, py_ - 7 + j

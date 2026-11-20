@@ -16,7 +16,7 @@ from hd.rooms.comu import obox, outline, text, text_width, _diff, PLASTIC, SHEET
 from hd.rooms.bar_sala import STEELB, SLATE
 from hd.rooms.pis_cuina import outline_poly
 from hd.rooms.aeroport_terminal import DAWN, CHROME, YELS, BLUE
-from hd.characters import person, M, ORANGE, BOOT, TROUSER, SKIN_VET, SKIN_RUDDY, HAIR_BROWN, HAIR_COPPER
+from hd.characters import person, M, ORANGE, BOOT, TROUSER, SKIN_VET, SKIN_FOSCA, SKIN_RUDDY, HAIR_BROWN, HAIR_COPPER
 from hd import personatges as P
 
 FLOOR = 226            # el terra de la cabina (on recolzen els peus)
@@ -173,7 +173,7 @@ SPECS = {
     'tecnic': {'skin': SKIN_RUDDY, 'legs': ORANGE, 'top': ORANGE, 'shoes': BOOT, 'stoop': 2,
                'hooks': {'hair': P.hair_cap(HAIR_BROWN)}},
 }
-RIUS = {'skin': SKIN_VET, 'legs': TROUSER, 'top': HIVIS, 'sleeve': M((20, 20, 26), (40, 40, 50), (62, 62, 74), (88, 88, 100), (116, 116, 128)),
+RIUS = {'skin': SKIN_FOSCA, 'legs': TROUSER, 'top': HIVIS, 'sleeve': M((20, 20, 26), (40, 40, 50), (62, 62, 74), (88, 88, 100), (116, 116, 128)),
         'shoes': BOOT, 'thin': 1, 'hooks': {'hair': P.hair_cap(HAIR_BROWN, fringe=1.4)}}
 
 

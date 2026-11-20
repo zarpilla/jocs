@@ -20,7 +20,7 @@ from hd.pix import Light, Canvas, W, H, hr
 from hd.rooms.comu import obox, outline, text, text_width, _diff, PLASTIC, SHEET, CARD, RED, YEL, GRAYC
 from hd.rooms.pis_cuina import outline_poly
 from hd.rooms.bcmu import CONCB, NAVYB, BRASS, LINOB, logo
-from hd.characters import person, M, BOOT, GRAY_SHOE, SKIN_PALE, SKIN_VET, SKIN_RUDDY, HAIR_BROWN, HAIR_COPPER
+from hd.characters import person, M, BOOT, GRAY_SHOE, SKIN_PALE, SKIN_VET, SKIN_FOSCA, SKIN_RUDDY, HAIR_BROWN, HAIR_COPPER
 from hd.personatges import hair_cap
 
 FLOOR_Y = 150
@@ -208,7 +208,7 @@ TECNICS = [
     # (spec, direcció, peus x, mirall)
     (_tecnic(SKIN_RUDDY, HAIR_BROWN), 'U', 190, False),
     (_tecnic(SKIN_PALE, HAIR_COPPER, cap=False), 'L', 205, True),
-    (_tecnic(SKIN_VET, HAIR_BROWN), 'L', 221, False),
+    (_tecnic(SKIN_FOSCA, HAIR_BROWN), 'L', 221, False),
 ]
 TK = 0.66      # al fons: més petits
 FEET_Y = 150
