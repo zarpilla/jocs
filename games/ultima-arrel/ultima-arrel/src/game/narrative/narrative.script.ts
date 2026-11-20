@@ -12,7 +12,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
-  AMPLADA, AUTOSAVE, applyStageNow, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -178,7 +178,7 @@ export function performInteraction(verb: string, target: FallbackTarget, item?: 
   if (isClickableCutscene(narrative.world.currentRoom())) setClickablePrompt('')
   const request = { verb, target: targetFromBenne(target.kind, target.id), item: item ? fromBenne('items', item) : undefined }
   const room = narrative.world.currentRoom()
-  const result = narrative.interact(request)
+  const result = primeStage(narrative.interact(request))
   touchRouter()?.acted?.(verb, target, room)
   // Una porta (o escotilla, o escala) que porta a una altra sala: el seu so sonarà en arribar-hi.
   setDoorSound(result?.goTo && !result.dialogue && target.kind !== 'item' ? narrative.world.currentRoom() : null, fromBenne('hotspots', target.id))
@@ -245,7 +245,7 @@ export function onRoomEntered() {
   // L'onEnter es resol ara, abans del fos, i es reprodueix després (`enterNarrativeRoom`). Si comença
   // amb un títol, la pantalla es posa a negre ja: si no, es veuria la sala, s'enfosquiria i tornaria.
   narrative.worldChanged()
-  const result = narrative.enterRoom(room)
+  const result = primeStage(narrative.enterRoom(room))
   entrada = { room, result }
   if (result?.lines[0]?.who === 'title') stayBlackOnEnter()
   // Com comença l'escena (qui hi ha, on, assegut o dret) ja es veu en sortir del fos: el moviment, després.
@@ -373,7 +373,7 @@ export function enterNarrativeRoom() {
     walkTo = entrada.walkTo
   } else {
     narrative.worldChanged()
-    result = narrative.enterRoom(room)
+    result = primeStage(narrative.enterRoom(room))
   }
   entrada = null
   startPatrols()
@@ -464,7 +464,7 @@ function refreshOptions(dialog: DialogHandle, choices: ResolvedChoice[]) {
 export function startNarrativeDialog(id: string, dialog: DialogHandle) {
   adoptLoadedState()
   playerActed()
-  const step = narrative.startDialogue(id)
+  const step = primeStage(narrative.startDialogue(id))
   refreshOptions(dialog, step.choices)
   playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
   if (step.ended) endDialog(dialog)
@@ -473,7 +473,9 @@ export function startNarrativeDialog(id: string, dialog: DialogHandle) {
 /** Des de cada `options.x.onChoose` (generat). */
 export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: string, choice: string) {
   adoptLoadedState()
-  const step = narrative.choose(id, choice, { node })
+  // La primera línia és l'opció dita en veu alta (si no és `silent`): el decorat de l'escena és a la següent.
+  const echo = narrative.content.dialogues[id]?.nodes[node]?.choices?.find((c) => c.id === choice)?.silent ? 0 : 1
+  const step = primeStage(narrative.choose(id, choice, { node }), echo)
   refreshOptions(dialog, step.choices)
   playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
   if (step.ended) endDialog(dialog)

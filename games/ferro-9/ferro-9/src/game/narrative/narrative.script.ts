@@ -12,7 +12,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
-  AMPLADA, AUTOSAVE, applyStageNow, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -22,7 +22,14 @@ import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
  * una cada vegada): `before`/`after` són el `who` de la línia del costat; `after: 'negre'` vol dir que tot
  * seguit es canvia de sala o ve un final, i la pantalla s'ha de quedar a negre.
  */
-type Around = { before?: string; after?: string }
+type Around = {
+  before?: string; after?: string
+  /**
+   * Encara vénen més línies de la mateixa cinemàtica (a trossos): l'estat de la sala (qui es veu, on és) no s'aplica
+   * fins a l'última. Si no, qui ha sortit amb `stage` i no és a `hotspots` de la sala s'amagaria entre línia i línia.
+   */
+  more?: boolean
+}
 
 /**
  * Diu les línies una darrere l'altra (i fa sonar el so de cada una en començar-la). Si n'hi ha amb moviment
@@ -85,6 +92,7 @@ function sayLines(lines: ResolvedLine[], around: Around) {
   }
   // Qui s'ha de moure (`place`) hi camina ara, quan ja s'ha dit tot: els efectes s'apliquen abans de les
   // línies, i si caminés abans, marxaria mentre parla. El mateix amb qui desapareix i amb qui apareix.
+  if (around.more) return
   applyHotspotVisibility()
   applyPlaces(true)
 }
@@ -170,7 +178,7 @@ export function performInteraction(verb: string, target: FallbackTarget, item?: 
   if (isClickableCutscene(narrative.world.currentRoom())) setClickablePrompt('')
   const request = { verb, target: targetFromBenne(target.kind, target.id), item: item ? fromBenne('items', item) : undefined }
   const room = narrative.world.currentRoom()
-  const result = narrative.interact(request)
+  const result = primeStage(narrative.interact(request))
   touchRouter()?.acted?.(verb, target, room)
   // Una porta (o escotilla, o escala) que porta a una altra sala: el seu so sonarà en arribar-hi.
   setDoorSound(result?.goTo && !result.dialogue && target.kind !== 'item' ? narrative.world.currentRoom() : null, fromBenne('hotspots', target.id))
@@ -237,7 +245,7 @@ export function onRoomEntered() {
   // L'onEnter es resol ara, abans del fos, i es reprodueix després (`enterNarrativeRoom`). Si comença
   // amb un títol, la pantalla es posa a negre ja: si no, es veuria la sala, s'enfosquiria i tornaria.
   narrative.worldChanged()
-  const result = narrative.enterRoom(room)
+  const result = primeStage(narrative.enterRoom(room))
   entrada = { room, result }
   if (result?.lines[0]?.who === 'title') stayBlackOnEnter()
   // Com comença l'escena (qui hi ha, on, assegut o dret) ja es veu en sortir del fos: el moviment, després.
@@ -365,7 +373,7 @@ export function enterNarrativeRoom() {
     walkTo = entrada.walkTo
   } else {
     narrative.worldChanged()
-    result = narrative.enterRoom(room)
+    result = primeStage(narrative.enterRoom(room))
   }
   entrada = null
   startPatrols()
@@ -403,7 +411,8 @@ export function enterNarrativeRoom() {
   const negre = result.goTo || final ? 'negre' : undefined
   let saltada = false
   for (let k = 0; k < result.lines.length; k++) {
-    playLines([result.lines[k]!], { before: result.lines[k - 1]?.who, after: result.lines[k + 1]?.who ?? negre })
+    const more = k < result.lines.length - 1
+    playLines([result.lines[k]!], { before: result.lines[k - 1]?.who, after: result.lines[k + 1]?.who ?? negre, more })
     // Mentre se salta una cinemàtica, `wait` acaba a l'instant: així sabem si han premut Esc.
     const inici = Date.now()
     wait(0.1)
@@ -411,6 +420,11 @@ export function enterNarrativeRoom() {
       saltada = true
       break
     }
+  }
+  // Saltada a mitges: l'estat de la sala no s'ha aplicat (vegeu `more`).
+  if (saltada) {
+    applyHotspotVisibility()
+    applyPlaces(false)
   }
   if (final) {
     // La cinemàtica acaba el joc (l'avió: «Continuarà»).
@@ -450,7 +464,7 @@ function refreshOptions(dialog: DialogHandle, choices: ResolvedChoice[]) {
 export function startNarrativeDialog(id: string, dialog: DialogHandle) {
   adoptLoadedState()
   playerActed()
-  const step = narrative.startDialogue(id)
+  const step = primeStage(narrative.startDialogue(id))
   refreshOptions(dialog, step.choices)
   playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
   if (step.ended) endDialog(dialog)
@@ -459,7 +473,9 @@ export function startNarrativeDialog(id: string, dialog: DialogHandle) {
 /** Des de cada `options.x.onChoose` (generat). */
 export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: string, choice: string) {
   adoptLoadedState()
-  const step = narrative.choose(id, choice, { node })
+  // La primera línia és l'opció dita en veu alta (si no és `silent`): el decorat de l'escena és a la següent.
+  const echo = narrative.content.dialogues[id]?.nodes[node]?.choices?.find((c) => c.id === choice)?.silent ? 0 : 1
+  const step = primeStage(narrative.choose(id, choice, { node }), echo)
   refreshOptions(dialog, step.choices)
   playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
   if (step.ended) endDialog(dialog)

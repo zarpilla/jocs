@@ -485,6 +485,22 @@ export function stagePoint(to: string | Point): Point | null {
   return thing?.walkToPoint ?? null;
 }
 
+/**
+ * Embolica la crida que resol unes línies (`primeStage(narrative.choose(...))`): als `*.script.ts`, una crida soleta
+ * és un pas que espera el seu torn (p. ex. que la Iri acabi de dir l'opció), i ha de passar en el mateix moment.
+ *
+ * Els efectes s'apliquen abans de les línies, i un decorat amb `visibleIf` sortiria de cop (l'aigua del toll, la porta
+ * del roure). Les línies que el volen mostrar més tard l'amaguen al `stage` de la primera; aquí, aquestes capes
+ * s'amaguen ja, abans fins i tot de l'opció que diu la protagonista. Només la primera línia (`skip`: la de l'opció, que
+ * no en porta mai, se salta), i només amagar: el que es mostra o canvia més endavant espera la seva línia.
+ */
+export function primeStage<T extends { lines: readonly { stage?: StageCue[] }[] } | null | undefined>(resolved: T, skip = 0): T {
+  for (const cue of resolved?.lines[skip]?.stage ?? []) {
+    if (cue.prop !== undefined && cue.visible === false) applyStageNow({ prop: cue.prop, visible: false });
+  }
+  return resolved;
+}
+
 /** El que una indicació fa de cop (tot menys caminar i esperar). */
 export function applyStageNow(cue: StageCue) {
   // Una sacsejada suau: ~2 píxels a 640 (la sala és tota la pantalla, i més es veurien les vores).
