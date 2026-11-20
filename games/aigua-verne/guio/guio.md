@@ -304,7 +304,7 @@ la cuina. El pare té bona memòria per a tot menys per al que li demanes: expli
 civada el 58 i el nom de les vaques. Dues opcions de la conversa el porten on cal:
 
 > PARE: L'escriptura? Al lloc segur. Darrere de la mare.
-> IRI: ...La mare és morta, papa.
+> IRI: ...La mare està morta, papa.
 > PARE: Del *quadre* de la mare, filla. Quina mainada.
 
 Darrere del quadre hi ha una caixa forta vella **amb un teclat de lletres** (cinc). El pare no recorda la

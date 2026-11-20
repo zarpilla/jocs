@@ -122,7 +122,7 @@ un gat).
 | Personatge | Qui és | Per a què serveix |
 |---|---|---|
 | **Diu** | El gat de l'Iri, polissó. Mossega cables. Només el descobreix el Marcel. | Comença el joc (desperta l'Iri), gag recurrent i coartada del Marcel. Intocable. |
-| **Ernest Bastida** | El contramestre. 63 anys, 35 de mar. Una llegenda: el temporal, els tres que va treure de l'aigua. Fuma pipa, només a coberta. Ensenya a tothom «el nus Bastida», però ell sempre hi fa una volta de més que no ensenya («Un nus ha de tenir un secret»). De jove pescava arengades: «El mar en bullia.» Ara diu que el mar ja és mort. **És el culpable.** Parla amb la Lind per un missatger de satèl·lit de butxaca, d'aquells de muntanya, que li va donar ella. | Les mans dels sabotatges. Si al final la Vet li diu la veritat, declara. |
+| **Ernest Bastida** | El contramestre. 63 anys, 35 de mar. Una llegenda: el temporal, els tres que va treure de l'aigua. Fuma pipa, només a coberta. Ensenya a tothom «el nus Bastida», però ell sempre hi fa una volta de més que no ensenya («Un nus ha de tenir un secret»). De jove pescava arengades: «El mar en bullia.» Ara diu que el mar ja està mort. **És el culpable.** Parla amb la Lind per un missatger de satèl·lit de butxaca, d'aquells de muntanya, que li va donar ella. | Les mans dels sabotatges. Si al final la Vet li diu la veritat, declara. |
 | **Capitana Roig** | 55 anys, seca i honesta. L'ONG no té diners i aquest any el gasoil el paga una donació de la **Fundació Blau Net**. No sap que Blau Net és de Skarn. | Decideix el rumb. Si sap la veritat sobre Blau Net, és una aliada. |
 | **Juana Ferrer** | La biòloga. Compta ous d'arengada. Vol estar sola i ho diu. «És com una planta, però amb més ansietat» (la Capitana). | La Mostra 7 i el portàtil. A l'Acte 2 desapareix de debò. |
 | **Nadia Vidal** | Periodista freelance i precària. Blau Net va posar com a condició de la donació que anés a bord «per explicar la campanya». | **L'orella.** Escolta el walkie amb un escàner i ho explica tot a la Lind per un telèfon de satèl·lit de Blau Net. No sap qui és l'home de bord. Pot canviar de bàndol. |
@@ -308,7 +308,7 @@ porta_estanca], la deixa penjada al costat de la porta («Tornarà a fer falta»
 
 A la sala de màquines, al terra, dos dits d'aigua.
 
-> IRI: La sentina de popa és plena. I l'alarma no ha sonat. *(mira el sensor: desconnectat)* Les alarmes no callen
+> IRI: La sentina de popa està plena. I l'alarma no ha sonat. *(mira el sensor: desconnectat)* Les alarmes no callen
 > soles.
 
 La **vàlvula de presa de mar** de popa és oberta. **Li han tret el volant.**
@@ -357,7 +357,7 @@ treu el gasoil de l'aigua abans de tornar-la al mar, però va a poc a poc). Si l
 
 En Diu, assegut damunt d'un tub calent, mira en Bastida molta estona. (Ningú no ho entén. El jugador, a l'Acte 3, sí.)
 
-Quan la sentina és buida, l'Iri torna a connectar el sensor. Calla, com ha de fer.
+Quan la sentina està buida, l'Iri torna a connectar el sensor. Calla, com ha de fer.
 
 ### Escena 2 — Les revisions (Vet)
 
@@ -418,7 +418,7 @@ En Bastida no hi és: «Ara no puc, doctora. Més tard.» (La seva revisió és 
 
 > BASTIDA: De jove, a l'hivern, el mar bullia d'arengades. Les treies amb la galleda.
 > VET: I ara?
-> BASTIDA: Ara no en queda ni una. *(xucla la pipa)* El mar ja és mort, doctora. Només que encara no ho sap.
+> BASTIDA: Ara no en queda ni una. *(xucla la pipa)* El mar ja està mort, doctora. Només que encara no ho sap.
 
 Queda al quadern. A l'Escena 9, la Vet hi té una opció més amb ell.
 
@@ -847,7 +847,7 @@ Així, el moment de l'Iri no depèn del camí que hagi fet la Vet: tant se val q
 > i et diuen una xifra. I descobreixes que tens un preu. *(pausa)* I que no era tan alt com pensaves.
 > BASTIDA: Em vaig dir que el mar ja era mort. Que quan jo era jove les arengades bullien, i ara no en queda ni una.
 > Què hi feia, una mica més de fang? *(pausa)* M'ho vaig dir perquè la xifra em fes menys vergonya.
-> JUANA: No era mort. Al Punt 7 encara hi fresaven. Fins l'any passat.
+> JUANA: No estava mort. Al Punt 7 encara hi fresaven. Fins l'any passat.
 > IRI: Em vas treure de l'aigua.
 > BASTIDA: I ara t'hi he tornat a tirar. Ja ho sé.
 > BASTIDA: La vàlvula era la de popa. No us hauríeu enfonsat. Només volia que tornéssim a port.
@@ -1197,7 +1197,7 @@ quaranta-vuit hores sense parlar amb ningú, el filtre de l'aigua, el cafè que 
 
 **Ecologia afegida:** el Punt 7 és un fondal d'arengada (pròleg, Escena 2), i a l'Escena 2 se'n veu la taca de dia; Skarn ven els «metalls de la transició
 verda» i la Lind ho fa servir d'argument (Escena 8); l'Iri passa la sentina pel separador i en Bastida li diu que
-la tiri per la borda (Escena 1); en Bastida es ven dient-se que «el mar ja és mort» (Escenes 2, 8 i 9); Minamata i
+la tiri per la borda (Escena 1); en Bastida es ven dient-se que «el mar ja està mort» (Escenes 2, 8 i 9); Minamata i
 les sardines (Escena 7); el final no ho neteja tot (vint anys perquè tornin les arengades) i la Mostra 8 són anàlisis
 de sang de pescadors.
 
