@@ -1,5 +1,5 @@
 """
-El muntatge del virus (cinemàtica, Acte 3): ROBIN HOOD 2.0 buida tots els comptes del món al «compte zero» i
+El muntatge del virus (cinemàtica, Acte 3): ROBIN HOOD 2.0 buida tots els comptes del món al «compte pont» i
 paga la primera ronda, 12 € per persona. Una sola imatge per a totes les frases: una paret de sis pantalles,
 com les de la sala de seguretat, cadascuna amb una vinyeta i el comptador en verd de terminal:
   - Mònaco: un iot blanc a la badia i un milionari a la coberta mirant el mòbil;
@@ -7,7 +7,7 @@ com les de la sala de seguretat, cadascuna amb una vinyeta i el comptador en ver
   - Ginebra: un despatx amb el llac i el raig d'aigua; l'home de la corbata i la secretària, 12 € cadascun;
   - el bar La Propina: en Tomàs abaixa la persiana amb el ganxo;
   - un caixer automàtic: una àvia amb bastó davant de la pantalla i un cambrer que espera el sou;
-  - el mapa del món, de punts, amb totes les línies que van a parar al compte zero.
+  - el mapa del món, de punts, amb totes les línies que van a parar al compte pont.
 A dalt, la capçalera «ROBIN HOOD 2.0» (verd de terminal) i el rellotge a les 11:15 (cian).
 A baix hi va el quadre de text: tot el que importa és per sobre de y≈198.
 Animació: el cursor i els dos punts del rellotge parpellegen; els comptadors fan pampallugues.
@@ -301,7 +301,7 @@ CITIES = [(0.25, 0.32), (0.18, 0.28), (0.31, 0.66), (0.50, 0.24), (0.47, 0.28), 
 
 
 def mapa(cv, x0, y0, x1, y1):
-    """El mapa del món de punts verds: de cada ciutat surt una línia cap al compte zero, al mig."""
+    """El mapa del món de punts verds: de cada ciutat surt una línia cap al compte pont, al mig."""
     fill(cv, x0, y0, x1, y1, (2, 10, 12))
     mw, mh = x1 - x0, y1 - y0
     for y in range(y0 + 1, y1, 2):
@@ -317,12 +317,12 @@ def mapa(cv, x0, y0, x1, y1):
             if k % 2 == 0:
                 cv.flat(round(px + (zx - px) * k / n), round(py + (zy - py) * k / n), (70, 200, 230))
         cv.flat(px, py, (200, 255, 255))
-    # el compte zero: un cercle que ho xucla tot
+    # el compte pont: un cercle que ho xucla tot
     cv.disc(zx, zy, 7, 7, CYANT, lambda nx, ny: 2.0 + (1 - math.hypot(nx, ny)) * 3, lit=0)
     cv.ring(zx, zy, 9, CYANT, 4.0, lit=0, step=10)
     big_text(cv, '0', zx - 2, zy - 4, (4, 20, 30), 1)
     cv.glow(zx, zy, 22, (100, 230, 255), 0.35)
-    s = 'COMPTE ZERO'
+    s = 'COMPTE PONT'
     fill(cv, zx - text_width(s) // 2 - 2, zy + 11, zx + text_width(s) // 2 + 2, zy + 17, (2, 10, 12))
     text(cv, s, zx - text_width(s) // 2, zy + 12, None, 0, lit=0, flat=CYAN_T)
 
@@ -346,7 +346,7 @@ def header(cv, cursor=True, colon=True):
     if cursor:
         fill(cv, 10 + w + 4, 7, 10 + w + 9, 16, GREEN_T)
     cv.glow(10 + w // 2, 12, 80, (60, 255, 140), 0.12)
-    text(cv, 'TOTS ELS COMPTES - COMPTE ZERO', 10, 20, None, 0, lit=0, flat=(70, 190, 110))
+    text(cv, 'TOTS ELS COMPTES - COMPTE PONT', 10, 20, None, 0, lit=0, flat=(70, 190, 110))
     s = 'PAGAMENT 1: 12,00 € PER PERSONA'
     big_x = 196
     text(cv, s, big_x, 9, None, 0, lit=0, flat=GREEN_T)

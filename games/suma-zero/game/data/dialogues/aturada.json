@@ -139,20 +139,28 @@
           "text": "dlg.aturada.zero2"
         },
         {
-          "who": "narrator",
+          "who": "vet",
           "text": "dlg.aturada.zero3"
         },
         {
-          "who": "vet",
+          "who": "player",
           "text": "dlg.aturada.zero4"
         },
         {
-          "who": "player",
+          "who": "narrator",
           "text": "dlg.aturada.zero5"
         },
         {
           "who": "player",
           "text": "dlg.aturada.zero6"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.aturada.zero7"
+        },
+        {
+          "who": "player",
+          "text": "dlg.aturada.zero8"
         },
         {
           "who": "narrator",

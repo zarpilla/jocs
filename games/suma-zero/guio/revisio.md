@@ -1279,7 +1279,7 @@ DIU «Diu»
 EN ENTRAR
     • * — SEMPRE
         [SO: virus] NARRADOR: ROBIN HOOD 2.0. Fase 1: buidar.
-        NARRADOR: Tots els comptes del món passen al compte zero. Als monitors de seguretat, els números cauen un rere l'altre.
+        NARRADOR: Tots els comptes del món passen al compte pont, el del virus. Als monitors de seguretat, els números cauen un rere l'altre.
         NARRADOR: Fase 2: repartir. Primera ronda: dotze euros per persona. La ronda següent, d'aquí a tres hores.
         NARRADOR: Mònaco. Un bilionari mira el mòbil: dotze euros. La seva dona el deixa.
         NARRADOR: Nova York. Un fons d'inversió es troba amb el sou d'un becari. El becari plora d'alegria.
@@ -1869,7 +1869,7 @@ EN ENTRAR
 COMENÇA A: pregunta
 
 [pregunta]
-    NARRADOR: ROBIN HOOD 2.0: ATURAT. AL COMPTE ZERO HI HA TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?
+    NARRADOR: ROBIN HOOD 2.0: ATURAT. AL COMPTE PONT HI HA TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?
     JUGADORA: El compte de la Rius! El de les nòmines: no paga per rondes, ho paga tot d'un sol lot, a les dotze. Per aquí, arriba a tothom alhora. ⟨si té compte_nomines (iri)⟩
     JUGADORA: El compte 0001, el d'en Ballester. Les nòmines no van per rondes: surten totes d'un sol lot, a les dotze. Per aquí, arriba a tothom alhora. ⟨si ballester_compte i no té compte_nomines (iri)⟩
     JUGADORA: Repartir-ho a tothom alhora? Em caldria un compte que arribi a tothom, i no en tinc cap. Doncs només queda una sortida. ⟨si NO ballester_compte i no té compte_nomines (iri)⟩
@@ -1881,12 +1881,12 @@ COMENÇA A: pregunta
         ⇒ +repartit
 
 [tornar]
-    [SO: aturada] NARRADOR: TRANSFERÈNCIA: COMPTE ZERO → COMPTES D'ORIGEN. COMPLETADA.
+    [SO: aturada] NARRADOR: TRANSFERÈNCIA: COMPTE PONT → COMPTES D'ORIGEN. COMPLETADA.
     NARRADOR: El que ja s'ha repartit, es queda repartit. Dotze euros per persona. Una cervesa a tot el món.
     ↪ fi
 
 [repartir]
-    [SO: aturada] NARRADOR: TRANSFERÈNCIA: COMPTE ZERO → TOTS ELS COMPTES DEL MÓN, A PARTS IGUALS, PEL COMPTE 0001. COMPLETADA.
+    [SO: aturada] NARRADOR: TRANSFERÈNCIA: COMPTE PONT → TOTS ELS COMPTES DEL MÓN, A PARTS IGUALS, PEL COMPTE 0001. COMPLETADA.
     NARRADOR: Per primera vegada en la història, tothom té el mateix. El bilionari, el Director, la Rius i la subcontracta.
     JUGADORA: Avui, a les dotze, cobra tothom. I cobra el mateix.
     ↪ fi
@@ -1894,12 +1894,14 @@ COMENÇA A: pregunta
 [fi]
     VET: Iri... ho has fet?
     JUGADORA: Ho hem fet. Espera...
-    NARRADOR: La pantalla parpelleja. COMPTE ZERO: SALDO... el mateix d'abans. Com si no n'hagués sortit ni un euro.
-    JUGADORA: Els diners han sortit: ja són als comptes, i a les dotze les pensions cobren. Però aquí n'hi continua havent el mateix.
-    NARRADOR: COMPTE ZERO. TITULAR: CLASSIFICAT. CONTRASENYA: ********.
+    NARRADOR: La pantalla parpelleja. AVÍS: COMPTE NO REGISTRAT. COMPTE ZERO. TITULAR: CLASSIFICAT.
+    JUGADORA: Un compte que no surt a cap registre. Per això el virus no l'ha vist: oficialment, no existeix.
+    VET: Quant hi ha?
+    JUGADORA: Molt. És el calaix amagat dels bancs: el que guardaven per si un dia passava una cosa com nosaltres.
+    NARRADOR: CONTRASENYA RESTABLERTA PER L'ATURADA D'EMERGÈNCIA. CONTRASENYA ANTERIOR: NO VÀLIDA.
+    JUGADORA: I amb l'aturada, la contrasenya s'ha esborrat. Ara no la sap ningú. Ni ells.
     VET: Prova Rockefeller.
-    JUGADORA: Ja ho he provat. Aquest compte ja hi era abans del virus, i no és del Director. És d'algú que té tant com tot el món junt.
-    JUGADORA: Ja hi pensarem. Ara, a fugir.
+    JUGADORA: Ja ho he provat. Ara, a fugir.
     NARRADOR: Al despatx, el Director mira la gravació de l'ascensor de servei: «Una tècnica... amb dessuadora?»
     [SO: megafonia_bcmu] NARRADOR: Megafonia: «Atenció, personal de seguretat: busquem una noia amb dessuadora.»
     JUGADORA: La noia amb dessuadora soc jo.
@@ -3326,7 +3328,7 @@ vet_espera_teclejar — quan juga vet i sync_mobil i codi_llegit · fins que cod
     3. Canvio a l'Iri: que tecleji el codi.
 vet_decidir — quan juga vet i codi_teclejat i NO virus_aturat · fins que virus_aturat
     1. El codi ha entrat. Ara, l'Iri decideix.
-    2. El Llibre Major li pregunta què fa amb els diners del compte zero.
+    2. El Llibre Major li pregunta què fa amb els diners del compte pont.
     3. Canvio a l'Iri.
 vet_baixar — quan juga vet i virus_aturat i NO vet_al_carrer i sospita_max < 50 i no (a bcmu_vestibul) · fins que vet_al_carrer
     1. Ara, sortir com he entrat: per la porta gran.
@@ -3382,7 +3384,7 @@ iri_teclejar_codi — quan juga iri i sync_mobil i codi_llegit · fins que codi_
     3. Teclejo el codi al Llibre Major.
 iri_decidir — quan juga iri i codi_teclejat i NO virus_aturat · fins que virus_aturat
     1. El codi ha entrat. Ara, la pregunta difícil.
-    2. Tots els diners del món, al compte zero. Els torno al banc o els reparteixo?
+    2. Tots els diners del món, al compte pont. Els torno al banc o els reparteixo?
     3. Em poso amb el Llibre Major i decideixo.
 iri_escala — quan juga iri i virus_aturat i NO escala_provada · fins que escala_provada
     1. Ara, sortir. Per on?
@@ -3412,14 +3414,14 @@ vet_entretenir — quan juga vet i sync_mobil i NO mobil_resolt i coberta_mobil 
 final_taula «Final · La taula llarga» — quan escapada i (repartit i aliats ≥ 3)
     NARRADOR: Una setmana després. Bar La Propina.
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
-    NARRADOR: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
+    NARRADOR: Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.
     NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
     TOMÀS: Un compte que no existeix? Com la meva dona. I un dia va trucar.
     VET: Era l'Iri, Tomàs.
     TOMÀS: Ja ho sé. Però el divorci va ser de debò.
     IRI: No hem canviat el món. ⟨si NO repartit⟩
-    IRI: Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no? ⟨si repartit⟩
-    VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible. ⟨si repartit⟩
+    IRI: Tothom té el mateix. ⟨si repartit⟩
+    VET: Tothom menys un compte que no existeix. I el Director ara agafa el metro: diu que és més sostenible. ⟨si repartit⟩
     VET: Una mica, sí. El Director es va passar una hora amb dotze euros. Diu que encara en té malsons. ⟨si NO repartit⟩
     NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si repartit i aliats ≥ 3⟩
     BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
@@ -3450,14 +3452,14 @@ final_taula «Final · La taula llarga» — quan escapada i (repartit i aliats 
 final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     NARRADOR: Una setmana després. Bar La Propina.
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
-    NARRADOR: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
+    NARRADOR: Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.
     NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
     TOMÀS: Un compte que no existeix? Com la meva dona. I un dia va trucar.
     VET: Era l'Iri, Tomàs.
     TOMÀS: Ja ho sé. Però el divorci va ser de debò.
     IRI: No hem canviat el món. ⟨si NO repartit⟩
-    IRI: Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no? ⟨si repartit⟩
-    VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible. ⟨si repartit⟩
+    IRI: Tothom té el mateix. ⟨si repartit⟩
+    VET: Tothom menys un compte que no existeix. I el Director ara agafa el metro: diu que és més sostenible. ⟨si repartit⟩
     VET: Una mica, sí. El Director es va passar una hora amb dotze euros. Diu que encara en té malsons. ⟨si NO repartit⟩
     NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si repartit i aliats ≥ 3⟩
     BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
@@ -3490,14 +3492,14 @@ final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
 final_base «Final · Ni caos ni paradís» — quan escapada
     NARRADOR: Una setmana després. Bar La Propina.
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
-    NARRADOR: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
+    NARRADOR: Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.
     NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
     TOMÀS: Un compte que no existeix? Com la meva dona. I un dia va trucar.
     VET: Era l'Iri, Tomàs.
     TOMÀS: Ja ho sé. Però el divorci va ser de debò.
     IRI: No hem canviat el món. ⟨si NO repartit⟩
-    IRI: Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no? ⟨si repartit⟩
-    VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible. ⟨si repartit⟩
+    IRI: Tothom té el mateix. ⟨si repartit⟩
+    VET: Tothom menys un compte que no existeix. I el Director ara agafa el metro: diu que és més sostenible. ⟨si repartit⟩
     VET: Una mica, sí. El Director es va passar una hora amb dotze euros. Diu que encara en té malsons. ⟨si NO repartit⟩
     NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si repartit i aliats ≥ 3⟩
     BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩

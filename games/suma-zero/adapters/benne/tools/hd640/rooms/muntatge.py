@@ -10,7 +10,7 @@ verd de terminal:
   - Ginebra: un despatx amb el llac i el raig d'aigua; l'home de la corbata i la secretària, 12 € cadascun;
   - el bar La Propina: en Tomàs abaixa la persiana amb el ganxo;
   - un caixer automàtic: una àvia amb bastó davant de la pantalla i un cambrer que espera el sou;
-  - el mapa del món, de punts, amb totes les línies que van a parar al compte zero.
+  - el mapa del món, de punts, amb totes les línies que van a parar al compte pont.
 A dalt, la capçalera «ROBIN HOOD 2.0» (verd de terminal) i el rellotge a les 11:15 (cian). A la dreta, que fuig, un
 armari de servidors amb els llums; a sota, la consola llarga de la sala, amb els teclats que fan llum; en primer
 pla, en silueta, una cadira buida, la vora d'una taula amb una tassa i un pilar tallat per la vora de la dreta.
@@ -20,7 +20,7 @@ Les vinyetes es dibuixen planes, a 2× (hd1280/canvas2x.py), i es projecten fent
 són, més petites que 1×, el detall s'hi conserva). La lletra petita no es pot projectar (a menys d'1× es trenca):
 es grava a part i s'escriu després a 1:1, al lloc i amb la inclinació que toca (`_textos`).
 Animació `pantalles` (8 fotogrames): el cursor i els dos punts del rellotge parpellegen; els comptadors fan
-pampallugues; els diners corren per les línies del mapa cap al compte zero; els llums dels servidors.
+pampallugues; els diners corren per les línies del mapa cap al compte pont; els llums dels servidors.
 
 El món: x a la dreta, y amunt, z cap a la paret; el pla de les pantalles és z = ZF i hi correspon el dibuix pla
 (x = fx - 320, y = 260 - fy).
@@ -464,7 +464,7 @@ def caixer(cv, x0, y0, x1, y1):
 
 
 def mapa(cv, x0, y0, x1, y1, t=0):
-    """El mapa del món de punts verds: de cada ciutat surt una línia cap al compte zero, al mig, i els diners
+    """El mapa del món de punts verds: de cada ciutat surt una línia cap al compte pont, al mig, i els diners
     hi corren (t)."""
     fill(cv, x0, y0, x1, y1, (2, 10, 12))
     mw, mh = x1 - x0, y1 - y0
@@ -488,12 +488,12 @@ def mapa(cv, x0, y0, x1, y1, t=0):
                 cv.flat(*q, (50, 160, 190))
         cv.flat(px, py, (200, 255, 255))
         cv.glow(px, py, 3, (150, 255, 255), 0.4)
-    # el compte zero: un cercle que ho xucla tot
+    # el compte pont: un cercle que ho xucla tot
     cv.disc(zx, zy, 9, 9, CYANT, lambda nx, ny: 2.0 + (1 - math.hypot(nx, ny)) * 3, lit=0)
     cv.ring(zx, zy, 12, CYANT, 4.0, lit=0, step=8)
     big_text(cv, '0', zx - 2, zy - 5, (4, 20, 30), 2, bevel=False)
     cv.glow(zx, zy, 29, (100, 230, 255), 0.35)
-    s = 'COMPTE ZERO'
+    s = 'COMPTE PONT'
 
     def rot(c):
         fill(c, zx - text_width(s) // 2 - 3, zy + 15, zx + text_width(s) // 2 + 3, zy + 22, (2, 10, 12))
@@ -512,7 +512,7 @@ def header(cv, cursor=True, colon=True):
     if cursor:
         fill(cv, 13 + w + 5, 8, 13 + w + 12, 22, GREEN_T)
     cv.glow(13 + w // 2, 15, 107, (60, 255, 140), 0.12)
-    text(cv, 'TOTS ELS COMPTES - COMPTE ZERO', 13, 27, None, 0, lit=0, flat=(70, 190, 110))
+    text(cv, 'TOTS ELS COMPTES - COMPTE PONT', 13, 27, None, 0, lit=0, flat=(70, 190, 110))
     s = 'PAGAMENT 1: 12,00 € PER PERSONA'
     big_x = 261
     sw = text_width(s)

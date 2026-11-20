@@ -203,19 +203,21 @@ mòbil del Director (Escena 8). El joc les anuncia amb un títol: **«Ara necess
   necessita la **clau física** d'en Ballester (es gira i es pot treure: «Autoritzat. Ja la pots treure»). Per
   **aturar** una operació en curs necessita la **contrasenya personal del Director** i un codi que li arriba al
   mòbil. «El Llibre Major no sap desfer. Només el Director pot dir prou.»
-- ROBIN HOOD 2.0 té dues fases: **buidar** (porta tots els diners del sistema a un sol compte, el **compte
-  zero**) i **repartir** (en dona una part igual a cada persona, ronda a ronda). Buidar és instantani.
+- ROBIN HOOD 2.0 té dues fases: **buidar** (porta tots els diners del sistema a un sol compte del virus, el **compte
+  pont**) i **repartir** (en dona una part igual a cada persona, ronda a ronda). Buidar és instantani.
   Repartir, en un servidor de 1984, és lentíssim: **cada ronda tarda tres hores**.
 - **Per això surt malament** (Acte 3): després de la primera ronda, tothom té 12 €. El bilionari, el Director,
   i també les pensions, els ajuts i les nòmines que s'han de pagar avui **a les dotze**. Són les onze i quart.
-- **Aturar-lo** deixa a les mans de l'Iri tot el que encara és al compte zero (el que ja s'ha repartit, es queda
+- **Aturar-lo** deixa a les mans de l'Iri tot el que encara és al compte pont (el que ja s'ha repartit, es queda
   repartit). Pot **tornar-ho al banc**, als comptes d'origen, o **repartir-ho tot a parts iguals d'un sol cop**. Per
   repartir cal el **compte de nòmines** (que dona un aliat): és l'únic canal que paga tothom alhora, sense rondes
   de tres hores (les nòmines no van per rondes: surten totes d'un sol lot, a les dotze).
-- **El gir:** triï el que triï, el compte zero continua ple. El que es desfà és el buidatge: els diners han sortit
-  de debò (són als comptes d'origen o repartits) i a les dotze les pensions cobren. Però el compte zero no el va
-  crear el virus: ja hi era, i té tant com tot el món junt. Té un titular classificat i una contrasenya que no sap
-  ningú, ni tan sols el Director. Ningú no sap d'on ha sortit aquest compte. És el ganxo de ROBIN HOOD 3.0.
+- **El gir:** quan el virus s'atura, el Llibre Major avisa d'un compte que no surt a cap registre: el **compte
+  zero**. És el calaix amagat dels bancs, el que guardaven «per si un dia passava una cosa com nosaltres». El
+  virus no l'ha buidat perquè, oficialment, no existeix. I l'aturada d'emergència n'ha esborrat la contrasenya:
+  ara no la sap ningú, ni els bancs. El repartiment és de debò (els diners del món ja són als comptes); el
+  compte zero és el que els bancs han amagat i ara no poden tocar. Per això a la tele diuen que «el sistema ha
+  resistit», però no l'aconsegueixen obrir. És el ganxo de ROBIN HOOD 3.0: anar a buscar aquest calaix.
 
 ---
 
@@ -662,7 +664,7 @@ Ballester ho veuen; l'Iri ho veu a la pantalla del Llibre Major).
 
 L'Iri executa el virus. **No falla. Funciona massa bé.** [SO: virus]
 
-- Fase 1, buidar: tots els comptes del món passen al compte zero. Els monitors es posen a zero, un rere l'altre.
+- Fase 1, buidar: tots els comptes del món passen al compte pont, el del virus. Els monitors es posen a zero, un rere l'altre.
 - Fase 2, repartir: primera ronda, **12 € per persona**. La ronda següent, d'aquí a tres hores.
 
 Muntatge (línies del narrador amb imatges):
@@ -757,7 +759,7 @@ codi següent és un altre). Agafar el mòbil quan no està distret també compt
     solidaritat.**
 - **Si s'acaben els torns**: el Director, molt educat, «Tornem-hi?». Es torna a començar el pas.
 
-**La decisió de l'Iri.** Amb el codi teclejat, el virus s'atura i el Llibre Major pregunta: «AL COMPTE ZERO HI HA
+**La decisió de l'Iri.** Amb el codi teclejat, el virus s'atura i el Llibre Major pregunta: «AL COMPTE PONT HI HA
 TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?»
 
 - **Tornar-ho al banc**, als comptes d'origen (sempre disponible). El que ja s'ha repartit, es queda repartit:
@@ -769,14 +771,17 @@ TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?»
 
 [SO: aturada]
 
-**El gir.** Triï el que triï, la pantalla parpelleja: el compte zero té el mateix saldo d'abans, com si no n'hagués
-sortit ni un euro.
+**El gir.** Triï el que triï, la pantalla parpelleja amb un avís. Els diners repartits o tornats no es toquen: el
+gir és un altre compte, que el virus no ha vist.
 
-> IRI: Els diners han sortit: ja són als comptes, i a les dotze les pensions cobren. Però aquí n'hi continua havent el mateix.
-> LLIBRE MAJOR: COMPTE ZERO. TITULAR: CLASSIFICAT. CONTRASENYA: ********.
+> LLIBRE MAJOR: AVÍS: COMPTE NO REGISTRAT. COMPTE ZERO. TITULAR: CLASSIFICAT.
+> IRI: Un compte que no surt a cap registre. Per això el virus no l'ha vist: oficialment, no existeix.
+> VET: Quant hi ha?
+> IRI: Molt. És el calaix amagat dels bancs: el que guardaven per si un dia passava una cosa com nosaltres.
+> LLIBRE MAJOR: CONTRASENYA RESTABLERTA PER L'ATURADA D'EMERGÈNCIA. CONTRASENYA ANTERIOR: NO VÀLIDA.
+> IRI: I amb l'aturada, la contrasenya s'ha esborrat. Ara no la sap ningú. Ni ells.
 > VET: Prova Rockefeller.
-> IRI: Ja ho he provat. Aquest compte ja hi era abans del virus, i no és del Director. És d'algú que té tant com tot el món junt.
-> IRI: Ja hi pensarem. Ara, a fugir.
+> IRI: Ja ho he provat. Ara, a fugir.
 
 ### Escena 9 — La sortida (les dues)
 
@@ -821,20 +826,22 @@ decisió de l'Iri a l'Escena 8.
 | **2 · Hores extres** | Com l'1, i al bar hi ha algú més: cada aliat té la seva línia. Si l'Iri ho ha repartit tot, la tele diu que tothom té el mateix. | `aliats >= 1` (i tots els casos que no són el 3). |
 | **3 · La taula llarga** | L'Iri ho ha repartit tot a parts iguals. Al bar hi ha una taula llarga amb tots els aliats. La tele diu que, per primera vegada en la història, tothom té el mateix. | `repartit` i `aliats >= 3`. |
 
-Als tres finals, el compte zero continua ple i amb contrasenya: la tele en parla i, als postcrèdits, és el que
-porta a ROBIN HOOD 3.0.
+Als tres finals, el repartiment (o la cervesa per persona) és de debò, i el compte zero, el calaix amagat dels bancs,
+continua bloquejat: els bancs diuen que no existeix, però no l'aconsegueixen obrir. Als postcrèdits és el que porta a
+ROBIN HOOD 3.0.
 
 **L'escena del bar (comuna, amb línies condicionals):**
 
 > TELE: Els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
-> TELE: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
+> TELE: Del compte zero, el banc diu que no existeix. Fonts internes diuen que l'han intentat obrir quaranta-tres vegades.
 > TELE (si repartit): ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix.
 > TOMÀS: Un compte que no existeix? Com la meva dona. I un dia va trucar.
 > VET: Era l'Iri, Tomàs.
 > TOMÀS: Ja ho sé. Però el divorci va ser de debò.
 > IRI: No hem canviat el món.
-> IRI (si repartit, en lloc de l'anterior): Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no?
-> VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible.
+> VET (si no repartit): Una mica, sí. El Director es va passar una hora amb dotze euros. Diu que encara en té malsons.
+> IRI (si repartit, en lloc de l'anterior): Tothom té el mateix.
+> VET (si repartit): Tothom menys un compte que no existeix. I el Director ara agafa el metro: diu que és més sostenible.
 > BALLESTER (si aliat_ballester): Un tallat, sisplau. I aquest el pago jo.
 > VET (si li va canviar la clau a en Ballester): I a en Ballester li he enviat una postal: «No érem de la UE. Perdó pel collaret.» És la primera postal que escric sense mentir.
 > NETA-3 (si aliat_neta, amb un davantal): Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga.
@@ -934,7 +941,7 @@ ACTE 3
   7:  [virus] → [muntatge] → «Abans de les dotze, només el Director»
       → Vet a l'ascensor (amb en Ballester, si és aliat)
   8:  [avantdespatx: Pons (aliada | enredada)] → [contrasenya: Rockefeller | foto | bol]
-      → [mòbil: sincronia] → [tornar-ho al banc | repartir-ho tot (cal paper de la Rius o en Ballester)] → [el compte zero, ple i amb contrasenya]
+      → [mòbil: sincronia] → [tornar-ho al banc | repartir-ho tot (cal paper de la Rius o en Ballester)] → [el compte zero: el calaix amagat dels bancs, sense contrasenya]
   9:  Iri: [porta de l'escala (clau) → plena] → [conducte: NETA | extintor] → contenidor
       Vet: [ascensor → vestíbul (recepcionista si sospita_max ≥ 50)] → [contenidor]
   Final: 1 / 2 / 3 segons aliats i repartit
@@ -1053,7 +1060,7 @@ perilloses són els `look` i les frases per defecte, que es poden dir en qualsev
 | Galleda, cartell, extintor | `bcmu_passadis` | al seu lloc · a la càmera · a l'inventari · al conducte (extintor) | Usar; robot | Desapareixen del lloc | — |
 | Porta de l'escala | `bcmu_passadis` | tancada · oberta (escala plena) · tancada de nou | Clau del Llibre Major (Esc. 9) | Darrere, guardes | «Pany antic, de clau grossa» / «Pla B: escombraries» |
 | Porta VIP | `bcmu_passadis` | sempre oberta | — | Catifa vermella | «L'Iri no és premium...» |
-| Llibre Major | `bcmu_escombraries` | en espera · codi 1/2/3 · demana clau · virus (comptadors) · demana contrasenya · demana codi · pregunta (tornar / repartir) · compte zero amb contrasenya · aturat | Escenes 6–8 | Pantalla verda amb text | L'Iri parlant amb la màquina |
+| Llibre Major | `bcmu_escombraries` | en espera · codi 1/2/3 · demana clau · virus (comptadors) · demana contrasenya · demana codi · pregunta (tornar / repartir) · avís del compte zero · aturat | Escenes 6–8 | Pantalla verda amb text | L'Iri parlant amb la màquina |
 | Conducte d'escombraries | `bcmu_escombraries` | tancat · obert · amb coixí (bosses / escuma) | Escena 9 | — | «Tres pisos? Primer, coixí» |
 | Ballester | `bcmu_seguretat` | mirant la sèrie · alerta (mà a la ràdio) · relaxat · sospita 1/2/3 · sense collaret | Escena 6 | Poses | — |
 | Got | `bcmu_seguretat` | sencer · trencat | Trencar-lo | Vidres a terra | — |
