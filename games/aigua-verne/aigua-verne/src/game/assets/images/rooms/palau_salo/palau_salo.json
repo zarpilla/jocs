@@ -212,18 +212,18 @@
     },
     "palau_salo 10.aseprite": {
       "frame": {
-        "x": 698,
-        "y": 360,
-        "w": 2,
-        "h": 1
+        "x": 3465,
+        "y": 0,
+        "w": 171,
+        "h": 81
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 219,
-        "y": 31,
-        "w": 2,
-        "h": 1
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
       },
       "sourceSize": {
         "w": 640,
@@ -233,7 +233,259 @@
     },
     "palau_salo 11.aseprite": {
       "frame": {
-        "x": 700,
+        "x": 3636,
+        "y": 0,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 12.aseprite": {
+      "frame": {
+        "x": 3807,
+        "y": 0,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 13.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 360,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 14.aseprite": {
+      "frame": {
+        "x": 171,
+        "y": 360,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 15.aseprite": {
+      "frame": {
+        "x": 342,
+        "y": 360,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 16.aseprite": {
+      "frame": {
+        "x": 513,
+        "y": 360,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 17.aseprite": {
+      "frame": {
+        "x": 684,
+        "y": 360,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 18.aseprite": {
+      "frame": {
+        "x": 855,
+        "y": 360,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 19.aseprite": {
+      "frame": {
+        "x": 1026,
+        "y": 360,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 20.aseprite": {
+      "frame": {
+        "x": 1197,
+        "y": 360,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 21.aseprite": {
+      "frame": {
+        "x": 1368,
+        "y": 360,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 22.aseprite": {
+      "frame": {
+        "x": 1539,
+        "y": 360,
+        "w": 171,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 260,
+        "y": 26,
+        "w": 171,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 23.aseprite": {
+      "frame": {
+        "x": 2756,
         "y": 360,
         "w": 2,
         "h": 1
@@ -252,9 +504,30 @@
       },
       "duration": 100
     },
-    "palau_salo 12.aseprite": {
+    "palau_salo 24.aseprite": {
       "frame": {
-        "x": 696,
+        "x": 2758,
+        "y": 360,
+        "w": 2,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 219,
+        "y": 31,
+        "w": 2,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_salo 25.aseprite": {
+      "frame": {
+        "x": 2754,
         "y": 360,
         "w": 1,
         "h": 2
@@ -273,9 +546,9 @@
       },
       "duration": 100
     },
-    "palau_salo 13.aseprite": {
+    "palau_salo 26.aseprite": {
       "frame": {
-        "x": 344,
+        "x": 2402,
         "y": 360,
         "w": 352,
         "h": 7
@@ -294,9 +567,9 @@
       },
       "duration": 100
     },
-    "palau_salo 14.aseprite": {
+    "palau_salo 27.aseprite": {
       "frame": {
-        "x": 0,
+        "x": 2058,
         "y": 360,
         "w": 344,
         "h": 10
@@ -315,9 +588,9 @@
       },
       "duration": 100
     },
-    "palau_salo 15.aseprite": {
+    "palau_salo 28.aseprite": {
       "frame": {
-        "x": 702,
+        "x": 2760,
         "y": 360,
         "w": 1,
         "h": 1
@@ -336,9 +609,9 @@
       },
       "duration": 100
     },
-    "palau_salo 16.aseprite": {
+    "palau_salo 29.aseprite": {
       "frame": {
-        "x": 703,
+        "x": 2761,
         "y": 360,
         "w": 1,
         "h": 1
@@ -357,9 +630,9 @@
       },
       "duration": 100
     },
-    "palau_salo 17.aseprite": {
+    "palau_salo 30.aseprite": {
       "frame": {
-        "x": 697,
+        "x": 2755,
         "y": 360,
         "w": 1,
         "h": 2
@@ -378,10 +651,10 @@
       },
       "duration": 100
     },
-    "palau_salo 18.aseprite": {
+    "palau_salo 31.aseprite": {
       "frame": {
-        "x": 3799,
-        "y": 0,
+        "x": 2044,
+        "y": 360,
         "w": 14,
         "h": 33
       },
@@ -399,9 +672,9 @@
       },
       "duration": 100
     },
-    "palau_salo 19.aseprite": {
+    "palau_salo 32.aseprite": {
       "frame": {
-        "x": 704,
+        "x": 2762,
         "y": 360,
         "w": 1,
         "h": 1
@@ -420,10 +693,10 @@
       },
       "duration": 100
     },
-    "palau_salo 20.aseprite": {
+    "palau_salo 33.aseprite": {
       "frame": {
-        "x": 3771,
-        "y": 0,
+        "x": 2016,
+        "y": 360,
         "w": 28,
         "h": 38
       },
@@ -441,10 +714,10 @@
       },
       "duration": 100
     },
-    "palau_salo 21.aseprite": {
+    "palau_salo 34.aseprite": {
       "frame": {
-        "x": 3465,
-        "y": 0,
+        "x": 1710,
+        "y": 360,
         "w": 306,
         "h": 76
       },
@@ -462,7 +735,7 @@
       },
       "duration": 100
     },
-    "palau_salo 22.aseprite": {
+    "palau_salo 35.aseprite": {
       "frame": {
         "x": 1570,
         "y": 0,
@@ -483,7 +756,7 @@
       },
       "duration": 100
     },
-    "palau_salo 23.aseprite": {
+    "palau_salo 36.aseprite": {
       "frame": {
         "x": 1221,
         "y": 0,
@@ -504,7 +777,7 @@
       },
       "duration": 100
     },
-    "palau_salo 24.aseprite": {
+    "palau_salo 37.aseprite": {
       "frame": {
         "x": 822,
         "y": 0,
@@ -525,7 +798,7 @@
       },
       "duration": 100
     },
-    "palau_salo 25.aseprite": {
+    "palau_salo 38.aseprite": {
       "frame": {
         "x": 674,
         "y": 0,
@@ -546,7 +819,7 @@
       },
       "duration": 100
     },
-    "palau_salo 26.aseprite": {
+    "palau_salo 39.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -574,8 +847,8 @@
     "image": "palau_salo.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3813,
-      "h": 370
+      "w": 3978,
+      "h": 441
     },
     "scale": "1",
     "frameTags": [
@@ -594,114 +867,205 @@
         "color": "#000000ff"
       },
       {
-        "name": "grafic_102",
+        "name": "grafic_t2",
         "from": 2,
         "to": 2,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "grafic_96",
+        "name": "grafic_ferrum",
         "from": 3,
         "to": 3,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "grafic_86",
+        "name": "grafic_aqua",
         "from": 4,
         "to": 4,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "grafic_57",
+        "name": "grafic_t2_ferrum",
         "from": 5,
         "to": 5,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "grafic_47",
+        "name": "grafic_t2_aqua",
         "from": 6,
         "to": 6,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "grafic_41",
+        "name": "grafic_ferrum_t2",
         "from": 7,
         "to": 7,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "grafic_31",
+        "name": "grafic_ferrum_aqua",
         "from": 8,
         "to": 8,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "grafic_29",
+        "name": "grafic_aqua_t2",
         "from": 9,
         "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "estrelles",
+        "name": "grafic_aqua_ferrum",
         "from": 10,
+        "to": 10,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "grafic_t2_ferrum_aqua",
+        "from": 11,
+        "to": 11,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "grafic_t2_ferrum_aqua_reserva",
+        "from": 12,
+        "to": 12,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "grafic_t2_aqua_ferrum",
+        "from": 13,
+        "to": 13,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "grafic_t2_aqua_ferrum_reserva",
+        "from": 14,
+        "to": 14,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "grafic_ferrum_t2_aqua",
+        "from": 15,
+        "to": 15,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "grafic_ferrum_t2_aqua_reserva",
+        "from": 16,
+        "to": 16,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "grafic_ferrum_aqua_t2",
+        "from": 17,
+        "to": 17,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "grafic_ferrum_aqua_t2_reserva",
+        "from": 18,
+        "to": 18,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "grafic_aqua_t2_ferrum",
+        "from": 19,
         "to": 19,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_faristol",
+        "name": "grafic_aqua_t2_ferrum_reserva",
         "from": 20,
         "to": 20,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_fila3",
+        "name": "grafic_aqua_ferrum_t2",
         "from": 21,
         "to": 21,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_fila2",
+        "name": "grafic_aqua_ferrum_t2_reserva",
         "from": 22,
         "to": 22,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_fila1",
+        "name": "estrelles",
         "from": 23,
-        "to": 23,
+        "to": 32,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_faristol",
+        "from": 33,
+        "to": 33,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_fila3",
+        "from": 34,
+        "to": 34,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_fila2",
+        "from": 35,
+        "to": 35,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_fila1",
+        "from": 36,
+        "to": 36,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant_fila0",
-        "from": 24,
-        "to": 24,
+        "from": 37,
+        "to": 37,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant_taula",
-        "from": 25,
-        "to": 25,
+        "from": 38,
+        "to": 38,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant",
-        "from": 26,
-        "to": 26,
+        "from": 39,
+        "to": 39,
         "direction": "forward",
         "color": "#000000ff"
       }

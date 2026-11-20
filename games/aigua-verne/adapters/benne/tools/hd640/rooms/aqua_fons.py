@@ -20,7 +20,9 @@ Llum de migdia: el sol alt, darrere la paret i una mica a la dreta: la paret és
 peu; les ombres curtes cauen cap endavant i a l'esquerra.
 
 El detall (la casa de la Juana, la cistella, les boies, les nanses, els ossos, la regla, els pneumàtics) ve del fons pla
-de sempre (aqua_fons_pla_comu.py), dibuixat de cara i projectat. Prop: `sorra`. ANIMS: `calitja`, `pols`,
+de sempre (aqua_fons_pla_comu.py), dibuixat de cara i projectat. La platja de sorra fina és al fons (sempre es veu).
+PROPS: `lot9` (Acte 2: les estaques i la cinta de Verne al voltant de la platja, de la ratlla de sal de dimarts cap
+amunt, amb el cartell «LOT 9»). ANIMS: `calitja`, `pols`,
 `llum_canonada`, `llum_juana` (la làmpada, a l'ull de bou), `fum` (la xemeneia), `bassal` (el reflex de l'aigua).
 
 El món: x a la dreta, y amunt (0 = la sorra), z endavant; 1 unitat = 1 px a la distància on un personatge fa la seva
@@ -32,9 +34,10 @@ import math
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
 from hd.pix import Canvas, Light, W, H, hr
+from hd.rooms.comu import text
 from hd.rooms.exterior import fbm, smooth
 from hd640.rooms import aqua_fons_pla_comu as F
-from hd640.rooms.aqua_comu import (RH, SKYA, SALT, SAND, STONEA, ALGA, ALGAS, WOODG, PAINTW, RUSTA, STEELA, BLACKT,
+from hd640.rooms.aqua_comu import (RH, SKYA, SALT, SAND, STONEA, ALGA, ALGAS, WOODG, PAINTW, RUSTA, STEELA, BLACKT, BLUEV,
                                    WATERB, BONE, cel, canonada, canonada_llum, calitja_frames, pols_frames, diff,
                                    amb_contorn, _voronoi)
 from hd640.tres_d import Camera, Escena, Llum
@@ -549,6 +552,7 @@ def escena(cv, tex):
     bassal(e)
     ossos(e, tex)
     boies(e, tex)
+    sorra(e)
     primer_pla(e, tex)
     _enfosqueix(e, {'nanses', 'primer_pla'}, 0.5)
     return e
@@ -579,21 +583,92 @@ def _nomes(img, base, e, ids):
     return out
 
 
-def prop_sorra(cv):
+# ─── El lot 9 (Acte 2): les estaques i la cinta de Verne al voltant de la platja de sorra fina ───────────────
+
+# La línia de l'aigua «amidada dimarts»: la ratlla de sal al voltant del bassal (bassal_vora, ≈1,45 vegades el bassal
+# d'ara). Les estaques tanquen la platja d'aquesta línia cap amunt; entre la cinta i l'aigua d'avui queda una franja
+# de sorra que dimarts era sota l'aigua. Coordenades locals de la platja (a: cap a la dreta de la pantalla, b: cap al
+# fons; vegeu _ell).
+LOT9_A0 = POOL[2] * 1.45 - _loc(BEACH[0] - POOL[0], BEACH[1] - POOL[1])[0]     # la cinta de l'esquerra (dimarts)
+LOT9 = (LOT9_A0, BEACH[2] * 1.3, -BEACH[3] * 1.4, BEACH[3] * 1.3)              # a0, a1, b0 (davant), b1 (darrere)
+ESTACA_H, CINTA_Y = 15.0, 11.0
+CARTELL_H = 20.0
+
+
+def _lot9_mon(a, b):
+    cx, cz = BEACH[0], BEACH[1]
+    c, s_ = math.cos(CAM.yaw), math.sin(CAM.yaw)
+    return cx + a * c + b * s_, cz - a * s_ + b * c
+
+
+def _lot9_tram(a0, b0, a1, b1, n):
+    return [(a0 + (a1 - a0) * i / n, b0 + (b1 - b0) * i / n) for i in range(n + 1)]
+
+
+def _lot9_estaques():
+    """Les estaques, de darrere (la cinta del fons) a davant, en tres trams: el fons, la dreta i el davant; i la línia
+    de dimarts, a l'esquerra (que és la que toca l'aigua)."""
+    a0, a1, b0, b1 = LOT9
+    fons = _lot9_tram(a0, b1, a1, b1, 4)
+    dreta = _lot9_tram(a1, b1, a1, b0, 2)[1:]
+    davant = _lot9_tram(a1, b0, a0, b0, 4)[1:]
+    dimarts = _lot9_tram(a0, b0, a0, b1, 2)[1:-1]
+    return fons, dreta, davant, dimarts
+
+
+def _cartell_img():
+    """El cartell del lot (a 1:1: és text): «LOT 9», en blau de Verne damunt la planxa blanca."""
+    cv = Canvas(30, 14, light=LIGHT, transparent=True)
+    cv.rect(1, 1, 25, 11, PAINTW, lambda x, y: 5.4 - (1.6 if y == 11 or x == 25 else 0) + (0.6 if y == 1 else 0), lit=0)
+    cv.rect(2, 2, 24, 2, BLUEV, 2.4, lit=0)
+    text(cv, 'LOT 9', 4, 4, None, 0, flat=BLUEV[1])
+    cv.rect(2, 10, 24, 10, BLUEV, 2.4, lit=0)
+    return cv.img.crop(cv.img.getbbox())
+
+
+def _lot9_peces(e, quines):
+    """Pinta les estaques i la cinta dels trams `quines` ('fons' o 'davant')."""
+    fons, dreta, davant, dimarts = _lot9_estaques()
+    trams = {'fons': [fons], 'davant': [[fons[0]] + dimarts + [davant[-1]], [fons[-1]] + dreta, [dreta[-1]] + davant]}
+    for punts in trams[quines]:
+        P = [(*_lot9_mon(a, b),) for a, b in punts]
+        for (xa, za), (xb, zb) in zip(P, P[1:]):                                   # la cinta, a ratlles blau i blanc
+            e.quad('lot9', (xa, CINTA_Y + 1.6, za), (xb, CINTA_Y + 1.6, zb), (xb, CINTA_Y, zb), (xa, CINTA_Y, za),
+                   ramp=BLUEV, lvl=lambda s, t, P_: 2.4 if int(P_[0] / 4 + P_[2] / 4) % 2 else 4.4,
+                   dues_cares=True)
+        for x, z in P:
+            _ombra(e, x, z, 3, 2, 0.4, sid='lot9_ombra')
+            e.caixa('lot9', x - 1, x + 1, 0, ESTACA_H, z - 1, z + 1, WOODG, 4.4,
+                    cares={'dalt': {'ramp': WOODG, 'lvl': 6.0}, 'esquerra': {'ramp': WOODG, 'lvl': 3.0}})
+    if quines == 'davant':                                                         # el cartell, a la cantonada
+        x, z = _lot9_mon(LOT9[0], LOT9[2])
+        x, z = x + 3, z - 3
+        e.caixa('lot9', x - 1.2, x + 1.2, 0, CARTELL_H, z - 1.2, z + 1.2, WOODG, 4.0,
+                cares={'esquerra': {'ramp': WOODG, 'lvl': 2.8}})
+        img = _cartell_img()
+        peu = (x, CARTELL_H - 2, z - 1.5)
+        e.sprite('lot9', img, (img.width // 2, img.height - 1), peu, escala_img=1 / CAM.escala(peu))
+
+
+def prop_lot9(cv):
+    """Les estaques i la cinta de Verne del lot 9, amb el cartell: les del fons, darrere la lloma de sorra fina, i les
+    de davant, per davant (es torna a pintar la lloma entre les unes i les altres, i es queda la diferència)."""
     base, e = _base()
-    c2 = Canvas(light=LIGHT, img=base.copy())
-    e2 = Escena(c2, CAM, LLUMS, ambient=AMBIENT)
+    amb = Canvas(light=LIGHT, img=base.copy())
+    e2 = Escena(amb, CAM, LLUMS, ambient=AMBIENT)
+    _lot9_peces(e2, 'fons')
     sorra(e2)
-    out = diff(c2.img, base)
+    _lot9_peces(e2, 'davant')
+    out = diff(amb.img, base)
     o = out.load()
-    for i, a in enumerate(e.amo):                                  # només on es veu el terra (o el bassal)
+    for i, a in enumerate(e.amo):                                  # no per sobre del primer pla
         X, Y = i % W, i // W
-        if o[X, Y][3] and e.ids[a] not in ('terra', 'ombra', 'bassal', 'bassal_vora'):
+        if o[X, Y][3] and e.ids[a] in ('nanses', 'primer_pla'):
             o[X, Y] = (0, 0, 0, 0)
     cv.img.alpha_composite(out)
 
 
-PROPS = {'sorra': prop_sorra}
+PROPS = {'lot9': prop_lot9}
 
 
 # ─── Animacions ────────────────────────────────────────────────────────────
@@ -735,8 +810,12 @@ GEOMETRIA = {
                   'walk': _p(BOIES[1][0] - 10, BOIES[1][1] - 40)},
         'bassal': {'rect': _rect(*[(*_ell(POOL, a)[:1], 0, _ell(POOL, a)[1]) for a in (0, 1.57, 3.14, 4.71)]),
                    'walk': _p(*_ell(POOL, 1.9, 1.3))},
+        # (la lloma i, a l'Acte 2, les estaques i el cartell del lot 9 al seu voltant)
         'sorra': {'rect': _rect(*[(_ell(BEACH, a)[0], 10, _ell(BEACH, a)[1]) for a in (0, 1.57, 3.14, 4.71)],
-                                (_ell(BEACH, 4.71)[0], 0, _ell(BEACH, 4.71)[1])),
+                                (_ell(BEACH, 4.71)[0], 0, _ell(BEACH, 4.71)[1]),
+                                *[(*_lot9_mon(a, b)[:1], y, _lot9_mon(a, b)[1]) for a in LOT9[:2] for b in LOT9[2:]
+                                  for y in (0, ESTACA_H)],
+                                (_lot9_mon(LOT9[0], LOT9[2])[0] + 3, CARTELL_H + 8, _lot9_mon(LOT9[0], LOT9[2])[1] - 3)),
                   'walk': _p(*_ell(BEACH, 4.4, 1.4))},
         'ossos': {'rect': _rect((OSSOS[0] - 52, 0, OSSOS[1]), (OSSOS[0] + 56, 24, OSSOS[1])),
                   'walk': _p(OSSOS[0] + 70, OSSOS[1] + 10)},

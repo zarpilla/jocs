@@ -63,6 +63,7 @@ describe('Aigua Verne: arreglos de la passada tàctil', () => {
     // objeccions al seu lot no s'hi arriba. Els moments de la història hi són igualment (la Lia, seguretat, en Tomàs).
     let dit = valvula('aqua');
     expect(n.getVar('preu_aigua')).toBe(57);
+    expect(n.getVar('ordre_valvules')).toBe('aqua');
     expect(dit).toMatch(/quatre lots/);
     expect(dit).toMatch(/Tot en ordre/);
     expect([n.getVar('lots'), n.getVar('lot')]).toEqual([7, 6]);
@@ -70,6 +71,8 @@ describe('Aigua Verne: arreglos de la passada tàctil', () => {
     expect(iri('anima')).toMatch(/Ànima/);
     dit = valvula('t2');
     expect(n.getVar('preu_aigua')).toBe(47);
+    // (el gràfic del saló dibuixa el camí: 112 → 57 → 47, no 112 → 102 → 47)
+    expect(n.getVar('ordre_valvules')).toBe('aqua_t2');
     expect(dit).toMatch(/Seguretat és al moll/);
     expect(n.getVar('lot')).toBe(10);
     expect(iri('peixos')).toMatch(/compta els peixos/);
@@ -78,6 +81,7 @@ describe('Aigua Verne: arreglos de la passada tàctil', () => {
     expect(dit).toMatch(/descomptat/);
     expect(n.getVar('reinicis_subhasta')).toBe(1);
     expect([n.getVar('lots'), n.getVar('lot'), n.getVar('pausa'), n.getVar('preu_aigua')]).toEqual([12, 1, 0, 112]);
+    expect(n.getVar('ordre_valvules')).toBe('');
     expect(n.flag('objeccio_7788') || n.flag('objeccio_anima') || n.flag('objeccio_peixos')).toBe(false);
   });
 });

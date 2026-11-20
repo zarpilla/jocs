@@ -233,7 +233,8 @@ def arbre(cv, x0=232, base=188, wet=False):
 
 # ─── El graner i el tractor ────────────────────────────────────────────────
 
-def graner(cv, wet=False):
+def graner(cv, wet=False, tancat=False):
+    """El graner. `tancat`: la porta tancada, amb el precinte de Verne (vegeu `precinte`)."""
     x0, x1, top, base = 472, 640, 92, 190
     dw = 0.8 if wet else 0
     cv.poly([(x0 - 4, top + 2), (x0 + 60, top - 26), (x1 + 4, top - 8), (x1 + 4, top + 4)], RUSTT,
@@ -246,6 +247,62 @@ def graner(cv, wet=False):
         cv.put(nx, ny, IRONR, 2.0)
     # la porta gran, oberta: dins, la penombra, i el tractor vermell de l'avi
     dx0, dx1, dtop = 516, 600, 118
+    if tancat:
+        precinte(cv, dx0, dx1, dtop, base, dw)
+    else:
+        _porta_oberta(cv, dx0, dx1, dtop, base, dw)
+    cv.rect(dx1 + 1, dtop, dx1 + 3, base, GREYW, 2.2)                              # el marc
+    cv.rect(dx0 - 1, dtop - 3, dx1 + 3, dtop - 1, GREYW, 4.4)
+    # la ferradura de la sort, damunt la porta, i una llanta vella penjada
+    for a in range(200, 341, 12):
+        cv.put(558 + math.cos(math.radians(a)) * 4, 108 - math.sin(math.radians(a)) * 4 - 4, IRONR, 4.0)
+    cv.put(554, 104, IRONR, 3.0)
+    cv.put(562, 104, IRONR, 3.0)
+    cv.ring(616, 146, 9, RUSTT, 2.8, step=3)
+    cv.ring(616, 146, 8, RUSTT, 4.0, step=3)
+    cv.ring(616, 146, 3, RUSTT, 2.0, step=8)
+    cv.rect(615, 134, 617, 136, IRONR, 2.0)
+    # la forca, recolzada a la paret
+    cv.line(498, 186, 504, 128, GREYW, 4.4)
+    for k in (-2, 0, 2):
+        cv.line(504 + k, 128, 504 + k * 1.4, 120, IRONR, 3.6)
+
+
+def precinte(cv, dx0, dx1, dtop, base, dw=0.0):
+    """La porta del graner tancada (les dues fulles de taulons, amb la Z), i el precinte de Verne: un cadenat blanc
+    amb la ranura i el llum vermell, a la balda del mig, i el paper groc enganxat a la fulla de la dreta."""
+    xm = (dx0 + dx1) // 2
+    for f0, f1 in ((dx0, xm), (xm + 1, dx1)):                                       # les dues fulles
+        cv.rect(f0, dtop, f1, base, GREYW, lambda x, y, f0=f0: 3.0 - dw - (1.6 if (x - f0) % 7 == 0 else 0) +
+                (fbm(x / 5, y / 14, 7) - 0.5) * 0.8 - (0.6 if y > base - 3 else 0))
+        cv.line(f0 + 3, dtop + 4, f1 - 3, dtop + 4, GREYW, 4.0 - dw)                 # els travessers i la Z
+        cv.line(f0 + 3, base - 5, f1 - 3, base - 5, GREYW, 4.0 - dw)
+        cv.line(f0 + 4, base - 7, f1 - 4, dtop + 6, GREYW, 3.8 - dw)
+    cv.rect(xm, dtop, xm + 1, base, BLACKT, 1.0)                                    # la junta
+    cv.rect(dx0 - 3, dtop, dx0 - 1, base, GREYW, 2.2)                               # el marc de l'esquerra
+    cv.rect(dx0, dtop, dx1, dtop, BLACKT, 1.4)
+    # la balda i el cadenat de Verne (blanc, amb la gota blava, la ranura i el llum vermell)
+    cy = dtop + 38
+    cv.rect(xm - 9, cy - 2, xm + 10, cy + 1, IRONR, lambda x, y: 4.2 - (y - cy + 2) * 0.6)
+    cv.rect(xm - 6, cy - 4, xm + 7, cy + 14, WHITEP, lambda x, y: 4.6 - (x - xm + 6) * 0.12 + (0.8 if y == cy - 4 else 0)
+            - (1.4 if x == xm + 7 or y == cy + 14 else 0))
+    cv.rect(xm - 3, cy + 1, xm + 4, cy + 2, BLACKT, 0.6)                            # la ranura
+    cv.disc(xm, cy + 7, 1.6, 2, BLUE, 2.6, lit=0)                                   # la gota
+    for y in range(cy + 9, cy + 12):                                                 # el llum, vermell
+        for x in range(xm + 3, xm + 6):
+            cv.flat(x, y, (255, 70, 50) if (x, y) != (xm + 3, cy + 9) else (255, 190, 170))
+    cv.glow(xm + 4, cy + 10, 5, (255, 60, 40), 0.5)
+    # el paper groc del precinte, a la fulla de la dreta (amb les ratlles de lletra i la signatura)
+    px0, py0, px1, py1 = xm + 12, dtop + 14, xm + 30, dtop + 38
+    cv.rect(px0 + 1, py0 + 1, px1 + 1, py1 + 1, BLACKT, 1.0)                        # l'ombra
+    cv.rect(px0, py0, px1, py1, STRAW, lambda x, y: 4.6 - (0.6 if (x + y) % 5 == 0 else 0), lit=0)
+    cv.rect(px0 + 2, py0 + 2, px1 - 2, py0 + 3, BLACKT, 2.0, lit=0)                 # «PRECINTE PREVENTIU»
+    for y in range(py0 + 7, py1 - 5, 3):
+        cv.rect(px0 + 2, y, px1 - 2 - (y * 7) % 5, y, STRAW, 1.6, lit=0)
+    cv.rect(px1 - 8, py1 - 4, px1 - 2, py1 - 3, BLUE, 2.0, lit=0)                   # el segell de Verne
+
+
+def _porta_oberta(cv, dx0, dx1, dtop, base, dw=0.0):
     cv.rect(dx0, dtop, dx1, base, BLACKT, lambda x, y: 0.3 + max(0.0, (y - dtop - 40) / 40) * 1.4, lit=0)
     for x in range(dx0, dx1 + 1, 9):                                                # les taules de la paret del fons
         cv.rect(x, dtop + 2, x, base - 30, BLACKT, 1.6, lit=0)
@@ -280,21 +337,6 @@ def graner(cv, wet=False):
     cv.line(dx0 - 30, base - 4, dx0 - 4, dtop + 10, GREYW, 1.4)
     cv.line(dx0 - 31, dtop + 12, dx0 - 3, dtop + 8, GREYW, 4.0)
     cv.line(dx0 - 31, base + 1, dx0 - 3, base - 2, GREYW, 1.6)
-    cv.rect(dx1 + 1, dtop, dx1 + 3, base, GREYW, 2.2)                              # el marc
-    cv.rect(dx0 - 1, dtop - 3, dx1 + 3, dtop - 1, GREYW, 4.4)
-    # la ferradura de la sort, damunt la porta, i una llanta vella penjada
-    for a in range(200, 341, 12):
-        cv.put(558 + math.cos(math.radians(a)) * 4, 108 - math.sin(math.radians(a)) * 4 - 4, IRONR, 4.0)
-    cv.put(554, 104, IRONR, 3.0)
-    cv.put(562, 104, IRONR, 3.0)
-    cv.ring(616, 146, 9, RUSTT, 2.8, step=3)
-    cv.ring(616, 146, 8, RUSTT, 4.0, step=3)
-    cv.ring(616, 146, 3, RUSTT, 2.0, step=8)
-    cv.rect(615, 134, 617, 136, IRONR, 2.0)
-    # la forca, recolzada a la paret
-    cv.line(498, 186, 504, 128, GREYW, 4.4)
-    for k in (-2, 0, 2):
-        cv.line(504 + k, 128, 504 + k * 1.4, 120, IRONR, 3.6)
 
 
 def cami(cv, wet=False):

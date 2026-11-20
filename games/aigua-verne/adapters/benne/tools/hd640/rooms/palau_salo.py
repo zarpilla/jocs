@@ -12,8 +12,10 @@ la **safata** d'argent a la punta. Primer pla: un pilar en ombra i el vellut d'u
 l'esquerra. Es passa per darrere de les files de cadires, de la taula del cava i del faristol.
 
 El detall ve del dibuix pla (palau_salo_pla_comu.py): la paret del fons sencera (com abans, de cara), les cadires amb
-els inversors, les copes i la safata. PROPS: `grafic_<preu>` (112, 102, 96, 86, 57, 47, 41, 31, 29: el gràfic
-del preu a cada pas de la subhasta, dibuixat pla i projectat per la pantalla). ANIMS: `estrelles`.
+els inversors, les copes i la safata. PROPS: `grafic_112` (abans de cap vàlvula) i `grafic_<ordre>` (p. ex.
+`grafic_aqua`, `grafic_t2_aqua`, `grafic_ferrum_t2_aqua`, `grafic_ferrum_t2_aqua_reserva`): el gràfic del preu amb el camí
+que ha fet segons l'ordre en què s'han obert les vàlvules (la variable `ordre_valvules`), dibuixat pla i projectat per
+la pantalla. ANIMS: `estrelles`.
 
 El món: x a la dreta (0 = la paret de la porta), y amunt (0 = el terra), z cap al fons (520 = la paret de la pantalla);
 1 unitat = 1 píxel de sala a la distància on un personatge fa ≈83 px. La paret del fons és el dibuix pla de sempre
@@ -240,17 +242,17 @@ def bg(cv):
     cv.P = cv.img.load()
 
 
-def _grafic(n):
+def _grafic(ordre, reserva=False):
     def fn(cv):
         _, e = _base()
         fons = _tex()['fons']
         tmp = Canvas(light=PL.LLUM_PLA, img=fons.copy())
-        PL.grafic(tmp, n)
+        PL.grafic(tmp, ordre, reserva)
         cv.img.alpha_composite(e.capa(_diff(tmp.img, fons), {'paret_fons'}))
     return fn
 
 
-PROPS = {f'grafic_{n}': _grafic(n) for n in (112, 102, 96, 86, 57, 47, 41, 31, 29)}
+PROPS = {PL.nom_grafic(o, r): _grafic(o, r) for o in PL.ORDRES for r in ((False, True) if len(o) == 3 else (False,))}
 
 
 def _frames_estrelles(n=10, seed=5):

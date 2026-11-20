@@ -438,19 +438,19 @@
       "points": [
         {
           "x": 458,
-          "y": 230
+          "y": 224
         },
         {
-          "x": 541,
-          "y": 230
+          "x": 570,
+          "y": 224
         },
         {
-          "x": 541,
-          "y": 251
+          "x": 570,
+          "y": 253
         },
         {
           "x": 458,
-          "y": 251
+          "y": 253
         }
       ],
       "walkToPoint": {
@@ -458,8 +458,8 @@
         "y": 253
       },
       "lookAtPoint": {
-        "x": 499,
-        "y": 251
+        "x": 514,
+        "y": 253
       }
     },
     {
@@ -670,7 +670,7 @@
       "animations": {
         "davant_cistella": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 204
     },
     {
@@ -682,7 +682,7 @@
       "animations": {
         "davant_boia2": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 213
     },
     {
@@ -694,7 +694,7 @@
       "animations": {
         "davant_barril": {}
       },
-      "zIndex": 23,
+      "zIndex": 26,
       "baseline": 223
     },
     {
@@ -706,7 +706,7 @@
       "animations": {
         "davant_boia0": {}
       },
-      "zIndex": 24,
+      "zIndex": 28,
       "baseline": 226
     },
     {
@@ -718,8 +718,19 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 25,
+      "zIndex": 30,
       "baseline": 999
+    },
+    {
+      "id": "lot9",
+      "tag": "lot9",
+      "animations": {
+        "lot9": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

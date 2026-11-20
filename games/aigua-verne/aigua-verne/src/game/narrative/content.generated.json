@@ -172,6 +172,7 @@
         "escena": 1,
         "lot": 1,
         "lots": 12,
+        "ordre_valvules": "",
         "pausa": 0,
         "planeta": "terra2",
         "preu_aigua": 48,
@@ -2222,6 +2223,13 @@
                 ]
               }
             ]
+          }
+        },
+        "decor": {
+          "lot9": {
+            "visibleIf": {
+              "flag": "lot9"
+            }
           }
         },
         "onEnter": [
@@ -5485,6 +5493,11 @@
               "flag": "condensador_arreglat"
             }
           },
+          "pantalla_mosca": {
+            "visibleIf": {
+              "flag": "mosca_contractada"
+            }
+          },
           "goteig": {
             "visibleIf": {
               "flag": "condensador_arreglat"
@@ -8591,6 +8604,23 @@
             }
           }
         },
+        "decor": {
+          "precinte": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": ">=",
+                  "value": 5
+                },
+                {
+                  "flag": "graner_obert",
+                  "is": false
+                }
+              ]
+            }
+          }
+        },
         "onEnter": [
           {
             "id": "arribada",
@@ -10392,60 +10422,241 @@
               "value": 104
             }
           },
-          "grafic_102": {
+          "grafic_t2": {
             "visibleIf": {
-              "var": "preu_aigua",
+              "var": "ordre_valvules",
               "op": "==",
-              "value": 102
+              "value": "t2"
             }
           },
-          "grafic_96": {
+          "grafic_ferrum": {
             "visibleIf": {
-              "var": "preu_aigua",
+              "var": "ordre_valvules",
               "op": "==",
-              "value": 96
+              "value": "ferrum"
             }
           },
-          "grafic_86": {
+          "grafic_aqua": {
             "visibleIf": {
-              "var": "preu_aigua",
+              "var": "ordre_valvules",
               "op": "==",
-              "value": 86
+              "value": "aqua"
             }
           },
-          "grafic_57": {
+          "grafic_t2_ferrum": {
             "visibleIf": {
-              "var": "preu_aigua",
+              "var": "ordre_valvules",
               "op": "==",
-              "value": 57
+              "value": "t2_ferrum"
             }
           },
-          "grafic_47": {
+          "grafic_t2_aqua": {
             "visibleIf": {
-              "var": "preu_aigua",
+              "var": "ordre_valvules",
               "op": "==",
-              "value": 47
+              "value": "t2_aqua"
             }
           },
-          "grafic_41": {
+          "grafic_ferrum_t2": {
             "visibleIf": {
-              "var": "preu_aigua",
+              "var": "ordre_valvules",
               "op": "==",
-              "value": 41
+              "value": "ferrum_t2"
             }
           },
-          "grafic_31": {
+          "grafic_ferrum_aqua": {
             "visibleIf": {
-              "var": "preu_aigua",
+              "var": "ordre_valvules",
               "op": "==",
-              "value": 31
+              "value": "ferrum_aqua"
             }
           },
-          "grafic_29": {
+          "grafic_aqua_t2": {
             "visibleIf": {
-              "var": "preu_aigua",
-              "op": "<=",
-              "value": 29
+              "var": "ordre_valvules",
+              "op": "==",
+              "value": "aqua_t2"
+            }
+          },
+          "grafic_aqua_ferrum": {
+            "visibleIf": {
+              "var": "ordre_valvules",
+              "op": "==",
+              "value": "aqua_ferrum"
+            }
+          },
+          "grafic_t2_ferrum_aqua": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "ordre_valvules",
+                  "op": "==",
+                  "value": "t2_ferrum_aqua"
+                },
+                {
+                  "flag": "reserva_oberta",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "grafic_t2_ferrum_aqua_reserva": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "ordre_valvules",
+                  "op": "==",
+                  "value": "t2_ferrum_aqua"
+                },
+                {
+                  "flag": "reserva_oberta"
+                }
+              ]
+            }
+          },
+          "grafic_t2_aqua_ferrum": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "ordre_valvules",
+                  "op": "==",
+                  "value": "t2_aqua_ferrum"
+                },
+                {
+                  "flag": "reserva_oberta",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "grafic_t2_aqua_ferrum_reserva": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "ordre_valvules",
+                  "op": "==",
+                  "value": "t2_aqua_ferrum"
+                },
+                {
+                  "flag": "reserva_oberta"
+                }
+              ]
+            }
+          },
+          "grafic_ferrum_t2_aqua": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "ordre_valvules",
+                  "op": "==",
+                  "value": "ferrum_t2_aqua"
+                },
+                {
+                  "flag": "reserva_oberta",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "grafic_ferrum_t2_aqua_reserva": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "ordre_valvules",
+                  "op": "==",
+                  "value": "ferrum_t2_aqua"
+                },
+                {
+                  "flag": "reserva_oberta"
+                }
+              ]
+            }
+          },
+          "grafic_ferrum_aqua_t2": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "ordre_valvules",
+                  "op": "==",
+                  "value": "ferrum_aqua_t2"
+                },
+                {
+                  "flag": "reserva_oberta",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "grafic_ferrum_aqua_t2_reserva": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "ordre_valvules",
+                  "op": "==",
+                  "value": "ferrum_aqua_t2"
+                },
+                {
+                  "flag": "reserva_oberta"
+                }
+              ]
+            }
+          },
+          "grafic_aqua_t2_ferrum": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "ordre_valvules",
+                  "op": "==",
+                  "value": "aqua_t2_ferrum"
+                },
+                {
+                  "flag": "reserva_oberta",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "grafic_aqua_t2_ferrum_reserva": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "ordre_valvules",
+                  "op": "==",
+                  "value": "aqua_t2_ferrum"
+                },
+                {
+                  "flag": "reserva_oberta"
+                }
+              ]
+            }
+          },
+          "grafic_aqua_ferrum_t2": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "ordre_valvules",
+                  "op": "==",
+                  "value": "aqua_ferrum_t2"
+                },
+                {
+                  "flag": "reserva_oberta",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "grafic_aqua_ferrum_t2_reserva": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "ordre_valvules",
+                  "op": "==",
+                  "value": "aqua_ferrum_t2"
+                },
+                {
+                  "flag": "reserva_oberta"
+                }
+              ]
             }
           }
         },

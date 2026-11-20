@@ -92,8 +92,9 @@ La mostra (`guio/art/mostra/granja_pati.py`): s'hi parteix.
 - `pou` (pedra, politja, galleda seca) · `bomba` (la bomba de Verne; decorat `bomba_oberta`: el panell obert, amb
   l'etiqueta) · `canonada` · `panell_preu` · `arbre` (l'olivera morta) · `tanca`
 - Des de l'Escena 5, la porta del graner té un **cadenat de Verne** (amb una ranura i un llum vermell) i un paper
-  groc: «PRECINTE PREVENTIU... Només hi pot entrar la propietat.» Ara és només text de `porta_graner` (fins que
-  s'obre, `graner_obert`); si es dibuixa, seria un decorat `precinte` amb `visibleIf` escena ≥ 5 i `graner_obert` fals.
+  groc: «PRECINTE PREVENTIU... Només hi pot entrar la propietat.» Decorat `precinte` (la porta tancada, el cadenat
+  blanc a la balda i el paper groc), amb `visibleIf` escena ≥ 5 i `graner_obert` fals: quan s'obre, torna a ser la
+  porta oberta amb el tractor.
 - Personatges: `iri`, `vet`, `diu` (a la vora del pou, només a l'Escena 1).
 
 ### `granja_casa` (P) — la cuina i el despatx del pare
@@ -158,11 +159,13 @@ cistella de peix penjada. Al fons, la Canonada d'Aqua. La Cantimplora, aparcada 
 El fons de l'antic mar, vist des de baix: el moll és una paret alta al fons, amb la cistella que hi baixa. Sorra
 blanca, nanses i xarxes velles, un bassal (l'única aigua), boies de mesurar amb números pintats, i a la dreta la
 casa de la Juana (una caseta feta amb un casc de vaixell bolcat, amb finestra rodona i llum a dins). Una platja de
-**sorra fina** (prop: `sorra`, sempre es veu).
+**sorra fina** (una lloma baixa a la vora del bassal, al fons: sempre es veu).
 - `cistella` → `aqua_port` · `porta_juana` → `casa_juana` · `nanses` · `boies` · `bassal` · `sorra` · `ossos`
 - Quan s'hi torna a l'Acte 2 (`lot9`, en arribar a Ferrum), la platja té **estaques i una cinta de Verne** i un
-  cartell: «MAR D'AQUA · LOT 9. De la línia de l'aigua, amidada dimarts, cap amunt.» Ara és només text de `sorra`; si
-  es dibuixa, un decorat `lot9` amb `visibleIf` `lot9`.
+  cartell: «MAR D'AQUA · LOT 9. De la línia de l'aigua, amidada dimarts, cap amunt.» Decorat `lot9` (`visibleIf`
+  `lot9`): les estaques i la cinta blava i blanca tanquen la platja, i la de l'esquerra va per la ratlla de sal de
+  dimarts; entre la cinta i el bassal d'avui, que s'ha retirat, queda la franja de sorra. Al cantó de davant, el
+  cartell «LOT 9».
 
 ### `casa_juana` (P)
 L'interior del casc bolcat: costelles de fusta, llibres per tot arreu, mapes del mar clavats a les parets amb línies
@@ -178,13 +181,15 @@ de nivell (cada any més avall), un aquari buit amb un rètol «PER QUAN TORNIN�
 Un carrer de miners: cases de maó ennegrit, el cel de fum. Un **piquet**: pancartes («QUI NO TREBALLA NO BEU»
 ratllat i, a sota, «QUI NO BEU NO TREBALLA»), una foguera en un bidó, canalla asseguda. La **font** de Verne (blanca,
 amb un lector de targetes vermell, seca, i a sota una pantalla «VERNE S.A. CONTRACTA», que és el que encara funciona).
-El **condensador** vell de la mina (una màquina de llauna amb aletes, sencera, amb un lector de targetes de Verne
-cargolat al costat; decorat `condensador_arreglat`: llum verd i una aixeta que goteja). La pantalla de la font i el
-lector del condensador no són dibuixats: ara són només text. Una pila de **comptadors** d'aigua arrencats. El
+El **condensador** vell de la mina (una màquina de llauna amb aletes, sencera, amb un lector de targetes de Verne,
+vermell, cargolat al costat; decorat `condensador_arreglat`: llum verd, una aixeta que goteja, i el lector en verd
+amb la targeta blava de la Mosca a la ranura). La pantalla de la font és entre el lector i el broc; la nena de la
+garrafa, a la dreta de la font, la mira. Una pila de **comptadors** d'aigua arrencats. El
 sindicat (porta) i la fosa (portal gran) al fons.
 - `rampa` → `cantimplora_bodega` · `porta_sindicat` → `ferrum_sindicat` · `porta_fosa` → `fosa_forn` · `font` ·
   `condensador` · `piquet` · `comptadors` · `panell_preu` · `canonada`
 - Decorat `barril_piquet` (l'últim barril, al piquet, amb gots).
+- Decorat `pantalla_mosca` (flag `mosca_contractada`): la pantalla de la font diu «FELICITATS / MOSCA!».
 - Personatges: `rosa` (al piquet).
 
 ### `ferrum_sindicat` (P)
@@ -243,9 +248,11 @@ finestrals a l'espai, columnes blanques, i l'**aquari** (trenta-tres peixos d'Aq
 
 ### `palau_salo` (L)
 El saló de la subhasta: cadires daurades, inversors (dibuixats al fons, no clicables), un escenari amb faristol i
-martell, una **pantalla** gegant amb el gràfic del preu (decorats `grafic_<preu>`, un per a cada preu possible de la
-subhasta: 112, 102, 96, 86, 57, 47, 41, 31 i 29; la línia baixa, i la ratlla vermella «LLINDAR DEL BANC» a 30), una
-taula amb copes de cava i la **safata**.
+martell, una **pantalla** gegant amb el gràfic del preu (la línia baixa, i la ratlla vermella «LLINDAR DEL BANC» a 30), una
+taula amb copes de cava i la **safata**. El gràfic fa el camí de l'ordre en què s'obren les vàlvules (la variable
+`ordre_valvules`, p. ex. `aqua_t2`, que escriu la lògica de la sincronia): decorats `grafic_112` (cap vàlvula) i
+`grafic_<ordre>` (`grafic_t2`, `grafic_aqua_t2`, `grafic_t2_ferrum_aqua`... 3 + 6 + 6), i `grafic_<ordre>_reserva`
+(29, després de la palanca).
 - `porta_galeria` → `palau_galeria` · `escenari` · `pantalla` · `safata` · `cava` · `martell`
 - Personatges: `verne` (a l'escenari, a l'Acte 3 durant la subhasta), `holm`, `kessel`.
 

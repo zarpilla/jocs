@@ -626,6 +626,23 @@
       }
     }
   },
+  "decor": {
+    "precinte": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": ">=",
+            "value": 5
+          },
+          {
+            "flag": "graner_obert",
+            "is": false
+          }
+        ]
+      }
+    }
+  },
   "onEnter": [
     {
       "id": "arribada",

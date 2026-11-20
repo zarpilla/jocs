@@ -673,6 +673,17 @@
       },
       "zIndex": 30,
       "baseline": 215
+    },
+    {
+      "id": "precinte",
+      "tag": "precinte",
+      "animations": {
+        "precinte": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

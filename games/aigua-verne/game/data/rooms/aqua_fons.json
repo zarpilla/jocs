@@ -390,6 +390,13 @@
       ]
     }
   },
+  "decor": {
+    "lot9": {
+      "visibleIf": {
+        "flag": "lot9"
+      }
+    }
+  },
   "onEnter": [
     {
       "id": "arribada",

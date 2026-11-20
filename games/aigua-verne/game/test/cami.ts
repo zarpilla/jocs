@@ -324,6 +324,7 @@ export function acte3(p: Jugador, n: Narrative) {
   expect(n.flag('objeccio_anima')).toBe(true);
   valvula('aqua');
   expect(n.getVar('preu_aigua')).toBe(31);
+  expect(n.getVar('ordre_valvules')).toBe('t2_ferrum_aqua');      // (el camí del gràfic del saló: 112, 102, 86, 31)
   expect(n.getVar('lot')).toBe(11);
   objeccio('peixos');
   expect(n.flag('objeccio_peixos')).toBe(true);

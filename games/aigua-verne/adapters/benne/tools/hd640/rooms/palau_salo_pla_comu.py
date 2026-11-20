@@ -206,14 +206,41 @@ def safata(cv, cx, cy):
 # ─── Gràfics de la pantalla ─────────────────────────────────────────────────
 
 SERIE = [40, 41, 43, 44, 46, 48, 52, 60, 66, 75, 88, 100, 112]
-# El preu de cada fotograma (guio: «La subhasta»). Cada dipòsit fa baixar el preu segons el gel que té (T2 10, Ferrum
-# 16, Aqua 55), i el camí del mig depèn de l'ordre: es dibuixa un dels possibles (el número és el que compta).
-CAIGUDA = {112: [], 102: [102], 96: [96], 57: [57], 86: [102, 86], 47: [102, 47], 41: [96, 41],
-           31: [102, 86, 31], 29: [102, 86, 31, 29]}
+# El preu a cada pas de la subhasta (guio: «La subhasta»): cada dipòsit fa baixar el preu segons el gel que té (T2 10,
+# Ferrum 16, Aqua 55), i la palanca de la RESERVA el deixa a 29. La línia fa el camí de l'ordre en què s'han obert les
+# vàlvules: hi ha un fotograma per a cada ordre (vegeu ORDRES).
+CAU = {'t2': 10, 'ferrum': 16, 'aqua': 55}
+RESERVA = 29
 
 
-def grafic(cv, n):
-    """La pantalla amb el gràfic del preu fins a `n`: eixos, la línia, la ratlla del LLINDAR a 30 i el número."""
+def _ordres():
+    """Tots els ordres possibles de vàlvules obertes: (), ('t2',), ('t2', 'ferrum'), ... (1 + 3 + 6 + 6)."""
+    from itertools import permutations
+    return [()] + [o for k in (1, 2, 3) for o in permutations(CAU, k)]
+
+
+ORDRES = _ordres()
+
+
+def cami(ordre, reserva=False):
+    """Els preus després de cada vàlvula de l'`ordre` (i de la reserva)."""
+    out, p = [], SERIE[-1]
+    for v in ordre:
+        p -= CAU[v]
+        out.append(p)
+    return out + ([RESERVA] if reserva else [])
+
+
+def nom_grafic(ordre, reserva=False):
+    """L'id del decorat: `grafic_112` (cap vàlvula), `grafic_aqua_t2`, `grafic_t2_ferrum_aqua_reserva`..."""
+    return 'grafic_' + ('_'.join(ordre) + ('_reserva' if reserva else '') if ordre else str(SERIE[-1]))
+
+
+def grafic(cv, ordre=(), reserva=False):
+    """La pantalla amb el gràfic del preu: eixos, la línia (el camí de les vàlvules de l'`ordre`, i la reserva), la
+    ratlla del LLINDAR a 30 i el número (l'últim preu)."""
+    caiguda = cami(ordre, reserva)
+    n = (caiguda or SERIE)[-1]
     x0, y0, x1, y1 = SCR
     cv.rect(x0, y0, x1, y1, SCREEN_BG, lambda x, y: 1.2 + (y - y0) / (y1 - y0) * 1.0, lit=0)
     gx0, gx1, gy0, gy1 = x0 + 16, x1 - 74, y0 + 10, y1 - 22
@@ -235,7 +262,7 @@ def grafic(cv, n):
             cv.flat(x, yl + 1, (150, 26, 24))
     lletres_grans(cv, 'LLINDAR DEL BANC', x0 + 4, y1 - 16, (236, 80, 64))      # (els rètols, a ×2: vegeu pantalla)
     # la línia del preu
-    vals = SERIE + CAIGUDA[n]
+    vals = SERIE + caiguda
     m = len(SERIE) + 4
     pts = [(gx0 + 2 + i * (gx1 - gx0 - 4) / (m - 1), Y(v)) for i, v in enumerate(vals)]
     baixa = n != 112

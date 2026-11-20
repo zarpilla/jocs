@@ -74,6 +74,7 @@ export const PASSOS: Record<string, PasSincronia> = {
       linies: TX.subhasta!.reinici,
       efectes: [{ setVar: 'lots', value: LOTS }, { setVar: 'lot', value: 1 }, { setVar: 'pausa', value: 0 },
         { setVar: 'cuita', value: 0 }, { setVar: 'valvules', value: 0 }, { setVar: 'preu_aigua', value: 112 },
+        { setVar: 'ordre_valvules', value: '' },
         ...off(['clau_t2', 'clau_aqua', 'clau_ferrum', 'obert_t2', 'obert_aqua', 'obert_ferrum', 'objeccio_7788',
           'objeccio_anima', 'objeccio_peixos']),
         { addVar: 'reinicis_subhasta', amount: 1 }],
@@ -131,6 +132,27 @@ export function despresDAccio(n: Narrative, action: PlayerAction) {
   return avis ? { lines: [{ ...avis }] } : undefined;
 }
 
+/** Les vàlvules dels dipòsits de la subhasta (els flags `obert_<vàlvula>`). */
+export const VALVULES = ['t2', 'ferrum', 'aqua'] as const;
+
+/**
+ * L'ordre en què s'han obert les vàlvules (`ordre_valvules`, p. ex. `"aqua_t2"`), que fa servir el gràfic del preu del
+ * saló per dibuixar el camí que ha fet el preu: 47 és 102 → 47 (T2 i després Aqua) o 57 → 47 (Aqua i després T2). Es
+ * treu dels flags `obert_*` després de cada acció: s'hi afegeixen les que s'acaben d'obrir, i se'n treuen les que un
+ * reinici ha tornat a tancar.
+ */
+export function anotaOrdre(n: Narrative) {
+  const abans = String(n.getVar('ordre_valvules') ?? '');
+  const ordre = abans.split('_').filter((v) => (VALVULES as readonly string[]).includes(v) && n.flag(`obert_${v}`));
+  for (const v of VALVULES) if (n.flag(`obert_${v}`) && !ordre.includes(v)) ordre.push(v);
+  const ara = ordre.join('_');
+  if (ara !== abans) n.apply({ setVar: 'ordre_valvules', value: ara });
+}
+
 export function installSincronia(n: Narrative) {
-  n.onAfterAction((action) => despresDAccio(n, action));
+  n.onAfterAction((action) => {
+    const r = despresDAccio(n, action);
+    anotaOrdre(n);
+    return r;
+  });
 }

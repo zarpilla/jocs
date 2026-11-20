@@ -524,6 +524,11 @@
         "flag": "condensador_arreglat"
       }
     },
+    "pantalla_mosca": {
+      "visibleIf": {
+        "flag": "mosca_contractada"
+      }
+    },
     "goteig": {
       "visibleIf": {
         "flag": "condensador_arreglat"

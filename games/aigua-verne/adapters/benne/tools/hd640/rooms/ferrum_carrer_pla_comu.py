@@ -393,6 +393,29 @@ def condensador(cv):
     # el tub que entra a la paret de la fosa
     cv.rect(bx1 - 12, btop - 22, bx1 - 9, btop, IRONF, lambda x, y: 4.0 - (x - bx1 + 12) * 0.6)
     cv.rect(bx1 - 12, btop - 24, x1 + 4, btop - 21, IRONF, lambda x, y: 4.0 - (y - btop + 24) * 0.6)
+    lector_condensador(cv)
+
+
+LECTOR = (2, 8, 50, 38)         # el lector de targetes de Verne, cargolat al costat: x des de COND x1, y des de la base
+
+
+def lector_condensador(cv, engegat=False):
+    """El lector de targetes nou de trinca que Verne ha cargolat al costat del condensador: vermell, amb la
+    pantalleta, la ranura i el llum (vermell; `engegat`: verd, amb la targeta blava de la Mosca a la ranura)."""
+    x0, x1, base = COND
+    lx0, lx1, ly0, ly1 = x1 + LECTOR[0], x1 + LECTOR[1], base - LECTOR[2], base - LECTOR[3]
+    if not engegat:
+        cv.rect(lx0, ly0, lx1, ly1, REDV, lambda x, y: 3.4 - (x - lx0) * 0.2 + (1.0 if y == ly0 else 0))
+        cv.rect(lx0 + 1, ly0 + 2, lx1 - 1, ly0 + 4, BLACKT, 1.4, lit=0)                  # la pantalleta
+        cv.rect(lx0 + 1, ly0 + 7, lx1 - 1, ly0 + 7, BLACKT, 0.4, lit=0)                  # la ranura
+        for y in (ly0 + 1, ly1 - 1):                                                     # els cargols
+            cv.flat(lx0, y, TIN[4])
+    led = (120, 255, 140) if engegat else (255, 70, 50)
+    cv.flat(lx1 - 1, ly1 - 2, led)
+    cv.flat(lx0 + 2, ly0 + 3, (110, 230, 120) if engegat else (255, 60, 40))
+    if engegat:
+        cv.rect(lx0 + 1, ly0 + 7, lx1 - 1, ly0 + 10, BLUEV, lambda x, y: 2.8 + (1.0 if y == ly0 + 7 else 0), lit=0)
+        cv.flat(lx1 - 2, ly0 + 9, WHITEV[5])                                             # (la targeta, a la ranura)
 
 
 # ─── El piquet ─────────────────────────────────────────────────────────────
@@ -470,8 +493,9 @@ def canalla(cv):
     persona_c(cv, 220, 226, h=68, facing=1, var=1, tipus='nen', seated=True, light_from=1, **kw)
     caixa(cv, 272, 211, 292, 228, 2)
     persona_c(cv, 286, 228, h=66, facing=-1, var=3, tipus='nena', seated=True, light_from=-1, hold='got', **kw)
-    # una nena dreta, amb una garrafa buida, mirant la font
-    persona_c(cv, 308, 222, h=72, facing=1, var=2, tipus='nena', light_from=-1, hold='bidon', **kw)
+    # una nena dreta, amb una garrafa buida, mirant la font (al carrer en 3D és a l'altra banda de la font, i la mira
+    # cap a l'esquerra: així no tapa la pantalla)
+    persona_c(cv, 308, 222, h=72, facing=-1, var=2, tipus='nena', light_from=-1, hold='bidon', **kw)
 
 
 # ─── El terra, les ombres ──────────────────────────────────────────────────
@@ -521,7 +545,7 @@ def bg(cv):
     ombres(cv)
     pancarta(cv)
     panell(cv, 330, 100, 'VERNE', '▲')
-    font_verne(cv, *FONT)
+    font_verne(cv, *FONT, alt=88, pantalla=True)
     pila_comptadors(cv, 402, 456, 230, 26, seed=3)
     bido(cv)
     canalla(cv)
@@ -578,6 +602,8 @@ def condensador_arreglat(cv):
     # la corretja nova (la de la font)
     cv.line(x0 + 1, base - 34, x0 + 2, base - 50, COAL, 1.0)
     cv.line(x0 + 7, base - 34, x0 + 6, base - 50, COAL, 1.0)
+    # el lector, en verd, amb la targeta de la Mosca
+    lector_condensador(cv, engegat=True)
     # l'aixeta oberta i el toll
     cv.rect(x0 + 12, base - 12, x0 + 13, base - 10, WATER, 3.4, lit=0)
     cv.disc(x0 + 13, base + 1, 7, 1.6, WATER, lambda nx, ny: 2.2 + nx * 0.6 - ny, lit=0)

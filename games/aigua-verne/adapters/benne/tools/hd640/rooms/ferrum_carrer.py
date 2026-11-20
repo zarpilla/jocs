@@ -8,14 +8,16 @@ portal gran i la xemeneia, i un magatzem), i a l'esquerra el carrer del costat, 
 en una plaça on hi ha aparcada de biaix la Cantimplora (el model canònic de cantimplora_comu.py: la popa amagada
 darrere el sindicat i la proa que fuig cap al fons; se'n veu el costat de babord, amb el nom CANTIMPLORA sencer i la
 porta de la bodega encesa) amb la **rampa** baixada fins a les llambordes; per sobre, la **Canonada**. Al mig del carrer, el
-**piquet** (la pancarta girada, el bidó amb la foguera, la canalla en caixes); la **font** de Verne; la pila de
-**comptadors** arrencats; el **condensador** vell, girat. Primer pla: el fanal i unes caixes a l'esquerra, la
+**piquet** (la pancarta girada, el bidó amb la foguera, la canalla en caixes, i una nena dreta amb una garrafa que
+mira la font); la **font** de Verne, amb el lector vermell i, a sota, la pantalla «VERNE S.A. CONTRACTA»; la pila de
+**comptadors** arrencats; el **condensador** vell, girat, amb el lector de targetes de Verne cargolat al costat. Primer pla: el fanal i unes caixes a l'esquerra, la
 vagoneta al carril a la dreta. El sol, baix a l'esquerra, fa ombres llargues en diagonal cap a la dreta. Es passa per
 darrere de la rampa (a banda i banda, arran del buc). El fanal és a la vora esquerra, gairebé fora de quadre.
 
 Tot el detall ve del carrer pla de sempre (ferrum_carrer_pla_comu.py): les façanes, el condensador, la font, el
 piquet i la canalla es dibuixen de cara i es projecten (textures i sprites). Decorats (PROPS): `barril_piquet`,
-`condensador_arreglat`. ANIMS: `foc` (la foguera del bidó), `fum` (les xemeneies de les cases), `goteig` (l'aixeta
+`condensador_arreglat` (també el lector en verd, amb la targeta de la Mosca), `pantalla_mosca` (la pantalla de la font,
+«FELICITATS / MOSCA!»). ANIMS: `foc` (la foguera del bidó), `fum` (les xemeneies de les cases), `goteig` (l'aixeta
 del condensador arreglat).
 
 El món: x al llarg de la fila de façanes, y amunt, z cap al fons (z = 660: les façanes); 1 unitat = 1 px de sala on
@@ -31,8 +33,9 @@ from hd.rooms.exterior import fbm, smooth
 from hd640.rooms import ferrum_carrer_pla_comu as PL
 from hd640.rooms.ferrum_carrer_pla_comu import _smoke_loop  # noqa: F401  (el fan servir els postcrèdits)
 from hd640.rooms.ferrum_comu import (
-    SOOT, MORTAR, COB, COAL, IRONF, RUSTF, TIN, PLANKF, WATER, GLOWF, smog_sky, canonada, brick_lvl,
-    finestres_enceses, llum_finestra, bassa_fanal, con_fanal, fanal_paret)
+    SOOT, MORTAR, COB, COAL, IRONF, RUSTF, TIN, PLANKF, WATER, GLOWF, REDV, BLUEV, BLACKT, smog_sky, canonada,
+    brick_lvl, finestres_enceses, llum_finestra, bassa_fanal, con_fanal, fanal_paret, pantalla_contracta,
+    PANTALLA_BASE, PANTALLA_W, PANTALLA_H)
 from hd640.rooms.cantimplora_comu import Cantimplora
 from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
@@ -66,7 +69,7 @@ ZE, ZF = ZR + 190, 1100.0                          # el carrer del costat s'eixa
                                                    # sindicat (la nau); les cases tornen a començar més enllà
 # el piquet, la font, els comptadors, el condensador (x, z)
 BIDO = (X0 + 266, ZR - 196)
-NENS = ((X0 + 218, ZR - 204), (X0 + 318, ZR - 182), (X0 + 140, ZR - 118))
+NENS = ((X0 + 218, ZR - 204), (X0 + 318, ZR - 182), (X0 + 180, ZR - 130))   # (la nena dreta, a la dreta de la font)
 PANC = ((X0 + 186, ZR - 92), (X0 + 346, ZR - 126))  # els dos pals de la pancarta
 FONT = (X0 + 168, ZR - 62)
 COMPT = (X0 + 132, ZR - 40)
@@ -113,7 +116,7 @@ def _textures():
         'cases': _pla(_cases_pla),
         'fosa': _pla(lambda cv: PL.fosa(cv, xemeneia=False)),
         'cond': _pla(_cond_pla),
-        'font': _pla(lambda cv: PL.font_verne(cv, *PL.FONT)),
+        'font': _pla(lambda cv: PL.font_verne(cv, *PL.FONT, alt=FONT_ALT)),
         'comptadors': _pla(lambda cv: PL.pila_comptadors(cv, 402, 456, 230, 26, seed=3)),
         'pancarta': _pla(PL.pancarta),
         'bido': _pla(PL.bido),
@@ -380,11 +383,30 @@ def piquet(e, tex):
     e.sprite('bido', T['bido'].crop((236, 192, 268, 227)), (16, 32), (BIDO[0], 0, BIDO[1]), escala_img=KP)
 
 
+FONT_ALT = 88                                      # (el pilar de la font, més alt que el de sempre: hi cap la pantalla)
+
+
+def _pantalla_img(mosca=False):
+    """La pantalla «VERNE S.A. CONTRACTA», a 1:1 (és text: escalada amb la font es desfaria)."""
+    cv = Canvas(PANTALLA_W + 4, PANTALLA_H + 4, light=TEXL, transparent=True)
+    pantalla_contracta(cv, 2 + PANTALLA_W // 2, PANTALLA_H + 1, mosca)
+    return cv.img.crop(cv.img.getbbox())
+
+
 def font(e, tex):
     ombra(e, FONT[0], FONT[1], 22, 70, 0.55)
     fx, fy = PL.FONT
-    e.sprite('font', tex['font'].crop((fx - 26, fy - 78, fx + 26, fy + 4)), (26, 78), (FONT[0], 0, FONT[1]),
+    top = FONT_ALT + 8
+    e.sprite('font', tex['font'].crop((fx - 26, fy - top, fx + 26, fy + 4)), (26, top), (FONT[0], 0, FONT[1]),
              escala_img=KP)
+    pantalla(e)
+
+
+def pantalla(e, mosca=False):
+    """La pantalla, damunt el pilar (entre el lector i el broc), píxel a píxel."""
+    img = _pantalla_img(mosca)
+    peu = (FONT[0], PANTALLA_BASE * KP, FONT[1])
+    e.sprite('font', img, (img.width // 2, img.height - 1), peu, escala_img=1 / CAM.escala(peu))
 
 
 def comptadors(e, tex):
@@ -417,6 +439,36 @@ def condensador(e, tex):
     top = (cx + (w / 2 - 10) * c - 4 * s_, 74, cz + (w / 2 - 10) * s_ + 4 * c)
     e.tub('cond', top, (top[0], 118, top[2]), 3.4, IRONF, 2.8)
     e.tub('cond', (top[0], 118, top[2]), (top[0], 118, FZ - 1), 3.4, IRONF, 2.8, brides=40)
+    lector(e)
+
+
+# el lector de targetes de Verne, cargolat al costat que es veu (el de les aletes): (lz0, lz1, y0, y1) i el gruix
+LECTOR = (-7.0, 7.0, 38.0, 54.0)
+LECTOR_G = 3.0
+GREENL = PL.GREENL
+LECTOR_RAMP = BLACKT[:3] + REDV                     # (0..2: la pantalleta i la ranura; 3..8: la caixa vermella)
+
+
+def lector(e):
+    """El lector de targetes nou de trinca: una caixa vermella cargolada a la cara de les aletes, amb la pantalleta,
+    la ranura i el llum vermell (engegat, el posa verd lector_engegat)."""
+    x0, x1, base = PL.COND
+    w = (x1 - x0 + 2) * KP
+    lz0, lz1, y0, y1 = LECTOR
+    cx, _, cz = _cond_punt(-w / 2 - LECTOR_G / 2, 0, (lz0 + lz1) / 2)
+    L, H_ = lz1 - lz0, y1 - y0
+
+    def cara(s, t, P):                                   # s: d'esquerra a dreta (de lz1 a lz0); t: de dalt avall
+        if 2 <= s <= L - 4 and 3 <= t <= 6:
+            return 6.4 if s < 4 and 4 <= t <= 5 else 1.2                               # la pantalleta (i el text)
+        if 2 <= s <= L - 2 and 9 <= t <= 10:
+            return 0.4                                                                   # la ranura
+        if L - 3.5 <= s <= L - 1.5 and H_ - 4.5 <= t <= H_ - 2:
+            return 8.4                                                                   # el llum, vermell
+        return 6.0 - s * 0.08 + (1.0 if t < 1.2 else 0) - (1.2 if t > H_ - 1.2 else 0)
+    e.caixa_girada('cond', cx, cz, LECTOR_G, L, H_, COND[2], REDV, 3.0, y0=y0,
+                   cares={'esquerra': {'ramp': LECTOR_RAMP, 'lvl': cara}, 'dalt': {'ramp': REDV, 'lvl': 4.4},
+                          'davant': {'ramp': REDV, 'lvl': 2.2}})
 
 
 # ─── El primer pla ──────────────────────────────────────────────────────────
@@ -572,11 +624,38 @@ def _cond_punt(lx, y, lz=None):
     return (cx + lx * c - lz * s_, y, cz + lx * s_ + lz * c)
 
 
+def lector_engegat(e):
+    """El lector, engegat: el llum verd, la pantalleta en verd i la targeta blava de la Mosca a la ranura, que en
+    sobresurt."""
+    x0, x1, base = PL.COND
+    w = (x1 - x0 + 2) * KP
+    lz0, lz1, y0, y1 = LECTOR
+    a = -w / 2 - LECTOR_G - 0.3                          # (just davant la cara del lector)
+    L, H_ = lz1 - lz0, y1 - y0
+
+    def q(sid, s0, s1, t0, t1, ramp, lvl, lx=a):        # un rectangle de la cara (s, t com a `lector`)
+        e.quad(sid, _cond_punt(lx, y1 - t0, lz1 - s0), _cond_punt(lx, y1 - t0, lz1 - s1),
+               _cond_punt(lx, y1 - t1, lz1 - s1), _cond_punt(lx, y1 - t1, lz1 - s0), ramp=ramp, lvl=lvl,
+               dues_cares=True)
+    q('lector_on', L - 3.5, L - 1.5, H_ - 4.5, H_ - 2, GREENL, 3.6)                     # el llum, verd
+    q('lector_on', 2, 4, 4, 5, GREENL, 3.0)                                              # la pantalleta: «OK»
+    q('lector_on', 2.5, L - 2.5, 9, 12.5, BLUEV, lambda s, t, P: 2.6 + (1.0 if t < 1 else 0))   # la targeta
+    # el tros que sobresurt de la ranura, cap enfora
+    ys = y1 - 9
+    e.quad('lector_on', _cond_punt(a - 5, ys, lz1 - 2.5), _cond_punt(a - 5, ys, lz0 + 2.5),
+           _cond_punt(a, ys, lz0 + 2.5), _cond_punt(a, ys, lz1 - 2.5), ramp=BLUEV, lvl=3.6, dues_cares=True)
+
+
 def condensador_arreglat(cv):
-    """El condensador arreglat: el llum verd encès, la corretja posada, l'aixeta oberta i un toll a terra."""
-    _, e = _base()
+    """El condensador arreglat: el llum verd encès, la corretja posada, l'aixeta oberta i un toll a terra; i el lector
+    de Verne, engegat amb la targeta de la Mosca."""
+    base_img, e = _base()
     flat = _pla(PL.condensador_arreglat)
     cv.img.alpha_composite(e.capa(flat, {'cond_cos', 'cond_diposit'}))
+    on = base_img.copy()
+    e2 = Escena(Canvas(light=LIGHT, img=on), CAM, LLUMS, ambient=AMBIENT)
+    lector_engegat(e2)
+    cv.img.alpha_composite(_diff(on, base_img))
     x0, x1, base = PL.COND
     w = (x1 - x0 + 2) * KP
     tap = _cond_punt(-w / 2 + 12.5, 12)
@@ -593,7 +672,13 @@ def condensador_arreglat(cv):
     cv.img.alpha_composite(_sobre(toll))
 
 
-PROPS = {'barril_piquet': barril_piquet, 'condensador_arreglat': condensador_arreglat}
+def pantalla_mosca(cv):
+    """La pantalla de la font, un cop Verne ha contractat la Mosca: «FELICITATS / MOSCA!»."""
+    cv.img.alpha_composite(_sobre(lambda e: pantalla(e, mosca=True)))
+
+
+PROPS = {'barril_piquet': barril_piquet, 'condensador_arreglat': condensador_arreglat,
+         'pantalla_mosca': pantalla_mosca}
 
 
 # ─── Animacions ─────────────────────────────────────────────────────────────
@@ -737,7 +822,7 @@ GEOMETRIA = {
                   'walk': _p(*NAU.terra(_SL, RAMPA_OUT + 22))},
         'porta_sindicat': {'rect': _rect_mon(*_PORTA_S), 'walk': _p(_PORTA_S[0][0] + 26, ZR - 46)},
         'porta_fosa': {'rect': _rect_mon(*_PORTAL), 'walk': _p((_PORTAL[0][0] + _PORTAL[1][0]) / 2, FZ - 44)},
-        'font': {'rect': _rect_mon((FONT[0] - 24, 78, FONT[1]), (FONT[0] + 24, 0, FONT[1])),
+        'font': {'rect': _rect_mon((FONT[0] - 26, FONT_ALT + 6, FONT[1]), (FONT[0] + 26, 0, FONT[1])),
                  'walk': _p(FONT[0] - 40, FONT[1] - 30)},
         'condensador': {'rect': _rect_mon(_cond_punt(-36, 128), _cond_punt(36, 0), _cond_punt(36, 0, 17),
                                           _cond_punt(-36, 0, 17), (_cond_punt(30, 118)[0], 118, FZ)),

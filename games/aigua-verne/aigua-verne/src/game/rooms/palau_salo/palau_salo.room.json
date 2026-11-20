@@ -376,94 +376,6 @@
       "clickable": false
     },
     {
-      "id": "grafic_102",
-      "tag": "grafic_102",
-      "animations": {
-        "grafic_102": {}
-      },
-      "zIndex": 4,
-      "visible": false,
-      "alpha": 1,
-      "clickable": false
-    },
-    {
-      "id": "grafic_96",
-      "tag": "grafic_96",
-      "animations": {
-        "grafic_96": {}
-      },
-      "zIndex": 4,
-      "visible": false,
-      "alpha": 1,
-      "clickable": false
-    },
-    {
-      "id": "grafic_86",
-      "tag": "grafic_86",
-      "animations": {
-        "grafic_86": {}
-      },
-      "zIndex": 4,
-      "visible": false,
-      "alpha": 1,
-      "clickable": false
-    },
-    {
-      "id": "grafic_57",
-      "tag": "grafic_57",
-      "animations": {
-        "grafic_57": {}
-      },
-      "zIndex": 4,
-      "visible": false,
-      "alpha": 1,
-      "clickable": false
-    },
-    {
-      "id": "grafic_47",
-      "tag": "grafic_47",
-      "animations": {
-        "grafic_47": {}
-      },
-      "zIndex": 4,
-      "visible": false,
-      "alpha": 1,
-      "clickable": false
-    },
-    {
-      "id": "grafic_41",
-      "tag": "grafic_41",
-      "animations": {
-        "grafic_41": {}
-      },
-      "zIndex": 4,
-      "visible": false,
-      "alpha": 1,
-      "clickable": false
-    },
-    {
-      "id": "grafic_31",
-      "tag": "grafic_31",
-      "animations": {
-        "grafic_31": {}
-      },
-      "zIndex": 4,
-      "visible": false,
-      "alpha": 1,
-      "clickable": false
-    },
-    {
-      "id": "grafic_29",
-      "tag": "grafic_29",
-      "animations": {
-        "grafic_29": {}
-      },
-      "zIndex": 4,
-      "visible": false,
-      "alpha": 1,
-      "clickable": false
-    },
-    {
       "id": "estrelles",
       "tag": "estrelles",
       "zIndex": 1,
@@ -560,6 +472,237 @@
       },
       "zIndex": 32,
       "baseline": 999
+    },
+    {
+      "id": "grafic_t2",
+      "tag": "grafic_t2",
+      "animations": {
+        "grafic_t2": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_ferrum",
+      "tag": "grafic_ferrum",
+      "animations": {
+        "grafic_ferrum": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_aqua",
+      "tag": "grafic_aqua",
+      "animations": {
+        "grafic_aqua": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_t2_ferrum",
+      "tag": "grafic_t2_ferrum",
+      "animations": {
+        "grafic_t2_ferrum": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_t2_aqua",
+      "tag": "grafic_t2_aqua",
+      "animations": {
+        "grafic_t2_aqua": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_ferrum_t2",
+      "tag": "grafic_ferrum_t2",
+      "animations": {
+        "grafic_ferrum_t2": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_ferrum_aqua",
+      "tag": "grafic_ferrum_aqua",
+      "animations": {
+        "grafic_ferrum_aqua": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_aqua_t2",
+      "tag": "grafic_aqua_t2",
+      "animations": {
+        "grafic_aqua_t2": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_aqua_ferrum",
+      "tag": "grafic_aqua_ferrum",
+      "animations": {
+        "grafic_aqua_ferrum": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_t2_ferrum_aqua",
+      "tag": "grafic_t2_ferrum_aqua",
+      "animations": {
+        "grafic_t2_ferrum_aqua": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_t2_ferrum_aqua_reserva",
+      "tag": "grafic_t2_ferrum_aqua_reserva",
+      "animations": {
+        "grafic_t2_ferrum_aqua_reserva": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_t2_aqua_ferrum",
+      "tag": "grafic_t2_aqua_ferrum",
+      "animations": {
+        "grafic_t2_aqua_ferrum": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_t2_aqua_ferrum_reserva",
+      "tag": "grafic_t2_aqua_ferrum_reserva",
+      "animations": {
+        "grafic_t2_aqua_ferrum_reserva": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_ferrum_t2_aqua",
+      "tag": "grafic_ferrum_t2_aqua",
+      "animations": {
+        "grafic_ferrum_t2_aqua": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_ferrum_t2_aqua_reserva",
+      "tag": "grafic_ferrum_t2_aqua_reserva",
+      "animations": {
+        "grafic_ferrum_t2_aqua_reserva": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_ferrum_aqua_t2",
+      "tag": "grafic_ferrum_aqua_t2",
+      "animations": {
+        "grafic_ferrum_aqua_t2": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_ferrum_aqua_t2_reserva",
+      "tag": "grafic_ferrum_aqua_t2_reserva",
+      "animations": {
+        "grafic_ferrum_aqua_t2_reserva": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_aqua_t2_ferrum",
+      "tag": "grafic_aqua_t2_ferrum",
+      "animations": {
+        "grafic_aqua_t2_ferrum": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_aqua_t2_ferrum_reserva",
+      "tag": "grafic_aqua_t2_ferrum_reserva",
+      "animations": {
+        "grafic_aqua_t2_ferrum_reserva": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_aqua_ferrum_t2",
+      "tag": "grafic_aqua_ferrum_t2",
+      "animations": {
+        "grafic_aqua_ferrum_t2": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "grafic_aqua_ferrum_t2_reserva",
+      "tag": "grafic_aqua_ferrum_t2_reserva",
+      "animations": {
+        "grafic_aqua_ferrum_t2_reserva": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

@@ -281,9 +281,11 @@ def panell(cv, x0, y0, line1, line2, w=None, up=True, post=None, logo=True):
 
 # ─── La font de Verne ───────────────────────────────────────────────────────
 
-def font_verne(cv, x, base, lector=True, tapat=False):
+def font_verne(cv, x, base, lector=True, tapat=False, alt=70, pantalla=False):
     """La font de Verne: un pilar blanc amb la gota, una pica, el broc i el lector de targetes vermell.
-    `x`: el centre; `base`: on toca a terra. `tapat`: el lector tapat amb un tros de cartró (postcrèdits)."""
+    `x`: el centre; `base`: on toca a terra. `tapat`: el lector tapat amb un tros de cartró (postcrèdits). `alt`:
+    l'alçada del pilar (a Ferrum, 88: hi cap la pantalla de sota el lector). `pantalla`: la pantalla «VERNE S.A.
+    CONTRACTA» (pantalla_contracta), entre el lector i el broc."""
     # la pica (de pedra artificial blanca)
     cv.disc(x, base - 14, 22, 5, WHITEV, lambda nx, ny: 4.6 - nx * 0.8 - ny * 0.6)
     cv.rect(x - 22, base - 14, x + 22, base - 3, WHITEV, lambda xx, y: 4.0 - (xx - x) / 22 * 1.4 -
@@ -291,7 +293,7 @@ def font_verne(cv, x, base, lector=True, tapat=False):
     cv.disc(x, base - 3, 22, 3, WHITEV, lambda nx, ny: 3.0 - nx * 1.2 if ny > 0 else 3.6 - nx)
     cv.disc(x, base - 14, 19, 3.6, WHITEV, lambda nx, ny: 2.0 + ny * 1.6)               # dins la pica
     # el pilar
-    px0, px1, top = x - 9, x + 9, base - 70
+    px0, px1, top = x - 9, x + 9, base - alt
     cv.rect(px0, top, px1, base - 15, WHITEV, lambda xx, y: 5.2 - (xx - px0) * 0.12 + (1.0 if xx == px0 + 1 else 0) -
             (1.6 if xx == px1 else 0))
     cv.disc(x, top, 9, 4, WHITEV, lambda nx, ny: 5.8 - nx * 0.8 - ny * 0.4)            # la cúpula
@@ -317,7 +319,34 @@ def font_verne(cv, x, base, lector=True, tapat=False):
             cv.rect(lx - 1, ly + 1, lx + 10, ly + 10, PLANKF, lambda xx, y: 5.2 + (hr(xx, y) - 0.5) * 0.8)
             cv.line(lx - 2, ly + 2, lx + 11, ly + 1, CLOTH, 4.0)                          # cinta
             cv.line(lx - 2, ly + 9, lx + 11, ly + 10, CLOTH, 4.0)
+    if pantalla:
+        pantalla_contracta(cv, x, base - PANTALLA_BASE)
     return x, base - 29                                                                  # on surt l'aigua
+
+
+PANTALLA_W, PANTALLA_H = 41, 15
+PANTALLA_BASE = 41                                       # la vora de baix, sobre el terra (just damunt el broc)
+PANTALLA_FONS = [(6, 12, 30), (12, 26, 58), (16, 34, 74)]
+
+
+def pantalla_contracta(cv, cx, yb, mosca=False):
+    """La pantalla de la font de Verne, l'única cosa que hi funciona: «VERNE S.A. / CONTRACTA», en blau clar i blanc
+    sobre blau marí (amb ratlles d'escombrat), dins un marc de llauna. És text: es dibuixa sempre a 1:1. `cx`: el
+    centre; `yb`: la fila de baix. `mosca`: la pantalla un cop contractada la Mosca."""
+    w, h = PANTALLA_W, PANTALLA_H
+    x0, y1 = cx - w // 2, yb
+    y0, x1 = y1 - h + 1, x0 + w - 1
+    cv.rect(x0, y0, x1, y1, TIN, lambda xx, y: 3.4 + (1.6 if y == y0 else 0) - (1.4 if y == y1 or xx == x1 else 0),
+            lit=0)
+    for y in range(y0 + 1, y1):
+        for xx in range(x0 + 1, x1):
+            cv.flat(xx, y, PANTALLA_FONS[0] if y == y0 + 1 else PANTALLA_FONS[1 + (y - y0) % 2])
+    if mosca:                                    # contractada la Mosca: «FELICITATS / MOSCA!», centrat
+        for t, y, col in (('FELICITATS', y0 + 2, (140, 196, 255)), ('MOSCA!', y0 + 8, (236, 244, 255))):
+            text(cv, t, cx - text_width(t) // 2, y, None, 0, flat=col)
+        return
+    text(cv, 'VERNE S.A.', x0 + 3, y0 + 2, None, 0, flat=(140, 196, 255))
+    text(cv, 'CONTRACTA', x0 + 3, y0 + 8, None, 0, flat=(236, 244, 255))
 
 
 # ─── Comptadors d'aigua (els de Verne, arrencats de les cases) ──────────────

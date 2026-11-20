@@ -11,7 +11,8 @@ carretera del port, que surt per la dreta; i unes roques fosques en primer pla. 
 prop i petites al fons; els camps tenen solcs que fugen cap a l'horitzó.
 
 El detall (la façana de la masia, la bomba, l'olivera, el graner, el panell, el pal del port) ve del pati pla de
-sempre (granja_estreta_comu.py), dibuixat de cara i projectat. ANIMS: `pols` (la pols arran de terra) i
+sempre (granja_estreta_comu.py), dibuixat de cara i projectat. PROPS: `precinte` (la porta del graner tancada amb el
+cadenat de Verne i el paper groc). ANIMS: `pols` (la pols arran de terra) i
 `llum_canonada`.
 
 El món: x a la dreta (0 = la càmera), y amunt, z endavant; 1 unitat = 1 px a la distància on un personatge fa la seva
@@ -367,7 +368,16 @@ def bg(cv):
     cv.P = cv.img.load()
 
 
-PROPS = {}
+def precinte(cv):
+    """Des de l'Escena 5, fins que s'obre: la porta del graner tancada, amb el cadenat de Verne (la ranura i el llum
+    vermell) i el paper groc del precinte. El graner pla tancat, menys l'obert, projectat per la façana."""
+    _, e = _base()
+    obert = _textures()['graner']
+    tancat = _pla(lambda c: G.graner(c, tancat=True))
+    cv.img.alpha_composite(e.capa(G._diff(tancat, obert), {'graner'}))
+
+
+PROPS = {'precinte': precinte}
 
 
 def _frames_pols():
