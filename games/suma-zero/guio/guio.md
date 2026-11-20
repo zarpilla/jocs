@@ -52,7 +52,7 @@ Comèdia caòtica amb rerefons polític clar però no panfletari, per a adolesce
   existeix», en Tomàs: «Un compte que no existeix? Com la meva dona. I un dia va trucar.» VET: «Era l'Iri, Tomàs.»
   TOMÀS: «Ja ho sé. Però el divorci va ser de debò.»
 - **Els plats**: «nou dies» a l'entrada (els ha comptat la Vet, que en sortir diu «I tu renta els plats!»); deu
-  dies a la font seca del vestíbul de Ginebra («A casa tenim el problema contrari»); setze als postcrèdits («La
+  dies a la font seca del vestíbul de Ginebra («A casa tenim el problema contrari»); disset als postcrèdits («La
   Vet els continua comptant»). L'Iri no els renta mai.
 - **Les frases per defecte** tenen tres variants per verb i per protagonista, que van per torns
   (`ui.defecte.<verb>.<qui>`, `.2`, `.3`): l'Iri, de màquines, ports i fracassos socials; la Vet, del bar, de la
@@ -866,7 +866,7 @@ menys finestres enceses), amb la música del tema, i un text final:
 
 > *Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.*
 
-**Postcrèdits (sala `postcredits`, un fons del pis de nit):** de nit, al pis. En Diu mossega el cable del router. A la cuina, els plats: setze dies («La Vet els continua comptant»).
+**Postcrèdits (sala `postcredits`, un fons del pis de nit):** de nit, al pis. En Diu mossega el cable del router. A la cuina, els plats: disset dies («La Vet els continua comptant»).
 A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota: «ROBIN HOOD 3.0?». Tot torna a començar. (Si a l'Escena 1 l'Iri va sacrificar la pizza, en Diu li porta
 un tros de pizza, amb respecte.)
 

@@ -178,6 +178,8 @@ per sala quan el guió de l'acte està tancat i jugat. L'Acte 1 ja és tot defin
 npm install            # a l'arrel del repositori, la primera vegada
 npm run jugar          # juga en mode text, al terminal (sense art ni Benne), amb [so: nom] abans de cada so
 npm test               # tests: el nucli i les partides jugades de cap a peus
+EXPLORA=/tmp/explora.txt npx vitest run --root ../.. games/suma-zero/game/test/explora.test.ts
+                       # escriu la partida sencera, mirant-ho tot a cada sala, amb els tres finals (per llegir-la)
 npm run validate       # comprova el contingut: forma, referències, textos que falten
 npm run fitxes         # genera guio/fitxes-sales.md: què cal crear a l'editor per a cada sala
 npm run revisio        # genera guio/revisio.md: totes les variants de text amb la seva condició [-- <sala>]
