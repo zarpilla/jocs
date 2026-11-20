@@ -43,7 +43,7 @@ BODY = (HW - 171, HW - 61)                         # el cos: y de baix (damunt e
 FOGAR = (99, 243, 142, 262, HW - 172)              # el fogar de maó: x0, x1, z0, z1, alçada
 DESK = (408, 196, 70, 36, 44, -0.38)               # l'escriptori del capatàs: x, z del centre, ample, fons, alt, gir
 VAG = (262, 96, 50, 32, 34, 0.42)                 # la vagoneta: x, z, ample, fons, alt (de la caixa), gir
-SEGELL = (378, 150)                                # on ha caigut el segell (x, z)
+SEGELL = (335, 25)                                 # on ha caigut el segell (x, z)
 COAL_PILE = (76, 150)                              # la pila de carbó (x, z)
 
 
@@ -588,7 +588,7 @@ GEOMETRIA = {
                    'walk': _p(SEGELL[0] - 26, SEGELL[1] - 12)},
         'porta_moll': {'rect': _rect_mon((_DOOR_L[0], _DOOR_L[2], ZW), (_DOOR_L[1], 0, ZW)), 'walk': _p(321, 276)},
     },
-    'spawns': {'iri': _p(200, 90), 'capatas': _p(DESK[0] - 48, DESK[1]), 'sic': _p(452, 214)},
+    'spawns': {'iri': _p(200, 90), 'capatas': _p(VAG[0] + 83, VAG[1] - 41), 'sic': _p(452, 214)},
     'walkable': _WALK,
     'forats': [_forat(*DESK[:4], DESK[5]), _forat(VAG[0], VAG[1], VAG[2], VAG[3], VAG[5], m=6)],
     'floorSquash': 0.4,                            # (la càmera, picada: el terra es veu aixafat)

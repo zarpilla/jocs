@@ -25,16 +25,16 @@
       "frame": {
         "x": 4010,
         "y": 0,
-        "w": 28,
-        "h": 24
+        "w": 37,
+        "h": 33
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 373,
-        "y": 133,
-        "w": 28,
-        "h": 24
+        "x": 387,
+        "y": 190,
+        "w": 37,
+        "h": 33
       },
       "sourceSize": {
         "w": 640,
@@ -485,7 +485,7 @@
     },
     "fabrica_calderes 23.aseprite": {
       "frame": {
-        "x": 4038,
+        "x": 4047,
         "y": 0,
         "w": 1,
         "h": 1
@@ -511,7 +511,7 @@
     "image": "fabrica_calderes.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4039,
+      "w": 4048,
       "h": 360
     },
     "scale": "1",

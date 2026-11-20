@@ -325,30 +325,30 @@
       "collider": {
         "points": [
           {
-            "x": 371,
-            "y": 124
+            "x": 385,
+            "y": 177
           },
           {
-            "x": 402,
-            "y": 124
+            "x": 427,
+            "y": 177
           },
           {
-            "x": 402,
-            "y": 158
+            "x": 427,
+            "y": 226
           },
           {
-            "x": 371,
-            "y": 158
+            "x": 385,
+            "y": 226
           }
         ]
       },
       "walkToPoint": {
-        "x": 368,
-        "y": 161
+        "x": 381,
+        "y": 231
       },
       "lookAtPoint": {
-        "x": 386,
-        "y": 158
+        "x": 406,
+        "y": 226
       },
       "description": "segell oficial"
     },
@@ -452,8 +452,8 @@
     {
       "instanceId": "capatas-1",
       "definition": "capatas/capatas.character.json",
-      "x": 355,
-      "y": 142,
+      "x": 395,
+      "y": 199,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
