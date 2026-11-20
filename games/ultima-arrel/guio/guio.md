@@ -488,7 +488,7 @@ punt, ni un minut abans («Horari: sempre que hi hagi aigua.»). La Senyora Pla 
 **Entrada.**
 
 > VET: *(al walkie)* Iri. Soc a la Zona Zero. Hi ha més gespa de plàstic que a un camp de futbol. Canvi.
-> IRI: *(al walkie)* Soc al bus amb el walkie i el crit. Arribo a les nou i mitja. Tu prepara-ho tot. Canvi.
+> IRI: *(al walkie)* Soc al bus, amb el walkie i el crit. Arribo a les nou i mitja. Tu prepara-ho tot. Canvi.
 > VET: Tot? Canvi.
 > IRI: Les fades i la tele. Canvi i fora.
 
@@ -498,9 +498,9 @@ s'amaga darrere la Vet:
 > URTICA: Gegant. Allà baix hi haurà mil gegants. Si baixem quan ho digui la del vestit blanc, ens trepitgen.
 > URTICA: Necessitem un amagatall a sobre dels sensors. Que no es vegi. I que sigui elegant.
 
-La Vet té el **Kit del Petit Guardabosc** de l'escena 5 (fins ara, un acudit). Si fa servir el **fullet** del kit (o
-el mira: «"Descobreix la natura del futur!" Té tres plecs. És quasi una tenda.»), el doblega i en fa una **caseta de
-paper**, amb el logotip de NaturaPlus a fora. Llavors s'enfila per la **bastida** de la pantalla (només ella hi cap:
+La Vet té el **Kit del Petit Guardabosc** de l'escena 5 (fins ara, un acudit). Si l'**obre** (si el mira: «El fullet
+té tres plecs: és quasi una tenda.»), en doblega el fullet i en fa una **caseta de paper**, amb el logotip de
+NaturaPlus a fora («La polsera me la poso: té zero punts.»). Llavors s'enfila per la **bastida** de la pantalla (només ella hi cap:
 «És com el roure, però de ferro») i la deixa a dalt de tot, just a sobre dels sensors.
 
 > URTICA: *(entrant-hi)* Un amagatall de NaturaPlus. Pagat per NaturaPlus.
@@ -522,8 +522,8 @@ una conversa amb opcions, i com a les fades, no es pot perdre: es pot tornar a p
   TDT local.» La Vet: «Ja ho sé. És el número més valent.» La Txell riu, i treu la càmera del trípode: «Doncs a
   l'espatlla. Si no passa res, almenys tindré l'àvia de la melmelada.»
 
-(La tercera opció només surt si la Vet ha mirat el walkie o n'ha parlat amb la Iri a l'escena; si no, la Iri, pel
-walkie, li ho recorda com a pista: «Vet. Tu sempre dius que el 7 dona sort. Canvi.»)
+(La tercera opció només surt quan la Vet ha mirat la Txell: el càmera té la càmera al trípode, i al costat hi posa
+«TV7». Si no ho veu, la pista de la Iri, pel walkie: «Mira bé la càmera de la tele. Quin número hi posa? Canvi.»)
 
 **Final de l'escena.** Arriba la Iri, amb la motxilla i el walkie.
 
@@ -639,8 +639,8 @@ ACTE 2
   Esc. 5 (Vet):  [parlar amb la Pla] → [arbre Wi-Fi: desendollar] → la Pla surt
                  [mirar walkie: canal 7 → altaveu] → altaveu al canal dels walkies
 ACTE 3
-  Esc. 6a (Vet): [fullet del kit → caseta de paper] + [bastida] → amagatall de les fades
-                 [Txell: «canal 7»] → càmera a l'espatlla
+  Esc. 6a (Vet): [Urtica] → [obrir el kit → caseta de paper] + [bastida] → amagatall de les fades
+                 [mirar la Txell: «TV7»] → [Txell: «canal 7»] → càmera a l'espatlla
                  (al final: el xiulet passa de la Vet a la Iri)
   Esc. 6b (Iri): [xiulet] → sensors · [Bufó] → plànols a la càmera · [walkie] → el crit per l'altaveu
   Esc. 7 (Vet):  epíleg → FINAL

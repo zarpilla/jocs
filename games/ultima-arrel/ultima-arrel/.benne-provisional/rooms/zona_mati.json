@@ -1,0 +1,87 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "La Zona Zero, a les nou",
+  "era": "vet",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "bastida",
+      "label": "bastida",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "parada",
+      "label": "parada de melmelada",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 154,
+      "y": 25
+    },
+    {
+      "id": "pantalla",
+      "label": "pantalla",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 211,
+      "y": 76
+    },
+    {
+      "id": "sensors",
+      "label": "sensors",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 268,
+      "y": 25
+    },
+    {
+      "id": "escenari",
+      "label": "escenari",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 326,
+      "y": 76
+    },
+    {
+      "id": "altaveu",
+      "label": "altaveu",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 383,
+      "y": 25
+    },
+    {
+      "id": "formigonera",
+      "label": "formigonera",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 440,
+      "y": 76
+    },
+    {
+      "id": "soques",
+      "label": "soques",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 497,
+      "y": 25
+    }
+  ],
+  "characters": [
+    "Urtica",
+    "Txell",
+    "Àvia Montse"
+  ]
+}

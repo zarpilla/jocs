@@ -22,6 +22,7 @@
     "campament_fades": "fades",
     "toll_gripaus": "gripaus",
     "caseta_obra": "naturaplus",
+    "zona_mati": "presentacio",
     "zona_zero": "presentacio",
     "bosc_obert": "bosc_viu",
     "credits": "final"
@@ -76,6 +77,12 @@
       },
       {
         "sound": "amb_caseta_obra",
+        "volume": 1
+      }
+    ],
+    "zona_mati": [
+      {
+        "sound": "amb_zona_zero",
         "volume": 1
       }
     ],

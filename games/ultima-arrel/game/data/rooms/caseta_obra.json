@@ -206,36 +206,9 @@
           "effects": [
             {
               "setFlag": "altaveu_canal7"
-            },
-            {
-              "takeItem": "xiulet",
-              "who": "vet"
-            },
-            {
-              "giveItem": "xiulet",
-              "who": "iri"
-            },
-            {
-              "event": "situar",
-              "args": {
-                "who": "vet",
-                "room": "zona_zero"
-              }
-            },
-            {
-              "event": "situar",
-              "args": {
-                "who": "iri",
-                "room": "zona_zero"
-              }
-            },
-            {
-              "event": "protagonista",
-              "args": {
-                "id": "iri"
-              }
             }
-          ]
+          ],
+          "goTo": "zona_mati"
         },
         {
           "verb": [
@@ -316,36 +289,9 @@
           "effects": [
             {
               "setFlag": "altaveu_canal7"
-            },
-            {
-              "takeItem": "xiulet",
-              "who": "vet"
-            },
-            {
-              "giveItem": "xiulet",
-              "who": "iri"
-            },
-            {
-              "event": "situar",
-              "args": {
-                "who": "vet",
-                "room": "zona_zero"
-              }
-            },
-            {
-              "event": "situar",
-              "args": {
-                "who": "iri",
-                "room": "zona_zero"
-              }
-            },
-            {
-              "event": "protagonista",
-              "args": {
-                "id": "iri"
-              }
             }
-          ]
+          ],
+          "goTo": "zona_mati"
         },
         {
           "verb": [

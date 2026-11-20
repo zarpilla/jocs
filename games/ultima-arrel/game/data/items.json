@@ -623,6 +623,58 @@
   },
   "kit": {
     "name": "obj.kit.nom",
-    "description": "obj.kit.desc"
+    "description": "obj.kit.desc",
+    "interactions": [
+      {
+        "verb": [
+          "use",
+          "open"
+        ],
+        "if": {
+          "all": [
+            {
+              "inRoom": "zona_mati"
+            },
+            {
+              "flag": "fades_amagatall"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.kit.doblega.1"
+          },
+          {
+            "who": "player",
+            "text": "obj.kit.doblega.2"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "kit"
+          },
+          {
+            "giveItem": "caseta_paper"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "inRoom": "zona_mati"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.kit.mira.mati"
+          }
+        ]
+      }
+    ]
+  },
+  "caseta_paper": {
+    "name": "obj.caseta_paper.nom",
+    "description": "obj.caseta_paper.desc"
   }
 }

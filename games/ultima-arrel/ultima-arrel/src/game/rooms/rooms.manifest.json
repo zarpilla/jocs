@@ -40,6 +40,10 @@
     {
       "id": "proleg_roure",
       "definition": "proleg_roure/proleg_roure.room.json"
+    },
+    {
+      "id": "zona_mati",
+      "definition": "zona_mati/zona_mati.room.json"
     }
   ]
 }

@@ -70,6 +70,20 @@
     },
     "objectives": [
       {
+        "id": "preparacio",
+        "text": "mis.acte3.obj.preparacio",
+        "completeWhen": {
+          "all": [
+            {
+              "flag": "amagatall_fades"
+            },
+            {
+              "flag": "tele_espatlla"
+            }
+          ]
+        }
+      },
+      {
         "id": "presentacio",
         "text": "mis.acte3.obj.presentacio",
         "completeWhen": {

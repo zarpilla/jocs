@@ -61,11 +61,24 @@ export function acte2(p: Jugador, n: Narrative) {
   expect(n.flag('pla_fora')).toBe(true);
   p.use('walkie', 'altaveu');
   expect(n.flag('altaveu_canal7')).toBe(true);
-  expect(p.active).toBe('iri');
+  expect(p.active).toBe('vet');
 }
 
 export function acte3(p: Jugador, n: Narrative) {
-  // Escena 6: la Zona Zero (Iri)
+  // Escena 6a: la Zona Zero a les nou (Vet)
+  expect(p.room).toBe('zona_mati');
+  expect(p.inventory('vet')).toContain('kit');
+  p.do('talkTo', 'urtica');
+  p.do('open', item('kit'));
+  expect(p.inventory('vet')).toContain('caseta_paper');
+  p.use('caseta_paper', 'bastida');
+  expect(n.flag('amagatall_fades')).toBe(true);
+  expect(p.active).toBe('vet');
+  p.do('look', 'txell');
+  p.talk('txell', 'canal7');
+  expect(n.flag('tele_espatlla')).toBe(true);
+  // Escena 6b: la presentació (Iri)
+  expect(p.active).toBe('iri');
   expect(p.room).toBe('zona_zero');
   expect(p.inventory('iri')).toContain('xiulet');
   expect(n.getVar('discurs')).toBe(1);

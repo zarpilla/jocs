@@ -696,5 +696,64 @@
       "taula"
     ],
     "who": "iri"
+  },
+  "amagatall": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "inRoom": "zona_mati"
+        },
+        {
+          "flag": "amagatall_fades",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "amagatall_fades"
+    },
+    "levels": [
+      "pista.amagatall.1",
+      "pista.amagatall.2",
+      "pista.amagatall.3"
+    ],
+    "targets": [
+      "urtica",
+      "bastida"
+    ],
+    "who": "iri"
+  },
+  "tele": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "inRoom": "zona_mati"
+        },
+        {
+          "flag": "tele_espatlla",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "tele_espatlla"
+    },
+    "levels": [
+      "pista.tele.1",
+      "pista.tele.2",
+      "pista.tele.3"
+    ],
+    "targets": [
+      "txell"
+    ],
+    "who": "iri"
   }
 }

@@ -41,9 +41,11 @@
       "flags": {
         "aigua_tornada": false,
         "altaveu_canal7": false,
+        "amagatall_fades": false,
         "ampolles_tretes": false,
         "arrel_viva_vista": false,
         "avia_marxa": false,
+        "canal7_tele": false,
         "cargol_agafat": false,
         "comporta_provada": false,
         "comporta_tancada": false,
@@ -52,6 +54,7 @@
         "espora_respon": false,
         "estaca_fluixa": false,
         "estaca_treta": false,
+        "fades_amagatall": false,
         "fades_amigues": false,
         "fil_agafat": false,
         "final_taula": false,
@@ -66,6 +69,7 @@
         "sap_plans": false,
         "secret_avia": false,
         "tap_tret": false,
+        "tele_espatlla": false,
         "vet_coneix_espora": false,
         "vet_gronxant": false,
         "walkie_mirat_canal": false,
@@ -1253,7 +1257,59 @@
       },
       "kit": {
         "name": "obj.kit.nom",
-        "description": "obj.kit.desc"
+        "description": "obj.kit.desc",
+        "interactions": [
+          {
+            "verb": [
+              "use",
+              "open"
+            ],
+            "if": {
+              "all": [
+                {
+                  "inRoom": "zona_mati"
+                },
+                {
+                  "flag": "fades_amagatall"
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.kit.doblega.1"
+              },
+              {
+                "who": "player",
+                "text": "obj.kit.doblega.2"
+              }
+            ],
+            "effects": [
+              {
+                "takeItem": "kit"
+              },
+              {
+                "giveItem": "caseta_paper"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "if": {
+              "inRoom": "zona_mati"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.kit.mira.mati"
+              }
+            ]
+          }
+        ]
+      },
+      "caseta_paper": {
+        "name": "obj.caseta_paper.nom",
+        "description": "obj.caseta_paper.desc"
       }
     },
     "rooms": {
@@ -2384,36 +2440,9 @@
                 "effects": [
                   {
                     "setFlag": "altaveu_canal7"
-                  },
-                  {
-                    "takeItem": "xiulet",
-                    "who": "vet"
-                  },
-                  {
-                    "giveItem": "xiulet",
-                    "who": "iri"
-                  },
-                  {
-                    "event": "situar",
-                    "args": {
-                      "who": "vet",
-                      "room": "zona_zero"
-                    }
-                  },
-                  {
-                    "event": "situar",
-                    "args": {
-                      "who": "iri",
-                      "room": "zona_zero"
-                    }
-                  },
-                  {
-                    "event": "protagonista",
-                    "args": {
-                      "id": "iri"
-                    }
                   }
-                ]
+                ],
+                "goTo": "zona_mati"
               },
               {
                 "verb": [
@@ -2494,36 +2523,9 @@
                 "effects": [
                   {
                     "setFlag": "altaveu_canal7"
-                  },
-                  {
-                    "takeItem": "xiulet",
-                    "who": "vet"
-                  },
-                  {
-                    "giveItem": "xiulet",
-                    "who": "iri"
-                  },
-                  {
-                    "event": "situar",
-                    "args": {
-                      "who": "vet",
-                      "room": "zona_zero"
-                    }
-                  },
-                  {
-                    "event": "situar",
-                    "args": {
-                      "who": "iri",
-                      "room": "zona_zero"
-                    }
-                  },
-                  {
-                    "event": "protagonista",
-                    "args": {
-                      "id": "iri"
-                    }
                   }
-                ]
+                ],
+                "goTo": "zona_mati"
               },
               {
                 "verb": [
@@ -4962,6 +4964,517 @@
           }
         }
       },
+      "zona_mati": {
+        "name": "sala.zona_mati.nom",
+        "protagonist": "vet",
+        "onEnter": [
+          {
+            "id": "primera",
+            "verb": "*",
+            "once": true,
+            "lines": [
+              {
+                "who": "title",
+                "text": "sala.zona_mati.intro.1"
+              },
+              {
+                "who": "player",
+                "text": "sala.zona_mati.intro.2",
+                "sound": "walkie"
+              },
+              {
+                "who": "iri",
+                "text": "sala.zona_mati.intro.3"
+              },
+              {
+                "who": "player",
+                "text": "sala.zona_mati.intro.4"
+              },
+              {
+                "who": "iri",
+                "text": "sala.zona_mati.intro.5"
+              }
+            ]
+          }
+        ],
+        "hotspots": {
+          "urtica": {
+            "interactions": [
+              {
+                "verb": "talkTo",
+                "if": {
+                  "flag": "amagatall_fades"
+                },
+                "lines": [
+                  {
+                    "who": "urtica",
+                    "text": "sala.zona_mati.urtica.feta"
+                  }
+                ]
+              },
+              {
+                "verb": "talkTo",
+                "if": {
+                  "flag": "fades_amagatall"
+                },
+                "lines": [
+                  {
+                    "who": "urtica",
+                    "text": "sala.zona_mati.urtica.recorda"
+                  }
+                ]
+              },
+              {
+                "verb": "talkTo",
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.zona_mati.urtica.1"
+                  },
+                  {
+                    "who": "urtica",
+                    "text": "sala.zona_mati.urtica.2"
+                  },
+                  {
+                    "who": "urtica",
+                    "text": "sala.zona_mati.urtica.3"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.urtica.4"
+                  },
+                  {
+                    "who": "urtica",
+                    "text": "sala.zona_mati.urtica.5"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "fades_amagatall"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "give",
+                  "use"
+                ],
+                "item": "kit",
+                "lines": [
+                  {
+                    "who": "urtica",
+                    "text": "sala.zona_mati.urtica.kit"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "give",
+                  "use"
+                ],
+                "item": "caseta_paper",
+                "lines": [
+                  {
+                    "who": "urtica",
+                    "text": "sala.zona_mati.urtica.caseta"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.urtica.mira"
+                  }
+                ]
+              }
+            ]
+          },
+          "bastida": {
+            "name": "sala.zona_mati.bastida.nom",
+            "interactions": [
+              {
+                "verb": "use",
+                "item": "caseta_paper",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.bastida.1",
+                    "stage": [
+                      {
+                        "prop": "caseta_paper",
+                        "visible": false
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.zona_mati.bastida.2",
+                    "sound": "bastida",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "visible": false,
+                        "hold": 0.4
+                      },
+                      {
+                        "prop": "caseta_paper",
+                        "visible": true
+                      }
+                    ]
+                  },
+                  {
+                    "who": "urtica",
+                    "text": "sala.zona_mati.bastida.3",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "visible": true
+                      }
+                    ]
+                  },
+                  {
+                    "who": "card",
+                    "text": "sala.zona_mati.bastida.4"
+                  },
+                  {
+                    "who": "pica",
+                    "text": "sala.zona_mati.bastida.5"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.zona_mati.fi.1",
+                    "if": {
+                      "flag": "tele_espatlla"
+                    },
+                    "stage": [
+                      {
+                        "who": "iri",
+                        "at": {
+                          "x": 4,
+                          "y": 246
+                        },
+                        "visible": true
+                      },
+                      {
+                        "who": "iri",
+                        "walk": {
+                          "x": 214,
+                          "y": 246
+                        }
+                      }
+                    ],
+                    "effects": [
+                      {
+                        "takeItem": "xiulet",
+                        "who": "vet"
+                      },
+                      {
+                        "giveItem": "xiulet",
+                        "who": "iri"
+                      },
+                      {
+                        "event": "situar",
+                        "args": {
+                          "who": "vet",
+                          "room": "zona_zero"
+                        }
+                      },
+                      {
+                        "event": "situar",
+                        "args": {
+                          "who": "iri",
+                          "room": "zona_zero"
+                        }
+                      },
+                      {
+                        "event": "protagonista",
+                        "args": {
+                          "id": "iri"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "who": "iri",
+                    "text": "sala.zona_mati.fi.2",
+                    "if": {
+                      "flag": "tele_espatlla"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.fi.3",
+                    "if": {
+                      "flag": "tele_espatlla"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.fi.4",
+                    "if": {
+                      "flag": "tele_espatlla"
+                    }
+                  },
+                  {
+                    "who": "iri",
+                    "text": "sala.zona_mati.fi.5",
+                    "if": {
+                      "flag": "tele_espatlla"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.fi.6",
+                    "if": {
+                      "flag": "tele_espatlla"
+                    }
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "caseta_paper"
+                  },
+                  {
+                    "setFlag": "amagatall_fades"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "kit",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.bastida.kit"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "walkTo",
+                  "pull",
+                  "push",
+                  "pickUp"
+                ],
+                "if": {
+                  "flag": "amagatall_fades"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.bastida.feta"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "walkTo",
+                  "pull",
+                  "push",
+                  "pickUp"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.bastida.res"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.bastida.mira"
+                  }
+                ]
+              }
+            ]
+          },
+          "txell": {
+            "interactions": [
+              {
+                "verb": "talkTo",
+                "dialogue": "txell"
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "tele_espatlla"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.txell.mira2"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.txell.mira"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "canal7_tele"
+                  }
+                ]
+              }
+            ]
+          },
+          "avia": {
+            "interactions": [
+              {
+                "verb": "talkTo",
+                "lines": [
+                  {
+                    "who": "avia",
+                    "text": "sala.zona_mati.avia.parla"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.avia.mira"
+                  }
+                ]
+              }
+            ]
+          },
+          "parada": {
+            "name": "sala.zona_mati.parada.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "pickUp",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "avia",
+                    "text": "sala.zona_mati.parada.agafa"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.parada.mira"
+                  }
+                ]
+              }
+            ]
+          },
+          "pantalla": {
+            "name": "sala.zona_zero.pantalla.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.pantalla.mira"
+                  }
+                ]
+              }
+            ]
+          },
+          "sensors": {
+            "name": "sala.zona_zero.sensors.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.sensors.mira"
+                  }
+                ]
+              }
+            ]
+          },
+          "escenari": {
+            "name": "sala.zona_zero.escenari.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.escenari.mira"
+                  }
+                ]
+              }
+            ]
+          },
+          "altaveu": {
+            "name": "sala.zona_zero.altaveu.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.altaveu.mira"
+                  }
+                ]
+              }
+            ]
+          },
+          "formigonera": {
+            "name": "sala.zona_zero.formigonera.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.formigonera.mira"
+                  }
+                ]
+              }
+            ]
+          },
+          "soques": {
+            "name": "sala.zona_zero.soques.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.soques.mira"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "decor": {
+          "camera_espatlla": {
+            "visibleIf": {
+              "flag": "tele_espatlla"
+            }
+          },
+          "caseta_paper": {
+            "visibleIf": {
+              "flag": "amagatall_fades"
+            }
+          }
+        }
+      },
       "zona_zero": {
         "name": "sala.zona_zero.nom",
         "protagonists": [
@@ -5663,6 +6176,20 @@
           "status": "completed"
         },
         "objectives": [
+          {
+            "id": "preparacio",
+            "text": "mis.acte3.obj.preparacio",
+            "completeWhen": {
+              "all": [
+                {
+                  "flag": "amagatall_fades"
+                },
+                {
+                  "flag": "tele_espatlla"
+                }
+              ]
+            }
+          },
           {
             "id": "presentacio",
             "text": "mis.acte3.obj.presentacio",
@@ -6368,6 +6895,65 @@
         ],
         "targets": [
           "taula"
+        ],
+        "who": "iri"
+      },
+      "amagatall": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "inRoom": "zona_mati"
+            },
+            {
+              "flag": "amagatall_fades",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "amagatall_fades"
+        },
+        "levels": [
+          "pista.amagatall.1",
+          "pista.amagatall.2",
+          "pista.amagatall.3"
+        ],
+        "targets": [
+          "urtica",
+          "bastida"
+        ],
+        "who": "iri"
+      },
+      "tele": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "inRoom": "zona_mati"
+            },
+            {
+              "flag": "tele_espatlla",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "tele_espatlla"
+        },
+        "levels": [
+          "pista.tele.1",
+          "pista.tele.2",
+          "pista.tele.3"
+        ],
+        "targets": [
+          "txell"
         ],
         "who": "iri"
       }
@@ -7100,6 +7686,216 @@
           }
         }
       },
+      "txell": {
+        "id": "txell",
+        "with": "txell",
+        "start": [
+          {
+            "if": {
+              "flag": "tele_espatlla"
+            },
+            "node": "feta"
+          },
+          {
+            "node": "hola"
+          }
+        ],
+        "nodes": {
+          "hola": {
+            "lines": [
+              {
+                "who": "txell",
+                "text": "dlg.txell.hola.1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "menu": {
+            "choices": [
+              {
+                "id": "forta",
+                "text": "dlg.txell.opt.forta",
+                "next": "forta"
+              },
+              {
+                "id": "germana",
+                "text": "dlg.txell.opt.germana",
+                "next": "germana"
+              },
+              {
+                "id": "canal7",
+                "text": "dlg.txell.opt.canal7",
+                "if": {
+                  "flag": "canal7_tele"
+                },
+                "next": "canal7",
+                "end": true
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.txell.opt.adeu",
+                "end": true
+              }
+            ]
+          },
+          "forta": {
+            "lines": [
+              {
+                "who": "txell",
+                "text": "dlg.txell.forta.1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "germana": {
+            "lines": [
+              {
+                "who": "txell",
+                "text": "dlg.txell.germana.1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "canal7": {
+            "effects": [
+              {
+                "setFlag": "tele_espatlla"
+              }
+            ],
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "dlg.txell.canal7.1",
+                "stage": [
+                  {
+                    "prop": "camera_espatlla",
+                    "visible": false
+                  }
+                ]
+              },
+              {
+                "who": "txell",
+                "text": "dlg.txell.canal7.2"
+              },
+              {
+                "who": "player",
+                "text": "dlg.txell.canal7.3"
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.txell.canal7.4",
+                "stage": [
+                  {
+                    "prop": "camera_espatlla",
+                    "visible": true
+                  }
+                ]
+              },
+              {
+                "who": "txell",
+                "text": "dlg.txell.canal7.5"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.zona_mati.fi.1",
+                "if": {
+                  "flag": "amagatall_fades"
+                },
+                "stage": [
+                  {
+                    "who": "iri",
+                    "at": {
+                      "x": 4,
+                      "y": 246
+                    },
+                    "visible": true
+                  },
+                  {
+                    "who": "iri",
+                    "walk": {
+                      "x": 214,
+                      "y": 246
+                    }
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "xiulet",
+                    "who": "vet"
+                  },
+                  {
+                    "giveItem": "xiulet",
+                    "who": "iri"
+                  },
+                  {
+                    "event": "situar",
+                    "args": {
+                      "who": "vet",
+                      "room": "zona_zero"
+                    }
+                  },
+                  {
+                    "event": "situar",
+                    "args": {
+                      "who": "iri",
+                      "room": "zona_zero"
+                    }
+                  },
+                  {
+                    "event": "protagonista",
+                    "args": {
+                      "id": "iri"
+                    }
+                  }
+                ]
+              },
+              {
+                "who": "iri",
+                "text": "sala.zona_mati.fi.2",
+                "if": {
+                  "flag": "amagatall_fades"
+                }
+              },
+              {
+                "who": "player",
+                "text": "sala.zona_mati.fi.3",
+                "if": {
+                  "flag": "amagatall_fades"
+                }
+              },
+              {
+                "who": "player",
+                "text": "sala.zona_mati.fi.4",
+                "if": {
+                  "flag": "amagatall_fades"
+                }
+              },
+              {
+                "who": "iri",
+                "text": "sala.zona_mati.fi.5",
+                "if": {
+                  "flag": "amagatall_fades"
+                }
+              },
+              {
+                "who": "player",
+                "text": "sala.zona_mati.fi.6",
+                "if": {
+                  "flag": "amagatall_fades"
+                }
+              }
+            ]
+          },
+          "feta": {
+            "lines": [
+              {
+                "who": "txell",
+                "text": "dlg.txell.feta.1"
+              }
+            ]
+          }
+        }
+      },
       "urtica": {
         "id": "urtica",
         "with": "urtica",
@@ -7485,6 +8281,12 @@
           },
           {
             "if": {
+              "inRoom": "zona_mati"
+            },
+            "node": "e6a"
+          },
+          {
+            "if": {
               "inRoom": "caseta_obra"
             },
             "node": "e5"
@@ -7651,6 +8453,27 @@
               }
             ]
           },
+          "e6a": {
+            "lines": [
+              {
+                "who": "player",
+                "text": "dlg.walkie.e6a.1",
+                "sound": "walkie"
+              },
+              {
+                "who": "iri",
+                "text": "dlg.walkie.e6a.2"
+              },
+              {
+                "who": "player",
+                "text": "dlg.walkie.e6a.3"
+              },
+              {
+                "who": "iri",
+                "text": "dlg.walkie.e6a.4"
+              }
+            ]
+          },
           "e7": {
             "lines": [
               {
@@ -7753,6 +8576,19 @@
       "dlg.pla.opt.vells": "I els arbres vells?",
       "dlg.pla.torna.1": "Digues, bonica!",
       "dlg.pla.vells.1": "Cauen i són perillosos. Els de plàstic no fan pol·len, ni fulles, ni res de brut.",
+      "dlg.txell.canal7.1": "La Vet li ensenya el walkie.",
+      "dlg.txell.canal7.2": "...Canal 7? TV Comarca és el canal 7 de la TDT local.",
+      "dlg.txell.canal7.3": "Ja ho sé. És el número més valent.",
+      "dlg.txell.canal7.4": "La Txell riu, i el càmera treu la càmera del trípode.",
+      "dlg.txell.canal7.5": "Doncs a l'espatlla. Si no passa res, almenys tindré l'àvia de la melmelada.",
+      "dlg.txell.feta.1": "A l'espatlla, com m'has dit. Si passa res, ho tindré.",
+      "dlg.txell.forta.1": "Sempre diuen això. Després és una cinta tallada i un pica-pica.",
+      "dlg.txell.germana.1": "Tothom sap coses del bosc. Jo tinc un pla: l'escenari, la senyora Pla i prou. Amb el trípode, no tremola.",
+      "dlg.txell.hola.1": "Hola, maca! TV Comarca. Ara no puc, que provo plans: la senyora Pla vol el seu perfil bo.",
+      "dlg.txell.opt.adeu": "Res, gràcies.",
+      "dlg.txell.opt.canal7": "Jo soc la del canal 7.",
+      "dlg.txell.opt.forta": "Avui passarà una cosa molt forta.",
+      "dlg.txell.opt.germana": "La meva germana sap una cosa del bosc.",
       "dlg.urtica.adeu.1": "No ens fiem de tu, gegant. Encara.",
       "dlg.urtica.adeu.2": "Fa olor de melmelada. Sospitós.",
       "dlg.urtica.amigues.1": "Digues, gegant de les nostres.",
@@ -7804,6 +8640,10 @@
       "dlg.walkie.e4.3": "Que no ho he dit! Canvi i fora.",
       "dlg.walkie.e5.1": "(xiuxiuejant) Iri. Soc a la caseta. Fa olor de plàstic nou. Canvi.",
       "dlg.walkie.e5.2": "Recorda: l'altaveu. Canvi i fora.",
+      "dlg.walkie.e6a.1": "Iri, Iri, em sents? Canvi.",
+      "dlg.walkie.e6a.2": "El bus fa olor de bocata de truita. Com va? Canvi.",
+      "dlg.walkie.e6a.3": "La Txell té la càmera clavada a un trípode. I les fades no volen baixar. Canvi.",
+      "dlg.walkie.e6a.4": "Observació: tu convences tothom en deu segons. Hipòtesi: també la tele. Canvi i fora.",
       "dlg.walkie.e7.1": "Iri, Iri, em sents? Canvi.",
       "dlg.walkie.e7.2": "Soc aquí al costat, Vet. Canvi.",
       "dlg.walkie.e7.3": "Ja ho sé. És que m'agrada. Canvi i fora.",
@@ -7916,10 +8756,13 @@
       "mis.acte2.obj.fades": "El pol·len de la Flor de Pebre.",
       "mis.acte2.obj.gripaus": "Els plànols de 1923, segellats.",
       "mis.acte2.titol": "Tres suports",
+      "mis.acte3.obj.preparacio": "Preparar la presentació: les fades i la tele",
       "mis.acte3.obj.presentacio": "Que la presentació digui la veritat.",
       "mis.acte3.titol": "La natura, però millor",
       "obj.cargol.desc": "Un cargol galvanitzat: d'acer, amb una capa de zinc.",
       "obj.cargol.nom": "cargol",
+      "obj.caseta_paper.desc": "El fullet de NaturaPlus, doblegat en tres. Una caseta per a fades, amb el logotip a fora.",
+      "obj.caseta_paper.nom": "caseta de paper",
       "obj.centim.cargol": "Dos metalls diferents. Però sense res al mig, no fan res.",
       "obj.centim.desc": "Un cèntim de coure de l'avi. El de la sort. El guardo a la tapa de la llibreta.",
       "obj.centim.nom": "cèntim de la sort",
@@ -7928,6 +8771,9 @@
       "obj.fil_saba.desc": "Un fil de saba, tou i tebi. S'ha de lligar a una arrel viva.",
       "obj.fil_saba.nom": "fil de saba",
       "obj.kit.desc": "Un fullet, «Com reconèixer un arbre: busca-li el codi QR», i una polsera de plàstic. Me la poso, per si de cas.",
+      "obj.kit.doblega.1": "El fullet: «Descobreix la natura del futur!». Un plec, dos plecs, tres plecs...",
+      "obj.kit.doblega.2": "Una caseta. Amb el logotip a fora. La polsera me la poso: té zero punts.",
+      "obj.kit.mira.mati": "El Kit del Petit Guardabosc. El fullet té tres plecs: és quasi una tenda.",
       "obj.kit.nom": "Kit del Petit Guardabosc",
       "obj.llibreta.desc": "La llibreta de camp. Hi apunto observacions i hipòtesis.",
       "obj.llibreta.mira.1": "Observació u: una tanca nova. Observació dos: una porta en un roure. Pendent: saber qui hi viu.",
@@ -8015,6 +8861,9 @@
       "pj.vet.nom": "Vet",
       "pj.vet.parla.1": "Iri! L'àvia diu que si et poses nerviosa, parlis com un documental.",
       "pj.vet.parla.2": "Observació: no estic nerviosa. Hipòtesi: una mica.",
+      "pista.amagatall.1": "Vet. Les fades tenen por de la gent. Pregunta-li a la Urtica què necessiten. Canvi.",
+      "pista.amagatall.2": "Un amagatall a sobre dels sensors... El teu kit porta un fullet. Un fullet doblegat és quasi una caseta. Canvi.",
+      "pista.amagatall.3": "Obre el kit i doblega'n el fullet: una caseta de paper. Després, fes-la servir amb la bastida de la pantalla. Canvi.",
       "pista.arrel.1": "Observació: el fil va a una arrel viva. Hipòtesi: a ull nu no es veu quina.",
       "pista.arrel.2": "Mira les arrels amb la lupa: fes servir la lupa amb cadascuna.",
       "pista.arrel.3": "L'arrel del mig brilla per dins. Fes servir el fil de saba amb l'arrel del mig.",
@@ -8072,6 +8921,9 @@
       "pista.tap.2": "Treu les ampolles del rierol. La de sota està encallada: s'hi ha de fer palanca.",
       "pista.tap.3": "Fes servir l'estaca amb el tap d'ampolles.",
       "pista.taula.1": "Vet. Seu a la taula, que el te es refreda.",
+      "pista.tele.1": "La Txell només vol filmar l'escenari. Si el Registrador surt per un altre costat, no el veurà ningú. Canvi.",
+      "pista.tele.2": "Mira bé la càmera de la tele. Quin número hi posa? Canvi.",
+      "pista.tele.3": "Mira la Txell, i després digues-li que tu ets la del canal 7. Canvi.",
       "pista.xiulet.1": "Ha dit «aire pur».",
       "pista.xiulet.2": "La Vet m'ha deixat el xiulet de les fades. Les fades esperen.",
       "pista.xiulet.3": "Fes servir el xiulet d'ortiga.",
@@ -8404,6 +9256,51 @@
       "sala.vora_bosc.truca.2": "Està tancat! ...Qui hi ha? Si ets una excavadora, ves-te'n.",
       "sala.vora_bosc.truca.3": "Soc la Iri. Tinc onze anys i no soc cap excavadora.",
       "sala.vora_bosc.truca.4": "Hm. Les excavadores no diuen això. Espera, que obro.",
+      "sala.zona_mati.altaveu.mira": "L'altaveu de la caseta. Al canal 7, com el vaig deixar ahir.",
+      "sala.zona_mati.avia.mira": "L'àvia, muntant la parada de melmelada. Diu que la Festa Major és la Festa Major, amb formigó o sense.",
+      "sala.zona_mati.avia.parla": "Bon dia, reina. Si vens a ajudar, els pots de móres, al davant. Els de préssec ja no en queden.",
+      "sala.zona_mati.bastida.1": "És com el roure, però de ferro.",
+      "sala.zona_mati.bastida.2": "La Vet s'enfila per la bastida de la pantalla, tub a tub, i deixa la caseta de paper a dalt de tot, just a sobre dels sensors.",
+      "sala.zona_mati.bastida.3": "(entrant-hi) Un amagatall de NaturaPlus. Pagat per NaturaPlus.",
+      "sala.zona_mati.bastida.4": "És una traïció.",
+      "sala.zona_mati.bastida.5": "(des de dins) Brutal.",
+      "sala.zona_mati.bastida.feta": "Ja hi he pujat. La caseta és a dalt de tot, amb tres fades a dins.",
+      "sala.zona_mati.bastida.kit": "El kit sencer, allà dalt? Primer n'hauria de fer alguna cosa.",
+      "sala.zona_mati.bastida.mira": "La bastida de la pantalla: tubs i travessers fins a dalt de tot. Només hi cap una nena.",
+      "sala.zona_mati.bastida.nom": "bastida",
+      "sala.zona_mati.bastida.res": "Per pujar a fer turisme, no.",
+      "sala.zona_mati.escenari.mira": "L'escenari, amb la cinta per tallar. A les deu hi pujarà la senyora Pla.",
+      "sala.zona_mati.fi.1": "Arriba la Iri, amb la motxilla i el walkie.",
+      "sala.zona_mati.fi.2": "Com va?",
+      "sala.zona_mati.fi.3": "Les fades, dins un fullet de NaturaPlus. La tele, a l'espatlla.",
+      "sala.zona_mati.fi.4": "(li dona el xiulet d'ortiga) Té. No el bufis fins que digui «aire pur».",
+      "sala.zona_mati.fi.5": "Observació: això ho has fet tota sola.",
+      "sala.zona_mati.fi.6": "Ja ho sé.",
+      "sala.zona_mati.formigonera.mira": "La formigonera. Ja té el motor engegat, per si de cas.",
+      "sala.zona_mati.intro.1": "Dilluns. Festa Major. Les nou del matí",
+      "sala.zona_mati.intro.2": "(al walkie) Iri. Soc a la Zona Zero. Hi ha més gespa de plàstic que a un camp de futbol. Canvi.",
+      "sala.zona_mati.intro.3": "Soc al bus, amb el walkie i el crit. Arribo a les nou i mitja. Tu prepara-ho tot. Canvi.",
+      "sala.zona_mati.intro.4": "Tot? Canvi.",
+      "sala.zona_mati.intro.5": "Les fades i la tele. Canvi i fora.",
+      "sala.zona_mati.nom": "La Zona Zero, a les nou",
+      "sala.zona_mati.pantalla.mira": "La pantalla gegant: «BOSC 2.0». A dalt de tot, just a sobre dels sensors, hi cabria una cosa petita.",
+      "sala.zona_mati.parada.agafa": "Les mans quietes, que són per vendre.",
+      "sala.zona_mati.parada.mira": "La parada de l'àvia. Hi falta la melmelada de préssec: se la van menjar unes fades.",
+      "sala.zona_mati.parada.nom": "parada de melmelada",
+      "sala.zona_mati.sensors.mira": "Tres columnes blanques: «AIRE: PUR 100%». De moment.",
+      "sala.zona_mati.soques.mira": "Soques. La setmana passada eren arbres.",
+      "sala.zona_mati.txell.mira": "La Txell, de TV Comarca. El càmera té la càmera al trípode, mirant l'escenari. Al costat hi posa «TV7».",
+      "sala.zona_mati.txell.mira2": "La Txell. El càmera ja té la càmera a l'espatlla.",
+      "sala.zona_mati.urtica.1": "La Urtica baixa en picat i s'amaga darrere la Vet.",
+      "sala.zona_mati.urtica.2": "Gegant. Allà baix hi haurà mil gegants. Si baixem quan ho digui la del vestit blanc, ens trepitgen.",
+      "sala.zona_mati.urtica.3": "Necessitem un amagatall a sobre dels sensors. Que no es vegi. I que sigui elegant.",
+      "sala.zona_mati.urtica.4": "Elegant.",
+      "sala.zona_mati.urtica.5": "Som fades, no tàvecs.",
+      "sala.zona_mati.urtica.caseta": "Allà dalt, gegant. A sobre dels sensors. Nosaltres no hi arribem sense que ens vegin.",
+      "sala.zona_mati.urtica.feta": "(des de la caseta) S'hi està de luxe. Té moqueta de paper.",
+      "sala.zona_mati.urtica.kit": "Això és un fullet, gegant. Nosaltres volem una casa.",
+      "sala.zona_mati.urtica.mira": "La Urtica, a les branques. Avui no apunta ningú: vigila.",
+      "sala.zona_mati.urtica.recorda": "Un amagatall a sobre dels sensors, gegant. Que no es vegi. I que sigui elegant.",
       "sala.zona_zero.altaveu.mira": "L'altaveu de la caseta. La Vet l'ha deixat al canal 7, el dels walkies.",
       "sala.zona_zero.altaveu.nom": "altaveu",
       "sala.zona_zero.altaveu.toca": "No cal tocar-lo. Ja és al canal 7.",
@@ -8440,8 +9337,8 @@
       "sala.zona_zero.formigonera.toca": "No m'hi acosto. Fa un soroll que espanta.",
       "sala.zona_zero.intro.1": "Dilluns. Festa Major. Les deu del matí",
       "sala.zona_zero.intro.2": "Hi ha mig poble. L'àvia i la Vet són entre el públic, amb la parada de melmelada.",
-      "sala.zona_zero.intro.3": "(a part) La Vet m'ha deixat el xiulet. Diu que no el bufi a casa, que el gat encara corre.",
-      "sala.zona_zero.intro.4": "(a part) I que les fades esperen que la senyora digui «aire pur».",
+      "sala.zona_zero.intro.3": "(a part) Les fades, dins un fullet. La tele, a l'espatlla. El xiulet, a la butxaca.",
+      "sala.zona_zero.intro.4": "(a part) Ara em toca a mi.",
       "sala.zona_zero.intro.5": "Bon dia, Coma! Benvinguts al Bosc 2.0! Aquí tot és net, segur i intel·ligent.",
       "sala.zona_zero.intro.6": "I l'aire... l'aire és cent per cent pur, certificat pels nostres sensors!",
       "sala.zona_zero.nom": "La Zona Zero",

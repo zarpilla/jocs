@@ -1,0 +1,589 @@
+{
+  "id": "zona_mati",
+  "name": "La Zona Zero, a les nou",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 236
+          },
+          {
+            "x": 180,
+            "y": 232
+          },
+          {
+            "x": 236,
+            "y": 230
+          },
+          {
+            "x": 320,
+            "y": 218
+          },
+          {
+            "x": 520,
+            "y": 216
+          },
+          {
+            "x": 600,
+            "y": 222
+          },
+          {
+            "x": 639,
+            "y": 230
+          },
+          {
+            "x": 639,
+            "y": 256
+          },
+          {
+            "x": 0,
+            "y": 256
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "bastida",
+      "active": true,
+      "description": "bastida",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 382,
+          "y": 112
+        },
+        {
+          "x": 402,
+          "y": 112
+        },
+        {
+          "x": 402,
+          "y": 180
+        },
+        {
+          "x": 382,
+          "y": 180
+        }
+      ],
+      "walkToPoint": {
+        "x": 392,
+        "y": 220
+      },
+      "lookAtPoint": {
+        "x": 392,
+        "y": 180
+      }
+    },
+    {
+      "id": "parada",
+      "active": true,
+      "description": "parada de melmelada",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 66,
+          "y": 160
+        },
+        {
+          "x": 126,
+          "y": 160
+        },
+        {
+          "x": 126,
+          "y": 204
+        },
+        {
+          "x": 66,
+          "y": 204
+        }
+      ],
+      "walkToPoint": {
+        "x": 100,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 96,
+        "y": 204
+      }
+    },
+    {
+      "id": "pantalla",
+      "active": true,
+      "description": "pantalla",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 380,
+          "y": 20
+        },
+        {
+          "x": 564,
+          "y": 20
+        },
+        {
+          "x": 564,
+          "y": 116
+        },
+        {
+          "x": 380,
+          "y": 116
+        }
+      ],
+      "walkToPoint": {
+        "x": 440,
+        "y": 222
+      },
+      "lookAtPoint": {
+        "x": 472,
+        "y": 116
+      }
+    },
+    {
+      "id": "sensors",
+      "active": true,
+      "description": "sensors",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 512,
+          "y": 104
+        },
+        {
+          "x": 602,
+          "y": 104
+        },
+        {
+          "x": 602,
+          "y": 206
+        },
+        {
+          "x": 512,
+          "y": 206
+        }
+      ],
+      "walkToPoint": {
+        "x": 556,
+        "y": 226
+      },
+      "lookAtPoint": {
+        "x": 557,
+        "y": 206
+      }
+    },
+    {
+      "id": "escenari",
+      "active": true,
+      "description": "escenari",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 290,
+          "y": 172
+        },
+        {
+          "x": 520,
+          "y": 172
+        },
+        {
+          "x": 520,
+          "y": 212
+        },
+        {
+          "x": 290,
+          "y": 212
+        }
+      ],
+      "walkToPoint": {
+        "x": 400,
+        "y": 222
+      },
+      "lookAtPoint": {
+        "x": 405,
+        "y": 212
+      }
+    },
+    {
+      "id": "altaveu",
+      "active": true,
+      "description": "altaveu",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 482,
+          "y": 132
+        },
+        {
+          "x": 514,
+          "y": 132
+        },
+        {
+          "x": 514,
+          "y": 188
+        },
+        {
+          "x": 482,
+          "y": 188
+        }
+      ],
+      "walkToPoint": {
+        "x": 500,
+        "y": 222
+      },
+      "lookAtPoint": {
+        "x": 498,
+        "y": 188
+      }
+    },
+    {
+      "id": "formigonera",
+      "active": true,
+      "description": "formigonera",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 170,
+          "y": 78
+        },
+        {
+          "x": 256,
+          "y": 78
+        },
+        {
+          "x": 256,
+          "y": 118
+        },
+        {
+          "x": 170,
+          "y": 118
+        }
+      ],
+      "walkToPoint": {
+        "x": 220,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 213,
+        "y": 118
+      }
+    },
+    {
+      "id": "soques",
+      "active": true,
+      "description": "soques",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 224,
+          "y": 192
+        },
+        {
+          "x": 316,
+          "y": 192
+        },
+        {
+          "x": 316,
+          "y": 222
+        },
+        {
+          "x": 224,
+          "y": 222
+        }
+      ],
+      "walkToPoint": {
+        "x": 270,
+        "y": 230
+      },
+      "lookAtPoint": {
+        "x": 270,
+        "y": 222
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.827,
+      "scaleBottom": 1.098,
+      "points": [
+        {
+          "x": 0,
+          "y": 198
+        },
+        {
+          "x": 639,
+          "y": 198
+        },
+        {
+          "x": 639,
+          "y": 259
+        },
+        {
+          "x": 0,
+          "y": 259
+        }
+      ]
+    },
+    {
+      "id": "escenari",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleTop": 0.813,
+      "scaleBottom": 0.813,
+      "points": [
+        {
+          "x": 300,
+          "y": 176
+        },
+        {
+          "x": 490,
+          "y": 170
+        },
+        {
+          "x": 518,
+          "y": 189
+        },
+        {
+          "x": 322,
+          "y": 198
+        }
+      ]
+    },
+    {
+      "id": "branques",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleTop": 0.6,
+      "scaleBottom": 0.6,
+      "points": [
+        {
+          "x": 40,
+          "y": 30
+        },
+        {
+          "x": 170,
+          "y": 30
+        },
+        {
+          "x": 170,
+          "y": 70
+        },
+        {
+          "x": 40,
+          "y": 70
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "camera_espatlla",
+      "tag": "camera_espatlla",
+      "animations": {
+        "camera_espatlla": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "caseta_paper",
+      "tag": "caseta_paper",
+      "animations": {
+        "caseta_paper": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "formigonera",
+      "tag": "formigonera",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "formigonera": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      },
+      "scriptName": "formigoneraAnim",
+      "collider": {
+        "points": [
+          {
+            "x": 170,
+            "y": 78
+          },
+          {
+            "x": 256,
+            "y": 78
+          },
+          {
+            "x": 256,
+            "y": 118
+          },
+          {
+            "x": 170,
+            "y": 118
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 220,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 213,
+        "y": 118
+      },
+      "description": "formigonera"
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 22,
+      "baseline": 999
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 150,
+      "y": 244,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "urtica-1",
+      "definition": "urtica/urtica.character.json",
+      "x": 96,
+      "y": 52,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "txell-1",
+      "definition": "txell/txell.character.json",
+      "x": 566,
+      "y": 240,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "avia-1",
+      "definition": "avia/avia.character.json",
+      "x": 132,
+      "y": 214,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "iri-veu",
+      "definition": "iri/iri.character.json",
+      "x": 4,
+      "y": 246,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "card-veu",
+      "definition": "card/card.character.json",
+      "x": 127,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "pica-veu",
+      "definition": "pica/pica.character.json",
+      "x": 182,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    }
+  ],
+  "characterLights": {
+    "ambient": "#c2b6a2",
+    "lights": [
+      {
+        "x": -80,
+        "y": 150,
+        "radius": 700,
+        "color": "#ffd496",
+        "intensity": 0.55
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#2a1c10",
+    "alpha": 0.4,
+    "squash": 0.28,
+    "core": 0.6,
+    "light": {
+      "x": 1,
+      "y": 0.15,
+      "direction": true,
+      "stretch": 0.7
+    }
+  },
+  "floorSquash": 0.25
+}

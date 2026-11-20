@@ -1,0 +1,34 @@
+{
+  "id": "txell",
+  "displayName": "txell",
+  "options": [
+    {
+      "id": "menu__forta",
+      "scriptName": "menu__forta",
+      "text": "Avui passarà una cosa molt forta.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__germana",
+      "scriptName": "menu__germana",
+      "text": "La meva germana sap una cosa del bosc.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__canal7",
+      "scriptName": "menu__canal7",
+      "text": "Jo soc la del canal 7.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, gràcies.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

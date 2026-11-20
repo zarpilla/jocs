@@ -314,6 +314,27 @@
         "h": 36
       },
       "duration": 100
+    },
+    "inventory 15.aseprite": {
+      "frame": {
+        "x": 975,
+        "y": 0,
+        "w": 65,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 36
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -322,7 +343,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 975,
+      "w": 1040,
       "h": 36
     },
     "scale": "1",
@@ -429,6 +450,13 @@
         "name": "kit",
         "from": 14,
         "to": 14,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "caseta_paper",
+        "from": 15,
+        "to": 15,
         "direction": "forward",
         "color": "#000000ff"
       }

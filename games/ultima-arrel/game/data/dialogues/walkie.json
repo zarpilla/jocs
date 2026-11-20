@@ -107,6 +107,12 @@
     },
     {
       "if": {
+        "inRoom": "zona_mati"
+      },
+      "node": "e6a"
+    },
+    {
+      "if": {
         "inRoom": "caseta_obra"
       },
       "node": "e5"
@@ -270,6 +276,27 @@
         {
           "who": "iri",
           "text": "dlg.walkie.e5.2"
+        }
+      ]
+    },
+    "e6a": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.e6a.1",
+          "sound": "walkie"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.e6a.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.walkie.e6a.3"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.e6a.4"
         }
       ]
     },

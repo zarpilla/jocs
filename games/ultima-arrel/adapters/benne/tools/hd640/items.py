@@ -357,9 +357,30 @@ def kit(f):
         f.px(x + 1, 30, PLASTW, 2.0)
 
 
+def caseta_paper(f):
+    """La caseta de paper: el fullet del kit doblegat en tres, com una tenda. Blanc, amb la fulla verd fluor del
+    logotip a la cara de l'esquerra (la del sol) i la porta fosca a la de la dreta."""
+    cx, top, bot = 32, 6, 29
+    T = {(x, y) for y in range(top, bot + 1) for x in range(64)
+         if abs(x - cx) <= (y - top) * 0.95}
+    f.drop(T, -1.6, 2, 1)
+    f.fill(T, PLASTW, lambda x, y: (5.0 if x < cx else 3.6) - (y - top) * 0.03, rim=(0.6, -1.4))
+    for y in range(top + 1, bot + 1):                                       # el plec del mig
+        f.px(cx, y, PLASTW, 2.6)
+    f.ell(24, 21, 3.4, 3.0, NEON, 3.2, amp=1.4, cont=(0.2, 0.8))           # la fulla del logotip
+    f.limb((24, 23), (24, 26), 0.8, 0.8, NEON, 2.4)
+    D = f.R(36, 21, 40, bot)                                                # la porta
+    f.fill(D, BLK, 1.2)
+    f.px(38, 20, NEON, 4.0)                                                 # una cresta de fada que treu el cap
+    f.px(37, 21, NEON, 3.6)
+    for x in range(cx - 20, cx + 21, 4):                                    # la lletra petita del fullet
+        if abs(x - cx) > 3:
+            f.px(x, bot, PLASTW, 2.2)
+
+
 ICONS = {fn.__name__: fn for fn in (
     walkie, lupa, llibreta, centim, llimona, llimona_centim, llimona_cargol, pila_llimona, cargol, estaca, fil_saba,
-    pot_melmelada, pot_buit, xiulet, kit,
+    pot_melmelada, pot_buit, xiulet, kit, caseta_paper,
 )}
 
 

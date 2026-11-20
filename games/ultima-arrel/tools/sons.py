@@ -577,6 +577,19 @@ def passos_gripau():
     return mix(*[(passa(rng.uniform(0.8, 1.0)), 0.7 * i) for i in range(4)])
 
 
+def bastida():
+    """La Vet que s'enfila per la bastida de la pantalla: els tubs d'acer que dringuen sota les botes d'aigua (cinc
+    passes, cada cop més amunt i més fluixes) i, a dalt de tot, el paper de la caseta que es posa."""
+    passes = []
+    for i in range(5):
+        f = 620 + i * 70 + rng.uniform(-20, 20)
+        cop = metall(f, 0.35, decay=0.12, harm=(1, 2.6, 4.9), amp=(1, 0.45, 0.2)) * (1 - i * 0.12)
+        bota = cop_sord(0.12, 60, 300, 0.03) * 0.6
+        passes.append((mix(cop, bota), 0.32 * i))
+    paper = band(noise(0.25), 1500, 6000) * env(0.25, 0.02, None, 0.15) * 0.25
+    return mix(*passes, (paper, 1.75))
+
+
 # ─── La ràdio de l'altaveu (canals que no són el 7) ─────────────────────────
 
 
@@ -839,6 +852,7 @@ SONS = {
     'porta_roure': porta_roure, 'gronxador': gronxador, 'esternut_fada': esternut_fada,
     'xarxa_encesa': xarxa_encesa, 'segell': segell, 'roda': roda, 'radar': radar, 'porta_topa': porta_topa,
     'pip': pip, 'passos_gripau': passos_gripau, 'futbol': futbol, 'ascensor': ascensor, 'anunci': anunci,
+    'bastida': bastida,
 }
 
 # Volum de cada so respecte del màxim (els que són tons purs, aguts o molt sostinguts sonen més del que fan).
@@ -851,7 +865,7 @@ VOLUM = {
 # Els sons que són tot cop i poca cua se senten fluixos: se'ls comprimeix una mica (com més, més cos).
 COMPRIMEIX = {
     'segell': 3, 'porta_topa': 3, 'passos_gripau': 2.5, 'ampolles': 2, 'fades_mengen': 2, 'altaveu_iri': 2,
-    'gronxador': 2, 'roda': 2, 'porta_roure': 2,
+    'gronxador': 2, 'roda': 2, 'porta_roure': 2, 'bastida': 2,
 }
 
 # Els sons de fons greus (un brunzit, un motor) se senten menys amb la mateixa intensitat: se'ls apuja perquè

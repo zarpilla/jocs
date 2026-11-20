@@ -1,6 +1,8 @@
 {
   "obj.cargol.desc": "Un cargol galvanitzat: d'acer, amb una capa de zinc.",
   "obj.cargol.nom": "cargol",
+  "obj.caseta_paper.desc": "El fullet de NaturaPlus, doblegat en tres. Una caseta per a fades, amb el logotip a fora.",
+  "obj.caseta_paper.nom": "caseta de paper",
   "obj.centim.cargol": "Dos metalls diferents. Però sense res al mig, no fan res.",
   "obj.centim.desc": "Un cèntim de coure de l'avi. El de la sort. El guardo a la tapa de la llibreta.",
   "obj.centim.nom": "cèntim de la sort",
@@ -9,6 +11,9 @@
   "obj.fil_saba.desc": "Un fil de saba, tou i tebi. S'ha de lligar a una arrel viva.",
   "obj.fil_saba.nom": "fil de saba",
   "obj.kit.desc": "Un fullet, «Com reconèixer un arbre: busca-li el codi QR», i una polsera de plàstic. Me la poso, per si de cas.",
+  "obj.kit.doblega.1": "El fullet: «Descobreix la natura del futur!». Un plec, dos plecs, tres plecs...",
+  "obj.kit.doblega.2": "Una caseta. Amb el logotip a fora. La polsera me la poso: té zero punts.",
+  "obj.kit.mira.mati": "El Kit del Petit Guardabosc. El fullet té tres plecs: és quasi una tenda.",
   "obj.kit.nom": "Kit del Petit Guardabosc",
   "obj.llibreta.desc": "La llibreta de camp. Hi apunto observacions i hipòtesis.",
   "obj.llibreta.mira.1": "Observació u: una tanca nova. Observació dos: una porta en un roure. Pendent: saber qui hi viu.",

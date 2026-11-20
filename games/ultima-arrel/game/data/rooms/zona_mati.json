@@ -1,0 +1,512 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.zona_mati.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "id": "primera",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "title",
+          "text": "sala.zona_mati.intro.1"
+        },
+        {
+          "who": "player",
+          "text": "sala.zona_mati.intro.2",
+          "sound": "walkie"
+        },
+        {
+          "who": "iri",
+          "text": "sala.zona_mati.intro.3"
+        },
+        {
+          "who": "player",
+          "text": "sala.zona_mati.intro.4"
+        },
+        {
+          "who": "iri",
+          "text": "sala.zona_mati.intro.5"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "urtica": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "flag": "amagatall_fades"
+          },
+          "lines": [
+            {
+              "who": "urtica",
+              "text": "sala.zona_mati.urtica.feta"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "if": {
+            "flag": "fades_amagatall"
+          },
+          "lines": [
+            {
+              "who": "urtica",
+              "text": "sala.zona_mati.urtica.recorda"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.zona_mati.urtica.1"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.zona_mati.urtica.2"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.zona_mati.urtica.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.zona_mati.urtica.4"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.zona_mati.urtica.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "fades_amagatall"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "give",
+            "use"
+          ],
+          "item": "kit",
+          "lines": [
+            {
+              "who": "urtica",
+              "text": "sala.zona_mati.urtica.kit"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "give",
+            "use"
+          ],
+          "item": "caseta_paper",
+          "lines": [
+            {
+              "who": "urtica",
+              "text": "sala.zona_mati.urtica.caseta"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.urtica.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "bastida": {
+      "name": "sala.zona_mati.bastida.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "caseta_paper",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.bastida.1",
+              "stage": [
+                {
+                  "prop": "caseta_paper",
+                  "visible": false
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_mati.bastida.2",
+              "sound": "bastida",
+              "stage": [
+                {
+                  "who": "player",
+                  "visible": false,
+                  "hold": 0.4
+                },
+                {
+                  "prop": "caseta_paper",
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "who": "urtica",
+              "text": "sala.zona_mati.bastida.3",
+              "stage": [
+                {
+                  "who": "player",
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "who": "card",
+              "text": "sala.zona_mati.bastida.4"
+            },
+            {
+              "who": "pica",
+              "text": "sala.zona_mati.bastida.5"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_mati.fi.1",
+              "if": {
+                "flag": "tele_espatlla"
+              },
+              "stage": [
+                {
+                  "who": "iri",
+                  "at": {
+                    "x": 4,
+                    "y": 246
+                  },
+                  "visible": true
+                },
+                {
+                  "who": "iri",
+                  "walk": {
+                    "x": 214,
+                    "y": 246
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "takeItem": "xiulet",
+                  "who": "vet"
+                },
+                {
+                  "giveItem": "xiulet",
+                  "who": "iri"
+                },
+                {
+                  "event": "situar",
+                  "args": {
+                    "who": "vet",
+                    "room": "zona_zero"
+                  }
+                },
+                {
+                  "event": "situar",
+                  "args": {
+                    "who": "iri",
+                    "room": "zona_zero"
+                  }
+                },
+                {
+                  "event": "protagonista",
+                  "args": {
+                    "id": "iri"
+                  }
+                }
+              ]
+            },
+            {
+              "who": "iri",
+              "text": "sala.zona_mati.fi.2",
+              "if": {
+                "flag": "tele_espatlla"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.zona_mati.fi.3",
+              "if": {
+                "flag": "tele_espatlla"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.zona_mati.fi.4",
+              "if": {
+                "flag": "tele_espatlla"
+              }
+            },
+            {
+              "who": "iri",
+              "text": "sala.zona_mati.fi.5",
+              "if": {
+                "flag": "tele_espatlla"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.zona_mati.fi.6",
+              "if": {
+                "flag": "tele_espatlla"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "caseta_paper"
+            },
+            {
+              "setFlag": "amagatall_fades"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "kit",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.bastida.kit"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "walkTo",
+            "pull",
+            "push",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "amagatall_fades"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.bastida.feta"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "walkTo",
+            "pull",
+            "push",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.bastida.res"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.bastida.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "txell": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "txell"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "tele_espatlla"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.txell.mira2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.txell.mira"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "canal7_tele"
+            }
+          ]
+        }
+      ]
+    },
+    "avia": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "avia",
+              "text": "sala.zona_mati.avia.parla"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.avia.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "parada": {
+      "name": "sala.zona_mati.parada.nom",
+      "interactions": [
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "avia",
+              "text": "sala.zona_mati.parada.agafa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.parada.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "pantalla": {
+      "name": "sala.zona_zero.pantalla.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.pantalla.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "sensors": {
+      "name": "sala.zona_zero.sensors.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.sensors.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "escenari": {
+      "name": "sala.zona_zero.escenari.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.escenari.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "altaveu": {
+      "name": "sala.zona_zero.altaveu.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.altaveu.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "formigonera": {
+      "name": "sala.zona_zero.formigonera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.formigonera.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "soques": {
+      "name": "sala.zona_zero.soques.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.soques.mira"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "camera_espatlla": {
+      "visibleIf": {
+        "flag": "tele_espatlla"
+      }
+    },
+    "caseta_paper": {
+      "visibleIf": {
+        "flag": "amagatall_fades"
+      }
+    }
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "txell",
+  "with": "txell",
+  "start": [
+    {
+      "if": {
+        "flag": "tele_espatlla"
+      },
+      "node": "feta"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "txell",
+          "text": "dlg.txell.hola.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "forta",
+          "text": "dlg.txell.opt.forta",
+          "next": "forta"
+        },
+        {
+          "id": "germana",
+          "text": "dlg.txell.opt.germana",
+          "next": "germana"
+        },
+        {
+          "id": "canal7",
+          "text": "dlg.txell.opt.canal7",
+          "if": {
+            "flag": "canal7_tele"
+          },
+          "next": "canal7",
+          "end": true
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.txell.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "forta": {
+      "lines": [
+        {
+          "who": "txell",
+          "text": "dlg.txell.forta.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "germana": {
+      "lines": [
+        {
+          "who": "txell",
+          "text": "dlg.txell.germana.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "canal7": {
+      "effects": [
+        {
+          "setFlag": "tele_espatlla"
+        }
+      ],
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.txell.canal7.1",
+          "stage": [
+            {
+              "prop": "camera_espatlla",
+              "visible": false
+            }
+          ]
+        },
+        {
+          "who": "txell",
+          "text": "dlg.txell.canal7.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.txell.canal7.3"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.txell.canal7.4",
+          "stage": [
+            {
+              "prop": "camera_espatlla",
+              "visible": true
+            }
+          ]
+        },
+        {
+          "who": "txell",
+          "text": "dlg.txell.canal7.5"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.zona_mati.fi.1",
+          "if": {
+            "flag": "amagatall_fades"
+          },
+          "stage": [
+            {
+              "who": "iri",
+              "at": {
+                "x": 4,
+                "y": 246
+              },
+              "visible": true
+            },
+            {
+              "who": "iri",
+              "walk": {
+                "x": 214,
+                "y": 246
+              }
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "xiulet",
+              "who": "vet"
+            },
+            {
+              "giveItem": "xiulet",
+              "who": "iri"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "zona_zero"
+              }
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "zona_zero"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "iri"
+              }
+            }
+          ]
+        },
+        {
+          "who": "iri",
+          "text": "sala.zona_mati.fi.2",
+          "if": {
+            "flag": "amagatall_fades"
+          }
+        },
+        {
+          "who": "player",
+          "text": "sala.zona_mati.fi.3",
+          "if": {
+            "flag": "amagatall_fades"
+          }
+        },
+        {
+          "who": "player",
+          "text": "sala.zona_mati.fi.4",
+          "if": {
+            "flag": "amagatall_fades"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "sala.zona_mati.fi.5",
+          "if": {
+            "flag": "amagatall_fades"
+          }
+        },
+        {
+          "who": "player",
+          "text": "sala.zona_mati.fi.6",
+          "if": {
+            "flag": "amagatall_fades"
+          }
+        }
+      ]
+    },
+    "feta": {
+      "lines": [
+        {
+          "who": "txell",
+          "text": "dlg.txell.feta.1"
+        }
+      ]
+    }
+  }
+}
