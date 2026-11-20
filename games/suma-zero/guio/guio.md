@@ -43,6 +43,21 @@ Comèdia caòtica amb rerefons polític clar però no panfletari, per a adolesce
   Pons. Ajudar-los és el que millora el final.
 - **El gat Diu és intocable.** És l'únic personatge que no rep cap crítica. Ell no té culpa de res.
 
+### Gags recurrents
+
+- **En Diu i els cables**: mossega al tutorial, al final (la tele del bar) i als postcrèdits (el router).
+- **La família que no existeix**: el fill de la Vet a l'aeroport i la dona d'en Tomàs, que «truca» per la veu
+  sintètica de l'Iri. A l'avió, la Vet en fa recompte: «Primer, tu vas fer de dona d'en Tomàs. Ara, jo m'invento
+  un fill.» IRI: «Per no existir, som una família molt gran.» Al final, quan la tele diu que el compte zero «no
+  existeix», en Tomàs: «Un compte que no existeix? Com la meva dona. I un dia va trucar.» VET: «Era l'Iri, Tomàs.»
+  TOMÀS: «Ja ho sé. Però el divorci va ser de debò.»
+- **Els plats**: «nou dies» a l'entrada (els ha comptat la Vet, que en sortir diu «I tu renta els plats!»); deu
+  dies a la font seca del vestíbul de Ginebra («A casa tenim el problema contrari»); setze als postcrèdits («La
+  Vet els continua comptant»). L'Iri no els renta mai.
+- **Les frases per defecte** tenen tres variants per verb i per protagonista, que van per torns
+  (`ui.defecte.<verb>.<qui>`, `.2`, `.3`): l'Iri, de màquines, ports i fracassos socials; la Vet, del bar, de la
+  cara dura i de les mentides.
+
 ---
 
 ## Protagonistes
@@ -454,7 +469,7 @@ Durant la sincronia, objectes perduts i la cafeteria no s'hi poden fer servir: �
 La Rius les mira: «Sou noves? Soc la Rius, l'encarregada. Benvingudes a la subcontracta. Aquí ningú no cobra el viatge.» (Al moll s'hi torna a presentar: «Ho repeteixo perquè a l'avió dormíeu.») La Vet ja
 porta el vestit d'auditora. IRI: «I aquest vestit? Fa una hora anaves amb la jaqueta bomber.» VET: «Objectes perduts. Algú
 s'hi va deixar un vestit jaqueta de la meva talla. Era el destí.» (Si té el maletí: «Objectes perduts. Ja que hi era pel
-maletí, també m'he endut un vestit jaqueta de la meva talla. Era el destí.») IRI: «Era d'un altre.» L'avió s'enlaira. **Fi de l'Acte 1.**
+maletí, també m'he endut un vestit jaqueta de la meva talla. Era el destí.») IRI: «Era d'un altre.» VET: «Primer, tu vas fer de dona d'en Tomàs. Ara, jo m'invento un fill.» IRI: «Per no existir, som una família molt gran.» L'avió s'enlaira. **Fi de l'Acte 1.**
 
 ---
 
@@ -473,7 +488,8 @@ Director hi és fins que acaba l'escena.
 
 **Detalls que es cliquen** (sense rellotge):
 
-- **La font:** seca, amb un rètol, «Tancada per estalvi de costos».
+- **La font:** seca, amb un rètol, «Tancada per estalvi de costos». Vet: «A casa tenim el problema contrari: una
+  pica amb deu dies de plats.»
 - **El cartell:** *«Aquí construïm el futur de tothom»*. Vet: «"Tothom" deu ser una paraula molt gran per a
   tan poca gent.»
 - **El retrat del Director:** amb un gos de raça a la falda. La Vet llegeix la placa en veu alta: «"El Director
@@ -813,6 +829,9 @@ porta a ROBIN HOOD 3.0.
 > TELE: Els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
 > TELE: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
 > TELE (si repartit): ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix.
+> TOMÀS: Un compte que no existeix? Com la meva dona. I un dia va trucar.
+> VET: Era l'Iri, Tomàs.
+> TOMÀS: Ja ho sé. Però el divorci va ser de debò.
 > IRI: No hem canviat el món.
 > IRI (si repartit, en lloc de l'anterior): Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no?
 > VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible.
@@ -839,8 +858,8 @@ menys finestres enceses), amb la música del tema, i un text final:
 
 > *Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.*
 
-**Postcrèdits (sala `postcredits`, un fons del pis de nit):** de nit, al pis. En Diu mossega el cable del router. A la pantalla
-de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota: «ROBIN HOOD 3.0?». Tot torna a començar. (Si a l'Escena 1 l'Iri va sacrificar la pizza, en Diu li porta
+**Postcrèdits (sala `postcredits`, un fons del pis de nit):** de nit, al pis. En Diu mossega el cable del router. A la cuina, els plats: setze dies («La Vet els continua comptant»).
+A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota: «ROBIN HOOD 3.0?». Tot torna a començar. (Si a l'Escena 1 l'Iri va sacrificar la pizza, en Diu li porta
 un tros de pizza, amb respecte.)
 
 Com que sempre és la mateixa història amb més o menys gent a la taula, el jugador que acabi el final 1

@@ -599,11 +599,13 @@ seure a la taula. Si parla amb l'àvia, que seu al costat de l'Espora, surt la s
 > ÀVIA: Hola, Espora.
 > ESPORA: Hola, Montse. Has crescut.
 > VET: VOSALTRES DOS US CONEIXÍEU?
+> IRI: «Si veus algú estrany, sigues educada.» Àvia! Tu ho sabies!
 > ÀVIA: No m'ho havíeu preguntat.
 
 **El Bosc 3.0.** Quan la Vet seu a la taula, un missatger en patinet elèctric porta un paquet a nom de «La nena del canal 7». A dins hi ha una
 polsera de punts, i una targeta amb el somriure de la Pla i un codi QR: «Gràcies per la vostra opinió! Ens
-n'anem a la Vall de Sorreu, on la gent és més moderna. Bosc 3.0: pròximament.»
+n'anem a la Vall de Sorreu, on la gent és més moderna. Bosc 3.0: pròximament.» La Vet: «Una altra polsera! Ara en
+tinc dues. I zero punts.»
 
 > IRI: ...La Vall de Sorreu és a dues comarques.
 > VET: Hi ha bus?
@@ -616,7 +618,26 @@ n'anem a la Vall de Sorreu, on la gent és més moderna. Bosc 3.0: pròximament.
 > *(silenci; i després, molt fluix, un brunzit turquesa sota terra)*
 
 El rètol final ho tanca: la xarxa torna a parlar; «L'Ajuntament va mirar els plànols de 1923 i va treure el permís
-d'obres a NaturaPlus. El Registrador Bufó va arxivar el cas amb tres segells»; les fades tenen un gronxador nou.
+d'obres a NaturaPlus. El Registrador Bufó va arxivar el cas amb tres segells»; les fades tenen un gronxador nou
+(la Pica diu que és brutal; la Card, que és una traïció, i s'hi gronxa cada dia).
+
+### Les bromes que tornen
+
+Poques i clares, perquè una nena de 8 anys les reconegui quan tornen. Cada una té un començament, una o dues
+tornades i un final a l'epíleg:
+
+- **«Sigues educada.»** L'àvia, a l'escena 1 («Si veus algú estrany...»); la Iri ho repeteix pel walkie a la 3, i
+  l'àvia ho torna a dir a la presentació (6b). Final: a la sorpresa de l'epíleg, la Iri ho entén: «Àvia! Tu ho
+  sabies!» (l'algú estrany era l'Espora).
+- **«Brutal» i «És una traïció».** La Pica i la Card al campament (3) i a la bastida (6a); a la 6b, quan esternuden
+  els sensors, des de les branques: «Brutal!» «Una traïció... boníssima.» Final: el rètol del gronxador nou.
+- **La polsera de zero punts.** La Pla l'ofereix (5); la Vet se la posa «amb zero punts» (6a); la Iri, mirant el
+  públic (6b): «Hipòtesi: tots amb zero punts»; a l'epíleg, la Vet i la Iri en parlen. Final: al paquet de la Pla
+  n'hi ha una altra («Ara en tinc dues. I zero punts.»).
+
+**Frases per defecte.** Tres per verb i germana, que es diuen per torns (`ui.defecte.<verb>.<iri|vet>`, `.2`,
+`.3`): la Iri, amb «Observació:» i «Hipòtesi:»; la Vet, a empentes, estirades i amb la gorra. Valen per a qualsevol
+cosa i no donen mai pistes.
 
 Crèdits.
 

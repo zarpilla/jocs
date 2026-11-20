@@ -702,7 +702,7 @@ vermella: **RESERVA**. Al saló, el Magnat puja a l'escenari.
 - **Cadascú fa la seva part** (no depèn de res que hagi fet el jugador abans: tot és obligatori a la història):
   - Al lot 6, el Magnat truca a la sala de control. Contesta la Lia: «Tot en ordre, senyor. Netejant.»
   - Al lot 3, torna a trucar. En Tomàs, pel canal del Magnat: «Aquí el mecànic. Les germanes han plegat. Són a
-    Verdant, plorant.» El Magnat penja content.
+    Verdant, plorant. Hem menjat llenties.» El Magnat penja content.
   - Quan s'obre la segona vàlvula, el Magnat envia seguretat a la sala de control. La Cantimplora fa una maniobra
     «d'emergència» al moll de càrrega: SRA. PELL: «Seguretat és al moll, senyor. Hi ha una cisterna que diu que ha
     perdut els frens.» CAPITANA (ràdio): «Perdoni. Soc vella i borni.»
@@ -803,7 +803,8 @@ El Magnat cau i plou, però l'especulació no s'acaba: **els dipòsits canvien d
   liquidació, compren el dipòsit d'Aqua amb crèdits de tothom. El mar d'Aqua torna a pujar. Els de Terra-2 i Ferrum
   se'ls queda el Banc de Vesper, que torna a bombar, més a poc a poc. El preu és baix. De moment.
 - **La Lia** torna a Ferrum. En Bru l'espera al moll, amb la Rosa i la canalla del piquet.
-- **En Tomàs** fa el primer vol sol. Aterra malament. L'Iri: «Aprovat.»
+- **En Tomàs** fa el primer vol sol. Aterra malament. L'Iri: «Aprovat.» Al quadern de vol hi apunta l'hora, el rumb i el
+  menú: llenties.
 - **La Capitana** paga el deute amb l'aigua a 4 ₡: «Ara li dec quatre duros.» Ratlla la casella de l'ànima.
 - **En Nil** planta un hort de veritat al jardí de Verdant, entre les flors de plàstic. Els veïns s'hi queixen.
 - **La Juana** retorna l'aquari al mar d'Aqua: «Trenta-dos. N'hi havia trenta-tres.» I diu una de les respostes de
@@ -822,6 +823,23 @@ Verne, amb en Dividend en braços (xop).
 > *(Al panell de la plaça: «AIGUA VESPER · 4 ₡ ▲». La fletxa ha canviat de sentit.)*
 
 Fosc. A sota, petit: «Kessel S.A. · Aire Kessel. Perquè respirar no espera.»
+
+## Bromes que tornen
+
+Tres bromes que tornen en moments tranquils i es tanquen al final (cap no toca els moments agredolços):
+
+- **«Per si de cas».** Ja hi era per tot arreu (els pots del pare, el rètol del barril, la reserva del Magnat) i es
+  tanca al final (el paraigua del pare, el barril buidat al pou o la nota d'en Bru). Ara també surt a les frases per
+  defecte de la Vet (agafar, donar): la manera de ser de la Vet, no una pista.
+- **«Hem menjat llenties».** Els informes d'en Tomàs al Magnat (els paperets de la carmanyola, els que li dicta l'Iri)
+  sempre s'acaben amb el menú. Torna a la subhasta, pel canal del Magnat, i es tanca als crèdits: al quadern del
+  seu primer vol, en Tomàs hi apunta l'hora, el rumb i el menú.
+- **L'aire, que encara no té amo.** L'escala d'Aqua («L'aire, de moment, encara no el ven ningú») i el condensador
+  de Ferrum, arreglat («l'aire encara no té amo») preparen la Kessel («Compro drets d'aire») i el postcrèdits: «Aire
+  Kessel. Perquè respirar no espera.»
+
+**Frases per defecte.** Tres per verb i protagonista (`ui.defecte.<verb>.<iri|vet>`, `.2`, `.3`), que el nucli diu per
+torns: l'Iri ho taxa i ho regateja tot; la Vet ho llegeix com una màquina i ho guardaria tot. No diuen mai què cal fer.
 
 ---
 

@@ -22,7 +22,7 @@ Les ordres d'un joc s'executen des de `games/<joc>/` (o des de l'arrel amb `-w <
 | 4. Contingut jugable en text | `game/data`, `locales/ca`, tests de partida | — |
 | 5. Mecànica nova (si n'hi ha) | Provada al navegador amb art provisional | L'usuari |
 | 6. Art provisional | Joc sencer jugable al navegador | — |
-| 7. Revisió de coherència i pistes | Textos i pistes corregits | L'usuari, jugant-hi |
+| 7. Revisió de coherència, pistes i humor | Textos i pistes corregits, frases per defecte, gags | L'usuari, jugant-hi |
 | 8. Personatges definitius | Fulls a 1×, en 3/4 | L'usuari |
 | 9. Sales definitives | Una sala de mostra, i després totes | **L'usuari, la de mostra** |
 | 10. Portada, pròleg, cinemàtiques, finals | La pantalla de títol animada i els crèdits | L'usuari |
@@ -137,7 +137,7 @@ pantalla adaptable, de 640×288 a 640×360).
 
 - [ ] El joc sencer es pot jugar al navegador, de la portada al final.
 
-## 7. Revisió de coherència i pistes
+## 7. Revisió de coherència, pistes i humor
 
 És el pas que més s'oblida i el que més es nota. `npm run revisio` escriu `guio/revisio.md`: totes les variants de text
 amb la seva condició, en l'ordre en què el motor les prova. Es llegeix com un guió, sense jugar.
@@ -176,6 +176,26 @@ del commit.
 
 Es pot repetir després de cada canvi gros (l'art definitiu mou coses, els textos nous trenquen pistes) i abans de
 publicar.
+
+### L'humor: una passada pròpia
+
+L'humor dels diàlegs surt sol en escriure el guió; el que s'oblida és el de tot el que la jugadora fa per provar. Les
+receptes que han funcionat (vegeu la valoració dels jocs, `referencia/valoracio-jocs.md` al repo `malaherbasoft`, i
+els commits d'humor de Ferro-9 i Ni un ou):
+
+- [ ] **Les frases per defecte**, tres per verb i protagonista, que van per torns (vegeu la
+      [guia de contingut](guia-contingut.md)). És la recepta que dona més per menys feina: surten a tota la partida.
+- [ ] **Combinacions absurdes que es provaran segur** (l'objecte clau amb cada personatge, amb la cosa més grossa de
+      la sala) amb una resposta pròpia, sense tocar el camí.
+- [ ] **El que la premissa té de graciós, aprofitat fins al final.** A Ferro-9, els 120 anys entre les dues: l'argot
+      de la Vet, el glossari de la Iri, el museu que interpreta malament les coses de la Iri. Cada joc en té un: cal
+      trobar-lo al guió i comprovar que el joc el fa servir, no només que el promet.
+- [ ] **Gags recurrents amb tornada i final**: dues o tres bromes que tornen en moments tranquils i es tanquen als
+      crèdits o a l'epíleg (a Ni un ou, el «codi flam» del walkie, el gat sense polzes). Que el guió en tingui la llista.
+- [ ] **On no n'hi ha:** cap broma als moments que han de pesar (una captura, la revelació, el final agredolç). En un
+      thriller, l'humor és el descans, no l'acompanyament.
+- [ ] Cap broma no dona una pista falsa ni canvia res de l'estat: les preguntes còmiques d'un diàleg, optatives i
+      sense efectes.
 
 ## 8. Personatges definitius
 

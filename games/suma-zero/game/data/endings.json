@@ -25,6 +25,18 @@
         }
       },
       {
+        "who": "tomas",
+        "text": "final.tomas_dona1"
+      },
+      {
+        "who": "vet",
+        "text": "final.vet_dona"
+      },
+      {
+        "who": "tomas",
+        "text": "final.tomas_dona2"
+      },
+      {
         "who": "iri",
         "text": "final.iri1",
         "if": {
@@ -192,6 +204,10 @@
       },
       {
         "who": "narrator",
+        "text": "final.post_plats"
+      },
+      {
+        "who": "narrator",
         "text": "final.post2"
       },
       {
@@ -248,6 +264,18 @@
         "if": {
           "flag": "repartit"
         }
+      },
+      {
+        "who": "tomas",
+        "text": "final.tomas_dona1"
+      },
+      {
+        "who": "vet",
+        "text": "final.vet_dona"
+      },
+      {
+        "who": "tomas",
+        "text": "final.tomas_dona2"
       },
       {
         "who": "iri",
@@ -437,6 +465,10 @@
       },
       {
         "who": "narrator",
+        "text": "final.post_plats"
+      },
+      {
+        "who": "narrator",
         "text": "final.post2"
       },
       {
@@ -486,6 +518,18 @@
         "if": {
           "flag": "repartit"
         }
+      },
+      {
+        "who": "tomas",
+        "text": "final.tomas_dona1"
+      },
+      {
+        "who": "vet",
+        "text": "final.vet_dona"
+      },
+      {
+        "who": "tomas",
+        "text": "final.tomas_dona2"
       },
       {
         "who": "iri",
@@ -656,6 +700,10 @@
         "text": "final.post1",
         "sound": "mossegada",
         "room": "postcredits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.post_plats"
       },
       {
         "who": "narrator",

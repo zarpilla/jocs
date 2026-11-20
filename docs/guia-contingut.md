@@ -119,7 +119,10 @@ i què passa quan el jugador hi fa un verb.
   Amb `"walkIn": "left"` (o `"right"`), la protagonista entra caminant des de fora de la pantalla, per
   aquest costat, fins al seu lloc, i després diu les línies (com l'Iri en arribar a casa).
 - Si cap interacció no encaixa, la protagonista diu la frase per defecte: `ui.defecte.<verb>.<protagonista>`,
-  o si no n'hi ha, `ui.defecte.<verb>`, o `ui.defecte`. Excepció: **mirar un objecte de l'inventari**
+  o si no n'hi ha, `ui.defecte.<verb>`, o `ui.defecte`. Si la clau té **variants numerades** (`<clau>.2`,
+  `<clau>.3`...), les diu per torns (el torn va amb la partida desada): és la frase que més es llegeix, i repetida cansa.
+  Feu-ne tres per verb i protagonista, a la seva veu, curtes, que encaixin amb qualsevol cosa i que no suggereixin
+  cap solució (vegeu les de Ferro-9 a `general.json` o les de Ni un ou a `interficie.json`). Excepció: **mirar un objecte de l'inventari**
   sense `look` propi diu la seva `description` (`items.json`). Per a una frase diferent segons qui
   mira, posa-li un `look` amb `"if": { "protagonist": "vet" }`.
 

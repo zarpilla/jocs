@@ -193,6 +193,8 @@ EN ENTRAR
         VET: Al lavabo de la terminal hi havia un vestit jaqueta penjat, sense amo, i de la meva talla. Era el destí. ⟨si no té maleti (vet)⟩
         VET: Objectes perduts. Ja que hi era pel maletí, també m'he endut un vestit jaqueta de la meva talla. Era el destí. ⟨si té maleti (vet)⟩
         IRI: Era d'un altre.
+        VET: Primer, tu vas fer de dona d'en Tomàs. Ara, jo m'invento un fill.
+        IRI: Per no existir, som una família molt gran.
         VET: Al banc hi deu haver més gent com la Rius. Si en posem prou al nostre costat, això acabarà molt millor.
         IRI: Ho apunto. A la llista de coses que dius abans d'un desastre.
         NARRADOR: L'avió s'enlaira cap a Ginebra.
@@ -1157,6 +1159,7 @@ FONT «font»
         JUGADORA: Ni una gota. Estalvien fins i tot l'aigua que no fan servir.
     • look — SEMPRE
         JUGADORA: Una font de marbre, seca. Té un rètol: «Tancada per estalvi de costos».
+        JUGADORA: A casa tenim el problema contrari: una pica amb deu dies de plats.
 
 CARTELL «cartell»
     • look — SEMPRE
@@ -3411,6 +3414,9 @@ final_taula «Final · La taula llarga» — quan escapada i (repartit i aliats 
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
     NARRADOR: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
     NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
+    TOMÀS: Un compte que no existeix? Com la meva dona. I un dia va trucar.
+    VET: Era l'Iri, Tomàs.
+    TOMÀS: Ja ho sé. Però el divorci va ser de debò.
     IRI: No hem canviat el món. ⟨si NO repartit⟩
     IRI: Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no? ⟨si repartit⟩
     VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible. ⟨si repartit⟩
@@ -3437,6 +3443,7 @@ final_taula «Final · La taula llarga» — quan escapada i (repartit i aliats 
     NARRADOR: Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
     NARRADOR: Final 3 de 3 · Aliats: {aliats} de 4
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
+    NARRADOR: A la cuina, els plats. Setze dies. La Vet els continua comptant.
     NARRADOR: A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
     Tot torna a començar.
@@ -3445,6 +3452,9 @@ final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
     NARRADOR: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
     NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
+    TOMÀS: Un compte que no existeix? Com la meva dona. I un dia va trucar.
+    VET: Era l'Iri, Tomàs.
+    TOMÀS: Ja ho sé. Però el divorci va ser de debò.
     IRI: No hem canviat el món. ⟨si NO repartit⟩
     IRI: Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no? ⟨si repartit⟩
     VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible. ⟨si repartit⟩
@@ -3473,6 +3483,7 @@ final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     NARRADOR: Amb més gent al costat, potser hauria acabat d'una altra manera. ⟨si aliats < 3⟩
     NARRADOR: Teníeu la colla. I si els diners haguessin anat a tothom, a parts iguals? ⟨si no (aliats < 3)⟩
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
+    NARRADOR: A la cuina, els plats. Setze dies. La Vet els continua comptant.
     NARRADOR: A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
     Tot torna a començar.
@@ -3481,6 +3492,9 @@ final_base «Final · Ni caos ni paradís» — quan escapada
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
     NARRADOR: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
     NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
+    TOMÀS: Un compte que no existeix? Com la meva dona. I un dia va trucar.
+    VET: Era l'Iri, Tomàs.
+    TOMÀS: Ja ho sé. Però el divorci va ser de debò.
     IRI: No hem canviat el món. ⟨si NO repartit⟩
     IRI: Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no? ⟨si repartit⟩
     VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible. ⟨si repartit⟩
@@ -3508,6 +3522,7 @@ final_base «Final · Ni caos ni paradís» — quan escapada
     NARRADOR: Final 1 de 3 · Aliats: {aliats} de 4
     NARRADOR: Amb més gent al costat, potser hauria acabat d'una altra manera.
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
+    NARRADOR: A la cuina, els plats. Setze dies. La Vet els continua comptant.
     NARRADOR: A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
     Tot torna a començar.
