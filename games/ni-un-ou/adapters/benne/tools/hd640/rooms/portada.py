@@ -758,6 +758,32 @@ BASTIDA_ESCRIU = {'frames': lambda: [_bastida(i, device=True) for i in range(N)]
                   'prop': 'bastida_popa'}
 
 
+# ─── Una pantalla, a la caseta ──────────────────────────────────────────────
+# Al pròleg, quan la Juana aixeca el pot, darrere l'ull de bou fosc de la cara de popa de la caseta s'encén una
+# pantalla petita, blava, que parpelleja com quan algú hi escriu («pantalla_on»). No s'hi veu ningú: el guió no diu
+# qui és. Segueix el gronxar de l'Arenga (8 fotogrames de 300 ms, com el mar).
+
+ULL_FOSC = (13.0, 1.9, 5.15)              # l'ull de bou apagat de la caseta (m, w, y: coordenades de la nau)
+
+
+def _pantalla(i):
+    lc = Canvas(light=LIGHT, transparent=True)
+    m, w, y = ULL_FOSC
+    T = ship_T(PLA, *gronxa(i))
+    px, py = PLA.p(T(m, w, y))
+    x, y = round(px), round(py)
+    bright = SCREEN if i % 3 else (220, 245, 255)           # el text que hi va sortint
+    lc.flat(x, y, bright)
+    lc.flat(x, y + 1, (60, 110, 140))
+    _aglow(lc, px, py, 6, (120, 210, 255), 0.6 if i % 2 else 0.45)
+    return lc.img
+
+
+PANTALLA = {'frames': lambda: [Canvas(light=LIGHT, transparent=True).img], 'frameDuration': 1000, 'loop': False,
+            'zIndex': 2}
+PANTALLA_ON = {'frames': lambda: [_pantalla(i) for i in range(N)], 'frameDuration': 300, 'prop': 'pantalla'}
+
+
 # ─── La zòdiac ──────────────────────────────────────────────────────────────
 # A la portada penja de la grua amb la Juana a dins («zodiac», en bucle). Al pròleg, cada tros comença amb una
 # frase (vegeu rooms/proleg_punt7.json) i es queda a l'últim fotograma: la grua la baixa («z_baixa»), va a poc a poc

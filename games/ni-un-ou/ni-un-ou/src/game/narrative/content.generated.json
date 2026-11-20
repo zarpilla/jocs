@@ -8855,7 +8855,13 @@
               },
               {
                 "who": "narrator",
-                "text": "proleg.12"
+                "text": "proleg.12",
+                "stage": [
+                  {
+                    "prop": "pantalla",
+                    "anim": "pantalla_on"
+                  }
+                ]
               },
               {
                 "who": "title",

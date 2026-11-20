@@ -125,8 +125,22 @@
         "bastida_popa": {
           "loop": true,
           "frameDuration": 300
+        }
+      }
+    },
+    {
+      "id": "pantalla",
+      "tag": "pantalla",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pantalla": {
+          "loop": false,
+          "frameDuration": 1000
         },
-        "bastida_escriu": {
+        "pantalla_on": {
           "loop": true,
           "frameDuration": 300
         }
