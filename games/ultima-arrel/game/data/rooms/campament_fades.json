@@ -370,7 +370,25 @@
             {
               "who": "narrator",
               "text": "sala.campament_fades.empenta.1",
-              "sound": "gronxador"
+              "sound": "gronxador",
+              "stage": [
+                {
+                  "prop": "flor_buida",
+                  "visible": false
+                },
+                {
+                  "who": "player",
+                  "at": {
+                    "x": 478,
+                    "y": 172
+                  },
+                  "visible": false
+                },
+                {
+                  "prop": "gronxant",
+                  "visible": true
+                }
+              ]
             },
             {
               "who": "player",
@@ -386,7 +404,13 @@
             },
             {
               "who": "narrator",
-              "text": "sala.campament_fades.empenta.5"
+              "text": "sala.campament_fades.empenta.5",
+              "stage": [
+                {
+                  "prop": "flor_buida",
+                  "visible": true
+                }
+              ]
             },
             {
               "who": "pica",
@@ -395,7 +419,22 @@
             },
             {
               "who": "narrator",
-              "text": "sala.campament_fades.empenta.7"
+              "text": "sala.campament_fades.empenta.7",
+              "stage": [
+                {
+                  "prop": "gronxant",
+                  "visible": false
+                },
+                {
+                  "who": "player",
+                  "at": {
+                    "x": 448,
+                    "y": 204
+                  },
+                  "visible": true,
+                  "face": "R"
+                }
+              ]
             },
             {
               "who": "urtica",
@@ -586,6 +625,11 @@
     "flor_buida": {
       "visibleIf": {
         "flag": "pol_len_collit"
+      }
+    },
+    "gronxant": {
+      "visibleIf": {
+        "flag": "vet_gronxant"
       }
     }
   }

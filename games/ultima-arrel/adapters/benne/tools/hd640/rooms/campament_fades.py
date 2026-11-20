@@ -11,12 +11,14 @@ El sol del matí entra de dalt a l'esquerra, daurat, entre les fulles; tot és v
   - damunt la branca, el campament fet de coses robades a NaturaPlus: la **tenda** de cinta d'obra «PERILL», la
     **catapulta** d'aglans amb una pinça d'estendre, i penjada de la branca de dalt, la **diana** amb el logotip;
   - a la dreta, la branca s'acaba i en surt la **branca prima** (com un llapis), amb la **flor** de pebre a la punta
-    (decorat a part: `flor`, i `flor_buida` quan ja s'ha collit el pol·len); just al costat, el **gronxador** de cinta
-    rosa fluor, que penja de la branca de dalt;
+    (decorat a part: `flor`, i `flor_buida` quan ja s'ha collit el pol·len); i just on s'acaba la branca grossa, a
+    l'abast de la Vet, el **gronxador** de cinta rosa fluor, que penja de la branca de dalt i es veu de perfil (es
+    gronxa de costat, cap a la flor);
   - primer pla: fulles de roure a contrallum a les cantonades (`FRONT`); la tenda i la catapulta també són capes del
     davant, amb la seva línia base: la Vet hi passa per darrere i per davant.
 Animacions: la pols i les clapes de sol que bateguen (`llum`) i unes fulles que es mouen a la branca de dalt
-(`fulles`).
+(`fulles`). I `gronxant`, amagada (un decorat): la Vet asseguda al gronxador, que va i ve fins a tocar la flor; les
+línies del gronxador la mostren mentre la Urtica l'empeny (esborra el gronxador quiet del fons).
 
 Tot és pintat en pantalla (és un exterior orgànic); la perspectiva és la de la branca: la cara de dalt (on es camina)
 es veu des de dalt, i s'eixampla cap a la càmera.
@@ -76,8 +78,8 @@ BR_END = 490                                       # on s'acaba la branca grossa
 THIN = ((486, 210), (556, 202), (604, 158))        # la branca prima (bezier)
 FLOR_XY = (608, 150)
 DALT = ((60, 52), (340, 16), (660, 10))            # la branca de dalt (bezier), d'on pengen la diana i el gronxador
-SWING = (520, 552, 154)                            # el gronxador: x de les dues cintes, y del seient
-DIANA = (402, 96, 24)                              # la diana: centre i radi
+SWING = (478, 172, 34)                             # el gronxador: x d'on penja, y del seient quiet, amplada del vaivé (°)
+DIANA = (352, 96, 24)                              # la diana: centre i radi (prou a l'esquerra perquè el gronxador no hi topi)
 TENDA = (196, 278, 197)                            # la tenda: x0, x1, y de la base
 CATA = (318, 196)                                  # la catapulta: x, y de la base
 ESCALA = (142, 166)                                # l'escala de corda: x de les dues cordes
@@ -345,20 +347,73 @@ def diana(cv):
         cv.disc(ax, ay - 2.4, 3, 1.6, PLANK, 2.6, lit=0.6)
 
 
-def gronxador(cv):
-    """El gronxador: dues cintes rosa fluor que pengen de la branca de dalt, i un seient de tap d'ampolla."""
-    xa, xb, ys = SWING
-    for x in (xa, xb):
-        top = _dalt_y(x) + 4
-        for y in range(int(top), ys):
-            xx = x + (y - top) / (ys - top) * (3 if x == xa else -3)
-            cv.put(xx, y, PINKF, 4.0, lit=0.3)
-            cv.put(xx + 1, y, PINKF, 2.8, lit=0.3)
-        cv.disc(x, top, 2.4, 2.4, PINKF, 3.6, lit=0.3)                                 # el nus
-    # el seient: el tap blanc d'una ampolla d'«Aire Pur», de cantó
-    cv.disc((xa + xb) / 2, ys + 2, (xb - xa) / 2 + 4, 4, PLASTIC, lambda nx, ny: 4.6 - ny * 1.8, lit=0.5)
-    cv.disc((xa + xb) / 2, ys + 1, (xb - xa) / 2 + 2, 2.4, PLASTIC, 5.6, lit=0.5)
-    cv.rect(xa + 2, ys + 4, xb - 2, ys + 5, NEON, 3.6, lit=0)
+def _penja():
+    """D'on pengen les cintes: (x, y) a la branca de dalt."""
+    x = SWING[0]
+    return x, _dalt_y(x) + 4
+
+
+def _seient(theta):
+    """El seient amb el gronxador decantat `theta` graus (+: cap a la flor)."""
+    px, py = _penja()
+    llarg = SWING[1] - py
+    a = math.radians(theta)
+    return px + math.sin(a) * llarg, py + math.cos(a) * llarg
+
+
+@functools.lru_cache(maxsize=None)
+def _vet_asseguda():
+    """La Vet asseguda de perfil, mirant cap a la flor (a la dreta), a la mida que té en aquesta sala: la figura gran
+    (×1,5) redibuixada a ×1,12 més (la que el motor li dona aquí), no ampliada. I el punt d'on seu (sota la cuixa)."""
+    from PIL import ImageOps
+    from hd import arrel as A, gran as G
+    k = G.K
+    G.K = 1.5 * 1.12
+    try:
+        img = G.figura({**A.VET, 'seated': 64}, 'L')
+    finally:
+        G.K = k
+    img = ImageOps.mirror(img)
+    img = img.crop(img.getbbox())
+    return img, (12, 66)
+
+
+def gronxador(cv, theta=0.0, vet=False):
+    """El gronxador, de perfil (es gronxa de costat, cap a la flor): les dues cintes rosa fluor que pengen de la branca
+    de dalt (la de darrere una mica més fosca) i el seient, un tap blanc d'ampolla d'«Aire Pur», de cantó. Amb `vet`,
+    la Vet hi seu, entre les dues cintes."""
+    px, py = _penja()
+    sx, sy = _seient(theta)
+    a = math.radians(theta)
+    ux, uy = math.cos(a), -math.sin(a)                                                # al llarg del seient
+
+    def cinta(dx, lvl, gruix=2):
+        n = int(math.hypot(sx - px, sy - py))
+        for i in range(n + 1):
+            t = i / n
+            x, y = px + dx + (sx - px) * t, py + (sy - py) * t
+            cv.put(x, y, PINKF, lvl, lit=0.3)
+            if gruix > 1:
+                cv.put(x + 1, y, PINKF, lvl - 1.2, lit=0.3)
+    cinta(1.0, 2.6)                                                                    # la de darrere
+    cv.disc(px, py, 2.4, 2.4, PINKF, 3.6, lit=0.3)                                     # el nus
+    dx, dy = math.sin(a), math.cos(a)                                                  # avall, al llarg de les cintes
+    for i in range(-9, 10):                                                            # el seient, de cantó
+        for j in (0, 1, 2):
+            cv.put(sx + ux * i + dx * j, sy + uy * i + dy * j, PLASTIC, 5.2 - j * 1.2, lit=0.5)
+    for i in (-9, 9):                                                                  # la vora verda del tap
+        cv.put(sx + ux * i + dx * 3, sy + uy * i + dy * 3, NEON, 3.6, lit=0)
+    if vet:
+        # la Vet es decanta amb el gronxador (el cap, cap al nus): girada pel punt d'on seu
+        from PIL import Image
+        img, (ax, ay) = _vet_asseguda()
+        m = 40
+        pad = Image.new('RGBA', (img.width + 2 * m, img.height + 2 * m), (0, 0, 0, 0))
+        pad.alpha_composite(img, (m, m))
+        pad = pad.rotate(theta, resample=Image.NEAREST, center=(ax + m, ay + m))
+        cv.img.alpha_composite(pad, (round(sx - ax - m), round(sy - ay - m)))
+        cv.P = cv.img.load()
+    cinta(-1.0, 4.0, gruix=1 if vet else 2)                                            # la del davant (amb la Vet, prima: no la tapi)                                                                   # la del davant
 
 
 def branca_prima(cv):
@@ -447,7 +502,7 @@ def _davant():
 @functools.lru_cache(maxsize=None)
 def _render(estat=frozenset()):
     """Tota la sala amb un estat: 'flor' (la flor amb pol·len), 'buida' (la flor sense pol·len); 'sense_tenda' i
-    'sense_catapulta' (per a les màscares de les capes del davant)."""
+    'sense_catapulta' (per a les màscares de les capes del davant); ('gronxant', graus): la Vet al gronxador, decantat."""
     cv = Canvas(light=LIGHT)
     cel(cv)
     avall(cv)
@@ -466,7 +521,11 @@ def _render(estat=frozenset()):
     if 'sense_catapulta' not in estat:
         catapulta(cv)
     diana(cv)
-    gronxador(cv)
+    gir = next((e for e in estat if isinstance(e, tuple) and e[0] == 'gronxant'), None)
+    if gir:
+        gronxador(cv, gir[1], vet=True)
+    elif 'sense_gronxador' not in estat:
+        gronxador(cv)
     escala_corda(cv)
     raigs(cv)
     cv.img.alpha_composite(_davant())
@@ -540,8 +599,25 @@ def _frames_fulles():
     return frames
 
 
+GRONXA_N = 20                                       # fotogrames d'una gronxada sencera (anar i tornar)
+
+
+def _frames_gronxant():
+    """La Vet al gronxador, que va i ve cap a la flor (un pèndol: més lent als extrems). Cada fotograma porta el fons
+    sense el gronxador quiet (l'esborra) i el gronxador decantat amb la Vet. És el decorat `gronxant`, amagat: les
+    línies del gronxador el mostren mentre la Urtica l'empeny."""
+    base = _base()
+    out = []
+    for i in range(GRONXA_N):
+        theta = SWING[2] * math.sin(2 * math.pi * i / GRONXA_N)
+        img = _render(frozenset({('gronxant', round(theta, 2))}))
+        out.append(sense(_diff(img, base), _davant()))
+    return out
+
+
 ANIMS = {'llum': {'frames': _frames_llum, 'frameDuration': 120},
-         'fulles': {'frames': _frames_fulles, 'frameDuration': 110}}
+         'fulles': {'frames': _frames_fulles, 'frameDuration': 110},
+         'gronxant': {'frames': _frames_gronxant, 'frameDuration': 110, 'zIndex': 4}}
 
 
 # ─── Capes del davant ─────────────────────────────────────────────────────
@@ -589,7 +665,7 @@ def _geometria():
     v_top, v_bot = min(p[1] for p in walk), max(p[1] for p in walk)
     x0, x1, yb = TENDA
     cx, cy, r = DIANA
-    xa, xb, ys = SWING
+    xs, ys, _ = SWING
     fx, fy = FLOR_XY
     ea, eb = ESCALA
     c_e, r_e = branca(ea)
@@ -600,8 +676,8 @@ def _geometria():
         'catapulta': {'rect': (cat_x - 24, cat_y - 40, cat_x + 56, cat_y + 2), 'walk': (cat_x + 10, cat_y + 12)},
         'diana': {'rect': (cx - r - 3, cy - r - 3, cx + r + 3, cy + r + 3), 'walk': (cx, round(branca(cx)[0]))},
         'grafits': {'rect': (4, 58, 112, 140), 'walk': (150, round(branca(150)[0] - 8))},
-        'gronxador': {'rect': (xa - 6, ys - 70, xb + 8, ys + 8), 'walk': (436, round(branca(436)[0] - 4))},
-        'branca': {'rect': (BR_END - 30, 160, fx - 12, 220), 'walk': (440, round(branca(440)[0] - 2))},
+        'gronxador': {'rect': (xs - 16, ys - 64, xs + 16, ys + 8), 'walk': (448, round(branca(448)[0] - 3))},
+        'branca': {'rect': (xs + 18, 160, fx - 12, 220), 'walk': (440, round(branca(440)[0] - 2))},
         'flor': {'rect': (fx - 12, fy - 14, fx + 12, fy + 10), 'walk': (444, round(branca(444)[0] - 2))},
     }
     return {

@@ -47,12 +47,13 @@
 - **Quan i llum:** diumenge al matí, a les branques altes del roure gros. **Càmera molt a prop**: la Vet és gran, i
   les fades fan ≈30-35 px, amb la silueta clara (jaqueta de cuir d'escarabat, cresta de pelussa de card, ales de
   libèl·lula apedaçades). Llum de matí, verda i daurada entre les fulles.
-- **Coses:** la `tenda` de cinta d'obra «PERILL — NO PASSAR»; el `gronxador` de cinta rosa fluor, que penja just al
-  costat de la flor; la `catapulta` d'aglans (amb una pinça d'estendre); la `diana` amb el logotip de NaturaPlus; els
+- **Coses:** la `tenda` de cinta d'obra «PERILL — NO PASSAR»; el `gronxador` de cinta rosa fluor, que penja de la
+  branca de dalt just on s'acaba la branca grossa (a l'abast de la Vet) i es gronxa de perfil, cap a la flor; la `catapulta` d'aglans (amb una pinça d'estendre); la `diana` amb el logotip de NaturaPlus; els
   `grafits` de suc de móra («FORA NATURAPLUS», «AIRE PUR? AIRE TEU!»); la `branca` prima com un llapis que surt cap a
   la dreta, i a la punta la `flor` (Flor de Pebre, vermella, amb pol·len); l'`escala_corda` per on puja la Vet
   (sortida, que no surt).
-- **Decorats:** `flor_buida` (la flor sense pol·len, quan ja s'ha collit).
+- **Decorats:** `flor_buida` (la flor sense pol·len, quan ja s'ha collit); `gronxant` (animació: la Vet asseguda al
+  gronxador, que va i ve fins a la flor; la mostren les línies del gronxador).
 - **Personatges:** `urtica` (la cap), `pica` i `card` (la mateixa base amb colors canviats).
 
 ## 4. `toll_gripaus` — El toll dels gripaus buròcrates (Escena 4, Iri)

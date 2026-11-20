@@ -199,29 +199,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 514,
-          "y": 84
+          "x": 462,
+          "y": 108
         },
         {
-          "x": 560,
-          "y": 84
+          "x": 494,
+          "y": 108
         },
         {
-          "x": 560,
-          "y": 162
+          "x": 494,
+          "y": 180
         },
         {
-          "x": 514,
-          "y": 162
+          "x": 462,
+          "y": 180
         }
       ],
       "walkToPoint": {
-        "x": 436,
+        "x": 448,
         "y": 204
       },
       "lookAtPoint": {
-        "x": 537,
-        "y": 162
+        "x": 478,
+        "y": 180
       }
     },
     {
@@ -263,28 +263,28 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 375,
+          "x": 325,
           "y": 69
         },
         {
-          "x": 429,
+          "x": 379,
           "y": 69
         },
         {
-          "x": 429,
+          "x": 379,
           "y": 123
         },
         {
-          "x": 375,
+          "x": 325,
           "y": 123
         }
       ],
       "walkToPoint": {
-        "x": 402,
-        "y": 208
+        "x": 352,
+        "y": 209
       },
       "lookAtPoint": {
-        "x": 402,
+        "x": 352,
         "y": 123
       }
     },
@@ -295,7 +295,7 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 460,
+          "x": 496,
           "y": 160
         },
         {
@@ -307,7 +307,7 @@
           "y": 220
         },
         {
-          "x": 460,
+          "x": 496,
           "y": 220
         }
       ],
@@ -316,7 +316,7 @@
         "y": 206
       },
       "lookAtPoint": {
-        "x": 528,
+        "x": 546,
         "y": 220
       }
     },
@@ -629,6 +629,20 @@
       },
       "zIndex": 22,
       "baseline": 197
+    },
+    {
+      "id": "gronxant",
+      "tag": "gronxant",
+      "animations": {
+        "gronxant": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [
@@ -665,7 +679,7 @@
     {
       "instanceId": "card-1",
       "definition": "card/card.character.json",
-      "x": 404,
+      "x": 354,
       "y": 71,
       "initialFacing": "D",
       "initialAnimation": "Idle",
