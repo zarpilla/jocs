@@ -1985,7 +1985,15 @@
       {
         "verb": "look",
         "if": {
-          "protagonist": "vet"
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "acte2_noms",
+              "is": false
+            }
+          ]
         },
         "lines": [
           {
@@ -2026,6 +2034,22 @@
           },
           {
             "setFlag": "acte3_iniciat"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri_nom.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri_nom.vet1"
           }
         ]
       },

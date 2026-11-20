@@ -79,6 +79,8 @@ Regles:
 npm install            # a l'arrel del repositori, la primera vegada
 npm run jugar          # juga en mode text, al terminal (sense art ni Benne)
 npm test               # tests: el nucli i els tres actes jugats de cap a peus, amb els tres finals
+EXPLORA=/tmp/explora.txt npx vitest run --root ../.. games/ferro-9/game/test/explora.test.ts
+                       # escriu la partida sencera, mirant-ho tot a cada sala, amb els tres finals (per llegir-la)
 npm run validate       # comprova el contingut: forma, referències, textos que falten
 npm run fitxes         # genera guio/fitxes-sales.md: què cal crear a l'editor per a cada sala
 npm run typecheck      # tipus de tot el repositori (tots els jocs)
