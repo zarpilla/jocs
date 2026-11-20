@@ -21,7 +21,14 @@ import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
  * una cada vegada): `before`/`after` són el `who` de la línia del costat; `after: 'negre'` vol dir que tot
  * seguit es canvia de sala o ve un final, i la pantalla s'ha de quedar a negre.
  */
-type Around = { before?: string; after?: string }
+type Around = {
+  before?: string; after?: string
+  /**
+   * Encara vénen més línies de la mateixa cinemàtica (a trossos): l'estat de la sala (qui es veu, on és) no s'aplica
+   * fins a l'última. Si no, qui ha sortit amb `stage` i no és a `hotspots` de la sala s'amagaria entre línia i línia.
+   */
+  more?: boolean
+}
 
 /**
  * Diu les línies una darrere l'altra (i fa sonar el so de cada una en començar-la). Si n'hi ha amb moviment
@@ -84,6 +91,7 @@ function sayLines(lines: ResolvedLine[], around: Around) {
   }
   // Qui s'ha de moure (`place`) hi camina ara, quan ja s'ha dit tot: els efectes s'apliquen abans de les
   // línies, i si caminés abans, marxaria mentre parla. El mateix amb qui desapareix i amb qui apareix.
+  if (around.more) return
   applyHotspotVisibility()
   applyPlaces(true)
 }
@@ -402,7 +410,8 @@ export function enterNarrativeRoom() {
   const negre = result.goTo || final ? 'negre' : undefined
   let saltada = false
   for (let k = 0; k < result.lines.length; k++) {
-    playLines([result.lines[k]!], { before: result.lines[k - 1]?.who, after: result.lines[k + 1]?.who ?? negre })
+    const more = k < result.lines.length - 1
+    playLines([result.lines[k]!], { before: result.lines[k - 1]?.who, after: result.lines[k + 1]?.who ?? negre, more })
     // Mentre se salta una cinemàtica, `wait` acaba a l'instant: així sabem si han premut Esc.
     const inici = Date.now()
     wait(0.1)
@@ -410,6 +419,11 @@ export function enterNarrativeRoom() {
       saltada = true
       break
     }
+  }
+  // Saltada a mitges: l'estat de la sala no s'ha aplicat (vegeu `more`).
+  if (saltada) {
+    applyHotspotVisibility()
+    applyPlaces(false)
   }
   if (final) {
     // La cinemàtica acaba el joc (l'avió: «Continuarà»).
