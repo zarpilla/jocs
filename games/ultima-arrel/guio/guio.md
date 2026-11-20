@@ -268,6 +268,12 @@ s'encenen de turquesa, d'un en un, fins al sostre.
 > ESPORA: Excel·lent hifa!
 > ESPORA: *(de seguida, avergonyit)* Vull dir: correcte.
 
+L'Espora enganxa l'orella a les arrels i es queda quiet, i envia la Iri al corn:
+
+> ESPORA: Escolta... Arriben els missatges del nord. Tres dies de missatges.
+> ESPORA: *(amb l'orella enganxada a les arrels)* Shhh. Ve tot barrejat. Tu, escolta-ho pel corn de fusta.
+> IRI: Observació: el corn vibra.
+
 **Trencaclosques 2.3 — El crit (escoltar, gravar).** Arriben els missatges del nord, acumulats de tres dies. L'Espora
 hi posa l'orella i es queda quiet. Si la Iri escolta pel corn, el so és fort i trist: és el **crit dels arbres**
 tallats, avisant els altres. [SO: el crit; és el tema del joc, vegeu «So»] Si la Iri fa servir el
