@@ -164,6 +164,13 @@ def lupa_icon(cv, cx, cy, hover=False, pressed=False):
         cv.glow(cx, cy, r + 8, TURQUESA[5], 0.35)
 
 
+def lupa_sola():
+    """La lupa sola, sense la placa (32×32): la icona de la pista a la targeta «Com es juga»."""
+    cv = Canvas(32, 32, transparent=True)
+    lupa_icon(cv, 13, 13)
+    return cv.img
+
+
 def lupa_boto(w, h, hover=False, pressed=False):
     """El botó de la pista (`CanviaBtn`): una placa de fusta amb quatre clavilles i la lupa al mig."""
     cv = Canvas(w, h, transparent=True)
@@ -502,7 +509,8 @@ def build_targeta():
     import hd640.gui_rest as gr
     from controls import build_controls
     build_controls(GAME, write_sheet=gr.write_sheet, nine_slice=gr.nine_slice, nine_slices=gr.nine_slices,
-                   checkbox=gr.checkbox, key_image=gr.key_image, punts=boto(punts_icon), font=FONT, bold=BOLD,
+                   checkbox=gr.checkbox, key_image=gr.key_image, punts=boto(punts_icon), pista=lupa_sola(),
+                   font=FONT, bold=BOLD,
                    text=gr.LABEL, title=gr.TITLE, outline=TEXT_OUTLINE, hover=TEXT_HOVER,
                    ink=gr.LABEL, accent=TEXT_HOVER, shadow=TEXT_OUTLINE)
 

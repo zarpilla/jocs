@@ -396,7 +396,8 @@ def build_targeta():
     import hd640.gui_rest as gr
     from controls import build_controls
     build_controls(GAME, write_sheet=gr.write_sheet, nine_slice=gr.nine_slice, nine_slices=gr.nine_slices,
-                   checkbox=gr.checkbox, key_image=gr.key_image, punts=boto(punts_icon), font=FONT, bold=BOLD,
+                   checkbox=gr.checkbox, key_image=gr.key_image, punts=boto(punts_icon),
+                   pista=crop_bar(vg.menu_button, *vg.MENU, vg.MENU[2]), font=FONT, bold=BOLD,
                    text=gr.LABEL, title=gr.TITLE, outline=TEXT_OUTLINE, hover=TEXT_HOVER,
                    ink=gr.LABEL, accent=TEXT_HOVER, shadow=TEXT_OUTLINE)
 

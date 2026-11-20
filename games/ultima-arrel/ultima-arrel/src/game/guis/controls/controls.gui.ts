@@ -5,7 +5,8 @@
 // «D'acord», girar els botons) els posa el sync dels locales (`ui.controls.*`); els de les files, el script.
 import { onUpdate } from '@benne/script';
 import {
-  gui, fons, dit0, dit1, dit2, ratoli0, ratoli1, ratoli2, text0, text1, text2, dacord, intercanvia, intercanviaText,
+  gui, fons, dit0, dit1, dit2, dit3, ratoli0, ratoli1, ratoli2, ratoli3, text0, text1, text2, text3, dacord, intercanvia,
+  intercanviaText,
 } from './controls.ids';
 import { ambElDit, filesControls, tancaControls, vigilaControls } from '../../narrative/controls';
 import { preferencies, setPreferencia } from '../../narrative/preferencies';
@@ -14,7 +15,7 @@ const FONS_ALFA = 0.6
 
 function omple() {
   const files = filesControls()
-  const textos = [text0, text1, text2]
+  const textos = [text0, text1, text2, text3]
   for (let i = 0; i < textos.length; i++) textos[i]!.text = files[i] ?? ''
   intercanvia.checked = preferencies().esquerreFa
 }
@@ -22,8 +23,8 @@ function omple() {
 // (els controls amagats al .gui.json surten visibles en construir-se la GUI: per això es diu sempre què es veu)
 function icones() {
   const dit = ambElDit()
-  for (const c of [dit0, dit1, dit2]) if (c.visible !== dit) c.visible = dit
-  for (const c of [ratoli0, ratoli1, ratoli2, intercanvia, intercanviaText]) if (c.visible === dit) c.visible = !dit
+  for (const c of [dit0, dit1, dit2, dit3]) if (c.visible !== dit) c.visible = dit
+  for (const c of [ratoli0, ratoli1, ratoli2, ratoli3, intercanvia, intercanviaText]) if (c.visible === dit) c.visible = !dit
 }
 
 gui.onShow(() => {
