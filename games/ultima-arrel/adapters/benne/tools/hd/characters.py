@@ -278,8 +278,17 @@ class Pose:
 
     def _diagonal(self, walk):
         """La passa en diagonal: el peu que va endavant va cap a l'esquerra i cap avall (DL, cap a la càmera) o cap
-        amunt (UL, cap al fons); els braços, al revés. Coordenades d'abans de girar la figura."""
+        amunt (UL, cap al fons); els braços, al revés. Coordenades d'abans de girar la figura. Quiet en DL, el peu de
+        darrere (l'esquerre) queda una mica més amunt (més lluny, amb la càmera picada) i el braç de darrere, una mica
+        darrere el cos."""
         if walk is None:
+            if self.q == 'DL':
+                ax, ay = self.ankle[0]
+                kx, ky = self.knee[0]
+                wx, wy = self.wrist[0]
+                self.ankle[0] = (ax + 0.3, ay - Q_PEU_DARRERE)
+                self.knee[0] = (kx + 0.15, ky - Q_PEU_DARRERE * 0.5)
+                self.wrist[0] = (wx + 0.8, wy)
             return
         ph = 2 * math.pi * walk / 6
         for i, sign in ((0, 1.0), (1, -1.0)):          # (les cames, ja les fa _front amb la passa en diagonal)
@@ -609,17 +618,40 @@ def person(spec, facing, walk=None, talk=False):
 
 # El 3/4: la figura de cara (o d'esquena), estreta i desplaçada cap on mira (el cap, menys que el cos: és rodó), amb
 # el costat dret a l'ombra (és el que es gira cap a la càmera), el nas a la silueta i la cara desplaçada dins el cap.
-Q_COS, Q_CAP = 0.78, 0.90                       # amplada que queda del cos i del cap
-Q_DX_COS, Q_DX_CAP, Q_DX_CARA = -1.0, -1.6, -1.8  # desplaçaments (px de disseny) de la superfície que es veu
+# De cara (DL), el gir és asimètric: el costat de darrere (l'esquerra de la pantalla) s'encongeix molt més que el del
+# davant, i així el mig del pit (la cremallera, l'estampat) es desplaça cap on mira; el braç i la cama de darrere, més
+# foscos, i el peu de darrere una mica més amunt. Amb un sol factor, el DL semblava la figura de cara feta més prima.
+Q_COS, Q_CAP = 0.78, 0.90                       # amplada que queda del cos i del cap (UL, d'esquena)
+QL_COS, QR_COS, QL_CAP, QR_CAP = 0.60, 0.95, 0.86, 0.97   # DL: el costat de darrere (L) i el del davant (R)
+Q_DX_COS, Q_DX_CAP, Q_DX_CARA = -1.0, -1.6, -2.0  # desplaçaments (px de disseny) de la superfície que es veu
+Q_FOSC_DARRERE = 0.6                            # quant s'enfosqueix el costat de darrere (DL), en nivells de llum
+Q_PEU_DARRERE = 1.0                             # quant puja el peu de darrere (DL, quiet), en px de disseny
 # (DL: la cara i el pit miren a l'esquerra, i s'hi desplacen; UL: d'esquena, el centre de l'esquena —la trena, el
 # pegat— es desplaça cap a la dreta, perquè l'esquena gira cap a l'altre costat)
 
 
-def _q_dx(yd, q='DL'):
-    """(factor, desplaçament) a la fila de disseny yd: el cap fins al coll, el cos a partir de les espatlles."""
+def _q_dx(yd, q='DL', u=0.0):
+    """(factor, desplaçament) a la fila de disseny yd: el cap fins al coll, el cos a partir de les espatlles. `u`: a
+    quin costat del centre és el píxel (només el signe, que és el mateix abans i després de girar): en DL, el de
+    l'esquerra s'encongeix més (QL_COS). Un píxel x de la figura de cara va, en 3/4, a cx + (x - cx)·k + dx."""
     t = max(0.0, min(1.0, (yd - 22) / 6))
     sign = 1.0 if q == 'DL' else -0.8
-    return Q_CAP + (Q_COS - Q_CAP) * t, sign * (Q_DX_CAP + (Q_DX_COS - Q_DX_CAP) * t)
+    if q == 'DL':
+        k = QL_CAP + (QL_COS - QL_CAP) * t if u < 0 else QR_CAP + (QR_COS - QR_CAP) * t
+    else:
+        k = Q_CAP + (Q_COS - Q_CAP) * t
+    return k, sign * (Q_DX_CAP + (Q_DX_COS - Q_DX_CAP) * t)
+
+
+def _q_fosc_darrere(row, gruix):
+    """DL: el costat de darrere (els primers `gruix` píxels per l'esquerra d'una fila del cos), un to més fosc."""
+    xl = next((X for X in range(len(row)) if row[X]), None)
+    if xl is None:
+        return
+    for X in range(xl, min(len(row), xl + gruix)):
+        if row[X]:
+            m, l = row[X]
+            row[X] = (m, l - Q_FOSC_DARRERE)
 
 
 def _gira(fg, p, spec, S):
@@ -629,10 +661,11 @@ def _gira(fg, p, spec, S):
     b = p.bob
     for Y in range(fg.h):
         yd = (Y - (sc - 1) / 2) / sc - b
-        k, dx = _q_dx(yd, p.q)
+        _, dx = _q_dx(yd, p.q)
         row = old[Y]
         for X in range(fg.w):
-            xs = cx + (X - cx - dx * sc) / k
+            v = X - cx - dx * sc
+            xs = cx + v / _q_dx(yd, p.q, v)[0]
             i = int(round(xs))
             fg.buf[Y][X] = row[i] if 0 <= i < fg.w else None
     # el costat que es gira cap a la càmera (la dreta de la pantalla), a l'ombra: tronc, braç i cames
@@ -651,6 +684,10 @@ def _gira(fg, p, spec, S):
                 row[X] = (m, l - 0.7)
     if p.q != 'DL':
         return
+    # el costat de darrere (l'esquerra), més fosc: el braç i la cama que queden més lluny
+    for Y in range(fg.h):
+        if (Y - (sc - 1) / 2) / sc - b >= 28:
+            _q_fosc_darrere(fg.buf[Y], max(1, round(2.2 * sc)))
     # la cara, desplaçada dins el cap (es dibuixa després de girar: així no perd cap píxel)
     hx, hy = p.head
     k, dx = _q_dx(hy, p.q)

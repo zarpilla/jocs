@@ -138,6 +138,16 @@ enganxat sobre el fons. Quatre ajustos el fan seure a l'espai, i el cinquè el f
    direcció de les vuit (`facingFromWorldDelta`), fa el flip quan només hi ha la parella (`mirrorHorizontalFacing`) i,
    si una direcció no hi és, cau a la més propera; n'hi ha prou de posar les etiquetes `IdleDL`, `WalkDL`, `TalkDL`,
    `IdleUL`, `WalkUL`, `TalkUL` al full. El perfil es pot quedar per als desplaçaments purament laterals.
+   - **El 3/4 de cara és asimètric** (`_gira` a `hd/characters.py`, i les còpies de L'Última Arrel a `hd/arrel.py` i
+     `hd/gran.py`): el costat de darrere (l'esquerra de la pantalla) s'encongeix fins al 60% i el del davant es queda
+     al 95% (`QL_COS`, `QR_COS`), de manera que el mig del pit i l'estampat es desplacen cap on mira; el braç i la
+     cama de darrere, un to més fosc (`Q_FOSC_DARRERE`), i quiet, el peu de darrere 1 px més amunt
+     (`Q_PEU_DARRERE`). Amb un sol factor per als dos costats, el `DL` semblava la figura de cara feta més prima.
+     Un píxel que es posa després del gir (els estampats de Suma Zero, `_poke`) passa el seu costat a `_q_dx`.
+   - **En una conversa, oberts a càmera.** Quan la protagonista va a parlar amb algú que té el `walkToPoint` per
+     defecte (just al costat), el motor la para a un 45% de l'alçada de la figura més alta i un 6% més a prop de la
+     càmera (`TALK_GAP_OF_HEIGHT`, `TALK_STEP_OF_HEIGHT` a `RoomScene.ts`), i l'adaptador gira els dos en 3/4 de
+     cara (`DL`/`DR`) en lloc del perfil, si el full en té (`sideFacing` a `runtime/narrative.ts`).
 2. **Els peus també es veuen des de dalt.** Als fulls d'ara la càmera és a nivell de terra: les soles fan una línia
    horitzontal recta. Amb la càmera picada, quiet en 3/4 un peu queda una mica més amunt que l'altre (el de darrere),
    i la vora de baix dels pantalons, la faldilla o l'abric fa una lleugera corba cap avall, no una línia plana.

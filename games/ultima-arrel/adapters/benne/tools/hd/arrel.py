@@ -243,10 +243,11 @@ def _gira_y(fg, p, spec, S):
     b = p.bob
     for Y in range(fg.h):
         yd = P_.inv(Y) - b
-        k, dx = C._q_dx(yd, p.q)
+        _, dx = C._q_dx(yd, p.q)
         row = old[Y]
         for X in range(fg.w):
-            xs = cx + (X - cx - dx) / k
+            v = X - cx - dx
+            xs = cx + v / C._q_dx(yd, p.q, v)[0]
             i = int(round(xs))
             fg.buf[Y][X] = row[i] if 0 <= i < fg.w else None
     for Y in range(fg.h):
@@ -263,6 +264,9 @@ def _gira_y(fg, p, spec, S):
                 row[X] = (m, l - 0.7)
     if p.q != 'DL':
         return
+    for Y in range(fg.h):                               # el costat de darrere, més fosc (C._q_fosc_darrere)
+        if P_.inv(Y) - b >= 28:
+            C._q_fosc_darrere(fg.buf[Y], 2)
     hx, hy = p.head
     k, dx = C._q_dx(hy, p.q)
     p.head = (CX + (hx - CX) * k + dx + C.Q_DX_CARA, hy)

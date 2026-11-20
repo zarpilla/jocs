@@ -313,7 +313,7 @@ def _poke(img, x, y, col, q=None):
     if q:
         sc = img.width / S / 49
         cx = 24.5 * sc + (sc - 1) / 2
-        k, dx = C._q_dx((y - (sc - 1) / 2) / sc, q)
+        k, dx = C._q_dx((y - (sc - 1) / 2) / sc, q, x - cx)
         x = round(cx + (x - cx) * k + dx * sc)
         if not (0 <= x * S < img.width and img.getpixel((x * S, y * S))[3]):
             return
