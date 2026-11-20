@@ -26,11 +26,52 @@ Què es genera (es poden combinar; sense cap, res):
     --prova            no genera res: diu què faria i quants caràcters costaria
 
 La clau d'API es llegeix d'ELEVENLABS_API_KEY o de ~/.elevenlabs.env.
-No es diuen les línies del narrador ni de títol, les acotacions (`(Tus, tus.)`) ni les que tenen variables (`{objecte}`).
+No es diuen les línies del narrador ni de títol, ni les que tenen variables (`{objecte}`). Les acotacions es treuen, i
+les que diuen com es parla queden com a etiqueta del v3: «(al walkie, xiuxiuejant) Iri.» → «[whispers] Iri.» (ETIQUETES).
+Una línia que només és acotació («(Tus, tus.)») no té veu. El que hi ha a `text` de veus.json s'envia tal qual.
 """
-import argparse, glob, hashlib, json, os, pathlib, sys, urllib.error, urllib.request
+import argparse, glob, hashlib, json, os, pathlib, re, sys, urllib.error, urllib.request
 
 SENSE_VEU = {"narrator", "title"}
+
+# Acotacions → etiquetes d'emoció del model v3. Una acotació és el parèntesi del començament de la línia
+# («(al walkie, xiuxiuejant) Iri…»), o un del mig que digui com es parla («Per si de cas. (sospira) Això…»).
+# Es treuen totes; les que diuen com es parla deixen l'etiqueta. La resta del parèntesi del mig es diu tal qual
+# (a les pistes, «(si n'hi ha més d'una, tries)» és text).
+ETIQUETES = [
+    (r"xiuxiuej|\bfluix\b|\bbaix\b", "[whispers]"),
+    (r"sospir", "[sighs]"),
+    (r"somri", "[smiles]"),
+    (r"rondin", "[grumbling]"),
+    (r"\bofès\b|\bofesa\b", "[offended]"),
+    (r"avergony", "[embarrassed]"),
+    (r"boca plena", "[mouth full]"),
+    (r"fortíssim|cridant|\bcrida\b", "[shouting]"),
+    (r"de lluny", "[shouting from afar]"),
+    (r"\ba part\b", "[quietly]"),
+    (r"veu sintètica", "[robotic]"),
+    (r"silenci", "[pause]"),
+]
+
+
+def etiquetes(acotacio: str) -> str:
+    return " ".join(tag for pat, tag in ETIQUETES if re.search(pat, acotacio, re.I))
+
+
+def per_dir(text: str) -> str:
+    """El text tal com s'ha d'enviar: sense acotacions, amb les etiquetes que en surtin. Buit si no hi queda res a dir."""
+    m = re.match(r"\s*\(([^)]*)\)\s*", text)
+    if m:
+        tag = etiquetes(m.group(1))
+        text = (tag + " " if tag else "") + text[m.end():]
+
+    def mig(m):
+        tag = etiquetes(m.group(1))
+        return f" {tag} " if tag else m.group(0)
+
+    text = re.sub(r"\s*\(([^)]*)\)\s*", mig, text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text if re.search(r"\w", re.sub(r"\[[^\]]*\]", "", text)) else ""
 
 
 def fnv1a(key: str) -> str:
@@ -184,9 +225,11 @@ def main():
         if not text or "{" in text:
             skipped.append((key, "sense text" if not text else "té variables"))
             continue
-        if text.startswith("(") and text.endswith(")"):
-            skipped.append((key, "és una acotació"))
-            continue
+        if key not in overrides:
+            text = per_dir(text)
+            if not text:
+                skipped.append((key, "és una acotació"))
+                continue
         for sp in speakers:
             if sp not in voices:
                 skipped.append((key, f"{sp} no té veu a veus.json"))
