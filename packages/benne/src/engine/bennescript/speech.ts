@@ -10,6 +10,9 @@ import { resolveGameStateManager } from '../gameState/resolveGameStateManager.js
 import type { RoomScene } from '../scenes/RoomScene.js';
 import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
 
+/** Pause after a voiced line's recording ends, before the next line starts. */
+const VOICE_TAIL_MS = 250;
+
 /** Per-line options for a scripted speech line. */
 export interface ScriptedSayLineOptions {
   clickToSkip?: boolean;
@@ -81,10 +84,12 @@ export function playScriptedSayLine(
   const speech = getSpeechSettings(manager);
   const voice = voiceStem ? tryGetBenneSoundManager(scene.game)?.playVoice(voiceStem) ?? null : null;
   const textMs = computeSpeechLineDurationMs(line, manager);
+  // With a voice, the line lasts the whole recording (plus a short breath): `maxDurationMs` caps reading time, and
+  // clamping a voice to it would cut the sentence off mid-word.
   const ms =
     voice?.durationMs == null
       ? textMs
-      : Math.round(Math.min(speech.maxDurationMs, Math.max(speech.minDurationMs, voice.durationMs)));
+      : Math.round(Math.max(speech.minDurationMs, voice.durationMs + VOICE_TAIL_MS));
   const lineOpt = options?.clickToSkip;
   const allowClickToSkip =
     lineOpt === true || (lineOpt !== false && speech.clickToSkip);

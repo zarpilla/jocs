@@ -13,7 +13,7 @@ import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
   AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
+  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne, voiced,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
 
@@ -80,12 +80,12 @@ function sayLines(lines: ResolvedLine[], around: Around) {
       if (isClickableCutscene(narrative.world.currentRoom())) narrate(line.text)
       else display(line.text)
     } else if (line.who === 'player') {
-      player.say(line.text)
+      player.say(voiced(player.id, line.key, line.text))
     } else {
       const speaker = benneCharacter(line.who)
       if (speaker) {
         showSpeaker(line.who)
-        speaker.say(line.text)
+        speaker.say(voiced(speaker.id, line.key, line.text))
       } else display(line.text)
     }
     if (line.stageAfter) playStage(line.stageAfter)

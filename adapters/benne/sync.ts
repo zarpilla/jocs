@@ -18,7 +18,7 @@
  * (llevat de `--init`, que abans en fa una còpia `.bak`).
  */
 import { spawnSync } from 'node:child_process';
-import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, watch, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, watch, writeFileSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
@@ -27,7 +27,7 @@ import { writeBenneContent } from './benne-content.js';
 import { jocAdapterDir, loadJocBenne } from './joc-benne.js';
 import { GLOBAL_SCRIPT, TACTIL_DIR, TACTIL_GUIS, TACTIL_RUNTIME } from './tactil/index.js';
 import { gameDir as contentDir, jocDir, loadGameLogic } from '../../tools/joc.js';
-import { gameMusicFiles, gameSoundFiles, gameSounds, loadGameFromDisk } from '../../tools/load-game.js';
+import { SOUND_EXTENSIONS, gameMusicFiles, gameSoundFiles, gameSounds, gameVoiceFiles, gameVoicesActive, loadGameFromDisk } from '../../tools/load-game.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const MARK = 'GENERAT per adapters/benne/sync.ts';
@@ -159,6 +159,13 @@ function sync() {
   const musicDir = join(gameDir, 'assets/audio/music');
   mkdirSync(musicDir, { recursive: true });
   for (const file of gameMusicFiles()) copyFileSync(file, join(musicDir, basename(file)));
+  // I les veus, de `game/audio/voice/` a `assets/audio/voice/` (el pont posa la marca `|N|` a les línies que en tenen),
+  // només si són actives (`"actiu": true` a `game/audio/veus.json`). Les d'abans es treuen: així, desactivar-les o
+  // esborrar-ne una també arriba al joc.
+  const voiceDir = join(gameDir, 'assets/audio/voice');
+  mkdirSync(voiceDir, { recursive: true });
+  for (const file of readdirSync(voiceDir)) if (SOUND_EXTENSIONS.some((e) => file.endsWith(e))) rmSync(join(voiceDir, file));
+  if (gameVoicesActive()) for (const file of gameVoiceFiles()) copyFileSync(file, join(voiceDir, basename(file)));
 
   // 3. Diàlegs
   for (const d of Object.values(content.dialogues)) {

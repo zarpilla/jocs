@@ -47,6 +47,31 @@ export const benneCharacter = (who: string) => byId<(typeof characters)[keyof ty
 export const benneRoom = (id: string) => byId<(typeof rooms)[keyof typeof rooms]>(rooms, toBenne('rooms', id));
 export const benneDialog = (id: string) => byId<(typeof dialogs)[keyof typeof dialogs]>(dialogs, id);
 
+// ─── Veus ────────────────────────────────────────────────────────────────────
+// Les genera `npm run veus` (tools/veus.py) a `game/audio/voice/` i el sync les copia a `assets/audio/voice/`.
+// Cada fitxer és `<personatge de Benne><número>`, i el número surt de la clau del text: si la frase canvia de
+// lloc o d'ordre, la veu la segueix. Benne fa sonar la veu si la línia comença amb `|<número>|`, i la bafarada dura
+// el que duri l'àudio.
+
+const voiceStems = new Set(
+  Object.keys(import.meta.glob('../assets/audio/voice/*.{mp3,ogg,wav}', { query: '?url', import: 'default' }))
+    .map((path) => path.slice(path.lastIndexOf('/') + 1).replace(/\.[^.]+$/, '')),
+);
+
+/** El número de veu d'una clau de text: FNV-1a de 32 bits, en decimal (el mateix que calcula tools/veus.py). */
+export function voiceNumber(key: string): string {
+  let h = 0x811c9dc5;
+  for (const byte of new TextEncoder().encode(key)) h = Math.imul(h ^ byte, 0x01000193) >>> 0;
+  return String(h);
+}
+
+/** El text d'una línia amb la marca de veu davant, si `benneId` té gravada la clau `key`. */
+export function voiced(benneId: string, key: string | undefined, text: string): string {
+  if (!key || !voiceStems.size) return text;
+  const n = voiceNumber(key);
+  return voiceStems.has(`${benneId}${n}`) ? `|${n}| ${text}` : text;
+}
+
 /**
  * Nom de l'opció de Benne per a una opció d'un node (el genera el sync).
  * Ha de ser aquí i no a `narrative.script.ts`: allà el plugin BenneScript converteix totes les

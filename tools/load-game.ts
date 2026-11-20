@@ -91,6 +91,22 @@ export function gameMusicFiles(dir = gameDir()) {
   return readdirSync(music).filter((f) => SOUND_EXTENSIONS.some((e) => f.endsWith(e))).map((f) => join(music, f));
 }
 
+/**
+ * Si el joc ha de fer sonar les veus: `"actiu": true` a `game/audio/veus.json`. Mentre és `false`, es poden generar
+ * i escoltar (`npm run veus`), però el sync no les posa al joc.
+ */
+export function gameVoicesActive(dir = gameDir()) {
+  const config = join(dir, 'audio', 'veus.json');
+  return existsSync(config) && JSON.parse(readFileSync(config, 'utf8')).actiu === true;
+}
+
+/** Veus gravades de `game/audio/voice/` (les genera `npm run veus`): `<personatge de Benne><número>.mp3`. */
+export function gameVoiceFiles(dir = gameDir()) {
+  const voice = join(dir, 'audio', 'voice');
+  if (!existsSync(voice)) return [];
+  return readdirSync(voice).filter((f) => SOUND_EXTENSIONS.some((e) => f.endsWith(e))).map((f) => join(voice, f));
+}
+
 /** Noms dels sons (sense extensió), el que va al camp `sound` de les línies. */
 export function gameSounds(dir = gameDir()) {
   return gameSoundFiles(dir).map((f) => f.slice(f.lastIndexOf(sep) + 1).replace(/\.[^.]+$/, ''));

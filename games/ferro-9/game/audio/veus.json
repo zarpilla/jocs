@@ -1,0 +1,15 @@
+{
+  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: si el sync les posa al joc. `text`: el que es diu quan no és el text tal qual (direccions del v3 com [cheerfully], pronúncia).",
+  "actiu": false,
+  "model": "eleven_v3",
+  "language": "ca",
+  "format": "mp3_44100_64",
+  "voices": {
+    "vet": "ofqVW4eDfHiLIwyyyIC8",
+    "mare": "lCYsk1aDPyGAzxRiNV7P"
+  },
+  "text": {
+    "dlg.mare.hola": "[cheerfully] Hola, interna 9! Soc la MARE, el seu Mòdul d'Atenció i Reinserció Ecològica. Com la puc fer feliç?",
+    "dlg.mare.sortir2": "[cheerfully] Gràcies per la seva paciència!"
+  }
+}

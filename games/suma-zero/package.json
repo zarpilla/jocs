@@ -15,6 +15,7 @@
     "schemas": "tsx ../../tools/generate-schemas.ts",
     "sons": "python3 tools/sons.py",
     "musica": "python3 tools/musica.py",
+    "veus": "python3 ../../tools/veus.py",
     "font": "python3 tools/font/suma_font.py",
     "benne:create": "tsx ../../adapters/benne/create-project.ts",
     "benne:sync": "tsx ../../adapters/benne/sync.ts",

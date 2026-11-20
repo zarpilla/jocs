@@ -680,6 +680,33 @@ diff -ruN src/engine/bennescript/shade.ts src/engine/bennescript/shade.ts
 +    return getRoomShade().alpha;
 +  },
 +};
+diff -ruN src/engine/bennescript/speech.ts src/engine/bennescript/speech.ts
+--- src/engine/bennescript/speech.ts
++++ src/engine/bennescript/speech.ts
+@@ -10,6 +10,9 @@
+ import type { RoomScene } from '../scenes/RoomScene.js';
+ import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
+ 
++/** Pause after a voiced line's recording ends, before the next line starts. */
++const VOICE_TAIL_MS = 250;
++
+ /** Per-line options for a scripted speech line. */
+ export interface ScriptedSayLineOptions {
+   clickToSkip?: boolean;
+@@ -81,10 +84,12 @@
+   const speech = getSpeechSettings(manager);
+   const voice = voiceStem ? tryGetBenneSoundManager(scene.game)?.playVoice(voiceStem) ?? null : null;
+   const textMs = computeSpeechLineDurationMs(line, manager);
++  // With a voice, the line lasts the whole recording (plus a short breath): `maxDurationMs` caps reading time, and
++  // clamping a voice to it would cut the sentence off mid-word.
+   const ms =
+     voice?.durationMs == null
+       ? textMs
+-      : Math.round(Math.min(speech.maxDurationMs, Math.max(speech.minDurationMs, voice.durationMs)));
++      : Math.round(Math.max(speech.minDurationMs, voice.durationMs + VOICE_TAIL_MS));
+   const lineOpt = options?.clickToSkip;
+   const allowClickToSkip =
+     lineOpt === true || (lineOpt !== false && speech.clickToSkip);
 diff -ruN src/engine/bootLoadingScreen.ts src/engine/bootLoadingScreen.ts
 --- src/engine/bootLoadingScreen.ts
 +++ src/engine/bootLoadingScreen.ts
@@ -4845,7 +4872,7 @@ diff -ruN vite.config.ts vite.config.ts
  
  /**
   * Phaser publishes `browser` → UMD (`phaser.js`) and `module` → ESM (`phaser.esm.js`).
-@@ -24,13 +87,18 @@
+@@ -24,13 +87,21 @@
    // Allow itch.io and other static hosts to serve a game under a generated subdirectory.
    base: './',
    // BENNE Play and the editor previews merge this config, so they get the BenneScript transform too.
@@ -4857,8 +4884,11 @@ diff -ruN vite.config.ts vite.config.ts
 -        .replace(/<link rel="icon"[^>]*\/>/, iconExists
 +    transformIndexHtml(html: string, ctx) {
 +      // La descripció només a la pàgina del joc (no als editors ni a les previsualitzacions)
-+      const meta = path.basename(ctx.filename) === 'index.html' ? pageMeta() : '';
-+      return html.replace(/<title>[^<]*<\/title>/, `<title>${displayName.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>${meta}`)
++      const pagina = path.basename(ctx.filename) === 'index.html';
++      const meta = pagina ? pageMeta() : '';
++      // A la pestanya del navegador, la pàgina del joc diu també on és: «Ni un ou - malaherbasoft.cat»
++      const titol = pagina ? `${displayName} - malaherbasoft.cat` : displayName;
++      return html.replace(/<title>[^<]*<\/title>/, `<title>${titol.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>${meta}`)
 +        .replace('<!--benne:nom-->', attr(displayName))                  // la pantalla de càrrega
 +        .replace('<!--benne:colors-->', loadingColors())
 +        // Sense icona pròpia del joc, es queda el favicon de Mala Herba Soft (public/favicon.*)
@@ -4869,7 +4899,7 @@ diff -ruN vite.config.ts vite.config.ts
      },
    }],
    resolve: {
-@@ -41,6 +109,12 @@
+@@ -41,6 +112,12 @@
        '@game': path.join(dir, 'src/game/game.ids.ts'),
      },
    },
