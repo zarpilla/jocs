@@ -140,6 +140,8 @@ Compte: `hd640/gui_rest.py` torna a fer la barra de verbs; no s'ha d'executar (o
 ```bash
 npm run jugar          # juga en mode text
 npm test               # el joc sencer per tots els camins (barril o condensador, sac o tractor, previsora), amb una pista a cada pas
+EXPLORA=/tmp/explora.txt npx vitest run --root ../.. games/aigua-verne/game/test/explora_sencera.test.ts
+                       # escriu la partida sencera, mirant-ho tot a cada sala, amb el final (per llegir-la)
 npm run validate       # comprova el contingut
 npm run sons           # efectes de so (tools/sons.py)
 npm run musica         # música (tools/musica.py)
