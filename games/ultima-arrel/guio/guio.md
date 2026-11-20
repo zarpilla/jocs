@@ -89,7 +89,10 @@ comença una escena nova, el joc passa sol a qui toca, amb un rètol de temps (�
 surt a l'escena, és un personatge més: s'hi pot parlar, però no es porta.
 
 Cada germana té el seu inventari. **No es passen objectes mentre es juga.** Quan una cosa ha de passar de l'una a
-l'altra (el xiulet de les fades), passa entre dues escenes, a fora de la pantalla, i qui el rep ho diu en entrar.
+l'altra (el xiulet de les fades), passa al final d'una escena, quan les dues coincideixen (escena 6a): és una línia
+més del final, no una acció del jugador.
+
+Cada germana en juga **quatre**: la Iri, les escenes 1, 2, 4 i 6b; la Vet, la 3, la 5, la 6a i la 7.
 
 ### El walkie
 
@@ -97,15 +100,16 @@ l'altra (el xiulet de les fades), passa entre dues escenes, a fora de la pantall
   una conversa curta, que canvia segons el moment.
 - **Les pistes de la Vet arriben pel walkie** (vegeu «La lupa»).
 - **Té un botó de gravar** («per enregistrar ocells»). Amb aquest botó, la Iri grava el crit dels arbres a l'escena 2,
-  i després el fa sonar a l'escena 6.
+  i després el fa sonar a l'escena 6b.
 
 ---
 
 ## Secundaris
 
 - **L'àvia Montse** (78 anys). Fa melmelada, cull bolets i no s'espanta de res. Té una teoria: «El bosc té més
-  memòria que l'Ajuntament.» Surt al començament (escena 1), entre el públic de la presentació (escena 6) i a l'epíleg
-  (escena 7), **on es veu que coneix l'Espora des que era petita**. No ho ha dit mai a ningú, «perquè no m'ho havíeu
+  memòria que l'Ajuntament.» Surt al començament (escena 1), a la Zona Zero muntant la parada de melmelada
+  (escena 6a), entre el públic de la presentació (escena 6b) i a l'epíleg (escena 7), **on es veu que coneix
+  l'Espora des que era petita**. No ho ha dit mai a ningú, «perquè no m'ho havíeu
   preguntat».
 - **L'Espora**, un gnom micòleg (≈35 px). Porta una bata de laboratori de fulles seques, unes ulleres gruixudes i
   una barba amb molsa. Porta la **centraleta** de la Xarxa Miceli des de fa dos-cents anys i està de molt mal humor
@@ -123,8 +127,8 @@ l'altra (el xiulet de les fades), passa entre dues escenes, a fora de la pantall
 - **La Senyora Pla**, executiva de NaturaPlus. Porta un vestit blanc, una tauleta, un somriure i auriculars sense
   fil. És la que porta el projecte del Bosc 2.0. Fa videotrucades amb «el consell», tot ho diu en positiu («No és
   una tala, és una actualització») i regala polseres de punts. No crida mai.
-- **La Txell**, periodista de TV Comarca, amb un càmera que no parla. Surt a l'escena 6. És la que fa la pregunta
-  incòmoda: «I el bosc, què hi diu?»
+- **La Txell**, periodista de TV Comarca, amb un càmera que no parla. Surt a les escenes 6a (la Vet la convenç que
+  filmi amb la càmera a l'espatlla) i 6b. És la que fa la pregunta incòmoda: «I el bosc, què hi diu?»
 
 ---
 
@@ -159,7 +163,7 @@ d'ull què és de qui.
 
 ## Estructura
 
-7 escenes, una sala per escena, en 3 actes. Per a 45-60 minuts.
+8 escenes en 3 actes, quatre per a cada germana. Per a 50-65 minuts.
 
 | Escena | Sala | Qui juga | Quan | Càmera |
 |---|---|---|---|---|
@@ -168,8 +172,12 @@ d'ull què és de qui.
 | 3 | `campament_fades` | Vet | Diumenge al matí | Molt de prop |
 | 4 | `toll_gripaus` | Iri | Diumenge, migdia | De lluny |
 | 5 | `caseta_obra` | Vet | Diumenge a la tarda | De prop |
-| 6 | `zona_zero` | Iri | Dilluns, Festa Major, al matí | De lluny |
+| 6a | `zona_mati` (l'art de `zona_zero`) | Vet | Dilluns, Festa Major, a les nou | De lluny |
+| 6b | `zona_zero` | Iri | Dilluns, Festa Major, a les deu | De lluny |
 | 7 | `bosc_obert` | Vet | Una setmana després | De lluny |
+
+La 6a i la 6b passen al mateix lloc, amb una hora de diferència: la Vet ho prepara tot abans que comenci la
+presentació, i la Iri la desmunta.
 
 A més: `portada`, `proleg_roure` i `credits`. El pròleg és el mateix pla que la portada, sense el títol: l'Espora
 torna a casa, s'atura a mirar el cartell («“Bosc 2.0”. Hmf. Ja en tenim, de xarxa.») i entra per la porta del roure.
@@ -457,8 +465,8 @@ música d'ascensor, un partit de futbol, un anunci de NaturaPlus... i a la terce
 recorda que el walkie sempre és al canal 7.)
 
 **Final de l'escena i de l'acte.** La Pla torna («Ja hi ha cobertura! L'he trobada darrere d'un arbre de veritat»),
-i la Vet surt dient-li adeu. Fora, la Vet dona el xiulet d'ortiga a la Iri (fora de pantalla, al rètol del canvi
-d'escena): l'endemà, la Iri serà a primera fila, i la Vet amb l'àvia, entre el públic.
+i la Vet surt dient-li adeu. El xiulet d'ortiga, de moment, se'l queda ella: l'endemà, abans de la presentació,
+encara hi ha feina (escena 6a).
 
 ---
 
@@ -466,7 +474,68 @@ d'escena): l'endemà, la Iri serà a primera fila, i la Vet amb l'àvia, entre e
 
 **Objectiu:** que la presentació digui la veritat.
 
-### Escena 6 — La Zona Zero (Iri)
+### Escena 6a — La Zona Zero, abans (Vet)
+
+**Rètol:** «Dilluns. Festa Major. Les nou del matí.»
+
+**Sala:** `zona_mati`, la Zona Zero de l'escena 6b (la mateixa art) una hora abans. Encara no hi ha públic: només
+l'àvia, que munta la parada de melmelada al fons, dos operaris que estenen la gespa artificial, i la **Txell** de TV
+Comarca amb el càmera, que prova plans de l'escenari amb el trípode. La **pantalla gegant** és muntada damunt
+d'una **bastida** de tubs, i al seu peu hi ha els tres **sensors d'aire** («AIRE: PUR 100%»). A les branques de
+dalt, si es miren de prop, tres crestes de fada. El bassal del costat és buit: el Registrador arribarà a les deu en
+punt, ni un minut abans («Horari: sempre que hi hagi aigua.»). La Senyora Pla no hi és: és a la caseta, maquillant-se.
+
+**Entrada.**
+
+> VET: *(al walkie)* Iri. Soc a la Zona Zero. Hi ha més gespa de plàstic que a un camp de futbol. Canvi.
+> IRI: *(al walkie)* Soc al bus amb el walkie i el crit. Arribo a les nou i mitja. Tu prepara-ho tot. Canvi.
+> VET: Tot? Canvi.
+> IRI: Les fades i la tele. Canvi i fora.
+
+**Trencaclosques 6a.1 — L'amagatall de les fades (parlar, fer servir, enfilar-se).** La Urtica baixa en picat i
+s'amaga darrere la Vet:
+
+> URTICA: Gegant. Allà baix hi haurà mil gegants. Si baixem quan ho digui la del vestit blanc, ens trepitgen.
+> URTICA: Necessitem un amagatall a sobre dels sensors. Que no es vegi. I que sigui elegant.
+
+La Vet té el **Kit del Petit Guardabosc** de l'escena 5 (fins ara, un acudit). Si fa servir el **fullet** del kit (o
+el mira: «"Descobreix la natura del futur!" Té tres plecs. És quasi una tenda.»), el doblega i en fa una **caseta de
+paper**, amb el logotip de NaturaPlus a fora. Llavors s'enfila per la **bastida** de la pantalla (només ella hi cap:
+«És com el roure, però de ferro») i la deixa a dalt de tot, just a sobre dels sensors.
+
+> URTICA: *(entrant-hi)* Un amagatall de NaturaPlus. Pagat per NaturaPlus.
+> CARD: És una traïció.
+> PICA: *(des de dins)* Brutal.
+
+(Si la Vet prova d'enfilar-se sense res a la mà: «Per pujar a fer turisme, no.» Si dona el fullet a la Urtica sense
+doblegar: «Això és un fullet, gegant. Nosaltres volem una casa.» La polsera del kit no serveix per a res, i la Vet
+ho diu: «És de punts. Encara en tinc zero.»)
+
+**Trencaclosques 6a.2 — La tele (parlar, convèncer).** La Txell té el pla fet: el càmera, amb el trípode, mirant
+només l'escenari («La senyora Pla ha demanat el seu perfil bo»). Si el càmera no es pot moure, quan la Iri faci
+venir el Registrador ningú no el filmarà. La Vet ha de convèncer la Txell que deixi la càmera **a l'espatlla**. És
+una conversa amb opcions, i com a les fades, no es pot perdre: es pot tornar a provar.
+
+- «Passarà una cosa molt forta.» → «Sempre diuen això. Després és una cinta tallada.»
+- «La meva germana sap una cosa del bosc.» → «Tothom sap coses del bosc. Tinc el pla.»
+- «Jo soc la del canal 7.» *(ensenyant el walkie)* → la Txell s'atura. «...Canal 7? TV Comarca és el canal 7 de la
+  TDT local.» La Vet: «Ja ho sé. És el número més valent.» La Txell riu, i treu la càmera del trípode: «Doncs a
+  l'espatlla. Si no passa res, almenys tindré l'àvia de la melmelada.»
+
+(La tercera opció només surt si la Vet ha mirat el walkie o n'ha parlat amb la Iri a l'escena; si no, la Iri, pel
+walkie, li ho recorda com a pista: «Vet. Tu sempre dius que el 7 dona sort. Canvi.»)
+
+**Final de l'escena.** Arriba la Iri, amb la motxilla i el walkie.
+
+> IRI: Com va?
+> VET: Les fades, dins un fullet de NaturaPlus. La tele, a l'espatlla. *(li dona el **xiulet d'ortiga**)* Té. No el
+> bufis fins que digui «aire pur».
+> IRI: Observació: això ho has fet tota sola.
+> VET: Ja ho sé. *(se'n va cap a la parada de l'àvia)*
+
+Rètol: «Les deu.» Comença l'escena 6b.
+
+### Escena 6b — La Zona Zero: la presentació (Iri)
 
 **Rètol:** «Dilluns. Festa Major. Les deu del matí.»
 
@@ -479,8 +548,8 @@ una **formigonera** amb el motor engegat.
 
 **Entrada.**
 
-> IRI: *(a part)* La Vet m'ha deixat el xiulet. Diu que no el bufi a casa, que el gat encara corre.
-> IRI: *(a part)* I que les fades esperen que la senyora digui «aire pur».
+> IRI: *(a part)* Les fades, dins un fullet. La tele, a l'espatlla. El xiulet, a la butxaca.
+> IRI: *(a part)* Ara em toca a mi.
 
 **Trencaclosques 6.1 — La presentació (tres moments).** La Senyora Pla fa el discurs en tres parts, i **cada part
 espera la Iri**: el discurs no avança fins que la Iri fa el que toca. Si fa una cosa que no toca, o no fa res, la
@@ -569,9 +638,11 @@ ACTE 2
   Esc. 4 (Iri):  [estaca (Esc. 1) → plàstic encallat] + [comporta + gripau] → aigua → plànols de 1923
   Esc. 5 (Vet):  [parlar amb la Pla] → [arbre Wi-Fi: desendollar] → la Pla surt
                  [mirar walkie: canal 7 → altaveu] → altaveu al canal dels walkies
-  (entre 5 i 6: el xiulet passa de la Vet a la Iri)
 ACTE 3
-  Esc. 6 (Iri):  [xiulet] → sensors · [Bufó] → plànols a la càmera · [walkie] → el crit per l'altaveu
+  Esc. 6a (Vet): [fullet del kit → caseta de paper] + [bastida] → amagatall de les fades
+                 [Txell: «canal 7»] → càmera a l'espatlla
+                 (al final: el xiulet passa de la Vet a la Iri)
+  Esc. 6b (Iri): [xiulet] → sensors · [Bufó] → plànols a la càmera · [walkie] → el crit per l'altaveu
   Esc. 7 (Vet):  epíleg → FINAL
 ```
 
@@ -579,7 +650,7 @@ ACTE 3
 
 | Objecte | Qui | D'on | Per a |
 |---|---|---|---|
-| Walkie | les dues | inici | Converses, pistes de la Vet, gravar (2) i reproduir (6), canal 7 (5) |
+| Walkie | les dues | inici | Converses, pistes de la Vet, gravar (2) i reproduir (6b), canal 7 (5 i 6a) |
 | Lupa | Iri | inici | Mirar (pistes), l'arrel viva (2) |
 | Llibreta | Iri | inici | Notes de ciència (mirar-la recorda l'objectiu) |
 | Cèntim de la sort | Iri | inici | Pila (2) |
@@ -588,9 +659,10 @@ ACTE 3
 | Cargol galvanitzat | Iri | Esc. 1 | Pila (2) |
 | Pila de llimona | Iri | Esc. 2 | Radar (2) |
 | Pot de melmelada / pot buit / pot de pol·len | Vet | inici / Esc. 3 | Fades (3), flor (3) |
-| Xiulet d'ortiga | Vet → Iri | Esc. 3 | Sensors (6) |
+| Xiulet d'ortiga | Vet → Iri | Esc. 3 (a la Iri, al final de la 6a) | Sensors (6b) |
 | Plànols de 1923 | (els porta el Bufó) | Esc. 4 | Es queden amb el Bufó; surten a la 6 |
-| Kit del Petit Guardabosc | Vet | Esc. 5 | Res: és un acudit (es pot mirar i llegir) |
+| Kit del Petit Guardabosc | Vet | Esc. 5 | El fullet: la caseta de paper de les fades (6a). La polsera, res: és un acudit |
+| Caseta de paper | Vet | Esc. 6a (el fullet doblegat) | L'amagatall de les fades, dalt de la bastida (6a) |
 
 Els objectes que ja no serveixen es treuen de l'inventari en acabar l'escena, perquè la motxilla no es faci llarga.
 
@@ -598,19 +670,20 @@ Els objectes que ja no serveixen es treuen de l'inventari en acabar l'escena, pe
 
 | Element | Al nostre JSON / codi |
 |---|---|
-| Una escena, una germana | Cada sala amb `"protagonist"`. Les escenes 6 i 7, on l'altra hi és com a personatge, són sales compartides (`"protagonists": ["iri", "vet"]`), i s'hi situen totes dues. El canvi d'escena és un efecte al final de l'escena (`situar` + `protagonista`), i el rètol de temps és la primera línia (`title`) de l'`onEnter` de la sala nova. **Sense botó de canviar**: `switchWhen` no es compleix mai. |
+| Una escena, una germana | Cada sala amb `"protagonist"`. Les escenes 6b i 7, on l'altra hi és com a personatge, són sales compartides (`"protagonists": ["iri", "vet"]`), i s'hi situen totes dues. El canvi d'escena és un efecte al final de l'escena (`situar` + `protagonista`), i el rètol de temps és la primera línia (`title`) de l'`onEnter` de la sala nova. **Sense botó de canviar**: `switchWhen` no es compleix mai. La 6a és una sala a part (`zona_mati`, de la Vet), amb l'art de `zona_zero` (el mateix mòdul de dibuix amb un altre estat: sense públic, el trípode, el bassal buit i la bastida a punt de pujar-hi), perquè el motor fa una escena per sala. |
 | Walkie | Diàleg `walkie`, amb un node per sala (`inRoom`). Els passos (gravar, canal 7, el crit a la presentació) són interaccions de l'objecte `walkie` amb el `corn` i l'`altaveu`. |
 | Lupa | `hints.json`, amb `targets` (les coses on apunta) a cada pista. Al HUD, el botó «Canvia» és la lupa (`botoPista` a `joc.ts`): en prémer-lo, la pista i els filaments turquesa (`game.showThreads`). Per mirar una cosa amb la lupa (les arrels), es fa servir l'objecte `lupa` amb la cosa. |
 | Pistes de la Vet | Les pistes de les seves sales porten `"who": "iri"`: la Iri les diu pel walkie (a l'escena 7, de la taula estant). |
-| La presentació (6) | `vars.discurs` (1, 2, 3, 4); cada cosa té interaccions amb `if` segons el pas; les línies de «Ho repeteixo» quan es fa una cosa que no toca. |
+| La presentació (6b) | `vars.discurs` (1, 2, 3, 4); cada cosa té interaccions amb `if` segons el pas; les línies de «Ho repeteixo» quan es fa una cosa que no toca. |
 | Pila de llimona | Combinacions d'objectes en qualsevol ordre (`llimona` + `centim` → `llimona_centim`, + `cargol` → `pila_llimona`, i a l'inrevés). |
 | Final | Un sol final a `endings.json`, en seure a la taula de l'escena 7 (si encara no ha sortit, la sorpresa de l'àvia hi surt abans). |
 | Missions | `acte1`, `acte2`, `acte3` (per a les estadístiques), amb un objectiu per escena. Sense secundàries. |
 
 ## Abast (producció)
 
-- **9 sales:** `portada`, `vora_bosc`, `centraleta`, `campament_fades`, `toll_gripaus`, `caseta_obra`, `zona_zero`,
-  `bosc_obert` (es pot fer a partir de `vora_bosc`) i `credits`.
+- **10 sales:** `portada`, `vora_bosc`, `centraleta`, `campament_fades`, `toll_gripaus`, `caseta_obra`, `zona_mati`,
+  `zona_zero`, `bosc_obert` (es pot fer a partir de `vora_bosc`) i `credits`. La `zona_mati` és l'art de `zona_zero`
+  sense el públic: no cal pintar res de nou, més enllà de la caseta de paper a dalt de la pantalla (un decorat).
 - **Personatges amb sprite:** la Iri i la Vet (totes les animacions, a la mida de nena), l'àvia Montse, l'Espora, la
   Urtica (i la Pica i la Card, amb colors canviats), el Registrador Bufó (i un gripau vaguista, amb colors
   canviats), la Senyora Pla i la Txell. El càmera, el públic, el conductor i el missatger poden ser figures del fons,
@@ -636,3 +709,5 @@ Els objectes que ja no serveixen es treuen de l'inventari en acabar l'escena, pe
 2. La Vet, amb gorra d'orelles d'os i botes grogues: és prou diferent de la Iri de silueta?
 3. L'ordre fix de l'acte 2 (fades, gripaus, caseta): o voleu que el jugador pugui triar entre fades i gripaus?
    (Ho complica una mica: s'hauria de triar qui juga.)
+4. Amb la 6a, la Vet juga dues escenes seguides (la 5 i la 6a, amb un rètol de dia pel mig). Si molesta, la 4 (gripaus)
+   i la 5 (caseta) no depenen l'una de l'altra i es poden intercanviar: Iri, Iri, Vet, Vet, Iri, Vet, Iri, Vet.
