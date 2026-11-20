@@ -33,9 +33,42 @@
           },
           {
             "seen": {
-              "dialogue": "walkie",
-              "node": "e2"
+              "dialogue": "espora",
+              "node": "melmelada"
             }
+          },
+          {
+            "seen": {
+              "dialogue": "walkie",
+              "node": "e2m"
+            },
+            "is": false
+          }
+        ]
+      },
+      "node": "e2m"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "inRoom": "centraleta"
+          },
+          {
+            "any": [
+              {
+                "seen": {
+                  "dialogue": "walkie",
+                  "node": "e2"
+                }
+              },
+              {
+                "seen": {
+                  "dialogue": "walkie",
+                  "node": "e2m"
+                }
+              }
+            ]
           }
         ]
       },
@@ -135,6 +168,27 @@
         {
           "who": "vet",
           "text": "dlg.walkie.e2.4"
+        }
+      ]
+    },
+    "e2m": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.e2.1",
+          "sound": "walkie"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.e2.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.walkie.e2m.3"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.e2m.4"
         }
       ]
     },
