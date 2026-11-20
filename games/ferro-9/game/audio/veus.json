@@ -1,6 +1,6 @@
 {
-  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: si el sync les posa al joc. `text`: el que es diu quan no és el text tal qual (direccions del v3 com [cheerfully], pronúncia).",
-  "actiu": false,
+  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `text`: el que es diu quan no és el text tal qual (direccions del v3 com [cheerfully], pronúncia).",
+  "actiu": "url",
   "model": "eleven_v3",
   "language": "ca",
   "format": "mp3_44100_64",

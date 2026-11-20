@@ -27,7 +27,7 @@ import { writeBenneContent } from './benne-content.js';
 import { jocAdapterDir, loadJocBenne } from './joc-benne.js';
 import { GLOBAL_SCRIPT, TACTIL_DIR, TACTIL_GUIS, TACTIL_RUNTIME } from './tactil/index.js';
 import { gameDir as contentDir, jocDir, loadGameLogic } from '../../tools/joc.js';
-import { SOUND_EXTENSIONS, gameMusicFiles, gameSoundFiles, gameSounds, gameVoiceFiles, gameVoicesActive, loadGameFromDisk } from '../../tools/load-game.js';
+import { SOUND_EXTENSIONS, gameMusicFiles, gameSoundFiles, gameSounds, gameVoiceFiles, gameVoicesMode, loadGameFromDisk } from '../../tools/load-game.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const MARK = 'GENERAT per adapters/benne/sync.ts';
@@ -144,7 +144,7 @@ function sync() {
   // La resolució, perquè el runtime no doni per fet que la pantalla fa 480 d'ample (Ni un ou és a 640×360).
   const gameConfigPath = join(gameDir, 'game-config.json');
   const resolucio = existsSync(gameConfigPath) ? JSON.parse(readFileSync(gameConfigPath, 'utf8')).resolution : undefined;
-  writeGenerated(join(narrativeDir, 'mapping.generated.json'), json({ id: basename(jocDir()), nom: joc.nom, musicSync: joc.musicaSincronitzada === true, botoPista: joc.botoPista === true, resolucio, ...mapping }), 'json');
+  writeGenerated(join(narrativeDir, 'mapping.generated.json'), json({ id: basename(jocDir()), nom: joc.nom, musicSync: joc.musicaSincronitzada === true, botoPista: joc.botoPista === true, resolucio, veus: gameVoicesMode(), ...mapping }), 'json');
 
   // 2. Contingut
   const bundle: { content: GameContent; locales: Record<string, LocaleTable>; locale: string; zones: Record<string, string[]> } =
@@ -160,12 +160,13 @@ function sync() {
   mkdirSync(musicDir, { recursive: true });
   for (const file of gameMusicFiles()) copyFileSync(file, join(musicDir, basename(file)));
   // I les veus, de `game/audio/voice/` a `assets/audio/voice/` (el pont posa la marca `|N|` a les línies que en tenen),
-  // només si són actives (`"actiu": true` a `game/audio/veus.json`). Les d'abans es treuen: així, desactivar-les o
-  // esborrar-ne una també arriba al joc.
+  // només si són actives (`"actiu": true` o `"url"` a `game/audio/veus.json`; el mode va al mapping, i amb `"url"` el
+  // pont només les fa sonar amb `?voices=on`). Les d'abans es treuen: així, desactivar-les o esborrar-ne una també
+  // arriba al joc.
   const voiceDir = join(gameDir, 'assets/audio/voice');
   mkdirSync(voiceDir, { recursive: true });
   for (const file of readdirSync(voiceDir)) if (SOUND_EXTENSIONS.some((e) => file.endsWith(e))) rmSync(join(voiceDir, file));
-  if (gameVoicesActive()) for (const file of gameVoiceFiles()) copyFileSync(file, join(voiceDir, basename(file)));
+  if (gameVoicesMode()) for (const file of gameVoiceFiles()) copyFileSync(file, join(voiceDir, basename(file)));
 
   // 3. Diàlegs
   for (const d of Object.values(content.dialogues)) {

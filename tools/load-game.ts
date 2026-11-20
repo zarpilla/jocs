@@ -92,12 +92,15 @@ export function gameMusicFiles(dir = gameDir()) {
 }
 
 /**
- * Si el joc ha de fer sonar les veus: `"actiu": true` a `game/audio/veus.json`. Mentre és `false`, es poden generar
- * i escoltar (`npm run veus`), però el sync no les posa al joc.
+ * Quan sonen les veus del joc (`"actiu"` a `game/audio/veus.json`): `true` → sempre (`'sempre'`); `"url"` → només amb
+ * `?voices=on` a l'adreça, per provar-les sense que les sentin les jugadores (`'url'`); `false` o sense veus.json → mai
+ * (`null`: es poden generar i escoltar amb `npm run veus`, però el sync no les posa al joc).
  */
-export function gameVoicesActive(dir = gameDir()) {
+export function gameVoicesMode(dir = gameDir()): 'sempre' | 'url' | null {
   const config = join(dir, 'audio', 'veus.json');
-  return existsSync(config) && JSON.parse(readFileSync(config, 'utf8')).actiu === true;
+  if (!existsSync(config)) return null;
+  const actiu = JSON.parse(readFileSync(config, 'utf8')).actiu;
+  return actiu === true ? 'sempre' : actiu === 'url' ? 'url' : null;
 }
 
 /** Veus gravades de `game/audio/voice/` (les genera `npm run veus`): `<personatge de Benne><número>.mp3`. */

@@ -53,6 +53,16 @@ export const benneDialog = (id: string) => byId<(typeof dialogs)[keyof typeof di
 // lloc o d'ordre, la veu la segueix. Benne fa sonar la veu si la línia comença amb `|<número>|`, i la bafarada dura
 // el que duri l'àudio.
 
+/**
+ * Si han de sonar: `veus` del mapping (el posa el sync segons `"actiu"` de veus.json). Amb `'url'`, només amb
+ * `?voices=on` a l'adreça; amb `'sempre'`, sempre, tret de `?voices=off`.
+ */
+const voicesOn = (() => {
+  const mode = (mapping as { veus?: 'sempre' | 'url' | null }).veus ?? null;
+  const param = typeof location === 'undefined' ? null : new URLSearchParams(location.search).get('voices');
+  return mode === 'sempre' ? param !== 'off' : mode === 'url' && param === 'on';
+})();
+
 const voiceStems = new Set(
   Object.keys(import.meta.glob('../assets/audio/voice/*.{mp3,ogg,wav}', { query: '?url', import: 'default' }))
     .map((path) => path.slice(path.lastIndexOf('/') + 1).replace(/\.[^.]+$/, '')),
@@ -67,7 +77,7 @@ export function voiceNumber(key: string): string {
 
 /** El text d'una línia amb la marca de veu davant, si `benneId` té gravada la clau `key`. */
 export function voiced(benneId: string, key: string | undefined, text: string): string {
-  if (!key || !voiceStems.size) return text;
+  if (!key || !voicesOn || !voiceStems.size) return text;
   const n = voiceNumber(key);
   return voiceStems.has(`${benneId}${n}`) ? `|${n}| ${text}` : text;
 }

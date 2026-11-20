@@ -5,7 +5,7 @@ Llegeix el contingut que fa servir el joc (`<projecte Benne>/src/game/narrative/
 al dia `npm run benne:sync`) i la configuració `game/audio/veus.json`:
 
     {
-      "actiu": true,      // si el sync les posa al joc (mentre és false, es generen però no sonen)
+      "actiu": true,      // true: sonen sempre; "url": només amb ?voices=on; false: el sync no les posa al joc
       "model": "eleven_v3", "language": "ca", "format": "mp3_44100_64",
       "voices": { "mare": "<voice_id>", "vet": "<voice_id>" },   // personatge nostre → veu d'ElevenLabs
       "text": { "dlg.mare.hola": "[cheerfully] Hola, interna 9! ..." }  // opcional: el que es diu, si no és el text
