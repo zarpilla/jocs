@@ -1,0 +1,12 @@
+{
+  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). Les germanes són veus de 18 anys: fins que ElevenLabs aprovi el joc (és per a nenes de 8 a 12 anys), només \"url\", per provar-les.",
+  "actiu": "url",
+  "model": "eleven_v3",
+  "language": "ca",
+  "format": "mp3_44100_64",
+  "voices": {
+    "iri": "qcyHYv8hHabwybYWmwHM",
+    "vet": "K85x5SfUCbata0XBeVJf"
+  },
+  "text": {}
+}
