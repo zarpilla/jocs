@@ -7,7 +7,7 @@ arbre florit a l'hort, on hi havia l'avet; el tronc tallat en `rodanxes` apilade
 seu lloc, amb molsa, i el forat vell ple d'herba; al costat, el `forat_nou` per al plançó, i la `carretilla` amb
 el plançó. El faristol d'en Ponç, al mig. El primer pla: herba i flors.
 Decorats: `forat_gran` (el forat eixamplat, amb la terra treta), `planco_plantat` (el plançó al forat, amb la
-cinta), `segell_planco` (el segell vermell del jutge a la cinta) i `rotul_clavat` (la post amb «AVET»). PROPS:
+cinta), `segell_planco` (el segell vermell del jutge a la cinta), `rotul_clavat` (la post amb «AVET») i `planco_agafat` (la carretilla buida). PROPS:
 `rotul` (el cos clicable del rètol: buit, el dibuixa `rotul_clavat`).
 """
 import numpy as np
@@ -59,6 +59,8 @@ PROPS = {
     'segell_planco': _prop(_e('forat_gran', 'planco', 'segell_planco', treu=('forat_nou',)), PLANTAT),
     'rotul_clavat': _prop(_e('forat_gran', 'planco', 'rotul', treu=('forat_nou',)), PLANTAT),
     'rotul': _buit,
+    # la carretilla buida (la Iri ja ha agafat el plançó, o l'ha plantat)
+    'planco_agafat': _prop(_e('carretilla_buida'), BASE),
 }
 
 

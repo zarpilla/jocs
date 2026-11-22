@@ -380,6 +380,17 @@
       "clickable": false
     },
     {
+      "id": "planco_agafat",
+      "tag": "planco_agafat",
+      "animations": {
+        "planco_agafat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
       "id": "davant_abeurador",
       "tag": "davant_abeurador",
       "visible": true,

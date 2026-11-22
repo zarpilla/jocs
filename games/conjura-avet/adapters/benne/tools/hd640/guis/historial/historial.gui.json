@@ -1,7 +1,7 @@
 {
   "id": "historial",
   "name": "Historial",
-  "description": "Les últimes línies dites (adapters/benne/benne-content.ts). [640×360: hd640/gui_rest.py]",
+  "description": "Les últimes línies dites (adapters/benne/benne-content.ts). [640×360: hd640/gui_rest.py] [640×360: hd640/gui_rest.py]",
   "visible": false,
   "display": {
     "aseprite": false
@@ -23,7 +23,7 @@
       "fontSize": 8,
       "textColor": "#ffffff",
       "backgroundTag": "",
-      "backgroundColor": "#0a0c06",
+      "backgroundColor": "#0c0907",
       "backgroundColorStates": {
         "hover": "#060a14",
         "pressed": "#060a14",
@@ -39,7 +39,7 @@
       "text": "",
       "font": "conjuraavet-negreta",
       "fontSize": 8,
-      "color": "#f0a446",
+      "color": "#e8b45c",
       "align": "left",
       "zIndex": 2
     },
@@ -51,7 +51,7 @@
       "text": "",
       "font": "conjuraavet-negreta",
       "fontSize": 8,
-      "color": "#ff9a32",
+      "color": "#f2805f",
       "align": "left",
       "zIndex": 2
     },
@@ -75,7 +75,7 @@
       "text": "",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "color": "#8c9270",
+      "color": "#8a7e66",
       "align": "right",
       "zIndex": 2,
       "anchorY": "bottom"

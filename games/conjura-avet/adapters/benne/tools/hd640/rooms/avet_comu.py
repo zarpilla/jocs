@@ -1640,9 +1640,13 @@ def carretilla(v, e, sid='carretilla'):
         _barra(v, e, c - ux * 20 + uz * 12 * sg, c - ux * 20 + uz * 12 * sg + np.array((0, 14, 0)), 1.6, FUSTA, 3.0, sid)
         _barra(v, e, c - ux * 56 + uz * 14 * sg + np.array((0, 26, 0)), roda + uz * 12 * sg, 1.8, FUSTA, 3.4, sid)
     _caixa(v, e, c + ux * 4 + np.array((0, 24, 0)), 26, 9, 16, FUSTA, 3.4, sid, rot)
-    # el pa de terra amb sac, i el plançó
+    # el pa de terra amb sac, i el plançó (sense, si ja l'han agafat: només hi queda una mica de terra)
+    if 'carretilla_buida' in e.extres:
+        roc(v, e, c + ux * 4 + np.array((0, 30, 0)), 9, TERRA, sid, seed=153, lvl0=3.0, aplana=0.4)
+        return
     roc(v, e, c + ux * 4 + np.array((0, 32, 0)), 12, _r((60, 44, 28), (100, 76, 48), (140, 110, 72), (176, 146, 100), (204, 178, 128)), sid, seed=151, lvl0=3.0, aplana=0.8)
-    arbret(v, e, c + ux * 4 + np.array((0, 38, 0)), 52, sid, seed=5)
+    if 'carretilla_buida' not in e.extres:
+        arbret(v, e, c + ux * 4 + np.array((0, 38, 0)), 52, sid, seed=5)
 
 
 def planco(v, e, sid='planco_plantat'):

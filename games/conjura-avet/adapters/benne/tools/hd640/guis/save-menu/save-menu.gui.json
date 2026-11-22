@@ -1,7 +1,7 @@
 {
   "id": "save-menu",
   "name": "Save Menu",
-  "description": " [640×360: hd640/gui_rest.py]",
+  "description": " [640×360: hd640/gui_rest.py] [640×360: hd640/gui_rest.py]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -35,7 +35,7 @@
       "text": "Desa",
       "font": "conjuraavet-negreta",
       "fontSize": 8,
-      "color": "#f0a446",
+      "color": "#e8b45c",
       "align": "center"
     },
     {
@@ -51,11 +51,11 @@
       "maxLength": 26,
       "placeholder": "Nom de la partida...",
       "color": "#e6dcb6",
-      "backgroundColor": "#070d08",
-      "outlineColor": "#5a3a14",
-      "caretColor": "#ff9a32",
-      "hoverBackgroundColor": "#0b160d",
-      "focusedOutlineColor": "#f0a446",
+      "backgroundColor": "#120d0a",
+      "outlineColor": "#5a4630",
+      "caretColor": "#f2805f",
+      "hoverBackgroundColor": "#1d1510",
+      "focusedOutlineColor": "#c9973e",
       "textAlign": "left"
     },
     {
@@ -67,12 +67,12 @@
       "height": 145,
       "rowCount": 5,
       "rowPadding": 4,
-      "normalBackgroundColor": "#09150b",
-      "hoverBackgroundColor": "#13281a",
-      "selectedBackgroundColor": "#6a300c",
+      "normalBackgroundColor": "#140f0b",
+      "hoverBackgroundColor": "#261c14",
+      "selectedBackgroundColor": "#5c1a14",
       "textColor": "#e6dcb6",
       "selectedTextColor": "#fff4dc",
-      "placeholderTextColor": "#5f644a",
+      "placeholderTextColor": "#6c6152",
       "font": "conjuraavet-regular",
       "fontSize": 8
     },
@@ -109,9 +109,9 @@
         "disabled": "key-113x27-disabled"
       },
       "textColorStates": {
-        "hover": "#ff9a32",
-        "pressed": "#ff9a32",
-        "disabled": "#5f644a"
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
       },
       "textOutline": {
         "enabled": true,
@@ -141,9 +141,9 @@
         "disabled": "key-113x27-disabled"
       },
       "textColorStates": {
-        "hover": "#ff9a32",
-        "pressed": "#ff9a32",
-        "disabled": "#5f644a"
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
       },
       "textOutline": {
         "enabled": true,

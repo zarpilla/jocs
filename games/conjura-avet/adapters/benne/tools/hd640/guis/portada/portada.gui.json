@@ -1,7 +1,7 @@
 {
   "id": "portada",
   "name": "Portada",
-  "description": "Botons de la portada (adapters/benne). [640×360: hd640/gui_rest.py]",
+  "description": "Botons de la portada (adapters/benne). [640×360: hd640/gui_rest.py] [640×360: hd640/gui_rest.py]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -23,7 +23,7 @@
       "textOffsetX": 0,
       "textOffsetY": 0,
       "textColorStates": {
-        "hover": "#ff9a32"
+        "hover": "#f2805f"
       },
       "textOutline": {
         "enabled": true,
@@ -33,7 +33,8 @@
       "backgroundTag": "continua",
       "states": {
         "hover": "continua-hover"
-      }
+      },
+      "backgroundOffsetY": 0
     },
     {
       "type": "button",
@@ -51,7 +52,7 @@
       "textOffsetX": 0,
       "textOffsetY": 0,
       "textColorStates": {
-        "hover": "#ff9a32"
+        "hover": "#f2805f"
       },
       "textOutline": {
         "enabled": true,
@@ -61,7 +62,8 @@
       "backgroundTag": "comenca",
       "states": {
         "hover": "comenca-hover"
-      }
+      },
+      "backgroundOffsetY": 0
     },
     {
       "type": "button",
@@ -79,7 +81,7 @@
       "textOffsetX": 0,
       "textOffsetY": 0,
       "textColorStates": {
-        "hover": "#ff9a32"
+        "hover": "#f2805f"
       },
       "textOutline": {
         "enabled": true,
@@ -89,7 +91,8 @@
       "backgroundTag": "carrega",
       "states": {
         "hover": "carrega-hover"
-      }
+      },
+      "backgroundOffsetY": 0
     },
     {
       "type": "text",
@@ -99,7 +102,7 @@
       "text": "",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "color": "#5f644a",
+      "color": "#6c6152",
       "align": "right",
       "textOutline": {
         "enabled": true,

@@ -1,7 +1,7 @@
 {
   "id": "load-menu",
   "name": "Load Menu",
-  "description": " [640×360: hd640/gui_rest.py]",
+  "description": " [640×360: hd640/gui_rest.py] [640×360: hd640/gui_rest.py]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -35,7 +35,7 @@
       "text": "Carrega",
       "font": "conjuraavet-negreta",
       "fontSize": 8,
-      "color": "#f0a446",
+      "color": "#e8b45c",
       "align": "center"
     },
     {
@@ -47,12 +47,12 @@
       "height": 145,
       "rowCount": 5,
       "rowPadding": 4,
-      "normalBackgroundColor": "#09150b",
-      "hoverBackgroundColor": "#13281a",
-      "selectedBackgroundColor": "#6a300c",
+      "normalBackgroundColor": "#140f0b",
+      "hoverBackgroundColor": "#261c14",
+      "selectedBackgroundColor": "#5c1a14",
       "textColor": "#e6dcb6",
       "selectedTextColor": "#fff4dc",
-      "placeholderTextColor": "#5f644a",
+      "placeholderTextColor": "#6c6152",
       "font": "conjuraavet-regular",
       "fontSize": 8
     },
@@ -89,9 +89,9 @@
         "disabled": "key-113x27-disabled"
       },
       "textColorStates": {
-        "hover": "#ff9a32",
-        "pressed": "#ff9a32",
-        "disabled": "#5f644a"
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
       },
       "textOutline": {
         "enabled": true,
@@ -121,9 +121,9 @@
         "disabled": "key-113x27-disabled"
       },
       "textColorStates": {
-        "hover": "#ff9a32",
-        "pressed": "#ff9a32",
-        "disabled": "#5f644a"
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
       },
       "textOutline": {
         "enabled": true,

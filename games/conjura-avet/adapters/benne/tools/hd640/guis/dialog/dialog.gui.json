@@ -1,7 +1,7 @@
 {
   "id": "dialog",
   "name": "Dialog",
-  "description": " [640×360: hd640/gui_rest.py]",
+  "description": " [640×360: hd640/gui_rest.py] [640×360: hd640/gui_rest.py]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -15,7 +15,8 @@
       "tag": "VerbsBG",
       "zIndex": 1,
       "backgroundAnchor": "screen",
-      "visible": true
+      "visible": true,
+      "backgroundOffsetY": 0
     },
     {
       "type": "button",
@@ -108,7 +109,7 @@
         "col": 1
       },
       "textColorStates": {
-        "hover": "#ff9a32"
+        "hover": "#f2805f"
       }
     }
   ]

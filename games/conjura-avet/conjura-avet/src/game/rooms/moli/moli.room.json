@@ -9,7 +9,7 @@
     "x": 0,
     "y": 0,
     "width": 640,
-    "height": 360
+    "height": 288
   },
   "walkable": {
     "polygons": [
@@ -460,7 +460,6 @@
       "zIndex": 9
     }
   ],
-  "viewAnchorY": 0.5,
   "characterLights": {
     "ambient": "#5c6470",
     "lights": [

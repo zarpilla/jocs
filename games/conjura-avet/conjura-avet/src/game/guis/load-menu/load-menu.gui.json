@@ -1,7 +1,7 @@
 {
   "id": "load-menu",
   "name": "Load Menu",
-  "description": " [288]",
+  "description": " [640×360: hd640/gui_rest.py] [640×360: hd640/gui_rest.py] [288]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -35,7 +35,7 @@
       "text": "Carrega",
       "font": "conjuraavet-negreta",
       "fontSize": 8,
-      "color": "#1a466b",
+      "color": "#e8b45c",
       "align": "center"
     },
     {
@@ -47,12 +47,12 @@
       "height": 145,
       "rowCount": 5,
       "rowPadding": 4,
-      "normalBackgroundColor": "#222222",
-      "hoverBackgroundColor": "#2f2f2f",
-      "selectedBackgroundColor": "#4a4a4a",
-      "textColor": "#ffffff",
-      "selectedTextColor": "#ffffff",
-      "placeholderTextColor": "#999999",
+      "normalBackgroundColor": "#140f0b",
+      "hoverBackgroundColor": "#261c14",
+      "selectedBackgroundColor": "#5c1a14",
+      "textColor": "#e6dcb6",
+      "selectedTextColor": "#fff4dc",
+      "placeholderTextColor": "#6c6152",
       "font": "conjuraavet-regular",
       "fontSize": 8
     },
@@ -64,7 +64,7 @@
       "text": "Tria una partida per carregar.",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "color": "#1a466b",
+      "color": "#e6dcb6",
       "wordWrapWidth": 407
     },
     {
@@ -78,16 +78,25 @@
       "text": "Carrega",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#e6dcb6",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -2,
-      "backgroundTag": "",
-      "backgroundColor": "#132243",
-      "backgroundColorStates": {
-        "hover": "#1a466b",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "backgroundTag": "key-113x27",
+      "states": {
+        "hover": "key-113x27-hover",
+        "pressed": "key-113x27-pressed",
+        "disabled": "key-113x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
       }
     },
     {
@@ -101,16 +110,25 @@
       "text": "Torna",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#e6dcb6",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -2,
-      "backgroundTag": "",
-      "backgroundColor": "#132243",
-      "backgroundColorStates": {
-        "hover": "#1a466b",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "backgroundTag": "key-113x27",
+      "states": {
+        "hover": "key-113x27-hover",
+        "pressed": "key-113x27-pressed",
+        "disabled": "key-113x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
       }
     }
   ],

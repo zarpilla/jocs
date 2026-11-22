@@ -1,7 +1,7 @@
 {
   "id": "settings-menu",
   "name": "Settings Menu",
-  "description": " [640×360: hd640/gui_rest.py]",
+  "description": " [640×360: hd640/gui_rest.py] [640×360: hd640/gui_rest.py]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -36,7 +36,7 @@
       "text": "Opcions",
       "font": "conjuraavet-negreta",
       "fontSize": 8,
-      "color": "#f0a446",
+      "color": "#e8b45c",
       "align": "center",
       "zIndex": 102
     },
@@ -226,9 +226,9 @@
         "disabled": "key-91x27-disabled"
       },
       "textColorStates": {
-        "hover": "#ff9a32",
-        "pressed": "#ff9a32",
-        "disabled": "#5f644a"
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
       },
       "textOutline": {
         "enabled": true,
@@ -354,9 +354,9 @@
         "disabled": "key-91x27-disabled"
       },
       "textColorStates": {
-        "hover": "#ff9a32",
-        "pressed": "#ff9a32",
-        "disabled": "#5f644a"
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
       },
       "textOutline": {
         "enabled": true,

@@ -4834,6 +4834,19 @@
               "flag": "planco_plantat"
             }
           },
+          "planco_agafat": {
+            "visibleIf": {
+              "any": [
+                {
+                  "hasItem": "planco",
+                  "who": "iri"
+                },
+                {
+                  "flag": "planco_plantat"
+                }
+              ]
+            }
+          },
           "segell_planco": {
             "visibleIf": {
               "flag": "planco_plantat"

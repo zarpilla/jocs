@@ -1,7 +1,7 @@
 {
   "id": "portada",
   "name": "Portada",
-  "description": "Botons de la portada (adapters/benne). [288]",
+  "description": "Botons de la portada (adapters/benne). [640×360: hd640/gui_rest.py] [640×360: hd640/gui_rest.py] [288]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -18,12 +18,12 @@
       "text": "Continua",
       "font": "conjuraavet-negreta",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#e6dcb6",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2805f"
       },
       "textOutline": {
         "enabled": true,
@@ -47,12 +47,12 @@
       "text": "Comença",
       "font": "conjuraavet-negreta",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#e6dcb6",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2805f"
       },
       "textOutline": {
         "enabled": true,
@@ -76,12 +76,12 @@
       "text": "Carrega una partida",
       "font": "conjuraavet-negreta",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#e6dcb6",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2805f"
       },
       "textOutline": {
         "enabled": true,
@@ -102,7 +102,7 @@
       "text": "",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "color": "#10908e",
+      "color": "#6c6152",
       "align": "right",
       "textOutline": {
         "enabled": true,

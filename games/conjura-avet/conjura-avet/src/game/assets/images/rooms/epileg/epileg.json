@@ -23,7 +23,7 @@
     },
     "epileg 1.aseprite": {
       "frame": {
-        "x": 983,
+        "x": 1008,
         "y": 0,
         "w": 1,
         "h": 1
@@ -44,7 +44,7 @@
     },
     "epileg 2.aseprite": {
       "frame": {
-        "x": 903,
+        "x": 928,
         "y": 0,
         "w": 78,
         "h": 14
@@ -86,7 +86,7 @@
     },
     "epileg 4.aseprite": {
       "frame": {
-        "x": 981,
+        "x": 1006,
         "y": 0,
         "w": 2,
         "h": 3
@@ -107,7 +107,7 @@
     },
     "epileg 5.aseprite": {
       "frame": {
-        "x": 880,
+        "x": 905,
         "y": 0,
         "w": 23,
         "h": 29
@@ -130,6 +130,27 @@
       "frame": {
         "x": 668,
         "y": 0,
+        "w": 25,
+        "h": 41
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 284,
+        "y": 146,
+        "w": 25,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "epileg 7.aseprite": {
+      "frame": {
+        "x": 693,
+        "y": 0,
         "w": 65,
         "h": 34
       },
@@ -147,9 +168,9 @@
       },
       "duration": 100
     },
-    "epileg 7.aseprite": {
+    "epileg 8.aseprite": {
       "frame": {
-        "x": 733,
+        "x": 758,
         "y": 0,
         "w": 147,
         "h": 33
@@ -175,7 +196,7 @@
     "image": "epileg.png",
     "format": "RGBA8888",
     "size": {
-      "w": 984,
+      "w": 1009,
       "h": 360
     },
     "scale": "1",
@@ -223,16 +244,23 @@
         "color": "#000000ff"
       },
       {
-        "name": "davant_abeurador",
+        "name": "planco_agafat",
         "from": 6,
         "to": 6,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_abeurador",
         "from": 7,
         "to": 7,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 8,
+        "to": 8,
         "direction": "forward",
         "color": "#000000ff"
       }

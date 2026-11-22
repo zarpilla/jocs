@@ -1,7 +1,7 @@
 {
   "id": "game-menu",
   "name": "Game Menu",
-  "description": " [288]",
+  "description": " [640×360: hd640/gui_rest.py] [640×360: hd640/gui_rest.py] [288]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -47,7 +47,7 @@
       "text": "Menú",
       "font": "conjuraavet-negreta",
       "fontSize": 8,
-      "color": "#1a466b",
+      "color": "#e8b45c",
       "gridPlacement": {
         "gridControlId": "menu-layout",
         "row": 0,
@@ -67,11 +67,11 @@
       "text": "Desa",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#e6dcb6",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -2,
-      "backgroundTag": "",
+      "backgroundTag": "key-91x27",
       "zIndex": 5,
       "gridPlacement": {
         "gridControlId": "menu-layout",
@@ -79,11 +79,20 @@
         "col": 0,
         "align": "center-left"
       },
-      "backgroundColor": "#132243",
-      "backgroundColorStates": {
-        "hover": "#1a466b",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "states": {
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed",
+        "disabled": "key-91x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
       }
     },
     {
@@ -97,11 +106,11 @@
       "text": "Carrega",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#e6dcb6",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -2,
-      "backgroundTag": "",
+      "backgroundTag": "key-91x27",
       "zIndex": 5,
       "gridPlacement": {
         "gridControlId": "menu-layout",
@@ -109,11 +118,20 @@
         "col": 0,
         "align": "center-right"
       },
-      "backgroundColor": "#132243",
-      "backgroundColorStates": {
-        "hover": "#1a466b",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "states": {
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed",
+        "disabled": "key-91x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
       }
     },
     {
@@ -128,11 +146,11 @@
       "text": "Opcions",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#e6dcb6",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -2,
-      "backgroundTag": "",
+      "backgroundTag": "key-185x27",
       "zIndex": 5,
       "gridPlacement": {
         "gridControlId": "menu-layout",
@@ -140,11 +158,20 @@
         "col": 0,
         "align": "center"
       },
-      "backgroundColor": "#132243",
-      "backgroundColorStates": {
-        "hover": "#1a466b",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "states": {
+        "hover": "key-185x27-hover",
+        "pressed": "key-185x27-pressed",
+        "disabled": "key-185x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
       }
     },
     {
@@ -158,11 +185,11 @@
       "text": "Surt",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#e6dcb6",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -2,
-      "backgroundTag": "",
+      "backgroundTag": "key-185x27",
       "zIndex": 5,
       "gridPlacement": {
         "gridControlId": "menu-layout",
@@ -170,11 +197,20 @@
         "col": 0,
         "align": "center"
       },
-      "backgroundColor": "#132243",
-      "backgroundColorStates": {
-        "hover": "#1a466b",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "states": {
+        "hover": "key-185x27-hover",
+        "pressed": "key-185x27-pressed",
+        "disabled": "key-185x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
       }
     },
     {
@@ -188,22 +224,31 @@
       "text": "Continua",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#e6dcb6",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -2,
-      "backgroundTag": "",
+      "backgroundTag": "key-185x27",
       "gridPlacement": {
         "gridControlId": "menu-layout",
         "row": 1,
         "col": 0,
         "align": "center"
       },
-      "backgroundColor": "#1a466b",
-      "backgroundColorStates": {
-        "hover": "#10908e",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "states": {
+        "hover": "key-185x27-hover",
+        "pressed": "key-185x27-pressed",
+        "disabled": "key-185x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
       }
     },
     {
@@ -217,11 +262,11 @@
       "text": "Historial",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#e6dcb6",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -2,
-      "backgroundTag": "",
+      "backgroundTag": "key-91x27",
       "zIndex": 5,
       "gridPlacement": {
         "gridControlId": "menu-layout",
@@ -229,11 +274,20 @@
         "col": 0,
         "align": "center-left"
       },
-      "backgroundColor": "#132243",
-      "backgroundColorStates": {
-        "hover": "#1a466b",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "states": {
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed",
+        "disabled": "key-91x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
       }
     },
     {
@@ -247,11 +301,11 @@
       "text": "Pista",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#e6dcb6",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -2,
-      "backgroundTag": "",
+      "backgroundTag": "key-91x27",
       "zIndex": 5,
       "gridPlacement": {
         "gridControlId": "menu-layout",
@@ -259,11 +313,20 @@
         "col": 0,
         "align": "center-right"
       },
-      "backgroundColor": "#132243",
-      "backgroundColorStates": {
-        "hover": "#1a466b",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "states": {
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed",
+        "disabled": "key-91x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#f2805f",
+        "pressed": "#f2805f",
+        "disabled": "#6c6152"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
       }
     }
   ],
