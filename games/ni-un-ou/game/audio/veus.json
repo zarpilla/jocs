@@ -1,0 +1,310 @@
+{
+  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `voices`: personatge → voice_id (encara cap). `text`: el que es diu quan no és el text tal qual (sense les xifres que canvien). `pronuncia`: anys, hores i codis. `codi`: qui diu les línies de game/logic. `sense_veu`: les pauses del narrador i les xifres del terminal.",
+  "actiu": "url",
+  "model": "eleven_v3",
+  "language": "ca",
+  "format": "mp3_44100_64",
+  "voices": {},
+  "text": {
+    "aliat.capitana": "La Capitana està amb vosaltres.",
+    "aliat.nadia": "La Nadia està amb vosaltres.",
+    "aliat.marcel": "En Marcel està amb vosaltres.",
+    "aliat.bastida": "En Bastida està amb vosaltres.",
+    "sync.satellit.queden6": "El senyal del satèl·lit comença a baixar.",
+    "sync.satellit.queden3": "El satèl·lit se'n va."
+  },
+  "pronuncia": {
+    "15:10": "quinze i deu",
+    "1984": "mil nou-cents vuitanta-quatre",
+    "2003": "dos mil tres",
+    "2004": "dos mil quatre",
+    "2011": "dos mil onze",
+    "2013": "dos mil tretze",
+    "2019": "dos mil dinou",
+    "SK-4": "essa ca quatre",
+    "Pili65": "Pili seixanta-cinc"
+  },
+  "codi": {
+    "esc.salpa1": "narrator",
+    "esc.salpa2": "narrator",
+    "sync.radio.paciencia3": "narrator",
+    "sync.radio.paciencia4": "narrator",
+    "sync.radio.paciencia5": "narrator",
+    "sync.radio.reinici3": "narrator",
+    "sync.satellit.queden1": "narrator",
+    "sync.satellit.queden3": "narrator",
+    "sync.satellit.queden6": "narrator",
+    "sync.satellit.reinici3": "narrator",
+    "munta.envia": [
+      "iri",
+      "vet"
+    ],
+    "munta.no_hi_cap": [
+      "iri",
+      "vet"
+    ],
+    "munta.ple": [
+      "iri",
+      "vet"
+    ],
+    "munta.recull": [
+      "iri",
+      "vet"
+    ],
+    "munta.buit": [
+      "iri",
+      "vet"
+    ],
+    "munta.travesser.envia": "vet",
+    "munta.travesser.recull": "iri",
+    "munta.registre.recull": "vet",
+    "donar.dona": [
+      "iri",
+      "vet"
+    ],
+    "munta.retorna": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.travesser.cuina": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.travesser.rebost": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.travesser.pont": [
+      "iri",
+      "vet"
+    ],
+    "munta.recull.travesser": [
+      "iri",
+      "vet"
+    ],
+    "munta.retorna.travesser": [
+      "iri",
+      "vet"
+    ],
+    "donar.dona.travesser": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.tram.cuina": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.tram.rebost": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.tram.pont": [
+      "iri",
+      "vet"
+    ],
+    "munta.recull.tram": [
+      "iri",
+      "vet"
+    ],
+    "munta.retorna.tram": [
+      "iri",
+      "vet"
+    ],
+    "donar.dona.tram": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.cable_nou.cuina": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.cable_nou.rebost": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.cable_nou.pont": [
+      "iri",
+      "vet"
+    ],
+    "munta.recull.cable_nou": [
+      "iri",
+      "vet"
+    ],
+    "munta.retorna.cable_nou": [
+      "iri",
+      "vet"
+    ],
+    "donar.dona.cable_nou": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.usb.cuina": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.usb.rebost": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.usb.pont": [
+      "iri",
+      "vet"
+    ],
+    "munta.recull.usb": [
+      "iri",
+      "vet"
+    ],
+    "munta.retorna.usb": [
+      "iri",
+      "vet"
+    ],
+    "donar.dona.usb": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.nota_iri.cuina": "iri",
+    "munta.envia.nota_iri.rebost": "iri",
+    "munta.envia.nota_iri.pont": "iri",
+    "munta.recull.nota_iri": "vet",
+    "munta.retorna.nota_iri": "vet",
+    "donar.dona.nota_iri": "iri",
+    "munta.envia.nota_vet.cuina": "vet",
+    "munta.envia.nota_vet.rebost": "vet",
+    "munta.envia.nota_vet.pont": "vet",
+    "munta.recull.nota_vet": "iri",
+    "munta.retorna.nota_vet": "iri",
+    "donar.dona.nota_vet": "vet",
+    "munta.envia.clau_tomas.cuina": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.clau_tomas.rebost": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.clau_tomas.pont": [
+      "iri",
+      "vet"
+    ],
+    "munta.recull.clau_tomas": [
+      "iri",
+      "vet"
+    ],
+    "munta.retorna.clau_tomas": [
+      "iri",
+      "vet"
+    ],
+    "donar.dona.clau_tomas": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.mostra7.cuina": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.mostra7.rebost": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.mostra7.pont": [
+      "iri",
+      "vet"
+    ],
+    "munta.recull.mostra7": [
+      "iri",
+      "vet"
+    ],
+    "munta.retorna.mostra7": [
+      "iri",
+      "vet"
+    ],
+    "donar.dona.mostra7": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.registre.cuina": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.registre.rebost": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.registre.pont": [
+      "iri",
+      "vet"
+    ],
+    "munta.recull.registre": [
+      "iri",
+      "vet"
+    ],
+    "munta.retorna.registre": [
+      "iri",
+      "vet"
+    ],
+    "donar.dona.registre": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.mapa.cuina": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.mapa.rebost": [
+      "iri",
+      "vet"
+    ],
+    "munta.envia.mapa.pont": [
+      "iri",
+      "vet"
+    ],
+    "munta.recull.mapa": [
+      "iri",
+      "vet"
+    ],
+    "munta.retorna.mapa": [
+      "iri",
+      "vet"
+    ],
+    "donar.dona.mapa": [
+      "iri",
+      "vet"
+    ],
+    "mapa.aqui": [
+      "iri",
+      "vet"
+    ],
+    "mapa.tancat": [
+      "iri",
+      "vet"
+    ]
+  },
+  "sense_veu": [
+    "dlg.juana.mostra.7",
+    "dlg.marcel.secret.11",
+    "dlg.nadia.juana.2",
+    "dlg.nadia.pillada.13",
+    "dlg.reunio.confessio.18",
+    "dlg.reunio.confessio.35",
+    "dlg.reunio.confessio.5",
+    "dlg.reunio.confessio.8",
+    "dlg.reunio.iri.4",
+    "final.19",
+    "final.30",
+    "final.35",
+    "final.37",
+    "final.40",
+    "final.45",
+    "final.48",
+    "sala.caixa_cadenes.13",
+    "sala.caixa_cadenes.6",
+    "sala.caixa_cadenes.9",
+    "sala.coberta_proa.escotilla.13",
+    "sala.coberta_proa.escotilla.5",
+    "sala.coberta_proa.escotilla.9",
+    "sala.sala_radio.panell.24",
+    "final.recompte.",
+    "sala.pont.terminal.1_xifres",
+    "sala.pont.terminal.27_xifres"
+  ]
+}

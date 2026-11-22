@@ -189,7 +189,7 @@ Com a Suma Zero. Hi ha dues escenes en què cal **controlar les dues alhora**: l
   posa rumb a **Port Hallen** (Valmark): l'Arenga salpa del Punt 7 a les nou del matí i entra a aigües de Valmark
   a les set del matí de l'endemà, 22 hores després.
 - **Entre escenes, un títol diu quant falta** per entrar a aigües de Valmark: «Falten 22 hores», «Falten 10
-  hores», «Falten 6 hores». És un rellotge narratiu, no de joc: no es pot perdre per culpa seva.
+  hores», «Falten 5 hores». És un rellotge narratiu, no de joc: no es pot perdre per culpa seva.
 
 ### 6. El quadern
 
@@ -209,7 +209,7 @@ Com a Suma Zero. Hi ha dues escenes en què cal **controlar les dues alhora**: l
 | Dia 1, 21:00 | 4. El portàtil | |
 | Dia 1, 22:00 | 5. El parany | |
 | Dia 1, 23:00 | 6. On és la Juana | |
-| Dia 2, 01:00 | 7. On ningú no beu | **Falten 6 hores. Acte 3** |
+| Dia 2, 01:00 | 7. On ningú no beu | **Falten 5 hores. Acte 3** (en acabar, a les 02:00) |
 | Dia 2, 02:00 | 8. La reunió | |
 | Dia 2, 03:00 | 9. La finestra del satèl·lit | |
 | Dues setmanes després, a trenc d'alba | Final, a Galway | |
@@ -773,8 +773,8 @@ Quan la Vet torna a la infermeria amb la mostra, la Juana la mira i diu una sola
 > IRI: De llauna. De Portugal.
 > VET: Bé. *(pausa)* Per res.
 
-**Fi de l'Acte 2.** La Capitana, per la megafonia: «Falten sis hores per entrar a aigües de Valmark. Valmark ens
-ofereix l'escorta d'un guardacostes. Per la nostra seguretat.» Títol: **Falten 6 hores. Acte 3 · Mostra 7.**
+**Fi de l'Acte 2.** La Capitana, per la megafonia: «Falten cinc hores per entrar a aigües de Valmark. Valmark ens
+ofereix l'escorta d'un guardacostes. Per la nostra seguretat.» Títol: **Falten 5 hores. Acte 3 · Mostra 7.**
 
 Just després del títol, pel tub (l'Iri és al pont, de guàrdia; la Vet, a la infermeria), el pla de l'Acte 3:
 

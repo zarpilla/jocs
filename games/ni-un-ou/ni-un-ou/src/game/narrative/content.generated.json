@@ -4079,7 +4079,48 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.infermeria.fitxes.2"
+                    "text": "sala.infermeria.fitxes.2_0",
+                    "if": {
+                      "var": "revisions",
+                      "op": "==",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.infermeria.fitxes.2_1",
+                    "if": {
+                      "var": "revisions",
+                      "op": "==",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.infermeria.fitxes.2_2",
+                    "if": {
+                      "var": "revisions",
+                      "op": "==",
+                      "value": 2
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.infermeria.fitxes.2_3",
+                    "if": {
+                      "var": "revisions",
+                      "op": "==",
+                      "value": 3
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.infermeria.fitxes.2_4",
+                    "if": {
+                      "var": "revisions",
+                      "op": ">=",
+                      "value": 4
+                    }
                   }
                 ]
               },
@@ -7643,6 +7684,10 @@
                   {
                     "who": "player",
                     "text": "sala.pont.terminal.27"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.pont.terminal.27_xifres"
                   }
                 ]
               },
@@ -7657,6 +7702,10 @@
                   {
                     "who": "player",
                     "text": "sala.pont.terminal.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.pont.terminal.1_xifres"
                   }
                 ]
               },
@@ -18556,7 +18605,7 @@
               },
               {
                 "who": "title",
-                "text": "esc.falten6"
+                "text": "esc.falten5"
               },
               {
                 "who": "title",
@@ -18618,7 +18667,7 @@
               },
               {
                 "setVar": "hores",
-                "value": 6
+                "value": 5
               },
               {
                 "event": "situar",
@@ -23856,7 +23905,7 @@
       "dlg.tub.esc8.4": "Galway. La Capitana ho ha entès.",
       "dlg.tub.esc8.5": "Ara, la Capitana: que ens reuneixi a tots al menjador. I ho dic jo.",
       "dlg.tub.esc8.6": "Quan la Capitana us reuneixi, baixo. Fins llavors, estic de guàrdia.",
-      "dlg.tub.esc9.1": "Senyal: {senyal}. Encara hi som.",
+      "dlg.tub.esc9.1": "Encara tinc senyal. Encara hi som.",
       "dlg.tub.esc9.2": "En Bastida té el relé a la mà. Hi parlo.",
       "dlg.tub.esc9.3": "Ja tens corrent.",
       "dlg.tub.res.1": "Vet?",
@@ -24142,7 +24191,7 @@
       "dlg.juana.mostra.7": "Una pausa.",
       "dlg.juana.mostra.8": "Per res.",
       "dlg.juana.mostra.9": "La Juana es queda la bossa a la falda, sota les mantes. No la deixarà anar fins a terra.",
-      "dlg.juana.mostra.10": "Atenció. Falten sis hores per entrar a aigües de Valmark.",
+      "dlg.juana.mostra.10": "Atenció. Falten cinc hores per entrar a aigües de Valmark.",
       "dlg.juana.esc8.1": "Ves, doctora. Jo ja hi seré, a la reunió. Amb dues mantes.",
       "dlg.juana.res.1": "Ara no. Estic comptant.",
       "dlg.bastida.opt.revisio": "I la revisió, Ernest?",
@@ -24593,7 +24642,7 @@
       "proleg.12": "A bord, algú més la mira. Quan la Juana aixeca el pot, en algun lloc del vaixell s'encén una pantalla petita. Una mà hi escriu.",
       "acte.1": "Acte 1 · Aigua a la sentina",
       "esc.onzenit": "Onze de la nit.",
-      "esc.falten6": "Falten 6 hores.",
+      "esc.falten5": "Falten 5 hores.",
       "acte.3": "Acte 3 · Mostra 7",
       "esc.dues": "Dues de la matinada.",
       "esc.tres": "Tres de la matinada. Ara necessites les dues.",
@@ -24609,18 +24658,18 @@
       "sync.satellit.reinici1": "Se n'ha anat. El següent passa d'aquí a noranta-quatre minuts.",
       "sync.satellit.reinici2": "Ernest, tenim noranta-quatre minuts. Vols un cafè?",
       "sync.satellit.reinici3": "Noranta-quatre minuts després, el satèl·lit torna a sortir per l'horitzó.",
-      "munta.envia": "Envio {objecte} {parada}.",
+      "munta.envia": "Al muntacàrregues, i cap a l'altra parada.",
       "munta.cap.cuina": "a la cuina",
       "munta.cap.rebost": "al rebost",
       "munta.cap.pont": "al pont",
       "munta.no_hi_cap": "No hi cap. El muntacàrregues és per a safates, no per a mudances.",
       "munta.ple": "A l'altra banda, la safata ja està plena.",
-      "munta.recull": "Agafo {objecte} de la safata.",
+      "munta.recull": "Ho agafo de la safata.",
       "munta.buit": "La safata està buida.",
       "munta.travesser.envia": "Rebost. Avall.",
       "munta.travesser.recull": "El travesser de la llitera de rescat. La metgessa nova té recursos.",
       "munta.registre.recull": "La pàgina del registre. Ara, la Capitana.",
-      "donar.dona": "Té: {objecte}.",
+      "donar.dona": "Té. És per a tu.",
       "esc.salpa1": "A les nou, l'Arenga salpa cap a Port Hallen.",
       "esc.falten22": "Falten 22 hores.",
       "esc.salpa2": "La Capitana vol avisar l'oficina de l'escala, i no pot: la ràdio de llarg abast no funciona.",
@@ -24629,13 +24678,73 @@
       "esc.salpa5": "El satèl·lit sempre fa el que vol. La ràdio no.",
       "esc.onze": "Onze del matí. Ara necessites les dues.",
       "esc.falten10": "Falten 10 hores.",
-      "munta.retorna": "Abans, el muntacàrregues torna amb {objecte}, que encara hi era.",
+      "munta.retorna": "Abans, el muntacàrregues torna amb el que encara hi era.",
       "mapa.aqui": "Ja hi soc.",
       "mapa.tancat": "Per aquí, ara, no hi puc passar.",
       "separades.iri": "La Vet és aquí dins.",
       "separades.vet": "L'Iri és aquí dins.",
       "separades.1": "Si ens veuen juntes, sabran que tramem alguna cosa.",
       "separades.tub": "Millor pel tub. I el que s'hagi de passar, pel muntacàrregues.",
+      "munta.envia.travesser.cuina": "Envio el travesser a la cuina.",
+      "munta.envia.travesser.rebost": "Envio el travesser al rebost.",
+      "munta.envia.travesser.pont": "Envio el travesser al pont.",
+      "munta.recull.travesser": "Agafo el travesser de la safata.",
+      "munta.retorna.travesser": "Abans, el muntacàrregues torna amb el travesser, que encara hi era.",
+      "donar.dona.travesser": "Té: el travesser.",
+      "munta.envia.tram.cuina": "Envio el tram de cable tallat a la cuina.",
+      "munta.envia.tram.rebost": "Envio el tram de cable tallat al rebost.",
+      "munta.envia.tram.pont": "Envio el tram de cable tallat al pont.",
+      "munta.recull.tram": "Agafo el tram de cable tallat de la safata.",
+      "munta.retorna.tram": "Abans, el muntacàrregues torna amb el tram de cable tallat, que encara hi era.",
+      "donar.dona.tram": "Té: el tram de cable tallat.",
+      "munta.envia.cable_nou.cuina": "Envio el cable i el connector a la cuina.",
+      "munta.envia.cable_nou.rebost": "Envio el cable i el connector al rebost.",
+      "munta.envia.cable_nou.pont": "Envio el cable i el connector al pont.",
+      "munta.recull.cable_nou": "Agafo el cable i el connector de la safata.",
+      "munta.retorna.cable_nou": "Abans, el muntacàrregues torna amb el cable i el connector, que encara hi era.",
+      "donar.dona.cable_nou": "Té: el cable i el connector.",
+      "munta.envia.usb.cuina": "Envio l'USB a la cuina.",
+      "munta.envia.usb.rebost": "Envio l'USB al rebost.",
+      "munta.envia.usb.pont": "Envio l'USB al pont.",
+      "munta.recull.usb": "Agafo l'USB de la safata.",
+      "munta.retorna.usb": "Abans, el muntacàrregues torna amb l'USB, que encara hi era.",
+      "donar.dona.usb": "Té: l'USB.",
+      "munta.envia.nota_iri.cuina": "Envio la meva nota a la cuina.",
+      "munta.envia.nota_iri.rebost": "Envio la meva nota al rebost.",
+      "munta.envia.nota_iri.pont": "Envio la meva nota al pont.",
+      "munta.recull.nota_iri": "Agafo el paper de l'Iri de la safata.",
+      "munta.retorna.nota_iri": "Abans, el muntacàrregues torna amb el paper de l'Iri, que encara hi era.",
+      "donar.dona.nota_iri": "Té: la meva nota.",
+      "munta.envia.nota_vet.cuina": "Envio la resposta a la cuina.",
+      "munta.envia.nota_vet.rebost": "Envio la resposta al rebost.",
+      "munta.envia.nota_vet.pont": "Envio la resposta al pont.",
+      "munta.recull.nota_vet": "Agafo el paper de la Vet de la safata.",
+      "munta.retorna.nota_vet": "Abans, el muntacàrregues torna amb el paper de la Vet, que encara hi era.",
+      "donar.dona.nota_vet": "Té: la resposta.",
+      "munta.envia.clau_tomas.cuina": "Envio la clau antiga a la cuina.",
+      "munta.envia.clau_tomas.rebost": "Envio la clau antiga al rebost.",
+      "munta.envia.clau_tomas.pont": "Envio la clau antiga al pont.",
+      "munta.recull.clau_tomas": "Agafo la clau antiga de la safata.",
+      "munta.retorna.clau_tomas": "Abans, el muntacàrregues torna amb la clau antiga, que encara hi era.",
+      "donar.dona.clau_tomas": "Té: la clau antiga.",
+      "munta.envia.mostra7.cuina": "Envio la Mostra 7 a la cuina.",
+      "munta.envia.mostra7.rebost": "Envio la Mostra 7 al rebost.",
+      "munta.envia.mostra7.pont": "Envio la Mostra 7 al pont.",
+      "munta.recull.mostra7": "Agafo la Mostra 7 de la safata.",
+      "munta.retorna.mostra7": "Abans, el muntacàrregues torna amb la Mostra 7, que encara hi era.",
+      "donar.dona.mostra7": "Té: la Mostra 7.",
+      "munta.envia.registre.cuina": "Envio la pàgina del registre a la cuina.",
+      "munta.envia.registre.rebost": "Envio la pàgina del registre al rebost.",
+      "munta.envia.registre.pont": "Envio la pàgina del registre al pont.",
+      "munta.recull.registre": "Agafo la pàgina del registre de la safata.",
+      "munta.retorna.registre": "Abans, el muntacàrregues torna amb la pàgina del registre, que encara hi era.",
+      "donar.dona.registre": "Té: la pàgina del registre.",
+      "munta.envia.mapa.cuina": "Envio el plànol a la cuina.",
+      "munta.envia.mapa.rebost": "Envio el plànol al rebost.",
+      "munta.envia.mapa.pont": "Envio el plànol al pont.",
+      "munta.recull.mapa": "Agafo el plànol de la safata.",
+      "munta.retorna.mapa": "Abans, el muntacàrregues torna amb el plànol, que encara hi era.",
+      "donar.dona.mapa": "Té: el plànol.",
       "ui.verb.give": "Dona",
       "ui.verb.give.prep": "a",
       "ui.verb.pickUp": "Agafa",
@@ -25339,7 +25448,7 @@
       "sala.pallol.nom": "Pallol",
       "sala.sala_bombes.escotilla.1": "L'escotilla, cap al passadís.",
       "sala.sala_bombes.escotilla.nom": "escotilla",
-      "sala.sala_bombes.llibre.1": "El llibre de la Juana. A terra, obert de cara avall. I la llanterna, encesa.",
+      "sala.sala_bombes.llibre.1": "El llibre de la Juana, a terra. I la llanterna, encesa.",
       "sala.sala_bombes.llibre.2": "Vet. El llibre de la Juana és a terra de la sala de bombes. I la llanterna, encesa.",
       "sala.sala_bombes.llibre.3": "La Juana no descansa.",
       "sala.sala_bombes.llibre.4": "Ningú no deixa un llibre a terra. I menys la Juana.",
@@ -25451,7 +25560,6 @@
       "sala.infermeria.armari.3": "Gases, iode, benes, un tensiòmetre i una ampolla d'alguna cosa que va deixar el metge d'abans. No és alcohol de ferides.",
       "sala.infermeria.armari.nom": "armari",
       "sala.infermeria.fitxes.1": "Les fitxes mèdiques de la tripulació. Nom i contacte d'emergència, de l'embarcament. La revisió, en blanc: ningú no l'ha passada.",
-      "sala.infermeria.fitxes.2": "Les fitxes mèdiques. Revisions fetes: {revisions}.",
       "sala.infermeria.fitxes.3": "Les fitxes mèdiques de tothom.",
       "sala.infermeria.fitxes.4": "Primer acabo amb qui tinc aquí.",
       "sala.infermeria.fitxes.5": "Les deixo a lloc. Hi ha la vida de tothom, i no és meva.",
@@ -25549,7 +25657,7 @@
       "sala.pont.escala_pal.1": "Amb aquest vent, al pal no s'hi puja. Només si no hi ha més remei.",
       "sala.pont.escala_pal.2": "L'escala del pal. A dalt, l'antena del satèl·lit. I el vent.",
       "sala.pont.escala_pal.nom": "escala del pal",
-      "sala.pont.terminal.1": "El terminal de satèl·lit. «SENYAL: {senyal}». El SAI: {sai} torns.",
+      "sala.pont.terminal.1": "El terminal de satèl·lit. Té senyal, i el SAI encara aguanta.",
       "sala.pont.terminal.2": "El terminal de satèl·lit. «SENSE SENYAL».",
       "sala.pont.terminal.3": "Això és cosa de l'Iri. Jo, amb sort, l'encendria.",
       "sala.pont.terminal.4": "Primer, les dades. Al portàtil de la Juana.",
@@ -25654,7 +25762,7 @@
       "sala.pal.antena.nom": "antena",
       "sala.pal.marcel.1": "El Marcel, agafat a la barana amb les dues mans. Diu que no té por. Té por.",
       "sala.pal.marcel.2": "Marcel.",
-      "sala.pal.marcel.3": "Capità. Diu. El que sigui. Fes via, que fa fred.",
+      "sala.pal.marcel.3": "Aquí. Agafat. Fes via, que fa fred.",
       "sala.pal.mar.1": "No miris avall. No miris avall.",
       "sala.pal.mar.2": "He mirat avall.",
       "sala.pal.mar.nom": "mar",
@@ -25826,7 +25934,7 @@
       "sala.laboratori.nota.3": "«Si no torno.» I no ha tornat.",
       "sala.laboratori.nota.4": "El portàtil té contrasenya. La Juana li va dir a la Vet que és el nom de la seva mare.",
       "sala.pont.terminal.26": "Les dades poden esperar. La Juana, no.",
-      "sala.pont.terminal.27": "El terminal de satèl·lit. «SENSE SENYAL»: l'antena del pal no apunta enlloc. El SAI: {sai} torns.",
+      "sala.pont.terminal.27": "El terminal de satèl·lit. «SENSE SENYAL»: l'antena del pal no apunta enlloc.",
       "sala.coberta_popa.22": "Tothom se'l creu. Fa dues campanyes, en un temporal, vaig caure per la borda. Em va treure ell.",
       "sala.coberta_popa.23": "Tot el que sé de mar, m'ho ha ensenyat ell.",
       "sala.coberta_proa.escotilla.17": "La Vet arriba corrents per coberta: ha sentit la cisalla.",
@@ -25871,7 +25979,14 @@
       "sala.passadis_baix.petjades.3": "Són petjades. No s'agafen. S'interpreten.",
       "sala.rebost.registre.21": "Tancat amb clau. I encara aguanta per la frontissa de baix.",
       "sala.coberta_popa.24": "Onze de la nit. Els llums de popa, l'estela blanca i en Bastida, amb una llanterna, «ajudant a buscar».",
-      "sala.passadis.escala_amunt.7": "No. Tinc una maquinista que s'enfonsa, i el travesser és per a ella."
+      "sala.passadis.escala_amunt.7": "No. Tinc una maquinista que s'enfonsa, i el travesser és per a ella.",
+      "sala.infermeria.fitxes.2_0": "Les fitxes mèdiques. Encara no he fet cap revisió.",
+      "sala.infermeria.fitxes.2_1": "Les fitxes mèdiques. Una revisió feta.",
+      "sala.infermeria.fitxes.2_2": "Les fitxes mèdiques. Dues revisions fetes.",
+      "sala.infermeria.fitxes.2_3": "Les fitxes mèdiques. Tres revisions fetes.",
+      "sala.infermeria.fitxes.2_4": "Les fitxes mèdiques. Quatre revisions fetes.",
+      "sala.pont.terminal.1_xifres": "«SENYAL: {senyal}» · SAI: {sai} torns",
+      "sala.pont.terminal.27_xifres": "SAI: {sai} torns"
     }
   },
   "locale": "ca",

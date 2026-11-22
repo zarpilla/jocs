@@ -505,7 +505,48 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.infermeria.fitxes.2"
+              "text": "sala.infermeria.fitxes.2_0",
+              "if": {
+                "var": "revisions",
+                "op": "==",
+                "value": 0
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.infermeria.fitxes.2_1",
+              "if": {
+                "var": "revisions",
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.infermeria.fitxes.2_2",
+              "if": {
+                "var": "revisions",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.infermeria.fitxes.2_3",
+              "if": {
+                "var": "revisions",
+                "op": "==",
+                "value": 3
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.infermeria.fitxes.2_4",
+              "if": {
+                "var": "revisions",
+                "op": ">=",
+                "value": 4
+              }
             }
           ]
         },

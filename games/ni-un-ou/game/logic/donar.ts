@@ -4,7 +4,10 @@
  */
 import type { ActionResult, Narrative } from '@aventura/narrative-core';
 
-export const DONAR_TEXTS = ['donar.dona'];
+import { OBJECTES_MUNTA } from './muntacarregues.js';
+
+/** Una frase per objecte (`donar.dona.<objecte>`), perquè es pugui gravar; si no n'hi ha, la genèrica. */
+export const DONAR_TEXTS = ['donar.dona', ...OBJECTES_MUNTA.map((item) => `donar.dona.${item}`)];
 
 export function donar(n: Narrative, item: string): ActionResult {
   const who = n.world.activeProtagonist();
@@ -12,7 +15,8 @@ export function donar(n: Narrative, item: string): ActionResult {
   const props = n.content.items[item]?.props ?? {};
   if (typeof props.no_munta === 'string') return { lines: [{ who: 'player', text: props.no_munta }] };
   n.apply([{ takeItem: item }, { giveItem: item, who: other }]);
-  return { lines: [{ who: 'player', text: 'donar.dona', params: { objecte: n.t(`obj.${item}.amb_article`) } }] };
+  const k = `donar.dona.${item}`;
+  return { lines: [{ who: 'player', text: n.i18n.has(k) ? k : 'donar.dona' }] };
 }
 
 export function installDonar(n: Narrative) {

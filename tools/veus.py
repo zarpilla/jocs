@@ -170,7 +170,8 @@ def collect(content, table, joc: pathlib.Path, codi_cfg: dict):
         walk(r, rid, None, room_protas(rid))
     for did, d in content["dialogues"].items():
         starts = dialog_rooms.get(did, set())
-        ps = set().union(*(room_protas(r) for r in starts)) if starts else set()
+        # Un diàleg que no comença a cap sala (el d'un objecte: el walkie, el quadern) el pot obrir qualsevol de les dues.
+        ps = set().union(*(room_protas(r) for r in starts)) if starts else set(protas)
         walk(d, None, did, ps)
         # Les opcions es diuen en veu alta (si no són `silent`): les diu la protagonista.
         for node in d.get("nodes", {}).values():

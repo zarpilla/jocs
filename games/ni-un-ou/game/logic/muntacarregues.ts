@@ -15,11 +15,30 @@ import type { ActionResult, Narrative } from '@aventura/narrative-core';
 export const PARADES = ['cuina', 'rebost', 'pont'] as const;
 export type Parada = (typeof PARADES)[number];
 
+/** Els objectes que hi caben (`munta: true` a items.json): les seves frases, una per objecte, per poder-les gravar. */
+export const OBJECTES_MUNTA = ['travesser', 'tram', 'cable_nou', 'usb', 'nota_iri', 'nota_vet', 'clau_tomas', 'mostra7', 'registre', 'mapa'];
+
 export const MUNTA_TEXTS = [
   'munta.envia', 'munta.retorna', 'munta.no_hi_cap', 'munta.ple', 'munta.recull', 'munta.buit', 'munta.cap.cuina', 'munta.cap.rebost', 'munta.cap.pont',
   // Línies pròpies d'alguns objectes (vegeu `extra`).
   'munta.travesser.envia', 'munta.travesser.recull', 'munta.registre.recull',
+  ...frasesPerObjecte(),
 ];
+
+function frasesPerObjecte() {
+  return OBJECTES_MUNTA.flatMap((item) => [
+    ...PARADES.map((cap) => `munta.envia.${item}.${cap}`), `munta.recull.${item}`, `munta.retorna.${item}`,
+  ]);
+}
+
+/**
+ * La frase d'un objecte (`munta.envia.<objecte>.<parada>`, `munta.recull.<objecte>`...), perquè es pugui gravar amb
+ * veu: res de `{objecte}`. Si no n'hi ha, la genèrica, que no l'anomena.
+ */
+function perObjecte(n: Narrative, base: string, ...parts: string[]) {
+  const k = [base, ...parts].join('.');
+  return n.i18n.has(k) ? k : base;
+}
 
 const player = (text: string, params?: Record<string, string>) => ({ who: 'player' as const, text, params });
 
@@ -47,8 +66,7 @@ export function enviar(n: Narrative, item: string, altraSala: string | null): Ac
   if (String(n.getVar(safata(cap)) ?? '')) return { lines: [player('munta.ple', { parada: n.t(`munta.cap.${cap}`) })] };
 
   n.apply([{ takeItem: item }, { setVar: safata(cap), value: item }]);
-  const objecte = ambArticle(n, item);
-  return { lines: [{ ...player('munta.envia', { objecte, parada: n.t(`munta.cap.${cap}`) }), sound: 'muntacarregues' }, ...extra(n, `munta.${item}.envia`)] };
+  return { lines: [{ ...player(perObjecte(n, 'munta.envia', item, cap)), sound: 'muntacarregues' }, ...extra(n, `munta.${item}.envia`)] };
 }
 
 export function recollir(n: Narrative): ActionResult {
@@ -57,8 +75,7 @@ export function recollir(n: Narrative): ActionResult {
   const item = String(n.getVar(safata(aqui)) ?? '');
   if (!item) return { lines: [player('munta.buit')] };
   n.apply([{ setVar: safata(aqui), value: '' }, { giveItem: item }]);
-  const objecte = ambArticle(n, item);
-  return { lines: [player('munta.recull', { objecte }), ...extra(n, `munta.${item}.recull`)] };
+  return { lines: [player(perObjecte(n, 'munta.recull', item)), ...extra(n, `munta.${item}.recull`)] };
 }
 
 /**
@@ -73,21 +90,11 @@ export function nota(n: Narrative, item: string, parada: Parada): ActionResult {
     const aqui = paradaActual(n);
     if (aqui && !String(n.getVar(safata(aqui)) ?? '')) n.apply({ setVar: safata(aqui), value: abans });
     else n.apply({ giveItem: abans });
-    lines.push(player('munta.retorna', { objecte: ambArticle(n, abans) }));
+    lines.push(player(perObjecte(n, 'munta.retorna', abans)));
   }
   n.apply({ setVar: safata(parada), value: item });
-  lines.push({ ...player('munta.envia', { objecte: ambArticle(n, item), parada: n.t(`munta.cap.${parada}`) }), sound: 'muntacarregues' });
+  lines.push({ ...player(perObjecte(n, 'munta.envia', item, parada)), sound: 'muntacarregues' });
   return { lines };
-}
-
-/**
- * L'objecte amb l'article, dit per la protagonista activa: si és seu (`props.de`) i té una forma pròpia
- * (`obj.<objecte>.meu`), aquesta («la meva nota», no «el paper de l'Iri» dit per l'Iri).
- */
-function ambArticle(n: Narrative, item: string): string {
-  const meu = `obj.${item}.meu`;
-  if (n.content.items[item]?.props?.de === n.world.activeProtagonist() && n.i18n.has(meu)) return n.t(meu);
-  return n.t(`obj.${item}.amb_article`);
 }
 
 /** Línies pròpies d'un objecte en enviar-lo o recollir-lo (`munta.<objecte>.envia`, `.recull`, `.recull2`...). */

@@ -170,6 +170,10 @@
             {
               "who": "player",
               "text": "sala.pont.terminal.27"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.pont.terminal.27_xifres"
             }
           ]
         },
@@ -184,6 +188,10 @@
             {
               "who": "player",
               "text": "sala.pont.terminal.1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.pont.terminal.1_xifres"
             }
           ]
         },
