@@ -77,8 +77,10 @@ function sayLines(lines: ResolvedLine[], around: Around) {
         fadeIn(1)
       }
     } else if (line.who === 'narrator') {
-      if (isClickableCutscene(narrative.world.currentRoom())) narrate(line.text)
-      else display(line.text)
+      // El narrador també pot tenir veu: `narrator<número>` (el motor la fa sonar des de `display`).
+      const text = voiced('narrator', line.key, line.text)
+      if (isClickableCutscene(narrative.world.currentRoom())) narrate(text)
+      else display(text)
     } else if (line.who === 'player') {
       player.say(voiced(player.id, line.key, line.text))
     } else {
@@ -512,7 +514,7 @@ export function switchProtagonist() {
 }
 
 /** Una línia d'un final: els personatges ja no hi són, i el que diuen surt amb el nom al davant. */
-type EndingLine = { who: string; text: string; sound?: string; effects?: Effect[] }
+type EndingLine = { who: string; key?: string; text: string; sound?: string; effects?: Effect[] }
 
 /**
  * Una línia d'un final. Damunt d'una sala (`enSala`), qui hi és i es veu la diu amb bafarada, com a la resta del
@@ -527,12 +529,17 @@ function displayEndingLine(line: EndingLine, enSala = false) {
     applyAppearances()
     applyPlaces(false)
   }
-  if (line.who === 'narrator' || line.who === 'title' || line.who === 'player') {
+  if (line.who === 'narrator') {
+    // Amb veu, com a la resta del joc (`narrator<número>`, que el motor fa sonar des de `display`).
+    display(voiced('narrator', line.key, line.text))
+    return
+  }
+  if (line.who === 'title' || line.who === 'player') {
     display(line.text)
     return
   }
-  const speaker = enSala ? (benneCharacter(line.who) as { visible?: boolean; say?(text: string): void } | undefined) : undefined
-  if (speaker?.visible && speaker.say) speaker.say(line.text)
+  const speaker = enSala ? (benneCharacter(line.who) as { id: string; visible?: boolean; say?(text: string): void } | undefined) : undefined
+  if (speaker?.visible && speaker.say) speaker.say(voiced(speaker.id, line.key, line.text))
   else display(`${narrative.characterName(line.who)}: ${line.text}`)
 }
 
@@ -556,7 +563,7 @@ export function playEnding(id?: string) {
     if (line.room && line.room !== actual?.room) trossos.push({ room: line.room, lines: [line] })
     else (actual ? actual.lines : negre).push(line)
   }
-  const tancament = { who: 'narrator', text: ending.text }
+  const tancament = { who: 'narrator', key: narrative.content.endings[endingId]?.text, text: ending.text }
   const ultim = trossos[trossos.length - 1]
   if (ending.textRoom && ending.textRoom !== ultim?.room) trossos.push({ room: ending.textRoom, lines: [tancament] })
   else (ultim ? ultim.lines : negre).push(tancament)

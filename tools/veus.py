@@ -8,7 +8,10 @@ al dia `npm run benne:sync`) i la configuració `game/audio/veus.json`:
       "actiu": true,      // true: sonen sempre; "url": només amb ?voices=on; false: el sync no les posa al joc
       "model": "eleven_v3", "language": "ca", "format": "mp3_44100_64",
       "voices": { "mare": "<voice_id>", "vet": "<voice_id>" },   // personatge nostre → veu d'ElevenLabs
-      "text": { "dlg.mare.hola": "[cheerfully] Hola, interna 9! ..." }  // opcional: el que es diu, si no és el text
+      "text": { "dlg.mare.hola": "[cheerfully] Hola, interna 9! ..." },  // opcional: el que es diu, si no és el text
+      "pronuncia": { "BCMU": "Be, ce, ema, u", "4.200 €": "quatre mil dos-cents euros" },  // opcional: substitucions
+      "codi": { "tub.envia": ["vet"], "sync.aeroport.reinici1": "narrator" },  // opcional: línies del codi del joc
+      "sense_veu": ["sala.bcmu_escombraries.llibre.bip"]   // opcional: claus (o començaments de clau) que no es diuen
     }
 
 Escriu `game/audio/voice/<personatge de Benne><número>.mp3` (el número és l'FNV-1a de la clau del text, el mateix
@@ -20,14 +23,21 @@ Què es genera (es poden combinar; sense cap, res):
     --sala <sala>      les línies de la sala i dels diàlegs que s'hi comencen
     --dialeg <id>      les línies d'un diàleg
     --clau <clau>      una línia concreta (es pot repetir)
-    --tot              tot el joc
+    --final <id>       les línies d'un final (escena, crèdits i tancament)
+    --defecte          les respostes per defecte (`ui.defecte.*`)
+    --codi             les línies que diu el codi del joc (`game/logic/*.ts`)
+    --tot              tot el joc (també els finals, les respostes per defecte i el codi; les pistes, no)
     --qui <pj>         només les d'aquest personatge (`player` = les protagonistes)
     --refes            torna a generar encara que no hagi canviat (una presa nova)
     --prova            no genera res: diu què faria i quants caràcters costaria
 
 La clau d'API es llegeix d'ELEVENLABS_API_KEY o de ~/.elevenlabs.env.
 El narrador també té veu, si n'hi ha a `voices` (`"narrator": "<voice_id>"`; fitxers `narrator<número>.mp3`, que
-el motor fa sonar des de `display`). No es diuen les de títol ni les que tenen variables (`{objecte}`). Les acotacions es treuen, i
+el motor fa sonar des de `display`). No es diuen les de títol, les que tenen variables (`{objecte}`)
+ni les de `sense_veu` (el que surt escrit en una pantalla, per exemple).
+Les línies del codi del joc que hi surten com a `{ who: 'bonfill', text: 'clau' }` es troben soles; la resta (qui diu
+`'tub.envia'`?) s'indiquen a `codi` de veus.json. `pronuncia` canvia trossos del text abans d'enviar-lo (sigles, imports,
+codis), sense tocar el text del joc. Les acotacions es treuen, i
 les que diuen com es parla queden com a etiqueta del v3: «(al walkie, xiuxiuejant) Iri.» → «[whispers] Iri.» (ETIQUETES).
 Una línia que només és acotació («(Tus, tus.)») no té veu. El que hi ha a `text` de veus.json s'envia tal qual.
 """
@@ -107,8 +117,10 @@ def protagonists_in(cond, out: set):
             protagonists_in(v, out)
 
 
-def collect(content):
-    """Totes les línies dites: (who, clau, sala, diàleg, protagonistes possibles si who és player)."""
+def collect(content, table, joc: pathlib.Path, codi_cfg: dict):
+    """Totes les línies dites: (who, clau, sala, diàleg, protagonistes possibles si who és player, grup).
+
+    El grup diu d'on surt: `None` (sales, diàlegs, objectes), `final:<id>`, `defecte` o `codi`."""
     rooms = content["rooms"]
     protas = content["manifest"]["protagonists"]
     # On comença cada diàleg (per saber qui és la `player` i per a --sala).
@@ -165,14 +177,44 @@ def collect(content):
                     lines.append(("player", ch["text"], None, did, ps))
     for kind in ("items", "characters"):
         for _id, o in content.get(kind, {}).items():
-            walk(o, None, None, set())
+            walk(o, None, None, set(protas))   # un objecte el pot portar (i mirar) qualsevol de les dues
+    lines = [(*l, None) for l in lines]
+
+    # Els finals: l'escena, els crèdits i la frase de tancament (narrador).
+    for eid, e in content.get("endings", {}).items():
+        for part in ("scene", "credits"):
+            for line in e.get(part) or []:
+                if isinstance(line.get("who"), str) and isinstance(line.get("text"), str):
+                    lines.append((line["who"], line["text"], line.get("room"), None, set(), f"final:{eid}"))
+        if isinstance(e.get("text"), str):
+            lines.append(("narrator", e["text"], e.get("textRoom"), None, set(), f"final:{eid}"))
+
+    # Les respostes per defecte: `ui.defecte.<verb>.<protagonista>[.n]` les diu ella; les generals, qualsevol.
+    for key in table:
+        if key == "ui.defecte" or key.startswith("ui.defecte."):
+            ps = {p for p in protas if p in key.split(".")} or set(protas)
+            lines.append(("player", key, None, None, ps, "defecte"))
+
+    # El codi del joc: `{ who: 'x', text: 'clau' }` als .ts, i el que digui `codi` de veus.json (que mana).
+    trobades = {}
+    for ts in sorted((joc / "game/logic").glob("*.ts")):
+        for who, key in re.findall(r"who:\s*'([\w-]+)'(?:\s*as const)?\s*,\s*text:\s*'([\w.]+)'", ts.read_text()):
+            trobades.setdefault(key, set()).add(who)
+    for key, who in codi_cfg.items():
+        trobades[key] = {who} if isinstance(who, str) else set(who)
+    for key, whos in trobades.items():
+        for who in whos:
+            if who in protas:
+                lines.append(("player", key, None, None, {who}, "codi"))
+            else:
+                lines.append((who, key, None, None, set(protas) if who == "player" else set(), "codi"))
     # Per a les línies sense pista, si la clau diu de qui és (`.vet1`, `.iri.2`), en fem cas.
     out = []
-    for who, key, room, dialog, ps in lines:
+    for who, key, room, dialog, ps, grup in lines:
         if who == "player" and not ps:
             parts = key.replace("_", ".").split(".")
             ps = {p for p in protas if any(x == p or (x.startswith(p) and x[len(p):].isdigit()) for x in parts)}
-        out.append((who, key, room, dialog, frozenset(ps)))
+        out.append((who, key, room, dialog, frozenset(ps), grup))
     return out, dialog_rooms
 
 
@@ -182,6 +224,9 @@ def main():
     ap.add_argument("--dialeg", action="append", default=[])
     ap.add_argument("--clau", action="append", default=[])
     ap.add_argument("--qui", action="append", default=[])
+    ap.add_argument("--final", action="append", default=[])
+    ap.add_argument("--defecte", action="store_true")
+    ap.add_argument("--codi", action="store_true")
     ap.add_argument("--tot", action="store_true")
     ap.add_argument("--refes", action="store_true")
     ap.add_argument("--prova", action="store_true")
@@ -204,19 +249,29 @@ def main():
     lock_path = out_dir / "veus.lock.json"
     lock = json.loads(lock_path.read_text()) if lock_path.exists() else {}
     voices, overrides = cfg["voices"], cfg.get("text", {})
+    pronuncia = sorted(cfg.get("pronuncia", {}).items(), key=lambda kv: -len(kv[0]))   # els trossos llargs, primer
+    sense_veu = cfg.get("sense_veu", [])
     model, language, fmt = cfg.get("model", "eleven_v3"), cfg.get("language", "ca"), cfg.get("format", "mp3_44100_64")
 
-    lines, dialog_rooms = collect(content)
+    lines, dialog_rooms = collect(content, table, joc, cfg.get("codi", {}))
 
-    def chosen(who, key, room, dialog):
+    def chosen(who, key, room, dialog, grup):
         if a.tot or key in a.clau or (dialog and dialog in a.dialeg):
             return True
+        if grup == "defecte":
+            return a.defecte
+        if grup == "codi":
+            return a.codi
+        if grup and grup.startswith("final:"):
+            return grup[6:] in a.final
         return any(room == s or (dialog and s in dialog_rooms.get(dialog, ())) for s in a.sala)
 
     # (stem, personatge, clau, text a dir, veu)
     jobs, skipped, seen = [], [], set()
-    for who, key, room, dialog, ps in lines:
-        if who in SENSE_VEU or not chosen(who, key, room, dialog):
+    for who, key, room, dialog, ps, grup in lines:
+        if who in SENSE_VEU or not chosen(who, key, room, dialog, grup):
+            continue
+        if any(key == k or key.startswith(k) for k in sense_veu):
             continue
         if a.qui and who not in a.qui:
             continue
@@ -233,6 +288,9 @@ def main():
             if not text:
                 skipped.append((key, "és una acotació"))
                 continue
+            for tros, dit in pronuncia:
+                text = text.replace(tros, dit)
+            text = re.sub(r"\s+", " ", text).strip()
         for sp in speakers:
             if sp not in voices:
                 if sp != "narrator":                    # un joc sense veu de narrador: no cal dir-ho línia a línia
