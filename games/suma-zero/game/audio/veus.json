@@ -1,10 +1,24 @@
 {
-  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `voices`: personatge → voice_id (encara cap: s'omple quan es creïn les veus). `pronuncia`: com es diuen sigles, imports i codis. `codi`: qui diu les línies del codi del joc (tub). `sense_veu`: el que surt escrit en una pantalla i no es diu.",
-  "actiu": "url",
+  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `voices`: personatge → voice_id (Voice Design v3). `pronuncia`: com es diuen sigles, imports i codis. `codi`: qui diu les línies del codi del joc (tub). `sense_veu`: el que surt escrit en una pantalla i no es diu. En Diu (el gat) no té veu a propòsit: les seves línies fan sonar miol.ogg.",
+  "actiu": true,
   "model": "eleven_v3",
   "language": "ca",
   "format": "mp3_44100_64",
-  "voices": {},
+  "voices": {
+    "iri": "KAFYZo6FF48Bct1BOJIx",
+    "vet": "BIEw0UmqoPkKt66jxeQZ",
+    "narrator": "th9zqB2LzgTTJqmUHY6L",
+    "ballester": "AuDvReSzMN5WjWvyabDy",
+    "empleat": "ykU7gWoiNK1iSBlQoHqg",
+    "marcel": "gIyuSh2UrBHKbHwUvRbP",
+    "neta": "3m9ggPe41hpT2e6zcuMW",
+    "pons": "9Rhb6b4Sip2dJIzOgpFD",
+    "recepcionista": "1nTP8XOvpyIqBWNqKWlM",
+    "rius": "6K85owF3LVoMkppyuC5y",
+    "soler": "PXlY9JHvQN5mfjfqHu8x",
+    "tomas": "ueeDWvUDboMZyQgcFkIa",
+    "bonfill": "nLTXUA1cXLo5vBkF8HyY"
+  },
   "text": {
     "dlg.ballester.cantar1": "[sings] Diners, diners, que no em deixeu dormir...",
     "dlg.soler.opt.plorar": "[crying] BUAAAAA! EL MEU FILL!",
@@ -13,7 +27,8 @@
     "aliat.ballester": "En Ballester és de la colla.",
     "aliat.neta": "Neta tres és de la colla.",
     "sync.aeroport.queden": "L'Ortega fa una pipada llarga.",
-    "sync.mobil.queden": "El Director allarga la mà cap al mòbil."
+    "sync.mobil.queden": "El Director allarga la mà cap al mòbil.",
+    "sala.pis_estudi.caixa.cable": "[central Catalan accent] Primer, el cable de xarxa."
   },
   "pronuncia": {
     "BCMU-07": "Be, ce, ema, u, zero set",

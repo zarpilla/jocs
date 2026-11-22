@@ -12,7 +12,8 @@
       "lines": [
         {
           "who": "diu",
-          "text": "dlg.diu.hola"
+          "text": "dlg.diu.hola",
+          "sound": "miol"
         }
       ],
       "goto": "menu"
@@ -71,7 +72,8 @@
       "lines": [
         {
           "who": "diu",
-          "text": "dlg.diu.adeu"
+          "text": "dlg.diu.adeu",
+          "sound": "miol"
         }
       ]
     }
