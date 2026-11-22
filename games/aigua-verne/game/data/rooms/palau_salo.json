@@ -44,6 +44,10 @@
             {
               "who": "player",
               "text": "sala.palau_salo.escenari.1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.palau_salo.escenari.xifra"
             }
           ]
         },
@@ -100,6 +104,10 @@
               "text": "sala.palau_salo.pantalla.2"
             },
             {
+              "who": "narrator",
+              "text": "preu.xifra"
+            },
+            {
               "who": "player",
               "text": "sala.palau_salo.pantalla.3"
             }
@@ -111,6 +119,10 @@
             {
               "who": "player",
               "text": "sala.palau_salo.pantalla.1"
+            },
+            {
+              "who": "narrator",
+              "text": "preu.xifra"
             },
             {
               "who": "player",

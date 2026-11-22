@@ -2608,7 +2608,95 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.aqua_port.panell_preu.1"
+                    "text": "preu.panell.48",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 48
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.64",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 64
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.97",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 97
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.112",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 112
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell",
+                    "if": {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "preu.xifra",
+                    "if": {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
                   }
                 ]
               },
@@ -5364,7 +5452,95 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.ferrum_carrer.panell_preu.1"
+                    "text": "preu.panell.48",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 48
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.64",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 64
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.97",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 97
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.112",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 112
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell",
+                    "if": {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "preu.xifra",
+                    "if": {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
                   }
                 ]
               },
@@ -6906,6 +7082,10 @@
                   {
                     "who": "player",
                     "text": "sala.fosa_forn.forn.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.fosa_forn.xifra"
                   }
                 ]
               },
@@ -6967,6 +7147,10 @@
                   {
                     "who": "player",
                     "text": "sala.fosa_forn.termometre.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.fosa_forn.xifra"
                   }
                 ]
               },
@@ -8535,7 +8719,95 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.granja_pati.panell_preu.1"
+                    "text": "preu.panell.48",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 48
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.64",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 64
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.97",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 97
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.112",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 112
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell",
+                    "if": {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "preu.xifra",
+                    "if": {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
                   }
                 ]
               },
@@ -10230,6 +10502,10 @@
                   {
                     "who": "player",
                     "text": "sala.palau_salo.escenari.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.palau_salo.escenari.xifra"
                   }
                 ]
               },
@@ -10286,6 +10562,10 @@
                     "text": "sala.palau_salo.pantalla.2"
                   },
                   {
+                    "who": "narrator",
+                    "text": "preu.xifra"
+                  },
+                  {
                     "who": "player",
                     "text": "sala.palau_salo.pantalla.3"
                   }
@@ -10297,6 +10577,10 @@
                   {
                     "who": "player",
                     "text": "sala.palau_salo.pantalla.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "preu.xifra"
                   },
                   {
                     "who": "player",
@@ -10939,7 +11223,95 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.port_terra2.panell_preu.1"
+                    "text": "preu.panell.48",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 48
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.64",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 64
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.97",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 97
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.112",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 112
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell",
+                    "if": {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "preu.xifra",
+                    "if": {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
                   }
                 ]
               },
@@ -11681,7 +12053,95 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.verdant_jardi.panell_preu.1"
+                    "text": "preu.panell.48",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 48
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.64",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 64
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.97",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 97
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell.112",
+                    "if": {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 112
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "preu.panell",
+                    "if": {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "preu.xifra",
+                    "if": {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
                   }
                 ]
               },
@@ -19689,16 +20149,270 @@
             "lines": [
               {
                 "who": "vet",
-                "text": "dlg.comunicador.preu.1",
+                "text": "preu.comunicador.48",
                 "if": {
-                  "protagonist": "iri"
+                  "all": [
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 48
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "vet",
+                "text": "preu.comunicador.64",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 64
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "vet",
+                "text": "preu.comunicador.97",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 97
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "vet",
+                "text": "preu.comunicador.112",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 112
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "vet",
+                "text": "preu.comunicador",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "narrator",
+                "text": "preu.xifra",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
+                  ]
                 }
               },
               {
                 "who": "iri",
-                "text": "dlg.comunicador.preu.2",
+                "text": "preu.comunicador.48",
                 "if": {
-                  "protagonist": "vet"
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 48
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "iri",
+                "text": "preu.comunicador.64",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 64
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "iri",
+                "text": "preu.comunicador.97",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 97
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "iri",
+                "text": "preu.comunicador.112",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "var": "preu_aigua",
+                      "op": "==",
+                      "value": 112
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "iri",
+                "text": "preu.comunicador",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "narrator",
+                "text": "preu.xifra",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "all": [
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 48
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 64
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 97
+                        },
+                        {
+                          "var": "preu_aigua",
+                          "op": "!=",
+                          "value": 112
+                        }
+                      ]
+                    }
+                  ]
                 }
               }
             ],
@@ -24692,19 +25406,19 @@
       "dlg.mapa.terra2.1": "Rumb a Terra-2 · tres hores",
       "dlg.mapa.terra2.2": "La Cantimplora tus, tremola, s'enlaira...",
       "dlg.mapa.terra2.3": "...i aterra al port, entre una nuvolada de pols.",
-      "dlg.mapa.terra2.4": "(La Vet ja és a bord: puja sempre abans d'enlairar-se.)",
+      "dlg.mapa.terra2.4": "La Vet ja és a bord: puja sempre abans d'enlairar-se.",
       "dlg.mapa.aqua.1": "Rumb a Aqua · nou hores",
       "dlg.mapa.aqua.2": "La Cantimplora tus, tremola, s'enlaira...",
       "dlg.mapa.aqua.3": "...i aterra al port d'Aqua, entre una nuvolada de sal.",
-      "dlg.mapa.aqua.4": "(La Vet ja és a bord: puja sempre abans d'enlairar-se.)",
+      "dlg.mapa.aqua.4": "La Vet ja és a bord: puja sempre abans d'enlairar-se.",
       "dlg.mapa.ferrum.1": "Rumb a Ferrum · sis hores",
       "dlg.mapa.ferrum.2": "La Cantimplora tus, tremola, s'enlaira...",
       "dlg.mapa.ferrum.3": "...i aterra a Ferrum, entre fum i xemeneies.",
-      "dlg.mapa.ferrum.4": "(La Vet ja és a bord: puja sempre abans d'enlairar-se.)",
+      "dlg.mapa.ferrum.4": "La Vet ja és a bord: puja sempre abans d'enlairar-se.",
       "dlg.mapa.verdant.1": "Rumb a Verdant · cinc hores",
       "dlg.mapa.verdant.2": "La Cantimplora tus, tremola, s'enlaira...",
       "dlg.mapa.verdant.3": "...i aterra a Verdant, en una pista de gespa artificial.",
-      "dlg.mapa.verdant.4": "(La Vet ja és a bord: puja sempre abans d'enlairar-se.)",
+      "dlg.mapa.verdant.4": "La Vet ja és a bord: puja sempre abans d'enlairar-se.",
       "dlg.mapa.palau.1": "Amb invitació o sense, el palau no deixa atracar ni un mosquit. I la Cantimplora és un mosquit molt gros.",
       "dlg.mapa.palau.2": "Hi hem d'anar per una altra via: la llançadora d'en Nil. La invitació ja la tenim; el que em falta és un vestit de gala.",
       "dlg.mapa.palau.3": "Hi hem d'anar per una altra via: la llançadora d'en Nil. Invitació i vestit, ja els tinc. Abans, però, cal deixar la Cantimplora en ordre.",
@@ -24806,7 +25520,7 @@
       "dlg.tomas.paper.1": "El paper de plata? És... per reciclar. Bé, té. Està una mica escrit per dins.",
       "dlg.tomas.paper.2": "Números escrits a boli... Algú fa servir el paper de plata de llibreta.",
       "dlg.tomas.contracte.1": "Va dir que cobrava poc. I cobro poc. Molt poc. Gairebé no cobro.",
-      "dlg.tomas.contracte.2": "Va ser just quan la nau es va quedar sense feina. Sort que la Capitana és generosa.",
+      "dlg.tomas.contracte.2": "Quan la nau ja no tenia feina. Sort que la Capitana és generosa.",
       "dlg.tomas.pilot.1": "A Ferrum. La meva mare és minera. Jo volia ser pilot.",
       "dlg.tomas.pilot.2": "Però ser pilot costa una fortuna. La llicència, les hores de vol... Algun dia.",
       "dlg.tomas.opt.venut": "Ens has venut!",
@@ -24883,8 +25597,8 @@
       "dlg.bru.estrany.1.iri": "Una pilot. Que t'envia el Magnat?",
       "dlg.bru.estrany.1.vet": "Una enginyera. Que t'envia el Magnat?",
       "dlg.bru.estrany.2": "No parlo amb desconegudes. I menys amb desconegudes de nau.",
-      "dlg.bru.estrany.3": "(Sense alguna cosa que digui qui som, en Bru no ens escoltarà. La Juana el coneix.)",
-      "dlg.bru.estrany.3.vet": "(La carta de la Juana la porta l'Iri. Sense ella, en Bru no m'escoltarà.)",
+      "dlg.bru.estrany.3": "(a part) Sense alguna cosa que digui qui som, en Bru no ens escoltarà. La Juana el coneix.",
+      "dlg.bru.estrany.3.vet": "(a part) La carta de la Juana la porta l'Iri. Sense ella, en Bru no m'escoltarà.",
       "dlg.bru.carta.1": "Una pilot i una enginyera. Que us envia el Magnat?",
       "dlg.bru.carta.1.iri": "Una pilot. Que t'envia el Magnat?",
       "dlg.bru.carta.2": "Ens envia la Juana. Té.",
@@ -25085,7 +25799,7 @@
       "dlg.lia.opt.adeu": "Res. Continua fregant.",
       "dlg.lia.pare.1": "Aquí tothom diu coses. El Magnat diu que el meu pare és un perill per a ell mateix.",
       "dlg.lia.pare.2": "Si de debò t'envia el meu pare, porta'm alguna cosa de la seva mà.",
-      "dlg.lia.pare.3": "(La nota d'en Bru. La porta l'Iri. Que me la passi per la safata del saló.)",
+      "dlg.lia.pare.3": "(a part) La nota d'en Bru. La porta l'Iri. Que me la passi per la safata del saló.",
       "dlg.lia.feina.1": "Netejo piscines buides. És la feina més fàcil del món, i la més trista.",
       "dlg.lia.nota.1": "...És la seva lletra. Escriu «cas» amb dues esses quan està nerviós.",
       "dlg.lia.nota.2": "Què necessiteu?",
@@ -25162,8 +25876,6 @@
       "dlg.comunicador.fem.60": "Obrir les tres vàlvules (la clau al pany, i girar) abans que s'acabin els lots, sense espantar el Magnat. Jo puc parar el martell: cada objecció, al seu lot.",
       "dlg.comunicador.fem.61": "31: el Magnat s'aguanta amb la seva reserva. La palanca vermella.",
       "dlg.comunicador.fem.62": "31: el Magnat s'aguanta amb la seva reserva. La palanca vermella.",
-      "dlg.comunicador.preu.1": "{preu_aigua} crèdits el litre. I pujant.",
-      "dlg.comunicador.preu.2": "{preu_aigua} crèdits el litre. I pujant.",
       "dlg.juana.opt.lot9": "Juana, a la platja hi ha estaques de Verne.",
       "dlg.juana.lot9.1": "El lot 9. Els topògrafs de Verne van baixar dimarts a la nit: ho amiden fins a l'aigua, i d'allà amunt, ho venen.",
       "dlg.juana.lot9.2": "Però el mar no s'està quiet perquè l'amidin. Pregunteu-ho a les meves boies.",
@@ -25192,7 +25904,7 @@
       "dlg.rosa.opt.vestit_tomas": "I el vestit, Rosa?",
       "dlg.rosa.opt.vestit_cas": "Rosa, el vestit de reina del bagul... ens el deixaries? Per si de cas.",
       "dlg.rosa.vestit.3": "Per entrar a casa del Magnat? Us el deixo. Però una cosa.",
-      "dlg.rosa.vestit.4": "Fa una setmana que en Tomàs és a la vostra nau i encara no ha baixat la rampa. Que el vingui a buscar ell.",
+      "dlg.rosa.vestit.4": "Fa setmanes que en Tomàs és a la vostra nau i encara no ha baixat la rampa. Que el vingui a buscar ell.",
       "dlg.rosa.espera": "Que el vingui a buscar en Tomàs. Ell. No és tan lluny: és una rampa.",
       "dlg.rosa.cas.1": "Per si de cas de què? De ser reina?",
       "dlg.rosa.cas.2": "Per si de cas.",
@@ -25356,18 +26068,206 @@
       "sync.subhasta.6": "Doncs una altra vegada. Amb més cap.",
       "sync.titol": "Ara necessites les dues.",
       "joc.titol": "Aigua Verne",
-      "donar.dona": "Té: {objecte}.",
-      "mosca.envia": "Mosca: porta {objecte} a {nom}.",
-      "mosca.arriba": "La Mosca arriba brunzint amb {objecte}.",
+      "donar.dona": "Té. És per a tu.",
+      "mosca.envia": "Mosca: porta-ho a l'altra.",
+      "mosca.arriba": "La Mosca arriba brunzint amb un encàrrec.",
       "mosca.lluny": "La Mosca no arriba tan lluny: no som al mateix planeta.",
       "mosca.palau": "Al palau hi ha un camp antidrons. La Mosca ha fet un soroll molt trist i ha tornat a la butxaca.",
       "mosca.no_hi_cap": "Això la Mosca no ho aixeca.",
       "mosca.aqui": "Som a la mateixa sala: millor donar-l'hi en mà.",
-      "safata.posa": "Deixo {objecte} a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.posa": "Ho deixo a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
       "safata.plena": "A la safata ja hi ha una cosa nostra. Que la Vet la reculli primer.",
       "safata.no": "Això no passaria per una copa.",
-      "safata.recull": "A la safata, entre copes buides: {objecte}.",
+      "safata.recull": "A la safata, entre copes buides, hi ha el que ha enviat l'Iri.",
       "safata.buida": "Només copes buides.",
+      "mosca.envia.punta_flor.iri": "Mosca: porta la punta de flor a l'Iri.",
+      "mosca.envia.punta_flor.vet": "Mosca: porta la punta de flor a la Vet.",
+      "mosca.arriba.punta_flor": "La Mosca arriba brunzint amb la punta de flor.",
+      "safata.posa.punta_flor": "Deixo la punta de flor a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.punta_flor": "A la safata, entre copes buides: la punta de flor.",
+      "donar.dona.punta_flor": "Té: la punta de flor.",
+      "mosca.envia.tornavis.iri": "Mosca: porta el tornavís a l'Iri.",
+      "mosca.envia.tornavis.vet": "Mosca: porta el tornavís a la Vet.",
+      "mosca.arriba.tornavis": "La Mosca arriba brunzint amb el tornavís.",
+      "safata.posa.tornavis": "Deixo el tornavís a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.tornavis": "A la safata, entre copes buides: el tornavís.",
+      "donar.dona.tornavis": "Té: el tornavís.",
+      "mosca.envia.tornavis_flor.iri": "Mosca: porta el tornavís de flor a l'Iri.",
+      "mosca.envia.tornavis_flor.vet": "Mosca: porta el tornavís de flor a la Vet.",
+      "mosca.arriba.tornavis_flor": "La Mosca arriba brunzint amb el tornavís de flor.",
+      "safata.posa.tornavis_flor": "Deixo el tornavís de flor a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.tornavis_flor": "A la safata, entre copes buides: el tornavís de flor.",
+      "donar.dona.tornavis_flor": "Té: el tornavís de flor.",
+      "mosca.envia.escriptura.iri": "Mosca: porta l'escriptura a l'Iri.",
+      "mosca.envia.escriptura.vet": "Mosca: porta l'escriptura a la Vet.",
+      "mosca.arriba.escriptura": "La Mosca arriba brunzint amb l'escriptura.",
+      "safata.posa.escriptura": "Deixo l'escriptura a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.escriptura": "A la safata, entre copes buides: l'escriptura.",
+      "donar.dona.escriptura": "Té: l'escriptura.",
+      "mosca.envia.contracte_7788.iri": "Mosca: porta el contracte 7.788 a l'Iri.",
+      "mosca.envia.contracte_7788.vet": "Mosca: porta el contracte 7.788 a la Vet.",
+      "mosca.arriba.contracte_7788": "La Mosca arriba brunzint amb el contracte 7.788.",
+      "safata.posa.contracte_7788": "Deixo el contracte 7.788 a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.contracte_7788": "A la safata, entre copes buides: el contracte 7.788.",
+      "donar.dona.contracte_7788": "Té: el contracte 7.788.",
+      "donar.dona.sacs_llavors": "Té: els sacs de llavors.",
+      "mosca.envia.sac_llavors.iri": "Mosca: porta el sac de llavors a l'Iri.",
+      "mosca.envia.sac_llavors.vet": "Mosca: porta el sac de llavors a la Vet.",
+      "mosca.arriba.sac_llavors": "La Mosca arriba brunzint amb el sac de llavors.",
+      "safata.posa.sac_llavors": "Deixo el sac de llavors a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.sac_llavors": "A la safata, entre copes buides: el sac de llavors.",
+      "donar.dona.sac_llavors": "Té: el sac de llavors.",
+      "mosca.envia.albara.iri": "Mosca: porta l'albarà a l'Iri.",
+      "mosca.envia.albara.vet": "Mosca: porta l'albarà a la Vet.",
+      "mosca.arriba.albara": "La Mosca arriba brunzint amb l'albarà.",
+      "safata.posa.albara": "Deixo l'albarà a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.albara": "A la safata, entre copes buides: l'albarà.",
+      "donar.dona.albara": "Té: l'albarà.",
+      "mosca.envia.oli.iri": "Mosca: porta l'oli a l'Iri.",
+      "mosca.envia.oli.vet": "Mosca: porta l'oli a la Vet.",
+      "mosca.arriba.oli": "La Mosca arriba brunzint amb l'oli.",
+      "safata.posa.oli": "Deixo l'oli a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.oli": "A la safata, entre copes buides: l'oli.",
+      "donar.dona.oli": "Té: l'oli.",
+      "mosca.envia.clau_anglesa.iri": "Mosca: porta la clau anglesa a l'Iri.",
+      "mosca.envia.clau_anglesa.vet": "Mosca: porta la clau anglesa a la Vet.",
+      "mosca.arriba.clau_anglesa": "La Mosca arriba brunzint amb la clau anglesa.",
+      "safata.posa.clau_anglesa": "Deixo la clau anglesa a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.clau_anglesa": "A la safata, entre copes buides: la clau anglesa.",
+      "donar.dona.clau_anglesa": "Té: la clau anglesa.",
+      "mosca.envia.injector.iri": "Mosca: porta l'injector a l'Iri.",
+      "mosca.envia.injector.vet": "Mosca: porta l'injector a la Vet.",
+      "mosca.arriba.injector": "La Mosca arriba brunzint amb l'injector.",
+      "safata.posa.injector": "Deixo l'injector a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.injector": "A la safata, entre copes buides: l'injector.",
+      "donar.dona.injector": "Té: l'injector.",
+      "mosca.envia.fusible.iri": "Mosca: porta el fusible a l'Iri.",
+      "mosca.envia.fusible.vet": "Mosca: porta el fusible a la Vet.",
+      "mosca.arriba.fusible": "La Mosca arriba brunzint amb el fusible.",
+      "safata.posa.fusible": "Deixo el fusible a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.fusible": "A la safata, entre copes buides: el fusible.",
+      "donar.dona.fusible": "Té: el fusible.",
+      "mosca.envia.paper_plata.iri": "Mosca: porta el paper de plata a l'Iri.",
+      "mosca.envia.paper_plata.vet": "Mosca: porta el paper de plata a la Vet.",
+      "mosca.arriba.paper_plata": "La Mosca arriba brunzint amb el paper de plata.",
+      "safata.posa.paper_plata": "Deixo el paper de plata a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.paper_plata": "A la safata, entre copes buides: el paper de plata.",
+      "donar.dona.paper_plata": "Té: el paper de plata.",
+      "mosca.envia.fusible_apanyat.iri": "Mosca: porta el fusible apanyat a l'Iri.",
+      "mosca.envia.fusible_apanyat.vet": "Mosca: porta el fusible apanyat a la Vet.",
+      "mosca.arriba.fusible_apanyat": "La Mosca arriba brunzint amb el fusible apanyat.",
+      "safata.posa.fusible_apanyat": "Deixo el fusible apanyat a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.fusible_apanyat": "A la safata, entre copes buides: el fusible apanyat.",
+      "donar.dona.fusible_apanyat": "Té: el fusible apanyat.",
+      "mosca.envia.carta_juana.iri": "Mosca: porta la carta de la Juana a l'Iri.",
+      "mosca.envia.carta_juana.vet": "Mosca: porta la carta de la Juana a la Vet.",
+      "mosca.arriba.carta_juana": "La Mosca arriba brunzint amb la carta de la Juana.",
+      "safata.posa.carta_juana": "Deixo la carta de la Juana a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.carta_juana": "A la safata, entre copes buides: la carta de la Juana.",
+      "donar.dona.carta_juana": "Té: la carta de la Juana.",
+      "mosca.envia.nota_lia.iri": "Mosca: porta la nota per a la Lia a l'Iri.",
+      "mosca.envia.nota_lia.vet": "Mosca: porta la nota per a la Lia a la Vet.",
+      "mosca.arriba.nota_lia": "La Mosca arriba brunzint amb la nota per a la Lia.",
+      "safata.posa.nota_lia": "Deixo la nota per a la Lia a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.nota_lia": "A la safata, entre copes buides: la nota per a la Lia.",
+      "donar.dona.nota_lia": "Té: la nota per a la Lia.",
+      "donar.dona.motlle": "Té: el motlle.",
+      "mosca.envia.sorra.iri": "Mosca: porta la sorra a l'Iri.",
+      "mosca.envia.sorra.vet": "Mosca: porta la sorra a la Vet.",
+      "mosca.arriba.sorra": "La Mosca arriba brunzint amb la sorra.",
+      "safata.posa.sorra": "Deixo la sorra a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.sorra": "A la safata, entre copes buides: la sorra.",
+      "donar.dona.sorra": "Té: la sorra.",
+      "mosca.envia.claus.iri": "Mosca: porta les claus a l'Iri.",
+      "mosca.envia.claus.vet": "Mosca: porta les claus a la Vet.",
+      "mosca.arriba.claus": "La Mosca arriba brunzint amb les claus.",
+      "safata.posa.claus": "Deixo les claus a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.claus": "A la safata, entre copes buides: les claus.",
+      "donar.dona.claus": "Té: les claus.",
+      "mosca.envia.reg.iri": "Mosca: porta el reg a l'Iri.",
+      "mosca.envia.reg.vet": "Mosca: porta el reg a la Vet.",
+      "mosca.arriba.reg": "La Mosca arriba brunzint amb el reg.",
+      "safata.posa.reg": "Deixo el reg a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.reg": "A la safata, entre copes buides: el reg.",
+      "donar.dona.reg": "Té: el reg.",
+      "mosca.envia.reg_foradat.iri": "Mosca: porta el reg a l'Iri.",
+      "mosca.envia.reg_foradat.vet": "Mosca: porta el reg a la Vet.",
+      "mosca.arriba.reg_foradat": "La Mosca arriba brunzint amb el reg.",
+      "safata.posa.reg_foradat": "Deixo el reg a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.reg_foradat": "A la safata, entre copes buides: el reg.",
+      "donar.dona.reg_foradat": "Té: el reg.",
+      "mosca.envia.agulla.iri": "Mosca: porta l'agulla a l'Iri.",
+      "mosca.envia.agulla.vet": "Mosca: porta l'agulla a la Vet.",
+      "mosca.arriba.agulla": "La Mosca arriba brunzint amb l'agulla.",
+      "safata.posa.agulla": "Deixo l'agulla a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.agulla": "A la safata, entre copes buides: l'agulla.",
+      "donar.dona.agulla": "Té: l'agulla.",
+      "mosca.envia.galleda.iri": "Mosca: porta la galleda a l'Iri.",
+      "mosca.envia.galleda.vet": "Mosca: porta la galleda a la Vet.",
+      "mosca.arriba.galleda": "La Mosca arriba brunzint amb la galleda.",
+      "safata.posa.galleda": "Deixo la galleda a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.galleda": "A la safata, entre copes buides: la galleda.",
+      "donar.dona.galleda": "Té: la galleda.",
+      "donar.dona.galleda_plena": "Té: la galleda plena.",
+      "mosca.envia.carta_banc.iri": "Mosca: porta la carta del banc a l'Iri.",
+      "mosca.envia.carta_banc.vet": "Mosca: porta la carta del banc a la Vet.",
+      "mosca.arriba.carta_banc": "La Mosca arriba brunzint amb la carta del banc.",
+      "safata.posa.carta_banc": "Deixo la carta del banc a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.carta_banc": "A la safata, entre copes buides: la carta del banc.",
+      "donar.dona.carta_banc": "Té: la carta del banc.",
+      "mosca.envia.invitacio.iri": "Mosca: porta la invitació a l'Iri.",
+      "mosca.envia.invitacio.vet": "Mosca: porta la invitació a la Vet.",
+      "mosca.arriba.invitacio": "La Mosca arriba brunzint amb la invitació.",
+      "safata.posa.invitacio": "Deixo la invitació a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.invitacio": "A la safata, entre copes buides: la invitació.",
+      "donar.dona.invitacio": "Té: la invitació.",
+      "mosca.envia.contracte_capitana.iri": "Mosca: porta el contracte de la Capitana a l'Iri.",
+      "mosca.envia.contracte_capitana.vet": "Mosca: porta el contracte de la Capitana a la Vet.",
+      "mosca.arriba.contracte_capitana": "La Mosca arriba brunzint amb el contracte de la Capitana.",
+      "safata.posa.contracte_capitana": "Deixo el contracte de la Capitana a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.contracte_capitana": "A la safata, entre copes buides: el contracte de la Capitana.",
+      "donar.dona.contracte_capitana": "Té: el contracte de la Capitana.",
+      "mosca.envia.pernil.iri": "Mosca: porta el pernil a l'Iri.",
+      "mosca.envia.pernil.vet": "Mosca: porta el pernil a la Vet.",
+      "mosca.arriba.pernil": "La Mosca arriba brunzint amb el pernil.",
+      "safata.posa.pernil": "Deixo el pernil a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.pernil": "A la safata, entre copes buides: el pernil.",
+      "donar.dona.pernil": "Té: el pernil.",
+      "mosca.envia.vestit.iri": "Mosca: porta el vestit a l'Iri.",
+      "mosca.envia.vestit.vet": "Mosca: porta el vestit a la Vet.",
+      "mosca.arriba.vestit": "La Mosca arriba brunzint amb el vestit.",
+      "safata.posa.vestit": "Deixo el vestit a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.vestit": "A la safata, entre copes buides: el vestit.",
+      "donar.dona.vestit": "Té: el vestit.",
+      "mosca.envia.vestit_arreglat.iri": "Mosca: porta el vestit a l'Iri.",
+      "mosca.envia.vestit_arreglat.vet": "Mosca: porta el vestit a la Vet.",
+      "mosca.arriba.vestit_arreglat": "La Mosca arriba brunzint amb el vestit.",
+      "safata.posa.vestit_arreglat": "Deixo el vestit a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.vestit_arreglat": "A la safata, entre copes buides: el vestit.",
+      "donar.dona.vestit_arreglat": "Té: el vestit.",
+      "mosca.envia.targeta.iri": "Mosca: porta la targeta a l'Iri.",
+      "mosca.envia.targeta.vet": "Mosca: porta la targeta a la Vet.",
+      "mosca.arriba.targeta": "La Mosca arriba brunzint amb la targeta.",
+      "safata.posa.targeta": "Deixo la targeta a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.targeta": "A la safata, entre copes buides: la targeta.",
+      "donar.dona.targeta": "Té: la targeta.",
+      "mosca.envia.targeta_verne.iri": "Mosca: porta la targeta de la Mosca a l'Iri.",
+      "mosca.envia.targeta_verne.vet": "Mosca: porta la targeta de la Mosca a la Vet.",
+      "mosca.arriba.targeta_verne": "La Mosca arriba brunzint amb la targeta de la Mosca.",
+      "safata.posa.targeta_verne": "Deixo la targeta de la Mosca a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
+      "safata.recull.targeta_verne": "A la safata, entre copes buides: la targeta de la Mosca.",
+      "donar.dona.targeta_verne": "Té: la targeta de la Mosca.",
+      "preu.panell.48": "AIGUA VERNE. Un litre: 48 crèdits. I la fletxa, cap amunt.",
+      "preu.comunicador.48": "48 crèdits el litre. I pujant.",
+      "preu.panell.64": "AIGUA VERNE. Un litre: 64 crèdits. I la fletxa, cap amunt.",
+      "preu.comunicador.64": "64 crèdits el litre. I pujant.",
+      "preu.panell.97": "AIGUA VERNE. Un litre: 97 crèdits. I la fletxa, cap amunt.",
+      "preu.comunicador.97": "97 crèdits el litre. I pujant.",
+      "preu.panell.112": "AIGUA VERNE. Un litre: 112 crèdits. I la fletxa, cap amunt.",
+      "preu.comunicador.112": "112 crèdits el litre. I pujant.",
+      "preu.panell": "AIGUA VERNE. Un litre, i la fletxa. Avui, cap avall.",
+      "preu.comunicador": "Baixant. Que no pari.",
+      "preu.xifra": "AIGUA VERNE · {preu_aigua} ₡",
       "ui.verb.give": "Dona",
       "ui.verb.give.prep": "a",
       "ui.verb.pickUp": "Agafa",
@@ -25685,7 +26585,7 @@
       "pista.caixa.3": "Pregunta al pare per la paraula de la caixa forta, amb el videotelèfon.",
       "pista.titus.1": "Qui ens esperava a la porta, movent la cua: el gos. Com es deia?",
       "pista.titus.2": "El pare no llença res. A la casa encara hi deu haver coses del gos.",
-      "pista.titus.3": "Mira el bol del gos, a la cuina.",
+      "pista.titus.3": "Mira el bol del gos, a la casa del pare.",
       "pista.teclat.1": "El gos es deia Titus, i la paraula té cinc lletres.",
       "pista.teclat.2": "La caixa forta, darrere el quadre.",
       "pista.teclat.3": "Obre la caixa forta i tria T-I-T-U-S.",
@@ -25935,10 +26835,10 @@
       "pista.aval_vet.2": "El quart sac de llavors del pare, al graner de Terra-2. O el tractor de l'avi, que Verne va pagar amb l'aigua de la finca.",
       "pista.aval_vet.3": "Que l'Iri porti a en Fidel el quart sac del graner de Terra-2. O que li parli del tractor, després d'ensenyar-li l'escriptura.",
       "pista.gala_tomas.1": "Què tinc: un vestit que la Rosa ens deixa. Què vol, la Rosa? No és un preu. És el seu fill.",
-      "pista.gala_tomas.2": "Fa una setmana que en Tomàs no baixa la rampa. La Rosa vol que vingui ell a buscar el vestit.",
+      "pista.gala_tomas.2": "Fa setmanes que en Tomàs no baixa la rampa. La Rosa vol que vingui ell a buscar el vestit.",
       "pista.gala_tomas.3": "Amb la nau a Ferrum, parla amb en Tomàs, a la bodega: digues-li que la seva mare vol que baixi.",
       "pista.gala_tomas_vet.1": "Símptoma: la Rosa no ens dona el vestit. Causa: no ha baixat qui ella espera.",
-      "pista.gala_tomas_vet.2": "Fa una setmana que en Tomàs no baixa la rampa. La Rosa vol que vingui ell a buscar el vestit.",
+      "pista.gala_tomas_vet.2": "Fa setmanes que en Tomàs no baixa la rampa. La Rosa vol que vingui ell a buscar el vestit.",
       "pista.gala_tomas_vet.3": "Amb la nau a Ferrum, parla amb en Tomàs, a la bodega: digues-li que la seva mare vol que baixi.",
       "sala.granja_pati.nom": "Pati de la granja",
       "sala.granja_pati.porta_casa.nom": "casa",
@@ -26139,7 +27039,6 @@
       "sala.granja_pati.bomba.15": "Si la paro, en vindran deu a engegar-la. I m'enviaran la factura.",
       "sala.granja_pati.canonada.1": "La Canonada de Terra-2. Una columna blanca que puja fins que no es veu. Va aparèixer fa sis anys. Com la secada.",
       "sala.granja_pati.canonada.2": "La Canonada de Terra-2. Hi va a parar la nostra aigua, i d'allà, a un dipòsit, a dalt de tot.",
-      "sala.granja_pati.panell_preu.1": "AIGUA VERNE. Un litre: {preu_aigua} crèdits. I la fletxa, cap amunt.",
       "sala.granja_pati.panell_preu.2": "És de Verne. Si el toco, segur que algú em cobra el dit.",
       "sala.granja_pati.arbre.1": "L'olivera de l'avi. Va aguantar dues guerres i una plaga. La secada, no.",
       "sala.granja_pati.arbre.2": "La deixo estar. Ja ha patit prou.",
@@ -26196,7 +27095,6 @@
       "sala.port_terra2.tauler.1": "Feines: «Transport d'aigua Verne. Requisit: no fer preguntes.» «Transport d'aigua Verne. Requisit: no tenir nau pròpia.»",
       "sala.port_terra2.tauler.2": "I un de diferent: «Es busca nau... per desballestar.»",
       "sala.port_terra2.tauler.3": "Cap d'aquestes feines ens porta on volem.",
-      "sala.port_terra2.panell_preu.1": "AIGUA VERNE. Un litre: {preu_aigua} crèdits. I la fletxa, cap amunt.",
       "sala.port_terra2.panell_preu.2": "El mateix panell que a la granja. Verne no gasta imaginació: gasta panells.",
       "sala.port_terra2.canonada.1": "La Canonada, des del port. Fa l'efecte que el cel té un tub de reg.",
       "sala.aqua_port.entra.1": "Aqua. Era el mar més gran de Vesper. Ara és un desert de sal amb un port al mig.",
@@ -26226,7 +27124,6 @@
       "sala.aqua_port.cistella.8": "La grua funciona, però algú l'ha de fer anar des de dalt. Necessito l'altra aquí, als comandaments.",
       "sala.aqua_port.cistella.9": "La cistella baixa.",
       "sala.aqua_port.vaixells.1": "Vaixells de pesca encallats a la sorra. Un es diu «Sempre Plena». Un altre, «Ja Tornarà».",
-      "sala.aqua_port.panell_preu.1": "AIGUA VERNE. Un litre: {preu_aigua} crèdits. I la fletxa, cap amunt.",
       "sala.aqua_port.panell_preu.2": "A Aqua, el panell és l'única cosa que encara puja.",
       "sala.aqua_port.canonada.1": "La Canonada d'Aqua. Xucla el mar. Literalment.",
       "sala.aqua_fons.entra.1": "El fons del mar d'Aqua. Sorra blanca, nanses, i al fons, una caseta feta amb un casc de vaixell bolcat.",
@@ -26338,7 +27235,6 @@
       "sala.ferrum_carrer.piquet.3": "La canalla beu. Un nen fa una competició de qui fa més soroll amb el got.",
       "sala.ferrum_carrer.comptadors.1": "Comptadors d'aigua de Verne, arrencats de les cases. Una muntanya.",
       "sala.ferrum_carrer.comptadors.2": "Pesen. I no són meus: ara són de tothom.",
-      "sala.ferrum_carrer.panell_preu.1": "AIGUA VERNE. Un litre: {preu_aigua} crèdits. I la fletxa, cap amunt.",
       "sala.ferrum_carrer.panell_preu.2": "Té més cops de pedra que llums. El piquet ja hi ha dit la seva.",
       "sala.ferrum_carrer.canonada.1": "La Canonada de Ferrum. Xucla l'aigua de sota les mines. I els miners, sense.",
       "sala.ferrum_sindicat.bagul.1": "El bagul de la colla de teatre de la Festa Major. Ja no hi ha el vestit de reina.",
@@ -26375,12 +27271,12 @@
       "sala.fosa_forn.rascle.4": "Encara no hi ha res a escumar.",
       "sala.fosa_forn.rascle.5": "Ja està net.",
       "sala.fosa_forn.rascle.6": "Ara no cal.",
-      "sala.fosa_forn.forn.1": "El forn. El termòmetre marca {temperatura}. Si arriba a zero, el metall s'endureix.",
+      "sala.fosa_forn.forn.1": "El forn. Si el termòmetre arriba a zero, el metall s'endureix.",
       "sala.fosa_forn.forn.2": "El forn de la fosa. Fred, de moment.",
       "sala.fosa_forn.forn.3": "El forn, apagat. Ja ha fet la seva feina.",
       "sala.fosa_forn.forn.4": "No hi poso la mà. Ni la de l'Iri.",
       "sala.fosa_forn.forn.4.iri": "No hi poso la mà. Ni la de la Vet.",
-      "sala.fosa_forn.termometre.1": "El termòmetre del forn: {temperatura}. El metall aguanta fos fins a zero.",
+      "sala.fosa_forn.termometre.1": "El termòmetre del forn. El metall aguanta fos fins a zero.",
       "sala.fosa_forn.termometre.2": "Un termòmetre de rellotge, gros com una roda.",
       "sala.fosa_colada.entra.1": "El forn està a vuit. Cada acció el refreda un grau. Si arriba a zero, el metall s'endureix al gresol.",
       "sala.fosa_colada.entra.2": "Al forn: manxa, metall i fora l'escòria. A la colada: abocar el gresol i tapar amb sorra.",
@@ -26431,7 +27327,6 @@
       "sala.verdant_jardi.llancadora.1": "La plataforma de la llançadora dels jardiners. Cada dijous puja al palau.",
       "sala.verdant_jardi.llancadora.2": "Sense en Nil, la llançadora no s'enlaira. I en Nil no hi porta ningú que no conegui.",
       "sala.verdant_jardi.llancadora.3": "Dijous. Demà. En Nil ens hi esperarà.",
-      "sala.verdant_jardi.panell_preu.1": "AIGUA VERNE. Un litre: {preu_aigua} crèdits. I la fletxa, cap amunt.",
       "sala.verdant_jardi.panell_preu.2": "Aquí ningú no el mira. A Verdant, el preu no es pregunta.",
       "sala.verdant_cobert.tomaquera.1": "La tomaquera, verda. Beu a poc a poc, com ha de ser.",
       "sala.verdant_cobert.tomaquera.2": "Una tomaquera. De debò. Mig seca, amagada darrere dels sacs.",
@@ -26488,11 +27383,11 @@
       "sala.palau_salo.entra.3": "Dotze lots. Quan s'acabin, el Magnat haurà venut l'aigua de deu anys, i el preu ja no el podrà arruïnar.",
       "sala.palau_salo.entra.4": "Vet: tres panys. Iri: fer que la subhasta duri.",
       "sala.palau_salo.porta_galeria.1": "No me'n vaig: si el saló es buida, la subhasta s'acaba abans.",
-      "sala.palau_salo.escenari.1": "L'escenari: el faristol, el martell i el Magnat, somrient. Al faristol, el lot {lot}.",
+      "sala.palau_salo.escenari.1": "L'escenari: el faristol, el martell i el Magnat, somrient.",
       "sala.palau_salo.escenari.2": "L'escenari, el faristol i el martell. Encara buit.",
       "sala.palau_salo.escenari.3": "Encara no ha començat res.",
-      "sala.palau_salo.pantalla.1": "El gràfic del preu de l'aigua: {preu_aigua}. I una ratlla vermella a 30: «LLINDAR DEL BANC». La línia, de moment, ben amunt.",
-      "sala.palau_salo.pantalla.2": "El gràfic del preu: {preu_aigua}, i la ratlla vermella a 30: «LLINDAR DEL BANC». Com més s'hi acosta la línia, més de pressa pica el martell el Magnat.",
+      "sala.palau_salo.pantalla.1": "El gràfic del preu de l'aigua. I una ratlla vermella a 30: «LLINDAR DEL BANC». La línia, de moment, ben amunt.",
+      "sala.palau_salo.pantalla.2": "El gràfic del preu, i la ratlla vermella a 30: «LLINDAR DEL BANC». Com més s'hi acosta la línia, més de pressa pica el martell el Magnat.",
       "sala.palau_salo.pantalla.3": "A sota, el catàleg. Lots 1 a 4: el subsòl de Terra-2. 5 a 8: la cartera de deutors. 9 a 11: el mar d'Aqua. 12: els peixos d'Aqua.",
       "sala.palau_salo.pantalla.4": "Vint-i-nou. Sota la ratlla. Ningú no aplaudeix.",
       "sala.palau_salo.safata.1": "La safata de les copes. Els cambrers se l'enduen per l'ascensor de servei i la tornen plena.",
@@ -26651,7 +27546,9 @@
       "sala.ferrum_sindicat.bagul.cas.vet": "Un vestit de reina, per si de cas... Però és de la Rosa, la minera del piquet. L'hi hauríem de demanar.",
       "sala.cantimplora_bodega.carmanyola.8.tractor": "«Les germanes tenen tres claus de comptador fos. Han estat al despatx de Verdant. Han pagat l'entrada amb un tractor que no arrenca.»",
       "sala.ferrum_sindicat.bagul.ja": "El vestit ja el tenim. La resta és de la colla de teatre.",
-      "sala.ferrum_sindicat.bagul.tomas": "La Rosa vol que el vingui a buscar en Tomàs. Ell."
+      "sala.ferrum_sindicat.bagul.tomas": "La Rosa vol que el vingui a buscar en Tomàs. Ell.",
+      "sala.fosa_forn.xifra": "Termòmetre: {temperatura}",
+      "sala.palau_salo.escenari.xifra": "Al faristol, el lot {lot}."
     }
   },
   "locale": "ca",

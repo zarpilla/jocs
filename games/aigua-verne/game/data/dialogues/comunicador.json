@@ -2298,16 +2298,270 @@
       "lines": [
         {
           "who": "vet",
-          "text": "dlg.comunicador.preu.1",
+          "text": "preu.comunicador.48",
           "if": {
-            "protagonist": "iri"
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "preu_aigua",
+                "op": "==",
+                "value": 48
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "preu.comunicador.64",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "preu_aigua",
+                "op": "==",
+                "value": 64
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "preu.comunicador.97",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "preu_aigua",
+                "op": "==",
+                "value": 97
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "preu.comunicador.112",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "preu_aigua",
+                "op": "==",
+                "value": 112
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "preu.comunicador",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 48
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 64
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 97
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 112
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "preu.xifra",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 48
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 64
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 97
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 112
+                  }
+                ]
+              }
+            ]
           }
         },
         {
           "who": "iri",
-          "text": "dlg.comunicador.preu.2",
+          "text": "preu.comunicador.48",
           "if": {
-            "protagonist": "vet"
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "preu_aigua",
+                "op": "==",
+                "value": 48
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "preu.comunicador.64",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "preu_aigua",
+                "op": "==",
+                "value": 64
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "preu.comunicador.97",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "preu_aigua",
+                "op": "==",
+                "value": 97
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "preu.comunicador.112",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "preu_aigua",
+                "op": "==",
+                "value": 112
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "preu.comunicador",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 48
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 64
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 97
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 112
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "preu.xifra",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 48
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 64
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 97
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 112
+                  }
+                ]
+              }
+            ]
           }
         }
       ],

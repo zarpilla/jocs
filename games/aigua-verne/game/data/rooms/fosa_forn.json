@@ -392,6 +392,10 @@
             {
               "who": "player",
               "text": "sala.fosa_forn.forn.1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.fosa_forn.xifra"
             }
           ]
         },
@@ -453,6 +457,10 @@
             {
               "who": "player",
               "text": "sala.fosa_forn.termometre.1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.fosa_forn.xifra"
             }
           ]
         },

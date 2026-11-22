@@ -1,0 +1,603 @@
+{
+  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `voices`: personatge → voice_id (encara cap). `pronuncia`: noms de planeta, números de contracte, lletres del teclat. `codi`: qui diu les línies de game/logic que no ho diuen elles (Mosca, safata, donar). `sense_veu`: les instruccions de joc.",
+  "actiu": "url",
+  "model": "eleven_v3",
+  "language": "ca",
+  "format": "mp3_44100_64",
+  "voices": {},
+  "text": {},
+  "pronuncia": {
+    "Terra-2": "Terra dos",
+    "T2": "Te dos",
+    "7.788": "set mil set-cents vuitanta-vuit",
+    "1998": "mil nou-cents noranta-vuit",
+    "M-A-R-I-A": "ema, a, erra, i, a",
+    "V-E-R-N-E": "ve, e, erra, ena, e",
+    "T-I-T-U-S": "te, i, te, u, essa",
+    " ₡": " crèdits",
+    "▲": "",
+    "▼": ""
+  },
+  "codi": {
+    "donar.dona": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba": [
+      "iri",
+      "vet"
+    ],
+    "mosca.lluny": [
+      "iri",
+      "vet"
+    ],
+    "mosca.palau": [
+      "iri",
+      "vet"
+    ],
+    "mosca.no_hi_cap": [
+      "iri",
+      "vet"
+    ],
+    "mosca.aqui": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa": "iri",
+    "safata.plena": [
+      "iri",
+      "vet"
+    ],
+    "safata.no": [
+      "iri",
+      "vet"
+    ],
+    "safata.recull": "vet",
+    "safata.buida": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.punta_flor.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.punta_flor.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.punta_flor": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.punta_flor": "iri",
+    "safata.recull.punta_flor": "vet",
+    "donar.dona.punta_flor": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.tornavis.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.tornavis.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.tornavis": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.tornavis": "iri",
+    "safata.recull.tornavis": "vet",
+    "donar.dona.tornavis": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.tornavis_flor.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.tornavis_flor.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.tornavis_flor": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.tornavis_flor": "iri",
+    "safata.recull.tornavis_flor": "vet",
+    "donar.dona.tornavis_flor": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.escriptura.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.escriptura.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.escriptura": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.escriptura": "iri",
+    "safata.recull.escriptura": "vet",
+    "donar.dona.escriptura": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.contracte_7788.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.contracte_7788.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.contracte_7788": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.contracte_7788": "iri",
+    "safata.recull.contracte_7788": "vet",
+    "donar.dona.contracte_7788": [
+      "iri",
+      "vet"
+    ],
+    "donar.dona.sacs_llavors": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.sac_llavors.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.sac_llavors.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.sac_llavors": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.sac_llavors": "iri",
+    "safata.recull.sac_llavors": "vet",
+    "donar.dona.sac_llavors": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.albara.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.albara.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.albara": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.albara": "iri",
+    "safata.recull.albara": "vet",
+    "donar.dona.albara": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.oli.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.oli.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.oli": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.oli": "iri",
+    "safata.recull.oli": "vet",
+    "donar.dona.oli": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.clau_anglesa.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.clau_anglesa.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.clau_anglesa": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.clau_anglesa": "iri",
+    "safata.recull.clau_anglesa": "vet",
+    "donar.dona.clau_anglesa": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.injector.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.injector.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.injector": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.injector": "iri",
+    "safata.recull.injector": "vet",
+    "donar.dona.injector": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.fusible.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.fusible.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.fusible": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.fusible": "iri",
+    "safata.recull.fusible": "vet",
+    "donar.dona.fusible": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.paper_plata.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.paper_plata.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.paper_plata": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.paper_plata": "iri",
+    "safata.recull.paper_plata": "vet",
+    "donar.dona.paper_plata": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.fusible_apanyat.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.fusible_apanyat.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.fusible_apanyat": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.fusible_apanyat": "iri",
+    "safata.recull.fusible_apanyat": "vet",
+    "donar.dona.fusible_apanyat": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.carta_juana.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.carta_juana.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.carta_juana": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.carta_juana": "iri",
+    "safata.recull.carta_juana": "vet",
+    "donar.dona.carta_juana": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.nota_lia.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.nota_lia.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.nota_lia": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.nota_lia": "iri",
+    "safata.recull.nota_lia": "vet",
+    "donar.dona.nota_lia": [
+      "iri",
+      "vet"
+    ],
+    "donar.dona.motlle": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.sorra.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.sorra.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.sorra": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.sorra": "iri",
+    "safata.recull.sorra": "vet",
+    "donar.dona.sorra": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.claus.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.claus.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.claus": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.claus": "iri",
+    "safata.recull.claus": "vet",
+    "donar.dona.claus": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.reg.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.reg.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.reg": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.reg": "iri",
+    "safata.recull.reg": "vet",
+    "donar.dona.reg": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.reg_foradat.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.reg_foradat.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.reg_foradat": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.reg_foradat": "iri",
+    "safata.recull.reg_foradat": "vet",
+    "donar.dona.reg_foradat": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.agulla.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.agulla.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.agulla": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.agulla": "iri",
+    "safata.recull.agulla": "vet",
+    "donar.dona.agulla": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.galleda.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.galleda.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.galleda": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.galleda": "iri",
+    "safata.recull.galleda": "vet",
+    "donar.dona.galleda": [
+      "iri",
+      "vet"
+    ],
+    "donar.dona.galleda_plena": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.carta_banc.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.carta_banc.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.carta_banc": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.carta_banc": "iri",
+    "safata.recull.carta_banc": "vet",
+    "donar.dona.carta_banc": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.invitacio.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.invitacio.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.invitacio": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.invitacio": "iri",
+    "safata.recull.invitacio": "vet",
+    "donar.dona.invitacio": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.contracte_capitana.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.contracte_capitana.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.contracte_capitana": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.contracte_capitana": "iri",
+    "safata.recull.contracte_capitana": "vet",
+    "donar.dona.contracte_capitana": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.pernil.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.pernil.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.pernil": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.pernil": "iri",
+    "safata.recull.pernil": "vet",
+    "donar.dona.pernil": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.vestit.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.vestit.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.vestit": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.vestit": "iri",
+    "safata.recull.vestit": "vet",
+    "donar.dona.vestit": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.vestit_arreglat.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.vestit_arreglat.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.vestit_arreglat": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.vestit_arreglat": "iri",
+    "safata.recull.vestit_arreglat": "vet",
+    "donar.dona.vestit_arreglat": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.targeta.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.targeta.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.targeta": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.targeta": "iri",
+    "safata.recull.targeta": "vet",
+    "donar.dona.targeta": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.targeta_verne.iri": [
+      "iri",
+      "vet"
+    ],
+    "mosca.envia.targeta_verne.vet": [
+      "iri",
+      "vet"
+    ],
+    "mosca.arriba.targeta_verne": [
+      "iri",
+      "vet"
+    ],
+    "safata.posa.targeta_verne": "iri",
+    "safata.recull.targeta_verne": "vet",
+    "donar.dona.targeta_verne": [
+      "iri",
+      "vet"
+    ]
+  },
+  "sense_veu": [
+    "sala.granja_pati.entra.10",
+    "esc.esc1.8"
+  ]
+}

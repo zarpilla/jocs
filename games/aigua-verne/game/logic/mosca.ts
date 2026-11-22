@@ -5,7 +5,12 @@
  */
 import type { ActionResult, Narrative } from '@aventura/narrative-core';
 
-export const MOSCA_TEXTS = ['mosca.envia', 'mosca.arriba', 'mosca.lluny', 'mosca.palau', 'mosca.no_hi_cap', 'mosca.aqui'];
+import { OBJECTES_MOSCA, perObjecte } from './perobjecte.js';
+
+export const MOSCA_TEXTS = [
+  'mosca.envia', 'mosca.arriba', 'mosca.lluny', 'mosca.palau', 'mosca.no_hi_cap', 'mosca.aqui',
+  ...OBJECTES_MOSCA.flatMap((item) => [`mosca.envia.${item}.iri`, `mosca.envia.${item}.vet`, `mosca.arriba.${item}`]),
+];
 
 const PLANETA: Record<string, string> = {
   granja_pati: 'terra2', granja_casa: 'terra2', granja_graner: 'terra2', port_terra2: 'terra2',
@@ -36,11 +41,10 @@ export function enviar(n: Narrative, item: string): ActionResult {
   if (aqui === alla) return { lines: [player('mosca.aqui')] };
   if (!alla || planetaDe(n, aqui) !== planetaDe(n, alla)) return { lines: [player('mosca.lluny')] };
   n.apply([{ takeItem: item }, { giveItem: item, who: other }]);
-  const objecte = n.t(`obj.${item}.amb_article`);
   return {
     lines: [
-      { ...player('mosca.envia', { objecte, nom: other === 'iri' ? "l'Iri" : 'la Vet' }), sound: 'mosca' },
-      { who: other, text: 'mosca.arriba', params: { objecte } },
+      { ...player(perObjecte(n, 'mosca.envia', item, other)), sound: 'mosca' },
+      { who: other, text: perObjecte(n, 'mosca.arriba', item) },
     ],
   };
 }

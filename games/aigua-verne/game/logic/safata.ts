@@ -5,7 +5,12 @@
  */
 import type { ActionResult, Narrative } from '@aventura/narrative-core';
 
-export const SAFATA_TEXTS = ['safata.posa', 'safata.plena', 'safata.no', 'safata.recull', 'safata.buida'];
+import { OBJECTES_MOSCA, perObjecte } from './perobjecte.js';
+
+export const SAFATA_TEXTS = [
+  'safata.posa', 'safata.plena', 'safata.no', 'safata.recull', 'safata.buida',
+  ...OBJECTES_MOSCA.flatMap((item) => [`safata.posa.${item}`, `safata.recull.${item}`]),
+];
 
 const player = (text: string, params?: Record<string, string>) => ({ who: 'player' as const, text, params });
 
@@ -14,14 +19,14 @@ export function posar(n: Narrative, item: string): ActionResult {
   if (props.mosca !== true) return { lines: [player('safata.no')] };
   if (String(n.getVar('safata') ?? '')) return { lines: [player('safata.plena')] };
   n.apply([{ takeItem: item }, { setVar: 'safata', value: item }]);
-  return { lines: [player('safata.posa', { objecte: n.t(`obj.${item}.amb_article`) })] };
+  return { lines: [player(perObjecte(n, 'safata.posa', item))] };
 }
 
 export function recollir(n: Narrative): ActionResult {
   const item = String(n.getVar('safata') ?? '');
   if (!item) return { lines: [player('safata.buida')] };
   n.apply([{ setVar: 'safata', value: '' }, { giveItem: item }]);
-  return { lines: [player('safata.recull', { objecte: n.t(`obj.${item}.amb_article`) })] };
+  return { lines: [player(perObjecte(n, 'safata.recull', item))] };
 }
 
 export function installSafata(n: Narrative) {

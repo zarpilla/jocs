@@ -12,7 +12,9 @@ al dia `npm run benne:sync`) i la configuració `game/audio/veus.json`:
       "pronuncia": { "BCMU": "Be, ce, ema, u", "4.200 €": "quatre mil dos-cents euros" },  // opcional: substitucions
       "codi": { "tub.envia": ["vet"], "sync.aeroport.reinici1": "narrator" },  // opcional: línies del codi del joc
       "sense_veu": ["sala.bcmu_escombraries.llibre.bip"],  // opcional: claus (o començaments de clau) que no es diuen
-      "veu": { "obj.nota_vet.text": "vet" }   // opcional: línies del narrador dites amb la veu d'un personatge (notes, hologrames)
+      "veu": { "obj.nota_vet.text": "vet" },  // opcional: línies del narrador dites amb la veu d'un personatge (notes, hologrames)
+      "jugadora": { "bosc_obert": "vet", "walkie.e3": "vet" }   // opcional: qui juga a una sala compartida, a un
+                                                              // diàleg o a un node d'un diàleg (si no, es dedueix)
     }
 
 Escriu `game/audio/voice/<personatge de Benne><número>.mp3` (el número és l'FNV-1a de la clau del text, el mateix
@@ -36,7 +38,8 @@ La clau d'API es llegeix d'ELEVENLABS_API_KEY o de ~/.elevenlabs.env.
 El narrador també té veu, si n'hi ha a `voices` (`"narrator": "<voice_id>"`; fitxers `narrator<número>.mp3`, que
 el motor fa sonar des de `display`). No es diuen les de títol, les que tenen variables (`{objecte}`)
 ni les de `sense_veu` (el que surt escrit en una pantalla, per exemple).
-Les línies del codi del joc que hi surten com a `{ who: 'bonfill', text: 'clau' }` es troben soles; la resta (qui diu
+Les línies del codi del joc que hi surten com a `{ who: 'bonfill', text: 'clau' }` (als .ts, o en un .json de
+`game/logic`) es troben soles; la resta (qui diu
 `'tub.envia'`?) s'indiquen a `codi` de veus.json. `pronuncia` canvia trossos del text abans d'enviar-lo (sigles, imports,
 codis), sense tocar el text del joc. `veu` fa que una línia del narrador (una nota, un holograma, una veu per megafonia) es
 gravi amb la veu d'un personatge: el text surt igual a la pantalla, i el fitxer continua sent `narrator<número>`. Les acotacions es treuen, i
@@ -119,7 +122,7 @@ def protagonists_in(cond, out: set):
             protagonists_in(v, out)
 
 
-def collect(content, table, joc: pathlib.Path, codi_cfg: dict):
+def collect(content, table, joc: pathlib.Path, codi_cfg: dict, jugadora: dict | None = None):
     """Totes les línies dites: (who, clau, sala, diàleg, protagonistes possibles si who és player, grup).
 
     El grup diu d'on surt: `None` (sales, diàlegs, objectes), `final:<id>`, `defecte` o `codi`."""
@@ -140,6 +143,17 @@ def collect(content, table, joc: pathlib.Path, codi_cfg: dict):
 
     for rid, r in rooms.items():
         find_dialogs(r, rid)
+    jugadora = jugadora or {}
+
+    # Els diàlegs que es comencen parlant amb un personatge: si la interacció diu amb quina protagonista
+    # (`"if": {"protagonist": "vet"}`), és ella.
+    dialog_protas: dict[str, set] = {}
+    for ch in content.get("characters", {}).values():
+        for inter in ch.get("interactions") or []:
+            if isinstance(inter.get("dialogue"), str):
+                found = set()
+                protagonists_in(inter.get("if"), found)
+                dialog_protas.setdefault(inter["dialogue"], set()).update(found or protas)
 
     lines = []
 
@@ -170,14 +184,25 @@ def collect(content, table, joc: pathlib.Path, codi_cfg: dict):
         walk(r, rid, None, room_protas(rid))
     for did, d in content["dialogues"].items():
         starts = dialog_rooms.get(did, set())
-        # Un diàleg que no comença a cap sala (el d'un objecte: el walkie, el quadern) el pot obrir qualsevol de les dues.
-        ps = set().union(*(room_protas(r) for r in starts)) if starts else set(protas)
-        walk(d, None, did, ps)
-        # Les opcions es diuen en veu alta (si no són `silent`): les diu la protagonista.
-        for node in d.get("nodes", {}).values():
+        # Qui hi parla: el que digui `jugadora` de veus.json (per al diàleg, o per a un node: "walkie.e3"); si no, les
+        # protagonistes de les sales on comença, o la de la interacció del personatge. Un diàleg que no comença enlloc
+        # (el d'un objecte: el walkie, el quadern) el pot obrir qualsevol de les dues.
+        if did in jugadora:
+            ps = {jugadora[did]}
+        elif starts:
+            ps = set().union(*(room_protas(r) for r in starts))
+        else:
+            ps = dialog_protas.get(did) or set(protas)
+        walk({k: v for k, v in d.items() if k != "nodes"}, None, did, ps)
+        for nid, node in d.get("nodes", {}).items():
+            node_ps = {jugadora[f"{did}.{nid}"]} if f"{did}.{nid}" in jugadora else ps
+            walk(node, None, did, node_ps)
+            # Les opcions es diuen en veu alta (si no són `silent`): les diu la protagonista.
             for ch in node.get("choices") or []:
                 if not ch.get("silent") and isinstance(ch.get("text"), str):
-                    lines.append(("player", ch["text"], None, did, ps))
+                    found = set()
+                    protagonists_in(ch.get("if"), found)
+                    lines.append(("player", ch["text"], None, did, found or node_ps))
     for kind in ("items", "characters"):
         for _id, o in content.get(kind, {}).items():
             walk(o, None, None, set(protas))   # un objecte el pot portar (i mirar) qualsevol de les dues
@@ -203,6 +228,20 @@ def collect(content, table, joc: pathlib.Path, codi_cfg: dict):
     for ts in sorted((joc / "game/logic").glob("*.ts")):
         for who, key in re.findall(r"who:\s*'([\w-]+)'(?:\s*as const)?\s*,\s*text:\s*'([\w.]+)'", ts.read_text()):
             trobades.setdefault(key, set()).add(who)
+
+    # I els textos que la lògica llegeix de fitxers .json (transicions, sincronies): `{"who": ..., "text": ...}`.
+    def json_linies(o):
+        if isinstance(o, dict):
+            if isinstance(o.get("who"), str) and isinstance(o.get("text"), str):
+                trobades.setdefault(o["text"], set()).add(o["who"])
+            for v in o.values():
+                json_linies(v)
+        elif isinstance(o, list):
+            for v in o:
+                json_linies(v)
+
+    for js in sorted((joc / "game/logic").glob("*.json")):
+        json_linies(json.loads(js.read_text()))
     ja_hi_son = {l[1] for l in lines}
     for key, who in codi_cfg.items():
         if key not in ja_hi_son:            # les que ja són a les sales només diuen qui les diu (vegeu a sota)
@@ -261,6 +300,7 @@ def main():
     pronuncia = sorted(cfg.get("pronuncia", {}).items(), key=lambda kv: -len(kv[0]))   # els trossos llargs, primer
     sense_veu = cfg.get("sense_veu", [])
     veu_de = cfg.get("veu", {})
+    jugadora = cfg.get("jugadora", {})
 
     def veu_narrador(key):
         """El personatge amb la veu del qual es diu una línia del narrador (`veu` de veus.json), o el narrador."""
@@ -270,7 +310,7 @@ def main():
         return "narrator"
     model, language, fmt = cfg.get("model", "eleven_v3"), cfg.get("language", "ca"), cfg.get("format", "mp3_44100_64")
 
-    lines, dialog_rooms = collect(content, table, joc, cfg.get("codi", {}))
+    lines, dialog_rooms = collect(content, table, joc, cfg.get("codi", {}), cfg.get("jugadora", {}))
 
     def chosen(who, key, room, dialog, grup):
         if a.tot or key in a.clau or (dialog and dialog in a.dialeg):
@@ -293,6 +333,11 @@ def main():
         if a.qui and who not in a.qui:
             continue
         speakers = sorted(ps) if who == "player" else [who]
+        if who == "player" and len(speakers) > 1:
+            # Sala compartida: qui hi juga, si veus.json ho diu (`jugadora`). També per als diàlegs que s'hi comencen.
+            sales = {room} if room else set(dialog_rooms.get(dialog, ())) if dialog else set()
+            if sales and sales <= jugadora.keys():
+                speakers = sorted({jugadora[s] for s in sales})
         if not speakers:
             skipped.append((key, "no se sap quina protagonista la diu"))
             continue

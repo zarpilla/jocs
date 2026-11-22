@@ -247,7 +247,95 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.verdant_jardi.panell_preu.1"
+              "text": "preu.panell.48",
+              "if": {
+                "var": "preu_aigua",
+                "op": "==",
+                "value": 48
+              }
+            },
+            {
+              "who": "player",
+              "text": "preu.panell.64",
+              "if": {
+                "var": "preu_aigua",
+                "op": "==",
+                "value": 64
+              }
+            },
+            {
+              "who": "player",
+              "text": "preu.panell.97",
+              "if": {
+                "var": "preu_aigua",
+                "op": "==",
+                "value": 97
+              }
+            },
+            {
+              "who": "player",
+              "text": "preu.panell.112",
+              "if": {
+                "var": "preu_aigua",
+                "op": "==",
+                "value": 112
+              }
+            },
+            {
+              "who": "player",
+              "text": "preu.panell",
+              "if": {
+                "all": [
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 48
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 64
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 97
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 112
+                  }
+                ]
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "preu.xifra",
+              "if": {
+                "all": [
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 48
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 64
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 97
+                  },
+                  {
+                    "var": "preu_aigua",
+                    "op": "!=",
+                    "value": 112
+                  }
+                ]
+              }
             }
           ]
         },
