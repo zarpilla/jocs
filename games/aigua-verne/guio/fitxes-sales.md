@@ -28,6 +28,9 @@
 - **El lema de Verne** («AIGUA VERNE») i la **gota blava** (logotip) surten a tots els panells i a les màquines de
   Verne. El **panell del preu** (pantalla negra amb lletres taronja: «48 ▲») és a gairebé tots els exteriors.
 - **Les Canonades** (columnes blanques fins al cel) es veuen a l'horitzó de Terra-2, Aqua i Ferrum.
+- **Sales d'una sola** (guió, annex D 19): totes les sales de fora del palau són de les dues, però al fons d'Aqua, a
+  casa la Juana, a la colada, al sindicat i a la residència només hi entra l'Iri, i al cobert, només la Vet. No hi cal
+  dibuixar l'altra.
 - Cada sala és un mòdul amb `LIGHT`, `bg(cv)`, `PROPS` (fotogrames de les coses condicionals i dels decorats),
   `ANIMS` (opcional) i `GEOMETRIA` (`things`: id → `{'rect': (x0, y0, x1, y1), 'walk': (x, y)}`; `spawns`:
   personatge → peus; `walkable`: polígon). Coordenades reals de 640×360. Les sortides també són `things`.
@@ -103,6 +106,7 @@ a la dreta el despatx (taula amb calaixos plens, el quadre de la mare, el videot
 - `porta` → `granja_pati` · `calaix` (la taula del despatx) · `videotelefon` · `quadre` (el retrat de la mare; prop:
   es veu fins que s'aparta) · `caixa_forta` (prop: es veu quan el quadre s'ha apartat; decorat `caixa_oberta`) ·
   `bol` (el bol del gos a terra, amb «TITUS» gravat) · `pots` (els setanta pots) · `pica`
+- El `videotelefon` i la `caixa_forta` només els fa servir l'Iri (la Vet s'excusa).
 - Decorat `quadre_apartat` (el quadre, recolzat a terra).
 
 ### `granja_graner` (P)
@@ -128,7 +132,8 @@ La cabina de comandament: dos seients gastats, la consola amb botons i palanques
 taula de vidre amb els planetes de Vesper), la ràdio, la **pantalla** gran (apagada; decorat `pantalla_verne`: la cara
 del Magnat, quan truca a l'Escena 6), el finestral. Pel finestral es veu on és la nau: decorats `vista_terra2`,
 `vista_aqua`, `vista_ferrum`, `vista_verdant` (un fotograma per planeta, que es veu des del port).
-- `escala` → `cantimplora_bodega` · `mapa` · `radio` · `pantalla` · `finestral` · `seient` (el de la Capitana)
+- `escala` → `cantimplora_bodega` · `mapa` · `radio` · `pantalla` · `finestral` · `seient` (el de la Capitana). El
+  mapa i la ràdio, només l'Iri.
 - Personatges: `capitana` (dreta, al costat de la consola), `iri`, `vet`.
 
 ### `cantimplora_bodega` (P)
@@ -153,7 +158,8 @@ El port d'un planeta que era mar: un moll de pedra blanca de sal, vaixells encal
 l'**escala del port que s'acaba a l'aire**, quaranta metres per sobre del fons. Una grua de port vella amb una
 cistella de peix penjada. Al fons, la Canonada d'Aqua. La Cantimplora, aparcada a l'esquerra (només la rampa).
 - `rampa` → `cantimplora_bodega` · `escala_port` · `grua` (decorat `grua_arreglada`: llum verd a la cabina) ·
-  `cistella` → `aqua_fons` (quan la grua funciona) · `vaixells` · `panell_preu` · `canonada`
+  `cistella` → `aqua_fons` (quan la grua funciona; només hi baixa l'Iri, la Vet es queda a la grua) · `vaixells` ·
+  `panell_preu` · `canonada`
 
 ### `aqua_fons` (L)
 El fons de l'antic mar, vist des de baix: el moll és una paret alta al fons, amb la cistella que hi baixa. Sorra
@@ -171,7 +177,7 @@ casa de la Juana (una caseta feta amb un casc de vaixell bolcat, amb finestra ro
 L'interior del casc bolcat: costelles de fusta, llibres per tot arreu, mapes del mar clavats a les parets amb línies
 de nivell (cada any més avall), un aquari buit amb un rètol «PER QUAN TORNIN», una làmpada.
 - `porta` → `aqua_fons` · `mapes` · `llibres` · `aquari` · `finestra`
-- Personatges: `juana` (asseguda a la taula).
+- Personatges: `juana` (asseguda a la taula), `iri` (la Vet no hi baixa).
 
 ---
 
@@ -197,7 +203,7 @@ El local del sindicat: taules llargues, cartells de vagues antigues, una pissarr
 de la colla de teatre, obert, amb el vestit de reina de vellut granat (decorat `vestit`: es veu fins que s'agafa).
 Una prestatgeria amb motlles de fosa.
 - `porta` → `ferrum_carrer` · `bagul` · `pissarra` · `motlles` · `cartells`
-- Personatges: `bru` (a la taula).
+- Personatges: `bru` (a la taula), `iri` (la Vet no hi entra).
 
 ### `fosa_forn` (L)
 La fosa per dins: una nau alta i fosca, el forn gran (boca de foc; decorats `forn_ences` i `forn_fort`), la **manxa**
@@ -210,6 +216,7 @@ La mateixa nau, l'altra banda: el pont grua amb el **gresol** penjat, el **llit 
 claus), sacs de sorra. Decorats: `motlle_posat`, `motlle_preparat` (amb sorra), `gresol_ple` (lluu taronja),
 `claus_fetes` (tres claus brillant).
 - `pas` → `fosa_forn` · `gresol` · `grua_pont` (els comandaments) · `llit` · `sorra_pedra`
+- Només hi entra l'Iri (la Vet és al forn).
 
 ---
 
@@ -229,11 +236,13 @@ El cobert d'en Nil: eines de jardí, sacs d'adob de plàstic, un tamboret, i al 
 mata de tomàquet de debò, mig seca, en un test. Decorats `reg_muntat` (els tubs del reg fins al test) i
 `tomaquera_viva` (verda, amb tomàquets). Una galleda (prop: fins que s'agafa).
 - `porta` → `verdant_jardi` · `tomaquera` · `galleda` · `sacs` · `eines`
+- Només hi entra la Vet.
 
 ### `verdant_residencia` (P)
 El despatx d'estiu del Magnat: tot blanc, una calaixera, una paperera daurada, un arxivador amb calaixos amb
 etiquetes («DEUTORS», «DRETS», «PEIXOS»), un quadre enorme del Magnat amb en Dividend, un finestral al jardí.
 - `porta` → `verdant_jardi` · `calaixera` · `paperera` · `arxivador` · `quadre` · `finestral`
+- Només hi entra l'Iri.
 
 ---
 

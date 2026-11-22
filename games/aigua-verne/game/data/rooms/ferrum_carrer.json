@@ -37,6 +37,22 @@
             "use",
             "open"
           ],
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.ferrum_carrer.porta_sindicat.vet"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
           "goTo": "ferrum_sindicat"
         }
       ]

@@ -90,9 +90,25 @@
             "talkTo",
             "push"
           ],
+          "if": {
+            "protagonist": "vet"
+          },
           "lines": [
             {
-              "who": "player",
+              "who": "vet",
+              "text": "sala.granja_casa.videotelefon.vet"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "talkTo",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "iri",
               "text": "sala.granja_casa.videotelefon.2",
               "sound": "videotelefon"
             }
@@ -197,6 +213,22 @@
             {
               "who": "player",
               "text": "sala.granja_casa.caixa_forta.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "push"
+          ],
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.granja_casa.caixa_forta.vet"
             }
           ]
         },

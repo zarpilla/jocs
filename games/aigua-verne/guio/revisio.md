@@ -115,7 +115,7 @@ GRUA «grua»
     • use + fusible_apanyat — si juga vet i NO grua_arreglada
         [SO: grua] JUGADORA: Fusible de trenta, al seu lloc...
         JUGADORA: Llum verd! La grua funciona.
-        JUGADORA: Ara, una a la cistella i l'altra als comandaments.
+        JUGADORA: Ara, l'Iri a la cistella i jo als comandaments.
         ⇒ +grua_arreglada, perd fusible_apanyat
     • use + fusible_apanyat — si NO grua_arreglada
         JUGADORA: Això ho ha de muntar la Vet. Si ho faig jo, la grua acabarà a l'òrbita.
@@ -141,15 +141,16 @@ CISTELLA «cistella»
         JUGADORA: La cistella de la grua. Hi cabem una persona i un peix. Ara, sense peix.
     • walkTo/use/open — si NO grua_arreglada
         JUGADORA: Sense grua, la cistella és un gronxador.
-    • walkTo/use/open — si NO baixada_feta i ((juga iri i vet a aqua_port) o (juga vet i iri a aqua_port))
-        JUGADORA: Pujo a la cistella...
-        VET: Tu condueixes naus. Jo condueixo grues. ⟨si juga iri⟩
-        IRI: Agafa't. Aquesta grua és més vella que la Capitana. ⟨si juga vet⟩
+    • walkTo/use/open — si juga vet
+        VET: Jo condueixo grues. Si baixem les dues, qui ens puja?
+    • walkTo/use/open — si NO baixada_feta i juga iri i vet a aqua_port
+        IRI: Pujo a la cistella...
+        VET: Tu condueixes naus. Jo condueixo grues.
         [SO: cistella] NARRADOR: La cistella baixa, a sacsejades, quaranta metres.
-        JUGADORA: Des d'aquí baix, ara que va, la cistella té botó. Ja podem pujar i baixar soles.
+        IRI: Des d'aquí baix, ara que va, la cistella té botó. Ja puc pujar i baixar sola.
         ⇒ +baixada_feta, → aqua_fons
     • walkTo/use/open — si NO baixada_feta
-        JUGADORA: La grua funciona, però algú l'ha de fer anar des de dalt. Necessito l'altra aquí, als comandaments.
+        IRI: La grua funciona, però algú l'ha de fer anar des de dalt. Necessito la Vet aquí, als comandaments.
     • walkTo/use/open — SEMPRE
         [SO: cistella] NARRADOR: La cistella baixa.
         ⇒ → aqua_fons
@@ -456,6 +457,8 @@ MAPA «mapa de navegació»
 RADIO «ràdio»
     • look — SEMPRE
         JUGADORA: La ràdio de banda vella. La Capitana hi té apuntades freqüències amb retolador, al marc.
+    • use/talkTo/push — si juga vet i cap_condicions i NO albara_fet
+        VET: Jo sé com funciona la ràdio. No com es parla.
     • use/talkTo/push — si cap_condicions i NO albara_fet
         [SO: radio] NARRADOR: Xiuxiueig d'estàtica... i una veu.
         ⇒ diàleg radio_juana
@@ -547,6 +550,8 @@ RAMPA «Cantimplora»
 PORTA_SINDICAT «sindicat»
     • look — SEMPRE
         JUGADORA: El local del sindicat. A la porta: «VAGA. AQUÍ NO ES VEN RES.»
+    • walkTo/use/open — si juga vet
+        VET: Les assemblees, per a tu. Jo vaig a veure per què no raja la font.
     • walkTo/use/open — SEMPRE
         ⇒ → ferrum_sindicat
 
@@ -650,7 +655,7 @@ BAGUL «bagul»
         JUGADORA: El bagul de la colla de teatre de la Festa Major. Ja no hi ha el vestit de reina.
     • look — SEMPRE
         JUGADORA: El bagul de la colla de teatre de la Festa Major. A dalt de tot, un vestit de reina de vellut granat, amb lluentons de llautó i una corona feta amb un engranatge.
-        IRI: Això és el més lleig que he vist mai. I he estat a Verdant. ⟨si iri a ferrum_sindicat⟩
+        IRI: Això és el més lleig que he vist mai. I he estat a Verdant.
     • pickUp — si vestit_agafat
         JUGADORA: El vestit ja el tenim. La resta és de la colla de teatre.
     • pickUp — si rosa_permis i NO vestit_agafat
@@ -662,18 +667,12 @@ BAGUL «bagul»
         JUGADORA: És de la Rosa, la minera del piquet. Li ho he de demanar.
     • pickUp — si vestit_volgut
         JUGADORA: És de la Rosa, la minera del piquet. Primer, demanar-l'hi.
-    • pickUp — si juga iri i NO vestit_refusat
+    • pickUp — si NO vestit_refusat
         JUGADORA: No em posaria això ni morta. I no és meu.
         ⇒ +vestit_refusat
-    • pickUp — si NO vestit_refusat
-        JUGADORA: És de la colla de teatre. No ens en cal res.
-        ⇒ +vestit_refusat
-    • pickUp — si juga iri
+    • pickUp — SEMPRE
         JUGADORA: Ni morta, he dit. Però viva i de gala, potser. Per si de cas.
         JUGADORA: És de la Rosa, la minera del piquet. Li ho he de demanar.
-        ⇒ +vestit_volgut
-    • pickUp — SEMPRE
-        JUGADORA: Un vestit de reina, per si de cas... Però és de la Rosa, la minera del piquet. L'hi hauríem de demanar.
         ⇒ +vestit_volgut
 
 PISSARRA «pissarra»
@@ -727,7 +726,7 @@ QUIM «—»
 
 ```
 EN ENTRAR
-    • * — si escena = 4 i motlle_preparat i NO claus_fetes i NO sync_colada i ((vet a fosa_forn i iri a fosa_colada) o (iri a fosa_forn i vet a fosa_colada))
+    • * — si escena = 4 i motlle_preparat i NO claus_fetes i NO sync_colada i (vet a fosa_forn i iri a fosa_colada)
         TÍTOL: Ara necessites les dues.
         NARRADOR: El forn està a vuit. Cada acció el refreda un grau. Si arriba a zero, el metall s'endureix al gresol.
         NARRADOR: Al forn: manxa, metall i fora l'escòria. A la colada: abocar el gresol i tapar amb sorra.
@@ -829,7 +828,7 @@ SORRA_PEDRA «sacs de sorra»
 
 ```
 EN ENTRAR
-    • * — si escena = 4 i motlle_preparat i NO claus_fetes i NO sync_colada i ((vet a fosa_forn i iri a fosa_colada) o (iri a fosa_forn i vet a fosa_colada))
+    • * — si escena = 4 i motlle_preparat i NO claus_fetes i NO sync_colada i (vet a fosa_forn i iri a fosa_colada)
         TÍTOL: Ara necessites les dues.
         NARRADOR: El forn està a vuit. Cada acció el refreda un grau. Si arriba a zero, el metall s'endureix al gresol.
         NARRADOR: Al forn: manxa, metall i fora l'escòria. A la colada: abocar el gresol i tapar amb sorra.
@@ -848,6 +847,8 @@ PORTA «carrer»
         ⇒ → ferrum_carrer
 
 PAS «colada»
+    • walkTo/use/open — si juga vet
+        VET: Jo no em moc del forn. Si baixa la temperatura, adéu claus.
     • walkTo/use/open — SEMPRE
         ⇒ → fosa_colada
 
@@ -939,8 +940,10 @@ CALAIX «calaixos»
 VIDEOTELEFON «videotelèfon»
     • look — SEMPRE
         JUGADORA: El videotelèfon. El pare el contesta sempre a la tercera, perquè la primera «és de mala educació».
+    • use/talkTo/push — si juga vet
+        VET: Truca-li tu. A mi em fa repassar els noms de les vaques.
     • use/talkTo/push — SEMPRE
-        [SO: videotelefon] JUGADORA: Ring... ring... ring...
+        [SO: videotelefon] IRI: Ring... ring... ring...
         ⇒ diàleg pare
 
 QUADRE «quadre de la mare» — hi és si NO quadre_apartat
@@ -959,6 +962,8 @@ CAIXA_FORTA «caixa forta» — hi és si quadre_apartat
         JUGADORA: Una caixa forta vella amb un teclat de lletres. Cinc caselles: una paraula de cinc lletres.
     • open/use/push — si caixa_oberta
         JUGADORA: Ja està oberta.
+    • open/use/push — si juga vet
+        VET: Les lletres, per a l'Iri. Jo l'obriria amb el tornavís, i el pare no m'ho perdonaria.
     • open/use/push — SEMPRE
         ⇒ diàleg teclat
 
@@ -1029,7 +1034,8 @@ LLAVORS «banc de llavors»
         JUGADORA: Tres sacs per a la Juana: secà, cigrons i tomàquet. El quart es queda aquí, que ho ha dit el pare.
         ⇒ +sacs_agafats, rep sacs_llavors
     • pickUp — si juana_llavors i NO permis_pare
-        JUGADORA: Són del pare. No me'n vaig a endur ni un sac sense demanar-l'hi.
+        JUGADORA: Són del pare. No me'n vaig a endur ni un sac sense demanar-l'hi. ⟨si juga iri⟩
+        JUGADORA: Són del pare. Sense el seu permís, ni un sac. Que l'Iri li ho demani pel videotelèfon. ⟨si juga vet⟩
     • pickUp — si cal_aval i NO sac4_agafat
         JUGADORA: El pare va dir que en guardéssim un, per si de cas. Doncs aquest és el cas.
         ⇒ +sac4_agafat, rep sac_llavors
@@ -1050,9 +1056,11 @@ REG «reg gota a gota» — hi és si NO reg_agafat
         JUGADORA: «Encara serveix», diu el pare. Doncs que serveixi. Me l'emporto. ⟨si NO cal_reg⟩
         ⇒ +reg_agafat, rep reg
     • pickUp — si cal_reg
-        JUGADORA: El pare sempre diu: «El reg no es toca, que encara serveix.» Li ho hauré de demanar pel videotelèfon.
+        JUGADORA: El pare sempre diu: «El reg no es toca, que encara serveix.» Li ho hauré de demanar pel videotelèfon. ⟨si juga iri⟩
+        JUGADORA: El pare sempre diu: «El reg no es toca, que encara serveix.» L'Iri li ho haurà de demanar pel videotelèfon. ⟨si juga vet⟩
     • pickUp — si reg_refusat
-        JUGADORA: Algun dia servirà. Li ho demanaré al pare pel videotelèfon: «per si de cas» és un argument que entén.
+        JUGADORA: Algun dia servirà. Li ho demanaré al pare pel videotelèfon: «per si de cas» és un argument que entén. ⟨si juga iri⟩
+        JUGADORA: Algun dia servirà. Que l'Iri li ho demani al pare pel videotelèfon: «per si de cas» és un argument que entén. ⟨si juga vet⟩
         ⇒ +reg_volgut
     • pickUp — SEMPRE
         JUGADORA: El pare sempre diu: «El reg no es toca, que encara serveix.» Ell sabrà per a què.
@@ -1691,10 +1699,6 @@ TOMAQUERA «tomaquera»
     • use + reg_foradat — si juga vet
         JUGADORA: Tubs al test, goters a la terra, el cap del tub a punt per a l'aigua.
         ⇒ +reg_muntat, perd reg_foradat
-    • use + reg — SEMPRE
-        JUGADORA: Això ho ha de muntar la Vet.
-    • use + reg_foradat — SEMPRE
-        JUGADORA: Això ho ha de muntar la Vet.
     • use + galleda_plena — si reg_muntat
         [SO: regar] JUGADORA: L'aigua del Magnat, gota a gota, cap a la tomaquera.
         NARRADOR: La terra s'enfosqueix. Les fulles s'aixequen, a poc a poc, com si es despertessin.
@@ -1753,6 +1757,8 @@ PORTA_RESIDENCIA «residència»
 PORTA_COBERT «cobert»
     • look — SEMPRE
         JUGADORA: El cobert del jardiner. L'única cosa de fusta de debò de tot Verdant.
+    • walkTo/use/open — si juga iri
+        IRI: Avui faig d'inversora. En Nil no es fia de les jaquetes de vol.
     • walkTo/use/open — SEMPRE
         ⇒ → verdant_cobert
 
@@ -2125,21 +2131,17 @@ COMENÇA A: inici
 COMENÇA A: torna (si bru_set) · carta (si té carta_juana (iri) i iri a ferrum_sindicat) · estrany
 
 [estrany]
-    BRU: Una pilot i una enginyera. Que us envia el Magnat? ⟨si iri a ferrum_sindicat i vet a ferrum_sindicat⟩
-    BRU: Una pilot. Que t'envia el Magnat? ⟨si no (iri a ferrum_sindicat i vet a ferrum_sindicat) i juga iri⟩
-    BRU: Una enginyera. Que t'envia el Magnat? ⟨si no (iri a ferrum_sindicat i vet a ferrum_sindicat) i juga vet⟩
+    BRU: Una pilot. Que t'envia el Magnat?
     BRU: No parlo amb desconegudes. I menys amb desconegudes de nau.
-    JUGADORA: (a part) Sense alguna cosa que digui qui som, en Bru no ens escoltarà. La Juana el coneix. ⟨si juana_claus i no (juga vet i té carta_juana (iri))⟩
-    JUGADORA: (a part) La carta de la Juana la porta l'Iri. Sense ella, en Bru no m'escoltarà. ⟨si juga vet i té carta_juana (iri)⟩
+    JUGADORA: (a part) Sense alguna cosa que digui qui som, en Bru no ens escoltarà. La Juana el coneix. ⟨si juana_claus i no (té carta_juana (vet))⟩
+    JUGADORA: (a part) La carta de la Juana la porta la Vet. Sense ella, en Bru no m'escoltarà. ⟨si té carta_juana (vet)⟩
 
 [carta]
-    BRU: Una pilot i una enginyera. Que us envia el Magnat? ⟨si vet a ferrum_sindicat⟩
-    BRU: Una pilot. Que t'envia el Magnat? ⟨si no (vet a ferrum_sindicat)⟩
+    BRU: Una pilot. Que t'envia el Magnat?
     IRI: Ens envia la Juana. Té.
     NARRADOR: En Bru llegeix la carta de la Juana. Dues vegades. Somriu, gairebé.
     BRU: La Juana diu que sou de fiar. La Juana també diu que les pedres tenen memòria.
-    VET: La Juana diu que el Magnat viu del preu. ⟨si vet a ferrum_sindicat⟩
-    JUGADORA: La Juana diu que el Magnat viu del preu. ⟨si no (vet a ferrum_sindicat)⟩
+    IRI: La Juana diu que el Magnat viu del preu.
     BRU: La ven gota a gota. Si en vengués més, el preu baixaria. I si el preu baixa, ell deixa de ser el Magnat.
     BRU: És un home. I un home no vol ser un home. Vol ser el Magnat.
     BRU: Voleu les claus de les vàlvules. Ho diu aquí.
@@ -2155,8 +2157,7 @@ COMENÇA A: torna (si bru_set) · carta (si té carta_juana (iri) i iri a ferrum
     ▸ Com és la Lia? ⟨una vegada, si bru_lia⟩ → lia
     ▸ La Juana diu que et deu una cervesa. D'aigua. ⟨una vegada⟩ → juana
     ▸ La canalla ja beu. ⟨si canalla_beu i NO bru_lia⟩ → canalla
-    ▸ Te la portarem a casa, la Lia. T'ho prometo. ⟨si bru_lia i NO promesa_lia i juga iri⟩ → promesa
-    ▸ I si et portem la Lia a casa? ⟨si bru_lia i NO promesa_lia i juga vet⟩ → promesa_vet
+    ▸ Te la portarem a casa, la Lia. T'ho prometo. ⟨si bru_lia i NO promesa_lia⟩ → promesa
     ▸ Com es fan les claus? ⟨si promesa_lia i NO claus_fetes⟩ → colada
     ▸ Recorda'm què cal fer. → recorda
     ▸ Fins ara, Bru. → (es queda) · FI
@@ -2179,18 +2180,14 @@ COMENÇA A: torna (si bru_set) · carta (si té carta_juana (iri) i iri a ferrum
     BRU: ...Bé.
     NARRADOR: En Bru agafa un motlle de la prestatgeria i el deixa a la taula. Després, al dors de la carta de la Juana, escriu unes línies amb lletra gran.
     BRU: El motlle de les tres claus. I això, per a la Lia, perquè us faci cas. Ella coneix la meva lletra.
-    BRU: La fosa és vostra. Una al forn i l'altra a la colada.
+    BRU: La fosa és vostra. La teva germana al forn i tu a la colada.
     ⇒ +promesa_lia, rep motlle, rep nota_lia (iri)
-    ↪ menu
-
-[promesa_vet]
-    BRU: Això ho ha de prometre la pilot. Ella és la que tracta. Tu ets la que arregla.
     ↪ menu
 
 [colada]
     BRU: Primer, el motlle al llit de colada, preparat amb sorra fina. Fina de debò: si no, les claus surten amb grava.
     BRU: Sorra fina, aquí no en tenim: tot és pedra picada. ⟨si NO sorra_agafada⟩
-    BRU: Després, una al forn i l'altra a la colada. Al forn: manxa, metall, i fora l'escòria. A la colada: abocar el gresol i tapar amb sorra.
+    BRU: Després, la teva germana al forn i tu a la colada. Al forn: manxa, metall, i fora l'escòria. A la colada: abocar el gresol i tapar amb sorra.
     BRU: Si l'escòria va al motlle, les claus surten amb bombolles. I el forn es refreda de pressa: no badeu.
     ⇒ +cal_sorra_bru
     ↪ menu
@@ -2205,7 +2202,7 @@ COMENÇA A: torna (si bru_set) · carta (si té carta_juana (iri) i iri a ferrum
     BRU: El condensador de la mina, Verne el va tancar amb un lector de targetes. Sense targeta de Verne, no fa res. ⟨si cal_targeta i NO canalla_beu⟩
     BRU: El motlle, preparat amb sorra fina al llit de colada. Metall al forn, manxa, i fora l'escòria abans d'abocar. ⟨si promesa_lia i NO claus_fetes⟩
     BRU: Sorra fina, aquí no en tenim: tot és pedra picada. ⟨si promesa_lia i NO sorra_agafada⟩
-    BRU: Una al forn i l'altra a la colada. A la vegada. ⟨si promesa_lia i NO claus_fetes⟩
+    BRU: La teva germana al forn i tu a la colada. A la vegada. ⟨si promesa_lia i NO claus_fetes⟩
     BRU: Ara, al palau: busqueu en Nil, el jardiner de Verdant. Cada dijous hi puja. ⟨si claus_fetes⟩
     ↪ menu
 
@@ -2356,8 +2353,8 @@ COMENÇA A: inici
     IRI: Parlar amb la Capitana, al pont. ⟨si juga vet i (escena = 2 i NO cap_condicions)⟩
     VET: Un albarà: una feina de veritat per a Aqua (ràdio del pont: la Juana). ⟨si juga iri i (escena = 2 i cap_condicions i no (té albara) i NO capitana_accepta)⟩
     IRI: Un albarà: una feina de veritat per a Aqua (ràdio del pont: la Juana). ⟨si juga vet i (escena = 2 i cap_condicions i no (té albara) i NO capitana_accepta)⟩
-    VET: Llavors per a la Juana: el banc del pare, al graner (demanar-li permís pel videotelèfon). ⟨si juga iri i (escena = 2 i juana_llavors i NO sacs_carregats)⟩
-    IRI: Llavors per a la Juana: el banc del pare, al graner (demanar-li permís pel videotelèfon). ⟨si juga vet i (escena = 2 i juana_llavors i NO sacs_carregats)⟩
+    VET: Llavors per a la Juana: el banc del pare, al graner (demana-li permís pel videotelèfon). ⟨si juga iri i (escena = 2 i juana_llavors i NO sacs_carregats)⟩
+    IRI: Llavors per a la Juana: el banc del pare, al graner (li demano permís pel videotelèfon). ⟨si juga vet i (escena = 2 i juana_llavors i NO sacs_carregats)⟩
     VET: Llavors carregades: avisar la Juana per ràdio. ⟨si juga iri i (escena = 2 i sacs_carregats i NO albara_fet)⟩
     IRI: Llavors carregades: avisar la Juana per ràdio. ⟨si juga vet i (escena = 2 i sacs_carregats i NO albara_fet)⟩
     VET: L'injector de la nau està esquerdat: l'he de mirar jo (el motor, a la bodega). ⟨si juga iri i (escena = 2 i cap_condicions i NO injector_vist)⟩
@@ -2368,12 +2365,12 @@ COMENÇA A: inici
     IRI: Albarà i injector: tornar a la Capitana. ⟨si juga vet i (escena = 2 i té albara i injector_posat i NO capitana_accepta)⟩
     VET: Rumb a Aqua: el mapa del pont. ⟨si juga iri i (escena = 2 i capitana_accepta)⟩
     IRI: Rumb a Aqua: el mapa del pont. ⟨si juga vet i (escena = 2 i capitana_accepta)⟩
-    VET: Baixar al fons del mar d'Aqua: la grua del port. ⟨si juga iri i (escena = 3 i NO baixada_feta)⟩
-    IRI: Baixar al fons del mar d'Aqua: la grua del port. ⟨si juga vet i (escena = 3 i NO baixada_feta)⟩
+    VET: Baixar al fons del mar d'Aqua: tu a la cistella i jo a la grua. ⟨si juga iri i (escena = 3 i NO baixada_feta)⟩
+    IRI: Baixar al fons del mar d'Aqua: jo a la cistella i tu a la grua. ⟨si juga vet i (escena = 3 i NO baixada_feta)⟩
     VET: Parlar amb la Juana, al fons del mar. ⟨si juga iri i (escena = 3 i baixada_feta i NO juana_fet)⟩
-    IRI: Parlar amb la Juana, al fons del mar. ⟨si juga vet i (escena = 3 i baixada_feta i NO juana_fet)⟩
+    IRI: Parlar amb la Juana, al fons del mar. Hi baixo jo. ⟨si juga vet i (escena = 3 i baixada_feta i NO juana_fet)⟩
     VET: Ferrum: trobar en Bru (el sindicat) i donar-li la carta de la Juana. ⟨si juga iri i (escena = 4 i NO bru_set)⟩
-    IRI: Ferrum: trobar en Bru (el sindicat) i donar-li la carta de la Juana. ⟨si juga vet i (escena = 4 i NO bru_set)⟩
+    IRI: Ferrum: trobar en Bru (el sindicat) i donar-li la carta de la Juana. Les assemblees, per a mi. ⟨si juga vet i (escena = 4 i NO bru_set)⟩
     VET: Aigua per a la canalla del piquet de Ferrum. ⟨si juga iri i (escena = 4 i bru_set i NO canalla_beu)⟩
     IRI: Aigua per a la canalla del piquet de Ferrum. ⟨si juga vet i (escena = 4 i bru_set i NO canalla_beu)⟩
     VET: El condensador del carrer s'engega amb una targeta de treballador actiu de Verne. ⟨si juga iri i (escena = 4 i cal_targeta i NO mosca_contractada i NO canalla_beu)⟩
@@ -2383,16 +2380,16 @@ COMENÇA A: inici
     VET: La Mosca té feina i targeta. El condensador és al carrer. ⟨si juga iri i (escena = 4 i mosca_contractada i NO canalla_beu)⟩
     IRI: La Mosca té feina i targeta. El condensador és al carrer. ⟨si juga vet i (escena = 4 i mosca_contractada i NO canalla_beu)⟩
     VET: Tornar a parlar amb en Bru. ⟨si juga iri i (escena = 4 i canalla_beu i NO promesa_lia)⟩
-    IRI: Tornar a parlar amb en Bru. ⟨si juga vet i (escena = 4 i canalla_beu i NO promesa_lia)⟩
+    IRI: Tornar a parlar amb en Bru. Hi vaig jo. ⟨si juga vet i (escena = 4 i canalla_beu i NO promesa_lia)⟩
     VET: Preparar el motlle de les claus al llit de colada de la fosa. ⟨si juga iri i (escena = 4 i promesa_lia i NO motlle_preparat i NO cal_sorra)⟩
     IRI: Preparar el motlle de les claus al llit de colada de la fosa. ⟨si juga vet i (escena = 4 i promesa_lia i NO motlle_preparat i NO cal_sorra)⟩
     VET: Sorra fina per al motlle: a Ferrum només n'hi ha de pedra picada. ⟨si juga iri i (escena = 4 i cal_sorra i NO motlle_preparat)⟩
     IRI: Sorra fina per al motlle: a Ferrum només n'hi ha de pedra picada. ⟨si juga vet i (escena = 4 i cal_sorra i NO motlle_preparat)⟩
     VET: La platja d'Aqua ara és el lot 9 de Verne: de la línia de l'aigua de dimarts cap amunt. ⟨si juga iri i (escena = 4 i cal_sorra i lot9_vist i NO sorra_agafada)⟩
     IRI: La platja d'Aqua ara és el lot 9 de Verne: de la línia de l'aigua de dimarts cap amunt. ⟨si juga vet i (escena = 4 i cal_sorra i lot9_vist i NO sorra_agafada)⟩
-    VET: La colada: una al forn i l'altra a la colada. ⟨si juga iri i (escena = 4 i motlle_preparat i NO claus_fetes)⟩
-    IRI: La colada: una al forn i l'altra a la colada. ⟨si juga vet i (escena = 4 i motlle_preparat i NO claus_fetes)⟩
-    VET: Verdant: el jardiner Nil puja al palau cada dijous. ⟨si juga iri i (escena = 5 i NO nil_palau)⟩
+    VET: La colada: jo al forn i tu a la colada. ⟨si juga iri i (escena = 4 i motlle_preparat i NO claus_fetes)⟩
+    IRI: La colada: tu al forn i jo a la colada. ⟨si juga vet i (escena = 4 i motlle_preparat i NO claus_fetes)⟩
+    VET: Verdant: el jardiner Nil puja al palau cada dijous. Hi parlo jo. ⟨si juga iri i (escena = 5 i NO nil_palau)⟩
     IRI: Verdant: el jardiner Nil puja al palau cada dijous. ⟨si juga vet i (escena = 5 i NO nil_palau)⟩
     VET: Mirar què guarda el Magnat a la residència d'estiu de Verdant. ⟨si juga iri i (escena = 5 i NO fidel_admet i no (ha vist fidel.hola))⟩
     IRI: Mirar què guarda el Magnat a la residència d'estiu de Verdant. ⟨si juga vet i (escena = 5 i NO fidel_admet i no (ha vist fidel.hola))⟩
@@ -2626,11 +2623,9 @@ COMENÇA A: torna (si ha vist juana.hola) · hola
 [hola]
     JUANA: Sou les de la Cantimplora. Les de les llavors.
     JUANA: Diu la Capitana que voleu salvar el món.
-    IRI: No. Volem salvar el nostre pou. ⟨si iri a casa_juana⟩
-    JUGADORA: No. Volem salvar el nostre pou. ⟨si no (iri a casa_juana)⟩
+    IRI: No. Volem salvar el nostre pou.
     JUANA: És el mateix. A una altra escala.
-    JUANA: Seieu. A terra, que les cadires les vaig vendre per aigua. ⟨si iri a casa_juana i vet a casa_juana⟩
-    JUANA: Seu. A terra, que les cadires les vaig vendre per aigua. ⟨si no (iri a casa_juana i vet a casa_juana)⟩
+    JUANA: Seu. A terra, que les cadires les vaig vendre per aigua.
     ⇒ +juana_coneguda
     ↪ menu
 
@@ -2660,8 +2655,7 @@ COMENÇA A: torna (si ha vist juana.hola) · hola
 [on]
     JUANA: A tres dipòsits orbitals. Un per planeta: el de Terra-2, el de Ferrum i el d'Aqua, que és el gros: s'hi va endur un mar. Plens de gel. Els tinc localitzats.
     JUANA: El Magnat en ven una mica cada dia, gota a gota. La justa perquè la gent visqui i pagui. La resta, la guarda.
-    VET: I si en vengués més? ⟨si vet a casa_juana⟩
-    JUGADORA: I si en vengués més? ⟨si no (vet a casa_juana)⟩
+    VET: (pel comunicador) I si en vengués més?
     JUANA: El preu baixaria. I el Magnat viu del preu.
     ⇒ +juana_diposits
     ↪ menu
@@ -2669,19 +2663,16 @@ COMENÇA A: torna (si ha vist juana.hola) · hola
 [tornar]
     JUANA: Els dipòsits tenen vàlvules d'emergència, per si s'esquerden. Si s'obren, el gel cau a l'atmosfera, es fon... i plou.
     JUANA: El deixen anar a trossets, perquè es fongui abans de tocar a terra. Tres setmanes de pluja a cada planeta. Ho he calculat.
-    VET: I on s'obren, aquestes vàlvules? ⟨si vet a casa_juana⟩
-    JUGADORA: I on s'obren, aquestes vàlvules? ⟨si no (vet a casa_juana)⟩
+    VET: (pel comunicador) I on s'obren, aquestes vàlvules?
     JUANA: A la sala de control del palau del Magnat, sota la piscina central: ho vol tot sota els peus. Amb tres claus.
-    IRI: I on són, les claus? ⟨si iri a casa_juana⟩
-    JUGADORA: I on són, les claus? ⟨si no (iri a casa_juana)⟩
+    IRI: I on són, les claus?
     JUANA: Les va fondre en Bru, a Ferrum, quan van fer els dipòsits. Ell m'ho va explicar. Encara en té els motlles.
     JUANA: Ara en Bru és el cap de la vaga de Ferrum. I no es fia de ningú.
     ⇒ +juana_claus
     ↪ menu
 
 [bru]
-    JUANA: No es fia de ningú. De mi, una mica. Us escric una carta. Té, Iri: tu que parles. ⟨si iri a casa_juana⟩
-    JUANA: No es fia de ningú. De mi, una mica. Us escric una carta. Per a l'Iri: ella és la que parla. ⟨si no (iri a casa_juana)⟩
+    JUANA: No es fia de ningú. De mi, una mica. Us escric una carta. Té, Iri: tu que parles.
     NARRADOR: La Juana escriu una carta, la plega i la tanca amb un segell de cera amb un peix.
     JUANA: Aneu a Ferrum. I si veieu en Bru, digueu-li que encara li dec una cervesa. D'aigua.
     ⇒ +juana_fet, rep carta_juana (iri)
@@ -2689,8 +2680,7 @@ COMENÇA A: torna (si ha vist juana.hola) · hola
 [peixos]
     JUANA: Els últims peixos d'Aqua se'ls va endur el Magnat. Trenta-tres. En un aquari, al seu palau.
     JUANA: Diu que valdran més quan en quedi un.
-    VET: Això és... ⟨si vet a casa_juana⟩
-    JUGADORA: Això és... ⟨si no (vet a casa_juana)⟩
+    VET: (pel comunicador) Això és...
     JUANA: Sí. Ho és.
     ↪ menu
 
@@ -2863,13 +2853,10 @@ COMENÇA A: torna (si ha vist nil.hola) · hola
 [tomaquera]
     NIL: ...Shhh. El Magnat no vol plantes de veritat. «Gasten aigua, es moren i no es revaloren.»
     NIL: La rego amb la meva aigua de beure. Mig got al dia. Ella en vol dos.
-    VET: I l'aigua que llença l'aire condicionat, a la reixa del jardí? ⟨si vet a verdant_jardi⟩
-    JUGADORA: I l'aigua que llença l'aire condicionat, a la reixa del jardí? ⟨si no (vet a verdant_jardi)⟩
+    JUGADORA: I l'aigua que llença l'aire condicionat, a la reixa del jardí?
     NIL: Si l'hi tires de cop, la negues: la terra està seca com una teula. Li caldria un reg de veritat. Gota a gota.
-    VET: ...El pare en té un, al graner. «Que encara serveix.» ⟨si vet a verdant_jardi i NO reg_agafat⟩
-    JUGADORA: ...El pare en té un, al graner. «Que encara serveix.» ⟨si no (vet a verdant_jardi) i NO reg_agafat⟩
-    VET: ...Un reg gota a gota. En portem un, el del graner del pare. ⟨si vet a verdant_jardi i reg_agafat⟩
-    JUGADORA: ...Un reg gota a gota. En portem un, el del graner del pare. ⟨si no (vet a verdant_jardi) i reg_agafat⟩
+    JUGADORA: ...El pare en té un, al graner. «Que encara serveix.» ⟨si NO reg_agafat⟩
+    JUGADORA: ...Un reg gota a gota. En portem un, el del graner del pare. ⟨si reg_agafat⟩
     ⇒ +cal_reg
     ↪ menu
 
@@ -2905,8 +2892,7 @@ COMENÇA A: torna (si ha vist pare.hola) · hola
 
 [hola]
     PARE: Qui és? Ah! Les meves noies! Ja era hora. ⟨si iri a granja_casa i vet a granja_casa⟩
-    PARE: Qui és? Ah! La meva Iri! Ja era hora. ⟨si no (iri a granja_casa i vet a granja_casa) i juga iri⟩
-    PARE: Qui és? Ah! La meva Vet! Ja era hora. ⟨si no (iri a granja_casa i vet a granja_casa) i juga vet⟩
+    PARE: Qui és? Ah! La meva Iri! Ja era hora. ⟨si no (iri a granja_casa i vet a granja_casa)⟩
     PARE: Aquí ens donen un got d'aigua al dia, i diuen que és un luxe. El luxe el pago jo.
     ↪ menu
 
@@ -3127,29 +3113,29 @@ COMENÇA A: inici
 
 [inici]
     NARRADOR: Els paperets del tauler, amb la lletra de la Vet:
-    NARRADOR: Trobar l'escriptura de la granja (el pare ho sap; el videotelèfon és a la casa). ⟨si escena = 1 i NO caixa_oberta⟩
+    NARRADOR: Trobar l'escriptura de la granja (el pare ho sap: que l'Iri li truqui pel videotelèfon de la casa). ⟨si escena = 1 i NO caixa_oberta⟩
     NARRADOR: Què fa una bomba de Verne al nostre pou? ⟨si escena = 1 i NO bomba_llegida⟩
     NARRADOR: Parlar amb la Capitana, al pont. ⟨si escena = 2 i NO cap_condicions⟩
     NARRADOR: Un albarà: una feina de veritat per a Aqua (ràdio del pont: la Juana). ⟨si escena = 2 i cap_condicions i no (té albara) i NO capitana_accepta⟩
-    NARRADOR: Llavors per a la Juana: el banc del pare, al graner (demanar-li permís pel videotelèfon). ⟨si escena = 2 i juana_llavors i NO sacs_carregats⟩
+    NARRADOR: Llavors per a la Juana: el banc del pare, al graner (l'Iri li ha de demanar permís pel videotelèfon). ⟨si escena = 2 i juana_llavors i NO sacs_carregats⟩
     NARRADOR: Llavors carregades: avisar la Juana per ràdio. ⟨si escena = 2 i sacs_carregats i NO albara_fet⟩
     NARRADOR: L'injector de la nau està esquerdat: que el miri la Vet (el motor, a la bodega). ⟨si escena = 2 i cap_condicions i NO injector_vist⟩
     NARRADOR: Un injector nou: el tractor de l'avi en té un d'igual (oli i una clau anglesa). ⟨si escena = 2 i injector_vist i NO injector_posat⟩
     NARRADOR: Albarà i injector: tornar a la Capitana. ⟨si escena = 2 i té albara i injector_posat i NO capitana_accepta⟩
     NARRADOR: Rumb a Aqua: el mapa del pont. ⟨si escena = 2 i capitana_accepta⟩
-    NARRADOR: Baixar al fons del mar d'Aqua: la grua del port. ⟨si escena = 3 i NO baixada_feta⟩
-    NARRADOR: Parlar amb la Juana, al fons del mar. ⟨si escena = 3 i baixada_feta i NO juana_fet⟩
-    NARRADOR: Ferrum: trobar en Bru (el sindicat) i donar-li la carta de la Juana. ⟨si escena = 4 i NO bru_set⟩
+    NARRADOR: Baixar al fons del mar d'Aqua: l'Iri a la cistella i la Vet a la grua. ⟨si escena = 3 i NO baixada_feta⟩
+    NARRADOR: L'Iri ha de parlar amb la Juana, al fons del mar. ⟨si escena = 3 i baixada_feta i NO juana_fet⟩
+    NARRADOR: Ferrum: l'Iri ha de trobar en Bru (el sindicat) i donar-li la carta de la Juana. ⟨si escena = 4 i NO bru_set⟩
     NARRADOR: Aigua per a la canalla del piquet de Ferrum. ⟨si escena = 4 i bru_set i NO canalla_beu⟩
     NARRADOR: El condensador del carrer s'engega amb una targeta de treballador actiu de Verne. ⟨si escena = 4 i cal_targeta i NO mosca_contractada i NO canalla_beu⟩
     NARRADOR: La font de Verne contracta: vint-i-quatre hores, cap vaga i cap aigua. ⟨si escena = 4 i contractacio_vista i NO mosca_contractada i NO canalla_beu⟩
     NARRADOR: La Mosca té feina i targeta. El condensador és al carrer. ⟨si escena = 4 i mosca_contractada i NO canalla_beu⟩
-    NARRADOR: Tornar a parlar amb en Bru. ⟨si escena = 4 i canalla_beu i NO promesa_lia⟩
+    NARRADOR: L'Iri ha de tornar a parlar amb en Bru. ⟨si escena = 4 i canalla_beu i NO promesa_lia⟩
     NARRADOR: Preparar el motlle de les claus al llit de colada de la fosa. ⟨si escena = 4 i promesa_lia i NO motlle_preparat i NO cal_sorra⟩
     NARRADOR: Sorra fina per al motlle: a Ferrum només n'hi ha de pedra picada. ⟨si escena = 4 i cal_sorra i NO motlle_preparat⟩
     NARRADOR: La platja d'Aqua ara és el lot 9 de Verne: de la línia de l'aigua de dimarts cap amunt. ⟨si escena = 4 i cal_sorra i lot9_vist i NO sorra_agafada⟩
-    NARRADOR: La colada: una al forn i l'altra a la colada. ⟨si escena = 4 i motlle_preparat i NO claus_fetes⟩
-    NARRADOR: Verdant: el jardiner Nil puja al palau cada dijous. ⟨si escena = 5 i NO nil_palau⟩
+    NARRADOR: La colada: la Vet al forn i l'Iri a la colada. ⟨si escena = 4 i motlle_preparat i NO claus_fetes⟩
+    NARRADOR: Verdant: el jardiner Nil puja al palau cada dijous. Que hi parli la Vet. ⟨si escena = 5 i NO nil_palau⟩
     NARRADOR: Mirar què guarda el Magnat a la residència d'estiu de Verdant. ⟨si escena = 5 i NO fidel_admet i no (ha vist fidel.hola)⟩
     NARRADOR: Entrar al despatx del Magnat: el robot de la porta només deixa passar gent «solvent». ⟨si escena = 5 i NO fidel_admet i ha vist fidel.hola⟩
     NARRADOR: Un aval d'un milió per a en Fidel. La granja, diu, val un crèdit. ⟨si escena = 5 i cal_aval i NO fidel_admet⟩
@@ -3419,7 +3405,7 @@ COMENÇA A: menu
 escriptura — quan escena = 1 i NO pista_quadre · fins que pista_quadre o caixa_oberta
     1. L'escriptura és en algun racó de la casa del pare. El pare ho guarda tot... però sap on és cada cosa.
     2. El pare és a la residència. A la casa hi ha un videotelèfon.
-    3. Truca al pare amb el videotelèfon de la casa i pregunta-li per l'escriptura.
+    3. Amb l'Iri, truca al pare amb el videotelèfon de la casa i pregunta-li per l'escriptura.
 quadre — quan pista_quadre i NO quadre_apartat · fins que quadre_apartat
     1. «Darrere de la mare», ha dit el pare. Del quadre de la mare.
     2. A la casa hi ha el quadre de la mare.
@@ -3427,7 +3413,7 @@ quadre — quan pista_quadre i NO quadre_apartat · fins que quadre_apartat
 caixa — quan quadre_apartat i NO caixa_oberta i NO pare_porta i NO bol_vist · fins que pare_porta o bol_vist o caixa_oberta
     1. Darrere el quadre hi ha una caixa forta amb un teclat de lletres. Qui en pot saber la paraula?
     2. El pare la deu saber.
-    3. Pregunta al pare per la paraula de la caixa forta, amb el videotelèfon.
+    3. Amb l'Iri, pregunta al pare per la paraula de la caixa forta, amb el videotelèfon.
 titus — quan quadre_apartat i pare_porta i NO bol_vist i NO caixa_oberta · fins que bol_vist o caixa_oberta
     1. Qui ens esperava a la porta, movent la cua: el gos. Com es deia?
     2. El pare no llença res. A la casa encara hi deu haver coses del gos.
@@ -3435,7 +3421,7 @@ titus — quan quadre_apartat i pare_porta i NO bol_vist i NO caixa_oberta · fi
 teclat — quan quadre_apartat i bol_vist i NO caixa_oberta · fins que caixa_oberta
     1. El gos es deia Titus, i la paraula té cinc lletres.
     2. La caixa forta, darrere el quadre.
-    3. Obre la caixa forta i tria T-I-T-U-S.
+    3. Amb l'Iri, obre la caixa forta i tria T-I-T-U-S.
 bomba — quan escena = 1 i NO bomba_llegida · fins que bomba_llegida
     1. Hi ha una bomba de Verne al nostre pou. Què hi fa?
     2. El panell de la bomba té cargols de cap de flor. Tenim una punta de flor, però li cal un mànec.
@@ -3447,11 +3433,11 @@ capitana — quan escena = 2 i NO cap_condicions · fins que cap_condicions
 radio — quan escena = 2 i cap_condicions i NO juana_llavors · fins que juana_llavors
     1. La Capitana vol una feina de veritat, amb algú que pagui a l'altra banda.
     2. La Juana és a Aqua. La seva freqüència és al marc de la ràdio del pont.
-    3. Fes servir la ràdio del pont i pregunta a la Juana quina càrrega voldria.
+    3. Amb l'Iri, fes servir la ràdio del pont i pregunta a la Juana quina càrrega voldria.
 permis — quan juana_llavors i NO permis_pare · fins que permis_pare
     1. La Juana vol llavors que aguantin la secada. El pare té un banc de llavors al graner.
     2. Les llavors són del pare: cal demanar-l'hi.
-    3. Truca al pare amb el videotelèfon de la casa i demana-li llavors per a la Juana.
+    3. Amb l'Iri, truca al pare amb el videotelèfon de la casa i demana-li llavors per a la Juana.
 sacs — quan permis_pare i NO sacs_agafats · fins que sacs_agafats
     1. El pare diu que sí.
     2. Les llavors són al graner.
@@ -3463,7 +3449,7 @@ carrega — quan sacs_agafats i NO sacs_carregats · fins que sacs_carregats
 albara — quan sacs_carregats i NO albara_fet · fins que albara_fet
     1. Les llavors ja són a bord. Cal que la Juana ho sàpiga.
     2. La ràdio del pont.
-    3. Fes servir la ràdio del pont i digues-li a la Juana que ja tens les llavors.
+    3. Amb l'Iri, fes servir la ràdio del pont i digues-li a la Juana que ja tens les llavors.
 injector — quan escena = 2 i cap_condicions i NO injector_vist i juga iri · fins que injector_vist
     1. La Cantimplora no vola: l'injector està esquerdat.
     2. El motor és a la bodega. La Vet en sap.
@@ -3518,17 +3504,17 @@ fusible2_vet — quan (té fusible_apanyat (iri) o té fusible_apanyat (vet)) i 
     2. El munta la Vet.
     3. Fes servir el fusible apanyat amb la grua del port.
 baixar — quan grua_arreglada i NO baixada_feta · fins que baixada_feta
-    1. Una a la cistella i l'altra als comandaments de la grua.
+    1. L'Iri a la cistella i la Vet als comandaments de la grua.
     2. Cal que siguin totes dues al port.
-    3. Porta les dues protagonistes al port d'Aqua i fes servir la cistella.
+    3. Porta les dues al port d'Aqua i, amb l'Iri, fes servir la cistella.
 juana — quan baixada_feta i NO juana_fet · fins que juana_fet
     1. La Juana viu al fons del mar, a la caseta del vaixell bolcat.
     2. Pregunta-li on és el mar, on va l'aigua i si es pot fer tornar.
-    3. Parla amb la Juana i fes-li totes les preguntes fins que t'escrigui una carta per a en Bru.
+    3. Amb l'Iri, parla amb la Juana i fes-li totes les preguntes fins que t'escrigui una carta per a en Bru.
 bru — quan escena = 4 i NO bru_set · fins que bru_set
     1. La Juana ens ha enviat a Ferrum, a buscar en Bru.
     2. En Bru és al sindicat. No es fia de ningú, però la carta de la Juana l'ajudarà.
-    3. Ves a Ferrum (amb el mapa del pont, si no hi sou), entra al sindicat i parla amb en Bru.
+    3. Amb l'Iri, ves a Ferrum (amb el mapa del pont, si no hi sou), entra al sindicat i parla amb en Bru.
 targeta — quan cal_targeta i NO mosca_contractada i NO canalla_beu i juga iri · fins que mosca_contractada o canalla_beu
     1. Què tinc: un condensador que només s'engega amb una targeta de treballador actiu de Verne. Qui en dona, de targetes? Verne, quan contracta.
     2. La pantalla de la font de Verne contracta. Però no vol ningú que faci vaga, que plegui a les cinc o que begui. Qui treballa tot el dia i no beu?
@@ -3547,11 +3533,11 @@ canalla — quan bru_set i NO canalla_beu · fins que canalla_beu
 bru2 — quan canalla_beu i NO bru_lia · fins que bru_lia
     1. La canalla ja beu.
     2. En Bru volia veure-ho.
-    3. Torna a parlar amb en Bru.
+    3. Amb l'Iri, torna a parlar amb en Bru, al sindicat.
 promesa — quan bru_lia i NO promesa_lia i juga vet · fins que promesa_lia
     1. En Bru té por per la seva filla, la Lia, que treballa al palau.
     2. Algú li ha de fer una promesa. La que negocia és l'Iri.
-    3. Parla amb en Bru amb l'Iri i promet-li que li portareu la Lia a casa.
+    3. Amb l'Iri, parla amb en Bru, al sindicat, i promet-li que li portareu la Lia a casa.
 promesa_iri — quan bru_lia i NO promesa_lia i juga iri · fins que promesa_lia
     1. En Bru té por per la seva filla, la Lia, que treballa al palau.
     2. Algú li ha de fer una promesa. I negociar és cosa de l'Iri.
@@ -3559,27 +3545,27 @@ promesa_iri — quan bru_lia i NO promesa_lia i juga iri · fins que promesa_lia
 motlle — quan promesa_lia i NO motlle_preparat i NO cal_sorra · fins que cal_sorra o motlle_preparat
     1. En Bru ens ha donat el motlle de les claus.
     2. El motlle va al llit de colada, a la fosa.
-    3. Entra a la fosa, passa a la colada i fes servir el motlle amb el llit de colada.
+    3. Amb l'Iri, entra a la fosa, passa a la colada i fes servir el motlle amb el llit de colada.
 lot9 — quan cal_sorra i lot9_vist i NO franja_vista i NO sorra_agafada i juga iri · fins que franja_vista o sorra_agafada
     1. Què tinc: un cartell que diu que la platja és de Verne. Què diu exactament? Fins on arriba, el lot 9?
     2. Fins a la línia de l'aigua, amidada dimarts. I el mar d'Aqua no s'està quiet: les boies de la Juana ho mesuren.
     3. Mira les boies del fons: des de dimarts, el mar ha baixat. La sorra de sota la línia no és del lot 9. Agafa-la.
 lot9_vet — quan cal_sorra i lot9_vist i NO franja_vista i NO sorra_agafada i juga vet · fins que franja_vista o sorra_agafada
-    1. Símptoma: la sorra té amo. Causa: un cartell amb lletra petita. Llegeix la lletra petita.
+    1. Símptoma: la sorra té amo. Causa: un cartell amb lletra petita. L'Iri l'ha de llegir bé.
     2. El lot 9 arriba fins a la línia de l'aigua de dimarts. Avaria del cartell: el mar no es queda on el van amidar.
-    3. Mira les boies del fons: el mar ha baixat. La franja nova, entre la línia de dimarts i l'aigua, no és de Verne. Agafa'n la sorra.
+    3. Amb l'Iri, mira les boies del fons: el mar ha baixat. La franja nova, entre la línia de dimarts i l'aigua, no és de Verne. Agafa'n la sorra.
 sorra — quan cal_sorra i NO sorra_agafada · fins que sorra_agafada
     1. Cal sorra fina. On n'hem vist, de sorra fina com farina?
     2. Al fons del mar d'Aqua hi havia una platja.
-    3. Ves a Aqua (amb el mapa del pont, si no hi sou), baixa al fons del mar i agafa la sorra fina.
+    3. Amb l'Iri, ves a Aqua (amb el mapa del pont, si no hi sou), baixa al fons del mar i agafa la sorra fina.
 motlle2 — quan promesa_lia i sorra_agafada i NO motlle_preparat · fins que motlle_preparat
     1. Ja tenim sorra fina.
     2. Torna a la fosa de Ferrum.
-    3. Fes servir el motlle amb el llit de colada, amb la sorra a l'inventari.
+    3. Amb l'Iri, fes servir el motlle amb el llit de colada, amb la sorra a l'inventari (si la porta la Vet, que te l'enviï amb la Mosca).
 colada_lloc — quan motlle_preparat i NO sync_colada i NO claus_fetes · fins que sync_colada o claus_fetes
-    1. Una al forn i l'altra a la colada, a la vegada.
+    1. La Vet al forn i l'Iri a la colada, a la vegada.
     2. La fosa té dues sales: el forn i la colada.
-    3. Posa una protagonista a la sala del forn i l'altra a la de la colada (canvia de protagonista per moure l'altra).
+    3. Posa la Vet a la sala del forn i l'Iri a la de la colada (canvia de protagonista per moure l'altra).
 c_manxa — quan sync_colada i NO manxa_oberta · fins que manxa_oberta
     1. Al forn, primer, el foc: la manxa.
 c_metall — quan sync_colada i manxa_oberta i NO metall_carregat · fins que metall_carregat
@@ -3587,24 +3573,24 @@ c_metall — quan sync_colada i manxa_oberta i NO metall_carregat · fins que me
 c_escoria — quan sync_colada i metall_carregat i NO escoria_treta · fins que escoria_treta
     1. Al forn: fora l'escòria amb el rascle, abans d'abocar.
 c_gresol — quan sync_colada i escoria_treta i NO colat · fins que colat
-    1. A la colada: aboca el gresol.
+    1. A la colada, l'Iri: aboca el gresol.
 c_sorra — quan sync_colada i colat i NO claus_fetes · fins que claus_fetes
-    1. A la colada: tapa el motlle amb la sorra (fes servir la sorra amb el llit).
+    1. A la colada, l'Iri: tapa el motlle amb la sorra (fes servir la sorra amb el llit).
 verdant — quan escena = 5 i NO nil_palau i NO fidel_admet · fins que nil_palau o fidel_admet
     1. En Bru ha dit: en Nil, el jardiner de la residència de Verdant, puja al palau cada dijous. I que el Magnat hi guarda papers.
     2. En Nil és a Verdant: s'hi va amb el mapa del pont.
-    3. A Verdant, parla amb en Nil, al jardí.
+    3. A Verdant, amb la Vet, parla amb en Nil, al jardí.
 nil — quan escena = 5 i NO nil_palau · fins que nil_palau
     1. En Nil és al jardí, parlant amb les flors.
-    2. Parla amb en Nil.
+    2. Amb la Vet, parla amb en Nil.
 tomaquera — quan nil_palau i NO tomaquera_vista · fins que tomaquera_vista
     1. En Nil no s'hi juga la feina per desconegudes. Què li importa, a en Nil?
     2. Mira el seu cobert.
-    3. Entra al cobert del jardí i mira la tomaquera.
+    3. Amb la Vet, entra al cobert del jardí i mira la tomaquera.
 tomaquera2 — quan tomaquera_vista i NO cal_reg · fins que cal_reg
     1. Una tomaquera de veritat, mig seca.
     2. En Nil la rega d'amagat.
-    3. Parla amb en Nil de la tomaquera.
+    3. Amb la Vet, parla amb en Nil de la tomaquera.
 precinte — quan (precinte_vist i NO graner_obert i ((cal_reg i NO reg_agafat) o (cal_aval i NO fidel_admet i NO sac4_agafat))) i juga iri · fins que graner_obert
     1. Què tinc: un cadenat de Verne que només s'obre a la propietat. Què vol: que demostri que la finca és nostra. Amb què?
     2. Un paper que digui de qui és la finca. Per a en Fidel no val res; per a un cadenat de Verne, potser sí.
@@ -3616,11 +3602,11 @@ precinte_vet — quan (precinte_vist i NO graner_obert i ((cal_reg i NO reg_agaf
 reg — quan cal_reg i NO reg_agafat · fins que reg_agafat
     1. La tomaquera necessita un reg gota a gota.
     2. El pare en té un al graner de Terra-2. Però «no es toca».
-    3. A Terra-2 (amb el mapa del pont, si no hi sou), demana el reg al pare pel videotelèfon de la casa i agafa'l del graner.
+    3. A Terra-2 (amb el mapa del pont, si no hi sou), amb l'Iri, demana el reg al pare pel videotelèfon de la casa, i agafeu-lo del graner.
 reg2 — quan cal_reg i (té reg (iri) o té reg (vet)) i NO cal_agulla i juga iri · fins que cal_agulla
     1. Ja tenim el reg.
     2. Ara, a la tomaquera. Però muntar-lo és cosa de la Vet.
-    3. La Vet ha de fer servir el reg amb la tomaquera del cobert.
+    3. La Vet ha de fer servir el reg amb la tomaquera del cobert. Si el portes tu, envia-l'hi amb la Mosca.
 reg2_vet — quan cal_reg i (té reg (iri) o té reg (vet)) i NO cal_agulla i juga vet · fins que cal_agulla
     1. Ja tenim el reg.
     2. Ara, a la tomaquera.
@@ -3650,14 +3636,14 @@ muntar_vet — quan (té reg_foradat (iri) o té reg_foradat (vet)) i juga vet �
 galleda — quan reg_muntat i NO tomaquera_regada i no (té galleda_plena (iri) o té galleda_plena (vet)) · fins que (té galleda_plena (iri) o té galleda_plena (vet)) o tomaquera_regada
     1. Falta l'aigua. La que llença el Magnat.
     2. Al jardí hi ha una reixa on degota l'aire condicionat. I al cobert, una galleda.
-    3. Agafa la galleda del cobert i fes-la servir amb la reixa del jardí.
+    3. Amb la Vet, agafa la galleda del cobert i fes-la servir amb la reixa del jardí.
 regar — quan (té galleda_plena (iri) o té galleda_plena (vet)) i NO tomaquera_regada · fins que tomaquera_regada
     1. Tenim aigua.
     2. Aboca-la a la tomaquera (amb el reg muntat).
-    3. Fes servir la galleda plena amb la tomaquera.
+    3. Amb la Vet, fes servir la galleda plena amb la tomaquera (si la porta l'Iri, que l'hi doni al jardí: a la Mosca no hi cap aigua).
 nil2 — quan tomaquera_regada i NO nil_ajuda · fins que nil_ajuda
     1. La tomaquera beu.
-    2. Digues-ho a en Nil.
+    2. Amb la Vet, digues-ho a en Nil.
 fidel — quan escena = 5 i NO fidel_admet i NO cal_aval i juga vet · fins que fidel_admet o cal_aval
     1. Al despatx del Magnat, a la residència, hi pot haver coses que ens convinguin.
     2. El robot de la porta només deixa passar gent «solvent». Una inversora, per exemple. L'Iri sap fer-ne.
@@ -3726,7 +3712,7 @@ gala_tomas_vet — quan rosa_vol_tomas i NO tomas_baixa i juga vet · fins que t
     3. Amb la nau a Ferrum, parla amb en Tomàs, a la bodega: digues-li que la seva mare vol que baixi.
 gala2 — quan rosa_permis i NO vestit_agafat · fins que vestit_agafat
     1. La Rosa diu que sí.
-    2. Agafa el vestit del bagul del sindicat.
+    2. Amb l'Iri, agafa el vestit del bagul del sindicat.
 gala3 — quan cal_gala i vestit_agafat i no (té vestit_arreglat (iri) o té vestit_arreglat (vet)) i juga iri i escena < 7 · fins que té vestit_arreglat (iri) o té vestit_arreglat (vet)
     1. A l'Iri, el vestit li va gran.
     2. La Vet té agulla i fil.

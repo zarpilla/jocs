@@ -10,7 +10,7 @@ import { acte1, acte2, acte3, punt } from './cami.js';
 const SALES: Record<string, [string, string][]> = {
   e1: [['iri', 'granja_pati'], ['iri', 'granja_casa'], ['vet', 'granja_graner']],
   e2: [['iri', 'port_terra2'], ['iri', 'cantimplora_pont'], ['vet', 'cantimplora_bodega']],
-  e3: [['iri', 'aqua_port'], ['vet', 'aqua_fons'], ['vet', 'casa_juana']],
+  e3: [['vet', 'aqua_port'], ['iri', 'aqua_fons'], ['iri', 'casa_juana']],
   e4: [['iri', 'ferrum_carrer'], ['iri', 'ferrum_sindicat'], ['vet', 'fosa_forn'], ['iri', 'fosa_colada']],
   e5: [['vet', 'verdant_jardi'], ['vet', 'verdant_cobert'], ['iri', 'verdant_residencia']],
   e7: [['iri', 'palau_galeria'], ['iri', 'palau_salo'], ['vet', 'palau_servei'], ['vet', 'palau_control']],

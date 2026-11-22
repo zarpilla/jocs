@@ -83,6 +83,33 @@
           "if": {
             "all": [
               {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "cap_condicions"
+              },
+              {
+                "flag": "albara_fet",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.cantimplora_pont.radio.vet"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "talkTo",
+            "push"
+          ],
+          "if": {
+            "all": [
+              {
                 "flag": "cap_condicions"
               },
               {

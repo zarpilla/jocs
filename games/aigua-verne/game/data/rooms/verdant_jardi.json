@@ -93,6 +93,22 @@
             "use",
             "open"
           ],
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "iri",
+              "text": "sala.verdant_jardi.porta_cobert.iri"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
           "goTo": "verdant_cobert"
         }
       ]

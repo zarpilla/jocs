@@ -97,26 +97,6 @@
         },
         {
           "verb": "use",
-          "item": "reg",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.verdant_cobert.tomaquera.7"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "item": "reg_foradat",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.verdant_cobert.tomaquera.7"
-            }
-          ]
-        },
-        {
-          "verb": "use",
           "item": "galleda_plena",
           "if": {
             "flag": "reg_muntat"

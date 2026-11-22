@@ -273,7 +273,17 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.granja_graner.llavors.3"
+              "text": "sala.granja_graner.llavors.3",
+              "if": {
+                "protagonist": "iri"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.granja_graner.llavors.3.vet",
+              "if": {
+                "protagonist": "vet"
+              }
             }
           ]
         },
@@ -427,7 +437,17 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.granja_graner.reg.3"
+              "text": "sala.granja_graner.reg.3",
+              "if": {
+                "protagonist": "iri"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.granja_graner.reg.3.vet",
+              "if": {
+                "protagonist": "vet"
+              }
             }
           ]
         },
@@ -439,7 +459,17 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.granja_graner.reg.cas.1"
+              "text": "sala.granja_graner.reg.cas.1",
+              "if": {
+                "protagonist": "iri"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.granja_graner.reg.cas.1.vet",
+              "if": {
+                "protagonist": "vet"
+              }
             }
           ],
           "effects": [

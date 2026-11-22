@@ -69,8 +69,9 @@ describe('Aigua Verne: tornar-hi', () => {
     expect(textos(p.do('pickUp', 'llavors'))).toMatch(/es queda aquí/);
     expect(textos(p.do('pickUp', 'llavors'))).toMatch(/No va dir on/);
     expect(p.inventory()).toContain('sac_llavors');
-    // A Verdant, en Nil ja no ens fa tornar a buscar-lo.
+    // A Verdant, en Nil (amb qui parla la Vet) ja no ens fa tornar a buscar-lo.
     n.apply([{ setFlag: 'tomaquera_vista' }]);
+    amb(p, 'vet');
     expect(textos(p.talk('nil', 'tomaquera'))).toMatch(/En portem un/);
     expect(n.activeHints()).not.toContain('reg');
   });
@@ -124,6 +125,8 @@ describe('Aigua Verne: la lògica de Verne contra Verne', () => {
     expect(n.flag('canalla_beu')).toBe(false);
     p.use('targeta_verne', 'condensador');
     expect(n.flag('canalla_beu')).toBe(true);
+    // A en Bru, li ho explica l'Iri, al sindicat.
+    amb(p, 'iri');
     expect(textos(p.talk('bru', 'canalla'))).toMatch(/esquirola amb hèlices/);
   });
 

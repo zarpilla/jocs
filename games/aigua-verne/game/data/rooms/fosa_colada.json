@@ -633,30 +633,14 @@
             "is": false
           },
           {
-            "any": [
+            "all": [
               {
-                "all": [
-                  {
-                    "inRoom": "fosa_forn",
-                    "who": "vet"
-                  },
-                  {
-                    "inRoom": "fosa_colada",
-                    "who": "iri"
-                  }
-                ]
+                "inRoom": "fosa_forn",
+                "who": "vet"
               },
               {
-                "all": [
-                  {
-                    "inRoom": "fosa_forn",
-                    "who": "iri"
-                  },
-                  {
-                    "inRoom": "fosa_colada",
-                    "who": "vet"
-                  }
-                ]
+                "inRoom": "fosa_colada",
+                "who": "iri"
               }
             ]
           }

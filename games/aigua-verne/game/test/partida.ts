@@ -5,8 +5,15 @@ import { expect } from 'vitest';
 import { HeadlessPlayer, MemoryWorld, Narrative } from '@aventura/narrative-core';
 import { content, locales } from '../index.js';
 import { installGameLogic } from '../logic/index.js';
+import VEUS from '../audio/veus.json' with { type: 'json' };
 
 export const item = (id: string) => ({ kind: 'item' as const, id });
+
+/**
+ * Les sales i les converses que només fa una de les dues (guio.md, annex D 19), i qui: el `jugadora` de veus.json,
+ * que diu amb quina veu es graven.
+ */
+export const NOMES: Record<string, string> = VEUS.jugadora;
 
 /** Partida nova. Amb `checkHints`, després de cada acció hi ha d'haver alguna pista per a una de les dues. */
 export function partida(opts: { checkHints?: boolean } = {}) {
@@ -15,6 +22,14 @@ export function partida(opts: { checkHints?: boolean } = {}) {
   installGameLogic(n);
   const player = new HeadlessPlayer(n, world);
   player.newGame();
+  // `talk` obre la conversa directament (sense passar per la porta ni pel videotelèfon): que no se'n faci cap que la
+  // protagonista activa no podria tenir (les d'una sola, a veus.json).
+  const talk = player.talk.bind(player);
+  player.talk = (dialogue, ...choices) => {
+    const qui = NOMES[dialogue];
+    if (qui && player.active !== qui) throw new Error(`«${dialogue}» és de ${qui}: ${player.active} no hi pot parlar.`);
+    return talk(dialogue, ...choices);
+  };
   const p = !opts.checkHints ? player : new Proxy(player, {
     get(target, prop, receiver) {
       const value = Reflect.get(target, prop, receiver);

@@ -36,14 +36,15 @@ export function acte1(p: Jugador, n: Narrative, cami: Cami = {}) {
   p.do('open', 'caixa_eines');
   p.use('punta_flor', item('tornavis'));
   if (cami.previsora) {
-    // El reg: «no es toca, que encara serveix». A la segona, la Vet ho demana al pare: «per si de cas».
+    // El reg: «no es toca, que encara serveix». A la segona, la Vet vol que l'Iri ho demani al pare: «per si de cas».
     p.do('pickUp', 'reg');
     p.do('pickUp', 'reg');
     expect(n.flag('reg_volgut')).toBe(true);
-    anar(p, n, 'granja_casa');
+    amb(p, 'iri');
+    expect(p.room).toBe('granja_casa');
     p.do('use', 'videotelefon');
     p.talk('pare', 'reg');
-    anar(p, n, 'granja_graner');
+    amb(p, 'vet');
     p.do('pickUp', 'reg');
     expect(p.inventory('vet')).toContain('reg');
   }
@@ -54,16 +55,24 @@ export function acte1(p: Jugador, n: Narrative, cami: Cami = {}) {
   anar(p, n, 'cantimplora_pont');
   p.talk('capitana', 'aigua');
   p.talk('capitana', 'portar');
+  // La ràdio és de l'Iri: «Jo sé com funciona la ràdio. No com es parla.»
+  p.do('use', 'radio');
+  expect(n.flag('juana_llavors')).toBe(false);
+  amb(p, 'iri');
+  anar(p, n, 'cantimplora_pont');
   p.do('use', 'radio');
   p.talk('radio_juana', 'feina');
+  // El pare, també: li truca l'Iri.
+  anar(p, n, 'granja_casa');
+  p.do('use', 'videotelefon');
+  p.talk('pare', 'llavors');
+  amb(p, 'vet');
   anar(p, n, 'cantimplora_bodega');
   p.do('open', 'calaix');
   expect(n.flag('mosca_activa')).toBe(true);
   p.do('look', 'motor');
   p.do('pickUp', 'motor');
   p.talk('tomas', 'clau');
-  anar(p, n, 'granja_casa');
-  p.talk('pare', 'llavors');
   anar(p, n, 'granja_graner');
   p.do('pickUp', 'llavors');
   if (cami.previsora) {
@@ -78,6 +87,7 @@ export function acte1(p: Jugador, n: Narrative, cami: Cami = {}) {
   anar(p, n, 'cantimplora_bodega');
   p.use('injector', 'motor');
   p.use('sacs_llavors', 'carrega');
+  amb(p, 'iri');
   anar(p, n, 'cantimplora_pont');
   p.do('use', 'radio');
   p.talk('radio_juana', 'albara');
@@ -95,6 +105,11 @@ export function acte1(p: Jugador, n: Narrative, cami: Cami = {}) {
   p.use('fusible', item('paper_plata'));
   anar(p, n, 'aqua_port');
   p.use('fusible_apanyat', 'grua');
+  // La Vet és als comandaments: «Jo condueixo grues. Si baixem les dues, qui ens puja?» Baixa l'Iri.
+  p.do('walkTo', 'cistella');
+  expect(p.room).toBe('aqua_port');
+  amb(p, 'iri');
+  expect(p.room).toBe('aqua_port');
   p.do('walkTo', 'cistella');
   expect(p.room).toBe('aqua_fons');
   anar(p, n, 'casa_juana');
@@ -103,7 +118,6 @@ export function acte1(p: Jugador, n: Narrative, cami: Cami = {}) {
   expect(n.getVar('escena')).toBe(4);
   if (cami.previsora) {
     // La sorra: «en porto mig quilo a les botes»... i a la segona, un sac.
-    amb(p, 'iri');
     anar(p, n, 'aqua_fons');
     p.do('pickUp', 'sorra');
     expect(p.inventory()).not.toContain('sorra');
@@ -215,6 +229,7 @@ export function acte2(p: Jugador, n: Narrative, barril: boolean, cami: Cami = {}
     // A Terra-2, Verne ha precintat el graner: «només hi pot entrar la propietat». L'escriptura ho demostra.
     viatjar(p, n, 'terra2');
     anar(p, n, 'granja_casa');
+    p.do('use', 'videotelefon');
     p.talk('pare', 'reg');
     anar(p, n, 'granja_pati');
     p.do('walkTo', 'porta_graner');

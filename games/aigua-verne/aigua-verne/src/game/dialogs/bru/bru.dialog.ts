@@ -22,10 +22,6 @@ options.menu__promesa.onChoose(() => {
   chooseNarrativeOption('bru', dialog, 'menu', 'promesa')
 })
 
-options.menu__promesa_vet.onChoose(() => {
-  chooseNarrativeOption('bru', dialog, 'menu', 'promesa_vet')
-})
-
 options.menu__colada.onChoose(() => {
   chooseNarrativeOption('bru', dialog, 'menu', 'colada')
 })

@@ -466,7 +466,7 @@
         "verb": "look",
         "lines": [
           {
-            "who": "player",
+            "who": "iri",
             "text": "pj.juana.1"
           }
         ]
@@ -523,7 +523,7 @@
         "verb": "look",
         "lines": [
           {
-            "who": "player",
+            "who": "iri",
             "text": "pj.bru.1"
           }
         ]
@@ -632,6 +632,18 @@
           "inRoom": "palau_servei"
         },
         "dialogue": "nil_palau"
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "iri",
+            "text": "sala.verdant_jardi.porta_cobert.iri"
+          }
+        ]
       },
       {
         "verb": "talkTo",

@@ -171,91 +171,26 @@
           "text": "dlg.nil.tomaquera.2"
         },
         {
-          "who": "vet",
-          "text": "dlg.nil.tomaquera.3",
-          "if": {
-            "inRoom": "verdant_jardi",
-            "who": "vet"
-          }
-        },
-        {
           "who": "player",
-          "text": "dlg.nil.tomaquera.3",
-          "if": {
-            "not": {
-              "inRoom": "verdant_jardi",
-              "who": "vet"
-            }
-          }
+          "text": "dlg.nil.tomaquera.3"
         },
         {
           "who": "nil",
           "text": "dlg.nil.tomaquera.4"
         },
         {
-          "who": "vet",
-          "text": "dlg.nil.tomaquera.5",
-          "if": {
-            "all": [
-              {
-                "inRoom": "verdant_jardi",
-                "who": "vet"
-              },
-              {
-                "flag": "reg_agafat",
-                "is": false
-              }
-            ]
-          }
-        },
-        {
           "who": "player",
           "text": "dlg.nil.tomaquera.5",
           "if": {
-            "all": [
-              {
-                "not": {
-                  "inRoom": "verdant_jardi",
-                  "who": "vet"
-                }
-              },
-              {
-                "flag": "reg_agafat",
-                "is": false
-              }
-            ]
-          }
-        },
-        {
-          "who": "vet",
-          "text": "dlg.nil.tomaquera.cas",
-          "if": {
-            "all": [
-              {
-                "inRoom": "verdant_jardi",
-                "who": "vet"
-              },
-              {
-                "flag": "reg_agafat"
-              }
-            ]
+            "flag": "reg_agafat",
+            "is": false
           }
         },
         {
           "who": "player",
           "text": "dlg.nil.tomaquera.cas",
           "if": {
-            "all": [
-              {
-                "not": {
-                  "inRoom": "verdant_jardi",
-                  "who": "vet"
-                }
-              },
-              {
-                "flag": "reg_agafat"
-              }
-            ]
+            "flag": "reg_agafat"
           }
         }
       ],

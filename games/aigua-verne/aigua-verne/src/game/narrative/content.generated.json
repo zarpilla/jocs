@@ -649,7 +649,7 @@
             "verb": "look",
             "lines": [
               {
-                "who": "player",
+                "who": "iri",
                 "text": "pj.juana.1"
               }
             ]
@@ -706,7 +706,7 @@
             "verb": "look",
             "lines": [
               {
-                "who": "player",
+                "who": "iri",
                 "text": "pj.bru.1"
               }
             ]
@@ -815,6 +815,18 @@
               "inRoom": "palau_servei"
             },
             "dialogue": "nil_palau"
+          },
+          {
+            "verb": "talkTo",
+            "if": {
+              "protagonist": "iri"
+            },
+            "lines": [
+              {
+                "who": "iri",
+                "text": "sala.verdant_jardi.porta_cobert.iri"
+              }
+            ]
           },
           {
             "verb": "talkTo",
@@ -2483,57 +2495,44 @@
                   "open"
                 ],
                 "if": {
+                  "protagonist": "vet"
+                },
+                "lines": [
+                  {
+                    "who": "vet",
+                    "text": "sala.aqua_port.cistella.vet"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "walkTo",
+                  "use",
+                  "open"
+                ],
+                "if": {
                   "all": [
                     {
                       "flag": "baixada_feta",
                       "is": false
                     },
                     {
-                      "any": [
-                        {
-                          "all": [
-                            {
-                              "protagonist": "iri"
-                            },
-                            {
-                              "inRoom": "aqua_port",
-                              "who": "vet"
-                            }
-                          ]
-                        },
-                        {
-                          "all": [
-                            {
-                              "protagonist": "vet"
-                            },
-                            {
-                              "inRoom": "aqua_port",
-                              "who": "iri"
-                            }
-                          ]
-                        }
-                      ]
+                      "protagonist": "iri"
+                    },
+                    {
+                      "inRoom": "aqua_port",
+                      "who": "vet"
                     }
                   ]
                 },
                 "lines": [
                   {
-                    "who": "player",
+                    "who": "iri",
                     "text": "sala.aqua_port.cistella.3"
                   },
                   {
                     "who": "vet",
-                    "text": "sala.aqua_port.cistella.4",
-                    "if": {
-                      "protagonist": "iri"
-                    }
-                  },
-                  {
-                    "who": "iri",
-                    "text": "sala.aqua_port.cistella.5",
-                    "if": {
-                      "protagonist": "vet"
-                    }
+                    "text": "sala.aqua_port.cistella.4"
                   },
                   {
                     "who": "narrator",
@@ -2541,7 +2540,7 @@
                     "sound": "cistella"
                   },
                   {
-                    "who": "player",
+                    "who": "iri",
                     "text": "sala.aqua_port.cistella.7"
                   }
                 ],
@@ -2564,7 +2563,7 @@
                 },
                 "lines": [
                   {
-                    "who": "player",
+                    "who": "iri",
                     "text": "sala.aqua_port.cistella.8"
                   }
                 ]
@@ -4702,6 +4701,33 @@
                 "if": {
                   "all": [
                     {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "cap_condicions"
+                    },
+                    {
+                      "flag": "albara_fet",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "vet",
+                    "text": "sala.cantimplora_pont.radio.vet"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "talkTo",
+                  "push"
+                ],
+                "if": {
+                  "all": [
+                    {
                       "flag": "cap_condicions"
                     },
                     {
@@ -5085,6 +5111,22 @@
                   {
                     "who": "player",
                     "text": "sala.ferrum_carrer.porta_sindicat.1"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "walkTo",
+                  "use",
+                  "open"
+                ],
+                "if": {
+                  "protagonist": "vet"
+                },
+                "lines": [
+                  {
+                    "who": "vet",
+                    "text": "sala.ferrum_carrer.porta_sindicat.vet"
                   }
                 ]
               },
@@ -5725,11 +5767,7 @@
                   },
                   {
                     "who": "iri",
-                    "text": "sala.ferrum_sindicat.bagul.3",
-                    "if": {
-                      "inRoom": "ferrum_sindicat",
-                      "who": "iri"
-                    }
+                    "text": "sala.ferrum_sindicat.bagul.3"
                   }
                 ]
               },
@@ -5828,15 +5866,8 @@
               {
                 "verb": "pickUp",
                 "if": {
-                  "all": [
-                    {
-                      "protagonist": "iri"
-                    },
-                    {
-                      "flag": "vestit_refusat",
-                      "is": false
-                    }
-                  ]
+                  "flag": "vestit_refusat",
+                  "is": false
                 },
                 "lines": [
                   {
@@ -5855,46 +5886,11 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.ferrum_sindicat.bagul.7"
-                  }
-                ],
-                "if": {
-                  "flag": "vestit_refusat",
-                  "is": false
-                },
-                "effects": [
-                  {
-                    "setFlag": "vestit_refusat"
-                  }
-                ]
-              },
-              {
-                "verb": "pickUp",
-                "if": {
-                  "protagonist": "iri"
-                },
-                "lines": [
-                  {
-                    "who": "player",
                     "text": "sala.ferrum_sindicat.bagul.cas.iri"
                   },
                   {
                     "who": "player",
                     "text": "sala.ferrum_sindicat.bagul.5"
-                  }
-                ],
-                "effects": [
-                  {
-                    "setFlag": "vestit_volgut"
-                  }
-                ]
-              },
-              {
-                "verb": "pickUp",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.ferrum_sindicat.bagul.cas.vet"
                   }
                 ],
                 "effects": [
@@ -6634,30 +6630,14 @@
                   "is": false
                 },
                 {
-                  "any": [
+                  "all": [
                     {
-                      "all": [
-                        {
-                          "inRoom": "fosa_forn",
-                          "who": "vet"
-                        },
-                        {
-                          "inRoom": "fosa_colada",
-                          "who": "iri"
-                        }
-                      ]
+                      "inRoom": "fosa_forn",
+                      "who": "vet"
                     },
                     {
-                      "all": [
-                        {
-                          "inRoom": "fosa_forn",
-                          "who": "iri"
-                        },
-                        {
-                          "inRoom": "fosa_colada",
-                          "who": "vet"
-                        }
-                      ]
+                      "inRoom": "fosa_colada",
+                      "who": "iri"
                     }
                   ]
                 }
@@ -6728,6 +6708,22 @@
           "pas": {
             "name": "sala.fosa_forn.pas.nom",
             "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "use",
+                  "open"
+                ],
+                "if": {
+                  "protagonist": "vet"
+                },
+                "lines": [
+                  {
+                    "who": "vet",
+                    "text": "sala.fosa_forn.pas.vet"
+                  }
+                ]
+              },
               {
                 "verb": [
                   "walkTo",
@@ -7254,30 +7250,14 @@
                   "is": false
                 },
                 {
-                  "any": [
+                  "all": [
                     {
-                      "all": [
-                        {
-                          "inRoom": "fosa_forn",
-                          "who": "vet"
-                        },
-                        {
-                          "inRoom": "fosa_colada",
-                          "who": "iri"
-                        }
-                      ]
+                      "inRoom": "fosa_forn",
+                      "who": "vet"
                     },
                     {
-                      "all": [
-                        {
-                          "inRoom": "fosa_forn",
-                          "who": "iri"
-                        },
-                        {
-                          "inRoom": "fosa_colada",
-                          "who": "vet"
-                        }
-                      ]
+                      "inRoom": "fosa_colada",
+                      "who": "iri"
                     }
                   ]
                 }
@@ -7400,9 +7380,25 @@
                   "talkTo",
                   "push"
                 ],
+                "if": {
+                  "protagonist": "vet"
+                },
                 "lines": [
                   {
-                    "who": "player",
+                    "who": "vet",
+                    "text": "sala.granja_casa.videotelefon.vet"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "talkTo",
+                  "push"
+                ],
+                "lines": [
+                  {
+                    "who": "iri",
                     "text": "sala.granja_casa.videotelefon.2",
                     "sound": "videotelefon"
                   }
@@ -7507,6 +7503,22 @@
                   {
                     "who": "player",
                     "text": "sala.granja_casa.caixa_forta.3"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "push"
+                ],
+                "if": {
+                  "protagonist": "vet"
+                },
+                "lines": [
+                  {
+                    "who": "vet",
+                    "text": "sala.granja_casa.caixa_forta.vet"
                   }
                 ]
               },
@@ -7887,7 +7899,17 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.granja_graner.llavors.3"
+                    "text": "sala.granja_graner.llavors.3",
+                    "if": {
+                      "protagonist": "iri"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.granja_graner.llavors.3.vet",
+                    "if": {
+                      "protagonist": "vet"
+                    }
                   }
                 ]
               },
@@ -8041,7 +8063,17 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.granja_graner.reg.3"
+                    "text": "sala.granja_graner.reg.3",
+                    "if": {
+                      "protagonist": "iri"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.granja_graner.reg.3.vet",
+                    "if": {
+                      "protagonist": "vet"
+                    }
                   }
                 ]
               },
@@ -8053,7 +8085,17 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.granja_graner.reg.cas.1"
+                    "text": "sala.granja_graner.reg.cas.1",
+                    "if": {
+                      "protagonist": "iri"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.granja_graner.reg.cas.1.vet",
+                    "if": {
+                      "protagonist": "vet"
+                    }
                   }
                 ],
                 "effects": [
@@ -11648,26 +11690,6 @@
               },
               {
                 "verb": "use",
-                "item": "reg",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.verdant_cobert.tomaquera.7"
-                  }
-                ]
-              },
-              {
-                "verb": "use",
-                "item": "reg_foradat",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.verdant_cobert.tomaquera.7"
-                  }
-                ]
-              },
-              {
-                "verb": "use",
                 "item": "galleda_plena",
                 "if": {
                   "flag": "reg_muntat"
@@ -11890,6 +11912,22 @@
                   {
                     "who": "player",
                     "text": "sala.verdant_jardi.porta_cobert.1"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "walkTo",
+                  "use",
+                  "open"
+                ],
+                "if": {
+                  "protagonist": "iri"
+                },
+                "lines": [
+                  {
+                    "who": "iri",
+                    "text": "sala.verdant_jardi.porta_cobert.iri"
                   }
                 ]
               },
@@ -16671,69 +16709,7 @@
             "lines": [
               {
                 "who": "bru",
-                "text": "dlg.bru.estrany.1",
-                "if": {
-                  "all": [
-                    {
-                      "inRoom": "ferrum_sindicat",
-                      "who": "iri"
-                    },
-                    {
-                      "inRoom": "ferrum_sindicat",
-                      "who": "vet"
-                    }
-                  ]
-                }
-              },
-              {
-                "who": "bru",
-                "text": "dlg.bru.estrany.1.iri",
-                "if": {
-                  "all": [
-                    {
-                      "not": {
-                        "all": [
-                          {
-                            "inRoom": "ferrum_sindicat",
-                            "who": "iri"
-                          },
-                          {
-                            "inRoom": "ferrum_sindicat",
-                            "who": "vet"
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "protagonist": "iri"
-                    }
-                  ]
-                }
-              },
-              {
-                "who": "bru",
-                "text": "dlg.bru.estrany.1.vet",
-                "if": {
-                  "all": [
-                    {
-                      "not": {
-                        "all": [
-                          {
-                            "inRoom": "ferrum_sindicat",
-                            "who": "iri"
-                          },
-                          {
-                            "inRoom": "ferrum_sindicat",
-                            "who": "vet"
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "protagonist": "vet"
-                    }
-                  ]
-                }
+                "text": "dlg.bru.estrany.1.iri"
               },
               {
                 "who": "bru",
@@ -16749,15 +16725,8 @@
                     },
                     {
                       "not": {
-                        "all": [
-                          {
-                            "protagonist": "vet"
-                          },
-                          {
-                            "hasItem": "carta_juana",
-                            "who": "iri"
-                          }
-                        ]
+                        "hasItem": "carta_juana",
+                        "who": "vet"
                       }
                     }
                   ]
@@ -16765,17 +16734,10 @@
               },
               {
                 "who": "player",
-                "text": "dlg.bru.estrany.3.vet",
+                "text": "dlg.bru.estrany.3.carta",
                 "if": {
-                  "all": [
-                    {
-                      "protagonist": "vet"
-                    },
-                    {
-                      "hasItem": "carta_juana",
-                      "who": "iri"
-                    }
-                  ]
+                  "hasItem": "carta_juana",
+                  "who": "vet"
                 }
               }
             ]
@@ -16784,21 +16746,7 @@
             "lines": [
               {
                 "who": "bru",
-                "text": "dlg.bru.carta.1",
-                "if": {
-                  "inRoom": "ferrum_sindicat",
-                  "who": "vet"
-                }
-              },
-              {
-                "who": "bru",
-                "text": "dlg.bru.carta.1.iri",
-                "if": {
-                  "not": {
-                    "inRoom": "ferrum_sindicat",
-                    "who": "vet"
-                  }
-                }
+                "text": "dlg.bru.carta.1.iri"
               },
               {
                 "who": "iri",
@@ -16813,22 +16761,8 @@
                 "text": "dlg.bru.carta.4"
               },
               {
-                "who": "vet",
-                "text": "dlg.bru.carta.5",
-                "if": {
-                  "inRoom": "ferrum_sindicat",
-                  "who": "vet"
-                }
-              },
-              {
-                "who": "player",
-                "text": "dlg.bru.carta.5",
-                "if": {
-                  "not": {
-                    "inRoom": "ferrum_sindicat",
-                    "who": "vet"
-                  }
-                }
+                "who": "iri",
+                "text": "dlg.bru.carta.5"
               },
               {
                 "who": "bru",
@@ -16911,32 +16845,10 @@
                     {
                       "flag": "promesa_lia",
                       "is": false
-                    },
-                    {
-                      "protagonist": "iri"
                     }
                   ]
                 },
                 "next": "promesa"
-              },
-              {
-                "id": "promesa_vet",
-                "text": "dlg.bru.opt.promesa_vet",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "bru_lia"
-                    },
-                    {
-                      "flag": "promesa_lia",
-                      "is": false
-                    },
-                    {
-                      "protagonist": "vet"
-                    }
-                  ]
-                },
-                "next": "promesa_vet"
               },
               {
                 "id": "colada",
@@ -17048,15 +16960,6 @@
               {
                 "giveItem": "nota_lia",
                 "who": "iri"
-              }
-            ],
-            "goto": "menu"
-          },
-          "promesa_vet": {
-            "lines": [
-              {
-                "who": "bru",
-                "text": "dlg.bru.promesa_vet.1"
               }
             ],
             "goto": "menu"
@@ -21113,21 +21016,7 @@
               },
               {
                 "who": "iri",
-                "text": "dlg.juana.hola.3",
-                "if": {
-                  "inRoom": "casa_juana",
-                  "who": "iri"
-                }
-              },
-              {
-                "who": "player",
-                "text": "dlg.juana.hola.3",
-                "if": {
-                  "not": {
-                    "inRoom": "casa_juana",
-                    "who": "iri"
-                  }
-                }
+                "text": "dlg.juana.hola.3"
               },
               {
                 "who": "juana",
@@ -21135,37 +21024,7 @@
               },
               {
                 "who": "juana",
-                "text": "dlg.juana.hola.5",
-                "if": {
-                  "all": [
-                    {
-                      "inRoom": "casa_juana",
-                      "who": "iri"
-                    },
-                    {
-                      "inRoom": "casa_juana",
-                      "who": "vet"
-                    }
-                  ]
-                }
-              },
-              {
-                "who": "juana",
-                "text": "dlg.juana.hola.5.una",
-                "if": {
-                  "not": {
-                    "all": [
-                      {
-                        "inRoom": "casa_juana",
-                        "who": "iri"
-                      },
-                      {
-                        "inRoom": "casa_juana",
-                        "who": "vet"
-                      }
-                    ]
-                  }
-                }
+                "text": "dlg.juana.hola.5.una"
               }
             ],
             "effects": [
@@ -21333,21 +21192,7 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.juana.on.3",
-                "if": {
-                  "inRoom": "casa_juana",
-                  "who": "vet"
-                }
-              },
-              {
-                "who": "player",
-                "text": "dlg.juana.on.3",
-                "if": {
-                  "not": {
-                    "inRoom": "casa_juana",
-                    "who": "vet"
-                  }
-                }
+                "text": "dlg.juana.on.3"
               },
               {
                 "who": "juana",
@@ -21373,21 +21218,7 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.juana.tornar.3",
-                "if": {
-                  "inRoom": "casa_juana",
-                  "who": "vet"
-                }
-              },
-              {
-                "who": "player",
-                "text": "dlg.juana.tornar.3",
-                "if": {
-                  "not": {
-                    "inRoom": "casa_juana",
-                    "who": "vet"
-                  }
-                }
+                "text": "dlg.juana.tornar.3"
               },
               {
                 "who": "juana",
@@ -21395,21 +21226,7 @@
               },
               {
                 "who": "iri",
-                "text": "dlg.juana.tornar.5",
-                "if": {
-                  "inRoom": "casa_juana",
-                  "who": "iri"
-                }
-              },
-              {
-                "who": "player",
-                "text": "dlg.juana.tornar.5",
-                "if": {
-                  "not": {
-                    "inRoom": "casa_juana",
-                    "who": "iri"
-                  }
-                }
+                "text": "dlg.juana.tornar.5"
               },
               {
                 "who": "juana",
@@ -21431,21 +21248,7 @@
             "lines": [
               {
                 "who": "juana",
-                "text": "dlg.juana.bru.1",
-                "if": {
-                  "inRoom": "casa_juana",
-                  "who": "iri"
-                }
-              },
-              {
-                "who": "juana",
-                "text": "dlg.juana.bru.1.vet",
-                "if": {
-                  "not": {
-                    "inRoom": "casa_juana",
-                    "who": "iri"
-                  }
-                }
+                "text": "dlg.juana.bru.1"
               },
               {
                 "who": "narrator",
@@ -21478,21 +21281,7 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.juana.peixos.3",
-                "if": {
-                  "inRoom": "casa_juana",
-                  "who": "vet"
-                }
-              },
-              {
-                "who": "player",
-                "text": "dlg.juana.peixos.3",
-                "if": {
-                  "not": {
-                    "inRoom": "casa_juana",
-                    "who": "vet"
-                  }
-                }
+                "text": "dlg.juana.peixos.3"
               },
               {
                 "who": "juana",
@@ -22057,91 +21846,26 @@
                 "text": "dlg.nil.tomaquera.2"
               },
               {
-                "who": "vet",
-                "text": "dlg.nil.tomaquera.3",
-                "if": {
-                  "inRoom": "verdant_jardi",
-                  "who": "vet"
-                }
-              },
-              {
                 "who": "player",
-                "text": "dlg.nil.tomaquera.3",
-                "if": {
-                  "not": {
-                    "inRoom": "verdant_jardi",
-                    "who": "vet"
-                  }
-                }
+                "text": "dlg.nil.tomaquera.3"
               },
               {
                 "who": "nil",
                 "text": "dlg.nil.tomaquera.4"
               },
               {
-                "who": "vet",
-                "text": "dlg.nil.tomaquera.5",
-                "if": {
-                  "all": [
-                    {
-                      "inRoom": "verdant_jardi",
-                      "who": "vet"
-                    },
-                    {
-                      "flag": "reg_agafat",
-                      "is": false
-                    }
-                  ]
-                }
-              },
-              {
                 "who": "player",
                 "text": "dlg.nil.tomaquera.5",
                 "if": {
-                  "all": [
-                    {
-                      "not": {
-                        "inRoom": "verdant_jardi",
-                        "who": "vet"
-                      }
-                    },
-                    {
-                      "flag": "reg_agafat",
-                      "is": false
-                    }
-                  ]
-                }
-              },
-              {
-                "who": "vet",
-                "text": "dlg.nil.tomaquera.cas",
-                "if": {
-                  "all": [
-                    {
-                      "inRoom": "verdant_jardi",
-                      "who": "vet"
-                    },
-                    {
-                      "flag": "reg_agafat"
-                    }
-                  ]
+                  "flag": "reg_agafat",
+                  "is": false
                 }
               },
               {
                 "who": "player",
                 "text": "dlg.nil.tomaquera.cas",
                 "if": {
-                  "all": [
-                    {
-                      "not": {
-                        "inRoom": "verdant_jardi",
-                        "who": "vet"
-                      }
-                    },
-                    {
-                      "flag": "reg_agafat"
-                    }
-                  ]
+                  "flag": "reg_agafat"
                 }
               }
             ],
@@ -22252,50 +21976,18 @@
                 "who": "quim",
                 "text": "dlg.pare.hola.1.iri",
                 "if": {
-                  "all": [
-                    {
-                      "not": {
-                        "all": [
-                          {
-                            "inRoom": "granja_casa",
-                            "who": "iri"
-                          },
-                          {
-                            "inRoom": "granja_casa",
-                            "who": "vet"
-                          }
-                        ]
+                  "not": {
+                    "all": [
+                      {
+                        "inRoom": "granja_casa",
+                        "who": "iri"
+                      },
+                      {
+                        "inRoom": "granja_casa",
+                        "who": "vet"
                       }
-                    },
-                    {
-                      "protagonist": "iri"
-                    }
-                  ]
-                }
-              },
-              {
-                "who": "quim",
-                "text": "dlg.pare.hola.1.vet",
-                "if": {
-                  "all": [
-                    {
-                      "not": {
-                        "all": [
-                          {
-                            "inRoom": "granja_casa",
-                            "who": "iri"
-                          },
-                          {
-                            "inRoom": "granja_casa",
-                            "who": "vet"
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "protagonist": "vet"
-                    }
-                  ]
+                    ]
+                  }
                 }
               },
               {
@@ -25294,7 +24986,6 @@
       "dlg.lia.opt.adeu2": "Fins ara, Lia.",
       "dlg.pare.hola.1": "Qui és? Ah! Les meves noies! Ja era hora.",
       "dlg.pare.hola.1.iri": "Qui és? Ah! La meva Iri! Ja era hora.",
-      "dlg.pare.hola.1.vet": "Qui és? Ah! La meva Vet! Ja era hora.",
       "dlg.pare.hola.2": "Aquí ens donen un got d'aigua al dia, i diuen que és un luxe. El luxe el pago jo.",
       "dlg.pare.torna.1": "Altra vegada? Que no tinc res al foc. Ni aigua per bullir-lo.",
       "dlg.pare.opt.escriptura": "Papa, on és l'escriptura de la granja?",
@@ -25344,7 +25035,6 @@
       "dlg.juana.hola.2": "Diu la Capitana que voleu salvar el món.",
       "dlg.juana.hola.3": "No. Volem salvar el nostre pou.",
       "dlg.juana.hola.4": "És el mateix. A una altra escala.",
-      "dlg.juana.hola.5": "Seieu. A terra, que les cadires les vaig vendre per aigua.",
       "dlg.juana.hola.5.una": "Seu. A terra, que les cadires les vaig vendre per aigua.",
       "dlg.juana.torna.1": "Sí?",
       "dlg.juana.opt.mar": "On és el mar d'Aqua?",
@@ -25361,22 +25051,21 @@
       "dlg.juana.mar.3": "No s'evapora: se l'enduen. El bomben cap amunt, cap a l'òrbita, i allà es glaça.",
       "dlg.juana.on.1": "A tres dipòsits orbitals. Un per planeta: el de Terra-2, el de Ferrum i el d'Aqua, que és el gros: s'hi va endur un mar. Plens de gel. Els tinc localitzats.",
       "dlg.juana.on.2": "El Magnat en ven una mica cada dia, gota a gota. La justa perquè la gent visqui i pagui. La resta, la guarda.",
-      "dlg.juana.on.3": "I si en vengués més?",
+      "dlg.juana.on.3": "(pel comunicador) I si en vengués més?",
       "dlg.juana.on.4": "El preu baixaria. I el Magnat viu del preu.",
       "dlg.juana.tornar.1": "Els dipòsits tenen vàlvules d'emergència, per si s'esquerden. Si s'obren, el gel cau a l'atmosfera, es fon... i plou.",
       "dlg.juana.tornar.2": "El deixen anar a trossets, perquè es fongui abans de tocar a terra. Tres setmanes de pluja a cada planeta. Ho he calculat.",
-      "dlg.juana.tornar.3": "I on s'obren, aquestes vàlvules?",
+      "dlg.juana.tornar.3": "(pel comunicador) I on s'obren, aquestes vàlvules?",
       "dlg.juana.tornar.4": "A la sala de control del palau del Magnat, sota la piscina central: ho vol tot sota els peus. Amb tres claus.",
       "dlg.juana.tornar.5": "I on són, les claus?",
       "dlg.juana.tornar.6": "Les va fondre en Bru, a Ferrum, quan van fer els dipòsits. Ell m'ho va explicar. Encara en té els motlles.",
       "dlg.juana.tornar.7": "Ara en Bru és el cap de la vaga de Ferrum. I no es fia de ningú.",
       "dlg.juana.bru.1": "No es fia de ningú. De mi, una mica. Us escric una carta. Té, Iri: tu que parles.",
-      "dlg.juana.bru.1.vet": "No es fia de ningú. De mi, una mica. Us escric una carta. Per a l'Iri: ella és la que parla.",
       "dlg.juana.bru.2": "La Juana escriu una carta, la plega i la tanca amb un segell de cera amb un peix.",
       "dlg.juana.bru.3": "Aneu a Ferrum. I si veieu en Bru, digueu-li que encara li dec una cervesa. D'aigua.",
       "dlg.juana.peixos.1": "Els últims peixos d'Aqua se'ls va endur el Magnat. Trenta-tres. En un aquari, al seu palau.",
       "dlg.juana.peixos.2": "Diu que valdran més quan en quedi un.",
-      "dlg.juana.peixos.3": "Això és...",
+      "dlg.juana.peixos.3": "(pel comunicador) Això és...",
       "dlg.juana.peixos.4": "Sí. Ho és.",
       "dlg.juana.llavors.1": "Ja ho sé. La Capitana me les baixarà amb la cistella quan pugeu. Gràcies.",
       "dlg.juana.llavors.2": "Les sembraré aquí, al fons del mar. Algun dia serà el fons d'un camp. O d'un mar. Ja veurem què arriba primer.",
@@ -25562,25 +25251,25 @@
       "dlg.barril.baixar.1": "Baixen el barril amb el carro de la bodega fins al piquet. La canalla fa cua amb gots.",
       "dlg.barril.baixar.1.sola": "Baixa el barril amb el carro de la bodega fins al piquet. La canalla fa cua amb gots.",
       "dlg.tauler.inici.1": "Els paperets del tauler, amb la lletra de la Vet:",
-      "dlg.tauler.inici.2": "Trobar l'escriptura de la granja (el pare ho sap; el videotelèfon és a la casa).",
+      "dlg.tauler.inici.2": "Trobar l'escriptura de la granja (el pare ho sap: que l'Iri li truqui pel videotelèfon de la casa).",
       "dlg.tauler.inici.3": "Què fa una bomba de Verne al nostre pou?",
       "dlg.tauler.inici.4": "Parlar amb la Capitana, al pont.",
       "dlg.tauler.inici.5": "Un albarà: una feina de veritat per a Aqua (ràdio del pont: la Juana).",
-      "dlg.tauler.inici.6": "Llavors per a la Juana: el banc del pare, al graner (demanar-li permís pel videotelèfon).",
+      "dlg.tauler.inici.6": "Llavors per a la Juana: el banc del pare, al graner (l'Iri li ha de demanar permís pel videotelèfon).",
       "dlg.tauler.inici.7": "Llavors carregades: avisar la Juana per ràdio.",
       "dlg.tauler.inici.8": "L'injector de la nau està esquerdat: que el miri la Vet (el motor, a la bodega).",
       "dlg.tauler.inici.9": "Un injector nou: el tractor de l'avi en té un d'igual (oli i una clau anglesa).",
       "dlg.tauler.inici.10": "Albarà i injector: tornar a la Capitana.",
       "dlg.tauler.inici.11": "Rumb a Aqua: el mapa del pont.",
-      "dlg.tauler.inici.12": "Baixar al fons del mar d'Aqua: la grua del port.",
-      "dlg.tauler.inici.13": "Parlar amb la Juana, al fons del mar.",
-      "dlg.tauler.inici.14": "Ferrum: trobar en Bru (el sindicat) i donar-li la carta de la Juana.",
+      "dlg.tauler.inici.12": "Baixar al fons del mar d'Aqua: l'Iri a la cistella i la Vet a la grua.",
+      "dlg.tauler.inici.13": "L'Iri ha de parlar amb la Juana, al fons del mar.",
+      "dlg.tauler.inici.14": "Ferrum: l'Iri ha de trobar en Bru (el sindicat) i donar-li la carta de la Juana.",
       "dlg.tauler.inici.15": "Aigua per a la canalla del piquet de Ferrum.",
-      "dlg.tauler.inici.16": "Tornar a parlar amb en Bru.",
+      "dlg.tauler.inici.16": "L'Iri ha de tornar a parlar amb en Bru.",
       "dlg.tauler.inici.17": "Preparar el motlle de les claus al llit de colada de la fosa.",
       "dlg.tauler.inici.18": "Sorra fina per al motlle: a Ferrum només n'hi ha de pedra picada.",
-      "dlg.tauler.inici.19": "La colada: una al forn i l'altra a la colada.",
-      "dlg.tauler.inici.20": "Verdant: el jardiner Nil puja al palau cada dijous.",
+      "dlg.tauler.inici.19": "La colada: la Vet al forn i l'Iri a la colada.",
+      "dlg.tauler.inici.20": "Verdant: el jardiner Nil puja al palau cada dijous. Que hi parli la Vet.",
       "dlg.tauler.inici.21": "Mirar què guarda el Magnat a la residència d'estiu de Verdant.",
       "dlg.tauler.inici.22": "Entrar al despatx del Magnat: el robot de la porta només deixa passar gent «solvent».",
       "dlg.tauler.inici.23": "Remenar el despatx del Magnat.",
@@ -25593,13 +25282,10 @@
       "dlg.tauler.inici.30": "La Vet a la sala de control, l'Iri al saló de la subhasta.",
       "dlg.tauler.inici.31": "Obrir les tres vàlvules (la clau al pany, i girar) abans que s'acabin els lots, sense espantar el Magnat. L'Iri pot parar el martell: cada objecció, al seu lot.",
       "dlg.tauler.inici.32": "31: el Magnat s'aguanta amb la seva reserva. La palanca vermella.",
-      "dlg.bru.estrany.1": "Una pilot i una enginyera. Que us envia el Magnat?",
       "dlg.bru.estrany.1.iri": "Una pilot. Que t'envia el Magnat?",
-      "dlg.bru.estrany.1.vet": "Una enginyera. Que t'envia el Magnat?",
       "dlg.bru.estrany.2": "No parlo amb desconegudes. I menys amb desconegudes de nau.",
       "dlg.bru.estrany.3": "(a part) Sense alguna cosa que digui qui som, en Bru no ens escoltarà. La Juana el coneix.",
-      "dlg.bru.estrany.3.vet": "(a part) La carta de la Juana la porta l'Iri. Sense ella, en Bru no m'escoltarà.",
-      "dlg.bru.carta.1": "Una pilot i una enginyera. Que us envia el Magnat?",
+      "dlg.bru.estrany.3.carta": "(a part) La carta de la Juana la porta la Vet. Sense ella, en Bru no m'escoltarà.",
       "dlg.bru.carta.1.iri": "Una pilot. Que t'envia el Magnat?",
       "dlg.bru.carta.2": "Ens envia la Juana. Té.",
       "dlg.bru.carta.3": "En Bru llegeix la carta de la Juana. Dues vegades. Somriu, gairebé.",
@@ -25612,7 +25298,6 @@
       "dlg.bru.torna.1": "Què hi ha?",
       "dlg.bru.opt.canalla": "La canalla ja beu.",
       "dlg.bru.opt.promesa": "Te la portarem a casa, la Lia. T'ho prometo.",
-      "dlg.bru.opt.promesa_vet": "I si et portem la Lia a casa?",
       "dlg.bru.opt.colada": "Com es fan les claus?",
       "dlg.bru.opt.lia": "Com és la Lia?",
       "dlg.bru.opt.recorda": "Recorda'm què cal fer.",
@@ -25630,18 +25315,17 @@
       "dlg.bru.promesa.4": "...Bé.",
       "dlg.bru.promesa.5": "En Bru agafa un motlle de la prestatgeria i el deixa a la taula. Després, al dors de la carta de la Juana, escriu unes línies amb lletra gran.",
       "dlg.bru.promesa.6": "El motlle de les tres claus. I això, per a la Lia, perquè us faci cas. Ella coneix la meva lletra.",
-      "dlg.bru.promesa.7": "La fosa és vostra. Una al forn i l'altra a la colada.",
-      "dlg.bru.promesa_vet.1": "Això ho ha de prometre la pilot. Ella és la que tracta. Tu ets la que arregla.",
+      "dlg.bru.promesa.7": "La fosa és vostra. La teva germana al forn i tu a la colada.",
       "dlg.bru.colada.1": "Primer, el motlle al llit de colada, preparat amb sorra fina. Fina de debò: si no, les claus surten amb grava.",
       "dlg.bru.colada.2": "Sorra fina, aquí no en tenim: tot és pedra picada.",
-      "dlg.bru.colada.3": "Després, una al forn i l'altra a la colada. Al forn: manxa, metall, i fora l'escòria. A la colada: abocar el gresol i tapar amb sorra.",
+      "dlg.bru.colada.3": "Després, la teva germana al forn i tu a la colada. Al forn: manxa, metall, i fora l'escòria. A la colada: abocar el gresol i tapar amb sorra.",
       "dlg.bru.colada.4": "Si l'escòria va al motlle, les claus surten amb bombolles. I el forn es refreda de pressa: no badeu.",
       "dlg.bru.lia.1": "Té el meu nas i el geni de la seva mare. Neteja piscines buides.",
       "dlg.bru.lia.2": "Diu que és la feina més fàcil del món, i la més trista.",
       "dlg.bru.recorda.1": "Que la canalla del piquet begui. Avui. Tenim tres garrafes per a quaranta.",
       "dlg.bru.recorda.2": "El motlle, preparat amb sorra fina al llit de colada. Metall al forn, manxa, i fora l'escòria abans d'abocar.",
       "dlg.bru.recorda.3": "Sorra fina, aquí no en tenim: tot és pedra picada.",
-      "dlg.bru.recorda.4": "Una al forn i l'altra a la colada. A la vegada.",
+      "dlg.bru.recorda.4": "La teva germana al forn i tu a la colada. A la vegada.",
       "dlg.bru.recorda.5": "Ara, al palau: busqueu en Nil, el jardiner de Verdant. Cada dijous hi puja.",
       "dlg.bru.juana.1": "Ha! Aquesta dona. Li va guanyar una aposta a la meva dona sobre el pes d'un peix. Fa vint anys.",
       "dlg.bru.juana.2": "El peix era meu.",
@@ -25822,8 +25506,8 @@
       "dlg.comunicador.fem.6": "Parlar amb la Capitana, al pont.",
       "dlg.comunicador.fem.7": "Un albarà: una feina de veritat per a Aqua (ràdio del pont: la Juana).",
       "dlg.comunicador.fem.8": "Un albarà: una feina de veritat per a Aqua (ràdio del pont: la Juana).",
-      "dlg.comunicador.fem.9": "Llavors per a la Juana: el banc del pare, al graner (demanar-li permís pel videotelèfon).",
-      "dlg.comunicador.fem.10": "Llavors per a la Juana: el banc del pare, al graner (demanar-li permís pel videotelèfon).",
+      "dlg.comunicador.fem.9": "Llavors per a la Juana: el banc del pare, al graner (demana-li permís pel videotelèfon).",
+      "dlg.comunicador.fem.10": "Llavors per a la Juana: el banc del pare, al graner (li demano permís pel videotelèfon).",
       "dlg.comunicador.fem.11": "Llavors carregades: avisar la Juana per ràdio.",
       "dlg.comunicador.fem.12": "Llavors carregades: avisar la Juana per ràdio.",
       "dlg.comunicador.fem.13": "L'injector de la nau està esquerdat: l'he de mirar jo (el motor, a la bodega).",
@@ -25834,23 +25518,23 @@
       "dlg.comunicador.fem.18": "Albarà i injector: tornar a la Capitana.",
       "dlg.comunicador.fem.19": "Rumb a Aqua: el mapa del pont.",
       "dlg.comunicador.fem.20": "Rumb a Aqua: el mapa del pont.",
-      "dlg.comunicador.fem.21": "Baixar al fons del mar d'Aqua: la grua del port.",
-      "dlg.comunicador.fem.22": "Baixar al fons del mar d'Aqua: la grua del port.",
+      "dlg.comunicador.fem.21": "Baixar al fons del mar d'Aqua: tu a la cistella i jo a la grua.",
+      "dlg.comunicador.fem.22": "Baixar al fons del mar d'Aqua: jo a la cistella i tu a la grua.",
       "dlg.comunicador.fem.23": "Parlar amb la Juana, al fons del mar.",
-      "dlg.comunicador.fem.24": "Parlar amb la Juana, al fons del mar.",
+      "dlg.comunicador.fem.24": "Parlar amb la Juana, al fons del mar. Hi baixo jo.",
       "dlg.comunicador.fem.25": "Ferrum: trobar en Bru (el sindicat) i donar-li la carta de la Juana.",
-      "dlg.comunicador.fem.26": "Ferrum: trobar en Bru (el sindicat) i donar-li la carta de la Juana.",
+      "dlg.comunicador.fem.26": "Ferrum: trobar en Bru (el sindicat) i donar-li la carta de la Juana. Les assemblees, per a mi.",
       "dlg.comunicador.fem.27": "Aigua per a la canalla del piquet de Ferrum.",
       "dlg.comunicador.fem.28": "Aigua per a la canalla del piquet de Ferrum.",
       "dlg.comunicador.fem.29": "Tornar a parlar amb en Bru.",
-      "dlg.comunicador.fem.30": "Tornar a parlar amb en Bru.",
+      "dlg.comunicador.fem.30": "Tornar a parlar amb en Bru. Hi vaig jo.",
       "dlg.comunicador.fem.31": "Preparar el motlle de les claus al llit de colada de la fosa.",
       "dlg.comunicador.fem.32": "Preparar el motlle de les claus al llit de colada de la fosa.",
       "dlg.comunicador.fem.33": "Sorra fina per al motlle: a Ferrum només n'hi ha de pedra picada.",
       "dlg.comunicador.fem.34": "Sorra fina per al motlle: a Ferrum només n'hi ha de pedra picada.",
-      "dlg.comunicador.fem.35": "La colada: una al forn i l'altra a la colada.",
-      "dlg.comunicador.fem.36": "La colada: una al forn i l'altra a la colada.",
-      "dlg.comunicador.fem.37": "Verdant: el jardiner Nil puja al palau cada dijous.",
+      "dlg.comunicador.fem.35": "La colada: jo al forn i tu a la colada.",
+      "dlg.comunicador.fem.36": "La colada: tu al forn i jo a la colada.",
+      "dlg.comunicador.fem.37": "Verdant: el jardiner Nil puja al palau cada dijous. Hi parlo jo.",
       "dlg.comunicador.fem.38": "Verdant: el jardiner Nil puja al palau cada dijous.",
       "dlg.comunicador.fem.39": "Mirar què guarda el Magnat a la residència d'estiu de Verdant.",
       "dlg.comunicador.fem.40": "Mirar què guarda el Magnat a la residència d'estiu de Verdant.",
@@ -26576,19 +26260,19 @@
       "pj.kessel.1": "La senyora Kessel. Abric de pells sintètiques i una mascareta d'oxigen daurada.",
       "pista.escriptura.1": "L'escriptura és en algun racó de la casa del pare. El pare ho guarda tot... però sap on és cada cosa.",
       "pista.escriptura.2": "El pare és a la residència. A la casa hi ha un videotelèfon.",
-      "pista.escriptura.3": "Truca al pare amb el videotelèfon de la casa i pregunta-li per l'escriptura.",
+      "pista.escriptura.3": "Amb l'Iri, truca al pare amb el videotelèfon de la casa i pregunta-li per l'escriptura.",
       "pista.quadre.1": "«Darrere de la mare», ha dit el pare. Del quadre de la mare.",
       "pista.quadre.2": "A la casa hi ha el quadre de la mare.",
       "pista.quadre.3": "Aparta de la paret el quadre de la mare.",
       "pista.caixa.1": "Darrere el quadre hi ha una caixa forta amb un teclat de lletres. Qui en pot saber la paraula?",
       "pista.caixa.2": "El pare la deu saber.",
-      "pista.caixa.3": "Pregunta al pare per la paraula de la caixa forta, amb el videotelèfon.",
+      "pista.caixa.3": "Amb l'Iri, pregunta al pare per la paraula de la caixa forta, amb el videotelèfon.",
       "pista.titus.1": "Qui ens esperava a la porta, movent la cua: el gos. Com es deia?",
       "pista.titus.2": "El pare no llença res. A la casa encara hi deu haver coses del gos.",
       "pista.titus.3": "Mira el bol del gos, a la casa del pare.",
       "pista.teclat.1": "El gos es deia Titus, i la paraula té cinc lletres.",
       "pista.teclat.2": "La caixa forta, darrere el quadre.",
-      "pista.teclat.3": "Obre la caixa forta i tria T-I-T-U-S.",
+      "pista.teclat.3": "Amb l'Iri, obre la caixa forta i tria T-I-T-U-S.",
       "pista.bomba.1": "Hi ha una bomba de Verne al nostre pou. Què hi fa?",
       "pista.bomba.2": "El panell de la bomba té cargols de cap de flor. Tenim una punta de flor, però li cal un mànec.",
       "pista.bomba.3": "Agafa el tornavís de la caixa d'eines del graner, ajunta'l amb la punta de flor (si la porta l'altra, doneu-vos-els) i fes-lo servir amb la bomba.",
@@ -26597,10 +26281,10 @@
       "pista.capitana.3": "Ves al port pel camí del pati, puja a la Cantimplora, ves al pont i parla amb la Capitana.",
       "pista.radio.1": "La Capitana vol una feina de veritat, amb algú que pagui a l'altra banda.",
       "pista.radio.2": "La Juana és a Aqua. La seva freqüència és al marc de la ràdio del pont.",
-      "pista.radio.3": "Fes servir la ràdio del pont i pregunta a la Juana quina càrrega voldria.",
+      "pista.radio.3": "Amb l'Iri, fes servir la ràdio del pont i pregunta a la Juana quina càrrega voldria.",
       "pista.permis.1": "La Juana vol llavors que aguantin la secada. El pare té un banc de llavors al graner.",
       "pista.permis.2": "Les llavors són del pare: cal demanar-l'hi.",
-      "pista.permis.3": "Truca al pare amb el videotelèfon de la casa i demana-li llavors per a la Juana.",
+      "pista.permis.3": "Amb l'Iri, truca al pare amb el videotelèfon de la casa i demana-li llavors per a la Juana.",
       "pista.sacs.1": "El pare diu que sí.",
       "pista.sacs.2": "Les llavors són al graner.",
       "pista.sacs.3": "Agafa els sacs del banc de llavors del graner.",
@@ -26609,7 +26293,7 @@
       "pista.carrega.3": "Fes servir els sacs de llavors amb l'espai de càrrega de la bodega.",
       "pista.albara.1": "Les llavors ja són a bord. Cal que la Juana ho sàpiga.",
       "pista.albara.2": "La ràdio del pont.",
-      "pista.albara.3": "Fes servir la ràdio del pont i digues-li a la Juana que ja tens les llavors.",
+      "pista.albara.3": "Amb l'Iri, fes servir la ràdio del pont i digues-li a la Juana que ja tens les llavors.",
       "pista.injector.1": "La Cantimplora no vola: l'injector està esquerdat.",
       "pista.injector.2": "El motor és a la bodega. La Vet en sap.",
       "pista.injector.3": "Mira el motor de la bodega amb la Vet.",
@@ -26644,61 +26328,61 @@
       "pista.fusible2.3": "La Vet ha de fer servir el fusible apanyat amb la grua del port.",
       "pista.fusible2.2.vet": "El munta la Vet.",
       "pista.fusible2.3.vet": "Fes servir el fusible apanyat amb la grua del port.",
-      "pista.baixar.1": "Una a la cistella i l'altra als comandaments de la grua.",
+      "pista.baixar.1": "L'Iri a la cistella i la Vet als comandaments de la grua.",
       "pista.baixar.2": "Cal que siguin totes dues al port.",
-      "pista.baixar.3": "Porta les dues protagonistes al port d'Aqua i fes servir la cistella.",
+      "pista.baixar.3": "Porta les dues al port d'Aqua i, amb l'Iri, fes servir la cistella.",
       "pista.juana.1": "La Juana viu al fons del mar, a la caseta del vaixell bolcat.",
       "pista.juana.2": "Pregunta-li on és el mar, on va l'aigua i si es pot fer tornar.",
-      "pista.juana.3": "Parla amb la Juana i fes-li totes les preguntes fins que t'escrigui una carta per a en Bru.",
+      "pista.juana.3": "Amb l'Iri, parla amb la Juana i fes-li totes les preguntes fins que t'escrigui una carta per a en Bru.",
       "pista.bru.1": "La Juana ens ha enviat a Ferrum, a buscar en Bru.",
       "pista.bru.2": "En Bru és al sindicat. No es fia de ningú, però la carta de la Juana l'ajudarà.",
-      "pista.bru.3": "Ves a Ferrum (amb el mapa del pont, si no hi sou), entra al sindicat i parla amb en Bru.",
+      "pista.bru.3": "Amb l'Iri, ves a Ferrum (amb el mapa del pont, si no hi sou), entra al sindicat i parla amb en Bru.",
       "pista.canalla.1": "La canalla del piquet té set. Hi ha dues maneres d'ajudar-la.",
       "pista.canalla.2": "L'últim barril de la Cantimplora... o el condensador vell del carrer, que treu aigua de l'aire i que Verne ha tancat.",
       "pista.canalla.3": "Baixa al piquet el barril de la bodega, o mira què li passa al condensador del carrer.",
       "pista.bru2.1": "La canalla ja beu.",
       "pista.bru2.2": "En Bru volia veure-ho.",
-      "pista.bru2.3": "Torna a parlar amb en Bru.",
+      "pista.bru2.3": "Amb l'Iri, torna a parlar amb en Bru, al sindicat.",
       "pista.promesa.1": "En Bru té por per la seva filla, la Lia, que treballa al palau.",
       "pista.promesa.2": "Algú li ha de fer una promesa. La que negocia és l'Iri.",
-      "pista.promesa.3": "Parla amb en Bru amb l'Iri i promet-li que li portareu la Lia a casa.",
+      "pista.promesa.3": "Amb l'Iri, parla amb en Bru, al sindicat, i promet-li que li portareu la Lia a casa.",
       "pista.promesa.2.iri": "Algú li ha de fer una promesa. I negociar és cosa de l'Iri.",
       "pista.promesa.3.iri": "Parla amb en Bru i promet-li que li portareu la Lia a casa.",
       "pista.motlle.1": "En Bru ens ha donat el motlle de les claus.",
       "pista.motlle.2": "El motlle va al llit de colada, a la fosa.",
-      "pista.motlle.3": "Entra a la fosa, passa a la colada i fes servir el motlle amb el llit de colada.",
+      "pista.motlle.3": "Amb l'Iri, entra a la fosa, passa a la colada i fes servir el motlle amb el llit de colada.",
       "pista.sorra.1": "Cal sorra fina. On n'hem vist, de sorra fina com farina?",
       "pista.sorra.2": "Al fons del mar d'Aqua hi havia una platja.",
-      "pista.sorra.3": "Ves a Aqua (amb el mapa del pont, si no hi sou), baixa al fons del mar i agafa la sorra fina.",
+      "pista.sorra.3": "Amb l'Iri, ves a Aqua (amb el mapa del pont, si no hi sou), baixa al fons del mar i agafa la sorra fina.",
       "pista.motlle2.1": "Ja tenim sorra fina.",
       "pista.motlle2.2": "Torna a la fosa de Ferrum.",
-      "pista.motlle2.3": "Fes servir el motlle amb el llit de colada, amb la sorra a l'inventari.",
-      "pista.colada_lloc.1": "Una al forn i l'altra a la colada, a la vegada.",
+      "pista.motlle2.3": "Amb l'Iri, fes servir el motlle amb el llit de colada, amb la sorra a l'inventari (si la porta la Vet, que te l'enviï amb la Mosca).",
+      "pista.colada_lloc.1": "La Vet al forn i l'Iri a la colada, a la vegada.",
       "pista.colada_lloc.2": "La fosa té dues sales: el forn i la colada.",
-      "pista.colada_lloc.3": "Posa una protagonista a la sala del forn i l'altra a la de la colada (canvia de protagonista per moure l'altra).",
+      "pista.colada_lloc.3": "Posa la Vet a la sala del forn i l'Iri a la de la colada (canvia de protagonista per moure l'altra).",
       "pista.c_manxa.1": "Al forn, primer, el foc: la manxa.",
       "pista.c_metall.1": "Al forn: el metall. La pila de comptadors.",
       "pista.c_escoria.1": "Al forn: fora l'escòria amb el rascle, abans d'abocar.",
-      "pista.c_gresol.1": "A la colada: aboca el gresol.",
-      "pista.c_sorra.1": "A la colada: tapa el motlle amb la sorra (fes servir la sorra amb el llit).",
+      "pista.c_gresol.1": "A la colada, l'Iri: aboca el gresol.",
+      "pista.c_sorra.1": "A la colada, l'Iri: tapa el motlle amb la sorra (fes servir la sorra amb el llit).",
       "pista.verdant.1": "En Bru ha dit: en Nil, el jardiner de la residència de Verdant, puja al palau cada dijous. I que el Magnat hi guarda papers.",
       "pista.verdant.2": "En Nil és a Verdant: s'hi va amb el mapa del pont.",
-      "pista.verdant.3": "A Verdant, parla amb en Nil, al jardí.",
+      "pista.verdant.3": "A Verdant, amb la Vet, parla amb en Nil, al jardí.",
       "pista.nil.1": "En Nil és al jardí, parlant amb les flors.",
-      "pista.nil.2": "Parla amb en Nil.",
+      "pista.nil.2": "Amb la Vet, parla amb en Nil.",
       "pista.tomaquera.1": "En Nil no s'hi juga la feina per desconegudes. Què li importa, a en Nil?",
       "pista.tomaquera.2": "Mira el seu cobert.",
-      "pista.tomaquera.3": "Entra al cobert del jardí i mira la tomaquera.",
+      "pista.tomaquera.3": "Amb la Vet, entra al cobert del jardí i mira la tomaquera.",
       "pista.tomaquera2.1": "Una tomaquera de veritat, mig seca.",
       "pista.tomaquera2.2": "En Nil la rega d'amagat.",
-      "pista.tomaquera2.3": "Parla amb en Nil de la tomaquera.",
+      "pista.tomaquera2.3": "Amb la Vet, parla amb en Nil de la tomaquera.",
       "pista.reg.1": "La tomaquera necessita un reg gota a gota.",
       "pista.reg.2": "El pare en té un al graner de Terra-2. Però «no es toca».",
-      "pista.reg.3": "A Terra-2 (amb el mapa del pont, si no hi sou), demana el reg al pare pel videotelèfon de la casa i agafa'l del graner.",
+      "pista.reg.3": "A Terra-2 (amb el mapa del pont, si no hi sou), amb l'Iri, demana el reg al pare pel videotelèfon de la casa, i agafeu-lo del graner.",
       "pista.reg2.1": "Ja tenim el reg.",
       "pista.reg2.2": "Ara, a la tomaquera.",
       "pista.reg2.2.iri": "Ara, a la tomaquera. Però muntar-lo és cosa de la Vet.",
-      "pista.reg2.3": "La Vet ha de fer servir el reg amb la tomaquera del cobert.",
+      "pista.reg2.3": "La Vet ha de fer servir el reg amb la tomaquera del cobert. Si el portes tu, envia-l'hi amb la Mosca.",
       "pista.reg2.3.vet": "Fes servir el reg amb la tomaquera del cobert.",
       "pista.agulla.1": "Els goters del reg estan tapats. Cal foradar-los.",
       "pista.agulla.2": "La Vet té una agulla al seu calaix.",
@@ -26715,12 +26399,12 @@
       "pista.muntar.2.vet": "Fes servir el reg amb la tomaquera.",
       "pista.galleda.1": "Falta l'aigua. La que llença el Magnat.",
       "pista.galleda.2": "Al jardí hi ha una reixa on degota l'aire condicionat. I al cobert, una galleda.",
-      "pista.galleda.3": "Agafa la galleda del cobert i fes-la servir amb la reixa del jardí.",
+      "pista.galleda.3": "Amb la Vet, agafa la galleda del cobert i fes-la servir amb la reixa del jardí.",
       "pista.regar.1": "Tenim aigua.",
       "pista.regar.2": "Aboca-la a la tomaquera (amb el reg muntat).",
-      "pista.regar.3": "Fes servir la galleda plena amb la tomaquera.",
+      "pista.regar.3": "Amb la Vet, fes servir la galleda plena amb la tomaquera (si la porta l'Iri, que l'hi doni al jardí: a la Mosca no hi cap aigua).",
       "pista.nil2.1": "La tomaquera beu.",
-      "pista.nil2.2": "Digues-ho a en Nil.",
+      "pista.nil2.2": "Amb la Vet, digues-ho a en Nil.",
       "pista.fidel.1": "Al despatx del Magnat, a la residència, hi pot haver coses que ens convinguin.",
       "pista.fidel.2": "El robot de la porta només deixa passar gent «solvent». Una inversora, per exemple. L'Iri sap fer-ne.",
       "pista.fidel.3": "Amb l'Iri, parla amb en Fidel i digues-li que ets inversora.",
@@ -26758,7 +26442,7 @@
       "pista.gala.2": "Al sindicat de Ferrum, al bagul de la colla de teatre, hi havia un vestit de reina. És de la Rosa.",
       "pista.gala.3": "A Ferrum (amb el mapa del pont, si no hi sou), demana el vestit a la Rosa, al piquet.",
       "pista.gala2.1": "La Rosa diu que sí.",
-      "pista.gala2.2": "Agafa el vestit del bagul del sindicat.",
+      "pista.gala2.2": "Amb l'Iri, agafa el vestit del bagul del sindicat.",
       "pista.gala3.1": "A l'Iri, el vestit li va gran.",
       "pista.gala3.2": "La Vet té agulla i fil.",
       "pista.gala3.3": "Amb la Vet, fes servir l'agulla amb el vestit.",
@@ -26822,9 +26506,9 @@
       "pista.lot9.1": "Què tinc: un cartell que diu que la platja és de Verne. Què diu exactament? Fins on arriba, el lot 9?",
       "pista.lot9.2": "Fins a la línia de l'aigua, amidada dimarts. I el mar d'Aqua no s'està quiet: les boies de la Juana ho mesuren.",
       "pista.lot9.3": "Mira les boies del fons: des de dimarts, el mar ha baixat. La sorra de sota la línia no és del lot 9. Agafa-la.",
-      "pista.lot9_vet.1": "Símptoma: la sorra té amo. Causa: un cartell amb lletra petita. Llegeix la lletra petita.",
+      "pista.lot9_vet.1": "Símptoma: la sorra té amo. Causa: un cartell amb lletra petita. L'Iri l'ha de llegir bé.",
       "pista.lot9_vet.2": "El lot 9 arriba fins a la línia de l'aigua de dimarts. Avaria del cartell: el mar no es queda on el van amidar.",
-      "pista.lot9_vet.3": "Mira les boies del fons: el mar ha baixat. La franja nova, entre la línia de dimarts i l'aigua, no és de Verne. Agafa'n la sorra.",
+      "pista.lot9_vet.3": "Amb l'Iri, mira les boies del fons: el mar ha baixat. La franja nova, entre la línia de dimarts i l'aigua, no és de Verne. Agafa'n la sorra.",
       "pista.precinte.1": "Què tinc: un cadenat de Verne que només s'obre a la propietat. Què vol: que demostri que la finca és nostra. Amb què?",
       "pista.precinte.2": "Un paper que digui de qui és la finca. Per a en Fidel no val res; per a un cadenat de Verne, potser sí.",
       "pista.precinte.3": "Fes servir l'escriptura de la granja amb la porta del graner.",
@@ -26939,6 +26623,7 @@
       "sala.fosa_forn.nom": "Fosa: el forn",
       "sala.fosa_forn.porta.nom": "carrer",
       "sala.fosa_forn.pas.nom": "colada",
+      "sala.fosa_forn.pas.vet": "Jo no em moc del forn. Si baixa la temperatura, adéu claus.",
       "sala.fosa_forn.manxa.nom": "manxa",
       "sala.fosa_forn.metall.nom": "comptadors per fondre",
       "sala.fosa_forn.rascle.nom": "rascle",
@@ -27050,12 +26735,14 @@
       "sala.granja_casa.calaix.5": "Res més que el pare no hagi guardat. L'escriptura, aquí no hi és.",
       "sala.granja_casa.videotelefon.1": "El videotelèfon. El pare el contesta sempre a la tercera, perquè la primera «és de mala educació».",
       "sala.granja_casa.videotelefon.2": "Ring... ring... ring...",
+      "sala.granja_casa.videotelefon.vet": "Truca-li tu. A mi em fa repassar els noms de les vaques.",
       "sala.granja_casa.quadre.1": "La mare. La va pintar el pare. Es nota: hi ha posat més cor que traça.",
       "sala.granja_casa.quadre.2": "Aparto el quadre de la mare... Al darrere hi ha una caixa forta encastada a la paret.",
       "sala.granja_casa.quadre.3": "És el quadre de la mare. No el toco sense un bon motiu.",
       "sala.granja_casa.caixa_forta.1": "Buida. El pare no hi guardava res més. Sorprenent.",
       "sala.granja_casa.caixa_forta.2": "Una caixa forta vella amb un teclat de lletres. Cinc caselles: una paraula de cinc lletres.",
       "sala.granja_casa.caixa_forta.3": "Ja està oberta.",
+      "sala.granja_casa.caixa_forta.vet": "Les lletres, per a l'Iri. Jo l'obriria amb el tornavís, i el pare no m'ho perdonaria.",
       "sala.granja_casa.bol.1": "El bol del gos. Hi diu TITUS, gravat amb un clau.",
       "sala.granja_casa.bol.2": "En Titus. Ens esperava a la porta cada dia, quan tornàvem de l'escola. Fa quinze anys que no hi és, i el pare no n'ha llençat el bol.",
       "sala.granja_casa.bol.3": "Que es quedi on és. Com tot, en aquesta casa.",
@@ -27079,11 +26766,13 @@
       "sala.granja_graner.llavors.1": "El banc de llavors del pare: blat de secà, cigrons, mongetes de l'avi, tomàquets de la mare... Tot etiquetat a mà. Per si de cas.",
       "sala.granja_graner.llavors.2": "Tres sacs per a la Juana: secà, cigrons i tomàquet. El quart es queda aquí, que ho ha dit el pare.",
       "sala.granja_graner.llavors.3": "Són del pare. No me'n vaig a endur ni un sac sense demanar-l'hi.",
+      "sala.granja_graner.llavors.3.vet": "Són del pare. Sense el seu permís, ni un sac. Que l'Iri li ho demani pel videotelèfon.",
       "sala.granja_graner.llavors.4": "El pare va dir que en guardéssim un, per si de cas. Doncs aquest és el cas.",
       "sala.granja_graner.llavors.5": "Les llavors del pare no es toquen sense un bon motiu.",
       "sala.granja_graner.reg.1": "El reg gota a gota del pare, enrotllat a la paret. Un reg sense aigua. És un acte de fe.",
       "sala.granja_graner.reg.2": "Me l'emporto. Per a la tomaquera d'en Nil.",
       "sala.granja_graner.reg.3": "El pare sempre diu: «El reg no es toca, que encara serveix.» Li ho hauré de demanar pel videotelèfon.",
+      "sala.granja_graner.reg.3.vet": "El pare sempre diu: «El reg no es toca, que encara serveix.» L'Iri li ho haurà de demanar pel videotelèfon.",
       "sala.granja_graner.reg.4": "El pare sempre diu: «El reg no es toca, que encara serveix.» Ell sabrà per a què.",
       "sala.granja_graner.caixa_eines.1": "Un tornavís vell. Fa de tornavís.",
       "sala.granja_graner.caixa_eines.2": "La caixa d'eines de l'avi. Hi ha un tornavís.",
@@ -27105,7 +26794,7 @@
       "sala.aqua_port.escala_port.2": "No. Els últims quaranta esglaons són d'aire. L'aire, de moment, encara no el ven ningú.",
       "sala.aqua_port.grua.1": "Fusible de trenta, al seu lloc...",
       "sala.aqua_port.grua.2": "Llum verd! La grua funciona.",
-      "sala.aqua_port.grua.3": "Ara, una a la cistella i l'altra als comandaments.",
+      "sala.aqua_port.grua.3": "Ara, l'Iri a la cistella i jo als comandaments.",
       "sala.aqua_port.grua.4": "Això ho ha de muntar la Vet. Si ho faig jo, la grua acabarà a l'òrbita.",
       "sala.aqua_port.grua.5": "És de deu. La grua en demana un de trenta. Petaria abans de dir «grua».",
       "sala.aqua_port.grua.6": "La grua de descarregar peix. Funcionaria, si tingués el fusible. Li falta. De trenta ampers.",
@@ -27118,10 +26807,10 @@
       "sala.aqua_port.cistella.2": "Sense grua, la cistella és un gronxador.",
       "sala.aqua_port.cistella.3": "Pujo a la cistella...",
       "sala.aqua_port.cistella.4": "Tu condueixes naus. Jo condueixo grues.",
-      "sala.aqua_port.cistella.5": "Agafa't. Aquesta grua és més vella que la Capitana.",
+      "sala.aqua_port.cistella.vet": "Jo condueixo grues. Si baixem les dues, qui ens puja?",
       "sala.aqua_port.cistella.6": "La cistella baixa, a sacsejades, quaranta metres.",
-      "sala.aqua_port.cistella.7": "Des d'aquí baix, ara que va, la cistella té botó. Ja podem pujar i baixar soles.",
-      "sala.aqua_port.cistella.8": "La grua funciona, però algú l'ha de fer anar des de dalt. Necessito l'altra aquí, als comandaments.",
+      "sala.aqua_port.cistella.7": "Des d'aquí baix, ara que va, la cistella té botó. Ja puc pujar i baixar sola.",
+      "sala.aqua_port.cistella.8": "La grua funciona, però algú l'ha de fer anar des de dalt. Necessito la Vet aquí, als comandaments.",
       "sala.aqua_port.cistella.9": "La cistella baixa.",
       "sala.aqua_port.vaixells.1": "Vaixells de pesca encallats a la sorra. Un es diu «Sempre Plena». Un altre, «Ja Tornarà».",
       "sala.aqua_port.panell_preu.2": "A Aqua, el panell és l'única cosa que encara puja.",
@@ -27156,6 +26845,7 @@
       "sala.cantimplora_pont.radio.2": "Xiuxiueig d'estàtica... i una veu.",
       "sala.cantimplora_pont.radio.3": "Estàtica.",
       "sala.cantimplora_pont.radio.4": "«...Aigua Verne. Perquè la set no espera...»",
+      "sala.cantimplora_pont.radio.vet": "Jo sé com funciona la ràdio. No com es parla.",
       "sala.cantimplora_pont.pantalla.1": "Apagada. Encara hi veig el somriure.",
       "sala.cantimplora_pont.pantalla.2": "La pantalla gran. Només hi surten anuncis de Verne.",
       "sala.cantimplora_pont.pantalla.3": "No l'encenc. Avui ja hem vist prou anuncis.",
@@ -27223,6 +26913,7 @@
       "sala.ferrum_carrer.entra.3": "És on més se'n necessita.",
       "sala.ferrum_carrer.entra.4": "Des de la rampa, en Tomàs mira el piquet. Al piquet, una dona amb casc també el mira. Cap dels dos no diu res.",
       "sala.ferrum_carrer.porta_sindicat.1": "El local del sindicat. A la porta: «VAGA. AQUÍ NO ES VEN RES.»",
+      "sala.ferrum_carrer.porta_sindicat.vet": "Les assemblees, per a tu. Jo vaig a veure per què no raja la font.",
       "sala.ferrum_carrer.porta_fosa.1": "La fosa de Ferrum. Aturada des de la vaga.",
       "sala.ferrum_carrer.porta_fosa.2": "La fosa és del sindicat. Sense en Bru, no hi entra ningú.",
       "sala.ferrum_carrer.porta_fosa.3": "La fosa està tancada. Ja hem fet el que hi havíem de fer.",
@@ -27243,7 +26934,6 @@
       "sala.ferrum_sindicat.bagul.4": "Gràcies, Rosa. Ja el tinc.",
       "sala.ferrum_sindicat.bagul.5": "És de la Rosa, la minera del piquet. Li ho he de demanar.",
       "sala.ferrum_sindicat.bagul.6": "No em posaria això ni morta. I no és meu.",
-      "sala.ferrum_sindicat.bagul.7": "És de la colla de teatre. No ens en cal res.",
       "sala.ferrum_sindicat.pissarra.1": "Torns de vaga i torns d'aigua. Hi ha més torns que aigua.",
       "sala.ferrum_sindicat.motlles.1": "Motlles de fosa, en una prestatgeria. En Bru no deixa tocar-los a ningú.",
       "sala.ferrum_sindicat.motlles.2": "En Bru em mira. No.",
@@ -27316,6 +27006,7 @@
       "sala.verdant_jardi.porta_residencia.2": "En Fidel em mira la roba de feina. «El servei, pel darrere.» La casa no té darrere.",
       "sala.verdant_jardi.porta_residencia.3": "El robot es posa al mig de la porta. Molt educadament. Molt al mig.",
       "sala.verdant_jardi.porta_cobert.1": "El cobert del jardiner. L'única cosa de fusta de debò de tot Verdant.",
+      "sala.verdant_jardi.porta_cobert.iri": "Avui faig d'inversora. En Nil no es fia de les jaquetes de vol.",
       "sala.verdant_jardi.flors.1": "Flors de plàstic. No es moren. Per això el Magnat les estima.",
       "sala.verdant_jardi.flors.2": "Fan olor de cotxe nou.",
       "sala.verdant_jardi.aspersors.1": "Aspersors. No reguen: perfumen. Gasten aigua per fer olor d'aigua.",
@@ -27334,7 +27025,6 @@
       "sala.verdant_cobert.tomaquera.4": "Els goters del reg estan tapats de pols de sis anys. Si no els foradem, no regaran.",
       "sala.verdant_cobert.tomaquera.5": "Necessito alguna cosa per foradar-los. Una agulla. ...En tinc una al calaix de la nau.",
       "sala.verdant_cobert.tomaquera.6": "Tubs al test, goters a la terra, el cap del tub a punt per a l'aigua.",
-      "sala.verdant_cobert.tomaquera.7": "Això ho ha de muntar la Vet.",
       "sala.verdant_cobert.tomaquera.8": "L'aigua del Magnat, gota a gota, cap a la tomaquera.",
       "sala.verdant_cobert.tomaquera.9": "La terra s'enfosqueix. Les fulles s'aixequen, a poc a poc, com si es despertessin.",
       "sala.verdant_cobert.tomaquera.10": "Si l'aboco de cop, l'ofego: la terra està tan seca que l'aigua hi rellisca. Ha de caure a poc a poc. Gota a gota.",
@@ -27520,6 +27210,7 @@
       "sala.granja_pati.entra.precinte": "A la porta del graner hi ha un paper groc. El pare no compraria mai res groc.",
       "sala.granja_graner.reg.cas.2": "«Encara serveix», diu el pare. Doncs que serveixi. Me l'emporto.",
       "sala.granja_graner.reg.cas.1": "Algun dia servirà. Li ho demanaré al pare pel videotelèfon: «per si de cas» és un argument que entén.",
+      "sala.granja_graner.reg.cas.1.vet": "Algun dia servirà. Que l'Iri li ho demani al pare pel videotelèfon: «per si de cas» és un argument que entén.",
       "sala.granja_graner.llavors.cas": "El pare va dir que en guardéssim un. No va dir on. A la nau també és guardat. Per si de cas.",
       "sala.granja_graner.llavors.quart": "El quart sac es queda aquí. El pare ha dit que en guardem un.",
       "sala.ferrum_carrer.font.pantalla": "A sota, una pantalla encesa: «VERNE S.A. CONTRACTA». És l'única cosa de la font que funciona.",
@@ -27543,7 +27234,6 @@
       "sala.ferrum_carrer.condensador.sense": "No arrenca. El lector vol una targeta de treballador actiu de Verne.",
       "sala.ferrum_sindicat.bagul.volgut": "És de la Rosa, la minera del piquet. Primer, demanar-l'hi.",
       "sala.ferrum_sindicat.bagul.cas.iri": "Ni morta, he dit. Però viva i de gala, potser. Per si de cas.",
-      "sala.ferrum_sindicat.bagul.cas.vet": "Un vestit de reina, per si de cas... Però és de la Rosa, la minera del piquet. L'hi hauríem de demanar.",
       "sala.cantimplora_bodega.carmanyola.8.tractor": "«Les germanes tenen tres claus de comptador fos. Han estat al despatx de Verdant. Han pagat l'entrada amb un tractor que no arrenca.»",
       "sala.ferrum_sindicat.bagul.ja": "El vestit ja el tenim. La resta és de la colla de teatre.",
       "sala.ferrum_sindicat.bagul.tomas": "La Rosa vol que el vingui a buscar en Tomàs. Ell.",

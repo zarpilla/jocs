@@ -33,69 +33,7 @@
       "lines": [
         {
           "who": "bru",
-          "text": "dlg.bru.estrany.1",
-          "if": {
-            "all": [
-              {
-                "inRoom": "ferrum_sindicat",
-                "who": "iri"
-              },
-              {
-                "inRoom": "ferrum_sindicat",
-                "who": "vet"
-              }
-            ]
-          }
-        },
-        {
-          "who": "bru",
-          "text": "dlg.bru.estrany.1.iri",
-          "if": {
-            "all": [
-              {
-                "not": {
-                  "all": [
-                    {
-                      "inRoom": "ferrum_sindicat",
-                      "who": "iri"
-                    },
-                    {
-                      "inRoom": "ferrum_sindicat",
-                      "who": "vet"
-                    }
-                  ]
-                }
-              },
-              {
-                "protagonist": "iri"
-              }
-            ]
-          }
-        },
-        {
-          "who": "bru",
-          "text": "dlg.bru.estrany.1.vet",
-          "if": {
-            "all": [
-              {
-                "not": {
-                  "all": [
-                    {
-                      "inRoom": "ferrum_sindicat",
-                      "who": "iri"
-                    },
-                    {
-                      "inRoom": "ferrum_sindicat",
-                      "who": "vet"
-                    }
-                  ]
-                }
-              },
-              {
-                "protagonist": "vet"
-              }
-            ]
-          }
+          "text": "dlg.bru.estrany.1.iri"
         },
         {
           "who": "bru",
@@ -111,15 +49,8 @@
               },
               {
                 "not": {
-                  "all": [
-                    {
-                      "protagonist": "vet"
-                    },
-                    {
-                      "hasItem": "carta_juana",
-                      "who": "iri"
-                    }
-                  ]
+                  "hasItem": "carta_juana",
+                  "who": "vet"
                 }
               }
             ]
@@ -127,17 +58,10 @@
         },
         {
           "who": "player",
-          "text": "dlg.bru.estrany.3.vet",
+          "text": "dlg.bru.estrany.3.carta",
           "if": {
-            "all": [
-              {
-                "protagonist": "vet"
-              },
-              {
-                "hasItem": "carta_juana",
-                "who": "iri"
-              }
-            ]
+            "hasItem": "carta_juana",
+            "who": "vet"
           }
         }
       ]
@@ -146,21 +70,7 @@
       "lines": [
         {
           "who": "bru",
-          "text": "dlg.bru.carta.1",
-          "if": {
-            "inRoom": "ferrum_sindicat",
-            "who": "vet"
-          }
-        },
-        {
-          "who": "bru",
-          "text": "dlg.bru.carta.1.iri",
-          "if": {
-            "not": {
-              "inRoom": "ferrum_sindicat",
-              "who": "vet"
-            }
-          }
+          "text": "dlg.bru.carta.1.iri"
         },
         {
           "who": "iri",
@@ -175,22 +85,8 @@
           "text": "dlg.bru.carta.4"
         },
         {
-          "who": "vet",
-          "text": "dlg.bru.carta.5",
-          "if": {
-            "inRoom": "ferrum_sindicat",
-            "who": "vet"
-          }
-        },
-        {
-          "who": "player",
-          "text": "dlg.bru.carta.5",
-          "if": {
-            "not": {
-              "inRoom": "ferrum_sindicat",
-              "who": "vet"
-            }
-          }
+          "who": "iri",
+          "text": "dlg.bru.carta.5"
         },
         {
           "who": "bru",
@@ -273,32 +169,10 @@
               {
                 "flag": "promesa_lia",
                 "is": false
-              },
-              {
-                "protagonist": "iri"
               }
             ]
           },
           "next": "promesa"
-        },
-        {
-          "id": "promesa_vet",
-          "text": "dlg.bru.opt.promesa_vet",
-          "if": {
-            "all": [
-              {
-                "flag": "bru_lia"
-              },
-              {
-                "flag": "promesa_lia",
-                "is": false
-              },
-              {
-                "protagonist": "vet"
-              }
-            ]
-          },
-          "next": "promesa_vet"
         },
         {
           "id": "colada",
@@ -410,15 +284,6 @@
         {
           "giveItem": "nota_lia",
           "who": "iri"
-        }
-      ],
-      "goto": "menu"
-    },
-    "promesa_vet": {
-      "lines": [
-        {
-          "who": "bru",
-          "text": "dlg.bru.promesa_vet.1"
         }
       ],
       "goto": "menu"
