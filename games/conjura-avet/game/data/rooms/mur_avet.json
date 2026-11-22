@@ -427,7 +427,14 @@
             "use"
           ],
           "if": {
-            "flag": "resina_agafada"
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "resina_agafada"
+              }
+            ]
           },
           "lines": [
             {

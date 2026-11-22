@@ -3,5 +3,132 @@
   "characters": {},
   "items": {},
   "rooms": {},
-  "hotspots": {}
+  "hotspots": {},
+  "ambient": {
+    "$comment": "So de fons en bucle de cada sala (game/audio/sfx/amb_*.ogg, `npm run sons`). El primer cas que es compleix.",
+    "portada": [
+      {
+        "sound": "amb_tempesta",
+        "volume": 0.8
+      }
+    ],
+    "proleg": [
+      {
+        "sound": "amb_tempesta",
+        "volume": 1
+      }
+    ],
+    "mur_avet": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "sound": "amb_mati",
+        "volume": 1
+      },
+      {
+        "sound": "amb_tempesta",
+        "volume": 1
+      }
+    ],
+    "placa_sant_pol": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "sound": "amb_mati",
+        "volume": 1
+      },
+      {
+        "sound": "amb_placa",
+        "volume": 1
+      }
+    ],
+    "pont_ter": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "sound": "amb_pont_manso",
+        "volume": 1
+      },
+      {
+        "sound": "amb_pont",
+        "volume": 1
+      }
+    ],
+    "claustre": [
+      {
+        "sound": "amb_claustre",
+        "volume": 1
+      }
+    ],
+    "bugaderia": [
+      {
+        "if": {
+          "flag": "foc_ences"
+        },
+        "sound": "amb_cuina",
+        "volume": 0.7
+      },
+      {
+        "sound": "amb_nit",
+        "volume": 1
+      }
+    ],
+    "apotecaria": [
+      {
+        "sound": "amb_nit",
+        "volume": 1
+      }
+    ],
+    "porteria": [
+      {
+        "sound": "amb_nit",
+        "volume": 1
+      }
+    ],
+    "cuina": [
+      {
+        "sound": "amb_cuina",
+        "volume": 1
+      }
+    ],
+    "scriptorium": [
+      {
+        "sound": "amb_nit",
+        "volume": 1
+      }
+    ],
+    "arxiu": [
+      {
+        "sound": "amb_nit",
+        "volume": 1
+      }
+    ],
+    "moli": [
+      {
+        "sound": "amb_moli",
+        "volume": 1
+      }
+    ],
+    "judici": [
+      {
+        "sound": "amb_mati",
+        "volume": 1
+      }
+    ],
+    "epileg": [
+      {
+        "sound": "amb_mati",
+        "volume": 1
+      }
+    ]
+  }
 }
