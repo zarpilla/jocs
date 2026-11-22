@@ -30,10 +30,6 @@ options.esc6_menu__gat.onChoose(() => {
   chooseNarrativeOption('marcel', dialog, 'esc6_menu', 'gat')
 })
 
-options.esc6_menu__gat_vet.onChoose(() => {
-  chooseNarrativeOption('marcel', dialog, 'esc6_menu', 'gat_vet')
-})
-
 options.esc6_menu__adeu.onChoose(() => {
   chooseNarrativeOption('marcel', dialog, 'esc6_menu', 'adeu')
 })

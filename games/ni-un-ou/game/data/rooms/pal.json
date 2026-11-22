@@ -145,18 +145,6 @@
         {
           "verb": "use",
           "if": {
-            "protagonist": "vet"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pal.antena.4"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "if": {
             "flag": "antena_desbloquejada",
             "is": false
           },

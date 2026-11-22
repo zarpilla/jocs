@@ -88,10 +88,7 @@
             },
             {
               "who": "player",
-              "text": "sala.diposit2.filtre.5",
-              "if": {
-                "protagonist": "vet"
-              }
+              "text": "sala.diposit2.filtre.5"
             }
           ],
           "effects": [

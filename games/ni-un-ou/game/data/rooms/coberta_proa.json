@@ -15,6 +15,47 @@
             "use",
             "open"
           ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 3
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.porta_infermeria.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.coberta_proa.popa.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
           "goTo": "coberta_popa"
         },
         {
@@ -108,9 +149,16 @@
         {
           "verb": "look",
           "if": {
-            "var": "escena",
-            "op": "==",
-            "value": 6
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              }
+            ]
           },
           "lines": [
             {
@@ -167,27 +215,8 @@
           "if": {
             "all": [
               {
-                "protagonist": "vet"
+                "protagonist": "iri"
               },
-              {
-                "var": "escena",
-                "op": "==",
-                "value": 6
-              }
-            ]
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.coberta_proa.escotilla.18"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "item": "cisalla",
-          "if": {
-            "all": [
               {
                 "var": "escena",
                 "op": "==",
@@ -222,9 +251,16 @@
           "verb": "use",
           "item": "cisalla",
           "if": {
-            "var": "escena",
-            "op": "==",
-            "value": 6
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              }
+            ]
           },
           "lines": [
             {
@@ -315,6 +351,9 @@
           ],
           "if": {
             "all": [
+              {
+                "protagonist": "iri"
+              },
               {
                 "var": "escena",
                 "op": "==",

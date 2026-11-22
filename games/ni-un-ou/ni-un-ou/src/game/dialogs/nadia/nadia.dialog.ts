@@ -30,14 +30,6 @@ options.revisio_menu__fi.onChoose(() => {
   chooseNarrativeOption('nadia', dialog, 'revisio_menu', 'fi')
 })
 
-options.esc4__contrasenya.onChoose(() => {
-  chooseNarrativeOption('nadia', dialog, 'esc4', 'contrasenya')
-})
-
-options.esc4__adeu.onChoose(() => {
-  chooseNarrativeOption('nadia', dialog, 'esc4', 'adeu')
-})
-
 options.pillada__denunciar.onChoose(() => {
   chooseNarrativeOption('nadia', dialog, 'pillada', 'denunciar')
 })

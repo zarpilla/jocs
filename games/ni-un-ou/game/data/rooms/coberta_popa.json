@@ -322,6 +322,31 @@
             "use",
             "open"
           ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.porta_proa.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
           "goTo": "coberta_proa"
         },
         {

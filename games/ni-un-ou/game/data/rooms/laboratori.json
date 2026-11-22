@@ -10,9 +10,16 @@
       "id": "esc4",
       "verb": "*",
       "if": {
-        "var": "escena",
-        "op": "==",
-        "value": 4
+        "all": [
+          {
+            "protagonist": "iri"
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 4
+          }
+        ]
       },
       "once": true,
       "lines": [
@@ -60,9 +67,16 @@
       "id": "esc5",
       "verb": "*",
       "if": {
-        "var": "escena",
-        "op": "==",
-        "value": 5
+        "all": [
+          {
+            "protagonist": "iri"
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 5
+          }
+        ]
       },
       "once": true,
       "lines": [
@@ -178,7 +192,10 @@
               "who": "player",
               "text": "sala.laboratori.portatil.2"
             }
-          ]
+          ],
+          "if": {
+            "protagonist": "iri"
+          }
         },
         {
           "verb": "use",
@@ -212,7 +229,14 @@
         {
           "verb": "use",
           "if": {
-            "flag": "portatil_obert"
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "portatil_obert"
+              }
+            ]
           },
           "lines": [
             {
@@ -241,9 +265,16 @@
         {
           "verb": "look",
           "if": {
-            "var": "escena",
-            "op": ">=",
-            "value": 4
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "escena",
+                "op": ">=",
+                "value": 4
+              }
+            ]
           },
           "lines": [
             {
@@ -312,7 +343,10 @@
             {
               "setFlag": "nota_juana"
             }
-          ]
+          ],
+          "if": {
+            "protagonist": "iri"
+          }
         }
       ]
     },

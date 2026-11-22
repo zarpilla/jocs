@@ -98,18 +98,6 @@
       {
         "verb": "look",
         "if": {
-          "protagonist": "vet"
-        },
-        "lines": [
-          {
-            "who": "vet",
-            "text": "pj.diu.look_vet"
-          }
-        ]
-      },
-      {
-        "verb": "look",
-        "if": {
           "var": "escena",
           "op": ">=",
           "value": 3
@@ -141,7 +129,10 @@
             "who": "diu",
             "text": "pj.diu.miol"
           }
-        ]
+        ],
+        "if": {
+          "protagonist": "iri"
+        }
       },
       {
         "verb": "pickUp",
@@ -152,9 +143,16 @@
           }
         ],
         "if": {
-          "var": "escena",
-          "op": "==",
-          "value": 1
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 1
+            }
+          ]
         }
       },
       {
@@ -164,7 +162,10 @@
             "who": "player",
             "text": "pj.diu.agafa2"
           }
-        ]
+        ],
+        "if": {
+          "protagonist": "iri"
+        }
       },
       {
         "verb": "give",
@@ -174,7 +175,10 @@
             "who": "player",
             "text": "pj.diu.dona"
           }
-        ]
+        ],
+        "if": {
+          "protagonist": "iri"
+        }
       }
     ]
   },

@@ -132,15 +132,6 @@
           ]
         },
         {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.camarot_iri.carregador.2"
-            }
-          ]
-        },
-        {
           "verb": "pickUp",
           "lines": [
             {
@@ -192,15 +183,6 @@
           ]
         },
         {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.camarot_iri.got.4"
-            }
-          ]
-        },
-        {
           "verb": [
             "pickUp",
             "use"
@@ -234,15 +216,6 @@
           ]
         },
         {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.camarot_iri.maceta.2"
-            }
-          ]
-        },
-        {
           "verb": "pickUp",
           "if": {
             "protagonist": "iri"
@@ -259,15 +232,6 @@
             },
             {
               "setFlag": "maceta_agafada"
-            }
-          ]
-        },
-        {
-          "verb": "pickUp",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.camarot_iri.maceta.4"
             }
           ]
         }
@@ -294,18 +258,6 @@
             {
               "who": "player",
               "text": "sala.camarot_iri.llitera.1"
-            }
-          ]
-        },
-        {
-          "verb": "look",
-          "if": {
-            "protagonist": "vet"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.camarot_iri.llitera.2"
             }
           ]
         },
@@ -341,15 +293,6 @@
             {
               "who": "player",
               "text": "sala.camarot_iri.motxilla.1"
-            }
-          ]
-        },
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.camarot_iri.motxilla.2"
             }
           ]
         },

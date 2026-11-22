@@ -73,15 +73,6 @@
           ]
         },
         {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.taller.tauler.4"
-            }
-          ]
-        },
-        {
           "verb": "use",
           "item": "cisalla",
           "lines": [
@@ -201,18 +192,6 @@
         {
           "verb": "pickUp",
           "if": {
-            "protagonist": "vet"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.taller.cisalla.6"
-            }
-          ]
-        },
-        {
-          "verb": "pickUp",
-          "if": {
             "var": "escena",
             "op": "==",
             "value": 1
@@ -270,18 +249,6 @@
         {
           "verb": "pickUp",
           "if": {
-            "protagonist": "vet"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.taller.clau_tubs.2"
-            }
-          ]
-        },
-        {
-          "verb": "pickUp",
-          "if": {
             "var": "escena",
             "op": "==",
             "value": 7
@@ -315,15 +282,6 @@
             {
               "who": "player",
               "text": "sala.taller.banc.1"
-            }
-          ]
-        },
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.taller.banc.2"
             }
           ]
         }

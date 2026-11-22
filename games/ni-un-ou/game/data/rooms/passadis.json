@@ -69,6 +69,65 @@
             "use",
             "open"
           ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 3
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.porta_infermeria.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "not": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 8
+                    },
+                    {
+                      "flag": "reunio_comencada"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.coberta_proa.popa.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
           "goTo": "menjador"
         },
         {
@@ -136,6 +195,22 @@
             {
               "who": "player",
               "text": "sala.passadis.porta_infermeria.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.porta_infermeria.6"
             }
           ]
         },
@@ -312,6 +387,45 @@
             "use",
             "open"
           ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "reunio_comencada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.porta_capitana.4"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.porta_capitana.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
           "goTo": "cabina_capitana"
         },
         {
@@ -446,6 +560,10 @@
                 "var": "escena",
                 "op": "==",
                 "value": 8
+              },
+              {
+                "flag": "reunio_comencada",
+                "is": false
               }
             ]
           },
@@ -463,25 +581,12 @@
             "open"
           ],
           "if": {
-            "all": [
-              {
-                "protagonist": "vet"
-              },
-              {
-                "var": "escena",
-                "op": "==",
-                "value": 9
-              },
-              {
-                "flag": "rele_posat",
-                "is": false
-              }
-            ]
+            "protagonist": "vet"
           },
           "lines": [
             {
               "who": "player",
-              "text": "sala.passadis.escala_amunt.5"
+              "text": "sala.passadis.escala_amunt.8"
             }
           ]
         },
@@ -539,16 +644,7 @@
             "open"
           ],
           "if": {
-            "all": [
-              {
-                "protagonist": "vet"
-              },
-              {
-                "var": "escena",
-                "op": "==",
-                "value": 2
-              }
-            ]
+            "protagonist": "vet"
           },
           "lines": [
             {
@@ -626,6 +722,11 @@
                     "var": "escena",
                     "op": "==",
                     "value": 5
+                  },
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 8
                   }
                 ]
               }
@@ -635,6 +736,31 @@
             {
               "who": "player",
               "text": "sala.passadis.nit"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.porta_proa.3"
             }
           ]
         },

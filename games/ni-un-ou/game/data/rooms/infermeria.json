@@ -459,15 +459,6 @@
           ]
         },
         {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.infermeria.armari.2"
-            }
-          ]
-        },
-        {
           "verb": "open",
           "lines": [
             {
@@ -911,15 +902,6 @@
             {
               "who": "player",
               "text": "sala.infermeria.10"
-            }
-          ]
-        },
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.infermeria.11"
             }
           ]
         },

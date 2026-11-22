@@ -59,19 +59,35 @@ describe('El plànol', () => {
     expect(events).toEqual(['mapa']);
   });
 
-  it("Escena 6: s'hi pot anar a tot arreu menys a la caixa de cadenes, el dipòsit 2 i el pal", () => {
+  it("Escena 6: cadascuna va a les seves sales (guio.md, «Regles del món · 9»)", () => {
     const { n, p } = finsEscena6();
     amb(p, 'iri', 'laboratori');
     amb(p, 'vet', 'passadis');
-    const totes = accessibles(n);
+    const vet = accessibles(n);
     // On és l'Iri, no: no les han de veure juntes (logic/separades.ts).
-    expect(totes.has('laboratori')).toBe(false);
-    for (const s of ['coberta_popa', 'coberta_proa', 'pallol', 'taller', 'sala_bombes', 'cabina_capitana', 'pont', 'sala_radio', 'camarot_iri', 'rebost']) {
-      expect(totes.has(s), s).toBe(true);
+    expect(vet.has('laboratori')).toBe(false);
+    for (const s of ['coberta_popa', 'cabina_capitana', 'menjador', 'cuina', 'infermeria']) expect(vet.has(s), s).toBe(true);
+    // El pont, la coberta de baix i, a l'Escena 6, la proa són de l'Iri.
+    for (const s of ['pont', 'sala_radio', 'pal', 'coberta_proa', 'caixa_cadenes', 'pallol', 'taller', 'sala_bombes', 'camarot_iri', 'rebost', 'sala_maquines', 'diposit2']) {
+      expect(vet.has(s), s).toBe(false);
     }
-    for (const s of ['caixa_cadenes', 'diposit2', 'pal']) expect(totes.has(s), s).toBe(false);
-    expect(viatge(n, 'caixa_cadenes').sala).toBeNull();
+    // La porta que la tanca diu per què.
+    expect(viatge(n, 'coberta_proa').linies).toEqual([{ who: 'player', text: 'sala.passadis.porta_proa.3' }]);
+    expect(viatge(n, 'pont').linies).toEqual([{ who: 'player', text: 'sala.passadis.escala_amunt.8' }]);
+    expect(viatge(n, 'rebost').linies).toEqual([{ who: 'player', text: 'sala.passadis.escala_avall.2' }]);
     expect(viatge(n, 'passadis')).toEqual({ sala: null, linies: [{ who: 'player', text: 'mapa.aqui' }] });
+
+    amb(p, 'iri', 'passadis');
+    const iri = accessibles(n);
+    for (const s of ['coberta_proa', 'pallol', 'taller', 'sala_bombes', 'pont', 'sala_radio', 'camarot_iri', 'rebost', 'sala_maquines', 'laboratori']) {
+      expect(iri.has(s), s).toBe(true);
+    }
+    for (const s of ['menjador', 'cuina', 'coberta_popa', 'cabina_capitana', 'infermeria', 'caixa_cadenes', 'diposit2', 'pal']) {
+      expect(iri.has(s), s).toBe(false);
+    }
+    expect(viatge(n, 'caixa_cadenes').sala).toBeNull();
+    expect(viatge(n, 'cuina').linies).toEqual([{ who: 'player', text: 'sala.coberta_proa.popa.3' }]);
+    expect(viatge(n, 'infermeria').linies).toEqual([{ who: 'player', text: 'sala.passadis.porta_infermeria.6' }]);
   });
 
   it('Escena 6: mentre la Vet aprèn el nus a popa, no se\'n pot anar (ni amb el plànol)', () => {

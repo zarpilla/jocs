@@ -61,46 +61,12 @@
             "open"
           ],
           "if": {
-            "all": [
-              {
-                "protagonist": "iri"
-              },
-              {
-                "var": "escena",
-                "op": "==",
-                "value": 5
-              }
-            ]
+            "protagonist": "iri"
           },
           "lines": [
             {
               "who": "player",
-              "text": "sala.menjador.porta_cuina.1"
-            }
-          ]
-        },
-        {
-          "verb": [
-            "walkTo",
-            "use",
-            "open"
-          ],
-          "if": {
-            "all": [
-              {
-                "protagonist": "iri"
-              },
-              {
-                "var": "escena",
-                "op": "==",
-                "value": 1
-              }
-            ]
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.menjador.porta_cuina.2"
+              "text": "sala.menjador.porta_cuina.4"
             }
           ]
         },
@@ -158,25 +124,7 @@
             "open"
           ],
           "if": {
-            "all": [
-              {
-                "protagonist": "iri"
-              },
-              {
-                "any": [
-                  {
-                    "var": "escena",
-                    "op": "==",
-                    "value": 4
-                  },
-                  {
-                    "var": "escena",
-                    "op": "==",
-                    "value": 5
-                  }
-                ]
-              }
-            ]
+            "protagonist": "iri"
           },
           "lines": [
             {
@@ -561,11 +509,6 @@
     "nadia": {
       "visibleIf": {
         "any": [
-          {
-            "var": "escena",
-            "op": "==",
-            "value": 4
-          },
           {
             "all": [
               {

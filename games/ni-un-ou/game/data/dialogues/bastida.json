@@ -339,13 +339,6 @@
         {
           "who": "bastida",
           "text": "dlg.bastida.esc6.1"
-        },
-        {
-          "who": "bastida",
-          "text": "dlg.bastida.esc6.2",
-          "if": {
-            "protagonist": "iri"
-          }
         }
       ],
       "choices": [
@@ -774,13 +767,6 @@
     },
     "res": {
       "lines": [
-        {
-          "who": "bastida",
-          "text": "dlg.bastida.res.1",
-          "if": {
-            "protagonist": "iri"
-          }
-        },
         {
           "who": "bastida",
           "text": "dlg.bastida.res.2",

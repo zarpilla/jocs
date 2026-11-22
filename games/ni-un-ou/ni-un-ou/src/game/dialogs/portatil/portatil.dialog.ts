@@ -6,10 +6,6 @@ dialog.onStart(() => {
   startNarrativeDialog('portatil', dialog)
 })
 
-options.contrasenya__esperanca.onChoose(() => {
-  chooseNarrativeOption('portatil', dialog, 'contrasenya', 'esperanca')
-})
-
 options.contrasenya__pili.onChoose(() => {
   chooseNarrativeOption('portatil', dialog, 'contrasenya', 'pili')
 })

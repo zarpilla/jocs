@@ -207,31 +207,6 @@
         {
           "verb": "use",
           "if": {
-            "protagonist": "vet"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pont.terminal.3"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "item": "usb",
-          "if": {
-            "protagonist": "vet"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pont.terminal.3"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "if": {
             "all": [
               {
                 "var": "escena",
@@ -414,31 +389,6 @@
             {
               "who": "player",
               "text": "sala.pont.terminal.11"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "if": {
-            "protagonist": "vet"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pont.terminal.12"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "item": "usb",
-          "if": {
-            "protagonist": "vet"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pont.terminal.12"
             }
           ]
         },
@@ -1158,15 +1108,6 @@
             {
               "who": "player",
               "text": "sala.pont.timo.4"
-            }
-          ]
-        },
-        {
-          "verb": "use",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pont.timo.5"
             }
           ]
         }

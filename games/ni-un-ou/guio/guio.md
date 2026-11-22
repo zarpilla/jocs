@@ -224,25 +224,46 @@ Com a Suma Zero. Hi ha dues escenes en què cal **controlar les dues alhora**: l
 - **Fer servir el plànol** obre una pantalla amb les tres cobertes vistes de dalt: es clica la sala i s'hi va. És
   paper. És per a la Vet, que no coneix el vaixell; l'Iri se'l sap de memòria i camina.
 - **El plànol no obre cap porta que no s'obri caminant.** El camí passa per les mateixes portes, amb les mateixes
-  condicions: de nit no se surt a coberta, a l'Escena 5 l'Iri no arriba a la cuina, la Vet no deixa en Bastida a
-  mig nus, la caixa de cadenes i el dipòsit 2 demanen la cisalla i la clau, i a les escenes 8 i 9 ningú no es mou
-  d'on ha de ser. Les sales on ara no es pot anar surten ratllades; si se'n clica una, la protagonista diu la frase
-  de la porta que la tanca.
+  condicions: cap de les dues no entra a les sales de l'altra (regla 9), de nit no se surt a coberta, a l'Escena 5
+  l'Iri no arriba a la cuina, la Vet no deixa en Bastida a mig nus, la caixa de cadenes i el dipòsit 2 demanen la
+  cisalla i la clau, i a les escenes 8 i 9 ningú no es mou d'on ha de ser. Les sales on ara no es pot anar surten
+  ratllades; si se'n clica una, la protagonista diu la frase de la porta que la tanca (la seva excusa).
 - Si el camí passa per una sala on, en entrar-hi, ha de passar alguna cosa, el viatge s'hi atura.
 - Fer servir el plànol és caminar: no gasta torn a les sincronies.
 
-### 9. Que no us vegin juntes
+### 9. Cada sala, la seva; i que no us vegin juntes
 
-- Des que l'Iri sap que algú les escolta (el portàtil robat, Escena 4) fins que la Capitana reuneix tothom al
-  menjador (Escena 8), l'Iri i la Vet **no entren a la sala on és l'altra**: «La Vet és aquí dins. Si ens veuen
-  juntes, sabran que tramem alguna cosa. Millor pel tub. I el que s'hagi de passar, pel muntacàrregues.»
-- Els passadissos no compten: s'hi passa, no s'hi està. El plànol també ho respecta (és caminar).
-- Per això, en aquestes escenes, el tub i el muntacàrregues són la manera de treballar juntes: a l'Escena 7, la
-  clau d'en Tomàs baixa de la cuina al rebost (on és l'Iri), i la Mostra 7 hi puja si la Vet és a la infermeria amb
-  la Juana.
-- Les escenes de guió que les ajunten (la caixa de cadenes, la reunió) les hi porten soles. A partir de la reunió
-  ja no s'amaguen: ho diuen tot davant de tothom.
-- Al motor: `logic/separades.ts`.
+**Cada sala és d'una sola protagonista** (perquè cada frase es digui amb una sola veu). L'altra no hi entra: la porta
+la para i diu per què, amb una excusa seva.
+
+| Sales | De qui | L'excusa de l'altra |
+|---|---|---|
+| El **pont**, la **sala de ràdio** i el **pal** | Iri | VET: «El pont és de l'Iri i de la Capitana. Jo allà dalt només faria nosa.» |
+| La **coberta de baix**: camarot, passadís de baix, **sala de màquines**, taller, rebost, dipòsit 2, pallol i sala de bombes | Iri | VET: «A baix hi ha les màquines i la maquinista. Totes dues de mal humor.» |
+| La **coberta de proa**, a l'Escena 6 | Iri | VET: «Si en Bastida em veu anar cap a proa, sabrà on busquem. Me'l quedo jo.» |
+| La **infermeria** | Vet | IRI: «A la infermeria només hi entro si sagno. I avui no sagno.» |
+| La **cuina** | Vet | IRI: «La cuina és d'en Tomàs. Si hi entro, em posa a pelar patates.» |
+| El **menjador** i la **coberta de popa** | Vet | IRI: «A coberta hi ha l'Ernest fumant. Avui no el vull mirar a la cara.» |
+| La **cabina de la Capitana** | Vet | IRI: «La Capitana dorm. I quan dorm, mossega més que en Diu.» |
+
+- Les dues: els **passadissos** de dalt (i el laboratori, la coberta de proa fora de l'Escena 6 i la caixa de
+  cadenes). Les portes que ja tenien una frase per a una escena (l'Escena 3, la 5...) la conserven.
+- **Excepcions de guió**, que hi porten els efectes (`situar`), no les portes: a l'Escena 8 l'Iri baixa a la reunió
+  del menjador (i, mentre dura, en pot sortir i tornar-hi); a l'Escena 9 la Vet és a la sala de màquines amb en
+  Bastida, i no se'n mou («No. No me'n vaig sense el relé.»; després, «Em quedo amb l'Ernest.»).
+- **El que una necessita a les sales de l'altra hi va pel muntacàrregues**: la clau d'en Tomàs baixa de la cuina al
+  rebost; la Mostra 7 i la pàgina del registre pugen a la cuina; l'USB, si el té la Vet, puja al pont. Ho diuen pel
+  tub.
+
+**Que no us vegin juntes.** A les sales que són de les dues, des que l'Iri sap que algú les escolta (el portàtil
+robat, Escena 4) fins que la Capitana reuneix tothom al menjador (Escena 8), l'Iri i la Vet **no entren a la sala on
+és l'altra**: «La Vet és aquí dins. Si ens veuen juntes, sabran que tramem alguna cosa. Millor pel tub. I el que
+s'hagi de passar, pel muntacàrregues.» Els passadissos no compten: s'hi passa, no s'hi està. A partir de la reunió
+ja no s'amaguen: ho diuen tot davant de tothom.
+
+- Tot això el plànol també ho respecta (és caminar).
+- Al motor: les portes de cada sala (una interacció abans del `goTo`, com les de les escenes) i
+  `logic/separades.ts`. Les veus: `jugadora` de `game/audio/veus.json`.
 ---
 
 ## Estructura
@@ -546,8 +567,6 @@ per a la Vet: «Si no torno, el portàtil. J.»
 
 **Trencaclosques 4.1 — El nom de la mare.**
 
-- **La Nadia**, si se li pregunta, diu «Esperança» amb molta seguretat. No ho sap: s'ho inventa per veure què hi
-  ha al portàtil. (Error sense cost: «Contrasenya incorrecta. Tres intents més i... no, és broma, no passa res.»)
 - **Al laboratori**, dins d'un llibre de peixos, hi ha una postal: «Per molts anys, filla. T'estimo. La mare.»
   Sense nom. Al costat, la Juana hi ha escrit: «Pili 65». IRI: «Pili. Seixanta-cinc. Com a contrasenya és
   massa curta.» (Si la prova: «Contrasenya incorrecta.»)
@@ -661,18 +680,20 @@ I es fan el compte del que saben, perquè el jugador surti de l'escena sabent qu
 
 ### Escena 6 — On és la Juana (les dues, exploració)
 
-**Sales:** les dues es mouen lliurement per tot el vaixell. Onze de la nit. No hi ha rellotge. Al passadís hi ha
-el plànol d'emergència (vegeu «Regles del món · 8»): la primera que hi passa se n'adona, i amb una còpia es pot anar
-a qualsevol sala sense caminar-hi porta a porta. Cinc llocs, en
-l'ordre que es vulgui; a cadascun hi ha algú (o alguna cosa) i una pista:
+**Sales:** cadascuna per les seves (vegeu «Regles del món · 9»): l'Iri, la coberta de baix (taller, pallol), el pont
+i la proa; la Vet, la popa, el menjador, la cuina, la cabina de la Capitana i la infermeria. El passadís i el
+laboratori, les dues. Onze de la nit. No hi ha rellotge. Al passadís hi ha el plànol d'emergència (vegeu «Regles del
+món · 8»): la primera que hi passa se n'adona, i amb una còpia es va a qualsevol sala on es pugui anar sense caminar-hi
+porta a porta. Cinc llocs, en l'ordre que es vulgui; a cadascun hi ha algú (o alguna cosa) i una pista. El que troba
+l'una, l'altra ho sap pel tub:
 
-| Lloc | Qui hi ha | Què passa |
-|---|---|---|
-| **Coberta de popa** | En Bastida, amb una llanterna, «ajudant a buscar». | «A proa ja hi he mirat jo. Deu ser per aquí, a popa: li agrada el vent.» No hi és. (Pista a l'inrevés: ell envia les dues lluny de proa. I el racó de la Juana, des de l'Escena 2, se sap que és a proa.) Exterior, de nit: els llums de popa, l'estela blanca i, a l'horitzó, cap a on van, res. |
-| **Pallol** | El Marcel, recolzat a les caixes, i **en Diu**, als seus peus, menjant sardines. | El secret del Marcel (vegeu sota). «Aquesta tarda he sentit cops a proa. Pensava que eren fantasmes. Jo crec en fantasmes.» A l'inventari, sobre la porta: falta un **cadenat**. |
-| **Cuina** | En Tomàs, fent pa. | «Algú m'ha robat un entrepà de truita de la safata del berenar. Si és la Juana, li perdono.» |
-| **Cabina de la Capitana** | La Capitana, llegint una novel·la romàntica. | «La Juana sempre torna.» Damunt la taula, el contracte de Blau Net, amb el lema a la capçalera («Per un mar més net, junts»): «Condició 4: embarcar N. Vidal.» |
-| **Caixa de cadenes** (proa) | Un cadenat nou a la porta. | Cops a dins. «Juana? Juana, ets tu?» Tres cops, més forts. «Aguanta.» |
+| Lloc | Qui hi va | Qui hi ha | Què passa |
+|---|---|---|---|
+| **Coberta de popa** | Vet | En Bastida, amb una llanterna, «ajudant a buscar». | «A proa ja hi he mirat jo. Deu ser per aquí, a popa: li agrada el vent.» No hi és. (Pista a l'inrevés: ell envia les dues lluny de proa. I el racó de la Juana, des de l'Escena 2, se sap que és a proa.) Exterior, de nit: els llums de popa, l'estela blanca i, a l'horitzó, cap a on van, res. |
+| **Pallol** | Iri | El Marcel, recolzat a les caixes, i **en Diu**, als seus peus, menjant sardines. | El secret del Marcel (vegeu sota). «Aquesta tarda he sentit cops a proa. Pensava que eren fantasmes. Jo crec en fantasmes.» A l'inventari, sobre la porta: falta un **cadenat**. |
+| **Cuina** | Vet | En Tomàs, fent pa. | «Algú m'ha robat un entrepà de truita de la safata del berenar. Si és la Juana, li perdono.» |
+| **Cabina de la Capitana** | Vet | La Capitana, llegint una novel·la romàntica. | «La Juana sempre torna.» Damunt la taula, el contracte de Blau Net, amb el lema a la capçalera («Per un mar més net, junts»): «Condició 4: embarcar N. Vidal.» |
+| **Caixa de cadenes** (proa) | Iri (si en Bastida veiés la Vet anar cap a proa, sabria on busquen) | Un cadenat nou a la porta. | Cops a dins. «Juana? Juana, ets tu?» Tres cops, més forts. «Aguanta.» |
 
 **El tub fa el compte.** Cada vegada que una parla pel tub (o cara a cara), diu en veu alta les pistes que ja té, i
 només aquestes: «En Bastida diu que deu ser a popa... Però quan la Juana vol estar sola, va a proa.» · «El Marcel
@@ -718,8 +739,7 @@ Talla el cadenat. [SO: cisalla] Quan la mira:
 > IRI: ...Té una dent mellada. *(pausa)* Aquesta matinada, quan vaig tallar la brida, no la tenia.
 > IRI: La mateixa que va tallar el cable de la ràdio. És la cisalla del taller. Hi pot entrar tothom. *(pausa)* Tothom que estigués despert després de les quatre.
 
-Si la Vet no era a proa, arriba corrents: ha sentit la cisalla. (Si és la Vet qui la vol fer servir: «Les eines, a
-l'Iri. Jo tallo punts, no cadenats.»)
+La Vet arriba corrents per coberta: ha sentit la cisalla.
 
 Dins la caixa de cadenes, a les fosques, hi ha la **Juana**, amb una manta i un paper d'entrepà.
 
@@ -737,7 +757,8 @@ Dins la caixa de cadenes, a les fosques, hi ha la **Juana**, amb una manta i un 
 
 ### Escena 7 — On ningú no beu (Vet)
 
-**Sales:** `infermeria`, `cuina`, `rebost`, `diposit2`. Una de la matinada.
+**Sales:** `infermeria`, `cuina` (Vet) · `rebost`, `diposit2`, `taller` (Iri). Una de la matinada. El dipòsit 2 és a la
+coberta de baix, on la Vet no baixa: el que hi ha d'anar i el que n'ha de sortir passa pel muntacàrregues.
 
 La Juana surt de la caixa tremolant, i la Vet no la deixa moure de la infermeria (hipotèrmia lleu: «Metgessa. Mana
 la metgessa.»). Ara ja ho diu clar: «Al **dipòsit d'aigua 2**. On ningú no beu.» Fa anys que és fora de servei
@@ -745,8 +766,8 @@ la metgessa.»). Ara ja ho diu clar: «Al **dipòsit d'aigua 2**. On ningú no b
 treure les frontisses del registre i les vaig tornar a posar. Les màquines no són cosa meva, però les frontisses sí.»
 
 **Algú hi ha arribat primer.** Al pany del dipòsit 2 hi ha rascades fresques i la pintura saltada: algú l'ha
-provat de forçar amb una clau de tubs, i no ha pogut. VET: «Ens han sentit dir "on ningú no beu". Ho han entès. I no
-tenien la clau.» (És la regla del walkie: els dolents hi arriben primer. Però en Bastida no sap que en Tomàs té la
+provat de forçar amb una clau de tubs, i no ha pogut. Ho veu l'Iri, al rebost: «Ens han sentit dir "on ningú no
+beu". Ho han entès. I no tenien la clau.» I ho diu a la Vet pel tub. (És la regla del walkie: els dolents hi arriben primer. Però en Bastida no sap que en Tomàs té la
 clau, i no se li ha acudit treure les frontisses: la Juana ho va fer perquè les màquines no són cosa seva.) Queda
 al quadern.
 
@@ -754,7 +775,8 @@ al quadern.
 
 - **En Tomàs** té una clau que no sap què obre. Encara està ofès per l'entrepà robat. Si la Vet li explica que se'l
   va menjar la Juana i que li va agradar molt («Ha dit que ha estat el millor dia de la campanya»), en Tomàs se la
-  dona, emocionat. Era del cuiner d'abans: és la del dipòsit 2. `tomas_content`.
+  dona, emocionat. Era del cuiner d'abans: és la del dipòsit 2. `tomas_content`. La Vet l'envia a l'Iri pel
+  muntacàrregues de la cuina, que baixa al rebost; l'Iri obre el registre.
 - **L'Iri** pot desmuntar les frontisses del registre amb la clau de tubs, com la Juana (dues accions a la sala de
   màquines i el rebost; ho diu la Vet pel tub si no troba la clau). IRI: «Cargols nous. La Juana no menteix.»
 
@@ -763,7 +785,8 @@ hi va entrar per les frontisses) i respon al que la Vet ha vist: al pany forçat
 doctora.»; a en Tomàs ofès, «Un entrepà de truita? Me'l vaig menjar jo, a la caixa de cadenes.» Pel tub, l'Iri lliga
 la clau que no té ningú amb la que té en Tomàs, si la Vet li va fer la revisió.
 
-Dins la carcassa del filtre, en una bossa segellada: **«Mostra 7 — Punt 7 — SK-4»**. [SO: pot]
+Dins la carcassa del filtre, en una bossa segellada: **«Mostra 7 — Punt 7 — SK-4»**. [SO: pot] L'Iri la puja a la
+cuina pel muntacàrregues, i la Vet la porta a la infermeria.
 
 Quan la Vet torna a la infermeria amb la mostra, la Juana la mira i diu una sola cosa:
 
@@ -792,8 +815,8 @@ Just després del títol, pel tub (l'Iri és al pont, de guàrdia; la Vet, a la 
 
 ### Escena 8 — La reunió (Vet)
 
-**Sales:** `pont` (Iri, abans) · `cuina`, `cabina_capitana` (Vet, abans, opcional) · `menjador`. Dues de la
-matinada.
+**Sales:** `pont` (Iri, abans) · `cuina`, `cabina_capitana` (Vet, abans, opcional) · `menjador` (la Vet; l'Iri només
+hi és a la reunió, on la porta la Capitana). Dues de la matinada.
 
 **Abans (opcional): la Capitana i Blau Net.** L'Iri imprimeix al pont la pàgina del registre de fundacions (de
 l'USB, Escena 4) i l'envia a la Vet pel **muntacàrregues** del pont a la cuina. Si la Vet la posa al costat del
@@ -881,7 +904,8 @@ fosques.** Ha tret el **relé del generador** i se l'ha posat a la butxaca.
 
 ### Escena 9 — La finestra del satèl·lit (les dues, sincronia final)
 
-**Sales:** `pont`, `pal` (Iri) · `sala_maquines` (Vet, amb en Bastida). Tres de la matinada. Títol: **«Ara
+**Sales:** `pont`, `pal` (Iri) · `sala_maquines` (Vet, amb en Bastida: és l'única vegada que la Vet és a la coberta
+de baix, i no se'n mou). Tres de la matinada. Títol: **«Ara
 necessites les dues.»** Si la Capitana no és aliada, pel vidre del pont es veuen els llums del guardacostes de
 Valmark, cada cop més a prop, i el missatger d'en Bastida s'encén de tant en tant amb un missatge de la Lind
 («Recordi el nostre acord.»). Si és aliada, pel vidre només es veu el mar fosc: el guardacostes s'ha quedat
@@ -1034,6 +1058,8 @@ treballs de la Juana amb l'institut de pesca d'Irlanda: són els que hi pesquen.
 - **De l'altra**, pel walkie o pel tub, només quan l'altra ho sap.
 - **Mai no surt cap pista** sobre un trencaclosques que encara no és obert o ja s'ha resolt, ni d'una prova que la
   Vet no ha vist.
+- **Cap pista no envia una protagonista a una sala de l'altra** (regla 9): li diu que ho faci l'altra (pel tub, pel
+  muntacàrregues) o que hi canviï. A l'Escena 6, per exemple, la Vet sent «Que hi vagi l'Iri: digues-l'hi pel tub».
 - **El muntacàrregues avisa**: si a una safata hi espera alguna cosa (el travesser, la nota, la clau d'en Tomàs, la
   Mostra 7, l'USB, la pàgina del registre), la pista més prioritària és anar-la a buscar.
 - **Les pistes saben qui porta què**: si l'USB o la clau els té l'altra, la pista diu com fer-los arribar, no què
@@ -1283,7 +1309,33 @@ moments agredolços del final.
   «Al final, ningú no se l'ha empassat.» Pagament als crèdits: el flam es va servir l'endemà, sense cap mostra.
 - **Gags que tornen.** El gat sense polzes (l'Iri, mirant en Diu des de l'Escena 3: «l'únic de bord amb coartada per
   a tot»; als crèdits, «Cap gat no va obrir cap vàlvula... No té polzes.»). El motor molt expressiu (Escenes 4–8, a la
-  sala de màquines: l'Iri ho aprova; la Vet, que li va fer de coartada, «Ni les gràcies»; als crèdits, «Amb la
+  sala de màquines: l'Iri ho aprova; als crèdits, «Amb la
   col·laboració del motor de l'Arenga»). L'entrepà d'en Tomàs (a l'Escena 7, content, n'ha fet un altre per a la
   Juana, «amb el seu nom»; el pagament ja era al bar).
 - Els tres avisos dels crèdits (el gat, el flam) preparen el de sempre: «Cap oceà va ser ferit... Els de debò, sí.»
+
+## Annex G: una sola veu per sala (novembre de 2026)
+
+Les veus d'ElevenLabs es paguen per frase i per veu. Com que totes les sales eren de les dues, gairebé totes les
+frases de la protagonista s'havien de gravar dues vegades (l'Iri i la Vet), encara que a la majoria de sales només
+hi anés una. Ara **cada sala és d'una sola protagonista** (regla 9) i l'altra hi té una excusa. Cap trencaclosques no
+canvia de mans: el que una necessita a les sales de l'altra hi va pel muntacàrregues, que ja ho feia.
+
+| # | Canvi | Per què no trenca res |
+|---|---|---|
+| 1 | El pont, la sala de ràdio i el pal, només l'Iri. La Vet: «El pont és de l'Iri i de la Capitana. Jo allà dalt només faria nosa.» | La Vet no hi tenia res a fer. L'USB, si el té ella, puja al pont pel muntacàrregues (Escena 8). |
+| 2 | La infermeria, només la Vet. L'Iri: «A la infermeria només hi entro si sagno. I avui no sagno.» | Ja no hi entrava a les escenes 3 i 4. La Mostra 7 hi arriba per la cuina (Escena 7). |
+| 3 | La coberta de baix, només l'Iri; la Vet, només a la sala de màquines a l'Escena 9, i no se'n mou. | A l'Escena 7 la clau d'en Tomàs baixa al rebost pel muntacàrregues i el pany forçat el veu l'Iri. Fora el gag de la Vet amb el motor (Annex F): ja no hi baixa a les escenes 4–8. |
+| 4 | La cuina, només la Vet. L'Iri: «La cuina és d'en Tomàs. Si hi entro, em posa a pelar patates.» | L'Iri ja no hi entrava a les escenes 1 i 5. L'entrepà robat de l'Escena 6 el sent la Vet; el tub el repeteix. |
+| 5 | El menjador, la coberta de popa i la cabina de la Capitana, només la Vet. L'Iri: «A coberta hi ha l'Ernest fumant. Avui no el vull mirar a la cara.» i, a la cabina, «La Capitana dorm». | L'Iri baixa al menjador a la reunió (Escena 8), on la porta la Capitana. **Es perd la Nadia de l'Escena 4** («Esperança», al menjador): era una falsa pista opcional. |
+| 6 | La coberta de proa, a l'Escena 6, només l'Iri. La Vet: «Si en Bastida em veu anar cap a proa, sabrà on busquem. Me'l quedo jo.» | Ella entreté en Bastida a popa; la caixa de cadenes la troba l'Iri. Les pistes de la cerca diuen a la Vet que hi enviï l'Iri. |
+| 7 | Fora les frases que ja no pot dir ningú (les de la Vet al taller, al camarot o al pont; les de l'Iri a la cuina o amb en Tomàs). | Eren mortes. |
+
+Al motor: una interacció a cada porta, abans del `goTo` (com les de les escenes), i `jugadora` a
+`game/audio/veus.json`, perquè `tools/veus.py` gravi cada sala (i els diàlegs que s'hi fan) amb una sola veu. El test
+`game/test/sales.test.ts` juga les partides i comprova, després de cada acció, que cap de les dues no pot arribar
+caminant a una sala de l'altra.
+
+**Frases sense veu, acceptades:** quan l'Iri és a la reunió del menjador, o la Vet a la sala de màquines a l'Escena 9,
+el que miren i que no és només seu (les portes, el pòster, la vàlvula...) es diu sense veu: està gravat amb la veu
+de qui té la sala.

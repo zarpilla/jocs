@@ -47,15 +47,6 @@
               "text": "sala.passadis_baix.porta_camarot.1"
             }
           ]
-        },
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.passadis_baix.porta_camarot.2"
-            }
-          ]
         }
       ]
     },
@@ -224,15 +215,6 @@
           ]
         },
         {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.passadis_baix.repetidor.4"
-            }
-          ]
-        },
-        {
           "verb": [
             "push",
             "use"
@@ -244,18 +226,6 @@
             {
               "who": "player",
               "text": "sala.passadis_baix.repetidor.5"
-            }
-          ]
-        },
-        {
-          "verb": [
-            "push",
-            "use"
-          ],
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.passadis_baix.repetidor.6"
             }
           ]
         }

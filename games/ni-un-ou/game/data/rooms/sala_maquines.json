@@ -161,20 +161,30 @@
           "if": {
             "all": [
               {
+                "protagonist": "vet"
+              },
+              {
                 "var": "escena",
                 "op": "==",
                 "value": 9
-              },
-              {
-                "flag": "rele_posat",
-                "is": false
               }
             ]
           },
           "lines": [
             {
               "who": "player",
-              "text": "sala.sala_maquines.porta_passadis.2"
+              "text": "sala.sala_maquines.porta_passadis.2",
+              "if": {
+                "flag": "rele_posat",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.porta_passadis.4",
+              "if": {
+                "flag": "rele_posat"
+              }
             }
           ]
         },
@@ -206,6 +216,42 @@
             "use",
             "open"
           ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 9
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.porta_passadis.2",
+              "if": {
+                "flag": "rele_posat",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.porta_passadis.4",
+              "if": {
+                "flag": "rele_posat"
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
           "goTo": "taller"
         },
         {
@@ -222,6 +268,42 @@
     "porta_rebost": {
       "name": "sala.sala_maquines.porta_rebost.nom",
       "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 9
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.porta_passadis.2",
+              "if": {
+                "flag": "rele_posat",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.porta_passadis.4",
+              "if": {
+                "flag": "rele_posat"
+              }
+            }
+          ]
+        },
         {
           "verb": [
             "walkTo",
@@ -306,15 +388,6 @@
             {
               "who": "player",
               "text": "sala.sala_maquines.valvula.7"
-            }
-          ]
-        },
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.sala_maquines.valvula.8"
             }
           ]
         },
@@ -459,7 +532,10 @@
               "who": "player",
               "text": "sala.sala_maquines.quadre.6"
             }
-          ]
+          ],
+          "if": {
+            "protagonist": "vet"
+          }
         },
         {
           "verb": "use",
@@ -595,15 +671,6 @@
               "text": "sala.sala_maquines.quadre.17"
             }
           ]
-        },
-        {
-          "verb": "use",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.sala_maquines.quadre.18"
-            }
-          ]
         }
       ]
     },
@@ -677,7 +744,10 @@
               "who": "player",
               "text": "sala.sala_maquines.separador.3"
             }
-          ]
+          ],
+          "if": {
+            "protagonist": "vet"
+          }
         }
       ]
     },
@@ -753,7 +823,10 @@
               "who": "player",
               "text": "sala.sala_maquines.sensor.5"
             }
-          ]
+          ],
+          "if": {
+            "protagonist": "vet"
+          }
         },
         {
           "verb": "use",
@@ -835,38 +908,15 @@
         },
         {
           "verb": "look",
-          "if": {
-            "all": [
-              {
-                "protagonist": "vet"
-              },
-              {
-                "var": "escena",
-                "op": ">=",
-                "value": 4
-              },
-              {
-                "var": "escena",
-                "op": "<=",
-                "value": 8
-              }
-            ]
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.sala_maquines.motor.6"
-            }
-          ]
-        },
-        {
-          "verb": "look",
           "lines": [
             {
               "who": "player",
               "text": "sala.sala_maquines.motor.3"
             }
-          ]
+          ],
+          "if": {
+            "protagonist": "vet"
+          }
         },
         {
           "verb": "use",
@@ -961,6 +1011,9 @@
           "if": {
             "all": [
               {
+                "protagonist": "vet"
+              },
+              {
                 "var": "escena",
                 "op": "==",
                 "value": 9
@@ -997,7 +1050,10 @@
               "who": "player",
               "text": "sala.sala_maquines.bastida.3"
             }
-          ]
+          ],
+          "if": {
+            "protagonist": "vet"
+          }
         },
         {
           "verb": "talkTo",
@@ -1017,6 +1073,9 @@
           "verb": "look",
           "if": {
             "all": [
+              {
+                "protagonist": "vet"
+              },
               {
                 "var": "escena",
                 "op": "==",
@@ -1055,12 +1114,18 @@
               "who": "player",
               "text": "sala.sala_maquines.generador.2"
             }
-          ]
+          ],
+          "if": {
+            "protagonist": "vet"
+          }
         },
         {
           "verb": "use",
           "if": {
             "all": [
+              {
+                "protagonist": "vet"
+              },
               {
                 "var": "escena",
                 "op": "==",
@@ -1088,6 +1153,9 @@
           "verb": "look",
           "if": {
             "all": [
+              {
+                "protagonist": "vet"
+              },
               {
                 "var": "escena",
                 "op": "==",
@@ -1127,9 +1195,16 @@
             }
           ],
           "if": {
-            "var": "escena",
-            "op": "==",
-            "value": 9
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 9
+              }
+            ]
           }
         }
       ]

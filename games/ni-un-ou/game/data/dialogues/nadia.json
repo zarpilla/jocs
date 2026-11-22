@@ -26,21 +26,6 @@
           {
             "var": "escena",
             "op": "==",
-            "value": 4
-          },
-          {
-            "protagonist": "iri"
-          }
-        ]
-      },
-      "node": "esc4"
-    },
-    {
-      "if": {
-        "all": [
-          {
-            "var": "escena",
-            "op": "==",
             "value": 5
           },
           {
@@ -71,21 +56,6 @@
         ]
       },
       "node": "esc6"
-    },
-    {
-      "if": {
-        "all": [
-          {
-            "var": "escena",
-            "op": "==",
-            "value": 6
-          },
-          {
-            "flag": "aliada_nadia"
-          }
-        ]
-      },
-      "node": "esc6_iri"
     },
     {
       "node": "res"
@@ -206,51 +176,6 @@
         {
           "setVar": "pacient",
           "value": ""
-        }
-      ]
-    },
-    "esc4": {
-      "lines": [
-        {
-          "who": "nadia",
-          "text": "dlg.nadia.esc4.1"
-        }
-      ],
-      "choices": [
-        {
-          "id": "contrasenya",
-          "text": "dlg.nadia.opt.contrasenya",
-          "if": {
-            "flag": "nadia_esperanca",
-            "is": false
-          },
-          "next": "contrasenya"
-        },
-        {
-          "id": "adeu",
-          "text": "dlg.nadia.opt.adeu",
-          "end": true
-        }
-      ]
-    },
-    "contrasenya": {
-      "lines": [
-        {
-          "who": "nadia",
-          "text": "dlg.nadia.contrasenya.1"
-        },
-        {
-          "who": "nadia",
-          "text": "dlg.nadia.contrasenya.2"
-        },
-        {
-          "who": "iri",
-          "text": "dlg.nadia.contrasenya.3"
-        }
-      ],
-      "effects": [
-        {
-          "setFlag": "nadia_esperanca"
         }
       ]
     },
@@ -482,14 +407,6 @@
           "id": "adeu",
           "text": "dlg.nadia.opt.adeu2",
           "end": true
-        }
-      ]
-    },
-    "esc6_iri": {
-      "lines": [
-        {
-          "who": "nadia",
-          "text": "dlg.nadia.esc6_iri.1"
         }
       ]
     },

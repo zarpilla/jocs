@@ -1469,6 +1469,9 @@
           "value": 6
         },
         {
+          "protagonist": "iri"
+        },
+        {
           "flag": "cops_sentits",
           "is": false
         },
@@ -1494,6 +1497,44 @@
       "pista.buscar.3"
     ]
   },
+  "buscar_vet": {
+    "priority": 2,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "cops_sentits",
+          "is": false
+        },
+        {
+          "flag": "cops_marcel",
+          "is": false
+        }
+      ]
+    },
+    "levels": [
+      "pista.buscar.1",
+      "pista.buscar_vet.2",
+      "pista.buscar_vet.3"
+    ],
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "cops_sentits"
+        },
+        {
+          "flag": "cops_marcel"
+        }
+      ]
+    }
+  },
   "buscar_proa": {
     "priority": 2,
     "when": {
@@ -1502,6 +1543,9 @@
           "var": "escena",
           "op": "==",
           "value": 6
+        },
+        {
+          "protagonist": "iri"
         },
         {
           "flag": "cops_sentits",
@@ -1520,6 +1564,36 @@
       "pista.buscar_proa.2",
       "pista.buscar_proa.3"
     ]
+  },
+  "buscar_proa_vet": {
+    "priority": 2,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "cops_sentits",
+          "is": false
+        },
+        {
+          "flag": "cops_marcel"
+        }
+      ]
+    },
+    "levels": [
+      "pista.buscar_proa_vet.1",
+      "pista.buscar_proa_vet.2",
+      "pista.buscar_proa_vet.3"
+    ],
+    "doneWhen": {
+      "flag": "cops_sentits"
+    }
   },
   "cisalla": {
     "priority": 3,
@@ -2032,6 +2106,9 @@
           "value": 7
         },
         {
+          "protagonist": "iri"
+        },
+        {
           "flag": "registre_obert"
         },
         {
@@ -2048,6 +2125,36 @@
       "pista.mostra.2",
       "pista.mostra.3"
     ]
+  },
+  "mostra_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "registre_obert"
+        },
+        {
+          "flag": "mostra_trobada",
+          "is": false
+        }
+      ]
+    },
+    "levels": [
+      "pista.mostra_vet.1",
+      "pista.mostra_vet.2",
+      "pista.mostra_vet.3"
+    ],
+    "doneWhen": {
+      "flag": "mostra_trobada"
+    }
   },
   "tornar": {
     "priority": 5,
@@ -2313,6 +2420,9 @@
           "var": "escena",
           "op": "==",
           "value": 8
+        },
+        {
+          "protagonist": "vet"
         },
         {
           "flag": "reunio_comencada"

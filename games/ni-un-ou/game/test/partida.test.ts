@@ -1,6 +1,6 @@
 /** El joc sencer, jugat de cap a peus, amb una pista disponible a cada pas. */
 import { describe, expect, it } from 'vitest';
-import { amb, anar, escena1, escena2, escena3, escena4, escena5, escena6, escena7, escena8, item, jugarTot, partida } from './partida.js';
+import { amb, anar, escena1, escena2, escena3, escena4, escena5, escena6, escena7, escena8, item, jugarTot, keys, partida } from './partida.js';
 
 describe('Partida sencera', () => {
   it('amb tots els aliats: primera plana', () => {
@@ -142,11 +142,12 @@ describe('Coherència (segona repassada)', () => {
 
 describe('Que no us vegin juntes (logic/separades.ts)', () => {
   it("abans que les escoltin, poden ser a la mateixa sala", () => {
+    // A l'Escena 4 la Vet no juga, però la regla és aquesta: fins que no roben el portàtil, no s'amaguen.
     const { p } = partida();
-    escena1(p);
-    amb(p, 'iri', 'menjador');
-    amb(p, 'vet', 'menjador');
-    expect(p.room).toBe('menjador');
+    escena1(p); escena2(p); escena3(p);
+    expect(p.room).toBe('laboratori');
+    amb(p, 'vet', 'laboratori');
+    expect(p.room).toBe('laboratori');
   });
 
   it("de l'Escena 4 a la reunió, cap no entra on és l'altra; pels passadissos, sí que es creuen", () => {
@@ -161,13 +162,13 @@ describe('Que no us vegin juntes (logic/separades.ts)', () => {
     expect(world.protagonistRoom?.('vet')).toBe('passadis');
   });
 
-  it("a l'Escena 7, la Vet no baixa a màquines si hi ha l'Iri", () => {
+  it("a l'Escena 7, la Vet no baixa a màquines: la clau baixa pel muntacàrregues", () => {
     const { n, p } = partida();
     escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p);
     expect(n.getVar('escena')).toBe(7);
-    amb(p, 'vet', 'passadis_baix');
-    p.do('use', 'porta_maquines');
-    expect(p.room).toBe('passadis_baix');
+    amb(p, 'vet', 'passadis');
+    expect(keys(p.do('use', 'escala_avall'))).toEqual(['sala.passadis.escala_avall.2']);
+    expect(p.room).toBe('passadis');
   });
 
   it('quan la Capitana les reuneix, tornen a estar juntes: al menjador, i després a tot arreu', () => {

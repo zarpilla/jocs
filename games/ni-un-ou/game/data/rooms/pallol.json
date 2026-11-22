@@ -187,15 +187,6 @@
           ]
         },
         {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pallol.marcel.2"
-            }
-          ]
-        },
-        {
           "verb": "talkTo",
           "dialogue": "marcel"
         }

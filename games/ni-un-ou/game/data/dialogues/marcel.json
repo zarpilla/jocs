@@ -179,33 +179,11 @@
           "next": "secret"
         },
         {
-          "id": "gat_vet",
-          "text": "dlg.marcel.opt.gat_vet",
-          "if": {
-            "protagonist": "vet"
-          },
-          "next": "gat_vet",
-          "once": true
-        },
-        {
           "id": "adeu",
           "text": "dlg.marcel.opt.adeu",
           "end": true
         }
       ]
-    },
-    "gat_vet": {
-      "lines": [
-        {
-          "who": "marcel",
-          "text": "dlg.marcel.gat_vet.1"
-        },
-        {
-          "who": "diu",
-          "text": "dlg.marcel.gat_vet.2"
-        }
-      ],
-      "goto": "esc6_menu"
     },
     "secret": {
       "lines": [

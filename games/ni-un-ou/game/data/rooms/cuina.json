@@ -125,15 +125,6 @@
           ]
         },
         {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.cuina.munta.3"
-            }
-          ]
-        },
-        {
           "verb": "use",
           "item": "*",
           "action": {
@@ -163,20 +154,6 @@
               "text": "sala.cuina.munta.4"
             }
           ]
-        },
-        {
-          "verb": "use",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.cuina.munta.5"
-            }
-          ],
-          "if": {
-            "var": "munta_cuina",
-            "op": "==",
-            "value": ""
-          }
         }
       ]
     },

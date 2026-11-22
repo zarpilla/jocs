@@ -13,16 +13,6 @@
       ],
       "choices": [
         {
-          "id": "esperanca",
-          "text": "dlg.portatil.opt.esperanca",
-          "if": {
-            "flag": "nadia_esperanca"
-          },
-          "once": true,
-          "silent": true,
-          "next": "esperanca"
-        },
-        {
           "id": "pili",
           "text": "dlg.portatil.opt.pili",
           "if": {
@@ -55,28 +45,6 @@
           "end": true
         }
       ]
-    },
-    "esperanca": {
-      "lines": [
-        {
-          "who": "narrator",
-          "text": "dlg.portatil.esperanca.1"
-        },
-        {
-          "who": "narrator",
-          "text": "dlg.portatil.esperanca.2"
-        },
-        {
-          "who": "player",
-          "text": "dlg.portatil.esperanca.3"
-        }
-      ],
-      "effects": [
-        {
-          "setFlag": "nadia_menteix"
-        }
-      ],
-      "goto": "contrasenya"
     },
     "pili": {
       "lines": [

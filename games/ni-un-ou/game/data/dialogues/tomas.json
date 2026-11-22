@@ -263,13 +263,6 @@
         },
         {
           "who": "tomas",
-          "text": "dlg.tomas.esc5.2",
-          "if": {
-            "protagonist": "iri"
-          }
-        },
-        {
-          "who": "tomas",
           "text": "dlg.tomas.esc5.3"
         },
         {
@@ -313,40 +306,11 @@
         },
         {
           "who": "tomas",
-          "text": "dlg.tomas.esc7.4",
-          "if": {
-            "all": [
-              {
-                "protagonist": "iri"
-              },
-              {
-                "flag": "tomas_content"
-              }
-            ]
-          }
-        },
-        {
-          "who": "tomas",
           "text": "dlg.tomas.esc7.1",
           "if": {
             "all": [
               {
                 "protagonist": "vet"
-              },
-              {
-                "flag": "tomas_content",
-                "is": false
-              }
-            ]
-          }
-        },
-        {
-          "who": "tomas",
-          "text": "dlg.tomas.esc7.2",
-          "if": {
-            "all": [
-              {
-                "protagonist": "iri"
               },
               {
                 "flag": "tomas_content",

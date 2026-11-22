@@ -271,13 +271,6 @@
         },
         {
           "who": "capitana",
-          "text": "dlg.capitana.esc6.2",
-          "if": {
-            "protagonist": "iri"
-          }
-        },
-        {
-          "who": "capitana",
           "text": "dlg.capitana.esc6.3"
         }
       ]
@@ -385,13 +378,6 @@
           "text": "dlg.capitana.res.1",
           "if": {
             "protagonist": "vet"
-          }
-        },
-        {
-          "who": "capitana",
-          "text": "dlg.capitana.res.2",
-          "if": {
-            "protagonist": "iri"
           }
         }
       ]

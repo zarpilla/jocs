@@ -270,15 +270,6 @@
           ]
         },
         {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.sala_radio.panell.6"
-            }
-          ]
-        },
-        {
           "verb": [
             "open",
             "use",

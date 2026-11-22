@@ -188,15 +188,6 @@
               "text": "sala.sala_bombes.bastida.2"
             }
           ]
-        },
-        {
-          "verb": "talkTo",
-          "lines": [
-            {
-              "who": "bastida",
-              "text": "sala.sala_bombes.bastida.3"
-            }
-          ]
         }
       ]
     },
@@ -212,15 +203,6 @@
             {
               "who": "player",
               "text": "sala.sala_bombes.bombes.1"
-            }
-          ]
-        },
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.sala_bombes.bombes.2"
             }
           ]
         }

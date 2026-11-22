@@ -262,15 +262,6 @@
           ]
         },
         {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.rebost.prestatges.2"
-            }
-          ]
-        },
-        {
           "verb": "pickUp",
           "if": {
             "protagonist": "iri"
@@ -279,15 +270,6 @@
             {
               "who": "player",
               "text": "sala.rebost.prestatges.3"
-            }
-          ]
-        },
-        {
-          "verb": "pickUp",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.rebost.prestatges.4"
             }
           ]
         }
@@ -325,10 +307,7 @@
             },
             {
               "who": "player",
-              "text": "sala.rebost.registre.3",
-              "if": {
-                "protagonist": "vet"
-              }
+              "text": "sala.rebost.registre.3"
             }
           ],
           "effects": [

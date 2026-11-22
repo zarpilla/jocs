@@ -76,7 +76,14 @@
       {
         "verb": "look",
         "if": {
-          "flag": "cisalla_mellada"
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "cisalla_mellada"
+            }
+          ]
         },
         "lines": [
           {
@@ -88,9 +95,16 @@
       {
         "verb": "look",
         "if": {
-          "var": "escena",
-          "op": "==",
-          "value": 1
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 1
+            }
+          ]
         },
         "lines": [
           {
@@ -106,7 +120,10 @@
             "who": "player",
             "text": "obj.cisalla.3"
           }
-        ]
+        ],
+        "if": {
+          "protagonist": "iri"
+        }
       }
     ]
   },

@@ -122,8 +122,6 @@ PORTA «porta»
 CARREGADOR «carregador»
     • look — si juga iri
         JUGADORA: El cable del carregador. Mossegat de punta a punta. Té la forma exacta de les dents d'en Diu.
-    • look — SEMPRE
-        JUGADORA: Un carregador mossegat. Aquí hi viu algú amb dents petites i esmolades.
     • pickUp — SEMPRE
         JUGADORA: Ja no carrega res. Ara és art.
 
@@ -133,27 +131,19 @@ GOT «got d'aigua»
         JUGADORA: L'Arenga s'ha assegut de cul. I a popa, a sota de la línia de flotació, hi ha la meva sala de màquines.
     • look — si juga iri
         JUGADORA: L'aigua del got balla, però balla recta. Així m'agrada.
-    • look — SEMPRE
-        JUGADORA: Un got d'aigua al prestatge, amb barana i tot. Aquí fins i tot els gots porten cinturó.
     • pickUp/use — SEMPRE
         JUGADORA: Si me l'emporto, qui em dirà com seu el vaixell?
 
 MACETA «maceta» — hi és si NO maceta_agafada
     • look — si juga iri
         JUGADORA: La maceta de goma. La tinc aquí per la falca de baix de la porta de màquines, que s'encalla des de l'agost.
-    • look — SEMPRE
-        JUGADORA: Una maceta de goma penjada al costat del llit. No ho preguntaré.
     • pickUp — si juga iri
         JUGADORA: Per si la falca de baix ha tornat a fer de les seves. Sempre en fa.
         ⇒ rep maceta, +maceta_agafada
-    • pickUp — SEMPRE
-        JUGADORA: No és meva. I no sé per a què serveix aquí, cosa que em preocupa.
 
 LLITERA «llitera»
     • look — si juga iri i escena = 1
         JUGADORA: Encara està calenta. Jo també voldria ser-hi.
-    • look — si juga vet
-        JUGADORA: La llitera de l'Iri. Feta com un llit d'hospital. Em cau bé.
     • look — SEMPRE
         JUGADORA: La meva llitera. Feta. Com cada matí, encara que no hagi dormit.
     • use — SEMPRE
@@ -162,8 +152,6 @@ LLITERA «llitera»
 MOTXILLA «motxilla»
     • look — si juga iri
         JUGADORA: La motxilla d'en Diu. Bé, meva. Però hi viu ell.
-    • look — SEMPRE
-        JUGADORA: Una motxilla amb forats per respirar. No preguntaré res.
     • pickUp/open — si escena = 1
         JUGADORA: Buida. En Diu ha sortit de patrulla.
     • pickUp/open — SEMPRE
@@ -223,6 +211,8 @@ PORTA «menjador»
 PROA «cap a proa»
     • walkTo/use/open — si escena = 6 i juga vet i nus_lico
         JUGADORA: Si me'n vaig ara, en Bastida torna a vigilar.
+    • walkTo/use/open — si juga vet i escena = 6
+        JUGADORA: Si en Bastida em veu anar cap a proa, sabrà on busquem. Me'l quedo jo.
     • walkTo/use/open — SEMPRE
         ⇒ → coberta_proa
     • look — SEMPRE
@@ -289,6 +279,10 @@ DECORAT dia_mar — es veu si escena = 2 o escena = 3
 DECORAT cadenat — es veu si escena ≥ 4 i NO cadenat_tallat
 
 POPA «cap a popa»
+    • walkTo/use/open — si juga iri i escena = 3
+        JUGADORA: Ara no. Si l'Ernest em veu, sabrà que no soc a dormir.
+    • walkTo/use/open — si juga iri
+        JUGADORA: A coberta hi ha l'Ernest fumant. Avui no el vull mirar a la cara.
     • walkTo/use/open — SEMPRE
         ⇒ → coberta_popa
     • look — SEMPRE
@@ -313,7 +307,7 @@ MOLINET «molinet de l'àncora»
 ESCOTILLA «escotilla de la caixa de cadenes»
     • walkTo/use/open — si cadenat_tallat
         ⇒ → caixa_cadenes
-    • look — si escena = 6
+    • look — si juga iri i escena = 6
         JUGADORA: L'escotilla de la caixa de cadenes. Un cadenat nou.
         [SO: cops] NARRADOR: Cops a dins.
         JUGADORA: Juana? Juana, ets tu?
@@ -323,13 +317,11 @@ ESCOTILLA «escotilla de la caixa de cadenes»
         ⇒ +cops_sentits
     • look — SEMPRE
         JUGADORA: L'escotilla de la caixa de cadenes. Hi ha les cadenes de l'àncora i, diuen, una rata.
-    • use + cisalla — si juga vet i escena = 6
-        JUGADORA: Les eines, a l'Iri. Jo tallo punts, no cadenats.
-    • use + cisalla — si escena = 6 i NO bastida_baixa i NO nus_lico
+    • use + cisalla — si juga iri i escena = 6 i NO bastida_baixa i NO nus_lico
         JUGADORA: Si sent la cisalla, ve. I no vull que vingui.
         NARRADOR: Una pausa.
         JUGADORA: No sé per què no vull que vingui.
-    • use + cisalla — si escena = 6
+    • use + cisalla — si juga iri i escena = 6
         [SO: cisalla] JUGADORA: ...
         JUGADORA: Té una dent mellada. ⟨si NO cisalla_mellada⟩
         NARRADOR: Una pausa. ⟨si NO cisalla_mellada⟩
@@ -340,7 +332,7 @@ ESCOTILLA «escotilla de la caixa de cadenes»
         JUGADORA: Tothom que estigués despert després de les quatre.
         NARRADOR: La Vet arriba corrents per coberta: ha sentit la cisalla. ⟨si no (vet a coberta_proa)⟩
         ⇒ +cadenat_tallat, +cisalla_mellada, +prova_cisalla, −nus_lico, esdeveniment situar, → caixa_cadenes
-    • open/use/pull — si escena = 6 i NO cadenat_tallat
+    • open/use/pull — si juga iri i escena = 6 i NO cadenat_tallat
         JUGADORA: Tancada amb un cadenat. Nou.
     • open/use/pull — si NO cadenat_tallat
         JUGADORA: Tancada. Les cadenes no s'escapen.
@@ -382,14 +374,10 @@ MUNTA «muntacàrregues»
     • look — si juga vet
         JUGADORA: El muntacàrregues. Tres botons: CUINA, REBOST, PONT.
         JUGADORA: Un muntacàrregues de cuina, de quan l'Arenga portava trenta persones.
-    • look — SEMPRE
-        JUGADORA: El muntacàrregues. Cuina, rebost i pont.
     • use + qualsevol objecte — SEMPRE
         ⇒ acció munta.enviar
     • use — si juga vet i munta_cuina = ""
         JUGADORA: Si l'envio buit, no hi haurà res a l'altra banda. Això ho entenc fins i tot jo.
-    • use — si munta_cuina = ""
-        JUGADORA: Buit no l'envio. Pujar i baixar per no res, no.
 
 SAFATA «safata del muntacàrregues» — hi és si munta_cuina ≠ ""
     • pickUp/open/use — si munta_cuina = "nota_iri"
@@ -475,7 +463,7 @@ FILTRE «carcassa del filtre»
     • open/pickUp/use — si NO mostra_trobada
         [SO: pot] JUGADORA: Una bossa segellada.
         JUGADORA: «Mostra 7 — Punt 7 — SK-4».
-        JUGADORA: On ningú no beu. ⟨si juga vet⟩
+        JUGADORA: On ningú no beu.
         ⇒ +mostra_trobada, rep mostra7, perd clau_tubs (iri), −clau_tubs_fora, perd clau_tomas (vet)
     • open/pickUp/use — SEMPRE
         JUGADORA: Ja no hi ha res més.
@@ -574,8 +562,6 @@ LLITERA «llitera de rescat»
 ARMARI «armari»
     • look — si juga vet
         JUGADORA: L'armari de la infermeria. Gases, iode, benes. I el jersei de llana del Ferran, que ara porto jo.
-    • look — SEMPRE
-        JUGADORA: L'armari de la infermeria.
     • open — SEMPRE
         JUGADORA: Gases, iode, benes, un tensiòmetre i una ampolla d'alguna cosa que va deixar el metge d'abans. No és alcohol de ferides.
 
@@ -653,8 +639,6 @@ BASTIDA «—» — hi és si escena = 3 i NO radio_feta
 JUANA «—» — hi és si escena = 7 o (escena = 8 i NO reunio_comencada)
     • look — si juga vet
         JUGADORA: La Juana, amb dues mantes. Ja no tremola.
-    • look — SEMPRE
-        JUGADORA: La Juana. Té els llavis blaus, i diu que està bé.
     • talkTo — SEMPRE
         ⇒ diàleg juana
 
@@ -664,11 +648,11 @@ JUANA «—» — hi és si escena = 7 o (escena = 8 i NO reunio_comencada)
 
 ```
 EN ENTRAR
-    • * (una vegada) — si escena = 4
+    • * (una vegada) — si juga iri i escena = 4
         NARRADOR: La Juana no ha vingut a sopar. Tothom diu el mateix: «Està descansant. Ja la coneixeu.»
         JUGADORA: La conec. No es perd mai un sopar.
         NARRADOR: Al costat del portàtil hi ha una nota.
-    • * (una vegada) — si escena = 5
+    • * (una vegada) — si juga iri i escena = 5
         NARRADOR: L'Iri torna al laboratori. El portàtil no hi és.
         JUGADORA: Se l'han endut.
         JUGADORA: Sort de la còpia.
@@ -692,19 +676,19 @@ PORTA «passadís»
 PORTATIL «portàtil» — hi és si escena < 5
     • look — si NO portatil_obert
         JUGADORA: El portàtil de la Juana. Amb contrasenya.
-    • look — SEMPRE
+    • look — si juga iri
         JUGADORA: El portàtil de la Juana. Ja en tinc la còpia.
     • use — si juga vet
         JUGADORA: Contrasenya. No la sé. I no és meu.
     • use — si escena = 4 i NO portatil_obert
         ⇒ diàleg portatil
-    • use — si portatil_obert
+    • use — si juga iri i portatil_obert
         JUGADORA: Ja en tinc la còpia, a l'USB.
 
 LLIBRE «llibre de peixos»
     • look — si juga vet
         JUGADORA: «Peixos de l'Atlàntic Nord». Ple de notes al marge, en lletra petitíssima.
-    • look — si escena ≥ 4
+    • look — si juga iri i escena ≥ 4
         JUGADORA: «Peixos de l'Atlàntic Nord». A dins hi ha una postal.
         NARRADOR: «Per molts anys, filla. T'estimo. La mare.»
         JUGADORA: Sense nom. Al costat, la Juana hi ha escrit: «Pili 65».
@@ -714,7 +698,7 @@ LLIBRE «llibre de peixos»
         JUGADORA: «Peixos de l'Atlàntic Nord». No és meu.
 
 NOTA «nota» — hi és si escena = 4
-    • look — SEMPRE
+    • look — si juga iri
         NARRADOR: «Si no torno, el portàtil. J.»
         JUGADORA: És per a la Vet: és a ella que li va dir com era la contrasenya.
         JUGADORA: «Si no torno.» I no ha tornat.
@@ -759,10 +743,8 @@ PORTA_PASSADIS «passadís»
         JUGADORA: La porta del passadís.
 
 PORTA_CUINA «cuina»
-    • walkTo/use/open — si juga iri i escena = 5
-        JUGADORA: Si entro a la cuina, ho veurà tothom. I la Vet ha de semblar sola.
-    • walkTo/use/open — si juga iri i escena = 1
-        JUGADORA: Ara no.
+    • walkTo/use/open — si juga iri
+        JUGADORA: La cuina és d'en Tomàs. Si hi entro, em posa a pelar patates.
     • walkTo/use/open — SEMPRE
         ⇒ → cuina
     • look — SEMPRE
@@ -771,7 +753,7 @@ PORTA_CUINA «cuina»
 PORTA_POPA «coberta de popa»
     • walkTo/use/open — si juga vet i escena = 1
         JUGADORA: A coberta? De nit, amb aquest vent? Ni parlar-ne.
-    • walkTo/use/open — si juga iri i (escena = 4 o escena = 5)
+    • walkTo/use/open — si juga iri
         JUGADORA: De nit i amb aquest vent, a coberta no hi tinc res a fer.
     • walkTo/use/open — SEMPRE
         ⇒ → coberta_popa
@@ -831,7 +813,7 @@ JUANA «—» — hi és si escena = 8 i reunio_comencada
     • talkTo — SEMPRE
         ⇒ diàleg juana
 
-NADIA «—» — hi és si escena = 4 o (escena = 6 i aliada_nadia) o ((escena = 8 i reunio_comencada) i aliada_nadia)
+NADIA «—» — hi és si (escena = 6 i aliada_nadia) o ((escena = 8 i reunio_comencada) i aliada_nadia)
     • talkTo — si escena = 8 i reunio_comencada
         NARRADOR: Tothom espera que la doctora parli.
     • talkTo — SEMPRE
@@ -867,8 +849,6 @@ ANTENA «antena»
         JUGADORA: L'antena. Desbloquejada. Falta girar-la fins al senyal.
     • look — SEMPRE
         JUGADORA: L'antena, cap al satèl·lit. Ara, avall, al terminal.
-    • use — si juga vet
-        JUGADORA: Això és cosa de l'Iri. Jo m'agafo al pal i prou.
     • use — si NO antena_desbloquejada
         [SO: clau_tubs] JUGADORA: El nus, fora. Volta de més inclosa.
         ⇒ +antena_desbloquejada
@@ -925,8 +905,6 @@ INVENTARI «inventari»
 MARCEL «—» — hi és si escena ≥ 6 i escena ≤ 7
     • look — si juga iri
         JUGADORA: El Marcel, recolzat a les caixes. I en Diu, als seus peus, menjant sardines.
-    • look — SEMPRE
-        JUGADORA: El Marcel i un gat. Un gat que no existeix, menjant sardines que no existeixen.
     • talkTo — SEMPRE
         ⇒ diàleg marcel
 
@@ -953,6 +931,10 @@ PORTA_MENJADOR «menjador»
         JUGADORA: Al menjador hi ha tothom fent el te. Si entro a xiuxiuejar-li coses a la Vet, ho veurà qui no ho ha de veure.
     • walkTo/use/open — si juga iri i escena = 5
         JUGADORA: Ara no. La Vet ha de semblar sola a la cuina.
+    • walkTo/use/open — si juga iri i escena = 3
+        JUGADORA: Ara no. Si l'Ernest em veu, sabrà que no soc a dormir.
+    • walkTo/use/open — si juga iri i no (escena = 8 i reunio_comencada)
+        JUGADORA: A coberta hi ha l'Ernest fumant. Avui no el vull mirar a la cara.
     • walkTo/use/open — SEMPRE
         ⇒ → menjador
     • look — SEMPRE
@@ -963,6 +945,8 @@ PORTA_INFERMERIA «infermeria»
         JUGADORA: Ara no. Si l'Ernest em veu, sabrà que no soc a dormir.
     • walkTo/use/open — si juga iri i escena = 4
         JUGADORA: La Vet està amb les seves fitxes. Si la necessito, pel walkie.
+    • walkTo/use/open — si juga iri
+        JUGADORA: A la infermeria només hi entro si sagno. I avui no sagno.
     • walkTo/use/open — SEMPRE
         ⇒ → infermeria
     • look — si juga vet
@@ -987,6 +971,10 @@ PORTA_CAPITANA «cabina de la Capitana»
         JUGADORA: La Capitana dorm. I quan dorm, mossega més que en Diu.
     • walkTo/use/open — si juga iri i escena = 5
         JUGADORA: La Capitana no hi és. I la seva cabina no és lloc per entrar-hi sense ella.
+    • walkTo/use/open — si juga iri i reunio_comencada
+        JUGADORA: La Capitana no hi és. I la seva cabina no és lloc per entrar-hi sense ella.
+    • walkTo/use/open — si juga iri
+        JUGADORA: La Capitana dorm. I quan dorm, mossega més que en Diu.
     • walkTo/use/open — SEMPRE
         ⇒ → cabina_capitana
     • look — SEMPRE
@@ -1001,10 +989,10 @@ ESCALA_AMUNT «escala del pont»
         JUGADORA: Ara no.
     • walkTo/use/open — si juga vet i escena = 2
         JUGADORA: El pont és de la Capitana, i a la Capitana no li agraden les visites.
-    • walkTo/use/open — si juga vet i escena = 8
+    • walkTo/use/open — si juga vet i escena = 8 i NO reunio_comencada
         JUGADORA: L'Iri està de guàrdia al pont. La Capitana ha dit que ningú no la distregui.
-    • walkTo/use/open — si juga vet i escena = 9 i NO rele_posat
-        JUGADORA: No. El relé, primer.
+    • walkTo/use/open — si juga vet
+        JUGADORA: El pont és de l'Iri i de la Capitana. Jo allà dalt només faria nosa.
     • walkTo/use/open — SEMPRE
         ⇒ → pont
     • look — SEMPRE
@@ -1013,7 +1001,7 @@ ESCALA_AMUNT «escala del pont»
 ESCALA_AVALL «escala de baix»
     • walkTo/use/open — si juga vet i escena = 1
         JUGADORA: La maquinista ha dit «muntacàrregues». No discutiré amb algú que té el vaixell ple d'aigua.
-    • walkTo/use/open — si juga vet i escena = 2
+    • walkTo/use/open — si juga vet
         JUGADORA: A baix hi ha les màquines i la maquinista. Totes dues de mal humor.
     • walkTo/use/open — SEMPRE
         ⇒ → passadis_baix
@@ -1023,8 +1011,10 @@ ESCALA_AVALL «escala de baix»
 PORTA_PROA «porta de proa»
     • walkTo/use/open — si juga vet i escena = 1
         JUGADORA: A coberta? De nit, amb aquest vent? Ni parlar-ne.
-    • walkTo/use/open — si juga iri i (escena = 4 o escena = 5)
+    • walkTo/use/open — si juga iri i (escena = 4 o escena = 5 o escena = 8)
         JUGADORA: De nit i amb aquest vent, a coberta no hi tinc res a fer.
+    • walkTo/use/open — si juga vet i escena = 6
+        JUGADORA: Si en Bastida em veu anar cap a proa, sabrà on busquem. Me'l quedo jo.
     • walkTo/use/open — SEMPRE
         ⇒ → coberta_proa
     • look — SEMPRE
@@ -1064,8 +1054,6 @@ PORTA_CAMAROT «camarot de l'Iri»
         ⇒ → camarot_iri
     • look — si juga iri
         JUGADORA: El meu camarot. El més petit del vaixell, al costat de les màquines. El vaig triar jo.
-    • look — SEMPRE
-        JUGADORA: El camarot de l'Iri. Al costat de les màquines. És clar.
 
 PORTA_MAQUINES «sala de màquines»
     • use + maceta — si NO falca_desencallada
@@ -1090,12 +1078,8 @@ REPETIDOR «repetidor d'alarmes»
         JUGADORA: Tot verd, i el vaixell assegut de popa. Un dels dos menteix, i el vaixell no sap mentir.
     • look — si juga iri
         JUGADORA: El repetidor d'alarmes. Des de la nit de la vàlvula, no me'n refio gens.
-    • look — SEMPRE
-        JUGADORA: Un panell amb llumetes verdes. Si fossin vermelles, m'hi fixaria.
     • push/use — si juga iri
         JUGADORA: El botó de prova encén totes les alarmes del vaixell. Despertaria tothom. I la Capitana, la primera.
-    • push/use — SEMPRE
-        JUGADORA: No toco res que tingui llumetes.
 
 PETJADES «petjades» — hi és si escena = 1
     • look — SEMPRE
@@ -1172,10 +1156,6 @@ TERMINAL «terminal de satèl·lit»
         NARRADOR: «SENYAL: {senyal}» · SAI: {sai} torns
     • look — SEMPRE
         JUGADORA: El terminal de satèl·lit. «SENSE SENYAL».
-    • use — si juga vet
-        JUGADORA: Això és cosa de l'Iri. Jo, amb sort, l'encendria.
-    • use + usb — si juga vet
-        JUGADORA: Això és cosa de l'Iri. Jo, amb sort, l'encendria.
     • use — si escena = 4 i NO portatil_obert
         JUGADORA: Primer, les dades. Al portàtil de la Juana.
     • use + usb — si escena = 4 i NO portatil_obert
@@ -1198,10 +1178,6 @@ TERMINAL «terminal de satèl·lit»
         JUGADORA: «SENSE SENYAL». El satèl·lit sempre fa el que vol.
     • use + usb — si escena < 9
         JUGADORA: «SENSE SENYAL». El satèl·lit sempre fa el que vol.
-    • use — si juga vet
-        JUGADORA: Això és cosa de l'Iri. Jo, amb sort, l'encendria.
-    • use + usb — si juga vet
-        JUGADORA: Això és cosa de l'Iri. Jo, amb sort, l'encendria.
     • use — si NO antena_ok
         JUGADORA: Sense senyal. Primer, l'antena.
         ⇒ +intent_buit
@@ -1308,8 +1284,6 @@ TIMO «timó»
         JUGADORA: El timó. Encara som al Punt 7.
     • use — si juga iri
         JUGADORA: El rumb el decideix la Capitana. Jo només el faig complir.
-    • use — SEMPRE
-        JUGADORA: Si toco això, acabem a Groenlàndia.
 
 VIDRE «vidre»
     • look — si escena ≥ 8 i rumb_galway
@@ -1403,12 +1377,8 @@ SAFATA «safata del muntacàrregues» — hi és si munta_rebost ≠ ""
 PRESTATGES «prestatges»
     • look — si juga iri
         JUGADORA: Llaunes de sardines de Portugal. N'hi falten unes quantes. Cada nit, unes quantes.
-    • look — SEMPRE
-        JUGADORA: Sardines en llauna. Moltes. I arròs. I més sardines.
     • pickUp — si juga iri
         JUGADORA: Les sardines no són meves. I sé de qui són.
-    • pickUp — SEMPRE
-        JUGADORA: No, gràcies. Ja en faig olor de lluny.
 
 REGISTRE «registre del dipòsit 2»
     • walkTo/use/open — si registre_obert
@@ -1416,7 +1386,7 @@ REGISTRE «registre del dipòsit 2»
     • look — si escena ≥ 7
         JUGADORA: El registre del dipòsit d'aigua 2. Hi ha rascades fresques al pany i la pintura saltada.
         JUGADORA: Algú l'ha provat de forçar amb una clau de tubs. I no ha pogut.
-        JUGADORA: Ens han sentit dir «on ningú no beu». Ho han entès. I no tenien la clau. ⟨si juga vet⟩
+        JUGADORA: Ens han sentit dir «on ningú no beu». Ho han entès. I no tenien la clau.
         ⇒ +prova_pany
     • look — SEMPRE
         JUGADORA: El registre del dipòsit d'aigua 2. «AIGUA NO POTABLE». Fa anys que està fora de servei.
@@ -1478,14 +1448,10 @@ BASTIDA «—» — hi és si escena = 6 i bastida_baixa
         JUGADORA: En Bastida, buscant soroll on no n'hi ha.
     • talkTo — si juga iri
         ERNEST BASTIDA: Aquí no hi ha res, noia. Ni ningú. Ves-te'n a dormir.
-    • talkTo — SEMPRE
-        ERNEST BASTIDA: Aquí no hi ha res, doctora. Ni ningú.
 
 BOMBES «bombes»
     • look — si juga iri
         JUGADORA: Les bombes de llast i de contraincendis. Netes, pintades, callades. No hi baixa mai ningú.
-    • look — SEMPRE
-        JUGADORA: Bombes. Moltes. Cap no sagna.
 
 ```
 
@@ -1520,20 +1486,27 @@ DECORAT bomba_marxa — es veu si escena = 1 i bomba_engegada
 PORTA_PASSADIS «passadís»
     • walkTo/use/open — si escena = 1 i valvula_vista
         JUGADORA: No me'n puc anar amb la sentina així.
-    • walkTo/use/open — si escena = 9 i NO rele_posat
-        JUGADORA: No. No me'n vaig sense el relé.
+    • walkTo/use/open — si juga vet i escena = 9
+        JUGADORA: No. No me'n vaig sense el relé. ⟨si NO rele_posat⟩
+        JUGADORA: Em quedo amb l'Ernest. ⟨si rele_posat⟩
     • walkTo/use/open — SEMPRE
         ⇒ → passadis_baix
     • look — SEMPRE
         JUGADORA: La porta del passadís.
 
 PORTA_TALLER «taller»
+    • walkTo/use/open — si juga vet i escena = 9
+        JUGADORA: No. No me'n vaig sense el relé. ⟨si NO rele_posat⟩
+        JUGADORA: Em quedo amb l'Ernest. ⟨si rele_posat⟩
     • walkTo/use/open — SEMPRE
         ⇒ → taller
     • look — SEMPRE
         JUGADORA: El taller.
 
 PORTA_REBOST «rebost»
+    • walkTo/use/open — si juga vet i escena = 9
+        JUGADORA: No. No me'n vaig sense el relé. ⟨si NO rele_posat⟩
+        JUGADORA: Em quedo amb l'Ernest. ⟨si rele_posat⟩
     • walkTo/use/open — SEMPRE
         ⇒ → rebost
     • look — SEMPRE
@@ -1551,8 +1524,6 @@ VALVULA «vàlvula de presa de mar»
         ⇒ +valvula_vista
     • look — si juga iri
         JUGADORA: Oberta, i sense volant. Necessito una palanca: una barra de metall d'un pam i mig, com a mínim.
-    • look — SEMPRE
-        JUGADORA: Una vàlvula. Tancada, diria. No en sé res, de vàlvules.
     • use + travesser — si NO valvula_tancada
         [SO: valvula] JUGADORA: Hi encaixa.
         JUGADORA: Gira dur... Ja està. Tancada.
@@ -1573,7 +1544,7 @@ QUADRE «quadre de la bomba»
         JUGADORA: El quadre de la bomba de sentina. Sense brida, ja.
     • use — si juga vet i escena > 1
         JUGADORA: No toco res que faci llum, aquí baix.
-    • look — SEMPRE
+    • look — si juga vet
         JUGADORA: Un quadre elèctric. Llumetes. Em recorda la UCI.
     • use + cisalla — si NO brida_tallada
         [SO: clic] JUGADORA: Fora.
@@ -1595,8 +1566,6 @@ QUADRE «quadre de la bomba»
         ⇒ +bomba_engegada, diàleg bastida1
     • use — si juga iri
         JUGADORA: La bomba treballa. A poc a poc, com ha de ser.
-    • use — SEMPRE
-        JUGADORA: Fa soroll i treu aigua. Diria que va bé.
 
 VIES «vàlvula de tres vies»
     • look — si NO vies_separador
@@ -1612,7 +1581,7 @@ SEPARADOR «separador d'aigües oleoses»
     • look — si juga iri
         JUGADORA: El separador d'aigües oleoses. Treu el gasoil de l'aigua abans de tornar-la al mar.
         JUGADORA: Va a poc a poc. Com tot el que val la pena.
-    • look — SEMPRE
+    • look — si juga vet
         JUGADORA: Una màquina que fa glu-glu. Sembla contenta.
 
 SENSOR «sensor de sentina»
@@ -1623,7 +1592,7 @@ SENSOR «sensor de sentina»
         JUGADORA: El sensor de sentina. Ja el tornaré a connectar quan la sentina estigui buida.
     • look — si juga iri
         JUGADORA: El sensor de sentina. Connectat i callat, com ha de ser.
-    • look — SEMPRE
+    • look — si juga vet
         JUGADORA: Un sensor. Si xiula, mal assumpte. Això ho entenc fins i tot jo.
     • use — si escena = 1
         JUGADORA: Si el connecto ara, xisclarà fins a Galway. Quan la sentina estigui buida.
@@ -1635,9 +1604,7 @@ MOTOR «motor principal»
         JUGADORA: El motor principal. «Molt expressiu», diu la doctora. Tres campanyes escoltant-lo, i no ho havia sabut dir.
     • look — si juga iri
         JUGADORA: El motor principal. Ronca. Al mar no es veu, però se sent.
-    • look — si juga vet i escena ≥ 4 i escena ≤ 8
-        JUGADORA: El motor. L'altre dia li vaig fer de coartada. Ni les gràcies.
-    • look — SEMPRE
+    • look — si juga vet
         JUGADORA: Un motor. Gran. Ronca com el meu pare.
     • use — si juga iri
         JUGADORA: No t'espatlles. Et queixes. Ja ho sé.
@@ -1653,31 +1620,31 @@ BOCA «boca del tub de veu»
 DIU «—» — hi és si escena = 1
 
 BASTIDA «—» — hi és si escena = 9 o (escena = 1 i bomba_engegada)
-    • look — si escena = 9 i NO rele_posat
+    • look — si juga vet i escena = 9 i NO rele_posat
         JUGADORA: En Bastida. Dret al peu de l'escala, amb el relé a la mà, damunt del registre obert de la sentina.
     • look — si juga iri
         JUGADORA: L'Ernest. El contramestre. El que em va treure de l'aigua.
-    • look — SEMPRE
+    • look — si juga vet
         JUGADORA: En Bastida. Ulls de mar, mans de mar.
     • talkTo — si escena = 9
         ⇒ diàleg bastida
 
 GENERADOR «generador»
-    • look — si escena = 9 i NO rele_posat
+    • look — si juga vet i escena = 9 i NO rele_posat
         JUGADORA: El generador. Parat. Sense el relé de sincronització, no arrenca.
     • look — si NO rele_posat
         JUGADORA: El generador. Gira, amb la remor de sempre.
-    • look — SEMPRE
+    • look — si juga vet
         JUGADORA: El generador. Torna a girar.
-    • use — si escena = 9 i NO rele_posat
+    • use — si juga vet i escena = 9 i NO rele_posat
         JUGADORA: Sense el relé no fa res. I el relé el té ell.
 
 SENTINA «registre de la sentina»
-    • look — si escena = 9 i NO rele_posat
+    • look — si juga vet i escena = 9 i NO rele_posat
         JUGADORA: El registre de la sentina, obert. Aigua bruta i gasoil. Si el relé hi cau, ja no el traurem.
     • look — SEMPRE
         JUGADORA: El registre de la sentina. A sota, aigua bruta i gasoil, com a tots els vaixells.
-    • pickUp/use — si escena = 9
+    • pickUp/use — si juga vet i escena = 9
         JUGADORA: A la sentina no s'hi fica la mà. Ni per un relé.
 
 ```
@@ -1728,8 +1695,6 @@ PANELL «panell»
         JUGADORA: El panell, obert.
     • look — si juga iri
         JUGADORA: El panell de la ràdio. Algú l'ha obert i tancat fa poc: els cargols tenen la pintura saltada.
-    • look — SEMPRE
-        JUGADORA: Un panell.
     • open/use/pull — si (escena = 3 i sync_radio) i NO panell_obert i NO soroll_fet
         [SO: panell] JUGADORA: Els cargols, fora. La xapa grinyola.
         ERNEST BASTIDA: Sents això?
@@ -1812,8 +1777,6 @@ TAULER «tauler d'eines»
         ⇒ +silueta_vista
     • look — si juga iri
         JUGADORA: El tauler, amb la silueta buida de la clau de vàlvules.
-    • look — SEMPRE
-        JUGADORA: Eines. Cada una amb la seva silueta pintada. Ni a l'hospital ho teníem tan endreçat.
     • use + cisalla — SEMPRE
         JUGADORA: La deixo al seu lloc.
         ⇒ perd cisalla, −cisalla_fora
@@ -1832,8 +1795,6 @@ CISALLA «cisalla» — hi és si NO cisalla_fora
         JUGADORA: La cisalla del taller. Amb la dent mellada.
     • look — SEMPRE
         JUGADORA: La cisalla del taller.
-    • pickUp — si juga vet
-        JUGADORA: Les eines de la maquinista. No les toco.
     • pickUp — si escena = 1
         JUGADORA: La cisalla. Per a una brida, sobra.
         ⇒ rep cisalla, +cisalla_fora
@@ -1844,8 +1805,6 @@ CISALLA «cisalla» — hi és si NO cisalla_fora
 CLAU_TUBS «clau de tubs» — hi és si NO clau_tubs_fora
     • look — SEMPRE
         JUGADORA: La clau de tubs. Grossa i pesant.
-    • pickUp — si juga vet
-        JUGADORA: Les eines de la maquinista. No les toco.
     • pickUp — si escena = 7
         JUGADORA: La clau de tubs.
         ⇒ rep clau_tubs, +clau_tubs_fora
@@ -1853,8 +1812,6 @@ CLAU_TUBS «clau de tubs» — hi és si NO clau_tubs_fora
 BANC «banc de treball»
     • look — si juga iri
         JUGADORA: El banc de treball. Hi ha un torn, un cargol de banc i un entrepà a mig menjar de fa tres dies.
-    • look — SEMPRE
-        JUGADORA: Un banc de treball. Un entrepà de fa tres dies. Això és un problema de salut pública.
 
 ```
 
@@ -1893,11 +1850,11 @@ BANC «banc de treball»
 ## Objecte cisalla · `cisalla`
 
 ```
-• look — si cisalla_mellada
+• look — si juga iri i cisalla_mellada
     JUGADORA: La cisalla del taller. Té una dent mellada.
-• look — si escena = 1
+• look — si juga iri i escena = 1
     JUGADORA: La cisalla del taller. Talla com el primer dia.
-• look — SEMPRE
+• look — si juga iri
     JUGADORA: La cisalla del taller.
 ```
 
@@ -2047,7 +2004,6 @@ COMENÇA A: esc2 (si escena = 2) · esc3 (si escena = 3 i sync_radio) · nus_mes
 
 [esc6]
     ERNEST BASTIDA: A proa ja hi he mirat jo. Deu ser per aquí, a popa: li agrada el vent.
-    ERNEST BASTIDA: Ves a dormir, noia. Ja la trobarem. ⟨si juga iri⟩
     ▸ Ensenya'm a fer el nus Bastida. Per si mai he de lligar un pacient. ⟨si juga vet i NO nus_lico i NO cadenat_tallat⟩ → nus
     ▸ D'acord. Bona nit. → (es queda) · FI
 
@@ -2127,7 +2083,6 @@ COMENÇA A: esc2 (si escena = 2) · esc3 (si escena = 3 i sync_radio) · nus_mes
     ERNEST BASTIDA: Ja està, doctora. Ara, envia-ho. Abans que me'n penedeixi.
 
 [res]
-    ERNEST BASTIDA: Ara no, noia. ⟨si juga iri⟩
     ERNEST BASTIDA: Ara no, doctora. ⟨si juga vet⟩
 
 ```
@@ -2209,7 +2164,6 @@ COMENÇA A: revisio (si escena = 2 i pacient = "capitana") · cabina2 (si escena
 
 [esc6]
     CAPITANA ROIG: La Juana sempre torna, doctora. Sempre. ⟨si juga vet⟩
-    CAPITANA ROIG: La Juana sempre torna, Iri. Sempre. ⟨si juga iri⟩
     CAPITANA ROIG: I si em vens a interrompre, que sigui per una urgència.
 
 [registre]
@@ -2235,7 +2189,6 @@ COMENÇA A: revisio (si escena = 2 i pacient = "capitana") · cabina2 (si escena
 
 [res]
     CAPITANA ROIG: Ara no, doctora. ⟨si juga vet⟩
-    CAPITANA ROIG: Ara no, Iri. ⟨si juga iri⟩
 
 [reunir]
     CAPITANA ROIG: Al menjador, doncs. Tothom. I que la maquinista baixi del pont.
@@ -2461,13 +2414,7 @@ COMENÇA A: revisio (si escena = 2 i pacient = "marcel") · callat (si marcel_en
 
 [esc6_menu]
     ▸ Aquest gat... ⟨si juga iri i NO marcel_secret⟩ → secret
-    ▸ I aquest gat? ⟨una vegada, si juga vet⟩ → gat_vet
     ▸ Res. Bona nit. → (es queda) · FI
-
-[gat_vet]
-    MARCEL: Quin gat? Aquí no hi ha cap gat.
-    DIU: Mrrau.
-    ↪ esc6_menu
 
 [secret]
     MARCEL: D'acord. La nit de la vàlvula jo era a la sala de màquines.
@@ -2528,7 +2475,7 @@ COMENÇA A: revisio (si escena = 2 i pacient = "marcel") · callat (si marcel_en
 ## Diàleg `nadia` amb Nadia Vidal
 
 ```
-COMENÇA A: revisio (si escena = 2 i pacient = "nadia") · esc4 (si escena = 4 i juga iri) · pillada (si escena = 5 i vet_amagada i NO nadia_decidida) · esc6 (si escena = 6 i aliada_nadia i juga vet) · esc6_iri (si escena = 6 i aliada_nadia) · res
+COMENÇA A: revisio (si escena = 2 i pacient = "nadia") · pillada (si escena = 5 i vet_amagada i NO nadia_decidida) · esc6 (si escena = 6 i aliada_nadia i juga vet) · res
 
 [revisio]
     NADIA VIDAL: Hola, doctora. Vaig una mica marejada, eh.
@@ -2561,17 +2508,6 @@ COMENÇA A: revisio (si escena = 2 i pacient = "nadia") · esc4 (si escena = 4 i
 [fi]
     NADIA VIDAL: I menjar poc. Ja ho sé.
     ⇒ +revisio_nadia, revisions += 1, pacient := ""
-
-[esc4]
-    NADIA VIDAL: Maquinista. Vols seure?
-    ▸ La contrasenya de la Juana. No la sabràs pas? ⟨si NO nadia_esperanca⟩ → contrasenya
-    ▸ Res. Bon profit. → (es queda) · FI
-
-[contrasenya]
-    NADIA VIDAL: Esperança. Segur.
-    NADIA VIDAL: Era el nom de la seva mare. Ho va dir un dia, a l'esmorzar.
-    IRI: ...A l'esmorzar. La Juana no esmorza mai.
-    ⇒ +nadia_esperanca
 
 [pillada]
     NADIA VIDAL: D'acord. D'acord.
@@ -2627,9 +2563,6 @@ COMENÇA A: revisio (si escena = 2 i pacient = "nadia") · esc4 (si escena = 4 i
     NADIA VIDAL: Doctora. Digues què he de dir a la Lind.
     ▸ Digues-li que han sentit soroll a la sala de bombes. ⟨si NO bastida_baixa⟩ → soroll
     ▸ Res, de moment. → (es queda) · FI
-
-[esc6_iri]
-    NADIA VIDAL: La doctora em dirà què he de dir a la Lind. Jo, de moment, escolto. Per a vosaltres, ara.
 
 [soroll]
     NADIA VIDAL: Fet.
@@ -2692,18 +2625,10 @@ COMENÇA A: contrasenya
 
 [contrasenya]
     NARRADOR: «CONTRASENYA:»
-    ▸ Esperança ⟨una vegada, si nadia_esperanca⟩ → esperanca
     ▸ Pili65 ⟨una vegada, si postal_vista⟩ → pili
     ▸ Pilar ⟨si sap_pilar⟩ → pilar
     ▸ Juana ⟨una vegada⟩ → juana
     ▸ (Pensar-hi una mica més) → (es queda) · FI
-
-[esperanca]
-    NARRADOR: «Contrasenya incorrecta. Tres intents més i...»
-    NARRADOR: «...no, és broma, no passa res.»
-    JUGADORA: La Nadia m'ha mentit. O no ho sabia. O totes dues coses.
-    ⇒ +nadia_menteix
-    ↪ contrasenya
 
 [pili]
     NARRADOR: «Contrasenya incorrecta.»
@@ -3036,7 +2961,6 @@ COMENÇA A: revisio (si escena = 2 i pacient = "tomas") · cuina2 (si escena = 2
 
 [esc5]
     TOMÀS: Torn de cuina, doctora. Tu renta, jo pasto. ⟨si juga vet⟩
-    TOMÀS: Maquinista! Fora de la meva cuina, que hi ha torn. ⟨si juga iri⟩
     TOMÀS: I no toquis les postres, que són per demà.
     TOMÀS: És un flam. Un flam ha de reposar una nit. Com les persones.
 
@@ -3047,9 +2971,7 @@ COMENÇA A: revisio (si escena = 2 i pacient = "tomas") · cuina2 (si escena = 2
 
 [esc7]
     TOMÀS: Doctora! Li he fet un altre entrepà a la Juana. Doble de truita. I amb el seu nom. ⟨si juga vet i tomas_content⟩
-    TOMÀS: Maquinista! Avui estic per tothom. Vols pa? ⟨si juga iri i tomas_content⟩
     TOMÀS: Doctora. Avui no estic per ningú. ⟨si juga vet i NO tomas_content⟩
-    TOMÀS: Maquinista. Avui no estic per ningú. ⟨si juga iri i NO tomas_content⟩
     ↪ esc7_menu
 
 [esc7_menu]
@@ -3112,7 +3034,7 @@ COMENÇA A: lluny (si juga iri i no (vet a pont/sala_maquines/cuina/infermeria/m
     JUGADORA: A en Tomàs li han robat un entrepà de truita. Algú alimenta algú que no pot venir a sopar. ⟨si NO cops_sentits i entrepa_robat⟩
     IRI: Pregunta. Algú haurà sentit alguna cosa. En aquest vaixell, tothom sent coses. ⟨si juga vet i NO cops_sentits i NO cops_marcel⟩
     VET: Pregunta. Algú haurà sentit alguna cosa. En aquest vaixell, tothom sent coses. ⟨si juga iri i NO cops_sentits i NO cops_marcel⟩
-    IRI: Cops a proa. On no hi passa ningú. Hi pujo a mirar, o hi puges tu? ⟨si juga vet i NO cops_sentits i cops_marcel⟩
+    IRI: Cops a proa. On no hi passa ningú. Hi pujo jo a mirar. ⟨si juga vet i NO cops_sentits i cops_marcel⟩
     VET: Cops a proa. On no hi passa ningú. Ves-hi a mirar, Iri. ⟨si juga iri i NO cops_sentits i cops_marcel⟩
     JUGADORA: A proa, a la caixa de cadenes, hi ha un cadenat nou. I cops a dins. ⟨si cops_sentits i NO cadenat_tallat⟩
     IRI: La cisalla és al taller. Però en Bastida és a popa. Si la sent, vindrà. ⟨si cops_sentits i NO cadenat_tallat i NO bastida_baixa i NO nus_lico⟩
@@ -3125,7 +3047,7 @@ COMENÇA A: lluny (si juga iri i no (vet a pont/sala_maquines/cuina/infermeria/m
     JUGADORA: La tenim. La Mostra 7. Ara, a la infermeria, que la vegi la Juana. ⟨si mostra_trobada⟩
     VET: La Juana diu que la mostra és al dipòsit 2. Tancat amb una clau que no té ningú. ⟨si NO mostra_trobada⟩
     VET: Ella en va treure les frontisses. ⟨si NO mostra_trobada⟩
-    VET: I algú ja ha volgut forçar el pany. Ens van sentir dir «on ningú no beu». ⟨si prova_pany i NO mostra_trobada⟩
+    IRI: I algú ja ha volgut forçar el pany del registre. Ens van sentir dir «on ningú no beu». ⟨si prova_pany i NO mostra_trobada⟩
     IRI: Una clau antiga que no té ningú... En Tomàs en té una que no sap què obre. ⟨si tomas_clau i NO clau_donada i NO registre_obert⟩
     IRI: Les frontisses del registre. Amb la clau de tubs ho puc fer jo, des del rebost. ⟨si NO registre_obert⟩
     IRI: Ja està obert. ⟨si registre_obert i NO mostra_trobada⟩
@@ -3486,14 +3408,22 @@ vet_nadia — quan escena = 5 i juga vet i vet_amagada i NO nadia_decidida · fi
     1. La Nadia. Ara toca decidir.
     2. Parla amb la Nadia.
     3. Parla amb la Nadia.
-buscar — quan escena = 6 i NO cops_sentits i NO cops_marcel · fins que cops_sentits o cops_marcel
+buscar — quan escena = 6 i juga iri i NO cops_sentits i NO cops_marcel · fins que cops_sentits o cops_marcel
     1. On pot ser la Juana? Algú haurà sentit alguna cosa.
-    2. El Marcel és al pallol; la Capitana, a la cabina; en Tomàs, a la cuina. I a proa?
+    2. El Marcel és al pallol. I a proa, on no hi passa ningú?
     3. Mira l'escotilla de la caixa de cadenes, a la coberta de proa.
-buscar_proa — quan escena = 6 i NO cops_sentits i cops_marcel · fins que cops_sentits
+buscar_vet — quan escena = 6 i juga vet i NO cops_sentits i NO cops_marcel · fins que cops_sentits o cops_marcel
+    1. On pot ser la Juana? Algú haurà sentit alguna cosa.
+    2. La Capitana és a la cabina; en Tomàs, a la cuina; en Bastida, a popa. Pregunta. I el que sàpigues, digues-ho a l'Iri pel tub.
+    3. A proa hi ha d'anar l'Iri: a tu, en Bastida et veuria. Canvia a l'Iri i que miri l'escotilla de la caixa de cadenes.
+buscar_proa — quan escena = 6 i juga iri i NO cops_sentits i cops_marcel · fins que cops_sentits
     1. El Marcel ha sentit cops a proa aquesta tarda.
     2. A la coberta de proa hi ha l'escotilla de la caixa de cadenes.
     3. Mira l'escotilla de la caixa de cadenes, a la coberta de proa.
+buscar_proa_vet — quan escena = 6 i juga vet i NO cops_sentits i cops_marcel · fins que cops_sentits
+    1. Símptomes: cops a proa, aquesta tarda. Ho diu el Marcel.
+    2. A proa, si en Bastida em veu, sabrà on busquem. Que hi vagi l'Iri: digues-l'hi pel tub.
+    3. Canvia a l'Iri: que miri l'escotilla de la caixa de cadenes, a la coberta de proa.
 cisalla — quan escena = 6 i juga iri i cops_sentits i no té cisalla (iri) i NO cadenat_tallat · fins que té cisalla (iri) o cadenat_tallat
     1. Un cadenat nou. Per a un cadenat, una cisalla.
     2. La cisalla és al taller.
@@ -3512,8 +3442,8 @@ sortir — quan escena = 6 i juana_trobada · fins que escena ≥ 7
     3. Surt per l'escotilla.
 registre — quan escena = 7 i juga vet i NO registre_obert i NO prova_pany i NO clau_donada · fins que prova_pany o registre_obert o clau_donada
     1. Diagnòstic: un dipòsit que ningú no fa servir. On és el registre?
-    2. El registre del dipòsit 2 és al rebost.
-    3. Ves al rebost i mira el registre del dipòsit 2.
+    2. El registre del dipòsit 2 és al rebost, a baix: allà hi va l'Iri.
+    3. Canvia a l'Iri i que miri el registre del dipòsit 2, al rebost.
 clau — quan escena = 7 i juga vet i NO registre_obert i NO tomas_ofes i no té clau_tomas (vet) · fins que tomas_ofes o registre_obert
     1. Una clau que no té ningú. O que algú té i no sap què obre.
     2. El cuiner d'abans va deixar coses a la cuina. Potser en Tomàs en sap alguna cosa. I l'Iri sap treure frontisses.
@@ -3528,8 +3458,8 @@ obrir — quan escena = 7 i juga iri i té clau_tomas (iri) i NO registre_obert 
     3. Fes servir la clau amb el registre del rebost.
 obrir_vet — quan escena = 7 i juga vet i té clau_tomas (vet) i NO registre_obert · fins que registre_obert
     1. La clau antiga.
-    2. La clau va al registre del dipòsit 2, al rebost. O a l'Iri, pel muntacàrregues de la cuina.
-    3. Ves al rebost i fes servir la clau amb el registre. O, a la cuina, fes-la servir amb el muntacàrregues: l'Iri l'agafarà de la safata del rebost.
+    2. La clau va al registre del dipòsit 2, al rebost, on és l'Iri. Pel muntacàrregues de la cuina, baixa al rebost.
+    3. A la cuina, fes servir la clau amb el muntacàrregues: l'Iri l'agafarà de la safata del rebost.
 frontisses — quan escena = 7 i juga iri i NO registre_obert i no té clau_tubs (iri) i NO frontissa1 · fins que registre_obert o té clau_tubs (iri) o frontissa1
     1. Què em diries tu, frontissa?
     2. La clau de tubs és al taller. Les frontisses del registre, al rebost.
@@ -3542,14 +3472,18 @@ frontissa2 — quan escena = 7 i juga iri i NO registre_obert i frontissa1 · fi
     1. Una frontissa fora. En queda una.
     2. Torna a fer servir la clau de tubs amb el registre.
     3. Fes servir la clau de tubs amb el registre del rebost un altre cop.
-mostra — quan escena = 7 i registre_obert i NO mostra_trobada · fins que mostra_trobada
+mostra — quan escena = 7 i juga iri i registre_obert i NO mostra_trobada · fins que mostra_trobada
     1. «On ningú no beu.»
     2. Entra al dipòsit 2 i obre la carcassa del filtre.
     3. Entra al dipòsit 2 (pel registre del rebost) i obre la carcassa del filtre.
+mostra_vet — quan escena = 7 i juga vet i registre_obert i NO mostra_trobada · fins que mostra_trobada
+    1. Diagnòstic: el registre és obert. La mostra, a l'altra banda.
+    2. El dipòsit 2 és cosa de l'Iri. Ella hi pot entrar.
+    3. Canvia a l'Iri: que entri al dipòsit 2 i obri la carcassa del filtre.
 tornar — quan escena = 7 i juga iri i mostra_trobada i no té mostra7 (vet) i munta_cuina ≠ "mostra7" · fins que escena ≥ 8
     1. La Juana l'ha de veure.
-    2. Porta la Mostra 7 a la infermeria. Si la Vet hi és, no hi pots entrar: envia-la-hi pel muntacàrregues.
-    3. Si la Vet és a la infermeria: al rebost, fes servir la Mostra 7 amb el muntacàrregues, que puja a la cuina, i la Vet la portarà a la infermeria. Si no, porta-la-hi tu.
+    2. La Mostra 7 ha d'arribar a la infermeria, i a la infermeria no hi entro. Pel muntacàrregues, a la Vet.
+    3. Al rebost, fes servir la Mostra 7 amb el muntacàrregues: puja a la cuina, i la Vet la portarà a la infermeria.
 tornar_vet — quan escena = 7 i juga vet i té mostra7 (vet) · fins que escena ≥ 8
     1. La Juana l'ha de veure.
     2. Porta la Mostra 7 a la infermeria.
@@ -3574,7 +3508,7 @@ registre_safata — quan escena = 8 i juga vet i munta_cuina = "registre" · fin
     1. Ha arribat una cosa a la cuina.
     2. Agafa la pàgina de la safata de la cuina.
     3. Ves a la cuina i agafa la pàgina de la safata.
-qui — quan escena = 8 i reunio_comencada i NO bastida_confessa · fins que bastida_confessa
+qui — quan escena = 8 i juga vet i reunio_comencada i NO bastida_confessa · fins que bastida_confessa
     1. Qui, i per què ho sabem. Tres proves.
     2. Pensa en qui estava despert, qui fuma pipa, qui fa el nus amb una volta de més.
     3. Acusa en Bastida i tria tres proves del quadern: el nus amb la volta de més, el tall a la mà i la pipa.
