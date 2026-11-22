@@ -1,5 +1,5 @@
 {
-  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `text`: el que es diu quan no és el text tal qual (direccions del v3 com [cheerfully], pronúncia).",
+  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `text`: el que es diu quan no és el text tal qual (direccions del v3 com [cheerfully], pronúncia). `pronuncia`: com es diuen codis, sigles i xifres. `codi`: qui diu les línies de game/logic (la finestra i la marca). `sense_veu`: el que no es diu (les fletxes de la ruta, que canvien a cada partida). `veu`: línies del narrador dites amb la veu d'un personatge: les notes, amb la veu de qui les escriu; l'holograma i la megafonia, amb la del Director.",
   "actiu": "url",
   "model": "eleven_v3",
   "language": "ca",
@@ -11,5 +11,197 @@
   "text": {
     "dlg.mare.hola": "[cheerfully] Hola, interna 9! Soc la MARE, el seu Mòdul d'Atenció i Reinserció Ecològica. Com la puc fer feliç?",
     "dlg.mare.sortir2": "[cheerfully] Gràcies per la seva paciència!"
+  },
+  "pronuncia": {
+    "27-B/E": "vint-i-set be barra e",
+    "27-B": "vint-i-set be",
+    "12-F": "dotze efa",
+    "4-C": "quatre ce",
+    "M-3": "ema tres",
+    "C-1": "ce u",
+    "la 440": "el la quatre-cents quaranta",
+    "3 dies": "tres dies",
+    "40 filtres": "quaranta filtres",
+    "Insp. Sic": "inspector Sic",
+    "Dir. Aldaia": "director Aldaia",
+    "malaherbasoft.cat": "malaherbasoft punt cat",
+    "NIVELL -1": "NIVELL MENYS U",
+    " → ": " ",
+    "ferro-9": "ferro nou",
+    "Ferro-9": "Ferro nou"
+  },
+  "codi": {
+    "finestra.posat": [
+      "iri",
+      "vet"
+    ],
+    "finestra.ple": [
+      "iri",
+      "vet"
+    ],
+    "finestra.ja_armat": [
+      "iri",
+      "vet"
+    ],
+    "finestra.tancada": [
+      "iri",
+      "vet"
+    ],
+    "finestra.buida": [
+      "iri",
+      "vet"
+    ],
+    "finestra.tret": [
+      "iri",
+      "vet"
+    ],
+    "finestra.armat": [
+      "iri",
+      "vet"
+    ],
+    "finestra.armat_buit": [
+      "iri",
+      "vet"
+    ],
+    "finestra.esgotada": [
+      "iri",
+      "vet"
+    ],
+    "finestra.rebut": [
+      "iri",
+      "vet"
+    ],
+    "finestra.rebut_res": [
+      "iri",
+      "vet"
+    ],
+    "finestra.rebuig.massa_pesat": [
+      "iri",
+      "vet"
+    ],
+    "finestra.rebuig.viu": [
+      "iri",
+      "vet"
+    ],
+    "finestra.rebuig.liquid": [
+      "iri",
+      "vet"
+    ],
+    "finestra.rebuig.no_hi_cap": [
+      "iri",
+      "vet"
+    ],
+    "finestra.rebuig.no_cal_iri": "iri",
+    "finestra.rebuig.no_cal_vet": "vet",
+    "finestra.rebuig.no_cal_iri_res": "iri",
+    "finestra.rebuig.no_cal_iri_abans": "iri",
+    "finestra.rebuig.no_cal_vet_abans": "vet",
+    "finestra.enviat": [
+      "iri",
+      "vet"
+    ],
+    "finestra.automatica": "iri",
+    "finestra.boto_automatic": [
+      "iri",
+      "vet"
+    ],
+    "finestra.espera.iri": "iri",
+    "finestra.espera.vet": "vet",
+    "finestra.posat.nota_vet": "vet",
+    "finestra.rebut.clau_anglesa": "vet",
+    "finestra.enviat.imant_ferro9": "iri",
+    "finestra.espera.iri.imant_ferro9": "iri",
+    "finestra.rebut.imant_ferro9": "vet",
+    "finestra.enviat.nota_iri": "iri",
+    "finestra.espera.iri.nota_iri": "iri",
+    "finestra.rebut.nota_iri": "vet",
+    "finestra.enviat.nota_vet": "vet",
+    "finestra.espera.vet.nota_vet": "vet",
+    "finestra.rebut.nota_vet": "iri",
+    "finestra.enviat.nota_pany": "vet",
+    "finestra.espera.vet.nota_pany": "vet",
+    "finestra.rebut.nota_pany": "iri",
+    "finestra.enviat.nota_mida": "vet",
+    "finestra.espera.vet.nota_mida": "vet",
+    "finestra.rebut.nota_mida": "iri",
+    "finestra.enviat.tram_biga_1": "iri",
+    "finestra.espera.iri.tram_biga_1": "iri",
+    "finestra.rebut.tram_biga_1": "vet",
+    "finestra.enviat.tram_biga_2": "iri",
+    "finestra.espera.iri.tram_biga_2": "iri",
+    "finestra.rebut.tram_biga_2": "vet",
+    "finestra.enviat.tram_biga_3": "iri",
+    "finestra.espera.iri.tram_biga_3": "iri",
+    "finestra.rebut.tram_biga_3": "vet",
+    "finestra.enviat.nota_amagatall": "iri",
+    "finestra.espera.iri.nota_amagatall": "iri",
+    "finestra.rebut.nota_amagatall": "vet",
+    "finestra.enviat.pols_rovell": "vet",
+    "finestra.espera.vet.pols_rovell": "vet",
+    "finestra.rebut.pols_rovell": "iri",
+    "finestra.enviat.molla": "vet",
+    "finestra.espera.vet.molla": "vet",
+    "finestra.rebut.molla": "iri",
+    "finestra.enviat.diapaso": "iri",
+    "finestra.espera.iri.diapaso": "iri",
+    "finestra.rebut.diapaso": "vet",
+    "finestra.enviat.nota_pressio": "vet",
+    "finestra.espera.vet.nota_pressio": "vet",
+    "finestra.rebut.nota_pressio": "iri",
+    "finestra.enviat.nota_massa": "vet",
+    "finestra.espera.vet.nota_massa": "vet",
+    "finestra.rebut.nota_massa": "iri",
+    "finestra.enviat.nota_vet_nom": "vet",
+    "finestra.espera.vet.nota_vet_nom": "vet",
+    "finestra.rebut.nota_vet_nom": "iri",
+    "finestra.enviat.nota_iri_nom": "iri",
+    "finestra.espera.iri.nota_iri_nom": "iri",
+    "finestra.rebut.nota_iri_nom": "vet",
+    "finestra.enviat.mapa_fuga": "vet",
+    "finestra.espera.vet.mapa_fuga": "vet",
+    "finestra.rebut.mapa_fuga": "iri",
+    "finestra.enviat.tub_amb_llibreta": "iri",
+    "finestra.espera.iri.tub_amb_llibreta": "iri",
+    "finestra.rebut.tub_amb_llibreta": "vet",
+    "marca.reajust1": "vet",
+    "marca.reajust2": "vet",
+    "sala.fabrica_conducte_revolt.arribada": "iri",
+    "sala.fabrica_conducte_revolt.fugir": "iri",
+    "sala.fabrica_conducte_revolt.gravar": "iri",
+    "sala.fabrica_conducte_revolt.perdut1": "iri",
+    "sala.fabrica_conducte_revolt.perdut2": "iri",
+    "sala.fabrica_conducte_revolt.perdut3": "iri",
+    "sala.fabrica_conducte_revolt.tornar": "iri"
+  },
+  "sense_veu": [
+    "obj.nota_iri.correspondencia.4",
+    "obj.mapa_fuga.signes",
+    "sala.gavina_memoria.mapa.signes"
+  ],
+  "veu": {
+    "obj.nota_iri.text": "iri",
+    "obj.nota_iri.correspondencia.2": "iri",
+    "obj.nota_amagatall.text": "iri",
+    "obj.nota_iri_nom.text": "iri",
+    "final.correspondencia.carta": "iri",
+    "obj.nota_vet.text": "vet",
+    "obj.nota_iri.correspondencia.1": "vet",
+    "obj.nota_iri.correspondencia.3": "vet",
+    "obj.nota_pany.text": "vet",
+    "obj.nota_mida.text": "vet",
+    "obj.molla.nota": "vet",
+    "obj.nota_pressio.text": "vet",
+    "obj.nota_massa.text": "vet",
+    "obj.nota_vet_nom.text": "vet",
+    "obj.mapa_fuga.text": "vet",
+    "obj.avis_reciclatge.text": "mare",
+    "nota_perduda.5.text": "mos",
+    "sala.gavina_memoria.holograma.parla": "director",
+    "sala.gavina_memoria.holograma.cafe1": "director",
+    "sala.gavina_memoria.holograma.casc1": "director",
+    "sala.fabrica.descoberta2": "director",
+    "final.oris.5": "guardia",
+    "final.correspondencia.2": "cargol_vell",
+    "final.correspondencia.4": "cargol_vell"
   }
 }

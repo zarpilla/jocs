@@ -11,7 +11,8 @@ al dia `npm run benne:sync`) i la configuració `game/audio/veus.json`:
       "text": { "dlg.mare.hola": "[cheerfully] Hola, interna 9! ..." },  // opcional: el que es diu, si no és el text
       "pronuncia": { "BCMU": "Be, ce, ema, u", "4.200 €": "quatre mil dos-cents euros" },  // opcional: substitucions
       "codi": { "tub.envia": ["vet"], "sync.aeroport.reinici1": "narrator" },  // opcional: línies del codi del joc
-      "sense_veu": ["sala.bcmu_escombraries.llibre.bip"]   // opcional: claus (o començaments de clau) que no es diuen
+      "sense_veu": ["sala.bcmu_escombraries.llibre.bip"],  // opcional: claus (o començaments de clau) que no es diuen
+      "veu": { "obj.nota_vet.text": "vet" }   // opcional: línies del narrador dites amb la veu d'un personatge (notes, hologrames)
     }
 
 Escriu `game/audio/voice/<personatge de Benne><número>.mp3` (el número és l'FNV-1a de la clau del text, el mateix
@@ -37,7 +38,8 @@ el motor fa sonar des de `display`). No es diuen les de títol, les que tenen va
 ni les de `sense_veu` (el que surt escrit en una pantalla, per exemple).
 Les línies del codi del joc que hi surten com a `{ who: 'bonfill', text: 'clau' }` es troben soles; la resta (qui diu
 `'tub.envia'`?) s'indiquen a `codi` de veus.json. `pronuncia` canvia trossos del text abans d'enviar-lo (sigles, imports,
-codis), sense tocar el text del joc. Les acotacions es treuen, i
+codis), sense tocar el text del joc. `veu` fa que una línia del narrador (una nota, un holograma, una veu per megafonia) es
+gravi amb la veu d'un personatge: el text surt igual a la pantalla, i el fitxer continua sent `narrator<número>`. Les acotacions es treuen, i
 les que diuen com es parla queden com a etiqueta del v3: «(al walkie, xiuxiuejant) Iri.» → «[whispers] Iri.» (ETIQUETES).
 Una línia que només és acotació («(Tus, tus.)») no té veu. El que hi ha a `text` de veus.json s'envia tal qual.
 """
@@ -200,17 +202,23 @@ def collect(content, table, joc: pathlib.Path, codi_cfg: dict):
     for ts in sorted((joc / "game/logic").glob("*.ts")):
         for who, key in re.findall(r"who:\s*'([\w-]+)'(?:\s*as const)?\s*,\s*text:\s*'([\w.]+)'", ts.read_text()):
             trobades.setdefault(key, set()).add(who)
+    ja_hi_son = {l[1] for l in lines}
     for key, who in codi_cfg.items():
-        trobades[key] = {who} if isinstance(who, str) else set(who)
+        if key not in ja_hi_son:            # les que ja són a les sales només diuen qui les diu (vegeu a sota)
+            trobades[key] = {who} if isinstance(who, str) else set(who)
     for key, whos in trobades.items():
         for who in whos:
             if who in protas:
                 lines.append(("player", key, None, None, {who}, "codi"))
             else:
                 lines.append((who, key, None, None, set(protas) if who == "player" else set(), "codi"))
-    # Per a les línies sense pista, si la clau diu de qui és (`.vet1`, `.iri.2`), en fem cas.
+    # Per a les línies sense pista: si `codi` de veus.json diu qui la diu (p. ex. una sala sense protagonista), aquesta;
+    # si no, si la clau diu de qui és (`.vet1`, `.iri.2`), en fem cas.
     out = []
     for who, key, room, dialog, ps, grup in lines:
+        if who == "player" and not ps and key in codi_cfg:
+            qui = codi_cfg[key]
+            ps = {qui} if isinstance(qui, str) else set(qui)
         if who == "player" and not ps:
             parts = key.replace("_", ".").split(".")
             ps = {p for p in protas if any(x == p or (x.startswith(p) and x[len(p):].isdigit()) for x in parts)}
@@ -251,6 +259,14 @@ def main():
     voices, overrides = cfg["voices"], cfg.get("text", {})
     pronuncia = sorted(cfg.get("pronuncia", {}).items(), key=lambda kv: -len(kv[0]))   # els trossos llargs, primer
     sense_veu = cfg.get("sense_veu", [])
+    veu_de = cfg.get("veu", {})
+
+    def veu_narrador(key):
+        """El personatge amb la veu del qual es diu una línia del narrador (`veu` de veus.json), o el narrador."""
+        for k, pj in veu_de.items():
+            if key == k or key.startswith(k):
+                return pj
+        return "narrator"
     model, language, fmt = cfg.get("model", "eleven_v3"), cfg.get("language", "ca"), cfg.get("format", "mp3_44100_64")
 
     lines, dialog_rooms = collect(content, table, joc, cfg.get("codi", {}))
@@ -292,6 +308,17 @@ def main():
                 text = text.replace(tros, dit)
             text = re.sub(r"\s+", " ", text).strip()
         for sp in speakers:
+            amb = veu_narrador(key) if sp == "narrator" else sp      # de qui és la veu
+            if amb not in voices:
+                if amb != "narrator":
+                    skipped.append((key, f"{amb} no té veu a veus.json"))
+                continue
+            if amb != sp:
+                stem = f"{to_benne.get(sp, sp)}{fnv1a(key)}"
+                if stem not in seen:
+                    seen.add(stem)
+                    jobs.append((stem, amb, key, text, voices[amb]))
+                continue
             if sp not in voices:
                 if sp != "narrator":                    # un joc sense veu de narrador: no cal dir-ho línia a línia
                     skipped.append((key, f"{sp} no té veu a veus.json"))

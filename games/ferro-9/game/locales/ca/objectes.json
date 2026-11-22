@@ -53,7 +53,7 @@
   "obj.nota_iri.vet1": "La fàbrica Aldaia? Va tancar fa cent vint anys. Ho diuen tots els fullets de reeducació.",
   "obj.nota_iri.vet2": "...",
   "obj.nota_iri.vet3": "Oh. Oh, no. Oh, sí!",
-  "obj.nota_iri.correspondencia.inici": "(Durant una hora, la cambra no para d'espetegar.)",
+  "obj.nota_iri.correspondencia.inici": "Durant una hora, la cambra no para d'espetegar.",
   "obj.nota_iri.correspondencia.1": "«\"Brutal-plus\" vol dir que ets molt bona. \"Reciclar\" no ho sé: ningú no en torna. Pregunta rara, i no facis òrbita: què veus per la finestra? —La de la cel·la 9»",
   "obj.nota_iri.correspondencia.2": "«Xemeneies, fum i el canal. Com cada nit. «Fer òrbita»? Aquí només en fan les arnes, al fanal. I torna'm la clau anglesa, que és la meva preferida. —I.»",
   "obj.nota_iri.correspondencia.3": "«Per la meva finestra hi ha estrelles, i la Terra, petita i blava. La Gavina dona voltes al món. I la teva clau porta un segell: \"Aldaia · Ferro-9 · Lot 1\". Aquest metall fa cent vint anys que no es fabrica: aquí dalt és tan de rovell que la posarien en un museu. —La de la cel·la 9»",
@@ -118,7 +118,7 @@
   "obj.molla.estirar": "L'estiro una mica.",
   "obj.molla.massa": "Més arronsada no pot estar.",
   "obj.molla.arronsar": "L'arronso una mica.",
-  "obj.molla.etiqueta": "Una molla de llit, amb una tira de tela lligada: «I.: fes-me una cosa de ferro-9 que soni EXACTAMENT com aquesta molla. És per obrir un pany. No la toquis, que està afinada. I zero-g, eh. —V.»",
+  "obj.molla.etiqueta": "Una molla de llit, amb una tira de tela lligada.",
   "obj.molla.iri": "Una nota dins d'una molla. Necessito un diapasó de ferro-9 que soni igual.",
   "obj.molla.afinada": "La molla afinada, amb el missatge per a la I.",
   "obj.molla.nom": "molla",
@@ -190,8 +190,8 @@
   "obj.llapis_ulls.mapa_on": "El conducte comença al mòdul C. Però on, exactament? Abans de dibuixar-lo, el vull veure.",
   "obj.mapa_fuga.nom": "mapa de fuga",
   "obj.mapa_fuga.desc": "El fullet de la Sala de la Memòria, amb la ruta dibuixada per darrere amb llapis d'ulls.",
-  "obj.mapa_fuga.text": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. Cinc revolts: {ruta_conducte} (↑ vol dir recte). El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. PD 2: la Directora ha fet treure el tub de la vàlvula de la llançadora, i sense no engega. Si me'n fas un, que sigui l'últim enviament. —V.»",
-  "obj.mapa_fuga.conducte": "Cinc revolts: {ruta_conducte}. ↑ vol dir recte.",
+  "obj.mapa_fuga.text": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. Cinc revolts, un signe per revolt:",
+  "obj.mapa_fuga.conducte": "El fullet de la V.: un signe per revolt. La fletxa amunt vol dir recte.",
   "obj.mapa_fuga.iri1": "Una ruta per fugir. I la V. també la necessita.",
   "obj.mapa_fuga.iri2": "La reixa té quatre cargols d'acer. En cent vint anys, el rovell els soldarà.",
   "obj.mapa_fuga.iri3": "Si els llimo fins que s'aguantin per un fil, no hi quedarà res per soldar.",
@@ -294,5 +294,8 @@
   "obj.llibreta_torn.vet_glossari": "I a l'última pàgina, un glossari de la meva manera de parlar. «Fer òrbita: ?» Vol dir enrotllar-se, I. Com tu ara.",
   "obj.clau_anglesa.vet3": "Ni pantalla, ni bateria, ni garantia. Pura arqueologia.",
   "obj.imant_ferro9.vet": "Un imant de ferro-9: obre els panys M-3. Sense bateria. A l'època de la I. tot funcionava per fe.",
-  "obj.mapa_fuga.iri0": "Per davant, el fullet d'un museu. Hi surt la meva clau anglesa: «objecte ritual de l'era de les fàbriques». És una clau anglesa."
+  "obj.mapa_fuga.iri0": "Per davant, el fullet d'un museu. Hi surt la meva clau anglesa: «objecte ritual de l'era de les fàbriques». És una clau anglesa.",
+  "obj.mapa_fuga.signes": "{ruta_conducte}   (↑ = recte)",
+  "obj.mapa_fuga.text2": "El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. PD 2: la Directora ha fet treure el tub de la vàlvula de la llançadora, i sense no engega. Si me'n fas un, que sigui l'últim enviament. —V.»",
+  "obj.molla.nota": "«I.: fes-me una cosa de ferro-9 que soni EXACTAMENT com aquesta molla. És per obrir un pany. No la toquis, que està afinada. I zero-g, eh. —V.»"
 }

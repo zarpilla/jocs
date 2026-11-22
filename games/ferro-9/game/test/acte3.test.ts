@@ -72,7 +72,7 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     const envia = p.use('mapa_fuga', 'panell');
     expect(texts(envia)).toContain('reformat');
     expect(texts(envia)).toContain('tanca la cel·la');
-    expect(keys(envia)).toContain('finestra.espera.vet');
+    expect(keys(envia)).toContain('finestra.espera.vet.mapa_fuga');
     expect(p.active).toBe('vet');
     expect(estatFinestra(n).armada).toBe('vet');
     expect(estatFinestra(n).enceses).toBe(enceses);
@@ -86,7 +86,7 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     expect(n.flag('sic_distret')).toBe(true);
     expect(n.isHotspotVisible('fabrica_calderes', 'sic')).toBe(false);
     const torna = p.do('open', 'porta_cambra');
-    expect(keys(torna)).toContain('finestra.rebut');
+    expect(keys(torna)).toContain('finestra.rebut.mapa_fuga');
     expect(texts(torna)).toContain('molts racons');
     expect(keys(torna)).not.toContain('sala.fabrica_cambra.tornar2');
     expect(p.room).toBe('fabrica_cambra');
@@ -148,7 +148,7 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     p.use('llibreta_torn', item('tub_ferro9'));
     expect(p.inventory()).toContain('tub_amb_llibreta');
     const tub = keys(p.use('tub_amb_llibreta', 'cambra'));
-    expect(tub).toContain('finestra.enviat');
+    expect(tub).toContain('finestra.enviat.tub_amb_llibreta');
     expect(tub).toContain('sala.gavina_cella.tub0');
     expect(estatFinestra(n).enceses).toBe(enceses - 2);
 
@@ -258,7 +258,7 @@ describe('Ferro-9 · Acte 3 · El conducte', () => {
     p.do('walkTo', ruta[0]!);
     // Dins el conducte, el mapa només recorda els revolts.
     const dins = texts(p.do('look', item('mapa_fuga')));
-    expect(dins).toBe(`Cinc revolts: ${String(n.getVar('ruta_conducte'))}. ↑ vol dir recte.`);
+    expect(dins).toBe(`El fullet de la V.: un signe per revolt. La fletxa amunt vol dir recte. ${String(n.getVar('ruta_conducte'))}   (↑ = recte)`);
     p.do('walkTo', 'enrere');
     expect(p.room).toBe('fabrica_cambra');
     expect(texts(recorrerConducte(p))).toContain('El moll!');

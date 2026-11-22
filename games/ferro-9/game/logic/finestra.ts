@@ -30,7 +30,31 @@ export const FINESTRA_TEXTS = [
   'finestra.armat', 'finestra.armat_buit', 'finestra.esgotada', 'finestra.rebut', 'finestra.rebut_res',
   'finestra.enviat', 'finestra.automatica', 'finestra.rebuig.massa_pesat', 'finestra.rebuig.viu', 'finestra.rebuig.liquid', 'finestra.rebuig.no_hi_cap',
   'finestra.rebuig.no_cal_iri', 'finestra.rebuig.no_cal_vet', 'finestra.rebuig.no_cal_vet_abans', 'finestra.rebuig.no_cal_iri_abans', 'finestra.rebuig.no_cal_iri_res', 'finestra.espera.iri', 'finestra.espera.vet', 'finestra.boto_automatic',
+  ...frasesPerObjecte(),
 ];
+
+/** Els objectes que envia cada protagonista (`finestra` a items.json): les seves frases de la cambra, una per objecte. */
+function frasesPerObjecte() {
+  const envia: Record<string, string[]> = {
+    vet: ['nota_vet', 'nota_pany', 'nota_mida', 'pols_rovell', 'molla', 'nota_pressio', 'nota_massa', 'nota_vet_nom', 'mapa_fuga'],
+    iri: ['imant_ferro9', 'nota_iri', 'tram_biga_1', 'tram_biga_2', 'tram_biga_3', 'nota_amagatall', 'diapaso', 'nota_iri_nom', 'tub_amb_llibreta'],
+  };
+  const claus = ['finestra.posat.nota_vet', 'finestra.rebut.clau_anglesa'];
+  for (const [qui, items] of Object.entries(envia)) {
+    for (const item of items) claus.push(`finestra.enviat.${item}`, `finestra.espera.${qui}.${item}`, `finestra.rebut.${item}`);
+  }
+  return claus;
+}
+
+/**
+ * Les frases de posar, enviar, deixar en espera i rebre tenen una versió per a cada objecte que passa per la
+ * finestra (`finestra.enviat.molla`), perquè es puguin gravar amb veu: res de `{objecte}`. Si un objecte no en té,
+ * es diu la genèrica, que no l'anomena.
+ */
+function perObjecte(n: Narrative, base: string, item: string) {
+  const k = `${base}.${item}`;
+  return n.i18n.has(k) ? k : base;
+}
 
 /** La sala de la cambra de cada protagonista: a l'altra banda hi ha algú si hi és. */
 export const CAMBRES: Record<string, string> = { iri: 'fabrica_cambra', vet: 'gavina_cella' };
@@ -44,16 +68,6 @@ const v = {
 };
 
 const line = (text: string, params?: Record<string, string | number>, sound?: string) => ({ who: 'player' as const, text, params, sound });
-
-/**
- * El nom d'un objecte per als textos de la cambra, amb article («la molla», «l'imant de ferro-9»):
- * `obj.<id>.amb_article`. `Objecte` és el mateix amb majúscula, per començar una frase.
- */
-function nomObjecte(n: Narrative, item: string) {
-  const amb = n.t(`obj.${item}.amb_article`);
-  const objecte = amb.startsWith('⟦') ? n.itemName(item) : amb;
-  return { objecte, Objecte: objecte.charAt(0).toUpperCase() + objecte.slice(1) };
-}
 
 /** Sons de la cambra (`game/audio/sfx/`). */
 export const SONS_FINESTRA = { posar: 'cambra_posa', armar: 'cambra_arma', fase: 'fase' };
@@ -87,7 +101,7 @@ function rebre(n: Narrative, costat: string) {
     ...(item ? [{ giveItem: item, who: costat }] : []),
     { event: 'finestra.transferencia', args: { de: emissora, a: costat, objecte: item } },
   ]);
-  const lines = [line(item ? 'finestra.rebut' : 'finestra.rebut_res', item ? nomObjecte(n, item) : { objecte: '' }, SONS_FINESTRA.fase)];
+  const lines = [line(item ? perObjecte(n, 'finestra.rebut', item) : 'finestra.rebut_res', undefined, SONS_FINESTRA.fase)];
   if (!n.flag(v.automatica) && Number(n.getVar(v.transferencies)) >= TRANSFERENCIES_RITUAL) {
     n.apply({ setFlag: v.automatica });
     lines.push(line('finestra.automatica'));
@@ -119,10 +133,10 @@ export function installFinestra(n: Narrative) {
     const costat = n.world.activeProtagonist();
     const item = String(args.item ?? '');
     const estat = estatFinestra(n);
-    if (estat.objecte(costat)) return { lines: [line('finestra.ple', nomObjecte(n, estat.objecte(costat)))] };
+    if (estat.objecte(costat)) return { lines: [line('finestra.ple')] };
     if (estat.armada === costat) return { lines: [line('finestra.ja_armat')] };
     const rebuig = motiuRebuig(n, item, costat);
-    if (rebuig) return { lines: [line(rebuig, nomObjecte(n, item))] };
+    if (rebuig) return { lines: [line(rebuig)] };
     if (n.flag(v.automatica)) {
       // Un sol pas: posar-lo ja és enviar-lo. Un camp armat buit (partides d'abans) no ha d'encallar res.
       if (estat.armada && !estat.objecte(estat.armada)) n.apply({ setVar: v.armada, value: '' });
@@ -132,7 +146,7 @@ export function installFinestra(n: Narrative) {
       if (!aLaCambra(n, altra)) {
         // A l'altra banda no hi ha ningú: queda armat, i passarà quan hi entri (vegeu `onEnterRoom`, a sota).
         n.apply([{ takeItem: item, who: costat }, { setVar: v.objecte(costat), value: item }, { setVar: v.armada, value: costat }]);
-        return { lines: [line(`finestra.espera.${costat}`, nomObjecte(n, item), SONS_FINESTRA.armar)] };
+        return { lines: [line(perObjecte(n, `finestra.espera.${costat}`, item), undefined, SONS_FINESTRA.armar)] };
       }
       n.apply([
         { takeItem: item, who: costat },
@@ -142,10 +156,10 @@ export function installFinestra(n: Narrative) {
         { event: 'finestra.transferencia', args: { de: costat, a: altra, objecte: item } },
         { event: 'protagonista', args: { id: altra } },
       ]);
-      return { lines: [line('finestra.enviat', nomObjecte(n, item), SONS_FINESTRA.fase)] };
+      return { lines: [line(perObjecte(n, 'finestra.enviat', item), undefined, SONS_FINESTRA.fase)] };
     }
     n.apply([{ takeItem: item, who: costat }, { setVar: v.objecte(costat), value: item }]);
-    return { lines: [line('finestra.posat', nomObjecte(n, item), SONS_FINESTRA.posar)] };
+    return { lines: [line(perObjecte(n, 'finestra.posat', item), undefined, SONS_FINESTRA.posar)] };
   });
 
   /** Treure l'objecte de la cambra (si no està armada). */
@@ -156,7 +170,7 @@ export function installFinestra(n: Narrative) {
     if (!item) return { lines: [line('finestra.buida')] };
     if (estat.armada === costat) return { lines: [line('finestra.tancada')] };
     n.apply([{ setVar: v.objecte(costat), value: '' }, { giveItem: item, who: costat }]);
-    return { lines: [line('finestra.tret', nomObjecte(n, item))] };
+    return { lines: [line('finestra.tret')] };
   });
 
   /**

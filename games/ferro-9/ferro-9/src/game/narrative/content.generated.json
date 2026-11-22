@@ -1754,6 +1754,10 @@
                 "text": "obj.molla.etiqueta"
               },
               {
+                "who": "narrator",
+                "text": "obj.molla.nota"
+              },
+              {
                 "who": "player",
                 "text": "obj.molla.iri"
               },
@@ -2351,6 +2355,10 @@
               {
                 "who": "player",
                 "text": "obj.mapa_fuga.conducte"
+              },
+              {
+                "who": "narrator",
+                "text": "obj.mapa_fuga.signes"
               }
             ]
           },
@@ -2367,6 +2375,14 @@
               {
                 "who": "narrator",
                 "text": "obj.mapa_fuga.text"
+              },
+              {
+                "who": "narrator",
+                "text": "obj.mapa_fuga.signes"
+              },
+              {
+                "who": "narrator",
+                "text": "obj.mapa_fuga.text2"
               },
               {
                 "who": "player",
@@ -2408,6 +2424,14 @@
               {
                 "who": "narrator",
                 "text": "obj.mapa_fuga.text"
+              },
+              {
+                "who": "narrator",
+                "text": "obj.mapa_fuga.signes"
+              },
+              {
+                "who": "narrator",
+                "text": "obj.mapa_fuga.text2"
               }
             ]
           }
@@ -10269,8 +10293,23 @@
                     }
                   },
                   {
+                    "who": "narrator",
+                    "text": "sala.gavina_memoria.mapa.signes",
+                    "if": {
+                      "flag": "mapa_fuga_escrit",
+                      "is": false
+                    }
+                  },
+                  {
                     "who": "player",
                     "text": "sala.gavina_memoria.mapa.ruta_copiada",
+                    "if": {
+                      "flag": "mapa_fuga_escrit"
+                    }
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_memoria.mapa.signes",
                     "if": {
                       "flag": "mapa_fuga_escrit"
                     }
@@ -15506,6 +15545,10 @@
           },
           {
             "who": "narrator",
+            "text": "final.correspondencia.carta"
+          },
+          {
+            "who": "narrator",
             "text": "final.correspondencia.4"
           }
         ],
@@ -18909,7 +18952,7 @@
       "dlg.guardia.opt.qui": "Qui ets?",
       "dlg.guardia.qui1": "Guàrdia d'Orís. La meva besàvia va treballar a la fàbrica d'aquí sota, al torn de nit.",
       "dlg.guardia.qui2": "Sempre deia que una tal I. li havia salvat la feina. I potser alguna cosa més.",
-      "dlg.guardia.qui_vet": "(D'Orís... Algú del torn de nit de la I. I la I. li va salvar la feina.)",
+      "dlg.guardia.qui_vet": "(a part) D'Orís... Algú del torn de nit de la I. I la I. li va salvar la feina.",
       "dlg.guardia.opt.vitrina": "Tens la clau de les vitrines del museu?",
       "dlg.guardia.vitrina1": "Les vitrines? Sí, les tinc totes en aquest clauer. Per què?",
       "dlg.guardia.vitrina2": "...No m'ho diguis. Té. Si algú pregunta, se m'ha caigut.",
@@ -18918,7 +18961,7 @@
       "dlg.cargol_vell.primera1": "Benvinguda a la Sala de la Memòria. No toqui les vitrines.",
       "dlg.cargol_vell.primera2": "No recordo per què. Però no les toqui.",
       "dlg.cargol_vell.hola": "No toqui les vitrines, interna.",
-      "dlg.cargol_vell.recorda": "Interna Vet! La senyora Iri n'estaria orgullosa.",
+      "dlg.cargol_vell.recorda": "Interna 9! La senyora Iri n'estaria orgullosa.",
       "dlg.cargol_vell.opt.qui": "Qui ets?",
       "dlg.cargol_vell.qui1": "Un robot de manteniment, model C-1. Nom... no en tinc. Em diuen «el conserge».",
       "dlg.cargol_vell.qui2": "Abans de ser conserge vaig ser alguna cosa més. No ho recordo. Ningú no em va deixar recordar-ho.",
@@ -19001,10 +19044,11 @@
       "final.oris.mos": "Al moll, un home gran amb els ulls pintats ajuda a descarregar. No ha estat mai a cap cel·la.",
       "final.correspondencia.1": "Al costat de la directora hi ha un robot vell i rovellat, amb una placa al pit: «CARGOL».",
       "final.correspondencia.2": "«Senyora Vet. Fa cent vint anys que l'espero. Tinc una cosa per a vostè.»",
-      "final.correspondencia.3": "Una carta plegada mil vegades: «V.: he viscut molt, i he viscut lliure. La Mira et saluda. El Cargol m'ha promès arreglar la cambra. Escriu-me. —I.»",
+      "final.correspondencia.3": "Una carta plegada mil vegades.",
       "final.correspondencia.4": "«Cent vint anys reparant la cambra, i ningú no ho sabia. Vaig esperar. Era la meva feina.»",
       "final.credits1": "Una aventura gràfica feta amb males herbes - malaherbasoft.cat",
       "final.credits2": "Durant la producció d'aquest joc no es va segellar cap formulari 27-B. Bé, tres: eren per triplicat.",
+      "final.correspondencia.carta": "«V.: he viscut molt, i he viscut lliure. La Mira et saluda. El Cargol m'ha promès arreglar la cambra. Escriu-me. —I.»",
       "joc.titol": "Ferro-9",
       "ui.defecte": "Això no funciona.",
       "ui.defecte.look": "Res d'especial.",
@@ -19073,38 +19117,94 @@
       "ui.missio.completada": "Missió completada: {titol}",
       "ui.missio.fallida": "Missió fallida: {titol}",
       "ui.fi": "FI",
-      "finestra.posat": "Poso {objecte} dins la cambra.",
-      "finestra.ple": "Ja hi ha {objecte} a dins. Hi cap una cosa cada vegada.",
+      "finestra.posat": "Ho poso dins la cambra.",
+      "finestra.ple": "Ja hi ha una cosa a dins. Hi cap una cosa cada vegada.",
       "finestra.ja_armat": "El camp ja està armat. Ara ho ha de recollir l'altra banda.",
       "finestra.tancada": "El vidre no s'obre mentre el camp està armat.",
       "finestra.buida": "No hi ha res a dins.",
-      "finestra.tret": "Trec {objecte} de la cambra.",
+      "finestra.tret": "Ho trec de la cambra.",
       "finestra.armat": "Un brunzit greu. El camp està armat.",
       "finestra.armat_buit": "Un brunzit greu. El camp està armat... però la cambra està buida.",
       "finestra.esgotada": "No passa res. La cambra està esgotada.",
       "marca.reajust1": "Ai... Mal de cap. Com si m'haguessin donat la volta.",
       "marca.reajust2": "Alguna cosa ha canviat, però aquí no. Li vaig dir a la I. que era al costat del pilar 7...",
-      "finestra.rebut": "Un espetec, una llum... i apareix {objecte}!",
+      "finestra.rebut": "Un espetec, una llum... i apareix alguna cosa!",
       "finestra.rebut_res": "Un espetec, una llum... i res. Algú ha enviat aire.",
-      "finestra.rebuig.massa_pesat": "{Objecte} no hi cap. És massa gran per a la cambra.",
+      "finestra.rebuig.massa_pesat": "No hi cap. És massa gran per a la cambra.",
       "finestra.rebuig.viu": "No. Res que sigui viu. Ni tan sols per ciència.",
       "finestra.rebuig.liquid": "Un líquid dins la cambra? Millor no.",
       "finestra.rebuig.no_hi_cap": "Això no hi cap.",
-      "finestra.rebuig.no_cal_iri": "Gastar un enviament en {objecte}? A la V. no li fa cap falta.",
-      "finestra.rebuig.no_cal_vet": "Gastar un enviament en {objecte}? La I. no en treuria res, i jo potser sí.",
-      "finestra.rebuig.no_cal_iri_res": "Ficar {objecte} dins la cambra? Per a què? Aquesta andròmina no serveix per a res.",
-      "finestra.rebuig.no_cal_iri_abans": "Gastar un enviament en {objecte}? A la de la cel·la 9 no li fa cap falta.",
-      "finestra.rebuig.no_cal_vet_abans": "Ficar {objecte} dins aquest forat? Si algú m'ha enviat una clau, el que jo li enviï ha de servir d'alguna cosa.",
-      "finestra.enviat": "Poso {objecte} dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.rebuig.no_cal_iri": "Gastar un enviament en això? A la V. no li fa cap falta.",
+      "finestra.rebuig.no_cal_vet": "Gastar un enviament en això? La I. no en treuria res, i jo potser sí.",
+      "finestra.rebuig.no_cal_iri_res": "Ficar això dins la cambra? Per a què? Aquesta andròmina no serveix per a res.",
+      "finestra.rebuig.no_cal_iri_abans": "Gastar un enviament en això? A la de la cel·la 9 no li fa cap falta.",
+      "finestra.rebuig.no_cal_vet_abans": "Ficar això dins aquest forat? Si algú m'ha enviat una clau, el que jo li enviï ha de servir d'alguna cosa.",
+      "finestra.enviat": "Ho poso dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
       "finestra.automatica": "Si hi ha algú a l'altra banda, no penso anar amunt i avall cada vegada. Deixo la cambra sincronitzada: el que s'hi posi, passarà sol.",
       "finestra.boto_automatic": "No cal tocar res: la cambra està sincronitzada. N'hi ha prou de posar-hi el que vulgui enviar.",
-      "finestra.espera.iri": "Poso {objecte} dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
-      "finestra.espera.vet": "Poso {objecte} al panell i el camp s'arma. Però el panell no vibra: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.espera.iri": "Ho poso dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.espera.vet": "Ho poso al panell i el camp s'arma. Però el panell no vibra: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
       "acte.1": "Acte 1 · La descoberta",
       "acte.fi1": "Fi de l'Acte 1",
       "acte.2": "Acte 2 · El camí llarg",
       "acte.fi2": "Fi de l'Acte 2",
       "acte.3": "Acte 3 · La finestra",
+      "finestra.posat.nota_vet": "Poso la nota al buit de darrere el panell.",
+      "finestra.rebut.clau_anglesa": "Un espetec, una llum... i apareix una clau anglesa!",
+      "finestra.enviat.imant_ferro9": "Poso l'imant de ferro-9 dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.iri.imant_ferro9": "Poso l'imant de ferro-9 dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.imant_ferro9": "Un espetec, una llum... i apareix un imant! De ferro-9, com la clau!",
+      "finestra.enviat.nota_iri": "Poso la resposta dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.iri.nota_iri": "Poso la resposta dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.nota_iri": "Un espetec, una llum... i apareix una nota! M'han contestat!",
+      "finestra.enviat.nota_vet": "Poso la nota al panell. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.vet.nota_vet": "Poso la nota al panell i el camp s'arma. Però el panell no vibra: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.nota_vet": "Un espetec, una llum... i apareix un paper. Una nota, escrita amb... llapis d'ulls?!",
+      "finestra.enviat.nota_pany": "Poso el dibuix del pany al panell. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.vet.nota_pany": "Poso el dibuix del pany al panell i el camp s'arma. Però el panell no vibra: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.nota_pany": "Un espetec, una llum... i apareix un dibuix d'un pany. És de la de la cel·la 9!",
+      "finestra.enviat.nota_mida": "Poso la nota de la mida al panell. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.vet.nota_mida": "Poso la nota de la mida al panell i el camp s'arma. Però el panell no vibra: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.nota_mida": "Un espetec, una llum... i apareix una nota de la V.!",
+      "finestra.enviat.tram_biga_1": "Poso el primer tram de biga dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.iri.tram_biga_1": "Poso el primer tram de biga dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.tram_biga_1": "Un espetec, una llum... i apareix el primer tram de biga!",
+      "finestra.enviat.tram_biga_2": "Poso el segon tram de biga dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.iri.tram_biga_2": "Poso el segon tram de biga dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.tram_biga_2": "Un espetec, una llum... i apareix el segon tram de biga!",
+      "finestra.enviat.tram_biga_3": "Poso l'últim tram de biga dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.iri.tram_biga_3": "Poso l'últim tram de biga dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.tram_biga_3": "Un espetec, una llum... i apareix l'últim tram de biga!",
+      "finestra.enviat.nota_amagatall": "Poso la nota del moll dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.iri.nota_amagatall": "Poso la nota del moll dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.nota_amagatall": "Un espetec, una llum... i apareix una nota de la I.!",
+      "finestra.enviat.pols_rovell": "Poso el grapat de pols de rovell al panell. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.vet.pols_rovell": "Poso el grapat de pols de rovell al panell i el camp s'arma. Però el panell no vibra: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.pols_rovell": "Un espetec, una llum... i apareix un grapat de pols vermella!",
+      "finestra.enviat.molla": "Poso la molla afinada al panell. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.vet.molla": "Poso la molla afinada al panell i el camp s'arma. Però el panell no vibra: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.molla": "Un espetec, una llum... i apareix una molla de llit, amb una tira de tela lligada!",
+      "finestra.enviat.diapaso": "Poso el diapasó dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.iri.diapaso": "Poso el diapasó dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.diapaso": "Un espetec, una llum... i apareix un diapasó! Lluent, de ferro-9!",
+      "finestra.enviat.nota_pressio": "Poso la nota de la pressió al panell. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.vet.nota_pressio": "Poso la nota de la pressió al panell i el camp s'arma. Però el panell no vibra: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.nota_pressio": "Un espetec, una llum... i apareix una altra nota de la V.!",
+      "finestra.enviat.nota_massa": "Poso la nota del «MASSA» al panell. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.vet.nota_massa": "Poso la nota del «MASSA» al panell i el camp s'arma. Però el panell no vibra: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.nota_massa": "Un espetec, una llum... i apareix una nota de la V. En majúscules!",
+      "finestra.enviat.nota_vet_nom": "Poso la nota amb el meu nom al panell. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.vet.nota_vet_nom": "Poso la nota amb el meu nom al panell i el camp s'arma. Però el panell no vibra: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.nota_vet_nom": "Un espetec, una llum... i apareix una nota de la V. Aquesta vegada, signada!",
+      "finestra.enviat.nota_iri_nom": "Poso la nota amb el meu nom dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.iri.nota_iri_nom": "Poso la nota amb el meu nom dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.nota_iri_nom": "Un espetec, una llum... i apareix una nota de la I.!",
+      "finestra.enviat.mapa_fuga": "Poso el fullet amb el mapa al panell. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.vet.mapa_fuga": "Poso el fullet amb el mapa al panell i el camp s'arma. Però el panell no vibra: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.mapa_fuga": "Un espetec, una llum... i apareix un fullet d'un museu!",
+      "finestra.enviat.tub_amb_llibreta": "Poso el tub amb la llibreta dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.iri.tub_amb_llibreta": "Poso el tub amb la llibreta dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.tub_amb_llibreta": "Un espetec, una llum... i apareix un tub de vàlvula, nou de trinca!",
       "ui.verb.give": "Dona",
       "ui.verb.give.prep": "a",
       "ui.verb.pickUp": "Agafa",
@@ -19249,7 +19349,7 @@
       "obj.nota_iri.vet1": "La fàbrica Aldaia? Va tancar fa cent vint anys. Ho diuen tots els fullets de reeducació.",
       "obj.nota_iri.vet2": "...",
       "obj.nota_iri.vet3": "Oh. Oh, no. Oh, sí!",
-      "obj.nota_iri.correspondencia.inici": "(Durant una hora, la cambra no para d'espetegar.)",
+      "obj.nota_iri.correspondencia.inici": "Durant una hora, la cambra no para d'espetegar.",
       "obj.nota_iri.correspondencia.1": "«\"Brutal-plus\" vol dir que ets molt bona. \"Reciclar\" no ho sé: ningú no en torna. Pregunta rara, i no facis òrbita: què veus per la finestra? —La de la cel·la 9»",
       "obj.nota_iri.correspondencia.2": "«Xemeneies, fum i el canal. Com cada nit. «Fer òrbita»? Aquí només en fan les arnes, al fanal. I torna'm la clau anglesa, que és la meva preferida. —I.»",
       "obj.nota_iri.correspondencia.3": "«Per la meva finestra hi ha estrelles, i la Terra, petita i blava. La Gavina dona voltes al món. I la teva clau porta un segell: \"Aldaia · Ferro-9 · Lot 1\". Aquest metall fa cent vint anys que no es fabrica: aquí dalt és tan de rovell que la posarien en un museu. —La de la cel·la 9»",
@@ -19314,7 +19414,7 @@
       "obj.molla.estirar": "L'estiro una mica.",
       "obj.molla.massa": "Més arronsada no pot estar.",
       "obj.molla.arronsar": "L'arronso una mica.",
-      "obj.molla.etiqueta": "Una molla de llit, amb una tira de tela lligada: «I.: fes-me una cosa de ferro-9 que soni EXACTAMENT com aquesta molla. És per obrir un pany. No la toquis, que està afinada. I zero-g, eh. —V.»",
+      "obj.molla.etiqueta": "Una molla de llit, amb una tira de tela lligada.",
       "obj.molla.iri": "Una nota dins d'una molla. Necessito un diapasó de ferro-9 que soni igual.",
       "obj.molla.afinada": "La molla afinada, amb el missatge per a la I.",
       "obj.molla.nom": "molla",
@@ -19386,8 +19486,8 @@
       "obj.llapis_ulls.mapa_on": "El conducte comença al mòdul C. Però on, exactament? Abans de dibuixar-lo, el vull veure.",
       "obj.mapa_fuga.nom": "mapa de fuga",
       "obj.mapa_fuga.desc": "El fullet de la Sala de la Memòria, amb la ruta dibuixada per darrere amb llapis d'ulls.",
-      "obj.mapa_fuga.text": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. Cinc revolts: {ruta_conducte} (↑ vol dir recte). El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. PD 2: la Directora ha fet treure el tub de la vàlvula de la llançadora, i sense no engega. Si me'n fas un, que sigui l'últim enviament. —V.»",
-      "obj.mapa_fuga.conducte": "Cinc revolts: {ruta_conducte}. ↑ vol dir recte.",
+      "obj.mapa_fuga.text": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. Cinc revolts, un signe per revolt:",
+      "obj.mapa_fuga.conducte": "El fullet de la V.: un signe per revolt. La fletxa amunt vol dir recte.",
       "obj.mapa_fuga.iri1": "Una ruta per fugir. I la V. també la necessita.",
       "obj.mapa_fuga.iri2": "La reixa té quatre cargols d'acer. En cent vint anys, el rovell els soldarà.",
       "obj.mapa_fuga.iri3": "Si els llimo fins que s'aguantin per un fil, no hi quedarà res per soldar.",
@@ -19491,6 +19591,9 @@
       "obj.clau_anglesa.vet3": "Ni pantalla, ni bateria, ni garantia. Pura arqueologia.",
       "obj.imant_ferro9.vet": "Un imant de ferro-9: obre els panys M-3. Sense bateria. A l'època de la I. tot funcionava per fe.",
       "obj.mapa_fuga.iri0": "Per davant, el fullet d'un museu. Hi surt la meva clau anglesa: «objecte ritual de l'era de les fàbriques». És una clau anglesa.",
+      "obj.mapa_fuga.signes": "{ruta_conducte}   (↑ = recte)",
+      "obj.mapa_fuga.text2": "El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. PD 2: la Directora ha fet treure el tub de la vàlvula de la llançadora, i sense no engega. Si me'n fas un, que sigui l'últim enviament. —V.»",
+      "obj.molla.nota": "«I.: fes-me una cosa de ferro-9 que soni EXACTAMENT com aquesta molla. És per obrir un pany. No la toquis, que està afinada. I zero-g, eh. —V.»",
       "pj.iri.nom": "Iri",
       "pj.vet.nom": "Vet",
       "pj.cargol.nom": "Cargol",
@@ -19844,7 +19947,7 @@
       "sala.fabrica_cambra.boto.accident1": "Ningú no ho ha d'autoritzar si ningú no ho veu. Premo el botó.",
       "sala.fabrica_cambra.boto.accident2": "El vidre baixa de cop! La clau s'ha quedat a dins.",
       "sala.fabrica_cambra.boto.accident3": "I ara no s'obre. Fantàstic.",
-      "sala.fabrica_cambra.boto.accident4": "Ja la recuperaré demà. Uf, de cop em fa mal el cap.",
+      "sala.fabrica_cambra.boto.accident4": "Ja la recuperaré demà. Uf. Quin brunzit.",
       "sala.fabrica_cambra.boto.accident5": "Mentrestant, cent vint anys després...",
       "sala.fabrica_cambra.cambra.clau_dins": "La clau anglesa és a dins, i la cambra brunzeix. El botó vermell fa pampallugues.",
       "sala.fabrica_cambra.cambra.deixar_clau": "La deixo a dins una estona. Vull veure què passa.",
@@ -19866,7 +19969,7 @@
       "sala.fabrica_cambra.nom": "Cambra de ressonància",
       "sala.gavina_cella.panell.vibra": "Un panell rovellat a la paret. Vibra. Com si tingués son. O ganes de molestar.",
       "sala.gavina_cella.panell.cop1": "Prou de vibrar!",
-      "sala.gavina_cella.panell.cop2": "(La Vet clava un cop de puny al panell.)",
+      "sala.gavina_cella.panell.cop2": "La Vet clava un cop de puny al panell.",
       "sala.gavina_cella.panell.cop3": "Au, au, au!",
       "sala.gavina_cella.panell.paret_guanya": "Au. La paret guanya. Com sempre.",
       "sala.gavina_cella.panell.obrir1": "Desmunto la tapa amb la clau anglesa...",
@@ -20144,8 +20247,8 @@
       "sala.gavina_memoria.mapa.text": "Un mapa de La Gavina, amb una estrella: «Vostè és aquí». Per sota del mòdul C hi passa una línia discontínua: «Conducte de servei de l'antiga fàbrica (en desús)».",
       "sala.gavina_memoria.mapa.vet1": "Un conducte de servei de la fàbrica, que arriba fins a l'hangar.",
       "sala.gavina_memoria.mapa.vet2": "Al temps de la I. encara s'hi deu poder passar. Per allà no la veuria ningú.",
-      "sala.gavina_memoria.mapa.ruta": "La línia fa cinc revolts entre el mòdul C i l'hangar: {ruta_conducte}. Els copiaré al fullet, amb la ruta.",
-      "sala.gavina_memoria.mapa.ruta_copiada": "Els cinc revolts: {ruta_conducte}. Els mateixos que vaig copiar al fullet.",
+      "sala.gavina_memoria.mapa.ruta": "La línia fa cinc revolts entre el mòdul C i l'hangar. Els copiaré al fullet, amb la ruta.",
+      "sala.gavina_memoria.mapa.ruta_copiada": "Els cinc revolts. Els mateixos que vaig copiar al fullet.",
       "sala.gavina_memoria.fullets.nom": "fullets",
       "sala.gavina_memoria.fullets.agafar": "N'agafo un. Per darrere està en blanc: hi cap un mapa.",
       "sala.gavina_memoria.fullets.prou": "Ja en tinc un.",
@@ -20189,7 +20292,7 @@
       "sala.gavina_cella.reixa.obrir2_fosc": "A dins, fosc i revolts. Però el camí me'l sé: el del mapa de la Sala de la Memòria.",
       "sala.gavina_cella.reixa.obrir3": "M'has obert la porta des de fa cent vint anys, I.",
       "sala.gavina_cella.reixa.entrar": "M'hi fico de quatre grapes i segueixo les fletxes de la I. fins a l'hangar.",
-      "sala.gavina_cella.reixa.entrar_mapa": "M'hi fico de quatre grapes i segueixo els revolts del mapa fins a l'hangar: {ruta_conducte}.",
+      "sala.gavina_cella.reixa.entrar_mapa": "M'hi fico de quatre grapes i segueixo els revolts del mapa fins a l'hangar.",
       "sala.gavina_cella.reixa.look_oberta": "La reixa del conducte, oberta. A dins, la I. i la fletxa.",
       "sala.gavina_cella.reixa.look_oberta_fosc": "La reixa del conducte, oberta. A dins, fosc i revolts.",
       "sala.gavina_cella.reixa.look_llimada": "La reixa. Els quatre cargols, llimats fins a quedar en un fil. Fa cent vint anys.",
@@ -20387,7 +20490,8 @@
       "sala.gavina_memoria.holograma.cafe1": "«Els obrers de l'era de les fàbriques bevien un elixir ritual, el cafè, per resistir el torn de nit. La corporació l'hi oferia generosament.»",
       "sala.gavina_memoria.holograma.cafe2": "Inexacte. El cafè, se'l pagaven ells. Dues monedes, a la màquina del passadís.",
       "sala.gavina_memoria.holograma.casc1": "«El fundador treballava colze a colze amb els obrers. Ho demostra el seu casc de seguretat: ni una ratlla.»",
-      "sala.gavina_memoria.holograma.casc2": "Ni una ratlla perquè no se'l va posar mai. Consta a l'inventari."
+      "sala.gavina_memoria.holograma.casc2": "Ni una ratlla perquè no se'l va posar mai. Consta a l'inventari.",
+      "sala.gavina_memoria.mapa.signes": "Els revolts del mapa: {ruta_conducte}"
     }
   },
   "locale": "ca",

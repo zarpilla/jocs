@@ -38,7 +38,7 @@ function finsMida(checkHints = true, fins?: string) {
   // ── Vet: ho envia (un sol pas) i l'Iri ho llegeix ──
   p.do('open', 'porta_passadis');
   p.do('open', 'porta_cella');
-  expect(keys(p.use('nota_mida', 'panell'))).toEqual(['finestra.enviat']);
+  expect(keys(p.use('nota_mida', 'panell'))).toEqual(['finestra.enviat.nota_mida']);
   expect(p.active).toBe('iri');
   expect(texts(p.do('look', item('nota_mida')))).toContain('dos metres');
   expect(n.state.quests.acte2!.objectives.mida).toBe(true);
@@ -352,7 +352,7 @@ function escriureIEnviar(p: ReturnType<typeof partida>['p'], nota: string) {
   // Si l'Iri no és a la cambra, la nota queda armada i li arriba quan hi entra.
   if (p.active === 'vet') {
     p.switchTo('iri');
-    expect(keys(p.goTo('fabrica_cambra'))).toContain('finestra.rebut');
+    expect(keys(p.goTo('fabrica_cambra')).some((k) => k.startsWith('finestra.rebut.'))).toBe(true);
   }
   expect(p.active).toBe('iri');
   expect(p.inventory()).toContain(nota);
@@ -528,10 +528,10 @@ describe("Ferro-9 · Acte 2 · L'arxiu i el despatx", () => {
     p.use('llapis_ulls', item('tros_cartell'));
     p.do('open', 'porta_cella');
     // L'Iri és al moll: a l'altra banda no hi ha ningú, i la nota l'espera a la cambra.
-    expect(keys(p.use('nota_vet_nom', 'panell'))).toEqual(['finestra.espera.vet']);
+    expect(keys(p.use('nota_vet_nom', 'panell'))).toEqual(['finestra.espera.vet.nota_vet_nom']);
     expect(p.active).toBe('vet');
     p.switchTo('iri');
-    expect(keys(p.goTo('fabrica_cambra'))).toContain('finestra.rebut');
+    expect(keys(p.goTo('fabrica_cambra'))).toContain('finestra.rebut.nota_vet_nom');
     expect(texts(p.do('look', item('nota_vet_nom')))).toContain('Es diu Vet');
     p.use('llapis', item('llibreta_torn'));
     p.goTo('fabrica_calderes');

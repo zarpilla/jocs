@@ -131,7 +131,7 @@ describe('Ferro-9 · Acte 1', () => {
 
     // ── Vet: el cop de puny (sincronia per accident) ──
     const cop = p.do('push', 'panell');
-    expect(keys(cop)).toContain('finestra.rebut');
+    expect(keys(cop)).toContain('finestra.rebut.clau_anglesa');
     expect(p.inventory()).toEqual(['clau_anglesa']);
     expect(n.state.quests.acte1!.objectives.primera_transferencia).toBe(true);
 
@@ -171,7 +171,7 @@ describe('Ferro-9 · Acte 1', () => {
     expect(texts(p.do('look', { kind: 'item', id: 'nota_vet' }))).toContain('brutal-plus');
     p.use('llapis', { kind: 'item', id: 'llibreta_torn' });
     // Des d'ara, posar-ho a la cambra ho fa tot: s'envia i canviem a l'altra banda.
-    expect(keys(p.use('nota_iri', 'cambra'))).toEqual(['finestra.enviat']);
+    expect(keys(p.use('nota_iri', 'cambra'))).toEqual(['finestra.enviat.nota_iri']);
 
     // ── Vet: entén que són en temps diferents ──
     expect(p.active).toBe('vet');
@@ -243,7 +243,7 @@ describe('Ferro-9 · Acte 1', () => {
     expect(estatFinestra(n).enceses).toBe(abans);
     expect(p.inventory()).toContain('avis_reciclatge');
     n.apply({ giveItem: 'nota_vet', who: 'vet' });
-    expect(keys(p.use('nota_vet', 'panell'))).toEqual(['finestra.enviat']);
+    expect(keys(p.use('nota_vet', 'panell'))).toEqual(['finestra.enviat.nota_vet']);
     expect(estatFinestra(n).armada).toBe('');
     expect(estatFinestra(n).enceses).toBe(abans - 1);
     // Canvi automàtic a l'altra banda, amb l'objecte a l'inventari.
@@ -274,7 +274,7 @@ describe('Ferro-9 · Acte 1', () => {
     expect(keys(p.do('push', 'panell'))).toEqual(['finestra.boto_automatic']);
     expect(estatFinestra(n).armada).toBe('');
     n.apply([{ giveItem: 'nota_vet', who: 'vet' }, { giveItem: 'nota_pany', who: 'vet' }]);
-    expect(keys(p.use('nota_vet', 'panell'))).toEqual(['finestra.espera.vet']);
+    expect(keys(p.use('nota_vet', 'panell'))).toEqual(['finestra.espera.vet.nota_vet']);
     expect(p.active).toBe('vet');
     expect(p.inventory()).not.toContain('nota_vet');
     expect(estatFinestra(n).armada).toBe('vet');
@@ -285,7 +285,7 @@ describe('Ferro-9 · Acte 1', () => {
     p.switchTo('iri');
     expect(p.inventory()).not.toContain('nota_vet');
     expect(n.activeHints()[0]).toBe('iri_rebre');
-    expect(keys(p.goTo('fabrica_cambra'))).toContain('finestra.rebut');
+    expect(keys(p.goTo('fabrica_cambra'))).toContain('finestra.rebut.nota_vet');
     expect(p.inventory()).toContain('nota_vet');
     expect(estatFinestra(n).armada).toBe('');
     expect(estatFinestra(n).enceses).toBe(abans - 1);
@@ -297,16 +297,16 @@ describe('Ferro-9 · Acte 1', () => {
     p.goTo('gavina_passadis');
     p.switchTo('iri');
     n.apply({ giveItem: 'nota_iri', who: 'iri' });
-    expect(keys(p.use('nota_iri', 'cambra'))).toEqual(['finestra.espera.iri']);
+    expect(keys(p.use('nota_iri', 'cambra'))).toEqual(['finestra.espera.iri.nota_iri']);
     expect(p.active).toBe('iri');
     p.switchTo('vet');
     expect(p.inventory()).not.toContain('nota_iri');
-    expect(keys(p.goTo('gavina_cella'))).toContain('finestra.rebut');
+    expect(keys(p.goTo('gavina_cella'))).toContain('finestra.rebut.nota_iri');
     expect(p.inventory()).toContain('nota_iri');
     expect(estatFinestra(n).enceses).toBe(abans - 2);
 
     // ── I amb l'altra a la cambra, passa de seguida ──
-    expect(keys(p.use('nota_pany', 'panell'))).toEqual(['finestra.enviat']);
+    expect(keys(p.use('nota_pany', 'panell'))).toEqual(['finestra.enviat.nota_pany']);
     expect(p.active).toBe('iri');
     expect(p.inventory()).toContain('nota_pany');
   });

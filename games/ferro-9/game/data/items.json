@@ -1491,6 +1491,10 @@
             "text": "obj.molla.etiqueta"
           },
           {
+            "who": "narrator",
+            "text": "obj.molla.nota"
+          },
+          {
             "who": "player",
             "text": "obj.molla.iri"
           },
@@ -2088,6 +2092,10 @@
           {
             "who": "player",
             "text": "obj.mapa_fuga.conducte"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.mapa_fuga.signes"
           }
         ]
       },
@@ -2104,6 +2112,14 @@
           {
             "who": "narrator",
             "text": "obj.mapa_fuga.text"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.mapa_fuga.signes"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.mapa_fuga.text2"
           },
           {
             "who": "player",
@@ -2145,6 +2161,14 @@
           {
             "who": "narrator",
             "text": "obj.mapa_fuga.text"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.mapa_fuga.signes"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.mapa_fuga.text2"
           }
         ]
       }
