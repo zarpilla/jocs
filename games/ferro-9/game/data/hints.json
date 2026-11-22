@@ -3024,6 +3024,30 @@
       "pista.iri_marca.3"
     ]
   },
+  "vet_veure_marca": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "marca_pilar"
+        },
+        {
+          "flag": "vet_ha_vist_marca",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vet_ha_vist_marca"
+    },
+    "levels": [
+      "pista.vet_veure_marca.1",
+      "pista.vet_veure_marca.2"
+    ]
+  },
   "vet_reixa": {
     "priority": 4,
     "when": {

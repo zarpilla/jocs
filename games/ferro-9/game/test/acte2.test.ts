@@ -97,6 +97,20 @@ describe('Ferro-9 · Acte 2 · La comporta', () => {
     expect(estatFinestra(n).enceses).toBe(24 - 9 - 1 - 3);
   });
 
+  it("després de la marca, una pista porta la Vet a l'hangar a veure-la", () => {
+    const s = finsMida();
+    const { p, n } = s;
+    p.switchTo('vet');
+    expect(p.room).toBe('gavina_cella');
+    expect(n.flag('vet_ha_vist_marca')).toBe(false);
+    expect(n.activeHints()[0]).toBe('vet_veure_marca');
+    expect(n.requestHint()!.text).toContain('pilar 7');
+    p.do('open', 'porta');
+    p.do('open', 'porta_hangar');
+    expect(n.flag('vet_ha_vist_marca')).toBe(true);
+    expect(n.activeHints()).not.toContain('vet_veure_marca');
+  });
+
   it('camí llarg amb ferro-9: arriba perfecta, però el Sic ho sabrà', () => {
     const { p, n } = finsMida();
     expect(texts(p.do('pickUp', 'biga_ferro9'))).toContain('Sic');

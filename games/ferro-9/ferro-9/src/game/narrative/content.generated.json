@@ -14327,6 +14327,30 @@
           "pista.iri_marca.3"
         ]
       },
+      "vet_veure_marca": {
+        "priority": 8,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "marca_pilar"
+            },
+            {
+              "flag": "vet_ha_vist_marca",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "vet_ha_vist_marca"
+        },
+        "levels": [
+          "pista.vet_veure_marca.1",
+          "pista.vet_veure_marca.2"
+        ]
+      },
       "vet_reixa": {
         "priority": 4,
         "when": {
@@ -19319,7 +19343,7 @@
       "obj.fullet_memoria.desc": "«La Gavina: aquí va començar tot!» A la portada, una clau anglesa: «objecte ritual de l'era de les fàbriques». Per darrere, en blanc.",
       "obj.nota_mida.iri3": "Un pilar amb un 7 pintat. Al moll de la fàbrica, els pilars van numerats així.",
       "obj.nota_mida.iri4": "Si la V. és al costat del meu pilar 7, cent vint anys més tard, el que jo hi deixi ella ho podria trobar. La biga, per exemple.",
-      "obj.nota_mida.iri5": "Però primer, que sàpiga que l'he rebuda. Una marca al pilar, gravada ben fonda: si dura cent vint anys, la V. la veurà. Vol dir: rebut, soc aquí.",
+      "obj.nota_mida.iri5": "Però primer, que sàpiga que l'he rebuda, i sense gastar cap enviament. Una marca al pilar, gravada ben fonda: si dura cent vint anys, la V. la veurà. Vol dir: rebut, soc aquí.",
       "obj.llapis_ulls.mapa1": "Hi dibuixo la ruta: de la reixa de la cambra fins al moll, pel conducte. I els cinc revolts del mapa, un signe per revolt.",
       "obj.llapis_ulls.mapa2": "I una postdata. La més important.",
       "obj.llapis_ulls.mapa_on": "El conducte comença al mòdul C. Però on, exactament? Abans de dibuixar-lo, el vull veure.",
@@ -19652,6 +19676,8 @@
       "pista.iri_marca.1": "La V. és al costat d'un pilar amb un 7 pintat. Al meu moll n'hi ha un.",
       "pista.iri_marca.2": "La V. m'ha dit on és. Una marca al pilar, si dura cent vint anys, li dirà: rebut, soc aquí.",
       "pista.iri_marca.3": "Agafa la llima del moll i fes-la servir amb el pilar.",
+      "pista.vet_veure_marca.1": "Li vaig dir a la I. que soc al costat del pilar 7. Potser m'ha contestat allà, sense gastar cap enviament.",
+      "pista.vet_veure_marca.2": "Torna al moll de l'hangar i mira el pilar 7.",
       "pista.vet_reixa.1": "El conducte comença al mòdul C. On hi ha una entrada?",
       "pista.vet_reixa.2": "Mira la reixa de la paret de la cel·la.",
       "pista.vet_dibuixar.1": "Ja sé per on ha de fugir la I. Li ho he de dibuixar.",
