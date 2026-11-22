@@ -94,8 +94,8 @@ més del final, no una acció del jugador.
 
 Cada germana en juga **quatre**: la Iri, les escenes 1, 2, 4 i 6b; la Vet, la 3, la 5, la 6a i la 7. L'única
 vegada que una germana en juga dues de seguides és la Vet, la 5 i la 6a: hi ha un rètol de dia pel mig («Dilluns.
-Festa Major. Les nou del matí»), i la primera línia de la 6a ho explica (la Iri, pel walkie: «Soc al bus... Arribo a
-les nou i mitja. Tu prepara-ho tot»).
+Festa Major. Les nou del matí»), i la primera línia de la 6a ho explica (la Iri, pel walkie: «Soc al bus... L'àvia m'ha enviat a buscar els pots de
+móres a la cooperativa. Arribo a les nou i mitja. Tu prepara-ho tot»).
 
 ### El walkie
 
@@ -205,7 +205,7 @@ d'ull què és de qui.
 | 1 | `vora_bosc` | Iri | Dissabte, capvespre | De lluny |
 | 2 | `centraleta` | Iri | Dissabte, capvespre | De prop |
 | 3 | `campament_fades` | Vet | Diumenge al matí | Molt de prop |
-| 4 | `toll_gripaus` | Iri | Diumenge, migdia | De lluny |
+| 4 | `toll_gripaus` | Iri | Diumenge al migdia | De lluny |
 | 5 | `caseta_obra` | Vet | Diumenge a la tarda | De prop |
 | 6a | `zona_mati` (l'art de `zona_zero`) | Vet | Dilluns, Festa Major, a les nou | De lluny |
 | 6b | `zona_zero` | Iri | Dilluns, Festa Major, a les deu | De lluny |
@@ -381,7 +381,7 @@ amb les mans, totes tres alhora.
 > CARD: *(llepant-se els dits)* Una traïció boníssima.
 
 Ara la Vet té el **pot buit**. Les fades li expliquen el pla: el pol·len de la Flor de Pebre fa esternudar els
-sensors d'«aire pur» de NaturaPlus, i els fa dir la veritat («Que l'aire que venen és el nostre!»). Però elles no
+sensors d'«aire pur» de NaturaPlus, i ja no podran dir que el seu aire és «pur» («és l'aire del bosc, de tota la vida»). Però elles no
 la poden collir: «Ens ataca el nas. Sortim volant enrere.»
 
 **Trencaclosques 3.2 — La flor (empènyer, fer servir).** La branca de la flor és massa prima perquè la Vet hi
@@ -390,7 +390,7 @@ camini. Si s'hi acosta, la Iri pel walkie: «No hi vagis, que et vas a trencar e
 gegants desconeguts»). Després, la Urtica l'empeny (en fer servir el gronxador, o demanant-li-ho), i arriba a la flor. Amb el **pot buit**
 hi recull el pol·len i el tanca de pressa. [SO: un esternut de fada, de lluny]
 
-(Si la Vet prova de collir la flor amb les mans: «Pica! Pica pica pica!», i ho torna a provar amb el pot. Si encara
+(Si la Vet prova de collir la flor amb les mans: «Ai, com pica! Pica pica pica!», i ho torna a provar amb el pot. Si encara
 no té el pot buit: «He de portar alguna cosa per tancar-ho. Alguna cosa buida.»)
 
 **Final de l'escena.** Les fades agafen el pot com si fos un tresor.
@@ -404,7 +404,7 @@ La Vet, al walkie: «Iri. Tinc un xiulet de fada. No et diré com. Canvi i fora.
 
 ### Escena 4 — El toll dels gripaus buròcrates (Iri)
 
-**Rètol:** «Diumenge, migdia.»
+**Rètol:** «Diumenge al migdia.»
 
 **Sala:** `toll_gripaus`, un aiguamoll sec, amb el fang clivellat i els joncs grocs. Al mig hi ha l'**arxiu dels
 gripaus**: una soca buida amb calaixos, una finestreta de taquilla i un rètol, «REGISTRE DEL BOSC — HORARI: QUAN HI
@@ -426,8 +426,8 @@ res.» Té els plànols de 1923, però per donar-los necessita **segellar-los**,
 quan plogui. O quan algú torni el rierol.»
 
 **Trencaclosques 4.2 — El rierol (mirar, estirar, fer servir).** Dos passos, en l'ordre que es vulgui:
-- **El tap de plàstics.** La Iri en treu les ampolles del damunt amb les mans («Aire Pur. Buides. Quin aire s'han
-  begut?»), però n'hi ha una d'encallada sota una pedra. Amb l'**estaca de topògraf** de l'escena 1 fa palanca i la
+- **El tap de plàstics.** La Iri en treu les ampolles del damunt amb les mans («Aire Pur. Buides. Qui s'ha begut
+  l'aire?»), però n'hi ha una d'encallada sota una pedra. Amb l'**estaca de topògraf** de l'escena 1 fa palanca i la
   treu. («Una estaca de NaturaPlus per desembussar un rierol de NaturaPlus. Observació: és poètic.»)
 - **La comporta.** El tub d'aspersors té una roda per tancar-lo. És molt dura, i al primer cop no gira. El gripau
   vaguista hi mira, i si la Iri hi parla, l'ajuda a empènyer («Això no és trencar la vaga. És fer exercici.»).
@@ -448,13 +448,14 @@ Al marge dels plànols hi ha un segell de visita de 1958 i, al costat, en llapis
 > IRI: Montse Puig. Com l'àvia.
 > BUFÓ: Una nena molt insistent. Ho volia segellar tot.
 
-Els gripaus aniran dilluns a la presentació, «amb l'original, que fa més patxoca».
+Els gripaus aniran dilluns a la presentació «amb la còpia compulsada, que és com portar l'original, però sense que
+es mulli». (L'original no surt de l'arxiu: per això calia el segell.)
 
 La Iri, al walkie, prepara l'escena següent:
 
-> IRI: Vet. Ens falta l'altaveu de la del vestit blanc. És a la caseta d'obra. Canvi.
+> IRI: Vet. Ens falta l'altaveu de la senyora de NaturaPlus. És a la caseta d'obra. Canvi.
 > VET: I per què hi he d'anar jo? Canvi.
-> IRI: Perquè a les nenes de nou anys els regala polseres. Canvi.
+> IRI: Perquè a les nenes de nou anys els fan regals. Canvi.
 > VET: ...Ja hi vaig. Canvi i fora.
 
 ### Escena 5 — La caseta d'obra de NaturaPlus (Vet)
@@ -485,7 +486,7 @@ no es toca, que és de lloguer»). Si encara no ha parlat amb la Pla, la Vet pri
 s'ha de ser educada»): així té el kit, que necessita a la 6a. Si la Vet desendolla l'**arbre Wi-Fi**, la videotrucada es talla:
 
 > PLA: Oh, no. Oh, no, no. Sense cobertura. *(somriure)* Surto un moment a buscar senyal. És un bosc, ja se sap.
-> VET: Encara.
+> VET: *(fluix)* Encara.
 
 La Pla surt a fora amb la tauleta enlaire.
 
@@ -524,7 +525,8 @@ Registrador arribarà a les deu en punt, ni un minut abans. La Senyora Pla no hi
 **Entrada.**
 
 > VET: *(al walkie)* Iri. Soc a la Zona Zero. Hi ha més gespa de plàstic que a un camp de futbol. Canvi.
-> IRI: *(al walkie)* Soc al bus, amb el walkie i el crit. Arribo a les nou i mitja. Tu prepara-ho tot. Canvi.
+> IRI: *(al walkie)* Soc al bus, amb el walkie i el crit. L'àvia m'ha enviat a buscar els pots de móres a la
+> cooperativa. Arribo a les nou i mitja. Tu prepara-ho tot. Canvi.
 > VET: Tot? Canvi.
 > IRI: Les fades i la tele. Canvi i fora.
 
@@ -548,25 +550,27 @@ doblegar: «Això és un fullet, gegant. Nosaltres volem una casa.» La polsera 
 ho diu: «És de punts. Encara en tinc zero.»)
 
 **Trencaclosques 6a.2 — La tele (parlar, convèncer).** La Txell té el pla fet: el càmera, amb el trípode, mirant
-només l'escenari («La senyora Pla ha demanat el seu perfil bo»). Si el càmera no es pot moure, quan la Iri faci
-venir el Registrador ningú no el filmarà. La Vet ha de convèncer la Txell que deixi la càmera **a l'espatlla**. És
+només la cara de la senyora Pla («La senyora Pla ha demanat el seu perfil bo»). Si el càmera no es pot moure, quan la
+Iri faci venir el Registrador ningú no el filmarà: un gripau, a terra, no surt en un pla fet a l'altura d'una persona. La Vet ha de convèncer la Txell que deixi la càmera **a l'espatlla**. És
 una conversa amb opcions, i com a les fades, no es pot perdre: es pot tornar a provar.
 
 - «Passarà una cosa molt forta.» → «Sempre diuen això. Després és una cinta tallada.»
 - «La meva germana sap una cosa del bosc.» → «Tothom sap coses del bosc. Tinc el pla.»
 - «Jo soc la del canal 7.» *(ensenyant el walkie)* → la Txell s'atura. «...Canal 7? TV Comarca és el canal 7 de la
   TDT local.» La Vet: «Ja ho sé. I l'altaveu de la senyora Pla també és al canal 7. L'hi he posat jo.» La Txell mira
-  l'altaveu, riu, i el càmera treu la càmera del trípode: «Doncs a l'espatlla. Si no passa res, almenys tindré l'àvia
-  de la melmelada.» (Que la tele també sigui el 7 és només la porta d'entrada: el que la convenç és l'altaveu.)
+  l'altaveu i riu: «Una nena que ha tocat l'altaveu de NaturaPlus... Això potser sí que és notícia.» El càmera
+  desenrosca la càmera del trípode i se la posa a l'espatlla. La Txell: «Amb la càmera a l'espatlla, filmo el que passi, sigui on
+  sigui. I si no passa res, almenys tindré l'àvia de la melmelada.» (Que la tele també sigui el 7 és només la porta
+  d'entrada: el que la convenç és l'altaveu.)
 
-(La tercera opció només surt quan la Vet ha mirat la Txell: el càmera té la càmera al trípode, i al costat hi posa
-«TV7». Si no ho veu, la pista de la Iri, pel walkie: «Mira bé la càmera de la tele. Quin número hi posa? Canvi.»)
+(La tercera opció només surt quan la Vet ha mirat la Txell: el càmera ho filma tot des d'un trípode, i a la càmera
+hi posa «TV7». Si no ho veu, la pista de la Iri, pel walkie: «Mira bé la càmera de la tele. Quin número hi posa? Canvi.»)
 
-**Final de l'escena.** Arriba la Iri, amb la motxilla i el walkie.
+**Final de l'escena.** Arriba la Iri, amb la motxilla, el walkie i una caixa de pots de móres.
 
 > IRI: Com va?
-> VET: Les fades, dins un fullet de NaturaPlus. La tele, a l'espatlla. *(li dona el **xiulet d'ortiga**)* Té. No el
-> bufis fins que digui «aire pur».
+> VET: Les fades, dins un fullet de NaturaPlus. La tele, a l'espatlla. *(li dona el **xiulet d'ortiga**)* Té. Jo seré a la
+> parada amb l'àvia. No el bufis fins que digui «aire pur».
 > IRI: Observació: això ho has fet tota sola.
 > VET: Ja ho sé. *(se'n va cap a la parada de l'àvia)*
 
@@ -580,8 +584,8 @@ Rètol: «Les deu.» Comença l'escena 6b.
 mig estendre i un escenari blanc amb una cinta per tallar. A la dreta, una pantalla gegant («BOSC 2.0»), els
 **sensors d'aire** (tres columnes blanques amb una lectura verda: «AIRE: PUR 100%») i l'**altaveu**. Hi ha públic
 del poble (l'àvia i la Vet entre ells), la Txell de TV Comarca amb el càmera, el Registrador Bufó a la vora del
-bassal amb la carpeta sota el braç, i a les branques de dalt, si es miren de prop, tres crestes de fada. Al fons,
-una **formigonera** amb el motor engegat.
+bassal amb la carpeta sota el braç, i dalt de tot de la pantalla la **caseta de paper** de la 6a, amb la Urtica
+asseguda al costat (les fades hi són amagades). Al fons, una **formigonera** amb el motor engegat.
 
 **Entrada.**
 
@@ -593,7 +597,7 @@ espera la Iri**: el discurs no avança fins que la Iri fa el que toca. Si fa una
 Pla es repeteix amb gràcia («Ho repeteixo per als de darrere»). No es pot perdre.
 
 1. **«...i l'aire, cent per cent pur, certificat pels nostres sensors!»** La Iri bufa el **xiulet d'ortiga**. Les
-   fades baixen en picat, buiden el pot de pol·len als sensors, i els sensors esternuden (de veritat, amb soroll), i
+   fades surten volant de la caseta de paper, buiden el pot de pol·len als sensors, i els sensors esternuden (de veritat, amb soroll), i
    la lectura passa a vermell: «AIRE: PICANT». La gent riu. La Pla: «És... un error de calibratge.»
 2. **«...un terreny que NaturaPlus ha adquirit amb tota legalitat!»** La Iri fa un senyal al Registrador Bufó
    (parlant-hi), i ell entra en escena amb una lentitud solemne i ensenya els **plànols de 1923** a la càmera de la
@@ -641,6 +645,11 @@ seure a la taula. Si parla amb l'àvia, que seu al costat de l'Espora, surt la s
 > VET: *(fluix)* ...Això ho dic jo.
 > ÀVIA: Ho dius tu perquè ho deia ell.
 
+**El pot de móres.** La primera vegada que la Vet parla amb l'Espora, li dona un pot de melmelada de móres (de la parada
+de l'àvia). Si a la 2 la Iri li havia preguntat per la melmelada, la Vet ho tenia apuntat («Té. De móres. Ho tenia
+apuntat.» — «Ara sí que funciona tot.»); si no, l'hi envia l'àvia («Té, de part de l'àvia. Diu que és de móres, que ja
+ho sabràs.» — «...Encara se'n recorda.»), i és la primera pista que es coneixen.
+
 És l'únic moment en què el joc parla de l'avi, que fins aquí només eren objectes (el walkie, la lupa, el cèntim).
 Paga el «7 és el número més valent» de la Vet, i fa que la darrera crida del joc, pel canal 7, sigui també la de
 l'avi.
@@ -673,7 +682,7 @@ tornades i un final a l'epíleg:
   l'àvia ho torna a dir a la presentació (6b). Final: a la sorpresa de l'epíleg, la Iri ho entén: «Àvia! Tu ho
   sabies!» (l'algú estrany era l'Espora).
 - **«Brutal» i «És una traïció».** La Pica i la Card al campament (3) i a la bastida (6a); a la 6b, quan esternuden
-  els sensors, des de les branques: «Brutal!» «Una traïció... boníssima.» Final: el rètol del gronxador nou.
+  els sensors, des de dalt de la pantalla: «Brutal!» «Una traïció... boníssima.» Final: el rètol del gronxador nou.
 - **La polsera de zero punts.** La Pla l'ofereix (5); la Vet se la posa «amb zero punts» (6a); la Iri, mirant el
   públic (6b): «Hipòtesi: tots amb zero punts»; a l'epíleg, la Vet i la Iri en parlen. Final: al paquet de la Pla
   n'hi ha una altra («Ara en tinc dues. I zero punts.»).

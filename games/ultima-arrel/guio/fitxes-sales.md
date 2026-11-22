@@ -89,7 +89,7 @@
   engegat.
 - **Decorats:** `sensors_vermells` (la lectura vermella «AIRE: PICANT»).
 - **Personatges:** la `pla` a l'escenari; la `txell` (TV Comarca) amb el càmera (figura de fons); el `bufo` a la vora
-  d'un bassal, amb la carpeta; l'`avia` entre el públic; la `urtica` a les branques de dalt (de lluny: tres crestes);
+  d'un bassal, amb la carpeta; l'`avia` entre el públic; la `urtica`, petita, dalt de tot de la pantalla, al costat de la **caseta de paper** de la 6a (dibuixada al fons);
   i la **Vet** entre el públic (és sala compartida: la Vet necessita un lloc a `spawns`).
 
 ## 7. `bosc_obert` — El bosc obert (Escena 7, Vet; la Iri hi és)

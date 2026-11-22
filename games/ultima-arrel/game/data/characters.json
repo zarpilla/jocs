@@ -285,6 +285,48 @@
           {
             "who": "espora",
             "text": "pj.espora.vet.4"
+          },
+          {
+            "who": "player",
+            "text": "pj.espora.vet.mores.1",
+            "if": {
+              "seen": {
+                "dialogue": "espora",
+                "node": "melmelada"
+              }
+            }
+          },
+          {
+            "who": "espora",
+            "text": "pj.espora.vet.mores.2",
+            "if": {
+              "seen": {
+                "dialogue": "espora",
+                "node": "melmelada"
+              }
+            }
+          },
+          {
+            "who": "player",
+            "text": "pj.espora.vet.mores.3",
+            "if": {
+              "seen": {
+                "dialogue": "espora",
+                "node": "melmelada"
+              },
+              "is": false
+            }
+          },
+          {
+            "who": "espora",
+            "text": "pj.espora.vet.mores.4",
+            "if": {
+              "seen": {
+                "dialogue": "espora",
+                "node": "melmelada"
+              },
+              "is": false
+            }
           }
         ],
         "effects": [

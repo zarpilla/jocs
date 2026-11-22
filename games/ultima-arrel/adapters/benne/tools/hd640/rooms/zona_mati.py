@@ -23,7 +23,6 @@ LIGHT = Z.LIGHT
 CAMERA = (628, 242)                                # els peus del càmera (com a la presentació)
 TRIPODE = (606, 244)                               # el peu del trípode, davant del càmera
 PARADA = (96, 202)                                 # la parada de l'àvia: el mig de la taula, a terra
-CASETA = (548, 21)                                 # la caseta de paper: el mig de la base, damunt el marc de la pantalla
 
 
 def camera_tripode(cv):
@@ -61,24 +60,6 @@ def parada(cv):
     lletres(cv, t, x - w // 2, y - 38, (150, 40, 50))
 
 
-def caseta_paper(cv):
-    """La caseta de paper (el fullet de NaturaPlus doblegat en tres), dalt de la pantalla: blanca, amb la fulla verda
-    fluor del logotip a fora, i a la porta, fosca, una cresta de fada que treu el cap."""
-    cx, by = CASETA
-    for yy in range(by - 10, by + 1):
-        half = (yy - (by - 10)) * 0.9
-        for xx in range(int(cx - half), int(cx + half) + 1):
-            esquerra = xx < cx
-            cv.put(xx, yy, PLASTIC, (5.2 if esquerra else 4.0) - (yy - by + 10) * 0.08, lit=0.4)
-    for yy in range(by - 10, by + 1):                                                           # el plec del mig
-        cv.put(cx, yy, PLASTIC, 2.8, lit=0.4)
-    cv.disc(cx - 4, by - 4, 1.6, 1.4, NEON, 3.6, lit=0)                                         # el logotip
-    cv.rect(cx + 2, by - 4, cx + 4, by, IRONK, 0.8, lit=0)                                      # la porta
-    cv.flat(cx + 3, by - 5, (200, 210, 140))                                                    # una cresta de fada
-    cv.flat(cx + 3, by - 6, (230, 236, 170))
-    ombra(cv, cx + 3, by + 1, 9, 1, k=0.5)
-
-
 @functools.lru_cache(maxsize=None)
 def _render(espatlla=False, caseta=False):
     """La Zona Zero a les nou: com `zona_zero._base`, sense el públic, amb la parada de l'àvia i el càmera amb el
@@ -103,7 +84,7 @@ def _render(espatlla=False, caseta=False):
     else:
         camera_tripode(cv)
     if caseta:
-        caseta_paper(cv)
+        Z.caseta_paper(cv)
     for y in range(RH, H):
         for x in range(W):
             cv.flat(x, y, (0, 0, 0))
@@ -157,6 +138,11 @@ _things['parada'] = {'rect': (66, 160, 126, 204), 'walk': (100, 240)}
 GEOMETRIA = {
     **Z.GEOMETRIA,
     'things': _things,
-    'spawns': {'vet': (150, 244), 'avia': (132, 214), 'txell': (566, 240), 'urtica': Z.GEOMETRIA['spawns']['urtica'],
-               'iri': (4, 246)},
+    # la Urtica encara és a les branques de dalt, a l'esquerra (a la presentació ja serà dalt de la pantalla)
+    'spawns': {'vet': (150, 244), 'avia': (132, 214), 'txell': (566, 240), 'urtica': (96, 52), 'iri': (4, 246)},
+    'regions': [r for r in Z.GEOMETRIA['regions'] if r['id'] != 'pantalla_dalt'] + [
+        # a les branques de dalt (les fades, de lluny)
+        {'id': 'branques', 'active': True, 'scaleEnabled': True, 'scaleTop': 0.6, 'scaleBottom': 0.6,
+         'points': [(40, 30), (170, 30), (170, 70), (40, 70)]},
+    ],
 }

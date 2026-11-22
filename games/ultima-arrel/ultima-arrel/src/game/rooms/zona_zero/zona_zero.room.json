@@ -338,27 +338,27 @@
       ]
     },
     {
-      "id": "branques",
+      "id": "pantalla_dalt",
       "active": true,
       "scaleEnabled": true,
-      "scaleTop": 0.6,
-      "scaleBottom": 0.6,
+      "scaleTop": 0.45,
+      "scaleBottom": 0.45,
       "points": [
         {
-          "x": 40,
+          "x": 500,
+          "y": 0
+        },
+        {
+          "x": 600,
+          "y": 0
+        },
+        {
+          "x": 600,
           "y": 30
         },
         {
-          "x": 170,
+          "x": 500,
           "y": 30
-        },
-        {
-          "x": 170,
-          "y": 70
-        },
-        {
-          "x": 40,
-          "y": 70
         }
       ]
     }
@@ -508,8 +508,8 @@
     {
       "instanceId": "urtica-1",
       "definition": "urtica/urtica.character.json",
-      "x": 96,
-      "y": 52,
+      "x": 532,
+      "y": 22,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -523,6 +523,28 @@
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "pica-veu",
+      "definition": "pica/pica.character.json",
+      "x": 73,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "card-veu",
+      "definition": "card/card.character.json",
+      "x": 127,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
       "zIndex": 9
     }
   ],

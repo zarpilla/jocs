@@ -77,8 +77,10 @@ function sayLines(lines: ResolvedLine[], around: Around) {
         fadeIn(1)
       }
     } else if (line.who === 'narrator') {
-      if (isClickableCutscene(narrative.world.currentRoom())) narrate(line.text)
-      else display(line.text)
+      // El narrador també pot tenir veu: `narrator<número>` (el motor la fa sonar des de `display`).
+      const text = voiced('narrator', line.key, line.text)
+      if (isClickableCutscene(narrative.world.currentRoom())) narrate(text)
+      else display(text)
     } else if (line.who === 'player') {
       player.say(voiced(player.id, line.key, line.text))
     } else {

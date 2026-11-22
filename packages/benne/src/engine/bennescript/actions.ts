@@ -16,10 +16,12 @@ import { tryGetActiveGameStateManager } from '../gameState/resolveGameStateManag
 import { BENNE_SCREEN_FADE_DEFAULT_COLOR, BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC } from '../scenes/roomScreenFadeConstants.js';
 import type { RoomScene } from '../scenes/RoomScene.js';
 import {
+  parseBenneSayVoiceMarker,
   playScriptedSayLine,
   resolveBenneSayRuntimeLine,
   type ScriptedSayLineOptions,
 } from './speech.js';
+import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
 import {
   resolveFaceLookWorldFromPayload,
   resolveWalkToClickedTargetFromPayload,
@@ -266,13 +268,24 @@ export const say: SayBlock & {
   __withSpeakers(speakers: Readonly<Record<string, string>>): SayBlock;
 } = Object.assign(sayBlock(), { __withSpeakers: sayBlock });
 
-/** Narration in the display-text overlay. Waits until clicked away (or skipped). */
-export const display = timed((text: string): Task => {
+/** El prefix dels fitxers de veu del narrador: `assets/audio/voice/narrator<número>.*`. */
+export const NARRATOR_VOICE_PREFIX = 'narrator';
+
+/**
+ * Narration in the display-text overlay. Waits until clicked away (or skipped).
+ * Amb la marca de veu davant (`|<número>| text`, com a `say`), sona `narrator<número>` mentre es mostra, i es talla
+ * en tancar-la.
+ */
+export const display = timed((rawText: string): Task => {
   const scene = roomFor('display');
   // A skipped cutscene shows no narration; the end state is simply "dismissed".
   if (!scene || scene.isCutsceneSkipFastForwarding()) {
     return Task.resolved();
   }
+  const { text, voiceNumber } = parseBenneSayVoiceMarker(rawText);
+  const voice = voiceNumber
+    ? tryGetBenneSoundManager(scene.game)?.playVoice(`${NARRATOR_VOICE_PREFIX}${voiceNumber}`) ?? null
+    : null;
   let finish!: () => void;
   const shown = new Promise<void>((resolve) => {
     let completed = false;
@@ -283,6 +296,7 @@ export const display = timed((text: string): Task => {
       }
       completed = true;
       unregisterSkip?.();
+      voice?.stop();
       scene.clearScriptedDialogClickToSkip();
       scene.setDisplayTextOverlay({ visible: false });
       scene.popScriptedDialogInputSuppression();

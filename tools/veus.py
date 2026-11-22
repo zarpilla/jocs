@@ -26,13 +26,14 @@ Què es genera (es poden combinar; sense cap, res):
     --prova            no genera res: diu què faria i quants caràcters costaria
 
 La clau d'API es llegeix d'ELEVENLABS_API_KEY o de ~/.elevenlabs.env.
-No es diuen les línies del narrador ni de títol, ni les que tenen variables (`{objecte}`). Les acotacions es treuen, i
+El narrador també té veu, si n'hi ha a `voices` (`"narrator": "<voice_id>"`; fitxers `narrator<número>.mp3`, que
+el motor fa sonar des de `display`). No es diuen les de títol ni les que tenen variables (`{objecte}`). Les acotacions es treuen, i
 les que diuen com es parla queden com a etiqueta del v3: «(al walkie, xiuxiuejant) Iri.» → «[whispers] Iri.» (ETIQUETES).
 Una línia que només és acotació («(Tus, tus.)») no té veu. El que hi ha a `text` de veus.json s'envia tal qual.
 """
 import argparse, glob, hashlib, json, os, pathlib, re, sys, urllib.error, urllib.request
 
-SENSE_VEU = {"narrator", "title"}
+SENSE_VEU = {"title"}
 
 # Acotacions → etiquetes d'emoció del model v3. Una acotació és el parèntesi del començament de la línia
 # («(al walkie, xiuxiuejant) Iri…»), o un del mig que digui com es parla («Per si de cas. (sospira) Això…»).
@@ -234,7 +235,8 @@ def main():
                 continue
         for sp in speakers:
             if sp not in voices:
-                skipped.append((key, f"{sp} no té veu a veus.json"))
+                if sp != "narrator":                    # un joc sense veu de narrador: no cal dir-ho línia a línia
+                    skipped.append((key, f"{sp} no té veu a veus.json"))
                 continue
             stem = f"{to_benne.get(sp, sp)}{fnv1a(key)}"
             if stem in seen:

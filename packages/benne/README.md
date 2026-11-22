@@ -29,6 +29,8 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
 
 - `stayBlackOnEnter()`: la sala no es mostra fins a un `fadeIn()` (títols sobre negre abans d'una sala);
 - el text de pantalla (Display Text) per sobre del fos a negre;
+- veu al text de pantalla: `display('|<número>| text')` fa sonar `assets/audio/voice/narrator<número>` mentre es
+  mostra (la mateixa marca que `say`), i la talla en tancar-lo; és la veu del narrador;
 - `walkToLabel` a `game-config.json`, per traduir «Walk to»;
 - `shade.set(alpha, { color, seconds })`: una capa de color damunt de la sala i dels personatges, per sota de la
   interfície i del text (una sala sense llum); passa d'una sala a l'altra fins que es canvia;

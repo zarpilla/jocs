@@ -96,7 +96,15 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.txell.canal7.4",
+          "text": "dlg.txell.canal7.4"
+        },
+        {
+          "who": "txell",
+          "text": "dlg.txell.canal7.5"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.txell.canal7.6",
           "stage": [
             {
               "prop": "camera_espatlla",
@@ -106,7 +114,7 @@
         },
         {
           "who": "txell",
-          "text": "dlg.txell.canal7.5"
+          "text": "dlg.txell.canal7.7"
         },
         {
           "who": "narrator",

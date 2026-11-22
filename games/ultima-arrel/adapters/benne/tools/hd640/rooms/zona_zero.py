@@ -15,8 +15,9 @@ El bosc que queda (càlid, de tardor) envolta el clar; NaturaPlus hi ha plantat 
     fila de darrere (al fons) i una de davant (capa del davant: la Vet i l'àvia hi queden entremig).
   - Les **soques** tallades, entre el públic i l'escenari, amb la gespa artificial a mig estendre.
   - Al fons, entre els arbres, la **formigonera**, amb el motor engegat (ANIMS: el bombo que gira i el fum).
-  - El bassal (on és el `bufo`), la `txell` amb el càmera (figura de fons) a la dreta, i les branques de dalt a
-    l'esquerra, on és la `urtica`.
+  - El bassal (on és el `bufo`) i la `txell` amb el càmera (figura de fons) a la dreta.
+  - Dalt de tot de la pantalla, just a sobre dels sensors, la **caseta de paper** que la Vet hi ha deixat a la 6a
+    (l'amagatall de les fades); la `urtica`, petita, n'ha sortit i s'hi està asseguda al costat.
   - Primer pla (FRONT): una soca gran acabada de tallar a l'esquerra, falgueres amb la cinta d'obra a la dreta, i la
     perxa de so de la TV, que entra per dalt a la dreta i apunta a la Pla.
   - El públic té volum (`persona` de _comu_dia: llum rasant de l'esquerra, a tons plans com els fulls, ombres
@@ -50,6 +51,7 @@ ESC_H = 14
 SENSORS = (527, 557, 587)                          # x del mig de cada columna
 SENS_BASE, SENS_TOP, SENS_W = 206, 112, 13        # (mig ample)
 ALTAVEU = (498, 186)                               # el peu de la caixa (damunt l'escenari, a la dreta)
+CASETA = (548, 21)                                 # la caseta de paper: el mig de la base, damunt el marc de la pantalla
 
 
 # ─── Cel i bosc ──────────────────────────────────────────────────────────────
@@ -400,8 +402,26 @@ def camera(cv):
 
 
 def branques(cv):
-    """Les branques de dalt, a l'esquerra: on s'amaguen les fades (la Urtica)."""
+    """Les branques de dalt, a l'esquerra."""
     arrel(cv, (20, 58), (70, 48), (150, 56), 5, 2, base=3.0, seed=61, lit=0.5, moss=True)
+
+
+def caseta_paper(cv):
+    """La caseta de paper (el fullet de NaturaPlus doblegat en tres), dalt de la pantalla: blanca, amb la fulla verda
+    fluor del logotip a fora, i a la porta, fosca, una cresta de fada que treu el cap."""
+    cx, by = CASETA
+    for yy in range(by - 10, by + 1):
+        half = (yy - (by - 10)) * 0.9
+        for xx in range(int(cx - half), int(cx + half) + 1):
+            esquerra = xx < cx
+            cv.put(xx, yy, PLASTIC, (5.2 if esquerra else 4.0) - (yy - by + 10) * 0.08, lit=0.4)
+    for yy in range(by - 10, by + 1):                                                           # el plec del mig
+        cv.put(cx, yy, PLASTIC, 2.8, lit=0.4)
+    cv.disc(cx - 4, by - 4, 1.6, 1.4, NEON, 3.6, lit=0)                                         # el logotip
+    cv.rect(cx + 2, by - 4, cx + 4, by, IRONK, 0.8, lit=0)                                      # la porta
+    cv.flat(cx + 3, by - 5, (200, 210, 140))                                                    # una cresta de fada
+    cv.flat(cx + 3, by - 6, (230, 236, 170))
+    ombra(cv, cx + 3, by + 1, 9, 1, k=0.5)
 
 
 # ─── Primer pla ──────────────────────────────────────────────────────────────
@@ -474,6 +494,7 @@ def _base():
     bassal(cv)
     public_fons(cv)
     camera(cv)
+    caseta_paper(cv)
     for y in range(RH, H):
         for x in range(W):
             cv.flat(x, y, (0, 0, 0))
@@ -544,7 +565,7 @@ GEOMETRIA = {
         'formigonera': {'rect': (170, 78, 256, 118), 'walk': (220, 232)},
     },
     'spawns': {'iri': (196, 246), 'vet': VET, 'avia': AVIA, 'pla': (424, 187), 'txell': (596, 246),
-               'bufo': (306, 238), 'urtica': (96, 52)},
+               'bufo': (306, 238), 'urtica': (532, 22)},
     'walkable': [(0, 236), (180, 232), (236, 230), (320, 218), (520, 216), (600, 222), (639, 230), (639, 256),
                  (0, 256)],
     # El sol del matí és baix a l'esquerra: l'ombra cau cap a la dreta, llarga.
@@ -564,8 +585,8 @@ GEOMETRIA = {
         # dalt l'escenari (la Pla): l'escala de la base de l'escenari, fixa
         {'id': 'escenari', 'active': True, 'scaleEnabled': True, 'scaleTop': round(0.57 * K_FULLS, 3), 'scaleBottom': round(0.57 * K_FULLS, 3),
          'points': [(300, 176), (490, 170), (518, 189), (322, 198)]},
-        # a les branques de dalt (les fades, de lluny)
-        {'id': 'branques', 'active': True, 'scaleEnabled': True, 'scaleTop': 0.6, 'scaleBottom': 0.6,
-         'points': [(40, 30), (170, 30), (170, 70), (40, 70)]},
+        # dalt de la pantalla, al costat de la caseta de paper (la Urtica, de lluny)
+        {'id': 'pantalla_dalt', 'active': True, 'scaleEnabled': True, 'scaleTop': 0.45, 'scaleBottom': 0.45,
+         'points': [(500, 0), (600, 0), (600, 30), (500, 30)]},
     ],
 }

@@ -379,6 +379,48 @@
               {
                 "who": "espora",
                 "text": "pj.espora.vet.4"
+              },
+              {
+                "who": "player",
+                "text": "pj.espora.vet.mores.1",
+                "if": {
+                  "seen": {
+                    "dialogue": "espora",
+                    "node": "melmelada"
+                  }
+                }
+              },
+              {
+                "who": "espora",
+                "text": "pj.espora.vet.mores.2",
+                "if": {
+                  "seen": {
+                    "dialogue": "espora",
+                    "node": "melmelada"
+                  }
+                }
+              },
+              {
+                "who": "player",
+                "text": "pj.espora.vet.mores.3",
+                "if": {
+                  "seen": {
+                    "dialogue": "espora",
+                    "node": "melmelada"
+                  },
+                  "is": false
+                }
+              },
+              {
+                "who": "espora",
+                "text": "pj.espora.vet.mores.4",
+                "if": {
+                  "seen": {
+                    "dialogue": "espora",
+                    "node": "melmelada"
+                  },
+                  "is": false
+                }
               }
             ],
             "effects": [
@@ -6324,8 +6366,12 @@
                     "text": "sala.zona_zero.xiulet.4"
                   },
                   {
-                    "who": "narrator",
-                    "text": "sala.zona_zero.xiulet.fades"
+                    "who": "pica",
+                    "text": "sala.zona_zero.xiulet.pica"
+                  },
+                  {
+                    "who": "card",
+                    "text": "sala.zona_zero.xiulet.card"
                   },
                   {
                     "who": "pla",
@@ -6663,8 +6709,12 @@
                     "text": "sala.zona_zero.xiulet.4"
                   },
                   {
-                    "who": "narrator",
-                    "text": "sala.zona_zero.xiulet.fades"
+                    "who": "pica",
+                    "text": "sala.zona_zero.xiulet.pica"
+                  },
+                  {
+                    "who": "card",
+                    "text": "sala.zona_zero.xiulet.card"
                   },
                   {
                     "who": "pla",
@@ -8618,7 +8668,15 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.txell.canal7.4",
+                "text": "dlg.txell.canal7.4"
+              },
+              {
+                "who": "txell",
+                "text": "dlg.txell.canal7.5"
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.txell.canal7.6",
                 "stage": [
                   {
                     "prop": "camera_espatlla",
@@ -8628,7 +8686,7 @@
               },
               {
                 "who": "txell",
-                "text": "dlg.txell.canal7.5"
+                "text": "dlg.txell.canal7.7"
               },
               {
                 "who": "narrator",
@@ -9374,15 +9432,15 @@
       "dlg.bufo.opt.rierol": "Per què no arriba l'aigua?",
       "dlg.bufo.opt.tramit": "Què és un tràmit?",
       "dlg.bufo.paper.1": "Això és el cadastre: el mapa de qui és cada tros de terra.",
-      "dlg.bufo.paper.2": "Tinc els plànols de 1923. Però sense segell no valen res, i el tampó està sec.",
+      "dlg.bufo.paper.2": "Tinc els plànols de 1923. Però l'original no surt de l'arxiu, i una còpia sense segell no val res. I el tampó està sec.",
       "dlg.bufo.paper.3": "Torni quan plogui. O quan algú torni el rierol.",
       "dlg.bufo.paper2.1": "Amb el tampó sec? Torni quan plogui. O quan algú torni el rierol.",
       "dlg.bufo.rierol.1": "Pregunti a les ampolles. I al tub nou. Nosaltres estem en vaga, no en investigació.",
       "dlg.bufo.segell.1": "El Registrador mulla el tampó al toll, molt a poc a poc. Clac.",
       "dlg.bufo.segell.10": "I amb taps a les orelles. Aquella senyora assaja cada tarda amb un altaveu enorme, a la caseta d'obra.",
-      "dlg.bufo.segell.11": "Un altaveu? (al walkie) Vet. Ens falta l'altaveu de la del vestit blanc. És a la caseta d'obra. Canvi.",
+      "dlg.bufo.segell.11": "Un altaveu? (al walkie) Vet. Ens falta l'altaveu de la senyora de NaturaPlus. És a la caseta d'obra. Canvi.",
       "dlg.bufo.segell.12": "I per què hi he d'anar jo? Canvi.",
-      "dlg.bufo.segell.13": "Perquè a les nenes de nou anys els regala polseres. Canvi.",
+      "dlg.bufo.segell.13": "Perquè a les nenes de nou anys els fan regals. Canvi.",
       "dlg.bufo.segell.14": "...Ja hi vaig. Canvi i fora.",
       "dlg.bufo.segell.2": "Plànols del cadastre de 1923. Còpia compulsada: val com l'original.",
       "dlg.bufo.segell.3": "El cadastre de 1923 estableix que el Bosc de la Coma és comunal i protegit a perpetuïtat, i que—",
@@ -9391,7 +9449,7 @@
       "dlg.bufo.segell.6": "Al marge hi ha un segell de visita de 1958 i, en llapis, amb lletra de nena: «Montse Puig, 10 anys. He vist un gnom.»",
       "dlg.bufo.segell.7": "Montse Puig. Com l'àvia.",
       "dlg.bufo.segell.8": "Una nena molt insistent. Ho volia segellar tot.",
-      "dlg.bufo.segell.9": "Dilluns anirem a la presentació. Amb l'original, que fa més patxoca.",
+      "dlg.bufo.segell.9": "Dilluns anirem a la presentació. Amb la còpia compulsada, que és com portar l'original, però sense que es mulli.",
       "dlg.bufo.torna.1": "Registre del Bosc. Encara en vaga.",
       "dlg.bufo.tramit.1": "Un paper que va d'una taula a una altra. És preciós.",
       "dlg.espora.hola.1": "Què vols? Tinc feina.",
@@ -9448,9 +9506,11 @@
       "dlg.txell.canal7.1": "La Vet li ensenya el walkie.",
       "dlg.txell.canal7.2": "...Canal 7? TV Comarca és el canal 7 de la TDT local.",
       "dlg.txell.canal7.3": "Ja ho sé. I l'altaveu de la senyora Pla també és al canal 7. L'hi he posat jo.",
-      "dlg.txell.canal7.4": "La Txell mira l'altaveu. Després riu, i el càmera treu la càmera del trípode.",
-      "dlg.txell.canal7.5": "Doncs a l'espatlla. Si no passa res, almenys tindré l'àvia de la melmelada.",
-      "dlg.txell.feta.1": "A l'espatlla, com m'has dit. Si passa res, ho tindré.",
+      "dlg.txell.canal7.4": "La Txell mira l'altaveu. Després riu.",
+      "dlg.txell.canal7.5": "Una nena que ha tocat l'altaveu de NaturaPlus... Això potser sí que és notícia.",
+      "dlg.txell.canal7.6": "El càmera desenrosca la càmera del trípode i se la posa a l'espatlla.",
+      "dlg.txell.canal7.7": "Amb la càmera a l'espatlla, filmo el que passi, sigui on sigui. I si no passa res, almenys tindré l'àvia de la melmelada.",
+      "dlg.txell.feta.1": "La càmera, a l'espatlla. Si passa res, ho tindré.",
       "dlg.txell.forta.1": "Sempre diuen això. Després és una cinta tallada i un pica-pica.",
       "dlg.txell.germana.1": "Tothom sap coses del bosc. Jo tinc un pla: l'escenari, la senyora Pla i prou. Amb el trípode, no tremola.",
       "dlg.txell.hola.1": "Hola, maca! TV Comarca. Ara no puc, que provo plans: la senyora Pla vol el seu perfil bo.",
@@ -9480,7 +9540,7 @@
       "dlg.urtica.opt.flor": "Com arribo a la flor?",
       "dlg.urtica.opt.naturaplus": "Què us ha fet NaturaPlus?",
       "dlg.urtica.opt.pla": "Quin era el pla?",
-      "dlg.urtica.pla.1": "El pol·len de la Flor de Pebre, als sensors d'aire pur. Esternuden i diuen la veritat.",
+      "dlg.urtica.pla.1": "El pol·len de la Flor de Pebre, als sensors d'aire pur. Esternuden, i adeu «aire pur».",
       "dlg.urtica.pla.2": "Però l'ha de collir algú sense nas de fada. Tu.",
       "dlg.urtica.torna.1": "Encara aquí, gegant?",
       "dlg.walkie.e1.1": "Vet, Vet, em sents? Canvi.",
@@ -9668,7 +9728,7 @@
       "mis.acte2.obj.fades": "El pol·len de la Flor de Pebre.",
       "mis.acte2.obj.gripaus": "Els plànols de 1923, segellats.",
       "mis.acte2.titol": "Tres suports",
-      "mis.acte3.obj.preparacio": "Preparar la presentació: les fades i la tele",
+      "mis.acte3.obj.preparacio": "Preparar la presentació: les fades i la tele.",
       "mis.acte3.obj.presentacio": "Que la presentació digui la veritat.",
       "mis.acte3.titol": "La natura, però millor",
       "obj.cargol.desc": "Un cargol galvanitzat: d'acer, amb una capa de zinc.",
@@ -9746,6 +9806,10 @@
       "pj.espora.vet.2": "I tu ets la del canal 7. La xarxa no para de parlar de tu.",
       "pj.espora.vet.3": "Bé o malament?",
       "pj.espora.vet.4": "Els fongs no parlen ni bé ni malament. Parlen de pressa.",
+      "pj.espora.vet.mores.1": "(li dona un pot) Té. De móres. Ho tenia apuntat.",
+      "pj.espora.vet.mores.2": "(abraçant el pot) Ara sí que funciona tot.",
+      "pj.espora.vet.mores.3": "(li dona un pot) Té, de part de l'àvia. Diu que és de móres, que ja ho sabràs.",
+      "pj.espora.vet.mores.4": "(abraçant el pot) ...Encara se'n recorda.",
       "pj.espora.vet.5": "Seu, nena del canal 7. El te de menta no espera.",
       "pj.gripau.mira": "Un gripau amb armilla i pancarta: «SENSE AIGUA NO HI HA TRÀMIT». Al costat, un altre: «AVUI NO ES COMPULSA».",
       "pj.gripau.mira2": "Un gripau amb armilla, remullant-se al toll. La pancarta, plegada.",
@@ -9766,7 +9830,7 @@
       "pj.txell.parla": "Ara no, que estem en directe. Però si passa alguna cosa, avisa'm.",
       "pj.urtica.mira": "La cap de les fades: jaqueta de cuir d'escarabat, cresta de pelussa de card i molt bona punteria.",
       "pj.urtica.mira.bosc": "La Urtica, dalt d'una branca. Té el pot de pol·len, buit, com si fos una copa.",
-      "pj.urtica.mira.zz": "Allà dalt, entre les branques: tres crestes de fada. M'esperen.",
+      "pj.urtica.mira.zz": "Dalt de la pantalla, la caseta de paper de la Vet. La Urtica hi seu al costat. M'esperen.",
       "pj.urtica.nom": "Urtica",
       "pj.urtica.parla.bosc": "Gegant! El xiulet encara funciona?",
       "pj.urtica.parla.bosc2": "El gat de casa diu que sí.",
@@ -9837,7 +9901,7 @@
       "pista.tap.2": "Treu les ampolles del rierol. La de sota està encallada: s'hi ha de fer palanca.",
       "pista.tap.3": "Fes servir l'estaca amb el tap d'ampolles.",
       "pista.taula.1": "Vet. Seu a la taula, que el te es refreda.",
-      "pista.tele.1": "La Txell només vol filmar l'escenari. Si el Registrador surt per un altre costat, no el veurà ningú. Canvi.",
+      "pista.tele.1": "La càmera de la Txell, al trípode, només enfoca la cara de la senyora Pla. Un gripau, a terra, no hi sortirà ni de broma. Canvi.",
       "pista.tele.2": "Mira bé la càmera de la tele. Quin número hi posa? Canvi.",
       "pista.tele.3": "Mira la Txell, i després digues-li que tu ets la del canal 7. Canvi.",
       "pista.xiulet.1": "Ha dit «aire pur».",
@@ -9921,7 +9985,7 @@
       "sala.campament_fades.empenta.12": "(al walkie) Iri. Tinc un xiulet de fada. No et diré com. Canvi i fora.",
       "sala.campament_fades.empenta.2": "Uaaaaaa!",
       "sala.campament_fades.empenta.3": "A la tercera gronxada, la Vet passa just pel costat de la Flor de Pebre.",
-      "sala.campament_fades.empenta.4": "(estirant el braç) Pica! Pica pica pica! Amb les mans no. Amb el pot!",
+      "sala.campament_fades.empenta.4": "(estirant el braç) Ai, com pica! Pica pica pica! Amb les mans no. Amb el pot!",
       "sala.campament_fades.empenta.5": "A la gronxada següent, hi recull el pol·len i tanca el pot de pressa.",
       "sala.campament_fades.empenta.6": "(de lluny) Atxím! Brutal.",
       "sala.campament_fades.empenta.7": "La Urtica agafa el pot com si fos un tresor.",
@@ -9954,7 +10018,7 @@
       "sala.campament_fades.melmelada.4": "Ens ha comprat amb sucre. És una traïció.",
       "sala.campament_fades.melmelada.5": "(llepant-se els dits) Una traïció boníssima.",
       "sala.campament_fades.melmelada.6": "Escolta, gegant. Tenim un pla. La Flor de Pebre, la de la punta de la branca: el seu pol·len fa esternudar.",
-      "sala.campament_fades.melmelada.7": "Si el tirem als sensors d'«aire pur» de NaturaPlus, esternudaran i diran la veritat: que l'aire que venen és el nostre.",
+      "sala.campament_fades.melmelada.7": "Si el tirem als sensors d'«aire pur» de NaturaPlus, esternudaran. I ja no podran dir que el seu aire és «pur»: és l'aire del bosc, de tota la vida.",
       "sala.campament_fades.melmelada.8": "Però no la podem collir. Ens ataca el nas, i sortim volant enrere.",
       "sala.campament_fades.melmelada.9": "(mirant el pot) ...I jo tinc un pot buit.",
       "sala.campament_fades.nom": "El campament de les Fades d'Ortiga",
@@ -10004,7 +10068,7 @@
       "sala.caseta_obra.wifi.1": "La Vet desendolla l'arbre Wi-Fi. Fa un últim pip, molt trist.",
       "sala.caseta_obra.wifi.2": "Oh, no. Oh, no, no. Sense cobertura.",
       "sala.caseta_obra.wifi.3": "(somriure) Surto un moment a buscar senyal. És un bosc, ja se sap.",
-      "sala.caseta_obra.wifi.4": "Encara.",
+      "sala.caseta_obra.wifi.4": "(fluix) Encara.",
       "sala.caseta_obra.wifi.5": "La Senyora Pla surt a fora amb la tauleta enlaire.",
       "sala.caseta_obra.wifi.6": "Ara, ràpid. L'altaveu.",
       "sala.centraleta.arrel.estira": "Les arrels no s'estiren! Que no és una cortina!",
@@ -10086,7 +10150,7 @@
       "sala.proleg_roure.1": "Tres dies sense ni un missatge del nord.",
       "sala.proleg_roure.2": "«Bosc 2.0». Hmf. Ja en tenim, de xarxa.",
       "sala.proleg_roure.3": "Dissabte, al capvespre",
-      "sala.proleg_roure.nom": "El roure gros",
+      "sala.proleg_roure.nom": "El roure de la porta petita",
       "sala.toll_gripaus.aigua.tap.1": "L'aigua baixa pel rierol i omple el toll. Els joncs es redrecen.",
       "sala.toll_gripaus.aigua.tap.2": "(abaixant la pancarta) Senyores i senyors: s'ha acabat la vaga.",
       "sala.toll_gripaus.aigua.tap.3": "(des de la finestreta) Registre del Bosc. Obert. Passi, passi.",
@@ -10104,7 +10168,7 @@
       "sala.toll_gripaus.comporta.mira": "Un tub nou de NaturaPlus: «ASPERSORS GESPA — SECTOR 4». Es beu l'aigua del rierol. Té una roda per tancar-lo.",
       "sala.toll_gripaus.comporta.mira2": "El tub dels aspersors, tancat. «SECTOR 4» es quedarà sense regar la gespa de plàstic.",
       "sala.toll_gripaus.comporta.nom": "tub dels aspersors",
-      "sala.toll_gripaus.intro.1": "Diumenge, migdia",
+      "sala.toll_gripaus.intro.1": "Diumenge al migdia",
       "sala.toll_gripaus.intro.2": "Vet, ja hi soc. Canvi.",
       "sala.toll_gripaus.intro.3": "Diu la Urtica que no els diguis «granotes». Canvi.",
       "sala.toll_gripaus.intro.4": "No els diré granotes. Canvi.",
@@ -10118,7 +10182,7 @@
       "sala.toll_gripaus.rierol.mira": "El rierol baixa del turó, però no arriba al toll. Un tap d'ampolles l'atura, i un tub nou se'n beu la resta.",
       "sala.toll_gripaus.rierol.mira2": "El rierol torna a baixar fins al toll. Fa un soroll que relaxa.",
       "sala.toll_gripaus.rierol.nom": "rierol",
-      "sala.toll_gripaus.tap.ampolles": "Trec les ampolles de dalt: «Aire Pur». Buides. Quin aire s'han begut?",
+      "sala.toll_gripaus.tap.ampolles": "Trec les ampolles de dalt: «Aire Pur». Buides. Qui s'ha begut l'aire?",
       "sala.toll_gripaus.tap.encallada": "L'última està encallada sota una pedra. Amb les mans no surt. Necessito alguna cosa per fer palanca.",
       "sala.toll_gripaus.tap.encallada1": "Però n'hi ha una d'encallada sota una pedra. Amb les mans no surt.",
       "sala.toll_gripaus.tap.mira": "Un tap d'ampolles buides d'«Aire Pur NaturaPlus». No deixen passar l'aigua del rierol.",
@@ -10136,7 +10200,7 @@
       "sala.vora_bosc.bustia.nom": "bústia",
       "sala.vora_bosc.cami.mira": "El camí del poble. Per aquí ha marxat l'àvia.",
       "sala.vora_bosc.cami.nom": "camí del poble",
-      "sala.vora_bosc.cami.surt": "L'àvia ha dit que tornés abans que es faci fosc. Encara no és fosc.",
+      "sala.vora_bosc.cami.surt": "L'àvia m'ha dit que torni abans que es faci fosc. Encara no és fosc.",
       "sala.vora_bosc.campaneta.altra": "Ning-ning.",
       "sala.vora_bosc.campaneta.altra.2": "Ja t'he sentit! L'estaca, nena. L'estaca!",
       "sala.vora_bosc.campaneta.mira": "Una campaneta de bronze, de la mida d'un didal.",
@@ -10203,7 +10267,7 @@
       "sala.vora_bosc.truca.4": "Hm. Les excavadores no diuen això. Espera, que obro.",
       "sala.zona_mati.altaveu.mira": "L'altaveu de la caseta. Al canal 7, com el vaig deixar ahir.",
       "sala.zona_mati.avia.mira": "L'àvia, muntant la parada de melmelada. Diu que la Festa Major és la Festa Major, amb formigó o sense.",
-      "sala.zona_mati.avia.parla": "Bon dia, reina. Si vens a ajudar, els pots de móres, al davant. Els de préssec ja no en queden.",
+      "sala.zona_mati.avia.parla": "Bon dia, reina. Quan arribi la Iri amb els pots de móres, me'ls poses al davant. Els de préssec ja no en queden.",
       "sala.zona_mati.bastida.1": "És com el roure, però de ferro.",
       "sala.zona_mati.bastida.2": "La Vet s'enfila per la bastida de la pantalla, tub a tub, i deixa la caseta de paper a dalt de tot, just a sobre dels sensors.",
       "sala.zona_mati.bastida.3": "(entrant-hi) Un amagatall de NaturaPlus. Pagat per NaturaPlus.",
@@ -10215,16 +10279,16 @@
       "sala.zona_mati.bastida.nom": "bastida",
       "sala.zona_mati.bastida.res": "Per pujar a fer turisme, no.",
       "sala.zona_mati.escenari.mira": "L'escenari, amb la cinta per tallar. A les deu hi pujarà la senyora Pla.",
-      "sala.zona_mati.fi.1": "Arriba la Iri, amb la motxilla i el walkie.",
+      "sala.zona_mati.fi.1": "Arriba la Iri, amb la motxilla, el walkie i una caixa de pots de móres.",
       "sala.zona_mati.fi.2": "Com va?",
       "sala.zona_mati.fi.3": "Les fades, dins un fullet de NaturaPlus. La tele, a l'espatlla.",
-      "sala.zona_mati.fi.4": "(li dona el xiulet d'ortiga) Té. No el bufis fins que digui «aire pur».",
+      "sala.zona_mati.fi.4": "(li dona el xiulet d'ortiga) Té. Jo seré a la parada amb l'àvia. No el bufis fins que digui «aire pur».",
       "sala.zona_mati.fi.5": "Observació: això ho has fet tota sola.",
       "sala.zona_mati.fi.6": "Ja ho sé.",
       "sala.zona_mati.formigonera.mira": "La formigonera. Ja té el motor engegat, per si de cas.",
       "sala.zona_mati.intro.1": "Dilluns. Festa Major. Les nou del matí",
       "sala.zona_mati.intro.2": "(al walkie) Iri. Soc a la Zona Zero. Hi ha més gespa de plàstic que a un camp de futbol. Canvi.",
-      "sala.zona_mati.intro.3": "Soc al bus, amb el walkie i el crit. Arribo a les nou i mitja. Tu prepara-ho tot. Canvi.",
+      "sala.zona_mati.intro.3": "Soc al bus, amb el walkie i el crit. L'àvia m'ha enviat a buscar els pots de móres a la cooperativa. Arribo a les nou i mitja. Tu prepara-ho tot. Canvi.",
       "sala.zona_mati.intro.4": "Tot? Canvi.",
       "sala.zona_mati.intro.5": "Les fades i la tele. Canvi i fora.",
       "sala.zona_mati.nom": "La Zona Zero, a les nou",
@@ -10234,7 +10298,7 @@
       "sala.zona_mati.parada.nom": "parada de melmelada",
       "sala.zona_mati.sensors.mira": "Tres columnes blanques: «AIRE: PUR 100%». De moment.",
       "sala.zona_mati.soques.mira": "Soques. La setmana passada eren arbres.",
-      "sala.zona_mati.txell.mira": "La Txell, de TV Comarca. El càmera té la càmera al trípode, mirant l'escenari. Al costat hi posa «TV7».",
+      "sala.zona_mati.txell.mira": "La Txell, de TV Comarca. El càmera ho filma tot des d'un trípode, a l'altura de la senyora Pla. A la càmera hi posa «TV7».",
       "sala.zona_mati.txell.mira2": "La Txell. El càmera ja té la càmera a l'espatlla.",
       "sala.zona_mati.urtica.1": "La Urtica baixa en picat i s'amaga darrere la Vet.",
       "sala.zona_mati.urtica.2": "Gegant. Allà baix hi haurà mil gegants. Si baixem quan ho digui la del vestit blanc, ens trepitgen.",
@@ -10303,14 +10367,15 @@
       "sala.zona_zero.soques.mira": "Soques d'arbres tallats. Ara entenc el crit.",
       "sala.zona_zero.soques.nom": "soques",
       "sala.zona_zero.xiulet.1": "La Iri bufa el xiulet d'ortiga. Fiiiiiu!",
-      "sala.zona_zero.xiulet.2": "Tres fades baixen en picat de les branques i buiden el pot de pol·len damunt dels sensors.",
+      "sala.zona_zero.xiulet.2": "Tres fades surten volant de la caseta de paper i buiden el pot de pol·len damunt dels sensors.",
       "sala.zona_zero.xiulet.3": "ATXÍM! ATXÍM! ATXÍÍÍM!",
       "sala.zona_zero.xiulet.4": "La lectura dels sensors passa de verd a vermell: «AIRE: PICANT». La gent riu.",
       "sala.zona_zero.xiulet.5": "És... un error de calibratge.",
       "sala.zona_zero.xiulet.6": "(a part) Calibratge vol dir que l'aparell està mal ajustat. O que diu la veritat.",
       "sala.zona_zero.xiulet.7": "Bé! Continuem. Aquests terrenys, NaturaPlus els ha adquirit amb tota legalitat!",
       "sala.zona_zero.xiulet.8": "A la vora del bassal, el Registrador Bufó s'aclareix la gola.",
-      "sala.zona_zero.xiulet.fades": "Des de les branques, una veu petita: «Brutal!» I una altra: «Una traïció... boníssima.»",
+      "sala.zona_zero.xiulet.pica": "(des de dalt) Brutal!",
+      "sala.zona_zero.xiulet.card": "(des de dalt) Una traïció... boníssima.",
       "sala.zona_zero.xiulet.tard": "Les fades ja han fet la seva feina. I el gat de casa encara corre."
     }
   },
