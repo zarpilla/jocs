@@ -207,6 +207,9 @@ def collect(content, table, joc: pathlib.Path, codi_cfg: dict, jugadora: dict | 
     for kind in ("items", "characters"):
         for _id, o in content.get(kind, {}).items():
             walk(o, None, None, set(protas))   # un objecte el pot portar (i mirar) qualsevol de les dues
+            # Mirar un objecte de l'inventari sense cap "look" propi: la protagonista en diu la descripció.
+            if kind == "items" and isinstance(o.get("description"), str):
+                lines.append(("player", o["description"], None, None, set(protas)))
     lines = [(*l, None) for l in lines]
 
     # Els finals: l'escena, els crèdits i la frase de tancament (narrador).

@@ -554,6 +554,11 @@
   "key": "obs.obs_ampolla.1",
   "who": "iri"
  },
+ "iri100759932": {
+  "hash": "5f51a002c704f515",
+  "key": "obj.llibreta.desc",
+  "who": "iri"
+ },
  "iri1020785627": {
   "hash": "b6d24c430a497f2e",
   "key": "sala.centraleta.xarxa.4",
@@ -597,6 +602,11 @@
  "iri1199248099": {
   "hash": "050af3f8bba77ccf",
   "key": "sala.centraleta.tauler.mira",
+  "who": "iri"
+ },
+ "iri1218591279": {
+  "hash": "a930df80d98d61d1",
+  "key": "obj.lupa.desc",
   "who": "iri"
  },
  "iri1238104646": {
@@ -647,6 +657,11 @@
  "iri1341073665": {
   "hash": "d890630c82ff4631",
   "key": "ui.defecte.open.iri",
+  "who": "iri"
+ },
+ "iri1342182638": {
+  "hash": "58174057cac3d155",
+  "key": "obj.estaca.desc",
   "who": "iri"
  },
  "iri1345361897": {
@@ -804,6 +819,11 @@
   "key": "ui.defecte.look.iri.3",
   "who": "iri"
  },
+ "iri1678322519": {
+  "hash": "7d2963b0bff14481",
+  "key": "obj.pot_buit.desc",
+  "who": "iri"
+ },
  "iri1678528912": {
   "hash": "4521ba15a593dc4c",
   "key": "obj.llibreta.compte",
@@ -814,9 +834,24 @@
   "key": "sala.vora_bosc.bolets.agafa",
   "who": "iri"
  },
+ "iri1697517104": {
+  "hash": "68aa8748ea09fec1",
+  "key": "obj.fil_saba.desc",
+  "who": "iri"
+ },
  "iri1702448525": {
   "hash": "365fc4089c8d089a",
   "key": "sala.vora_bosc.bustia.mira.b",
+  "who": "iri"
+ },
+ "iri172951727": {
+  "hash": "8498061f31ee3805",
+  "key": "obj.pot_melmelada.desc",
+  "who": "iri"
+ },
+ "iri1745738516": {
+  "hash": "900afc76d899914e",
+  "key": "obj.pila_llimona.desc",
   "who": "iri"
  },
  "iri1749678086": {
@@ -832,6 +867,11 @@
  "iri1792642104": {
   "hash": "1044bce8fa67ad7e",
   "key": "pj.iri.parla.1",
+  "who": "iri"
+ },
+ "iri1793911334": {
+  "hash": "e22b37737803ed09",
+  "key": "obj.xiulet.desc",
   "who": "iri"
  },
  "iri1803330884": {
@@ -924,6 +964,11 @@
   "key": "ui.defecte.pickUp.iri",
   "who": "iri"
  },
+ "iri2033942661": {
+  "hash": "1c754bad724e5659",
+  "key": "obj.llimona.desc",
+  "who": "iri"
+ },
  "iri2049058065": {
   "hash": "bb9b506524820902",
   "key": "sala.vora_bosc.gespa.toca",
@@ -942,6 +987,11 @@
  "iri2057736403": {
   "hash": "0753cce4a33416c5",
   "key": "ui.defecte.close",
+  "who": "iri"
+ },
+ "iri2069995678": {
+  "hash": "1bf1a8a56ab1d5db",
+  "key": "obj.llimona_centim.desc",
   "who": "iri"
  },
  "iri2072955676": {
@@ -979,6 +1029,11 @@
   "key": "obj.llibreta.compte",
   "who": "iri"
  },
+ "iri2204347051": {
+  "hash": "bd3822cd6e6a449f",
+  "key": "obj.kit.desc",
+  "who": "iri"
+ },
  "iri2215958000": {
   "hash": "729ce8f465303cba",
   "key": "obj.xiulet.mira.iri",
@@ -987,6 +1042,11 @@
  "iri2246553377": {
   "hash": "e2314abf73338e67",
   "key": "sala.zona_mati.fi.2",
+  "who": "iri"
+ },
+ "iri2247116079": {
+  "hash": "eb77790eed11eb3a",
+  "key": "obj.cargol.desc",
   "who": "iri"
  },
  "iri2248150034": {
@@ -1147,6 +1207,11 @@
  "iri2687443738": {
   "hash": "04384e18ddce2bd2",
   "key": "sala.vora_bosc.cami.surt",
+  "who": "iri"
+ },
+ "iri269006799": {
+  "hash": "a7b03c0f67c56569",
+  "key": "obj.centim.desc",
   "who": "iri"
  },
  "iri2715906278": {
@@ -1444,6 +1509,11 @@
   "key": "sala.centraleta.arrel.mira",
   "who": "iri"
  },
+ "iri3656933581": {
+  "hash": "91096bef28cb0e1c",
+  "key": "obj.caseta_paper.desc",
+  "who": "iri"
+ },
  "iri3679537511": {
   "hash": "6e2977e3f9323b4a",
   "key": "obj.lupa.sola",
@@ -1522,6 +1592,11 @@
  "iri3868681413": {
   "hash": "eb2fdc952d4d280c",
   "key": "sala.zona_zero.dhora.4",
+  "who": "iri"
+ },
+ "iri3872951530": {
+  "hash": "71ede832c63a08b5",
+  "key": "obj.llimona_cargol.desc",
   "who": "iri"
  },
  "iri3874815215": {
@@ -1632,6 +1707,11 @@
  "iri404987627": {
   "hash": "14fae6772e473e7f",
   "key": "sala.vora_bosc.llum_vermell.mira2",
+  "who": "iri"
+ },
+ "iri405469450": {
+  "hash": "5daf4ccc5613cd52",
+  "key": "obj.walkie.desc",
   "who": "iri"
  },
  "iri4073591276": {
@@ -2744,6 +2824,11 @@
   "key": "obj.walkie.mira.vet",
   "who": "vet"
  },
+ "vet100759932": {
+  "hash": "e018e3d135637279",
+  "key": "obj.llibreta.desc",
+  "who": "vet"
+ },
  "vet1061324067": {
   "hash": "2855fdb92e8711d2",
   "key": "sala.zona_mati.bastida.mira",
@@ -2779,6 +2864,11 @@
   "key": "sala.zona_mati.bastida.res",
   "who": "vet"
  },
+ "vet1218591279": {
+  "hash": "ce498e221b200511",
+  "key": "obj.lupa.desc",
+  "who": "vet"
+ },
  "vet1255111856": {
   "hash": "385323d2a7e9e546",
   "key": "dlg.walkie.e2.2",
@@ -2807,6 +2897,11 @@
  "vet1329581743": {
   "hash": "3b6585d89dfee1f4",
   "key": "pj.espora.vet.1",
+  "who": "vet"
+ },
+ "vet1342182638": {
+  "hash": "ef3876e7933c4a11",
+  "key": "obj.estaca.desc",
   "who": "vet"
  },
  "vet1355777570": {
@@ -2904,14 +2999,34 @@
   "key": "sala.zona_zero.crit.10",
   "who": "vet"
  },
+ "vet1678322519": {
+  "hash": "f256fa07f1a8b437",
+  "key": "obj.pot_buit.desc",
+  "who": "vet"
+ },
  "vet1678528912": {
   "hash": "9b6a226e7646f275",
   "key": "obj.llibreta.compte",
   "who": "vet"
  },
+ "vet1697517104": {
+  "hash": "2f9138308b5c3a7a",
+  "key": "obj.fil_saba.desc",
+  "who": "vet"
+ },
+ "vet172951727": {
+  "hash": "f385a00c4ab13f61",
+  "key": "obj.pot_melmelada.desc",
+  "who": "vet"
+ },
  "vet1733085952": {
   "hash": "16e3654587ead7ac",
   "key": "ui.defecte.talkTo.vet.3",
+  "who": "vet"
+ },
+ "vet1745738516": {
+  "hash": "224e6b3540d58993",
+  "key": "obj.pila_llimona.desc",
   "who": "vet"
  },
  "vet1749863571": {
@@ -2932,6 +3047,11 @@
  "vet1780118939": {
   "hash": "7c5bf25cc01505d1",
   "key": "obj.llibreta.compte",
+  "who": "vet"
+ },
+ "vet1793911334": {
+  "hash": "40ffd501e6ed500e",
+  "key": "obj.xiulet.desc",
   "who": "vet"
  },
  "vet1830660714": {
@@ -3014,6 +3134,11 @@
   "key": "dlg.walkie.e1b.2",
   "who": "vet"
  },
+ "vet2033942661": {
+  "hash": "53245d7fb8464bfe",
+  "key": "obj.llimona.desc",
+  "who": "vet"
+ },
  "vet2054003390": {
   "hash": "ad2deb48c11f29d2",
   "key": "sala.bosc_obert.porta_oberta.entra",
@@ -3027,6 +3152,11 @@
  "vet2057736403": {
   "hash": "e91cdd031f7611ad",
   "key": "ui.defecte.close",
+  "who": "vet"
+ },
+ "vet2069995678": {
+  "hash": "49e3ff0b81dbfd0a",
+  "key": "obj.llimona_centim.desc",
   "who": "vet"
  },
  "vet2091150589": {
@@ -3079,9 +3209,19 @@
   "key": "obj.llibreta.compte",
   "who": "vet"
  },
+ "vet2204347051": {
+  "hash": "51b7d9c17c924d2b",
+  "key": "obj.kit.desc",
+  "who": "vet"
+ },
  "vet2229775758": {
   "hash": "168ddab500479d03",
   "key": "sala.zona_mati.fi.3",
+  "who": "vet"
+ },
+ "vet2247116079": {
+  "hash": "51b6b185c591e9a2",
+  "key": "obj.cargol.desc",
   "who": "vet"
  },
  "vet2248150034": {
@@ -3217,6 +3357,11 @@
  "vet2685559476": {
   "hash": "75790a662c79767b",
   "key": "ui.defecte.push.vet.2",
+  "who": "vet"
+ },
+ "vet269006799": {
+  "hash": "9e78d6787fa9e59b",
+  "key": "obj.centim.desc",
   "who": "vet"
  },
  "vet2702337095": {
@@ -3409,6 +3554,11 @@
   "key": "sala.campament_fades.empenta.12",
   "who": "vet"
  },
+ "vet3656933581": {
+  "hash": "adcffa993b2d1354",
+  "key": "obj.caseta_paper.desc",
+  "who": "vet"
+ },
  "vet366242041": {
   "hash": "4bd4cd92f5a0983f",
   "key": "sala.caseta_obra.porta.no",
@@ -3489,6 +3639,11 @@
   "key": "sala.zona_zero.dhora.4",
   "who": "vet"
  },
+ "vet3872951530": {
+  "hash": "1e20cf7e3d959156",
+  "key": "obj.llimona_cargol.desc",
+  "who": "vet"
+ },
  "vet389403401": {
   "hash": "a8d36a66f2e7a105",
   "key": "dlg.pla.opt.adeu",
@@ -3547,6 +3702,11 @@
  "vet4054593919": {
   "hash": "1884870bd4184982",
   "key": "sala.zona_mati.altaveu.mira",
+  "who": "vet"
+ },
+ "vet405469450": {
+  "hash": "312d7b6566c128cc",
+  "key": "obj.walkie.desc",
   "who": "vet"
  },
  "vet4060914639": {
