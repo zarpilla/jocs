@@ -426,8 +426,12 @@ export function takeDoorSound() {
 
 /** Si totes les pistes duren el mateix i, en canviar-ne, la nova continua al mateix punt (`musicSync`). */
 export const musicSync = (mapping as { musicSync?: boolean }).musicSync === true;
-/** Si el botó «Canvia» del HUD és el de la pista (`botoPista` del joc: L'Última Arrel, on no es pot canviar). */
-export const botoPista = (mapping as { botoPista?: boolean }).botoPista === true;
+/** Si el botó «Canvia» del HUD és sempre el de la pista (`botoPista` del joc: L'Última Arrel, on no es pot canviar). */
+export const botoPista = (mapping as { botoPista?: boolean | string }).botoPista === true;
+/** Si el botó és la pista només quan no es pot canviar (`botoPista: 'mixt'`: La Conjura de l'Avet). */
+export const botoPistaMixt = (mapping as { botoPista?: boolean | string }).botoPista === 'mixt';
+/** Si ara mateix el botó «Canvia» del HUD fa de pista. */
+export const botoEsPista = () => botoPista || (botoPistaMixt && !narrative.canSwitch());
 
 /** On és (o era) cada protagonista. */
 export function protagonistRoom(who: string): string | null {
@@ -644,7 +648,7 @@ export const touchRouter = () => router;
  */
 export function applySwitchButton() {
   const pot = narrative.canSwitch();
-  guis.verbs.controls.canviaBtn.visible = pot || botoPista;
+  guis.verbs.controls.canviaBtn.visible = pot || botoPista || botoPistaMixt;
   const menu = guis.gameMenu.controls as unknown as Record<string, { visible: boolean } | undefined>;
   if (menu.canviar) menu.canviar.visible = pot;
 }

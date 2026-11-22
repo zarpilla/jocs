@@ -2,8 +2,8 @@
  * La Conjura de l'Avet a Benne: el que aquest joc fa diferent (vegeu adapters/benne/joc-benne.ts). Com L'Última Arrel
  * (sense barra de verbs, pantalla adaptable, una germana per sala), amb les fonts i els colors propis.
  *
- * Sense botó «Canvia»: una sala, una germana. No es configura aquí sinó amb `switchWhen` a game/data/game.json
- * (una condició que no es compleix mai), i el pont amaga el botó del HUD.
+ * Trams oberts i seguits: quan es pot canviar de germana ho diu `switchWhen` a game/data/game.json, i el botó «Canvia»
+ * del HUD fa de lupa (pista) quan no es pot (`botoPista: 'mixt'`).
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -24,8 +24,8 @@ export default {
   tactil: true,
   // Totes les peces de música duren el mateix (tools/musica.py): en canviar de sala, la nova continua al mateix punt.
   musicaSincronitzada: true,
-  // No es pot canviar de germana: el botó «Canvia» del HUD és la lupa (la pista).
-  botoPista: true,
+  // Als trams oberts es pot canviar de germana (botó «Canvia»); als seguits, el botó és la lupa (la pista).
+  botoPista: 'mixt',
   textosGui: {
     'game-menu': { historial: 'ui.menu.historial', pista: 'ui.menu.pista' },
   },

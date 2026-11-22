@@ -17,8 +17,8 @@
 // A una cinemàtica amb coses per tocar (la carta de navegació d'Aigua Verne), només la frase i els punts: no hi ha
 // protagonista, ni inventari, ni «Canvia».
 import { game, player, pointer } from '@benne/script';
-import { verbs } from '@game';
-import { botoPista, clickablePrompt, isClickableCutscene, narrative, targetFromBenne } from '../../narrative/narrative';
+import { guis, verbs } from '@game';
+import { botoEsPista, botoPistaMixt, clickablePrompt, isClickableCutscene, narrative, targetFromBenne } from '../../narrative/narrative';
 import { esSortida, queFaElToc } from '../../narrative/accions';
 import { esDit } from '../../narrative/tactil';
 import { esquerreMira } from '../../narrative/preferencies';
@@ -69,11 +69,14 @@ type Visible = { visible: boolean };
 const mostra = (cs: Visible[], on: boolean) => {
   for (const c of cs) if (c.visible !== on) c.visible = on;
 };
+/** La lupa del botó «Canvia» amb `botoPista: 'mixt'` (l'art el fa el hud.py del joc): no tots els jocs la tenen. */
+const caraPistaCtrl = () => (guis.verbs.controls as unknown as Record<string, (Lloc & Visible) | undefined>).caraPista;
 
 const cartaOberta = () => isClickableCutscene(narrative.world.currentRoom());
 
 /** Posa cada cosa on va en el mode d'ara (els controls es tornen a fer a cada sala: es crida a cada fotograma). */
 export function layoutHud() {
+  const caraPista = caraPistaCtrl();
   // (els controls amagats al .gui.json surten visibles en construir-se la GUI: per això es diu sempre què es veu)
   const gran = [safata2, inventoryPanel2, upBtn2, downBtn2];
   const petita = [safata3, inventoryPanel3, upBtn3, downBtn3];
@@ -117,11 +120,15 @@ export function layoutHud() {
     }
     posa(caraIri, canviaBtn.x + CARA.x, canviaBtn.y + CARA.y);
     posa(caraVet, canviaBtn.x + CARA.x, canviaBtn.y + CARA.y);
+    if (caraPista) posa(caraPista, canviaBtn.x + CARA.x, canviaBtn.y + CARA.y);
   }
   // La pantalla rodona del botó «Canvia» mostra la cara de l'altra protagonista (la que no juga). El botó el mostra o
   // l'amaga narrative.ts (si es pot canviar).
-  // (amb `botoPista`, el botó és la lupa i no hi ha cap cara)
-  const on = canviaBtn.visible && !botoPista;
+  // (amb `botoPista`, el botó és la lupa i no hi ha cap cara; amb `'mixt'`, la lupa és `caraPista` quan no es pot canviar)
+  const esPista = botoEsPista();
+  const on = canviaBtn.visible && !esPista;
+  const lupa = canviaBtn.visible && esPista && botoPistaMixt;
+  if (caraPista && caraPista.visible !== lupa) caraPista.visible = lupa;
   const iri = on && player.id === 'vet';
   const vet = on && player.id !== 'vet';
   if (caraIri.visible !== iri) caraIri.visible = iri;

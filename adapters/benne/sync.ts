@@ -144,7 +144,7 @@ function sync() {
   // La resolució, perquè el runtime no doni per fet que la pantalla fa 480 d'ample (Ni un ou és a 640×360).
   const gameConfigPath = join(gameDir, 'game-config.json');
   const resolucio = existsSync(gameConfigPath) ? JSON.parse(readFileSync(gameConfigPath, 'utf8')).resolution : undefined;
-  writeGenerated(join(narrativeDir, 'mapping.generated.json'), json({ id: basename(jocDir()), nom: joc.nom, musicSync: joc.musicaSincronitzada === true, botoPista: joc.botoPista === true, resolucio, veus: gameVoicesMode(), ...mapping }), 'json');
+  writeGenerated(join(narrativeDir, 'mapping.generated.json'), json({ id: basename(jocDir()), nom: joc.nom, musicSync: joc.musicaSincronitzada === true, botoPista: joc.botoPista ?? false, resolucio, veus: gameVoicesMode(), ...mapping }), 'json');
 
   // 2. Contingut
   const bundle: { content: GameContent; locales: Record<string, LocaleTable>; locale: string; zones: Record<string, string[]> } =

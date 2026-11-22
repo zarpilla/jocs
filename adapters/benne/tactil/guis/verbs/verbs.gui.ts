@@ -5,14 +5,15 @@ import { guis } from '@game';
 import { gui, bossaBtn, canviaBtn, menuBtn, puntsBtn, puntsPetitBtn } from './verbs.ids';
 import { isTrayOpen, layoutHud, modeTauler, refreshLine, showTray } from './hud';
 import { sayHint, switchProtagonist } from '../../narrative/narrative.script';
-import { botoPista } from '../../narrative/narrative';
+import { botoEsPista } from '../../narrative/narrative';
 
 bossaBtn.onClick(() => showTray(!isTrayOpen()))
 puntsBtn.onClick(() => game.showClickables())
 puntsPetitBtn.onClick(() => game.showClickables())
 menuBtn.onClick(() => guis.gameMenu.show())
-// Als jocs sense canvi de protagonista (`botoPista`), és la lupa: demana una pista.
-canviaBtn.onClick(() => (botoPista ? sayHint() : switchProtagonist()))
+// Als jocs sense canvi de protagonista (`botoPista`), és la lupa: demana una pista. Amb `botoPista: 'mixt'`, només
+// quan ara no es pot canviar.
+canviaBtn.onClick(() => (botoEsPista() ? sayHint() : switchProtagonist()))
 
 gui.onBuilt(() => {
   layoutHud()
