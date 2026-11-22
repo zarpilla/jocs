@@ -1,0 +1,288 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "sanca",
+  "with": "sanca",
+  "start": [
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          },
+          {
+            "protagonist": "iri"
+          }
+        ]
+      },
+      "node": "mati_iri"
+    },
+    {
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      },
+      "node": "mati"
+    },
+    {
+      "if": {
+        "protagonist": "iri"
+      },
+      "node": "iri"
+    },
+    {
+      "node": "vet"
+    }
+  ],
+  "nodes": {
+    "iri": {
+      "lines": [
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.1"
+        }
+      ],
+      "goto": "mi"
+    },
+    "mi": {
+      "choices": [
+        {
+          "id": "canem_i",
+          "text": "dlg.sanca.opt.canem_i",
+          "if": {
+            "all": [
+              {
+                "flag": "campanar_vist"
+              },
+              {
+                "flag": "canem_donat",
+                "is": false
+              }
+            ]
+          },
+          "next": "canem_i"
+        },
+        {
+          "id": "adeu_i",
+          "text": "dlg.sanca.opt.adeu_i",
+          "end": true
+        }
+      ]
+    },
+    "canem_i": {
+      "lines": [
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.2"
+        }
+      ],
+      "goto": "mi"
+    },
+    "vet": {
+      "lines": [
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.3"
+        }
+      ],
+      "goto": "mv"
+    },
+    "mv": {
+      "choices": [
+        {
+          "id": "queixa",
+          "text": "dlg.sanca.opt.queixa",
+          "once": true,
+          "next": "queixa"
+        },
+        {
+          "id": "canem",
+          "text": "dlg.sanca.opt.canem",
+          "if": {
+            "all": [
+              {
+                "flag": "campanar_vist"
+              },
+              {
+                "flag": "canem_demanat",
+                "is": false
+              }
+            ]
+          },
+          "next": "canem"
+        },
+        {
+          "id": "tracte",
+          "text": "dlg.sanca.opt.tracte",
+          "if": {
+            "all": [
+              {
+                "flag": "canem_demanat"
+              },
+              {
+                "flag": "canem_donat",
+                "is": false
+              }
+            ]
+          },
+          "next": "tracte"
+        },
+        {
+          "id": "noms",
+          "text": "dlg.sanca.opt.noms",
+          "if": {
+            "all": [
+              {
+                "flag": "queixa_copiada"
+              },
+              {
+                "flag": "sanca_sap",
+                "is": false
+              }
+            ]
+          },
+          "next": "noms"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.sanca.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "queixa": {
+      "lines": [
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.4"
+        }
+      ],
+      "goto": "mv"
+    },
+    "canem": {
+      "lines": [
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.5",
+          "effects": [
+            {
+              "setFlag": "canem_demanat"
+            }
+          ]
+        }
+      ],
+      "goto": "mv"
+    },
+    "tracte": {
+      "lines": [
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.6"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.sanca.7",
+          "effects": [
+            {
+              "giveItem": "canem"
+            },
+            {
+              "setFlag": "canem_donat"
+            }
+          ]
+        }
+      ],
+      "goto": "mv"
+    },
+    "noms": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.sanca.8"
+        },
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.9"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.sanca.10"
+        },
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.11",
+          "effects": [
+            {
+              "setFlag": "sanca_sap"
+            }
+          ]
+        }
+      ],
+      "goto": "mv"
+    },
+    "mati": {
+      "lines": [
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.12"
+        }
+      ],
+      "goto": "mm"
+    },
+    "mm": {
+      "choices": [
+        {
+          "id": "creu",
+          "text": "dlg.sanca.opt.creu",
+          "if": {
+            "flag": "testimoni_sanca",
+            "is": false
+          },
+          "silent": true,
+          "next": "creu"
+        },
+        {
+          "id": "adeu_m",
+          "text": "dlg.sanca.opt.adeu_m",
+          "silent": true,
+          "end": true
+        }
+      ]
+    },
+    "creu": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.sanca.13"
+        },
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.14"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.sanca.15"
+        },
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.16",
+          "effects": [
+            {
+              "setFlag": "testimoni_sanca"
+            }
+          ]
+        }
+      ]
+    },
+    "mati_iri": {
+      "lines": [
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.17"
+        }
+      ]
+    }
+  }
+}

@@ -4,44 +4,483 @@
   "with": "ponc",
   "start": [
     {
-      "node": "hola"
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 0
+          },
+          {
+            "flag": "tall_vist"
+          },
+          {
+            "flag": "pare_detingut",
+            "is": false
+          }
+        ]
+      },
+      "node": "detencio"
+    },
+    {
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 0
+      },
+      "node": "hola0"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 1
+          },
+          {
+            "protagonist": "vet"
+          },
+          {
+            "flag": "ordre_llegida",
+            "is": false
+          }
+        ]
+      },
+      "node": "ordre"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 1
+          },
+          {
+            "protagonist": "vet"
+          }
+        ]
+      },
+      "node": "hola1v"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          },
+          {
+            "all": [
+              {
+                "flag": "testimoni_sanca"
+              },
+              {
+                "flag": "testimoni_ermessenda"
+              },
+              {
+                "flag": "testimoni_joanet"
+              },
+              {
+                "flag": "segell_acceptat"
+              }
+            ]
+          }
+        ]
+      },
+      "node": "campana"
+    },
+    {
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      },
+      "node": "mati"
+    },
+    {
+      "node": "hola1i"
     }
   ],
   "nodes": {
-    "hola": {
+    "hola0": {
       "lines": [
         {
           "who": "ponc",
-          "text": "dlg.ponc.hola.1"
+          "text": "dlg.ponc.1"
         }
       ],
-      "goto": "menu"
+      "goto": "m0"
     },
-    "menu": {
+    "m0": {
       "choices": [
         {
-          "id": "tall",
-          "text": "dlg.ponc.opt.tall",
-          "next": "tall",
-          "if": {
-            "flag": "tall_vist"
-          }
+          "id": "culpa",
+          "text": "dlg.ponc.opt.culpa",
+          "once": true,
+          "next": "culpa"
         },
         {
-          "id": "adeu",
-          "text": "dlg.ponc.opt.adeu",
+          "id": "adeu0",
+          "text": "dlg.ponc.opt.adeu0",
           "end": true
         }
       ]
     },
-    "tall": {
+    "culpa": {
       "lines": [
         {
           "who": "ponc",
-          "text": "dlg.ponc.tall.2"
+          "text": "dlg.ponc.2"
         }
       ],
-      "goto": "menu"
+      "goto": "m0"
+    },
+    "detencio": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.ponc.3"
+        },
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.4"
+        },
+        {
+          "who": "sunifred",
+          "text": "dlg.ponc.5"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ponc.6"
+        },
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.7"
+        },
+        {
+          "who": "ramon",
+          "text": "dlg.ponc.8",
+          "effects": [
+            {
+              "setFlag": "pare_detingut"
+            }
+          ],
+          "stageAfter": [
+            {
+              "who": "bonfill",
+              "walk": "carrer",
+              "wait": false
+            },
+            {
+              "who": "ramon",
+              "walk": "carrer"
+            }
+          ]
+        },
+        {
+          "who": "iri",
+          "text": "dlg.ponc.9",
+          "effects": [
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "mur_avet"
+              }
+            }
+          ]
+        },
+        {
+          "who": "vet",
+          "text": "dlg.ponc.10"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.ponc.11"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.ponc.12"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.ponc.13",
+          "effects": [
+            {
+              "setVar": "fase",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "ordre": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.14"
+        }
+      ],
+      "goto": "mo"
+    },
+    "mo": {
+      "choices": [
+        {
+          "id": "insistir",
+          "text": "dlg.ponc.opt.insistir",
+          "next": "insistir"
+        },
+        {
+          "id": "ell",
+          "text": "dlg.ponc.opt.ell",
+          "once": true,
+          "next": "ell"
+        },
+        {
+          "id": "privat",
+          "text": "dlg.ponc.opt.privat",
+          "next": "privat"
+        },
+        {
+          "id": "adeu_o",
+          "text": "dlg.ponc.opt.adeu_o",
+          "end": true
+        }
+      ]
+    },
+    "insistir": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.15"
+        }
+      ],
+      "goto": "mo"
+    },
+    "ell": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.16"
+        }
+      ],
+      "goto": "mo"
+    },
+    "privat": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.17"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.ponc.18"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.ponc.19"
+        },
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.20"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.ponc.21"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.ponc.22",
+          "effects": [
+            {
+              "setFlag": "ordre_llegida"
+            },
+            {
+              "setFlag": "signe_copiat"
+            }
+          ]
+        }
+      ]
+    },
+    "hola1v": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.23"
+        }
+      ],
+      "goto": "m1v"
+    },
+    "m1v": {
+      "choices": [
+        {
+          "id": "signe",
+          "text": "dlg.ponc.opt.signe",
+          "if": {
+            "flag": "signe_copiat"
+          },
+          "once": true,
+          "next": "signe"
+        },
+        {
+          "id": "pare",
+          "text": "dlg.ponc.opt.pare",
+          "next": "pare"
+        },
+        {
+          "id": "adeu1",
+          "text": "dlg.ponc.opt.adeu1",
+          "end": true
+        }
+      ]
+    },
+    "signe": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.24"
+        }
+      ],
+      "goto": "m1v"
+    },
+    "pare": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.25"
+        }
+      ],
+      "goto": "m1v"
+    },
+    "hola1i": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.26"
+        }
+      ],
+      "goto": "m1i"
+    },
+    "m1i": {
+      "choices": [
+        {
+          "id": "pare_i",
+          "text": "dlg.ponc.opt.pare_i",
+          "next": "pare_i"
+        },
+        {
+          "id": "adeu1i",
+          "text": "dlg.ponc.opt.adeu1i",
+          "end": true
+        }
+      ]
+    },
+    "pare_i": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.27"
+        }
+      ],
+      "goto": "m1i"
+    },
+    "mati": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.28"
+        },
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.29",
+          "if": {
+            "flag": "testimoni_sanca"
+          }
+        },
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.30",
+          "if": {
+            "flag": "testimoni_ermessenda"
+          }
+        },
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.31",
+          "if": {
+            "flag": "testimoni_joanet"
+          }
+        },
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.32",
+          "if": {
+            "flag": "segell_acceptat"
+          }
+        },
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.33",
+          "if": {
+            "flag": "segell_acceptat",
+            "is": false
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "adeu7",
+          "text": "dlg.ponc.opt.adeu7",
+          "end": true
+        }
+      ]
+    },
+    "campana": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.34"
+        },
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.35",
+          "effects": [
+            {
+              "setVar": "fase",
+              "value": 8
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "judici"
+              }
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "judici"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "vet"
+              }
+            },
+            {
+              "event": "anar",
+              "args": {
+                "room": "judici"
+              }
+            }
+          ]
+        }
+      ]
     }
   }
 }

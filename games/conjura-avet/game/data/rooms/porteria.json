@@ -1,0 +1,129 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.porteria.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "port_intro",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 3
+      },
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "sala.porteria.1"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "ninots": {
+      "visibleIf": {
+        "flag": "porteria_passada"
+      }
+    }
+  },
+  "hotspots": {
+    "porta_ala": {
+      "name": "sala.porteria.porta_ala.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.porteria.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "dialogue": "bonfill"
+        }
+      ]
+    },
+    "banc": {
+      "name": "sala.porteria.banc.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.porteria.3"
+            }
+          ]
+        }
+      ]
+    },
+    "columna": {
+      "name": "sala.porteria.columna.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.porteria.4"
+            }
+          ]
+        }
+      ]
+    },
+    "torxes": {
+      "name": "sala.porteria.torxes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.porteria.5"
+            }
+          ]
+        }
+      ]
+    },
+    "llibre_entrades": {
+      "name": "sala.porteria.llibre_entrades.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "porteria_passada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.porteria.6"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.porteria.7"
+            }
+          ]
+        }
+      ]
+    },
+    "bonfill": {
+      "interactions": []
+    }
+  }
+}

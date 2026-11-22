@@ -14,16 +14,47 @@
     "iri": {
       "room": "mur_avet",
       "items": [
-        "guants"
+        "guants",
+        "destral",
+        "olla"
       ]
     },
     "vet": {
-      "room": "mur_avet",
-      "items": []
+      "room": "claustre",
+      "items": [
+        "tauleta",
+        "carbonet",
+        "pergamins",
+        "ploma",
+        "rascador",
+        "mocador"
+      ]
     }
   },
   "cover": "portada",
+  "intro": "proleg",
   "switchWhen": {
-    "any": []
+    "any": [
+      {
+        "var": "fase",
+        "op": "==",
+        "value": 1
+      },
+      {
+        "var": "fase",
+        "op": "==",
+        "value": 2
+      },
+      {
+        "var": "fase",
+        "op": "==",
+        "value": 5
+      },
+      {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      }
+    ]
   }
 }

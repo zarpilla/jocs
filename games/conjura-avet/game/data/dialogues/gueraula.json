@@ -1,0 +1,420 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "gueraula",
+  "with": "gueraula",
+  "start": [
+    {
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 2
+      },
+      "node": "g2"
+    },
+    {
+      "node": "g1"
+    }
+  ],
+  "nodes": {
+    "g1": {
+      "lines": [
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.1"
+        }
+      ],
+      "goto": "m1"
+    },
+    "m1": {
+      "choices": [
+        {
+          "id": "canta",
+          "text": "dlg.gueraula.opt.canta",
+          "once": true,
+          "next": "canta"
+        },
+        {
+          "id": "sencera",
+          "text": "dlg.gueraula.opt.sencera",
+          "if": {
+            "all": [
+              {
+                "chosen": {
+                  "dialogue": "gueraula",
+                  "node": "m1",
+                  "choice": "canta"
+                }
+              },
+              {
+                "flag": "corranda_sentida",
+                "is": false
+              }
+            ]
+          },
+          "next": "sencera"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.gueraula.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "canta": {
+      "lines": [
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.2"
+        }
+      ],
+      "goto": "m1"
+    },
+    "sencera": {
+      "lines": [
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.3"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.gueraula.4"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.gueraula.5",
+          "effects": [
+            {
+              "setFlag": "corranda_sentida"
+            }
+          ]
+        }
+      ],
+      "goto": "m1"
+    },
+    "g2": {
+      "lines": [
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.6"
+        }
+      ],
+      "goto": "m2"
+    },
+    "m2": {
+      "choices": [
+        {
+          "id": "tint",
+          "text": "dlg.gueraula.opt.tint",
+          "once": true,
+          "next": "tint"
+        },
+        {
+          "id": "dormir",
+          "text": "dlg.gueraula.opt.dormir",
+          "once": true,
+          "next": "dormir"
+        },
+        {
+          "id": "veu",
+          "text": "dlg.gueraula.opt.veu",
+          "if": {
+            "flag": "xarop_donat",
+            "is": false
+          },
+          "next": "veu"
+        },
+        {
+          "id": "barbes",
+          "text": "dlg.gueraula.opt.barbes",
+          "once": true,
+          "next": "barbes"
+        },
+        {
+          "id": "llest",
+          "text": "dlg.gueraula.opt.llest",
+          "if": {
+            "all": [
+              {
+                "hasItem": "barbes",
+                "who": "vet"
+              },
+              {
+                "hasItem": "unguent",
+                "who": "vet"
+              },
+              {
+                "hasItem": "xarop",
+                "who": "vet"
+              },
+              {
+                "hasItem": "valeriana",
+                "who": "vet"
+              },
+              {
+                "hasItem": "salconduit",
+                "who": "vet"
+              },
+              {
+                "hasItem": "habits_curts",
+                "who": "iri"
+              }
+            ]
+          },
+          "next": "llest"
+        },
+        {
+          "id": "falta",
+          "text": "dlg.gueraula.opt.falta",
+          "if": {
+            "not": {
+              "all": [
+                {
+                  "hasItem": "barbes",
+                  "who": "vet"
+                },
+                {
+                  "hasItem": "unguent",
+                  "who": "vet"
+                },
+                {
+                  "hasItem": "xarop",
+                  "who": "vet"
+                },
+                {
+                  "hasItem": "valeriana",
+                  "who": "vet"
+                },
+                {
+                  "hasItem": "salconduit",
+                  "who": "vet"
+                },
+                {
+                  "hasItem": "habits_curts",
+                  "who": "iri"
+                }
+              ]
+            }
+          },
+          "next": "falta"
+        },
+        {
+          "id": "adeu2",
+          "text": "dlg.gueraula.opt.adeu2",
+          "end": true
+        }
+      ]
+    },
+    "tint": {
+      "lines": [
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.7"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.gueraula.8",
+          "effects": [
+            {
+              "setFlag": "sap_caparros"
+            }
+          ]
+        }
+      ],
+      "goto": "m2"
+    },
+    "dormir": {
+      "lines": [
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.9"
+        },
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.10",
+          "effects": [
+            {
+              "setFlag": "sap_valeriana"
+            }
+          ]
+        }
+      ],
+      "goto": "m2"
+    },
+    "veu": {
+      "lines": [
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.11",
+          "effects": [
+            {
+              "giveItem": "xarop"
+            },
+            {
+              "setFlag": "xarop_donat"
+            }
+          ]
+        }
+      ],
+      "goto": "m2"
+    },
+    "barbes": {
+      "lines": [
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.12"
+        }
+      ],
+      "goto": "m2"
+    },
+    "falta": {
+      "lines": [
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.13"
+        },
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.14",
+          "if": {
+            "not": {
+              "hasItem": "barbes"
+            }
+          }
+        },
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.15",
+          "if": {
+            "not": {
+              "hasItem": "unguent"
+            }
+          }
+        },
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.16",
+          "if": {
+            "not": {
+              "hasItem": "xarop"
+            }
+          }
+        },
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.17",
+          "if": {
+            "not": {
+              "hasItem": "valeriana"
+            }
+          }
+        },
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.18",
+          "if": {
+            "not": {
+              "hasItem": "salconduit"
+            }
+          }
+        },
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.19",
+          "if": {
+            "not": {
+              "hasItem": "habits_curts",
+              "who": "iri"
+            }
+          }
+        }
+      ],
+      "goto": "m2"
+    },
+    "llest": {
+      "lines": [
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.20",
+          "effects": [
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "apotecaria"
+              }
+            },
+            {
+              "setFlag": "disfressades"
+            },
+            {
+              "takeItem": "habits_curts",
+              "who": "iri"
+            },
+            {
+              "takeItem": "barbes",
+              "who": "vet"
+            },
+            {
+              "takeItem": "unguent",
+              "who": "vet"
+            },
+            {
+              "takeItem": "salconduit",
+              "who": "vet"
+            },
+            {
+              "giveItem": "salconduit",
+              "who": "iri"
+            }
+          ]
+        },
+        {
+          "who": "iri",
+          "text": "dlg.gueraula.21"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.gueraula.22"
+        },
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.23"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.gueraula.24"
+        },
+        {
+          "who": "title",
+          "text": "rotul.completes",
+          "effects": [
+            {
+              "setVar": "fase",
+              "value": 3
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "porteria"
+              }
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "porteria"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "iri"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

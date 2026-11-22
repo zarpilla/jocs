@@ -1,0 +1,448 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.moli.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "moli_intro",
+      "once": true,
+      "verb": "*",
+      "lines": [
+        {
+          "who": "vet",
+          "text": "sala.moli.1"
+        },
+        {
+          "who": "player",
+          "text": "sala.moli.2"
+        },
+        {
+          "who": "vet",
+          "text": "sala.moli.3"
+        }
+      ],
+      "effects": [
+        {
+          "takeItem": "carta_calcada",
+          "who": "vet"
+        },
+        {
+          "giveItem": "carta_calcada",
+          "who": "iri"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "falca_tallada": {
+      "visibleIf": {
+        "flag": "falca_tallada"
+      }
+    },
+    "pastera_aigua": {
+      "visibleIf": {
+        "flag": "pastera_aigua"
+      }
+    }
+  },
+  "hotspots": {
+    "roda": {
+      "name": "sala.moli.roda.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "falca_tallada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.4"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.5"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "falca_tallada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.6"
+            }
+          ]
+        }
+      ]
+    },
+    "falca": {
+      "name": "sala.moli.falca.nom",
+      "visibleIf": {
+        "flag": "falca_tallada",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.7"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "destral",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.8"
+            },
+            {
+              "who": "vet",
+              "text": "sala.moli.9"
+            },
+            {
+              "who": "player",
+              "text": "sala.moli.10",
+              "sound": "destral"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "falca_tallada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "push",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.11"
+            }
+          ]
+        }
+      ]
+    },
+    "comporta": {
+      "name": "sala.moli.comporta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.12"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.13"
+            }
+          ]
+        }
+      ]
+    },
+    "pastera": {
+      "name": "sala.moli.pastera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "pastera_aigua",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.14"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.15"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "use"
+          ],
+          "if": {
+            "flag": "pastera_aigua",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.16"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "pastera_aigua"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.17"
+            }
+          ]
+        }
+      ]
+    },
+    "canal": {
+      "name": "sala.moli.canal.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.18"
+            }
+          ]
+        }
+      ]
+    },
+    "moles": {
+      "name": "sala.moli.moles.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.19"
+            }
+          ]
+        }
+      ]
+    },
+    "finestra_dalt": {
+      "name": "sala.moli.finestra_dalt.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.20"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "hasItem": "pot_apotecari"
+                }
+              },
+              {
+                "not": {
+                  "hasItem": "pot_cartes"
+                }
+              },
+              {
+                "not": {
+                  "hasItem": "pot_segellat"
+                }
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.21"
+            },
+            {
+              "who": "gueraula",
+              "text": "sala.moli.22"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "pot_apotecari"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
+            "flag": "falca_tallada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.23"
+            },
+            {
+              "who": "gueraula",
+              "text": "sala.moli.24"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.moli.25"
+            },
+            {
+              "who": "gueraula",
+              "text": "sala.moli.26"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
+            "not": {
+              "hasItem": "pot_segellat"
+            }
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.27"
+            },
+            {
+              "who": "gueraula",
+              "text": "sala.moli.28"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
+            "flag": "pastera_aigua",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.29"
+            },
+            {
+              "who": "gueraula",
+              "text": "sala.moli.30"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "falca_tallada"
+              },
+              {
+                "flag": "pastera_aigua"
+              },
+              {
+                "hasItem": "pot_segellat"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.moli.31"
+            },
+            {
+              "who": "gueraula",
+              "text": "sala.moli.32",
+              "sound": "aigua"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.moli.33"
+            },
+            {
+              "who": "title",
+              "text": "acte.4"
+            },
+            {
+              "who": "title",
+              "text": "rotul.endema"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "fase",
+              "value": 7
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "mur_avet"
+              }
+            }
+          ],
+          "goTo": "mur_avet"
+        }
+      ]
+    }
+  }
+}

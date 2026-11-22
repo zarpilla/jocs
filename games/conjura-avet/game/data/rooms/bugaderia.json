@@ -1,0 +1,630 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.bugaderia.nom",
+  "protagonist": "iri",
+  "onEnter": [
+    {
+      "id": "bug_intro",
+      "once": true,
+      "verb": "*",
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.bugaderia.1"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "bagul_obert": {
+      "visibleIf": {
+        "flag": "bagul_obert"
+      }
+    },
+    "foc_ences": {
+      "visibleIf": {
+        "flag": "foc_ences"
+      }
+    },
+    "tina_negra": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "clofolles_tina"
+          },
+          {
+            "flag": "caparros_tina"
+          }
+        ]
+      }
+    },
+    "habits_estesos": {
+      "visibleIf": {
+        "flag": "habits_tenyits"
+      }
+    },
+    "tisores_agafades": {
+      "visibleIf": {
+        "flag": "tisores_agafades"
+      }
+    }
+  },
+  "hotspots": {
+    "bagul": {
+      "name": "sala.bugaderia.bagul.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "bagul_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "bagul_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.bugaderia.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "bagul_obert"
+            },
+            {
+              "giveItem": "tuniques"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.6"
+            }
+          ]
+        }
+      ]
+    },
+    "tina": {
+      "name": "sala.bugaderia.tina.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "clofolles_tina",
+                "is": false
+              },
+              {
+                "flag": "caparros_tina",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.7"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.8"
+            },
+            {
+              "who": "player",
+              "text": "sala.bugaderia.9",
+              "if": {
+                "flag": "foc_ences"
+              }
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clofolles",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.10"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "clofolles"
+            },
+            {
+              "setFlag": "clofolles_tina"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "caparros",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.11"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "caparros"
+            },
+            {
+              "setFlag": "caparros_tina"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "serra",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.12"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "destral",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.13"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tuniques",
+          "if": {
+            "all": [
+              {
+                "flag": "clofolles_tina"
+              },
+              {
+                "flag": "caparros_tina"
+              },
+              {
+                "flag": "foc_ences"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.14"
+            },
+            {
+              "who": "player",
+              "text": "sala.bugaderia.15"
+            },
+            {
+              "who": "player",
+              "text": "sala.bugaderia.16"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "tuniques"
+            },
+            {
+              "giveItem": "habits"
+            },
+            {
+              "setFlag": "habits_tenyits"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tuniques",
+          "if": {
+            "flag": "clofolles_tina",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.17"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tuniques",
+          "if": {
+            "flag": "caparros_tina",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.18"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tuniques",
+          "if": {
+            "flag": "foc_ences",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.19"
+            }
+          ]
+        }
+      ]
+    },
+    "fogo": {
+      "name": "sala.bugaderia.fogo.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "llenya_fogo",
+                "is": false
+              },
+              {
+                "flag": "foc_ences",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.20"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "foc_ences",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.21"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.22"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "alzina",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.23"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "alzina"
+            },
+            {
+              "setFlag": "llenya_fogo"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "pot_resina",
+          "if": {
+            "all": [
+              {
+                "flag": "llenya_fogo"
+              },
+              {
+                "flag": "foc_ences",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.24"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "foc_ences"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "pot_resina",
+          "if": {
+            "flag": "llenya_fogo",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.25"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "flag": "foc_ences"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.26"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.27"
+            }
+          ]
+        }
+      ]
+    },
+    "llenya_pi": {
+      "name": "sala.bugaderia.llenya_pi.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.28"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.29"
+            }
+          ]
+        }
+      ]
+    },
+    "llenya_pollancre": {
+      "name": "sala.bugaderia.llenya_pollancre.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.30"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.31"
+            }
+          ]
+        }
+      ]
+    },
+    "llenya_alzina": {
+      "name": "sala.bugaderia.llenya_alzina.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.32"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "llenya_fogo",
+                "is": false
+              },
+              {
+                "not": {
+                  "hasItem": "alzina"
+                }
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.33"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "alzina"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.34"
+            }
+          ]
+        }
+      ]
+    },
+    "robes": {
+      "name": "sala.bugaderia.robes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.35"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.36"
+            }
+          ]
+        }
+      ]
+    },
+    "tisores": {
+      "name": "sala.bugaderia.tisores.nom",
+      "visibleIf": {
+        "flag": "tisores_agafades",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.37"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.38"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "tisores"
+            },
+            {
+              "setFlag": "tisores_agafades"
+            }
+          ]
+        }
+      ]
+    },
+    "porta": {
+      "name": "sala.bugaderia.porta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.39"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "claustre"
+        }
+      ]
+    }
+  }
+}

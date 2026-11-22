@@ -1,12 +1,36 @@
 {
   "$schema": "../schemas/endings.schema.json",
-  "judici": {
-    "title": "final.judici.titol",
-    "text": "final.judici.text",
+  "avet": {
+    "title": "final.avet.titol",
+    "text": "final.avet.text",
     "scene": [
       {
         "who": "narrator",
-        "text": "final.judici.1"
+        "text": "final.avet.1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.avet.2"
+      },
+      {
+        "who": "narrator",
+        "text": "final.avet.3"
+      },
+      {
+        "who": "narrator",
+        "text": "final.avet.4"
+      },
+      {
+        "who": "narrator",
+        "text": "final.avet.5"
+      },
+      {
+        "who": "narrator",
+        "text": "final.avet.6"
+      },
+      {
+        "who": "narrator",
+        "text": "final.avet.7"
       }
     ],
     "credits": [
@@ -14,10 +38,36 @@
         "who": "narrator",
         "text": "final.credits.1",
         "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits.2",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits.3",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.post.1",
+        "room": "postcredits"
+      },
+      {
+        "who": "bonfill",
+        "text": "final.post.2",
+        "room": "postcredits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.post.3",
+        "room": "postcredits",
+        "sound": "truca"
       }
     ],
     "when": {
-      "flag": "tall_vist"
+      "flag": "final_avet"
     },
     "priority": 1
   }

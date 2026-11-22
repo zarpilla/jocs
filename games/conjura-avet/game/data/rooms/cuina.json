@@ -1,0 +1,517 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.cuina.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "cuina_intro",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 3
+      },
+      "lines": [
+        {
+          "who": "sunifred",
+          "text": "sala.cuina.1"
+        },
+        {
+          "who": "sunifred",
+          "text": "sala.cuina.2"
+        },
+        {
+          "who": "vet",
+          "text": "sala.cuina.3"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "olles_caigudes": {
+      "visibleIf": {
+        "flag": "olles_caigudes"
+      }
+    },
+    "sunifred_dorm": {
+      "visibleIf": {
+        "flag": "sunifred_dorm"
+      }
+    }
+  },
+  "hotspots": {
+    "llar_foc": {
+      "name": "sala.cuina.llar_foc.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.4"
+            }
+          ]
+        }
+      ]
+    },
+    "olles": {
+      "name": "sala.cuina.olles.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.5"
+            }
+          ]
+        }
+      ]
+    },
+    "pila_olles": {
+      "name": "sala.cuina.pila_olles.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "olles_caigudes",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.6"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.7"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "mocador",
+          "if": {
+            "flag": "signe_vist",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.cuina.8"
+            },
+            {
+              "who": "iri",
+              "text": "sala.cuina.9"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "mocador",
+          "if": {
+            "all": [
+              {
+                "flag": "signe_vist"
+              },
+              {
+                "flag": "vi_drogat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.cuina.10"
+            },
+            {
+              "who": "iri",
+              "text": "sala.cuina.11",
+              "sound": "olles"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.cuina.12"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "olles_caigudes"
+            },
+            {
+              "setFlag": "sunifred_girat"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "mocador",
+          "lines": [
+            {
+              "who": "iri",
+              "text": "sala.cuina.13"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.14"
+            }
+          ]
+        }
+      ]
+    },
+    "taula": {
+      "name": "sala.cuina.taula.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.15"
+            }
+          ]
+        }
+      ]
+    },
+    "gerra": {
+      "name": "sala.cuina.gerra.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "vi_drogat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.16"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.17"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "valeriana",
+          "if": {
+            "flag": "sunifred_girat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.18"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "valeriana"
+            },
+            {
+              "setFlag": "vi_drogat"
+            },
+            {
+              "setFlag": "sunifred_girat",
+              "value": false
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "valeriana",
+          "lines": [
+            {
+              "who": "sunifred",
+              "text": "sala.cuina.19"
+            },
+            {
+              "who": "vet",
+              "text": "sala.cuina.20"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.cuina.21"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "vi_drogat"
+              },
+              {
+                "flag": "sunifred_dorm",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.cuina.22"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.cuina.23"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.cuina.24"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.cuina.25"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sunifred_dorm"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "sunifred_dorm",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.cuina.26"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.cuina.27"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.28"
+            }
+          ]
+        }
+      ]
+    },
+    "copa": {
+      "name": "sala.cuina.copa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.29"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "valeriana",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.30"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.31"
+            }
+          ]
+        }
+      ]
+    },
+    "banc": {
+      "name": "sala.cuina.banc.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.32"
+            }
+          ]
+        }
+      ]
+    },
+    "sunifred": {
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "ploma",
+          "if": {
+            "all": [
+              {
+                "flag": "sunifred_dorm"
+              },
+              {
+                "not": {
+                  "hasItem": "claus"
+                }
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.cuina.33"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.cuina.34"
+            },
+            {
+              "who": "vet",
+              "text": "sala.cuina.35"
+            },
+            {
+              "who": "vet",
+              "text": "sala.cuina.36"
+            },
+            {
+              "who": "iri",
+              "text": "sala.cuina.37"
+            },
+            {
+              "who": "title",
+              "text": "acte.3"
+            },
+            {
+              "who": "title",
+              "text": "rotul.mitjanit",
+              "effects": [
+                {
+                  "setVar": "fase",
+                  "value": 4
+                },
+                {
+                  "event": "situar",
+                  "args": {
+                    "who": "iri",
+                    "room": "porteria"
+                  }
+                },
+                {
+                  "event": "situar",
+                  "args": {
+                    "who": "vet",
+                    "room": "scriptorium"
+                  }
+                },
+                {
+                  "event": "anar",
+                  "args": {
+                    "room": "scriptorium"
+                  }
+                }
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "claus"
+            },
+            {
+              "setFlag": "claus_agafades"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "sunifred_dorm"
+              },
+              {
+                "not": {
+                  "hasItem": "claus"
+                }
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "sunifred",
+              "text": "sala.cuina.38"
+            },
+            {
+              "who": "vet",
+              "text": "sala.cuina.39"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "sunifred_dorm",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.cuina.40"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "pare_reixa",
+  "with": "ramon",
+  "start": [
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "ramon",
+          "text": "dlg.pare_reixa.1"
+        }
+      ],
+      "goto": "m"
+    },
+    "m": {
+      "choices": [
+        {
+          "id": "serra",
+          "text": "dlg.pare_reixa.opt.serra",
+          "once": true,
+          "next": "serra"
+        },
+        {
+          "id": "be",
+          "text": "dlg.pare_reixa.opt.be",
+          "once": true,
+          "next": "be"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.pare_reixa.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "serra": {
+      "lines": [
+        {
+          "who": "ramon",
+          "text": "dlg.pare_reixa.2"
+        }
+      ],
+      "goto": "m"
+    },
+    "be": {
+      "lines": [
+        {
+          "who": "ramon",
+          "text": "dlg.pare_reixa.3"
+        }
+      ],
+      "goto": "m"
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "ermessenda",
+  "with": "ermessenda",
+  "start": [
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          },
+          {
+            "flag": "comporta_tancada"
+          },
+          {
+            "flag": "testimoni_ermessenda",
+            "is": false
+          }
+        ]
+      },
+      "node": "ve"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          },
+          {
+            "flag": "testimoni_ermessenda",
+            "is": false
+          }
+        ]
+      },
+      "node": "mati"
+    },
+    {
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      },
+      "node": "fet"
+    },
+    {
+      "if": {
+        "flag": "serra_treta"
+      },
+      "node": "gracies"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "ermessenda",
+          "text": "dlg.ermessenda.1"
+        }
+      ],
+      "goto": "m"
+    },
+    "m": {
+      "choices": [
+        {
+          "id": "comporta",
+          "text": "dlg.ermessenda.opt.comporta",
+          "once": true,
+          "next": "comporta"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.ermessenda.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "comporta": {
+      "lines": [
+        {
+          "who": "ermessenda",
+          "text": "dlg.ermessenda.2"
+        }
+      ],
+      "goto": "m"
+    },
+    "gracies": {
+      "lines": [
+        {
+          "who": "ermessenda",
+          "text": "dlg.ermessenda.3"
+        }
+      ]
+    },
+    "mati": {
+      "lines": [
+        {
+          "who": "ermessenda",
+          "text": "dlg.ermessenda.4"
+        },
+        {
+          "who": "ermessenda",
+          "text": "dlg.ermessenda.5"
+        }
+      ]
+    },
+    "ve": {
+      "lines": [
+        {
+          "who": "ermessenda",
+          "text": "dlg.ermessenda.6"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.ermessenda.7"
+        },
+        {
+          "who": "ermessenda",
+          "text": "dlg.ermessenda.8",
+          "effects": [
+            {
+              "setFlag": "testimoni_ermessenda"
+            }
+          ]
+        }
+      ]
+    },
+    "fet": {
+      "lines": [
+        {
+          "who": "ermessenda",
+          "text": "dlg.ermessenda.9"
+        }
+      ]
+    }
+  }
+}

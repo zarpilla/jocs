@@ -1,0 +1,308 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.calc.nom",
+  "cutscene": {},
+  "onEnter": [
+    {
+      "verb": "*",
+      "if": {
+        "var": "calc_pas",
+        "op": "==",
+        "value": 0
+      },
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.calc.1"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "calc_segell": {
+      "visibleIf": {
+        "var": "calc",
+        "op": "==",
+        "value": "segell"
+      }
+    },
+    "calc_carta": {
+      "visibleIf": {
+        "var": "calc",
+        "op": "==",
+        "value": "carta"
+      }
+    },
+    "calc_1": {
+      "visibleIf": {
+        "var": "calc_pas",
+        "op": ">=",
+        "value": 1
+      }
+    },
+    "calc_2": {
+      "visibleIf": {
+        "var": "calc_pas",
+        "op": ">=",
+        "value": 2
+      }
+    },
+    "calc_3": {
+      "visibleIf": {
+        "var": "calc_pas",
+        "op": ">=",
+        "value": 3
+      }
+    }
+  },
+  "hotspots": {
+    "pergami": {
+      "name": "sala.calc.pergami.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "look",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "calc",
+                "op": "==",
+                "value": "segell"
+              },
+              {
+                "var": "calc_pas",
+                "op": "==",
+                "value": 0
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.calc.2"
+            }
+          ],
+          "effects": [
+            {
+              "addVar": "calc_pas",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "look",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "calc",
+                "op": "==",
+                "value": "segell"
+              },
+              {
+                "var": "calc_pas",
+                "op": "==",
+                "value": 1
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.calc.3"
+            }
+          ],
+          "effects": [
+            {
+              "addVar": "calc_pas",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "look",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "calc",
+                "op": "==",
+                "value": "segell"
+              },
+              {
+                "var": "calc_pas",
+                "op": "==",
+                "value": 2
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.calc.4"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "calc_pas",
+              "value": 0
+            },
+            {
+              "setVar": "calc",
+              "value": ""
+            },
+            {
+              "setFlag": "segell_emma_vist"
+            },
+            {
+              "event": "anar",
+              "args": {
+                "room": "claustre"
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "look",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "calc",
+                "op": "==",
+                "value": "carta"
+              },
+              {
+                "var": "calc_pas",
+                "op": "==",
+                "value": 0
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.calc.5"
+            }
+          ],
+          "effects": [
+            {
+              "addVar": "calc_pas",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "look",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "calc",
+                "op": "==",
+                "value": "carta"
+              },
+              {
+                "var": "calc_pas",
+                "op": "==",
+                "value": 1
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.calc.6"
+            }
+          ],
+          "effects": [
+            {
+              "addVar": "calc_pas",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "look",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "calc",
+                "op": "==",
+                "value": "carta"
+              },
+              {
+                "var": "calc_pas",
+                "op": "==",
+                "value": 2
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.calc.7"
+            },
+            {
+              "who": "player",
+              "text": "sala.calc.8"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "calc_pas",
+              "value": 0
+            },
+            {
+              "setVar": "calc",
+              "value": ""
+            },
+            {
+              "giveItem": "carta_calcada"
+            },
+            {
+              "setFlag": "carta_calcada_feta"
+            },
+            {
+              "event": "anar",
+              "args": {
+                "room": "scriptorium"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

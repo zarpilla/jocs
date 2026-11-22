@@ -1,0 +1,699 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.pont_ter.nom",
+  "protagonist": "iri",
+  "onEnter": [
+    {
+      "id": "pont_intro",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 1
+      },
+      "lines": [
+        {
+          "who": "ermessenda",
+          "text": "sala.pont_ter.1"
+        },
+        {
+          "who": "joanet",
+          "text": "sala.pont_ter.2"
+        },
+        {
+          "who": "ermessenda",
+          "text": "sala.pont_ter.3"
+        }
+      ]
+    },
+    {
+      "id": "pont_mati",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.pont_ter.4"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "aigua_baixa": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "aigua_baixa"
+          },
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 1
+          }
+        ]
+      }
+    },
+    "barca_calafatada": {
+      "visibleIf": {
+        "flag": "barca_calafatada"
+      }
+    },
+    "serra_treta": {
+      "visibleIf": {
+        "flag": "serra_treta"
+      }
+    },
+    "rec_ple": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "serra_treta"
+          },
+          {
+            "flag": "comporta_tancada",
+            "is": false
+          }
+        ]
+      }
+    },
+    "llum_mati": {
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      }
+    },
+    "barca_corrent": {
+      "visibleIf": {
+        "flag": "joanet_despert"
+      }
+    }
+  },
+  "hotspots": {
+    "pont": {
+      "name": "sala.pont_ter.pont.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.5"
+            }
+          ]
+        }
+      ]
+    },
+    "riu": {
+      "name": "sala.pont_ter.riu.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.6"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.7"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "destral",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.8"
+            }
+          ]
+        }
+      ]
+    },
+    "resclosa": {
+      "name": "sala.pont_ter.resclosa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.9"
+            }
+          ]
+        }
+      ]
+    },
+    "sobreeixidor": {
+      "name": "sala.pont_ter.sobreeixidor.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "aigua_baixa",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.10"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.11"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "destral",
+          "if": {
+            "flag": "aigua_baixa",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.12"
+            },
+            {
+              "who": "player",
+              "text": "sala.pont_ter.13",
+              "sound": "post"
+            },
+            {
+              "who": "player",
+              "text": "sala.pont_ter.14"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "aigua_baixa"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "push",
+            "open",
+            "use"
+          ],
+          "if": {
+            "flag": "aigua_baixa",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.15"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "push",
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.16"
+            }
+          ]
+        }
+      ]
+    },
+    "comporta": {
+      "name": "sala.pont_ter.comporta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "aigua_baixa",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.17"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "serra_treta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.18"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "comporta_tancada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.19"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.20"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "salabre",
+          "if": {
+            "all": [
+              {
+                "flag": "aigua_baixa"
+              },
+              {
+                "flag": "serra_treta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.21"
+            },
+            {
+              "who": "player",
+              "text": "sala.pont_ter.22"
+            },
+            {
+              "who": "player",
+              "text": "sala.pont_ter.23"
+            },
+            {
+              "who": "player",
+              "text": "sala.pont_ter.24",
+              "if": {
+                "flag": "ordre_mirada"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pont_ter.25"
+            },
+            {
+              "who": "player",
+              "text": "sala.pont_ter.26"
+            },
+            {
+              "who": "ermessenda",
+              "text": "sala.pont_ter.27",
+              "sound": "aigua"
+            },
+            {
+              "who": "ermessenda",
+              "text": "sala.pont_ter.28"
+            },
+            {
+              "who": "player",
+              "text": "sala.pont_ter.29"
+            },
+            {
+              "who": "ermessenda",
+              "text": "sala.pont_ter.30"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "serra_treta"
+            },
+            {
+              "giveItem": "serra"
+            },
+            {
+              "takeItem": "salabre"
+            },
+            {
+              "giveItem": "clofolles"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "salabre",
+          "if": {
+            "flag": "aigua_baixa",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.31"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "aigua_baixa"
+              },
+              {
+                "flag": "serra_treta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.32"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "close",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 7
+              },
+              {
+                "flag": "comporta_tancada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.33"
+            },
+            {
+              "who": "player",
+              "text": "sala.pont_ter.34",
+              "if": {
+                "flag": "testimoni_ermessenda",
+                "is": false
+              }
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "comporta_tancada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp",
+            "pull",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.35"
+            }
+          ]
+        }
+      ]
+    },
+    "barca": {
+      "name": "sala.pont_ter.barca.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "barca_calafatada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.36"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "joanet_despert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.37"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.38"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "pot_resina",
+          "if": {
+            "flag": "barca_calafatada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.39"
+            },
+            {
+              "who": "joanet",
+              "text": "sala.pont_ter.40"
+            },
+            {
+              "who": "joanet",
+              "text": "sala.pont_ter.41"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "barca_calafatada"
+            },
+            {
+              "giveItem": "salabre"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "pot_resina",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.42"
+            }
+          ]
+        },
+        {
+          "verb": "push",
+          "if": {
+            "all": [
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 7
+              },
+              {
+                "flag": "joanet_despert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.43"
+            },
+            {
+              "who": "joanet",
+              "text": "sala.pont_ter.44"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "joanet_despert"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "flag": "barca_calafatada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.45"
+            }
+          ]
+        }
+      ]
+    },
+    "rec": {
+      "name": "sala.pont_ter.rec.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "serra_treta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.46"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.47"
+            }
+          ]
+        }
+      ]
+    },
+    "horts": {
+      "name": "sala.pont_ter.horts.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.48"
+            }
+          ]
+        }
+      ]
+    },
+    "salze": {
+      "name": "sala.pont_ter.salze.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.49"
+            }
+          ]
+        }
+      ]
+    },
+    "moli_lluny": {
+      "name": "sala.pont_ter.moli_lluny.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.50"
+            }
+          ]
+        }
+      ]
+    },
+    "joanet": {
+      "interactions": []
+    },
+    "ermessenda": {
+      "visibleIf": {
+        "flag": "testimoni_ermessenda",
+        "is": false
+      },
+      "interactions": []
+    },
+    "cami": {
+      "name": "sala.pont_ter.cami.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.51"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "goTo": "mur_avet"
+        }
+      ]
+    }
+  }
+}

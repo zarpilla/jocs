@@ -1,0 +1,91 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.proleg.nom",
+  "cutscene": {
+    "skipTo": "mur_avet"
+  },
+  "hotspots": {},
+  "onEnter": [
+    {
+      "verb": "*",
+      "lines": [
+        {
+          "who": "title",
+          "text": "sala.proleg.1",
+          "stage": [
+            {
+              "prop": "avet_cau",
+              "visible": false
+            },
+            {
+              "prop": "avet_dret",
+              "visible": true
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "sala.proleg.2",
+          "stage": [
+            {
+              "prop": "fanal",
+              "anim": "fanal_arriba",
+              "hold": 2.5
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "figura",
+              "anim": "figura_serra",
+              "hold": 2.8
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "sala.proleg.3",
+          "sound": "avet_cau",
+          "stage": [
+            {
+              "prop": "avet_dret",
+              "visible": false
+            },
+            {
+              "prop": "avet_cau",
+              "visible": true
+            },
+            {
+              "prop": "avet_cau",
+              "anim": "cau",
+              "hold": 1.6
+            },
+            {
+              "shake": 0.6
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "cofre_brilla",
+              "anim": "brilla",
+              "hold": 1.4
+            },
+            {
+              "prop": "ma",
+              "anim": "agafa",
+              "hold": 1.6
+            }
+          ]
+        },
+        {
+          "who": "title",
+          "text": "joc.titol"
+        },
+        {
+          "who": "title",
+          "text": "acte.1"
+        }
+      ],
+      "goTo": "mur_avet"
+    }
+  ]
+}

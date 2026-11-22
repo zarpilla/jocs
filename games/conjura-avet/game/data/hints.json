@@ -1,11 +1,43 @@
 {
   "$schema": "../schemas/hints.schema.json",
-  "tall": {
-    "priority": 1,
+  "branques": {
+    "priority": 9,
     "when": {
       "all": [
         {
-          "inRoom": "mur_avet"
+          "var": "fase",
+          "op": "==",
+          "value": 0
+        },
+        {
+          "flag": "branques_apartades",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "branques_apartades"
+    },
+    "levels": [
+      "pista.branques.1",
+      "pista.branques.2",
+      "pista.branques.3"
+    ],
+    "targets": [
+      "branques"
+    ]
+  },
+  "arrels": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 0
+        },
+        {
+          "flag": "branques_apartades"
         },
         {
           "flag": "tall_vist",
@@ -17,11 +49,3020 @@
       "flag": "tall_vist"
     },
     "levels": [
-      "pista.tall.1",
-      "pista.tall.2"
+      "pista.arrels.1",
+      "pista.arrels.2",
+      "pista.arrels.3"
     ],
     "targets": [
       "arrels"
+    ]
+  },
+  "jutge": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 0
+        },
+        {
+          "flag": "tall_vist"
+        },
+        {
+          "flag": "pare_detingut",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "pare_detingut"
+    },
+    "levels": [
+      "pista.jutge.1",
+      "pista.jutge.2"
+    ],
+    "targets": [
+      "ponc"
+    ]
+  },
+  "resina": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "any": [
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 0
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "flag": "branques_apartades"
+        },
+        {
+          "flag": "resina_agafada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "resina_agafada"
+    },
+    "levels": [
+      "pista.resina.1",
+      "pista.resina.2",
+      "pista.resina.3"
+    ],
+    "targets": [
+      "branca_trencada"
+    ]
+  },
+  "cera": {
+    "priority": 2,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "any": [
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 0
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "flag": "branques_apartades"
+        },
+        {
+          "flag": "cera_agafada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "cera_agafada"
+    },
+    "levels": [
+      "pista.cera.1",
+      "pista.cera.2"
+    ],
+    "targets": [
+      "cera",
+      "forat"
+    ]
+  },
+  "v_ordre": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "flag": "ordre_llegida",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "ordre_llegida"
+    },
+    "levels": [
+      "pista.v_ordre.1",
+      "pista.v_ordre.2",
+      "pista.v_ordre.3"
+    ],
+    "targets": [
+      "ponc",
+      "ordre"
+    ]
+  },
+  "v_placa": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "flag": "crida_feta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "crida_feta"
+    },
+    "levels": [
+      "pista.v_placa.1",
+      "pista.v_placa.2"
+    ],
+    "targets": [
+      "carrer"
+    ]
+  },
+  "v_campanar": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "flag": "crida_feta"
+        },
+        {
+          "flag": "campanar_vist",
+          "is": false
+        },
+        {
+          "flag": "queixa_copiada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "campanar_vist"
+    },
+    "levels": [
+      "pista.v_campanar.1",
+      "pista.v_campanar.2",
+      "pista.v_campanar.3"
+    ],
+    "targets": [
+      "campanar",
+      "queixa"
+    ]
+  },
+  "v_canem": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "flag": "campanar_vist"
+        },
+        {
+          "flag": "canem_donat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "canem_donat"
+    },
+    "levels": [
+      "pista.v_canem.1",
+      "pista.v_canem.2",
+      "pista.v_canem.3"
+    ],
+    "targets": [
+      "sanca"
+    ]
+  },
+  "v_dona_canem": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "canem",
+          "who": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "canem",
+        "who": "vet"
+      }
+    },
+    "levels": [
+      "pista.v_dona_canem.1",
+      "pista.v_dona_canem.2"
+    ],
+    "targets": [
+      "campanar"
+    ]
+  },
+  "i_canem": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "canem",
+          "who": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "corda_posada"
+    },
+    "levels": [
+      "pista.i_canem.1",
+      "pista.i_canem.2"
+    ],
+    "targets": [
+      "campanar"
+    ]
+  },
+  "i_campana": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "flag": "corda_posada"
+        },
+        {
+          "flag": "bonfill_campanar",
+          "is": false
+        },
+        {
+          "flag": "queixa_copiada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "bonfill_campanar"
+    },
+    "levels": [
+      "pista.i_campana.1",
+      "pista.i_campana.2"
+    ],
+    "targets": [
+      "campanar"
+    ]
+  },
+  "v_queixa": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "bonfill_campanar"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "queixa_copiada"
+    },
+    "levels": [
+      "pista.v_queixa.1",
+      "pista.v_queixa.2"
+    ],
+    "targets": [
+      "queixa"
+    ]
+  },
+  "v_sanca_noms": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "flag": "queixa_copiada"
+        },
+        {
+          "flag": "sanca_sap",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "sanca_sap"
+    },
+    "levels": [
+      "pista.v_sanca_noms.1",
+      "pista.v_sanca_noms.2"
+    ],
+    "targets": [
+      "sanca"
+    ]
+  },
+  "i_pont": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "flag": "aigua_baixa",
+          "is": false
+        },
+        {
+          "not": {
+            "visited": "pont_ter"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "visited": "pont_ter"
+    },
+    "levels": [
+      "pista.i_pont.1",
+      "pista.i_pont.2"
+    ],
+    "targets": [
+      "cami_riu"
+    ]
+  },
+  "i_sobreeixidor": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "visited": "pont_ter"
+        },
+        {
+          "flag": "aigua_baixa",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "aigua_baixa"
+    },
+    "levels": [
+      "pista.i_sobreeixidor.1",
+      "pista.i_sobreeixidor.2",
+      "pista.i_sobreeixidor.3"
+    ],
+    "targets": [
+      "sobreeixidor"
+    ]
+  },
+  "i_barca": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "aigua_baixa"
+        },
+        {
+          "flag": "barca_calafatada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "barca_calafatada"
+    },
+    "levels": [
+      "pista.i_barca.1",
+      "pista.i_barca.2",
+      "pista.i_barca.3"
+    ],
+    "targets": [
+      "barca"
+    ]
+  },
+  "i_serra": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "barca_calafatada"
+        },
+        {
+          "flag": "serra_treta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "serra_treta"
+    },
+    "levels": [
+      "pista.i_serra.1",
+      "pista.i_serra.2"
+    ],
+    "targets": [
+      "comporta"
+    ]
+  },
+  "i_dona_cera": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "hasItem": "cera",
+          "who": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "cera",
+        "who": "iri"
+      }
+    },
+    "levels": [
+      "pista.i_dona_cera.1",
+      "pista.i_dona_cera.2"
+    ]
+  },
+  "i_dona_serra": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "hasItem": "serra",
+          "who": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "serra",
+        "who": "iri"
+      }
+    },
+    "levels": [
+      "pista.i_dona_serra.1",
+      "pista.i_dona_serra.2"
+    ]
+  },
+  "v_claustre": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "not": {
+            "visited": "claustre"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "visited": "claustre"
+    },
+    "levels": [
+      "pista.v_claustre.1",
+      "pista.v_claustre.2"
+    ],
+    "targets": [
+      "porta_monestir"
+    ]
+  },
+  "v_rentar": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "cera",
+          "who": "vet"
+        },
+        {
+          "flag": "cera_neta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "cera_neta"
+    },
+    "levels": [
+      "pista.v_rentar.1",
+      "pista.v_rentar.2",
+      "pista.v_rentar.3"
+    ],
+    "targets": [
+      "pica"
+    ]
+  },
+  "v_calc": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "cera_neta"
+        },
+        {
+          "flag": "segell_emma_vist",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "segell_emma_vist"
+    },
+    "levels": [
+      "pista.v_calc.1",
+      "pista.v_calc.2",
+      "pista.v_calc.3"
+    ],
+    "targets": [
+      "pica"
+    ]
+  },
+  "v_corranda": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "visited": "claustre"
+        },
+        {
+          "flag": "corranda_sentida",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "corranda_sentida"
+    },
+    "levels": [
+      "pista.v_corranda.1",
+      "pista.v_corranda.2"
+    ],
+    "targets": [
+      "gueraula"
+    ]
+  },
+  "v_arxiu": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "segell_emma_vist"
+        },
+        {
+          "flag": "corranda_sentida"
+        },
+        {
+          "flag": "sap_arxiu",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "sap_arxiu"
+    },
+    "levels": [
+      "pista.v_arxiu.1",
+      "pista.v_arxiu.2"
+    ],
+    "targets": [
+      "ingilberga"
+    ]
+  },
+  "v_proves": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "sap_arxiu"
+        },
+        {
+          "not": {
+            "all": [
+              {
+                "flag": "prova_queixa"
+              },
+              {
+                "flag": "prova_serra"
+              },
+              {
+                "flag": "prova_ordre"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "all": [
+        {
+          "flag": "prova_queixa"
+        },
+        {
+          "flag": "prova_serra"
+        },
+        {
+          "flag": "prova_ordre"
+        }
+      ]
+    },
+    "levels": [
+      "pista.v_proves.1",
+      "pista.v_proves.2",
+      "pista.v_proves.3"
+    ],
+    "targets": [
+      "ingilberga"
+    ]
+  },
+  "v_convencer": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "sap_arxiu"
+        },
+        {
+          "all": [
+            {
+              "flag": "prova_queixa"
+            },
+            {
+              "flag": "prova_serra"
+            },
+            {
+              "flag": "prova_ordre"
+            }
+          ]
+        },
+        {
+          "flag": "abadessa_convencuda",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "abadessa_convencuda"
+    },
+    "levels": [
+      "pista.v_convencer.1",
+      "pista.v_convencer.2",
+      "pista.v_convencer.3"
+    ],
+    "targets": [
+      "ingilberga"
+    ]
+  },
+  "i_bugaderia": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "not": {
+            "visited": "bugaderia"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "visited": "bugaderia"
+    },
+    "levels": [
+      "pista.i_bugaderia.1",
+      "pista.i_bugaderia.2"
+    ],
+    "targets": [
+      "porta_bugaderia"
+    ]
+  },
+  "i_tuniques": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "flag": "bagul_obert",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "bagul_obert"
+    },
+    "levels": [
+      "pista.i_tuniques.1",
+      "pista.i_tuniques.2"
+    ],
+    "targets": [
+      "bagul"
+    ]
+  },
+  "i_clofolles": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "flag": "bagul_obert"
+        },
+        {
+          "flag": "clofolles_tina",
+          "is": false
+        },
+        {
+          "flag": "habits_tenyits",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "clofolles_tina"
+    },
+    "levels": [
+      "pista.i_clofolles.1",
+      "pista.i_clofolles.2",
+      "pista.i_clofolles.3"
+    ],
+    "targets": [
+      "tina"
+    ]
+  },
+  "i_ferro": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "flag": "bagul_obert"
+        },
+        {
+          "flag": "caparros_tina",
+          "is": false
+        },
+        {
+          "flag": "habits_tenyits",
+          "is": false
+        },
+        {
+          "not": {
+            "hasItem": "caparros",
+            "who": "iri"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "caparros_tina"
+    },
+    "levels": [
+      "pista.i_ferro.1",
+      "pista.i_ferro.2",
+      "pista.i_ferro.3"
+    ]
+  },
+  "i_caparros": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "caparros",
+          "who": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "caparros_tina"
+    },
+    "levels": [
+      "pista.i_caparros.1",
+      "pista.i_caparros.2"
+    ],
+    "targets": [
+      "tina"
+    ]
+  },
+  "i_foc": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "flag": "bagul_obert"
+        },
+        {
+          "flag": "foc_ences",
+          "is": false
+        },
+        {
+          "flag": "habits_tenyits",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "foc_ences"
+    },
+    "levels": [
+      "pista.i_foc.1",
+      "pista.i_foc.2",
+      "pista.i_foc.3"
+    ],
+    "targets": [
+      "llenya_alzina",
+      "fogo"
+    ]
+  },
+  "i_tenyir": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "tuniques",
+          "who": "iri"
+        },
+        {
+          "flag": "clofolles_tina"
+        },
+        {
+          "flag": "caparros_tina"
+        },
+        {
+          "flag": "foc_ences"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "habits_tenyits"
+    },
+    "levels": [
+      "pista.i_tenyir.1",
+      "pista.i_tenyir.2"
+    ],
+    "targets": [
+      "tina"
+    ]
+  },
+  "i_escurcar": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "habits",
+          "who": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "habits",
+        "who": "iri"
+      }
+    },
+    "levels": [
+      "pista.i_escurcar.1",
+      "pista.i_escurcar.2",
+      "pista.i_escurcar.3"
+    ],
+    "targets": [
+      "tisores"
+    ]
+  },
+  "i_retalls": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "retalls",
+          "who": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "retalls",
+        "who": "iri"
+      }
+    },
+    "levels": [
+      "pista.i_retalls.1",
+      "pista.i_retalls.2"
+    ]
+  },
+  "i_resina_vet": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "not": {
+            "hasItem": "pegot",
+            "who": "vet"
+          }
+        },
+        {
+          "not": {
+            "all": [
+              {
+                "hasItem": "barbes",
+                "who": "vet"
+              },
+              {
+                "flag": "salconduit_fet"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "pegot",
+      "who": "vet"
+    },
+    "levels": [
+      "pista.i_resina_vet.1",
+      "pista.i_resina_vet.2"
+    ]
+  },
+  "v_apotecaria": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "not": {
+            "visited": "apotecaria"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "visited": "apotecaria"
+    },
+    "levels": [
+      "pista.v_apotecaria.1",
+      "pista.v_apotecaria.2"
+    ],
+    "targets": [
+      "porta_apotecaria"
+    ]
+  },
+  "v_caparros": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "flag": "caparros_tina",
+          "is": false
+        },
+        {
+          "not": {
+            "hasItem": "caparros",
+            "who": "vet"
+          }
+        },
+        {
+          "not": {
+            "hasItem": "caparros",
+            "who": "iri"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "caparros",
+          "who": "vet"
+        },
+        {
+          "hasItem": "caparros",
+          "who": "iri"
+        },
+        {
+          "flag": "caparros_tina"
+        }
+      ]
+    },
+    "levels": [
+      "pista.v_caparros.1",
+      "pista.v_caparros.2",
+      "pista.v_caparros.3"
+    ],
+    "targets": [
+      "atramentum"
+    ]
+  },
+  "v_dona_caparros": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "caparros",
+          "who": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "caparros",
+        "who": "vet"
+      }
+    },
+    "levels": [
+      "pista.v_dona_caparros.1",
+      "pista.v_dona_caparros.2"
+    ]
+  },
+  "v_llana": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "not": {
+            "hasItem": "retalls",
+            "who": "vet"
+          }
+        },
+        {
+          "not": {
+            "hasItem": "llana",
+            "who": "vet"
+          }
+        },
+        {
+          "not": {
+            "hasItem": "barbes",
+            "who": "vet"
+          }
+        },
+        {
+          "not": {
+            "hasItem": "retalls",
+            "who": "iri"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "retalls",
+          "who": "vet"
+        },
+        {
+          "hasItem": "retalls",
+          "who": "iri"
+        },
+        {
+          "hasItem": "llana",
+          "who": "vet"
+        },
+        {
+          "hasItem": "barbes",
+          "who": "vet"
+        }
+      ]
+    },
+    "levels": [
+      "pista.v_llana.1",
+      "pista.v_llana.2"
+    ]
+  },
+  "v_cardar": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "retalls",
+          "who": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "retalls",
+        "who": "vet"
+      }
+    },
+    "levels": [
+      "pista.v_cardar.1",
+      "pista.v_cardar.2",
+      "pista.v_cardar.3"
+    ],
+    "targets": [
+      "cardo"
+    ]
+  },
+  "v_barbes": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "llana",
+          "who": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "llana",
+        "who": "vet"
+      }
+    },
+    "levels": [
+      "pista.v_barbes.1",
+      "pista.v_barbes.2",
+      "pista.v_barbes.3"
+    ]
+  },
+  "v_celles": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "not": {
+            "hasItem": "unguent",
+            "who": "vet"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "unguent",
+      "who": "vet"
+    },
+    "levels": [
+      "pista.v_celles.1",
+      "pista.v_celles.2",
+      "pista.v_celles.3"
+    ],
+    "targets": [
+      "mel",
+      "llar"
+    ]
+  },
+  "v_valeriana": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "not": {
+            "hasItem": "valeriana",
+            "who": "vet"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "valeriana",
+      "who": "vet"
+    },
+    "levels": [
+      "pista.v_valeriana.1",
+      "pista.v_valeriana.2",
+      "pista.v_valeriana.3"
+    ],
+    "targets": [
+      "flasco_sense_nom"
+    ]
+  },
+  "v_xarop": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "flag": "xarop_donat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "xarop_donat"
+    },
+    "levels": [
+      "pista.v_xarop.1",
+      "pista.v_xarop.2"
+    ],
+    "targets": [
+      "gueraula"
+    ]
+  },
+  "v_salconduit": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "flag": "salconduit_fet",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "salconduit_fet"
+    },
+    "levels": [
+      "pista.v_salconduit.1",
+      "pista.v_salconduit.2",
+      "pista.v_salconduit.3"
+    ]
+  },
+  "v_llest": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "all": [
+            {
+              "hasItem": "barbes",
+              "who": "vet"
+            },
+            {
+              "hasItem": "unguent",
+              "who": "vet"
+            },
+            {
+              "hasItem": "xarop",
+              "who": "vet"
+            },
+            {
+              "hasItem": "valeriana",
+              "who": "vet"
+            },
+            {
+              "hasItem": "salconduit",
+              "who": "vet"
+            },
+            {
+              "hasItem": "habits_curts",
+              "who": "iri"
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "fase",
+      "op": ">=",
+      "value": 3
+    },
+    "levels": [
+      "pista.v_llest.1",
+      "pista.v_llest.2"
+    ],
+    "targets": [
+      "gueraula"
+    ]
+  },
+  "i_santisenya": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "flag": "santisenya",
+          "is": false
+        },
+        {
+          "inRoom": "porteria"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "santisenya"
+    },
+    "levels": [
+      "pista.i_santisenya.1",
+      "pista.i_santisenya.2",
+      "pista.i_santisenya.3"
+    ],
+    "targets": [
+      "bonfill"
+    ]
+  },
+  "i_salc": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "flag": "santisenya"
+        },
+        {
+          "flag": "salconduit_ensenyat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "salconduit_ensenyat"
+    },
+    "levels": [
+      "pista.i_salc.1",
+      "pista.i_salc.2"
+    ],
+    "targets": [
+      "bonfill"
+    ]
+  },
+  "i_nom": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "flag": "salconduit_ensenyat"
+        },
+        {
+          "flag": "porteria_passada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "porteria_passada"
+    },
+    "levels": [
+      "pista.i_nom.1",
+      "pista.i_nom.2"
+    ],
+    "targets": [
+      "bonfill"
+    ]
+  },
+  "v_ofici": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "flag": "porteria_passada"
+        },
+        {
+          "flag": "signe_vist",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "signe_vist"
+    },
+    "levels": [
+      "pista.v_ofici.1",
+      "pista.v_ofici.2"
+    ],
+    "targets": [
+      "sunifred"
+    ]
+  },
+  "v_distraccio": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "flag": "signe_vist"
+        },
+        {
+          "flag": "vi_drogat",
+          "is": false
+        },
+        {
+          "flag": "sunifred_girat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "sunifred_girat"
+    },
+    "levels": [
+      "pista.v_distraccio.1",
+      "pista.v_distraccio.2",
+      "pista.v_distraccio.3"
+    ],
+    "targets": [
+      "pila_olles"
+    ]
+  },
+  "v_valeriana2": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "flag": "sunifred_girat"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vi_drogat"
+    },
+    "levels": [
+      "pista.v_valeriana2.1",
+      "pista.v_valeriana2.2"
+    ],
+    "targets": [
+      "gerra"
+    ]
+  },
+  "v_servir": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "flag": "vi_drogat"
+        },
+        {
+          "flag": "sunifred_dorm",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "sunifred_dorm"
+    },
+    "levels": [
+      "pista.v_servir.1",
+      "pista.v_servir.2"
+    ],
+    "targets": [
+      "gerra"
+    ]
+  },
+  "v_claus": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "flag": "sunifred_dorm"
+        },
+        {
+          "flag": "claus_agafades",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "claus_agafades"
+    },
+    "levels": [
+      "pista.v_claus.1",
+      "pista.v_claus.2",
+      "pista.v_claus.3"
+    ],
+    "targets": [
+      "sunifred"
+    ]
+  },
+  "v_distreure": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 4
+        },
+        {
+          "flag": "canonges_distrets",
+          "is": false
+        },
+        {
+          "flag": "canonges_fora",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "canonges_distrets"
+    },
+    "levels": [
+      "pista.v_distreure.1",
+      "pista.v_distreure.2",
+      "pista.v_distreure.3"
+    ],
+    "targets": [
+      "gombau",
+      "espelma_hores"
+    ]
+  },
+  "v_espelma": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 4
+        },
+        {
+          "flag": "canonges_distrets"
+        },
+        {
+          "flag": "canonges_fora",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "canonges_fora"
+    },
+    "levels": [
+      "pista.v_espelma.1",
+      "pista.v_espelma.2"
+    ],
+    "targets": [
+      "espelma_hores"
+    ]
+  },
+  "v_calc_carta": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 4
+        },
+        {
+          "flag": "canonges_fora"
+        },
+        {
+          "flag": "carta_calcada_feta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "carta_calcada_feta"
+    },
+    "levels": [
+      "pista.v_calc_carta.1",
+      "pista.v_calc_carta.2",
+      "pista.v_calc_carta.3"
+    ],
+    "targets": [
+      "pergami"
+    ]
+  },
+  "v_porta": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 4
+        },
+        {
+          "flag": "canonges_fora"
+        },
+        {
+          "flag": "carta_calcada_feta"
+        },
+        {
+          "flag": "porta_capitular_oberta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "porta_capitular_oberta"
+    },
+    "levels": [
+      "pista.v_porta.1",
+      "pista.v_porta.2"
+    ],
+    "targets": [
+      "porta_capitular"
+    ]
+  },
+  "i_bagul_id": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "bagul_identificat",
+          "is": false
+        },
+        {
+          "flag": "bagul_obert",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "bagul_identificat"
+        },
+        {
+          "flag": "bagul_obert"
+        }
+      ]
+    },
+    "levels": [
+      "pista.i_bagul_id.1",
+      "pista.i_bagul_id.2"
+    ],
+    "targets": [
+      "bagul_sunifred"
+    ]
+  },
+  "i_obrir": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "bagul_identificat"
+        },
+        {
+          "flag": "bagul_obert",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "bagul_obert"
+    },
+    "levels": [
+      "pista.i_obrir.1",
+      "pista.i_obrir.2"
+    ],
+    "targets": [
+      "bagul_sunifred"
+    ]
+  },
+  "i_fons": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "bagul_obert"
+        },
+        {
+          "flag": "fons_buit",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "fons_buit"
+    },
+    "levels": [
+      "pista.i_fons.1",
+      "pista.i_fons.2"
+    ],
+    "targets": [
+      "bagul_sunifred"
+    ]
+  },
+  "i_tapis": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "fons_buit"
+        },
+        {
+          "flag": "tapis_apartat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "tapis_apartat"
+    },
+    "levels": [
+      "pista.i_tapis.1",
+      "pista.i_tapis.2"
+    ],
+    "targets": [
+      "tapis"
+    ]
+  },
+  "i_estendard": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "tapis_apartat"
+        },
+        {
+          "flag": "estendard_paret",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "estendard_paret"
+    },
+    "levels": [
+      "pista.i_estendard.1",
+      "pista.i_estendard.2",
+      "pista.i_estendard.3"
+    ],
+    "targets": [
+      "estendard"
+    ]
+  },
+  "i_contrapes": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "estendard_paret"
+        },
+        {
+          "flag": "contrapes_despenjat",
+          "is": false
+        },
+        {
+          "flag": "canonges_tornen",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "contrapes_despenjat"
+    },
+    "levels": [
+      "pista.i_contrapes.1",
+      "pista.i_contrapes.2"
+    ],
+    "targets": [
+      "contrapes"
+    ]
+  },
+  "v_ratoli": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "canonges_tornen"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "canonges_tornen",
+      "is": false
+    },
+    "levels": [
+      "pista.v_ratoli.1",
+      "pista.v_ratoli.2",
+      "pista.v_ratoli.3"
+    ],
+    "targets": [
+      "gombau"
+    ]
+  },
+  "i_doble_fons": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "contrapes_despenjat"
+        },
+        {
+          "flag": "canonges_tornen",
+          "is": false
+        },
+        {
+          "flag": "doble_fons_obert",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "doble_fons_obert"
+    },
+    "levels": [
+      "pista.i_doble_fons.1",
+      "pista.i_doble_fons.2"
+    ],
+    "targets": [
+      "bagul_sunifred"
+    ]
+  },
+  "i_cofre": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "doble_fons_obert"
+        },
+        {
+          "flag": "cofre_agafat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "cofre_agafat"
+    },
+    "levels": [
+      "pista.i_cofre.1",
+      "pista.i_cofre.2"
+    ],
+    "targets": [
+      "cofre"
+    ]
+  },
+  "i_banc": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "flag": "trapa_oberta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "trapa_oberta"
+    },
+    "levels": [
+      "pista.i_banc.1",
+      "pista.i_banc.2"
+    ],
+    "targets": [
+      "banc_fons"
+    ]
+  },
+  "i_trapa": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "flag": "trapa_oberta"
+        },
+        {
+          "inRoom": "arxiu"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "inRoom": "arxiu"
+      }
+    },
+    "levels": [
+      "pista.i_trapa.1",
+      "pista.i_trapa.2"
+    ],
+    "targets": [
+      "trapa"
+    ]
+  },
+  "i_pot": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "inRoom": "moli"
+        },
+        {
+          "not": {
+            "any": [
+              {
+                "hasItem": "pot_apotecari"
+              },
+              {
+                "hasItem": "pot_cartes"
+              },
+              {
+                "hasItem": "pot_segellat"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "pot_apotecari"
+        },
+        {
+          "hasItem": "pot_cartes"
+        },
+        {
+          "hasItem": "pot_segellat"
+        }
+      ]
+    },
+    "levels": [
+      "pista.i_pot.1",
+      "pista.i_pot.2",
+      "pista.i_pot.3"
+    ],
+    "targets": [
+      "finestra_dalt"
+    ]
+  },
+  "i_cartes": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "hasItem": "pot_apotecari"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "pot_apotecari"
+      }
+    },
+    "levels": [
+      "pista.i_cartes.1",
+      "pista.i_cartes.2"
+    ]
+  },
+  "i_segellar": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "hasItem": "pot_cartes"
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "pot_segellat"
+    },
+    "levels": [
+      "pista.i_segellar.1",
+      "pista.i_segellar.2"
+    ]
+  },
+  "i_falca": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "inRoom": "moli"
+        },
+        {
+          "flag": "falca_tallada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "falca_tallada"
+    },
+    "levels": [
+      "pista.i_falca.1",
+      "pista.i_falca.2",
+      "pista.i_falca.3"
+    ],
+    "targets": [
+      "falca"
+    ]
+  },
+  "i_pastera": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "inRoom": "moli"
+        },
+        {
+          "flag": "pastera_aigua",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "pastera_aigua"
+    },
+    "levels": [
+      "pista.i_pastera.1",
+      "pista.i_pastera.2",
+      "pista.i_pastera.3"
+    ],
+    "targets": [
+      "pastera"
+    ]
+  },
+  "i_senyal": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "flag": "falca_tallada"
+        },
+        {
+          "flag": "pastera_aigua"
+        },
+        {
+          "hasItem": "pot_segellat"
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "fase",
+      "op": ">=",
+      "value": 7
+    },
+    "levels": [
+      "pista.i_senyal.1",
+      "pista.i_senyal.2"
+    ],
+    "targets": [
+      "finestra_dalt"
+    ]
+  },
+  "v_sanca": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "flag": "testimoni_sanca",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "testimoni_sanca"
+    },
+    "levels": [
+      "pista.v_sanca.1",
+      "pista.v_sanca.2",
+      "pista.v_sanca.3"
+    ],
+    "targets": [
+      "sanca"
+    ]
+  },
+  "v_segell": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "flag": "segell_acceptat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "segell_acceptat"
+    },
+    "levels": [
+      "pista.v_segell.1",
+      "pista.v_segell.2",
+      "pista.v_segell.3"
+    ],
+    "targets": [
+      "ponc"
+    ]
+  },
+  "i_ermessenda": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "flag": "testimoni_ermessenda",
+          "is": false
+        },
+        {
+          "flag": "comporta_tancada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "comporta_tancada"
+    },
+    "levels": [
+      "pista.i_ermessenda.1",
+      "pista.i_ermessenda.2",
+      "pista.i_ermessenda.3"
+    ],
+    "targets": [
+      "comporta",
+      "ermessenda"
+    ]
+  },
+  "i_ermessenda2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "flag": "comporta_tancada"
+        },
+        {
+          "flag": "testimoni_ermessenda",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "testimoni_ermessenda"
+    },
+    "levels": [
+      "pista.i_ermessenda2.1",
+      "pista.i_ermessenda2.2"
+    ],
+    "targets": [
+      "ermessenda"
+    ]
+  },
+  "i_joanet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "flag": "joanet_despert",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "joanet_despert"
+    },
+    "levels": [
+      "pista.i_joanet.1",
+      "pista.i_joanet.2",
+      "pista.i_joanet.3"
+    ],
+    "targets": [
+      "barca"
+    ]
+  },
+  "i_joanet2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "flag": "joanet_despert"
+        },
+        {
+          "flag": "testimoni_joanet",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "testimoni_joanet"
+    },
+    "levels": [
+      "pista.i_joanet2.1",
+      "pista.i_joanet2.2"
+    ],
+    "targets": [
+      "joanet"
+    ]
+  },
+  "campana": {
+    "priority": 9,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "all": [
+            {
+              "flag": "testimoni_sanca"
+            },
+            {
+              "flag": "testimoni_ermessenda"
+            },
+            {
+              "flag": "testimoni_joanet"
+            },
+            {
+              "flag": "segell_acceptat"
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "fase",
+      "op": ">=",
+      "value": 8
+    },
+    "levels": [
+      "pista.campana.1",
+      "pista.campana.2"
+    ],
+    "targets": [
+      "ponc"
+    ]
+  },
+  "j1": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 8
+        },
+        {
+          "var": "judici",
+          "op": "==",
+          "value": 1
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "judici",
+      "op": ">=",
+      "value": 2
+    },
+    "levels": [
+      "pista.j1.1",
+      "pista.j1.2"
+    ],
+    "targets": [
+      "ponc"
+    ],
+    "who": "ingilberga"
+  },
+  "j2": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 8
+        },
+        {
+          "var": "judici",
+          "op": "==",
+          "value": 2
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "judici",
+      "op": ">=",
+      "value": 3
+    },
+    "levels": [
+      "pista.j2.1",
+      "pista.j2.2"
+    ],
+    "targets": [
+      "ponc"
+    ],
+    "who": "ingilberga"
+  },
+  "j3a": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 8
+        },
+        {
+          "var": "judici",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "not": {
+            "hasItem": "carta_emma"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "carta_emma"
+    },
+    "levels": [
+      "pista.j3a.1",
+      "pista.j3a.2"
+    ],
+    "targets": [
+      "iri"
+    ],
+    "who": "ingilberga"
+  },
+  "j3": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 8
+        },
+        {
+          "var": "judici",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "hasItem": "carta_emma"
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "judici",
+      "op": ">=",
+      "value": 4
+    },
+    "levels": [
+      "pista.j3.1",
+      "pista.j3.2"
+    ],
+    "targets": [
+      "ponc"
+    ],
+    "who": "ingilberga"
+  },
+  "j4": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 8
+        },
+        {
+          "var": "judici",
+          "op": "==",
+          "value": 4
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "judici_guanyat"
+    },
+    "levels": [
+      "pista.j4.1",
+      "pista.j4.2"
+    ],
+    "targets": [
+      "ponc"
+    ],
+    "who": "ingilberga"
+  },
+  "e_planco": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 9
+        },
+        {
+          "not": {
+            "hasItem": "planco"
+          }
+        },
+        {
+          "flag": "planco_plantat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "planco"
+        },
+        {
+          "flag": "planco_plantat"
+        }
+      ]
+    },
+    "levels": [
+      "pista.e_planco.1",
+      "pista.e_planco.2"
+    ],
+    "targets": [
+      "carretilla"
+    ]
+  },
+  "e_pala": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 9
+        },
+        {
+          "flag": "forat_gran",
+          "is": false
+        },
+        {
+          "not": {
+            "hasItem": "pala"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "pala"
+        },
+        {
+          "flag": "forat_gran"
+        }
+      ]
+    },
+    "levels": [
+      "pista.e_pala.1",
+      "pista.e_pala.2",
+      "pista.e_pala.3"
+    ],
+    "targets": [
+      "sunifred"
+    ]
+  },
+  "e_forat": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 9
+        },
+        {
+          "hasItem": "pala"
+        },
+        {
+          "flag": "forat_gran",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "forat_gran"
+    },
+    "levels": [
+      "pista.e_forat.1"
+    ],
+    "targets": [
+      "forat_nou"
+    ]
+  },
+  "e_cofre": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 9
+        },
+        {
+          "flag": "forat_gran"
+        },
+        {
+          "flag": "cofre_posat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "cofre_posat"
+    },
+    "levels": [
+      "pista.e_cofre.1",
+      "pista.e_cofre.2"
+    ],
+    "targets": [
+      "forat_nou"
+    ]
+  },
+  "e_plantar": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 9
+        },
+        {
+          "flag": "cofre_posat"
+        },
+        {
+          "hasItem": "planco"
+        },
+        {
+          "flag": "planco_plantat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "planco_plantat"
+    },
+    "levels": [
+      "pista.e_plantar.1",
+      "pista.e_plantar.2"
+    ],
+    "targets": [
+      "forat_nou"
+    ]
+  },
+  "e_rotul": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 9
+        },
+        {
+          "flag": "planco_plantat"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "final_avet"
+    },
+    "levels": [
+      "pista.e_rotul.1",
+      "pista.e_rotul.2"
+    ],
+    "targets": [
+      "rotul"
     ]
   }
 }

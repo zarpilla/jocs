@@ -1,0 +1,632 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.scriptorium.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "id": "scr_intro",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 4
+      },
+      "lines": [
+        {
+          "who": "gombau",
+          "text": "sala.scriptorium.1"
+        },
+        {
+          "who": "arnulf",
+          "text": "sala.scriptorium.2"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "espelma_retallada": {
+      "visibleIf": {
+        "flag": "canonges_fora"
+      }
+    },
+    "porta_oberta": {
+      "visibleIf": {
+        "flag": "porta_capitular_oberta"
+      }
+    }
+  },
+  "hotspots": {
+    "faristols": {
+      "name": "sala.scriptorium.faristols.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.3"
+            }
+          ]
+        }
+      ]
+    },
+    "copies": {
+      "name": "sala.scriptorium.copies.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.4"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.5"
+            }
+          ]
+        }
+      ]
+    },
+    "faristol_sunifred": {
+      "name": "sala.scriptorium.faristol_sunifred.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.6"
+            }
+          ]
+        }
+      ]
+    },
+    "pergami": {
+      "name": "sala.scriptorium.pergami.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "carta_calcada_feta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.7"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.8"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "carbonet",
+          "if": {
+            "any": [
+              {
+                "all": [
+                  {
+                    "var": "fase",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "canonges_fora",
+                    "is": false
+                  }
+                ]
+              },
+              {
+                "flag": "canonges_tornen"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.9"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "carbonet",
+          "if": {
+            "flag": "carta_calcada_feta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.10"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "calc",
+              "value": "carta"
+            },
+            {
+              "setVar": "calc_pas",
+              "value": 0
+            },
+            {
+              "event": "anar",
+              "args": {
+                "room": "calc"
+              }
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "carbonet",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.11"
+            }
+          ]
+        }
+      ]
+    },
+    "espelma_hores": {
+      "name": "sala.scriptorium.espelma_hores.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "canonges_fora",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.12"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.13"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "rascador",
+          "if": {
+            "all": [
+              {
+                "flag": "canonges_distrets",
+                "is": false
+              },
+              {
+                "flag": "canonges_fora",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "gombau",
+              "text": "sala.scriptorium.14"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "rascador",
+          "if": {
+            "flag": "canonges_fora",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.15"
+            },
+            {
+              "who": "gombau",
+              "text": "sala.scriptorium.16"
+            },
+            {
+              "who": "arnulf",
+              "text": "sala.scriptorium.17",
+              "stageAfter": [
+                {
+                  "who": "gombau",
+                  "walk": "porta_passadis",
+                  "wait": false
+                },
+                {
+                  "who": "arnulf",
+                  "walk": "porta_passadis"
+                }
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "canonges_fora"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.18"
+            }
+          ]
+        }
+      ]
+    },
+    "finestrals": {
+      "name": "sala.scriptorium.finestrals.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.19"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_capitular": {
+      "name": "sala.scriptorium.porta_capitular.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "porta_capitular_oberta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.20"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.21"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "claus",
+          "if": {
+            "any": [
+              {
+                "all": [
+                  {
+                    "var": "fase",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "canonges_fora",
+                    "is": false
+                  }
+                ]
+              },
+              {
+                "flag": "canonges_tornen"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.22"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "claus",
+          "if": {
+            "flag": "porta_capitular_oberta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.23"
+            },
+            {
+              "who": "player",
+              "text": "sala.scriptorium.24"
+            },
+            {
+              "who": "iri",
+              "text": "sala.scriptorium.25"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "porta_capitular_oberta"
+            },
+            {
+              "takeItem": "claus"
+            },
+            {
+              "giveItem": "claus",
+              "who": "iri"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "arxiu"
+              }
+            },
+            {
+              "setVar": "fase",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "porta_capitular_oberta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.26"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.27"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_passadis": {
+      "name": "sala.scriptorium.porta_passadis.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.28"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.29"
+            }
+          ]
+        }
+      ]
+    },
+    "gombau": {
+      "visibleIf": {
+        "any": [
+          {
+            "all": [
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 4
+              },
+              {
+                "flag": "canonges_fora",
+                "is": false
+              }
+            ]
+          },
+          {
+            "flag": "canonges_tornen"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "tauleta",
+          "if": {
+            "all": [
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 4
+              },
+              {
+                "flag": "canonges_fora",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.scriptorium.30"
+            },
+            {
+              "who": "gombau",
+              "text": "sala.scriptorium.31"
+            },
+            {
+              "who": "arnulf",
+              "text": "sala.scriptorium.32"
+            },
+            {
+              "who": "gombau",
+              "text": "sala.scriptorium.33"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.scriptorium.34"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "canonges_distrets"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tauleta",
+          "if": {
+            "flag": "canonges_tornen"
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.scriptorium.35"
+            },
+            {
+              "who": "gombau",
+              "text": "sala.scriptorium.36"
+            },
+            {
+              "who": "arnulf",
+              "text": "sala.scriptorium.37",
+              "stageAfter": [
+                {
+                  "who": "gombau",
+                  "walk": "porta_passadis",
+                  "wait": false
+                },
+                {
+                  "who": "arnulf",
+                  "walk": "porta_passadis"
+                }
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "canonges_tornen",
+              "value": false
+            },
+            {
+              "setFlag": "canonges_ratoli"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "if": {
+            "flag": "canonges_tornen"
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.scriptorium.38"
+            },
+            {
+              "who": "gombau",
+              "text": "sala.scriptorium.39"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "gombau",
+              "text": "sala.scriptorium.40"
+            }
+          ]
+        }
+      ]
+    },
+    "arnulf": {
+      "visibleIf": {
+        "any": [
+          {
+            "all": [
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 4
+              },
+              {
+                "flag": "canonges_fora",
+                "is": false
+              }
+            ]
+          },
+          {
+            "flag": "canonges_tornen"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "tauleta",
+          "lines": [
+            {
+              "who": "arnulf",
+              "text": "sala.scriptorium.41"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

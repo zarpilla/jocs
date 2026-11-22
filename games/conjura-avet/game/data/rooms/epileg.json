@@ -1,0 +1,477 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.epileg.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "epi_intro",
+      "once": true,
+      "verb": "*",
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "sala.epileg.1"
+        },
+        {
+          "who": "ponc",
+          "text": "sala.epileg.2"
+        },
+        {
+          "who": "sunifred",
+          "text": "sala.epileg.3"
+        },
+        {
+          "who": "ponc",
+          "text": "sala.epileg.4"
+        },
+        {
+          "who": "vet",
+          "text": "sala.epileg.5"
+        }
+      ],
+      "effects": [
+        {
+          "giveItem": "cofre"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "forat_gran": {
+      "visibleIf": {
+        "flag": "forat_gran"
+      }
+    },
+    "planco_plantat": {
+      "visibleIf": {
+        "flag": "planco_plantat"
+      }
+    },
+    "segell_planco": {
+      "visibleIf": {
+        "flag": "planco_plantat"
+      }
+    },
+    "rotul_clavat": {
+      "visibleIf": {
+        "flag": "planco_plantat"
+      }
+    }
+  },
+  "hotspots": {
+    "absis": {
+      "name": "sala.epileg.absis.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.6"
+            }
+          ]
+        }
+      ]
+    },
+    "rodanxes": {
+      "name": "sala.epileg.rodanxes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.7"
+            }
+          ]
+        }
+      ]
+    },
+    "arrels": {
+      "name": "sala.epileg.arrels.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.8"
+            }
+          ]
+        }
+      ]
+    },
+    "carretilla": {
+      "name": "sala.epileg.carretilla.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "not": {
+              "hasItem": "planco"
+            }
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.9"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.10"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "hasItem": "planco"
+                }
+              },
+              {
+                "flag": "planco_plantat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.11"
+            },
+            {
+              "who": "vet",
+              "text": "sala.epileg.12"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "planco"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.13"
+            }
+          ]
+        }
+      ]
+    },
+    "forat_nou": {
+      "name": "sala.epileg.forat_nou.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "forat_gran",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.14"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.15"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "destral",
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.epileg.16"
+            },
+            {
+              "who": "player",
+              "text": "sala.epileg.17"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "pala",
+          "if": {
+            "flag": "forat_gran",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.18"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "forat_gran"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cofre",
+          "if": {
+            "flag": "forat_gran",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.19"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cofre",
+          "if": {
+            "flag": "forat_gran"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.20"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "cofre"
+            },
+            {
+              "setFlag": "cofre_posat"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "planco",
+          "if": {
+            "flag": "cofre_posat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.21"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "planco",
+          "if": {
+            "flag": "forat_gran",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.22"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "planco",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.23"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.epileg.24"
+            },
+            {
+              "who": "ramon",
+              "text": "sala.epileg.25"
+            },
+            {
+              "who": "ponc",
+              "text": "sala.epileg.26"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.epileg.27"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "planco"
+            },
+            {
+              "setFlag": "planco_plantat"
+            }
+          ]
+        }
+      ]
+    },
+    "rotul": {
+      "name": "sala.epileg.rotul.nom",
+      "visibleIf": {
+        "flag": "planco_plantat"
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.28"
+            },
+            {
+              "who": "player",
+              "text": "sala.epileg.29"
+            },
+            {
+              "who": "vet",
+              "text": "sala.epileg.30"
+            },
+            {
+              "who": "gueraula",
+              "text": "sala.epileg.31"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "final_avet"
+            },
+            {
+              "event": "final"
+            }
+          ]
+        }
+      ]
+    },
+    "ponc": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.epileg.32"
+            }
+          ]
+        }
+      ]
+    },
+    "sunifred": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "not": {
+              "hasItem": "pala"
+            }
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.epileg.33"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.epileg.34"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "pala"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "sunifred",
+              "text": "sala.epileg.35"
+            }
+          ]
+        }
+      ]
+    },
+    "ingilberga": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "ingilberga",
+              "text": "sala.epileg.36"
+            }
+          ]
+        }
+      ]
+    },
+    "gueraula": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "gueraula",
+              "text": "sala.epileg.37"
+            }
+          ]
+        }
+      ]
+    },
+    "ramon": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "ramon",
+              "text": "sala.epileg.38"
+            }
+          ]
+        }
+      ]
+    },
+    "sanca": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "sanca",
+              "text": "sala.epileg.39"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

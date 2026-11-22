@@ -1,0 +1,478 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.apotecaria.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "id": "apo_intro",
+      "once": true,
+      "verb": "*",
+      "lines": [
+        {
+          "who": "gueraula",
+          "text": "sala.apotecaria.1"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "cardo_agafat": {
+      "visibleIf": {
+        "flag": "cardo_agafat"
+      }
+    },
+    "mel_agafada": {
+      "visibleIf": {
+        "flag": "mel_agafada"
+      }
+    }
+  },
+  "hotspots": {
+    "prestatges": {
+      "name": "sala.apotecaria.prestatges.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.2"
+            }
+          ]
+        }
+      ]
+    },
+    "flasco_menta": {
+      "name": "sala.apotecaria.flasco_menta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.4"
+            }
+          ]
+        }
+      ]
+    },
+    "flasco_ruda": {
+      "name": "sala.apotecaria.flasco_ruda.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.5"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.6"
+            }
+          ]
+        }
+      ]
+    },
+    "flasco_salvia": {
+      "name": "sala.apotecaria.flasco_salvia.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.7"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.8"
+            }
+          ]
+        }
+      ]
+    },
+    "flasco_sense_nom": {
+      "name": "sala.apotecaria.flasco_sense_nom.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.9"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "not": {
+              "hasItem": "valeriana"
+            }
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.10"
+            },
+            {
+              "who": "player",
+              "text": "sala.apotecaria.11"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "valeriana"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.12"
+            }
+          ]
+        }
+      ]
+    },
+    "atramentum": {
+      "name": "sala.apotecaria.atramentum.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.13"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "hasItem": "caparros"
+                }
+              },
+              {
+                "flag": "caparros_tina",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.14"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "caparros"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.15"
+            }
+          ]
+        }
+      ]
+    },
+    "manats": {
+      "name": "sala.apotecaria.manats.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.16"
+            }
+          ]
+        }
+      ]
+    },
+    "cardo": {
+      "name": "sala.apotecaria.cardo.nom",
+      "visibleIf": {
+        "flag": "cardo_agafat",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.17"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.18"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "cardo"
+            },
+            {
+              "setFlag": "cardo_agafat"
+            }
+          ]
+        }
+      ]
+    },
+    "pell_ovella": {
+      "name": "sala.apotecaria.pell_ovella.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.19"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.20"
+            }
+          ]
+        }
+      ]
+    },
+    "mel": {
+      "name": "sala.apotecaria.mel.nom",
+      "visibleIf": {
+        "flag": "mel_agafada",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.21"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.22"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "mel"
+            },
+            {
+              "setFlag": "mel_agafada"
+            }
+          ]
+        }
+      ]
+    },
+    "llar": {
+      "name": "sala.apotecaria.llar.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.23"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "hasItem": "carbo"
+                }
+              },
+              {
+                "not": {
+                  "hasItem": "unguent"
+                }
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.24"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "carbo"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.25"
+            }
+          ]
+        }
+      ]
+    },
+    "morter": {
+      "name": "sala.apotecaria.morter.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.26"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "mel",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.27"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "carbo",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.28"
+            }
+          ]
+        }
+      ]
+    },
+    "taula": {
+      "name": "sala.apotecaria.taula.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.29"
+            }
+          ]
+        }
+      ]
+    },
+    "gueraula": {
+      "interactions": []
+    },
+    "porta": {
+      "name": "sala.apotecaria.porta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.apotecaria.30"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "claustre"
+        }
+      ]
+    }
+  }
+}

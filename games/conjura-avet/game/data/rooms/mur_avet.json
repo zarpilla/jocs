@@ -1,30 +1,465 @@
 {
   "$schema": "../../schemas/room.schema.json",
   "name": "sala.mur_avet.nom",
-  "protagonist": "iri",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
   "onEnter": [
     {
-      "id": "primera",
-      "verb": "*",
+      "id": "mur_intro",
       "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 0
+      },
       "lines": [
         {
           "who": "player",
-          "text": "sala.mur_avet.intro.1"
+          "text": "sala.mur_avet.1"
+        },
+        {
+          "who": "ponc",
+          "text": "sala.mur_avet.2"
+        },
+        {
+          "who": "ponc",
+          "text": "sala.mur_avet.3"
+        },
+        {
+          "who": "iri",
+          "text": "sala.mur_avet.4"
+        },
+        {
+          "who": "ramon",
+          "text": "sala.mur_avet.5"
+        }
+      ],
+      "walkIn": "right"
+    },
+    {
+      "id": "mur_mati",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      },
+      "lines": [
+        {
+          "who": "vet",
+          "text": "sala.mur_avet.6"
+        },
+        {
+          "who": "ponc",
+          "text": "sala.mur_avet.7"
+        },
+        {
+          "who": "ponc",
+          "text": "sala.mur_avet.8"
+        },
+        {
+          "who": "iri",
+          "text": "sala.mur_avet.9"
+        },
+        {
+          "who": "vet",
+          "text": "sala.mur_avet.10"
         }
       ]
     }
   ],
+  "decor": {
+    "branques_apartades": {
+      "visibleIf": {
+        "flag": "branques_apartades"
+      }
+    },
+    "cera_agafada": {
+      "visibleIf": {
+        "flag": "cera_agafada"
+      }
+    },
+    "llum_mati": {
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      }
+    },
+    "poble_aplegant": {
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      }
+    }
+  },
   "hotspots": {
-    "avet": {
-      "name": "sala.mur_avet.avet.nom",
+    "absis": {
+      "name": "sala.mur_avet.absis.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.11"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.12"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "destral",
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.mur_avet.13",
+              "if": {
+                "protagonist": "vet"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.mur_avet.14"
+            }
+          ]
+        }
+      ]
+    },
+    "mur": {
+      "name": "sala.mur_avet.mur.nom",
       "interactions": [
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.mur_avet.avet.mira"
+              "text": "sala.mur_avet.15"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.16"
+            }
+          ]
+        }
+      ]
+    },
+    "avet": {
+      "name": "sala.mur_avet.avet.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "any": [
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 0
+              },
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 1
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.17"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.18"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "destral",
+          "if": {
+            "any": [
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 0
+              },
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 1
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.mur_avet.19"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "serra",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.20"
+            }
+          ]
+        },
+        {
+          "verb": "push",
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.mur_avet.21",
+              "if": {
+                "inRoom": "mur_avet",
+                "who": "vet"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.mur_avet.22"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "if": {
+            "flag": "pare_detingut"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.23"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.24"
+            }
+          ]
+        }
+      ]
+    },
+    "branques": {
+      "name": "sala.mur_avet.branques.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "branques_apartades",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.25"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.26"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "branques_apartades"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.27"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "guants",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.28"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "branques_apartades"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "destral",
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.mur_avet.29"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.30"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.31"
+            }
+          ]
+        }
+      ]
+    },
+    "branca_trencada": {
+      "name": "sala.mur_avet.branca_trencada.nom",
+      "visibleIf": {
+        "flag": "branques_apartades"
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.32"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "olla",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.33"
+            },
+            {
+              "who": "ramon",
+              "text": "sala.mur_avet.34",
+              "if": {
+                "flag": "pare_detingut",
+                "is": false
+              }
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "olla"
+            },
+            {
+              "giveItem": "pot_resina"
+            },
+            {
+              "setFlag": "resina_agafada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "resina_agafada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.35"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.36"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.37"
             }
           ]
         }
@@ -35,10 +470,38 @@
       "interactions": [
         {
           "verb": "look",
+          "if": {
+            "flag": "branques_apartades",
+            "is": false
+          },
           "lines": [
             {
               "who": "player",
-              "text": "sala.mur_avet.arrels.mira"
+              "text": "sala.mur_avet.38"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "tall_vist",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.39"
+            },
+            {
+              "who": "player",
+              "text": "sala.mur_avet.40"
             }
           ],
           "effects": [
@@ -46,11 +509,635 @@
               "setFlag": "tall_vist"
             }
           ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.41"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.42"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.43"
+            }
+          ]
+        }
+      ]
+    },
+    "forat": {
+      "name": "sala.mur_avet.forat.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "cera_agafada",
+                "is": false
+              },
+              {
+                "flag": "branques_apartades"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.44"
+            },
+            {
+              "who": "player",
+              "text": "sala.mur_avet.45"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "branques_apartades",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.46"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "corranda_sentida"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.47"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.48"
+            }
+          ]
+        }
+      ]
+    },
+    "cera": {
+      "name": "sala.mur_avet.cera.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "branques_apartades"
+          },
+          {
+            "flag": "cera_agafada",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.49"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.50"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "cera"
+            },
+            {
+              "setFlag": "cera_agafada"
+            }
+          ]
+        }
+      ]
+    },
+    "faristol": {
+      "name": "sala.mur_avet.faristol.nom",
+      "visibleIf": {
+        "any": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 0
+          },
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 1
+          },
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.51"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.52"
+            }
+          ]
+        }
+      ]
+    },
+    "ordre": {
+      "name": "sala.mur_avet.ordre.nom",
+      "visibleIf": {
+        "any": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 0
+          },
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 1
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.53"
+            },
+            {
+              "who": "player",
+              "text": "sala.mur_avet.54"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "ordre_mirada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "ordre_llegida",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.55"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.56"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.mur_avet.57"
+            }
+          ]
         }
       ]
     },
     "ponc": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 0
+          },
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 1
+          },
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "give",
+          "item": "cera",
+          "if": {
+            "all": [
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 7
+              },
+              {
+                "flag": "segell_acceptat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.mur_avet.58"
+            },
+            {
+              "who": "ponc",
+              "text": "sala.mur_avet.59"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "segell_acceptat"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "cera",
+          "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          },
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.mur_avet.60"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "*",
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.mur_avet.61"
+            }
+          ]
+        }
+      ]
+    },
+    "sunifred": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 0
+          },
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 1
+          },
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          }
+        ]
+      },
       "interactions": []
+    },
+    "ramon": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 0
+          },
+          {
+            "flag": "pare_detingut",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "flag": "branques_apartades",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "ramon",
+              "text": "sala.mur_avet.62"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "if": {
+            "flag": "tall_vist",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "ramon",
+              "text": "sala.mur_avet.63"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "ramon",
+              "text": "sala.mur_avet.64"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "*",
+          "lines": [
+            {
+              "who": "ramon",
+              "text": "sala.mur_avet.65"
+            }
+          ]
+        }
+      ]
+    },
+    "bonfill": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 0
+          },
+          {
+            "flag": "pare_detingut",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "bonfill",
+              "text": "sala.mur_avet.66"
+            }
+          ]
+        }
+      ]
+    },
+    "carrer": {
+      "name": "sala.mur_avet.carrer.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.67"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 0
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.68"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "goTo": "placa_sant_pol"
+        }
+      ]
+    },
+    "cami_riu": {
+      "name": "sala.mur_avet.cami_riu.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.69"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 0
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.70"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.71"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "goTo": "pont_ter"
+        }
+      ]
+    },
+    "porta_monestir": {
+      "name": "sala.mur_avet.porta_monestir.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.72"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 0
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.73"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "flag": "abadessa_convencuda",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.74"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "claustre"
+        }
+      ]
     }
   }
 }

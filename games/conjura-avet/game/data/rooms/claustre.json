@@ -1,0 +1,488 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.claustre.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "claustre_intro",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 1
+      },
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "sala.claustre.1"
+        },
+        {
+          "who": "ingilberga",
+          "text": "sala.claustre.2"
+        }
+      ]
+    },
+    {
+      "id": "claustre_segell",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "flag": "segell_emma_vist"
+      },
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "sala.claustre.3"
+        },
+        {
+          "who": "ingilberga",
+          "text": "sala.claustre.4"
+        }
+      ]
+    },
+    {
+      "id": "claustre_cap",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 2
+      },
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "sala.claustre.5"
+        }
+      ]
+    },
+    {
+      "id": "claustre_mati",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      },
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "sala.claustre.6"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "llum_capvespre": {
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 2
+      }
+    },
+    "llum_mati": {
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      }
+    }
+  },
+  "hotspots": {
+    "galeria": {
+      "name": "sala.claustre.galeria.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.7"
+            }
+          ]
+        }
+      ]
+    },
+    "pica": {
+      "name": "sala.claustre.pica.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.8"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cera",
+          "if": {
+            "flag": "cera_neta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.9"
+            },
+            {
+              "who": "player",
+              "text": "sala.claustre.10"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cera_neta"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cera",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.11"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.12"
+            }
+          ]
+        }
+      ]
+    },
+    "gespa": {
+      "name": "sala.claustre.gespa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.13"
+            }
+          ]
+        }
+      ]
+    },
+    "campanar": {
+      "name": "sala.claustre.campanar.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.14"
+            }
+          ]
+        }
+      ]
+    },
+    "banc": {
+      "name": "sala.claustre.banc.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.15"
+            }
+          ]
+        }
+      ]
+    },
+    "morter": {
+      "name": "sala.claustre.morter.nom",
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 1
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.16"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_capitular": {
+      "name": "sala.claustre.porta_capitular.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.17"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.18"
+            }
+          ]
+        }
+      ]
+    },
+    "ingilberga": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 1
+          },
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "give",
+          "item": "tauleta",
+          "if": {
+            "all": [
+              {
+                "flag": "queixa_copiada"
+              },
+              {
+                "flag": "prova_queixa",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "ingilberga",
+              "text": "sala.claustre.19"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "prova_queixa"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "serra",
+          "if": {
+            "flag": "prova_serra",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "ingilberga",
+              "text": "sala.claustre.20"
+            },
+            {
+              "who": "ingilberga",
+              "text": "sala.claustre.21"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "prova_serra"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "*",
+          "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "ingilberga",
+              "text": "sala.claustre.22"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "*",
+          "lines": [
+            {
+              "who": "ingilberga",
+              "text": "sala.claustre.23"
+            }
+          ]
+        }
+      ]
+    },
+    "gueraula": {
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 1
+      },
+      "interactions": []
+    },
+    "porta_monestir": {
+      "name": "sala.claustre.porta_monestir.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.24"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 2
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.25"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "mur_avet"
+        }
+      ]
+    },
+    "porta_bugaderia": {
+      "name": "sala.claustre.porta_bugaderia.nom",
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 2
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.26"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.27"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "bugaderia"
+        }
+      ]
+    },
+    "porta_apotecaria": {
+      "name": "sala.claustre.porta_apotecaria.nom",
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 2
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.28"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.claustre.29"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "apotecaria"
+        }
+      ]
+    }
+  }
+}

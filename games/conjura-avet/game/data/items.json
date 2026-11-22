@@ -2,7 +2,651 @@
   "$schema": "../schemas/items.schema.json",
   "guants": {
     "name": "obj.guants.nom",
-    "description": "obj.guants.desc",
+    "description": "obj.guants.desc"
+  },
+  "destral": {
+    "name": "obj.destral.nom",
+    "description": "obj.destral.desc",
+    "props": {
+      "no_donar": true
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "obj.destral.vet.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "habits",
+        "lines": [
+          {
+            "who": "vet",
+            "text": "obj.combo.destral_habits.1",
+            "if": {
+              "inRoom": "claustre"
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.combo.destral_habits.2.1"
+          }
+        ]
+      }
+    ]
+  },
+  "olla": {
+    "name": "obj.olla.nom",
+    "description": "obj.olla.desc",
     "interactions": []
+  },
+  "pot_resina": {
+    "name": "obj.pot_resina.nom",
+    "description": "obj.pot_resina.desc",
+    "props": {
+      "dona": "pegot"
+    }
+  },
+  "pegot": {
+    "name": "obj.pegot.nom",
+    "description": "obj.pegot.desc"
+  },
+  "cera": {
+    "name": "obj.cera.nom",
+    "description": "obj.cera.desc",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "flag": "segell_emma_vist"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.cera.net.1"
+          }
+        ]
+      }
+    ]
+  },
+  "canem": {
+    "name": "obj.canem.nom",
+    "description": "obj.canem.desc"
+  },
+  "salabre": {
+    "name": "obj.salabre.nom",
+    "description": "obj.salabre.desc"
+  },
+  "serra": {
+    "name": "obj.serra.nom",
+    "description": "obj.serra.desc"
+  },
+  "clofolles": {
+    "name": "obj.clofolles.nom",
+    "description": "obj.clofolles.desc"
+  },
+  "tuniques": {
+    "name": "obj.tuniques.nom",
+    "description": "obj.tuniques.desc"
+  },
+  "habits": {
+    "name": "obj.habits.nom",
+    "description": "obj.habits.desc"
+  },
+  "habits_curts": {
+    "name": "obj.habits_curts.nom",
+    "description": "obj.habits_curts.desc"
+  },
+  "tisores": {
+    "name": "obj.tisores.nom",
+    "description": "obj.tisores.desc",
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "habits",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.escurcar.1"
+          },
+          {
+            "who": "player",
+            "text": "obj.combo.escurcar.2.1"
+          },
+          {
+            "who": "player",
+            "text": "obj.combo.escurcar.3.1"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "habits"
+          },
+          {
+            "giveItem": "habits_curts"
+          },
+          {
+            "giveItem": "retalls"
+          },
+          {
+            "setFlag": "habits_fets"
+          }
+        ]
+      }
+    ]
+  },
+  "alzina": {
+    "name": "obj.alzina.nom",
+    "description": "obj.alzina.desc"
+  },
+  "retalls": {
+    "name": "obj.retalls.nom",
+    "description": "obj.retalls.desc",
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "cardo",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.cardar.1"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "retalls"
+          },
+          {
+            "giveItem": "llana"
+          }
+        ]
+      }
+    ]
+  },
+  "pot_apotecari": {
+    "name": "obj.pot_apotecari.nom",
+    "description": "obj.pot_apotecari.desc"
+  },
+  "pot_cartes": {
+    "name": "obj.pot_cartes.nom",
+    "description": "obj.pot_cartes.desc",
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "pot_resina",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.segellar.1"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "pot_cartes"
+          },
+          {
+            "giveItem": "pot_segellat"
+          }
+        ]
+      }
+    ]
+  },
+  "pot_segellat": {
+    "name": "obj.pot_segellat.nom",
+    "description": "obj.pot_segellat.desc"
+  },
+  "planco": {
+    "name": "obj.planco.nom",
+    "description": "obj.planco.desc"
+  },
+  "pala": {
+    "name": "obj.pala.nom",
+    "description": "obj.pala.desc"
+  },
+  "cofre": {
+    "name": "obj.cofre.nom",
+    "description": "obj.cofre.desc"
+  },
+  "tauleta": {
+    "name": "obj.tauleta.nom",
+    "description": "obj.tauleta.desc",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "flag": "queixa_copiada"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tauleta.plena.1"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "flag": "signe_copiat"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tauleta.signe.1"
+          }
+        ]
+      }
+    ]
+  },
+  "carbonet": {
+    "name": "obj.carbonet.nom",
+    "description": "obj.carbonet.desc",
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "cera",
+        "if": {
+          "flag": "cera_neta",
+          "is": false
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.carbonet.cera_bruta.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "cera",
+        "if": {
+          "flag": "segell_emma_vist"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.carbonet.cera_fet.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "cera",
+        "if": {
+          "not": {
+            "inRoom": "claustre"
+          }
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.carbonet.cera_lloc.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "cera",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.carbonet.cera.1"
+          }
+        ],
+        "effects": [
+          {
+            "setVar": "calc",
+            "value": "segell"
+          },
+          {
+            "setVar": "calc_pas",
+            "value": 0
+          },
+          {
+            "event": "anar",
+            "args": {
+              "room": "calc"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "pergamins": {
+    "name": "obj.pergamins.nom",
+    "description": "obj.pergamins.desc"
+  },
+  "ploma": {
+    "name": "obj.ploma.nom",
+    "description": "obj.ploma.desc",
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "pergamins",
+        "if": {
+          "all": [
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 2
+            },
+            {
+              "not": {
+                "hasItem": "salconduit_brut"
+              }
+            },
+            {
+              "not": {
+                "hasItem": "salconduit_resina"
+              }
+            },
+            {
+              "not": {
+                "hasItem": "salconduit"
+              }
+            },
+            {
+              "flag": "salconduit_fet",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.salconduit.1"
+          },
+          {
+            "who": "player",
+            "text": "obj.combo.salconduit.2.1"
+          }
+        ],
+        "effects": [
+          {
+            "giveItem": "salconduit_brut"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "pergamins",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.ploma.1"
+          }
+        ]
+      }
+    ]
+  },
+  "rascador": {
+    "name": "obj.rascador.nom",
+    "description": "obj.rascador.desc"
+  },
+  "mocador": {
+    "name": "obj.mocador.nom",
+    "description": "obj.mocador.desc"
+  },
+  "cardo": {
+    "name": "obj.cardo.nom",
+    "description": "obj.cardo.desc"
+  },
+  "llana": {
+    "name": "obj.llana.nom",
+    "description": "obj.llana.desc",
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "pegot",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.barbes.1"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "llana"
+          },
+          {
+            "giveItem": "barbes"
+          }
+        ]
+      }
+    ]
+  },
+  "barbes": {
+    "name": "obj.barbes.nom",
+    "description": "obj.barbes.desc"
+  },
+  "mel": {
+    "name": "obj.mel.nom",
+    "description": "obj.mel.desc",
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "carbo",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.unguent.1"
+          },
+          {
+            "who": "gueraula",
+            "text": "obj.combo.unguent.g.1",
+            "if": {
+              "inRoom": "apotecaria"
+            }
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "mel"
+          },
+          {
+            "takeItem": "carbo"
+          },
+          {
+            "giveItem": "unguent"
+          }
+        ]
+      }
+    ]
+  },
+  "carbo": {
+    "name": "obj.carbo.nom",
+    "description": "obj.carbo.desc"
+  },
+  "unguent": {
+    "name": "obj.unguent.nom",
+    "description": "obj.unguent.desc"
+  },
+  "valeriana": {
+    "name": "obj.valeriana.nom",
+    "description": "obj.valeriana.desc"
+  },
+  "caparros": {
+    "name": "obj.caparros.nom",
+    "description": "obj.caparros.desc"
+  },
+  "salconduit_brut": {
+    "name": "obj.salconduit_brut.nom",
+    "description": "obj.salconduit_brut.desc",
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "pegot",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.salc_resina.1"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "salconduit_brut"
+          },
+          {
+            "giveItem": "salconduit_resina"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "cera",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.salc_sense.1"
+          }
+        ]
+      }
+    ]
+  },
+  "salconduit_resina": {
+    "name": "obj.salconduit_resina.nom",
+    "description": "obj.salconduit_resina.desc",
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "cera",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.salc_cera.1"
+          },
+          {
+            "who": "player",
+            "text": "obj.combo.salc_cera.2.1"
+          },
+          {
+            "who": "gueraula",
+            "text": "obj.combo.salc_cera.g.1",
+            "if": {
+              "inRoom": "apotecaria"
+            }
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "salconduit_resina"
+          },
+          {
+            "giveItem": "salconduit"
+          },
+          {
+            "setFlag": "salconduit_fet"
+          }
+        ]
+      }
+    ]
+  },
+  "salconduit": {
+    "name": "obj.salconduit.nom",
+    "description": "obj.salconduit.desc"
+  },
+  "xarop": {
+    "name": "obj.xarop.nom",
+    "description": "obj.xarop.desc"
+  },
+  "claus": {
+    "name": "obj.claus.nom",
+    "description": "obj.claus.desc"
+  },
+  "carta_calcada": {
+    "name": "obj.carta_calcada.nom",
+    "description": "obj.carta_calcada.desc",
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "pot_apotecari",
+        "if": {
+          "not": {
+            "hasItem": "carta_emma"
+          }
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.pot.no2.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "pot_apotecari",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.pot2.1"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "carta_emma"
+          },
+          {
+            "takeItem": "carta_calcada"
+          },
+          {
+            "takeItem": "pot_apotecari"
+          },
+          {
+            "giveItem": "pot_cartes"
+          }
+        ]
+      }
+    ]
+  },
+  "carta_emma": {
+    "name": "obj.carta_emma.nom",
+    "description": "obj.carta_emma.desc",
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "pot_apotecari",
+        "if": {
+          "not": {
+            "hasItem": "carta_calcada"
+          }
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.pot.no.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "pot_apotecari",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.combo.pot.1"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "carta_emma"
+          },
+          {
+            "takeItem": "carta_calcada"
+          },
+          {
+            "takeItem": "pot_apotecari"
+          },
+          {
+            "giveItem": "pot_cartes"
+          }
+        ]
+      }
+    ]
   }
 }

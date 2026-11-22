@@ -1,0 +1,587 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.placa_sant_pol.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "placa_crida",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 1
+      },
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "sala.placa_sant_pol.1"
+        },
+        {
+          "who": "sanca",
+          "text": "sala.placa_sant_pol.2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "crida_feta"
+        }
+      ]
+    },
+    {
+      "id": "placa_mati",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.placa_sant_pol.3"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "corda_campana": {
+      "visibleIf": {
+        "flag": "corda_posada"
+      }
+    },
+    "campana_toca": {
+      "visibleIf": {
+        "flag": "bonfill_campanar"
+      }
+    },
+    "llum_mati": {
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      }
+    },
+    "dones_marxen": {
+      "visibleIf": {
+        "flag": "testimoni_sanca"
+      }
+    }
+  },
+  "hotspots": {
+    "llinda": {
+      "name": "sala.placa_sant_pol.llinda.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.4"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.6"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_sant_pol": {
+      "name": "sala.placa_sant_pol.porta_sant_pol.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.7"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.8"
+            }
+          ]
+        }
+      ]
+    },
+    "queixa": {
+      "name": "sala.placa_sant_pol.queixa.nom",
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 1
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.9"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "look",
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "bonfill_campanar",
+                "is": false
+              },
+              {
+                "flag": "queixa_copiada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "bonfill",
+              "text": "sala.placa_sant_pol.10"
+            },
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.11"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "look",
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "bonfill_campanar"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.12"
+            },
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.13"
+            },
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.14"
+            },
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.15",
+              "if": {
+                "flag": "ordre_llegida"
+              }
+            },
+            {
+              "who": "bonfill",
+              "text": "sala.placa_sant_pol.16"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "queixa_copiada"
+            },
+            {
+              "setFlag": "signe_copiat"
+            },
+            {
+              "setFlag": "bonfill_campanar",
+              "value": false
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.17"
+            }
+          ]
+        }
+      ]
+    },
+    "campanar": {
+      "name": "sala.placa_sant_pol.campanar.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "corda_posada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.18"
+            },
+            {
+              "who": "sanca",
+              "text": "sala.placa_sant_pol.19"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "campanar_vist"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.20"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "canem",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.21"
+            },
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.22"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "canem"
+            },
+            {
+              "setFlag": "corda_posada"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "canem",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.23"
+            }
+          ]
+        },
+        {
+          "verb": "push",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.placa_sant_pol.24",
+              "if": {
+                "inRoom": "placa_sant_pol",
+                "who": "vet"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.25"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pull"
+          ],
+          "if": {
+            "flag": "corda_posada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.26"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "campanar_vist"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pull"
+          ],
+          "if": {
+            "flag": "bonfill_campanar"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.27"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "queixa_copiada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.placa_sant_pol.28"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pull"
+          ],
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.29",
+              "sound": "campana"
+            },
+            {
+              "who": "bonfill",
+              "text": "sala.placa_sant_pol.30"
+            },
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.31",
+              "if": {
+                "inRoom": "placa_sant_pol",
+                "who": "vet"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "bonfill_campanar"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.32"
+            }
+          ]
+        }
+      ]
+    },
+    "campana": {
+      "name": "sala.placa_sant_pol.campana.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.33"
+            }
+          ]
+        }
+      ]
+    },
+    "nau": {
+      "name": "sala.placa_sant_pol.nau.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.34"
+            }
+          ]
+        }
+      ]
+    },
+    "dones": {
+      "name": "sala.placa_sant_pol.dones.nom",
+      "visibleIf": {
+        "flag": "testimoni_sanca",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.35"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "sanca",
+              "text": "sala.placa_sant_pol.36"
+            }
+          ]
+        }
+      ]
+    },
+    "sanca": {
+      "visibleIf": {
+        "flag": "testimoni_sanca",
+        "is": false
+      },
+      "interactions": []
+    },
+    "bonfill": {
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 1
+      },
+      "interactions": []
+    },
+    "reixa": {
+      "name": "sala.placa_sant_pol.reixa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.37"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 1
+          },
+          "dialogue": "pare_reixa"
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.38"
+            }
+          ]
+        }
+      ]
+    },
+    "casa_batlle": {
+      "name": "sala.placa_sant_pol.casa_batlle.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.39"
+            }
+          ]
+        }
+      ]
+    },
+    "carrer": {
+      "name": "sala.placa_sant_pol.carrer.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.40"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "goTo": "mur_avet"
+        }
+      ]
+    }
+  }
+}

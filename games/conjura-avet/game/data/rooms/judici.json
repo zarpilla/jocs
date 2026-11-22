@@ -1,0 +1,546 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.judici.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "judici_intro",
+      "once": true,
+      "verb": "*",
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "sala.judici.1"
+        },
+        {
+          "who": "sunifred",
+          "text": "sala.judici.2"
+        },
+        {
+          "who": "ponc",
+          "text": "sala.judici.3"
+        },
+        {
+          "who": "sunifred",
+          "text": "sala.judici.4"
+        },
+        {
+          "who": "ponc",
+          "text": "sala.judici.5"
+        },
+        {
+          "who": "vet",
+          "text": "sala.judici.6"
+        },
+        {
+          "who": "ponc",
+          "text": "sala.judici.7"
+        },
+        {
+          "who": "ponc",
+          "text": "sala.judici.8"
+        },
+        {
+          "who": "sunifred",
+          "text": "sala.judici.9"
+        }
+      ],
+      "effects": [
+        {
+          "setVar": "judici",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "avet": {
+      "name": "sala.judici.avet.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.judici.10"
+            }
+          ]
+        }
+      ]
+    },
+    "arrels": {
+      "name": "sala.judici.arrels.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.judici.11"
+            }
+          ]
+        }
+      ]
+    },
+    "faristol": {
+      "name": "sala.judici.faristol.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.judici.12"
+            }
+          ]
+        }
+      ]
+    },
+    "poble": {
+      "name": "sala.judici.poble.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.judici.13"
+            }
+          ]
+        }
+      ]
+    },
+    "monges": {
+      "name": "sala.judici.monges.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.judici.14"
+            }
+          ]
+        }
+      ]
+    },
+    "ponc": {
+      "interactions": [
+        {
+          "verb": "give",
+          "item": "serra",
+          "if": {
+            "var": "judici",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.judici.15"
+            },
+            {
+              "who": "ermessenda",
+              "text": "sala.judici.16"
+            },
+            {
+              "who": "vet",
+              "text": "sala.judici.17"
+            },
+            {
+              "who": "ponc",
+              "text": "sala.judici.18"
+            },
+            {
+              "who": "iri",
+              "text": "sala.judici.19"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.judici.20"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "judici",
+              "value": 2
+            },
+            {
+              "takeItem": "serra"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "tauleta",
+          "if": {
+            "var": "judici",
+            "op": "==",
+            "value": 2
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.judici.21"
+            },
+            {
+              "who": "sanca",
+              "text": "sala.judici.22"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.judici.23"
+            },
+            {
+              "who": "vet",
+              "text": "sala.judici.24"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.judici.25"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "judici",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "carta_emma",
+          "if": {
+            "var": "judici",
+            "op": "==",
+            "value": 3
+          },
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.judici.26"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.judici.27"
+            },
+            {
+              "who": "vet",
+              "text": "sala.judici.28"
+            },
+            {
+              "who": "ponc",
+              "text": "sala.judici.29"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.judici.30"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "judici",
+              "value": 4
+            },
+            {
+              "takeItem": "carta_emma"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "carta_calcada",
+          "if": {
+            "var": "judici",
+            "op": "==",
+            "value": 4
+          },
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.judici.31"
+            },
+            {
+              "who": "joanet",
+              "text": "sala.judici.32"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.judici.33"
+            },
+            {
+              "who": "vet",
+              "text": "sala.judici.34"
+            },
+            {
+              "who": "ponc",
+              "text": "sala.judici.35"
+            },
+            {
+              "who": "ponc",
+              "text": "sala.judici.36"
+            },
+            {
+              "who": "bonfill",
+              "text": "sala.judici.37"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.judici.38",
+              "effects": [
+                {
+                  "setFlag": "disfressades",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "who": "ponc",
+              "text": "sala.judici.39"
+            },
+            {
+              "who": "vet",
+              "text": "sala.judici.40"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.judici.41"
+            },
+            {
+              "who": "ponc",
+              "text": "sala.judici.42"
+            },
+            {
+              "who": "ponc",
+              "text": "sala.judici.43"
+            },
+            {
+              "who": "ponc",
+              "text": "sala.judici.44"
+            },
+            {
+              "who": "ramon",
+              "text": "sala.judici.45"
+            },
+            {
+              "who": "gueraula",
+              "text": "sala.judici.46"
+            },
+            {
+              "who": "iri",
+              "text": "sala.judici.47"
+            },
+            {
+              "who": "ingilberga",
+              "text": "sala.judici.48"
+            },
+            {
+              "who": "title",
+              "text": "rotul.primavera"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "carta_calcada"
+            },
+            {
+              "setFlag": "judici_guanyat"
+            },
+            {
+              "setVar": "fase",
+              "value": 9
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "epileg"
+              }
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "epileg"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "iri"
+              }
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "*",
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.judici.49"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "if": {
+            "var": "judici",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.judici.50"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "if": {
+            "var": "judici",
+            "op": "==",
+            "value": 2
+          },
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.judici.51"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "if": {
+            "var": "judici",
+            "op": "==",
+            "value": 3
+          },
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.judici.52"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.judici.53"
+            }
+          ]
+        }
+      ]
+    },
+    "sunifred": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "sunifred",
+              "text": "sala.judici.54"
+            }
+          ]
+        }
+      ]
+    },
+    "ingilberga": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "ingilberga",
+              "text": "sala.judici.55"
+            }
+          ]
+        }
+      ]
+    },
+    "gueraula": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "gueraula",
+              "text": "sala.judici.56"
+            }
+          ]
+        }
+      ]
+    },
+    "bonfill": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "bonfill",
+              "text": "sala.judici.57"
+            }
+          ]
+        }
+      ]
+    },
+    "ramon": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "ramon",
+              "text": "sala.judici.58"
+            }
+          ]
+        }
+      ]
+    },
+    "sanca": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "sanca",
+              "text": "sala.judici.59"
+            }
+          ]
+        }
+      ]
+    },
+    "joanet": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "joanet",
+              "text": "sala.judici.60"
+            }
+          ]
+        }
+      ]
+    },
+    "ermessenda": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "ermessenda",
+              "text": "sala.judici.61"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

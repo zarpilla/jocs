@@ -1,0 +1,277 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "sunifred",
+  "with": "sunifred",
+  "start": [
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 3
+          },
+          {
+            "flag": "sunifred_dorm"
+          },
+          {
+            "flag": "son1",
+            "is": false
+          }
+        ]
+      },
+      "node": "son1"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 3
+          },
+          {
+            "flag": "sunifred_dorm"
+          },
+          {
+            "flag": "son2",
+            "is": false
+          }
+        ]
+      },
+      "node": "son2"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 3
+          },
+          {
+            "flag": "sunifred_dorm"
+          }
+        ]
+      },
+      "node": "son3"
+    },
+    {
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 3
+      },
+      "node": "cuina"
+    },
+    {
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      },
+      "node": "s7"
+    },
+    {
+      "node": "s1"
+    }
+  ],
+  "nodes": {
+    "s1": {
+      "lines": [
+        {
+          "who": "sunifred",
+          "text": "dlg.sunifred.1"
+        }
+      ],
+      "goto": "m1"
+    },
+    "m1": {
+      "choices": [
+        {
+          "id": "signe",
+          "text": "dlg.sunifred.opt.signe",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "signe_copiat"
+              }
+            ]
+          },
+          "once": true,
+          "next": "signe"
+        },
+        {
+          "id": "nit",
+          "text": "dlg.sunifred.opt.nit",
+          "once": true,
+          "next": "nit"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.sunifred.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "signe": {
+      "lines": [
+        {
+          "who": "sunifred",
+          "text": "dlg.sunifred.2"
+        }
+      ],
+      "goto": "m1"
+    },
+    "nit": {
+      "lines": [
+        {
+          "who": "sunifred",
+          "text": "dlg.sunifred.3"
+        }
+      ],
+      "goto": "m1"
+    },
+    "cuina": {
+      "lines": [
+        {
+          "who": "sunifred",
+          "text": "dlg.sunifred.4"
+        }
+      ],
+      "goto": "mc"
+    },
+    "mc": {
+      "choices": [
+        {
+          "id": "ofici",
+          "text": "dlg.sunifred.opt.ofici",
+          "once": true,
+          "silent": true,
+          "next": "ofici"
+        },
+        {
+          "id": "vi",
+          "text": "dlg.sunifred.opt.vi",
+          "silent": true,
+          "next": "vi"
+        },
+        {
+          "id": "adeu_c",
+          "text": "dlg.sunifred.opt.adeu_c",
+          "silent": true,
+          "end": true
+        }
+      ]
+    },
+    "ofici": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.sunifred.5"
+        },
+        {
+          "who": "sunifred",
+          "text": "dlg.sunifred.6"
+        },
+        {
+          "who": "sunifred",
+          "text": "dlg.sunifred.7"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.sunifred.8"
+        },
+        {
+          "who": "sunifred",
+          "text": "dlg.sunifred.9"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.sunifred.10"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.sunifred.11",
+          "sound": "cullerot",
+          "effects": [
+            {
+              "setFlag": "signe_vist"
+            }
+          ]
+        },
+        {
+          "who": "vet",
+          "text": "dlg.sunifred.12"
+        }
+      ],
+      "goto": "mc"
+    },
+    "vi": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.sunifred.13"
+        },
+        {
+          "who": "sunifred",
+          "text": "dlg.sunifred.14"
+        }
+      ],
+      "goto": "mc"
+    },
+    "son1": {
+      "lines": [
+        {
+          "who": "sunifred",
+          "text": "dlg.sunifred.15",
+          "effects": [
+            {
+              "setFlag": "son1"
+            }
+          ]
+        }
+      ]
+    },
+    "son2": {
+      "lines": [
+        {
+          "who": "sunifred",
+          "text": "dlg.sunifred.16",
+          "effects": [
+            {
+              "setFlag": "son2"
+            }
+          ]
+        }
+      ]
+    },
+    "son3": {
+      "lines": [
+        {
+          "who": "sunifred",
+          "text": "dlg.sunifred.17"
+        }
+      ]
+    },
+    "s7": {
+      "lines": [
+        {
+          "who": "sunifred",
+          "text": "dlg.sunifred.18"
+        }
+      ],
+      "choices": [
+        {
+          "id": "adeu7",
+          "text": "dlg.sunifred.opt.adeu7",
+          "silent": true,
+          "end": true
+        }
+      ]
+    }
+  }
+}

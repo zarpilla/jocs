@@ -1,0 +1,167 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "joanet",
+  "with": "joanet",
+  "start": [
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          },
+          {
+            "flag": "joanet_despert"
+          },
+          {
+            "flag": "testimoni_joanet",
+            "is": false
+          }
+        ]
+      },
+      "node": "testimoni"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          },
+          {
+            "flag": "joanet_despert",
+            "is": false
+          }
+        ]
+      },
+      "node": "dorm"
+    },
+    {
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      },
+      "node": "mati2"
+    },
+    {
+      "if": {
+        "flag": "serra_treta"
+      },
+      "node": "despres"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "joanet",
+          "text": "dlg.joanet.1"
+        }
+      ],
+      "goto": "m"
+    },
+    "m": {
+      "choices": [
+        {
+          "id": "barca",
+          "text": "dlg.joanet.opt.barca",
+          "once": true,
+          "next": "barca"
+        },
+        {
+          "id": "comporta",
+          "text": "dlg.joanet.opt.comporta",
+          "once": true,
+          "next": "comporta"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.joanet.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "barca": {
+      "lines": [
+        {
+          "who": "joanet",
+          "text": "dlg.joanet.2"
+        }
+      ],
+      "goto": "m"
+    },
+    "comporta": {
+      "lines": [
+        {
+          "who": "joanet",
+          "text": "dlg.joanet.3"
+        }
+      ],
+      "goto": "m"
+    },
+    "despres": {
+      "lines": [
+        {
+          "who": "joanet",
+          "text": "dlg.joanet.4"
+        },
+        {
+          "who": "joanet",
+          "text": "dlg.joanet.5",
+          "effects": [
+            {
+              "setFlag": "joanet_fanal"
+            }
+          ]
+        }
+      ]
+    },
+    "dorm": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.joanet.6"
+        }
+      ]
+    },
+    "testimoni": {
+      "lines": [
+        {
+          "who": "joanet",
+          "text": "dlg.joanet.7"
+        },
+        {
+          "who": "joanet",
+          "text": "dlg.joanet.8"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.joanet.9"
+        },
+        {
+          "who": "joanet",
+          "text": "dlg.joanet.10",
+          "effects": [
+            {
+              "setFlag": "testimoni_joanet"
+            }
+          ]
+        }
+      ]
+    },
+    "mati2": {
+      "lines": [
+        {
+          "who": "joanet",
+          "text": "dlg.joanet.11"
+        }
+      ]
+    }
+  }
+}

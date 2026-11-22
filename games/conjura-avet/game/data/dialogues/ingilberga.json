@@ -1,0 +1,359 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "ingilberga",
+  "with": "ingilberga",
+  "start": [
+    {
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 2
+      },
+      "node": "h2"
+    },
+    {
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 7
+      },
+      "node": "h7"
+    },
+    {
+      "node": "h1"
+    }
+  ],
+  "nodes": {
+    "h1": {
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.1"
+        }
+      ],
+      "goto": "m1"
+    },
+    "m1": {
+      "choices": [
+        {
+          "id": "signe",
+          "text": "dlg.ingilberga.opt.signe",
+          "if": {
+            "flag": "signe_copiat"
+          },
+          "once": true,
+          "next": "signe"
+        },
+        {
+          "id": "ordre",
+          "text": "dlg.ingilberga.opt.ordre",
+          "if": {
+            "all": [
+              {
+                "flag": "ordre_llegida"
+              },
+              {
+                "flag": "prova_ordre",
+                "is": false
+              }
+            ]
+          },
+          "next": "ordre"
+        },
+        {
+          "id": "arxiu",
+          "text": "dlg.ingilberga.opt.arxiu",
+          "if": {
+            "all": [
+              {
+                "flag": "segell_emma_vist"
+              },
+              {
+                "flag": "corranda_sentida"
+              },
+              {
+                "flag": "sap_arxiu",
+                "is": false
+              }
+            ]
+          },
+          "next": "arxiu"
+        },
+        {
+          "id": "entrar_no",
+          "text": "dlg.ingilberga.opt.entrar_no",
+          "if": {
+            "all": [
+              {
+                "flag": "sap_arxiu"
+              },
+              {
+                "not": {
+                  "all": [
+                    {
+                      "flag": "prova_queixa"
+                    },
+                    {
+                      "flag": "prova_serra"
+                    },
+                    {
+                      "flag": "prova_ordre"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "next": "entrar_no"
+        },
+        {
+          "id": "entrar",
+          "text": "dlg.ingilberga.opt.entrar",
+          "if": {
+            "all": [
+              {
+                "flag": "sap_arxiu"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "prova_queixa"
+                  },
+                  {
+                    "flag": "prova_serra"
+                  },
+                  {
+                    "flag": "prova_ordre"
+                  }
+                ]
+              }
+            ]
+          },
+          "next": "arg"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.ingilberga.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "signe": {
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.2"
+        }
+      ],
+      "goto": "m1"
+    },
+    "ordre": {
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.3",
+          "effects": [
+            {
+              "setFlag": "prova_ordre"
+            }
+          ]
+        }
+      ],
+      "goto": "m1"
+    },
+    "arxiu": {
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.4"
+        },
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.5"
+        },
+        {
+          "who": "gueraula",
+          "text": "dlg.ingilberga.6"
+        },
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.7",
+          "effects": [
+            {
+              "setFlag": "sap_arxiu"
+            }
+          ]
+        }
+      ],
+      "goto": "m1"
+    },
+    "entrar_no": {
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.8"
+        },
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.9",
+          "if": {
+            "flag": "prova_queixa",
+            "is": false
+          }
+        },
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.10",
+          "if": {
+            "flag": "prova_serra",
+            "is": false
+          }
+        },
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.11",
+          "if": {
+            "flag": "prova_ordre",
+            "is": false
+          }
+        }
+      ],
+      "goto": "m1"
+    },
+    "arg": {
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.12"
+        }
+      ],
+      "goto": "ma"
+    },
+    "ma": {
+      "choices": [
+        {
+          "id": "pare",
+          "text": "dlg.ingilberga.opt.pare",
+          "next": "a_pare"
+        },
+        {
+          "id": "emma",
+          "text": "dlg.ingilberga.opt.emma",
+          "next": "a_emma"
+        },
+        {
+          "id": "monges",
+          "text": "dlg.ingilberga.opt.monges",
+          "next": "pla"
+        }
+      ]
+    },
+    "a_pare": {
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.13"
+        }
+      ],
+      "goto": "ma"
+    },
+    "a_emma": {
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.14"
+        }
+      ],
+      "goto": "ma"
+    },
+    "pla": {
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.15"
+        },
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.16"
+        },
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.17"
+        },
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.18"
+        },
+        {
+          "who": "gueraula",
+          "text": "dlg.ingilberga.19",
+          "effects": [
+            {
+              "setFlag": "abadessa_convencuda"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "claustre"
+              }
+            }
+          ]
+        },
+        {
+          "who": "iri",
+          "text": "dlg.ingilberga.20"
+        },
+        {
+          "who": "title",
+          "text": "acte.2"
+        },
+        {
+          "who": "title",
+          "text": "rotul.capvespre",
+          "effects": [
+            {
+              "setVar": "fase",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    "h2": {
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.21"
+        }
+      ],
+      "choices": [
+        {
+          "id": "adeu2",
+          "text": "dlg.ingilberga.opt.adeu2",
+          "end": true
+        }
+      ]
+    },
+    "h7": {
+      "lines": [
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.22"
+        },
+        {
+          "who": "ingilberga",
+          "text": "dlg.ingilberga.23"
+        }
+      ],
+      "choices": [
+        {
+          "id": "adeu7",
+          "text": "dlg.ingilberga.opt.adeu7",
+          "silent": true,
+          "end": true
+        }
+      ]
+    }
+  }
+}

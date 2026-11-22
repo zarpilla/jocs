@@ -1,0 +1,879 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.arxiu.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "arx_intro",
+      "once": true,
+      "verb": "*",
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 5
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.arxiu.1"
+        },
+        {
+          "who": "vet",
+          "text": "sala.arxiu.2"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "bagul_obert": {
+      "visibleIf": {
+        "flag": "bagul_obert"
+      }
+    },
+    "tapis_apartat": {
+      "visibleIf": {
+        "flag": "tapis_apartat"
+      }
+    },
+    "estendard_paret": {
+      "visibleIf": {
+        "flag": "estendard_paret"
+      }
+    },
+    "doble_fons": {
+      "visibleIf": {
+        "flag": "doble_fons_obert"
+      }
+    },
+    "cofre_dins": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "doble_fons_obert"
+          },
+          {
+            "flag": "cofre_agafat",
+            "is": false
+          }
+        ]
+      }
+    },
+    "gueraula_finestra": {
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 6
+      }
+    },
+    "trapa_oberta": {
+      "visibleIf": {
+        "flag": "trapa_oberta"
+      }
+    }
+  },
+  "hotspots": {
+    "baguls": {
+      "name": "sala.arxiu.baguls.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.4"
+            }
+          ]
+        }
+      ]
+    },
+    "bagul_delmes": {
+      "name": "sala.arxiu.bagul_delmes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.5"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.6"
+            }
+          ]
+        }
+      ]
+    },
+    "bagul_butlles": {
+      "name": "sala.arxiu.bagul_butlles.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.7"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.8"
+            }
+          ]
+        }
+      ]
+    },
+    "bagul_sunifred": {
+      "name": "sala.arxiu.bagul_sunifred.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "bagul_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.9"
+            },
+            {
+              "who": "player",
+              "text": "sala.arxiu.10"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "bagul_identificat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "doble_fons_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.11"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.12"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "claus",
+          "if": {
+            "flag": "bagul_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.13"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "bagul_obert"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use"
+          ],
+          "if": {
+            "flag": "bagul_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.14"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "push"
+          ],
+          "if": {
+            "flag": "canonges_tornen"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.15"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "push"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "contrapes_despenjat"
+              },
+              {
+                "flag": "doble_fons_obert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.16"
+            },
+            {
+              "who": "player",
+              "text": "sala.arxiu.17"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "doble_fons_obert"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "push"
+          ],
+          "if": {
+            "flag": "doble_fons_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.18"
+            },
+            {
+              "who": "player",
+              "text": "sala.arxiu.19"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "fons_buit"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.20"
+            }
+          ]
+        }
+      ]
+    },
+    "cordill": {
+      "name": "sala.arxiu.cordill.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.21"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.22"
+            }
+          ]
+        }
+      ]
+    },
+    "tapis": {
+      "name": "sala.arxiu.tapis.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "tapis_apartat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.23"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.24"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "push",
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "tapis_apartat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.25"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "tapis_apartat"
+            }
+          ]
+        }
+      ]
+    },
+    "contrapes": {
+      "name": "sala.arxiu.contrapes.nom",
+      "visibleIf": {
+        "flag": "tapis_apartat"
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.26"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "estendard_paret",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.27"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "canonges_tornen"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.28"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "contrapes_despenjat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.29"
+            },
+            {
+              "who": "player",
+              "text": "sala.arxiu.30",
+              "sound": "pedra"
+            },
+            {
+              "who": "gombau",
+              "text": "sala.arxiu.31"
+            },
+            {
+              "who": "player",
+              "text": "sala.arxiu.32"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "contrapes_despenjat"
+            },
+            {
+              "setFlag": "canonges_tornen"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.33"
+            }
+          ]
+        }
+      ]
+    },
+    "estendard": {
+      "name": "sala.arxiu.estendard.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "estendard_paret",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.34"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.35"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "use"
+          ],
+          "if": {
+            "flag": "estendard_paret",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.36"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "estendard_paret"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.37"
+            }
+          ]
+        }
+      ]
+    },
+    "cofre": {
+      "name": "sala.arxiu.cofre.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "doble_fons_obert"
+          },
+          {
+            "flag": "cofre_agafat",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.38"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.39"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.arxiu.40"
+            },
+            {
+              "who": "vet",
+              "text": "sala.arxiu.41"
+            },
+            {
+              "who": "player",
+              "text": "sala.arxiu.42"
+            },
+            {
+              "who": "vet",
+              "text": "sala.arxiu.43"
+            },
+            {
+              "who": "vet",
+              "text": "sala.arxiu.44"
+            },
+            {
+              "who": "player",
+              "text": "sala.arxiu.45"
+            },
+            {
+              "who": "vet",
+              "text": "sala.arxiu.46"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.arxiu.47",
+              "sound": "alarma"
+            },
+            {
+              "who": "sunifred",
+              "text": "sala.arxiu.48"
+            },
+            {
+              "who": "gueraula",
+              "text": "sala.arxiu.49"
+            }
+          ],
+          "effects": [
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "arxiu"
+              }
+            },
+            {
+              "setFlag": "cofre_agafat"
+            },
+            {
+              "giveItem": "carta_emma"
+            },
+            {
+              "setVar": "fase",
+              "value": 6
+            }
+          ]
+        }
+      ]
+    },
+    "bancs": {
+      "name": "sala.arxiu.bancs.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.50"
+            }
+          ]
+        }
+      ]
+    },
+    "banc_fons": {
+      "name": "sala.arxiu.banc_fons.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 6
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.51"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.52"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 6
+              },
+              {
+                "flag": "trapa_oberta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.53"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "trapa_oberta"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.54"
+            }
+          ]
+        }
+      ]
+    },
+    "trapa": {
+      "name": "sala.arxiu.trapa.nom",
+      "visibleIf": {
+        "flag": "trapa_oberta"
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.55"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.56"
+            }
+          ],
+          "effects": [
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "moli"
+              }
+            }
+          ],
+          "goTo": "moli"
+        }
+      ]
+    },
+    "finestra": {
+      "name": "sala.arxiu.finestra.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "not": {
+              "var": "fase",
+              "op": "==",
+              "value": 6
+            }
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.57"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.58"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_capitular": {
+      "name": "sala.arxiu.porta_capitular.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 6
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.59"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.60"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 6
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.61"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.62"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

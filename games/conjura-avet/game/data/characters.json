@@ -2,11 +2,407 @@
   "$schema": "../schemas/characters.schema.json",
   "iri": {
     "name": "pj.iri.nom",
-    "interactions": []
+    "interactions": [
+      {
+        "verb": "talkTo",
+        "if": {
+          "all": [
+            {
+              "inRoom": "judici"
+            },
+            {
+              "all": [
+                {
+                  "var": "judici",
+                  "op": "==",
+                  "value": 3
+                },
+                {
+                  "not": {
+                    "hasItem": "carta_emma"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "sala.judici.62"
+          },
+          {
+            "who": "iri",
+            "text": "sala.judici.63"
+          },
+          {
+            "who": "narrator",
+            "text": "sala.judici.64"
+          },
+          {
+            "who": "iri",
+            "text": "sala.judici.65"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "pot_segellat",
+            "who": "iri"
+          },
+          {
+            "giveItem": "carta_emma",
+            "who": "vet"
+          },
+          {
+            "giveItem": "carta_calcada",
+            "who": "vet"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "iri",
+            "text": "sala.judici.66"
+          }
+        ],
+        "if": {
+          "inRoom": "judici"
+        }
+      },
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "disfressades",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.iri.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "disfressades"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.iri.mira.monjo.1"
+          }
+        ]
+      },
+      {
+        "verb": "give",
+        "item": "*",
+        "if": {
+          "protagonist": "vet"
+        },
+        "action": {
+          "name": "donar",
+          "args": {
+            "item": "$item"
+          }
+        }
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 1
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.iri.parla.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 2
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.iri.parla.2"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 7
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.iri.parla.3"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.iri.parla.4"
+          }
+        ]
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "flag": "disfressades"
+        },
+        "name": "Monjo"
+      }
+    ]
   },
   "vet": {
     "name": "pj.vet.nom",
-    "interactions": []
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "disfressades",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.vet.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "disfressades"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.vet.mira.monjo.1"
+          }
+        ]
+      },
+      {
+        "verb": "give",
+        "item": "*",
+        "if": {
+          "protagonist": "iri"
+        },
+        "action": {
+          "name": "donar",
+          "args": {
+            "item": "$item"
+          }
+        }
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 1
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.vet.parla.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 2
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.vet.parla.2"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 7
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.vet.parla.3"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.vet.parla.4"
+          }
+        ]
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "flag": "disfressades"
+        },
+        "name": "Monjo"
+      }
+    ]
+  },
+  "ingilberga": {
+    "name": "pj.ingilberga.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.ingilberga.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "destral",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.ingilberga.destral.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "ingilberga"
+      }
+    ]
+  },
+  "gueraula": {
+    "name": "pj.gueraula.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.gueraula.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "destral",
+        "lines": [
+          {
+            "who": "gueraula",
+            "text": "pj.gueraula.destral.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "gueraula"
+      }
+    ]
   },
   "ponc": {
     "name": "pj.ponc.nom",
@@ -16,13 +412,248 @@
         "lines": [
           {
             "who": "player",
-            "text": "pj.ponc.mira"
+            "text": "pj.ponc.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "destral",
+        "lines": [
+          {
+            "who": "ponc",
+            "text": "pj.ponc.destral.1"
           }
         ]
       },
       {
         "verb": "talkTo",
         "dialogue": "ponc"
+      }
+    ]
+  },
+  "sunifred": {
+    "name": "pj.sunifred.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "flag": "signe_vist",
+          "is": false
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.sunifred.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "flag": "signe_vist"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.sunifred.mira.2.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "destral",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.sunifred.destral.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "sunifred"
+      }
+    ]
+  },
+  "bonfill": {
+    "name": "pj.bonfill.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.bonfill.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "destral",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.bonfill.destral.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "bonfill"
+      }
+    ]
+  },
+  "ramon": {
+    "name": "pj.ramon.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.ramon.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "ramon",
+            "text": "pj.ramon.parla.1"
+          }
+        ]
+      }
+    ]
+  },
+  "sanca": {
+    "name": "pj.sanca.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.sanca.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "destral",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.sanca.destral.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "sanca"
+      }
+    ]
+  },
+  "joanet": {
+    "name": "pj.joanet.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.joanet.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "destral",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.joanet.destral.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "joanet"
+      }
+    ]
+  },
+  "ermessenda": {
+    "name": "pj.ermessenda.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.ermessenda.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "destral",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.ermessenda.destral.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "ermessenda"
+      }
+    ]
+  },
+  "gombau": {
+    "name": "pj.gombau.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.gombau.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "gombau",
+            "text": "pj.gombau.parla.1"
+          }
+        ]
+      }
+    ]
+  },
+  "arnulf": {
+    "name": "pj.arnulf.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.arnulf.mira.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "arnulf",
+            "text": "pj.arnulf.parla.1"
+          }
+        ]
       }
     ]
   }

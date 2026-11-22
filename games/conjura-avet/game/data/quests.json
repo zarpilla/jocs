@@ -13,6 +13,155 @@
         "completeWhen": {
           "flag": "tall_vist"
         }
+      },
+      {
+        "id": "queixa",
+        "text": "mis.acte1.obj.queixa",
+        "completeWhen": {
+          "flag": "queixa_copiada"
+        }
+      },
+      {
+        "id": "serra",
+        "text": "mis.acte1.obj.serra",
+        "completeWhen": {
+          "flag": "serra_treta"
+        }
+      },
+      {
+        "id": "ordre",
+        "text": "mis.acte1.obj.ordre",
+        "completeWhen": {
+          "flag": "ordre_llegida"
+        }
+      },
+      {
+        "id": "abadessa",
+        "text": "mis.acte1.obj.abadessa",
+        "completeWhen": {
+          "flag": "abadessa_convencuda"
+        }
+      }
+    ]
+  },
+  "acte2": {
+    "kind": "main",
+    "title": "mis.acte2.titol",
+    "startWhen": {
+      "quest": "acte1",
+      "status": "completed"
+    },
+    "objectives": [
+      {
+        "id": "habits",
+        "text": "mis.acte2.obj.habits",
+        "completeWhen": {
+          "flag": "habits_fets"
+        }
+      },
+      {
+        "id": "disfressa",
+        "text": "mis.acte2.obj.disfressa",
+        "completeWhen": {
+          "var": "fase",
+          "op": ">=",
+          "value": 3
+        }
+      },
+      {
+        "id": "porteria",
+        "text": "mis.acte2.obj.porteria",
+        "completeWhen": {
+          "flag": "porteria_passada"
+        }
+      },
+      {
+        "id": "claus",
+        "text": "mis.acte2.obj.claus",
+        "completeWhen": {
+          "flag": "claus_agafades"
+        }
+      }
+    ]
+  },
+  "acte3": {
+    "kind": "main",
+    "title": "mis.acte3.titol",
+    "startWhen": {
+      "quest": "acte2",
+      "status": "completed"
+    },
+    "objectives": [
+      {
+        "id": "canonges",
+        "text": "mis.acte3.obj.canonges",
+        "completeWhen": {
+          "flag": "canonges_fora"
+        }
+      },
+      {
+        "id": "carta",
+        "text": "mis.acte3.obj.carta",
+        "completeWhen": {
+          "flag": "carta_calcada_feta"
+        }
+      },
+      {
+        "id": "cofre",
+        "text": "mis.acte3.obj.cofre",
+        "completeWhen": {
+          "flag": "cofre_agafat"
+        }
+      },
+      {
+        "id": "fugida",
+        "text": "mis.acte3.obj.fugida",
+        "completeWhen": {
+          "var": "fase",
+          "op": ">=",
+          "value": 7
+        }
+      }
+    ]
+  },
+  "acte4": {
+    "kind": "main",
+    "title": "mis.acte4.titol",
+    "startWhen": {
+      "quest": "acte3",
+      "status": "completed"
+    },
+    "objectives": [
+      {
+        "id": "testimonis",
+        "text": "mis.acte4.obj.testimonis",
+        "completeWhen": {
+          "all": [
+            {
+              "flag": "testimoni_sanca"
+            },
+            {
+              "flag": "testimoni_ermessenda"
+            },
+            {
+              "flag": "testimoni_joanet"
+            }
+          ]
+        }
+      },
+      {
+        "id": "segell",
+        "text": "mis.acte4.obj.segell",
+        "completeWhen": {
+          "flag": "segell_acceptat"
+        }
+      },
+      {
+        "id": "judici",
+        "text": "mis.acte4.obj.judici",
+        "completeWhen": {
+          "flag": "judici_guanyat"
+        }
       }
     ]
   }

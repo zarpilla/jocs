@@ -1,0 +1,373 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "bonfill",
+  "with": "bonfill",
+  "start": [
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 3
+          },
+          {
+            "flag": "santisenya"
+          },
+          {
+            "flag": "salconduit_ensenyat"
+          }
+        ]
+      },
+      "node": "nom"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 3
+          },
+          {
+            "flag": "santisenya"
+          }
+        ]
+      },
+      "node": "salc"
+    },
+    {
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 3
+      },
+      "node": "porta"
+    },
+    {
+      "node": "placa"
+    }
+  ],
+  "nodes": {
+    "placa": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.1"
+        }
+      ],
+      "goto": "mp"
+    },
+    "mp": {
+      "choices": [
+        {
+          "id": "llegir",
+          "text": "dlg.bonfill.opt.llegir",
+          "if": {
+            "protagonist": "vet"
+          },
+          "next": "llegir"
+        },
+        {
+          "id": "pare",
+          "text": "dlg.bonfill.opt.pare",
+          "once": true,
+          "next": "pare"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.bonfill.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "llegir": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.2"
+        }
+      ],
+      "goto": "mp"
+    },
+    "pare": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.3"
+        }
+      ],
+      "goto": "mp"
+    },
+    "porta": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.4"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.5"
+        }
+      ],
+      "goto": "ss"
+    },
+    "ss": {
+      "choices": [
+        {
+          "id": "ora",
+          "text": "dlg.bonfill.opt.ora",
+          "next": "ora"
+        },
+        {
+          "id": "pax",
+          "text": "dlg.bonfill.opt.pax",
+          "next": "pax"
+        },
+        {
+          "id": "visca",
+          "text": "dlg.bonfill.opt.visca",
+          "next": "visca"
+        },
+        {
+          "id": "tres",
+          "text": "dlg.bonfill.opt.tres",
+          "next": "tres"
+        },
+        {
+          "id": "fuig",
+          "text": "dlg.bonfill.opt.fuig",
+          "silent": true,
+          "end": true
+        }
+      ]
+    },
+    "ora": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.6"
+        }
+      ],
+      "goto": "ss"
+    },
+    "pax": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.7"
+        }
+      ],
+      "goto": "ss"
+    },
+    "visca": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.8"
+        }
+      ],
+      "goto": "ss"
+    },
+    "tres": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.9",
+          "effects": [
+            {
+              "setFlag": "santisenya"
+            }
+          ]
+        }
+      ],
+      "goto": "salc"
+    },
+    "salc": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.10"
+        }
+      ],
+      "goto": "ms"
+    },
+    "ms": {
+      "choices": [
+        {
+          "id": "dona",
+          "text": "dlg.bonfill.opt.dona",
+          "if": {
+            "hasItem": "salconduit"
+          },
+          "silent": true,
+          "next": "dona"
+        },
+        {
+          "id": "fuig2",
+          "text": "dlg.bonfill.opt.fuig2",
+          "silent": true,
+          "end": true
+        }
+      ]
+    },
+    "dona": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.11",
+          "effects": [
+            {
+              "takeItem": "salconduit"
+            },
+            {
+              "setFlag": "salconduit_ensenyat"
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.12"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.13"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.14"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.bonfill.15"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.16"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.17"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.18"
+        }
+      ],
+      "goto": "nom"
+    },
+    "nom": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.19"
+        }
+      ],
+      "goto": "mn"
+    },
+    "mn": {
+      "choices": [
+        {
+          "id": "dir",
+          "text": "dlg.bonfill.opt.dir",
+          "once": true,
+          "next": "dir"
+        },
+        {
+          "id": "assenyala",
+          "text": "dlg.bonfill.opt.assenyala",
+          "once": true,
+          "silent": true,
+          "next": "assenyala"
+        },
+        {
+          "id": "tos",
+          "text": "dlg.bonfill.opt.tos",
+          "silent": true,
+          "next": "tos"
+        }
+      ]
+    },
+    "dir": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.20"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.21"
+        }
+      ],
+      "goto": "mn"
+    },
+    "assenyala": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.22"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.23"
+        }
+      ],
+      "goto": "mn"
+    },
+    "tos": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.bonfill.24"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.25"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.26",
+          "effects": [
+            {
+              "setFlag": "porteria_passada"
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.27"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.bonfill.28"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.bonfill.29",
+          "effects": [
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "cuina"
+              }
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "cuina"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "vet"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
