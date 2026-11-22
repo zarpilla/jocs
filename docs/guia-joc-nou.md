@@ -330,6 +330,7 @@ configuració del motor més unes quantes etiquetes al full; és barat i es nota
   línies (`"sound"`, també amb variables: `molla_{molla_tensio}`). Si hi ha `sons.test.ts`, comprova que tots els
   sons que s'esmenten existeixen.
 - **Font del títol i de la interfície:** `tools/font/<joc>_font.py` (`npm run font`).
+- **Veus (opcional):** amb ElevenLabs (`npm run veus`). Tot el procés és a la [guia de veus](guia-veus.md).
 
 - [ ] Cada lloc té la seva peça, i el canvi de lloc no talla la música.
 - [ ] Cada acció important té so (portes, objectes, màquines).
