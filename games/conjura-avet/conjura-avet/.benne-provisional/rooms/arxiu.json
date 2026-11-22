@@ -1,0 +1,137 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "L'arxiu",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "trapa",
+      "label": "trapa del rec",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "baguls",
+      "label": "baguls",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "bagul_delmes",
+      "label": "bagul",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 132,
+      "y": 25
+    },
+    {
+      "id": "bagul_butlles",
+      "label": "bagul",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 167,
+      "y": 76
+    },
+    {
+      "id": "bagul_sunifred",
+      "label": "bagul del lacre",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 202,
+      "y": 25
+    },
+    {
+      "id": "cordill",
+      "label": "cordill",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 238,
+      "y": 76
+    },
+    {
+      "id": "tapis",
+      "label": "tapís",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 273,
+      "y": 25
+    },
+    {
+      "id": "contrapes",
+      "label": "contrapès",
+      "kind": "prop",
+      "w": 24,
+      "h": 44,
+      "x": 308,
+      "y": 76
+    },
+    {
+      "id": "estendard",
+      "label": "estendard",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 343,
+      "y": 25
+    },
+    {
+      "id": "cofre",
+      "label": "cofre de l'Emma",
+      "kind": "prop",
+      "w": 24,
+      "h": 44,
+      "x": 378,
+      "y": 76
+    },
+    {
+      "id": "bancs",
+      "label": "bancs de pedra",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 414,
+      "y": 25
+    },
+    {
+      "id": "banc_fons",
+      "label": "banc del fons",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 449,
+      "y": 76
+    },
+    {
+      "id": "finestra",
+      "label": "finestra",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 484,
+      "y": 25
+    },
+    {
+      "id": "porta_capitular",
+      "label": "sortida a l'scriptorium",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 519,
+      "y": 76
+    }
+  ],
+  "characters": []
+}

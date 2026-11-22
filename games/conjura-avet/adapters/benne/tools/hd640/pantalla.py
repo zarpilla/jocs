@@ -38,7 +38,7 @@ PUJA = {
 # sales pintades fins a baix: què en mostra la càmera en un mòbil (y de dalt; per defecte, el mig)
 MIG = (H0 - H) // 2
 # el títol de la portada és a dalt de tot (i el pròleg, el mateix pla, s'hi ha d'enquadrar igual)
-CAMERA_Y = {'portada': 12, 'proleg_roure': 12}           # el pròleg és el mateix pla
+CAMERA_Y = {'portada': 12, 'proleg': 12}                 # el pròleg és el mateix pla
 
 
 def puja_gui(name, dy, anchor):

@@ -1,0 +1,806 @@
+{
+  "id": "arxiu",
+  "name": "L'arxiu",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 137,
+            "y": 194
+          },
+          {
+            "x": 623,
+            "y": 205
+          },
+          {
+            "x": 700,
+            "y": 218
+          },
+          {
+            "x": 639,
+            "y": 228
+          },
+          {
+            "x": 639,
+            "y": 250
+          },
+          {
+            "x": 40,
+            "y": 250
+          },
+          {
+            "x": 60,
+            "y": 247
+          }
+        ],
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 340,
+                "y": 248
+              },
+              {
+                "x": 414,
+                "y": 265
+              },
+              {
+                "x": 421,
+                "y": 241
+              },
+              {
+                "x": 355,
+                "y": 228
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "trapa",
+      "active": true,
+      "description": "trapa del rec",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 527,
+          "y": 155
+        },
+        {
+          "x": 601,
+          "y": 155
+        },
+        {
+          "x": 601,
+          "y": 217
+        },
+        {
+          "x": 527,
+          "y": 217
+        }
+      ],
+      "walkToPoint": {
+        "x": 575,
+        "y": 212
+      },
+      "lookAtPoint": {
+        "x": 564,
+        "y": 217
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "baguls",
+      "active": true,
+      "description": "baguls",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 342,
+          "y": 173
+        },
+        {
+          "x": 422,
+          "y": 173
+        },
+        {
+          "x": 422,
+          "y": 259
+        },
+        {
+          "x": 342,
+          "y": 259
+        }
+      ],
+      "walkToPoint": {
+        "x": 328,
+        "y": 261
+      },
+      "lookAtPoint": {
+        "x": 382,
+        "y": 259
+      }
+    },
+    {
+      "id": "bagul_delmes",
+      "active": true,
+      "description": "bagul",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 165,
+          "y": 150
+        },
+        {
+          "x": 224,
+          "y": 150
+        },
+        {
+          "x": 224,
+          "y": 195
+        },
+        {
+          "x": 165,
+          "y": 195
+        }
+      ],
+      "walkToPoint": {
+        "x": 185,
+        "y": 199
+      },
+      "lookAtPoint": {
+        "x": 194,
+        "y": 195
+      }
+    },
+    {
+      "id": "bagul_butlles",
+      "active": true,
+      "description": "bagul",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 216,
+          "y": 151
+        },
+        {
+          "x": 272,
+          "y": 151
+        },
+        {
+          "x": 272,
+          "y": 196
+        },
+        {
+          "x": 216,
+          "y": 196
+        }
+      ],
+      "walkToPoint": {
+        "x": 238,
+        "y": 201
+      },
+      "lookAtPoint": {
+        "x": 244,
+        "y": 196
+      }
+    },
+    {
+      "id": "bagul_sunifred",
+      "active": true,
+      "description": "bagul del lacre",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 269,
+          "y": 155
+        },
+        {
+          "x": 331,
+          "y": 155
+        },
+        {
+          "x": 331,
+          "y": 204
+        },
+        {
+          "x": 269,
+          "y": 204
+        }
+      ],
+      "walkToPoint": {
+        "x": 295,
+        "y": 207
+      },
+      "lookAtPoint": {
+        "x": 300,
+        "y": 204
+      }
+    },
+    {
+      "id": "cordill",
+      "active": true,
+      "description": "cordill",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 317,
+          "y": 136
+        },
+        {
+          "x": 329,
+          "y": 136
+        },
+        {
+          "x": 329,
+          "y": 193
+        },
+        {
+          "x": 317,
+          "y": 193
+        }
+      ],
+      "walkToPoint": {
+        "x": 313,
+        "y": 201
+      },
+      "lookAtPoint": {
+        "x": 323,
+        "y": 193
+      }
+    },
+    {
+      "id": "tapis",
+      "active": true,
+      "description": "tapís",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 319,
+          "y": 28
+        },
+        {
+          "x": 452,
+          "y": 28
+        },
+        {
+          "x": 452,
+          "y": 155
+        },
+        {
+          "x": 319,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 389,
+        "y": 204
+      },
+      "lookAtPoint": {
+        "x": 385,
+        "y": 155
+      }
+    },
+    {
+      "id": "estendard",
+      "active": true,
+      "description": "estendard",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 487,
+          "y": 30
+        },
+        {
+          "x": 520,
+          "y": 30
+        },
+        {
+          "x": 520,
+          "y": 202
+        },
+        {
+          "x": 487,
+          "y": 202
+        }
+      ],
+      "walkToPoint": {
+        "x": 494,
+        "y": 212
+      },
+      "lookAtPoint": {
+        "x": 503,
+        "y": 202
+      }
+    },
+    {
+      "id": "bancs",
+      "active": true,
+      "description": "bancs de pedra",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 86,
+          "y": 159
+        },
+        {
+          "x": 133,
+          "y": 159
+        },
+        {
+          "x": 133,
+          "y": 227
+        },
+        {
+          "x": 86,
+          "y": 227
+        }
+      ],
+      "walkToPoint": {
+        "x": 143,
+        "y": 204
+      },
+      "lookAtPoint": {
+        "x": 109,
+        "y": 227
+      }
+    },
+    {
+      "id": "banc_fons",
+      "active": true,
+      "description": "banc del fons",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 519,
+          "y": 166
+        },
+        {
+          "x": 614,
+          "y": 166
+        },
+        {
+          "x": 614,
+          "y": 204
+        },
+        {
+          "x": 519,
+          "y": 204
+        }
+      ],
+      "walkToPoint": {
+        "x": 577,
+        "y": 213
+      },
+      "lookAtPoint": {
+        "x": 566,
+        "y": 204
+      }
+    },
+    {
+      "id": "finestra",
+      "active": true,
+      "description": "finestra",
+      "zIndex": 10,
+      "points": [
+        {
+          "x": 46,
+          "y": 0
+        },
+        {
+          "x": 86,
+          "y": 0
+        },
+        {
+          "x": 86,
+          "y": 56
+        },
+        {
+          "x": 46,
+          "y": 56
+        }
+      ],
+      "walkToPoint": {
+        "x": 137,
+        "y": 216
+      },
+      "lookAtPoint": {
+        "x": 66,
+        "y": 56
+      }
+    },
+    {
+      "id": "porta_capitular",
+      "active": true,
+      "description": "sortida a l'scriptorium",
+      "zIndex": 11,
+      "points": [
+        {
+          "x": 0,
+          "y": 94
+        },
+        {
+          "x": 40,
+          "y": 94
+        },
+        {
+          "x": 40,
+          "y": 259
+        },
+        {
+          "x": 0,
+          "y": 259
+        }
+      ],
+      "walkToPoint": {
+        "x": 73,
+        "y": 250
+      },
+      "lookAtPoint": {
+        "x": 20,
+        "y": 259
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.741,
+      "scaleBottom": 1.09,
+      "points": [
+        {
+          "x": 0,
+          "y": 190
+        },
+        {
+          "x": 639,
+          "y": 190
+        },
+        {
+          "x": 639,
+          "y": 254
+        },
+        {
+          "x": 0,
+          "y": 254
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "contrapes",
+      "tag": "contrapes",
+      "animations": {
+        "contrapes": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 440,
+            "y": 20
+          },
+          {
+            "x": 464,
+            "y": 20
+          },
+          {
+            "x": 464,
+            "y": 66
+          },
+          {
+            "x": 440,
+            "y": 66
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 468,
+        "y": 204
+      },
+      "lookAtPoint": {
+        "x": 452,
+        "y": 66
+      },
+      "description": "contrapès"
+    },
+    {
+      "id": "cofre",
+      "tag": "cofre",
+      "animations": {
+        "cofre": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 295,
+            "y": 156
+          },
+          {
+            "x": 327,
+            "y": 156
+          },
+          {
+            "x": 327,
+            "y": 174
+          },
+          {
+            "x": 295,
+            "y": 174
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 295,
+        "y": 207
+      },
+      "lookAtPoint": {
+        "x": 311,
+        "y": 174
+      },
+      "description": "cofre de l'Emma"
+    },
+    {
+      "id": "bagul_obert",
+      "tag": "bagul_obert",
+      "animations": {
+        "bagul_obert": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "tapis_apartat",
+      "tag": "tapis_apartat",
+      "animations": {
+        "tapis_apartat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "estendard_paret",
+      "tag": "estendard_paret",
+      "animations": {
+        "estendard_paret": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "doble_fons",
+      "tag": "doble_fons",
+      "animations": {
+        "doble_fons": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "cofre_dins",
+      "tag": "cofre_dins",
+      "animations": {
+        "cofre_dins": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "gueraula_finestra",
+      "tag": "gueraula_finestra",
+      "animations": {
+        "gueraula_finestra": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "trapa_oberta",
+      "tag": "trapa_oberta",
+      "animations": {
+        "trapa_oberta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "contrapes_terra",
+      "tag": "contrapes_terra",
+      "animations": {
+        "contrapes_terra": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "espelma",
+      "tag": "espelma",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "espelma": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "davant_pila",
+      "tag": "davant_pila",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_pila": {}
+      },
+      "zIndex": 20,
+      "baseline": 257
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 22,
+      "baseline": 999
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 108,
+      "y": 242,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 199,
+      "y": 238,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "gombau-veu",
+      "definition": "gombau/gombau.character.json",
+      "x": 73,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "sunifred-veu",
+      "definition": "sunifred/sunifred.character.json",
+      "x": 127,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "gueraula-veu",
+      "definition": "gueraula/gueraula.character.json",
+      "x": 182,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    }
+  ],
+  "viewAnchorY": 0.5,
+  "characterLights": {
+    "ambient": "#5a5260",
+    "lights": [
+      {
+        "x": 243,
+        "y": 147,
+        "radius": 268,
+        "color": "#ffbe78",
+        "intensity": 0.75
+      },
+      {
+        "x": 188,
+        "y": 158,
+        "radius": 182,
+        "color": "#96b0dc",
+        "intensity": 0.35
+      },
+      {
+        "x": 33,
+        "y": 188,
+        "radius": 138,
+        "color": "#ffaa5a",
+        "intensity": 0.4
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#0a0608",
+    "alpha": 0.45,
+    "squash": 0.4,
+    "core": 0.6,
+    "light": {
+      "x": 245,
+      "y": 191,
+      "stretch": 0.8,
+      "reach": 160
+    }
+  },
+  "floorSquash": 0.42
+}

@@ -1,0 +1,557 @@
+{
+  "id": "cuina",
+  "name": "La cuina",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 173,
+            "y": 158
+          },
+          {
+            "x": 170,
+            "y": 159
+          },
+          {
+            "x": 310,
+            "y": 168
+          },
+          {
+            "x": 515,
+            "y": 179
+          },
+          {
+            "x": 589,
+            "y": 246
+          },
+          {
+            "x": 639,
+            "y": 246
+          },
+          {
+            "x": 40,
+            "y": 246
+          },
+          {
+            "x": 48,
+            "y": 225
+          }
+        ],
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 305,
+                "y": 187
+              },
+              {
+                "x": 546,
+                "y": 223
+              },
+              {
+                "x": 532,
+                "y": 193
+              },
+              {
+                "x": 324,
+                "y": 167
+              }
+            ]
+          },
+          {
+            "id": "forat-2",
+            "active": true,
+            "points": [
+              {
+                "x": 315,
+                "y": 204
+              },
+              {
+                "x": 519,
+                "y": 237
+              },
+              {
+                "x": 514,
+                "y": 222
+              },
+              {
+                "x": 324,
+                "y": 193
+              }
+            ]
+          },
+          {
+            "id": "forat-3",
+            "active": true,
+            "points": [
+              {
+                "x": 185,
+                "y": 164
+              },
+              {
+                "x": 185,
+                "y": 160
+              },
+              {
+                "x": 174,
+                "y": 157
+              },
+              {
+                "x": 157,
+                "y": 158
+              },
+              {
+                "x": 145,
+                "y": 161
+              },
+              {
+                "x": 143,
+                "y": 166
+              },
+              {
+                "x": 155,
+                "y": 168
+              },
+              {
+                "x": 172,
+                "y": 168
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "llar_foc",
+      "active": true,
+      "description": "llar de foc",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 178,
+          "y": 0
+        },
+        {
+          "x": 317,
+          "y": 0
+        },
+        {
+          "x": 317,
+          "y": 166
+        },
+        {
+          "x": 178,
+          "y": 166
+        }
+      ],
+      "walkToPoint": {
+        "x": 251,
+        "y": 173
+      },
+      "lookAtPoint": {
+        "x": 247,
+        "y": 166
+      }
+    },
+    {
+      "id": "olles",
+      "active": true,
+      "description": "olles",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 402,
+          "y": 43
+        },
+        {
+          "x": 550,
+          "y": 43
+        },
+        {
+          "x": 550,
+          "y": 91
+        },
+        {
+          "x": 402,
+          "y": 91
+        }
+      ],
+      "walkToPoint": {
+        "x": 483,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 476,
+        "y": 91
+      }
+    },
+    {
+      "id": "pila_olles",
+      "active": true,
+      "description": "pila d'olles",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 141,
+          "y": 95
+        },
+        {
+          "x": 189,
+          "y": 95
+        },
+        {
+          "x": 189,
+          "y": 167
+        },
+        {
+          "x": 141,
+          "y": 167
+        }
+      ],
+      "walkToPoint": {
+        "x": 178,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 165,
+        "y": 167
+      }
+    },
+    {
+      "id": "taula",
+      "active": true,
+      "description": "taula",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 312,
+          "y": 135
+        },
+        {
+          "x": 537,
+          "y": 135
+        },
+        {
+          "x": 537,
+          "y": 219
+        },
+        {
+          "x": 312,
+          "y": 219
+        }
+      ],
+      "walkToPoint": {
+        "x": 372,
+        "y": 229
+      },
+      "lookAtPoint": {
+        "x": 424,
+        "y": 219
+      }
+    },
+    {
+      "id": "gerra",
+      "active": true,
+      "description": "gerra de vi",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 460,
+          "y": 124
+        },
+        {
+          "x": 483,
+          "y": 124
+        },
+        {
+          "x": 483,
+          "y": 158
+        },
+        {
+          "x": 460,
+          "y": 158
+        }
+      ],
+      "walkToPoint": {
+        "x": 467,
+        "y": 245
+      },
+      "lookAtPoint": {
+        "x": 471,
+        "y": 158
+      }
+    },
+    {
+      "id": "copa",
+      "active": true,
+      "description": "copa",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 503,
+          "y": 141
+        },
+        {
+          "x": 520,
+          "y": 141
+        },
+        {
+          "x": 520,
+          "y": 165
+        },
+        {
+          "x": 503,
+          "y": 165
+        }
+      ],
+      "walkToPoint": {
+        "x": 528,
+        "y": 256
+      },
+      "lookAtPoint": {
+        "x": 511,
+        "y": 165
+      }
+    },
+    {
+      "id": "banc",
+      "active": true,
+      "description": "banc",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 320,
+          "y": 171
+        },
+        {
+          "x": 513,
+          "y": 171
+        },
+        {
+          "x": 513,
+          "y": 234
+        },
+        {
+          "x": 320,
+          "y": 234
+        }
+      ],
+      "walkToPoint": {
+        "x": 361,
+        "y": 226
+      },
+      "lookAtPoint": {
+        "x": 416,
+        "y": 234
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.7,
+      "scaleBottom": 1.211,
+      "points": [
+        {
+          "x": 0,
+          "y": 156
+        },
+        {
+          "x": 639,
+          "y": 156
+        },
+        {
+          "x": 639,
+          "y": 248
+        },
+        {
+          "x": 0,
+          "y": 248
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "olles_caigudes",
+      "tag": "olles_caigudes",
+      "animations": {
+        "olles_caigudes": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sunifred_dorm",
+      "tag": "sunifred_dorm",
+      "animations": {
+        "sunifred_dorm": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "foc",
+      "tag": "foc",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "foc": {
+          "loop": true,
+          "frameDuration": 85
+        }
+      }
+    },
+    {
+      "id": "davant_taula",
+      "tag": "davant_taula",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_taula": {}
+      },
+      "zIndex": 20,
+      "baseline": 219
+    },
+    {
+      "id": "davant_banc",
+      "tag": "davant_banc",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_banc": {}
+      },
+      "zIndex": 22,
+      "baseline": 234
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 24,
+      "baseline": 999
+    },
+    {
+      "id": "sunifred_dorm__davant_taula",
+      "tag": "sunifred_dorm__davant_taula",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "sunifred_dorm__davant_taula": {}
+      },
+      "zIndex": 21,
+      "baseline": 219
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 204,
+      "y": 178,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 287,
+      "y": 231,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "sunifred-1",
+      "definition": "sunifred/sunifred.character.json",
+      "x": 491,
+      "y": 185,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ],
+  "viewAnchorY": 0.5,
+  "characterLights": {
+    "ambient": "#584440",
+    "lights": [
+      {
+        "x": 244,
+        "y": 129,
+        "radius": 367,
+        "color": "#ff9646",
+        "intensity": 0.95
+      },
+      {
+        "x": 244,
+        "y": 129,
+        "radius": 141,
+        "color": "#ffc878",
+        "intensity": 0.4
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#0c0504",
+    "alpha": 0.52,
+    "squash": 0.4,
+    "core": 0.6,
+    "light": {
+      "x": 247,
+      "y": 155,
+      "stretch": 1,
+      "reach": 260
+    }
+  },
+  "floorSquash": 0.42
+}

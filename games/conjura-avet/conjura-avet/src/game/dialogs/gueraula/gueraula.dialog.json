@@ -1,0 +1,76 @@
+{
+  "id": "gueraula",
+  "displayName": "gueraula",
+  "options": [
+    {
+      "id": "m1__canta",
+      "scriptName": "m1__canta",
+      "text": "Què cantes?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1__sencera",
+      "scriptName": "m1__sencera",
+      "text": "Canta-la sencera.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1__adeu",
+      "scriptName": "m1__adeu",
+      "text": "Res, germana.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m2__tint",
+      "scriptName": "m2__tint",
+      "text": "Com es tenyeix de negre?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m2__dormir",
+      "scriptName": "m2__dormir",
+      "text": "Quina herba fa dormir?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m2__veu",
+      "scriptName": "m2__veu",
+      "text": "I la veu d'home?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m2__barbes",
+      "scriptName": "m2__barbes",
+      "text": "I les barbes?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m2__llest",
+      "scriptName": "m2__llest",
+      "text": "Ja ho tenim tot.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m2__falta",
+      "scriptName": "m2__falta",
+      "text": "Ja ho tenim tot.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m2__adeu2",
+      "scriptName": "m2__adeu2",
+      "text": "Res, germana.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

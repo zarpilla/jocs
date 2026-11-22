@@ -60,7 +60,7 @@
       "text": "Com es juga",
       "font": "conjuraavet-negreta",
       "fontSize": 8,
-      "color": "#f0a446",
+      "color": "#e8b45c",
       "align": "center",
       "zIndex": 3
     },
@@ -276,8 +276,8 @@
         "pressed": "key-91x27-pressed"
       },
       "textColorStates": {
-        "hover": "#86eedb",
-        "pressed": "#86eedb"
+        "hover": "#f2805f",
+        "pressed": "#f2805f"
       },
       "textOutline": {
         "enabled": true,

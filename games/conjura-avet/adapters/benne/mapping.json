@@ -130,5 +130,73 @@
         "volume": 1
       }
     ]
+  },
+  "music": {
+    "$comment": "Música de cada sala: sala → peça (game/audio/music/<peça>.ogg, `npm run musica`), o una llista de casos `{if, track}`. Totes duren el mateix i s'encadenen al mateix punt (musicaSincronitzada).",
+    "portada": "tema",
+    "proleg": "tema",
+    "mur_avet": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "track": "mati"
+      },
+      {
+        "track": "tempesta"
+      }
+    ],
+    "placa_sant_pol": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "track": "mati"
+      },
+      {
+        "track": "poble"
+      }
+    ],
+    "pont_ter": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "track": "mati"
+      },
+      {
+        "track": "poble"
+      }
+    ],
+    "claustre": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "track": "mati"
+      },
+      {
+        "track": "claustre"
+      }
+    ],
+    "apotecaria": "claustre",
+    "bugaderia": "preparacio",
+    "porteria": "nit",
+    "cuina": "nit",
+    "scriptorium": "arxiu",
+    "arxiu": "arxiu",
+    "moli": "fugida",
+    "judici": "mati",
+    "epileg": "final",
+    "credits": "final",
+    "postcredits": "final"
   }
 }

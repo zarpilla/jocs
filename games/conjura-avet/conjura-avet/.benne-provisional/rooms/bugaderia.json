@@ -1,0 +1,92 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "La bugaderia",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "porta",
+      "label": "sortida al claustre",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "bagul",
+      "label": "bagul de roba vella",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "tina",
+      "label": "tina gran",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 154,
+      "y": 25
+    },
+    {
+      "id": "fogo",
+      "label": "fogó",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 211,
+      "y": 76
+    },
+    {
+      "id": "llenya_pi",
+      "label": "llenya de pi",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 268,
+      "y": 25
+    },
+    {
+      "id": "llenya_pollancre",
+      "label": "llenya de pollancre",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 326,
+      "y": 76
+    },
+    {
+      "id": "llenya_alzina",
+      "label": "llenya d'alzina",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 383,
+      "y": 25
+    },
+    {
+      "id": "robes",
+      "label": "robes esteses",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 440,
+      "y": 76
+    },
+    {
+      "id": "tisores",
+      "label": "tisores",
+      "kind": "prop",
+      "w": 46,
+      "h": 44,
+      "x": 497,
+      "y": 25
+    }
+  ],
+  "characters": []
+}

@@ -1,0 +1,97 @@
+{
+  "id": "bonfill",
+  "displayName": "bonfill",
+  "options": [
+    {
+      "id": "mp__llegir",
+      "scriptName": "mp__llegir",
+      "text": "Puc llegir la queixa?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mp__pare",
+      "scriptName": "mp__pare",
+      "text": "On és el meu pare?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mp__adeu",
+      "scriptName": "mp__adeu",
+      "text": "Res.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "ss__ora",
+      "scriptName": "ss__ora",
+      "text": "Ora et labora.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "ss__pax",
+      "scriptName": "ss__pax",
+      "text": "Pax vobiscum.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "ss__visca",
+      "scriptName": "ss__visca",
+      "text": "Visca el comte.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "ss__tres",
+      "scriptName": "ss__tres",
+      "text": "Tres testimonis i un segell.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "ss__fuig",
+      "scriptName": "ss__fuig",
+      "text": "(Tus i fes un pas enrere)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "ms__dona",
+      "scriptName": "ms__dona",
+      "text": "(Dona-li el salconduit)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "ms__fuig2",
+      "scriptName": "ms__fuig2",
+      "text": "(Tus i fes un pas enrere)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mn__dir",
+      "scriptName": "mn__dir",
+      "text": "Germà Rrr... amona.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mn__assenyala",
+      "scriptName": "mn__assenyala",
+      "text": "(Assenyala la Vet)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mn__tos",
+      "scriptName": "mn__tos",
+      "text": "(Tus)",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

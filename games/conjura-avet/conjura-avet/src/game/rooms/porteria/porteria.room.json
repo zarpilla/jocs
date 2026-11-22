@@ -1,0 +1,490 @@
+{
+  "id": "porteria",
+  "name": "La porteria",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 45,
+            "y": 232
+          },
+          {
+            "x": 310,
+            "y": 186
+          },
+          {
+            "x": 315,
+            "y": 191
+          },
+          {
+            "x": 408,
+            "y": 174
+          },
+          {
+            "x": 402,
+            "y": 170
+          },
+          {
+            "x": 499,
+            "y": 154
+          },
+          {
+            "x": 600,
+            "y": 246
+          },
+          {
+            "x": 36,
+            "y": 246
+          }
+        ],
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 501,
+                "y": 173
+              },
+              {
+                "x": 489,
+                "y": 170
+              },
+              {
+                "x": 477,
+                "y": 171
+              },
+              {
+                "x": 470,
+                "y": 174
+              },
+              {
+                "x": 474,
+                "y": 178
+              },
+              {
+                "x": 486,
+                "y": 181
+              },
+              {
+                "x": 500,
+                "y": 181
+              },
+              {
+                "x": 506,
+                "y": 177
+              }
+            ]
+          },
+          {
+            "id": "forat-2",
+            "active": true,
+            "points": [
+              {
+                "x": 50,
+                "y": 238
+              },
+              {
+                "x": 102,
+                "y": 217
+              },
+              {
+                "x": 128,
+                "y": 230
+              },
+              {
+                "x": 75,
+                "y": 254
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_ala",
+      "active": true,
+      "description": "porta de l'ala dels canonges",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 166,
+          "y": 52
+        },
+        {
+          "x": 252,
+          "y": 52
+        },
+        {
+          "x": 252,
+          "y": 188
+        },
+        {
+          "x": 166,
+          "y": 188
+        }
+      ],
+      "walkToPoint": {
+        "x": 210,
+        "y": 209
+      },
+      "lookAtPoint": {
+        "x": 209,
+        "y": 188
+      }
+    },
+    {
+      "id": "banc",
+      "active": true,
+      "description": "banc",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 318,
+          "y": 141
+        },
+        {
+          "x": 393,
+          "y": 141
+        },
+        {
+          "x": 393,
+          "y": 173
+        },
+        {
+          "x": 318,
+          "y": 173
+        }
+      ],
+      "walkToPoint": {
+        "x": 353,
+        "y": 191
+      },
+      "lookAtPoint": {
+        "x": 355,
+        "y": 173
+      }
+    },
+    {
+      "id": "columna",
+      "active": true,
+      "description": "columna",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 479,
+          "y": 0
+        },
+        {
+          "x": 515,
+          "y": 0
+        },
+        {
+          "x": 515,
+          "y": 185
+        },
+        {
+          "x": 479,
+          "y": 185
+        }
+      ],
+      "walkToPoint": {
+        "x": 482,
+        "y": 190
+      },
+      "lookAtPoint": {
+        "x": 497,
+        "y": 185
+      }
+    },
+    {
+      "id": "torxes",
+      "active": true,
+      "description": "torxes",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 120,
+          "y": 24
+        },
+        {
+          "x": 290,
+          "y": 24
+        },
+        {
+          "x": 290,
+          "y": 120
+        },
+        {
+          "x": 120,
+          "y": 120
+        }
+      ],
+      "walkToPoint": {
+        "x": 250,
+        "y": 204
+      },
+      "lookAtPoint": {
+        "x": 205,
+        "y": 120
+      }
+    },
+    {
+      "id": "llibre_entrades",
+      "active": true,
+      "description": "llibre de les entrades",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 47,
+          "y": 111
+        },
+        {
+          "x": 129,
+          "y": 111
+        },
+        {
+          "x": 129,
+          "y": 156
+        },
+        {
+          "x": 47,
+          "y": 156
+        }
+      ],
+      "walkToPoint": {
+        "x": 130,
+        "y": 248
+      },
+      "lookAtPoint": {
+        "x": 88,
+        "y": 156
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.678,
+      "scaleBottom": 1.211,
+      "points": [
+        {
+          "x": 0,
+          "y": 152
+        },
+        {
+          "x": 639,
+          "y": 152
+        },
+        {
+          "x": 639,
+          "y": 248
+        },
+        {
+          "x": 0,
+          "y": 248
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "ninots",
+      "tag": "ninots",
+      "animations": {
+        "ninots": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "flames",
+      "tag": "flames",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "flames": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
+    },
+    {
+      "id": "davant_columna",
+      "tag": "davant_columna",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_columna": {}
+      },
+      "zIndex": 20,
+      "baseline": 180
+    },
+    {
+      "id": "davant_banc",
+      "tag": "davant_banc",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_banc": {}
+      },
+      "zIndex": 22,
+      "baseline": 186
+    },
+    {
+      "id": "davant_faristol",
+      "tag": "davant_faristol",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_faristol": {}
+      },
+      "zIndex": 24,
+      "baseline": 240
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 26,
+      "baseline": 999
+    },
+    {
+      "id": "ninots__davant_faristol",
+      "tag": "ninots__davant_faristol",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ninots__davant_faristol": {}
+      },
+      "zIndex": 25,
+      "baseline": 240
+    },
+    {
+      "id": "porta_oberta",
+      "tag": "porta_oberta",
+      "animations": {
+        "porta_oberta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 299,
+      "y": 213,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 220,
+      "y": 209,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "bonfill-1",
+      "definition": "bonfill/bonfill.character.json",
+      "x": 363,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ],
+  "viewAnchorY": 0.5,
+  "characterLights": {
+    "ambient": "#5e4c4c",
+    "lights": [
+      {
+        "x": 128,
+        "y": 156,
+        "radius": 345,
+        "color": "#ffb060",
+        "intensity": 0.75
+      },
+      {
+        "x": 282,
+        "y": 138,
+        "radius": 296,
+        "color": "#ffb060",
+        "intensity": 0.75
+      },
+      {
+        "x": 595,
+        "y": 103,
+        "radius": 200,
+        "color": "#ffb060",
+        "intensity": 0.75
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#0a0506",
+    "alpha": 0.5,
+    "squash": 0.4,
+    "core": 0.6,
+    "light": {
+      "x": 282,
+      "y": 192,
+      "stretch": 0.8,
+      "reach": 200
+    }
+  },
+  "floorSquash": 0.42
+}

@@ -9,7 +9,7 @@
     "x": 0,
     "y": 0,
     "width": 640,
-    "height": 360
+    "height": 288
   },
   "walkable": {
     "polygons": [
@@ -18,23 +18,78 @@
         "active": true,
         "points": [
           {
-            "x": 25,
-            "y": 215
+            "x": 0,
+            "y": 236
           },
           {
-            "x": 615,
-            "y": 215
+            "x": 0,
+            "y": 236
           },
           {
-            "x": 629,
-            "y": 269
+            "x": 0,
+            "y": 226
           },
           {
-            "x": 11,
-            "y": 269
+            "x": 0,
+            "y": 220
+          },
+          {
+            "x": 148,
+            "y": 218
+          },
+          {
+            "x": 217,
+            "y": 213
+          },
+          {
+            "x": 278,
+            "y": 208
+          },
+          {
+            "x": 458,
+            "y": 207
+          },
+          {
+            "x": 609,
+            "y": 207
+          },
+          {
+            "x": 639,
+            "y": 211
+          },
+          {
+            "x": 639,
+            "y": 254
+          },
+          {
+            "x": 0,
+            "y": 254
           }
         ],
-        "holes": []
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 511,
+                "y": 224
+              },
+              {
+                "x": 566,
+                "y": 218
+              },
+              {
+                "x": 534,
+                "y": 211
+              },
+              {
+                "x": 481,
+                "y": 217
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -46,29 +101,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 157,
-          "y": 76
+          "x": 220,
+          "y": 0
         },
         {
-          "x": 255,
-          "y": 76
+          "x": 401,
+          "y": 0
         },
         {
-          "x": 255,
-          "y": 120
+          "x": 401,
+          "y": 176
         },
         {
-          "x": 157,
-          "y": 120
+          "x": 220,
+          "y": 176
         }
       ],
       "walkToPoint": {
-        "x": 206,
-        "y": 229
+        "x": 291,
+        "y": 211
       },
       "lookAtPoint": {
-        "x": 206,
-        "y": 120
+        "x": 310,
+        "y": 176
       }
     },
     {
@@ -78,34 +133,288 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 386,
-          "y": 25
+          "x": 83,
+          "y": 56
         },
         {
-          "x": 484,
-          "y": 25
+          "x": 218,
+          "y": 56
         },
         {
-          "x": 484,
-          "y": 69
+          "x": 218,
+          "y": 190
         },
         {
-          "x": 386,
-          "y": 69
+          "x": 83,
+          "y": 190
         }
       ],
       "walkToPoint": {
-        "x": 435,
-        "y": 229
+        "x": 124,
+        "y": 222
       },
       "lookAtPoint": {
-        "x": 435,
-        "y": 69
+        "x": 150,
+        "y": 190
+      }
+    },
+    {
+      "id": "carrer",
+      "active": true,
+      "description": "cap a la plaça",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 0,
+          "y": 190
+        },
+        {
+          "x": 22,
+          "y": 190
+        },
+        {
+          "x": 22,
+          "y": 259
+        },
+        {
+          "x": 0,
+          "y": 259
+        }
+      ],
+      "walkToPoint": {
+        "x": 2,
+        "y": 242
+      },
+      "lookAtPoint": {
+        "x": 11,
+        "y": 259
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "cami_riu",
+      "active": true,
+      "description": "camí del riu",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 35,
+          "y": 128
+        },
+        {
+          "x": 84,
+          "y": 128
+        },
+        {
+          "x": 84,
+          "y": 184
+        },
+        {
+          "x": 35,
+          "y": 184
+        }
+      ],
+      "walkToPoint": {
+        "x": 46,
+        "y": 222
+      },
+      "lookAtPoint": {
+        "x": 59,
+        "y": 184
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_monestir",
+      "active": true,
+      "description": "porta del monestir",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 582,
+          "y": 121
+        },
+        {
+          "x": 623,
+          "y": 121
+        },
+        {
+          "x": 623,
+          "y": 179
+        },
+        {
+          "x": 582,
+          "y": 179
+        }
+      ],
+      "walkToPoint": {
+        "x": 602,
+        "y": 207
+      },
+      "lookAtPoint": {
+        "x": 602,
+        "y": 179
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "absis",
+      "active": true,
+      "description": "absis",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 403,
+          "y": 22
+        },
+        {
+          "x": 555,
+          "y": 22
+        },
+        {
+          "x": 555,
+          "y": 180
+        },
+        {
+          "x": 403,
+          "y": 180
+        }
+      ],
+      "walkToPoint": {
+        "x": 495,
+        "y": 209
+      },
+      "lookAtPoint": {
+        "x": 479,
+        "y": 180
+      }
+    },
+    {
+      "id": "mur",
+      "active": true,
+      "description": "mur",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 0,
+          "y": 132
+        },
+        {
+          "x": 34,
+          "y": 132
+        },
+        {
+          "x": 34,
+          "y": 178
+        },
+        {
+          "x": 0,
+          "y": 178
+        }
+      ],
+      "walkToPoint": {
+        "x": 14,
+        "y": 224
+      },
+      "lookAtPoint": {
+        "x": 17,
+        "y": 178
+      }
+    },
+    {
+      "id": "branques",
+      "active": true,
+      "description": "branques",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 24,
+          "y": 176
+        },
+        {
+          "x": 232,
+          "y": 176
+        },
+        {
+          "x": 232,
+          "y": 214
+        },
+        {
+          "x": 24,
+          "y": 214
+        }
+      ],
+      "walkToPoint": {
+        "x": 110,
+        "y": 223
+      },
+      "lookAtPoint": {
+        "x": 128,
+        "y": 214
+      }
+    },
+    {
+      "id": "forat",
+      "active": true,
+      "description": "forat",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 0,
+          "y": 202
+        },
+        {
+          "x": 180,
+          "y": 202
+        },
+        {
+          "x": 180,
+          "y": 224
+        },
+        {
+          "x": 0,
+          "y": 224
+        }
+      ],
+      "walkToPoint": {
+        "x": 92,
+        "y": 223
+      },
+      "lookAtPoint": {
+        "x": 90,
+        "y": 224
       }
     }
   ],
   "points": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.591,
+      "scaleBottom": 1.148,
+      "points": [
+        {
+          "x": 0,
+          "y": 196
+        },
+        {
+          "x": 639,
+          "y": 196
+        },
+        {
+          "x": 639,
+          "y": 260
+        },
+        {
+          "x": 0,
+          "y": 260
+        }
+      ]
+    }
+  ],
   "props": [
     {
       "id": "BG",
@@ -116,14 +425,280 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "branques_apartades",
+      "tag": "branques_apartades",
+      "animations": {
+        "branques_apartades": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "cera_agafada",
+      "tag": "cera_agafada",
+      "animations": {
+        "cera_agafada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "llum_mati",
+      "tag": "llum_mati",
+      "animations": {
+        "llum_mati": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "poble_aplegant",
+      "tag": "poble_aplegant",
+      "animations": {
+        "poble_aplegant": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "branca_trencada",
+      "tag": "branca_trencada",
+      "animations": {
+        "branca_trencada": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 221,
+            "y": 120
+          },
+          {
+            "x": 268,
+            "y": 120
+          },
+          {
+            "x": 268,
+            "y": 214
+          },
+          {
+            "x": 221,
+            "y": 214
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 254,
+        "y": 213
+      },
+      "lookAtPoint": {
+        "x": 244,
+        "y": 214
+      },
+      "description": "branca trencada"
+    },
+    {
+      "id": "cera",
+      "tag": "cera",
+      "animations": {
+        "cera": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 95,
+            "y": 206
+          },
+          {
+            "x": 109,
+            "y": 206
+          },
+          {
+            "x": 109,
+            "y": 215
+          },
+          {
+            "x": 95,
+            "y": 215
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 100,
+        "y": 223
+      },
+      "lookAtPoint": {
+        "x": 102,
+        "y": 215
+      },
+      "description": "cosa vermella"
+    },
+    {
+      "id": "faristol",
+      "tag": "faristol",
+      "animations": {
+        "faristol": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 337,
+            "y": 158
+          },
+          {
+            "x": 383,
+            "y": 158
+          },
+          {
+            "x": 383,
+            "y": 228
+          },
+          {
+            "x": 337,
+            "y": 228
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 411,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 360,
+        "y": 228
+      },
+      "description": "faristol del jutge"
+    },
+    {
+      "id": "ordre",
+      "tag": "ordre",
+      "animations": {
+        "ordre": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 344,
+            "y": 162
+          },
+          {
+            "x": 376,
+            "y": 162
+          },
+          {
+            "x": 376,
+            "y": 183
+          },
+          {
+            "x": 344,
+            "y": 183
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 411,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 360,
+        "y": 183
+      },
+      "description": "ordre del jutge"
+    },
+    {
+      "id": "pluja",
+      "tag": "pluja",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pluja": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
+    },
+    {
+      "id": "davant_abeurador",
+      "tag": "davant_abeurador",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_abeurador": {}
+      },
+      "zIndex": 20,
+      "baseline": 223
+    },
+    {
+      "id": "llum_mati__davant_abeurador",
+      "tag": "llum_mati__davant_abeurador",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llum_mati__davant_abeurador": {}
+      },
+      "zIndex": 21,
+      "baseline": 223
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 22,
+      "baseline": 999
+    },
+    {
+      "id": "llum_mati__davant",
+      "tag": "llum_mati__davant",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llum_mati__davant": {}
+      },
+      "zIndex": 23,
+      "baseline": 999
     }
   ],
   "characters": [
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 320,
-      "y": 247,
+      "x": 446,
+      "y": 239,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -132,13 +707,81 @@
     {
       "instanceId": "ponc-1",
       "definition": "ponc/ponc.character.json",
-      "x": 491,
-      "y": 236,
+      "x": 320,
+      "y": 229,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 30,
+      "y": 239,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "sunifred-1",
+      "definition": "sunifred/sunifred.character.json",
+      "x": 257,
+      "y": 223,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "ramon-1",
+      "definition": "ramon/ramon.character.json",
+      "x": 221,
+      "y": 216,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "bonfill-1",
+      "definition": "bonfill/bonfill.character.json",
+      "x": 556,
+      "y": 210,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 9
     }
   ],
-  "viewAnchorY": 0.5
+  "characterLights": {
+    "ambient": "#b4b8c0",
+    "lights": [
+      {
+        "x": 300,
+        "y": -200,
+        "radius": 700,
+        "color": "#e6eaf0",
+        "intensity": 0.25,
+        "whenPropHidden": "llum_mati"
+      },
+      {
+        "x": 900,
+        "y": 0,
+        "radius": 900,
+        "color": "#ffe8c0",
+        "intensity": 0.55,
+        "whenPropVisible": "llum_mati"
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#1a1a20",
+    "alpha": 0.34,
+    "squash": 0.26,
+    "core": 0.7
+  },
+  "floorSquash": 0.23
 }

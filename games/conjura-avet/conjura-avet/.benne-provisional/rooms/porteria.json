@@ -1,0 +1,58 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "La porteria",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "porta_ala",
+      "label": "porta de l'ala dels canonges",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "banc",
+      "label": "banc",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 188,
+      "y": 25
+    },
+    {
+      "id": "columna",
+      "label": "columna",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 280,
+      "y": 76
+    },
+    {
+      "id": "torxes",
+      "label": "torxes",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 372,
+      "y": 25
+    },
+    {
+      "id": "llibre_entrades",
+      "label": "llibre de les entrades",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 463,
+      "y": 76
+    }
+  ],
+  "characters": [
+    "Bonfill"
+  ]
+}

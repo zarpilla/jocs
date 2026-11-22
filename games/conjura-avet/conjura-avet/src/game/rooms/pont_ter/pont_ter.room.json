@@ -1,0 +1,632 @@
+{
+  "id": "pont_ter",
+  "name": "El Pont Vell",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 229
+          },
+          {
+            "x": 0,
+            "y": 185
+          },
+          {
+            "x": 41,
+            "y": 179
+          },
+          {
+            "x": 416,
+            "y": 179
+          },
+          {
+            "x": 443,
+            "y": 165
+          },
+          {
+            "x": 459,
+            "y": 158
+          },
+          {
+            "x": 495,
+            "y": 161
+          },
+          {
+            "x": 498,
+            "y": 173
+          },
+          {
+            "x": 564,
+            "y": 197
+          },
+          {
+            "x": 568,
+            "y": 227
+          },
+          {
+            "x": 439,
+            "y": 236
+          },
+          {
+            "x": 350,
+            "y": 242
+          },
+          {
+            "x": 185,
+            "y": 229
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "cami",
+      "active": true,
+      "description": "cap a l'avet",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 0,
+          "y": 179
+        },
+        {
+          "x": 30,
+          "y": 179
+        },
+        {
+          "x": 30,
+          "y": 247
+        },
+        {
+          "x": 0,
+          "y": 247
+        }
+      ],
+      "walkToPoint": {
+        "x": 3,
+        "y": 211
+      },
+      "lookAtPoint": {
+        "x": 15,
+        "y": 247
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "pont",
+      "active": true,
+      "description": "Pont Vell",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 60,
+          "y": 0
+        },
+        {
+          "x": 600,
+          "y": 0
+        },
+        {
+          "x": 600,
+          "y": 92
+        },
+        {
+          "x": 60,
+          "y": 92
+        }
+      ],
+      "walkToPoint": {
+        "x": 280,
+        "y": 189
+      },
+      "lookAtPoint": {
+        "x": 330,
+        "y": 92
+      }
+    },
+    {
+      "id": "riu",
+      "active": true,
+      "description": "riu",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 187,
+          "y": 72
+        },
+        {
+          "x": 409,
+          "y": 72
+        },
+        {
+          "x": 409,
+          "y": 193
+        },
+        {
+          "x": 187,
+          "y": 193
+        }
+      ],
+      "walkToPoint": {
+        "x": 133,
+        "y": 181
+      },
+      "lookAtPoint": {
+        "x": 298,
+        "y": 193
+      }
+    },
+    {
+      "id": "resclosa",
+      "active": true,
+      "description": "resclosa",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 222,
+          "y": 130
+        },
+        {
+          "x": 483,
+          "y": 130
+        },
+        {
+          "x": 483,
+          "y": 171
+        },
+        {
+          "x": 222,
+          "y": 171
+        }
+      ],
+      "walkToPoint": {
+        "x": 289,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 352,
+        "y": 171
+      }
+    },
+    {
+      "id": "sobreeixidor",
+      "active": true,
+      "description": "sobreeixidor",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 170,
+          "y": 165
+        },
+        {
+          "x": 213,
+          "y": 165
+        },
+        {
+          "x": 213,
+          "y": 190
+        },
+        {
+          "x": 170,
+          "y": 190
+        }
+      ],
+      "walkToPoint": {
+        "x": 172,
+        "y": 179
+      },
+      "lookAtPoint": {
+        "x": 191,
+        "y": 190
+      }
+    },
+    {
+      "id": "comporta",
+      "active": true,
+      "description": "comporta del rec",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 321,
+          "y": 104
+        },
+        {
+          "x": 355,
+          "y": 104
+        },
+        {
+          "x": 355,
+          "y": 157
+        },
+        {
+          "x": 321,
+          "y": 157
+        }
+      ],
+      "walkToPoint": {
+        "x": 307,
+        "y": 179
+      },
+      "lookAtPoint": {
+        "x": 338,
+        "y": 157
+      }
+    },
+    {
+      "id": "barca",
+      "active": true,
+      "description": "barca d'en Joanet",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 268,
+          "y": 162
+        },
+        {
+          "x": 368,
+          "y": 162
+        },
+        {
+          "x": 368,
+          "y": 181
+        },
+        {
+          "x": 268,
+          "y": 181
+        }
+      ],
+      "walkToPoint": {
+        "x": 328,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 318,
+        "y": 181
+      }
+    },
+    {
+      "id": "rec",
+      "active": true,
+      "description": "rec del molí",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 334,
+          "y": 110
+        },
+        {
+          "x": 513,
+          "y": 110
+        },
+        {
+          "x": 513,
+          "y": 150
+        },
+        {
+          "x": 334,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 465,
+        "y": 161
+      },
+      "lookAtPoint": {
+        "x": 423,
+        "y": 150
+      }
+    },
+    {
+      "id": "horts",
+      "active": true,
+      "description": "horts",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 0,
+          "y": 230
+        },
+        {
+          "x": 370,
+          "y": 230
+        },
+        {
+          "x": 370,
+          "y": 259
+        },
+        {
+          "x": 0,
+          "y": 259
+        }
+      ],
+      "walkToPoint": {
+        "x": 72,
+        "y": 227
+      },
+      "lookAtPoint": {
+        "x": 185,
+        "y": 259
+      }
+    },
+    {
+      "id": "salze",
+      "active": true,
+      "description": "salze",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 603,
+          "y": 0
+        },
+        {
+          "x": 639,
+          "y": 0
+        },
+        {
+          "x": 639,
+          "y": 227
+        },
+        {
+          "x": 603,
+          "y": 227
+        }
+      ],
+      "walkToPoint": {
+        "x": 558,
+        "y": 216
+      },
+      "lookAtPoint": {
+        "x": 621,
+        "y": 227
+      }
+    },
+    {
+      "id": "moli_lluny",
+      "active": true,
+      "description": "molí",
+      "zIndex": 10,
+      "points": [
+        {
+          "x": 516,
+          "y": 29
+        },
+        {
+          "x": 577,
+          "y": 29
+        },
+        {
+          "x": 577,
+          "y": 100
+        },
+        {
+          "x": 516,
+          "y": 100
+        }
+      ],
+      "walkToPoint": {
+        "x": 475,
+        "y": 160
+      },
+      "lookAtPoint": {
+        "x": 546,
+        "y": 100
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.687,
+      "scaleBottom": 1.02,
+      "points": [
+        {
+          "x": 0,
+          "y": 156
+        },
+        {
+          "x": 639,
+          "y": 156
+        },
+        {
+          "x": 639,
+          "y": 244
+        },
+        {
+          "x": 0,
+          "y": 244
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "aigua_baixa",
+      "tag": "aigua_baixa",
+      "animations": {
+        "aigua_baixa": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "barca_calafatada",
+      "tag": "barca_calafatada",
+      "animations": {
+        "barca_calafatada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "serra_treta",
+      "tag": "serra_treta",
+      "animations": {
+        "serra_treta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "rec_ple",
+      "tag": "rec_ple",
+      "animations": {
+        "rec_ple": {}
+      },
+      "zIndex": 6,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "llum_mati",
+      "tag": "llum_mati",
+      "animations": {
+        "llum_mati": {}
+      },
+      "zIndex": 5,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "barca_corrent",
+      "tag": "barca_corrent",
+      "animations": {
+        "barca_corrent": {}
+      },
+      "zIndex": 6,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "escuma",
+      "tag": "escuma",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "escuma": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 999
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 22,
+      "y": 206,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "joanet-1",
+      "definition": "joanet/joanet.character.json",
+      "x": 257,
+      "y": 195,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "ermessenda-1",
+      "definition": "ermessenda/ermessenda.character.json",
+      "x": 476,
+      "y": 165,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ],
+  "viewAnchorY": 0.5,
+  "characterLights": {
+    "ambient": "#c4cec4",
+    "lights": [
+      {
+        "x": 900,
+        "y": -200,
+        "radius": 1200,
+        "color": "#f4f0dc",
+        "intensity": 0.3,
+        "whenPropHidden": "llum_mati"
+      },
+      {
+        "x": -500,
+        "y": 120,
+        "radius": 1400,
+        "color": "#ffd8a0",
+        "intensity": 0.5,
+        "whenPropVisible": "llum_mati"
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#141a14",
+    "alpha": 0.36,
+    "squash": 0.34,
+    "core": 0.65,
+    "light": {
+      "x": -0.6,
+      "y": 0.2,
+      "direction": true,
+      "stretch": 0.35
+    }
+  }
+}

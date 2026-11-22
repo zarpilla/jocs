@@ -3,16 +3,86 @@
   "displayName": "ponc",
   "options": [
     {
-      "id": "menu__tall",
-      "scriptName": "menu__tall",
-      "text": "L'avet no l'ha tombat el vent. Les arrels estan serrades.",
+      "id": "m0__culpa",
+      "scriptName": "m0__culpa",
+      "text": "Per què és culpa de l'abadessa?",
       "enabled": false,
       "say": false
     },
     {
-      "id": "menu__adeu",
-      "scriptName": "menu__adeu",
+      "id": "m0__adeu0",
+      "scriptName": "m0__adeu0",
       "text": "Res, gràcies.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mo__insistir",
+      "scriptName": "mo__insistir",
+      "text": "Només vull llegir-la.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mo__ell",
+      "scriptName": "mo__ell",
+      "text": "Llegiu-me-la vós.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mo__privat",
+      "scriptName": "mo__privat",
+      "text": "No la llegiré en públic. La llegiré en privat, en veu baixa.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mo__adeu_o",
+      "scriptName": "mo__adeu_o",
+      "text": "Ja tornaré.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1v__signe",
+      "scriptName": "m1v__signe",
+      "text": "De qui és aquest signe?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1v__pare",
+      "scriptName": "m1v__pare",
+      "text": "El meu pare no ha fet res.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1v__adeu1",
+      "scriptName": "m1v__adeu1",
+      "text": "Res, gràcies.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1i__pare_i",
+      "scriptName": "m1i__pare_i",
+      "text": "El meu pare no ha fet res.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1i__adeu1i",
+      "scriptName": "m1i__adeu1i",
+      "text": "Ja ho veurem.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mati__adeu7",
+      "scriptName": "mati__adeu7",
+      "text": "Ara tornem.",
       "enabled": false,
       "say": false
     }

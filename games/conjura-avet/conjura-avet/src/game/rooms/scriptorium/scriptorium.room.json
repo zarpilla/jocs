@@ -1,0 +1,652 @@
+{
+  "id": "scriptorium",
+  "name": "L'scriptorium",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 159,
+            "y": 155
+          },
+          {
+            "x": 592,
+            "y": 187
+          },
+          {
+            "x": 580,
+            "y": 246
+          },
+          {
+            "x": 579,
+            "y": 246
+          },
+          {
+            "x": 560,
+            "y": 246
+          },
+          {
+            "x": 120,
+            "y": 246
+          },
+          {
+            "x": 0,
+            "y": 246
+          }
+        ],
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 226,
+                "y": 193
+              },
+              {
+                "x": 270,
+                "y": 190
+              },
+              {
+                "x": 270,
+                "y": 175
+              },
+              {
+                "x": 230,
+                "y": 177
+              }
+            ]
+          },
+          {
+            "id": "forat-2",
+            "active": true,
+            "points": [
+              {
+                "x": 347,
+                "y": 187
+              },
+              {
+                "x": 389,
+                "y": 193
+              },
+              {
+                "x": 394,
+                "y": 178
+              },
+              {
+                "x": 355,
+                "y": 173
+              }
+            ]
+          },
+          {
+            "id": "forat-3",
+            "active": true,
+            "points": [
+              {
+                "x": 473,
+                "y": 222
+              },
+              {
+                "x": 531,
+                "y": 238
+              },
+              {
+                "x": 537,
+                "y": 220
+              },
+              {
+                "x": 483,
+                "y": 206
+              }
+            ]
+          },
+          {
+            "id": "forat-4",
+            "active": true,
+            "points": [
+              {
+                "x": 581,
+                "y": 201
+              },
+              {
+                "x": 573,
+                "y": 197
+              },
+              {
+                "x": 561,
+                "y": 194
+              },
+              {
+                "x": 553,
+                "y": 195
+              },
+              {
+                "x": 552,
+                "y": 199
+              },
+              {
+                "x": 560,
+                "y": 203
+              },
+              {
+                "x": 573,
+                "y": 206
+              },
+              {
+                "x": 582,
+                "y": 205
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "faristols",
+      "active": true,
+      "description": "faristols",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 224,
+          "y": 114
+        },
+        {
+          "x": 396,
+          "y": 114
+        },
+        {
+          "x": 396,
+          "y": 190
+        },
+        {
+          "x": 224,
+          "y": 190
+        }
+      ],
+      "walkToPoint": {
+        "x": 351,
+        "y": 203
+      },
+      "lookAtPoint": {
+        "x": 310,
+        "y": 190
+      }
+    },
+    {
+      "id": "copies",
+      "active": true,
+      "description": "còpies de l'ordre",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 166,
+          "y": 117
+        },
+        {
+          "x": 225,
+          "y": 117
+        },
+        {
+          "x": 225,
+          "y": 163
+        },
+        {
+          "x": 166,
+          "y": 163
+        }
+      ],
+      "walkToPoint": {
+        "x": 188,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 195,
+        "y": 163
+      }
+    },
+    {
+      "id": "faristol_sunifred",
+      "active": true,
+      "description": "faristol d'en Sunifred",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 472,
+          "y": 133
+        },
+        {
+          "x": 540,
+          "y": 133
+        },
+        {
+          "x": 540,
+          "y": 236
+        },
+        {
+          "x": 472,
+          "y": 236
+        }
+      ],
+      "walkToPoint": {
+        "x": 483,
+        "y": 239
+      },
+      "lookAtPoint": {
+        "x": 506,
+        "y": 236
+      }
+    },
+    {
+      "id": "pergami",
+      "active": true,
+      "description": "pergamí en blanc",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 477,
+          "y": 133
+        },
+        {
+          "x": 534,
+          "y": 133
+        },
+        {
+          "x": 534,
+          "y": 168
+        },
+        {
+          "x": 477,
+          "y": 168
+        }
+      ],
+      "walkToPoint": {
+        "x": 483,
+        "y": 239
+      },
+      "lookAtPoint": {
+        "x": 505,
+        "y": 168
+      }
+    },
+    {
+      "id": "espelma_hores",
+      "active": true,
+      "description": "espelma de les hores",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 556,
+          "y": 88
+        },
+        {
+          "x": 578,
+          "y": 88
+        },
+        {
+          "x": 578,
+          "y": 202
+        },
+        {
+          "x": 556,
+          "y": 202
+        }
+      ],
+      "walkToPoint": {
+        "x": 550,
+        "y": 215
+      },
+      "lookAtPoint": {
+        "x": 567,
+        "y": 202
+      }
+    },
+    {
+      "id": "finestrals",
+      "active": true,
+      "description": "finestrals",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 211,
+          "y": 0
+        },
+        {
+          "x": 612,
+          "y": 0
+        },
+        {
+          "x": 612,
+          "y": 93
+        },
+        {
+          "x": 211,
+          "y": 93
+        }
+      ],
+      "walkToPoint": {
+        "x": 346,
+        "y": 181
+      },
+      "lookAtPoint": {
+        "x": 411,
+        "y": 93
+      }
+    },
+    {
+      "id": "porta_capitular",
+      "active": true,
+      "description": "porta de la sala capitular",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 433,
+          "y": 41
+        },
+        {
+          "x": 506,
+          "y": 41
+        },
+        {
+          "x": 506,
+          "y": 172
+        },
+        {
+          "x": 433,
+          "y": 172
+        }
+      ],
+      "walkToPoint": {
+        "x": 474,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 469,
+        "y": 172
+      }
+    },
+    {
+      "id": "porta_passadis",
+      "active": true,
+      "description": "porta del passadís",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 76,
+          "y": 52
+        },
+        {
+          "x": 122,
+          "y": 52
+        },
+        {
+          "x": 122,
+          "y": 192
+        },
+        {
+          "x": 76,
+          "y": 192
+        }
+      ],
+      "walkToPoint": {
+        "x": 122,
+        "y": 181
+      },
+      "lookAtPoint": {
+        "x": 99,
+        "y": 192
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.683,
+      "scaleBottom": 1.211,
+      "points": [
+        {
+          "x": 0,
+          "y": 153
+        },
+        {
+          "x": 639,
+          "y": 153
+        },
+        {
+          "x": 639,
+          "y": 248
+        },
+        {
+          "x": 0,
+          "y": 248
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "espelma_retallada",
+      "tag": "espelma_retallada",
+      "animations": {
+        "espelma_retallada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "porta_oberta",
+      "tag": "porta_oberta",
+      "animations": {
+        "porta_oberta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "espelmes",
+      "tag": "espelmes",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "espelmes": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "davant_faristol_2",
+      "tag": "davant_faristol_2",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_faristol_2": {}
+      },
+      "zIndex": 20,
+      "baseline": 184
+    },
+    {
+      "id": "davant_faristol_1",
+      "tag": "davant_faristol_1",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_faristol_1": {}
+      },
+      "zIndex": 22,
+      "baseline": 186
+    },
+    {
+      "id": "davant_espelma",
+      "tag": "davant_espelma",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_espelma": {}
+      },
+      "zIndex": 24,
+      "baseline": 204
+    },
+    {
+      "id": "davant_sunifred",
+      "tag": "davant_sunifred",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_sunifred": {}
+      },
+      "zIndex": 26,
+      "baseline": 225
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 28,
+      "baseline": 999
+    },
+    {
+      "id": "espelma_retallada__davant_espelma",
+      "tag": "espelma_retallada__davant_espelma",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "espelma_retallada__davant_espelma": {}
+      },
+      "zIndex": 25,
+      "baseline": 204
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 136,
+      "y": 189,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "gombau-1",
+      "definition": "gombau/gombau.character.json",
+      "x": 278,
+      "y": 177,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "arnulf-1",
+      "definition": "arnulf/arnulf.character.json",
+      "x": 344,
+      "y": 175,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ],
+  "viewAnchorY": 0.5,
+  "characterLights": {
+    "ambient": "#4a4450",
+    "lights": [
+      {
+        "x": 229,
+        "y": 131,
+        "radius": 169,
+        "color": "#ffbe6e",
+        "intensity": 0.55
+      },
+      {
+        "x": 353,
+        "y": 128,
+        "radius": 164,
+        "color": "#ffbe6e",
+        "intensity": 0.55
+      },
+      {
+        "x": 480,
+        "y": 150,
+        "radius": 201,
+        "color": "#ffbe6e",
+        "intensity": 0.55
+      },
+      {
+        "x": 567,
+        "y": 143,
+        "radius": 189,
+        "color": "#ffbe6e",
+        "intensity": 0.55
+      },
+      {
+        "x": 343,
+        "y": 135,
+        "radius": 228,
+        "color": "#82a0e6",
+        "intensity": 0.25
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#08060a",
+    "alpha": 0.48,
+    "squash": 0.4,
+    "core": 0.6,
+    "light": {
+      "x": 371,
+      "y": 182,
+      "stretch": 0.5,
+      "reach": 160
+    }
+  },
+  "floorSquash": 0.42
+}

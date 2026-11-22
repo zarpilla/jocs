@@ -1,0 +1,66 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "El judici de l'avet",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "avet",
+      "label": "avet",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "arrels",
+      "label": "arrels",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 188,
+      "y": 25
+    },
+    {
+      "id": "faristol",
+      "label": "faristol",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 280,
+      "y": 76
+    },
+    {
+      "id": "poble",
+      "label": "poble",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 372,
+      "y": 25
+    },
+    {
+      "id": "monges",
+      "label": "monges",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 463,
+      "y": 76
+    }
+  ],
+  "characters": [
+    "jutge Ponç",
+    "Sunifred",
+    "abadessa Ingilberga",
+    "germana Gueraula",
+    "Bonfill",
+    "Ramon",
+    "Sança",
+    "Joanet",
+    "Ermessenda"
+  ]
+}

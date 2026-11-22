@@ -1,0 +1,530 @@
+{
+  "frames": {
+    "scriptorium 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 1.aseprite": {
+      "frame": {
+        "x": 1422,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 2.aseprite": {
+      "frame": {
+        "x": 1141,
+        "y": 0,
+        "w": 64,
+        "h": 122
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 436,
+        "y": 46,
+        "w": 64,
+        "h": 122
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 3.aseprite": {
+      "frame": {
+        "x": 130,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 4.aseprite": {
+      "frame": {
+        "x": 1488,
+        "y": 0,
+        "w": 255,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 228,
+        "y": 100,
+        "w": 255,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 5.aseprite": {
+      "frame": {
+        "x": 2761,
+        "y": 0,
+        "w": 254,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 228,
+        "y": 100,
+        "w": 254,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 6.aseprite": {
+      "frame": {
+        "x": 1743,
+        "y": 0,
+        "w": 255,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 227,
+        "y": 99,
+        "w": 255,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 7.aseprite": {
+      "frame": {
+        "x": 3015,
+        "y": 0,
+        "w": 254,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 228,
+        "y": 100,
+        "w": 254,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 8.aseprite": {
+      "frame": {
+        "x": 3269,
+        "y": 0,
+        "w": 254,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 228,
+        "y": 100,
+        "w": 254,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 9.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 360,
+        "w": 130,
+        "h": 22
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 352,
+        "y": 100,
+        "w": 130,
+        "h": 22
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 10.aseprite": {
+      "frame": {
+        "x": 1998,
+        "y": 0,
+        "w": 254,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 228,
+        "y": 99,
+        "w": 254,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 11.aseprite": {
+      "frame": {
+        "x": 2252,
+        "y": 0,
+        "w": 254,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 228,
+        "y": 100,
+        "w": 254,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 12.aseprite": {
+      "frame": {
+        "x": 3523,
+        "y": 0,
+        "w": 255,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 227,
+        "y": 100,
+        "w": 255,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 13.aseprite": {
+      "frame": {
+        "x": 3778,
+        "y": 0,
+        "w": 255,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 227,
+        "y": 100,
+        "w": 255,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 14.aseprite": {
+      "frame": {
+        "x": 2506,
+        "y": 0,
+        "w": 255,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 227,
+        "y": 99,
+        "w": 255,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 15.aseprite": {
+      "frame": {
+        "x": 1368,
+        "y": 0,
+        "w": 54,
+        "h": 85
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 346,
+        "y": 104,
+        "w": 54,
+        "h": 85
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 16.aseprite": {
+      "frame": {
+        "x": 1316,
+        "y": 0,
+        "w": 52,
+        "h": 87
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 224,
+        "y": 103,
+        "w": 52,
+        "h": 87
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 17.aseprite": {
+      "frame": {
+        "x": 1205,
+        "y": 0,
+        "w": 39,
+        "h": 109
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 550,
+        "y": 100,
+        "w": 39,
+        "h": 109
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 18.aseprite": {
+      "frame": {
+        "x": 1471,
+        "y": 0,
+        "w": 17,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 560,
+        "y": 100,
+        "w": 17,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 19.aseprite": {
+      "frame": {
+        "x": 1244,
+        "y": 0,
+        "w": 72,
+        "h": 105
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 472,
+        "y": 125,
+        "w": 72,
+        "h": 105
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 20.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 501,
+        "h": 260
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 139,
+        "y": 0,
+        "w": 501,
+        "h": 260
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py, retallat)",
+    "image": "scriptorium.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 4033,
+      "h": 382
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "BG",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "espelma_retallada",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "porta_oberta",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "espelmes",
+        "from": 3,
+        "to": 14,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_faristol_2",
+        "from": 15,
+        "to": 15,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_faristol_1",
+        "from": 16,
+        "to": 16,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_espelma",
+        "from": 17,
+        "to": 17,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "espelma_retallada__davant_espelma",
+        "from": 18,
+        "to": 18,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_sunifred",
+        "from": 19,
+        "to": 19,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 20,
+        "to": 20,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

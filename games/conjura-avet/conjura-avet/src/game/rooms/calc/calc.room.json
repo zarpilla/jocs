@@ -1,0 +1,146 @@
+{
+  "id": "calc",
+  "name": "El calc",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 250
+          },
+          {
+            "x": 639,
+            "y": 250
+          },
+          {
+            "x": 639,
+            "y": 258
+          },
+          {
+            "x": 0,
+            "y": 258
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "pergami",
+      "active": true,
+      "description": "pergamí",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 56,
+          "y": 14
+        },
+        {
+          "x": 592,
+          "y": 14
+        },
+        {
+          "x": 592,
+          "y": 250
+        },
+        {
+          "x": 56,
+          "y": 250
+        }
+      ],
+      "walkToPoint": {
+        "x": 320,
+        "y": 252
+      },
+      "lookAtPoint": {
+        "x": 324,
+        "y": 250
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "calc_segell",
+      "tag": "calc_segell",
+      "animations": {
+        "calc_segell": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "calc_carta",
+      "tag": "calc_carta",
+      "animations": {
+        "calc_carta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "calc_1",
+      "tag": "calc_1",
+      "animations": {
+        "calc_1": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "calc_2",
+      "tag": "calc_2",
+      "animations": {
+        "calc_2": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "calc_3",
+      "tag": "calc_3",
+      "animations": {
+        "calc_3": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [],
+  "viewAnchorY": 0.5
+}

@@ -28,6 +28,11 @@
       "visibleIf": {
         "flag": "porteria_passada"
       }
+    },
+    "porta_oberta": {
+      "visibleIf": {
+        "flag": "porteria_passada"
+      }
     }
   },
   "hotspots": {

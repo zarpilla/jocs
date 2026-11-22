@@ -1,0 +1,55 @@
+{
+  "id": "sunifred",
+  "displayName": "sunifred",
+  "options": [
+    {
+      "id": "m1__signe",
+      "scriptName": "m1__signe",
+      "text": "De qui és aquest signe?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1__nit",
+      "scriptName": "m1__nit",
+      "text": "On éreu la nit de la tempesta?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1__adeu",
+      "scriptName": "m1__adeu",
+      "text": "Res.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mc__ofici",
+      "scriptName": "mc__ofici",
+      "text": "(Escriu a la tauleta) «Quin és el vostre ofici, germà?»",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mc__vi",
+      "scriptName": "mc__vi",
+      "text": "(Escriu a la tauleta) «Més vi, germà?»",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mc__adeu_c",
+      "scriptName": "mc__adeu_c",
+      "text": "(Fa una reverència)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "s7__adeu7",
+      "scriptName": "s7__adeu7",
+      "text": "(Tus)",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

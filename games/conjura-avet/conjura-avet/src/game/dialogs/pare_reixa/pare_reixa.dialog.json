@@ -1,0 +1,27 @@
+{
+  "id": "pare_reixa",
+  "displayName": "pare_reixa",
+  "options": [
+    {
+      "id": "m__serra",
+      "scriptName": "m__serra",
+      "text": "Com és la teva serra?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m__be",
+      "scriptName": "m__be",
+      "text": "Estàs bé?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m__adeu",
+      "scriptName": "m__adeu",
+      "text": "Te'n traurem, pare.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

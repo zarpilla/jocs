@@ -64,7 +64,8 @@
         "var": "fase",
         "op": "==",
         "value": 7
-      }
+      },
+      "sota": true
     },
     "dones_marxen": {
       "visibleIf": {

@@ -1,0 +1,86 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "L'scriptorium",
+  "era": "vet",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "faristols",
+      "label": "faristols",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "copies",
+      "label": "còpies de l'ordre",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 154,
+      "y": 25
+    },
+    {
+      "id": "faristol_sunifred",
+      "label": "faristol d'en Sunifred",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 211,
+      "y": 76
+    },
+    {
+      "id": "pergami",
+      "label": "pergamí en blanc",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 268,
+      "y": 25
+    },
+    {
+      "id": "espelma_hores",
+      "label": "espelma de les hores",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 326,
+      "y": 76
+    },
+    {
+      "id": "finestrals",
+      "label": "finestrals",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 383,
+      "y": 25
+    },
+    {
+      "id": "porta_capitular",
+      "label": "porta de la sala capitular",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 440,
+      "y": 76
+    },
+    {
+      "id": "porta_passadis",
+      "label": "porta del passadís",
+      "kind": "hotspot",
+      "w": 46,
+      "h": 44,
+      "x": 497,
+      "y": 25
+    }
+  ],
+  "characters": [
+    "germà Gombau",
+    "germà Arnulf"
+  ]
+}

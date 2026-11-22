@@ -474,6 +474,21 @@
         "verb": "talkTo",
         "dialogue": "sunifred"
       }
+    ],
+    "appearance": [
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "sunifred_dorm"
+            },
+            {
+              "inRoom": "cuina"
+            }
+          ]
+        },
+        "anim": "DormD"
+      }
     ]
   },
   "bonfill": {
@@ -501,6 +516,21 @@
       {
         "verb": "talkTo",
         "dialogue": "bonfill"
+      }
+    ],
+    "place": [
+      {
+        "if": {
+          "flag": "bonfill_campanar"
+        },
+        "room": "placa_sant_pol",
+        "x": 450,
+        "y": 213
+      },
+      {
+        "room": "placa_sant_pol",
+        "x": 130,
+        "y": 209
       }
     ]
   },

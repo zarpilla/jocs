@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Icones d'inventari de L'Última Arrel a 640×360 (65×36, hd640/items.py): una icona per objecte (<id>.png) i el full
+Icones d'inventari de La Conjura de l'Avet a 640×360 (65×36, hd640/items.py): una icona per objecte (<id>.png) i el full
 de l'inventari (inventory.png + inventory.json, com el que escriu draw_placeholders.py), en l'ordre del full del
 joc o, si encara no hi ha projecte Benne, en l'ordre de hd640/items.ICONS.
 

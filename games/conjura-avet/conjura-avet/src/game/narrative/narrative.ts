@@ -354,15 +354,19 @@ export function takeEnteringProtagonist() {
   return who;
 }
 
-const music = (mapping as { music?: Record<string, string> }).music ?? {};
+const music = (mapping as { music?: Record<string, string | MusicCase[]> }).music ?? {};
 /**
  * La música d'ambient d'una sala (`music` al mapping.json del joc): la de la sala, o si no en té, la de
  * la seva protagonista. `null`: continua la que sonava (p. ex. a les cinemàtiques).
  */
 export function roomMusic(room: string): string | null {
   const who = roomProtagonist(room);
-  return music[room] ?? (who ? music[who] : undefined) ?? null;
+  const def = (music as Record<string, string | MusicCase[] | undefined>)[room] ?? (who ? music[who] : undefined);
+  if (!def || typeof def === 'string') return def ?? null;
+  // Una llista de casos `{ "if": condició, "track": peça }`, com l'ambient: el primer que es compleix.
+  return def.find((c) => !c.if || narrative.check(c.if))?.track ?? null;
 }
+type MusicCase = { if?: Condition; track: string };
 /**
  * El so de fons de cada sala (`ambient` al mapping.json del joc, fitxers a game/audio/sfx/): un so en bucle
  * (mar, motor, vent) que sona sota la música. Cada sala té un nom de so o una llista de casos
@@ -426,8 +430,12 @@ export function takeDoorSound() {
 
 /** Si totes les pistes duren el mateix i, en canviar-ne, la nova continua al mateix punt (`musicSync`). */
 export const musicSync = (mapping as { musicSync?: boolean }).musicSync === true;
-/** Si el botó «Canvia» del HUD és el de la pista (`botoPista` del joc: L'Última Arrel, on no es pot canviar). */
-export const botoPista = (mapping as { botoPista?: boolean }).botoPista === true;
+/** Si el botó «Canvia» del HUD és sempre el de la pista (`botoPista` del joc: L'Última Arrel, on no es pot canviar). */
+export const botoPista = (mapping as { botoPista?: boolean | string }).botoPista === true;
+/** Si el botó és la pista només quan no es pot canviar (`botoPista: 'mixt'`: La Conjura de l'Avet). */
+export const botoPistaMixt = (mapping as { botoPista?: boolean | string }).botoPista === 'mixt';
+/** Si ara mateix el botó «Canvia» del HUD fa de pista. */
+export const botoEsPista = () => botoPista || (botoPistaMixt && !narrative.canSwitch());
 
 /** On és (o era) cada protagonista. */
 export function protagonistRoom(who: string): string | null {
@@ -644,7 +652,7 @@ export const touchRouter = () => router;
  */
 export function applySwitchButton() {
   const pot = narrative.canSwitch();
-  guis.verbs.controls.canviaBtn.visible = pot || botoPista;
+  guis.verbs.controls.canviaBtn.visible = pot || botoPista || botoPistaMixt;
   const menu = guis.gameMenu.controls as unknown as Record<string, { visible: boolean } | undefined>;
   if (menu.canviar) menu.canviar.visible = pot;
 }

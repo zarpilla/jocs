@@ -1,0 +1,20 @@
+{
+  "id": "ermessenda",
+  "displayName": "ermessenda",
+  "options": [
+    {
+      "id": "m__comporta",
+      "scriptName": "m__comporta",
+      "text": "Què hi ha a la comporta?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m__adeu",
+      "scriptName": "m__adeu",
+      "text": "Ja hi miro.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

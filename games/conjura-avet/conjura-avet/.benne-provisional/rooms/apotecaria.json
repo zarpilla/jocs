@@ -1,0 +1,139 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "L'apotecaria",
+  "era": "vet",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "porta",
+      "label": "sortida al claustre",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "prestatges",
+      "label": "prestatges",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "flasco_menta",
+      "label": "flascó",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 132,
+      "y": 25
+    },
+    {
+      "id": "flasco_ruda",
+      "label": "flascó",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 167,
+      "y": 76
+    },
+    {
+      "id": "flasco_salvia",
+      "label": "flascó",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 202,
+      "y": 25
+    },
+    {
+      "id": "flasco_sense_nom",
+      "label": "flascó",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 238,
+      "y": 76
+    },
+    {
+      "id": "atramentum",
+      "label": "pot de pedra",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 273,
+      "y": 25
+    },
+    {
+      "id": "manats",
+      "label": "manats d'herbes",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 308,
+      "y": 76
+    },
+    {
+      "id": "cardo",
+      "label": "cardó",
+      "kind": "prop",
+      "w": 24,
+      "h": 44,
+      "x": 343,
+      "y": 25
+    },
+    {
+      "id": "pell_ovella",
+      "label": "pell d'ovella",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 378,
+      "y": 76
+    },
+    {
+      "id": "mel",
+      "label": "gerra de mel",
+      "kind": "prop",
+      "w": 24,
+      "h": 44,
+      "x": 414,
+      "y": 25
+    },
+    {
+      "id": "llar",
+      "label": "llar",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 449,
+      "y": 76
+    },
+    {
+      "id": "morter",
+      "label": "morter",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 484,
+      "y": 25
+    },
+    {
+      "id": "taula",
+      "label": "taula",
+      "kind": "hotspot",
+      "w": 24,
+      "h": 44,
+      "x": 519,
+      "y": 76
+    }
+  ],
+  "characters": [
+    "germana Gueraula"
+  ]
+}

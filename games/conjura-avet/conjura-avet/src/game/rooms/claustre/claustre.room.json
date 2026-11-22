@@ -1,0 +1,613 @@
+{
+  "id": "claustre",
+  "name": "El claustre",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 343,
+            "y": 169
+          },
+          {
+            "x": 503,
+            "y": 174
+          },
+          {
+            "x": 524,
+            "y": 191
+          },
+          {
+            "x": 495,
+            "y": 190
+          },
+          {
+            "x": 524,
+            "y": 219
+          },
+          {
+            "x": 561,
+            "y": 221
+          },
+          {
+            "x": 578,
+            "y": 235
+          },
+          {
+            "x": 320,
+            "y": 222
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_monestir",
+      "active": true,
+      "description": "sortida",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 582,
+          "y": 73
+        },
+        {
+          "x": 637,
+          "y": 73
+        },
+        {
+          "x": 637,
+          "y": 228
+        },
+        {
+          "x": 582,
+          "y": 228
+        }
+      ],
+      "walkToPoint": {
+        "x": 569,
+        "y": 231
+      },
+      "lookAtPoint": {
+        "x": 609,
+        "y": 228
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_bugaderia",
+      "active": true,
+      "description": "bugaderia",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 510,
+          "y": 90
+        },
+        {
+          "x": 529,
+          "y": 90
+        },
+        {
+          "x": 529,
+          "y": 174
+        },
+        {
+          "x": 510,
+          "y": 174
+        }
+      ],
+      "walkToPoint": {
+        "x": 500,
+        "y": 179
+      },
+      "lookAtPoint": {
+        "x": 519,
+        "y": 174
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_apotecaria",
+      "active": true,
+      "description": "apotecaria",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 444,
+          "y": 93
+        },
+        {
+          "x": 470,
+          "y": 93
+        },
+        {
+          "x": 470,
+          "y": 152
+        },
+        {
+          "x": 444,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 464,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 457,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "galeria",
+      "active": true,
+      "description": "galeria",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 335,
+          "y": 27
+        },
+        {
+          "x": 489,
+          "y": 27
+        },
+        {
+          "x": 489,
+          "y": 45
+        },
+        {
+          "x": 335,
+          "y": 45
+        }
+      ],
+      "walkToPoint": {
+        "x": 407,
+        "y": 179
+      },
+      "lookAtPoint": {
+        "x": 412,
+        "y": 45
+      }
+    },
+    {
+      "id": "pica",
+      "active": true,
+      "description": "pica",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 123,
+          "y": 153
+        },
+        {
+          "x": 186,
+          "y": 153
+        },
+        {
+          "x": 186,
+          "y": 188
+        },
+        {
+          "x": 123,
+          "y": 188
+        }
+      ],
+      "walkToPoint": {
+        "x": 340,
+        "y": 189
+      },
+      "lookAtPoint": {
+        "x": 154,
+        "y": 188
+      }
+    },
+    {
+      "id": "gespa",
+      "active": true,
+      "description": "gespa",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 5,
+          "y": 187
+        },
+        {
+          "x": 273,
+          "y": 187
+        },
+        {
+          "x": 273,
+          "y": 248
+        },
+        {
+          "x": 5,
+          "y": 248
+        }
+      ],
+      "walkToPoint": {
+        "x": 338,
+        "y": 194
+      },
+      "lookAtPoint": {
+        "x": 139,
+        "y": 248
+      }
+    },
+    {
+      "id": "campanar",
+      "active": true,
+      "description": "campanar",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 96,
+          "y": 0
+        },
+        {
+          "x": 125,
+          "y": 0
+        },
+        {
+          "x": 125,
+          "y": 49
+        },
+        {
+          "x": 96,
+          "y": 49
+        }
+      ],
+      "walkToPoint": {
+        "x": 353,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 110,
+        "y": 49
+      }
+    },
+    {
+      "id": "banc",
+      "active": true,
+      "description": "banc de pedra",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 532,
+          "y": 194
+        },
+        {
+          "x": 536,
+          "y": 194
+        },
+        {
+          "x": 536,
+          "y": 216
+        },
+        {
+          "x": 532,
+          "y": 216
+        }
+      ],
+      "walkToPoint": {
+        "x": 491,
+        "y": 203
+      },
+      "lookAtPoint": {
+        "x": 534,
+        "y": 216
+      }
+    },
+    {
+      "id": "porta_capitular",
+      "active": true,
+      "description": "porta de la sala capitular",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 367,
+          "y": 73
+        },
+        {
+          "x": 418,
+          "y": 73
+        },
+        {
+          "x": 418,
+          "y": 150
+        },
+        {
+          "x": 367,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 393,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 392,
+        "y": 150
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.699,
+      "scaleBottom": 1.214,
+      "points": [
+        {
+          "x": 0,
+          "y": 169
+        },
+        {
+          "x": 639,
+          "y": 169
+        },
+        {
+          "x": 639,
+          "y": 235
+        },
+        {
+          "x": 0,
+          "y": 235
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "morter",
+      "tag": "morter",
+      "animations": {
+        "morter": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 519,
+            "y": 162
+          },
+          {
+            "x": 539,
+            "y": 162
+          },
+          {
+            "x": 539,
+            "y": 181
+          },
+          {
+            "x": 519,
+            "y": 181
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 487,
+        "y": 198
+      },
+      "lookAtPoint": {
+        "x": 529,
+        "y": 181
+      },
+      "description": "morter"
+    },
+    {
+      "id": "llum_capvespre",
+      "tag": "llum_capvespre",
+      "animations": {
+        "llum_capvespre": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "llum_mati",
+      "tag": "llum_mati",
+      "animations": {
+        "llum_mati": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "gotes",
+      "tag": "gotes",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gotes": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 22,
+      "baseline": 999
+    },
+    {
+      "id": "llum_capvespre__davant",
+      "tag": "llum_capvespre__davant",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llum_capvespre__davant": {}
+      },
+      "zIndex": 23,
+      "baseline": 999
+    },
+    {
+      "id": "llum_mati__davant",
+      "tag": "llum_mati__davant",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llum_mati__davant": {}
+      },
+      "zIndex": 23,
+      "baseline": 999
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 458,
+      "y": 216,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 393,
+      "y": 204,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "ingilberga-1",
+      "definition": "ingilberga/ingilberga.character.json",
+      "x": 494,
+      "y": 197,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "gueraula-1",
+      "definition": "gueraula/gueraula.character.json",
+      "x": 476,
+      "y": 185,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ],
+  "viewAnchorY": 0.5,
+  "characterLights": {
+    "ambient": "#9ca2ac",
+    "lights": [
+      {
+        "x": 268,
+        "y": 113,
+        "radius": 420,
+        "color": "#d6dce4",
+        "intensity": 0.35,
+        "whenPropHidden": "llum_capvespre"
+      },
+      {
+        "x": 307,
+        "y": 159,
+        "radius": 150,
+        "color": "#ffb060",
+        "intensity": 0.4,
+        "whenPropVisible": "llum_capvespre"
+      },
+      {
+        "x": 323,
+        "y": 143,
+        "radius": 150,
+        "color": "#ffb060",
+        "intensity": 0.4,
+        "whenPropVisible": "llum_capvespre"
+      },
+      {
+        "x": 333,
+        "y": 132,
+        "radius": 150,
+        "color": "#ffb060",
+        "intensity": 0.4,
+        "whenPropVisible": "llum_capvespre"
+      },
+      {
+        "x": 340,
+        "y": 125,
+        "radius": 150,
+        "color": "#ffb060",
+        "intensity": 0.4,
+        "whenPropVisible": "llum_capvespre"
+      },
+      {
+        "x": 120,
+        "y": 87,
+        "radius": 520,
+        "color": "#ffe2b0",
+        "intensity": 0.35,
+        "whenPropVisible": "llum_mati"
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#24242c",
+    "alpha": 0.36,
+    "squash": 0.4,
+    "core": 0.6,
+    "light": {
+      "x": 1,
+      "y": 0.15,
+      "direction": true,
+      "stretch": 0.35
+    }
+  },
+  "floorSquash": 0.4
+}

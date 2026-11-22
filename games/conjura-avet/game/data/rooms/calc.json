@@ -159,12 +159,8 @@
           ],
           "effects": [
             {
-              "setVar": "calc_pas",
-              "value": 0
-            },
-            {
-              "setVar": "calc",
-              "value": ""
+              "addVar": "calc_pas",
+              "amount": 1
             },
             {
               "setFlag": "segell_emma_vist"
@@ -281,12 +277,8 @@
           ],
           "effects": [
             {
-              "setVar": "calc_pas",
-              "value": 0
-            },
-            {
-              "setVar": "calc",
-              "value": ""
+              "addVar": "calc_pas",
+              "amount": 1
             },
             {
               "giveItem": "carta_calcada"

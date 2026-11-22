@@ -1,0 +1,515 @@
+{
+  "id": "epileg",
+  "name": "L'avet nou",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 236
+          },
+          {
+            "x": 0,
+            "y": 236
+          },
+          {
+            "x": 0,
+            "y": 226
+          },
+          {
+            "x": 0,
+            "y": 220
+          },
+          {
+            "x": 148,
+            "y": 218
+          },
+          {
+            "x": 217,
+            "y": 213
+          },
+          {
+            "x": 278,
+            "y": 208
+          },
+          {
+            "x": 458,
+            "y": 207
+          },
+          {
+            "x": 609,
+            "y": 207
+          },
+          {
+            "x": 639,
+            "y": 211
+          },
+          {
+            "x": 639,
+            "y": 254
+          },
+          {
+            "x": 0,
+            "y": 254
+          }
+        ],
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 511,
+                "y": 224
+              },
+              {
+                "x": 566,
+                "y": 218
+              },
+              {
+                "x": 534,
+                "y": 211
+              },
+              {
+                "x": 481,
+                "y": 217
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "absis",
+      "active": true,
+      "description": "absis",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 403,
+          "y": 22
+        },
+        {
+          "x": 555,
+          "y": 22
+        },
+        {
+          "x": 555,
+          "y": 180
+        },
+        {
+          "x": 403,
+          "y": 180
+        }
+      ],
+      "walkToPoint": {
+        "x": 495,
+        "y": 209
+      },
+      "lookAtPoint": {
+        "x": 479,
+        "y": 180
+      }
+    },
+    {
+      "id": "rodanxes",
+      "active": true,
+      "description": "rodanxes",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 352,
+          "y": 109
+        },
+        {
+          "x": 454,
+          "y": 109
+        },
+        {
+          "x": 454,
+          "y": 186
+        },
+        {
+          "x": 352,
+          "y": 186
+        }
+      ],
+      "walkToPoint": {
+        "x": 362,
+        "y": 209
+      },
+      "lookAtPoint": {
+        "x": 403,
+        "y": 186
+      }
+    },
+    {
+      "id": "arrels",
+      "active": true,
+      "description": "arrels",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 83,
+          "y": 56
+        },
+        {
+          "x": 218,
+          "y": 56
+        },
+        {
+          "x": 218,
+          "y": 190
+        },
+        {
+          "x": 83,
+          "y": 190
+        }
+      ],
+      "walkToPoint": {
+        "x": 124,
+        "y": 222
+      },
+      "lookAtPoint": {
+        "x": 150,
+        "y": 190
+      }
+    },
+    {
+      "id": "carretilla",
+      "active": true,
+      "description": "carretilla",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 246,
+          "y": 140
+        },
+        {
+          "x": 328,
+          "y": 140
+        },
+        {
+          "x": 328,
+          "y": 214
+        },
+        {
+          "x": 246,
+          "y": 214
+        }
+      ],
+      "walkToPoint": {
+        "x": 312,
+        "y": 215
+      },
+      "lookAtPoint": {
+        "x": 287,
+        "y": 214
+      }
+    },
+    {
+      "id": "forat_nou",
+      "active": true,
+      "description": "forat",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 183,
+          "y": 195
+        },
+        {
+          "x": 251,
+          "y": 195
+        },
+        {
+          "x": 251,
+          "y": 212
+        },
+        {
+          "x": 183,
+          "y": 212
+        }
+      ],
+      "walkToPoint": {
+        "x": 232,
+        "y": 212
+      },
+      "lookAtPoint": {
+        "x": 217,
+        "y": 212
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.591,
+      "scaleBottom": 1.148,
+      "points": [
+        {
+          "x": 0,
+          "y": 196
+        },
+        {
+          "x": 639,
+          "y": 196
+        },
+        {
+          "x": 639,
+          "y": 260
+        },
+        {
+          "x": 0,
+          "y": 260
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "rotul",
+      "tag": "rotul",
+      "animations": {
+        "rotul": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 227,
+            "y": 177
+          },
+          {
+            "x": 257,
+            "y": 177
+          },
+          {
+            "x": 257,
+            "y": 209
+          },
+          {
+            "x": 227,
+            "y": 209
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 253,
+        "y": 214
+      },
+      "lookAtPoint": {
+        "x": 242,
+        "y": 209
+      },
+      "description": "tros de fusta"
+    },
+    {
+      "id": "forat_gran",
+      "tag": "forat_gran",
+      "animations": {
+        "forat_gran": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "planco_plantat",
+      "tag": "planco_plantat",
+      "animations": {
+        "planco_plantat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "segell_planco",
+      "tag": "segell_planco",
+      "animations": {
+        "segell_planco": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "rotul_clavat",
+      "tag": "rotul_clavat",
+      "animations": {
+        "rotul_clavat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "davant_abeurador",
+      "tag": "davant_abeurador",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_abeurador": {}
+      },
+      "zIndex": 20,
+      "baseline": 223
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 22,
+      "baseline": 999
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 376,
+      "y": 236,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 127,
+      "y": 234,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "ponc-1",
+      "definition": "ponc/ponc.character.json",
+      "x": 320,
+      "y": 229,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "sunifred-1",
+      "definition": "sunifred/sunifred.character.json",
+      "x": 255,
+      "y": 222,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "ingilberga-1",
+      "definition": "ingilberga/ingilberga.character.json",
+      "x": 557,
+      "y": 211,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "gueraula-1",
+      "definition": "gueraula/gueraula.character.json",
+      "x": 576,
+      "y": 207,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "ramon-1",
+      "definition": "ramon/ramon.character.json",
+      "x": 438,
+      "y": 218,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "sanca-1",
+      "definition": "sanca/sanca.character.json",
+      "x": 66,
+      "y": 225,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ],
+  "characterLights": {
+    "ambient": "#e6e8dc",
+    "lights": [
+      {
+        "x": 900,
+        "y": 0,
+        "radius": 1000,
+        "color": "#fff0cc",
+        "intensity": 0.35
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#1a1a14",
+    "alpha": 0.36,
+    "squash": 0.26,
+    "core": 0.65,
+    "light": {
+      "x": -1,
+      "y": 0.3,
+      "direction": true,
+      "stretch": 0.7
+    }
+  },
+  "floorSquash": 0.23
+}

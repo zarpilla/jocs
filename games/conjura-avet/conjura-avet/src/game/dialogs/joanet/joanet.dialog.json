@@ -1,0 +1,27 @@
+{
+  "id": "joanet",
+  "displayName": "joanet",
+  "options": [
+    {
+      "id": "m__barca",
+      "scriptName": "m__barca",
+      "text": "Per què no pesques des de la barca?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m__comporta",
+      "scriptName": "m__comporta",
+      "text": "Què hi ha a la comporta?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m__adeu",
+      "scriptName": "m__adeu",
+      "text": "Bona pesca.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

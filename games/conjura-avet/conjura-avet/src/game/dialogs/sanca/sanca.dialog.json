@@ -1,0 +1,69 @@
+{
+  "id": "sanca",
+  "displayName": "sanca",
+  "options": [
+    {
+      "id": "mi__canem_i",
+      "scriptName": "mi__canem_i",
+      "text": "Em deixaríeu cànem?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mi__adeu_i",
+      "scriptName": "mi__adeu_i",
+      "text": "Res.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mv__queixa",
+      "scriptName": "mv__queixa",
+      "text": "Què és aquesta queixa?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mv__canem",
+      "scriptName": "mv__canem",
+      "text": "Em deixaríeu cànem? Per a la campana.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mv__tracte",
+      "scriptName": "mv__tracte",
+      "text": "Si puc llegir la queixa, us diré quins noms hi ha.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mv__noms",
+      "scriptName": "mv__noms",
+      "text": "Els noms de la queixa.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mv__adeu",
+      "scriptName": "mv__adeu",
+      "text": "Gràcies, Sança.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mm__creu",
+      "scriptName": "mm__creu",
+      "text": "(Escriu a la tauleta) «Signareu amb la vostra creu, davant de tothom.»",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "mm__adeu_m",
+      "scriptName": "mm__adeu_m",
+      "text": "(Fa una reverència)",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

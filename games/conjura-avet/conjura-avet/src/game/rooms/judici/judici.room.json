@@ -1,0 +1,461 @@
+{
+  "id": "judici",
+  "name": "El judici de l'avet",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 236
+          },
+          {
+            "x": 0,
+            "y": 236
+          },
+          {
+            "x": 0,
+            "y": 226
+          },
+          {
+            "x": 0,
+            "y": 220
+          },
+          {
+            "x": 148,
+            "y": 218
+          },
+          {
+            "x": 217,
+            "y": 213
+          },
+          {
+            "x": 278,
+            "y": 208
+          },
+          {
+            "x": 458,
+            "y": 207
+          },
+          {
+            "x": 609,
+            "y": 207
+          },
+          {
+            "x": 639,
+            "y": 211
+          },
+          {
+            "x": 639,
+            "y": 254
+          },
+          {
+            "x": 0,
+            "y": 254
+          }
+        ],
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 511,
+                "y": 224
+              },
+              {
+                "x": 566,
+                "y": 218
+              },
+              {
+                "x": 534,
+                "y": 211
+              },
+              {
+                "x": 481,
+                "y": 217
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "avet",
+      "active": true,
+      "description": "avet",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 220,
+          "y": 0
+        },
+        {
+          "x": 401,
+          "y": 0
+        },
+        {
+          "x": 401,
+          "y": 176
+        },
+        {
+          "x": 220,
+          "y": 176
+        }
+      ],
+      "walkToPoint": {
+        "x": 291,
+        "y": 211
+      },
+      "lookAtPoint": {
+        "x": 310,
+        "y": 176
+      }
+    },
+    {
+      "id": "arrels",
+      "active": true,
+      "description": "arrels",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 83,
+          "y": 56
+        },
+        {
+          "x": 218,
+          "y": 56
+        },
+        {
+          "x": 218,
+          "y": 190
+        },
+        {
+          "x": 83,
+          "y": 190
+        }
+      ],
+      "walkToPoint": {
+        "x": 124,
+        "y": 222
+      },
+      "lookAtPoint": {
+        "x": 150,
+        "y": 190
+      }
+    },
+    {
+      "id": "faristol",
+      "active": true,
+      "description": "faristol",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 337,
+          "y": 158
+        },
+        {
+          "x": 383,
+          "y": 158
+        },
+        {
+          "x": 383,
+          "y": 228
+        },
+        {
+          "x": 337,
+          "y": 228
+        }
+      ],
+      "walkToPoint": {
+        "x": 411,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 360,
+        "y": 228
+      }
+    },
+    {
+      "id": "poble",
+      "active": true,
+      "description": "poble",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 28,
+          "y": 142
+        },
+        {
+          "x": 97,
+          "y": 142
+        },
+        {
+          "x": 97,
+          "y": 194
+        },
+        {
+          "x": 28,
+          "y": 194
+        }
+      ],
+      "walkToPoint": {
+        "x": 60,
+        "y": 222
+      },
+      "lookAtPoint": {
+        "x": 62,
+        "y": 194
+      }
+    },
+    {
+      "id": "monges",
+      "active": true,
+      "description": "monges",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 440,
+          "y": 142
+        },
+        {
+          "x": 544,
+          "y": 142
+        },
+        {
+          "x": 544,
+          "y": 190
+        },
+        {
+          "x": 440,
+          "y": 190
+        }
+      ],
+      "walkToPoint": {
+        "x": 560,
+        "y": 210
+      },
+      "lookAtPoint": {
+        "x": 492,
+        "y": 190
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.591,
+      "scaleBottom": 1.148,
+      "points": [
+        {
+          "x": 0,
+          "y": 196
+        },
+        {
+          "x": 639,
+          "y": 196
+        },
+        {
+          "x": 639,
+          "y": 260
+        },
+        {
+          "x": 0,
+          "y": 260
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "davant_abeurador",
+      "tag": "davant_abeurador",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_abeurador": {}
+      },
+      "zIndex": 20,
+      "baseline": 223
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 22,
+      "baseline": 999
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 404,
+      "y": 243,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 501,
+      "y": 245,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "ponc-1",
+      "definition": "ponc/ponc.character.json",
+      "x": 320,
+      "y": 229,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "sunifred-1",
+      "definition": "sunifred/sunifred.character.json",
+      "x": 257,
+      "y": 223,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "ingilberga-1",
+      "definition": "ingilberga/ingilberga.character.json",
+      "x": 591,
+      "y": 208,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "gueraula-1",
+      "definition": "gueraula/gueraula.character.json",
+      "x": 573,
+      "y": 211,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "bonfill-1",
+      "definition": "bonfill/bonfill.character.json",
+      "x": 431,
+      "y": 213,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "ramon-1",
+      "definition": "ramon/ramon.character.json",
+      "x": 461,
+      "y": 211,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "sanca-1",
+      "definition": "sanca/sanca.character.json",
+      "x": 83,
+      "y": 232,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "joanet-1",
+      "definition": "joanet/joanet.character.json",
+      "x": 114,
+      "y": 240,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "ermessenda-1",
+      "definition": "ermessenda/ermessenda.character.json",
+      "x": 194,
+      "y": 225,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ],
+  "characterLights": {
+    "ambient": "#e2e0dc",
+    "lights": [
+      {
+        "x": 900,
+        "y": 0,
+        "radius": 1000,
+        "color": "#ffe6bc",
+        "intensity": 0.45
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#1c1418",
+    "alpha": 0.42,
+    "squash": 0.26,
+    "core": 0.6,
+    "light": {
+      "x": -1,
+      "y": 0.3,
+      "direction": true,
+      "stretch": 1
+    }
+  },
+  "floorSquash": 0.23
+}

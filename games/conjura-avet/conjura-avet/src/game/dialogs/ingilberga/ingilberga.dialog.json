@@ -1,0 +1,83 @@
+{
+  "id": "ingilberga",
+  "displayName": "ingilberga",
+  "options": [
+    {
+      "id": "m1__signe",
+      "scriptName": "m1__signe",
+      "text": "I aquest signe? (la tauleta)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1__ordre",
+      "scriptName": "m1__ordre",
+      "text": "L'ordre del jutge diu que l'avet ha caigut. I és d'ahir.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1__arxiu",
+      "scriptName": "m1__arxiu",
+      "text": "Algú s'ha endut un document de sota l'avet. On el pot tenir?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1__entrar_no",
+      "scriptName": "m1__entrar_no",
+      "text": "Deixeu-nos entrar a l'arxiu.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1__entrar",
+      "scriptName": "m1__entrar",
+      "text": "Deixeu-nos entrar a l'arxiu.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "m1__adeu",
+      "scriptName": "m1__adeu",
+      "text": "Res, mare abadessa.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "ma__pare",
+      "scriptName": "ma__pare",
+      "text": "És pel pare.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "ma__emma",
+      "scriptName": "ma__emma",
+      "text": "És per la carta de l'Emma.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "ma__monges",
+      "scriptName": "ma__monges",
+      "text": "Nosaltres no som monges. Si ens enxampen, no és cosa del monestir.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "h2__adeu2",
+      "scriptName": "h2__adeu2",
+      "text": "Sí, mare abadessa.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "h7__adeu7",
+      "scriptName": "h7__adeu7",
+      "text": "(Tus)",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

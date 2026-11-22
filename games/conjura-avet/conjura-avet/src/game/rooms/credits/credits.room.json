@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 25,
-            "y": 215
+            "x": 200,
+            "y": 253
           },
           {
-            "x": 615,
-            "y": 215
+            "x": 267,
+            "y": 253
           },
           {
-            "x": 629,
-            "y": 269
+            "x": 267,
+            "y": 261
           },
           {
-            "x": 11,
-            "y": 269
+            "x": 200,
+            "y": 261
           }
         ],
         "holes": []
@@ -51,6 +51,34 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "estels",
+      "tag": "estels",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "estels": {
+          "loop": true,
+          "frameDuration": 300
+        }
+      }
+    },
+    {
+      "id": "cuques",
+      "tag": "cuques",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "cuques": {
+          "loop": true,
+          "frameDuration": 160
+        }
+      }
     }
   ],
   "characters": [],

@@ -382,6 +382,27 @@
       "frame": {
         "x": 1044,
         "y": 0,
+        "w": 27,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 27,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 27,
+        "h": 28
+      },
+      "duration": 100
+    },
+    "verbs 19.aseprite": {
+      "frame": {
+        "x": 1071,
+        "y": 0,
         "w": 640,
         "h": 100
       },
@@ -399,7 +420,7 @@
       },
       "duration": 100
     },
-    "verbs 19.aseprite": {
+    "verbs 20.aseprite": {
       "frame": {
         "x": 0,
         "y": 100,
@@ -420,7 +441,7 @@
       },
       "duration": 100
     },
-    "verbs 20.aseprite": {
+    "verbs 21.aseprite": {
       "frame": {
         "x": 520,
         "y": 100,
@@ -448,7 +469,7 @@
     "image": "verbs.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1684,
+      "w": 1711,
       "h": 182
     },
     "scale": "1",
@@ -580,23 +601,30 @@
         "color": "#000000ff"
       },
       {
-        "name": "Tauler",
+        "name": "CaraPista",
         "from": 18,
         "to": 18,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "Safata2",
+        "name": "Tauler",
         "from": 19,
         "to": 19,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "Safata3",
+        "name": "Safata2",
         "from": 20,
         "to": 20,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "Safata3",
+        "from": 21,
+        "to": 21,
         "direction": "forward",
         "color": "#000000ff"
       }

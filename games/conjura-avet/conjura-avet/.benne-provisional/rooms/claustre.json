@@ -1,0 +1,104 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "El claustre",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "porta_monestir",
+      "label": "sortida",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "porta_bugaderia",
+      "label": "bugaderia",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 567,
+      "y": 95
+    },
+    {
+      "id": "porta_apotecaria",
+      "label": "apotecaria",
+      "kind": "exit",
+      "w": 62,
+      "h": 105,
+      "x": 84,
+      "y": 109
+    },
+    {
+      "id": "galeria",
+      "label": "galeria",
+      "kind": "hotspot",
+      "w": 54,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "pica",
+      "label": "pica",
+      "kind": "hotspot",
+      "w": 54,
+      "h": 44,
+      "x": 162,
+      "y": 25
+    },
+    {
+      "id": "gespa",
+      "label": "gespa",
+      "kind": "hotspot",
+      "w": 54,
+      "h": 44,
+      "x": 228,
+      "y": 76
+    },
+    {
+      "id": "campanar",
+      "label": "campanar",
+      "kind": "hotspot",
+      "w": 54,
+      "h": 44,
+      "x": 293,
+      "y": 25
+    },
+    {
+      "id": "banc",
+      "label": "banc de pedra",
+      "kind": "hotspot",
+      "w": 54,
+      "h": 44,
+      "x": 358,
+      "y": 76
+    },
+    {
+      "id": "morter",
+      "label": "morter",
+      "kind": "prop",
+      "w": 54,
+      "h": 44,
+      "x": 424,
+      "y": 25
+    },
+    {
+      "id": "porta_capitular",
+      "label": "porta de la sala capitular",
+      "kind": "hotspot",
+      "w": 54,
+      "h": 44,
+      "x": 489,
+      "y": 76
+    }
+  ],
+  "characters": [
+    "abadessa Ingilberga",
+    "germana Gueraula"
+  ]
+}

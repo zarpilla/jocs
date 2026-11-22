@@ -1,0 +1,113 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "El Pont Vell",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "cami",
+      "label": "cap a l'avet",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "pont",
+      "label": "Pont Vell",
+      "kind": "hotspot",
+      "w": 34,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "riu",
+      "label": "riu",
+      "kind": "hotspot",
+      "w": 34,
+      "h": 44,
+      "x": 143,
+      "y": 25
+    },
+    {
+      "id": "resclosa",
+      "label": "resclosa",
+      "kind": "hotspot",
+      "w": 34,
+      "h": 44,
+      "x": 189,
+      "y": 76
+    },
+    {
+      "id": "sobreeixidor",
+      "label": "sobreeixidor",
+      "kind": "hotspot",
+      "w": 34,
+      "h": 44,
+      "x": 234,
+      "y": 25
+    },
+    {
+      "id": "comporta",
+      "label": "comporta del rec",
+      "kind": "hotspot",
+      "w": 34,
+      "h": 44,
+      "x": 280,
+      "y": 76
+    },
+    {
+      "id": "barca",
+      "label": "barca d'en Joanet",
+      "kind": "hotspot",
+      "w": 34,
+      "h": 44,
+      "x": 326,
+      "y": 25
+    },
+    {
+      "id": "rec",
+      "label": "rec del molí",
+      "kind": "hotspot",
+      "w": 34,
+      "h": 44,
+      "x": 372,
+      "y": 76
+    },
+    {
+      "id": "horts",
+      "label": "horts",
+      "kind": "hotspot",
+      "w": 34,
+      "h": 44,
+      "x": 417,
+      "y": 25
+    },
+    {
+      "id": "salze",
+      "label": "salze",
+      "kind": "hotspot",
+      "w": 34,
+      "h": 44,
+      "x": 463,
+      "y": 76
+    },
+    {
+      "id": "moli_lluny",
+      "label": "molí",
+      "kind": "hotspot",
+      "w": 34,
+      "h": 44,
+      "x": 509,
+      "y": 25
+    }
+  ],
+  "characters": [
+    "Joanet",
+    "Ermessenda"
+  ]
+}

@@ -6,44 +6,44 @@
   "display": {
     "aseprite": true
   },
-  "walkSpeed": 108,
+  "walkSpeed": 120,
   "walkToPoint": {
-    "x": 40,
-    "y": 67
+    "x": 43,
+    "y": 85
   },
   "talkPoint": {
-    "x": 18,
+    "x": 21,
     "y": -2
   },
   "feet": {
-    "x": 18,
-    "y": 67
+    "x": 21,
+    "y": 85
   },
   "collider": {
     "points": [
       {
-        "x": 11,
-        "y": 2
+        "x": 14,
+        "y": 4
       },
       {
-        "x": 25,
-        "y": 2
+        "x": 28,
+        "y": 4
       },
       {
-        "x": 26,
-        "y": 35
+        "x": 30,
+        "y": 46
       },
       {
-        "x": 25,
-        "y": 67
+        "x": 28,
+        "y": 85
       },
       {
-        "x": 11,
-        "y": 67
+        "x": 14,
+        "y": 85
       },
       {
-        "x": 10,
-        "y": 35
+        "x": 12,
+        "y": 46
       }
     ]
   },
@@ -125,6 +125,86 @@
       "frameDuration": 260
     },
     "LookDL": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "MonjoIdleL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "MonjoIdleD": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "MonjoIdleU": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "MonjoIdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "MonjoIdleUL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "MonjoWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "MonjoWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "MonjoWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "MonjoWalkDL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "MonjoWalkUL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "MonjoTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "MonjoTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "MonjoTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "MonjoTalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "MonjoTalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "MonjoBlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "MonjoBlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "MonjoBlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "MonjoLookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "MonjoLookDL": {
       "loop": false,
       "frameDuration": 260
     }

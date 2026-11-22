@@ -12,6 +12,66 @@
     {
       "id": "portada",
       "definition": "portada/portada.room.json"
+    },
+    {
+      "id": "apotecaria",
+      "definition": "apotecaria/apotecaria.room.json"
+    },
+    {
+      "id": "arxiu",
+      "definition": "arxiu/arxiu.room.json"
+    },
+    {
+      "id": "bugaderia",
+      "definition": "bugaderia/bugaderia.room.json"
+    },
+    {
+      "id": "calc",
+      "definition": "calc/calc.room.json"
+    },
+    {
+      "id": "claustre",
+      "definition": "claustre/claustre.room.json"
+    },
+    {
+      "id": "cuina",
+      "definition": "cuina/cuina.room.json"
+    },
+    {
+      "id": "epileg",
+      "definition": "epileg/epileg.room.json"
+    },
+    {
+      "id": "judici",
+      "definition": "judici/judici.room.json"
+    },
+    {
+      "id": "moli",
+      "definition": "moli/moli.room.json"
+    },
+    {
+      "id": "placa_sant_pol",
+      "definition": "placa_sant_pol/placa_sant_pol.room.json"
+    },
+    {
+      "id": "pont_ter",
+      "definition": "pont_ter/pont_ter.room.json"
+    },
+    {
+      "id": "porteria",
+      "definition": "porteria/porteria.room.json"
+    },
+    {
+      "id": "postcredits",
+      "definition": "postcredits/postcredits.room.json"
+    },
+    {
+      "id": "proleg",
+      "definition": "proleg/proleg.room.json"
+    },
+    {
+      "id": "scriptorium",
+      "definition": "scriptorium/scriptorium.room.json"
     }
   ]
 }

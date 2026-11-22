@@ -1,0 +1,190 @@
+{
+  "id": "proleg",
+  "name": "Pròleg",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 200,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 261
+          },
+          {
+            "x": 200,
+            "y": 261
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "llamp",
+      "tag": "llamp",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llamp": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "avet_dret",
+      "tag": "avet_dret",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "avet_dret": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      }
+    },
+    {
+      "id": "avet_cau",
+      "tag": "avet_cau",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "avet_cau": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "cau": {
+          "loop": false,
+          "frameDuration": 200
+        }
+      }
+    },
+    {
+      "id": "fanal",
+      "tag": "fanal",
+      "zIndex": 4,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fanal": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "fanal_arriba": {
+          "loop": false,
+          "frameDuration": 250
+        }
+      }
+    },
+    {
+      "id": "figura",
+      "tag": "figura",
+      "zIndex": 4,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "figura": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "figura_serra": {
+          "loop": false,
+          "frameDuration": 200
+        }
+      }
+    },
+    {
+      "id": "cofre_brilla",
+      "tag": "cofre_brilla",
+      "zIndex": 5,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "cofre_brilla": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "brilla": {
+          "loop": false,
+          "frameDuration": 200
+        }
+      }
+    },
+    {
+      "id": "ma",
+      "tag": "ma",
+      "zIndex": 6,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ma": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "agafa": {
+          "loop": false,
+          "frameDuration": 200
+        }
+      }
+    },
+    {
+      "id": "pluja",
+      "tag": "pluja",
+      "zIndex": 8,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pluja": {
+          "loop": true,
+          "frameDuration": 80
+        }
+      }
+    }
+  ],
+  "characters": [],
+  "viewAnchorY": 0.167
+}

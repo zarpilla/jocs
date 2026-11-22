@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 25,
-            "y": 215
+            "x": 200,
+            "y": 253
           },
           {
-            "x": 615,
-            "y": 215
+            "x": 267,
+            "y": 253
           },
           {
-            "x": 629,
-            "y": 269
+            "x": 267,
+            "y": 261
           },
           {
-            "x": 11,
-            "y": 269
+            "x": 200,
+            "y": 261
           }
         ],
         "holes": []
@@ -51,6 +51,62 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "llamp",
+      "tag": "llamp",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llamp": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "cofre",
+      "tag": "cofre",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "cofre": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    },
+    {
+      "id": "pluja",
+      "tag": "pluja",
+      "zIndex": 4,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pluja": {
+          "loop": true,
+          "frameDuration": 80
+        }
+      }
+    },
+    {
+      "id": "titol",
+      "tag": "titol",
+      "zIndex": 6,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "titol": {
+          "loop": false,
+          "frameDuration": 1000
+        }
+      }
     }
   ],
   "characters": [],

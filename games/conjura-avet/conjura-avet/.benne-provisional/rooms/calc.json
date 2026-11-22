@@ -1,0 +1,20 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "El calc",
+  "era": "",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "pergami",
+      "label": "pergamí",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 271,
+      "y": 76
+    }
+  ],
+  "characters": []
+}

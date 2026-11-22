@@ -1,0 +1,74 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "El molí",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "finestra_dalt",
+      "label": "Gueraula, a dalt",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "roda",
+      "label": "roda",
+      "kind": "hotspot",
+      "w": 65,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "falca",
+      "label": "falca",
+      "kind": "prop",
+      "w": 65,
+      "h": 44,
+      "x": 173,
+      "y": 25
+    },
+    {
+      "id": "comporta",
+      "label": "comporta",
+      "kind": "hotspot",
+      "w": 65,
+      "h": 44,
+      "x": 249,
+      "y": 76
+    },
+    {
+      "id": "pastera",
+      "label": "pastera",
+      "kind": "hotspot",
+      "w": 65,
+      "h": 44,
+      "x": 326,
+      "y": 25
+    },
+    {
+      "id": "canal",
+      "label": "canal",
+      "kind": "hotspot",
+      "w": 65,
+      "h": 44,
+      "x": 402,
+      "y": 76
+    },
+    {
+      "id": "moles",
+      "label": "moles",
+      "kind": "hotspot",
+      "w": 65,
+      "h": 44,
+      "x": 478,
+      "y": 25
+    }
+  ],
+  "characters": []
+}

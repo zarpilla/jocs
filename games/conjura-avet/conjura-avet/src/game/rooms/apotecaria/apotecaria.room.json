@@ -1,0 +1,757 @@
+{
+  "id": "apotecaria",
+  "name": "L'apotecaria",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 233,
+            "y": 163
+          },
+          {
+            "x": 205,
+            "y": 162
+          },
+          {
+            "x": 471,
+            "y": 177
+          },
+          {
+            "x": 478,
+            "y": 168
+          },
+          {
+            "x": 538,
+            "y": 173
+          },
+          {
+            "x": 539,
+            "y": 176
+          },
+          {
+            "x": 575,
+            "y": 217
+          },
+          {
+            "x": 139,
+            "y": 217
+          }
+        ],
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 245,
+                "y": 211
+              },
+              {
+                "x": 418,
+                "y": 214
+              },
+              {
+                "x": 403,
+                "y": 185
+              },
+              {
+                "x": 261,
+                "y": 183
+              }
+            ]
+          },
+          {
+            "id": "forat-2",
+            "active": true,
+            "points": [
+              {
+                "x": 448,
+                "y": 188
+              },
+              {
+                "x": 499,
+                "y": 193
+              },
+              {
+                "x": 492,
+                "y": 178
+              },
+              {
+                "x": 446,
+                "y": 174
+              }
+            ]
+          },
+          {
+            "id": "forat-3",
+            "active": true,
+            "points": [
+              {
+                "x": 507,
+                "y": 238
+              },
+              {
+                "x": 589,
+                "y": 247
+              },
+              {
+                "x": 564,
+                "y": 217
+              },
+              {
+                "x": 495,
+                "y": 211
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "sortida al claustre",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 488,
+          "y": 64
+        },
+        {
+          "x": 533,
+          "y": 64
+        },
+        {
+          "x": 533,
+          "y": 171
+        },
+        {
+          "x": 488,
+          "y": 171
+        }
+      ],
+      "walkToPoint": {
+        "x": 509,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 510,
+        "y": 171
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "prestatges",
+      "active": true,
+      "description": "prestatges",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 411,
+          "y": 44
+        },
+        {
+          "x": 463,
+          "y": 44
+        },
+        {
+          "x": 463,
+          "y": 174
+        },
+        {
+          "x": 411,
+          "y": 174
+        }
+      ],
+      "walkToPoint": {
+        "x": 432,
+        "y": 181
+      },
+      "lookAtPoint": {
+        "x": 437,
+        "y": 174
+      }
+    },
+    {
+      "id": "flasco_menta",
+      "active": true,
+      "description": "flascó",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 283,
+          "y": 92
+        },
+        {
+          "x": 301,
+          "y": 92
+        },
+        {
+          "x": 301,
+          "y": 117
+        },
+        {
+          "x": 283,
+          "y": 117
+        }
+      ],
+      "walkToPoint": {
+        "x": 284,
+        "y": 170
+      },
+      "lookAtPoint": {
+        "x": 292,
+        "y": 117
+      }
+    },
+    {
+      "id": "flasco_ruda",
+      "active": true,
+      "description": "flascó",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 306,
+          "y": 93
+        },
+        {
+          "x": 325,
+          "y": 93
+        },
+        {
+          "x": 325,
+          "y": 118
+        },
+        {
+          "x": 306,
+          "y": 118
+        }
+      ],
+      "walkToPoint": {
+        "x": 308,
+        "y": 171
+      },
+      "lookAtPoint": {
+        "x": 315,
+        "y": 118
+      }
+    },
+    {
+      "id": "flasco_salvia",
+      "active": true,
+      "description": "flascó",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 330,
+          "y": 93
+        },
+        {
+          "x": 349,
+          "y": 93
+        },
+        {
+          "x": 349,
+          "y": 119
+        },
+        {
+          "x": 330,
+          "y": 119
+        }
+      ],
+      "walkToPoint": {
+        "x": 333,
+        "y": 173
+      },
+      "lookAtPoint": {
+        "x": 339,
+        "y": 119
+      }
+    },
+    {
+      "id": "flasco_sense_nom",
+      "active": true,
+      "description": "flascó",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 354,
+          "y": 94
+        },
+        {
+          "x": 374,
+          "y": 94
+        },
+        {
+          "x": 374,
+          "y": 120
+        },
+        {
+          "x": 354,
+          "y": 120
+        }
+      ],
+      "walkToPoint": {
+        "x": 359,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 364,
+        "y": 120
+      }
+    },
+    {
+      "id": "atramentum",
+      "active": true,
+      "description": "pot de pedra",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 378,
+          "y": 21
+        },
+        {
+          "x": 399,
+          "y": 21
+        },
+        {
+          "x": 399,
+          "y": 41
+        },
+        {
+          "x": 378,
+          "y": 41
+        }
+      ],
+      "walkToPoint": {
+        "x": 382,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 388,
+        "y": 41
+      }
+    },
+    {
+      "id": "manats",
+      "active": true,
+      "description": "manats d'herbes",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 274,
+          "y": 34
+        },
+        {
+          "x": 392,
+          "y": 34
+        },
+        {
+          "x": 392,
+          "y": 83
+        },
+        {
+          "x": 274,
+          "y": 83
+        }
+      ],
+      "walkToPoint": {
+        "x": 348,
+        "y": 181
+      },
+      "lookAtPoint": {
+        "x": 333,
+        "y": 83
+      }
+    },
+    {
+      "id": "pell_ovella",
+      "active": true,
+      "description": "pell d'ovella",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 505,
+          "y": 183
+        },
+        {
+          "x": 574,
+          "y": 183
+        },
+        {
+          "x": 574,
+          "y": 231
+        },
+        {
+          "x": 505,
+          "y": 231
+        }
+      ],
+      "walkToPoint": {
+        "x": 481,
+        "y": 212
+      },
+      "lookAtPoint": {
+        "x": 539,
+        "y": 231
+      }
+    },
+    {
+      "id": "llar",
+      "active": true,
+      "description": "llar",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 111,
+          "y": 135
+        },
+        {
+          "x": 216,
+          "y": 135
+        },
+        {
+          "x": 216,
+          "y": 168
+        },
+        {
+          "x": 111,
+          "y": 168
+        }
+      ],
+      "walkToPoint": {
+        "x": 214,
+        "y": 185
+      },
+      "lookAtPoint": {
+        "x": 163,
+        "y": 168
+      }
+    },
+    {
+      "id": "morter",
+      "active": true,
+      "description": "morter",
+      "zIndex": 10,
+      "points": [
+        {
+          "x": 454,
+          "y": 123
+        },
+        {
+          "x": 491,
+          "y": 123
+        },
+        {
+          "x": 491,
+          "y": 184
+        },
+        {
+          "x": 454,
+          "y": 184
+        }
+      ],
+      "walkToPoint": {
+        "x": 438,
+        "y": 189
+      },
+      "lookAtPoint": {
+        "x": 472,
+        "y": 184
+      }
+    },
+    {
+      "id": "taula",
+      "active": true,
+      "description": "taula",
+      "zIndex": 11,
+      "points": [
+        {
+          "x": 252,
+          "y": 138
+        },
+        {
+          "x": 412,
+          "y": 138
+        },
+        {
+          "x": 412,
+          "y": 211
+        },
+        {
+          "x": 252,
+          "y": 211
+        }
+      ],
+      "walkToPoint": {
+        "x": 332,
+        "y": 181
+      },
+      "lookAtPoint": {
+        "x": 332,
+        "y": 211
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.794,
+      "scaleBottom": 1.183,
+      "points": [
+        {
+          "x": 0,
+          "y": 162
+        },
+        {
+          "x": 639,
+          "y": 162
+        },
+        {
+          "x": 639,
+          "y": 217
+        },
+        {
+          "x": 0,
+          "y": 217
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "cardo",
+      "tag": "cardo",
+      "animations": {
+        "cardo": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 247,
+            "y": 38
+          },
+          {
+            "x": 266,
+            "y": 38
+          },
+          {
+            "x": 266,
+            "y": 80
+          },
+          {
+            "x": 247,
+            "y": 80
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 244,
+        "y": 200
+      },
+      "lookAtPoint": {
+        "x": 256,
+        "y": 80
+      },
+      "description": "cardó"
+    },
+    {
+      "id": "mel",
+      "tag": "mel",
+      "animations": {
+        "mel": {}
+      },
+      "zIndex": 21,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 378,
+            "y": 121
+          },
+          {
+            "x": 400,
+            "y": 121
+          },
+          {
+            "x": 400,
+            "y": 151
+          },
+          {
+            "x": 378,
+            "y": 151
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 418,
+        "y": 208
+      },
+      "lookAtPoint": {
+        "x": 389,
+        "y": 151
+      },
+      "description": "gerra de mel",
+      "baseline": 209
+    },
+    {
+      "id": "cardo_agafat",
+      "tag": "cardo_agafat",
+      "animations": {
+        "cardo_agafat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "mel_agafada",
+      "tag": "mel_agafada",
+      "animations": {
+        "mel_agafada": {}
+      },
+      "zIndex": 21,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "baseline": 209
+    },
+    {
+      "id": "espelmes",
+      "tag": "espelmes",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "espelmes": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    },
+    {
+      "id": "davant_taula",
+      "tag": "davant_taula",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_taula": {}
+      },
+      "zIndex": 20,
+      "baseline": 209
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 24,
+      "baseline": 999
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 514,
+      "y": 179,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "gueraula-1",
+      "definition": "gueraula/gueraula.character.json",
+      "x": 250,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ],
+  "viewAnchorY": 0.5,
+  "characterLights": {
+    "ambient": "#6e6058",
+    "lights": [
+      {
+        "x": 352,
+        "y": 158,
+        "radius": 260,
+        "color": "#ffc47a",
+        "intensity": 0.45
+      },
+      {
+        "x": 188,
+        "y": 155,
+        "radius": 240,
+        "color": "#ff8a40",
+        "intensity": 0.4
+      },
+      {
+        "x": 516,
+        "y": 122,
+        "radius": 160,
+        "color": "#a8b4d0",
+        "intensity": 0.2
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#140c0a",
+    "alpha": 0.42,
+    "squash": 0.38,
+    "core": 0.6,
+    "light": {
+      "x": 352,
+      "y": 199,
+      "stretch": 0.55,
+      "reach": 200
+    }
+  },
+  "floorSquash": 0.38
+}

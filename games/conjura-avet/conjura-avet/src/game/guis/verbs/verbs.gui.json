@@ -1,7 +1,7 @@
 {
   "id": "verbs",
   "name": "HUD",
-  "description": "L'Última Arrel: sense barra de verbs [hd640/hud.py]",
+  "description": "La Conjura de l'Avet: sense barra de verbs [hd640/hud.py]",
   "visible": true,
   "display": {
     "aseprite": true
@@ -25,7 +25,7 @@
       "text": "",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "color": "#d6e2b8",
+      "color": "#e6d8b2",
       "align": "center",
       "textOutline": {
         "enabled": true,
@@ -43,7 +43,7 @@
       "text": "",
       "font": "conjuraavet-regular",
       "fontSize": 8,
-      "color": "#80886e",
+      "color": "#8a826b",
       "align": "left",
       "textOutline": {
         "enabled": true,
@@ -90,6 +90,16 @@
       "x": 19,
       "y": 14,
       "tag": "CaraVet",
+      "backgroundAnchor": "top-left",
+      "visible": false,
+      "clickable": false
+    },
+    {
+      "type": "image",
+      "id": "caraPista",
+      "x": 19,
+      "y": 14,
+      "tag": "CaraPista",
       "backgroundAnchor": "top-left",
       "visible": false,
       "clickable": false

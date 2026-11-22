@@ -72,6 +72,11 @@
       "visibleIf": {
         "flag": "trapa_oberta"
       }
+    },
+    "contrapes_terra": {
+      "visibleIf": {
+        "flag": "contrapes_despenjat"
+      }
     }
   },
   "hotspots": {
@@ -403,7 +408,15 @@
     "contrapes": {
       "name": "sala.arxiu.contrapes.nom",
       "visibleIf": {
-        "flag": "tapis_apartat"
+        "all": [
+          {
+            "flag": "tapis_apartat"
+          },
+          {
+            "flag": "contrapes_despenjat",
+            "is": false
+          }
+        ]
       },
       "interactions": [
         {
@@ -485,19 +498,6 @@
               "setFlag": "canonges_tornen"
             }
           ]
-        },
-        {
-          "verb": [
-            "pull",
-            "use",
-            "pickUp"
-          ],
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.arxiu.33"
-            }
-          ]
         }
       ]
     },
@@ -513,7 +513,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.34"
+              "text": "sala.arxiu.33"
             }
           ]
         },
@@ -522,7 +522,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.35"
+              "text": "sala.arxiu.34"
             }
           ]
         },
@@ -539,7 +539,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.36"
+              "text": "sala.arxiu.35"
             }
           ],
           "effects": [
@@ -557,7 +557,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.37"
+              "text": "sala.arxiu.36"
             }
           ]
         }
@@ -582,7 +582,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.38"
+              "text": "sala.arxiu.37"
             }
           ]
         },
@@ -595,18 +595,22 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.39"
+              "text": "sala.arxiu.38"
             },
             {
               "who": "narrator",
-              "text": "sala.arxiu.40"
+              "text": "sala.arxiu.39"
             },
             {
               "who": "vet",
-              "text": "sala.arxiu.41"
+              "text": "sala.arxiu.40"
             },
             {
               "who": "player",
+              "text": "sala.arxiu.41"
+            },
+            {
+              "who": "vet",
               "text": "sala.arxiu.42"
             },
             {
@@ -614,29 +618,25 @@
               "text": "sala.arxiu.43"
             },
             {
-              "who": "vet",
+              "who": "player",
               "text": "sala.arxiu.44"
             },
             {
-              "who": "player",
+              "who": "vet",
               "text": "sala.arxiu.45"
             },
             {
-              "who": "vet",
-              "text": "sala.arxiu.46"
-            },
-            {
               "who": "narrator",
-              "text": "sala.arxiu.47",
+              "text": "sala.arxiu.46",
               "sound": "alarma"
             },
             {
               "who": "sunifred",
-              "text": "sala.arxiu.48"
+              "text": "sala.arxiu.47"
             },
             {
               "who": "gueraula",
-              "text": "sala.arxiu.49"
+              "text": "sala.arxiu.48"
             }
           ],
           "effects": [
@@ -669,7 +669,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.50"
+              "text": "sala.arxiu.49"
             }
           ]
         }
@@ -688,7 +688,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.51"
+              "text": "sala.arxiu.50"
             }
           ]
         },
@@ -697,7 +697,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.52"
+              "text": "sala.arxiu.51"
             }
           ]
         },
@@ -723,7 +723,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.53"
+              "text": "sala.arxiu.52"
             }
           ],
           "effects": [
@@ -740,7 +740,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.54"
+              "text": "sala.arxiu.53"
             }
           ]
         }
@@ -757,7 +757,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.55"
+              "text": "sala.arxiu.54"
             }
           ]
         },
@@ -770,7 +770,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.56"
+              "text": "sala.arxiu.55"
             }
           ],
           "effects": [
@@ -801,7 +801,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.57"
+              "text": "sala.arxiu.56"
             }
           ]
         },
@@ -810,7 +810,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.58"
+              "text": "sala.arxiu.57"
             }
           ]
         }
@@ -829,7 +829,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.59"
+              "text": "sala.arxiu.58"
             }
           ]
         },
@@ -838,7 +838,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.60"
+              "text": "sala.arxiu.59"
             }
           ]
         },
@@ -856,7 +856,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.61"
+              "text": "sala.arxiu.60"
             }
           ]
         },
@@ -869,7 +869,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.arxiu.62"
+              "text": "sala.arxiu.61"
             }
           ]
         }

@@ -1,0 +1,130 @@
+{
+  "id": "sanca",
+  "name": "sanca",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 96,
+  "walkToPoint": {
+    "x": 40,
+    "y": 81
+  },
+  "talkPoint": {
+    "x": 18,
+    "y": -2
+  },
+  "feet": {
+    "x": 18,
+    "y": 81
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 9,
+        "y": 2
+      },
+      {
+        "x": 27,
+        "y": 2
+      },
+      {
+        "x": 29,
+        "y": 42
+      },
+      {
+        "x": 27,
+        "y": 81
+      },
+      {
+        "x": 9,
+        "y": 81
+      },
+      {
+        "x": 7,
+        "y": 42
+      }
+    ]
+  },
+  "animations": {
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleUL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "BlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LookDL": {
+      "loop": false,
+      "frameDuration": 260
+    }
+  },
+  "defaultVerb": "talkTo",
+  "idleActions": [
+    {
+      "animation": "Blink",
+      "every": [
+        3,
+        8
+      ]
+    },
+    {
+      "animation": "Look",
+      "every": [
+        9,
+        18
+      ],
+      "after": 6
+    }
+  ]
+}

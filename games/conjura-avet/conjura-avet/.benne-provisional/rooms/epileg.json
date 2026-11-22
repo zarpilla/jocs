@@ -1,0 +1,72 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "L'avet nou",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "absis",
+      "label": "absis",
+      "kind": "hotspot",
+      "w": 65,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "rodanxes",
+      "label": "rodanxes",
+      "kind": "hotspot",
+      "w": 65,
+      "h": 44,
+      "x": 173,
+      "y": 25
+    },
+    {
+      "id": "arrels",
+      "label": "arrels",
+      "kind": "hotspot",
+      "w": 65,
+      "h": 44,
+      "x": 249,
+      "y": 76
+    },
+    {
+      "id": "carretilla",
+      "label": "carretilla",
+      "kind": "hotspot",
+      "w": 65,
+      "h": 44,
+      "x": 326,
+      "y": 25
+    },
+    {
+      "id": "forat_nou",
+      "label": "forat",
+      "kind": "hotspot",
+      "w": 65,
+      "h": 44,
+      "x": 402,
+      "y": 76
+    },
+    {
+      "id": "rotul",
+      "label": "tros de fusta",
+      "kind": "prop",
+      "w": 65,
+      "h": 44,
+      "x": 478,
+      "y": 25
+    }
+  ],
+  "characters": [
+    "jutge Ponç",
+    "Sunifred",
+    "abadessa Ingilberga",
+    "germana Gueraula",
+    "Ramon",
+    "Sança"
+  ]
+}

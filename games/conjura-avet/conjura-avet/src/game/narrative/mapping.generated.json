@@ -3,7 +3,7 @@
   "id": "conjura-avet",
   "nom": "La Conjura de l'Avet",
   "musicSync": true,
-  "botoPista": true,
+  "botoPista": "mixt",
   "resolucio": {
     "width": 640,
     "height": 360,
@@ -13,5 +13,200 @@
   "characters": {},
   "items": {},
   "rooms": {},
-  "hotspots": {}
+  "hotspots": {},
+  "ambient": {
+    "$comment": "So de fons en bucle de cada sala (game/audio/sfx/amb_*.ogg, `npm run sons`). El primer cas que es compleix.",
+    "portada": [
+      {
+        "sound": "amb_tempesta",
+        "volume": 0.8
+      }
+    ],
+    "proleg": [
+      {
+        "sound": "amb_tempesta",
+        "volume": 1
+      }
+    ],
+    "mur_avet": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "sound": "amb_mati",
+        "volume": 1
+      },
+      {
+        "sound": "amb_tempesta",
+        "volume": 1
+      }
+    ],
+    "placa_sant_pol": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "sound": "amb_mati",
+        "volume": 1
+      },
+      {
+        "sound": "amb_placa",
+        "volume": 1
+      }
+    ],
+    "pont_ter": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "sound": "amb_pont_manso",
+        "volume": 1
+      },
+      {
+        "sound": "amb_pont",
+        "volume": 1
+      }
+    ],
+    "claustre": [
+      {
+        "sound": "amb_claustre",
+        "volume": 1
+      }
+    ],
+    "bugaderia": [
+      {
+        "if": {
+          "flag": "foc_ences"
+        },
+        "sound": "amb_cuina",
+        "volume": 0.7
+      },
+      {
+        "sound": "amb_nit",
+        "volume": 1
+      }
+    ],
+    "apotecaria": [
+      {
+        "sound": "amb_nit",
+        "volume": 1
+      }
+    ],
+    "porteria": [
+      {
+        "sound": "amb_nit",
+        "volume": 1
+      }
+    ],
+    "cuina": [
+      {
+        "sound": "amb_cuina",
+        "volume": 1
+      }
+    ],
+    "scriptorium": [
+      {
+        "sound": "amb_nit",
+        "volume": 1
+      }
+    ],
+    "arxiu": [
+      {
+        "sound": "amb_nit",
+        "volume": 1
+      }
+    ],
+    "moli": [
+      {
+        "sound": "amb_moli",
+        "volume": 1
+      }
+    ],
+    "judici": [
+      {
+        "sound": "amb_mati",
+        "volume": 1
+      }
+    ],
+    "epileg": [
+      {
+        "sound": "amb_mati",
+        "volume": 1
+      }
+    ]
+  },
+  "music": {
+    "$comment": "Música de cada sala: sala → peça (game/audio/music/<peça>.ogg, `npm run musica`), o una llista de casos `{if, track}`. Totes duren el mateix i s'encadenen al mateix punt (musicaSincronitzada).",
+    "portada": "tema",
+    "proleg": "tema",
+    "mur_avet": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "track": "mati"
+      },
+      {
+        "track": "tempesta"
+      }
+    ],
+    "placa_sant_pol": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "track": "mati"
+      },
+      {
+        "track": "poble"
+      }
+    ],
+    "pont_ter": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "track": "mati"
+      },
+      {
+        "track": "poble"
+      }
+    ],
+    "claustre": [
+      {
+        "if": {
+          "var": "fase",
+          "op": "==",
+          "value": 7
+        },
+        "track": "mati"
+      },
+      {
+        "track": "claustre"
+      }
+    ],
+    "apotecaria": "claustre",
+    "bugaderia": "preparacio",
+    "porteria": "nit",
+    "cuina": "nit",
+    "scriptorium": "arxiu",
+    "arxiu": "arxiu",
+    "moli": "fugida",
+    "judici": "mati",
+    "epileg": "final",
+    "credits": "final",
+    "postcredits": "final"
+  }
 }

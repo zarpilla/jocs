@@ -1,7 +1,7 @@
 {
   "id": "accions",
   "name": "Accions",
-  "description": "L'Última Arrel: el menú d'accions [hd640/hud.py]",
+  "description": "La Conjura de l'Avet: el menú d'accions [hd640/hud.py]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -38,7 +38,7 @@
       "text": "",
       "font": "conjuraavet-negreta",
       "fontSize": 8,
-      "color": "#86eedb",
+      "color": "#f2805f",
       "align": "center",
       "textOutline": {
         "enabled": true,
@@ -68,7 +68,7 @@
         "pressed": "Accio-pressed"
       },
       "textColorStates": {
-        "hover": "#86eedb"
+        "hover": "#f2805f"
       },
       "textOutline": {
         "enabled": true,
@@ -99,7 +99,7 @@
         "pressed": "Accio-pressed"
       },
       "textColorStates": {
-        "hover": "#86eedb"
+        "hover": "#f2805f"
       },
       "textOutline": {
         "enabled": true,
@@ -130,7 +130,7 @@
         "pressed": "Accio-pressed"
       },
       "textColorStates": {
-        "hover": "#86eedb"
+        "hover": "#f2805f"
       },
       "textOutline": {
         "enabled": true,
@@ -161,7 +161,7 @@
         "pressed": "Accio-pressed"
       },
       "textColorStates": {
-        "hover": "#86eedb"
+        "hover": "#f2805f"
       },
       "textOutline": {
         "enabled": true,
@@ -192,7 +192,7 @@
         "pressed": "Accio-pressed"
       },
       "textColorStates": {
-        "hover": "#86eedb"
+        "hover": "#f2805f"
       },
       "textOutline": {
         "enabled": true,
@@ -223,7 +223,7 @@
         "pressed": "Accio-pressed"
       },
       "textColorStates": {
-        "hover": "#86eedb"
+        "hover": "#f2805f"
       },
       "textOutline": {
         "enabled": true,

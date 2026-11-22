@@ -6,44 +6,44 @@
   "display": {
     "aseprite": true
   },
-  "walkSpeed": 104,
+  "walkSpeed": 112,
   "walkToPoint": {
-    "x": 40,
-    "y": 60
+    "x": 42,
+    "y": 81
   },
   "talkPoint": {
-    "x": 18,
+    "x": 20,
     "y": -2
   },
   "feet": {
-    "x": 18,
-    "y": 60
+    "x": 20,
+    "y": 81
   },
   "collider": {
     "points": [
       {
-        "x": 12,
-        "y": 3
-      },
-      {
-        "x": 24,
-        "y": 3
+        "x": 14,
+        "y": 6
       },
       {
         "x": 26,
-        "y": 32
+        "y": 6
       },
       {
-        "x": 24,
-        "y": 60
+        "x": 28,
+        "y": 44
+      },
+      {
+        "x": 26,
+        "y": 81
+      },
+      {
+        "x": 14,
+        "y": 81
       },
       {
         "x": 12,
-        "y": 60
-      },
-      {
-        "x": 10,
-        "y": 32
+        "y": 44
       }
     ]
   },
@@ -70,23 +70,23 @@
     },
     "WalkL": {
       "loop": true,
-      "frameDuration": 80
+      "frameDuration": 85
     },
     "WalkD": {
       "loop": true,
-      "frameDuration": 90
+      "frameDuration": 95
     },
     "WalkU": {
       "loop": true,
-      "frameDuration": 90
+      "frameDuration": 95
     },
     "WalkDL": {
       "loop": true,
-      "frameDuration": 80
+      "frameDuration": 85
     },
     "WalkUL": {
       "loop": true,
-      "frameDuration": 80
+      "frameDuration": 85
     },
     "TalkL": {
       "loop": true,
@@ -128,83 +128,83 @@
       "loop": false,
       "frameDuration": 260
     },
-    "GranIdleL": {
+    "MonjoIdleL": {
       "loop": true,
       "frameDuration": 650
     },
-    "GranIdleD": {
+    "MonjoIdleD": {
       "loop": true,
       "frameDuration": 650
     },
-    "GranIdleU": {
+    "MonjoIdleU": {
       "loop": true,
       "frameDuration": 650
     },
-    "GranIdleDL": {
+    "MonjoIdleDL": {
       "loop": true,
       "frameDuration": 650
     },
-    "GranIdleUL": {
+    "MonjoIdleUL": {
       "loop": true,
       "frameDuration": 650
     },
-    "GranWalkL": {
+    "MonjoWalkL": {
       "loop": true,
-      "frameDuration": 80
+      "frameDuration": 85
     },
-    "GranWalkD": {
+    "MonjoWalkD": {
       "loop": true,
-      "frameDuration": 90
+      "frameDuration": 95
     },
-    "GranWalkU": {
+    "MonjoWalkU": {
       "loop": true,
-      "frameDuration": 90
+      "frameDuration": 95
     },
-    "GranWalkDL": {
+    "MonjoWalkDL": {
       "loop": true,
-      "frameDuration": 80
+      "frameDuration": 85
     },
-    "GranWalkUL": {
+    "MonjoWalkUL": {
       "loop": true,
-      "frameDuration": 80
+      "frameDuration": 85
     },
-    "GranTalkL": {
-      "loop": true,
-      "frameDuration": 140
-    },
-    "GranTalkD": {
+    "MonjoTalkL": {
       "loop": true,
       "frameDuration": 140
     },
-    "GranTalkU": {
+    "MonjoTalkD": {
       "loop": true,
       "frameDuration": 140
     },
-    "GranTalkDL": {
+    "MonjoTalkU": {
       "loop": true,
       "frameDuration": 140
     },
-    "GranTalkUL": {
+    "MonjoTalkDL": {
       "loop": true,
       "frameDuration": 140
     },
-    "GranBlinkL": {
+    "MonjoTalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "MonjoBlinkL": {
       "loop": false,
       "frameDuration": 75
     },
-    "GranBlinkD": {
+    "MonjoBlinkD": {
       "loop": false,
       "frameDuration": 75
     },
-    "GranBlinkDL": {
+    "MonjoBlinkDL": {
       "loop": false,
       "frameDuration": 75
     },
-    "GranLookD": {
+    "MonjoLookD": {
       "loop": false,
       "frameDuration": 260
     },
-    "GranLookDL": {
+    "MonjoLookDL": {
       "loop": false,
       "frameDuration": 260
     }
@@ -227,8 +227,5 @@
       "after": 6
     }
   ],
-  "sizeVariants": {
-    "Gran": 1.5
-  },
   "speechColor": "#8fc8e8"
 }

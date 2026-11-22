@@ -1,0 +1,104 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "La plaça de Sant Pol",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "carrer",
+      "label": "cap a l'avet",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "llinda",
+      "label": "llinda",
+      "kind": "hotspot",
+      "w": 39,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "porta_sant_pol",
+      "label": "porta de Sant Pol",
+      "kind": "hotspot",
+      "w": 39,
+      "h": 44,
+      "x": 148,
+      "y": 25
+    },
+    {
+      "id": "queixa",
+      "label": "queixa",
+      "kind": "prop",
+      "w": 39,
+      "h": 44,
+      "x": 199,
+      "y": 76
+    },
+    {
+      "id": "campanar",
+      "label": "campanar",
+      "kind": "hotspot",
+      "w": 39,
+      "h": 44,
+      "x": 250,
+      "y": 25
+    },
+    {
+      "id": "campana",
+      "label": "campana",
+      "kind": "hotspot",
+      "w": 39,
+      "h": 44,
+      "x": 301,
+      "y": 76
+    },
+    {
+      "id": "nau",
+      "label": "nau sense parets",
+      "kind": "hotspot",
+      "w": 39,
+      "h": 44,
+      "x": 351,
+      "y": 25
+    },
+    {
+      "id": "dones",
+      "label": "dones",
+      "kind": "prop",
+      "w": 39,
+      "h": 44,
+      "x": 402,
+      "y": 76
+    },
+    {
+      "id": "reixa",
+      "label": "reixa del celler",
+      "kind": "hotspot",
+      "w": 39,
+      "h": 44,
+      "x": 453,
+      "y": 25
+    },
+    {
+      "id": "casa_batlle",
+      "label": "casa del batlle",
+      "kind": "hotspot",
+      "w": 39,
+      "h": 44,
+      "x": 504,
+      "y": 76
+    }
+  ],
+  "characters": [
+    "Sança",
+    "Bonfill"
+  ]
+}

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-L'Última Arrel (com Aigua Verne): la interfície sense barra de verbs (tàctil). Substitueix la barra del joc original.
+La Conjura de l'Avet (com Aigua Verne i L'Última Arrel): la interfície sense barra de verbs (tàctil). Substitueix la
+barra del joc original.
 
 Escriu directament al projecte Benne (conjura-avet/src/game):
 
@@ -8,16 +9,17 @@ Escriu directament al projecte Benne (conjura-avet/src/game):
                                                            (adapters/benne/runtime) la mostra i l'amaga, i hi
                                                            busca el botó «Canvia»
   guis/accions/accions.gui.json + assets/.../accions/     el menú d'accions (mantenir premut o clic dret)
+  guis/controls/ + assets/.../controls/                   la targeta «Com es juga» (adapters/benne/tactil)
 
 Els scripts (`verbs.gui.ts`, `accions.gui.ts`) són al projecte, escrits a mà. Les peces són les de la barra
-(hd640/gui.py), però amb la paleta del bosc d'aquest joc: fusta de roure en lloc de la planxa oliva, una franja de
-molsa en lloc de la de seguretat, i el turquesa de la Xarxa Miceli en lloc del taronja i del fòsfor verd (aquí només,
-dins d'aquest procés: les altres GUI no canvien).
+(hd640/gui.py), però amb la paleta del monestir d'aquest joc: fusta fosca en lloc de la planxa oliva, una franja de
+pedra amb l'escacat romànic (el de les impostes de Sant Pol) en lloc de la de seguretat, el **vermell de la cera dels
+segells** com a color d'accent (cantoneres, fletxes i text sota el dit) en lloc del taronja, i la llum d'espelma en
+lloc del fòsfor verd (aquí només, dins d'aquest procés: hd640/gui.py i gui_rest.py no canvien).
 
-El botó «Canvia» (`CanviaBtn`): en aquest joc no es pot canviar de germana, i el botó és el de la **pista**
-(`botoPista` a joc.ts): una **lupa** de llautó amb el vidre turquesa i els filaments de la xarxa, en una placa de
-fusta (normal, hover i pressed). Les cares (`CaraIri`, `CaraVet`) hi són, però transparents (hud.ts no les mostra
-amb `botoPista`).
+El botó «Canvia» (`CanviaBtn`): una placa de fusta amb una finestra rodona amb l'anella de llautó; a dins, la cara de
+l'altra germana (`CaraIri`, `CaraVet`, als trams on es pot canviar) o la **lupa** de la pista (`caraPista`, als
+seguits: `botoPista: 'mixt'` a joc.ts), de llautó amb el vidre clar. hud.ts decideix quina es veu.
 
 Per provar-lo sense tocar el projecte: BENNE_GAME=<carpeta> python3 hd640/hud.py (i la làmina,
 python3 ../../../guio/art/hud.py).
@@ -39,26 +41,33 @@ sys.path.insert(0, str(TOOLS))
 import hd640  # noqa: E402,F401
 from hd.pix import Canvas, mix  # noqa: E402
 import hd640.gui as vg  # noqa: E402
-from hd640.gui import CREMA, TEXT, TEXT_OUTLINE, VERB_LINE, box, corners, well  # noqa: E402
+from hd640.gui import CREMA, TEXT, TEXT_OUTLINE, box, corners, well  # noqa: E402
+import hd640.gui_rest as gr  # noqa: E402
 from hd640.gui_rest import write_sheet, key_image, GAME  # noqa: E402
 
-# ─── La paleta del bosc (L'Última Arrel) ────────────────────────────────────
-# Les peces de hd640/gui.py fan servir els noms de la seva paleta (OLIVA, TARONJA, FOSFOR...): aquí se'ls canvia el
-# color, només en aquest procés.
-FUSTA = [(14, 8, 6), (26, 15, 10), (40, 24, 15), (56, 35, 21), (74, 47, 28), (94, 61, 36), (116, 78, 46),
-         (140, 98, 60), (166, 122, 78)]                     # fusta de roure, fosca i càlida
-TURQUESA = [(4, 30, 34), (8, 62, 66), (14, 104, 106), (30, 156, 150), (70, 210, 194), (150, 244, 226),
-            (222, 255, 246)]                                # el turquesa de la Xarxa Miceli
-BIOLUM = [(3, 10, 12), (5, 18, 20), (8, 30, 32), (12, 50, 52), (20, 84, 84), (40, 136, 130), (90, 200, 186),
-          (170, 244, 228)]                                  # les «pantalles»: bioluminescència
-MOLSA = [(10, 18, 8), (18, 32, 12), (30, 50, 18), (46, 72, 26), (66, 98, 36), (92, 126, 50), (124, 156, 70)]
+# ─── La paleta del monestir (La Conjura de l'Avet) ──────────────────────────
+# Les peces de hd640/gui.py i hd640/gui_rest.py fan servir els noms de la seva paleta (OLIVA, TARONJA, FOSFOR...):
+# aquí se'ls canvia el color, només en aquest procés.
+FUSTA = [(9, 7, 6), (18, 13, 10), (29, 21, 16), (41, 30, 22), (55, 40, 29), (70, 52, 37), (88, 66, 47),
+         (108, 82, 59), (130, 100, 73)]                     # fusta fosca (noguera vella)
+CERA = [(36, 6, 8), (78, 10, 14), (128, 20, 22), (178, 34, 30), (214, 56, 42), (240, 100, 78),
+        (255, 170, 148)]                                    # el vermell de la cera dels segells: l'accent
+LLUM = [(10, 6, 3), (20, 12, 5), (34, 20, 8), (56, 32, 10), (92, 54, 14), (146, 92, 24), (212, 150, 52),
+        (255, 214, 130)]                                    # la llum d'espelma (on la barra tenia fòsfor)
+PEDRA = [(20, 18, 17), (36, 33, 30), (54, 50, 45), (74, 68, 61), (96, 89, 80), (120, 112, 100), (146, 137, 122),
+         (174, 165, 148)]                                   # pedra grisa i daurada (Sant Pol)
 LLAUTO = [(40, 24, 10), (84, 54, 20), (138, 96, 34), (190, 144, 54), (230, 192, 90), (252, 234, 160),
           (255, 252, 222)]
-NEGRE_B = [(6, 4, 3), (14, 9, 6), (24, 16, 10), (36, 25, 16)]
-vg.OLIVA, vg.TARONJA, vg.FOSFOR, vg.NEGRE = FUSTA, TURQUESA, BIOLUM, NEGRE_B
-vg.VIDRE, vg.LINIA = (4, 14, 15), (7, 22, 22)
-OLIVA, TARONJA, FOSFOR, NEGRE = FUSTA, TURQUESA, BIOLUM, NEGRE_B
-TEXT_HOVER = '#86eedb'                  # el text sota el dit: turquesa (en lloc del taronja d'Aigua Verne)
+NEGRE_B = [(5, 4, 4), (12, 9, 8), (21, 16, 13), (32, 25, 20)]
+GRIS_F = [(26, 22, 20), (44, 39, 35), (62, 56, 50), (82, 75, 67), (104, 96, 86)]   # desactivat: fusta apagada
+for _m in (vg, gr):
+    _m.OLIVA, _m.TARONJA, _m.FOSFOR, _m.NEGRE = FUSTA, CERA, LLUM, NEGRE_B
+vg.VIDRE, vg.LINIA = (10, 7, 5), (16, 11, 8)
+gr.GREY = GRIS_F
+OLIVA, TARONJA, FOSFOR, NEGRE = FUSTA, CERA, LLUM, NEGRE_B
+VERB_LINE = '#e6d8b2'                   # la frase: pergamí (en lloc del crema verdós de pantalla)
+TEXT_HOVER = '#f2805f'                  # el text sota el dit: el vermell de la cera, clar (es llegeix sobre fosc)
+TITLE = '#e8b45c'                       # els títols: llautó
 
 W, H = 640, 288                         # l'alçada mínima (20:9); la pantalla pot ser més alta (pantalla.py)
 FRANJA = 260                            # a sota, la franja: la frase
@@ -101,32 +110,37 @@ def crop_bar(draw, x, y, w, h):
     return cv.img.crop((x, y, x + w, y + h))
 
 
-def molsa(cv, x0, x1, y0, h):
-    """Una franja de molsa (en lloc de la de seguretat): verd viu a dalt, amb flocs, i l'ombra que fa a sota."""
+def escacat(cv, x0, x1, y0, h):
+    """La franja de pedra amb l'escacat romànic (dues fileres de daus alterns, com les impostes de Sant Pol), amb el
+    cantell clar a dalt i l'ombra que fa a sota. Amb h < 4, una sola filera."""
     from hd.pix import hr
+    rows = 2 if h >= 4 else 1
     for x in range(x0, x1 + 1):
-        top = y0 - (1 if hr(x // 2, 31) > 0.7 else 0)
-        for y in range(top, y0 + h):
-            v = 4.6 - (y - y0) * 0.8 + (hr(x, y, 5) - 0.5) * 1.2
-            cv.put(x, y, MOLSA, v, lit=0)
-        if hr(x, 77) > 0.93:                                               # un punt turquesa, de tant en tant
-            cv.put(x, y0, TURQUESA, 4.6, lit=0)
+        for y in range(y0, y0 + h):
+            row = (y - y0) * rows // h
+            dau = ((x - x0) // 3 + row) % 2
+            v = (4.8 if dau else 2.2) - (y - y0) * 0.25 + (hr(x, y, 5) - 0.5) * 0.7
+            if y == y0 and dau:
+                v += 0.8
+            cv.put(x, y, PEDRA, v, lit=0)
+        if hr(x // 5, 31) > 0.9:                                           # la pedra rosegada, a trossos
+            cv.put(x, y0, PEDRA, 1.6, lit=0)
     for x in range(x0, x1 + 1):
         vg.dark(cv, x, y0 + h, 0.5)
 
 
-def lupa_icon(cv, cx, cy, hover=False, pressed=False):
-    """La lupa de la pista: l'anella de llautó, el vidre turquesa amb els filaments de la Xarxa Miceli i el mànec de
-    fusta (cap avall a la dreta). Amb hover, el vidre s'encén més i fa halo."""
+def lupa_icon(cv, cx, cy, hover=False, pressed=False, r=12.5):
+    """La lupa de la pista: l'anella de llautó, el vidre clar (es veu la fusta de darrere, aclarida) amb el reflex i
+    el mànec de fusta (cap avall a la dreta). Amb hover, el vidre s'encén i fa un halo d'espelma."""
     lift = 1.0 if hover else (-0.4 if pressed else 0.0)
-    r = 12.5
+    k_r = r / 12.5
     ang = math.radians(45)
     hx0, hy0 = cx + math.cos(ang) * (r + 1), cy + math.sin(ang) * (r + 1)
     for i in range(12):                                                   # el mànec
         t = i / 11
-        x, y = hx0 + t * 9, hy0 + t * 9
+        x, y = hx0 + t * 9 * k_r, hy0 + t * 9 * k_r
         for k in range(-3, 4):
-            cv.put(round(x - k * 0.6), round(y + k * 0.6), FUSTA, 7.6 - abs(k) * 1.1 - t * 1.2 + (0.8 if k < 0 else 0),
+            cv.put(round(x - k * 0.6), round(y + k * 0.6), FUSTA, 8.0 - abs(k) * 1.0 - t * 1.0 + (0.8 if k < 0 else 0),
                    lit=0)
     cv.put(round(hx0 + 1), round(hy0 + 1), LLAUTO, 4.0, lit=0)             # la virolla
     cv.put(round(hx0 + 2), round(hy0 + 2), LLAUTO, 3.2, lit=0)
@@ -134,34 +148,26 @@ def lupa_icon(cv, cx, cy, hover=False, pressed=False):
     cv.disc(cx, cy, r + 1.2, r + 1.2, LLAUTO, lambda nx, ny: 3.6 + lift * 0.5 - nx * 1.0 - ny * 1.2, lit=0)
     cv.disc(cx, cy, r - 1.4, r - 1.4, LLAUTO, lambda nx, ny: 1.6 + nx * 0.8 + ny * 0.8, lit=0)   # el bisell
     rr = r - 2.4
+    fosc, clar = (118, 128, 124), (196, 206, 198)                         # el vidre: gris clar, una mica verdós
     for yy in range(int(cy - rr) - 1, int(cy + rr) + 2):                  # el vidre
         for xx in range(int(cx - rr) - 1, int(cx + rr) + 2):
             d = math.hypot(xx - cx, yy - cy)
             if d <= rr:
                 k = max(0.0, 1 - d / rr)
-                c = mix(BIOLUM[2], BIOLUM[4], k * 0.8 + (0.35 if hover else 0))
+                c = mix(fosc, clar, k * 0.7 + ((cx - xx) + (cy - yy)) / rr * 0.15 + (0.2 if hover else 0))
+                if hover:
+                    c = mix(c, LLUM[7], 0.18)
                 cv.flat(xx, yy, c)
-    # els filaments de la xarxa, vistos a través del vidre
-    for (a0, a1, n) in ((200, 330, 9), (20, 140, 8), (250, 400, 10)):
-        pts = []
-        for i in range(n):
-            t = i / (n - 1)
-            a = math.radians(a0 + (a1 - a0) * t)
-            rad = rr * (0.25 + 0.6 * abs(math.sin(t * math.pi * 1.3 + a0)))
-            pts.append((cx + math.cos(a) * rad, cy + math.sin(a) * rad))
-        for (xa, ya), (xb, yb) in zip(pts, pts[1:]):
-            m = max(1, int(max(abs(xb - xa), abs(yb - ya)) * 2))
-            for j in range(m + 1):
-                x, y = xa + (xb - xa) * j / m, ya + (yb - ya) * j / m
-                if math.hypot(x - cx, y - cy) <= rr - 0.5:
-                    cv.put(round(x), round(y), TURQUESA, 3.6 + lift, lit=0)
-    for (px, py) in ((cx - 3, cy + 2), (cx + 4, cy - 3), (cx + 1, cy + 5), (cx - 5, cy - 4)):   # els nusos
-        cv.put(px, py, TURQUESA, 5.4 + lift, lit=0)
-    for (px, py, k) in ((cx - 6, cy - 7, 0.55), (cx - 5, cy - 8, 0.5), (cx - 7, cy - 6, 0.45), (cx - 4, cy - 8, 0.3),
-                        (cx - 7, cy - 5, 0.3)):                            # el reflex del vidre
-        cv.flat(px, py, mix(cv.P[px, py][:3], (230, 255, 248), k))
+    for i in range(int(rr * 1.2)):                                        # l'ombra de l'anella, dins el vidre
+        a = math.radians(10 + i * 80 / (rr * 1.2))
+        px, py = round(cx + math.cos(a) * (rr - 0.6)), round(cy + math.sin(a) * (rr - 0.6))
+        cv.flat(px, py, mix(cv.P[px, py][:3], (40, 44, 42), 0.35))
+    for (px, py, k) in ((cx - 6, cy - 7, 0.75), (cx - 5, cy - 8, 0.7), (cx - 7, cy - 6, 0.65), (cx - 4, cy - 8, 0.5),
+                        (cx - 7, cy - 5, 0.5), (cx - 3, cy - 8, 0.3), (cx - 8, cy - 4, 0.3)):   # el reflex
+        px, py = round(cx + (px - cx) * k_r), round(cy + (py - cy) * k_r)
+        cv.flat(px, py, mix(cv.P[px, py][:3], (255, 255, 250), k))
     if hover:
-        cv.glow(cx, cy, r + 8, TURQUESA[5], 0.35)
+        cv.glow(cx, cy, r + 8, LLUM[6], 0.3)
 
 
 def lupa_sola():
@@ -172,7 +178,7 @@ def lupa_sola():
 
 
 def lupa_boto(w, h, hover=False, pressed=False):
-    """El botó de la pista (`CanviaBtn`): una placa de fusta amb quatre clavilles i la lupa al mig."""
+    """El botó de la pista sol (la làmina): una placa de fusta amb quatre clavilles i la lupa al mig."""
     cv = Canvas(w, h, transparent=True)
     face = 4.6 if hover else (3.4 if pressed else 4.0)
     box(cv, 0, 0, w - 1, h - 1, FUSTA, face)
@@ -187,7 +193,7 @@ def lupa_boto(w, h, hover=False, pressed=False):
         cv.put(bx, by + 1, FUSTA, 6.0, lit=0)
         cv.put(bx + 1, by + 1, FUSTA, 1.6, lit=0)
     if hover or pressed:
-        corners(cv, 1, 1, w - 2, h - 2, n=5, ramp=TURQUESA, lvl=4.2 if hover else 3.0)
+        corners(cv, 1, 1, w - 2, h - 2, n=5, ramp=CERA, lvl=4.2 if hover else 3.0)
     dy = 1 if pressed else 0
     lupa_icon(cv, w // 2 - 4, h // 2 - 4 + dy, hover, pressed)
     for (cx, cy) in ((0, 0), (w - 1, 0), (0, h - 1), (w - 1, h - 1)):
@@ -195,8 +201,55 @@ def lupa_boto(w, h, hover=False, pressed=False):
     return cv.img
 
 
+def lupa_mini():
+    """La lupa dins la finestra rodona del botó (la mida de les cares): quan el botó fa de pista."""
+    n = 2 * vg.FACE_R + 1
+    cv = Canvas(n, n + 1, transparent=True)
+    lupa_icon(cv, n // 2 - 3, n // 2 - 3, r=8.0)
+    return cv.img
+
+
+def retrat(who):
+    """La cara de l'altra germana dins la finestra rodona: la de hd640/gui.py (face), però com un retrat a la llum
+    d'espelma: el to, càlid i suau (face hi barreja FOSFOR[5]), i sense les línies d'escaneig de la pantalla."""
+    llum = vg.FOSFOR
+    try:
+        vg.FOSFOR = llum[:5] + [(236, 204, 160)] + llum[6:]
+        img = vg.face(who)
+    finally:
+        vg.FOSFOR = llum
+    if vg._face_source(who) is None:
+        return img
+    P = img.load()
+    for y in range(1, img.height, 2):       # face enfosqueix les files senars (×0,86): es desfà
+        for x in range(img.width):
+            r, g, b, a = P[x, y]
+            if a:
+                P[x, y] = tuple(min(255, round(v / 0.86)) for v in (r, g, b)) + (a,)
+    return img
+
+
+def placa_boto(w, h, hover=False, pressed=False):
+    """El botó «Canvia»: la placa de fusta de la lupa, amb una finestra rodona fosca on surt la cara o la lupa."""
+    cv = Canvas(w, h, transparent=True)
+    face = 4.6 if hover else (3.4 if pressed else 4.0)
+    box(cv, 0, 0, w - 1, h - 1, FUSTA, face)
+    cv.hline(1, w - 2, 1, FUSTA, face + 1.2, lit=0)
+    for bx, by in ((3, 3), (w - 5, 3), (3, h - 5), (w - 5, h - 5)):
+        cv.put(bx, by, FUSTA, 7.4, lit=0)
+        cv.put(bx + 1, by + 1, FUSTA, 1.6, lit=0)
+    pcx, pcy = vg.PORT[0] - vg.CANVIA[0], (h - 1) // 2
+    cv.disc(pcx, pcy, vg.FACE_R + 2.5, vg.FACE_R + 2.5, LLAUTO, lambda nx, ny: 3.4 - nx * 0.8 - ny * 1.0, lit=0)
+    cv.disc(pcx, pcy, vg.FACE_R + 0.6, vg.FACE_R + 0.6, NEGRE_B, 1.4, lit=0)
+    if hover or pressed:
+        corners(cv, 1, 1, w - 2, h - 2, n=5, ramp=CERA, lvl=4.2 if hover else 3.0)
+    for (cx, cy) in ((0, 0), (w - 1, 0), (0, h - 1), (w - 1, h - 1)):
+        cv.P[cx, cy] = (0, 0, 0, 0)
+    return cv.img
+
+
 def plate(w, h, hover=False, on=False):
-    """Un botó quadrat de planxa oliva amb reblons; amb hover o encès, cantoneres taronja."""
+    """Un botó quadrat de fusta fosca amb clavilles; amb hover o encès, cantoneres vermelles (de cera)."""
     cv = Canvas(w, h, transparent=True)
     face = 5.0 if hover else 4.2
     box(cv, 0, 0, w - 1, h - 1, OLIVA, face)
@@ -212,7 +265,7 @@ def plate(w, h, hover=False, on=False):
 
 
 def bossa_icon(cv, hover):
-    """Una bossa de lona de pilot (l'inventari): cos crema, solapa, corretja i sivella taronja."""
+    """Una bossa de lli (l'inventari): cos crema, solapa, corretja i sivella de llautó."""
     lift = 0.6 if hover else 0.0
     cx, k = cv.w // 2, cv.w / 40
     q = lambda v: round(v * k)                                          # noqa: E731  (dibuixat a 40 px)
@@ -225,12 +278,12 @@ def bossa_icon(cv, hover):
     cv.vline(cx + q(12), q(13), q(31), CREMA, 2.0, lit=0)
     cv.rect(cx - q(12), q(13), cx + q(12), q(19), CREMA, 4.0 + lift, lit=0)    # la solapa
     cv.hline(cx - q(12), cx + q(12), q(20), CREMA, 1.4, lit=0)
-    cv.rect(cx - 2, q(17), cx + 2, q(23), TARONJA, 3.4 + lift, lit=0)          # la sivella
+    cv.rect(cx - 2, q(17), cx + 2, q(23), LLAUTO, 3.4 + lift, lit=0)           # la sivella
     cv.put(cx, q(20), NEGRE, 1.0, lit=0)
 
 
 def punts_icon(cv, hover):
-    """El radar de fòsfor amb tres punts: «què es pot tocar aquí?»."""
+    """«Què es pot tocar aquí?»: un forat fosc amb tres punts de llum d'espelma (sense línies de pantalla)."""
     cx = cy = cv.w // 2
     r = cv.w * 0.29
     cv.disc(cx, cy, r + 2, r + 2, NEGRE, 2.2, lit=0)
@@ -238,14 +291,13 @@ def punts_icon(cv, hover):
         for xx in range(cx - int(r) - 1, cx + int(r) + 2):
             d = math.hypot(xx - cx, yy - cy)
             if d <= r:
-                c = mix(FOSFOR[1], FOSFOR[2], max(0, 1 - d / r) * 0.9 + (0.35 if hover else 0))
-                if (yy - cy) % 2:
-                    c = mix(c, vg.VIDRE, 0.35)
-                cv.flat(xx, yy, c)
-    cv.ring(cx, cy, r * 0.6, FOSFOR, 3.0, lit=0, step=5)
+                cv.flat(xx, yy, mix(FOSFOR[1], FOSFOR[3], max(0, 1 - d / r) * 0.8 + (0.35 if hover else 0)))
+    cv.ring(cx, cy, r + 1, LLAUTO, 2.6, lit=0, step=3)
     for (px, py) in ((cx - 4, cy - 3), (cx + 3, cy - 1), (cx - 1, cy + 5)):
-        cv.disc(px, py, 1.4, 1.4, FOSFOR, 6.4, lit=0)
+        cv.disc(px, py, 1.6, 1.6, FOSFOR, 6.0, lit=0)
         cv.put(px, py, FOSFOR, 7.4, lit=0)
+    if hover:
+        cv.glow(cx, cy, r + 3, FOSFOR[6], 0.25)
 
 
 def boto(icon, hover=False, on=False, mida=BOTO):
@@ -277,7 +329,7 @@ def safata():
     cv = Canvas(sw, sh, transparent=True)
     box(cv, 0, 0, sw - 1, sh - 1, OLIVA, 3.8)
     cv.hline(1, sw - 2, 1, OLIVA, 4.8, lit=0)
-    molsa(cv, 0, sw - 1, 2, 1)                                 # la vora de molsa, a dalt
+    escacat(cv, 0, sw - 1, 2, 2)                               # la vora de pedra escacada, a dalt
     fx0, slots_x, fx1, top = safata_xy()
     for i in range(COLS):
         x0 = slots_x - sx + i * (SLOT_W + GAP)
@@ -338,11 +390,11 @@ def safata3():
 
 
 def tauler():
-    """El tauler de la franja de sota l'escena: planxa oliva, la franja de seguretat a dalt i reblons."""
+    """El tauler de la franja de sota l'escena: fusta fosca, la franja de pedra escacada a dalt i clavilles."""
     _, _, tw, th = TAULER
     cv = Canvas(tw, th, transparent=True)
     box(cv, 0, 0, tw - 1, th - 1, OLIVA, 3.4)
-    molsa(cv, 0, tw - 1, 0, 4)                                 # la franja de molsa, a dalt
+    escacat(cv, 0, tw - 1, 0, 4)                               # la franja de pedra escacada, a dalt
     cv.hline(0, tw - 1, 4, OLIVA, 1.2, lit=0)
     cv.hline(0, tw - 1, 5, OLIVA, 4.6, lit=0)
     for x in (6, tw - 8):
@@ -362,12 +414,13 @@ def build_hud():
     ch = CANVIA_H
     port = (vg.PORT[0] - cx, (ch - 1) // 2)                    # la pantalla rodona, al mig de la placa
 
-    # el botó de la pista: la lupa (en aquest joc no es canvia de germana)
-    canvia, canvia_h, canvia_p = lupa_boto(cw, ch), lupa_boto(cw, ch, hover=True), lupa_boto(cw, ch, pressed=True)
+    # el botó «Canvia»: una placa amb una finestra rodona; a dins, la cara de l'altra germana (als trams oberts) o la
+    # lupa de la pista (als seguits: `botoPista: 'mixt'`, el control `CaraPista`)
+    canvia, canvia_h, canvia_p = placa_boto(cw, ch), placa_boto(cw, ch, hover=True), placa_boto(cw, ch, pressed=True)
     mx, my, ms = vg.MENU
     menu = crop_bar(vg.menu_button, mx, my, ms, ms)
-    # les cares no surten mai (hud.ts les amaga amb `botoPista`): transparents, perquè els controls hi siguin
-    cara = {who: Image.new('RGBA', (2 * vg.FACE_R + 1, 2 * vg.FACE_R + 2), (0, 0, 0, 0)) for who in ('iri', 'vet')}
+    cara = {who: retrat(who) for who in ('iri', 'vet')}
+    cara['pista'] = lupa_mini()
     frames = [
         (canvia, 'CanviaBtn'), (canvia_h, 'CanviaBtn-hover'), (canvia_p, 'CanviaBtn-pressed'), (menu, 'MenuBtn'),
         (boto(bossa_icon), 'BossaBtn'), (boto(bossa_icon, hover=True), 'BossaBtn-hover'),
@@ -377,7 +430,7 @@ def build_hud():
         (safata(), 'Safata'),
         (fletxa(True, False), 'UpBtn'), (fletxa(True, True), 'UpBtn-hover'),
         (fletxa(False, False), 'DownBtn'), (fletxa(False, True), 'DownBtn-hover'),
-        (cara['iri'], 'CaraIri'), (cara['vet'], 'CaraVet'),
+        (cara['iri'], 'CaraIri'), (cara['vet'], 'CaraVet'), (cara['pista'], 'CaraPista'),
         (tauler(), 'Tauler'), (safata2(), 'Safata2'), (safata3(), 'Safata3'),
     ]
     sheet_dir = GAME / 'assets/images/guis/verbs'
@@ -417,6 +470,8 @@ def build_hud():
         {'type': 'image', 'id': 'CaraIri', 'x': fx, 'y': fy, 'tag': 'CaraIri', 'backgroundAnchor': 'top-left',
          'visible': False, 'clickable': False},
         {'type': 'image', 'id': 'CaraVet', 'x': fx, 'y': fy, 'tag': 'CaraVet', 'backgroundAnchor': 'top-left',
+         'visible': False, 'clickable': False},
+        {'type': 'image', 'id': 'caraPista', 'x': fx, 'y': fy, 'tag': 'CaraPista', 'backgroundAnchor': 'top-left',
          'visible': False, 'clickable': False},
         button('MenuBtn', MENU_BTN, ms, ms, 'MenuBtn'),
         button('PuntsBtn', PUNTS, BOTO, BOTO, 'PuntsBtn', {'hover': 'PuntsBtn-hover'}),
@@ -459,7 +514,7 @@ def build_hud():
     for c in controls:
         if c['id'] in ('verbLineText', 'verbLineVerb', 'PuntsBtn', 'BossaBtn', 'Safata', 'inventoryPanel', 'upBtn', 'downBtn'):
             c['anchorY'] = 'bottom'
-    gui = {'id': 'verbs', 'name': 'HUD', 'description': "L'Última Arrel: sense barra de verbs [hd640/hud.py]",
+    gui = {'id': 'verbs', 'name': 'HUD', 'description': "La Conjura de l'Avet: sense barra de verbs [hd640/hud.py]",
            'visible': True, 'display': {'aseprite': True}, 'controls': controls}
     out = GAME / 'guis/verbs/verbs.gui.json'
     out.write_text(json.dumps(gui, indent=2, ensure_ascii=False) + '\n')
@@ -495,7 +550,7 @@ def build_accions():
         controls.append({'type': 'text', 'id': f'text{i}', 'x': 0, 'y': 0, 'text': '', 'font': BOLD, 'fontSize': 8,
                          'color': TEXT, 'align': 'center', 'zIndex': 3, 'visible': False,
                          'textOutline': {'enabled': True, 'color': TEXT_OUTLINE, 'sides': 'bottomRight'}})
-    gui = {'id': 'accions', 'name': 'Accions', 'description': "L'Última Arrel: el menú d'accions [hd640/hud.py]",
+    gui = {'id': 'accions', 'name': 'Accions', 'description': "La Conjura de l'Avet: el menú d'accions [hd640/hud.py]",
            'visible': False, 'display': {'aseprite': True}, 'modal': True, 'zIndex': 90, 'controls': controls}
     d = GAME / 'guis/accions'
     d.mkdir(parents=True, exist_ok=True)
@@ -506,12 +561,23 @@ def build_targeta():
     """La targeta «Com es juga» (GUI `controls`): compartida (adapters/benne/tactil/controls.py), amb les peces i els
     colors d'aquest joc."""
     sys.path.insert(0, str(TOOLS.parents[4] / 'adapters/benne/tactil'))
-    import hd640.gui_rest as gr
     from controls import build_controls
-    build_controls(GAME, write_sheet=gr.write_sheet, nine_slice=gr.nine_slice, nine_slices=gr.nine_slices,
+
+    def llauto(fn):
+        """El marc de la targeta, de llautó (el vermell de la cera queda per al que s'assenyala)."""
+        def f(*a, **k):
+            gr.TARONJA = LLAUTO
+            try:
+                return fn(*a, **k)
+            finally:
+                gr.TARONJA = CERA
+        return f
+
+    build_controls(GAME, write_sheet=gr.write_sheet, nine_slice=llauto(gr.nine_slice),
+                   nine_slices=llauto(gr.nine_slices),
                    checkbox=gr.checkbox, key_image=gr.key_image, punts=boto(punts_icon), pista=lupa_sola(),
                    font=FONT, bold=BOLD,
-                   text=gr.LABEL, title=gr.TITLE, outline=TEXT_OUTLINE, hover=TEXT_HOVER,
+                   text=gr.LABEL, title=TITLE, outline=TEXT_OUTLINE, hover=TEXT_HOVER,
                    ink=gr.LABEL, accent=TEXT_HOVER, shadow=TEXT_OUTLINE)
 
 

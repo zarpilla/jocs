@@ -1,0 +1,663 @@
+{
+  "id": "placa_sant_pol",
+  "name": "La plaça de Sant Pol",
+  "size": {
+    "width": 960,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 960,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 251
+          },
+          {
+            "x": 0,
+            "y": 199
+          },
+          {
+            "x": 88,
+            "y": 198
+          },
+          {
+            "x": 284,
+            "y": 217
+          },
+          {
+            "x": 361,
+            "y": 205
+          },
+          {
+            "x": 368,
+            "y": 212
+          },
+          {
+            "x": 395,
+            "y": 215
+          },
+          {
+            "x": 429,
+            "y": 213
+          },
+          {
+            "x": 449,
+            "y": 207
+          },
+          {
+            "x": 477,
+            "y": 187
+          },
+          {
+            "x": 515,
+            "y": 181
+          },
+          {
+            "x": 625,
+            "y": 196
+          },
+          {
+            "x": 796,
+            "y": 196
+          },
+          {
+            "x": 786,
+            "y": 191
+          },
+          {
+            "x": 921,
+            "y": 191
+          },
+          {
+            "x": 908,
+            "y": 188
+          },
+          {
+            "x": 948,
+            "y": 188
+          },
+          {
+            "x": 959,
+            "y": 191
+          },
+          {
+            "x": 959,
+            "y": 251
+          }
+        ],
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 559,
+                "y": 231
+              },
+              {
+                "x": 638,
+                "y": 231
+              },
+              {
+                "x": 616,
+                "y": 211
+              },
+              {
+                "x": 548,
+                "y": 211
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "carrer",
+      "active": true,
+      "description": "cap a l'avet",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 907,
+          "y": 96
+        },
+        {
+          "x": 959,
+          "y": 96
+        },
+        {
+          "x": 959,
+          "y": 259
+        },
+        {
+          "x": 907,
+          "y": 259
+        }
+      ],
+      "walkToPoint": {
+        "x": 932,
+        "y": 189
+      },
+      "lookAtPoint": {
+        "x": 933,
+        "y": 259
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "llinda",
+      "active": true,
+      "description": "llinda",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 136,
+          "y": 103
+        },
+        {
+          "x": 221,
+          "y": 103
+        },
+        {
+          "x": 221,
+          "y": 134
+        },
+        {
+          "x": 136,
+          "y": 134
+        }
+      ],
+      "walkToPoint": {
+        "x": 138,
+        "y": 213
+      },
+      "lookAtPoint": {
+        "x": 178,
+        "y": 134
+      }
+    },
+    {
+      "id": "porta_sant_pol",
+      "active": true,
+      "description": "porta de Sant Pol",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 151,
+          "y": 130
+        },
+        {
+          "x": 204,
+          "y": 130
+        },
+        {
+          "x": 204,
+          "y": 206
+        },
+        {
+          "x": 151,
+          "y": 206
+        }
+      ],
+      "walkToPoint": {
+        "x": 152,
+        "y": 208
+      },
+      "lookAtPoint": {
+        "x": 177,
+        "y": 206
+      }
+    },
+    {
+      "id": "campanar",
+      "active": true,
+      "description": "campanar",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 370,
+          "y": 60
+        },
+        {
+          "x": 443,
+          "y": 60
+        },
+        {
+          "x": 443,
+          "y": 213
+        },
+        {
+          "x": 370,
+          "y": 213
+        }
+      ],
+      "walkToPoint": {
+        "x": 407,
+        "y": 217
+      },
+      "lookAtPoint": {
+        "x": 406,
+        "y": 213
+      }
+    },
+    {
+      "id": "campana",
+      "active": true,
+      "description": "campana",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 391,
+          "y": 0
+        },
+        {
+          "x": 423,
+          "y": 0
+        },
+        {
+          "x": 423,
+          "y": 56
+        },
+        {
+          "x": 391,
+          "y": 56
+        }
+      ],
+      "walkToPoint": {
+        "x": 407,
+        "y": 222
+      },
+      "lookAtPoint": {
+        "x": 407,
+        "y": 56
+      }
+    },
+    {
+      "id": "nau",
+      "active": true,
+      "description": "nau sense parets",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 445,
+          "y": 121
+        },
+        {
+          "x": 603,
+          "y": 121
+        },
+        {
+          "x": 603,
+          "y": 189
+        },
+        {
+          "x": 445,
+          "y": 189
+        }
+      ],
+      "walkToPoint": {
+        "x": 514,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 524,
+        "y": 189
+      }
+    },
+    {
+      "id": "reixa",
+      "active": true,
+      "description": "reixa del celler",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 641,
+          "y": 173
+        },
+        {
+          "x": 684,
+          "y": 173
+        },
+        {
+          "x": 684,
+          "y": 194
+        },
+        {
+          "x": 641,
+          "y": 194
+        }
+      ],
+      "walkToPoint": {
+        "x": 669,
+        "y": 198
+      },
+      "lookAtPoint": {
+        "x": 662,
+        "y": 194
+      }
+    },
+    {
+      "id": "casa_batlle",
+      "active": true,
+      "description": "casa del batlle",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 596,
+          "y": 15
+        },
+        {
+          "x": 789,
+          "y": 15
+        },
+        {
+          "x": 789,
+          "y": 173
+        },
+        {
+          "x": 596,
+          "y": 173
+        }
+      ],
+      "walkToPoint": {
+        "x": 751,
+        "y": 200
+      },
+      "lookAtPoint": {
+        "x": 692,
+        "y": 173
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.593,
+      "scaleBottom": 1.087,
+      "points": [
+        {
+          "x": 0,
+          "y": 179
+        },
+        {
+          "x": 959,
+          "y": 179
+        },
+        {
+          "x": 959,
+          "y": 253
+        },
+        {
+          "x": 0,
+          "y": 253
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "queixa",
+      "tag": "queixa",
+      "animations": {
+        "queixa": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 180,
+            "y": 146
+          },
+          {
+            "x": 197,
+            "y": 146
+          },
+          {
+            "x": 197,
+            "y": 182
+          },
+          {
+            "x": 180,
+            "y": 182
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 171,
+        "y": 209
+      },
+      "lookAtPoint": {
+        "x": 188,
+        "y": 182
+      },
+      "description": "queixa"
+    },
+    {
+      "id": "dones",
+      "tag": "dones",
+      "animations": {
+        "dones": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 452,
+            "y": 127
+          },
+          {
+            "x": 536,
+            "y": 127
+          },
+          {
+            "x": 536,
+            "y": 162
+          },
+          {
+            "x": 452,
+            "y": 162
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 514,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 494,
+        "y": 162
+      },
+      "description": "dones"
+    },
+    {
+      "id": "corda_campana",
+      "tag": "corda_campana",
+      "animations": {
+        "corda_campana": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "campana_toca",
+      "tag": "campana_toca",
+      "animations": {
+        "campana_toca": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "llum_mati",
+      "tag": "llum_mati",
+      "animations": {
+        "llum_mati": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "dones_marxen",
+      "tag": "dones_marxen",
+      "animations": {
+        "dones_marxen": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "davant_creu",
+      "tag": "davant_creu",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_creu": {}
+      },
+      "zIndex": 20,
+      "baseline": 230
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 22,
+      "baseline": 999
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 787,
+      "y": 208,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 872,
+      "y": 215,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "sanca-1",
+      "definition": "sanca/sanca.character.json",
+      "x": 482,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "bonfill-1",
+      "definition": "bonfill/bonfill.character.json",
+      "x": 130,
+      "y": 209,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "ramon-veu",
+      "definition": "ramon/ramon.character.json",
+      "x": 73,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    }
+  ],
+  "viewAnchorY": 0.5,
+  "characterLights": {
+    "ambient": "#d2d4d6",
+    "lights": [
+      {
+        "x": -400,
+        "y": -200,
+        "radius": 1500,
+        "color": "#fff0d0",
+        "intensity": 0.35,
+        "whenPropHidden": "llum_mati"
+      },
+      {
+        "x": -600,
+        "y": 120,
+        "radius": 1700,
+        "color": "#ffd8a0",
+        "intensity": 0.45,
+        "whenPropVisible": "llum_mati"
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#1a1612",
+    "alpha": 0.42,
+    "squash": 0.3,
+    "core": 0.6,
+    "light": {
+      "x": 0.75,
+      "y": -0.2,
+      "direction": true,
+      "stretch": 0.45
+    }
+  }
+}

@@ -1,0 +1,1096 @@
+{
+  "id": "bugaderia",
+  "name": "La bugaderia",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 75,
+            "y": 177
+          },
+          {
+            "x": 226,
+            "y": 167
+          },
+          {
+            "x": 226,
+            "y": 169
+          },
+          {
+            "x": 350,
+            "y": 160
+          },
+          {
+            "x": 349,
+            "y": 146
+          },
+          {
+            "x": 395,
+            "y": 143
+          },
+          {
+            "x": 409,
+            "y": 145
+          },
+          {
+            "x": 539,
+            "y": 213
+          },
+          {
+            "x": 35,
+            "y": 213
+          }
+        ],
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 389,
+                "y": 197
+              },
+              {
+                "x": 495,
+                "y": 201
+              },
+              {
+                "x": 477,
+                "y": 180
+              },
+              {
+                "x": 385,
+                "y": 177
+              }
+            ]
+          },
+          {
+            "id": "forat-2",
+            "active": true,
+            "points": [
+              {
+                "x": 418,
+                "y": 161
+              },
+              {
+                "x": 431,
+                "y": 160
+              },
+              {
+                "x": 402,
+                "y": 144
+              },
+              {
+                "x": 390,
+                "y": 145
+              }
+            ]
+          },
+          {
+            "id": "forat-3",
+            "active": true,
+            "points": [
+              {
+                "x": 149,
+                "y": 203
+              },
+              {
+                "x": 218,
+                "y": 197
+              },
+              {
+                "x": 218,
+                "y": 177
+              },
+              {
+                "x": 159,
+                "y": 181
+              }
+            ]
+          },
+          {
+            "id": "forat-4",
+            "active": true,
+            "points": [
+              {
+                "x": 343,
+                "y": 170
+              },
+              {
+                "x": 386,
+                "y": 167
+              },
+              {
+                "x": 370,
+                "y": 155
+              },
+              {
+                "x": 331,
+                "y": 158
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "sortida al claustre",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 353,
+          "y": 60
+        },
+        {
+          "x": 389,
+          "y": 60
+        },
+        {
+          "x": 389,
+          "y": 142
+        },
+        {
+          "x": 353,
+          "y": 142
+        }
+      ],
+      "walkToPoint": {
+        "x": 374,
+        "y": 148
+      },
+      "lookAtPoint": {
+        "x": 371,
+        "y": 142
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "bagul",
+      "active": true,
+      "description": "bagul de roba vella",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 391,
+          "y": 142
+        },
+        {
+          "x": 489,
+          "y": 142
+        },
+        {
+          "x": 489,
+          "y": 198
+        },
+        {
+          "x": 391,
+          "y": 198
+        }
+      ],
+      "walkToPoint": {
+        "x": 377,
+        "y": 198
+      },
+      "lookAtPoint": {
+        "x": 440,
+        "y": 198
+      }
+    },
+    {
+      "id": "tina",
+      "active": true,
+      "description": "tina gran",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 246,
+          "y": 77
+        },
+        {
+          "x": 334,
+          "y": 77
+        },
+        {
+          "x": 334,
+          "y": 126
+        },
+        {
+          "x": 246,
+          "y": 126
+        }
+      ],
+      "walkToPoint": {
+        "x": 285,
+        "y": 168
+      },
+      "lookAtPoint": {
+        "x": 290,
+        "y": 126
+      }
+    },
+    {
+      "id": "fogo",
+      "active": true,
+      "description": "fogó",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 229,
+          "y": 128
+        },
+        {
+          "x": 345,
+          "y": 128
+        },
+        {
+          "x": 345,
+          "y": 158
+        },
+        {
+          "x": 229,
+          "y": 158
+        }
+      ],
+      "walkToPoint": {
+        "x": 276,
+        "y": 169
+      },
+      "lookAtPoint": {
+        "x": 287,
+        "y": 158
+      }
+    },
+    {
+      "id": "llenya_pi",
+      "active": true,
+      "description": "llenya de pi",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 75,
+          "y": 127
+        },
+        {
+          "x": 120,
+          "y": 127
+        },
+        {
+          "x": 120,
+          "y": 171
+        },
+        {
+          "x": 75,
+          "y": 171
+        }
+      ],
+      "walkToPoint": {
+        "x": 93,
+        "y": 179
+      },
+      "lookAtPoint": {
+        "x": 97,
+        "y": 171
+      }
+    },
+    {
+      "id": "llenya_pollancre",
+      "active": true,
+      "description": "llenya de pollancre",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 121,
+          "y": 125
+        },
+        {
+          "x": 164,
+          "y": 125
+        },
+        {
+          "x": 164,
+          "y": 168
+        },
+        {
+          "x": 121,
+          "y": 168
+        }
+      ],
+      "walkToPoint": {
+        "x": 140,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 142,
+        "y": 168
+      }
+    },
+    {
+      "id": "llenya_alzina",
+      "active": true,
+      "description": "llenya d'alzina",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 164,
+          "y": 123
+        },
+        {
+          "x": 206,
+          "y": 123
+        },
+        {
+          "x": 206,
+          "y": 165
+        },
+        {
+          "x": 164,
+          "y": 165
+        }
+      ],
+      "walkToPoint": {
+        "x": 185,
+        "y": 173
+      },
+      "lookAtPoint": {
+        "x": 185,
+        "y": 165
+      }
+    },
+    {
+      "id": "robes",
+      "active": true,
+      "description": "robes esteses",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 48,
+          "y": 25
+        },
+        {
+          "x": 123,
+          "y": 25
+        },
+        {
+          "x": 123,
+          "y": 114
+        },
+        {
+          "x": 48,
+          "y": 114
+        }
+      ],
+      "walkToPoint": {
+        "x": 290,
+        "y": 209
+      },
+      "lookAtPoint": {
+        "x": 85,
+        "y": 114
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.688,
+      "scaleBottom": 1.182,
+      "points": [
+        {
+          "x": 0,
+          "y": 143
+        },
+        {
+          "x": 639,
+          "y": 143
+        },
+        {
+          "x": 639,
+          "y": 213
+        },
+        {
+          "x": 0,
+          "y": 213
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "tisores",
+      "tag": "tisores",
+      "animations": {
+        "tisores": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 491,
+            "y": 70
+          },
+          {
+            "x": 507,
+            "y": 70
+          },
+          {
+            "x": 507,
+            "y": 116
+          },
+          {
+            "x": 491,
+            "y": 116
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 443,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 499,
+        "y": 116
+      },
+      "description": "tisores"
+    },
+    {
+      "id": "bagul_obert",
+      "tag": "bagul_obert",
+      "animations": {
+        "bagul_obert": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "foc_ences",
+      "tag": "foc_ences",
+      "animations": {
+        "foc_ences": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "tina_negra",
+      "tag": "tina_negra",
+      "animations": {
+        "tina_negra": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "habits_estesos",
+      "tag": "habits_estesos",
+      "animations": {
+        "habits_estesos": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "tisores_agafades",
+      "tag": "tisores_agafades",
+      "animations": {
+        "tisores_agafades": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "vapor",
+      "tag": "vapor",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "vapor": {
+          "loop": true,
+          "frameDuration": 160
+        }
+      }
+    },
+    {
+      "id": "davant_robes_29",
+      "tag": "davant_robes_29",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_29": {}
+      },
+      "zIndex": 20,
+      "baseline": 166
+    },
+    {
+      "id": "davant_robes_30",
+      "tag": "davant_robes_30",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_30": {}
+      },
+      "zIndex": 22,
+      "baseline": 166
+    },
+    {
+      "id": "davant_robes_31",
+      "tag": "davant_robes_31",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_31": {}
+      },
+      "zIndex": 24,
+      "baseline": 166
+    },
+    {
+      "id": "davant_robes_32",
+      "tag": "davant_robes_32",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_32": {}
+      },
+      "zIndex": 26,
+      "baseline": 166
+    },
+    {
+      "id": "davant_robes_33",
+      "tag": "davant_robes_33",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_33": {}
+      },
+      "zIndex": 28,
+      "baseline": 166
+    },
+    {
+      "id": "davant_robes_34",
+      "tag": "davant_robes_34",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_34": {}
+      },
+      "zIndex": 30,
+      "baseline": 166
+    },
+    {
+      "id": "davant_robes_35",
+      "tag": "davant_robes_35",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_35": {}
+      },
+      "zIndex": 32,
+      "baseline": 166
+    },
+    {
+      "id": "davant_robes_36",
+      "tag": "davant_robes_36",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_36": {}
+      },
+      "zIndex": 34,
+      "baseline": 166
+    },
+    {
+      "id": "davant_robes_37",
+      "tag": "davant_robes_37",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_37": {}
+      },
+      "zIndex": 36,
+      "baseline": 166
+    },
+    {
+      "id": "davant_robes_38",
+      "tag": "davant_robes_38",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_38": {}
+      },
+      "zIndex": 38,
+      "baseline": 166
+    },
+    {
+      "id": "davant_robes_39",
+      "tag": "davant_robes_39",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_39": {}
+      },
+      "zIndex": 40,
+      "baseline": 166
+    },
+    {
+      "id": "davant_robes_28",
+      "tag": "davant_robes_28",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_28": {}
+      },
+      "zIndex": 20,
+      "baseline": 170
+    },
+    {
+      "id": "davant_robes_27",
+      "tag": "davant_robes_27",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_27": {}
+      },
+      "zIndex": 22,
+      "baseline": 174
+    },
+    {
+      "id": "davant_robes_26",
+      "tag": "davant_robes_26",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_26": {}
+      },
+      "zIndex": 24,
+      "baseline": 178
+    },
+    {
+      "id": "davant_robes_25",
+      "tag": "davant_robes_25",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_25": {}
+      },
+      "zIndex": 48,
+      "baseline": 183
+    },
+    {
+      "id": "davant_robes_24",
+      "tag": "davant_robes_24",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_24": {}
+      },
+      "zIndex": 26,
+      "baseline": 187
+    },
+    {
+      "id": "davant_robes_23",
+      "tag": "davant_robes_23",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_23": {}
+      },
+      "zIndex": 28,
+      "baseline": 191
+    },
+    {
+      "id": "davant_robes_22",
+      "tag": "davant_robes_22",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_22": {}
+      },
+      "zIndex": 30,
+      "baseline": 195
+    },
+    {
+      "id": "davant_robes_21",
+      "tag": "davant_robes_21",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_21": {}
+      },
+      "zIndex": 56,
+      "baseline": 199
+    },
+    {
+      "id": "davant_robes_20",
+      "tag": "davant_robes_20",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_20": {}
+      },
+      "zIndex": 58,
+      "baseline": 203
+    },
+    {
+      "id": "davant_robes_19",
+      "tag": "davant_robes_19",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_19": {}
+      },
+      "zIndex": 60,
+      "baseline": 207
+    },
+    {
+      "id": "davant_robes_18",
+      "tag": "davant_robes_18",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_18": {}
+      },
+      "zIndex": 62,
+      "baseline": 211
+    },
+    {
+      "id": "davant_robes_17",
+      "tag": "davant_robes_17",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_17": {}
+      },
+      "zIndex": 64,
+      "baseline": 215
+    },
+    {
+      "id": "davant_robes_16",
+      "tag": "davant_robes_16",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_16": {}
+      },
+      "zIndex": 66,
+      "baseline": 219
+    },
+    {
+      "id": "davant_robes_15",
+      "tag": "davant_robes_15",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_15": {}
+      },
+      "zIndex": 68,
+      "baseline": 223
+    },
+    {
+      "id": "davant_robes_14",
+      "tag": "davant_robes_14",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_14": {}
+      },
+      "zIndex": 70,
+      "baseline": 227
+    },
+    {
+      "id": "davant_robes_13",
+      "tag": "davant_robes_13",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_13": {}
+      },
+      "zIndex": 72,
+      "baseline": 231
+    },
+    {
+      "id": "davant_robes_12",
+      "tag": "davant_robes_12",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_12": {}
+      },
+      "zIndex": 74,
+      "baseline": 235
+    },
+    {
+      "id": "davant_robes_11",
+      "tag": "davant_robes_11",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_11": {}
+      },
+      "zIndex": 76,
+      "baseline": 238
+    },
+    {
+      "id": "davant_robes_10",
+      "tag": "davant_robes_10",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_10": {}
+      },
+      "zIndex": 78,
+      "baseline": 242
+    },
+    {
+      "id": "davant_robes_09",
+      "tag": "davant_robes_09",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_09": {}
+      },
+      "zIndex": 80,
+      "baseline": 247
+    },
+    {
+      "id": "davant_robes_08",
+      "tag": "davant_robes_08",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_08": {}
+      },
+      "zIndex": 82,
+      "baseline": 251
+    },
+    {
+      "id": "davant_robes_07",
+      "tag": "davant_robes_07",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_07": {}
+      },
+      "zIndex": 32,
+      "baseline": 254
+    },
+    {
+      "id": "davant_robes_06",
+      "tag": "davant_robes_06",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_06": {}
+      },
+      "zIndex": 34,
+      "baseline": 258
+    },
+    {
+      "id": "davant_robes_05",
+      "tag": "davant_robes_05",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_05": {}
+      },
+      "zIndex": 36,
+      "baseline": 261
+    },
+    {
+      "id": "davant_robes_04",
+      "tag": "davant_robes_04",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_04": {}
+      },
+      "zIndex": 38,
+      "baseline": 265
+    },
+    {
+      "id": "davant_robes_03",
+      "tag": "davant_robes_03",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_03": {}
+      },
+      "zIndex": 40,
+      "baseline": 269
+    },
+    {
+      "id": "davant_robes_02",
+      "tag": "davant_robes_02",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_02": {}
+      },
+      "zIndex": 94,
+      "baseline": 273
+    },
+    {
+      "id": "davant_robes_01",
+      "tag": "davant_robes_01",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_01": {}
+      },
+      "zIndex": 96,
+      "baseline": 277
+    },
+    {
+      "id": "davant_robes_00",
+      "tag": "davant_robes_00",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_robes_00": {}
+      },
+      "zIndex": 98,
+      "baseline": 282
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 381,
+      "y": 150,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ],
+  "viewAnchorY": 0.5,
+  "characterLights": {
+    "ambient": "#6c7088",
+    "lights": [
+      {
+        "x": 463,
+        "y": 70,
+        "radius": 260,
+        "color": "#9cb2e0",
+        "intensity": 0.35
+      },
+      {
+        "x": 17,
+        "y": 81,
+        "radius": 200,
+        "color": "#ffc070",
+        "intensity": 0.35
+      },
+      {
+        "x": 289,
+        "y": 137,
+        "radius": 360,
+        "color": "#ff9a48",
+        "intensity": 0.6,
+        "whenPropVisible": "foc_ences"
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#141018",
+    "alpha": 0.42,
+    "squash": 0.38,
+    "core": 0.6,
+    "light": {
+      "x": 285,
+      "y": 155,
+      "stretch": 0.5,
+      "reach": 220
+    }
+  },
+  "floorSquash": 0.38
+}

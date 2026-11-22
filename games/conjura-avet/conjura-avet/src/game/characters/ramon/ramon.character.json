@@ -1,0 +1,151 @@
+{
+  "id": "ramon",
+  "name": "Ramon",
+  "description": "Ramon",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 96,
+  "walkToPoint": {
+    "x": 45,
+    "y": 83
+  },
+  "talkPoint": {
+    "x": 23,
+    "y": -2
+  },
+  "feet": {
+    "x": 23,
+    "y": 83
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 14,
+        "y": 2
+      },
+      {
+        "x": 32,
+        "y": 2
+      },
+      {
+        "x": 34,
+        "y": 44
+      },
+      {
+        "x": 32,
+        "y": 83
+      },
+      {
+        "x": 14,
+        "y": 83
+      },
+      {
+        "x": 12,
+        "y": 44
+      }
+    ]
+  },
+  "animations": {
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleUL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "WalkDL": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "WalkUL": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "BlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LookDL": {
+      "loop": false,
+      "frameDuration": 260
+    }
+  },
+  "defaultVerb": "talkTo",
+  "idleActions": [
+    {
+      "animation": "Blink",
+      "every": [
+        3,
+        8
+      ]
+    },
+    {
+      "animation": "Look",
+      "every": [
+        9,
+        18
+      ],
+      "after": 6
+    }
+  ],
+  "speechColor": "#e8e070"
+}
