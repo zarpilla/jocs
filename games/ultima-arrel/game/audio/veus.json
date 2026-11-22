@@ -1,5 +1,5 @@
 {
-  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). Les germanes són veus de 18 anys: fins que ElevenLabs aprovi el joc (és per a nenes de 8 a 12 anys), només \"url\", per provar-les.",
+  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). Les germanes són veus de 18 anys: fins que ElevenLabs aprovi el joc (és per a nenes de 8 a 12 anys), només \"url\", per provar-les. `jugadora`: qui parla on el contingut no ho diu: sales compartides (6b, la Iri; 7, la Vet), diàlegs dels personatges (segons la seva escena) i cada node del walkie (e1…e7, l'escena de qui el fa servir).",
   "actiu": "url",
   "model": "eleven_v3",
   "language": "ca",
@@ -8,5 +8,30 @@
     "iri": "qcyHYv8hHabwybYWmwHM",
     "vet": "K85x5SfUCbata0XBeVJf"
   },
-  "text": {}
+  "text": {},
+  "jugadora": {
+    "zona_zero": "iri",
+    "bosc_obert": "vet",
+    "bufo": "iri",
+    "espora": "iri",
+    "gripau": "iri",
+    "pla": "vet",
+    "urtica": "vet",
+    "walkie.e1": "iri",
+    "walkie.e1b": "iri",
+    "walkie.e2": "iri",
+    "walkie.e2m": "iri",
+    "walkie.e2b": "iri",
+    "walkie.e3": "vet",
+    "walkie.e3b": "vet",
+    "walkie.e4": "iri",
+    "walkie.e5": "vet",
+    "walkie.e6a": "vet",
+    "walkie.e6a2": "vet",
+    "walkie.e7": "vet"
+  },
+  "pronuncia": {
+    "Bosc 2.0": "Bosc dos punt zero",
+    "Wi-Fi": "wifi"
+  }
 }

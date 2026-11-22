@@ -1,7 +1,52 @@
 {
+ "iri1003833897": {
+  "hash": "8e07247eb2d813b0",
+  "key": "obs.obs_ampolla.1",
+  "who": "iri"
+ },
+ "iri1020785627": {
+  "hash": "b6d24c430a497f2e",
+  "key": "sala.centraleta.xarxa.4",
+  "who": "iri"
+ },
  "iri1024546499": {
   "hash": "10c87ed17fd0f0bc",
   "key": "sala.vora_bosc.cami.mira",
+  "who": "iri"
+ },
+ "iri1041414637": {
+  "hash": "babbb39967004a8c",
+  "key": "sala.zona_zero.public.mira",
+  "who": "iri"
+ },
+ "iri1144613990": {
+  "hash": "df4c5790fa5f4d2e",
+  "key": "obj.centim.cargol",
+  "who": "iri"
+ },
+ "iri1159046397": {
+  "hash": "7b2c602f6164c0f3",
+  "key": "sala.centraleta.corn.altra.b",
+  "who": "iri"
+ },
+ "iri1163200416": {
+  "hash": "9826cbdd0bc0e6e0",
+  "key": "sala.centraleta.radar.mira.ences",
+  "who": "iri"
+ },
+ "iri1193185118": {
+  "hash": "cbca3855bd01bebd",
+  "key": "sala.centraleta.arrel.mira.radar",
+  "who": "iri"
+ },
+ "iri1198348668": {
+  "hash": "e859c37431138055",
+  "key": "ui.defecte.give.iri",
+  "who": "iri"
+ },
+ "iri1199248099": {
+  "hash": "050af3f8bba77ccf",
+  "key": "sala.centraleta.tauler.mira",
   "who": "iri"
  },
  "iri1238104646": {
@@ -9,9 +54,29 @@
   "key": "sala.vora_bosc.intro.2",
   "who": "iri"
  },
+ "iri1271889475": {
+  "hash": "5d76883bfc10cefa",
+  "key": "dlg.walkie.e2.3",
+  "who": "iri"
+ },
+ "iri1278404592": {
+  "hash": "6789a35cdd185d0c",
+  "key": "dlg.bufo.opt.rierol",
+  "who": "iri"
+ },
  "iri1288437503": {
   "hash": "8a4495007979c57f",
   "key": "sala.vora_bosc.intro.5",
+  "who": "iri"
+ },
+ "iri1305444713": {
+  "hash": "cf9763d4a91d7d3b",
+  "key": "dlg.walkie.e2.1",
+  "who": "iri"
+ },
+ "iri1308267922": {
+  "hash": "56a13f47e53f4048",
+  "key": "obj.walkie.mira.crit",
   "who": "iri"
  },
  "iri1321992741": {
@@ -29,9 +94,79 @@
   "key": "sala.vora_bosc.intro.8",
   "who": "iri"
  },
+ "iri1341073665": {
+  "hash": "d890630c82ff4631",
+  "key": "ui.defecte.open.iri",
+  "who": "iri"
+ },
  "iri1345361897": {
   "hash": "1a9188360540ff18",
   "key": "sala.campament_fades.branca.iri",
+  "who": "iri"
+ },
+ "iri134583918": {
+  "hash": "44f7c1252a0f46f7",
+  "key": "dlg.espora.opt.miceli",
+  "who": "iri"
+ },
+ "iri1347070737": {
+  "hash": "8743cd4b435140c9",
+  "key": "dlg.walkie.e3.4",
+  "who": "iri"
+ },
+ "iri1371578680": {
+  "hash": "86a9325ac7a6eaae",
+  "key": "sala.toll_gripaus.comporta.dura",
+  "who": "iri"
+ },
+ "iri1380625975": {
+  "hash": "bca9f67b9a724411",
+  "key": "dlg.walkie.e3.2",
+  "who": "iri"
+ },
+ "iri1395056574": {
+  "hash": "d4cb7cab66cb0dc9",
+  "key": "pj.urtica.mira.zz",
+  "who": "iri"
+ },
+ "iri1427033260": {
+  "hash": "4a0ab03e93085679",
+  "key": "ui.defecte.give.iri.2",
+  "who": "iri"
+ },
+ "iri1431556156": {
+  "hash": "da2371be7c2511bc",
+  "key": "dlg.espora.opt.qui",
+  "who": "iri"
+ },
+ "iri1435495935": {
+  "hash": "a7f98bddfd74f105",
+  "key": "obj.xiulet.ara_no",
+  "who": "iri"
+ },
+ "iri1443810879": {
+  "hash": "8304c38274d41e0b",
+  "key": "ui.defecte.give.iri.3",
+  "who": "iri"
+ },
+ "iri1445387450": {
+  "hash": "e145b4d5e4ef69af",
+  "key": "sala.centraleta.radar.mira",
+  "who": "iri"
+ },
+ "iri1451512989": {
+  "hash": "9513198ecf40f964",
+  "key": "ui.defecte.push.iri",
+  "who": "iri"
+ },
+ "iri1470007598": {
+  "hash": "6455ce49f6d82b36",
+  "key": "ui.defecte.pull.iri.2",
+  "who": "iri"
+ },
+ "iri1472040196": {
+  "hash": "f2687ae7e2faf255",
+  "key": "ui.defecte.use",
   "who": "iri"
  },
  "iri147406362": {
@@ -39,9 +174,39 @@
   "key": "sala.vora_bosc.cartell.mira",
   "who": "iri"
  },
+ "iri148020064": {
+  "hash": "edf61f83e26d36ba",
+  "key": "sala.centraleta.intro.3",
+  "who": "iri"
+ },
+ "iri1486785217": {
+  "hash": "a2302e759df3a9d2",
+  "key": "ui.defecte.pull.iri.3",
+  "who": "iri"
+ },
  "iri1494745808": {
   "hash": "0e4f9470ce31557a",
   "key": "obs.pista.iri",
+  "who": "iri"
+ },
+ "iri1496903329": {
+  "hash": "81c86ce755315e07",
+  "key": "sala.zona_mati.intro.3",
+  "who": "iri"
+ },
+ "iri1498666632": {
+  "hash": "17fd67c25db151e1",
+  "key": "dlg.espora.opt.que",
+  "who": "iri"
+ },
+ "iri1519912687": {
+  "hash": "2ca47e0c537f886c",
+  "key": "dlg.espora.opt.node",
+  "who": "iri"
+ },
+ "iri1530458567": {
+  "hash": "c43b07712f301adf",
+  "key": "sala.zona_mati.intro.5",
   "who": "iri"
  },
  "iri1530841459": {
@@ -59,9 +224,34 @@
   "key": "sala.vora_bosc.excavadora.mira",
   "who": "iri"
  },
+ "iri1559435420": {
+  "hash": "418a301712bbc842",
+  "key": "obj.llimona.cargol",
+  "who": "iri"
+ },
+ "iri1564279138": {
+  "hash": "f012d3aca37cdf2e",
+  "key": "sala.zona_zero.soques.mira",
+  "who": "iri"
+ },
+ "iri1595423777": {
+  "hash": "69e1ebced5a0b491",
+  "key": "sala.zona_zero.xiulet.tard",
+  "who": "iri"
+ },
  "iri1607760528": {
   "hash": "b5375eee5cb08173",
   "key": "sala.vora_bosc.cargol.agafa",
+  "who": "iri"
+ },
+ "iri1657451878": {
+  "hash": "9642f1a5d14a1fd4",
+  "key": "ui.defecte.look.iri.2",
+  "who": "iri"
+ },
+ "iri1674229497": {
+  "hash": "4efc929c386471cc",
+  "key": "ui.defecte.look.iri.3",
   "who": "iri"
  },
  "iri1684545449": {
@@ -74,9 +264,34 @@
   "key": "sala.vora_bosc.bustia.mira.b",
   "who": "iri"
  },
+ "iri1749678086": {
+  "hash": "dbd42dadc07dd981",
+  "key": "pj.bufo.mira",
+  "who": "iri"
+ },
+ "iri1792642104": {
+  "hash": "1044bce8fa67ad7e",
+  "key": "pj.iri.parla.1",
+  "who": "iri"
+ },
+ "iri1803330884": {
+  "hash": "020458c5c2f35b4a",
+  "key": "dlg.bufo.segell.11",
+  "who": "iri"
+ },
  "iri1803560795": {
   "hash": "9221e08903c14739",
   "key": "sala.vora_bosc.campaneta.mira",
+  "who": "iri"
+ },
+ "iri1814033918": {
+  "hash": "e3ae331b910de2a7",
+  "key": "sala.zona_zero.intro.3",
+  "who": "iri"
+ },
+ "iri1826197342": {
+  "hash": "e830e81ce2aeebd5",
+  "key": "pj.iri.parla.3",
   "who": "iri"
  },
  "iri1835013238": {
@@ -84,14 +299,69 @@
   "key": "sala.vora_bosc.bolets.mira",
   "who": "iri"
  },
+ "iri1836886122": {
+  "hash": "ac093b6c1f40f1fe",
+  "key": "dlg.bufo.segell.13",
+  "who": "iri"
+ },
  "iri1856722621": {
   "hash": "75e4e243cd38d1d4",
   "key": "obs.obs_gespa.1",
   "who": "iri"
  },
+ "iri1860812545": {
+  "hash": "f410b7362312462f",
+  "key": "sala.toll_gripaus.toll.mira",
+  "who": "iri"
+ },
+ "iri1864366775": {
+  "hash": "4b630f9e5e261168",
+  "key": "sala.zona_zero.intro.4",
+  "who": "iri"
+ },
+ "iri1865297991": {
+  "hash": "a73dd88bea6ad649",
+  "key": "dlg.walkie.e4.1",
+  "who": "iri"
+ },
+ "iri1898853229": {
+  "hash": "d93e03365cf66679",
+  "key": "dlg.walkie.e4.3",
+  "who": "iri"
+ },
+ "iri1971088218": {
+  "hash": "3b5faae29485a7c0",
+  "key": "sala.zona_zero.escenari.mira",
+  "who": "iri"
+ },
+ "iri1978442780": {
+  "hash": "a73dd88bea6ad649",
+  "key": "dlg.walkie.e1b.1",
+  "who": "iri"
+ },
  "iri19790152": {
   "hash": "95530cfbc95d80a7",
   "key": "sala.vora_bosc.cartell.toca",
+  "who": "iri"
+ },
+ "iri2003507467": {
+  "hash": "7c0d4e2f19d768ee",
+  "key": "pj.vet.mira",
+  "who": "iri"
+ },
+ "iri2010826862": {
+  "hash": "42b4431be296dc9e",
+  "key": "dlg.gripau.opt.adeu",
+  "who": "iri"
+ },
+ "iri20188921": {
+  "hash": "f2687ae7e2faf255",
+  "key": "ui.defecte",
+  "who": "iri"
+ },
+ "iri2025941173": {
+  "hash": "51452a63ace59556",
+  "key": "ui.defecte.pickUp.iri",
   "who": "iri"
  },
  "iri2049058065": {
@@ -104,14 +374,84 @@
   "key": "sala.vora_bosc.estaca.ja",
   "who": "iri"
  },
+ "iri2055477221": {
+  "hash": "054222774cf22fae",
+  "key": "dlg.gripau.ajuda.2",
+  "who": "iri"
+ },
+ "iri2057736403": {
+  "hash": "0753cce4a33416c5",
+  "key": "ui.defecte.close",
+  "who": "iri"
+ },
  "iri2072955676": {
   "hash": "818e9e34f6affb00",
   "key": "obs.obs_ortiga.2",
   "who": "iri"
  },
+ "iri2101546083": {
+  "hash": "da5c0c42078e57c3",
+  "key": "obs.obs_cartell.2",
+  "who": "iri"
+ },
+ "iri2113490603": {
+  "hash": "27c2dae7737b84aa",
+  "key": "dlg.walkie.e7.2",
+  "who": "iri"
+ },
+ "iri213071765": {
+  "hash": "205b5e15c9afbc14",
+  "key": "sala.zona_zero.sensors.mira",
+  "who": "iri"
+ },
+ "iri2140124377": {
+  "hash": "9d42c4395904bbeb",
+  "key": "ui.defecte.open",
+  "who": "iri"
+ },
+ "iri2163185541": {
+  "hash": "eda01c20ec0e39a2",
+  "key": "sala.toll_gripaus.arxiu.mira",
+  "who": "iri"
+ },
+ "iri2215958000": {
+  "hash": "729ce8f465303cba",
+  "key": "obj.xiulet.mira.iri",
+  "who": "iri"
+ },
+ "iri2246553377": {
+  "hash": "e2314abf73338e67",
+  "key": "sala.zona_mati.fi.2",
+  "who": "iri"
+ },
+ "iri2248150034": {
+  "hash": "9630bacc4f459fd8",
+  "key": "sala.zona_zero.xiulet.6",
+  "who": "iri"
+ },
  "iri2252451494": {
   "hash": "4859db8e1046b137",
   "key": "sala.vora_bosc.porta_roure.topa",
+  "who": "iri"
+ },
+ "iri2258972379": {
+  "hash": "649be33ef76de535",
+  "key": "sala.zona_zero.escenari.puja",
+  "who": "iri"
+ },
+ "iri2263330996": {
+  "hash": "7af6c60368920f3b",
+  "key": "sala.zona_mati.fi.5",
+  "who": "iri"
+ },
+ "iri2271666144": {
+  "hash": "46becf34c0835963",
+  "key": "sala.centraleta.grava.6",
+  "who": "iri"
+ },
+ "iri2282143051": {
+  "hash": "4f30d49d578b8866",
+  "key": "dlg.walkie.e6a2.2",
   "who": "iri"
  },
  "iri2298808506": {
@@ -139,9 +479,79 @@
   "key": "sala.vora_bosc.porta_roure.mira",
   "who": "iri"
  },
+ "iri2338776620": {
+  "hash": "d332dd8a5398cc8d",
+  "key": "sala.centraleta.grava.2",
+  "who": "iri"
+ },
+ "iri2370666468": {
+  "hash": "c460f1a99daaab41",
+  "key": "ui.defecte.use.iri",
+  "who": "iri"
+ },
+ "iri2390225326": {
+  "hash": "10ca616ed96f37ce",
+  "key": "pj.iri.parla.1b",
+  "who": "iri"
+ },
+ "iri2392255708": {
+  "hash": "003f3e7d198369da",
+  "key": "dlg.bufo.opt.tramit",
+  "who": "iri"
+ },
+ "iri2402537619": {
+  "hash": "0b2ed0838868d74e",
+  "key": "pj.txell.mira",
+  "who": "iri"
+ },
+ "iri2420087316": {
+  "hash": "1933f39352580aa4",
+  "key": "sala.centraleta.fils.mira",
+  "who": "iri"
+ },
+ "iri2425593901": {
+  "hash": "ea298664bb80680f",
+  "key": "sala.toll_gripaus.rierol.mira2",
+  "who": "iri"
+ },
  "iri2449187963": {
   "hash": "0c151dbdc07c9990",
   "key": "sala.vora_bosc.llum_vermell.mira",
+  "who": "iri"
+ },
+ "iri2473275803": {
+  "hash": "081ffb0b0ae8fe65",
+  "key": "sala.centraleta.corn.grava_res",
+  "who": "iri"
+ },
+ "iri2473918178": {
+  "hash": "45d167c16776a4e1",
+  "key": "sala.zona_zero.public.parla",
+  "who": "iri"
+ },
+ "iri2478692612": {
+  "hash": "33a937ba2b076527",
+  "key": "obj.walkie.mira.iri",
+  "who": "iri"
+ },
+ "iri2485392290": {
+  "hash": "5d545a45042031fd",
+  "key": "sala.centraleta.fil_saba.agafa",
+  "who": "iri"
+ },
+ "iri2506552810": {
+  "hash": "715cff6f2c507f34",
+  "key": "sala.centraleta.grava.8",
+  "who": "iri"
+ },
+ "iri2523330429": {
+  "hash": "db60fbf448e09c1c",
+  "key": "sala.centraleta.grava.9",
+  "who": "iri"
+ },
+ "iri2558213834": {
+  "hash": "3b4c2bb5017047eb",
+  "key": "sala.bosc_obert.intro.4",
   "who": "iri"
  },
  "iri2560039962": {
@@ -154,9 +564,39 @@
   "key": "sala.vora_bosc.cartell.mira.c",
   "who": "iri"
  },
+ "iri2600178772": {
+  "hash": "62937540911e3192",
+  "key": "pj.bufo.mira.zz",
+  "who": "iri"
+ },
+ "iri2620303973": {
+  "hash": "a5badb5f621099c0",
+  "key": "sala.toll_gripaus.tap.encallada",
+  "who": "iri"
+ },
+ "iri2658572391": {
+  "hash": "faebe93666597453",
+  "key": "sala.toll_gripaus.joncs.mira2",
+  "who": "iri"
+ },
  "iri2687443738": {
   "hash": "04384e18ddce2bd2",
   "key": "sala.vora_bosc.cami.surt",
+  "who": "iri"
+ },
+ "iri274776963": {
+  "hash": "5c1eb8fa08d4f2db",
+  "key": "obs.obs_soques.1",
+  "who": "iri"
+ },
+ "iri2752356975": {
+  "hash": "f563aaa0522260aa",
+  "key": "sala.toll_gripaus.joncs.mira",
+  "who": "iri"
+ },
+ "iri2770377701": {
+  "hash": "4e6f36320ee40012",
+  "key": "sala.zona_zero.sensors.mira2",
   "who": "iri"
  },
  "iri2782086991": {
@@ -164,9 +604,134 @@
   "key": "sala.vora_bosc.tanca.obre",
   "who": "iri"
  },
+ "iri2783374963": {
+  "hash": "57ddc31eed9290e6",
+  "key": "ui.defecte.close.iri",
+  "who": "iri"
+ },
+ "iri2822213206": {
+  "hash": "51e2112dc387e57b",
+  "key": "ui.defecte.pull.iri",
+  "who": "iri"
+ },
+ "iri2829820788": {
+  "hash": "269a1c62a2139702",
+  "key": "dlg.walkie.e1.1",
+  "who": "iri"
+ },
+ "iri2861176709": {
+  "hash": "f6709752205b5c51",
+  "key": "sala.centraleta.escala.mira",
+  "who": "iri"
+ },
+ "iri2863376026": {
+  "hash": "851d437abd452e58",
+  "key": "dlg.walkie.e1.3",
+  "who": "iri"
+ },
+ "iri2866660844": {
+  "hash": "6ceb8d5000b55be4",
+  "key": "obj.pila.feta",
+  "who": "iri"
+ },
+ "iri2891575053": {
+  "hash": "f627d53d38f9f771",
+  "key": "sala.toll_gripaus.rierol.mira",
+  "who": "iri"
+ },
+ "iri2906873636": {
+  "hash": "3d62dc7b98fcd48e",
+  "key": "ui.defecte.use.iri.2",
+  "who": "iri"
+ },
+ "iri2923651255": {
+  "hash": "0b79da427b8d4bac",
+  "key": "ui.defecte.use.iri.3",
+  "who": "iri"
+ },
+ "iri2926330840": {
+  "hash": "bbfaf8d6e29f120b",
+  "key": "dlg.espora.opt.adeu",
+  "who": "iri"
+ },
+ "iri2970220604": {
+  "hash": "03c3c519e1b06b5f",
+  "key": "ui.defecte.close.iri.3",
+  "who": "iri"
+ },
+ "iri2986998223": {
+  "hash": "9cf769c36b8d613e",
+  "key": "ui.defecte.close.iri.2",
+  "who": "iri"
+ },
+ "iri2999994005": {
+  "hash": "de07a00be64f6fe2",
+  "key": "sala.centraleta.arrel_morta.lupa",
+  "who": "iri"
+ },
+ "iri3019494051": {
+  "hash": "fc014cb403a1df01",
+  "key": "sala.centraleta.pila.2",
+  "who": "iri"
+ },
+ "iri3020310277": {
+  "hash": "91ff87581993ee98",
+  "key": "sala.toll_gripaus.comporta.mira2",
+  "who": "iri"
+ },
+ "iri3028822207": {
+  "hash": "a523fffab0eeb308",
+  "key": "sala.zona_zero.pantalla.mira",
+  "who": "iri"
+ },
+ "iri3076788918": {
+  "hash": "f9a8796d660067dd",
+  "key": "ui.defecte.pickUp.iri.3",
+  "who": "iri"
+ },
+ "iri3093566537": {
+  "hash": "d113c41e87ca1195",
+  "key": "ui.defecte.pickUp.iri.2",
+  "who": "iri"
+ },
  "iri3095299697": {
   "hash": "326839621ea61bcf",
   "key": "sala.vora_bosc.excavadora.usa",
+  "who": "iri"
+ },
+ "iri3098351836": {
+  "hash": "02c26aebbb8838bb",
+  "key": "pj.espora.mira",
+  "who": "iri"
+ },
+ "iri3102256869": {
+  "hash": "ed69f07f81a15df3",
+  "key": "sala.centraleta.arrel_viva.encesa",
+  "who": "iri"
+ },
+ "iri3103400578": {
+  "hash": "850d031ecc574c15",
+  "key": "obs.obs_maqueta.2",
+  "who": "iri"
+ },
+ "iri3104946974": {
+  "hash": "f2202dc5897c10ad",
+  "key": "dlg.bufo.opt.adeu",
+  "who": "iri"
+ },
+ "iri3108256393": {
+  "hash": "508aafb230d60094",
+  "key": "sala.centraleta.escolta.5",
+  "who": "iri"
+ },
+ "iri3131157369": {
+  "hash": "45197564e8630c69",
+  "key": "sala.centraleta.corn.res",
+  "who": "iri"
+ },
+ "iri3141811631": {
+  "hash": "00e6f726a049e21b",
+  "key": "sala.centraleta.escolta.3",
   "who": "iri"
  },
  "iri3151566845": {
@@ -174,9 +739,19 @@
   "key": "sala.vora_bosc.estaca.clavada",
   "who": "iri"
  },
+ "iri3158147774": {
+  "hash": "cad279a42d6a71ba",
+  "key": "sala.toll_gripaus.comporta.dura2",
+  "who": "iri"
+ },
  "iri3165763469": {
   "hash": "9087f2327a80f9ae",
   "key": "sala.vora_bosc.campaneta.oberta",
+  "who": "iri"
+ },
+ "iri3191284879": {
+  "hash": "416aba225a5ca818",
+  "key": "pj.avia.mira.zz",
   "who": "iri"
  },
  "iri3267791180": {
@@ -184,14 +759,69 @@
   "key": "sala.vora_bosc.porta_roure.tancada",
   "who": "iri"
  },
+ "iri3313550696": {
+  "hash": "3f24a014c024d17e",
+  "key": "obj.kit.doblega.2",
+  "who": "iri"
+ },
+ "iri3315250810": {
+  "hash": "7115634c1ab6765f",
+  "key": "ui.defecte.talkTo.iri.2",
+  "who": "iri"
+ },
+ "iri332293943": {
+  "hash": "d811c0be89a28639",
+  "key": "sala.zona_zero.formigonera.toca",
+  "who": "iri"
+ },
+ "iri3332028429": {
+  "hash": "6db032ef123a89d2",
+  "key": "ui.defecte.talkTo.iri.3",
+  "who": "iri"
+ },
+ "iri3363883553": {
+  "hash": "43da2b888bb9f57b",
+  "key": "obj.kit.doblega.1",
+  "who": "iri"
+ },
  "iri3433582785": {
   "hash": "5a3c4222402e0d30",
   "key": "sala.vora_bosc.bustia.mira",
   "who": "iri"
  },
+ "iri3438804297": {
+  "hash": "f34bfc5c780bedc6",
+  "key": "sala.toll_gripaus.toll.mira2",
+  "who": "iri"
+ },
+ "iri3460561768": {
+  "hash": "e8179adfa8788fc7",
+  "key": "sala.toll_gripaus.comporta.feta",
+  "who": "iri"
+ },
+ "iri347117363": {
+  "hash": "d28415c94b59ade8",
+  "key": "sala.zona_zero.sensors.toca",
+  "who": "iri"
+ },
+ "iri348147456": {
+  "hash": "8effcceee42d80b7",
+  "key": "dlg.walkie.e2m.3",
+  "who": "iri"
+ },
  "iri3539809510": {
   "hash": "753bd6b0fa971ef6",
   "key": "sala.vora_bosc.truca.3",
+  "who": "iri"
+ },
+ "iri3544594738": {
+  "hash": "236ff216e2090439",
+  "key": "sala.toll_gripaus.tap.palanca.2",
+  "who": "iri"
+ },
+ "iri357220533": {
+  "hash": "250625b176c5858b",
+  "key": "obs.obs_corn.1",
   "who": "iri"
  },
  "iri3577212401": {
@@ -204,9 +834,99 @@
   "key": "obs.obs_bolets.1",
   "who": "iri"
  },
+ "iri3602305646": {
+  "hash": "730a8c269ffcfd85",
+  "key": "ui.defecte.pull",
+  "who": "iri"
+ },
+ "iri3607795393": {
+  "hash": "2a60de701e5401d7",
+  "key": "dlg.walkie.e5.2",
+  "who": "iri"
+ },
  "iri3610767639": {
   "hash": "4384b0c8a641c235",
   "key": "sala.vora_bosc.obre.3",
+  "who": "iri"
+ },
+ "iri3642728956": {
+  "hash": "e16a3514579e32f5",
+  "key": "sala.centraleta.arrel.mira",
+  "who": "iri"
+ },
+ "iri3679537511": {
+  "hash": "6e2977e3f9323b4a",
+  "key": "obj.lupa.sola",
+  "who": "iri"
+ },
+ "iri3684903803": {
+  "hash": "5c88a86228f625fe",
+  "key": "pj.avia.mira",
+  "who": "iri"
+ },
+ "iri3689155332": {
+  "hash": "abf0379d5d4ee153",
+  "key": "sala.zona_zero.altaveu.toca",
+  "who": "iri"
+ },
+ "iri3694236908": {
+  "hash": "fe2c7b50f0d9b585",
+  "key": "obj.llimona.centim",
+  "who": "iri"
+ },
+ "iri3702235885": {
+  "hash": "730a8c269ffcfd85",
+  "key": "ui.defecte.push",
+  "who": "iri"
+ },
+ "iri3759538250": {
+  "hash": "6a051d7d8b4a5258",
+  "key": "ui.defecte.open.iri.3",
+  "who": "iri"
+ },
+ "iri3768015699": {
+  "hash": "dde81646f1e782d2",
+  "key": "sala.zona_zero.dhora.2",
+  "who": "iri"
+ },
+ "iri3776315869": {
+  "hash": "cf9e8d9ddcf1b0a8",
+  "key": "ui.defecte.open.iri.2",
+  "who": "iri"
+ },
+ "iri3802218668": {
+  "hash": "e859c37431138055",
+  "key": "ui.defecte.give",
+  "who": "iri"
+ },
+ "iri3807948746": {
+  "hash": "24e14c6092631907",
+  "key": "ui.defecte.talkTo.iri",
+  "who": "iri"
+ },
+ "iri3809155009": {
+  "hash": "695c21c5f55f7a58",
+  "key": "sala.toll_gripaus.intro.2",
+  "who": "iri"
+ },
+ "iri3842710247": {
+  "hash": "07ef0dfdbc30d27a",
+  "key": "sala.toll_gripaus.intro.4",
+  "who": "iri"
+ },
+ "iri3859487866": {
+  "hash": "f120bfa4e6cadc7e",
+  "key": "sala.toll_gripaus.intro.7",
+  "who": "iri"
+ },
+ "iri3862276309": {
+  "hash": "c1b89cfe85e20ad6",
+  "key": "sala.caseta_obra.canal7.3",
+  "who": "iri"
+ },
+ "iri3868681413": {
+  "hash": "eb2fdc952d4d280c",
+  "key": "sala.zona_zero.dhora.4",
   "who": "iri"
  },
  "iri3874815215": {
@@ -214,9 +934,24 @@
   "key": "sala.vora_bosc.porta_roure.mira.b",
   "who": "iri"
  },
+ "iri3876265485": {
+  "hash": "9d8913d2cb840dc9",
+  "key": "sala.toll_gripaus.intro.6",
+  "who": "iri"
+ },
+ "iri388214428": {
+  "hash": "79e7e5be6dd6a25e",
+  "key": "sala.centraleta.corn.mira2",
+  "who": "iri"
+ },
  "iri3895543117": {
   "hash": "3ec11c5f889b0b9b",
   "key": "sala.vora_bosc.llum_vermell.toca",
+  "who": "iri"
+ },
+ "iri3896617106": {
+  "hash": "16df51950d0467a5",
+  "key": "sala.centraleta.radar.usa2",
   "who": "iri"
  },
  "iri3909768704": {
@@ -224,9 +959,34 @@
   "key": "sala.vora_bosc.tanca.mira",
   "who": "iri"
  },
+ "iri3924046067": {
+  "hash": "5349f0dad28bf52b",
+  "key": "pj.pla.mira.zz",
+  "who": "iri"
+ },
+ "iri3933507404": {
+  "hash": "cd8884d5a632be4c",
+  "key": "sala.toll_gripaus.cami.no",
+  "who": "iri"
+ },
  "iri394202561": {
   "hash": "629e1cb25af29ca4",
   "key": "sala.campament_fades.branca.iri2",
+  "who": "iri"
+ },
+ "iri3944409507": {
+  "hash": "0b445b9f6ca1be54",
+  "key": "dlg.walkie.e6a.2",
+  "who": "iri"
+ },
+ "iri3944680426": {
+  "hash": "208d65412616b0cc",
+  "key": "sala.zona_zero.bufo.1",
+  "who": "iri"
+ },
+ "iri3957689075": {
+  "hash": "63ce765948355500",
+  "key": "sala.bosc_obert.secret.educada",
   "who": "iri"
  },
  "iri3965755156": {
@@ -234,9 +994,39 @@
   "key": "sala.vora_bosc.porta_roure.entra",
   "who": "iri"
  },
+ "iri3975237045": {
+  "hash": "38960547dd70b9f8",
+  "key": "ui.defecte.pickUp",
+  "who": "iri"
+ },
+ "iri3975493014": {
+  "hash": "e2fdac32d5292b7d",
+  "key": "sala.centraleta.arrel_morta.encesa",
+  "who": "iri"
+ },
+ "iri399136561": {
+  "hash": "b27e8bf703deda0d",
+  "key": "dlg.espora.opt.melmelada",
+  "who": "iri"
+ },
+ "iri4018636764": {
+  "hash": "035b5f6d7ecf15cc",
+  "key": "dlg.gripau.opt.vaga",
+  "who": "iri"
+ },
  "iri4041068240": {
   "hash": "839549cfa0f978a4",
   "key": "sala.vora_bosc.estaca.mira",
+  "who": "iri"
+ },
+ "iri4042095217": {
+  "hash": "46b2f590ff0ba0f6",
+  "key": "dlg.gripau.opt.pancarta",
+  "who": "iri"
+ },
+ "iri4045075221": {
+  "hash": "1e67a22618f59a60",
+  "key": "dlg.walkie.e6a.4",
   "who": "iri"
  },
  "iri404846568": {
@@ -254,9 +1044,59 @@
   "key": "sala.vora_bosc.estaca.fora.sola",
   "who": "iri"
  },
+ "iri4090369707": {
+  "hash": "ba900b82bb1b591a",
+  "key": "dlg.bufo.segell.7",
+  "who": "iri"
+ },
+ "iri4107147326": {
+  "hash": "6d95c82b2413daa5",
+  "key": "dlg.bufo.segell.4",
+  "who": "iri"
+ },
+ "iri4161381548": {
+  "hash": "0e0882770c48dc28",
+  "key": "sala.toll_gripaus.cami.mira",
+  "who": "iri"
+ },
+ "iri4178204814": {
+  "hash": "4df008ef15176a0e",
+  "key": "ui.defecte.push.iri.3",
+  "who": "iri"
+ },
+ "iri418692100": {
+  "hash": "f6826b18f6a75959",
+  "key": "pj.vet.parla.2",
+  "who": "iri"
+ },
+ "iri4194982433": {
+  "hash": "54196fdaef066ab3",
+  "key": "ui.defecte.push.iri.2",
+  "who": "iri"
+ },
+ "iri4206253109": {
+  "hash": "bcd8862286e69640",
+  "key": "sala.toll_gripaus.comporta.mira",
+  "who": "iri"
+ },
+ "iri456803191": {
+  "hash": "8009e1f67259daef",
+  "key": "dlg.walkie.e3b.2",
+  "who": "iri"
+ },
  "iri478835034": {
   "hash": "31a6ed80653df141",
   "key": "sala.vora_bosc.porta_roure.tancada2",
+  "who": "iri"
+ },
+ "iri504502507": {
+  "hash": "38647660c2e4f969",
+  "key": "sala.toll_gripaus.tap.mira",
+  "who": "iri"
+ },
+ "iri558924001": {
+  "hash": "d02a78e1b73f0fab",
+  "key": "obs.obs_sensors.2",
   "who": "iri"
  },
  "iri57800198": {
@@ -264,14 +1104,419 @@
   "key": "sala.campament_fades.intro.8",
   "who": "iri"
  },
+ "iri58710100": {
+  "hash": "7f20331921dd5a9e",
+  "key": "sala.centraleta.radar.usa",
+  "who": "iri"
+ },
+ "iri609016972": {
+  "hash": "7517e00ac545c756",
+  "key": "sala.bosc_obert.taula.7",
+  "who": "iri"
+ },
+ "iri616477710": {
+  "hash": "83e97323d4703567",
+  "key": "sala.zona_zero.altaveu.mira",
+  "who": "iri"
+ },
+ "iri618107683": {
+  "hash": "094e4e3986fb66c8",
+  "key": "sala.toll_gripaus.tap.ampolles",
+  "who": "iri"
+ },
  "iri621512977": {
   "hash": "9a5bd7577d743c64",
   "key": "sala.vora_bosc.estaca.clavada.b",
   "who": "iri"
  },
+ "iri622862788": {
+  "hash": "70bbb6b7ed3af519",
+  "key": "pj.gripau.mira2",
+  "who": "iri"
+ },
+ "iri642572210": {
+  "hash": "a2b5e30756f00a1d",
+  "key": "sala.bosc_obert.taula.5",
+  "who": "iri"
+ },
+ "iri663676025": {
+  "hash": "5f2e53a57be64567",
+  "key": "dlg.bufo.opt.paper2",
+  "who": "iri"
+ },
+ "iri666402316": {
+  "hash": "fbf8f53e8204b55c",
+  "key": "obj.kit.mira.mati",
+  "who": "iri"
+ },
+ "iri707997483": {
+  "hash": "a270599b41cb66c7",
+  "key": "obs.obs_fils.1",
+  "who": "iri"
+ },
+ "iri719094174": {
+  "hash": "31ee840bb3c0aa77",
+  "key": "pj.gripau.mira",
+  "who": "iri"
+ },
+ "iri728160264": {
+  "hash": "8709021a0364d4c0",
+  "key": "sala.centraleta.escala.surt",
+  "who": "iri"
+ },
+ "iri780040331": {
+  "hash": "5cc2a5a63e02682a",
+  "key": "sala.centraleta.arrel_viva.vista",
+  "who": "iri"
+ },
+ "iri787511665": {
+  "hash": "efc5ae35bc622a62",
+  "key": "dlg.bufo.opt.paper",
+  "who": "iri"
+ },
+ "iri793281825": {
+  "hash": "d1ba444b7fc0913c",
+  "key": "sala.zona_zero.formigonera.mira",
+  "who": "iri"
+ },
+ "iri799356286": {
+  "hash": "f807743dbcd26ddb",
+  "key": "ui.defecte.look.iri",
+  "who": "iri"
+ },
+ "iri806103110": {
+  "hash": "d1837cab6e005bcf",
+  "key": "sala.centraleta.corn.mira",
+  "who": "iri"
+ },
+ "iri809129255": {
+  "hash": "c7129051cc212bbc",
+  "key": "sala.centraleta.fil_saba.mira",
+  "who": "iri"
+ },
+ "iri810573686": {
+  "hash": "b5bedd83262919dd",
+  "key": "obs.obs_toll.1",
+  "who": "iri"
+ },
+ "iri815012870": {
+  "hash": "b959c88fd83bb9d1",
+  "key": "ui.defecte.look",
+  "who": "iri"
+ },
+ "iri818494440": {
+  "hash": "757f5b5d97e9d36a",
+  "key": "obj.llibreta.mira.4",
+  "who": "iri"
+ },
+ "iri829825596": {
+  "hash": "9e7c18ffdcde5cb2",
+  "key": "sala.toll_gripaus.tap.encallada1",
+  "who": "iri"
+ },
+ "iri835272059": {
+  "hash": "855ba3a5a072ca97",
+  "key": "obj.llibreta.mira.5",
+  "who": "iri"
+ },
+ "iri849597091": {
+  "hash": "a73dd88bea6ad649",
+  "key": "dlg.walkie.e2b.1",
+  "who": "iri"
+ },
+ "iri852049678": {
+  "hash": "183797cfa28d3d4e",
+  "key": "obj.llibreta.mira.6",
+  "who": "iri"
+ },
+ "iri8682426": {
+  "hash": "6933183bdb91510c",
+  "key": "sala.centraleta.arrel_viva.lupa",
+  "who": "iri"
+ },
+ "iri876897102": {
+  "hash": "8b66bc5bd0a45afe",
+  "key": "dlg.gripau.opt.ajuda",
+  "who": "iri"
+ },
+ "iri883152329": {
+  "hash": "73a4f528daff2e0d",
+  "key": "dlg.walkie.e2b.3",
+  "who": "iri"
+ },
+ "iri898341146": {
+  "hash": "2ad846be3b9d0938",
+  "key": "ui.defecte.talkTo",
+  "who": "iri"
+ },
+ "iri902382535": {
+  "hash": "670ceb3ff939c4de",
+  "key": "obj.llibreta.mira.1",
+  "who": "iri"
+ },
+ "iri904219153": {
+  "hash": "e45574e75f24f6e2",
+  "key": "obj.pila.aviat",
+  "who": "iri"
+ },
+ "iri919160154": {
+  "hash": "f6194d66e7249d01",
+  "key": "obj.llibreta.mira.2",
+  "who": "iri"
+ },
+ "iri935937773": {
+  "hash": "653921b7eec84f8d",
+  "key": "obj.llibreta.mira.3",
+  "who": "iri"
+ },
+ "iri953675151": {
+  "hash": "9dec9dfd614e289f",
+  "key": "sala.centraleta.xarxa.8",
+  "who": "iri"
+ },
+ "iri975153618": {
+  "hash": "deb4c397e1ca0a51",
+  "key": "sala.centraleta.fils.mira2",
+  "who": "iri"
+ },
+ "vet1007095689": {
+  "hash": "efa4f70bf6bcc4e7",
+  "key": "obj.walkie.mira.vet",
+  "who": "vet"
+ },
+ "vet1061324067": {
+  "hash": "2855fdb92e8711d2",
+  "key": "sala.zona_mati.bastida.mira",
+  "who": "vet"
+ },
+ "vet1073816683": {
+  "hash": "06b0b12872518f78",
+  "key": "sala.bosc_obert.avi.3",
+  "who": "vet"
+ },
+ "vet1111157854": {
+  "hash": "5252fdd71d3a138b",
+  "key": "sala.caseta_obra.altaveu.recorda",
+  "who": "vet"
+ },
+ "vet1144613990": {
+  "hash": "1076518df9f08c3d",
+  "key": "obj.centim.cargol",
+  "who": "vet"
+ },
+ "vet1174482397": {
+  "hash": "78b8ab9038764e1d",
+  "key": "sala.bosc_obert.avi.5",
+  "who": "vet"
+ },
+ "vet1196389355": {
+  "hash": "1364594df8b17ece",
+  "key": "pj.bufo.mira.vet",
+  "who": "vet"
+ },
+ "vet1213459078": {
+  "hash": "edddb71b257bd3a9",
+  "key": "sala.zona_mati.bastida.res",
+  "who": "vet"
+ },
+ "vet1255111856": {
+  "hash": "385323d2a7e9e546",
+  "key": "dlg.walkie.e2.2",
+  "who": "vet"
+ },
+ "vet1262456042": {
+  "hash": "1a2981a6bf991b3e",
+  "key": "sala.caseta_obra.intro.4",
+  "who": "vet"
+ },
+ "vet1280593464": {
+  "hash": "887ed8cccd09a8e9",
+  "key": "sala.zona_mati.txell.mira",
+  "who": "vet"
+ },
+ "vet1290002838": {
+  "hash": "8fd9e3ed1c4d9f61",
+  "key": "dlg.urtica.opt.adeu2",
+  "who": "vet"
+ },
+ "vet1308267922": {
+  "hash": "74593720d50cba25",
+  "key": "obj.walkie.mira.crit",
+  "who": "vet"
+ },
+ "vet1329581743": {
+  "hash": "3b6585d89dfee1f4",
+  "key": "pj.espora.vet.1",
+  "who": "vet"
+ },
+ "vet1355777570": {
+  "hash": "6b251e1f435fcee7",
+  "key": "dlg.walkie.e2.4",
+  "who": "vet"
+ },
+ "vet1363136981": {
+  "hash": "89a175487b6a6840",
+  "key": "pj.espora.vet.3",
+  "who": "vet"
+ },
+ "vet1363231757": {
+  "hash": "3901742b4f8103b4",
+  "key": "sala.zona_mati.urtica.mira",
+  "who": "vet"
+ },
+ "vet1363848356": {
+  "hash": "0fbeec26125f8bc2",
+  "key": "dlg.walkie.e3.3",
+  "who": "vet"
+ },
+ "vet1383445476": {
+  "hash": "961449c931ba400e",
+  "key": "dlg.txell.canal7.3",
+  "who": "vet"
+ },
+ "vet1390224977": {
+  "hash": "b42560606ab14f05",
+  "key": "pj.espora.mira.vet",
+  "who": "vet"
+ },
+ "vet1397403594": {
+  "hash": "f5dbcbdada03a619",
+  "key": "dlg.walkie.e3.1",
+  "who": "vet"
+ },
+ "vet1425678946": {
+  "hash": "0385d6a8a56bc344",
+  "key": "sala.bosc_obert.taula.10",
+  "who": "vet"
+ },
+ "vet1435495935": {
+  "hash": "24115c3ae257f37e",
+  "key": "obj.xiulet.ara_no",
+  "who": "vet"
+ },
  "vet144062022": {
   "hash": "d60e4ad2a8c10bb0",
   "key": "sala.campament_fades.flor.mira",
+  "who": "vet"
+ },
+ "vet146103848": {
+  "hash": "0ff18fd2fe2d6dc8",
+  "key": "dlg.urtica.opt.naturaplus",
+  "who": "vet"
+ },
+ "vet1463129214": {
+  "hash": "328ba02eb8162ff7",
+  "key": "dlg.txell.opt.forta",
+  "who": "vet"
+ },
+ "vet1472040196": {
+  "hash": "04dbbbe45077c1e1",
+  "key": "ui.defecte.use",
+  "who": "vet"
+ },
+ "vet1480125710": {
+  "hash": "db8c284548458687",
+  "key": "sala.zona_mati.intro.2",
+  "who": "vet"
+ },
+ "vet149531745": {
+  "hash": "23e4283493843e30",
+  "key": "sala.caseta_obra.altaveu.no.b",
+  "who": "vet"
+ },
+ "vet1513680948": {
+  "hash": "d1b84f707f1e0073",
+  "key": "sala.zona_mati.intro.4",
+  "who": "vet"
+ },
+ "vet1559435420": {
+  "hash": "f4f095c78e0f4181",
+  "key": "obj.llimona.cargol",
+  "who": "vet"
+ },
+ "vet1595423777": {
+  "hash": "e6d92d1698140804",
+  "key": "sala.zona_zero.xiulet.tard",
+  "who": "vet"
+ },
+ "vet167472668": {
+  "hash": "e3849a83373eccc3",
+  "key": "sala.zona_zero.crit.10",
+  "who": "vet"
+ },
+ "vet1733085952": {
+  "hash": "16e3654587ead7ac",
+  "key": "ui.defecte.talkTo.vet.3",
+  "who": "vet"
+ },
+ "vet1749863571": {
+  "hash": "50cbfca154d041cc",
+  "key": "ui.defecte.talkTo.vet.2",
+  "who": "vet"
+ },
+ "vet1752998027": {
+  "hash": "ca550f9878a89f61",
+  "key": "dlg.bufo.segell.14",
+  "who": "vet"
+ },
+ "vet1758226149": {
+  "hash": "dd764ba0c581c711",
+  "key": "sala.bosc_obert.porta_oberta.mira",
+  "who": "vet"
+ },
+ "vet1830660714": {
+  "hash": "2df9cbe08606d538",
+  "key": "ui.defecte.give.vet.3",
+  "who": "vet"
+ },
+ "vet1839463523": {
+  "hash": "b97b82cf5dda63b2",
+  "key": "pj.urtica.mira.bosc",
+  "who": "vet"
+ },
+ "vet1842244725": {
+  "hash": "1f9bef7ed840fa2b",
+  "key": "sala.caseta_obra.altaveu.mira",
+  "who": "vet"
+ },
+ "vet1842974961": {
+  "hash": "a82d156155fc0702",
+  "key": "pj.iri.parla.2",
+  "who": "vet"
+ },
+ "vet1847438333": {
+  "hash": "4844eeb21c55c494",
+  "key": "ui.defecte.give.vet.2",
+  "who": "vet"
+ },
+ "vet1853663741": {
+  "hash": "e91220fbd22af2fa",
+  "key": "dlg.bufo.segell.12",
+  "who": "vet"
+ },
+ "vet1865979273": {
+  "hash": "7ae1b465bab46c0b",
+  "key": "sala.bosc_obert.secret.3",
+  "who": "vet"
+ },
+ "vet1880276616": {
+  "hash": "643b3c61d776befd",
+  "key": "pj.iri.mira",
+  "who": "vet"
+ },
+ "vet1882075610": {
+  "hash": "17b1cd6fc4f029af",
+  "key": "dlg.walkie.e4.2",
+  "who": "vet"
+ },
+ "vet1893265111": {
+  "hash": "68397d5a2d103d8b",
+  "key": "dlg.urtica.opt.empeny",
+  "who": "vet"
+ },
+ "vet1908987024": {
+  "hash": "484b2a2559f38d50",
+  "key": "dlg.pla.opt.altaveu",
   "who": "vet"
  },
  "vet1972000243": {
@@ -279,9 +1524,104 @@
   "key": "sala.campament_fades.tenda.mira",
   "who": "vet"
  },
+ "vet1982875774": {
+  "hash": "f45367d9c4d3d43f",
+  "key": "dlg.urtica.opt.pla",
+  "who": "vet"
+ },
+ "vet2001685152": {
+  "hash": "d795442e2defe29a",
+  "key": "dlg.pla.aire.2",
+  "who": "vet"
+ },
+ "vet20188921": {
+  "hash": "04dbbbe45077c1e1",
+  "key": "ui.defecte",
+  "who": "vet"
+ },
+ "vet2028775637": {
+  "hash": "c75beb6ffa51186e",
+  "key": "dlg.walkie.e1b.2",
+  "who": "vet"
+ },
+ "vet2054003390": {
+  "hash": "ad2deb48c11f29d2",
+  "key": "sala.bosc_obert.porta_oberta.entra",
+  "who": "vet"
+ },
+ "vet2057595351": {
+  "hash": "2bd2be6d083fed52",
+  "key": "pj.espora.vet.mores.1",
+  "who": "vet"
+ },
+ "vet2057736403": {
+  "hash": "e91cdd031f7611ad",
+  "key": "ui.defecte.close",
+  "who": "vet"
+ },
+ "vet2091150589": {
+  "hash": "a9a4feb6ecd7da78",
+  "key": "pj.espora.vet.mores.3",
+  "who": "vet"
+ },
+ "vet2096712984": {
+  "hash": "78c46298029baa3c",
+  "key": "dlg.walkie.e7.3",
+  "who": "vet"
+ },
+ "vet2109292219": {
+  "hash": "a3bab26aa87fb16c",
+  "key": "sala.bosc_obert.taula.polsera",
+  "who": "vet"
+ },
+ "vet2118323702": {
+  "hash": "a491edc42a5a0d53",
+  "key": "obs.obs_cartell.1",
+  "who": "vet"
+ },
  "vet2123288533": {
   "hash": "47af63b4329e2981",
   "key": "obs.obs_ortiga.1",
+  "who": "vet"
+ },
+ "vet2130268222": {
+  "hash": "f5dbcbdada03a619",
+  "key": "dlg.walkie.e7.1",
+  "who": "vet"
+ },
+ "vet2137543001": {
+  "hash": "7280201a57ffb7de",
+  "key": "dlg.pla.opt.aire",
+  "who": "vet"
+ },
+ "vet2140124377": {
+  "hash": "731c2a4ef6dc2260",
+  "key": "ui.defecte.open",
+  "who": "vet"
+ },
+ "vet2177352908": {
+  "hash": "1e2ba2b43f81d94c",
+  "key": "sala.zona_mati.bastida.kit",
+  "who": "vet"
+ },
+ "vet2229775758": {
+  "hash": "168ddab500479d03",
+  "key": "sala.zona_mati.fi.3",
+  "who": "vet"
+ },
+ "vet2248150034": {
+  "hash": "1e5b1d532afc27a1",
+  "key": "sala.zona_zero.xiulet.6",
+  "who": "vet"
+ },
+ "vet2265365432": {
+  "hash": "d8a8f9933cb09979",
+  "key": "dlg.walkie.e6a2.3",
+  "who": "vet"
+ },
+ "vet2280108615": {
+  "hash": "e7e0e5120683807a",
+  "key": "sala.zona_mati.fi.4",
   "who": "vet"
  },
  "vet2282030887": {
@@ -289,14 +1629,44 @@
   "key": "obs.obs_aglans.1",
   "who": "vet"
  },
+ "vet2298920670": {
+  "hash": "f5dbcbdada03a619",
+  "key": "dlg.walkie.e6a2.1",
+  "who": "vet"
+ },
+ "vet2313663853": {
+  "hash": "643ab6a22940777f",
+  "key": "sala.zona_mati.fi.6",
+  "who": "vet"
+ },
  "vet2356086174": {
   "hash": "9b415866843c63f2",
   "key": "sala.campament_fades.catapulta.mira",
   "who": "vet"
  },
+ "vet2368800280": {
+  "hash": "a6305ecd1a9a86e6",
+  "key": "sala.bosc_obert.bolets.mira",
+  "who": "vet"
+ },
+ "vet240572": {
+  "hash": "b14ca37369a6f18f",
+  "key": "sala.centraleta.grava.11",
+  "who": "vet"
+ },
  "vet242354007": {
   "hash": "41eba182fa89d5fe",
   "key": "sala.campament_fades.intro.7",
+  "who": "vet"
+ },
+ "vet2431408853": {
+  "hash": "50cd6c7a62d885b2",
+  "key": "dlg.txell.opt.adeu",
+  "who": "vet"
+ },
+ "vet2438199956": {
+  "hash": "b2244874e6cbc08c",
+  "key": "sala.zona_mati.formigonera.mira",
   "who": "vet"
  },
  "vet243848616": {
@@ -309,9 +1679,79 @@
   "key": "sala.campament_fades.escala_corda.no",
   "who": "vet"
  },
+ "vet2472880538": {
+  "hash": "4e63602315238c94",
+  "key": "pj.card.mira",
+  "who": "vet"
+ },
+ "vet2478692612": {
+  "hash": "10b4e0605f4a307a",
+  "key": "obj.walkie.mira.iri",
+  "who": "vet"
+ },
+ "vet2496185870": {
+  "hash": "663a57b19e7fb8aa",
+  "key": "sala.zona_mati.parada.mira",
+  "who": "vet"
+ },
+ "vet2504134684": {
+  "hash": "7fb1be9340c0a1be",
+  "key": "sala.caseta_obra.cartell.mira",
+  "who": "vet"
+ },
+ "vet2523804224": {
+  "hash": "f44710a0dfabc552",
+  "key": "ui.defecte.open.vet",
+  "who": "vet"
+ },
+ "vet2546860874": {
+  "hash": "7e528897beb03033",
+  "key": "dlg.urtica.opt.avia",
+  "who": "vet"
+ },
  "vet259131626": {
   "hash": "63ff691ea3bed807",
   "key": "sala.campament_fades.intro.4",
+  "who": "vet"
+ },
+ "vet2605542880": {
+  "hash": "5c294421b867e441",
+  "key": "dlg.urtica.opt.adeu",
+  "who": "vet"
+ },
+ "vet2619700804": {
+  "hash": "107d85030393b61f",
+  "key": "ui.defecte.look.vet.3",
+  "who": "vet"
+ },
+ "vet2636478423": {
+  "hash": "ebe4702c0b81f94a",
+  "key": "ui.defecte.look.vet.2",
+  "who": "vet"
+ },
+ "vet2644314197": {
+  "hash": "7f4786a96688e4d6",
+  "key": "sala.caseta_obra.maqueta.toca",
+  "who": "vet"
+ },
+ "vet2656183800": {
+  "hash": "46d7dafc5d4df1a4",
+  "key": "dlg.pla.opt.ocells",
+  "who": "vet"
+ },
+ "vet2685559476": {
+  "hash": "75790a662c79767b",
+  "key": "ui.defecte.push.vet.2",
+  "who": "vet"
+ },
+ "vet2702337095": {
+  "hash": "9cd5afa2f601be7e",
+  "key": "ui.defecte.push.vet.3",
+  "who": "vet"
+ },
+ "vet2702985875": {
+  "hash": "cae7cc2a6e45bce0",
+  "key": "sala.caseta_obra.wifi.6",
   "who": "vet"
  },
  "vet2735656210": {
@@ -319,9 +1759,64 @@
   "key": "sala.campament_fades.diana.mira",
   "who": "vet"
  },
+ "vet2736541113": {
+  "hash": "b443b1c8525a5245",
+  "key": "sala.caseta_obra.wifi.4",
+  "who": "vet"
+ },
+ "vet2763461445": {
+  "hash": "d6bd9ee6df284a64",
+  "key": "sala.caseta_obra.arbre_wifi.fet",
+  "who": "vet"
+ },
+ "vet2779487931": {
+  "hash": "69ebe08952e14cd2",
+  "key": "dlg.walkie.e1.4",
+  "who": "vet"
+ },
+ "vet2822491334": {
+  "hash": "5951f2a154fb35c8",
+  "key": "pj.urtica.parla.bosc2",
+  "who": "vet"
+ },
+ "vet2833100522": {
+  "hash": "c7001013c5f30b6d",
+  "key": "sala.zona_mati.avia.mira",
+  "who": "vet"
+ },
+ "vet2848874552": {
+  "hash": "8fbe8d37bce1653e",
+  "key": "sala.zona_mati.pantalla.mira",
+  "who": "vet"
+ },
+ "vet2866660844": {
+  "hash": "ee254e715e384c6a",
+  "key": "obj.pila.feta",
+  "who": "vet"
+ },
+ "vet2880153645": {
+  "hash": "bde89d78f63a615a",
+  "key": "dlg.walkie.e1.2",
+  "who": "vet"
+ },
+ "vet2900744097": {
+  "hash": "ec44330feb8dd5ce",
+  "key": "ui.defecte.give.vet",
+  "who": "vet"
+ },
  "vet2929153593": {
   "hash": "bfadc40bbc178a85",
   "key": "sala.campament_fades.flor.agafa",
+  "who": "vet"
+ },
+ "vet3086622959": {
+  "hash": "22b9a685d074aaea",
+  "key": "obs.obs_maqueta.1",
+  "who": "vet"
+ },
+ "vet3099509740": {
+  "hash": "aefb2350e53bda58",
+  "key": "ui.defecte.pickUp.vet",
   "who": "vet"
  },
  "vet3117025550": {
@@ -329,14 +1824,69 @@
   "key": "sala.campament_fades.branca.mira",
   "who": "vet"
  },
+ "vet314790103": {
+  "hash": "f0d83e4327bf2d74",
+  "key": "sala.caseta_obra.altaveu.quin",
+  "who": "vet"
+ },
+ "vet3215675359": {
+  "hash": "12645d86fe4733d2",
+  "key": "pj.pla.mira",
+  "who": "vet"
+ },
+ "vet3242423462": {
+  "hash": "21c435b88eb42ef5",
+  "key": "sala.zona_mati.urtica.4",
+  "who": "vet"
+ },
+ "vet3301969476": {
+  "hash": "c3b3a880223bb1ba",
+  "key": "sala.zona_mati.sensors.mira",
+  "who": "vet"
+ },
+ "vet3313550696": {
+  "hash": "2a2e9d27db200916",
+  "key": "obj.kit.doblega.2",
+  "who": "vet"
+ },
  "vet3317876127": {
   "hash": "d6425058af539ba2",
   "key": "sala.campament_fades.grafits.mira",
   "who": "vet"
  },
+ "vet3363883553": {
+  "hash": "b729671994a99ea1",
+  "key": "obj.kit.doblega.1",
+  "who": "vet"
+ },
  "vet3381144606": {
   "hash": "b22778a7a147f411",
   "key": "sala.campament_fades.escala_corda.mira",
+  "who": "vet"
+ },
+ "vet3394902233": {
+  "hash": "5949eb92cdb6b70f",
+  "key": "sala.caseta_obra.altaveu.fet",
+  "who": "vet"
+ },
+ "vet3445894866": {
+  "hash": "24449b6ee9835963",
+  "key": "ui.defecte.close.vet.2",
+  "who": "vet"
+ },
+ "vet3462672485": {
+  "hash": "c4ab82528d8eafe3",
+  "key": "ui.defecte.close.vet.3",
+  "who": "vet"
+ },
+ "vet3505785657": {
+  "hash": "60a94277875599f6",
+  "key": "sala.caseta_obra.arbre_wifi.mira",
+  "who": "vet"
+ },
+ "vet3557462536": {
+  "hash": "daa1313ea6b30cfa",
+  "key": "dlg.walkie.e5.1",
   "who": "vet"
  },
  "vet3574764939": {
@@ -349,9 +1899,34 @@
   "key": "sala.campament_fades.empenta.2",
   "who": "vet"
  },
+ "vet3602305646": {
+  "hash": "64224fbf7db5fd5c",
+  "key": "ui.defecte.pull",
+  "who": "vet"
+ },
  "vet3608320177": {
   "hash": "0aa3103a0db089a2",
   "key": "sala.campament_fades.empenta.12",
+  "who": "vet"
+ },
+ "vet366242041": {
+  "hash": "4bd4cd92f5a0983f",
+  "key": "sala.caseta_obra.porta.no",
+  "who": "vet"
+ },
+ "vet3679537511": {
+  "hash": "f85b666ac0f2ed42",
+  "key": "obj.lupa.sola",
+  "who": "vet"
+ },
+ "vet3694236908": {
+  "hash": "124169d29611a954",
+  "key": "obj.llimona.centim",
+  "who": "vet"
+ },
+ "vet3702235885": {
+  "hash": "64224fbf7db5fd5c",
+  "key": "ui.defecte.push",
   "who": "vet"
  },
  "vet3702356946": {
@@ -359,9 +1934,129 @@
   "key": "sala.campament_fades.empenta.4",
   "who": "vet"
  },
+ "vet3726048968": {
+  "hash": "0c48a387b0a589ba",
+  "key": "ui.defecte.open.vet.2",
+  "who": "vet"
+ },
+ "vet3742826587": {
+  "hash": "9af51b7c435c7c1c",
+  "key": "ui.defecte.open.vet.3",
+  "who": "vet"
+ },
  "vet3743539419": {
   "hash": "a6f46cacea953c2f",
   "key": "sala.campament_fades.gronxador.mira",
+  "who": "vet"
+ },
+ "vet3744832976": {
+  "hash": "2ba72b1f9c358cdf",
+  "key": "sala.caseta_obra.canal7.4",
+  "who": "vet"
+ },
+ "vet3778388214": {
+  "hash": "1c620ce8233354da",
+  "key": "sala.caseta_obra.canal7.6",
+  "who": "vet"
+ },
+ "vet3792377390": {
+  "hash": "ec9554efc2fb77fb",
+  "key": "sala.toll_gripaus.intro.3",
+  "who": "vet"
+ },
+ "vet3802218668": {
+  "hash": "0128880a9683419e",
+  "key": "ui.defecte.give",
+  "who": "vet"
+ },
+ "vet3837281131": {
+  "hash": "ee63393cb012f1e1",
+  "key": "dlg.pla.opt.bosc",
+  "who": "vet"
+ },
+ "vet3845498690": {
+  "hash": "cba8fb2b9b3a661a",
+  "key": "sala.caseta_obra.canal7.2",
+  "who": "vet"
+ },
+ "vet3868681413": {
+  "hash": "92babdb854ece396",
+  "key": "sala.zona_zero.dhora.4",
+  "who": "vet"
+ },
+ "vet389403401": {
+  "hash": "a8d36a66f2e7a105",
+  "key": "dlg.pla.opt.adeu",
+  "who": "vet"
+ },
+ "vet3911388086": {
+  "hash": "20b2a6e1652d3714",
+  "key": "sala.bosc_obert.forats.mira",
+  "who": "vet"
+ },
+ "vet3919135732": {
+  "hash": "6a06d539e26d7ce8",
+  "key": "dlg.pla.altaveu.3",
+  "who": "vet"
+ },
+ "vet3927631888": {
+  "hash": "e25ff3f3aa90c252",
+  "key": "dlg.walkie.e6a.3",
+  "who": "vet"
+ },
+ "vet3928150648": {
+  "hash": "f0107000afbebb42",
+  "key": "dlg.pla.opt.vells",
+  "who": "vet"
+ },
+ "vet3961187126": {
+  "hash": "f5dbcbdada03a619",
+  "key": "dlg.walkie.e6a.1",
+  "who": "vet"
+ },
+ "vet3975070973": {
+  "hash": "7ece08a32bb902c2",
+  "key": "sala.zona_mati.soques.mira",
+  "who": "vet"
+ },
+ "vet3975237045": {
+  "hash": "6acfb58a98f8ae62",
+  "key": "ui.defecte.pickUp",
+  "who": "vet"
+ },
+ "vet3991727225": {
+  "hash": "f0bb978646bf2902",
+  "key": "sala.caseta_obra.porta.mira",
+  "who": "vet"
+ },
+ "vet4044137020": {
+  "hash": "65181fc44353205a",
+  "key": "ui.defecte.pickUp.vet.2",
+  "who": "vet"
+ },
+ "vet4051018898": {
+  "hash": "02f5a03c5bb7b2d1",
+  "key": "dlg.txell.opt.canal7",
+  "who": "vet"
+ },
+ "vet4054593919": {
+  "hash": "1884870bd4184982",
+  "key": "sala.zona_mati.altaveu.mira",
+  "who": "vet"
+ },
+ "vet4060914639": {
+  "hash": "9fec6a48eb0ddd09",
+  "key": "ui.defecte.pickUp.vet.3",
+  "who": "vet"
+ },
+ "vet4087803443": {
+  "hash": "f638125c0168498e",
+  "key": "sala.caseta_obra.maqueta.mira",
+  "who": "vet"
+ },
+ "vet4114409026": {
+  "hash": "ed5333a27ea3d9a2",
+  "key": "ui.defecte.use.vet.3",
   "who": "vet"
  },
  "vet4128281955": {
@@ -369,9 +2064,149 @@
   "key": "sala.campament_fades.gronxador.seu",
   "who": "vet"
  },
+ "vet4131186645": {
+  "hash": "840b1e92634658bd",
+  "key": "ui.defecte.use.vet.2",
+  "who": "vet"
+ },
+ "vet4150943125": {
+  "hash": "d657ab9a7e37c301",
+  "key": "dlg.urtica.opt.apunteu",
+  "who": "vet"
+ },
+ "vet4159986528": {
+  "hash": "3d712abad150d802",
+  "key": "sala.bosc_obert.taula.mira",
+  "who": "vet"
+ },
+ "vet416892419": {
+  "hash": "096ded81afb1d99e",
+  "key": "ui.defecte.pull.vet",
+  "who": "vet"
+ },
+ "vet4182940308": {
+  "hash": "e47f24df1bf3acb5",
+  "key": "ui.defecte.push.vet",
+  "who": "vet"
+ },
+ "vet4193715073": {
+  "hash": "8549549dce3e02fa",
+  "key": "pj.pica.mira",
+  "who": "vet"
+ },
+ "vet4233036045": {
+  "hash": "fb4fcb15b0941019",
+  "key": "sala.zona_mati.escenari.mira",
+  "who": "vet"
+ },
+ "vet4240267058": {
+  "hash": "2f03bb3a85910c2f",
+  "key": "ui.defecte.close.vet",
+  "who": "vet"
+ },
+ "vet4266877521": {
+  "hash": "145d598b8a4c0b3c",
+  "key": "sala.caseta_obra.arbre_wifi.mira2",
+  "who": "vet"
+ },
+ "vet437754978": {
+  "hash": "26b2a2dea4bfd0fd",
+  "key": "sala.caseta_obra.arbre_wifi.saluda",
+  "who": "vet"
+ },
+ "vet465590789": {
+  "hash": "87af105dbb5d2307",
+  "key": "dlg.walkie.e2m.4",
+  "who": "vet"
+ },
+ "vet469024957": {
+  "hash": "ea41512cea9f7a86",
+  "key": "pj.vet.parla.1",
+  "who": "vet"
+ },
+ "vet473580810": {
+  "hash": "b318d6dcb6807233",
+  "key": "dlg.walkie.e3b.1",
+  "who": "vet"
+ },
+ "vet508591144": {
+  "hash": "e528d965a4513c13",
+  "key": "obs.obs_sensors.1",
+  "who": "vet"
+ },
+ "vet513701258": {
+  "hash": "1a52cf17e4782461",
+  "key": "pj.avia.mira.vet",
+  "who": "vet"
+ },
+ "vet516651767": {
+  "hash": "8c5e8ed3705ba4ae",
+  "key": "dlg.urtica.opt.espora",
+  "who": "vet"
+ },
+ "vet51894251": {
+  "hash": "4484c57673362ef5",
+  "key": "ui.defecte.look.vet",
+  "who": "vet"
+ },
+ "vet555413497": {
+  "hash": "efa4f70bf6bcc4e7",
+  "key": "obj.walkie.mira.canal",
+  "who": "vet"
+ },
+ "vet558684115": {
+  "hash": "8efe6870a2524e77",
+  "key": "sala.bosc_obert.taula.2",
+  "who": "vet"
+ },
  "vet573619907": {
   "hash": "0294e5128f67cf70",
   "key": "sala.campament_fades.melmelada.1",
+  "who": "vet"
+ },
+ "vet575844987": {
+  "hash": "01a521cb638cb8e1",
+  "key": "sala.bosc_obert.bolets.agafa",
+  "who": "vet"
+ },
+ "vet625794591": {
+  "hash": "11763524e046bfaf",
+  "key": "sala.bosc_obert.taula.6",
+  "who": "vet"
+ },
+ "vet634711102": {
+  "hash": "a03aab8505629630",
+  "key": "sala.zona_mati.bastida.feta",
+  "who": "vet"
+ },
+ "vet64999360": {
+  "hash": "1056815779ecef4e",
+  "key": "pj.urtica.mira",
+  "who": "vet"
+ },
+ "vet65621740": {
+  "hash": "6d3943a320e58545",
+  "key": "ui.defecte.pull.vet.3",
+  "who": "vet"
+ },
+ "vet666402316": {
+  "hash": "66dc63f6eba9fba9",
+  "key": "obj.kit.mira.mati",
+  "who": "vet"
+ },
+ "vet691279075": {
+  "hash": "b806670d6bc4ed22",
+  "key": "sala.caseta_obra.escriptori.mira",
+  "who": "vet"
+ },
+ "vet696260677": {
+  "hash": "a1c3ded2432a3888",
+  "key": "sala.caseta_obra.escriptori.toca",
+  "who": "vet"
+ },
+ "vet697600140": {
+  "hash": "8d022d03436ea8fe",
+  "key": "dlg.urtica.opt.flor",
   "who": "vet"
  },
  "vet707840859": {
@@ -384,6 +2219,26 @@
   "key": "obs.pista.vet",
   "who": "vet"
  },
+ "vet807868207": {
+  "hash": "8d0d62a9a9604c76",
+  "key": "dlg.txell.opt.germana",
+  "who": "vet"
+ },
+ "vet815012870": {
+  "hash": "57ddcc2869435686",
+  "key": "ui.defecte.look",
+  "who": "vet"
+ },
+ "vet818494440": {
+  "hash": "68e37d8b6005a87a",
+  "key": "obj.llibreta.mira.4",
+  "who": "vet"
+ },
+ "vet82399359": {
+  "hash": "3f1fffed048b2f02",
+  "key": "ui.defecte.pull.vet.2",
+  "who": "vet"
+ },
  "vet830432446": {
   "hash": "24337c1bc71b1065",
   "key": "sala.campament_fades.branca.camina",
@@ -392,6 +2247,66 @@
  "vet833092476": {
   "hash": "4ca87e49a799687d",
   "key": "sala.campament_fades.flor.pot",
+  "who": "vet"
+ },
+ "vet835272059": {
+  "hash": "58882f4479f97709",
+  "key": "obj.llibreta.mira.5",
+  "who": "vet"
+ },
+ "vet850844094": {
+  "hash": "268b275bd15580a8",
+  "key": "sala.zona_mati.txell.mira2",
+  "who": "vet"
+ },
+ "vet852049678": {
+  "hash": "d5b152bbf36cff7d",
+  "key": "obj.llibreta.mira.6",
+  "who": "vet"
+ },
+ "vet861898139": {
+  "hash": "3a7bdb0ea4fe2b56",
+  "key": "sala.zona_mati.bastida.1",
+  "who": "vet"
+ },
+ "vet866374710": {
+  "hash": "cbaaa5dbef58cb5a",
+  "key": "dlg.walkie.e2b.2",
+  "who": "vet"
+ },
+ "vet898341146": {
+  "hash": "1c7cabdabe673ac0",
+  "key": "ui.defecte.talkTo",
+  "who": "vet"
+ },
+ "vet899069545": {
+  "hash": "c4bc7393f8c9c44a",
+  "key": "ui.defecte.use.vet",
+  "who": "vet"
+ },
+ "vet902382535": {
+  "hash": "ea6e3b08e1901b4c",
+  "key": "obj.llibreta.mira.1",
+  "who": "vet"
+ },
+ "vet904219153": {
+  "hash": "ef8691f0e2842bbe",
+  "key": "obj.pila.aviat",
+  "who": "vet"
+ },
+ "vet919160154": {
+  "hash": "db682ed37c11f7c1",
+  "key": "obj.llibreta.mira.2",
+  "who": "vet"
+ },
+ "vet935378383": {
+  "hash": "ead5364b3fe129df",
+  "key": "ui.defecte.talkTo.vet",
+  "who": "vet"
+ },
+ "vet935937773": {
+  "hash": "963c23752639d77d",
+  "key": "obj.llibreta.mira.3",
   "who": "vet"
  }
 }
