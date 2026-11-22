@@ -13,6 +13,7 @@ al dia `npm run benne:sync`) i la configuració `game/audio/veus.json`:
       "codi": { "tub.envia": ["vet"], "sync.aeroport.reinici1": "narrator" },  // opcional: línies del codi del joc
       "sense_veu": ["sala.bcmu_escombraries.llibre.bip"],  // opcional: claus (o començaments de clau) que no es diuen
       "veu": { "obj.nota_vet.text": "vet" },  // opcional: línies del narrador dites amb la veu d'un personatge (notes, hologrames)
+      "variables": { "observacions": [0, 1, 2] },   // opcional: valors de les variables, per gravar-ne cada versió
       "jugadora": { "bosc_obert": "vet", "walkie.e3": "vet" }   // opcional: qui juga a una sala compartida, a un
                                                               // diàleg o a un node d'un diàleg (si no, es dedueix)
     }
@@ -46,7 +47,7 @@ gravi amb la veu d'un personatge: el text surt igual a la pantalla, i el fitxer 
 les que diuen com es parla queden com a etiqueta del v3: «(al walkie, xiuxiuejant) Iri.» → «[whispers] Iri.» (ETIQUETES).
 Una línia que només és acotació («(Tus, tus.)») no té veu. El que hi ha a `text` de veus.json s'envia tal qual.
 """
-import argparse, glob, hashlib, json, os, pathlib, re, sys, urllib.error, urllib.request
+import argparse, glob, hashlib, itertools, json, os, pathlib, re, sys, urllib.error, urllib.request
 
 SENSE_VEU = {"title"}
 
@@ -301,6 +302,7 @@ def main():
     sense_veu = cfg.get("sense_veu", [])
     veu_de = cfg.get("veu", {})
     jugadora = cfg.get("jugadora", {})
+    variables = cfg.get("variables", {})
 
     def veu_narrador(key):
         """El personatge amb la veu del qual es diu una línia del narrador (`veu` de veus.json), o el narrador."""
@@ -341,39 +343,47 @@ def main():
         if not speakers:
             skipped.append((key, "no se sap quina protagonista la diu"))
             continue
-        text = overrides.get(key, table.get(key, ""))
-        if not text or "{" in text:
-            skipped.append((key, "sense text" if not text else "té variables"))
+        base = overrides.get(key, table.get(key, ""))
+        if not base:
+            skipped.append((key, "sense text"))
             continue
-        if key not in overrides:
-            text = per_dir(text)
-            if not text:
-                skipped.append((key, "és una acotació"))
-                continue
-            for tros, dit in pronuncia:
-                text = text.replace(tros, dit)
-            text = re.sub(r"\s+", " ", text).strip()
-        for sp in speakers:
-            amb = veu_narrador(key) if sp == "narrator" else sp      # de qui és la veu
-            if amb not in voices:
-                if amb != "narrator":
-                    skipped.append((key, f"{amb} no té veu a veus.json"))
-                continue
-            if amb != sp:
-                stem = f"{to_benne.get(sp, sp)}{fnv1a(key)}"
-                if stem not in seen:
-                    seen.add(stem)
-                    jobs.append((stem, amb, key, text, voices[amb]))
-                continue
-            if sp not in voices:
-                if sp != "narrator":                    # un joc sense veu de narrador: no cal dir-ho línia a línia
-                    skipped.append((key, f"{sp} no té veu a veus.json"))
-                continue
-            stem = f"{to_benne.get(sp, sp)}{fnv1a(key)}"
-            if stem in seen:
-                continue
-            seen.add(stem)
-            jobs.append((stem, sp, key, text, voices[sp]))
+        # Les línies amb variables (`{observacions} de 12`) es graven un cop per valor (`variables` de veus.json). El
+        # número de la veu surt de la clau i el text com el mostra el joc (`clau|5 de 12`); vegeu `voiced` al pont.
+        noms = re.findall(r"\{(\w+)\}", base)
+        if noms and not all(n in variables for n in noms):
+            skipped.append((key, "té variables"))
+            continue
+        variants = [(key, base, base)]
+        if noms:
+            variants = []
+            for valors in itertools.product(*(variables[n] for n in noms)):
+                dit = vist = base
+                for n, v in zip(noms, valors):
+                    dit, vist = dit.replace("{" + n + "}", str(v)), vist.replace("{" + n + "}", str(v))
+                vist = table.get(key, "")
+                for n, v in zip(noms, valors):
+                    vist = vist.replace("{" + n + "}", str(v))
+                variants.append((f"{key}|{vist}", dit, vist))
+        for vkey, text, _vist in variants:
+            if key not in overrides:
+                text = per_dir(text)
+                if not text:
+                    skipped.append((key, "és una acotació"))
+                    break
+                for tros, dit in pronuncia:
+                    text = text.replace(tros, dit)
+                text = re.sub(r"\s+", " ", text).strip()
+            for sp in speakers:
+                amb = veu_narrador(key) if sp == "narrator" else sp      # de qui és la veu
+                if amb not in voices:
+                    if amb != "narrator":                # un joc sense veu de narrador: no cal dir-ho línia a línia
+                        skipped.append((key, f"{amb} no té veu a veus.json"))
+                    continue
+                stem = f"{to_benne.get(sp, sp)}{fnv1a(vkey)}"
+                if stem in seen:
+                    continue
+                seen.add(stem)
+                jobs.append((stem, amb, key, text, voices[amb]))
 
     todo = []
     for stem, sp, key, text, vid in jobs:

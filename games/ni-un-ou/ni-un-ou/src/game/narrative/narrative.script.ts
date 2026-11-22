@@ -457,7 +457,7 @@ function endDialog(dialog: DialogHandle) {
 
 function refreshOptions(dialog: DialogHandle, choices: ResolvedChoice[]) {
   // L'opció triada es diu en veu alta: la seva veu, que ja vingui.
-  preloadLineVoices(choices.map((c) => ({ who: 'player', key: c.key })))
+  preloadLineVoices(choices.map((c) => ({ who: 'player', key: c.key, text: c.text })))
   const available = new Set(choices.map((c) => optionName(c.node, c.id)));
   for (const [name, option] of Object.entries(dialog.options)) {
     if (available.has(name)) option.on();

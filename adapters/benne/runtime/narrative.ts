@@ -75,28 +75,38 @@ export function voiceNumber(key: string): string {
   return String(h);
 }
 
-/** El text d'una línia amb la marca de veu davant, si `benneId` té gravada la clau `key`. */
+/**
+ * El número de la veu que `benneId` té gravada per a una línia, o `null`. Primer per la clau; les línies amb variables
+ * («{observacions} de 12») es graven un cop per valor, amb el número de la clau i el text tal com surt (`clau|5 de 12`).
+ */
+function recordedVoiceNumber(benneId: string, key: string | undefined, text: string | undefined): string | null {
+  if (!key || !voicesOn || !voiceStems.size) return null;
+  for (const n of [voiceNumber(key), ...(text === undefined ? [] : [voiceNumber(`${key}|${text}`)])]) {
+    if (voiceStems.has(`${benneId}${n}`)) return n;
+  }
+  return null;
+}
+
+/** El text d'una línia amb la marca de veu davant, si `benneId` la té gravada. */
 export function voiced(benneId: string, key: string | undefined, text: string): string {
-  if (!key || !voicesOn || !voiceStems.size) return text;
-  const n = voiceNumber(key);
-  return voiceStems.has(`${benneId}${n}`) ? `|${n}| ${text}` : text;
+  const n = recordedVoiceNumber(benneId, key, text);
+  return n === null ? text : `|${n}| ${text}`;
 }
 
 /** La veu (`<personatge de Benne><número>`) d'una línia, si n'hi ha i han de sonar. */
-function lineVoiceStem(who: string, key: string | undefined): string | null {
-  if (!key || !voicesOn) return null;
+function lineVoiceStem(who: string, key: string | undefined, text: string | undefined): string | null {
   const benneId = who === 'player' ? player.id : who === 'narrator' ? 'narrator' : benneCharacter(who)?.id;
   if (!benneId) return null;
-  const stem = `${benneId}${voiceNumber(key)}`;
-  return voiceStems.has(stem) ? stem : null;
+  const n = recordedVoiceNumber(benneId, key, text);
+  return n === null ? null : `${benneId}${n}`;
 }
 
 /**
  * Demana al motor, per endavant, les veus d'unes línies que es diran tot seguit (una interacció, un pas de diàleg, les
  * opcions que es poden triar). Benne no les carrega en arrencar: així, quan arriba la línia, ja hi són.
  */
-export function preloadLineVoices(lines: readonly { who: string; key?: string }[]) {
-  const stems = lines.map((l) => lineVoiceStem(l.who, l.key)).filter((s): s is string => s !== null);
+export function preloadLineVoices(lines: readonly { who: string; key?: string; text?: string }[]) {
+  const stems = lines.map((l) => lineVoiceStem(l.who, l.key, l.text)).filter((s): s is string => s !== null);
   if (stems.length) game.preloadVoices(stems);
 }
 

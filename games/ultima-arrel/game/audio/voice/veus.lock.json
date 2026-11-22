@@ -804,6 +804,11 @@
   "key": "ui.defecte.look.iri.3",
   "who": "iri"
  },
+ "iri1678528912": {
+  "hash": "4521ba15a593dc4c",
+  "key": "obj.llibreta.compte",
+  "who": "iri"
+ },
  "iri1684545449": {
   "hash": "9c93105b402125ee",
   "key": "sala.vora_bosc.bolets.agafa",
@@ -817,6 +822,11 @@
  "iri1749678086": {
   "hash": "dbd42dadc07dd981",
   "key": "pj.bufo.mira",
+  "who": "iri"
+ },
+ "iri1780118939": {
+  "hash": "a3bf30dd78156026",
+  "key": "obj.llibreta.compte",
   "who": "iri"
  },
  "iri1792642104": {
@@ -962,6 +972,11 @@
  "iri2163185541": {
   "hash": "eda01c20ec0e39a2",
   "key": "sala.toll_gripaus.arxiu.mira",
+  "who": "iri"
+ },
+ "iri2187366439": {
+  "hash": "7499a7c2932c04ca",
+  "key": "obj.llibreta.compte",
   "who": "iri"
  },
  "iri2215958000": {
@@ -1134,6 +1149,11 @@
   "key": "sala.vora_bosc.cami.surt",
   "who": "iri"
  },
+ "iri2715906278": {
+  "hash": "560206e6f196a69c",
+  "key": "obj.llibreta.compte",
+  "who": "iri"
+ },
  "iri274776963": {
   "hash": "5c1eb8fa08d4f2db",
   "key": "obs.obs_soques.1",
@@ -1229,9 +1249,19 @@
   "key": "sala.toll_gripaus.comporta.mira2",
   "who": "iri"
  },
+ "iri3025605044": {
+  "hash": "8f95b3600da89ccf",
+  "key": "obj.llibreta.compte",
+  "who": "iri"
+ },
  "iri3028822207": {
   "hash": "a523fffab0eeb308",
   "key": "sala.zona_zero.pantalla.mira",
+  "who": "iri"
+ },
+ "iri3030403708": {
+  "hash": "4542fa75b98affe9",
+  "key": "obj.llibreta.compte",
   "who": "iri"
  },
  "iri3076788918": {
@@ -1247,6 +1277,11 @@
  "iri3095299697": {
   "hash": "326839621ea61bcf",
   "key": "sala.vora_bosc.excavadora.usa",
+  "who": "iri"
+ },
+ "iri3095953189": {
+  "hash": "3eba50abf1bd7a84",
+  "key": "obj.llibreta.compte",
   "who": "iri"
  },
  "iri3098351836": {
@@ -1292,6 +1327,11 @@
  "iri3158147774": {
   "hash": "cad279a42d6a71ba",
   "key": "sala.toll_gripaus.comporta.dura2",
+  "who": "iri"
+ },
+ "iri3164954873": {
+  "hash": "0e5e89daccbeeab5",
+  "key": "obj.llibreta.compte",
   "who": "iri"
  },
  "iri3165763469": {
@@ -1457,6 +1497,11 @@
  "iri3809155009": {
   "hash": "695c21c5f55f7a58",
   "key": "sala.toll_gripaus.intro.2",
+  "who": "iri"
+ },
+ "iri3833012863": {
+  "hash": "12bd7a2fcc991c79",
+  "key": "obj.llibreta.compte",
   "who": "iri"
  },
  "iri3842710247": {
@@ -1629,6 +1674,11 @@
   "key": "sala.toll_gripaus.comporta.mira",
   "who": "iri"
  },
+ "iri4281672070": {
+  "hash": "5133fc39c2d15a1f",
+  "key": "obj.llibreta.compte",
+  "who": "iri"
+ },
  "iri456803191": {
   "hash": "8009e1f67259daef",
   "key": "dlg.walkie.e3b.2",
@@ -1637,6 +1687,11 @@
  "iri478835034": {
   "hash": "31a6ed80653df141",
   "key": "sala.vora_bosc.porta_roure.tancada2",
+  "who": "iri"
+ },
+ "iri486835423": {
+  "hash": "0514523f6a14bebe",
+  "key": "obj.llibreta.compte",
   "who": "iri"
  },
  "iri504502507": {
@@ -1699,6 +1754,11 @@
   "key": "obj.kit.mira.mati",
   "who": "iri"
  },
+ "iri67243618": {
+  "hash": "6747c47edabb3182",
+  "key": "obj.llibreta.compte",
+  "who": "iri"
+ },
  "iri707997483": {
   "hash": "a270599b41cb66c7",
   "key": "obs.obs_fils.1",
@@ -1757,6 +1817,11 @@
  "iri818494440": {
   "hash": "757f5b5d97e9d36a",
   "key": "obj.llibreta.mira.4",
+  "who": "iri"
+ },
+ "iri827334553": {
+  "hash": "1956f6596212c10e",
+  "key": "obj.llibreta.compte",
   "who": "iri"
  },
  "iri829825596": {
@@ -1839,6 +1904,21 @@
   "key": "sala.centraleta.xarxa.1",
   "who": "narrator"
  },
+ "narrator1166216226": {
+  "hash": "b0cccdf2a60aa1a5",
+  "key": "obs.compte",
+  "who": "narrator"
+ },
+ "narrator1194257713": {
+  "hash": "58937741170e812f",
+  "key": "obs.compte",
+  "who": "narrator"
+ },
+ "narrator1263642808": {
+  "hash": "59af41abba6d5857",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator1333112619": {
   "hash": "1a21a5b9bc189b7d",
   "key": "dlg.txell.canal7.6",
@@ -1847,6 +1927,11 @@
  "narrator1366667857": {
   "hash": "2f4e922d36233ae2",
   "key": "dlg.txell.canal7.4",
+  "who": "narrator"
+ },
+ "narrator1371062044": {
+  "hash": "789c378860d0d507",
+  "key": "obs.compte",
   "who": "narrator"
  },
  "narrator1417000714": {
@@ -1874,6 +1959,16 @@
   "key": "sala.zona_zero.intro.2",
   "who": "narrator"
  },
+ "narrator1850630682": {
+  "hash": "f53c79b5330118d9",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
+ "narrator1883487524": {
+  "hash": "9295f0d188e39170",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator1954811507": {
   "hash": "dbd08d6b2abcce15",
   "key": "dlg.gripau.ajuda.4",
@@ -1882,6 +1977,11 @@
  "narrator1983016316": {
   "hash": "ed1bd7f1a7f6152c",
   "key": "dlg.gripau.aigua.1",
+  "who": "narrator"
+ },
+ "narrator2037131693": {
+  "hash": "a321888b721855f2",
+  "key": "obs.compte",
   "who": "narrator"
  },
  "narrator2164261939": {
@@ -1894,6 +1994,11 @@
   "key": "sala.zona_zero.xiulet.2",
   "who": "narrator"
  },
+ "narrator2187176739": {
+  "hash": "aee89cc9769bfdaa",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator2196220520": {
   "hash": "ed9d6c0385229d7e",
   "key": "sala.zona_mati.fi.1",
@@ -1904,9 +2009,19 @@
   "key": "sala.zona_zero.xiulet.3",
   "who": "narrator"
  },
+ "narrator2201077350": {
+  "hash": "f1f2cb77d2ca51f8",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator2214594796": {
   "hash": "da457e8ec2bf70f5",
   "key": "sala.zona_zero.xiulet.4",
+  "who": "narrator"
+ },
+ "narrator2232846321": {
+  "hash": "bc54384d5b050129",
+  "key": "final.taula.llibreta",
   "who": "narrator"
  },
  "narrator2281705272": {
@@ -1934,6 +2049,11 @@
   "key": "sala.bosc_obert.intro.3",
   "who": "narrator"
  },
+ "narrator2598897494": {
+  "hash": "afadc58b8617da14",
+  "key": "obs.compte",
+  "who": "narrator"
+ },
  "narrator2667784184": {
   "hash": "7d55dd83da2eac3b",
   "key": "sala.caseta_obra.ruleta.3",
@@ -1949,6 +2069,11 @@
   "key": "sala.caseta_obra.ruleta.1",
   "who": "narrator"
  },
+ "narrator2708431516": {
+  "hash": "9159f44f14b2a240",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator2719763494": {
   "hash": "f79e56b6383cc11c",
   "key": "sala.caseta_obra.wifi.5",
@@ -1957,6 +2082,11 @@
  "narrator2786873970": {
   "hash": "c5cee78cdb7e7ec4",
   "key": "sala.caseta_obra.wifi.1",
+  "who": "narrator"
+ },
+ "narrator2937929853": {
+  "hash": "86e25f2a03fd5e0f",
+  "key": "final.taula.llibreta",
   "who": "narrator"
  },
  "narrator2978680364": {
@@ -1984,6 +2114,11 @@
   "key": "sala.zona_zero.crit.4",
   "who": "narrator"
  },
+ "narrator3065459513": {
+  "hash": "3ec2bdbd354e1f4d",
+  "key": "obs.compte",
+  "who": "narrator"
+ },
  "narrator3146456554": {
   "hash": "11c607cd14c98aaa",
   "key": "sala.zona_zero.crit.3",
@@ -1997,6 +2132,16 @@
  "narrator3175366869": {
   "hash": "3e982f6a438a79c1",
   "key": "sala.centraleta.escolta.1",
+  "who": "narrator"
+ },
+ "narrator3194261344": {
+  "hash": "523d583722ad2ad0",
+  "key": "obs.compte",
+  "who": "narrator"
+ },
+ "narrator3261851083": {
+  "hash": "40177ac17c88662e",
+  "key": "final.taula.llibreta",
   "who": "narrator"
  },
  "narrator3326311557": {
@@ -2014,9 +2159,19 @@
   "key": "sala.toll_gripaus.tap.palanca.1",
   "who": "narrator"
  },
+ "narrator3538080308": {
+  "hash": "ea53eeed39d9c758",
+  "key": "obs.compte",
+  "who": "narrator"
+ },
  "narrator3618468851": {
   "hash": "cb141eef0c1832a7",
   "key": "sala.campament_fades.empenta.3",
+  "who": "narrator"
+ },
+ "narrator3625498703": {
+  "hash": "afe898ac6121a00f",
+  "key": "obs.compte",
   "who": "narrator"
  },
  "narrator3644322877": {
@@ -2084,9 +2239,39 @@
   "key": "sala.vora_bosc.campaneta.altra",
   "who": "narrator"
  },
+ "narrator401286299": {
+  "hash": "45df0aa395ff33fb",
+  "key": "obs.compte",
+  "who": "narrator"
+ },
+ "narrator4040074351": {
+  "hash": "4a0504bbe44383bb",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator4073592088": {
   "hash": "32cfb1862a03bf1a",
   "key": "dlg.bufo.segell.6",
+  "who": "narrator"
+ },
+ "narrator4074896554": {
+  "hash": "cab05d04ee1a280f",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
+ "narrator4112104762": {
+  "hash": "448ba427e289f36f",
+  "key": "obs.compte",
+  "who": "narrator"
+ },
+ "narrator4137644115": {
+  "hash": "e67ebd68a5d44b56",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
+ "narrator4160394636": {
+  "hash": "39952259fb856de2",
+  "key": "final.taula.llibreta",
   "who": "narrator"
  },
  "narrator4191035421": {
@@ -2127,6 +2312,16 @@
  "narrator709682686": {
   "hash": "1e7e392a66745b07",
   "key": "sala.bosc_obert.taula.9",
+  "who": "narrator"
+ },
+ "narrator733259569": {
+  "hash": "a1b00f7871fc098c",
+  "key": "obs.compte",
+  "who": "narrator"
+ },
+ "narrator814533331": {
+  "hash": "7edfe0f98cfcb0b3",
+  "key": "obs.compte",
   "who": "narrator"
  },
  "narrator82433912": {
@@ -2709,6 +2904,11 @@
   "key": "sala.zona_zero.crit.10",
   "who": "vet"
  },
+ "vet1678528912": {
+  "hash": "9b6a226e7646f275",
+  "key": "obj.llibreta.compte",
+  "who": "vet"
+ },
  "vet1733085952": {
   "hash": "16e3654587ead7ac",
   "key": "ui.defecte.talkTo.vet.3",
@@ -2727,6 +2927,11 @@
  "vet1758226149": {
   "hash": "dd764ba0c581c711",
   "key": "sala.bosc_obert.porta_oberta.mira",
+  "who": "vet"
+ },
+ "vet1780118939": {
+  "hash": "7c5bf25cc01505d1",
+  "key": "obj.llibreta.compte",
   "who": "vet"
  },
  "vet1830660714": {
@@ -2867,6 +3072,11 @@
  "vet2177352908": {
   "hash": "1e2ba2b43f81d94c",
   "key": "sala.zona_mati.bastida.kit",
+  "who": "vet"
+ },
+ "vet2187366439": {
+  "hash": "9aef60d884b7315d",
+  "key": "obj.llibreta.compte",
   "who": "vet"
  },
  "vet2229775758": {
@@ -3019,6 +3229,11 @@
   "key": "sala.caseta_obra.wifi.6",
   "who": "vet"
  },
+ "vet2715906278": {
+  "hash": "2d0d278e97c4b5da",
+  "key": "obj.llibreta.compte",
+  "who": "vet"
+ },
  "vet2735656210": {
   "hash": "4c5f99d0ecf7ae05",
   "key": "sala.campament_fades.diana.mira",
@@ -3074,9 +3289,24 @@
   "key": "sala.campament_fades.flor.agafa",
   "who": "vet"
  },
+ "vet3025605044": {
+  "hash": "5f76d16a89cc08c3",
+  "key": "obj.llibreta.compte",
+  "who": "vet"
+ },
+ "vet3030403708": {
+  "hash": "de7812c6626a64ae",
+  "key": "obj.llibreta.compte",
+  "who": "vet"
+ },
  "vet3086622959": {
   "hash": "22b9a685d074aaea",
   "key": "obs.obs_maqueta.1",
+  "who": "vet"
+ },
+ "vet3095953189": {
+  "hash": "12be0fd5b9bfa7de",
+  "key": "obj.llibreta.compte",
   "who": "vet"
  },
  "vet3099509740": {
@@ -3092,6 +3322,11 @@
  "vet314790103": {
   "hash": "f0d83e4327bf2d74",
   "key": "sala.caseta_obra.altaveu.quin",
+  "who": "vet"
+ },
+ "vet3164954873": {
+  "hash": "ba47af20708ef2b2",
+  "key": "obj.llibreta.compte",
   "who": "vet"
  },
  "vet3215675359": {
@@ -3234,6 +3469,11 @@
   "key": "ui.defecte.give",
   "who": "vet"
  },
+ "vet3833012863": {
+  "hash": "2c8ede906e8bb2d0",
+  "key": "obj.llibreta.compte",
+  "who": "vet"
+ },
  "vet3837281131": {
   "hash": "ee63393cb012f1e1",
   "key": "dlg.pla.opt.bosc",
@@ -3374,6 +3614,11 @@
   "key": "sala.caseta_obra.arbre_wifi.mira2",
   "who": "vet"
  },
+ "vet4281672070": {
+  "hash": "463c1b290e7298ce",
+  "key": "obj.llibreta.compte",
+  "who": "vet"
+ },
  "vet437754978": {
   "hash": "26b2a2dea4bfd0fd",
   "key": "sala.caseta_obra.arbre_wifi.saluda",
@@ -3392,6 +3637,11 @@
  "vet473580810": {
   "hash": "b318d6dcb6807233",
   "key": "dlg.walkie.e3b.1",
+  "who": "vet"
+ },
+ "vet486835423": {
+  "hash": "1ba349900c3f2c9a",
+  "key": "obj.llibreta.compte",
   "who": "vet"
  },
  "vet508591144": {
@@ -3459,6 +3709,11 @@
   "key": "obj.kit.mira.mati",
   "who": "vet"
  },
+ "vet67243618": {
+  "hash": "bbd9faeecc1c0a0c",
+  "key": "obj.llibreta.compte",
+  "who": "vet"
+ },
  "vet691279075": {
   "hash": "b806670d6bc4ed22",
   "key": "sala.caseta_obra.escriptori.mira",
@@ -3502,6 +3757,11 @@
  "vet82399359": {
   "hash": "3f1fffed048b2f02",
   "key": "ui.defecte.pull.vet.2",
+  "who": "vet"
+ },
+ "vet827334553": {
+  "hash": "e92e79dc165ad9b5",
+  "key": "obj.llibreta.compte",
   "who": "vet"
  },
  "vet830432446": {
