@@ -257,7 +257,7 @@ a les dues èpoques (la van pujar a l'òrbita amb la resta): el **pilar amb un 7
    després. Primer, però, li vol dir que ha rebut la nota: amb la llima, grava al pilar una I. i una clau anglesa,
    que vol dir «rebut, soc aquí» sense gastar cap encesa. Quan la Vet torna
    a l'hangar, té mal de cap i hi troba la marca, que abans no hi era: **el primer cop que el passat canvia el
-   present sense passar per la finestra**. (Si la Vet no hi torna, una pista l'hi porta: «Potser m'ha contestat allà».) Ensenya la regla que fan servir la vàlvula (Acte 2) i la reixa del conducte
+   present sense passar per la finestra**. (Si la Vet no hi torna, el reajust ja el nota en tornar a jugar, sigui on sigui, per exemple en rebre el primer tram: mal de cap i el pilar 7 al cap. Una pista la porta a l'hangar: «Potser m'ha contestat allà». Allà hi troba la marca sense un segon mal de cap.) Ensenya la regla que fan servir la vàlvula (Acte 2) i la reixa del conducte
    (Acte 3), i dona sentit al camí llarg: el moll és una bústia que triga cent vint anys.
 4. **Per peces:** serra la biga d'acer del moll en tres trams de menys de 2 kg i els envia d'un en un; la Vet els
    cargola.

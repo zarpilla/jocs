@@ -61,9 +61,12 @@ function enviarTramsIObrir(s: ReturnType<typeof partida>) {
   const { p } = s;
   p.goTo('fabrica_calderes');
   p.goTo('fabrica_cambra');
+  const marcaPendent = !s.n.flag('vet_ha_vist_marca');
   for (const n of [1, 2, 3]) {
-    p.use(`tram_biga_${n}`, 'cambra');
+    const rebut = keys(p.use(`tram_biga_${n}`, 'cambra'));
     expect(p.active).toBe('vet');
+    // Si encara no ha vist la marca, amb el primer tram la Vet ja nota el reajust (sense haver tornat a l'hangar).
+    if (n === 1) expect(rebut.includes('marca.reajust1')).toBe(marcaPendent);
     if (n < 3) p.switchTo('iri');
   }
   expect(texts(p.use('tram_biga_1', item('tram_biga_2')))).toContain('dos metres');
@@ -100,13 +103,15 @@ describe('Ferro-9 · Acte 2 · La comporta', () => {
   it("després de la marca, una pista porta la Vet a l'hangar a veure-la", () => {
     const s = finsMida();
     const { p, n } = s;
-    p.switchTo('vet');
+    // En tornar a jugar amb la Vet, el reajust ja es nota: mal de cap i el pilar 7 al cap.
+    expect(keys(p.switchTo('vet'))).toEqual(['marca.reajust1', 'marca.reajust2']);
     expect(p.room).toBe('gavina_cella');
     expect(n.flag('vet_ha_vist_marca')).toBe(false);
     expect(n.activeHints()[0]).toBe('vet_veure_marca');
     expect(n.requestHint()!.text).toContain('pilar 7');
     p.do('open', 'porta');
-    p.do('open', 'porta_hangar');
+    // A l'hangar hi troba la marca, sense un segon mal de cap.
+    expect(keys(p.do('open', 'porta_hangar'))).toEqual(expect.arrayContaining(['sala.gavina_hangar.marca_sabuda', 'sala.gavina_hangar.marca3']));
     expect(n.flag('vet_ha_vist_marca')).toBe(true);
     expect(n.activeHints()).not.toContain('vet_veure_marca');
   });

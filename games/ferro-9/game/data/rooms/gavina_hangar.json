@@ -66,6 +66,40 @@
           {
             "flag": "vet_ha_vist_marca",
             "is": false
+          },
+          {
+            "flag": "vet_intueix_marca"
+          }
+        ]
+      },
+      "id": "marca_sabuda",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.marca_sabuda"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.marca3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "vet_ha_vist_marca"
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "flag": "marca_pilar"
+          },
+          {
+            "flag": "vet_ha_vist_marca",
+            "is": false
           }
         ]
       },

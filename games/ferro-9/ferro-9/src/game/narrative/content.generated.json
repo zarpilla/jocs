@@ -133,6 +133,7 @@
         "pany_vist": false,
         "marca_pilar": false,
         "vet_ha_vist_marca": false,
+        "vet_intueix_marca": false,
         "reixa_mirada": false,
         "mapa_fuga_escrit": false,
         "pacte_acceptat": false,
@@ -8486,6 +8487,40 @@
               {
                 "who": "player",
                 "text": "sala.gavina_hangar.secat2"
+              }
+            ]
+          },
+          {
+            "verb": "*",
+            "if": {
+              "all": [
+                {
+                  "flag": "marca_pilar"
+                },
+                {
+                  "flag": "vet_ha_vist_marca",
+                  "is": false
+                },
+                {
+                  "flag": "vet_intueix_marca"
+                }
+              ]
+            },
+            "id": "marca_sabuda",
+            "once": true,
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.gavina_hangar.marca_sabuda"
+              },
+              {
+                "who": "player",
+                "text": "sala.gavina_hangar.marca3"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "vet_ha_vist_marca"
               }
             ]
           },
@@ -19047,6 +19082,8 @@
       "finestra.armat": "Un brunzit greu. El camp està armat.",
       "finestra.armat_buit": "Un brunzit greu. El camp està armat... però la cambra està buida.",
       "finestra.esgotada": "No passa res. La cambra està esgotada.",
+      "marca.reajust1": "Ai... Mal de cap. Com si m'haguessin donat la volta.",
+      "marca.reajust2": "Alguna cosa ha canviat, però aquí no. Li vaig dir a la I. que era al costat del pilar 7...",
       "finestra.rebut": "Un espetec, una llum... i apareix {objecte}!",
       "finestra.rebut_res": "Un espetec, una llum... i res. Algú ha enviat aire.",
       "finestra.rebuig.massa_pesat": "{Objecte} no hi cap. És massa gran per a la cambra.",
@@ -20135,6 +20172,7 @@
       "sala.fabrica_moll.pilar.look": "Un pilar amb un 7 pintat. Pintura nova: aquí tot és nou.",
       "sala.gavina_hangar.marca1": "Ai... Mal de cap. Com si m'haguessin donat la volta.",
       "sala.gavina_hangar.marca2": "Al pilar 7 hi ha una I. gravada, i una clau anglesa. Abans no hi era. N'estic segura.",
+      "sala.gavina_hangar.marca_sabuda": "Al pilar 7 hi ha una I. gravada, i una clau anglesa. Abans no hi era: era això, el mal de cap.",
       "sala.gavina_hangar.marca3": "Fa cent vint anys que hi és... des de fa un minut. Rebut, I.",
       "sala.gavina_hangar.pilar.look_marca": "El pilar 7. Una I. i una clau anglesa, gravades fa cent vint anys. La I. ha fet servir la paret de bústia.",
       "sala.gavina_hangar.sortida_conducte.nom": "sortida del conducte",
