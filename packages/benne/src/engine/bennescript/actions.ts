@@ -19,9 +19,11 @@ import {
   parseBenneSayVoiceMarker,
   playScriptedSayLine,
   resolveBenneSayRuntimeLine,
+  VOICE_LOAD_WAIT_MS,
   type ScriptedSayLineOptions,
 } from './speech.js';
 import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
+import { waitForVoice } from '../sound/benneVoiceLoader.js';
 import {
   resolveFaceLookWorldFromPayload,
   resolveWalkToClickedTargetFromPayload,
@@ -283,12 +285,19 @@ export const display = timed((rawText: string): Task => {
     return Task.resolved();
   }
   const { text, voiceNumber } = parseBenneSayVoiceMarker(rawText);
-  const voice = voiceNumber
-    ? tryGetBenneSoundManager(scene.game)?.playVoice(`${NARRATOR_VOICE_PREFIX}${voiceNumber}`) ?? null
-    : null;
+  // The text shows at once; the voice starts when it's loaded (voices load on demand), if the text is still up.
+  let voice: { stop(): void } | null = null;
+  let completed = false;
+  if (voiceNumber) {
+    const stem = `${NARRATOR_VOICE_PREFIX}${voiceNumber}`;
+    void waitForVoice(scene, stem, VOICE_LOAD_WAIT_MS).then((ok) => {
+      if (ok && !completed) {
+        voice = tryGetBenneSoundManager(scene.game)?.playVoice(stem) ?? null;
+      }
+    });
+  }
   let finish!: () => void;
   const shown = new Promise<void>((resolve) => {
-    let completed = false;
     let unregisterSkip: (() => void) | null = null;
     finish = () => {
       if (completed) {

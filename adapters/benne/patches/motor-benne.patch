@@ -371,7 +371,7 @@ diff -ruN src/engine/bennescript/actions.ts src/engine/bennescript/actions.ts
    readSavedCharacterAlpha,
    readSavedCharacterFollowingTarget,
    readSavedCharacterSpeechOffset,
-@@ -9,7 +10,7 @@
+@@ -9,16 +10,20 @@
    writeSavedCharacterSpeechPosition,
  } from '../benneAnimationRuntime.js';
  import { getCharacterWorldFeet } from '../characterFeet.js';
@@ -380,7 +380,66 @@ diff -ruN src/engine/bennescript/actions.ts src/engine/bennescript/actions.ts
  import type { GameStateManager } from '../gameState/GameStateManager.js';
  import { tryGetActiveGameStateManager } from '../gameState/resolveGameStateManager.js';
  import { BENNE_SCREEN_FADE_DEFAULT_COLOR, BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC } from '../scenes/roomScreenFadeConstants.js';
-@@ -311,6 +312,30 @@
+ import type { RoomScene } from '../scenes/RoomScene.js';
+ import {
++  parseBenneSayVoiceMarker,
+   playScriptedSayLine,
+   resolveBenneSayRuntimeLine,
++  VOICE_LOAD_WAIT_MS,
+   type ScriptedSayLineOptions,
+ } from './speech.js';
++import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
++import { waitForVoice } from '../sound/benneVoiceLoader.js';
+ import {
+   resolveFaceLookWorldFromPayload,
+   resolveWalkToClickedTargetFromPayload,
+@@ -265,16 +270,34 @@
+   __withSpeakers(speakers: Readonly<Record<string, string>>): SayBlock;
+ } = Object.assign(sayBlock(), { __withSpeakers: sayBlock });
+ 
+-/** Narration in the display-text overlay. Waits until clicked away (or skipped). */
+-export const display = timed((text: string): Task => {
++/** El prefix dels fitxers de veu del narrador: `assets/audio/voice/narrator<número>.*`. */
++export const NARRATOR_VOICE_PREFIX = 'narrator';
++
++/**
++ * Narration in the display-text overlay. Waits until clicked away (or skipped).
++ * Amb la marca de veu davant (`|<número>| text`, com a `say`), sona `narrator<número>` mentre es mostra, i es talla
++ * en tancar-la.
++ */
++export const display = timed((rawText: string): Task => {
+   const scene = roomFor('display');
+   // A skipped cutscene shows no narration; the end state is simply "dismissed".
+   if (!scene || scene.isCutsceneSkipFastForwarding()) {
+     return Task.resolved();
+   }
++  const { text, voiceNumber } = parseBenneSayVoiceMarker(rawText);
++  // The text shows at once; the voice starts when it's loaded (voices load on demand), if the text is still up.
++  let voice: { stop(): void } | null = null;
++  let completed = false;
++  if (voiceNumber) {
++    const stem = `${NARRATOR_VOICE_PREFIX}${voiceNumber}`;
++    void waitForVoice(scene, stem, VOICE_LOAD_WAIT_MS).then((ok) => {
++      if (ok && !completed) {
++        voice = tryGetBenneSoundManager(scene.game)?.playVoice(stem) ?? null;
++      }
++    });
++  }
+   let finish!: () => void;
+   const shown = new Promise<void>((resolve) => {
+-    let completed = false;
+     let unregisterSkip: (() => void) | null = null;
+     finish = () => {
+       if (completed) {
+@@ -282,6 +305,7 @@
+       }
+       completed = true;
+       unregisterSkip?.();
++      voice?.stop();
+       scene.clearScriptedDialogClickToSkip();
+       scene.setDisplayTextOverlay({ visible: false });
+       scene.popScriptedDialogInputSuppression();
+@@ -311,6 +335,30 @@
    );
  }
  
@@ -452,7 +511,14 @@ diff -ruN src/engine/bennescript/dialogs.ts src/engine/bennescript/dialogs.ts
 diff -ruN src/engine/bennescript/game.ts src/engine/bennescript/game.ts
 --- src/engine/bennescript/game.ts
 +++ src/engine/bennescript/game.ts
-@@ -40,6 +40,7 @@
+@@ -34,12 +34,14 @@
+   writePersistedSfxSessionVolume,
+ } from '../sound/audioGameState.js';
+ import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
++import { loadVoice } from '../sound/benneVoiceLoader.js';
+ import { getActionSentence } from '../verbs/actionSentence.js';
+ import { inventoryItemLabel } from '../verbs/targetLabel.js';
+ import { composeVerbLineText, resolveGameDefaultVerbId } from '../verbs/verbConfig.js';
  import type { CutsceneOptions } from '../../types/cutscene.js';
  import type { GameSettings } from '../../types/game.js';
  import { activeRoomScene } from './actions.js';
@@ -460,7 +526,7 @@ diff -ruN src/engine/bennescript/game.ts src/engine/bennescript/game.ts
  import { registerAnyRoomHandler } from './globalHandlers.js';
  import { endHandler, runDetached, warnIfUntransformed } from './interactionContext.js';
  import type { ItemHandle, VerbHandle } from './handles.js';
-@@ -59,6 +60,11 @@
+@@ -59,6 +61,11 @@
  
  /** The running game (§4.16, §4.17). */
  export const game = {
@@ -472,7 +538,7 @@ diff -ruN src/engine/bennescript/game.ts src/engine/bennescript/game.ts
    /** True in the desktop (Electron) build, where `quit()` closes the window. */
    get isDesktop(): boolean {
      return getBenneEnvironment() === 'electron';
-@@ -70,6 +76,28 @@
+@@ -70,6 +77,42 @@
    },
  
    /**
@@ -490,6 +556,20 @@ diff -ruN src/engine/bennescript/game.ts src/engine/bennescript/game.ts
 +  },
 +
 +  /**
++   * Starts loading these voices (`assets/audio/voice/<stem>.*`, e.g. `"vet3141592653"`) in the background, so the
++   * lines that use them don't wait for the download. Voices aren't loaded at boot. Doesn't wait.
++   */
++  preloadVoices(stems: readonly string[]): void {
++    const scene = liveRoomScene();
++    if (!scene) {
++      return;
++    }
++    for (const stem of stems) {
++      void loadVoice(scene, stem);
++    }
++  },
++
++  /**
 +   * Glowing threads from the player to some things of the room (prop, hotspot or character ids), for a few seconds:
 +   * a hint that points without words. Doesn't wait.
 +   */
@@ -501,7 +581,7 @@ diff -ruN src/engine/bennescript/game.ts src/engine/bennescript/game.ts
     * Starts a fresh game: resets all state, then goes to `startRoom` (the configured starting room
     * by default). Ends the handler.
     */
-@@ -124,6 +152,11 @@
+@@ -124,6 +167,11 @@
      return activeRoomScene()?.isCutsceneActive() ?? false;
    },
  
@@ -513,7 +593,7 @@ diff -ruN src/engine/bennescript/game.ts src/engine/bennescript/game.ts
    /** Every room change, before the room is left. */
    onLeaveAnyRoom(handler: () => void): void {
      registerAnyRoomHandler('leave', handler);
-@@ -377,6 +410,21 @@
+@@ -377,6 +425,21 @@
      }
    },
  
@@ -683,17 +763,47 @@ diff -ruN src/engine/bennescript/shade.ts src/engine/bennescript/shade.ts
 diff -ruN src/engine/bennescript/speech.ts src/engine/bennescript/speech.ts
 --- src/engine/bennescript/speech.ts
 +++ src/engine/bennescript/speech.ts
-@@ -10,6 +10,9 @@
+@@ -9,6 +9,13 @@
+ import { resolveGameStateManager } from '../gameState/resolveGameStateManager.js';
  import type { RoomScene } from '../scenes/RoomScene.js';
  import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
- 
++import { isVoiceReady, waitForVoice } from '../sound/benneVoiceLoader.js';
++
 +/** Pause after a voiced line's recording ends, before the next line starts. */
 +const VOICE_TAIL_MS = 250;
 +
++/** Longest wait for a line's voice to download before the line goes on without it. */
++export const VOICE_LOAD_WAIT_MS = 2500;
+ 
  /** Per-line options for a scripted speech line. */
  export interface ScriptedSayLineOptions {
-   clickToSkip?: boolean;
-@@ -81,10 +84,12 @@
+@@ -77,14 +84,38 @@
+   if (scene.isCutsceneSkipFastForwarding()) {
+     return Promise.resolve();
+   }
++  // Voices load on demand: if this one isn't here yet, wait for it (input stays off meanwhile), up to
++  // VOICE_LOAD_WAIT_MS; after that the line goes on without it.
++  if (voiceStem && !isVoiceReady(scene.game, voiceStem)) {
++    scene.pushScriptedDialogInputSuppression();
++    return waitForVoice(scene, voiceStem, VOICE_LOAD_WAIT_MS).then(() => {
++      scene.popScriptedDialogInputSuppression();
++      return playScriptedSayLineNow(scene, line, talkCharacterDefinitionId, options, voiceStem);
++    });
++  }
++  return playScriptedSayLineNow(scene, line, talkCharacterDefinitionId, options, voiceStem);
++}
++
++function playScriptedSayLineNow(
++  scene: RoomScene,
++  line: string,
++  talkCharacterDefinitionId: string,
++  options?: ScriptedSayLineOptions,
++  voiceStem?: string | null,
++): Promise<void> {
++  if (scene.isCutsceneSkipFastForwarding()) {
++    return Promise.resolve();
++  }
+   const manager = resolveGameStateManager(scene.game);
    const speech = getSpeechSettings(manager);
    const voice = voiceStem ? tryGetBenneSoundManager(scene.game)?.playVoice(voiceStem) ?? null : null;
    const textMs = computeSpeechLineDurationMs(line, manager);
@@ -4167,6 +4277,122 @@ diff -ruN src/engine/sound/benneSoundTypes.ts src/engine/sound/benneSoundTypes.t
 +  /** Crossfade from the background sound before (or to the new volume) over this many seconds. Default 1.5. */
 +  fadeSeconds?: number;
 +}
+diff -ruN src/engine/sound/benneVoiceLoader.ts src/engine/sound/benneVoiceLoader.ts
+--- src/engine/sound/benneVoiceLoader.ts
++++ src/engine/sound/benneVoiceLoader.ts
+@@ -0,0 +1,85 @@
++import * as Phaser from 'phaser';
++import { getBenneAudioBootEntries } from '../content/resolveGameAssetUrl.js';
++import { benneVoiceCacheKey } from './benneAudioCacheKeys.js';
++
++/**
++ * Voice files are not loaded at boot: a voiced game has hundreds of them, and most players hear only some.
++ * A line loads its voice when it needs it ({@link waitForVoice}); scripts can ask for the next lines' voices
++ * ahead of time (`game.preloadVoices`), so those lines don't wait.
++ */
++
++let voiceUrls: Map<string, string[]> | null = null;
++const loading = new Map<string, Promise<boolean>>();
++
++function bundledVoices(): Map<string, string[]> {
++  voiceUrls ??= new Map(getBenneAudioBootEntries().voice.map((e) => [e.cacheKey, [...e.urls]]));
++  return voiceUrls;
++}
++
++/** True when `assets/audio/voice/<id>.*` exists and is already decoded in the audio cache. */
++export function isVoiceReady(game: Phaser.Game, id: string): boolean {
++  return game.cache.audio.has(benneVoiceCacheKey(id));
++}
++
++/**
++ * Loads `assets/audio/voice/<id>.*` through `scene`'s loader. Resolves `true` once it is in the audio cache, `false`
++ * when there is no such file, audio is off, the download fails, or `scene` shuts down first. Concurrent calls for the
++ * same voice share one download.
++ */
++export function loadVoice(scene: Phaser.Scene, id: string): Promise<boolean> {
++  const key = benneVoiceCacheKey(id);
++  if (scene.game.cache.audio.has(key)) {
++    return Promise.resolve(true);
++  }
++  const urls = bundledVoices().get(key);
++  if (!urls || scene.sound instanceof Phaser.Sound.NoAudioSoundManager) {
++    return Promise.resolve(false);
++  }
++  const pending = loading.get(key);
++  if (pending) {
++    return pending;
++  }
++  const promise = new Promise<boolean>((resolve) => {
++    const load = scene.load;
++    const completeEvent = `${Phaser.Loader.Events.FILE_KEY_COMPLETE}audio-${key}`;
++    let settled = false;
++    const settle = (ok: boolean): void => {
++      if (settled) {
++        return;
++      }
++      settled = true;
++      load.off(completeEvent, onComplete);
++      load.off(Phaser.Loader.Events.FILE_LOAD_ERROR, onError);
++      scene.events.off(Phaser.Scenes.Events.SHUTDOWN, onShutdown);
++      loading.delete(key);
++      resolve(ok && scene.game.cache.audio.has(key));
++    };
++    const onComplete = (): void => settle(true);
++    const onError = (file: Phaser.Loader.File): void => {
++      if (file.key === key) {
++        settle(false);
++      }
++    };
++    const onShutdown = (): void => settle(false);
++    load.once(completeEvent, onComplete);
++    load.on(Phaser.Loader.Events.FILE_LOAD_ERROR, onError);
++    scene.events.once(Phaser.Scenes.Events.SHUTDOWN, onShutdown);
++    load.audio(key, urls.length === 1 ? urls[0]! : urls);
++    if (!load.isLoading()) {
++      load.start();
++    }
++  });
++  loading.set(key, promise);
++  return promise;
++}
++
++/** {@link loadVoice}, but gives up (resolves `false`) after `maxMs`; the download goes on for the next time. */
++export function waitForVoice(scene: Phaser.Scene, id: string, maxMs: number): Promise<boolean> {
++  if (isVoiceReady(scene.game, id)) {
++    return Promise.resolve(true);
++  }
++  return Promise.race([
++    loadVoice(scene, id),
++    new Promise<boolean>((resolve) => setTimeout(() => resolve(false), maxMs)),
++  ]);
++}
+diff -ruN src/engine/sound/queueBenneAudioBoot.ts src/engine/sound/queueBenneAudioBoot.ts
+--- src/engine/sound/queueBenneAudioBoot.ts
++++ src/engine/sound/queueBenneAudioBoot.ts
+@@ -1,9 +1,12 @@
+ import type * as Phaser from 'phaser';
+ import { getBenneAudioBootEntries } from '../content/resolveGameAssetUrl.js';
+ 
+-/** Queues every bundled `assets/audio/sfx`, `assets/audio/music`, and `assets/audio/voice` file. */
++/**
++ * Queues every bundled `assets/audio/sfx` and `assets/audio/music` file. Voices (`assets/audio/voice`) are loaded
++ * when a line needs them: see `benneVoiceLoader.ts`.
++ */
+ export function queueBenneAudioForBootLoader(load: Phaser.Loader.LoaderPlugin): void {
+-  const { sfx, music, voice } = getBenneAudioBootEntries();
++  const { sfx, music } = getBenneAudioBootEntries();
+   for (const e of sfx) {
+     const u = e.urls;
+     load.audio(e.cacheKey, u.length === 1 ? u[0]! : [...u]);
+@@ -12,8 +15,4 @@
+     const u = e.urls;
+     load.audio(e.cacheKey, u.length === 1 ? u[0]! : [...u]);
+   }
+-  for (const e of voice) {
+-    const u = e.urls;
+-    load.audio(e.cacheKey, u.length === 1 ? u[0]! : [...u]);
+-  }
+ }
 diff -ruN src/engine/testing/benneTestHooks.ts src/engine/testing/benneTestHooks.ts
 --- src/engine/testing/benneTestHooks.ts
 +++ src/engine/testing/benneTestHooks.ts

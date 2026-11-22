@@ -1,18 +1,17 @@
 import type * as Phaser from 'phaser';
 import { getBenneAudioBootEntries } from '../content/resolveGameAssetUrl.js';
 
-/** Queues every bundled `assets/audio/sfx`, `assets/audio/music`, and `assets/audio/voice` file. */
+/**
+ * Queues every bundled `assets/audio/sfx` and `assets/audio/music` file. Voices (`assets/audio/voice`) are loaded
+ * when a line needs them: see `benneVoiceLoader.ts`.
+ */
 export function queueBenneAudioForBootLoader(load: Phaser.Loader.LoaderPlugin): void {
-  const { sfx, music, voice } = getBenneAudioBootEntries();
+  const { sfx, music } = getBenneAudioBootEntries();
   for (const e of sfx) {
     const u = e.urls;
     load.audio(e.cacheKey, u.length === 1 ? u[0]! : [...u]);
   }
   for (const e of music) {
-    const u = e.urls;
-    load.audio(e.cacheKey, u.length === 1 ? u[0]! : [...u]);
-  }
-  for (const e of voice) {
     const u = e.urls;
     load.audio(e.cacheKey, u.length === 1 ? u[0]! : [...u]);
   }

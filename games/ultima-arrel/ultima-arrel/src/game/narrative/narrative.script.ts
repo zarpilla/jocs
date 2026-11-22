@@ -13,7 +13,7 @@ import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
   AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne, voiced,
+  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne, voiced, preloadLineVoices,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
 
@@ -36,6 +36,7 @@ type Around = {
  * (`stage`, `stageAfter`), és una petita cinemàtica: els clics al món no la tallen, i la tecla de saltar l'acaba de cop.
  */
 export function playLines(lines: ResolvedLine[], around: Around = {}) {
+  preloadLineVoices(lines)
   if (lines.some((l) => l.stage || l.stageAfter)) {
     cutscene(() => {
       sayLines(lines, around)
@@ -455,6 +456,8 @@ function endDialog(dialog: DialogHandle) {
 }
 
 function refreshOptions(dialog: DialogHandle, choices: ResolvedChoice[]) {
+  // L'opció triada es diu en veu alta: la seva veu, que ja vingui.
+  preloadLineVoices(choices.map((c) => ({ who: 'player', key: c.key })))
   const available = new Set(choices.map((c) => optionName(c.node, c.id)));
   for (const [name, option] of Object.entries(dialog.options)) {
     if (available.has(name)) option.on();

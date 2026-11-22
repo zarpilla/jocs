@@ -9,9 +9,13 @@ import {
 import { resolveGameStateManager } from '../gameState/resolveGameStateManager.js';
 import type { RoomScene } from '../scenes/RoomScene.js';
 import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
+import { isVoiceReady, waitForVoice } from '../sound/benneVoiceLoader.js';
 
 /** Pause after a voiced line's recording ends, before the next line starts. */
 const VOICE_TAIL_MS = 250;
+
+/** Longest wait for a line's voice to download before the line goes on without it. */
+export const VOICE_LOAD_WAIT_MS = 2500;
 
 /** Per-line options for a scripted speech line. */
 export interface ScriptedSayLineOptions {
@@ -77,6 +81,28 @@ export function playScriptedSayLine(
 ): Promise<void> {
   // A skipped cutscene plays no lines: no overlay, no voice, no timer — the end state of a
   // say line is simply "line finished".
+  if (scene.isCutsceneSkipFastForwarding()) {
+    return Promise.resolve();
+  }
+  // Voices load on demand: if this one isn't here yet, wait for it (input stays off meanwhile), up to
+  // VOICE_LOAD_WAIT_MS; after that the line goes on without it.
+  if (voiceStem && !isVoiceReady(scene.game, voiceStem)) {
+    scene.pushScriptedDialogInputSuppression();
+    return waitForVoice(scene, voiceStem, VOICE_LOAD_WAIT_MS).then(() => {
+      scene.popScriptedDialogInputSuppression();
+      return playScriptedSayLineNow(scene, line, talkCharacterDefinitionId, options, voiceStem);
+    });
+  }
+  return playScriptedSayLineNow(scene, line, talkCharacterDefinitionId, options, voiceStem);
+}
+
+function playScriptedSayLineNow(
+  scene: RoomScene,
+  line: string,
+  talkCharacterDefinitionId: string,
+  options?: ScriptedSayLineOptions,
+  voiceStem?: string | null,
+): Promise<void> {
   if (scene.isCutsceneSkipFastForwarding()) {
     return Promise.resolve();
   }

@@ -82,6 +82,24 @@ export function voiced(benneId: string, key: string | undefined, text: string): 
   return voiceStems.has(`${benneId}${n}`) ? `|${n}| ${text}` : text;
 }
 
+/** La veu (`<personatge de Benne><número>`) d'una línia, si n'hi ha i han de sonar. */
+function lineVoiceStem(who: string, key: string | undefined): string | null {
+  if (!key || !voicesOn) return null;
+  const benneId = who === 'player' ? player.id : who === 'narrator' ? 'narrator' : benneCharacter(who)?.id;
+  if (!benneId) return null;
+  const stem = `${benneId}${voiceNumber(key)}`;
+  return voiceStems.has(stem) ? stem : null;
+}
+
+/**
+ * Demana al motor, per endavant, les veus d'unes línies que es diran tot seguit (una interacció, un pas de diàleg, les
+ * opcions que es poden triar). Benne no les carrega en arrencar: així, quan arriba la línia, ja hi són.
+ */
+export function preloadLineVoices(lines: readonly { who: string; key?: string }[]) {
+  const stems = lines.map((l) => lineVoiceStem(l.who, l.key)).filter((s): s is string => s !== null);
+  if (stems.length) game.preloadVoices(stems);
+}
+
 /**
  * Nom de l'opció de Benne per a una opció d'un node (el genera el sync).
  * Ha de ser aquí i no a `narrative.script.ts`: allà el plugin BenneScript converteix totes les

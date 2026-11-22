@@ -34,6 +34,7 @@ import {
   writePersistedSfxSessionVolume,
 } from '../sound/audioGameState.js';
 import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
+import { loadVoice } from '../sound/benneVoiceLoader.js';
 import { getActionSentence } from '../verbs/actionSentence.js';
 import { inventoryItemLabel } from '../verbs/targetLabel.js';
 import { composeVerbLineText, resolveGameDefaultVerbId } from '../verbs/verbConfig.js';
@@ -87,6 +88,20 @@ export const game = {
 
   showClickables(seconds = 1.6): void {
     liveRoomScene()?.showClickableMarkers(Math.round(seconds * 1000));
+  },
+
+  /**
+   * Starts loading these voices (`assets/audio/voice/<stem>.*`, e.g. `"vet3141592653"`) in the background, so the
+   * lines that use them don't wait for the download. Voices aren't loaded at boot. Doesn't wait.
+   */
+  preloadVoices(stems: readonly string[]): void {
+    const scene = liveRoomScene();
+    if (!scene) {
+      return;
+    }
+    for (const stem of stems) {
+      void loadVoice(scene, stem);
+    }
   },
 
   /**
