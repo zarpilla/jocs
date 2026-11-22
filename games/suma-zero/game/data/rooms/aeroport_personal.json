@@ -168,6 +168,21 @@
             "open",
             "use"
           ],
+          "if": {
+            "flag": "iri_fora"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_personal.teclat.fora"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use"
+          ],
           "lines": [
             {
               "who": "player",

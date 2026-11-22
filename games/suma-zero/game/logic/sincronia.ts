@@ -133,6 +133,9 @@ export const PASSOS: Record<string, PasSincronia> = {
 /** Verbs que no gasten torn. */
 const LLIURES = new Set(['look', 'walkTo', 'talkTo']);
 
+/** Objectes que, fets servir sols, només obren una conversa (l'auricular): no gasten torn amb cap verb. */
+const DE_CONVERSA = new Set(['auriculars', 'auricular_boto']);
+
 export const SINCRONIA_TEXTS = [
   'sync.aeroport.queden', 'sync.aeroport.ultima', 'sync.aeroport.reinici1', 'sync.aeroport.reinici2', 'sync.aeroport.reinici3',
   'sync.aeroport.xiulet_reinici1', 'sync.aeroport.reinici_oficina',
@@ -156,6 +159,7 @@ export function despresDAccio(n: Narrative, action: PlayerAction) {
   if (!pas) return;
   if (!action.room || !pas.sales.includes(action.room)) return;
   if (action.kind === 'interaction' && LLIURES.has(action.verb)) return;
+  if (action.kind === 'interaction' && !action.item && action.target.kind === 'item' && DE_CONVERSA.has(action.target.id)) return;
 
   let queden = Infinity;
   if (pas.rellotge) {
