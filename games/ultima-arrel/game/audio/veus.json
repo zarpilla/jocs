@@ -1,6 +1,6 @@
 {
-  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). Les germanes són veus de 18 anys: fins que ElevenLabs aprovi el joc (és per a nenes de 8 a 12 anys), només \"url\", per provar-les. `jugadora`: qui parla on el contingut no ho diu: sales compartides (6b, la Iri; 7, la Vet), diàlegs dels personatges (segons la seva escena) i cada node del walkie (e1…e7, l'escena de qui el fa servir). `variables`: els valors de cada variable, per gravar una versió de cada línia que en porta (el comptador de la llibreta).",
-  "actiu": "url",
+  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `jugadora`: qui parla on el contingut no ho diu: sales compartides (6b, la Iri; 7, la Vet), diàlegs dels personatges (segons la seva escena) i cada node del walkie (e1…e7, l'escena de qui el fa servir). `variables`: els valors de cada variable, per gravar una versió de cada línia que en porta (el comptador de la llibreta).",
+  "actiu": true,
   "model": "eleven_v3",
   "language": "ca",
   "format": "mp3_44100_64",
