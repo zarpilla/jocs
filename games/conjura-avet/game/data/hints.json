@@ -1,0 +1,27 @@
+{
+  "$schema": "../schemas/hints.schema.json",
+  "tall": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "inRoom": "mur_avet"
+        },
+        {
+          "flag": "tall_vist",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "tall_vist"
+    },
+    "levels": [
+      "pista.tall.1",
+      "pista.tall.2"
+    ],
+    "targets": [
+      "arrels"
+    ]
+  }
+}

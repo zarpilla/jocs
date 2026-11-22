@@ -1,0 +1,17 @@
+{
+  "startRoomId": "portada",
+  "rooms": [
+    {
+      "id": "credits",
+      "definition": "credits/credits.room.json"
+    },
+    {
+      "id": "mur_avet",
+      "definition": "mur_avet/mur_avet.room.json"
+    },
+    {
+      "id": "portada",
+      "definition": "portada/portada.room.json"
+    }
+  ]
+}

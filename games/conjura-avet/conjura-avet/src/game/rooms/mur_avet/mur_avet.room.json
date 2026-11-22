@@ -1,0 +1,144 @@
+{
+  "id": "mur_avet",
+  "name": "L'avet caigut",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 25,
+            "y": 215
+          },
+          {
+            "x": 615,
+            "y": 215
+          },
+          {
+            "x": 629,
+            "y": 269
+          },
+          {
+            "x": 11,
+            "y": 269
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "avet",
+      "active": true,
+      "description": "avet",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 157,
+          "y": 76
+        },
+        {
+          "x": 255,
+          "y": 76
+        },
+        {
+          "x": 255,
+          "y": 120
+        },
+        {
+          "x": 157,
+          "y": 120
+        }
+      ],
+      "walkToPoint": {
+        "x": 206,
+        "y": 229
+      },
+      "lookAtPoint": {
+        "x": 206,
+        "y": 120
+      }
+    },
+    {
+      "id": "arrels",
+      "active": true,
+      "description": "arrels",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 386,
+          "y": 25
+        },
+        {
+          "x": 484,
+          "y": 25
+        },
+        {
+          "x": 484,
+          "y": 69
+        },
+        {
+          "x": 386,
+          "y": 69
+        }
+      ],
+      "walkToPoint": {
+        "x": 435,
+        "y": 229
+      },
+      "lookAtPoint": {
+        "x": 435,
+        "y": 69
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 320,
+      "y": 247,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "ponc-1",
+      "definition": "ponc/ponc.character.json",
+      "x": 491,
+      "y": 236,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ],
+  "viewAnchorY": 0.5
+}

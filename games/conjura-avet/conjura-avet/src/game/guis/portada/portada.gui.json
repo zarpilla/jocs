@@ -1,0 +1,115 @@
+{
+  "id": "portada",
+  "name": "Portada",
+  "description": "Botons de la portada (adapters/benne). [288]",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "controls": [
+    {
+      "type": "button",
+      "id": "continua",
+      "x": 220,
+      "y": 160,
+      "width": 200,
+      "height": 29,
+      "backgroundAnchor": "screen",
+      "text": "Continua",
+      "font": "conjuraavet-negreta",
+      "fontSize": 8,
+      "textColor": "#10908e",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#28c074"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#132243",
+        "sides": "bottomRight"
+      },
+      "backgroundTag": "continua",
+      "states": {
+        "hover": "continua-hover"
+      },
+      "backgroundOffsetY": -64
+    },
+    {
+      "type": "button",
+      "id": "comenca",
+      "x": 220,
+      "y": 197,
+      "width": 200,
+      "height": 29,
+      "backgroundAnchor": "screen",
+      "text": "Comença",
+      "font": "conjuraavet-negreta",
+      "fontSize": 8,
+      "textColor": "#10908e",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#28c074"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#132243",
+        "sides": "bottomRight"
+      },
+      "backgroundTag": "comenca",
+      "states": {
+        "hover": "comenca-hover"
+      },
+      "backgroundOffsetY": -64
+    },
+    {
+      "type": "button",
+      "id": "carrega",
+      "x": 220,
+      "y": 235,
+      "width": 200,
+      "height": 29,
+      "backgroundAnchor": "screen",
+      "text": "Carrega una partida",
+      "font": "conjuraavet-negreta",
+      "fontSize": 8,
+      "textColor": "#10908e",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#28c074"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#132243",
+        "sides": "bottomRight"
+      },
+      "backgroundTag": "carrega",
+      "states": {
+        "hover": "carrega-hover"
+      },
+      "backgroundOffsetY": -64
+    },
+    {
+      "type": "text",
+      "id": "version",
+      "x": 634,
+      "y": 277,
+      "text": "",
+      "font": "conjuraavet-regular",
+      "fontSize": 8,
+      "color": "#10908e",
+      "align": "right",
+      "textOutline": {
+        "enabled": true,
+        "color": "#132243",
+        "sides": "bottomRight"
+      }
+    }
+  ],
+  "anchorY": "bottom"
+}

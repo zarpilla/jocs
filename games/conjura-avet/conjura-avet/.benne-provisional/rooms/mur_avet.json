@@ -1,0 +1,29 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "L'avet caigut",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "avet",
+      "label": "avet",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 157,
+      "y": 76
+    },
+    {
+      "id": "arrels",
+      "label": "arrels",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 386,
+      "y": 25
+    }
+  ],
+  "characters": []
+}

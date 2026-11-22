@@ -1,0 +1,12 @@
+{
+  "id": "guants",
+  "onVerb": {},
+  "stackable": false,
+  "animations": {},
+  "display": {
+    "aseprite": "shared"
+  },
+  "name": "guants de cuir",
+  "description": "guants de cuir",
+  "defaultVerb": "fes"
+}

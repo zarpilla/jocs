@@ -1,0 +1,27 @@
+{
+  "name": "conjura-avet",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --root ../.. games/conjura-avet/",
+    "typecheck": "tsc --noEmit -p ../..",
+    "validate": "tsx ../../tools/validate.ts",
+    "jugar": "tsx ../../tools/jugar.ts",
+    "fitxes": "tsx ../../tools/fitxes.ts",
+    "full-sales": "python3 ../../tools/full_sales.py",
+    "profunditat": "python3 ../../tools/profunditat.py",
+    "revisio": "tsx ../../tools/revisio.ts",
+    "schemas": "tsx ../../tools/generate-schemas.ts",
+    "sons": "python3 tools/sons.py",
+    "musica": "python3 tools/musica.py",
+    "veus": "python3 ../../tools/veus.py",
+    "font": "python3 tools/font/conjuraavet_font.py",
+    "benne:create": "tsx ../../adapters/benne/create-project.ts",
+    "benne:sync": "tsx ../../adapters/benne/sync.ts",
+    "benne:pegat": "tsx ../../adapters/benne/refes-pegat.ts",
+    "dev": "npm run dev --prefix conjura-avet",
+    "build": "npm run build --prefix conjura-avet",
+    "textos": "tsx ../../tools/textos.ts"
+  }
+}

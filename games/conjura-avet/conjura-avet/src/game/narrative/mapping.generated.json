@@ -1,0 +1,17 @@
+{
+  "$comment": "GENERAT per adapters/benne/sync.ts",
+  "id": "conjura-avet",
+  "nom": "La Conjura de l'Avet",
+  "musicSync": true,
+  "botoPista": true,
+  "resolucio": {
+    "width": 640,
+    "height": 360,
+    "minHeight": 288
+  },
+  "veus": null,
+  "characters": {},
+  "items": {},
+  "rooms": {},
+  "hotspots": {}
+}

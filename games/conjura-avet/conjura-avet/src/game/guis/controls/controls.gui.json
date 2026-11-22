@@ -1,0 +1,290 @@
+{
+  "id": "controls",
+  "name": "Controls",
+  "description": "Com es juga: el dit o el ratolí (adapters/benne/tactil/controls.py)",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "modal": true,
+  "zIndex": 115,
+  "anchorY": "center",
+  "controls": [
+    {
+      "type": "button",
+      "id": "fons",
+      "x": 0,
+      "y": 0,
+      "width": 640,
+      "height": 288,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "conjuraavet-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "backgroundTag": "",
+      "backgroundColor": "#000000",
+      "backgroundColorStates": {
+        "hover": "#000000",
+        "pressed": "#000000"
+      },
+      "zIndex": 1,
+      "anchorY": "stretch"
+    },
+    {
+      "type": "nineSliceImage",
+      "id": "panell",
+      "x": 120,
+      "y": 12,
+      "width": 400,
+      "height": 264,
+      "tag": "9-slice-BG",
+      "sliceNames": {
+        "topLeft": "TopLeft",
+        "topCenter": "TopMid",
+        "topRight": "TopRight",
+        "middleLeft": "MidLeft",
+        "center": "Mid",
+        "middleRight": "MidRight",
+        "bottomLeft": "BottomLeft",
+        "bottomCenter": "BottomMid",
+        "bottomRight": "BottomRight"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "text",
+      "id": "titol",
+      "x": 320,
+      "y": 24,
+      "text": "Com es juga",
+      "font": "conjuraavet-negreta",
+      "fontSize": 8,
+      "color": "#f0a446",
+      "align": "center",
+      "zIndex": 3
+    },
+    {
+      "type": "image",
+      "id": "dit0",
+      "x": 142,
+      "y": 44,
+      "tag": "dit0",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "image",
+      "id": "ratoli0",
+      "x": 142,
+      "y": 44,
+      "tag": "ratoli0",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "text",
+      "id": "text0",
+      "x": 186,
+      "y": 48,
+      "text": "",
+      "font": "conjuraavet-regular",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "align": "left",
+      "wordWrapWidth": 312,
+      "zIndex": 3,
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "image",
+      "id": "dit1",
+      "x": 142,
+      "y": 84,
+      "tag": "dit1",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "image",
+      "id": "ratoli1",
+      "x": 142,
+      "y": 84,
+      "tag": "ratoli1",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "text",
+      "id": "text1",
+      "x": 186,
+      "y": 88,
+      "text": "",
+      "font": "conjuraavet-regular",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "align": "left",
+      "wordWrapWidth": 312,
+      "zIndex": 3,
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "image",
+      "id": "dit2",
+      "x": 142,
+      "y": 124,
+      "tag": "punts",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "image",
+      "id": "ratoli2",
+      "x": 142,
+      "y": 124,
+      "tag": "punts",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "text",
+      "id": "text2",
+      "x": 186,
+      "y": 128,
+      "text": "",
+      "font": "conjuraavet-regular",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "align": "left",
+      "wordWrapWidth": 312,
+      "zIndex": 3,
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "image",
+      "id": "dit3",
+      "x": 142,
+      "y": 164,
+      "tag": "pista",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "image",
+      "id": "ratoli3",
+      "x": 142,
+      "y": 164,
+      "tag": "pista",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "text",
+      "id": "text3",
+      "x": 186,
+      "y": 168,
+      "text": "",
+      "font": "conjuraavet-regular",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "align": "left",
+      "wordWrapWidth": 312,
+      "zIndex": 3,
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "intercanvia",
+      "x": 142,
+      "y": 210,
+      "width": 21,
+      "height": 21,
+      "backgroundAnchor": "top-left",
+      "tag": "checkbox",
+      "states": {
+        "uncheckedHover": "checkbox-hover",
+        "checked": "checkbox-checked",
+        "checkedHover": "checkbox-checked-hover"
+      },
+      "checked": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "text",
+      "id": "intercanviaText",
+      "x": 168,
+      "y": 212,
+      "text": "Clic esquerre per fer (i dret per mirar)",
+      "font": "conjuraavet-regular",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "align": "left",
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "dacord",
+      "x": 407,
+      "y": 236,
+      "width": 91,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "D'acord",
+      "font": "conjuraavet-regular",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -2,
+      "backgroundTag": "key-91x27",
+      "states": {
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed"
+      },
+      "textColorStates": {
+        "hover": "#86eedb",
+        "pressed": "#86eedb"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      },
+      "zIndex": 3
+    }
+  ]
+}

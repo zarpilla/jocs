@@ -1,0 +1,29 @@
+{
+  "$schema": "../schemas/game.schema.json",
+  "id": "conjuraavet",
+  "title": "joc.titol",
+  "defaultLocale": "ca",
+  "locales": [
+    "ca"
+  ],
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "start": {
+    "iri": {
+      "room": "mur_avet",
+      "items": [
+        "guants"
+      ]
+    },
+    "vet": {
+      "room": "mur_avet",
+      "items": []
+    }
+  },
+  "cover": "portada",
+  "switchWhen": {
+    "any": []
+  }
+}

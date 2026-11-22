@@ -1,0 +1,56 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.mur_avet.nom",
+  "protagonist": "iri",
+  "onEnter": [
+    {
+      "id": "primera",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.mur_avet.intro.1"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "avet": {
+      "name": "sala.mur_avet.avet.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.avet.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "arrels": {
+      "name": "sala.mur_avet.arrels.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.arrels.mira"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "tall_vist"
+            }
+          ]
+        }
+      ]
+    },
+    "ponc": {
+      "interactions": []
+    }
+  }
+}

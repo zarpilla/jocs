@@ -1,0 +1,366 @@
+{
+  "$comment": "GENERAT per adapters/benne/sync.ts",
+  "content": {
+    "manifest": {
+      "id": "conjuraavet",
+      "title": "joc.titol",
+      "defaultLocale": "ca",
+      "locales": [
+        "ca"
+      ],
+      "protagonists": [
+        "iri",
+        "vet"
+      ],
+      "start": {
+        "iri": {
+          "room": "mur_avet",
+          "items": [
+            "guants"
+          ]
+        },
+        "vet": {
+          "room": "mur_avet",
+          "items": []
+        }
+      },
+      "cover": "portada",
+      "switchWhen": {
+        "any": []
+      }
+    },
+    "state": {
+      "flags": {
+        "tall_vist": false
+      },
+      "vars": {}
+    },
+    "characters": {
+      "iri": {
+        "name": "pj.iri.nom",
+        "interactions": []
+      },
+      "vet": {
+        "name": "pj.vet.nom",
+        "interactions": []
+      },
+      "ponc": {
+        "name": "pj.ponc.nom",
+        "interactions": [
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "player",
+                "text": "pj.ponc.mira"
+              }
+            ]
+          },
+          {
+            "verb": "talkTo",
+            "dialogue": "ponc"
+          }
+        ]
+      }
+    },
+    "items": {
+      "guants": {
+        "name": "obj.guants.nom",
+        "description": "obj.guants.desc",
+        "interactions": []
+      }
+    },
+    "rooms": {
+      "credits": {
+        "name": "sala.credits.nom",
+        "cutscene": {},
+        "hotspots": {}
+      },
+      "mur_avet": {
+        "name": "sala.mur_avet.nom",
+        "protagonist": "iri",
+        "onEnter": [
+          {
+            "id": "primera",
+            "verb": "*",
+            "once": true,
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.mur_avet.intro.1"
+              }
+            ]
+          }
+        ],
+        "hotspots": {
+          "avet": {
+            "name": "sala.mur_avet.avet.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.mur_avet.avet.mira"
+                  }
+                ]
+              }
+            ]
+          },
+          "arrels": {
+            "name": "sala.mur_avet.arrels.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.mur_avet.arrels.mira"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "tall_vist"
+                  }
+                ]
+              }
+            ]
+          },
+          "ponc": {
+            "interactions": []
+          }
+        }
+      },
+      "portada": {
+        "name": "sala.portada.nom",
+        "hotspots": {}
+      }
+    },
+    "quests": {
+      "acte1": {
+        "kind": "main",
+        "title": "mis.acte1.titol",
+        "startWhen": {
+          "visited": "mur_avet"
+        },
+        "objectives": [
+          {
+            "id": "tall",
+            "text": "mis.acte1.obj.tall",
+            "completeWhen": {
+              "flag": "tall_vist"
+            }
+          }
+        ]
+      }
+    },
+    "hints": {
+      "tall": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "inRoom": "mur_avet"
+            },
+            {
+              "flag": "tall_vist",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "tall_vist"
+        },
+        "levels": [
+          "pista.tall.1",
+          "pista.tall.2"
+        ],
+        "targets": [
+          "arrels"
+        ]
+      }
+    },
+    "endings": {
+      "judici": {
+        "title": "final.judici.titol",
+        "text": "final.judici.text",
+        "scene": [
+          {
+            "who": "narrator",
+            "text": "final.judici.1"
+          }
+        ],
+        "credits": [
+          {
+            "who": "narrator",
+            "text": "final.credits.1",
+            "room": "credits"
+          }
+        ],
+        "when": {
+          "flag": "tall_vist"
+        },
+        "priority": 1
+      }
+    },
+    "dialogues": {
+      "ponc": {
+        "id": "ponc",
+        "with": "ponc",
+        "start": [
+          {
+            "node": "hola"
+          }
+        ],
+        "nodes": {
+          "hola": {
+            "lines": [
+              {
+                "who": "ponc",
+                "text": "dlg.ponc.hola.1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "menu": {
+            "choices": [
+              {
+                "id": "tall",
+                "text": "dlg.ponc.opt.tall",
+                "next": "tall",
+                "if": {
+                  "flag": "tall_vist"
+                }
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.ponc.opt.adeu",
+                "end": true
+              }
+            ]
+          },
+          "tall": {
+            "lines": [
+              {
+                "who": "ponc",
+                "text": "dlg.ponc.tall.2"
+              }
+            ],
+            "goto": "menu"
+          }
+        }
+      }
+    }
+  },
+  "locales": {
+    "ca": {
+      "dlg.ponc.hola.1": "Jutge Ponç, al servei del comte. Si veniu a declarar, porteu tres testimonis i un segell.",
+      "dlg.ponc.opt.tall": "L'avet no l'ha tombat el vent. Les arrels estan serrades.",
+      "dlg.ponc.opt.adeu": "Res, gràcies.",
+      "dlg.ponc.tall.2": "Una dona i un arbre: dos testimonis sense valor. Passi-ho bé.",
+      "final.judici.titol": "La Conjura de l'Avet",
+      "final.judici.text": "(Esquelet: el joc encara no té història.)",
+      "final.judici.1": "Fins aquí l'esquelet. La història, al guió.",
+      "final.credits.1": "La Conjura de l'Avet. Un joc de Mala Herba Soft.",
+      "joc.titol": "La Conjura de l'Avet",
+      "ui.verb.give": "Dona",
+      "ui.verb.give.prep": "a",
+      "ui.verb.pickUp": "Agafa",
+      "ui.verb.use": "Usa",
+      "ui.verb.use.prep": "amb",
+      "ui.verb.open": "Obre",
+      "ui.verb.look": "Mira",
+      "ui.verb.push": "Empeny",
+      "ui.verb.close": "Tanca",
+      "ui.verb.talkTo": "Parla amb",
+      "ui.verb.pull": "Estira",
+      "ui.verb.walkTo": "Ves a",
+      "ui.verb.fes": "Fes",
+      "ui.menu.titol": "Menú",
+      "ui.menu.desar": "Desa",
+      "ui.menu.carregar": "Carrega",
+      "ui.menu.opcions": "Opcions",
+      "ui.menu.sortir": "Surt",
+      "ui.menu.continuar": "Continua",
+      "ui.menu.inici": "Pantalla inicial",
+      "ui.menu.tornar": "Torna",
+      "ui.carregar.instruccions": "Tria una partida per carregar.",
+      "ui.desar.instruccions": "Tria una posició i escriu un nom per desar.",
+      "ui.opcions.clic_salta": "clic per saltar el diàleg",
+      "ui.opcions.volum_efectes": "volum dels efectes",
+      "ui.opcions.volum_musica": "volum de la música",
+      "ui.opcions.velocitat_text": "velocitat del text",
+      "ui.verb.talkTo.boto": "Parla",
+      "ui.verb.toca": "Toca",
+      "ui.verb.accions": "Accions",
+      "ui.accio.look": "Mira",
+      "ui.accio.walkTo": "Ves-hi",
+      "ui.accio.talkTo": "Parla",
+      "ui.accio.pickUp": "Agafa",
+      "ui.accio.open": "Obre",
+      "ui.accio.close": "Tanca",
+      "ui.accio.push": "Empeny",
+      "ui.accio.pull": "Estira",
+      "ui.accio.use": "Fes servir",
+      "ui.accio.give": "Dona",
+      "ui.accio.armar": "Usa-ho amb...",
+      "ui.menu.pista": "Pista",
+      "ui.portada.continua": "Continua",
+      "ui.portada.comenca": "Comença",
+      "ui.portada.carrega": "Carrega una partida",
+      "ui.menu.historial": "Historial",
+      "ui.historial.titol": "Historial",
+      "ui.historial.peu": "Roda o fletxes: enrere · Clic, Esc o H: tanca",
+      "ui.historial.buit": "Encara no ha parlat ningú.",
+      "ui.defecte": "Això no funciona.",
+      "ui.defecte.close": "No cal tancar-ho.",
+      "ui.defecte.give": "No crec que ho vulgui.",
+      "ui.defecte.look": "Res d'especial.",
+      "ui.defecte.open": "No s'obre.",
+      "ui.defecte.pickUp": "No ho necessito.",
+      "ui.defecte.pull": "No es mou.",
+      "ui.defecte.push": "No es mou.",
+      "ui.defecte.talkTo": "No crec que em contesti.",
+      "ui.defecte.use": "Això no funciona.",
+      "ui.fi": "Fi",
+      "ui.pista.cap": "Ara mateix no se m'acut res. Potser cal mirar al voltant.",
+      "ui.missio.completada": "Missió completada: {titol}",
+      "ui.missio.fallida": "Missió fallida: {titol}",
+      "ui.missio.nova": "Nova missió: {titol}",
+      "ui.controls.titol": "Com es juga",
+      "ui.controls.dit.0": "Toca una cosa: la primera vegada la mires; després hi fas l'acció (o tries, si n'hi ha més d'una).",
+      "ui.controls.dit.1": "Mantén el dit premut sobre una cosa: tries què hi fas (mirar-la, agafar-la, obrir-la...).",
+      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones). Els punts ensenyen el que es pot tocar.",
+      "ui.controls.ratoli.esquerre": "Clic esquerre: hi vas o hi fas l'acció (si n'hi ha més d'una, tries). Mantingues-lo premut per triar.",
+      "ui.controls.ratoli.dret": "Clic dret sobre una cosa: la mires.",
+      "ui.controls.ratoli.esquerre.mira": "Clic esquerre sobre una cosa: la mires. Mantingues-lo premut per triar què hi fas.",
+      "ui.controls.ratoli.dret.fa": "Clic dret: hi vas o hi fas l'acció (si n'hi ha més d'una, tries).",
+      "ui.controls.ratoli.punts": "Clica un objecte de l'inventari i després on el vols fer servir. Els punts ensenyen el que es pot clicar.",
+      "ui.controls.pista": "Si no saps què fer, demana una pista (també és al menú): cada vegada que la demanis, una mica més clara.",
+      "ui.controls.dacord": "D'acord",
+      "ui.opcions.botons": "clic esquerre per fer",
+      "ui.opcions.controls": "Controls",
+      "ui.controls.intercanvia": "Clic esquerre per fer (i dret per mirar)",
+      "mis.acte1.titol": "El crim botànic",
+      "mis.acte1.obj.tall": "Mirar les arrels de l'avet.",
+      "obj.guants.nom": "guants de cuir",
+      "obj.guants.desc": "Els guants de llenyatera. Gruixuts com una sola de sabata.",
+      "pj.iri.nom": "Iri",
+      "pj.vet.nom": "Vet",
+      "pj.ponc.nom": "jutge Ponç",
+      "pj.ponc.mira": "El jutge del comte. Porta més segells que botons.",
+      "pista.tall.1": "L'avet no ha caigut sol. Mira-te'l de prop.",
+      "pista.tall.2": "Les arrels. Mira les arrels.",
+      "sala.portada.nom": "Portada",
+      "sala.credits.nom": "Crèdits",
+      "sala.mur_avet.nom": "L'avet caigut",
+      "sala.mur_avet.intro.1": "Tota la nit bufant, i a la fi l'ha tombat.",
+      "sala.mur_avet.avet.nom": "avet",
+      "sala.mur_avet.avet.mira": "L'avet de l'Emma, ajagut damunt el mur. Cent trenta anys dret, i una nit de tramuntana.",
+      "sala.mur_avet.arrels.nom": "arrels",
+      "sala.mur_avet.arrels.mira": "Aquest tall és massa net. Això no ho ha fet el vent: és de serra."
+    }
+  },
+  "locale": "ca",
+  "zones": {}
+}

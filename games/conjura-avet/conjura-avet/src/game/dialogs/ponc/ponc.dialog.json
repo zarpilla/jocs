@@ -1,0 +1,20 @@
+{
+  "id": "ponc",
+  "displayName": "ponc",
+  "options": [
+    {
+      "id": "menu__tall",
+      "scriptName": "menu__tall",
+      "text": "L'avet no l'ha tombat el vent. Les arrels estan serrades.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, gràcies.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

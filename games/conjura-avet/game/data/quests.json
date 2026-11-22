@@ -1,0 +1,19 @@
+{
+  "$schema": "../schemas/quests.schema.json",
+  "acte1": {
+    "kind": "main",
+    "title": "mis.acte1.titol",
+    "startWhen": {
+      "visited": "mur_avet"
+    },
+    "objectives": [
+      {
+        "id": "tall",
+        "text": "mis.acte1.obj.tall",
+        "completeWhen": {
+          "flag": "tall_vist"
+        }
+      }
+    ]
+  }
+}

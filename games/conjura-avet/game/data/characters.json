@@ -1,0 +1,29 @@
+{
+  "$schema": "../schemas/characters.schema.json",
+  "iri": {
+    "name": "pj.iri.nom",
+    "interactions": []
+  },
+  "vet": {
+    "name": "pj.vet.nom",
+    "interactions": []
+  },
+  "ponc": {
+    "name": "pj.ponc.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.ponc.mira"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "ponc"
+      }
+    ]
+  }
+}

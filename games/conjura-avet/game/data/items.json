@@ -1,0 +1,8 @@
+{
+  "$schema": "../schemas/items.schema.json",
+  "guants": {
+    "name": "obj.guants.nom",
+    "description": "obj.guants.desc",
+    "interactions": []
+  }
+}

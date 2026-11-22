@@ -1,0 +1,24 @@
+{
+  "$schema": "../schemas/endings.schema.json",
+  "judici": {
+    "title": "final.judici.titol",
+    "text": "final.judici.text",
+    "scene": [
+      {
+        "who": "narrator",
+        "text": "final.judici.1"
+      }
+    ],
+    "credits": [
+      {
+        "who": "narrator",
+        "text": "final.credits.1",
+        "room": "credits"
+      }
+    ],
+    "when": {
+      "flag": "tall_vist"
+    },
+    "priority": 1
+  }
+}

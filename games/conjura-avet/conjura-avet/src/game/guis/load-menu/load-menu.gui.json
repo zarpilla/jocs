@@ -1,0 +1,120 @@
+{
+  "id": "load-menu",
+  "name": "Load Menu",
+  "description": " [288]",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "controls": [
+    {
+      "type": "nineSliceImage",
+      "id": "load-bg",
+      "x": 84,
+      "y": 24,
+      "width": 473,
+      "height": 240,
+      "tag": "9-slice-BG",
+      "sliceNames": {
+        "topLeft": "TopLeft",
+        "topCenter": "TopMid",
+        "topRight": "TopRight",
+        "middleLeft": "MidLeft",
+        "center": "Mid",
+        "middleRight": "MidRight",
+        "bottomLeft": "BottomLeft",
+        "bottomCenter": "BottomMid",
+        "bottomRight": "BottomRight"
+      }
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 320,
+      "y": 40,
+      "text": "Carrega",
+      "font": "conjuraavet-negreta",
+      "fontSize": 8,
+      "color": "#1a466b",
+      "align": "center"
+    },
+    {
+      "type": "listBox",
+      "id": "load-list",
+      "x": 109,
+      "y": 91,
+      "width": 287,
+      "height": 145,
+      "rowCount": 5,
+      "rowPadding": 4,
+      "normalBackgroundColor": "#222222",
+      "hoverBackgroundColor": "#2f2f2f",
+      "selectedBackgroundColor": "#4a4a4a",
+      "textColor": "#ffffff",
+      "selectedTextColor": "#ffffff",
+      "placeholderTextColor": "#999999",
+      "font": "conjuraavet-regular",
+      "fontSize": 8
+    },
+    {
+      "type": "text",
+      "id": "instructions",
+      "x": 109,
+      "y": 62,
+      "text": "Tria una partida per carregar.",
+      "font": "conjuraavet-regular",
+      "fontSize": 8,
+      "color": "#1a466b",
+      "wordWrapWidth": 407
+    },
+    {
+      "type": "button",
+      "id": "load-btn",
+      "x": 415,
+      "y": 126,
+      "width": 113,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Carrega",
+      "font": "conjuraavet-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -2,
+      "backgroundTag": "",
+      "backgroundColor": "#132243",
+      "backgroundColorStates": {
+        "hover": "#1a466b",
+        "pressed": "#10908e",
+        "disabled": "#636363"
+      }
+    },
+    {
+      "type": "button",
+      "id": "back-btn",
+      "x": 415,
+      "y": 157,
+      "width": 113,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Torna",
+      "font": "conjuraavet-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -2,
+      "backgroundTag": "",
+      "backgroundColor": "#132243",
+      "backgroundColorStates": {
+        "hover": "#1a466b",
+        "pressed": "#10908e",
+        "disabled": "#636363"
+      }
+    }
+  ],
+  "modal": true,
+  "zIndex": 101,
+  "anchorY": "center"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "portada",
+  "name": "Portada",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 25,
+            "y": 215
+          },
+          {
+            "x": 615,
+            "y": 215
+          },
+          {
+            "x": 629,
+            "y": 269
+          },
+          {
+            "x": 11,
+            "y": 269
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    }
+  ],
+  "characters": [],
+  "viewAnchorY": 0.167
+}

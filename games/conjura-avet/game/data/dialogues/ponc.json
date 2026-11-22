@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "ponc",
+  "with": "ponc",
+  "start": [
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.hola.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "tall",
+          "text": "dlg.ponc.opt.tall",
+          "next": "tall",
+          "if": {
+            "flag": "tall_vist"
+          }
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.ponc.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "tall": {
+      "lines": [
+        {
+          "who": "ponc",
+          "text": "dlg.ponc.tall.2"
+        }
+      ],
+      "goto": "menu"
+    }
+  }
+}
