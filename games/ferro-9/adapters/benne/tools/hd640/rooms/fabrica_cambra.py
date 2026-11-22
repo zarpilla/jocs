@@ -1,12 +1,13 @@
 """
 Cambra de ressonància (Iri). EN 3D (hd640/tres_d.py), a 1×.
 
-Una càmera alta que mira de biaix la cantonada del fons a l'esquerra:
-  - a la paret de l'esquerra, en escorç, la **porta de ferro** de la sala de calderes, amb el foc a l'espiell, i l'avís
-    de reglament;
-  - la **consola** de fusta, separada de la paret i girada, amb el sobre inclinat (el botó, la palanca), el llum
-    d'alarma i els rellotges al davant; la campana a la paret, al damunt;
-  - al mig del fons, la **cambra** de vidre gruixut sobre la plataforma de les franges de perill, amb volum (els
+Una càmera alta que mira de biaix la cantonada del fons a l'esquerra. Les coses van, d'esquerra a dreta, com al pròleg
+(porta, consola, cambra), amb aire entre elles:
+  - a la paret de l'esquerra, en escorç i ben endavant, la **porta de ferro** de la sala de calderes, amb el foc a
+    l'espiell, i l'avís de reglament;
+  - la **consola** de fusta, recta contra la paret del fons, prop de la cantonada, amb el sobre inclinat (el botó, la
+    palanca), el llum d'alarma i els rellotges al davant; la campana a la paret, al damunt;
+  - al fons, a la dreta de la consola, la **cambra** de vidre gruixut sobre la plataforma de les franges de perill, amb volum (els
     muntants, la caixa de dalt amb els aïlladors i els cables que pugen al sostre);
   - a la paret del fons, la **reixa** del conducte de servei (la sortida pel fons), el rètol de perill, la canonada
     de coure amb la vàlvula i el manòmetre, la pissarra; el pilar de ferro i la galleda de sorra;
@@ -38,7 +39,9 @@ FY = PL.FLOOR_Y                                    # el terra, al dibuix pla
 TOPY = 13                                          # dalt de la paret al dibuix pla (la biga; a dalt, el sostre)
 HW = FY - TOPY                                     # l'alçada de les parets
 XL = 124                                           # al dibuix pla, la cantonada: a l'esquerra, la paret de la porta
-XR = 700                                           # on s'acaba la paret del fons (fora de la pantalla)
+XR = 760                                           # on s'acaba la paret del fons (fora de la pantalla)
+OFF = 70                                           # el dibuix pla de la paret del fons comença aquí (abans, maó)
+DZ = 80                                            # la porta, avançada: la paret de la porta acaba DZ abans
 DARK = [(4, 3, 5), (9, 7, 10), (15, 12, 15), (22, 18, 21), (31, 25, 28), (42, 34, 36)]
 
 
@@ -49,12 +52,12 @@ class Canvas(pix.Canvas):
 
 def _w(fx):
     """Una x del dibuix pla de la paret del fons → la x del món."""
-    return fx - XL
+    return fx - XL + OFF
 
 
 def _wz(fx):
     """Una x del dibuix pla de la paret de la porta → la z del món."""
-    return ZW - XL + fx
+    return ZW - XL - DZ + fx
 
 
 def _y(fy):
@@ -62,19 +65,19 @@ def _y(fy):
     return FY - fy
 
 
-CONSOLE = (92, 236, 124, 40, -0.32)                # la consola: x, z del centre, ample, fons, gir
+CONSOLE = (92, 274, 124, 40, 0.0)                # la consola: x, z del centre, ample, fons, gir
 CON_H, CON_TOP = 66, 88                            # l'alçada del davant i la del sobre inclinat (al darrere)
 CHAMBER = (_w(265), _w(425), 236, 292)             # la plataforma de la cambra: x0, x1, z0, z1
-DRUM = (392, 180)                                  # les caixes de recanvis (x, z)
+DRUM = (470, 168)                                  # les caixes de recanvis (x, z)
 PIPE = (_w(543), ZW - 7)                           # la canonada de coure (x, z)
 PILLAR_B = (_w(603), ZW - 10)                      # el pilar del fons
-BUCKET = (512, 262)                                # la galleda de sorra
+BUCKET = (585, 262)                                # la galleda de sorra
 LAMP1 = (CONSOLE[0] + 14, 150, CONSOLE[1] - 6)      # les làmpades (la bombeta)
 LAMP2 = (_w(PL.LAMP2[0]), 156, ZW - 40)
 CORE = ((CHAMBER[0] + CHAMBER[1]) / 2, 100, 262)   # el centre del camp
 GATE = (0, _y(115), _wz(44))                       # l'espiell de la porta (el foc)
 
-CAM = Camera(pos=(420, 205, -230), yaw=-0.36, pitch=0.21, f=450, centre=(320, 90))
+CAM = Camera(pos=(470, 200, -290), yaw=-0.36, pitch=0.20, f=450, centre=(320, 88))
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)  # (la llum és la del món: la de l'Escena)
 LLUMS = [Llum(LAMP1, 260, 2.4, power=1.5),
@@ -209,13 +212,19 @@ def escena(cv, tex, estat=frozenset()):
     e.quad('sostre', (0, HW, zn), (XR, HW, zn), (XR, HW, ZW), (0, HW, ZW), ramp=IRON, dues_cares=True,
            lvl=lambda s, t, P: 0.5 + (1.4 if P[2] % 80 < 7 else 0) - (0.5 if P[2] % 80 > 76 else 0))
     # la paret de la porta (x = 0): de prop, maó; cap a la cantonada, el dibuix pla (x 0..124)
-    e.quad('paret_esq_prop', (0, HW, zn), (0, HW, ZW - XL), (0, 0, ZW - XL), (0, 0, zn),
-           tex=(mao, (W - (ZW - XL - zn), TOPY, W, FY)))
-    e.quad('paret_esq', (0, HW, ZW - XL), (0, HW, ZW), (0, 0, ZW), (0, 0, ZW - XL), tex=(paret, (0, TOPY, XL, FY)))
-    # la paret del fons (z = 300): el dibuix pla (x 124..640) i, a la dreta, més maó
-    e.quad('paret_fons', (0, HW, ZW), (W - XL, HW, ZW), (W - XL, 0, ZW), (0, 0, ZW), tex=(paret, (XL, TOPY, W, FY)))
-    e.quad('paret_fons_dreta', (W - XL, HW, ZW), (XR, HW, ZW), (XR, 0, ZW), (W - XL, 0, ZW),
-           tex=(mao, (0, TOPY, XR - (W - XL), FY)))
+    z0, z1 = _wz(0), _wz(XL)
+    e.quad('paret_esq_prop', (0, HW, zn), (0, HW, z0), (0, 0, z0), (0, 0, zn),
+           tex=(mao, (W - (z0 - zn), TOPY, W, FY)))
+    e.quad('paret_esq', (0, HW, z0), (0, HW, z1), (0, 0, z1), (0, 0, z0), tex=(paret, (0, TOPY, XL, FY)))
+    if DZ:
+        e.quad('paret_esq_cantonada', (0, HW, z1), (0, HW, ZW), (0, 0, ZW), (0, 0, z1), tex=(mao, (0, TOPY, DZ, FY)))
+    # la paret del fons (z = 300): maó a la cantonada, el dibuix pla (x 124..640) i, a la dreta, més maó
+    if OFF:
+        e.quad('paret_fons_esq', (0, HW, ZW), (OFF, HW, ZW), (OFF, 0, ZW), (0, 0, ZW), tex=(mao, (W - OFF, TOPY, W, FY)))
+    x1 = _w(W)
+    e.quad('paret_fons', (OFF, HW, ZW), (x1, HW, ZW), (x1, 0, ZW), (OFF, 0, ZW), tex=(paret, (XL, TOPY, W, FY)))
+    e.quad('paret_fons_dreta', (x1, HW, ZW), (XR, HW, ZW), (XR, 0, ZW), (x1, 0, ZW),
+           tex=(mao, (0, TOPY, XR - x1, FY)))
     # el terra de lloses
     e.quad('terra', (0, 0, ZW), (XR, 0, ZW), (XR, 0, zn), (0, 0, zn), ramp=STONE, lvl=_terra)
     # la llum: el foc de l'espiell, el camp violeta davant la cambra i els bassals sota les làmpades
@@ -350,8 +359,8 @@ def escena(cv, tex, estat=frozenset()):
                        cares={'dalt': {'ramp': DARK, 'lvl': lambda s, t, P: 3.0 - (1.2 if int(s) % 12 == 0 else 0)},
                               'davant': {'ramp': DARK, 'lvl': lambda s, t, P: 1.2 + (0.6 if int(t) % 10 == 0 else 0)},
                               'dreta': {'ramp': DARK, 'lvl': 2.0}})
-    e.roca('primer_pla', (352, 0, 62), 32, DARK, lvl=2.2, llum_dir=(-0.7, -0.6), aplana=0.45, seed=9)   # el rotlle
-    e.tub('primer_pla', (500, 0, 72), (500, HW, 72), 10, DARK, 2.0, llum_dir=(-0.8, 0.3))
+    e.roca('primer_pla', (120, 0, -60), 32, DARK, lvl=2.2, llum_dir=(-0.7, -0.6), aplana=0.45, seed=9)   # el rotlle
+    e.tub('primer_pla', (640, 0, 40), (640, HW, 40), 10, DARK, 2.0, llum_dir=(-0.8, 0.3))
     return e
 
 
@@ -527,10 +536,10 @@ def _escala_a(v):
     return CAM.escala((260, 0, (lo + hi) / 2))
 
 
-# El terra on es camina (al món): de la porta a la galleda, davant la plataforma i fins a la reixa.
-WALK_MON = [(14, 214), (14, 110), (70, 62), (200, 62), (262, 84), (330, 110), (400, 136), (480, 166), (500, 190),
-            (496, 250), (CHAMBER[1] + 4, 286), (CHAMBER[1] + 4, 228), (CHAMBER[0] - 4, 226),
-            (CHAMBER[0] - 4, 260), (40, 214)]
+# El terra on es camina (al món): de la porta a la galleda, davant la consola i la plataforma i fins a la reixa.
+WALK_MON = [(14, 96), (14, 236), (CHAMBER[0] - 6, 236), (CHAMBER[0] - 6, 222), (CHAMBER[1] + 4, 222),
+            (CHAMBER[1] + 4, 286), (BUCKET[0] - 20, 286), (BUCKET[0] - 20, 240), (BUCKET[0] + 20, 215),
+            (BUCKET[0] + 20, 110), (480, 62), (320, 4), (200, -36), (130, -30), (100, 30), (50, 80)]
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 _FORAT_CONSOLA = [_p(x, z) for x, z in _cantons(*CONSOLE[:2], CONSOLE[2] + 12, CONSOLE[3] + 12, CONSOLE[4])]
@@ -555,7 +564,7 @@ GEOMETRIA = {
         'reixa': {'rect': _rect_mon((_GRILLE[0], _GRILLE[3], ZW), (_GRILLE[1], _GRILLE[2], ZW)),
                   'walk': _p((_GRILLE[0] + _GRILLE[1]) / 2, ZW - 24)},
     },
-    'spawns': {'iri': _p(430, 200)},
+    'spawns': {'iri': _p(330, 170)},
     'walkable': _WALK,
     'forats': [_FORAT_CONSOLA, _FORAT_CAIXES],
     'floorSquash': 0.42,                           # (la càmera, picada: el terra es veu aixafat)
