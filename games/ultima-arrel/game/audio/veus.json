@@ -6,7 +6,17 @@
   "format": "mp3_44100_64",
   "voices": {
     "iri": "qcyHYv8hHabwybYWmwHM",
-    "vet": "K85x5SfUCbata0XBeVJf"
+    "vet": "K85x5SfUCbata0XBeVJf",
+    "narrator": "ugXzkzeWMkCcU1GbaOP4",
+    "espora": "daI8YXz4cB6QrdGvnCNM",
+    "pla": "Jm8GkQisekPP7tE5DnwQ",
+    "urtica": "66rqmiCFSfD9sFXIhfZO",
+    "pica": "I3BDpnOnA6OXwuSOCjBM",
+    "card": "o52NJkoKhDWlPDIlfdRt",
+    "bufo": "LvfY1Z7CkXLIL4ytG4LG",
+    "gripau": "qWQQFBnRPGxKklRNfF4l",
+    "txell": "hMVBTvgozKN4dADFndzp",
+    "avia": "f3dr5O1wXvFDgUiRJAhF"
   },
   "text": {},
   "jugadora": {
@@ -32,6 +42,7 @@
   },
   "pronuncia": {
     "Bosc 2.0": "Bosc dos punt zero",
-    "Wi-Fi": "wifi"
+    "Wi-Fi": "wifi",
+    "Bosc 3.0": "Bosc tres punt zero"
   }
 }
