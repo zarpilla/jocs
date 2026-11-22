@@ -98,7 +98,31 @@
           "who": "iri",
           "text": "sala.bcmu_despatx.intro6",
           "if": {
-            "flag": "ballester_acompanya"
+            "all": [
+              {
+                "flag": "ballester_acompanya"
+              },
+              {
+                "hasItem": "compte_nomines",
+                "who": "iri"
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "sala.bcmu_despatx.intro6_sense",
+          "if": {
+            "all": [
+              {
+                "flag": "ballester_acompanya"
+              },
+              {
+                "hasItem": "compte_nomines",
+                "who": "iri",
+                "is": false
+              }
+            ]
           }
         }
       ],

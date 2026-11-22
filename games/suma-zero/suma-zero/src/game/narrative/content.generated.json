@@ -3916,7 +3916,31 @@
                 "who": "iri",
                 "text": "sala.bcmu_despatx.intro6",
                 "if": {
-                  "flag": "ballester_acompanya"
+                  "all": [
+                    {
+                      "flag": "ballester_acompanya"
+                    },
+                    {
+                      "hasItem": "compte_nomines",
+                      "who": "iri"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "iri",
+                "text": "sala.bcmu_despatx.intro6_sense",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "ballester_acompanya"
+                    },
+                    {
+                      "hasItem": "compte_nomines",
+                      "who": "iri",
+                      "is": false
+                    }
+                  ]
                 }
               }
             ],
@@ -4861,12 +4885,12 @@
                     "text": "sala.bcmu_escombraries.llibre.canonada"
                   },
                   {
-                    "who": "vet",
-                    "text": "sala.bcmu_escombraries.llibre.regla"
-                  },
-                  {
                     "who": "player",
                     "text": "sala.bcmu_escombraries.llibre.soroll"
+                  },
+                  {
+                    "who": "vet",
+                    "text": "sala.bcmu_escombraries.llibre.regla"
                   }
                 ],
                 "effects": [
@@ -9592,11 +9616,20 @@
                   },
                   {
                     "who": "player",
-                    "text": "sala.pis_estudi.router.look_n",
+                    "text": "sala.pis_estudi.router.look_1",
                     "if": {
                       "var": "cables",
-                      "op": ">",
-                      "value": 0
+                      "op": "==",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.look_2",
+                    "if": {
+                      "var": "cables",
+                      "op": "==",
+                      "value": 2
                     }
                   },
                   {
@@ -22564,10 +22597,6 @@
               },
               {
                 "who": "marcel",
-                "text": "dlg.marcel.intro7"
-              },
-              {
-                "who": "marcel",
                 "text": "dlg.marcel.intro8"
               },
               {
@@ -24573,7 +24602,6 @@
       "dlg.marcel.intro4": "Marcel, m'estàs posant trist i he de tornar a la feina.",
       "dlg.marcel.intro5": "Jo treballava dotze hores perquè un senyor a Ginebra tingués una casa a tres països.",
       "dlg.marcel.intro6": "Ara tinc un cafè amb llet i soc més feliç. Però no tinc dentista.",
-      "dlg.marcel.intro7": "Al BCMU, la propina se la queda el banc.",
       "dlg.marcel.intro8": "Si vols que parli, porta'm tres coses d'en Tomàs sense que se n'adoni: el tap del seu clauer, la recepta secreta de llimonada i el comandament de la tele.",
       "dlg.marcel.intro9": "Si robes al teu cap per mi, et fiaré.",
       "dlg.marcel.neta1": "El robot de neteja. NETA-3. El vaig programar jo.",
@@ -24585,7 +24613,7 @@
       "dlg.marcel.opt.gracies": "Gràcies, Marcel. Te'n dec una.",
       "dlg.marcel.opt.neta": "Hi ha algú més pel mig, al tercer pis?",
       "dlg.marcel.opt.servidor": "Doncs ara sí: on és el servidor antic?",
-      "dlg.marcel.opt.tub": "El servidor en un pis i la clau al coll d'un altre. Com ho ajunto?",
+      "dlg.marcel.opt.tub": "El servidor en una planta i la clau penjada d'un coll. Com ho ajunto?",
       "dlg.marcel.opt.vol": "I com arribem a Ginebra, si no tenim ni per pizzes?",
       "dlg.marcel.servidor1": "A la sala d'escombraries del tercer pis. El van posar allà quan el van jubilar.",
       "dlg.marcel.servidor2": "Però encara porta tots els comptes. Ningú no s'ha atrevit a desendollar-lo.",
@@ -24609,7 +24637,7 @@
       "dlg.tomas.adeu": "Doncs a treballar.",
       "dlg.tomas.cafe1": "Per a en Marcel. Que no paga mai.",
       "dlg.tomas.cafe2": "Està bé. Però el pagues tu.",
-      "dlg.tomas.cafe2_1": "Un altre? En Marcel ja va prou excitat.",
+      "dlg.tomas.cafe2_1": "Un altre? En Marcel ja va prou esverat.",
       "dlg.tomas.cafe3": "En Tomàs es treu el clauer, el deixa a la barra i es posa a escumar la llet com si li anés la vida.",
       "dlg.tomas.comandament1": "El comandament? Hi ha partit.",
       "dlg.tomas.comandament2": "Només el deixaria per una cosa: una trucada de la meva dona.",
@@ -24928,7 +24956,7 @@
       "dlg.recepcionista.font2": "Exacte. Ho posaré a l'informe. Molt malament.",
       "dlg.recepcionista.font3": "...Ja era hora que algú se'n queixés. Passi, passi.",
       "dlg.recepcionista.dessuadora": "La de la dessuadora la busquen a dalt. Vostè va de jaqueta.",
-      "dlg.recepcionista.altra": "No confonc mai ningú. És la meva feina, i no me la paguen prou per equivocar-me.",
+      "dlg.recepcionista.altra": "No confonc mai ningú. És la meva feina, i no me la paguen prou per fer-la dues vegades.",
       "dlg.recepcionista.adeu2": "Que vagi bé. I insisteixi amb la font.",
       "dlg.aturada.opt.repartir": "Repartir-ho tot a parts iguals, pel compte de les nòmines.",
       "aliat.rius": "La Rius és de la colla. Aliats: {aliats} de 4.",
@@ -24940,7 +24968,7 @@
       "dlg.auricular.4": "Soc al moll de càrrega. L'ascensor de servei només puja amb la targeta de la Rius. I la Rius està de mal humor.",
       "dlg.auricular.5": "Tinc la targeta. Ara, l'ascensor: tercer pis, sala d'escombraries. Ho va dir en Marcel.",
       "dlg.auricular.6": "Soc al tercer pis. Hi ha un robot de neteja que ho torna tot al seu lloc: si tapo una càmera, me la destapa. Primer l'he d'aturar.",
-      "dlg.auricular.7": "I en Marcel em va dir com s'atura.",
+      "dlg.auricular.7": "I la Vet em va passar la frase d'en Marcel per aturar-lo.",
       "dlg.auricular.8": "Un robot de neteja... Tens res que faci molles?",
       "dlg.auricular.9": "El robot ja no em molesta. Ara, les dues càmeres que miren la porta de neteja.",
       "dlg.auricular.10": "Ningú no mira. Entro a la sala d'escombraries.",
@@ -24952,7 +24980,7 @@
       "dlg.auricular.16": "Soc al Llibre Major. Només el Director el pot aturar, i són les onze i quart.",
       "dlg.auricular.17": "Em demana la contrasenya del Director.",
       "dlg.auricular.18": "La pista diu: «El meu millor amic».",
-      "dlg.auricular.19": "Rockefeller. El vas llegir tu, al retrat.",
+      "dlg.auricular.19": "Rockefeller. Ho vas llegir tu, al retrat.",
       "dlg.auricular.20": "Quan demani el codi, arribarà al mòbil del Director. Si el mira ell abans que tu, ho cancel·la.",
       "dlg.auricular.21": "El codi ha entrat. Ara em pregunta què en fem, de tots els diners del món.",
       "dlg.auricular.22": "Aturat. Ara, a fugir. Per on?",
@@ -25042,13 +25070,13 @@
       "tub.auriculars": "Si me'ls trec, no et sento.",
       "tub.clau_casa": "Si la perdo, dormim al replà.",
       "tub.clau_llibre.rep": "La clau del Llibre Major. Pesa com trenta anys de guàrdia.",
-      "tub.entrepa_ballester.rep": "Ha arribat {objecte}. Vet, d'on surt això?",
+      "tub.entrepa_ballester.rep": "Ha arribat un entrepà de mortadel·la. Vet, d'on surt això?",
       "tub.entrepa_ballester.rep2": "No preguntis.",
-      "tub.envia": "Envio {objecte} pel tub.",
+      "tub.envia": "A la càpsula, i cap amunt.",
       "tub.moll": "L'Iri encara és al moll de càrrega. Allà no hi arriba el tub.",
       "tub.no_cal": "No li fa cap falta. I el tub fa un soroll horrible.",
       "tub.no_hi_cap": "No hi cap. El tub és de 1958: hi caben papers, claus i poca cosa més.",
-      "tub.rep": "Ha arribat {objecte}. Encara està calent de càpsula.",
+      "tub.rep": "Ha arribat una càpsula. Encara està calenta.",
       "ui.defecte": "Això no funciona.",
       "ui.defecte.close": "No cal tancar-ho.",
       "ui.defecte.give": "No crec que ho vulgui.",
@@ -25131,6 +25159,8 @@
       "sync.mobil.reinici1": "Bé. Tornem-hi?",
       "acte.3": "Acte 3 · Robin Hood 2.0",
       "tub.auricular_boto": "Si me'l trec, no la sento.",
+      "tub.entrepa.rep": "Ha arribat l'entrepà de tonyina. Aixafat, però sencer.",
+      "tub.entrepa_suis.rep": "Ha arribat un entrepà suís. Aixafat, però neutral.",
       "ui.verb.give": "Dona",
       "ui.verb.give.prep": "a",
       "ui.verb.pickUp": "Agafa",
@@ -25212,7 +25242,7 @@
       "mis.subcontractats.desc": "L'aplicació de la Rius s'ha penjat, i si no fitxen no cobren el dia.",
       "mis.subcontractats.obj.app": "Arreglar l'aplicació de la Rius",
       "mis.subcontractats.titol": "Subcontractats",
-      "mis.veritat_ballester.desc": "Trenta anys a la casa, una hipoteca i un collaret. En Ballester també és de la colla.",
+      "mis.veritat_ballester.desc": "Trenta anys a la casa, una hipoteca i un collaret. Potser en Ballester també podria ser de la colla.",
       "mis.veritat_ballester.obj.veritat": "Dir-li la veritat",
       "mis.veritat_ballester.titol": "La veritat d'en Ballester",
       "mis.acte3.titol": "Robin Hood 2.0",
@@ -25698,7 +25728,7 @@
       "sala.aeroport_terminal.ulleres.sync": "Ara no: he perdut un fill.",
       "sala.aeroport_terminal.vidriera.look": "Darrere la vidriera, la supervisora Ortega (ho diu el gafet) fuma i mira el mòbil. Entrarà quan s'acabi la cigarreta.",
       "sala.aeroport_terminal.vidriera.nom": "vidriera",
-      "sala.aeroport_terminal.vidriera.sync": "L'Ortega fuma a fora i, de tant en tant, mira cap a dins. Li queden {cigarreta} pipades, si fa no fa.",
+      "sala.aeroport_terminal.vidriera.sync": "L'Ortega fuma a fora i, de tant en tant, mira cap a dins. La cigarreta s'escurça.",
       "sala.avio.1": "A l'avió del BCMU, entre tècnics de debò.",
       "sala.avio.2": "Té, la teva. Amb la teva cara, que costa d'imprimir.",
       "sala.avio.3": "Sou noves? Soc la Rius, l'encarregada. Benvingudes a la subcontracta. Aquí ningú no cobra el viatge.",
@@ -25708,7 +25738,7 @@
       "sala.avio.vestit1": "I aquest vestit? Fa una hora anaves amb la jaqueta d'aviador.",
       "sala.avio.vestit2": "Al lavabo de la terminal hi havia un vestit jaqueta penjat, sense amo, i de la meva talla. Era el destí.",
       "sala.avio.vestit2_maleti": "Objectes perduts. Ja que hi era pel maletí, també m'he endut un vestit jaqueta de la meva talla. Era el destí.",
-      "sala.avio.vestit3": "Era d'un altre.",
+      "sala.avio.vestit3": "Era el destí d'una altra persona.",
       "sala.bar_rebost.caixes.look": "Caixes de cervesa, tovallons i un cartell de «Prohibit fumar» ple de cremades.",
       "sala.bar_rebost.caixes.nom": "caixes",
       "sala.bar_rebost.calaix.buit": "Buit. Com el pot de les propines a les deu.",
@@ -25742,7 +25772,7 @@
       "sala.bar_sala.nom": "Bar La Propina",
       "sala.bar_sala.porta.adeu": "Bona nit, Vet. I gràcies pel tap.",
       "sala.bar_sala.porta.look": "La sortida. Fora, l'autopista i els camions que no paren mai.",
-      "sala.bar_sala.porta.marcel": "No me'n vaig sense parlar amb en Marcel. I el torn no s'acaba fins a les dues.",
+      "sala.bar_sala.porta.marcel": "Encara no sé prou coses d'en Marcel. I el torn no s'acaba fins a les dues.",
       "sala.bar_sala.porta.nom": "sortida",
       "sala.bar_sala.porta.propines1": "La Vet plega. Al pot de les propines hi ha 9,20 €.",
       "sala.bar_sala.porta.propines2": "Les propines d'una nit. A Ginebra, potser un entrepà.",
@@ -25852,7 +25882,7 @@
       "sala.pis_estudi.intro4": "Saps què és el més divertit? Que el BCMU té més diners que cent vuitanta països junts. I no són seus. Són dels altres.",
       "sala.pis_estudi.intro5": "I nosaltres no en tenim ni per pizzes.",
       "sala.pis_estudi.intro6": "Doncs per això ho repartirem. Pizza per a tothom.",
-      "sala.pis_estudi.intro7": "Però primer... No. No, no, no. S'ha mort.",
+      "sala.pis_estudi.intro7": "Però primer... No. No, no, no. S'ha mort el mòbil.",
       "sala.pis_estudi.intro8": "Necessito internet de debò. I el router nou encara està per muntar.",
       "sala.pis_estudi.matalas.look": "El llit. Bé, el matalàs. El somier és una idea que encara no he implementat.",
       "sala.pis_estudi.matalas.nom": "matalàs",
@@ -25896,7 +25926,6 @@
       "sala.pis_estudi.router.altre": "Això no s'endolla enlloc. Ho he comprovat.",
       "sala.pis_estudi.router.ja": "Funciona. No el toquis. No el miris gaire.",
       "sala.pis_estudi.router.look0": "El router nou. Sense internet no hi ha pla, i sense tres cables no hi ha internet. Ara mateix en té zero.",
-      "sala.pis_estudi.router.look_n": "{cables} cables de tres. Ens mirem i ens entenem. A veure què falta.",
       "sala.pis_estudi.router.on.fibra": "La fibra: penja de la paret, aquí mateix. Només cal endollar-la al router.",
       "sala.pis_estudi.router.on.xarxa_caixa": "El cable de xarxa: és dins la caixa del router. Primer l'he de treure.",
       "sala.pis_estudi.router.on.xarxa_tinc": "El cable de xarxa: ja el porto a sobre. Només cal endollar-lo.",
@@ -25974,7 +26003,7 @@
       "sala.bcmu_vestibul.sortida.look": "La porta gran. Per aquí s'hi entra. Sortir, ja és més car.",
       "sala.bcmu_moll.nom": "El moll de càrrega",
       "sala.bcmu_moll.intro1": "El moll de càrrega del BCMU. Furgonetes blindades, caixes i una màquina de cafè amb mala reputació.",
-      "sala.bcmu_moll.intro2": "Rius. Encarregada. Ho repeteixo perquè a l'avió dormíeu. I no em diguis senyora.",
+      "sala.bcmu_moll.intro2": "Rius. Encarregada. Ho repeteixo perquè a l'avió no m'escoltàveu. I no em diguis senyora.",
       "sala.bcmu_moll.intro3": "Tothom al soterrani, a les caixes fortes. I la teva companya?",
       "sala.bcmu_moll.intro4": "Al lavabo.",
       "sala.bcmu_moll.intro5": "Doncs no li descomptaré els minuts.",
@@ -26083,7 +26112,7 @@
       "sala.bcmu_escombraries.llibre.codi1": "Primer codi.",
       "sala.bcmu_escombraries.llibre.bip1": "BIIIIIP.",
       "sala.bcmu_escombraries.llibre.canonada": "Què ha estat això? ...Bah. La canonada.",
-      "sala.bcmu_escombraries.llibre.regla": "Iri, cada bip el sent per la ràdio. Avisa'm i el tapo.",
+      "sala.bcmu_escombraries.llibre.regla": "Iri, cada bip el sent per la ràdio. Jo el distrec, i tu tecleges.",
       "sala.bcmu_escombraries.llibre.soroll": "És de 1984. Aleshores la gent volia que les màquines fessin soroll.",
       "sala.bcmu_escombraries.llibre.codi1_altra": "Primer codi. Una altra vegada.",
       "sala.bcmu_escombraries.llibre.canonada2": "La canonada. Una altra vegada.",
@@ -26214,7 +26243,7 @@
       "sala.bcmu_escombraries.tecleja_ok2": "Ja no ho pot desfer ningú. Ni ell. Ara, la pregunta difícil.",
       "sala.bcmu_escombraries.llibre.look_aturat": "La pantalla diu «ATURAT». Per primera vegada en quaranta-dos anys, el Llibre Major no compta res.",
       "sala.bcmu_escombraries.llibre.look_virus": "Els comptadors del virus: dotze euros per persona. La ronda següent, d'aquí a tres hores. Rellotge: les onze i vint.",
-      "sala.bcmu_escombraries.panell.mobil": "Ara no, NETA. El Director té el mòbil a tocar, i cada segon compta.",
+      "sala.bcmu_escombraries.panell.mobil": "Ara no. El Director té el mòbil a tocar, i cada segon compta.",
       "sala.bcmu_escombraries.conducte.llesta": "Coixí fet. Vet, quan obris el contenidor, salto.",
       "sala.bcmu_escombraries.conducte.escala": "Pel conducte? Tres pisos avall? Primer provaré la sortida de la gent normal: l'escala.",
       "sala.bcmu_escombraries.conducte.neta1": "NETA-3 entra a la sala, agafa les bosses de paper triturat i les llença pel conducte, una rere l'altra.",
@@ -26233,7 +26262,7 @@
       "sala.bcmu_passadis.escala.obre4": "L'Iri tanca la porta, molt a poc a poc.",
       "sala.bcmu_passadis.escala.obre5": "Pla B: escombraries.",
       "sala.bcmu_passadis.escala.plena": "Plena de seguretat. Pla B: escombraries.",
-      "sala.bcmu_passadis.escala.encara": "Encara no. Primer, el virus.",
+      "sala.bcmu_passadis.escala.encara": "Ara no és moment de provar panys. Primer, el virus.",
       "sala.bcmu_passadis.ascensor.buscada": "Al moll hi deu haver seguretat, esperant una noia amb dessuadora. No, gràcies.",
       "sala.bcmu_seguretat.virus1": "Als monitors, tots els comptes del banc s'han posat a zero, un rere l'altre.",
       "sala.bcmu_seguretat.virus2": "Tot a zero. Fins i tot el meu sou. ...Bé, tampoc no era gaire.",
@@ -26341,7 +26370,10 @@
       "sala.bcmu_moll.intro9": "Doncs amunt. Seguretat ja és cosa meva: hi soc amb en Ballester. Allà hi ha la clau.",
       "sala.avio.familia1": "Primer, tu vas fer de dona d'en Tomàs. Ara, jo m'invento un fill.",
       "sala.avio.familia2": "Per no existir, som una família molt gran.",
-      "sala.bcmu_vestibul.font.look2": "A casa tenim el problema contrari: una pica amb deu dies de plats."
+      "sala.bcmu_vestibul.font.look2": "A casa tenim el problema contrari: una pica amb deu dies de plats.",
+      "sala.bcmu_despatx.intro6_sense": "Zero zero zero u. Apuntat. Gràcies, Ballester.",
+      "sala.pis_estudi.router.look_1": "Un cable de tres. Ens mirem i ens entenem. A veure què falta.",
+      "sala.pis_estudi.router.look_2": "Dos cables de tres. Ens mirem i ens entenem. A veure què falta."
     }
   },
   "locale": "ca",

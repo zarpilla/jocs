@@ -18,13 +18,13 @@
   "tub.auriculars": "Si me'ls trec, no et sento.",
   "tub.clau_casa": "Si la perdo, dormim al replà.",
   "tub.clau_llibre.rep": "La clau del Llibre Major. Pesa com trenta anys de guàrdia.",
-  "tub.entrepa_ballester.rep": "Ha arribat {objecte}. Vet, d'on surt això?",
+  "tub.entrepa_ballester.rep": "Ha arribat un entrepà de mortadel·la. Vet, d'on surt això?",
   "tub.entrepa_ballester.rep2": "No preguntis.",
-  "tub.envia": "Envio {objecte} pel tub.",
+  "tub.envia": "A la càpsula, i cap amunt.",
   "tub.moll": "L'Iri encara és al moll de càrrega. Allà no hi arriba el tub.",
   "tub.no_cal": "No li fa cap falta. I el tub fa un soroll horrible.",
   "tub.no_hi_cap": "No hi cap. El tub és de 1958: hi caben papers, claus i poca cosa més.",
-  "tub.rep": "Ha arribat {objecte}. Encara està calent de càpsula.",
+  "tub.rep": "Ha arribat una càpsula. Encara està calenta.",
   "ui.defecte": "Això no funciona.",
   "ui.defecte.close": "No cal tancar-ho.",
   "ui.defecte.give": "No crec que ho vulgui.",
@@ -106,5 +106,7 @@
   "sync.mobil.caducat": "El codi ha caducat. En caldrà un de nou.",
   "sync.mobil.reinici1": "Bé. Tornem-hi?",
   "acte.3": "Acte 3 · Robin Hood 2.0",
-  "tub.auricular_boto": "Si me'l trec, no la sento."
+  "tub.auricular_boto": "Si me'l trec, no la sento.",
+  "tub.entrepa.rep": "Ha arribat l'entrepà de tonyina. Aixafat, però sencer.",
+  "tub.entrepa_suis.rep": "Ha arribat un entrepà suís. Aixafat, però neutral."
 }

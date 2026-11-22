@@ -135,7 +135,7 @@ TAULELL «taulell»
 
 VIDRIERA «vidriera»
     • look — si sync_aeroport
-        JUGADORA: L'Ortega fuma a fora i, de tant en tant, mira cap a dins. Li queden {cigarreta} pipades, si fa no fa.
+        JUGADORA: L'Ortega fuma a fora i, de tant en tant, mira cap a dins. La cigarreta s'escurça.
     • look — SEMPRE
         JUGADORA: Darrere la vidriera, la supervisora Ortega (ho diu el gafet) fuma i mira el mòbil. Entrarà quan s'acabi la cigarreta.
 
@@ -192,7 +192,7 @@ EN ENTRAR
         IRI: I aquest vestit? Fa una hora anaves amb la jaqueta d'aviador.
         VET: Al lavabo de la terminal hi havia un vestit jaqueta penjat, sense amo, i de la meva talla. Era el destí. ⟨si no té maleti (vet)⟩
         VET: Objectes perduts. Ja que hi era pel maletí, també m'he endut un vestit jaqueta de la meva talla. Era el destí. ⟨si té maleti (vet)⟩
-        IRI: Era d'un altre.
+        IRI: Era el destí d'una altra persona.
         VET: Primer, tu vas fer de dona d'en Tomàs. Ara, jo m'invento un fill.
         IRI: Per no existir, som una família molt gran.
         VET: Al banc hi deu haver més gent com la Rius. Si en posem prou al nostre costat, això acabarà molt millor.
@@ -367,7 +367,7 @@ PORTA_REBOST «rebost»
 
 PORTA «sortida»
     • walkTo/use/open — si NO marcel_fet
-        JUGADORA: No me'n vaig sense parlar amb en Marcel. I el torn no s'acaba fins a les dues.
+        JUGADORA: Encara no sé prou coses d'en Marcel. I el torn no s'acaba fins a les dues.
     • walkTo/use/open — si NO resum_fet
         JUGADORA: Abans he de trucar a l'Iri i explicar-li-ho tot.
     • walkTo/use/open — SEMPRE
@@ -502,7 +502,8 @@ EN ENTRAR
         JUGADORA: No. Vostè cobrava comissió.
         BALLESTER: Per a la seva companya, senyora: les nòmines van totes pel compte 0001. Sempre ho han fet. Per això sempre arriben tard. ⟨si ballester_acompanya⟩
           ⇒ +ballester_compte
-        IRI: Ja m'ho va dir la Rius. Però gràcies, Ballester. ⟨si ballester_acompanya⟩
+        IRI: Ja m'ho va dir la Rius. Però gràcies, Ballester. ⟨si ballester_acompanya i té compte_nomines (iri)⟩
+        IRI: Zero zero zero u. Apuntat. Gràcies, Ballester. ⟨si ballester_acompanya i no té compte_nomines (iri)⟩
         ⇒ +vet_al_despatx
     • * — SEMPRE
         ⇒ +vet_al_despatx
@@ -656,8 +657,8 @@ LLIBRE «Llibre Major»
         JUGADORA: Primer codi.
         [SO: bip_llibre] NARRADOR: BIIIIIP.
         BALLESTER: Què ha estat això? ...Bah. La canonada.
-        VET: Iri, cada bip el sent per la ràdio. Avisa'm i el tapo.
         JUGADORA: És de 1984. Aleshores la gent volia que les màquines fessin soroll.
+        VET: Iri, cada bip el sent per la ràdio. Jo el distrec, i tu tecleges.
         ⇒ +sync_collaret, +regla_bips, codis := 1, coberta := 0, sospita_ballester := 0
     • use — si codis = 0
         JUGADORA: Primer codi. Una altra vegada.
@@ -697,7 +698,7 @@ TUB «estació del tub»
 
 PANELL «panell de NETA-3»
     • open/use — si sync_mobil
-        JUGADORA: Ara no, NETA. El Director té el mòbil a tocar, i cada segon compta.
+        JUGADORA: Ara no. El Director té el mòbil a tocar, i cada segon compta.
     • open/use — si sync_collaret
         JUGADORA: Ara no. Cada tecla d'aquest panell també fa bip.
     • open/use — si aliat_neta
@@ -766,7 +767,7 @@ PORTA «porta»
 EN ENTRAR
     • * (una vegada) — SEMPRE
         NARRADOR: El moll de càrrega del BCMU. Furgonetes blindades, caixes i una màquina de cafè amb mala reputació.
-        RIUS: Rius. Encarregada. Ho repeteixo perquè a l'avió dormíeu. I no em diguis senyora.
+        RIUS: Rius. Encarregada. Ho repeteixo perquè a l'avió no m'escoltàveu. I no em diguis senyora.
         RIUS: Tothom al soterrani, a les caixes fortes. I la teva companya?
         JUGADORA: Al lavabo.
         RIUS: Doncs no li descomptaré els minuts.
@@ -966,7 +967,7 @@ PORTA_ESCALA «porta de l'escala»
     • open/use — si escala_provada
         JUGADORA: Plena de seguretat. Pla B: escombraries.
     • use + clau_llibre — SEMPRE
-        JUGADORA: Encara no. Primer, el virus.
+        JUGADORA: Ara no és moment de provar panys. Primer, el virus.
     • open/use — SEMPRE
         JUGADORA: Tancada. Pany antic, de clau grossa.
     • look — SEMPRE
@@ -1404,7 +1405,7 @@ EN ENTRAR
         JUGADORA: Saps què és el més divertit? Que el BCMU té més diners que cent vuitanta països junts. I no són seus. Són dels altres.
         VET: I nosaltres no en tenim ni per pizzes.
         JUGADORA: Doncs per això ho repartirem. Pizza per a tothom.
-        JUGADORA: Però primer... No. No, no, no. S'ha mort.
+        JUGADORA: Però primer... No. No, no, no. S'ha mort el mòbil.
         [SO: miol] JUGADORA: Necessito internet de debò. I el router nou encara està per muntar.
         ⇒ comença acte1
 
@@ -1509,7 +1510,8 @@ ROUTER «router»
         JUGADORA: Connectat. Hola, preciós.
     • look — SEMPRE
         JUGADORA: El router nou. Sense internet no hi ha pla, i sense tres cables no hi ha internet. Ara mateix en té zero. ⟨si cables = 0⟩
-        JUGADORA: {cables} cables de tres. Ens mirem i ens entenem. A veure què falta. ⟨si cables > 0⟩
+        JUGADORA: Un cable de tres. Ens mirem i ens entenem. A veure què falta. ⟨si cables = 1⟩
+        JUGADORA: Dos cables de tres. Ens mirem i ens entenem. A veure què falta. ⟨si cables = 2⟩
         JUGADORA: La fibra: penja de la paret, aquí mateix. Només cal endollar-la al router. ⟨si NO fibra_connectada⟩
         JUGADORA: El cable de xarxa: és dins la caixa del router. Primer l'he de treure. ⟨si NO xarxa_connectada i no té cable_xarxa⟩
         JUGADORA: El cable de xarxa: ja el porto a sobre. Només cal endollar-lo. ⟨si NO xarxa_connectada i té cable_xarxa⟩
@@ -1871,7 +1873,7 @@ COMENÇA A: pregunta
 [pregunta]
     NARRADOR: ROBIN HOOD 2.0: ATURAT. AL COMPTE PONT HI HA TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?
     JUGADORA: El compte de la Rius! El de les nòmines: no paga per rondes, ho paga tot d'un sol lot, a les dotze. Per aquí, arriba a tothom alhora. ⟨si té compte_nomines (iri)⟩
-    JUGADORA: El compte 0001, el d'en Ballester. Les nòmines no van per rondes: surten totes d'un sol lot, a les dotze. Per aquí, arriba a tothom alhora. ⟨si ballester_compte i no té compte_nomines (iri)⟩
+    JUGADORA: El compte 0001, el que ha dit en Ballester. Les nòmines no van per rondes: surten totes d'un sol lot, a les dotze. Per aquí, arriba a tothom alhora. ⟨si ballester_compte i no té compte_nomines (iri)⟩
     JUGADORA: Repartir-ho a tothom alhora? Em caldria un compte que arribi a tothom, i no en tinc cap. Doncs només queda una sortida. ⟨si NO ballester_compte i no té compte_nomines (iri)⟩
     ↪ tria
 
@@ -1926,7 +1928,7 @@ COMENÇA A: parla
     IRI: Soc al moll de càrrega. L'ascensor de servei només puja amb la targeta de la Rius. I la Rius està de mal humor. ⟨si juga iri i ((acte1_fet i NO acte2_fet) i no (té targeta (iri) o iri_al_tercer))⟩
     IRI: Tinc la targeta. Ara, l'ascensor: tercer pis, sala d'escombraries. Ho va dir en Marcel. ⟨si juga iri i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i no (iri_al_tercer))⟩
     IRI: Soc al tercer pis. Hi ha un robot de neteja que ho torna tot al seu lloc: si tapo una càmera, me la destapa. Primer l'he d'aturar. ⟨si juga iri i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i iri_al_tercer i no (robot_aturat))⟩
-    IRI: I en Marcel em va dir com s'atura. ⟨si juga iri i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i iri_al_tercer i no (robot_aturat) i iri_sap_neta)⟩
+    IRI: I la Vet em va passar la frase d'en Marcel per aturar-lo. ⟨si juga iri i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i iri_al_tercer i no (robot_aturat) i iri_sap_neta)⟩
     IRI: Un robot de neteja... Tens res que faci molles? ⟨si juga iri i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i iri_al_tercer i no (robot_aturat) i (NO iri_sap_neta i no (té entrepa (iri) o té entrepa_suis (iri) o té entrepa_ballester (iri))))⟩
     IRI: El robot ja no em molesta. Ara, les dues càmeres que miren la porta de neteja. ⟨si juga iri i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i iri_al_tercer i robot_aturat i no (camera1_tapada i camera2_tapada))⟩
     IRI: Ningú no mira. Entro a la sala d'escombraries. ⟨si juga iri i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i iri_al_tercer i robot_aturat i (camera1_tapada i camera2_tapada) i no (iri_a_llibre))⟩
@@ -1938,7 +1940,7 @@ COMENÇA A: parla
     IRI: Soc al Llibre Major. Només el Director el pot aturar, i són les onze i quart. ⟨si juga iri i (acte2_fet i no (vet_al_despatx))⟩
     IRI: Em demana la contrasenya del Director. ⟨si juga iri i (acte2_fet i vet_al_despatx i no (contrasenya_ok))⟩
     IRI: La pista diu: «El meu millor amic». ⟨si juga iri i (acte2_fet i vet_al_despatx i no (contrasenya_ok) i pista_contrasenya)⟩
-    IRI: Rockefeller. El vas llegir tu, al retrat. ⟨si juga iri i (acte2_fet i vet_al_despatx i no (contrasenya_ok) i (pista_contrasenya i sap_rockefeller))⟩
+    IRI: Rockefeller. Ho vas llegir tu, al retrat. ⟨si juga iri i (acte2_fet i vet_al_despatx i no (contrasenya_ok) i (pista_contrasenya i sap_rockefeller))⟩
     IRI: Quan demani el codi, arribarà al mòbil del Director. Si el mira ell abans que tu, ho cancel·la. ⟨si juga iri i (acte2_fet i vet_al_despatx i contrasenya_ok i no (codi_teclejat o virus_aturat))⟩
     IRI: El codi ha entrat. Ara em pregunta què en fem, de tots els diners del món. ⟨si juga iri i (acte2_fet i vet_al_despatx i contrasenya_ok i (codi_teclejat o virus_aturat) i no (virus_aturat))⟩
     IRI: Aturat. Ara, a fugir. Per on? ⟨si juga iri i (acte2_fet i vet_al_despatx i contrasenya_ok i (codi_teclejat o virus_aturat) i virus_aturat i no (escala_provada))⟩
@@ -1986,7 +1988,7 @@ COMENÇA A: parla
     IRI: Soc al moll de càrrega. L'ascensor de servei només puja amb la targeta de la Rius. I la Rius està de mal humor. ⟨si juga vet i ((acte1_fet i NO acte2_fet) i no (té targeta (iri) o iri_al_tercer))⟩
     IRI: Tinc la targeta. Ara, l'ascensor: tercer pis, sala d'escombraries. Ho va dir en Marcel. ⟨si juga vet i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i no (iri_al_tercer))⟩
     IRI: Soc al tercer pis. Hi ha un robot de neteja que ho torna tot al seu lloc: si tapo una càmera, me la destapa. Primer l'he d'aturar. ⟨si juga vet i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i iri_al_tercer i no (robot_aturat))⟩
-    IRI: I en Marcel em va dir com s'atura. ⟨si juga vet i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i iri_al_tercer i no (robot_aturat) i iri_sap_neta)⟩
+    IRI: I la Vet em va passar la frase d'en Marcel per aturar-lo. ⟨si juga vet i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i iri_al_tercer i no (robot_aturat) i iri_sap_neta)⟩
     IRI: Un robot de neteja... Tens res que faci molles? ⟨si juga vet i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i iri_al_tercer i no (robot_aturat) i (NO iri_sap_neta i no (té entrepa (iri) o té entrepa_suis (iri) o té entrepa_ballester (iri))))⟩
     IRI: El robot ja no em molesta. Ara, les dues càmeres que miren la porta de neteja. ⟨si juga vet i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i iri_al_tercer i robot_aturat i no (camera1_tapada i camera2_tapada))⟩
     IRI: Ningú no mira. Entro a la sala d'escombraries. ⟨si juga vet i ((acte1_fet i NO acte2_fet) i (té targeta (iri) o iri_al_tercer) i iri_al_tercer i robot_aturat i (camera1_tapada i camera2_tapada) i no (iri_a_llibre))⟩
@@ -1998,7 +2000,7 @@ COMENÇA A: parla
     IRI: Soc al Llibre Major. Només el Director el pot aturar, i són les onze i quart. ⟨si juga vet i (acte2_fet i no (vet_al_despatx))⟩
     IRI: Em demana la contrasenya del Director. ⟨si juga vet i (acte2_fet i vet_al_despatx i no (contrasenya_ok))⟩
     IRI: La pista diu: «El meu millor amic». ⟨si juga vet i (acte2_fet i vet_al_despatx i no (contrasenya_ok) i pista_contrasenya)⟩
-    IRI: Rockefeller. El vas llegir tu, al retrat. ⟨si juga vet i (acte2_fet i vet_al_despatx i no (contrasenya_ok) i (pista_contrasenya i sap_rockefeller))⟩
+    IRI: Rockefeller. Ho vas llegir tu, al retrat. ⟨si juga vet i (acte2_fet i vet_al_despatx i no (contrasenya_ok) i (pista_contrasenya i sap_rockefeller))⟩
     IRI: Quan demani el codi, arribarà al mòbil del Director. Si el mira ell abans que tu, ho cancel·la. ⟨si juga vet i (acte2_fet i vet_al_despatx i contrasenya_ok i no (codi_teclejat o virus_aturat))⟩
     IRI: El codi ha entrat. Ara em pregunta què en fem, de tots els diners del món. ⟨si juga vet i (acte2_fet i vet_al_despatx i contrasenya_ok i (codi_teclejat o virus_aturat) i no (virus_aturat))⟩
     IRI: Aturat. Ara, a fugir. Per on? ⟨si juga vet i (acte2_fet i vet_al_despatx i contrasenya_ok i (codi_teclejat o virus_aturat) i virus_aturat i no (escala_provada))⟩
@@ -2059,7 +2061,7 @@ COMENÇA A: virus (si cal_director) · amic (si aliat_ballester) · orgullos (si
 [cantar]
     JUGADORA: ♪ Diners, diners, que no em deixeu dormir... ♪
     BALLESTER: Senyora. Sisplau. Que tinc la ràdio.
-    NARRADOR: En Ballester ja no pensa en la ràdio. El pròxim bip de l'Iri li passarà per alt.
+    NARRADOR: La Vet canta més fort que la ràdio. El pròxim bip de l'Iri no el sentirà ningú.
     ⇒ +cantat, coberta += 1
     ↪ eines
 
@@ -2535,7 +2537,6 @@ COMENÇA A: hola (si ha vist marcel.intro) · intro
     JUGADORA: Marcel, m'estàs posant trist i he de tornar a la feina.
     MARCEL: Jo treballava dotze hores perquè un senyor a Ginebra tingués una casa a tres països.
     MARCEL: Ara tinc un cafè amb llet i soc més feliç. Però no tinc dentista.
-    MARCEL: Al BCMU, la propina se la queda el banc.
     MARCEL: Si vols que parli, porta'm tres coses d'en Tomàs sense que se n'adoni: el tap del seu clauer, la recepta secreta de llimonada i el comandament de la tele.
     MARCEL: Si robes al teu cap per mi, et fiaré.
     ⇒ +prova_marcel
@@ -2550,7 +2551,7 @@ COMENÇA A: hola (si ha vist marcel.intro) · intro
     ▸ Què em falta? ⟨si donats < 3⟩ → falten
     ▸ Doncs ara sí: on és el servidor antic? ⟨una vegada, si donats ≥ 3⟩ → servidor
     ▸ I un cop hi sigui, com el faig anar? ⟨una vegada, si donats ≥ 3 i marcel_servidor⟩ → clau
-    ▸ El servidor en un pis i la clau al coll d'un altre. Com ho ajunto? ⟨una vegada, si donats ≥ 3 i marcel_clau⟩ → tub
+    ▸ El servidor en una planta i la clau penjada d'un coll. Com ho ajunto? ⟨una vegada, si donats ≥ 3 i marcel_clau⟩ → tub
     ▸ I com arribem a Ginebra, si no tenim ni per pizzes? ⟨una vegada, si donats ≥ 3⟩ → vol
     ▸ I el Cap de Seguretat, com és? ⟨una vegada, si donats ≥ 3 i marcel_clau⟩ → ballester
     ▸ Hi ha algú més pel mig, al tercer pis? ⟨una vegada, si donats ≥ 3 i marcel_servidor⟩ → neta
@@ -2765,7 +2766,7 @@ COMENÇA A: adeu2 (si recepcionista_enredada) · reconeix (si sospita_max ≥ 50
     ↪ menu
 
 [altra]
-    RECEPCIONISTA: No confonc mai ningú. És la meva feina, i no me la paguen prou per equivocar-me.
+    RECEPCIONISTA: No confonc mai ningú. És la meva feina, i no me la paguen prou per fer-la dues vegades.
     ↪ menu
 
 [adeu2]
@@ -2931,7 +2932,7 @@ COMENÇA A: hola
     ↪ menu
 
 [cafe2]
-    TOMÀS: Un altre? En Marcel ja va prou excitat.
+    TOMÀS: Un altre? En Marcel ja va prou esverat.
     ↪ menu
 
 [comandament]
@@ -3446,7 +3447,7 @@ final_taula «Final · La taula llarga» — quan escapada i (repartit i aliats 
     NARRADOR: Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
     NARRADOR: Final 3 de 3 · Aliats: {aliats} de 4
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
-    NARRADOR: A la cuina, els plats. Setze dies. La Vet els continua comptant.
+    NARRADOR: A la cuina, els plats. Disset dies. La Vet els continua comptant.
     NARRADOR: A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
     Tot torna a començar.
@@ -3487,7 +3488,7 @@ final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     NARRADOR: Amb més gent al costat, potser hauria acabat d'una altra manera. ⟨si aliats < 3⟩
     NARRADOR: Teníeu la colla. I si els diners haguessin anat a tothom, a parts iguals? ⟨si no (aliats < 3)⟩
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
-    NARRADOR: A la cuina, els plats. Setze dies. La Vet els continua comptant.
+    NARRADOR: A la cuina, els plats. Disset dies. La Vet els continua comptant.
     NARRADOR: A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
     Tot torna a començar.
@@ -3527,7 +3528,7 @@ final_base «Final · Ni caos ni paradís» — quan escapada
     NARRADOR: Final 1 de 3 · Aliats: {aliats} de 4
     NARRADOR: Amb més gent al costat, potser hauria acabat d'una altra manera.
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
-    NARRADOR: A la cuina, els plats. Setze dies. La Vet els continua comptant.
+    NARRADOR: A la cuina, els plats. Disset dies. La Vet els continua comptant.
     NARRADOR: A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
     Tot torna a començar.

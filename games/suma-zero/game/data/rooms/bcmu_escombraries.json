@@ -576,12 +576,12 @@
               "text": "sala.bcmu_escombraries.llibre.canonada"
             },
             {
-              "who": "vet",
-              "text": "sala.bcmu_escombraries.llibre.regla"
-            },
-            {
               "who": "player",
               "text": "sala.bcmu_escombraries.llibre.soroll"
+            },
+            {
+              "who": "vet",
+              "text": "sala.bcmu_escombraries.llibre.regla"
             }
           ],
           "effects": [

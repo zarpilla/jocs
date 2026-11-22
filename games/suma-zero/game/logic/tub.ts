@@ -17,7 +17,7 @@ import type { ActionResult, Narrative } from '@aventura/narrative-core';
 
 export const TUB_TEXTS = [
   'tub.envia', 'tub.rep', 'tub.no_hi_cap', 'tub.no_cal', 'tub.moll',
-  'tub.entrepa_ballester.rep', 'tub.entrepa_ballester.rep2', 'tub.clau_llibre.rep', 'tub.auriculars', 'tub.auriculars_boto', 'tub.auricular_boto', 'tub.clau_casa',
+  'tub.entrepa.rep', 'tub.entrepa_suis.rep', 'tub.entrepa_ballester.rep', 'tub.entrepa_ballester.rep2', 'tub.clau_llibre.rep', 'tub.auriculars', 'tub.auriculars_boto', 'tub.auricular_boto', 'tub.clau_casa',
 ];
 
 /** Qui rep el que envia `who`. */

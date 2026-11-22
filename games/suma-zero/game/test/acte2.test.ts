@@ -118,8 +118,8 @@ describe('Acte 2 · el tub pneumàtic', () => {
     expect(texts(p.use('galleda', 'tub'))).toContain('No hi cap');
     p.switchTo('vet');
     const enviat = texts(p.use('entrepa', 'tub'));
-    expect(enviat).toContain("Envio l'entrepà pel tub");
-    expect(enviat).toContain("Ha arribat l'entrepà");
+    expect(enviat).toContain('A la càpsula, i cap amunt');
+    expect(enviat).toContain("Ha arribat l'entrepà de tonyina");
     expect(world.items('iri')).toContain('entrepa');
     expect(p.active).toBe('vet');
     // Un cop aturat el robot, l'entrepà ja no li fa falta.

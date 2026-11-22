@@ -637,11 +637,20 @@
             },
             {
               "who": "player",
-              "text": "sala.pis_estudi.router.look_n",
+              "text": "sala.pis_estudi.router.look_1",
               "if": {
                 "var": "cables",
-                "op": ">",
-                "value": 0
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.look_2",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
               }
             },
             {
