@@ -321,10 +321,6 @@
     }
   },
   "floorSquash": 0.45,
-  "characterOutline": {
-    "color": "#1c1626",
-    "alpha": 0.75
-  },
   "characterLights": {
     "ambient": "#e4e2ea",
     "lights": [

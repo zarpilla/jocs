@@ -511,9 +511,7 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
-    # (a les fosques, però el personatge s'ha de llegir fins i tot al fons: una mica més d'ambient i un fil de llum
-    # càlida al voltant, la del llum del sostre que el retalla)
-    'characterOutline': {'color': '#b88a52', 'alpha': 0.4},
+    # (a les fosques, però el personatge s'ha de llegir fins i tot al fons: una mica més d'ambient)
     'characterLights': {
         'ambient': '#76645a',
         'lights': [{'x': _p(HC[0], HC[2], HW - 20)[0], 'y': _p(HC[0], HC[2], HW - 20)[1], 'radius': 340,

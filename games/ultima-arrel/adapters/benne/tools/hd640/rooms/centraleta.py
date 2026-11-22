@@ -674,7 +674,6 @@ def _geometria():
         # L'ombra de contacte: la llum dominant és el raig del forat (el punt de terra on toca).
         'characterShadow': {'enabled': True, 'color': '#0a0604', 'alpha': 0.45, 'squash': 0.38, 'core': 0.6,
                             'light': {'x': beam_foot[0], 'y': beam_foot[1], 'stretch': 0.7, 'reach': 150}},
-        'characterOutline': {'color': '#c89a5a', 'alpha': 0.35},
         'characterLights': {
             'ambient': '#7a6656',
             'lights': [{'x': 240, 'y': 40, 'radius': 300, 'color': '#ffd79a', 'intensity': 1.1},

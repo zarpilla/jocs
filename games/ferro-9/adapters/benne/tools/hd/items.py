@@ -101,6 +101,7 @@ BIG = {
 
 class Ic(Fig):
     """Llenç d'una icona: buffer (material, nivell) amb eines de dibuix."""
+    CONTORN_FOSC = True
 
     def __init__(self):
         super().__init__(W, H)

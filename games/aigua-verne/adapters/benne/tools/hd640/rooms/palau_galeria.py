@@ -618,8 +618,7 @@ GEOMETRIA = {
     'walkable': _WALK,
     'forats': [_CEN_FORAT, _AQ_FORAT, _GAN_FORAT],
     'floorSquash': 0.45,                           # (la càmera, a 2,3 m i picada: el terra es veu aixafat)
-    # (el marbre blanc i els reflexos de l'aigua: l'ombra, ben fosca, i un contorn als personatges)
-    'characterOutline': {'color': '#1c1626', 'alpha': 0.75},
+    # (el marbre blanc i els reflexos de l'aigua: l'ombra, ben fosca)
     'characterShadow': {'enabled': True, 'color': '#1e1826', 'alpha': 0.58, 'squash': 0.45, 'core': 0.7,
                         'light': {'x': _p(ARANYES[0][0], ARANYES[0][2])[0], 'y': _p(ARANYES[0][0], ARANYES[0][2])[1],
                                   'stretch': 0.6, 'reach': 140}},

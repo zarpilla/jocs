@@ -153,6 +153,10 @@ class Fig:
             self.buf[y][x] = None
 
     # ─── sortida ───
+    # El contorn dels personatges és selectiu (la vora del costat, enfosquida); les icones de l'inventari
+    # (hd/items.py, Ic) mantenen el fosc de sempre, que es retalla millor sobre la casella.
+    CONTORN_FOSC = False
+
     def render(self, outline=True):
         img = Image.new('RGBA', (self.w, self.h), (0, 0, 0, 0))
         P = img.load()
@@ -172,14 +176,20 @@ class Fig:
                     for dx, dy in ((1, 0), (0, 1), (-1, 0), (0, -1)):
                         nx, ny = x + dx, y + dy
                         if 0 <= nx < self.w and 0 <= ny < self.h and src[ny][nx]:
-                            nb.append((dx, dy, src[ny][nx][0]))
+                            nb.append((dx, dy, src[ny][nx][0], P[nx, ny][:3]))
                     if not nb:
                         continue
-                    dx, dy, m = nb[0]
-                    dark = m.c[0] if isinstance(m, Mat) else m
-                    # costat il·luminat (la figura és a la dreta/sota del contorn): contorn una mica més clar
+                    # costat il·luminat (la figura és a la dreta/sota del contorn): contorn més clar
                     lit = all(d[0] >= 0 and d[1] >= 0 for d in nb)
-                    P[x, y] = mix(dark, INK, 0.35 if lit else 0.6) + (255,)
+                    if self.CONTORN_FOSC:
+                        m = nb[0][2]
+                        dark = m.c[0] if isinstance(m, Mat) else m
+                        P[x, y] = mix(dark, INK, 0.35 if lit else 0.6) + (255,)
+                    else:
+                        # contorn selectiu (2026-11-22): el color de la vora del costat, enfosquit, amb una mica de tinta
+                        c = tuple(sum(d[3][i] for d in nb) / len(nb) for i in range(3))
+                        k = 0.78 if lit else 0.5
+                        P[x, y] = tuple(int(c[i] * k * 0.85 + INK[i] * 0.15) for i in range(3)) + (255,)
         return img
 
 

@@ -462,8 +462,7 @@ GEOMETRIA = {
                _caixa_terra(*PAPER, 22, 22, 0, 2)],
     'floorSquash': 0.45,
     # l'ombra de contacte: la llum dominant és el finestral (el peu de la finestra, a terra)
-    # (el terra és blanc i brilla: l'ombra, ben fosca, i un contorn als personatges perquè no s'hi perdin)
-    'characterOutline': {'color': '#1c1626', 'alpha': 0.75},
+    # (el terra és blanc i brilla: l'ombra, ben fosca)
     'characterShadow': {'enabled': True, 'color': '#2a2438', 'alpha': 0.58, 'squash': 0.45, 'core': 0.7,
                         'light': {'x': _p((WIN_X[0] + WIN_X[1]) / 2, ZW - 30)[0],
                                   'y': _p((WIN_X[0] + WIN_X[1]) / 2, ZW - 30)[1], 'stretch': 0.7, 'reach': 140}},

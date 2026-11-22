@@ -701,7 +701,6 @@ def _geometria():
         # L'ombra de contacte: el sol del matí, de dalt a l'esquerra (l'ombra cau cap a la dreta i endavant).
         'characterShadow': {'enabled': True, 'color': '#1a1408', 'alpha': 0.4, 'squash': 0.35, 'core': 0.6,
                             'light': {'x': 0.8, 'y': 0.3, 'direction': True}},
-        'characterOutline': {'color': '#ffe3a0', 'alpha': 0.3},
         'characterLights': {
             'ambient': '#d8dcb4',
             'lights': [{'x': 60, 'y': 0, 'radius': 520, 'color': '#ffe2a0', 'intensity': 0.9}],

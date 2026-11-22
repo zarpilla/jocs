@@ -301,7 +301,8 @@ configuració del motor més unes quantes etiquetes al full; és barat i es nota
 
 - [ ] **Ombra de contacte** (`characterShadow` de la sala), allargada i girada lluny de la llum dominant.
 - [ ] **Reflex** al terra polit (`characterReflection`), on n'hi hagi.
-- [ ] **Contorn fosc** a les sales molt clares (`characterOutline`), perquè el personatge es llegeixi.
+- [ ] **Contorn selectiu** al sprite (`Fig.render` de `hd/characters.py`: la vora del costat, enfosquida), i cap
+      halo de sala (`characterOutline`), ni clar ni fosc: el personatge es retalla amb l'ombra i la llum.
 - [ ] **Llum de la sala** sobre els personatges (`characterLights`), a partir dels llums de l'escena.
 - [ ] **Escala contínua** amb la profunditat (regió `scaleEnabled`), sense passar de ≈1,2 a prop (on es camina, no
       a la vora de la regió). La mida dels fulls, decidida abans de dibuixar les sales.
