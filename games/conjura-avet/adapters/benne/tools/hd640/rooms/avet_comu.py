@@ -1942,9 +1942,11 @@ MOCADORS = [(214, 204, 180), (182, 170, 150), (150, 120, 90), (196, 186, 166)]
 PELL = [(214, 168, 132), (190, 140, 106), (226, 186, 150), (168, 120, 90)]
 
 
-def figura(v, e, P, alt=86.0, roba=(96, 74, 54), cap='nu', seed=1, sid='poble', mira=0.0, monja=False, nen=False):
+def figura(v, e, P, alt=86.0, roba=(96, 74, 54), cap='nu', seed=1, sid='poble', mira=0.0, monja=False, nen=False,
+           ample=1.0):
     """Una persona de fons, de l'any mil, a la seva profunditat: la túnica llarga, el cap (nu, amb mocador o amb
-    caputxa), les mans; o una monja (hàbit negre, toca blanca). Dibuixada de cara, sense animar."""
+    caputxa), les mans; o una monja (hàbit negre, toca blanca). Dibuixada de cara, sense animar. `ample`: l'amplada
+    (i el cap) respecte de l'alçada; > 1 per a una figura ajupida, que fa menys alçada però la mateixa amplada."""
     cam = v.cam
     rng = np.random.default_rng(seed)
     u, vv, z = cam.projecta(tuple(P))
@@ -1954,7 +1956,7 @@ def figura(v, e, P, alt=86.0, roba=(96, 74, 54), cap='nu', seed=1, sid='poble', 
     h = alt * k
     if h < 6:
         return
-    w = h * 0.25
+    w = h * 0.25 * ample
     X0, X1 = int(u - w * 1.3 - 2), int(u + w * 1.3 + 2)
     Y0, Y1 = int(vv - h - 2), int(vv + 1)
     sub = (slice(max(0, Y0), min(v.h, Y1 + 1)), slice(max(0, X0), min(v.w, X1 + 1)))
@@ -1968,10 +1970,11 @@ def figura(v, e, P, alt=86.0, roba=(96, 74, 54), cap='nu', seed=1, sid='poble', 
     out = np.zeros(X.shape + (3,))
     m = np.zeros(X.shape, bool)
     # la túnica: de les espatlles (fy 0.82) fins als peus, eixamplant-se
-    half = 0.74 + (0.82 - fy) * 0.42
-    half = half * np.sqrt(np.clip(1 - ((fy - 0.66) / 0.17).clip(0, None) ** 2, 0, 1))      # les espatlles, rodones
+    esp = 1 - 0.18 * ample                               # les espatlles (0,82 dreta)
+    half = 0.74 + (esp - fy) * 0.42 / ample
+    half = half * np.sqrt(np.clip(1 - ((fy - (esp - 0.16 * ample)) / (0.17 * ample)).clip(0, None) ** 2, 0, 1))      # les espatlles, rodones
     half = half + 0.05 * (np.abs(fy - 0.35) < 0.3) * np.sin(seed + fy * 9)                  # (cada roba cau diferent)
-    tun = (fy > 0.0) & (fy < 0.82) & (np.abs(fx) < half)
+    tun = (fy > 0.0) & (fy < esp) & (np.abs(fx) < half)
     sh = np.clip(0.75 + 0.35 * (-fx) * 0.5 + 0.15 * (fy - 0.4), 0.45, 1.2)
     # les arrugues verticals
     sh = sh - 0.08 * (np.abs(((fx + 1) * 2.2) % 1 - 0.5) < 0.12) * (fy < 0.6)
@@ -1984,8 +1987,8 @@ def figura(v, e, P, alt=86.0, roba=(96, 74, 54), cap='nu', seed=1, sid='poble', 
     ma = (np.abs(fy - 0.47) < 0.035) & (np.abs(fx - 0.05 * mira) < 0.28)
     out = np.where((ma & tun)[..., None], sk * 0.85, out)
     # el cap
-    hc = 0.9
-    cap_r = 0.09
+    hc = 1 - 0.1 * ample
+    cap_r = 0.09 * ample
     dcap = np.hypot(fx * w / h, fy - hc)
     head = dcap < cap_r
     m |= head

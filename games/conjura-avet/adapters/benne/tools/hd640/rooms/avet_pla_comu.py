@@ -182,7 +182,7 @@ def encaputxat(v, e, P, ajupit=0.0, serra=None, fanal=None):
     """Una figura encaputxada (capa fosca), a la profunditat de P. `ajupit` 0..1: ajupida (serrant); `serra`: la
     fase del moviment de la serra (o None); `fanal`: on porta el fanal (un punt del món) o None."""
     alt = 88.0 * (1 - 0.42 * ajupit)
-    A.figura(v, e, P, alt=alt, roba=(30, 28, 40), cap='caputxa', seed=61, sid='figura', mira=1)
+    A.figura(v, e, P, alt=alt, roba=(30, 28, 40), cap='caputxa', seed=61, sid='figura', mira=1, ample=88.0 / alt)
     if serra is not None:
         u, vv, z = v.cam.projecta(tuple(P + np.array((14, alt * 0.38, -4))))
         k = v.cam.f / z
