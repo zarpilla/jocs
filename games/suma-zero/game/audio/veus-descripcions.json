@@ -1,0 +1,119 @@
+{
+ "iri": {
+  "voice_id": "NEaSm18eaf5SaGGeSad1",
+  "name": "Suma Zero - Iri (central)",
+  "description": "A 24-year-old young woman, a nervous, witty and fast-talking hacker, bright mid-pitched voice, quick excited delivery. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Ho tinc. Ho tinc ho tinc ho tinc. Amb un tres per cent de bateria, però ho tinc. Vet? Vet! Ho he trobat! Podem entrar a la banca mundial! Tres pantalles. Una pel codi, una per la documentació i una per mirar el codi amb angoixa. El llit. Bé, el matalàs. El somier és una idea que encara no he implementat.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-23"
+  },
+  "substitueix": {
+   "voice_id": "KAFYZo6FF48Bct1BOJIx",
+   "name": "Suma Zero - Iri",
+   "description": "Suma Zero: Iri, hacker de 24 anys, nerviosa i enginyosa",
+   "motiu": "sense idioma ni accent: l'accent anava canviant entre frases"
+  }
+ },
+ "vet": {
+  "voice_id": "4Up2uJHJlFVzKPFtTHFZ",
+  "name": "Suma Zero - Vet (central)",
+  "description": "A 26-year-old young woman, a warm waitress with a dry, deadpan sense of humour, relaxed and confident, warm slightly low voice. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Torn de nit al bar d'aquí a mitja hora. Abans, sobreviure a l'Iri. La nevera. Brunzeix com si es queixés. Té motius. Perdona'm, pizza. És per una bona causa. Crec. El passaplats. Per aquí l'Iri em demana coses que després no torna. Claus, mòbil, davantal. Me'n vaig. I tu renta els plats!",
+   "triada": "proposta 3 de 3",
+   "data": "2026-11-23"
+  },
+  "substitueix": {
+   "voice_id": "BIEw0UmqoPkKt66jxeQZ",
+   "name": "Suma Zero - Vet",
+   "description": "Suma Zero: Vet, cambrera de 26 anys, càlida i amb humor sec",
+   "motiu": "sense idioma ni accent: l'accent anava canviant entre frases"
+  }
+ },
+ "narrator": {
+  "voice_id": "th9zqB2LzgTTJqmUHY6L",
+  "name": "Suma Zero - Narrator",
+  "description": "Suma Zero: narrador, home de 50 anys, comèdia impassible",
+  "labels": {},
+  "settings": null
+ },
+ "ballester": {
+  "voice_id": "AuDvReSzMN5WjWvyabDy",
+  "name": "Suma Zero - Ballester",
+  "description": "Suma Zero: Cap de Seguretat, greu i cansat",
+  "labels": {},
+  "settings": null
+ },
+ "empleat": {
+  "voice_id": "ykU7gWoiNK1iSBlQoHqg",
+  "name": "Suma Zero - Empleat",
+  "description": "Suma Zero: Empleat d'objectes perduts, apàtic",
+  "labels": {},
+  "settings": null
+ },
+ "marcel": {
+  "voice_id": "gIyuSh2UrBHKbHwUvRbP",
+  "name": "Suma Zero - Marcel",
+  "description": "Suma Zero: Enginyer jubilat, amarg i lacònic",
+  "labels": {},
+  "settings": null
+ },
+ "neta": {
+  "voice_id": "3m9ggPe41hpT2e6zcuMW",
+  "name": "Suma Zero - Neta",
+  "description": "Suma Zero: Robot de neteja esgotat",
+  "labels": {},
+  "settings": null
+ },
+ "pons": {
+  "voice_id": "9Rhb6b4Sip2dJIzOgpFD",
+  "name": "Suma Zero - Pons",
+  "description": "Suma Zero: Secretària del Director, irònica",
+  "labels": {},
+  "settings": null
+ },
+ "recepcionista": {
+  "voice_id": "1nTP8XOvpyIqBWNqKWlM",
+  "name": "Suma Zero - Recepcionista",
+  "description": "Suma Zero: Recepcionista del BCMU",
+  "labels": {},
+  "settings": null
+ },
+ "rius": {
+  "voice_id": "6K85owF3LVoMkppyuC5y",
+  "name": "Suma Zero - Rius",
+  "description": "Suma Zero: Encarregada de la subcontracta, sarcàstica",
+  "labels": {},
+  "settings": null
+ },
+ "soler": {
+  "voice_id": "PXlY9JHvQN5mfjfqHu8x",
+  "name": "Suma Zero - Soler",
+  "description": "Suma Zero: Vigilant de l'aeroport, de cor tendre",
+  "labels": {},
+  "settings": null
+ },
+ "tomas": {
+  "voice_id": "ueeDWvUDboMZyQgcFkIa",
+  "name": "Suma Zero - Tomas",
+  "description": "Suma Zero: Amo de La Propina, rondinaire",
+  "labels": {},
+  "settings": null
+ },
+ "bonfill": {
+  "voice_id": "nLTXUA1cXLo5vBkF8HyY",
+  "name": "Suma Zero - Bonfill",
+  "description": "Suma Zero: el Director, cínic i condescendent",
+  "labels": {},
+  "settings": null
+ }
+}

@@ -52,6 +52,15 @@ Ferro-9), així que **cada joc té les seves veus**. Es fan al web d'ElevenLabs 
 - Un personatge sense veu a `voices` no es grava: `--prova` ho diu a la llista «(sense veu)».
 - Mentre es prova, `"actiu": "url"`: les veus només sonen amb `?voices=on` a l'adreça.
 
+- **Idioma i accent, sempre.** A Voice Design, l'idioma posat a català i l'accent a la descripció («Native Catalan
+  speaker from Barcelona with a clear central Catalan accent»), i una mostra en català. Sense això (les primeres de
+  Suma Zero), la veu no té accent de base i el model en tria un a cada frase: unes surten amb accent central i
+  d'altres no.
+- **La descripció, al repo.** A `game/audio/veus-descripcions.json`, per a cada veu: `voice_id`, nom, la descripció
+  exacta, el text de la mostra i quina proposta es va triar. Una veu esborrada no surt igual si es torna a dissenyar,
+  però així se sap què s'hi havia demanat. El compte té un màxim de 30 veus pròpies: per fer-ne una de nova, se
+  n'ha d'esborrar una (no es poden desactivar).
+
 Les veus d'adults joves fetes al web solen sonar més grans del que toca per a una nena. Es pot arreglar després amb el
 to (pas 6), sense tornar-les a fer.
 
