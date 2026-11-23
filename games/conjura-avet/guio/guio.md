@@ -270,6 +270,11 @@ monjo). El fanal s'allunya. Lluny, a la resclosa, un altre llumet, petit: el d'e
 
 Rètols: *«Sant Joan de les Abadesses, novembre de l'any 1017.»* · *La Conjura de l'Avet* · *Acte 1 — El crim botànic.*
 
+Abans del fanal, amb l'avet encara dret, el narrador diu el mínim (no la clàusula de la carta, que és el misteri):
+
+> NARRADOR: Fa cent trenta anys, l'abadessa Emma va plantar un avet al costat del monestir. L'únic de la vall.
+> NARRADOR: El comte Bernat de Besalú deu una fortuna al monestir. I el comte té mala memòria per als deutes.
+
 Sense diàlegs. Es pot saltar.
 
 ---
@@ -288,8 +293,11 @@ de viatge, amb en Sunifred al costat, que sosté el tinter. En Ramon, el pare, a
 
 **Entrada.** L'Iri i el pare arriben amb les eines: el monestir els ha cridat per netejar el carrer.
 
+> IRI: Tota la nit bufant, i a la fi l'ha tombat.
+> RAMON: Ens han cridat del monestir per desembussar el carrer. Avui cobrem en llenya.
 > PONÇ: Per ordre del comte Bernat: l'abadessa Ingilberga, culpable de negligència arbòria.
 > PONÇ: I de bruixeria meteorològica, pendent de confirmar.
+> PONÇ: Per tant, les terres del monestir tornen al comte. Tres testimonis i un segell.
 > IRI: *(al pare)* Bruixeria meteorològica?
 > RAMON: Que ha fet ploure. Calla i agafa la corda.
 
@@ -324,6 +332,7 @@ un dibuix: una creu amb un llaç.
 > SUNIFRED: *(molt amable)* Si el senyor jutge em permet... Una serra així, al poble, només en té una persona.
 > *(Tothom mira en Ramon.)*
 > PONÇ: Saig. Custòdia preventiva, pendent de tres testimonis.
+> PONÇ: El judici, demà al matí, aquí davant de l'avet.
 > RAMON: La serra me la van robar dijous, Iri. Digues-ho a la Vet. Ella sabrà què fer amb els papers.
 
 En Bonfill s'emporta el pare. Cap broma.
@@ -336,6 +345,7 @@ La Vet arriba corrent pel carrer, amb la tinta encara als dits.
 > IRI: Al celler del batlle. La serra és seva, l'ordre és d'ahir, i jo no sé llegir què hi diu.
 > VET: Una serra robada, una ordre escrita abans de la tempesta i un culpable a punt.
 > VET: Això no és un arbre caigut, Iri. És una conjura.
+> VET: Tenim fins demà al matí per saber qui l'ha tombat. I per què.
 
 **Comença el tram obert.** Des d'aquí es pot canviar de germana, i el poble s'obre: la plaça pel carrer, el pont pel
 camí del riu i el claustre per la porta del monestir. L'Iri té els guants, la destral, la resina i el tros de cera.
@@ -669,6 +679,7 @@ el **manat de claus** al cinyell. L'Iri, de «novici», al costat de la llar, re
 La Vet, de «vot de silenci extrem», contesta escrivint a la tauleta: «*Sí, germà.*»
 
 > SUNIFRED: *(llegint-la)* Bona lletra, per a un novici.
+> IRI: *(fluix, des de la llar)* Les claus, al cinyell. Quan dormi, seran nostres.
 
 **Trencaclosques 8.1 — El signe (el gir; parlar).** Si la Vet li pregunta pel seu ofici (escrivint a la tauleta), en
 Sunifred s'esponja i, per ensenyar-li com signa un escrivà de debò, dibuixa el seu signe amb el dit al vi vessat:
@@ -717,6 +728,8 @@ hores** (gruixuda, marcada amb ratlles, que diu l'hora en cremar-se). El faristo
 
 > GOMBAU: *(xiuxiuejant)* Un germà nou? Copiem l'ordre d'expulsió. Per triplicat.
 > ARNULF: Cada còpia amb errates diferents. Que es vegi que és feta a mà.
+
+*(Al fons, la porta de la sala capitular, i l'arxiu. Al davant, dos canonges que no pensen moure's fins a matines.)*
 
 **Trencaclosques 9.1 — Els canonges (l'espelma de les hores).** Els canonges no es mouran fins a matines: «Quan
 l'espelma arribi a la ratlla vermella.» Falten dues ratlles. Primer cal que no la mirin: la Vet els demana, per la
@@ -842,6 +855,9 @@ Les germanes hi arriben amb els hàbits mullats, les caputxes i les barbes. **No
 
 > IRI: *(fluix)* Ens hauríem de canviar.
 > VET: *(fluix)* No. Ahir et va dir que una dona i un arbre no valen res. Avui ho sentirà d'un monjo.
+> VET: *(fluix)* Tres testimonis: la Sança, que no ha signat res; l'Ermessenda, que va treure la serra; i en Joanet, que
+> aquella nit pescava.
+> VET: *(fluix)* I el segell de l'Emma, que el porto jo. Jo, la plaça i el jutge. Tu, el riu.
 
 **Comença el tram obert.** Es pot canviar de germana i tornar a la plaça, al pont i al claustre, ara amb sol. La gent
 no reconeix els dos monjos (i això és part de la gràcia).
@@ -1245,3 +1261,10 @@ Una revisió del joc sencer, buscant atzucacs i incoherències:
 5. **Detalls:** la tina marró abans del caparrós, el faristol sense l'ordre al matí, la reixa buida, la Vet disfressada
    amb l'hàbit escurçat, les olles que no tornen a caure, l'inventari que es buida en acabar cada tram, el xarop amb el
    jutge, i la corranda nova de l'epíleg, que la canta la Vet.
+
+## Annex D: que s'entengui sense el guió (23-11-2026)
+
+El jugador no llegeix el guió. Línies noves perquè a cada tram se sàpiga què hi ha en joc i què cal fer: al pròleg (què
+és l'avet, el deute del comte), a l'entrada de l'avet (qui és la Iri, què vol dir l'ordre: les terres tornen al comte),
+a la detenció (el judici és demà; «tenim fins demà al matí»), a la cuina (les claus, quan dormi), a l'scriptorium (on és
+l'arxiu) i al matí de l'acte 4 (qui són els tres testimonis, i qui va on).

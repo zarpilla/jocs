@@ -161,6 +161,10 @@
           "text": "dlg.ponc.7"
         },
         {
+          "who": "ponc",
+          "text": "dlg.ponc.36"
+        },
+        {
           "who": "ramon",
           "text": "dlg.ponc.8",
           "effects": [
@@ -214,6 +218,10 @@
               "value": 1
             }
           ]
+        },
+        {
+          "who": "vet",
+          "text": "dlg.ponc.37"
         }
       ]
     },

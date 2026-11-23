@@ -4392,6 +4392,10 @@
               {
                 "who": "vet",
                 "text": "sala.cuina.3"
+              },
+              {
+                "who": "iri",
+                "text": "sala.cuina.42"
               }
             ]
           }
@@ -6479,12 +6483,20 @@
                 "text": "sala.mur_avet.1"
               },
               {
+                "who": "ramon",
+                "text": "sala.mur_avet.76"
+              },
+              {
                 "who": "ponc",
                 "text": "sala.mur_avet.2"
               },
               {
                 "who": "ponc",
                 "text": "sala.mur_avet.3"
+              },
+              {
+                "who": "ponc",
+                "text": "sala.mur_avet.77"
               },
               {
                 "who": "iri",
@@ -6526,6 +6538,14 @@
               {
                 "who": "vet",
                 "text": "sala.mur_avet.10"
+              },
+              {
+                "who": "vet",
+                "text": "sala.mur_avet.78"
+              },
+              {
+                "who": "vet",
+                "text": "sala.mur_avet.79"
               }
             ]
           }
@@ -9073,6 +9093,14 @@
               },
               {
                 "who": "narrator",
+                "text": "sala.proleg.4"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.proleg.5"
+              },
+              {
+                "who": "narrator",
                 "text": "sala.proleg.2",
                 "stage": [
                   {
@@ -9158,6 +9186,10 @@
               {
                 "who": "arnulf",
                 "text": "sala.scriptorium.2"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.scriptorium.42"
               }
             ]
           }
@@ -14842,6 +14874,10 @@
                 "text": "dlg.ponc.7"
               },
               {
+                "who": "ponc",
+                "text": "dlg.ponc.36"
+              },
+              {
                 "who": "ramon",
                 "text": "dlg.ponc.8",
                 "effects": [
@@ -14895,6 +14931,10 @@
                     "value": 1
                   }
                 ]
+              },
+              {
+                "who": "vet",
+                "text": "dlg.ponc.37"
               }
             ]
           },
@@ -15971,6 +16011,8 @@
       "dlg.sunifred.opt.ofici": "(Escriu a la tauleta) «Quin és el vostre ofici, germà?»",
       "dlg.sunifred.opt.signe": "De qui és aquest signe?",
       "dlg.sunifred.opt.vi": "(Escriu a la tauleta) «Més vi, germà?»",
+      "dlg.ponc.36": "El judici, demà al matí, aquí davant de l'avet.",
+      "dlg.ponc.37": "Tenim fins demà al matí per saber qui l'ha tombat. I per què.",
       "final.avet.1": "El jutge Ponç va demanar al comte un faristol nou. L'acta del judici té tres còpies, sense cap errata.",
       "final.avet.2": "En Sunifred rega l'avet cada dia. Diu que és el document més ben arxivat que ha vist mai.",
       "final.avet.3": "En Bonfill aprèn de lletra amb la Gueraula. De moment, ja aguanta els pergamins del dret.",
@@ -17299,7 +17341,15 @@
       "sala.judici.68": "Saig, a l'acta: traieu fra Tos i fra Silenci. Hi van Irisenda i Vetilda, filles de Ramon.",
       "sala.judici.69": "Ja hi dibuixo dues noies, senyor jutge.",
       "sala.moli.34": "Per fi! Què, que us heu trobat una romaguera pel camí?",
-      "sala.moli.35": "Dues. Amb tonsura, i armades amb un faristol."
+      "sala.moli.35": "Dues. Amb tonsura, i armades amb un faristol.",
+      "sala.proleg.4": "Fa cent trenta anys, l'abadessa Emma va plantar un avet al costat del monestir. L'únic de la vall.",
+      "sala.proleg.5": "El comte Bernat de Besalú deu una fortuna al monestir. I el comte té mala memòria per als deutes.",
+      "sala.mur_avet.76": "Ens han cridat del monestir per desembussar el carrer. Avui cobrem en llenya.",
+      "sala.mur_avet.77": "Per tant, les terres del monestir tornen al comte. Tres testimonis i un segell.",
+      "sala.mur_avet.78": "(fluix) Tres testimonis: la Sança, que no ha signat res; l'Ermessenda, que va treure la serra; i en Joanet, que aquella nit pescava.",
+      "sala.mur_avet.79": "(fluix) I el segell de l'Emma, que el porto jo. Jo, la plaça i el jutge. Tu, el riu.",
+      "sala.cuina.42": "(fluix, des de la llar) Les claus, al cinyell. Quan dormi, seran nostres.",
+      "sala.scriptorium.42": "Al fons, la porta de la sala capitular, i l'arxiu. Al davant, dos canonges que no pensen moure's fins a matines."
     }
   },
   "locale": "ca",
