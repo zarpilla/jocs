@@ -410,7 +410,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 999
     }
   ],
@@ -451,8 +451,8 @@
     "ambient": "#7c8a86",
     "lights": [
       {
-        "x": 112,
-        "y": 123,
+        "x": 127,
+        "y": 120,
         "radius": 300,
         "color": "#ffd68c",
         "intensity": 1.1
@@ -473,8 +473,8 @@
     "squash": 0.4,
     "core": 0.6,
     "light": {
-      "x": 131,
-      "y": 194,
+      "x": 145,
+      "y": 188,
       "stretch": 0.7,
       "reach": 170
     }

@@ -4,8 +4,7 @@ El camarot de l'Iri (Escena 1, les 3:40 de la matinada). EN 3D (hd640/tres_d.py)
 El més petit del vaixell, al costat de les màquines. Una càmera alta que mira de biaix la cantonada del fons a
 l'esquerra:
   - a la paret de l'esquerra, en escorç, la **llitera** feta com un llit d'hospital (un volum: el costat amb els
-    calaixos, la manta estirada vista des de dalt, el coixí, els plafons del capçal i dels peus, la cortina recollida
-    i la barra), el llum de lectura i el **prestatge** amb el multímetre, la llauna, els manuals, les claus fixes i
+    calaixos, la manta estirada vista des de dalt, el coixí, els plafons del capçal i dels peus), el llum de lectura i el **prestatge** amb el multímetre, la llauna, els manuals, les claus fixes i
     el **got** d'aigua torçat (cada cosa dreta al seu lloc del prestatge, que fuig);
   - a la cantonada, la **tauleta** de planxa amb el despertador (3:40) i, a la paret, l'endoll amb el **carregador**
     mossegat (el cable cau damunt la tauleta);
@@ -66,7 +65,8 @@ def _w(fx):
 
 DOOR = (_w(PL.DOOR[0]), _w(PL.DOOR[2]), _y(PL.DOOR[1]))          # la porta: x0, x1, alçada (306, 370, 120)
 PORT = (_w(PL.PORT[0]), _y(PL.PORT[1]))                           # l'ull de bou: x, y del centre
-LAMP = (14, _y(128), _wz(59))                                     # el llum de lectura (al món)
+LDX = 20                                                          # el llum, corregut cap als peus (que el capçal no el tapi)
+LAMP = (14, _y(128), _wz(59 + LDX))                               # el llum de lectura (al món)
 FULLA = 1.05                                                      # quant s'obre la fulla de la porta (radians)
 
 CAM = Camera(pos=(370, 150, -230), yaw=-0.34, pitch=0.12, f=400, centre=(330, 100))
@@ -148,9 +148,9 @@ def _paret(dia=False, maceta=False, vidre=None):
     t = _tauleta_pla()
     cv.img.alpha_composite(t.crop((236, 147, 259, 166)), (236, 147))   # l'endoll i el carregador
     b = _llitera_pla()
-    cv.img.alpha_composite(b.crop((30, 120, 69, 142)), (30, 120))       # el llum de lectura i l'interruptor
+    cv.img.alpha_composite(b.crop((30, 120, 69, 142)), (30 + LDX, 120))  # el llum de lectura i l'interruptor
     cv.P = cv.img.load()
-    cv.glow(59, 128, 30, (255, 214, 140), 0.45)
+    cv.glow(59 + LDX, 128, 30, (255, 214, 140), 0.45)
     if dia:
         PL.ulls_dia(cv)
     if vidre is not None:
@@ -306,30 +306,38 @@ def escena(cv, tex, estat=frozenset()):
         e.cable('cable', [(a, th + 0.6, tz0 + 6), (b, th + 0.6, tz0 + 8)], CORD, 2.0, gruix=1.0)
     e.quad('cable', (_w(238) - 1, th + 0.7, ZW - 21), (_w(238) + 1, th + 0.7, ZW - 21), (_w(238) + 1, th + 0.7, ZW - 23),
            (_w(238) - 1, th + 0.7, ZW - 23), ramp=BRASS, lvl=4.6)
-    # la llitera: el costat amb els calaixos, la manta (des de dalt), el coixí, els plafons i la cortina
+    # la llitera: el costat amb els calaixos, la manta (des de dalt), el coixí, i els plafons
     bed, bot = tex['llitera'], 211
     e.foscor('ombra_llitera', (0, 0.6, _wz(19)), (BD + 18, 0.6, _wz(19)), (BD + 18, 0.6, _wz(229)), (0, 0.6, _wz(229)),
              lambda s, t: 0.55 * min(1.0, max(0.0, (BD + 18 - s) / 18)))
+    # els plafons del capçal i dels peus: prims, un marc amb el plafó enfonsat, poc més alts que el matalàs.
+    # (Sense z-buffer: el dels peus, abans del llit, que el matalàs li tapa la cara de davant; el del capçal, després.)
+    def plafo(w, h, m=4):
+        def lvl(s, t, P):
+            if s < m or s > w - m or t < m or t > h - m:                      # el marc
+                return 3.9 - (0.5 if t > h - 2 else 0)
+            if t < m + 1.2 or s < m + 1.2:                                    # l'ombra del marc dins el plafó
+                return 1.7
+            if t > h - m - 1.2 or s > w - m - 1.2:                            # la llum al cantell de baix
+                return 3.6
+            return 2.7 + (fbm(s / 6, t / 18, 3) - 0.5) * 0.5                 # el plafó, amb la veta
+        return lvl
+    top = _y(157, bot)
+
+    def plafo_caixa(z0, h):
+        e.caixa('llitera', 0, BD + 2, 0, h, z0, z0 + 3, WALNUT, 3.0,
+                cares={'dreta': {'ramp': WALNUT, 'lvl': 2.6}, 'dalt': {'ramp': WALNUT, 'lvl': 4.6},
+                       'davant': {'ramp': WALNUT, 'lvl': plafo(BD + 2, h)}})
+    plafo_caixa(_wz(219), top + 14)
     e.caixa('llitera', 0, BD, 0, _y(176, bot), _wz(29), _wz(219), WALNUT, 2.6,
             cares={'dreta': {'tex': (bed, (29, 176, 220, 212))}, 'dalt': {'ramp': WALNUT, 'lvl': 3.6}})
     e.caixa('llitera', 0, BD - 2, _y(176, bot), _y(157, bot), _wz(29), _wz(219), BLANKET, 3.0,
             cares={'dreta': {'tex': (bed, (29, 158, 220, 177))}, 'dalt': {'ramp': BLANKET, 'lvl': _blanket}})
-    top = _y(157, bot)
     e.caixa_girada('llitera', 24, _wz(48), 38, 20, 9, 0.05, SHEET, 3.0, y0=top,
                    cares={'dalt': {'ramp': SHEET, 'lvl': lambda s, t, P: 4.2 - abs(t - 10) * 0.08
                                    - (0.8 if abs(s - 18) < 6 and abs(t - 9) < 3 else 0)},
                           'dreta': {'ramp': SHEET, 'lvl': 3.4}, 'davant': {'ramp': SHEET, 'lvl': 2.8}})
-    for z0, z1, h in ((_wz(19), _wz(29), _y(123, bot)), (_wz(219), _wz(229), _y(131, bot))):
-        e.caixa('llitera', 0, BD + 2, 0, h, z0, z1, WALNUT, 3.0,
-                cares={'dreta': {'ramp': WALNUT, 'lvl': lambda s, t, P: 3.2 - (0.8 if 3 < t < h - 4 and 2 < s < 8 else 0)},
-                       'dalt': {'ramp': WALNUT, 'lvl': 4.4}, 'davant': {'ramp': WALNUT, 'lvl': 3.4}})
-        e.quad('llitera', (BD + 1, h + 3, (z0 + z1) / 2 - 2), (BD + 3, h + 3, (z0 + z1) / 2 + 2),
-               (BD + 3, h, (z0 + z1) / 2 + 2), (BD + 1, h, (z0 + z1) / 2 - 2), ramp=WALNUT, lvl=4.8, dues_cares=True)
-    # la barra de la cortina (al davant, de cap a peus) i la cortina recollida al capçal
-    rod = _y(85, bot)
-    e.tub('llitera', (BD + 4, rod, _wz(13)), (BD + 4, rod, _wz(235)), 1.2, CAB, 3.4)
-    e.quad('cortina', (BD + 4, _y(88, bot), _wz(11)), (BD + 4, _y(88, bot), _wz(30)), (BD + 4, _y(182, bot), _wz(30)),
-           (BD + 4, _y(182, bot), _wz(11)), tex=(bed, (11, 88, 30, 182)), dues_cares=True)
+    plafo_caixa(_wz(26), top + 20)
     # el prestatge de damunt la llitera (a la paret, fuig): el tauler, la barana i cada cosa dreta al seu lloc
     sh = _prestatge_pla()
     sy = _y(109)
