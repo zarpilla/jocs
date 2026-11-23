@@ -3135,5 +3135,191 @@
     "targets": [
       "rotul"
     ]
+  },
+  "v_feina_iri": {
+    "priority": 9,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "any": [
+            {
+              "hasItem": "tuniques",
+              "who": "vet"
+            },
+            {
+              "hasItem": "habits",
+              "who": "vet"
+            },
+            {
+              "hasItem": "habits_curts",
+              "who": "vet"
+            },
+            {
+              "hasItem": "tisores",
+              "who": "vet"
+            },
+            {
+              "hasItem": "clofolles",
+              "who": "vet"
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "any": [
+          {
+            "hasItem": "tuniques",
+            "who": "vet"
+          },
+          {
+            "hasItem": "habits",
+            "who": "vet"
+          },
+          {
+            "hasItem": "habits_curts",
+            "who": "vet"
+          },
+          {
+            "hasItem": "tisores",
+            "who": "vet"
+          },
+          {
+            "hasItem": "clofolles",
+            "who": "vet"
+          }
+        ]
+      }
+    },
+    "levels": [
+      "pista.v_feina_iri.1",
+      "pista.v_feina_iri.2"
+    ]
+  },
+  "i_feina_vet": {
+    "priority": 9,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "any": [
+            {
+              "hasItem": "barbes",
+              "who": "iri"
+            },
+            {
+              "hasItem": "unguent",
+              "who": "iri"
+            },
+            {
+              "hasItem": "xarop",
+              "who": "iri"
+            },
+            {
+              "hasItem": "valeriana",
+              "who": "iri"
+            },
+            {
+              "hasItem": "salconduit",
+              "who": "iri"
+            },
+            {
+              "hasItem": "salconduit_brut",
+              "who": "iri"
+            },
+            {
+              "hasItem": "salconduit_resina",
+              "who": "iri"
+            },
+            {
+              "hasItem": "llana",
+              "who": "iri"
+            },
+            {
+              "hasItem": "cardo",
+              "who": "iri"
+            },
+            {
+              "hasItem": "mel",
+              "who": "iri"
+            },
+            {
+              "hasItem": "carbo",
+              "who": "iri"
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "any": [
+          {
+            "hasItem": "barbes",
+            "who": "iri"
+          },
+          {
+            "hasItem": "unguent",
+            "who": "iri"
+          },
+          {
+            "hasItem": "xarop",
+            "who": "iri"
+          },
+          {
+            "hasItem": "valeriana",
+            "who": "iri"
+          },
+          {
+            "hasItem": "salconduit",
+            "who": "iri"
+          },
+          {
+            "hasItem": "salconduit_brut",
+            "who": "iri"
+          },
+          {
+            "hasItem": "salconduit_resina",
+            "who": "iri"
+          },
+          {
+            "hasItem": "llana",
+            "who": "iri"
+          },
+          {
+            "hasItem": "cardo",
+            "who": "iri"
+          },
+          {
+            "hasItem": "mel",
+            "who": "iri"
+          },
+          {
+            "hasItem": "carbo",
+            "who": "iri"
+          }
+        ]
+      }
+    },
+    "levels": [
+      "pista.i_feina_vet.1",
+      "pista.i_feina_vet.2"
+    ]
   }
 }

@@ -9,7 +9,7 @@ import type { ActionResult, GameContent, Narrative } from '@aventura/narrative-c
 export const GAME_ACTIONS: string[] = ['donar'];
 
 /** Claus de text que fa servir el codi del joc. */
-export const GAME_TEXT_KEYS: string[] = ['donar.dona', 'donar.no', 'donar.ja', 'donar.guarda'];
+export const GAME_TEXT_KEYS: string[] = ['donar.dona', 'donar.no', 'donar.ja', 'donar.guarda', 'donar.ara_no'];
 
 /** Les de `GAME_TEXT_KEYS` més les que depenen del contingut: el nom amb article de cada objecte. */
 export function gameTextKeys(content: GameContent): string[] {
@@ -21,6 +21,8 @@ export function donar(n: Narrative, item: string): ActionResult {
   const other = n.content.manifest.protagonists.find((p) => p !== who)!;
   const props = n.content.items[item]?.props ?? {};
   if (props.no_donar === true) return { lines: [{ who: 'player', text: 'donar.no' }] };
+  // Quan no es pot canviar de germana, l'altra no podria tornar-ho: es quedaria encallat (al molí, al judici...).
+  if (!n.canSwitch()) return { lines: [{ who: 'player', text: 'donar.ara_no' }] };
   // Les proves que la Vet ha de portar al judici (la serra, la cera): un cop les té ella, ja no les deixa.
   if (props.guarda === who) return { lines: [{ who: 'player', text: 'donar.guarda' }] };
   // El pot de resina no es dona: se'n dona un pegot (`dona`), i el pot es queda (l'Iri el necessita al molí).
