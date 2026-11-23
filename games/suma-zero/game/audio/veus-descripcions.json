@@ -20,8 +20,8 @@
   }
  },
  "vet": {
-  "voice_id": "4Up2uJHJlFVzKPFtTHFZ",
-  "name": "Suma Zero - Vet (central)",
+  "voice_id": "luodUH7AHNQnRBbKnfbc",
+  "name": "Suma Zero - Vet (central, enèrgica)",
   "description": "A 26-year-old young woman, a warm waitress with a dry, deadpan sense of humour, relaxed and confident, warm slightly low voice. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
   "labels": {
    "language": "ca"
@@ -29,8 +29,14 @@
   "voice_design": {
    "model": "eleven_ttv_v3",
    "text": "Torn de nit al bar d'aquí a mitja hora. Abans, sobreviure a l'Iri. La nevera. Brunzeix com si es queixés. Té motius. Perdona'm, pizza. És per una bona causa. Crec. El passaplats. Per aquí l'Iri em demana coses que després no torna. Claus, mòbil, davantal. Me'n vaig. I tu renta els plats!",
-   "triada": "proposta 3 de 3",
-   "data": "2026-11-23"
+   "triada": "remix 3 de 3",
+   "data": "2026-11-23",
+   "remix_de": {
+    "voice_id": "4Up2uJHJlFVzKPFtTHFZ",
+    "name": "Suma Zero - Vet (central)",
+    "triada": "proposta 3 de 3"
+   },
+   "remix": "Make her more energetic and lively: brighter, more upbeat and punchy delivery, a bit faster, more animated, while keeping the same voice, the same dry humour and the native central Catalan accent from Barcelona."
   },
   "substitueix": {
    "voice_id": "BIEw0UmqoPkKt66jxeQZ",
