@@ -29,19 +29,13 @@
         },
         {
           "who": "narrator",
-          "text": "sala.proleg.5"
-        },
-        {
-          "who": "narrator",
-          "text": "sala.proleg.2",
-          "stage": [
+          "text": "sala.proleg.5",
+          "stageAfter": [
             {
               "prop": "fanal",
               "anim": "fanal_arriba",
               "hold": 2.5
-            }
-          ],
-          "stageAfter": [
+            },
             {
               "prop": "figura",
               "anim": "figura_serra",
