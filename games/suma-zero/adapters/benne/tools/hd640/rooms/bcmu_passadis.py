@@ -201,10 +201,11 @@ def _moqueta(s, t, P):
 
 def _terra(e, zn):
     """La moqueta i, damunt, el rombe d'or del banc (els rombes s'empetiteixen cap al fons)."""
-    e.quad('terra', (-400, 0, ZW), (XR, 0, ZW), (XR, 0, zn), (-400, 0, zn), ramp=NAVYB, lvl=_moqueta)
-    e.quad('terra', (-400, 0.05, ZW), (XR, 0.05, ZW), (XR, 0.05, zn), (-400, 0.05, zn), ramp=BRASS,
+    # (des de la paret de l'escala, x = 0: no hi ha z-buffer, i el terra de més enllà es pintaria damunt la paret)
+    e.quad('terra', (0, 0, ZW), (XR, 0, ZW), (XR, 0, zn), (0, 0, zn), ramp=NAVYB, lvl=_moqueta)
+    e.quad('terra', (0, 0.05, ZW), (XR, 0.05, ZW), (XR, 0.05, zn), (0, 0.05, zn), ramp=BRASS,
            lvl=lambda s, t, P: 1.6 + (hr(int(P[0]), int(P[2]), 7) - 0.5) * 0.6,
-           forma=lambda s, t: _or(s - 400, ZW - t))
+           forma=lambda s, t: _or(s, ZW - t))
 
 
 def atrezzo(e):
@@ -265,8 +266,8 @@ def escena(cv, tex, estat=frozenset()):
            lvl=lambda s, t, P: 3.6 if (s < 1.5 or s > vx1 - vx0 - 1.5 or t > ZW - cz0 - 1.5) else 2.4,
            forma=lambda s, t: s < 4 or s > vx1 - vx0 - 4 or t > ZW - cz0 - 4)
     # la foscor: al llarg de la paret, a la cantonada i sota el sostre
-    e.foscor('racons', (-400, 0.5, ZW), (XR, 0.5, ZW), (XR, 0.5, zn), (-400, 0.5, zn),
-             lambda s, t: max(0.5 * max(0.0, 1 - t / 26), 0.45 * max(0.0, 1 - (s - 400) / 30) if s >= 400 else 0.45))
+    e.foscor('racons', (0, 0.5, ZW), (XR, 0.5, ZW), (XR, 0.5, zn), (0, 0.5, zn),
+             lambda s, t: max(0.5 * max(0.0, 1 - t / 26), 0.45 * max(0.0, 1 - s / 30)))
     e.foscor('cantonada', (0, HW, ZW - 0.5), (70, HW, ZW - 0.5), (70, 0, ZW - 0.5), (0, 0, ZW - 0.5),
              lambda s, t: 0.5 * max(0.0, 1 - s / 70))
     e.foscor('cantonada2', (0.5, HW, ZW - 70), (0.5, HW, ZW), (0.5, 0, ZW), (0.5, 0, ZW - 70),
@@ -410,10 +411,27 @@ def _fotograma(capes):
     return _diff(_amb_llum(img), _base_llum())
 
 
+@functools.lru_cache(maxsize=None)
+def _capa_paret_base():
+    _, e = _base()
+    return e.capa(_paret_base(), {'paret_fons', 'paret_esq'})
+
+
+def _canvis_paret(paret):
+    """La paret `paret` projectada, però només on canvia respecte de la paret de sempre: la capa projectada no porta
+    l'ombrejat de l'escena, i sencera repintaria tota la paret (tramada) per sobre dels props de terra."""
+    import numpy as np
+    from PIL import Image
+    _, e = _base()
+    a = np.asarray(e.capa(paret, {'paret_fons', 'paret_esq'}).convert('RGBA'))
+    b = np.asarray(_capa_paret_base().convert('RGBA'))
+    keep = (a != b).any(axis=2)
+    return Image.fromarray(np.where(keep[..., None], a, 0).astype(np.uint8), 'RGBA')
+
+
 def _capa_paret(*fns):
     """Un decorat dibuixat pla damunt la paret (amb les càmeres de sempre), projectat."""
-    _, e = _base()
-    return e.capa(_paret(extra=fns), {'paret_fons', 'paret_esq'})
+    return _canvis_paret(_paret(extra=fns))
 
 
 def _drets(img, peu_img, peu, escala_img=1.0):
@@ -474,13 +492,11 @@ PROPS = {'cartell': _prop_cartell, 'galleda': _prop_galleda, 'extintor': _prop_p
 # ─── Les càmeres que escombren ─────────────────────────────────────────────
 
 def _frames():
-    _, e = _base()
     n = len(PL.CAM_ANGLES)
     out = []
     for i in range(n):
         a1, a2 = PL.CAM_ANGLES[i], PL.CAM_ANGLES[(i + n // 2) % n]
-        capa = e.capa(_paret(a1, a2, led=(i % 4 < 2)), {'paret_fons', 'paret_esq'})
-        out.append(_fotograma([capa]))
+        out.append(_fotograma([_canvis_paret(_paret(a1, a2, led=(i % 4 < 2)))]))
     return out
 
 
