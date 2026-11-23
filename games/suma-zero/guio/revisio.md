@@ -589,7 +589,7 @@ EN ENTRAR
         VET: El Director és dalt, al seu despatx. Ho va dir ell. Hi vaig.
         ⇒ +virus_executat, +cal_director
     • * (una vegada) — SEMPRE
-        NARRADOR: La sala d'escombraries. Bosses, olor de paper triturat, un micròfon al sostre amb una etiqueta («SEGURETAT ESCOLTA. PER LA SEVA SEGURETAT») i, al fons, un armari gris amb llums verds.
+        NARRADOR: La sala d'escombraries. Bosses, olor de paper triturat, un micròfon al sostre amb una etiqueta («SEGURETAT US ESCOLTA. PER LA VOSTRA SEGURETAT») i, al fons, un armari gris amb llums verds.
         JUGADORA: Hola, preciós. Quaranta-dos anys i encara funciones. El Llibre Major.
         JUGADORA: Vet, ja hi soc. On ets? ⟨si NO vet_a_seguretat⟩
         [SO: auricular] VET: A seguretat, amb en Ballester. Quan vulguis. ⟨si vet_a_seguretat⟩

@@ -601,7 +601,7 @@ codi fa un **bip** fortíssim («És de 1984. Aleshores la gent volia que les m�
 [SO: bip_llibre]
 
 **La ràdio, abans del primer bip.** En entrar a la sala d'escombraries, l'Iri veu un micròfon al sostre amb una
-etiqueta: «SEGURETAT ESCOLTA. PER LA SEVA SEGURETAT». A seguretat, la ràdio d'en Ballester és on van a parar els
+etiqueta: «SEGURETAT US ESCOLTA. PER LA VOSTRA SEGURETAT». A seguretat, la ràdio d'en Ballester és on van a parar els
 micròfons de totes les sales tancades (mirant-la, o si la Vet li pregunta per la seguretat: «Cada sala tancada té
 un micròfon que va a parar a la ràdio. Si al banc sona res, jo ho sento.»).
 
