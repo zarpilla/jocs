@@ -438,6 +438,10 @@
                 "who": "vet",
                 "room": "mur_avet"
               }
+            },
+            {
+              "takeItem": "pot_resina",
+              "who": "iri"
             }
           ],
           "goTo": "mur_avet"

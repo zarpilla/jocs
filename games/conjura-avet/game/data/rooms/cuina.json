@@ -126,6 +126,10 @@
               {
                 "flag": "vi_drogat",
                 "is": false
+              },
+              {
+                "flag": "olles_caigudes",
+                "is": false
               }
             ]
           },
@@ -398,6 +402,40 @@
                 "not": {
                   "hasItem": "claus"
                 }
+              },
+              {
+                "any": [
+                  {
+                    "flag": "son1",
+                    "is": false
+                  },
+                  {
+                    "flag": "son2",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.41"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "ploma",
+          "if": {
+            "all": [
+              {
+                "flag": "sunifred_dorm"
+              },
+              {
+                "not": {
+                  "hasItem": "claus"
+                }
               }
             ]
           },
@@ -463,6 +501,14 @@
             },
             {
               "setFlag": "claus_agafades"
+            },
+            {
+              "takeItem": "mocador",
+              "who": "vet"
+            },
+            {
+              "takeItem": "ploma",
+              "who": "vet"
             }
           ]
         },

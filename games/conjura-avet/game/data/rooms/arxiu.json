@@ -592,6 +592,27 @@
             "open",
             "use"
           ],
+          "if": {
+            "flag": "carta_calcada_feta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.62"
+            },
+            {
+              "who": "player",
+              "text": "sala.arxiu.63"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
           "lines": [
             {
               "who": "player",
@@ -656,6 +677,18 @@
             {
               "setVar": "fase",
               "value": 6
+            },
+            {
+              "takeItem": "rascador",
+              "who": "vet"
+            },
+            {
+              "takeItem": "carbonet",
+              "who": "vet"
+            },
+            {
+              "takeItem": "claus",
+              "who": "iri"
             }
           ]
         }

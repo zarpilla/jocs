@@ -372,6 +372,32 @@
               "args": {
                 "id": "iri"
               }
+            },
+            {
+              "takeItem": "tauleta",
+              "who": "vet"
+            },
+            {
+              "takeItem": "cera",
+              "who": "vet"
+            },
+            {
+              "takeItem": "xarop",
+              "who": "vet"
+            },
+            {
+              "takeItem": "guants",
+              "who": "iri"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "xarop",
+          "lines": [
+            {
+              "who": "ponc",
+              "text": "sala.judici.67"
             }
           ]
         },

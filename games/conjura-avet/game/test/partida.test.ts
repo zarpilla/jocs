@@ -57,4 +57,43 @@ describe("La Conjura de l'Avet: la partida", () => {
     p.do('walkTo', 'porta_monestir');
     expect(p.room).toBe('mur_avet');
   });
+
+  it('la Vet no deixa a la Iri les eines que necessitarà sola, ni les proves del judici', () => {
+    const { n, p } = partida();
+    acte1(p, n);
+    p.switchTo('vet');
+    for (const eina of ['tauleta', 'carbonet', 'ploma', 'rascador', 'mocador', 'pergamins', 'serra', 'cera']) {
+      p.do('give', 'iri', eina);
+      expect(p.inventory('vet')).toContain(eina);
+    }
+  });
+
+  it("la Iri no s'endu el cofre fins que la Vet ha calcat la carta d'en Sunifred", () => {
+    const { n, p } = partida();
+    acte1(p, n);
+    acte2(p, n);
+    p.use('tauleta', 'gombau');
+    p.use('rascador', 'espelma_hores');
+    p.use('claus', 'porta_capitular');
+    p.switchTo('iri');
+    p.do('look', 'bagul_sunifred');
+    p.use('claus', 'bagul_sunifred');
+    p.do('use', 'bagul_sunifred');
+    p.do('pull', 'tapis');
+    p.do('push', 'estendard');
+    p.do('pull', 'contrapes');
+    p.switchTo('vet');
+    p.use('tauleta', 'gombau');
+    p.switchTo('iri');
+    p.do('open', 'bagul_sunifred');
+    p.do('pickUp', 'cofre');
+    expect(n.flag('cofre_agafat')).toBe(false);
+    expect(n.hintForOther()).not.toBeNull();
+    p.switchTo('vet');
+    p.use('carbonet', 'pergami');
+    p.do('use', 'pergami'); p.do('use', 'pergami'); p.do('use', 'pergami');
+    p.switchTo('iri');
+    p.do('pickUp', 'cofre');
+    expect(n.flag('cofre_agafat')).toBe(true);
+  });
 });

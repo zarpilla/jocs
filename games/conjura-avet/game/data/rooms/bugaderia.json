@@ -145,6 +145,46 @@
         },
         {
           "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "clofolles_tina"
+              },
+              {
+                "flag": "caparros_tina",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.40"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "caparros_tina"
+              },
+              {
+                "flag": "clofolles_tina",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.41"
+            }
+          ]
+        },
+        {
+          "verb": "look",
           "lines": [
             {
               "who": "player",

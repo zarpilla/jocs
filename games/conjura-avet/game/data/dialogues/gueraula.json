@@ -365,6 +365,22 @@
             {
               "giveItem": "salconduit",
               "who": "iri"
+            },
+            {
+              "takeItem": "pegot",
+              "who": "vet"
+            },
+            {
+              "takeItem": "pergamins",
+              "who": "vet"
+            },
+            {
+              "takeItem": "cardo",
+              "who": "vet"
+            },
+            {
+              "takeItem": "tisores",
+              "who": "iri"
             }
           ]
         },

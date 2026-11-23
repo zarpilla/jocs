@@ -915,7 +915,10 @@
               }
             ]
           }
-        ]
+        ],
+        "props": {
+          "guarda": "vet"
+        }
       },
       "canem": {
         "name": "obj.canem.nom",
@@ -927,7 +930,10 @@
       },
       "serra": {
         "name": "obj.serra.nom",
-        "description": "obj.serra.desc"
+        "description": "obj.serra.desc",
+        "props": {
+          "guarda": "vet"
+        }
       },
       "clofolles": {
         "name": "obj.clofolles.nom",
@@ -1083,7 +1089,10 @@
               }
             ]
           }
-        ]
+        ],
+        "props": {
+          "no_donar": true
+        }
       },
       "carbonet": {
         "name": "obj.carbonet.nom",
@@ -1157,11 +1166,17 @@
               }
             ]
           }
-        ]
+        ],
+        "props": {
+          "no_donar": true
+        }
       },
       "pergamins": {
         "name": "obj.pergamins.nom",
-        "description": "obj.pergamins.desc"
+        "description": "obj.pergamins.desc",
+        "props": {
+          "no_donar": true
+        }
       },
       "ploma": {
         "name": "obj.ploma.nom",
@@ -1224,15 +1239,24 @@
               }
             ]
           }
-        ]
+        ],
+        "props": {
+          "no_donar": true
+        }
       },
       "rascador": {
         "name": "obj.rascador.nom",
-        "description": "obj.rascador.desc"
+        "description": "obj.rascador.desc",
+        "props": {
+          "no_donar": true
+        }
       },
       "mocador": {
         "name": "obj.mocador.nom",
-        "description": "obj.mocador.desc"
+        "description": "obj.mocador.desc",
+        "props": {
+          "no_donar": true
+        }
       },
       "cardo": {
         "name": "obj.cardo.nom",
@@ -2562,6 +2586,27 @@
                   "open",
                   "use"
                 ],
+                "if": {
+                  "flag": "carta_calcada_feta",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.arxiu.62"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.arxiu.63"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "open",
+                  "use"
+                ],
                 "lines": [
                   {
                     "who": "player",
@@ -2626,6 +2671,18 @@
                   {
                     "setVar": "fase",
                     "value": 6
+                  },
+                  {
+                    "takeItem": "rascador",
+                    "who": "vet"
+                  },
+                  {
+                    "takeItem": "carbonet",
+                    "who": "vet"
+                  },
+                  {
+                    "takeItem": "claus",
+                    "who": "iri"
                   }
                 ]
               }
@@ -2988,6 +3045,46 @@
                   {
                     "who": "player",
                     "text": "sala.bugaderia.7"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "clofolles_tina"
+                    },
+                    {
+                      "flag": "caparros_tina",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bugaderia.40"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "caparros_tina"
+                    },
+                    {
+                      "flag": "clofolles_tina",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bugaderia.41"
                   }
                 ]
               },
@@ -4394,6 +4491,10 @@
                     {
                       "flag": "vi_drogat",
                       "is": false
+                    },
+                    {
+                      "flag": "olles_caigudes",
+                      "is": false
                     }
                   ]
                 },
@@ -4666,6 +4767,40 @@
                       "not": {
                         "hasItem": "claus"
                       }
+                    },
+                    {
+                      "any": [
+                        {
+                          "flag": "son1",
+                          "is": false
+                        },
+                        {
+                          "flag": "son2",
+                          "is": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.cuina.41"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "ploma",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "sunifred_dorm"
+                    },
+                    {
+                      "not": {
+                        "hasItem": "claus"
+                      }
                     }
                   ]
                 },
@@ -4731,6 +4866,14 @@
                   },
                   {
                     "setFlag": "claus_agafades"
+                  },
+                  {
+                    "takeItem": "mocador",
+                    "who": "vet"
+                  },
+                  {
+                    "takeItem": "ploma",
+                    "who": "vet"
                   }
                 ]
               },
@@ -5155,6 +5298,10 @@
                   },
                   {
                     "who": "gueraula",
+                    "text": "dlg.gueraula.3"
+                  },
+                  {
+                    "who": "vet",
                     "text": "sala.epileg.31"
                   }
                 ],
@@ -5645,6 +5792,32 @@
                     "args": {
                       "id": "iri"
                     }
+                  },
+                  {
+                    "takeItem": "tauleta",
+                    "who": "vet"
+                  },
+                  {
+                    "takeItem": "cera",
+                    "who": "vet"
+                  },
+                  {
+                    "takeItem": "xarop",
+                    "who": "vet"
+                  },
+                  {
+                    "takeItem": "guants",
+                    "who": "iri"
+                  }
+                ]
+              },
+              {
+                "verb": "give",
+                "item": "xarop",
+                "lines": [
+                  {
+                    "who": "ponc",
+                    "text": "sala.judici.67"
                   }
                 ]
               },
@@ -6256,6 +6429,10 @@
                       "who": "vet",
                       "room": "mur_avet"
                     }
+                  },
+                  {
+                    "takeItem": "pot_resina",
+                    "who": "iri"
                   }
                 ],
                 "goTo": "mur_avet"
@@ -6957,6 +7134,20 @@
               ]
             },
             "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "var": "fase",
+                  "op": "==",
+                  "value": 7
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.mur_avet.75"
+                  }
+                ]
+              },
               {
                 "verb": "look",
                 "if": {
@@ -11524,6 +11715,51 @@
           "gerra"
         ]
       },
+      "v_escoltar": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 3
+            },
+            {
+              "flag": "sunifred_dorm"
+            },
+            {
+              "any": [
+                {
+                  "flag": "son1",
+                  "is": false
+                },
+                {
+                  "flag": "son2",
+                  "is": false
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "all": [
+            {
+              "flag": "son1"
+            },
+            {
+              "flag": "son2"
+            }
+          ]
+        },
+        "levels": [
+          "pista.v_escoltar.1",
+          "pista.v_escoltar.2",
+          "pista.v_escoltar.3"
+        ],
+        "targets": [
+          "sunifred"
+        ]
+      },
       "v_claus": {
         "priority": 6,
         "when": {
@@ -11539,6 +11775,12 @@
             {
               "flag": "claus_agafades",
               "is": false
+            },
+            {
+              "flag": "son1"
+            },
+            {
+              "flag": "son2"
             }
           ]
         },
@@ -11620,12 +11862,29 @@
         "when": {
           "all": [
             {
-              "var": "fase",
-              "op": "==",
-              "value": 4
+              "any": [
+                {
+                  "all": [
+                    {
+                      "var": "fase",
+                      "op": "==",
+                      "value": 4
+                    },
+                    {
+                      "flag": "canonges_fora"
+                    }
+                  ]
+                },
+                {
+                  "var": "fase",
+                  "op": "==",
+                  "value": 5
+                }
+              ]
             },
             {
-              "flag": "canonges_fora"
+              "flag": "canonges_tornen",
+              "is": false
             },
             {
               "flag": "carta_calcada_feta",
@@ -11961,6 +12220,9 @@
             {
               "flag": "cofre_agafat",
               "is": false
+            },
+            {
+              "flag": "carta_calcada_feta"
             }
           ]
         },
@@ -13750,6 +14012,22 @@
                   {
                     "giveItem": "salconduit",
                     "who": "iri"
+                  },
+                  {
+                    "takeItem": "pegot",
+                    "who": "vet"
+                  },
+                  {
+                    "takeItem": "pergamins",
+                    "who": "vet"
+                  },
+                  {
+                    "takeItem": "cardo",
+                    "who": "vet"
+                  },
+                  {
+                    "takeItem": "tisores",
+                    "who": "iri"
                   }
                 ]
               },
@@ -15530,7 +15808,7 @@
       "dlg.ingilberga.11": "I l'ordre del jutge, què diu?",
       "dlg.ingilberga.12": "Teniu proves. Però això és jugar-se el coll. Per què ho hauria de permetre?",
       "dlg.ingilberga.13": "Per això mateix. No vull haver-ne de treure dos més del celler.",
-      "dlg.ingilberga.14": "L'Emma és morta fa cent anys. Vosaltres no.",
+      "dlg.ingilberga.14": "L'Emma és morta fa setanta-cinc anys. Vosaltres no.",
       "dlg.ingilberga.15": "...Això és veritat. I és molt mala idea.",
       "dlg.ingilberga.16": "Endavant.",
       "dlg.ingilberga.17": "Hàbits: a la bugaderia n'hi ha de vells. Barbes i veu: la Gueraula. Les claus de l'arxiu, les porta l'escrivà del comte al cinyell.",
@@ -15603,7 +15881,7 @@
       "dlg.ponc.29": "La fornera, apuntada.",
       "dlg.ponc.3": "El vent arrenca. Això ho ha fet una serra.",
       "dlg.ponc.30": "La molinera, apuntada.",
-      "dlg.ponc.31": "El pescador, apuntat. Desperte, fins i tot.",
+      "dlg.ponc.31": "El pescador, apuntat. Despert, fins i tot.",
       "dlg.ponc.32": "El segell, acceptat. Amb reserves.",
       "dlg.ponc.33": "Encara falta el segell.",
       "dlg.ponc.34": "Tres testimonis i un segell. Tot en regla.",
@@ -15839,6 +16117,7 @@
       "ui.verb.use": "Usa",
       "ui.verb.use.prep": "amb",
       "ui.verb.walkTo": "Ves a",
+      "donar.guarda": "Això ho guardo jo. Les proves, les porto jo.",
       "mis.acte1.obj.abadessa": "Convèncer l'abadessa.",
       "mis.acte1.obj.ordre": "Llegir l'ordre del jutge.",
       "mis.acte1.obj.queixa": "Llegir la queixa de la plaça.",
@@ -15878,7 +16157,7 @@
       "obj.carbonet.cera.1": "Pergamí damunt la cera, i carbonet. A fregar.",
       "obj.carbonet.cera_bruta.1": "Primer l'he de rentar: és tot fang.",
       "obj.carbonet.cera_fet.1": "Ja l'he calcat: Emma abbatissa.",
-      "obj.carbonet.cera_lloc.1": "Necessito una superfície plana i llum. Al claustre, a la taula de la Gueraula.",
+      "obj.carbonet.cera_lloc.1": "Necessito una superfície plana i llum. Al claustre, al banc de l'abadessa.",
       "obj.carbonet.desc": "Un bastonet de carbó de salze. Per esbossar, per calcar, per embrutar-se.",
       "obj.carbonet.nom": "carbonet",
       "obj.cardo.amb_article": "el cardó",
@@ -15916,7 +16195,7 @@
       "obj.combo.pot.no2.1": "Hi falta la carta de l'Emma.",
       "obj.combo.pot2.1": "Les dues cartes, enrotllades, dins el pot.",
       "obj.combo.salc_cera.1": "Premo el tros de cera de l'Emma damunt la resina. Hi queda el dibuix, del revés: les lletres i l'arbre.",
-      "obj.combo.salc_cera.2.1": "Un salconduit segellat per una abadessa morta fa cent anys.",
+      "obj.combo.salc_cera.2.1": "Un salconduit segellat per una abadessa morta fa setanta-cinc anys.",
       "obj.combo.salc_cera.g.1": "Els segells vells són els més respectats.",
       "obj.combo.salc_resina.1": "Una gota de resina, on hi aniria la cera.",
       "obj.combo.salc_sense.1": "La cera no s'hi enganxa, al pergamí. Necessito alguna cosa enganxosa a sota.",
@@ -16060,7 +16339,7 @@
       "pj.sunifred.mira.2.1": "En Sunifred. Una creu amb un llaç. Elegant i impossible de copiar.",
       "pj.sunifred.nom": "Sunifred",
       "pj.vet.mira.1": "La meva germana petita. Llegeix llatí, i em corregeix el català.",
-      "pj.vet.mira.monjo.1": "Un monjo petit que s'arrossega l'hàbit. Té la mirada de la Vet.",
+      "pj.vet.mira.monjo.1": "Un monjo petit, amb l'hàbit escurçat a cops de tisora. Té la mirada de la Vet.",
       "pj.vet.nom": "Vet",
       "pj.vet.parla.1": "Ens falta saber què hi havia sota l'avet i qui té aquest signe. Per a les lletres, aquí em tens.",
       "pj.vet.parla.2": "Hàbits, tu. Barbes, celles, veu i un salconduit, jo. Si necessites res de l'apotecaria, demana-m'ho.",
@@ -16292,6 +16571,9 @@
       "pista.v_valeriana2.2": "Fes servir la valeriana amb la gerra.",
       "pista.v_xarop.1": "I la veu d'home? La Gueraula en sabrà.",
       "pista.v_xarop.2": "Pregunta a la Gueraula per la veu d'home.",
+      "pista.v_escoltar.1": "En Sunifred parla en somnis. Un escrivà que xerra dormint...",
+      "pista.v_escoltar.2": "Asseu-te al davant i escolta'l.",
+      "pista.v_escoltar.3": "Parla amb en Sunifred fins que ronqui.",
       "sala.apotecaria.1": "Barbes, celles, veu d'home i una herba per adormir un escrivà. Quina nit més bonica!",
       "sala.apotecaria.10": "L'oloro... Mitjons! Mitjons d'una setmana.",
       "sala.apotecaria.11": "És valeriana. Fa dormir i fa pudor de peus. Les dues coses són certes.",
@@ -16590,7 +16872,7 @@
       "sala.epileg.33": "Dona'm la pala.",
       "sala.epileg.34": "Tota vostra. Amb molt de gust.",
       "sala.epileg.35": "Jo aguanto la galleda. És el que millor se'm dona: aguantar.",
-      "sala.epileg.36": "Planta-la bé, Iri. Aquesta l'haurà de veure la teva néta.",
+      "sala.epileg.36": "Planta'l bé, Iri. Aquest l'haurà de veure la teva néta.",
       "sala.epileg.37": "Quan sigui gran, la resina serà meva.",
       "sala.epileg.38": "Fondo, filla. Els avets volen fondària.",
       "sala.epileg.39": "Jo ja sé escriure la S. Dijous, la A.",
@@ -16722,7 +17004,7 @@
       "sala.moli.roda.nom": "roda",
       "sala.mur_avet.1": "Tota la nit bufant, i a la fi l'ha tombat.",
       "sala.mur_avet.10": "No. Ahir et va dir que una dona i un arbre no valen res. Avui ho sentirà d'un monjo.",
-      "sala.mur_avet.11": "Pedra rosa. Tres-cents anys més vella que jo, i encara dreta.",
+      "sala.mur_avet.11": "Pedra rosa. Té els mateixos anys que l'avet, i ella encara és dreta.",
       "sala.mur_avet.12": "L'absis del monestir. Les monges diuen que hi ressona fins i tot el que no dius.",
       "sala.mur_avet.13": "Iri, la destral no.",
       "sala.mur_avet.14": "No ho faria, eh. És pedra. La destral és per a la fusta.",
@@ -16839,7 +17121,7 @@
       "sala.placa_sant_pol.35": "Les dones del poble, filant cànem a la gespa de l'església.",
       "sala.placa_sant_pol.36": "Parla amb la Sança. Ella mana.",
       "sala.placa_sant_pol.37": "La reixa del celler del batlle. Hi ha el pare, a dins.",
-      "sala.placa_sant_pol.38": "Ja no hi ha ningú. El pare és al judici.",
+      "sala.placa_sant_pol.38": "Ja no hi ha ningú. Se l'han endut a l'avet, per al judici.",
       "sala.placa_sant_pol.39": "La casa del batlle. Té vi al celler, i ara també el pare.",
       "sala.placa_sant_pol.4": "Hi ha lletres. Grosses. No les sé llegir, però hi ha molta pedra per tan poca església.",
       "sala.placa_sant_pol.40": "El carrer cap a l'avet caigut.",
@@ -16990,7 +17272,14 @@
       "sala.scriptorium.nom": "L'scriptorium",
       "sala.scriptorium.pergami.nom": "pergamí en blanc",
       "sala.scriptorium.porta_capitular.nom": "porta de la sala capitular",
-      "sala.scriptorium.porta_passadis.nom": "porta del passadís"
+      "sala.scriptorium.porta_passadis.nom": "porta del passadís",
+      "sala.arxiu.62": "El cofre de l'Emma! Però si me l'enduc i ens enxampen, ja no tornarem a entrar aquí.",
+      "sala.arxiu.63": "Vet! Abans que res, el pergamí del faristol d'en Sunifred. Calca'l, i després agafo el cofre.",
+      "sala.cuina.41": "Encara no. Parla en somnis... Si l'escolto una mica, potser es delata.",
+      "sala.bugaderia.40": "La tina, amb aigua marró de clofolles. Falta el ferro perquè es torni negra.",
+      "sala.bugaderia.41": "La tina, amb el caparrós. Sense pell de nou, no tenyirà gaire.",
+      "sala.mur_avet.75": "El faristol de viatge del jutge, net i a punt per al judici. L'ordre ja no hi és.",
+      "sala.judici.67": "Xarop de menta? Germà, jo ja tinc veu d'avi. I sense xarop."
     }
   },
   "locale": "ca",

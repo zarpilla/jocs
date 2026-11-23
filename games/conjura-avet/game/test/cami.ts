@@ -139,6 +139,9 @@ export function acte2(p: Jugador, n: Narrative) {
   p.use('valeriana', 'gerra');
   p.do('use', 'gerra');
   expect(n.flag('sunifred_dorm')).toBe(true);
+  p.use('ploma', 'sunifred');
+  expect(n.flag('claus_agafades')).toBe(false);
+  p.talk('sunifred');
   p.talk('sunifred');
   p.use('ploma', 'sunifred');
   expect(p.room).toBe('scriptorium');

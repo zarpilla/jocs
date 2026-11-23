@@ -695,6 +695,20 @@
         {
           "verb": "look",
           "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.75"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
             "protagonist": "iri"
           },
           "lines": [

@@ -1794,6 +1794,51 @@
       "gerra"
     ]
   },
+  "v_escoltar": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "flag": "sunifred_dorm"
+        },
+        {
+          "any": [
+            {
+              "flag": "son1",
+              "is": false
+            },
+            {
+              "flag": "son2",
+              "is": false
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "all": [
+        {
+          "flag": "son1"
+        },
+        {
+          "flag": "son2"
+        }
+      ]
+    },
+    "levels": [
+      "pista.v_escoltar.1",
+      "pista.v_escoltar.2",
+      "pista.v_escoltar.3"
+    ],
+    "targets": [
+      "sunifred"
+    ]
+  },
   "v_claus": {
     "priority": 6,
     "when": {
@@ -1809,6 +1854,12 @@
         {
           "flag": "claus_agafades",
           "is": false
+        },
+        {
+          "flag": "son1"
+        },
+        {
+          "flag": "son2"
         }
       ]
     },
@@ -1890,12 +1941,29 @@
     "when": {
       "all": [
         {
-          "var": "fase",
-          "op": "==",
-          "value": 4
+          "any": [
+            {
+              "all": [
+                {
+                  "var": "fase",
+                  "op": "==",
+                  "value": 4
+                },
+                {
+                  "flag": "canonges_fora"
+                }
+              ]
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 5
+            }
+          ]
         },
         {
-          "flag": "canonges_fora"
+          "flag": "canonges_tornen",
+          "is": false
         },
         {
           "flag": "carta_calcada_feta",
@@ -2231,6 +2299,9 @@
         {
           "flag": "cofre_agafat",
           "is": false
+        },
+        {
+          "flag": "carta_calcada_feta"
         }
       ]
     },

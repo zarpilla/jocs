@@ -74,7 +74,10 @@
           }
         ]
       }
-    ]
+    ],
+    "props": {
+      "guarda": "vet"
+    }
   },
   "canem": {
     "name": "obj.canem.nom",
@@ -86,7 +89,10 @@
   },
   "serra": {
     "name": "obj.serra.nom",
-    "description": "obj.serra.desc"
+    "description": "obj.serra.desc",
+    "props": {
+      "guarda": "vet"
+    }
   },
   "clofolles": {
     "name": "obj.clofolles.nom",
@@ -242,7 +248,10 @@
           }
         ]
       }
-    ]
+    ],
+    "props": {
+      "no_donar": true
+    }
   },
   "carbonet": {
     "name": "obj.carbonet.nom",
@@ -316,11 +325,17 @@
           }
         ]
       }
-    ]
+    ],
+    "props": {
+      "no_donar": true
+    }
   },
   "pergamins": {
     "name": "obj.pergamins.nom",
-    "description": "obj.pergamins.desc"
+    "description": "obj.pergamins.desc",
+    "props": {
+      "no_donar": true
+    }
   },
   "ploma": {
     "name": "obj.ploma.nom",
@@ -383,15 +398,24 @@
           }
         ]
       }
-    ]
+    ],
+    "props": {
+      "no_donar": true
+    }
   },
   "rascador": {
     "name": "obj.rascador.nom",
-    "description": "obj.rascador.desc"
+    "description": "obj.rascador.desc",
+    "props": {
+      "no_donar": true
+    }
   },
   "mocador": {
     "name": "obj.mocador.nom",
-    "description": "obj.mocador.desc"
+    "description": "obj.mocador.desc",
+    "props": {
+      "no_donar": true
+    }
   },
   "cardo": {
     "name": "obj.cardo.nom",

@@ -292,7 +292,7 @@ de viatge, amb en Sunifred al costat, que sosté el tinter. En Ramon, el pare, a
 > IRI: *(al pare)* Bruixeria meteorològica?
 > RAMON: Que ha fet ploure. Calla i agafa la corda.
 
-**Tutorial de mirar.** L'absis («Pedra rosa. Tres-cents anys més vella que jo, i encara dreta»), el mur esbotzat,
+**Tutorial de mirar.** L'absis («Pedra rosa. Té els mateixos anys que l'avet, i ella encara és dreta»), el mur esbotzat,
 l'avet («Cent trenta anys dret, i una nit de vent»), el faristol («Un jutge que porta el faristol de casa»), en
 Sunifred («L'escrivà del comte. Té les mans més netes que he vist mai»).
 
@@ -500,7 +500,7 @@ La Vet li ha d'ensenyar **tres proves** (en qualsevol ordre; cada una, una respo
 Amb les tres, l'argument (diàleg; les opcions dolentes no es tanquen):
 
 - «És pel pare.» — «Per això mateix. No vull haver-ne de treure dos més del celler.»
-- «És per la carta de l'Emma.» — «L'Emma és morta fa cent anys. Vosaltres no.»
+- «És per la carta de l'Emma.» — «L'Emma és morta fa setanta-cinc anys. Vosaltres no.»
 - «Nosaltres no som monges. Si ens enxampen, no és cosa del monestir.» — L'Ingilberga calla. «...Això és veritat. I és
   molt mala idea.» Pausa. «Endavant.»
 
@@ -598,7 +598,7 @@ total, el saig no sap llegir), però no hi ha cera: «La cera és tota a la cape
 **resina** al pergamí, i al damunt, el **tros de cera de l'Emma** com a segell (deixa a la resina, del revés, el dibuix
 del segell: les lletres i l'arbre).
 
-> VET: Un salconduit segellat per una abadessa morta fa cent anys.
+> VET: Un salconduit segellat per una abadessa morta fa setanta-cinc anys.
 > GUERAULA: Els segells vells són els més respectats.
 
 **Trencaclosques 6.6 — La veu (agafar).** La Gueraula dona un flascó de **xarop de menta picant**: «Un glop, i fareu
@@ -684,7 +684,8 @@ entre glop i glop («Hi ha molt verí en aquest món, germà»). Cal que es giri
 3. La Vet li omple la copa amb la gerra. Ell beu.
 
 **Trencaclosques 8.3 — El son (escoltar).** En Sunifred s'endormisca a poc a poc, i parla sol, com qui somia en veu
-alta. Si la Vet s'hi asseu al davant i l'escolta (parlar-hi), diu coses a mitges, una per vegada:
+alta. Si la Vet s'hi asseu al davant i l'escolta (parlar-hi), diu coses a mitges, una per vegada. Cal sentir-les
+abans d'agafar les claus («Encara no. Parla en somnis...»):
 
 > SUNIFRED: Un document segellat no es crema... s'arxiva... sempre s'arxiva...
 > SUNIFRED: La carta al comte... la vaig escriure al faristol... aquell pergamí era car...
@@ -730,7 +731,7 @@ Se'n van. Si la Vet ho prova mentre la miren: «Germà, l'espelma no es toca.»
 del passadís i hi passa. **Comença el tram obert de l'acte 3**: la Vet a l'scriptorium i la Iri a l'arxiu, porta per
 porta, i es pot canviar quan es vulgui.
 
-**Trencaclosques 9.3 — La carta d'en Sunifred (el calc; quan es vulgui del tram).** El pergamí en blanc del faristol
+**Trencaclosques 9.3 — La carta d'en Sunifred (el calc; quan es vulgui del tram, però abans del cofre).** El pergamí en blanc del faristol
 d'en Sunifred té les marques de la ploma de la carta que va escriure al damunt. La Vet hi frega el carbonet. Surten
 les lletres:
 
@@ -758,9 +759,8 @@ deixat.
 > IRI: *(a la porta, a la Vet)* Aquí hi ha cent baguls.
 > VET: *(des de l'scriptorium)* Doncs n'obres cent. Pesen unes quatre tones cadascun. Tu mateixa.
 
-**Trencaclosques 10.1 — El bagul (reconèixer el signe).** Les etiquetes no les sap llegir («Ratlles i ganxos»; si es
-canvia a la Vet i la Vet entra un moment, les llegeix: «*Decimae*: delmes. *Census*: censos. *Bullae*: butlles...»).
-Però el que serveix és mirar: un dels baguls té un lacre amb un dibuix. La Iri el coneix: «Una creu amb un llaç. No sé
+**Trencaclosques 10.1 — El bagul (reconèixer el signe).** Les etiquetes no les sap llegir («Ratlles i ganxos»; la Vet no
+hi entra: l'arxiu és de la Iri). Però el que serveix és mirar: un dels baguls té un lacre amb un dibuix. La Iri el coneix: «Una creu amb un llaç. No sé
 què diu. Sé qui és.»
 
 **Trencaclosques 10.2 — El doble fons (obrir, la fusta).** Amb les claus (la Vet les hi ha de donar), el bagul
@@ -771,7 +771,8 @@ enlloc. Al costat del bagul, un cordill surt pel fons i se'n va per la paret, da
 **contrapès** de pedra, penjat a dalt de tot. Per arribar-hi, la Iri s'enfila per l'**estendard** (empènyer el pal fins
 a la paret, i pujar-hi). Despenja el contrapès. [SO: un clic al bagul, i el cop de la pedra a terra.] Els canonges
 tornen (9.4). Quan la Vet se'ls ha tret de sobre, el doble fons es pot obrir: a dins, el **cofre de l'Emma**, amb el
-segell vermell trencat.
+segell vermell trencat. Si la Vet encara no ha calcat la carta d'en Sunifred, la Iri no se l'endú: «Vet! Abans que
+res, el pergamí del faristol d'en Sunifred.» (Un cop agafat el cofre, sona l'alarma i ja no hi ha temps.)
 
 **Trencaclosques 10.4 — La carta de l'Emma (llegir; sense bromes).** Dins el cofre, mig pergamí tallat en ziga-zaga.
 La Iri crida la Vet, que hi entra i el llegeix:
@@ -864,7 +865,8 @@ porta el **tros de cera** de l'Emma: el dona al jutge. En Ponç s'hi acosta tant
 segell més vell de la vall. Acceptat. Amb reserves.» (Si la Vet no ho veu, la pista va al claustre: l'Ingilberga,
 amb sol, diu «Si en Ponç rebutja el segell de l'Emma, haurà de rebutjar el comte Guifré, que la va fer abadessa».)
 
-Quan hi ha tres testimonis i el segell, la campana toca (a Sant Pol, ara amb corda), i tothom va a l'avet. S'acaba el
+Quan hi ha tres testimonis i el segell, es parla amb el jutge, que fa tocar la campana (a Sant Pol, ara amb corda),
+i tothom va a l'avet. S'acaba el
 tram obert.
 
 ### 12b. El judici (Vet; la Iri hi és)
@@ -1109,7 +1111,9 @@ ACTE 4 — TRAM OBERT (el poble amb sol)
 | Pot d'apotecari (segellat) | Iri → Vet | Molí | Judici |
 | Plançó, pala, cofre | Iri | Epíleg | Epíleg |
 
-Els objectes que ja no serveixen es treuen de l'inventari en acabar el tram on servien.
+Els objectes que ja no serveixen es treuen de l'inventari en acabar el tram on servien. Les eines de la Vet (tauleta,
+carbonet, ploma, rascador, mocador, pergamins) no es donen a la Iri, perquè les necessita als trams seguits; la serra
+i la cera, un cop les té la Vet, tampoc («Les proves, les porto jo»): són per al judici.
 
 ## Pistes
 
@@ -1223,3 +1227,16 @@ L'usuari no volia un joc lineal. Canvis:
    - **L'espelma de l'scriptorium** ara demana distreure primer els canonges, i els canonges tornen quan la Iri fa
      soroll a l'arxiu.
 6. **Les sales tenen mestressa** (com a Aigua Verne), perquè els trams oberts no doblin les veus.
+
+## Annex C: quarta revisió — el joc i el guió, d'acord (23-11-2026)
+
+Una revisió del joc sencer, buscant atzucacs i incoherències:
+
+1. **Atzucacs:** la Vet podia donar a la Iri la tauleta, el carbonet, la ploma, el rascador o el mocador, i quedar-se
+   sense als trams seguits (scriptorium, cuina); o la serra i la tauleta, i quedar-se sense al judici. Ara no es donen.
+2. **El calc de l'scriptorium era opcional:** la carta calcada sortia igualment al molí. Ara el cofre l'espera.
+3. **En Sunifred en somnis:** les claus ja no s'agafen sense haver-lo escoltat (la Vet i la Iri en citen les frases).
+4. **Cronologia:** l'absis té els anys de l'avet (no tres-cents); l'Emma és morta fa setanta-cinc anys (942).
+5. **Detalls:** la tina marró abans del caparrós, el faristol sense l'ordre al matí, la reixa buida, la Vet disfressada
+   amb l'hàbit escurçat, les olles que no tornen a caure, l'inventari que es buida en acabar cada tram, el xarop amb el
+   jutge, i la corranda nova de l'epíleg, que la canta la Vet.
