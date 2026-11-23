@@ -21,7 +21,7 @@ const camins: { nom: string; jugar: (p: Jugador) => void }[] = [
     jugar: (p) => {
       jugarActe1(p, { entrepa: true, tap: true, preparacio: true });
       jugarActe2(p, { aliats: true });
-      jugarActe3(p, { pons: true, mobil: 'pons', repartir: true, neta: true });
+      jugarActe3(p, { mobil: 'pons', repartir: true, neta: true });
     },
   },
 ];

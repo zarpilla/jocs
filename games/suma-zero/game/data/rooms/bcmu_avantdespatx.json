@@ -126,14 +126,7 @@
             "open"
           ],
           "if": {
-            "any": [
-              {
-                "flag": "aliada_pons"
-              },
-              {
-                "flag": "pons_enredada"
-              }
-            ]
+            "flag": "aliada_pons"
           },
           "lines": [
             {

@@ -1,6 +1,6 @@
 /** L'Acte 3 jugat sencer, per tots els camins, amb una pista disponible a cada pas. */
 import { describe, expect, it } from 'vitest';
-import { jugarActe1, jugarActe2, jugarActe3, jugarDespatx, partida, texts } from './partida.js';
+import { jugarActe1, jugarActe2, jugarActe3, jugarDespatx, partida, passarPons, texts } from './partida.js';
 
 /** Una partida amb els actes 1 i 2 jugats: l'Iri al Llibre Major, amb el virus en marxa, i la Vet a seguretat. */
 function ambElVirus(o: { aliats?: boolean } = {}) {
@@ -11,21 +11,22 @@ function ambElVirus(o: { aliats?: boolean } = {}) {
 }
 
 describe('Acte 3 · camins', () => {
-  it('sense aliats: la Vet distreu el Director sola, i el final és «Ni caos ni paradís»', () => {
+  it('només amb la Pons (cal escoltar-la per passar): la Vet distreu el Director sola, i el final és «Hores extres»', () => {
     const { n, p, world } = ambElVirus();
     expect(p.room).toBe('bcmu_escombraries');
     jugarActe3(p);
     expect(n.flag('virus_aturat')).toBe(true);
     expect(n.flag('repartit')).toBe(false);
     expect(n.getVar('reinicis_mobil')).toBe(0);
-    expect(n.resolveEnding()).toBe('final_base');
-    // al bar del final, sense aliats, cap dels quatre (la colla de sempre no té condició: hi és sempre)
+    expect(n.getVar('aliats')).toBe(1);
+    expect(n.resolveEnding()).toBe('final_hores');
+    // al bar del final, dels quatre aliats només la Pons (la colla de sempre no té condició: hi és sempre)
     const alBar = n.hotspotsIn('final_bar');
     expect(alBar.map((h) => h.id).sort()).toEqual(['ballester', 'neta', 'pons', 'rius', 'tele_apagada']);
-    expect(alBar.some((h) => h.visible)).toBe(false);
+    expect(alBar.filter((h) => h.visible).map((h) => h.id)).toEqual(['pons']);
     // en Diu, a la cistella; quan mossega el cable (una línia del final), al moble de la regleta, i la tele s'apaga
     expect(n.placeOf('diu', 'final_bar')).toMatchObject({ x: 573 });
-    const mossegada = n.ending('final_base').scene.find((l) => l.key === 'final.diu1')!;
+    const mossegada = n.ending('final_hores').scene.find((l) => l.key === 'final.diu1')!;
     n.apply(mossegada.effects!);
     expect(n.placeOf('diu', 'final_bar')).toMatchObject({ x: 539 });
     expect(n.hotspotsIn('final_bar').find((h) => h.id === 'tele_apagada')?.visible).toBe(true);
@@ -34,12 +35,12 @@ describe('Acte 3 · camins', () => {
     world.enter('final_bar');
     expect(n.outfitOf('vet')).toBe('');
     const estat = Object.fromEntries(n.quests().map((q) => [q.id, q.status]));
-    expect(estat).toMatchObject({ acte3: 'completed', senyora_pons: 'failed' });
+    expect(estat).toMatchObject({ acte3: 'completed', senyora_pons: 'completed' });
   });
 
   it('amb tots quatre aliats i repartint-ho tot: «La taula llarga»', () => {
     const { n, p } = ambElVirus({ aliats: true });
-    jugarActe3(p, { pons: true, mobil: 'pons', repartir: true, neta: true });
+    jugarActe3(p, { mobil: 'pons', repartir: true, neta: true });
     expect(n.getVar('aliats')).toBe(4);
     expect(n.flag('repartit')).toBe(true);
     expect(n.resolveEnding()).toBe('final_taula');
@@ -58,14 +59,13 @@ describe('Acte 3 · camins', () => {
     const { n, p } = ambElVirus({ aliats: true });
     jugarActe3(p, { mobil: 'ballester', repartir: true, neta: true });
     expect(n.flag('ballester_compte')).toBe(true);
-    expect(n.flag('aliada_pons')).toBe(false);
     expect(n.resolveEnding()).toBe('final_taula');
   });
 
   it("el Director, després: «tornen a ser on eren» si es torna al banc; si es reparteix, «tothom té el mateix que jo»", () => {
     for (const repartir of [false, true]) {
       const { p } = ambElVirus({ aliats: true });
-      jugarDespatx(p, { pons: true, mobil: 'pons', repartir });
+      jugarDespatx(p, { mobil: 'pons', repartir });
       p.switchTo('vet');
       const dit = texts(p.do('talkTo', 'bonfill'));
       expect(dit).toContain(repartir ? 'Tothom té el mateix que jo' : 'tornen a ser on eren');
@@ -86,7 +86,7 @@ describe('Acte 3 · pistes', () => {
     const { n, p } = ambElVirus({ aliats: true });
     p.switchTo('vet');
     p.do('use', 'ascensor');
-    p.talk('pons', 'ue');
+    passarPons(p);
     p.do('use', 'porta');
     p.switchTo('iri');
     expect(n.activeHints()[0]).toBe('iri_contrasenya_mirar');
@@ -101,7 +101,7 @@ describe('Acte 3 · el mòbil del Director', () => {
     const { n, p } = ambElVirus();
     p.switchTo('vet');
     p.do('use', 'ascensor');
-    p.talk('pons', 'ue');
+    passarPons(p);
     p.do('use', 'porta');
     p.switchTo('iri');
     p.talk('llibre', 'rockefeller');
@@ -123,7 +123,7 @@ describe('Acte 3 · el mòbil del Director', () => {
     const { n, p } = ambElVirus();
     p.switchTo('vet');
     p.do('use', 'ascensor');
-    p.talk('pons', 'ue');
+    passarPons(p);
     p.do('use', 'porta');
     p.switchTo('iri');
     p.talk('llibre', 'rockefeller');
@@ -141,7 +141,7 @@ describe('Acte 3 · el mòbil del Director', () => {
     n.apply({ setFlag: 'sap_rockefeller', value: false });
     p.switchTo('vet');
     p.do('use', 'ascensor');
-    p.talk('pons', 'ue');
+    passarPons(p);
     p.do('use', 'porta');
     p.switchTo('iri');
     expect(() => p.talk('llibre', 'rockefeller')).toThrow();

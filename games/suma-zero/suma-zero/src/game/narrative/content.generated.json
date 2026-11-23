@@ -3456,14 +3456,7 @@
                   "open"
                 ],
                 "if": {
-                  "any": [
-                    {
-                      "flag": "aliada_pons"
-                    },
-                    {
-                      "flag": "pons_enredada"
-                    }
-                  ]
+                  "flag": "aliada_pons"
                 },
                 "lines": [
                   {
@@ -23319,12 +23312,6 @@
           },
           {
             "if": {
-              "flag": "pons_enredada"
-            },
-            "node": "enredada"
-          },
-          {
-            "if": {
               "seen": {
                 "dialogue": "pons",
                 "node": "hola"
@@ -23375,11 +23362,8 @@
               {
                 "id": "ue",
                 "text": "dlg.pons.opt.ue",
-                "if": {
-                  "flag": "pons_enredada",
-                  "is": false
-                },
-                "next": "ue"
+                "next": "ue",
+                "once": true
               },
               {
                 "id": "escoltar",
@@ -23461,11 +23445,7 @@
                 "text": "dlg.pons.ue2"
               }
             ],
-            "effects": [
-              {
-                "setFlag": "pons_enredada"
-              }
-            ]
+            "goto": "menu"
           },
           "aliada": {
             "lines": [
@@ -23474,15 +23454,6 @@
                 "text": "dlg.pons.aliada"
               }
             ]
-          },
-          "enredada": {
-            "lines": [
-              {
-                "who": "pons",
-                "text": "dlg.pons.enredada"
-              }
-            ],
-            "goto": "menu"
           },
           "despres": {
             "lines": [
@@ -24888,9 +24859,8 @@
       "dlg.pons.escoltar2": "La senyora Pons no diu res. Durant molta estona.",
       "dlg.pons.escoltar3": "Passi. I si necessita alguna cosa, soc aquí. Fa vint anys que soc aquí.",
       "dlg.pons.ue1": "Auditora. De la Unió Europea.",
-      "dlg.pons.ue2": "...Passi. Avui ja res no em sorprèn.",
+      "dlg.pons.ue2": "Com les tres d'aquesta setmana. El Director no rep.",
       "dlg.pons.aliada": "Passi, passi. Jo soc aquí.",
-      "dlg.pons.enredada": "Ja li he dit que passi. No m'ho faci repetir, que no cobro les repeticions.",
       "dlg.pons.despres": "Ha sentit la megafonia? Busquen una noia amb dessuadora. Vostè no en porta. Que vagi bé.",
       "dlg.despatx.hola": "Ara no, senyora auditora. Estic... comptant. No hi ha gaire res a comptar.",
       "dlg.despatx.opt.gos": "I el seu gos, com està?",
@@ -25568,7 +25538,7 @@
       "pista.vet_planta_noble.3": "Agafo l'ascensor cap a la planta noble.",
       "pista.vet_pons.1": "La senyora Pons no deixa passar ningú. Ni a mi, que és dir molt.",
       "pista.vet_pons.2": "A la taula hi ha papers: una factura i una nòmina. Potser diuen més que ella.",
-      "pista.vet_pons.3": "Miro la factura i la nòmina, i les llegeixo en veu alta a la Pons. O li dic que soc de la Unió Europea.",
+      "pista.vet_pons.3": "Miro la factura i la nòmina, i les llegeixo en veu alta a la Pons.",
       "pista.vet_entrar.1": "La senyora Pons ja em deixa passar.",
       "pista.vet_entrar.2": "El despatx del Director és darrere la porta de fusta.",
       "pista.vet_entrar.3": "Entro al despatx.",

@@ -41,7 +41,7 @@ it.skipIf(!process.env.EXPLORA)('exploració', () => {
   escombra();
   p.transcript.push('\n######## ACTE 1'); jugarActe1(q, { entrepa: true, sacrifici: 'pizza' }); vist.clear();
   p.transcript.push('\n######## ACTE 2'); jugarActe2(q, { aliats: true }); vist.clear();
-  p.transcript.push('\n######## ACTE 3'); jugarActe3(q, { pons: true, mobil: 'pons', repartir: true, neta: true });
+  p.transcript.push('\n######## ACTE 3'); jugarActe3(q, { mobil: 'pons', repartir: true, neta: true });
   const out = [...p.transcript];
   for (const f of ['final_base', 'final_hores', 'final_taula']) {
     const e = n.ending(f);

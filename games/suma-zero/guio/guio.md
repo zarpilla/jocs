@@ -704,9 +704,10 @@ en pensa una cosa:
 
 - **Escoltar-la (aliada):** amb les dues mirades, la Vet llegeix en veu alta la factura, al costat de la nòmina.
   La Pons no diu res. Després: «Passi. I si necessita alguna cosa, soc aquí. Fa vint anys que soc aquí.»
-  `aliada_pons`. Es pot fer fins i tot després d'enredar-la.
-- **Enredar-la:** «Soc auditora de la Unió Europea.» La Pons la deixa passar, però no és aliada.
-- La missió **La senyora Pons** falla si el virus s'atura sense haver-la escoltada.
+  `aliada_pons`. És l'única manera de passar.
+- **La mentida no cola:** «Soc auditora de la Unió Europea.» — «Com les tres d'aquesta setmana. El Director no rep.»
+  Sense haver mirat els papers, la Pons no deixa passar.
+- Com que cal escoltar-la per passar, la Pons sempre és aliada (com a mínim un aliat: el final base ja no surt).
 
 **El despatx.** El Director ja no és una amenaça: està en xoc, amb **14,32 €** al compte (els 12 € del repartiment
 i 2,32 € d'interessos: «Al Director, el banc sempre li paga»). Té el mòbil **cap per avall a la taula** i el gira
@@ -941,7 +942,7 @@ ACTE 2  (4 i 4b en qualsevol ordre)
 ACTE 3
   7:  [virus] → [muntatge] → «Abans de les dotze, només el Director»
       → Vet a l'ascensor (amb en Ballester, si és aliat)
-  8:  [avantdespatx: Pons (aliada | enredada)] → [contrasenya: Rockefeller | foto | bol]
+  8:  [avantdespatx: Pons (factura + nòmina → aliada)] → [contrasenya: Rockefeller | foto | bol]
       → [mòbil: sincronia] → [tornar-ho al banc | repartir-ho tot (cal paper de la Rius o en Ballester)] → [el compte zero: el calaix amagat dels bancs, sense contrasenya]
   9:  Iri: [porta de l'escala (clau) → plena] → [conducte: NETA | extintor] → contenidor
       Vet: [ascensor → vestíbul (recepcionista si sospita_max ≥ 50)] → [contenidor]

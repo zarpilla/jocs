@@ -92,6 +92,8 @@ TECLAT «teclat»
 PORTA «porta de personal»
     • walkTo/use/open — si porta_oberta i NO iri_fora
         ⇒ → aeroport_oficina
+    • open/use — si iri_fora
+        JUGADORA: Ja tinc les acreditacions. Ara, que la Vet acabi la funció.
     • open/use — SEMPRE
         JUGADORA: Tancada. Cal el codi del teclat.
     • look — SEMPRE
@@ -278,7 +280,7 @@ MARCEL «Marcel»
     • give + comandament — SEMPRE
         MARCEL: El comandament! A veure... Ah! El capítol del violí!
           ⇒ perd comandament, +marcel_comandament, +bassols, donats += 1
-        NARRADOR: En Tomàs surt del rebost amb el telèfon a la mà.
+        NARRADOR: En Tomàs surt del rebost amb el telèfon a la mà i recupera el comandament de la barra.
           ⇒ −tomas_rebost
         TOMÀS: Ja està. Som lliures. Tots dos.
         TOMÀS: ...Qui ha posat aquesta sèrie? Bé, igual. Avui no tinc forces.
@@ -415,7 +417,7 @@ NOMINA «nòmina»
         JUGADORA: Les nòmines dels altres no es toquen. Només es llegeixen.
 
 PORTA «despatx del Director»
-    • walkTo/use/open — si aliada_pons o pons_enredada
+    • walkTo/use/open — si aliada_pons
         JUGADORA: Endavant. Sense trucar: les auditores no truquen.
         ⇒ → bcmu_despatx
     • open/use — SEMPRE
@@ -2437,7 +2439,7 @@ COMENÇA A: despres (si virus_aturat) · sync (si sync_mobil) · hola
 COMENÇA A: hola
 
 [hola]
-    DIU: Miau.
+    [SO: miol] DIU: Miau.
     ↪ menu
 
 [menu]
@@ -2455,7 +2457,7 @@ COMENÇA A: hola
     ↪ menu
 
 [adeu]
-    DIU: Miau.
+    [SO: miol] DIU: Miau.
 
 ```
 
@@ -2690,7 +2692,7 @@ COMENÇA A: hola
 ## Diàleg `pons` amb Pons
 
 ```
-COMENÇA A: despres (si virus_aturat) · aliada (si aliada_pons) · enredada (si pons_enredada) · altra (si ha vist pons.hola) · hola
+COMENÇA A: despres (si virus_aturat) · aliada (si aliada_pons) · altra (si ha vist pons.hola) · hola
 
 [hola]
     PONS: Pons. Secretària de Direcció. El Director no rep.
@@ -2704,7 +2706,7 @@ COMENÇA A: despres (si virus_aturat) · aliada (si aliada_pons) · enredada (si
 
 [menu]
     ▸ Què fa, el Director? ⟨una vegada⟩ → per_que
-    ▸ Soc auditora de la Unió Europea. Necessito veure el Director. ⟨si NO pons_enredada⟩ → ue
+    ▸ Soc auditora de la Unió Europea. Necessito veure el Director. ⟨una vegada⟩ → ue
     ▸ (Llegir en veu alta la factura i la nòmina.) ⟨si factura_vista i nomina_vista i NO aliada_pons⟩ → escoltar
     ▸ Ja tornaré. → (es queda) · FI
 
@@ -2722,15 +2724,11 @@ COMENÇA A: despres (si virus_aturat) · aliada (si aliada_pons) · enredada (si
 
 [ue]
     PONS: Auditora. De la Unió Europea.
-    PONS: ...Passi. Avui ja res no em sorprèn.
-    ⇒ +pons_enredada
+    PONS: Com les tres d'aquesta setmana. El Director no rep.
+    ↪ menu
 
 [aliada]
     PONS: Passi, passi. Jo soc aquí.
-
-[enredada]
-    PONS: Ja li he dit que passi. No m'ho faci repetir, que no cobro les repeticions.
-    ↪ menu
 
 [despres]
     PONS: Ha sentit la megafonia? Busquen una noia amb dessuadora. Vostè no en porta. Que vagi bé.
@@ -3302,7 +3300,7 @@ vet_planta_noble — quan juga vet i cal_director i NO a_planta_noble · fins qu
 vet_pons — quan juga vet i a_planta_noble i NO aliada_pons i NO pons_enredada · fins que aliada_pons o pons_enredada
     1. La senyora Pons no deixa passar ningú. Ni a mi, que és dir molt.
     2. A la taula hi ha papers: una factura i una nòmina. Potser diuen més que ella.
-    3. Miro la factura i la nòmina, i les llegeixo en veu alta a la Pons. O li dic que soc de la Unió Europea.
+    3. Miro la factura i la nòmina, i les llegeixo en veu alta a la Pons.
 vet_entrar — quan juga vet i (aliada_pons o pons_enredada) i NO vet_al_despatx · fins que vet_al_despatx
     1. La senyora Pons ja em deixa passar.
     2. El despatx del Director és darrere la porta de fusta.

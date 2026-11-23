@@ -17,12 +17,6 @@
     },
     {
       "if": {
-        "flag": "pons_enredada"
-      },
-      "node": "enredada"
-    },
-    {
-      "if": {
         "seen": {
           "dialogue": "pons",
           "node": "hola"
@@ -73,11 +67,8 @@
         {
           "id": "ue",
           "text": "dlg.pons.opt.ue",
-          "if": {
-            "flag": "pons_enredada",
-            "is": false
-          },
-          "next": "ue"
+          "next": "ue",
+          "once": true
         },
         {
           "id": "escoltar",
@@ -159,11 +150,7 @@
           "text": "dlg.pons.ue2"
         }
       ],
-      "effects": [
-        {
-          "setFlag": "pons_enredada"
-        }
-      ]
+      "goto": "menu"
     },
     "aliada": {
       "lines": [
@@ -172,15 +159,6 @@
           "text": "dlg.pons.aliada"
         }
       ]
-    },
-    "enredada": {
-      "lines": [
-        {
-          "who": "pons",
-          "text": "dlg.pons.enredada"
-        }
-      ],
-      "goto": "menu"
     },
     "despres": {
       "lines": [

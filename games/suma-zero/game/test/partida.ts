@@ -274,25 +274,24 @@ export function jugarActe2(p: Jugador, o: OpcionsActe2 = {}) {
 }
 
 export interface OpcionsActe3 {
-  /** La Vet escolta la senyora Pons (aliada) en lloc d'enredar-la. */
-  pons?: boolean;
   /** Qui resol el mòbil del Director: la Vet sola (per defecte), la Pons o en Ballester. */
   mobil?: 'vet' | 'pons' | 'ballester';
   /** L'Iri ho reparteix tot pel compte de les nòmines (cal el paper de la Rius o en Ballester). */
   repartir?: boolean;
 }
 
+/** L'avantdespatx: la Vet mira la factura i la nòmina i les llegeix a la Pons (l'única manera de passar). */
+export function passarPons(p: Jugador) {
+  p.do('look', 'factura');
+  p.do('look', 'nomina');
+  p.talk('pons', 'escoltar');
+}
+
 /** Les escenes 7 i 8: del virus al despatx, la contrasenya i la sincronia del mòbil. */
 export function jugarDespatx(p: Jugador, o: OpcionsActe3 = {}) {
   p.switchTo('vet');
   p.do('use', 'ascensor');
-  if (o.pons) {
-    p.do('look', 'factura');
-    p.do('look', 'nomina');
-    p.talk('pons', 'escoltar');
-  } else {
-    p.talk('pons', 'ue');
-  }
+  passarPons(p);
   p.do('use', 'porta');
   p.switchTo('iri');
   p.talk('llibre', 'rockefeller');
