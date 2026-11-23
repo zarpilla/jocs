@@ -1,5 +1,6 @@
+import { game } from '@benne/script';
 import { guis } from '@game';
-import { gui, load, resume, save, settingsBtn, historial, pista } from './game-menu.ids';
+import { gui, load, resume, save, settingsBtn, historial, pista, quit } from './game-menu.ids';
 import { sayHint } from '../../narrative/narrative.script';
 import { showHistory } from '../../narrative/narrative';
 
@@ -29,4 +30,10 @@ historial.onClick(() => {
 pista.onClick(() => {
   gui.hide()
   sayHint()
+})
+
+// «Surt»: a l'escriptori tanca l'aplicació; al navegador torna a l'arrel del web (els jocs viuen a malaherbasoft.cat/<joc>/).
+quit.onClick(() => {
+  if (game.isDesktop) game.quit()
+  else window.location.href = '/'
 })
