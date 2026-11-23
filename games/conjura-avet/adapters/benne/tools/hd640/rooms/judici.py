@@ -4,7 +4,7 @@ fins a y = 260). EN 3D: l'art de `mur_avet` (avet_comu.py) amb un altre estat.
 
 Matí de sol net després de la tempesta: cel blau, ombres llargues i dures cap a l'esquerra (el sol ve de la dreta,
 darrere l'absis), tot moll i brillant. Les branques, apartades; el faristol al mig del carrer. El poble al voltant,
-de fons i sense animar, en dues colles: les dones de la Sança i la gent del poble a l'esquerra i al mig (`poble`),
+de fons i sense animar (només volen els coloms de l'absis: `coloms`), en dues colles: les dones de la Sança i la gent del poble a l'esquerra i al mig (`poble`),
 i les monges a la dreta, davant l'absis (`monges`). Les `arrels`, l'`avet` i el `faristol`, com a `mur_avet`.
 Els personatges: tot el repartiment, al carrer (vegeu `spawns`).
 """
@@ -14,6 +14,7 @@ import hd640  # noqa: F401
 from hd640.rooms import avet_comu as A
 from hd640.rooms import mur_avet as MA
 from hd640.rooms.avet_comu import Estat, CAM, HOR, CAMY, p
+from hd640 import coloms
 
 LIGHT = None
 
@@ -49,6 +50,22 @@ def bg(cv):
 
 
 PROPS = {}
+
+
+def _coloms_frames():
+    """Els coloms de l'absis, que volten el campanar (per darrere, el campanar els tapa), i un altre parell que
+    passa per damunt de l'avet."""
+    img, v = _r()
+
+    def mask(noms):
+        return lambda x, y: y < v.h and v.ids[v.own[y, x]] in noms
+    vols = [(480, 24, 78, 12, 0.0, 1), (486, 34, 104, 16, 0.5, -1), (476, 16, 56, 8, 0.3, 1),
+            (250, 26, 150, 10, 0.7, 1), (262, 34, 120, 8, 0.15, 1)]
+    alt = {'cel', 'campanar', 'absis_teulada', 'absis', 'absis_mur', 'avet', 'muntanyes', 'cases'}
+    return coloms.frames(img.width, img.height, vols, mask({'cel', 'muntanyes'}), mask(alt))
+
+
+ANIMS = {'coloms': {'frames': _coloms_frames, 'frameDuration': 90}}
 
 
 def _amo(sids):

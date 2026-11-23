@@ -44,8 +44,8 @@
     },
     "pont_ter 2.aseprite": {
       "frame": {
-        "x": 2077,
-        "y": 360,
+        "x": 2073,
+        "y": 602,
         "w": 88,
         "h": 39
       },
@@ -65,8 +65,8 @@
     },
     "pont_ter 3.aseprite": {
       "frame": {
-        "x": 2293,
-        "y": 360,
+        "x": 2289,
+        "y": 602,
         "w": 1,
         "h": 1
       },
@@ -86,8 +86,8 @@
     },
     "pont_ter 4.aseprite": {
       "frame": {
-        "x": 2165,
-        "y": 360,
+        "x": 2161,
+        "y": 602,
         "w": 128,
         "h": 19
       },
@@ -128,8 +128,8 @@
     },
     "pont_ter 6.aseprite": {
       "frame": {
-        "x": 1989,
-        "y": 360,
+        "x": 1985,
+        "y": 602,
         "w": 88,
         "h": 82
       },
@@ -149,8 +149,8 @@
     },
     "pont_ter 7.aseprite": {
       "frame": {
-        "x": 2293,
-        "y": 360,
+        "x": 2289,
+        "y": 602,
         "w": 1,
         "h": 1
       },
@@ -172,7 +172,7 @@
       "frame": {
         "x": 2423,
         "y": 0,
-        "w": 497,
+        "w": 498,
         "h": 121
       },
       "rotated": false,
@@ -180,7 +180,7 @@
       "spriteSourceSize": {
         "x": 0,
         "y": 63,
-        "w": 497,
+        "w": 498,
         "h": 121
       },
       "sourceSize": {
@@ -191,9 +191,9 @@
     },
     "pont_ter 9.aseprite": {
       "frame": {
-        "x": 2920,
+        "x": 2921,
         "y": 0,
-        "w": 496,
+        "w": 498,
         "h": 121
       },
       "rotated": false,
@@ -201,7 +201,7 @@
       "spriteSourceSize": {
         "x": 0,
         "y": 63,
-        "w": 496,
+        "w": 498,
         "h": 121
       },
       "sourceSize": {
@@ -212,7 +212,7 @@
     },
     "pont_ter 10.aseprite": {
       "frame": {
-        "x": 3416,
+        "x": 3419,
         "y": 0,
         "w": 497,
         "h": 121
@@ -233,10 +233,10 @@
     },
     "pont_ter 11.aseprite": {
       "frame": {
-        "x": 1493,
+        "x": 0,
         "y": 360,
         "w": 496,
-        "h": 120
+        "h": 121
       },
       "rotated": false,
       "trimmed": true,
@@ -244,7 +244,7 @@
         "x": 0,
         "y": 63,
         "w": 496,
-        "h": 120
+        "h": 121
       },
       "sourceSize": {
         "w": 640,
@@ -254,9 +254,9 @@
     },
     "pont_ter 12.aseprite": {
       "frame": {
-        "x": 0,
+        "x": 496,
         "y": 360,
-        "w": 498,
+        "w": 496,
         "h": 121
       },
       "rotated": false,
@@ -264,7 +264,7 @@
       "spriteSourceSize": {
         "x": 0,
         "y": 63,
-        "w": 498,
+        "w": 496,
         "h": 121
       },
       "sourceSize": {
@@ -275,9 +275,9 @@
     },
     "pont_ter 13.aseprite": {
       "frame": {
-        "x": 498,
+        "x": 992,
         "y": 360,
-        "w": 498,
+        "w": 496,
         "h": 121
       },
       "rotated": false,
@@ -285,7 +285,7 @@
       "spriteSourceSize": {
         "x": 0,
         "y": 63,
-        "w": 498,
+        "w": 496,
         "h": 121
       },
       "sourceSize": {
@@ -296,7 +296,49 @@
     },
     "pont_ter 14.aseprite": {
       "frame": {
-        "x": 996,
+        "x": 1488,
+        "y": 360,
+        "w": 496,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 496,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 15.aseprite": {
+      "frame": {
+        "x": 1984,
+        "y": 360,
+        "w": 498,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 498,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 16.aseprite": {
+      "frame": {
+        "x": 2482,
         "y": 360,
         "w": 497,
         "h": 121
@@ -315,7 +357,301 @@
       },
       "duration": 100
     },
-    "pont_ter 15.aseprite": {
+    "pont_ter 17.aseprite": {
+      "frame": {
+        "x": 2979,
+        "y": 360,
+        "w": 496,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 496,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 18.aseprite": {
+      "frame": {
+        "x": 3475,
+        "y": 360,
+        "w": 498,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 498,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 19.aseprite": {
+      "frame": {
+        "x": 1489,
+        "y": 602,
+        "w": 496,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 496,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 20.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 481,
+        "w": 497,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 497,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 21.aseprite": {
+      "frame": {
+        "x": 497,
+        "y": 481,
+        "w": 498,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 498,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 22.aseprite": {
+      "frame": {
+        "x": 995,
+        "y": 481,
+        "w": 498,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 498,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 23.aseprite": {
+      "frame": {
+        "x": 1493,
+        "y": 481,
+        "w": 498,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 498,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 24.aseprite": {
+      "frame": {
+        "x": 1991,
+        "y": 481,
+        "w": 498,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 498,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 25.aseprite": {
+      "frame": {
+        "x": 2489,
+        "y": 481,
+        "w": 498,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 498,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 26.aseprite": {
+      "frame": {
+        "x": 2987,
+        "y": 481,
+        "w": 498,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 498,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 27.aseprite": {
+      "frame": {
+        "x": 3485,
+        "y": 481,
+        "w": 496,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 496,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 28.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 602,
+        "w": 497,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 497,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 29.aseprite": {
+      "frame": {
+        "x": 497,
+        "y": 602,
+        "w": 496,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 496,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 30.aseprite": {
+      "frame": {
+        "x": 993,
+        "y": 602,
+        "w": 496,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 63,
+        "w": 496,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pont_ter 31.aseprite": {
       "frame": {
         "x": 1280,
         "y": 0,
@@ -343,8 +679,8 @@
     "image": "pont_ter.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3913,
-      "h": 481
+      "w": 3981,
+      "h": 723
     },
     "scale": "1",
     "frameTags": [
@@ -400,14 +736,14 @@
       {
         "name": "escuma",
         "from": 7,
-        "to": 14,
+        "to": 30,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant",
-        "from": 15,
-        "to": 15,
+        "from": 31,
+        "to": 31,
         "direction": "forward",
         "color": "#000000ff"
       }

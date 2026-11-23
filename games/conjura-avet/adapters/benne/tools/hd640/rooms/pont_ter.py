@@ -154,7 +154,7 @@ def _sorolls():
     return (_periodic(512, 512, 40, 1), _periodic(512, 512, 12, 2), _periodic(512, 512, 90, 3))
 
 
-NFRAMES = 8
+NFRAMES = 24                                        # el riu, lent: el soroll fa la volta (512) en 24 fotogrames
 
 
 @functools.lru_cache(maxsize=None)

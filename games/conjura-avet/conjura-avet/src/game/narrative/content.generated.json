@@ -9195,6 +9195,12 @@
           }
         ],
         "decor": {
+          "flama_hores": {
+            "visibleIf": {
+              "flag": "canonges_fora",
+              "is": false
+            }
+          },
           "espelma_retallada": {
             "visibleIf": {
               "flag": "canonges_fora"

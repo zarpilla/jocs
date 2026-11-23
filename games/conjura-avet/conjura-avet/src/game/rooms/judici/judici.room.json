@@ -318,6 +318,20 @@
       },
       "zIndex": 22,
       "baseline": 999
+    },
+    {
+      "id": "coloms",
+      "tag": "coloms",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "coloms": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
     }
   ],
   "characters": [

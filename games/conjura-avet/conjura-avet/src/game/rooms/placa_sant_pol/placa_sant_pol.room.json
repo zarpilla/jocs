@@ -464,7 +464,10 @@
       "id": "dones",
       "tag": "dones",
       "animations": {
-        "dones": {}
+        "dones": {
+          "loop": true,
+          "frameDuration": 140
+        }
       },
       "zIndex": 3,
       "visible": true,
@@ -570,6 +573,20 @@
       },
       "zIndex": 22,
       "baseline": 999
+    },
+    {
+      "id": "coloms",
+      "tag": "coloms",
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "coloms": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
     }
   ],
   "characters": [

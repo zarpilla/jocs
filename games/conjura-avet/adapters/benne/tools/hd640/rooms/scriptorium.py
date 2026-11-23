@@ -10,7 +10,7 @@ La sala dels copistes, vista de biaix cap a la cantonada del fons a l'esquerra i
   - davant a la dreta, el **faristol d'en Sunifred**, buit, amb el **pergamí** en blanc, i al costat, en un canelobre
     de ferro, l'**espelma de les hores**: gruixuda, amb ratlles, i una de vermella (l'únic vermell viu de la sala);
   - primer pla: l'armari dels llibres, a la dreta, i un escambell a baix a l'esquerra, a contrallum.
-Decorats: `espelma_retallada` (l'espelma més curta: la flama ja toca la ratlla vermella; el tros tallat, al plat) i `porta_oberta` (la porta capitular
+Decorats: `flama_hores` (la flama de l'espelma de les hores, animada, mentre és sencera), `espelma_retallada` (animat) (l'espelma més curta: la flama ja toca la ratlla vermella; el tros tallat, al plat) i `porta_oberta` (la porta capitular
 oberta, i l'arxiu fosc a darrere). Animacions: les flames de les espelmes (`espelmes`).
 """
 import functools
@@ -489,9 +489,8 @@ PROPS = {
 # ─── Animacions ─────────────────────────────────────────────────────────────
 
 def _frames_espelmes():
-    """Les flames de les espelmes (dels faristols i la de les hores), en bucle. Amb l'espelma retallada, la flama
-    de l'espelma de les hores és més avall: aquesta animació només fa les dels faristols, i la de les hores va a
-    part (`flama_hores`)."""
+    """Les flames de les espelmes dels faristols, en bucle. La de l'espelma de les hores va a part (`flama_hores`
+    i `espelma_retallada`), perquè amb l'espelma retallada és més avall."""
     base = _base()
     net = _render(frozenset(), 0.0, False)[0]
     out = []
@@ -510,7 +509,31 @@ def _frames_espelmes():
     return out
 
 
-ANIMS = {'espelmes': {'frames': _frames_espelmes, 'frameDuration': 110}}
+def _frames_hores(retallada):
+    """La flama de l'espelma de les hores, en bucle: sencera (decorat `flama_hores`, mentre els canonges hi són) o
+    retallada (l'animació del decorat `espelma_retallada`, que en porta l'espelma més curta)."""
+    base = _base()
+    estat = frozenset(('retallada',)) if retallada else frozenset()
+    fix = _render(estat)[0]
+    net = _render(estat, 0.0, False)[0]
+    (fx, fy, fz), sz = _punts_flama(retallada)[-1]
+    u, v, _ = CAM.projecta((fx, fy, fz))
+    box = (int(u) - 34, int(v) - 40, int(u) + 34, int(v) + 24)
+    out = []
+    n = 12
+    k = len(_punts_flama()) - 1
+    for i in range(n):
+        cv = Canvas(light=LIGHT, img=fix.copy())
+        cv.img.paste(net.crop(box), box[:2])
+        cv.P = cv.img.load()
+        _flama_espelma(cv, (fx, fy, fz), (i / n + k * 0.31) % 1.0, k * 1.7, sz)
+        out.append(sense(_diff(cv.img, base), _davant_img()))
+    return out
+
+
+ANIMS = {'espelmes': {'frames': _frames_espelmes, 'frameDuration': 110},
+         'flama_hores': {'frames': lambda: _frames_hores(False), 'frameDuration': 110},
+         'espelma_retallada': {'frames': lambda: _frames_hores(True), 'frameDuration': 110}}
 
 
 # ─── Capes del davant ─────────────────────────────────────────────────────

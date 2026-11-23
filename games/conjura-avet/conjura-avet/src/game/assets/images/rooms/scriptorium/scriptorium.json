@@ -23,27 +23,6 @@
     },
     "scriptorium 1.aseprite": {
       "frame": {
-        "x": 1422,
-        "y": 0,
-        "w": 49,
-        "h": 63
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 544,
-        "y": 72,
-        "w": 49,
-        "h": 63
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "scriptorium 2.aseprite": {
-      "frame": {
         "x": 1141,
         "y": 0,
         "w": 64,
@@ -63,9 +42,9 @@
       },
       "duration": 100
     },
-    "scriptorium 3.aseprite": {
+    "scriptorium 2.aseprite": {
       "frame": {
-        "x": 130,
+        "x": 685,
         "y": 360,
         "w": 1,
         "h": 1
@@ -84,9 +63,9 @@
       },
       "duration": 100
     },
-    "scriptorium 4.aseprite": {
+    "scriptorium 3.aseprite": {
       "frame": {
-        "x": 1488,
+        "x": 2027,
         "y": 0,
         "w": 255,
         "h": 24
@@ -98,6 +77,27 @@
         "y": 100,
         "w": 255,
         "h": 24
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 4.aseprite": {
+      "frame": {
+        "x": 3300,
+        "y": 0,
+        "w": 254,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 228,
+        "y": 100,
+        "w": 254,
+        "h": 23
       },
       "sourceSize": {
         "w": 640,
@@ -107,28 +107,7 @@
     },
     "scriptorium 5.aseprite": {
       "frame": {
-        "x": 2761,
-        "y": 0,
-        "w": 254,
-        "h": 23
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 228,
-        "y": 100,
-        "w": 254,
-        "h": 23
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "scriptorium 6.aseprite": {
-      "frame": {
-        "x": 1743,
+        "x": 2282,
         "y": 0,
         "w": 255,
         "h": 24
@@ -147,9 +126,30 @@
       },
       "duration": 100
     },
+    "scriptorium 6.aseprite": {
+      "frame": {
+        "x": 3554,
+        "y": 0,
+        "w": 254,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 228,
+        "y": 100,
+        "w": 254,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
     "scriptorium 7.aseprite": {
       "frame": {
-        "x": 3015,
+        "x": 3808,
         "y": 0,
         "w": 254,
         "h": 23
@@ -170,28 +170,7 @@
     },
     "scriptorium 8.aseprite": {
       "frame": {
-        "x": 3269,
-        "y": 0,
-        "w": 254,
-        "h": 23
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 228,
-        "y": 100,
-        "w": 254,
-        "h": 23
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "scriptorium 9.aseprite": {
-      "frame": {
-        "x": 0,
+        "x": 510,
         "y": 360,
         "w": 130,
         "h": 22
@@ -210,9 +189,9 @@
       },
       "duration": 100
     },
-    "scriptorium 10.aseprite": {
+    "scriptorium 9.aseprite": {
       "frame": {
-        "x": 1998,
+        "x": 2537,
         "y": 0,
         "w": 254,
         "h": 24
@@ -231,9 +210,9 @@
       },
       "duration": 100
     },
-    "scriptorium 11.aseprite": {
+    "scriptorium 10.aseprite": {
       "frame": {
-        "x": 2252,
+        "x": 2791,
         "y": 0,
         "w": 254,
         "h": 24
@@ -252,10 +231,31 @@
       },
       "duration": 100
     },
+    "scriptorium 11.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 360,
+        "w": 255,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 227,
+        "y": 100,
+        "w": 255,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
     "scriptorium 12.aseprite": {
       "frame": {
-        "x": 3523,
-        "y": 0,
+        "x": 255,
+        "y": 360,
         "w": 255,
         "h": 23
       },
@@ -275,28 +275,7 @@
     },
     "scriptorium 13.aseprite": {
       "frame": {
-        "x": 3778,
-        "y": 0,
-        "w": 255,
-        "h": 23
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 227,
-        "y": 100,
-        "w": 255,
-        "h": 23
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "scriptorium 14.aseprite": {
-      "frame": {
-        "x": 2506,
+        "x": 3045,
         "y": 0,
         "w": 255,
         "h": 24
@@ -315,7 +294,511 @@
       },
       "duration": 100
     },
+    "scriptorium 14.aseprite": {
+      "frame": {
+        "x": 685,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
     "scriptorium 15.aseprite": {
+      "frame": {
+        "x": 667,
+        "y": 360,
+        "w": 4,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 565,
+        "y": 91,
+        "w": 4,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 16.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 360,
+        "w": 4,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 565,
+        "y": 89,
+        "w": 4,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 17.aseprite": {
+      "frame": {
+        "x": 654,
+        "y": 360,
+        "w": 4,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 565,
+        "y": 90,
+        "w": 4,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 18.aseprite": {
+      "frame": {
+        "x": 682,
+        "y": 360,
+        "w": 3,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 565,
+        "y": 92,
+        "w": 3,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 19.aseprite": {
+      "frame": {
+        "x": 671,
+        "y": 360,
+        "w": 4,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 565,
+        "y": 91,
+        "w": 4,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 20.aseprite": {
+      "frame": {
+        "x": 644,
+        "y": 360,
+        "w": 5,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 565,
+        "y": 89,
+        "w": 5,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 21.aseprite": {
+      "frame": {
+        "x": 658,
+        "y": 360,
+        "w": 4,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 565,
+        "y": 90,
+        "w": 4,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 22.aseprite": {
+      "frame": {
+        "x": 675,
+        "y": 360,
+        "w": 5,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 564,
+        "y": 92,
+        "w": 5,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 23.aseprite": {
+      "frame": {
+        "x": 680,
+        "y": 360,
+        "w": 2,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 565,
+        "y": 91,
+        "w": 2,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 24.aseprite": {
+      "frame": {
+        "x": 649,
+        "y": 360,
+        "w": 5,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 564,
+        "y": 89,
+        "w": 5,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 25.aseprite": {
+      "frame": {
+        "x": 662,
+        "y": 360,
+        "w": 5,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 564,
+        "y": 90,
+        "w": 5,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 26.aseprite": {
+      "frame": {
+        "x": 1422,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 27.aseprite": {
+      "frame": {
+        "x": 1471,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 28.aseprite": {
+      "frame": {
+        "x": 1520,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 29.aseprite": {
+      "frame": {
+        "x": 1569,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 30.aseprite": {
+      "frame": {
+        "x": 1618,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 31.aseprite": {
+      "frame": {
+        "x": 1667,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 32.aseprite": {
+      "frame": {
+        "x": 1716,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 33.aseprite": {
+      "frame": {
+        "x": 1765,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 34.aseprite": {
+      "frame": {
+        "x": 1814,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 35.aseprite": {
+      "frame": {
+        "x": 1863,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 36.aseprite": {
+      "frame": {
+        "x": 1912,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 37.aseprite": {
+      "frame": {
+        "x": 1961,
+        "y": 0,
+        "w": 49,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 72,
+        "w": 49,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "scriptorium 38.aseprite": {
       "frame": {
         "x": 1368,
         "y": 0,
@@ -336,7 +819,7 @@
       },
       "duration": 100
     },
-    "scriptorium 16.aseprite": {
+    "scriptorium 39.aseprite": {
       "frame": {
         "x": 1316,
         "y": 0,
@@ -357,7 +840,7 @@
       },
       "duration": 100
     },
-    "scriptorium 17.aseprite": {
+    "scriptorium 40.aseprite": {
       "frame": {
         "x": 1205,
         "y": 0,
@@ -378,9 +861,9 @@
       },
       "duration": 100
     },
-    "scriptorium 18.aseprite": {
+    "scriptorium 41.aseprite": {
       "frame": {
-        "x": 1471,
+        "x": 2010,
         "y": 0,
         "w": 17,
         "h": 35
@@ -399,7 +882,7 @@
       },
       "duration": 100
     },
-    "scriptorium 19.aseprite": {
+    "scriptorium 42.aseprite": {
       "frame": {
         "x": 1244,
         "y": 0,
@@ -420,7 +903,7 @@
       },
       "duration": 100
     },
-    "scriptorium 20.aseprite": {
+    "scriptorium 43.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -448,8 +931,8 @@
     "image": "scriptorium.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4033,
-      "h": 382
+      "w": 4062,
+      "h": 383
     },
     "scale": "1",
     "frameTags": [
@@ -461,65 +944,72 @@
         "color": "#000000ff"
       },
       {
-        "name": "espelma_retallada",
+        "name": "porta_oberta",
         "from": 1,
         "to": 1,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "porta_oberta",
+        "name": "espelmes",
         "from": 2,
-        "to": 2,
+        "to": 13,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "espelmes",
-        "from": 3,
-        "to": 14,
+        "name": "flama_hores",
+        "from": 14,
+        "to": 25,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "espelma_retallada",
+        "from": 26,
+        "to": 37,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant_faristol_2",
-        "from": 15,
-        "to": 15,
+        "from": 38,
+        "to": 38,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant_faristol_1",
-        "from": 16,
-        "to": 16,
+        "from": 39,
+        "to": 39,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant_espelma",
-        "from": 17,
-        "to": 17,
+        "from": 40,
+        "to": 40,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "espelma_retallada__davant_espelma",
-        "from": 18,
-        "to": 18,
+        "from": 41,
+        "to": 41,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant_sunifred",
-        "from": 19,
-        "to": 19,
+        "from": 42,
+        "to": 42,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant",
-        "from": 20,
-        "to": 20,
+        "from": 43,
+        "to": 43,
         "direction": "forward",
         "color": "#000000ff"
       }

@@ -20,7 +20,8 @@ verticals). D'esquerra a dreta (la referència `sant-pol-sense-parets.png`):
 PROPS: `queixa` (el pergamí clavat a la porta, amb el segell de cera vermella), `dones` (les dones que filen a la
 gespa), `corda_campana` (la corda de cànem que penja de la finestra del campanar fins a terra), `llum_mati` (l'acte
 4: el sol net del matí, tota la sala), `dones_marxen` (les dones ja no hi són: les cadiretes i els cistells buits).
-ANIMS: `campana_toca` (la campana que es gronxa; és el decorat del mateix nom).
+ANIMS: `campana_toca` (la campana que es gronxa; és el decorat del mateix nom), `dones` (el fus que gira i la mà
+que estira el fil; és el prop del mateix nom) i `coloms` (tres coloms que volten el campanar).
 
 El món: x a la dreta, y amunt (0 = el terra de la plaça), z cap al fons; 1 unitat = 1 px de sala on un personatge fa
 la seva mida (l'Iri, 84 px).
@@ -34,6 +35,7 @@ from PIL import Image
 import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360)
 from hd.pix import Canvas, Light, W, hr
 from hd640.font import GLYPHS
+from hd640 import coloms
 from hd640.tres_d import Camera, Escena, Llum
 from hd640.rooms.placa_pont_comu import (BOTTOM, PEDRA, TOSCA, TEULA, FUSTA, FERRO, GESPA, TERRA, NUVOL, LLUNY,
                                          PAPER, CERA, FULLA, BRONZE, CANEM, PELL, LLANA, ROBA_BLAVA, ROBA_OCRE,
@@ -801,9 +803,9 @@ DONES = ((470, 470, 1, ROBA_OCRE, LLANA), (530, 430, -1, ROBA_BLAVA, LLANA), (60
          (420, 560, 1, ROBA_BLAVA, PAPER))
 
 
-def _dona(cv, u, v, k, costat, roba, toca, ids_ok, amo, ww):
+def _dona(cv, u, v, k, costat, roba, toca, ids_ok, amo, ww, fase=0.0):
     """Una dona asseguda a terra, filant (la filosa a l'espatlla, el fus que penja). Pintada en pantalla a
-    l'escala k (l'alçada asseguda ≈ 52·k)."""
+    l'escala k (l'alçada asseguda ≈ 52·k). `fase` (0..1): el fus que gira i baixa, i la mà que estira el fil."""
     def put(x, y, rmp, lvl):
         x, y = int(round(x)), int(round(y))
         if 0 <= x < cv.w and 0 <= y < cv.h and (ids_ok is None or amo[y * ww + x] in ids_ok):
@@ -840,13 +842,18 @@ def _dona(cv, u, v, k, costat, roba, toca, ids_ok, amo, ww):
         for x in range(int(bx - h * 0.05), int(bx + h * 0.05) + 1):
             put(x, y, LLANA, 4.4 + (y - by) * -0.2)
     hx = u + costat * h * 0.2
-    for i in range(int(h * 0.3)):
+    ona = math.sin(2 * math.pi * fase)
+    llarg = h * (0.3 + 0.05 * ona)                 # el fus baixa i puja una mica mentre gira
+    for i in range(int(llarg)):
         put(hx, v - h * 0.55 + i, LLANA, 4.6)
-    put(hx, v - h * 0.25, FUSTA, 3.0)
-    put(hx, v - h * 0.25 + 1, FUSTA, 3.0)
-    # el braç que estira el fil
+    fy = v - h * 0.55 + llarg
+    gir = int(fase * 4) % 4                        # el volant del fus, que gira: la cara clara va canviant
+    put(hx, fy, FUSTA, 3.0 + (gir % 2) * 1.2)
+    put(hx, fy + 1, FUSTA, 3.0)
+    put(hx + (1 if gir < 2 else -1), fy, FUSTA, 2.4 + (gir == 1) * 1.4)
+    # el braç que estira el fil (amunt i avall, amb el fus)
     for i in range(int(h * 0.2)):
-        put(u + costat * (h * 0.08 + i * 0.6), v - h * 0.6 + i * 0.25, roba, 3.4)
+        put(u + costat * (h * 0.08 + i * 0.6), v - h * 0.6 + i * 0.25 - ona * h * 0.05 * i / (h * 0.2), roba, 3.4)
 
 
 def _ids_dones(e):
@@ -929,7 +936,38 @@ def _campana_frames():
     return out
 
 
-ANIMS = {'campana_toca': {'frames': _campana_frames, 'frameDuration': 110}}
+def _dones_frames():
+    """Les dones que filen: el fus que gira i la mà que estira (cadascuna amb el seu ritme). És l'animació del
+    prop `dones`, i se'n va amb elles."""
+    img, e, _ = _base()
+    ok = _ids_dones(e)
+    out = []
+    n = 8
+    for i in range(n):
+        cv = Canvas(ROOM_W, light=None, img=img.copy())
+        for j, (x, z, costat, roba, toca) in enumerate(DONES):
+            P = (x, NH, z)
+            u, v, _ = CAM.projecta(P)
+            _dona(cv, u, v, CAM.escala(P), costat, roba, toca, ok, e.amo, e.cv.w, fase=(i / n + j * 0.27) % 1.0)
+        out.append(_diff(cv.img, img))
+    return out
+
+
+def _coloms_frames():
+    """Coloms que volten el campanar: per darrere, el campanar els tapa."""
+    img, e, _ = _base()
+    ww = e.cv.w
+    ids = e.ids
+
+    def mask(noms):
+        return lambda x, y: ids[e.amo[y * ww + x]] in noms
+    vols = [(405, 26, 70, 12, 0.0, 1), (412, 40, 96, 16, 0.45, -1), (398, 18, 52, 9, 0.8, 1)]
+    return coloms.frames(img.width, img.height, vols, mask({''}), mask({'', 'torre0', 'torre1', 'torre7', 'teulada'}))
+
+
+ANIMS = {'campana_toca': {'frames': _campana_frames, 'frameDuration': 110},
+         'dones': {'frames': _dones_frames, 'frameDuration': 140},
+         'coloms': {'frames': _coloms_frames, 'frameDuration': 90, 'zIndex': 3}}   # (per damunt de llum_mati)
 
 
 # ─── Capes del davant ────────────────────────────────────────────────────────

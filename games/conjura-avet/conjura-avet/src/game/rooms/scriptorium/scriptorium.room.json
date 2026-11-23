@@ -457,7 +457,10 @@
       "id": "espelma_retallada",
       "tag": "espelma_retallada",
       "animations": {
-        "espelma_retallada": {}
+        "espelma_retallada": {
+          "loop": true,
+          "frameDuration": 110
+        }
       },
       "zIndex": 4,
       "visible": false,
@@ -560,6 +563,20 @@
       },
       "zIndex": 25,
       "baseline": 204
+    },
+    {
+      "id": "flama_hores",
+      "tag": "flama_hores",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "flama_hores": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
     }
   ],
   "characters": [
