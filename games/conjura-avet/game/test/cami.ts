@@ -1,6 +1,6 @@
 /**
  * El camí de la partida, acte per acte (el fan servir els tests i les proves d'exploració). Als trams oberts, aquest
- * és un dels ordres possibles: el test `ordres` en prova un altre.
+ * és un dels ordres possibles: `ordres.ts` en prova un altre.
  */
 import { expect } from 'vitest';
 import type { Narrative } from '@aventura/narrative-core';

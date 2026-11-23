@@ -436,7 +436,8 @@
           "verb": [
             "push",
             "close",
-            "use"
+            "use",
+            "pull"
           ],
           "if": {
             "all": [
@@ -474,7 +475,6 @@
         {
           "verb": [
             "use",
-            "pickUp",
             "pull",
             "push"
           ],

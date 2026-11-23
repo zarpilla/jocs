@@ -323,23 +323,15 @@
           },
           "lines": [
             {
-              "who": "vet",
-              "text": "sala.placa_sant_pol.24",
-              "if": {
-                "inRoom": "placa_sant_pol",
-                "who": "vet"
-              }
-            },
-            {
               "who": "player",
-              "text": "sala.placa_sant_pol.25"
+              "text": "sala.placa_sant_pol.24"
             }
           ]
         },
         {
           "verb": [
-            "use",
-            "pull"
+            "pull",
+            "use"
           ],
           "if": {
             "flag": "corda_posada",
@@ -359,8 +351,8 @@
         },
         {
           "verb": [
-            "use",
-            "pull"
+            "pull",
+            "use"
           ],
           "if": {
             "flag": "bonfill_campanar"
@@ -374,8 +366,8 @@
         },
         {
           "verb": [
-            "use",
-            "pull"
+            "pull",
+            "use"
           ],
           "if": {
             "all": [
@@ -396,8 +388,8 @@
         },
         {
           "verb": [
-            "use",
-            "pull"
+            "pull",
+            "use"
           ],
           "if": {
             "protagonist": "iri"
@@ -429,8 +421,8 @@
         },
         {
           "verb": [
-            "use",
-            "pull"
+            "pull",
+            "use"
           ],
           "lines": [
             {

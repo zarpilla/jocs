@@ -227,7 +227,8 @@
         {
           "verb": [
             "open",
-            "use"
+            "use",
+            "push"
           ],
           "if": {
             "flag": "bagul_sunifred_obert",

@@ -257,16 +257,8 @@
           "verb": "push",
           "lines": [
             {
-              "who": "vet",
-              "text": "sala.mur_avet.21",
-              "if": {
-                "inRoom": "mur_avet",
-                "who": "vet"
-              }
-            },
-            {
               "who": "player",
-              "text": "sala.mur_avet.22"
+              "text": "sala.mur_avet.21"
             }
           ]
         },
