@@ -521,8 +521,9 @@ amb el tall a la mà.)
 No costa res. Una segona acció sorollosa sense distracció activa suma 2.
 
 **Si la paciència arriba a 6**, en Bastida s'aixeca («Doctora, tinc un vaixell a governar.») i es reinicia el pas:
-VET: «Un moment! El reflex del genoll. Se m'ha oblidat el reflex del genoll.» L'Iri torna a tenir el panell
-tancat (l'ha tancat ella en sentir-lo); el que ha vist, ho recorda.
+VET: «Un moment! El reflex del genoll. Se m'ha oblidat el reflex del genoll.» L'Iri arrenca el cable nou (en Bastida no
+l'ha de veure) i tanca el panell: ha de tornar a buscar cable al pallol i començar l'empalmament, però el que ha vist, ho
+recorda.
 
 **El tall.** Quan l'Iri el mira:
 

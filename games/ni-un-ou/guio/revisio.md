@@ -871,6 +871,8 @@ ESCALA «escala»
         JUGADORA: Avall. A poc a poc.
 
 ANTENA «antena»
+    • use + cisalla — si NO antena_desbloquejada
+        JUGADORA: Amb la cisalla, no. Aquí dalt, si rellisca, l'antena acaba al mar. El nus es desfà amb els dits.
     • look — si NO antena_desbloquejada
         JUGADORA: L'antena del satèl·lit. Desorientada. I lligada amb un nus Bastida, amb una volta de més.
     • look — si NO antena_ok
@@ -1417,6 +1419,8 @@ PRESTATGES «prestatges»
 REGISTRE «registre del dipòsit 2»
     • walkTo/use/open — si registre_obert
         ⇒ → diposit2
+    • use + cisalla — si NO registre_obert
+        JUGADORA: És un pany, no un cadenat. Aquí la cisalla no hi mossega.
     • look — si escena ≥ 7
         JUGADORA: El registre del dipòsit d'aigua 2. Hi ha rascades fresques al pany i la pintura saltada.
         JUGADORA: Algú l'ha provat de forçar amb una clau de tubs. I no ha pogut.
@@ -3158,7 +3162,7 @@ COMENÇA A: trucada (si escena = 1 i juga iri i NO vet_desperta i silueta_vista 
     JUGADORA: A qui truco, i per demanar què? Primer, mirar com està la sala de màquines.
 
 [taller]
-    JUGADORA: Abans de despertar ningú, miro el taller. Hi ha d'haver la clau de vàlvules.
+    JUGADORA: Abans de despertar ningú, miro bé el tauler d'eines. Hi hauria de ser la clau de vàlvules.
 
 [sala_maquines]
     JUGADORA: Falta la clau de vàlvules. Abans de trucar, vull saber per a què la volien: la sala de màquines.
@@ -3305,7 +3309,7 @@ iri_quadre — quan escena = 1 i juga iri i valvula_vista i NO brida_vista · fi
     2. Mira el quadre de la bomba de sentina.
     3. Mira el quadre de la bomba, a la sala de màquines.
 iri_palanca — quan escena = 1 i juga iri i valvula_vista i NO silueta_vista i NO valvula_tancada · fins que silueta_vista o valvula_tancada
-    1. Sense volant, la vàlvula necessita una palanca. Al taller n'hi ha d'haver una.
+    1. Sense volant, la vàlvula necessita una palanca. El taller és ple d'eines.
     2. Mira el tauler d'eines del taller.
     3. Ves al taller (des de la sala de màquines) i mira el tauler d'eines.
 iri_trucada — quan escena = 1 i juga iri i silueta_vista i NO vet_desperta · fins que vet_desperta

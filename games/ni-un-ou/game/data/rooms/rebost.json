@@ -296,6 +296,20 @@
           "goTo": "diposit2"
         },
         {
+          "verb": "use",
+          "item": "cisalla",
+          "if": {
+            "flag": "registre_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.rebost.registre.cisalla"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "if": {
             "var": "escena",

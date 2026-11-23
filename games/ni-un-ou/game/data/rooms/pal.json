@@ -108,6 +108,20 @@
       "name": "sala.pal.antena.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "cisalla",
+          "if": {
+            "flag": "antena_desbloquejada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pal.antena.cisalla"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "if": {
             "flag": "antena_desbloquejada",
