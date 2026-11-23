@@ -972,6 +972,22 @@
           "if": {
             "flag": "tub_de_veu"
           }
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
+            "flag": "tub_de_veu",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.boca.parla"
+            }
+          ]
         }
       ]
     },

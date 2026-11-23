@@ -1064,6 +1064,22 @@
           "if": {
             "flag": "tub_de_veu"
           }
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
+            "flag": "tub_de_veu",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont.boca.parla"
+            }
+          ]
         }
       ]
     },
@@ -1187,6 +1203,20 @@
         {
           "verb": "talkTo",
           "dialogue": "capitana"
+        },
+        {
+          "verb": "give",
+          "item": "tram",
+          "lines": [
+            {
+              "who": "capitana",
+              "text": "sala.pont.capitana.tram.1"
+            },
+            {
+              "who": "iri",
+              "text": "sala.pont.capitana.tram.2"
+            }
+          ]
         }
       ]
     }

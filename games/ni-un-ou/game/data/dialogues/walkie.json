@@ -648,6 +648,21 @@
           }
         },
         {
+          "who": "vet",
+          "text": "dlg.walkie.esc2.9",
+          "if": {
+            "all": [
+              {
+                "flag": "sap_raco"
+              },
+              {
+                "flag": "juana_explica",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
           "who": "iri",
           "text": "dlg.walkie.esc2.8",
           "if": {

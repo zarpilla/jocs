@@ -44,6 +44,8 @@ CAPITANA «—» — hi és si (escena = 2 i pacient ≠ "capitana") o escena = 
         JUGADORA: La Capitana. Fins i tot asseguda, sembla que estigui al timó.
     • talkTo — SEMPRE
         ⇒ diàleg capitana
+    • give + registre — SEMPRE
+        ⇒ diàleg capitana
 
 ```
 
@@ -1306,6 +1308,8 @@ BOCA «boca del tub de veu»
         JUGADORA: Una boca de llautó. Ningú no hi parla des que van posar els walkies.
     • talkTo/use — si tub_de_veu
         ⇒ −cara_a_cara, diàleg tub
+    • talkTo/use — si NO tub_de_veu
+        JUGADORA: Hola? ...Res. A l'altra banda deu haver-hi un pam de pols.
 
 TIMO «timó»
     • look — si rumb_galway
@@ -1330,6 +1334,9 @@ CAPITANA «—» — hi és si escena = 3
         JUGADORA: La Capitana, al timó. Mira el terminal del satèl·lit com si li degués diners.
     • talkTo — SEMPRE
         ⇒ diàleg capitana
+    • give + tram — SEMPRE
+        CAPITANA ROIG: Tallat, trencat... Me l'arregles igual, Iri. Vull avisar l'oficina.
+        IRI: A bord, ningú no vol veure res.
 
 ```
 
@@ -1654,6 +1661,8 @@ BOCA «boca del tub de veu»
         JUGADORA: La boca del tub de veu: el pont, la cuina i la infermeria.
     • talkTo/use — si tub_de_veu
         ⇒ −cara_a_cara, diàleg tub
+    • talkTo/use — si NO tub_de_veu
+        JUGADORA: Hola? ...Res. Des que hi ha walkies, aquí dins no hi parla ningú.
 
 DIU «—» — hi és si escena = 1
 
@@ -3198,6 +3207,7 @@ COMENÇA A: trucada (si escena = 1 i juga iri i NO vet_desperta i silueta_vista 
     IRI: Ja en portes alguna. Les fitxes són a la infermeria: que hi passin tots. ⟨si no (revisio_capitana i revisions ≥ 4) i revisio_capitana⟩
     IRI: I la Juana no ha vingut a esmorzar. No és normal. ⟨si (revisio_capitana i revisions ≥ 4) i NO juana_explica⟩
     IRI: Al laboratori no hi és. En Tomàs la coneix més que ningú. ⟨si (revisio_capitana i revisions ≥ 4) i NO juana_explica i NO sap_raco⟩
+    VET: En Tomàs diu que, quan la Juana vol estar sola, va on hi ha sol i no hi ha gent. ⟨si sap_raco i NO juana_explica⟩
     IRI: Sol i ningú? Això és proa. Allà no hi passa ni el Marcel. ⟨si sap_raco i NO juana_explica⟩
 
 [esc3]

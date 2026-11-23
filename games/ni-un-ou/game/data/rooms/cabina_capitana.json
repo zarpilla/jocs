@@ -207,6 +207,11 @@
         {
           "verb": "talkTo",
           "dialogue": "capitana"
+        },
+        {
+          "verb": "give",
+          "item": "registre",
+          "dialogue": "capitana"
         }
       ]
     }
