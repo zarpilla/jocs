@@ -223,7 +223,7 @@
 - **Pròleg (capes amb `stage`):** `avet_dret` (l'avet dret, que es gronxa amb el vent), `fanal` (s'acosta),
   `figura` (s'ajup a les arrels, se'n va), `avet_cau` (animació: l'avet que cau damunt el mur, i la sacsejada,
   `shake`), `cofre_brilla`, `ma` (una màniga negra que agafa el cofre).
-- **Rètols:** «Sant Joan, novembre de l'any 1017», el títol i «Acte 1 — El crim botànic».
+- **Rètols:** «Sant Joan de les Abadesses, novembre de l'any 1017», el títol i «Acte 1 — El crim botànic».
 
 ## `credits`
 

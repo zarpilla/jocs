@@ -268,7 +268,7 @@ cruix i cau damunt el mur [SO: el cop, i el vent que calla un moment]. Entre les
 vermella: un segell de cera en un cofre. Una mà amb una màniga negra l'agafa (la primera pista falsa: sembla un
 monjo). El fanal s'allunya. Lluny, a la resclosa, un altre llumet, petit: el d'en Joanet, que pesca.
 
-Rètols: *«Sant Joan, novembre de l'any 1017.»* · *La Conjura de l'Avet* · *Acte 1 — El crim botànic.*
+Rètols: *«Sant Joan de les Abadesses, novembre de l'any 1017.»* · *La Conjura de l'Avet* · *Acte 1 — El crim botànic.*
 
 Sense diàlegs. Es pot saltar.
 
@@ -802,6 +802,8 @@ surt cap al riu, fosc. La Vet hi és, amb l'hàbit moll fins als genolls.
 
 **Entrada.**
 
+> GUERAULA: *(des de la finestra de dalt)* Per fi! Què, que us heu trobat una romaguera pel camí?
+> IRI: Dues. Amb tonsura, i armades amb un faristol.
 > VET: El rec surt al Ter. I jo no sé nedar.
 > IRI: Doncs navegarem.
 
@@ -1014,6 +1016,8 @@ Cada una té un començament, una o dues tornades i un final:
 - **La barca filosòfica d'en Joanet.** Fa aigua (1), no en fa i ell s'avorreix (1), s'hi desperta a mig riu (4).
   Final: els crèdits, «ha perdut el tema de conversa».
 - **El vi del batlle.** El pare a la reixa, al judici, als crèdits.
+- **La romaguera** (de Sant Joan: qui triga perquè s'ha trobat algú i s'hi ha quedat parlant «s'ha trobat una
+  romaguera»). La Gueraula, al molí, quan hi arriben tard; les romagueres eren els canonges.
 
 **Frases per defecte.** Tres per verb i germana, que es diuen per torns (`ui.defecte.<verb>.<iri|vet>`, `.2`, `.3`).
 L'Iri, de fusta i d'eines («No es mou. I no és de fusta, que ho sabria»). La Vet, de lletres i de dades («Ho apunto:

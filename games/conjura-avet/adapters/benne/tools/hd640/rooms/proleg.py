@@ -1,6 +1,6 @@
 """
 La Conjura de l'Avet — el pròleg (cinemàtica, pantalla sencera de 640×360). EN 3D, a 1×: el mateix pla de la
-portada (avet_pla_comu.py), però abans que caigui l'avet: la nit de tramuntana de Sant Joan, novembre del 1017.
+portada (avet_pla_comu.py), però abans que caigui l'avet: la nit de tramuntana de Sant Joan de les Abadesses, novembre del 1017.
 
 El fons és el carrer sense l'avet (el mur sencer). Les capes, que anima el contingut amb `stage`:
   - `avet_dret`: l'avet dret, enorme, fosc contra el cel, que es gronxa amb el vent (en bucle);
