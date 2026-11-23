@@ -407,7 +407,7 @@ de la nit, que encara penja de la grua. Hi fa el nus Bastida, a poc a poc, i la 
 
 > VET: Aquest és el famós nus Bastida?
 > MARCEL: El sap fer tothom. Ens el va ensenyar a tots.
-> VET: Hi has fet una volta de més. L'he comptada. Soc metgessa: compto coses.
+> VET: Ernest, hi has fet una volta de més. L'he comptada. Soc metgessa: compto coses.
 > BASTIDA: Aquesta volta no l'ensenyo. Un nus ha de tenir un secret, doctora.
 
 Queda al quadern (la volta de més). A l'Escena 8, el jugador que se'n recordi entendrà l'Iri abans que parli.
@@ -538,7 +538,7 @@ tancat (l'ha tancat ella en sentir-lo); el que ha vist, ho recorda.
 > IRI: Amb el sou de Mar Obert?
 > RUT: Amb el sou de Mar Obert no et compres ni l'aparcament.
 
-La Vet ho lliga, pel walkie: «Per això soc aquí. El Ferran us coneixia a tots de fa vint anys. Hauria vist coses. Algú
+La Vet ho lliga, pel walkie: «Per això soc aquí. El Ferran feia vint anys que navegava amb vosaltres. Us coneixia a tots. Hauria vist coses. Algú
 li va pagar perquè plegués, comptant que a dos dies de salpar Mar Obert només trobaria algú que no sap on és la
 proa. I aquesta soc jo.» IRI: «Ets un error de càlcul.» VET: «Soc el millor error de càlcul que tindran mai.»
 
@@ -785,7 +785,7 @@ hi va entrar per les frontisses) i respon al que la Vet ha vist: al pany forçat
 doctora.»; a en Tomàs ofès, «Un entrepà de truita? Me'l vaig menjar jo, a la caixa de cadenes.» Pel tub, l'Iri lliga
 la clau que no té ningú amb la que té en Tomàs, si la Vet li va fer la revisió.
 
-Dins la carcassa del filtre, en una bossa segellada: **«Mostra 7 — Punt 7 — SK-4»**. [SO: pot] L'Iri la puja a la
+Dins la carcassa del filtre, un pot de fang dins d'una bossa segellada: **«Mostra 7 — Punt 7 — SK-4»**. [SO: pot] L'Iri la puja a la
 cuina pel muntacàrregues, i la Vet la porta a la infermeria.
 
 Quan la Vet torna a la infermeria amb la mostra, la Juana la mira i diu una sola cosa:
@@ -801,7 +801,7 @@ ofereix l'escorta d'un guardacostes. Per la nostra seguretat.» Títol: **Falten
 
 Just després del títol, pel tub (l'Iri és al pont, de guàrdia; la Vet, a la infermeria), el pla de l'Acte 3:
 
-> IRI: Sis hores. Si entrem a Valmark, la mostra es perd a la duana. I sense l'antena, les dades no surten.
+> IRI: Cinc hores. Si entrem a Valmark, la mostra es perd a la duana. I sense l'antena, les dades no surten.
 > VET: Doncs abans d'arribar-hi, ho diem. Davant de tothom: qui ha estat, i per què ho sabem.
 > IRI: Al menjador. La Capitana pot reunir tothom. Jo no em puc moure del pont fins que ens cridi.
 > VET: I la Capitana encara es pensa que Blau Net és una fundació.
@@ -997,7 +997,7 @@ victòria**, segons els **aliats** (`var aliats`, de 0 a 4: la Capitana, el Marc
 > IRI: Doncs que deixin d'abocar avui.
 > NADIA (si `aliada_nadia`): M'han ofert feina fixa. És la primera vegada que algú em paga per dir la veritat.
 > CAPITANA (si `aliada_capitana`): L'any que ve no tindrem gasoil. Però el tindrem net.
-> MARCEL (si `aliat_marcel`, amb en Diu a la falda): Ningú no l'ha vist. Jo tampoc.
+> MARCEL (si `aliat_marcel`, amb en Diu a la falda): En Diu? Ningú no l'ha vist mai. Jo tampoc.
 > TOMÀS (si `tomas_content`): Ha vingut la Juana a demanar-me la recepta de l'entrepà. M'he emocionat.
 > VET (si `aliat_bastida`): I l'Ernest ha declarat i ha tornat a casa d'un cosí, a Osca, a esperar el judici. Diu que
 > és el primer lloc en trenta-cinc anys des d'on no veu el mar. Diu que s'ho mereix.
@@ -1013,7 +1013,7 @@ Pausa.
 
 > VET: Tres-cents mil euros. Tu què n'hauries fet?
 > IRI: Res. No els hauria agafat. *(pausa)* Què em compro, amb tres-cents mil euros? Un altre mar?
-> VET: Jo tampoc. Fa un mes no sabia on era la proa. Ara em llevo de nit per veure sortir el sol per la popa.
+> VET: Jo tampoc. Fa tres setmanes no sabia on era la proa. Ara em llevo de nit per veure sortir el sol per la popa.
 > IRI: Per la proa. Anàvem cap a l'est.
 > VET: Per la punxeguda. Això. *(pausa)* Això no t'ho paga ningú.
 > IRI: La Capitana diu que a l'abril tornem a sortir. Que no tindrem gasoil, però que potser tindrem metgessa.

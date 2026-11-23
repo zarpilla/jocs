@@ -69,7 +69,7 @@ EN ENTRAR
 
 ESCOTILLA «escotilla»
     • walkTo/use/open — si escena = 6 i juana_trobada
-        VET: Infermeria. Ara. Tu també, Juana: no et queixis.
+        VET: Infermeria. Ara, Juana. I no et queixis.
         TÍTOL: Una de la matinada.
         ⇒ escena := 7, esdeveniment situar, esdeveniment situar, esdeveniment protagonista
     • walkTo/use/open — SEMPRE
@@ -182,7 +182,7 @@ EN ENTRAR
         NARRADOR: En Bastida s'aixeca a trincar la zòdiac de la nit, que encara penja de la grua. Hi fa el nus Bastida, a poc a poc.
         VET: Aquest és el famós nus Bastida?
         MARCEL: El sap fer tothom. Ens el va ensenyar a tots.
-        VET: Hi has fet una volta de més. L'he comptada. Soc metgessa: compto coses.
+        VET: Ernest, hi has fet una volta de més. L'he comptada. Soc metgessa: compto coses.
         ERNEST BASTIDA: Aquesta volta no l'ensenyo. Un nus ha de tenir un secret, doctora.
         NARRADOR: Tothom torna a la seva feina. La Juana no ha vingut a esmorzar.
         NARRADOR: Més tard, pel walkie:
@@ -461,7 +461,7 @@ FILTRE «carcassa del filtre»
     • look — SEMPRE
         JUGADORA: La carcassa del filtre. Buida.
     • open/pickUp/use — si NO mostra_trobada
-        [SO: pot] JUGADORA: Una bossa segellada.
+        [SO: pot] JUGADORA: Un pot de fang, dins d'una bossa segellada.
         JUGADORA: «Mostra 7 — Punt 7 — SK-4».
         JUGADORA: On ningú no beu.
         ⇒ +mostra_trobada, rep mostra7, perd clau_tubs (iri), −clau_tubs_fora, perd clau_tomas (vet)
@@ -657,7 +657,7 @@ EN ENTRAR
         JUGADORA: Se l'han endut.
         JUGADORA: Sort de la còpia.
         JUGADORA: El laboratori, remenat aquesta tarda, després que la Vet digués «amb la mostra a bord».
-        JUGADORA: En Bastida, preguntant per les mostres després de parlar amb la Juana.
+        JUGADORA: En Bastida, preguntant per les mostres just després que la Vet parlés amb la Juana.
         JUGADORA: I el portàtil, desaparegut just després de dir que l'havia obert.
         JUGADORA: Tot el que hem dit pel walkie.
         JUGADORA: Ens escolten.
@@ -1808,6 +1808,11 @@ CLAU_TUBS «clau de tubs» — hi és si NO clau_tubs_fora
     • pickUp — si escena = 7
         JUGADORA: La clau de tubs.
         ⇒ rep clau_tubs, +clau_tubs_fora
+    • pickUp — si escena = 1 i NO valvula_tancada
+        JUGADORA: La clau de tubs mossega i rellisca: a una tija sense volant no s'hi agafa.
+        JUGADORA: Necessito una barra que hi encaixi. D'un pam i mig, com a mínim.
+    • pickUp — SEMPRE
+        JUGADORA: La clau de tubs, al seu lloc. Ara no em fa falta.
 
 BANC «banc de treball»
     • look — si juga iri
@@ -1915,7 +1920,7 @@ BANC «banc de treball»
 
 ```
 • look — SEMPRE
-    JUGADORA: Una bossa segellada. «Mostra 7 — Punt 7 — SK-4». A dins, fang gris.
+    JUGADORA: Un pot de fang gris, dins d'una bossa segellada. «Mostra 7 — Punt 7 — SK-4».
 ```
 
 ## Objecte pàgina del registre · `registre`
@@ -2309,7 +2314,7 @@ COMENÇA A: trobada (si escena = 2 i no ha vist juana.trobada) · hola (si escen
     JUANA FERRER: Skarn és de Valmark. Bé, mig: el cinquanta-u per cent és de l'estat.
     VET: I Port Hallen?
     JUANA FERRER: És a Valmark.
-    JUANA FERRER: L'he etiquetada Mostra 7. I l'he posada on ningú no la buscarà.
+    JUANA FERRER: N'he agafat una mostra. L'he etiquetada Mostra 7. I l'he posada on ningú no la buscarà.
     JUANA FERRER: L'any passat, al Punt 7, vaig comptar dos mil ous d'arengada per metre quadrat. Aquest any, cap.
     VET: I a la gent? Què fa, aquest marcador?
     JUANA FERRER: A la gent, no ho sé. Als peixos s'hi queda. Hi ha qui se'ls menja.
@@ -2361,7 +2366,7 @@ COMENÇA A: trobada (si escena = 2 i no ha vist juana.trobada) · hola (si escen
     TÍTOL: Dues de la matinada.
     IRI: Vet. Em sents? Soc al pont, de guàrdia.
     VET: Tenim la Mostra 7. La Juana la té a la falda i no la deixarà anar.
-    IRI: Sis hores. Si entrem a Valmark, la mostra es perd a la duana. I sense l'antena, les dades no surten.
+    IRI: Cinc hores. Si entrem a Valmark, la mostra es perd a la duana. I sense l'antena, les dades no surten.
     VET: Doncs abans d'arribar-hi, ho diem. Davant de tothom: qui ha estat, i per què ho sabem.
     IRI: Al menjador. La Capitana pot reunir tothom. Jo no em puc moure del pont fins que ens cridi.
     VET: I la Capitana encara es pensa que Blau Net és una fundació.
@@ -2438,7 +2443,7 @@ COMENÇA A: revisio (si escena = 2 i pacient = "marcel") · callat (si marcel_en
 
 [aliat]
     MARCEL: Capità. Diu. El que sigui.
-    NARRADOR: En Marcel està amb vosaltres. Aliats: {aliats} de 4.
+    NARRADOR: El Marcel està amb vosaltres. Aliats: {aliats} de 4.
     ⇒ +aliat_marcel, aliats += 1
 
 [enfadat_veritat]
@@ -2715,7 +2720,7 @@ COMENÇA A: trucada
     IRI: Amb el sou de Mar Obert?
     RUT: Amb el sou de Mar Obert no et compres ni l'aparcament.
     NARRADOR: La Vet ho ha sentit tot pel walkie.
-    VET: Per això soc aquí. El Ferran us coneixia a tots de fa vint anys. Hauria vist coses.
+    VET: Per això soc aquí. El Ferran feia vint anys que navegava amb vosaltres. Us coneixia a tots. Hauria vist coses.
     VET: Algú li va pagar perquè plegués, comptant que a dos dies de salpar Mar Obert només trobaria algú que no sap on és la proa.
     VET: I aquesta soc jo.
     IRI: Ets un error de càlcul.
@@ -3581,7 +3586,7 @@ final_primera «Primera plana» — quan enviat i (aliada_nadia i aliats ≥ 3)
     IRI: Doncs que deixin d'abocar avui.
     NADIA VIDAL: M'han ofert feina fixa. És la primera vegada que algú em paga per dir la veritat. ⟨si aliada_nadia⟩
     CAPITANA ROIG: A l'abril no tindrem gasoil. Però el que tinguem serà net. ⟨si aliada_capitana⟩
-    MARCEL: Ningú no l'ha vist. Jo tampoc. ⟨si aliat_marcel⟩
+    MARCEL: En Diu? Ningú no l'ha vist mai. Jo tampoc. ⟨si aliat_marcel⟩
     TOMÀS: Ha vingut la Juana a demanar-me la recepta de l'entrepà. M'he emocionat. ⟨si tomas_content⟩
     VET: I l'Ernest ha declarat. Ha tornat a casa d'un cosí, a Osca, a esperar el judici. ⟨si aliat_bastida⟩
     VET: Diu que és el primer lloc en trenta-cinc anys des d'on no veu el mar. Diu que s'ho mereix. ⟨si aliat_bastida⟩
@@ -3599,7 +3604,7 @@ final_primera «Primera plana» — quan enviat i (aliada_nadia i aliats ≥ 3)
     IRI: Res. No els hauria agafat.
     NARRADOR: Una pausa.
     IRI: Què em compro, amb tres-cents mil euros? Un altre mar?
-    VET: Jo tampoc. Fa un mes no sabia on era la proa. Ara em llevo de nit per veure sortir el sol per la popa.
+    VET: Jo tampoc. Fa tres setmanes no sabia on era la proa. Ara em llevo de nit per veure sortir el sol per la popa.
     IRI: Per la proa. Anàvem cap a l'est.
     VET: Per la punxeguda. Això.
     NARRADOR: Una pausa.
@@ -3639,7 +3644,7 @@ final_testimonis «Testimonis» — quan enviat i aliats ≥ 1
     IRI: Doncs que deixin d'abocar avui.
     NADIA VIDAL: M'han ofert feina fixa. És la primera vegada que algú em paga per dir la veritat. ⟨si aliada_nadia⟩
     CAPITANA ROIG: A l'abril no tindrem gasoil. Però el que tinguem serà net. ⟨si aliada_capitana⟩
-    MARCEL: Ningú no l'ha vist. Jo tampoc. ⟨si aliat_marcel⟩
+    MARCEL: En Diu? Ningú no l'ha vist mai. Jo tampoc. ⟨si aliat_marcel⟩
     TOMÀS: Ha vingut la Juana a demanar-me la recepta de l'entrepà. M'he emocionat. ⟨si tomas_content⟩
     VET: I l'Ernest ha declarat. Ha tornat a casa d'un cosí, a Osca, a esperar el judici. ⟨si aliat_bastida⟩
     VET: Diu que és el primer lloc en trenta-cinc anys des d'on no veu el mar. Diu que s'ho mereix. ⟨si aliat_bastida⟩
@@ -3657,7 +3662,7 @@ final_testimonis «Testimonis» — quan enviat i aliats ≥ 1
     IRI: Res. No els hauria agafat.
     NARRADOR: Una pausa.
     IRI: Què em compro, amb tres-cents mil euros? Un altre mar?
-    VET: Jo tampoc. Fa un mes no sabia on era la proa. Ara em llevo de nit per veure sortir el sol per la popa.
+    VET: Jo tampoc. Fa tres setmanes no sabia on era la proa. Ara em llevo de nit per veure sortir el sol per la popa.
     IRI: Per la proa. Anàvem cap a l'est.
     VET: Per la punxeguda. Això.
     NARRADOR: Una pausa.
@@ -3697,7 +3702,7 @@ final_pagina4 «Pàgina 4» — quan enviat
     IRI: Doncs que deixin d'abocar avui.
     NADIA VIDAL: M'han ofert feina fixa. És la primera vegada que algú em paga per dir la veritat. ⟨si aliada_nadia⟩
     CAPITANA ROIG: A l'abril no tindrem gasoil. Però el que tinguem serà net. ⟨si aliada_capitana⟩
-    MARCEL: Ningú no l'ha vist. Jo tampoc. ⟨si aliat_marcel⟩
+    MARCEL: En Diu? Ningú no l'ha vist mai. Jo tampoc. ⟨si aliat_marcel⟩
     TOMÀS: Ha vingut la Juana a demanar-me la recepta de l'entrepà. M'he emocionat. ⟨si tomas_content⟩
     VET: I l'Ernest ha declarat. Ha tornat a casa d'un cosí, a Osca, a esperar el judici. ⟨si aliat_bastida⟩
     VET: Diu que és el primer lloc en trenta-cinc anys des d'on no veu el mar. Diu que s'ho mereix. ⟨si aliat_bastida⟩
@@ -3715,7 +3720,7 @@ final_pagina4 «Pàgina 4» — quan enviat
     IRI: Res. No els hauria agafat.
     NARRADOR: Una pausa.
     IRI: Què em compro, amb tres-cents mil euros? Un altre mar?
-    VET: Jo tampoc. Fa un mes no sabia on era la proa. Ara em llevo de nit per veure sortir el sol per la popa.
+    VET: Jo tampoc. Fa tres setmanes no sabia on era la proa. Ara em llevo de nit per veure sortir el sol per la popa.
     IRI: Per la proa. Anàvem cap a l'est.
     VET: Per la punxeguda. Això.
     NARRADOR: Una pausa.

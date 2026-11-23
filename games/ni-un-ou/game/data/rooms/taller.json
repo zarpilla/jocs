@@ -267,6 +267,41 @@
               "setFlag": "clau_tubs_fora"
             }
           ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "flag": "valvula_tancada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.clau_tubs.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.taller.clau_tubs.5"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.clau_tubs.6"
+            }
+          ]
         }
       ]
     },
