@@ -1,6 +1,6 @@
 {
   "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `voices`: personatge → voice_id (encara cap). `text`: el que es diu quan no és el text tal qual (sense les xifres que canvien). `pronuncia`: anys, hores i codis. `codi`: qui diu les línies de game/logic. `sense_veu`: les pauses del narrador i les xifres del terminal. `jugadora`: qui parla on el contingut no ho diu. Cada sala és d'una sola protagonista (guio.md, «Regles del món · 9»): el pont, el pal i la coberta de baix, de l'Iri; la infermeria, la cuina, el menjador, la popa i la cabina, de la Vet; i els diàlegs que s'hi fan (el Marcel, per nodes: la revisió és de la Vet). Al codi, el que s'envia a la cuina ho envia l'Iri (del rebost o del pont), i el que s'envia al rebost o al pont, la Vet (de la cuina).",
-  "actiu": "url",
+  "actiu": true,
   "model": "eleven_v3",
   "language": "ca",
   "format": "mp3_44100_64",
