@@ -161,7 +161,7 @@
       "id": "factura",
       "active": true,
       "description": "factura",
-      "zIndex": 2,
+      "zIndex": 10,
       "points": [
         {
           "x": 355,
@@ -193,7 +193,7 @@
       "id": "nomina",
       "active": true,
       "description": "nòmina",
-      "zIndex": 3,
+      "zIndex": 10,
       "points": [
         {
           "x": 382,
