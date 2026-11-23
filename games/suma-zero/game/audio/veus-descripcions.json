@@ -46,11 +46,26 @@
   }
  },
  "narrator": {
-  "voice_id": "th9zqB2LzgTTJqmUHY6L",
-  "name": "Suma Zero - Narrator",
-  "description": "Suma Zero: narrador, home de 50 anys, comèdia impassible",
-  "labels": {},
-  "settings": null
+  "voice_id": "WabPMUOnz3Puz2Sks2ZV",
+  "name": "Suma Zero - Narrator (central, ràpid)",
+  "description": "A 50-year-old man, the narrator of a comedy video game: dry, deadpan, ironic storyteller, warm mid-low voice, brisk and fast-paced delivery, quick rhythm with short pauses, never slow or dragging. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation), consistent in every sentence. Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Ginebra. Seu del Banc Central Mundial Unificat. L'ascensor puja amb música de violins. La màquina s'ho pensa, s'ho repensa i deixa caure un entrepà. L'Iri esmicola l'entrepà davant del robot. NETA-3 s'atura en sec. En Ballester la mira de reüll. La mà, a prop de la ràdio. Per primera vegada en la història, tothom té el mateix. El bilionari, el Director, la Rius i la subcontracta. En Diu li porta un tros de pizza. Amb respecte.",
+   "triada": "proposta 1 de 3 (central; també es van provar 3 de valencianes)",
+   "data": "2026-11-23"
+  },
+  "etiqueta": "cap: es prova si la veu sola ja té prou accent central (amb [central Catalan accent] davant, «Ginebra» sí que sortia bé)",
+  "tempo": "1.15 amb ffmpeg (atempo): el paràmetre speed del v3 no fa res",
+  "substitueix": {
+   "voice_id": "th9zqB2LzgTTJqmUHY6L",
+   "name": "Suma Zero - Narrator",
+   "description": "Suma Zero: narrador, home de 50 anys, comèdia impassible",
+   "motiu": "accent estrany i barrejat; massa lenta"
+  }
  },
  "ballester": {
   "voice_id": "AuDvReSzMN5WjWvyabDy",

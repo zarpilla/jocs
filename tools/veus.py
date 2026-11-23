@@ -14,6 +14,8 @@ al dia `npm run benne:sync`) i la configuració `game/audio/veus.json`:
       "sense_veu": ["sala.bcmu_escombraries.llibre.bip"],  // opcional: claus (o començaments de clau) que no es diuen
       "veu": { "obj.nota_vet.text": "vet" },  // opcional: línies del narrador dites amb la veu d'un personatge (notes, hologrames)
       "variables": { "observacions": [0, 1, 2] },   // opcional: valors de les variables, per gravar-ne cada versió
+      "etiqueta": { "narrator": "[central Catalan accent]" },   // opcional: etiqueta del v3 davant de cada línia d'una veu
+      "tempo": { "narrator": 1.15 },   // opcional: accelera (o alenteix) les preses d'una veu amb ffmpeg, sense canviar-ne el to
       "jugadora": { "bosc_obert": "vet", "walkie.e3": "vet" }   // opcional: qui juga a una sala compartida, a un
                                                               // diàleg o a un node d'un diàleg (si no, es dedueix)
     }
@@ -47,7 +49,7 @@ gravi amb la veu d'un personatge: el text surt igual a la pantalla, i el fitxer 
 les que diuen com es parla queden com a etiqueta del v3: «(al walkie, xiuxiuejant) Iri.» → «[whispers] Iri.» (ETIQUETES).
 Una línia que només és acotació («(Tus, tus.)») no té veu. El que hi ha a `text` de veus.json s'envia tal qual.
 """
-import argparse, glob, hashlib, itertools, json, os, pathlib, re, sys, urllib.error, urllib.request
+import argparse, glob, hashlib, itertools, json, os, pathlib, re, subprocess, sys, urllib.error, urllib.request
 
 SENSE_VEU = {"title"}
 
@@ -306,6 +308,8 @@ def main():
     veu_de = cfg.get("veu", {})
     jugadora = cfg.get("jugadora", {})
     variables = cfg.get("variables", {})
+    etiqueta = cfg.get("etiqueta", {})   # veu → etiqueta davant de cada línia (p. ex. per fixar l'accent)
+    tempo = cfg.get("tempo", {})     # veu → factor d'atempo (el v3 no fa cas de `speed`)
 
     def veu_narrador(key):
         """El personatge amb la veu del qual es diu una línia del narrador (`veu` de veus.json), o el narrador."""
@@ -386,11 +390,13 @@ def main():
                 if stem in seen:
                     continue
                 seen.add(stem)
-                jobs.append((stem, amb, key, text, voices[amb]))
+                dit = f"{etiqueta[amb]} {text}" if amb in etiqueta and not text.startswith(etiqueta[amb]) else text
+                jobs.append((stem, amb, key, dit, voices[amb]))
 
     todo = []
     for stem, sp, key, text, vid in jobs:
-        print_ = hashlib.sha1(json.dumps([vid, model, language, text]).encode()).hexdigest()[:16]
+        empremta = [vid, model, language, text] + ([tempo[sp]] if tempo.get(sp, 1) != 1 else [])
+        print_ = hashlib.sha1(json.dumps(empremta).encode()).hexdigest()[:16]
         if not a.refes and (out_dir / f"{stem}.mp3").exists() and lock.get(stem, {}).get("hash") == print_:
             continue
         todo.append((stem, sp, key, text, vid, print_))
@@ -414,7 +420,13 @@ def main():
             data=body, headers={"xi-api-key": k, "Content-Type": "application/json"})
         try:
             with urllib.request.urlopen(req, timeout=120) as r:
-                (out_dir / f"{stem}.mp3").write_bytes(r.read())
+                audio = r.read()
+            if tempo.get(sp, 1) != 1:
+                kbps = fmt.rsplit("_", 1)[-1]
+                audio = subprocess.run(["ffmpeg", "-v", "error", "-f", "mp3", "-i", "pipe:0", "-filter:a",
+                                        f"atempo={tempo[sp]}", "-ar", fmt.split("_")[1], "-b:a", f"{kbps}k", "-f", "mp3", "pipe:1"],
+                                       input=audio, capture_output=True, check=True).stdout
+            (out_dir / f"{stem}.mp3").write_bytes(audio)
         except urllib.error.HTTPError as e:
             print(f"  ERROR {e.code} a {key}: {e.read()[:300]!r}")
             if e.code in (401, 402, 403, 429):
