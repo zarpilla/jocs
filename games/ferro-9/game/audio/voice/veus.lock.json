@@ -1,92 +1,6017 @@
 {
+ "capatas1169249035": {
+  "hash": "885b5cb0a2e1d8be",
+  "key": "sala.fabrica_calderes.capatas.parlar2",
+  "who": "capatas"
+ },
+ "capatas184292943": {
+  "hash": "1402796bc84857b5",
+  "key": "sala.fabrica_calderes.capatas.estirar2",
+  "who": "capatas"
+ },
+ "capatas4065199094": {
+  "hash": "2745e47b4c55117b",
+  "key": "sala.fabrica_calderes.capatas.plomall2",
+  "who": "capatas"
+ },
+ "capatas4244042203": {
+  "hash": "36d494e1d3030500",
+  "key": "sala.fabrica_calderes.capatas.signar2",
+  "who": "capatas"
+ },
+ "cargol1028450977": {
+  "hash": "fda05464443e33f4",
+  "key": "dlg.cargol.adeu",
+  "who": "cargol"
+ },
+ "cargol1081509251": {
+  "hash": "cb8be11584060905",
+  "key": "dlg.cargol.imant_ok1",
+  "who": "cargol"
+ },
+ "cargol1098286870": {
+  "hash": "b7a6cb77a26cf0a6",
+  "key": "dlg.cargol.imant_ok2",
+  "who": "cargol"
+ },
+ "cargol1250590768": {
+  "hash": "a505b11d27889f91",
+  "key": "dlg.cargol.fabrica3.3",
+  "who": "cargol"
+ },
+ "cargol1267368387": {
+  "hash": "0834620ae5cb628b",
+  "key": "dlg.cargol.fabrica3.2",
+  "who": "cargol"
+ },
+ "cargol1284146006": {
+  "hash": "1599545e6c80ad99",
+  "key": "dlg.cargol.fabrica3.1",
+  "who": "cargol"
+ },
+ "cargol1351256482": {
+  "hash": "43fec6c173bf0e65",
+  "key": "dlg.cargol.fabrica3.5",
+  "who": "cargol"
+ },
+ "cargol1368034101": {
+  "hash": "3c21e6eb39611b21",
+  "key": "dlg.cargol.fabrica3.4",
+  "who": "cargol"
+ },
+ "cargol1735426830": {
+  "hash": "7c044fb21e068109",
+  "key": "dlg.cargol.imant_falta",
+  "who": "cargol"
+ },
+ "cargol1856914359": {
+  "hash": "cf7509af792b3869",
+  "key": "dlg.cargol.clau_sense_res",
+  "who": "cargol"
+ },
+ "cargol2009866679": {
+  "hash": "05e62b152725251d",
+  "key": "dlg.cargol.memoria1",
+  "who": "cargol"
+ },
+ "cargol2026644298": {
+  "hash": "f5a658ab2fdd668b",
+  "key": "dlg.cargol.memoria2",
+  "who": "cargol"
+ },
+ "cargol2043421917": {
+  "hash": "aa4ad6c9cae70146",
+  "key": "dlg.cargol.memoria3",
+  "who": "cargol"
+ },
+ "cargol2206480184": {
+  "hash": "84977e2006772f76",
+  "key": "dlg.cargol.diapaso_ok",
+  "who": "cargol"
+ },
+ "cargol2410899292": {
+  "hash": "3445f6330cc05720",
+  "key": "dlg.cargol.clau_ok2",
+  "who": "cargol"
+ },
+ "cargol2461232149": {
+  "hash": "997c8d83e30885de",
+  "key": "dlg.cargol.clau_ok1",
+  "who": "cargol"
+ },
+ "cargol2478555034": {
+  "hash": "adf2947a16800c03",
+  "key": "dlg.cargol.hola_amiga",
+  "who": "cargol"
+ },
+ "cargol261751971": {
+  "hash": "ee4e40866300c937",
+  "key": "dlg.cargol.clau_sense_segell",
+  "who": "cargol"
+ },
+ "cargol2617767047": {
+  "hash": "8b7b5c3b3c1b06f3",
+  "key": "sala.fabrica_magatzem.prestatges.agafar",
+  "who": "cargol"
+ },
+ "cargol2644881182": {
+  "hash": "6527d5f94eb0eab3",
+  "key": "sala.fabrica_magatzem.plomall.agafar2",
+  "who": "cargol"
+ },
+ "cargol2953089254": {
+  "hash": "96d9951802f84317",
+  "key": "sala.fabrica_magatzem.benvinguda",
+  "who": "cargol"
+ },
+ "cargol3140156272": {
+  "hash": "19382cb409b2276b",
+  "key": "dlg.cargol.carnet_ok2",
+  "who": "cargol"
+ },
+ "cargol3154567678": {
+  "hash": "eaa8272d66d30029",
+  "key": "dlg.cargol.dia2",
+  "who": "cargol"
+ },
+ "cargol3156933891": {
+  "hash": "39b151099447a6e0",
+  "key": "dlg.cargol.carnet_ok3",
+  "who": "cargol"
+ },
+ "cargol3171345297": {
+  "hash": "bd97be698fddb84e",
+  "key": "dlg.cargol.dia3",
+  "who": "cargol"
+ },
+ "cargol3190489129": {
+  "hash": "2d1e53e5c9536ad0",
+  "key": "dlg.cargol.carnet_ok1",
+  "who": "cargol"
+ },
+ "cargol3295674084": {
+  "hash": "6de93fd1b48e27cb",
+  "key": "dlg.cargol.tub1",
+  "who": "cargol"
+ },
+ "cargol3329229322": {
+  "hash": "48cc7ae81177155b",
+  "key": "dlg.cargol.tub3",
+  "who": "cargol"
+ },
+ "cargol3346006941": {
+  "hash": "6d355099bac705c1",
+  "key": "dlg.cargol.tub2",
+  "who": "cargol"
+ },
+ "cargol3347177977": {
+  "hash": "3079b3cb8639f5dd",
+  "key": "dlg.cargol.carnet_material",
+  "who": "cargol"
+ },
+ "cargol3377633318": {
+  "hash": "72200ab745d523fd",
+  "key": "sala.fabrica_magatzem.cargol.llima2",
+  "who": "cargol"
+ },
+ "cargol3394410937": {
+  "hash": "bcc23856c2ade7fa",
+  "key": "sala.fabrica_magatzem.cargol.llima3",
+  "who": "cargol"
+ },
+ "cargol3494087196": {
+  "hash": "e2ea99ac1845b712",
+  "key": "dlg.cargol.hola",
+  "who": "cargol"
+ },
+ "cargol3527647201": {
+  "hash": "86e70232b58eab9f",
+  "key": "sala.fabrica_magatzem.cargol.segell4",
+  "who": "cargol"
+ },
+ "cargol3544424820": {
+  "hash": "b43e9c81c2dba4cf",
+  "key": "sala.fabrica_magatzem.cargol.segell3",
+  "who": "cargol"
+ },
+ "cargol3561202439": {
+  "hash": "a882be43c028adcf",
+  "key": "sala.fabrica_magatzem.cargol.segell2",
+  "who": "cargol"
+ },
+ "cargol3693686851": {
+  "hash": "ef6812a1b714bc70",
+  "key": "dlg.cargol.tub_carnet",
+  "who": "cargol"
+ },
+ "cargol3744695019": {
+  "hash": "8b8bba13e6485c18",
+  "key": "dlg.cargol.fabrica.molla",
+  "who": "cargol"
+ },
+ "cargol3787583824": {
+  "hash": "8d3859b82f6962e5",
+  "key": "dlg.cargol.diapaso_altre",
+  "who": "cargol"
+ },
+ "cargol3787801856": {
+  "hash": "d71176c1863f49b8",
+  "key": "dlg.cargol.imant2_ok",
+  "who": "cargol"
+ },
+ "cargol3899474806": {
+  "hash": "6b84d8dc296cb40b",
+  "key": "dlg.cargol.perque4",
+  "who": "cargol"
+ },
+ "cargol3931612091": {
+  "hash": "912316a114e90042",
+  "key": "dlg.cargol.fabrica.1",
+  "who": "cargol"
+ },
+ "cargol3933030044": {
+  "hash": "e7081eb2d43d5179",
+  "key": "dlg.cargol.perque2",
+  "who": "cargol"
+ },
+ "cargol3948389710": {
+  "hash": "b62dbec2f9122dbb",
+  "key": "dlg.cargol.fabrica.2",
+  "who": "cargol"
+ },
+ "cargol3965167329": {
+  "hash": "0ec7ead543bacd64",
+  "key": "dlg.cargol.fabrica.3",
+  "who": "cargol"
+ },
+ "cargol3981944948": {
+  "hash": "007f8b494a5e3862",
+  "key": "dlg.cargol.fabrica.4",
+  "who": "cargol"
+ },
+ "cargol3983362901": {
+  "hash": "eb53411b95b0711f",
+  "key": "dlg.cargol.perque1",
+  "who": "cargol"
+ },
+ "cargol3998722567": {
+  "hash": "5b3cb0388204365e",
+  "key": "dlg.cargol.fabrica.5",
+  "who": "cargol"
+ },
+ "cargol4015500186": {
+  "hash": "79fe3ccd7fe2660c",
+  "key": "dlg.cargol.fabrica.6",
+  "who": "cargol"
+ },
+ "cargol4032277805": {
+  "hash": "19dbc2a5cb90174b",
+  "key": "dlg.cargol.fabrica.7",
+  "who": "cargol"
+ },
+ "cargol4100660228": {
+  "hash": "11ac18d58eb3ea70",
+  "key": "dlg.cargol.carnet3",
+  "who": "cargol"
+ },
+ "cargol4117437847": {
+  "hash": "e12eeb725bf91c36",
+  "key": "dlg.cargol.carnet2",
+  "who": "cargol"
+ },
+ "cargol4134215466": {
+  "hash": "32f1ab781cef7837",
+  "key": "dlg.cargol.carnet1",
+  "who": "cargol"
+ },
+ "cargol423166395": {
+  "hash": "7b3f9cc04716f8b9",
+  "key": "sala.fabrica_magatzem.cargol.empenyer1",
+  "who": "cargol"
+ },
+ "cargol_vell1018782319": {
+  "hash": "e34fa29c37a078b7",
+  "key": "sala.gavina_memoria.cargol_vell.res",
+  "who": "cargol_vell"
+ },
+ "cargol_vell117731120": {
+  "hash": "92e703078eb47829",
+  "key": "dlg.cargol_vell.hola",
+  "who": "cargol_vell"
+ },
+ "cargol_vell2564487272": {
+  "hash": "864539a5987015d3",
+  "key": "dlg.cargol_vell.peces2",
+  "who": "cargol_vell"
+ },
+ "cargol_vell2614820129": {
+  "hash": "f5d1b70807210b87",
+  "key": "dlg.cargol_vell.peces1",
+  "who": "cargol_vell"
+ },
+ "cargol_vell2726671568": {
+  "hash": "25d4ad1526a0671f",
+  "key": "sala.gavina_memoria.cargol_vell.sense_nom2",
+  "who": "cargol_vell"
+ },
+ "cargol_vell2777004425": {
+  "hash": "0a48581c61108a91",
+  "key": "sala.gavina_memoria.cargol_vell.sense_nom1",
+  "who": "cargol_vell"
+ },
+ "cargol_vell295617079": {
+  "hash": "883466fb984d906c",
+  "key": "sala.gavina_memoria.holograma.casc2",
+  "who": "cargol_vell"
+ },
+ "cargol_vell3087536910": {
+  "hash": "65cf794f3f5f25a3",
+  "key": "dlg.cargol_vell.recorda",
+  "who": "cargol_vell"
+ },
+ "cargol_vell3204341128": {
+  "hash": "dc9710e7ae833dfc",
+  "key": "sala.gavina_memoria.cargol_vell.placa2",
+  "who": "cargol_vell"
+ },
+ "cargol_vell3221118747": {
+  "hash": "e769293a3ea0b6bd",
+  "key": "sala.gavina_memoria.cargol_vell.placa3",
+  "who": "cargol_vell"
+ },
+ "cargol_vell3288229223": {
+  "hash": "f2b5e784f8c0d217",
+  "key": "sala.gavina_memoria.cargol_vell.placa7",
+  "who": "cargol_vell"
+ },
+ "cargol_vell3305006842": {
+  "hash": "7cfc6e14056ffbaf",
+  "key": "sala.gavina_memoria.cargol_vell.placa4",
+  "who": "cargol_vell"
+ },
+ "cargol_vell3321784461": {
+  "hash": "aa7483d406c6b366",
+  "key": "sala.gavina_memoria.cargol_vell.placa5",
+  "who": "cargol_vell"
+ },
+ "cargol_vell3670312358": {
+  "hash": "9db0910639284f56",
+  "key": "sala.gavina_memoria.vitrina.cargol",
+  "who": "cargol_vell"
+ },
+ "cargol_vell3867277510": {
+  "hash": "6a1fe3a72e8c3166",
+  "key": "sala.gavina_memoria.holograma.cafe2",
+  "who": "cargol_vell"
+ },
+ "cargol_vell4230625983": {
+  "hash": "8640d880f1650f26",
+  "key": "dlg.cargol_vell.primera1",
+  "who": "cargol_vell"
+ },
+ "cargol_vell4247403602": {
+  "hash": "b19fcbab1330dd2e",
+  "key": "dlg.cargol_vell.primera2",
+  "who": "cargol_vell"
+ },
+ "cargol_vell4263690813": {
+  "hash": "537dde93be248779",
+  "key": "dlg.cargol_vell.adeu",
+  "who": "cargol_vell"
+ },
+ "cargol_vell503502977": {
+  "hash": "2500ca2706e0494b",
+  "key": "sala.gavina_memoria.vitrina.cargol_recorda",
+  "who": "cargol_vell"
+ },
+ "cargol_vell568881683": {
+  "hash": "fd21c32516a60d72",
+  "key": "dlg.cargol_vell.qui2",
+  "who": "cargol_vell"
+ },
+ "cargol_vell585659302": {
+  "hash": "8acdf5e5d11f6b27",
+  "key": "dlg.cargol_vell.qui1",
+  "who": "cargol_vell"
+ },
+ "directora1036358960": {
+  "hash": "1f4e40be4af77db6",
+  "key": "dlg.directora.primera3",
+  "who": "directora"
+ },
+ "directora1053136579": {
+  "hash": "0b4e80a73efcb485",
+  "key": "dlg.directora.primera2",
+  "who": "directora"
+ },
+ "directora1069914198": {
+  "hash": "7ab7664ecd9a86d5",
+  "key": "dlg.directora.primera1",
+  "who": "directora"
+ },
+ "directora1079902182": {
+  "hash": "de948154465bf277",
+  "key": "sala.gavina_cella.reixa.fugir_altra1",
+  "who": "directora"
+ },
+ "directora1153802293": {
+  "hash": "c0e1773564bee871",
+  "key": "dlg.directora.primera4",
+  "who": "directora"
+ },
+ "directora1183648269": {
+  "hash": "a3f5b9ebff95554c",
+  "key": "dlg.directora.que_vol.3",
+  "who": "directora"
+ },
+ "directora1241934616": {
+  "hash": "ca0049378f2f971f",
+  "key": "sala.gavina_cella.panell.mapa3",
+  "who": "directora"
+ },
+ "directora1275489854": {
+  "hash": "71b09519f7fb1d5f",
+  "key": "sala.gavina_cella.panell.mapa1",
+  "who": "directora"
+ },
+ "directora1359377949": {
+  "hash": "faee746f109287e5",
+  "key": "sala.gavina_cella.panell.mapa4",
+  "who": "directora"
+ },
+ "directora1372566208": {
+  "hash": "07fa1c75fbc5289f",
+  "key": "dlg.directora.pacte2",
+  "who": "directora"
+ },
+ "directora1422899065": {
+  "hash": "3c44015b37c85e08",
+  "key": "dlg.directora.pacte1",
+  "who": "directora"
+ },
+ "directora1449572223": {
+  "hash": "309d11ba58d1ed99",
+  "key": "dlg.directora.no1",
+  "who": "directora"
+ },
+ "directora1466349842": {
+  "hash": "8bb92e0f19d8ef0e",
+  "key": "dlg.directora.no2",
+  "who": "directora"
+ },
+ "directora1560464920": {
+  "hash": "000beea3ecfd613a",
+  "key": "dlg.directora.adeu",
+  "who": "directora"
+ },
+ "directora1838856408": {
+  "hash": "25c04ba6671c9800",
+  "key": "dlg.directora.adeu_pacte",
+  "who": "directora"
+ },
+ "directora1935547537": {
+  "hash": "7d969292de6c4c4f",
+  "key": "dlg.directora.tub1",
+  "who": "directora"
+ },
+ "directora2273291651": {
+  "hash": "bd935dbcac40601b",
+  "key": "dlg.directora.tornada3",
+  "who": "directora"
+ },
+ "directora2306846889": {
+  "hash": "1d0cc23f352fdbd9",
+  "key": "dlg.directora.tornada1",
+  "who": "directora"
+ },
+ "directora2311311744": {
+  "hash": "eae62f4a37dc51cf",
+  "key": "sala.gavina_cella.panell.mos3",
+  "who": "directora"
+ },
+ "directora2411977458": {
+  "hash": "ffc251a0b3aaffd7",
+  "key": "sala.gavina_cella.panell.mos5",
+  "who": "directora"
+ },
+ "directora2651328161": {
+  "hash": "b9671d8e85025153",
+  "key": "sala.gavina_cella.reixa.fugir1",
+  "who": "directora"
+ },
+ "directora2682053420": {
+  "hash": "03593390f1546ac8",
+  "key": "sala.gavina_cella.tub1",
+  "who": "directora"
+ },
+ "directora2715608658": {
+  "hash": "5fb45cf620f697c8",
+  "key": "sala.gavina_cella.tub3",
+  "who": "directora"
+ },
+ "directora2837667739": {
+  "hash": "963d4b24b40eb88c",
+  "key": "dlg.directora.iri2",
+  "who": "directora"
+ },
+ "directora2854445358": {
+  "hash": "cad8f741d6b60611",
+  "key": "dlg.directora.iri1",
+  "who": "directora"
+ },
+ "directora3119223829": {
+  "hash": "1f076455d1fbabc9",
+  "key": "dlg.directora.hola",
+  "who": "directora"
+ },
+ "directora318548328": {
+  "hash": "8ef36c78f1b25f79",
+  "key": "dlg.directora.que_vol2",
+  "who": "directora"
+ },
+ "directora3400362913": {
+  "hash": "e63ec42340a2e988",
+  "key": "obj.nota_iri_nom.directora",
+  "who": "directora"
+ },
+ "directora3469673133": {
+  "hash": "a898e2f3caf23382",
+  "key": "sala.gavina_cella.panell.directora",
+  "who": "directora"
+ },
+ "directora368881185": {
+  "hash": "ba7ca8652939d9fc",
+  "key": "dlg.directora.que_vol1",
+  "who": "directora"
+ },
+ "directora4215295577": {
+  "hash": "31632d0b33e1d378",
+  "key": "dlg.directora.hola_pacte",
+  "who": "directora"
+ },
+ "directora5991876": {
+  "hash": "457333e2939dfcb9",
+  "key": "sala.gavina_cella.panell.pacte_res",
+  "who": "directora"
+ },
+ "guardia1425918083": {
+  "hash": "a8f7a2664b8680fe",
+  "key": "dlg.guardia.qui1",
+  "who": "guardia"
+ },
+ "guardia1442695702": {
+  "hash": "377bd07bdde1f874",
+  "key": "dlg.guardia.qui2",
+  "who": "guardia"
+ },
+ "guardia1456595060": {
+  "hash": "959d9f7295ffb6c1",
+  "key": "dlg.guardia.adeu",
+  "who": "guardia"
+ },
+ "guardia2401032231": {
+  "hash": "6e44883098191988",
+  "key": "dlg.guardia.primera2",
+  "who": "guardia"
+ },
+ "guardia2417809850": {
+  "hash": "5059cfbede4bfcdf",
+  "key": "dlg.guardia.primera1",
+  "who": "guardia"
+ },
+ "guardia2433289929": {
+  "hash": "18541c24f00571de",
+  "key": "dlg.guardia.hola",
+  "who": "guardia"
+ },
+ "guardia3978230120": {
+  "hash": "2d0140343b8d7c98",
+  "key": "dlg.guardia.vitrina2",
+  "who": "guardia"
+ },
+ "guardia4028562977": {
+  "hash": "6aa3a6049cba9485",
+  "key": "dlg.guardia.vitrina1",
+  "who": "guardia"
+ },
+ "guardia4072410307": {
+  "hash": "ee333f849bcb40dc",
+  "key": "dlg.guardia.fugitiva1",
+  "who": "guardia"
+ },
+ "guardia4089187926": {
+  "hash": "6d7b3743bf5324b2",
+  "key": "dlg.guardia.fugitiva2",
+  "who": "guardia"
+ },
+ "iri1008388899": {
+  "hash": "67b8606c2836d432",
+  "key": "sala.fabrica_conducte.revolt3",
+  "who": "iri"
+ },
+ "iri1012035822": {
+  "hash": "1cb6639b1545068b",
+  "key": "sala.fabrica_cambra.boto.accident2",
+  "who": "iri"
+ },
+ "iri1028813441": {
+  "hash": "1a132725f5757ee6",
+  "key": "sala.fabrica_cambra.boto.accident3",
+  "who": "iri"
+ },
+ "iri103135897": {
+  "hash": "9058e7d9153c1b4a",
+  "key": "finestra.espera.iri.tub_amb_llibreta",
+  "who": "iri"
+ },
+ "iri1031589355": {
+  "hash": "4f283e515ff37e29",
+  "key": "sala.fabrica_moll.conducte.look_mig",
+  "who": "iri"
+ },
+ "iri1041190804": {
+  "hash": "5cc48412bf10bae5",
+  "key": "sala.fabrica_conducte.enrere.look",
+  "who": "iri"
+ },
+ "iri1041944137": {
+  "hash": "8399781687bf11d3",
+  "key": "sala.fabrica_conducte.revolt1",
+  "who": "iri"
+ },
+ "iri1045591060": {
+  "hash": "1e1b0af9e99fb2f9",
+  "key": "sala.fabrica_cambra.boto.accident4",
+  "who": "iri"
+ },
+ "iri1048084127": {
+  "hash": "a129a0da3d84dfe9",
+  "key": "sala.fabrica_despatx.calaix.obrir1",
+  "who": "iri"
+ },
+ "iri1048449469": {
+  "hash": "5a963f5caf376a99",
+  "key": "dlg.cargol.memoria_iri",
+  "who": "iri"
+ },
+ "iri1064861746": {
+  "hash": "4dd70ad95a149cbb",
+  "key": "sala.fabrica_despatx.calaix.obrir2",
+  "who": "iri"
+ },
+ "iri1076436345": {
+  "hash": "00ef6fe11ee70954",
+  "key": "finestra.enviat.diapaso",
+  "who": "iri"
+ },
+ "iri1082510488": {
+  "hash": "21ec81b2ebd5d49d",
+  "key": "sala.fabrica_cambra.palanca.clau2",
+  "who": "iri"
+ },
+ "iri1087561235": {
+  "hash": "5a00b998ff1acb43",
+  "key": "dlg.sic.opt.adeu",
+  "who": "iri"
+ },
+ "iri1092276994": {
+  "hash": "ab95de8b85923ce9",
+  "key": "sala.fabrica_conducte.revolt4",
+  "who": "iri"
+ },
+ "iri1099288107": {
+  "hash": "a0924a7c9900d455",
+  "key": "sala.fabrica_cambra.palanca.clau3",
+  "who": "iri"
+ },
+ "iri1109054613": {
+  "hash": "a52ca9eb31ef4e63",
+  "key": "sala.fabrica_conducte.revolt5",
+  "who": "iri"
+ },
+ "iri1123366333": {
+  "hash": "a628f5cc88d15feb",
+  "key": "sala.fabrica_calderes.capatas.empenyer1",
+  "who": "iri"
+ },
+ "iri1132843345": {
+  "hash": "ce4e98faab4d30f9",
+  "key": "sala.fabrica_cambra.palanca.clau1",
+  "who": "iri"
+ },
+ "iri1136057139": {
+  "hash": "948ade646d941b3b",
+  "key": "sala.fabrica_moll.conducte.tancar2",
+  "who": "iri"
+ },
+ "iri1141718003": {
+  "hash": "4fdc306e58f02f85",
+  "key": "obj.nota_mida.desc",
+  "who": "iri"
+ },
+ "iri1147704924": {
+  "hash": "1a7330f46ad4e48e",
+  "key": "sala.fabrica_cambra.cambra.deixar_clau",
+  "who": "iri"
+ },
+ "iri1152834758": {
+  "hash": "fe7bd02c5bd6d757",
+  "key": "sala.fabrica_moll.conducte.tancar1",
+  "who": "iri"
+ },
+ "iri1168134359": {
+  "hash": "501d8de5e2a74959",
+  "key": "finestra.espera.iri.tram_biga_1",
+  "who": "iri"
+ },
+ "iri1181253798": {
+  "hash": "16e848ffb89befab",
+  "key": "dlg.sic.opt.que_passa",
+  "who": "iri"
+ },
+ "iri1183176202": {
+  "hash": "c9959fcca4cd6040",
+  "key": "sala.fabrica_cambra.palanca.clau4",
+  "who": "iri"
+ },
+ "iri1184911978": {
+  "hash": "c104b6c871e94902",
+  "key": "finestra.espera.iri.tram_biga_2",
+  "who": "iri"
+ },
+ "iri1186026654": {
+  "hash": "2fdf03fee56637f5",
+  "key": "sala.fabrica_calderes.capatas.parlar1",
+  "who": "iri"
+ },
+ "iri1186086209": {
+  "hash": "c6f129285322ac8b",
+  "key": "finestra.espera.iri.nota_iri_nom",
+  "who": "iri"
+ },
+ "iri1198348668": {
+  "hash": "2c72fcb505938420",
+  "key": "ui.defecte.give.iri",
+  "who": "iri"
+ },
+ "iri1201689597": {
+  "hash": "c9603dd379a28e9d",
+  "key": "finestra.espera.iri.tram_biga_3",
+  "who": "iri"
+ },
+ "iri1217388888": {
+  "hash": "33ee764f328d80e4",
+  "key": "obj.clau_vitrina.desc",
+  "who": "iri"
+ },
+ "iri1240045152": {
+  "hash": "e7c5322e560b4102",
+  "key": "finestra.tret",
+  "who": "iri"
+ },
+ "iri1267233729": {
+  "hash": "fcdf9155f1469707",
+  "key": "obj.llapis_ulls.desc",
+  "who": "iri"
+ },
+ "iri1269402782": {
+  "hash": "ca0da6620585a500",
+  "key": "finestra.buida",
+  "who": "iri"
+ },
+ "iri1287559845": {
+  "hash": "31247a5e6f8ae107",
+  "key": "sala.fabrica_despatx.llibre.look",
+  "who": "iri"
+ },
+ "iri1302300187": {
+  "hash": "35beb45341662c7c",
+  "key": "finestra.armat_buit",
+  "who": "iri"
+ },
+ "iri1304524274": {
+  "hash": "15c5335c5c94a975",
+  "key": "obj.tram_biga.falta",
+  "who": "iri"
+ },
+ "iri131009064": {
+  "hash": "467af589cbe6558b",
+  "key": "obj.llapis.resposta2",
+  "who": "iri"
+ },
+ "iri1319879212": {
+  "hash": "998b753d8a724eda",
+  "key": "sala.fabrica_cambra.reixa.cargolada",
+  "who": "iri"
+ },
+ "iri1324470353": {
+  "hash": "b681eb2273b4a945",
+  "key": "finestra.rebut.nota_pressio",
+  "who": "iri"
+ },
+ "iri133419137": {
+  "hash": "dcd82658125d90a5",
+  "key": "finestra.rebut.nota_vet",
+  "who": "iri"
+ },
+ "iri1341073665": {
+  "hash": "29e6253206d08cb9",
+  "key": "ui.defecte.open.iri",
+  "who": "iri"
+ },
+ "iri1380457250": {
+  "hash": "6c0e65970edaae0a",
+  "key": "sala.fabrica_cambra.boto.look",
+  "who": "iri"
+ },
+ "iri1383744024": {
+  "hash": "6fab30282562f4f7",
+  "key": "obj.nota_amagatall.desc",
+  "who": "iri"
+ },
+ "iri1384486456": {
+  "hash": "d2481d7730c907d5",
+  "key": "sala.fabrica_calderes.intro2",
+  "who": "iri"
+ },
+ "iri138708000": {
+  "hash": "749201beb7a3558c",
+  "key": "obj.llapis_ulls.encara_no",
+  "who": "iri"
+ },
+ "iri1392717192": {
+  "hash": "d3a52703a8159c8e",
+  "key": "finestra.rebut_res",
+  "who": "iri"
+ },
+ "iri1395128788": {
+  "hash": "1fb7c2f76cc923fe",
+  "key": "sala.fabrica_cambra.tornar1",
+  "who": "iri"
+ },
+ "iri140015766": {
+  "hash": "f1d66f12d8688772",
+  "key": "dlg.cargol.carnet_iri",
+  "who": "iri"
+ },
+ "iri1401264075": {
+  "hash": "4353270d4a9a44eb",
+  "key": "sala.fabrica_calderes.intro3",
+  "who": "iri"
+ },
+ "iri1408196441": {
+  "hash": "4cc06432f8446938",
+  "key": "sala.fabrica_conducte_revolt.arribada",
+  "who": "iri"
+ },
+ "iri1414025413": {
+  "hash": "f8005b63a9b7e38a",
+  "key": "obj.formulari_27be.desc",
+  "who": "iri"
+ },
+ "iri1421932728": {
+  "hash": "5f523cdf7d048ad7",
+  "key": "obj.biga_acer.desc",
+  "who": "iri"
+ },
+ "iri1427033260": {
+  "hash": "b2e449a82de886a9",
+  "key": "ui.defecte.give.iri.2",
+  "who": "iri"
+ },
+ "iri1428165178": {
+  "hash": "798fd3dc1eaf1b6f",
+  "key": "obj.nota_pressio.iri_filtres",
+  "who": "iri"
+ },
+ "iri1438780452": {
+  "hash": "d6e4abd81ffc31bb",
+  "key": "obj.escarabat.parlar",
+  "who": "iri"
+ },
+ "iri1441594354": {
+  "hash": "e632ebf3ee4c0d2f",
+  "key": "sala.fabrica_cambra.cambra.diapaso_no",
+  "who": "iri"
+ },
+ "iri1443810879": {
+  "hash": "f524d6c95e4e8669",
+  "key": "ui.defecte.give.iri.3",
+  "who": "iri"
+ },
+ "iri1445030444": {
+  "hash": "eb50030c6cdc22a7",
+  "key": "sala.fabrica_moll.trapa.buida",
+  "who": "iri"
+ },
+ "iri1445461645": {
+  "hash": "81bc1766fc05b7f0",
+  "key": "sala.fabrica_cambra.tornar2",
+  "who": "iri"
+ },
+ "iri1451512989": {
+  "hash": "f3c408963b93bff1",
+  "key": "ui.defecte.push.iri",
+  "who": "iri"
+ },
+ "iri1454602636": {
+  "hash": "03ea07f8c14d022f",
+  "key": "finestra.espera.iri.imant_ferro9",
+  "who": "iri"
+ },
+ "iri1462772303": {
+  "hash": "1f587817711b9405",
+  "key": "obj.molla.iri",
+  "who": "iri"
+ },
+ "iri1470007598": {
+  "hash": "72b83af1d5103232",
+  "key": "ui.defecte.pull.iri.2",
+  "who": "iri"
+ },
+ "iri147860619": {
+  "hash": "7661c0a1a7e6fff1",
+  "key": "obj.molla.arronsar",
+  "who": "iri"
+ },
+ "iri1485660008": {
+  "hash": "fccb12e5fdecd65c",
+  "key": "sala.fabrica_cambra.reixa.llimar1",
+  "who": "iri"
+ },
+ "iri1486785217": {
+  "hash": "039f54deed98a248",
+  "key": "ui.defecte.pull.iri.3",
+  "who": "iri"
+ },
+ "iri1497303286": {
+  "hash": "7f186bdac99b71ef",
+  "key": "sala.fabrica_calderes.porta_magatzem.look",
+  "who": "iri"
+ },
+ "iri1535992865": {
+  "hash": "548405d8c400c24c",
+  "key": "sala.fabrica_cambra.reixa.llimar2",
+  "who": "iri"
+ },
+ "iri1546648672": {
+  "hash": "c195e01c885d081b",
+  "key": "sala.fabrica_conducte.formulari.look",
+  "who": "iri"
+ },
+ "iri1547576745": {
+  "hash": "4a5eb2e89c951695",
+  "key": "obj.segell.formulari",
+  "who": "iri"
+ },
+ "iri1550565331": {
+  "hash": "5d01f0dcacd8ae59",
+  "key": "obj.notes_perdudes.look",
+  "who": "iri"
+ },
+ "iri1556435426": {
+  "hash": "7bb126c2f567f01d",
+  "key": "obj.caixa_eines.desc",
+  "who": "iri"
+ },
+ "iri1557392535": {
+  "hash": "d6ca5842bc24ee52",
+  "key": "sala.fabrica_moll.llancadora.look",
+  "who": "iri"
+ },
+ "iri1561848787": {
+  "hash": "95e702af1e6c4dc1",
+  "key": "obj.llapis_ulls.massa",
+  "who": "iri"
+ },
+ "iri1575200356": {
+  "hash": "b57c49561db748c8",
+  "key": "sala.fabrica_cambra.palanca.look",
+  "who": "iri"
+ },
+ "iri1577143560": {
+  "hash": "9375af718edd425b",
+  "key": "sala.fabrica_moll.llancadora.fugir1",
+  "who": "iri"
+ },
+ "iri1581711995": {
+  "hash": "c389cd81ba16527f",
+  "key": "obj.fitxa_mira.vet_canvi2",
+  "who": "iri"
+ },
+ "iri1586332145": {
+  "hash": "188797317a81c0a0",
+  "key": "sala.fabrica_moll.llancadora.tocar",
+  "who": "iri"
+ },
+ "iri1598489614": {
+  "hash": "523abef1df0ad977",
+  "key": "obj.fitxa_mira.vet_canvi1",
+  "who": "iri"
+ },
+ "iri1600279264": {
+  "hash": "f167c83e00c59255",
+  "key": "obj.formulari_segellat.desc",
+  "who": "iri"
+ },
+ "iri1610698798": {
+  "hash": "cce3f66ebe9926cb",
+  "key": "sala.fabrica_moll.llancadora.fugir3",
+  "who": "iri"
+ },
+ "iri1613227907": {
+  "hash": "a95ca7da94ba4bc6",
+  "key": "obj.escarabat.desc",
+  "who": "iri"
+ },
+ "iri1625536514": {
+  "hash": "5069916de4bd058f",
+  "key": "sala.fabrica_moll.trapa.amagar_acer",
+  "who": "iri"
+ },
+ "iri1627476417": {
+  "hash": "56f2d14ac050788f",
+  "key": "sala.fabrica_moll.llancadora.fugir2",
+  "who": "iri"
+ },
+ "iri1632539932": {
+  "hash": "a2bb0c1da1f81d35",
+  "key": "sala.fabrica_despatx.expedient.confessar2",
+  "who": "iri"
+ },
+ "iri164961328": {
+  "hash": "3e351feb2473e567",
+  "key": "sala.fabrica_moll.serrar2",
+  "who": "iri"
+ },
+ "iri1657451878": {
+  "hash": "31e0d6b5416e5f91",
+  "key": "ui.defecte.look.iri.2",
+  "who": "iri"
+ },
+ "iri1666560855": {
+  "hash": "e8115d04139c8fb9",
+  "key": "obj.nota_massa.iri1",
+  "who": "iri"
+ },
+ "iri1674229497": {
+  "hash": "e6027e2fbd0f264b",
+  "key": "ui.defecte.look.iri.3",
+  "who": "iri"
+ },
+ "iri167515324": {
+  "hash": "b3ecfb1333e70391",
+  "key": "sala.fabrica_calderes.capatas.estirar3",
+  "who": "iri"
+ },
+ "iri1677676720": {
+  "hash": "ac01269068de92fb",
+  "key": "obj.nota_pany.iri3",
+  "who": "iri"
+ },
+ "iri1682872789": {
+  "hash": "317e419e0843ee71",
+  "key": "sala.fabrica_despatx.expedient.confessar1",
+  "who": "iri"
+ },
+ "iri1683338474": {
+  "hash": "d34506b757ba49d6",
+  "key": "obj.nota_massa.iri2",
+  "who": "iri"
+ },
+ "iri1687969962": {
+  "hash": "8e7b8ae254569e84",
+  "key": "obj.plomall.desc",
+  "who": "iri"
+ },
+ "iri1694454339": {
+  "hash": "216ff9f87298e1ac",
+  "key": "obj.nota_pany.iri2",
+  "who": "iri"
+ },
+ "iri1711231958": {
+  "hash": "8a70670c1bd92420",
+  "key": "obj.nota_pany.iri1",
+  "who": "iri"
+ },
+ "iri1715484856": {
+  "hash": "0996ffbc81c52da2",
+  "key": "obj.llapis.nom1",
+  "who": "iri"
+ },
+ "iri1716312333": {
+  "hash": "da6e6d62e7052f9f",
+  "key": "finestra.rebut",
+  "who": "iri"
+ },
+ "iri172801546": {
+  "hash": "260e83d9ff84d29e",
+  "key": "dlg.sic.opt.passar",
+  "who": "iri"
+ },
+ "iri1739950782": {
+  "hash": "afe411a503e0dbed",
+  "key": "obj.mapa_fuga.desc",
+  "who": "iri"
+ },
+ "iri1741118004": {
+  "hash": "00526ee3537c3319",
+  "key": "obj.fullet_memoria.desc",
+  "who": "iri"
+ },
+ "iri1749466963": {
+  "hash": "c1535b34f4ff258c",
+  "key": "sala.fabrica_conducte.formulari.agafar",
+  "who": "iri"
+ },
+ "iri1765817713": {
+  "hash": "d5a78965dc3c8c51",
+  "key": "obj.llapis.nom2",
+  "who": "iri"
+ },
+ "iri1788815807": {
+  "hash": "90580776d56f90f2",
+  "key": "finestra.rebut.nota_mida",
+  "who": "iri"
+ },
+ "iri1795061950": {
+  "hash": "2b253911f5fc08fe",
+  "key": "sala.fabrica_moll.trapa.look",
+  "who": "iri"
+ },
+ "iri1797967388": {
+  "hash": "b417dd87510323d4",
+  "key": "obj.llapis_ulls.nom2",
+  "who": "iri"
+ },
+ "iri1802032148": {
+  "hash": "5566100440450361",
+  "key": "sala.fabrica_moll.biga_ferro9.robar2",
+  "who": "iri"
+ },
+ "iri1805589875": {
+  "hash": "20cb9dcb4037e122",
+  "key": "obj.pols_rovell.iri2",
+  "who": "iri"
+ },
+ "iri181341921": {
+  "hash": "9d2998ff41559c09",
+  "key": "obj.llapis.resposta1",
+  "who": "iri"
+ },
+ "iri1816499915": {
+  "hash": "cf5fe606b5ad5f3c",
+  "key": "sala.fabrica_magatzem.mira_absent1",
+  "who": "iri"
+ },
+ "iri1818809767": {
+  "hash": "d9d64803544b3183",
+  "key": "sala.fabrica_moll.biga_ferro9.robar3",
+  "who": "iri"
+ },
+ "iri1822367494": {
+  "hash": "6bab7502b0e048fb",
+  "key": "obj.pols_rovell.iri1",
+  "who": "iri"
+ },
+ "iri1833277534": {
+  "hash": "4dc2693d8c4a01e7",
+  "key": "sala.fabrica_magatzem.mira_absent2",
+  "who": "iri"
+ },
+ "iri1848300245": {
+  "hash": "f992d8f5ab1d64f6",
+  "key": "obj.llapis_ulls.nom1",
+  "who": "iri"
+ },
+ "iri1852365005": {
+  "hash": "079814b040050b89",
+  "key": "sala.fabrica_moll.biga_ferro9.robar1",
+  "who": "iri"
+ },
+ "iri1856764265": {
+  "hash": "af41061f781fb4f0",
+  "key": "obj.placa_cargol.vet_buida",
+  "who": "iri"
+ },
+ "iri1865715257": {
+  "hash": "48b95c024e407c33",
+  "key": "obj.nota_mos.desc",
+  "who": "iri"
+ },
+ "iri1869323993": {
+  "hash": "a96baaffffa91b24",
+  "key": "obj.llapis_ulls.mapa_tub",
+  "who": "iri"
+ },
+ "iri1884690563": {
+  "hash": "9f741f7194165121",
+  "key": "obj.fitxa_mira.vet",
+  "who": "iri"
+ },
+ "iri18916907": {
+  "hash": "51b3f10cfbb242ed",
+  "key": "obj.segell.desc",
+  "who": "iri"
+ },
+ "iri1915542341": {
+  "hash": "919804fb94451131",
+  "key": "sala.fabrica_moll.biga_ferro9.look",
+  "who": "iri"
+ },
+ "iri1934244878": {
+  "hash": "c79e677f7e3db97e",
+  "key": "sala.fabrica_moll.conducte.ja_tancada",
+  "who": "iri"
+ },
+ "iri1966684593": {
+  "hash": "f4f4b48100122d7d",
+  "key": "sala.fabrica.descoberta_cambra",
+  "who": "iri"
+ },
+ "iri1970140518": {
+  "hash": "9a88454e95c1afae",
+  "key": "sala.fabrica_calderes.segell.agafar",
+  "who": "iri"
+ },
+ "iri1971849852": {
+  "hash": "689775772a968ab2",
+  "key": "obj.mapa_fuga.conducte",
+  "who": "iri"
+ },
+ "iri198457908": {
+  "hash": "1e61b5a685067947",
+  "key": "sala.fabrica_moll.llima.agafar",
+  "who": "iri"
+ },
+ "iri201070562": {
+  "hash": "8f63c4ba708a2a94",
+  "key": "sala.fabrica_calderes.capatas.estirar1",
+  "who": "iri"
+ },
+ "iri2012580779": {
+  "hash": "bd38a413ef4f08bc",
+  "key": "sala.fabrica_moll.llima.look",
+  "who": "iri"
+ },
+ "iri20188921": {
+  "hash": "5e7491b57fd935ba",
+  "key": "ui.defecte",
+  "who": "iri"
+ },
+ "iri2019414244": {
+  "hash": "e6fe80f51d8a63f7",
+  "key": "finestra.rebut.pols_rovell",
+  "who": "iri"
+ },
+ "iri2025941173": {
+  "hash": "325d434a3797c96a",
+  "key": "ui.defecte.pickUp.iri",
+  "who": "iri"
+ },
+ "iri2032776778": {
+  "hash": "126b3331830fff53",
+  "key": "finestra.ja_armat",
+  "who": "iri"
+ },
+ "iri2052290519": {
+  "hash": "693008436491649e",
+  "key": "finestra.rebuig.no_cal_iri_res",
+  "who": "iri"
+ },
+ "iri2056140267": {
+  "hash": "97e39107d8e2d71d",
+  "key": "sala.fabrica_moll.biga_acer.serra_no",
+  "who": "iri"
+ },
+ "iri2057736403": {
+  "hash": "9631eb9c114eaafd",
+  "key": "ui.defecte.close",
+  "who": "iri"
+ },
+ "iri2066133651": {
+  "hash": "0e805bc2f88864bd",
+  "key": "sala.fabrica_calderes.porta_cambra.tancada",
+  "who": "iri"
+ },
+ "iri2081561365": {
+  "hash": "66e62e9c9dc3592e",
+  "key": "sala.fabrica_moll.llancadora.look_fugir",
+  "who": "iri"
+ },
+ "iri210308247": {
+  "hash": "bdea1eb89fdcb578",
+  "key": "sala.fabrica_moll.conducte.ja_oberta",
+  "who": "iri"
+ },
+ "iri2104686613": {
+  "hash": "1ae46d46f7647a21",
+  "key": "sala.fabrica_cambra.parpelleja",
+  "who": "iri"
+ },
+ "iri2120967933": {
+  "hash": "f581af3fd765c23c",
+  "key": "sala.fabrica_despatx.expedient.obert_iri",
+  "who": "iri"
+ },
+ "iri2140124377": {
+  "hash": "dc1b81d05b867de8",
+  "key": "ui.defecte.open",
+  "who": "iri"
+ },
+ "iri2140410479": {
+  "hash": "8ee8472d5fb36fca",
+  "key": "obj.placa_cargol.desc",
+  "who": "iri"
+ },
+ "iri215294185": {
+  "hash": "e8d08c44c898eeed",
+  "key": "sala.fabrica_moll.serrar1",
+  "who": "iri"
+ },
+ "iri2158598905": {
+  "hash": "09ebcf811562219b",
+  "key": "sala.fabrica_magatzem.caixa.agafar",
+  "who": "iri"
+ },
+ "iri2173998478": {
+  "hash": "29a4e6ec1882c892",
+  "key": "obj.serra.desc",
+  "who": "iri"
+ },
+ "iri2175810578": {
+  "hash": "fe59bb5d5d5c7711",
+  "key": "sala.fabrica_moll.pilar.look_mida",
+  "who": "iri"
+ },
+ "iri2186389853": {
+  "hash": "391b92d980a73a0d",
+  "key": "sala.fabrica_moll.pilar.look_marca",
+  "who": "iri"
+ },
+ "iri2189942961": {
+  "hash": "861b8f15bb45436b",
+  "key": "sala.fabrica_conducte.recte.anar",
+  "who": "iri"
+ },
+ "iri2197101317": {
+  "hash": "e82fd2243e450d22",
+  "key": "sala.fabrica_magatzem.porta_despatx.reunio",
+  "who": "iri"
+ },
+ "iri2202322015": {
+  "hash": "836f6a3db1776fd6",
+  "key": "sala.fabrica_moll.pilar.gravar1",
+  "who": "iri"
+ },
+ "iri2219099634": {
+  "hash": "3ada42181fb090e3",
+  "key": "sala.fabrica_moll.pilar.gravar2",
+  "who": "iri"
+ },
+ "iri225522438": {
+  "hash": "027d8ae5ca1ee7e5",
+  "key": "finestra.enviat.nota_iri_nom",
+  "who": "iri"
+ },
+ "iri2264466193": {
+  "hash": "aca7b8e04cf9a8b4",
+  "key": "obj.llapis_ulls.mida",
+  "who": "iri"
+ },
+ "iri2271319886": {
+  "hash": "fabc44afefcdaa67",
+  "key": "obj.carta_mos.desc",
+  "who": "iri"
+ },
+ "iri2276605390": {
+  "hash": "9c88cdb123e466b6",
+  "key": "obj.avis_reciclatge.desc",
+  "who": "iri"
+ },
+ "iri2288657488": {
+  "hash": "8966d537399e6ed4",
+  "key": "sala.fabrica_moll.trapa.amagar_ferro9",
+  "who": "iri"
+ },
+ "iri2292805926": {
+  "hash": "89083ddda8b1b3e3",
+  "key": "sala.fabrica_magatzem.cargol.look_revisio",
+  "who": "iri"
+ },
+ "iri2304266754": {
+  "hash": "c331b349a78bf1d8",
+  "key": "obj.notes_perdudes.look_una",
+  "who": "iri"
+ },
+ "iri2310904505": {
+  "hash": "c3f4e91275234514",
+  "key": "obj.llibreta_torn.iri2_abans",
+  "who": "iri"
+ },
+ "iri2317043052": {
+  "hash": "37d646b8658758b9",
+  "key": "obj.fitxa_mira.vet_acusada",
+  "who": "iri"
+ },
+ "iri2334611936": {
+  "hash": "b3f4de2c220d1d0f",
+  "key": "obj.nota_vet_nom.iri2_sense",
+  "who": "iri"
+ },
+ "iri2343082509": {
+  "hash": "87c6d19f9f374e19",
+  "key": "sala.fabrica_cambra.cambra.tub_sol",
+  "who": "iri"
+ },
+ "iri2346940852": {
+  "hash": "ea0dffd400b83e36",
+  "key": "sala.fabrica_calderes.tauler.look2",
+  "who": "iri"
+ },
+ "iri2356100379": {
+  "hash": "0852946d7d936d6d",
+  "key": "sala.fabrica.descoberta3",
+  "who": "iri"
+ },
+ "iri2360261900": {
+  "hash": "0a44984fa425bef5",
+  "key": "obj.planols.desc",
+  "who": "iri"
+ },
+ "iri2366800786": {
+  "hash": "d88d243d0b05ca11",
+  "key": "sala.fabrica_conducte_revolt.fugir",
+  "who": "iri"
+ },
+ "iri2370666468": {
+  "hash": "d7322b63d8f156bf",
+  "key": "ui.defecte.use.iri",
+  "who": "iri"
+ },
+ "iri2375303073": {
+  "hash": "6d686bcd2b65e1a0",
+  "key": "sala.fabrica_magatzem.mira.look",
+  "who": "iri"
+ },
+ "iri2381880269": {
+  "hash": "1780d5bcadd7677a",
+  "key": "finestra.boto_automatic",
+  "who": "iri"
+ },
+ "iri2397273709": {
+  "hash": "00ad34f764975f22",
+  "key": "sala.fabrica_calderes.tauler.look1",
+  "who": "iri"
+ },
+ "iri2399219236": {
+  "hash": "a54e3e1f0f9787c5",
+  "key": "finestra.espera.iri.nota_iri",
+  "who": "iri"
+ },
+ "iri240046641": {
+  "hash": "f34c13538ef47c40",
+  "key": "obj.fitxa_mira.desc",
+  "who": "iri"
+ },
+ "iri242475996": {
+  "hash": "9fc9e9fe560d0362",
+  "key": "sala.fabrica_cambra.palanca.encallada",
+  "who": "iri"
+ },
+ "iri2434414068": {
+  "hash": "bb6aa17b902ed94f",
+  "key": "obj.llibreta_torn.iri_glossari_zerog",
+  "who": "iri"
+ },
+ "iri244618050": {
+  "hash": "ac3b51c5ec8b7e56",
+  "key": "sala.fabrica_cambra.cambra.imant_no",
+  "who": "iri"
+ },
+ "iri2449154476": {
+  "hash": "239fd4239d1bdf6d",
+  "key": "obj.clau_anglesa.desc",
+  "who": "iri"
+ },
+ "iri2458729673": {
+  "hash": "260a56a89e82afed",
+  "key": "sala.fabrica_moll.comporta.look",
+  "who": "iri"
+ },
+ "iri2469224066": {
+  "hash": "207d5825d62c676f",
+  "key": "finestra.rebuig.no_cal_iri",
+  "who": "iri"
+ },
+ "iri247244412": {
+  "hash": "63552fde007a647f",
+  "key": "obj.tub_ferro9.desc",
+  "who": "iri"
+ },
+ "iri2549207289": {
+  "hash": "4e40e97de141a812",
+  "key": "obj.molla.afinada",
+  "who": "iri"
+ },
+ "iri2563994404": {
+  "hash": "896fce7d41f9044b",
+  "key": "dlg.sic.opt.director",
+  "who": "iri"
+ },
+ "iri2567532729": {
+  "hash": "022dee32e44449c1",
+  "key": "sala.fabrica_moll.intro",
+  "who": "iri"
+ },
+ "iri2589007456": {
+  "hash": "9dc4a6b0e33b238b",
+  "key": "sala.fabrica_calderes.capatas.look2",
+  "who": "iri"
+ },
+ "iri2594897517": {
+  "hash": "4da93d2f65714020",
+  "key": "sala.fabrica_cambra.reixa.per_que",
+  "who": "iri"
+ },
+ "iri2595951559": {
+  "hash": "04cc01ab4e69ce1d",
+  "key": "obj.nota_massa.desc",
+  "who": "iri"
+ },
+ "iri2607692500": {
+  "hash": "976d0f662f77db99",
+  "key": "obj.diapaso.greu",
+  "who": "iri"
+ },
+ "iri2628103563": {
+  "hash": "d8e2037874649916",
+  "key": "sala.fabrica_magatzem.plomall.agafar1",
+  "who": "iri"
+ },
+ "iri2636426988": {
+  "hash": "a073653baa587fe4",
+  "key": "finestra.enviat",
+  "who": "iri"
+ },
+ "iri2636996996": {
+  "hash": "1e61b5a685067947",
+  "key": "obj.llima.desc",
+  "who": "iri"
+ },
+ "iri2638937591": {
+  "hash": "04cc01ab4e69ce1d",
+  "key": "obj.nota_pressio.desc",
+  "who": "iri"
+ },
+ "iri2639340313": {
+  "hash": "f0bd12ebfba39bf8",
+  "key": "sala.fabrica_calderes.capatas.look1",
+  "who": "iri"
+ },
+ "iri2643692543": {
+  "hash": "7a00236695c7c2d7",
+  "key": "finestra.enviat.imant_ferro9",
+  "who": "iri"
+ },
+ "iri2661210333": {
+  "hash": "94570260093bc8a6",
+  "key": "obj.llapis.res",
+  "who": "iri"
+ },
+ "iri2698851813": {
+  "hash": "e031654353245b78",
+  "key": "dlg.cargol.opt.fabrica",
+  "who": "iri"
+ },
+ "iri2713771007": {
+  "hash": "29eaf8d0d4935543",
+  "key": "obj.llapis_ulls.pressio",
+  "who": "iri"
+ },
+ "iri2715637868": {
+  "hash": "585f13dcaa97d304",
+  "key": "obj.imant_ferro9.desc",
+  "who": "iri"
+ },
+ "iri27492692": {
+  "hash": "c67c288c101b0a17",
+  "key": "sala.fabrica_despatx.expedient.mira_iri",
+  "who": "iri"
+ },
+ "iri2756720065": {
+  "hash": "504b766b8d42fd44",
+  "key": "obj.escarabat.look",
+  "who": "iri"
+ },
+ "iri2781909873": {
+  "hash": "70fb91671681b225",
+  "key": "sala.fabrica_moll.trapa.ferro9_amagada",
+  "who": "iri"
+ },
+ "iri2783374963": {
+  "hash": "4abfba8bfda428d9",
+  "key": "ui.defecte.close.iri",
+  "who": "iri"
+ },
+ "iri2785193881": {
+  "hash": "3738a01d88442b4d",
+  "key": "sala.fabrica_calderes.capatas.objecte",
+  "who": "iri"
+ },
+ "iri2791630681": {
+  "hash": "352f7030da51a2fe",
+  "key": "obj.molla.estirar",
+  "who": "iri"
+ },
+ "iri2806117557": {
+  "hash": "461ba6c932dc3c2b",
+  "key": "sala.fabrica_cambra.cambra.buida_despres",
+  "who": "iri"
+ },
+ "iri2812424320": {
+  "hash": "c4adc5c37d4381bf",
+  "key": "sala.fabrica_cambra.reixa.encara_no",
+  "who": "iri"
+ },
+ "iri2822213206": {
+  "hash": "02ba4619f69ea564",
+  "key": "ui.defecte.pull.iri",
+  "who": "iri"
+ },
+ "iri2826661868": {
+  "hash": "945ba70ad33b244d",
+  "key": "finestra.rebuig.no_cal_iri_abans",
+  "who": "iri"
+ },
+ "iri2830113504": {
+  "hash": "5eedec4fe611c566",
+  "key": "obj.llima.llimar",
+  "who": "iri"
+ },
+ "iri2850429462": {
+  "hash": "d51383a257effd83",
+  "key": "obj.biga_ferro9.desc",
+  "who": "iri"
+ },
+ "iri2860910876": {
+  "hash": "b6a6dc7dcb4f3554",
+  "key": "sala.fabrica_cambra.reixa.ja_llimada",
+  "who": "iri"
+ },
+ "iri2865061857": {
+  "hash": "b77580e3b524538c",
+  "key": "obj.notes_perdudes.desc",
+  "who": "iri"
+ },
+ "iri288393674": {
+  "hash": "409a89df8526b846",
+  "key": "finestra.posat",
+  "who": "iri"
+ },
+ "iri2900875197": {
+  "hash": "81810b63851ff31b",
+  "key": "finestra.esgotada",
+  "who": "iri"
+ },
+ "iri2906873636": {
+  "hash": "884a3e69a575cf66",
+  "key": "ui.defecte.use.iri.2",
+  "who": "iri"
+ },
+ "iri2907986088": {
+  "hash": "d3abb6bdcd9c44ba",
+  "key": "obj.diapaso.look_afinat",
+  "who": "iri"
+ },
+ "iri2923553777": {
+  "hash": "bd98ad3c4ca12cec",
+  "key": "sala.fabrica_cambra.reixa.look_mapa",
+  "who": "iri"
+ },
+ "iri2923651255": {
+  "hash": "b0aa8876cc480ee6",
+  "key": "ui.defecte.use.iri.3",
+  "who": "iri"
+ },
+ "iri2927780655": {
+  "hash": "fdbc14be8d1c87d1",
+  "key": "obj.molla.iri_zerog",
+  "who": "iri"
+ },
+ "iri2938232209": {
+  "hash": "49bcf365f5b84b75",
+  "key": "obj.carnet_exemplar.desc",
+  "who": "iri"
+ },
+ "iri2961164950": {
+  "hash": "ff7838b7924cc2e8",
+  "key": "sala.fabrica_cambra.reixa.look_llimada",
+  "who": "iri"
+ },
+ "iri2963196176": {
+  "hash": "9f4b15fbc6e84630",
+  "key": "obj.nota_vet_nom.iri1",
+  "who": "iri"
+ },
+ "iri2970220604": {
+  "hash": "eca7fe6cde42ebd3",
+  "key": "ui.defecte.close.iri.3",
+  "who": "iri"
+ },
+ "iri297591785": {
+  "hash": "4059bfaf3ac5e86d",
+  "key": "sala.fabrica_calderes.alarma.apagada",
+  "who": "iri"
+ },
+ "iri2986998223": {
+  "hash": "0fa69aef0dc4f128",
+  "key": "ui.defecte.close.iri.2",
+  "who": "iri"
+ },
+ "iri2992629136": {
+  "hash": "34d9ec22c798be37",
+  "key": "obj.nota_vet_nom.desc",
+  "who": "iri"
+ },
+ "iri2998532682": {
+  "hash": "c655630a46536e70",
+  "key": "dlg.cargol.opt.carnet_lliurar",
+  "who": "iri"
+ },
+ "iri2999781621": {
+  "hash": "b1f7c1bdb5c820cf",
+  "key": "sala.fabrica_moll.serra.look",
+  "who": "iri"
+ },
+ "iri3013529033": {
+  "hash": "6ff55a0799357064",
+  "key": "obj.nota_vet_nom.iri2",
+  "who": "iri"
+ },
+ "iri3031110421": {
+  "hash": "785c05823257da3b",
+  "key": "sala.fabrica_calderes.segell.look",
+  "who": "iri"
+ },
+ "iri3033602625": {
+  "hash": "4c491f91cd8561cc",
+  "key": "sala.fabrica_despatx.expedient.falsificat_iri",
+  "who": "iri"
+ },
+ "iri3051966401": {
+  "hash": "110c3ac688ba2e2e",
+  "key": "sala.fabrica_moll.pilar.res_a_dir",
+  "who": "iri"
+ },
+ "iri305939288": {
+  "hash": "1f16b6e09393c2de",
+  "key": "finestra.espera.iri.diapaso",
+  "who": "iri"
+ },
+ "iri307612522": {
+  "hash": "7d5ccec1f871e91b",
+  "key": "dlg.cargol.opt.carnet",
+  "who": "iri"
+ },
+ "iri3076788918": {
+  "hash": "c97d5f0af8c02cec",
+  "key": "ui.defecte.pickUp.iri.3",
+  "who": "iri"
+ },
+ "iri3081063249": {
+  "hash": "0506793e39dd9ba0",
+  "key": "dlg.sic.opt.enganyar",
+  "who": "iri"
+ },
+ "iri3085373448": {
+  "hash": "c4e02e468934e14f",
+  "key": "obj.llapis.amagatall1",
+  "who": "iri"
+ },
+ "iri308849344": {
+  "hash": "6b8e7afb30a6832d",
+  "key": "obj.llapis_ulls.nota",
+  "who": "iri"
+ },
+ "iri3089590365": {
+  "hash": "2cb42f1be90892a2",
+  "key": "sala.fabrica_despatx.retrat.look",
+  "who": "iri"
+ },
+ "iri3093566537": {
+  "hash": "a9943df4ba691a54",
+  "key": "ui.defecte.pickUp.iri.2",
+  "who": "iri"
+ },
+ "iri3106715236": {
+  "hash": "6756cf823ab1c63c",
+  "key": "obj.tram_biga_2.desc",
+  "who": "iri"
+ },
+ "iri3115284783": {
+  "hash": "6756cf823ab1c63c",
+  "key": "obj.tram_biga_1.desc",
+  "who": "iri"
+ },
+ "iri3118181941": {
+  "hash": "fd3a62e79a33209c",
+  "key": "sala.fabrica_despatx.calaix.look",
+  "who": "iri"
+ },
+ "iri3131792259": {
+  "hash": "de602985eb0a1bf6",
+  "key": "finestra.enviat.nota_amagatall",
+  "who": "iri"
+ },
+ "iri313192024": {
+  "hash": "724b09f5dd5d6137",
+  "key": "obj.llapis_ulls.pany2",
+  "who": "iri"
+ },
+ "iri3135706305": {
+  "hash": "9d9feab26ab18f58",
+  "key": "obj.llapis.amagatall2",
+  "who": "iri"
+ },
+ "iri3143446147": {
+  "hash": "ac084a90903fe1a0",
+  "key": "obj.diapaso_espatllat.desc",
+  "who": "iri"
+ },
+ "iri3148935410": {
+  "hash": "e1eca024b8108990",
+  "key": "obj.pols_rovell.desc",
+  "who": "iri"
+ },
+ "iri3150134398": {
+  "hash": "1504c529979cc51e",
+  "key": "sala.fabrica_calderes.sic.look",
+  "who": "iri"
+ },
+ "iri3151996407": {
+  "hash": "cd0a02526b919269",
+  "key": "sala.fabrica_cambra.intro2",
+  "who": "iri"
+ },
+ "iri3159302562": {
+  "hash": "6b2db1f3c4fdbd4d",
+  "key": "sala.fabrica_cambra.cambra.look",
+  "who": "iri"
+ },
+ "iri3168774026": {
+  "hash": "3a28b3295abe12f4",
+  "key": "sala.fabrica_cambra.intro1",
+  "who": "iri"
+ },
+ "iri3170068929": {
+  "hash": "ecdf2c3ad7a5c983",
+  "key": "obj.segell.massa",
+  "who": "iri"
+ },
+ "iri3175750215": {
+  "hash": "4aa94994eca4c61c",
+  "key": "dlg.mira.opt.planols",
+  "who": "iri"
+ },
+ "iri3177339536": {
+  "hash": "467ec733dc012f74",
+  "key": "obj.llibreta_torn.iri_glossari",
+  "who": "iri"
+ },
+ "iri3186145753": {
+  "hash": "a6d113a9de00c3d9",
+  "key": "sala.fabrica_conducte.tassa.look",
+  "who": "iri"
+ },
+ "iri3196637983": {
+  "hash": "2f8a5f582c335f19",
+  "key": "sala.fabrica_calderes.tauler.prou",
+  "who": "iri"
+ },
+ "iri3202499639": {
+  "hash": "dcd63c9520fdbfd7",
+  "key": "sala.fabrica_conducte.dreta.look",
+  "who": "iri"
+ },
+ "iri322103226": {
+  "hash": "a577a1e008d7e24d",
+  "key": "dlg.cargol.opt.tub",
+  "who": "iri"
+ },
+ "iri3225099032": {
+  "hash": "1a93f1132589a15d",
+  "key": "finestra.rebut.molla",
+  "who": "iri"
+ },
+ "iri3226495999": {
+  "hash": "544c2ec15462619f",
+  "key": "sala.fabrica_moll.conducte.usar",
+  "who": "iri"
+ },
+ "iri3237044518": {
+  "hash": "28e2d614ad6838c6",
+  "key": "obj.llibreta_torn.desc",
+  "who": "iri"
+ },
+ "iri3251584204": {
+  "hash": "150e2fb230ae848c",
+  "key": "finestra.rebut.nota_vet_nom",
+  "who": "iri"
+ },
+ "iri3256339604": {
+  "hash": "24433d9a0b1c9955",
+  "key": "sala.fabrica_moll.biga_acer.agafar",
+  "who": "iri"
+ },
+ "iri3268229392": {
+  "hash": "2ce88c8a8c2e1d2e",
+  "key": "finestra.espera.iri.nota_amagatall",
+  "who": "iri"
+ },
+ "iri3268291800": {
+  "hash": "653c6988ae136dba",
+  "key": "sala.fabrica_despatx.llibre.falsificar2",
+  "who": "iri"
+ },
+ "iri3270337740": {
+  "hash": "c8543f741c48e134",
+  "key": "obj.llibreta_torn.iri_glossari_ple",
+  "who": "iri"
+ },
+ "iri3273784580": {
+  "hash": "b7ec4d3ada2c975c",
+  "key": "sala.fabrica_conducte.dreta.anar",
+  "who": "iri"
+ },
+ "iri3295584923": {
+  "hash": "0273a3606e731dea",
+  "key": "obj.diapaso.igual2",
+  "who": "iri"
+ },
+ "iri3312362542": {
+  "hash": "b140fb8bd802a76c",
+  "key": "obj.diapaso.igual1",
+  "who": "iri"
+ },
+ "iri3315250810": {
+  "hash": "bf6070a3fd8a8fb0",
+  "key": "ui.defecte.talkTo.iri.2",
+  "who": "iri"
+ },
+ "iri3318624657": {
+  "hash": "f7455fbe4d18cb40",
+  "key": "sala.fabrica_despatx.llibre.falsificar1",
+  "who": "iri"
+ },
+ "iri3332028429": {
+  "hash": "827b0717885b9483",
+  "key": "ui.defecte.talkTo.iri.3",
+  "who": "iri"
+ },
+ "iri3349193319": {
+  "hash": "da7fb5fbab0e2a45",
+  "key": "obj.nota_vet.iri1",
+  "who": "iri"
+ },
+ "iri3355305649": {
+  "hash": "77924c0dcbd26dcd",
+  "key": "obj.llibreta_torn.iri_planols",
+  "who": "iri"
+ },
+ "iri3358550137": {
+  "hash": "f59c3cadd2c56380",
+  "key": "finestra.rebuig.no_hi_cap",
+  "who": "iri"
+ },
+ "iri3360504021": {
+  "hash": "d2cc1bc21180ab40",
+  "key": "sala.fabrica_calderes.porta_cambra.obrir",
+  "who": "iri"
+ },
+ "iri3360855699": {
+  "hash": "2e37cc9f832a88c5",
+  "key": "sala.fabrica_magatzem.cargol.llima1",
+  "who": "iri"
+ },
+ "iri3364712644": {
+  "hash": "b90662b56a25678a",
+  "key": "sala.fabrica_calderes.alarma.look1",
+  "who": "iri"
+ },
+ "iri3365970938": {
+  "hash": "233d8ce110e0c680",
+  "key": "obj.nota_vet.iri2",
+  "who": "iri"
+ },
+ "iri3415045501": {
+  "hash": "f56740e846b708f2",
+  "key": "sala.fabrica_calderes.alarma.look2",
+  "who": "iri"
+ },
+ "iri3428451911": {
+  "hash": "22e3bc635d309da0",
+  "key": "obj.llapis_ulls.mapa_on",
+  "who": "iri"
+ },
+ "iri3438435707": {
+  "hash": "9f9f1c188f2a47c7",
+  "key": "obj.tub_amb_llibreta.desc",
+  "who": "iri"
+ },
+ "iri345125500": {
+  "hash": "8e8528cb88b8b704",
+  "key": "obj.nota_iri.desc",
+  "who": "iri"
+ },
+ "iri3470103463": {
+  "hash": "500a9ad2a653d27d",
+  "key": "obj.nota_pressio.iri1",
+  "who": "iri"
+ },
+ "iri3541309118": {
+  "hash": "ff72d1dc23845c69",
+  "key": "dlg.cargol.opt.imant",
+  "who": "iri"
+ },
+ "iri3553615099": {
+  "hash": "6b9c1ae139257534",
+  "key": "dlg.cargol.opt.memoria",
+  "who": "iri"
+ },
+ "iri3554904225": {
+  "hash": "f5a1f325dca3fdf1",
+  "key": "obj.llapis_ulls.cartell_aviat",
+  "who": "iri"
+ },
+ "iri3561415148": {
+  "hash": "aeb26aaaaff22ec5",
+  "key": "obj.llapis_ulls.fullet",
+  "who": "iri"
+ },
+ "iri356174335": {
+  "hash": "0499ba9b15ce98fd",
+  "key": "dlg.cargol.opt.alarma",
+  "who": "iri"
+ },
+ "iri3567222372": {
+  "hash": "f1cb1dfc6c924bfc",
+  "key": "dlg.cargol.opt.imant2",
+  "who": "iri"
+ },
+ "iri3569424416": {
+  "hash": "7850462f90d71dd6",
+  "key": "finestra.enviat.tram_biga_3",
+  "who": "iri"
+ },
+ "iri356997554": {
+  "hash": "d96ec504aa54bd65",
+  "key": "obj.diapaso.desc",
+  "who": "iri"
+ },
+ "iri3571719124": {
+  "hash": "531fd5b037c88f28",
+  "key": "sala.fabrica_cambra.reixa.fugir1",
+  "who": "iri"
+ },
+ "iri3577980058": {
+  "hash": "14bb2037ac5c2245",
+  "key": "sala.fabrica_magatzem.cargol.segell1",
+  "who": "iri"
+ },
+ "iri3586202035": {
+  "hash": "07be455013ddfede",
+  "key": "finestra.enviat.tram_biga_2",
+  "who": "iri"
+ },
+ "iri3602305646": {
+  "hash": "d147586af599892f",
+  "key": "ui.defecte.pull",
+  "who": "iri"
+ },
+ "iri3602979654": {
+  "hash": "44ab6740957137d6",
+  "key": "finestra.enviat.tram_biga_1",
+  "who": "iri"
+ },
+ "iri3619481490": {
+  "hash": "064d0c1f8ac94802",
+  "key": "finestra.ple",
+  "who": "iri"
+ },
+ "iri3622051981": {
+  "hash": "0a80a698950d70d2",
+  "key": "sala.fabrica_cambra.reixa.fugir2",
+  "who": "iri"
+ },
+ "iri3626426329": {
+  "hash": "d35ad1901bc3a773",
+  "key": "obj.tros_cartell.desc",
+  "who": "iri"
+ },
+ "iri3628100871": {
+  "hash": "5734dd3cd63598d0",
+  "key": "sala.fabrica_magatzem.plomall.look",
+  "who": "iri"
+ },
+ "iri363524881": {
+  "hash": "b5e65641f074a0d2",
+  "key": "obj.llapis_ulls.pany1",
+  "who": "iri"
+ },
+ "iri3652488242": {
+  "hash": "ae785ca85068c939",
+  "key": "obj.formulari_27b.desc",
+  "who": "iri"
+ },
+ "iri3655546200": {
+  "hash": "d896ed39b38fc7e7",
+  "key": "sala.fabrica_conducte_revolt.gravar",
+  "who": "iri"
+ },
+ "iri365942819": {
+  "hash": "e07bbf436c1fbd65",
+  "key": "sala.fabrica_moll.sense_mida",
+  "who": "iri"
+ },
+ "iri3663223636": {
+  "hash": "3587b14e1d3ea4d1",
+  "key": "sala.fabrica_despatx.intro",
+  "who": "iri"
+ },
+ "iri3673872994": {
+  "hash": "537b466498a9f322",
+  "key": "sala.fabrica_calderes.capatas.signar_sense",
+  "who": "iri"
+ },
+ "iri3702235885": {
+  "hash": "d147586af599892f",
+  "key": "ui.defecte.push",
+  "who": "iri"
+ },
+ "iri370595383": {
+  "hash": "a82d2da4d42d3f56",
+  "key": "obj.nota_vet.desc",
+  "who": "iri"
+ },
+ "iri3711313536": {
+  "hash": "e53a51aee927204a",
+  "key": "sala.fabrica_cambra.reixa.cargolada_clau",
+  "who": "iri"
+ },
+ "iri3721830082": {
+  "hash": "50c7d36a4ec0f987",
+  "key": "sala.fabrica_conducte.guant.look",
+  "who": "iri"
+ },
+ "iri3727398778": {
+  "hash": "98a55d05637e86c8",
+  "key": "finestra.armat",
+  "who": "iri"
+ },
+ "iri3733098328": {
+  "hash": "0e0977e4d161b9f1",
+  "key": "sala.fabrica_magatzem.cargol.look",
+  "who": "iri"
+ },
+ "iri3734961579": {
+  "hash": "ddc56d0e34f2e199",
+  "key": "obj.clau_cambra.desc",
+  "who": "iri"
+ },
+ "iri375789485": {
+  "hash": "4ec5963202ea2492",
+  "key": "obj.biga_muntada.desc",
+  "who": "iri"
+ },
+ "iri3759538250": {
+  "hash": "dddfd5f23b78e761",
+  "key": "ui.defecte.open.iri.3",
+  "who": "iri"
+ },
+ "iri3762041184": {
+  "hash": "46859d1af6be4066",
+  "key": "obj.sopa.desc",
+  "who": "iri"
+ },
+ "iri3765575086": {
+  "hash": "7c1ff1d440789e98",
+  "key": "sala.fabrica_moll.pilar.look",
+  "who": "iri"
+ },
+ "iri3772235288": {
+  "hash": "fd78903634567188",
+  "key": "obj.molla.quieta",
+  "who": "iri"
+ },
+ "iri3775747227": {
+  "hash": "34d9ec22c798be37",
+  "key": "obj.nota_iri_nom.desc",
+  "who": "iri"
+ },
+ "iri3776315869": {
+  "hash": "ade5fbe73d63b8d7",
+  "key": "ui.defecte.open.iri.2",
+  "who": "iri"
+ },
+ "iri3793277583": {
+  "hash": "4830e0a284cf2d1b",
+  "key": "obj.nota_mida.iri_rovell",
+  "who": "iri"
+ },
+ "iri3802218668": {
+  "hash": "83b4ddf7ac1553be",
+  "key": "ui.defecte.give",
+  "who": "iri"
+ },
+ "iri3804339469": {
+  "hash": "68cb658c73294b06",
+  "key": "finestra.rebut.nota_massa",
+  "who": "iri"
+ },
+ "iri3807948746": {
+  "hash": "7f015286186e306d",
+  "key": "ui.defecte.talkTo.iri",
+  "who": "iri"
+ },
+ "iri3811191269": {
+  "hash": "c4ac96241876e423",
+  "key": "dlg.mira.opt.adeu",
+  "who": "iri"
+ },
+ "iri3825942029": {
+  "hash": "708d21e183433bf7",
+  "key": "sala.fabrica_cambra.palanca.baixada",
+  "who": "iri"
+ },
+ "iri3837684888": {
+  "hash": "9ce800597b4af031",
+  "key": "obj.tram_biga.muntar1",
+  "who": "iri"
+ },
+ "iri3841045414": {
+  "hash": "4fdbab4314df0c89",
+  "key": "obj.segell.triplicat",
+  "who": "iri"
+ },
+ "iri3861295503": {
+  "hash": "d6841b2f1dc5485b",
+  "key": "finestra.enviat.nota_iri",
+  "who": "iri"
+ },
+ "iri3862184518": {
+  "hash": "ee85b273b4d3d3bc",
+  "key": "sala.fabrica_moll.serra.agafar",
+  "who": "iri"
+ },
+ "iri3888017745": {
+  "hash": "2a07d10a93818aa8",
+  "key": "obj.tram_biga.muntar2",
+  "who": "iri"
+ },
+ "iri3889150951": {
+  "hash": "567d14df719fcbc2",
+  "key": "sala.fabrica_moll.conducte.mig2",
+  "who": "iri"
+ },
+ "iri3905928570": {
+  "hash": "efeac3b38b3cf1ea",
+  "key": "sala.fabrica_moll.conducte.mig1",
+  "who": "iri"
+ },
+ "iri3915485155": {
+  "hash": "3324d291fcc6be05",
+  "key": "sala.fabrica_cambra.cambra.parpelleja",
+  "who": "iri"
+ },
+ "iri3919274949": {
+  "hash": "14ff3f795b889f41",
+  "key": "finestra.espera.iri",
+  "who": "iri"
+ },
+ "iri3949807663": {
+  "hash": "d927713f5d0850ec",
+  "key": "dlg.cargol.perque3",
+  "who": "iri"
+ },
+ "iri3960542888": {
+  "hash": "7d39c1df3839f462",
+  "key": "obj.fullet_reeducacio.desc",
+  "who": "iri"
+ },
+ "iri3969289542": {
+  "hash": "60ebf17ae0552cd0",
+  "key": "obj.molla.desc",
+  "who": "iri"
+ },
+ "iri3976182763": {
+  "hash": "5ea44819943c09a6",
+  "key": "sala.fabrica_despatx.calaix.tancat",
+  "who": "iri"
+ },
+ "iri3978267954": {
+  "hash": "8ad9e4a4cabe52b3",
+  "key": "sala.fabrica_magatzem.cargol.llima_no",
+  "who": "iri"
+ },
+ "iri4001037139": {
+  "hash": "59cc2fc369b4a3db",
+  "key": "sala.fabrica_cambra.reixa.look",
+  "who": "iri"
+ },
+ "iri4018648828": {
+  "hash": "8c3c234c988103c0",
+  "key": "sala.fabrica_calderes.capatas.proves2",
+  "who": "iri"
+ },
+ "iri4033706409": {
+  "hash": "b84443fc470e33fe",
+  "key": "sala.fabrica_calderes.tauler.agafar",
+  "who": "iri"
+ },
+ "iri4048421475": {
+  "hash": "cfa9d5218547645c",
+  "key": "sala.fabrica_calderes.capatas.plomall1",
+  "who": "iri"
+ },
+ "iri4056576275": {
+  "hash": "9b0674e42cf06a14",
+  "key": "obj.tub_ferro9.enrotllar1",
+  "who": "iri"
+ },
+ "iri4068981685": {
+  "hash": "509cb362cb280563",
+  "key": "sala.fabrica_calderes.capatas.proves1",
+  "who": "iri"
+ },
+ "iri4073353894": {
+  "hash": "e32bc6ebec048953",
+  "key": "obj.tub_ferro9.enrotllar2",
+  "who": "iri"
+ },
+ "iri4074118718": {
+  "hash": "4264af4417678947",
+  "key": "sala.fabrica_magatzem.caixa.look",
+  "who": "iri"
+ },
+ "iri4081976713": {
+  "hash": "eee35a4d26a74a88",
+  "key": "sala.fabrica_calderes.capatas.plomall3",
+  "who": "iri"
+ },
+ "iri4107329027": {
+  "hash": "7a4be8636f9d4b02",
+  "key": "obj.nota_mida.iri1",
+  "who": "iri"
+ },
+ "iri4117144721": {
+  "hash": "c5257077bf2eb549",
+  "key": "finestra.rebuig.viu",
+  "who": "iri"
+ },
+ "iri4124106646": {
+  "hash": "a81d59a1ce25aacc",
+  "key": "obj.nota_mida.iri2",
+  "who": "iri"
+ },
+ "iri4124728575": {
+  "hash": "47195ccf4899d723",
+  "key": "sala.fabrica_cambra.cambra.armada",
+  "who": "iri"
+ },
+ "iri4134717432": {
+  "hash": "1f7d6f643070b820",
+  "key": "obj.llima.passat1",
+  "who": "iri"
+ },
+ "iri4140884265": {
+  "hash": "4fec2769de9b7031",
+  "key": "obj.nota_mida.iri3",
+  "who": "iri"
+ },
+ "iri4144432598": {
+  "hash": "ffdb2143a3ff1934",
+  "key": "sala.fabrica_moll.biga_per_que",
+  "who": "iri"
+ },
+ "iri4145970446": {
+  "hash": "545537ac4f034e2f",
+  "key": "sala.fabrica_moll.trapa.treure_acer",
+  "who": "iri"
+ },
+ "iri4149398707": {
+  "hash": "211dc85958c13756",
+  "key": "sala.fabrica_moll.conducte.no_toquis",
+  "who": "iri"
+ },
+ "iri4155549674": {
+  "hash": "81e8349b4c2aabbb",
+  "key": "dlg.cargol.opt.clau",
+  "who": "iri"
+ },
+ "iri4157661884": {
+  "hash": "279312fc43e32e36",
+  "key": "obj.nota_mida.iri4",
+  "who": "iri"
+ },
+ "iri4157944212": {
+  "hash": "b3b64066013859dd",
+  "key": "obj.llibreta_torn.iri3",
+  "who": "iri"
+ },
+ "iri4165739214": {
+  "hash": "3440b92701738c91",
+  "key": "sala.fabrica_conducte.esquerra.anar",
+  "who": "iri"
+ },
+ "iri4174439503": {
+  "hash": "04ed505415804603",
+  "key": "obj.nota_mida.iri5",
+  "who": "iri"
+ },
+ "iri4174721831": {
+  "hash": "38737d404b498946",
+  "key": "obj.llibreta_torn.iri2",
+  "who": "iri"
+ },
+ "iri4178204814": {
+  "hash": "1924d1e62510c61a",
+  "key": "ui.defecte.push.iri.3",
+  "who": "iri"
+ },
+ "iri4185050289": {
+  "hash": "54416ec541409bd9",
+  "key": "obj.llima.passat2",
+  "who": "iri"
+ },
+ "iri4191499450": {
+  "hash": "1ce5d543848af7eb",
+  "key": "obj.llibreta_torn.iri1",
+  "who": "iri"
+ },
+ "iri4194982433": {
+  "hash": "03a18e9e4d4e3d85",
+  "key": "ui.defecte.push.iri.2",
+  "who": "iri"
+ },
+ "iri4208314352": {
+  "hash": "e1379cbf66dc5e12",
+  "key": "sala.fabrica_moll.conducte.look_tancada",
+  "who": "iri"
+ },
+ "iri4218520820": {
+  "hash": "84c8ae01333c370c",
+  "key": "finestra.rebut.mapa_fuga",
+  "who": "iri"
+ },
+ "iri4220008796": {
+  "hash": "cc039ea1d908fae2",
+  "key": "sala.fabrica_magatzem.prestatges.look",
+  "who": "iri"
+ },
+ "iri4227264584": {
+  "hash": "ed8db2378a413416",
+  "key": "sala.fabrica_calderes.capatas.signar3",
+  "who": "iri"
+ },
+ "iri4228780677": {
+  "hash": "36c9a2a6680fdb12",
+  "key": "sala.fabrica_conducte.guant.agafar",
+  "who": "iri"
+ },
+ "iri4260819822": {
+  "hash": "2c6d97b0b2e12c9c",
+  "key": "sala.fabrica_calderes.capatas.signar1",
+  "who": "iri"
+ },
+ "iri4261133167": {
+  "hash": "b4e10f0a3dd94cba",
+  "key": "sala.fabrica_conducte.aixeta.look",
+  "who": "iri"
+ },
+ "iri431870675": {
+  "hash": "79a4528d5fa4f677",
+  "key": "obj.mapa_fuga.iri6",
+  "who": "iri"
+ },
+ "iri433443295": {
+  "hash": "8862a9dba02b4a4c",
+  "key": "sala.fabrica_conducte.enrere.anar",
+  "who": "iri"
+ },
+ "iri448648294": {
+  "hash": "8f39b1af64fb283a",
+  "key": "obj.mapa_fuga.iri5",
+  "who": "iri"
+ },
+ "iri448684516": {
+  "hash": "efb9b7669777e2b3",
+  "key": "sala.fabrica_conducte_revolt.perdut1",
+  "who": "iri"
+ },
+ "iri465425913": {
+  "hash": "e406c1a471c27c01",
+  "key": "obj.mapa_fuga.iri4",
+  "who": "iri"
+ },
+ "iri478551133": {
+  "hash": "6756cf823ab1c63c",
+  "key": "obj.tram_biga_3.desc",
+  "who": "iri"
+ },
+ "iri482203532": {
+  "hash": "c8e8035afb84ccde",
+  "key": "obj.mapa_fuga.iri3",
+  "who": "iri"
+ },
+ "iri482239754": {
+  "hash": "140b92dfed50fec2",
+  "key": "sala.fabrica_conducte_revolt.perdut3",
+  "who": "iri"
+ },
+ "iri484988747": {
+  "hash": "05d571b655cc371c",
+  "key": "dlg.cargol.opt.dia",
+  "who": "iri"
+ },
+ "iri489540731": {
+  "hash": "9d8f37ffffc0ff97",
+  "key": "sala.fabrica_magatzem.cargol.donar",
+  "who": "iri"
+ },
+ "iri498981151": {
+  "hash": "74cb07c01bf5a31b",
+  "key": "obj.mapa_fuga.iri2",
+  "who": "iri"
+ },
+ "iri499017373": {
+  "hash": "beac5503a8d3750e",
+  "key": "sala.fabrica_conducte_revolt.perdut2",
+  "who": "iri"
+ },
+ "iri504366817": {
+  "hash": "bebb7324a0b73039",
+  "key": "sala.fabrica_cambra.cambra.clau_dins",
+  "who": "iri"
+ },
+ "iri512859989": {
+  "hash": "6d74bcfad6092254",
+  "key": "sala.fabrica_conducte.esquerra.look",
+  "who": "iri"
+ },
+ "iri515758770": {
+  "hash": "67902e8188c63acf",
+  "key": "obj.mapa_fuga.iri1",
+  "who": "iri"
+ },
+ "iri532536389": {
+  "hash": "d363558d23a596a8",
+  "key": "obj.mapa_fuga.iri0",
+  "who": "iri"
+ },
+ "iri542398234": {
+  "hash": "6e7bd027ebbe5200",
+  "key": "finestra.enviat.tub_amb_llibreta",
+  "who": "iri"
+ },
+ "iri546484728": {
+  "hash": "2227c6698725417d",
+  "key": "obj.placa_cargol.vet_gravada",
+  "who": "iri"
+ },
+ "iri563194652": {
+  "hash": "53b0fc6d9042d41f",
+  "key": "obj.llapis_ulls.mapa1",
+  "who": "iri"
+ },
+ "iri566030354": {
+  "hash": "f2f4e2bb1f740dd6",
+  "key": "dlg.cargol.opt.diapaso",
+  "who": "iri"
+ },
+ "iri575575266": {
+  "hash": "307a5e66bbc24755",
+  "key": "obj.diapaso.ja",
+  "who": "iri"
+ },
+ "iri581825547": {
+  "hash": "55a871cd1120729d",
+  "key": "sala.fabrica_moll.biga_acer.look",
+  "who": "iri"
+ },
+ "iri613527509": {
+  "hash": "54d9f99b947b26f5",
+  "key": "obj.llapis_ulls.mapa2",
+  "who": "iri"
+ },
+ "iri629924718": {
+  "hash": "eb455c4a60acb664",
+  "key": "sala.fabrica_despatx.calaix.buit",
+  "who": "iri"
+ },
+ "iri635640616": {
+  "hash": "40110c0b31e12a22",
+  "key": "finestra.rebuig.massa_pesat",
+  "who": "iri"
+ },
+ "iri651152577": {
+  "hash": "a05d72676649cddb",
+  "key": "finestra.automatica",
+  "who": "iri"
+ },
+ "iri652240155": {
+  "hash": "96bf49c56e2174f3",
+  "key": "sala.fabrica_moll.conducte.look",
+  "who": "iri"
+ },
+ "iri663101896": {
+  "hash": "f1eaa36e973a5357",
+  "key": "obj.tram_biga.iri",
+  "who": "iri"
+ },
+ "iri669424514": {
+  "hash": "f08b576f0a0b5c3d",
+  "key": "sala.fabrica_moll.pilar.ja_gravat",
+  "who": "iri"
+ },
+ "iri674878028": {
+  "hash": "c025ac0274d96aae",
+  "key": "obj.planols.iri1",
+  "who": "iri"
+ },
+ "iri689252332": {
+  "hash": "6838ee76b25426ba",
+  "key": "obj.molla.trencar",
+  "who": "iri"
+ },
+ "iri725210885": {
+  "hash": "23163779aabbdc4a",
+  "key": "obj.planols.iri2",
+  "who": "iri"
+ },
+ "iri725725485": {
+  "hash": "a850669f981b2abd",
+  "key": "sala.fabrica_moll.primer_marca",
+  "who": "iri"
+ },
+ "iri75827821": {
+  "hash": "e75b122bf39b0f84",
+  "key": "finestra.tancada",
+  "who": "iri"
+ },
+ "iri763149379": {
+  "hash": "21e31170884ec7e4",
+  "key": "obj.formulari_triplicat.desc",
+  "who": "iri"
+ },
+ "iri764123954": {
+  "hash": "e2669262f671baff",
+  "key": "sala.fabrica_conducte.recte.look",
+  "who": "iri"
+ },
+ "iri779270706": {
+  "hash": "fb268ce67968d416",
+  "key": "obj.molla.massa",
+  "who": "iri"
+ },
+ "iri787261722": {
+  "hash": "922682899f6513e2",
+  "key": "sala.fabrica_conducte.cartell.look",
+  "who": "iri"
+ },
+ "iri792265467": {
+  "hash": "37417e0f40aa769c",
+  "key": "sala.fabrica_conducte_revolt.tornar",
+  "who": "iri"
+ },
+ "iri799356286": {
+  "hash": "9393f72ca9472def",
+  "key": "ui.defecte.look.iri",
+  "who": "iri"
+ },
+ "iri804832452": {
+  "hash": "bfbc1aa22fb7f778",
+  "key": "finestra.rebut.nota_pany",
+  "who": "iri"
+ },
+ "iri809242426": {
+  "hash": "1fdc9c1651c95f02",
+  "key": "sala.fabrica_calderes.porta_cambra.look",
+  "who": "iri"
+ },
+ "iri809657304": {
+  "hash": "f73bd961f01c19e3",
+  "key": "dlg.cargol.opt.adeu",
+  "who": "iri"
+ },
+ "iri815012870": {
+  "hash": "c02bfa9243acbb78",
+  "key": "ui.defecte.look",
+  "who": "iri"
+ },
+ "iri841267879": {
+  "hash": "bf129335da1d4434",
+  "key": "dlg.mira.opt.que_dius",
+  "who": "iri"
+ },
+ "iri843177910": {
+  "hash": "d7b9e760b77a5d80",
+  "key": "obj.formulari_27be_signat.desc",
+  "who": "iri"
+ },
+ "iri852241576": {
+  "hash": "918a5229b3eaa26c",
+  "key": "sala.fabrica_cambra.reixa.entrar2",
+  "who": "iri"
+ },
+ "iri874498635": {
+  "hash": "64fdd4e8b6ff3da4",
+  "key": "dlg.mira.planols1",
+  "who": "iri"
+ },
+ "iri898341146": {
+  "hash": "027593f6f656fbf0",
+  "key": "ui.defecte.talkTo",
+  "who": "iri"
+ },
+ "iri902574433": {
+  "hash": "fa5da271cd6727d0",
+  "key": "sala.fabrica_cambra.reixa.entrar1",
+  "who": "iri"
+ },
+ "iri908053873": {
+  "hash": "8335ff695145684e",
+  "key": "dlg.mira.planols3",
+  "who": "iri"
+ },
+ "iri927846626": {
+  "hash": "1bf300319c90bf1d",
+  "key": "obj.nota_pany.desc",
+  "who": "iri"
+ },
+ "iri944646599": {
+  "hash": "9e830690d9cada1d",
+  "key": "finestra.rebuig.liquid",
+  "who": "iri"
+ },
+ "iri947052832": {
+  "hash": "c620062918fb6c31",
+  "key": "obj.nota_massa.iri_zerog",
+  "who": "iri"
+ },
+ "iri991611280": {
+  "hash": "50c7e7f6897bb854",
+  "key": "sala.fabrica_conducte.revolt2",
+  "who": "iri"
+ },
+ "iri994654436": {
+  "hash": "1b804e5840ad6889",
+  "key": "obj.llapis.desc",
+  "who": "iri"
+ },
+ "iri995258203": {
+  "hash": "360b359e21cc2e8b",
+  "key": "sala.fabrica_cambra.boto.accident1",
+  "who": "iri"
+ },
+ "iri997443970": {
+  "hash": "3004685456b3249b",
+  "key": "sala.fabrica_moll.conducte.obrir",
+  "who": "iri"
+ },
  "mare1717793415": {
-  "hash": "1476643263be5821",
+  "hash": "a6edebb7d1c3e4e4",
   "key": "dlg.mare.sortir1",
   "who": "mare"
  },
  "mare1734571034": {
-  "hash": "b4b3f3bf94e91aa8",
+  "hash": "a7b39d58a559dd6b",
   "key": "dlg.mare.sortir2",
   "who": "mare"
  },
  "mare1877341348": {
-  "hash": "fd9ad67bc714fc96",
+  "hash": "7da98f9fecfefac3",
   "key": "dlg.mare.adeu",
   "who": "mare"
  },
  "mare1961657308": {
-  "hash": "3293a2b1ecc4619b",
+  "hash": "a950968abe0f5a99",
   "key": "dlg.mare.preso2",
   "who": "mare"
  },
  "mare2011990165": {
-  "hash": "a481fe4e216d1889",
+  "hash": "93c044aaeb3dff9c",
   "key": "dlg.mare.preso1",
   "who": "mare"
  },
  "mare225725527": {
-  "hash": "1d0164462484f178",
+  "hash": "906eb7849b692335",
   "key": "dlg.mare.reciclatge1",
   "who": "mare"
  },
+ "mare2508552068": {
+  "hash": "22b99b7b639ff42f",
+  "key": "obj.nota_iri_nom.mare1",
+  "who": "mare"
+ },
+ "mare2558884925": {
+  "hash": "a0479a174088eb19",
+  "key": "obj.nota_iri_nom.mare2",
+  "who": "mare"
+ },
  "mare259280765": {
-  "hash": "ade4a9b79e106aa7",
+  "hash": "12f86e30ce1a1df0",
   "key": "dlg.mare.reciclatge3",
   "who": "mare"
  },
  "mare3539623682": {
-  "hash": "564946248ced7087",
+  "hash": "f0aee738fc042401",
   "key": "sala.gavina_cella.altaveu.tocar1",
   "who": "mare"
  },
  "mare3740419865": {
-  "hash": "a968d23accba8fbf",
+  "hash": "4088611bc804919a",
   "key": "dlg.mare.hola",
   "who": "mare"
  },
  "mare4216497396": {
-  "hash": "8e52c8b7a6e317b5",
+  "hash": "85150948bdd0cf4b",
   "key": "dlg.mare.adeu_avui",
   "who": "mare"
  },
  "mare569737114": {
-  "hash": "798eb08a21a8398c",
+  "hash": "26c6c7b0f2ef27de",
   "key": "sala.gavina_cella.intro2",
   "who": "mare"
  },
+ "mira1290975848": {
+  "hash": "6ad25eaf2a68412f",
+  "key": "dlg.mira.adeu",
+  "who": "mira"
+ },
+ "mira1383961036": {
+  "hash": "9e91f69a8d82668e",
+  "key": "dlg.mira.que_dius2",
+  "who": "mira"
+ },
+ "mira1434293893": {
+  "hash": "0641f80f310191a0",
+  "key": "dlg.mira.que_dius1",
+  "who": "mira"
+ },
+ "mira2061212855": {
+  "hash": "d9d9e9be9178cd2c",
+  "key": "dlg.mira.despres",
+  "who": "mira"
+ },
+ "mira2302405189": {
+  "hash": "631cf161d8ea342d",
+  "key": "dlg.mira.hola",
+  "who": "mira"
+ },
+ "mira3724349811": {
+  "hash": "980b83021615d195",
+  "key": "dlg.mira.primera2",
+  "who": "mira"
+ },
+ "mira3741127430": {
+  "hash": "311ca631ce1c5b02",
+  "key": "dlg.mira.primera1",
+  "who": "mira"
+ },
+ "mira891276254": {
+  "hash": "3cb2f93e809bbbdf",
+  "key": "dlg.mira.planols2",
+  "who": "mira"
+ },
+ "mira924831492": {
+  "hash": "a288ce88174b1ab5",
+  "key": "dlg.mira.planols4",
+  "who": "mira"
+ },
+ "mos1121846592": {
+  "hash": "4fbf2ead2b559bfc",
+  "key": "dlg.mos.distreure2",
+  "who": "mos"
+ },
+ "mos1172179449": {
+  "hash": "054dfe85c05f6d2c",
+  "key": "dlg.mos.distreure1",
+  "who": "mos"
+ },
+ "mos1178363812": {
+  "hash": "7bf11b9ecab5a071",
+  "key": "dlg.mos.ofes",
+  "who": "mos"
+ },
+ "mos1570432276": {
+  "hash": "05f0584cdabeb2dc",
+  "key": "dlg.mos.reciclatge2",
+  "who": "mos"
+ },
+ "mos1587209895": {
+  "hash": "6882cd56fccb4718",
+  "key": "dlg.mos.reciclatge3",
+  "who": "mos"
+ },
+ "mos1620765133": {
+  "hash": "e2651849f7076c8e",
+  "key": "dlg.mos.reciclatge1",
+  "who": "mos"
+ },
+ "mos1664006228": {
+  "hash": "866dcd140e2472c0",
+  "key": "dlg.mos.primera1",
+  "who": "mos"
+ },
+ "mos1714339085": {
+  "hash": "1bfb9bf7e5ba6f1e",
+  "key": "dlg.mos.primera2",
+  "who": "mos"
+ },
+ "mos1715908943": {
+  "hash": "30f80e08a207e0c6",
+  "key": "dlg.mos.hola",
+  "who": "mos"
+ },
+ "mos2136905603": {
+  "hash": "d0766145c72efc81",
+  "key": "dlg.mos.llapis_ok",
+  "who": "mos"
+ },
+ "mos2328089363": {
+  "hash": "d57c184c7d4b753a",
+  "key": "sala.gavina_cella.panell.mos2",
+  "who": "mos"
+ },
+ "mos235860424": {
+  "hash": "b04dcad20f25c7e5",
+  "key": "sala.gavina_cella.mos.carta4",
+  "who": "mos"
+ },
+ "mos2431337928": {
+  "hash": "78d75af0782f7428",
+  "key": "dlg.mos.veus.11",
+  "who": "mos"
+ },
+ "mos2448115547": {
+  "hash": "94fb962c37adac2b",
+  "key": "dlg.mos.veus.10",
+  "who": "mos"
+ },
+ "mos252638043": {
+  "hash": "ece8189db4cdfe08",
+  "key": "sala.gavina_cella.mos.carta5",
+  "who": "mos"
+ },
+ "mos2715948838": {
+  "hash": "18f81e0092880726",
+  "key": "dlg.mos.insultat1",
+  "who": "mos"
+ },
+ "mos2927789628": {
+  "hash": "1e70592eada23f9d",
+  "key": "dlg.mos.perdo1",
+  "who": "mos"
+ },
+ "mos3049823614": {
+  "hash": "0ad4410190d0ea18",
+  "key": "dlg.mos.llapis_que",
+  "who": "mos"
+ },
+ "mos3146187203": {
+  "hash": "8ee4d938efa2177f",
+  "key": "dlg.mos.familia1",
+  "who": "mos"
+ },
+ "mos3162964822": {
+  "hash": "7784d100927f3163",
+  "key": "dlg.mos.familia2",
+  "who": "mos"
+ },
+ "mos336526138": {
+  "hash": "08f64f754b1dd80e",
+  "key": "sala.gavina_cella.mos.carta2",
+  "who": "mos"
+ },
+ "mos353303757": {
+  "hash": "5568e9c246827146",
+  "key": "sala.gavina_cella.mos.carta3",
+  "who": "mos"
+ },
+ "mos3885545032": {
+  "hash": "7abe7378062b87ba",
+  "key": "dlg.mos.veus3.5",
+  "who": "mos"
+ },
+ "mos3902322651": {
+  "hash": "aac75e460babf010",
+  "key": "dlg.mos.veus3.4",
+  "who": "mos"
+ },
+ "mos3919100270": {
+  "hash": "af3446f73b4acbc5",
+  "key": "dlg.mos.veus3.7",
+  "who": "mos"
+ },
+ "mos3935877889": {
+  "hash": "0bb1b83df3758895",
+  "key": "dlg.mos.veus3.6",
+  "who": "mos"
+ },
+ "mos3952655508": {
+  "hash": "e5b32ba22142514e",
+  "key": "dlg.mos.veus3.1",
+  "who": "mos"
+ },
+ "mos3986210746": {
+  "hash": "ca928479840a3e5e",
+  "key": "dlg.mos.veus3.3",
+  "who": "mos"
+ },
+ "mos4002988365": {
+  "hash": "b288abf82db467e5",
+  "key": "dlg.mos.veus3.2",
+  "who": "mos"
+ },
+ "mos4035022560": {
+  "hash": "cb0ada454be1913a",
+  "key": "dlg.mos.maquillatge1",
+  "who": "mos"
+ },
+ "mos4039600046": {
+  "hash": "fd53868734e21f59",
+  "key": "sala.gavina_cella.mos.nota5",
+  "who": "mos"
+ },
+ "mos4054255422": {
+  "hash": "be0718ebc63f764f",
+  "key": "dlg.mos.adeu",
+  "who": "mos"
+ },
+ "mos4073155284": {
+  "hash": "8284fa31b8b41e8a",
+  "key": "sala.gavina_cella.mos.nota3",
+  "who": "mos"
+ },
+ "mos4089932903": {
+  "hash": "ad6b2ac6b01bb202",
+  "key": "sala.gavina_cella.mos.nota2",
+  "who": "mos"
+ },
+ "mos409839438": {
+  "hash": "82de60fa17fdf90e",
+  "key": "dlg.mos.galeria4",
+  "who": "mos"
+ },
+ "mos4119968671": {
+  "hash": "c5fb1fed296b17d1",
+  "key": "dlg.mos.elogiat1",
+  "who": "mos"
+ },
+ "mos443394676": {
+  "hash": "91a54f820667526b",
+  "key": "dlg.mos.galeria2",
+  "who": "mos"
+ },
+ "mos493727533": {
+  "hash": "fc7886c3c133fbba",
+  "key": "dlg.mos.galeria1",
+  "who": "mos"
+ },
+ "mos668752752": {
+  "hash": "603684d52dbcb2fc",
+  "key": "dlg.mos.veus.2",
+  "who": "mos"
+ },
+ "mos685530371": {
+  "hash": "29e4f09deae104e1",
+  "key": "dlg.mos.veus.3",
+  "who": "mos"
+ },
+ "mos719085609": {
+  "hash": "41cfc4bdaedfd6e4",
+  "key": "dlg.mos.veus.1",
+  "who": "mos"
+ },
+ "mos735863228": {
+  "hash": "6cc4debdc4b96863",
+  "key": "dlg.mos.veus.6",
+  "who": "mos"
+ },
+ "mos752640847": {
+  "hash": "6061079f85a5c2b1",
+  "key": "dlg.mos.veus.7",
+  "who": "mos"
+ },
+ "mos769418466": {
+  "hash": "ce33067d4d20419f",
+  "key": "dlg.mos.veus.4",
+  "who": "mos"
+ },
+ "mos786196085": {
+  "hash": "53a4f3957a333ef2",
+  "key": "dlg.mos.veus.5",
+  "who": "mos"
+ },
+ "mos836528942": {
+  "hash": "b43900d20c76240f",
+  "key": "dlg.mos.veus.8",
+  "who": "mos"
+ },
+ "mos853306561": {
+  "hash": "9bf9efc493744b3f",
+  "key": "dlg.mos.veus.9",
+  "who": "mos"
+ },
+ "narrator1006782240": {
+  "hash": "d9614d175e5ca501",
+  "key": "sala.gavina_memoria.foto.mira",
+  "who": "narrator"
+ },
+ "narrator1009415475": {
+  "hash": "1bcb76653f88dcfb",
+  "key": "sala.gavina_memoria.foto.forat",
+  "who": "narrator"
+ },
+ "narrator1062368679": {
+  "hash": "e250a8e8c981cb25",
+  "key": "sala.fabrica_cambra.boto.accident5",
+  "who": "narrator"
+ },
+ "narrator1108271284": {
+  "hash": "dfda0c00037464c9",
+  "key": "nota_perduda.4.text",
+  "who": "narrator"
+ },
+ "narrator1113807699": {
+  "hash": "f7b1fd9852891dda",
+  "key": "final.oris.1",
+  "who": "narrator"
+ },
+ "narrator1130585318": {
+  "hash": "31f6f2625a3cd115",
+  "key": "final.oris.2",
+  "who": "narrator"
+ },
+ "narrator1147362937": {
+  "hash": "9da6ae8031ab0e87",
+  "key": "final.oris.3",
+  "who": "narrator"
+ },
+ "narrator1164140556": {
+  "hash": "35c315e763ad67e5",
+  "key": "final.oris.4",
+  "who": "narrator"
+ },
+ "narrator1180918175": {
+  "hash": "f3486d14e11c99fc",
+  "key": "final.oris.5",
+  "who": "guardia"
+ },
+ "narrator1310666469": {
+  "hash": "87f2d429474a4216",
+  "key": "sala.fabrica_despatx.expedient.mira",
+  "who": "narrator"
+ },
+ "narrator1434819313": {
+  "hash": "8ac95f5adbd9d75d",
+  "key": "sala.fabrica_calderes.intro1",
+  "who": "narrator"
+ },
+ "narrator1503076309": {
+  "hash": "045f2f4253d9c0fd",
+  "key": "obj.molla.etiqueta",
+  "who": "narrator"
+ },
+ "narrator1598129475": {
+  "hash": "18b93352df4db235",
+  "key": "final.correspondencia.carta",
+  "who": "iri"
+ },
+ "narrator1626094533": {
+  "hash": "d5a08e103299c8d4",
+  "key": "nota_perduda.5.text",
+  "who": "mos"
+ },
+ "narrator1682991978": {
+  "hash": "7a6f125502061a65",
+  "key": "sala.gavina_cella.reixa.fugir_guardia",
+  "who": "narrator"
+ },
+ "narrator168639991": {
+  "hash": "e9239f9f3a0c933b",
+  "key": "obj.molla.nota",
+  "who": "vet"
+ },
+ "narrator1702947599": {
+  "hash": "fcefc2630e711534",
+  "key": "proleg.cambra1",
+  "who": "narrator"
+ },
+ "narrator1707294750": {
+  "hash": "a6471a79c2e01136",
+  "key": "sala.gavina_arxiu.expedient_iri.text",
+  "who": "narrator"
+ },
+ "narrator1719725218": {
+  "hash": "be49b65be0aad3ce",
+  "key": "proleg.cambra2",
+  "who": "narrator"
+ },
+ "narrator1847664905": {
+  "hash": "9f774a42f1cd2fdc",
+  "key": "sala.gavina_memoria.mapa.text",
+  "who": "narrator"
+ },
+ "narrator1904111233": {
+  "hash": "52b34a461d8d6f73",
+  "key": "sala.gavina_passadis.fi3",
+  "who": "narrator"
+ },
+ "narrator1920888852": {
+  "hash": "bc1905eb503996fe",
+  "key": "sala.gavina_passadis.fi4",
+  "who": "narrator"
+ },
+ "narrator1967110892": {
+  "hash": "a9a20be5db5121f3",
+  "key": "sala.fabrica_despatx.expedient.confessat",
+  "who": "narrator"
+ },
+ "narrator1974014294": {
+  "hash": "99ff69a0cb6187da",
+  "key": "sala.gavina_arxiu.expedient_iri.text_confessio",
+  "who": "narrator"
+ },
+ "narrator2054353821": {
+  "hash": "eedcace6c9c39cb5",
+  "key": "sala.gavina_memoria.vitrina.placa",
+  "who": "narrator"
+ },
+ "narrator2110541105": {
+  "hash": "ac9ca878b0939259",
+  "key": "final.oris.mos",
+  "who": "narrator"
+ },
+ "narrator224026900": {
+  "hash": "dc1d21e15fc36a21",
+  "key": "obj.placa_cargol.gravada",
+  "who": "narrator"
+ },
+ "narrator2274156214": {
+  "hash": "99f90df3326367c8",
+  "key": "obj.nota_iri.correspondencia.inici",
+  "who": "narrator"
+ },
+ "narrator2310551505": {
+  "hash": "6b6d701500c5ea1c",
+  "key": "obj.nota_iri_nom.text",
+  "who": "iri"
+ },
+ "narrator2316567263": {
+  "hash": "692e3880d19ae840",
+  "key": "sala.fabrica_despatx.expedient.capatas",
+  "who": "narrator"
+ },
+ "narrator232683796": {
+  "hash": "c6f37eee6e018959",
+  "key": "sala.gavina_arxiu.planols.text",
+  "who": "narrator"
+ },
+ "narrator2336683895": {
+  "hash": "7bb4744258746f06",
+  "key": "obj.fitxa_mira.text",
+  "who": "narrator"
+ },
+ "narrator2339322760": {
+  "hash": "db6693e8ec889d9e",
+  "key": "sala.fabrica.descoberta2",
+  "who": "director"
+ },
+ "narrator2389655617": {
+  "hash": "93c84597574602f8",
+  "key": "sala.fabrica.descoberta1",
+  "who": "narrator"
+ },
+ "narrator2417188909": {
+  "hash": "d280581dcddc8324",
+  "key": "sala.gavina_memoria.vitrina.text",
+  "who": "narrator"
+ },
+ "narrator2428755077": {
+  "hash": "4d0b43a307639ced",
+  "key": "sala.gavina_cella.panell.mos4",
+  "who": "narrator"
+ },
+ "narrator2446361372": {
+  "hash": "23e807c2f3bd1ce3",
+  "key": "sala.gavina_memoria.vitrina.placa_gravada",
+  "who": "narrator"
+ },
+ "narrator2454250192": {
+  "hash": "c452d1082d0e228a",
+  "key": "proleg.gavina2",
+  "who": "narrator"
+ },
+ "narrator247078612": {
+  "hash": "37602aaca86181bf",
+  "key": "obj.avis_reciclatge.text",
+  "who": "mare"
+ },
+ "narrator2490645133": {
+  "hash": "2c999953fb5b5fdf",
+  "key": "obj.placa_cargol.text",
+  "who": "narrator"
+ },
+ "narrator2497129479": {
+  "hash": "e250a8e8c981cb25",
+  "key": "sala.fabrica_moll.llancadora.mentrestant",
+  "who": "narrator"
+ },
+ "narrator2504583049": {
+  "hash": "44e755c930644657",
+  "key": "proleg.gavina1",
+  "who": "narrator"
+ },
+ "narrator2564985149": {
+  "hash": "29654f38b9f3169f",
+  "key": "final.fugida.cargol",
+  "who": "narrator"
+ },
+ "narrator2659776200": {
+  "hash": "abde9443a16b1edf",
+  "key": "obj.fitxa_mira.text_acusada",
+  "who": "narrator"
+ },
+ "narrator2698831039": {
+  "hash": "020c1404f3bc0086",
+  "key": "sala.gavina_cella.tub0",
+  "who": "narrator"
+ },
+ "narrator2707067361": {
+  "hash": "3a5a9bbcf15c2ae7",
+  "key": "sala.gavina_hangar.comporta.obrir2",
+  "who": "narrator"
+ },
+ "narrator2712167982": {
+  "hash": "0f8a497c5d53089c",
+  "key": "obj.nota_vet_nom.text",
+  "who": "vet"
+ },
+ "narrator277866241": {
+  "hash": "41605b393ffc1c09",
+  "key": "final.correspondencia.text",
+  "who": "narrator"
+ },
+ "narrator2868553733": {
+  "hash": "b3dfed4eb1e7cb25",
+  "key": "obj.nota_vet.text",
+  "who": "vet"
+ },
+ "narrator2870794206": {
+  "hash": "b17ffd568dbdc394",
+  "key": "final.fugida.mos",
+  "who": "narrator"
+ },
+ "narrator2923296668": {
+  "hash": "956ff96bab86eb9b",
+  "key": "proleg.cella1",
+  "who": "narrator"
+ },
+ "narrator293055667": {
+  "hash": "e187383b26296a76",
+  "key": "final.credits2",
+  "who": "narrator"
+ },
+ "narrator2943014386": {
+  "hash": "5e568e5bd4e4be47",
+  "key": "obj.planols.text",
+  "who": "narrator"
+ },
+ "narrator2973629525": {
+  "hash": "c8998a55d811e5f6",
+  "key": "proleg.cella2",
+  "who": "narrator"
+ },
+ "narrator3001984177": {
+  "hash": "fe9403b6ec8e534f",
+  "key": "nota_perduda.1.text",
+  "who": "narrator"
+ },
+ "narrator3096513524": {
+  "hash": "b36a8de4f058a36b",
+  "key": "sala.gavina_memoria.foto.text",
+  "who": "narrator"
+ },
+ "narrator309833286": {
+  "hash": "254f58798fdb6465",
+  "key": "final.credits1",
+  "who": "narrator"
+ },
+ "narrator312394698": {
+  "hash": "cd00b228dc8f6756",
+  "key": "sala.gavina_memoria.holograma.casc1",
+  "who": "director"
+ },
+ "narrator3139335288": {
+  "hash": "89618bf81fd0653d",
+  "key": "proleg.fabrica2",
+  "who": "narrator"
+ },
+ "narrator3189668145": {
+  "hash": "a95b0bd4ca3b3452",
+  "key": "proleg.fabrica1",
+  "who": "narrator"
+ },
+ "narrator332798014": {
+  "hash": "1993c90e9191749c",
+  "key": "nota_perduda.2.text",
+  "who": "narrator"
+ },
+ "narrator3654140040": {
+  "hash": "f8dc0e2ba71ab1f4",
+  "key": "final.fugida.1",
+  "who": "narrator"
+ },
+ "narrator3687695278": {
+  "hash": "8e213410d5b40f7d",
+  "key": "final.fugida.3",
+  "who": "narrator"
+ },
+ "narrator3704472897": {
+  "hash": "233256c68ba6a119",
+  "key": "final.fugida.2",
+  "who": "narrator"
+ },
+ "narrator3721250516": {
+  "hash": "541f7424a999be4c",
+  "key": "final.fugida.5",
+  "who": "narrator"
+ },
+ "narrator3736013003": {
+  "hash": "ca4398ca3a7e3575",
+  "key": "obj.nota_iri.correspondencia.1",
+  "who": "vet"
+ },
+ "narrator3738028135": {
+  "hash": "3bf04dd0df46bcb3",
+  "key": "final.fugida.4",
+  "who": "narrator"
+ },
+ "narrator3752790622": {
+  "hash": "efc80f56caf824bf",
+  "key": "obj.nota_iri.correspondencia.2",
+  "who": "iri"
+ },
+ "narrator3769568241": {
+  "hash": "f01d9c1e9684341c",
+  "key": "obj.nota_iri.correspondencia.3",
+  "who": "vet"
+ },
+ "narrator3770023157": {
+  "hash": "ba4d58dbc8ecbf53",
+  "key": "final.veritat.text",
+  "who": "narrator"
+ },
+ "narrator3804710084": {
+  "hash": "83a711273525100b",
+  "key": "obj.mapa_fuga.text",
+  "who": "vet"
+ },
+ "narrator3817645800": {
+  "hash": "00d004b1e74e2464",
+  "key": "sala.fabrica_despatx.expedient.falsificat",
+  "who": "narrator"
+ },
+ "narrator3819564245": {
+  "hash": "cc6f06f4cdd90d51",
+  "key": "obj.nota_massa.text",
+  "who": "vet"
+ },
+ "narrator3850499891": {
+  "hash": "d6201a232c280980",
+  "key": "sala.gavina_memoria.holograma.cafe1",
+  "who": "director"
+ },
+ "narrator3868156002": {
+  "hash": "4d3acab7ed364f96",
+  "key": "final.fugida.mira",
+  "who": "narrator"
+ },
+ "narrator3872373332": {
+  "hash": "27570111e9834db9",
+  "key": "sala.fabrica_moll.conducte.mig3",
+  "who": "narrator"
+ },
+ "narrator3876044616": {
+  "hash": "4df31a08e90791f6",
+  "key": "final.correspondencia.2",
+  "who": "cargol_vell"
+ },
+ "narrator3892822235": {
+  "hash": "8b9cdd73b6db87cd",
+  "key": "final.correspondencia.3",
+  "who": "narrator"
+ },
+ "narrator3926377473": {
+  "hash": "72b743f8508f1912",
+  "key": "final.correspondencia.1",
+  "who": "narrator"
+ },
+ "narrator3954408930": {
+  "hash": "74ead80461473987",
+  "key": "obj.nota_iri.text",
+  "who": "iri"
+ },
+ "narrator3969433127": {
+  "hash": "3bea5408a59c54e4",
+  "key": "dlg.mos.veus3.0",
+  "who": "narrator"
+ },
+ "narrator3976710330": {
+  "hash": "46a53ec45247299f",
+  "key": "final.correspondencia.4",
+  "who": "cargol_vell"
+ },
+ "narrator3982765446": {
+  "hash": "f76cdc22a0edb415",
+  "key": "obj.nota_amagatall.text",
+  "who": "iri"
+ },
+ "narrator4047430416": {
+  "hash": "7f3b8a7a5e0582bc",
+  "key": "obj.nota_pany.text",
+  "who": "vet"
+ },
+ "narrator4122054466": {
+  "hash": "af908938adbf9bf3",
+  "key": "obj.mapa_fuga.text2",
+  "who": "vet"
+ },
+ "narrator484870174": {
+  "hash": "54535e24032e68aa",
+  "key": "sala.gavina_cella.panell.cop2",
+  "who": "narrator"
+ },
+ "narrator527309116": {
+  "hash": "47c970699dbe7567",
+  "key": "sala.fabrica_despatx.expedient.obert",
+  "who": "narrator"
+ },
+ "narrator552959495": {
+  "hash": "593b646665e8efd0",
+  "key": "sala.gavina_cella.intro1",
+  "who": "narrator"
+ },
+ "narrator579244490": {
+  "hash": "607af2392c3b5a6a",
+  "key": "final.fugida.text",
+  "who": "narrator"
+ },
+ "narrator696822457": {
+  "hash": "873cea84c8670fde",
+  "key": "obj.nota_mida.text",
+  "who": "vet"
+ },
+ "narrator701045374": {
+  "hash": "d8216cc2c5156541",
+  "key": "sala.gavina_arxiu.arxivador.mira_condemnada",
+  "who": "narrator"
+ },
+ "narrator730816599": {
+  "hash": "31b9f2012ccba786",
+  "key": "sala.gavina_memoria.holograma.parla2",
+  "who": "director"
+ },
+ "narrator733355492": {
+  "hash": "06cfa4b30be064ab",
+  "key": "sala.gavina_arxiu.arxivador.mira_salvada",
+  "who": "narrator"
+ },
+ "narrator747594218": {
+  "hash": "1408fae1b0ca401d",
+  "key": "sala.gavina_memoria.holograma.parla1",
+  "who": "director"
+ },
+ "narrator775889464": {
+  "hash": "30fbe042ab44aaa9",
+  "key": "sala.gavina_hangar.llancadora.obrir3",
+  "who": "narrator"
+ },
+ "narrator801448424": {
+  "hash": "a5767af254485301",
+  "key": "sala.gavina_memoria.intro1",
+  "who": "narrator"
+ },
+ "narrator883608517": {
+  "hash": "6915bbe9bbe1426b",
+  "key": "obj.nota_pressio.text",
+  "who": "vet"
+ },
+ "narrator966363439": {
+  "hash": "be820ae116047976",
+  "key": "nota_perduda.3.text",
+  "who": "narrator"
+ },
+ "sic1170482924": {
+  "hash": "0749e88383326510",
+  "key": "dlg.sic.primera1",
+  "who": "sic"
+ },
+ "sic1351605303": {
+  "hash": "adac3f52b765377a",
+  "key": "dlg.sic.hola",
+  "who": "sic"
+ },
+ "sic2171360611": {
+  "hash": "3fb0f37ba6aa6f24",
+  "key": "dlg.sic.enganyar1",
+  "who": "sic"
+ },
+ "sic2188138230": {
+  "hash": "afe22edd33957340",
+  "key": "dlg.sic.enganyar2",
+  "who": "sic"
+ },
+ "sic25136634": {
+  "hash": "d16b2e6e82a2e3ab",
+  "key": "sala.fabrica_calderes.porta_cambra.sic",
+  "who": "sic"
+ },
+ "sic3166625232": {
+  "hash": "9ef09532e719405d",
+  "key": "dlg.sic.director1",
+  "who": "sic"
+ },
+ "sic3216958089": {
+  "hash": "2abc782842d68637",
+  "key": "dlg.sic.director2",
+  "who": "sic"
+ },
+ "sic345207752": {
+  "hash": "4a8897d99ad086ef",
+  "key": "dlg.sic.que_passa1",
+  "who": "sic"
+ },
+ "sic3596138894": {
+  "hash": "3fcb761e9673f268",
+  "key": "dlg.sic.passar1",
+  "who": "sic"
+ },
+ "sic3718560278": {
+  "hash": "d16b2e6e82a2e3ab",
+  "key": "dlg.sic.adeu",
+  "who": "sic"
+ },
+ "sic378762990": {
+  "hash": "29dd69cb66944b78",
+  "key": "dlg.sic.que_passa3",
+  "who": "sic"
+ },
+ "sic395540609": {
+  "hash": "e1c9ebb7e93edb67",
+  "key": "dlg.sic.que_passa2",
+  "who": "sic"
+ },
+ "vet1021255830": {
+  "hash": "ba2b92c77eb9a8b5",
+  "key": "nota_perduda.2.look",
+  "who": "vet"
+ },
+ "vet1063124563": {
+  "hash": "275afe2dad533cb0",
+  "key": "sala.gavina_cella.reixa.fugir_altra2",
+  "who": "vet"
+ },
+ "vet1064786102": {
+  "hash": "dd799d4e964a8602",
+  "key": "sala.gavina_cella.panell.vibra",
+  "who": "vet"
+ },
+ "vet1070927356": {
+  "hash": "dabe36db0115a752",
+  "key": "sala.gavina_hangar.comporta.oberta",
+  "who": "vet"
+ },
+ "vet1078831065": {
+  "hash": "9e641efe6c1f63fd",
+  "key": "dlg.guardia.opt.adeu",
+  "who": "vet"
+ },
+ "vet1084571767": {
+  "hash": "84d03610de008331",
+  "key": "finestra.espera.vet.nota_vet_nom",
+  "who": "vet"
+ },
+ "vet1134079497": {
+  "hash": "391253010a1ad1ff",
+  "key": "finestra.enviat.nota_pany",
+  "who": "vet"
+ },
+ "vet1138624211": {
+  "hash": "a88b00f96a820ad8",
+  "key": "dlg.mos.distreure3",
+  "who": "vet"
+ },
+ "vet1141718003": {
+  "hash": "8a97fe6da2571452",
+  "key": "obj.nota_mida.desc",
+  "who": "vet"
+ },
+ "vet1146210617": {
+  "hash": "01e520f6d9c5e476",
+  "key": "finestra.rebut.nota_iri_nom",
+  "who": "vet"
+ },
+ "vet1165416218": {
+  "hash": "beae31db2e7975d5",
+  "key": "sala.gavina_cella.llitera.molla",
+  "who": "vet"
+ },
+ "vet1176619263": {
+  "hash": "189e96e84e060e82",
+  "key": "obj.llibreta_torn.vet_glossari",
+  "who": "vet"
+ },
+ "vet1217388888": {
+  "hash": "0d7add9fa96510a9",
+  "key": "obj.clau_vitrina.desc",
+  "who": "vet"
+ },
+ "vet1223275518": {
+  "hash": "a4335d043cb38701",
+  "key": "sala.gavina_memoria.vitrina.tancada",
+  "who": "vet"
+ },
+ "vet1229810710": {
+  "hash": "d9c56c11d757c2f0",
+  "key": "finestra.enviat.nota_vet",
+  "who": "vet"
+ },
+ "vet1237656589": {
+  "hash": "f478ecbaa4781904",
+  "key": "sala.gavina_cella.reixa.soldada",
+  "who": "vet"
+ },
+ "vet1240045152": {
+  "hash": "ec0fdc44d691c7b3",
+  "key": "finestra.tret",
+  "who": "vet"
+ },
+ "vet1249597872": {
+  "hash": "14e1356dba401fba",
+  "key": "sala.gavina_memoria.mapa.ruta",
+  "who": "vet"
+ },
+ "vet1257738260": {
+  "hash": "60f9c44b0efa3413",
+  "key": "sala.gavina_hangar.conducte.tocar",
+  "who": "vet"
+ },
+ "vet1258712235": {
+  "hash": "986ff90b9efdbd9c",
+  "key": "sala.gavina_cella.panell.mapa2",
+  "who": "vet"
+ },
+ "vet1267233729": {
+  "hash": "70cf069f7b8b2731",
+  "key": "obj.llapis_ulls.desc",
+  "who": "vet"
+ },
+ "vet1269402782": {
+  "hash": "60c7e6382909f924",
+  "key": "finestra.buida",
+  "who": "vet"
+ },
+ "vet1295929455": {
+  "hash": "788d42319742ece7",
+  "key": "finestra.rebut.tram_biga_1",
+  "who": "vet"
+ },
+ "vet1302300187": {
+  "hash": "3756b76bdda80634",
+  "key": "finestra.armat_buit",
+  "who": "vet"
+ },
+ "vet1304524274": {
+  "hash": "ba01d5c3ab6ffeeb",
+  "key": "obj.tram_biga.falta",
+  "who": "vet"
+ },
+ "vet130827791": {
+  "hash": "c23735c333fa4360",
+  "key": "sala.gavina_memoria.fullets.look",
+  "who": "vet"
+ },
+ "vet1309125904": {
+  "hash": "20091b3f40a5bca5",
+  "key": "nota_perduda.2.vet",
+  "who": "vet"
+ },
+ "vet131009064": {
+  "hash": "9376cc907f6c3af1",
+  "key": "obj.llapis.resposta2",
+  "who": "vet"
+ },
+ "vet1312707074": {
+  "hash": "10b1b0ec59f33a12",
+  "key": "finestra.rebut.tram_biga_2",
+  "who": "vet"
+ },
+ "vet1324352743": {
+  "hash": "e7986870e355f936",
+  "key": "sala.gavina_cella.reixa.entrar",
+  "who": "vet"
+ },
+ "vet1327655665": {
+  "hash": "08c3137c85f46b68",
+  "key": "sala.gavina_hangar.comporta.tram",
+  "who": "vet"
+ },
+ "vet1329484693": {
+  "hash": "cc9113b32b6ec725",
+  "key": "finestra.rebut.tram_biga_3",
+  "who": "vet"
+ },
+ "vet1364713339": {
+  "hash": "554aad743529e4b9",
+  "key": "obj.nota_iri.correspondencia.vet2",
+  "who": "vet"
+ },
+ "vet1381490958": {
+  "hash": "dcceb489292dd002",
+  "key": "obj.nota_iri.correspondencia.vet1",
+  "who": "vet"
+ },
+ "vet1383744024": {
+  "hash": "77155188fa570628",
+  "key": "obj.nota_amagatall.desc",
+  "who": "vet"
+ },
+ "vet1385146033": {
+  "hash": "2d90fdc09ea580da",
+  "key": "finestra.enviat.mapa_fuga",
+  "who": "vet"
+ },
+ "vet138708000": {
+  "hash": "811f693a848fc05f",
+  "key": "obj.llapis_ulls.encara_no",
+  "who": "vet"
+ },
+ "vet1392717192": {
+  "hash": "3394c255ee0804d3",
+  "key": "finestra.rebut_res",
+  "who": "vet"
+ },
+ "vet1414025413": {
+  "hash": "65181b64d88c9c35",
+  "key": "obj.formulari_27be.desc",
+  "who": "vet"
+ },
+ "vet1421932728": {
+  "hash": "b7273e01a21bd016",
+  "key": "obj.biga_acer.desc",
+  "who": "vet"
+ },
+ "vet1438780452": {
+  "hash": "95b6f153b2dce48d",
+  "key": "obj.escarabat.parlar",
+  "who": "vet"
+ },
+ "vet1446731912": {
+  "hash": "951b944552af38ab",
+  "key": "sala.gavina_hangar.conducte.look_ple",
+  "who": "vet"
+ },
+ "vet147860619": {
+  "hash": "e73d0ee813e8f12a",
+  "key": "obj.molla.arronsar",
+  "who": "vet"
+ },
+ "vet147904917": {
+  "hash": "7b6946978056a6b8",
+  "key": "dlg.directora.opt.adeu",
+  "who": "vet"
+ },
+ "vet1498859982": {
+  "hash": "2761f718c2f930e8",
+  "key": "nota_perduda.4.vet",
+  "who": "vet"
+ },
+ "vet1506260460": {
+  "hash": "8db00093991741cb",
+  "key": "finestra.posat.nota_vet",
+  "who": "vet"
+ },
+ "vet152753470": {
+  "hash": "37823ffbeca88752",
+  "key": "sala.gavina_hangar.placa.buida",
+  "who": "vet"
+ },
+ "vet1528849636": {
+  "hash": "ccb0dd65471dfc6f",
+  "key": "obj.diapaso.look_vet",
+  "who": "vet"
+ },
+ "vet1529397728": {
+  "hash": "a70ef5f0608cd0a5",
+  "key": "sala.gavina_cella.reixa.fugir2_mapa",
+  "who": "vet"
+ },
+ "vet1547576745": {
+  "hash": "8ae21745068ab094",
+  "key": "obj.segell.formulari",
+  "who": "vet"
+ },
+ "vet1550565331": {
+  "hash": "d660a1c662ba0bbb",
+  "key": "obj.notes_perdudes.look",
+  "who": "vet"
+ },
+ "vet1556435426": {
+  "hash": "240e3a5cc6952dea",
+  "key": "obj.caixa_eines.desc",
+  "who": "vet"
+ },
+ "vet1561848787": {
+  "hash": "f192277f57f9197b",
+  "key": "obj.llapis_ulls.massa",
+  "who": "vet"
+ },
+ "vet1581711995": {
+  "hash": "13609cd02d15e3f0",
+  "key": "obj.fitxa_mira.vet_canvi2",
+  "who": "vet"
+ },
+ "vet1587501859": {
+  "hash": "39af9b6feb213366",
+  "key": "dlg.mos.opt.reciclatge",
+  "who": "vet"
+ },
+ "vet1598489614": {
+  "hash": "45e03665f3d37b0e",
+  "key": "obj.fitxa_mira.vet_canvi1",
+  "who": "vet"
+ },
+ "vet1600279264": {
+  "hash": "ebe5a60ef62a7219",
+  "key": "obj.formulari_segellat.desc",
+  "who": "vet"
+ },
+ "vet160175038": {
+  "hash": "d9421669139106d0",
+  "key": "sala.gavina_hangar.sortida_conducte.entrar_mapa",
+  "who": "vet"
+ },
+ "vet1613227907": {
+  "hash": "f942fde350aed863",
+  "key": "obj.escarabat.desc",
+  "who": "vet"
+ },
+ "vet1613250253": {
+  "hash": "a534f4d0aa30f72d",
+  "key": "sala.gavina_hangar.llancadora.look_sense_tub",
+  "who": "vet"
+ },
+ "vet1632542156": {
+  "hash": "7bb94d15139aa0eb",
+  "key": "sala.gavina_cella.panell.parpelleja",
+  "who": "vet"
+ },
+ "vet164961328": {
+  "hash": "3edf78d775ebe608",
+  "key": "sala.fabrica_moll.serrar2",
+  "who": "vet"
+ },
+ "vet1681696576": {
+  "hash": "147b7550e188b41b",
+  "key": "sala.gavina_hangar.escala.aigua",
+  "who": "vet"
+ },
+ "vet1687969962": {
+  "hash": "3f19c8f6245c8d25",
+  "key": "obj.plomall.desc",
+  "who": "vet"
+ },
+ "vet1715484856": {
+  "hash": "af92a31bc078e3fc",
+  "key": "obj.llapis.nom1",
+  "who": "vet"
+ },
+ "vet1716312333": {
+  "hash": "80d5c0f4d099268f",
+  "key": "finestra.rebut",
+  "who": "vet"
+ },
+ "vet1733085952": {
+  "hash": "f2d0fb1e8fcf6913",
+  "key": "ui.defecte.talkTo.vet.3",
+  "who": "vet"
+ },
+ "vet1739314808": {
+  "hash": "63e97a975aa43875",
+  "key": "sala.gavina_memoria.mapa.ruta_copiada",
+  "who": "vet"
+ },
+ "vet1739950782": {
+  "hash": "6e7e2a07efc1c73b",
+  "key": "obj.mapa_fuga.desc",
+  "who": "vet"
+ },
+ "vet1741118004": {
+  "hash": "4c7ba74230634d5d",
+  "key": "obj.fullet_memoria.desc",
+  "who": "vet"
+ },
+ "vet1749863571": {
+  "hash": "780b7cf2ddf1c033",
+  "key": "ui.defecte.talkTo.vet.2",
+  "who": "vet"
+ },
+ "vet17553199": {
+  "hash": "7f2b32adb0c786c6",
+  "key": "sala.gavina_hangar.llancadora.sense_pressio",
+  "who": "vet"
+ },
+ "vet1765817713": {
+  "hash": "f375ea54e2dd5a9f",
+  "key": "obj.llapis.nom2",
+  "who": "vet"
+ },
+ "vet1797355095": {
+  "hash": "f964b4f83fee66d3",
+  "key": "sala.gavina_hangar.marca_sabuda",
+  "who": "vet"
+ },
+ "vet1797967388": {
+  "hash": "fb4448937a480fe3",
+  "key": "obj.llapis_ulls.nom2",
+  "who": "vet"
+ },
+ "vet181341921": {
+  "hash": "1d3211e631636245",
+  "key": "obj.llapis.resposta1",
+  "who": "vet"
+ },
+ "vet1830660714": {
+  "hash": "b2a0706bfdff9f25",
+  "key": "ui.defecte.give.vet.3",
+  "who": "vet"
+ },
+ "vet1843344676": {
+  "hash": "008452ee5bfcf4df",
+  "key": "sala.gavina_memoria.mapa.vet1",
+  "who": "vet"
+ },
+ "vet1847438333": {
+  "hash": "930f333b92d4be29",
+  "key": "ui.defecte.give.vet.2",
+  "who": "vet"
+ },
+ "vet1848300245": {
+  "hash": "241e45508adcb014",
+  "key": "obj.llapis_ulls.nom1",
+  "who": "vet"
+ },
+ "vet1856764265": {
+  "hash": "e03802993ad1acf1",
+  "key": "obj.placa_cargol.vet_buida",
+  "who": "vet"
+ },
+ "vet1856782673": {
+  "hash": "c3ada072bac3ac69",
+  "key": "finestra.enviat.molla",
+  "who": "vet"
+ },
+ "vet1863453890": {
+  "hash": "5fa6c0cab2d58f03",
+  "key": "sala.gavina_passadis.cartell.altre",
+  "who": "vet"
+ },
+ "vet1865715257": {
+  "hash": "fc06ea28f8650ced",
+  "key": "obj.nota_mos.desc",
+  "who": "vet"
+ },
+ "vet1869323993": {
+  "hash": "42428aaadb2fae98",
+  "key": "obj.llapis_ulls.mapa_tub",
+  "who": "vet"
+ },
+ "vet1870555995": {
+  "hash": "5fab47fad4b12aae",
+  "key": "sala.gavina_passadis.fi1",
+  "who": "vet"
+ },
+ "vet1884690563": {
+  "hash": "f830b1b1afa26b17",
+  "key": "obj.fitxa_mira.vet",
+  "who": "vet"
+ },
+ "vet1885214680": {
+  "hash": "c8494ae4d8867641",
+  "key": "dlg.directora.tub2",
+  "who": "vet"
+ },
+ "vet1885961377": {
+  "hash": "1189fb6a203d2767",
+  "key": "dlg.directora.opt.que_vol",
+  "who": "vet"
+ },
+ "vet1887333614": {
+  "hash": "9cc934652df4daf4",
+  "key": "sala.gavina_passadis.fi2",
+  "who": "vet"
+ },
+ "vet18916907": {
+  "hash": "8493ae506d5050fe",
+  "key": "obj.segell.desc",
+  "who": "vet"
+ },
+ "vet1893677533": {
+  "hash": "241d23b35b3ed96f",
+  "key": "sala.gavina_memoria.mapa.vet2",
+  "who": "vet"
+ },
+ "vet1904776645": {
+  "hash": "52d3479fb95392d7",
+  "key": "sala.gavina_hangar.placa.look_pilar",
+  "who": "vet"
+ },
+ "vet1908545230": {
+  "hash": "23b95d101c4d010e",
+  "key": "sala.gavina_cella.safata.agafar",
+  "who": "vet"
+ },
+ "vet1934133987": {
+  "hash": "178471f03b0d0fcb",
+  "key": "sala.gavina_hangar.placa.ferro9_2",
+  "who": "vet"
+ },
+ "vet1934768716": {
+  "hash": "9d9af2fcdaf36edc",
+  "key": "obj.llibreta_torn.vet2",
+  "who": "vet"
+ },
+ "vet1943508268": {
+  "hash": "d294c7f7ad803c6f",
+  "key": "sala.gavina_hangar.llancadora.porta_tancada",
+  "who": "vet"
+ },
+ "vet1950911606": {
+  "hash": "b51980e4423ab45d",
+  "key": "sala.gavina_hangar.placa.ferro9_1",
+  "who": "vet"
+ },
+ "vet1956127577": {
+  "hash": "d36bf4de564c696b",
+  "key": "sala.gavina_memoria.vitrina.vet",
+  "who": "vet"
+ },
+ "vet1968323954": {
+  "hash": "c93d4c6fbcde3d8d",
+  "key": "obj.llibreta_torn.vet0",
+  "who": "vet"
+ },
+ "vet1969269541": {
+  "hash": "4088d4de8ab47326",
+  "key": "sala.gavina_cella.panell.armat",
+  "who": "vet"
+ },
+ "vet1971849852": {
+  "hash": "b3ce5c7e4e33c23c",
+  "key": "obj.mapa_fuga.conducte",
+  "who": "vet"
+ },
+ "vet1979284319": {
+  "hash": "7ee0e17940ea14a7",
+  "key": "sala.gavina_hangar.comporta.mesurar1",
+  "who": "vet"
+ },
+ "vet1985101573": {
+  "hash": "a85b9787495ac6d6",
+  "key": "obj.llibreta_torn.vet1",
+  "who": "vet"
+ },
+ "vet1996061938": {
+  "hash": "d05d4e3b71a3dbd6",
+  "key": "sala.gavina_hangar.comporta.mesurar2",
+  "who": "vet"
+ },
+ "vet1996677876": {
+  "hash": "c108dff46934dc68",
+  "key": "sala.gavina_hangar.intro2",
+  "who": "vet"
+ },
+ "vet2002982581": {
+  "hash": "bb69e2c30e279209",
+  "key": "sala.gavina_cella.porta.look",
+  "who": "vet"
+ },
+ "vet200892862": {
+  "hash": "47dd008ff6128877",
+  "key": "sala.gavina_hangar.pany.obert",
+  "who": "vet"
+ },
+ "vet2012839557": {
+  "hash": "0dd9bac57ae82da0",
+  "key": "sala.gavina_hangar.comporta.mesurar3",
+  "who": "vet"
+ },
+ "vet20188921": {
+  "hash": "93f2934c4609e4c2",
+  "key": "ui.defecte",
+  "who": "vet"
+ },
+ "vet2021545433": {
+  "hash": "36f6e5cd70d5d71b",
+  "key": "finestra.rebuig.no_cal_vet_abans",
+  "who": "vet"
+ },
+ "vet202836946": {
+  "hash": "4bf13ce3d57a7790",
+  "key": "sala.gavina_cella.reixa.look_oberta_fosc",
+  "who": "vet"
+ },
+ "vet2030982655": {
+  "hash": "3fc7adb08b85b0b2",
+  "key": "sala.gavina_cella.panell.obrir1",
+  "who": "vet"
+ },
+ "vet2032776778": {
+  "hash": "54ccba5e7234a209",
+  "key": "finestra.ja_armat",
+  "who": "vet"
+ },
+ "vet2034885010": {
+  "hash": "a7e1e8c5b274db9c",
+  "key": "dlg.mos.opt.maquillatge",
+  "who": "vet"
+ },
+ "vet2047010733": {
+  "hash": "6156ab275c6431eb",
+  "key": "sala.gavina_hangar.intro1",
+  "who": "vet"
+ },
+ "vet2047760274": {
+  "hash": "0fcb5e85479ba1f6",
+  "key": "sala.gavina_cella.panell.obrir2",
+  "who": "vet"
+ },
+ "vet2056140267": {
+  "hash": "e5789e0ed09f063f",
+  "key": "sala.fabrica_moll.biga_acer.serra_no",
+  "who": "vet"
+ },
+ "vet2057736403": {
+  "hash": "bf489f404273915e",
+  "key": "ui.defecte.close",
+  "who": "vet"
+ },
+ "vet2060970291": {
+  "hash": "613ed81ed901614b",
+  "key": "sala.gavina_hangar.llancadora.molla_igual2",
+  "who": "vet"
+ },
+ "vet2067226745": {
+  "hash": "60f3cb847ae26cef",
+  "key": "sala.gavina_cella.altaveu.look",
+  "who": "vet"
+ },
+ "vet2077747910": {
+  "hash": "39d21da07cfe4879",
+  "key": "sala.gavina_hangar.llancadora.molla_igual1",
+  "who": "vet"
+ },
+ "vet2084605702": {
+  "hash": "0fbb56005311709c",
+  "key": "sala.gavina_cella.directora.look",
+  "who": "vet"
+ },
+ "vet2089466272": {
+  "hash": "25feaade93797277",
+  "key": "sala.gavina_cella.porta.imant1",
+  "who": "vet"
+ },
+ "vet2096699672": {
+  "hash": "03fcfc8377be2c7b",
+  "key": "sala.gavina_hangar.llancadora.diapaso_no",
+  "who": "vet"
+ },
+ "vet2110942916": {
+  "hash": "3c37ff73c0102759",
+  "key": "sala.gavina_passadis.cartell.agafar",
+  "who": "vet"
+ },
  "vet2112838553": {
-  "hash": "846ed1deabb1a72b",
+  "hash": "caa0b477ea373cab",
   "key": "dlg.mare.opt.sortir",
   "who": "vet"
  },
+ "vet2113628355": {
+  "hash": "c5e3419381665084",
+  "key": "sala.gavina_memoria.vitrina.tocar",
+  "who": "vet"
+ },
+ "vet2128567173": {
+  "hash": "eaf016c7f2304986",
+  "key": "dlg.mos.opt.veus",
+  "who": "vet"
+ },
+ "vet2135990388": {
+  "hash": "24be86c8c1ec9ad1",
+  "key": "sala.gavina_memoria.foto.vet2",
+  "who": "vet"
+ },
+ "vet2139799129": {
+  "hash": "3206fed657bf16b3",
+  "key": "sala.gavina_cella.porta.imant2",
+  "who": "vet"
+ },
+ "vet2140124377": {
+  "hash": "a0e538a5f2975b69",
+  "key": "ui.defecte.open",
+  "who": "vet"
+ },
+ "vet2140410479": {
+  "hash": "cd5f8ae03e129542",
+  "key": "obj.placa_cargol.desc",
+  "who": "vet"
+ },
+ "vet2140552524": {
+  "hash": "0807ee4f2568be24",
+  "key": "sala.gavina_hangar.conducte.look_pressio",
+  "who": "vet"
+ },
+ "vet215294185": {
+  "hash": "56f44a7138264e77",
+  "key": "sala.fabrica_moll.serrar1",
+  "who": "vet"
+ },
+ "vet2173998478": {
+  "hash": "e4a2fbbb1d27733c",
+  "key": "obj.serra.desc",
+  "who": "vet"
+ },
+ "vet2186323245": {
+  "hash": "7984ae65d4da12f2",
+  "key": "sala.gavina_memoria.foto.vet1",
+  "who": "vet"
+ },
+ "vet2223424114": {
+  "hash": "a4d8e76041e17f18",
+  "key": "finestra.enviat.nota_massa",
+  "who": "vet"
+ },
+ "vet2234772196": {
+  "hash": "a473dc481052faab",
+  "key": "nota_perduda.trobada_mos",
+  "who": "vet"
+ },
+ "vet2238332006": {
+  "hash": "52f3cbc43ecbddf8",
+  "key": "finestra.espera.vet.nota_vet",
+  "who": "vet"
+ },
+ "vet2247044161": {
+  "hash": "e71da462e3c2f9fd",
+  "key": "finestra.espera.vet.mapa_fuga",
+  "who": "vet"
+ },
+ "vet2248345607": {
+  "hash": "ed511494728d5f04",
+  "key": "sala.gavina_cella.fullet.look",
+  "who": "vet"
+ },
+ "vet2256514032": {
+  "hash": "35f84efd9586fc6f",
+  "key": "dlg.directora.tornada2",
+  "who": "vet"
+ },
+ "vet2260690030": {
+  "hash": "0b0ac57ab83ce74e",
+  "key": "sala.gavina_memoria.fullets.prou",
+  "who": "vet"
+ },
+ "vet2264466193": {
+  "hash": "20e4bb01672aa97a",
+  "key": "obj.llapis_ulls.mida",
+  "who": "vet"
+ },
+ "vet2271319886": {
+  "hash": "95a1978229fead11",
+  "key": "obj.carta_mos.desc",
+  "who": "vet"
+ },
+ "vet2275671678": {
+  "hash": "7394b442a31aa843",
+  "key": "sala.gavina_memoria.holograma.look",
+  "who": "vet"
+ },
+ "vet2276605390": {
+  "hash": "2ce75d034bc1a829",
+  "key": "obj.avis_reciclatge.desc",
+  "who": "vet"
+ },
+ "vet2278334726": {
+  "hash": "69c2f04476a9d845",
+  "key": "sala.gavina_hangar.llancadora.oberta",
+  "who": "vet"
+ },
+ "vet2304266754": {
+  "hash": "a9836caf66017574",
+  "key": "obj.notes_perdudes.look_una",
+  "who": "vet"
+ },
+ "vet2317043052": {
+  "hash": "58c479c0520208bc",
+  "key": "obj.fitxa_mira.vet_acusada",
+  "who": "vet"
+ },
+ "vet2319335105": {
+  "hash": "2f7ea63b9ed9066f",
+  "key": "finestra.espera.vet.molla",
+  "who": "vet"
+ },
+ "vet2341803768": {
+  "hash": "e1a91f8803ddeb40",
+  "key": "finestra.rebut.clau_anglesa",
+  "who": "vet"
+ },
+ "vet2360261900": {
+  "hash": "8ac732a88e3fb602",
+  "key": "obj.planols.desc",
+  "who": "vet"
+ },
+ "vet2364044490": {
+  "hash": "d6a8d9aedcfc104c",
+  "key": "sala.gavina_hangar.escala.look_aigua",
+  "who": "vet"
+ },
+ "vet2381880269": {
+  "hash": "523f94d5b0b6373c",
+  "key": "finestra.boto_automatic",
+  "who": "vet"
+ },
+ "vet240046641": {
+  "hash": "22531435b9311c18",
+  "key": "obj.fitxa_mira.desc",
+  "who": "vet"
+ },
+ "vet2409010100": {
+  "hash": "14b7582253856b25",
+  "key": "sala.gavina_hangar.llancadora.engegar2",
+  "who": "vet"
+ },
  "vet242503146": {
-  "hash": "1d62cdcecfc18484",
+  "hash": "c055dcd931a4ed00",
   "key": "dlg.mare.reciclatge2",
   "who": "vet"
  },
+ "vet2425787719": {
+  "hash": "2f36a393d391854a",
+  "key": "sala.gavina_hangar.llancadora.engegar3",
+  "who": "vet"
+ },
+ "vet2449154476": {
+  "hash": "32bc1aacbfd1f291",
+  "key": "obj.clau_anglesa.desc",
+  "who": "vet"
+ },
+ "vet245817064": {
+  "hash": "c4d08d4fddf7e762",
+  "key": "sala.gavina_cella.escarabat.agafar",
+  "who": "vet"
+ },
+ "vet2459342957": {
+  "hash": "d624431f691bb947",
+  "key": "sala.gavina_hangar.llancadora.engegar1",
+  "who": "vet"
+ },
+ "vet247244412": {
+  "hash": "dcba4fde430b8a49",
+  "key": "obj.tub_ferro9.desc",
+  "who": "vet"
+ },
+ "vet2501501148": {
+  "hash": "e993539a753c1ef5",
+  "key": "obj.nota_iri_nom.vet1",
+  "who": "vet"
+ },
+ "vet2504217081": {
+  "hash": "7ee68ddb303be291",
+  "key": "finestra.espera.vet.nota_pany",
+  "who": "vet"
+ },
+ "vet2515633492": {
+  "hash": "d68b1aa3f109417b",
+  "key": "sala.gavina_memoria.vitrina.sense_placa",
+  "who": "vet"
+ },
+ "vet2523804224": {
+  "hash": "d7cb5f27fef9025e",
+  "key": "ui.defecte.open.vet",
+  "who": "vet"
+ },
+ "vet2528579843": {
+  "hash": "619d5a921ae8a15c",
+  "key": "sala.gavina_hangar.pany.look",
+  "who": "vet"
+ },
+ "vet2549207289": {
+  "hash": "2f1615dd1c76ac46",
+  "key": "obj.molla.afinada",
+  "who": "vet"
+ },
+ "vet2562563445": {
+  "hash": "bc7e9a18f3b729d0",
+  "key": "sala.gavina_hangar.llancadora.molla_aguda",
+  "who": "vet"
+ },
+ "vet2564027599": {
+  "hash": "1e8c7de704285281",
+  "key": "sala.gavina_hangar.sortida_conducte.look",
+  "who": "vet"
+ },
+ "vet2569843450": {
+  "hash": "3617fd4026d9ee72",
+  "key": "finestra.enviat.nota_mida",
+  "who": "vet"
+ },
+ "vet2574686895": {
+  "hash": "6290757b53cd9a6f",
+  "key": "sala.gavina_memoria.vitrina.obrir1",
+  "who": "vet"
+ },
+ "vet2591464514": {
+  "hash": "e11998ed9f3b0309",
+  "key": "sala.gavina_memoria.vitrina.obrir2",
+  "who": "vet"
+ },
+ "vet2595951559": {
+  "hash": "75f720a7bdb673df",
+  "key": "obj.nota_massa.desc",
+  "who": "vet"
+ },
+ "vet2597098008": {
+  "hash": "8579c5bec50bbe09",
+  "key": "sala.gavina_cella.fullet.agafar",
+  "who": "vet"
+ },
+ "vet2600995304": {
+  "hash": "de418775a0f4a98f",
+  "key": "sala.gavina_cella.reixa.fugir2",
+  "who": "vet"
+ },
+ "vet2607692500": {
+  "hash": "2b995f6d95152b06",
+  "key": "obj.diapaso.greu",
+  "who": "vet"
+ },
+ "vet2619700804": {
+  "hash": "5259025179d10a8f",
+  "key": "ui.defecte.look.vet.3",
+  "who": "vet"
+ },
+ "vet2619858764": {
+  "hash": "c9a8353f33e492e4",
+  "key": "obj.imant_ferro9.vet",
+  "who": "vet"
+ },
+ "vet2631698016": {
+  "hash": "004486db64079199",
+  "key": "nota_perduda.4.look",
+  "who": "vet"
+ },
+ "vet2636426988": {
+  "hash": "5431e45d201e717b",
+  "key": "finestra.enviat",
+  "who": "vet"
+ },
+ "vet2636478423": {
+  "hash": "ce639c24a2ccacd8",
+  "key": "ui.defecte.look.vet.2",
+  "who": "vet"
+ },
+ "vet2636996996": {
+  "hash": "a80bdf1c54ea394c",
+  "key": "obj.llima.desc",
+  "who": "vet"
+ },
+ "vet2638937591": {
+  "hash": "75f720a7bdb673df",
+  "key": "obj.nota_pressio.desc",
+  "who": "vet"
+ },
+ "vet264346282": {
+  "hash": "f9a18deb4fe3de72",
+  "key": "finestra.espera.vet.nota_mida",
+  "who": "vet"
+ },
+ "vet2656734504": {
+  "hash": "0b82704e6af79416",
+  "key": "sala.gavina_hangar.comporta.obrir1",
+  "who": "vet"
+ },
+ "vet2661210333": {
+  "hash": "f509b6884b24f461",
+  "key": "obj.llapis.res",
+  "who": "vet"
+ },
+ "vet2685559476": {
+  "hash": "627bb06152bc507b",
+  "key": "ui.defecte.push.vet.2",
+  "who": "vet"
+ },
+ "vet2690289742": {
+  "hash": "0b4c829996e3c9eb",
+  "key": "sala.gavina_hangar.comporta.obrir3",
+  "who": "vet"
+ },
+ "vet2702337095": {
+  "hash": "459a397fb812ce13",
+  "key": "ui.defecte.push.vet.3",
+  "who": "vet"
+ },
+ "vet2713771007": {
+  "hash": "86ba52cea0b77e07",
+  "key": "obj.llapis_ulls.pressio",
+  "who": "vet"
+ },
+ "vet2715193563": {
+  "hash": "1e3f6ce595a8650b",
+  "key": "sala.gavina_cella.reixa.look_llimada",
+  "who": "vet"
+ },
+ "vet2715637868": {
+  "hash": "c05bc0178e7b8b20",
+  "key": "obj.imant_ferro9.desc",
+  "who": "vet"
+ },
+ "vet2723137892": {
+  "hash": "3adf50ea622386a1",
+  "key": "sala.gavina_hangar.placa.look",
+  "who": "vet"
+ },
+ "vet2726094172": {
+  "hash": "fca41d993a6ff781",
+  "key": "finestra.rebut.nota_iri",
+  "who": "vet"
+ },
+ "vet2726912870": {
+  "hash": "f0feb2cbe7173778",
+  "key": "sala.gavina_cella.reixa.fletxes",
+  "who": "vet"
+ },
+ "vet2732386277": {
+  "hash": "7b950e2f42130c62",
+  "key": "sala.gavina_cella.tub2",
+  "who": "vet"
+ },
+ "vet2735005796": {
+  "hash": "27dad6f646a14c75",
+  "key": "sala.gavina_passadis.fi2b",
+  "who": "vet"
+ },
+ "vet2740622599": {
+  "hash": "f555bde94572f8fb",
+  "key": "sala.gavina_hangar.comporta.obrir4",
+  "who": "vet"
+ },
+ "vet2749715525": {
+  "hash": "105aed6bf85da689",
+  "key": "sala.gavina_passadis.guardia.look",
+  "who": "vet"
+ },
+ "vet2750387546": {
+  "hash": "10dde87b102e3680",
+  "key": "sala.gavina_passadis.porta_memoria.tancada",
+  "who": "vet"
+ },
+ "vet2756720065": {
+  "hash": "7b473809bacd80c5",
+  "key": "obj.escarabat.look",
+  "who": "vet"
+ },
+ "vet2775765767": {
+  "hash": "de339c340cebde58",
+  "key": "finestra.rebuig.no_cal_vet",
+  "who": "vet"
+ },
+ "vet2791630681": {
+  "hash": "fa3ab07ba501ac82",
+  "key": "obj.molla.estirar",
+  "who": "vet"
+ },
+ "vet2800992571": {
+  "hash": "ee1d7dfe5d74818f",
+  "key": "dlg.mos.opt.adeu",
+  "who": "vet"
+ },
+ "vet2804340001": {
+  "hash": "de7ac312bc17a04b",
+  "key": "finestra.enviat.pols_rovell",
+  "who": "vet"
+ },
+ "vet281730222": {
+  "hash": "dd3ac19e4d2d4949",
+  "key": "sala.gavina_hangar.comporta.encallada",
+  "who": "vet"
+ },
+ "vet2830113504": {
+  "hash": "c2da16dbc3a2bd5e",
+  "key": "obj.llima.llimar",
+  "who": "vet"
+ },
+ "vet2847713351": {
+  "hash": "fd47d39a406294e5",
+  "key": "sala.gavina_hangar.llancadora.fugir1",
+  "who": "vet"
+ },
+ "vet2850429462": {
+  "hash": "b8cff0edebf23ede",
+  "key": "obj.biga_ferro9.desc",
+  "who": "vet"
+ },
+ "vet2864490970": {
+  "hash": "2e8756fac9d79863",
+  "key": "sala.gavina_hangar.llancadora.fugir2",
+  "who": "vet"
+ },
+ "vet2865061857": {
+  "hash": "5f21f157065fa9ff",
+  "key": "obj.notes_perdudes.desc",
+  "who": "vet"
+ },
+ "vet2881268589": {
+  "hash": "d5ac703365ad9a67",
+  "key": "sala.gavina_hangar.llancadora.fugir3",
+  "who": "vet"
+ },
+ "vet2882787100": {
+  "hash": "3a780568afb8364e",
+  "key": "finestra.espera.vet",
+  "who": "vet"
+ },
+ "vet288393674": {
+  "hash": "01da08c1078acf14",
+  "key": "finestra.posat",
+  "who": "vet"
+ },
+ "vet2900744097": {
+  "hash": "6a0e161ad34ea665",
+  "key": "ui.defecte.give.vet",
+  "who": "vet"
+ },
+ "vet2900875197": {
+  "hash": "623cd0a1561df26b",
+  "key": "finestra.esgotada",
+  "who": "vet"
+ },
+ "vet2904219508": {
+  "hash": "78b2efd4411d7b23",
+  "key": "sala.gavina_memoria.cargol_vell.look",
+  "who": "vet"
+ },
+ "vet2907986088": {
+  "hash": "2e58510144793366",
+  "key": "obj.diapaso.look_afinat",
+  "who": "vet"
+ },
+ "vet2914394357": {
+  "hash": "6d0d02cd6cf4dd93",
+  "key": "nota_perduda.una_mes",
+  "who": "vet"
+ },
+ "vet2938232209": {
+  "hash": "091249ad9081a728",
+  "key": "obj.carnet_exemplar.desc",
+  "who": "vet"
+ },
+ "vet2938638492": {
+  "hash": "050b129f217207cc",
+  "key": "dlg.directora.opt.iri",
+  "who": "vet"
+ },
+ "vet2956786721": {
+  "hash": "7900e4c7239bf8ad",
+  "key": "sala.gavina_cella.panell.molla_no",
+  "who": "vet"
+ },
+ "vet2967280776": {
+  "hash": "4e4360d3a161c969",
+  "key": "sala.gavina_hangar.llancadora.look_tub",
+  "who": "vet"
+ },
+ "vet2992629136": {
+  "hash": "5f6b6ac056224c86",
+  "key": "obj.nota_vet_nom.desc",
+  "who": "vet"
+ },
+ "vet3005867010": {
+  "hash": "9cee157c46e61ab6",
+  "key": "sala.gavina_cella.reixa.look_oberta",
+  "who": "vet"
+ },
+ "vet3025470524": {
+  "hash": "fc215da63ec43c52",
+  "key": "dlg.cargol_vell.opt.adeu",
+  "who": "vet"
+ },
+ "vet3032484867": {
+  "hash": "c13856b3263ec306",
+  "key": "sala.gavina_cella.reixa.look_conducte1",
+  "who": "vet"
+ },
+ "vet30369753": {
+  "hash": "3b71826133093dbb",
+  "key": "dlg.directora.opt.adeu_pacte",
+  "who": "vet"
+ },
+ "vet3049262486": {
+  "hash": "5ea72cefa7b6f6ed",
+  "key": "sala.gavina_cella.reixa.look_conducte2",
+  "who": "vet"
+ },
+ "vet3057857803": {
+  "hash": "889a4f6e8be92815",
+  "key": "sala.gavina_cella.panell.reparar4",
+  "who": "vet"
+ },
+ "vet3060828104": {
+  "hash": "3be0b1e5109d81f5",
+  "key": "sala.gavina_cella.porta.aldaia2",
+  "who": "vet"
+ },
+ "vet3070529770": {
+  "hash": "1b6ea49adb936940",
+  "key": "sala.gavina_hangar.comporta.look_mesurar",
+  "who": "vet"
+ },
+ "vet3085373448": {
+  "hash": "84d3f68f7cbd47da",
+  "key": "obj.llapis.amagatall1",
+  "who": "vet"
+ },
+ "vet308849344": {
+  "hash": "a38bb91d58ffec20",
+  "key": "obj.llapis_ulls.nota",
+  "who": "vet"
+ },
+ "vet3099509740": {
+  "hash": "9836a0a7f9ae0361",
+  "key": "ui.defecte.pickUp.vet",
+  "who": "vet"
+ },
+ "vet3106715236": {
+  "hash": "c426a961459ed4db",
+  "key": "obj.tram_biga_2.desc",
+  "who": "vet"
+ },
+ "vet3108190660": {
+  "hash": "7813c32ec3513e44",
+  "key": "sala.gavina_cella.panell.reparar1",
+  "who": "vet"
+ },
+ "vet3108637209": {
+  "hash": "284630fa5022ec4c",
+  "key": "nota_perduda.1.look",
+  "who": "vet"
+ },
+ "vet3111160961": {
+  "hash": "747996b8205234fe",
+  "key": "sala.gavina_cella.porta.aldaia1",
+  "who": "vet"
+ },
+ "vet3115284783": {
+  "hash": "c426a961459ed4db",
+  "key": "obj.tram_biga_1.desc",
+  "who": "vet"
+ },
+ "vet3121423196": {
+  "hash": "09ed45de8bf2ec8c",
+  "key": "dlg.mos.opt.llapis_demanar",
+  "who": "vet"
+ },
+ "vet313192024": {
+  "hash": "e365f022f0ce4879",
+  "key": "obj.llapis_ulls.pany2",
+  "who": "vet"
+ },
+ "vet3132582837": {
+  "hash": "e015d97dd5129f87",
+  "key": "dlg.mos.opt.galeria",
+  "who": "vet"
+ },
+ "vet3135706305": {
+  "hash": "6f98dd4e4a889452",
+  "key": "obj.llapis.amagatall2",
+  "who": "vet"
+ },
+ "vet3136744007": {
+  "hash": "a88960dd8f5141a1",
+  "key": "finestra.enviat.nota_vet_nom",
+  "who": "vet"
+ },
+ "vet3141745898": {
+  "hash": "e918f0bf807cb9a4",
+  "key": "sala.gavina_cella.panell.reparar3",
+  "who": "vet"
+ },
+ "vet3142176267": {
+  "hash": "93b4e8839d41e249",
+  "key": "nota_perduda.3.look",
+  "who": "vet"
+ },
+ "vet3143446147": {
+  "hash": "e66b6436b322f23a",
+  "key": "obj.diapaso_espatllat.desc",
+  "who": "vet"
+ },
+ "vet3146140573": {
+  "hash": "ef417b6db3b830b1",
+  "key": "dlg.mos.opt.elogiar",
+  "who": "vet"
+ },
+ "vet3148935410": {
+  "hash": "1db6e677d76df4e5",
+  "key": "obj.pols_rovell.desc",
+  "who": "vet"
+ },
+ "vet3152428708": {
+  "hash": "a1b862823e41fb29",
+  "key": "sala.gavina_hangar.conducte.look",
+  "who": "vet"
+ },
+ "vet3158523517": {
+  "hash": "1293aa967108e2b2",
+  "key": "sala.gavina_cella.panell.reparar2",
+  "who": "vet"
+ },
+ "vet3170068929": {
+  "hash": "928854ad26776cd4",
+  "key": "obj.segell.massa",
+  "who": "vet"
+ },
+ "vet3174554892": {
+  "hash": "c39fa2da2e3e7da4",
+  "key": "sala.gavina_hangar.llancadora.molla_greu",
+  "who": "vet"
+ },
+ "vet319748519": {
+  "hash": "2dacbcb4b7e1e51f",
+  "key": "sala.gavina_cella.mos.carta1",
+  "who": "vet"
+ },
+ "vet3207767866": {
+  "hash": "11c37eca16c018e1",
+  "key": "sala.gavina_cella.molla.look",
+  "who": "vet"
+ },
+ "vet3214251248": {
+  "hash": "8e1ddb1b375d3af8",
+  "key": "sala.gavina_cella.reixa.reajust1",
+  "who": "vet"
+ },
+ "vet3222314025": {
+  "hash": "05125e2a928a4191",
+  "key": "sala.gavina_passadis.porta_memoria.look",
+  "who": "vet"
+ },
+ "vet3237044518": {
+  "hash": "1652fcf7e40e92ab",
+  "key": "obj.llibreta_torn.desc",
+  "who": "vet"
+ },
+ "vet3243214600": {
+  "hash": "dcb7e4c2887d6e25",
+  "key": "dlg.guardia.qui_vet",
+  "who": "vet"
+ },
+ "vet3243567601": {
+  "hash": "2c1924a5e799888a",
+  "key": "sala.gavina_cella.llitera.look_molles",
+  "who": "vet"
+ },
+ "vet3244815229": {
+  "hash": "7d5c1056e648a8a0",
+  "key": "sala.gavina_cella.safata.look",
+  "who": "vet"
+ },
+ "vet3254673985": {
+  "hash": "b7f5ead9b8f1e450",
+  "key": "sala.gavina_memoria.cargol_vell.placa1",
+  "who": "vet"
+ },
+ "vet3264584105": {
+  "hash": "38e950d7ece9d138",
+  "key": "sala.gavina_cella.reixa.reajust2",
+  "who": "vet"
+ },
+ "vet3265503911": {
+  "hash": "5f7425bb623d3fd8",
+  "key": "sala.gavina_hangar.llancadora.sense_pressio2",
+  "who": "vet"
+ },
+ "vet3271451604": {
+  "hash": "5436937522571823",
+  "key": "sala.gavina_memoria.cargol_vell.placa6",
+  "who": "vet"
+ },
+ "vet3277058797": {
+  "hash": "0ed390e9c70fde76",
+  "key": "sala.gavina_cella.reixa.entrar_mapa",
+  "who": "vet"
+ },
+ "vet3278263329": {
+  "hash": "3c878a9e245cdfc0",
+  "key": "dlg.guardia.opt.vitrina",
+  "who": "vet"
+ },
+ "vet3295584923": {
+  "hash": "526513f4afd74618",
+  "key": "obj.diapaso.igual2",
+  "who": "vet"
+ },
+ "vet3312362542": {
+  "hash": "fc5acddb69a32575",
+  "key": "obj.diapaso.igual1",
+  "who": "vet"
+ },
+ "vet3330933910": {
+  "hash": "14663597c67cb192",
+  "key": "dlg.mos.opt.perdo",
+  "who": "vet"
+ },
+ "vet3358550137": {
+  "hash": "b79107f01b0de77c",
+  "key": "finestra.rebuig.no_hi_cap",
+  "who": "vet"
+ },
+ "vet3363569707": {
+  "hash": "d53c4cbb2724c7c1",
+  "key": "sala.gavina_cella.panell.reparat",
+  "who": "vet"
+ },
+ "vet3372345683": {
+  "hash": "cb20dbc8390928e6",
+  "key": "sala.gavina_arxiu.expedient_iri.vet1",
+  "who": "vet"
+ },
+ "vet3389123302": {
+  "hash": "8c92852fced51adc",
+  "key": "sala.gavina_arxiu.expedient_iri.vet2",
+  "who": "vet"
+ },
+ "vet3401709884": {
+  "hash": "1e06d1e1a6af9b15",
+  "key": "sala.gavina_cella.panell.mort",
+  "who": "vet"
+ },
+ "vet3428451911": {
+  "hash": "4452821497756d6e",
+  "key": "obj.llapis_ulls.mapa_on",
+  "who": "vet"
+ },
+ "vet3434508101": {
+  "hash": "7855b61324c0ce25",
+  "key": "dlg.mos.opt.llapis",
+  "who": "vet"
+ },
+ "vet3438435707": {
+  "hash": "403470b5686b58e6",
+  "key": "obj.tub_amb_llibreta.desc",
+  "who": "vet"
+ },
+ "vet3440143436": {
+  "hash": "5e1db4c8e2a85adf",
+  "key": "sala.gavina_hangar.inundat1",
+  "who": "vet"
+ },
+ "vet3445894866": {
+  "hash": "ea12e35e1eaf99eb",
+  "key": "ui.defecte.close.vet.2",
+  "who": "vet"
+ },
+ "vet345125500": {
+  "hash": "0a7d017d8e9bad8c",
+  "key": "obj.nota_iri.desc",
+  "who": "vet"
+ },
+ "vet3462672485": {
+  "hash": "f130f20ac0317239",
+  "key": "ui.defecte.close.vet.3",
+  "who": "vet"
+ },
+ "vet3463973558": {
+  "hash": "8c2dae7f059bca2c",
+  "key": "sala.gavina_hangar.llancadora.a_punt",
+  "who": "vet"
+ },
+ "vet3490476293": {
+  "hash": "bb12d76925de439d",
+  "key": "sala.gavina_hangar.inundat2",
+  "who": "vet"
+ },
+ "vet3501475892": {
+  "hash": "aa2c1ce76d550e89",
+  "key": "finestra.rebut.imant_ferro9",
+  "who": "vet"
+ },
+ "vet3525551252": {
+  "hash": "9257f7f6a1c9ca39",
+  "key": "sala.gavina_arxiu.planols.vet2",
+  "who": "vet"
+ },
+ "vet3554904225": {
+  "hash": "b2602d0365783f87",
+  "key": "obj.llapis_ulls.cartell_aviat",
+  "who": "vet"
+ },
+ "vet3561415148": {
+  "hash": "34245c659f696481",
+  "key": "obj.llapis_ulls.fullet",
+  "who": "vet"
+ },
+ "vet356997554": {
+  "hash": "ced6012f28457751",
+  "key": "obj.diapaso.desc",
+  "who": "vet"
+ },
+ "vet3575884109": {
+  "hash": "cf71cc840470f764",
+  "key": "sala.gavina_arxiu.planols.vet1",
+  "who": "vet"
+ },
+ "vet3578183572": {
+  "hash": "25bdbf8dce6bddb9",
+  "key": "sala.gavina_hangar.placa.rovell1",
+  "who": "vet"
+ },
+ "vet3579747938": {
+  "hash": "f460d0b4b273e6ac",
+  "key": "sala.gavina_cella.reixa.look",
+  "who": "vet"
+ },
+ "vet358668528": {
+  "hash": "47fc13ef75ba5f9e",
+  "key": "sala.gavina_cella.mos.look",
+  "who": "vet"
+ },
+ "vet3596802485": {
+  "hash": "a882c577a6dcc734",
+  "key": "sala.gavina_cella.avis.agafar",
+  "who": "vet"
+ },
+ "vet3602305646": {
+  "hash": "7d9862e6674b9581",
+  "key": "ui.defecte.pull",
+  "who": "vet"
+ },
+ "vet3609698635": {
+  "hash": "70149f4a88dce229",
+  "key": "sala.gavina_passadis.porta_cella.tancada",
+  "who": "vet"
+ },
+ "vet3611738810": {
+  "hash": "673c5f1c66466853",
+  "key": "sala.gavina_hangar.placa.rovell3",
+  "who": "vet"
+ },
+ "vet3619481490": {
+  "hash": "9d33d617be98e45e",
+  "key": "finestra.ple",
+  "who": "vet"
+ },
+ "vet3621493492": {
+  "hash": "5a1c46a5d9b0a536",
+  "key": "sala.gavina_cella.porta.tancada_mare",
+  "who": "vet"
+ },
+ "vet3625718816": {
+  "hash": "0b78147ddd05687e",
+  "key": "sala.gavina_hangar.escala.descargolar2",
+  "who": "vet"
+ },
+ "vet3626426329": {
+  "hash": "b8b955e87edb585e",
+  "key": "obj.tros_cartell.desc",
+  "who": "vet"
+ },
+ "vet3628516429": {
+  "hash": "87070dfe9c5b465a",
+  "key": "sala.gavina_hangar.placa.rovell2",
+  "who": "vet"
+ },
+ "vet3631885454": {
+  "hash": "6acc6e2fb41907d6",
+  "key": "sala.gavina_cella.porta.tancada",
+  "who": "vet"
+ },
+ "vet363524881": {
+  "hash": "51c5eecd7adf9fca",
+  "key": "obj.llapis_ulls.pany1",
+  "who": "vet"
+ },
+ "vet3637461449": {
+  "hash": "9c8c46ebc955beea",
+  "key": "sala.gavina_passadis.camera_vigilancia.look",
+  "who": "vet"
+ },
+ "vet3641115878": {
+  "hash": "877daacf375ca955",
+  "key": "sala.gavina_hangar.sortida_conducte.entrar",
+  "who": "vet"
+ },
+ "vet3643808135": {
+  "hash": "80c12b6def4c8808",
+  "key": "obj.clau_anglesa.vet1",
+  "who": "vet"
+ },
+ "vet3652488242": {
+  "hash": "d359ad164d97fd36",
+  "key": "obj.formulari_27b.desc",
+  "who": "vet"
+ },
+ "vet3654089005": {
+  "hash": "c7e52346840f1afd",
+  "key": "sala.gavina_hangar.comporta.mesurada",
+  "who": "vet"
+ },
+ "vet3654718309": {
+  "hash": "e8bdd11b83202e0b",
+  "key": "nota_perduda.1.vet",
+  "who": "vet"
+ },
+ "vet3660585754": {
+  "hash": "258cccf3357481a9",
+  "key": "obj.clau_anglesa.vet2",
+  "who": "vet"
+ },
+ "vet3665441008": {
+  "hash": "c4c408cfee76092b",
+  "key": "sala.gavina_cella.reixa.clau",
+  "who": "vet"
+ },
+ "vet3671691633": {
+  "hash": "a38c9aee06aac6ae",
+  "key": "nota_perduda.5.vet",
+  "who": "vet"
+ },
+ "vet3676051673": {
+  "hash": "e0d6f5bd9b9c33d1",
+  "key": "sala.gavina_hangar.escala.descargolar1",
+  "who": "vet"
+ },
+ "vet3677363373": {
+  "hash": "4b7f2cafb3bd4e77",
+  "key": "obj.clau_anglesa.vet3",
+  "who": "vet"
+ },
+ "vet3702235885": {
+  "hash": "7d9862e6674b9581",
+  "key": "ui.defecte.push",
+  "who": "vet"
+ },
+ "vet3702502572": {
+  "hash": "58224942d603c316",
+  "key": "obj.tub_amb_llibreta.vet_fora",
+  "who": "vet"
+ },
+ "vet370595383": {
+  "hash": "0463d466e7ef66c7",
+  "key": "obj.nota_vet.desc",
+  "who": "vet"
+ },
+ "vet3707962999": {
+  "hash": "2d420e13085dfd30",
+  "key": "dlg.guardia.opt.qui",
+  "who": "vet"
+ },
+ "vet3709301061": {
+  "hash": "b505d75ead3604b7",
+  "key": "sala.gavina_hangar.caixa.look",
+  "who": "vet"
+ },
+ "vet3712894459": {
+  "hash": "6fe91b8f366d670d",
+  "key": "nota_perduda.3.vet",
+  "who": "vet"
+ },
+ "vet3726048968": {
+  "hash": "a80d7a2e0538f089",
+  "key": "ui.defecte.open.vet.2",
+  "who": "vet"
+ },
+ "vet3727398778": {
+  "hash": "5e22396fbc281958",
+  "key": "finestra.armat",
+  "who": "vet"
+ },
+ "vet3732866629": {
+  "hash": "6f61c41004c0d708",
+  "key": "sala.gavina_hangar.sortida_conducte.look_mapa",
+  "who": "vet"
+ },
+ "vet3734961579": {
+  "hash": "1914aebe6ddee557",
+  "key": "obj.clau_cambra.desc",
+  "who": "vet"
+ },
+ "vet373776027": {
+  "hash": "6c019173399590c0",
+  "key": "sala.gavina_passadis.cartell.look",
+  "who": "vet"
+ },
+ "vet3742826587": {
+  "hash": "6cd9e29efb75a54a",
+  "key": "ui.defecte.open.vet.3",
+  "who": "vet"
+ },
+ "vet375789485": {
+  "hash": "e110cbbc7aefa4ec",
+  "key": "obj.biga_muntada.desc",
+  "who": "vet"
+ },
+ "vet3762041184": {
+  "hash": "41e41fbfec10f33a",
+  "key": "obj.sopa.desc",
+  "who": "vet"
+ },
+ "vet3772235288": {
+  "hash": "5c53d09dbfb40174",
+  "key": "obj.molla.quieta",
+  "who": "vet"
+ },
+ "vet3775747227": {
+  "hash": "5f6b6ac056224c86",
+  "key": "obj.nota_iri_nom.desc",
+  "who": "vet"
+ },
+ "vet3781341489": {
+  "hash": "7be9a4ab987220eb",
+  "key": "dlg.directora.opt.pacte",
+  "who": "vet"
+ },
+ "vet3781841952": {
+  "hash": "f6d9a83b07d3854d",
+  "key": "sala.gavina_memoria.fullets.agafar",
+  "who": "vet"
+ },
+ "vet3782013816": {
+  "hash": "499e179feac33f87",
+  "key": "sala.gavina_hangar.llancadora.escapa",
+  "who": "vet"
+ },
+ "vet3802218668": {
+  "hash": "d0390495f1485f1b",
+  "key": "ui.defecte.give",
+  "who": "vet"
+ },
+ "vet3809088982": {
+  "hash": "18cba6a534e9fd2b",
+  "key": "sala.gavina_hangar.comporta.look",
+  "who": "vet"
+ },
+ "vet3811260315": {
+  "hash": "94c7d713f45840ef",
+  "key": "sala.gavina_cella.finestreta.look1",
+  "who": "vet"
+ },
+ "vet3828037934": {
+  "hash": "3fe630a1b1de10d1",
+  "key": "sala.gavina_cella.finestreta.look2",
+  "who": "vet"
+ },
+ "vet3833185706": {
+  "hash": "625b020532d95bda",
+  "key": "sala.gavina_memoria.vitrina.placa_c1",
+  "who": "vet"
+ },
+ "vet3837684888": {
+  "hash": "37251718209a5f90",
+  "key": "obj.tram_biga.muntar1",
+  "who": "vet"
+ },
+ "vet3841045414": {
+  "hash": "b9c6b1a9079236bc",
+  "key": "obj.segell.triplicat",
+  "who": "vet"
+ },
+ "vet3841243834": {
+  "hash": "f92add2e8150c2e2",
+  "key": "sala.gavina_hangar.llancadora.tub2b",
+  "who": "vet"
+ },
+ "vet3861638894": {
+  "hash": "3293025f3a946b7b",
+  "key": "sala.gavina_cella.panell.no_vibra",
+  "who": "vet"
+ },
+ "vet3861983287": {
+  "hash": "1493322d871e0da1",
+  "key": "sala.gavina_cella.escarabat.look",
+  "who": "vet"
+ },
+ "vet3887164220": {
+  "hash": "99d5db9b08d8eb8f",
+  "key": "obj.tub_amb_llibreta.vet1",
+  "who": "vet"
+ },
+ "vet3888017745": {
+  "hash": "deac215422569507",
+  "key": "obj.tram_biga.muntar2",
+  "who": "vet"
+ },
+ "vet3889509704": {
+  "hash": "2d420e13085dfd30",
+  "key": "dlg.cargol_vell.opt.qui",
+  "who": "vet"
+ },
+ "vet3913944880": {
+  "hash": "eaa55a41ff46e65e",
+  "key": "sala.gavina_hangar.llancadora.look",
+  "who": "vet"
+ },
+ "vet3937497077": {
+  "hash": "ceaf85b5139cd127",
+  "key": "obj.tub_amb_llibreta.vet2",
+  "who": "vet"
+ },
+ "vet3939781129": {
+  "hash": "7c16451b1d3d7e9d",
+  "key": "dlg.mos.opt.distreure",
+  "who": "vet"
+ },
+ "vet3952340526": {
+  "hash": "2eb13494d7d3ce92",
+  "key": "nota_perduda.trobada",
+  "who": "vet"
+ },
+ "vet3960542888": {
+  "hash": "c25fe4611854924c",
+  "key": "obj.fullet_reeducacio.desc",
+  "who": "vet"
+ },
+ "vet3962088260": {
+  "hash": "c85d950494885be9",
+  "key": "sala.gavina_cella.panell.recuperar1",
+  "who": "vet"
+ },
+ "vet3969289542": {
+  "hash": "edbb21f527325d99",
+  "key": "obj.molla.desc",
+  "who": "vet"
+ },
+ "vet3978196732": {
+  "hash": "ca13d04e1e9b4970",
+  "key": "sala.gavina_hangar.llancadora.tub2",
+  "who": "vet"
+ },
+ "vet3985294653": {
+  "hash": "7e7acbe54abee42f",
+  "key": "sala.gavina_arxiu.arxivador.mira_vet",
+  "who": "vet"
+ },
+ "vet3986909259": {
+  "hash": "6699bcd7b2de9bd4",
+  "key": "sala.gavina_hangar.llancadora.sense_tub",
+  "who": "vet"
+ },
+ "vet3994974351": {
+  "hash": "146e5ef4a0262f0c",
+  "key": "sala.gavina_hangar.llancadora.tub3",
+  "who": "vet"
+ },
+ "vet4012421117": {
+  "hash": "687de567ecdb89a8",
+  "key": "sala.gavina_cella.panell.recuperar2",
+  "who": "vet"
+ },
+ "vet4028529589": {
+  "hash": "b93b5ed4231452e8",
+  "key": "sala.gavina_hangar.llancadora.tub1",
+  "who": "vet"
+ },
+ "vet4035654178": {
+  "hash": "a7e5f6402f8636d3",
+  "key": "sala.gavina_passadis.cartell.prou",
+  "who": "vet"
+ },
+ "vet4039827979": {
+  "hash": "b329b15b14922f76",
+  "key": "obj.nota_amagatall.vet1",
+  "who": "vet"
+ },
+ "vet4044137020": {
+  "hash": "a20842f8e0542aec",
+  "key": "ui.defecte.pickUp.vet.2",
+  "who": "vet"
+ },
+ "vet4056377665": {
+  "hash": "f0e03f0807d04e01",
+  "key": "sala.gavina_cella.mos.nota4",
+  "who": "vet"
+ },
+ "vet4056576275": {
+  "hash": "d11b2ac0cc1ac8c5",
+  "key": "obj.tub_ferro9.enrotllar1",
+  "who": "vet"
+ },
+ "vet4060914639": {
+  "hash": "61ba8c419fa81320",
+  "key": "ui.defecte.pickUp.vet.3",
+  "who": "vet"
+ },
+ "vet4073353894": {
+  "hash": "3b34dd8d579e5b83",
+  "key": "obj.tub_ferro9.enrotllar2",
+  "who": "vet"
+ },
+ "vet407656136": {
+  "hash": "8705149d13f859c8",
+  "key": "sala.gavina_arxiu.intro",
+  "who": "vet"
+ },
+ "vet4106710522": {
+  "hash": "51ce8c2e433d1cdb",
+  "key": "sala.gavina_cella.mos.nota1",
+  "who": "vet"
+ },
+ "vet4114409026": {
+  "hash": "9d81a8d9c6e75ade",
+  "key": "ui.defecte.use.vet.3",
+  "who": "vet"
+ },
+ "vet4117144721": {
+  "hash": "642cadcdb3f5b462",
+  "key": "finestra.rebuig.viu",
+  "who": "vet"
+ },
+ "vet4131186645": {
+  "hash": "56781751ece4f57b",
+  "key": "ui.defecte.use.vet.2",
+  "who": "vet"
+ },
+ "vet4134717432": {
+  "hash": "d0abc4567a8a7a45",
+  "key": "obj.llima.passat1",
+  "who": "vet"
+ },
+ "vet416892419": {
+  "hash": "803f7ba5dca96447",
+  "key": "ui.defecte.pull.vet",
+  "who": "vet"
+ },
+ "vet4182940308": {
+  "hash": "3e6c09bc6a9985e8",
+  "key": "ui.defecte.push.vet",
+  "who": "vet"
+ },
+ "vet4184642321": {
+  "hash": "88871f24fd319e07",
+  "key": "dlg.cargol_vell.opt.peces",
+  "who": "vet"
+ },
+ "vet4185050289": {
+  "hash": "9ce5ec009cfcd8e5",
+  "key": "obj.llima.passat2",
+  "who": "vet"
+ },
+ "vet4188234817": {
+  "hash": "6d17cfb4fffa0203",
+  "key": "finestra.rebut.tub_amb_llibreta",
+  "who": "vet"
+ },
+ "vet419301711": {
+  "hash": "5e1db4c8e2a85adf",
+  "key": "sala.gavina_hangar.marca1",
+  "who": "vet"
+ },
+ "vet4201333495": {
+  "hash": "99cccf7faf23f12d",
+  "key": "sala.gavina_hangar.placa.perque",
+  "who": "vet"
+ },
+ "vet4225563083": {
+  "hash": "55326b936572f124",
+  "key": "sala.gavina_hangar.pilar.look",
+  "who": "vet"
+ },
+ "vet4226965700": {
+  "hash": "46414bb5a5271cd0",
+  "key": "sala.gavina_hangar.llancadora.en_marxa",
+  "who": "vet"
+ },
+ "vet4240267058": {
+  "hash": "facad3c28dff5bf8",
+  "key": "ui.defecte.close.vet",
+  "who": "vet"
+ },
+ "vet435319578": {
+  "hash": "ec099b01413f2562",
+  "key": "sala.gavina_hangar.conducte.look_rebentat",
+  "who": "vet"
+ },
+ "vet436079330": {
+  "hash": "372144f6587bc8f3",
+  "key": "sala.gavina_hangar.marca2",
+  "who": "vet"
+ },
+ "vet440363187": {
+  "hash": "4fa5b7cb8989b5ba",
+  "key": "sala.gavina_hangar.llancadora.tocar1",
+  "who": "vet"
+ },
  "vet442000585": {
-  "hash": "f64c1cbc28e89abd",
+  "hash": "678b30e23052e475",
   "key": "dlg.mare.opt.adeu",
   "who": "vet"
  },
+ "vet443656727": {
+  "hash": "8fa4f78d0b7aa242",
+  "key": "sala.gavina_cella.porta.oberta",
+  "who": "vet"
+ },
+ "vet452856949": {
+  "hash": "6e82cdcc3505adbf",
+  "key": "sala.gavina_hangar.marca3",
+  "who": "vet"
+ },
+ "vet457140806": {
+  "hash": "5da0e1e3a611f00f",
+  "key": "sala.gavina_hangar.llancadora.tocar2",
+  "who": "vet"
+ },
+ "vet460172295": {
+  "hash": "dde6471c85abc32d",
+  "key": "dlg.mos.galeria3",
+  "who": "vet"
+ },
+ "vet464256505": {
+  "hash": "75f20943eaa9fe0a",
+  "key": "sala.gavina_cella.llitera.look_molles2",
+  "who": "vet"
+ },
+ "vet468092555": {
+  "hash": "47dc02044611c5a5",
+  "key": "sala.gavina_cella.panell.cop1",
+  "who": "vet"
+ },
  "vet469071400": {
-  "hash": "0a8e4d441473749a",
+  "hash": "4cca4324ad885c29",
   "key": "sala.gavina_cella.intro4",
   "who": "vet"
  },
+ "vet472127412": {
+  "hash": "012ebf7832343111",
+  "key": "sala.gavina_cella.reixa.obrir1",
+  "who": "vet"
+ },
+ "vet475901017": {
+  "hash": "8dd6c015f732c5fd",
+  "key": "sala.gavina_cella.panell.trencat",
+  "who": "vet"
+ },
+ "vet477962894": {
+  "hash": "05edb695e7768d2f",
+  "key": "sala.gavina_hangar.escala.reixa",
+  "who": "vet"
+ },
+ "vet478551133": {
+  "hash": "c426a961459ed4db",
+  "key": "obj.tram_biga_3.desc",
+  "who": "vet"
+ },
+ "vet483383257": {
+  "hash": "15ecc67c203961a3",
+  "key": "sala.gavina_arxiu.arxivador.look",
+  "who": "vet"
+ },
+ "vet485036675": {
+  "hash": "5eede23437a0028f",
+  "key": "sala.gavina_arxiu.arxivador.ja",
+  "who": "vet"
+ },
+ "vet501544322": {
+  "hash": "4b72dcc3c5a2f0f4",
+  "key": "dlg.mos.opt.res",
+  "who": "vet"
+ },
+ "vet501647793": {
+  "hash": "5e1251964f559581",
+  "key": "sala.gavina_cella.panell.cop3",
+  "who": "vet"
+ },
+ "vet505319464": {
+  "hash": "daf8626d668464a1",
+  "key": "dlg.mos.opt.insultar",
+  "who": "vet"
+ },
+ "vet505682650": {
+  "hash": "47abc200f877a39e",
+  "key": "sala.gavina_cella.reixa.obrir3",
+  "who": "vet"
+ },
+ "vet515642643": {
+  "hash": "8a2073c388a74712",
+  "key": "sala.gavina_arxiu.arxivador.carta2",
+  "who": "vet"
+ },
+ "vet51894251": {
+  "hash": "1508214617e88261",
+  "key": "ui.defecte.look.vet",
+  "who": "vet"
+ },
+ "vet522460269": {
+  "hash": "5a9e9ab68e408649",
+  "key": "sala.gavina_cella.reixa.obrir2",
+  "who": "vet"
+ },
+ "vet52868595": {
+  "hash": "bf5c5c523de5e0a1",
+  "key": "sala.gavina_cella.llitera.look1",
+  "who": "vet"
+ },
+ "vet531249589": {
+  "hash": "5a9f480e251012b1",
+  "key": "dlg.directora.opt.no",
+  "who": "vet"
+ },
+ "vet532420262": {
+  "hash": "9b754ed0e42bc4a2",
+  "key": "sala.gavina_arxiu.arxivador.carta1",
+  "who": "vet"
+ },
+ "vet536219431": {
+  "hash": "7f0e189c34bf2820",
+  "key": "dlg.mos.opt.familia",
+  "who": "vet"
+ },
+ "vet538687149": {
+  "hash": "54e5fa83a8ff74e9",
+  "key": "nota_perduda.5.look",
+  "who": "vet"
+ },
+ "vet541935258": {
+  "hash": "062aa198be9857a7",
+  "key": "finestra.espera.vet.nota_pressio",
+  "who": "vet"
+ },
+ "vet546484728": {
+  "hash": "4b7e85e4e2ba7d56",
+  "key": "obj.placa_cargol.vet_gravada",
+  "who": "vet"
+ },
+ "vet563194652": {
+  "hash": "fae7a6825dfa56ea",
+  "key": "obj.llapis_ulls.mapa1",
+  "who": "vet"
+ },
  "vet566692357": {
-  "hash": "f285faa8524baa63",
+  "hash": "6c63da1b7bd09d87",
   "key": "dlg.mare.opt.preso",
   "who": "vet"
  },
+ "vet575575266": {
+  "hash": "c5848cf369cab284",
+  "key": "obj.diapaso.ja",
+  "who": "vet"
+ },
  "vet586514733": {
-  "hash": "d2cd6fd7797cab0a",
+  "hash": "2ace024828aa2825",
   "key": "sala.gavina_cella.intro3",
   "who": "vet"
  },
+ "vet613527509": {
+  "hash": "aee5de60a86aff62",
+  "key": "obj.llapis_ulls.mapa2",
+  "who": "vet"
+ },
+ "vet622969239": {
+  "hash": "07d7735158d62de9",
+  "key": "obj.nota_iri.vet1",
+  "who": "vet"
+ },
+ "vet628883498": {
+  "hash": "3a7ad2fd2e6cd276",
+  "key": "sala.gavina_hangar.llancadora.molla_ja",
+  "who": "vet"
+ },
+ "vet628909776": {
+  "hash": "1707f16529f4f521",
+  "key": "sala.gavina_hangar.escala.look",
+  "who": "vet"
+ },
+ "vet635640616": {
+  "hash": "0627350b200dc411",
+  "key": "finestra.rebuig.massa_pesat",
+  "who": "vet"
+ },
+ "vet63632450": {
+  "hash": "3c5ebd3546fa382b",
+  "key": "finestra.espera.vet.nota_massa",
+  "who": "vet"
+ },
+ "vet65621740": {
+  "hash": "b72df8abb91ce72d",
+  "key": "ui.defecte.pull.vet.3",
+  "who": "vet"
+ },
+ "vet656524477": {
+  "hash": "3ec1423f1d75a362",
+  "key": "obj.nota_iri.vet3",
+  "who": "vet"
+ },
+ "vet657598040": {
+  "hash": "01e520f6d9c5e476",
+  "key": "finestra.rebut.nota_amagatall",
+  "who": "vet"
+ },
+ "vet674878028": {
+  "hash": "c701b8f864fd7832",
+  "key": "obj.planols.iri1",
+  "who": "vet"
+ },
+ "vet689252332": {
+  "hash": "86c38418c5c9c156",
+  "key": "obj.molla.trencar",
+  "who": "vet"
+ },
+ "vet69646214": {
+  "hash": "43e590aacfb97e23",
+  "key": "sala.gavina_cella.llitera.look2",
+  "who": "vet"
+ },
+ "vet703966807": {
+  "hash": "85de2b3b069349a2",
+  "key": "marca.reajust2",
+  "who": "vet"
+ },
+ "vet711532495": {
+  "hash": "a0d9b91dc3b3615f",
+  "key": "sala.gavina_hangar.caixa.obrir1",
+  "who": "vet"
+ },
+ "vet714038980": {
+  "hash": "9221ccf5685cd86b",
+  "key": "sala.gavina_memoria.holograma.parla3",
+  "who": "vet"
+ },
  "vet71744553": {
-  "hash": "f5dc5717b083b203",
+  "hash": "1f52ab6ee014935c",
   "key": "dlg.mare.opt.reciclatge",
+  "who": "vet"
+ },
+ "vet720744426": {
+  "hash": "5e1db4c8e2a85adf",
+  "key": "marca.reajust1",
+  "who": "vet"
+ },
+ "vet723693386": {
+  "hash": "eff3c56c5464a6da",
+  "key": "finestra.enviat.nota_pressio",
+  "who": "vet"
+ },
+ "vet725210885": {
+  "hash": "bae0f57b0e20eb9e",
+  "key": "obj.planols.iri2",
+  "who": "vet"
+ },
+ "vet728310114": {
+  "hash": "3b4fd2d52217b1dc",
+  "key": "sala.gavina_hangar.caixa.obrir2",
+  "who": "vet"
+ },
+ "vet75827821": {
+  "hash": "5c96935b6cc73afb",
+  "key": "finestra.tancada",
+  "who": "vet"
+ },
+ "vet763149379": {
+  "hash": "f1298e01f02269ee",
+  "key": "obj.formulari_triplicat.desc",
+  "who": "vet"
+ },
+ "vet779270706": {
+  "hash": "325f3bb58ab349e3",
+  "key": "obj.molla.massa",
+  "who": "vet"
+ },
+ "vet792667083": {
+  "hash": "32f59b2eedc3843b",
+  "key": "sala.gavina_hangar.llancadora.obrir2",
+  "who": "vet"
+ },
+ "vet793538171": {
+  "hash": "66ddd11edf63b7a7",
+  "key": "sala.gavina_cella.reixa.obrir2_fosc",
+  "who": "vet"
+ },
+ "vet809444702": {
+  "hash": "284a5e43372c0a93",
+  "key": "sala.gavina_hangar.llancadora.obrir1",
+  "who": "vet"
+ },
+ "vet815012870": {
+  "hash": "4be6d5cd55e62666",
+  "key": "ui.defecte.look",
+  "who": "vet"
+ },
+ "vet82399359": {
+  "hash": "62be51ab77233d78",
+  "key": "ui.defecte.pull.vet.2",
+  "who": "vet"
+ },
+ "vet827454005": {
+  "hash": "0d49c9bddda427f6",
+  "key": "sala.gavina_cella.panell.sense_palanca",
+  "who": "vet"
+ },
+ "vet828653361": {
+  "hash": "0b5b960ffb416b61",
+  "key": "finestra.espera.vet.pols_rovell",
+  "who": "vet"
+ },
+ "vet830317586": {
+  "hash": "a53931c64ac90ecb",
+  "key": "sala.gavina_cella.avis.look",
+  "who": "vet"
+ },
+ "vet843177910": {
+  "hash": "f6ca03c34b09e7f1",
+  "key": "obj.formulari_27be_signat.desc",
+  "who": "vet"
+ },
+ "vet851781281": {
+  "hash": "3c14986d4ebfd522",
+  "key": "sala.gavina_memoria.intro2",
+  "who": "vet"
+ },
+ "vet862936560": {
+  "hash": "416f37c65052f871",
+  "key": "finestra.rebut.diapaso",
+  "who": "vet"
+ },
+ "vet875433731": {
+  "hash": "8e95dda5b647b340",
+  "key": "sala.gavina_memoria.cargol_vell.look_recorda",
+  "who": "vet"
+ },
+ "vet893332797": {
+  "hash": "75a66e8760fde166",
+  "key": "sala.gavina_hangar.llancadora.obrir4",
+  "who": "vet"
+ },
+ "vet898341146": {
+  "hash": "fbb3da0653b1bf93",
+  "key": "ui.defecte.talkTo",
+  "who": "vet"
+ },
+ "vet899069545": {
+  "hash": "8a797a7f02c38102",
+  "key": "ui.defecte.use.vet",
+  "who": "vet"
+ },
+ "vet923726567": {
+  "hash": "8926bc691fb50f98",
+  "key": "sala.gavina_hangar.secat1",
+  "who": "vet"
+ },
+ "vet927846626": {
+  "hash": "06fa08b62fc4c9dc",
+  "key": "obj.nota_pany.desc",
+  "who": "vet"
+ },
+ "vet935378383": {
+  "hash": "d3981bca9cc62f49",
+  "key": "ui.defecte.talkTo.vet",
+  "who": "vet"
+ },
+ "vet940504186": {
+  "hash": "12827de20f30d8a0",
+  "key": "sala.gavina_hangar.secat2",
+  "who": "vet"
+ },
+ "vet944646599": {
+  "hash": "331380d3fa9fefe8",
+  "key": "finestra.rebuig.liquid",
+  "who": "vet"
+ },
+ "vet945239396": {
+  "hash": "8d9b452ef5cbcf67",
+  "key": "sala.gavina_hangar.pilar.look_marca",
+  "who": "vet"
+ },
+ "vet958371528": {
+  "hash": "18988b0fa335cb1a",
+  "key": "sala.gavina_cella.panell.paret_guanya",
+  "who": "vet"
+ },
+ "vet994654436": {
+  "hash": "77702da921cf3232",
+  "key": "obj.llapis.desc",
   "who": "vet"
  }
 }

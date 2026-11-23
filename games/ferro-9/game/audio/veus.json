@@ -1,6 +1,6 @@
 {
   "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `text`: el que es diu quan no és el text tal qual (direccions del v3 com [cheerfully], pronúncia). `pronuncia`: com es diuen codis, sigles i xifres. `codi`: qui diu les línies de game/logic (la finestra i la marca). `sense_veu`: el que no es diu (les fletxes de la ruta, que canvien a cada partida). `veu`: línies del narrador dites amb la veu d'un personatge: les notes, amb la veu de qui les escriu; l'holograma i la megafonia, amb la del Director.",
-  "actiu": "url",
+  "actiu": true,
   "model": "eleven_v3",
   "language": "ca",
   "format": "mp3_44100_64",
