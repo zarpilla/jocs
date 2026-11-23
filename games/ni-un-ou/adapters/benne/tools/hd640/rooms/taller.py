@@ -10,7 +10,7 @@ del fons a l'esquerra:
   - el **banc** de treball, separat de la paret i girat: el sobre de fusta vist des de dalt amb el cargol de banc, el
     torn, el pot de llapis i l'entrepà vell en un plat; la calaixera, les potes i la caixa d'eines vermella a sota;
     damunt, el prestatge amb els pots i les capses de cargols;
-  - el bidó d'OLI, separat de la paret (s'hi passa per darrere);
+  - el bidó d'oli, separat de la paret (s'hi passa per darrere);
   - el fluorescent penjat del sostre, que fa el bassal de llum freda al terra;
   - primer pla: un tub que baixa a la dreta, la cadena del polispast que penja i un carro de planxes a baix.
 
@@ -227,13 +227,11 @@ def escena(cv, tex):
     for fx in (445, 605):
         e.caixa('prestatge', _w(fx), _w(fx + 4), sy - 15, sy, ZW - 12, ZW, CAB, 2.8)
     e.sprite('prestatge', bpl.crop((436, 47, 613, 75)), ((613 - 436) / 2, 28), ((_w(436) + _w(613)) / 2, sy + 5, ZW - 8))
-    # el bidó d'oli, separat de la paret, amb l'etiqueta i els degotalls
+    # el bidó d'oli, separat de la paret, amb els degotalls
     bx, bz, br, bh = BIDO
     e.foscor('ombra_bido', (bx - 30, 0.8, bz + 26), (bx + 34, 0.8, bz + 26), (bx + 34, 0.8, bz - 26), (bx - 30, 0.8, bz - 26),
              lambda s, t: 0.6 * max(0.0, 1 - ((s - 32) / 30) ** 2 - ((t - 26) / 24) ** 2) * 1.6)
     _cilindre(e, 'bido', bx, bz, br, bh, SEAG, 2.6, anelles=(bh * 0.3, bh * 0.66))
-    ex = tex['extres']
-    e.sprite('bido', ex.crop((379, 179, 398, 189)), (9.5, 10), (bx - 4, 13, bz - br - 1))
     # el banc de treball, girat: la calaixera, les potes, el travesser, la caixa d'eines i el sobre
     lw, ld = BANC[2] / 2, BANC[3] / 2
     corners = [_banc_P(lx, 0.8, lz) for lx, lz in ((-lw - 8, ld + 10), (lw + 8, ld + 10), (lw + 8, -ld - 8), (-lw - 8, -ld - 8))]
