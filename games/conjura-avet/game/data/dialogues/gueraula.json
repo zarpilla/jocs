@@ -397,6 +397,24 @@
           "text": "dlg.gueraula.23"
         },
         {
+          "who": "narrator",
+          "text": "dlg.gueraula.25",
+          "effects": [
+            {
+              "takeItem": "xarop",
+              "who": "vet"
+            }
+          ]
+        },
+        {
+          "who": "iri",
+          "text": "dlg.gueraula.26"
+        },
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.27"
+        },
+        {
           "who": "vet",
           "text": "dlg.gueraula.24"
         },

@@ -521,6 +521,20 @@
               "who": "player",
               "text": "sala.placa_sant_pol.37"
             }
+          ],
+          "if": {
+            "var": "fase",
+            "op": "<",
+            "value": 7
+          }
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.37b"
+            }
           ]
         },
         {
@@ -558,6 +572,20 @@
             {
               "who": "player",
               "text": "sala.placa_sant_pol.39"
+            }
+          ],
+          "if": {
+            "var": "fase",
+            "op": "<",
+            "value": 7
+          }
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.39b"
             }
           ]
         }

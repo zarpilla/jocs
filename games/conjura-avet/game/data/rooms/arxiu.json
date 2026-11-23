@@ -30,7 +30,7 @@
   "decor": {
     "bagul_obert": {
       "visibleIf": {
-        "flag": "bagul_obert"
+        "flag": "bagul_sunifred_obert"
       }
     },
     "tapis_apartat": {
@@ -164,7 +164,7 @@
         {
           "verb": "look",
           "if": {
-            "flag": "bagul_obert",
+            "flag": "bagul_sunifred_obert",
             "is": false
           },
           "lines": [
@@ -209,7 +209,7 @@
           "verb": "use",
           "item": "claus",
           "if": {
-            "flag": "bagul_obert",
+            "flag": "bagul_sunifred_obert",
             "is": false
           },
           "lines": [
@@ -220,7 +220,7 @@
           ],
           "effects": [
             {
-              "setFlag": "bagul_obert"
+              "setFlag": "bagul_sunifred_obert"
             }
           ]
         },
@@ -230,7 +230,7 @@
             "use"
           ],
           "if": {
-            "flag": "bagul_obert",
+            "flag": "bagul_sunifred_obert",
             "is": false
           },
           "lines": [

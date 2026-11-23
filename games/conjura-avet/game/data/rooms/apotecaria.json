@@ -12,7 +12,12 @@
           "who": "gueraula",
           "text": "sala.apotecaria.1"
         }
-      ]
+      ],
+      "if": {
+        "var": "fase",
+        "op": "==",
+        "value": 2
+      }
     }
   ],
   "decor": {
@@ -450,6 +455,13 @@
       ]
     },
     "gueraula": {
+      "visibleIf": {
+        "not": {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        }
+      },
       "interactions": []
     },
     "porta": {

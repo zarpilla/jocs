@@ -2032,7 +2032,7 @@
           "is": false
         },
         {
-          "flag": "bagul_obert",
+          "flag": "bagul_sunifred_obert",
           "is": false
         }
       ]
@@ -2043,7 +2043,7 @@
           "flag": "bagul_identificat"
         },
         {
-          "flag": "bagul_obert"
+          "flag": "bagul_sunifred_obert"
         }
       ]
     },
@@ -2071,13 +2071,13 @@
           "flag": "bagul_identificat"
         },
         {
-          "flag": "bagul_obert",
+          "flag": "bagul_sunifred_obert",
           "is": false
         }
       ]
     },
     "doneWhen": {
-      "flag": "bagul_obert"
+      "flag": "bagul_sunifred_obert"
     },
     "levels": [
       "pista.i_obrir.1",
@@ -2100,7 +2100,7 @@
           "value": 5
         },
         {
-          "flag": "bagul_obert"
+          "flag": "bagul_sunifred_obert"
         },
         {
           "flag": "fons_buit",

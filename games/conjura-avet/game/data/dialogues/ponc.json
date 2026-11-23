@@ -203,7 +203,18 @@
         },
         {
           "who": "iri",
-          "text": "dlg.ponc.11"
+          "text": "dlg.ponc.11",
+          "if": {
+            "flag": "ordre_mirada"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.ponc.11b",
+          "if": {
+            "flag": "ordre_mirada",
+            "is": false
+          }
         },
         {
           "who": "vet",
