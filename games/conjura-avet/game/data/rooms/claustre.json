@@ -325,6 +325,50 @@
         },
         {
           "verb": "give",
+          "item": "tauleta",
+          "if": {
+            "all": [
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "flag": "prova_queixa"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "ingilberga",
+              "text": "sala.claustre.22"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "serra",
+          "if": {
+            "all": [
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "flag": "prova_serra"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "ingilberga",
+              "text": "sala.claustre.22"
+            }
+          ]
+        },
+        {
+          "verb": "give",
           "item": "*",
           "if": {
             "var": "fase",
@@ -334,7 +378,7 @@
           "lines": [
             {
               "who": "ingilberga",
-              "text": "sala.claustre.22"
+              "text": "sala.claustre.22b"
             }
           ]
         },

@@ -217,6 +217,22 @@
             {
               "setFlag": "sanca_sap"
             }
+          ],
+          "if": {
+            "flag": "serra_treta",
+            "is": false
+          }
+        },
+        {
+          "who": "sanca",
+          "text": "dlg.sanca.11b",
+          "if": {
+            "flag": "serra_treta"
+          },
+          "effects": [
+            {
+              "setFlag": "sanca_sap"
+            }
           ]
         }
       ],

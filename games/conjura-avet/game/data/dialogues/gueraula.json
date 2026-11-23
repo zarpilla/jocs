@@ -321,10 +321,28 @@
           "who": "gueraula",
           "text": "dlg.gueraula.19",
           "if": {
-            "not": {
-              "hasItem": "habits_curts",
-              "who": "iri"
-            }
+            "all": [
+              {
+                "not": {
+                  "hasItem": "habits_curts",
+                  "who": "iri"
+                }
+              },
+              {
+                "not": {
+                  "hasItem": "habits_curts",
+                  "who": "vet"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "gueraula",
+          "text": "dlg.gueraula.19b",
+          "if": {
+            "hasItem": "habits_curts",
+            "who": "vet"
           }
         }
       ],

@@ -296,6 +296,34 @@
             "push"
           ],
           "if": {
+            "all": [
+              {
+                "flag": "fons_buit"
+              },
+              {
+                "flag": "doble_fons_obert",
+                "is": false
+              },
+              {
+                "flag": "contrapes_despenjat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.fons_buit_altra"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "push"
+          ],
+          "if": {
             "flag": "doble_fons_obert",
             "is": false
           },
@@ -523,6 +551,31 @@
             {
               "who": "player",
               "text": "sala.arxiu.34"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "tapis_apartat",
+                "is": false
+              },
+              {
+                "flag": "estendard_paret",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.arxiu.estendard_aviat"
             }
           ]
         },
