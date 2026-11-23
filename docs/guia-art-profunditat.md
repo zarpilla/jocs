@@ -238,7 +238,7 @@ enganxat sobre el fons. Quatre ajustos el fan seure a l'espai, i el cinquè el f
        personatge més grans que els del decorat) o a molt menys de 0,5 (la cara es perd). Abans de dibuixar-ne una:
        si la punta caminable que baixa tant no té res a fer, és més barat retallar-la.
      - **Com es dibuixa:** redibuixada, no ampliada (mai `resize` amb NEAREST). A L'Última Arrel, `hd/gran.py`
-       (×1,5: FigYK, FigY a la mida gran; la cara es refà píxel a píxel amb els ulls de 3 px; la de la Iri i la Vet és
+       (×1,5: FigYK, FigY a la mida gran; la cara es refà píxel a píxel amb els ulls de 3 px; la de l'Iri i la Vet és
        la de sempre). A Aigua Verne, FigK (×1,2). Escaleu-ho de manera que la cantonada del fotograma d'1× caigui en
        un píxel enter (`sub` a `hd/gran.py`), o els peus es mouen mig píxel en canviar de mida.
      - A L'Última Arrel, la caseta d'obra i el campament es van dibuixar per a personatges de 97 px i els fulls van

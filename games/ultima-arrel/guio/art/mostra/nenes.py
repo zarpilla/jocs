@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-L'Última Arrel — la Iri (11 anys) i la Vet (9), de mostra, per a les sales «de lluny».
+L'Última Arrel — l'Iri (11 anys) i la Vet (9), de mostra, per a les sales «de lluny».
 
 La cara és la de sempre (la de Suma Zero: SKIN_IRI / SKIN_VET, iris, celles, pestanyes). La roba i els cabells són
 nous (guió, «Protagonistes»):
-  - **La Iri**: cabell castany fosc amb la ratlla al mig i una cua baixa; jaqueta ocre amb un pegat verd, pantalons
+  - **L'Iri**: cabell castany fosc amb la ratlla al mig i una cua baixa; jaqueta ocre amb un pegat verd, pantalons
     verds, botes, motxilla blava, el walkie a la corretja i la lupa de rellotger penjada al coll (com a la
     referència 1).
   - **La Vet**: gorra marró amb orelles d'os i dues trenes curtes; impermeable vermell, malles fosques i botes
     d'aigua grogues; el walkie a la mà.
 
 **Provisional:** es fan amb el sistema de figures d'adult (hd/characters.py, 49×87) i se'n treuen files del tronc i
-de les cames, de manera que el cap queda més gran respecte del cos, com el d'una nena. La Iri fa ≈72 px i la Vet ≈66.
+de les cames, de manera que el cap queda més gran respecte del cos, com el d'una nena. L'Iri fa ≈72 px i la Vet ≈66.
 Les de debò (fase 5) necessiten una postura de nena al sistema de figures.
 
 Ús: python3 nenes.py  →  nenes.png (fitxa ×4: de cara, de perfil i d'esquena)
@@ -118,7 +118,7 @@ def iri_over(fg, p, spec):
 
 IRI = {
     'skin': SKIN_IRI, 'legs': MOSS, 'top': OCHRE, 'shoes': BOOT, 'lashes': True, 'thin': 0.4,
-    'iris': (52, 38, 30), 'brow': (24, 16, 22),   # la cara de la Iri, la de sempre
+    'iris': (52, 38, 30), 'brow': (24, 16, 22),   # la cara de l'Iri, la de sempre
     'hooks': {'hair_back': iri_back, 'hair': iri_hair, 'over': iri_over},
 }
 

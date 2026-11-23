@@ -3,7 +3,7 @@ La centraleta del Miceli (Escena 2, dissabte al capvespre, sota terra). Art defi
 
 Una cova entre les arrels del roure, de prop i una mica des de dalt (la composició de la referència 2):
   - a dalt, el **forat** per on entra l'última llum del capvespre, i l'**escala** de mà que en baixa (en volum,
-    tres_d): per aquí entra la Iri. Un raig de llum baixa fins a terra, amb pols que sura (`ANIMS`);
+    tres_d): per aquí entra l'Iri. Un raig de llum baixa fins a terra, amb pols que sura (`ANIMS`);
   - les parets són d'arrels, amb els **fils** del Miceli apagats (blau fosc), i al fons a l'esquerra el pas cap a les
     galeries; a l'esquerra la paret es tanca cap a la càmera;
   - a la dreta, una arrel enorme i, encastat, el **tauler** de la centraleta: el taulell en volum, girat cap a la

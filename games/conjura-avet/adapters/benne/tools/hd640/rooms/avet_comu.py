@@ -12,7 +12,7 @@ personatge fa la seva mida (z = F); un metre són ≈52 unitats.
     dreta el mur del monestir amb la porta (`porta_monestir`).
   - **El mur de l'hort**, de pedra seca, de l'esquerra fins a l'absis; amb el portell del camí del riu a l'esquerra
     (`cami_riu`) i esbotzat on l'avet hi ha caigut al damunt.
-  - **L'avet**, ajagut: les arrels aixecades a l'esquerra (una paret de terra més alta que la Iri, amb les arrels
+  - **L'avet**, ajagut: les arrels aixecades a l'esquerra (una paret de terra més alta que l'Iri, amb les arrels
     arrencades i, a baix, dues arrels tallades de serra: la cara plana i clara), el forat al davant, i el tronc que
     travessa la sala en diagonal, de dalt a l'esquerra cap al mig, damunt el mur, amb la capçada a l'hort fins
     gairebé a tocar l'absis. És la cosa més gran del joc.

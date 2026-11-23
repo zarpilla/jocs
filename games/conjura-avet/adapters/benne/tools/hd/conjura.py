@@ -7,7 +7,7 @@ hd/characters.py (`person`, el de les adultes d'Aigua Verne) i les proporcions d
 mateixa figura amb el tronc i les cames més llargs o més curts). El contorn és el selectiu de `Fig.render` (la vora
 del costat, enfosquida), sense negre.
 
-  - **La Iri** (20 anys, llenyatera, ≈84 px): gonella curta d'ocre, davantal de cuir, guants, destral al cinyell,
+  - **L'Iri** (20 anys, llenyatera, ≈84 px): gonella curta d'ocre, davantal de cuir, guants, destral al cinyell,
     calces verdes i el cabell castany fosc recollit en un monyo alt, lligat amb una tira de cuir.
   - **La Vet** (18 anys, escrivana, ≈78 px, més prima): gonella llarga de blau de pastell apagat, camisa de lli al coll,
     la tauleta de cera i la ploma al cinyell, i el cabell rogenc fosc en dues trenes llargues per davant.
@@ -17,7 +17,7 @@ del costat, enfosquida), sense negre.
     en Ramon, la Sança, en Joanet, l'Ermessenda i els canonges Gombau i Arnulf. L'únic vermell viu és el de la cera
     dels segells que porta en Ponç penjats del cinyell.
 
-La cara de la Iri i de la Vet és la de sempre (la de Suma Zero), píxel a píxel.
+La cara de l'Iri i de la Vet és la de sempre (la de Suma Zero), píxel a píxel.
 
 Ho fa servir draw_characters.py (els fulls de Benne). Vegeu també guio/art/personatges.py (la làmina de revisió).
 """
@@ -33,11 +33,11 @@ from hd.pix import mix
 #  Materials
 # ═══════════════════════════════════════════════════════════════════════════
 
-# pells (les de la Iri i la Vet, les de sempre)
+# pells (les de l'Iri i la Vet, les de sempre)
 SKIN_TAN = M((50, 24, 28), (92, 50, 44), (138, 86, 62), (178, 124, 86), (208, 160, 114), (232, 196, 152))
 SKIN_OLIVA = M((46, 26, 26), (84, 52, 42), (126, 86, 60), (164, 120, 82), (196, 154, 108), (222, 188, 140))
 
-# la Iri
+# l'Iri
 OCRE = M((36, 24, 12), (68, 46, 20), (104, 74, 32), (140, 104, 46), (172, 134, 64), (200, 166, 96), dith=0.0)
 CALCES = M((12, 18, 12), (24, 34, 22), (38, 52, 32), (54, 72, 44), (74, 94, 60), (98, 118, 80), dith=0.0)
 CUIR = M((22, 12, 8), (42, 24, 14), (66, 40, 24), (94, 60, 36), (122, 82, 50), (150, 108, 70), dith=0.0)
@@ -334,7 +334,7 @@ def guants(mat):
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-#  La Iri (20 anys, llenyatera)
+#  L'Iri (20 anys, llenyatera)
 # ═══════════════════════════════════════════════════════════════════════════
 
 IRI_PROP = Prop(tronc=1.0, cames=1.06, ample=1.0)
@@ -407,7 +407,7 @@ IRI_GUANTS, IRI_GUANTS_FONS = guants(GUANT)
 
 IRI = {
     'skin': SKIN_IRI, 'legs': CALCES, 'top': OCRE, 'shoes': BOOT, 'lashes': True, 'thin': 0.2,
-    'iris': (52, 38, 30), 'brow': (24, 16, 22),   # la cara de la Iri, la de sempre
+    'iris': (52, 38, 30), 'brow': (24, 16, 22),   # la cara de l'Iri, la de sempre
     'prop': IRI_PROP,
     'forearm': SKIN_IRI,                          # les mànigues arremangades: els braços forts, i els guants
     'hooks': {'hair': iri_hair, 'collar': iri_collar, 'arm': hooks(bracos_nus, IRI_GUANTS), 'over': destral,

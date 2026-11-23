@@ -1,5 +1,5 @@
 """
-L'Última Arrel — el bosc obert (Escena 7, la Vet; la Iri hi és), una setmana després, de dia. Art definitiu, a 1×
+L'Última Arrel — el bosc obert (Escena 7, la Vet; l'Iri hi és), una setmana després, de dia. Art definitiu, a 1×
 (640×360; l'escena fins a y = 260). És la vora del bosc de l'escena 1 sense la tanca (vora_comu.py, mode 'dia').
 
   - El bosc és viu, i no ha de semblar la vora de l'escena 1 amb un altre llum: el sol del matí entra baix i daurat

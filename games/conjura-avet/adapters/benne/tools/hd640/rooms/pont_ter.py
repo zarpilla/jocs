@@ -1,5 +1,5 @@
 """
-La Conjura de l'Avet — `pont_ter`: el Pont Vell sobre el Ter (actes 1 i 4; la Iri). EN 3D (hd640/tres_d.py), a 1×.
+La Conjura de l'Avet — `pont_ter`: el Pont Vell sobre el Ter (actes 1 i 4; l'Iri). EN 3D (hd640/tres_d.py), a 1×.
 
 Primera hora de la tarda, els núvols s'obren: llum grisa i verda. La càmera és de lluny, dalt dels horts, mirant el
 pont de biaix i una mica avall (la referència `pont-vell.png`):
@@ -19,7 +19,7 @@ serra), `rec_ple` (l'aigua torna al rec), `llum_mati` (l'acte 4: el matí net, e
 `barca_corrent` (la barca, al matí, a mig riu). ANIMS: `escuma` (el riu que corre i l'escuma de la resclosa).
 
 El món: x a la dreta, y amunt (0 = la riba dels horts), z cap al fons; 1 unitat = 1 px de sala on un personatge fa
-la seva mida (la Iri, 84 px).
+la seva mida (l'Iri, 84 px).
 """
 import functools
 import math
@@ -931,7 +931,7 @@ GEOMETRIA = {
                        'walk': _p(520, 230)},
         'cami': {'rect': (0, _p(-200, 150)[1] - 10, 30, BOTTOM - 12), 'walk': (3, _p(-170, 100)[1])},
     },
-    # la Iri arriba pel camí (de l'esquerra); en Joanet, a la vora, al costat de la barca; l'Ermessenda, a la vora del
+    # l'Iri arriba pel camí (de l'esquerra); en Joanet, a la vora, al costat de la barca; l'Ermessenda, a la vora del
     # rec, a la dreta
     'spawns': {'iri': _p(-40, 110), 'joanet': _p(BARCA[0] - 76, VORA_Z - 52), 'ermessenda': _p(516, 214)},
     'walkable': _WALK,

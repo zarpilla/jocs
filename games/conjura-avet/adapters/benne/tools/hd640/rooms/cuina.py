@@ -1,12 +1,12 @@
 """
-La cuina (acte 2, de nit; la Vet, amb la Iri). Art definitiu, a 1×.
+La cuina (acte 2, de nit; la Vet, amb l'Iri). Art definitiu, a 1×.
 
 La cuina del monestir, monumental, vista de biaix cap a la cantonada del fons a l'esquerra i una mica des de dalt:
   - a la paret del fons, la **llar de foc** gegant: la boca de pedra, la campana ennegrida que puja fins al sostre, la
     llosa de la llar, la llenya, el **foc** (animació, `foc`) i l'olla que hi penja de la cadena. Tota la llum de la
     sala ve d'aquí: taronja, i les ombres llargues que fugen cap a la dreta i cap a nosaltres;
   - a la dreta de la llar, la biga amb les **olles** penjades (coure i ferro), que fan ombra a la paret;
-  - a la cantonada, contra la paret de l'esquerra, la **pila d'olles** de terrissa i coure, a prop d'on és la Iri;
+  - a la cantonada, contra la paret de l'esquerra, la **pila d'olles** de terrissa i coure, a prop d'on és l'Iri;
   - al mig, la **taula** llarga, girada, amb la **gerra** de vi i la **copa** (davant en Sunifred, que és al cap de la
     taula: la taula li tapa les cames), i el **banc** al davant (capes del davant amb la seva línia base);
   - primer pla: el pilar de la dreta i la pila de llenya de baix a l'esquerra, a contrallum.
@@ -531,7 +531,7 @@ def _geometria():
               llum_personatge(CAM, (FOC_POS[0], 40, ZB - 10), 200, (255, 200, 120), 0.4)]
     return {
         'things': things,
-        # la Vet ve de l'esquerra; la Iri (disfressada), al costat de la llar, a prop de la pila; en Sunifred al cap de
+        # la Vet ve de l'esquerra; l'Iri (disfressada), al costat de la llar, a prop de la pila; en Sunifred al cap de
         # la taula
         'spawns': {'vet': _p(-90, 330), 'iri': _p(-222, 430), 'sunifred': _p(sun[0], sun[2])},
         'walkable': walk,

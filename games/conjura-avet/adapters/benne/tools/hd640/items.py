@@ -99,7 +99,7 @@ def gota_resina(f, cx, cy, rx=4.0, ry=3.4):
     return pix
 
 
-# ─── El bosc i la feina de la Iri ───────────────────────────────────────────
+# ─── El bosc i la feina de l'Iri ───────────────────────────────────────────
 
 def _guant(f, ox, oy, lvl, flip=False):
     """Un guant de llenyatera, de palmell: el puny ample, el palmell i quatre dits gruixuts i el polze."""
@@ -123,7 +123,7 @@ def guants(f):
 
 
 def destral(f):
-    """La destral de la Iri: el mànec de freixe en diagonal i el cap de ferro amb el tall esmolat que brilla."""
+    """La destral de l'Iri: el mànec de freixe en diagonal i el cap de ferro amb el tall esmolat que brilla."""
     f.limb((14, 33), (44, 5), 1.9, 1.6, PALE, 3.2, amp=1.8, cont=(0.2, 0.8))
     for t in (0.25, 0.5, 0.75):                                             # la veta del mànec
         f.shade(14 + 30 * t, 33 - 28 * t, -0.8)

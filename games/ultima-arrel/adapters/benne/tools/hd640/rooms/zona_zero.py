@@ -542,7 +542,7 @@ def _frames_formigonera():
 ANIMS = {'formigonera': {'frames': _frames_formigonera, 'frameDuration': 110}}
 
 FRONT = [
-    # la fila de davant del públic: la Vet i l'àvia (a y ≈ 213) hi queden darrere; la Iri hi passa per davant
+    # la fila de davant del públic: la Vet i l'àvia (a y ≈ 213) hi queden darrere; l'Iri hi passa per davant
     {'id': 'davant_public', 'mask': lambda x, y: mascara(_base()[1])(x, y), 'baseline': 222, 'zIndex': 20},
     {'id': 'davant', 'mask': lambda x, y: mascara(_base()[2])(x, y), 'baseline': 999, 'zIndex': 22},
 ]
@@ -550,9 +550,9 @@ FRONT = [
 
 # ─── Geometria ───────────────────────────────────────────────────────────────
 
-# Els fulls dels personatges fan la Iri de 68 px a escala 1 (la sala es va dibuixar pensant en 97): ×97/68.
+# Els fulls dels personatges fan l'Iri de 68 px a escala 1 (la sala es va dibuixar pensant en 97): ×97/68.
 K_FULLS = 97 / 68
-ESCALA = (round(0.58 * K_FULLS, 3), round(0.77 * K_FULLS, 3))                              # a terra: a y = 198 i a y = 259 (la Iri, de 56 a 75 px)
+ESCALA = (round(0.58 * K_FULLS, 3), round(0.77 * K_FULLS, 3))                              # a terra: a y = 198 i a y = 259 (l'Iri, de 56 a 75 px)
 
 GEOMETRIA = {
     'things': {

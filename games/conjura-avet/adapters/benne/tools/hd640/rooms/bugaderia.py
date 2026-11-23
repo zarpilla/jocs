@@ -10,7 +10,7 @@ cantonada de davant a l'esquerra i mira cap a la cantonada del fons a la dreta, 
   - a la paret de la dreta: la finestra petita, el clau amb les **tisores** de bugadera (un prop) i, davant, el
     **bagul** de roba vella, girat;
   - per terra, dues tines petites i lloses molles;
-  - primer pla (FRONT): la corda amb les **robes** esteses, en diagonal; la Iri hi passa per darrere (la capa es
+  - primer pla (FRONT): la corda amb les **robes** esteses, en diagonal; l'Iri hi passa per darrere (la capa es
     talla en franges, cadascuna amb la línia base del terra que hi ha sota la corda).
 
 Decorats: `bagul_obert`, `foc_ences` (animat), `tina_negra`, `habits_estesos` (els dos hàbits negres penjats a la

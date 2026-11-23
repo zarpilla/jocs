@@ -399,7 +399,7 @@ def pip():
 
 
 def altaveu_iri():
-    """La veu de la Iri per l'altaveu gros: el xiulet d'acoblament, un «bloop» i la veu saturadíssima, amb rebot."""
+    """La veu de l'Iri per l'altaveu gros: el xiulet d'acoblament, un «bloop» i la veu saturadíssima, amb rebot."""
     acoble = osc(lin(2600, 3100, 0.45), 0.45) * lin(0, 1, 0.45, 2) * env(0.45, 0.01, None, 0.02) * 0.4
     bloop = osc(lin(480, 110, 0.22), 0.22) * env(0.22, 0.004, 0.08) * 0.8
     veu, k = _veu(1.3, [(0, 250), (0.25, 310), (0.5, 290), (0.75, 330), (1, 220)], [

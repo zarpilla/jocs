@@ -7,7 +7,7 @@ fins a terra. Al fons, el pas cap a les galeries, amb l'escala de mà recolzada 
 amb els fils del Miceli: apagats (blau fosc) abans de reparar-los i encesos (turquesa) després. A la dreta, el
 tauler de la centraleta: rodes de fusta, clavilles de bolet, el radar d'arrels (la pantalla rodona), el rètol
 «MICELI» i el corn per escoltar. Al costat del tauler, les tres arrels del trencaclosques 2.2: només una és viva.
-L'Espora, al tauler, i la Iri, a l'esquerra.
+L'Espora, al tauler, i l'Iri, a l'esquerra.
 
 Ús: python3 centraleta.py  →  centraleta.png (xarxa caiguda), centraleta-encesa.png (×2, amb personatges)
 """

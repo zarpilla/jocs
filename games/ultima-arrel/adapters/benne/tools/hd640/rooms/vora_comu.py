@@ -9,7 +9,7 @@ l'esquerra amb la porta d'un metre; a la dreta, el que és de NaturaPlus (fred i
 silueta.
 
 **Coordenades.** Tot es dibuixa en les coordenades de la mostra («món»: 640 d'ample, l'horitzó a y = 168, els peus
-de la Iri a prop de la porta a y ≈ 250). Un `Llenc` és un Canvas de 640×360 amb un desplaçament vertical `oy`
+de l'Iri a prop de la porta a y ≈ 250). Un `Llenc` és un Canvas de 640×360 amb un desplaçament vertical `oy`
 (píxel de pantalla = món + oy): a les sales de joc oy = −28 (el món 28..288 omple l'escena, 0..259; a sota hi ha
 el HUD), i a les pantalles senceres (crèdits, portada) se'n tria un altre i el cel, la capçada i el tronc continuen
 cap amunt. `sala(y)` passa una y del món a la de la sala.
@@ -819,7 +819,7 @@ def tronc_w(y):
     return 44 + 60 * max(0.0, (y - 170) / 76) ** 2.2 - 4 * max(0.0, min(120, 120 - y) / 120)
 
 
-DOOR = (222, 186, 238, 17)     # centre x, dalt, baix, mig ample (la porta fa un metre: l'espatlla de la Iri)
+DOOR = (222, 186, 238, 17)     # centre x, dalt, baix, mig ample (la porta fa un metre: l'espatlla de l'Iri)
 BELL = (193, 200)              # la campaneta, a l'esquerra de la porta
 BUSTIA = (276, 214)            # la bústia, en un pal, a la dreta
 ESTACA = (243, 224, 250)       # x, dalt, baix: clavada just davant el cantell de la porta (que s'obre cap enfora)

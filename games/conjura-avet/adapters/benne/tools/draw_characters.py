@@ -4,11 +4,11 @@ Els fulls dels personatges de La Conjura de l'Avet, amb el format que espera Ben
 etiquetes, i el .character.json). El dibuix és a hd/conjura.py (amb el sistema de les adultes d'Aigua Verne,
 hd/characters.py, i les proporcions de hd/arrel.py); aquí només es munten els fulls.
 
-Una sola mida, a 1× (com les sales en 3D): cada personatge es dibuixa a la seva alçada i no s'escala. La Iri fa
+Una sola mida, a 1× (com les sales en 3D): cada personatge es dibuixa a la seva alçada i no s'escala. L'Iri fa
 ≈84 px, la Vet ≈78 i els adults, 80-90.
 
 Animacions (L, D, U i el 3/4, DL i UL; Benne fa el mirall per a R, DR i UR):
-  - **la Iri i la Vet**: IdleL/D/U/DL/UL (4: respira), WalkL/D/U/DL/UL (6), TalkL/D/U/DL/UL (2), BlinkD/L/DL i
+  - **l'Iri i la Vet**: IdleL/D/U/DL/UL (4: respira), WalkL/D/U/DL/UL (6), TalkL/D/U/DL/UL (2), BlinkD/L/DL i
     LookD/DL (les micro-accions de quan són quietes; `idleActions`). I tot això també amb la roba `Monjo` (el
     prefix davant: MonjoIdleD, MonjoWalkL...), que el joc tria amb `outfit` (game/data/characters.json).
   - **els secundaris**: el mateix sense Walk; els que caminen en alguna escena (`CAMINEN`: en Bonfill, en Ramon i els

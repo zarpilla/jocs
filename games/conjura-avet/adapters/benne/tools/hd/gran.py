@@ -10,7 +10,7 @@ Com FigK d'Aigua Verne (adapters/benne/tools/hd/personatges.py), però damunt de
 persona): **FigYK** rep les mateixes ordres en coordenades de disseny, les passa a les files de FigY i les rasteritza a
 ×1,5, amb volum i contorn d'un píxel real. Els píxels solts dels ganxos ocupen la seva zona (1 o 2 píxels reals), les
 línies són d'un píxel real, i **la cara es refà píxel a píxel a la mida nova** (`front_face_k`, `side_face_k`): la
-mateixa cara (la de Suma Zero, per a la Iri i la Vet), amb els ulls de 3 px en lloc de 2.
+mateixa cara (la de Suma Zero, per a l'Iri i la Vet), amb els ulls de 3 px en lloc de 2.
 
 El fotograma gran és el d'1× escalat (mateixa cantonada de dalt a l'esquerra, peus × 1,5): el motor hi compta. Per
 això la figura es desplaça mig píxel real si cal (`sub`), perquè la retallada d'1× caigui en un píxel enter.

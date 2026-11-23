@@ -4,9 +4,9 @@ L'Última Arrel — previsualització ×2 d'una sala d'art definitiu (hd640/room
 (la centraleta i el campament de les fades).
 
 Munta el fons, els decorats que es diguin, els personatges a `spawns` (a l'escala de les regions de la sala, com fa
-el motor) i el primer pla (`FRONT`) per sobre. Els personatges són els de les mostres d'estil: la Iri i la Vet de
+el motor) i el primer pla (`FRONT`) per sobre. Els personatges són els de les mostres d'estil: l'Iri i la Vet de
 art/mostra/nenes.py, l'Espora de art/mostra/centraleta.py i unes fades esquemàtiques (≈28 px a escala 1), fins que
-hi hagi els fulls de debò. A escala 1, la Iri fa ≈97 px i la Vet ≈90 (a les sales de lluny, ≈0,7: 68 i 62 px).
+hi hagi els fulls de debò. A escala 1, l'Iri fa ≈97 px i la Vet ≈90 (a les sales de lluny, ≈0,7: 68 i 62 px).
 (previsualitza.py fa el mateix amb els fulls provisionals de placeholder-art.)
 
 Ús: python3 previsualitza_nenes.py <sala> [<nom> <decorat,decorat...>] ...
@@ -124,7 +124,7 @@ def munta(sala, decorats, tmp):
             k = ALT[cid] * s / (bb[3] - bb[1])
             spr, feet = _redimensiona(spr, k), (round(25 * k), round(84 * k))
         elif cid == 'espora':
-            k = 35 / 40                                        # ≈35 px a la sala (la meitat de la Iri)
+            k = 35 / 40                                        # ≈35 px a la sala (la meitat de l'Iri)
             spr = _redimensiona(Image.open(f'{tmp}/espora.png').convert('RGBA'), k)
             feet = (round(20 * k), round(47 * k))
         else:

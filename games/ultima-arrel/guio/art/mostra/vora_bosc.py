@@ -3,14 +3,14 @@
 L'Última Arrel — mostra d'art de la sala 1, `vora_bosc` (Escena 1), al capvespre. Ve de la referència 1.
 
 La càmera és baixa, arran de terra (una mica contrapicada): el roure és enorme i les falgueres del primer pla són
-més altes que la Iri. A l'esquerra, el bosc viu i càlid, amb el sol que es pon entre els troncs. A la dreta, la tanca
+més altes que l'Iri. A l'esquerra, el bosc viu i càlid, amb el sol que es pon entre els troncs. A la dreta, la tanca
 de NaturaPlus, amb el que hi ha a darrere (la caseta d'obra, la gespa artificial, l'excavadora), en colors freds.
 
 Al roure: la porta d'un metre, la campaneta, el fanalet vermell, la bústia i l'estaca de topògraf clavada davant
 la porta. Al peu de la tanca, el cargol galvanitzat que brilla. Hi ha dues versions: amb la xarxa caiguda (Escena 1:
 els bolets i els filaments, gairebé apagats) i amb la xarxa encesa (com seria l'epíleg, `bosc_obert`).
 
-Ús: python3 vora_bosc.py  →  vora-bosc.png, vora-bosc-encesa.png (×2, amb la Iri), vora-bosc-sala.png (1×, sense)
+Ús: python3 vora_bosc.py  →  vora-bosc.png, vora-bosc-encesa.png (×2, amb l'Iri), vora-bosc-sala.png (1×, sense)
 """
 import math
 

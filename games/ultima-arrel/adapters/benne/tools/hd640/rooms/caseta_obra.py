@@ -528,7 +528,7 @@ _WALK = [(52, 184), (386, 156), (456, 192), (474, 214), (300, 236), (0, 238), (0
 _VS = [v for _, v in _WALK]
 
 
-# Els fulls dels personatges fan la Iri de 68 px a escala 1 (la sala es va dibuixar pensant en 97): ×97/68. La Vet hi
+# Els fulls dels personatges fan l'Iri de 68 px a escala 1 (la sala es va dibuixar pensant en 97): ×97/68. La Vet hi
 # porta la mida gran dels fulls (`Gran`, ×1,5: characters.json, `outfit`), que el motor mostra a l'escala ÷ 1,5
 # (≈0,67–1,18): els píxels del personatge, com els del decorat.
 K_FULLS = 97 / 68

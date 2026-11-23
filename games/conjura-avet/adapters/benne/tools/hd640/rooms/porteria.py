@@ -1,5 +1,5 @@
 """
-La porteria (acte 2, de nit; la Iri, i la Vet hi és). Art definitiu, a 1×.
+La porteria (acte 2, de nit; l'Iri, i la Vet hi és). Art definitiu, a 1×.
 
 Un passadís estret de pedra de gres que fuig cap a la dreta, vist una mica des de dalt i de biaix:
   - la paret del fons, de carreus, amb pilastres que s'empetiteixen cap a la dreta; al fons de tot, l'arc fosc
@@ -15,7 +15,7 @@ Un passadís estret de pedra de gres que fuig cap a la dreta, vist una mica des 
 Decorats: `ninots` (els dos ninots nous al llibre, «fra Tos i fra Silenci») i `porta_oberta` (la porta oberta cap a
 l'ala dels canonges; cal que el contingut el tingui).
 
-El món: x a la dreta (al llarg del passadís), y amunt (0 = terra), z endins; 1 unitat = 1 px a escala 1 (la Iri
+El món: x a la dreta (al llarg del passadís), y amunt (0 = terra), z endins; 1 unitat = 1 px a escala 1 (l'Iri
 hi fa 84). La càmera, alta i girada cap a la dreta: l'escala dels personatges només depèn de la y de pantalla.
 """
 import functools
@@ -542,7 +542,7 @@ def _geometria():
     def G(lx, y, lz):
         return CAM.projecta((fx + lx * c - lz * s_, y, fz + lx * s_ + lz * c))[:2]
     llibre_r = rect_de(G(-26, 100, 12), G(26, 100, 12), G(26, 82, -12), G(-26, 82, -12), pad=3)
-    # el terra on es camina: del peu de la paret (sense el banc ni la base de la columna) fins on la Iri fa ≈1,2;
+    # el terra on es camina: del peu de la paret (sense el banc ni la base de la columna) fins on l'Iri fa ≈1,2;
     # a l'esquerra, fins al pilar del primer pla; a la dreta, fins on fa ≈0,7.
     peu = lambda x, dz=22: _p(x, ZB - dz)  # noqa: E731
     walk = [peu(-150), peu(bx0 - 8), _p(bx0 - 8, ZB - bd - 12), _p(bx1 + 16, ZB - bd - 12), peu(bx1 + 16),
@@ -561,7 +561,7 @@ def _geometria():
     lt = TORXES[1]
     return {
         'things': things,
-        # la Iri al mig, la Vet (disfressada) un pas darrere seu, i en Bonfill al banc, amb la llança
+        # l'Iri al mig, la Vet (disfressada) un pas darrere seu, i en Bonfill al banc, amb la llança
         'spawns': {'iri': _p(70, 352), 'vet': _p(0, 392), 'bonfill': _p(BANC[0] + 46, ZB - BANC[2] - 26)},
         'walkable': walk,
         'forats': forats,

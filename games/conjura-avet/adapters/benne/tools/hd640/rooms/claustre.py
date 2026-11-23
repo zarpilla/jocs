@@ -18,7 +18,7 @@ columnes) i `llum_mati` (acte 4: sol net, les ombres de les columnes en diagonal
 Gueraula és un prop (damunt el banc).
 
 El món: x a la dreta (0 = la cara de dins de l'ampit), y amunt (0 = el terra), z cap al fons (420 = la paret del
-fons de la galeria); 1 unitat = 1 px de sala a l'escala 1 dels personatges (la Iri hi fa 84 px).
+fons de la galeria); 1 unitat = 1 px de sala a l'escala 1 dels personatges (l'Iri hi fa 84 px).
 """
 import functools
 import math
@@ -667,7 +667,7 @@ def _rect(*Ps):
 
 
 def _walk():
-    """El terra on es camina: la galeria, de l'ampit al banc i al mur, des d'on la Iri fa ≈1,2 fins a ≈0,72."""
+    """El terra on es camina: la galeria, de l'ampit al banc i al mur, des d'on l'Iri fa ≈1,2 fins a ≈0,72."""
     zn, zf = _z_escala(1.16), _z_escala(0.72)
     pts = [(14, zf), (XI - 10, zf), (XI - 10, BANC[5] + 10), (BANC[0] - 10, BANC[5] + 10), (BANC[0] - 10, BANC[4] - 10),
            (XI - 10, BANC[4] - 10), (XI - 10, zn), (14, zn)]

@@ -9,7 +9,7 @@ I, a més, el terra en perspectiva dels exteriors (`Terra`): una càmera a l'al�
 les verticals, verticals), amb l'horitzó a `hor`. Un punt del terra a la fila v de pantalla és a la profunditat
 z = f·h / (v − hor), i un personatge que hi té els peus fa (v − hor) / h: l'escala és exacta i lineal en v.
 
-1 unitat del món = 1 píxel de sala a l'escala 1 dels personatges (la Iri hi fa ≈72 px).
+1 unitat del món = 1 píxel de sala a l'escala 1 dels personatges (l'Iri hi fa ≈72 px).
 """
 import math
 import random

@@ -10,7 +10,7 @@
 - **Títol:** *L'Última Arrel*. **NaturaPlus S.A.** és l'empresa.
 - **Públic:** nenes de 8 a 12 anys. Ha de durar uns 45-60 minuts i ha de ser **fàcil**: només 2 o 3 objectius
   alhora, cap combinació rebuscada d'objectes, cap derrota i cap atzucac.
-- **Protagonistes: la Iri i la Vet, de nenes**, amb la cara de sempre (la de Suma Zero), i la roba i el pentinat
+- **Protagonistes: l'Iri i la Vet, de nenes**, amb la cara de sempre (la de Suma Zero), i la roba i el pentinat
   nous. **Cada escena la juga una sola protagonista, i no es pot canviar de persona**: no hi ha botó per canviar.
   El joc passa a l'altra quan comença una escena nova, que també és un salt en el temps («Mentrestant…»,
   «L'endemà al matí»). Si l'altra surt a l'escena, és un personatge més: s'hi pot parlar, però no es porta. Col·laboren, però de la manera més senzilla possible (vegeu «Les dues i el walkie»).
@@ -31,7 +31,7 @@ Hi ha molt que funciona tal com està, i no s'ha de tocar:
 
 ## Què cal canviar o resoldre
 
-1. **De la Bruna a la Iri i la Vet.** Proposta: són **germanes, de 11 i 9 anys**, i passen el cap de setmana al
+1. **De la Bruna a l'Iri i la Vet.** Proposta: són **germanes, de 11 i 9 anys**, i passen el cap de setmana al
    poble, a casa de l'àvia. La **Iri** (11) és l'observadora: porta la lupa de rellotger i la llibreta de camp. La
    **Vet** (9) és la que parla amb tothom, s'enfila a tot arreu i no té por de res. Cadascuna té un dels dos
    **walkie-talkies** vells de l'avi.
@@ -41,9 +41,9 @@ Hi ha molt que funciona tal com està, i no s'ha de tocar:
 3. **El pol·len picant ha de sortir d'algun lloc.** La proposta no diu on és la flor rara. Proposta: creix a la
    mateixa sala de les fades, a la branca més alta, i el puzle de la sala és arribar-hi (i no picar-se). Així cada
    sala es resol amb el que té a dins.
-4. **El «crit» dels arbres, de la sala 2 a la sala 5.** A la centraleta, la Iri el grava al walkie (té un botó de
+4. **El «crit» dels arbres, de la sala 2 a la sala 5.** A la centraleta, l'Iri el grava al walkie (té un botó de
    gravar, «per enregistrar ocells»). A la caseta d'obra, la Vet sintonitza l'altaveu de la Senyora Pla al canal dels
-   walkies, i la Iri, des de fora, el fa sonar. És la col·laboració principal del joc, i és un sol pas.
+   walkies, i l'Iri, des de fora, el fa sonar. És la col·laboració principal del joc, i és un sol pas.
 5. **La sala 6 no té trencaclosques.** Ha de ser una cinemàtica amb una o dues accions fàcils (fer el senyal a les
    fades i als gripaus, prémer el walkie al moment just). Si s'erra el moment, es torna a provar.
 6. **La Senyora Pla, al final.** No la venç un bon argument: la vencen els seus mateixos sensors (que diuen que
@@ -64,12 +64,12 @@ Proposta de repartiment, de manera que sempre hi hagi una sola protagonista a ca
 | 2. La centraleta del Miceli | Iri | Coneix l'Espora. La pila de llimona i el fil de saba. Grava el crit dels arbres. |
 | 3. El campament de les Fades d'Ortiga | Vet | S'enfila, negocia amb les fades i aconsegueix el pol·len picant. |
 | 4. El toll dels gripaus buròcrates | Iri | Desembussa el rierol de plàstics i aconsegueix els plànols del cadastre. |
-| 5. La caseta d'obra de NaturaPlus | Vet (i la Iri pel walkie) | S'hi cola, canvia l'altaveu al canal dels walkies. |
+| 5. La caseta d'obra de NaturaPlus | Vet (i l'Iri pel walkie) | S'hi cola, canvia l'altaveu al canal dels walkies. |
 | 6. La Zona Zero (l'endemà al matí) | Iri (la Vet hi és, entre el públic) | El senyal, el botó, el caos. |
-| 7. El bosc obert (epíleg) | Vet (la Iri hi és, al tronc) | Te de menta amb l'Espora. Crèdits. |
+| 7. El bosc obert (epíleg) | Vet (l'Iri hi és, al tronc) | Te de menta amb l'Espora. Crèdits. |
 
 **El walkie fa tres feines:** és el tutorial de parlar a distància, és la pista per a la Vet (quan ella demana
-ajuda, li respon la Iri o l'Espora) i és el pas de la sala 5. No se'n passen objectes: cada protagonista té el seu
+ajuda, li respon l'Iri o l'Espora) i és el pas de la sala 5. No se'n passen objectes: cada protagonista té el seu
 inventari i no cal que es toquin mai.
 
 ## La lupa del Miceli (pistes)
@@ -93,7 +93,7 @@ inventari i no cal que es toquin mai.
   pla de falgueres, bolets i arrels que emmarca i fa tres plans (`FRONT` amb `baseline` 999).
 - **Les nenes són petites dins un món gran.** Una nena de 9-11 anys fa ≈0,8 de l'alçada d'un adult: a la mida «de
   lluny» serien ≈66-70 px. L'Espora, la meitat (≈35 px). Les fades, ≈30 px, només a la sala 3, que és de prop.
-- **Personatges:** la Iri com a la referència 1 (jaqueta ocre, pantalons verds, motxilla blava, walkie a la corretja,
+- **Personatges:** l'Iri com a la referència 1 (jaqueta ocre, pantalons verds, motxilla blava, walkie a la corretja,
   lupa), però amb la cara de la casa i un pentinat nou. La Vet, diferent de silueta (més petita, una gorra o unes
   trenes, botes d'aigua), perquè quedi clar a qui portes.
 - **Com es dibuixa:** com als altres jocs, amb Python (`hd640/tres_d.py`, `Escena`, `Llum`) i seguint
@@ -127,7 +127,7 @@ cada pas).
 La capa de filaments a l'adaptador, provada al navegador amb l'art provisional.
 
 ### Fase 5 — Personatges
-La Iri i la Vet de nenes (s'han de fer fulls nous a la mida de nena, i redibuixar-los, no reduir-los). Després,
+L'Iri i la Vet de nenes (s'han de fer fulls nous a la mida de nena, i redibuixar-los, no reduir-los). Després,
 l'Espora, tres fades (la cap i dues més), dos o tres gripaus, la Senyora Pla i un parell de periodistes.
 
 ### Fase 6 — Sales
@@ -140,7 +140,7 @@ d'ascensor), la font del títol, `public/portada.png`, `publica.yml`, les exclus
 
 ## Segones decisions (19-11-2026)
 
-1. La Iri i la Vet són **germanes, de 11 i 9 anys**.
+1. L'Iri i la Vet són **germanes, de 11 i 9 anys**.
 2. **L'àvia surt** com a personatge.
 3. A l'epíleg, la Senyora Pla envia el **«Bosc 3.0»**, en una altra comarca: el final és agredolç.
 4. El joc és **només en català**.

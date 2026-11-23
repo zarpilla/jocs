@@ -15,7 +15,7 @@ describe("La Conjura de l'Avet: la partida", () => {
     expect(errors).toEqual([]);
   });
 
-  it("comença amb la Iri a l'avet, i no es pot canviar fins que arriba la Vet", () => {
+  it("comença amb l'Iri a l'avet, i no es pot canviar fins que arriba la Vet", () => {
     const { n, p } = partida();
     expect(p.active).toBe('iri');
     expect(p.room).toBe('mur_avet');
@@ -51,14 +51,14 @@ describe("La Conjura de l'Avet: la partida", () => {
     expect(p.room).toBe('claustre');
   });
 
-  it("la Iri no entra al claustre a l'acte 1, ni a l'apotecaria a l'acte 2", () => {
+  it("l'Iri no entra al claustre a l'acte 1, ni a l'apotecaria a l'acte 2", () => {
     const { n, p } = partida();
     tutorial(p, n);
     p.do('walkTo', 'porta_monestir');
     expect(p.room).toBe('mur_avet');
   });
 
-  it('la Vet no deixa a la Iri les eines que necessitarà sola, ni les proves del judici', () => {
+  it("la Vet no deixa a l'Iri les eines que necessitarà sola, ni les proves del judici", () => {
     const { n, p } = partida();
     acte1(p, n);
     p.switchTo('vet');
@@ -68,7 +68,7 @@ describe("La Conjura de l'Avet: la partida", () => {
     }
   });
 
-  it("la Iri no s'endu el cofre fins que la Vet ha calcat la carta d'en Sunifred", () => {
+  it("l'Iri no s'endu el cofre fins que la Vet ha calcat la carta d'en Sunifred", () => {
     const { n, p } = partida();
     acte1(p, n);
     acte2(p, n);

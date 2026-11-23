@@ -66,7 +66,7 @@ def sparkle(f, x, y, mat, lvl, r=2):
             f.px(x + dx, y + dy, mat, lvl - d * 0.6)
 
 
-# ─── Les coses de la Iri ────────────────────────────────────────────────────
+# ─── Les coses de l'Iri ────────────────────────────────────────────────────
 
 def walkie(f):
     """El walkie vell de l'avi: plàstic marró fosc gastat, l'antena telescòpica de crom, la roda del canal, la

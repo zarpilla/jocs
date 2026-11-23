@@ -17,11 +17,11 @@ referències: [guio/art/](guio/art/).
 
 - **Una escena, una germana.** Cada escena la juga una sola de les dues, i no es pot canviar: el joc passa a l'altra
   quan comença l'escena següent, amb un rètol de temps. Es parlen pel **walkie**. L'única excepció: la Vet juga la 5
-  i la 6a seguides (pel mig hi ha el rètol del dilluns, i la Iri és al bus); vegeu el [guió](guio/guio.md).
+  i la 6a seguides (pel mig hi ha el rètol del dilluns, i l'Iri és al bus); vegeu el [guió](guio/guio.md).
 - **La lupa** és el botó de pista. Al HUD tàctil ocupa el lloc del botó «Canvia» (`botoPista` a
   [adapters/benne/joc.ts](adapters/benne/joc.ts)): en prémer-la, surt la pista i uns **filaments turquesa** que van de
   la protagonista a les coses on apunta (`targets` a [game/data/hints.json](game/data/hints.json),
-  `game.showThreads` al motor). Quan juga la Vet, la pista li diu la Iri pel walkie (`who`). La targeta «Com es juga» ho diu a
+  `game.showThreads` al motor). Quan juga la Vet, la pista li diu l'Iri pel walkie (`who`). La targeta «Com es juga» ho diu a
   l'última fila, amb la lupa.
 - Sense barra de verbs, amb la interfície tàctil compartida, com Suma Zero, Ni un ou i Aigua Verne.
 

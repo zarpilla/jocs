@@ -30,7 +30,7 @@
   "who": "avia"
  },
  "avia1385905395": {
-  "hash": "14c4639c3e107975",
+  "hash": "9d04bb6797d5029c",
   "key": "sala.zona_mati.avia.parla",
   "who": "avia"
  },
@@ -1465,7 +1465,7 @@
   "who": "iri"
  },
  "iri3539809510": {
-  "hash": "753bd6b0fa971ef6",
+  "hash": "2303cdf6c10c0f06",
   "key": "sala.vora_bosc.truca.3",
   "who": "iri"
  },
@@ -1980,8 +1980,13 @@
   "who": "narrator"
  },
  "narrator1071118484": {
-  "hash": "d7e0c6995bca37bd",
+  "hash": "a8d25eb057ea39eb",
   "key": "sala.centraleta.xarxa.1",
+  "who": "narrator"
+ },
+ "narrator1103935223": {
+  "hash": "8604e7095cae560a",
+  "key": "final.taula.llibreta",
   "who": "narrator"
  },
  "narrator1166216226": {
@@ -2030,8 +2035,13 @@
   "who": "narrator"
  },
  "narrator1624905115": {
-  "hash": "484b8c8e2ada0448",
+  "hash": "8a7e48e2c71eb4f8",
   "key": "final.taula.llibreta.plena",
+  "who": "narrator"
+ },
+ "narrator1649138656": {
+  "hash": "4ba8b6d6b51b34a6",
+  "key": "final.taula.llibreta",
   "who": "narrator"
  },
  "narrator1830811537": {
@@ -2050,7 +2060,7 @@
   "who": "narrator"
  },
  "narrator1954811507": {
-  "hash": "dbd08d6b2abcce15",
+  "hash": "57e32c995aa344fc",
   "key": "dlg.gripau.ajuda.4",
   "who": "narrator"
  },
@@ -2065,7 +2075,7 @@
   "who": "narrator"
  },
  "narrator2164261939": {
-  "hash": "a81a4c5e8a43ca74",
+  "hash": "1179130e695bf55a",
   "key": "sala.zona_zero.xiulet.1",
   "who": "narrator"
  },
@@ -2080,7 +2090,7 @@
   "who": "narrator"
  },
  "narrator2196220520": {
-  "hash": "ed9d6c0385229d7e",
+  "hash": "6f64caacfb1844ef",
   "key": "sala.zona_mati.fi.1",
   "who": "narrator"
  },
@@ -2115,7 +2125,7 @@
   "who": "narrator"
  },
  "narrator2389109477": {
-  "hash": "f28c8e2163c55815",
+  "hash": "28a2e3dd1a3a215c",
   "key": "sala.centraleta.grava.1",
   "who": "narrator"
  },
@@ -2127,6 +2137,16 @@
  "narrator2474325739": {
   "hash": "3710150f3abb8ec8",
   "key": "sala.bosc_obert.intro.3",
+  "who": "narrator"
+ },
+ "narrator2497821675": {
+  "hash": "163f6e81eaae9693",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
+ "narrator2500101391": {
+  "hash": "39914198c1adc2fb",
+  "key": "final.taula.llibreta",
   "who": "narrator"
  },
  "narrator2598897494": {
@@ -2159,6 +2179,11 @@
   "key": "sala.caseta_obra.wifi.5",
   "who": "narrator"
  },
+ "narrator2752017426": {
+  "hash": "e43cd1792ca454ea",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator2786873970": {
   "hash": "c5cee78cdb7e7ec4",
   "key": "sala.caseta_obra.wifi.1",
@@ -2185,7 +2210,7 @@
   "who": "narrator"
  },
  "narrator3036271670": {
-  "hash": "55298e5e640eb633",
+  "hash": "7091941193753a3c",
   "key": "sala.centraleta.pila.1",
   "who": "narrator"
  },
@@ -2205,12 +2230,12 @@
   "who": "narrator"
  },
  "narrator3163234173": {
-  "hash": "3bc6edabc3c31f9e",
+  "hash": "2d0b63431df093b1",
   "key": "sala.zona_zero.crit.2",
   "who": "narrator"
  },
  "narrator3175366869": {
-  "hash": "3e982f6a438a79c1",
+  "hash": "a4de7d74d1f44a54",
   "key": "sala.centraleta.escolta.1",
   "who": "narrator"
  },
@@ -2229,13 +2254,18 @@
   "key": "sala.zona_mati.urtica.1",
   "who": "narrator"
  },
+ "narrator3364204959": {
+  "hash": "412b3e93c2cf337d",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator3506254272": {
   "hash": "dfd3dc42c127f295",
   "key": "sala.vora_bosc.truca.1",
   "who": "narrator"
  },
  "narrator3527817119": {
-  "hash": "110eae70bac17dcc",
+  "hash": "f329727cf6130516",
   "key": "sala.toll_gripaus.tap.palanca.1",
   "who": "narrator"
  },
@@ -2264,6 +2294,11 @@
   "key": "sala.campament_fades.empenta.1",
   "who": "narrator"
  },
+ "narrator3662777561": {
+  "hash": "1509b61fab546fc6",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator3664453822": {
   "hash": "7f44f9d41746218f",
   "key": "sala.bosc_obert.taula.seu",
@@ -2285,7 +2320,7 @@
   "who": "narrator"
  },
  "narrator3784793318": {
-  "hash": "39669f977c0326e7",
+  "hash": "888c7ddd7f6df78e",
   "key": "sala.zona_zero.dhora.1",
   "who": "narrator"
  },
@@ -2329,6 +2364,11 @@
   "key": "final.taula.llibreta",
   "who": "narrator"
  },
+ "narrator4062118958": {
+  "hash": "b1320adcf9921162",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator4073592088": {
   "hash": "32cfb1862a03bf1a",
   "key": "dlg.bufo.segell.6",
@@ -2359,6 +2399,11 @@
   "key": "dlg.bufo.segell.1",
   "who": "narrator"
  },
+ "narrator4268457560": {
+  "hash": "008fb79b9aa006c1",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator4274660164": {
   "hash": "1635ba9b02cd7382",
   "key": "final.taula.2",
@@ -2384,6 +2429,11 @@
   "key": "sala.campament_fades.melmelada.2",
   "who": "narrator"
  },
+ "narrator61147716": {
+  "hash": "c416ba726fdd66ba",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator659349829": {
   "hash": "5db97a5dd419aa6a",
   "key": "sala.bosc_obert.taula.4",
@@ -2399,6 +2449,11 @@
   "key": "obs.compte",
   "who": "narrator"
  },
+ "narrator769822550": {
+  "hash": "128282af002809ed",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
  "narrator814533331": {
   "hash": "7edfe0f98cfcb0b3",
   "key": "obs.compte",
@@ -2412,6 +2467,16 @@
  "narrator878675758": {
   "hash": "90779862e3328cd3",
   "key": "sala.zona_mati.bastida.2",
+  "who": "narrator"
+ },
+ "narrator927557288": {
+  "hash": "9f432a7d38bbc243",
+  "key": "final.taula.llibreta",
+  "who": "narrator"
+ },
+ "narrator944261477": {
+  "hash": "05453e99364a5bcb",
+  "key": "final.taula.llibreta",
   "who": "narrator"
  },
  "pica1634180923": {
@@ -3090,7 +3155,7 @@
   "who": "vet"
  },
  "vet1880276616": {
-  "hash": "643b3c61d776befd",
+  "hash": "15000e34972af95c",
   "key": "pj.iri.mira",
   "who": "vet"
  },
@@ -3260,7 +3325,7 @@
   "who": "vet"
  },
  "vet2368800280": {
-  "hash": "a6305ecd1a9a86e6",
+  "hash": "edbcca853ff5ff35",
   "key": "sala.bosc_obert.bolets.mira",
   "who": "vet"
  },
@@ -3690,7 +3755,7 @@
   "who": "vet"
  },
  "vet4044137020": {
-  "hash": "65181fc44353205a",
+  "hash": "f93860df89efbed9",
   "key": "ui.defecte.pickUp.vet.2",
   "who": "vet"
  },
@@ -3895,7 +3960,7 @@
   "who": "vet"
  },
  "vet766519933": {
-  "hash": "b985921318690eba",
+  "hash": "ac08248e2c92220c",
   "key": "obs.pista.vet",
   "who": "vet"
  },

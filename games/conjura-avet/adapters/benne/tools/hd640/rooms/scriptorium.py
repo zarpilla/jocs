@@ -4,7 +4,7 @@ L'scriptorium (acte 3, mitjanit; la Vet). Art definitiu, a 1×.
 La sala dels copistes, vista de biaix cap a la cantonada del fons a l'esquerra i una mica des de dalt:
   - a la paret del fons, els **finestrals** alts i estrets, foscos, amb una mica de lluna blava que entra en feixos
     pel terra; entre els finestrals, la **porta capitular**, ferrada (bandes i claus de ferro): l'arxiu;
-  - a la paret de l'esquerra, en escorç, la **porta del passadís** (per on entren; la Iri hi espera);
+  - a la paret de l'esquerra, en escorç, la **porta del passadís** (per on entren; l'Iri hi espera);
   - els **faristols** dels copistes, girats, cadascun amb la seva espelma, el pergamí a mig copiar i el tinter (en
     Gombau i l'Arnulf hi són drets); l'arca amb les **còpies** de l'ordre, apilades;
   - davant a la dreta, el **faristol d'en Sunifred**, buit, amb el **pergamí** en blanc, i al costat, en un canelobre

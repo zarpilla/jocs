@@ -3,11 +3,11 @@ Personatges de L'Última Arrel (guio/guio.md, «Protagonistes» i «Secundaris»
 
 Totes les figures es dibuixen a la seva mida, a 1× (com les sales en 3D), i no s'escalen:
 
-  - **Les persones** (la Iri, la Vet, l'àvia, la Senyora Pla i la Txell) fan servir el sistema de figures de
+  - **Les persones** (l'Iri, la Vet, l'àvia, la Senyora Pla i la Txell) fan servir el sistema de figures de
     hd/characters.py (`person`, 49×87, peus a (25, 83)), però amb **FigY**: la mateixa figura amb unes altres
     proporcions. FigY rep les ordres en coordenades de disseny (les de la persona gran) i les rasteritza amb el tronc
     i les cames més curts (o més llargs), i el cos una mica més estret, amb volum i contorn d'un píxel real. El cap i
-    la cara no canvien: la cara de la Iri i la Vet és la de sempre (la de Suma Zero), píxel a píxel. Així la Iri fa
+    la cara no canvien: la cara de l'Iri i la Vet és la de sempre (la de Suma Zero), píxel a píxel. Així l'Iri fa
     ≈68 px, la Vet ≈60 (amb les orelles de la gorra), l'àvia ≈80 i les dues senyores ≈84.
   - **Les criatures** (l'Espora, les fades i els gripaus) es dibuixen a mà amb les primitives de Fig, cadascuna al
     seu fotograma: l'Espora ≈35 px, les fades ≈32 (amb les ales, més amples), els gripaus ≈34-36.
@@ -368,7 +368,7 @@ HAIR_CURL = M((8, 4, 6), (20, 10, 10), (36, 20, 16), (56, 32, 24), (80, 50, 36),
 MICB = M((8, 24, 70), (16, 46, 130), (30, 80, 190), (70, 130, 236), (150, 196, 255))
 
 # ═══════════════════════════════════════════════════════════════════════════
-#  La Iri (11 anys)
+#  L'Iri (11 anys)
 # ═══════════════════════════════════════════════════════════════════════════
 
 IRI_PROP = Prop(tronc=0.82, cames=0.80, ample=0.92)
@@ -472,7 +472,7 @@ def iri_collar(fg, p, spec):
 
 IRI = {
     'skin': SKIN_IRI, 'legs': MOSS, 'top': OCHRE, 'shoes': BOOT, 'lashes': True, 'thin': 0.4,
-    'iris': (52, 38, 30), 'brow': (24, 16, 22),   # la cara de la Iri, la de sempre
+    'iris': (52, 38, 30), 'brow': (24, 16, 22),   # la cara de l'Iri, la de sempre
     'prop': IRI_PROP,
     'hooks': {'hair_back': iri_back, 'hair': iri_hair, 'over': iri_over, 'collar': iri_collar},
 }

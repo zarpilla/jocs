@@ -35,7 +35,7 @@ Les ordres s'executen des de `games/<joc>/`.
 
 ## 2. Les veus
 
-La Iri i la Vet canvien d'edat i de rol a cada joc (nenes d'11 i 9 anys a L'Última Arrel, una lladre adulta a
+L'Iri i la Vet canvien d'edat i de rol a cada joc (nenes d'11 i 9 anys a L'Última Arrel, una lladre adulta a
 Ferro-9), així que **cada joc té les seves veus**. Es fan al web d'ElevenLabs i s'apunta l'identificador de cada una a
 `game/audio/veus.json`:
 
@@ -105,7 +105,7 @@ guarden a git, amb `veus.lock.json`.
 
 ## 6. El to (si cal)
 
-Si una veu sona massa gran, es pot pujar el to de totes les seves línies. A L'Última Arrel: la Iri un 4% i la Vet un
+Si una veu sona massa gran, es pot pujar el to de totes les seves línies. A L'Última Arrel: l'Iri un 4% i la Vet un
 8% (perquè sembli de 9 o 10 anys).
 
 **Primer, una prova** amb tres o quatre línies i dos o tres percentatges, en una carpeta a part, perquè l'usuari triï:

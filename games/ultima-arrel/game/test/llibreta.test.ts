@@ -1,5 +1,5 @@
 /**
- * La llibreta de camp: 12 observacions opcionals (la Iri, amb la lupa; la Vet, pel walkie). El camí sencer, recollint-les
+ * La llibreta de camp: 12 observacions opcionals (l'Iri, amb la lupa; la Vet, pel walkie). El camí sencer, recollint-les
  * totes, acaba amb la llibreta plena; sense recollir-ne cap, el final ho diu igualment, i res no queda bloquejat.
  */
 import { describe, expect, it } from 'vitest';

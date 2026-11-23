@@ -7,7 +7,7 @@
 > **Escrit a mà.** No executis `npm run fitxes` en aquest joc: reescriu aquest fitxer sencer.
 >
 > Pantalla de 640×360; l'escena es pinta fins a y = 260 (a sota, el HUD), i la pantalla s'adapta a 640×288
-> (`hd640/pantalla.py`). Els personatges són adults: a les sales «de lluny» fan ≈84 px (la Iri) i ≈78 (la Vet); «de
+> (`hd640/pantalla.py`). Els personatges són adults: a les sales «de lluny» fan ≈84 px (l'Iri) i ≈78 (la Vet); «de
 > prop», ≈110 i ≈102. Es decidirà del tot en fer els fulls (fase 8), abans de pintar les sales. Direcció d'art: el
 > [pla](pla.md) («Direcció d'art») i les fotos de [art/referencia/](art/referencia/). La sala de mostra serà
 > **`mur_avet`**.
@@ -23,7 +23,7 @@
   terra amb bassals que reflecteixen el cel (`characterReflection` als bassals). Càmera de lluny, en 3/4.
 - **Composició:** l'`absis` a la dreta, en 3/4, amb les arcuacions i la finestra. L'`avet` travessa la sala en
   diagonal, de dalt a l'esquerra cap al mig, ajagut damunt el `mur` esbotzat de l'hort. A l'esquerra, les `arrels`
-  aixecades com una paret de terra (més altes que la Iri), i a sota, el `forat`. Les `branques` escampades pel carrer
+  aixecades com una paret de terra (més altes que l'Iri), i a sota, el `forat`. Les `branques` escampades pel carrer
   tapen el pas cap a les arrels. És la cosa més gran del joc: l'avet ha de fer petit l'absis.
 - **Coses:** `absis`, `mur`, `avet`, `branques`, `branca_trencada` (una branca esqueixada que regalima resina, ambre
   sobre el verd), `arrels` (el tall net del costat del vent ha de ser visible de prop: una cara plana i clara entre
@@ -34,13 +34,13 @@
 - **Decorats:** `branques_apartades` (les branques del pas, apartades a banda i banda); `cera_agafada` (sense el punt
   vermell).
 - **Personatges:** `ponc` al faristol; `sunifred` al costat, amb el tinter; `ramon` amb la corda i l'olla; `bonfill`
-  avorrit, recolzat a l'absis. En Ramon i en Bonfill surten de la sala al final del tutorial (`stage`). La Iri entra
+  avorrit, recolzat a l'absis. En Ramon i en Bonfill surten de la sala al final del tutorial (`stage`). L'Iri entra
   amb el pare per la dreta (`walkIn`); la Vet arriba pel `carrer`.
 - **A l'acte 4 (el matí del judici, abans del judici):** la mateixa sala amb la llum del `judici` (decorat
   `llum_mati`), el poble que s'aplega (figures de fons, `poble_aplegant`), el jutge al faristol i en Sunifred. Les dues
   germanes, disfressades. Les mateixes sortides.
 
-### `judici` — El judici (acte 4, Vet; la Iri hi és)
+### `judici` — El judici (acte 4, Vet; l'Iri hi és)
 
 - **L'art de `mur_avet`, amb un altre estat.** Referència: `absis-avet.png`. Matí de sol net després de la tempesta,
   cel blau, ombres llargues i dures cap a l'esquerra (el sol ve de la dreta, darrere l'absis). Tot moll i brillant.
@@ -56,7 +56,7 @@
 - **L'art de `mur_avet`, a la primavera.** Matí tebi, verd tendre, flors a l'hort; el `mur` arreglat (pedra nova, més
   clara); el tronc de l'avet tallat en `rodanxes` apilades; les arrels velles encara al seu lloc, amb molsa.
 - **Coses:** `forat_nou` (al costat de les arrels velles), `carretilla` amb el `planco`, `pala` (la porta en
-  Sunifred fins que la dona a la Iri), `rodanxes`,
+  Sunifred fins que la dona a l'Iri), `rodanxes`,
   `arrels`, `absis`.
 - **Decorats:** `forat_gran` (el forat eixamplat); `planco_plantat` (el plançó al forat, amb la cinta i el segell
   vermell del jutge quan ja l'ha posat: `segell_planco`); `rotul` (el tros de fusta amb «AVET», clavat al costat).
@@ -74,12 +74,12 @@
   la plaça i la `casa_batlle`, amb la `reixa` del celler arran de terra.
 - **Coses:** `llinda`, `porta_sant_pol`, `queixa`, `campanar`, `campana`, `nau`, `dones` (figures que filen),
   `casa_batlle`, `reixa`.
-- **Decorats:** `corda_campana` (la corda de cànem que penja del campanar); `iri_dalt` (la Iri a la finestra del
+- **Decorats:** `corda_campana` (la corda de cànem que penja del campanar); `iri_dalt` (l'Iri a la finestra del
   campanar: no és el personatge, és un decorat amb animació de saludar i d'estirar la corda); `campana_toca`
   (animació: la campana que es gronxa).
 - **Sortida:** `carrer` a la dreta (l'avet).
 - **Personatges:** `bonfill` davant la porta (surt corrent cap al peu del campanar quan toca la campana, i s'hi queda
-  mentre la Iri és dalt); `sanca` a la nau. Les dues germanes, on siguin (sala de les dues: totes dues necessiten un
+  mentre l'Iri és dalt); `sanca` a la nau. Les dues germanes, on siguin (sala de les dues: totes dues necessiten un
   lloc a `spawns`). En Ramon no es veu: parla des de la reixa (veu, sense sprite a la sala).
 - **A l'acte 4:** matí de sol (decorat `llum_mati`); la corda ja és al campanar; la queixa ja no hi és (la té el
   jutge); en Bonfill no hi és (és al judici); la Sança i les dones, a la gespa, fins que s'aixequen per anar al judici
@@ -99,13 +99,13 @@
 - **Sortida:** `cami` a l'esquerra (l'avet). Si la Vet hi arriba, s'excusa aquí i no entra.
 - **Decorats:** `sobreeixidor_obert` (la post aixecada, l'aigua que s'escola); `aigua_baixa` (l'aigua de la resclosa
   més baixa, la comporta i la serra al descobert); `barca_calafatada` (la barca surant, amb la resina brillant a les
-  juntes); `barca_comporta` (la barca amarrada a la comporta, quan la Iri hi és); `serra_treta`; `rec_ple` (l'aigua
+  juntes); `barca_comporta` (la barca amarrada a la comporta, quan l'Iri hi és); `serra_treta`; `rec_ple` (l'aigua
   torna al rec).
 - **Personatges:** `joanet` a la vora, assegut a la barca enfonsada, amb la canya; `ermessenda` a la vora del rec,
   amb el sac.
 - **A l'acte 4:** matí de sol, el riu ja manso (decorat `llum_mati`, `riu_manso`); en Joanet dorm a la barca, que
   sura (`joanet_dorm`), i en empènyer-la, la barca és al mig del riu (`barca_corrent`); l'Ermessenda al molí, amb la
-  mola rodant (`rec_ple`) fins que la Iri tanca la `comporta`.
+  mola rodant (`rec_ple`) fins que l'Iri tanca la `comporta`.
 
 ## 4. `claustre` — El claustre (actes 1, 2 i 4)
 
@@ -118,7 +118,7 @@
   `morter` (de la Gueraula), `porta_capitular` (al fons de la galeria, tancada: «Inspecció. Prohibit el pas»).
 - **Sortides:** `porta_monestir` (l'avet). A l'acte 2, també `porta_bugaderia` i `porta_apotecaria`, a banda i banda
   de la galeria.
-- **Personatges:** `ingilberga` asseguda al banc; `gueraula` dreta, amb el morter. A l'acte 1 és de la Vet: la Iri
+- **Personatges:** `ingilberga` asseguda al banc; `gueraula` dreta, amb el morter. A l'acte 1 és de la Vet: l'Iri
   s'excusa a la `porta_monestir` fins al final de l'acte, quan hi entra.
 - **A l'acte 2 (capvespre):** llums d'oli a les columnes (decorat `llum_capvespre`), la gespa blava; la Gueraula és a
   l'apotecaria; l'Ingilberga, al banc. Hi passen les dues, i s'hi donen les coses.
@@ -129,13 +129,13 @@
 - **Quan i llum:** capvespre, una sala baixa de pedra plena de vapor. Llum taronja del `fogo` (quan és encès) i blava
   per una finestra petita. Càmera de prop.
 - **Coses:** la `tina` gran damunt el `fogo`; dues tines petites; les `robes` esteses en diagonal (primer pla,
-  `FRONT`, perquè la Iri hi passi per darrere); el `bagul` de roba vella; la `pila_llenya` amb tres menes ben
+  `FRONT`, perquè l'Iri hi passi per darrere); el `bagul` de roba vella; la `pila_llenya` amb tres menes ben
   diferents de color (`pi`: clar i resinós; `pollancre`: blanc i lleuger; `alzina`: fosca i densa); les `tisores` de
   bugadera, grosses, penjades d'un clau.
 - **Sortida:** `porta` (el claustre). Si la Vet hi arriba, s'excusa a la porta.
 - **Decorats:** `bagul_obert`; `foc_ences` (animació de flames i més vapor); `tina_negra` (l'aigua negra a la tina);
   `habits_estesos` (els dos hàbits negres penjats, fumejant); `habits_curts` (escurçats, i els retalls a terra).
-- **Personatges:** cap més que la Iri.
+- **Personatges:** cap més que l'Iri.
 
 ## 6. `apotecaria` — L'apotecaria (acte 2; Vet)
 
@@ -147,7 +147,7 @@
   `taula` amb pergamins; el `xarop` (un flascó verd, a la taula).
 - **Decorats:** `cardo_agafat`; `disfressa` (al final: la cinemàtica de les dues disfressades, sense decorat si es fa
   amb les aparences).
-- **Sortida:** `porta` (el claustre). Si la Iri hi arriba abans d'hora, s'excusa a la porta; al final de la
+- **Sortida:** `porta` (el claustre). Si l'Iri hi arriba abans d'hora, s'excusa a la porta; al final de la
   preparació hi entra, per disfressar-se.
 - **Personatges:** `gueraula`.
 
@@ -158,10 +158,10 @@
 - **Coses:** `porta_ala` (la porta de l'ala dels canonges, amb el `forrellat`), `banc`, `columna` (per amagar-s'hi),
   `torxes`, `llibre_entrades` (en un faristol: obert, amb ninots en lloc de noms).
 - **Decorats:** `porta_oberta`; `ninots` (els dos ninots nous al llibre: «fra Tos i fra Silenci»).
-- **Personatges:** `bonfill` assegut al banc, amb la llança; la **Vet** disfressada, darrere la Iri (sala
+- **Personatges:** `bonfill` assegut al banc, amb la llança; la **Vet** disfressada, darrere l'Iri (sala
   compartida).
 
-## 8. `cuina` — La cuina (acte 2, nit; Vet, amb la Iri)
+## 8. `cuina` — La cuina (acte 2, nit; Vet, amb l'Iri)
 
 - **Quan i llum:** nit, la `llar_foc` gegant fa tota la llum (taronja, ombres llargues que pugen per la paret). Càmera
   de prop.
@@ -180,11 +180,11 @@
   `pergami` en blanc); l'`espelma_hores` (gruixuda, amb ratlles, una de vermella); els `finestrals`; la
   `porta_capitular` (ferrada, al fons).
 - **Decorats:** `espelma_retallada`; `porta_oberta`.
-- **Sortides:** `porta_passadis` a l'esquerra (per on entren; la Iri hi espera), `porta_capitular` al fons (l'arxiu,
-  quan és oberta). Al tram obert, la Iri és a l'arxiu: per a la Vet, la porta capitular hi porta un moment (per
-  llegir etiquetes i la carta de l'Emma), però l'arxiu és de la Iri.
+- **Sortides:** `porta_passadis` a l'esquerra (per on entren; l'Iri hi espera), `porta_capitular` al fons (l'arxiu,
+  quan és oberta). Al tram obert, l'Iri és a l'arxiu: per a la Vet, la porta capitular hi porta un moment (per
+  llegir etiquetes i la carta de l'Emma), però l'arxiu és de l'Iri.
 - **Personatges:** `gombau` i `arnulf` (la mateixa base amb colors canviats), drets als seus faristols. Se'n van per
-  l'esquerra (`stage`), i tornen pel mateix lloc quan la Iri fa soroll a l'arxiu (`canonges_tornen`).
+  l'esquerra (`stage`), i tornen pel mateix lloc quan l'Iri fa soroll a l'arxiu (`canonges_tornen`).
 
 ## 10. `arxiu` — L'arxiu (acte 3; Iri)
 
@@ -200,7 +200,7 @@
   `gueraula_finestra` (la cara de la Gueraula a la finestra, al final); `trapa_oberta` (el banc apartat i la
   trapa oberta, amb l'escala que baixa a l'aigua).
 - **Sortida:** `porta_capitular` (l'scriptorium; la Vet hi és). A la fi, tancada des de fora.
-- **Personatges:** la Iri. La **Vet** hi entra un moment quan la crida la Iri (etiquetes, la carta de l'Emma).
+- **Personatges:** l'Iri. La **Vet** hi entra un moment quan la crida l'Iri (etiquetes, la carta de l'Emma).
 
 ## 11. `moli` — El molí (acte 3; Iri, amb la Vet i la Gueraula)
 

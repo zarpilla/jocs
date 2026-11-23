@@ -801,7 +801,7 @@ def _el(cx, cy, rx, ry, n=12):
 
 
 _V_FONS, _V_PROP = 208, 256
-# Els fulls dels personatges fan la Iri de 68 px a escala 1 (la sala es va dibuixar pensant en 97): ×97/68.
+# Els fulls dels personatges fan l'Iri de 68 px a escala 1 (la sala es va dibuixar pensant en 97): ×97/68.
 K_FULLS = 97 / 68
 ESCALA = (round(0.58 * K_FULLS, 3), round(0.77 * K_FULLS, 3))                              # a y = 198 i a y = 259
 
@@ -833,7 +833,7 @@ GEOMETRIA = {
                    {'x': TOLL[0], 'y': TOLL[1] + 6, 'radius': 130, 'color': '#a8e0ec', 'intensity': 0.3,
                     'whenPropVisible': 'aigua'}],
     },
-    # A escala 1 la Iri fa ≈97 px: aquí, de lluny, ≈0,6 al fons (58 px, al peu de l'arxiu) i ≈0,77 a baix de tot.
+    # A escala 1 l'Iri fa ≈97 px: aquí, de lluny, ≈0,6 al fons (58 px, al peu de l'arxiu) i ≈0,77 a baix de tot.
     # (No és l'escala exacta de l'horitzó, que encongiria massa el fons: el terra s'ha dibuixat a l'ull.)
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': ESCALA[0], 'scaleBottom': ESCALA[1],

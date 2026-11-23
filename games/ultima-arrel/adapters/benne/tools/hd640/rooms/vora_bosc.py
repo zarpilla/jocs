@@ -1,9 +1,9 @@
 """
-L'Última Arrel — la vora del bosc (Escena 1, la Iri), dissabte al capvespre. Art definitiu, a 1× (640×360; l'escena
+L'Última Arrel — la vora del bosc (Escena 1, l'Iri), dissabte al capvespre. Art definitiu, a 1× (640×360; l'escena
 fins a y = 260). El dibuix és a vora_comu.py (mode 'capvespre'), comú amb `bosc_obert`, `credits` i `portada`.
 
 La càmera és arran de terra, una mica contrapicada: el roure és enorme i les falgueres del primer pla són gairebé
-tan altes com la Iri. El sol es pon entre els troncs, a l'esquerra.
+tan altes com l'Iri. El sol es pon entre els troncs, a l'esquerra.
   - **Esquerra, el bosc viu:** el roure gegant amb la porta d'un metre (`porta_roure`), la `campaneta`, la
     `bustia` amb la nota, el fanalet vermell (`llum_vermell`, que parpelleja: ANIMS `llum`), l'`estaca` de topògraf
     (PROP: es treu) clavada davant del cantell de la porta, que s'obre cap enfora; els `bolets` turquesa apagats a
@@ -145,8 +145,8 @@ def _p(x, y):
 WALK = [(0, 238), (104, 240), (140, 251), (300, 251), (340, 248), (380, 251), (498, 251), (502, 238), (540, 242),
         (590, 257), (596, 264), (560, 272), (540, 281), (0, 281)]
 
-# L'escala: la Iri (el full fa 68 px a escala 1) fa ≈66 px davant la porta, i de ≈62 (al fons) a ≈75 (a prop) d'on
-# camina. Si el full de la Iri canvia d'alçada, n'hi ha prou de canviar IRI_ALT.
+# L'escala: l'Iri (el full fa 68 px a escala 1) fa ≈66 px davant la porta, i de ≈62 (al fons) a ≈75 (a prop) d'on
+# camina. Si el full de l'Iri canvia d'alçada, n'hi ha prou de canviar IRI_ALT.
 IRI_ALT = 68
 _Y0, _Y1 = sala(236), sala(282)
 
@@ -170,7 +170,7 @@ GEOMETRIA = {
         'bolets': {'rect': _r(118, 198, 176, 226), 'walk': _p(150, 256)},
         'cami': {'rect': _r(0, 236, 70, 281), 'walk': _p(4, 262)},
     },
-    # l'àvia i la Iri arriben pel camí, de l'esquerra
+    # l'àvia i l'Iri arriben pel camí, de l'esquerra
     'spawns': {'iri': _p(124, 268), 'avia': _p(76, 262)},
     'walkable': [_p(x, y) for x, y in WALK],
     # el sol es pon a l'esquerra, arran de terra: les ombres, llargues, cap a la dreta

@@ -5,7 +5,7 @@
 > l'art necessita una cosa nova, primer s'afegeix al contingut.
 >
 > Pantalla de 640×360; l'escena es pinta fins a y = 260 (a sota, el HUD). Les nenes són petites dins un món gran:
-> a les sales «de lluny», la Iri fa ≈66-70 px, la Vet ≈60, l'àvia ≈80, l'Espora ≈35. Direcció d'art: el
+> a les sales «de lluny», l'Iri fa ≈66-70 px, la Vet ≈60, l'àvia ≈80, l'Espora ≈35. Direcció d'art: el
 > [guió](guio.md) («Regles del món», §4) i el [pla](pla.md) («Direcció d'art»). Mostres d'estil: `art/mostra/`
 > (`vora_bosc.py` i `centraleta.py`, amb `bosc.py` i `nenes.py`); la referència que mana és
 > `art/referencia/irivet-vora-bosc.png`.
@@ -18,15 +18,15 @@
 
 - **Quan i llum:** dissabte, capvespre. El sol es pon entre els troncs, a l'esquerra. Càmera arran de terra, una mica
   contrapicada; primer pla de falgueres i arrels en silueta (`FRONT`).
-- **Esquerra, el bosc:** el roure gegant amb la `porta_roure` (un metre: l'alçada de la Iri fins a l'espatlla), la
+- **Esquerra, el bosc:** el roure gegant amb la `porta_roure` (un metre: l'alçada de l'Iri fins a l'espatlla), la
   `campaneta` al costat, la `bustia`, el `llum_vermell` (fanalet que parpelleja: `ANIMS`), l'`estaca` de topògraf
   clavada just davant la porta (cinta de NaturaPlus), i els `bolets` turquesa **apagats**.
 - **Dreta, NaturaPlus:** la `tanca` metàl·lica, el `cartell` lluminós «BOSC 2.0 — NaturaPlus S.A. — INAUGURACIÓ: 2
   DIES», la `gespa` artificial en rotllos, l'`excavadora` i (de fons, sense id) la caseta d'obra i els cons. Al peu de
   la tanca, entre el fang, el `cargol` (que brilla massa).
-- **Sortida:** `cami` a l'esquerra (no surt: la Iri diu que encara no és fosc).
-- **Decorats:** `porta_oberta` (la porta oberta, amb llum càlida a dins: quan la Iri torna a sortir de la centraleta).
-- **Personatges:** l'`avia` (només a la intro: entra amb la Iri per l'esquerra i se'n va pel `cami`). La Iri entra
+- **Sortida:** `cami` a l'esquerra (no surt: l'Iri diu que encara no és fosc).
+- **Decorats:** `porta_oberta` (la porta oberta, amb llum càlida a dins: quan l'Iri torna a sortir de la centraleta).
+- **Personatges:** l'`avia` (només a la intro: entra amb l'Iri per l'esquerra i se'n va pel `cami`). L'Iri entra
   caminant per l'esquerra (`walkIn`).
 
 ## 2. `centraleta` — La centraleta del Miceli (Escena 2, Iri)
@@ -66,7 +66,7 @@
   surt).
 - **Decorats:** `aigua` (sota: el toll ple, l'aigua que baixa pel rierol i els joncs redreçats).
 - **Personatges:** el `bufo` (Registrador, a la finestreta: armilla, visera, segell de goma) i un `gripau` vaguista
-  amb pancarta (al costat, un segon gripau de fons, sense id, amb una altra pancarta). La Iri entra per l'esquerra.
+  amb pancarta (al costat, un segon gripau de fons, sense id, amb una altra pancarta). L'Iri entra per l'esquerra.
 
 ## 5. `caseta_obra` — La caseta d'obra de NaturaPlus (Escena 5, Vet)
 
@@ -92,14 +92,14 @@
   d'un bassal, amb la carpeta; l'`avia` entre el públic; la `urtica`, petita, dalt de tot de la pantalla, al costat de la **caseta de paper** de la 6a (dibuixada al fons);
   i la **Vet** entre el públic (és sala compartida: la Vet necessita un lloc a `spawns`).
 
-## 7. `bosc_obert` — El bosc obert (Escena 7, Vet; la Iri hi és)
+## 7. `bosc_obert` — El bosc obert (Escena 7, Vet; l'Iri hi és)
 
 - **Quan i llum:** una setmana després, de dia. La vora del bosc de l'escena 1 **sense la tanca**: es pot fer a partir
   de `vora_bosc`. El bosc és viu: els `bolets` i les arrels brillen de turquesa.
 - **Coses:** la `porta_oberta` del roure (llum turquesa, ja no vermella); la `taula` feta d'una soca, amb tasses de te
   de menta; els `forats` on hi havia els pals de la tanca, on ja torna a créixer l'herba. De l'obra no en queda res
   més: el prat ha florit, i el sol del matí entra baix i daurat per la clariana de la dreta.
-- **Personatges:** l'`espora`, l'`avia` i la **Iri** a la taula (sala compartida: la Iri necessita un lloc a
+- **Personatges:** l'`espora`, l'`avia` i la **Iri** a la taula (sala compartida: l'Iri necessita un lloc a
   `spawns`); la `urtica` a una branca; el `bufo` en un bassal. La Vet entra per l'esquerra.
 
 ## `portada` i `credits`

@@ -4,7 +4,7 @@ Els fulls dels personatges de L'Última Arrel, amb el format que espera Benne (f
 etiquetes, i el .character.json). El dibuix és a hd/arrel.py; aquí només es munten els fulls.
 
 Una sola mida, a 1× (com les sales en 3D): cada personatge es dibuixa a la seva alçada (guio/fitxes-sales.md), no
-s'escala. A les sales «de lluny», la Iri fa ≈68 px, la Vet ≈60, l'àvia ≈78, la Senyora Pla i la Txell ≈85,
+s'escala. A les sales «de lluny», l'Iri fa ≈68 px, la Vet ≈60, l'àvia ≈78, la Senyora Pla i la Txell ≈85,
 l'Espora ≈35, les fades ≈32 (més la cresta) i els gripaus ≈34-39.
 
 La Vet té, a més, una **mida gran** (prefix `Gran`: GranIdleD, GranWalkL...; hd/gran.py), redibuixada a ×1,5 per a la

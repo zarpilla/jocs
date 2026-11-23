@@ -3,7 +3,7 @@
 La Conjura de l'Avet — làmina de revisió del HUD (adapters/benne/tools/hd640/hud.py), ×3, sense tocar el projecte
 Benne.
 
-A dalt, el botó «Canvia» (normal, hover i pressed; amb la cara de la Iri, la de la Vet i la lupa de la pista a la
+A dalt, el botó «Canvia» (normal, hover i pressed; amb la cara de l'Iri, la de la Vet i la lupa de la pista a la
 finestra) i els altres botons (menú, punts, bossa) damunt d'un mur de pedra fosc; a sota, la safata de l'inventari
 amb unes quantes icones i el tauler de la franja.
 Ús: python3 hud.py  →  hud.png

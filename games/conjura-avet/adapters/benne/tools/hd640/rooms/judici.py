@@ -1,5 +1,5 @@
 """
-La Conjura de l'Avet — `judici`, el judici (acte 4; la Vet, i la Iri hi és). Art definitiu, a 1× (640×360; l'escena
+La Conjura de l'Avet — `judici`, el judici (acte 4; la Vet, i l'Iri hi és). Art definitiu, a 1× (640×360; l'escena
 fins a y = 260). EN 3D: l'art de `mur_avet` (avet_comu.py) amb un altre estat.
 
 Matí de sol net després de la tempesta: cel blau, ombres llargues i dures cap a l'esquerra (el sol ve de la dreta,

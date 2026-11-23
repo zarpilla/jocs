@@ -1,7 +1,7 @@
 /**
  * Lògica pròpia de La Conjura de l'Avet, independent del motor gràfic. Qualsevol adaptador (Benne o un altre) la
  * instal·la sobre el `Narrative`. Només hi ha una regla: «dona la serra a la Vet» (acció `donar`, a les interaccions
- * de la Iri i la Vet de characters.json), que passa un objecte d'una germana a l'altra quan són a la mateixa sala.
+ * de l'Iri i la Vet de characters.json), que passa un objecte d'una germana a l'altra quan són a la mateixa sala.
  */
 import type { ActionResult, GameContent, Narrative } from '@aventura/narrative-core';
 
@@ -23,7 +23,7 @@ export function donar(n: Narrative, item: string): ActionResult {
   if (props.no_donar === true) return { lines: [{ who: 'player', text: 'donar.no' }] };
   // Les proves que la Vet ha de portar al judici (la serra, la cera): un cop les té ella, ja no les deixa.
   if (props.guarda === who) return { lines: [{ who: 'player', text: 'donar.guarda' }] };
-  // El pot de resina no es dona: se'n dona un pegot (`dona`), i el pot es queda (la Iri el necessita al molí).
+  // El pot de resina no es dona: se'n dona un pegot (`dona`), i el pot es queda (l'Iri el necessita al molí).
   if (typeof props.dona === 'string') {
     if (n.world.hasItem(props.dona, other)) return { lines: [{ who: 'player', text: 'donar.ja' }] };
     n.apply([{ giveItem: props.dona, who: other }]);

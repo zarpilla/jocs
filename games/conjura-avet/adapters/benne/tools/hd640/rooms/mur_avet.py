@@ -4,7 +4,7 @@ La Conjura de l'Avet — `mur_avet`, l'avet caigut (actes 1 i 4; les dues). La s
 
 Matí de plugim, cel blanc i pla, llum difusa: la pedra fosca de mullada i els bassals del carrer que reflecteixen el
 cel, l'absis i l'avet. Càmera de lluny, arran de carrer, en 3/4:
-  - a l'esquerra, les `arrels` aixecades (una paret de terra més alta que la Iri, amb el tall de serra) i a sota el
+  - a l'esquerra, les `arrels` aixecades (una paret de terra més alta que l'Iri, amb el tall de serra) i a sota el
     `forat`; les `branques` escampades davant, que tapen el pas; el portell del `cami_riu`, al fons a l'esquerra;
   - l'`avet` travessa la sala en diagonal, de dalt a l'esquerra cap al mig, damunt el `mur` esbotzat de l'hort,
     amb la capçada fins a tocar l'absis;
@@ -177,7 +177,7 @@ def _forat_abeurador():
 
 
 # L'escala: un personatge fa (v − 128) / 115 de la mida del seu full a la fila v (exacte: la càmera no mira avall;
-# la Iri, 84 px a escala 1, fa ≈60 px al fons del carrer i ≈90 a baix de tot).
+# l'Iri, 84 px a escala 1, fa ≈60 px al fons del carrer i ≈90 a baix de tot).
 _Y0, _Y1 = 196, 260
 _CERA_UV = CAM.projecta(tuple(A.CERA_P))[:2]
 _FAR = A.FARISTOL

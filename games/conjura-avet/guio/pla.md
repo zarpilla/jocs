@@ -11,7 +11,7 @@
 - **Lloc i època:** Sant Joan de les Abadesses, any 1017, poc abans que expulsin les monges. El context és
   històric; la història, no.
 - **Gènere:** un misteri amb humor buròcrata, no una història de religió.
-- **Protagonistes:** la Iri i la Vet, amb la cara de sempre (la de Suma Zero) i rols, roba i cabell nous.
+- **Protagonistes:** l'Iri i la Vet, amb la cara de sempre (la de Suma Zero) i rols, roba i cabell nous.
 - **L'avet:** un avet vell al costat del monestir cau un dia de pluja i vent, i forma part de la trama.
 - **La disfressa:** en algun moment, les dues es vesteixen de monjos per fer una cosa que les dones no podien fer.
 - **El fons:** feminista, amb un fil ecologista.
@@ -35,7 +35,7 @@
 - **El misteri** ha de ser més misteriós: un **cofre** enterrat i lligat a alguna altra cosa robada. Nova proposta al
   punt 1, aprovada.
 - **El pare, detingut** a l'acte I (vegeu «El pare, detingut» al punt 1).
-- La Iri i la Vet són **germanes**.
+- L'Iri i la Vet són **germanes**.
 - **Sant Pol: l'opció A**, l'església que el comte no va pagar; els diners es van quedar a **Ripoll**.
 - **Sales de col·laboració:** la plaça, la cuina i el molí.
 - **Persones reals:** l'Ingilberga a escena; el comte Bernat, no; l'Emma, a la llegenda i a la carta.

@@ -19,8 +19,8 @@ muntanya. Una nit de tramuntana i pluja, **l'avet cau** damunt el mur. L'endemà
 del comte, ja té l'ordre escrita: l'abadessa és culpable de «negligència arbòria i bruixeria meteorològica», i les
 terres del monestir tornen al comte.
 
-La **Iri** i la **Vet** són germanes. La Iri és llenyatera, com el seu pare. La Vet és escrivana al monestir: les
-monges la van ensenyar de petita a llegir i a escriure. Quan la Iri veu les arrels de l'avet, sap que no l'ha tombat
+La **Iri** i la **Vet** són germanes. L'Iri és llenyatera, com el seu pare. La Vet és escrivana al monestir: les
+monges la van ensenyar de petita a llegir i a escriure. Quan l'Iri veu les arrels de l'avet, sap que no l'ha tombat
 el vent: estan serrades. I quan ho diu, el jutge fa tancar el seu **pare**, perquè al poble només hi ha una serra
 així.
 
@@ -90,23 +90,23 @@ l'altre, i **trams seguits**, on juga una sola i el joc passa a l'altra quan toc
 
 | Tram | Què | Canvi |
 |---|---|---|
-| Pròleg i escena 1 (tutorial) | La Iri, a l'avet caigut | No |
+| Pròleg i escena 1 (tutorial) | L'Iri, a l'avet caigut | No |
 | **Acte 1, el poble** | L'avet, la plaça, el pont i el claustre, en qualsevol ordre | **Sí** |
 | **Acte 2, la preparació** | La bugaderia i l'apotecaria, alhora | **Sí** |
 | Acte 2, la nit | La porteria (Iri) i la cuina (Vet) | No |
 | **Acte 3, l'arxiu** | L'scriptorium (Vet) i l'arxiu (Iri), alhora | **Sí** |
 | Acte 3, la fugida | El molí (Iri) | No |
 | **Acte 4, el matí** | Tornar al pont, a la plaça i al claustre a buscar els testimonis | **Sí** |
-| Acte 4, el judici i l'epíleg | La Vet al judici, la Iri a l'epíleg | No |
+| Acte 4, el judici i l'epíleg | La Vet al judici, l'Iri a l'epíleg | No |
 
 **Una sala, una mestressa.** Als trams oberts, les dues es poden moure per tot arreu, però algunes sales són d'una
 sola, i l'altra s'excusa a la porta (com a Aigua Verne). Així es graven menys veus i cadascuna té la seva feina:
 
-- **El pont, de la Iri.** La Vet, a l'entrada: «Jo no sé nedar. El riu, per a tu.»
-- **El claustre, de la Vet** (a l'acte 1). La Iri, a la porta: «Les monges em miren la destral com si fos un drac.
+- **El pont, de l'Iri.** La Vet, a l'entrada: «Jo no sé nedar. El riu, per a tu.»
+- **El claustre, de la Vet** (a l'acte 1). L'Iri, a la porta: «Les monges em miren la destral com si fos un drac.
   Entra-hi tu.»
-- **La bugaderia, de la Iri; l'apotecaria, de la Vet** (a l'acte 2). «Jo amb flascons, no.» / «Jo amb tines, menys.»
-- **L'scriptorium, de la Vet; l'arxiu, de la Iri** (a l'acte 3): una vigila els canonges, l'altra busca.
+- **La bugaderia, de l'Iri; l'apotecaria, de la Vet** (a l'acte 2). «Jo amb flascons, no.» / «Jo amb tines, menys.»
+- **L'scriptorium, de la Vet; l'arxiu, de l'Iri** (a l'acte 3): una vigila els canonges, l'altra busca.
 - **L'avet i la plaça, de les dues.**
 
 **Passar-se coses.** Als trams oberts, les germanes es donen objectes quan són a la mateixa sala (donar un objecte a
@@ -205,7 +205,7 @@ de l'acte 2. A l'scriptorium, la carta calcada ho confirma; al judici, ho veu to
 
 Als pergamins de l'època, cada escrivà posava sota el document el seu **signe**, un dibuix propi. El d'en Sunifred és
 una creu amb un llaç. Surt a l'ordre del jutge, a la queixa, a la tira de pergamí del mànec de la serra i al lacre
-del bagul de l'arxiu. **La Iri no sap llegir, però reconeix el dibuix**: és la seva manera de llegir.
+del bagul de l'arxiu. **L'Iri no sap llegir, però reconeix el dibuix**: és la seva manera de llegir.
 
 ### 5. El calc
 
@@ -249,11 +249,11 @@ l'acte 4 (el matí del judici, amb sol), amb una altra llum i coses noves.
 | `bugaderia` | La bugaderia | Iri | 2 | De prop |
 | `apotecaria` | L'apotecaria | Vet | 2 | De prop |
 | `porteria` | La porteria | Iri (la Vet hi és) | 2 (nit) | De prop |
-| `cuina` | La cuina | Vet (amb la Iri) | 2 (nit) | De prop |
+| `cuina` | La cuina | Vet (amb l'Iri) | 2 (nit) | De prop |
 | `scriptorium` | L'scriptorium | Vet | 3 (mitjanit) | De prop |
 | `arxiu` | L'arxiu (la sala capitular) | Iri (la Vet hi passa) | 3 | De prop |
 | `moli` | El molí | Iri (amb la Vet i la Gueraula) | 3 (matinada) | De prop |
-| `judici` | L'avet, amb tot el poble (l'art de `mur_avet`) | Vet (la Iri hi és) | 4 | De lluny |
+| `judici` | L'avet, amb tot el poble (l'art de `mur_avet`) | Vet (l'Iri hi és) | 4 | De lluny |
 | `epileg` | L'avet a la primavera (l'art de `mur_avet`) | Iri (la Vet hi és) | — | De lluny |
 
 **Com es va d'un lloc a l'altre.** A l'acte 1 i a l'acte 4, el poble és un petit mapa de sortides: de l'avet es va a
@@ -286,7 +286,7 @@ la dreta, en 3/4. L'avet ajagut damunt el mur de l'hort del monestir, amb les br
 l'esquerra, les arrels aixecades com una paret de terra, i al mig, un forat. El jutge Ponç, dret davant d'un faristol
 de viatge, amb en Sunifred al costat, que sosté el tinter. En Ramon, el pare, amb una corda. El saig Bonfill, avorrit.
 
-**Entrada.** La Iri i el pare arriben amb les eines: el monestir els ha cridat per netejar el carrer.
+**Entrada.** L'Iri i el pare arriben amb les eines: el monestir els ha cridat per netejar el carrer.
 
 > PONÇ: Per ordre del comte Bernat: l'abadessa Ingilberga, culpable de negligència arbòria.
 > PONÇ: I de bruixeria meteorològica, pendent de confirmar.
@@ -297,27 +297,27 @@ de viatge, amb en Sunifred al costat, que sosté el tinter. En Ramon, el pare, a
 l'avet («Cent trenta anys dret, i una nit de vent»), el faristol («Un jutge que porta el faristol de casa»), en
 Sunifred («L'escrivà del comte. Té les mans més netes que he vist mai»).
 
-**La destral.** Si la Iri vol fer servir la destral amb l'avet, el jutge: «Ningú no toca l'avet fins que no consti en
+**La destral.** Si l'Iri vol fer servir la destral amb l'avet, el jutge: «Ningú no toca l'avet fins que no consti en
 acta.» Amb qualsevol altra cosa, una de les frases de «la destral no» (vegeu «Les bromes que tornen»).
 
 **Trencaclosques 1.1 — Les branques (usar, agafar).** Per arribar a les arrels cal passar entre les branques, que
-punxen. Sense guants: «Agulles d'avet. Com mil agulles de cosir, i cap fil.» Amb els **guants**, la Iri aparta les
+punxen. Sense guants: «Agulles d'avet. Com mil agulles de cosir, i cap fil.» Amb els **guants**, l'Iri aparta les
 branques i passa. Una branca trencada vessa **resina**. El pare: «Agafa'n, que la Gueraula la paga bé.» Li dona la seva
 **olla del dinar**, buida («No la llepis, que és bona»). Usar l'olla amb la branca: el **pot de resina**, que no
 s'acaba mai («N'hi ha per enganxar tot el comtat»).
 
-**Trencaclosques 1.2 — Les arrels (mirar).** De prop, la Iri ho veu: les arrels del costat de la tramuntana tenen un
+**Trencaclosques 1.2 — Les arrels (mirar).** De prop, l'Iri ho veu: les arrels del costat de la tramuntana tenen un
 tall net, de serra. Les altres, arrencades.
 
 > IRI: Això no ho ha fet el vent. El vent arrenca. Això ho ha fet una serra.
 
 Al fons del forat hi ha un **tros de cera vermella**, enfangat. L'agafa.
 
-**Trencaclosques 1.3 — L'ordre (mirar).** L'ordre és al faristol. La Iri no la sap llegir, però en veu el segell:
+**Trencaclosques 1.3 — L'ordre (mirar).** L'ordre és al faristol. L'Iri no la sap llegir, però en veu el segell:
 «Aquesta cera és freda i dura. Un segell d'avui encara seria tou. Això està segellat d'ahir, com a mínim.» I al peu,
 un dibuix: una creu amb un llaç.
 
-**Final del tutorial.** Quan la Iri ha vist les arrels i parla amb el jutge:
+**Final del tutorial.** Quan l'Iri ha vist les arrels i parla amb el jutge:
 
 > IRI: El vent arrenca. Això ho ha fet una serra.
 > PONÇ: Una dona i un arbre: dos testimonis sense valor.
@@ -338,12 +338,12 @@ La Vet arriba corrent pel carrer, amb la tinta encara als dits.
 > VET: Això no és un arbre caigut, Iri. És una conjura.
 
 **Comença el tram obert.** Des d'aquí es pot canviar de germana, i el poble s'obre: la plaça pel carrer, el pont pel
-camí del riu i el claustre per la porta del monestir. La Iri té els guants, la destral, la resina i el tros de cera.
+camí del riu i el claustre per la porta del monestir. L'Iri té els guants, la destral, la resina i el tros de cera.
 La Vet, la tauleta, el carbonet, el rascador, la ploma, els pergamins i el mocador.
 
 ### 1b. L'ordre del jutge (Vet, a l'avet)
 
-**A `mur_avet`, amb la Vet.** El que la Iri no sap llegir.
+**A `mur_avet`, amb la Vet.** El que l'Iri no sap llegir.
 
 **Trencaclosques — Llegir l'ordre (parlar, mirar).** El jutge no deixa llegir l'ordre a ningú: «La lectura pública
 d'una ordre requereix tres testimonis.» Opcions de diàleg: insistir («Tres testimonis.»), demanar-li que la llegeixi ell
@@ -387,23 +387,23 @@ església sense parets, ningú no et pot tancar la porta.»
 no la deixa acostar: «Llegir els papers del comte en veu alta és cosa del pregoner. I en veu baixa, també.» Cal
 allunyar-lo. Calen les dues a la plaça.
 
-1. La Iri ho veu clar (si mira el campanar): «Si la campana toca, el saig hi corre. És la seva feina.» Però el
-   campanar no té corda: «La corda la pagava el comte», diu la Sança. Si la Iri vol empènyer la campana des de baix, la
+1. L'Iri ho veu clar (si mira el campanar): «Si la campana toca, el saig hi corre. És la seva feina.» Però el
+   campanar no té corda: «La corda la pagava el comte», diu la Sança. Si l'Iri vol empènyer la campana des de baix, la
    Vet (si hi és): «Pesa unes quatre tones, Iri. I és dalt d'una torre.»
 2. Les dones fan fil de cànem. La Sança no el dona a una escrivana del monestir («Les del monestir no ens heu ajudat
    mai»), fins que la Vet li ofereix el que vol saber (diàleg): «Si la puc llegir, us diré quins noms hi ha.» — «Trenta
    veïns, diu. Jo no he signat res. No sé escriure.» La Sança li dona el **cabdell de cànem**: «Si és mentida, que
-   soni.» (A la Iri no li dona: «Tu ets la de la destral. Tu no llegeixes.»)
-3. La Vet dona el cànem a la Iri. Es canvia a la Iri, que s'enfila al campanar (desapareix i surt dalt, a la finestra
+   soni.» (A l'Iri no li dona: «Tu ets la de la destral. Tu no llegeixes.»)
+3. La Vet dona el cànem a l'Iri. Es canvia a l'Iri, que s'enfila al campanar (desapareix i surt dalt, a la finestra
    de la campana) i hi lliga la corda.
-4. Amb la Iri dalt, tocar la campana (la Iri estira la corda). En Bonfill hi corre: «Qui toca? Sense permís de
-   repic!», i es queda al peu del campanar, cridant cap amunt, mentre la Iri no baixi.
+4. Amb l'Iri dalt, tocar la campana (l'Iri estira la corda). En Bonfill hi corre: «Qui toca? Sense permís de
+   repic!», i es queda al peu del campanar, cridant cap amunt, mentre l'Iri no baixi.
 5. Es canvia a la Vet, que copia la queixa a la **tauleta de cera**: els noms i el signe del peu. Quan la Vet ha copiat,
-   la Iri baixa (o es queda dalt fins que es torna a ella; en baixar, en Bonfill: «Tu! ...Ah, la llenyatera. Doncs no
+   l'Iri baixa (o es queda dalt fins que es torna a ella; en baixar, en Bonfill: «Tu! ...Ah, la llenyatera. Doncs no
    toquis la campana sense permís.» — i torna a la porta).
 
 És una **sincronia per torns**, com a Aigua Verne: res no es perd si es triga; en Bonfill espera al peu del campanar
-mentre la Iri hi sigui.
+mentre l'Iri hi sigui.
 
 **Trencaclosques 2.3 — Els noms (mirar, parlar).** Mirant la tauleta: «*Sança, fornera. Joan, pescador. Ermessenda,
 molinera...* Tots els noms escrits sencers, amb la mateixa lletra. I sota, la creu amb el llaç.» Si ja ha llegit
@@ -438,14 +438,14 @@ d'aigua. Pesa com un bou»). Amb la destral com a palanca, sí:
 dents, però és al mig de la resclosa, lluny de la vora. «A peu no hi arribo. Ni amb la destral.»
 
 **Trencaclosques 3.2 — La barca d'en Joanet (combinar, donar).** En Joanet té una barca, però fa aigua i no hi puja
-ningú («És una barca filosòfica: pensa en l'aigua, i l'aigua hi entra»). La Iri mira les juntes: «Fusta bona, però li
-ha marxat la pega.» Amb la **resina** (el pot), la Iri calafata les juntes. En Joanet, emocionat: «Una barca que no fa
+ningú («És una barca filosòfica: pensa en l'aigua, i l'aigua hi entra»). L'Iri mira les juntes: «Fusta bona, però li
+ha marxat la pega.» Amb la **resina** (el pot), l'Iri calafata les juntes. En Joanet, emocionat: «Una barca que no fa
 aigua. Ja no sabré de què parlar.» Li deixa la barca i el **salabre** (el cistell de pescar amb mànec llarg).
 
-**Trencaclosques 3.3 — La serra (usar, agafar).** Des de la barca, amb el salabre, la Iri treu la cosa de la comporta
+**Trencaclosques 3.3 — La serra (usar, agafar).** Des de la barca, amb el salabre, l'Iri treu la cosa de la comporta
 (sense el salabre: «Té les dents cap amunt. No hi poso la mà ni amb guants»). Mirant-la, amb els guants: «Mànec de boix
 i tres osques. La del pare.» I embolicada al mànec, una **tira de pergamí** mullada, amb un dibuix: la creu amb el
-llaç. La Iri no sap què hi diu, però el dibuix el coneix: és el de l'ordre del jutge.
+llaç. L'Iri no sap què hi diu, però el dibuix el coneix: és el de l'ordre del jutge.
 
 > IRI: Algú que embolica el mànec d'una serra amb pergamí. Per no fer-se butllofes.
 > IRI: Un llenyataire té callositats. Això és d'algú que té les mans molt netes.
@@ -457,24 +457,24 @@ L'Ermessenda torna a obrir el rec [SO: l'aigua que entra al rec, i el molí, llu
 > IRI: Per què m'hauria de caldre?
 > ERMESSENDA: Ningú no ho sap mai.
 
-La Iri es queda la **serra** i el **sac de clofolles de nou**.
+L'Iri es queda la **serra** i el **sac de clofolles de nou**.
 
-**En Joanet, encara.** Si la Iri hi torna a parlar: «Aquella nit jo era aquí, amb les anguiles. Vaig veure un fanal a
+**En Joanet, encara.** Si l'Iri hi torna a parlar: «Aquella nit jo era aquí, amb les anguiles. Vaig veure un fanal a
 l'avet. Però qui mira fanals, quan pica una anguila?» No en diu res més (a l'acte 4, sí).
 
-### 4. El claustre (Vet; la Iri es queda a la porta)
+### 4. El claustre (Vet; l'Iri es queda a la porta)
 
 **Sala:** `claustre`, a la tarda, amb gotes que cauen de les teulades (`claustre-1.png`, `claustre-2.png`,
 `claustre-campanar.png`, `claustre-pica.png`). La galeria en perspectiva, amb les columnes fosques i el sostre de
 fusta; la gespa al mig, amb la **pica** de pedra; el campanar al fons. L'Ingilberga, asseguda en un banc de pedra. La
-Gueraula esmicola herbes en un morter i canta fluix. Si hi arriba la Iri, s'excusa a la porta.
+Gueraula esmicola herbes en un morter i canta fluix. Si hi arriba l'Iri, s'excusa a la porta.
 
 **Entrada.**
 
 > INGILBERGA: Vet. Ja sé el del teu pare. Ho sento.
 > INGILBERGA: El meu germà vol les meves terres, i ara té un culpable i un arbre. Això és tot el que entenc.
 
-**Trencaclosques 4.1 — El segell (el calc).** Cal el **tros de cera**, que porta la Iri: la Iri l'ha de donar a la Vet
+**Trencaclosques 4.1 — El segell (el calc).** Cal el **tros de cera**, que porta l'Iri: l'Iri l'ha de donar a la Vet
 (a l'avet, a la plaça o a la porta del claustre). El tros és brut i trencat. La Vet el renta a la pica. Encara no s'hi
 llegeix res: el relleu és massa gastat. La Vet hi posa un pergamí en blanc i hi frega el carbonet (el calc): surten
 unes lletres, *...MMA ABBATISS...*, i un arbre.
@@ -494,7 +494,7 @@ entrin dos monjos.» L'Ingilberga no vol: «No us deixaré jugar-vos el coll per
 La Vet li ha d'ensenyar **tres proves** (en qualsevol ordre; cada una, una resposta):
 
 - la **queixa** copiada a la tauleta (de la plaça): «Trenta noms, una sola mà. La meva gent no escriu així.»
-- la **serra** (la Iri l'ha de donar a la Vet: «Té. Pesa. No te la clavis.»): «Amb pergamí al mànec. Un llenyataire
+- la **serra** (l'Iri l'ha de donar a la Vet: «Té. Pesa. No te la clavis.»): «Amb pergamí al mànec. Un llenyataire
   que es protegeix les mans. No.»
 - l'**ordre** llegida (de l'avet): «Escrita ahir, i ja diu que l'avet ha caigut. Algú sabia el temps que faria.»
 
@@ -514,7 +514,7 @@ vingut amb el jutge. O el jutge mateix.»
 > INGILBERGA: Sopa cada nit a la cuina, després de completes. Beu com un canonge.
 > GUERAULA: *(feliç)* Jo hi poso les herbes.
 
-La Iri entra per fi al claustre («Ja he deixat la destral. Bé, la porto, però no la miro»). Rètol: *Acte 2 — L'hàbit
+L'Iri entra per fi al claustre («Ja he deixat la destral. Bé, la porto, però no la miro»). Rètol: *Acte 2 — L'hàbit
 no fa el monjo.* · *Al capvespre.*
 
 ---
@@ -525,7 +525,7 @@ no fa el monjo.* · *Al capvespre.*
 
 ### La preparació (tram obert: la bugaderia i l'apotecaria)
 
-El claustre, al capvespre, amb els llums encesos, fa de rebedor: d'una banda la **bugaderia** (de la Iri), de
+El claustre, al capvespre, amb els llums encesos, fa de rebedor: d'una banda la **bugaderia** (de l'Iri), de
 l'altra l'**apotecaria** (de la Vet). Es pot canviar quan es vulgui, i cada sala necessita una cosa de l'altra:
 
 - La bugaderia necessita el **caparrós** de l'apotecaria per tenyir de negre.
@@ -544,25 +544,25 @@ Ningú: les bugaderes han plegat.
 **Trencaclosques 5.1 — Les túniques (obrir, agafar).** Al bagul hi ha dues túniques de llana velles, de novici: dues
 **túniques blanques**, gegants. «Un monjo negre de color blanc. Ningú no s'ho creurà.»
 
-**Trencaclosques 5.2 — El tint (combinar, amb la Vet).** Per tenyir de negre cal pell de nou i ferro, a bullir: la Iri
+**Trencaclosques 5.2 — El tint (combinar, amb la Vet).** Per tenyir de negre cal pell de nou i ferro, a bullir: l'Iri
 ho sap de l'àvia, que tenyia la roba de dol. Les **clofolles** són al sac de l'Ermessenda (del pont: si no hi ha anat,
 la pista ho diu). El ferro: si prova amb la serra, «És rovellada, sí. També és la prova. La Vet em mataria»; amb la
 destral, «La destral no. Encara la necessitaré, segur.» Cal **caparrós**, i el caparrós és a l'apotecaria: la Vet l'ha
 de demanar a la Gueraula. Clofolles i caparrós a la tina.
 
 **Trencaclosques 5.3 — El foc (triar, encendre).** El fogó és apagat i la llenya és molla de la pluja. A la pila n'hi
-ha de diverses menes, i la Iri les coneix: «Pi: molla i fa fum. Pollancre: crema com paper i s'apaga. Alzina: seca, i
+ha de diverses menes, i l'Iri les coneix: «Pi: molla i fa fum. Pollancre: crema com paper i s'apaga. Alzina: seca, i
 crema tota la nit.» Agafa l'**alzina**. Per encendre-la, una cullerada de **resina** («Crema com el mal geni»). [SO: el
 foc que pren, l'aigua que bull.] Usar les túniques amb la tina.
 
-**Trencaclosques 5.4 — Escurçar (usar).** Dos **hàbits negres**, que fumegen. La Iri se'n posa un per provar: li
+**Trencaclosques 5.4 — Escurçar (usar).** Dos **hàbits negres**, que fumegen. L'Iri se'n posa un per provar: li
 arriba a terra i li sobra per darrere («Aquí dins hi cabem les dues. I el pare»). Amb les **tisores**, en talla un pam
 de baix a cada un. En queden dos hàbits que ja no s'arrosseguen, i un grapat de **retalls de llana** negra.
 
 > IRI: *(mirant els retalls)* Llana negra. Per a què serveix, la llana negra?
 > IRI: ...Barbes de monjo. *(somriu)* La Vet en necessitarà.
 
-(Si la Iri prova d'escurçar-los amb la destral: «Iri, la destral no.» — «Era per escurçar-los!» — «Amb una destral,
+(Si l'Iri prova d'escurçar-los amb la destral: «Iri, la destral no.» — «Era per escurçar-los!» — «Amb una destral,
 s'escurça el monjo.»)
 
 ### 6. L'apotecaria (Vet)
@@ -575,15 +575,15 @@ colors.
 
 > GUERAULA: Barbes, celles, veu d'home i una herba per adormir un escrivà. Quina nit més bonica!
 
-**Trencaclosques 6.1 — El caparrós (llegir, per a la Iri).** Si la Vet pregunta a la Gueraula per tenyir de negre:
+**Trencaclosques 6.1 — El caparrós (llegir, per a l'Iri).** Si la Vet pregunta a la Gueraula per tenyir de negre:
 «De tenyir no en sé. D'herbes, sí.» Però la Vet ho sap per l'ofici: la tinta negra dels escrivans es fa amb gal·les i
 **caparrós**. A la prestatgeria, la Vet llegeix les etiquetes i troba *Atramentum* («Caparrós. El que fa negra la
-tinta, fa negre un hàbit»). El dona a la Iri.
+tinta, fa negre un hàbit»). El dona a l'Iri.
 
-**Trencaclosques 6.2 — Les barbes (combinar).** Cal llana: la **llana negra** dels retalls de la Iri (sense: «La pell
+**Trencaclosques 6.2 — Les barbes (combinar).** Cal llana: la **llana negra** dels retalls de l'Iri (sense: «La pell
 d'ovella de la Gueraula és blanca. Un monjo negre amb barba blanca és un avi»). Per cardar-la, un **cardó** sec dels
 manats («El cardó és una herba i una pinta. Els de la llana el fan servir així des de fa mil anys»). Llana cardada +
-resina = dues **barbes postisses**. La resina: la porta la Iri (se l'han de donar).
+resina = dues **barbes postisses**. La resina: la porta l'Iri (se l'han de donar).
 
 **Trencaclosques 6.3 — Les celles (combinar).** Mel i carbó al morter: l'**ungüent de celles**. La Gueraula:
 «Enganxa. I fa gust de dissabte.»
@@ -626,14 +626,14 @@ la plaça, de nit la porta. I el sou, el mateix.»
 **Entrada.**
 
 > BONFILL: Alto. Sant i senya.
-> *(La Iri mira la Vet. La Vet mira el sostre.)*
+> *(L'Iri mira la Vet. La Vet mira el sostre.)*
 
 **Trencaclosques 7.1 — El sant i senya (diàleg).** Opcions: «Ora et labora» (— «Això ho diu tothom»), «Pax vobiscum»
 (— «I amb el vostre esperit. Sant i senya?»), «Visca el comte» (— «Visca. Sant i senya?») i **«Tres testimonis i un
 segell»**, la frase del jutge Ponç: — «Correcte. Molt bé, germans.» Si cal, la pista ho recorda: «Què és el que el
 jutge diu tota l'estona?»
 
-**Trencaclosques 7.2 — El salconduit (donar).** En Bonfill demana el salconduit. La Iri l'hi dona (la Vet l'hi ha
+**Trencaclosques 7.2 — El salconduit (donar).** En Bonfill demana el salconduit. L'Iri l'hi dona (la Vet l'hi ha
 passat en sortir de l'apotecaria). L'aguanta de cap per avall i mira el segell:
 
 > BONFILL: Segell de... l'Emma? No el conec. Deu ser nou.
@@ -644,7 +644,7 @@ passat en sortir de l'apotecaria). L'aguanta de cap per avall i mira el segell:
 > *(La Vet aixeca la tauleta: «Vot de silenci extrem».)*
 > BONFILL: Ah. Doncs no.
 
-**Trencaclosques 7.3 — El nom (diàleg).** En Bonfill vol apuntar-los al llibre de les entrades: «Noms?» La Iri no pot
+**Trencaclosques 7.3 — El nom (diàleg).** En Bonfill vol apuntar-los al llibre de les entrades: «Noms?» L'Iri no pot
 parlar gaire (la veu li va i li ve). Opcions: dir un nom (la veu se li escapa aguda a mitja paraula: «Germà
 Rrr...amona»; en Bonfill aixeca una cella), assenyalar la Vet (— «I ell?» La Vet fa el senyal del vot de silenci),
 o **tossir fins que en Bonfill s'ho apunta ell mateix**: «Germà... Tos. I germà... Silenci. Passeu.» Al llibre hi
@@ -652,14 +652,14 @@ queden dos ninots («fra Tos i fra Silenci»: en Bonfill no sap escriure), que t
 
 > BONFILL: Aneu a la cuina, que hi ha foc. I digueu a l'escrivà que el vi s'acaba.
 
-**Final.** El forrellat s'obre. La Iri, fluix: «Com és que el sant i senya era la frase del jutge?» La Vet: «Perquè
+**Final.** El forrellat s'obre. L'Iri, fluix: «Com és que el sant i senya era la frase del jutge?» La Vet: «Perquè
 aquí dins tothom pensa com ell.»
 
-### 8. La cuina (Vet, amb la Iri)
+### 8. La cuina (Vet, amb l'Iri)
 
 **Sala:** `cuina`, de nit, una cuina monumental amb una **llar de foc** gegant, olles de ferro penjades, una **pila
 d'olles** en un racó, una taula llarga, una **gerra de vi** i una **copa**. En Sunifred sopa sol al cap de la taula, amb
-el **manat de claus** al cinyell. La Iri, de «novici», al costat de la llar, removent una olla.
+el **manat de claus** al cinyell. L'Iri, de «novici», al costat de la llar, removent una olla.
 
 **Entrada.**
 
@@ -672,13 +672,13 @@ La Vet, de «vot de silenci extrem», contesta escrivint a la tauleta: «*Sí, g
 
 **Trencaclosques 8.1 — El signe (el gir; parlar).** Si la Vet li pregunta pel seu ofici (escrivint a la tauleta), en
 Sunifred s'esponja i, per ensenyar-li com signa un escrivà de debò, dibuixa el seu signe amb el dit al vi vessat:
-**una creu, i un llaç**. «Elegant i impossible de copiar.» La Vet s'ennuega amb la seva pròpia tos; la Iri, a la llar,
+**una creu, i un llaç**. «Elegant i impossible de copiar.» La Vet s'ennuega amb la seva pròpia tos; l'Iri, a la llar,
 deixa caure el cullerot. **El signe de la serra, de la queixa i de l'ordre és d'en Sunifred.**
 
 **Trencaclosques 8.2 — El vi (col·laboració: la distracció).** En Sunifred no deixa mai la copa: la tapa amb la mà
 entre glop i glop («Hi ha molt verí en aquest món, germà»). Cal que es giri.
 
-1. La pila d'olles: la Vet fa el senyal a la Iri (el mocador). La Iri «ensopega» amb la pila. [SO: un terrabastall
+1. La pila d'olles: la Vet fa el senyal a l'Iri (el mocador). L'Iri «ensopega» amb la pila. [SO: un terrabastall
    d'olles.] En Sunifred es gira: «Germà! Que no som a Ripoll!»
 2. Mentre es gira, la Vet tira la **valeriana** a la gerra. Si ho prova sense distracció: en Sunifred la mira. «Germà?»
    La Vet li serveix aigua, i ell, satisfet: «Molt bé.»
@@ -696,7 +696,7 @@ abans d'agafar les claus («Encara no. Parla en somnis...»):
 Vet l'estira, ell s'hi agafa més fort («Meves...»). Amb la **ploma**, la Vet li fa pessigolles al nas. En Sunifred s'hi
 grata amb la mà del cinyell. La Vet agafa les **claus**.
 
-**Final de l'acte.** La Vet: «Ha dit "s'arxiva". La carta de l'Emma no l'ha cremada.» La Iri: «I la seva, la del
+**Final de l'acte.** La Vet: «Ha dit "s'arxiva". La carta de l'Emma no l'ha cremada.» L'Iri: «I la seva, la del
 comte, l'ha escrita al faristol.» Rètol: *Acte 3 — L'arxiu.* · *Mitjanit.*
 
 ---
@@ -711,7 +711,7 @@ l'Emma · sortir del monestir.
 **Sala:** `scriptorium`, a mitjanit: faristols inclinats, finestrals alts, espelmes. Al fons, la porta de la sala
 capitular, ferrada. En Gombau i l'Arnulf, dos canonges, copien a la llum de les espelmes. Al mig, una **espelma de les
 hores** (gruixuda, marcada amb ratlles, que diu l'hora en cremar-se). El faristol d'en Sunifred, buit, amb un
-**pergamí en blanc**. La Iri espera al passadís.
+**pergamí en blanc**. L'Iri espera al passadís.
 
 **Entrada.**
 
@@ -728,8 +728,8 @@ la Vet en treu un tros a l'espelma i la torna a encendre.
 
 Se'n van. Si la Vet ho prova mentre la miren: «Germà, l'espelma no es toca.»
 
-**Trencaclosques 9.2 — La porta (usar).** Amb les **claus**, la Vet obre la porta de la sala capitular. La Iri entra
-del passadís i hi passa. **Comença el tram obert de l'acte 3**: la Vet a l'scriptorium i la Iri a l'arxiu, porta per
+**Trencaclosques 9.2 — La porta (usar).** Amb les **claus**, la Vet obre la porta de la sala capitular. L'Iri entra
+del passadís i hi passa. **Comença el tram obert de l'acte 3**: la Vet a l'scriptorium i l'Iri a l'arxiu, porta per
 porta, i es pot canviar quan es vulgui.
 
 **Trencaclosques 9.3 — La carta d'en Sunifred (el calc; quan es vulgui del tram, però abans del cofre).** El pergamí en blanc del faristol
@@ -742,9 +742,9 @@ les lletres:
 
 La Vet es queda la **carta calcada**. «*On es guarden les coses que no es cremen.* L'arxiu, Iri.»
 
-**Trencaclosques 9.4 — Els canonges tornen (sincronia per torns).** Quan la Iri despenja el contrapès de l'arxiu
+**Trencaclosques 9.4 — Els canonges tornen (sincronia per torns).** Quan l'Iri despenja el contrapès de l'arxiu
 (10.3), fa un soroll. Els canonges, que ja eren al passadís, tornen: «Germà, heu sentit això?» A l'arxiu, mentre els
-canonges siguin a l'scriptorium, la Iri no pot fer res que faci soroll («Si moc res, ho sentiran»). Cal canviar a la
+canonges siguin a l'scriptorium, l'Iri no pot fer res que faci soroll («Si moc res, ho sentiran»). Cal canviar a la
 Vet i treure-li'ls de sobre: la Vet escriu a la tauleta que el soroll és «un ratolí, a la cuina», i que n'ha vist la
 cua. En Gombau i l'Arnulf hi van, armats amb un faristol. (Amb el xarop, la tos d'ultratomba també serveix: «Era jo. La
 tos.» — «Germà, això no és una tos, és un terratrèmol. Aneu-vos-en al llit.» I no se'n van; la del ratolí, sí.)
@@ -761,22 +761,22 @@ deixat.
 > VET: *(des de l'scriptorium)* Doncs n'obres cent. Pesen unes quatre tones cadascun. Tu mateixa.
 
 **Trencaclosques 10.1 — El bagul (reconèixer el signe).** Les etiquetes no les sap llegir («Ratlles i ganxos»; la Vet no
-hi entra: l'arxiu és de la Iri). Però el que serveix és mirar: un dels baguls té un lacre amb un dibuix. La Iri el coneix: «Una creu amb un llaç. No sé
+hi entra: l'arxiu és de l'Iri). Però el que serveix és mirar: un dels baguls té un lacre amb un dibuix. L'Iri el coneix: «Una creu amb un llaç. No sé
 què diu. Sé qui és.»
 
 **Trencaclosques 10.2 — El doble fons (obrir, la fusta).** Amb les claus (la Vet les hi ha de donar), el bagul
-s'obre: només hi ha rotlles de comptes. La Iri hi pica: «Aquest fons sona a buit. La fusta no menteix.» No s'obre per
+s'obre: només hi ha rotlles de comptes. L'Iri hi pica: «Aquest fons sona a buit. La fusta no menteix.» No s'obre per
 enlloc. Al costat del bagul, un cordill surt pel fons i se'n va per la paret, darrere el tapís.
 
 **Trencaclosques 10.3 — El contrapès (estirar, enfilar-se).** Darrere el tapís (estirar-lo), el cordill puja fins a un
-**contrapès** de pedra, penjat a dalt de tot. Per arribar-hi, la Iri s'enfila per l'**estendard** (empènyer el pal fins
+**contrapès** de pedra, penjat a dalt de tot. Per arribar-hi, l'Iri s'enfila per l'**estendard** (empènyer el pal fins
 a la paret, i pujar-hi). Despenja el contrapès. [SO: un clic al bagul, i el cop de la pedra a terra.] Els canonges
 tornen (9.4). Quan la Vet se'ls ha tret de sobre, el doble fons es pot obrir: a dins, el **cofre de l'Emma**, amb el
-segell vermell trencat. Si la Vet encara no ha calcat la carta d'en Sunifred, la Iri no se l'endú: «Vet! Abans que
+segell vermell trencat. Si la Vet encara no ha calcat la carta d'en Sunifred, l'Iri no se l'endú: «Vet! Abans que
 res, el pergamí del faristol d'en Sunifred.» (Un cop agafat el cofre, sona l'alarma i ja no hi ha temps.)
 
 **Trencaclosques 10.4 — La carta de l'Emma (llegir; sense bromes).** Dins el cofre, mig pergamí tallat en ziga-zaga.
-La Iri crida la Vet, que hi entra i el llegeix:
+L'Iri crida la Vet, que hi entra i el llegeix:
 
 > VET: *Aquestes terres seran de les dones del monestir mentre l'avet de l'Emma sigui dret.*
 > IRI: Doncs ja està. L'avet és a terra.
@@ -786,11 +786,11 @@ La Iri crida la Vet, que hi entra i el llegeix:
 > IRI: Ho sabia. Fa cent trenta anys, ho sabia.
 > VET: Per això el va tombar d'amagat. I per això no la va cremar: és escrivà.
 
-La música torna quan la Iri es posa la carta dins l'hàbit. S'acaba el tram obert.
+La música torna quan l'Iri es posa la carta dins l'hàbit. S'acaba el tram obert.
 
 **Final de l'escena.** [SO: una campana d'alarma.] Crits a fora: en Sunifred s'ha despertat i ha trobat el cinyell
 buit. La porta de la sala capitular es tanca des de fora. Per una finestra petita, la Gueraula: «Pel molí! Sota el
-banc del fons hi ha la trapa del rec!» La Iri aparta el banc (empènyer-lo): a sota, una **trapa** i una escala que
+banc del fons hi ha la trapa del rec!» L'Iri aparta el banc (empènyer-lo): a sota, una **trapa** i una escala que
 baixa a l'aigua. (L'Ermessenda ja ho havia dit: el rec passa per sota del molí.)
 
 ### 11. El molí (Iri, amb la Vet i la Gueraula)
@@ -810,13 +810,13 @@ Iri hi posa la carta de l'Emma i la carta calcada (la Vet l'hi dona), i el segel
 «Ni l'aigua, ni el vent, ni l'escrivà.»
 
 **Trencaclosques 11.2 — La roda (la destral).** Per obrir el pas cal que la roda giri, i una falca de fusta la
-bloqueja. La Iri la mira: «Alzina, clavada a cops de maça. No sortirà estirant.» La talla amb la **destral**:
+bloqueja. L'Iri la mira: «Alzina, clavada a cops de maça. No sortirà estirant.» La talla amb la **destral**:
 
 > IRI: *(feliç)* Per tallar!
 > VET: No t'hi acostumis.
 
-**Trencaclosques 11.3 — La comporta i la pastera (col·laboració).** La Iri posa la pastera a l'aigua (empènyer-la al
-canal). Quan totes dues són a dins, la Iri fa el senyal a la Gueraula (cridar-la). La Gueraula obre la comporta,
+**Trencaclosques 11.3 — La comporta i la pastera (col·laboració).** L'Iri posa la pastera a l'aigua (empènyer-la al
+canal). Quan totes dues són a dins, l'Iri fa el senyal a la Gueraula (cridar-la). La Gueraula obre la comporta,
 l'aigua empeny la roda i la pastera surt pel canal. Si fan el senyal abans que la roda giri, l'aigua no troba sortida,
 puja, i la Gueraula la torna a tancar: «Encara no! Que us ofegueu i no hi ha qui m'ho expliqui!» Es torna a provar.
 
@@ -850,11 +850,11 @@ les monges? Ara sí que ho he vist tot.» Vindrà si la deixen signar com signa 
 de la gespa de Sant Pol.
 
 **Testimoni 2 — L'Ermessenda (pont; Iri).** Vindrà a dir on era la serra, però té el blat del monestir a mig moldre i
-el molí sense ningú: «Si deixo la mola rodant sola, se m'encalla.» La Iri tanca la **comporta** del rec, la mateixa
+el molí sense ningú: «Si deixo la mola rodant sola, se m'encalla.» L'Iri tanca la **comporta** del rec, la mateixa
 que ahir va desencallar (empènyer-la): sense aigua, la mola s'atura. — «Com saps tu, germà, com s'atura un molí?» —
 *(tos d'ultratomba)*
 
-**Testimoni 3 — En Joanet (pont; Iri).** Dorm a la barca, que ja no fa aigua. No es desperta ni cridant. La Iri
+**Testimoni 3 — En Joanet (pont; Iri).** Dorm a la barca, que ja no fa aigua. No es desperta ni cridant. L'Iri
 empeny la barca al corrent (empènyer): es desperta a mig riu. «Ja hi som, a l'altre món?» Llavors sí, diu el que va
 veure la nit de la tempesta, i ho dirà al judici:
 
@@ -870,7 +870,7 @@ Quan hi ha tres testimonis i el segell, es parla amb el jutge, que fa tocar la c
 i tothom va a l'avet. S'acaba el
 tram obert.
 
-### 12b. El judici (Vet; la Iri hi és)
+### 12b. El judici (Vet; l'Iri hi és)
 
 **Sala:** `judici`, l'art de `mur_avet` amb tot el poble: el sol després de la tempesta, el cel blau
 (`absis-avet.png`). El jutge Ponç al faristol, en Sunifred al costat (despentinat, amb ulleres de no dormir),
@@ -892,7 +892,7 @@ repeteix el pas.
 
 1. **«L'avet el va tombar el vent.»** En Sunifred ha canviat de versió: sap que la meitat de l'Emma corre per aquí, i
    amb la línia del dors, una serra li fa nosa. El jutge: «Ahir dèieu que el llenyataire.» En Sunifred: «Ahir plovia.»
-   — La Vet demana a la Iri que ensenyi les arrels (la Iri aparta les branques amb els guants), dona la **serra** al
+   — La Vet demana a l'Iri que ensenyi les arrels (l'Iri aparta les branques amb els guants), dona la **serra** al
    jutge i fa parlar l'**Ermessenda** («La vaig veure treure de la meva comporta»).
    > VET: El vent arrenca. Això ho ha fet una serra.
    > PONÇ: *(radiant)* Per fi algú amb seny! Una observació botànica impecable, germà.
@@ -900,7 +900,7 @@ repeteix el pas.
 2. **«Tot el poble ha signat la queixa.»** — La Vet ensenya la **tauleta** amb els noms copiats i fa parlar la
    **Sança**, que signa davant de tothom: una creu, torta. Després, tota la plaça fa creus. «Trenta noms escrits
    sencers, amb la mateixa lletra, per gent que signa amb una creu. I al peu, el mateix signe que a la serra.»
-3. **«La meitat del monestir s'ha perdut.»** — La Vet obre el pot (la resina no vol: la Iri l'obre amb la destral; el
+3. **«La meitat del monestir s'ha perdut.»** — La Vet obre el pot (la resina no vol: l'Iri l'obre amb la destral; el
    jutge se n'aparta), i dona la **carta de l'Emma** al jutge. El jutge ajunta les dues meitats: **encaixen**. Èxtasi
    buròcrata: «Ziga-zaga perfecte. Mateixa mà. Mateixa tinta. Quina feina tan ben feta!»
    > SUNIFRED: Doncs ja està. Mentre l'avet sigui dret. I no ho és.
@@ -912,7 +912,7 @@ repeteix el pas.
    seva pròpia ordre. El jutge, a poc a poc: «Escrita ahir... i segellada ahir. El segell el porteu vós, Sunifred.»
 
 **La revelació (sense bromes, fins a l'última línia).** El jutge pregunta el nom dels dos germans tan savis, per
-posar-lo a l'acta. En Bonfill, des del fons: «Fra Tos i fra Silenci. Ho tinc apuntat.» La Iri i la Vet es treuen les
+posar-lo a l'acta. En Bonfill, des del fons: «Fra Tos i fra Silenci. Ho tinc apuntat.» L'Iri i la Vet es treuen les
 caputxes, i després les barbes.
 
 > PONÇ: *(molt pàl·lid)* Dues dones.
@@ -927,8 +927,8 @@ Silenci. El jutge mira els pergamins un moment llarg.
 En Sunifred, que reculava a poc a poc, es queda quiet. El pare surt, s'estira i diu: «El vi del batlle, que el
 tasti ell.»
 
-Ara sí, la broma: la Iri estira la barba, i no surt. «La resina d'avet enganxa de debò», diu la Gueraula, satisfeta.
-La Iri se l'arrenca, amb un crit que espanta els coloms de l'absis.
+Ara sí, la broma: l'Iri estira la barba, i no surt. «La resina d'avet enganxa de debò», diu la Gueraula, satisfeta.
+L'Iri se l'arrenca, amb un crit que espanta els coloms de l'absis.
 
 L'Ingilberga, a les germanes, fluix: «El meu germà encara té amics a Roma. Però avui, no.» (És tot el que es diu de
 l'expulsió.)
@@ -947,10 +947,10 @@ Ponç amb el faristol, el pare, la Sança, i en Sunifred amb una pala i una gall
 > PONÇ: La clàusula diu que el planteu. No diu que no us puguin ajudar.
 > IRI: Dona'm la pala.
 
-**L'última feina (la Iri planta l'avet).**
+**L'última feina (l'Iri planta l'avet).**
 
-1. El **plançó** és a la carretilla. La Iri l'agafa. («Dues lliures», diu la Vet. «Aquest el pots empènyer.»)
-2. El forat és massa petit. La Iri vol fer servir la destral: «Iri, la destral no.» — «Era per fer el forat!» Amb la
+1. El **plançó** és a la carretilla. L'Iri l'agafa. («Dues lliures», diu la Vet. «Aquest el pots empènyer.»)
+2. El forat és massa petit. L'Iri vol fer servir la destral: «Iri, la destral no.» — «Era per fer el forat!» Amb la
    pala que li dona en Sunifred (tot content de desfer-se'n), el fa més gran.
 3. La Vet li dona el **cofre**: a dins hi ha les **dues meitats** de la carta, juntes. «Que no es tornin a separar.» La
    Iri el posa al fons del forat.
@@ -958,7 +958,7 @@ Ponç amb el faristol, el pare, la Sança, i en Sunifred amb una pala i una gall
    «És la quarta galleda.» En Ramon: «I en faltaran quaranta. Els avets beuen.»
 5. El jutge Ponç s'acosta amb una cinta i un segell, i el lliga al plançó: «Perquè consti.»
 
-**La primera paraula.** La Vet ha escrit una paraula en un tros de fusta, per clavar-la al costat del plançó. La Iri
+**La primera paraula.** La Vet ha escrit una paraula en un tros de fusta, per clavar-la al costat del plançó. L'Iri
 la mira, i aquesta vegada no demana a ningú què hi diu:
 
 > IRI: *(a poc a poc)* A... V... E... T.
@@ -967,7 +967,7 @@ la mira, i aquesta vegada no demana a ningú què hi diu:
 
 La Gueraula comença la corranda de sempre, i la Vet, que no canta mai, hi posa la tornada nova:
 
-> *L'avet que ha plantat la Iri*
+> *L'avet que ha plantat l'Iri*
 > *té les arrels de paper;*
 > *i ara, qui el vulgui tombar,*
 > *ho trobarà escrit també.*
@@ -1002,10 +1002,10 @@ Cada una té un començament, una o dues tornades i un final:
 - **«Tres testimonis i un segell.»** El jutge, a l'escena 1 i cada cop que se li parla («La lectura pública d'una
   ordre requereix tres testimonis»). Tornades: el sant i senya de la porteria; el matí del judici, on les germanes
   els han d'anar a buscar de debò. Final: el segell al plançó.
-- **«Iri, la destral no.»** A tot arreu on la Iri la vol fer servir (frases per defecte de la destral). Tornades: la
+- **«Iri, la destral no.»** A tot arreu on l'Iri la vol fer servir (frases per defecte de la destral). Tornades: la
   palanca del sobreeixidor («No és per tallar, eh»), escurçar els hàbits («Era per escurçar-los!»), la falca del molí
   («Per tallar!»), el pot al judici. Final: «Era per fer el forat!»
-- **«Quatre tones.»** La Vet calcula el pes de tot el que la Iri vol empènyer: la campana, els baguls, l'avet. Final:
+- **«Quatre tones.»** La Vet calcula el pes de tot el que l'Iri vol empènyer: la campana, els baguls, l'avet. Final:
   el plançó, «Dues lliures. Aquest el pots empènyer.»
 - **En Bonfill i els papers de cap per avall.** La queixa, el salconduit, «fra Tos i fra Silenci». Final: els
   postcrèdits, amb el pergamí del dret.
@@ -1016,12 +1016,12 @@ Cada una té un començament, una o dues tornades i un final:
 - **El vi del batlle.** El pare a la reixa, al judici, als crèdits.
 
 **Frases per defecte.** Tres per verb i germana, que es diuen per torns (`ui.defecte.<verb>.<iri|vet>`, `.2`, `.3`).
-La Iri, de fusta i d'eines («No es mou. I no és de fusta, que ho sabria»). La Vet, de lletres i de dades («Ho apunto:
+L'Iri, de fusta i d'eines («No es mou. I no és de fusta, que ho sabria»). La Vet, de lletres i de dades («Ho apunto:
 no serveix de res»). No donen pistes.
 
 **Combinacions que es provaran segur.** La destral amb tothom (el jutge: «Amenaçar un jutge requereix tres testimonis
 i un segell»; la Gueraula: «Uf, que maca. Me la deixes per al julivert?»). La serra amb l'avet («Ja està serrat. Per
-això som aquí»). La valeriana amb la Iri («Si dormo, qui t'aguanta l'escala?»). La tauleta amb en Bonfill (la gira).
+això som aquí»). La valeriana amb l'Iri («Si dormo, qui t'aguanta l'escala?»). La tauleta amb en Bonfill (la gira).
 El xarop de menta amb el jutge, al judici («Germà, us faria veu d'avi, i ja la té»). La resina amb la barca, un cop
 calafatada («Si en poso més, flotarà en l'aire»).
 
@@ -1091,8 +1091,8 @@ ACTE 4 — TRAM OBERT (el poble amb sol)
 | Pergamins en blanc | Vet | inici | Calc (claustre), salconduit (apotecaria) |
 | Ploma i tinter | Vet | inici | Salconduit, pessigolles (cuina) |
 | Rascador | Vet | inici | L'espelma de les hores (scriptorium) |
-| Mocador | Vet | inici | Senyal a la Iri (cuina) |
-| Olla del dinar → pot de resina | Iri | 1a | Barca (pont), foc (bugaderia), barbes i salconduit (apotecaria, la Iri l'ha de donar), pot (molí). No s'acaba mai |
+| Mocador | Vet | inici | Senyal a l'Iri (cuina) |
+| Olla del dinar → pot de resina | Iri | 1a | Barca (pont), foc (bugaderia), barbes i salconduit (apotecaria, l'Iri l'ha de donar), pot (molí). No s'acaba mai |
 | Tros de cera vermella | Iri → Vet | 1a | Calc (claustre), salconduit, el segell del judici |
 | Cabdell de cànem | Vet → Iri | Plaça | La corda de la campana |
 | Salabre | Iri | Pont | La serra |
@@ -1113,7 +1113,7 @@ ACTE 4 — TRAM OBERT (el poble amb sol)
 | Plançó, pala, cofre | Iri | Epíleg | Epíleg |
 
 Els objectes que ja no serveixen es treuen de l'inventari en acabar el tram on servien. Les eines de la Vet (tauleta,
-carbonet, ploma, rascador, mocador, pergamins) no es donen a la Iri, perquè les necessita als trams seguits; la serra
+carbonet, ploma, rascador, mocador, pergamins) no es donen a l'Iri, perquè les necessita als trams seguits; la serra
 i la cera, un cop les té la Vet, tampoc («Les proves, les porto jo»): són per al judici.
 
 ## Pistes
@@ -1125,7 +1125,7 @@ n'hi ha una. La diu **la germana que juga**, amb la seva veu:
 - La **Vet**, amb les dades: «Repassem: tenim la serra, tenim l'ordre, ens falta el que diu la queixa.»
 - **Als trams oberts, la pista sap qui porta què i on**: si el pas següent és de l'altra germana, ho diu
   (`ui.pista.altra.<qui>`: «Això és feina de la Vet. Canvia-hi»), i si cal un objecte que té l'altra, també («La resina
-  la porta la Iri»). Si hi ha diversos passos possibles, la pista tria el més a prop (el de la sala on s'és).
+  la porta l'Iri»). Si hi ha diversos passos possibles, la pista tria el més a prop (el de la sala on s'és).
 - A les sales on hi és l'altra o un ajudant, la pista la pot dir ell (`who`): al molí, la Gueraula des de dalt; al
   judici, l'Ingilberga, fluix: «La serra, germà. Comenceu per la serra.»
 
@@ -1152,10 +1152,10 @@ n'hi ha una. La diu **la germana que juga**, amb la seva veu:
 - **Sales:** `portada`/`proleg` (el mateix pla), `mur_avet` (+ `judici` i `epileg`: el mateix art amb tres llums),
   `placa_sant_pol` (ampla, amb scroll; dues llums), `pont_ter` (dues llums), `claustre` (tres llums), `bugaderia`,
   `apotecaria`, `porteria`, `cuina`, `scriptorium`, `arxiu`, `moli`, `credits`. **12 pintures**, més els estats.
-- **Personatges amb sprite:** la Iri i la Vet (amb roba de vila i disfressades: dos jocs de fulls), l'Ingilberga, la
+- **Personatges amb sprite:** l'Iri i la Vet (amb roba de vila i disfressades: dos jocs de fulls), l'Ingilberga, la
   Gueraula, el jutge Ponç, en Sunifred, en Bonfill, en Ramon, la Sança, en Joanet, l'Ermessenda, i un canonge (en
   Gombau, i l'Arnulf amb colors canviats). El poble del judici i les monges, figures del fons.
-- **Mides:** adults, ≈80-90 px a les sales de lluny. La Vet, una mica més baixa que la Iri. Disfressades, una mica més
+- **Mides:** adults, ≈80-90 px a les sales de lluny. La Vet, una mica més baixa que l'Iri. Disfressades, una mica més
   grosses (l'hàbit).
 - **Veus:** els trams oberts fan que algunes coses les puguin mirar les dues. Per no doblar-ho tot, les sales tenen
   mestressa (vegeu «Quan es pot canviar de germana»); a l'avet i a la plaça, les coses que no són de la història les
@@ -1166,7 +1166,7 @@ n'hi ha una. La diu **la germana que juga**, amb la seva veu:
 
 - Títol *La Conjura de l'Avet*; carpeta `games/conjura-avet/`.
 - Sant Joan de les Abadesses, any 1017. El rigor, el just: el poble com és avui, i les llicències als crèdits.
-- La Iri i la Vet, **germanes**, filles del llenyataire. La Iri no sap llegir.
+- L'Iri i la Vet, **germanes**, filles del llenyataire. L'Iri no sap llegir.
 - El misteri: la carta partida de l'Emma, la serra, l'avet i el cofre (vegeu «Regles del món»).
 - El pare, detingut a l'escena 1.
 - Sant Pol: l'església que el comte no va pagar; els diners es van quedar a Ripoll.
@@ -1195,10 +1195,10 @@ Una relectura sencera, buscant forats:
 2. **El jutge Ponç ja no sembla còmplice:** l'ordre la va escriure i segellar en Sunifred.
 3. **Un misteri de debò:** ningú no sap de qui és el signe fins a la cuina. Secció «Els sospitosos».
 4. **La Sança i la queixa:** en Bonfill fa la crida en començar, i la Vet li ofereix llegir-li els noms.
-5. **El jutge escolta el que ja havia sentit:** la Iri li diu el mateix que la Vet al judici.
+5. **El jutge escolta el que ja havia sentit:** l'Iri li diu el mateix que la Vet al judici.
 6. **Disfressades a propòsit** al judici.
 7. **La revelació, sense gags;** la barba, després del veredicte.
-8. **Qui planta l'avet:** en Sunifred aguanta el plançó, i la Iri fa la feina.
+8. **Qui planta l'avet:** en Sunifred aguanta el plançó, i l'Iri fa la feina.
 9. **Com surten de l'arxiu:** la trapa del rec.
 10. **Detalls:** en Bonfill reconeix la Vet; el salconduit «per ordre de l'abadessa Emma»; el tint, de l'àvia.
 
@@ -1212,8 +1212,8 @@ L'usuari no volia un joc lineal. Canvis:
 2. **Tornar a llocs anteriors:** a l'acte 4, el poble amb sol. El jutge demana **tres testimonis i un segell**, i les
    germanes, disfressades, els van a buscar: la Sança a la plaça, l'Ermessenda i en Joanet al pont, i el segell de
    l'Emma (el tros de cera, des de l'acte 1). La broma del jutge es converteix en l'objectiu de l'acte.
-3. **Dependències creuades:** la cera la porta la Iri i la fa servir la Vet; la serra, igual; la resina de la Iri fa la
-   barca del pont i les barbes de la Vet; el caparrós de la Vet tenyeix els hàbits de la Iri, i els retalls dels
+3. **Dependències creuades:** la cera la porta l'Iri i la fa servir la Vet; la serra, igual; la resina de l'Iri fa la
+   barca del pont i les barbes de la Vet; el caparrós de la Vet tenyeix els hàbits de l'Iri, i els retalls dels
    hàbits fan les barbes de la Vet.
 4. **La Vet llegeix l'ordre** a l'avet (nova escena 1b): diu que l'avet ha caigut, i és d'abans que caigués. És la pista
    que fa sospitar del jutge.
@@ -1225,7 +1225,7 @@ L'usuari no volia un joc lineal. Canvis:
      la barca filosòfica.
    - **La ferradura** de la bugaderia s'ha canviat pel caparrós de l'apotecaria (una raó per anar d'una sala a
      l'altra, i un ofici de la Vet: el caparrós fa negra la tinta).
-   - **L'espelma de l'scriptorium** ara demana distreure primer els canonges, i els canonges tornen quan la Iri fa
+   - **L'espelma de l'scriptorium** ara demana distreure primer els canonges, i els canonges tornen quan l'Iri fa
      soroll a l'arxiu.
 6. **Les sales tenen mestressa** (com a Aigua Verne), perquè els trams oberts no doblin les veus.
 
@@ -1233,10 +1233,10 @@ L'usuari no volia un joc lineal. Canvis:
 
 Una revisió del joc sencer, buscant atzucacs i incoherències:
 
-1. **Atzucacs:** la Vet podia donar a la Iri la tauleta, el carbonet, la ploma, el rascador o el mocador, i quedar-se
+1. **Atzucacs:** la Vet podia donar a l'Iri la tauleta, el carbonet, la ploma, el rascador o el mocador, i quedar-se
    sense als trams seguits (scriptorium, cuina); o la serra i la tauleta, i quedar-se sense al judici. Ara no es donen.
 2. **El calc de l'scriptorium era opcional:** la carta calcada sortia igualment al molí. Ara el cofre l'espera.
-3. **En Sunifred en somnis:** les claus ja no s'agafen sense haver-lo escoltat (la Vet i la Iri en citen les frases).
+3. **En Sunifred en somnis:** les claus ja no s'agafen sense haver-lo escoltat (la Vet i l'Iri en citen les frases).
 4. **Cronologia:** l'absis té els anys de l'avet (no tres-cents); l'Emma és morta fa setanta-cinc anys (942).
 5. **Detalls:** la tina marró abans del caparrós, el faristol sense l'ordre al matí, la reixa buida, la Vet disfressada
    amb l'hàbit escurçat, les olles que no tornen a caure, l'inventari que es buida en acabar cada tram, el xarop amb el

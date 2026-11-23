@@ -1,5 +1,5 @@
 """
-La Conjura de l'Avet — `epileg`, l'epíleg (la Iri; la Vet hi és). Art definitiu, a 1× (640×360; l'escena fins a
+La Conjura de l'Avet — `epileg`, l'epíleg (l'Iri; la Vet hi és). Art definitiu, a 1× (640×360; l'escena fins a
 y = 260). EN 3D: l'art de `mur_avet` (avet_comu.py) a la primavera.
 
 Matí tebi, cel blau, verd tendre: el `mur` arreglat (les pedres noves, més clares, on l'avet l'havia esbotzat), un
@@ -59,7 +59,7 @@ PROPS = {
     'segell_planco': _prop(_e('forat_gran', 'planco', 'segell_planco', treu=('forat_nou',)), PLANTAT),
     'rotul_clavat': _prop(_e('forat_gran', 'planco', 'rotul', treu=('forat_nou',)), PLANTAT),
     'rotul': _buit,
-    # la carretilla buida (la Iri ja ha agafat el plançó, o l'ha plantat)
+    # la carretilla buida (l'Iri ja ha agafat el plançó, o l'ha plantat)
     'planco_agafat': _prop(_e('carretilla_buida'), BASE),
 }
 
@@ -95,7 +95,7 @@ GEOMETRIA = {
         'forat_nou': {'rect': _rect([_F + (-40, 0, -24), _F + (40, 8, 24)], 3), 'walk': p(-120, 600)},
         'rotul': {'rect': _rect([A.ROTUL + (-20, 0, 0), A.ROTUL + (20, 44, 0)], 1), 'walk': p(-90, 590)},
     },
-    # en Ponç al faristol, en Sunifred amb la galleda, el pare, l'abadessa, la Gueraula, la Sança; la Iri i la Vet
+    # en Ponç al faristol, en Sunifred amb la galleda, el pare, l'abadessa, la Gueraula, la Sança; l'Iri i la Vet
     'spawns': {
         'iri': p(60, 470), 'vet': p(-210, 478),
         'ponc': p(0, 500), 'sunifred': p(-80, 540), 'ramon': p(150, 560),

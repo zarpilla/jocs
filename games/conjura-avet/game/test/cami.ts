@@ -6,7 +6,7 @@ import { expect } from 'vitest';
 import type { Narrative } from '@aventura/narrative-core';
 import { item, type Jugador } from './partida.js';
 
-/** Tutorial: la Iri a l'avet, fins que detenen el pare i arriba la Vet. */
+/** Tutorial: l'Iri a l'avet, fins que detenen el pare i arriba la Vet. */
 export function tutorial(p: Jugador, n: Narrative) {
   expect(p.room).toBe('mur_avet');
   expect(p.active).toBe('iri');
@@ -46,7 +46,7 @@ export function acte1(p: Jugador, n: Narrative) {
   p.switchTo('vet');
   p.do('look', 'queixa');
   expect(n.flag('queixa_copiada')).toBe(true);
-  // El pont: la Iri.
+  // El pont: l'Iri.
   p.switchTo('iri');
   p.do('walkTo', 'carrer');
   p.do('walkTo', 'cami_riu');
@@ -56,7 +56,7 @@ export function acte1(p: Jugador, n: Narrative) {
   p.use('salabre', 'comporta');
   expect(p.inventory('iri')).toContain('serra');
   p.do('walkTo', 'cami');
-  // La Vet torna a l'avet, i la Iri li dona la serra.
+  // La Vet torna a l'avet, i l'Iri li dona la serra.
   p.switchTo('vet');
   p.do('walkTo', 'carrer');
   expect(p.room).toBe('mur_avet');
@@ -82,7 +82,7 @@ export function acte1(p: Jugador, n: Narrative) {
 }
 
 export function acte2(p: Jugador, n: Narrative) {
-  // La preparació: la Iri a la bugaderia, la Vet a l'apotecaria.
+  // La preparació: l'Iri a la bugaderia, la Vet a l'apotecaria.
   p.switchTo('iri');
   expect(p.room).toBe('claustre');
   p.do('give', 'vet', 'pot_resina');
@@ -125,7 +125,7 @@ export function acte2(p: Jugador, n: Narrative) {
   p.use('pegot', item('llana'));
   p.talk('gueraula', 'llest');
   expect(n.flag('disfressades')).toBe(true);
-  // La porteria: la Iri.
+  // La porteria: l'Iri.
   expect(p.active).toBe('iri');
   expect(p.room).toBe('porteria');
   expect(n.canSwitch()).toBe(false);
@@ -158,7 +158,7 @@ export function acte3(p: Jugador, n: Narrative) {
   expect(p.inventory('vet')).toContain('carta_calcada');
   p.use('claus', 'porta_capitular');
   expect(n.getVar('fase')).toBe(5);
-  // L'arxiu: la Iri; els canonges tornen i la Vet se'ls treu de sobre.
+  // L'arxiu: l'Iri; els canonges tornen i la Vet se'ls treu de sobre.
   p.switchTo('iri');
   expect(p.room).toBe('arxiu');
   p.do('look', 'bagul_sunifred');
@@ -215,7 +215,7 @@ export function acte4(p: Jugador, n: Narrative) {
   p.do('give', 'ponc', 'carta_emma');
   p.do('give', 'ponc', 'carta_calcada');
   expect(n.flag('judici_guanyat')).toBe(true);
-  // L'epíleg: la Iri.
+  // L'epíleg: l'Iri.
   expect(p.active).toBe('iri');
   expect(p.room).toBe('epileg');
   p.do('pickUp', 'carretilla');

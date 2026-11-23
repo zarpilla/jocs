@@ -23,7 +23,7 @@ Jugable de punta a punta, amb l'art, la música i els sons definitius; sense veu
   es pot canviar de germana (`switchWhen` a [game/data/game.json](game/data/game.json), amb la variable `fase`); a la
   resta, el joc passa d'una a l'altra. El botó «Canvia» del HUD fa de lupa (pista) quan no es pot canviar
   (`botoPista: 'mixt'` a [adapters/benne/joc.ts](adapters/benne/joc.ts)).
-- **Sales amb mestressa**, com a Aigua Verne: el pont i la bugaderia són de la Iri; el claustre (a l'acte 1),
+- **Sales amb mestressa**, com a Aigua Verne: el pont i la bugaderia són de l'Iri; el claustre (a l'acte 1),
   l'apotecaria i l'scriptorium, de la Vet. L'altra s'excusa a la porta.
 - **Donar-se coses**: l'acció `donar` ([game/logic/index.ts](game/logic/index.ts)). El pot de resina no es dona: se'n
   dona un pegot (`props.dona`).

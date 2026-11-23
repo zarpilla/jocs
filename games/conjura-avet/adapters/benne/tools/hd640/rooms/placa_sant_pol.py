@@ -23,7 +23,7 @@ gespa), `corda_campana` (la corda de cànem que penja de la finestra del campana
 ANIMS: `campana_toca` (la campana que es gronxa; és el decorat del mateix nom).
 
 El món: x a la dreta, y amunt (0 = el terra de la plaça), z cap al fons; 1 unitat = 1 px de sala on un personatge fa
-la seva mida (la Iri, 84 px).
+la seva mida (l'Iri, 84 px).
 """
 import functools
 import math
@@ -1059,7 +1059,7 @@ GEOMETRIA = {
         'carrer': {'rect': (_rect_mon((_V0 - 6, _VH + 4, CASA2[2]), (_V1 + 6, 0, CASA2[2]))[0], 96, ROOM_W - 1, BOTTOM),
                    'walk': _p((_V0 + _V1) / 2, CASA2[2] + 8)},
     },
-    # la Iri i la Vet arriben pel carrer (de la volta, a la dreta); en Bonfill fa guàrdia davant la porta; la Sança,
+    # l'Iri i la Vet arriben pel carrer (de la volta, a la dreta); en Bonfill fa guàrdia davant la porta; la Sança,
     # al peu dels graons de la nau, on seuen les dones
     'spawns': {'iri': _p(870, 150), 'vet': _p(950, 116), 'bonfill': _p(*_fsd(PC - 30, 40)),
                'sanca': _p(*_nau_pt(GRAONS - 30, 30))},

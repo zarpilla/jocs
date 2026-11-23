@@ -4,7 +4,7 @@ L'Última Arrel — previsualització ×2 de les sales de dia (`toll_gripaus`, `
 personatges als seus `spawns`, a l'escala de la regió de perspectiva, i les capes del davant (FRONT) per sobre de qui
 hi té darrere. (La de la casa, per a les altres sales, és previsualitza.py.)
 
-La Iri i la Vet són les figures de mostra (guio/art/mostra/nenes.py, desades abans com a PNG a la carpeta --nenes:
+L'Iri i la Vet són les figures de mostra (guio/art/mostra/nenes.py, desades abans com a PNG a la carpeta --nenes:
 iri_DL.png, vet_DL.png) a ≈97 i ≈90 px a escala 1; la resta, els provisionals de placeholder-art reduïts a una mida
 aproximada a escala 1 (adults ≈118 px, l'àvia ≈108, gripaus ≈44, fades ≈28). Només per mirar com es llegeix la sala.
 

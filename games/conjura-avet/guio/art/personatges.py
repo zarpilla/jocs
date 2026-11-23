@@ -3,7 +3,7 @@
 La Conjura de l'Avet — làmina de revisió dels personatges, a escala relativa (tots a 1×, tal com surten al joc) i ×3.
 
 Llegeix els fulls de Benne que fa adapters/benne/tools/draw_characters.py (placeholder-art/<id>/). A dalt, tots de
-cara (l'IdleD), amb la Iri i la Vet també amb la roba `Monjo`; a sota, el detall de cada un: l'Idle de cara, de perfil,
+cara (l'IdleD), amb l'Iri i la Vet també amb la roba `Monjo`; a sota, el detall de cada un: l'Idle de cara, de perfil,
 d'esquena i en 3/4, el Talk de cara, dels que caminen, tres passes de perfil i, d'en Sunifred, la DormD; tots amb els peus a la mateixa línia
 de terra. A sota de cada un, el nom i l'alçada en píxels.
 

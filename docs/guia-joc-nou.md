@@ -43,7 +43,7 @@ Abans d'escriure res, cal decidir el que condiciona tota la resta, i deixar-ho e
 - **Públic, durada i dificultat.** A L'Última Arrel: nenes de 8 a 12 anys, 45-60 minuts, 2-3 objectius alhora, cap
   atzucac. Els altres: a partir de 12 anys, 2-3 hores.
 - **Idioma.** Fins ara, només català.
-- **Les protagonistes.** Sempre la Iri i la Vet, **amb la cara de Suma Zero**; la feina, el rol, l'edat, la roba i el
+- **Les protagonistes.** Sempre l'Iri i la Vet, **amb la cara de Suma Zero**; la feina, el rol, l'edat, la roba i el
   pentinat són nous a cada joc i han de servir la història.
 - **Com es reparteixen:** canvi lliure (Aigua Verne), per escenes sense canvi (L'Última Arrel), separades en el
   temps (Ferro-9). Com es comuniquen i si es passen objectes.
@@ -188,7 +188,7 @@ els commits d'humor de Ferro-9 i Ni un ou):
 - [ ] **Combinacions absurdes que es provaran segur** (l'objecte clau amb cada personatge, amb la cosa més grossa de
       la sala) amb una resposta pròpia, sense tocar el camí.
 - [ ] **El que la premissa té de graciós, aprofitat fins al final.** A Ferro-9, els 120 anys entre les dues: l'argot
-      de la Vet, el glossari de la Iri, el museu que interpreta malament les coses de la Iri. Cada joc en té un: cal
+      de la Vet, el glossari de l'Iri, el museu que interpreta malament les coses de l'Iri. Cada joc en té un: cal
       trobar-lo al guió i comprovar que el joc el fa servir, no només que el promet.
 - [ ] **Gags recurrents amb tornada i final**: dues o tres bromes que tornen en moments tranquils i es tanquen als
       crèdits o a l'epíleg (a Ni un ou, el «codi flam» del walkie, el gat sense polzes). Que el guió en tingui la llista.
@@ -202,7 +202,7 @@ els commits d'humor de Ferro-9 i Ni un ou):
 A `adapters/benne/tools/hd/personatges.py` i `draw_characters.py` (vegeu
 [els personatges dins la sala](guia-art-profunditat.md#els-personatges-dins-la-sala-amb-profunditat)).
 
-- [ ] La Iri i la Vet amb la cara de sempre i silueta diferent l'una de l'altra (que es vegi a qui portes).
+- [ ] L'Iri i la Vet amb la cara de sempre i silueta diferent l'una de l'altra (que es vegi a qui portes).
 - [ ] Fulls a 1×, a la mida del joc (si són nenes, redibuixats, no reduïts).
 - [ ] Vistes en 3/4 (`DL`, `UL`) per a qui camina, i passa de cara amb cuixa, genoll i canyella.
 - [ ] Roba segons l'estat (`appearance` a `characters.json`) i, si cal, mida de lluny (`Lluny`).
