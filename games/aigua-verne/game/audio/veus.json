@@ -1,10 +1,27 @@
 {
-  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `voices`: personatge → voice_id (encara cap). `pronuncia`: noms de planeta, números de contracte, lletres del teclat. `codi`: qui diu les línies de game/logic que no ho diuen elles (Mosca, safata, donar). `sense_veu`: les instruccions de joc. `jugadora`: qui parla on el contingut no ho diu: les sales i les converses que només fa una de les dues (guio.md, annex D 19): el fons d'Aqua i la Juana, la colada, el sindicat i en Bru, el pare i el teclat, la ràdio i la residència, l'Iri; el cobert i en Nil, la Vet; i les del palau, la de cada sala.",
+  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `voices`: personatge → voice_id; d'on surt cada una, a veus-descripcions.json (sis de noves, set de Ni un ou i tres de la biblioteca). `pronuncia`: noms de planeta, números de contracte, lletres del teclat, i xifres (lots, preus, el tractor), que el model llegeix malament. `codi`: qui diu les línies de game/logic que no ho diuen elles (Mosca, safata, donar). `sense_veu`: les instruccions de joc, i el «Mrrau» d'en Diu i el «Guau» d'en Dividend. `jugadora`: qui parla on el contingut no ho diu: les sales i les converses que només fa una de les dues (guio.md, annex D 19): el fons d'Aqua i la Juana, la colada, el sindicat i en Bru, el pare i el teclat, la ràdio i la residència, l'Iri; el cobert i en Nil, la Vet; i les del palau, la de cada sala.",
   "actiu": "url",
   "model": "eleven_v3",
   "language": "ca",
   "format": "mp3_44100_64",
-  "voices": {},
+  "voices": {
+    "iri": "evGdJLLzi2ImmjjXtn0d",
+    "vet": "ne2MFeUvOMWHpgPTOMnn",
+    "narrator": "fjVc08M9VPgKB76vROx0",
+    "verne": "mypCR7X6DyDPqTfdtSb2",
+    "juana": "QisoB07wFDxOQJ06bDXf",
+    "capitana": "SxLuhp7Kn2DhGjEHr2DK",
+    "bru": "UzjXTybjixmzG5YEx821",
+    "tomas": "33HWWarzjn9K9WIi3vap",
+    "holm": "IubAbOiRv37Z7ET8MdWO",
+    "quim": "o3FRRxK8bvCjesaHA5O5",
+    "nil": "vTus6M00dv9AlnanNOvo",
+    "rosa": "RX8mZNc4GFknROLlNmXp",
+    "fidel": "W7tMyslkhD9s24SbbJiM",
+    "lia": "wwjcRqvD8HTFsOs1fkFm",
+    "pell": "FpNmTQqizuW0db8igA09",
+    "kessel": "TLt9eWt0O83JFiSHoHvJ"
+  },
   "text": {},
   "jugadora": {
     "aqua_fons": "iri",
@@ -35,7 +52,35 @@
     "T-I-T-U-S": "te, i, te, u, essa",
     " ₡": " crèdits",
     "▲": "",
-    "▼": ""
+    "▼": "",
+    "del 32": "del trenta-dos",
+    "40, 38, 36, 34": "quaranta, trenta-vuit, trenta-sis, trenta-quatre",
+    "LOT 9": "LOT NOU",
+    "lot 9": "lot nou",
+    "lot 12": "lot dotze",
+    "Lot 12": "Lot dotze",
+    "Brau 40": "Brau quaranta",
+    "30 crèdits": "trenta crèdits",
+    "48 crèdits": "quaranta-vuit crèdits",
+    "64 crèdits": "seixanta-quatre crèdits",
+    "97 crèdits": "noranta-set crèdits",
+    "112 crèdits": "cent dotze crèdits",
+    "pantalla: 31": "pantalla: trenta-u",
+    "31: el Magnat": "Trenta-u: el Magnat",
+    "de 60": "de seixanta",
+    "a 30:": "a trenta:",
+    "saló: 29": "saló: vint-i-nou",
+    "salta: 97": "salta: noranta-set",
+    "torna a 112": "torna a cent dotze",
+    "VESPER · 4 »": "VESPER, quatre.»",
+    "Pregunta 1 de 3": "Pregunta u de tres",
+    "Pregunta 2 de 3": "Pregunta dos de tres",
+    "Pregunta 3 de 3": "Pregunta tres de tres",
+    "Lots 1 a 4": "Lots de l'u al quatre",
+    "5 a 8:": "Del cinc al vuit:",
+    "9 a 11:": "Del nou a l'onze:",
+    "12: els peixos": "El dotze: els peixos",
+    "Verne S.A.": "Verne, essa a,"
   },
   "codi": {
     "donar.dona": [
@@ -616,7 +661,9 @@
     ]
   },
   "sense_veu": [
-    "sala.granja_pati.entra.10",
-    "esc.esc1.8"
+    "esc.esc1.8",
+    "pj.diu.4",
+    "pj.dividend.3",
+    "sala.granja_pati.entra.10"
   ]
 }

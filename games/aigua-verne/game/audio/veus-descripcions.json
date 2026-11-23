@@ -1,0 +1,142 @@
+{
+ "iri": {
+  "voice_id": "evGdJLLzi2ImmjjXtn0d",
+  "name": "Aigua Verne · Iri",
+  "description": "A woman of 29, a cynical, quick-witted freighter pilot in a retro space comedy; fast talker who haggles over everything, dry humour, confident and a bit cocky, slightly raspy mid voice. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Amb invitació o sense, el palau no deixa atracar ni un mosquit. I la Cantimplora és un mosquit molt gros. No volem salvar el món, volem el nostre pou. Aquest pegat? Aquest el vaig robar. I el preu, el negociem.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "vet": {
+  "voice_id": "ne2MFeUvOMWHpgPTOMnn",
+  "name": "Aigua Verne · Vet",
+  "description": "A woman of 31, a practical, calm spaceship engineer who fixes anything with three screws and patience; unhurried, deadpan, warm low-mid voice, few words, quietly stubborn, keeps everything just in case. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "L'injector de la nau està esquerdat: l'he de mirar jo. El tractor de l'avi en té un d'igual. Necessito oli i una clau anglesa. I no, l'últim barril no el toquis. És el nostre. Per si de cas.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "verne": {
+  "voice_id": "mypCR7X6DyDPqTfdtSb2",
+  "name": "Aigua Verne · Verne",
+  "description": "A man of 67, the richest tycoon of the star system: impeccably polite, soft-spoken, silky and refined, never raises his voice, amused, lucid and coldly calculating, quietly villainous. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Clean studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Benvinguts a la Gran Subhasta de l'Aigua. Avui no venem aigua. Venem set. Que és el que no s'acaba mai. Aqua? Cinquanta mil persones i ni un client solvent. Que plogui.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "tomas": {
+  "voice_id": "33HWWarzjn9K9WIi3vap",
+  "name": "Aigua Verne · Tomàs",
+  "description": "A young man of 22, an eager, clumsy new spaceship mechanic and a very bad spy; nervous, talks a bit too fast and corrects himself, bright youthful voice, endearing and funny. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Hola! Soc en Tomàs, el mecànic nou. Bé, el mecànic. Vull dir que soc nou. Tu ets la pilot! La de la jaqueta! Bona nit! Jo no he fet res. Vull dir: bona nit.",
+   "triada": "proposta 3 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "quim": {
+  "voice_id": "o3FRRxK8bvCjesaHA5O5",
+  "name": "Aigua Verne · Quim",
+  "description": "An old man of 82, a retired farmer living in a care home, talking on a videophone; warm, slightly hoarse and frail old voice, cheerful, stubborn, affectionate, with a wandering memory. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Qui és? Ah! Les meves noies! Ja era hora. Aquí ens donen un got d'aigua al dia, i diuen que és un luxe. El luxe el pago jo. Les llavors són per sembrar, no per guardar. Ho deia la mare.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "nil": {
+  "voice_id": "vTus6M00dv9AlnanNOvo",
+  "name": "Aigua Verne · Nil",
+  "description": "A man of 70, a gentle gardener who talks to plastic flowers; slow, soft and kind, slightly dreamy and melancholic, calm mid-low voice. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Ah. Una persona. Les flors no em contesten, però escolten. Aquestes no necessiten aigua. Són de plàstic. Per això duren. Cada dijous pujo a treure la pols de les plantes de plàstic del palau.",
+   "triada": "proposta 2 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "juana": {
+  "voice_id": "QisoB07wFDxOQJ06bDXf",
+  "name": "Ni un ou · Juana",
+  "reaprofitada": "veu de «juana» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+ },
+ "capitana": {
+  "voice_id": "SxLuhp7Kn2DhGjEHr2DK",
+  "name": "Ni un ou · Capitana Roig",
+  "reaprofitada": "veu de «capitana» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+ },
+ "bru": {
+  "voice_id": "UzjXTybjixmzG5YEx821",
+  "name": "Ni un ou · Bastida",
+  "reaprofitada": "veu de «bastida» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+ },
+ "holm": {
+  "voice_id": "IubAbOiRv37Z7ET8MdWO",
+  "name": "Ni un ou · Tele",
+  "reaprofitada": "veu de «tele» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+ },
+ "kessel": {
+  "voice_id": "TLt9eWt0O83JFiSHoHvJ",
+  "name": "Ni un ou · Hedda Lind",
+  "reaprofitada": "veu de «lind» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+ },
+ "pell": {
+  "voice_id": "FpNmTQqizuW0db8igA09",
+  "name": "Ni un ou · Rut",
+  "reaprofitada": "veu de «rut» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+ },
+ "narrator": {
+  "voice_id": "fjVc08M9VPgKB76vROx0",
+  "name": "Ni un ou · Narrador",
+  "reaprofitada": "veu de «narrator» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+ },
+ "rosa": {
+  "voice_id": "RX8mZNc4GFknROLlNmXp",
+  "name": "Montserrat",
+  "biblioteca": "veu de la biblioteca d'ElevenLabs (no ocupa lloc al compte); triada el 2026-11-23 davant de Mariona, Neus Blanc"
+ },
+ "lia": {
+  "voice_id": "wwjcRqvD8HTFsOs1fkFm",
+  "name": "Ona - Customer Service, Catalan",
+  "biblioteca": "veu de la biblioteca d'ElevenLabs (no ocupa lloc al compte); triada el 2026-11-23 davant de Núria, Martina"
+ },
+ "fidel": {
+  "voice_id": "W7tMyslkhD9s24SbbJiM",
+  "name": "Joan Ferrer - Català natural",
+  "biblioteca": "veu de la biblioteca d'ElevenLabs (no ocupa lloc al compte); triada el 2026-11-23 davant de Dani, i Joan Ferrer amb [robotic]"
+ },
+ "diu": {
+  "sense_veu": "el «Mrrau» i el «Guau» no es graven (sense_veu a veus.json)"
+ },
+ "dividend": {
+  "sense_veu": "el «Mrrau» i el «Guau» no es graven (sense_veu a veus.json)"
+ }
+}
