@@ -54,7 +54,8 @@
 ### `epileg` — L'epíleg (Iri; la Vet hi és)
 
 - **L'art de `mur_avet`, a la primavera.** Matí tebi, verd tendre, flors a l'hort; el `mur` arreglat (pedra nova, més
-  clara); el tronc de l'avet tallat en `rodanxes` apilades; les arrels velles encara al seu lloc, amb molsa.
+  clara); el tronc de l'avet tallat en `rodanxes` apilades; la soca, que ha tornat a caure al forat
+  vell, amb les arrels per terra i molsa; els coloms volten l'absis.
 - **Coses:** `forat_nou` (al costat de les arrels velles), `carretilla` amb el `planco`, `pala` (la porta en
   Sunifred fins que la dona a l'Iri), `rodanxes`,
   `arrels`, `absis`.

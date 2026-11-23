@@ -165,20 +165,20 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 83,
-          "y": 56
+          "x": 35,
+          "y": 171
         },
         {
-          "x": 218,
-          "y": 56
+          "x": 189,
+          "y": 171
         },
         {
-          "x": 218,
-          "y": 190
+          "x": 189,
+          "y": 214
         },
         {
-          "x": 83,
-          "y": 190
+          "x": 35,
+          "y": 214
         }
       ],
       "walkToPoint": {
@@ -186,8 +186,8 @@
         "y": 222
       },
       "lookAtPoint": {
-        "x": 150,
-        "y": 190
+        "x": 112,
+        "y": 214
       }
     },
     {
@@ -413,6 +413,20 @@
       },
       "zIndex": 22,
       "baseline": 999
+    },
+    {
+      "id": "coloms",
+      "tag": "coloms",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "coloms": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
     }
   ],
   "characters": [

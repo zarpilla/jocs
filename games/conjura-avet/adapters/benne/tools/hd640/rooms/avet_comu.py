@@ -570,9 +570,9 @@ def _forat(v, e, P, rgb, lvl):
     vora = (r < 1.35) & (r >= 1.0)
     dins = r < 1.0
     if e.forat == 'vell':
-        # l'epíleg: el forat vell, mig tapat, amb herba i molsa
-        l2 = 2.6 + (fbm(a / 6, b / 5, 61) - 0.5) * 2.4 - (1 - r) * 0.8 - (r > 0.85) * 1.0 + (hnp(np.floor(a / 3), np.floor(b / 3), 63) - 0.5) * 1.2
-        sel = r < 1.1
+        # l'epíleg: el forat vell, tapat (la soca hi ha tornat a caure), amb clapes d'herba de vora irregular
+        l2 = 3.0 + (fbm(a / 6, b / 5, 61) - 0.5) * 2.4 + (hnp(np.floor(a / 3), np.floor(b / 3), 63) - 0.5) * 1.2
+        sel = (r < 0.75 + (fbm(a / 14, b / 10, 65) - 0.5) * 0.9) & (fbm(a / 9, b / 7, 67) > 0.36)
         rgb = np.where(sel[..., None], v.to(HERBA, l2 + _llum(e, np.array((0, 1, 0.0))) * 0.7), rgb)
         return rgb, lvl
     L = _llum(e, np.array((0, 1, 0.0)))
@@ -1565,6 +1565,74 @@ def soca(v, e):
         _arrel(v, e, c, c + TRONC_D * 3, float(tronc_r(s_)), 'soca', cap=False)
 
 
+SOCA_C = np.array((-296.0, 0.0, 640.0))          # l'epíleg: on ha tornat a caure el pla de les arrels
+SOCA_R = 30.0
+
+
+def soca_vella(v, e, sid='arrels'):
+    """L'epíleg: tallat el tronc, el pla de les arrels ha tornat a caure al forat. Hi queda la soca, serrada de
+    biaix, amb les arrels gruixudes que s'estenen per terra i s'hi enfonsen, i molsa a les parts on no toca el sol."""
+    rng = np.random.default_rng(29)
+    c = SOCA_C
+    # les arrels: de la soca cap enfora, arran de terra, i que es colguen
+    arrs = []
+    for j in range(9):
+        th = 2 * math.pi * j / 9 + rng.uniform(-0.25, 0.25)
+        d = np.array((math.cos(th), 0.0, math.sin(th)))
+        L = rng.uniform(46, 84)
+        g = rng.uniform(8, 12)
+        p0 = c + d * SOCA_R * 0.6 + np.array((0, 16.0, 0))
+        p1 = c + d * (SOCA_R + L * 0.45) + np.array((0, 6.0, 0)) + np.cross(d, (0, 1, 0)) * rng.uniform(-8, 8)
+        p2 = c + d * (SOCA_R + L) + np.array((0, -3.0, 0)) + np.cross(d, (0, 1, 0)) * rng.uniform(-14, 14)
+        arrs += [(p0, p1, g, True), (p1, p2, g * 0.55, True)]
+    arrs.sort(key=lambda q: -v.cam.vista(tuple(q[1]))[2])
+    for p0, p1, g, cap in arrs:
+        _arrel(v, e, p0, p1, g, sid, cap=cap)
+    # la soca: un tub vertical, ample a baix, i el tall de serra de biaix (mira la càmera i el sol)
+    alt = 40.0
+    n_tall = _n((0.2, 1.0, -0.28))
+    top = c + np.array((0, alt, 0))
+    t = x_cilindre(v, (c[0], c[2]), SOCA_R)
+    P = v.punt(np.where(np.isinf(t), 0, t))
+    sota = (P - top) @ n_tall < 0                                  # per sota del tall de serra
+    m = np.isfinite(t) & (P[..., 1] > -2) & sota
+    q = P - c
+    nrm = q * np.array((1, 0, 1.0)) / SOCA_R
+    ang = np.arctan2(q[..., 2], q[..., 0])
+    solc = np.abs(np.sin(ang * 7 + vnoise(ang * 3, P[..., 1] / 30, 149) * 3)) < 0.28     # les esquerdes de l'escorça
+    lv = 2.4 + _llum(e, nrm) * 0.6 - solc * 1.2 + (fbm(ang * 6, P[..., 1] / 9, 147) - 0.5) * 1.2
+    lv = lv - smooth(14, 0, P[..., 1]) * 0.8                       # el peu, fosc
+    v.pinta(m, t, v.to(ESCORÇA, lv), sid)
+    # el tall de dalt: la fusta de l'hivern, una mica enfosquida i esquerdada, amb els anells i l'escorça
+    t = x_pla(v, top, n_tall)
+    P = v.punt(np.where(np.isinf(t), 0, t))
+    q = P - c
+    rr = np.hypot(q[..., 0], q[..., 2])
+    m = np.isfinite(t) & (rr < SOCA_R)
+    anell = (rr * 0.8 + vnoise(q[..., 0] / 5, q[..., 2] / 5, 159) * 1.6) % 3.2 < 0.8
+    esquerda = np.abs(vnoise(np.arctan2(q[..., 2], q[..., 0]) * 2, 0.5, 161) - 0.5) < 0.03
+    lv = 3.0 - anell * 0.7 - esquerda * (rr > 6) * 1.6 + _llum(e, n_tall) * 0.4 + (fbm(q[..., 0] / 6, q[..., 2] / 6, 163) - 0.5) * 0.8
+    vora = rr > SOCA_R - 3
+    rgb = np.where(vora[..., None], v.to(ESCORÇA, lv + 0.6), v.to(TALL, lv))
+    gris = rgb.mean(-1, keepdims=True)
+    rgb = np.where(vora[..., None], rgb, rgb * 0.8 + gris * 0.2)
+    v.pinta(m, t, rgb, sid + '_tall')
+    # la molsa i l'herba que hi ha crescut: clapes verdes a l'escorça (no al tall)
+    m = v.own == v.idx(sid)
+    if m.any():
+        lum = v.col[m].sum(-1) / 3
+        X, Y = v.X[m], v.Y[m]
+        clapa = (fbm(X / 5.0, Y / 4.0, 151) > 0.58) | (fbm(X / 3.0, Y / 3.0, 153) > 0.7)
+        lvl = 1.2 + lum / 26 + (hnp(X, Y, 155) - 0.5) * 0.8
+        verd = v.to(MOLSA, lvl, m)
+        col = v.col[m]
+        col[clapa] = verd[clapa]
+        v.col[m] = col
+    # la terra que va tornar al forat, amb herbes al voltant de la soca
+    for k, (dx, dz, r) in enumerate(((-58, -22, 14), (46, -30, 11), (-20, -46, 9), (70, 8, 10))):
+        roc(v, e, c + np.array((dx, 0, dz)), r, HERBA, sid + '_herba', seed=157 + k, lvl0=3.2, aplana=0.55)
+
+
 def rodanxes(v, e, sid='rodanxes'):
     """El tronc de l'avet tallat a rodanxes, apilades en piràmide amb el tall de cara (fusta clara i anells)."""
     n = np.array((0, 0, -1.0))
@@ -2005,8 +2073,6 @@ def escena(e, extra=None):
         avet(v, e, angle=0.0)
     elif isinstance(e.arbre, float):
         avet(v, e, angle=e.arbre)
-    if e.arbre == 'cap' and e.forat == 'vell':
-        arrels(v, e)
     branques(v, e)
     if e.branca_trencada:
         branca_trencada(v, e)
@@ -2021,7 +2087,7 @@ def escena(e, extra=None):
     if 'florit' in e.extres:
         florit(v, e)
     if e.arbre == 'cap' and e.forat == 'vell':
-        soca(v, e)
+        soca_vella(v, e)
     if 'rodanxes' in e.extres:
         rodanxes(v, e)
     if 'forat_nou' in e.extres or 'forat_gran' in e.extres:

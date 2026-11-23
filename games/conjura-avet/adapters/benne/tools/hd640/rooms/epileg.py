@@ -3,12 +3,12 @@ La Conjura de l'Avet — `epileg`, l'epíleg (l'Iri; la Vet hi és). Art definit
 y = 260). EN 3D: l'art de `mur_avet` (avet_comu.py) a la primavera.
 
 Matí tebi, cel blau, verd tendre: el `mur` arreglat (les pedres noves, més clares, on l'avet l'havia esbotzat), un
-arbre florit a l'hort, on hi havia l'avet; el tronc tallat en `rodanxes` apilades; les `arrels` velles encara al
-seu lloc, amb molsa, i el forat vell ple d'herba; al costat, el `forat_nou` per al plançó, i la `carretilla` (una civera) amb
+arbre florit a l'hort, on hi havia l'avet; el tronc tallat en `rodanxes` apilades; la soca de l'avet (`arrels`), que ha tornat a
+caure al forat vell, amb les arrels per terra i molsa; al costat, el `forat_nou` per al plançó, i la `carretilla` (una civera) amb
 el plançó. El faristol d'en Ponç, al mig. El primer pla: herba i flors.
 Decorats: `forat_gran` (el forat eixamplat, amb la terra treta), `planco_plantat` (el plançó al forat, amb la
 cinta), `segell_planco` (el segell vermell del jutge a la cinta), `rotul_clavat` (la post amb «AVET») i `planco_agafat` (la civera buida). PROPS:
-`rotul` (el cos clicable del rètol: buit, el dibuixa `rotul_clavat`).
+`rotul` (el cos clicable del rètol: buit, el dibuixa `rotul_clavat`). ANIMS: `coloms` (els de l'absis, com al judici).
 """
 import numpy as np
 
@@ -16,6 +16,7 @@ import hd640  # noqa: F401
 from hd640.rooms import avet_comu as A
 from hd640.rooms import mur_avet as MA
 from hd640.rooms.avet_comu import Estat, p, diff
+from hd640 import coloms
 
 LIGHT = None
 
@@ -64,6 +65,22 @@ PROPS = {
 }
 
 
+def _coloms_frames():
+    """Els coloms de l'absis, que volten el campanar (per darrere, el campanar els tapa), com al judici, i un parell
+    que passa per damunt de l'arbre florit."""
+    img, v = _r(BASE)
+
+    def mask(noms):
+        return lambda x, y: y < v.h and v.ids[v.own[y, x]] in noms
+    vols = [(480, 24, 78, 12, 0.0, 1), (486, 34, 104, 16, 0.5, -1), (476, 16, 56, 8, 0.3, 1),
+            (262, 30, 130, 10, 0.7, 1), (274, 38, 104, 8, 0.15, 1)]
+    alt = {'cel', 'campanar', 'absis_teulada', 'absis', 'absis_mur', 'florit', 'muntanyes', 'cases'}
+    return coloms.frames(img.width, img.height, vols, mask({'cel', 'muntanyes'}), mask(alt))
+
+
+ANIMS = {'coloms': {'frames': _coloms_frames, 'frameDuration': 90}}
+
+
 def _amo(sids):
     def mask(x, y):
         _, v = _r(BASE)
@@ -89,7 +106,9 @@ _T = MA.GEOMETRIA['things']
 GEOMETRIA = {
     'things': {
         'absis': _T['absis'],
-        'arrels': _T['arrels'],
+        # la soca vella, amb les arrels per terra
+        'arrels': {'rect': _rect([A.SOCA_C + (-90, 0, -40), A.SOCA_C + (90, 0, 40), A.SOCA_C + (0, 52, -30)], 2),
+                   'walk': (124, 222)},
         'rodanxes': {'rect': _rect([_R + (-100, 0, 0), _R + (100, 150, 0)], 2), 'walk': p(60, 628)},
         'carretilla': {'rect': _rect([_C + (-64, 0, -20), _C + (64, 90, 20)], 1), 'walk': p(-10, 580)},
         'forat_nou': {'rect': _rect([_F + (-40, 0, -24), _F + (40, 8, 24)], 3), 'walk': p(-120, 600)},
