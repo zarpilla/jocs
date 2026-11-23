@@ -38,6 +38,27 @@ describe('Acte 3 · camins', () => {
     expect(estat).toMatchObject({ acte3: 'completed', senyora_pons: 'completed' });
   });
 
+  it('repartir-ho tot passa per la cinemàtica del repartiment i, de tornada a la sala d\'escombraries, segueix el diàleg', () => {
+    const { n, p } = ambElVirus({ aliats: true });
+    const abans = p.transcript.length;
+    jugarActe3(p, { mobil: 'pons', repartir: true, neta: true });
+    const dit = p.transcript.slice(abans).join('\n');
+    const ordre = ['COMPTE PONT → TOTS ELS COMPTES', 'Fase 3: repartir-ho tot', 'El mariner deixa la baieta',
+      'a les dotze, cobra tothom', 'COMPTE ZERO', 'Ens trobem al carrer'];
+    const llocs = ordre.map((t) => dit.indexOf(t));
+    expect(llocs.every((i) => i >= 0), dit).toBe(true);
+    expect([...llocs].sort((a, b) => a - b)).toEqual(llocs);
+    expect(n.flag('virus_aturat')).toBe(true);
+  });
+
+  it('tornant-ho al banc no hi ha cinemàtica del repartiment', () => {
+    const { n, p } = ambElVirus({ aliats: true });
+    const abans = p.transcript.length;
+    jugarActe3(p, { neta: true });
+    expect(p.transcript.slice(abans).join('\n')).not.toContain('Fase 3');
+    expect(n.flag('virus_aturat')).toBe(true);
+  });
+
   it('amb tots quatre aliats i repartint-ho tot: «La taula llarga»', () => {
     const { n, p } = ambElVirus({ aliats: true });
     jugarActe3(p, { mobil: 'pons', repartir: true, neta: true });

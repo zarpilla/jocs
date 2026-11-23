@@ -772,6 +772,20 @@ TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?»
 
 [SO: aturada]
 
+**El segon muntatge (només si es reparteix).** Cinemàtica `muntatge_repartiment`: la mateixa sala de control del
+primer muntatge, amb les sis pantalles, però cadascuna amb el seu «després». Rellotge a les 12:00; a totes les
+etiquetes, **12.195,12 € per persona** (100 bilions d'euros ÷ 8.200 milions de persones); al mapa, els diners corren
+al revés, del compte 0001 cap a totes les ciutats. Música: el tema.
+- «ROBIN HOOD 2.0. Fase 3: repartir-ho tot, d'un sol cop, pel compte de les nòmines.»
+- Mònaco: el bilionari i el mariner que li frega la coberta miren el mòbil, i tenen el mateix. El mariner deixa la
+  baieta.
+- Nova York: la gràfica del fons, després de caure, és una ratlla plana. El fons té el mateix que el becari.
+- Ginebra: l'home de la corbata i la secretària, empatats de debò. Ella s'agafa la tarda lliure.
+- La Propina: en Tomàs torna a aixecar la persiana. Avui tothom pot pagar, i tothom deixa propina.
+- Les dotze: l'àvia del caixer mira el saldo dues vegades; el cambrer cobra, per primera vegada a l'hora.
+
+De tornada a la sala d'escombraries, l'Iri: «Avui, a les dotze, cobra tothom. I cobra el mateix.» I ve el gir.
+
 **El gir.** Triï el que triï, la pantalla parpelleja amb un avís. Els diners repartits o tornats no es toquen: el
 gir és un altre compte, que el virus no ha vist.
 

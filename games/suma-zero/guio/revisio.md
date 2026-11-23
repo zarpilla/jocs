@@ -581,6 +581,8 @@ PORTA «avantdespatx»
 
 ```
 EN ENTRAR
+    • * — si repartit i NO virus_aturat
+        ⇒ diàleg aturada
     • * (una vegada) — si clau_girada
         JUGADORA: No. No no no. Això no era el pla.
         VET: Quin era el pla?
@@ -1294,6 +1296,23 @@ EN ENTRAR
 
 ```
 
+## Sala ROBIN HOOD 2.0: REPARTIMENT · `muntatge_repartiment` — cinemàtica
+
+```
+EN ENTRAR
+    • * — SEMPRE
+        [SO: virus] NARRADOR: ROBIN HOOD 2.0. Fase 3: repartir-ho tot, d'un sol cop, pel compte de les nòmines.
+        NARRADOR: Per primera vegada en la història, tothom té el mateix. El bilionari, el Director, la Rius i la subcontracta.
+        NARRADOR: Tots els diners del món, entre tothom: dotze mil cent noranta-cinc euros amb dotze cèntims per persona.
+        NARRADOR: Mònaco. El bilionari mira el mòbil. El mariner que li frega la coberta, també. Es miren. El mariner deixa la baieta.
+        NARRADOR: Nova York. La gràfica del fons ja no puja ni baixa: és una ratlla plana. El fons té el mateix que el becari.
+        NARRADOR: Ginebra. El senyor de la corbata i la seva secretària tenen exactament el mateix. Ella s'agafa la tarda lliure. Ell no sap on es fa el cafè.
+        NARRADOR: La Propina. En Tomàs torna a aixecar la persiana. Avui tothom pot pagar. I tothom deixa propina.
+        NARRADOR: Són les dotze. L'àvia del caixer mira el saldo, s'ajusta les ulleres i el torna a mirar. Al costat, el cambrer cobra. Per primera vegada, a l'hora.
+        ⇒ → bcmu_escombraries
+
+```
+
 ## Sala La cuina · `pis_cuina` (vet)
 
 ```
@@ -1870,7 +1889,7 @@ EN ENTRAR
 ## Diàleg `aturada` amb Iri
 
 ```
-COMENÇA A: pregunta
+COMENÇA A: repartit (si repartit i NO virus_aturat) · pregunta
 
 [pregunta]
     NARRADOR: ROBIN HOOD 2.0: ATURAT. AL COMPTE PONT HI HA TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?
@@ -1891,7 +1910,9 @@ COMENÇA A: pregunta
 
 [repartir]
     [SO: aturada] NARRADOR: TRANSFERÈNCIA: COMPTE PONT → TOTS ELS COMPTES DEL MÓN, A PARTS IGUALS, PEL COMPTE 0001. COMPLETADA.
-    NARRADOR: Per primera vegada en la història, tothom té el mateix. El bilionari, el Director, la Rius i la subcontracta.
+    ⇒ esdeveniment anar
+
+[repartit]
     JUGADORA: Avui, a les dotze, cobra tothom. I cobra el mateix.
     ↪ fi
 

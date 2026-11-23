@@ -4323,6 +4323,22 @@
           {
             "verb": "*",
             "if": {
+              "all": [
+                {
+                  "flag": "repartit"
+                },
+                {
+                  "flag": "virus_aturat",
+                  "is": false
+                }
+              ]
+            },
+            "id": "repartit",
+            "dialogue": "aturada"
+          },
+          {
+            "verb": "*",
+            "if": {
               "flag": "clau_girada"
             },
             "id": "virus",
@@ -8383,6 +8399,54 @@
               {
                 "who": "narrator",
                 "text": "sala.muntatge.9"
+              }
+            ],
+            "goTo": "bcmu_escombraries"
+          }
+        ],
+        "hotspots": {}
+      },
+      "muntatge_repartiment": {
+        "name": "sala.muntatge_repartiment.nom",
+        "cutscene": {
+          "skipTo": "bcmu_escombraries"
+        },
+        "onEnter": [
+          {
+            "verb": "*",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "sala.muntatge_repartiment.1",
+                "sound": "virus"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.muntatge_repartiment.2"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.muntatge_repartiment.3"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.muntatge_repartiment.4"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.muntatge_repartiment.5"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.muntatge_repartiment.6"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.muntatge_repartiment.7"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.muntatge_repartiment.8"
               }
             ],
             "goTo": "bcmu_escombraries"
@@ -15121,6 +15185,20 @@
         "with": "iri",
         "start": [
           {
+            "if": {
+              "all": [
+                {
+                  "flag": "repartit"
+                },
+                {
+                  "flag": "virus_aturat",
+                  "is": false
+                }
+              ]
+            },
+            "node": "repartit"
+          },
+          {
             "node": "pregunta"
           }
         ],
@@ -15225,11 +15303,19 @@
                 "who": "narrator",
                 "text": "dlg.aturada.repartir1",
                 "sound": "aturada"
-              },
+              }
+            ],
+            "effects": [
               {
-                "who": "narrator",
-                "text": "dlg.aturada.repartir2"
-              },
+                "event": "anar",
+                "args": {
+                  "room": "muntatge_repartiment"
+                }
+              }
+            ]
+          },
+          "repartit": {
+            "lines": [
               {
                 "who": "player",
                 "text": "dlg.aturada.repartir3"
@@ -24917,7 +25003,6 @@
       "dlg.aturada.tornar1": "TRANSFERÈNCIA: COMPTE PONT → COMPTES D'ORIGEN. COMPLETADA.",
       "dlg.aturada.tornar2": "El que ja s'ha repartit, es queda repartit. Dotze euros per persona. Una cervesa a tot el món.",
       "dlg.aturada.repartir1": "TRANSFERÈNCIA: COMPTE PONT → TOTS ELS COMPTES DEL MÓN, A PARTS IGUALS, PEL COMPTE 0001. COMPLETADA.",
-      "dlg.aturada.repartir2": "Per primera vegada en la història, tothom té el mateix. El bilionari, el Director, la Rius i la subcontracta.",
       "dlg.aturada.repartir3": "Avui, a les dotze, cobra tothom. I cobra el mateix.",
       "dlg.aturada.fi1": "Iri... ho has fet?",
       "dlg.aturada.fi2": "Ho hem fet. Espera...",
@@ -26203,6 +26288,15 @@
       "sala.muntatge.7": "La Propina. En Tomàs mira la tele i abaixa la persiana: avui ningú no podrà pagar.",
       "sala.muntatge.8": "Són les onze i quart. A les dotze, això:",
       "sala.muntatge.9": "Una àvia davant d'un caixer. Un cambrer esperant la nòmina. Les pensions, els ajuts i les nòmines de tot el món, a dotze euros.",
+      "sala.muntatge_repartiment.nom": "ROBIN HOOD 2.0: REPARTIMENT",
+      "sala.muntatge_repartiment.1": "ROBIN HOOD 2.0. Fase 3: repartir-ho tot, d'un sol cop, pel compte de les nòmines.",
+      "sala.muntatge_repartiment.2": "Per primera vegada en la història, tothom té el mateix. El bilionari, el Director, la Rius i la subcontracta.",
+      "sala.muntatge_repartiment.3": "Tots els diners del món, entre tothom: dotze mil cent noranta-cinc euros amb dotze cèntims per persona.",
+      "sala.muntatge_repartiment.4": "Mònaco. El bilionari mira el mòbil. El mariner que li frega la coberta, també. Es miren. El mariner deixa la baieta.",
+      "sala.muntatge_repartiment.5": "Nova York. La gràfica del fons ja no puja ni baixa: és una ratlla plana. El fons té el mateix que el becari.",
+      "sala.muntatge_repartiment.6": "Ginebra. El senyor de la corbata i la seva secretària tenen exactament el mateix. Ella s'agafa la tarda lliure. Ell no sap on es fa el cafè.",
+      "sala.muntatge_repartiment.7": "La Propina. En Tomàs torna a aixecar la persiana. Avui tothom pot pagar. I tothom deixa propina.",
+      "sala.muntatge_repartiment.8": "Són les dotze. L'àvia del caixer mira el saldo, s'ajusta les ulleres i el torna a mirar. Al costat, el cambrer cobra. Per primera vegada, a l'hora.",
       "sala.bcmu_escombraries.virus1": "No. No no no. Això no era el pla.",
       "sala.bcmu_escombraries.virus2": "Quin era el pla?",
       "sala.bcmu_escombraries.virus3": "Que els rics perdessin. No que tothom quedés a dotze euros esperant tres hores.",

@@ -1,0 +1,49 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.muntatge_repartiment.nom",
+  "cutscene": {
+    "skipTo": "bcmu_escombraries"
+  },
+  "onEnter": [
+    {
+      "verb": "*",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.muntatge_repartiment.1",
+          "sound": "virus"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.muntatge_repartiment.2"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.muntatge_repartiment.3"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.muntatge_repartiment.4"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.muntatge_repartiment.5"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.muntatge_repartiment.6"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.muntatge_repartiment.7"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.muntatge_repartiment.8"
+        }
+      ],
+      "goTo": "bcmu_escombraries"
+    }
+  ],
+  "hotspots": {}
+}

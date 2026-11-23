@@ -4,6 +4,20 @@
   "with": "iri",
   "start": [
     {
+      "if": {
+        "all": [
+          {
+            "flag": "repartit"
+          },
+          {
+            "flag": "virus_aturat",
+            "is": false
+          }
+        ]
+      },
+      "node": "repartit"
+    },
+    {
       "node": "pregunta"
     }
   ],
@@ -108,11 +122,19 @@
           "who": "narrator",
           "text": "dlg.aturada.repartir1",
           "sound": "aturada"
-        },
+        }
+      ],
+      "effects": [
         {
-          "who": "narrator",
-          "text": "dlg.aturada.repartir2"
-        },
+          "event": "anar",
+          "args": {
+            "room": "muntatge_repartiment"
+          }
+        }
+      ]
+    },
+    "repartit": {
+      "lines": [
         {
           "who": "player",
           "text": "dlg.aturada.repartir3"

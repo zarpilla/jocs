@@ -88,6 +88,10 @@
     {
       "id": "credits",
       "definition": "credits/credits.room.json"
+    },
+    {
+      "id": "muntatge_repartiment",
+      "definition": "muntatge_repartiment/muntatge_repartiment.room.json"
     }
   ]
 }

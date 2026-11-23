@@ -51,6 +51,13 @@ NF = 8                 # fotogrames de l'animació
 
 _REC = None            # quan és una llista, `text` hi apunta la lletra petita en comptes d'escriure-la
 
+# El segon muntatge (muntatge_repartiment.py) és aquesta mateixa sala amb `REPARTIT = True`: a les dotze, tot el que
+# hi ha al compte pont surt cap a tothom a parts iguals, pel compte de les nòmines (100 bilions d'euros ÷ 8.200 milions
+# de persones). Les mateixes sis pantalles, cadascuna amb el seu «després».
+REPARTIT = False
+QUANT = '12,00 €'                  # el que té cadascú, a les etiquetes (al repartiment, `QUANT_R`)
+QUANT_R = '12.195,12 €'
+
 
 def text(cv, s, x, y, ramp, lvl, lit=1.0, flat=None):
     """La lletra petita: o s'escriu (com sempre) o es grava per escriure-la després a 1:1 (vegeu `_textos`)."""
@@ -249,7 +256,20 @@ def monaco(cv, x0, y0, x1, y1):
     cv.flat(mx + 3, hy - 25, (170, 255, 210))
     cv.flat(mx + 3, hy - 24, (120, 220, 170))
     cv.glow(mx + 3, hy - 25, 7, (120, 255, 180), 0.6)
-    tag(cv, mx + 3, hy - 45, '12,00 €')
+    if not REPARTIT:
+        tag(cv, mx + 3, hy - 45, QUANT)
+        return
+    # al repartiment, el mariner que frega la coberta de proa (blau marí, gorra blanca, el pal de la baieta) té el
+    # mateix al mòbil
+    sx = hx1 - 22
+    sil(cv, sx, hy - 9, 22, col=(30, 44, 86))
+    cv.disc(sx, hy - 30, 2.6, 1.2, [(240, 242, 246)], 0, lit=0)                # la gorra
+    cv.line(sx + 4, hy - 19, sx + 10, hy - 9, [(150, 110, 70)], 0, lit=0)      # el pal
+    cv.hline(sx + 8, sx + 13, hy - 9, [(200, 200, 90)], 0, lit=0)
+    cv.flat(sx - 4, hy - 19, (170, 255, 210))
+    cv.glow(sx - 4, hy - 19, 6, (120, 255, 180), 0.5)
+    tag(cv, mx - 4, hy - 47, QUANT)
+    tag(cv, sx - 4, hy - 41, QUANT)
 
 
 def nova_york(cv, x0, y0, x1, y1):
@@ -291,6 +311,15 @@ def nova_york(cv, x0, y0, x1, y1):
         for dy in (0, 1):
             cv.line(a[0], a[1] + dy, b[0], b[1] + dy, [(90, 240, 140)], 0, lit=0)
         cv.flat(a[0], a[1] - 1, (200, 255, 220))
+    if REPARTIT:
+        # al repartiment, després de la caiguda, la gràfica és una ratlla plana: ni puja ni baixa
+        for dx in (0, 1, 2):
+            cv.line(x0 + 128 + dx, y0 + 16, x0 + 133 + dx, y0 + 38, [(250, 60, 60) if dx < 2 else (170, 30, 30)], 0, lit=0)
+        for dy in (0, 1):
+            cv.line(x0 + 134, y0 + 38 + dy, x1 - 6, y0 + 38 + dy, [(90, 240, 140)], 0, lit=0)
+        cv.glow(x1 - 30, y0 + 38, 18, (90, 240, 140), 0.25)
+        tag(cv, x0 + 163, y0 + 11, 'COM UN BECARI')
+        return
     for dx in (0, 1, 2):
         cv.line(x0 + 128 + dx, y0 + 16, x0 + 141 + dx, y1 - 5, [(250, 60, 60) if dx < 2 else (170, 30, 30)], 0, lit=0)
     cv.glow(x0 + 139, y0 + 53, 16, (255, 60, 60), 0.3)
@@ -351,8 +380,8 @@ def ginebra(cv, x0, y0, x1, y1):
     sil(cv, x0 + 141, y1, 40, col=(30, 22, 30), bun=True, skirt=True)
     fill(cv, x0 + 147, y1 - 27, x0 + 152, y1 - 19, (230, 220, 190))
     cv.vline(x0 + 147, y1 - 27, y1 - 19, [(200, 180, 140)], 0, lit=0)
-    tag(cv, x0 + 61, y0 + 8, '12,00 €')
-    tag(cv, x0 + 141, y0 + 13, '12,00 €')
+    tag(cv, x0 + 61, y0 + 8, QUANT)
+    tag(cv, x0 + 141, y0 + 13, QUANT)
     for yy in (y0 + 11, y0 + 12, y0 + 16, y0 + 17):                            # el signe igual
         cv.hline(x0 + 96, x0 + 107, yy, [GREEN_T], 0, lit=0)
 
@@ -386,22 +415,37 @@ def propina(cv, x0, y0, x1, y1):
     fill(cv, sx0 + 2, sy0 + 45, sx1 - 2, sy0 + 48, (110, 70, 40))              # la barra
     cv.hline(sx0 + 2, sx1 - 2, sy0 + 45, [(150, 100, 60)], 0, lit=0)
     cv.glow((sx0 + sx1) // 2, sy0 + 40, 35, (255, 190, 110), 0.25)
-    half = sy0 + 29
+    half = sy0 + 29 if not REPARTIT else sy0 + 3           # al repartiment, la persiana torna a ser amunt
+    if REPARTIT:                                           # i hi ha gent a la barra
+        for k, (bx, h, c) in enumerate(((sx0 + 14, 30, (60, 36, 40)), (sx0 + 34, 27, (36, 44, 60)),
+                                        (sx0 + 52, 31, (54, 50, 36)), (sx0 + 78, 28, (40, 30, 48)))):
+            sil(cv, bx, sy1, h, col=c, bun=k == 1, skirt=k == 1)
     for y in range(sy0, half + 1):                                              # la persiana ondulada
         c = [(184, 186, 190), (170, 172, 176), (150, 152, 158), (110, 112, 118)][y % 4]
         for x in range(sx0, sx1 + 1):
             cv.flat(x, y, c)
     fill(cv, sx0, half, sx1, half + 2, (60, 60, 66))
     cv.hline(sx0, sx1, half + 1, [(120, 120, 128)], 0, lit=0)
-    for gx in (sx0 + 16, sx1 - 19):                                             # els grafits de sempre
-        cv.line(gx, sy0 + 8, gx + 11, sy0 + 16, [(220, 60, 120)], 0, lit=0)
-        cv.line(gx, sy0 + 9, gx + 11, sy0 + 17, [(160, 40, 90)], 0, lit=0)
-    cv.line(sx0 + 30, sy0 + 18, sx0 + 38, sy0 + 12, [(60, 160, 220)], 0, lit=0)
+    if not REPARTIT:
+        for gx in (sx0 + 16, sx1 - 19):                                         # els grafits de sempre
+            cv.line(gx, sy0 + 8, gx + 11, sy0 + 16, [(220, 60, 120)], 0, lit=0)
+            cv.line(gx, sy0 + 9, gx + 11, sy0 + 17, [(160, 40, 90)], 0, lit=0)
+        cv.line(sx0 + 30, sy0 + 18, sx0 + 38, sy0 + 12, [(60, 160, 220)], 0, lit=0)
     # la porta, a la dreta, amb el vidre i el pom
     fill(cv, x1 - 45, y0 + 40, x1 - 21, y1, (80, 50, 34))
     outline(cv, x1 - 45, y0 + 40, x1 - 21, y1, [(50, 30, 20)])
     fill(cv, x1 - 41, y0 + 44, x1 - 25, y0 + 60, (110, 90, 70))
     cv.flat(x1 - 25, y0 + 70, (220, 190, 110))
+    if REPARTIT:
+        # en Tomàs, a la porta oberta, amb el davantal i el drap a l'espatlla
+        fill(cv, x1 - 41, y0 + 44, x1 - 25, y1, (230, 180, 110))
+        cv.glow(x1 - 33, y0 + 60, 16, (255, 190, 110), 0.3)
+        tx = x1 - 33
+        sil(cv, tx, y1, 40, col=(24, 20, 22))
+        fill(cv, tx - 3, y1 - 30, tx + 3, y1 - 12, (240, 236, 226))           # el davantal
+        fill(cv, tx + 4, y1 - 32, tx + 6, y1 - 26, (200, 60, 60))             # el drap
+        tag(cv, x0 + 40, y0 + 3, 'OBERT')
+        return
     # en Tomàs, d'esquena, estirant el ganxo
     tx = sx1 - 21
     sil(cv, tx, y1, 40, col=(24, 20, 22))
@@ -429,7 +473,11 @@ def caixer(cv, x0, y0, x1, y1):
     fill(cv, ax0 + 9, ay0 + 11, ax1 - 9, ay0 + 42, (24, 26, 32))                # el marc de la pantalla
     fill(cv, ax0 + 11, ay0 + 13, ax1 - 11, ay0 + 40, (6, 30, 16))              # la pantalla, en verd
     text(cv, 'SALDO', ax0 + 14, ay0 + 16, None, 0, lit=0, flat=(70, 200, 120))
-    big_text(cv, '12€', ax0 + 17, ay0 + 24, GREEN_T, 3)
+    if REPARTIT:
+        big_text(cv, '12.195', ax0 + 13, ay0 + 26, GREEN_T, 2, bevel=False)
+        text(cv, '€', ax0 + 13 + text_width('12.195') * 2 + 2, ay0 + 31, None, 0, lit=0, flat=GREEN_T)
+    else:
+        big_text(cv, '12€', ax0 + 17, ay0 + 24, GREEN_T, 3)
     cv.glow((ax0 + ax1) // 2, ay0 + 27, 35, (80, 255, 150), 0.25)
     for k in range(3):                                                          # els botons del costat
         cv.hline(ax0 + 5, ax0 + 8, ay0 + 18 + k * 7, [(150, 154, 160)], 0, lit=0)
@@ -460,12 +508,12 @@ def caixer(cv, x0, y0, x1, y1):
     cv.disc(wx + 9, y1 - 24, 7, 1.8, [(180, 184, 190)], 0, lit=0)
     cv.hline(wx + 3, wx + 15, y1 - 25, [(220, 224, 230)], 0, lit=0)
     cv.flat(wx - 7, y1 - 20, (240, 220, 120))
-    tag(cv, wx - 11, y0 + 7, 'SOU: 12 €')
+    tag(cv, wx - 11, y0 + 7, 'SOU: 12.195 €' if REPARTIT else 'SOU: 12 €')
 
 
 def mapa(cv, x0, y0, x1, y1, t=0):
     """El mapa del món de punts verds: de cada ciutat surt una línia cap al compte pont, al mig, i els diners
-    hi corren (t)."""
+    hi corren (t). Al repartiment corren al revés: del compte de les nòmines cap a tothom."""
     fill(cv, x0, y0, x1, y1, (2, 10, 12))
     mw, mh = x1 - x0, y1 - y0
     for y in range(y0 + 1, y1, 2):
@@ -482,18 +530,18 @@ def mapa(cv, x0, y0, x1, y1, t=0):
         n = max(abs(zx - px), abs(zy - py), 1)
         for k in range(n + 1):                                                  # línia de punts cap al centre
             q = (round(px + (zx - px) * k / n), round(py + (zy - py) * k / n))
-            if (k - t) % 4 == 0:
+            if (k + t if REPARTIT else k - t) % 4 == 0:
                 cv.flat(*q, (170, 250, 255))
             elif k % 2 == 0:
                 cv.flat(*q, (50, 160, 190))
         cv.flat(px, py, (200, 255, 255))
-        cv.glow(px, py, 3, (150, 255, 255), 0.4)
+        cv.glow(px, py, 5 if REPARTIT else 3, (150, 255, 255), 0.6 if REPARTIT else 0.4)
     # el compte pont: un cercle que ho xucla tot
     cv.disc(zx, zy, 9, 9, CYANT, lambda nx, ny: 2.0 + (1 - math.hypot(nx, ny)) * 3, lit=0)
     cv.ring(zx, zy, 12, CYANT, 4.0, lit=0, step=8)
-    big_text(cv, '0', zx - 2, zy - 5, (4, 20, 30), 2, bevel=False)
+    big_text(cv, '€' if REPARTIT else '0', zx - 2 - (1 if REPARTIT else 0), zy - 5, (4, 20, 30), 2, bevel=False)
     cv.glow(zx, zy, 29, (100, 230, 255), 0.35)
-    s = 'COMPTE PONT'
+    s = 'COMPTE 0001' if REPARTIT else 'COMPTE PONT'
 
     def rot(c):
         fill(c, zx - text_width(s) // 2 - 3, zy + 15, zx + text_width(s) // 2 + 3, zy + 22, (2, 10, 12))
@@ -512,8 +560,9 @@ def header(cv, cursor=True, colon=True):
     if cursor:
         fill(cv, 13 + w + 5, 8, 13 + w + 12, 22, GREEN_T)
     cv.glow(13 + w // 2, 15, 107, (60, 255, 140), 0.12)
-    text(cv, 'TOTS ELS COMPTES - COMPTE PONT', 13, 27, None, 0, lit=0, flat=(70, 190, 110))
-    s = 'PAGAMENT 1: 12,00 € PER PERSONA'
+    text(cv, 'COMPTE PONT - TOTS ELS COMPTES' if REPARTIT else 'TOTS ELS COMPTES - COMPTE PONT', 13, 27, None, 0, lit=0,
+         flat=(70, 190, 110))
+    s = f'REPARTIMENT: {QUANT} PER PERSONA' if REPARTIT else f'PAGAMENT 1: {QUANT} PER PERSONA'
     big_x = 261
     sw = text_width(s)
 
@@ -527,18 +576,21 @@ def header(cv, cursor=True, colon=True):
     _peca(cv, (big_x, 9, big_x + sw, 27), pagament)
     fill(cv, 523, 7, W - 11, 33, (2, 12, 18))                                   # el rellotge
     outline(cv, 523, 7, W - 11, 33, [(30, 110, 140)])
-    clock = '11:15' if colon else '11 15'
+    hora = '12:00' if REPARTIT else '11:15'
+    clock = hora if colon else hora.replace(':', ' ')
     cw = text_width(clock) * 4
     big_text(cv, clock, 523 + (W - 11 - 523 - cw) // 2 + 1, 11, CYAN_T, 4)
     cv.glow(576, 20, 45, (100, 220, 255), 0.2)
 
 
-VIEWS = [(monaco, 'MÒNACO', '12,00 €'), (nova_york, 'NOVA YORK', '12,00 €'), (ginebra, 'GINEBRA', '12,00 €'),
-         (propina, 'BAR LA PROPINA', '12,00 €'), (caixer, 'CAIXER', '12,00 €'), (mapa, 'EL MÓN', '8.200.000.000 X 12 €')]
+def views():
+    tot = '8.200.000.000 X 12.195 €' if REPARTIT else '8.200.000.000 X 12 €'
+    return [(monaco, 'MÒNACO', QUANT), (nova_york, 'NOVA YORK', QUANT), (ginebra, 'GINEBRA', QUANT),
+            (propina, 'BAR LA PROPINA', QUANT), (caixer, 'CAIXER', QUANT), (mapa, 'EL MÓN', tot)]
 
 
 def screens(cv, blink=0, t=0):
-    for i, (fn, name, amount) in enumerate(VIEWS):
+    for i, (fn, name, amount) in enumerate(views()):
         x0, y0, x1, y1 = PANELS[i]
         obox(cv, x0 - 4, y0 - 4, x1 + 4, y1 + 4, BEZEL, 3.0, lit=0)
         for sx, sy in ((x0 - 2, y0 - 2), (x1 + 2, y0 - 2), (x0 - 2, y1 + 2), (x1 + 2, y1 + 2)):   # els cargols

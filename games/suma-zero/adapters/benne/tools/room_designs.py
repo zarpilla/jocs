@@ -858,6 +858,7 @@ DESIGNS = {
     'bcmu_despatx': BCMU_DESPATX,
     'bcmu_contenidor': BCMU_CONTENIDOR,
     'muntatge': cinematica(avio_bg),
+    'muntatge_repartiment': cinematica(avio_bg),
     'final_bar': FINAL_BAR,
     'postcredits': cinematica(avio_bg),
     'credits': cinematica(ginebra_bg),
