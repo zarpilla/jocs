@@ -5754,6 +5754,14 @@
                     "text": "sala.judici.47"
                   },
                   {
+                    "who": "ponc",
+                    "text": "sala.judici.68"
+                  },
+                  {
+                    "who": "bonfill",
+                    "text": "sala.judici.69"
+                  },
+                  {
                     "who": "ingilberga",
                     "text": "sala.judici.48"
                   },
@@ -15810,7 +15818,7 @@
       "dlg.ingilberga.13": "Per això mateix. No vull haver-ne de treure dos més del celler.",
       "dlg.ingilberga.14": "L'Emma és morta fa setanta-cinc anys. Vosaltres no.",
       "dlg.ingilberga.15": "...Això és veritat. I és molt mala idea.",
-      "dlg.ingilberga.16": "Endavant.",
+      "dlg.ingilberga.16": "Endavant, Vetilda. I digues a la Irisenda que deixi la destral a la porta.",
       "dlg.ingilberga.17": "Hàbits: a la bugaderia n'hi ha de vells. Barbes i veu: la Gueraula. Les claus de l'arxiu, les porta l'escrivà del comte al cinyell.",
       "dlg.ingilberga.18": "Sopa cada nit a la cuina, després de completes. Beu com un canonge.",
       "dlg.ingilberga.19": "Jo hi poso les herbes.",
@@ -15872,10 +15880,10 @@
       "dlg.ponc.20": "Ho veu? Negligència. L'abadessa sabia que cauria, i no hi va fer res.",
       "dlg.ponc.21": "O algú altre sabia que cauria.",
       "dlg.ponc.22": "Al peu hi ha un signe: una creu amb un llaç. Me'l copio a la tauleta.",
-      "dlg.ponc.23": "Senyoreta. Tres testimonis i un segell, ja ho sabeu.",
+      "dlg.ponc.23": "Vetilda, filla de Ramon, escrivana del monestir. Tres testimonis i un segell, ja ho sabeu.",
       "dlg.ponc.24": "Un signe d'escrivà. N'hi ha tants com escrivans. Jo només signo.",
       "dlg.ponc.25": "Doncs tres testimonis ho diran. I un segell.",
-      "dlg.ponc.26": "La llenyatera. El vostre pare és en custòdia preventiva. Pendent de tres testimonis.",
+      "dlg.ponc.26": "Irisenda, filla de Ramon, llenyatera. El vostre pare és en custòdia preventiva. Pendent de tres testimonis.",
       "dlg.ponc.27": "Doncs tres testimonis ho diran. I un segell.",
       "dlg.ponc.28": "Germà. Tres testimonis i un segell, i comencem.",
       "dlg.ponc.29": "La fornera, apuntada.",
@@ -17279,7 +17287,9 @@
       "sala.bugaderia.40": "La tina, amb aigua marró de clofolles. Falta el ferro perquè es torni negra.",
       "sala.bugaderia.41": "La tina, amb el caparrós. Sense pell de nou, no tenyirà gaire.",
       "sala.mur_avet.75": "El faristol de viatge del jutge, net i a punt per al judici. L'ordre ja no hi és.",
-      "sala.judici.67": "Xarop de menta? Germà, jo ja tinc veu d'avi. I sense xarop."
+      "sala.judici.67": "Xarop de menta? Germà, jo ja tinc veu d'avi. I sense xarop.",
+      "sala.judici.68": "Saig, a l'acta: traieu fra Tos i fra Silenci. Hi van Irisenda i Vetilda, filles de Ramon.",
+      "sala.judici.69": "Ja hi dibuixo dues noies, senyor jutge."
     }
   },
   "locale": "ca",

@@ -58,7 +58,8 @@ absurdes, i dues protagonistes amb la resposta a punt.
 
 ## Protagonistes
 
-Germanes, filles d'en Ramon, el llenyataire. Tenen la cara de sempre (la de Suma Zero), i la roba i el pentinat són
+Germanes, filles d'en Ramon, el llenyataire. Es diuen **Irisenda** i **Vetilda**, però tothom les crida Iri i Vet; el nom sencer només el
+fan servir els formals: el jutge Ponç, l'abadessa quan dona el vist-i-plau, i l'acta del judici. Tenen la cara de sempre (la de Suma Zero), i la roba i el pentinat són
 nous.
 
 ### Iri — la llenyatera
