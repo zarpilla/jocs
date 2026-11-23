@@ -278,28 +278,28 @@ def _taula(e, tex):
         P0 = _l(lx, -6 + (i % 3) * 5, T_H)
         if i in (1, 5):                                                 # pa amb tomàquet
             pc = P0
-            e.quad('damunt', (pc[0] - 11, pc[1] + 0.4, pc[2] + 6), (pc[0] + 11, pc[1] + 0.4, pc[2] + 6),
+            e.quad('damunt_taula', (pc[0] - 11, pc[1] + 0.4, pc[2] + 6), (pc[0] + 11, pc[1] + 0.4, pc[2] + 6),
                    (pc[0] + 11, pc[1] + 0.4, pc[2] - 6), (pc[0] - 11, pc[1] + 0.4, pc[2] - 6), ramp=PORC,
                    lvl=lambda s, t, P: 4.2 - t * 0.05, forma=lambda s, t: ((s - 11) / 11) ** 2 + ((t - 6) / 6) ** 2 <= 1)
             for k in range(3):
                 bx, bz = pc[0] - 6 + k * 5, pc[2] - 1 + (k % 2) * 2
-                e.caixa('damunt', bx - 2, bx + 2, pc[1] + 0.4, pc[1] + 2, bz - 2.5, bz + 2.5, BREAD, 3.0,
+                e.caixa('damunt_taula', bx - 2, bx + 2, pc[1] + 0.4, pc[1] + 2, bz - 2.5, bz + 2.5, BREAD, 3.0,
                         cares={'dalt': {'ramp': TOMATO, 'lvl': lambda s, t, P: 2.4 + (0.6 if (int(s * 3) + int(t * 2)) % 3 == 0 else 0)}})
         elif i in (2, 6, 8):                                            # ampolles
             r = BOTTLES[(1, 0, 3)[(2, 6, 8).index(i)]]
-            e.tub('damunt', P0, (P0[0], P0[1] + 16, P0[2]), 2.6, r, 1.8)
-            e.tub('damunt', (P0[0], P0[1] + 16, P0[2]), (P0[0], P0[1] + 22, P0[2]), 1.1, r, 1.8)
+            e.tub('damunt_taula', P0, (P0[0], P0[1] + 16, P0[2]), 2.6, r, 1.8)
+            e.tub('damunt_taula', (P0[0], P0[1] + 16, P0[2]), (P0[0], P0[1] + 22, P0[2]), 1.1, r, 1.8)
         elif i == 4:                                                    # el porró
-            e.tub('damunt', P0, (P0[0], P0[1] + 9, P0[2]), 4.4, [(40, 10, 20), (90, 20, 40), (160, 70, 90), (220, 200, 210)], 1.8)
-            e.tub('damunt', (P0[0], P0[1] + 9, P0[2]), (P0[0], P0[1] + 17, P0[2]), 1.2, SHEET, 3.0)
-            e.tub('damunt', (P0[0] + 2, P0[1] + 6, P0[2]), (P0[0] + 10, P0[1] + 13, P0[2] - 2), 0.8, SHEET, 3.2)
+            e.tub('damunt_taula', P0, (P0[0], P0[1] + 9, P0[2]), 4.4, [(40, 10, 20), (90, 20, 40), (160, 70, 90), (220, 200, 210)], 1.8)
+            e.tub('damunt_taula', (P0[0], P0[1] + 9, P0[2]), (P0[0], P0[1] + 17, P0[2]), 1.2, SHEET, 3.0)
+            e.tub('damunt_taula', (P0[0] + 2, P0[1] + 6, P0[2]), (P0[0] + 10, P0[1] + 13, P0[2] - 2), 0.8, SHEET, 3.2)
         else:                                                           # gots (de cervesa i d'aigua)
             ramp = BEER if i % 2 else [(70, 80, 90), (130, 150, 160), (190, 210, 220), (236, 244, 250)]
-            e.tub('damunt', P0, (P0[0], P0[1] + 9, P0[2]), 2.4, ramp, 2.4)
-            e.tub('damunt', (P0[0], P0[1] + 9, P0[2]), (P0[0], P0[1] + 10, P0[2]), 2.4, SHEET, 4.0)
+            e.tub('damunt_taula', P0, (P0[0], P0[1] + 9, P0[2]), 2.4, ramp, 2.4)
+            e.tub('damunt_taula', (P0[0], P0[1] + 9, P0[2]), (P0[0], P0[1] + 10, P0[2]), 2.4, SHEET, 4.0)
     for lx in (-86, 20, 78):                                            # tovallons
         P0 = _l(lx, -12, T_H + 0.5)
-        e.quad('damunt', (P0[0] - 4, P0[1], P0[2] + 3), (P0[0] + 4, P0[1], P0[2] + 4), (P0[0] + 5, P0[1], P0[2] - 3),
+        e.quad('damunt_taula', (P0[0] - 4, P0[1], P0[2] + 3), (P0[0] + 4, P0[1], P0[2] + 4), (P0[0] + 5, P0[1], P0[2] - 3),
                (P0[0] - 3, P0[1], P0[2] - 4), ramp=SHEET, lvl=4.4)
 
 
@@ -436,7 +436,7 @@ def _pl(lx, lz, y=0.0):
 # La taula (amb el que hi ha damunt) tapa les cames de qui hi seu al darrere: la línia base, el cantell del davant de
 # les estovalles a terra (la taula és gairebé de cara a la càmera: una sola línia). La cadira de l'esquerra, també.
 _BASE_TAULA = min(_pl(lx, -T_D / 2)[1] for lx in range(-138, 139, 6)) - 2
-FRONT = [{'id': 'davant', 'mask': _amo({'taula', 'damunt', 'cadira', 'primer_pla'}), 'baseline': _BASE_TAULA,
+FRONT = [{'id': 'davant', 'mask': _amo({'taula', 'damunt_taula', 'cadira', 'primer_pla'}), 'baseline': _BASE_TAULA,
           'zIndex': 20}]
 
 _SEU = {c: _pl(lx, SEU) for c, lx in SEIENTS.items()}
