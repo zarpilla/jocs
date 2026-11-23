@@ -1628,25 +1628,29 @@ def arbret(v, e, base, h, sid, seed=3):
 
 
 def carretilla(v, e, sid='carretilla'):
-    """La carretilla de fusta amb el plançó: la caixa, la roda de davant, els braços; a dins, el pa de terra
-    embolicat amb sac i l'avet petit."""
+    """La civera de fusta amb el plançó (l'identificador continua sent `carretilla`; al 1017 no n'hi havia, de
+    carretilles): dos braços llargs que sobresurten per davant i per darrere, el pla de posts al mig i quatre
+    peus curts; a dins, el pa de terra embolicat amb sac i l'avet petit."""
     c, rot = CARRETILLA
     cr, sr = math.cos(rot), math.sin(rot)
     ux, uz = np.array((cr, 0, sr)), np.array((-sr, 0, cr))
-    # la roda (davant, a la dreta) i els peus (darrere)
-    roda = c + ux * 34 + np.array((0, 9, 0))
-    _arrel(v, e, roda + uz * 4, roda - uz * 4, 9, sid, cap=False)
-    for sg in (-1, 1):
-        _barra(v, e, c - ux * 20 + uz * 12 * sg, c - ux * 20 + uz * 12 * sg + np.array((0, 14, 0)), 1.6, FUSTA, 3.0, sid)
-        _barra(v, e, c - ux * 56 + uz * 14 * sg + np.array((0, 26, 0)), roda + uz * 12 * sg, 1.8, FUSTA, 3.4, sid)
-    _caixa(v, e, c + ux * 4 + np.array((0, 24, 0)), 26, 9, 16, FUSTA, 3.4, sid, rot)
+    y_b = 15.0                                         # l'alçada dels braços
+    # els peus (de darrere a davant, perquè els de davant tapin)
+    for sg in (1, -1):
+        for dx in (-22, 22):
+            _barra(v, e, c + ux * dx + uz * 12 * sg, c + ux * dx + uz * 12 * sg + np.array((0, y_b, 0)), 1.5, FUSTA, 2.8, sid)
+    # el braç de darrere, el pla de posts i el travesser, i el braç de davant
+    _barra(v, e, c - ux * 60 + uz * 13 + np.array((0, y_b, 0)), c + ux * 60 + uz * 13 + np.array((0, y_b, 0)), 1.7, FUSTA, 3.2, sid)
+    _caixa(v, e, c + np.array((0, y_b + 2, 0)), 28, 2, 12, FUSTA, 3.6, sid, rot)
+    for dx in (-18, -6, 6, 18):                         # les juntes de les posts
+        _barra(v, e, c + ux * dx + uz * 12 + np.array((0, y_b + 4.2, 0)), c + ux * dx - uz * 12 + np.array((0, y_b + 4.2, 0)), 0.5, FUSTA, 1.6, sid)
+    _barra(v, e, c - ux * 60 - uz * 13 + np.array((0, y_b, 0)), c + ux * 60 - uz * 13 + np.array((0, y_b, 0)), 1.7, FUSTA, 3.4, sid)
     # el pa de terra amb sac, i el plançó (sense, si ja l'han agafat: només hi queda una mica de terra)
     if 'carretilla_buida' in e.extres:
-        roc(v, e, c + ux * 4 + np.array((0, 30, 0)), 9, TERRA, sid, seed=153, lvl0=3.0, aplana=0.4)
+        roc(v, e, c + np.array((0, y_b + 6, 0)), 9, TERRA, sid, seed=153, lvl0=3.0, aplana=0.4)
         return
-    roc(v, e, c + ux * 4 + np.array((0, 32, 0)), 12, _r((60, 44, 28), (100, 76, 48), (140, 110, 72), (176, 146, 100), (204, 178, 128)), sid, seed=151, lvl0=3.0, aplana=0.8)
-    if 'carretilla_buida' not in e.extres:
-        arbret(v, e, c + ux * 4 + np.array((0, 38, 0)), 52, sid, seed=5)
+    roc(v, e, c + np.array((0, y_b + 10, 0)), 12, _r((60, 44, 28), (100, 76, 48), (140, 110, 72), (176, 146, 100), (204, 178, 128)), sid, seed=151, lvl0=3.0, aplana=0.8)
+    arbret(v, e, c + np.array((0, y_b + 16, 0)), 52, sid, seed=5)
 
 
 def planco(v, e, sid='planco_plantat'):

@@ -66,6 +66,7 @@
         "aigua_baixa": false,
         "bagul_identificat": false,
         "bagul_obert": false,
+        "bagul_sunifred_obert": false,
         "barca_calafatada": false,
         "bonfill_campanar": false,
         "branques_apartades": false,
@@ -1529,7 +1530,12 @@
                 "who": "gueraula",
                 "text": "sala.apotecaria.1"
               }
-            ]
+            ],
+            "if": {
+              "var": "fase",
+              "op": "==",
+              "value": 2
+            }
           }
         ],
         "decor": {
@@ -1967,6 +1973,13 @@
             ]
           },
           "gueraula": {
+            "visibleIf": {
+              "not": {
+                "var": "fase",
+                "op": "==",
+                "value": 1
+              }
+            },
             "interactions": []
           },
           "porta": {
@@ -2024,7 +2037,7 @@
         "decor": {
           "bagul_obert": {
             "visibleIf": {
-              "flag": "bagul_obert"
+              "flag": "bagul_sunifred_obert"
             }
           },
           "tapis_apartat": {
@@ -2158,7 +2171,7 @@
               {
                 "verb": "look",
                 "if": {
-                  "flag": "bagul_obert",
+                  "flag": "bagul_sunifred_obert",
                   "is": false
                 },
                 "lines": [
@@ -2203,7 +2216,7 @@
                 "verb": "use",
                 "item": "claus",
                 "if": {
-                  "flag": "bagul_obert",
+                  "flag": "bagul_sunifred_obert",
                   "is": false
                 },
                 "lines": [
@@ -2214,17 +2227,18 @@
                 ],
                 "effects": [
                   {
-                    "setFlag": "bagul_obert"
+                    "setFlag": "bagul_sunifred_obert"
                   }
                 ]
               },
               {
                 "verb": [
                   "open",
-                  "use"
+                  "use",
+                  "push"
                 ],
                 "if": {
-                  "flag": "bagul_obert",
+                  "flag": "bagul_sunifred_obert",
                   "is": false
                 },
                 "lines": [
@@ -2280,6 +2294,34 @@
                 "effects": [
                   {
                     "setFlag": "doble_fons_obert"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "push"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "fons_buit"
+                    },
+                    {
+                      "flag": "doble_fons_obert",
+                      "is": false
+                    },
+                    {
+                      "flag": "contrapes_despenjat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.arxiu.fons_buit_altra"
                   }
                 ]
               },
@@ -2517,6 +2559,31 @@
                   {
                     "who": "player",
                     "text": "sala.arxiu.34"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "pull",
+                  "use"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "tapis_apartat",
+                      "is": false
+                    },
+                    {
+                      "flag": "estendard_paret",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.arxiu.estendard_aviat"
                   }
                 ]
               },
@@ -3085,6 +3152,31 @@
                   {
                     "who": "player",
                     "text": "sala.bugaderia.41"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "habits_tenyits"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bugaderia.tina_feta"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "foc_ences",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bugaderia.tina_freda"
                   }
                 ]
               },
@@ -4198,6 +4290,50 @@
               },
               {
                 "verb": "give",
+                "item": "tauleta",
+                "if": {
+                  "all": [
+                    {
+                      "var": "fase",
+                      "op": "==",
+                      "value": 1
+                    },
+                    {
+                      "flag": "prova_queixa"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "ingilberga",
+                    "text": "sala.claustre.22"
+                  }
+                ]
+              },
+              {
+                "verb": "give",
+                "item": "serra",
+                "if": {
+                  "all": [
+                    {
+                      "var": "fase",
+                      "op": "==",
+                      "value": 1
+                    },
+                    {
+                      "flag": "prova_serra"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "ingilberga",
+                    "text": "sala.claustre.22"
+                  }
+                ]
+              },
+              {
+                "verb": "give",
                 "item": "*",
                 "if": {
                   "var": "fase",
@@ -4207,7 +4343,7 @@
                 "lines": [
                   {
                     "who": "ingilberga",
-                    "text": "sala.claustre.22"
+                    "text": "sala.claustre.22b"
                   }
                 ]
               },
@@ -6719,16 +6855,8 @@
                 "verb": "push",
                 "lines": [
                   {
-                    "who": "vet",
-                    "text": "sala.mur_avet.21",
-                    "if": {
-                      "inRoom": "mur_avet",
-                      "who": "vet"
-                    }
-                  },
-                  {
                     "who": "player",
-                    "text": "sala.mur_avet.22"
+                    "text": "sala.mur_avet.21"
                   }
                 ]
               },
@@ -7036,6 +7164,20 @@
           "forat": {
             "name": "sala.mur_avet.forat.nom",
             "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "var": "fase",
+                  "op": "==",
+                  "value": 7
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.mur_avet.forat_mati"
+                  }
+                ]
+              },
               {
                 "verb": "look",
                 "if": {
@@ -7964,23 +8106,15 @@
                 },
                 "lines": [
                   {
-                    "who": "vet",
-                    "text": "sala.placa_sant_pol.24",
-                    "if": {
-                      "inRoom": "placa_sant_pol",
-                      "who": "vet"
-                    }
-                  },
-                  {
                     "who": "player",
-                    "text": "sala.placa_sant_pol.25"
+                    "text": "sala.placa_sant_pol.24"
                   }
                 ]
               },
               {
                 "verb": [
-                  "use",
-                  "pull"
+                  "pull",
+                  "use"
                 ],
                 "if": {
                   "flag": "corda_posada",
@@ -8000,8 +8134,8 @@
               },
               {
                 "verb": [
-                  "use",
-                  "pull"
+                  "pull",
+                  "use"
                 ],
                 "if": {
                   "flag": "bonfill_campanar"
@@ -8015,8 +8149,8 @@
               },
               {
                 "verb": [
-                  "use",
-                  "pull"
+                  "pull",
+                  "use"
                 ],
                 "if": {
                   "all": [
@@ -8037,8 +8171,8 @@
               },
               {
                 "verb": [
-                  "use",
-                  "pull"
+                  "pull",
+                  "use"
                 ],
                 "if": {
                   "protagonist": "iri"
@@ -8070,8 +8204,8 @@
               },
               {
                 "verb": [
-                  "use",
-                  "pull"
+                  "pull",
+                  "use"
                 ],
                 "lines": [
                   {
@@ -8162,6 +8296,20 @@
                     "who": "player",
                     "text": "sala.placa_sant_pol.37"
                   }
+                ],
+                "if": {
+                  "var": "fase",
+                  "op": "<",
+                  "value": 7
+                }
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.placa_sant_pol.37b"
+                  }
                 ]
               },
               {
@@ -8199,6 +8347,20 @@
                   {
                     "who": "player",
                     "text": "sala.placa_sant_pol.39"
+                  }
+                ],
+                "if": {
+                  "var": "fase",
+                  "op": "<",
+                  "value": 7
+                }
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.placa_sant_pol.39b"
                   }
                 ]
               }
@@ -8621,7 +8783,26 @@
                 "verb": [
                   "use",
                   "pickUp",
-                  "pull"
+                  "pull",
+                  "push"
+                ],
+                "if": {
+                  "flag": "aigua_baixa",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pont_ter.comporta_bull"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "pickUp",
+                  "pull",
+                  "push"
                 ],
                 "if": {
                   "all": [
@@ -8645,7 +8826,8 @@
                 "verb": [
                   "push",
                   "close",
-                  "use"
+                  "use",
+                  "pull"
                 ],
                 "if": {
                   "all": [
@@ -8683,7 +8865,6 @@
               {
                 "verb": [
                   "use",
-                  "pickUp",
                   "pull",
                   "push"
                 ],
@@ -8709,6 +8890,28 @@
                   {
                     "who": "player",
                     "text": "sala.pont_ter.36"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "var": "fase",
+                      "op": "==",
+                      "value": 7
+                    },
+                    {
+                      "flag": "joanet_despert",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pont_ter.barca_ronca"
                   }
                 ]
               },
@@ -12007,7 +12210,7 @@
               "is": false
             },
             {
-              "flag": "bagul_obert",
+              "flag": "bagul_sunifred_obert",
               "is": false
             }
           ]
@@ -12018,7 +12221,7 @@
               "flag": "bagul_identificat"
             },
             {
-              "flag": "bagul_obert"
+              "flag": "bagul_sunifred_obert"
             }
           ]
         },
@@ -12046,13 +12249,13 @@
               "flag": "bagul_identificat"
             },
             {
-              "flag": "bagul_obert",
+              "flag": "bagul_sunifred_obert",
               "is": false
             }
           ]
         },
         "doneWhen": {
-          "flag": "bagul_obert"
+          "flag": "bagul_sunifred_obert"
         },
         "levels": [
           "pista.i_obrir.1",
@@ -12075,7 +12278,7 @@
               "value": 5
             },
             {
-              "flag": "bagul_obert"
+              "flag": "bagul_sunifred_obert"
             },
             {
               "flag": "fons_buit",
@@ -13019,6 +13222,7 @@
           "flag": "forat_gran"
         },
         "levels": [
+          "pista.e_forat.0",
           "pista.e_forat.1"
         ],
         "targets": [
@@ -13109,6 +13313,192 @@
         ],
         "targets": [
           "rotul"
+        ]
+      },
+      "v_feina_iri": {
+        "priority": 9,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 2
+            },
+            {
+              "any": [
+                {
+                  "hasItem": "tuniques",
+                  "who": "vet"
+                },
+                {
+                  "hasItem": "habits",
+                  "who": "vet"
+                },
+                {
+                  "hasItem": "habits_curts",
+                  "who": "vet"
+                },
+                {
+                  "hasItem": "tisores",
+                  "who": "vet"
+                },
+                {
+                  "hasItem": "clofolles",
+                  "who": "vet"
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "any": [
+              {
+                "hasItem": "tuniques",
+                "who": "vet"
+              },
+              {
+                "hasItem": "habits",
+                "who": "vet"
+              },
+              {
+                "hasItem": "habits_curts",
+                "who": "vet"
+              },
+              {
+                "hasItem": "tisores",
+                "who": "vet"
+              },
+              {
+                "hasItem": "clofolles",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        "levels": [
+          "pista.v_feina_iri.1",
+          "pista.v_feina_iri.2"
+        ]
+      },
+      "i_feina_vet": {
+        "priority": 9,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 2
+            },
+            {
+              "any": [
+                {
+                  "hasItem": "barbes",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "unguent",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "xarop",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "valeriana",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "salconduit",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "salconduit_brut",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "salconduit_resina",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "llana",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "cardo",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "mel",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "carbo",
+                  "who": "iri"
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "any": [
+              {
+                "hasItem": "barbes",
+                "who": "iri"
+              },
+              {
+                "hasItem": "unguent",
+                "who": "iri"
+              },
+              {
+                "hasItem": "xarop",
+                "who": "iri"
+              },
+              {
+                "hasItem": "valeriana",
+                "who": "iri"
+              },
+              {
+                "hasItem": "salconduit",
+                "who": "iri"
+              },
+              {
+                "hasItem": "salconduit_brut",
+                "who": "iri"
+              },
+              {
+                "hasItem": "salconduit_resina",
+                "who": "iri"
+              },
+              {
+                "hasItem": "llana",
+                "who": "iri"
+              },
+              {
+                "hasItem": "cardo",
+                "who": "iri"
+              },
+              {
+                "hasItem": "mel",
+                "who": "iri"
+              },
+              {
+                "hasItem": "carbo",
+                "who": "iri"
+              }
+            ]
+          }
+        },
+        "levels": [
+          "pista.i_feina_vet.1",
+          "pista.i_feina_vet.2"
         ]
       }
     },
@@ -14022,10 +14412,28 @@
                 "who": "gueraula",
                 "text": "dlg.gueraula.19",
                 "if": {
-                  "not": {
-                    "hasItem": "habits_curts",
-                    "who": "iri"
-                  }
+                  "all": [
+                    {
+                      "not": {
+                        "hasItem": "habits_curts",
+                        "who": "iri"
+                      }
+                    },
+                    {
+                      "not": {
+                        "hasItem": "habits_curts",
+                        "who": "vet"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "gueraula",
+                "text": "dlg.gueraula.19b",
+                "if": {
+                  "hasItem": "habits_curts",
+                  "who": "vet"
                 }
               }
             ],
@@ -14096,6 +14504,24 @@
               {
                 "who": "gueraula",
                 "text": "dlg.gueraula.23"
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.gueraula.25",
+                "effects": [
+                  {
+                    "takeItem": "xarop",
+                    "who": "vet"
+                  }
+                ]
+              },
+              {
+                "who": "iri",
+                "text": "dlg.gueraula.26"
+              },
+              {
+                "who": "gueraula",
+                "text": "dlg.gueraula.27"
               },
               {
                 "who": "vet",
@@ -14922,7 +15348,18 @@
               },
               {
                 "who": "iri",
-                "text": "dlg.ponc.11"
+                "text": "dlg.ponc.11",
+                "if": {
+                  "flag": "ordre_mirada"
+                }
+              },
+              {
+                "who": "iri",
+                "text": "dlg.ponc.11b",
+                "if": {
+                  "flag": "ordre_mirada",
+                  "is": false
+                }
               },
               {
                 "who": "vet",
@@ -15429,6 +15866,22 @@
                   {
                     "setFlag": "sanca_sap"
                   }
+                ],
+                "if": {
+                  "flag": "serra_treta",
+                  "is": false
+                }
+              },
+              {
+                "who": "sanca",
+                "text": "dlg.sanca.11b",
+                "if": {
+                  "flag": "serra_treta"
+                },
+                "effects": [
+                  {
+                    "setFlag": "sanca_sap"
+                  }
                 ]
               }
             ],
@@ -15781,15 +16234,15 @@
       "dlg.bonfill.1": "Circuleu. La queixa és del comte, i el comte no hi és.",
       "dlg.bonfill.10": "I el salconduit? Sense salconduit no passa ni el bisbe.",
       "dlg.bonfill.11": "En Bonfill aguanta el salconduit de cap per avall, i mira el segell.",
-      "dlg.bonfill.12": "Segell de... l'Emma? No el conec. Deu ser nou.",
+      "dlg.bonfill.12": "Un segell! I ben vell. Els segells vells són els que manen més.",
       "dlg.bonfill.13": "I aquests de la conjura de l'avet ho pagaran car, eh, germans?",
       "dlg.bonfill.14": "La Vet fa un bot.",
       "dlg.bonfill.15": "(Tos d'ultratomba.)",
       "dlg.bonfill.16": "Germà, us conec d'algun lloc?",
       "dlg.bonfill.17": "La Vet aixeca la tauleta: «Vot de silenci extrem».",
-      "dlg.bonfill.18": "Ah. Doncs no.",
+      "dlg.bonfill.18": "Ah. Lletres. Doncs no, no em sona.",
       "dlg.bonfill.19": "Noms? Per al llibre de les entrades.",
-      "dlg.bonfill.2": "Llegir els papers del comte en veu alta és cosa del pregoner. I en veu baixa, també.",
+      "dlg.bonfill.2": "Llegir els pergamins del comte en veu alta és cosa del pregoner. I en veu baixa, també.",
       "dlg.bonfill.20": "A l'Iri se li escapa la veu aguda a mitja paraula. En Bonfill aixeca una cella.",
       "dlg.bonfill.21": "Ramona?",
       "dlg.bonfill.22": "I ell?",
@@ -15798,8 +16251,8 @@
       "dlg.bonfill.25": "Germà... Tos. I germà... Silenci. Passeu.",
       "dlg.bonfill.26": "En Bonfill hi dibuixa dos ninots: no sap escriure.",
       "dlg.bonfill.27": "Aneu a la cuina, que hi ha foc. I digueu a l'escrivà que el vi s'acaba.",
-      "dlg.bonfill.28": "Com és que el sant i senya era la frase del jutge?",
-      "dlg.bonfill.29": "Perquè aquí dins tothom pensa com ell.",
+      "dlg.bonfill.28": "Quina sort, que el sant i senya fos la frase del jutge.",
+      "dlg.bonfill.29": "No és sort. Aquí dins tothom pensa com ell.",
       "dlg.bonfill.3": "Al celler del batlle. Hi està bé: té vi i ombra.",
       "dlg.bonfill.4": "Alto. Sant i senya.",
       "dlg.bonfill.5": "L'Iri mira la Vet. La Vet mira el sostre.",
@@ -15844,7 +16297,7 @@
       "dlg.gueraula.19": "I els hàbits? L'Iri encara és a la bugaderia.",
       "dlg.gueraula.2": "Una cançó de bressol. La cantava la mare abadessa quan jo era novícia.",
       "dlg.gueraula.20": "Doncs a vestir-se! Iri, entra, que no mossego.",
-      "dlg.gueraula.21": "Sembles l'avi.",
+      "dlg.gueraula.21": "Sembles un boc.",
       "dlg.gueraula.22": "Tu sembles una cabra.",
       "dlg.gueraula.23": "Sembleu dos canonges. Que és pitjor.",
       "dlg.gueraula.24": "Té el salconduit, Iri. Jo no puc parlar: he fet vot de silenci extrem.",
@@ -15854,7 +16307,7 @@
       "dlg.gueraula.6": "Digues, Vet. Barbes, celles, veu d'home... tot alhora no, que m'esvero.",
       "dlg.gueraula.7": "De tenyir no en sé. D'herbes, sí.",
       "dlg.gueraula.8": "Però la tinta sí que la sé fer: gal·les i caparrós. El que fa negra la tinta, fa negre un hàbit.",
-      "dlg.gueraula.9": "La valeriana. Però les etiquetes les va escriure la germana Adelaida, que tenia molt mala lletra.",
+      "dlg.gueraula.9": "La valeriana. Però compte, que la meitat de les etiquetes les va escriure la germana Adelaida, i tenia molt mala lletra.",
       "dlg.gueraula.opt.adeu": "Res, germana.",
       "dlg.gueraula.opt.adeu2": "Res, germana.",
       "dlg.gueraula.opt.barbes": "I les barbes?",
@@ -15872,7 +16325,7 @@
       "dlg.ingilberga.13": "Per això mateix. No vull haver-ne de treure dos més del celler.",
       "dlg.ingilberga.14": "L'Emma és morta fa setanta-cinc anys. Vosaltres no.",
       "dlg.ingilberga.15": "...Això és veritat. I és molt mala idea.",
-      "dlg.ingilberga.16": "Endavant, Vetilda. I digues a la Irisenda que deixi la destral a la porta.",
+      "dlg.ingilberga.16": "Endavant, Vetilda. Fes entrar la Irisenda. I que deixi la destral a la porta.",
       "dlg.ingilberga.17": "Hàbits: a la bugaderia n'hi ha de vells. Barbes i veu: la Gueraula. Les claus de l'arxiu, les porta l'escrivà del comte al cinyell.",
       "dlg.ingilberga.18": "Sopa cada nit a la cuina, després de completes. Beu com un canonge.",
       "dlg.ingilberga.19": "Jo hi poso les herbes.",
@@ -15922,7 +16375,7 @@
       "dlg.ponc.1": "Jutge Ponç, al servei del comte. Si veniu a declarar, porteu tres testimonis i un segell.",
       "dlg.ponc.10": "M'ho ha dit la Gueraula. On és el pare?",
       "dlg.ponc.11": "Al celler del batlle. La serra és seva, l'ordre és d'ahir, i jo no sé llegir què hi diu.",
-      "dlg.ponc.12": "Una serra robada, una ordre escrita abans de la tempesta i un culpable a punt.",
+      "dlg.ponc.12": "Una serra robada, una ordre ja escrita i un culpable a punt. Massa a punt, tot plegat.",
       "dlg.ponc.13": "Això no és un arbre caigut, Iri. És una conjura.",
       "dlg.ponc.14": "La lectura pública d'una ordre requereix tres testimonis.",
       "dlg.ponc.15": "Tres testimonis.",
@@ -15952,7 +16405,7 @@
       "dlg.ponc.5": "Si el senyor jutge em permet... Una serra així, al poble, només en té una persona.",
       "dlg.ponc.6": "Tothom mira en Ramon.",
       "dlg.ponc.7": "Saig. Custòdia preventiva, pendent de tres testimonis.",
-      "dlg.ponc.8": "La serra me la van robar dijous, Iri. Digues-ho a la Vet. Ella sabrà què fer amb els papers.",
+      "dlg.ponc.8": "La serra me la van robar dijous, Iri. Digues-ho a la Vet. Ella sabrà què fer amb els pergamins.",
       "dlg.ponc.9": "Tu ho has vist tot, eh? I no diràs res.",
       "dlg.ponc.opt.adeu0": "Res, gràcies.",
       "dlg.ponc.opt.adeu1": "Res, gràcies.",
@@ -15970,7 +16423,7 @@
       "dlg.sanca.10": "Doncs aquí tens una signatura molt recta.",
       "dlg.sanca.11": "I a la molinera, que fa tot el matí que crida? El rec s'ha quedat sense aigua. Alguna cosa ha encallat la comporta.",
       "dlg.sanca.12": "Un monjo que em demana que vingui a defensar les monges? Ara sí que ho he vist tot.",
-      "dlg.sanca.13": "«Signareu amb la vostra creu, davant de tothom.»",
+      "dlg.sanca.13": "(Amb veu greu) Signareu amb la vostra creu. Davant de tothom.",
       "dlg.sanca.14": "Amb la torta?",
       "dlg.sanca.15": "Amb la torta.",
       "dlg.sanca.16": "Doncs vinga, dones. Anem a fer creus.",
@@ -15988,20 +16441,20 @@
       "dlg.sanca.opt.adeu_m": "(Fa una reverència)",
       "dlg.sanca.opt.canem": "Em deixaríeu cànem? Per a la campana.",
       "dlg.sanca.opt.canem_i": "Em deixaríeu cànem?",
-      "dlg.sanca.opt.creu": "(Escriu a la tauleta) «Signareu amb la vostra creu, davant de tothom.»",
+      "dlg.sanca.opt.creu": "(Amb veu greu) «Signareu amb la vostra creu, davant de tothom.»",
       "dlg.sanca.opt.noms": "Els noms de la queixa.",
       "dlg.sanca.opt.queixa": "Què és aquesta queixa?",
       "dlg.sanca.opt.tracte": "Si puc llegir la queixa, us diré quins noms hi ha.",
       "dlg.sunifred.1": "En què us puc servir? Amb molt de gust, i amb tinta.",
-      "dlg.sunifred.10": "(Tos, tos.)",
+      "dlg.sunifred.10": "(S'ennuega. En silenci.)",
       "dlg.sunifred.11": "A la llar, a l'Iri li cau el cullerot.",
-      "dlg.sunifred.12": "És ell. La serra, la queixa, l'ordre. És el signe d'en Sunifred.",
+      "dlg.sunifred.12": "(fluix) És ell. La serra, la queixa, l'ordre. És el signe d'en Sunifred.",
       "dlg.sunifred.13": "«Més vi, germà?»",
       "dlg.sunifred.14": "Sí, sí. Però vigileu la copa: hi ha molt verí en aquest món, germà.",
       "dlg.sunifred.15": "Un document segellat no es crema... s'arxiva... sempre s'arxiva...",
       "dlg.sunifred.16": "La carta al comte... la vaig escriure al faristol... aquell pergamí era car...",
       "dlg.sunifred.17": "Zzz... Ronc...",
-      "dlg.sunifred.18": "Germà, no us conec. I no tinc gaire temps: tinc un judici a guanyar.",
+      "dlg.sunifred.18": "Germà, ara no. Ahir el vi, avui el judici, i encara no sé on paren les meves claus.",
       "dlg.sunifred.2": "Els escrivans signem tots alhora, senyoreta. Som com els ocells.",
       "dlg.sunifred.3": "Dormint, com les persones honrades. I vós?",
       "dlg.sunifred.4": "Germà?",
@@ -16019,6 +16472,12 @@
       "dlg.sunifred.opt.vi": "(Escriu a la tauleta) «Més vi, germà?»",
       "dlg.ponc.36": "El judici, demà al matí, aquí davant de l'avet.",
       "dlg.ponc.37": "Tenim fins demà al matí per saber qui l'ha tombat. I per què.",
+      "dlg.gueraula.25": "L'Iri fa un glop de xarop de menta.",
+      "dlg.gueraula.26": "Cof! Cof, cof! Crema!",
+      "dlg.gueraula.27": "Era mig glop! Doncs tu tossiràs, i la Vet callarà. Un monjo que tus no ha de parlar.",
+      "dlg.ponc.11b": "Al celler del batlle. La serra és seva, diuen. I hi ha una ordre que jo no sé llegir.",
+      "dlg.gueraula.19b": "I els hàbits? Torna'ls a l'Iri, que els ha de dur posats ella.",
+      "dlg.sanca.11b": "I la molinera, almenys, ja no crida. Diu que la llenyatera li ha desencallat la comporta. Aquesta sí que no llegeix, però s'espavila.",
       "final.avet.1": "El jutge Ponç va demanar al comte un faristol nou. L'acta del judici té tres còpies, sense cap errata.",
       "final.avet.2": "En Sunifred rega l'avet cada dia. Diu que és el document més ben arxivat que ha vist mai.",
       "final.avet.3": "En Bonfill aprèn de lletra amb la Gueraula. De moment, ja aguanta els pergamins del dret.",
@@ -16030,7 +16489,7 @@
       "final.avet.titol": "La Conjura de l'Avet",
       "final.credits.1": "La Conjura de l'Avet. Una aventura gràfica feta amb males herbes - malaherbasoft.cat",
       "final.credits.2": "L'Ingilberga va existir. Va ser l'última abadessa de Sant Joan, i el 1017 el seu germanastre, el comte Bernat de Besalú, va fer que el papa expulsés les monges.",
-      "final.credits.3": "La resta és inventada: la carta partida, el jutge Ponç, l'escrivà, l'avet de l'Emma. L'avet, en canvi, era de debò, al costat de l'absis. El claustre gòtic i el Pont Vell són uns segles més joves que la història.",
+      "final.credits.3": "La resta és inventada: la carta partida, el jutge Ponç, l'escrivà, l'avet de l'Emma. L'avet, en canvi, era de debò, al costat de l'absis. I demanem disculpes pels anacronismes, que n'hi ha.",
       "final.post.1": "La porteria, de nit. En Bonfill, de guàrdia, amb un pergamí del dret.",
       "final.post.2": "Sant... i... sen... ya.",
       "final.post.3": "Algú truca a la porta.",
@@ -16118,7 +16577,7 @@
       "ui.defecte.push.iri": "No es mou. I no és de fusta, que ho sabria.",
       "ui.defecte.push.iri.2": "Empenyo. Res.",
       "ui.defecte.push.iri.3": "Pesa més que jo. I jo peso molt.",
-      "ui.defecte.push.vet": "Pesa unes quatre tones. No empenyo.",
+      "ui.defecte.push.vet": "Pesa més que una mula. No empenyo.",
       "ui.defecte.push.vet.2": "Res. Això és feina de l'Iri.",
       "ui.defecte.push.vet.3": "Empenyo amb dignitat. No es mou.",
       "ui.defecte.talkTo": "No crec que em contesti.",
@@ -16182,6 +16641,7 @@
       "ui.verb.use.prep": "amb",
       "ui.verb.walkTo": "Ves a",
       "donar.guarda": "Això ho guardo jo. Les proves, les porto jo.",
+      "donar.ara_no": "Ara no. Ja ho porto jo, i ara no hi ha temps per anar passant-nos coses.",
       "mis.acte1.obj.abadessa": "Convèncer l'abadessa.",
       "mis.acte1.obj.ordre": "Llegir l'ordre del jutge.",
       "mis.acte1.obj.queixa": "Llegir la queixa de la plaça.",
@@ -16330,7 +16790,7 @@
       "obj.salabre.desc": "El salabre d'en Joanet: un cistell de xarxa amb un mànec llarg.",
       "obj.salabre.nom": "salabre",
       "obj.salconduit.amb_article": "el salconduit",
-      "obj.salconduit.desc": "El salconduit, segellat amb el segell de l'Emma, del revés. Al saig li semblarà nou.",
+      "obj.salconduit.desc": "El salconduit, segellat amb el segell de l'Emma, del revés. Al saig li farà respecte.",
       "obj.salconduit.nom": "salconduit",
       "obj.salconduit_brut.amb_article": "el salconduit",
       "obj.salconduit_brut.desc": "«Que passin aquests dos germans, per ordre de l'abadessa Emma.» Falta el segell.",
@@ -16390,7 +16850,7 @@
       "pj.joanet.mira.1": "En Joanet, pescador d'anguiles. Pesca assegut, i pensa ajagut.",
       "pj.joanet.nom": "Joanet",
       "pj.ponc.destral.1": "Amenaçar un jutge requereix tres testimonis i un segell. I no en teniu cap.",
-      "pj.ponc.mira.1": "El jutge Ponç, enviat del comte. Porta més segells que botons.",
+      "pj.ponc.mira.1": "El jutge Ponç, enviat del comte. Porta més segells que dits.",
       "pj.ponc.nom": "jutge Ponç",
       "pj.ramon.mira.1": "El pare. Tranquil com un roure. Fins que s'enfada, com un roure que cau.",
       "pj.ramon.nom": "Ramon",
@@ -16402,7 +16862,7 @@
       "pj.sunifred.mira.1": "En Sunifred, l'escrivà del comte. Té les mans més netes que he vist mai.",
       "pj.sunifred.mira.2.1": "En Sunifred. Una creu amb un llaç. Elegant i impossible de copiar.",
       "pj.sunifred.nom": "Sunifred",
-      "pj.vet.mira.1": "La meva germana petita. Llegeix llatí, i em corregeix el català.",
+      "pj.vet.mira.1": "La meva germana petita. Llegeix llatí, i em corregeix la parla.",
       "pj.vet.mira.monjo.1": "Un monjo petit, amb l'hàbit escurçat a cops de tisora. Té la mirada de la Vet.",
       "pj.vet.nom": "Vet",
       "pj.vet.parla.1": "Ens falta saber què hi havia sota l'avet i qui té aquest signe. Per a les lletres, aquí em tens.",
@@ -16425,14 +16885,14 @@
       "pista.e_pala.1": "El forat és massa petit. La destral, no.",
       "pista.e_pala.2": "En Sunifred té la pala, i no la vol.",
       "pista.e_pala.3": "Parla amb en Sunifred.",
-      "pista.e_planco.1": "El plançó és a la carretilla.",
+      "pista.e_planco.1": "El plançó és a la civera.",
       "pista.e_planco.2": "Agafa el plançó.",
       "pista.e_plantar.1": "Ara, el plançó.",
       "pista.e_plantar.2": "Fes servir el plançó amb el forat.",
       "pista.e_rotul.1": "La Vet hi ha clavat una paraula. Llegeix-la.",
       "pista.e_rotul.2": "Mira el tros de fusta.",
       "pista.i_bagul_id.1": "Cent baguls. No sé llegir les etiquetes. Però sí els dibuixos.",
-      "pista.i_bagul_id.2": "N'hi ha un amb un lacre. Mira'l.",
+      "pista.i_bagul_id.2": "N'hi ha un amb un segell de cera. Mira'l.",
       "pista.i_banc.1": "Sota el banc del fons, ha dit la Gueraula.",
       "pista.i_banc.2": "Empeny el banc del fons.",
       "pista.i_barca.1": "La cosa de ferro és al mig de la resclosa. Caldria una barca.",
@@ -16456,7 +16916,7 @@
       "pista.i_contrapes.1": "Ara m'hi puc enfilar.",
       "pista.i_contrapes.2": "Despenja el contrapès (estira'l).",
       "pista.i_doble_fons.1": "Clic, ha fet el bagul.",
-      "pista.i_doble_fons.2": "Obre el bagul del lacre.",
+      "pista.i_doble_fons.2": "Obre el bagul del segell.",
       "pista.i_dona_cera.1": "Aquest tros de cera era un segell. La Vet sabrà llegir-lo.",
       "pista.i_dona_cera.2": "Dona el tros de cera a la Vet (totes dues al mateix lloc).",
       "pista.i_dona_serra.1": "La serra és una prova. Qui parla amb l'abadessa és la Vet.",
@@ -16475,7 +16935,7 @@
       "pista.i_falca.1": "La roda és travada. Si entra l'aigua, no trobarà sortida.",
       "pista.i_falca.2": "Una falca d'alzina clavada a cops de maça. Per tallar, per fi.",
       "pista.i_falca.3": "Fes servir la destral amb la falca.",
-      "pista.i_ferro.1": "Falta el ferro. La serra no: és una prova. La destral no: la necessito.",
+      "pista.i_ferro.1": "Al tint li falta ferro. La destral no la poso a l'olla: la necessito.",
       "pista.i_ferro.2": "La Vet fa tinta negra. Amb què la fa negra?",
       "pista.i_ferro.3": "Demana a la Vet que et doni caparrós, de l'apotecaria.",
       "pista.i_foc.1": "En fred, el tint no agafa. El fogó és apagat.",
@@ -16491,7 +16951,7 @@
       "pista.i_nom.1": "Els noms... amb aquesta veu?",
       "pista.i_nom.2": "Millor no parlar. Tossir, potser.",
       "pista.i_obrir.1": "El bagul d'en Sunifred.",
-      "pista.i_obrir.2": "Fes servir les claus amb el bagul del lacre.",
+      "pista.i_obrir.2": "Fes servir les claus amb el bagul del segell.",
       "pista.i_pastera.1": "Navegarem... amb què?",
       "pista.i_pastera.2": "La pastera és llarga, de fusta, i flota.",
       "pista.i_pastera.3": "Empeny la pastera al canal.",
@@ -16538,7 +16998,7 @@
       "pista.j4.2": "Doneu la carta calcada al jutge.",
       "pista.jutge.1": "El jutge diu que ha estat el vent. Jo sé que no.",
       "pista.jutge.2": "Parla amb el jutge.",
-      "pista.resina.1": "La branca trencada vessa resina. El pare diu que la Gueraula la paga bé.",
+      "pista.resina.1": "La branca trencada vessa resina. Enganxa com la pega.",
       "pista.resina.2": "Amb les mans m'hi quedaria enganxada. L'olla del pare, buida.",
       "pista.resina.3": "Fes servir l'olla amb la branca trencada.",
       "pista.v_apotecaria.1": "Barbes i veu: la Gueraula, a l'apotecaria.",
@@ -16592,7 +17052,7 @@
       "pista.v_espelma.1": "Ara, que discuteixen: dues ratlles d'espelma menys.",
       "pista.v_espelma.2": "Fes servir el rascador amb l'espelma.",
       "pista.v_llana.1": "Barbes de monjo: llana negra. La pell d'ovella és blanca.",
-      "pista.v_llana.2": "Els hàbits de l'Iri arrosseguen. Si els escurça, sobrarà llana negra.",
+      "pista.v_llana.2": "Els hàbits que tenyeix l'Iri són gegants. Si els escurça, sobrarà llana negra.",
       "pista.v_llest.1": "Ja ho tenim tot.",
       "pista.v_llest.2": "Digues a la Gueraula que ja ho teniu tot.",
       "pista.v_ofici.1": "En Sunifred és vanitós. Fes-lo parlar de la seva feina.",
@@ -16620,7 +17080,7 @@
       "pista.v_salconduit.3": "Ploma amb pergamins; després, el pegot de resina amb el salconduit; després, la cera amb el salconduit.",
       "pista.v_sanca.1": "Primer testimoni: la Sança, a la plaça.",
       "pista.v_sanca.2": "No es fia d'un monjo. Vol signar a la seva manera.",
-      "pista.v_sanca.3": "Parla amb la Sança i escriu-li que signarà amb la seva creu.",
+      "pista.v_sanca.3": "Parla amb la Sança i digues-li, amb veu greu, que signarà amb la seva creu.",
       "pista.v_sanca_noms.1": "La Sança voldrà saber quins noms hi ha a la queixa.",
       "pista.v_sanca_noms.2": "Parla amb la Sança dels noms de la queixa.",
       "pista.v_segell.1": "El jutge vol un segell. Quin segell portem?",
@@ -16638,6 +17098,11 @@
       "pista.v_escoltar.1": "En Sunifred parla en somnis. Un escrivà que xerra dormint...",
       "pista.v_escoltar.2": "Asseu-te al davant i escolta'l.",
       "pista.v_escoltar.3": "Parla amb en Sunifred fins que ronqui.",
+      "pista.v_feina_iri.1": "Hàbits, tints i tisores: això és feina de l'Iri, no meva.",
+      "pista.v_feina_iri.2": "Torna-li a l'Iri el que és seu (totes dues al claustre).",
+      "pista.i_feina_vet.1": "Barbes, herbes i pergamins: això és cosa de la Vet, a l'apotecaria.",
+      "pista.i_feina_vet.2": "Dona-li a la Vet el que és seu (totes dues al claustre).",
+      "pista.e_forat.0": "Ara que tinc la pala, el forat pot créixer.",
       "sala.apotecaria.1": "Barbes, celles, veu d'home i una herba per adormir un escrivà. Quina nit més bonica!",
       "sala.apotecaria.10": "L'oloro... Mitjons! Mitjons d'una setmana.",
       "sala.apotecaria.11": "És valeriana. Fa dormir i fa pudor de peus. Les dues coses són certes.",
@@ -16694,7 +17159,7 @@
       "sala.arxiu.17": "Un cofre de plom, amb un segell vermell trencat. El cofre de l'Emma.",
       "sala.arxiu.18": "Hi pico: aquest fons sona a buit. La fusta no menteix.",
       "sala.arxiu.19": "No s'obre per enlloc. Però al costat del bagul en surt un cordill, que se'n va per la paret, darrere el tapís.",
-      "sala.arxiu.2": "Doncs n'obres cent. Pesen unes quatre tones cadascun. Tu mateixa.",
+      "sala.arxiu.2": "Doncs n'obres cent. Pesen com un ase mort cadascun. Tu mateixa.",
       "sala.arxiu.20": "Ja és buit.",
       "sala.arxiu.21": "Un cordill que surt pel fons del bagul i puja per la paret, darrere el tapís.",
       "sala.arxiu.22": "Està tibant, però no cedeix. Puja fins a dalt de tot, darrere el tapís.",
@@ -16723,7 +17188,7 @@
       "sala.arxiu.43": "«I si l'avet cau per mà d'home, que qui l'hagi tombat en planti un altre, i que la terra sigui de les dones mentre el nou sigui dret.»",
       "sala.arxiu.44": "Ho sabia. Fa cent trenta anys, ho sabia.",
       "sala.arxiu.45": "Per això el va tombar d'amagat. I per això no la va cremar: és escrivà.",
-      "sala.arxiu.46": "Dong! Dong! Dong!",
+      "sala.arxiu.46": "Dong! Dong! Dong! Toquen a matines.",
       "sala.arxiu.47": "Les claus! On són les meves claus?",
       "sala.arxiu.48": "Pel molí! Sota el banc del fons hi ha la trapa del rec!",
       "sala.arxiu.49": "Bancs de pedra, on seuen els canonges a llegir els comptes. Freds com els comptes.",
@@ -16743,10 +17208,10 @@
       "sala.arxiu.61": "L'scriptorium és de la Vet. Jo, al bagul.",
       "sala.arxiu.7": "Un bagul amb una etiqueta i una cinta vermella. Fa cara d'important, però no de culpable.",
       "sala.arxiu.8": "Tancat. I no és el que busco.",
-      "sala.arxiu.9": "Aquest té un lacre amb un dibuix. Una creu amb un llaç.",
+      "sala.arxiu.9": "Aquest té un segell de cera amb un dibuix. Una creu amb un llaç.",
       "sala.arxiu.bagul_butlles.nom": "bagul",
       "sala.arxiu.bagul_delmes.nom": "bagul",
-      "sala.arxiu.bagul_sunifred.nom": "bagul del lacre",
+      "sala.arxiu.bagul_sunifred.nom": "bagul del segell",
       "sala.arxiu.baguls.nom": "baguls",
       "sala.arxiu.banc_fons.nom": "banc del fons",
       "sala.arxiu.bancs.nom": "bancs de pedra",
@@ -16770,7 +17235,7 @@
       "sala.bugaderia.17": "Amb aigua clara, sortirien igual de blanques. Pell de nou i ferro, deia l'àvia.",
       "sala.bugaderia.18": "Amb clofolles soles quedarien marrons. Monjos marrons, d'aquí a dos-cents anys. Falta el ferro.",
       "sala.bugaderia.19": "L'aigua és freda. El tint no agafa en fred.",
-      "sala.bugaderia.2": "Un bagul de roba vella. Fa olor de naftalina i de monja.",
+      "sala.bugaderia.2": "Un bagul de roba vella. Fa olor d'espígol ranci i de monja.",
       "sala.bugaderia.20": "El fogó, apagat. La llenya que hi ha és molla de la pluja.",
       "sala.bugaderia.21": "Alzina al fogó. Falta encendre-la.",
       "sala.bugaderia.22": "Foc d'alzina. Escalfa com el geni de la Sança.",
@@ -16782,7 +17247,7 @@
       "sala.bugaderia.28": "Pi: molla i fa fum. Si l'encenc, la Gueraula ens sentirà tossir des de l'apotecaria.",
       "sala.bugaderia.29": "Pi, no. Fa més fum que foc.",
       "sala.bugaderia.3": "El bagul, obert i buit. Bé, hi ha un mitjó desaparellat.",
-      "sala.bugaderia.30": "Pollancre: crema com paper i s'apaga. Per a una tina, no.",
+      "sala.bugaderia.30": "Pollancre: crema com palla i s'apaga. Per a una tina, no.",
       "sala.bugaderia.31": "Pollancre, no. Una flamarada i adeu.",
       "sala.bugaderia.32": "Alzina: seca, densa, i crema tota la nit.",
       "sala.bugaderia.33": "Alzina. Aquesta és la bona.",
@@ -16814,7 +17279,7 @@
       "sala.calc.4": "«...MMA ABBATISS...» Emma abbatissa. El segell de la primera abadessa.",
       "sala.calc.5": "Frego. Surten ratlles blanques: lletres!",
       "sala.calc.6": "«Senyor comte: quan l'avet caigui, la terra tornarà a vós, i el deute de Sant Pol quedarà saldat.»",
-      "sala.calc.7": "«La meitat de les monges diu una cosa que no us agradarà: la guardo on es guarden les coses que no es cremen. Vostre servidor...»",
+      "sala.calc.7": "«La meitat de la carta que tenien les monges diu una cosa que no us agradarà: la guardo on es guarden les coses que no es cremen. Vostre servidor...»",
       "sala.calc.8": "I el signe. La creu amb el llaç. On es guarden les coses que no es cremen: l'arxiu.",
       "sala.calc.nom": "El calc",
       "sala.calc.pergami.nom": "pergamí",
@@ -16871,7 +17336,7 @@
       "sala.cuina.18": "Tiro la valeriana a la gerra mentre ell mira les olles. Remeno amb el dit.",
       "sala.cuina.19": "Germà?",
       "sala.cuina.2": "Germà, vi.",
-      "sala.cuina.20": "(Serveix aigua a l'escrivà, com si res.)",
+      "sala.cuina.20": "(Serveix vi a l'escrivà, com si res.)",
       "sala.cuina.21": "Molt bé.",
       "sala.cuina.22": "(Omple la copa de l'escrivà.)",
       "sala.cuina.23": "Ah, un vi amb caràcter. Una mica de... formatge?",
@@ -16908,7 +17373,7 @@
       "sala.cuina.pila_olles.nom": "pila d'olles",
       "sala.cuina.taula.nom": "taula",
       "sala.epileg.1": "Ha arribat el plançó. Plantació d'avet per ordre judicial. Tres testimonis i un segell.",
-      "sala.epileg.10": "Una carretilla buida.",
+      "sala.epileg.10": "Una civera buida.",
       "sala.epileg.11": "El plançó. Dues lliures.",
       "sala.epileg.12": "Aquest el pots empènyer.",
       "sala.epileg.13": "Ja el tinc.",
@@ -16945,15 +17410,15 @@
       "sala.epileg.6": "L'absis, amb el mur arreglat. Pedra nova, més clara, com un pedaç.",
       "sala.epileg.7": "El vell avet, fet rodanxes. Faran bancs per a Sant Pol. Ja era hora que tingués on seure.",
       "sala.epileg.8": "Les arrels velles, amb molsa. Encara aguanten la terra.",
-      "sala.epileg.9": "Una carretilla amb el plançó.",
+      "sala.epileg.9": "Una civera amb el plançó.",
       "sala.epileg.absis.nom": "absis",
       "sala.epileg.arrels.nom": "arrels",
-      "sala.epileg.carretilla.nom": "carretilla",
+      "sala.epileg.carretilla.nom": "civera",
       "sala.epileg.forat_nou.nom": "forat",
       "sala.epileg.nom": "L'avet nou",
       "sala.epileg.rodanxes.nom": "rodanxes",
       "sala.epileg.rotul.nom": "tros de fusta",
-      "sala.judici.1": "Comença el judici de l'avet. L'escrivà del comte presenta la meitat comtal de la carta de l'any 885.",
+      "sala.judici.1": "Escrivà del comte: presenteu la meitat comtal de la carta de l'any 887.",
       "sala.judici.10": "L'avet, amb tot el poble al voltant. Mai no havia tingut tanta companyia.",
       "sala.judici.11": "Les arrels, amb el tall net de la serra. La prova que no parla.",
       "sala.judici.12": "El faristol del jutge, amb la meitat comtal de la carta.",
@@ -17079,15 +17544,14 @@
       "sala.mur_avet.19": "Ningú no toca l'avet fins que no consti en acta.",
       "sala.mur_avet.2": "Per ordre del comte Bernat: l'abadessa Ingilberga, culpable de negligència arbòria.",
       "sala.mur_avet.20": "Ja està serrat. Per això som aquí.",
-      "sala.mur_avet.21": "Pesa unes quatre tones, Iri.",
-      "sala.mur_avet.22": "Ni s'immuta.",
+      "sala.mur_avet.21": "Pesa més que un bou. Ni s'immuta.",
       "sala.mur_avet.23": "Tu ho has vist tot, eh? I no diràs res.",
       "sala.mur_avet.24": "...Ets pitjor que el pare.",
       "sala.mur_avet.25": "Agulles d'avet. Com mil agulles de cosir, i cap fil.",
       "sala.mur_avet.26": "Branques apartades. El camí cap a les arrels és lliure.",
       "sala.mur_avet.27": "Ja les he apartat.",
       "sala.mur_avet.28": "Amb els guants, les aparto. Ja hi ha pas cap a les arrels.",
-      "sala.mur_avet.29": "Ningú no toca l'avet fins que no consti en acta. Ni les branques.",
+      "sala.mur_avet.29": "Ningú no talla l'avet fins que no consti en acta. Ni les branques.",
       "sala.mur_avet.3": "I de bruixeria meteorològica, pendent de confirmar.",
       "sala.mur_avet.30": "Ai! Punxen com un gat enfadat. Sense guants, no.",
       "sala.mur_avet.31": "Punxen. L'Iri té guants; jo tinc tinta als dits.",
@@ -17103,7 +17567,7 @@
       "sala.mur_avet.40": "Això no ho ha fet el vent. El vent arrenca. Això ho ha fet una serra.",
       "sala.mur_avet.41": "Un tall net, de serra, al costat del vent. El vent arrenca; això ho ha fet una serra.",
       "sala.mur_avet.42": "L'Iri diu que el tall és de serra. Jo només hi veig arrels. Ella hi veu un culpable.",
-      "sala.mur_avet.43": "Quatre tones d'arrel. Ni amb el pare.",
+      "sala.mur_avet.43": "Arrels com un carro de bous. Ni amb el pare.",
       "sala.mur_avet.44": "Un forat al lloc de les arrels. Fang, pedres i...",
       "sala.mur_avet.45": "Una cosa vermella, al fons.",
       "sala.mur_avet.46": "Des d'aquí no hi veig, amb tantes branques.",
@@ -17154,8 +17618,8 @@
       "sala.mur_avet.nom": "L'avet caigut",
       "sala.mur_avet.ordre.nom": "ordre del jutge",
       "sala.mur_avet.porta_monestir.nom": "porta del monestir",
-      "sala.placa_sant_pol.1": "...i per això trenta veïns de la vila demanen que les monges siguin tretes del monestir. Signat, el poble.",
-      "sala.placa_sant_pol.10": "Llegir els papers del comte en veu alta és cosa del pregoner. I en veu baixa, també.",
+      "sala.placa_sant_pol.1": "...i per això, m'ha dit l'escrivà que digui, trenta veïns de la vila demanen que les monges siguin tretes del monestir. Signat, el poble.",
+      "sala.placa_sant_pol.10": "Llegir els pergamins del comte en veu alta és cosa del pregoner. I en veu baixa, també.",
       "sala.placa_sant_pol.11": "Cal allunyar-lo de la porta.",
       "sala.placa_sant_pol.12": "El saig és al campanar. Ara!",
       "sala.placa_sant_pol.13": "Copio els noms a la tauleta, de pressa. «Sança, fornera. Joan, pescador. Ermessenda, molinera...»",
@@ -17170,8 +17634,7 @@
       "sala.placa_sant_pol.21": "Si la campana toca, el saig hi corre. És la seva feina.",
       "sala.placa_sant_pol.22": "M'enfilo, lligo el cànem a la campana, i baixo amb la corda a la mà. Fàcil.",
       "sala.placa_sant_pol.23": "Jo no m'enfilo. Això és de l'Iri.",
-      "sala.placa_sant_pol.24": "Pesa unes quatre tones, Iri. I és dalt d'una torre.",
-      "sala.placa_sant_pol.25": "I no hi arribo.",
+      "sala.placa_sant_pol.24": "Empènyer un campanar? Pesa més que un bou, i la campana és dalt de tot.",
       "sala.placa_sant_pol.26": "Sense corda, la campana no toca. Ni amb paraules boniques.",
       "sala.placa_sant_pol.27": "Ja toca. El saig ja hi és.",
       "sala.placa_sant_pol.28": "Ja tinc la queixa copiada. No cal tornar a molestar el saig.",
@@ -17180,7 +17643,7 @@
       "sala.placa_sant_pol.30": "Qui toca? Sense permís de repic!",
       "sala.placa_sant_pol.31": "Vet, ara! Jo el tinc entretingut.",
       "sala.placa_sant_pol.32": "La corda la tibo jo, i el saig em veuria. Que ho faci l'Iri.",
-      "sala.placa_sant_pol.33": "La campana. Grossa, de bronze, i muda fins avui.",
+      "sala.placa_sant_pol.33": "La campana de Sant Pol. Grossa, de bronze, i amb mal geni.",
       "sala.placa_sant_pol.34": "La nau de Sant Pol, sense parets. Hi entra el sol, el vent i les dones del poble.",
       "sala.placa_sant_pol.35": "Les dones del poble, filant cànem a la gespa de l'església.",
       "sala.placa_sant_pol.36": "Parla amb la Sança. Ella mana.",
@@ -17318,7 +17781,7 @@
       "sala.scriptorium.35": "(Escriu a la tauleta: «Un ratolí! A la cuina! N'he vist la cua!»)",
       "sala.scriptorium.36": "Un ratolí? A la cuina? Amb l'escrivà dormint-hi?",
       "sala.scriptorium.37": "Som-hi, germà. Armats.",
-      "sala.scriptorium.38": "(Tos d'ultratomba.)",
+      "sala.scriptorium.38": "(Imita la tos de l'Iri.)",
       "sala.scriptorium.39": "Germà, això no és una tos, és un terratrèmol. Aneu-vos-en al llit.",
       "sala.scriptorium.4": "L'ordre d'expulsió, per triplicat. A la primera hi diu «abadesa», a la segona «abbadessa», a la tercera «avadesa».",
       "sala.scriptorium.40": "Shhh. Silenci, germà. Copiem.",
@@ -17347,15 +17810,25 @@
       "sala.judici.68": "Saig, a l'acta: traieu fra Tos i fra Silenci. Hi van Irisenda i Vetilda, filles de Ramon.",
       "sala.judici.69": "Ja hi dibuixo dues noies, senyor jutge.",
       "sala.moli.34": "Per fi! Què, que us heu trobat una romaguera pel camí?",
-      "sala.moli.35": "Dues. Amb tonsura, i armades amb un faristol.",
+      "sala.moli.35": "Dues. Amb tonsura, buscant un ratolí amb un faristol.",
       "sala.proleg.4": "Fa cent trenta anys, l'abadessa Emma va plantar un avet al costat del monestir. L'únic de la vall.",
       "sala.proleg.5": "El comte Bernat de Besalú deu una fortuna al monestir. I el comte té mala memòria per als deutes.",
       "sala.mur_avet.76": "Ens han cridat del monestir per desembussar el carrer. Avui cobrem en llenya.",
       "sala.mur_avet.77": "Per tant, les terres del monestir tornen al comte. Tres testimonis i un segell.",
-      "sala.mur_avet.78": "(fluix) Tres testimonis: la Sança, que no ha signat res; l'Ermessenda, que va treure la serra; i en Joanet, que aquella nit pescava.",
+      "sala.mur_avet.78": "(fluix) Tres testimonis: la Sança, que no ha signat res; l'Ermessenda, que va veure com treien la serra de la comporta; i en Joanet, que pesca cada nit davant de l'avet. Alguna cosa deu haver vist.",
       "sala.mur_avet.79": "(fluix) I el segell de l'Emma, que el porto jo. Jo, la plaça i el jutge. Tu, el riu.",
       "sala.cuina.42": "(fluix, des de la llar) Les claus, al cinyell. Quan dormi, seran nostres.",
-      "sala.scriptorium.42": "Al fons, la porta de la sala capitular, i l'arxiu. Al davant, dos canonges que no pensen moure's fins a matines."
+      "sala.scriptorium.42": "Al fons, la porta de la sala capitular, i l'arxiu. Al davant, dos canonges que no pensen moure's fins a matines.",
+      "sala.placa_sant_pol.37b": "La reixa del celler del batlle. Buida: el pare és a l'avet, esperant el judici.",
+      "sala.placa_sant_pol.39b": "La casa del batlle. Té vi al celler. El pare, ja no.",
+      "sala.claustre.22b": "Això, sol, no em diu res, Vet. Porta'm proves.",
+      "sala.arxiu.estendard_aviat": "Un pal ben ferm per enfilar-se. Però enfilar-me per anar on? Primer he de saber què hi ha amunt.",
+      "sala.arxiu.fons_buit_altra": "El fons sona a buit, i el cordill se'n va darrere el tapís. El secret és a l'altra punta.",
+      "sala.pont_ter.comporta_bull": "L'aigua hi bull massa i no es veu què hi ha encallat. Primer l'he de fer baixar.",
+      "sala.bugaderia.tina_feta": "La tina, encara negra. Ja ha fet la feina: dos hàbits de monjo.",
+      "sala.bugaderia.tina_freda": "La tina, amb aigua negra com la nit. Però freda: el fogó és apagat.",
+      "sala.pont_ter.barca_ronca": "La barca, amb en Joanet a dins, roncant com una mola.",
+      "sala.mur_avet.forat_mati": "El forat on hi havia el cofre de l'Emma. Ara el cofre el tenim nosaltres."
     }
   },
   "locale": "ca",

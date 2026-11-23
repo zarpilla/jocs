@@ -4,10 +4,10 @@ y = 260). EN 3D: l'art de `mur_avet` (avet_comu.py) a la primavera.
 
 Matí tebi, cel blau, verd tendre: el `mur` arreglat (les pedres noves, més clares, on l'avet l'havia esbotzat), un
 arbre florit a l'hort, on hi havia l'avet; el tronc tallat en `rodanxes` apilades; les `arrels` velles encara al
-seu lloc, amb molsa, i el forat vell ple d'herba; al costat, el `forat_nou` per al plançó, i la `carretilla` amb
+seu lloc, amb molsa, i el forat vell ple d'herba; al costat, el `forat_nou` per al plançó, i la `carretilla` (una civera) amb
 el plançó. El faristol d'en Ponç, al mig. El primer pla: herba i flors.
 Decorats: `forat_gran` (el forat eixamplat, amb la terra treta), `planco_plantat` (el plançó al forat, amb la
-cinta), `segell_planco` (el segell vermell del jutge a la cinta), `rotul_clavat` (la post amb «AVET») i `planco_agafat` (la carretilla buida). PROPS:
+cinta), `segell_planco` (el segell vermell del jutge a la cinta), `rotul_clavat` (la post amb «AVET») i `planco_agafat` (la civera buida). PROPS:
 `rotul` (el cos clicable del rètol: buit, el dibuixa `rotul_clavat`).
 """
 import numpy as np
@@ -59,7 +59,7 @@ PROPS = {
     'segell_planco': _prop(_e('forat_gran', 'planco', 'segell_planco', treu=('forat_nou',)), PLANTAT),
     'rotul_clavat': _prop(_e('forat_gran', 'planco', 'rotul', treu=('forat_nou',)), PLANTAT),
     'rotul': _buit,
-    # la carretilla buida (l'Iri ja ha agafat el plançó, o l'ha plantat)
+    # la civera buida (l'Iri ja ha agafat el plançó, o l'ha plantat)
     'planco_agafat': _prop(_e('carretilla_buida'), BASE),
 }
 
@@ -91,7 +91,7 @@ GEOMETRIA = {
         'absis': _T['absis'],
         'arrels': _T['arrels'],
         'rodanxes': {'rect': _rect([_R + (-100, 0, 0), _R + (100, 150, 0)], 2), 'walk': p(60, 628)},
-        'carretilla': {'rect': _rect([_C + (-62, 0, -20), _C + (46, 96, 20)], 1), 'walk': p(-10, 580)},
+        'carretilla': {'rect': _rect([_C + (-64, 0, -20), _C + (64, 90, 20)], 1), 'walk': p(-10, 580)},
         'forat_nou': {'rect': _rect([_F + (-40, 0, -24), _F + (40, 8, 24)], 3), 'walk': p(-120, 600)},
         'rotul': {'rect': _rect([A.ROTUL + (-20, 0, 0), A.ROTUL + (20, 44, 0)], 1), 'walk': p(-90, 590)},
     },

@@ -65,7 +65,7 @@
     },
     "epileg 3.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 665,
         "y": 0,
         "w": 28,
         "h": 42
@@ -128,18 +128,18 @@
     },
     "epileg 6.aseprite": {
       "frame": {
-        "x": 668,
+        "x": 640,
         "y": 0,
         "w": 25,
-        "h": 41
+        "h": 46
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 284,
-        "y": 146,
+        "x": 281,
+        "y": 151,
         "w": 25,
-        "h": 41
+        "h": 46
       },
       "sourceSize": {
         "w": 640,
