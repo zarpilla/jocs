@@ -393,7 +393,26 @@
           "verb": [
             "use",
             "pickUp",
-            "pull"
+            "pull",
+            "push"
+          ],
+          "if": {
+            "flag": "aigua_baixa",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.comporta_bull"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp",
+            "pull",
+            "push"
           ],
           "if": {
             "all": [
@@ -481,6 +500,28 @@
             {
               "who": "player",
               "text": "sala.pont_ter.36"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "var": "fase",
+                "op": "==",
+                "value": 7
+              },
+              {
+                "flag": "joanet_despert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.barca_ronca"
             }
           ]
         },

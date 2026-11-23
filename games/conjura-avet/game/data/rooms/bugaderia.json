@@ -185,6 +185,31 @@
         },
         {
           "verb": "look",
+          "if": {
+            "flag": "habits_tenyits"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.tina_feta"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "foc_ences",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bugaderia.tina_freda"
+            }
+          ]
+        },
+        {
+          "verb": "look",
           "lines": [
             {
               "who": "player",

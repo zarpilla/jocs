@@ -33,6 +33,7 @@ describe('ordres', () => {
     p.do('give', 'vet', 'cera');
     p.do('walkTo', 'cami_riu');
     p.talk('joanet', 'barca', 'comporta', 'adeu');
+    expect(claus(p.do('use', 'comporta'))).toEqual(['sala.pont_ter.comporta_bull']);
     p.use('destral', 'sobreeixidor');
     p.do('walkTo', 'cami');
     p.use('olla', 'branca_trencada');
@@ -204,6 +205,7 @@ describe('ordres', () => {
     p.do('walkTo', 'cami_riu');
     p.talk('ermessenda');
     expect(n.flag('testimoni_ermessenda')).toBe(false);
+    expect(claus(p.do('look', 'barca'))).toEqual(['sala.pont_ter.barca_ronca']);
     p.do('push', 'barca');
     p.talk('joanet');
     p.do('push', 'comporta');

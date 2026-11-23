@@ -577,6 +577,20 @@
         {
           "verb": "look",
           "if": {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.forat_mati"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
             "all": [
               {
                 "flag": "cera_agafada",
