@@ -1,23 +1,59 @@
 {
  "iri": {
-  "voice_id": "4wahcyauG9mc3d0il5xS",
+  "voice_id": "ynlvmqXJVlmbL80DaOGt",
   "name": "Ni un ou · Iri",
-  "description": "Woman, 28, ship's engineer on an old research vessel. Native Catalan speaker with a Central Catalan (Barcelona) accent. Low, calm, slightly husky voice. Laconic, dry humour, practical, few words; warmer when she talks to the engines. Unhurried, natural, close microphone.",
-  "labels": {},
-  "settings": null
+  "description": "Woman, 28, ship's engineer on an old research vessel. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Low, calm, slightly husky voice. Laconic, dry humour, practical, few words; warmer when she talks to the engines. Unhurried, natural, close microphone.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "El terra fa pendent. Poquet. Però fa tres campanyes que dormo a bord d'aquest vaixell, i l'Arenga no dorm mai torçada. Tot verd, i el vaixell assegut de popa. Un dels dos menteix, i el vaixell no sap mentir. Fa dues campanyes, en un temporal, vaig caure per la borda. Em va treure ell.",
+   "triada": "proposta 3 de 3",
+   "data": "2026-11-23"
+  },
+  "substitueix": {
+   "voice_id": "4wahcyauG9mc3d0il5xS",
+   "description": "Woman, 28, ship's engineer on an old research vessel. Native Catalan speaker with a Central Catalan (Barcelona) accent. Low, calm, slightly husky voice. Laconic, dry humour, practical, few words; warmer when she talks to the engines. Unhurried, natural, close microphone.",
+   "motiu": "es va provar una veu occidental (1Tflsy9CR1RiO8jZfvGb), però barrejava accents; es va tornar al central amb la descripció forta"
+  }
  },
  "vet": {
-  "voice_id": "36eTEZUgZ8uiSh82dpWv",
+  "voice_id": "d2T6rzJDQPIJNNAbrnOm",
   "name": "Ni un ou · Vet",
-  "description": "Woman, 32, emergency doctor. Native Catalan speaker with a Central Catalan (Barcelona) accent. Bright, clear mid-pitched voice. Quick-witted, charming, cheeky and a little sarcastic; lively delivery with a smile in the voice, confident.",
-  "labels": {},
-  "settings": null
+  "description": "Woman, 32, emergency doctor. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Bright, clear mid-pitched voice. Quick-witted, charming, cheeky and a little sarcastic; lively delivery with a smile in the voice, confident.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Algú li va pagar perquè plegués, comptant que a dos dies de salpar Mar Obert només trobaria algú que no sap on és la proa. Algú d'aquesta taula ha obert una vàlvula, ha tallat una ràdio i ha tancat la Juana en una caixa de cadenes. Fa tres setmanes no sabia on era la proa. Ara em llevo de nit per veure sortir el sol per la popa.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-23"
+  },
+  "substitueix": {
+   "voice_id": "36eTEZUgZ8uiSh82dpWv",
+   "description": "Woman, 32, emergency doctor. Native Catalan speaker with a Central Catalan (Barcelona) accent. Bright, clear mid-pitched voice. Quick-witted, charming, cheeky and a little sarcastic; lively delivery with a smile in the voice, confident.",
+   "motiu": "accent poc fixat: calia l'etiqueta [central Catalan accent]"
+  }
  },
  "bastida": {
-  "voice_id": "asgMXeRMGqgJjGGUfsxW",
+  "voice_id": "UzjXTybjixmzG5YEx821",
   "name": "Ni un ou · Bastida",
-  "description": "Man, 63, old boatswain with 35 years at sea, pipe smoker. Native Catalan speaker with a Central Catalan (Barcelona) accent. Deep, gravelly, weathered voice. Slow, warm storyteller, fatherly, with hidden sadness and guilt.",
-  "labels": {},
-  "settings": null
+  "description": "Man, 63, old boatswain with 35 years at sea, pipe smoker. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Deep, gravelly, weathered voice. Slow, warm storyteller, fatherly, with hidden sadness and guilt.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Trenta-cinc anys traient gent de l'aigua per un sou de misèria, i un dia et truquen i et diuen una xifra. I descobreixes que tens un preu. Em vaig dir que el mar ja estava mort. Que quan jo era jove les arengades bullien, i ara no en queda ni una. Què hi feia, una mica més de fang? A tu no et tinc por, doctora.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-23"
+  },
+  "substitueix": {
+   "voice_id": "asgMXeRMGqgJjGGUfsxW",
+   "description": "Man, 63, old boatswain with 35 years at sea, pipe smoker. Native Catalan speaker with a Central Catalan (Barcelona) accent. Deep, gravelly, weathered voice. Slow, warm storyteller, fatherly, with hidden sadness and guilt.",
+   "motiu": "accent poc fixat: perdia l'accent central en frases llargues"
+  }
  }
 }
