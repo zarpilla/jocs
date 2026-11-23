@@ -76,8 +76,8 @@ function addGameMenuButtons(gameDir: string) {
   script = script
     .replace(/\nimport \{[^}]*\} from '\.\.\/\.\.\/narrative\/narrative(\.script)?';/g, '')
     .replace(/import \{ ([^}]*) \} from '\.\/game-menu\.ids';/, (_m, names: string) => {
-      const own = names.split(',').map((n) => n.trim()).filter((n) => n && !['canviar', 'historial', 'pista'].includes(n));
-      return `import { ${[...own, 'historial', 'pista'].join(', ')} } from './game-menu.ids';
+      const own = names.split(',').map((n) => n.trim()).filter((n) => n && !['canviar', 'historial', 'pista', 'quit'].includes(n));
+      return `import { ${[...own, 'historial', 'pista', 'quit'].join(', ')} } from './game-menu.ids';
 import { sayHint } from '../../narrative/narrative.script';
 import { showHistory } from '../../narrative/narrative';`;
     });
@@ -92,6 +92,12 @@ historial.onClick(() => {
 pista.onClick(() => {
   gui.hide()
   sayHint()
+})
+
+// «Surt»: a l'escriptori tanca l'aplicació; al navegador torna a l'arrel del web (els jocs viuen a malaherbasoft.cat/<joc>/).
+quit.onClick(() => {
+  if (game.isDesktop) game.quit()
+  else window.location.href = '/'
 })
 `);
 }
