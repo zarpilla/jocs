@@ -5,11 +5,22 @@
   "language": "ca",
   "format": "mp3_44100_64",
   "voices": {
-    "vet": "ofqVW4eDfHiLIwyyyIC8",
-    "mare": "lCYsk1aDPyGAzxRiNV7P"
+    "vet": "jAx5x8xbe5mqP21ArNfW",
+    "mare": "t2Kim0wlKtFZrWt03Vmg",
+    "iri": "gXT2AQaS86Ufags5nLqR",
+    "narrator": "FNdnS2ecWUIFcbrVKyir",
+    "cargol": "VTEXGgPKlBqdUdLR4LWp",
+    "mos": "hFnjpHB684Pmcboi8ACb",
+    "directora": "q3Gw7o2BTwVeJrtwzJ0M",
+    "sic": "Gh8yBllOxnKW9xmH8Ys1",
+    "guardia": "APh6LF6Nsv3pbflf9cIt",
+    "mira": "nLURFGiVoaR7PFLxpB54",
+    "director": "upqanby8jsr291OjYmVg",
+    "cargol_vell": "VTEXGgPKlBqdUdLR4LWp",
+    "capatas": "Gh8yBllOxnKW9xmH8Ys1"
   },
   "text": {
-    "dlg.mare.hola": "[cheerfully] Hola, interna 9! Soc la MARE, el seu Mòdul d'Atenció i Reinserció Ecològica. Com la puc fer feliç?",
+    "dlg.mare.hola": "[cheerfully] Hola, interna nou! Soc la MARE, el seu Mòdul d'Atenció i Reinserció Ecològica. Com la puc fer feliç?",
     "dlg.mare.sortir2": "[cheerfully] Gràcies per la seva paciència!"
   },
   "pronuncia": {
@@ -28,7 +39,26 @@
     "NIVELL -1": "NIVELL MENYS U",
     " → ": " ",
     "ferro-9": "ferro nou",
-    "Ferro-9": "Ferro nou"
+    "Ferro-9": "Ferro nou",
+    "cel·la 9": "cel·la nou",
+    "nterna 9": "nterna nou",
+    "nterna 4": "nterna quatre",
+    "nterna 23": "nterna vint-i-tres",
+    "ntern 11": "ntern onze",
+    "pilar 7": "pilar set",
+    "un 7 ": "un set ",
+    "del 7 ": "del set ",
+    "ot 1": "ot u",
+    "lot 7": "lot set",
+    "cambra 1": "cambra u",
+    "ressonància 1": "ressonància u",
+    "any 80": "any vuitanta",
+    "ny 100": "ny cent",
+    "PD 2": "pe de dos",
+    "Caldera 4": "Caldera quatre",
+    "any 12": "any dotze",
+    "any 58": "any cinquanta-vuit",
+    "any 37": "any trenta-set"
   },
   "codi": {
     "finestra.posat": [

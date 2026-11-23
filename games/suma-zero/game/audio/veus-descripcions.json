@@ -64,7 +64,8 @@
    "voice_id": "th9zqB2LzgTTJqmUHY6L",
    "name": "Suma Zero - Narrator",
    "description": "Suma Zero: narrador, home de 50 anys, comèdia impassible",
-   "motiu": "accent estrany i barrejat; massa lenta"
+   "motiu": "accent estrany i barrejat; massa lenta",
+   "esborrada": "2026-11-23"
   }
  },
  "ballester": {
@@ -72,69 +73,79 @@
   "name": "Suma Zero - Ballester",
   "description": "Suma Zero: Cap de Seguretat, greu i cansat",
   "labels": {},
-  "settings": null
+  "settings": null,
+  "esborrada": "2026-11-23: esborrada d'ElevenLabs per fer lloc (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "empleat": {
   "voice_id": "ykU7gWoiNK1iSBlQoHqg",
   "name": "Suma Zero - Empleat",
   "description": "Suma Zero: Empleat d'objectes perduts, apàtic",
   "labels": {},
-  "settings": null
+  "settings": null,
+  "esborrada": "2026-11-23: esborrada d'ElevenLabs per fer lloc (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "marcel": {
   "voice_id": "gIyuSh2UrBHKbHwUvRbP",
   "name": "Suma Zero - Marcel",
   "description": "Suma Zero: Enginyer jubilat, amarg i lacònic",
   "labels": {},
-  "settings": null
+  "settings": null,
+  "esborrada": "2026-11-23: esborrada d'ElevenLabs per fer lloc (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "neta": {
   "voice_id": "3m9ggPe41hpT2e6zcuMW",
   "name": "Suma Zero - Neta",
   "description": "Suma Zero: Robot de neteja esgotat",
   "labels": {},
-  "settings": null
+  "settings": null,
+  "esborrada": "2026-11-23: esborrada d'ElevenLabs per fer lloc (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "pons": {
   "voice_id": "9Rhb6b4Sip2dJIzOgpFD",
   "name": "Suma Zero - Pons",
   "description": "Suma Zero: Secretària del Director, irònica",
   "labels": {},
-  "settings": null
+  "settings": null,
+  "esborrada": "2026-11-23: esborrada d'ElevenLabs per fer lloc (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "recepcionista": {
   "voice_id": "1nTP8XOvpyIqBWNqKWlM",
   "name": "Suma Zero - Recepcionista",
   "description": "Suma Zero: Recepcionista del BCMU",
   "labels": {},
-  "settings": null
+  "settings": null,
+  "esborrada": "2026-11-23: esborrada d'ElevenLabs per fer lloc (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "rius": {
   "voice_id": "6K85owF3LVoMkppyuC5y",
   "name": "Suma Zero - Rius",
   "description": "Suma Zero: Encarregada de la subcontracta, sarcàstica",
   "labels": {},
-  "settings": null
+  "settings": null,
+  "esborrada": "2026-11-23: esborrada d'ElevenLabs per fer lloc (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "soler": {
   "voice_id": "PXlY9JHvQN5mfjfqHu8x",
   "name": "Suma Zero - Soler",
   "description": "Suma Zero: Vigilant de l'aeroport, de cor tendre",
   "labels": {},
-  "settings": null
+  "settings": null,
+  "esborrada": "2026-11-23: esborrada d'ElevenLabs per fer lloc (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "tomas": {
   "voice_id": "ueeDWvUDboMZyQgcFkIa",
   "name": "Suma Zero - Tomas",
   "description": "Suma Zero: Amo de La Propina, rondinaire",
   "labels": {},
-  "settings": null
+  "settings": null,
+  "esborrada": "2026-11-23: esborrada d'ElevenLabs per fer lloc (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "bonfill": {
   "voice_id": "nLTXUA1cXLo5vBkF8HyY",
   "name": "Suma Zero - Bonfill",
   "description": "Suma Zero: el Director, cínic i condescendent",
   "labels": {},
-  "settings": null
+  "settings": null,
+  "esborrada": "2026-11-23: esborrada d'ElevenLabs per fer lloc (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  }
 }

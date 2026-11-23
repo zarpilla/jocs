@@ -1,20 +1,178 @@
 {
  "vet": {
-  "voice_id": "ofqVW4eDfHiLIwyyyIC8",
-  "name": "Vet-ferro9",
-  "description": "A young woman in her twenties, a witty, sarcastic professional thief, dry humour, relaxed and confident, slightly husky. Native Catalan accent.",
+  "voice_id": "jAx5x8xbe5mqP21ArNfW",
+  "name": "Ferro-9 · Vet",
+  "description": "A young woman in her twenties, a witty, sarcastic professional thief locked in a space prison, dry humour, relaxed and confident, slightly husky voice. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
   "labels": {
    "language": "ca"
   },
-  "settings": null
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "La Mira va pagar el que va fer la I. Cent vint anys tard per arreglar-ho... o no? Si algú m'ha enviat una clau, potser jo li puc enviar un missatge. Em caldrà paper i alguna cosa per escriure. Tancada. La MARE ha canviat el pany, i ja no em queden imants.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-23"
+  },
+  "substitueix": {
+   "voice_id": "ofqVW4eDfHiLIwyyyIC8",
+   "name": "Vet-ferro9",
+   "description": "A young woman in her twenties, a witty, sarcastic professional thief, dry humour, relaxed and confident, slightly husky. Native Catalan accent.",
+   "motiu": "feta al web sense l'accent fixat; esborrada"
+  }
  },
  "mare": {
-  "voice_id": "lCYsk1aDPyGAzxRiNV7P",
-  "name": "MARE-ferro9",
-  "description": "A cheerful, overly sweet female AI assistant voice from a prison space station, customer-service tone, slightly synthetic and uncanny. Native Catalan accent",
+  "voice_id": "t2Kim0wlKtFZrWt03Vmg",
+  "name": "Ferro-9 · MARE",
+  "description": "A cheerful, overly sweet female AI assistant of a prison space station, relentless customer-service tone, smiling, slightly synthetic and uncanny. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Clean studio recording.",
   "labels": {
    "language": "ca"
   },
-  "settings": null
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Bon dia, interna 9! Bones notícies: el seu reciclatge s'avança a avui! I abans, visita de reeducació obligatòria a la Sala de la Memòria. Hi ha galetes! El reciclatge és una oportunitat! Amb afecte, MARE.",
+   "triada": "proposta 3 de 3",
+   "data": "2026-11-23"
+  },
+  "substitueix": {
+   "voice_id": "lCYsk1aDPyGAzxRiNV7P",
+   "name": "MARE-ferro9",
+   "description": "A cheerful, overly sweet female AI assistant voice from a prison space station, customer-service tone, slightly synthetic and uncanny. Native Catalan accent",
+   "motiu": "feta al web sense l'accent fixat; esborrada"
+  }
+ },
+ "iri": {
+  "voice_id": "gXT2AQaS86Ufags5nLqR",
+  "name": "Ferro-9 · Iri",
+  "description": "A woman around 30, night-shift engineer at a retro-futuristic iron factory 120 years ago, practical, clever and brave, warm but tired, writes careful notes. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Hola, la de la cel·la nou. Aquí és la fàbrica de ferro nou de la Corporació Aldaia, i jo en soc l'enginyera del torn de nit. No hi ha cap cel·la. Què vol dir brutal-plus? I què vol dir que et reciclen? Una marca al pilar, gravada ben fonda: si dura cent vint anys, la V. la veurà.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "narrator": {
+  "voice_id": "FNdnS2ecWUIFcbrVKyir",
+  "name": "Ferro-9 · Narrador",
+  "description": "Male narrator in his fifties for a retro sci-fi adventure with humour, calm, warm and slightly wry, documentary storyteller. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Clean studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "La Vet fa pública la llibreta. Una operària desapareguda fa cent vint anys explica, amb la seva lletra, que la cambra no va ser cap accident. I la Vet, l'única sincronitzadora que n'ha sortit viva, explica la resta: el reciclatge.",
+   "triada": "proposta 3 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "cargol": {
+  "voice_id": "VTEXGgPKlBqdUdLR4LWp",
+  "name": "Ferro-9 · Cargol",
+  "description": "A pedantic maintenance robot, brand new and obsessed with rules and forms, polite, precise, slightly metallic and nasal male voice, speaks like a bureaucrat. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Clean studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Productiva, senyora Iri. I si li cal una peça de ferro nou que soni d'una manera concreta, ja sap el procediment: formulari vint-i-set be, segellat per triplicat. I una llima, i paciència. Correcció: és una clau anglesa. Ús: cargols. Ho he notificat quaranta-tres vegades.",
+   "triada": "proposta 3 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "mos": {
+  "voice_id": "hFnjpHB684Pmcboi8ACb",
+  "name": "Ferro-9 · Mos",
+  "description": "An old, thin male prisoner wearing makeup, failed time-synchronizer, theatrical, wistful and gossipy, affectionate with his young cellmate, slightly raspy voice. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Un pany que canta? I el so no passa per la paret: això t'ho dic jo, que m'hi vaig passar anys cridant. Li hauràs de fer arribar la nota d'una altra manera. Una comporta sense palanca. Doncs demana-la a la de la paret. Però digues-li la mida, nena.",
+   "triada": "proposta 3 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "directora": {
+  "voice_id": "q3Gw7o2BTwVeJrtwzJ0M",
+  "name": "Ferro-9 · Directora",
+  "description": "A woman in her fifties, director of a space prison and corporate heiress, cold, elegant, smug and condescending, quotes her ancestor constantly, smooth controlled voice. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Clean studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Ah, i he fet treure el tub de la vàlvula de la teva llançadora. Per si et venien ganes de viatjar: ara l'única sortida d'aquí és el meu pacte. Ja vas dir que no a la corporació una vegada, per quaranta filtres d'aire i un barri de morosos. Mira on t'ha portat.",
+   "triada": "proposta 3 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "sic": {
+  "voice_id": "Gh8yBllOxnKW9xmH8Ys1",
+  "name": "Ferro-9 · Sic",
+  "description": "A middle-aged male corporate inventory inspector, deadpan, stone-faced humour, dry, slow and suspicious, low flat voice. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "L'expedient ja té una sospitosa: la d'Orís, la seva companya de torn. Ja veurem si és l'única. Operària I. Ordres del Director: ningú entra a la cambra. Vostè, menys que ningú. Falten coses. Una clau anglesa, un imant... i qui sap què més.",
+   "triada": "proposta 3 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "guardia": {
+  "voice_id": "APh6LF6Nsv3pbflf9cIt",
+  "name": "Ferro-9 · Guàrdia",
+  "description": "A young female guard in her twenties, friendly, kind and a little curious, warm open voice, sincere. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Guàrdia d'Orís. La meva besàvia va treballar a la fàbrica d'aquí sota, al torn de nit. Sempre deia que una tal I. li havia salvat la feina. I potser alguna cosa més. Bé. No et puc deixar passar de la zona comuna, però no et trepitjaré els talons.",
+   "triada": "proposta 2 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "mira": {
+  "voice_id": "nLURFGiVoaR7PFLxpB54",
+  "name": "Ferro-9 · Mira",
+  "description": "A young woman in her twenties, night-shift factory assistant, loyal best friend, lively, nervous and honest, a terrible liar, bright voice. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Iri! Tothom diu que el Director et busca. Què has fet? Que vas trencar la cambra del Director. I que el Sic t'ha de portar a declarar. Jo dic que no et conec gaire. Menteixo fatal, però ho dic. Tu marxa. Jo me n'encarrego.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "director": {
+  "voice_id": "upqanby8jsr291OjYmVg",
+  "name": "Ferro-9 · Director",
+  "description": "A charming, grandiose male factory founder speaking as a museum hologram tour guide, enthusiastic old-fashioned announcer, sweet and sinister, slightly vintage radio quality. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Clean studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Benvinguts a la Sala de la Memòria! Aquí va començar tot: la Fàbrica Aldaia, el ferro nou i el somni d'un món millor. El fundador treballava colze a colze amb els obrers. Ho demostra el seu casc de seguretat: ni una ratlla.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-23"
+  }
+ },
+ "cargol_vell": {
+  "voice_id": "VTEXGgPKlBqdUdLR4LWp",
+  "comparteix": "cargol",
+  "motiu": "és el mateix robot, 120 anys després"
+ },
+ "capatas": {
+  "voice_id": "Gh8yBllOxnKW9xmH8Ys1",
+  "comparteix": "sic",
+  "motiu": "només 4 línies (ronca i parla en somnis)"
  }
 }
