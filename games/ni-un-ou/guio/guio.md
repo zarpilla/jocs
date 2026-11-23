@@ -919,7 +919,8 @@ hi faig un pont, el generador crema. I jo he de ser dalt del pal.»
 
 **El pla.** L'antena del satèl·lit és al pal. En Bastida la va desorientar la nit de la vàlvula (clau de tubs, nus
 Bastida, amb la volta de més). Ja no hi ha més remei: amb vent o sense, l'Iri hi ha de pujar, tornar-la a orientar i
-enviar les dades de l'USB i les fotos de la Mostra 7 mentre el satèl·lit passi per sobre. El terminal del pont té
+enviar les dades de l'USB i les fotos de la Mostra 7 mentre el satèl·lit passi per sobre. Si el Marcel és aliat, ho
+diu al menjador: «Hi pujo primer, Iri. L'antena, la desbloquejo jo.» (i a dalt, ja hi és). El terminal del pont té
 un **SAI** (bateria d'emergència) que aguanta **2 torns** d'enviament. La resta necessita el generador, i el generador necessita el relé que té en Bastida.
 
 **Rellotge: el senyal del satèl·lit** (12 torns). Es veu al terminal: una barra que puja mentre el satèl·lit

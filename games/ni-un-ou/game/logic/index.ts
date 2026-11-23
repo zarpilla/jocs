@@ -17,7 +17,7 @@ export * from './separades.js';
 export * from './sincronia.js';
 
 /** Totes les accions que el contingut pot fer servir (`"action": { "name": ... }`). */
-export const GAME_ACTIONS: string[] = ['munta.enviar', 'munta.recollir', 'munta.nota', 'donar'];
+export const GAME_ACTIONS: string[] = ['munta.enviar', 'munta.recollir', 'munta.mirar', 'munta.nota', 'donar'];
 
 /** Claus de text que fa servir el codi del joc. */
 export const GAME_TEXT_KEYS: string[] = [...SINCRONIA_TEXTS, ...MUNTA_TEXTS, ...DONAR_TEXTS, ...ESCENES_TEXTS, ...MAPA_TEXTS, ...SEPARADES_TEXTS];

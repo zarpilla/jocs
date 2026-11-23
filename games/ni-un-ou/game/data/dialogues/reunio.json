@@ -707,6 +707,13 @@
           "text": "dlg.reunio.confessio.41"
         },
         {
+          "who": "marcel",
+          "text": "dlg.reunio.confessio.44",
+          "if": {
+            "flag": "aliat_marcel"
+          }
+        },
+        {
           "who": "iri",
           "text": "dlg.reunio.confessio.42"
         },

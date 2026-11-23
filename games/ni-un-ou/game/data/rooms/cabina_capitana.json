@@ -196,6 +196,15 @@
       },
       "interactions": [
         {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cabina_capitana.capitana.mira"
+            }
+          ]
+        },
+        {
           "verb": "talkTo",
           "dialogue": "capitana"
         }

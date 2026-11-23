@@ -200,6 +200,12 @@
       },
       "interactions": [
         {
+          "verb": "look",
+          "action": {
+            "name": "munta.mirar"
+          }
+        },
+        {
           "verb": [
             "pickUp",
             "open",

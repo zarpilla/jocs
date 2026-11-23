@@ -297,6 +297,15 @@
       },
       "interactions": [
         {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.capitana.mira"
+            }
+          ]
+        },
+        {
           "verb": "talkTo",
           "if": {
             "all": [
@@ -357,6 +366,15 @@
       },
       "interactions": [
         {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.bastida.mira"
+            }
+          ]
+        },
+        {
           "verb": "talkTo",
           "if": {
             "all": [
@@ -397,6 +415,15 @@
         ]
       },
       "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.marcel.mira"
+            }
+          ]
+        },
         {
           "verb": "talkTo",
           "if": {
@@ -439,6 +466,15 @@
       },
       "interactions": [
         {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.tomas.mira"
+            }
+          ]
+        },
+        {
           "verb": "talkTo",
           "if": {
             "all": [
@@ -479,6 +515,15 @@
         ]
       },
       "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.juana.mira"
+            }
+          ]
+        },
         {
           "verb": "talkTo",
           "if": {
@@ -543,6 +588,15 @@
         ]
       },
       "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.nadia.mira"
+            }
+          ]
+        },
         {
           "verb": "talkTo",
           "if": {

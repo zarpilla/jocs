@@ -166,6 +166,12 @@
       },
       "interactions": [
         {
+          "verb": "look",
+          "action": {
+            "name": "munta.mirar"
+          }
+        },
+        {
           "verb": [
             "pickUp",
             "open",
@@ -511,6 +517,15 @@
       },
       "interactions": [
         {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.tomas.mira"
+            }
+          ]
+        },
+        {
           "verb": "talkTo",
           "dialogue": "tomas"
         }
@@ -534,6 +549,15 @@
         ]
       },
       "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.nadia.mira"
+            }
+          ]
+        },
         {
           "verb": "talkTo",
           "dialogue": "nadia"

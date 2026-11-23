@@ -40,6 +40,8 @@ CARTA «carta nàutica»
         JUGADORA: La carta de la campanya. Galway, encerclat. Port Hallen, encerclat amb un altre color, i més fort.
 
 CAPITANA «—» — hi és si (escena = 2 i pacient ≠ "capitana") o escena = 6 o (escena = 8 i NO reunio_comencada)
+    • look — SEMPRE
+        JUGADORA: La Capitana. Fins i tot asseguda, sembla que estigui al timó.
     • talkTo — SEMPRE
         ⇒ diàleg capitana
 
@@ -262,12 +264,20 @@ BASTIDA «—» — hi és si escena = 2 o (escena = 6 i NO bastida_baixa)
         ⇒ diàleg bastida
 
 CAPITANA «—» — hi és si escena = 2 i NO esmorzar_fet
+    • look — SEMPRE
+        JUGADORA: La Capitana es pren el cafè dreta, com si el vaixell li pogués fugir.
 
 MARCEL «—» — hi és si escena = 2 i NO esmorzar_fet
+    • look — SEMPRE
+        JUGADORA: El Marcel, amb la boca plena de croissant. Té cara de no haver dormit.
 
 NADIA «—» — hi és si escena = 2 i NO esmorzar_fet
+    • look — SEMPRE
+        JUGADORA: La Nadia, amb el mòbil a la mà. Fa fotos del mar. O d'alguna cosa que hi ha al mar.
 
 TOMAS «—» — hi és si escena = 2 i NO esmorzar_fet
+    • look — SEMPRE
+        JUGADORA: En Tomàs reparteix croissants com qui reparteix medalles.
 
 ```
 
@@ -380,6 +390,8 @@ MUNTA «muntacàrregues»
         JUGADORA: Si l'envio buit, no hi haurà res a l'altra banda. Això ho entenc fins i tot jo.
 
 SAFATA «safata del muntacàrregues» — hi és si munta_cuina ≠ ""
+    • look — SEMPRE
+        ⇒ acció munta.mirar
     • pickUp/open/use — si munta_cuina = "nota_iri"
         JUGADORA: Un paper doblegat. Lletra de l'Iri.
         NARRADOR: «Cada cosa que diem pel walkie, algú hi arriba primer. Ens escolten. Ni una paraula.»
@@ -433,10 +445,14 @@ FORN «forn»
         JUGADORA: El forn. Encara està tebi.
 
 TOMAS «—» — hi és si (escena = 2 i pacient ≠ "tomas") o escena = 6 o escena = 7
+    • look — SEMPRE
+        JUGADORA: En Tomàs. Farina fins als colzes, i un davantal amb les taques de tota una vida.
     • talkTo — SEMPRE
         ⇒ diàleg tomas
 
 NADIA «—» — hi és si escena = 5 i vet_amagada i NO nadia_decidida
+    • look — SEMPRE
+        JUGADORA: La Nadia, amb la cambra freda oberta i el mòbil a punt. Enxampada.
     • talkTo — SEMPRE
         ⇒ diàleg nadia
 
@@ -782,6 +798,8 @@ TAULA «taula»
         JUGADORA: La taula llarga del menjador. Quaranta anys de cafès, de cartes i de mapes.
 
 CAPITANA «—» — hi és si escena = 8 i reunio_comencada
+    • look — SEMPRE
+        JUGADORA: La Capitana, dreta al cap de la taula. No ha tocat el te.
     • talkTo — si escena = 8 i reunio_comencada i juga vet
         ⇒ diàleg reunio
     • talkTo — si escena = 8 i reunio_comencada
@@ -790,30 +808,40 @@ CAPITANA «—» — hi és si escena = 8 i reunio_comencada
         ⇒ diàleg capitana
 
 BASTIDA «—» — hi és si escena = 8 i reunio_comencada
+    • look — SEMPRE
+        JUGADORA: En Bastida. La pipa apagada, i les mans quietes damunt la taula. Massa quietes.
     • talkTo — si escena = 8 i reunio_comencada
         NARRADOR: Tothom espera que la doctora parli.
     • talkTo — SEMPRE
         ⇒ diàleg bastida
 
 MARCEL «—» — hi és si escena = 8 i reunio_comencada
+    • look — SEMPRE
+        JUGADORA: El Marcel, encongit a la cadira, com si l'acusat fos ell.
     • talkTo — si escena = 8 i reunio_comencada
         NARRADOR: Tothom espera que la doctora parli.
     • talkTo — SEMPRE
         ⇒ diàleg marcel
 
 TOMAS «—» — hi és si escena = 8 i reunio_comencada
+    • look — SEMPRE
+        JUGADORA: En Tomàs ha portat te i galetes. Ningú no en menja.
     • talkTo — si escena = 8 i reunio_comencada
         NARRADOR: Tothom espera que la doctora parli.
     • talkTo — SEMPRE
         ⇒ diàleg tomas
 
 JUANA «—» — hi és si escena = 8 i reunio_comencada
+    • look — SEMPRE
+        JUGADORA: La Juana, amb dues mantes i la bossa a la falda. No la deixarà anar.
     • talkTo — si escena = 8 i reunio_comencada
         NARRADOR: Tothom espera que la doctora parli.
     • talkTo — SEMPRE
         ⇒ diàleg juana
 
 NADIA «—» — hi és si (escena = 6 i aliada_nadia) o ((escena = 8 i reunio_comencada) i aliada_nadia)
+    • look — SEMPRE
+        JUGADORA: La Nadia, amb el mòbil a la mà. Ara treballa per a nosaltres. Crec.
     • talkTo — si escena = 8 i reunio_comencada
         NARRADOR: Tothom espera que la doctora parli.
     • talkTo — SEMPRE
@@ -1264,6 +1292,8 @@ MUNTA «muntacàrregues»
         JUGADORA: Buit no l'envio.
 
 SAFATA «safata del muntacàrregues» — hi és si munta_pont ≠ ""
+    • look — SEMPRE
+        ⇒ acció munta.mirar
     • pickUp/open/use — SEMPRE
         ⇒ acció munta.recollir
 
@@ -1294,6 +1324,8 @@ VIDRE «vidre»
         JUGADORA: El mar. Gris, de nit i de dia.
 
 CAPITANA «—» — hi és si escena = 3
+    • look — SEMPRE
+        JUGADORA: La Capitana, al timó. Mira el terminal del satèl·lit com si li degués diners.
     • talkTo — SEMPRE
         ⇒ diàleg capitana
 
@@ -1366,6 +1398,8 @@ MUNTA «muntacàrregues»
         JUGADORA: Sense res a dins, no l'envio. Fer-lo anar buit no porta res a ningú.
 
 SAFATA «safata del muntacàrregues» — hi és si munta_rebost ≠ ""
+    • look — SEMPRE
+        ⇒ acció munta.mirar
     • pickUp/open/use — si munta_rebost = "nota_vet"
         JUGADORA: La resposta de la Vet, a sota de la meva.
         NARRADOR: «Doncs diguem-los alguna cosa.»
@@ -2911,6 +2945,7 @@ COMENÇA A: torna (si ha vist reunio.inici) · inici
     ERNEST BASTIDA: Si no surt res, no ha passat res. Ho sento.
     IRI: Ha tret el relé del generador.
     IRI: L'antena del satèl·lit és al pal. Hi pujo. El terminal té una bateria per a dos enviaments; la resta, generador.
+    MARCEL: Hi pujo primer, Iri. L'antena, la desbloquejo jo. ⟨si aliat_marcel⟩
     IRI: I el relé el té ell. A mi no em deixarà acostar.
     VET: Doncs hi baixo jo.
     TÍTOL: Tres de la matinada. Ara necessites les dues.

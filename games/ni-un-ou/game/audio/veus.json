@@ -237,7 +237,45 @@
     "mapa.tancat": [
       "iri",
       "vet"
-    ]
+    ],
+    "munta.mira": [
+      "iri",
+      "vet"
+    ],
+    "munta.mira.travesser": [
+      "iri",
+      "vet"
+    ],
+    "munta.mira.tram": [
+      "iri",
+      "vet"
+    ],
+    "munta.mira.cable_nou": [
+      "iri",
+      "vet"
+    ],
+    "munta.mira.usb": [
+      "iri",
+      "vet"
+    ],
+    "munta.mira.clau_tomas": [
+      "iri",
+      "vet"
+    ],
+    "munta.mira.mostra7": [
+      "iri",
+      "vet"
+    ],
+    "munta.mira.registre": [
+      "iri",
+      "vet"
+    ],
+    "munta.mira.mapa": [
+      "iri",
+      "vet"
+    ],
+    "munta.mira.nota_iri": "vet",
+    "munta.mira.nota_vet": "iri"
   },
   "sense_veu": [
     "dlg.juana.mostra.7",

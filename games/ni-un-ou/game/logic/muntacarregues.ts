@@ -21,13 +21,13 @@ export const OBJECTES_MUNTA = ['travesser', 'tram', 'cable_nou', 'usb', 'nota_ir
 export const MUNTA_TEXTS = [
   'munta.envia', 'munta.retorna', 'munta.no_hi_cap', 'munta.ple', 'munta.recull', 'munta.buit', 'munta.cap.cuina', 'munta.cap.rebost', 'munta.cap.pont',
   // Línies pròpies d'alguns objectes (vegeu `extra`).
-  'munta.travesser.envia', 'munta.travesser.recull', 'munta.registre.recull',
+  'munta.mira', 'munta.travesser.envia', 'munta.travesser.recull', 'munta.registre.recull',
   ...frasesPerObjecte(),
 ];
 
 function frasesPerObjecte() {
   return OBJECTES_MUNTA.flatMap((item) => [
-    ...PARADES.map((cap) => `munta.envia.${item}.${cap}`), `munta.recull.${item}`, `munta.retorna.${item}`,
+    ...PARADES.map((cap) => `munta.envia.${item}.${cap}`), `munta.recull.${item}`, `munta.retorna.${item}`, `munta.mira.${item}`,
   ]);
 }
 
@@ -78,6 +78,15 @@ export function recollir(n: Narrative): ActionResult {
   return { lines: [player(perObjecte(n, 'munta.recull', item)), ...extra(n, `munta.${item}.recull`)] };
 }
 
+/** Mirar la safata: què hi ha (sense agafar-ho). */
+export function mirar(n: Narrative): ActionResult {
+  const aqui = paradaActual(n);
+  if (!aqui) return {};
+  const item = String(n.getVar(safata(aqui)) ?? '');
+  if (!item) return { lines: [player('munta.buit')] };
+  return { lines: [player(perObjecte(n, 'munta.mira', item))] };
+}
+
 /**
  * Un paper que s'envia sense ser a l'inventari (les notes de l'Escena 5): va a la safata de `parada`. Si la safata ja
  * tenia alguna cosa, torna a qui l'envia (no es pot trepitjar res).
@@ -116,5 +125,6 @@ export function altraSala(n: Narrative) {
 export function installMuntacarregues(n: Narrative) {
   n.registerAction('munta.enviar', ({ args }) => enviar(n, String(args.item ?? ''), altraSala(n)));
   n.registerAction('munta.recollir', () => recollir(n));
+  n.registerAction('munta.mirar', () => mirar(n));
   n.registerAction('munta.nota', ({ args }) => nota(n, String(args.item ?? ''), String(args.parada ?? 'cuina') as Parada));
 }

@@ -58,12 +58,12 @@ la llista). Cap pas és impossible.
 
 | Camí | Passos | Un toc | Toc + menú | Toc de més (mira primer) | Gestos per pas (dit) | Gestos per pas (ratolí) |
 |---|---|---|---|---|---|---|
-| Amb tots els aliats | 109 | 109 | 0 | 15 | 1,14 | 1,00 |
-| Amb les frontisses de l'Iri | 110 | 109 | 1 | 17 | 1,16 | 1,01 |
+| Amb tots els aliats | 108 | 108 | 0 | 14 | 1,13 | 1,00 |
+| Amb les frontisses de l'Iri | 109 | 109 | 0 | 15 | 1,14 | 1,00 |
 
 Amb el ratolí no hi ha tocs de més per mirar: mirar és un clic (l'esquerre, per defecte), i fer, l'altre (mesurat amb els botons girats: el resultat és el mateix).
 
-L'únic menú és el registre del rebost (s'hi pot fer més d'una cosa). És el joc que millor encaixa amb el toc.
+Cap pas del camí no obre el menú. És el joc que millor encaixa amb el toc.
 
 ### Ordres de la interfície tàctil
 
