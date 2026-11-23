@@ -107,8 +107,8 @@ describe("Cada sala, d'una sola protagonista", () => {
     expect(p.room).toBe('passadis');
     amb(p, 'iri', 'passadis');
     expect(diu('porta_infermeria')).toEqual(['sala.passadis.porta_infermeria.6']);
-    expect(diu('porta_menjador')).toEqual(['sala.coberta_proa.popa.3']);
-    expect(diu('porta_capitana')).toEqual(['sala.passadis.porta_capitana.3']);
+    expect(diu('porta_menjador')).toEqual(['sala.passadis.porta_menjador.5']);
+    expect(diu('porta_capitana')).toEqual(['sala.passadis.porta_capitana.6']);
     expect(p.room).toBe('passadis');
     p.do('use', 'porta_proa');
     expect(p.room).toBe('coberta_proa');

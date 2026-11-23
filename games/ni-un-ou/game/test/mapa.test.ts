@@ -86,7 +86,7 @@ describe('El plànol', () => {
       expect(iri.has(s), s).toBe(false);
     }
     expect(viatge(n, 'caixa_cadenes').sala).toBeNull();
-    expect(viatge(n, 'cuina').linies).toEqual([{ who: 'player', text: 'sala.coberta_proa.popa.3' }]);
+    expect(viatge(n, 'cuina').linies).toEqual([{ who: 'player', text: 'sala.passadis.porta_menjador.5' }]);
     expect(viatge(n, 'infermeria').linies).toEqual([{ who: 'player', text: 'sala.passadis.porta_infermeria.6' }]);
   });
 

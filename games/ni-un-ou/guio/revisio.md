@@ -966,7 +966,7 @@ PORTA_MENJADOR «menjador»
     • walkTo/use/open — si juga iri i escena = 3
         JUGADORA: Ara no. Si l'Ernest em veu, sabrà que no soc a dormir.
     • walkTo/use/open — si juga iri i no (escena = 8 i reunio_comencada)
-        JUGADORA: A coberta hi ha l'Ernest fumant. Avui no el vull mirar a la cara.
+        JUGADORA: Al menjador, ara, no hi tinc res a fer. I com menys em vegin voltar pel vaixell, millor.
     • walkTo/use/open — SEMPRE
         ⇒ → menjador
     • look — SEMPRE
@@ -1006,7 +1006,7 @@ PORTA_CAPITANA «cabina de la Capitana»
     • walkTo/use/open — si juga iri i reunio_comencada
         JUGADORA: La Capitana no hi és. I la seva cabina no és lloc per entrar-hi sense ella.
     • walkTo/use/open — si juga iri
-        JUGADORA: La Capitana dorm. I quan dorm, mossega més que en Diu.
+        JUGADORA: Si pico a la cabina, la Capitana voldrà saber què hi faig, fora de màquines.
     • walkTo/use/open — SEMPRE
         ⇒ → cabina_capitana
     • look — SEMPRE
