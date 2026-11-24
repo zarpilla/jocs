@@ -12,7 +12,8 @@ l'esquerra, en silueta.
 
 Tot el detall ve del local pla de sempre (ferrum_sindicat_pla_comu.py): la paret, la porta, els cartells, la pissarra,
 el bagul, els motlles i l'estufa es dibuixen de cara i es projecten. Decorat (PROPS): `vestit` (a dalt del bagul: es
-veu fins que l'Iri l'agafa). ANIMS: `estufa` (el foc de l'estufa, per la reixeta).
+veu fins que l'Iri l'agafa). ANIMS: `estufa` (el foc de l'estufa, per la reixeta) i `vapor`
+(el fil de vapor d'una tassa de la taula).
 
 El món: x a la dreta (0 = la paret de la porta), y amunt (0 = el terra), z cap al fons (300 = la paret del fons);
 1 unitat = 1 píxel de sala on un personatge fa la seva mida normal (escala 1).
@@ -375,7 +376,46 @@ def _frames_estufa():
     return out
 
 
-ANIMS = {'estufa': {'frames': _frames_estufa, 'frameDuration': 140}}
+# ─── Animació: el vapor de la tassa ──────────────────────────────────────────
+
+_TASSA = _gira(TAULA[0], TAULA[1], TAULA[5], -18, 8)               # la tassa de l'esquerra (la d'en Bru fa nosa)
+VAPOR_N = 16
+
+
+def _frames_vapor():
+    """Un fil de vapor que puja de la tassa, es torça i s'esvaeix: tres glopades desfasades, en bucle."""
+    from PIL import Image
+    u0, v0, _ = CAM.projecta((_TASSA[0], TAULA[4] + 8, _TASSA[1]))
+    out = []
+    for f in range(VAPOR_N):
+        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        P = img.load()
+        for k in range(3):
+            ph = (f / VAPOR_N + k / 3) % 1.0
+            for j in range(10):                                     # cada glopada, una cueta de 10 punts
+                q = ph - j * 0.014
+                if q < 0:
+                    continue
+                h = q * 24
+                x = u0 + math.sin(h / 5 + k * 2.1) * (0.5 + h / 10)
+                y = v0 - 2 - h
+                a = max(0.0, min(1.0, q * 6)) * (1 - q) ** 1.4 * 0.42
+                r = 0.6 + q * 1.4
+                for dx in range(-2, 3):
+                    for dy in range(-2, 3):
+                        if dx * dx + dy * dy > r * r + 0.3:
+                            continue
+                        X, Y = round(x) + dx, round(y) + dy
+                        if 0 <= X < W and 0 <= Y < H:
+                            o = P[X, Y][3] / 255
+                            na = 1 - (1 - o) * (1 - a)
+                            P[X, Y] = (226, 220, 208, round(na * 255))
+        out.append(img)
+    return out
+
+
+ANIMS = {'estufa': {'frames': _frames_estufa, 'frameDuration': 140},
+         'vapor': {'frames': _frames_vapor, 'frameDuration': 120}}
 
 
 # ─── Capes del davant ─────────────────────────────────────────────────────────

@@ -44,7 +44,7 @@
     },
     "ferrum_sindicat 2.aseprite": {
       "frame": {
-        "x": 1672,
+        "x": 1769,
         "y": 0,
         "w": 12,
         "h": 9
@@ -65,7 +65,7 @@
     },
     "ferrum_sindicat 3.aseprite": {
       "frame": {
-        "x": 1684,
+        "x": 1781,
         "y": 0,
         "w": 12,
         "h": 9
@@ -86,7 +86,7 @@
     },
     "ferrum_sindicat 4.aseprite": {
       "frame": {
-        "x": 1696,
+        "x": 1793,
         "y": 0,
         "w": 12,
         "h": 9
@@ -107,7 +107,7 @@
     },
     "ferrum_sindicat 5.aseprite": {
       "frame": {
-        "x": 1708,
+        "x": 1805,
         "y": 0,
         "w": 12,
         "h": 9
@@ -128,7 +128,7 @@
     },
     "ferrum_sindicat 6.aseprite": {
       "frame": {
-        "x": 1720,
+        "x": 1817,
         "y": 0,
         "w": 12,
         "h": 9
@@ -149,7 +149,7 @@
     },
     "ferrum_sindicat 7.aseprite": {
       "frame": {
-        "x": 1732,
+        "x": 1829,
         "y": 0,
         "w": 12,
         "h": 9
@@ -170,6 +170,342 @@
     },
     "ferrum_sindicat 8.aseprite": {
       "frame": {
+        "x": 1764,
+        "y": 0,
+        "w": 5,
+        "h": 14
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 250,
+        "y": 98,
+        "w": 5,
+        "h": 14
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 9.aseprite": {
+      "frame": {
+        "x": 1747,
+        "y": 0,
+        "w": 7,
+        "h": 19
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 97,
+        "w": 7,
+        "h": 19
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 10.aseprite": {
+      "frame": {
+        "x": 1685,
+        "y": 0,
+        "w": 7,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 95,
+        "w": 7,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 11.aseprite": {
+      "frame": {
+        "x": 1692,
+        "y": 0,
+        "w": 7,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 94,
+        "w": 7,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 12.aseprite": {
+      "frame": {
+        "x": 1699,
+        "y": 0,
+        "w": 7,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 92,
+        "w": 7,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 13.aseprite": {
+      "frame": {
+        "x": 1672,
+        "y": 0,
+        "w": 7,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 90,
+        "w": 7,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 14.aseprite": {
+      "frame": {
+        "x": 1754,
+        "y": 0,
+        "w": 6,
+        "h": 19
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 97,
+        "w": 6,
+        "h": 19
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 15.aseprite": {
+      "frame": {
+        "x": 1736,
+        "y": 0,
+        "w": 6,
+        "h": 20
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 96,
+        "w": 6,
+        "h": 20
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 16.aseprite": {
+      "frame": {
+        "x": 1706,
+        "y": 0,
+        "w": 6,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 94,
+        "w": 6,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 17.aseprite": {
+      "frame": {
+        "x": 1712,
+        "y": 0,
+        "w": 6,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 93,
+        "w": 6,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 18.aseprite": {
+      "frame": {
+        "x": 1679,
+        "y": 0,
+        "w": 6,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 250,
+        "y": 90,
+        "w": 6,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 19.aseprite": {
+      "frame": {
+        "x": 1760,
+        "y": 0,
+        "w": 4,
+        "h": 18
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 250,
+        "y": 98,
+        "w": 4,
+        "h": 18
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 20.aseprite": {
+      "frame": {
+        "x": 1742,
+        "y": 0,
+        "w": 5,
+        "h": 20
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 96,
+        "w": 5,
+        "h": 20
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 21.aseprite": {
+      "frame": {
+        "x": 1718,
+        "y": 0,
+        "w": 5,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 95,
+        "w": 5,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 22.aseprite": {
+      "frame": {
+        "x": 1723,
+        "y": 0,
+        "w": 6,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 248,
+        "y": 93,
+        "w": 6,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 23.aseprite": {
+      "frame": {
+        "x": 1729,
+        "y": 0,
+        "w": 7,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 248,
+        "y": 92,
+        "w": 7,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 24.aseprite": {
+      "frame": {
         "x": 1532,
         "y": 0,
         "w": 88,
@@ -189,7 +525,7 @@
       },
       "duration": 100
     },
-    "ferrum_sindicat 9.aseprite": {
+    "ferrum_sindicat 25.aseprite": {
       "frame": {
         "x": 1280,
         "y": 0,
@@ -210,7 +546,7 @@
       },
       "duration": 100
     },
-    "ferrum_sindicat 10.aseprite": {
+    "ferrum_sindicat 26.aseprite": {
       "frame": {
         "x": 1339,
         "y": 0,
@@ -231,7 +567,7 @@
       },
       "duration": 100
     },
-    "ferrum_sindicat 11.aseprite": {
+    "ferrum_sindicat 27.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -259,7 +595,7 @@
     "image": "ferrum_sindicat.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1744,
+      "w": 1841,
       "h": 360
     },
     "scale": "1",
@@ -286,30 +622,37 @@
         "color": "#000000ff"
       },
       {
-        "name": "davant_bagul",
+        "name": "vapor",
         "from": 8,
-        "to": 8,
+        "to": 23,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_bagul",
+        "from": 24,
+        "to": 24,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant_estufa",
-        "from": 9,
-        "to": 9,
+        "from": 25,
+        "to": 25,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant_taula",
-        "from": 10,
-        "to": 10,
+        "from": 26,
+        "to": 26,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant",
-        "from": 11,
-        "to": 11,
+        "from": 27,
+        "to": 27,
         "direction": "forward",
         "color": "#000000ff"
       }
