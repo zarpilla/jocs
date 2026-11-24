@@ -1,4 +1,18 @@
 {
+ "iri": {
+  "voice_id": "9EEgBTz6TfxNbXZvJE1e",
+  "name": "Conjura de l'Avet · Iri",
+  "description": "A young woman of 20, a medieval woodcutter's daughter: energetic, spirited and impatient, blunt and cheeky, bright youthful clear voice with lots of attitude, quick delivery. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Un forat buit al lloc de les arrels. Fa olor de terra de fa cent anys. Aquestes arrels no les ha tombat el vent: estan serrades. Els papers són cosa teva, Vet. Jo, la destral.",
+   "triada": "proposta 3 de 3 de la segona tanda («jove i viva»); la primera tanda, més rasposa, es va descartar",
+   "data": "2026-11-24"
+  }
+ },
  "ingilberga": {
   "voice_id": "q3Gw7o2BTwVeJrtwzJ0M",
   "name": "Ferro-9 · Directora",
@@ -23,9 +37,6 @@
   "voice_id": "o3FRRxK8bvCjesaHA5O5",
   "name": "Aigua Verne · Quim",
   "reaprofitada": "veu de en Quim d'Aigua Verne (descripció a games/aigua-verne/game/audio/veus-descripcions.json); triada escoltant-la amb frases de La Conjura de l'Avet el 2026-11-24"
- },
- "iri": {
-  "pendent": "veu nova per dissenyar (Voice Design v3, accent central)"
  },
  "vet": {
   "voice_id": "nutVKCNjaA4DevtZTsEW",

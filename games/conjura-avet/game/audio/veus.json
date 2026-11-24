@@ -1,0 +1,23 @@
+{
+  "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py i docs/guia-veus.md). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false. D'on surt cada veu, a veus-descripcions.json.",
+  "actiu": "url",
+  "model": "eleven_v3",
+  "language": "ca",
+  "format": "mp3_44100_64",
+  "voices": {
+    "iri": "9EEgBTz6TfxNbXZvJE1e",
+    "vet": "nutVKCNjaA4DevtZTsEW",
+    "narrator": "huwqfQW1eQYyls2PQ1yz",
+    "ponc": "w6wYlSCkpITKvx6hirEL",
+    "sunifred": "rBpRkIMd7su89HAsmZfH",
+    "ingilberga": "q3Gw7o2BTwVeJrtwzJ0M",
+    "gueraula": "APh6LF6Nsv3pbflf9cIt",
+    "bonfill": "33HWWarzjn9K9WIi3vap",
+    "ramon": "FZOsOD1RdgLtSL8SlssF",
+    "sanca": "SxLuhp7Kn2DhGjEHr2DK",
+    "joanet": "3aPafwym7d1YGcvjyDby",
+    "ermessenda": "KXALNk55jHXl4O8EShzx",
+    "gombau": "o3FRRxK8bvCjesaHA5O5",
+    "arnulf": "6OEqXvHwDQ6P6ICrmFMq"
+  }
+}
