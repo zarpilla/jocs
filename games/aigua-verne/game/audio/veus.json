@@ -1,6 +1,6 @@
 {
   "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false (no van al joc). `voices`: personatge → voice_id; d'on surt cada una, a veus-descripcions.json (sis de noves, set de Ni un ou i tres de la biblioteca). `pronuncia`: noms de planeta, números de contracte, lletres del teclat, i xifres (lots, preus, el tractor), que el model llegeix malament. `codi`: qui diu les línies de game/logic que no ho diuen elles (Mosca, safata, donar). `sense_veu`: les instruccions de joc, i el «Mrrau» d'en Diu i el «Guau» d'en Dividend. `jugadora`: qui parla on el contingut no ho diu: les sales i les converses que només fa una de les dues (guio.md, annex D 19): el fons d'Aqua i la Juana, la colada, el sindicat i en Bru, el pare i el teclat, la ràdio i la residència, l'Iri; el cobert i en Nil, la Vet; i les del palau, la de cada sala.",
-  "actiu": "url",
+  "actiu": true,
   "model": "eleven_v3",
   "language": "ca",
   "format": "mp3_44100_64",
