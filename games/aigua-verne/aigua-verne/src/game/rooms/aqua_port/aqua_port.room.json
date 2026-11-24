@@ -627,6 +627,32 @@
       },
       "zIndex": 30,
       "baseline": 233
+    },
+    {
+      "id": "cistella_grua",
+      "tag": "cistella_grua",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "cistella_grua": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "cistella_baixa": {
+          "loop": false,
+          "frameDuration": 90
+        },
+        "cistella_iri": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "cistella_avall": {
+          "loop": false,
+          "frameDuration": 90
+        }
+      }
     }
   ],
   "characters": [

@@ -269,20 +269,57 @@
           "lines": [
             {
               "who": "iri",
-              "text": "sala.aqua_port.cistella.3"
+              "text": "sala.aqua_port.cistella.3",
+              "stage": [
+                {
+                  "who": "player",
+                  "face": "L"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "who": "vet",
+                  "walk": "grua"
+                }
+              ]
             },
             {
               "who": "vet",
-              "text": "sala.aqua_port.cistella.4"
+              "text": "sala.aqua_port.cistella.4",
+              "sound": "grua",
+              "stage": [
+                {
+                  "prop": "cistella_grua",
+                  "anim": "cistella_baixa"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "cistella_grua",
+                  "anim": "cistella_baixa",
+                  "hold": 1.5
+                },
+                {
+                  "who": "player",
+                  "visible": false
+                },
+                {
+                  "prop": "cistella_grua",
+                  "anim": "cistella_iri",
+                  "hold": 0.8
+                }
+              ]
             },
             {
               "who": "narrator",
               "text": "sala.aqua_port.cistella.6",
-              "sound": "cistella"
-            },
-            {
-              "who": "iri",
-              "text": "sala.aqua_port.cistella.7"
+              "sound": "cistella",
+              "stage": [
+                {
+                  "prop": "cistella_grua",
+                  "anim": "cistella_avall"
+                }
+              ]
             }
           ],
           "effects": [
@@ -317,9 +354,40 @@
           ],
           "lines": [
             {
-              "who": "narrator",
-              "text": "sala.aqua_port.cistella.9",
-              "sound": "cistella"
+              "who": "iri",
+              "text": "sala.aqua_port.cistella.3",
+              "sound": "grua",
+              "stage": [
+                {
+                  "who": "player",
+                  "face": "L"
+                },
+                {
+                  "prop": "cistella_grua",
+                  "anim": "cistella_baixa"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "cistella_grua",
+                  "anim": "cistella_baixa",
+                  "hold": 2.5
+                },
+                {
+                  "who": "player",
+                  "visible": false
+                },
+                {
+                  "prop": "cistella_grua",
+                  "anim": "cistella_iri",
+                  "hold": 0.8
+                },
+                {
+                  "prop": "cistella_grua",
+                  "anim": "cistella_avall",
+                  "hold": 3.5
+                }
+              ]
             }
           ],
           "goTo": "aqua_fons"

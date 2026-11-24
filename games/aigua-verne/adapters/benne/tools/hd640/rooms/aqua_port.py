@@ -22,16 +22,21 @@ la nau); la nau, barrejada amb el blanc fred del cel i la sal (`to`).
 
 El detall (la caseta de la grua, la cistella, el far, la barca, els vaixells, el rètol i el
 panell) ve del port pla de sempre (aqua_port_pla_comu.py), dibuixat de cara i projectat.
-Decorat: `grua_arreglada` (llum verd a la cabina, projectat per la cara de la caseta). ANIMS: `calitja` (l'horitzó
+Decorat: `grua_arreglada` (llum verd a la cabina, projectat per la cara de la caseta). La cistella, amb el
+cable, és una capa a part (`cistella_grua`), perquè baixa a la cinemàtica de la baixada. ANIMS: `calitja` (l'horitzó
 tremola), `pols` (pols de sal), `llum_canonada` (el llum vermell del cim).
 
 El món: x a la dreta, y amunt (0 = el moll), z endavant; 1 unitat = 1 px a la distància on un personatge fa la seva
 mida normal (z = 500, en la direcció de la mirada). Al moll, l'escala d'un personatge és (v − HOR) / 140, exacta.
 """
 import functools
+import json
 import math
+from pathlib import Path
 
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
+
+from PIL import Image
 
 from hd.pix import Canvas, Light, W, H, hr
 from hd.rooms.exterior import fbm, smooth
@@ -468,8 +473,7 @@ def grua(e, tex):
     e.cable('grua', [apex, TIP], STEELA, 3.0, gruix=1.6)
     e.cable('grua', [apex, _cas(-a + 18, Y0 + 58, b + 18)], STEELA, 3.0, gruix=1.6)
     e.tub('grua', _add(TIP, side, -5), _add(TIP, side, 5), 6, STEELA, 3.6)
-    # el cable de la cistella
-    e.cable('grua', [(TIP[0], TIP[1] - 4, TIP[2]), (TIP[0], CIST_Y + 2, TIP[2])], STEELA, 3.6, gruix=1.2)
+    # (el cable de la cistella va amb la cistella: és a la capa `cistella_grua`)
 
 
 def _norm2(v):
@@ -477,10 +481,42 @@ def _norm2(v):
     return (v[0] / n, v[1] / n, v[2] / n)
 
 
-def cistella(e, tex):
+def cistella(e, tex, y=CIST_Y, dx=0.0, iri=False):
+    """La cistella penjada del cable, amb el ganxo a l'alçada `y` (i `dx` de balanceig). Amb `iri`, l'Iri a dins:
+    el cap i les espatlles per damunt de la vora."""
     x0, y0, x1, y1 = PL.BASKET
     hx, hy = PL.CRANE_TIP[0] + 3, y0 - 18
-    e.sprite('cistella', tex['cistella'], (hx, hy), (TIP[0], CIST_Y, TIP[2]), escala_img=1.6)
+    P = (TIP[0] + dx, y, TIP[2])
+    e.cable('cistella', [(TIP[0], TIP[1] - 4, TIP[2]), (P[0], y + 2, P[2])], STEELA, 3.6, gruix=1.2)
+    e.sprite('cistella', tex['cistella'], (hx, hy), P, escala_img=1.6)
+    if iri:
+        img, peu = _iri_a_dins()
+        # els peus de la imatge (el tall, a mig pit) just a la vora de davant de la cistella
+        vora = (P[0] + ((x0 + x1) / 2 - hx) * 1.6, y - (y0 + 2 - hy) * 1.6, P[2])
+        e.sprite('cistella', img, peu, vora, escala_img=1 / CAM.escala(vora))
+
+
+IRI_PNG = Path(__file__).resolve().parents[5] / 'aigua-verne' / 'src' / 'game' / 'assets' / 'images' / 'characters' / 'iri'
+IRI_TALL = 50                                      # fins on es veu l'Iri (files del fotograma de 104): fins a mig pit
+
+
+@functools.lru_cache(maxsize=None)
+def _iri_a_dins():
+    """L'Iri de cara (el primer fotograma d'IdleD del seu full), del cap a mig pit, ja a la mida que fa a la cistella
+    (no es torna a escalar en projectar-la). → (imatge, el punt de baix al mig)."""
+    full = Image.open(IRI_PNG / 'iri.png').convert('RGBA')
+    meta = json.loads((IRI_PNG / 'iri.json').read_text())
+    tag = next(t for t in meta['meta']['frameTags'] if t['name'] == 'IdleD')
+    f = list(meta['frames'].values())[tag['from']]['frame']
+    img = full.crop((f['x'], f['y'], f['x'] + f['w'], f['y'] + IRI_TALL))
+    k = CAM.escala((TIP[0], 0.0, TIP[2]))
+    img = img.resize((max(1, round(img.width * k)), max(1, round(img.height * k))), Image.Resampling.BOX)
+    px = img.load()
+    for yy in range(img.height):                    # sense vores mig transparents: o hi és o no hi és
+        for xx in range(img.width):
+            r, g, b, a = px[xx, yy]
+            px[xx, yy] = (r, g, b, 255 if a >= 128 else 0)
+    return img, (img.width / 2, img.height)
 
 
 def cantimplora(e):
@@ -503,10 +539,12 @@ def primer_pla(e):
 # ─── Composició ─────────────────────────────────────────────────────────────
 
 def escena(cv, tex):
+    """La sala sense la cistella (és la capa `cistella_grua`, que es mou). `e.darrere`: les superfícies que hi ha fins
+    aquí són les que queden per darrere de la cistella; les de després la tapen."""
     e = Escena(cv, CAM, LLUMS, ambient=AMBIENT)
     fons(cv)
     escullera(e, tex)
-    cistella(e, tex)
+    e.darrere = len(e.ids)
     moll(e)
     for k, (x, z) in enumerate(NORAIS):
         norai(e, 'norai', x, z, corda=[(x + 20, 8, ZE + 2), (x + 26, -30, ZE + 6)] if k == 1 else None)
@@ -570,9 +608,89 @@ def _frames_llum():
     return [on, on, off, off, off, off, off, off]
 
 
+# ─── La cistella (la cinemàtica de la baixada) ──────────────────────────────
+# La capa `cistella_grua`: la cistella penjada (`cistella_grua`, quieta), la baixada fins a l'altura del moll
+# (`cistella_baixa`), l'Iri a dins (`cistella_iri`) i la baixada fins al fons, fins que el moll se l'empassa
+# (`cistella_avall`). Les indicacions d'escena de rooms/aqua_port.json les hi posen. Cada fotograma només té la
+# cistella i el cable, retallats on el que hi ha davant (el moll, la grua...) els tapa.
+
+CIST_MS = 90                                       # un fotograma
+
+
+@functools.lru_cache(maxsize=None)
+def _y_moll():
+    """L'alçada del ganxo més avall on encara no la tapa res (les caixes de peix, la vora del moll): la cistella baixa
+    fins a l'altura del pit de l'Iri, que hi és a tocar, darrere les caixes."""
+    _, base = _base()
+    v_ganxo = lambda y: CAM.projecta((TIP[0], y, TIP[2]))[1]
+    y = CIST_Y
+    while y > 0:
+        cv = Canvas(light=LIGHT, transparent=True)
+        cistella(Escena(cv, CAM, LLUMS, ambient=AMBIENT), _textures(), y - 1)
+        a, w, v0 = cv.img.getchannel('A').load(), cv.w, int(v_ganxo(y - 1))
+        if any(a[x, v] and base.amo[v * w + x] >= base.darrere for v in range(v0, cv.h) for x in range(w)):
+            return y
+        y -= 1
+    return y
+
+
+def _frame_cistella(y, dx=0.0, iri=False):
+    _, base = _base()
+    cv = Canvas(light=LIGHT, transparent=True)
+    e = Escena(cv, CAM, LLUMS, ambient=AMBIENT)
+    cistella(e, _textures(), y, dx, iri)
+    px, amo, w = cv.img.load(), base.amo, cv.w
+    for yy in range(cv.h):
+        for xx in range(w):
+            if amo[yy * w + xx] >= base.darrere:
+                px[xx, yy] = (0, 0, 0, 0)
+    return cv.img
+
+
+def _sacsejades(y0, y1, n_pas, pas_f, pausa_f):
+    """De `y0` a `y1` a sacsejades: `n_pas` estrebades de `pas_f` fotogrames, amb una pausa de `pausa_f` entre
+    estrebada i estrebada, i a cada aturada un botet (i un pèl de balanceig). → [(y, dx)]."""
+    out = []
+    for i in range(n_pas):
+        a = y0 + (y1 - y0) * i / n_pas
+        b = y0 + (y1 - y0) * (i + 1) / n_pas
+        for f in range(1, pas_f + 1):
+            out.append((a + (b - a) * f / pas_f, 0.0))
+        sgn = 1 if i % 2 else -1
+        for f, (bot, bal) in enumerate(((2.5, 2.0), (1.0, 1.2), (0.0, 0.4))[:pausa_f]):
+            out.append((b + bot, sgn * bal))
+        out.extend([(b, 0.0)] * max(0, pausa_f - 3))
+    return out
+
+
+def _frames_quieta():
+    return [_frame_cistella(CIST_Y)]
+
+
+def _frames_baixa():
+    ym = _y_moll()
+    pas = _sacsejades(CIST_Y, ym, 5, 4, 4)
+    pas += [(ym, d) for d in (2.4, 1.2, -1.0, -1.6, -0.6, 0.6, 0.8, 0.2, 0.0)]       # en arribar, es gronxa i s'atura
+    return [_frame_cistella(y, dx) for y, dx in pas]
+
+
+def _frames_iri():
+    return [_frame_cistella(_y_moll(), iri=True)]
+
+
+def _frames_avall():
+    ym = _y_moll()
+    pas = [(ym, 0.0)] * 3 + _sacsejades(ym, ym - 170, 5, 4, 5)
+    return [_frame_cistella(y, dx, iri=True) for y, dx in pas] + [_frame_cistella(ym - 170 - 40)]
+
+
 ANIMS = {'calitja': {'frames': _frames_calitja, 'frameDuration': 160},
          'pols': {'frames': _frames_pols, 'frameDuration': 110},
-         'llum_canonada': {'frames': _frames_llum, 'frameDuration': 250}}
+         'llum_canonada': {'frames': _frames_llum, 'frameDuration': 250},
+         'cistella_grua': {'frames': _frames_quieta, 'frameDuration': 1000, 'loop': False, 'zIndex': 1},
+         'cistella_baixa': {'frames': _frames_baixa, 'frameDuration': CIST_MS, 'loop': False, 'prop': 'cistella_grua'},
+         'cistella_iri': {'frames': _frames_iri, 'frameDuration': 1000, 'loop': False, 'prop': 'cistella_grua'},
+         'cistella_avall': {'frames': _frames_avall, 'frameDuration': CIST_MS, 'loop': False, 'prop': 'cistella_grua'}}
 
 
 def _amo(ids, menys=None):

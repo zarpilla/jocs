@@ -11,7 +11,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
-  AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, resetStageAnims, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne, voiced, preloadLineVoices,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -94,7 +94,9 @@ function sayLines(lines: ResolvedLine[], around: Around) {
   }
   // Qui s'ha de moure (`place`) hi camina ara, quan ja s'ha dit tot: els efectes s'apliquen abans de les
   // línies, i si caminés abans, marxaria mentre parla. El mateix amb qui desapareix i amb qui apareix.
-  if (around.more) return
+  // Si tot seguit es marxa de la sala (`after: 'negre'`), no: la sala nova aplicarà el seu estat en entrar, i aquí
+  // tornaria a sortir qui una indicació d'escena ha amagat (l'Iri, que ja és a la cistella, just abans del fos).
+  if (around.more || around.after === 'negre') return
   applyHotspotVisibility()
   applyPlaces(true)
 }
@@ -197,6 +199,8 @@ export function onRoomLoaded() {
   untouchedNewGame = false
   statsLoadedGame()
   applySwitchButton()
+  const room = narrative.world.currentRoom()
+  if (room) resetStageAnims(room)
   applyHotspotVisibility()
   applyAppearances()
   applyPlaces(false)
@@ -241,6 +245,7 @@ export function onRoomEntered() {
     }
     rememberProtagonistRoom(who, room)
   }
+  resetStageAnims(room)
   applyHotspotVisibility()
   applyAppearances()
   applyPlaces(false)

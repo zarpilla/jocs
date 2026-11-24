@@ -1862,13 +1862,7 @@
                   "use",
                   "open"
                 ],
-                "lines": [
-                  {
-                    "who": "narrator",
-                    "text": "sala.aqua_fons.cistella.1",
-                    "sound": "cistella"
-                  }
-                ],
+                "lines": [],
                 "goTo": "aqua_port"
               }
             ]
@@ -2253,6 +2247,10 @@
               {
                 "who": "narrator",
                 "text": "sala.aqua_fons.entra.1"
+              },
+              {
+                "who": "iri",
+                "text": "sala.aqua_port.cistella.7"
               }
             ]
           }
@@ -2528,20 +2526,57 @@
                 "lines": [
                   {
                     "who": "iri",
-                    "text": "sala.aqua_port.cistella.3"
+                    "text": "sala.aqua_port.cistella.3",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "L"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "vet",
+                        "walk": "grua"
+                      }
+                    ]
                   },
                   {
                     "who": "vet",
-                    "text": "sala.aqua_port.cistella.4"
+                    "text": "sala.aqua_port.cistella.4",
+                    "sound": "grua",
+                    "stage": [
+                      {
+                        "prop": "cistella_grua",
+                        "anim": "cistella_baixa"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "cistella_grua",
+                        "anim": "cistella_baixa",
+                        "hold": 1.5
+                      },
+                      {
+                        "who": "player",
+                        "visible": false
+                      },
+                      {
+                        "prop": "cistella_grua",
+                        "anim": "cistella_iri",
+                        "hold": 0.8
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
                     "text": "sala.aqua_port.cistella.6",
-                    "sound": "cistella"
-                  },
-                  {
-                    "who": "iri",
-                    "text": "sala.aqua_port.cistella.7"
+                    "sound": "cistella",
+                    "stage": [
+                      {
+                        "prop": "cistella_grua",
+                        "anim": "cistella_avall"
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -2576,9 +2611,40 @@
                 ],
                 "lines": [
                   {
-                    "who": "narrator",
-                    "text": "sala.aqua_port.cistella.9",
-                    "sound": "cistella"
+                    "who": "iri",
+                    "text": "sala.aqua_port.cistella.3",
+                    "sound": "grua",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "L"
+                      },
+                      {
+                        "prop": "cistella_grua",
+                        "anim": "cistella_baixa"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "cistella_grua",
+                        "anim": "cistella_baixa",
+                        "hold": 2.5
+                      },
+                      {
+                        "who": "player",
+                        "visible": false
+                      },
+                      {
+                        "prop": "cistella_grua",
+                        "anim": "cistella_iri",
+                        "hold": 0.8
+                      },
+                      {
+                        "prop": "cistella_grua",
+                        "anim": "cistella_avall",
+                        "hold": 3.5
+                      }
+                    ]
                   }
                 ],
                 "goTo": "aqua_fons"
@@ -25978,6 +26044,7 @@
       "ui.opcions.clic_salta": "clic per saltar el diàleg",
       "ui.opcions.volum_efectes": "volum dels efectes",
       "ui.opcions.volum_musica": "volum de la música",
+      "ui.opcions.volum_veus": "volum de les veus",
       "ui.opcions.velocitat_text": "velocitat del text",
       "ui.verb.talkTo.boto": "Parla",
       "ui.verb.toca": "Toca",
@@ -26811,12 +26878,10 @@
       "sala.aqua_port.cistella.6": "La cistella baixa, a sacsejades, quaranta metres.",
       "sala.aqua_port.cistella.7": "Des d'aquí baix, ara que va, la cistella té botó. Ja puc pujar i baixar sola.",
       "sala.aqua_port.cistella.8": "La grua funciona, però algú l'ha de fer anar des de dalt. Necessito la Vet aquí, als comandaments.",
-      "sala.aqua_port.cistella.9": "La cistella baixa.",
       "sala.aqua_port.vaixells.1": "Vaixells de pesca encallats a la sorra. Un es diu «Sempre Plena». Un altre, «Ja Tornarà».",
       "sala.aqua_port.panell_preu.2": "A Aqua, el panell és l'única cosa que encara puja.",
       "sala.aqua_port.canonada.1": "La Canonada d'Aqua. Xucla el mar. Literalment.",
       "sala.aqua_fons.entra.1": "El fons del mar d'Aqua. Sorra blanca, nanses, i al fons, una caseta feta amb un casc de vaixell bolcat.",
-      "sala.aqua_fons.cistella.1": "La cistella puja.",
       "sala.aqua_fons.porta_juana.1": "Una caseta feta amb un vaixell bolcat. Té llum a dins.",
       "sala.aqua_fons.porta_juana.2": "Pas a pas, entre les nanses...",
       "sala.aqua_fons.porta_juana.3": "Xof.",

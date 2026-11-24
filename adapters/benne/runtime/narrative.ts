@@ -610,6 +610,38 @@ export function applyStageNow(cue: StageCue) {
   if (cue.face) actor.face.now(cue.face);
 }
 
+/**
+ * Les capes del decorat que les indicacions d'escena d'una sala fan anar (`{"prop": ..., "anim": ...}`) tornen a la seva
+ * animació de base. El motor desa l'animació de cada capa, però la d'una cinemàtica no és estat de la partida: en
+ * tornar al port d'Aqua, la cistella ha de tornar a penjar de la grua, no quedar-se a l'últim fotograma de la baixada.
+ * (Les sales de cinemàtica no hi passen: no s'hi torna.)
+ */
+export function resetStageAnims(room: string) {
+  const def = content.rooms[room];
+  if (!def || def.cutscene) return;
+  const props = new Set<string>();
+  const walk = (o: unknown): void => {
+    if (Array.isArray(o)) o.forEach(walk);
+    else if (o && typeof o === 'object') {
+      const r = o as Record<string, unknown>;
+      for (const k of ['stage', 'stageAfter']) {
+        for (const c of (r[k] as StageCue[] | undefined) ?? []) if (c.prop !== undefined && typeof c.anim === 'string') props.add(c.prop);
+      }
+      Object.values(r).forEach(walk);
+    }
+  };
+  walk(def);
+  if (!props.size) return;
+  const file = roomFiles.find((r) => r.id === toBenne('rooms', room));
+  for (const id of props) {
+    const thing = file?.props.find((p) => p.id === id) as (RoomThing & { tag?: string }) | undefined;
+    if (!thing) continue;
+    const prop = new PropHandle(toBenne('rooms', room), id);
+    const base = thing.tag ?? id;
+    if (prop.animation !== base) prop.animation = base;
+  }
+}
+
 // ─── Coses condicionals ─────────────────────────────────────────────────────
 // Les coses amb `visibleIf` són props a Benne (el sync les crea així): es mostren o
 // s'amaguen soles cada vegada que canvia l'estat. Si a Benne ja eren zones (hotspots), s'activen o
