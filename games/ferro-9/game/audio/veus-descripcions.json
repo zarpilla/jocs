@@ -37,7 +37,8 @@
    "name": "MARE-ferro9",
    "description": "A cheerful, overly sweet female AI assistant voice from a prison space station, customer-service tone, slightly synthetic and uncanny. Native Catalan accent",
    "motiu": "feta al web sense l'accent fixat; esborrada"
-  }
+  },
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "iri": {
   "voice_id": "gXT2AQaS86Ufags5nLqR",
@@ -65,7 +66,8 @@
    "text": "La Vet fa pública la llibreta. Una operària desapareguda fa cent vint anys explica, amb la seva lletra, que la cambra no va ser cap accident. I la Vet, l'única sincronitzadora que n'ha sortit viva, explica la resta: el reciclatge.",
    "triada": "proposta 3 de 3",
    "data": "2026-11-23"
-  }
+  },
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "cargol": {
   "voice_id": "VTEXGgPKlBqdUdLR4LWp",
@@ -79,7 +81,8 @@
    "text": "Productiva, senyora Iri. I si li cal una peça de ferro nou que soni d'una manera concreta, ja sap el procediment: formulari vint-i-set be, segellat per triplicat. I una llima, i paciència. Correcció: és una clau anglesa. Ús: cargols. Ho he notificat quaranta-tres vegades.",
    "triada": "proposta 3 de 3",
    "data": "2026-11-23"
-  }
+  },
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "mos": {
   "voice_id": "hFnjpHB684Pmcboi8ACb",
@@ -93,7 +96,8 @@
    "text": "Un pany que canta? I el so no passa per la paret: això t'ho dic jo, que m'hi vaig passar anys cridant. Li hauràs de fer arribar la nota d'una altra manera. Una comporta sense palanca. Doncs demana-la a la de la paret. Però digues-li la mida, nena.",
    "triada": "proposta 3 de 3",
    "data": "2026-11-23"
-  }
+  },
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "directora": {
   "voice_id": "q3Gw7o2BTwVeJrtwzJ0M",
@@ -121,7 +125,8 @@
    "text": "L'expedient ja té una sospitosa: la d'Orís, la seva companya de torn. Ja veurem si és l'única. Operària I. Ordres del Director: ningú entra a la cambra. Vostè, menys que ningú. Falten coses. Una clau anglesa, un imant... i qui sap què més.",
    "triada": "proposta 3 de 3",
    "data": "2026-11-23"
-  }
+  },
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "guardia": {
   "voice_id": "APh6LF6Nsv3pbflf9cIt",
@@ -149,7 +154,8 @@
    "text": "Iri! Tothom diu que el Director et busca. Què has fet? Que vas trencar la cambra del Director. I que el Sic t'ha de portar a declarar. Jo dic que no et conec gaire. Menteixo fatal, però ho dic. Tu marxa. Jo me n'encarrego.",
    "triada": "proposta 1 de 3",
    "data": "2026-11-23"
-  }
+  },
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "director": {
   "voice_id": "upqanby8jsr291OjYmVg",
@@ -163,16 +169,19 @@
    "text": "Benvinguts a la Sala de la Memòria! Aquí va començar tot: la Fàbrica Aldaia, el ferro nou i el somni d'un món millor. El fundador treballava colze a colze amb els obrers. Ho demostra el seu casc de seguretat: ni una ratlla.",
    "triada": "proposta 1 de 3",
    "data": "2026-11-23"
-  }
+  },
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "cargol_vell": {
   "voice_id": "VTEXGgPKlBqdUdLR4LWp",
   "comparteix": "cargol",
-  "motiu": "és el mateix robot, 120 anys després"
+  "motiu": "és el mateix robot, 120 anys després",
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "capatas": {
   "voice_id": "Gh8yBllOxnKW9xmH8Ys1",
   "comparteix": "sic",
-  "motiu": "només 4 línies (ronca i parla en somnis)"
+  "motiu": "només 4 línies (ronca i parla en somnis)",
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  }
 }

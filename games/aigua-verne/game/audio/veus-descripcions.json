@@ -39,7 +39,8 @@
    "text": "Benvinguts a la Gran Subhasta de l'Aigua. Avui no venem aigua. Venem set. Que és el que no s'acaba mai. Aqua? Cinquanta mil persones i ni un client solvent. Que plogui.",
    "triada": "proposta 1 de 3",
    "data": "2026-11-23"
-  }
+  },
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "tomas": {
   "voice_id": "33HWWarzjn9K9WIi3vap",
@@ -81,12 +82,14 @@
    "text": "Ah. Una persona. Les flors no em contesten, però escolten. Aquestes no necessiten aigua. Són de plàstic. Per això duren. Cada dijous pujo a treure la pols de les plantes de plàstic del palau.",
    "triada": "proposta 2 de 3",
    "data": "2026-11-23"
-  }
+  },
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "juana": {
   "voice_id": "QisoB07wFDxOQJ06bDXf",
   "name": "Ni un ou · Juana",
-  "reaprofitada": "veu de «juana» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+  "reaprofitada": "veu de «juana» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23",
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "capitana": {
   "voice_id": "SxLuhp7Kn2DhGjEHr2DK",
@@ -96,27 +99,32 @@
  "bru": {
   "voice_id": "UzjXTybjixmzG5YEx821",
   "name": "Ni un ou · Bastida",
-  "reaprofitada": "veu de «bastida» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+  "reaprofitada": "veu de «bastida» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23",
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "holm": {
   "voice_id": "IubAbOiRv37Z7ET8MdWO",
   "name": "Ni un ou · Tele",
-  "reaprofitada": "veu de «tele» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+  "reaprofitada": "veu de «tele» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23",
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "kessel": {
   "voice_id": "TLt9eWt0O83JFiSHoHvJ",
   "name": "Ni un ou · Hedda Lind",
-  "reaprofitada": "veu de «lind» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+  "reaprofitada": "veu de «lind» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23",
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "pell": {
   "voice_id": "FpNmTQqizuW0db8igA09",
   "name": "Ni un ou · Rut",
-  "reaprofitada": "veu de «rut» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+  "reaprofitada": "veu de «rut» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23",
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "narrator": {
   "voice_id": "fjVc08M9VPgKB76vROx0",
   "name": "Ni un ou · Narrador",
-  "reaprofitada": "veu de «narrator» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23"
+  "reaprofitada": "veu de «narrator» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23",
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "rosa": {
   "voice_id": "RX8mZNc4GFknROLlNmXp",
