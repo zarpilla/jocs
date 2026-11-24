@@ -28,27 +28,115 @@
   "pendent": "veu nova per dissenyar (Voice Design v3, accent central)"
  },
  "vet": {
-  "pendent": "veu nova per dissenyar (Voice Design v3, accent central)"
+  "voice_id": "nutVKCNjaA4DevtZTsEW",
+  "name": "Conjura de l'Avet · Vet",
+  "description": "A young woman of 18, a medieval scribe who reads Latin: sharp, sarcastic, precise, loves exact facts, quick dry wit, clear bright voice, a little shy with authorities. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Pesa unes quatre tones. I no l'ha tombat el vent. Ahir et va dir que una dona i un arbre no valen res. Avui ho sentirà d'un monjo. Jo no parlo amb jutges. Jo copio el que diuen.",
+   "triada": "proposta 3 de 3",
+   "data": "2026-11-24"
+  }
  },
  "narrator": {
-  "pendent": "veu nova per dissenyar (Voice Design v3, accent central)"
+  "voice_id": "huwqfQW1eQYyls2PQ1yz",
+  "name": "Conjura de l'Avet · Narrador",
+  "description": "A man in his sixties, narrator of a medieval mystery adventure with dry bureaucratic humour, like an old chronicler: warm, calm, wry and understated, mid-low voice, brisk pace, never slow. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Clean studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Fa cent trenta anys, l'abadessa Emma va plantar un avet al costat del monestir. L'únic de la vall. El comte Bernat de Besalú deu una fortuna al monestir. I el comte té mala memòria per als deutes.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-24"
+  }
  },
  "ponc": {
-  "pendent": "veu nova per dissenyar (Voice Design v3, accent central)"
+  "voice_id": "w6wYlSCkpITKvx6hirEL",
+  "name": "Conjura de l'Avet · Ponç",
+  "description": "A middle-aged medieval judge, pedantic and fussy, obsessed with seals, witnesses and procedure, pompous but honest, nasal, precise and slightly self-important official voice. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Clean studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Una dona i un arbre: dos testimonis sense valor. Tres testimonis i un segell, ja ho sabeu. Saig, a l'acta! Escrivà del comte: presenteu la meitat comtal de la carta de l'any vuit-cents vuitanta-set.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-24"
+  }
  },
  "sunifred": {
-  "pendent": "veu nova per dissenyar (Voice Design v3, accent central)"
+  "voice_id": "rBpRkIMd7su89HAsmZfH",
+  "name": "Conjura de l'Avet · Sunifred",
+  "description": "A man around forty, a medieval count's scribe: gentle, extremely polite, soft-spoken and meticulous, humble and obliging, never raises his voice, quietly hiding something, smooth light voice. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "En què us puc servir? Amb molt de gust, i amb tinta. Jo tinc les mans per a la ploma, senyor jutge. Un document segellat no es crema... s'arxiva... sempre s'arxiva...",
+   "triada": "proposta 3 de 3",
+   "data": "2026-11-24"
+  }
  },
  "ramon": {
-  "pendent": "veu nova per dissenyar (Voice Design v3, accent central)"
+  "voice_id": "FZOsOD1RdgLtSL8SlssF",
+  "name": "Conjura de l'Avet · Ramon",
+  "description": "A man of about fifty, a medieval woodcutter and father of two daughters: calm, a man of few words, gruff but tender, deep warm rough voice, slow and steady. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Primer aparta les branques. Després ja xerrarem. Mànec de boix i tres osques. És la meva marca. Aquest és el vi del batlle? Ara entenc per què no convida mai.",
+   "triada": "proposta 2 de 3",
+   "data": "2026-11-24"
+  }
  },
  "joanet": {
-  "pendent": "veu nova per dissenyar (Voice Design v3, accent central)"
+  "voice_id": "3aPafwym7d1YGcvjyDby",
+  "name": "Conjura de l'Avet · Joanet",
+  "description": "A man in his forties, a lazy, philosophical eel fisherman by the river: slow, drowsy, laid-back and amused, drawling relaxed voice, a bit raspy. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "És una barca filosòfica: pensa en l'aigua, i l'aigua hi entra. Ferro, diu l'Ermessenda. Jo dic que una vaca. Ens hem jugat un ou. Aquella nit vaig veure un fanal a l'avet.",
+   "triada": "proposta 2 de 3",
+   "data": "2026-11-24"
+  }
  },
  "ermessenda": {
-  "pendent": "veu nova per dissenyar (Voice Design v3, accent central)"
+  "voice_id": "KXALNk55jHXl4O8EShzx",
+  "name": "Conjura de l'Avet · Ermessenda",
+  "description": "A woman of about fifty, a medieval miller: loud, energetic, quick-tempered and grumbling about the dry canal, but warm-hearted and generous, strong earthy voice. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Ni una gota! Tinc el blat del monestir a mig moldre i el rec sec. L'aigua torna al rec! Té, nous del meu noguer. Les clofolles, per tenyir, que són bones.",
+   "triada": "proposta 1 de 3",
+   "data": "2026-11-24"
+  }
  },
  "arnulf": {
-  "pendent": "veu nova per dissenyar (Voice Design v3, accent central)"
+  "voice_id": "6OEqXvHwDQ6P6ICrmFMq",
+  "name": "Conjura de l'Avet · Arnulf",
+  "description": "An old medieval canon and copyist, around seventy: mild, meek and a bit absent-minded, thin soft trembling voice, gently self-deprecating. Native Catalan speaker from Barcelona with a clear central Catalan accent (neutral vowels, Barcelona pronunciation). Natural, close studio recording.",
+  "labels": {
+   "language": "ca"
+  },
+  "voice_design": {
+   "model": "eleven_ttv_v3",
+   "text": "Cada còpia amb errates diferents. Que es vegi que és feta a mà. Pregunteu-ho al germà Gombau, que sap més lletra que jo. Bé, això diu ell.",
+   "triada": "proposta 2 de 3",
+   "data": "2026-11-24"
+  }
  }
 }
