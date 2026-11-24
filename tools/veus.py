@@ -342,8 +342,9 @@ def main():
         if a.qui and who not in a.qui:
             continue
         speakers = sorted(ps) if who == "player" else [who]
-        if who == "player" and len(speakers) > 1:
-            # Sala compartida: qui hi juga, si veus.json ho diu (`jugadora`). També per als diàlegs que s'hi comencen.
+        if who == "player" and len(speakers) != 1:
+            # Sala compartida (o on no es dedueix qui hi juga, com una pantalla de primer pla): qui hi juga, si
+            # veus.json ho diu (`jugadora`). També per als diàlegs que s'hi comencen.
             sales = {room} if room else set(dialog_rooms.get(dialog, ())) if dialog else set()
             if sales and sales <= jugadora.keys():
                 speakers = sorted({jugadora[s] for s in sales})
