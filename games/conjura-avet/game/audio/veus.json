@@ -1,6 +1,6 @@
 {
   "$comment": "Veus d'ElevenLabs de cada personatge (npm run veus, vegeu tools/veus.py i docs/guia-veus.md). `actiu`: true (sonen sempre), \"url\" (només amb ?voices=on) o false. D'on surt cada veu, a veus-descripcions.json. `jugadora`: el calc el fa sempre la Vet (guio.md, regla 5).",
-  "actiu": "url",
+  "actiu": true,
   "model": "eleven_v3",
   "language": "ca",
   "format": "mp3_44100_64",
