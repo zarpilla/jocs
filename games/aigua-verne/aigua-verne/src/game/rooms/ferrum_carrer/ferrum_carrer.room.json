@@ -882,8 +882,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 558,
-      "y": 215,
+      "x": 122,
+      "y": 206,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -892,8 +892,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 584,
-      "y": 187,
+      "x": 88,
+      "y": 193,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

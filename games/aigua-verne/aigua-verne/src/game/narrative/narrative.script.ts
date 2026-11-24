@@ -258,11 +258,34 @@ export function onRoomEntered() {
     const lloc = player.position
     entrada.walkTo = lloc
     player.moveTo({ x: result.walkIn === 'left' ? -FORA : AMPLADA + FORA, y: lloc.y })
+  } else if (who && isSharedRoom(room)) {
+    const aparta = apartaDeLAltra(room, who)
+    if (aparta) entrada.walkTo = aparta
   }
 }
 
 /** Quants píxels fora de la pantalla comença una entrada caminant (`walkIn`). */
 const FORA = 24
+/** Quant s'aparta la protagonista que entra si l'altra és al mateix lloc (vegeu `apartaDeLAltra`). */
+const APARTA = { x: 30, y: 8 }
+
+/**
+ * Les protagonistes surten per la mateixa porta (s'hi acosten fins al `walkToPoint`) i Benne desa la posició de
+ * cadascuna a cada sala: en tornar-hi, la segona apareixeria just damunt de la primera. Si és així, torna on ha
+ * de caminar la que entra perquè no es tapin: cap al mig de la sala i una mica endavant. Si el punt no és de
+ * la zona on es camina, Benne s'hi acosta tant com pot.
+ */
+function apartaDeLAltra(room: string, who: string): { x: number; y: number } | null {
+  const lloc = (benneCharacter(who) as { position?: { x: number; y: number } } | undefined)?.position
+  if (!lloc) return null
+  for (const id of narrative.content.rooms[room]?.protagonists ?? []) {
+    if (id === who || protagonistRoom(id) !== room) continue
+    const at = (benneCharacter(id) as { position?: { x: number; y: number } } | undefined)?.position
+    if (!at || Math.hypot(at.x - lloc.x, at.y - lloc.y) >= APARTA.x / 2) continue
+    return { x: lloc.x + (lloc.x < AMPLADA / 2 ? APARTA.x : -APARTA.x), y: lloc.y + APARTA.y }
+  }
+  return null
+}
 
 /**
  * Música d'ambient (`music` al mapping.json del joc): cada sala, o cada protagonista, té la seva peça, i
@@ -389,7 +412,11 @@ export function enterNarrativeRoom() {
   // portada la recupera. Espera que acabi l'onEnter (no desa mai a mitja escena). En una partida
   // nova, no fins que s'hi faci alguna cosa (`playerActed`).
   if (room !== narrative.content.manifest.cover && !cutscene && !untouchedNewGame) saves.autosave(AUTOSAVE)
-  if (!result) return
+  // Sense onEnter (o ja dit), la protagonista també ha de fer el pas d'entrada o d'apartar-se de l'altra.
+  if (!result) {
+    if (walkTo && !cutscene) player.walkTo.now(walkTo)
+    return
+  }
   // Cinemàtica amb coses per tocar (la carta de navegació): l'onEnter no s'atura a cada línia ni espera cap clic. Es
   // fa el moviment (on és la nau) i el text queda a la frase del HUD («On anem?») fins que hi ha alguna cosa a sota.
   if (cutscene && isClickableCutscene(room)) {
