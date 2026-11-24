@@ -16,6 +16,7 @@ import type { DialogueLineDef, GameContent, InteractionDef, LocaleTable, RoomDef
 import { jocAdapterDir, type JocBenne } from './joc-benne.js';
 import { configuraTactil, FES, opcionsTactils, TACTIL_TEXTOS } from './tactil/index.js';
 import { objecteSol } from './tactil/runtime/accions.js';
+import { filaVolumVeus } from './volum-veus.js';
 
 /** Art provisional dels personatges del joc (games/<joc>/adapters/benne/placeholder-art/). */
 const placeholderArt = (...parts: string[]) => join(jocAdapterDir(), 'placeholder-art', ...parts);
@@ -111,7 +112,7 @@ const GUI_TEXTS: Record<string, Record<string, string>> = {
   'save-menu': { title: 'ui.menu.desar', instructions: 'ui.desar.instruccions', 'save-btn': 'ui.menu.desar', 'back-btn': 'ui.menu.tornar' },
   'settings-menu': {
     title: 'ui.menu.opcions', 'click-to-skip': 'ui.opcions.clic_salta', 'sound-effects-volume': 'ui.opcions.volum_efectes',
-    'music-volume': 'ui.opcions.volum_musica', back: 'ui.menu.tornar', 'dialog-text-speed': 'ui.opcions.velocitat_text',
+    'music-volume': 'ui.opcions.volum_musica', 'voice-volume': 'ui.opcions.volum_veus', back: 'ui.menu.tornar', 'dialog-text-speed': 'ui.opcions.velocitat_text',
   },
 };
 
@@ -143,6 +144,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   // ── GUI ─────────────────────────────────────────────────────────────────
   joc.guis?.(gameDir);
   if (joc.tactil) opcionsTactils(gameDir);
+  filaVolumVeus(gameDir);  // després d'opcionsTactils, que esborra el que hi ha sota la seva marca
   if (addSwitchButton(gameDir)) report.needsArt.push('guis/verbs');
   if (content.manifest.cover && addCoverGui(gameDir, joc)) report.needsArt.push('guis/portada');
   const guiTexts = structuredClone(GUI_TEXTS);

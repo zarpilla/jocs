@@ -154,7 +154,8 @@ negre abans d'una sala, el text de pantalla per sobre del fos a negre, `walkToLa
 `game-config.json` per traduir «Walk to», `setOutfit()` per canviar la roba d'un personatge (prova les
 etiquetes `<roba>IdleD`, `<roba>WalkL`... abans que les normals), `speech.clickProtectMs` (un clic als
 primers mil·lisegons d'una línia no la salta), `pauseGame` a les GUI (el joc s'atura mentre és oberta)
-i les partides desades amb una clau per joc. Vegeu `packages/benne/README.md`.
+`settings.voiceVolume` (el volum de les veus; la fila del menú d'opcions la posa `volum-veus.ts` a cada
+`benne:sync`) i les partides desades amb una clau per joc. Vegeu `packages/benne/README.md`.
 
 `patches/motor-benne.patch` els recull tots, respecte del Benne d'on surt el motor (`BENNE_BASE` a
 `motor-paths.ts`): `benne:create --motor` l'aplica. Cada cop que es toca el motor, cal refer-lo amb

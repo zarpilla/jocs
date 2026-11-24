@@ -35,3 +35,15 @@ back.onClick(() => {
   gui.hide()
   guis.gameMenu.show()
 })
+
+// Afegit per adapters/benne/volum-veus.ts: el volum de les veus.
+import { settings as opcionsVeus } from '@benne/script'
+import { voiceVolume } from './settings-menu.ids'
+
+gui.onBuilt(() => {
+  voiceVolume.value = opcionsVeus.voiceVolume * 100
+})
+
+voiceVolume.onChange((v: number) => {
+  opcionsVeus.voiceVolume = v / 100
+})

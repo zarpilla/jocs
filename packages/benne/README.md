@@ -40,6 +40,9 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
   dels personatges s'hi aturen);
 - `width` als controls de GUI en BenneScript (un text: l'amplada del que mostra ara), per posar dos textos de
   colors diferents l'un al costat de l'altre (el verb apagat i el nom de la frase del HUD tàctil);
+- `settings.voiceVolume`: el volum de les veus, com el dels efectes i la música (es desa a `settings:voiceVolume`; per
+  defecte, `audio.dialogueVolume` de `game-config.json`). El control del menú d'opcions l'hi posa
+  `adapters/benne/volum-veus.ts`;
 - `pauseGame` a una GUI modal: mentre és oberta, el joc s'atura (temporitzadors, tweens, caminades), i Esc la tanca;
 - les partides desades al `localStorage` amb una clau per joc (`VITE_BENNE_GAME_ID`, del nom del
   `package.json` del projecte), perquè dos jocs al mateix origen no comparteixin partides.

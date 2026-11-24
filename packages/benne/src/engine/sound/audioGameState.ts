@@ -10,12 +10,16 @@ export const SETTINGS_SFX_VOLUME_VARIABLE = 'settings:sfxVolume';
 /** Persisted user music session multiplier (0–1); included in save snapshots. */
 export const SETTINGS_MUSIC_VOLUME_VARIABLE = 'settings:musicVolume';
 
+/** Persisted user voice (spoken lines) session multiplier (0–1); included in save snapshots. */
+export const SETTINGS_VOICE_VOLUME_VARIABLE = 'settings:voiceVolume';
+
 /** Persisted current music stem (basename); included in save snapshots. Cleared when music stops. */
 export const SETTINGS_CURRENT_MUSIC_VARIABLE = 'settings:currentMusicId';
 
 export const PERSISTED_AUDIO_VOLUME_VARIABLE_KEYS = [
   SETTINGS_SFX_VOLUME_VARIABLE,
   SETTINGS_MUSIC_VOLUME_VARIABLE,
+  SETTINGS_VOICE_VOLUME_VARIABLE,
 ] as const;
 
 /** Volume + current music track keys preserved when an incoming snapshot omits them. */
@@ -59,6 +63,14 @@ export function readPersistedMusicSessionVolume(manager: GameStateManager): numb
   );
 }
 
+/** Effective voice session multiplier: saved variable, else `game-config.json` `audio.dialogueVolume`. */
+export function readPersistedVoiceSessionVolume(manager: GameStateManager): number {
+  return (
+    readNumericVariable(manager, SETTINGS_VOICE_VOLUME_VARIABLE) ??
+    clamp01(getGameSettings().audio.dialogueVolume)
+  );
+}
+
 /**
  * Saved music stem when the variable is present.
  * - `undefined` — key absent (legacy snapshot / never set)
@@ -85,6 +97,10 @@ export function writePersistedSfxSessionVolume(manager: GameStateManager, volume
 
 export function writePersistedMusicSessionVolume(manager: GameStateManager, volume: number): void {
   manager.setVariable(SETTINGS_MUSIC_VOLUME_VARIABLE, clamp01(volume));
+}
+
+export function writePersistedVoiceSessionVolume(manager: GameStateManager, volume: number): void {
+  manager.setVariable(SETTINGS_VOICE_VOLUME_VARIABLE, clamp01(volume));
 }
 
 export function writePersistedCurrentMusicId(manager: GameStateManager, id: string | null): void {
@@ -127,7 +143,9 @@ export function applyPersistedAudioSessionVolumes(game: Phaser.Game): void {
   const sfx = mgr ? readPersistedSfxSessionVolume(mgr) : clamp01(getGameSettings().audio.sfxVolume);
   const music = mgr ? readPersistedMusicSessionVolume(mgr) : clamp01(getGameSettings().audio.musicVolume);
   sm.setSfxSessionVolume(sfx);
+  const voice = mgr ? readPersistedVoiceSessionVolume(mgr) : clamp01(getGameSettings().audio.dialogueVolume);
   sm.setMusicSessionVolume(music);
+  sm.setVoiceSessionVolume(voice);
 }
 
 /**

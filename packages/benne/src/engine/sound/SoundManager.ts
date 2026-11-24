@@ -103,6 +103,7 @@ export class SoundManager {
   private readonly game: Phaser.Game;
   private sfxSessionMultiplier = 1;
   private musicSessionMultiplier = 1;
+  private voiceSessionMultiplier = 1;
 
   private readonly activeSfx = new Set<Phaser.Sound.BaseSound>();
   private readonly sfxAuthorBySound = new WeakMap<Phaser.Sound.BaseSound, string>();
@@ -434,7 +435,7 @@ export class SoundManager {
   }
 
   private effectiveVoiceVolume(): number {
-    return getEffectiveDialogueVolume();
+    return clamp01(getEffectiveDialogueVolume() * this.voiceSessionMultiplier);
   }
 
   private cancelMusicFadeRaf(): void {
@@ -1139,6 +1140,15 @@ export class SoundManager {
 
   setMusicSessionVolume(volume: number): void {
     this.musicSessionMultiplier = clamp01(volume);
+    this.refreshActiveVolumes();
+  }
+
+  getVoiceSessionVolume(): number {
+    return this.voiceSessionMultiplier;
+  }
+
+  setVoiceSessionVolume(volume: number): void {
+    this.voiceSessionMultiplier = clamp01(volume);
     this.refreshActiveVolumes();
   }
 

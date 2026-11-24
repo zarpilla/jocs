@@ -222,7 +222,7 @@ fallbacks.onLook(() => { Player: `Nothing special about that.` })
 fallbacks.onItemUnhandled(() => { Player: `That doesn't work.` })
 ```
 
-`settings.musicVolume`, `settings.textSpeed`, `settings.speech.*`; `game.isDesktop`, `game.quit()`, `game.currentRoom`; `events.on('gameState:inventoryChanged', () => …)`.
+`settings.musicVolume`, `settings.voiceVolume`, `settings.textSpeed`, `settings.speech.*`; `game.isDesktop`, `game.quit()`, `game.currentRoom`; `events.on('gameState:inventoryChanged', () => …)`.
 
 ## Mistakes to avoid
 

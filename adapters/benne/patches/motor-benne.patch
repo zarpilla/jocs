@@ -1,3 +1,27 @@
+diff -ruN .agents/skills/bennescript/SKILL.md .agents/skills/bennescript/SKILL.md
+--- .agents/skills/bennescript/SKILL.md
++++ .agents/skills/bennescript/SKILL.md
+@@ -222,7 +222,7 @@
+ fallbacks.onItemUnhandled(() => { Player: `That doesn't work.` })
+ ```
+ 
+-`settings.musicVolume`, `settings.textSpeed`, `settings.speech.*`; `game.isDesktop`, `game.quit()`, `game.currentRoom`; `events.on('gameState:inventoryChanged', () => …)`.
++`settings.musicVolume`, `settings.voiceVolume`, `settings.textSpeed`, `settings.speech.*`; `game.isDesktop`, `game.quit()`, `game.currentRoom`; `events.on('gameState:inventoryChanged', () => …)`.
+ 
+ ## Mistakes to avoid
+ 
+diff -ruN .claude/skills/bennescript/SKILL.md .claude/skills/bennescript/SKILL.md
+--- .claude/skills/bennescript/SKILL.md
++++ .claude/skills/bennescript/SKILL.md
+@@ -222,7 +222,7 @@
+ fallbacks.onItemUnhandled(() => { Player: `That doesn't work.` })
+ ```
+ 
+-`settings.musicVolume`, `settings.textSpeed`, `settings.speech.*`; `game.isDesktop`, `game.quit()`, `game.currentRoom`; `events.on('gameState:inventoryChanged', () => …)`.
++`settings.musicVolume`, `settings.voiceVolume`, `settings.textSpeed`, `settings.speech.*`; `game.isDesktop`, `game.quit()`, `game.currentRoom`; `events.on('gameState:inventoryChanged', () => …)`.
+ 
+ ## Mistakes to avoid
+ 
 diff -ruN electron-builder.config.cjs electron-builder.config.cjs
 --- electron-builder.config.cjs
 +++ electron-builder.config.cjs
@@ -511,8 +535,14 @@ diff -ruN src/engine/bennescript/dialogs.ts src/engine/bennescript/dialogs.ts
 diff -ruN src/engine/bennescript/game.ts src/engine/bennescript/game.ts
 --- src/engine/bennescript/game.ts
 +++ src/engine/bennescript/game.ts
-@@ -34,12 +34,14 @@
+@@ -30,16 +30,20 @@
+ import {
+   readPersistedMusicSessionVolume,
+   readPersistedSfxSessionVolume,
++  readPersistedVoiceSessionVolume,
+   writePersistedMusicSessionVolume,
    writePersistedSfxSessionVolume,
++  writePersistedVoiceSessionVolume,
  } from '../sound/audioGameState.js';
  import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
 +import { loadVoice } from '../sound/benneVoiceLoader.js';
@@ -526,7 +556,7 @@ diff -ruN src/engine/bennescript/game.ts src/engine/bennescript/game.ts
  import { registerAnyRoomHandler } from './globalHandlers.js';
  import { endHandler, runDetached, warnIfUntransformed } from './interactionContext.js';
  import type { ItemHandle, VerbHandle } from './handles.js';
-@@ -59,6 +61,11 @@
+@@ -59,6 +63,11 @@
  
  /** The running game (§4.16, §4.17). */
  export const game = {
@@ -538,7 +568,7 @@ diff -ruN src/engine/bennescript/game.ts src/engine/bennescript/game.ts
    /** True in the desktop (Electron) build, where `quit()` closes the window. */
    get isDesktop(): boolean {
      return getBenneEnvironment() === 'electron';
-@@ -70,6 +77,42 @@
+@@ -70,6 +79,42 @@
    },
  
    /**
@@ -581,7 +611,7 @@ diff -ruN src/engine/bennescript/game.ts src/engine/bennescript/game.ts
     * Starts a fresh game: resets all state, then goes to `startRoom` (the configured starting room
     * by default). Ends the handler.
     */
-@@ -124,6 +167,11 @@
+@@ -124,6 +169,11 @@
      return activeRoomScene()?.isCutsceneActive() ?? false;
    },
  
@@ -593,7 +623,33 @@ diff -ruN src/engine/bennescript/game.ts src/engine/bennescript/game.ts
    /** Every room change, before the room is left. */
    onLeaveAnyRoom(handler: () => void): void {
      registerAnyRoomHandler('leave', handler);
-@@ -377,6 +425,21 @@
+@@ -291,6 +341,25 @@
+     settingsChanged();
+   },
+ 
++  /** Voice volume (recorded spoken lines), 0–1. */
++  get voiceVolume(): number {
++    const sm = soundManager();
++    if (sm) {
++      return sm.getVoiceSessionVolume();
++    }
++    const m = tryGetActiveGameStateManager();
++    return m ? readPersistedVoiceSessionVolume(m) : clamp01(getGameSettings().audio.dialogueVolume);
++  },
++  set voiceVolume(volume: number) {
++    const v = clamp01(volume);
++    soundManager()?.setVoiceSessionVolume(v);
++    const m = tryGetActiveGameStateManager();
++    if (m) {
++      writePersistedVoiceSessionVolume(m, v);
++    }
++    settingsChanged();
++  },
++
+   /** How long speech lines stay up: a multiplier, 1 = as configured, 2 = twice as long. Same as `speech.durationMultiplier`. */
+   get textSpeed(): number {
+     return speechSettings.durationMultiplier;
+@@ -377,6 +446,21 @@
      }
    },
  
@@ -4130,7 +4186,15 @@ diff -ruN src/engine/sound/SoundManager.ts src/engine/sound/SoundManager.ts
  import { benneMusicCacheKey, benneSfxCacheKey, benneVoiceCacheKey } from './benneAudioCacheKeys.js';
  
  /** Author basename — must stay under `audio/sfx`, `audio/music`, or `audio/voice`. */
-@@ -131,6 +131,17 @@
+@@ -103,6 +103,7 @@
+   private readonly game: Phaser.Game;
+   private sfxSessionMultiplier = 1;
+   private musicSessionMultiplier = 1;
++  private voiceSessionMultiplier = 1;
+ 
+   private readonly activeSfx = new Set<Phaser.Sound.BaseSound>();
+   private readonly sfxAuthorBySound = new WeakMap<Phaser.Sound.BaseSound, string>();
+@@ -131,6 +132,17 @@
    /** Music starts held until the context is running. Cleared on {@link stopMusic}. */
    private readonly deferredMusicStarts = new Set<() => void>();
  
@@ -4148,7 +4212,16 @@ diff -ruN src/engine/sound/SoundManager.ts src/engine/sound/SoundManager.ts
    constructor(game: Phaser.Game) {
      this.game = game;
      if (shouldKeepWebAudioRunning()) {
-@@ -544,6 +555,9 @@
+@@ -423,7 +435,7 @@
+   }
+ 
+   private effectiveVoiceVolume(): number {
+-    return getEffectiveDialogueVolume();
++    return clamp01(getEffectiveDialogueVolume() * this.voiceSessionMultiplier);
+   }
+ 
+   private cancelMusicFadeRaf(): void {
+@@ -544,6 +556,9 @@
        }
        this.setInstanceVolume(sound, voiceVol);
      }
@@ -4158,7 +4231,7 @@ diff -ruN src/engine/sound/SoundManager.ts src/engine/sound/SoundManager.ts
      // Crossfade tweens own music volumes until the fade completes.
      if (this.musicFadeOutSound != null) {
        return;
-@@ -1008,6 +1022,95 @@
+@@ -1008,6 +1023,95 @@
      }
    }
  
@@ -4254,7 +4327,23 @@ diff -ruN src/engine/sound/SoundManager.ts src/engine/sound/SoundManager.ts
    stopMusic(): void {
      this.cancelDeferred(this.deferredMusicStarts);
      if (this.isScriptAudioDisabled()) {
-@@ -1065,5 +1168,7 @@
+@@ -1039,6 +1143,15 @@
+     this.refreshActiveVolumes();
+   }
+ 
++  getVoiceSessionVolume(): number {
++    return this.voiceSessionMultiplier;
++  }
++
++  setVoiceSessionVolume(volume: number): void {
++    this.voiceSessionMultiplier = clamp01(volume);
++    this.refreshActiveVolumes();
++  }
++
+   isSfxPlaying(authorId: string): boolean {
+     if (!validateAudioId(authorId)) {
+       return false;
+@@ -1065,5 +1178,7 @@
      this.stopAllSfx();
      this.stopAllVoice();
      this.stopMusic();
@@ -4262,6 +4351,62 @@ diff -ruN src/engine/sound/SoundManager.ts src/engine/sound/SoundManager.ts
 +    this.playAmbient(null, { fadeSeconds: 0 });
    }
  }
+diff -ruN src/engine/sound/audioGameState.ts src/engine/sound/audioGameState.ts
+--- src/engine/sound/audioGameState.ts
++++ src/engine/sound/audioGameState.ts
+@@ -10,12 +10,16 @@
+ /** Persisted user music session multiplier (0–1); included in save snapshots. */
+ export const SETTINGS_MUSIC_VOLUME_VARIABLE = 'settings:musicVolume';
+ 
++/** Persisted user voice (spoken lines) session multiplier (0–1); included in save snapshots. */
++export const SETTINGS_VOICE_VOLUME_VARIABLE = 'settings:voiceVolume';
++
+ /** Persisted current music stem (basename); included in save snapshots. Cleared when music stops. */
+ export const SETTINGS_CURRENT_MUSIC_VARIABLE = 'settings:currentMusicId';
+ 
+ export const PERSISTED_AUDIO_VOLUME_VARIABLE_KEYS = [
+   SETTINGS_SFX_VOLUME_VARIABLE,
+   SETTINGS_MUSIC_VOLUME_VARIABLE,
++  SETTINGS_VOICE_VOLUME_VARIABLE,
+ ] as const;
+ 
+ /** Volume + current music track keys preserved when an incoming snapshot omits them. */
+@@ -59,6 +63,14 @@
+   );
+ }
+ 
++/** Effective voice session multiplier: saved variable, else `game-config.json` `audio.dialogueVolume`. */
++export function readPersistedVoiceSessionVolume(manager: GameStateManager): number {
++  return (
++    readNumericVariable(manager, SETTINGS_VOICE_VOLUME_VARIABLE) ??
++    clamp01(getGameSettings().audio.dialogueVolume)
++  );
++}
++
+ /**
+  * Saved music stem when the variable is present.
+  * - `undefined` — key absent (legacy snapshot / never set)
+@@ -87,6 +99,10 @@
+   manager.setVariable(SETTINGS_MUSIC_VOLUME_VARIABLE, clamp01(volume));
+ }
+ 
++export function writePersistedVoiceSessionVolume(manager: GameStateManager, volume: number): void {
++  manager.setVariable(SETTINGS_VOICE_VOLUME_VARIABLE, clamp01(volume));
++}
++
+ export function writePersistedCurrentMusicId(manager: GameStateManager, id: string | null): void {
+   if (id === null) {
+     manager.clearVariable(SETTINGS_CURRENT_MUSIC_VARIABLE);
+@@ -127,7 +143,9 @@
+   const sfx = mgr ? readPersistedSfxSessionVolume(mgr) : clamp01(getGameSettings().audio.sfxVolume);
+   const music = mgr ? readPersistedMusicSessionVolume(mgr) : clamp01(getGameSettings().audio.musicVolume);
+   sm.setSfxSessionVolume(sfx);
++  const voice = mgr ? readPersistedVoiceSessionVolume(mgr) : clamp01(getGameSettings().audio.dialogueVolume);
+   sm.setMusicSessionVolume(music);
++  sm.setVoiceSessionVolume(voice);
+ }
+ 
+ /**
 diff -ruN src/engine/sound/benneSoundTypes.ts src/engine/sound/benneSoundTypes.ts
 --- src/engine/sound/benneSoundTypes.ts
 +++ src/engine/sound/benneSoundTypes.ts

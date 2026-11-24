@@ -30,8 +30,10 @@ import {
 import {
   readPersistedMusicSessionVolume,
   readPersistedSfxSessionVolume,
+  readPersistedVoiceSessionVolume,
   writePersistedMusicSessionVolume,
   writePersistedSfxSessionVolume,
+  writePersistedVoiceSessionVolume,
 } from '../sound/audioGameState.js';
 import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
 import { loadVoice } from '../sound/benneVoiceLoader.js';
@@ -335,6 +337,25 @@ export const settings = {
     const m = tryGetActiveGameStateManager();
     if (m) {
       writePersistedMusicSessionVolume(m, v);
+    }
+    settingsChanged();
+  },
+
+  /** Voice volume (recorded spoken lines), 0–1. */
+  get voiceVolume(): number {
+    const sm = soundManager();
+    if (sm) {
+      return sm.getVoiceSessionVolume();
+    }
+    const m = tryGetActiveGameStateManager();
+    return m ? readPersistedVoiceSessionVolume(m) : clamp01(getGameSettings().audio.dialogueVolume);
+  },
+  set voiceVolume(volume: number) {
+    const v = clamp01(volume);
+    soundManager()?.setVoiceSessionVolume(v);
+    const m = tryGetActiveGameStateManager();
+    if (m) {
+      writePersistedVoiceSessionVolume(m, v);
     }
     settingsChanged();
   },

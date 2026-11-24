@@ -11,9 +11,9 @@
       "type": "nineSliceImage",
       "id": "settings-BG",
       "x": 131,
-      "y": 24,
+      "y": 9,
       "width": 378,
-      "height": 240,
+      "height": 269,
       "tag": "9-slice-BG",
       "sliceNames": {
         "topLeft": "TopLeft",
@@ -32,7 +32,7 @@
       "type": "text",
       "id": "title",
       "x": 320,
-      "y": 40,
+      "y": 25,
       "text": "Opcions",
       "font": "aiguaverne-negreta",
       "fontSize": 8,
@@ -135,6 +135,58 @@
       "zIndex": 103
     },
     {
+      "type": "slider",
+      "id": "voiceVolume",
+      "x": 215,
+      "y": 204,
+      "width": 127,
+      "height": 20,
+      "backgroundAnchor": "top-left",
+      "trackTag": "slider-track",
+      "handleTag": "slider-handle",
+      "states": {
+        "hover": {
+          "handle": "slider-handle-hover"
+        },
+        "disabled": {
+          "track": "slider-track-disabled",
+          "handle": "slider-handle-disabled"
+        }
+      },
+      "min": 0,
+      "max": 100,
+      "defaultValue": 100,
+      "step": 1,
+      "gridPlacement": {
+        "gridControlId": "settings-layout",
+        "row": 4,
+        "col": 1,
+        "align": "center-left",
+        "offsetX": 2,
+        "offsetY": -4
+      },
+      "zIndex": 103
+    },
+    {
+      "type": "text",
+      "id": "voice-volume",
+      "x": 0,
+      "y": 0,
+      "text": "volum de les veus",
+      "font": "aiguaverne-regular",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "gridPlacement": {
+        "gridControlId": "settings-layout",
+        "row": 4,
+        "col": 0,
+        "align": "top-right",
+        "offsetX": -5
+      },
+      "zIndex": 103,
+      "scriptName": "voiceVolumeLabel"
+    },
+    {
       "type": "text",
       "id": "click-to-skip",
       "x": 135,
@@ -156,9 +208,9 @@
       "type": "grid",
       "id": "settings-layout",
       "x": 138,
-      "y": 67,
-      "height": 145,
-      "rows": 5,
+      "y": 52,
+      "height": 174,
+      "rows": 6,
       "columns": 2,
       "colWidths": [
         218,
@@ -207,7 +259,7 @@
       "type": "button",
       "id": "back",
       "x": 328,
-      "y": 220,
+      "y": 234,
       "width": 91,
       "height": 27,
       "backgroundAnchor": "top-left",
@@ -297,7 +349,7 @@
       "color": "#e6dcb6",
       "gridPlacement": {
         "gridControlId": "settings-layout",
-        "row": 4,
+        "row": 5,
         "col": 0,
         "align": "top-right",
         "offsetX": -5
@@ -322,7 +374,7 @@
       },
       "gridPlacement": {
         "gridControlId": "settings-layout",
-        "row": 4,
+        "row": 5,
         "col": 1,
         "align": "top-left",
         "offsetX": 2,
@@ -335,7 +387,7 @@
       "type": "button",
       "id": "controls",
       "x": 223,
-      "y": 220,
+      "y": 234,
       "width": 91,
       "height": 27,
       "backgroundAnchor": "top-left",
