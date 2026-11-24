@@ -482,7 +482,7 @@ S'obre **Ferrum** al mapa.
 ### Escena 4 — Ferrum (les dues, primera sincronia; en Bru, l'Iri)
 
 **Sales:** `ferrum_carrer` (el piquet, la font seca amb lector de targetes, el condensador vell de la mina, el
-panell: 64 ₡ ▲), `ferrum_sindicat` (el despatx d'en Bru, i el bagul de la colla de teatre de la Festa Major), `fosa_forn` i `fosa_colada` (la fosa, aturada).
+panell: 64 ₡ ▲), `ferrum_sindicat` (el despatx d'en Bru, i el bagul de la colla de teatre de la Festa Major), `fosa_forn` i `fosa_colada` (la foneria, aturada).
 
 Verne ha tallat l'aigua als vaguistes: la font del carrer només raja amb **targeta de treballador actiu**. Els
 miners fan torns per beure de l'aigua que els porten de fora. En Tomàs, en baixar de la nau, veu la seva mare al
@@ -497,7 +497,7 @@ font.»
 > BRU: La ven. Gota a gota. Si en vengués més, el preu baixaria. I si el preu baixa, ell deixa de ser el Magnat.
 > És un home. I un home no vol ser un home. Vol ser el Magnat.
 
-**El bagul.** Al sindicat, sota les pancartes, hi ha el bagul de la colla de teatre de la Festa Major de la Fosa. A
+**El bagul.** Al sindicat, sota les pancartes, hi ha el bagul de la colla de teatre de la Festa Major de la Foneria. A
 dalt de tot, un vestit de reina de vellut granat, amb lluentons de llautó i una corona feta amb un engranatge fos. Si
 l'Iri el mira: «Això és el més lleig que he vist mai. I he estat a Verdant.» Si el vol agafar: «No em posaria això ni
 morta. I no és meu.» BRU (si hi és): «És de la Rosa. Va ser reina fa trenta anys. Encara en parla.» A la segona: «Ni
@@ -535,7 +535,7 @@ Sense promesa no hi ha claus (BRU: «Primer la Lia. Després, el que vulgueu.»)
 fa una promesa que no és un negoci. En Bru escriu una nota per a la Lia al darrere de la carta de la Juana: «Fes-los
 cas. Et vinc a buscar al moll. Papa.»
 
-**Trencaclosques 4.3 — La colada (SINCRONIA 1).** La fosa és freda des de la vaga. Per fondre les tres claus cal el
+**Trencaclosques 4.3 — La colada (SINCRONIA 1).** La foneria és freda des de la vaga. Per fondre les tres claus cal el
 forn ple i a punt, i abocar al motlle de tres de cop. **Ara necessites les dues.**
 - **La Vet al forn** (`fosa_forn`): obrir la manxa, carregar el metall, treure l'escòria. No passa a la colada: «Jo
   no em moc del forn. Si baixa la temperatura, adéu claus.» (I la sincronia només comença així, no a l'inrevés.)
@@ -660,7 +660,7 @@ sé què feu. Feu-ho bé.»
 **Trencaclosques 6.1 — Qui li ho diu? (Iri i Vet).** El Magnat sabia coses que només s'han dit a bord. Les pistes
 (apuntades al tauler a mesura que es veuen): en Tomàs pregunta on aneu (Escena 2) · el paper de plata del seu dinar
 (Escena 3) · la carmanyola fa *bip* a les nou (Escena 4) · i a la trucada, el Magnat ha dit «comptador fos», que
-només ho va dir en Bru a la fosa, on en Tomàs era l'únic de fora. Cal **obrir la carmanyola** (en Diu no s'hi deixa
+només ho va dir en Bru a la foneria, on en Tomàs era l'únic de fora. Cal **obrir la carmanyola** (en Diu no s'hi deixa
 treure de sobre si no li dones el pernil del dinar d'en Tomàs). A dins, el comunicador i els informes en paperets:
 «Avui la Vet ha dit "collons" tres vegades.» «L'Iri és molt bona pilot.» «Hem menjat llenties.»
 
@@ -681,7 +681,7 @@ IRI: «...Al sindicat de Ferrum hi havia un vestit. Horrible. *(pausa)* Perfecte
 el vestit de reina de la Rosa. Horrible.» VET: «El vas agafar per si de cas.» IRI: «No en parlem.») Si no, cal tornar a
 Ferrum i demanar-lo a la Rosa, al piquet. Ha passat una setmana:
 
-> ROSA: El de reina? Me'l vaig posar quan vaig ser reina de la Festa Major de la Fosa. Fa trenta anys. *(pausa)* Per
+> ROSA: El de reina? Me'l vaig posar quan vaig ser reina de la Festa Major de la Foneria. Fa trenta anys. *(pausa)* Per
 > entrar a casa del Magnat? Us el deixo. Però una cosa.
 > ROSA: Fa una setmana que en Tomàs és a la vostra nau i encara no ha baixat la rampa. Que el vingui a buscar ell.
 
@@ -986,7 +986,7 @@ es resol un pas:
 | El paper de plata del dinar (amb lletra petita a dins) | Esc. 3 | Tomàs | La Vet l'aprofita per al fusible i no el llegeix: el jugador, sí. |
 | La carmanyola fa *bip* a les nou i en Diu s'hi asseu | Esc. 4 | Tomàs | «És el rellotge del forn.» |
 | En Tomàs no parla amb la seva mare al piquet | Esc. 4 | Tomàs | Pot ser vergonya. |
-| El Magnat diu «comptador fos» | Esc. 6 | Tomàs (l'únic de fora a la fosa) | Ho podria haver dit un miner. |
+| El Magnat diu «comptador fos» | Esc. 6 | Tomàs (l'únic de fora a la foneria) | Ho podria haver dit un miner. |
 | La Capitana té por, i no diu per què | Esc. 2 | **Capitana** (falsa) | Es resol amb el contracte (Esc. 5–6). |
 
 ## Comptes de les sincronies
@@ -1058,7 +1058,7 @@ ACTE 3
 ## Abast (producció)
 
 - **22 sales:** portada, pròleg (despatx del palau) · granja: pati, casa, graner · port de Terra-2 · Cantimplora:
-  pont, bodega · Aqua: port, fons, casa de la Juana · Ferrum: carrer, sindicat, fosa (forn), fosa (colada) · Verdant:
+  pont, bodega · Aqua: port, fons, casa de la Juana · Ferrum: carrer, sindicat, foneria (forn), foneria (colada) · Verdant:
   jardí, cobert, residència · palau: galeria (piscines i aquari), saló, servei, control. El final reaprofita el pati
   de la granja, amb pluja. El pròleg pot reaprofitar el despatx per a la trucada (pantalla).
 - **Exteriors:** el pati de la granja (pols, i pluja al final), el port de Terra-2, el port i el fons d'Aqua, el carrer

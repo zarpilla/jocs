@@ -169,14 +169,14 @@ def cartells(cv):
         cv.disc(hx, y2 + 11, 2, 2.4, [(30, 30, 28), (70, 68, 62), (120, 116, 108)], 1.6)
         cv.rect(hx - 2, y2 + 14, hx + 2, y2 + 22, [(30, 30, 28), (50, 48, 44)], 0.8)
     text(cv, '1987', x2 + 17, y2 + 24, COAL, 1.0)
-    # LA FOSA ES NOSTRA, estret
+    # LA FONERIA ES NOSTRA, estret
     x3, y3 = 186, 98
-    _poster(cv, x3, y3, 30, 44, PAPERY, 3.4, 24)
-    text(cv, 'LA', x3 + 11, y3 + 6, REDP, 2.6)
-    text(cv, 'FOSA', x3 + 7, y3 + 13, REDP, 2.6)
-    text(cv, 'ES', x3 + 11, y3 + 20, REDP, 2.6)
-    text(cv, 'NOSTRA', x3 + 3, y3 + 27, REDP, 2.6)
-    cv.rect(x3 + 4, y3 + 36, x3 + 25, y3 + 37, COAL, 1.4)
+    _poster(cv, x3, y3, 34, 44, PAPERY, 3.4, 24)
+    text(cv, 'LA', x3 + 13, y3 + 6, REDP, 2.6)
+    text(cv, 'FONERIA', x3 + 3, y3 + 13, REDP, 2.6)
+    text(cv, 'ES', x3 + 13, y3 + 20, REDP, 2.6)
+    text(cv, 'NOSTRA', x3 + 5, y3 + 27, REDP, 2.6)
+    cv.rect(x3 + 4, y3 + 36, x3 + 29, y3 + 37, COAL, 1.4)
 
 
 # ─── La pissarra ───────────────────────────────────────────────────────────
@@ -232,7 +232,7 @@ def bagul(cv):
     for bx in (x0 + 5, x1 - 10):
         cv.rect(bx, lt, bx + 5, lt + 5, BRASS, 3.6)
     text(cv, 'FESTA MAJOR', (x0 + x1) // 2 - text_width('FESTA MAJOR') // 2, lt + 10, PAPERY, 4.2)
-    text(cv, 'DE LA FOSA', (x0 + x1) // 2 - text_width('DE LA FOSA') // 2, lt + 18, PAPERY, 4.2)
+    text(cv, 'DE LA FONERIA', (x0 + x1) // 2 - text_width('DE LA FONERIA') // 2, lt + 18, PAPERY, 4.2)
     for i in range(5):                                                                    # estrelletes
         cv.put(x0 + 14 + i * 17, lt + 28, BRASS, 4.6)
     # la boca: l'interior fosc, amb trastos

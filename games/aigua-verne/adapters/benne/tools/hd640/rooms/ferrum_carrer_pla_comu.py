@@ -237,14 +237,14 @@ def cases(cv):
     cv.rect(328, 119, 338, 121, CLOTH, 3.6)
 
 
-# ─── La fosa ───────────────────────────────────────────────────────────────
+# ─── La foneria ───────────────────────────────────────────────────────────────
 
 FOSA = (458, 640, 26)
 
 
 def fosa(cv, xemeneia=True):
     x0, x1, top = FOSA
-    # la xemeneia gran (freda: la fosa està aturada)
+    # la xemeneia gran (freda: la foneria està aturada)
     cx = 616
     if xemeneia:
         brick_wall(cv, cx - 9, 0, cx + 9, top + 4, base=2.8, seed=31, bw=7, bh=3, soot=soot_top(0, 40, 2.4, 31))
@@ -280,8 +280,8 @@ def fosa(cv, xemeneia=True):
                 r = math.hypot(x - wx - 10.5, (y - 64) * 1.0)
                 if 11 <= r <= 14:
                     cv.put(x, y, MORTAR, 3.8)
-    # FOSA, en lletres grosses de llauna clavades a la paret (n'hi falta una mica)
-    s = 'FOSA'
+    # FONERIA, en lletres grosses de llauna clavades a la paret (n'hi falta una mica)
+    s = 'FONERIA'
     sx = 530 - (text_width(s) * 3) // 2
     big = Canvas1x(40, 8, transparent=True)
     text(big, s, 0, 0, CLOTH, 4.0, lit=0)
@@ -291,7 +291,7 @@ def fosa(cv, xemeneia=True):
             if bp[x, y][3]:
                 for j in range(3):
                     for i in range(3):
-                        if not (x == 13 and y > 2):                                      # la A, mig caiguda
+                        if not (x == 25 and y > 2):                                      # la A, mig caiguda
                             cv.put(sx + x * 3 + i, 34 + y * 3 + j, TIN, 4.4 - j * 0.5 - i * 0.2)
                 cv.put(sx + x * 3 + 3, 34 + y * 3 + 3, COAL, 0.6)
     # el portal gran: arc rebaixat, porta de ferro corredissa mig oberta, dins fosc

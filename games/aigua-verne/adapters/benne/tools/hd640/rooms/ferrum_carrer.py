@@ -835,8 +835,8 @@ GEOMETRIA = {
         'panell_preu': {'rect': _rect_mon(*_PANELL), 'walk': _p(_PANELL[0][0] + 30, ZR - 46)},
         'canonada': {'rect': (CAN_U - 7, 0, CAN_U + 7, 60), 'walk': _p(X0 - 60, ZR + 40)},
     },
-    'spawns': {'rosa': _p(NENS[0][0] - 50, NENS[0][1] + 20), 'iri': _p(X0 + 330, ZR - 200),
-               'vet': _p(CX0 + 250, ZR - 150)},
+    # l'Iri i la Vet, al peu de la rampa de la Cantimplora (hi arriben baixant de la nau), en píxels de pantalla
+    'spawns': {'rosa': _p(NENS[0][0] - 50, NENS[0][1] + 20), 'iri': (122, 206), 'vet': (88, 193)},
     'walkable': _WALK,
     'forats': [_cercle(FONT[0], FONT[1], 26), _cercle(BIDO[0], BIDO[1], 20, 6),
                *[_cercle(x, z, 16, 6) for x, z in NENS], _cercle(COND[0], COND[1], 46),

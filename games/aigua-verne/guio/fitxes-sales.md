@@ -22,7 +22,7 @@
   - **Cantimplora:** nau cisterna vella, planxa verd oliva i taronja de seguretat, llums càlids de filament, rovell.
   - **Aqua:** blanc de sal i blau pàl·lid, port de pedra, vaixells encallats, el fons del mar sec (sorra blanca,
     algues seques, ossos de peix). Llum freda, migdia.
-  - **Ferrum:** ferro, rovell, carbó, cel de fum taronja-grisenc; la fosa, foc i ombres llargues.
+  - **Ferrum:** ferro, rovell, carbó, cel de fum taronja-grisenc; la foneria, foc i ombres llargues.
   - **Verdant:** verds massa saturats (de plàstic), blancs nets, cel blau d'anunci. Tot brilla massa.
   - **Palau orbital:** blanc i or, vidre, l'espai negre per les finestres; les piscines, turquesa buit (rajola).
 - **El lema de Verne** («AIGUA VERNE») i la **gota blava** (logotip) surten a tots els panells i a les màquines de
@@ -191,7 +191,7 @@ El **condensador** vell de la mina (una màquina de llauna amb aletes, sencera, 
 vermell, cargolat al costat; decorat `condensador_arreglat`: llum verd, una aixeta que goteja, i el lector en verd
 amb la targeta blava de la Mosca a la ranura). La pantalla de la font és entre el lector i el broc; la nena de la
 garrafa, a la dreta de la font, la mira. Una pila de **comptadors** d'aigua arrencats. El
-sindicat (porta) i la fosa (portal gran) al fons.
+sindicat (porta) i la foneria (portal gran) al fons.
 - `rampa` → `cantimplora_bodega` · `porta_sindicat` → `ferrum_sindicat` · `porta_fosa` → `fosa_forn` · `font` ·
   `condensador` · `piquet` · `comptadors` · `panell_preu` · `canonada`
 - Decorat `barril_piquet` (l'últim barril, al piquet, amb gots).
@@ -206,7 +206,7 @@ Una prestatgeria amb motlles de fosa.
 - Personatges: `bru` (a la taula), `iri` (la Vet no hi entra).
 
 ### `fosa_forn` (L)
-La fosa per dins: una nau alta i fosca, el forn gran (boca de foc; decorats `forn_ences` i `forn_fort`), la **manxa**
+La foneria per dins: una nau alta i fosca, el forn gran (boca de foc; decorats `forn_ences` i `forn_fort`), la **manxa**
 (una palanca gran), una pila de comptadors per fondre, un rascle per a l'escòria, un termòmetre de rellotge gran.
 - `porta` → `ferrum_carrer` · `pas` → `fosa_colada` · `forn` · `manxa` · `metall` (la pila) · `rascle` ·
   `termometre`
