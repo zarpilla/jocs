@@ -282,7 +282,7 @@ def fosa(cv, xemeneia=True):
                     cv.put(x, y, MORTAR, 3.8)
     # FONERIA, en lletres grosses de llauna clavades a la paret (n'hi falta una mica)
     s = 'FONERIA'
-    sx = 530 - (text_width(s) * 3) // 2
+    sx = 540 - (text_width(s) * 3) // 2                  # a la dreta del pendent del frontó (fins a x0 + 70)
     big = Canvas1x(40, 8, transparent=True)
     text(big, s, 0, 0, CLOTH, 4.0, lit=0)
     bp = big.img.load()
