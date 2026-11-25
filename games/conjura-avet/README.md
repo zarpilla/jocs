@@ -14,7 +14,8 @@ Pla i decisions: [guio/pla.md](guio/pla.md). Guió: [guio/guio.md](guio/guio.md)
 
 ## Estat
 
-Jugable de punta a punta, amb l'art, la música i els sons definitius; sense veus. No es publica encara (no és a
+Jugable de punta a punta, amb l'art, la música, els sons i les veus definitius (totes les línies gravades, amb
+ElevenLabs: `npm run veus`; configuració a [game/audio/veus.json](game/audio/veus.json)). No es publica encara (no és a
 `.github/workflows/publica.yml`).
 
 ## El que té de propi
