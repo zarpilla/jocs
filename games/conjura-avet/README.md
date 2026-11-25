@@ -1,6 +1,6 @@
 # La Conjura de l'Avet
 
-Aventura gràfica de «point & click» feta amb [Benne](https://benne.games/), a partir de 12 anys, de 2-3 hores. Sant
+Aventura gràfica de «point & click» feta amb [Benne](https://benne.games/), a partir de 12 anys, de 3-4 hores. Sant
 Joan de les Abadesses, any 1017. Una nit de tramuntana, l'avet que l'abadessa Emma va plantar fa 130 anys cau damunt
 el mur del monestir. Al matí, el jutge del comte ja té escrita l'ordre contra les monges, i el llenyataire és al
 celler del batlle. Les seves filles, la **Iri** (llenyatera) i la **Vet** (escrivana del monestir), saben que l'arbre
