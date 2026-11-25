@@ -32,7 +32,8 @@ Què es genera (es poden combinar; sense cap, res):
     --final <id>       les línies d'un final (escena, crèdits i tancament)
     --defecte          les respostes per defecte (`ui.defecte.*`)
     --codi             les línies que diu el codi del joc (`game/logic/*.ts`)
-    --tot              tot el joc (també els finals, les respostes per defecte i el codi; les pistes, no)
+    --pistes           les pistes (cada nivell) i el que es diu quan no n'hi ha cap (`ui.pista.*`)
+    --tot              tot el joc (també els finals, les respostes per defecte i el codi; les pistes, no: --pistes)
     --qui <pj>         només les d'aquest personatge (`player` = les protagonistes)
     --refes            torna a generar encara que no hagi canviat (una presa nova)
     --prova            no genera res: diu què faria i quants caràcters costaria
@@ -128,7 +129,7 @@ def protagonists_in(cond, out: set):
 def collect(content, table, joc: pathlib.Path, codi_cfg: dict, jugadora: dict | None = None):
     """Totes les línies dites: (who, clau, sala, diàleg, protagonistes possibles si who és player, grup).
 
-    El grup diu d'on surt: `None` (sales, diàlegs, objectes), `final:<id>`, `defecte` o `codi`."""
+    El grup diu d'on surt: `None` (sales, diàlegs, objectes), `final:<id>`, `defecte`, `codi` o `pistes`."""
     rooms = content["rooms"]
     protas = content["manifest"]["protagonists"]
     # On comença cada diàleg (per saber qui és la `player` i per a --sala).
@@ -229,6 +230,23 @@ def collect(content, table, joc: pathlib.Path, codi_cfg: dict, jugadora: dict | 
             ps = {p for p in protas if p in key.split(".")} or set(protas)
             lines.append(("player", key, None, None, ps, "defecte"))
 
+    # Les pistes: cada nivell el diu qui diu la pista (`who`) o, si no, la protagonista que juga (la que demani la
+    # condició `when`, o qualsevol). «No hi ha cap pista» (`ui.pista.cap`) el diu qualsevol; «ara li toca a l'altra»
+    # (`ui.pista.altra.<qui>`), la que no és <qui>.
+    for _id, h in (content.get("hints") or {}).items():
+        found = set()
+        protagonists_in(h.get("when"), found)
+        for key in h.get("levels") or []:
+            if isinstance(h.get("who"), str):
+                lines.append((h["who"], key, None, None, set(), "pistes"))
+            else:
+                lines.append(("player", key, None, None, found or set(protas), "pistes"))
+    for key in table:
+        if key == "ui.pista.cap":
+            lines.append(("player", key, None, None, set(protas), "pistes"))
+        elif key.startswith("ui.pista.altra."):
+            lines.append(("player", key, None, None, set(protas) - {key.rsplit(".", 1)[1]}, "pistes"))
+
     # El codi del joc: `{ who: 'x', text: 'clau' }` als .ts, i el que digui `codi` de veus.json (que mana).
     trobades = {}
     for ts in sorted((joc / "game/logic").glob("*.ts")):
@@ -281,6 +299,7 @@ def main():
     ap.add_argument("--final", action="append", default=[])
     ap.add_argument("--defecte", action="store_true")
     ap.add_argument("--codi", action="store_true")
+    ap.add_argument("--pistes", action="store_true")
     ap.add_argument("--tot", action="store_true")
     ap.add_argument("--refes", action="store_true")
     ap.add_argument("--prova", action="store_true")
@@ -322,6 +341,8 @@ def main():
     lines, dialog_rooms = collect(content, table, joc, cfg.get("codi", {}), cfg.get("jugadora", {}))
 
     def chosen(who, key, room, dialog, grup):
+        if grup == "pistes":            # només amb --pistes (o --clau): no entren a --tot
+            return a.pistes or key in a.clau
         if a.tot or key in a.clau or (dialog and dialog in a.dialeg):
             return True
         if grup == "defecte":

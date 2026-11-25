@@ -104,6 +104,8 @@ export interface HintView {
   id: Id;
   /** Text del nivell actual. */
   text: string;
+  /** La clau del text del nivell actual (per a la veu). */
+  key: TextKey;
   level: number;
   levels: number;
   /** Encara hi ha una pista més explícita. */
@@ -385,7 +387,7 @@ export class Narrative {
       const room = this.world.currentRoom();
       const targets = (def.targets ?? []).filter((t) => room !== null && this.isHotspotVisible(room, t));
       return {
-        id, level, levels: def.levels.length, text: this.t(def.levels[level - 1]!), hasMore: level < def.levels.length,
+        id, level, levels: def.levels.length, key: def.levels[level - 1]!, text: this.t(def.levels[level - 1]!), hasMore: level < def.levels.length,
         targets, ...(def.who ? { who: def.who } : {}),
       };
     });
@@ -419,9 +421,14 @@ export class Narrative {
    * que en tindria (`hintForOther`) i el joc té el text; si no, `ui.pista.cap`.
    */
   noHintText(): string {
+    return this.t(this.noHintKey());
+  }
+
+  /** La clau del text de `noHintText` (per a la veu). */
+  noHintKey(): TextKey {
     const other = this.hintForOther();
     const key = other ? `ui.pista.altra.${other}` : '';
-    return key && this.i18n.has(key) ? this.t(key) : this.t('ui.pista.cap');
+    return key && this.i18n.has(key) ? key : 'ui.pista.cap';
   }
 
   // ─── Finals ───────────────────────────────────────────────────────────────

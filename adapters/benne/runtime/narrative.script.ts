@@ -525,17 +525,19 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
 export function sayHint() {
   const hint = narrative.requestHint()
   const text = hint ? hint.text : narrative.noHintText()
+  const key = hint ? hint.key : narrative.noHintKey()
   if (hint?.targets.length) {
     const ids = hint.targets.map((t) => (narrative.content.characters[t] ? toBenne('characters', t) : toBenne('hotspots', t)))
     game.showThreads(ids, 3.2)
   }
   const speaker = hint?.who ? benneCharacter(hint.who) : undefined
   if (hint?.who && speaker) {
-    playLines([{ who: hint.who, key: `pista.${hint.id}`, text }])
+    playLines([{ who: hint.who, key, text }])
     return
   }
+  preloadLineVoices([{ who: 'player', key, text }])
   recordLine('player', text)
-  player.say(text)
+  player.say(voiced(player.id, key, text))
 }
 
 /** Canvia a l'altra protagonista (per a un botó de la GUI): va a la sala on és. */
