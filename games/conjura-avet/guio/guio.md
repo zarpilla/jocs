@@ -29,10 +29,10 @@ l'endemà al matí.
 
 ### Lema
 
-> *Els pergamins, els homes els perden. Els arbres, no.*
+> *L'avet ha caigut aquesta nit. L'ordre és d'ahir.*
 
-És el que va dir l'Emma, segons la llegenda. El del jutge Ponç, que surt a tot arreu: *«Tres testimonis i un
-segell.»*
+És el que la Vet veu de seguida a l'escena 1b: l'ordre del jutge diu que l'avet ha caigut, i és d'abans que caigués.
+El del jutge Ponç, que surt a tot arreu: *«Tres testimonis i un segell.»*
 
 ## To
 
@@ -990,7 +990,7 @@ La Gueraula comença la corranda de sempre, i la Vet, que no canta mai, hi posa 
 > *i ara, qui el vulgui tombar,*
 > *ho trobarà escrit també.*
 
-Final: *«La Conjura de l'Avet»*, i el text de tancament: *«Els pergamins, els homes els perden. Els arbres, no.»*
+Final: *«La Conjura de l'Avet»*, i el text de tancament, el lema: *«L'avet ha caigut aquesta nit. L'ordre és d'ahir.»*
 
 ### Què passa amb tothom (crèdits)
 
