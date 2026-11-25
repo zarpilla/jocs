@@ -11,7 +11,7 @@ l'esquerra, veu un tros de passadís en L:
   - a dalt, les **canonades** del palau (aigua «només per a piscines», vapor, aire), que fan la cantonada i
     travessen el passadís; la vàlvula vermella baixa cap a l'ascensor;
   - al mig, separat de tot i girat, el **carro** de flors de plàstic d'en Nil (s'hi passa per darrere), i a la
-    dreta el carro de neteja de la Lia, amb la galleda i el pal de fregar;
+    dreta el carro de neteja de la Lia, amb la galleda i el pal de fregar (ANIMS `gota`: la canonada hi goteja);
   - primer pla: unes caixes de cartró a baix a l'esquerra i una canonada gruixuda que travessa per dalt, fosques.
 
 Tot el detall ve dels passadissos plans de sempre (palau_servei_pla_comu.py), dibuixats de cara i projectats.
@@ -343,7 +343,46 @@ def _frames_estrelles():
     return [e.capa(f, {'ull'}) for f in estrelles_frames(img, list(bright), n=10, seed=9)]
 
 
-ANIMS = {'estrelles': {'frames': _frames_estrelles, 'frameDuration': 300}}
+# ─── Animació: la gota de la canonada ────────────────────────────────────────
+
+GOTA = (570, 29, 139)                              # x, sota la canonada i l'aigua de la galleda (en píxels)
+GOTA_N = 40                                        # 40 × 70 ms: una gota cada gairebé tres segons
+AIGUA = (226, 240, 252)
+
+
+def _frames_gota():
+    """La canonada de l'aigua «només per a piscines» goteja just a sobre de la galleda de la Lia: la gota s'infla,
+    cau, fa plic a l'aigua i torna a començar."""
+    from PIL import Image
+    gx, y0, y1 = GOTA
+    out = []
+    for f in range(GOTA_N):
+        im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        Q = im.load()
+
+        def px(x, y, a):
+            Q[x, y] = (*AIGUA, round(255 * a))
+        if f < 10:                                     # s'infla
+            px(gx, y0, 0.3 + 0.07 * f)
+            if f >= 6:
+                px(gx, y0 + 1, 0.4 + 0.1 * (f - 6))
+        elif f < 18:                                   # cau (accelerant), amb una cueta
+            t = (f - 9) / 8
+            y = round(y0 + 1 + (y1 - y0 - 1) * t * t)
+            for j in range(min(1 + (f - 10), 4)):
+                if y - j > y0:
+                    px(gx, y - j, 0.95 - 0.22 * j)
+        elif f < 21:                                   # plic: dues gotetes i l'aigua que es mou
+            k = f - 18
+            for s_ in (-1, 1):
+                px(gx + s_ * (1 + k), y1 - 2 - (1, 2, 1)[k], 0.9 - 0.25 * k)
+                px(gx + s_ * (2 + k), y1, 0.6 - 0.18 * k)
+        out.append(im)
+    return out
+
+
+ANIMS = {'estrelles': {'frames': _frames_estrelles, 'frameDuration': 300},
+         'gota': {'frames': _frames_gota, 'frameDuration': 70}}
 
 
 def _amo(ids):
@@ -416,7 +455,7 @@ FRONT = [
     {'id': 'davant_carro', 'mask': _amo({'carro'}), 'baseline': round(max(v for _, v in _forat_carro(0))) - 4,
      'zIndex': 20},
     {'id': 'davant_neteja', 'mask': _amo({'neteja'}), 'baseline': round(_vpeu(NETEJA[0], NETEJA[1] - 22)),
-     'zIndex': 20},
+     'zIndex': 20, 'props': ('gota',)},                       # (la gota cau dins la galleda: per sobre de la capa)
     {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
 ]
 

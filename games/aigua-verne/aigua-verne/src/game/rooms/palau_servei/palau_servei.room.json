@@ -309,6 +309,21 @@
       },
       "zIndex": 24,
       "baseline": 999
+    },
+    {
+      "id": "gota",
+      "tag": "gota",
+      "zIndex": 21,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gota": {
+          "loop": true,
+          "frameDuration": 70
+        }
+      },
+      "baseline": 157
     }
   ],
   "characters": [

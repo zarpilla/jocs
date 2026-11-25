@@ -11,8 +11,8 @@ Una càmera alta, girada cap a la cantonada de l'esquerra, mirant una mica avall
   - a la paret de l'esquerra, en escorç, l'**ascensor** de servei, obert: la cabina il·luminada fa una claror que
     s'escampa en diagonal pel terra; al costat, l'**interfon**;
   - a la dreta, el tub gruixut de la reserva del Magnat, que puja fins al vidre (s'hi passa per darrere), amb la
-    **càmera** penjada (decorat `flors_camera`), i l'armari de la **palanca** vermella «RESERVA» (decorat
-    `reserva_oberta`);
+    **càmera** penjada (decorat `flors_camera`; ANIMS `llum`, el llum vermell que fa pampallugues), i l'armari de
+    la **palanca** vermella «RESERVA» (decorat `reserva_oberta`);
   - primer pla: una barana i una canonada gruixuda, fosques, tallades per la vora de baix.
 
 Tot el detall ve de la sala plana de sempre (palau_control_pla_comu.py), dibuixada de cara i projectada.
@@ -404,7 +404,37 @@ def flors_camera(cv):
 PROPS = {'obert_t2': _obert('t2'), 'obert_aqua': _obert('aqua'), 'obert_ferrum': _obert('ferrum'),
          'reserva_oberta': reserva_oberta, 'flors_camera': flors_camera}
 
-ANIMS = {}
+# ─── Animació: el llum de la càmera ──────────────────────────────────────────
+
+LLUM_N = 14                                        # 14 × 140 ms: una pampallugada cada dos segons
+
+
+def _frames_llum():
+    """El llum vermell de la càmera fa una pampallugada curta i es queda com al fons: grava. (Amb les flors posades,
+    el decorat `flors_camera` és per sobre i el tapa.)"""
+    img, _ = _base()
+    P = img.load()
+    lx, ly = max(((x, y) for x in range(425, 460) for y in range(20, 45)),
+                 key=lambda q: P[q][0] - P[q][1])     # el píxel més vermell, a la càmera
+    out = []
+    for f in range(LLUM_N):
+        im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        k = (1.0, 0.45)[f] if f < 2 else 0.0
+        if k:
+            Q = im.load()
+            for dx in range(-3, 4):
+                for dy in range(-3, 4):
+                    d = math.hypot(dx, dy)
+                    if d <= 1.0:                       # el llum (la creu): més encès
+                        Q[lx + dx, ly + dy] = (255, round(120 + 80 * k * (d == 0)), round(90 + 50 * k * (d == 0)),
+                                               round(255 * k))
+                    elif d <= 3.2:                     # la claror, al voltant
+                        Q[lx + dx, ly + dy] = (255, 70, 50, round(90 * k * (1 - (d - 1) / 2.4)))
+        out.append(im)
+    return out
+
+
+ANIMS = {'llum': {'frames': _frames_llum, 'frameDuration': 140}}
 
 
 def _amo(ids):

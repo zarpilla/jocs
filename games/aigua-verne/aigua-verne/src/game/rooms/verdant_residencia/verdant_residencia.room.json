@@ -387,6 +387,20 @@
       },
       "zIndex": 22,
       "baseline": 999
+    },
+    {
+      "id": "nuvol",
+      "tag": "nuvol",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "nuvol": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
     }
   ],
   "characters": [

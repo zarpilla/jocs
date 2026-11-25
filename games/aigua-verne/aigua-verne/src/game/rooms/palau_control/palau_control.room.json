@@ -462,6 +462,20 @@
       },
       "zIndex": 24,
       "baseline": 999
+    },
+    {
+      "id": "llum",
+      "tag": "llum",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llum": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
     }
   ],
   "characters": [

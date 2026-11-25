@@ -4,8 +4,8 @@ Aigua Verne — `verdant_residencia` (P, de prop: persones de ≈100 px). Escena
 El despatx d'estiu del Magnat, a la residència de Verdant: tot blanc i or, net com una sala d'exposició on no viu
 ningú. Vist de biaix i una mica des de dalt, com el pont de la Cantimplora: la paret de la **porta** (blanca, plafons
 d'or, torna al jardí) fuig cap a la cantonada; a la paret del fons, el **quadre** enorme del Magnat amb en Dividend,
-els apliques i el **finestral** al jardí, amb les cortines. L'**arxivador** blanc dels calaixos «DEUTORS», «DRETS» i
-«PEIXOS» (amb el trofeu de la gota d'or) és a la dreta del finestral, girat cap a la sala; la **calaixera** de laca, separada de la
+els apliques i el **finestral** al jardí, amb les cortines (ANIMS `nuvol`: un núvol que hi passa). L'**arxivador**
+blanc dels calaixos «DEUTORS», «DRETS» i «PEIXOS» (amb el trofeu de la gota d'or) és a la dreta del finestral, girat cap a la sala; la **calaixera** de laca, separada de la
 paret, sota el quadre, amb el gerro de flors de plàstic i el telèfon d'or; la **paperera daurada**, al mig, i s'hi
 passa per darrere. El terra de marbre amb vetes d'or (les lloses s'empetiteixen cap al fons) i la catifa blanca amb
 la gota; el sol del finestral entra en diagonal i fa una taca pel terra. Primer pla: una columna blanca a l'ombra,
@@ -371,6 +371,41 @@ def bg(cv):
 
 
 PROPS = {}
+
+
+# ─── Animació: un núvol pel finestral ─────────────────────────────────────────
+
+FIN = (424, 542, 10, 88)                           # on buscar el cel del finestral (x0, x1, y0, y1, en píxels)
+NUVOL_Y = 55                                       # l'alçada del núvol (entre els dos del fons i el travesser)
+NUVOL = [(0, 1, 5.5, 2.4), (6, -1, 6.0, 3.4), (12, 1, 5.0, 2.4)]   # les bombolles: (dx, dy, rx, ry)
+
+
+def _frames_nuvol():
+    """Un núvol petit que passa a poc a poc pel cel del finestral, d'esquerra a dreta, per darrere dels muntants i
+    dels altres núvols (només es pinta on el fons és cel blau)."""
+    from PIL import Image
+    img, _ = _base()
+    P = img.load()
+    x0, x1, y0, y1 = FIN
+    cel = {(x, y) for x in range(x0, x1) for y in range(y0, y1) if P[x, y][2] - P[x, y][0] > 45}
+    out = []
+    for cx in range(x0 - 20, x1 + 8):                  # 1 px per fotograma: entra i surt del tot (bucle net)
+        im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        Q = im.load()
+        for x in range(cx - 7, cx + 19):
+            for y in range(NUVOL_Y - 5, NUVOL_Y + 4):
+                if (x, y) not in cel:
+                    continue
+                d = min(((x - cx - dx) / rx) ** 2 + ((y - NUVOL_Y - dy) / ry) ** 2 for dx, dy, rx, ry in NUVOL)
+                if d > 1 or y > NUVOL_Y + 3:                   # (la panxa del núvol, plana)
+                    continue
+                c = (250, 252, 255) if y < NUVOL_Y + 2 else (220, 232, 248)
+                Q[x, y] = (*c, 150 if d > 0.7 else 235)
+        out.append(im)
+    return out
+
+
+ANIMS = {'nuvol': {'frames': _frames_nuvol, 'frameDuration': 220}}
 
 
 def _amo(ids):
