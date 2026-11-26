@@ -676,6 +676,45 @@
         }
       ]
     },
+    "llauna": {
+      "name": "sala.cantimplora_bodega.llauna.nom",
+      "visibleIf": {
+        "flag": "oli_agafat",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.llauna.mira"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "flag": "oli_agafat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.motor.8"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "oli_agafat"
+            },
+            {
+              "giveItem": "oli"
+            }
+          ]
+        }
+      ]
+    },
     "motor": {
       "name": "sala.cantimplora_bodega.motor.nom",
       "interactions": [
@@ -748,6 +787,14 @@
             {
               "who": "player",
               "text": "sala.cantimplora_bodega.motor.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.motor.oli",
+              "if": {
+                "flag": "oli_agafat",
+                "is": false
+              }
             }
           ],
           "effects": [
@@ -773,6 +820,14 @@
             {
               "who": "player",
               "text": "sala.cantimplora_bodega.motor.6"
+            },
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.motor.oli",
+              "if": {
+                "flag": "oli_agafat",
+                "is": false
+              }
             }
           ],
           "effects": [
@@ -787,36 +842,14 @@
             {
               "who": "player",
               "text": "sala.cantimplora_bodega.motor.7"
-            }
-          ]
-        },
-        {
-          "verb": "pickUp",
-          "if": {
-            "flag": "oli_agafat",
-            "is": false
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.cantimplora_bodega.motor.8"
-            }
-          ],
-          "effects": [
-            {
-              "setFlag": "oli_agafat"
             },
             {
-              "giveItem": "oli"
-            }
-          ]
-        },
-        {
-          "verb": "pickUp",
-          "lines": [
-            {
               "who": "player",
-              "text": "sala.cantimplora_bodega.motor.9"
+              "text": "sala.cantimplora_bodega.motor.oli",
+              "if": {
+                "flag": "oli_agafat",
+                "is": false
+              }
             }
           ]
         }

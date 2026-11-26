@@ -84,4 +84,40 @@ describe('Aigua Verne: arreglos de la passada tàctil', () => {
     expect(n.getVar('ordre_valvules')).toBe('');
     expect(n.flag('objeccio_7788') || n.flag('objeccio_anima') || n.flag('objeccio_peixos')).toBe(false);
   });
+  it("la Capitana accepta l'albarà encara que el porti l'altra germana, si és al pont (tasca 083)", () => {
+    const { n, p } = partida();
+    // l'Acte 1 fins just abans que l'Iri doni l'albarà: el porta l'Iri, al pont; la Vet ha posat l'injector
+    const parar = Symbol('parar');
+    const talk = p.talk.bind(p);
+    p.talk = ((who: string, ...opts: string[]) => {
+      if (who === 'capitana' && opts[0] === 'entrego') throw parar;
+      return talk(who, ...opts);
+    }) as typeof p.talk;
+    try { acte1(p, n); } catch (e) { if (e !== parar) throw e; }
+    p.talk = talk;
+    expect(p.inventory('iri')).toContain('albara');
+    amb(p, 'vet');
+    anar(p, n, 'cantimplora_pont');
+    expect(p.inventory('vet')).not.toContain('albara');
+    const r = p.talk('capitana', 'recorda');
+    expect(textos(r)).toContain('el porta la teva germana');
+    p.talk('capitana', 'entrego_iri');
+    expect(n.flag('capitana_accepta')).toBe(true);
+    expect(p.inventory('iri')).not.toContain('albara');
+  });
+  it('la caixa forta: la paraula es tecleja lletra a lletra, i una de dolenta no elimina res (tasca 075)', () => {
+    const { n, p } = partida();
+    n.apply([{ setFlag: 'quadre_apartat' }]);
+    amb(p, 'iri');
+    p.goTo('granja_casa');
+    const lletres = (w: string) => [...w].map((c, i) => `c${i + 1}_${c.toLowerCase()}`);
+    // MARIA, dues vegades (no s'elimina), i VERNE: no obren
+    p.talk('teclat', 'tecleja', ...lletres('MARIA'), 'accepta_no', 'tecleja', ...lletres('MARIA'), 'accepta_no');
+    p.talk('teclat', 'tecleja', ...lletres('VERNE'), 'accepta_no');
+    expect(n.flag('caixa_oberta')).toBe(false);
+    // TITUS, sense haver vist el bol: també obre (la paraula s'ha de saber, no desbloquejar)
+    p.talk('teclat', 'tecleja', ...lletres('TITUS'), 'accepta');
+    expect(n.flag('caixa_oberta')).toBe(true);
+    expect(p.inventory('iri')).toContain('escriptura');
+  });
 });

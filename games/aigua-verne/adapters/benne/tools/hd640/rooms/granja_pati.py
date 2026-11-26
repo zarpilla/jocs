@@ -57,6 +57,7 @@ BOMBA = (-330.0, 730.0)
 ARBRE = (-480.0, 700.0)
 GRANER_X, GRANER_Z = 738.0, 1290.0                 # la porta del graner (el centre) i la façana
 PORT = (740.0, 600.0)
+SENYAL_PORT = (-55.0, 0, 610.0)                     # el pal «PORT →» que es veu des del pou (x, y, z)
 PANELL = (-210.0, 1050.0)                         # (a una distància on el rètol es llegeix)
 PANELL_HW, PANELL_HH = 68, 29                      # mitja amplada i mitja alçada: ≈ la mida del dibuix pla
 TANCA0, TANCA1 = (-250.0, 790.0), (1000.0, 3300.0)
@@ -348,6 +349,8 @@ def escena(cv, tex):
     pou(e)
     masia(e, tex)
     e.sprite('pal_port', tex['cami'], (621, 202), (PORT[0] - 20, 0, PORT[1] - 30))
+    # un altre pal del port, a la vora de la tanca, que es veu des del pou: el camí continua cap a la dreta (tasca 073)
+    e.sprite('senyal_port', tex['cami'], (621, 202), SENYAL_PORT)
     roques(e)
     return e
 
@@ -473,6 +476,8 @@ GEOMETRIA = {
         'porta_graner': {'rect': _rect((GRANER_X - 42, 72, GRANER_Z), (GRANER_X + 42, 0, GRANER_Z)),
                          'walk': _p(GRANER_X, 1272)},
         'cami_port': {'rect': (1240, 196, ROOM_W - 1, 258), 'walk': _p(760, 640)},
+        'senyal_port': {'rect': _rect((SENYAL_PORT[0] - 22, 40, SENYAL_PORT[2]), (SENYAL_PORT[0] + 22, 0, SENYAL_PORT[2])),
+                        'walk': _p(SENYAL_PORT[0] - 10, SENYAL_PORT[2] + 40)},
         'pou': {'rect': _rect((POU[0] - 28, 80, POU[1] - 26), (POU[0] + 28, 0, POU[1] - 26)),
                 'walk': _p(POU[0] + 10, POU[1] - 50)},
         'bomba': {'rect': _rect((BOMBA[0] - 18, 40, BOMBA[1] - 8), (BOMBA[0] + 18, 0, BOMBA[1] - 8)),

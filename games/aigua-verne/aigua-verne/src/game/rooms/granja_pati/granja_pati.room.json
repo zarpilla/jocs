@@ -321,7 +321,7 @@
       "id": "pou",
       "active": true,
       "description": "pou",
-      "zIndex": 3,
+      "zIndex": 9,
       "points": [
         {
           "x": 301,
@@ -353,7 +353,7 @@
       "id": "bomba",
       "active": true,
       "description": "bomba de Verne",
-      "zIndex": 4,
+      "zIndex": 10,
       "points": [
         {
           "x": 399,
@@ -507,6 +507,38 @@
       "lookAtPoint": {
         "x": 577,
         "y": 181
+      }
+    },
+    {
+      "id": "senyal_port",
+      "active": true,
+      "description": "pal del port",
+      "zIndex": 11,
+      "points": [
+        {
+          "x": 577,
+          "y": 192
+        },
+        {
+          "x": 613,
+          "y": 192
+        },
+        {
+          "x": 613,
+          "y": 225
+        },
+        {
+          "x": 577,
+          "y": 225
+        }
+      ],
+      "walkToPoint": {
+        "x": 590,
+        "y": 218
+      },
+      "lookAtPoint": {
+        "x": 595,
+        "y": 225
       }
     }
   ],

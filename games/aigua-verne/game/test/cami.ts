@@ -29,7 +29,7 @@ export function acte1(p: Jugador, n: Narrative, cami: Cami = {}) {
   p.talk('pare', 'contrasenya');
   p.do('look', 'bol');
   p.do('open', 'caixa_forta');
-  p.talk('teclat', 'titus');
+  p.talk('teclat', 'tecleja', 'c1_t', 'c2_i', 'c3_t', 'c4_u', 'c5_s', 'accepta');
   expect(n.flag('caixa_oberta')).toBe(true);
   amb(p, 'vet');
   anar(p, n, 'granja_graner');
@@ -71,7 +71,7 @@ export function acte1(p: Jugador, n: Narrative, cami: Cami = {}) {
   p.do('open', 'calaix');
   expect(n.flag('mosca_activa')).toBe(true);
   p.do('look', 'motor');
-  p.do('pickUp', 'motor');
+  p.do('pickUp', 'llauna');
   p.talk('tomas', 'clau');
   anar(p, n, 'granja_graner');
   p.do('pickUp', 'llavors');

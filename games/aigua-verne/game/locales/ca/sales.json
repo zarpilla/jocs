@@ -372,7 +372,6 @@
   "sala.cantimplora_bodega.motor.6": "El motor. La Vet diu que l'injector té el broquet esquerdat, i que el tractor de l'avi en té un d'igual.",
   "sala.cantimplora_bodega.motor.7": "El motor de la Cantimplora. Ronca, però vola.",
   "sala.cantimplora_bodega.motor.8": "Una llauna d'oli de motor. Per al motor, per al tractor, i per a la Capitana quan fa mal temps.",
-  "sala.cantimplora_bodega.motor.9": "L'oli ja el tenim. Amb una llauna n'hi ha prou.",
   "sala.cantimplora_bodega.fusibles.1": "El quadre de fusibles. Sobren fusibles de deu. De trenta, cap.",
   "sala.cantimplora_bodega.fusibles.2": "Un fusible de deu. Per a la grua n'hi cal un de trenta... Ja hi pensaré.",
   "sala.cantimplora_bodega.fusibles.3": "Si en trec un sense motiu, s'apaga la cafetera. I la Capitana.",
@@ -725,5 +724,10 @@
   "sala.fosa_colada.llit.falta": "El motlle ja hi és. Falta la sorra fina.",
   "sala.fosa_forn.piquera.nom": "piquera",
   "sala.fosa_forn.piquera.mira": "La piquera: el broc del forn per on surt el metall fos. Té un tap de fang.",
-  "sala.fosa_forn.piquera.mira_oberta": "La piquera, oberta. El metall baixa per la regata fins a la colada."
+  "sala.fosa_forn.piquera.mira_oberta": "La piquera, oberta. El metall baixa per la regata fins a la colada.",
+  "sala.cantimplora_bodega.llauna.nom": "llauna d'oli",
+  "sala.cantimplora_bodega.llauna.mira": "Una llauna d'oli de motor, mig plena. Fa olor de taller d'avi.",
+  "sala.cantimplora_bodega.motor.oli": "I a terra, al costat, la llauna d'oli de motor.",
+  "sala.granja_pati.senyal_port.nom": "pal del port",
+  "sala.granja_pati.senyal_port.mira": "«PORT», cap a la dreta. El camí passa per davant del graner i baixa fins al moll."
 }

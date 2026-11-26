@@ -292,6 +292,20 @@
         }
       ]
     },
+    "senyal_port": {
+      "name": "sala.granja_pati.senyal_port.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_pati.senyal_port.mira"
+            }
+          ]
+        }
+      ]
+    },
     "pou": {
       "name": "sala.granja_pati.pou.nom",
       "interactions": [

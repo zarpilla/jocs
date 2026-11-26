@@ -316,11 +316,11 @@
         },
         {
           "x": 436,
-          "y": 143
+          "y": 124
         },
         {
           "x": 394,
-          "y": 143
+          "y": 124
         }
       ],
       "walkToPoint": {
@@ -329,7 +329,7 @@
       },
       "lookAtPoint": {
         "x": 415,
-        "y": 143
+        "y": 124
       }
     },
     {
@@ -664,6 +664,46 @@
       },
       "zIndex": 22,
       "baseline": 999
+    },
+    {
+      "id": "llauna",
+      "tag": "llauna",
+      "animations": {
+        "llauna": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 394,
+            "y": 125
+          },
+          {
+            "x": 412,
+            "y": 125
+          },
+          {
+            "x": 412,
+            "y": 148
+          },
+          {
+            "x": 394,
+            "y": 148
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 409,
+        "y": 155
+      },
+      "lookAtPoint": {
+        "x": 403,
+        "y": 148
+      },
+      "description": "llauna d'oli"
     }
   ],
   "characters": [

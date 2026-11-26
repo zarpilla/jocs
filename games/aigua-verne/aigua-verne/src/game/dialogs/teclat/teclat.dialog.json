@@ -3,23 +3,9 @@
   "displayName": "teclat",
   "options": [
     {
-      "id": "inici__maria",
-      "scriptName": "inici__maria",
-      "text": "M-A-R-I-A.",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "inici__verne",
-      "scriptName": "inici__verne",
-      "text": "V-E-R-N-E.",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "inici__titus",
-      "scriptName": "inici__titus",
-      "text": "T-I-T-U-S.",
+      "id": "inici__tecleja",
+      "scriptName": "inici__tecleja",
+      "text": "Teclejo una paraula.",
       "enabled": false,
       "say": false
     },
@@ -27,6 +13,167 @@
       "id": "inici__deixa",
       "scriptName": "inici__deixa",
       "text": "Ho deixo estar.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella1__c1_m",
+      "scriptName": "casella1__c1_m",
+      "text": "M",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella1__c1_v",
+      "scriptName": "casella1__c1_v",
+      "text": "V",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella1__c1_t",
+      "scriptName": "casella1__c1_t",
+      "text": "T",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella1__c1_b",
+      "scriptName": "casella1__c1_b",
+      "text": "B",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella2__c2_a",
+      "scriptName": "casella2__c2_a",
+      "text": "A",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella2__c2_e",
+      "scriptName": "casella2__c2_e",
+      "text": "E",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella2__c2_i",
+      "scriptName": "casella2__c2_i",
+      "text": "I",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella2__c2_o",
+      "scriptName": "casella2__c2_o",
+      "text": "O",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella3__c3_r",
+      "scriptName": "casella3__c3_r",
+      "text": "R",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella3__c3_t",
+      "scriptName": "casella3__c3_t",
+      "text": "T",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella3__c3_n",
+      "scriptName": "casella3__c3_n",
+      "text": "N",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella3__c3_l",
+      "scriptName": "casella3__c3_l",
+      "text": "L",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella4__c4_i",
+      "scriptName": "casella4__c4_i",
+      "text": "I",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella4__c4_n",
+      "scriptName": "casella4__c4_n",
+      "text": "N",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella4__c4_u",
+      "scriptName": "casella4__c4_u",
+      "text": "U",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella4__c4_e",
+      "scriptName": "casella4__c4_e",
+      "text": "E",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella5__c5_a",
+      "scriptName": "casella5__c5_a",
+      "text": "A",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella5__c5_e",
+      "scriptName": "casella5__c5_e",
+      "text": "E",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella5__c5_s",
+      "scriptName": "casella5__c5_s",
+      "text": "S",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "casella5__c5_o",
+      "scriptName": "casella5__c5_o",
+      "text": "O",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "comprova__accepta",
+      "scriptName": "comprova__accepta",
+      "text": "Premo «D'acord».",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "comprova__accepta_no",
+      "scriptName": "comprova__accepta_no",
+      "text": "Premo «D'acord».",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "comprova__esborra",
+      "scriptName": "comprova__esborra",
+      "text": "Ho esborro.",
       "enabled": false,
       "say": false
     }

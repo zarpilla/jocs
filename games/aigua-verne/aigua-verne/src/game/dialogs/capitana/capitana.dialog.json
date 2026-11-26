@@ -52,6 +52,20 @@
       "say": false
     },
     {
+      "id": "menu__entrego_iri",
+      "scriptName": "menu__entrego_iri",
+      "text": "Albarà i injector. Anem a Aqua?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__entrego_vet",
+      "scriptName": "menu__entrego_vet",
+      "text": "Albarà i injector. Anem a Aqua?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__contracte",
       "scriptName": "menu__contracte",
       "text": "Capitana, això és el teu contracte. El vaig trobar al despatx del Magnat.",

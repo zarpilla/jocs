@@ -34,6 +34,14 @@ options.menu__entrego.onChoose(() => {
   chooseNarrativeOption('capitana', dialog, 'menu', 'entrego')
 })
 
+options.menu__entrego_iri.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'menu', 'entrego_iri')
+})
+
+options.menu__entrego_vet.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'menu', 'entrego_vet')
+})
+
 options.menu__contracte.onChoose(() => {
   chooseNarrativeOption('capitana', dialog, 'menu', 'contracte')
 })

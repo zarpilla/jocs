@@ -184,7 +184,12 @@
         "safata": "",
         "temperatura": 8,
         "valvules": 0,
-        "gresol": "llit"
+        "gresol": "llit",
+        "teclat_1": "·",
+        "teclat_2": "·",
+        "teclat_3": "·",
+        "teclat_4": "·",
+        "teclat_5": "·"
       }
     },
     "characters": {
@@ -3567,6 +3572,45 @@
               }
             ]
           },
+          "llauna": {
+            "name": "sala.cantimplora_bodega.llauna.nom",
+            "visibleIf": {
+              "flag": "oli_agafat",
+              "is": false
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.cantimplora_bodega.llauna.mira"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "if": {
+                  "flag": "oli_agafat",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.cantimplora_bodega.motor.8"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "oli_agafat"
+                  },
+                  {
+                    "giveItem": "oli"
+                  }
+                ]
+              }
+            ]
+          },
           "motor": {
             "name": "sala.cantimplora_bodega.motor.nom",
             "interactions": [
@@ -3639,6 +3683,14 @@
                   {
                     "who": "player",
                     "text": "sala.cantimplora_bodega.motor.5"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.cantimplora_bodega.motor.oli",
+                    "if": {
+                      "flag": "oli_agafat",
+                      "is": false
+                    }
                   }
                 ],
                 "effects": [
@@ -3664,6 +3716,14 @@
                   {
                     "who": "player",
                     "text": "sala.cantimplora_bodega.motor.6"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.cantimplora_bodega.motor.oli",
+                    "if": {
+                      "flag": "oli_agafat",
+                      "is": false
+                    }
                   }
                 ],
                 "effects": [
@@ -3678,36 +3738,14 @@
                   {
                     "who": "player",
                     "text": "sala.cantimplora_bodega.motor.7"
-                  }
-                ]
-              },
-              {
-                "verb": "pickUp",
-                "if": {
-                  "flag": "oli_agafat",
-                  "is": false
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.cantimplora_bodega.motor.8"
-                  }
-                ],
-                "effects": [
-                  {
-                    "setFlag": "oli_agafat"
                   },
                   {
-                    "giveItem": "oli"
-                  }
-                ]
-              },
-              {
-                "verb": "pickUp",
-                "lines": [
-                  {
                     "who": "player",
-                    "text": "sala.cantimplora_bodega.motor.9"
+                    "text": "sala.cantimplora_bodega.motor.oli",
+                    "if": {
+                      "flag": "oli_agafat",
+                      "is": false
+                    }
                   }
                 ]
               }
@@ -9948,6 +9986,20 @@
                   "open"
                 ],
                 "goTo": "port_terra2"
+              }
+            ]
+          },
+          "senyal_port": {
+            "name": "sala.granja_pati.senyal_port.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.granja_pati.senyal_port.mira"
+                  }
+                ]
               }
             ]
           },
@@ -19014,6 +19066,70 @@
                 "next": "entrego"
               },
               {
+                "id": "entrego_iri",
+                "text": "dlg.capitana.opt.entrego",
+                "if": {
+                  "all": [
+                    {
+                      "hasItem": "albara",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "hasItem": "albara",
+                          "who": "iri"
+                        },
+                        {
+                          "inRoom": "cantimplora_pont",
+                          "who": "iri"
+                        }
+                      ]
+                    },
+                    {
+                      "flag": "injector_posat"
+                    },
+                    {
+                      "flag": "capitana_accepta",
+                      "is": false
+                    }
+                  ]
+                },
+                "next": "entrego_iri"
+              },
+              {
+                "id": "entrego_vet",
+                "text": "dlg.capitana.opt.entrego",
+                "if": {
+                  "all": [
+                    {
+                      "hasItem": "albara",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "hasItem": "albara",
+                          "who": "vet"
+                        },
+                        {
+                          "inRoom": "cantimplora_pont",
+                          "who": "vet"
+                        }
+                      ]
+                    },
+                    {
+                      "flag": "injector_posat"
+                    },
+                    {
+                      "flag": "capitana_accepta",
+                      "is": false
+                    }
+                  ]
+                },
+                "next": "entrego_vet"
+              },
+              {
                 "id": "contracte",
                 "text": "dlg.capitana.opt.contracte",
                 "if": {
@@ -19210,9 +19326,83 @@
                 "who": "capitana",
                 "text": "dlg.capitana.recorda.3",
                 "if": {
-                  "not": {
-                    "hasItem": "albara"
-                  }
+                  "all": [
+                    {
+                      "not": {
+                        "hasItem": "albara"
+                      }
+                    },
+                    {
+                      "not": {
+                        "any": [
+                          {
+                            "all": [
+                              {
+                                "hasItem": "albara",
+                                "who": "iri"
+                              },
+                              {
+                                "inRoom": "cantimplora_pont",
+                                "who": "iri"
+                              }
+                            ]
+                          },
+                          {
+                            "all": [
+                              {
+                                "hasItem": "albara",
+                                "who": "vet"
+                              },
+                              {
+                                "inRoom": "cantimplora_pont",
+                                "who": "vet"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.recorda.3b",
+                "if": {
+                  "all": [
+                    {
+                      "hasItem": "albara",
+                      "is": false
+                    },
+                    {
+                      "any": [
+                        {
+                          "all": [
+                            {
+                              "hasItem": "albara",
+                              "who": "iri"
+                            },
+                            {
+                              "inRoom": "cantimplora_pont",
+                              "who": "iri"
+                            }
+                          ]
+                        },
+                        {
+                          "all": [
+                            {
+                              "hasItem": "albara",
+                              "who": "vet"
+                            },
+                            {
+                              "inRoom": "cantimplora_pont",
+                              "who": "vet"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
                 }
               },
               {
@@ -19446,6 +19636,136 @@
                 "text": "dlg.capitana.adeu.1"
               }
             ]
+          },
+          "entrego_iri": {
+            "lines": [
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.1"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.2"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.3"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.4",
+                "if": {
+                  "protagonist": "iri"
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.4.vet",
+                "if": {
+                  "protagonist": "vet"
+                }
+              },
+              {
+                "who": "iri",
+                "text": "dlg.capitana.entrego.5",
+                "if": {
+                  "inRoom": "cantimplora_pont",
+                  "who": "iri"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.capitana.entrego.5",
+                "if": {
+                  "not": {
+                    "inRoom": "cantimplora_pont",
+                    "who": "iri"
+                  }
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.6"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "capitana_accepta"
+              },
+              {
+                "setFlag": "aqua_oberta"
+              },
+              {
+                "takeItem": "albara",
+                "who": "iri"
+              }
+            ],
+            "goto": "menu"
+          },
+          "entrego_vet": {
+            "lines": [
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.1"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.2"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.3"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.4",
+                "if": {
+                  "protagonist": "iri"
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.4.vet",
+                "if": {
+                  "protagonist": "vet"
+                }
+              },
+              {
+                "who": "iri",
+                "text": "dlg.capitana.entrego.5",
+                "if": {
+                  "inRoom": "cantimplora_pont",
+                  "who": "iri"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.capitana.entrego.5",
+                "if": {
+                  "not": {
+                    "inRoom": "cantimplora_pont",
+                    "who": "iri"
+                  }
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.6"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "capitana_accepta"
+              },
+              {
+                "setFlag": "aqua_oberta"
+              },
+              {
+                "takeItem": "albara",
+                "who": "vet"
+              }
+            ],
+            "goto": "menu"
           }
         }
       },
@@ -27137,58 +27457,39 @@
             ],
             "choices": [
               {
-                "id": "maria",
-                "text": "dlg.teclat.opt.maria",
-                "once": true,
-                "next": "maria"
-              },
-              {
-                "id": "verne",
-                "text": "dlg.teclat.opt.verne",
-                "if": {
-                  "flag": "bomba_llegida"
-                },
-                "once": true,
-                "next": "verne"
-              },
-              {
-                "id": "titus",
-                "text": "dlg.teclat.opt.titus",
-                "if": {
-                  "flag": "bol_vist"
-                },
-                "next": "titus"
+                "id": "tecleja",
+                "text": "dlg.teclat.opt.tecleja",
+                "silent": true,
+                "next": "casella1"
               },
               {
                 "id": "deixa",
                 "text": "dlg.teclat.opt.deixa",
                 "end": true
               }
-            ]
-          },
-          "maria": {
-            "lines": [
+            ],
+            "effects": [
               {
-                "who": "player",
-                "text": "dlg.teclat.maria.1",
-                "sound": "teclat"
+                "setVar": "teclat_1",
+                "value": "·"
               },
               {
-                "who": "narrator",
-                "text": "dlg.teclat.maria.2"
-              }
-            ],
-            "goto": "inici"
-          },
-          "verne": {
-            "lines": [
+                "setVar": "teclat_2",
+                "value": "·"
+              },
               {
-                "who": "player",
-                "text": "dlg.teclat.verne.1",
-                "sound": "teclat"
+                "setVar": "teclat_3",
+                "value": "·"
+              },
+              {
+                "setVar": "teclat_4",
+                "value": "·"
+              },
+              {
+                "setVar": "teclat_5",
+                "value": "·"
               }
-            ],
-            "goto": "inici"
+            ]
           },
           "titus": {
             "lines": [
@@ -27283,6 +27584,565 @@
                 "giveItem": "contracte_7788"
               }
             ]
+          },
+          "casella1": {
+            "lines": [],
+            "choices": [
+              {
+                "id": "c1_m",
+                "text": "dlg.teclat.lletra.m",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_1",
+                    "value": "M"
+                  }
+                ],
+                "next": "casella2"
+              },
+              {
+                "id": "c1_v",
+                "text": "dlg.teclat.lletra.v",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_1",
+                    "value": "V"
+                  }
+                ],
+                "next": "casella2"
+              },
+              {
+                "id": "c1_t",
+                "text": "dlg.teclat.lletra.t",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_1",
+                    "value": "T"
+                  }
+                ],
+                "next": "casella2"
+              },
+              {
+                "id": "c1_b",
+                "text": "dlg.teclat.lletra.b",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_1",
+                    "value": "B"
+                  }
+                ],
+                "next": "casella2"
+              }
+            ]
+          },
+          "casella2": {
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "dlg.teclat.pantalla"
+              }
+            ],
+            "choices": [
+              {
+                "id": "c2_a",
+                "text": "dlg.teclat.lletra.a",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_2",
+                    "value": "A"
+                  }
+                ],
+                "next": "casella3"
+              },
+              {
+                "id": "c2_e",
+                "text": "dlg.teclat.lletra.e",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_2",
+                    "value": "E"
+                  }
+                ],
+                "next": "casella3"
+              },
+              {
+                "id": "c2_i",
+                "text": "dlg.teclat.lletra.i",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_2",
+                    "value": "I"
+                  }
+                ],
+                "next": "casella3"
+              },
+              {
+                "id": "c2_o",
+                "text": "dlg.teclat.lletra.o",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_2",
+                    "value": "O"
+                  }
+                ],
+                "next": "casella3"
+              }
+            ]
+          },
+          "casella3": {
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "dlg.teclat.pantalla"
+              }
+            ],
+            "choices": [
+              {
+                "id": "c3_r",
+                "text": "dlg.teclat.lletra.r",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_3",
+                    "value": "R"
+                  }
+                ],
+                "next": "casella4"
+              },
+              {
+                "id": "c3_t",
+                "text": "dlg.teclat.lletra.t",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_3",
+                    "value": "T"
+                  }
+                ],
+                "next": "casella4"
+              },
+              {
+                "id": "c3_n",
+                "text": "dlg.teclat.lletra.n",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_3",
+                    "value": "N"
+                  }
+                ],
+                "next": "casella4"
+              },
+              {
+                "id": "c3_l",
+                "text": "dlg.teclat.lletra.l",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_3",
+                    "value": "L"
+                  }
+                ],
+                "next": "casella4"
+              }
+            ]
+          },
+          "casella4": {
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "dlg.teclat.pantalla"
+              }
+            ],
+            "choices": [
+              {
+                "id": "c4_i",
+                "text": "dlg.teclat.lletra.i",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_4",
+                    "value": "I"
+                  }
+                ],
+                "next": "casella5"
+              },
+              {
+                "id": "c4_n",
+                "text": "dlg.teclat.lletra.n",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_4",
+                    "value": "N"
+                  }
+                ],
+                "next": "casella5"
+              },
+              {
+                "id": "c4_u",
+                "text": "dlg.teclat.lletra.u",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_4",
+                    "value": "U"
+                  }
+                ],
+                "next": "casella5"
+              },
+              {
+                "id": "c4_e",
+                "text": "dlg.teclat.lletra.e",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_4",
+                    "value": "E"
+                  }
+                ],
+                "next": "casella5"
+              }
+            ]
+          },
+          "casella5": {
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "dlg.teclat.pantalla"
+              }
+            ],
+            "choices": [
+              {
+                "id": "c5_a",
+                "text": "dlg.teclat.lletra.a",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_5",
+                    "value": "A"
+                  }
+                ],
+                "next": "comprova"
+              },
+              {
+                "id": "c5_e",
+                "text": "dlg.teclat.lletra.e",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_5",
+                    "value": "E"
+                  }
+                ],
+                "next": "comprova"
+              },
+              {
+                "id": "c5_s",
+                "text": "dlg.teclat.lletra.s",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_5",
+                    "value": "S"
+                  }
+                ],
+                "next": "comprova"
+              },
+              {
+                "id": "c5_o",
+                "text": "dlg.teclat.lletra.o",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_5",
+                    "value": "O"
+                  }
+                ],
+                "next": "comprova"
+              }
+            ]
+          },
+          "comprova": {
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "dlg.teclat.pantalla"
+              }
+            ],
+            "choices": [
+              {
+                "id": "accepta",
+                "text": "dlg.teclat.opt.accepta",
+                "silent": true,
+                "if": {
+                  "all": [
+                    {
+                      "var": "teclat_1",
+                      "op": "==",
+                      "value": "T"
+                    },
+                    {
+                      "var": "teclat_2",
+                      "op": "==",
+                      "value": "I"
+                    },
+                    {
+                      "var": "teclat_3",
+                      "op": "==",
+                      "value": "T"
+                    },
+                    {
+                      "var": "teclat_4",
+                      "op": "==",
+                      "value": "U"
+                    },
+                    {
+                      "var": "teclat_5",
+                      "op": "==",
+                      "value": "S"
+                    }
+                  ]
+                },
+                "next": "titus"
+              },
+              {
+                "id": "accepta_no",
+                "text": "dlg.teclat.opt.accepta",
+                "silent": true,
+                "if": {
+                  "not": {
+                    "all": [
+                      {
+                        "var": "teclat_1",
+                        "op": "==",
+                        "value": "T"
+                      },
+                      {
+                        "var": "teclat_2",
+                        "op": "==",
+                        "value": "I"
+                      },
+                      {
+                        "var": "teclat_3",
+                        "op": "==",
+                        "value": "T"
+                      },
+                      {
+                        "var": "teclat_4",
+                        "op": "==",
+                        "value": "U"
+                      },
+                      {
+                        "var": "teclat_5",
+                        "op": "==",
+                        "value": "S"
+                      }
+                    ]
+                  }
+                },
+                "next": "malament"
+              },
+              {
+                "id": "esborra",
+                "text": "dlg.teclat.opt.esborra",
+                "silent": true,
+                "effects": [
+                  {
+                    "setVar": "teclat_1",
+                    "value": "·"
+                  },
+                  {
+                    "setVar": "teclat_2",
+                    "value": "·"
+                  },
+                  {
+                    "setVar": "teclat_3",
+                    "value": "·"
+                  },
+                  {
+                    "setVar": "teclat_4",
+                    "value": "·"
+                  },
+                  {
+                    "setVar": "teclat_5",
+                    "value": "·"
+                  }
+                ],
+                "next": "casella1"
+              }
+            ]
+          },
+          "malament": {
+            "lines": [
+              {
+                "who": "player",
+                "text": "dlg.teclat.maria.1",
+                "sound": "teclat",
+                "if": {
+                  "all": [
+                    {
+                      "var": "teclat_1",
+                      "op": "==",
+                      "value": "M"
+                    },
+                    {
+                      "var": "teclat_2",
+                      "op": "==",
+                      "value": "A"
+                    },
+                    {
+                      "var": "teclat_3",
+                      "op": "==",
+                      "value": "R"
+                    },
+                    {
+                      "var": "teclat_4",
+                      "op": "==",
+                      "value": "I"
+                    },
+                    {
+                      "var": "teclat_5",
+                      "op": "==",
+                      "value": "A"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.teclat.verne.1",
+                "sound": "teclat",
+                "if": {
+                  "all": [
+                    {
+                      "var": "teclat_1",
+                      "op": "==",
+                      "value": "V"
+                    },
+                    {
+                      "var": "teclat_2",
+                      "op": "==",
+                      "value": "E"
+                    },
+                    {
+                      "var": "teclat_3",
+                      "op": "==",
+                      "value": "R"
+                    },
+                    {
+                      "var": "teclat_4",
+                      "op": "==",
+                      "value": "N"
+                    },
+                    {
+                      "var": "teclat_5",
+                      "op": "==",
+                      "value": "E"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.teclat.maria.2",
+                "sound": "teclat",
+                "if": {
+                  "not": {
+                    "any": [
+                      {
+                        "all": [
+                          {
+                            "var": "teclat_1",
+                            "op": "==",
+                            "value": "M"
+                          },
+                          {
+                            "var": "teclat_2",
+                            "op": "==",
+                            "value": "A"
+                          },
+                          {
+                            "var": "teclat_3",
+                            "op": "==",
+                            "value": "R"
+                          },
+                          {
+                            "var": "teclat_4",
+                            "op": "==",
+                            "value": "I"
+                          },
+                          {
+                            "var": "teclat_5",
+                            "op": "==",
+                            "value": "A"
+                          }
+                        ]
+                      },
+                      {
+                        "all": [
+                          {
+                            "var": "teclat_1",
+                            "op": "==",
+                            "value": "V"
+                          },
+                          {
+                            "var": "teclat_2",
+                            "op": "==",
+                            "value": "E"
+                          },
+                          {
+                            "var": "teclat_3",
+                            "op": "==",
+                            "value": "R"
+                          },
+                          {
+                            "var": "teclat_4",
+                            "op": "==",
+                            "value": "N"
+                          },
+                          {
+                            "var": "teclat_5",
+                            "op": "==",
+                            "value": "E"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "effects": [
+              {
+                "setVar": "teclat_1",
+                "value": "·"
+              },
+              {
+                "setVar": "teclat_2",
+                "value": "·"
+              },
+              {
+                "setVar": "teclat_3",
+                "value": "·"
+              },
+              {
+                "setVar": "teclat_4",
+                "value": "·"
+              },
+              {
+                "setVar": "teclat_5",
+                "value": "·"
+              }
+            ],
+            "goto": "inici"
           }
         }
       },
@@ -28234,10 +29094,8 @@
       "dlg.pare.temporal.1": "El temporal del trenta-u! Tres dies plovent. La vaca Ramona va nedar fins al poble i va tornar amb un barret.",
       "dlg.pare.temporal.2": "Ningú no va saber mai de qui era, el barret.",
       "dlg.pare.adeu.1": "Adeu, noies. Porteu-me aigua. O una cervesa. O totes dues.",
-      "dlg.teclat.opt.maria": "M-A-R-I-A.",
-      "dlg.teclat.opt.verne": "V-E-R-N-E.",
-      "dlg.teclat.opt.titus": "T-I-T-U-S.",
       "dlg.teclat.opt.deixa": "Ho deixo estar.",
+      "dlg.teclat.pantalla": "Pantalla: {teclat_1} {teclat_2} {teclat_3} {teclat_4} {teclat_5}",
       "dlg.teclat.inici.1": "El teclat té cinc caselles.",
       "dlg.teclat.inici.2": "Qui ens esperava a la porta... El gos! Però com es deia?",
       "dlg.teclat.maria.1": "La mare. No.",
@@ -28885,6 +29743,23 @@
       "dlg.grua.bolca_buit": "Bolcar-lo buit? En cauria pols i prou.",
       "dlg.grua.bolca_canal": "Aquí no hi ha cap motlle. Ho tiraria tot a terra.",
       "dlg.grua.bolca_dalt": "Des d'aquí dalt, esquitxaria fora del motlle. Més avall.",
+      "dlg.capitana.recorda.3b": "Albarà: el porta la teva germana. Que me'l doni, o dona-me'l tu: tant me fa qui.",
+      "dlg.teclat.opt.tecleja": "Teclejo una paraula.",
+      "dlg.teclat.lletra.m": "M",
+      "dlg.teclat.lletra.v": "V",
+      "dlg.teclat.lletra.t": "T",
+      "dlg.teclat.lletra.b": "B",
+      "dlg.teclat.lletra.a": "A",
+      "dlg.teclat.lletra.e": "E",
+      "dlg.teclat.lletra.i": "I",
+      "dlg.teclat.lletra.o": "O",
+      "dlg.teclat.lletra.r": "R",
+      "dlg.teclat.lletra.n": "N",
+      "dlg.teclat.lletra.l": "L",
+      "dlg.teclat.lletra.u": "U",
+      "dlg.teclat.lletra.s": "S",
+      "dlg.teclat.opt.accepta": "Premo «D'acord».",
+      "dlg.teclat.opt.esborra": "Ho esborro.",
       "final.plou.titol": "Plou",
       "final.text": "L'aigua no s'havia acabat. Estava guardada.",
       "final.plou.1": "A la pantalla del saló: 29. Per sota de la ratlla vermella.",
@@ -29210,7 +30085,8 @@
       "ui.menu.inici": "Pantalla inicial",
       "ui.menu.tornar": "Torna",
       "ui.carregar.instruccions": "Tria una partida per carregar.",
-      "ui.desar.instruccions": "Tria una posició i escriu un nom per desar.",
+      "ui.desar.instruccions": "Tria una posició i desa. El nom, si vols, el pots canviar.",
+      "ui.desar.fet": "Desat.",
       "ui.opcions.clic_salta": "clic per saltar el diàleg",
       "ui.opcions.volum_efectes": "volum dels efectes",
       "ui.opcions.volum_musica": "volum de la música",
@@ -29509,13 +30385,13 @@
       "pista.titus.3": "Mira el bol del gos, a la casa del pare.",
       "pista.teclat.1": "El gos es deia Titus, i la paraula té cinc lletres.",
       "pista.teclat.2": "La caixa forta, darrere el quadre.",
-      "pista.teclat.3": "Amb l'Iri, obre la caixa forta i tria T-I-T-U-S.",
+      "pista.teclat.3": "Amb l'Iri, obre la caixa forta i tecleja T-I-T-U-S, lletra a lletra.",
       "pista.bomba.1": "Hi ha una bomba de Verne al nostre pou. Què hi fa?",
       "pista.bomba.2": "El panell de la bomba té cargols de cap de flor. Tenim una punta de flor, però li cal un mànec.",
       "pista.bomba.3": "Agafa el tornavís de la caixa d'eines del graner, ajunta'l amb la punta de flor (si la porta l'altra, doneu-vos-els) i fes-lo servir amb la bomba.",
       "pista.capitana.1": "Ens cal algú que voli a tot arreu i ho sàpiga tot.",
       "pista.capitana.2": "La Capitana, al pont de la Cantimplora, al port.",
-      "pista.capitana.3": "Ves al port pel camí del pati, puja a la Cantimplora, ves al pont i parla amb la Capitana.",
+      "pista.capitana.3": "Ves al port: el camí surt per la dreta del pati, passat el graner. Puja a la Cantimplora, ves al pont i parla amb la Capitana.",
       "pista.radio.1": "La Capitana vol una feina de veritat, amb algú que pagui a l'altra banda.",
       "pista.radio.2": "La Juana és a Aqua. La seva freqüència és al marc de la ràdio del pont.",
       "pista.radio.3": "Amb l'Iri, fes servir la ràdio del pont i pregunta a la Juana quina càrrega voldria.",
@@ -30148,7 +31024,6 @@
       "sala.cantimplora_bodega.motor.6": "El motor. La Vet diu que l'injector té el broquet esquerdat, i que el tractor de l'avi en té un d'igual.",
       "sala.cantimplora_bodega.motor.7": "El motor de la Cantimplora. Ronca, però vola.",
       "sala.cantimplora_bodega.motor.8": "Una llauna d'oli de motor. Per al motor, per al tractor, i per a la Capitana quan fa mal temps.",
-      "sala.cantimplora_bodega.motor.9": "L'oli ja el tenim. Amb una llauna n'hi ha prou.",
       "sala.cantimplora_bodega.fusibles.1": "El quadre de fusibles. Sobren fusibles de deu. De trenta, cap.",
       "sala.cantimplora_bodega.fusibles.2": "Un fusible de deu. Per a la grua n'hi cal un de trenta... Ja hi pensaré.",
       "sala.cantimplora_bodega.fusibles.3": "Si en trec un sense motiu, s'apaga la cafetera. I la Capitana.",
@@ -30501,7 +31376,12 @@
       "sala.fosa_colada.llit.falta": "El motlle ja hi és. Falta la sorra fina.",
       "sala.fosa_forn.piquera.nom": "piquera",
       "sala.fosa_forn.piquera.mira": "La piquera: el broc del forn per on surt el metall fos. Té un tap de fang.",
-      "sala.fosa_forn.piquera.mira_oberta": "La piquera, oberta. El metall baixa per la regata fins a la colada."
+      "sala.fosa_forn.piquera.mira_oberta": "La piquera, oberta. El metall baixa per la regata fins a la colada.",
+      "sala.cantimplora_bodega.llauna.nom": "llauna d'oli",
+      "sala.cantimplora_bodega.llauna.mira": "Una llauna d'oli de motor, mig plena. Fa olor de taller d'avi.",
+      "sala.cantimplora_bodega.motor.oli": "I a terra, al costat, la llauna d'oli de motor.",
+      "sala.granja_pati.senyal_port.nom": "pal del port",
+      "sala.granja_pati.senyal_port.mira": "«PORT», cap a la dreta. El camí passa per davant del graner i baixa fins al moll."
     }
   },
   "locale": "ca",

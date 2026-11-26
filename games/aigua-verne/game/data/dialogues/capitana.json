@@ -215,6 +215,70 @@
           "next": "entrego"
         },
         {
+          "id": "entrego_iri",
+          "text": "dlg.capitana.opt.entrego",
+          "if": {
+            "all": [
+              {
+                "hasItem": "albara",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "hasItem": "albara",
+                    "who": "iri"
+                  },
+                  {
+                    "inRoom": "cantimplora_pont",
+                    "who": "iri"
+                  }
+                ]
+              },
+              {
+                "flag": "injector_posat"
+              },
+              {
+                "flag": "capitana_accepta",
+                "is": false
+              }
+            ]
+          },
+          "next": "entrego_iri"
+        },
+        {
+          "id": "entrego_vet",
+          "text": "dlg.capitana.opt.entrego",
+          "if": {
+            "all": [
+              {
+                "hasItem": "albara",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "hasItem": "albara",
+                    "who": "vet"
+                  },
+                  {
+                    "inRoom": "cantimplora_pont",
+                    "who": "vet"
+                  }
+                ]
+              },
+              {
+                "flag": "injector_posat"
+              },
+              {
+                "flag": "capitana_accepta",
+                "is": false
+              }
+            ]
+          },
+          "next": "entrego_vet"
+        },
+        {
           "id": "contracte",
           "text": "dlg.capitana.opt.contracte",
           "if": {
@@ -411,9 +475,83 @@
           "who": "capitana",
           "text": "dlg.capitana.recorda.3",
           "if": {
-            "not": {
-              "hasItem": "albara"
-            }
+            "all": [
+              {
+                "not": {
+                  "hasItem": "albara"
+                }
+              },
+              {
+                "not": {
+                  "any": [
+                    {
+                      "all": [
+                        {
+                          "hasItem": "albara",
+                          "who": "iri"
+                        },
+                        {
+                          "inRoom": "cantimplora_pont",
+                          "who": "iri"
+                        }
+                      ]
+                    },
+                    {
+                      "all": [
+                        {
+                          "hasItem": "albara",
+                          "who": "vet"
+                        },
+                        {
+                          "inRoom": "cantimplora_pont",
+                          "who": "vet"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.recorda.3b",
+          "if": {
+            "all": [
+              {
+                "hasItem": "albara",
+                "is": false
+              },
+              {
+                "any": [
+                  {
+                    "all": [
+                      {
+                        "hasItem": "albara",
+                        "who": "iri"
+                      },
+                      {
+                        "inRoom": "cantimplora_pont",
+                        "who": "iri"
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "hasItem": "albara",
+                        "who": "vet"
+                      },
+                      {
+                        "inRoom": "cantimplora_pont",
+                        "who": "vet"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -647,6 +785,136 @@
           "text": "dlg.capitana.adeu.1"
         }
       ]
+    },
+    "entrego_iri": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.1"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.2"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.3"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.4",
+          "if": {
+            "protagonist": "iri"
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.4.vet",
+          "if": {
+            "protagonist": "vet"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.capitana.entrego.5",
+          "if": {
+            "inRoom": "cantimplora_pont",
+            "who": "iri"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.capitana.entrego.5",
+          "if": {
+            "not": {
+              "inRoom": "cantimplora_pont",
+              "who": "iri"
+            }
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.6"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "capitana_accepta"
+        },
+        {
+          "setFlag": "aqua_oberta"
+        },
+        {
+          "takeItem": "albara",
+          "who": "iri"
+        }
+      ],
+      "goto": "menu"
+    },
+    "entrego_vet": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.1"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.2"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.3"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.4",
+          "if": {
+            "protagonist": "iri"
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.4.vet",
+          "if": {
+            "protagonist": "vet"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.capitana.entrego.5",
+          "if": {
+            "inRoom": "cantimplora_pont",
+            "who": "iri"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.capitana.entrego.5",
+          "if": {
+            "not": {
+              "inRoom": "cantimplora_pont",
+              "who": "iri"
+            }
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.6"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "capitana_accepta"
+        },
+        {
+          "setFlag": "aqua_oberta"
+        },
+        {
+          "takeItem": "albara",
+          "who": "vet"
+        }
+      ],
+      "goto": "menu"
     }
   }
 }

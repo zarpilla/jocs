@@ -495,7 +495,52 @@ def diu_carmanyola(cv):
     cv.img.alpha_composite(_damunt(d))
 
 
+# La llauna d'oli (tasca 084): a terra, a l'esquerra del motor, de cara a la càmera. Vermella, amb el broc i una
+# etiqueta groga: es distingeix de l'oliva de la paret. Desapareix quan s'agafa (`oli_agafat`).
+LLAUNA = (PL.MOTOR[0] - OFF + 10, ZW - 14)          # x, z del món: davant del panell del motor
+
+
+def _llauna_img():
+    from PIL import Image as _I
+    im = _I.new('RGBA', (14, 18), (0, 0, 0, 0))
+    P = im.load()
+    RED = [(70, 14, 10), (120, 26, 18), (170, 40, 26), (205, 64, 40), (230, 100, 70)]
+    for y in range(5, 18):
+        for x in range(1, 12):
+            k = 3 if x < 4 else (2 if x < 8 else 1)
+            if x == 1 or y == 17:
+                k = 0
+            P[x, y] = RED[k] + (255,)
+    for y in range(9, 13):                                          # l'etiqueta groga
+        for x in range(2, 11):
+            P[x, y] = ((236, 196, 70) if x < 7 else (196, 150, 50)) + (255,)
+    for x in range(3, 9):                                           # la gota negra de l'etiqueta
+        P[x, 10] = (40, 30, 24, 255) if x in (5, 6) else P[x, 10]
+    for x in range(2, 11):                                          # la tapa
+        P[x, 4] = (90, 92, 96, 255)
+        P[x, 5] = (150, 152, 156, 255)
+    for y in range(0, 5):                                           # el broc, inclinat
+        P[8 + y // 2, y] = (170, 172, 176, 255)
+        P[9 + y // 2, y] = (110, 112, 116, 255)
+    P[3, 7] = (250, 190, 160, 255)                                  # una lluentor
+    P[3, 8] = (240, 160, 130, 255)
+    return im
+
+
+def llauna(cv):
+    """La llauna d'oli de motor, a terra al costat del motor, amb la seva ombra."""
+    img = _llauna_img()
+    x, z = LLAUNA
+
+    def d(e):
+        e.foscor('ombra_llauna', (x - 8, 0.6, z + 6), (x + 10, 0.6, z + 6), (x + 10, 0.6, z - 6), (x - 8, 0.6, z - 6),
+                 lambda s, t: 0.55 * max(0.0, 1 - ((s - 9) / 9) ** 2 - ((t - 6) / 6) ** 2))
+        e.sprite('llauna', img, (7, 17), (x, 0, z), escala_img=1.4)
+    cv.img.alpha_composite(_damunt(d))
+
+
 PROPS = {
+    'llauna': llauna,
     'barril': barril,
     'llum_terra2': llum('terra2', (236, 200, 140)),
     'llum_aqua': llum('aqua', (220, 236, 250)),
@@ -603,6 +648,8 @@ GEOMETRIA = {
                     'walk': _p((CARGO[0] + CARGO[1]) / 2, CARGO[2] - 8)},
         'rampa': {'rect': _rect_mon((RAMP_X[0], RAMP_H, ZW), (RAMP_X[1], 0, ZW)),
                   'walk': _p((RAMP_X[0] + RAMP_X[1]) / 2, 260)},
+        'llauna': {'rect': _caixa_mon(LLAUNA[0] - 11, LLAUNA[0] + 11, 0, 28, LLAUNA[1] - 4, LLAUNA[1] + 4),
+                   'walk': _p(LLAUNA[0] + 6, LLAUNA[1] - 30)},
         'barril': {'rect': _caixa_mon(bx_ - 24, bx_ + 24, 0, 74, bz_, bz_),
                    'walk': _p(bx_, 246)},
         'motor': {'rect': _rect_mon((PL.MOTOR[0] - OFF - 4, FY - PL.MOTOR[1] + 14, ZW),
@@ -652,3 +699,8 @@ GEOMETRIA = {
         ],
     },
 }
+
+# (el motor s'acaba on comença la llauna d'oli, que és a terra davant seu: si no, el clic a la llauna se'l quedava el
+# motor)
+_m = GEOMETRIA['things']['motor']['rect']
+GEOMETRIA['things']['motor']['rect'] = (_m[0], _m[1], _m[2], min(_m[3], GEOMETRIA['things']['llauna']['rect'][1] - 1))

@@ -28,58 +28,39 @@
       ],
       "choices": [
         {
-          "id": "maria",
-          "text": "dlg.teclat.opt.maria",
-          "once": true,
-          "next": "maria"
-        },
-        {
-          "id": "verne",
-          "text": "dlg.teclat.opt.verne",
-          "if": {
-            "flag": "bomba_llegida"
-          },
-          "once": true,
-          "next": "verne"
-        },
-        {
-          "id": "titus",
-          "text": "dlg.teclat.opt.titus",
-          "if": {
-            "flag": "bol_vist"
-          },
-          "next": "titus"
+          "id": "tecleja",
+          "text": "dlg.teclat.opt.tecleja",
+          "silent": true,
+          "next": "casella1"
         },
         {
           "id": "deixa",
           "text": "dlg.teclat.opt.deixa",
           "end": true
         }
-      ]
-    },
-    "maria": {
-      "lines": [
+      ],
+      "effects": [
         {
-          "who": "player",
-          "text": "dlg.teclat.maria.1",
-          "sound": "teclat"
+          "setVar": "teclat_1",
+          "value": "·"
         },
         {
-          "who": "narrator",
-          "text": "dlg.teclat.maria.2"
-        }
-      ],
-      "goto": "inici"
-    },
-    "verne": {
-      "lines": [
+          "setVar": "teclat_2",
+          "value": "·"
+        },
         {
-          "who": "player",
-          "text": "dlg.teclat.verne.1",
-          "sound": "teclat"
+          "setVar": "teclat_3",
+          "value": "·"
+        },
+        {
+          "setVar": "teclat_4",
+          "value": "·"
+        },
+        {
+          "setVar": "teclat_5",
+          "value": "·"
         }
-      ],
-      "goto": "inici"
+      ]
     },
     "titus": {
       "lines": [
@@ -174,6 +155,565 @@
           "giveItem": "contracte_7788"
         }
       ]
+    },
+    "casella1": {
+      "lines": [],
+      "choices": [
+        {
+          "id": "c1_m",
+          "text": "dlg.teclat.lletra.m",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_1",
+              "value": "M"
+            }
+          ],
+          "next": "casella2"
+        },
+        {
+          "id": "c1_v",
+          "text": "dlg.teclat.lletra.v",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_1",
+              "value": "V"
+            }
+          ],
+          "next": "casella2"
+        },
+        {
+          "id": "c1_t",
+          "text": "dlg.teclat.lletra.t",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_1",
+              "value": "T"
+            }
+          ],
+          "next": "casella2"
+        },
+        {
+          "id": "c1_b",
+          "text": "dlg.teclat.lletra.b",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_1",
+              "value": "B"
+            }
+          ],
+          "next": "casella2"
+        }
+      ]
+    },
+    "casella2": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.teclat.pantalla"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c2_a",
+          "text": "dlg.teclat.lletra.a",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_2",
+              "value": "A"
+            }
+          ],
+          "next": "casella3"
+        },
+        {
+          "id": "c2_e",
+          "text": "dlg.teclat.lletra.e",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_2",
+              "value": "E"
+            }
+          ],
+          "next": "casella3"
+        },
+        {
+          "id": "c2_i",
+          "text": "dlg.teclat.lletra.i",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_2",
+              "value": "I"
+            }
+          ],
+          "next": "casella3"
+        },
+        {
+          "id": "c2_o",
+          "text": "dlg.teclat.lletra.o",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_2",
+              "value": "O"
+            }
+          ],
+          "next": "casella3"
+        }
+      ]
+    },
+    "casella3": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.teclat.pantalla"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c3_r",
+          "text": "dlg.teclat.lletra.r",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_3",
+              "value": "R"
+            }
+          ],
+          "next": "casella4"
+        },
+        {
+          "id": "c3_t",
+          "text": "dlg.teclat.lletra.t",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_3",
+              "value": "T"
+            }
+          ],
+          "next": "casella4"
+        },
+        {
+          "id": "c3_n",
+          "text": "dlg.teclat.lletra.n",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_3",
+              "value": "N"
+            }
+          ],
+          "next": "casella4"
+        },
+        {
+          "id": "c3_l",
+          "text": "dlg.teclat.lletra.l",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_3",
+              "value": "L"
+            }
+          ],
+          "next": "casella4"
+        }
+      ]
+    },
+    "casella4": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.teclat.pantalla"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c4_i",
+          "text": "dlg.teclat.lletra.i",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_4",
+              "value": "I"
+            }
+          ],
+          "next": "casella5"
+        },
+        {
+          "id": "c4_n",
+          "text": "dlg.teclat.lletra.n",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_4",
+              "value": "N"
+            }
+          ],
+          "next": "casella5"
+        },
+        {
+          "id": "c4_u",
+          "text": "dlg.teclat.lletra.u",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_4",
+              "value": "U"
+            }
+          ],
+          "next": "casella5"
+        },
+        {
+          "id": "c4_e",
+          "text": "dlg.teclat.lletra.e",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_4",
+              "value": "E"
+            }
+          ],
+          "next": "casella5"
+        }
+      ]
+    },
+    "casella5": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.teclat.pantalla"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c5_a",
+          "text": "dlg.teclat.lletra.a",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_5",
+              "value": "A"
+            }
+          ],
+          "next": "comprova"
+        },
+        {
+          "id": "c5_e",
+          "text": "dlg.teclat.lletra.e",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_5",
+              "value": "E"
+            }
+          ],
+          "next": "comprova"
+        },
+        {
+          "id": "c5_s",
+          "text": "dlg.teclat.lletra.s",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_5",
+              "value": "S"
+            }
+          ],
+          "next": "comprova"
+        },
+        {
+          "id": "c5_o",
+          "text": "dlg.teclat.lletra.o",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_5",
+              "value": "O"
+            }
+          ],
+          "next": "comprova"
+        }
+      ]
+    },
+    "comprova": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.teclat.pantalla"
+        }
+      ],
+      "choices": [
+        {
+          "id": "accepta",
+          "text": "dlg.teclat.opt.accepta",
+          "silent": true,
+          "if": {
+            "all": [
+              {
+                "var": "teclat_1",
+                "op": "==",
+                "value": "T"
+              },
+              {
+                "var": "teclat_2",
+                "op": "==",
+                "value": "I"
+              },
+              {
+                "var": "teclat_3",
+                "op": "==",
+                "value": "T"
+              },
+              {
+                "var": "teclat_4",
+                "op": "==",
+                "value": "U"
+              },
+              {
+                "var": "teclat_5",
+                "op": "==",
+                "value": "S"
+              }
+            ]
+          },
+          "next": "titus"
+        },
+        {
+          "id": "accepta_no",
+          "text": "dlg.teclat.opt.accepta",
+          "silent": true,
+          "if": {
+            "not": {
+              "all": [
+                {
+                  "var": "teclat_1",
+                  "op": "==",
+                  "value": "T"
+                },
+                {
+                  "var": "teclat_2",
+                  "op": "==",
+                  "value": "I"
+                },
+                {
+                  "var": "teclat_3",
+                  "op": "==",
+                  "value": "T"
+                },
+                {
+                  "var": "teclat_4",
+                  "op": "==",
+                  "value": "U"
+                },
+                {
+                  "var": "teclat_5",
+                  "op": "==",
+                  "value": "S"
+                }
+              ]
+            }
+          },
+          "next": "malament"
+        },
+        {
+          "id": "esborra",
+          "text": "dlg.teclat.opt.esborra",
+          "silent": true,
+          "effects": [
+            {
+              "setVar": "teclat_1",
+              "value": "·"
+            },
+            {
+              "setVar": "teclat_2",
+              "value": "·"
+            },
+            {
+              "setVar": "teclat_3",
+              "value": "·"
+            },
+            {
+              "setVar": "teclat_4",
+              "value": "·"
+            },
+            {
+              "setVar": "teclat_5",
+              "value": "·"
+            }
+          ],
+          "next": "casella1"
+        }
+      ]
+    },
+    "malament": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.teclat.maria.1",
+          "sound": "teclat",
+          "if": {
+            "all": [
+              {
+                "var": "teclat_1",
+                "op": "==",
+                "value": "M"
+              },
+              {
+                "var": "teclat_2",
+                "op": "==",
+                "value": "A"
+              },
+              {
+                "var": "teclat_3",
+                "op": "==",
+                "value": "R"
+              },
+              {
+                "var": "teclat_4",
+                "op": "==",
+                "value": "I"
+              },
+              {
+                "var": "teclat_5",
+                "op": "==",
+                "value": "A"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.teclat.verne.1",
+          "sound": "teclat",
+          "if": {
+            "all": [
+              {
+                "var": "teclat_1",
+                "op": "==",
+                "value": "V"
+              },
+              {
+                "var": "teclat_2",
+                "op": "==",
+                "value": "E"
+              },
+              {
+                "var": "teclat_3",
+                "op": "==",
+                "value": "R"
+              },
+              {
+                "var": "teclat_4",
+                "op": "==",
+                "value": "N"
+              },
+              {
+                "var": "teclat_5",
+                "op": "==",
+                "value": "E"
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.teclat.maria.2",
+          "sound": "teclat",
+          "if": {
+            "not": {
+              "any": [
+                {
+                  "all": [
+                    {
+                      "var": "teclat_1",
+                      "op": "==",
+                      "value": "M"
+                    },
+                    {
+                      "var": "teclat_2",
+                      "op": "==",
+                      "value": "A"
+                    },
+                    {
+                      "var": "teclat_3",
+                      "op": "==",
+                      "value": "R"
+                    },
+                    {
+                      "var": "teclat_4",
+                      "op": "==",
+                      "value": "I"
+                    },
+                    {
+                      "var": "teclat_5",
+                      "op": "==",
+                      "value": "A"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "var": "teclat_1",
+                      "op": "==",
+                      "value": "V"
+                    },
+                    {
+                      "var": "teclat_2",
+                      "op": "==",
+                      "value": "E"
+                    },
+                    {
+                      "var": "teclat_3",
+                      "op": "==",
+                      "value": "R"
+                    },
+                    {
+                      "var": "teclat_4",
+                      "op": "==",
+                      "value": "N"
+                    },
+                    {
+                      "var": "teclat_5",
+                      "op": "==",
+                      "value": "E"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "effects": [
+        {
+          "setVar": "teclat_1",
+          "value": "·"
+        },
+        {
+          "setVar": "teclat_2",
+          "value": "·"
+        },
+        {
+          "setVar": "teclat_3",
+          "value": "·"
+        },
+        {
+          "setVar": "teclat_4",
+          "value": "·"
+        },
+        {
+          "setVar": "teclat_5",
+          "value": "·"
+        }
+      ],
+      "goto": "inici"
     }
   }
 }
