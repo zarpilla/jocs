@@ -18,7 +18,9 @@
 // protagonista, ni inventari, ni «Canvia».
 import { game, player, pointer } from '@benne/script';
 import { guis, verbs } from '@game';
-import { botoEsPista, botoPistaMixt, clickablePrompt, isClickableCutscene, narrative, targetFromBenne } from '../../narrative/narrative';
+import {
+  botoEsPista, botoPistaMixt, clickablePrompt, isClickableCutscene, narrative, switchButtonWanted, targetFromBenne,
+} from '../../narrative/narrative';
 import { esSortida, queFaElToc } from '../../narrative/accions';
 import { esDit } from '../../narrative/tactil';
 import { esquerreMira } from '../../narrative/preferencies';
@@ -83,8 +85,9 @@ export function layoutHud() {
   const h = alt();
   const carta = cartaOberta();
   if (carta) refreshLine();
-  // («Canvia» el torna a mostrar narrative.ts en entrar a la sala següent, si es pot canviar)
-  if (carta) mostra([canviaBtn], false);
+  // «Canvia», només si es pot canviar (narrative.ts). Es diu a cada fotograma: una GUI que es refà (en tornar d'un
+  // diàleg) el tornaria a mostrar, com al .gui.json.
+  mostra([canviaBtn], !carta && switchButtonWanted());
   mostra([menuBtn], !carta);
   if (!modeTauler()) {
     mostra([tauler, puntsPetitBtn, ...gran, ...petita], false);

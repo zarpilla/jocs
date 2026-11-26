@@ -115,6 +115,18 @@ function narrate(text: string) {
 /** Fa el que diu el resultat d'una interacció: línies, diàleg, canvi de protagonista o de sala. */
 export function playResult(result: InteractionResult) {
   playLines(result.lines, { after: !result.dialogue && leavesRoom(result.goTo) ? 'negre' : undefined })
+  if (result.dialogue && senseOpcions(result.dialogue)) {
+    // Un «diàleg» que només diu línies (el quadern): es diu com una interacció, sense obrir la caixa del diàleg
+    // (taparia el HUD, i en tornar el refaria amb el botó «Canvia» a la vista).
+    playerActed()
+    const step = primeStage(narrative.startDialogue(result.dialogue))
+    playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
+    if (step.ended) {
+      followUp(result.goTo)
+      return
+    }
+    // (si no s'ha acabat, que no hauria de passar sense opcions, continua com un diàleg)
+  }
   if (result.dialogue) {
     // El que demanen els efectes (canvi de protagonista, de sala, final) es fa en acabar el diàleg.
     const dialog = benneDialog(result.dialogue)
@@ -124,6 +136,12 @@ export function playResult(result: InteractionResult) {
     }
   }
   followUp(result.goTo)
+}
+
+/** Si cap node d'un diàleg té opcions: només diu línies. */
+function senseOpcions(id: string): boolean {
+  const def = narrative.content.dialogues[id]
+  return !!def && Object.values(def.nodes).every((n) => !n.choices?.length)
 }
 
 /** Després d'una interacció o d'un diàleg: el final, el canvi de protagonista o la sala nova que s'hagin demanat. */

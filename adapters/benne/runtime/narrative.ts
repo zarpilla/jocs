@@ -688,13 +688,18 @@ export function setTouchRouter(r: TouchRouter | null) {
 }
 export const touchRouter = () => router;
 
+/** Si el botó «Canvia» del HUD hi ha de ser (es pot canviar, o és el de la pista). */
+export function switchButtonWanted(pot = narrative.canSwitch()): boolean {
+  return pot || !!botoPista || !!botoPistaMixt;
+}
+
 /**
  * El botó «Canvia» (a la barra de verbs i, si el joc el té, al menú) només hi és quan el jugador pot
  * canviar de protagonista (`switchWhen` a game.json).
  */
 export function applySwitchButton() {
   const pot = narrative.canSwitch();
-  guis.verbs.controls.canviaBtn.visible = pot || botoPista || botoPistaMixt;
+  guis.verbs.controls.canviaBtn.visible = switchButtonWanted(pot);
   const menu = guis.gameMenu.controls as unknown as Record<string, { visible: boolean } | undefined>;
   if (menu.canviar) menu.canviar.visible = pot;
 }
