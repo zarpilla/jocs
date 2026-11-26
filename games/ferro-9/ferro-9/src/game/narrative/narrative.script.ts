@@ -12,7 +12,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
-  AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, resetStageAnims, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne, voiced, preloadLineVoices,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -95,7 +95,9 @@ function sayLines(lines: ResolvedLine[], around: Around) {
   }
   // Qui s'ha de moure (`place`) hi camina ara, quan ja s'ha dit tot: els efectes s'apliquen abans de les
   // línies, i si caminés abans, marxaria mentre parla. El mateix amb qui desapareix i amb qui apareix.
-  if (around.more) return
+  // Si tot seguit es marxa de la sala (`after: 'negre'`), no: la sala nova aplicarà el seu estat en entrar, i aquí
+  // tornaria a sortir qui una indicació d'escena ha amagat (l'Iri, que ja és a la cistella, just abans del fos).
+  if (around.more || around.after === 'negre') return
   applyHotspotVisibility()
   applyPlaces(true)
 }
@@ -198,6 +200,8 @@ export function onRoomLoaded() {
   untouchedNewGame = false
   statsLoadedGame()
   applySwitchButton()
+  const room = narrative.world.currentRoom()
+  if (room) resetStageAnims(room)
   applyHotspotVisibility()
   applyAppearances()
   applyPlaces(false)
@@ -242,6 +246,7 @@ export function onRoomEntered() {
     }
     rememberProtagonistRoom(who, room)
   }
+  resetStageAnims(room)
   applyHotspotVisibility()
   applyAppearances()
   applyPlaces(false)
@@ -258,11 +263,34 @@ export function onRoomEntered() {
     const lloc = player.position
     entrada.walkTo = lloc
     player.moveTo({ x: result.walkIn === 'left' ? -FORA : AMPLADA + FORA, y: lloc.y })
+  } else if (who && isSharedRoom(room)) {
+    const aparta = apartaDeLAltra(room, who)
+    if (aparta) entrada.walkTo = aparta
   }
 }
 
 /** Quants píxels fora de la pantalla comença una entrada caminant (`walkIn`). */
 const FORA = 24
+/** Quant s'aparta la protagonista que entra si l'altra és al mateix lloc (vegeu `apartaDeLAltra`). */
+const APARTA = { x: 30, y: 8 }
+
+/**
+ * Les protagonistes surten per la mateixa porta (s'hi acosten fins al `walkToPoint`) i Benne desa la posició de
+ * cadascuna a cada sala: en tornar-hi, la segona apareixeria just damunt de la primera. Si és així, torna on ha
+ * de caminar la que entra perquè no es tapin: cap al mig de la sala i una mica endavant. Si el punt no és de
+ * la zona on es camina, Benne s'hi acosta tant com pot.
+ */
+function apartaDeLAltra(room: string, who: string): { x: number; y: number } | null {
+  const lloc = (benneCharacter(who) as { position?: { x: number; y: number } } | undefined)?.position
+  if (!lloc) return null
+  for (const id of narrative.content.rooms[room]?.protagonists ?? []) {
+    if (id === who || protagonistRoom(id) !== room) continue
+    const at = (benneCharacter(id) as { position?: { x: number; y: number } } | undefined)?.position
+    if (!at || Math.hypot(at.x - lloc.x, at.y - lloc.y) >= APARTA.x / 2) continue
+    return { x: lloc.x + (lloc.x < AMPLADA / 2 ? APARTA.x : -APARTA.x), y: lloc.y + APARTA.y }
+  }
+  return null
+}
 
 /**
  * Música d'ambient (`music` al mapping.json del joc): cada sala, o cada protagonista, té la seva peça, i
@@ -389,7 +417,11 @@ export function enterNarrativeRoom() {
   // portada la recupera. Espera que acabi l'onEnter (no desa mai a mitja escena). En una partida
   // nova, no fins que s'hi faci alguna cosa (`playerActed`).
   if (room !== narrative.content.manifest.cover && !cutscene && !untouchedNewGame) saves.autosave(AUTOSAVE)
-  if (!result) return
+  // Sense onEnter (o ja dit), la protagonista també ha de fer el pas d'entrada o d'apartar-se de l'altra.
+  if (!result) {
+    if (walkTo && !cutscene) player.walkTo.now(walkTo)
+    return
+  }
   // Cinemàtica amb coses per tocar (la carta de navegació): l'onEnter no s'atura a cada línia ni espera cap clic. Es
   // fa el moviment (on és la nau) i el text queda a la frase del HUD («On anem?») fins que hi ha alguna cosa a sota.
   if (cutscene && isClickableCutscene(room)) {
@@ -494,17 +526,19 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
 export function sayHint() {
   const hint = narrative.requestHint()
   const text = hint ? hint.text : narrative.noHintText()
+  const key = hint ? hint.key : narrative.noHintKey()
   if (hint?.targets.length) {
     const ids = hint.targets.map((t) => (narrative.content.characters[t] ? toBenne('characters', t) : toBenne('hotspots', t)))
     game.showThreads(ids, 3.2)
   }
   const speaker = hint?.who ? benneCharacter(hint.who) : undefined
   if (hint?.who && speaker) {
-    playLines([{ who: hint.who, key: `pista.${hint.id}`, text }])
+    playLines([{ who: hint.who, key, text }])
     return
   }
+  preloadLineVoices([{ who: 'player', key, text }])
   recordLine('player', text)
-  player.say(text)
+  player.say(voiced(player.id, key, text))
 }
 
 /** Canvia a l'altra protagonista (per a un botó de la GUI): va a la sala on és. */
