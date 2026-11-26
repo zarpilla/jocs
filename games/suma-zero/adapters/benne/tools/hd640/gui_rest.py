@@ -280,9 +280,9 @@ def build_dialog():
                 ox, oy = DLG_ORIGIN[which]
                 c.update(x=x, y=y, width=13, height=33, backgroundOffsetX=ox - x, backgroundOffsetY=oy - y)
         if c['id'] == 'Option-Grid':
-            c.update(x=21, y=269, width=607, height=25, colWidths=[19, 588])
+            c.update(x=21, y=269, width=607, height=20, colWidths=[19, 588])   # 20 px: hi caben 4 opcions
         if c['id'] == 'Dialog-Option':
-            c.update(width=588, height=25)
+            c.update(width=588, height=20)
     save_gui('dialog', gui)
 
 
