@@ -609,10 +609,29 @@ def _frames(key, n):
         cv = Canvas(light=LIGHT, img=base_img().copy())
         if key == 'pols':
             dust(cv, f)
+            _sense_pols_davant(cv.img)
         else:
             tower_lights(cv, f)
         out.append(diff(cv.img))
     return out
+
+
+# El que és davant de la pols (la nau, la canonada, el primer pla): la pols no s'hi pinta a sobre. Si no, la capa de la
+# pols deixa la nau «de trama», com transparent (a la portada no es veia perquè la tapava el títol).
+DAVANT_POLS = {'nau', 'cabina_finestres', 'porta', 'rampa', 'canonada', 'primer_pla'}
+
+
+def _sense_pols_davant(img):
+    e = base_escena()
+    base = base_img().load()
+    P = img.load()
+    idx = {i for i, sid in enumerate(e.ids) if sid in DAVANT_POLS}
+    W_, H_ = e.cv.w, e.cv.h
+    for Y in range(H_):
+        row = Y * W_
+        for X in range(W_):
+            if e.amo[row + X] in idx:
+                P[X, Y] = base[X, Y]
 
 
 def _title_frames(n=8):
