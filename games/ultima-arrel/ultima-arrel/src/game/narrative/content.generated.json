@@ -4856,7 +4856,8 @@
                   "walkTo",
                   "open",
                   "use",
-                  "push"
+                  "push",
+                  "pull"
                 ],
                 "if": {
                   "flag": "porta_oberta"
