@@ -177,7 +177,7 @@ describe('Aigua Verne: sales i converses d\'una sola', () => {
     amb(p, 'vet');
     p.use('sorra', item('mosca'));
     amb(p, 'iri');
-    p.use('motlle', 'llit');
+    p.use('sorra', 'llit');
     expect(n.flag('motlle_preparat')).toBe(true);
     expect(n.flag('sync_colada')).toBe(false);
     // La Vet ja era al forn: en tornar-hi (canviar a ella), hi són totes dues.

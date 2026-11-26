@@ -51,6 +51,7 @@
         "cal_reg": false,
         "cal_sorra": false,
         "cal_sorra_bru": false,
+        "cal_targeta": false,
         "canalla_beu": false,
         "cap_aigua": false,
         "cap_condicions": false,
@@ -65,6 +66,7 @@
         "colada_bip": false,
         "colat": false,
         "condensador_arreglat": false,
+        "contractacio_vista": false,
         "contracte_agafat": false,
         "copa": false,
         "diu_aparta": false,
@@ -72,9 +74,16 @@
         "escoria_treta": false,
         "ferrum_oberta": false,
         "fidel_admet": false,
+        "fidel_norma": false,
+        "fidel_tractor": false,
+        "franja_vista": false,
         "fusible_agafat": false,
         "galleda_agafada": false,
         "galleda_omplerta": false,
+        "graner_obert": false,
+        "gresol_baix": false,
+        "gresol_brut": false,
+        "gresol_ple": false,
         "grua_arreglada": false,
         "grua_vista": false,
         "holm_parlat": false,
@@ -92,9 +101,13 @@
         "lia_avisada": false,
         "lia_prova": false,
         "lia_reserva": false,
+        "lot9": false,
+        "lot9_vist": false,
         "manxa_oberta": false,
         "metall_carregat": false,
         "mosca_activa": false,
+        "mosca_contractada": false,
+        "motlle_posat": false,
         "motlle_preparat": false,
         "nil_ajuda": false,
         "nil_palau": false,
@@ -106,29 +119,37 @@
         "objeccio_peixos": false,
         "oferta_vista": false,
         "oli_agafat": false,
+        "palau_tancat": false,
         "paper_donat": false,
         "pare_porta": false,
         "permis_pare": false,
         "permis_reg": false,
         "pernil_agafat": false,
         "pista_quadre": false,
+        "precinte_vist": false,
         "proleg_focus": false,
         "proleg_preu": false,
         "promesa_lia": false,
         "quadre_apartat": false,
         "reg_agafat": false,
         "reg_muntat": false,
+        "reg_refusat": false,
+        "reg_volgut": false,
         "reserva_oberta": false,
         "rosa_permis": false,
+        "rosa_vol_tomas": false,
         "sac4_agafat": false,
+        "sac4_refusat": false,
         "sacs_agafats": false,
         "sacs_carregats": false,
         "sorra_agafada": false,
+        "sorra_refusada": false,
         "subhasta_comencada": false,
         "sync_colada": false,
         "sync_subhasta": false,
         "tomaquera_regada": false,
         "tomaquera_vista": false,
+        "tomas_baixa": false,
         "tomas_descobert": false,
         "tomas_girat": false,
         "tornavis_agafat": false,
@@ -147,25 +168,8 @@
         "verdant_oberta": false,
         "verne_brut": false,
         "vestit_agafat": false,
-        "palau_tancat": false,
-        "lot9": false,
-        "lot9_vist": false,
-        "franja_vista": false,
-        "sorra_refusada": false,
-        "graner_obert": false,
-        "precinte_vist": false,
-        "reg_refusat": false,
-        "reg_volgut": false,
-        "sac4_refusat": false,
-        "cal_targeta": false,
-        "contractacio_vista": false,
-        "mosca_contractada": false,
         "vestit_refusat": false,
-        "vestit_volgut": false,
-        "rosa_vol_tomas": false,
-        "tomas_baixa": false,
-        "fidel_norma": false,
-        "fidel_tractor": false
+        "vestit_volgut": false
       },
       "vars": {
         "cuita": 0,
@@ -179,7 +183,8 @@
         "reinicis_subhasta": 0,
         "safata": "",
         "temperatura": 8,
-        "valvules": 0
+        "valvules": 0,
+        "gresol": "llit"
       }
     },
     "characters": {
@@ -6082,6 +6087,20 @@
               }
             ]
           },
+          "canal": {
+            "name": "sala.fosa_colada.canal.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_colada.canal.1"
+                  }
+                ]
+              }
+            ]
+          },
           "gresol": {
             "name": "sala.fosa_colada.gresol.nom",
             "interactions": [
@@ -6095,137 +6114,54 @@
                 ]
               },
               {
-                "verb": "use",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "sync_colada"
-                    },
-                    {
-                      "flag": "metall_carregat",
-                      "is": false
-                    }
-                  ]
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.fosa_colada.gresol.2"
-                  }
-                ]
-              },
-              {
-                "verb": "use",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "sync_colada"
-                    },
-                    {
-                      "flag": "escoria_treta",
-                      "is": false
-                    }
-                  ]
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.fosa_colada.gresol.3",
-                    "sound": "colada"
-                  },
-                  {
-                    "who": "narrator",
-                    "text": "sala.fosa_colada.gresol.4"
-                  },
-                  {
-                    "who": "player",
-                    "text": "sala.fosa_colada.gresol.5"
-                  },
-                  {
-                    "who": "narrator",
-                    "text": "sala.fosa_colada.gresol.6"
-                  }
+                "verb": [
+                  "use",
+                  "push",
+                  "pull",
+                  "pickUp"
                 ],
-                "effects": [
+                "lines": [
                   {
-                    "setFlag": "manxa_oberta",
-                    "value": false
-                  },
+                    "who": "player",
+                    "text": "sala.fosa_colada.gresol.pes"
+                  }
+                ]
+              }
+            ],
+            "visibleIf": {
+              "var": "gresol",
+              "op": "==",
+              "value": "llit"
+            }
+          },
+          "gresol_c": {
+            "name": "sala.fosa_colada.gresol.nom",
+            "visibleIf": {
+              "var": "gresol",
+              "op": "==",
+              "value": "canal"
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
                   {
-                    "setFlag": "metall_carregat",
-                    "value": false
-                  },
-                  {
-                    "setFlag": "escoria_treta",
-                    "value": false
-                  },
-                  {
-                    "setVar": "temperatura",
-                    "value": 8
+                    "who": "player",
+                    "text": "sala.fosa_colada.gresol.1"
                   }
                 ]
               },
               {
-                "verb": "use",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "sync_colada"
-                    },
-                    {
-                      "flag": "colat",
-                      "is": false
-                    }
-                  ]
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.fosa_colada.gresol.7",
-                    "sound": "colada"
-                  },
-                  {
-                    "who": "narrator",
-                    "text": "sala.fosa_colada.gresol.8"
-                  }
+                "verb": [
+                  "use",
+                  "push",
+                  "pull",
+                  "pickUp"
                 ],
-                "effects": [
-                  {
-                    "setFlag": "colat"
-                  }
-                ]
-              },
-              {
-                "verb": "use",
-                "if": {
-                  "flag": "sync_colada"
-                },
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fosa_colada.gresol.9"
-                  }
-                ]
-              },
-              {
-                "verb": "use",
-                "if": {
-                  "flag": "motlle_preparat",
-                  "is": false
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.fosa_colada.gresol.10"
-                  }
-                ]
-              },
-              {
-                "verb": "use",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.fosa_colada.gresol.11"
+                    "text": "sala.fosa_colada.gresol.pes"
                   }
                 ]
               }
@@ -6244,120 +6180,27 @@
                 ]
               },
               {
-                "verb": "use",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "sync_colada"
-                    },
-                    {
-                      "flag": "metall_carregat",
-                      "is": false
-                    }
-                  ]
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.fosa_colada.gresol.2"
-                  }
-                ]
-              },
-              {
-                "verb": "use",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "sync_colada"
-                    },
-                    {
-                      "flag": "escoria_treta",
-                      "is": false
-                    }
-                  ]
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.fosa_colada.gresol.3",
-                    "sound": "colada"
-                  },
-                  {
-                    "who": "narrator",
-                    "text": "sala.fosa_colada.gresol.4"
-                  },
-                  {
-                    "who": "player",
-                    "text": "sala.fosa_colada.gresol.5"
-                  },
-                  {
-                    "who": "narrator",
-                    "text": "sala.fosa_colada.gresol.6"
-                  }
+                "verb": [
+                  "use",
+                  "push",
+                  "pull"
                 ],
-                "effects": [
-                  {
-                    "setFlag": "manxa_oberta",
-                    "value": false
-                  },
-                  {
-                    "setFlag": "metall_carregat",
-                    "value": false
-                  },
-                  {
-                    "setFlag": "escoria_treta",
-                    "value": false
-                  },
-                  {
-                    "setVar": "temperatura",
-                    "value": 8
-                  }
-                ]
-              },
-              {
-                "verb": "use",
                 "if": {
-                  "all": [
-                    {
-                      "flag": "sync_colada"
-                    },
-                    {
-                      "flag": "colat",
-                      "is": false
-                    }
-                  ]
+                  "flag": "claus_fetes"
                 },
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fosa_colada.gresol.7",
-                    "sound": "colada"
-                  },
-                  {
-                    "who": "narrator",
-                    "text": "sala.fosa_colada.gresol.8"
+                    "text": "sala.fosa_colada.gresol.11"
                   }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "push",
+                  "pull"
                 ],
-                "effects": [
-                  {
-                    "setFlag": "colat"
-                  }
-                ]
-              },
-              {
-                "verb": "use",
-                "if": {
-                  "flag": "sync_colada"
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.fosa_colada.gresol.9"
-                  }
-                ]
-              },
-              {
-                "verb": "use",
                 "if": {
                   "flag": "motlle_preparat",
                   "is": false
@@ -6370,11 +6213,26 @@
                 ]
               },
               {
-                "verb": "use",
+                "verb": [
+                  "use",
+                  "push",
+                  "pull"
+                ],
+                "if": {
+                  "flag": "sync_colada"
+                },
+                "dialogue": "grua"
+              },
+              {
+                "verb": [
+                  "use",
+                  "push",
+                  "pull"
+                ],
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fosa_colada.gresol.11"
+                    "text": "sala.fosa_colada.grua_pont.res"
                   }
                 ]
               }
@@ -6397,6 +6255,18 @@
               },
               {
                 "verb": "look",
+                "if": {
+                  "flag": "motlle_posat"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_colada.llit.posat"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -6413,6 +6283,10 @@
                   }
                 },
                 "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_colada.llit.posa"
+                  },
                   {
                     "who": "player",
                     "text": "sala.fosa_colada.llit.altra",
@@ -6439,6 +6313,12 @@
                 ],
                 "effects": [
                   {
+                    "setFlag": "motlle_posat"
+                  },
+                  {
+                    "takeItem": "motlle"
+                  },
+                  {
                     "setFlag": "cal_sorra"
                   }
                 ]
@@ -6446,6 +6326,35 @@
               {
                 "verb": "use",
                 "item": "motlle",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_colada.llit.posa"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "motlle_posat"
+                  },
+                  {
+                    "takeItem": "motlle"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "sorra",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "motlle_posat"
+                    },
+                    {
+                      "flag": "motlle_preparat",
+                      "is": false
+                    }
+                  ]
+                },
                 "lines": [
                   {
                     "who": "player",
@@ -6458,7 +6367,23 @@
                   {
                     "who": "player",
                     "text": "sala.fosa_colada.llit.5",
-                    "sound": "motlle"
+                    "sound": "motlle",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "U"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -6468,9 +6393,6 @@
                 "effects": [
                   {
                     "setFlag": "motlle_preparat"
-                  },
-                  {
-                    "takeItem": "motlle"
                   }
                 ]
               },
@@ -6505,11 +6427,42 @@
                   {
                     "who": "player",
                     "text": "sala.fosa_colada.llit.8",
-                    "sound": "vapor"
+                    "sound": "vapor",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "U"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      },
+                      {
+                        "prop": "colada_accio",
+                        "anim": "vapor_motlle"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.fosa_colada.llit.9"
+                    "text": "sala.fosa_colada.llit.9",
+                    "stageAfter": [
+                      {
+                        "prop": "colada_accio",
+                        "anim": "vapor_motlle",
+                        "hold": 0.5
+                      },
+                      {
+                        "prop": "colada_accio",
+                        "anim": "colada_accio"
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -6535,6 +6488,26 @@
                   {
                     "who": "player",
                     "text": "sala.fosa_colada.llit.10"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "motlle_posat"
+                    },
+                    {
+                      "flag": "motlle_preparat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_colada.llit.falta"
                   }
                 ]
               },
@@ -6623,38 +6596,6 @@
               ]
             }
           },
-          "gresol_ple": {
-            "visibleIf": {
-              "all": [
-                {
-                  "flag": "sync_colada"
-                },
-                {
-                  "flag": "escoria_treta"
-                },
-                {
-                  "flag": "colat",
-                  "is": false
-                }
-              ]
-            }
-          },
-          "fum_gresol": {
-            "visibleIf": {
-              "all": [
-                {
-                  "flag": "sync_colada"
-                },
-                {
-                  "flag": "escoria_treta"
-                },
-                {
-                  "flag": "colat",
-                  "is": false
-                }
-              ]
-            }
-          },
           "claus_fetes": {
             "visibleIf": {
               "all": [
@@ -6670,7 +6611,226 @@
           },
           "motlle_posat": {
             "visibleIf": {
-              "flag": "claus_fetes"
+              "any": [
+                {
+                  "flag": "claus_fetes"
+                },
+                {
+                  "all": [
+                    {
+                      "flag": "motlle_posat"
+                    },
+                    {
+                      "flag": "motlle_preparat",
+                      "is": false
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "gresol_llit_dalt": {
+            "visibleIf": {
+              "all": [
+                {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "llit"
+                    },
+                    {
+                      "flag": "gresol_baix",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "flag": "gresol_ple",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "gresol_llit_dalt_ple": {
+            "visibleIf": {
+              "all": [
+                {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "llit"
+                    },
+                    {
+                      "flag": "gresol_baix",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "flag": "gresol_ple"
+                }
+              ]
+            }
+          },
+          "gresol_llit_baix": {
+            "visibleIf": {
+              "all": [
+                {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "llit"
+                    },
+                    {
+                      "flag": "gresol_baix"
+                    }
+                  ]
+                },
+                {
+                  "flag": "gresol_ple",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "gresol_llit_baix_ple": {
+            "visibleIf": {
+              "all": [
+                {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "llit"
+                    },
+                    {
+                      "flag": "gresol_baix"
+                    }
+                  ]
+                },
+                {
+                  "flag": "gresol_ple"
+                }
+              ]
+            }
+          },
+          "gresol_canal_dalt": {
+            "visibleIf": {
+              "all": [
+                {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "canal"
+                    },
+                    {
+                      "flag": "gresol_baix",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "flag": "gresol_ple",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "gresol_canal_dalt_ple": {
+            "visibleIf": {
+              "all": [
+                {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "canal"
+                    },
+                    {
+                      "flag": "gresol_baix",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "flag": "gresol_ple"
+                }
+              ]
+            }
+          },
+          "gresol_canal_baix": {
+            "visibleIf": {
+              "all": [
+                {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "canal"
+                    },
+                    {
+                      "flag": "gresol_baix"
+                    }
+                  ]
+                },
+                {
+                  "flag": "gresol_ple",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "gresol_canal_baix_ple": {
+            "visibleIf": {
+              "all": [
+                {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "canal"
+                    },
+                    {
+                      "flag": "gresol_baix"
+                    }
+                  ]
+                },
+                {
+                  "flag": "gresol_ple"
+                }
+              ]
+            }
+          },
+          "gresol_ple": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "gresol_ple"
+                },
+                {
+                  "var": "gresol",
+                  "op": "==",
+                  "value": "llit"
+                }
+              ]
+            }
+          },
+          "gresol_ple_canal": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "gresol_ple"
+                },
+                {
+                  "var": "gresol",
+                  "op": "==",
+                  "value": "canal"
+                }
+              ]
             }
           }
         },
@@ -6833,7 +6993,36 @@
                   {
                     "who": "player",
                     "text": "sala.fosa_forn.manxa.2",
-                    "sound": "manxa"
+                    "sound": "manxa",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "R"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      },
+                      {
+                        "prop": "manxa_mou",
+                        "anim": "manxa_bufa"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "manxa_mou",
+                        "anim": "manxa_bufa",
+                        "hold": 1.3
+                      },
+                      {
+                        "prop": "manxa_mou",
+                        "anim": "manxa_mou"
+                      },
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -6868,7 +7057,77 @@
                   {
                     "who": "player",
                     "text": "sala.fosa_forn.manxa.4",
-                    "sound": "manxa"
+                    "sound": "manxa",
+                    "if": {
+                      "flag": "metall_carregat",
+                      "is": false
+                    },
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "R"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      },
+                      {
+                        "prop": "manxa_mou",
+                        "anim": "manxa_bufa"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "manxa_mou",
+                        "anim": "manxa_bufa",
+                        "hold": 1.3
+                      },
+                      {
+                        "prop": "manxa_mou",
+                        "anim": "manxa_mou"
+                      },
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.manxa.4",
+                    "sound": "manxa",
+                    "if": {
+                      "flag": "metall_carregat"
+                    },
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "R"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      },
+                      {
+                        "prop": "manxa_mou",
+                        "anim": "manxa_bufa_fort"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "manxa_mou",
+                        "anim": "manxa_bufa_fort",
+                        "hold": 1.3
+                      },
+                      {
+                        "prop": "manxa_mou",
+                        "anim": "manxa_mou"
+                      },
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -6983,7 +7242,200 @@
                   {
                     "who": "player",
                     "text": "sala.fosa_forn.metall.3",
-                    "sound": "cops_ferro"
+                    "sound": "cops_ferro",
+                    "stage": [
+                      {
+                        "prop": "forn_fort",
+                        "visible": false
+                      },
+                      {
+                        "prop": "foc_fort",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_fort__davant_manxa",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_fort__davant_columna_esq",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_fort__davant_escoria",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_fort__davant_bido",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_fort__davant_lingots",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_fort__davant_metall",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_fort__davant_columna_dreta",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_fort__davant",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_ences",
+                        "visible": true
+                      },
+                      {
+                        "prop": "foc",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_ences__davant_manxa",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_ences__davant_columna_esq",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_ences__davant_escoria",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_ences__davant_bido",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_ences__davant_lingots",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_ences__davant_metall",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_ences__davant_columna_dreta",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_ences__davant",
+                        "visible": true
+                      },
+                      {
+                        "who": "player",
+                        "walk": "forn"
+                      },
+                      {
+                        "who": "player",
+                        "face": "L"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      },
+                      {
+                        "prop": "forn_accio",
+                        "anim": "metall_entra"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "forn_fort",
+                        "visible": true
+                      },
+                      {
+                        "prop": "foc_fort",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_fort__davant_manxa",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_fort__davant_columna_esq",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_fort__davant_escoria",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_fort__davant_bido",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_fort__davant_lingots",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_fort__davant_metall",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_fort__davant_columna_dreta",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_fort__davant",
+                        "visible": true
+                      },
+                      {
+                        "prop": "forn_ences",
+                        "visible": false
+                      },
+                      {
+                        "prop": "foc",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_ences__davant_manxa",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_ences__davant_columna_esq",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_ences__davant_escoria",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_ences__davant_bido",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_ences__davant_lingots",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_ences__davant_metall",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_ences__davant_columna_dreta",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_ences__davant",
+                        "visible": false
+                      },
+                      {
+                        "prop": "forn_accio",
+                        "anim": "metall_entra",
+                        "hold": 0.6
+                      },
+                      {
+                        "prop": "forn_accio",
+                        "anim": "forn_accio"
+                      },
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -7064,6 +7516,29 @@
                       "flag": "sync_colada"
                     },
                     {
+                      "flag": "gresol_ple"
+                    },
+                    {
+                      "flag": "escoria_treta",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.rascle.tard"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "sync_colada"
+                    },
+                    {
                       "flag": "metall_carregat"
                     },
                     {
@@ -7076,7 +7551,52 @@
                   {
                     "who": "player",
                     "text": "sala.fosa_forn.rascle.2",
-                    "sound": "vapor"
+                    "sound": "vapor",
+                    "stage": [
+                      {
+                        "prop": "rascle_fora",
+                        "anim": "rascle_agafat"
+                      },
+                      {
+                        "who": "player",
+                        "walk": "forn"
+                      },
+                      {
+                        "who": "player",
+                        "face": "L"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      },
+                      {
+                        "prop": "forn_accio",
+                        "anim": "escoria_fora"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "forn_accio",
+                        "anim": "escoria_fora",
+                        "hold": 0.8
+                      },
+                      {
+                        "prop": "forn_accio",
+                        "anim": "forn_accio"
+                      },
+                      {
+                        "who": "player",
+                        "gest": null
+                      },
+                      {
+                        "who": "player",
+                        "walk": "rascle"
+                      },
+                      {
+                        "prop": "rascle_fora",
+                        "anim": "rascle_fora"
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -7177,6 +7697,546 @@
                 "verb": [
                   "use",
                   "open"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "sync_colada"
+                    },
+                    {
+                      "flag": "claus_fetes",
+                      "is": false
+                    },
+                    {
+                      "flag": "metall_carregat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.buit"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "sync_colada"
+                    },
+                    {
+                      "flag": "claus_fetes",
+                      "is": false
+                    },
+                    {
+                      "flag": "gresol_ple"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.ple"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "sync_colada"
+                    },
+                    {
+                      "flag": "claus_fetes",
+                      "is": false
+                    },
+                    {
+                      "not": {
+                        "all": [
+                          {
+                            "var": "gresol",
+                            "op": "==",
+                            "value": "canal"
+                          },
+                          {
+                            "flag": "gresol_baix"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.terra"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "sync_colada"
+                    },
+                    {
+                      "flag": "claus_fetes",
+                      "is": false
+                    },
+                    {
+                      "flag": "escoria_treta",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.1",
+                    "sound": "colada",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "L"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      },
+                      {
+                        "prop": "forn_accio",
+                        "anim": "piquera_raja"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "forn_accio",
+                        "anim": "piquera_raja",
+                        "hold": 1
+                      },
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.2",
+                    "stageAfter": [
+                      {
+                        "prop": "forn_accio",
+                        "anim": "forn_accio"
+                      }
+                    ]
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "gresol_ple"
+                  },
+                  {
+                    "setFlag": "gresol_brut"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "sync_colada"
+                    },
+                    {
+                      "flag": "claus_fetes",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.1",
+                    "sound": "colada",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "L"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      },
+                      {
+                        "prop": "forn_accio",
+                        "anim": "piquera_raja"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "forn_accio",
+                        "anim": "piquera_raja",
+                        "hold": 1
+                      },
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.2",
+                    "stageAfter": [
+                      {
+                        "prop": "forn_accio",
+                        "anim": "forn_accio"
+                      }
+                    ]
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "gresol_ple"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.forn.4",
+                    "if": {
+                      "protagonist": "vet"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.forn.4.iri",
+                    "if": {
+                      "protagonist": "iri"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "piquera": {
+            "name": "sala.fosa_forn.piquera.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "gresol_ple"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.mira_oberta"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.mira"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open",
+                  "pull",
+                  "push"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "sync_colada"
+                    },
+                    {
+                      "flag": "claus_fetes",
+                      "is": false
+                    },
+                    {
+                      "flag": "metall_carregat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.buit"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open",
+                  "pull",
+                  "push"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "sync_colada"
+                    },
+                    {
+                      "flag": "claus_fetes",
+                      "is": false
+                    },
+                    {
+                      "flag": "gresol_ple"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.ple"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open",
+                  "pull",
+                  "push"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "sync_colada"
+                    },
+                    {
+                      "flag": "claus_fetes",
+                      "is": false
+                    },
+                    {
+                      "not": {
+                        "all": [
+                          {
+                            "var": "gresol",
+                            "op": "==",
+                            "value": "canal"
+                          },
+                          {
+                            "flag": "gresol_baix"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.terra"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open",
+                  "pull",
+                  "push"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "sync_colada"
+                    },
+                    {
+                      "flag": "claus_fetes",
+                      "is": false
+                    },
+                    {
+                      "flag": "escoria_treta",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.1",
+                    "sound": "colada",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "L"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      },
+                      {
+                        "prop": "forn_accio",
+                        "anim": "piquera_raja"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "forn_accio",
+                        "anim": "piquera_raja",
+                        "hold": 1
+                      },
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.2",
+                    "stageAfter": [
+                      {
+                        "prop": "forn_accio",
+                        "anim": "forn_accio"
+                      }
+                    ]
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "gresol_ple"
+                  },
+                  {
+                    "setFlag": "gresol_brut"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open",
+                  "pull",
+                  "push"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "sync_colada"
+                    },
+                    {
+                      "flag": "claus_fetes",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.1",
+                    "sound": "colada",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "L"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      },
+                      {
+                        "prop": "forn_accio",
+                        "anim": "piquera_raja"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "forn_accio",
+                        "anim": "piquera_raja",
+                        "hold": 1
+                      },
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.piquera.2",
+                    "stageAfter": [
+                      {
+                        "prop": "forn_accio",
+                        "anim": "forn_accio"
+                      }
+                    ]
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "gresol_ple"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open",
+                  "pull",
+                  "push"
                 ],
                 "lines": [
                   {
@@ -7289,6 +8349,335 @@
                 },
                 {
                   "flag": "manxa_oberta"
+                }
+              ]
+            }
+          },
+          "brases": {
+            "visibleIf": {
+              "not": {
+                "all": [
+                  {
+                    "flag": "sync_colada"
+                  },
+                  {
+                    "flag": "manxa_oberta"
+                  }
+                ]
+              }
+            }
+          },
+          "termo_fred_1": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta",
+                  "is": false
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 1
+                }
+              ]
+            }
+          },
+          "termo_fred_2": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta",
+                  "is": false
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 2
+                }
+              ]
+            }
+          },
+          "termo_fred_3": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta",
+                  "is": false
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 3
+                }
+              ]
+            }
+          },
+          "termo_fred_4": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta",
+                  "is": false
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 4
+                }
+              ]
+            }
+          },
+          "termo_fred_5": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta",
+                  "is": false
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 5
+                }
+              ]
+            }
+          },
+          "termo_fred_6": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta",
+                  "is": false
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 6
+                }
+              ]
+            }
+          },
+          "termo_fred_7": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta",
+                  "is": false
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 7
+                }
+              ]
+            }
+          },
+          "termo_fred_8": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta",
+                  "is": false
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 8
+                }
+              ]
+            }
+          },
+          "termo_fred_9": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta",
+                  "is": false
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 9
+                }
+              ]
+            }
+          },
+          "termo_1": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 1
+                }
+              ]
+            }
+          },
+          "termo_2": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 2
+                }
+              ]
+            }
+          },
+          "termo_3": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 3
+                }
+              ]
+            }
+          },
+          "termo_4": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 4
+                }
+              ]
+            }
+          },
+          "termo_5": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 5
+                }
+              ]
+            }
+          },
+          "termo_6": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 6
+                }
+              ]
+            }
+          },
+          "termo_7": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 7
+                }
+              ]
+            }
+          },
+          "termo_8": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 8
+                }
+              ]
+            }
+          },
+          "termo_9": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "flag": "manxa_oberta"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 9
                 }
               ]
             }
@@ -13796,11 +15185,18 @@
             {
               "flag": "cal_sorra",
               "is": false
+            },
+            {
+              "flag": "motlle_posat",
+              "is": false
             }
           ]
         },
         "doneWhen": {
           "any": [
+            {
+              "flag": "motlle_posat"
+            },
             {
               "flag": "cal_sorra"
             },
@@ -13990,7 +15386,8 @@
           "flag": "manxa_oberta"
         },
         "levels": [
-          "pista.c_manxa.1"
+          "pista.c_manxa.1",
+          "pista.c_manxa.2"
         ]
       },
       "c_metall": {
@@ -14013,7 +15410,8 @@
           "flag": "metall_carregat"
         },
         "levels": [
-          "pista.c_metall.1"
+          "pista.c_metall.1",
+          "pista.c_metall.2"
         ]
       },
       "c_escoria": {
@@ -14029,6 +15427,10 @@
             {
               "flag": "escoria_treta",
               "is": false
+            },
+            {
+              "flag": "gresol_ple",
+              "is": false
             }
           ]
         },
@@ -14036,7 +15438,214 @@
           "flag": "escoria_treta"
         },
         "levels": [
-          "pista.c_escoria.1"
+          "pista.c_escoria.1",
+          "pista.c_escoria.2"
+        ]
+      },
+      "c_canal": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "flag": "sync_colada"
+            },
+            {
+              "flag": "colat",
+              "is": false
+            },
+            {
+              "flag": "gresol_ple",
+              "is": false
+            },
+            {
+              "not": {
+                "all": [
+                  {
+                    "var": "gresol",
+                    "op": "==",
+                    "value": "canal"
+                  },
+                  {
+                    "flag": "gresol_baix"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "all": [
+                {
+                  "var": "gresol",
+                  "op": "==",
+                  "value": "canal"
+                },
+                {
+                  "flag": "gresol_baix"
+                }
+              ]
+            },
+            {
+              "flag": "gresol_ple"
+            },
+            {
+              "flag": "colat"
+            }
+          ]
+        },
+        "levels": [
+          "pista.c_canal.1",
+          "pista.c_canal.2",
+          "pista.c_canal.3"
+        ]
+      },
+      "c_piquera": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "sync_colada"
+            },
+            {
+              "flag": "colat",
+              "is": false
+            },
+            {
+              "flag": "metall_carregat"
+            },
+            {
+              "flag": "escoria_treta"
+            },
+            {
+              "flag": "gresol_ple",
+              "is": false
+            },
+            {
+              "all": [
+                {
+                  "var": "gresol",
+                  "op": "==",
+                  "value": "canal"
+                },
+                {
+                  "flag": "gresol_baix"
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "gresol_ple"
+            },
+            {
+              "flag": "colat"
+            }
+          ]
+        },
+        "levels": [
+          "pista.c_piquera.1",
+          "pista.c_piquera.2",
+          "pista.c_piquera.3"
+        ]
+      },
+      "c_portar": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "sync_colada"
+            },
+            {
+              "flag": "colat",
+              "is": false
+            },
+            {
+              "flag": "gresol_ple"
+            },
+            {
+              "not": {
+                "all": [
+                  {
+                    "var": "gresol",
+                    "op": "==",
+                    "value": "llit"
+                  },
+                  {
+                    "flag": "gresol_baix"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "all": [
+                {
+                  "var": "gresol",
+                  "op": "==",
+                  "value": "llit"
+                },
+                {
+                  "flag": "gresol_baix"
+                }
+              ]
+            },
+            {
+              "flag": "colat"
+            },
+            {
+              "flag": "gresol_ple",
+              "is": false
+            }
+          ]
+        },
+        "levels": [
+          "pista.c_portar.1",
+          "pista.c_portar.2"
+        ]
+      },
+      "c_fred": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "flag": "sync_colada"
+            },
+            {
+              "flag": "colat",
+              "is": false
+            },
+            {
+              "flag": "manxa_oberta"
+            },
+            {
+              "var": "temperatura",
+              "op": "<=",
+              "value": 3
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "var": "temperatura",
+              "op": ">",
+              "value": 3
+            },
+            {
+              "flag": "colat"
+            }
+          ]
+        },
+        "levels": [
+          "pista.c_fred.1",
+          "pista.c_fred.2"
         ]
       },
       "c_gresol": {
@@ -14047,19 +15656,40 @@
               "flag": "sync_colada"
             },
             {
-              "flag": "escoria_treta"
-            },
-            {
               "flag": "colat",
               "is": false
+            },
+            {
+              "flag": "gresol_ple"
+            },
+            {
+              "all": [
+                {
+                  "var": "gresol",
+                  "op": "==",
+                  "value": "llit"
+                },
+                {
+                  "flag": "gresol_baix"
+                }
+              ]
             }
           ]
         },
         "doneWhen": {
-          "flag": "colat"
+          "any": [
+            {
+              "flag": "colat"
+            },
+            {
+              "flag": "gresol_ple",
+              "is": false
+            }
+          ]
         },
         "levels": [
-          "pista.c_gresol.1"
+          "pista.c_gresol.1",
+          "pista.c_gresol.2"
         ]
       },
       "c_sorra": {
@@ -20924,6 +22554,1529 @@
           }
         }
       },
+      "grua": {
+        "id": "grua",
+        "with": "iri",
+        "start": "menu",
+        "nodes": {
+          "menu": {
+            "choices": [
+              {
+                "id": "esquerra",
+                "text": "dlg.grua.opt.esquerra",
+                "if": {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "llit"
+                    },
+                    {
+                      "flag": "gresol_baix",
+                      "is": false
+                    }
+                  ]
+                },
+                "silent": true,
+                "next": "cap_canal",
+                "effects": [
+                  {
+                    "setVar": "gresol",
+                    "value": "canal"
+                  }
+                ]
+              },
+              {
+                "id": "esquerra_baix",
+                "text": "dlg.grua.opt.esquerra",
+                "if": {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "llit"
+                    },
+                    {
+                      "flag": "gresol_baix"
+                    }
+                  ]
+                },
+                "silent": true,
+                "next": "no_baix"
+              },
+              {
+                "id": "esquerra_final",
+                "text": "dlg.grua.opt.esquerra",
+                "if": {
+                  "var": "gresol",
+                  "op": "==",
+                  "value": "canal"
+                },
+                "silent": true,
+                "next": "final"
+              },
+              {
+                "id": "dreta",
+                "text": "dlg.grua.opt.dreta",
+                "if": {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "canal"
+                    },
+                    {
+                      "flag": "gresol_baix",
+                      "is": false
+                    }
+                  ]
+                },
+                "silent": true,
+                "next": "cap_llit",
+                "effects": [
+                  {
+                    "setVar": "gresol",
+                    "value": "llit"
+                  }
+                ]
+              },
+              {
+                "id": "dreta_baix",
+                "text": "dlg.grua.opt.dreta",
+                "if": {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "canal"
+                    },
+                    {
+                      "flag": "gresol_baix"
+                    }
+                  ]
+                },
+                "silent": true,
+                "next": "no_baix"
+              },
+              {
+                "id": "dreta_final",
+                "text": "dlg.grua.opt.dreta",
+                "if": {
+                  "var": "gresol",
+                  "op": "==",
+                  "value": "llit"
+                },
+                "silent": true,
+                "next": "final"
+              },
+              {
+                "id": "amunt",
+                "text": "dlg.grua.opt.amunt",
+                "if": {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "llit"
+                    },
+                    {
+                      "flag": "gresol_baix"
+                    }
+                  ]
+                },
+                "silent": true,
+                "next": "amunt_llit",
+                "effects": [
+                  {
+                    "setFlag": "gresol_baix",
+                    "value": false
+                  }
+                ]
+              },
+              {
+                "id": "amunt_c",
+                "text": "dlg.grua.opt.amunt",
+                "if": {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "canal"
+                    },
+                    {
+                      "flag": "gresol_baix"
+                    }
+                  ]
+                },
+                "silent": true,
+                "next": "amunt_canal",
+                "effects": [
+                  {
+                    "setFlag": "gresol_baix",
+                    "value": false
+                  }
+                ]
+              },
+              {
+                "id": "amunt_ja",
+                "text": "dlg.grua.opt.amunt",
+                "if": {
+                  "flag": "gresol_baix",
+                  "is": false
+                },
+                "silent": true,
+                "next": "ja_amunt"
+              },
+              {
+                "id": "avall",
+                "text": "dlg.grua.opt.avall",
+                "if": {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "llit"
+                    },
+                    {
+                      "flag": "gresol_baix",
+                      "is": false
+                    }
+                  ]
+                },
+                "silent": true,
+                "next": "avall_llit",
+                "effects": [
+                  {
+                    "setFlag": "gresol_baix"
+                  }
+                ]
+              },
+              {
+                "id": "avall_c",
+                "text": "dlg.grua.opt.avall",
+                "if": {
+                  "all": [
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "canal"
+                    },
+                    {
+                      "flag": "gresol_baix",
+                      "is": false
+                    }
+                  ]
+                },
+                "silent": true,
+                "next": "avall_canal",
+                "effects": [
+                  {
+                    "setFlag": "gresol_baix"
+                  }
+                ]
+              },
+              {
+                "id": "avall_ja",
+                "text": "dlg.grua.opt.avall",
+                "if": {
+                  "flag": "gresol_baix"
+                },
+                "silent": true,
+                "next": "ja_avall"
+              },
+              {
+                "id": "bolca_buit",
+                "text": "dlg.grua.opt.bolca",
+                "if": {
+                  "flag": "gresol_ple",
+                  "is": false
+                },
+                "silent": true,
+                "next": "bolca_buit"
+              },
+              {
+                "id": "bolca_canal",
+                "text": "dlg.grua.opt.bolca",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "gresol_ple"
+                    },
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "canal"
+                    }
+                  ]
+                },
+                "silent": true,
+                "next": "bolca_canal"
+              },
+              {
+                "id": "bolca_dalt",
+                "text": "dlg.grua.opt.bolca",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "gresol_ple"
+                    },
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "llit"
+                    },
+                    {
+                      "flag": "gresol_baix",
+                      "is": false
+                    }
+                  ]
+                },
+                "silent": true,
+                "next": "bolca_dalt"
+              },
+              {
+                "id": "bolca_brut",
+                "text": "dlg.grua.opt.bolca",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "gresol_ple"
+                    },
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "llit"
+                    },
+                    {
+                      "flag": "gresol_baix"
+                    },
+                    {
+                      "flag": "gresol_brut"
+                    }
+                  ]
+                },
+                "silent": true,
+                "next": "bolca_brut",
+                "effects": [
+                  {
+                    "setFlag": "manxa_oberta",
+                    "value": false
+                  },
+                  {
+                    "setFlag": "metall_carregat",
+                    "value": false
+                  },
+                  {
+                    "setFlag": "escoria_treta",
+                    "value": false
+                  },
+                  {
+                    "setFlag": "gresol_ple",
+                    "value": false
+                  },
+                  {
+                    "setFlag": "gresol_brut",
+                    "value": false
+                  },
+                  {
+                    "setVar": "temperatura",
+                    "value": 8
+                  }
+                ],
+                "end": true
+              },
+              {
+                "id": "bolca",
+                "text": "dlg.grua.opt.bolca",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "gresol_ple"
+                    },
+                    {
+                      "var": "gresol",
+                      "op": "==",
+                      "value": "llit"
+                    },
+                    {
+                      "flag": "gresol_baix"
+                    },
+                    {
+                      "flag": "gresol_brut",
+                      "is": false
+                    }
+                  ]
+                },
+                "silent": true,
+                "next": "bolca_bo",
+                "effects": [
+                  {
+                    "setFlag": "colat"
+                  },
+                  {
+                    "setFlag": "gresol_ple",
+                    "value": false
+                  }
+                ],
+                "end": true
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.grua.opt.adeu",
+                "silent": true,
+                "end": true
+              }
+            ]
+          },
+          "cap_canal": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.cap_canal",
+                "sound": "grua",
+                "if": {
+                  "flag": "gresol_ple",
+                  "is": false
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "mou_llit_canal"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "mou_llit_canal",
+                    "hold": 0.8
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              },
+              {
+                "who": "iri",
+                "text": "dlg.grua.cap_canal",
+                "sound": "grua",
+                "if": {
+                  "flag": "gresol_ple"
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "mou_llit_canal_ple"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "mou_llit_canal_ple",
+                    "hold": 0.8
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              }
+            ],
+            "goto": "menu"
+          },
+          "cap_llit": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.cap_llit",
+                "sound": "grua",
+                "if": {
+                  "flag": "gresol_ple",
+                  "is": false
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "mou_canal_llit"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "mou_canal_llit",
+                    "hold": 0.8
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              },
+              {
+                "who": "iri",
+                "text": "dlg.grua.cap_llit",
+                "sound": "grua",
+                "if": {
+                  "flag": "gresol_ple"
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "mou_canal_llit_ple"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "mou_canal_llit_ple",
+                    "hold": 0.8
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              }
+            ],
+            "goto": "menu"
+          },
+          "avall_llit": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.avall",
+                "sound": "grua",
+                "if": {
+                  "flag": "gresol_ple",
+                  "is": false
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "baixa_llit"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "baixa_llit",
+                    "hold": 0.8
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              },
+              {
+                "who": "iri",
+                "text": "dlg.grua.avall",
+                "sound": "grua",
+                "if": {
+                  "flag": "gresol_ple"
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "baixa_llit_ple"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "baixa_llit_ple",
+                    "hold": 0.8
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              }
+            ],
+            "goto": "menu"
+          },
+          "avall_canal": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.avall",
+                "sound": "grua",
+                "if": {
+                  "flag": "gresol_ple",
+                  "is": false
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "baixa_canal"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "baixa_canal",
+                    "hold": 0.8
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              },
+              {
+                "who": "iri",
+                "text": "dlg.grua.avall",
+                "sound": "grua",
+                "if": {
+                  "flag": "gresol_ple"
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "baixa_canal_ple"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "baixa_canal_ple",
+                    "hold": 0.8
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              }
+            ],
+            "goto": "menu"
+          },
+          "amunt_llit": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.amunt",
+                "sound": "grua",
+                "if": {
+                  "flag": "gresol_ple",
+                  "is": false
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "puja_llit"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "puja_llit",
+                    "hold": 0.8
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              },
+              {
+                "who": "iri",
+                "text": "dlg.grua.amunt",
+                "sound": "grua",
+                "if": {
+                  "flag": "gresol_ple"
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "puja_llit_ple"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "puja_llit_ple",
+                    "hold": 0.8
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              }
+            ],
+            "goto": "menu"
+          },
+          "amunt_canal": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.amunt",
+                "sound": "grua",
+                "if": {
+                  "flag": "gresol_ple",
+                  "is": false
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "puja_canal"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "puja_canal",
+                    "hold": 0.8
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              },
+              {
+                "who": "iri",
+                "text": "dlg.grua.amunt",
+                "sound": "grua",
+                "if": {
+                  "flag": "gresol_ple"
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "puja_canal_ple"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "puja_canal_ple",
+                    "hold": 0.8
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              }
+            ],
+            "goto": "menu"
+          },
+          "no_baix": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.no_baix"
+              }
+            ],
+            "goto": "menu"
+          },
+          "final": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.final"
+              }
+            ],
+            "goto": "menu"
+          },
+          "ja_avall": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.ja_avall"
+              }
+            ],
+            "goto": "menu"
+          },
+          "ja_amunt": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.ja_amunt"
+              }
+            ],
+            "goto": "menu"
+          },
+          "bolca_buit": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.bolca_buit"
+              }
+            ],
+            "goto": "menu"
+          },
+          "bolca_canal": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.bolca_canal"
+              }
+            ],
+            "goto": "menu"
+          },
+          "bolca_dalt": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "dlg.grua.bolca_dalt"
+              }
+            ],
+            "goto": "menu"
+          },
+          "bolca_brut": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "sala.fosa_colada.gresol.3",
+                "sound": "colada",
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "bolca"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "bolca",
+                    "hold": 1.2
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
+              },
+              {
+                "who": "narrator",
+                "text": "sala.fosa_colada.gresol.4"
+              },
+              {
+                "who": "iri",
+                "text": "sala.fosa_colada.gresol.5"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.fosa_colada.gresol.6"
+              }
+            ]
+          },
+          "bolca_bo": {
+            "lines": [
+              {
+                "who": "iri",
+                "text": "sala.fosa_colada.gresol.7",
+                "sound": "colada",
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  },
+                  {
+                    "prop": "claus_fetes",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_llit_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_dalt_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_canal_baix_ple",
+                    "visible": false
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "bolca"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "bolca",
+                    "hold": 1.2
+                  },
+                  {
+                    "prop": "gresol_llit_baix",
+                    "visible": true
+                  },
+                  {
+                    "prop": "gresol_mou",
+                    "anim": "gresol_mou"
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  },
+                  {
+                    "prop": "claus_fetes",
+                    "visible": true
+                  }
+                ]
+              },
+              {
+                "who": "narrator",
+                "text": "sala.fosa_colada.gresol.8"
+              }
+            ]
+          }
+        }
+      },
       "holm": {
         "id": "holm",
         "with": "holm",
@@ -25715,6 +28868,23 @@
       "dlg.comunicador.fem.82": "El vestit arreglat és per a mi: dona-me'l o envia-me'l amb la Mosca.",
       "dlg.rosa.hola.3.tard": "Digueu-li que menja poc. Ja ho sé, que és allà dalt.",
       "dlg.bru.recorda.condensador": "El condensador de la mina, Verne el va tancar amb un lector de targetes. Sense targeta de Verne, no fa res.",
+      "dlg.grua.opt.esquerra": "Esquerra, cap al canal.",
+      "dlg.grua.opt.dreta": "Dreta, cap al llit.",
+      "dlg.grua.opt.amunt": "Amunt.",
+      "dlg.grua.opt.avall": "Avall.",
+      "dlg.grua.opt.bolca": "Bolcar el gresol.",
+      "dlg.grua.opt.adeu": "Deixar els comandaments.",
+      "dlg.grua.cap_canal": "Cap al canal.",
+      "dlg.grua.cap_llit": "Cap al llit.",
+      "dlg.grua.avall": "Avall, a poc a poc.",
+      "dlg.grua.amunt": "Amunt.",
+      "dlg.grua.no_baix": "Així de baix, s'enduria tot el que troba. Primer, amunt.",
+      "dlg.grua.final": "Més enllà no va: el carril s'acaba.",
+      "dlg.grua.ja_avall": "Més avall, no: tocaria a terra.",
+      "dlg.grua.ja_amunt": "Ja és amunt del tot.",
+      "dlg.grua.bolca_buit": "Bolcar-lo buit? En cauria pols i prou.",
+      "dlg.grua.bolca_canal": "Aquí no hi ha cap motlle. Ho tiraria tot a terra.",
+      "dlg.grua.bolca_dalt": "Des d'aquí dalt, esquitxaria fora del motlle. Més avall.",
       "final.plou.titol": "Plou",
       "final.text": "L'aigua no s'havia acabat. Estava guardada.",
       "final.plou.1": "A la pantalla del saló: 29. Per sota de la ratlla vermella.",
@@ -25804,7 +28974,7 @@
       "esc.acte3_vet.1": "Dijous. Us deixo a Verdant, i jo me'n vaig al moll de càrrega del palau, a fer de vella i bòrnia.",
       "esc.acte3_vet.2": "L'endemà. La llançadora dels jardiners puja al palau amb en Nil, un carro de flors de plàstic i una jardinera amb roba de feina.",
       "esc.acte3_vet.3": "En una altra nau, la de convidats, hi puja una senyora amb un vestit de reina i una corona d'engranatge.",
-      "sync.colada.1": "El metall comença a fer crosta a les vores.",
+      "sync.colada.1": "El forn es refreda: el metall s'endureix per les vores.",
       "sync.colada.2": "El termòmetre baixa de pressa. Més manxa!",
       "sync.colada.3": "Gairebé fred!",
       "sync.colada.4": "El metall s'ha endurit al gresol.",
@@ -26423,14 +29593,14 @@
       "pista.sorra.3": "Amb l'Iri, ves a Aqua (amb el mapa del pont, si no hi sou), baixa al fons del mar i agafa la sorra fina.",
       "pista.motlle2.1": "Ja tenim sorra fina.",
       "pista.motlle2.2": "Torna a la foneria de Ferrum.",
-      "pista.motlle2.3": "Amb l'Iri, fes servir el motlle amb el llit de colada, amb la sorra a l'inventari (si la porta la Vet, que te l'enviï amb la Mosca).",
+      "pista.motlle2.3": "Amb l'Iri, posa el motlle al llit de colada i colga'l amb la sorra (si la porta la Vet, que te l'enviï amb la Mosca).",
       "pista.colada_lloc.1": "La Vet al forn i l'Iri a la colada, a la vegada.",
       "pista.colada_lloc.2": "La foneria té dues sales: el forn i la colada.",
       "pista.colada_lloc.3": "Posa la Vet a la sala del forn i l'Iri a la de la colada (canvia de protagonista per moure l'altra).",
-      "pista.c_manxa.1": "Al forn, primer, el foc: la manxa.",
-      "pista.c_metall.1": "Al forn: el metall. La pila de comptadors.",
-      "pista.c_escoria.1": "Al forn: fora l'escòria amb el rascle, abans d'abocar.",
-      "pista.c_gresol.1": "A la colada, l'Iri: aboca el gresol.",
+      "pista.c_manxa.1": "Al forn fa fred. Sense foc, aquí no es fon res.",
+      "pista.c_metall.1": "Ja hi ha foc. Què hi falta, dins el forn?",
+      "pista.c_escoria.1": "Al metall fos hi sura una crosta grisa. Amb això, les claus no obririen res.",
+      "pista.c_gresol.1": "El gresol és damunt el motlle, ben baix.",
       "pista.c_sorra.1": "A la colada, l'Iri: tapa el motlle amb la sorra (fes servir la sorra amb el llit).",
       "pista.verdant.1": "En Bru ha dit: en Nil, el jardiner de la residència de Verdant, puja al palau cada dijous. I que el Magnat hi guarda papers.",
       "pista.verdant.2": "En Nil és a Verdant: s'hi va amb el mapa del pont.",
@@ -26591,6 +29761,20 @@
       "pista.gala_tomas_vet.1": "Símptoma: la Rosa no ens dona el vestit. Causa: no ha baixat qui ella espera.",
       "pista.gala_tomas_vet.2": "Fa setmanes que en Tomàs no baixa la rampa. La Rosa vol que vingui ell a buscar el vestit.",
       "pista.gala_tomas_vet.3": "Amb la nau a Ferrum, parla amb en Tomàs, a la bodega: digues-li que la seva mare vol que baixi.",
+      "pista.c_manxa.2": "Al forn, primer, el foc: la manxa.",
+      "pista.c_metall.2": "Al forn: el metall. La pila de comptadors.",
+      "pista.c_escoria.2": "Al forn: fora l'escòria amb el rascle, abans d'obrir la piquera.",
+      "pista.c_canal.1": "El metall del forn arriba a la colada per un canal. Algú l'hi ha d'esperar a sota.",
+      "pista.c_canal.2": "El gresol s'ha de posar sota el canal, i baix. Es mou amb els comandaments de la grua.",
+      "pista.c_canal.3": "Amb l'Iri, als comandaments: esquerra (si és baix, primer amunt) i avall.",
+      "pista.c_piquera.1": "El gresol espera sota el canal. Al forn, qui deixa sortir el metall?",
+      "pista.c_piquera.2": "El forn té una piquera. L'ha d'obrir la Vet.",
+      "pista.c_piquera.3": "Amb la Vet, obre la piquera: el broc de sota del forn.",
+      "pista.c_portar.1": "El gresol és ple. El motlle no és pas sota el canal.",
+      "pista.c_portar.2": "Amb els comandaments: amunt, dreta (cap al llit) i avall.",
+      "pista.c_gresol.2": "Amb els comandaments, bolca el gresol.",
+      "pista.c_fred.1": "El termòmetre baixa a cada moviment. El forn necessita aire.",
+      "pista.c_fred.2": "Amb la Vet, la manxa torna a escalfar el forn (si no és al màxim).",
       "sala.granja_pati.nom": "Pati de la granja",
       "sala.granja_pati.porta_casa.nom": "casa",
       "sala.granja_pati.porta_graner.nom": "graner",
@@ -27004,7 +30188,7 @@
       "sala.ferrum_sindicat.motlles.2": "En Bru em mira. No.",
       "sala.ferrum_sindicat.cartells.1": "Cartells de vagues antigues. «1998: QUI FA EL FERRO, FA EL PREU.» No els va sortir bé.",
       "sala.fosa_forn.entra.1": "El forn està a vuit. Cada acció el refreda un grau. Si arriba a zero, el metall s'endureix al gresol.",
-      "sala.fosa_forn.entra.2": "Al forn: manxa, metall i fora l'escòria. A la colada: abocar el gresol i tapar amb sorra.",
+      "sala.fosa_forn.entra.2": "Al forn: foc, metall, fora l'escòria i obrir la piquera. A la colada: el gresol, amb la grua, del canal al motlle. I sorra.",
       "sala.fosa_forn.porta.1": "Ara no em puc moure d'aquí: el forn es refreda.",
       "sala.fosa_forn.manxa.1": "La manxa del forn: una palanca grossa que fa bufar el foc.",
       "sala.fosa_forn.manxa.2": "Manxa!",
@@ -27026,7 +30210,7 @@
       "sala.fosa_forn.rascle.4": "Encara no hi ha res a escumar.",
       "sala.fosa_forn.rascle.5": "Ja està net.",
       "sala.fosa_forn.rascle.6": "Ara no cal.",
-      "sala.fosa_forn.forn.1": "El forn. Si el termòmetre arriba a zero, el metall s'endureix.",
+      "sala.fosa_forn.forn.1": "El forn. Per la piquera, el metall fos baixa pel canal fins a la colada.",
       "sala.fosa_forn.forn.2": "El forn de la foneria. Fred, de moment.",
       "sala.fosa_forn.forn.3": "El forn, apagat. Ja ha fet la seva feina.",
       "sala.fosa_forn.forn.4": "No hi poso la mà. Ni la de l'Iri.",
@@ -27034,16 +30218,14 @@
       "sala.fosa_forn.termometre.1": "El termòmetre del forn. El metall aguanta fos fins a zero.",
       "sala.fosa_forn.termometre.2": "Un termòmetre de rellotge, gros com una roda.",
       "sala.fosa_colada.entra.1": "El forn està a vuit. Cada acció el refreda un grau. Si arriba a zero, el metall s'endureix al gresol.",
-      "sala.fosa_colada.entra.2": "Al forn: manxa, metall i fora l'escòria. A la colada: abocar el gresol i tapar amb sorra.",
-      "sala.fosa_colada.gresol.1": "El gresol, penjat del pont grua. Quan el metall està fos al forn, hi passa i s'aboca al motlle.",
-      "sala.fosa_colada.gresol.2": "El gresol està buit. Primer, el metall al forn.",
+      "sala.fosa_colada.entra.2": "Al forn: foc, metall, fora l'escòria i obrir la piquera. A la colada: el gresol, amb la grua, del canal al motlle. I sorra.",
+      "sala.fosa_colada.gresol.1": "El gresol, penjat del pont grua. Es mou amb els comandaments.",
       "sala.fosa_colada.gresol.3": "Abocant...",
       "sala.fosa_colada.gresol.4": "El metall cau al motlle... amb l'escòria. Fa bombolles.",
       "sala.fosa_colada.gresol.5": "Les claus surten amb forats. Això no obre res. Ni una llauna.",
       "sala.fosa_colada.gresol.6": "Es refon tot i es torna a començar.",
       "sala.fosa_colada.gresol.7": "Abocant...",
       "sala.fosa_colada.gresol.8": "El metall cau al motlle com mel encesa. Tres claus, tres raigs de llum.",
-      "sala.fosa_colada.gresol.9": "Ja és al motlle. Ara, tapar-lo amb sorra.",
       "sala.fosa_colada.gresol.10": "Sense el motlle preparat al llit, no.",
       "sala.fosa_colada.gresol.11": "Ja hem fet les claus.",
       "sala.fosa_colada.grua_pont.1": "Els comandaments del pont grua. Mouen el gresol del forn al motlle.",
@@ -27058,7 +30240,7 @@
       "sala.fosa_colada.llit.9": "El vapor puja fins al sostre. Quan s'esvaeix, al motlle hi ha tres claus de ferro, encara roges.",
       "sala.fosa_colada.llit.10": "Primer, el metall al motlle.",
       "sala.fosa_colada.llit.11": "Al llit hi va el motlle, preparat amb sorra fina.",
-      "sala.fosa_colada.llit.12": "El motlle espera el metall: s'aboca amb el gresol.",
+      "sala.fosa_colada.llit.12": "El motlle espera el metall. Primer, el gresol ple, i la grua el porta fins aquí.",
       "sala.fosa_colada.llit.13": "Ara, tapar-lo: la sorra, al llit.",
       "sala.fosa_colada.sorra_pedra.1": "Sacs de sorra de Ferrum. Pedra picada. Per a un motlle de precisió, no serveix.",
       "sala.fosa_colada.sorra_pedra.2": "Aquesta no serveix: és pedra picada.",
@@ -27259,7 +30441,7 @@
       "sala.aqua_fons.boies.franja.1": "La boia més baixa, la del 32, dimarts tocava l'aigua. Ara és en sec, i el bassal s'ha retirat uns quants dits.",
       "sala.aqua_fons.boies.franja.2": "El lot 9 arriba fins a la línia de l'aigua de dimarts. I l'aigua, des de dimarts, no s'ha estat quieta.",
       "sala.fosa_colada.llit.altra": "Sorra fina, en tenim. Però la porta l'altra.",
-      "sala.fosa_colada.llit.cas": "Sorra fina d'Aqua? En porto un sac.",
+      "sala.fosa_colada.llit.cas": "La d'aquí és pedra picada. Sort del sac del fons d'Aqua.",
       "sala.aqua_fons.sorra.lot.4": "Sorra de fons, fina com farina, i les estaques del lot 9 de Verne. La franja de sota la línia de dimarts ja té un forat.",
       "sala.aqua_fons.sorra.lot.5": "Sorra de fons, fina com farina, i les estaques del lot 9 de Verne. Sort que la vam agafar abans que la comptessin.",
       "sala.granja_pati.porta_graner.precinte.2": "«PRECINTE PREVENTIU. La propietat de la finca 7.788 no ha respost a l'oferta de compra. Mentre no respongui, el graner queda tancat. Només hi pot entrar la propietat.»",
@@ -27303,7 +30485,23 @@
       "sala.ferrum_sindicat.bagul.ja": "El vestit ja el tenim. La resta és de la colla de teatre.",
       "sala.ferrum_sindicat.bagul.tomas": "La Rosa vol que el vingui a buscar en Tomàs. Ell.",
       "sala.fosa_forn.xifra": "Termòmetre: {temperatura}",
-      "sala.palau_salo.escenari.xifra": "Al faristol, el lot {lot}."
+      "sala.palau_salo.escenari.xifra": "Al faristol, el lot {lot}.",
+      "sala.fosa_forn.piquera.buit": "La piquera, encara no: dins el forn no hi ha res fos.",
+      "sala.fosa_forn.piquera.terra": "Si obro la piquera ara, el metall anirà a terra. Primer, el gresol de l'Iri sota el canal, ben avall.",
+      "sala.fosa_forn.piquera.ple": "El gresol ja és ple. Si n'hi tiro més, vessarà.",
+      "sala.fosa_forn.piquera.1": "Piquera oberta!",
+      "sala.fosa_forn.piquera.2": "Ja raja cap a la colada. Iri, és teu!",
+      "sala.fosa_forn.rascle.tard": "Massa tard: l'escòria ja ha baixat amb el metall.",
+      "sala.fosa_colada.gresol.pes": "A pes, no el moc ni un dit. Per això hi ha la grua.",
+      "sala.fosa_colada.grua_pont.res": "Ara no hi ha res a moure.",
+      "sala.fosa_colada.canal.nom": "canal",
+      "sala.fosa_colada.canal.1": "El canal de colada. El metall fos baixa del forn per aquí i raja on hi hagi el gresol. O a terra.",
+      "sala.fosa_colada.llit.posa": "El motlle, al llit. Ara, colgar-lo de sorra.",
+      "sala.fosa_colada.llit.posat": "El llit de colada, amb el motlle. Falta colgar-lo de sorra fina.",
+      "sala.fosa_colada.llit.falta": "El motlle ja hi és. Falta la sorra fina.",
+      "sala.fosa_forn.piquera.nom": "piquera",
+      "sala.fosa_forn.piquera.mira": "La piquera: el broc del forn per on surt el metall fos. Té un tap de fang.",
+      "sala.fosa_forn.piquera.mira_oberta": "La piquera, oberta. El metall baixa per la regata fins a la colada."
     }
   },
   "locale": "ca",
@@ -27318,6 +30516,10 @@
       "aqui_aqua",
       "aqui_ferrum",
       "aqui_verdant"
+    ],
+    "fosa_colada": [
+      "gresol",
+      "gresol_c"
     ]
   }
 }

@@ -36,7 +36,7 @@ import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360
 import numpy as np
 from PIL import Image
 
-from hd.pix import Canvas, Light, W, H, hr
+from hd.pix import Canvas, Light, W, H, hr, B4
 from hd.rooms.comu import _diff
 from hd.rooms.exterior import fbm
 from hd640.rooms import fosa_forn_pla_comu as PL
@@ -76,6 +76,7 @@ LLUMS = [Llum(((wx + 14) * KW, 220, ZB - 70), 420, 1.0, power=1.4) for wx in WIN
     Llum((20, 80, (DOOR[0] + DOOR[1]) / 2), 560, 2.8, power=1.3),          # la claror del carrer, per la porta
 ]
 FOC = {1: Llum((FCX, 46, FZ0 - 24), 760, 3.0, power=1.2), 2: Llum((FCX, 50, FZ0 - 24), 900, 4.0, power=1.1)}
+MOLTEN = [(120, 20, 6), (190, 52, 10), (236, 110, 24), (255, 170, 60), (255, 220, 130), (255, 250, 220)]  # el metall fos
 PPELL = PL.LEATHER                                 # el cuir de la manxa
 TARONJA = {1: (1.6, 0.62, 0.2), 2: (1.5, 0.95, 0.42)}          # com tenyeix la llum del foc (r, g, b)
 
@@ -109,9 +110,9 @@ def _forn(fire):
 
 
 @functools.lru_cache(maxsize=None)
-def _dial(fire):
+def _dial(fire, tremola=0.0, temp=None):
     cv = Canvas(light=PLA, transparent=True)
-    PL.termometre(cv, fire)
+    PL.termometre(cv, fire, tremola, temp)
     cx, cy, r = PL.DIAL
     return cv.img.crop((cx - r - 4, cy - r - 4, cx + r + 5, cy + r + 11)), (r + 4, r + 4)
 
@@ -299,48 +300,120 @@ def forn(e, fire):
     e.tub('forn', (x1 + 2, 38, FZ0 + 46), _local(MANXA[:2], MANXA[2])(-6, 39, 0), 4.4, IRONF, 2.8, brides=40)
 
 
-def manxa(e):
-    """La manxa: el fol de cuir en falca sobre el cavallet, girat; la palanca, amb el pal, la biga i la cadena."""
+def _palanca(p):
+    """La palanca de la manxa amb el fol tancat `p` (0: obert del tot, com és sempre; 1: tancat): la biga gira pel cap
+    del pal. → (A, el cap del pal, B, el cap del fol): A, l'extrem del fol (lligat al fol per la barra); B, el de la
+    cadena."""
+    hx, hz, ang, Lm, Wm = MANXA
+    L = _local((hx, hz), ang)
+    w2 = Wm / 2
+    px, _, pz = L(Lm + 14, 0, w2 + 20)
+    Pv = (px, 150.0, pz)
+    A0, B0 = L(Lm - 18, 116, w2 + 20), L(Lm + 60, 164, -46)
+    d = (B0[0] - A0[0], B0[2] - A0[2])
+    n = math.hypot(*d)
+    k = (-d[1] / n, 0.0, d[0] / n)                       # l'eix: horitzontal, de través a la biga
+    rA = math.dist(A0, Pv)
+    th = 30 * p / rA
+
+    def gira(P):                                          # (Rodrigues)
+        v = (P[0] - Pv[0], P[1] - Pv[1], P[2] - Pv[2])
+        c, sn = math.cos(th), math.sin(th)
+        kv = (k[1] * v[2] - k[2] * v[1], k[2] * v[0] - k[0] * v[2], k[0] * v[1] - k[1] * v[0])
+        kd = k[0] * v[0] + k[1] * v[1] + k[2] * v[2]
+        return tuple(Pv[i] + v[i] * c + kv[i] * sn + k[i] * kd * (1 - c) for i in range(3))
+    A, B = gira(A0), gira(B0)
+    if A[1] > A0[1]:                                      # (el sentit de gir: A ha de baixar)
+        th = -th
+        A, B = gira(A0), gira(B0)
+    return A, Pv, B, L(Lm - 4, 78 - 30 * p, 0)
+
+
+def manxa(e, p=0.0, part=None):
+    """La manxa: el fol de cuir en falca sobre el cavallet, girat; la palanca, amb el pal, la biga i la cadena.
+    `p`: com de tancat és el fol (0: obert). `part`: 'fix' (el cavallet, el broc i el pal), 'fol' (el que es mou: el
+    cuir, la post, la biga i la cadena) o tot. El que es mou és `manxa_fol`."""
     hx, hz, ang, Lm, Wm = MANXA
     L = _local((hx, hz), ang)
     w2 = Wm / 2
     ub, uc = Lm / 2, Lm + 2
-    # el cavallet: dues potes en A i el travesser
-    for u in (18, Lm - 16):
-        cx, _, cz = L(u, 0, 0)
-        e.caixa_girada('manxa', cx, cz, 7, Wm + 14, 30, ang, PLANKF, 2.6,
-                       cares={'dalt': {'ramp': PLANKF, 'lvl': 3.8}, 'davant': {'ramp': PLANKF, 'lvl': 2.4}})
-    cx, _, cz = L(ub, 0, 0)
-    e.caixa_girada('manxa', cx, cz, Lm + 4, Wm + 8, 5, ang, PLANKF, 3.4, y0=30,
-                   cares={'dalt': {'ramp': PLANKF, 'lvl': 4.0}})
-    # el cuir: els dos costats (falques amb els plecs) i el darrere (el fons de l'acordió)
-    top = lambda u: 38 + 36 * u / Lm                                                      # noqa: E731
-    pleat = lambda s, t, P, hgt: (2.6 + (1.4 if ((hgt - t) / max(1.0, hgt) * 5) % 1 < 0.35 else -0.2)  # noqa: E731
-                                  - (1.0 if ((hgt - t) / max(1.0, hgt) * 5) % 1 > 0.88 else 0))
-    for w in sorted((-w2, w2), key=lambda w: -math.dist(L(ub, 50, w), CAM.pos)):
-        e.quad('manxa', L(0, 76, w), L(Lm, 76, w), L(Lm, 35, w), L(0, 35, w), ramp=PPELL, dues_cares=True,
-               lvl=lambda s, t, P: pleat(s, t - (76 - top(s)), P, top(s) - 35),
-               forma=lambda s, t: t >= 76 - top(s) - 0.5)
-    e.quad('manxa', L(Lm, 74, -w2), L(Lm, 74, w2), L(Lm, 35, w2), L(Lm, 35, -w2), ramp=PPELL, dues_cares=True,
-           lvl=lambda s, t, P: 2.4 + (1.4 if (t / 39 * 5) % 1 < 0.35 else -0.4) - abs(s - w2) / w2 * 0.6)
-    # la post de dalt, inclinada, amb dos cèrcols de ferro, i el pes de pedra
-    e.quad('manxa', L(-4, 40, -w2 - 3), L(uc, 77, -w2 - 3), L(uc, 77, w2 + 3), L(-4, 40, w2 + 3), ramp=PLANKF,
-           dues_cares=True,
-           lvl=lambda s, t, P: 3.8 - (1.4 if s % 18 < 1.2 else 0) + (1.4 if abs(s - 40) < 3 or abs(s - 78) < 3 else 0))
-    # el broc, de ferro
-    e.tub('manxa', L(-14, 39, 0), L(2, 39, 0), 5, IRONF, 3.2)
-    # la palanca: el pal, la biga (de l'extrem del fol cap enlaire), la barra i la cadena amb el mànec
-    px, _, pz = L(Lm + 14, 0, w2 + 20)
-    e.caixa('manxa', px - 3, px + 3, 0, 150, pz - 3, pz + 3, PLANKF, 3.0,
-            cares={'davant': {'ramp': PLANKF, 'lvl': lambda s, t, P: 3.2 - (0.8 if t % 40 < 2 else 0)}})
-    e.caixa('manxa', px - 7, px + 7, 0, 7, pz - 7, pz + 7, PLANKF, 2.6)
-    A = L(Lm - 18, 116, w2 + 20)
-    B = L(Lm + 60, 164, -46)
-    e.cable('manxa', [A, (px, 150, pz), B], PLANKF, 3.8, gruix=5)
-    e.cable('manxa', [L(Lm - 4, 78, 0), A], IRONF, 3.4, gruix=2)
-    e.cable('manxa', [B, (B[0], 70, B[2])], IRONF, 4.2, gruix=1.6)
-    e.caixa('manxa', B[0] - 9, B[0] + 9, 62, 66, B[2] - 2, B[2] + 2, PLANKF, 4.2)
+    alt = 36 - 30 * p                                     # l'alçada de la falca al fons (oberta, 36)
+    if part != 'fol':
+        # el cavallet: dues potes en A i el travesser
+        for u in (18, Lm - 16):
+            cx, _, cz = L(u, 0, 0)
+            e.caixa_girada('manxa', cx, cz, 7, Wm + 14, 30, ang, PLANKF, 2.6,
+                           cares={'dalt': {'ramp': PLANKF, 'lvl': 3.8}, 'davant': {'ramp': PLANKF, 'lvl': 2.4}})
+        cx, _, cz = L(ub, 0, 0)
+        e.caixa_girada('manxa', cx, cz, Lm + 4, Wm + 8, 5, ang, PLANKF, 3.4, y0=30,
+                       cares={'dalt': {'ramp': PLANKF, 'lvl': 4.0}})
+    if part != 'fix':
+        # el cuir: els dos costats (falques amb els plecs) i el darrere (el fons de l'acordió)
+        top = lambda u: 38 + alt * u / Lm                                                   # noqa: E731
+        pleat = lambda s, t, P, hgt: (2.6 + (1.4 if ((hgt - t) / max(1.0, hgt) * 5) % 1 < 0.35 else -0.2)  # noqa: E731
+                                      - (1.0 if ((hgt - t) / max(1.0, hgt) * 5) % 1 > 0.88 else 0))
+        H0 = 38 + alt + 2
+        for w in sorted((-w2, w2), key=lambda w: -math.dist(L(ub, 50, w), CAM.pos)):
+            e.quad('manxa_fol', L(0, H0, w), L(Lm, H0, w), L(Lm, 35, w), L(0, 35, w), ramp=PPELL, dues_cares=True,
+                   lvl=lambda s, t, P: pleat(s, t - (H0 - top(s)), P, top(s) - 35),
+                   forma=lambda s, t: t >= H0 - top(s) - 0.5)
+        e.quad('manxa_fol', L(Lm, H0 - 2, -w2), L(Lm, H0 - 2, w2), L(Lm, 35, w2), L(Lm, 35, -w2), ramp=PPELL,
+               dues_cares=True,
+               lvl=lambda s, t, P: 2.4 + (1.4 if (t / max(1.0, alt + 3) * 5) % 1 < 0.35 else -0.4) - abs(s - w2) / w2 * 0.6)
+        # la post de dalt, inclinada, amb dos cèrcols de ferro
+        e.quad('manxa_fol', L(-4, 40, -w2 - 3), L(uc, 41 + alt, -w2 - 3), L(uc, 41 + alt, w2 + 3), L(-4, 40, w2 + 3),
+               ramp=PLANKF, dues_cares=True,
+               lvl=lambda s, t, P: 3.8 - (1.4 if s % 18 < 1.2 else 0) + (1.4 if abs(s - 40) < 3 or abs(s - 78) < 3 else 0))
+    if part != 'fol':
+        # el broc, de ferro
+        e.tub('manxa', L(-14, 39, 0), L(2, 39, 0), 5, IRONF, 3.2)
+        # el pal de la palanca
+        px, _, pz = L(Lm + 14, 0, w2 + 20)
+        e.caixa('manxa', px - 3, px + 3, 0, 150, pz - 3, pz + 3, PLANKF, 3.0,
+                cares={'davant': {'ramp': PLANKF, 'lvl': lambda s, t, P: 3.2 - (0.8 if t % 40 < 2 else 0)}})
+        e.caixa('manxa', px - 7, px + 7, 0, 7, pz - 7, pz + 7, PLANKF, 2.6)
+    if part != 'fix':
+        # la biga (de l'extrem del fol cap enlaire), la barra i la cadena amb el mànec
+        A, Pv, B, F = _palanca(p)
+        e.cable('manxa_fol', [A, Pv, B], PLANKF, 3.8, gruix=5)
+        e.cable('manxa_fol', [F, A], IRONF, 3.4, gruix=2)
+        e.cable('manxa_fol', [B, (B[0], B[1] - 94, B[2])], IRONF, 4.2, gruix=1.6)
+        e.caixa('manxa_fol', B[0] - 9, B[0] + 9, B[1] - 102, B[1] - 98, B[2] - 2, B[2] + 2, PLANKF, 4.2)
 
+
+# La piquera (el forat del forn per on surt el metall fos, amb el seu broc) i la regata del terra que el porta fins al
+# pas, cap a la colada.
+PIQUERA = (FORN[1] - 26, 30.0, FZ0)                # on surt el broc, a la façana del forn
+REGATA = [(FORN[1] - 26, FZ0 - 18), (660, FZ0 - 22), (744, ZB + 20)]
+
+
+def _regata_punt(t):
+    """Un punt de la regata (x, z), de 0 (sota la piquera) a 1 (al pas), per trams iguals de llargada."""
+    seg = list(zip(REGATA, REGATA[1:]))
+    ll = [math.dist(a, b) for a, b in seg]
+    d = t * sum(ll)
+    for (a, b), l in zip(seg, ll):
+        if d <= l:
+            return a[0] + (b[0] - a[0]) * d / l, a[1] + (b[1] - a[1]) * d / l
+        d -= l
+    return REGATA[-1]
+
+
+def piquera(e):
+    """El broc de la piquera, el tap de fang i la regata del terra (una canal estreta amb les vores de ferro)."""
+    x, y, z = PIQUERA
+    e.caixa('piquera', x - 9, x + 9, y - 6, y + 8, z - 4, z, IRONF, 2.6)
+    e.quad('piquera', (x - 5, y + 1, z - 4), (x + 5, y + 1, z - 4), (x + 4, y - 3, z - 20), (x - 4, y - 3, z - 20),
+           ramp=IRONF, lvl=3.4, dues_cares=True)
+    e.tub('piquera', (x, y + 2, z - 1), (x, y + 2, z - 5), 3, COAL, 1.4)                   # el tap
+    for (ax, az), (bx, bz) in zip(REGATA, REGATA[1:]):
+        dx, dz = bx - ax, bz - az
+        n = math.hypot(dx, dz)
+        px, pz = -dz / n * 6, dx / n * 6
+        e.quad('regata', (ax - px, 0.3, az - pz), (bx - px, 0.3, bz - pz), (bx + px, 0.3, bz + pz),
+               (ax + px, 0.3, az + pz), ramp=SLAGF, lvl=lambda s, t, P: 0.6 + (1.6 if t < 1.6 or t > 10.4 else 0))
+    e.foscor('regata', (x - 12, 0.4, z - 22), (x + 12, 0.4, z - 22), (x + 12, 0.4, z - 10), (x - 12, 0.4, z - 10),
+             lambda s, t: 0.5)
 
 
 def termometre(e, fire):
@@ -525,15 +598,24 @@ def primer_pla(e):
                               'davant': {'ramp': PLANKF, 'lvl': lambda s, t, P: 1.2 - (0.8 if t % 11 < 1.2 else 0)
                                          + (1.0 if s < 3 else 0)},
                               'esquerra': {'ramp': PLANKF, 'lvl': 0.8}, 'dreta': {'ramp': PLANKF, 'lvl': 0.6}})
-    hx, hz = 430, 330                                                                     # el polispast
-    for dx in (-6, 6):
-        e.cable('primer_pla', [(hx + dx, HW + 30, hz), (hx + dx * 0.5, 156, hz)], IRONF, 2.0, gruix=2.4)
-    e.caixa('primer_pla', hx - 5, hx + 5, 146, 158, hz - 3, hz + 3, IRONF, 3.4,
-            cares={'davant': {'ramp': IRONF, 'lvl': lambda s, t, P: 3.2 + (1.6 if 4 < t < 7 else 0)}})  # el bossell
-    e.cable('primer_pla', [(hx, 144, hz), (hx, 130, hz), (hx - 6, 122, hz), (hx, 116, hz), (hx + 5, 120, hz)],
-            IRONF, 2.8, gruix=2.6)                                                         # el ganxo
+    # (el polispast es gronxa: és la capa `polispast`)
     for (x, z, r, seed) in ((150, 384, 52, 3), (70, 420, 38, 5), (236, 380, 22, 7)):
         e.roca('primer_pla', (x, 0, z), r, COAL, 1.6, llum_dir=(-0.6, -0.6), seed=seed)
+
+
+def polispast(e, ph=0.0):
+    """El polispast del primer pla: els dos ramals de la cadena, el bossell i el ganxo, que es gronxen (`ph`, de 0 a
+    1: el cicle) del sostre."""
+    hx, hz = 430, 330
+    a = math.sin(2 * math.pi * ph) * 0.035               # radians
+    top = HW + 30
+    G = lambda x, y: (hx + (x - hx) + (top - y) * math.sin(a), y + (top - y) * (1 - math.cos(a)), hz)   # noqa: E731
+    for dx in (-6, 6):
+        e.cable('polispast', [(hx + dx, top, hz), G(hx + dx * 0.5, 156)], IRONF, 2.0, gruix=2.4)
+    bx = G(hx, 152)[0] - hx
+    e.caixa('polispast', hx - 5 + bx, hx + 5 + bx, 146, 158, hz - 3, hz + 3, IRONF, 3.4,
+            cares={'davant': {'ramp': IRONF, 'lvl': lambda s, t, P: 3.2 + (1.6 if 4 < t < 7 else 0)}})
+    e.cable('polispast', [G(hx, 144), G(hx, 130), G(hx - 6, 122), G(hx, 116), G(hx + 5, 120)], IRONF, 2.8, gruix=2.6)
 
 
 def ombres_foc(e):
@@ -550,8 +632,10 @@ def ombres_foc(e):
                  lambda s, t, w=w, ll=ll: 0.75 * (1 - t / ll) * min(1.0, (w / 2 - abs(s - w / 2)) / (w * 0.2) + 0.1))
 
 
-def escena(cv, fire=0, foc=False):
-    """Tota la sala, de lluny a prop; `fire`: el dibuix del forn (0, 1, 2); `foc`: la llum del foc al món."""
+def escena(cv, fire=0, foc=False, sense_fol=False, sense_rascle=False):
+    """Tota la sala, de lluny a prop; `fire`: el dibuix del forn (0, 1, 2); `foc`: la llum del foc al món;
+    `sense_fol`: sense el que es mou de la manxa (el fons que queda darrere quan es mou); `sense_rascle`: sense el
+    rascle de la columna (el que queda darrere quan el porta la Vet)."""
     e = Escena(cv, CAM, LLUMS + ([FOC[fire]] if foc and fire else []), ambient=AMBIENT)
     nau(e)
     forn(e, fire)
@@ -567,9 +651,12 @@ def escena(cv, fire=0, foc=False):
                  lambda s, t: 0.45 * max(0.0, 1 - abs(s - 14 - (t - 30) * 0.25) / 14) * max(0.0, 1 - abs(t - 30) / 40))
     if foc and fire:
         ombres_foc(e)
-    manxa(e)
+    piquera(e)
+    manxa(e, part='fix' if sense_fol else None)
+    e.darrere = len(e.ids)                       # (el que es pinta d'aquí endavant pot tapar la manxa)
     columna(e, 'columna_dreta', *COL2)
-    rascle(e)
+    if not sense_rascle:
+        rascle(e)
     columna(e, 'columna_esq', *COL1)
     termometre(e, fire)
     metall(e)
@@ -585,20 +672,20 @@ def _negre(cv):
 
 
 @functools.lru_cache(maxsize=None)
-def _escena(fire, foc):
+def _escena(fire, foc, sense_fol=False, sense_rascle=False):
     cv = Canvas(light=LIGHT)
-    e = escena(cv, fire, foc)
+    e = escena(cv, fire, foc, sense_fol, sense_rascle)
     _negre(cv)
     return cv.img, e
 
 
 @functools.lru_cache(maxsize=None)
-def _base(fire=0):
+def _base(fire=0, sense_fol=False, sense_rascle=False):
     """La sala amb el forn en l'estat `fire`: sense foc, tal qual; amb foc, la llum del foc tenyida de taronja."""
-    img, e = _escena(fire, False)
+    img, e = _escena(fire, False, sense_fol, sense_rascle)
     if not fire:
         return img, e
-    lit, _ = _escena(fire, True)
+    lit, _ = _escena(fire, True, sense_fol, sense_rascle)
     a = np.asarray(lit).astype(np.float32)
     b = np.asarray(img).astype(np.float32)
     dl = np.clip((a[..., :3] - b[..., :3]).mean(axis=2, keepdims=True), 0, None)
@@ -653,9 +740,388 @@ def _frames_guspires():
     return out
 
 
+# ─── La manxa que bufa (la capa `manxa_mou`) ────────────────────────────────
+# Cada fotograma: el fons que queda darrere el que es mou de la manxa (la sala dibuixada sense, amb el foc que toca),
+# on hi havia el fol, i a sobre el fol, la post, la biga i la cadena a la posició del moment; retallat on el tapa el
+# que hi ha davant (la columna, el rascle...). Va just per sobre de la capa del davant de la manxa.
+
+@functools.lru_cache(maxsize=None)
+def _zones():
+    """→ (on es veia el que es mou de la manxa, el que hi ha davant la manxa), màscares de la sala."""
+    _, e = _base(0)
+    amo = np.frombuffer(e.amo, np.uint16).reshape(H, W)
+    fol = np.isin(amo, [i for i, sid in enumerate(e.ids) if sid == 'manxa_fol'])
+    return fol, amo >= e.darrere
+
+
+def _fol_img(p, fire):
+    def pinta(llums):
+        cv = Canvas(light=LIGHT, transparent=True)
+        manxa(Escena(cv, CAM, llums, ambient=AMBIENT), p, part='fol')
+        return cv.img
+    img = pinta(LLUMS)
+    if fire:
+        a = np.asarray(pinta(LLUMS + [FOC[fire]])).astype(np.float32)
+        b = np.asarray(img).astype(np.float32)
+        dl = np.clip((a[..., :3] - b[..., :3]).mean(axis=2, keepdims=True), 0, None)
+        out = np.clip(b[..., :3] + dl * np.array(TARONJA[fire], np.float32) * 1.6, 0, 255)
+        img = Image.fromarray(np.concatenate([out, b[..., 3:]], axis=2).astype(np.uint8), 'RGBA').copy()
+    return img
+
+
+def _guspirada(cv, k0, n, f, forca=1.0):
+    """Una esbufegada de guspires que surten de la boca (el fotograma `f` d'una de `n`)."""
+    for k in range(int(26 * forca)):
+        s = (f / n) * (0.8 + hr(k, k0, 1) * 0.6)
+        if s <= 0 or s > 0.95:
+            continue
+        P0 = (FCX + (hr(k, k0, 4) - 0.5) * 60, 30 + hr(k, k0, 6) * 40, FZ0 - 4)
+        v = ((hr(k, k0, 2) - 0.5) * 200, 90 + hr(k, k0, 3) * 110, -120 - hr(k, k0, 5) * 160)
+        P = (P0[0] + v[0] * s, P0[1] + v[1] * s - 260 * s * s, P0[2] + v[2] * s)
+        if P[1] < 0:
+            continue
+        u, vv, _ = CAM.projecta(P)
+        if 0 <= u < W and 0 <= vv < BOTTOM:
+            cv.flat(u, vv, FIREF[6] if s < 0.3 else FIREF[5] if s < 0.6 else FIREF[3])
+
+
+def _frames_manxa(fire):
+    """Dues manxades: el fol es tanca (bufa: guspires per la boca) i es torna a obrir."""
+    fol, davant = _zones()
+    fons = np.asarray(_base(fire, True)[0])
+    ps = [0.0]
+    for _ in range(2):
+        ps += [_ease(t / 6) for t in range(1, 7)] + [1 - _ease(t / 5) for t in range(1, 6)]
+    out = []
+    for f, p in enumerate(ps):
+        a = np.zeros((H, W, 4), np.uint8)
+        a[fol] = fons[fol]
+        img = Image.fromarray(a, 'RGBA').copy()
+        img.alpha_composite(_fol_img(p, fire))
+        a = np.asarray(img).copy()
+        a[davant] = 0
+        img = Image.fromarray(a, 'RGBA').copy()
+        bufa = f - 1 if f < 12 else f - 12
+        if 0 <= bufa < 9:
+            _guspirada(Canvas(img=img), f // 12, 9, bufa + 1, 0.8 if fire == 1 else 1.0)
+        out.append(img)
+    return out
+
+
+def _ease(t):
+    return t * t * (3 - 2 * t)
+
+
+# ─── El que passa a la boca i a la piquera (la capa `forn_accio`) ───────────
+
+def _flat(cv, P, col):
+    u, v, _ = CAM.projecta(P)
+    if 0 <= u < W and 0 <= v < BOTTOM:
+        cv.flat(u, v, col)
+
+
+def _bola(cv, P, r, ramp, lvl):
+    """Una boleta (un comptador, un tros d'escòria) al món, de radi `r`, ombrejada."""
+    u, v, _ = CAM.projecta(P)
+    rr = max(0.8, r * CAM.escala(P))
+    for Y in range(int(v - rr), int(v + rr) + 1):
+        for X in range(int(u - rr), int(u + rr) + 1):
+            dx, dy = (X - u) / rr, (Y - v) / rr
+            if dx * dx + dy * dy <= 1 and 0 <= X < W and 0 <= Y < BOTTOM:
+                cv.put(X, Y, ramp, lvl - dx * 0.8 - dy * 1.0, lit=0)
+
+
+def _frames_metall():
+    """Els comptadors volen de les mans de la Vet (al costat de la boca) cap dins el forn, i el foc esbufega."""
+    n = 18
+    out = []
+    for f in range(n):
+        cv = Canvas(transparent=True)
+        for k in range(7):
+            t = (f - k * 1.4) / 6
+            if not 0 <= t <= 1:
+                continue
+            A = (FORN[1] - 30 + hr(k, 1, 7) * 10, 54, FZ0 - 44)
+            B = (FCX + (hr(k, 2, 7) - 0.5) * 50, 30 + hr(k, 3, 7) * 20, FZ0 + 8)
+            P = (A[0] + (B[0] - A[0]) * t, A[1] + (B[1] - A[1]) * t + 40 * t * (1 - t), A[2] + (B[2] - A[2]) * t)
+            _bola(cv, P, 4.6, [(60, 64, 70), (110, 116, 124), (160, 166, 172), (210, 214, 220), (240, 240, 236)],
+                  3.0 + (0.6 if (f + k) % 2 else 0))
+        if f >= 8:
+            _guspirada(cv, 7, n - 8, f - 7, 1.0)
+        out.append(cv.img)
+    out.append(Image.new('RGBA', (W, H), (0, 0, 0, 0)))
+    return out
+
+
+# El rascle a les mans: qui treu l'escòria (la Vet o l'Iri, amb el gest `Fa` mirant a l'esquerra) és al punt de
+# `forn` de la GEOMETRIA, i té les mans a (−20, −52) px dels peus del sprite; a la seva fondària, 1 px del sprite és
+# 1 unitat del món (l'escala del personatge és la de la càmera). El pal hi passa per dins (les mans tapen el tros on
+# l'agafen: la capa va per sota dels personatges) i la pala entra a la boca i en surt.
+MANS = (FORN[1] - 14 - 20, 52.0, FZ0 - 44)
+RASCLE_L = 130.0                                   # la llargada del pal, de la pala al puny
+PALA_DINS, PALA_FORA = (FCX + 6, 12.0, FZ0 + 22), (FCX + 10, 1.0, FZ0 - 30)
+
+
+def _rascle_ma(e, pala, davant=False):
+    """El rascle amb la pala a `pala` i el pal passant per les mans. Amb `davant`, només el que és davant la façana
+    del forn (el que és a dins, la boca el retalla)."""
+    d = [MANS[i] - pala[i] for i in range(3)]
+    n = math.sqrt(sum(c * c for c in d))
+    u = [c / n for c in d]
+    cul = tuple(pala[i] + u[i] * RASCLE_L for i in range(3))
+    puny = tuple(pala[i] + u[i] * (RASCLE_L - 22) for i in range(3))
+    A = pala
+    if davant and pala[2] > FZ0:                   # el pal, des d'on travessa la façana
+        t = (pala[2] - FZ0) / (pala[2] - cul[2])
+        A = tuple(pala[i] + (cul[i] - pala[i]) * t for i in range(3))
+    e.cable('rascle', [(A[0], A[1] + 5, A[2]), (puny[0], puny[1] + 5, puny[2])], IRONF, 4.6, gruix=3.4)
+    e.cable('rascle', [(puny[0], puny[1] + 5, puny[2]), (cul[0], cul[1] + 5, cul[2])], PLANKF, 4.4, gruix=4.0)
+    if davant and pala[2] > FZ0 - 4:
+        return
+    # la pala: una planxa dreta, de través al pal
+    h = math.hypot(u[0], u[2])
+    px, pz = -u[2] / h * 14, u[0] / h * 14
+    x, y, z = pala
+    e.quad('rascle', (x - px, y + 10, z - pz), (x + px, y + 10, z + pz), (x + px, y, z + pz), (x - px, y, z - pz),
+           ramp=IRONF, dues_cares=True, lvl=lambda s, t, P: 3.0 - t * 0.08 + (fbm(s / 4, t / 4, 5) - 0.5))
+
+
+@functools.lru_cache(maxsize=None)
+def _boca_mask():
+    """La boca del forn a la pantalla (on es veu el que hi ha a dins)."""
+    from PIL import ImageDraw
+    m = Image.new('L', (W, H), 0)
+    pts = [CAM.projecta((FCX + dx, y, FZ0))[:2] for dx, y in ((-36, 11), (36, 11), (36, 64), (0, 86), (-36, 64))]
+    ImageDraw.Draw(m).polygon(pts, fill=255)
+    return m
+
+
+def _amb_foc(draw, fire=2):
+    """Pinta `draw(e)` amb la llum de la sala i la del foc tenyida de taronja (com el fons)."""
+    def pinta(llums):
+        cv = Canvas(light=LIGHT, transparent=True)
+        draw(Escena(cv, CAM, llums, ambient=AMBIENT))
+        return cv.img
+    img = pinta(LLUMS)
+    a = np.asarray(pinta(LLUMS + [FOC[fire]])).astype(np.float32)
+    b = np.asarray(img).astype(np.float32)
+    dl = np.clip((a[..., :3] - b[..., :3]).mean(axis=2, keepdims=True), 0, None)
+    out = np.clip(b[..., :3] + dl * np.array(TARONJA[fire], np.float32) * 1.6, 0, 255)
+    return Image.fromarray(np.concatenate([out, b[..., 3:]], axis=2).astype(np.uint8), 'RGBA').copy()
+
+
+def _rascle_img(pala):
+    """El rascle a les mans, amb la pala a `pala`: el que és dins el forn, només per la boca."""
+    tot = _amb_foc(lambda e: _rascle_ma(e, pala))
+    dins = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    dins.paste(tot, (0, 0), _boca_mask())
+    dins.alpha_composite(_amb_foc(lambda e: _rascle_ma(e, pala, davant=True)))
+    return dins
+
+
+def _frames_escoria():
+    """La Vet treu l'escòria amb el rascle: el fica a la boca i l'estira, i els trossos grisos surten de la boca i
+    cauen davant, amb fum; després el rascle es queda a terra, davant el forn, fins que la Vet el torna a deixar."""
+    n, d0 = 22, 3                                  # (els trossos surten quan el rascle comença a estirar)
+    out = []
+    for f in range(n):
+        if f < d0:                                 # entra a la boca
+            t = _ease((f + 1) / d0)
+            pala = tuple(PALA_FORA[i] + (PALA_DINS[i] - PALA_FORA[i]) * (0.4 + 0.6 * t) for i in range(3))
+        else:                                      # estira
+            t = _ease(min(1.0, (f - d0) / 10))
+            pala = tuple(PALA_DINS[i] + (PALA_FORA[i] - PALA_DINS[i]) * t for i in range(3))
+        cv = Canvas(img=_rascle_img(pala), transparent=True)
+        g = f - d0
+        for k in range(5):
+            t = min(1.0, max(0.0, (g - k * 2) / 8))
+            if g < k * 2:
+                continue
+            A = (FCX + (hr(k, 1, 8) - 0.5) * 40, 22 + hr(k, 2, 8) * 10, FZ0 + 2)
+            B = (FCX + 20 + hr(k, 3, 8) * 60, 2.5, FZ0 - 26 - hr(k, 4, 8) * 30)
+            P = (A[0] + (B[0] - A[0]) * t, A[1] + (B[1] - A[1]) * t + 18 * t * (1 - t), A[2] + (B[2] - A[2]) * t)
+            calor = max(0.0, 1 - (g - k * 2) / 14)
+            _bola(cv, P, 7 + hr(k, 5, 8) * 3, FIREF if calor > 0.5 else SLAGF, 3.4 if calor > 0.5 else 2.6)
+        # el fum que en surt
+        for k in range(8):
+            if g < 0:
+                break
+            s = (g / n + hr(k, 9, 8)) % 1
+            P = (FCX + 30 + (hr(k, 10, 8) - 0.5) * 60 + math.sin(s * 5 + k) * 8, 6 + s * 110, FZ0 - 40)
+            u, v, _ = CAM.projecta(P)
+            r = (3 + s * 9) * CAM.escala(P)
+            for Y in range(int(v - r), int(v + r) + 1):
+                for X in range(int(u - r), int(u + r) + 1):
+                    if (X - u) ** 2 + (Y - v) ** 2 <= r * r and 0 <= X < W and 0 <= Y < BOTTOM and \
+                            B4[Y & 3][X & 3] < 0.55 * (1 - s):
+                        cv.flat(X, Y, (96, 90, 86))
+        out.append(cv.img)
+    return out
+
+
+def _frames_sense_rascle():
+    """La columna sense el rascle (quan el porta la Vet): el fons que hi ha darrere, on es veia el rascle. Només amb el
+    forn a tota manxa (`forn_fort`), que és quan es treu l'escòria. Va damunt la capa del davant de la columna."""
+    amb, e = _base(2)
+    amo = np.frombuffer(e.amo, np.uint16).reshape(H, W)
+    zona = np.isin(amo, [i for i, sid in enumerate(e.ids) if sid == 'rascle'])
+    sense = np.asarray(_base(2, sense_rascle=True)[0])
+    a = np.zeros((H, W, 4), np.uint8)
+    a[zona] = sense[zona]
+    a[zona, 3] = 255
+    return [Image.fromarray(a, 'RGBA')]
+
+
+def _frames_piquera():
+    """La piquera oberta: el raig de metall fos cau del broc a la regata i hi corre fins al pas, amb vapor."""
+    x, y, z = PIQUERA
+    n = 26
+    out = []
+    for f in range(n):
+        cv = Canvas(transparent=True)
+        e = Escena(cv, CAM, [], 0)
+        fins = max(0.0, min(1.0, (f - 2) / 18))
+        g = min(1.0, f / 3) * (1 - max(0.0, (f - 20) / 6))
+        if g > 0:
+            e.cable('raig', [(x, y - 3, z - 20), (x + 1, 10, z - 20), (x + 1, 0.6, z - 19)], MOLTEN, 3.6,
+                    gruix=1.6 + 3 * g)
+        if fins > 0:
+            m = max(2, int(fins * 40))
+            pts = [_regata_punt(fins * i / (m - 1)) for i in range(m)]
+            e.cable('regata', [(px, 0.6, pz) for px, pz in pts], MOLTEN, 3.4, gruix=7)
+            cap = _regata_punt(fins)
+            for k in range(4):                         # el front, que bull
+                _flat(cv, (cap[0] + (hr(f, k, 3) - 0.5) * 8, 2 + hr(f, k, 4) * 5, cap[1]), MOLTEN[5])
+        for k in range(10):                            # el vapor que puja de la regata
+            s = (f / 8 + hr(k, 1, 9)) % 1
+            tt = hr(k, 2, 9) * fins
+            px, pz = _regata_punt(tt)
+            P = (px + math.sin(s * 6 + k) * 4, 4 + s * 60, pz)
+            if fins > 0 and B4[k & 3][f & 3] < 0.7 * (1 - s):
+                _flat(cv, P, (150, 120, 100))
+        out.append(cv.img)
+    return out
+
+
+# ─── L'ambient: brases i fum al forn apagat, la pols, el termòmetre, el polispast ───
+
+def _frames_brases(n=24):
+    """El forn apagat: unes brases a la boca que s'avivem i s'apaguen, i un fil de fum que en surt i puja."""
+    out = []
+    for f in range(n):
+        cv = Canvas(transparent=True)
+        for k in range(9):
+            P = (FCX - 26 + hr(k, 1, 11) * 52, 12 + hr(k, 2, 11) * 4, FZ0 + 14)
+            b = 0.5 + 0.5 * math.sin(2 * math.pi * (f / n * (1 + k % 3) + hr(k, 3, 11)))
+            if b > 0.25:
+                _flat(cv, P, FIREF[5] if b > 0.85 else FIREF[4] if b > 0.55 else FIREF[3])
+        for Y0 in range(0, 140, 2):                    # el fil de fum, que surt per dalt de la boca
+            s = Y0 / 140
+            ph = f / n
+            P = (FCX + math.sin(s * 5 - ph * 2 * math.pi) * (4 + s * 14) + s * 20, 86 + Y0, FZ0 - 6)
+            u, v, _ = CAM.projecta(P)
+            if B4[int(v) & 3][int(u) & 3] < 0.6 * (1 - s) and 0 <= u < W and 0 <= v < BOTTOM:
+                cv.flat(u, v, (92, 86, 82))
+                if s < 0.5:
+                    cv.flat(u + 1, v, (80, 76, 72))
+        out.append(cv.img)
+    return out
+
+
+FONS = {'', 'sostre', 'paret_esq', 'paret_fons', 'terra', 'pas', 'pas_terra', 'racons', 'dalt', 'dalt_esq'}
+
+
+def _frames_pols(n=32):
+    """La pols que sura dins els feixos de llum dels finestrals."""
+    _, e = _base(0)
+    amo = np.frombuffer(e.amo, np.uint16).reshape(H, W)
+    fons = np.isin(amo, [i for i, sid in enumerate(e.ids) if sid in FONS])
+    out = []
+    for f in range(n):
+        cv = Canvas(transparent=True)
+        ph = f / n
+        for q, wx in enumerate(WINDOWS):
+            a0, a1 = wx * KW, (wx + 28) * KW
+            P0, P1, P2, P3 = (a0, 262, ZB - 2), (a1, 262, ZB - 2), (a1 + 70, 0, ZB - 330), (a0 + 70, 0, ZB - 330)
+            for k in range(30):
+                s = (hr(k, q, 71) + 0.05 * math.sin(2 * math.pi * (ph + hr(k, q, 73)))) % 1
+                t = (hr(k, q, 72) + ph * (0.3 + hr(k, q, 74) * 0.3)) % 1
+                A = [P0[i] + (P1[i] - P0[i]) * s for i in range(3)]
+                B = [P3[i] + (P2[i] - P3[i]) * s for i in range(3)]
+                P = [A[i] + (B[i] - A[i]) * t for i in range(3)]
+                u, v, _ = CAM.projecta(P)
+                u, v = int(u), int(v)
+                llum = math.sin(math.pi * t) * (0.5 + 0.5 * math.sin(2 * math.pi * (ph * 2 + hr(k, q, 75))))
+                if 0 <= u < W and 0 <= v < BOTTOM and fons[v, u] and llum > 0.45:
+                    cv.flat(u, v, (214, 186, 146) if llum > 0.75 else (168, 140, 110))
+        out.append(cv.img)
+    return out
+
+
+def _frames_termometre(fire, temp, n=10):
+    """El termòmetre amb l'agulla a `temp` (damunt la capa del davant de la columna). Amb el forn encès (`fire`),
+    l'agulla tremola; apagat, un sol fotograma."""
+    x, z = COL1
+    lit = np.asarray(_base(fire)[0]).astype(np.float32)
+    fosc = np.asarray(_base(0)[0]).astype(np.float32)
+    k = np.clip(lit[..., :3] / np.maximum(fosc[..., :3], 1), 0.5, 4)
+    # Dins l'esfera, la llum d'un sol color (la mediana): els fons tenen l'agulla a llocs diferents, i el quocient
+    # píxel a píxel hi deixaria el rastre de les dues agulles.
+    yy, xx = np.mgrid[:k.shape[0], :k.shape[1]]
+    esfera = (xx - _DIAL[0]) ** 2 + (yy - _DIAL[1]) ** 2 <= (_DR + 1) ** 2
+    k[esfera] = np.median(k[esfera], axis=0)
+    out = []
+    for f in range(n if fire else 1):
+        cv = Canvas(light=LIGHT, transparent=True)
+        img, peu = _dial(fire, (0.012 * math.sin(2 * math.pi * f / n * 3) + (0.02 if f in (3, 7) else 0)) if fire else 0.0,
+                         temp)
+        Escena(cv, CAM, LLUMS, ambient=AMBIENT).sprite('termometre', img, peu, (x, DIAL_Y, z - 12), escala_img=1.4)
+        a = np.asarray(cv.img).astype(np.float32)
+        a[..., :3] = np.clip(a[..., :3] * k, 0, 255)
+        out.append(Image.fromarray(a.astype(np.uint8), 'RGBA').copy())
+    return out
+
+
+def _frames_polispast(n=24):
+    out = []
+    for f in range(n):
+        cv = Canvas(light=LIGHT, transparent=True)
+        polispast(Escena(cv, CAM, LLUMS, ambient=AMBIENT), f / n)
+        out.append(cv.img)
+    return out
+
+
+BUIT = lambda: [Image.new('RGBA', (W, H), (0, 0, 0, 0))]   # noqa: E731
+
+# El termòmetre de la colada marca la temperatura (de 1 a 9: comença a 8 i la manxa la puja fins a 9; a 0 es torna a
+# començar). Una capa per grau: `termo_fred_<t>`, amb el forn apagat (abans de la manxa), i `termo_<t>`, encès.
+TEMPS = range(1, 10)
+TERMO = [f'termo_fred_{t}' for t in TEMPS] + [f'termo_{t}' for t in TEMPS]
+
 ANIMS = {'foc': {'frames': lambda: _flames(1), 'frameDuration': 100},
          'foc_fort': {'frames': lambda: _flames(2), 'frameDuration': 80},
-         'guspires': {'frames': _frames_guspires, 'frameDuration': 70}}
+         'guspires': {'frames': _frames_guspires, 'frameDuration': 70},
+         'brases': {'frames': _frames_brases, 'frameDuration': 140},
+         'pols': {'frames': _frames_pols, 'frameDuration': 150},
+         'polispast': {'frames': _frames_polispast, 'frameDuration': 160, 'zIndex': 60},
+         # la manxa que bufa (les indicacions d'escena de rooms/fosa_forn.json)
+         'manxa_mou': {'frames': BUIT, 'frameDuration': 1000, 'loop': False},
+         'manxa_bufa': {'frames': lambda: _frames_manxa(1), 'frameDuration': 80, 'loop': False, 'prop': 'manxa_mou'},
+         'manxa_bufa_fort': {'frames': lambda: _frames_manxa(2), 'frameDuration': 80, 'loop': False,
+                             'prop': 'manxa_mou'},
+         # el que passa a la boca i a la piquera
+         'forn_accio': {'frames': BUIT, 'frameDuration': 1000, 'loop': False, 'zIndex': 5},
+         'metall_entra': {'frames': _frames_metall, 'frameDuration': 70, 'loop': False, 'prop': 'forn_accio'},
+         'escoria_fora': {'frames': _frames_escoria, 'frameDuration': 80, 'loop': False, 'prop': 'forn_accio'},
+         # el rascle de la columna, que desapareix quan la Vet l'agafa (va damunt la capa del davant de la columna)
+         'rascle_fora': {'frames': BUIT, 'frameDuration': 1000, 'loop': False},
+         'rascle_agafat': {'frames': _frames_sense_rascle, 'frameDuration': 1000, 'loop': False,
+                           'prop': 'rascle_fora'},
+         'piquera_raja': {'frames': _frames_piquera, 'frameDuration': 80, 'loop': False, 'prop': 'forn_accio'}}
+ANIMS.update({f'termo_fred_{t}': {'frames': functools.partial(_frames_termometre, 0, t), 'frameDuration': 1000}
+              for t in TEMPS})
+ANIMS.update({f'termo_{t}': {'frames': functools.partial(_frames_termometre, 1, t), 'frameDuration': 120}
+              for t in TEMPS})
 
 
 def _amo(ids):
@@ -735,11 +1201,14 @@ FRONT = [
     {'id': 'davant_bido', 'mask': _amo({'bido'}), 'baseline': _vfront((BIDO[0], BIDO[1] - 12)), 'zIndex': 20, 'variants': _FOC},
     {'id': 'davant_escoria', 'mask': _amo({'escoria'}), 'baseline': _vfront((ESCORIA[0], ESCORIA[1] - ESCORIA[2] * 0.6)),
      'zIndex': 20, 'variants': _FOC},
-    {'id': 'davant_manxa', 'mask': _amo({'manxa'}), 'baseline': _vfront(*_MP), 'zIndex': 20, 'variants': _FOC},
+    {'id': 'davant_manxa', 'mask': _amo({'manxa', 'manxa_fol'}), 'baseline': _vfront(*_MP), 'zIndex': 20,
+     'variants': _FOC, 'props': ['manxa_mou']},
     {'id': 'davant_columna_esq', 'mask': _amo({'columna_esq', 'termometre'}),
-     'baseline': _vfront((COL1[0], COL1[1] - 13)), 'zIndex': 20, 'variants': _FOC},
+     'baseline': _vfront((COL1[0], COL1[1] - 13)), 'zIndex': 20, 'variants': _FOC,
+     'props': [*TERMO]},
     {'id': 'davant_columna_dreta', 'mask': _amo({'columna_dreta', 'rascle'}),
-     'baseline': _vfront((COL2[0], COL2[1] - 13), (COL2[0] - 34, COL2[1] - 24)), 'zIndex': 20, 'variants': _FOC},
+     'baseline': _vfront((COL2[0], COL2[1] - 13), (COL2[0] - 34, COL2[1] - 24)), 'zIndex': 20, 'variants': _FOC,
+     'props': ['rascle_fora']},
     {'id': 'davant_metall', 'mask': _amo({'metall'}),
      'baseline': _vfront((METALL[0], METALL[1] - 10), (CARRET[0] + 30, CARRET[1] - 30)), 'zIndex': 20, 'variants': _FOC},
     {'id': 'davant', 'mask': _amo({'primer_pla', 'lingoteres'}), 'baseline': 999, 'zIndex': 20, 'variants': _FOC},
@@ -752,7 +1221,11 @@ GEOMETRIA = {
     'things': {
         'porta': {'rect': _rect_mon((0, DOOR[2], DOOR[0]), (0, 0, DOOR[1])), 'walk': _p(30, (DOOR[0] + DOOR[1]) / 2)},
         'pas': {'rect': _rect_mon((PAS[0], PAS[2], ZB), (PAS[1], 0, ZB)), 'walk': _p((PAS[0] + PAS[1]) / 2, ZB + 20)},
-        'forn': {'rect': _rect_mon((FORN[0], HOOD, ZB - 40), (FORN[1], 0, FZ0)), 'walk': _p(FCX, FZ0 - 40)},
+        'forn': {'rect': _rect_mon((FORN[0], HOOD, ZB - 40), (FORN[1], 0, FZ0)), 'walk': _p(FORN[1] - 14, FZ0 - 44)},
+        # El broc de la piquera, a la façana del forn (a sobre de la zona del forn: es clica abans).
+        'piquera': {'rect': _rect_mon((PIQUERA[0] - 16, PIQUERA[1] + 16, PIQUERA[2]),
+                                      (PIQUERA[0] + 16, 0, PIQUERA[2] - 24)),
+                    'walk': _p(FORN[1] - 14, FZ0 - 44)},
         'manxa': {'rect': _rect_mon(*[(x, 0, z) for x, z in _MP], *[(x, 80, z) for x, z in _MP[:2]],
                                     _local(MANXA[:2], MANXA[2])(MANXA[3] + 60, 168, -46),
                                     _local(MANXA[:2], MANXA[2])(MANXA[3] + 60, 60, -46)),

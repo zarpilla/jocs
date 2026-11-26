@@ -11,7 +11,7 @@ Una càmera alta, girada cap a la cantonada de l'esquerra, mirant una mica avall
   - a la paret de l'esquerra, en escorç, l'**ascensor** de servei, obert: la cabina il·luminada fa una claror que
     s'escampa en diagonal pel terra; al costat, l'**interfon**;
   - a la dreta, el tub gruixut de la reserva del Magnat, que puja fins al vidre (s'hi passa per darrere), amb la
-    **càmera** penjada (decorat `flors_camera`; ANIMS `llum`, el llum vermell que fa pampallugues), i l'armari de
+    **càmera** penjada (decorat `flors_camera`; ANIMS `camera_llum`, el llum vermell que fa pampallugues), i l'armari de
     la **palanca** vermella «RESERVA» (decorat `reserva_oberta`);
   - primer pla: una barana i una canonada gruixuda, fosques, tallades per la vora de baix.
 
@@ -406,35 +406,46 @@ PROPS = {'obert_t2': _obert('t2'), 'obert_aqua': _obert('aqua'), 'obert_ferrum':
 
 # ─── Animació: el llum de la càmera ──────────────────────────────────────────
 
-LLUM_N = 14                                        # 14 × 140 ms: una pampallugada cada dos segons
+LLUM_N = 12                                        # 12 × 110 ms: encès mig segon, apagat mig segon
 
 
 def _frames_llum():
-    """El llum vermell de la càmera fa una pampallugada curta i es queda com al fons: grava. (Amb les flors posades,
-    el decorat `flors_camera` és per sobre i el tapa.)"""
+    """El llum vermell de la càmera fa pampallugues (grava): encès, amb claror al voltant, i apagat, amb el gris de la
+    carcassa. Les flors (`flors_camera`), quan hi són, el tapen."""
     img, _ = _base()
     P = img.load()
     lx, ly = max(((x, y) for x in range(425, 460) for y in range(20, 45)),
                  key=lambda q: P[q][0] - P[q][1])     # el píxel més vermell, a la càmera
+    vermells = [(lx + dx, ly + dy) for dx in range(-4, 5) for dy in range(-4, 5)
+                if P[lx + dx, ly + dy][0] - P[lx + dx, ly + dy][1] > 12]
+
+    def gris(x, y):                                    # la carcassa de la mateixa fila, fora del llum
+        for d in (5, -5, 6, -6, 7):
+            c = P[x + d, y]
+            if c[0] - c[1] <= 12:
+                return c
+        return (150, 156, 168, 255)
     out = []
     for f in range(LLUM_N):
         im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-        k = (1.0, 0.45)[f] if f < 2 else 0.0
-        if k:
-            Q = im.load()
-            for dx in range(-3, 4):
-                for dy in range(-3, 4):
+        Q = im.load()
+        if f < LLUM_N // 2:                            # encès: la creu més viva i una claror
+            for dx in range(-4, 5):
+                for dy in range(-4, 5):
                     d = math.hypot(dx, dy)
-                    if d <= 1.0:                       # el llum (la creu): més encès
-                        Q[lx + dx, ly + dy] = (255, round(120 + 80 * k * (d == 0)), round(90 + 50 * k * (d == 0)),
-                                               round(255 * k))
-                    elif d <= 3.2:                     # la claror, al voltant
-                        Q[lx + dx, ly + dy] = (255, 70, 50, round(90 * k * (1 - (d - 1) / 2.4)))
+                    if d <= 1.0:
+                        Q[lx + dx, ly + dy] = (255, 150, 120, 255) if d == 0 else (255, 72, 52, 255)
+                    elif d <= 4.2:
+                        Q[lx + dx, ly + dy] = (255, 60, 40, round(150 * (1 - (d - 1) / 3.2) ** 1.3))
+        else:                                          # apagat
+            for x, y in vermells:
+                Q[x, y] = (*gris(x, y)[:3], 255)
+            Q[lx, ly] = (120, 60, 64, 255)             # (el vidre del llum, fosc)
         out.append(im)
     return out
 
 
-ANIMS = {'llum': {'frames': _frames_llum, 'frameDuration': 140}}
+ANIMS = {'camera_llum': {'frames': _frames_llum, 'frameDuration': 110}}
 
 
 def _amo(ids):
@@ -503,7 +514,9 @@ def _vpeu(z):
 
 
 FRONT = [
-    {'id': 'davant_tub', 'mask': _amo({'tub', 'camera'}), 'baseline': round(_vpeu(TZ - TR)), 'zIndex': 20},
+    {'id': 'davant_tub', 'mask': _amo({'tub', 'camera'}), 'baseline': round(_vpeu(TZ - TR)), 'zIndex': 20,
+     'props': ('camera_llum', 'flors_camera')},    # (el llum i les flors són a la càmera: per sobre de la capa;
+                                                   # amb el mateix zIndex va per nom, i les flors tapen el llum)
     {'id': 'davant_armari', 'mask': _amo({'armari', 'palanca'}), 'baseline': round(_vpeu(ARM[2])), 'zIndex': 20},
     {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
 ]

@@ -558,8 +558,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 302,
-        "y": 185
+        "x": 375,
+        "y": 190
       },
       "lookAtPoint": {
         "x": 320,
@@ -596,6 +596,38 @@
       "lookAtPoint": {
         "x": 154,
         "y": 121
+      }
+    },
+    {
+      "id": "piquera",
+      "active": true,
+      "description": "piquera",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 359,
+          "y": 151
+        },
+        {
+          "x": 379,
+          "y": 151
+        },
+        {
+          "x": 379,
+          "y": 186
+        },
+        {
+          "x": 359,
+          "y": 186
+        }
+      ],
+      "walkToPoint": {
+        "x": 375,
+        "y": 190
+      },
+      "lookAtPoint": {
+        "x": 369,
+        "y": 186
       }
     }
   ],
@@ -990,6 +1022,386 @@
       },
       "zIndex": 35,
       "baseline": 999
+    },
+    {
+      "id": "brases",
+      "tag": "brases",
+      "animations": {
+        "brases": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 150
+        }
+      }
+    },
+    {
+      "id": "polispast",
+      "tag": "polispast",
+      "zIndex": 60,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "polispast": {
+          "loop": true,
+          "frameDuration": 160
+        }
+      }
+    },
+    {
+      "id": "manxa_mou",
+      "tag": "manxa_mou",
+      "zIndex": 21,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "manxa_mou": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "manxa_bufa": {
+          "loop": false,
+          "frameDuration": 80
+        },
+        "manxa_bufa_fort": {
+          "loop": false,
+          "frameDuration": 80
+        }
+      },
+      "baseline": 195
+    },
+    {
+      "id": "forn_accio",
+      "tag": "forn_accio",
+      "zIndex": 5,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn_accio": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "metall_entra": {
+          "loop": false,
+          "frameDuration": 70
+        },
+        "escoria_fora": {
+          "loop": false,
+          "frameDuration": 80
+        },
+        "piquera_raja": {
+          "loop": false,
+          "frameDuration": 80
+        }
+      }
+    },
+    {
+      "id": "rascle_fora",
+      "tag": "rascle_fora",
+      "zIndex": 33,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "rascle_fora": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "rascle_agafat": {
+          "loop": false,
+          "frameDuration": 1000
+        }
+      },
+      "baseline": 243
+    },
+    {
+      "id": "termo_fred_1",
+      "tag": "termo_fred_1",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_fred_1": {
+          "loop": true,
+          "frameDuration": 1000
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_fred_2",
+      "tag": "termo_fred_2",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_fred_2": {
+          "loop": true,
+          "frameDuration": 1000
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_fred_3",
+      "tag": "termo_fred_3",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_fred_3": {
+          "loop": true,
+          "frameDuration": 1000
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_fred_4",
+      "tag": "termo_fred_4",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_fred_4": {
+          "loop": true,
+          "frameDuration": 1000
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_fred_5",
+      "tag": "termo_fred_5",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_fred_5": {
+          "loop": true,
+          "frameDuration": 1000
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_fred_6",
+      "tag": "termo_fred_6",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_fred_6": {
+          "loop": true,
+          "frameDuration": 1000
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_fred_7",
+      "tag": "termo_fred_7",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_fred_7": {
+          "loop": true,
+          "frameDuration": 1000
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_fred_8",
+      "tag": "termo_fred_8",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_fred_8": {
+          "loop": true,
+          "frameDuration": 1000
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_fred_9",
+      "tag": "termo_fred_9",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_fred_9": {
+          "loop": true,
+          "frameDuration": 1000
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_1",
+      "tag": "termo_1",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_1": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_2",
+      "tag": "termo_2",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_2": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_3",
+      "tag": "termo_3",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_3": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_4",
+      "tag": "termo_4",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_4": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_5",
+      "tag": "termo_5",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_5": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_6",
+      "tag": "termo_6",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_6": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_7",
+      "tag": "termo_7",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_7": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_8",
+      "tag": "termo_8",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_8": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      },
+      "baseline": 196
+    },
+    {
+      "id": "termo_9",
+      "tag": "termo_9",
+      "zIndex": 23,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "termo_9": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      },
+      "baseline": 196
     }
   ],
   "characters": [

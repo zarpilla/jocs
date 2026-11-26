@@ -422,10 +422,11 @@
       "animations": {
         "flors_camera": {}
       },
-      "zIndex": 4,
+      "zIndex": 23,
       "visible": false,
       "alpha": 1,
-      "clickable": false
+      "clickable": false,
+      "baseline": 206
     },
     {
       "id": "davant_armari",
@@ -464,18 +465,19 @@
       "baseline": 999
     },
     {
-      "id": "llum",
-      "tag": "llum",
-      "zIndex": 1,
+      "id": "camera_llum",
+      "tag": "camera_llum",
+      "zIndex": 23,
       "visible": true,
       "alpha": 1,
       "clickable": false,
       "animations": {
-        "llum": {
+        "camera_llum": {
           "loop": true,
-          "frameDuration": 140
+          "frameDuration": 110
         }
-      }
+      },
+      "baseline": 206
     }
   ],
   "characters": [

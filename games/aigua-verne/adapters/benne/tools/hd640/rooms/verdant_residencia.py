@@ -377,7 +377,7 @@ PROPS = {}
 
 FIN = (424, 542, 10, 88)                           # on buscar el cel del finestral (x0, x1, y0, y1, en píxels)
 NUVOL_Y = 55                                       # l'alçada del núvol (entre els dos del fons i el travesser)
-NUVOL = [(0, 1, 5.5, 2.4), (6, -1, 6.0, 3.4), (12, 1, 5.0, 2.4)]   # les bombolles: (dx, dy, rx, ry)
+NUVOL = [(0, 1, 7.5, 3.2), (9, -2, 8.5, 4.8), (18, 0, 7.0, 3.8), (25, 2, 5.0, 2.4)]   # bombolles: (dx, dy, rx, ry)
 
 
 def _frames_nuvol():
@@ -389,23 +389,23 @@ def _frames_nuvol():
     x0, x1, y0, y1 = FIN
     cel = {(x, y) for x in range(x0, x1) for y in range(y0, y1) if P[x, y][2] - P[x, y][0] > 45}
     out = []
-    for cx in range(x0 - 20, x1 + 8):                  # 1 px per fotograma: entra i surt del tot (bucle net)
+    for cx in range(x0 - 32, x1 + 10):                  # 1 px per fotograma: entra i surt del tot (bucle net)
         im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
         Q = im.load()
-        for x in range(cx - 7, cx + 19):
-            for y in range(NUVOL_Y - 5, NUVOL_Y + 4):
+        for x in range(cx - 9, cx + 31):
+            for y in range(NUVOL_Y - 7, NUVOL_Y + 5):
                 if (x, y) not in cel:
                     continue
                 d = min(((x - cx - dx) / rx) ** 2 + ((y - NUVOL_Y - dy) / ry) ** 2 for dx, dy, rx, ry in NUVOL)
-                if d > 1 or y > NUVOL_Y + 3:                   # (la panxa del núvol, plana)
+                if d > 1 or y > NUVOL_Y + 4:                   # (la panxa del núvol, plana)
                     continue
-                c = (250, 252, 255) if y < NUVOL_Y + 2 else (220, 232, 248)
-                Q[x, y] = (*c, 150 if d > 0.7 else 235)
+                c = (252, 253, 255) if y < NUVOL_Y + 2 else (218, 230, 248)
+                Q[x, y] = (*c, 170 if d > 0.75 else 250)
         out.append(im)
     return out
 
 
-ANIMS = {'nuvol': {'frames': _frames_nuvol, 'frameDuration': 220}}
+ANIMS = {'nuvol': {'frames': _frames_nuvol, 'frameDuration': 120}}
 
 
 def _amo(ids):

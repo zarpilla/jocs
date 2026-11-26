@@ -1020,11 +1020,18 @@
         {
           "flag": "cal_sorra",
           "is": false
+        },
+        {
+          "flag": "motlle_posat",
+          "is": false
         }
       ]
     },
     "doneWhen": {
       "any": [
+        {
+          "flag": "motlle_posat"
+        },
         {
           "flag": "cal_sorra"
         },
@@ -1214,7 +1221,8 @@
       "flag": "manxa_oberta"
     },
     "levels": [
-      "pista.c_manxa.1"
+      "pista.c_manxa.1",
+      "pista.c_manxa.2"
     ]
   },
   "c_metall": {
@@ -1237,7 +1245,8 @@
       "flag": "metall_carregat"
     },
     "levels": [
-      "pista.c_metall.1"
+      "pista.c_metall.1",
+      "pista.c_metall.2"
     ]
   },
   "c_escoria": {
@@ -1253,6 +1262,10 @@
         {
           "flag": "escoria_treta",
           "is": false
+        },
+        {
+          "flag": "gresol_ple",
+          "is": false
         }
       ]
     },
@@ -1260,7 +1273,214 @@
       "flag": "escoria_treta"
     },
     "levels": [
-      "pista.c_escoria.1"
+      "pista.c_escoria.1",
+      "pista.c_escoria.2"
+    ]
+  },
+  "c_canal": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_colada"
+        },
+        {
+          "flag": "colat",
+          "is": false
+        },
+        {
+          "flag": "gresol_ple",
+          "is": false
+        },
+        {
+          "not": {
+            "all": [
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "canal"
+              },
+              {
+                "flag": "gresol_baix"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "all": [
+            {
+              "var": "gresol",
+              "op": "==",
+              "value": "canal"
+            },
+            {
+              "flag": "gresol_baix"
+            }
+          ]
+        },
+        {
+          "flag": "gresol_ple"
+        },
+        {
+          "flag": "colat"
+        }
+      ]
+    },
+    "levels": [
+      "pista.c_canal.1",
+      "pista.c_canal.2",
+      "pista.c_canal.3"
+    ]
+  },
+  "c_piquera": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_colada"
+        },
+        {
+          "flag": "colat",
+          "is": false
+        },
+        {
+          "flag": "metall_carregat"
+        },
+        {
+          "flag": "escoria_treta"
+        },
+        {
+          "flag": "gresol_ple",
+          "is": false
+        },
+        {
+          "all": [
+            {
+              "var": "gresol",
+              "op": "==",
+              "value": "canal"
+            },
+            {
+              "flag": "gresol_baix"
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "gresol_ple"
+        },
+        {
+          "flag": "colat"
+        }
+      ]
+    },
+    "levels": [
+      "pista.c_piquera.1",
+      "pista.c_piquera.2",
+      "pista.c_piquera.3"
+    ]
+  },
+  "c_portar": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_colada"
+        },
+        {
+          "flag": "colat",
+          "is": false
+        },
+        {
+          "flag": "gresol_ple"
+        },
+        {
+          "not": {
+            "all": [
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "llit"
+              },
+              {
+                "flag": "gresol_baix"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "all": [
+            {
+              "var": "gresol",
+              "op": "==",
+              "value": "llit"
+            },
+            {
+              "flag": "gresol_baix"
+            }
+          ]
+        },
+        {
+          "flag": "colat"
+        },
+        {
+          "flag": "gresol_ple",
+          "is": false
+        }
+      ]
+    },
+    "levels": [
+      "pista.c_portar.1",
+      "pista.c_portar.2"
+    ]
+  },
+  "c_fred": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_colada"
+        },
+        {
+          "flag": "colat",
+          "is": false
+        },
+        {
+          "flag": "manxa_oberta"
+        },
+        {
+          "var": "temperatura",
+          "op": "<=",
+          "value": 3
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "var": "temperatura",
+          "op": ">",
+          "value": 3
+        },
+        {
+          "flag": "colat"
+        }
+      ]
+    },
+    "levels": [
+      "pista.c_fred.1",
+      "pista.c_fred.2"
     ]
   },
   "c_gresol": {
@@ -1271,19 +1491,40 @@
           "flag": "sync_colada"
         },
         {
-          "flag": "escoria_treta"
-        },
-        {
           "flag": "colat",
           "is": false
+        },
+        {
+          "flag": "gresol_ple"
+        },
+        {
+          "all": [
+            {
+              "var": "gresol",
+              "op": "==",
+              "value": "llit"
+            },
+            {
+              "flag": "gresol_baix"
+            }
+          ]
         }
       ]
     },
     "doneWhen": {
-      "flag": "colat"
+      "any": [
+        {
+          "flag": "colat"
+        },
+        {
+          "flag": "gresol_ple",
+          "is": false
+        }
+      ]
     },
     "levels": [
-      "pista.c_gresol.1"
+      "pista.c_gresol.1",
+      "pista.c_gresol.2"
     ]
   },
   "c_sorra": {

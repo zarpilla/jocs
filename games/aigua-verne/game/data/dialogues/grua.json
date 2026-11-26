@@ -1,0 +1,1524 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "grua",
+  "with": "iri",
+  "start": "menu",
+  "nodes": {
+    "menu": {
+      "choices": [
+        {
+          "id": "esquerra",
+          "text": "dlg.grua.opt.esquerra",
+          "if": {
+            "all": [
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "llit"
+              },
+              {
+                "flag": "gresol_baix",
+                "is": false
+              }
+            ]
+          },
+          "silent": true,
+          "next": "cap_canal",
+          "effects": [
+            {
+              "setVar": "gresol",
+              "value": "canal"
+            }
+          ]
+        },
+        {
+          "id": "esquerra_baix",
+          "text": "dlg.grua.opt.esquerra",
+          "if": {
+            "all": [
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "llit"
+              },
+              {
+                "flag": "gresol_baix"
+              }
+            ]
+          },
+          "silent": true,
+          "next": "no_baix"
+        },
+        {
+          "id": "esquerra_final",
+          "text": "dlg.grua.opt.esquerra",
+          "if": {
+            "var": "gresol",
+            "op": "==",
+            "value": "canal"
+          },
+          "silent": true,
+          "next": "final"
+        },
+        {
+          "id": "dreta",
+          "text": "dlg.grua.opt.dreta",
+          "if": {
+            "all": [
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "canal"
+              },
+              {
+                "flag": "gresol_baix",
+                "is": false
+              }
+            ]
+          },
+          "silent": true,
+          "next": "cap_llit",
+          "effects": [
+            {
+              "setVar": "gresol",
+              "value": "llit"
+            }
+          ]
+        },
+        {
+          "id": "dreta_baix",
+          "text": "dlg.grua.opt.dreta",
+          "if": {
+            "all": [
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "canal"
+              },
+              {
+                "flag": "gresol_baix"
+              }
+            ]
+          },
+          "silent": true,
+          "next": "no_baix"
+        },
+        {
+          "id": "dreta_final",
+          "text": "dlg.grua.opt.dreta",
+          "if": {
+            "var": "gresol",
+            "op": "==",
+            "value": "llit"
+          },
+          "silent": true,
+          "next": "final"
+        },
+        {
+          "id": "amunt",
+          "text": "dlg.grua.opt.amunt",
+          "if": {
+            "all": [
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "llit"
+              },
+              {
+                "flag": "gresol_baix"
+              }
+            ]
+          },
+          "silent": true,
+          "next": "amunt_llit",
+          "effects": [
+            {
+              "setFlag": "gresol_baix",
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": "amunt_c",
+          "text": "dlg.grua.opt.amunt",
+          "if": {
+            "all": [
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "canal"
+              },
+              {
+                "flag": "gresol_baix"
+              }
+            ]
+          },
+          "silent": true,
+          "next": "amunt_canal",
+          "effects": [
+            {
+              "setFlag": "gresol_baix",
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": "amunt_ja",
+          "text": "dlg.grua.opt.amunt",
+          "if": {
+            "flag": "gresol_baix",
+            "is": false
+          },
+          "silent": true,
+          "next": "ja_amunt"
+        },
+        {
+          "id": "avall",
+          "text": "dlg.grua.opt.avall",
+          "if": {
+            "all": [
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "llit"
+              },
+              {
+                "flag": "gresol_baix",
+                "is": false
+              }
+            ]
+          },
+          "silent": true,
+          "next": "avall_llit",
+          "effects": [
+            {
+              "setFlag": "gresol_baix"
+            }
+          ]
+        },
+        {
+          "id": "avall_c",
+          "text": "dlg.grua.opt.avall",
+          "if": {
+            "all": [
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "canal"
+              },
+              {
+                "flag": "gresol_baix",
+                "is": false
+              }
+            ]
+          },
+          "silent": true,
+          "next": "avall_canal",
+          "effects": [
+            {
+              "setFlag": "gresol_baix"
+            }
+          ]
+        },
+        {
+          "id": "avall_ja",
+          "text": "dlg.grua.opt.avall",
+          "if": {
+            "flag": "gresol_baix"
+          },
+          "silent": true,
+          "next": "ja_avall"
+        },
+        {
+          "id": "bolca_buit",
+          "text": "dlg.grua.opt.bolca",
+          "if": {
+            "flag": "gresol_ple",
+            "is": false
+          },
+          "silent": true,
+          "next": "bolca_buit"
+        },
+        {
+          "id": "bolca_canal",
+          "text": "dlg.grua.opt.bolca",
+          "if": {
+            "all": [
+              {
+                "flag": "gresol_ple"
+              },
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "canal"
+              }
+            ]
+          },
+          "silent": true,
+          "next": "bolca_canal"
+        },
+        {
+          "id": "bolca_dalt",
+          "text": "dlg.grua.opt.bolca",
+          "if": {
+            "all": [
+              {
+                "flag": "gresol_ple"
+              },
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "llit"
+              },
+              {
+                "flag": "gresol_baix",
+                "is": false
+              }
+            ]
+          },
+          "silent": true,
+          "next": "bolca_dalt"
+        },
+        {
+          "id": "bolca_brut",
+          "text": "dlg.grua.opt.bolca",
+          "if": {
+            "all": [
+              {
+                "flag": "gresol_ple"
+              },
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "llit"
+              },
+              {
+                "flag": "gresol_baix"
+              },
+              {
+                "flag": "gresol_brut"
+              }
+            ]
+          },
+          "silent": true,
+          "next": "bolca_brut",
+          "effects": [
+            {
+              "setFlag": "manxa_oberta",
+              "value": false
+            },
+            {
+              "setFlag": "metall_carregat",
+              "value": false
+            },
+            {
+              "setFlag": "escoria_treta",
+              "value": false
+            },
+            {
+              "setFlag": "gresol_ple",
+              "value": false
+            },
+            {
+              "setFlag": "gresol_brut",
+              "value": false
+            },
+            {
+              "setVar": "temperatura",
+              "value": 8
+            }
+          ],
+          "end": true
+        },
+        {
+          "id": "bolca",
+          "text": "dlg.grua.opt.bolca",
+          "if": {
+            "all": [
+              {
+                "flag": "gresol_ple"
+              },
+              {
+                "var": "gresol",
+                "op": "==",
+                "value": "llit"
+              },
+              {
+                "flag": "gresol_baix"
+              },
+              {
+                "flag": "gresol_brut",
+                "is": false
+              }
+            ]
+          },
+          "silent": true,
+          "next": "bolca_bo",
+          "effects": [
+            {
+              "setFlag": "colat"
+            },
+            {
+              "setFlag": "gresol_ple",
+              "value": false
+            }
+          ],
+          "end": true
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.grua.opt.adeu",
+          "silent": true,
+          "end": true
+        }
+      ]
+    },
+    "cap_canal": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.cap_canal",
+          "sound": "grua",
+          "if": {
+            "flag": "gresol_ple",
+            "is": false
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "mou_llit_canal"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "mou_llit_canal",
+              "hold": 0.8
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        },
+        {
+          "who": "iri",
+          "text": "dlg.grua.cap_canal",
+          "sound": "grua",
+          "if": {
+            "flag": "gresol_ple"
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "mou_llit_canal_ple"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "mou_llit_canal_ple",
+              "hold": 0.8
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        }
+      ],
+      "goto": "menu"
+    },
+    "cap_llit": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.cap_llit",
+          "sound": "grua",
+          "if": {
+            "flag": "gresol_ple",
+            "is": false
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "mou_canal_llit"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "mou_canal_llit",
+              "hold": 0.8
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        },
+        {
+          "who": "iri",
+          "text": "dlg.grua.cap_llit",
+          "sound": "grua",
+          "if": {
+            "flag": "gresol_ple"
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "mou_canal_llit_ple"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "mou_canal_llit_ple",
+              "hold": 0.8
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        }
+      ],
+      "goto": "menu"
+    },
+    "avall_llit": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.avall",
+          "sound": "grua",
+          "if": {
+            "flag": "gresol_ple",
+            "is": false
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "baixa_llit"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "baixa_llit",
+              "hold": 0.8
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        },
+        {
+          "who": "iri",
+          "text": "dlg.grua.avall",
+          "sound": "grua",
+          "if": {
+            "flag": "gresol_ple"
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "baixa_llit_ple"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "baixa_llit_ple",
+              "hold": 0.8
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        }
+      ],
+      "goto": "menu"
+    },
+    "avall_canal": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.avall",
+          "sound": "grua",
+          "if": {
+            "flag": "gresol_ple",
+            "is": false
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "baixa_canal"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "baixa_canal",
+              "hold": 0.8
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        },
+        {
+          "who": "iri",
+          "text": "dlg.grua.avall",
+          "sound": "grua",
+          "if": {
+            "flag": "gresol_ple"
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "baixa_canal_ple"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "baixa_canal_ple",
+              "hold": 0.8
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        }
+      ],
+      "goto": "menu"
+    },
+    "amunt_llit": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.amunt",
+          "sound": "grua",
+          "if": {
+            "flag": "gresol_ple",
+            "is": false
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "puja_llit"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "puja_llit",
+              "hold": 0.8
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        },
+        {
+          "who": "iri",
+          "text": "dlg.grua.amunt",
+          "sound": "grua",
+          "if": {
+            "flag": "gresol_ple"
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "puja_llit_ple"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "puja_llit_ple",
+              "hold": 0.8
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        }
+      ],
+      "goto": "menu"
+    },
+    "amunt_canal": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.amunt",
+          "sound": "grua",
+          "if": {
+            "flag": "gresol_ple",
+            "is": false
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "puja_canal"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "puja_canal",
+              "hold": 0.8
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        },
+        {
+          "who": "iri",
+          "text": "dlg.grua.amunt",
+          "sound": "grua",
+          "if": {
+            "flag": "gresol_ple"
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "puja_canal_ple"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "puja_canal_ple",
+              "hold": 0.8
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        }
+      ],
+      "goto": "menu"
+    },
+    "no_baix": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.no_baix"
+        }
+      ],
+      "goto": "menu"
+    },
+    "final": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.final"
+        }
+      ],
+      "goto": "menu"
+    },
+    "ja_avall": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.ja_avall"
+        }
+      ],
+      "goto": "menu"
+    },
+    "ja_amunt": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.ja_amunt"
+        }
+      ],
+      "goto": "menu"
+    },
+    "bolca_buit": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.bolca_buit"
+        }
+      ],
+      "goto": "menu"
+    },
+    "bolca_canal": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.bolca_canal"
+        }
+      ],
+      "goto": "menu"
+    },
+    "bolca_dalt": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.grua.bolca_dalt"
+        }
+      ],
+      "goto": "menu"
+    },
+    "bolca_brut": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "sala.fosa_colada.gresol.3",
+          "sound": "colada",
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "bolca"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "bolca",
+              "hold": 1.2
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "sala.fosa_colada.gresol.4"
+        },
+        {
+          "who": "iri",
+          "text": "sala.fosa_colada.gresol.5"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.fosa_colada.gresol.6"
+        }
+      ]
+    },
+    "bolca_bo": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "sala.fosa_colada.gresol.7",
+          "sound": "colada",
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            },
+            {
+              "prop": "claus_fetes",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_llit_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_dalt_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix",
+              "visible": false
+            },
+            {
+              "prop": "gresol_canal_baix_ple",
+              "visible": false
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "bolca"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "gresol_mou",
+              "anim": "bolca",
+              "hold": 1.2
+            },
+            {
+              "prop": "gresol_llit_baix",
+              "visible": true
+            },
+            {
+              "prop": "gresol_mou",
+              "anim": "gresol_mou"
+            },
+            {
+              "who": "player",
+              "gest": null
+            },
+            {
+              "prop": "claus_fetes",
+              "visible": true
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "sala.fosa_colada.gresol.8"
+        }
+      ]
+    }
+  }
+}

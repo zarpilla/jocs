@@ -709,6 +709,11 @@
   "key": "sala.ferrum_carrer.font.mosca.6",
   "who": "iri"
  },
+ "iri1029746553": {
+  "hash": "d3fc6dd81d86b74d",
+  "key": "dlg.grua.cap_canal",
+  "who": "iri"
+ },
  "iri1031568731": {
   "hash": "ab64f8df867fcdcf",
   "key": "sala.fosa_forn.manxa.5",
@@ -1114,6 +1119,11 @@
   "key": "sala.cantimplora_bodega.carrega.4",
   "who": "iri"
  },
+ "iri1408364489": {
+  "hash": "8398ce108fa5b5bb",
+  "key": "dlg.grua.no_baix",
+  "who": "iri"
+ },
  "iri1408469565": {
   "hash": "285f4dcefbdf459f",
   "key": "dlg.trucada.inici.3",
@@ -1442,6 +1452,11 @@
  "iri1674229497": {
   "hash": "c5b364e5efd11083",
   "key": "ui.defecte.look.iri.3",
+  "who": "iri"
+ },
+ "iri1676595655": {
+  "hash": "bd693db93f405fe6",
+  "key": "dlg.grua.ja_avall",
   "who": "iri"
  },
  "iri1677461402": {
@@ -1879,6 +1894,16 @@
   "key": "pj.capitana.1",
   "who": "iri"
  },
+ "iri2092875844": {
+  "hash": "83c07227f5f0646a",
+  "key": "sala.fosa_colada.llit.posa",
+  "who": "iri"
+ },
+ "iri209812237": {
+  "hash": "7875ae1dd7c11232",
+  "key": "sala.fosa_forn.piquera.mira",
+  "who": "iri"
+ },
  "iri2100254906": {
   "hash": "3ebcecff3cf1fb66",
   "key": "sala.aqua_fons.sorra.lot.1",
@@ -1929,6 +1954,11 @@
   "key": "sala.verdant_jardi.panell_preu.2",
   "who": "iri"
  },
+ "iri2163759282": {
+  "hash": "56fd81036ae1446e",
+  "key": "sala.fosa_forn.rascle.tard",
+  "who": "iri"
+ },
  "iri217157780": {
   "hash": "873ec86d1f662c66",
   "key": "sala.aqua_port.cistella.1",
@@ -1962,6 +1992,11 @@
  "iri2229240712": {
   "hash": "7f12e708fc34cc39",
   "key": "mosca.arriba.fusible_apanyat",
+  "who": "iri"
+ },
+ "iri2229357786": {
+  "hash": "3f0d7a8bfa166979",
+  "key": "dlg.grua.bolca_dalt",
   "who": "iri"
  },
  "iri2231441747": {
@@ -2094,6 +2129,11 @@
   "key": "pj.verne.1",
   "who": "iri"
  },
+ "iri2359143999": {
+  "hash": "43dd6340d102d20e",
+  "key": "sala.fosa_colada.grua_pont.res",
+  "who": "iri"
+ },
  "iri2363853873": {
   "hash": "2257446cdf8f758f",
   "key": "obj.reg.desc",
@@ -2124,6 +2164,11 @@
   "key": "dlg.tomas.opt.venut2",
   "who": "iri"
  },
+ "iri2392054732": {
+  "hash": "3e9364b25e2bd5f8",
+  "key": "dlg.grua.bolca_canal",
+  "who": "iri"
+ },
  "iri2394288169": {
   "hash": "2f733e90e204742a",
   "key": "dlg.juana.opt.beure",
@@ -2134,6 +2179,16 @@
   "key": "sala.granja_casa.bol.3",
   "who": "iri"
  },
+ "iri2402615171": {
+  "hash": "06836a9e5b140d23",
+  "key": "dlg.grua.cap_llit",
+  "who": "iri"
+ },
+ "iri2405186751": {
+  "hash": "f1f4953b724a76c3",
+  "key": "sala.fosa_colada.llit.falta",
+  "who": "iri"
+ },
  "iri2408419325": {
   "hash": "f7a44a20a6068b09",
   "key": "pj.verne.2",
@@ -2142,6 +2197,11 @@
  "iri2416359747": {
   "hash": "8ad097709b5df5bd",
   "key": "sala.granja_casa.bol.2",
+  "who": "iri"
+ },
+ "iri2420673424": {
+  "hash": "18c75befa5bab8b4",
+  "key": "sala.fosa_colada.llit.posat",
   "who": "iri"
  },
  "iri2421800658": {
@@ -2207,6 +2267,11 @@
  "iri2477585389": {
   "hash": "6a04543783a9c34d",
   "key": "sala.ferrum_sindicat.bagul.cas.iri",
+  "who": "iri"
+ },
+ "iri2478122472": {
+  "hash": "aadf8ceadce1d284",
+  "key": "sala.fosa_colada.gresol.pes",
   "who": "iri"
  },
  "iri2505479820": {
@@ -2400,7 +2465,7 @@
   "who": "iri"
  },
  "iri2684956990": {
-  "hash": "cda4f0a4e558018f",
+  "hash": "c7dbc50ee5cd0cea",
   "key": "sala.fosa_colada.llit.12",
   "who": "iri"
  },
@@ -2615,7 +2680,7 @@
   "who": "iri"
  },
  "iri2854800010": {
-  "hash": "401522ff258fb54a",
+  "hash": "94787c0b3b00ab34",
   "key": "sala.fosa_colada.llit.cas",
   "who": "iri"
  },
@@ -3094,6 +3159,11 @@
   "key": "sala.fosa_forn.metall.7",
   "who": "iri"
  },
+ "iri3251485790": {
+  "hash": "f7d39fcb2b0ba426",
+  "key": "sala.fosa_colada.canal.1",
+  "who": "iri"
+ },
  "iri3264352097": {
   "hash": "0ffbe727ec7be151",
   "key": "dlg.comunicador.fem.34",
@@ -3287,6 +3357,11 @@
  "iri3399220766": {
   "hash": "96dbd2d368b7689b",
   "key": "sala.granja_graner.llavors.4",
+  "who": "iri"
+ },
+ "iri3404073277": {
+  "hash": "b164afc0756f67e7",
+  "key": "dlg.grua.final",
   "who": "iri"
  },
  "iri3404686863": {
@@ -3764,6 +3839,11 @@
   "key": "dlg.radio_juana.opt.adeu",
   "who": "iri"
  },
+ "iri3903352898": {
+  "hash": "0907d280e994d9ea",
+  "key": "dlg.grua.amunt",
+  "who": "iri"
+ },
  "iri3903417188": {
   "hash": "3aa3323d7af8645e",
   "key": "sala.palau_galeria.entra.3",
@@ -3884,6 +3964,11 @@
   "key": "sala.ferrum_carrer.condensador.targeta.3",
   "who": "iri"
  },
+ "iri4025853982": {
+  "hash": "351c5bd28938916e",
+  "key": "pista.motlle2.3",
+  "who": "iri"
+ },
  "iri4031657257": {
   "hash": "53328d7de5895230",
   "key": "sala.cantimplora_bodega.cafetera.3",
@@ -3920,7 +4005,7 @@
   "who": "iri"
  },
  "iri4074854943": {
-  "hash": "7260519d5d6f7c7e",
+  "hash": "742d3ec9f1a8494b",
   "key": "sala.fosa_colada.gresol.1",
   "who": "iri"
  },
@@ -4059,6 +4144,11 @@
   "key": "sala.fosa_forn.forn.3",
   "who": "iri"
  },
+ "iri4231308834": {
+  "hash": "86aeabc8e454d51a",
+  "key": "dlg.grua.ja_amunt",
+  "who": "iri"
+ },
  "iri425025817": {
   "hash": "1ead4901b57c1321",
   "key": "mosca.envia.clau_anglesa.vet",
@@ -4070,7 +4160,7 @@
   "who": "iri"
  },
  "iri4253945641": {
-  "hash": "6db837755888e1b6",
+  "hash": "5e1706c2155bb20f",
   "key": "sala.fosa_forn.forn.1",
   "who": "iri"
  },
@@ -4162,6 +4252,11 @@
  "iri489143697": {
   "hash": "cc96dd4a7f1318ac",
   "key": "mosca.arriba.escriptura",
+  "who": "iri"
+ },
+ "iri489557535": {
+  "hash": "ee98160e1dc8476e",
+  "key": "sala.fosa_forn.piquera.mira_oberta",
   "who": "iri"
  },
  "iri527278225": {
@@ -4524,6 +4619,11 @@
   "key": "sala.aqua_fons.boies.1",
   "who": "iri"
  },
+ "iri825564081": {
+  "hash": "4ba82cf5f6ca2948",
+  "key": "dlg.grua.bolca_buit",
+  "who": "iri"
+ },
  "iri829246833": {
   "hash": "adfe0acab96f3b4a",
   "key": "sala.fosa_colada.llit.2",
@@ -4547,6 +4647,11 @@
  "iri84309572": {
   "hash": "9205aef3075ed057",
   "key": "dlg.holm.parlat.2",
+  "who": "iri"
+ },
+ "iri844460762": {
+  "hash": "f334f1b852f0908c",
+  "key": "pista.c_piquera.3",
   "who": "iri"
  },
  "iri846024452": {
@@ -4672,6 +4777,11 @@
  "iri923569265": {
   "hash": "7d8c0290691606b0",
   "key": "sala.fosa_forn.termometre.2",
+  "who": "iri"
+ },
+ "iri924079079": {
+  "hash": "3c1761aa3b29d5c7",
+  "key": "dlg.grua.avall",
   "who": "iri"
  },
  "iri926134387": {
@@ -5070,1017 +5180,1017 @@
   "who": "lia"
  },
  "narrator1005013761": {
-  "hash": "654dae7b84d712cd",
+  "hash": "f2e94069bd772dc5",
   "key": "sala.cantimplora_pont.entra.1",
   "who": "narrator"
  },
  "narrator1010022482": {
-  "hash": "c8cc49333f1ebf35",
+  "hash": "242657f7d6ad0ed0",
   "key": "sala.granja_pati.porta_graner.precinte.4",
   "who": "narrator"
  },
  "narrator1016125208": {
-  "hash": "359128a8a96e9fab",
+  "hash": "b599445641cd8b4c",
   "key": "esc.acte3_vet.2",
   "who": "narrator"
  },
  "narrator1028557668": {
-  "hash": "f3e17b70043d1511",
+  "hash": "8a9f8c1b59a22c7b",
   "key": "dlg.barril.baixar.1",
   "who": "narrator"
  },
  "narrator1032902827": {
-  "hash": "1b83aa98c917ca09",
+  "hash": "06828a1f6015831f",
   "key": "esc.acte3_vet.3",
   "who": "narrator"
  },
  "narrator1079735522": {
-  "hash": "eab429b13708bb57",
+  "hash": "5c642d4b59494fc4",
   "key": "sala.ferrum_carrer.font.mosca.3",
   "who": "narrator"
  },
  "narrator1089501325": {
-  "hash": "8d6479715bf7fed2",
+  "hash": "a344fbef5b556e5f",
   "key": "esc.esc5.5",
   "who": "narrator"
  },
  "narrator1096513141": {
-  "hash": "b833e20616eee67e",
+  "hash": "d4cc38cdf7b11645",
   "key": "sala.ferrum_carrer.font.mosca.2",
   "who": "narrator"
  },
  "narrator1114175795": {
-  "hash": "2499980cd43397ce",
+  "hash": "9396a62d38c6c386",
   "key": "dlg.radio_juana.albara.3",
   "who": "narrator"
  },
  "narrator1132234445": {
-  "hash": "bc121160610b052e",
+  "hash": "b536e9d05a3c49ae",
   "key": "sala.fosa_forn.manxa.3",
   "who": "narrator"
  },
  "narrator1179086544": {
-  "hash": "da42a8d91da9df7a",
+  "hash": "8d62b345c02acac6",
   "key": "sala.ferrum_carrer.entra.1",
   "who": "narrator"
  },
  "narrator1186804352": {
-  "hash": "251a1cd429b64217",
+  "hash": "1d1824fd52ffe1ec",
   "key": "dlg.mapa.verdant.3",
   "who": "narrator"
  },
  "narrator1201448870": {
-  "hash": "24c3a387724bc163",
+  "hash": "d82e37dddad3ebed",
   "key": "final.plou.9",
   "who": "narrator"
  },
  "narrator1203581971": {
-  "hash": "b75638a958480641",
+  "hash": "31ad0234b2f2613b",
   "key": "dlg.mapa.verdant.2",
   "who": "narrator"
  },
  "narrator1220359590": {
-  "hash": "fb341c3aef67c355",
+  "hash": "ad3f189206a9b1e0",
   "key": "dlg.mapa.verdant.1",
   "who": "narrator"
  },
  "narrator1251767679": {
-  "hash": "e5b439c1b40e35df",
+  "hash": "d34f5cc3fee4a245",
   "key": "dlg.trucada.si.3",
   "who": "narrator"
  },
  "narrator1262974639": {
-  "hash": "ce03999135ab7956",
+  "hash": "9421aed44489eae2",
   "key": "sala.ferrum_carrer.entra.4",
   "who": "narrator"
  },
  "narrator1303041376": {
-  "hash": "f66e1bd31f2a4f56",
+  "hash": "45a490fbb24eba10",
   "key": "final.plou.38",
   "who": "narrator"
  },
  "narrator1304247685": {
-  "hash": "b88678d1f703868e",
+  "hash": "2d3eb0b7d5528465",
   "key": "dlg.mapa.verdant.4",
   "who": "narrator"
  },
  "narrator1307980425": {
-  "hash": "e2f96bf6e8c412f6",
+  "hash": "ddf57dd34d430db5",
   "key": "sala.aqua_port.entra.1",
   "who": "narrator"
  },
  "narrator1316816124": {
-  "hash": "87b9b401adf79ed7",
+  "hash": "0579af3d0f906610",
   "key": "dlg.tauler.inici.9",
   "who": "narrator"
  },
  "narrator1319818995": {
-  "hash": "0633f8663f7e3c42",
+  "hash": "c2b6b938f8df90ee",
   "key": "final.plou.39",
   "who": "narrator"
  },
  "narrator1324640243": {
-  "hash": "10606693f317efa5",
+  "hash": "d7f461f68ba8bbf1",
   "key": "sync.colada.1",
   "who": "narrator"
  },
  "narrator1333593743": {
-  "hash": "01ec23b43805c355",
+  "hash": "2d5b15181b5a28e8",
   "key": "dlg.tauler.inici.8",
   "who": "narrator"
  },
  "narrator1335669822": {
-  "hash": "21df7ee5a759f1a6",
+  "hash": "2e59178471588a77",
   "key": "final.plou.1",
   "who": "narrator"
  },
  "narrator1341359089": {
-  "hash": "8c3b6f19fff947e2",
+  "hash": "9806a7ce24babafa",
   "key": "dlg.trucada.inici.7",
   "who": "narrator"
  },
  "narrator1341417862": {
-  "hash": "f501b98a5d9c3032",
+  "hash": "0e8a78f51944b9b1",
   "key": "sync.colada.2",
   "who": "narrator"
  },
  "narrator1358195481": {
-  "hash": "c188c60a40f40e97",
+  "hash": "9c55e8d153394cca",
   "key": "sync.colada.3",
   "who": "narrator"
  },
  "narrator1374973100": {
-  "hash": "73185bc5b30fb88e",
+  "hash": "b227899894741e23",
   "key": "sync.colada.4",
   "who": "narrator"
  },
  "narrator1383926600": {
-  "hash": "ed86d83870665c00",
+  "hash": "cf7250efdc3d57db",
   "key": "dlg.tauler.inici.5",
   "who": "narrator"
  },
  "narrator1386002679": {
-  "hash": "89a99422845b931b",
+  "hash": "1a5446f2872686bf",
   "key": "final.plou.6",
   "who": "narrator"
  },
  "narrator1389689914": {
-  "hash": "172aef16aed71b81",
+  "hash": "de812b562d54831e",
   "key": "sala.palau_control.pany_aqua.8",
   "who": "narrator"
  },
  "narrator1400704219": {
-  "hash": "0faeb66fa0ea2198",
+  "hash": "da404e61d4b95d66",
   "key": "dlg.tauler.inici.4",
   "who": "narrator"
  },
  "narrator1402780298": {
-  "hash": "12cc21c66ae0e811",
+  "hash": "3396acbdbd8d0ccb",
   "key": "final.plou.5",
   "who": "narrator"
  },
  "narrator1406083180": {
-  "hash": "1d9934176f52bb08",
+  "hash": "7b9844657e4d17f0",
   "key": "final.text",
   "who": "narrator"
  },
  "narrator1407564758": {
-  "hash": "d30e8b55a1a11eba",
+  "hash": "5a2e7d5e429c22d9",
   "key": "dlg.contractacio.p2",
   "who": "narrator"
  },
  "narrator1407867036": {
-  "hash": "2407e0075efebcf7",
+  "hash": "84b52adb7eb6cb8b",
   "key": "dlg.tauler.inici.29",
   "who": "narrator"
  },
  "narrator1408528338": {
-  "hash": "c632179bf285632c",
+  "hash": "9c347ddaa2e444b0",
   "key": "sync.colada.6",
   "who": "narrator"
  },
  "narrator1417481838": {
-  "hash": "d2fee9747da1ec96",
+  "hash": "78170edc80699e77",
   "key": "dlg.tauler.inici.7",
   "who": "narrator"
  },
  "narrator1424342377": {
-  "hash": "3944bd43c990dd04",
+  "hash": "2f39ef07626fc2db",
   "key": "dlg.contractacio.p3",
   "who": "narrator"
  },
  "narrator1424644655": {
-  "hash": "30bc70147fd6a51d",
+  "hash": "5461844448343309",
   "key": "dlg.tauler.inici.28",
   "who": "narrator"
  },
  "narrator1434259457": {
-  "hash": "b4f057076b8a95fc",
+  "hash": "959f67293f337ac9",
   "key": "dlg.tauler.inici.6",
   "who": "narrator"
  },
  "narrator1447201672": {
-  "hash": "4e355bc6538c46cb",
+  "hash": "4433bc9ebae7a6ad",
   "key": "dlg.mapa.inici.1",
   "who": "narrator"
  },
  "narrator1451037076": {
-  "hash": "7fc7649076475415",
+  "hash": "41030bf46f57ecf8",
   "key": "dlg.tauler.inici.1",
   "who": "narrator"
  },
  "narrator1457214155": {
-  "hash": "5f2d398d2d764afd",
+  "hash": "02e6b446002c9943",
   "key": "dlg.tauler.inici.42",
   "who": "narrator"
  },
  "narrator1470817566": {
-  "hash": "ee1bac9920bc4f9a",
+  "hash": "35f2b499017db606",
   "key": "final.plou.32",
   "who": "narrator"
  },
  "narrator1473991774": {
-  "hash": "41cc2ae7d975ca4f",
+  "hash": "3efb0f0d881d7e3b",
   "key": "dlg.tauler.inici.41",
   "who": "narrator"
  },
  "narrator1474977512": {
-  "hash": "c226c70cb1f65f10",
+  "hash": "e79c350c4dc6b2d4",
   "key": "dlg.tauler.inici.25",
   "who": "narrator"
  },
  "narrator1484592314": {
-  "hash": "7c9efe002ccabb42",
+  "hash": "0f69ea1a1297f722",
   "key": "dlg.tauler.inici.3",
   "who": "narrator"
  },
  "narrator1488580923": {
-  "hash": "d0ddccbe54f6eaca",
+  "hash": "1b159a1cfcb1e9d3",
   "key": "final.plou.53",
   "who": "narrator"
  },
  "narrator1490769393": {
-  "hash": "0b93abe62e33a675",
+  "hash": "11a050fbf9fe8761",
   "key": "dlg.tauler.inici.40",
   "who": "narrator"
  },
  "narrator1491755131": {
-  "hash": "fdb638d1060f39fa",
+  "hash": "7bfbb3789578978d",
   "key": "dlg.tauler.inici.24",
   "who": "narrator"
  },
  "narrator1501369933": {
-  "hash": "897e561584469c0b",
+  "hash": "0555fb4d8232b7ab",
   "key": "dlg.tauler.inici.2",
   "who": "narrator"
  },
  "narrator1508532750": {
-  "hash": "197a2b4b6ba808c5",
+  "hash": "36005ff9c0b79fa0",
   "key": "dlg.tauler.inici.27",
   "who": "narrator"
  },
  "narrator1522283256": {
-  "hash": "4186606dfe91e5e1",
+  "hash": "fa04711f9ec45bea",
   "key": "final.plou.45",
   "who": "narrator"
  },
  "narrator1524232122": {
-  "hash": "1b83aa98c917ca09",
+  "hash": "06828a1f6015831f",
   "key": "esc.acte3_iri.3",
   "who": "narrator"
  },
  "narrator1525310369": {
-  "hash": "697586a4315f8db8",
+  "hash": "4128bd8d5399a1f2",
   "key": "dlg.tauler.inici.26",
   "who": "narrator"
  },
  "narrator1538075137": {
-  "hash": "e85c03d6cf3a0ed6",
+  "hash": "c9e321be04ecbc3a",
   "key": "final.plou.20",
   "who": "narrator"
  },
  "narrator1539060875": {
-  "hash": "33ecc465605941e4",
+  "hash": "c6a0926f252bbc56",
   "key": "final.plou.44",
   "who": "narrator"
  },
  "narrator1541009741": {
-  "hash": "359128a8a96e9fab",
+  "hash": "b599445641cd8b4c",
   "key": "esc.acte3_iri.2",
   "who": "narrator"
  },
  "narrator1542087988": {
-  "hash": "72f052decf19f3f2",
+  "hash": "c57a50a6f8e1ed96",
   "key": "dlg.tauler.inici.21",
   "who": "narrator"
  },
  "narrator1547518137": {
-  "hash": "0b1f712a08b69f52",
+  "hash": "675052f204fe4a7c",
   "key": "dlg.teclat.maria.2",
   "who": "narrator"
  },
  "narrator1548377265": {
-  "hash": "7e42d27eec79470d",
+  "hash": "37dbc3748e53a54c",
   "key": "dlg.subhasta.inici.peixos",
   "who": "narrator"
  },
  "narrator1554705661": {
-  "hash": "c6b13702271bb301",
+  "hash": "7411f9ec2a5885ec",
   "key": "final.plou.37",
   "who": "narrator"
  },
  "narrator1555838494": {
-  "hash": "f865af05a35bff2d",
+  "hash": "802ca0c1ad36ca8a",
   "key": "final.plou.47",
   "who": "narrator"
  },
  "narrator1558865607": {
-  "hash": "3aa9822d4932b240",
+  "hash": "16166285885ebfac",
   "key": "dlg.tauler.inici.20",
   "who": "narrator"
  },
  "narrator1572469018": {
-  "hash": "4244bf3b699f4976",
+  "hash": "863fe6c302f9c8f0",
   "key": "final.plou.54",
   "who": "narrator"
  },
  "narrator1572616113": {
-  "hash": "46c9b272f6756d49",
+  "hash": "f5b4c2e35ee1c91d",
   "key": "final.plou.46",
   "who": "narrator"
  },
  "narrator1575643226": {
-  "hash": "a01b18bbc8074074",
+  "hash": "c3eb86b74ee6b8b2",
   "key": "dlg.tauler.inici.23",
   "who": "narrator"
  },
  "narrator1588407994": {
-  "hash": "d7315036d1e29cca",
+  "hash": "c0f45dbb0cf81dc5",
   "key": "final.plou.25",
   "who": "narrator"
  },
  "narrator1589393732": {
-  "hash": "29ddf51c06f5ee16",
+  "hash": "f9f13271da883533",
   "key": "final.plou.41",
   "who": "narrator"
  },
  "narrator1592420845": {
-  "hash": "8376e857f2d7753b",
+  "hash": "3ef95017e2bed7c8",
   "key": "dlg.tauler.inici.22",
   "who": "narrator"
  },
  "narrator1605332708": {
-  "hash": "36e1ce5e2467ce93",
+  "hash": "948da495208702e5",
   "key": "final.plou.12",
   "who": "narrator"
  },
  "narrator1606171351": {
-  "hash": "def4d925edcdc1f2",
+  "hash": "a77934c5a9d04dc8",
   "key": "final.plou.40",
   "who": "narrator"
  },
  "narrator1620735545": {
-  "hash": "83cdbedb81571896",
+  "hash": "875070e2b0295091",
   "key": "dlg.contractacio.horari",
   "who": "narrator"
  },
  "narrator1622110327": {
-  "hash": "0e6241f6827ec23b",
+  "hash": "2296f5ce32553752",
   "key": "final.plou.13",
   "who": "narrator"
  },
  "narrator1622948970": {
-  "hash": "f118f6b600e0cc75",
+  "hash": "4aef0beec18ad0cc",
   "key": "final.plou.43",
   "who": "narrator"
  },
  "narrator1638887946": {
-  "hash": "47eec13329ca6204",
+  "hash": "66b6d0a12f4392d5",
   "key": "final.plou.10",
   "who": "narrator"
  },
  "narrator1639726589": {
-  "hash": "3af880f8661d2a68",
+  "hash": "58a946173bba2550",
   "key": "final.plou.42",
   "who": "narrator"
  },
  "narrator1643906164": {
-  "hash": "af59a5279db6b878",
+  "hash": "bc75373ea11e3a48",
   "key": "sala.aqua_fons.porta_juana.3",
   "who": "narrator"
  },
  "narrator1655665565": {
-  "hash": "554f31e7a547aec3",
+  "hash": "8333213de9fb276f",
   "key": "final.plou.11",
   "who": "narrator"
  },
  "narrator1735769617": {
-  "hash": "e8a298f614760809",
+  "hash": "87cf5d3b41321bba",
   "key": "dlg.contractacio.vaga",
   "who": "narrator"
  },
  "narrator1789044545": {
-  "hash": "b67b03df3f38fa35",
+  "hash": "cd30bee725d48719",
   "key": "dlg.bru.promesa.5",
   "who": "narrator"
  },
  "narrator1822599783": {
-  "hash": "280c8370028bf0ec",
+  "hash": "52a26b92173611ab",
   "key": "dlg.bru.promesa.3",
   "who": "narrator"
  },
  "narrator1893267728": {
-  "hash": "1edbb02de2247db1",
+  "hash": "7bdfd3029324c084",
   "key": "dlg.tomas.mare.5",
   "who": "narrator"
  },
  "narrator1903192720": {
-  "hash": "0431604e3e9e90cc",
+  "hash": "04939d90fc460483",
   "key": "sala.cantimplora_pont.radio.3",
   "who": "narrator"
  },
  "narrator1909268913": {
-  "hash": "ea71412af6b2faa7",
+  "hash": "9a0a6f26d081a078",
   "key": "dlg.subhasta.inici.pausa",
   "who": "narrator"
  },
  "narrator1910045347": {
-  "hash": "a532e779988f515a",
+  "hash": "c840f8179fc6b085",
   "key": "dlg.tomas.mare.4",
   "who": "narrator"
  },
  "narrator1919970339": {
-  "hash": "afba960ed19108d3",
+  "hash": "1e33cabce7715059",
   "key": "sala.cantimplora_pont.radio.2",
   "who": "narrator"
  },
  "narrator1985443504": {
-  "hash": "a64a6bd49cd5484d",
+  "hash": "af3892d7966b6529",
   "key": "sala.fosa_forn.entra.1",
   "who": "narrator"
  },
  "narrator1993933442": {
-  "hash": "55b712618b70da18",
+  "hash": "c359e6a942d49c87",
   "key": "dlg.tomas.mare.3",
   "who": "narrator"
  },
  "narrator200380161": {
-  "hash": "c6df663b58bf53b3",
+  "hash": "02d2f909b97fdea5",
   "key": "sala.aqua_port.cistella.6",
   "who": "narrator"
  },
  "narrator2020636053": {
-  "hash": "e4c7ea6014b92466",
+  "hash": "625aecd9d6cdf5f9",
   "key": "sala.cantimplora_pont.radio.4",
   "who": "narrator"
  },
  "narrator2035776361": {
-  "hash": "c78ee8c7c63eb85e",
+  "hash": "9f110df476453161",
   "key": "sala.fosa_forn.entra.2",
   "who": "narrator"
  },
  "narrator2042777789": {
-  "hash": "97498a1d68fec2e8",
+  "hash": "8da43941f4514414",
   "key": "sala.palau_control.pany_ferrum.8",
   "who": "narrator"
  },
  "narrator2060233355": {
-  "hash": "b88678d1f703868e",
+  "hash": "2d3eb0b7d5528465",
   "key": "dlg.mapa.terra2.4",
   "who": "narrator"
  },
  "narrator2100635884": {
-  "hash": "6cd9cc5c9e06efcf",
+  "hash": "b370233fac1f0a03",
   "key": "sala.ferrum_carrer.condensador.10",
   "who": "narrator"
  },
  "narrator2110566212": {
-  "hash": "c9f84a39637b8ba1",
+  "hash": "0cfd19bb92d2a981",
   "key": "dlg.mapa.terra2.1",
   "who": "narrator"
  },
  "narrator2144121450": {
-  "hash": "dbd2ce3cbd93079b",
+  "hash": "60528bae17bcfc48",
   "key": "dlg.mapa.terra2.3",
   "who": "narrator"
  },
  "narrator2147018107": {
-  "hash": "7e8a5fd71617b708",
+  "hash": "ce803833c4816805",
   "key": "esc.colada_fi.1",
   "who": "narrator"
  },
  "narrator2160899069": {
-  "hash": "b75638a958480641",
+  "hash": "31ad0234b2f2613b",
   "key": "dlg.mapa.terra2.2",
   "who": "narrator"
  },
  "narrator2163795726": {
-  "hash": "90f1063b997a3e31",
+  "hash": "da81e29c3adf9368",
   "key": "esc.colada_fi.2",
   "who": "narrator"
  },
  "narrator2209063056": {
-  "hash": "c7f5df3e442183cf",
+  "hash": "770c683e5e7dc104",
   "key": "sala.palau_control.valvula.31",
   "who": "narrator"
  },
  "narrator2256704212": {
-  "hash": "19a1ebe4fa46ed27",
+  "hash": "c0c8373c85a38434",
   "key": "dlg.subhasta.anima.3",
   "who": "narrator"
  },
  "narrator2281774604": {
-  "hash": "df108549d0e127dc",
+  "hash": "d4a5ae3a6894f1a8",
   "key": "sala.cantimplora_bodega.carmanyola.2",
   "who": "narrator"
  },
  "narrator2345928024": {
-  "hash": "6d9ea839388646df",
+  "hash": "8b1b2bc3e5c71731",
   "key": "sala.proleg_terra2.entra.2",
   "who": "narrator"
  },
  "narrator2362705643": {
-  "hash": "024f95ae09ba764e",
+  "hash": "34f5b0241eb4cb49",
   "key": "sala.proleg_terra2.entra.3",
   "who": "narrator"
  },
  "narrator2367367798": {
-  "hash": "de4c5589aa53d7f7",
+  "hash": "734758da006fce45",
   "key": "dlg.fidel.servei.2",
   "who": "narrator"
  },
  "narrator2396260881": {
-  "hash": "a4b63f91752292c2",
+  "hash": "ab2a605d42576d16",
   "key": "sala.proleg_terra2.entra.1",
   "who": "narrator"
  },
  "narrator2399488642": {
-  "hash": "56fb0a1eccb6ad34",
+  "hash": "1a81dcaa1c093448",
   "key": "dlg.contractacio.menteix",
   "who": "narrator"
  },
  "narrator2413038500": {
-  "hash": "7f05306c755d9c05",
+  "hash": "8a58c09f38f077cd",
   "key": "sala.proleg_terra2.entra.6",
   "who": "narrator"
  },
  "narrator2446593738": {
-  "hash": "c5ae1746c7236ccd",
+  "hash": "00b2fe180b377a54",
   "key": "sala.proleg_terra2.entra.4",
   "who": "narrator"
  },
  "narrator2463371357": {
-  "hash": "61ca4c61a9d26ad7",
+  "hash": "5ef2025e246b0840",
   "key": "sala.proleg_terra2.entra.5",
   "who": "narrator"
  },
  "narrator2548623444": {
-  "hash": "49e356245654089a",
+  "hash": "af2247fd8ba75168",
   "key": "sync.subhasta.5",
   "who": "narrator"
  },
  "narrator2598317952": {
-  "hash": "b88678d1f703868e",
+  "hash": "2d3eb0b7d5528465",
   "key": "dlg.mapa.ferrum.4",
   "who": "narrator"
  },
  "narrator2616827012": {
-  "hash": "300310180da28756",
+  "hash": "e22bc8ece96cdde6",
   "key": "dlg.subhasta.c7788.6",
   "who": "narrator"
  },
  "narrator2625278613": {
-  "hash": "b38f11b7ad6e64b8",
+  "hash": "7f1529647cfe7690",
   "key": "sala.palau_servei.entra.1",
   "who": "narrator"
  },
  "narrator2682206047": {
-  "hash": "e0ace705e556077f",
+  "hash": "2e4fe460f30860a6",
   "key": "dlg.mapa.ferrum.1",
   "who": "narrator"
  },
  "narrator2698983666": {
-  "hash": "b75638a958480641",
+  "hash": "31ad0234b2f2613b",
   "key": "dlg.mapa.ferrum.2",
   "who": "narrator"
  },
  "narrator2711564194": {
-  "hash": "1b1ae2eea868196f",
+  "hash": "d18e78ac105cffee",
   "key": "sala.palau_control.valvula.trucada",
   "who": "narrator"
  },
  "narrator2715761285": {
-  "hash": "5fe6bbadbad1ffb0",
+  "hash": "2b0052809f000bd1",
   "key": "dlg.mapa.ferrum.3",
   "who": "narrator"
  },
  "narrator2721987895": {
-  "hash": "3431d8fe183287a7",
+  "hash": "0f626cb703a8a88b",
   "key": "dlg.barril.baixar.1.sola",
   "who": "narrator"
  },
  "narrator27348557": {
-  "hash": "a64a6bd49cd5484d",
+  "hash": "af3892d7966b6529",
   "key": "sala.fosa_colada.entra.1",
   "who": "narrator"
  },
  "narrator2834258057": {
-  "hash": "4be769b066263fa9",
+  "hash": "46ed9d40db82cf4c",
   "key": "dlg.bru.canalla.2",
   "who": "narrator"
  },
  "narrator2875711622": {
-  "hash": "8bed527e88386390",
+  "hash": "c48c5665bf5bb8f5",
   "key": "sala.palau_control.valvula.penja",
   "who": "narrator"
  },
  "narrator2907062038": {
-  "hash": "4bb8408edca7b369",
+  "hash": "779b549dd9077356",
   "key": "dlg.capitana.contracte.2",
   "who": "narrator"
  },
  "narrator2921522227": {
-  "hash": "fd8266eea4e494a5",
+  "hash": "66f022dfae4ce8d2",
   "key": "dlg.bru.carta.3",
   "who": "narrator"
  },
  "narrator2957001089": {
-  "hash": "5a78333fbc0063d6",
+  "hash": "f2fd00a69b6d4c66",
   "key": "dlg.trucada.no.4",
   "who": "narrator"
  },
  "narrator2973778708": {
-  "hash": "57134be60e79db52",
+  "hash": "820d9f2bcf98bfb5",
   "key": "dlg.trucada.no.3",
   "who": "narrator"
  },
  "narrator3079551906": {
-  "hash": "b11cc56085401fee",
+  "hash": "a80b8e8447a843c6",
   "key": "sala.palau_control.palanca.7",
   "who": "narrator"
  },
  "narrator3096329525": {
-  "hash": "bd8f9df02892a8e1",
+  "hash": "8b50d0957be3da7f",
   "key": "sala.palau_control.palanca.6",
   "who": "narrator"
  },
  "narrator3133763041": {
-  "hash": "7ce89c609b806dc4",
+  "hash": "05a896a7931b8781",
   "key": "sala.proleg_palau.entra.11",
   "who": "narrator"
  },
  "narrator3195053500": {
-  "hash": "b34c7b6b85195908",
+  "hash": "d0085155c27168d3",
   "key": "sala.fosa_forn.metall.4",
   "who": "narrator"
  },
  "narrator3199847903": {
-  "hash": "a1185469f6c8f63e",
+  "hash": "fbac9768a0ca678f",
   "key": "dlg.fidel.tractor.2",
   "who": "narrator"
  },
  "narrator3208483572": {
-  "hash": "c91f62b9bd669a20",
+  "hash": "8719dcef8f66ca48",
   "key": "dlg.nil.regada.1",
   "who": "narrator"
  },
  "narrator3246216933": {
-  "hash": "ea3d473ab30fa770",
+  "hash": "c83d0bdbdb8df6ee",
   "key": "dlg.fidel.sac.2",
   "who": "narrator"
  },
  "narrator3336748768": {
-  "hash": "8c71e2ac0d484cc0",
+  "hash": "99690072c9105c13",
   "key": "dlg.tauler.inici.14",
   "who": "narrator"
  },
  "narrator3353526387": {
-  "hash": "1335209dcb155366",
+  "hash": "796a6bb7de2047ec",
   "key": "dlg.tauler.inici.15",
   "who": "narrator"
  },
  "narrator3370304006": {
-  "hash": "55a64083809887f2",
+  "hash": "cf07b734d88f1d78",
   "key": "dlg.tauler.inici.16",
   "who": "narrator"
  },
  "narrator3387081625": {
-  "hash": "30bc169319735b2c",
+  "hash": "dfa4dde272ad00a1",
   "key": "dlg.tauler.inici.17",
   "who": "narrator"
  },
  "narrator3403859244": {
-  "hash": "37feca06ba34f577",
+  "hash": "4dc93282ceba0830",
   "key": "dlg.tauler.inici.10",
   "who": "narrator"
  },
  "narrator3420636863": {
-  "hash": "76bdd95307fadaa9",
+  "hash": "f31f72ca0db80cfe",
   "key": "dlg.tauler.inici.11",
   "who": "narrator"
  },
  "narrator3437414482": {
-  "hash": "4f77bb414d44f135",
+  "hash": "2bc22dd5cc24497f",
   "key": "dlg.tauler.inici.12",
   "who": "narrator"
  },
  "narrator3454192101": {
-  "hash": "2a433e2e1940d756",
+  "hash": "6cd05a0dd7431ffd",
   "key": "dlg.tauler.inici.13",
   "who": "narrator"
  },
  "narrator3471263910": {
-  "hash": "c6fbdb46a0256c72",
+  "hash": "3420d20d66a6e114",
   "key": "dlg.tauler.inici.38",
   "who": "narrator"
  },
  "narrator3475844697": {
-  "hash": "fcae20c26727b043",
+  "hash": "177b473ff0c63747",
   "key": "sala.palau_servei.ascensor.3",
   "who": "narrator"
  },
  "narrator3479543587": {
-  "hash": "b88678d1f703868e",
+  "hash": "2d3eb0b7d5528465",
   "key": "dlg.mapa.aqua.4",
   "who": "narrator"
  },
  "narrator3488041529": {
-  "hash": "cad0db7cecc2ebc4",
+  "hash": "3ddac558aa749d52",
   "key": "dlg.tauler.inici.39",
   "who": "narrator"
  },
  "narrator3495462154": {
-  "hash": "a9545e747a169f5f",
+  "hash": "b6ee694d5b36cf07",
   "key": "sala.palau_control.valvula.tomas_truca",
   "who": "narrator"
  },
  "narrator3503056922": {
-  "hash": "06686379a01fd32a",
+  "hash": "55429c8860a9bff6",
   "key": "sala.verdant_jardi.entra.1",
   "who": "narrator"
  },
  "narrator3522911100": {
-  "hash": "8ed70de4dc8c28f8",
+  "hash": "17e202f97bff0f50",
   "key": "sala.ferrum_carrer.font.targeta",
   "who": "narrator"
  },
  "narrator3529876444": {
-  "hash": "e869ec5a4976d620",
+  "hash": "c6bcbde63c562cb9",
   "key": "dlg.mapa.aqua.1",
   "who": "narrator"
  },
  "narrator3538080196": {
-  "hash": "b4ae1db0ad9aeee0",
+  "hash": "70bda36c32133636",
   "key": "dlg.tauler.inici.18",
   "who": "narrator"
  },
  "narrator3554857815": {
-  "hash": "444527846cb00abe",
+  "hash": "80ad6a4114e886a1",
   "key": "dlg.tauler.inici.19",
   "who": "narrator"
  },
  "narrator3562490498": {
-  "hash": "e92899d00459bec3",
+  "hash": "168538ed73acb54f",
   "key": "sala.aqua_fons.entra.1",
   "who": "narrator"
  },
  "narrator3563431682": {
-  "hash": "5fc8241769c62e86",
+  "hash": "5a653c7e1a2a52cb",
   "key": "dlg.mapa.aqua.3",
   "who": "narrator"
  },
  "narrator3571929624": {
-  "hash": "934e7b61f52d0794",
+  "hash": "c32b2af770540639",
   "key": "dlg.tauler.inici.32",
   "who": "narrator"
  },
  "narrator3580209301": {
-  "hash": "b75638a958480641",
+  "hash": "31ad0234b2f2613b",
   "key": "dlg.mapa.aqua.2",
   "who": "narrator"
  },
  "narrator3588707243": {
-  "hash": "1797414405b90efc",
+  "hash": "ec7e6c8397d15131",
   "key": "dlg.tauler.inici.33",
   "who": "narrator"
  },
  "narrator3593366352": {
-  "hash": "6fbe88fab2eba581",
+  "hash": "0033e44e655d1519",
   "key": "dlg.juana.bru.2",
   "who": "narrator"
  },
  "narrator3605484862": {
-  "hash": "ff00eb9c5eef6539",
+  "hash": "3640f81de02be5de",
   "key": "dlg.tauler.inici.30",
   "who": "narrator"
  },
  "narrator3622262481": {
-  "hash": "ade238123093e4f4",
+  "hash": "9909174eeb87e29a",
   "key": "dlg.tauler.inici.31",
   "who": "narrator"
  },
  "narrator3639040100": {
-  "hash": "c690c2fa16e2d8fb",
+  "hash": "88cbadc211c81cad",
   "key": "dlg.tauler.inici.36",
   "who": "narrator"
  },
  "narrator3655817719": {
-  "hash": "4780f69a01bd4de9",
+  "hash": "fe679f9ef34bd769",
   "key": "dlg.tauler.inici.37",
   "who": "narrator"
  },
  "narrator3672595338": {
-  "hash": "38faf1dda9f2e5a2",
+  "hash": "6074d4605eaebd52",
   "key": "dlg.tauler.inici.34",
   "who": "narrator"
  },
  "narrator3689372957": {
-  "hash": "ace93c770b52ad46",
+  "hash": "60affdeedc64644f",
   "key": "dlg.tauler.inici.35",
   "who": "narrator"
  },
  "narrator3773345995": {
-  "hash": "a9face8dcba837ec",
+  "hash": "ee00b5fd8962fd9f",
   "key": "dlg.teclat.titus.1",
   "who": "narrator"
  },
  "narrator3778406416": {
-  "hash": "a1fd15e2647e3483",
+  "hash": "7cb2107e2e0e7c6b",
   "key": "sala.palau_control.entra.3",
   "who": "narrator"
  },
  "narrator3786721442": {
-  "hash": "cf627420c78b5fe0",
+  "hash": "b03b5cb45274f462",
   "key": "dlg.subhasta.peixos.3",
   "who": "narrator"
  },
  "narrator3813564115": {
-  "hash": "3a2c153af27abfb1",
+  "hash": "82c1338ed214e56e",
   "key": "sala.verdant_jardi.reixa.3",
   "who": "narrator"
  },
  "narrator3879072130": {
-  "hash": "3cd06bc1de3f293a",
+  "hash": "b2c32576622bb1bc",
   "key": "sala.palau_control.entra.5",
   "who": "narrator"
  },
  "narrator388151890": {
-  "hash": "01ac3f527dd44767",
+  "hash": "fb963c672bf59a5f",
   "key": "sala.cantimplora_bodega.entra.1",
   "who": "narrator"
  },
  "narrator389070993": {
-  "hash": "b8187483e40ce3da",
+  "hash": "d15d2bc1381f68fa",
   "key": "dlg.contractacio.aigua",
   "who": "narrator"
  },
  "narrator3895849749": {
-  "hash": "b71955b2be3ebed7",
+  "hash": "97fa7e504ff91549",
   "key": "sala.palau_control.entra.4",
   "who": "narrator"
  },
  "narrator3935537447": {
-  "hash": "cc5b704530365898",
+  "hash": "96436d1ca7f74021",
   "key": "dlg.verne_galeria.gos.2",
   "who": "narrator"
  },
  "narrator3936972426": {
-  "hash": "5677ec5c5d174916",
+  "hash": "416f8e1a2d627969",
   "key": "sala.palau_galeria.entra.1",
   "who": "narrator"
  },
  "narrator39453849": {
-  "hash": "b71955b2be3ebed7",
+  "hash": "97fa7e504ff91549",
   "key": "sala.palau_salo.entra.4",
   "who": "narrator"
  },
  "narrator3960959379": {
-  "hash": "9f6a23bf89fb9524",
+  "hash": "eee9f557d826d7ee",
   "key": "dlg.contractacio.inici.1",
   "who": "narrator"
  },
  "narrator3977736998": {
-  "hash": "2aa7eb529791cbef",
+  "hash": "ae2a7209db1389e7",
   "key": "dlg.contractacio.inici.2",
   "who": "narrator"
  },
  "narrator3990966848": {
-  "hash": "8e063462934141eb",
+  "hash": "124948d225d88617",
   "key": "sala.fosa_colada.gresol.4",
   "who": "narrator"
  },
  "narrator4024522086": {
-  "hash": "3deb7aa7b488a076",
+  "hash": "c57fb5384f2000fb",
   "key": "sala.fosa_colada.gresol.6",
   "who": "narrator"
  },
  "narrator4039786495": {
-  "hash": "a3809827d882befe",
+  "hash": "2fa48b30f96eae65",
   "key": "sala.ferrum_carrer.condensador.targeta.2",
   "who": "narrator"
  },
  "narrator4192298276": {
-  "hash": "fc522d686fac6f69",
+  "hash": "3118e21d02d8b812",
   "key": "sala.fosa_colada.gresol.8",
   "who": "narrator"
  },
  "narrator4208506772": {
-  "hash": "a27e54ca0d8b07c8",
+  "hash": "13098ec6adb49d75",
   "key": "dlg.teclat.inici.1",
   "who": "narrator"
  },
  "narrator4257209842": {
-  "hash": "ee6fbd97a151bc81",
+  "hash": "6a51bc45fe1c1163",
   "key": "dlg.contractacio.contractada",
   "who": "narrator"
  },
  "narrator4271982996": {
-  "hash": "c78ee8c7c63eb85e",
+  "hash": "9f110df476453161",
   "key": "sala.fosa_colada.entra.2",
   "who": "narrator"
  },
  "narrator434137699": {
-  "hash": "5fe9aeca8b686cca",
+  "hash": "7a78d3b291fd5e35",
   "key": "sala.palau_control.ascensor.2",
   "who": "narrator"
  },
  "narrator474038277": {
-  "hash": "163be03e1d6a84a3",
+  "hash": "b919a94f6990508d",
   "key": "sala.proleg_palau.entra.8",
   "who": "narrator"
  },
  "narrator50754334": {
-  "hash": "cdcc56613bfc6179",
+  "hash": "6a544a74e238dd0f",
   "key": "dlg.holm.parlat.4",
   "who": "narrator"
  },
  "narrator541148753": {
-  "hash": "e5c6f2e87f272bea",
+  "hash": "60bd62f082082c17",
   "key": "sala.proleg_palau.entra.4",
   "who": "narrator"
  },
  "narrator56231468": {
-  "hash": "a1fd15e2647e3483",
+  "hash": "7cb2107e2e0e7c6b",
   "key": "sala.palau_salo.entra.3",
   "who": "narrator"
  },
  "narrator591481610": {
-  "hash": "4616c9cab4033a47",
+  "hash": "5e7d6f856e90881a",
   "key": "sala.proleg_palau.entra.1",
   "who": "narrator"
  },
  "narrator644693024": {
-  "hash": "22c6f7ba37495f21",
+  "hash": "f7576f453ca339ff",
   "key": "sala.fosa_colada.llit.9",
   "who": "narrator"
  },
  "narrator653190472": {
-  "hash": "4a826497f44fc512",
+  "hash": "3bc3b919438cde51",
   "key": "sala.palau_control.pany_t2.8",
   "who": "narrator"
  },
  "narrator679011962": {
-  "hash": "d726093959798fa3",
+  "hash": "8994082203245f8a",
   "key": "sala.verdant_cobert.tomaquera.9",
   "who": "narrator"
  },
  "narrator743092031": {
-  "hash": "a482a8a1c4f0a2e0",
+  "hash": "ee1e8084478ddd0d",
   "key": "sala.granja_pati.bomba.4",
   "who": "narrator"
  },
  "narrator854572801": {
-  "hash": "e31c44cd54205013",
+  "hash": "0b078497e68ab4fd",
   "key": "sala.cantimplora_bodega.calaix.4",
   "who": "narrator"
  },
  "narrator888360488": {
-  "hash": "140aaa1c913f824b",
+  "hash": "982c0ace7a288bfc",
   "key": "sala.fosa_forn.rascle.3",
   "who": "narrator"
  },
  "narrator921726694": {
-  "hash": "cffa8a4a5e17ddf2",
+  "hash": "a3a70ae750553f4f",
   "key": "sala.palau_control.valvula.cuita2",
   "who": "narrator"
  },
  "narrator939713995": {
-  "hash": "94ebd21827061d9f",
+  "hash": "9214c786eb1dbf38",
   "key": "sala.port_terra2.entra.1",
   "who": "narrator"
  },
  "narrator955281932": {
-  "hash": "9bac4c462f2b2a7a",
+  "hash": "9a12dd3bb5fe47b1",
   "key": "sala.palau_control.valvula.cuita4",
   "who": "narrator"
  },
  "narrator976467244": {
-  "hash": "4e46bc1c3fd9af00",
+  "hash": "71889795b30045fe",
   "key": "sala.granja_pati.porta_graner.precinte.6",
   "who": "narrator"
  },
  "narrator995847427": {
-  "hash": "66162bb2527cd0a5",
+  "hash": "7d9766f0db93d00a",
   "key": "sala.ferrum_carrer.font.mosca.4",
   "who": "narrator"
  },
@@ -6957,6 +7067,11 @@
  "vet1115456826": {
   "hash": "4eb877a46b580a6d",
   "key": "sala.fosa_forn.manxa.2",
+  "who": "vet"
+ },
+ "vet1116166184": {
+  "hash": "402a478eff402473",
+  "key": "sala.fosa_forn.piquera.terra",
   "who": "vet"
  },
  "vet1128386209": {
@@ -7849,6 +7964,11 @@
   "key": "sala.palau_control.interfon.1",
   "who": "vet"
  },
+ "vet209812237": {
+  "hash": "5b418d200c0d50ba",
+  "key": "sala.fosa_forn.piquera.mira",
+  "who": "vet"
+ },
  "vet211882089": {
   "hash": "428e79a0dbc38ac8",
   "key": "dlg.comunicador.fem.5",
@@ -7897,6 +8017,11 @@
  "vet2151773912": {
   "hash": "9bf14a4dd7b58597",
   "key": "sala.verdant_jardi.panell_preu.2",
+  "who": "vet"
+ },
+ "vet2163759282": {
+  "hash": "b0506e1c08adbe72",
+  "key": "sala.fosa_forn.rascle.tard",
   "who": "vet"
  },
  "vet217157780": {
@@ -9089,6 +9214,11 @@
   "key": "sala.granja_graner.llavors.2",
   "who": "vet"
  },
+ "vet3435092941": {
+  "hash": "7dbc637b5521bcaf",
+  "key": "sala.fosa_forn.piquera.ple",
+  "who": "vet"
+ },
  "vet3442289459": {
   "hash": "8877b8df776099b9",
   "key": "sala.palau_servei.ascensor.1",
@@ -9524,6 +9654,11 @@
   "key": "sala.ferrum_carrer.condensador.targeta.3",
   "who": "vet"
  },
+ "vet4025853982": {
+  "hash": "93bc1ebf4700998a",
+  "key": "pista.motlle2.3",
+  "who": "vet"
+ },
  "vet4030653846": {
   "hash": "7d81dbac1cfb3b41",
   "key": "sala.verdant_cobert.tomaquera.10",
@@ -9694,6 +9829,11 @@
   "key": "sala.fosa_forn.forn.2",
   "who": "vet"
  },
+ "vet4204188694": {
+  "hash": "622f4045b01eafc3",
+  "key": "sala.fosa_forn.piquera.buit",
+  "who": "vet"
+ },
  "vet4220390403": {
   "hash": "1a0b90d996af1223",
   "key": "sala.fosa_forn.forn.3",
@@ -9710,7 +9850,7 @@
   "who": "vet"
  },
  "vet4253945641": {
-  "hash": "faf946ee82d69366",
+  "hash": "ce438eb840cea7af",
   "key": "sala.fosa_forn.forn.1",
   "who": "vet"
  },
@@ -9817,6 +9957,11 @@
  "vet489143697": {
   "hash": "fac9bc58d3b28eea",
   "key": "mosca.arriba.escriptura",
+  "who": "vet"
+ },
+ "vet489557535": {
+  "hash": "8c946d90b0ba4a9b",
+  "key": "sala.fosa_forn.piquera.mira_oberta",
   "who": "vet"
  },
  "vet494458153": {
@@ -10029,6 +10174,11 @@
   "key": "sala.verdant_jardi.porta_residencia.1",
   "who": "vet"
  },
+ "vet686472396": {
+  "hash": "a8263152b23c42dc",
+  "key": "sala.fosa_forn.piquera.2",
+  "who": "vet"
+ },
  "vet688373512": {
   "hash": "a84b7286087fbe0b",
   "key": "mosca.arriba.contracte_capitana",
@@ -10097,6 +10247,11 @@
  "vet730343248": {
   "hash": "f37a615b9df32ea9",
   "key": "dlg.comunicador.fem.73",
+  "who": "vet"
+ },
+ "vet736805253": {
+  "hash": "939af0317bc52313",
+  "key": "sala.fosa_forn.piquera.1",
   "who": "vet"
  },
  "vet738367747": {
@@ -10262,6 +10417,11 @@
  "vet841193980": {
   "hash": "484a4a04e6e17e5c",
   "key": "donar.dona.albara",
+  "who": "vet"
+ },
+ "vet844460762": {
+  "hash": "c7e4083b436cccff",
+  "key": "pista.c_piquera.3",
   "who": "vet"
  },
  "vet853872255": {

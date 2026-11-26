@@ -180,18 +180,29 @@ export function acte2(p: Jugador, n: Narrative, barril: boolean, cami: Cami = {}
     expect(p.inventory()).toContain('sorra');
     viatjar(p, n, 'ferrum');
     anar(p, n, 'fosa_colada');
-    p.use('motlle', 'llit');
   }
+  // El motlle ja és al llit: ara, colgar-lo de sorra fina.
+  expect(n.flag('motlle_posat')).toBe(true);
+  p.use('sorra', 'llit');
   expect(n.flag('motlle_preparat')).toBe(true);
   amb(p, 'vet');
   anar(p, n, 'fosa_forn');
   expect(n.flag('sync_colada')).toBe(true);
+  // Cada acció refreda el forn un grau (comença a 8): cal manxar dues vegades més pel camí.
   p.do('push', 'manxa');
   punt.f('e4');
   p.do('pickUp', 'metall');
   p.do('use', 'rascle');
   amb(p, 'iri');
-  p.do('use', 'gresol');
+  p.talk('grua', 'esquerra', 'avall_c');
+  amb(p, 'vet');
+  p.do('push', 'manxa');
+  p.do('open', 'piquera');
+  expect(n.flag('gresol_ple')).toBe(true);
+  p.do('push', 'manxa');
+  amb(p, 'iri');
+  p.talk('grua', 'amunt_c', 'dreta', 'avall', 'bolca');
+  expect(n.flag('colat')).toBe(true);
   p.use('sorra', 'llit');
   expect(n.flag('claus_fetes')).toBe(true);
   expect(n.getVar('escena')).toBe(5);

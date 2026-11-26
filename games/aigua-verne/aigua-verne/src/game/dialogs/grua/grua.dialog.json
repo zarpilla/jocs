@@ -1,0 +1,132 @@
+{
+  "id": "grua",
+  "displayName": "grua",
+  "options": [
+    {
+      "id": "menu__esquerra",
+      "scriptName": "menu__esquerra",
+      "text": "Esquerra, cap al canal.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__esquerra_baix",
+      "scriptName": "menu__esquerra_baix",
+      "text": "Esquerra, cap al canal.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__esquerra_final",
+      "scriptName": "menu__esquerra_final",
+      "text": "Esquerra, cap al canal.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__dreta",
+      "scriptName": "menu__dreta",
+      "text": "Dreta, cap al llit.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__dreta_baix",
+      "scriptName": "menu__dreta_baix",
+      "text": "Dreta, cap al llit.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__dreta_final",
+      "scriptName": "menu__dreta_final",
+      "text": "Dreta, cap al llit.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__amunt",
+      "scriptName": "menu__amunt",
+      "text": "Amunt.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__amunt_c",
+      "scriptName": "menu__amunt_c",
+      "text": "Amunt.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__amunt_ja",
+      "scriptName": "menu__amunt_ja",
+      "text": "Amunt.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__avall",
+      "scriptName": "menu__avall",
+      "text": "Avall.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__avall_c",
+      "scriptName": "menu__avall_c",
+      "text": "Avall.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__avall_ja",
+      "scriptName": "menu__avall_ja",
+      "text": "Avall.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__bolca_buit",
+      "scriptName": "menu__bolca_buit",
+      "text": "Bolcar el gresol.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__bolca_canal",
+      "scriptName": "menu__bolca_canal",
+      "text": "Bolcar el gresol.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__bolca_dalt",
+      "scriptName": "menu__bolca_dalt",
+      "text": "Bolcar el gresol.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__bolca_brut",
+      "scriptName": "menu__bolca_brut",
+      "text": "Bolcar el gresol.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__bolca",
+      "scriptName": "menu__bolca",
+      "text": "Bolcar el gresol.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Deixar els comandaments.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

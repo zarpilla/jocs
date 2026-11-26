@@ -543,8 +543,9 @@ forn ple i a punt, i abocar al motlle de tres de cop. **Ara necessites les dues.
 - **Abans de la sincronia, la sorra.** El motlle de tres s'ha de preparar amb sorra fina, i a Ferrum no n'hi ha:
   «La d'aquí és pedra picada. Les claus sortirien amb grava.» (BRU) L'Iri se'n recorda: «Al fons d'Aqua n'hi
   havia una platja. Fina com farina.» Cal tornar a Aqua, on ara la platja és el lot 9 de Verne (regles del món, 2), i
-  omplir-ne un sac. Si ja en porten un, «per si de cas», el motlle es prepara de seguida. La sincronia no comença fins
-  que el motlle és preparat.
+  omplir-ne un sac. Són dues accions: el motlle al llit («Ara, colgar-lo de sorra») i després la sorra al llit. Si ja
+  en porten un sac, «per si de cas», l'Iri ho diu en colgar-lo: «La d'aquí és pedra picada. Sort del sac del fons
+  d'Aqua.» La sincronia no comença fins que el motlle és preparat.
 - **El metall:** els miners hi tiren els **comptadors d'aigua de Verne** que han arrencat de les cases. BRU: «Que
   serveixin per a alguna cosa.»
 - **Rellotge:** la temperatura (10). Cada torn baixa un grau; atiar el forn (Vet) en torna dos.

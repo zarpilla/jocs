@@ -220,7 +220,8 @@ def manxa(cv, fire=0):
 
 # ─── Termòmetre, rascle, metall ────────────────────────────────────────────
 
-def termometre(cv, fire=0):
+def termometre(cv, fire=0, tremola=0.0, temp=None):
+    """El dial de 0 a 10. Amb `temp` (la temperatura de la colada), l'agulla la marca; si no, segons el foc."""
     cx, cy, r = DIAL
     # el capil·lar que ve del forn i el suport de la pilastra
     cv.line(cx + r + 1, cy + 8, FORN[0] - 6, cy + 8, IRONF, 3.0)
@@ -228,20 +229,20 @@ def termometre(cv, fire=0):
     cv.rect(cx - 3, cy + r, cx + 3, cy + r + 10, IRONF, 3.0)
     cv.disc(cx, cy, r + 3, r + 3, TIN, lambda nx, ny: 4.6 - nx * 1.2 - ny * 1.2)          # el bisell de llautó
     cv.disc(cx, cy, r, r, WHITEV, lambda nx, ny: 3.4 - ny * 0.6 - nx * 0.3)
-    # la zona vermella (de 9 a 10)
+    # la zona vermella, a l'extrem fred (de 0 a 2): allà el metall s'endureix
     for a in range(0, 360, 2):
         an = math.radians(a)
         frac = ((a - 135) % 360) / 270
         if frac <= 1:
             for d in (r - 1, r - 2):
                 x, y = cx + math.cos(an) * d, cy + math.sin(an) * d
-                if frac > 0.78:
+                if frac < 0.2:
                     cv.put(x, y, REDP, 4.4, lit=0)
             if int(frac * 270) % 27 == 0:
                 for d in range(r - 4, r - 1):
                     cv.put(cx + math.cos(an) * d, cy + math.sin(an) * d, COAL, 1.0)
     text(cv, 'C', cx - 1, cy + 5, COAL, 1.4)
-    frac = {0: 0.04, 1: 0.5, 2: 0.88}[fire]
+    frac = (temp / 10 if temp is not None else {0: 0.04, 1: 0.5, 2: 0.88}[fire]) + tremola
     an = math.radians(135 + frac * 270)
     cv.line(cx, cy, cx + math.cos(an) * (r - 3), cy + math.sin(an) * (r - 3), REDP, 3.0, lit=0)
     cv.line(cx, cy, cx - math.cos(an) * 3, cy - math.sin(an) * 3, COAL, 1.0, lit=0)

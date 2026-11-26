@@ -37,7 +37,7 @@ it.skipIf(!process.env.EXPLORA)('exploració', () => {
   amb(p, 'vet'); anar(p, n, 'fosa_forn');
   p.do('pickUp', 'metall');
   p.do('push', 'manxa'); p.do('pickUp', 'metall');
-  amb(p, 'iri'); p.do('use', 'gresol');
+  amb(p, 'iri'); p.talk('grua', 'bolca_buit', 'esquerra', 'avall_c', 'esquerra_final'); amb(p, 'vet'); p.do('use', 'forn'); amb(p, 'iri');
   marca('E4: deixar refredar');
   for (let k = 0; k < 9; k++) { amb(p, 'vet'); p.do('push', 'manxa'); p.do('pickUp', 'metall'); p.do('use', 'rascle'); amb(p, 'iri'); p.do('use', 'llit'); }
   p.talk('comunicador', 'fem');

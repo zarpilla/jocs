@@ -51,7 +51,7 @@ export const PASSOS: Record<string, PasSincronia> = {
     avisos: { var: 'temperatura', linies: TX.colada!.avisos },
     reinici: {
       linies: TX.colada!.reinici,
-      efectes: [{ setVar: 'temperatura', value: 8 }, ...off(['manxa_oberta', 'metall_carregat', 'escoria_treta', 'colat']),
+      efectes: [{ setVar: 'temperatura', value: 8 }, ...off(['manxa_oberta', 'metall_carregat', 'escoria_treta', 'colat', 'gresol_ple', 'gresol_brut']),
         { addVar: 'reinicis_colada', amount: 1 }],
     },
   },

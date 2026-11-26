@@ -346,13 +346,14 @@ def _frames_estrelles():
 # ─── Animació: la gota de la canonada ────────────────────────────────────────
 
 GOTA = (570, 29, 139)                              # x, sota la canonada i l'aigua de la galleda (en píxels)
-GOTA_N = 40                                        # 40 × 70 ms: una gota cada gairebé tres segons
-AIGUA = (226, 240, 252)
+GOTA_N = 36                                        # 36 × 70 ms: una gota cada dos segons i mig
+AIGUA = (214, 234, 252)
+BRILL = (255, 255, 255)
 
 
 def _frames_gota():
-    """La canonada de l'aigua «només per a piscines» goteja just a sobre de la galleda de la Lia: la gota s'infla,
-    cau, fa plic a l'aigua i torna a començar."""
+    """La canonada de l'aigua «només per a piscines» goteja just a sobre de la galleda de la Lia: la gota (de 2 px,
+    amb la lluentor) s'infla, cau, fa plic a l'aigua i torna a començar."""
     from PIL import Image
     gx, y0, y1 = GOTA
     out = []
@@ -360,23 +361,37 @@ def _frames_gota():
         im = Image.new('RGBA', (W, H), (0, 0, 0, 0))
         Q = im.load()
 
-        def px(x, y, a):
-            Q[x, y] = (*AIGUA, round(255 * a))
-        if f < 10:                                     # s'infla
-            px(gx, y0, 0.3 + 0.07 * f)
-            if f >= 6:
-                px(gx, y0 + 1, 0.4 + 0.1 * (f - 6))
-        elif f < 18:                                   # cau (accelerant), amb una cueta
-            t = (f - 9) / 8
-            y = round(y0 + 1 + (y1 - y0 - 1) * t * t)
-            for j in range(min(1 + (f - 10), 4)):
-                if y - j > y0:
-                    px(gx, y - j, 0.95 - 0.22 * j)
-        elif f < 21:                                   # plic: dues gotetes i l'aigua que es mou
-            k = f - 18
+        def px(x, y, a, c=AIGUA):
+            if a > 0:
+                Q[x, y] = (*c, round(255 * min(1.0, a)))
+        if f < 12:                                     # s'infla sota la canonada
+            g = f / 11
+            px(gx, y0, 0.5 + 0.5 * g)
+            px(gx + 1, y0, 0.5 + 0.5 * g)
+            if f >= 5:
+                px(gx, y0 + 1, 0.4 + 0.6 * g, BRILL)
+                px(gx + 1, y0 + 1, 0.4 + 0.6 * g)
+            if f >= 9:
+                px(gx, y0 + 2, 0.8)
+                px(gx + 1, y0 + 2, 0.8)
+        elif f < 20:                                   # cau (accelerant), amb una cueta
+            t = (f - 11) / 8
+            y = round(y0 + 2 + (y1 - y0 - 2) * t * t)
+            for j in range(min(2 + (f - 12), 6)):
+                if y - j > y0 + 1:
+                    a = 1.0 - 0.16 * j
+                    px(gx, y - j, a, BRILL if j == 1 else AIGUA)
+                    px(gx + 1, y - j, a * 0.9)
+        elif f < 25:                                   # plic: gotetes que salten i l'aigua que es mou
+            k = f - 20
             for s_ in (-1, 1):
-                px(gx + s_ * (1 + k), y1 - 2 - (1, 2, 1)[k], 0.9 - 0.25 * k)
-                px(gx + s_ * (2 + k), y1, 0.6 - 0.18 * k)
+                bx = gx + (0 if s_ < 0 else 1)
+                px(bx + s_ * (1 + k), y1 - 1 - (2, 4, 5, 4, 2)[k], 1.0 - 0.18 * k, BRILL if k < 2 else AIGUA)
+                px(bx + s_ * (2 + 2 * k), y1, 0.8 - 0.15 * k)
+                px(bx + s_ * (3 + 2 * k), y1, 0.6 - 0.12 * k)
+            if k < 2:
+                px(gx, y1 - 1, 0.9)
+                px(gx + 1, y1 - 1, 0.9)
         out.append(im)
     return out
 

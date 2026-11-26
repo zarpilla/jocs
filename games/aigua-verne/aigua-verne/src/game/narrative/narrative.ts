@@ -553,7 +553,7 @@ export function roomProp(room: string, id: string): PropHandle | undefined {
 
 type Actor = {
   position: Point; visible: boolean; animation: string; stopAnimation(): void; moveTo(p: Point): void;
-  face: { now(d: 'L' | 'R' | 'U' | 'D'): unknown };
+  face: { now(d: 'L' | 'R' | 'U' | 'D'): unknown }; facing: string;
 };
 
 /** Qui fa una indicació: un personatge, o la protagonista que juga (`player`). */
@@ -609,6 +609,15 @@ export function applyStageNow(cue: StageCue) {
   if (cue.anim === null) actor.stopAnimation();
   else if (cue.anim !== undefined && actor.animation !== cue.anim) actor.animation = cue.anim;
   if (cue.face) actor.face.now(cue.face);
+  if (cue.gest === null) actor.stopAnimation();
+  else if (cue.gest !== undefined) {
+    // El gest, amb la roba de la sala (`Lluny`, `LlunyGala`...) i cap on mira: R, UR i DR fan el mirall de L, UL i DL
+    // (el sprite ja està girat: l'animació forçada no el torna a girar).
+    const id = cue.who === 'player' ? world.activeProtagonist() : cue.who;
+    const dir = ({ R: 'L', UR: 'UL', DR: 'DL' } as Record<string, string>)[actor.facing] ?? actor.facing;
+    const tag = `${id ? narrative.outfitOf(id) : ''}${cue.gest}${dir}`;
+    if (actor.animation !== tag) actor.animation = tag;
+  }
 }
 
 /**

@@ -121,10 +121,11 @@
   "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
  },
  "narrator": {
-  "voice_id": "fjVc08M9VPgKB76vROx0",
-  "name": "Ni un ou · Narrador",
+  "voice_id": "O1KV584RIcNFaoM9EAoR",
+  "name": "Aigua Verne · Narrador (clon)",
   "reaprofitada": "veu de «narrator» de Ni un ou (descripció a games/ni-un-ou/game/audio/veus-descripcions.json); triada escoltant-la amb frases d'Aigua Verne el 2026-11-23",
-  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou."
+  "esborrada": "2026-11-24: esborrada d'ElevenLabs per fer lloc a La Conjura de l'Avet (màxim 30 veus). Els MP3 del joc hi són; per refer frases, cal dissenyar la veu de nou.",
+  "clon": "2026-11-26: clon instantani d'ElevenLabs fet amb les 25 preses més llargues del narrador del joc (game/audio/voice/narrator*.mp3), perquè la veu original (fjVc08M9VPgKB76vROx0) es va esborrar. Comparat amb una frase ja gravada: s'hi assembla. Les preses anteriors són de l'original."
  },
  "rosa": {
   "voice_id": "RX8mZNc4GFknROLlNmXp",

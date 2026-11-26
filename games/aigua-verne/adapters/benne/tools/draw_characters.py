@@ -20,6 +20,7 @@ Surt a adapters/benne/placeholder-art/<id>/. Ús (des d'aquesta carpeta):
 """
 import json
 import math
+import re
 import sys
 from pathlib import Path
 
@@ -99,6 +100,8 @@ def durations(tags, walk=(90, 90), talk=140, idle=None, extra=None):
             a['frameDuration'] = talk
         elif 'Idle' in base and idle:
             a['frameDuration'] = idle
+        elif re.search(r'Fa(L|D|U|DL|UL)$', base):
+            a['frameDuration'] = 170
         for k, v in (extra or {}).items():
             if base.endswith(k):
                 a['frameDuration'] = v
@@ -192,8 +195,37 @@ def person_tags(spec_of, dirs=DIRS):
             if f in ('D', 'DL'):
                 costat = [lambda f=f, m=m: person({**spec_of(), 'mira': m}, f) for m in (-1, -1, -1, 0, 1, 1, 1, 0)]
                 out.append((f'Look{f}', costat))
+        # el gest de fer anar una cosa amb les mans (una palanca, uns botons, una pala): les indicacions d'escena
+        # (`"gest": "Fa"`)
+        for f in dirs:
+            out.append((f'Fa{f}', [lambda f=f, k=k: person({**spec_of(), 'pose': lambda p, k=k: fa(p, k)}, f)
+                                   for k in range(4)]))
         return out
     return make
+
+
+def fa(p, k):
+    """La postura del gest `Fa` (fotograma `k` de 4): de perfil, els dos braços endavant, que empenyen i estiren; de
+    cara, les mans davant el pit; d'esquena, enlaire, cap a la cosa que es fa anar."""
+    ph = math.sin(2 * math.pi * k / 4)
+    if p.f == 'L':
+        sx, sy = p.shoulder
+        p.arms = []
+        # el braç baixa cap endavant i l'avantbraç surt més pla (el colze, avall); la mà, on era: ≈ (−17, +8)
+        for a, bend in ((45 + 12 * ph, 40 + 10 * ph), (38 + 12 * ph, 44 + 10 * ph)):
+            ra, rb = math.radians(a), math.radians(a + bend)
+            el = (sx - math.sin(ra) * 10.5, sy + math.cos(ra) * 10.5)
+            wr = (el[0] - math.sin(rb) * 9.5, el[1] + math.cos(rb) * 9.5)
+            p.arms.append(((sx, sy), el, wr))
+        return
+    for i, sgn in ((0, -1), (1, 1)):
+        sx, sy = p.sh[i]
+        if p.f == 'U':
+            p.elbow[i] = (sx + sgn * 3.5, sy - 9 + ph)
+            p.wrist[i] = (sx + sgn * 1.5, sy - 22 + 2.5 * ph)
+        else:
+            p.elbow[i] = (sx + sgn * 1.2, sy + 10 + ph * 0.5)
+            p.wrist[i] = (24.5 + sgn * 4.0, sy + 7 - 2 * ph)
 
 
 # Qui s'asseu (la Juana a casa seva) mira a l'esquerra: qui hi va a parlar s'atura davant seu, a 1,5 m (uns 90 px

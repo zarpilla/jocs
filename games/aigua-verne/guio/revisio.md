@@ -11,12 +11,12 @@
 EN ENTRAR
     • * (una vegada) — SEMPRE
         NARRADOR: El fons del mar d'Aqua. Sorra blanca, nanses, i al fons, una caseta feta amb un casc de vaixell bolcat.
+        IRI: Des d'aquí baix, ara que va, la cistella té botó. Ja puc pujar i baixar sola.
 
 DECORAT lot9 — es veu si lot9
 
 CISTELLA «cistella»
     • walkTo/use/open — SEMPRE
-        [SO: cistella] NARRADOR: La cistella puja.
         ⇒ → aqua_port
 
 PORTA_JUANA «casa de la Juana»
@@ -145,14 +145,13 @@ CISTELLA «cistella»
         VET: Jo condueixo grues. Si baixem les dues, qui ens puja?
     • walkTo/use/open — si NO baixada_feta i juga iri i vet a aqua_port
         IRI: Pujo a la cistella...
-        VET: Tu condueixes naus. Jo condueixo grues.
+        [SO: grua] VET: Tu condueixes naus. Jo condueixo grues.
         [SO: cistella] NARRADOR: La cistella baixa, a sacsejades, quaranta metres.
-        IRI: Des d'aquí baix, ara que va, la cistella té botó. Ja puc pujar i baixar sola.
         ⇒ +baixada_feta, → aqua_fons
     • walkTo/use/open — si NO baixada_feta
         IRI: La grua funciona, però algú l'ha de fer anar des de dalt. Necessito la Vet aquí, als comandaments.
     • walkTo/use/open — SEMPRE
-        [SO: cistella] NARRADOR: La cistella baixa.
+        [SO: grua] IRI: Pujo a la cistella...
         ⇒ → aqua_fons
 
 VAIXELLS «vaixells encallats»
@@ -555,13 +554,13 @@ PORTA_SINDICAT «sindicat»
     • walkTo/use/open — SEMPRE
         ⇒ → ferrum_sindicat
 
-PORTA_FOSA «fosa»
+PORTA_FOSA «foneria»
     • look — SEMPRE
-        JUGADORA: La fosa de Ferrum. Aturada des de la vaga.
+        JUGADORA: La foneria de Ferrum. Aturada des de la vaga.
     • walkTo/use/open — si NO promesa_lia
-        JUGADORA: La fosa és del sindicat. Sense en Bru, no hi entra ningú.
+        JUGADORA: La foneria és del sindicat. Sense en Bru, no hi entra ningú.
     • walkTo/use/open — si claus_fetes
-        JUGADORA: La fosa està tancada. Ja hem fet el que hi havíem de fer.
+        JUGADORA: La foneria està tancada. Ja hem fet el que hi havíem de fer.
     • walkTo/use/open — SEMPRE
         ⇒ → fosa_forn
 
@@ -722,85 +721,83 @@ QUIM «—»
 
 ```
 
-## Sala Fosa: la colada · `fosa_colada` (iri, vet)
+## Sala Foneria: la colada · `fosa_colada` (iri, vet)
 
 ```
 EN ENTRAR
     • * — si escena = 4 i motlle_preparat i NO claus_fetes i NO sync_colada i (vet a fosa_forn i iri a fosa_colada)
         TÍTOL: Ara necessites les dues.
         NARRADOR: El forn està a vuit. Cada acció el refreda un grau. Si arriba a zero, el metall s'endureix al gresol.
-        NARRADOR: Al forn: manxa, metall i fora l'escòria. A la colada: abocar el gresol i tapar amb sorra.
+        NARRADOR: Al forn: foc, metall, fora l'escòria i obrir la piquera. A la colada: el gresol, amb la grua, del canal al motlle. I sorra.
         ⇒ +sync_colada, temperatura := 8
 
 DECORAT motlle_preparat — es veu si motlle_preparat i NO claus_fetes
-DECORAT gresol_ple — es veu si sync_colada i escoria_treta i NO colat
-DECORAT fum_gresol — es veu si sync_colada i escoria_treta i NO colat
 DECORAT claus_fetes — es veu si colat i NO claus_fetes
-DECORAT motlle_posat — es veu si claus_fetes
+DECORAT motlle_posat — es veu si claus_fetes o (motlle_posat i NO motlle_preparat)
+DECORAT gresol_llit_dalt — es veu si (gresol = "llit" i NO gresol_baix) i NO gresol_ple
+DECORAT gresol_llit_dalt_ple — es veu si (gresol = "llit" i NO gresol_baix) i gresol_ple
+DECORAT gresol_llit_baix — es veu si (gresol = "llit" i gresol_baix) i NO gresol_ple
+DECORAT gresol_llit_baix_ple — es veu si (gresol = "llit" i gresol_baix) i gresol_ple
+DECORAT gresol_canal_dalt — es veu si (gresol = "canal" i NO gresol_baix) i NO gresol_ple
+DECORAT gresol_canal_dalt_ple — es veu si (gresol = "canal" i NO gresol_baix) i gresol_ple
+DECORAT gresol_canal_baix — es veu si (gresol = "canal" i gresol_baix) i NO gresol_ple
+DECORAT gresol_canal_baix_ple — es veu si (gresol = "canal" i gresol_baix) i gresol_ple
+DECORAT gresol_ple — es veu si gresol_ple i gresol = "llit"
+DECORAT gresol_ple_canal — es veu si gresol_ple i gresol = "canal"
 
 PAS «forn»
     • walkTo/use/open — SEMPRE
         ⇒ → fosa_forn
 
-GRESOL «gresol»
+CANAL «canal»
     • look — SEMPRE
-        JUGADORA: El gresol, penjat del pont grua. Quan el metall està fos al forn, hi passa i s'aboca al motlle.
-    • use — si sync_colada i NO metall_carregat
-        JUGADORA: El gresol està buit. Primer, el metall al forn.
-    • use — si sync_colada i NO escoria_treta
-        [SO: colada] JUGADORA: Abocant...
-        NARRADOR: El metall cau al motlle... amb l'escòria. Fa bombolles.
-        JUGADORA: Les claus surten amb forats. Això no obre res. Ni una llauna.
-        NARRADOR: Es refon tot i es torna a començar.
-        ⇒ −manxa_oberta, −metall_carregat, −escoria_treta, temperatura := 8
-    • use — si sync_colada i NO colat
-        [SO: colada] JUGADORA: Abocant...
-        NARRADOR: El metall cau al motlle com mel encesa. Tres claus, tres raigs de llum.
-        ⇒ +colat
-    • use — si sync_colada
-        JUGADORA: Ja és al motlle. Ara, tapar-lo amb sorra.
-    • use — si NO motlle_preparat
-        JUGADORA: Sense el motlle preparat al llit, no.
-    • use — SEMPRE
-        JUGADORA: Ja hem fet les claus.
+        JUGADORA: El canal de colada. El metall fos baixa del forn per aquí i raja on hi hagi el gresol. O a terra.
+
+GRESOL «gresol» — hi és si gresol = "llit"
+    • look — SEMPRE
+        JUGADORA: El gresol, penjat del pont grua. Es mou amb els comandaments.
+    • use/push/pull/pickUp — SEMPRE
+        JUGADORA: A pes, no el moc ni un dit. Per això hi ha la grua.
+
+GRESOL_C «gresol» — hi és si gresol = "canal"
+    • look — SEMPRE
+        JUGADORA: El gresol, penjat del pont grua. Es mou amb els comandaments.
+    • use/push/pull/pickUp — SEMPRE
+        JUGADORA: A pes, no el moc ni un dit. Per això hi ha la grua.
 
 GRUA_PONT «comandaments de la grua»
     • look — SEMPRE
         JUGADORA: Els comandaments del pont grua. Mouen el gresol del forn al motlle.
-    • use — si sync_colada i NO metall_carregat
-        JUGADORA: El gresol està buit. Primer, el metall al forn.
-    • use — si sync_colada i NO escoria_treta
-        [SO: colada] JUGADORA: Abocant...
-        NARRADOR: El metall cau al motlle... amb l'escòria. Fa bombolles.
-        JUGADORA: Les claus surten amb forats. Això no obre res. Ni una llauna.
-        NARRADOR: Es refon tot i es torna a començar.
-        ⇒ −manxa_oberta, −metall_carregat, −escoria_treta, temperatura := 8
-    • use — si sync_colada i NO colat
-        [SO: colada] JUGADORA: Abocant...
-        NARRADOR: El metall cau al motlle com mel encesa. Tres claus, tres raigs de llum.
-        ⇒ +colat
-    • use — si sync_colada
-        JUGADORA: Ja és al motlle. Ara, tapar-lo amb sorra.
-    • use — si NO motlle_preparat
-        JUGADORA: Sense el motlle preparat al llit, no.
-    • use — SEMPRE
+    • use/push/pull — si claus_fetes
         JUGADORA: Ja hem fet les claus.
+    • use/push/pull — si NO motlle_preparat
+        JUGADORA: Sense el motlle preparat al llit, no.
+    • use/push/pull — si sync_colada
+        ⇒ diàleg grua
+    • use/push/pull — SEMPRE
+        JUGADORA: Ara no hi ha res a moure.
 
 LLIT «llit de colada»
     • look — si motlle_preparat
         JUGADORA: El llit de colada, amb el motlle preparat.
+    • look — si motlle_posat
+        JUGADORA: El llit de colada, amb el motlle. Falta colgar-lo de sorra fina.
     • look — SEMPRE
         JUGADORA: El llit de colada. Aquí va el motlle, ben colgat de sorra.
     • use + motlle — si no (té sorra)
+        JUGADORA: El motlle, al llit. Ara, colgar-lo de sorra.
         JUGADORA: Sorra fina, en tenim. Però la porta l'altra. ⟨si sorra_agafada⟩
         JUGADORA: La sorra d'aquí és pedra picada. Les claus sortirien amb grava. Cal sorra fina de debò. ⟨si NO sorra_agafada⟩
         JUGADORA: ...Al fons del mar d'Aqua n'hi havia una platja. Fina com farina. ⟨si NO sorra_agafada⟩
-        ⇒ +cal_sorra
+        ⇒ +motlle_posat, perd motlle, +cal_sorra
     • use + motlle — SEMPRE
-        JUGADORA: Sorra fina d'Aqua? En porto un sac. ⟨si NO cal_sorra⟩
+        JUGADORA: El motlle, al llit. Ara, colgar-lo de sorra.
+        ⇒ +motlle_posat, perd motlle
+    • use + sorra — si motlle_posat i NO motlle_preparat
+        JUGADORA: La d'aquí és pedra picada. Sort del sac del fons d'Aqua. ⟨si NO cal_sorra⟩
         [SO: motlle] JUGADORA: El motlle al llit, ben colgat de sorra fina d'Aqua. Preparat.
         JUGADORA: Ara, una al forn i l'altra aquí, a la colada.
-        ⇒ +motlle_preparat, perd motlle
+        ⇒ +motlle_preparat
     • use + sorra — si NO motlle_preparat
         JUGADORA: Primer, el motlle.
     • use + sorra — si sync_colada i colat
@@ -809,10 +806,12 @@ LLIT «llit de colada»
         ⇒ +claus_fetes, perd sorra, rep claus (iri)
     • use + sorra — si sync_colada
         JUGADORA: Primer, el metall al motlle.
+    • use — si motlle_posat i NO motlle_preparat
+        JUGADORA: El motlle ja hi és. Falta la sorra fina.
     • use — si NO motlle_preparat
         JUGADORA: Al llit hi va el motlle, preparat amb sorra fina.
     • use — si sync_colada i NO colat
-        JUGADORA: El motlle espera el metall: s'aboca amb el gresol.
+        JUGADORA: El motlle espera el metall. Primer, el gresol ple, i la grua el porta fins aquí.
     • use — si sync_colada
         JUGADORA: Ara, tapar-lo: la sorra, al llit.
 
@@ -824,14 +823,14 @@ SORRA_PEDRA «sacs de sorra»
 
 ```
 
-## Sala Fosa: el forn · `fosa_forn` (iri, vet)
+## Sala Foneria: el forn · `fosa_forn` (iri, vet)
 
 ```
 EN ENTRAR
     • * — si escena = 4 i motlle_preparat i NO claus_fetes i NO sync_colada i (vet a fosa_forn i iri a fosa_colada)
         TÍTOL: Ara necessites les dues.
         NARRADOR: El forn està a vuit. Cada acció el refreda un grau. Si arriba a zero, el metall s'endureix al gresol.
-        NARRADOR: Al forn: manxa, metall i fora l'escòria. A la colada: abocar el gresol i tapar amb sorra.
+        NARRADOR: Al forn: foc, metall, fora l'escòria i obrir la piquera. A la colada: el gresol, amb la grua, del canal al motlle. I sorra.
         ⇒ +sync_colada, temperatura := 8
 
 DECORAT forn_ences — es veu si sync_colada i manxa_oberta
@@ -839,6 +838,9 @@ DECORAT forn_fort — es veu si sync_colada i metall_carregat
 DECORAT foc — es veu si sync_colada i manxa_oberta i NO metall_carregat
 DECORAT foc_fort — es veu si sync_colada i metall_carregat
 DECORAT guspires — es veu si sync_colada i manxa_oberta
+DECORAT brases — es veu si no (sync_colada i manxa_oberta)
+DECORAT termo_ences — es veu si sync_colada i manxa_oberta i NO metall_carregat
+DECORAT termo_fort — es veu si sync_colada i metall_carregat
 
 PORTA «carrer»
     • walkTo/use/open — si sync_colada
@@ -860,7 +862,8 @@ MANXA «manxa»
         NARRADOR: El forn rugeix i s'encén de taronja.
         ⇒ +manxa_oberta
     • push/pull/use — si sync_colada i temperatura ≤ 6
-        [SO: manxa] JUGADORA: Més aire. El forn s'enfila.
+        [SO: manxa] JUGADORA: Més aire. El forn s'enfila. ⟨si NO metall_carregat⟩
+        [SO: manxa] JUGADORA: Més aire. El forn s'enfila. ⟨si metall_carregat⟩
         ⇒ temperatura += 3
     • push/pull/use — si sync_colada
         JUGADORA: El forn ja està al màxim. Si bufo més, s'enfadarà.
@@ -888,6 +891,8 @@ METALL «comptadors per fondre»
 RASCLE «rascle»
     • look — SEMPRE
         JUGADORA: Un rascle de ferro llarg per treure l'escòria del metall fos.
+    • use — si sync_colada i gresol_ple i NO escoria_treta
+        JUGADORA: Massa tard: l'escòria ja ha baixat amb el metall.
     • use — si sync_colada i metall_carregat i NO escoria_treta
         [SO: vapor] JUGADORA: Fora l'escòria.
         NARRADOR: El metall queda net i brillant com un sol petit.
@@ -901,13 +906,50 @@ RASCLE «rascle»
 
 FORN «forn»
     • look — si sync_colada
-        JUGADORA: El forn. Si el termòmetre arriba a zero, el metall s'endureix.
+        JUGADORA: El forn. Per la piquera, el metall fos baixa pel canal fins a la colada.
         NARRADOR: Termòmetre: {temperatura}
     • look — si NO claus_fetes
-        JUGADORA: El forn de la fosa. Fred, de moment.
+        JUGADORA: El forn de la foneria. Fred, de moment.
     • look — SEMPRE
         JUGADORA: El forn, apagat. Ja ha fet la seva feina.
+    • use/open — si juga vet i sync_colada i NO claus_fetes i NO metall_carregat
+        JUGADORA: La piquera, encara no: dins el forn no hi ha res fos.
+    • use/open — si juga vet i sync_colada i NO claus_fetes i gresol_ple
+        JUGADORA: El gresol ja és ple. Si n'hi tiro més, vessarà.
+    • use/open — si juga vet i sync_colada i NO claus_fetes i no (gresol = "canal" i gresol_baix)
+        JUGADORA: Si obro la piquera ara, el metall anirà a terra. Primer, el gresol de l'Iri sota el canal, ben avall.
+    • use/open — si juga vet i sync_colada i NO claus_fetes i NO escoria_treta
+        [SO: colada] JUGADORA: Piquera oberta!
+        JUGADORA: Ja raja cap a la colada. Iri, és teu!
+        ⇒ +gresol_ple, +gresol_brut
+    • use/open — si juga vet i sync_colada i NO claus_fetes
+        [SO: colada] JUGADORA: Piquera oberta!
+        JUGADORA: Ja raja cap a la colada. Iri, és teu!
+        ⇒ +gresol_ple
     • use/open — SEMPRE
+        JUGADORA: No hi poso la mà. Ni la de l'Iri. ⟨si juga vet⟩
+        JUGADORA: No hi poso la mà. Ni la de la Vet. ⟨si juga iri⟩
+
+PIQUERA «piquera»
+    • look — si gresol_ple
+        JUGADORA: La piquera, oberta. El metall baixa per la regata fins a la colada.
+    • look — SEMPRE
+        JUGADORA: La piquera: el broc del forn per on surt el metall fos. Té un tap de fang.
+    • use/open/pull/push — si juga vet i sync_colada i NO claus_fetes i NO metall_carregat
+        JUGADORA: La piquera, encara no: dins el forn no hi ha res fos.
+    • use/open/pull/push — si juga vet i sync_colada i NO claus_fetes i gresol_ple
+        JUGADORA: El gresol ja és ple. Si n'hi tiro més, vessarà.
+    • use/open/pull/push — si juga vet i sync_colada i NO claus_fetes i no (gresol = "canal" i gresol_baix)
+        JUGADORA: Si obro la piquera ara, el metall anirà a terra. Primer, el gresol de l'Iri sota el canal, ben avall.
+    • use/open/pull/push — si juga vet i sync_colada i NO claus_fetes i NO escoria_treta
+        [SO: colada] JUGADORA: Piquera oberta!
+        JUGADORA: Ja raja cap a la colada. Iri, és teu!
+        ⇒ +gresol_ple, +gresol_brut
+    • use/open/pull/push — si juga vet i sync_colada i NO claus_fetes
+        [SO: colada] JUGADORA: Piquera oberta!
+        JUGADORA: Ja raja cap a la colada. Iri, és teu!
+        ⇒ +gresol_ple
+    • use/open/pull/push — SEMPRE
         JUGADORA: No hi poso la mà. Ni la de l'Iri. ⟨si juga vet⟩
         JUGADORA: No hi poso la mà. Ni la de la Vet. ⟨si juga iri⟩
 
@@ -2180,7 +2222,7 @@ COMENÇA A: torna (si bru_set) · carta (si té carta_juana (iri) i iri a ferrum
     BRU: ...Bé.
     NARRADOR: En Bru agafa un motlle de la prestatgeria i el deixa a la taula. Després, al dors de la carta de la Juana, escriu unes línies amb lletra gran.
     BRU: El motlle de les tres claus. I això, per a la Lia, perquè us faci cas. Ella coneix la meva lletra.
-    BRU: La fosa és vostra. La teva germana al forn i tu a la colada.
+    BRU: La foneria és vostra. La teva germana al forn i tu a la colada.
     ⇒ +promesa_lia, rep motlle, rep nota_lia (iri)
     ↪ menu
 
@@ -2381,8 +2423,8 @@ COMENÇA A: inici
     IRI: La Mosca té feina i targeta. El condensador és al carrer. ⟨si juga vet i (escena = 4 i mosca_contractada i NO canalla_beu)⟩
     VET: Tornar a parlar amb en Bru. ⟨si juga iri i (escena = 4 i canalla_beu i NO promesa_lia)⟩
     IRI: Tornar a parlar amb en Bru. Hi vaig jo. ⟨si juga vet i (escena = 4 i canalla_beu i NO promesa_lia)⟩
-    VET: Preparar el motlle de les claus al llit de colada de la fosa. ⟨si juga iri i (escena = 4 i promesa_lia i NO motlle_preparat i NO cal_sorra)⟩
-    IRI: Preparar el motlle de les claus al llit de colada de la fosa. ⟨si juga vet i (escena = 4 i promesa_lia i NO motlle_preparat i NO cal_sorra)⟩
+    VET: Preparar el motlle de les claus al llit de colada de la foneria. ⟨si juga iri i (escena = 4 i promesa_lia i NO motlle_preparat i NO cal_sorra)⟩
+    IRI: Preparar el motlle de les claus al llit de colada de la foneria. ⟨si juga vet i (escena = 4 i promesa_lia i NO motlle_preparat i NO cal_sorra)⟩
     VET: Sorra fina per al motlle: a Ferrum només n'hi ha de pedra picada. ⟨si juga iri i (escena = 4 i cal_sorra i NO motlle_preparat)⟩
     IRI: Sorra fina per al motlle: a Ferrum només n'hi ha de pedra picada. ⟨si juga vet i (escena = 4 i cal_sorra i NO motlle_preparat)⟩
     VET: La platja d'Aqua ara és el lot 9 de Verne: de la línia de l'aigua de dimarts cap amunt. ⟨si juga iri i (escena = 4 i cal_sorra i lot9_vist i NO sorra_agafada)⟩
@@ -2564,6 +2606,109 @@ COMENÇA A: admesa (si fidel_admet) · hola
     FIDEL: Els actius no arrenquen. Valen. Passi, senyora. Anoto l'aval: un tractor de luxe.
     IRI: (baix) L'avi, inversor.
     ⇒ +fidel_admet, +fidel_tractor
+
+```
+
+## Diàleg `grua` amb Iri
+
+```
+COMENÇA A: menu
+
+[menu]
+    ▸ Esquerra, cap al canal. ⟨si gresol = "llit" i NO gresol_baix⟩ → cap_canal
+        ⇒ gresol := "canal"
+    ▸ Esquerra, cap al canal. ⟨si gresol = "llit" i gresol_baix⟩ → no_baix
+    ▸ Esquerra, cap al canal. ⟨si gresol = "canal"⟩ → final
+    ▸ Dreta, cap al llit. ⟨si gresol = "canal" i NO gresol_baix⟩ → cap_llit
+        ⇒ gresol := "llit"
+    ▸ Dreta, cap al llit. ⟨si gresol = "canal" i gresol_baix⟩ → no_baix
+    ▸ Dreta, cap al llit. ⟨si gresol = "llit"⟩ → final
+    ▸ Amunt. ⟨si gresol = "llit" i gresol_baix⟩ → amunt_llit
+        ⇒ −gresol_baix
+    ▸ Amunt. ⟨si gresol = "canal" i gresol_baix⟩ → amunt_canal
+        ⇒ −gresol_baix
+    ▸ Amunt. ⟨si NO gresol_baix⟩ → ja_amunt
+    ▸ Avall. ⟨si gresol = "llit" i NO gresol_baix⟩ → avall_llit
+        ⇒ +gresol_baix
+    ▸ Avall. ⟨si gresol = "canal" i NO gresol_baix⟩ → avall_canal
+        ⇒ +gresol_baix
+    ▸ Avall. ⟨si gresol_baix⟩ → ja_avall
+    ▸ Bolcar el gresol. ⟨si NO gresol_ple⟩ → bolca_buit
+    ▸ Bolcar el gresol. ⟨si gresol_ple i gresol = "canal"⟩ → bolca_canal
+    ▸ Bolcar el gresol. ⟨si gresol_ple i gresol = "llit" i NO gresol_baix⟩ → bolca_dalt
+    ▸ Bolcar el gresol. ⟨si gresol_ple i gresol = "llit" i gresol_baix i gresol_brut⟩ → bolca_brut · FI
+        ⇒ −manxa_oberta, −metall_carregat, −escoria_treta, −gresol_ple, −gresol_brut, temperatura := 8
+    ▸ Bolcar el gresol. ⟨si gresol_ple i gresol = "llit" i gresol_baix i NO gresol_brut⟩ → bolca_bo · FI
+        ⇒ +colat, −gresol_ple
+    ▸ Deixar els comandaments. → (es queda) · FI
+
+[cap_canal]
+    [SO: grua] IRI: Cap al canal. ⟨si NO gresol_ple⟩
+    [SO: grua] IRI: Cap al canal. ⟨si gresol_ple⟩
+    ↪ menu
+
+[cap_llit]
+    [SO: grua] IRI: Cap al llit. ⟨si NO gresol_ple⟩
+    [SO: grua] IRI: Cap al llit. ⟨si gresol_ple⟩
+    ↪ menu
+
+[avall_llit]
+    [SO: grua] IRI: Avall, a poc a poc. ⟨si NO gresol_ple⟩
+    [SO: grua] IRI: Avall, a poc a poc. ⟨si gresol_ple⟩
+    ↪ menu
+
+[avall_canal]
+    [SO: grua] IRI: Avall, a poc a poc. ⟨si NO gresol_ple⟩
+    [SO: grua] IRI: Avall, a poc a poc. ⟨si gresol_ple⟩
+    ↪ menu
+
+[amunt_llit]
+    [SO: grua] IRI: Amunt. ⟨si NO gresol_ple⟩
+    [SO: grua] IRI: Amunt. ⟨si gresol_ple⟩
+    ↪ menu
+
+[amunt_canal]
+    [SO: grua] IRI: Amunt. ⟨si NO gresol_ple⟩
+    [SO: grua] IRI: Amunt. ⟨si gresol_ple⟩
+    ↪ menu
+
+[no_baix]
+    IRI: Així de baix, s'enduria tot el que troba. Primer, amunt.
+    ↪ menu
+
+[final]
+    IRI: Més enllà no va: el carril s'acaba.
+    ↪ menu
+
+[ja_avall]
+    IRI: Més avall, no: tocaria a terra.
+    ↪ menu
+
+[ja_amunt]
+    IRI: Ja és amunt del tot.
+    ↪ menu
+
+[bolca_buit]
+    IRI: Bolcar-lo buit? En cauria pols i prou.
+    ↪ menu
+
+[bolca_canal]
+    IRI: Aquí no hi ha cap motlle. Ho tiraria tot a terra.
+    ↪ menu
+
+[bolca_dalt]
+    IRI: Des d'aquí dalt, esquitxaria fora del motlle. Més avall.
+    ↪ menu
+
+[bolca_brut]
+    [SO: colada] IRI: Abocant...
+    NARRADOR: El metall cau al motlle... amb l'escòria. Fa bombolles.
+    IRI: Les claus surten amb forats. Això no obre res. Ni una llauna.
+    NARRADOR: Es refon tot i es torna a començar.
+
+[bolca_bo]
+    [SO: colada] IRI: Abocant...
+    NARRADOR: El metall cau al motlle com mel encesa. Tres claus, tres raigs de llum.
 
 ```
 
@@ -3029,7 +3174,7 @@ COMENÇA A: baixat (si tomas_baixa i no (ha vist rosa.baixat)) · torna (si ha v
     ▸ Res, Rosa. → (es queda) · FI
 
 [vestit]
-    ROSA: El de reina? Me'l vaig posar quan vaig ser reina de la Festa Major de la Fosa. Fa trenta anys.
+    ROSA: El de reina? Me'l vaig posar quan vaig ser reina de la Festa Major de la Foneria. Fa trenta anys.
     ROSA: Per entrar a casa del Magnat? Us el deixo. Però una cosa.
     ROSA: Fa setmanes que en Tomàs és a la vostra nau i encara no ha baixat la rampa. Que el vingui a buscar ell.
     ⇒ +rosa_vol_tomas
@@ -3131,7 +3276,7 @@ COMENÇA A: inici
     NARRADOR: La font de Verne contracta: vint-i-quatre hores, cap vaga i cap aigua. ⟨si escena = 4 i contractacio_vista i NO mosca_contractada i NO canalla_beu⟩
     NARRADOR: La Mosca té feina i targeta. El condensador és al carrer. ⟨si escena = 4 i mosca_contractada i NO canalla_beu⟩
     NARRADOR: L'Iri ha de tornar a parlar amb en Bru. ⟨si escena = 4 i canalla_beu i NO promesa_lia⟩
-    NARRADOR: Preparar el motlle de les claus al llit de colada de la fosa. ⟨si escena = 4 i promesa_lia i NO motlle_preparat i NO cal_sorra⟩
+    NARRADOR: Preparar el motlle de les claus al llit de colada de la foneria. ⟨si escena = 4 i promesa_lia i NO motlle_preparat i NO cal_sorra⟩
     NARRADOR: Sorra fina per al motlle: a Ferrum només n'hi ha de pedra picada. ⟨si escena = 4 i cal_sorra i NO motlle_preparat⟩
     NARRADOR: La platja d'Aqua ara és el lot 9 de Verne: de la línia de l'aigua de dimarts cap amunt. ⟨si escena = 4 i cal_sorra i lot9_vist i NO sorra_agafada⟩
     NARRADOR: La colada: la Vet al forn i l'Iri a la colada. ⟨si escena = 4 i motlle_preparat i NO claus_fetes⟩
@@ -3542,10 +3687,10 @@ promesa_iri — quan bru_lia i NO promesa_lia i juga iri · fins que promesa_lia
     1. En Bru té por per la seva filla, la Lia, que treballa al palau.
     2. Algú li ha de fer una promesa. I negociar és cosa de l'Iri.
     3. Parla amb en Bru i promet-li que li portareu la Lia a casa.
-motlle — quan promesa_lia i NO motlle_preparat i NO cal_sorra · fins que cal_sorra o motlle_preparat
+motlle — quan promesa_lia i NO motlle_preparat i NO cal_sorra i NO motlle_posat · fins que motlle_posat o cal_sorra o motlle_preparat
     1. En Bru ens ha donat el motlle de les claus.
-    2. El motlle va al llit de colada, a la fosa.
-    3. Amb l'Iri, entra a la fosa, passa a la colada i fes servir el motlle amb el llit de colada.
+    2. El motlle va al llit de colada, a la foneria.
+    3. Amb l'Iri, entra a la foneria, passa a la colada i fes servir el motlle amb el llit de colada.
 lot9 — quan cal_sorra i lot9_vist i NO franja_vista i NO sorra_agafada i juga iri · fins que franja_vista o sorra_agafada
     1. Què tinc: un cartell que diu que la platja és de Verne. Què diu exactament? Fins on arriba, el lot 9?
     2. Fins a la línia de l'aigua, amidada dimarts. I el mar d'Aqua no s'està quiet: les boies de la Juana ho mesuren.
@@ -3560,20 +3705,38 @@ sorra — quan cal_sorra i NO sorra_agafada · fins que sorra_agafada
     3. Amb l'Iri, ves a Aqua (amb el mapa del pont, si no hi sou), baixa al fons del mar i agafa la sorra fina.
 motlle2 — quan promesa_lia i sorra_agafada i NO motlle_preparat · fins que motlle_preparat
     1. Ja tenim sorra fina.
-    2. Torna a la fosa de Ferrum.
-    3. Amb l'Iri, fes servir el motlle amb el llit de colada, amb la sorra a l'inventari (si la porta la Vet, que te l'enviï amb la Mosca).
+    2. Torna a la foneria de Ferrum.
+    3. Amb l'Iri, posa el motlle al llit de colada i colga'l amb la sorra (si la porta la Vet, que te l'enviï amb la Mosca).
 colada_lloc — quan motlle_preparat i NO sync_colada i NO claus_fetes · fins que sync_colada o claus_fetes
     1. La Vet al forn i l'Iri a la colada, a la vegada.
-    2. La fosa té dues sales: el forn i la colada.
+    2. La foneria té dues sales: el forn i la colada.
     3. Posa la Vet a la sala del forn i l'Iri a la de la colada (canvia de protagonista per moure l'altra).
 c_manxa — quan sync_colada i NO manxa_oberta · fins que manxa_oberta
-    1. Al forn, primer, el foc: la manxa.
+    1. Al forn fa fred. Sense foc, aquí no es fon res.
+    2. Al forn, primer, el foc: la manxa.
 c_metall — quan sync_colada i manxa_oberta i NO metall_carregat · fins que metall_carregat
-    1. Al forn: el metall. La pila de comptadors.
-c_escoria — quan sync_colada i metall_carregat i NO escoria_treta · fins que escoria_treta
-    1. Al forn: fora l'escòria amb el rascle, abans d'abocar.
-c_gresol — quan sync_colada i escoria_treta i NO colat · fins que colat
-    1. A la colada, l'Iri: aboca el gresol.
+    1. Ja hi ha foc. Què hi falta, dins el forn?
+    2. Al forn: el metall. La pila de comptadors.
+c_escoria — quan sync_colada i metall_carregat i NO escoria_treta i NO gresol_ple · fins que escoria_treta
+    1. Al metall fos hi sura una crosta grisa. Amb això, les claus no obririen res.
+    2. Al forn: fora l'escòria amb el rascle, abans d'obrir la piquera.
+c_canal — quan sync_colada i NO colat i NO gresol_ple i no (gresol = "canal" i gresol_baix) · fins que (gresol = "canal" i gresol_baix) o gresol_ple o colat
+    1. El metall del forn arriba a la colada per un canal. Algú l'hi ha d'esperar a sota.
+    2. El gresol s'ha de posar sota el canal, i baix. Es mou amb els comandaments de la grua.
+    3. Amb l'Iri, als comandaments: esquerra (si és baix, primer amunt) i avall.
+c_piquera — quan sync_colada i NO colat i metall_carregat i escoria_treta i NO gresol_ple i (gresol = "canal" i gresol_baix) · fins que gresol_ple o colat
+    1. El gresol espera sota el canal. Al forn, qui deixa sortir el metall?
+    2. El forn té una piquera. L'ha d'obrir la Vet.
+    3. Amb la Vet, obre la piquera: el broc de sota del forn.
+c_portar — quan sync_colada i NO colat i gresol_ple i no (gresol = "llit" i gresol_baix) · fins que (gresol = "llit" i gresol_baix) o colat o NO gresol_ple
+    1. El gresol és ple. El motlle no és pas sota el canal.
+    2. Amb els comandaments: amunt, dreta (cap al llit) i avall.
+c_fred — quan sync_colada i NO colat i manxa_oberta i temperatura ≤ 3 · fins que temperatura > 3 o colat
+    1. El termòmetre baixa a cada moviment. El forn necessita aire.
+    2. Amb la Vet, la manxa torna a escalfar el forn (si no és al màxim).
+c_gresol — quan sync_colada i NO colat i gresol_ple i (gresol = "llit" i gresol_baix) · fins que colat o NO gresol_ple
+    1. El gresol és damunt el motlle, ben baix.
+    2. Amb els comandaments, bolca el gresol.
 c_sorra — quan sync_colada i colat i NO claus_fetes · fins que claus_fetes
     1. A la colada, l'Iri: tapa el motlle amb la sorra (fes servir la sorra amb el llit).
 verdant — quan escena = 5 i NO nil_palau i NO fidel_admet · fins que nil_palau o fidel_admet
