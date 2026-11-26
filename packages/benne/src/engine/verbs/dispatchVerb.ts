@@ -149,9 +149,11 @@ function dispatchGlobalVerbTiers(
     target,
     fallbackLine,
   };
+  // A game that routes the unhandled verbs itself (`fallbacks.onUnhandled`) has handled them: no warning.
+  const routed = listenerCount(bus, VERB_UNHANDLED_EVENT) > 0;
   bus.emit(VERB_UNHANDLED_EVENT, unhandled);
 
-  if (import.meta.env.DEV) {
+  if (import.meta.env.DEV && !routed) {
     console.warn(
       `[Benne] Unhandled verb "${verbId}" on ${target.type} (no object/global handler). Message: "${fallbackLine}"`,
       target,
