@@ -348,6 +348,15 @@ def escena(cv, tex, estat=frozenset()):
     e = Escena(cv, CAM, LLUMS, ambient=-0.6)
     zn = CAM.pos[2] + 60
     parets, coses = tex['parets'], tex['coses']
+    # per sobre de les parets (la càmera és més alta que elles): el formigó continua fins a un sostre fosc, perquè a
+    # dalt de la pantalla no quedi un buit negre
+    zc = CAM.pos[2] + 4
+    alt = HW + 140
+    e.quad('sostre', (0, alt, zc), (XR, alt, zc), (XR, alt, ZW), (0, alt, ZW), ramp=CONC, lvl=1.6, dues_cares=True)
+    e.quad('paret_fons_alta', (0, alt, ZW), (XR, alt, ZW), (XR, HW, ZW), (0, HW, ZW), ramp=CONC,
+           lvl=lambda s, t, P: 2.0 + 1.2 * min(1.0, t / 140))
+    e.quad('paret_esq_alta', (0, alt, zc), (0, alt, ZW), (0, HW, ZW), (0, HW, zc), ramp=CONC,
+           lvl=lambda s, t, P: 1.8 + 1.0 * min(1.0, t / 140))
     # la paret de l'esquerra (x = 0): de prop, formigó; cap a la cantonada, el dibuix pla (x 0..215)
     _paret_proc(e, 'paret_esq_prop', (0, HW, zn), (0, HW, ZW - XL), (0, 0, ZW - XL), (0, 0, zn), 5)
     e.quad('paret_esq', (0, HW, ZW - XL), (0, HW, ZW), (0, 0, ZW), (0, 0, ZW - XL), tex=(parets, (0, 0, XL, HW)))

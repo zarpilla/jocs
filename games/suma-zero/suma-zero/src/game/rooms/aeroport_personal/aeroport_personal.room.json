@@ -248,7 +248,7 @@
       "animations": {
         "davant_carro": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 184
     },
     {
@@ -260,7 +260,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 999
     }
   ],
@@ -299,7 +299,7 @@
         "y": 100,
         "radius": 60,
         "color": "#ff4a3a",
-        "intensity": 1,
+        "intensity": 1.0,
         "whenPropVisible": "alarma"
       }
     ]

@@ -279,7 +279,9 @@ def escena(cv, tex, estat=frozenset()):
         sx, sz = SOLER
         e.sprite('soler', _soler(), (34, 111), (sx, TERM_Y, sz))
     # ── el sostre i les parets ──
-    e.quad('sostre', (0, HW, zn), (XR, HW, zn), (XR, HW, ZW), (0, HW, ZW), ramp=CONC, lvl=2.6, dues_cares=True)
+    # (el sostre arriba fins a la càmera: si no, a dalt de la pantalla quedava una franja negra)
+    zc = CAM.pos[2] + 4
+    e.quad('sostre', (0, HW, zc), (XR, HW, zc), (XR, HW, ZW), (0, HW, ZW), ramp=CONC, lvl=2.6, dues_cares=True)
     # la paret del vidre (x = 0): de prop, bloc; cap a la cantonada, el dibuix pla (amb el forat del vidre)
     e.quad('paret_esq_prop', (0, HW, zn), (0, HW, ZW - XL), (0, 0, ZW - XL), (0, 0, zn), ramp=BLOCK, lvl=_bloc())
     e.quad('paret_esq', (0, HW, ZW - XL), (0, HW, ZW), (0, 0, ZW), (0, 0, ZW - XL), tex=(paret, (0, 0, XL, HW)))
