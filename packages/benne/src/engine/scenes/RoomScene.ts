@@ -1162,6 +1162,7 @@ export class RoomScene extends Phaser.Scene {
     }
     if (previousPlayer) {
       previousPlayer.setData('isPlayer', false);
+      this.syncPlayerSpriteInput(previousPlayer);
     }
 
     this.player = next instanceof Phaser.GameObjects.Sprite
@@ -1169,6 +1170,7 @@ export class RoomScene extends Phaser.Scene {
       : null;
     if (next) {
       next.setData('isPlayer', true);
+      this.syncPlayerSpriteInput(next);
     }
 
     if (next && next !== previousPlayer) {
@@ -3873,9 +3875,7 @@ export class RoomScene extends Phaser.Scene {
       return;
     }
     if (sprite.getData('benneCharacterInteractionAttached') === true) {
-      if (sprite.input && !sprite.input.enabled) {
-        sprite.setInteractive();
-      }
+      this.syncPlayerSpriteInput(sprite);
       return;
     }
     const charData = sprite.getData('character') as CharacterData | undefined;
@@ -6156,8 +6156,7 @@ export class RoomScene extends Phaser.Scene {
       const sprite = e.sprite as Phaser.GameObjects.Sprite;
       if (!sprite.input?.enabled || !sprite.visible || sprite.alpha <= 0.05) continue;
       if (e.kind === 'character' && sprite.getData('isPlayer') === true) continue;
-      const b = sprite.getBounds();
-      centers.push({ x: b.centerX, y: e.kind === 'character' ? b.top + b.height * 0.35 : b.centerY });
+      centers.push(this.clickableCenter(sprite, e.kind === 'character'));
     }
     if (centers.length === 0) return;
     const g = this.add.graphics();
@@ -6185,6 +6184,26 @@ export class RoomScene extends Phaser.Scene {
     });
   }
 
+  /**
+   * Where the marker (or a hint thread) of a clickable sprite goes. With a hit polygon (a prop's collider: its
+   * frame is often the whole room, so the middle of the frame is the middle of the screen), the middle of the
+   * polygon; otherwise the middle of the frame (a character, a bit above: the chest).
+   */
+  private clickableCenter(sprite: Phaser.GameObjects.Sprite, character: boolean): { x: number; y: number } {
+    const area = sprite.input?.hitArea as Phaser.Geom.Polygon | undefined;
+    if (area instanceof Phaser.Geom.Polygon && area.points.length >= 3) {
+      const b = Phaser.Geom.Polygon.GetAABB(area);
+      const local = Phaser.Geom.Polygon.Contains(area, b.centerX, b.centerY)
+        ? { x: b.centerX, y: character ? b.top + b.height * 0.35 : b.centerY }
+        : { x: area.points[0]!.x, y: area.points[0]!.y };
+      const m = sprite.getWorldTransformMatrix();
+      const p = m.transformPoint(local.x - sprite.displayOriginX, local.y - sprite.displayOriginY);
+      return { x: p.x, y: p.y };
+    }
+    const b = sprite.getBounds();
+    return { x: b.centerX, y: character ? b.top + b.height * 0.35 : b.centerY };
+  }
+
   /** Threads drawn by {@link showThreads}, removed when they fade or the room changes. */
   private threads: Phaser.GameObjects.Graphics | null = null;
 
@@ -6201,14 +6220,10 @@ export class RoomScene extends Phaser.Scene {
     const player = this.characterSpritesByDefId.get(this.getActivePlayerCharacterId());
     const centerOf = (id: string): { x: number; y: number } | null => {
       const prop = this.propSpritesById.get(id) as Phaser.GameObjects.Sprite | undefined;
-      if (prop && prop.visible && prop.alpha > 0.05) {
-        const b = prop.getBounds();
-        return { x: b.centerX, y: b.centerY };
-      }
+      if (prop && prop.visible && prop.alpha > 0.05) return this.clickableCenter(prop, false);
       const character = this.characterSpritesByDefId.get(id);
       if (character && character.visible && character.alpha > 0.05) {
-        const b = character.getBounds();
-        return { x: b.centerX, y: b.top + b.height * 0.35 };
+        return this.clickableCenter(character as Phaser.GameObjects.Sprite, true);
       }
       for (const e of this.roomStackEntities) {
         if (e.kind !== 'hotspot' || e.sortKey !== `hotspot:${id}`) continue;
@@ -6707,6 +6722,20 @@ export class RoomScene extends Phaser.Scene {
     };
     sprite.on('pointerdown', (pointer: Phaser.Input.Pointer) => onPress(pointer));
     sprite.setData('benneCharacterInteractionAttached', true);
+    this.syncPlayerSpriteInput(sprite);
+  }
+
+  /**
+   * The character the player controls takes no clicks: she often stands in front of the thing to click (where she
+   * stopped to use it), and her sprite would take the click from it. Other characters keep theirs (if clickable).
+   */
+  private syncPlayerSpriteInput(sprite: Phaser.GameObjects.GameObject): void {
+    const s = sprite as Phaser.GameObjects.Sprite;
+    if (!s.input) return;
+    const charData = s.getData('character') as CharacterData | undefined;
+    const want = s.getData('isPlayer') !== true && (!charData || this.getCharacterScriptClickable(charData.id));
+    if (want && !s.input.enabled) s.setInteractive();
+    else if (!want && s.input.enabled) s.disableInteractive();
   }
 
   private setupCustomGameCursor(): void {
