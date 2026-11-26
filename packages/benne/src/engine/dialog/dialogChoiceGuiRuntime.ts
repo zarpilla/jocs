@@ -708,7 +708,11 @@ export class DialogChoiceDynamicRowState {
     viewportMask.fillRect(0, 0, viewportClipW, viewportAvailableHeightPx);
     viewportMask.setVisible(false);
     viewportClip.add(viewportMask);
-    viewportClip.setMask(viewportMask.createGeometryMask());
+    // Geometry masks only work in the Canvas renderer (Phaser 4 warns on every call in WebGL). The rows are already
+    // laid out to fit the viewport (`page`), so in WebGL nothing is lost without it.
+    if (scene.sys.game.renderer.type === Phaser.CANVAS) {
+      viewportClip.setMask(viewportMask.createGeometryMask());
+    }
     gridContainer.add(viewportClip);
     this.viewportClipContainer = viewportClip;
 
