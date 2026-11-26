@@ -80,7 +80,7 @@ export function triaSala(sala: string): { sala: string | null; linies: string[] 
   return { sala: v.sala, linies: v.linies.map((l) => narrative.t(l.text)) };
 }
 
-events.on('narrative:mapa', () => mostraMapa());
+events.on('narrative:mapa', async () => mostraMapa());
 
 // Esc tanca el plànol.
 if (typeof window !== 'undefined') {

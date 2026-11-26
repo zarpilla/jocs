@@ -84,7 +84,8 @@ export function showHistory() {
 
 const historyOpen = () => guis.historial.visible;
 const hideHistory = () => guis.historial.hide();
-guis.historial.controls.fons.onClick(hideHistory);
+// (`async`: és instantani, i així Benne no avisa que no ha passat pel connector de BenneScript)
+guis.historial.controls.fons.onClick(async () => hideHistory());
 
 // La tecla H obre i tanca l'historial, si no hi ha cap menú obert (al de desar s'hi escriu). Obert, la
 // roda i les fletxes van enrere i endavant, i Esc el tanca.

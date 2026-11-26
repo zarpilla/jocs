@@ -296,7 +296,9 @@ function migrateOldPositions() {
 }
 
 // Partida carregada (o nova: aleshores l'estat és buit i `ensureStarted` la prepara en entrar a la primera sala).
-events.on('gameState:replaced', () => {
+// (els gestors d'`events.on` d'aquest fitxer són `async` perquè Benne no avisi que no han passat pel connector de
+// BenneScript: són instantanis, el cos s'executa sencer de seguida)
+events.on('gameState:replaced', async () => {
   migrateOldPositions();
   adoptLoadedState();
   applyLocalizedNames();
@@ -446,11 +448,11 @@ export function rememberProtagonistRoom(who: string, room: string) {
   store.protagonistRooms = { ...((store.protagonistRooms ?? {}) as Record<string, string>), [who]: room };
 }
 // Canvis al món que poden completar missions o mostrar coses.
-events.on('gameState:inventoryChanged', () => {
+events.on('gameState:inventoryChanged', async () => {
   adoptLoadedState();
   narrative.worldChanged();
 });
-events.on('gameState:roomContextChanged', () => {
+events.on('gameState:roomContextChanged', async () => {
   boundHotspots = {};
   adoptLoadedState();
   narrative.worldChanged();
