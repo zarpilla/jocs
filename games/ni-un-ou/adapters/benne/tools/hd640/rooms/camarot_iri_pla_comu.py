@@ -229,23 +229,29 @@ def glass(cv):
 
 
 def maceta(cv):
-    """La maceta de goma, penjada d'un ganxo sota l'ull de bou, amb el cap avall (l'Iri l'agafa a l'Escena 1)."""
-    RUB = [(10, 10, 12), (24, 24, 28), (42, 42, 46), (66, 66, 70), (96, 96, 100)]
+    """
+    La maceta de goma, penjada d'un ganxo sota l'ull de bou, amb el cap avall (l'Iri l'agafa a l'Escena 1). És la clau
+    del primer trencaclosques: la cinta groga del puny i el reflex del cap la fan destacar a la paret fosca.
+    """
+    RUB = [(16, 16, 20), (34, 34, 40), (58, 58, 66), (88, 88, 98), (128, 130, 140)]
     box(cv, 410, 140, 416, 143, CAB, 3.6)                                   # el ganxo
     cv.put(413, 144, CAB, 4.4)
-    cv.line(413, 145, 411, 149, CORD, 2.4)                                  # el cordill del mànec
-    cv.line(413, 145, 415, 149, CORD, 2.0)
-    cv.rect(412, 149, 414, 175, WALNUT, lambda x, y: 3.6 - (x - 412) * 0.6)  # el mànec
-    cv.vline(412, 149, 175, WALNUT, 4.4)
-    for y in (156, 163):                                                    # la cinta del puny
-        cv.hline(412, 414, y, YELL, 2.6)
-    rrect(cv, 400, 175, 426, 187, 4, RUB, lambda x, y: 3.0 - (y - 175) * 0.12)  # el cap, de goma negra
-    cv.hline(403, 423, 177, RUB, 4.0)
-    cv.hline(404, 422, 178, RUB, 3.4)
-    for ex in (400, 426):                                                   # les cares de picar
-        cv.vline(ex, 177, 185, RUB, 1.2)
-    cv.put(413, 186, RUB, 0.6)
-    sota.floor_shadow(cv, 413, 189, 12, 1, 0.25)
+    cv.line(413, 145, 411, 149, CORD, 2.8)                                  # el cordill del mànec
+    cv.line(413, 145, 415, 149, CORD, 2.4)
+    cv.rect(411, 149, 415, 175, WALNUT, lambda x, y: 4.4 - (x - 411) * 0.5)  # el mànec
+    cv.vline(411, 149, 175, WALNUT, 5.2)
+    for y0 in (154, 162):                                                   # la cinta groga del puny
+        for y in (y0, y0 + 1, y0 + 2):
+            cv.hline(411, 415, y, YELL, 4.6 if y == y0 else 3.8)
+    rrect(cv, 399, 175, 427, 188, 4, RUB, lambda x, y: 3.4 - (y - 175) * 0.12)  # el cap, de goma negra
+    cv.hline(402, 424, 177, RUB, 4.6)                                       # el reflex de dalt
+    cv.hline(403, 423, 178, RUB, 3.8)
+    for ex in (399, 427):                                                   # les cares de picar
+        cv.vline(ex, 177, 186, RUB, 1.6)
+    for x in (405, 406, 407):                                               # una lluentor al cap
+        cv.put(x, 180, RUB, 4.8)
+    cv.put(413, 187, RUB, 0.8)
+    sota.floor_shadow(cv, 413, 190, 13, 1, 0.25)
 
 
 # ─── Endoll, tauleta, pòster, ull de bou, granota ───────────────────────────
