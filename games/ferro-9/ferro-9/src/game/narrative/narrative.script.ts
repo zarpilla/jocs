@@ -7,7 +7,7 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { MusicHandle, SfxHandle, ambient, background, cutscene, display, fadeIn, fadeOut, game, player, saves, stayBlackOnEnter, wait } from '@benne/script';
+import { MusicHandle, SfxHandle, ambient, background, cutscene, display, fadeIn, fadeOut, game, player, pointer, saves, stayBlackOnEnter, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
@@ -693,6 +693,13 @@ function startPatrols() {
   }
 }
 
+/** Si el ratolí és damunt d'un personatge. */
+function hovered(id: string): boolean {
+  const h = pointer.hover
+  if (!h?.kind || !h.id || h.kind !== 'character') return false
+  return targetFromBenne(h.kind, h.id).id === id
+}
+
 /**
  * La ronda d'un personatge: mentre l'estat la demani, va de punt en punt i s'hi atura una estona. Si passa
  * alguna cosa (una línia, una conversa, una cinemàtica), s'atura on és, i després continua cap al mateix
@@ -707,7 +714,8 @@ function patrol(id: string, room: string) {
   let last = { x: -1, y: -1 }
   while (narrative.world.currentRoom() === room) {
     const route = narrative.patrolOf(id, room)
-    if (!route || !actor.visible || game.isBusy || narrative.world.activeProtagonist() === id) {
+    // (també s'atura mentre el ratolí hi és a sobre: si no, un robot que va i ve costa d'encertar)
+    if (!route || !actor.visible || game.isBusy || narrative.world.activeProtagonist() === id || hovered(id)) {
       if (walking) actor.stopWalking()
       walking = false
       wait(0.25)
