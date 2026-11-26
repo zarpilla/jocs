@@ -221,6 +221,134 @@
         "y": 141
       },
       "defaultVerb": "open"
+    },
+    {
+      "id": "taquilla",
+      "active": true,
+      "description": "taquilla",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 472,
+          "y": 60
+        },
+        {
+          "x": 522,
+          "y": 60
+        },
+        {
+          "x": 522,
+          "y": 185
+        },
+        {
+          "x": 472,
+          "y": 185
+        }
+      ],
+      "walkToPoint": {
+        "x": 455,
+        "y": 200
+      },
+      "lookAtPoint": {
+        "x": 497,
+        "y": 185
+      }
+    },
+    {
+      "id": "tauler_inventari",
+      "active": true,
+      "description": "tauler de l'inventari",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 357,
+          "y": 40
+        },
+        {
+          "x": 457,
+          "y": 40
+        },
+        {
+          "x": 457,
+          "y": 105
+        },
+        {
+          "x": 357,
+          "y": 105
+        }
+      ],
+      "walkToPoint": {
+        "x": 400,
+        "y": 200
+      },
+      "lookAtPoint": {
+        "x": 407,
+        "y": 105
+      }
+    },
+    {
+      "id": "banc",
+      "active": true,
+      "description": "banc de treball",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 362,
+          "y": 118
+        },
+        {
+          "x": 472,
+          "y": 118
+        },
+        {
+          "x": 472,
+          "y": 200
+        },
+        {
+          "x": 362,
+          "y": 200
+        }
+      ],
+      "walkToPoint": {
+        "x": 400,
+        "y": 210
+      },
+      "lookAtPoint": {
+        "x": 417,
+        "y": 200
+      }
+    },
+    {
+      "id": "retol",
+      "active": true,
+      "description": "rètol",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 62,
+          "y": 17
+        },
+        {
+          "x": 155,
+          "y": 17
+        },
+        {
+          "x": 155,
+          "y": 45
+        },
+        {
+          "x": 62,
+          "y": 45
+        }
+      ],
+      "walkToPoint": {
+        "x": 124,
+        "y": 171
+      },
+      "lookAtPoint": {
+        "x": 108,
+        "y": 45
+      }
     }
   ],
   "points": [],

@@ -584,3 +584,11 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 065): rectangles de pantalla i el punt on s'hi va.
+GEOMETRIA['things'].update({
+    'taquilla': {'rect': (472, 60, 522, 185), 'walk': (455, 200)},
+    'tauler_inventari': {'rect': (357, 40, 457, 105), 'walk': (400, 200)},
+    'banc': {'rect': (362, 118, 472, 200), 'walk': (400, 210)},
+    'retol': {'rect': (62, 17, 155, 45), 'walk': GEOMETRIA['things']['porta_calderes']['walk']},
+})

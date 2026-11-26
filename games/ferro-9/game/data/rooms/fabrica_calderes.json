@@ -503,6 +503,62 @@
           }
         ]
       }
+    },
+    "caldera": {
+      "name": "sala.fabrica_calderes.caldera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.caldera.look"
+            }
+          ]
+        }
+      ]
+    },
+    "foc": {
+      "name": "sala.fabrica_calderes.foc.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.foc.look"
+            }
+          ]
+        }
+      ]
+    },
+    "vagoneta": {
+      "name": "sala.fabrica_calderes.vagoneta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.vagoneta.look"
+            }
+          ]
+        }
+      ]
+    },
+    "rellotge": {
+      "name": "sala.fabrica_calderes.rellotge.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.rellotge.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "onEnter": [

@@ -373,6 +373,62 @@
           ]
         }
       ]
+    },
+    "taquilla": {
+      "name": "sala.fabrica_magatzem.taquilla.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.taquilla.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tauler_inventari": {
+      "name": "sala.fabrica_magatzem.tauler_inventari.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.tauler_inventari.look"
+            }
+          ]
+        }
+      ]
+    },
+    "banc": {
+      "name": "sala.fabrica_magatzem.banc.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.banc.look"
+            }
+          ]
+        }
+      ]
+    },
+    "retol": {
+      "name": "sala.fabrica_magatzem.retol.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.retol.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "onEnter": [

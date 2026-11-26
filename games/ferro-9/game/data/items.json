@@ -35,7 +35,19 @@
     "description": "obj.formulari_27b.desc",
     "props": {
       "pes": 0.01
-    }
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "llapis",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.formulari_27b.llapis"
+          }
+        ]
+      }
+    ]
   },
   "formulari_segellat": {
     "name": "obj.formulari_segellat.nom",
@@ -129,6 +141,16 @@
       "pes": 0.01
     },
     "interactions": [
+      {
+        "verb": "use",
+        "item": "formulari_27b",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.formulari_27b.llapis"
+          }
+        ]
+      },
       {
         "verb": "use",
         "item": "llibreta_torn",

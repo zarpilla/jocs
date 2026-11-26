@@ -298,7 +298,19 @@
         "description": "obj.formulari_27b.desc",
         "props": {
           "pes": 0.01
-        }
+        },
+        "interactions": [
+          {
+            "verb": "use",
+            "item": "llapis",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.formulari_27b.llapis"
+              }
+            ]
+          }
+        ]
       },
       "formulari_segellat": {
         "name": "obj.formulari_segellat.nom",
@@ -392,6 +404,16 @@
           "pes": 0.01
         },
         "interactions": [
+          {
+            "verb": "use",
+            "item": "formulari_27b",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.formulari_27b.llapis"
+              }
+            ]
+          },
           {
             "verb": "use",
             "item": "llibreta_torn",
@@ -3182,6 +3204,62 @@
                 }
               ]
             }
+          },
+          "caldera": {
+            "name": "sala.fabrica_calderes.caldera.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.caldera.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "foc": {
+            "name": "sala.fabrica_calderes.foc.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.foc.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "vagoneta": {
+            "name": "sala.fabrica_calderes.vagoneta.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.vagoneta.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "rellotge": {
+            "name": "sala.fabrica_calderes.rellotge.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.rellotge.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "onEnter": [
@@ -5268,6 +5346,62 @@
                   {
                     "who": "player",
                     "text": "sala.fabrica_magatzem.mira.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "taquilla": {
+            "name": "sala.fabrica_magatzem.taquilla.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.taquilla.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "tauler_inventari": {
+            "name": "sala.fabrica_magatzem.tauler_inventari.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.tauler_inventari.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "banc": {
+            "name": "sala.fabrica_magatzem.banc.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.banc.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "retol": {
+            "name": "sala.fabrica_magatzem.retol.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.retol.look"
                   }
                 ]
               }
@@ -19595,6 +19729,7 @@
       "obj.mapa_fuga.signes": "{ruta_conducte}   (↑ = recte)",
       "obj.mapa_fuga.text2": "El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. PD 2: la Directora ha fet treure el tub de la vàlvula de la llançadora, i sense no engega. Si me'n fas un, que sigui l'últim enviament. —V.»",
       "obj.molla.nota": "«I.: fes-me una cosa de ferro-9 que soni EXACTAMENT com aquesta molla. És per obrir un pany. No la toquis, que està afinada. I zero-g, eh. —V.»",
+      "obj.formulari_27b.llapis": "L'omplo en un minut: nom, torn, material. Ara falta el que de debò compta aquí: un segell.",
       "pj.iri.nom": "Iri",
       "pj.vet.nom": "Vet",
       "pj.cargol.nom": "Cargol",
@@ -20492,7 +20627,23 @@
       "sala.gavina_memoria.holograma.cafe2": "Inexacte. El cafè, se'l pagaven ells. Dues monedes, a la màquina del passadís.",
       "sala.gavina_memoria.holograma.casc1": "«El fundador treballava colze a colze amb els obrers. Ho demostra el seu casc de seguretat: ni una ratlla.»",
       "sala.gavina_memoria.holograma.casc2": "Ni una ratlla perquè no se'l va posar mai. Consta a l'inventari.",
-      "sala.gavina_memoria.mapa.signes": "Els revolts del mapa: {ruta_conducte}"
+      "sala.gavina_memoria.mapa.signes": "Els revolts del mapa: {ruta_conducte}",
+      "sala.fabrica_calderes.caldera.nom": "caldera",
+      "sala.fabrica_calderes.caldera.look": "L'Aldaia, del 1953. El manòmetre en vermell, el termòmetre en vermell. Aquí, el vermell vol dir «normal».",
+      "sala.fabrica_calderes.foc.nom": "foc",
+      "sala.fabrica_calderes.foc.look": "No s'apaga mai. És l'únic treballador de la fàbrica amb contracte indefinit.",
+      "sala.fabrica_calderes.vagoneta.nom": "vagoneta de carbó",
+      "sala.fabrica_calderes.vagoneta.look": "Carbó per a tot el torn. El torn de dia sempre en deixa mitja vagoneta. Mitja buida.",
+      "sala.fabrica_calderes.rellotge.nom": "rellotge",
+      "sala.fabrica_calderes.rellotge.look": "Les tres. Al torn de nit, totes les hores són les tres.",
+      "sala.fabrica_magatzem.taquilla.nom": "taquilla",
+      "sala.fabrica_magatzem.taquilla.look": "Una taquilla amb el nom «MIRA» escrit a mà. Tancada amb cadenat.",
+      "sala.fabrica_magatzem.tauler_inventari.nom": "tauler de l'inventari",
+      "sala.fabrica_magatzem.tauler_inventari.look": "Cada eina té la seva silueta pintada al tauler. En falten tres. Ningú no sap de què eren.",
+      "sala.fabrica_magatzem.banc.nom": "banc de treball",
+      "sala.fabrica_magatzem.banc.look": "Papers, una tassa freda i una clau del 12 que ningú no reclama.",
+      "sala.fabrica_magatzem.retol.nom": "rètol",
+      "sala.fabrica_magatzem.retol.look": "«Sense formulari no hi ha material». La frase més sincera de tota la corporació."
     }
   },
   "locale": "ca",

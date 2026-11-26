@@ -270,6 +270,134 @@
         "y": 115
       },
       "defaultVerb": "open"
+    },
+    {
+      "id": "caldera",
+      "active": true,
+      "description": "caldera",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 135,
+          "y": 20
+        },
+        {
+          "x": 255,
+          "y": 20
+        },
+        {
+          "x": 255,
+          "y": 145
+        },
+        {
+          "x": 135,
+          "y": 145
+        }
+      ],
+      "walkToPoint": {
+        "x": 190,
+        "y": 160
+      },
+      "lookAtPoint": {
+        "x": 195,
+        "y": 145
+      }
+    },
+    {
+      "id": "foc",
+      "active": true,
+      "description": "foc",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 165,
+          "y": 145
+        },
+        {
+          "x": 228,
+          "y": 145
+        },
+        {
+          "x": 228,
+          "y": 185
+        },
+        {
+          "x": 165,
+          "y": 185
+        }
+      ],
+      "walkToPoint": {
+        "x": 200,
+        "y": 190
+      },
+      "lookAtPoint": {
+        "x": 196,
+        "y": 185
+      }
+    },
+    {
+      "id": "vagoneta",
+      "active": true,
+      "description": "vagoneta de carbó",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 272,
+          "y": 150
+        },
+        {
+          "x": 333,
+          "y": 150
+        },
+        {
+          "x": 333,
+          "y": 205
+        },
+        {
+          "x": 272,
+          "y": 205
+        }
+      ],
+      "walkToPoint": {
+        "x": 300,
+        "y": 215
+      },
+      "lookAtPoint": {
+        "x": 302,
+        "y": 205
+      }
+    },
+    {
+      "id": "rellotge",
+      "active": true,
+      "description": "rellotge",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 356,
+          "y": 12
+        },
+        {
+          "x": 376,
+          "y": 12
+        },
+        {
+          "x": 376,
+          "y": 33
+        },
+        {
+          "x": 356,
+          "y": 33
+        }
+      ],
+      "walkToPoint": {
+        "x": 312,
+        "y": 127
+      },
+      "lookAtPoint": {
+        "x": 366,
+        "y": 33
+      }
     }
   ],
   "points": [],
