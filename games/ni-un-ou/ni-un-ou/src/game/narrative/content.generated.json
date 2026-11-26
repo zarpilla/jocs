@@ -2981,6 +2981,17 @@
               {
                 "verb": "look",
                 "if": {
+                  "var": "munta_cuina",
+                  "op": "!=",
+                  "value": ""
+                },
+                "action": {
+                  "name": "munta.mirar"
+                }
+              },
+              {
+                "verb": "look",
+                "if": {
                   "protagonist": "vet"
                 },
                 "lines": [
@@ -8645,6 +8656,17 @@
             "name": "sala.pont.munta.nom",
             "interactions": [
               {
+                "verb": "look",
+                "if": {
+                  "var": "munta_pont",
+                  "op": "!=",
+                  "value": ""
+                },
+                "action": {
+                  "name": "munta.mirar"
+                }
+              },
+              {
                 "verb": "use",
                 "item": "llibreta",
                 "if": {
@@ -9122,6 +9144,17 @@
           "munta": {
             "name": "sala.rebost.munta.nom",
             "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "var": "munta_rebost",
+                  "op": "!=",
+                  "value": ""
+                },
+                "action": {
+                  "name": "munta.mirar"
+                }
+              },
               {
                 "verb": "look",
                 "lines": [

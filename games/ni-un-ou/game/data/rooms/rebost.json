@@ -33,6 +33,17 @@
       "interactions": [
         {
           "verb": "look",
+          "if": {
+            "var": "munta_rebost",
+            "op": "!=",
+            "value": ""
+          },
+          "action": {
+            "name": "munta.mirar"
+          }
+        },
+        {
+          "verb": "look",
           "lines": [
             {
               "who": "player",

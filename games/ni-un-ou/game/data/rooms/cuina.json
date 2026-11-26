@@ -111,6 +111,17 @@
         {
           "verb": "look",
           "if": {
+            "var": "munta_cuina",
+            "op": "!=",
+            "value": ""
+          },
+          "action": {
+            "name": "munta.mirar"
+          }
+        },
+        {
+          "verb": "look",
+          "if": {
             "protagonist": "vet"
           },
           "lines": [
