@@ -180,11 +180,13 @@ export function hiHaComodi(content: GameContent): boolean {
  *
  * Un comodí que fa coses (`hiHaComodi`: la mostra al muntacàrregues, la nota a la safata) sí que compta, però
  * només per als objectes que no tenen cap acció pròpia: un paper es pren a la mà (no té res més a fer), i el
- * comunicador, que s'obre sol, continua sent sol (es pot prendre a la mà des del menú: `potAnarALaMa`).
+ * comunicador, que s'obre sol, continua sent sol (es pot prendre a la mà des del menú: `potAnarALaMa`). Un objecte
+ * `lookOnly` (el quadern, que només es llegeix) també és sol.
  */
 export function objecteSol(content: GameContent, item: string): boolean {
   const demana = (list: InteractionDef[] | undefined) => (list ?? []).some((i) => i.item === item);
   if (demana(totes(content))) return false;
+  if (content.items[item]?.lookOnly) return true;
   const propies = content.items[item]?.interactions ?? [];
   if (propies.some((i) => i.item !== undefined && i.item !== '*')) return false;
   const actua = propies.some((i) => i.item === undefined && [i.verb].flat().some((v) => v !== 'look'));

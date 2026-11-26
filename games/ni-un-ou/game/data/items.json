@@ -43,6 +43,7 @@
   },
   "quadern": {
     "name": "obj.quadern.nom",
+    "lookOnly": true,
     "props": {
       "no_munta": "obj.quadern.no"
     },

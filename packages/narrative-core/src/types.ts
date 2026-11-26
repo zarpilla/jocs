@@ -151,6 +151,11 @@ export interface ItemDef {
   props?: Record<Id, Scalar>;
   /** Interaccions amb l'objecte a l'inventari (mirar-lo, combinar-lo amb un altre...). */
   interactions?: InteractionDef[];
+  /**
+   * Només es llegeix (un quadern, unes notes): a la interfície tàctil, tocar-lo el mira en lloc de prendre'l a la mà,
+   * encara que hi hagi comodins (`item: "*"`: el muntacàrregues, donar-lo a l'altra). Des del menú es pot prendre.
+   */
+  lookOnly?: boolean;
 }
 
 // ─── Sales i interaccions ────────────────────────────────────────────────────
