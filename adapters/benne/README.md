@@ -75,6 +75,10 @@ l'extensió de VS Code per editar sales, obre la carpeta del projecte Benne: és
 - **Sales, personatges i objectes que encara no existeixen a Benne**, amb una disposició automàtica i
   **art provisional** (caixes etiquetades; cal `python3` amb Pillow). El que ja existeix no es toca:
   quan un artista substitueixi un PNG, ha d'esborrar el fitxer `.provisional` del costat.
+  Redibuixar pot trigar minuts, així que el sync desa un hash del que hi entra (els `.py` d'art del joc, les
+  peticions de `.benne-provisional/`, les fonts i els `.room.json` de les sales que es dibuixen) a
+  `.benne/dibuix-provisional.hash`, i si no ha canviat i les imatges hi són, no torna a dibuixar.
+  `--redibuixa` ho força.
 - **Coses noves en sales que ja existeixen** (una porta, un objecte, un decorat): s'hi afegeixen amb
   la disposició automàtica, sense tocar la resta. Si la sala té disseny propi (`tools/room_designs.py`),
   l'art provisional les col·loca on diu el disseny.
@@ -120,7 +124,8 @@ on és cada cosa clicable, on hi camina la protagonista i on hi ha cada personat
 dibuixa i ajusta el `.room.json` perquè el que es veu i el que es clica coincideixin.
 
 Només mentre la sala sigui provisional (marca `.provisional`): quan hi hagi art de debò i polígons
-retocats a l'editor de Benne, s'esborra la marca i el sync ja no hi toca res més que els textos.
+retocats a l'editor de Benne, s'esborra la marca i el sync ja no hi toca res més que els textos (per redibuixar
+després una sala d'art definitiu, `python3 redibuixa_sala.py <sala>` des de `tools/` de l'adaptador del joc).
 Les sales noves sense disseny surten amb caixes etiquetades fins que se'ls en faci un.
 
 ## Personatges provisionals

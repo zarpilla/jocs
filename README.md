@@ -62,6 +62,30 @@ de la pestanya Actions (*Run workflow*), per a un joc o per a tots.
 És independent de la CI del web (repo `malaherbasoft`), que publica l'arrel i deixa estar les carpetes dels
 jocs. Fan servir els mateixos secrets: `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS` i `DEPLOY_TARGET`.
 
+## Skills de Claude Code
+
+Encàrrecs que Claude Code ja sap fer. Es criden amb `/<nom>` des de la carpeta de treball (la que conté `jocs/`,
+`malaherbasoft/` i `tasques/`), i viuen a `../.claude/skills/<nom>/SKILL.md`, fora d'aquest repo.
+
+| Skill | Què fa |
+|---|---|
+| `/tasca` | Apunta, consulta o actualitza les tasques pendents (`tasques/NNN-slug.md`, amb el seu visor). Separa el que escrius de pressa en una tasca per cosa, endevina el joc i el tipus, i hi posa context dels fitxers del joc. |
+| `/revisa-joc <joc>` | Juga una partida real al navegador, sense so, com una jugadora i sense mirar la solució. Per cada cosa millorable (art, animacions, personatges, trencaclosques, diàlegs, interfície, rejugabilitat, errors de consola) apunta una tasca amb `/tasca`. No toca el joc. |
+| `/resol-tasques [joc \| tipus \| ids]` | Resol les tasques obertes de la més prioritària a la menys, per tandes d'un mateix joc (un sol sync per tanda). Comprova cada una amb els tests i al navegador, fa un commit a `main` per tasca i hi apunta el hash. **No fa mai push.** Deixa les `idea`, les que tenen preguntes obertes i les veus: al final et fa les preguntes juntes i, si falten veus, apunta una sola tasca per joc per regenerar-les. |
+
+`/revisa-joc` i `/resol-tasques` fan servir el mateix navegador: `../.claude/skills/revisa-joc/navegador.mjs`, un
+Chromium amb `--mute-audio` (i el joc amb `?voices=off`) que es queda obert entre ordres, perquè Claude pugui jugar
+clic a clic mirant captures. També es pot fer servir a mà:
+
+```bash
+NAV="node ../.claude/skills/revisa-joc/navegador.mjs"
+$NAV obre "http://localhost:5173/?voices=off"   # després d'npm run dev -w <joc>
+$NAV foto                                       # escriu el camí de la captura
+$NAV clic 640 568                               # clic, dret, prem, mou, arrossega, tecla, fotos, js, consola, tanca
+```
+
+El motor té la seva pròpia skill, `bennescript`, a `packages/benne/.claude/skills/`.
+
 ## Un joc nou
 
 Tot el procés, de la idea a la web pública, amb una llista de comprovació per fase:

@@ -1,5 +1,5 @@
 /**
- * `npm run benne:sync [-- --locale ca] [--watch]` (des de games/<joc>/, o `-w <joc>` des de l'arrel)
+ * `npm run benne:sync [-- --locale ca] [--watch] [--redibuixa]` (des de games/<joc>/, o `-w <joc>` des de l'arrel)
  *
  * Porta el contingut del joc a un projecte Benne (per defecte, el del joc: `projecte` al seu joc.ts;
  * se'n pot triar un altre amb `--project`):
@@ -18,12 +18,13 @@
  * (llevat de `--init`, que abans en fa una còpia `.bak`).
  */
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, watch, writeFileSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { validateContent, type DialogueDef, type GameContent, type LocaleTable } from '@aventura/narrative-core';
-import { writeBenneContent } from './benne-content.js';
+import { requestsDir, writeBenneContent } from './benne-content.js';
 import { jocAdapterDir, loadJocBenne } from './joc-benne.js';
 import { GLOBAL_SCRIPT, TACTIL_DIR, TACTIL_GUIS, TACTIL_RUNTIME } from './tactil/index.js';
 import { gameDir as contentDir, jocDir, loadGameLogic } from '../../tools/joc.js';
@@ -43,6 +44,8 @@ const { values } = parseArgs({
     watch: { type: 'boolean', default: false },
     /** Substitueix el globalScript.ts de Benne pel de l'adaptador (en fa còpia de seguretat). */
     init: { type: 'boolean', default: false },
+    /** Torna a dibuixar l'art provisional encara que no hagi canviat res (vegeu `artCanviat`). */
+    redibuixa: { type: 'boolean', default: false },
   },
 });
 
@@ -112,6 +115,47 @@ ${handlers.join('\n\n')}
 `;
 }
 
+// ── Art provisional: només es redibuixa si ha canviat el que hi entra ─────────────────────────────────────────
+// draw_placeholders.py torna a dibuixar tot el que és provisional, i pot trigar minuts. El resultat només depèn dels
+// scripts d'art del joc, de les peticions (.benne-provisional), de les fonts i dels .room.json de les sales que es
+// dibuixen (on el sync posa les coses noves del contingut), així que se'n desa un hash a .benne/ (no va al repo).
+const HASH_ART = join(project, '.benne/dibuix-provisional.hash');
+let hashArt = '';
+
+function fitxers(dir: string, filtre: (f: string) => boolean): string[] {
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir, { recursive: true, withFileTypes: true })
+    .filter((e) => e.isFile() && !e.parentPath.includes('__pycache__') && filtre(e.name))
+    .map((e) => join(e.parentPath, e.name))
+    .sort();
+}
+
+function artCanviat(needsArt: string[]): boolean {
+  const h = createHash('sha256');
+  h.update(needsArt.join('\n'));
+  const entrades = [
+    ...fitxers(join(JOC_ADAPTER, 'tools'), (f) => f.endsWith('.py')),
+    ...fitxers(requestsDir(gameDir), () => true),
+    ...fitxers(join(gameDir, 'assets/fonts'), () => true),
+    ...needsArt.filter((a) => a.startsWith('rooms/')).map((a) => join(gameDir, a, `${a.slice(6)}.room.json`)),
+  ];
+  for (const f of entrades) h.update(`\0${f}\0`).update(existsSync(f) ? readFileSync(f) : '(no hi és)');
+  // Si falta una imatge (esborrada a mà, un clon nou), cal dibuixar.
+  const sortides = needsArt.map((a) =>
+    a === 'inventory' ? join(gameDir, 'assets/images/inventory/inventory.png')
+      : a.startsWith('rooms/') ? join(gameDir, 'assets/images', a, `${a.slice(6)}.png`)
+        : join(gameDir, 'assets/images', a));
+  hashArt = h.digest('hex');
+  if (values.redibuixa || !sortides.every((f) => existsSync(f))) return true;
+  return !existsSync(HASH_ART) || readFileSync(HASH_ART, 'utf8').trim() !== hashArt;
+}
+
+function desaHashArt() {
+  if (!hashArt) return;
+  mkdirSync(dirname(HASH_ART), { recursive: true });
+  writeFileSync(HASH_ART, `${hashArt}\n`);
+}
+
 function sync() {
   if (!existsSync(join(gameDir, 'game-config.json'))) {
     throw new Error(`${project} no sembla un projecte Benne (falta src/game/game-config.json).`);
@@ -179,13 +223,17 @@ function sync() {
   // 4. Sales, personatges, objectes, configuració i GUI de Benne
   const report = writeBenneContent(gameDir, content, table, fallback, joc);
   for (const c of report.created) console.log(`  + ${c}`);
-  if (report.needsArt.length) {
+  if (report.needsArt.length && !artCanviat(report.needsArt)) {
+    console.log(`  (art provisional sense canvis: no es redibuixa; --redibuixa per forçar-ho)`);
+  } else if (report.needsArt.length) {
     const draw = spawnSync('python3', [join(JOC_ADAPTER, 'tools/draw_placeholders.py'), gameDir], { stdio: 'inherit' });
     if (draw.error) {
       console.warn(`⚠ No s'ha pogut dibuixar l'art provisional (cal python3 amb Pillow). Falta: ${report.needsArt.join(', ')}`);
     } else if (draw.status !== 0) {
       // Un error de Python en dibuixar (p. ex. a room_designs.py) no pot passar per un sync correcte.
       throw new Error(`L'art provisional ha fallat (draw_placeholders.py, codi ${draw.status}): mira l'error de Python de més amunt.`);
+    } else {
+      desaHashArt();
     }
   }
 
