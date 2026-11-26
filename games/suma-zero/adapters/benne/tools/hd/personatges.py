@@ -331,6 +331,13 @@ def zzz(img, k):
     return img
 
 
+def caixa_sola():
+    """La caixa de cartró d'en Diu, sola (al fotograma d'assegut: es posa davant del gat)."""
+    fg = Fig(GW, GH)
+    fg.poly([(2, 14), (26, 14), (26, 25), (2, 25)], M((40, 24, 14), (90, 60, 30), (146, 102, 58), (184, 136, 80), (216, 172, 108)), 2.6, cont=(0.2, 0.8))
+    return fg.render()
+
+
 def diu_estat(estat, cua=0, dorm=False):
     """En Diu segons el que se li ha donat: dins la caixa, amb l'auricular o davant la pizza.
     Amb `dorm`, dorm (Escena 2): ulls tancats, la cua quieta i una «z» que puja; `estat` None = sol."""
@@ -341,9 +348,7 @@ def diu_estat(estat, cua=0, dorm=False):
     if estat == 'caixa':
         out = Image.new('RGBA', (GW, GH), (0, 0, 0, 0))
         out.alpha_composite(base, (0, -4))
-        fg.poly([(2, 14), (26, 14), (26, 25), (2, 25)], M((40, 24, 14), (90, 60, 30), (146, 102, 58), (184, 136, 80), (216, 172, 108)), 2.6, cont=(0.2, 0.8))
-        box = fg.render()
-        out.alpha_composite(box)
+        out.alpha_composite(caixa_sola())
         return zzz(out, cua) if dorm else out
     if estat == 'auricular':
         # els auriculars de diadema de l'Iri, entre les potes: la diadema negra i les dues copes vermelles
@@ -356,6 +361,165 @@ def diu_estat(estat, cua=0, dorm=False):
         fg.ell(22, 23, 6.0, 2.2, M((70, 30, 14), (150, 80, 30), (210, 130, 50), (240, 190, 90)), 2.8, amp=1.0)
     base.alpha_composite(fg.render())
     return zzz(base, cua) if dorm else base
+
+
+# ─── En Diu en moviment (Escena 1: mossega els cables i salta dins la caixa) ─────────────
+# Un fotograma més gran que el d'assegut, amb els peus al mig: Benne fa el mirall de tot el fotograma (quan camina cap
+# a la dreta), i si els peus no hi fossin, el gat saltaria de lloc. Els fotogrames d'assegut s'hi posen a DIU_PAD.
+DW, DH = 75, 38
+DIU_PAD = (24, 12)
+DIU_PEUS = (13 + DIU_PAD[0], 25 + DIU_PAD[1])     # (37, 37)
+# La caixa, a l'esquerra d'en Diu (l'Iri és a la dreta): hi salta, i en acabar en Diu queda on és la caixa.
+DIU_CAIXA_DX = -21
+CABLES = {
+    'xarxa': M((10, 30, 70), (24, 70, 150), (50, 120, 220), (110, 170, 250)),
+    'alimentacio': M((8, 8, 10), (22, 22, 26), (44, 44, 50), (80, 80, 88)),
+    'fibra': M((90, 60, 0), (170, 130, 10), (230, 196, 40), (250, 236, 130)),
+}
+
+
+def diu_gran(img, dx=0):
+    """Un fotograma d'en Diu (el d'assegut, de GW×GH) al fotograma gran, a DIU_PAD (+ `dx` de disseny)."""
+    k = img.width / GW
+    out = Image.new('RGBA', (round(DW * k), round(DH * k)), (0, 0, 0, 0))
+    out.alpha_composite(img, (round((DIU_PAD[0] + dx) * k), round(DIU_PAD[1] * k)))
+    return out
+
+
+def _gat_perfil(fg, x, y, pas=None, cap=0.0, ajup=0.0, alt=0.0, inclina=0.0, estira=0.0, satisfet=False, cable=None,
+                cua=0.0, potes=True, cos=True):
+    """En Diu de perfil, mirant a l'esquerra, amb el terra a (x, y) sota el cos.
+    `pas`: la fase de caminar (0-5); `cap`: 0 dret, 1 abaixat fins a terra; `ajup`: ajupit per saltar; `alt`: enlaire;
+    `inclina`: el cos inclinat (+, el cap avall); `estira`: les potes esteses (saltant); `cable`: el material del cable
+    que té a la boca; `cua`: la cua, de -1 (avall) a 1 (dreta amunt)."""
+    by = y - 7.5 + ajup * 2.0 - alt
+    cx, cy = x - 5.0, by + inclina * 3.0 + ajup * 0.6          # el pit
+    hx, hy = x + 5.0, by - inclina * 3.0 - ajup * 1.2          # el maluc
+    bob = 0.0 if pas is None else 0.4 * math.cos(2 * math.pi * pas / 3)
+    cy += bob
+    hy += bob
+    far = (40, 0)
+
+    def pota(ax, ay, fase, darrera, lejos):
+        if pas is not None:
+            t = 2 * math.pi * pas / 6 + fase
+            fx, lift = ax + 2.4 * math.sin(t), 1.3 * max(0.0, math.cos(t))
+            foot = (fx, y - 0.6 - lift)
+        elif alt > 0 or estira:
+            d = (3.6 if darrera else -4.2) * estira
+            foot = (ax + d, ay + 5.6 - estira * 1.6)
+        else:
+            foot = (ax + (0.6 if darrera else -0.4), y - 0.6)
+        lvl = 1.7 if lejos else 2.3
+        fg.limb((ax, ay), foot, 1.5, 1.1, CAT, lvl, cont=(0.2, 0.8))
+        fg.ell(foot[0] - 0.4, foot[1] + 0.2, 1.3, 0.8, CAT_WHITE, lvl + 0.3, amp=1.0)
+
+    front = (cx + 1.0, cy + 2.0)
+    back = (hx - 0.5, hy + 2.0)
+    if potes:                                                    # les de l'altra banda, més fosques
+        pota(front[0] + 1.6, front[1], math.pi, False, True)
+        pota(back[0] + 1.6, back[1], 0.0, True, True)
+    # la cua: del maluc enrere i amunt, anellada
+    t0 = (hx + 4.0, hy - 1.5)
+    t1 = (hx + 8.0, hy - 3.0 - 3.0 * cua)
+    t2 = (hx + 9.5 - 1.5 * cua, hy - 4.0 - 7.0 * cua)
+    ring = lambda x_, y_: -0.7 if int((x_ + y_) * 1.2) % 3 == 0 else 0
+    fg.limb(t0, t1, 1.4, 1.2, CAT, 2.2, cont=(0.2, 0.8), lvlfn=ring)
+    fg.limb(t1, t2, 1.2, 1.0, CAT, 2.4, cont=(0.2, 0.8), lvlfn=ring)
+    if cos:
+        fg.limb((cx, cy), (hx, hy), 4.4, 4.0, CAT, 2.6, amp=1.6, cont=(0.2, 1.0),
+                lvlfn=lambda x_, y_: -0.8 if (int(x_) + int(y_) // 2) % 4 == 0 else 0)
+        fg.ell(cx - 2.0, cy + 1.2, 2.4, 3.0, CAT_WHITE, 2.8, amp=1.4)   # el pitet
+    if potes:
+        pota(front[0], front[1], 0.0, False, False)
+        pota(back[0], back[1], math.pi, True, False)
+    if not cos:
+        return
+    # el cap: endavant i, amb `cap`, avall fins a terra
+    qx = cx - 4.0 - cap * 2.0 - inclina * 1.5
+    qy = cy - 4.5 + cap * (y - 3.5 - (cy - 4.5)) + inclina * 2.0
+    if cable is not None:                                        # el tros de cable, de la boca a terra
+        mx, my = qx - 3.2, qy + 2.2
+        fg.limb((mx + 1.0, my), (mx - 1.0, my + 0.6), 0.7, 0.7, cable, 2.4)
+        fg.limb((mx - 1.0, my + 0.6), (mx - 2.4, min(y - 0.5, my + 4.0)), 0.6, 0.6, cable, 2.2)
+        if my + 4.0 < y - 0.5:
+            fg.limb((mx - 2.4, my + 4.0), (mx - 5.0, y - 0.5), 0.6, 0.6, cable, 2.0)
+    fg.ell(qx, qy, 4.2, 3.9, CAT, 2.8, amp=1.6, cont=(0.2, 1.0),
+           lvlfn=lambda x_, y_: -0.8 if int(y_) == int(qy - 2) and int(x_) % 3 == 0 else 0)
+    fg.poly([(qx + 2.6, qy - 2.6), (qx + 4.4, qy - 6.6), (qx + 4.8, qy - 1.6)], CAT, 1.8)   # l'orella del darrere
+    fg.poly([(qx - 1.2, qy - 3.0), (qx + 0.4, qy - 7.2), (qx + 2.6, qy - 3.0)], CAT, 2.6)
+    fg.ell(qx - 2.6, qy + 1.4, 2.0, 1.5, CAT_WHITE, 3.0, amp=1.0)      # el morro
+    if cable is not None:
+        fg.limb((qx - 3.6, qy + 2.0), (qx - 1.6, qy + 2.4), 0.7, 0.7, cable, 2.6)
+    ex, ey = qx - 1.4, qy - 0.6
+    if satisfet:                                                 # els ulls mig closos, satisfet
+        fg.px(ex - 0.6, ey, CAT, 0); fg.px(ex + 0.4, ey, CAT, 0)
+    else:
+        fg.ell(ex, ey, 1.0, 1.0, CAT_EYE, 2.6, amp=1.0)
+        fg.px(ex - 0.3, ey, CAT, 0)
+    fg.px(qx - 4.4, qy + 0.6, (190, 110, 120), 0)                       # el nas
+
+
+def diu_camina(pas):
+    """Caminant cap a l'esquerra (Benne en fa el mirall cap a la dreta). Fotograma gran (DW×DH)."""
+    fg = Fig(DW, DH)
+    _gat_perfil(fg, DIU_PEUS[0], DIU_PEUS[1], pas=pas, cua=0.3 + 0.15 * math.sin(2 * math.pi * pas / 6))
+    return fg.render()
+
+
+def diu_mossega(k, cable):
+    """Mossega el cable (`cable`: xarxa, alimentacio o fibra) i se'l mira, satisfet. k: 0-5."""
+    fg = Fig(DW, DH)
+    cap, amb, sat = [(0.0, False, False), (0.6, False, False), (1.0, False, False), (1.0, True, False),
+                     (0.35, True, False), (0.2, True, True)][k]
+    if k == 2:                                                   # el cable, a terra, davant del morro
+        x0, y0 = DIU_PEUS[0] - 15, DIU_PEUS[1] - 0.8
+        fg.limb((x0 - 6, y0), (x0 + 3, y0 - 0.4), 0.6, 0.6, CABLES[cable], 2.2)
+    _gat_perfil(fg, DIU_PEUS[0], DIU_PEUS[1], cap=cap, satisfet=sat, cable=CABLES[cable] if amb else None,
+                cua=0.6 if k >= 4 else 0.3)
+    return fg.render()
+
+
+def diu_salta(k):
+    """Salta dins la caixa, que és a DIU_CAIXA_DX: s'aixeca, s'ajup, salta i s'hi fica de cap. k: 0-8; el
+    darrer és el d'«Caixa» a la posició de la caixa (en acabar, en Diu es posa allà)."""
+    dx = DIU_CAIXA_DX
+    caixa = diu_gran(caixa_sola(), dx)
+    sentat = diu_gran(diu(cua=k % 4))
+    if k == 8:
+        return diu_gran(diu_estat('caixa'), dx)
+    out = Image.new('RGBA', caixa.size, (0, 0, 0, 0))
+    if k == 0:                                       # la caixa ja hi és; en Diu, assegut, la mira
+        out.alpha_composite(caixa)
+        out.alpha_composite(sentat)
+        return out
+    x, y = DIU_PEUS
+    cx = x + dx                                      # el mig de la caixa
+    fg = Fig(DW, DH)
+    poses = {
+        1: dict(x=x, cua=0.4),                                       # s'aixeca
+        2: dict(x=x, ajup=1.0, cua=-0.2),                            # s'ajup, el cul enlaire
+        3: dict(x=x - 6, alt=6.0, estira=1.0, inclina=-0.3, cua=-0.6),     # salta
+        4: dict(x=cx + 5, alt=9.0, estira=0.6, inclina=0.5, cua=-0.2),     # per sobre la caixa, de cap
+        5: dict(x=cx + 2, alt=5.0, estira=0.2, inclina=1.2, cua=0.4),      # hi entra de cap
+        6: dict(x=cx + 1, alt=2.0, inclina=1.6, cua=1.0, potes=False),     # només li surt el cul i la cua
+        7: dict(x=cx + 1, alt=-3.0, inclina=1.6, cua=1.0, potes=False),    # només la cua
+    }[k]
+    px_ = poses.pop('x')
+    _gat_perfil(fg, px_, y, **poses)
+    gat = fg.render()
+    if k <= 3:                                       # encara no hi és: la caixa, al darrere
+        out.alpha_composite(caixa)
+        out.alpha_composite(gat)
+    else:                                            # hi entra: el que és per sota de la boca de la caixa, ja és a dins
+        top = caixa.getbbox()[1] + 1
+        P_ = gat.load()
+        for yy in range(top, gat.height):
+            for xx in range(gat.width):
+                P_[xx, yy] = (0, 0, 0, 0)
+        out.alpha_composite(gat)
+        out.alpha_composite(caixa)
+    return out
 
 
 # ─── Vet ───────────────────────────────────────────────────────────────────

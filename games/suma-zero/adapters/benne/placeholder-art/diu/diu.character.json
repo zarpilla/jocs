@@ -8,34 +8,34 @@
   },
   "walkSpeed": 80,
   "walkToPoint": {
-    "x": 48,
-    "y": 34
+    "x": 80,
+    "y": 50
   },
   "talkPoint": {
-    "x": 18,
-    "y": -2
+    "x": 50,
+    "y": 14
   },
   "feet": {
-    "x": 18,
-    "y": 34
+    "x": 50,
+    "y": 50
   },
   "collider": {
     "points": [
       {
-        "x": 6,
-        "y": 0
+        "x": 38,
+        "y": 16
+      },
+      {
+        "x": 70,
+        "y": 16
+      },
+      {
+        "x": 70,
+        "y": 50
       },
       {
         "x": 38,
-        "y": 0
-      },
-      {
-        "x": 38,
-        "y": 34
-      },
-      {
-        "x": 6,
-        "y": 34
+        "y": 50
       }
     ]
   },
@@ -87,6 +87,26 @@
     "Dorm": {
       "loop": true,
       "frameDuration": 500
+    },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "MossegaXarxa": {
+      "loop": false,
+      "frameDuration": 200
+    },
+    "MossegaAlimentacio": {
+      "loop": false,
+      "frameDuration": 200
+    },
+    "MossegaFibra": {
+      "loop": false,
+      "frameDuration": 200
+    },
+    "Salta": {
+      "loop": false,
+      "frameDuration": 130
     }
   },
   "defaultVerb": "look"

@@ -971,6 +971,19 @@ def _diu(P):
                 _poke(img, x, y, (226, 220, 236, 255))
         return img
 
+    def caixa_sola():
+        """La caixa de cartró, sola (al fotograma d'assegut: es posa davant del gat)."""
+        fg = C.Fig(P.GW, P.GH)
+        BOX = P.M((40, 24, 14), (90, 60, 30), (146, 102, 58), (184, 136, 80), (216, 172, 108))
+        fg.poly([(2, 14), (26, 14), (26, 25), (2, 25)], BOX, 2.6, cont=(0.2, 0.8))
+        Y0 = round(fg.F(14))
+        fg.rrow(fg.F(2), fg.F(26), Y0, +0.8, BOX)                            # el cantell de dalt
+        fg.rrow(fg.F(2), fg.F(26), Y0 + 1, -0.6, BOX)
+        for X in range(round(fg.F(12)), round(fg.F(16)) + 1):                # la cinta d'embalar
+            for Y in range(Y0, round(fg.F(25))):
+                fg.rshade(X, Y, +0.6, BOX)
+        return fg.render()
+
     def diu_estat(estat, cua=0, dorm=False):
         """En Diu dins la caixa, amb l'auricular o davant la pizza; `dorm`: dorm (ulls tancats, cua quieta, zzz)."""
         base = diu(cua=0 if dorm else cua, parpelleja=dorm)
@@ -980,15 +993,7 @@ def _diu(P):
         if estat == 'caixa':
             out = Image.new('RGBA', (GW * S, GH * S), (0, 0, 0, 0))
             out.alpha_composite(base, (0, -5 * S))
-            BOX = P.M((40, 24, 14), (90, 60, 30), (146, 102, 58), (184, 136, 80), (216, 172, 108))
-            fg.poly([(2, 14), (26, 14), (26, 25), (2, 25)], BOX, 2.6, cont=(0.2, 0.8))
-            Y0 = round(fg.F(14))
-            fg.rrow(fg.F(2), fg.F(26), Y0, +0.8, BOX)                            # el cantell de dalt
-            fg.rrow(fg.F(2), fg.F(26), Y0 + 1, -0.6, BOX)
-            for X in range(round(fg.F(12)), round(fg.F(16)) + 1):                # la cinta d'embalar
-                for Y in range(Y0, round(fg.F(25))):
-                    fg.rshade(X, Y, +0.6, BOX)
-            out.alpha_composite(fg.render())
+            out.alpha_composite(caixa_sola())
             return zzz(out, cua) if dorm else out
         if estat == 'auricular':
             # els auriculars de diadema de l'Iri, entre les potes: la diadema negra i les dues copes vermelles
@@ -1006,7 +1011,7 @@ def _diu(P):
         base.alpha_composite(fg.render())
         return zzz(base, cua) if dorm else base
 
-    return diu, zzz, diu_estat
+    return diu, zzz, diu_estat, caixa_sola
 
 
 # ─── NETA-3, a la mida nova ──────────────────────────────────────────────────
@@ -1273,7 +1278,7 @@ def install(art_scale=1):
 
     P.iri, P.vet, P.npc, P.npc2 = iri, vet, npc, npc2
     P._iri480, P._vet480 = old_iri, old_vet
-    P.diu, P.zzz, P.diu_estat = _diu(P)
+    P.diu, P.zzz, P.diu_estat, P.caixa_sola = _diu(P)
     P.neta = _neta(P)
 
     # les especificacions ja muntades (diccionaris i clausures amb els ganxos de 480)

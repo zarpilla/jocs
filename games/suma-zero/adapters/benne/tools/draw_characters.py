@@ -335,22 +335,39 @@ def secundari(cid):
 
 
 def gat(cid='diu'):
-    """En Diu: sempre assegut de cara (un gat no es gira per ningú). Animacions d'aspecte: Caixa, Auricular, Pizza, i dormint: CaixaDorm, PizzaDorm, Dorm."""
-    idle = [personatges.diu(cua=k % 4, parpelleja=(k == 7)) for k in range(8)]
-    talk = [personatges.diu(cua=0), personatges.diu(cua=1)]
+    """En Diu: assegut de cara (un gat no es gira per ningú). Animacions d'aspecte: Caixa, Auricular, Pizza, i dormint:
+    CaixaDorm, PizzaDorm, Dorm. A l'Escena 1 es mou (indicacions d'escena a pis_estudi): WalkL (de perfil; Benne en fa
+    el mirall), Mossega<Cable> (va fins al cable, el mossega i se'l mira) i Salta (dins la caixa, que és a l'esquerra).
+    Tot va al fotograma gran (personatges.DW×DH, els peus al mig), perquè el mirall i el salt hi càpiguen."""
+    P_ = personatges
+    G = P_.diu_gran
+    idle = [G(P_.diu(cua=k % 4, parpelleja=(k == 7))) for k in range(8)]
+    talk = [G(P_.diu(cua=0)), G(P_.diu(cua=1))]
     tags = []
     for f in 'DLU':
         tags.append((f'Idle{f}', idle))
         tags.append((f'Talk{f}', talk))
     for estat in ('caixa', 'auricular', 'pizza'):
-        tags.append((estat.capitalize(), [personatges.diu_estat(estat, cua=k % 4) for k in range(4)]))
+        tags.append((estat.capitalize(), [G(P_.diu_estat(estat, cua=k % 4)) for k in range(4)]))
     # Escena 2: dorm dins el que li han donat (l'auricular ja l'ha tornat)
     for estat, tag in (('caixa', 'CaixaDorm'), ('pizza', 'PizzaDorm'), (None, 'Dorm')):
-        tags.append((tag, [personatges.diu_estat(estat, cua=k, dorm=True) for k in range(4)]))
-    anims = {t: {'loop': True, 'frameDuration': 300 if t.startswith('Idle') else 500 if t.endswith('Dorm') else 160} for t, _ in tags}
-    write(cid, tags, (personatges.GW, personatges.GH), {
-        'walkSpeed': 60, 'walkToPoint': {'x': 36, 'y': 25}, 'talkPoint': {'x': 13, 'y': -2}, 'feet': {'x': 13, 'y': 25},
-        'collider': {'points': [{'x': 4, 'y': 0}, {'x': 28, 'y': 0}, {'x': 28, 'y': 25}, {'x': 4, 'y': 25}]},
+        tags.append((tag, [G(P_.diu_estat(estat, cua=k, dorm=True)) for k in range(4)]))
+    tags.append(('WalkL', [P_.diu_camina(k) for k in range(6)]))
+    for cable in P_.CABLES:
+        tags.append((f'Mossega{cable.capitalize()}', [P_.diu_mossega(k, cable) for k in range(6)]))
+    tags.append(('Salta', [P_.diu_salta(k) for k in range(9)]))
+    dur = {'WalkL': (110, True), 'Salta': (130, False)}
+    anims = {}
+    for t, _ in tags:
+        ms, loop = dur.get(t, (300 if t.startswith('Idle') else 500 if t.endswith('Dorm') else 160, True))
+        if t.startswith('Mossega'):
+            ms, loop = 200, False                     # una vegada, i es queda amb el cable a la boca
+        anims[t] = {'loop': loop, 'frameDuration': ms}
+    dx, dy = P_.DIU_PAD
+    pt = lambda x, y: {'x': x + dx, 'y': y + dy}
+    write(cid, tags, (P_.DW, P_.DH), {
+        'walkSpeed': 60, 'walkToPoint': pt(36, 25), 'talkPoint': pt(13, -2), 'feet': pt(13, 25),
+        'collider': {'points': [pt(4, 0), pt(28, 0), pt(28, 25), pt(4, 25)]},
         'animations': anims, 'defaultVerb': 'look',
     })
 

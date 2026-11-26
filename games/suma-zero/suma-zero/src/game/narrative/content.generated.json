@@ -9475,11 +9475,38 @@
                   {
                     "who": "player",
                     "text": "sala.pis_estudi.mossega.xarxa",
-                    "sound": "mossegada"
+                    "sound": "mossegada",
+                    "stage": [
+                      {
+                        "who": "diu",
+                        "walk": {
+                          "x": 380,
+                          "y": 166
+                        }
+                      },
+                      {
+                        "who": "diu",
+                        "anim": "MossegaXarxa",
+                        "hold": 0.8
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.pis_estudi.mossega.narr"
+                    "text": "sala.pis_estudi.mossega.narr",
+                    "stageAfter": [
+                      {
+                        "who": "diu",
+                        "anim": null
+                      },
+                      {
+                        "who": "diu",
+                        "walk": {
+                          "x": 315,
+                          "y": 163
+                        }
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -9639,11 +9666,38 @@
                   {
                     "who": "player",
                     "text": "sala.pis_estudi.mossega.alimentacio",
-                    "sound": "mossegada"
+                    "sound": "mossegada",
+                    "stage": [
+                      {
+                        "who": "diu",
+                        "walk": {
+                          "x": 380,
+                          "y": 166
+                        }
+                      },
+                      {
+                        "who": "diu",
+                        "anim": "MossegaAlimentacio",
+                        "hold": 0.8
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.pis_estudi.mossega.narr"
+                    "text": "sala.pis_estudi.mossega.narr",
+                    "stageAfter": [
+                      {
+                        "who": "diu",
+                        "anim": null
+                      },
+                      {
+                        "who": "diu",
+                        "walk": {
+                          "x": 315,
+                          "y": 163
+                        }
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -10070,11 +10124,42 @@
                   {
                     "who": "player",
                     "text": "sala.pis_estudi.mossega.fibra",
-                    "sound": "mossegada"
+                    "sound": "mossegada",
+                    "stage": [
+                      {
+                        "who": "diu",
+                        "walk": {
+                          "x": 482,
+                          "y": 166
+                        }
+                      },
+                      {
+                        "who": "diu",
+                        "face": "L"
+                      },
+                      {
+                        "who": "diu",
+                        "anim": "MossegaFibra",
+                        "hold": 0.8
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.pis_estudi.mossega.narr"
+                    "text": "sala.pis_estudi.mossega.narr",
+                    "stageAfter": [
+                      {
+                        "who": "diu",
+                        "anim": null
+                      },
+                      {
+                        "who": "diu",
+                        "walk": {
+                          "x": 315,
+                          "y": 163
+                        }
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -10384,7 +10469,26 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.pis_estudi.diu.caixa1"
+                    "text": "sala.pis_estudi.diu.caixa1",
+                    "stageAfter": [
+                      {
+                        "who": "diu",
+                        "face": "L"
+                      },
+                      {
+                        "who": "diu",
+                        "anim": "Salta",
+                        "hold": 1.2
+                      },
+                      {
+                        "who": "diu",
+                        "at": {
+                          "x": 289,
+                          "y": 163
+                        },
+                        "anim": "Caixa"
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -25272,6 +25376,7 @@
       "ui.opcions.clic_salta": "clic per saltar el diàleg",
       "ui.opcions.volum_efectes": "volum dels efectes",
       "ui.opcions.volum_musica": "volum de la música",
+      "ui.opcions.volum_veus": "volum de les veus",
       "ui.opcions.velocitat_text": "velocitat del text",
       "ui.verb.talkTo.boto": "Parla",
       "ui.menu.pista": "Pista",
@@ -25960,7 +26065,7 @@
       "sala.pis_estudi.matalas.nom": "matalàs",
       "sala.pis_estudi.mossega.alimentacio": "Diu! Aquest és el cable de la cafetera! La Vet ens matarà a tots dos!",
       "sala.pis_estudi.mossega.fibra": "Diu! Això és fibra òptica! És llum, no espaguetis!",
-      "sala.pis_estudi.mossega.narr": "En Diu el desendolla d'una queixalada i se'l mira, satisfet.",
+      "sala.pis_estudi.mossega.narr": "En Diu se'l mira, satisfet.",
       "sala.pis_estudi.mossega.xarxa": "Diu! És un cable de xarxa, no un espagueti!",
       "sala.pis_estudi.nom": "L'estudi",
       "sala.pis_estudi.ordinadors.espera": "Ara no puc fer res més des d'aquí. Si la Vet em necessita, trucarà.",

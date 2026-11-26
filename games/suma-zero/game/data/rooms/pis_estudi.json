@@ -424,11 +424,38 @@
             {
               "who": "player",
               "text": "sala.pis_estudi.mossega.xarxa",
-              "sound": "mossegada"
+              "sound": "mossegada",
+              "stage": [
+                {
+                  "who": "diu",
+                  "walk": {
+                    "x": 380,
+                    "y": 166
+                  }
+                },
+                {
+                  "who": "diu",
+                  "anim": "MossegaXarxa",
+                  "hold": 0.8
+                }
+              ]
             },
             {
               "who": "narrator",
-              "text": "sala.pis_estudi.mossega.narr"
+              "text": "sala.pis_estudi.mossega.narr",
+              "stageAfter": [
+                {
+                  "who": "diu",
+                  "anim": null
+                },
+                {
+                  "who": "diu",
+                  "walk": {
+                    "x": 315,
+                    "y": 163
+                  }
+                }
+              ]
             }
           ],
           "effects": [
@@ -588,11 +615,38 @@
             {
               "who": "player",
               "text": "sala.pis_estudi.mossega.alimentacio",
-              "sound": "mossegada"
+              "sound": "mossegada",
+              "stage": [
+                {
+                  "who": "diu",
+                  "walk": {
+                    "x": 380,
+                    "y": 166
+                  }
+                },
+                {
+                  "who": "diu",
+                  "anim": "MossegaAlimentacio",
+                  "hold": 0.8
+                }
+              ]
             },
             {
               "who": "narrator",
-              "text": "sala.pis_estudi.mossega.narr"
+              "text": "sala.pis_estudi.mossega.narr",
+              "stageAfter": [
+                {
+                  "who": "diu",
+                  "anim": null
+                },
+                {
+                  "who": "diu",
+                  "walk": {
+                    "x": 315,
+                    "y": 163
+                  }
+                }
+              ]
             }
           ],
           "effects": [
@@ -1019,11 +1073,42 @@
             {
               "who": "player",
               "text": "sala.pis_estudi.mossega.fibra",
-              "sound": "mossegada"
+              "sound": "mossegada",
+              "stage": [
+                {
+                  "who": "diu",
+                  "walk": {
+                    "x": 482,
+                    "y": 166
+                  }
+                },
+                {
+                  "who": "diu",
+                  "face": "L"
+                },
+                {
+                  "who": "diu",
+                  "anim": "MossegaFibra",
+                  "hold": 0.8
+                }
+              ]
             },
             {
               "who": "narrator",
-              "text": "sala.pis_estudi.mossega.narr"
+              "text": "sala.pis_estudi.mossega.narr",
+              "stageAfter": [
+                {
+                  "who": "diu",
+                  "anim": null
+                },
+                {
+                  "who": "diu",
+                  "walk": {
+                    "x": 315,
+                    "y": 163
+                  }
+                }
+              ]
             }
           ],
           "effects": [
@@ -1333,7 +1418,26 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.pis_estudi.diu.caixa1"
+              "text": "sala.pis_estudi.diu.caixa1",
+              "stageAfter": [
+                {
+                  "who": "diu",
+                  "face": "L"
+                },
+                {
+                  "who": "diu",
+                  "anim": "Salta",
+                  "hold": 1.2
+                },
+                {
+                  "who": "diu",
+                  "at": {
+                    "x": 289,
+                    "y": 163
+                  },
+                  "anim": "Caixa"
+                }
+              ]
             },
             {
               "who": "narrator",
