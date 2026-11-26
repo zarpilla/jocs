@@ -641,3 +641,14 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 012): rectangles de pantalla; s'hi va pel punt d'una cosa del costat.
+GEOMETRIA['things'].update({
+    'suro': {'rect': (237, 47, 305, 100), 'walk': GEOMETRIA['things']['calaix']['walk']},
+    'calendari': {'rect': (207, 52, 233, 95), 'walk': GEOMETRIA['things']['calaix']['walk']},
+    'quadre_electric': {'rect': (177, 47, 193, 73), 'walk': GEOMETRIA['things']['porta']['walk']},
+    'garrafes': {'rect': (462, 112, 515, 148), 'walk': GEOMETRIA['things']['caixes']['walk']},
+    'cendrer': {'rect': (295, 147, 313, 158), 'walk': GEOMETRIA['things']['calaix']['walk']},
+})
+# (les caixes de cervesa, sense l'escriptori: comencen on acaba la taula)
+GEOMETRIA['things']['caixes']['rect'] = (372, 105, 458, 192)

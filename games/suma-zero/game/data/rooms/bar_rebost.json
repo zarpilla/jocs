@@ -136,6 +136,76 @@
           ]
         }
       ]
+    },
+    "suro": {
+      "name": "sala.bar_rebost.suro.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.suro.look"
+            }
+          ]
+        }
+      ]
+    },
+    "calendari": {
+      "name": "sala.bar_rebost.calendari.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.calendari.look"
+            }
+          ]
+        }
+      ]
+    },
+    "quadre_electric": {
+      "name": "sala.bar_rebost.quadre_electric.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.quadre_electric.look"
+            }
+          ]
+        }
+      ]
+    },
+    "garrafes": {
+      "name": "sala.bar_rebost.garrafes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.garrafes.look"
+            }
+          ]
+        }
+      ]
+    },
+    "cendrer": {
+      "name": "sala.bar_rebost.cendrer.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.cendrer.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

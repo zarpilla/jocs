@@ -870,6 +870,62 @@
           ]
         }
       ]
+    },
+    "escurabutxaques": {
+      "name": "sala.bar_sala.escurabutxaques.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.escurabutxaques.look"
+            }
+          ]
+        }
+      ]
+    },
+    "foto": {
+      "name": "sala.bar_sala.foto.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.foto.look"
+            }
+          ]
+        }
+      ]
+    },
+    "bufanda": {
+      "name": "sala.bar_sala.bufanda.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.bufanda.look"
+            }
+          ]
+        }
+      ]
+    },
+    "cafetera": {
+      "name": "sala.bar_sala.cafetera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.cafetera.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

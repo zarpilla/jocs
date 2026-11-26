@@ -573,6 +573,62 @@
           ]
         }
       ]
+    },
+    "rentadora": {
+      "name": "sala.pis_cuina.rentadora.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.rentadora.look"
+            }
+          ]
+        }
+      ]
+    },
+    "jaqueta": {
+      "name": "sala.pis_cuina.jaqueta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.jaqueta.look"
+            }
+          ]
+        }
+      ]
+    },
+    "taula": {
+      "name": "sala.pis_cuina.taula.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.taula.look"
+            }
+          ]
+        }
+      ]
+    },
+    "microones": {
+      "name": "sala.pis_cuina.microones.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.microones.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

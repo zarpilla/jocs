@@ -166,20 +166,20 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 313,
+          "x": 372,
           "y": 105
         },
         {
-          "x": 455,
+          "x": 458,
           "y": 105
         },
         {
-          "x": 455,
-          "y": 195
+          "x": 458,
+          "y": 192
         },
         {
-          "x": 313,
-          "y": 195
+          "x": 372,
+          "y": 192
         }
       ],
       "walkToPoint": {
@@ -187,8 +187,168 @@
         "y": 194
       },
       "lookAtPoint": {
-        "x": 384,
-        "y": 195
+        "x": 415,
+        "y": 192
+      }
+    },
+    {
+      "id": "suro",
+      "active": true,
+      "description": "suro",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 237,
+          "y": 47
+        },
+        {
+          "x": 305,
+          "y": 47
+        },
+        {
+          "x": 305,
+          "y": 100
+        },
+        {
+          "x": 237,
+          "y": 100
+        }
+      ],
+      "walkToPoint": {
+        "x": 248,
+        "y": 247
+      },
+      "lookAtPoint": {
+        "x": 271,
+        "y": 100
+      }
+    },
+    {
+      "id": "calendari",
+      "active": true,
+      "description": "calendari",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 207,
+          "y": 52
+        },
+        {
+          "x": 233,
+          "y": 52
+        },
+        {
+          "x": 233,
+          "y": 95
+        },
+        {
+          "x": 207,
+          "y": 95
+        }
+      ],
+      "walkToPoint": {
+        "x": 248,
+        "y": 247
+      },
+      "lookAtPoint": {
+        "x": 220,
+        "y": 95
+      }
+    },
+    {
+      "id": "quadre_electric",
+      "active": true,
+      "description": "quadre elèctric",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 177,
+          "y": 47
+        },
+        {
+          "x": 193,
+          "y": 47
+        },
+        {
+          "x": 193,
+          "y": 73
+        },
+        {
+          "x": 177,
+          "y": 73
+        }
+      ],
+      "walkToPoint": {
+        "x": 147,
+        "y": 178
+      },
+      "lookAtPoint": {
+        "x": 185,
+        "y": 73
+      }
+    },
+    {
+      "id": "garrafes",
+      "active": true,
+      "description": "garrafes",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 462,
+          "y": 112
+        },
+        {
+          "x": 515,
+          "y": 112
+        },
+        {
+          "x": 515,
+          "y": 148
+        },
+        {
+          "x": 462,
+          "y": 148
+        }
+      ],
+      "walkToPoint": {
+        "x": 370,
+        "y": 194
+      },
+      "lookAtPoint": {
+        "x": 488,
+        "y": 148
+      }
+    },
+    {
+      "id": "cendrer",
+      "active": true,
+      "description": "cendrer",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 295,
+          "y": 147
+        },
+        {
+          "x": 313,
+          "y": 147
+        },
+        {
+          "x": 313,
+          "y": 158
+        },
+        {
+          "x": 295,
+          "y": 158
+        }
+      ],
+      "walkToPoint": {
+        "x": 248,
+        "y": 247
+      },
+      "lookAtPoint": {
+        "x": 304,
+        "y": 158
       }
     }
   ],
@@ -238,7 +398,7 @@
       "animations": {
         "calaix_obert": {}
       },
-      "zIndex": 22,
+      "zIndex": 23,
       "visible": false,
       "alpha": 1,
       "clickable": false,
@@ -264,7 +424,7 @@
       "animations": {
         "recepta_calaix": {}
       },
-      "zIndex": 22,
+      "zIndex": 23,
       "visible": false,
       "alpha": 1,
       "clickable": false,
@@ -319,7 +479,7 @@
       "animations": {
         "davant_escriptori": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 205
     },
     {
@@ -331,7 +491,7 @@
       "animations": {
         "davant_barril": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 219
     },
     {
@@ -343,7 +503,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 23,
+      "zIndex": 26,
       "baseline": 999
     }
   ],

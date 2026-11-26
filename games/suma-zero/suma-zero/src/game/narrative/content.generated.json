@@ -2420,6 +2420,76 @@
                 ]
               }
             ]
+          },
+          "suro": {
+            "name": "sala.bar_rebost.suro.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bar_rebost.suro.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "calendari": {
+            "name": "sala.bar_rebost.calendari.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bar_rebost.calendari.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "quadre_electric": {
+            "name": "sala.bar_rebost.quadre_electric.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bar_rebost.quadre_electric.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "garrafes": {
+            "name": "sala.bar_rebost.garrafes.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bar_rebost.garrafes.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "cendrer": {
+            "name": "sala.bar_rebost.cendrer.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bar_rebost.cendrer.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -3310,6 +3380,62 @@
                   {
                     "who": "player",
                     "text": "sala.bar_sala.porta.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "escurabutxaques": {
+            "name": "sala.bar_sala.escurabutxaques.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bar_sala.escurabutxaques.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "foto": {
+            "name": "sala.bar_sala.foto.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bar_sala.foto.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "bufanda": {
+            "name": "sala.bar_sala.bufanda.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bar_sala.bufanda.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "cafetera": {
+            "name": "sala.bar_sala.cafetera.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bar_sala.cafetera.look"
                   }
                 ]
               }
@@ -9028,6 +9154,62 @@
                 ]
               }
             ]
+          },
+          "rentadora": {
+            "name": "sala.pis_cuina.rentadora.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.rentadora.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "jaqueta": {
+            "name": "sala.pis_cuina.jaqueta.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.jaqueta.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "taula": {
+            "name": "sala.pis_cuina.taula.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.taula.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "microones": {
+            "name": "sala.pis_cuina.microones.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.microones.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -10728,6 +10910,48 @@
                   {
                     "who": "player",
                     "text": "sala.pis_estudi.diu.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "prestatgeria": {
+            "name": "sala.pis_estudi.prestatgeria.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.prestatgeria.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "despertador": {
+            "name": "sala.pis_estudi.despertador.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.despertador.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "paperera": {
+            "name": "sala.pis_estudi.paperera.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.paperera.look"
                   }
                 ]
               }
@@ -26559,7 +26783,39 @@
       "sala.bcmu_vestibul.font.look2": "A casa tenim el problema contrari: una pica amb deu dies de plats.",
       "sala.bcmu_despatx.intro6_sense": "Zero zero zero u. Apuntat. Gràcies, Ballester.",
       "sala.pis_estudi.router.look_1": "Un cable de tres. Ens mirem i ens entenem. A veure què falta.",
-      "sala.pis_estudi.router.look_2": "Dos cables de tres. Ens mirem i ens entenem. A veure què falta."
+      "sala.pis_estudi.router.look_2": "Dos cables de tres. Ens mirem i ens entenem. A veure què falta.",
+      "sala.bar_rebost.suro.nom": "suro",
+      "sala.bar_rebost.suro.look": "Factures, l'horari dels proveïdors i un «NO ES FIA» subratllat tres vegades.",
+      "sala.bar_rebost.calendari.nom": "calendari",
+      "sala.bar_rebost.calendari.look": "Un calendari d'una distribuïdora de cervesa. Encara és al mes de l'any passat.",
+      "sala.bar_rebost.quadre_electric.nom": "quadre elèctric",
+      "sala.bar_rebost.quadre_electric.look": "El quadre elèctric. Millor no tocar-lo: aguanta el bar sencer amb cinta aïllant.",
+      "sala.bar_rebost.garrafes.nom": "garrafes",
+      "sala.bar_rebost.garrafes.look": "Aigua per si de cas. En Tomàs és previsor amb tot, menys amb els comptes.",
+      "sala.bar_rebost.cendrer.nom": "cendrer",
+      "sala.bar_rebost.cendrer.look": "Un cendrer ple, sota un cartell de prohibit fumar. Coherència de bar.",
+      "sala.bar_sala.escurabutxaques.nom": "escurabutxaques",
+      "sala.bar_sala.escurabutxaques.look": "Una escurabutxaques. L'únic banc del barri que encara paga en efectiu. De tant en tant.",
+      "sala.bar_sala.foto.nom": "foto",
+      "sala.bar_sala.foto.look": "En Tomàs de jove, amb bigoti i tot. El bigoti ha envellit millor.",
+      "sala.bar_sala.bufanda.nom": "bufanda",
+      "sala.bar_sala.bufanda.look": "La bufanda del club del barri. No guanyen res des que en Marcel tenia cabells.",
+      "sala.bar_sala.cafetera.nom": "cafetera",
+      "sala.bar_sala.cafetera.look": "La cafetera d'en Tomàs. Fa un cafè que arrencaria un motor dièsel.",
+      "sala.pis_cuina.rentadora.nom": "rentadora",
+      "sala.pis_cuina.rentadora.look": "La rentadora. Centrifuga més que l'economia.",
+      "sala.pis_cuina.jaqueta.nom": "jaqueta",
+      "sala.pis_cuina.jaqueta.look": "Una jaqueta verda, penjada fa tant que ja forma part de la paret.",
+      "sala.pis_cuina.taula.nom": "taula",
+      "sala.pis_cuina.taula.look": "Una tassa de cafè fred i molles d'una època millor.",
+      "sala.pis_cuina.microones.nom": "microones",
+      "sala.pis_cuina.microones.look": "El microones. Aquí s'escalfen els sopars i els plans.",
+      "sala.pis_estudi.prestatgeria.nom": "prestatgeria",
+      "sala.pis_estudi.prestatgeria.look": "Manuals de xarxes, tres anys de revistes d'informàtica i una planta de plàstic. L'única que sobreviu aquí dins.",
+      "sala.pis_estudi.despertador.nom": "despertador",
+      "sala.pis_estudi.despertador.look": "Les 3:12. L'hora bona: els bancs dormen i els sistemes de seguretat fan becaines.",
+      "sala.pis_estudi.paperera.nom": "paperera",
+      "sala.pis_estudi.paperera.look": "Plena de tiquets de pizza. És el meu arxiu comptable."
     }
   },
   "locale": "ca",

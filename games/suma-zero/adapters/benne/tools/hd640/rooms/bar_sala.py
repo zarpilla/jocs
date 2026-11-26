@@ -790,3 +790,11 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 012): rectangles de pantalla; s'hi va pel punt d'una cosa del costat.
+GEOMETRIA['things'].update({
+    'escurabutxaques': {'rect': (117, 115, 163, 190), 'walk': GEOMETRIA['things']['porta_rebost']['walk']},
+    'foto': {'rect': (103, 85, 123, 108), 'walk': GEOMETRIA['things']['porta_rebost']['walk']},
+    'bufanda': {'rect': (125, 73, 180, 92), 'walk': GEOMETRIA['things']['porta_rebost']['walk']},
+    'cafetera': {'rect': (250, 95, 295, 122), 'walk': GEOMETRIA['things']['retol']['walk']},
+})

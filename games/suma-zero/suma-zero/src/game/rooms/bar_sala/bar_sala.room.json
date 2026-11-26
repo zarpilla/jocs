@@ -224,6 +224,134 @@
         "x": 517,
         "y": 113
       }
+    },
+    {
+      "id": "escurabutxaques",
+      "active": true,
+      "description": "escurabutxaques",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 117,
+          "y": 115
+        },
+        {
+          "x": 163,
+          "y": 115
+        },
+        {
+          "x": 163,
+          "y": 190
+        },
+        {
+          "x": 117,
+          "y": 190
+        }
+      ],
+      "walkToPoint": {
+        "x": 72,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 140,
+        "y": 190
+      }
+    },
+    {
+      "id": "foto",
+      "active": true,
+      "description": "foto",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 103,
+          "y": 85
+        },
+        {
+          "x": 123,
+          "y": 85
+        },
+        {
+          "x": 123,
+          "y": 108
+        },
+        {
+          "x": 103,
+          "y": 108
+        }
+      ],
+      "walkToPoint": {
+        "x": 72,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 113,
+        "y": 108
+      }
+    },
+    {
+      "id": "bufanda",
+      "active": true,
+      "description": "bufanda",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 125,
+          "y": 73
+        },
+        {
+          "x": 180,
+          "y": 73
+        },
+        {
+          "x": 180,
+          "y": 92
+        },
+        {
+          "x": 125,
+          "y": 92
+        }
+      ],
+      "walkToPoint": {
+        "x": 72,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 152,
+        "y": 92
+      }
+    },
+    {
+      "id": "cafetera",
+      "active": true,
+      "description": "cafetera",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 250,
+          "y": 95
+        },
+        {
+          "x": 295,
+          "y": 95
+        },
+        {
+          "x": 295,
+          "y": 122
+        },
+        {
+          "x": 250,
+          "y": 122
+        }
+      ],
+      "walkToPoint": {
+        "x": 322,
+        "y": 200
+      },
+      "lookAtPoint": {
+        "x": 272,
+        "y": 122
+      }
     }
   ],
   "points": [],

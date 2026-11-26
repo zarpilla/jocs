@@ -1681,6 +1681,48 @@
           ]
         }
       ]
+    },
+    "prestatgeria": {
+      "name": "sala.pis_estudi.prestatgeria.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.prestatgeria.look"
+            }
+          ]
+        }
+      ]
+    },
+    "despertador": {
+      "name": "sala.pis_estudi.despertador.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.despertador.look"
+            }
+          ]
+        }
+      ]
+    },
+    "paperera": {
+      "name": "sala.pis_estudi.paperera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.paperera.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

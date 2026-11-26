@@ -330,6 +330,102 @@
         "x": 500,
         "y": 96
       }
+    },
+    {
+      "id": "prestatgeria",
+      "active": true,
+      "description": "prestatgeria",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 560,
+          "y": 30
+        },
+        {
+          "x": 625,
+          "y": 30
+        },
+        {
+          "x": 625,
+          "y": 165
+        },
+        {
+          "x": 560,
+          "y": 165
+        }
+      ],
+      "walkToPoint": {
+        "x": 493,
+        "y": 162
+      },
+      "lookAtPoint": {
+        "x": 592,
+        "y": 165
+      }
+    },
+    {
+      "id": "despertador",
+      "active": true,
+      "description": "despertador",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 527,
+          "y": 218
+        },
+        {
+          "x": 573,
+          "y": 218
+        },
+        {
+          "x": 573,
+          "y": 247
+        },
+        {
+          "x": 527,
+          "y": 247
+        }
+      ],
+      "walkToPoint": {
+        "x": 374,
+        "y": 216
+      },
+      "lookAtPoint": {
+        "x": 550,
+        "y": 247
+      }
+    },
+    {
+      "id": "paperera",
+      "active": true,
+      "description": "paperera",
+      "zIndex": 10,
+      "points": [
+        {
+          "x": 600,
+          "y": 160
+        },
+        {
+          "x": 626,
+          "y": 160
+        },
+        {
+          "x": 626,
+          "y": 195
+        },
+        {
+          "x": 600,
+          "y": 195
+        }
+      ],
+      "walkToPoint": {
+        "x": 453,
+        "y": 157
+      },
+      "lookAtPoint": {
+        "x": 613,
+        "y": 195
+      }
     }
   ],
   "points": [],
