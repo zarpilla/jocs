@@ -634,7 +634,7 @@ export function playEnding(id?: string) {
   const primer = trossos[0]
   const sala = primer ? benneRoom(primer.room) : undefined
   if (!sala) {
-    display(narrative.t('ui.fi'))
+    showTheEnd()
     return
   }
   finale = trossos
@@ -663,7 +663,17 @@ function playFinaleRoom() {
   }
   finale = []
   fadeOut(1.5)
+  showTheEnd()
+}
+
+/**
+ * El «Fi»: quan el jugador hi clica (o passa l'estona), torna a la portada. Es recarrega el joc, perquè la partida
+ * acabada no quedi a mitges en memòria; «Continua» hi torna des de la darrera sala desada.
+ */
+function showTheEnd() {
   display(narrative.t('ui.fi'))
+  wait(0.5)
+  location.reload()
 }
 
 // ─── Rondes (`patrol` a characters.json) ─────────────────────────────────────
