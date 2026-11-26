@@ -782,7 +782,8 @@ _U_OMBRA0 = CAM.projecta((165, 0, 200))
 GEOMETRIA = {
     'things': {
         'contenidor': {'rect': _CONT_R, 'walk': _p(*_local(CONT[0], CONT[1], CONT[5], CONT[2] / 2 + 40, 0, 0)[::2])},
-        'carrer': {'rect': _CARRER, 'walk': _p(165, ZS - 12)},
+        # (la sortida comença on acaba el contenidor: si no, se'n menjava la meitat de dalt)
+        'carrer': {'rect': (max(_CARRER[0], _CONT_R[2] + 1), _CARRER[1], _CARRER[2], _CARRER[3]), 'walk': _p(165, ZS - 12)},
     },
     'spawns': {'vet': _p(200, 130)},
     'walkable': _WALK,
