@@ -287,6 +287,11 @@ export interface StageCue {
   face?: 'L' | 'R' | 'U' | 'D';
   /** Animació del sprite (p. ex. `Seu`); `null` la treu (torna a estar dret). */
   anim?: string | null;
+  /**
+   * Un gest (p. ex. `Fa`, fer anar una cosa amb les mans): l'animació `<roba><gest><direcció>` del sprite (`LlunyFaL`),
+   * amb la roba que porta a la sala i cap on mira ara (gireu-lo abans amb `face`); `null` el treu.
+   */
+  gest?: string | null;
   visible?: boolean;
 }
 

@@ -145,6 +145,9 @@ per ordre. Cada indicació té `who` (un personatge, o `player`) i, per aquest o
 - `visible`: `true` el mostra i `false` l'amaga;
 - `anim`: una animació del sprite (p. ex. `"Seu"`), o `null` per tornar a estar dret;
 - `face`: es gira (`L`, `R`, `U` o `D`);
+- `gest`: un gest del sprite, amb la roba de la sala i cap on mira (`"Fa"` fa `LlunyFaL` a una sala de lluny, mirant a
+  l'esquerra o a la dreta), o `null` per treure'l. Gira-la abans amb `face`. A Aigua Verne, l'Iri i la Vet tenen `Fa`
+  (fer anar una cosa amb les mans: de perfil empenyen i estiren, de cara les mans al pit, d'esquena enlaire);
 - `walk`: hi camina. Per defecte, s'espera que hi arribi. Amb `"wait": false` camina mentre es diu la línia.
   El sprite ha de tenir animacions `WalkL`/`WalkD`/`WalkU` (a `draw_characters.py`); si no, llisca dret, i el
   sync avisa (`⚠ characters/<id>: camina en un stage però el sprite no té animacions Walk`).

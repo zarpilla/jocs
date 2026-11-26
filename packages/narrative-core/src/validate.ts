@@ -129,13 +129,13 @@ export function validateContent(
       const onlyShake = c.who === undefined && c.prop === undefined && c.shake !== undefined;
       if (!onlyShake && (c.who === undefined) === (c.prop === undefined)) err(w, `Cal "who" (un personatge) o "prop" (una capa del decorat), un dels dos (o només "shake").`);
       else if (c.who !== undefined && c.who !== 'player' && !characters[c.who]) err(w, `Personatge desconegut "${c.who}".`);
-      if (c.prop !== undefined && [c.at, c.walk, c.face].some((v) => v !== undefined)) err(w, `Un "prop" només es mostra o s'amaga ("visible") i canvia d'animació ("anim").`);
+      if (c.prop !== undefined && [c.at, c.walk, c.face, c.gest].some((v) => v !== undefined)) err(w, `Un "prop" només es mostra o s'amaga ("visible") i canvia d'animació ("anim").`);
       if (c.prop !== undefined && c.anim === null) err(w, `Un "prop" sempre té animació: "anim" no pot ser null.`);
       if (c.hold !== undefined && !(c.hold > 0)) err(w, `"hold" són segons: un nombre més gran que zero.`);
       if (c.shake !== undefined && !(c.shake > 0)) err(w, `"shake" són segons: un nombre més gran que zero.`);
-      if (onlyShake && [c.at, c.walk, c.face, c.anim, c.visible].some((v) => v !== undefined)) err(w, `Sense "who" ni "prop", una indicació només pot sacsejar ("shake") i esperar ("hold").`);
+      if (onlyShake && [c.at, c.walk, c.face, c.anim, c.gest, c.visible].some((v) => v !== undefined)) err(w, `Sense "who" ni "prop", una indicació només pot sacsejar ("shake") i esperar ("hold").`);
       if (c.wait !== undefined && c.walk === undefined) err(w, `"wait" només té sentit amb "walk".`);
-      if ([c.at, c.walk, c.face, c.anim, c.visible, c.hold, c.shake].every((v) => v === undefined)) err(w, `Indicació buida: no hi ha res a fer.`);
+      if ([c.at, c.walk, c.face, c.anim, c.gest, c.visible, c.hold, c.shake].every((v) => v === undefined)) err(w, `Indicació buida: no hi ha res a fer.`);
     });
   };
 
