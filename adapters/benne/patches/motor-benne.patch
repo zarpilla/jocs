@@ -1074,6 +1074,22 @@ diff -ruN src/engine/characterFeet.ts src/engine/characterFeet.ts
  }
  
  /** Top-left sprite position so world feet sit at `(worldFeetX, worldFeetY)` (accounts for `sprite.scale`). */
+diff -ruN src/engine/dialog/dialogChoiceGuiRuntime.ts src/engine/dialog/dialogChoiceGuiRuntime.ts
+--- src/engine/dialog/dialogChoiceGuiRuntime.ts
++++ src/engine/dialog/dialogChoiceGuiRuntime.ts
+@@ -708,7 +708,11 @@
+     viewportMask.fillRect(0, 0, viewportClipW, viewportAvailableHeightPx);
+     viewportMask.setVisible(false);
+     viewportClip.add(viewportMask);
+-    viewportClip.setMask(viewportMask.createGeometryMask());
++    // Geometry masks only work in the Canvas renderer (Phaser 4 warns on every call in WebGL). The rows are already
++    // laid out to fit the viewport (`page`), so in WebGL nothing is lost without it.
++    if (scene.sys.game.renderer.type === Phaser.CANVAS) {
++      viewportClip.setMask(viewportMask.createGeometryMask());
++    }
+     gridContainer.add(viewportClip);
+     this.viewportClipContainer = viewportClip;
+ 
 diff -ruN src/engine/directionalCharacterAnimation.ts src/engine/directionalCharacterAnimation.ts
 --- src/engine/directionalCharacterAnimation.ts
 +++ src/engine/directionalCharacterAnimation.ts
@@ -1302,7 +1318,15 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
    GuiData,
    GuiGridControl,
    GuiGridPlacement,
-@@ -117,7 +118,8 @@
+@@ -73,6 +74,7 @@
+ } from './guiGridLayout';
+ import type { InventoryItemData } from '../../types/inventory';
+ import {
++  GAME_STATE_ACTIVE_INVENTORY_ITEM_CHANGED_EVENT,
+   GAME_STATE_ACTIVE_PLAYER_CHARACTER_CHANGED_EVENT,
+   GAME_STATE_INVENTORY_CHANGED_EVENT,
+   GAME_STATE_REPLACED_EVENT,
+@@ -117,7 +119,8 @@
    shouldDropActiveInventoryOnUse,
  } from '../verbs/dispatchInventoryVerb';
  import { getEffectiveInputProfile } from '../verbs/verbConfig';
@@ -1312,7 +1336,7 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
  import { inventoryItemLabel } from '../verbs/targetLabel';
  import {
    getAsepriteSpriteSourceInset,
-@@ -848,6 +850,9 @@
+@@ -848,6 +851,9 @@
    const z = c.zIndex ?? 0;
    const d = baseDepth + z;
    const overlayVisible = startVisible && c.visible !== false;
@@ -1322,7 +1346,7 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
    const bgAnchor = guiSpriteAnchorOrDefault(c.backgroundAnchor);
    const bgOffX = c.backgroundOffsetX ?? 0;
    const bgOffY = c.backgroundOffsetY ?? 0;
-@@ -872,7 +877,7 @@
+@@ -872,7 +878,7 @@
      const rect = scene.add.rectangle(w / 2, h / 2, w, h, hexStringToTint(defaultBgColor));
      rect.setDepth(GUI_BUTTON_BG_DEPTH);
      rect.setScrollFactor(0, 0);
@@ -1331,7 +1355,7 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
      placeGuiButtonBackgroundRectLocal(rect, bgAnchor, w, h, worldTL, bgOffX, bgOffY);
      hitTarget.add(rect);
      bg = rect;
-@@ -884,7 +889,7 @@
+@@ -884,7 +890,7 @@
      if (!tryApplyGuiSheetTag(scene, sprite, guiTextureKey, defaultBgTag, gui.id)) {
        sprite.destroy();
      } else {
@@ -1340,7 +1364,7 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
        if (import.meta.env.DEV) {
          warnDevIfAsepriteJsonMissingSpriteSourceSize(
            sprite.frame,
-@@ -925,12 +930,12 @@
+@@ -925,12 +931,12 @@
        }
      }
      bt.setScrollFactor(0, 0);
@@ -1355,7 +1379,7 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
        GUI_BUTTON_OUTLINE_DEPTH_BELOW_LABEL,
      );
      for (const o of outs) {
-@@ -1368,10 +1373,12 @@
+@@ -1368,10 +1374,12 @@
      wireBenneGuiAsepriteTrimmedPlacementAfterFrameChanges(sprite);
    }
    /** Opaque pixels block room input unless a higher-priority GUI widget occupies the pointer (see defer list). */
@@ -1372,7 +1396,33 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
    sprite.setData('benneGuiControl', true);
    const cid = c.id?.trim();
    if (cid) {
-@@ -1841,8 +1848,8 @@
+@@ -1602,6 +1610,9 @@
+  * Rebuilds all children of `panel` (backdrop + slot rows) for the current inventory slice starting at
+  * `scrollState.offset` (row-major: slot `(r,c)` shows item index `offset + r * cols + c`).
+  */
++/** The frame of the inventory slot of the armed item (warm, like the verb line's highlight). */
++const ARMED_SLOT_COLOR = 0xf2c46a;
++
+ function fillInventoryPanelContent(
+   panel: Phaser.GameObjects.Container,
+   scene: Phaser.Scene,
+@@ -1742,6 +1753,15 @@
+ 
+       if (invIndex < inventoryItems.length) {
+         const entry = inventoryItems[invIndex]!;
++        // The armed item ("use X with..."): its slot is marked while it is in hand.
++        if (gameState?.getActiveInventoryItemId() === entry.id) {
++          const mark = scene.add.graphics();
++          mark.fillStyle(ARMED_SLOT_COLOR, 0.16);
++          mark.fillRect(1, 1, c.slotWidth - 2, c.slotHeight - 2);
++          mark.lineStyle(1, ARMED_SLOT_COLOR, 0.9);
++          mark.strokeRect(1.5, 1.5, c.slotWidth - 3, c.slotHeight - 3);
++          slotContainer.add(mark);
++        }
+         const defRaw = getInventoryDefinition(entry.id);
+         const def = defRaw as InventoryItemData | undefined;
+         const iconTag =
+@@ -1841,8 +1861,8 @@
          }
          slotContainer.setData('benneInventorySlot', true);
          slotContainer.setData('benneInventoryItemId', itemId);
@@ -1383,7 +1433,7 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
              return;
            }
            if (invPointerCtx.isInputSuppressed()) {
-@@ -1853,6 +1860,17 @@
+@@ -1853,6 +1873,17 @@
            }
            const profile = getEffectiveInputProfile(getGameSettings());
            const manager = resolveGameStateManager(scene.game);
@@ -1401,7 +1451,7 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
            const invDef = getInventoryDefinition(itemId) as InventoryItemData | undefined;
            const resolution = resolvePointerVerbForInventoryItem(
              pointer,
-@@ -1860,6 +1878,7 @@
+@@ -1860,6 +1891,7 @@
              { defaultVerb: invDef?.defaultVerb },
              manager.getActiveVerb(),
              manager.getActiveInventoryItemId(),
@@ -1409,7 +1459,7 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
            );
            if (resolution.kind === 'none') {
              return;
-@@ -1915,7 +1934,8 @@
+@@ -1915,7 +1947,8 @@
                manager.clearActiveVerb();
              });
            }
@@ -1419,7 +1469,7 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
        }
  
        panel.add(slotContainer);
-@@ -2025,11 +2045,48 @@
+@@ -2025,11 +2058,48 @@
    };
  }
  
@@ -1469,6 +1519,20 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
    const depth = options?.depth ?? GUI_TEXT_OVERLAY_DEPTH;
    const startVisible = options?.startVisible ?? false;
    const placeholder = options?.emptyTextPlaceholder;
+@@ -2242,11 +2312,13 @@
+         }
+       };
+       gameEvents.on(GAME_STATE_INVENTORY_CHANGED_EVENT, onGameStateInventory);
++      gameEvents.on(GAME_STATE_ACTIVE_INVENTORY_ITEM_CHANGED_EVENT, refreshInventoryPanel);
+       gameEvents.on(GAME_STATE_REPLACED_EVENT, onGameStateInventory);
+       gameEvents.on(GAME_STATE_VARIABLE_CHANGED_EVENT, onInventoryAnimationVariable);
+       gameEvents.on(GAME_STATE_ACTIVE_PLAYER_CHARACTER_CHANGED_EVENT, onActivePlayerChanged);
+       overlayDisposers.push(() => {
+         gameEvents.off(GAME_STATE_INVENTORY_CHANGED_EVENT, onGameStateInventory);
++        gameEvents.off(GAME_STATE_ACTIVE_INVENTORY_ITEM_CHANGED_EVENT, refreshInventoryPanel);
+         gameEvents.off(GAME_STATE_REPLACED_EVENT, onGameStateInventory);
+         gameEvents.off(GAME_STATE_VARIABLE_CHANGED_EVENT, onInventoryAnimationVariable);
+         gameEvents.off(GAME_STATE_ACTIVE_PLAYER_CHARACTER_CHANGED_EVENT, onActivePlayerChanged);
 diff -ruN src/engine/gui/buildGuiSlider.ts src/engine/gui/buildGuiSlider.ts
 --- src/engine/gui/buildGuiSlider.ts
 +++ src/engine/gui/buildGuiSlider.ts
@@ -2843,7 +2907,15 @@ diff -ruN src/engine/scenes/BootScene.ts src/engine/scenes/BootScene.ts
 diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
 --- src/engine/scenes/RoomScene.ts
 +++ src/engine/scenes/RoomScene.ts
-@@ -109,6 +109,7 @@
+@@ -24,6 +24,7 @@
+ import {
+   getPerItemInventoryTextureKey,
+   inventoryPhaserAnimationKeyForTag,
++  defaultInventoryAnimationKey,
+   sharedInventoryTextureKey,
+ } from '../content/inventoryAseprite';
+ import { getInventoryDefinition } from '../inventory/inventoryDefinitionRegistry';
+@@ -109,6 +110,7 @@
    getGameSettings,
    getPerspectiveSettings,
    getSpeechSettings,
@@ -2851,7 +2923,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  } from '../ConfigManager';
  import {
    applyGameCursorSpriteHotspot,
-@@ -131,12 +132,25 @@
+@@ -131,12 +133,25 @@
    syncBenneRuntimeHiDpiSceneMainCameras,
  } from '../benneRuntimeHiDpiScale.js';
  import {
@@ -2878,7 +2950,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  import {
    applyCharacterSpriteRegionTintFromWinningRegion,
    computeRoomRegionPerspective,
-@@ -144,7 +158,7 @@
+@@ -144,7 +159,7 @@
  } from '../room/regionCharacterScale';
  import { roomRegionEnterEventId, roomRegionExitEventId } from '../events/regionEnterExitEvents';
  import type { RegionEnterExitContext } from '../../types/regionEnterExit';
@@ -2887,7 +2959,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  import { findWalkPath } from '../pathfinding';
  import { dispatchVerbInteraction } from '../verbs/dispatchVerb';
  import {
-@@ -158,7 +172,8 @@
+@@ -158,7 +173,8 @@
    getPropVerbHandlers,
  } from '../verbs/normalizeHandlers';
  import { getEffectiveInputProfile } from '../verbs/verbConfig';
@@ -2897,7 +2969,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  import { resolveGameStateManager } from '../gameState/resolveGameStateManager';
  import { BENNE_USER_INPUT_DISABLED_REGISTRY_KEY } from '../input/userInputDisabledRegistry';
  import { incrementRoomVisitCount } from '../gameState/roomVisitState';
-@@ -173,7 +188,7 @@
+@@ -173,7 +189,7 @@
  import type { GuiButtonControl, GuiData, GuiGridControl } from '../../types/gui';
  import type { RoomCharacterSpawn, RoomPropSpawn, RoomSceneStartData } from './BootScene';
  import { attachRoomHandlers } from '../bennescript/roomHandlers.js';
@@ -2906,7 +2978,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  import { runOnUpdateHandlers } from '../bennescript/onUpdateRegistry.js';
  import {
    buildGuiOverlay,
-@@ -230,9 +245,12 @@
+@@ -230,9 +246,12 @@
    BENNE_SCREEN_FADE_DEFAULT_COLOR,
    BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC,
    BENNE_SCREEN_FADE_OVERLAY_DEPTH,
@@ -2919,7 +2991,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  import { benneVideoCacheKey } from '../video/benneVideoCacheKeys.js';
  import { BENNE_VIDEO_ENDED_EVENT } from '../video/benneVideoEvents.js';
  import type { VideoPlayOptions } from '../video/benneVideoTypes.js';
-@@ -283,6 +301,12 @@
+@@ -283,6 +302,12 @@
  /** Ignore walk clicks when already within this many pixels of the target. */
  const MIN_WALK_DISTANCE_PX = 6;
  
@@ -2932,7 +3004,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  /**
   * Leader overlap slack for follow snap (see {@link updateCharacterFollowers} idle-leader handling).
   */
-@@ -303,6 +327,16 @@
+@@ -303,6 +328,16 @@
  /** Renders above typical room + GUI depth so the custom pointer stays on top (shipped game). */
  const CUSTOM_CURSOR_DEPTH = 500_000;
  
@@ -2949,7 +3021,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  /** `startFollow` offset so the camera tracks {@link getCharacterWorldFeet}, not the sprite top-left. */
  function getFeetFollowOffset(player: Phaser.GameObjects.Sprite): { x: number; y: number } {
    const sx = player.scaleX;
-@@ -314,7 +348,9 @@
+@@ -314,7 +349,9 @@
    }
    const data = player.getData('character') as CharacterData | undefined;
    const feet = data ? resolveCharacterFeetLocal(data, player) : { x: player.frame.width * 0.5, y: player.frame.height };
@@ -2960,7 +3032,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  }
  
  /** Outline color for `debug.showWalkable` (green). */
-@@ -345,6 +381,12 @@
+@@ -345,6 +382,12 @@
    return v && v.length > 0 ? { defaultVerb: v } : {};
  }
  
@@ -2973,7 +3045,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  export class RoomScene extends Phaser.Scene {
    private roomData!: RoomData;
  
-@@ -442,6 +484,16 @@
+@@ -442,6 +485,16 @@
     */
    private roomStackEntities: RoomStackEntity[] = [];
  
@@ -2990,7 +3062,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /** Prop id → sprite (every placed prop, for Bennescript). */
    private propSpritesById = new Map<string, Phaser.GameObjects.Sprite>();
  
-@@ -534,6 +586,9 @@
+@@ -534,6 +587,9 @@
     */
    private screenFadeRect: Phaser.GameObjects.Rectangle | null = null;
  
@@ -3000,7 +3072,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * Single-slot cinematic video layer (`video.x.play()`). Created hidden in {@link create} (no source) and
     * reused across `play` calls; renders at {@link ROOM_VIDEO_LAYER_DEPTH} (above room art, below all
-@@ -684,6 +739,10 @@
+@@ -684,9 +740,16 @@
     * before the room's own `pointerdown` handler sees the same click.
     */
    private scriptedDialogClickToSkipArmedDuringDown: number | null = null;
@@ -3011,7 +3083,13 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  
    /** Screen-space sprite when `game-config.json` enables `cursor.display.aseprite`. */
    private customCursorSprite: Phaser.GameObjects.Sprite | null = null;
-@@ -707,6 +766,16 @@
++  /** The armed inventory item, small, next to the custom cursor ({@link updateCursorItemBadge}). */
++  private cursorItemBadge: Phaser.GameObjects.Sprite | null = null;
++  private cursorItemBadgeKey: string | null = null;
+   /** Dedupes {@link refreshCustomCursor} work when pointer + visual mode are unchanged. */
+   private lastCustomCursorVisualKey: string | null = null;
+   /** Republish the hover description / target (`pointer.hover`) from the active pointer (e.g. after inventory reshuffle). */
+@@ -707,6 +770,16 @@
      if (event.key !== 'Escape') {
        return;
      }
@@ -3028,7 +3106,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      // A skippable cutscene wins over the video handler: skipping fast-forwards the whole cutscene,
      // which stops any video playing inside it as part of finishing the in-flight step.
      if (this.canSkipActiveCutscene()) {
-@@ -749,6 +818,10 @@
+@@ -749,6 +822,10 @@
    create(data: RoomSceneStartData): void {
      registerBenneCharacterPerspectiveBatch(this.game);
      this.roomData = data.room;
@@ -3039,7 +3117,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.player = null;
      this.playerMoveTween = null;
      this.currentPlayerPath = null;
-@@ -760,6 +833,9 @@
+@@ -760,6 +837,9 @@
      this.previewHiddenCharacterVisibility = null;
      this.parallaxProps = [];
      this.roomStackEntities = [];
@@ -3049,7 +3127,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.propSpritesById.clear();
      this.characterSpritesByDefId.clear();
      this.characterJsonVisibleByDefId.clear();
-@@ -874,7 +950,14 @@
+@@ -874,7 +954,14 @@
        const isGenericHud = !isSpeakingText && !isDisplayText && !isChoiceDialog;
  
        const stackDepth = GUI_TEXT_OVERLAY_DEPTH + stackIndex * GUI_OVERLAY_DEPTH_STRIDE;
@@ -3065,7 +3143,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        const guiStartVisible =
          isSpeakingText || isDisplayText || isChoiceDialog
            ? false
-@@ -888,7 +971,7 @@
+@@ -888,7 +975,7 @@
          this.makeGuiOverlayBuildOptions(guiDepth, {
            startVisible: guiStartVisible,
            inventoryPanelPointerContext,
@@ -3074,7 +3152,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
            previewGuiAsepriteSheetJson: data.previewGuiAsepriteSheetJsonById?.[gui.id],
          }),
        );
-@@ -898,6 +981,9 @@
+@@ -898,6 +985,9 @@
        }
  
        this.registerModalGuiOverlay(gui, guiDepth, built.handle, guiStartVisible);
@@ -3084,7 +3162,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        this.guiOverlayHandleByGuiId.set(gui.id, built.handle);
  
        // Every GUI gets a runtime, so `guis.x.controls.y` handles can reach its controls.
-@@ -924,6 +1010,7 @@
+@@ -924,6 +1014,7 @@
      this.wireDialogChoiceUi();
  
      this.createRoomVideoLayer();
@@ -3092,7 +3170,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.createScreenFadeOverlay();
      const startKind: BenneRoomStartKind =
        (this.game.registry.get(BENNE_ROOM_START_KIND_KEY) as BenneRoomStartKind | undefined) ?? 'boot';
-@@ -1006,6 +1093,8 @@
+@@ -1006,6 +1097,8 @@
        this.dialogChoiceInputSuppressionActive = false;
        this.scriptedDialogInputSuppressionDepth = 0;
        this.scriptedDialogClickToSkip = null;
@@ -3101,7 +3179,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        this.scale.off('resize', this.onScaleResize, this);
        this.input.off('pointerdown', this.handleRoomPointerDown);
        this.input.off('pointermove', this.onRoomPointerMove);
-@@ -1018,6 +1107,11 @@
+@@ -1018,6 +1111,11 @@
          this.screenFadeRect.destroy();
          this.screenFadeRect = null;
        }
@@ -3113,7 +3191,23 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        this.teardownRoomVideoLayer();
        this.missingVideoKeysWarned.clear();
        this.editorUiChildListenerOff?.();
-@@ -1617,6 +1711,40 @@
+@@ -1068,6 +1166,7 @@
+     }
+     if (previousPlayer) {
+       previousPlayer.setData('isPlayer', false);
++      this.syncPlayerSpriteInput(previousPlayer);
+     }
+ 
+     this.player = next instanceof Phaser.GameObjects.Sprite
+@@ -1075,6 +1174,7 @@
+       : null;
+     if (next) {
+       next.setData('isPlayer', true);
++      this.syncPlayerSpriteInput(next);
+     }
+ 
+     if (next && next !== previousPlayer) {
+@@ -1617,6 +1717,40 @@
      this.refreshDialogChoiceOverlay();
    }
  
@@ -3154,7 +3248,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    private createScreenFadeOverlay(): void {
      const w = getInternalWidth();
      const h = getInternalHeight();
-@@ -1831,6 +1959,19 @@
+@@ -1831,6 +1965,19 @@
    }
  
    /** True while a cinematic video is loaded and playing/paused. */
@@ -3174,7 +3268,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    isRoomVideoPlaying(): boolean {
      return this.roomVideoActiveKey !== null;
    }
-@@ -1866,6 +2007,12 @@
+@@ -1866,6 +2013,12 @@
    }
  
    /**
@@ -3187,7 +3281,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
     * @param toAlpha 0 = transparent, 1 = fully opaque. Kills any running fade tweens on the overlay first.
     * @param fillColor RGB (`0xRRGGBB`); the overlay fill is set before the tween; animation uses game object alpha.
     */
-@@ -2047,6 +2194,14 @@
+@@ -2047,6 +2200,14 @@
      );
    }
  
@@ -3202,7 +3296,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /** True while `input.disabled` is set. Survives room changes; not part of save snapshots. */
    private isUserInputDisabled(): boolean {
      return this.game.registry.get(BENNE_USER_INPUT_DISABLED_REGISTRY_KEY) === true;
-@@ -2233,7 +2388,7 @@
+@@ -2233,7 +2394,7 @@
      }
      const final = path[path.length - 1]!;
      const prev = path.length >= 2 ? path[path.length - 2]! : getCharacterWorldFeet(sprite);
@@ -3211,7 +3305,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      // Clearing the field first makes the running leg tween's onUpdate / onStop guards bail out,
      // so only finishPlayerWalk below resolves the walk.
      const tween = this.playerMoveTween;
-@@ -2259,7 +2414,7 @@
+@@ -2259,7 +2420,7 @@
      const final = path[path.length - 1]!;
      const prev =
        path.length >= 2 ? path[path.length - 2]! : getCharacterWorldFeet(sprite as Phaser.GameObjects.Sprite);
@@ -3220,7 +3314,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      // Dropping the map entry first makes the running leg tween's onStop guard bail out.
      const tween = this.npcWalkTweens.get(sprite);
      this.npcWalkTweens.delete(sprite);
-@@ -2308,6 +2463,37 @@
+@@ -2308,6 +2469,37 @@
      this.modalGuiEntries.push({ depth, isVisible: () => overlayVisible });
    }
  
@@ -3258,7 +3352,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * While a skippable scripted dialog line is showing, left-clicks invoke **`fn`** once (same cleanup as the timer).
     * Cleared when the line ends or when {@link clearScriptedDialogClickToSkip} runs.
-@@ -2316,6 +2502,7 @@
+@@ -2316,6 +2508,7 @@
      this.scriptedDialogClickToSkip = fn;
      const pointer = this.input?.activePointer;
      this.scriptedDialogClickToSkipArmedDuringDown = fn && pointer?.isDown ? pointer.downTime : null;
@@ -3266,7 +3360,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    }
  
    clearScriptedDialogClickToSkip(): void {
-@@ -2339,9 +2526,19 @@
+@@ -2339,9 +2532,19 @@
      if (!pointer.leftButtonDown()) {
        return false;
      }
@@ -3286,7 +3380,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      const fn = this.scriptedDialogClickToSkip;
      this.scriptedDialogClickToSkip = null;
      fn();
-@@ -2425,7 +2622,7 @@
+@@ -2425,7 +2628,7 @@
      if (data?.talkPoint) {
        return { x: sprite.x + data.talkPoint.x, y: sprite.y + data.talkPoint.y };
      }
@@ -3295,7 +3389,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    }
  
    /**
-@@ -2890,7 +3087,7 @@
+@@ -2890,7 +3093,7 @@
      if (Math.hypot(dx, dy) < 1e-2) {
        return;
      }
@@ -3304,7 +3398,18 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (getCharacterAnimationOverrideTag(observer)) {
        observer.setData('facing', facing);
        return;
-@@ -3884,12 +4081,28 @@
+@@ -3676,9 +3879,7 @@
+       return;
+     }
+     if (sprite.getData('benneCharacterInteractionAttached') === true) {
+-      if (sprite.input && !sprite.input.enabled) {
+-        sprite.setInteractive();
+-      }
++      this.syncPlayerSpriteInput(sprite);
+       return;
+     }
+     const charData = sprite.getData('character') as CharacterData | undefined;
+@@ -3884,12 +4085,28 @@
        this.roomData.regions,
        getPerspectiveSettings(),
      );
@@ -3337,7 +3442,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * Applies region perspective scale for characters that are not mid–feet-interpolating walk tween.
     */
-@@ -4077,7 +4290,7 @@
+@@ -4077,7 +4294,7 @@
      if (Math.hypot(dx, dy) < 1e-2) {
        return;
      }
@@ -3346,7 +3451,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (getCharacterAnimationOverrideTag(sprite)) {
        sprite.setData('facing', facing);
        return;
-@@ -4094,7 +4307,7 @@
+@@ -4094,7 +4311,7 @@
      const dx = newFeet.x - oldFeet.x;
      const dy = newFeet.y - oldFeet.y;
      if (Math.hypot(dx, dy) >= 1e-2) {
@@ -3355,7 +3460,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        if (!getCharacterAnimationOverrideTag(sprite)) {
          playDirectionalAnimation(sprite, 'Idle', facing);
        } else {
-@@ -4213,10 +4426,11 @@
+@@ -4213,10 +4430,11 @@
      if (charSprite) {
        const data = charSprite.getData('character') as CharacterData | undefined;
        if (data?.walkToPoint) {
@@ -3368,7 +3473,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        }
        return getCharacterWorldFeet(charSprite as Phaser.GameObjects.Sprite);
      }
-@@ -4234,6 +4448,46 @@
+@@ -4234,6 +4452,46 @@
    }
  
    /**
@@ -3415,7 +3520,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
     * Resolve a camera focus / zoom target in room space. String ids: prop → hotspot → character →
     * `room.points`. Props and hotspots use **`lookAtPoint`** (not **`walkToPoint`**); characters use
     * **`talkPoint`** in frame space when set, else world feet.
-@@ -4567,6 +4821,30 @@
+@@ -4567,6 +4825,30 @@
        sb?.width ?? roomW,
        sb?.height ?? roomH,
      );
@@ -3446,7 +3551,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    }
  
    /** Starts follow on the player’s feet (see `CharacterData.feet`). */
-@@ -4576,21 +4854,37 @@
+@@ -4576,21 +4858,37 @@
      }
      const vW = getInternalWidth();
      const vH = getInternalHeight();
@@ -3486,7 +3591,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.updatePathDebug();
      this.invokeOnUpdateHandlers(this.game.loop.delta / 1000);
    }
-@@ -4609,6 +4903,65 @@
+@@ -4609,6 +4907,65 @@
      }
    }
  
@@ -3552,7 +3657,17 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /** Re-sorts props, characters, and hotspot zones by `zIndex` and optional `baseline` rules. */
    private updateRoomStackDepths(): void {
      if (this.roomStackEntities.length === 0) {
-@@ -5032,14 +5385,16 @@
+@@ -4764,6 +5121,9 @@
+     if (this.customCursorSprite) {
+       this.editorUiGuiObjects.add(this.customCursorSprite);
+     }
++    if (this.cursorItemBadge) {
++      this.editorUiGuiObjects.add(this.cursorItemBadge);
++    }
+ 
+     main.ignore(Array.from(this.editorUiGuiObjects));
+     const nonGui = this.children.list.filter((o) => !this.editorUiGuiObjects.has(o));
+@@ -5032,14 +5392,16 @@
      this.beginPlayerWalkLeg(sprite, path, 0);
    }
  
@@ -3574,7 +3689,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      }
      const data = sprite.getData('character') as CharacterData | undefined;
      const resolved = data
-@@ -5048,8 +5403,8 @@
+@@ -5048,8 +5410,8 @@
            x: (sprite as Phaser.GameObjects.Sprite).frame.width * 0.5,
            y: (sprite as Phaser.GameObjects.Sprite).frame.height,
          };
@@ -3585,7 +3700,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      sprite.setData('feetLocalX', lx);
      sprite.setData('feetLocalY', ly);
      return { x: lx, y: ly };
-@@ -5082,11 +5437,11 @@
+@@ -5082,11 +5444,11 @@
          this.beginPlayerWalkLeg(sprite, path, legIndex + 1);
          return;
        }
@@ -3599,7 +3714,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (!getCharacterAnimationOverrideTag(sprite)) {
        playDirectionalAnimation(sprite, 'Walk', facing);
      } else {
-@@ -5154,6 +5509,16 @@
+@@ -5154,6 +5516,16 @@
      this.playerMoveTween = moveTween;
    }
  
@@ -3616,7 +3731,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    private finishPlayerWalk(sprite: DirectionalCharacterSprite, facing: CharacterFacing): void {
      this.currentPlayerPath = null;
      if (!getCharacterAnimationOverrideTag(sprite)) {
-@@ -5260,7 +5625,7 @@
+@@ -5260,7 +5632,7 @@
          this.beginNpcWalkLeg(sprite, path, legIndex + 1, onArrive);
          return;
        }
@@ -3625,7 +3740,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims) {
          if (!getCharacterAnimationOverrideTag(sprite as Phaser.GameObjects.Sprite)) {
            playDirectionalAnimation(sprite as DirectionalCharacterSprite, 'Idle', facing);
-@@ -5272,7 +5637,7 @@
+@@ -5272,7 +5644,7 @@
        return;
      }
  
@@ -3634,7 +3749,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims) {
        if (!getCharacterAnimationOverrideTag(sprite as Phaser.GameObjects.Sprite)) {
          playDirectionalAnimation(sprite as DirectionalCharacterSprite, 'Walk', facing);
-@@ -5594,6 +5959,11 @@
+@@ -5594,6 +5966,11 @@
        // sheets (the typical BENNE workflow) each frame already covers the full room width
        // and height, so no explicit setDisplaySize is needed.
        const sprite = this.add.sprite(spawnX, spawnY, textureKey).setOrigin(0, 0);
@@ -3646,7 +3761,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        const jsonVisible = spawn.data.visible !== false;
        const jsonAlpha = spawn.data.alpha ?? 1;
        sprite.setVisible(readSavedPropVisible(manager, data.room.id, spawn.id, jsonVisible));
-@@ -5675,7 +6045,9 @@
+@@ -5675,7 +6052,9 @@
        return;
      }
  
@@ -3657,7 +3772,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      const poly = new Phaser.Geom.Polygon(flat);
      sprite.setInteractive({
        hitArea: poly,
-@@ -5683,8 +6055,8 @@
+@@ -5683,8 +6062,8 @@
        useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()),
      });
  
@@ -3668,7 +3783,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
          return;
        }
        if (this.isPlayerPointerBlocked()) {
-@@ -5692,12 +6064,24 @@
+@@ -5692,12 +6071,24 @@
        }
        const profile = getEffectiveInputProfile(getGameSettings());
        const manager = resolveGameStateManager(this.game);
@@ -3693,7 +3808,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        );
        if (resolution.kind === 'none') {
          return;
-@@ -5742,10 +6126,161 @@
+@@ -5742,10 +6133,176 @@
        if (resolution.consumeActive) {
          manager.clearActiveVerb();
        }
@@ -3728,8 +3843,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
 +      const sprite = e.sprite as Phaser.GameObjects.Sprite;
 +      if (!sprite.input?.enabled || !sprite.visible || sprite.alpha <= 0.05) continue;
 +      if (e.kind === 'character' && sprite.getData('isPlayer') === true) continue;
-+      const b = sprite.getBounds();
-+      centers.push({ x: b.centerX, y: e.kind === 'character' ? b.top + b.height * 0.35 : b.centerY });
++      centers.push(this.clickableCenter(sprite, e.kind === 'character'));
 +    }
 +    if (centers.length === 0) return;
 +    const g = this.add.graphics();
@@ -3757,6 +3871,26 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
 +    });
 +  }
 +
++  /**
++   * Where the marker (or a hint thread) of a clickable sprite goes. With a hit polygon (a prop's collider: its
++   * frame is often the whole room, so the middle of the frame is the middle of the screen), the middle of the
++   * polygon; otherwise the middle of the frame (a character, a bit above: the chest).
++   */
++  private clickableCenter(sprite: Phaser.GameObjects.Sprite, character: boolean): { x: number; y: number } {
++    const area = sprite.input?.hitArea as Phaser.Geom.Polygon | undefined;
++    if (area instanceof Phaser.Geom.Polygon && area.points.length >= 3) {
++      const b = Phaser.Geom.Polygon.GetAABB(area);
++      const local = Phaser.Geom.Polygon.Contains(area, b.centerX, b.centerY)
++        ? { x: b.centerX, y: character ? b.top + b.height * 0.35 : b.centerY }
++        : { x: area.points[0]!.x, y: area.points[0]!.y };
++      const m = sprite.getWorldTransformMatrix();
++      const p = m.transformPoint(local.x - sprite.displayOriginX, local.y - sprite.displayOriginY);
++      return { x: p.x, y: p.y };
++    }
++    const b = sprite.getBounds();
++    return { x: b.centerX, y: character ? b.top + b.height * 0.35 : b.centerY };
++  }
++
 +  /** Threads drawn by {@link showThreads}, removed when they fade or the room changes. */
 +  private threads: Phaser.GameObjects.Graphics | null = null;
 +
@@ -3773,14 +3907,10 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
 +    const player = this.characterSpritesByDefId.get(this.getActivePlayerCharacterId());
 +    const centerOf = (id: string): { x: number; y: number } | null => {
 +      const prop = this.propSpritesById.get(id) as Phaser.GameObjects.Sprite | undefined;
-+      if (prop && prop.visible && prop.alpha > 0.05) {
-+        const b = prop.getBounds();
-+        return { x: b.centerX, y: b.centerY };
-+      }
++      if (prop && prop.visible && prop.alpha > 0.05) return this.clickableCenter(prop, false);
 +      const character = this.characterSpritesByDefId.get(id);
 +      if (character && character.visible && character.alpha > 0.05) {
-+        const b = character.getBounds();
-+        return { x: b.centerX, y: b.top + b.height * 0.35 };
++        return this.clickableCenter(character as Phaser.GameObjects.Sprite, true);
 +      }
 +      for (const e of this.roomStackEntities) {
 +        if (e.kind !== 'hotspot' || e.sortKey !== `hotspot:${id}`) continue;
@@ -3856,7 +3986,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * Dispatches the **look** verb on this prop (same as a primary-button look click). Does not move or rotate the player.
     */
-@@ -5808,8 +6343,8 @@
+@@ -5808,8 +6365,8 @@
        return;
      }
  
@@ -3867,7 +3997,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
          return;
        }
        if (this.isPlayerPointerBlocked()) {
-@@ -5818,12 +6353,24 @@
+@@ -5818,12 +6375,24 @@
        const handlers = getHotspotVerbHandlers(hotspot);
        const profile = getEffectiveInputProfile(getGameSettings());
        const manager = resolveGameStateManager(this.game);
@@ -3892,7 +4022,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        );
        if (resolution.kind === 'none') {
          return;
-@@ -5887,7 +6434,7 @@
+@@ -5887,7 +6456,7 @@
      const geom = new Phaser.Geom.Polygon(flat);
      zone.setInteractive(geom, Phaser.Geom.Polygon.Contains);
      zone.input!.cursor = isBenneGameCursorAsepriteEnabled(getGameSettings()) ? 'none' : 'pointer';
@@ -3901,7 +4031,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  
      this.roomStackEntities.push({
        kind: 'hotspot',
-@@ -5918,6 +6465,7 @@
+@@ -5918,6 +6487,7 @@
      }
  
      const sprite = this.add.image(0, 0, spawn.textureKey);
@@ -3909,7 +4039,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      const feet = resolveCharacterFeetLocal(spawn.data, sprite as Phaser.GameObjects.Sprite);
      const manager = resolveGameStateManager(this.game);
      // Saved feet world position (from a prior flush) overrides the room JSON `(x, y)` — same
-@@ -5964,6 +6512,11 @@
+@@ -5964,6 +6534,11 @@
      const createdAnims = sprite.anims.createFromAseprite(spawn.textureKey);
      setupCharacterAsepritePlayback(sprite, spawn.data, createdAnims);
      attachDirectionalAnimationApi(sprite);
@@ -3921,7 +4051,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  
      const animBase = spawn.initialAnimation ?? 'Idle';
      const facing = resolveSpawnIdleFacing(sprite, spawn.initialFacing);
-@@ -6025,19 +6578,40 @@
+@@ -6025,19 +6600,40 @@
      const handlers = getCharacterVerbHandlers(spawn.data);
  
      const colliderPts = spawn.data.collider?.points;
@@ -3966,7 +4096,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
          return;
        }
        if (this.isPlayerPointerBlocked()) {
-@@ -6045,12 +6619,24 @@
+@@ -6045,12 +6641,24 @@
        }
        const profile = getEffectiveInputProfile(getGameSettings());
        const manager = resolveGameStateManager(this.game);
@@ -3991,7 +4121,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        );
        if (resolution.kind === 'none') {
          return;
-@@ -6118,7 +6704,8 @@
+@@ -6118,8 +6726,23 @@
        if (resolution.consumeActive) {
          manager.clearActiveVerb();
        }
@@ -3999,8 +4129,100 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
 +    };
 +    sprite.on('pointerdown', (pointer: Phaser.Input.Pointer) => onPress(pointer));
      sprite.setData('benneCharacterInteractionAttached', true);
++    this.syncPlayerSpriteInput(sprite);
++  }
++
++  /**
++   * The character the player controls takes no clicks: she often stands in front of the thing to click (where she
++   * stopped to use it), and her sprite would take the click from it. Other characters keep theirs (if clickable).
++   */
++  private syncPlayerSpriteInput(sprite: Phaser.GameObjects.GameObject): void {
++    const s = sprite as Phaser.GameObjects.Sprite;
++    if (!s.input) return;
++    const charData = s.getData('character') as CharacterData | undefined;
++    const want = s.getData('isPlayer') !== true && (!charData || this.getCharacterScriptClickable(charData.id));
++    if (want && !s.input.enabled) s.setInteractive();
++    else if (!want && s.input.enabled) s.disableInteractive();
    }
  
+   private setupCustomGameCursor(): void {
+@@ -6157,6 +6780,15 @@
+     sprite.play(idleKey);
+     this.customCursorSprite = sprite;
+     this.lastCustomCursorVisualKey = null;
++    const badge = this.add.sprite(0, 0, CURSOR_TEXTURE_KEY);
++    badge.setScrollFactor(0, 0);
++    badge.setDepth(CUSTOM_CURSOR_DEPTH - 1);
++    badge.setOrigin(0, 0);
++    badge.setScale(0.5);
++    badge.setVisible(false);
++    badge.setName('benne-cursor-item');
++    this.cursorItemBadge = badge;
++    this.cursorItemBadgeKey = null;
+ 
+     gameEvents.on(GAME_STATE_ACTIVE_INVENTORY_ITEM_CHANGED_EVENT, this.onCustomGameStateForCursor);
+     gameEvents.on(GAME_STATE_ACTIVE_VERB_CHANGED_EVENT, this.onCustomGameStateForCursor);
+@@ -6170,6 +6802,9 @@
+     }
+     this.customCursorSprite.destroy();
+     this.customCursorSprite = null;
++    this.cursorItemBadge?.destroy();
++    this.cursorItemBadge = null;
++    this.cursorItemBadgeKey = null;
+     this.lastCustomCursorVisualKey = null;
+     gameEvents.off(GAME_STATE_ACTIVE_INVENTORY_ITEM_CHANGED_EVENT, this.onCustomGameStateForCursor);
+     gameEvents.off(GAME_STATE_ACTIVE_VERB_CHANGED_EVENT, this.onCustomGameStateForCursor);
+@@ -6182,6 +6817,42 @@
+   }
+ 
+   /**
++   * With an inventory item armed ("use X with..."), its icon, half size, below and to the right of the cursor, so
++   * the player sees what she carries (the cursor keeps its crosshair and hover look). Not when the item has its own
++   * cursor clip (`cursorAnimation`: then the cursor is the item), nor while the cursor is hidden or busy.
++   */
++  private updateCursorItemBadge(at: { x: number; y: number }): void {
++    const badge = this.cursorItemBadge;
++    if (!badge || !badge.scene) {
++      return;
++    }
++    const itemId = resolveGameStateManager(this.game).getActiveInventoryItemId();
++    const def = itemId ? getInventoryDefinition(itemId) : undefined;
++    let frame: { textureKey: string; frameName: string | number } | null = null;
++    if (def && !this.isUserInputDisabled() && !this.isBusyCursorActive() && !this.tryActiveInventoryCursorClip()) {
++      const mode = def.display?.aseprite;
++      const textureKey = mode === 'shared' ? sharedInventoryTextureKey : getPerItemInventoryTextureKey(def.id);
++      if ((mode === true || mode === 'shared') && this.textures.exists(textureKey)) {
++        this.ensureAsepriteAnimsFromAtlasOnce(textureKey);
++        const anim = this.anims.get(defaultInventoryAnimationKey(def));
++        const first = anim?.frames[0]?.frame;
++        if (first) frame = { textureKey, frameName: first.name };
++      }
++    }
++    if (!frame) {
++      if (badge.visible) badge.setVisible(false);
++      return;
++    }
++    const key = `${frame.textureKey}|${frame.frameName}`;
++    if (this.cursorItemBadgeKey !== key) {
++      this.cursorItemBadgeKey = key;
++      badge.setTexture(frame.textureKey, frame.frameName);
++    }
++    badge.setPosition(Math.round(at.x + 5), Math.round(at.y + 5));
++    if (!badge.visible) badge.setVisible(true);
++  }
++
++  /**
+    * When an inventory item is active and a cursor Aseprite tag resolves (JSON {@link InventoryItemData.cursorAnimation}
+    * or a persisted scripting override), returns texture + Phaser animation key; otherwise `null` (verb cursor).
+    */
+@@ -6322,6 +6993,7 @@
+     } else {
+       applyGameCursorSpriteHotspot(sprite, pointer, settings.cursor!);
+     }
++    this.updateCursorItemBadge(this.editorUiCamera ? this.customCursorWorldScratch : pointer);
+ 
+     const cfg = settings.cursor!;
+     const idleKey = cursorPhaserAnimationKey(cfg.idleAnimation.trim());
 diff -ruN src/engine/scenes/RoomTransitionOrchestrator.ts src/engine/scenes/RoomTransitionOrchestrator.ts
 --- src/engine/scenes/RoomTransitionOrchestrator.ts
 +++ src/engine/scenes/RoomTransitionOrchestrator.ts
@@ -4583,6 +4805,22 @@ diff -ruN src/engine/testing/benneTestHooks.ts src/engine/testing/benneTestHooks
    };
  
    game.events.on(Phaser.Core.Events.POST_STEP, () => {
+diff -ruN src/engine/verbs/dispatchVerb.ts src/engine/verbs/dispatchVerb.ts
+--- src/engine/verbs/dispatchVerb.ts
++++ src/engine/verbs/dispatchVerb.ts
+@@ -149,9 +149,11 @@
+     target,
+     fallbackLine,
+   };
++  // A game that routes the unhandled verbs itself (`fallbacks.onUnhandled`) has handled them: no warning.
++  const routed = listenerCount(bus, VERB_UNHANDLED_EVENT) > 0;
+   bus.emit(VERB_UNHANDLED_EVENT, unhandled);
+ 
+-  if (import.meta.env.DEV) {
++  if (import.meta.env.DEV && !routed) {
+     console.warn(
+       `[Benne] Unhandled verb "${verbId}" on ${target.type} (no object/global handler). Message: "${fallbackLine}"`,
+       target,
 diff -ruN src/engine/verbs/holdGesture.ts src/engine/verbs/holdGesture.ts
 --- src/engine/verbs/holdGesture.ts
 +++ src/engine/verbs/holdGesture.ts
