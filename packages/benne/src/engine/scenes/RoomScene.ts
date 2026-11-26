@@ -24,6 +24,7 @@ import { cursorPhaserAnimationKey, roomPropPhaserAnimationKey } from '../content
 import {
   getPerItemInventoryTextureKey,
   inventoryPhaserAnimationKeyForTag,
+  defaultInventoryAnimationKey,
   sharedInventoryTextureKey,
 } from '../content/inventoryAseprite';
 import { getInventoryDefinition } from '../inventory/inventoryDefinitionRegistry';
@@ -746,6 +747,9 @@ export class RoomScene extends Phaser.Scene {
 
   /** Screen-space sprite when `game-config.json` enables `cursor.display.aseprite`. */
   private customCursorSprite: Phaser.GameObjects.Sprite | null = null;
+  /** The armed inventory item, small, next to the custom cursor ({@link updateCursorItemBadge}). */
+  private cursorItemBadge: Phaser.GameObjects.Sprite | null = null;
+  private cursorItemBadgeKey: string | null = null;
   /** Dedupes {@link refreshCustomCursor} work when pointer + visual mode are unchanged. */
   private lastCustomCursorVisualKey: string | null = null;
   /** Republish the hover description / target (`pointer.hover`) from the active pointer (e.g. after inventory reshuffle). */
@@ -5117,6 +5121,9 @@ export class RoomScene extends Phaser.Scene {
     if (this.customCursorSprite) {
       this.editorUiGuiObjects.add(this.customCursorSprite);
     }
+    if (this.cursorItemBadge) {
+      this.editorUiGuiObjects.add(this.cursorItemBadge);
+    }
 
     main.ignore(Array.from(this.editorUiGuiObjects));
     const nonGui = this.children.list.filter((o) => !this.editorUiGuiObjects.has(o));
@@ -6773,6 +6780,15 @@ export class RoomScene extends Phaser.Scene {
     sprite.play(idleKey);
     this.customCursorSprite = sprite;
     this.lastCustomCursorVisualKey = null;
+    const badge = this.add.sprite(0, 0, CURSOR_TEXTURE_KEY);
+    badge.setScrollFactor(0, 0);
+    badge.setDepth(CUSTOM_CURSOR_DEPTH - 1);
+    badge.setOrigin(0, 0);
+    badge.setScale(0.5);
+    badge.setVisible(false);
+    badge.setName('benne-cursor-item');
+    this.cursorItemBadge = badge;
+    this.cursorItemBadgeKey = null;
 
     gameEvents.on(GAME_STATE_ACTIVE_INVENTORY_ITEM_CHANGED_EVENT, this.onCustomGameStateForCursor);
     gameEvents.on(GAME_STATE_ACTIVE_VERB_CHANGED_EVENT, this.onCustomGameStateForCursor);
@@ -6786,6 +6802,9 @@ export class RoomScene extends Phaser.Scene {
     }
     this.customCursorSprite.destroy();
     this.customCursorSprite = null;
+    this.cursorItemBadge?.destroy();
+    this.cursorItemBadge = null;
+    this.cursorItemBadgeKey = null;
     this.lastCustomCursorVisualKey = null;
     gameEvents.off(GAME_STATE_ACTIVE_INVENTORY_ITEM_CHANGED_EVENT, this.onCustomGameStateForCursor);
     gameEvents.off(GAME_STATE_ACTIVE_VERB_CHANGED_EVENT, this.onCustomGameStateForCursor);
@@ -6795,6 +6814,42 @@ export class RoomScene extends Phaser.Scene {
 
   private ensureAsepriteAnimsFromAtlasOnce(textureKey: string): void {
     ensureAsepriteAtlasAnimationsRegisteredOnce(this, textureKey);
+  }
+
+  /**
+   * With an inventory item armed ("use X with..."), its icon, half size, below and to the right of the cursor, so
+   * the player sees what she carries (the cursor keeps its crosshair and hover look). Not when the item has its own
+   * cursor clip (`cursorAnimation`: then the cursor is the item), nor while the cursor is hidden or busy.
+   */
+  private updateCursorItemBadge(at: { x: number; y: number }): void {
+    const badge = this.cursorItemBadge;
+    if (!badge || !badge.scene) {
+      return;
+    }
+    const itemId = resolveGameStateManager(this.game).getActiveInventoryItemId();
+    const def = itemId ? getInventoryDefinition(itemId) : undefined;
+    let frame: { textureKey: string; frameName: string | number } | null = null;
+    if (def && !this.isUserInputDisabled() && !this.isBusyCursorActive() && !this.tryActiveInventoryCursorClip()) {
+      const mode = def.display?.aseprite;
+      const textureKey = mode === 'shared' ? sharedInventoryTextureKey : getPerItemInventoryTextureKey(def.id);
+      if ((mode === true || mode === 'shared') && this.textures.exists(textureKey)) {
+        this.ensureAsepriteAnimsFromAtlasOnce(textureKey);
+        const anim = this.anims.get(defaultInventoryAnimationKey(def));
+        const first = anim?.frames[0]?.frame;
+        if (first) frame = { textureKey, frameName: first.name };
+      }
+    }
+    if (!frame) {
+      if (badge.visible) badge.setVisible(false);
+      return;
+    }
+    const key = `${frame.textureKey}|${frame.frameName}`;
+    if (this.cursorItemBadgeKey !== key) {
+      this.cursorItemBadgeKey = key;
+      badge.setTexture(frame.textureKey, frame.frameName);
+    }
+    badge.setPosition(Math.round(at.x + 5), Math.round(at.y + 5));
+    if (!badge.visible) badge.setVisible(true);
   }
 
   /**
@@ -6938,6 +6993,7 @@ export class RoomScene extends Phaser.Scene {
     } else {
       applyGameCursorSpriteHotspot(sprite, pointer, settings.cursor!);
     }
+    this.updateCursorItemBadge(this.editorUiCamera ? this.customCursorWorldScratch : pointer);
 
     const cfg = settings.cursor!;
     const idleKey = cursorPhaserAnimationKey(cfg.idleAnimation.trim());

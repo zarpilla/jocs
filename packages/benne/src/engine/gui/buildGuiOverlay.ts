@@ -74,6 +74,7 @@ import {
 } from './guiGridLayout';
 import type { InventoryItemData } from '../../types/inventory';
 import {
+  GAME_STATE_ACTIVE_INVENTORY_ITEM_CHANGED_EVENT,
   GAME_STATE_ACTIVE_PLAYER_CHARACTER_CHANGED_EVENT,
   GAME_STATE_INVENTORY_CHANGED_EVENT,
   GAME_STATE_REPLACED_EVENT,
@@ -1609,6 +1610,9 @@ function addInventorySlotSheetSprite(
  * Rebuilds all children of `panel` (backdrop + slot rows) for the current inventory slice starting at
  * `scrollState.offset` (row-major: slot `(r,c)` shows item index `offset + r * cols + c`).
  */
+/** The frame of the inventory slot of the armed item (warm, like the verb line's highlight). */
+const ARMED_SLOT_COLOR = 0xf2c46a;
+
 function fillInventoryPanelContent(
   panel: Phaser.GameObjects.Container,
   scene: Phaser.Scene,
@@ -1749,6 +1753,15 @@ function fillInventoryPanelContent(
 
       if (invIndex < inventoryItems.length) {
         const entry = inventoryItems[invIndex]!;
+        // The armed item ("use X with..."): its slot is marked while it is in hand.
+        if (gameState?.getActiveInventoryItemId() === entry.id) {
+          const mark = scene.add.graphics();
+          mark.fillStyle(ARMED_SLOT_COLOR, 0.16);
+          mark.fillRect(1, 1, c.slotWidth - 2, c.slotHeight - 2);
+          mark.lineStyle(1, ARMED_SLOT_COLOR, 0.9);
+          mark.strokeRect(1.5, 1.5, c.slotWidth - 3, c.slotHeight - 3);
+          slotContainer.add(mark);
+        }
         const defRaw = getInventoryDefinition(entry.id);
         const def = defRaw as InventoryItemData | undefined;
         const iconTag =
@@ -2299,11 +2312,13 @@ export function buildGuiOverlay(
         }
       };
       gameEvents.on(GAME_STATE_INVENTORY_CHANGED_EVENT, onGameStateInventory);
+      gameEvents.on(GAME_STATE_ACTIVE_INVENTORY_ITEM_CHANGED_EVENT, refreshInventoryPanel);
       gameEvents.on(GAME_STATE_REPLACED_EVENT, onGameStateInventory);
       gameEvents.on(GAME_STATE_VARIABLE_CHANGED_EVENT, onInventoryAnimationVariable);
       gameEvents.on(GAME_STATE_ACTIVE_PLAYER_CHARACTER_CHANGED_EVENT, onActivePlayerChanged);
       overlayDisposers.push(() => {
         gameEvents.off(GAME_STATE_INVENTORY_CHANGED_EVENT, onGameStateInventory);
+        gameEvents.off(GAME_STATE_ACTIVE_INVENTORY_ITEM_CHANGED_EVENT, refreshInventoryPanel);
         gameEvents.off(GAME_STATE_REPLACED_EVENT, onGameStateInventory);
         gameEvents.off(GAME_STATE_VARIABLE_CHANGED_EVENT, onInventoryAnimationVariable);
         gameEvents.off(GAME_STATE_ACTIVE_PLAYER_CHARACTER_CHANGED_EVENT, onActivePlayerChanged);
