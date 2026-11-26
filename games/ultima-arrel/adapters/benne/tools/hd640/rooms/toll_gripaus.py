@@ -616,19 +616,20 @@ def primer_pla(cv):
     quadre com al campament de les fades."""
     # a l'esquerra: el tronc caigut, falgueres grosses i joncs foscos
     arrel(cv, (-20, 252), (40, 246), (110, 264), 11, 8, ramp=BARK, base=1.4, seed=71, moss=True, lit=0)
-    for i, (x, y, a, l, sd) in enumerate(((-14, 272, 1.15, 150, -1), (2, 272, 0.7, 160, -1), (26, 272, 1.45, 120, 1),
-                                          (-16, 230, 0.35, 110, -1), (58, 272, 1.95, 84, 1), (14, 272, 1.7, 136, 1),
-                                          (40, 272, 1.25, 104, -1))):
+    # (baixes: no han de tapar la protagonista ni les coses del trencaclosques; tasca 052)
+    for i, (x, y, a, l, sd) in enumerate(((-14, 272, 1.15, 110, -1), (2, 272, 0.7, 120, -1), (26, 272, 1.45, 84, 1),
+                                          (-16, 230, 0.35, 90, -1), (58, 272, 1.95, 60, 1), (14, 272, 1.7, 96, 1),
+                                          (40, 272, 1.25, 74, -1))):
         falguera(cv, x, y, a, l, side=sd, ramp=FERN, lvl=1.5 + i * 0.08, rim=1, seed=i)
     for i, x in enumerate(range(44, 90, 5)):
-        jonc(cv, x, 264, 50 + (i * 13) % 34, (0.35 if i % 2 else -0.2) * (1 + i % 3 * 0.4), FERN, 2.0, gruix=2, lit=0)
+        jonc(cv, x, 264, 34 + (i * 13) % 24, (0.35 if i % 2 else -0.2) * (1 + i % 3 * 0.4), FERN, 2.0, gruix=2, lit=0)
     # a la dreta: la pedra, falgueres i una mata alta de boga (amb la panotxa)
     cv.disc(616, 258, 34, 14, STONE, lambda nx, ny: 2.2 - ny * 1.2 - nx * 0.6 + (fbm(nx * 4, ny * 4, 3) - 0.5) * 1.4, lit=0)
-    for i, (x, y, a, l, sd) in enumerate(((604, 272, 1.95, 140, 1), (632, 272, 2.35, 156, 1), (652, 240, 2.75, 120, 1),
-                                          (586, 272, 1.6, 96, -1), (620, 272, 1.75, 120, 1))):
+    for i, (x, y, a, l, sd) in enumerate(((610, 272, 2.05, 90, 1), (632, 272, 2.35, 120, 1), (652, 240, 2.75, 100, 1),
+                                          (596, 272, 1.75, 52, -1), (622, 272, 1.85, 80, 1))):
         falguera(cv, x, y, a, l, side=sd, ramp=FERN, lvl=1.7, rim=-1, seed=20 + i)
-    for i, x in enumerate(range(556, 646, 4)):
-        jonc(cv, x, 264, 60 + (i * 11) % 46, (-0.5 if i % 2 else 0.25) * (1 + i % 3 * 0.3), FERN, 2.0, gruix=2, lit=0,
+    for i, x in enumerate(range(596, 646, 4)):
+        jonc(cv, x, 264, 40 + (i * 11) % 30, (-0.5 if i % 2 else 0.25) * (1 + i % 3 * 0.3), FERN, 2.0, gruix=2, lit=0,
              cap=i % 3 == 0)
 
 

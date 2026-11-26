@@ -999,15 +999,24 @@ def estaca(cv):
 
 
 def cargol(cv):
-    """El cargol galvanitzat, mig enfangat: brilla massa per ser del bosc."""
+    """
+    El cargol galvanitzat, mig enfangat: brilla massa per ser del bosc. Prou gran per veure'l (un dit de llarg, amb
+    el cap i la rosca) i amb una lluentor en creu, que és la pista: res del bosc no brilla així.
+    """
     x, y = CARGOL
-    cv.disc(x + 1, y + 1, 9, 2.6, EARTH, lambda nx, ny: 1.6 + (fbm(nx * 4, ny * 4, 81) - 0.5) * 1.2, lit=0.5)
-    cv.rect(x - 2, y - 1, x + 4, y, STEEL, lambda xx, yy: 6.6 - (yy - y + 1) * 1.6, lit=0)
-    cv.rect(x + 5, y - 2, x + 6, y + 1, STEEL, 6.0, lit=0)                          # el cap
-    for k in range(3):
-        cv.flat(x - 1 + k * 2, y, (120, 126, 136))                                  # la rosca
-    cv.flat(x + 1, y - 1, (250, 252, 255))
-    cv.glow(x + 2, y - 1, 7, (230, 240, 255), 0.75)
+    cv.disc(x + 1, y + 2, 13, 3.6, EARTH, lambda nx, ny: 1.6 + (fbm(nx * 4, ny * 4, 81) - 0.5) * 1.2, lit=0.5)
+    cv.rect(x - 6, y - 1, x + 5, y + 1, STEEL, lambda xx, yy: 6.6 - (yy - y + 1) * 1.2, lit=0)     # la tija
+    cv.rect(x + 6, y - 3, x + 8, y + 3, STEEL, lambda xx, yy: 6.8 - abs(yy - y) * 0.5, lit=0)   # el cap
+    cv.flat(x - 7, y, (150, 156, 166))                                              # la punta
+    for k in range(5):
+        cv.flat(x - 5 + k * 2, y + 1, (110, 116, 126))                              # la rosca
+    for k in range(4):
+        cv.flat(x - 3 + k * 2, y - 1, (250, 252, 255))                              # el reflex de dalt
+    cv.glow(x + 1, y - 1, 11, (230, 240, 255), 0.9)
+    for d in range(1, 6):                                                           # la lluentor en creu
+        a = 0.85 - d * 0.14
+        for px, py in ((x + 1 + d, y - 1), (x + 1 - d, y - 1), (x + 1, y - 1 - d), (x + 1, y - 1 + d)):
+            cv.flat(px, py, tuple(int(c * (1 - a) + 255 * a) for c in cv.get(px, py)))
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -1057,7 +1066,8 @@ def primer_pla(cv, m):
     # una pedra i falgueres a la dreta
     cv.disc(612, 296, 46, 26, STONE, lambda nx, ny: 2.0 - ny * 1.4 - nx * 0.6 + (fbm(nx * 4, ny * 4, 3) - 0.5) * 1.6)
     cv.disc(612, 296, 46, 26, MOSS, lambda nx, ny: 1.0 if ny < -0.55 and fbm(nx * 5, 1, 9) > 0.5 else -9)
-    for i, (x, y, a, l, s) in enumerate(((556, 300, 1.7, 80, 1), (596, 296, 2.1, 100, 1), (646, 300, 2.4, 90, 1))):
+    # (baixes: la de més a l'esquerra tapava el cargol, al peu de la tanca; tasques 043 i 052)
+    for i, (x, y, a, l, s) in enumerate(((566, 300, 1.85, 46, 1), (600, 296, 2.15, 74, 1), (646, 300, 2.4, 80, 1))):
         falguera(cv, x, y, a, l, side=s, lvl=1.6, seed=10 + i)
     if m.nom == 'dia':
         branca_davant(cv)
