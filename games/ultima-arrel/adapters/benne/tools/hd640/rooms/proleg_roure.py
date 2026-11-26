@@ -15,15 +15,69 @@ from PIL import Image
 
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 from hd.rooms.comu import _diff
-from hd640.rooms.vora_comu import Mode, Llenc, porta_oberta
+from hd640.rooms.vora_comu import EARTH, Mode, Llenc, porta_oberta
 import hd640.rooms.portada as portada
 
 LIGHT = portada.LIGHT
 OY = portada.OY
 
 
+# La Xarxa Miceli, tallada (tasca 040): passat CUT_X, els fils principals que van cap al nord (la tanca, a la dreta)
+# s'apaguen, i al tall hi ha la terra remoguda. Els polsos de llum s'hi aturen.
+CUT_X = 468
+FILS_TALLATS = (2, 3, 6, 8)
+
+
+def _tall_xarxa(img):
+    a = np.asarray(img.convert('RGBA')).astype(np.float32)
+    h, w = a.shape[:2]
+    mask = np.zeros((h, w), np.float32)
+    for k in FILS_TALLATS:
+        p = portada.FILS[k]
+        for i in range(400):
+            x, y = portada._bez(p, i / 400)
+            if x <= CUT_X:
+                continue
+            X, Y = int(x), int(y) + OY
+            for dy in range(-9, 10):
+                for dx in range(-9, 10):
+                    if 0 <= X + dx < w and 0 <= Y + dy < h:
+                        v = max(0.0, 1 - (dx * dx + dy * dy) ** 0.5 / 9.5)
+                        mask[Y + dy, X + dx] = max(mask[Y + dy, X + dx], v)
+    rgb = a[..., :3]
+    lum = rgb.mean(axis=2, keepdims=True)
+    # el turquesa apagat: sense color, més fosc (com un fil mort)
+    mort = lum * np.array([0.5, 0.45, 0.42]) * 0.7
+    turq = np.clip((rgb[..., 1:2] + rgb[..., 2:3]) / 2 - rgb[..., 0:1], 0, 255) / 255
+    k = (mask[..., None] * np.clip(turq * 3.0, 0, 1))
+    a[..., :3] = rgb * (1 - k) + mort * k
+    out = Image.fromarray(a.astype(np.uint8), 'RGBA').copy()
+    # el tall: terra remoguda i els caps dels fils esfilagarsats, foscos
+    cv = Llenc(OY, LIGHT, img=out)
+    for k in FILS_TALLATS:
+        p = portada.FILS[k]
+        t = next(i / 400 for i in range(400) if portada._bez(p, i / 400)[0] > CUT_X)
+        x, y = portada._bez(p, t)
+        cv.disc(x + 2, y, 6, 4, EARTH, 1.4, lit=0)
+        for j in range(4):                                       # els caps esfilagarsats
+            cv.flat(x - 3 - j, y - 1 + (j % 3) - 1, (60, 120, 116) if j < 2 else (40, 70, 70))
+    return cv.img
+
+
 def bg(cv):
     portada.bg(cv)
+    cv.img = _tall_xarxa(cv.img)
+    cv.P = cv.img.load()
+
+
+def _pols_tallats():
+    """Els polsos de la portada, que s'aturen al tall: passat CUT_X (sota el terra) no n'hi arriba cap."""
+    frames = []
+    for f in portada._pols_frames():
+        a = np.asarray(f).copy()
+        a[portada.CUT + OY:, CUT_X:, 3] = 0
+        frames.append(Image.fromarray(a, 'RGBA'))
+    return frames
 
 
 def _prop(fn):
@@ -44,7 +98,7 @@ PROPS = {
 }
 
 ANIMS = {
-    'pols': portada.ANIMS['pols'],
+    'pols': {**portada.ANIMS['pols'], 'frames': _pols_tallats},
 }
 
 # L'Espora camina per l'herba de davant del roure (la porta: x 205..239, el graó a y ≈ 200 de pantalla). Entra de fora
