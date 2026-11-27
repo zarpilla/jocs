@@ -127,6 +127,14 @@
     "LookDL": {
       "loop": false,
       "frameDuration": 260
+    },
+    "FaL": {
+      "loop": false,
+      "frameDuration": 90
+    },
+    "FaU": {
+      "loop": false,
+      "frameDuration": 90
     }
   },
   "defaultVerb": "look",

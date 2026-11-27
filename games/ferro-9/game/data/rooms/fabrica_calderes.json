@@ -170,16 +170,50 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_calderes.capatas.plomall1"
+              "text": "sala.fabrica_calderes.capatas.plomall1",
+              "stage": [
+                {
+                  "prop": "segell",
+                  "visible": false
+                },
+                {
+                  "who": "capatas",
+                  "anim": "IdleD"
+                },
+                {
+                  "who": "player",
+                  "face": "R"
+                },
+                {
+                  "who": "player",
+                  "gest": "Fa"
+                }
+              ]
             },
             {
               "who": "capatas",
               "text": "sala.fabrica_calderes.capatas.plomall2",
-              "sound": "segell"
+              "sound": "segell",
+              "stage": [
+                {
+                  "who": "player",
+                  "gest": null
+                }
+              ]
             },
             {
               "who": "player",
-              "text": "sala.fabrica_calderes.capatas.plomall3"
+              "text": "sala.fabrica_calderes.capatas.plomall3",
+              "stage": [
+                {
+                  "prop": "segell",
+                  "visible": true
+                },
+                {
+                  "who": "capatas",
+                  "anim": "DormSenseSegell"
+                }
+              ]
             }
           ],
           "effects": [

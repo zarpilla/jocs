@@ -188,6 +188,8 @@ def durations(tags, walk=(90, 100), talk=140, extra=None):
         a = {'loop': True}
         if 'Blink' in t or 'Look' in t:                    # micro-accions: un sol cop i torna a l'Idle
             a = {'loop': False, 'frameDuration': 75 if 'Blink' in t else 260}
+        elif t.startswith('Fa'):                           # el gest: un sol cop i s'hi queda (l'últim fotograma)
+            a = {'loop': False, 'frameDuration': 90}
         elif 'Walk' in t:
             a['frameDuration'] = walk[0] if t.endswith('L') else walk[1]
         elif 'Talk' in t:
@@ -234,8 +236,15 @@ def write(cid, tags, size, extra):
     print(f'✔ {cid}: {len(frames)} fotogrames, {", ".join(t for t, _ in tags)}')
 
 
+# El gest `Fa` (de perfil): el braç del davant s'estira endavant (donar, agafar, fer anar una cosa) i s'hi queda fins
+# que la indicació d'escena el treu (`"gest": null`) o s'acaben les línies.
+GEST_FA = (0.35, 0.7, 1.0, 1.0)
+
+
 def walker(cid, p):
     tags = quiet_tags(lambda f, walk=None, talk=False: person(p, f, walk=walk, talk=talk))
+    for f in ('L', 'U'):
+        tags.append((f'Fa{f}', [_amb({'estira': k}, lambda f=f: person(p, f)) for k in GEST_FA]))
     write(cid, tags, (36, 64), {
         'walkSpeed': 84, 'walkToPoint': {'x': 40, 'y': 61}, 'talkPoint': {'x': 18, 'y': -2}, 'feet': {'x': 18, 'y': 61},
         'collider': {'points': [{'x': 11, 'y': 2}, {'x': 25, 'y': 2}, {'x': 27, 'y': 40}, {'x': 24, 'y': 63}, {'x': 11, 'y': 63}, {'x': 8, 'y': 40}]},

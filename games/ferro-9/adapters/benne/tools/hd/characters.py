@@ -583,12 +583,38 @@ def side_torso_edges(p, top=27):
 
 # ─── Una persona ────────────────────────────────────────────────────────────
 
+def _estira(p, k):
+    """El gest `Fa` de perfil: el braç del davant s'allarga endavant (k de 0 a 1), per donar, agafar o fer anar una
+    cosa amb la mà. El braç quiet és (3°, 8°); estirat, gairebé horitzontal, amb el colze poc doblegat."""
+    a = 3 + (78 - 3) * k
+    bend = 8 + (6 - 8) * k
+    ra, rb = math.radians(a), math.radians(a + bend)
+    sx, sy = p.shoulder
+    el = (sx - math.sin(ra) * 10.5, sy + math.cos(ra) * 10.5)
+    wr = (el[0] - math.sin(rb) * 9.5, el[1] + math.cos(rb) * 9.5)
+    p.arms[0] = ((sx, sy), el, wr)
+
+
+def _amunt(p, k):
+    """El gest `Fa` d'esquena: els dos braços amunt (k de 0 a 1), per empènyer o aguantar una cosa per sobre del cap."""
+    def lerp(a, b):
+        return (a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k)
+    for i, side in ((0, -1), (1, 1)):
+        sx, sy = p.sh[i]
+        p.elbow[i] = lerp(p.elbow[i], (sx + side * 2.5, sy - 8.5))
+        p.wrist[i] = lerp(p.wrist[i], (sx + side * 0.5, sy - 18.0))
+
+
 def person(spec, facing, walk=None, talk=False):
     """Persona de 49×87 (peus a (25, 83)). `spec`: materials i ganxos de cada personatge."""
     fg = Fig(49, 87)
     p = Pose(facing, walk, talk, thin=spec.get('thin', 0), stoop=spec.get('stoop', 0))
     p.spec = spec
     S = spec['skin']
+    if spec.get('estira') and p.f == 'L':
+        _estira(p, spec['estira'])
+    elif spec.get('estira') and p.f == 'U' and not p.q:
+        _amunt(p, spec['estira'])
     if p.f == 'L':
         _person_side(fg, p, spec, S)
     elif p.q:

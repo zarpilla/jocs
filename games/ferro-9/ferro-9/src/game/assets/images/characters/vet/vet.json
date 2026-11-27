@@ -1721,6 +1721,174 @@
         "h": 116
       },
       "duration": 100
+    },
+    "vet 82.aseprite": {
+      "frame": {
+        "x": 5330,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "vet 83.aseprite": {
+      "frame": {
+        "x": 5395,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "vet 84.aseprite": {
+      "frame": {
+        "x": 5460,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "vet 85.aseprite": {
+      "frame": {
+        "x": 5525,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "vet 86.aseprite": {
+      "frame": {
+        "x": 5590,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "vet 87.aseprite": {
+      "frame": {
+        "x": 5655,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "vet 88.aseprite": {
+      "frame": {
+        "x": 5720,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "vet 89.aseprite": {
+      "frame": {
+        "x": 5785,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -1729,7 +1897,7 @@
     "image": "vet.png",
     "format": "RGBA8888",
     "size": {
-      "w": 5330,
+      "w": 5850,
       "h": 116
     },
     "scale": "1",
@@ -1871,6 +2039,20 @@
         "name": "LookDL",
         "from": 74,
         "to": 81,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "FaL",
+        "from": 82,
+        "to": 85,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "FaU",
+        "from": 86,
+        "to": 89,
         "direction": "forward",
         "color": "#000000ff"
       }

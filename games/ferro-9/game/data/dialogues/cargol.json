@@ -259,7 +259,23 @@
                 "hasItem": "formulari_triplicat"
               }
             ]
-          }
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "R"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            }
+          ],
+          "stageAfter": [
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
         },
         {
           "who": "cargol",
@@ -289,6 +305,22 @@
                 "who": "cargol",
                 "change": 1
               }
+            }
+          ],
+          "stage": [
+            {
+              "who": "player",
+              "face": "R"
+            },
+            {
+              "who": "player",
+              "gest": "Fa"
+            }
+          ],
+          "stageAfter": [
+            {
+              "who": "player",
+              "gest": null
             }
           ]
         },
