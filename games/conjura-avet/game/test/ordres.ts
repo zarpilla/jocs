@@ -59,6 +59,10 @@ export function ordres(p: Jugador, n: Narrative) {
   p.use('carbonet', item('cera'));
   p.do('use', 'pergami'); p.do('use', 'pergami'); p.do('use', 'pergami');
   expect(n.flag('segell_emma_vist')).toBe(true);
+  p.do('walkTo', 'porta_monestir');
+  p.do('look', 'forat');
+  expect(n.flag('corranda_entesa')).toBe(true);
+  p.do('walkTo', 'porta_monestir');
   p.talk('ingilberga', 'arxiu', 'entrar_no', 'adeu');
   p.do('walkTo', 'porta_monestir');
   p.talk('ponc', 'insistir', 'ell', 'privat');

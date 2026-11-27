@@ -189,6 +189,30 @@
         }
       ]
     },
+    "abeurador": {
+      "name": "sala.mur_avet.abeurador.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.abeurador.look"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cera",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.mur_avet.abeurador.cera"
+            }
+          ]
+        }
+      ]
+    },
     "avet": {
       "name": "sala.mur_avet.avet.nom",
       "interactions": [
@@ -631,6 +655,42 @@
               },
               {
                 "flag": "corranda_sentida"
+              },
+              {
+                "flag": "corranda_entesa",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "dlg.gueraula.4"
+            },
+            {
+              "who": "player",
+              "text": "dlg.gueraula.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.mur_avet.47"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "corranda_entesa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "corranda_entesa"
               }
             ]
           },

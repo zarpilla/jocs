@@ -73,6 +73,13 @@ export function acte1(p: Jugador, n: Narrative) {
   expect(p.room).toBe('claustre');
   expect(n.flag('segell_emma_vist')).toBe(true);
   p.talk('gueraula', 'canta', 'sencera', 'adeu');
+  // «Té les arrels de paper»: la Vet ho entén davant del forat de les arrels.
+  p.do('walkTo', 'porta_monestir');
+  expect(p.room).toBe('mur_avet');
+  p.do('look', 'forat');
+  expect(n.flag('corranda_entesa')).toBe(true);
+  p.do('walkTo', 'porta_monestir');
+  expect(p.room).toBe('claustre');
   p.talk('ingilberga', 'arxiu', 'adeu');
   p.do('give', 'ingilberga', 'tauleta');
   p.do('give', 'ingilberga', 'serra');

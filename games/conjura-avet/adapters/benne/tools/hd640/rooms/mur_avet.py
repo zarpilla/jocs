@@ -176,6 +176,13 @@ def _forat_abeurador():
     return [p(*(c + ux * sx * (hx + m) + uz * sz * (hz + m))[[0, 2]]) for sx, sz in ((-1, -1), (1, -1), (1, 1), (-1, 1))]
 
 
+def _caixa_abeurador():
+    """Els vuit cantons de l'abeurador (al món), per al rectangle del punt."""
+    c, hx, hz, hy, rot = A.ABEURADOR
+    ux, uz = np.array((np.cos(rot), 0, np.sin(rot))), np.array((-np.sin(rot), 0, np.cos(rot)))
+    return [c + ux * sx * hx + uz * sz * hz + _UP * y for sx in (-1, 1) for sz in (-1, 1) for y in (0, 2 * hy)]
+
+
 # L'escala: un personatge fa (v − 128) / 115 de la mida del seu full a la fila v (exacte: la càmera no mira avall;
 # l'Iri, 84 px a escala 1, fa ≈60 px al fons del carrer i ≈90 a baix de tot).
 _Y0, _Y1 = 196, 260
@@ -186,6 +193,7 @@ GEOMETRIA = {
     'things': {
         'absis': {'rect': _rect(_ABSIS, 2), 'walk': _p(250, 628)},
         'mur': {'rect': (0, 132, 34, 178), 'walk': (14, 224)},
+        'abeurador': {'rect': _rect(_caixa_abeurador(), 2), 'walk': _p(160, 520)},
         'avet': {'rect': (_rect(_ARRELS)[2] + 2, 0, _rect(_ABSIS)[0] - 4, 176), 'walk': _p(-40, 612)},
         'branques': {'rect': (24, 176, 232, 214), 'walk': (110, 223)},
         'branca_trencada': {'rect': _rect([_BT0, _BT1], 10), 'walk': _p(-90, 596)},

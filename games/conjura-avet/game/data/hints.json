@@ -742,6 +742,33 @@
       "gueraula"
     ]
   },
+  "v_arrels_paper": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "corranda_sentida"
+        },
+        {
+          "flag": "corranda_entesa",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "corranda_entesa"
+    },
+    "levels": [
+      "pista.v_arrels_paper.1",
+      "pista.v_arrels_paper.2"
+    ],
+    "targets": [
+      "forat"
+    ]
+  },
   "v_serra": {
     "priority": 6,
     "when": {
@@ -782,7 +809,7 @@
           "flag": "segell_emma_vist"
         },
         {
-          "flag": "corranda_sentida"
+          "flag": "corranda_entesa"
         },
         {
           "flag": "sap_arxiu",

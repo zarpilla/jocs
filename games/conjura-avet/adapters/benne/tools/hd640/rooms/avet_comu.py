@@ -72,6 +72,7 @@ AVET = _r((6, 14, 14), (10, 22, 20), (14, 32, 26), (20, 44, 32), (28, 58, 40), (
           (52, 92, 58), (72, 112, 70), (98, 134, 84))
 ESCORÇA = _r((16, 10, 10), (28, 18, 16), (42, 28, 22), (58, 40, 30), (76, 54, 38), (96, 70, 48),
              (118, 88, 60))
+ARREL = _r((30, 24, 20), (50, 40, 32), (74, 60, 46), (100, 82, 62), (128, 106, 80), (156, 132, 102))
 TALL = _r((96, 62, 36), (138, 96, 56), (176, 132, 82), (206, 166, 110), (228, 196, 142), (242, 220, 176))
 RESINA = _r((90, 44, 10), (150, 84, 16), (204, 132, 30), (240, 184, 70), (255, 226, 140))
 FUSTA = _r((20, 12, 10), (36, 22, 16), (54, 34, 22), (74, 48, 30), (96, 64, 40), (120, 82, 52),
@@ -1116,8 +1117,8 @@ def arrels(v, e, sid='arrels'):
     up = np.array((0, 1.0, 0))
     ex = _n(np.cross(up, n))                       # cap a la dreta, al pla
     def _vora(ang):
-        return ARREL_R * (0.82 + 0.32 * vnoise(np.cos(ang) * 3.2 + 3, np.sin(ang) * 3.2, 111)
-                          + 0.06 * vnoise(np.cos(ang) * 14, np.sin(ang) * 14, 112))
+        return ARREL_R * (0.80 + 0.36 * vnoise(np.cos(ang) * 3.2 + 3, np.sin(ang) * 3.2, 111)
+                          + 0.14 * vnoise(np.cos(ang) * 14, np.sin(ang) * 14, 112))
     # el gruix del pla (la terra que s'ha aixecat fa un metre): un disc una mica més enrere, més fosc
     t = x_pla(v, ARREL_C - n * 34, n)
     P = v.punt(np.where(np.isinf(t), 0, t))
@@ -1159,25 +1160,33 @@ def arrels(v, e, sid='arrels'):
         mol = fbm(a / 10, b / 10, 119) > 0.5
         rgb = np.where(mol[..., None], v.to(MOLSA, lvl + 0.4), rgb)
     v.pinta(m, t, rgb, sid)
-    # la vora: les arrels gruixudes que surten del disc, arrencades
+    # la vora: les arrels gruixudes que surten del disc, arrencades, i s'obren enfora (més enllà de la silueta: és
+    # el que fa que es llegeixi com una soca arrencada i no com una roca); cada una, amb dos o tres trams i
+    # arreletes que se'n separen
     rng = np.random.default_rng(13)
     arrs = []
-    for j in range(26):
-        th = 2 * math.pi * j / 26 + rng.uniform(-0.12, 0.12)
-        if math.sin(th) < -0.45:
+    for j in range(34):
+        th = 2 * math.pi * j / 34 + rng.uniform(-0.1, 0.1)
+        if math.sin(th) < -0.5:
             continue                                   # (les de sota són sota terra)
-        r0 = ARREL_R * rng.uniform(0.55, 0.85)
-        L = rng.uniform(26, 64) if math.sin(th) < 0.4 else rng.uniform(10, 22)
+        r0 = ARREL_R * rng.uniform(0.5, 0.8)
+        L = rng.uniform(46, 96) if math.sin(th) < 0.5 else rng.uniform(30, 64)
         rd = ex * math.cos(th) + up * math.sin(th)
         p0 = ARREL_C + rd * r0 + n * 4
-        mid = p0 + rd * L * 0.5 + n * rng.uniform(6, 22)
-        p1 = mid + rd * L * 0.3 - up * rng.uniform(8, 30) + n * rng.uniform(0, 10)
-        g = rng.uniform(2.2, 5.5)
+        mid = p0 + rd * L * 0.55 + n * rng.uniform(6, 20)
+        cau = up * rng.uniform(6, 26) if math.sin(th) < 0.3 else up * rng.uniform(-6, 10)
+        p1 = mid + rd * L * 0.45 - cau + n * rng.uniform(0, 10)
+        g = rng.uniform(3.0, 6.0)
         arrs.append((p0, mid, g))
-        arrs.append((mid, p1, g * 0.6))
+        arrs.append((mid, p1, g * 0.55))
+        for _ in range(int(rng.integers(1, 3))):     # les arreletes
+            f = rng.uniform(0.3, 0.9)
+            q0 = p0 + (mid - p0) * f
+            dq = _n(rd + ex * rng.uniform(-0.8, 0.8) + up * rng.uniform(-0.6, 0.6))
+            arrs.append((q0, q0 + dq * rng.uniform(12, 28) + n * rng.uniform(0, 8), g * 0.35))
     arrs.sort(key=lambda q: -v.cam.vista(tuple(q[1]))[2])
     for p0, p1, g in arrs:
-        _arrel(v, e, p0, p1, g, sid)
+        _arrel(v, e, p0, p1, g, sid, ramp=ARREL)
     # les arreletes que pengen de la vora de baix, fins al forat
     for j in range(12):
         th = -math.pi / 2 + (j - 5.5) * 0.17 + rng.uniform(-0.05, 0.05)
@@ -1185,16 +1194,16 @@ def arrels(v, e, sid='arrels'):
         p0 = ARREL_C + rd * ARREL_R * 0.7 + n * 6
         p1 = p0 + n * rng.uniform(6, 20) - up * rng.uniform(4, 16) + ex * rng.uniform(-6, 6)
         if p1[1] > 1:
-            _arrel(v, e, p0, p1, rng.uniform(1.4, 2.6), sid)
+            _arrel(v, e, p0, p1, rng.uniform(1.4, 2.6), sid, ramp=ARREL)
     # les dues arrels tallades de serra (a baix a l'esquerra): el tall, una el·lipse clara amb els anells
-    for (aa, bb, rad, sortida) in ((-50.0, -44.0, 19.0, 34.0), (-10.0, -66.0, 13.0, 26.0), (-78.0, -12.0, 9.0, 18.0)):
+    for (aa, bb, rad, sortida) in ((-50.0, -44.0, 14.0, 30.0), (-10.0, -66.0, 10.0, 22.0), (-78.0, -12.0, 7.0, 16.0)):
         c0 = ARREL_C + ex * aa + up * bb
         c1 = c0 + n * sortida + up * 2
         _arrel(v, e, c0, c1, rad, sid, cap=False)
         _tall(v, e, c1, n, rad, sid + '_tall')
 
 
-def _arrel(v, e, p0, p1, g, sid, cap=True):
+def _arrel(v, e, p0, p1, g, sid, cap=True, ramp=ESCORÇA):
     """Una arrel: un tub que es va aprimant de p0 a p1 (gruix g), amb l'escorça fosca."""
     cam = v.cam
     n = 24
@@ -1212,8 +1221,8 @@ def _arrel(v, e, p0, p1, g, sid, cap=True):
         m = (dx * dx + dy * dy < 1) & (z < v.z[sub])
         lv = 2.6 - dy * 1.3 - dx * 0.3 + _llum(e, np.array((0, 1.0, 0))) * 0.5
         lv = lv + (hnp(v.X[sub], v.Y[sub], 21) - 0.5) * 0.6
-        ii = np.clip(np.floor(lv + v.bayer[sub] - 0.5), 0, len(ESCORÇA) - 1).astype(int)
-        v.col[sub][m] = ESCORÇA[ii][m]
+        ii = np.clip(np.floor(lv + v.bayer[sub] - 0.5), 0, len(ramp) - 1).astype(int)
+        v.col[sub][m] = ramp[ii][m]
         v.z[sub][m] = z
         v.own[sub][m] = v.idx(sid)
 
@@ -1229,7 +1238,7 @@ def _tall(v, e, c, n, rad, sid):
     rr = np.hypot(a, b)
     m = np.isfinite(t) & (rr < rad)
     anell = (rr * 0.9 + vnoise(a / 4, b / 4, 131) * 1.4) % 2.6 < 0.7
-    lvl = 3.6 + (anell * -0.9) + (rr > rad - 2.2) * -2.6 + _llum(e, np.broadcast_to(n, P.shape)) * (1.0 if e.llum == 'nit' else 0.5) + 0.4
+    lvl = 2.8 + (anell * -1.0) + (rr > rad - 2.2) * -2.6 + _llum(e, np.broadcast_to(n, P.shape)) * (1.0 if e.llum == 'nit' else 0.5) + 0.4
     rgb = np.where((rr > rad - 2.2)[..., None], v.to(ESCORÇA, lvl + 2.4), v.to(TALL, lvl))
     v.pinta(m & (t < v.z + 6), np.minimum(t, v.z), rgb, sid, prof=False)
 

@@ -384,6 +384,38 @@
         "x": 101,
         "y": 224
       }
+    },
+    {
+      "id": "abeurador",
+      "active": true,
+      "description": "l'abeurador",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 489,
+          "y": 186
+        },
+        {
+          "x": 558,
+          "y": 186
+        },
+        {
+          "x": 558,
+          "y": 225
+        },
+        {
+          "x": 489,
+          "y": 225
+        }
+      ],
+      "walkToPoint": {
+        "x": 455,
+        "y": 225
+      },
+      "lookAtPoint": {
+        "x": 523,
+        "y": 225
+      }
     }
   ],
   "points": [],

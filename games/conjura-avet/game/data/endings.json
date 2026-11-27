@@ -2,8 +2,12 @@
   "$schema": "../schemas/endings.schema.json",
   "avet": {
     "title": "final.avet.titol",
-    "text": "final.avet.text",
+    "text": "final.avet.7",
     "scene": [
+      {
+        "who": "title",
+        "text": "final.avet.text"
+      },
       {
         "who": "narrator",
         "text": "final.avet.1"
@@ -27,10 +31,6 @@
       {
         "who": "narrator",
         "text": "final.avet.6"
-      },
-      {
-        "who": "narrator",
-        "text": "final.avet.7"
       }
     ],
     "credits": [

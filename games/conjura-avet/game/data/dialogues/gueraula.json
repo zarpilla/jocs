@@ -77,11 +77,7 @@
         },
         {
           "who": "vet",
-          "text": "dlg.gueraula.4"
-        },
-        {
-          "who": "vet",
-          "text": "dlg.gueraula.5",
+          "text": "dlg.gueraula.4b",
           "effects": [
             {
               "setFlag": "corranda_sentida"
