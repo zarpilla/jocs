@@ -1,0 +1,30 @@
+{
+  "id": "menu-dialeg",
+  "name": "Menú (conversa)",
+  "description": "El botó del menú a sobre de les opcions d'una conversa (adapters/benne/tactil/index.ts, menuDialeg).",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "anchorY": "bottom",
+  "zIndex": 95,
+  "controls": [
+    {
+      "type": "button",
+      "id": "MenuBtn",
+      "x": 611,
+      "y": 165,
+      "width": 25,
+      "height": 25,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "textColor": "#e2d6b4",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "MenuBtn"
+    }
+  ]
+}
