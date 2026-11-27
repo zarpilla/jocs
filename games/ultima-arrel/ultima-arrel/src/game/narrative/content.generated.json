@@ -4125,6 +4125,26 @@
         "cutscene": {},
         "hotspots": {}
       },
+      "epileg_bolets": {
+        "name": "sala.epileg_bolets.nom",
+        "cutscene": {},
+        "hotspots": {}
+      },
+      "epileg_gronxador": {
+        "name": "sala.epileg_gronxador.nom",
+        "cutscene": {},
+        "hotspots": {}
+      },
+      "epileg_llibreta": {
+        "name": "sala.epileg_llibreta.nom",
+        "cutscene": {},
+        "hotspots": {}
+      },
+      "epileg_segells": {
+        "name": "sala.epileg_segells.nom",
+        "cutscene": {},
+        "hotspots": {}
+      },
       "portada": {
         "name": "sala.portada.nom",
         "hotspots": {}
@@ -7954,15 +7974,18 @@
         "scene": [
           {
             "who": "narrator",
-            "text": "final.taula.1"
+            "text": "final.taula.1",
+            "room": "epileg_bolets"
           },
           {
             "who": "narrator",
-            "text": "final.taula.2"
+            "text": "final.taula.2",
+            "room": "epileg_segells"
           },
           {
             "who": "narrator",
-            "text": "final.taula.3"
+            "text": "final.taula.3",
+            "room": "epileg_gronxador"
           },
           {
             "who": "narrator",
@@ -7971,7 +7994,8 @@
               "var": "observacions",
               "op": ">=",
               "value": 12
-            }
+            },
+            "room": "epileg_llibreta"
           },
           {
             "who": "narrator",
@@ -7980,7 +8004,8 @@
               "var": "observacions",
               "op": "<",
               "value": 12
-            }
+            },
+            "room": "epileg_llibreta"
           }
         ],
         "credits": [
@@ -10309,6 +10334,10 @@
       "sala.centraleta.xarxa.7": "(amb l'orella enganxada a les arrels) Shhh. Ve tot barrejat. Tu, escolta-ho pel corn de fusta.",
       "sala.centraleta.xarxa.8": "Observació: el corn vibra.",
       "sala.credits.nom": "Crèdits",
+      "sala.epileg_bolets.nom": "Epíleg: els bolets",
+      "sala.epileg_segells.nom": "Epíleg: els tres segells",
+      "sala.epileg_gronxador.nom": "Epíleg: el gronxador",
+      "sala.epileg_llibreta.nom": "Epíleg: la llibreta",
       "sala.portada.nom": "L'Última Arrel",
       "sala.proleg_roure.1": "Tres dies sense ni un missatge del nord.",
       "sala.proleg_roure.2": "«Bosc 2.0». Hmf. Ja en tenim, de xarxa.",

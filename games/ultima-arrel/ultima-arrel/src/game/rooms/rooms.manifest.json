@@ -44,6 +44,22 @@
     {
       "id": "zona_mati",
       "definition": "zona_mati/zona_mati.room.json"
+    },
+    {
+      "id": "epileg_bolets",
+      "definition": "epileg_bolets/epileg_bolets.room.json"
+    },
+    {
+      "id": "epileg_gronxador",
+      "definition": "epileg_gronxador/epileg_gronxador.room.json"
+    },
+    {
+      "id": "epileg_llibreta",
+      "definition": "epileg_llibreta/epileg_llibreta.room.json"
+    },
+    {
+      "id": "epileg_segells",
+      "definition": "epileg_segells/epileg_segells.room.json"
     }
   ]
 }

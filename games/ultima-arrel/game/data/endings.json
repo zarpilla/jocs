@@ -6,15 +6,18 @@
     "scene": [
       {
         "who": "narrator",
-        "text": "final.taula.1"
+        "text": "final.taula.1",
+        "room": "epileg_bolets"
       },
       {
         "who": "narrator",
-        "text": "final.taula.2"
+        "text": "final.taula.2",
+        "room": "epileg_segells"
       },
       {
         "who": "narrator",
-        "text": "final.taula.3"
+        "text": "final.taula.3",
+        "room": "epileg_gronxador"
       },
       {
         "who": "narrator",
@@ -23,7 +26,8 @@
           "var": "observacions",
           "op": ">=",
           "value": 12
-        }
+        },
+        "room": "epileg_llibreta"
       },
       {
         "who": "narrator",
@@ -32,7 +36,8 @@
           "var": "observacions",
           "op": "<",
           "value": 12
-        }
+        },
+        "room": "epileg_llibreta"
       }
     ],
     "credits": [
