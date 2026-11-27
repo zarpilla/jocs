@@ -1,0 +1,25 @@
+{
+  "id": "fons-dialeg",
+  "name": "Fons (conversa)",
+  "description": "El fons del panell d'una conversa mentre algú parla, al tauler (adapters/benne/tactil/index.ts, dialegTauler).",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "anchorY": "bottom",
+  "zIndex": -1,
+  "controls": [
+    {
+      "type": "image",
+      "id": "Fons",
+      "x": 0,
+      "y": -72,
+      "tag": "VerbsBG",
+      "zIndex": 1,
+      "backgroundAnchor": "screen",
+      "visible": true,
+      "backgroundOffsetY": -72,
+      "clickable": false
+    }
+  ]
+}
