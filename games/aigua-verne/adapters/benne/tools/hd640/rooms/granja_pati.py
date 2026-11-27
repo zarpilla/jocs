@@ -28,7 +28,7 @@ from hd.rooms.exterior import fbm, smooth
 from hd640.rooms import granja_estreta_comu as G
 from hd640.rooms.terra2_comu import (
     RH, EARTH, ADOBE, STONE, TILE, GREYW, WHITEP, BLACKT, GRASS, IRONR, HILL, PLANK, RUSTT,
-    dust_sky, canonada, cracks, dust_wind_frames, llum_canonada_frames, BLUE)
+    dust_sky, canonada, cracks, dust_wind_frames, llum_canonada_frames, BLUE, _diff)
 from hd.rooms.comu import text
 from hd640.tres_d import Camera, Escena, Llum
 
@@ -331,7 +331,7 @@ def abeurador(e):
 
 # ─── Composició ─────────────────────────────────────────────────────────────
 
-def escena(cv, tex):
+def escena(cv, tex, panell_terra=False):
     e = Escena(cv, CAM, LLUMS, ambient=AMBIENT)
     fons(cv)
     zn = 300
@@ -345,6 +345,8 @@ def escena(cv, tex):
     tanca(e)
     abeurador(e)
     bomba(e, tex)
+    if panell_terra:
+        panell_bomba_terra(e)
     e.sprite('arbre', tex['arbre'], (232, 188), (ARBRE[0], 0, ARBRE[1]), escala_img=1.5)
     pou(e)
     masia(e, tex)
@@ -380,7 +382,32 @@ def precinte(cv):
     cv.img.alpha_composite(e.capa(G._diff(tancat, obert), {'graner'}))
 
 
-PROPS = {'precinte': precinte}
+def panell_bomba_terra(e):
+    """El panell del davant de la bomba, desmuntat i deixat a terra al davant a l'esquerra (els cargols al costat)."""
+    bx, bz = BOMBA
+    x0, x1, z0, z1 = bx - 34, bx - 10, bz - 44, bz - 18
+    e.quad('panell_terra', (x0, 0.6, z1), (x1, 0.6, z1 + 2), (x1, 0.6, z0 + 2), (x0, 0.6, z0), ramp=WHITEP,
+           lvl=lambda s, t, P: 4.6 - (0.9 if s < 1.2 or t < 1.2 else 0))
+    for k, (cx, cz) in enumerate(((bx - 6, bz - 20), (bx - 4, bz - 24), (bx - 8, bz - 26))):     # els cargols
+        e.quad(f'cargol{k}', (cx, 0.8, cz + 1), (cx + 1.5, 0.8, cz + 1), (cx + 1.5, 0.8, cz), (cx, 0.8, cz),
+               ramp=IRONR, lvl=2.4)
+
+
+def bomba_oberta(cv):
+    """Des que la Vet en treu els cargols (`bomba_llegida`): el panell a terra i, a la bomba, el forat amb el motor i
+    l'etiqueta «7.788» (el dibuix pla obert, projectat per la cara del davant)."""
+    base, _ = _base()
+    tex = dict(_textures())
+    tex['bomba'] = _pla(lambda c: (G.bomba(c), G.bomba_oberta(c)))
+    c2 = Canvas(ROOM_W, light=LIGHT)
+    escena(c2, tex, panell_terra=True)
+    for y in range(RH, H):
+        for x in range(ROOM_W):
+            c2.flat(x, y, (0, 0, 0))
+    cv.img.alpha_composite(_diff(c2.img, base))
+
+
+PROPS = {'precinte': precinte, 'bomba_oberta': bomba_oberta}
 
 
 def _frames_pols():
@@ -410,7 +437,8 @@ def _v(z):
 FRONT = [
     # el pou: el cilindre, i també els pals, la biga i la politja (si no, qui hi és darrere sembla que sigui a dins)
     {'id': 'davant_pou', 'mask': _amo({'pou', 'pou_pals'}), 'baseline': round(_v(POU[1])), 'zIndex': 20},
-    {'id': 'davant_bomba', 'mask': _amo({'bomba'}), 'baseline': round(_v(BOMBA[1])), 'zIndex': 20},
+    {'id': 'davant_bomba', 'mask': _amo({'bomba'}), 'baseline': round(_v(BOMBA[1])), 'zIndex': 20,
+     'props': ('bomba_oberta',)},          # (la bomba oberta, a la capa de la bomba: si no, la tancada la taparia)
     # els trams del tub, cadascun amb la profunditat del seu mig
     *[{'id': f'davant_tub{k}', 'mask': _amo({f'tub{k}'}), 'baseline': round(_v((A[2] + B[2]) / 2)), 'zIndex': 20}
       for k, (A, B) in enumerate(zip(TUB, TUB[1:]))],
@@ -482,7 +510,7 @@ GEOMETRIA = {
         'pou': {'rect': _rect((POU[0] - 28, 80, POU[1] - 26), (POU[0] + 28, 0, POU[1] - 26)),
                 'walk': _p(POU[0] + 10, POU[1] - 50)},
         'bomba': {'rect': _rect((BOMBA[0] - 18, 40, BOMBA[1] - 8), (BOMBA[0] + 18, 0, BOMBA[1] - 8)),
-                  'walk': _p(BOMBA[0] + 34, BOMBA[1] - 20)},
+                  'walk': _p(BOMBA[0] + 30, BOMBA[1] - 6)},   # al costat: de perfil, no d'esquena (tasca 078)
         'canonada': {'rect': (CAN_U - 7, 0, CAN_U + 7, HOR - 1), 'walk': _p(-200, 760)},
         'panell_preu': {'rect': _rect((PANELL[0] - PANELL_HW, 62 + 2 * PANELL_HH, PANELL[1] - 22),
                                       (PANELL[0] + PANELL_HW, 0, PANELL[1] + 22)),

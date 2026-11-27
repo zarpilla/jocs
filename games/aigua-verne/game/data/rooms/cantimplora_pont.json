@@ -342,6 +342,37 @@
           "value": false
         }
       ]
+    },
+    {
+      "id": "iri_al_pont",
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "protagonist": "iri"
+          },
+          {
+            "var": "escena",
+            "op": "<=",
+            "value": 6
+          }
+        ]
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "sala.cantimplora_pont.iri.1"
+        },
+        {
+          "who": "iri",
+          "text": "sala.cantimplora_pont.iri.2"
+        },
+        {
+          "who": "capitana",
+          "text": "sala.cantimplora_pont.iri.3"
+        }
+      ]
     }
   ],
   "decor": {

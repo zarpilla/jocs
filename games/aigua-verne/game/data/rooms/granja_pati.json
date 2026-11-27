@@ -364,7 +364,13 @@
             {
               "who": "player",
               "text": "sala.granja_pati.bomba.1",
-              "sound": "cargols"
+              "sound": "cargols",
+              "stage": [
+                {
+                  "prop": "bomba_oberta",
+                  "visible": true
+                }
+              ]
             },
             {
               "who": "player",
@@ -746,6 +752,11 @@
             "is": false
           }
         ]
+      }
+    },
+    "bomba_oberta": {
+      "visibleIf": {
+        "flag": "bomba_llegida"
       }
     }
   },

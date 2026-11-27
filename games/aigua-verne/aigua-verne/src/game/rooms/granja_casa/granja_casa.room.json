@@ -460,6 +460,17 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "quadre_apartat",
+      "tag": "quadre_apartat",
+      "animations": {
+        "quadre_apartat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

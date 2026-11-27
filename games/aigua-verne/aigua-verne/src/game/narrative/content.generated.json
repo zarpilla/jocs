@@ -5140,6 +5140,37 @@
                 "value": false
               }
             ]
+          },
+          {
+            "id": "iri_al_pont",
+            "verb": "*",
+            "if": {
+              "all": [
+                {
+                  "protagonist": "iri"
+                },
+                {
+                  "var": "escena",
+                  "op": "<=",
+                  "value": 6
+                }
+              ]
+            },
+            "once": true,
+            "lines": [
+              {
+                "who": "capitana",
+                "text": "sala.cantimplora_pont.iri.1"
+              },
+              {
+                "who": "iri",
+                "text": "sala.cantimplora_pont.iri.2"
+              },
+              {
+                "who": "capitana",
+                "text": "sala.cantimplora_pont.iri.3"
+              }
+            ]
           }
         ],
         "decor": {
@@ -9406,6 +9437,11 @@
             "visibleIf": {
               "flag": "trucant_pare"
             }
+          },
+          "quadre_apartat": {
+            "visibleIf": {
+              "flag": "quadre_apartat"
+            }
           }
         }
       },
@@ -10352,7 +10388,13 @@
                   {
                     "who": "player",
                     "text": "sala.granja_pati.bomba.1",
-                    "sound": "cargols"
+                    "sound": "cargols",
+                    "stage": [
+                      {
+                        "prop": "bomba_oberta",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -10734,6 +10776,11 @@
                   "is": false
                 }
               ]
+            }
+          },
+          "bomba_oberta": {
+            "visibleIf": {
+              "flag": "bomba_llegida"
             }
           }
         },
@@ -30278,7 +30325,7 @@
       "esc.esc1.3": "Necessitem algú que voli a tot arreu i ho sàpiga tot.",
       "esc.esc1.4": "La Capitana.",
       "esc.esc1.5": "La Capitana.",
-      "esc.esc1.6": "Que no et parla des que li vas vendre el seu propi motor.",
+      "esc.esc1.6": "Que no et parla des que li vas llogar el seu propi motor i el vas tornar sense carburador.",
       "esc.esc1.7": "Li vaig llogar.",
       "esc.esc1.8": "(La Cantimplora és al port. El camí surt del pati, a la dreta.)",
       "esc.colada_fi.1": "Les claus es refreden a poc a poc, colgades de sorra. Després, en Bru les poleix, una per una, sense pressa.",
@@ -31415,6 +31462,9 @@
       "sala.casa_juana.aquari.1": "Un aquari buit, net i amb el llum encès. Un rètol: «PER QUAN TORNIN».",
       "sala.casa_juana.finestra.1": "Per la finestra rodona es veu la paret del moll, a dalt, i la cistella penjada.",
       "sala.cantimplora_pont.entra.1": "La pantalla del pont s'encén sola.",
+      "sala.cantimplora_pont.iri.1": "Les mans on les vegi, pilot. Al meu pont no es desmunta res.",
+      "sala.cantimplora_pont.iri.2": "Encara em cobres el carburador?",
+      "sala.cantimplora_pont.iri.3": "Amb interessos. Digues què vols, i després fora del meu seient.",
       "sala.cantimplora_pont.mapa.1": "El mapa de navegació: una taula de vidre amb Vesper i els seus planetes. Hi brillen els que podem visitar.",
       "sala.cantimplora_pont.mapa.2": "Jo sé com funciona. No sé com es fa servir. Això és cosa de l'Iri.",
       "sala.cantimplora_pont.mapa.3": "Sense permís de la Capitana, no m'hi deixa posar ni el dit.",

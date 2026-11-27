@@ -44,18 +44,18 @@
     },
     "granja_pati 2.aseprite": {
       "frame": {
-        "x": 1351,
-        "y": 0,
-        "w": 1280,
-        "h": 93
+        "x": 3465,
+        "y": 2220,
+        "w": 45,
+        "h": 28
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 160,
-        "w": 1280,
-        "h": 93
+        "x": 375,
+        "y": 184,
+        "w": 45,
+        "h": 28
       },
       "sourceSize": {
         "w": 1280,
@@ -65,7 +65,7 @@
     },
     "granja_pati 3.aseprite": {
       "frame": {
-        "x": 2631,
+        "x": 1351,
         "y": 0,
         "w": 1280,
         "h": 93
@@ -86,9 +86,9 @@
     },
     "granja_pati 4.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 360,
-        "w": 1279,
+        "x": 2631,
+        "y": 0,
+        "w": 1280,
         "h": 93
       },
       "rotated": false,
@@ -96,7 +96,7 @@
       "spriteSourceSize": {
         "x": 0,
         "y": 160,
-        "w": 1279,
+        "w": 1280,
         "h": 93
       },
       "sourceSize": {
@@ -107,7 +107,7 @@
     },
     "granja_pati 5.aseprite": {
       "frame": {
-        "x": 1279,
+        "x": 0,
         "y": 360,
         "w": 1279,
         "h": 93
@@ -128,7 +128,7 @@
     },
     "granja_pati 6.aseprite": {
       "frame": {
-        "x": 2558,
+        "x": 1279,
         "y": 360,
         "w": 1279,
         "h": 93
@@ -149,8 +149,8 @@
     },
     "granja_pati 7.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 453,
+        "x": 2558,
+        "y": 360,
         "w": 1279,
         "h": 93
       },
@@ -170,7 +170,7 @@
     },
     "granja_pati 8.aseprite": {
       "frame": {
-        "x": 1279,
+        "x": 0,
         "y": 453,
         "w": 1279,
         "h": 93
@@ -191,6 +191,27 @@
     },
     "granja_pati 9.aseprite": {
       "frame": {
+        "x": 1279,
+        "y": 453,
+        "w": 1279,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1279,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 10.aseprite": {
+      "frame": {
         "x": 2558,
         "y": 453,
         "w": 1280,
@@ -210,32 +231,11 @@
       },
       "duration": 100
     },
-    "granja_pati 10.aseprite": {
-      "frame": {
-        "x": 0,
-        "y": 546,
-        "w": 1280,
-        "h": 93
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 160,
-        "w": 1280,
-        "h": 93
-      },
-      "sourceSize": {
-        "w": 1280,
-        "h": 360
-      },
-      "duration": 100
-    },
     "granja_pati 11.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 546,
-        "w": 1279,
+        "w": 1280,
         "h": 93
       },
       "rotated": false,
@@ -243,7 +243,7 @@
       "spriteSourceSize": {
         "x": 0,
         "y": 160,
-        "w": 1279,
+        "w": 1280,
         "h": 93
       },
       "sourceSize": {
@@ -254,7 +254,7 @@
     },
     "granja_pati 12.aseprite": {
       "frame": {
-        "x": 2559,
+        "x": 1280,
         "y": 546,
         "w": 1279,
         "h": 93
@@ -275,9 +275,9 @@
     },
     "granja_pati 13.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 639,
-        "w": 1280,
+        "x": 2559,
+        "y": 546,
+        "w": 1279,
         "h": 93
       },
       "rotated": false,
@@ -285,7 +285,7 @@
       "spriteSourceSize": {
         "x": 0,
         "y": 160,
-        "w": 1280,
+        "w": 1279,
         "h": 93
       },
       "sourceSize": {
@@ -296,7 +296,7 @@
     },
     "granja_pati 14.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 639,
         "w": 1280,
         "h": 93
@@ -317,7 +317,7 @@
     },
     "granja_pati 15.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1280,
         "y": 639,
         "w": 1280,
         "h": 93
@@ -338,8 +338,8 @@
     },
     "granja_pati 16.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 732,
+        "x": 2560,
+        "y": 639,
         "w": 1280,
         "h": 93
       },
@@ -359,7 +359,7 @@
     },
     "granja_pati 17.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 732,
         "w": 1280,
         "h": 93
@@ -380,7 +380,7 @@
     },
     "granja_pati 18.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1280,
         "y": 732,
         "w": 1280,
         "h": 93
@@ -401,8 +401,8 @@
     },
     "granja_pati 19.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 825,
+        "x": 2560,
+        "y": 732,
         "w": 1280,
         "h": 93
       },
@@ -422,7 +422,7 @@
     },
     "granja_pati 20.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 825,
         "w": 1280,
         "h": 93
@@ -443,6 +443,27 @@
     },
     "granja_pati 21.aseprite": {
       "frame": {
+        "x": 1280,
+        "y": 825,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 22.aseprite": {
+      "frame": {
         "x": 2560,
         "y": 825,
         "w": 1279,
@@ -462,7 +483,7 @@
       },
       "duration": 100
     },
-    "granja_pati 22.aseprite": {
+    "granja_pati 23.aseprite": {
       "frame": {
         "x": 0,
         "y": 918,
@@ -483,7 +504,7 @@
       },
       "duration": 100
     },
-    "granja_pati 23.aseprite": {
+    "granja_pati 24.aseprite": {
       "frame": {
         "x": 1245,
         "y": 918,
@@ -504,7 +525,7 @@
       },
       "duration": 100
     },
-    "granja_pati 24.aseprite": {
+    "granja_pati 25.aseprite": {
       "frame": {
         "x": 2490,
         "y": 918,
@@ -525,7 +546,7 @@
       },
       "duration": 100
     },
-    "granja_pati 25.aseprite": {
+    "granja_pati 26.aseprite": {
       "frame": {
         "x": 0,
         "y": 1011,
@@ -546,7 +567,7 @@
       },
       "duration": 100
     },
-    "granja_pati 26.aseprite": {
+    "granja_pati 27.aseprite": {
       "frame": {
         "x": 1245,
         "y": 1011,
@@ -567,7 +588,7 @@
       },
       "duration": 100
     },
-    "granja_pati 27.aseprite": {
+    "granja_pati 28.aseprite": {
       "frame": {
         "x": 2524,
         "y": 1011,
@@ -588,30 +609,9 @@
       },
       "duration": 100
     },
-    "granja_pati 28.aseprite": {
-      "frame": {
-        "x": 0,
-        "y": 1104,
-        "w": 1280,
-        "h": 93
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 160,
-        "w": 1280,
-        "h": 93
-      },
-      "sourceSize": {
-        "w": 1280,
-        "h": 360
-      },
-      "duration": 100
-    },
     "granja_pati 29.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 1104,
         "w": 1280,
         "h": 93
@@ -632,7 +632,7 @@
     },
     "granja_pati 30.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1280,
         "y": 1104,
         "w": 1280,
         "h": 93
@@ -653,8 +653,8 @@
     },
     "granja_pati 31.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1197,
+        "x": 2560,
+        "y": 1104,
         "w": 1280,
         "h": 93
       },
@@ -674,7 +674,7 @@
     },
     "granja_pati 32.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 1197,
         "w": 1280,
         "h": 93
@@ -695,7 +695,7 @@
     },
     "granja_pati 33.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1280,
         "y": 1197,
         "w": 1280,
         "h": 93
@@ -716,8 +716,8 @@
     },
     "granja_pati 34.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1290,
+        "x": 2560,
+        "y": 1197,
         "w": 1280,
         "h": 93
       },
@@ -737,7 +737,7 @@
     },
     "granja_pati 35.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 1290,
         "w": 1280,
         "h": 93
@@ -758,7 +758,7 @@
     },
     "granja_pati 36.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1280,
         "y": 1290,
         "w": 1280,
         "h": 93
@@ -779,8 +779,8 @@
     },
     "granja_pati 37.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1383,
+        "x": 2560,
+        "y": 1290,
         "w": 1280,
         "h": 93
       },
@@ -800,7 +800,7 @@
     },
     "granja_pati 38.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 1383,
         "w": 1280,
         "h": 93
@@ -821,7 +821,7 @@
     },
     "granja_pati 39.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1280,
         "y": 1383,
         "w": 1280,
         "h": 93
@@ -842,8 +842,8 @@
     },
     "granja_pati 40.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1476,
+        "x": 2560,
+        "y": 1383,
         "w": 1280,
         "h": 93
       },
@@ -863,7 +863,7 @@
     },
     "granja_pati 41.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 1476,
         "w": 1280,
         "h": 93
@@ -884,6 +884,27 @@
     },
     "granja_pati 42.aseprite": {
       "frame": {
+        "x": 1280,
+        "y": 1476,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 43.aseprite": {
+      "frame": {
         "x": 2560,
         "y": 1476,
         "w": 1279,
@@ -903,7 +924,7 @@
       },
       "duration": 100
     },
-    "granja_pati 43.aseprite": {
+    "granja_pati 44.aseprite": {
       "frame": {
         "x": 0,
         "y": 1569,
@@ -924,7 +945,7 @@
       },
       "duration": 100
     },
-    "granja_pati 44.aseprite": {
+    "granja_pati 45.aseprite": {
       "frame": {
         "x": 1239,
         "y": 1569,
@@ -945,7 +966,7 @@
       },
       "duration": 100
     },
-    "granja_pati 45.aseprite": {
+    "granja_pati 46.aseprite": {
       "frame": {
         "x": 2480,
         "y": 1569,
@@ -966,7 +987,7 @@
       },
       "duration": 100
     },
-    "granja_pati 46.aseprite": {
+    "granja_pati 47.aseprite": {
       "frame": {
         "x": 0,
         "y": 1662,
@@ -987,7 +1008,7 @@
       },
       "duration": 100
     },
-    "granja_pati 47.aseprite": {
+    "granja_pati 48.aseprite": {
       "frame": {
         "x": 1241,
         "y": 1662,
@@ -1008,7 +1029,7 @@
       },
       "duration": 100
     },
-    "granja_pati 48.aseprite": {
+    "granja_pati 49.aseprite": {
       "frame": {
         "x": 2480,
         "y": 1662,
@@ -1029,30 +1050,9 @@
       },
       "duration": 100
     },
-    "granja_pati 49.aseprite": {
-      "frame": {
-        "x": 0,
-        "y": 1755,
-        "w": 1280,
-        "h": 93
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 160,
-        "w": 1280,
-        "h": 93
-      },
-      "sourceSize": {
-        "w": 1280,
-        "h": 360
-      },
-      "duration": 100
-    },
     "granja_pati 50.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 1755,
         "w": 1280,
         "h": 93
@@ -1073,7 +1073,7 @@
     },
     "granja_pati 51.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1280,
         "y": 1755,
         "w": 1280,
         "h": 93
@@ -1094,6 +1094,27 @@
     },
     "granja_pati 52.aseprite": {
       "frame": {
+        "x": 2560,
+        "y": 1755,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 53.aseprite": {
+      "frame": {
         "x": 0,
         "y": 1848,
         "w": 1280,
@@ -1113,7 +1134,7 @@
       },
       "duration": 100
     },
-    "granja_pati 53.aseprite": {
+    "granja_pati 54.aseprite": {
       "frame": {
         "x": 1280,
         "y": 1848,
@@ -1134,7 +1155,7 @@
       },
       "duration": 100
     },
-    "granja_pati 54.aseprite": {
+    "granja_pati 55.aseprite": {
       "frame": {
         "x": 2559,
         "y": 1848,
@@ -1155,30 +1176,9 @@
       },
       "duration": 100
     },
-    "granja_pati 55.aseprite": {
-      "frame": {
-        "x": 0,
-        "y": 1941,
-        "w": 1280,
-        "h": 93
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 160,
-        "w": 1280,
-        "h": 93
-      },
-      "sourceSize": {
-        "w": 1280,
-        "h": 360
-      },
-      "duration": 100
-    },
     "granja_pati 56.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 1941,
         "w": 1280,
         "h": 93
@@ -1199,7 +1199,7 @@
     },
     "granja_pati 57.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1280,
         "y": 1941,
         "w": 1280,
         "h": 93
@@ -1220,8 +1220,8 @@
     },
     "granja_pati 58.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 2034,
+        "x": 2560,
+        "y": 1941,
         "w": 1280,
         "h": 93
       },
@@ -1241,7 +1241,7 @@
     },
     "granja_pati 59.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 2034,
         "w": 1280,
         "h": 93
@@ -1262,7 +1262,7 @@
     },
     "granja_pati 60.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1280,
         "y": 2034,
         "w": 1280,
         "h": 93
@@ -1283,8 +1283,8 @@
     },
     "granja_pati 61.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 2127,
+        "x": 2560,
+        "y": 2034,
         "w": 1280,
         "h": 93
       },
@@ -1304,7 +1304,7 @@
     },
     "granja_pati 62.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 2127,
         "w": 1280,
         "h": 93
@@ -1325,7 +1325,7 @@
     },
     "granja_pati 63.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1280,
         "y": 2127,
         "w": 1280,
         "h": 93
@@ -1346,8 +1346,8 @@
     },
     "granja_pati 64.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 2220,
+        "x": 2560,
+        "y": 2127,
         "w": 1280,
         "h": 93
       },
@@ -1367,7 +1367,7 @@
     },
     "granja_pati 65.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 0,
         "y": 2220,
         "w": 1280,
         "h": 93
@@ -1388,18 +1388,18 @@
     },
     "granja_pati 66.aseprite": {
       "frame": {
-        "x": 3539,
+        "x": 1280,
         "y": 2220,
-        "w": 3,
-        "h": 3
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 438,
-        "y": 21,
-        "w": 3,
-        "h": 3
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
         "w": 1280,
@@ -1409,28 +1409,7 @@
     },
     "granja_pati 67.aseprite": {
       "frame": {
-        "x": 3542,
-        "y": 2220,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 1280,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "granja_pati 68.aseprite": {
-      "frame": {
-        "x": 3539,
+        "x": 3584,
         "y": 2220,
         "w": 3,
         "h": 3
@@ -1449,9 +1428,9 @@
       },
       "duration": 100
     },
-    "granja_pati 69.aseprite": {
+    "granja_pati 68.aseprite": {
       "frame": {
-        "x": 3542,
+        "x": 3587,
         "y": 2220,
         "w": 1,
         "h": 1
@@ -1470,9 +1449,30 @@
       },
       "duration": 100
     },
+    "granja_pati 69.aseprite": {
+      "frame": {
+        "x": 3584,
+        "y": 2220,
+        "w": 3,
+        "h": 3
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 438,
+        "y": 21,
+        "w": 3,
+        "h": 3
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
     "granja_pati 70.aseprite": {
       "frame": {
-        "x": 3542,
+        "x": 3587,
         "y": 2220,
         "w": 1,
         "h": 1
@@ -1493,7 +1493,7 @@
     },
     "granja_pati 71.aseprite": {
       "frame": {
-        "x": 3542,
+        "x": 3587,
         "y": 2220,
         "w": 1,
         "h": 1
@@ -1514,7 +1514,7 @@
     },
     "granja_pati 72.aseprite": {
       "frame": {
-        "x": 3542,
+        "x": 3587,
         "y": 2220,
         "w": 1,
         "h": 1
@@ -1535,7 +1535,7 @@
     },
     "granja_pati 73.aseprite": {
       "frame": {
-        "x": 3542,
+        "x": 3587,
         "y": 2220,
         "w": 1,
         "h": 1
@@ -1556,7 +1556,7 @@
     },
     "granja_pati 74.aseprite": {
       "frame": {
-        "x": 3542,
+        "x": 3587,
         "y": 2220,
         "w": 1,
         "h": 1
@@ -1577,7 +1577,7 @@
     },
     "granja_pati 75.aseprite": {
       "frame": {
-        "x": 3542,
+        "x": 3587,
         "y": 2220,
         "w": 1,
         "h": 1
@@ -1598,7 +1598,7 @@
     },
     "granja_pati 76.aseprite": {
       "frame": {
-        "x": 3542,
+        "x": 3587,
         "y": 2220,
         "w": 1,
         "h": 1
@@ -1619,7 +1619,7 @@
     },
     "granja_pati 77.aseprite": {
       "frame": {
-        "x": 3542,
+        "x": 3587,
         "y": 2220,
         "w": 1,
         "h": 1
@@ -1640,7 +1640,28 @@
     },
     "granja_pati 78.aseprite": {
       "frame": {
-        "x": 3465,
+        "x": 3587,
+        "y": 2220,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 79.aseprite": {
+      "frame": {
+        "x": 3510,
         "y": 2220,
         "w": 24,
         "h": 27
@@ -1659,9 +1680,9 @@
       },
       "duration": 100
     },
-    "granja_pati 79.aseprite": {
+    "granja_pati 80.aseprite": {
       "frame": {
-        "x": 3489,
+        "x": 3534,
         "y": 2220,
         "w": 14,
         "h": 6
@@ -1680,7 +1701,7 @@
       },
       "duration": 100
     },
-    "granja_pati 80.aseprite": {
+    "granja_pati 81.aseprite": {
       "frame": {
         "x": 1280,
         "y": 0,
@@ -1701,9 +1722,9 @@
       },
       "duration": 100
     },
-    "granja_pati 81.aseprite": {
+    "granja_pati 82.aseprite": {
       "frame": {
-        "x": 3511,
+        "x": 3556,
         "y": 2220,
         "w": 28,
         "h": 4
@@ -1722,9 +1743,9 @@
       },
       "duration": 100
     },
-    "granja_pati 82.aseprite": {
+    "granja_pati 83.aseprite": {
       "frame": {
-        "x": 3503,
+        "x": 3548,
         "y": 2220,
         "w": 8,
         "h": 6
@@ -1743,9 +1764,9 @@
       },
       "duration": 100
     },
-    "granja_pati 83.aseprite": {
+    "granja_pati 84.aseprite": {
       "frame": {
-        "x": 3542,
+        "x": 3587,
         "y": 2220,
         "w": 1,
         "h": 1
@@ -1764,7 +1785,7 @@
       },
       "duration": 100
     },
-    "granja_pati 84.aseprite": {
+    "granja_pati 85.aseprite": {
       "frame": {
         "x": 2560,
         "y": 2220,
@@ -1785,7 +1806,7 @@
       },
       "duration": 100
     },
-    "granja_pati 85.aseprite": {
+    "granja_pati 86.aseprite": {
       "frame": {
         "x": 2607,
         "y": 2220,
@@ -1833,72 +1854,79 @@
         "color": "#000000ff"
       },
       {
-        "name": "pols",
+        "name": "bomba_oberta",
         "from": 2,
-        "to": 65,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "pols",
+        "from": 3,
+        "to": 66,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "llum_canonada",
-        "from": 66,
-        "to": 77,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_bomba",
-        "from": 78,
+        "from": 67,
         "to": 78,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_tub0",
+        "name": "davant_bomba",
         "from": 79,
         "to": 79,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_arbre",
+        "name": "davant_tub0",
         "from": 80,
         "to": 80,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_tub1",
+        "name": "davant_arbre",
         "from": 81,
         "to": 81,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_tub2",
+        "name": "davant_tub1",
         "from": 82,
         "to": 82,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_tub3",
+        "name": "davant_tub2",
         "from": 83,
         "to": 83,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_pou",
+        "name": "davant_tub3",
         "from": 84,
         "to": 84,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_pou",
         "from": 85,
         "to": 85,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 86,
+        "to": 86,
         "direction": "forward",
         "color": "#000000ff"
       }

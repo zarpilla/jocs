@@ -344,6 +344,11 @@
       "visibleIf": {
         "flag": "trucant_pare"
       }
+    },
+    "quadre_apartat": {
+      "visibleIf": {
+        "flag": "quadre_apartat"
+      }
     }
   }
 }

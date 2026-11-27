@@ -373,8 +373,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 432,
-        "y": 209
+        "x": 433,
+        "y": 207
       },
       "lookAtPoint": {
         "x": 411,
@@ -716,6 +716,18 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "bomba_oberta",
+      "tag": "bomba_oberta",
+      "animations": {
+        "bomba_oberta": {}
+      },
+      "zIndex": 21,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "baseline": 206
     }
   ],
   "characters": [
