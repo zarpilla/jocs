@@ -207,6 +207,9 @@
             {
               "setVar": "judici",
               "value": 3
+            },
+            {
+              "takeItem": "tauleta"
             }
           ]
         },

@@ -418,6 +418,30 @@
             "open"
           ],
           "if": {
+            "all": [
+              {
+                "flag": "porta_capitular_oberta",
+                "is": false
+              },
+              {
+                "hasItem": "claus"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.scriptorium.26_claus"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
             "flag": "porta_capitular_oberta",
             "is": false
           },

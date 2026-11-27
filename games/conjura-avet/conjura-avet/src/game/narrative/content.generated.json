@@ -5906,6 +5906,9 @@
                   {
                     "setVar": "judici",
                     "value": 3
+                  },
+                  {
+                    "takeItem": "tauleta"
                   }
                 ]
               },
@@ -7619,6 +7622,9 @@
                 "effects": [
                   {
                     "setFlag": "segell_acceptat"
+                  },
+                  {
+                    "takeItem": "cera"
                   }
                 ]
               },
@@ -9994,6 +10000,30 @@
                   {
                     "setVar": "fase",
                     "value": 5
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "walkTo",
+                  "use",
+                  "open"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "porta_capitular_oberta",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "claus"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.scriptorium.26_claus"
                   }
                 ]
               },
@@ -18101,6 +18131,7 @@
       "sala.scriptorium.24": "Iri! Entra. Té les claus: el bagul serà teu. Jo vigilo els canonges.",
       "sala.scriptorium.25": "Vigila també la tos.",
       "sala.scriptorium.26": "Tancada. Les claus les porta en Sunifred.",
+      "sala.scriptorium.26_claus": "Les claus ja les tinc. Ara, que no hi hagi cap canonge davant quan l'obri.",
       "sala.scriptorium.27": "L'arxiu és cosa de l'Iri. Jo vigilo els canonges.",
       "sala.scriptorium.28": "La porta per on hem entrat. Per aquí se'n van els canonges, i per aquí tornen.",
       "sala.scriptorium.29": "No me'n vaig sense el que hem vingut a buscar.",

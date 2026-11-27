@@ -882,6 +882,9 @@
           "effects": [
             {
               "setFlag": "segell_acceptat"
+            },
+            {
+              "takeItem": "cera"
             }
           ]
         },
