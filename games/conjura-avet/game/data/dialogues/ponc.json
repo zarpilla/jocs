@@ -154,11 +154,42 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.ponc.6"
+          "text": "dlg.ponc.6",
+          "stage": [
+            {
+              "who": "ponc",
+              "face": "L"
+            },
+            {
+              "who": "sunifred",
+              "face": "L"
+            },
+            {
+              "who": "player",
+              "face": "L"
+            },
+            {
+              "who": "bonfill",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "ponc",
-          "text": "dlg.ponc.7"
+          "text": "dlg.ponc.7",
+          "stageAfter": [
+            {
+              "who": "bonfill",
+              "walk": {
+                "x": 192,
+                "y": 220
+              }
+            },
+            {
+              "who": "bonfill",
+              "face": "R"
+            }
+          ]
         },
         {
           "who": "ponc",
@@ -174,13 +205,21 @@
           ],
           "stageAfter": [
             {
-              "who": "bonfill",
+              "who": "ramon",
               "walk": "carrer",
               "wait": false
             },
             {
-              "who": "ramon",
+              "who": "bonfill",
               "walk": "carrer"
+            },
+            {
+              "who": "ramon",
+              "visible": false
+            },
+            {
+              "who": "bonfill",
+              "visible": false
             }
           ]
         },
@@ -233,6 +272,10 @@
         {
           "who": "vet",
           "text": "dlg.ponc.37"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.ponc.38"
         }
       ]
     },
