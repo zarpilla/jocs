@@ -280,7 +280,7 @@ ja no s'amaguen: ho diuen tot davant de tothom.
 
 Cinemàtica, sala `proleg_punt7`.
 
-> NARRADOR: Atlàntic Nord. Punt 7. Febrer. Tres de la matinada.
+> NARRADOR: Una nit de febrer, a les tres de la matinada, a l'Atlàntic Nord: el Punt 7.
 > *(A popa de l'Arenga, en Bastida baixa una zòdiac amb la grua. A dins, la Juana.)*
 > JUANA: Deu minuts, Ernest.
 > BASTIDA: Deu. I tornes.
