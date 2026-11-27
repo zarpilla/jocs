@@ -200,6 +200,76 @@
           ]
         }
       ]
+    },
+    "extintor": {
+      "name": "sala.aeroport_personal.extintor.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_personal.extintor.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tauler": {
+      "name": "sala.aeroport_personal.tauler.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_personal.tauler.look"
+            }
+          ]
+        }
+      ]
+    },
+    "taquilles": {
+      "name": "sala.aeroport_personal.taquilles.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_personal.taquilles.look"
+            }
+          ]
+        }
+      ]
+    },
+    "carro": {
+      "name": "sala.aeroport_personal.carro.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_personal.carro.look"
+            }
+          ]
+        }
+      ]
+    },
+    "con": {
+      "name": "sala.aeroport_personal.con.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_personal.con.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {
