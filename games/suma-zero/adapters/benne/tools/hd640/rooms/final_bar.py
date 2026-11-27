@@ -445,7 +445,10 @@ _V_FONS = min(v for _, v in _SEU.values()) - 30
 GEOMETRIA = {
     'things': {},
     'spawns': {**_SEU, 'neta': _p(*NETA), 'diu': _p(CISTELLA[0], CISTELLA[1], CISTELLA[2])},
-    'walkable': [_pl(-130, SEU - 6), _pl(130, SEU - 6), _pl(130, SEU + 6), _pl(-130, SEU + 6)],
+    # Els que seuen, en una franja darrere la taula; i, per davant de la taula (i pel costat de la dreta, on és la
+    # cistella), el terra per on la NETA-3 serveix i en Diu s'escapa a les indicacions d'escena del final.
+    'walkable': [_pl(-130, SEU + 6), _pl(130, SEU + 6), _pl(185, SEU), _pl(185, -44), _pl(-160, -44), _pl(-160, -28),
+                 _pl(146, -28), _pl(146, SEU - 6), _pl(-130, SEU - 6)],
     'floorSquash': 0.42,
     # el sol de la tarda entra per la façana (a la dreta): les ombres cauen cap a l'esquerra i una mica endavant
     'characterShadow': {'enabled': True, 'color': '#2a1a10', 'alpha': 0.4, 'squash': 0.4, 'core': 0.6,

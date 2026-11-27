@@ -5492,12 +5492,44 @@
                   {
                     "who": "narrator",
                     "text": "sala.bcmu_escombraries.conducte.neta1",
-                    "sound": "robot_neteja"
+                    "sound": "robot_neteja",
+                    "stage": [
+                      {
+                        "who": "neta",
+                        "at": "porta",
+                        "visible": true
+                      },
+                      {
+                        "who": "neta",
+                        "walk": "bosses"
+                      },
+                      {
+                        "who": "neta",
+                        "walk": {
+                          "x": 272,
+                          "y": 190
+                        }
+                      },
+                      {
+                        "who": "neta",
+                        "face": "L"
+                      }
+                    ]
                   },
                   {
                     "who": "neta",
                     "text": "sala.bcmu_escombraries.conducte.neta2",
-                    "sound": "robot_atura"
+                    "sound": "robot_atura",
+                    "stageAfter": [
+                      {
+                        "who": "neta",
+                        "walk": "porta"
+                      },
+                      {
+                        "who": "neta",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -14760,7 +14792,29 @@
           },
           {
             "who": "narrator",
-            "text": "final.tele1"
+            "text": "final.tele1",
+            "stage": [
+              {
+                "who": "ballester",
+                "face": "U"
+              },
+              {
+                "who": "marcel",
+                "face": "U"
+              },
+              {
+                "who": "iri",
+                "face": "U"
+              },
+              {
+                "who": "vet",
+                "face": "U"
+              },
+              {
+                "who": "tomas",
+                "face": "U"
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -14775,7 +14829,17 @@
           },
           {
             "who": "tomas",
-            "text": "final.tomas_dona1"
+            "text": "final.tomas_dona1",
+            "stage": [
+              {
+                "who": "tomas",
+                "face": "L"
+              },
+              {
+                "who": "vet",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -14791,21 +14855,39 @@
             "if": {
               "flag": "repartit",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "iri",
             "text": "final.iri1_repartit",
             "if": {
               "flag": "repartit"
-            }
+            },
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
             "text": "final.vet1",
             "if": {
               "flag": "repartit"
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -14813,7 +14895,13 @@
             "if": {
               "flag": "repartit",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -14829,14 +14917,42 @@
                   "value": 3
                 }
               ]
-            }
+            },
+            "stage": [
+              {
+                "who": "ballester",
+                "face": "D"
+              },
+              {
+                "who": "marcel",
+                "face": "D"
+              },
+              {
+                "who": "iri",
+                "face": "D"
+              },
+              {
+                "who": "vet",
+                "face": "D"
+              },
+              {
+                "who": "tomas",
+                "face": "D"
+              }
+            ]
           },
           {
             "who": "ballester",
             "text": "final.ballester",
             "if": {
               "flag": "aliat_ballester"
-            }
+            },
+            "stage": [
+              {
+                "who": "ballester",
+                "face": "D"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -14850,14 +14966,43 @@
             "text": "final.neta",
             "if": {
               "flag": "aliat_neta"
-            }
+            },
+            "stage": [
+              {
+                "who": "neta",
+                "walk": {
+                  "x": 302,
+                  "y": 246
+                }
+              },
+              {
+                "who": "neta",
+                "face": "U"
+              }
+            ],
+            "stageAfter": [
+              {
+                "who": "neta",
+                "walk": {
+                  "x": 224,
+                  "y": 246
+                },
+                "wait": false
+              }
+            ]
           },
           {
             "who": "rius",
             "text": "final.rius",
             "if": {
               "flag": "aliada_rius"
-            }
+            },
+            "stage": [
+              {
+                "who": "rius",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "pons",
@@ -14868,7 +15013,13 @@
           },
           {
             "who": "iri",
-            "text": "final.iri2"
+            "text": "final.iri2",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -14876,35 +15027,65 @@
             "if": {
               "flag": "repartit",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "vet",
             "text": "final.vet2_repartit",
             "if": {
               "flag": "repartit"
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "marcel",
             "text": "final.marcel1",
             "if": {
               "flag": "mentida_corporativa"
-            }
+            },
+            "stage": [
+              {
+                "who": "marcel",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
             "text": "final.vet3",
             "if": {
               "flag": "mentida_corporativa"
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "marcel",
             "text": "final.marcel2",
             "if": {
               "flag": "dignitat"
-            }
+            },
+            "stage": [
+              {
+                "who": "marcel",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "tomas",
@@ -14912,14 +15093,26 @@
             "if": {
               "flag": "tap_tornat",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "tomas",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "tomas",
             "text": "final.tomas2",
             "if": {
               "flag": "tap_tornat"
-            }
+            },
+            "stage": [
+              {
+                "who": "tomas",
+                "face": "D"
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -14929,15 +15122,48 @@
               {
                 "setFlag": "diu_cable"
               }
+            ],
+            "stage": [
+              {
+                "who": "diu",
+                "at": {
+                  "x": 570,
+                  "y": 250
+                }
+              },
+              {
+                "who": "diu",
+                "walk": {
+                  "x": 538,
+                  "y": 250
+                }
+              },
+              {
+                "who": "diu",
+                "anim": "MossegaXarxa",
+                "hold": 0.8
+              }
             ]
           },
           {
             "who": "iri",
-            "text": "final.iri3"
+            "text": "final.iri3",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
-            "text": "final.vet4"
+            "text": "final.vet4",
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "title",
@@ -15012,7 +15238,29 @@
           },
           {
             "who": "narrator",
-            "text": "final.tele1"
+            "text": "final.tele1",
+            "stage": [
+              {
+                "who": "ballester",
+                "face": "U"
+              },
+              {
+                "who": "marcel",
+                "face": "U"
+              },
+              {
+                "who": "iri",
+                "face": "U"
+              },
+              {
+                "who": "vet",
+                "face": "U"
+              },
+              {
+                "who": "tomas",
+                "face": "U"
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -15027,7 +15275,17 @@
           },
           {
             "who": "tomas",
-            "text": "final.tomas_dona1"
+            "text": "final.tomas_dona1",
+            "stage": [
+              {
+                "who": "tomas",
+                "face": "L"
+              },
+              {
+                "who": "vet",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -15043,21 +15301,39 @@
             "if": {
               "flag": "repartit",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "iri",
             "text": "final.iri1_repartit",
             "if": {
               "flag": "repartit"
-            }
+            },
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
             "text": "final.vet1",
             "if": {
               "flag": "repartit"
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -15065,7 +15341,13 @@
             "if": {
               "flag": "repartit",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -15081,14 +15363,42 @@
                   "value": 3
                 }
               ]
-            }
+            },
+            "stage": [
+              {
+                "who": "ballester",
+                "face": "D"
+              },
+              {
+                "who": "marcel",
+                "face": "D"
+              },
+              {
+                "who": "iri",
+                "face": "D"
+              },
+              {
+                "who": "vet",
+                "face": "D"
+              },
+              {
+                "who": "tomas",
+                "face": "D"
+              }
+            ]
           },
           {
             "who": "ballester",
             "text": "final.ballester",
             "if": {
               "flag": "aliat_ballester"
-            }
+            },
+            "stage": [
+              {
+                "who": "ballester",
+                "face": "D"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -15102,14 +15412,43 @@
             "text": "final.neta",
             "if": {
               "flag": "aliat_neta"
-            }
+            },
+            "stage": [
+              {
+                "who": "neta",
+                "walk": {
+                  "x": 302,
+                  "y": 246
+                }
+              },
+              {
+                "who": "neta",
+                "face": "U"
+              }
+            ],
+            "stageAfter": [
+              {
+                "who": "neta",
+                "walk": {
+                  "x": 224,
+                  "y": 246
+                },
+                "wait": false
+              }
+            ]
           },
           {
             "who": "rius",
             "text": "final.rius",
             "if": {
               "flag": "aliada_rius"
-            }
+            },
+            "stage": [
+              {
+                "who": "rius",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "pons",
@@ -15120,7 +15459,13 @@
           },
           {
             "who": "iri",
-            "text": "final.iri2"
+            "text": "final.iri2",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -15128,35 +15473,65 @@
             "if": {
               "flag": "repartit",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "vet",
             "text": "final.vet2_repartit",
             "if": {
               "flag": "repartit"
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "marcel",
             "text": "final.marcel1",
             "if": {
               "flag": "mentida_corporativa"
-            }
+            },
+            "stage": [
+              {
+                "who": "marcel",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
             "text": "final.vet3",
             "if": {
               "flag": "mentida_corporativa"
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "marcel",
             "text": "final.marcel2",
             "if": {
               "flag": "dignitat"
-            }
+            },
+            "stage": [
+              {
+                "who": "marcel",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "tomas",
@@ -15164,14 +15539,26 @@
             "if": {
               "flag": "tap_tornat",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "tomas",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "tomas",
             "text": "final.tomas2",
             "if": {
               "flag": "tap_tornat"
-            }
+            },
+            "stage": [
+              {
+                "who": "tomas",
+                "face": "D"
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -15181,15 +15568,48 @@
               {
                 "setFlag": "diu_cable"
               }
+            ],
+            "stage": [
+              {
+                "who": "diu",
+                "at": {
+                  "x": 570,
+                  "y": 250
+                }
+              },
+              {
+                "who": "diu",
+                "walk": {
+                  "x": 538,
+                  "y": 250
+                }
+              },
+              {
+                "who": "diu",
+                "anim": "MossegaXarxa",
+                "hold": 0.8
+              }
             ]
           },
           {
             "who": "iri",
-            "text": "final.iri3"
+            "text": "final.iri3",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
-            "text": "final.vet4"
+            "text": "final.vet4",
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "title",
@@ -15277,7 +15697,29 @@
           },
           {
             "who": "narrator",
-            "text": "final.tele1"
+            "text": "final.tele1",
+            "stage": [
+              {
+                "who": "ballester",
+                "face": "U"
+              },
+              {
+                "who": "marcel",
+                "face": "U"
+              },
+              {
+                "who": "iri",
+                "face": "U"
+              },
+              {
+                "who": "vet",
+                "face": "U"
+              },
+              {
+                "who": "tomas",
+                "face": "U"
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -15292,7 +15734,17 @@
           },
           {
             "who": "tomas",
-            "text": "final.tomas_dona1"
+            "text": "final.tomas_dona1",
+            "stage": [
+              {
+                "who": "tomas",
+                "face": "L"
+              },
+              {
+                "who": "vet",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -15308,21 +15760,39 @@
             "if": {
               "flag": "repartit",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "iri",
             "text": "final.iri1_repartit",
             "if": {
               "flag": "repartit"
-            }
+            },
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
             "text": "final.vet1",
             "if": {
               "flag": "repartit"
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -15330,7 +15800,13 @@
             "if": {
               "flag": "repartit",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -15346,14 +15822,42 @@
                   "value": 3
                 }
               ]
-            }
+            },
+            "stage": [
+              {
+                "who": "ballester",
+                "face": "D"
+              },
+              {
+                "who": "marcel",
+                "face": "D"
+              },
+              {
+                "who": "iri",
+                "face": "D"
+              },
+              {
+                "who": "vet",
+                "face": "D"
+              },
+              {
+                "who": "tomas",
+                "face": "D"
+              }
+            ]
           },
           {
             "who": "ballester",
             "text": "final.ballester",
             "if": {
               "flag": "aliat_ballester"
-            }
+            },
+            "stage": [
+              {
+                "who": "ballester",
+                "face": "D"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -15367,14 +15871,43 @@
             "text": "final.neta",
             "if": {
               "flag": "aliat_neta"
-            }
+            },
+            "stage": [
+              {
+                "who": "neta",
+                "walk": {
+                  "x": 302,
+                  "y": 246
+                }
+              },
+              {
+                "who": "neta",
+                "face": "U"
+              }
+            ],
+            "stageAfter": [
+              {
+                "who": "neta",
+                "walk": {
+                  "x": 224,
+                  "y": 246
+                },
+                "wait": false
+              }
+            ]
           },
           {
             "who": "rius",
             "text": "final.rius",
             "if": {
               "flag": "aliada_rius"
-            }
+            },
+            "stage": [
+              {
+                "who": "rius",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "pons",
@@ -15385,7 +15918,13 @@
           },
           {
             "who": "iri",
-            "text": "final.iri2"
+            "text": "final.iri2",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -15393,35 +15932,65 @@
             "if": {
               "flag": "repartit",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "vet",
             "text": "final.vet2_repartit",
             "if": {
               "flag": "repartit"
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "marcel",
             "text": "final.marcel1",
             "if": {
               "flag": "mentida_corporativa"
-            }
+            },
+            "stage": [
+              {
+                "who": "marcel",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
             "text": "final.vet3",
             "if": {
               "flag": "mentida_corporativa"
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "marcel",
             "text": "final.marcel2",
             "if": {
               "flag": "dignitat"
-            }
+            },
+            "stage": [
+              {
+                "who": "marcel",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "tomas",
@@ -15429,14 +15998,26 @@
             "if": {
               "flag": "tap_tornat",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "tomas",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "tomas",
             "text": "final.tomas2",
             "if": {
               "flag": "tap_tornat"
-            }
+            },
+            "stage": [
+              {
+                "who": "tomas",
+                "face": "D"
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -15446,15 +16027,48 @@
               {
                 "setFlag": "diu_cable"
               }
+            ],
+            "stage": [
+              {
+                "who": "diu",
+                "at": {
+                  "x": 570,
+                  "y": 250
+                }
+              },
+              {
+                "who": "diu",
+                "walk": {
+                  "x": 538,
+                  "y": 250
+                }
+              },
+              {
+                "who": "diu",
+                "anim": "MossegaXarxa",
+                "hold": 0.8
+              }
             ]
           },
           {
             "who": "iri",
-            "text": "final.iri3"
+            "text": "final.iri3",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "vet",
-            "text": "final.vet4"
+            "text": "final.vet4",
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "title",

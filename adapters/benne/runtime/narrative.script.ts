@@ -610,13 +610,20 @@ export function switchProtagonist() {
 }
 
 /** Una línia d'un final: els personatges ja no hi són, i el que diuen surt amb el nom al davant. */
-type EndingLine = { who: string; key?: string; text: string; sound?: string; effects?: Effect[] }
+type EndingLine = { who: string; key?: string; text: string; sound?: string; effects?: Effect[]; stage?: StageCue[]; stageAfter?: StageCue[] }
 
 /**
  * Una línia d'un final. Damunt d'una sala (`enSala`), qui hi és i es veu la diu amb bafarada, com a la resta del
  * joc, i els `effects` de la línia s'apliquen abans (algú que es mou, una cosa que s'apaga). Si no, és text.
  */
 function displayEndingLine(line: EndingLine, enSala = false) {
+  // Damunt d'una sala, el moviment de la línia (`stage`, `stageAfter`), com a les interaccions: qui serveix, qui es gira.
+  if (enSala && line.stage) playStage(line.stage)
+  sayEndingLine(line, enSala)
+  if (enSala && line.stageAfter) playStage(line.stageAfter)
+}
+
+function sayEndingLine(line: EndingLine, enSala: boolean) {
   recordLine(line.who, line.text)
   if (line.sound) new SfxHandle(line.sound).play()
   if (enSala && line.effects?.length) {
