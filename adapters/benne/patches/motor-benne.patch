@@ -290,6 +290,19 @@ diff -ruN src/engine/ConfigManager.ts src/engine/ConfigManager.ts
  /**
   * Synchronous access to `src/game/game-config.json` (bundled by Vite at build time).
   */
+@@ -628,7 +680,9 @@
+ ): number {
+   const speech = getSpeechSettings(manager);
+   const n = Array.from(line).length;
+-  const scaled = n * speech.msPerCharacter * speech.durationMultiplier;
+-  const clamped = Math.min(speech.maxDurationMs, Math.max(speech.minDurationMs, scaled));
+-  return Math.round(clamped);
++  // Own change: the multiplier (`settings.textSpeed`) scales the whole duration, the minimum and maximum too;
++  // otherwise short lines, held by `minDurationMs`, did not change with it.
++  const raw = n * speech.msPerCharacter;
++  const clamped = Math.min(speech.maxDurationMs, Math.max(speech.minDurationMs, raw));
++  return Math.round(clamped * speech.durationMultiplier);
+ }
 diff -ruN src/engine/Game.ts src/engine/Game.ts
 --- src/engine/Game.ts
 +++ src/engine/Game.ts

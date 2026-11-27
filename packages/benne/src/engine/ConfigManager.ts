@@ -680,7 +680,9 @@ export function computeSpeechLineDurationMs(
 ): number {
   const speech = getSpeechSettings(manager);
   const n = Array.from(line).length;
-  const scaled = n * speech.msPerCharacter * speech.durationMultiplier;
-  const clamped = Math.min(speech.maxDurationMs, Math.max(speech.minDurationMs, scaled));
-  return Math.round(clamped);
+  // Own change: the multiplier (`settings.textSpeed`) scales the whole duration, the minimum and maximum too;
+  // otherwise short lines, held by `minDurationMs`, did not change with it.
+  const raw = n * speech.msPerCharacter;
+  const clamped = Math.min(speech.maxDurationMs, Math.max(speech.minDurationMs, raw));
+  return Math.round(clamped * speech.durationMultiplier);
 }
