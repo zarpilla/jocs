@@ -621,7 +621,11 @@ def _cartell_img():
     cv = Canvas(30, 14, light=LIGHT, transparent=True)
     cv.rect(1, 1, 25, 11, PAINTW, lambda x, y: 5.4 - (1.6 if y == 11 or x == 25 else 0) + (0.6 if y == 1 else 0), lit=0)
     cv.rect(2, 2, 24, 2, BLUEV, 2.4, lit=0)
-    text(cv, 'LOT 9', 4, 4, None, 0, flat=BLUEV[1])
+    x9 = 4 + text(cv, 'LOT ', 4, 4, None, 0, flat=BLUEV[1]) + 1
+    for j, row in enumerate(['111', '101', '111', '001', '111']):      # el 9 tancat: el de la font, de lluny, fa un 3
+        for i, bit in enumerate(row):
+            if bit == '1':
+                cv.flat(x9 + i, 4 + j, BLUEV[1])
     cv.rect(2, 10, 24, 10, BLUEV, 2.4, lit=0)
     return cv.img.crop(cv.img.getbbox())
 
