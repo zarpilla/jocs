@@ -1,6 +1,7 @@
 import { saves } from '@benne/script';
 import { guis } from '@game';
 import { gui, backBtn, loadBtn, loadList } from './load-menu.ids';
+import { narrative } from '../../narrative/narrative';
 
 /** Five fixed slots (0–4). */
 const SLOTS = 5
@@ -39,7 +40,8 @@ loadBtn.onClick(() => {
   saves.load(selected)
 })
 
+// «Torna»: al menú de la partida si s'hi ha vingut d'allà; a la portada (sense partida), només es tanca.
 backBtn.onClick(() => {
   gui.hide()
-  guis.gameMenu.show()
+  if (narrative.world.currentRoom() !== narrative.content.manifest.cover) guis.gameMenu.show()
 })
