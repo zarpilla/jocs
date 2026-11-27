@@ -430,6 +430,61 @@
           "dialogue": "juana"
         }
       ]
+    },
+    "campana": {
+      "name": "sala.coberta_proa.campana.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.coberta_proa.campana.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.coberta_proa.campana.toca"
+            }
+          ]
+        }
+      ]
+    },
+    "pal": {
+      "name": "sala.coberta_proa.pal.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.coberta_proa.pal.look"
+            }
+          ]
+        }
+      ]
+    },
+    "extintor": {
+      "name": "sala.coberta_proa.extintor.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.coberta_proa.extintor.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

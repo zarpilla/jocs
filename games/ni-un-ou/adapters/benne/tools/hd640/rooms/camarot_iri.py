@@ -596,3 +596,8 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 061), en píxels de pantalla: la cadira plegable de l'esquerra.
+GEOMETRIA['things'].update({
+    'cadira': {'rect': (20, 122, 78, 250), 'walk': (125, 205)},
+})

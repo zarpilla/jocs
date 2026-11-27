@@ -262,6 +262,134 @@
         "x": 121,
         "y": 151
       }
+    },
+    {
+      "id": "suro",
+      "active": true,
+      "description": "tauler de suro",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 102,
+          "y": 77
+        },
+        {
+          "x": 136,
+          "y": 77
+        },
+        {
+          "x": 136,
+          "y": 120
+        },
+        {
+          "x": 102,
+          "y": 120
+        }
+      ],
+      "walkToPoint": {
+        "x": 120,
+        "y": 170
+      },
+      "lookAtPoint": {
+        "x": 119,
+        "y": 120
+      }
+    },
+    {
+      "id": "extintor",
+      "active": true,
+      "description": "extintor",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 222,
+          "y": 82
+        },
+        {
+          "x": 239,
+          "y": 82
+        },
+        {
+          "x": 239,
+          "y": 136
+        },
+        {
+          "x": 222,
+          "y": 136
+        }
+      ],
+      "walkToPoint": {
+        "x": 254,
+        "y": 167
+      },
+      "lookAtPoint": {
+        "x": 230,
+        "y": 136
+      }
+    },
+    {
+      "id": "bidons",
+      "active": true,
+      "description": "bidons",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 42,
+          "y": 150
+        },
+        {
+          "x": 139,
+          "y": 150
+        },
+        {
+          "x": 139,
+          "y": 220
+        },
+        {
+          "x": 42,
+          "y": 220
+        }
+      ],
+      "walkToPoint": {
+        "x": 150,
+        "y": 200
+      },
+      "lookAtPoint": {
+        "x": 90,
+        "y": 220
+      }
+    },
+    {
+      "id": "caixes",
+      "active": true,
+      "description": "caixes vermelles",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 495,
+          "y": 87
+        },
+        {
+          "x": 525,
+          "y": 87
+        },
+        {
+          "x": 525,
+          "y": 145
+        },
+        {
+          "x": 495,
+          "y": 145
+        }
+      ],
+      "walkToPoint": {
+        "x": 440,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 510,
+        "y": 145
+      }
     }
   ],
   "points": [],

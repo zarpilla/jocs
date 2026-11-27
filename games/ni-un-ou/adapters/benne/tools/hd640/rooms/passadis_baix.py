@@ -569,3 +569,11 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 061), en píxels de pantalla: el tauler de suro, l'extintor, els bidons i les caixes vermelles.
+GEOMETRIA['things'].update({
+    'suro': {'rect': (102, 77, 136, 120), 'walk': (120, 170)},
+    'extintor': {'rect': (222, 82, 239, 136), 'walk': (254, 167)},
+    'bidons': {'rect': (42, 150, 139, 220), 'walk': (150, 200)},
+    'caixes': {'rect': (495, 87, 525, 145), 'walk': (440, 180)},
+})

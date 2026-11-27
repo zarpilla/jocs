@@ -435,6 +435,20 @@
         ]
       },
       "interactions": []
+    },
+    "cadira": {
+      "name": "sala.camarot_iri.cadira.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.cadira.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

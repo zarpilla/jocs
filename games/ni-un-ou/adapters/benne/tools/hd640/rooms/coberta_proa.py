@@ -636,3 +636,10 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 061), en píxels de pantalla: el pal de proa, la campana i l'extintor de la caseta.
+GEOMETRIA['things'].update({
+    'pal': {'rect': (468, 10, 482, 165), 'walk': (470, 200)},
+    'campana': {'rect': (474, 74, 496, 104), 'walk': (470, 200)},
+    'extintor': {'rect': (142, 158, 154, 195), 'walk': (186, 236)},
+})

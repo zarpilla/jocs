@@ -562,6 +562,70 @@
         "x": 161,
         "y": 213
       }
+    },
+    {
+      "id": "calendari",
+      "active": true,
+      "description": "calendari",
+      "zIndex": 12,
+      "points": [
+        {
+          "x": 152,
+          "y": 72
+        },
+        {
+          "x": 167,
+          "y": 72
+        },
+        {
+          "x": 167,
+          "y": 102
+        },
+        {
+          "x": 152,
+          "y": 102
+        }
+      ],
+      "walkToPoint": {
+        "x": 164,
+        "y": 171
+      },
+      "lookAtPoint": {
+        "x": 159,
+        "y": 102
+      }
+    },
+    {
+      "id": "bidons",
+      "active": true,
+      "description": "bidons d'oli",
+      "zIndex": 13,
+      "points": [
+        {
+          "x": 542,
+          "y": 182
+        },
+        {
+          "x": 639,
+          "y": 182
+        },
+        {
+          "x": 639,
+          "y": 259
+        },
+        {
+          "x": 542,
+          "y": 259
+        }
+      ],
+      "walkToPoint": {
+        "x": 545,
+        "y": 225
+      },
+      "lookAtPoint": {
+        "x": 590,
+        "y": 259
+      }
     }
   ],
   "points": [],

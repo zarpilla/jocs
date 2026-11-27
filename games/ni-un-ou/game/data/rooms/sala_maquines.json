@@ -1255,6 +1255,34 @@
           }
         }
       ]
+    },
+    "calendari": {
+      "name": "sala.sala_maquines.calendari.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.calendari.look"
+            }
+          ]
+        }
+      ]
+    },
+    "bidons": {
+      "name": "sala.sala_maquines.bidons.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.bidons.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

@@ -430,6 +430,62 @@
           ]
         }
       ]
+    },
+    "suro": {
+      "name": "sala.passadis_baix.suro.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.suro.look"
+            }
+          ]
+        }
+      ]
+    },
+    "extintor": {
+      "name": "sala.passadis_baix.extintor.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.extintor.look"
+            }
+          ]
+        }
+      ]
+    },
+    "bidons": {
+      "name": "sala.passadis_baix.bidons.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.bidons.look"
+            }
+          ]
+        }
+      ]
+    },
+    "caixes": {
+      "name": "sala.passadis_baix.caixes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.caixes.look"
+            }
+          ]
+        }
+      ]
     }
   }
 }

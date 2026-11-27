@@ -410,6 +410,38 @@
         "x": 130,
         "y": 133
       }
+    },
+    {
+      "id": "cadira",
+      "active": true,
+      "description": "cadira",
+      "zIndex": 10,
+      "points": [
+        {
+          "x": 20,
+          "y": 122
+        },
+        {
+          "x": 78,
+          "y": 122
+        },
+        {
+          "x": 78,
+          "y": 250
+        },
+        {
+          "x": 20,
+          "y": 250
+        }
+      ],
+      "walkToPoint": {
+        "x": 125,
+        "y": 205
+      },
+      "lookAtPoint": {
+        "x": 49,
+        "y": 250
+      }
     }
   ],
   "points": [],

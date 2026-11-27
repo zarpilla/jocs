@@ -326,6 +326,102 @@
         "x": 391,
         "y": 195
       }
+    },
+    {
+      "id": "campana",
+      "active": true,
+      "description": "campana",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 474,
+          "y": 74
+        },
+        {
+          "x": 496,
+          "y": 74
+        },
+        {
+          "x": 496,
+          "y": 104
+        },
+        {
+          "x": 474,
+          "y": 104
+        }
+      ],
+      "walkToPoint": {
+        "x": 470,
+        "y": 200
+      },
+      "lookAtPoint": {
+        "x": 485,
+        "y": 104
+      }
+    },
+    {
+      "id": "pal",
+      "active": true,
+      "description": "pal de proa",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 468,
+          "y": 10
+        },
+        {
+          "x": 482,
+          "y": 10
+        },
+        {
+          "x": 482,
+          "y": 165
+        },
+        {
+          "x": 468,
+          "y": 165
+        }
+      ],
+      "walkToPoint": {
+        "x": 470,
+        "y": 200
+      },
+      "lookAtPoint": {
+        "x": 475,
+        "y": 165
+      }
+    },
+    {
+      "id": "extintor",
+      "active": true,
+      "description": "extintor",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 142,
+          "y": 158
+        },
+        {
+          "x": 154,
+          "y": 158
+        },
+        {
+          "x": 154,
+          "y": 195
+        },
+        {
+          "x": 142,
+          "y": 195
+        }
+      ],
+      "walkToPoint": {
+        "x": 186,
+        "y": 236
+      },
+      "lookAtPoint": {
+        "x": 148,
+        "y": 195
+      }
     }
   ],
   "points": [],

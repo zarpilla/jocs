@@ -1719,6 +1719,20 @@
               ]
             },
             "interactions": []
+          },
+          "cadira": {
+            "name": "sala.camarot_iri.cadira.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.cadira.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -2914,6 +2928,61 @@
               {
                 "verb": "talkTo",
                 "dialogue": "juana"
+              }
+            ]
+          },
+          "campana": {
+            "name": "sala.coberta_proa.campana.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.coberta_proa.campana.look"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "push",
+                  "pull"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.coberta_proa.campana.toca"
+                  }
+                ]
+              }
+            ]
+          },
+          "pal": {
+            "name": "sala.coberta_proa.pal.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.coberta_proa.pal.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "extintor": {
+            "name": "sala.coberta_proa.extintor.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.coberta_proa.extintor.look"
+                  }
+                ]
               }
             ]
           }
@@ -7933,6 +8002,62 @@
                 ]
               }
             ]
+          },
+          "suro": {
+            "name": "sala.passadis_baix.suro.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.suro.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "extintor": {
+            "name": "sala.passadis_baix.extintor.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.extintor.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "bidons": {
+            "name": "sala.passadis_baix.bidons.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.bidons.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "caixes": {
+            "name": "sala.passadis_baix.caixes.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.caixes.look"
+                  }
+                ]
+              }
+            ]
           }
         }
       },
@@ -11494,6 +11619,34 @@
                     }
                   ]
                 }
+              }
+            ]
+          },
+          "calendari": {
+            "name": "sala.sala_maquines.calendari.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_maquines.calendari.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "bidons": {
+            "name": "sala.sala_maquines.bidons.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_maquines.bidons.look"
+                  }
+                ]
               }
             ]
           }
@@ -26922,7 +27075,28 @@
       "sala.pont.capitana.tram.1": "Tallat, trencat... Me l'arregles igual, Iri. Vull avisar l'oficina.",
       "sala.pont.capitana.tram.2": "A bord, ningú no vol veure res.",
       "sala.passadis.porta_menjador.5": "Al menjador, ara, no hi tinc res a fer. I com menys em vegin voltar pel vaixell, millor.",
-      "sala.passadis.porta_capitana.6": "Si pico a la cabina, la Capitana voldrà saber què hi faig, fora de màquines."
+      "sala.passadis.porta_capitana.6": "Si pico a la cabina, la Capitana voldrà saber què hi faig, fora de màquines.",
+      "sala.camarot_iri.cadira.nom": "cadira",
+      "sala.camarot_iri.cadira.look": "La cadira plegable. Fa més de penjador que de cadira: la roba d'ahir encara hi és.",
+      "sala.passadis_baix.suro.nom": "tauler de suro",
+      "sala.passadis_baix.suro.look": "El torn de guàrdies, el plànol d'evacuació i un avís: «LES PORTES ESTANQUES, SEMPRE TANCADES». Algú ho ha subratllat dues vegades.",
+      "sala.passadis_baix.extintor.nom": "extintor",
+      "sala.passadis_baix.extintor.look": "Revisat el mes passat, diu l'etiqueta. És l'única cosa del vaixell que algú revisa quan toca.",
+      "sala.passadis_baix.bidons.nom": "bidons",
+      "sala.passadis_baix.bidons.look": "Bidons d'oli i de gasoil, lligats perquè no rodin quan el mar s'enfada.",
+      "sala.passadis_baix.caixes.nom": "caixes vermelles",
+      "sala.passadis_baix.caixes.look": "Les caixes d'emergència: armilles, bengales i la farmaciola. Precintades, com ha de ser.",
+      "sala.sala_maquines.calendari.nom": "calendari",
+      "sala.sala_maquines.calendari.look": "Un calendari d'una ferreteria de Vigo. És de fa dos anys, però ningú no l'ha volgut despenjar.",
+      "sala.sala_maquines.bidons.nom": "bidons d'oli",
+      "sala.sala_maquines.bidons.look": "Oli de motor per a tota la campanya. El motor se'l beu més de pressa que nosaltres el cafè.",
+      "sala.coberta_proa.campana.nom": "campana",
+      "sala.coberta_proa.campana.look": "La campana de llautó de l'Arenga. Fa anys que ningú no la toca: per a la boira, ara hi ha el radar.",
+      "sala.coberta_proa.campana.toca": "Millor no. Una campanada aquí dalt i tot el vaixell surt a coberta a veure què passa.",
+      "sala.coberta_proa.pal.nom": "pal de proa",
+      "sala.coberta_proa.pal.look": "El pal de proa, amb el focus i el llum de tope. Pujar-hi amb aquest balanceig seria de boges.",
+      "sala.coberta_proa.extintor.nom": "extintor",
+      "sala.coberta_proa.extintor.look": "Un extintor ben subjecte a la seva brida. Aquí fora, envoltat de mar, fa una mica de gràcia."
     }
   },
   "locale": "ca",

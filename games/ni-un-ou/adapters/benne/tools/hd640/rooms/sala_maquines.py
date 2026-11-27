@@ -1008,3 +1008,9 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 061), en píxels de pantalla: el calendari de la paret i els bidons d'oli de la dreta.
+GEOMETRIA['things'].update({
+    'calendari': {'rect': (152, 72, 167, 102), 'walk': (164, 171)},
+    'bidons': {'rect': (542, 182, 639, 259), 'walk': (545, 225)},
+})
