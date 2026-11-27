@@ -98,7 +98,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "avantdespatx",
+      "description": "l'avantdespatx",
       "zIndex": 0,
       "points": [
         {
@@ -131,7 +131,7 @@
     {
       "id": "mobil",
       "active": true,
-      "description": "mòbil del Director",
+      "description": "el mòbil del Director",
       "zIndex": 1,
       "points": [
         {
@@ -163,7 +163,7 @@
     {
       "id": "foto",
       "active": true,
-      "description": "foto",
+      "description": "la foto",
       "zIndex": 2,
       "points": [
         {
@@ -195,7 +195,7 @@
     {
       "id": "bol",
       "active": true,
-      "description": "bol",
+      "description": "el bol",
       "zIndex": 3,
       "points": [
         {
@@ -227,7 +227,7 @@
     {
       "id": "finestra",
       "active": true,
-      "description": "finestra",
+      "description": "la finestra",
       "zIndex": 4,
       "points": [
         {

@@ -66,7 +66,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "porta",
+      "description": "la porta",
       "zIndex": 0,
       "points": [
         {
@@ -99,7 +99,7 @@
     {
       "id": "terminal",
       "active": true,
-      "description": "terminal",
+      "description": "el terminal",
       "zIndex": 1,
       "points": [
         {
@@ -131,7 +131,7 @@
     {
       "id": "impressora",
       "active": true,
-      "description": "impressora",
+      "description": "la impressora",
       "zIndex": 2,
       "points": [
         {

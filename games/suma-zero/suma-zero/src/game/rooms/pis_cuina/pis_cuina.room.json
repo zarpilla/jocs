@@ -82,7 +82,7 @@
     {
       "id": "plats",
       "active": true,
-      "description": "plats",
+      "description": "els plats",
       "zIndex": 0,
       "points": [
         {
@@ -114,7 +114,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "porta",
+      "description": "la porta",
       "zIndex": 0,
       "points": [
         {
@@ -147,7 +147,7 @@
     {
       "id": "cafetera",
       "active": true,
-      "description": "cafetera",
+      "description": "la cafetera",
       "zIndex": 1,
       "points": [
         {
@@ -179,7 +179,7 @@
     {
       "id": "nevera",
       "active": true,
-      "description": "nevera",
+      "description": "la nevera",
       "zIndex": 2,
       "points": [
         {
@@ -211,7 +211,7 @@
     {
       "id": "passaplats",
       "active": true,
-      "description": "passaplats",
+      "description": "el passaplats",
       "zIndex": 3,
       "points": [
         {
@@ -243,7 +243,7 @@
     {
       "id": "rentadora",
       "active": true,
-      "description": "rentadora",
+      "description": "la rentadora",
       "zIndex": 5,
       "points": [
         {
@@ -275,7 +275,7 @@
     {
       "id": "jaqueta",
       "active": true,
-      "description": "jaqueta",
+      "description": "la jaqueta",
       "zIndex": 6,
       "points": [
         {
@@ -307,7 +307,7 @@
     {
       "id": "taula",
       "active": true,
-      "description": "taula",
+      "description": "la taula",
       "zIndex": 7,
       "points": [
         {
@@ -339,7 +339,7 @@
     {
       "id": "microones",
       "active": true,
-      "description": "microones",
+      "description": "el microones",
       "zIndex": 8,
       "points": [
         {
@@ -447,7 +447,7 @@
         "x": 224,
         "y": 94
       },
-      "description": "pizza"
+      "description": "la pizza"
     },
     {
       "id": "tonyina",
@@ -487,7 +487,7 @@
         "x": 227,
         "y": 119
       },
-      "description": "pa i tonyina"
+      "description": "el pa i tonyina"
     },
     {
       "id": "cable_cafetera",

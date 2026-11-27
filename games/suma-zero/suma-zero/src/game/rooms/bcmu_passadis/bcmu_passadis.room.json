@@ -65,7 +65,7 @@
     {
       "id": "porta_neteja",
       "active": true,
-      "description": "porta de neteja",
+      "description": "la porta de neteja",
       "zIndex": 0,
       "points": [
         {
@@ -98,7 +98,7 @@
     {
       "id": "camera1",
       "active": true,
-      "description": "càmera",
+      "description": "la càmera",
       "zIndex": 1,
       "points": [
         {
@@ -130,7 +130,7 @@
     {
       "id": "camera2",
       "active": true,
-      "description": "càmera del racó",
+      "description": "la càmera del racó",
       "zIndex": 2,
       "points": [
         {
@@ -162,7 +162,7 @@
     {
       "id": "porta_escala",
       "active": true,
-      "description": "porta de l'escala",
+      "description": "la porta de l'escala",
       "zIndex": 3,
       "points": [
         {
@@ -194,7 +194,7 @@
     {
       "id": "porta_vip",
       "active": true,
-      "description": "porta VIP",
+      "description": "la porta VIP",
       "zIndex": 4,
       "points": [
         {
@@ -226,7 +226,7 @@
     {
       "id": "tub",
       "active": true,
-      "description": "estació del tub",
+      "description": "l'estació del tub",
       "zIndex": 5,
       "points": [
         {
@@ -258,7 +258,7 @@
     {
       "id": "ascensor",
       "active": true,
-      "description": "ascensor de servei",
+      "description": "l'ascensor de servei",
       "zIndex": 6,
       "points": [
         {
@@ -366,7 +366,7 @@
         "x": 426,
         "y": 141
       },
-      "description": "galleda"
+      "description": "la galleda"
     },
     {
       "id": "cartell",
@@ -406,7 +406,7 @@
         "x": 355,
         "y": 127
       },
-      "description": "cartell"
+      "description": "el cartell"
     },
     {
       "id": "extintor",
@@ -446,7 +446,7 @@
         "x": 484,
         "y": 130
       },
-      "description": "extintor"
+      "description": "l'extintor"
     },
     {
       "id": "camera1_tapada",

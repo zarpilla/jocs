@@ -113,7 +113,7 @@
     {
       "id": "ascensor",
       "active": true,
-      "description": "ascensor",
+      "description": "l'ascensor",
       "zIndex": 0,
       "points": [
         {
@@ -146,7 +146,7 @@
     {
       "id": "font",
       "active": true,
-      "description": "font",
+      "description": "la font",
       "zIndex": 1,
       "points": [
         {
@@ -178,7 +178,7 @@
     {
       "id": "cartell",
       "active": true,
-      "description": "cartell",
+      "description": "el cartell",
       "zIndex": 2,
       "points": [
         {
@@ -210,7 +210,7 @@
     {
       "id": "retrat",
       "active": true,
-      "description": "retrat",
+      "description": "el retrat",
       "zIndex": 3,
       "points": [
         {
@@ -242,7 +242,7 @@
     {
       "id": "recepcio",
       "active": true,
-      "description": "recepció",
+      "description": "la recepció",
       "zIndex": 4,
       "points": [
         {
@@ -274,7 +274,7 @@
     {
       "id": "tub",
       "active": true,
-      "description": "estació del tub",
+      "description": "l'estació del tub",
       "zIndex": 5,
       "points": [
         {
@@ -306,7 +306,7 @@
     {
       "id": "maquina",
       "active": true,
-      "description": "màquina d'entrepans",
+      "description": "la màquina d'entrepans",
       "zIndex": 6,
       "points": [
         {
@@ -338,7 +338,7 @@
     {
       "id": "plantes",
       "active": true,
-      "description": "plantes",
+      "description": "les plantes",
       "zIndex": 7,
       "points": [
         {
@@ -370,7 +370,7 @@
     {
       "id": "sortida",
       "active": true,
-      "description": "sortida",
+      "description": "la sortida",
       "zIndex": 8,
       "points": [
         {
@@ -547,7 +547,7 @@
         "x": 532,
         "y": 183
       },
-      "description": "ascensor",
+      "description": "l'ascensor",
       "scriptName": "ascensorAnim"
     },
     {
@@ -782,7 +782,7 @@
         "x": 467,
         "y": 186
       },
-      "description": "màquina d'entrepans"
+      "description": "la màquina d'entrepans"
     },
     {
       "id": "davant_planta",

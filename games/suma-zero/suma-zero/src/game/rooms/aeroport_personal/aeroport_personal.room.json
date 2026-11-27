@@ -62,7 +62,7 @@
     {
       "id": "teclat",
       "active": true,
-      "description": "teclat",
+      "description": "el teclat",
       "zIndex": 0,
       "points": [
         {
@@ -95,7 +95,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "porta de personal",
+      "description": "la porta de personal",
       "zIndex": 1,
       "points": [
         {
@@ -128,7 +128,7 @@
     {
       "id": "extintor",
       "active": true,
-      "description": "extintor",
+      "description": "l'extintor",
       "zIndex": 2,
       "points": [
         {
@@ -160,7 +160,7 @@
     {
       "id": "tauler",
       "active": true,
-      "description": "tauler de torns",
+      "description": "el tauler de torns",
       "zIndex": 3,
       "points": [
         {
@@ -192,7 +192,7 @@
     {
       "id": "taquilles",
       "active": true,
-      "description": "taquilles",
+      "description": "les taquilles",
       "zIndex": 4,
       "points": [
         {
@@ -224,7 +224,7 @@
     {
       "id": "carro",
       "active": true,
-      "description": "carro de la neteja",
+      "description": "el carro de la neteja",
       "zIndex": 5,
       "points": [
         {
@@ -256,7 +256,7 @@
     {
       "id": "con",
       "active": true,
-      "description": "senyal de terra mullat",
+      "description": "el senyal de terra mullat",
       "zIndex": 6,
       "points": [
         {

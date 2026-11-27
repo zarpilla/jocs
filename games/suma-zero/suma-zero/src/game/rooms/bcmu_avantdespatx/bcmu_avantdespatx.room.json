@@ -94,7 +94,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "despatx del Director",
+      "description": "el despatx del Director",
       "zIndex": 0,
       "points": [
         {
@@ -127,7 +127,7 @@
     {
       "id": "ascensor",
       "active": true,
-      "description": "ascensor",
+      "description": "l'ascensor",
       "zIndex": 1,
       "points": [
         {
@@ -160,7 +160,7 @@
     {
       "id": "factura",
       "active": true,
-      "description": "factura",
+      "description": "la factura",
       "zIndex": 10,
       "points": [
         {
@@ -192,7 +192,7 @@
     {
       "id": "nomina",
       "active": true,
-      "description": "nòmina",
+      "description": "la nòmina",
       "zIndex": 10,
       "points": [
         {
@@ -224,7 +224,7 @@
     {
       "id": "tub",
       "active": true,
-      "description": "estació del tub",
+      "description": "l'estació del tub",
       "zIndex": 4,
       "points": [
         {
@@ -336,7 +336,7 @@
         "x": 191,
         "y": 101
       },
-      "description": "estació del tub"
+      "description": "l'estació del tub"
     },
     {
       "id": "agulla",

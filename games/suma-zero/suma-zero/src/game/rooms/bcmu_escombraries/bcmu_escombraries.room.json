@@ -117,7 +117,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "porta",
+      "description": "la porta",
       "zIndex": 0,
       "points": [
         {
@@ -150,7 +150,7 @@
     {
       "id": "llibre",
       "active": true,
-      "description": "Llibre Major",
+      "description": "el Llibre Major",
       "zIndex": 1,
       "points": [
         {
@@ -182,7 +182,7 @@
     {
       "id": "tub",
       "active": true,
-      "description": "estació del tub",
+      "description": "l'estació del tub",
       "zIndex": 2,
       "points": [
         {
@@ -214,7 +214,7 @@
     {
       "id": "panell",
       "active": true,
-      "description": "panell de NETA-3",
+      "description": "el panell de NETA-3",
       "zIndex": 3,
       "points": [
         {
@@ -246,7 +246,7 @@
     {
       "id": "conducte",
       "active": true,
-      "description": "conducte",
+      "description": "el conducte",
       "zIndex": 4,
       "points": [
         {
@@ -278,7 +278,7 @@
     {
       "id": "bosses",
       "active": true,
-      "description": "bosses",
+      "description": "les bosses",
       "zIndex": 5,
       "points": [
         {
@@ -389,7 +389,7 @@
         "x": 353,
         "y": 232
       },
-      "description": "Llibre Major",
+      "description": "el Llibre Major",
       "scriptName": "llibreAnim"
     },
     {

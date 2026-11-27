@@ -66,7 +66,7 @@
     {
       "id": "porta_rebost",
       "active": true,
-      "description": "rebost",
+      "description": "el rebost",
       "zIndex": 0,
       "points": [
         {
@@ -99,7 +99,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "sortida",
+      "description": "la sortida",
       "zIndex": 1,
       "points": [
         {
@@ -132,7 +132,7 @@
     {
       "id": "tele",
       "active": true,
-      "description": "tele",
+      "description": "la tele",
       "zIndex": 2,
       "points": [
         {
@@ -164,7 +164,7 @@
     {
       "id": "retol",
       "active": true,
-      "description": "rètol",
+      "description": "el rètol",
       "zIndex": 3,
       "points": [
         {
@@ -196,7 +196,7 @@
     {
       "id": "telefon",
       "active": true,
-      "description": "telèfon",
+      "description": "el telèfon",
       "zIndex": 4,
       "points": [
         {
@@ -228,7 +228,7 @@
     {
       "id": "escurabutxaques",
       "active": true,
-      "description": "escurabutxaques",
+      "description": "l'escurabutxaques",
       "zIndex": 5,
       "points": [
         {
@@ -260,7 +260,7 @@
     {
       "id": "foto",
       "active": true,
-      "description": "foto",
+      "description": "la foto",
       "zIndex": 6,
       "points": [
         {
@@ -292,7 +292,7 @@
     {
       "id": "bufanda",
       "active": true,
-      "description": "bufanda",
+      "description": "la bufanda",
       "zIndex": 7,
       "points": [
         {
@@ -324,7 +324,7 @@
     {
       "id": "cafetera",
       "active": true,
-      "description": "cafetera",
+      "description": "la cafetera",
       "zIndex": 8,
       "points": [
         {
@@ -432,7 +432,7 @@
         "x": 319,
         "y": 130
       },
-      "description": "clauer",
+      "description": "el clauer",
       "baseline": 183
     },
     {
@@ -473,7 +473,7 @@
         "x": 366,
         "y": 124
       },
-      "description": "comandament",
+      "description": "el comandament",
       "baseline": 183
     },
     {

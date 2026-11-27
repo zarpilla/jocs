@@ -89,7 +89,7 @@
     {
       "id": "ascensor",
       "active": true,
-      "description": "ascensor de servei",
+      "description": "l'ascensor de servei",
       "zIndex": 0,
       "points": [
         {
@@ -122,7 +122,7 @@
     {
       "id": "maquina",
       "active": true,
-      "description": "màquina de cafè",
+      "description": "la màquina de cafè",
       "zIndex": 1,
       "points": [
         {
@@ -154,7 +154,7 @@
     {
       "id": "tecnics",
       "active": true,
-      "description": "tècnics",
+      "description": "els tècnics",
       "zIndex": 2,
       "points": [
         {
@@ -186,7 +186,7 @@
     {
       "id": "furgonetes",
       "active": true,
-      "description": "furgonetes",
+      "description": "les furgonetes",
       "zIndex": 3,
       "points": [
         {

@@ -74,7 +74,7 @@
     {
       "id": "ascensor",
       "active": true,
-      "description": "ascensor",
+      "description": "l'ascensor",
       "zIndex": 0,
       "points": [
         {
@@ -107,7 +107,7 @@
     {
       "id": "monitors",
       "active": true,
-      "description": "monitors",
+      "description": "els monitors",
       "zIndex": 1,
       "points": [
         {
@@ -139,7 +139,7 @@
     {
       "id": "radio",
       "active": true,
-      "description": "ràdio",
+      "description": "la ràdio",
       "zIndex": 2,
       "points": [
         {
@@ -171,7 +171,7 @@
     {
       "id": "got",
       "active": true,
-      "description": "got",
+      "description": "el got",
       "zIndex": 3,
       "points": [
         {
@@ -203,7 +203,7 @@
     {
       "id": "tub",
       "active": true,
-      "description": "estació del tub",
+      "description": "l'estació del tub",
       "zIndex": 4,
       "points": [
         {
@@ -311,7 +311,7 @@
         "x": 294,
         "y": 157
       },
-      "description": "entrepà d'en Ballester"
+      "description": "l'entrepà d'en Ballester"
     },
     {
       "id": "clauer",
@@ -351,7 +351,7 @@
         "x": 326,
         "y": 159
       },
-      "description": "clauer"
+      "description": "el clauer"
     },
     {
       "id": "collaret",
@@ -391,7 +391,7 @@
         "x": 360,
         "y": 162
       },
-      "description": "collaret"
+      "description": "el collaret"
     },
     {
       "id": "got_trencat",
@@ -456,7 +456,7 @@
         "x": 345,
         "y": 126
       },
-      "description": "monitors",
+      "description": "els monitors",
       "scriptName": "monitorsAnim"
     },
     {

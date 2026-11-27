@@ -78,7 +78,7 @@
     {
       "id": "router",
       "active": true,
-      "description": "router",
+      "description": "el router",
       "zIndex": 0,
       "points": [
         {
@@ -110,7 +110,7 @@
     {
       "id": "finestra",
       "active": true,
-      "description": "finestra",
+      "description": "la finestra",
       "zIndex": 0,
       "points": [
         {
@@ -142,7 +142,7 @@
     {
       "id": "poster",
       "active": true,
-      "description": "pòster",
+      "description": "el pòster",
       "zIndex": 1,
       "points": [
         {
@@ -174,7 +174,7 @@
     {
       "id": "matalas",
       "active": true,
-      "description": "matalàs",
+      "description": "el matalàs",
       "zIndex": 2,
       "points": [
         {
@@ -206,7 +206,7 @@
     {
       "id": "pizzes",
       "active": true,
-      "description": "caixes de pizza",
+      "description": "les caixes de pizza",
       "zIndex": 3,
       "points": [
         {
@@ -238,7 +238,7 @@
     {
       "id": "ordinadors",
       "active": true,
-      "description": "ordinadors",
+      "description": "els ordinadors",
       "zIndex": 4,
       "points": [
         {
@@ -270,7 +270,7 @@
     {
       "id": "fibra",
       "active": true,
-      "description": "presa de la fibra",
+      "description": "la presa de la fibra",
       "zIndex": 6,
       "points": [
         {
@@ -302,7 +302,7 @@
     {
       "id": "passaplats",
       "active": true,
-      "description": "passaplats",
+      "description": "el passaplats",
       "zIndex": 7,
       "points": [
         {
@@ -334,7 +334,7 @@
     {
       "id": "prestatgeria",
       "active": true,
-      "description": "prestatgeria",
+      "description": "la prestatgeria",
       "zIndex": 8,
       "points": [
         {
@@ -366,7 +366,7 @@
     {
       "id": "despertador",
       "active": true,
-      "description": "despertador",
+      "description": "el despertador",
       "zIndex": 9,
       "points": [
         {
@@ -398,7 +398,7 @@
     {
       "id": "paperera",
       "active": true,
-      "description": "paperera",
+      "description": "la paperera",
       "zIndex": 10,
       "points": [
         {
@@ -506,7 +506,7 @@
         "x": 396,
         "y": 210
       },
-      "description": "caixa"
+      "description": "la caixa"
     },
     {
       "id": "router_connectat",
