@@ -123,8 +123,32 @@ const itemRef = (id: string) => ({ id: toBenne('items', id) });
 
 // ─── El món tal com el veu Benne ────────────────────────────────────────────
 
+/**
+ * Objectes que una interacció ha donat i que encara no són a l'inventari. Els efectes s'apliquen abans de dir les
+ * línies, i l'objecte sortia mentre la protagonista encara deia la línia d'abans de rebre'l (el salabre d'en Joanet):
+ * entren a l'inventari quan el joc deixa d'estar ocupat (s'acaben les línies, la conversa o l'escena). Per a l'estat,
+ * ja hi són (`hasItem`).
+ */
+const pendingGives: { bag: ReturnType<typeof bagOf>; item: string }[] = [];
+const isPendingGive = (bag: ReturnType<typeof bagOf>, item: string) => pendingGives.findIndex((g) => g.bag === bag && g.item === item);
+
+/** Posa a l'inventari els objectes donats que esperaven. */
+export function flushPendingGives() {
+  for (const g of pendingGives.splice(0)) g.bag.add(itemRef(g.item));
+}
+
+function giveWhenIdle() {
+  const tick = () => {
+    if (!pendingGives.length) return;
+    if (game.isBusy) window.setTimeout(tick, 150);
+    else flushPendingGives();
+  };
+  // Una mica més tard que de seguida: les línies de la interacció comencen just després dels efectes.
+  window.setTimeout(tick, 200);
+}
+
 const world: WorldPort = {
-  hasItem: (item, who) => bagOf(who).has(itemRef(item)),
+  hasItem: (item, who) => bagOf(who).has(itemRef(item)) || isPendingGive(bagOf(who), item) >= 0,
   hasVisited: (room) => benneRoom(room)?.hasVisited ?? false,
   currentRoom: () => {
     const id = game.currentRoom?.id;
@@ -225,6 +249,7 @@ export function adoptLoadedState() {
   if (json === persisted) return;
   console.info(`[${JOC}] Estat narratiu adoptat de la partida`, describeState(saved));
   persisted = json;
+  pendingGives.length = 0;
   narrative.load(saved);
   resetHistory();
 }
@@ -250,11 +275,15 @@ narrative.on((e) => {
       applyAppearances();
       break;
     case 'giveItem':
-      bagOf(e.who).add(itemRef(e.item));
+      pendingGives.push({ bag: bagOf(e.who), item: e.item });
+      if (pendingGives.length === 1) giveWhenIdle();
       break;
-    case 'takeItem':
-      bagOf(e.who).remove(itemRef(e.item));
+    case 'takeItem': {
+      const i = isPendingGive(bagOf(e.who), e.item);
+      if (i >= 0) pendingGives.splice(i, 1);
+      else bagOf(e.who).remove(itemRef(e.item));
       break;
+    }
     case 'custom':
       if (e.name === SWITCH_EVENT) pendingSwitch = String(e.args.id);
       if (e.name === 'anar') pendingGoTo = String(e.args.room);

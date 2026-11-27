@@ -124,8 +124,32 @@ const itemRef = (id: string) => ({ id: toBenne('items', id) });
 
 // ─── El món tal com el veu Benne ────────────────────────────────────────────
 
+/**
+ * Objectes que una interacció ha donat i que encara no són a l'inventari. Els efectes s'apliquen abans de dir les
+ * línies, i l'objecte sortia mentre la protagonista encara deia la línia d'abans de rebre'l (el salabre d'en Joanet):
+ * entren a l'inventari quan el joc deixa d'estar ocupat (s'acaben les línies, la conversa o l'escena). Per a l'estat,
+ * ja hi són (`hasItem`).
+ */
+const pendingGives: { bag: ReturnType<typeof bagOf>; item: string }[] = [];
+const isPendingGive = (bag: ReturnType<typeof bagOf>, item: string) => pendingGives.findIndex((g) => g.bag === bag && g.item === item);
+
+/** Posa a l'inventari els objectes donats que esperaven. */
+export function flushPendingGives() {
+  for (const g of pendingGives.splice(0)) g.bag.add(itemRef(g.item));
+}
+
+function giveWhenIdle() {
+  const tick = () => {
+    if (!pendingGives.length) return;
+    if (game.isBusy) window.setTimeout(tick, 150);
+    else flushPendingGives();
+  };
+  // Una mica més tard que de seguida: les línies de la interacció comencen just després dels efectes.
+  window.setTimeout(tick, 200);
+}
+
 const world: WorldPort = {
-  hasItem: (item, who) => bagOf(who).has(itemRef(item)),
+  hasItem: (item, who) => bagOf(who).has(itemRef(item)) || isPendingGive(bagOf(who), item) >= 0,
   hasVisited: (room) => benneRoom(room)?.hasVisited ?? false,
   currentRoom: () => {
     const id = game.currentRoom?.id;
@@ -226,6 +250,7 @@ export function adoptLoadedState() {
   if (json === persisted) return;
   console.info(`[${JOC}] Estat narratiu adoptat de la partida`, describeState(saved));
   persisted = json;
+  pendingGives.length = 0;
   narrative.load(saved);
   resetHistory();
 }
@@ -251,11 +276,15 @@ narrative.on((e) => {
       applyAppearances();
       break;
     case 'giveItem':
-      bagOf(e.who).add(itemRef(e.item));
+      pendingGives.push({ bag: bagOf(e.who), item: e.item });
+      if (pendingGives.length === 1) giveWhenIdle();
       break;
-    case 'takeItem':
-      bagOf(e.who).remove(itemRef(e.item));
+    case 'takeItem': {
+      const i = isPendingGive(bagOf(e.who), e.item);
+      if (i >= 0) pendingGives.splice(i, 1);
+      else bagOf(e.who).remove(itemRef(e.item));
       break;
+    }
     case 'custom':
       if (e.name === SWITCH_EVENT) pendingSwitch = String(e.args.id);
       if (e.name === 'anar') pendingGoTo = String(e.args.room);
@@ -561,6 +590,21 @@ type Actor = {
 /** Qui fa una indicació: un personatge, o la protagonista que juga (`player`). */
 export function stageActor(who: string): Actor | undefined {
   return (who === 'player' ? player : benneCharacter(who)) as unknown as Actor | undefined;
+}
+
+/**
+ * On apareix qui entra a `room` venint de `from`: el punt d'arribada de la porta (la cosa que hi torna). Benne desa la
+ * posició de cada personatge a cada sala; si n'havia sortit sense passar per la porta (l'altra protagonista se l'ha
+ * enduta amb `situar`), en tornar-hi apareixeria on l'havia deixada. `null` si no hi ha cap porta que hi torni.
+ */
+export function doorPoint(room: string, from: string): Point | null {
+  const def = content.rooms[room];
+  if (!def || def.cutscene) return null;
+  const porta = Object.entries(def.hotspots ?? {}).find(([, h]) => (h.interactions ?? []).some((i) => i.goTo === from && !i.item));
+  if (!porta) return null;
+  const file = roomFiles.find((r) => r.id === toBenne('rooms', room));
+  const id = toBenne('hotspots', porta[0]);
+  return file?.hotspots.find((t) => t.id === id)?.walkToPoint ?? null;
 }
 
 /** On és un lloc d'una indicació: un punt, o el punt d'arribada d'una cosa de la sala (o on és un personatge). */

@@ -12,7 +12,7 @@ import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
   AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, resetStageAnims, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom, doorPoint,
-  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne, voiced, preloadLineVoices,
+  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, flushPendingGives, leavesRoom, targetFromBenne, voiced, preloadLineVoices,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
 
@@ -146,6 +146,8 @@ function senseOpcions(id: string): boolean {
 
 /** Després d'una interacció o d'un diàleg: el final, el canvi de protagonista o la sala nova que s'hagin demanat. */
 function followUp(goTo?: string) {
+  // Els objectes donats entren a l'inventari abans de desar, de canviar de protagonista o de sala.
+  flushPendingGives()
   if (takePendingEnding()) {
     takePendingSwitch()
     takePendingGoTo()
@@ -719,16 +721,23 @@ export function playEnding(id?: string) {
   sala.goTo()
 }
 
+/** Quan s'ha premut Esc per última vegada (per saltar un final, vegeu `playFinaleRoom`). */
+let escPremutA = 0
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') escPremutA = Date.now()
+}, true)
+
 /** En entrar a una sala d'un final: les seves línies, i després la sala següent o el «Fi». */
 function playFinaleRoom() {
   const tros = finale.shift()!
+  const inici = Date.now()
   let saltat = false
   for (const line of tros.lines) {
     displayEndingLine(line, true)
-    // Amb Esc, `wait` acaba a l'instant: llavors anem directament al «Fi».
-    const inici = Date.now()
     wait(0.1)
-    if (Date.now() - inici < 50) {
+    // Amb Esc (salta l'escena), directament al «Fi». Un clic només passa la línia: abans es mirava si `wait`
+    // havia acabat a l'instant, i un clic que hi queia també ho feia.
+    if (escPremutA >= inici) {
       saltat = true
       break
     }
