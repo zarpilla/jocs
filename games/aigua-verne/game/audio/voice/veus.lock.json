@@ -359,6 +359,16 @@
   "key": "dlg.capitana.recorda.3",
   "who": "capitana"
  },
+ "capitana3438904047": {
+  "hash": "b1abc1a8e663640b",
+  "key": "sala.cantimplora_pont.iri.1",
+  "who": "capitana"
+ },
+ "capitana3472459285": {
+  "hash": "8eaca53da95f7886",
+  "key": "sala.cantimplora_pont.iri.3",
+  "who": "capitana"
+ },
  "capitana351118871": {
   "hash": "49068a58181f2867",
   "key": "dlg.capitana.aigua.5",
@@ -377,6 +387,11 @@
  "capitana376208898": {
   "hash": "b97de42c249c866a",
   "key": "dlg.capitana.recorda.1",
+  "who": "capitana"
+ },
+ "capitana3838130458": {
+  "hash": "22a795bfebab56d3",
+  "key": "dlg.capitana.recorda.3b",
   "who": "capitana"
  },
  "capitana3872234560": {
@@ -670,7 +685,7 @@
   "who": "iri"
  },
  "iri1015856961": {
-  "hash": "42b53992960c5047",
+  "hash": "6ca1097e59f944d4",
   "key": "dlg.comunicador.fem.52",
   "who": "iri"
  },
@@ -735,12 +750,12 @@
   "who": "iri"
  },
  "iri1049412199": {
-  "hash": "9a1d64c08eb30fb9",
+  "hash": "bd5ab1702c3e48fa",
   "key": "dlg.comunicador.fem.54",
   "who": "iri"
  },
  "iri1049559294": {
-  "hash": "decdcfa0882c0361",
+  "hash": "eeae1f7bfadde0ca",
   "key": "dlg.comunicador.fem.26",
   "who": "iri"
  },
@@ -770,7 +785,7 @@
   "who": "iri"
  },
  "iri1082967437": {
-  "hash": "b55e7a206ef24524",
+  "hash": "cdb9ca1f32a5ffbb",
   "key": "dlg.comunicador.fem.56",
   "who": "iri"
  },
@@ -842,6 +857,11 @@
  "iri1128386209": {
   "hash": "a94e9e9f839c3f93",
   "key": "obj.claus.desc",
+  "who": "iri"
+ },
+ "iri1132206466": {
+  "hash": "77b2acdb2db611f6",
+  "key": "sala.cantimplora_bodega.motor.oli",
   "who": "iri"
  },
  "iri1147452506": {
@@ -937,6 +957,11 @@
  "iri1278222599": {
   "hash": "30f7ecfc24828690",
   "key": "obj.targeta.desc",
+  "who": "iri"
+ },
+ "iri1278803929": {
+  "hash": "2b8771b034e0373f",
+  "key": "sala.fosa_colada.gresol.sorra",
   "who": "iri"
  },
  "iri1286011351": {
@@ -1492,6 +1517,11 @@
  "iri1716526987": {
   "hash": "89988c9ce5d1d4f0",
   "key": "mosca.envia.paper_plata.vet",
+  "who": "iri"
+ },
+ "iri1725706113": {
+  "hash": "06edb04f38ea29f3",
+  "key": "sala.granja_pati.senyal_port.mira",
   "who": "iri"
  },
  "iri1737767839": {
@@ -2060,7 +2090,7 @@
   "who": "iri"
  },
  "iri228659708": {
-  "hash": "58758ba7fcb48bf2",
+  "hash": "7179ba6af3672379",
   "key": "dlg.comunicador.fem.2",
   "who": "iri"
  },
@@ -2279,6 +2309,11 @@
   "key": "mosca.envia.contracte_7788.vet",
   "who": "iri"
  },
+ "iri2506930584": {
+  "hash": "0aa455d4e7f6625f",
+  "key": "sala.fosa_forn.tenalles.1",
+  "who": "iri"
+ },
  "iri250713018": {
   "hash": "d652620e31f8ab39",
   "key": "sala.aqua_port.cistella.3",
@@ -2307,6 +2342,11 @@
  "iri2549716536": {
   "hash": "603737d1ec58a28f",
   "key": "dlg.subhasta.c7788.2",
+  "who": "iri"
+ },
+ "iri2557263441": {
+  "hash": "37bc9fa5e9d4d367",
+  "key": "sala.fosa_forn.tenalles.2",
   "who": "iri"
  },
  "iri2560957272": {
@@ -2635,7 +2675,7 @@
   "who": "iri"
  },
  "iri2827295360": {
-  "hash": "fe9a8718b199997d",
+  "hash": "4ebf2be7dbcf07a6",
   "key": "dlg.comunicador.fem.60",
   "who": "iri"
  },
@@ -2795,7 +2835,7 @@
   "who": "iri"
  },
  "iri2929093907": {
-  "hash": "6b916a6a5618a490",
+  "hash": "955ad1e52099b206",
   "key": "dlg.comunicador.fem.14",
   "who": "iri"
  },
@@ -2845,7 +2885,7 @@
   "who": "iri"
  },
  "iri2962649145": {
-  "hash": "a3fa1fb86ef575d6",
+  "hash": "d4a59bfe3d3703fc",
   "key": "dlg.comunicador.fem.16",
   "who": "iri"
  },
@@ -2855,7 +2895,7 @@
   "who": "iri"
  },
  "iri2996204383": {
-  "hash": "f16a381d18b9603d",
+  "hash": "1b45d7a37594c75c",
   "key": "dlg.comunicador.fem.10",
   "who": "iri"
  },
@@ -2867,6 +2907,11 @@
  "iri3015599917": {
   "hash": "183b45fa5350ea79",
   "key": "mosca.arriba.galleda",
+  "who": "iri"
+ },
+ "iri3015626663": {
+  "hash": "49b2b1b5f9d97530",
+  "key": "sala.cantimplora_bodega.llauna.mira",
   "who": "iri"
  },
  "iri3015793397": {
@@ -3280,7 +3325,7 @@
   "who": "iri"
  },
  "iri3332581487": {
-  "hash": "d4a696cc4c2e0c1e",
+  "hash": "7ac8393569c71be4",
   "key": "sala.verdant_jardi.porta_cobert.iri",
   "who": "iri"
  },
@@ -3437,6 +3482,11 @@
  "iri3449553623": {
   "hash": "fb1af92c6d88e01c",
   "key": "sala.granja_graner.llavors.3",
+  "who": "iri"
+ },
+ "iri3455681666": {
+  "hash": "18f8b2b609ac93c1",
+  "key": "sala.cantimplora_pont.iri.2",
   "who": "iri"
  },
  "iri3466685231": {
@@ -3900,7 +3950,7 @@
   "who": "iri"
  },
  "iri396435898": {
-  "hash": "42d22b856722682a",
+  "hash": "b9c0b815e4fbf41a",
   "key": "dlg.comunicador.fem.8",
   "who": "iri"
  },
@@ -4655,7 +4705,7 @@
   "who": "iri"
  },
  "iri846024452": {
-  "hash": "2a6e18ea462b6f13",
+  "hash": "ca55a3c3fcf6ddc2",
   "key": "sala.fosa_colada.llit.5",
   "who": "iri"
  },
@@ -4737,6 +4787,11 @@
  "iri898341146": {
   "hash": "2aec625cd573a22c",
   "key": "ui.defecte.talkTo",
+  "who": "iri"
+ },
+ "iri898864115": {
+  "hash": "6cf7cc0584fd62d3",
+  "key": "sala.fosa_colada.termometre.1",
   "who": "iri"
  },
  "iri900508367": {
@@ -5320,7 +5375,7 @@
   "who": "narrator"
  },
  "narrator1374973100": {
-  "hash": "b227899894741e23",
+  "hash": "245333f9c7776905",
   "key": "sync.colada.4",
   "who": "narrator"
  },
@@ -5822,6 +5877,11 @@
  "narrator2973778708": {
   "hash": "820d9f2bcf98bfb5",
   "key": "dlg.trucada.no.3",
+  "who": "narrator"
+ },
+ "narrator3026440568": {
+  "hash": "76b8812e88dbdfbc",
+  "key": "sala.granja_pati.porta_graner.precinte.11",
   "who": "narrator"
  },
  "narrator3079551906": {
@@ -6940,12 +7000,12 @@
   "who": "vet"
  },
  "vet1032634580": {
-  "hash": "46ba7d1706f79d89",
+  "hash": "22c8e546a9b28933",
   "key": "dlg.comunicador.fem.55",
   "who": "vet"
  },
  "vet1032781675": {
-  "hash": "02c1951fd6ee9f71",
+  "hash": "7e432aead318c8b2",
   "key": "dlg.comunicador.fem.25",
   "who": "vet"
  },
@@ -7082,6 +7142,11 @@
  "vet1130674887": {
   "hash": "71ffe5b5544d009f",
   "key": "obj.agulla.1",
+  "who": "vet"
+ },
+ "vet1132206466": {
+  "hash": "7a1b15f68572fc78",
+  "key": "sala.cantimplora_bodega.motor.oli",
   "who": "vet"
  },
  "vet1133447389": {
@@ -7614,6 +7679,11 @@
   "key": "mosca.envia.paper_plata.vet",
   "who": "vet"
  },
+ "vet1725706113": {
+  "hash": "bd0d6aa3d4fbad0f",
+  "key": "sala.granja_pati.senyal_port.mira",
+  "who": "vet"
+ },
  "vet1733085952": {
   "hash": "14003d829588916c",
   "key": "ui.defecte.talkTo.vet.3",
@@ -7640,7 +7710,7 @@
   "who": "vet"
  },
  "vet178326851": {
-  "hash": "e647eb9cb16b3bd5",
+  "hash": "e9e3b8e966d52c20",
   "key": "dlg.comunicador.fem.7",
   "who": "vet"
  },
@@ -7712,6 +7782,11 @@
  "vet1834997408": {
   "hash": "4d0ee0e9a83189f1",
   "key": "sala.aqua_port.grua.3",
+  "who": "vet"
+ },
+ "vet1838641984": {
+  "hash": "7746f4e8c61e7e9c",
+  "key": "sala.palau_control.valvula.vet_reserva",
   "who": "vet"
  },
  "vet1841446361": {
@@ -8044,6 +8119,11 @@
   "key": "safata.recull.contracte_capitana",
   "who": "vet"
  },
+ "vet2195240448": {
+  "hash": "ef225072eb20f2f5",
+  "key": "sala.palau_control.palanca.10",
+  "who": "vet"
+ },
  "vet2214664128": {
   "hash": "c4946e1ccd17298e",
   "key": "sala.cantimplora_bodega.carmanyola.6",
@@ -8304,6 +8384,11 @@
   "key": "mosca.envia.contracte_7788.vet",
   "who": "vet"
  },
+ "vet2506930584": {
+  "hash": "51fef9202245c84c",
+  "key": "sala.fosa_forn.tenalles.1",
+  "who": "vet"
+ },
  "vet2508138604": {
   "hash": "0f1d62bee6b940ac",
   "key": "obj.mosca.1",
@@ -8337,6 +8422,11 @@
  "vet2556351805": {
   "hash": "5261d4b799f9fe04",
   "key": "safata.recull.sorra",
+  "who": "vet"
+ },
+ "vet2557263441": {
+  "hash": "e9391dcd2f9d2134",
+  "key": "sala.fosa_forn.tenalles.2",
   "who": "vet"
  },
  "vet2560957272": {
@@ -8560,7 +8650,7 @@
   "who": "vet"
  },
  "vet278992565": {
-  "hash": "3943d4ab8933aae7",
+  "hash": "11848692170eb157",
   "key": "dlg.comunicador.fem.1",
   "who": "vet"
  },
@@ -8695,7 +8785,7 @@
   "who": "vet"
  },
  "vet2912316288": {
-  "hash": "ad99ddecb5566508",
+  "hash": "6738d56f33ab1d02",
   "key": "dlg.comunicador.fem.15",
   "who": "vet"
  },
@@ -8775,13 +8865,18 @@
   "who": "vet"
  },
  "vet3012982002": {
-  "hash": "a699dc76ce1c4533",
+  "hash": "467c3ef151e0d3bc",
   "key": "dlg.comunicador.fem.13",
   "who": "vet"
  },
  "vet3015599917": {
   "hash": "85431f86751447c3",
   "key": "mosca.arriba.galleda",
+  "who": "vet"
+ },
+ "vet3015626663": {
+  "hash": "c247320ffcd99bea",
+  "key": "sala.cantimplora_bodega.llauna.mira",
   "who": "vet"
  },
  "vet3029219049": {
@@ -9485,7 +9580,7 @@
   "who": "vet"
  },
  "vet3780124496": {
-  "hash": "1843ce1f2ee8e8d5",
+  "hash": "40285e882329a8b2",
   "key": "esc.esc1.6",
   "who": "vet"
  },
@@ -9765,7 +9860,7 @@
   "who": "vet"
  },
  "vet413213517": {
-  "hash": "41df9978e8a91bb8",
+  "hash": "f11182c32b95c7f6",
   "key": "dlg.comunicador.fem.9",
   "who": "vet"
  },
@@ -9975,7 +10070,7 @@
   "who": "vet"
  },
  "vet511235772": {
-  "hash": "5375100dfdfe812a",
+  "hash": "2577bbf5c1b587b5",
   "key": "sala.verdant_cobert.tomaquera.3",
   "who": "vet"
  },
@@ -10395,7 +10490,7 @@
   "who": "vet"
  },
  "vet831303152": {
-  "hash": "693ce3b7ae0862c8",
+  "hash": "97b799aaebfcf5d5",
   "key": "dlg.comunicador.fem.59",
   "who": "vet"
  },
@@ -10575,7 +10670,7 @@
   "who": "vet"
  },
  "vet965524104": {
-  "hash": "3ed796a56b7d59da",
+  "hash": "e1f7bbb5d05ce16f",
   "key": "dlg.comunicador.fem.51",
   "who": "vet"
  },
@@ -10630,7 +10725,7 @@
   "who": "vet"
  },
  "vet999079342": {
-  "hash": "128fa7232915046a",
+  "hash": "d835439cda58ce6a",
   "key": "dlg.comunicador.fem.53",
   "who": "vet"
  }
