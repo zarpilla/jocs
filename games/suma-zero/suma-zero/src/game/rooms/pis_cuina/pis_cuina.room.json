@@ -632,7 +632,7 @@
         "y": 48,
         "radius": 300,
         "color": "#ffbe78",
-        "intensity": 1
+        "intensity": 1.0
       },
       {
         "x": 350,
@@ -656,6 +656,13 @@
         "color": "#e0f4ff",
         "intensity": 0.8,
         "whenPropVisible": "nevera_oberta"
+      },
+      {
+        "x": 110,
+        "y": 150,
+        "radius": 150,
+        "color": "#ffd6a8",
+        "intensity": 0.7
       }
     ]
   },

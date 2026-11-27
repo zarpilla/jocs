@@ -767,6 +767,8 @@ GEOMETRIA = {
              'color': '#50e6d2', 'intensity': 0.9, 'whenPropVisible': 'passaplats_obert'},
             {'x': _p(_FR[0], _FR[1] - _FR[3] / 2, 70)[0], 'y': _p(_FR[0], _FR[1] - _FR[3] / 2, 70)[1], 'radius': 150,
              'color': '#e0f4ff', 'intensity': 0.8, 'whenPropVisible': 'nevera_oberta'},
+            {'x': 110, 'y': 150, 'radius': 150, 'color': '#ffd6a8', 'intensity': 0.7},  # el taulell (tasca 234): el
+            # llum penjant hi arriba just, i la Vet hi quedava a contrallum, gairebé negra
         ],
     },
 }
