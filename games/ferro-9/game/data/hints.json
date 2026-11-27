@@ -1475,6 +1475,35 @@
       "pista.iri_esperar_a2.2"
     ]
   },
+  "iri_esperar_comporta": {
+    "priority": 2,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "biga_amagada",
+          "op": "!=",
+          "value": ""
+        },
+        {
+          "flag": "nota_amagatall_escrita"
+        },
+        {
+          "flag": "comporta_oberta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "comporta_oberta"
+    },
+    "levels": [
+      "pista.iri_esperar_comporta.1",
+      "pista.iri_esperar_comporta.2"
+    ]
+  },
   "vet_molla": {
     "priority": 3,
     "when": {
