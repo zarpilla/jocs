@@ -35,7 +35,7 @@
   "who": "bonfill"
  },
  "bonfill1249341232": {
-  "hash": "b4dc4857299e3416",
+  "hash": "875ec5768b25dacc",
   "key": "dlg.bonfill.8",
   "who": "bonfill"
  },
@@ -70,12 +70,12 @@
   "who": "bonfill"
  },
  "bonfill1484227898": {
-  "hash": "d08231c2e4e8bf5d",
+  "hash": "d06e93c144f21557",
   "key": "dlg.bonfill.6",
   "who": "bonfill"
  },
  "bonfill1501005517": {
-  "hash": "3308474a8aba9a2e",
+  "hash": "7e2221441b32f438",
   "key": "dlg.bonfill.7",
   "who": "bonfill"
  },
@@ -212,6 +212,11 @@
  "ermessenda2554394205": {
   "hash": "42035ac7ef196fb8",
   "key": "sala.judici.61",
+  "who": "ermessenda"
+ },
+ "ermessenda2572074347": {
+  "hash": "0d082cad640a6f11",
+  "key": "dlg.ermessenda.2b",
   "who": "ermessenda"
  },
  "ermessenda3130674992": {
@@ -1265,7 +1270,7 @@
   "who": "iri"
  },
  "iri1680414499": {
-  "hash": "96876dfd1801f44f",
+  "hash": "26df5919edec4d6f",
   "key": "dlg.ingilberga.opt.signe",
   "who": "iri"
  },
@@ -1437,6 +1442,11 @@
  "iri1962465559": {
   "hash": "b3b91c2627973519",
   "key": "dlg.gueraula.opt.llest",
+  "who": "iri"
+ },
+ "iri1971934745": {
+  "hash": "a4e9cfb377504a52",
+  "key": "obj.pergamins.cera_sense.1",
   "who": "iri"
  },
  "iri197210325": {
@@ -2215,7 +2225,7 @@
   "who": "iri"
  },
  "iri3264895944": {
-  "hash": "264396aeb13d28ee",
+  "hash": "9abbe180da2e4053",
   "key": "sala.pont_ter.38",
   "who": "iri"
  },
@@ -2409,6 +2419,11 @@
   "key": "sala.bugaderia.13",
   "who": "iri"
  },
+ "iri3516927699": {
+  "hash": "75a3d5bb2f2ccb9c",
+  "key": "sala.pont_ter.rec.salabre_baixa",
+  "who": "iri"
+ },
  "iri3519583307": {
   "hash": "18831b0a8eae123d",
   "key": "sala.bugaderia.12",
@@ -2587,6 +2602,11 @@
  "iri3654904344": {
   "hash": "69378547814fd8e6",
   "key": "pj.ramon.mira.1",
+  "who": "iri"
+ },
+ "iri3657638746": {
+  "hash": "528c8936625999b4",
+  "key": "sala.pont_ter.rec.salabre_alta",
   "who": "iri"
  },
  "iri3670728973": {
@@ -3182,6 +3202,11 @@
  "iri934835792": {
   "hash": "e2a51636df53cc0d",
   "key": "sala.cuina.4",
+  "who": "iri"
+ },
+ "iri936277021": {
+  "hash": "24ec913f68c0c829",
+  "key": "sala.cuina.copa_girat",
   "who": "iri"
  },
  "iri943191005": {
@@ -4259,6 +4284,11 @@
   "key": "donar.ja",
   "who": "vet"
  },
+ "vet1201747890": {
+  "hash": "aaaf7b951a5cabcf",
+  "key": "sala.scriptorium.26_claus",
+  "who": "vet"
+ },
  "vet1203577248": {
   "hash": "da538b6ea06a9cf8",
   "key": "sala.arxiu.7",
@@ -4665,7 +4695,7 @@
   "who": "vet"
  },
  "vet1680414499": {
-  "hash": "62b1d40d7e093507",
+  "hash": "f4366f15d57fea41",
   "key": "dlg.ingilberga.opt.signe",
   "who": "vet"
  },
@@ -4857,6 +4887,11 @@
  "vet1962465559": {
   "hash": "61a25fc9dbe54eda",
   "key": "dlg.gueraula.opt.llest",
+  "who": "vet"
+ },
+ "vet1971934745": {
+  "hash": "26c9d98fdb689d1e",
+  "key": "obj.pergamins.cera_sense.1",
   "who": "vet"
  },
  "vet197210325": {
@@ -5934,6 +5969,11 @@
   "key": "dlg.ponc.22",
   "who": "vet"
  },
+ "vet3533541235": {
+  "hash": "a2b3d2698dd88779",
+  "key": "dlg.ponc.38",
+  "who": "vet"
+ },
  "vet3534511350": {
   "hash": "45166b43db285a32",
   "key": "obj.combo.escurcar.3.1",
@@ -6172,6 +6212,11 @@
  "vet3773957749": {
   "hash": "bdde3758ba420934",
   "key": "sala.epileg.30",
+  "who": "vet"
+ },
+ "vet3779829517": {
+  "hash": "70b904e72d0d5d12",
+  "key": "pj.vet.parla.1b",
   "who": "vet"
  },
  "vet3786112673": {
@@ -6515,7 +6560,7 @@
   "who": "vet"
  },
  "vet51894251": {
-  "hash": "cf0d25ff06994ee7",
+  "hash": "002d22a5b6a58fce",
   "key": "ui.defecte.look.vet",
   "who": "vet"
  },
@@ -6610,7 +6655,7 @@
   "who": "vet"
  },
  "vet678673668": {
-  "hash": "518596cfe0d60c6a",
+  "hash": "48b6913f5596e786",
   "key": "sala.cuina.39",
   "who": "vet"
  },
@@ -6710,7 +6755,7 @@
   "who": "vet"
  },
  "vet899069545": {
-  "hash": "f0deb3a083629e0c",
+  "hash": "b32afa8bf8558212",
   "key": "ui.defecte.use.vet",
   "who": "vet"
  },
@@ -6722,6 +6767,11 @@
  "vet935378383": {
   "hash": "a6ac5937fc6991ef",
   "key": "ui.defecte.talkTo.vet",
+  "who": "vet"
+ },
+ "vet936277021": {
+  "hash": "1ab938639de7e9a7",
+  "key": "sala.cuina.copa_girat",
   "who": "vet"
  },
  "vet943191005": {
