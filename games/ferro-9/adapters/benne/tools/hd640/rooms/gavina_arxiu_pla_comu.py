@@ -26,6 +26,18 @@ LIGHT.add(pool(547, 229, 93, 24, 1.0))
 LIGHT.add(pool(53, 229, 80, 24, 1.2))
 
 
+
+class _Gran:
+    """Un canvas que dibuixa cada píxel k vegades més gran (a partir de x0, y0): per als rètols que la sala redueix."""
+    def __init__(self, cv, x0, y0, k):
+        self.cv, self.x0, self.y0, self.k = cv, x0, y0, k
+
+    def put(self, x, y, *a):
+        i, j = x - self.x0, y - self.y0
+        for xx in range(self.x0 + int(i * self.k), self.x0 + int((i + 1) * self.k)):
+            for yy in range(self.y0 + int(j * self.k), self.y0 + int((j + 1) * self.k)):
+                self.cv.put(xx, yy, *a)
+
 def _canonada(cv):
     """La canonada de coure de l'antiga fàbrica, amb el manòmetre."""
     # ─── Canonada de coure de l'antiga fàbrica (el despatx del director era aquí) ──
@@ -433,14 +445,17 @@ def _walls(cv, t=0.0, mobles=True):
 
     # ─── Detalls de paret ─────────────────────────────────────────────────
     # rètol de l'arxiu
-    cv.rect(480, 43, 608, 69, SIGN, 3.5, 0.4)
-    cv.rect(480, 43, 608, 53, RED, lambda x, y: 2.5 + (0.6 if y == 43 else 0), 0.2)
-    text(cv, 485, 45, 'ARXIU CENTRAL', SIGN, 4.5, 0)
-    text(cv, 485, 57, 'ACCÉS RESTRINGIT', HULL, 1.5, 0)
-    cv.hline(485, 485 + text_w('ACCÉS RESTRINGIT'), 66, HULL, 2.5, 0.3)
-    for sx in (482, 606):
-        cv.put(sx, 63, SIGN, 1.6, 0.3)
-    cv.darken(481, 70, 609, 72, 0.4)
+    # (tasca 145) la sala la redueix a ~0,8: amb la lletra de 4×7 de sempre no es llegia; ara, lletra gran
+    cv.rect(474, 37, 614, 80, SIGN, 3.5, 0.4)
+    cv.rect(474, 37, 614, 56, RED, lambda x, y: 2.5 + (0.6 if y == 37 else 0), 0.2)
+    t1, t2 = 'ARXIU CENTRAL', 'RESTRINGIT'                     # («ACCÉS» no hi cabia a la mida gran)
+    x1 = 544 - text_w(t1)
+    text(_Gran(cv, x1, 40, 2), x1, 40, t1, SIGN, 4.5, 0)
+    x2 = 544 - text_w(t2)
+    text(_Gran(cv, x2, 61, 2), x2, 61, t2, HULL, 1.5, 0)
+    for sx in (476, 612):
+        cv.put(sx, 76, SIGN, 1.6, 0.3)
+    cv.darken(475, 81, 615, 83, 0.4)
     # termòstat/higròmetre (per al paper)
     cv.rect(448, 80, 461, 99, HULL, lambda x, y: 1.0 if x == 461 or y == 99 else (4.2 if x == 448 or y == 80 else 3.4))
     cv.rect(451, 83, 459, 89, TEAL, 3.0, 0)
