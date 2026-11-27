@@ -427,6 +427,16 @@
                   "var": "fase",
                   "op": "==",
                   "value": 1
+                },
+                {
+                  "any": [
+                    {
+                      "flag": "signe_copiat"
+                    },
+                    {
+                      "flag": "serra_treta"
+                    }
+                  ]
                 }
               ]
             },
@@ -434,6 +444,27 @@
               {
                 "who": "vet",
                 "text": "pj.vet.parla.1"
+              }
+            ]
+          },
+          {
+            "verb": "talkTo",
+            "if": {
+              "all": [
+                {
+                  "protagonist": "iri"
+                },
+                {
+                  "var": "fase",
+                  "op": "==",
+                  "value": 1
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "vet",
+                "text": "pj.vet.parla.1b"
               }
             ]
           },
@@ -7801,7 +7832,17 @@
             "lines": [
               {
                 "who": "bonfill",
-                "text": "sala.placa_sant_pol.1"
+                "text": "sala.placa_sant_pol.1",
+                "stage": [
+                  {
+                    "who": "player",
+                    "walk": {
+                      "x": 330,
+                      "y": 232
+                    },
+                    "wait": false
+                  }
+                ]
               },
               {
                 "who": "sanca",
@@ -8587,12 +8628,25 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.pont_ter.12"
+                    "text": "sala.pont_ter.12",
+                    "stage": [
+                      {
+                        "prop": "aigua_baixa",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
                     "text": "sala.pont_ter.13",
-                    "sound": "post"
+                    "sound": "post",
+                    "stage": [
+                      {
+                        "prop": "aigua_baixa",
+                        "visible": true,
+                        "fade": 2
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -10912,6 +10966,35 @@
         ],
         "targets": [
           "gueraula"
+        ]
+      },
+      "v_serra": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 1
+            },
+            {
+              "hasItem": "serra",
+              "who": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "hasItem": "serra",
+            "who": "iri"
+          }
+        },
+        "levels": [
+          "pista.v_serra.1",
+          "pista.v_serra.2"
         ]
       },
       "v_arxiu": {
@@ -14028,7 +14111,18 @@
             "lines": [
               {
                 "who": "ermessenda",
-                "text": "dlg.ermessenda.2"
+                "text": "dlg.ermessenda.2",
+                "if": {
+                  "flag": "barca_calafatada",
+                  "is": false
+                }
+              },
+              {
+                "who": "ermessenda",
+                "text": "dlg.ermessenda.2b",
+                "if": {
+                  "flag": "barca_calafatada"
+                }
               }
             ],
             "goto": "m"
@@ -15293,11 +15387,42 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.ponc.6"
+                "text": "dlg.ponc.6",
+                "stage": [
+                  {
+                    "who": "ponc",
+                    "face": "L"
+                  },
+                  {
+                    "who": "sunifred",
+                    "face": "L"
+                  },
+                  {
+                    "who": "player",
+                    "face": "L"
+                  },
+                  {
+                    "who": "bonfill",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "ponc",
-                "text": "dlg.ponc.7"
+                "text": "dlg.ponc.7",
+                "stageAfter": [
+                  {
+                    "who": "bonfill",
+                    "walk": {
+                      "x": 192,
+                      "y": 220
+                    }
+                  },
+                  {
+                    "who": "bonfill",
+                    "face": "R"
+                  }
+                ]
               },
               {
                 "who": "ponc",
@@ -15313,13 +15438,21 @@
                 ],
                 "stageAfter": [
                   {
-                    "who": "bonfill",
+                    "who": "ramon",
                     "walk": "carrer",
                     "wait": false
                   },
                   {
-                    "who": "ramon",
+                    "who": "bonfill",
                     "walk": "carrer"
+                  },
+                  {
+                    "who": "ramon",
+                    "visible": false
+                  },
+                  {
+                    "who": "bonfill",
+                    "visible": false
                   }
                 ]
               },
@@ -15372,6 +15505,10 @@
               {
                 "who": "vet",
                 "text": "dlg.ponc.37"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.ponc.38"
               }
             ]
           },
@@ -16269,6 +16406,7 @@
       "dlg.bonfill.opt.visca": "Visca el comte.",
       "dlg.ermessenda.1": "El rec sec, i el blat del monestir a mig moldre.",
       "dlg.ermessenda.2": "Una cosa que brilla, al mig de la resclosa. Amb barca hi arribaries, però en Joanet la té, i fa aigua.",
+      "dlg.ermessenda.2b": "Una cosa que brilla, al mig de la resclosa. Ara que la barca ja no fa aigua, hi pots arribar.",
       "dlg.ermessenda.3": "L'aigua torna al rec. Que Déu et pagui, i si no, les nous.",
       "dlg.ermessenda.4": "Un monjo! Que voleu que vingui al judici a dir on era la serra?",
       "dlg.ermessenda.5": "I la mola, qui la vigila? Si la deixo rodant sola, se m'encalla.",
@@ -16466,6 +16604,7 @@
       "dlg.sunifred.opt.vi": "(Escriu a la tauleta) «Més vi, germà?»",
       "dlg.ponc.36": "El judici, demà al matí, aquí davant de l'avet.",
       "dlg.ponc.37": "Tenim fins demà al matí per saber qui l'ha tombat. I per què.",
+      "dlg.ponc.38": "Quan em necessitis, toca la meva cara, a baix a l'esquerra. Les pistes, ara, al menú.",
       "dlg.gueraula.25": "L'Iri fa un glop de xarop de menta.",
       "dlg.gueraula.26": "Cof! Cof, cof! Crema!",
       "dlg.gueraula.27": "Era mig glop! Doncs tu tossiràs, i la Vet callarà. Un monjo que tus no ha de parlar.",
@@ -16862,6 +17001,7 @@
       "pj.vet.mira.monjo.1": "Un monjo petit, amb l'hàbit escurçat a cops de tisora. Té la mirada de la Vet.",
       "pj.vet.nom": "Vet",
       "pj.vet.parla.1": "Ens falta saber què hi havia sota l'avet i qui té aquest signe. Per a les lletres, aquí em tens.",
+      "pj.vet.parla.1b": "Ens falta saber què hi havia sota l'avet. Per a les lletres, aquí em tens.",
       "pj.vet.parla.2": "Hàbits, tu. Barbes, celles, veu i un salconduit, jo. Si necessites res de l'apotecaria, demana-m'ho.",
       "pj.vet.parla.3": "Tres testimonis i un segell, ha dit. El segell el tinc jo. Els testimonis, a buscar.",
       "pj.vet.parla.4": "Després parlem. Ara, feina.",
@@ -16915,8 +17055,8 @@
       "pista.i_doble_fons.2": "Obre el bagul del segell.",
       "pista.i_dona_cera.1": "Aquest tros de cera era un segell. La Vet sabrà llegir-lo.",
       "pista.i_dona_cera.2": "Dona el tros de cera a la Vet (totes dues al mateix lloc).",
-      "pista.i_dona_serra.1": "La serra és una prova. Qui parla amb l'abadessa és la Vet.",
-      "pista.i_dona_serra.2": "Dona la serra a la Vet (totes dues al mateix lloc).",
+      "pista.i_dona_serra.1": "La serra és una prova, però a mi les monges no em deixen entrar. Que la porti la Vet a l'abadessa.",
+      "pista.i_dona_serra.2": "Dona la serra a la Vet a l'avet caigut, davant la porta del monestir (totes dues al mateix lloc).",
       "pista.i_ermessenda.1": "L'Ermessenda, al pont. Vindrà si la mola no s'encalla.",
       "pista.i_ermessenda.2": "Sense aigua, la mola s'atura. La comporta del rec.",
       "pista.i_ermessenda.3": "Tanca la comporta del rec (empeny-la).",
@@ -17035,6 +17175,8 @@
       "pista.v_convencer.3": "Digues-li que vosaltres no sou monges.",
       "pista.v_corranda.1": "La Gueraula canta una cançó que parla de l'avet.",
       "pista.v_corranda.2": "Pregunta-li què canta, i demana-li que la canti sencera.",
+      "pista.v_serra.1": "La serra la porta l'Iri, i a ella no la deixen entrar al monestir. Surto a buscar-la a l'avet caigut.",
+      "pista.v_serra.2": "Ves a l'avet caigut, canvia a l'Iri i que et doni la serra (totes dues al mateix lloc).",
       "pista.v_distraccio.1": "Tapa la copa amb la mà. Cal que es giri.",
       "pista.v_distraccio.2": "L'Iri és a la llar, al costat de la pila d'olles. Un senyal...",
       "pista.v_distraccio.3": "Fes servir el mocador amb la pila d'olles: l'Iri entendrà.",
