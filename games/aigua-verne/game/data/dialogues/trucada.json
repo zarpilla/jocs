@@ -84,7 +84,13 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.trucada.si.3"
+          "text": "dlg.trucada.si.3",
+          "stage": [
+            {
+              "prop": "pantalla_verne",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "iri",
@@ -96,7 +102,13 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.trucada.si.6"
+          "text": "dlg.trucada.si.6",
+          "stage": [
+            {
+              "prop": "pantalla_verne",
+              "visible": true
+            }
+          ]
         }
       ],
       "goto": "no"
@@ -132,7 +144,13 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.trucada.no.3"
+          "text": "dlg.trucada.no.3",
+          "stage": [
+            {
+              "prop": "pantalla_verne",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "narrator",
