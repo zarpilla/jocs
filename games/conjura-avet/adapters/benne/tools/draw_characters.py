@@ -177,7 +177,7 @@ DIRS = ('L', 'D', 'U', 'DL', 'UL')
 PERSONA_FEET = (25, 83 + A.PAD)
 
 # Els secundaris que caminen en alguna escena (`walk` d'un `stage`): també porten Walk.
-CAMINEN = {'bonfill', 'ramon', 'gombau', 'arnulf'}
+CAMINEN = {'bonfill', 'ramon', 'gombau', 'arnulf', 'ermessenda'}
 
 # Animacions soltes d'algun personatge (etiqueta: dibuix de cada fotograma, nombre de fotogrames, l'animació de
 # Benne): en Sunifred a la cuina, `BeuD` (beu de la copa: un sol cop, i s'hi queda), `BadallaD` (badalla) i `DormD`

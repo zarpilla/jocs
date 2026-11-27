@@ -121,6 +121,12 @@ REC_W = 20                                         # l'ample del canal
 MOLI = (700.0, 520.0)                              # el molí (x, z de la cantonada de davant a l'esquerra)
 BARCA = (300.0, 218.0, -0.28)                      # la barca: x, z, gir
 BARCA_RIU = (330.0, 420.0, 0.5)                    # la barca a mig riu (al matí)
+
+
+def _barca_a(t):
+    """La barca entre la vora (t = 0) i mig riu (t = 1), girant-se a poc a poc."""
+    t = t * t * (3 - 2 * t)
+    return tuple(a + (b - a) * t for a, b in zip(BARCA, BARCA_RIU))
 SALZE_P = (628.0, 70.0)                            # el salze del primer pla
 
 
@@ -710,7 +716,7 @@ def _marges(e, mati):
                (riba_dreta(z0), Y_AVALL, z0), ramp=HORT, lvl=L, dues_cares=True)
 
 
-def escena(cv, mati=False, frame=0, baixa=False, calafatada=False, serra=True, ple=False, barca_riu=False):
+def escena(cv, mati=False, frame=0, baixa=False, calafatada=False, serra=True, ple=False, barca_riu=False, barca_t=None):
     """Tot el pont, de lluny a prop (sense z-buffer: l'ordre és el de la profunditat). → l'Escena."""
     lls, amb = llums(mati)
     e = Escena(cv, CAM, lls, ambient=amb)
@@ -725,7 +731,9 @@ def escena(cv, mati=False, frame=0, baixa=False, calafatada=False, serra=True, p
     _marges(e, mati)
     _plantes(cv, e, mati)
     # la barca (a la vora o, al matí empesa, a mig riu)
-    if barca_riu:
+    if barca_t is not None:                        # la barca que el corrent s'endú (de la vora a mig riu)
+        _barca(e, _barca_a(barca_t), mati, calafatada=True, enfonsada=False, amarrada=False)
+    elif barca_riu:
         _barca(e, BARCA_RIU, mati, calafatada=True, enfonsada=False, amarrada=False)
     else:
         _barca(e, BARCA, mati, calafatada=calafatada, enfonsada=not calafatada)
@@ -783,18 +791,22 @@ def _salze(cv, mati):
 
 
 @functools.lru_cache(maxsize=None)
-def _base(mati=False, frame=0, baixa=False, calafatada=False, serra=True, ple=False, barca_riu=False):
+def _base(mati=False, frame=0, baixa=False, calafatada=False, serra=True, ple=False, barca_riu=False, barca_t=None):
     cv = Canvas(light=LIGHT)
-    e = escena(cv, mati, frame, baixa, calafatada, serra, ple, barca_riu)
+    e = escena(cv, mati, frame, baixa, calafatada, serra, ple, barca_riu, barca_t)
     m = _salze(cv, mati)
-    if mati:                                       # el matí: tot una mica més daurat
+    if mati:                                       # el matí: tot una mica més daurat (i el verd, més apagat)
         a = np.asarray(cv.img).astype(np.float32)
+        g = a[..., :3].mean(axis=2, keepdims=True)
+        a[..., :3] = a[..., :3] * 0.85 + g * 0.15
         a[..., :3] *= np.array([1.07, 1.02, 0.9], np.float32)
         cv.img = Image.fromarray(np.clip(a, 0, 255).astype(np.uint8), 'RGBA').copy()
         cv.P = cv.img.load()
     else:                                          # la tarda grisa i verda
         a = np.asarray(cv.img).astype(np.float32)
-        a[..., :3] = a[..., :3] * 0.94 + np.array([4, 8, 6], np.float32)
+        g = a[..., :3].mean(axis=2, keepdims=True)      # l'acte 1, el dia de la pluja: sense sol, el verd apagat
+        a[..., :3] = a[..., :3] * 0.62 + g * 0.38       # (de la paleta terrosa de la plaça i el monestir)
+        a[..., :3] = a[..., :3] * 0.9 + np.array([6, 8, 8], np.float32)
         cv.img = Image.fromarray(np.clip(a, 0, 255).astype(np.uint8), 'RGBA').copy()
         cv.P = cv.img.load()
     cv.rect(0, BOTTOM + 1, W - 1, cv.h - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
@@ -833,6 +845,80 @@ PROPS = {
     'barca_corrent': _prop_diff(base_kw={'mati': True, 'calafatada': True, 'serra': False},
                                 mati=True, calafatada=True, serra=False, barca_riu=True),
 }
+
+
+# En Joanet adormit dins la barca (l'acte 4, abans d'empènyer-la): la seva figura de cara, amb els ulls closos, tombada
+# al llarg de la barca (el cap a popa, cap a la riba) i a l'escala de la barca; la borda en tapa les cames.
+MATI_KW = {'mati': True, 'calafatada': True, 'serra': False}
+
+
+@functools.lru_cache(maxsize=None)
+def _joanet_ajagut(P):
+    import sys as _s
+    from pathlib import Path as _P
+    _s.path.insert(0, str(_P(__file__).resolve().parents[2]))
+    from hd import conjura as K
+    fig = K.figura({**K.JOANET, 'closed': True}, 'D')
+    bb = fig.getbbox()
+    fig = fig.crop(bb)
+    x, z, gir = P
+    k = CAM.escala((x, 0, z))
+    alt = 84 * k * 0.92                                   # la seva alçada, a la distància de la barca
+    fig = fig.resize((max(1, round(fig.width * alt / fig.height)), max(1, round(alt))), Image.NEAREST)
+    fig = fig.rotate(90 + math.degrees(gir) * 0.6, expand=True, resample=Image.NEAREST)   # el cap cap a l'esquerra
+    u, v = _p(x, z, 0.0)
+    return fig, (round(u - fig.width / 2), round(v - fig.height / 2 - 3 * k))
+
+
+def _amb_joanet(img, P):
+    """La imatge amb en Joanet ajagut a la barca de la posició P; la borda (el que queda per sota del llom, fora del
+    buc) es torna a pintar al damunt perquè l'amagui una mica."""
+    fig, (u, v) = _joanet_ajagut(P)
+    out = img.copy()
+    capa = Image.new('RGBA', out.size, (0, 0, 0, 0))
+    capa.alpha_composite(fig, (max(0, u), max(0, v)))
+    # les cames i els peus, dins el buc: més foscos (a l'ombra de la borda)
+    a = np.asarray(capa).astype(np.float32)
+    h = a.shape[0]
+    ys = np.arange(h)[:, None]
+    ombra = (ys > v + fig.height * 0.62)
+    a[..., :3] = np.where(ombra[..., None], a[..., :3] * 0.6, a[..., :3])
+    out.alpha_composite(Image.fromarray(np.clip(a, 0, 255).astype(np.uint8), 'RGBA'))
+    return out
+
+
+def joanet_dorm(pc):
+    """L'acte 4: en Joanet dorm ajagut dins la barca, amarrada a la vora."""
+    base = _base(**MATI_KW)[0]
+    pc.img.alpha_composite(_diff(_amb_joanet(base, BARCA), base))
+    pc.P = pc.img.load()
+
+
+PROPS['joanet_dorm'] = joanet_dorm
+
+
+def _buit(pc):
+    pass
+
+
+PROPS['deriva'] = _buit
+
+
+def _deriva_frames():
+    """La barca, amb en Joanet adormit, que el corrent s'endú de la vora fins a mig riu."""
+    base = _base(**MATI_KW)[0]
+    sense_barca = np.asarray(_base(**MATI_KW, barca_riu=True)[0]).astype(np.int16)
+    b = np.asarray(base).astype(np.int16)
+    out = []
+    for t in (0.0, 0.12, 0.25, 0.38, 0.5, 0.62, 0.75, 0.88, 1.0):
+        img = _amb_joanet(_base(**MATI_KW, barca_t=t)[0], _barca_a(t))
+        a = np.asarray(img).astype(np.int16)
+        # opac on el fotograma o el fons sense la barca amarrada canvien (que no quedin forats on hi havia la barca)
+        m = (np.abs(a - b).sum(axis=2) > 0) | (np.abs(sense_barca - b).sum(axis=2) > 0)
+        o = np.asarray(img).copy()
+        o[..., 3] = np.where(m, 255, 0)
+        out.append(Image.fromarray(o, 'RGBA'))
+    return out
 
 
 def _escuma_frames():
@@ -921,6 +1007,7 @@ def _pesca_frames():
 PROPS['pesca'] = _pesca_buit
 
 ANIMS = {'escuma': {'frames': _escuma_frames, 'frameDuration': 120},
+         'deriva_va': {'frames': _deriva_frames, 'frameDuration': 220, 'loop': False, 'prop': 'deriva'},
          'salabre': {'frames': _pesca_frames, 'frameDuration': 120, 'loop': False, 'prop': 'pesca'}}
 
 

@@ -575,6 +575,32 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "joanet_dorm",
+      "tag": "joanet_dorm",
+      "animations": {
+        "joanet_dorm": {}
+      },
+      "zIndex": 6,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "deriva",
+      "tag": "deriva",
+      "animations": {
+        "deriva": {},
+        "deriva_va": {
+          "loop": false,
+          "frameDuration": 220
+        }
+      },
+      "zIndex": 7,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

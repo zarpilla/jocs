@@ -425,6 +425,36 @@
       },
       "zIndex": 22,
       "baseline": 999
+    },
+    {
+      "id": "roda_mou",
+      "tag": "roda_mou",
+      "animations": {
+        "roda_mou": {},
+        "roda_gira": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "pastera_mou",
+      "tag": "pastera_mou",
+      "animations": {
+        "pastera_mou": {},
+        "pastera_surt": {
+          "loop": false,
+          "frameDuration": 200
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

@@ -38,6 +38,10 @@
       "effects": [
         {
           "setFlag": "crida_feta"
+        },
+        {
+          "setFlag": "plou",
+          "value": false
         }
       ]
     },

@@ -138,6 +138,12 @@
             {
               "setFlag": "testimoni_ermessenda"
             }
+          ],
+          "stageAfter": [
+            {
+              "who": "ermessenda",
+              "walk": "cami"
+            }
           ]
         }
       ]

@@ -8,41 +8,41 @@
   },
   "walkSpeed": 96,
   "walkToPoint": {
-    "x": 37,
+    "x": 42,
     "y": 79
   },
   "talkPoint": {
-    "x": 15,
+    "x": 20,
     "y": -2
   },
   "feet": {
-    "x": 15,
+    "x": 20,
     "y": 79
   },
   "collider": {
     "points": [
       {
-        "x": 8,
+        "x": 13,
         "y": 2
       },
       {
-        "x": 22,
+        "x": 27,
         "y": 2
       },
       {
-        "x": 24,
+        "x": 29,
         "y": 42
       },
       {
-        "x": 22,
+        "x": 27,
         "y": 79
       },
       {
-        "x": 8,
+        "x": 13,
         "y": 79
       },
       {
-        "x": 6,
+        "x": 11,
         "y": 42
       }
     ]
@@ -67,6 +67,26 @@
     "IdleUL": {
       "loop": true,
       "frameDuration": 650
+    },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "WalkDL": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "WalkUL": {
+      "loop": true,
+      "frameDuration": 100
     },
     "TalkL": {
       "loop": true,

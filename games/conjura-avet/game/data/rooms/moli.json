@@ -54,6 +54,20 @@
       "visibleIf": {
         "flag": "pastera_aigua"
       }
+    },
+    "roda_mou": {
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 99
+      }
+    },
+    "pastera_mou": {
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 99
+      }
     }
   },
   "hotspots": {
@@ -420,11 +434,56 @@
             {
               "who": "gueraula",
               "text": "sala.moli.32",
-              "sound": "aigua"
+              "sound": "aigua",
+              "stageAfter": [
+                {
+                  "prop": "roda_mou",
+                  "visible": true,
+                  "anim": "roda_gira"
+                },
+                {
+                  "shake": 0.8
+                }
+              ]
             },
             {
               "who": "narrator",
-              "text": "sala.moli.33"
+              "text": "sala.moli.33",
+              "stage": [
+                {
+                  "who": "iri",
+                  "walk": {
+                    "x": 178,
+                    "y": 185
+                  },
+                  "wait": false
+                },
+                {
+                  "who": "vet",
+                  "walk": {
+                    "x": 130,
+                    "y": 183
+                  }
+                },
+                {
+                  "who": "iri",
+                  "visible": false
+                },
+                {
+                  "who": "vet",
+                  "visible": false
+                },
+                {
+                  "prop": "pastera_aigua",
+                  "visible": false
+                },
+                {
+                  "prop": "pastera_mou",
+                  "anim": "pastera_surt",
+                  "hold": 2.2,
+                  "visible": true
+                }
+              ]
             },
             {
               "who": "title",

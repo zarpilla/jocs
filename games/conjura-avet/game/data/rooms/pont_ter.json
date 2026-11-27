@@ -98,6 +98,28 @@
       "visibleIf": {
         "flag": "aigua_baixa"
       }
+    },
+    "joanet_dorm": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "fase",
+            "op": "==",
+            "value": 7
+          },
+          {
+            "flag": "joanet_despert",
+            "is": false
+          }
+        ]
+      }
+    },
+    "deriva": {
+      "visibleIf": {
+        "var": "fase",
+        "op": "==",
+        "value": 99
+      }
     }
   },
   "hotspots": {
@@ -655,11 +677,46 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.pont_ter.43"
+              "text": "sala.pont_ter.43",
+              "stage": [
+                {
+                  "prop": "joanet_dorm",
+                  "visible": false
+                },
+                {
+                  "prop": "barca_corrent",
+                  "visible": false
+                },
+                {
+                  "prop": "deriva",
+                  "visible": true,
+                  "anim": "deriva_va",
+                  "hold": 2.2
+                }
+              ]
             },
             {
               "who": "joanet",
-              "text": "sala.pont_ter.44"
+              "text": "sala.pont_ter.44",
+              "stage": [
+                {
+                  "prop": "barca_corrent",
+                  "visible": true
+                },
+                {
+                  "prop": "deriva",
+                  "visible": false
+                },
+                {
+                  "who": "joanet",
+                  "at": {
+                    "x": 257,
+                    "y": 195
+                  },
+                  "visible": true,
+                  "face": "R"
+                }
+              ]
             }
           ],
           "effects": [
@@ -780,7 +837,19 @@
       ]
     },
     "joanet": {
-      "interactions": []
+      "interactions": [],
+      "visibleIf": {
+        "any": [
+          {
+            "var": "fase",
+            "op": "!=",
+            "value": 7
+          },
+          {
+            "flag": "joanet_despert"
+          }
+        ]
+      }
     },
     "ermessenda": {
       "visibleIf": {

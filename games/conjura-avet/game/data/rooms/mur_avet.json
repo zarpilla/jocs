@@ -112,6 +112,11 @@
         "op": "==",
         "value": 7
       }
+    },
+    "pluja": {
+      "visibleIf": {
+        "flag": "plou"
+      }
     }
   },
   "hotspots": {

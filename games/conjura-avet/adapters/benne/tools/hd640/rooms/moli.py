@@ -263,7 +263,7 @@ def finestra(e, cv):
     cv.disc(tu, tv, 2, 2, FERRO, 4.0, lit=0)
     # la Gueraula: la toca blanca, la cara, el braç que va al torn
     u, v = _p((x0 + x1) / 2 - 10, y0 + 2, ZB - 6)
-    r = 9 * k
+    r = 12.5 * k                                   # (prou gran per veure-la des de baix: les pistes hi envien)
     TOCA = [(50, 54, 66), (96, 100, 112), (146, 148, 156), (194, 196, 200), (226, 226, 224)]
     CARA = [(70, 42, 34), (120, 78, 60), (166, 116, 90), (200, 152, 120), (224, 184, 150)]
     HABIT = [(10, 10, 12), (20, 20, 24), (32, 32, 38), (48, 48, 56)]
@@ -285,8 +285,12 @@ def finestra(e, cv):
 ROD_GIR = 0.42                 # la roda, girada: l'eix apunta enrere i cap a l'esquerra (es veuen les pales)
 
 
+_ROT = [0.0]                   # quant ha girat la roda (l'animació `roda_gira`)
+
+
 def _rpt(ang, r, dz):
     """Un punt de la roda: a l'angle `ang` del pla de la roda, a `r` del centre, i a `dz` al llarg de l'eix."""
+    ang = ang + _ROT[0]
     cx, cy, cz, R, G = ROD
     c, s = math.cos(ROD_GIR), math.sin(ROD_GIR)
     h = math.cos(ang) * r
@@ -391,7 +395,7 @@ def falca_tallada(e, cv):
         cv.put(u + 1, v, ALZINA, 4.2, lit=0)
 
 
-def pastera(e, cv, al_canal=False):
+def pastera(e, cv, al_canal=False, dx=0.0):
     """La pastera de pastar el pa: una caixa llarga de fusta, de costats inclinats. Dreta, recolzada a la paret de
     l'esquerra (es veu el clot de dins); o bé al canal, surant, lligada a una anella de la vora."""
     def fusta(seed, base):
@@ -416,7 +420,7 @@ def pastera(e, cv, al_canal=False):
             u, v = _p(x + 18 + hr(i, 1, 85) * 10, 10 + hr(i, 2, 85) * 70, z0 + 6 + hr(i, 3, 85) * 26)
             cv.put(u, v, FARINA, 3.6, lit=0)
     else:
-        cx, cz, L, wd = -250, (CZ0 + ZB) / 2 + 4, 96, 34
+        cx, cz, L, wd = -250 + dx, (CZ0 + ZB) / 2 + 4, 96, 34
         y0 = YA - 6
         x0, x1, z0, z1 = cx - L / 2, cx + L / 2, cz - wd / 2, cz + wd / 2
         # el clot (fosc) i les quatre parets, de costats inclinats
@@ -438,10 +442,12 @@ def pastera(e, cv, al_canal=False):
             u, v = _p(x0 + 2 + t * (L - 4), YA + 0.5, z0 - 1)
             cv.flat(u, v, (150, 180, 186) if hr(i, 1, 91) > 0.3 else (80, 110, 120))
         # la corda, lligada a una anella de la vora
-        e.cable('pastera_aigua', [(x1 - 4, y0 + 24, z0 + 2), (x1 + 8, -10, CZ0 + 2), (x1 + 16, 1, CZ0 - 2)], CORDA, 3.0,
-                gruix=1.6)
+        if dx == 0.0:                              # (deslligada, ja marxa: sense la corda)
+            e.cable('pastera_aigua', [(x1 - 4, y0 + 24, z0 + 2), (x1 + 8, -10, CZ0 + 2), (x1 + 16, 1, CZ0 - 2)], CORDA,
+                    3.0, gruix=1.6)
         u, v = _p(x1 + 16, 1, CZ0 - 3)
-        cv.ring(u, v, 2, FERRO, 4.0, lit=0, step=30)
+        if dx == 0.0:
+            cv.ring(u, v, 2, FERRO, 4.0, lit=0, step=30)
 
 
 def _cilindre(e, sid, cx, cz, r, y0, y1, ramp, lvl, n=20, llum=(-0.6, -0.8)):
@@ -586,6 +592,8 @@ def _munta(estat=frozenset(), amb_reflexos=True):
     'pastera': la pastera al canal). Sense `amb_reflexos`, l'aigua sense les ratlles de llum (per a l'animació)."""
     cv = Canvas(light=LIGHT)
     e = Escena(cv, CAM, LLUMS, ambient=AMBIENT)
+    _ROT[0] = next((v for k, v in (x for x in estat if isinstance(x, tuple)) if k == 'rot'), 0.0)
+    pdx = next((v for k, v in (x for x in estat if isinstance(x, tuple)) if k == 'pdx'), None)
     parets(e)
     canal_sota(e)
     roda(e, cv, 'aigua')
@@ -601,7 +609,7 @@ def _munta(estat=frozenset(), amb_reflexos=True):
     ombres(e)
     bigues(e)
     if 'pastera' in estat:
-        pastera(e, cv, al_canal=True)
+        pastera(e, cv, al_canal=True, dx=pdx or 0.0)
     roda(e, cv, 'aire')
     if 'falca' in estat:
         falca(e, cv)
@@ -618,6 +626,7 @@ def _munta(estat=frozenset(), amb_reflexos=True):
     cv.img.alpha_composite(_davant())
     cv.P = cv.img.load()
     hud_negre(cv)
+    _ROT[0] = 0.0
     return cv.img, e
 
 
@@ -715,7 +724,85 @@ def _frames_fanal():
     return frames
 
 
+def _buit(cv):
+    pass
+
+
+PROPS['roda_mou'] = _buit
+PROPS['pastera_mou'] = _buit
+
+
+def _escuma_comporta(cv, i, n):
+    """L'aigua que entra per la comporta oberta: un raig blanc que cau al canal i bull (fotograma i de n)."""
+    x0, x1 = COMPORTA
+    for j in range(60):
+        t = (j / 60 + i / n) % 1.0
+        x = x0 + 8 + hr(j, 1, 95) * (x1 - x0 - 16)
+        y = 30 - t * (30 - YA)
+        u, v = _p(x, y, ZB - 4)
+        cv.flat(u, v, (200, 222, 226) if hr(j, 2, 95) > 0.4 else (140, 172, 180))
+    for j in range(40):
+        a = hr(j, i, 96) * math.pi * 2
+        rr = hr(j, 3, 96) * 26
+        u, v = _p((x0 + x1) / 2 + math.cos(a) * rr * 1.6, YA + 0.5, ZB - 14 + math.sin(a) * rr * 0.6)
+        cv.flat(u, v, (226, 240, 240))
+
+
+def _frames_roda():
+    """La roda que gira (una pala per cicle, en bucle) i l'aigua que entra per la comporta."""
+    img = _base()
+    davant = _davant()
+    n = 8
+    frames = []
+    for i in range(n):
+        fr = _munta(frozenset({('rot', -2 * math.pi / 16 * i / n)}))[0].copy()
+        cv = Canvas(light=LIGHT, img=fr)
+        _escuma_comporta(cv, i, n)
+        frames.append(sense(_diff(cv.img, img), davant))
+    return frames
+
+
+def _monjos(cv, dx):
+    """Les dues germanes, vestides de monjo i ajupides dins la pastera: dos caputxons negres, i el pot a la falda."""
+    cx, cz = -250 + dx, (CZ0 + ZB) / 2 + 4
+    k = CAM.escala((cx, YA, cz))
+    HABIT = [(8, 8, 10), (18, 16, 18), (30, 28, 30), (46, 42, 44)]
+    for ox in (-22, 14):
+        u, v = _p(cx + ox, YA + 18, cz)
+        cv.disc(u, v + 2 * k, 9 * k, 7 * k, HABIT, lambda nx, ny: 2.4 - ny * 0.8, lit=0)      # l'esquena
+        cv.disc(u - 2 * k, v - 6 * k, 5 * k, 6 * k, HABIT, lambda nx, ny: 2.8 - nx * 0.4 - ny * 0.6, lit=0)  # el caputxó
+    u, v = _p(cx - 2, YA + 20, cz - 6)
+    cv.disc(u, v, 3 * k, 3.4 * k, [(60, 40, 24), (110, 78, 44), (160, 120, 70)], 1.8, lit=0)    # el pot
+
+
+def _frames_pastera():
+    """La pastera, deslligada, amb les germanes a dins, se'n va canal avall (a l'esquerra) i surt per l'arc."""
+    img = _base()
+    davant = _davant()
+    paret_u = _p(XL, YA, (CZ0 + ZB) / 2)[0]          # l'arc: el que queda a l'esquerra de la paret ja és fora
+    v_dalt = _p(XL, ARC[2] + 10, ZB)[1]
+    v_baix = _p(XL, YA - 4, CZ0)[1] + 2
+    frames = []
+    ref = sense(_diff(_munta(frozenset({'pastera', ('pdx', -400.0)}))[0], img), davant).copy()
+    pref = ref.load()
+    for dx in (0, -10, -24, -42, -62, -84, -108, -134, -160, -190):
+        fr = _munta(frozenset({'pastera', ('pdx', float(dx) or 0.0001)}))[0].copy()
+        cv = Canvas(light=LIGHT, img=fr)
+        _monjos(cv, dx)
+        cv.img.alpha_composite(_davant())
+        d = sense(_diff(cv.img, img), davant).copy()
+        px = d.load()
+        for y in range(max(0, v_dalt), min(d.height, v_baix)):     # el que ja ha passat l'arc, no es veu
+            for x in range(0, min(paret_u, d.width)):
+                px[x, y] = pref[x, y]                              # (la paret, sense la pastera de la paret)
+        frames.append(d)
+    frames.append(ref)
+    return frames
+
+
 ANIMS = {'aigua': {'frames': _frames_aigua, 'frameDuration': 110},
+         'roda_gira': {'frames': _frames_roda, 'frameDuration': 90, 'prop': 'roda_mou'},
+         'pastera_surt': {'frames': _frames_pastera, 'frameDuration': 200, 'loop': False, 'prop': 'pastera_mou'},
          'fanal': {'frames': _frames_fanal, 'frameDuration': 120}}
 
 
