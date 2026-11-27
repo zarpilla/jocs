@@ -49,6 +49,80 @@
     }
   ],
   "hotspots": {
+    "tauler": {
+      "name": "sala.fabrica_moll.tauler.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "hasItem": "serra",
+                "who": "iri",
+                "is": false
+              },
+              {
+                "hasItem": "llima",
+                "who": "iri",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.tauler.look"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "hasItem": "serra",
+            "who": "iri",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.tauler.look_serra"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "hasItem": "llima",
+            "who": "iri",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.tauler.look_llima"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.tauler.look_buit"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.tauler.agafar"
+            }
+          ]
+        }
+      ]
+    },
     "porta_calderes": {
       "name": "sala.fabrica_moll.porta_calderes.nom",
       "interactions": [

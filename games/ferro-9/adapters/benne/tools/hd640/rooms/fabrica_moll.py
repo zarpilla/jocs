@@ -789,11 +789,14 @@ def _things():
     biga = _rect_mon(*[P(lx, y, lz) for lx in (-L / 2, L / 2) for lz in (-bw / 2, bw / 2) for y in (CAV_H, CAV_H + bh + 2)])
     biga = (biga[0], biga[1] - 4, biga[2], biga[3] + 4)
     return {
+        # el tauler d'eines sencer, el primer: les eines (capes, zIndex més alt) hi queden al damunt (tasca 132)
+        'tauler': {'rect': _caixa_mon(_w(365), _w(443), _y(156), _y(57), ZW, ZW), 'walk': _p(_w(405), 270)},
         'porta_calderes': {'rect': _caixa_mon(0, 2, 0, DOOR[3] + 8, DOOR[0] - 6, DOOR[1] + 6), 'walk': _p(30, 246)},
         'biga_acer': {'rect': biga, 'walk': _p(*P(10, 0, -46)[::2])},
         'biga_ferro9': {'rect': _caixa_mon(_w(105), _w(282), _y(116), _y(94), ZW, ZW), 'walk': _p(_w(193), 262)},
-        'serra': {'rect': _caixa_mon(_w(387), _w(441), _y(88), _y(73), ZW, ZW), 'walk': _p(_w(410), 268)},
-        'llima': {'rect': _caixa_mon(_w(421), _w(431), _y(146), _y(101), ZW, ZW), 'walk': _p(_w(426), 270)},
+        # (tasca 132) zones més generoses que el dibuix: la serra amb el mànec, i la llima amb el seu tros de tauler
+        'serra': {'rect': _caixa_mon(_w(384), _w(443), _y(96), _y(68), ZW, ZW), 'walk': _p(_w(410), 268)},
+        'llima': {'rect': _caixa_mon(_w(417), _w(437), _y(150), _y(97), ZW, ZW), 'walk': _p(_w(426), 270)},
         'trapa': {'rect': _caixa_mon(TRAPA[0] - 2, TRAPA[1] + 2, 0, 1, TRAPA[2] - 2, TRAPA[3] + 2),
                   'walk': _p((TRAPA[0] + TRAPA[1]) / 2, TRAPA[2] - 18)},
         'conducte': {'rect': _caixa_mon(_w(296), _w(332), _y(160), _y(34), ZW, ZW), 'walk': _p(_w(306), 272)},
