@@ -6,7 +6,7 @@ import { describe, expect, it } from 'vitest';
 import { validateContent } from '@aventura/narrative-core';
 import { content, locales } from '../index.js';
 import { GAME_ACTIONS, gameTextKeys } from '../logic/index.js';
-import { partida } from './partida.js';
+import { item, partida } from './partida.js';
 import { acte1, acte2, acte3, acte4, tutorial } from './cami.js';
 
 describe("La Conjura de l'Avet: la partida", () => {
@@ -95,5 +95,22 @@ describe("La Conjura de l'Avet: la partida", () => {
     p.switchTo('iri');
     p.do('pickUp', 'cofre');
     expect(n.flag('cofre_agafat')).toBe(true);
+  });
+
+  it('pergamins + cera fa el calc com carbonet + cera, i sense carbonet diu què falta', () => {
+    const { n, p, world } = partida();
+    tutorial(p, n);
+    const s = n.snapshot();
+    s.flags.cera_neta = true;
+    n.load(s);
+    world.active = 'vet';
+    world.rooms.set('vet', 'claustre');
+    world.room = 'claustre';
+    world.inventories.set('vet', new Set(['pergamins', 'cera']));
+    expect(p.use('pergamins', item('cera')).map((l) => l.key)).toEqual(['obj.pergamins.cera_sense.1']);
+    expect(p.room).toBe('claustre');
+    world.give('carbonet', 'vet');
+    p.use('pergamins', item('cera'));
+    expect(p.room).toBe('calc');
   });
 });

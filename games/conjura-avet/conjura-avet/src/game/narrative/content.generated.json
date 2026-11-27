@@ -1208,7 +1208,92 @@
         "description": "obj.pergamins.desc",
         "props": {
           "no_donar": true
-        }
+        },
+        "interactions": [
+          {
+            "verb": "use",
+            "item": "cera",
+            "if": {
+              "flag": "cera_neta",
+              "is": false
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.carbonet.cera_bruta.1"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "cera",
+            "if": {
+              "flag": "segell_emma_vist"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.carbonet.cera_fet.1"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "cera",
+            "if": {
+              "not": {
+                "hasItem": "carbonet"
+              }
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.pergamins.cera_sense.1"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "cera",
+            "if": {
+              "not": {
+                "inRoom": "claustre"
+              }
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.carbonet.cera_lloc.1"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "cera",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.carbonet.cera.1"
+              }
+            ],
+            "effects": [
+              {
+                "setVar": "calc",
+                "value": "segell"
+              },
+              {
+                "setVar": "calc_pas",
+                "value": 0
+              },
+              {
+                "event": "anar",
+                "args": {
+                  "room": "calc"
+                }
+              }
+            ]
+          }
+        ]
       },
       "ploma": {
         "name": "obj.ploma.nom",
@@ -16895,6 +16980,7 @@
       "obj.pegot.desc": "Un pegot de resina d'avet, que l'Iri m'ha donat embolicat en una fulla. Enganxa fins i tot la mirada.",
       "obj.pegot.nom": "pegot de resina",
       "obj.pergamins.amb_article": "els pergamins",
+      "obj.pergamins.cera_sense.1": "El pergamí damunt la cera, sí. Però per fer sortir el segell hi he de fregar alguna cosa que tenyeixi.",
       "obj.pergamins.desc": "Pergamins en blanc, tallats petits. El pergamí és car: aquests són retalls.",
       "obj.pergamins.nom": "pergamins en blanc",
       "obj.planco.amb_article": "el plançó",

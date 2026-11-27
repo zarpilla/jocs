@@ -335,7 +335,92 @@
     "description": "obj.pergamins.desc",
     "props": {
       "no_donar": true
-    }
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "cera",
+        "if": {
+          "flag": "cera_neta",
+          "is": false
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.carbonet.cera_bruta.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "cera",
+        "if": {
+          "flag": "segell_emma_vist"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.carbonet.cera_fet.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "cera",
+        "if": {
+          "not": {
+            "hasItem": "carbonet"
+          }
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.pergamins.cera_sense.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "cera",
+        "if": {
+          "not": {
+            "inRoom": "claustre"
+          }
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.carbonet.cera_lloc.1"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "cera",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.carbonet.cera.1"
+          }
+        ],
+        "effects": [
+          {
+            "setVar": "calc",
+            "value": "segell"
+          },
+          {
+            "setVar": "calc_pas",
+            "value": 0
+          },
+          {
+            "event": "anar",
+            "args": {
+              "room": "calc"
+            }
+          }
+        ]
+      }
+    ]
   },
   "ploma": {
     "name": "obj.ploma.nom",
