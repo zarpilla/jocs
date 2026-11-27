@@ -19,6 +19,7 @@ import math
 from PIL import Image
 
 import hd.characters as C
+import hd.figk as FK
 from hd.characters import (M, Fig, person, SKIN_IRI, SKIN_VET, SKIN_OLD, BOOT, BRASS, LENS, HAIR_WHITE, WHITE,
                            STEELB, EYE_W, LIP, MOUTH, front_face, shoe_front, shoe_side)
 from hd.pix import mix
@@ -1042,7 +1043,10 @@ VIAL = M((20, 40, 44), (70, 110, 116), (150, 190, 196), (220, 240, 244))
 # Un barret de cep, ulleres gruixudes, nas rodó, barba blanca amb molsa i una bata de laboratori feta de fulles
 # seques (la vora en punxes de fulla), amb un tub d'assaig turquesa a la butxaca. Fotograma de 34×42, peus a (17, 40).
 
-ESPORA_W, ESPORA_H, ESPORA_FEET = 34, 42, (17, 40)
+# Es dibuixa a ×1,2 (hd/figk.py: redibuixada, no ampliada): a la mida de disseny feia ≈25 px a la centraleta, al
+# costat dels 55 de l'Iri, i no se li veien la cara, les ulleres ni la bata (tasca 047). Ara en fa ≈32.
+ESPORA_W, ESPORA_H = 34, 42                         # en píxels de disseny
+ESPORA_FEET = (round(FK.f(17)), round(FK.f(40)))    # en píxels reals
 
 
 def _leaf_lvl(x, y):
@@ -1066,7 +1070,7 @@ def espora(facing='D', talk=False, closed=False, k=0, walk=None):
     """L'Espora: D (de cara), L (de perfil, mirant a l'esquerra) o U (d'esquena). `talk`: la boca oberta i la mà
     amunt («Excel·lent hifa!»). `closed`: els ulls tancats (Blink). `walk` (0..5): el pas, de sis fotogrames (les
     cames curtes fan passes curtes i el braç es gronxa; el pròleg, quan torna a casa)."""
-    fg = Fig(ESPORA_W, ESPORA_H)
+    fg = FK.FigK(ESPORA_W, ESPORA_H)
     S = SKIN_GNOME
     cx = 17.0
     if facing == 'L':
@@ -1136,11 +1140,9 @@ def espora(facing='D', talk=False, closed=False, k=0, walk=None):
             fg.px(hx - 0.6, 16.6, S, 4.6)
             # les ulleres: dues anelles gruixudes, el vidre clar i l'ull a dins
             for ex in (hx - 2.6, hx + 2.6):
-                for a in range(0, 360, 20):
-                    r = math.radians(a)
-                    fg.px(ex + math.cos(r) * 2.0, 14.2 + math.sin(r) * 2.0, GLASS_F, 1.6 if a < 180 else 2.4)
                 for (dx, dy) in ((0, 0), (-1, 0), (0, -1), (-1, -1), (1, 0), (0, 1)):
                     fg.px(ex + dx * 0.9, 14.2 + dy * 0.9, GLASS_L, 2.2)
+                _anella(fg, ex, 14.2, 2.0, 2.0)
                 if closed:
                     fg.px(ex - 0.6, 14.4, MOUTH, 0); fg.px(ex + 0.6, 14.4, MOUTH, 0)
                 else:
@@ -1157,6 +1159,14 @@ def espora(facing='D', talk=False, closed=False, k=0, walk=None):
             fg.px(x, 11.6, GILLS, 2.6 - abs(x - hx) * 0.08)
         fg.px(hx - 4, 7, PORCINI, 4.6); fg.px(hx - 3, 7, PORCINI, 4.2)           # la llum
     return fg.render()
+
+
+def _anella(fg, ex, ey, rx, ry):
+    """La muntura d'una lent de l'Espora: una anella d'un píxel real (més fosca a dalt)."""
+    X0, Y0 = FK.f(ex), FK.f(ey)
+    for a in range(0, 360, 8):
+        r = math.radians(a)
+        fg.rpx(X0 + math.cos(r) * rx * FK.K, Y0 + math.sin(r) * ry * FK.K, GLASS_F, 1.6 if a < 180 else 2.4)
 
 
 def _espora_side(fg, S, talk, closed, walk=None):
@@ -1193,10 +1203,8 @@ def _espora_side(fg, S, talk, closed, walk=None):
     fg.ell(hx - 3.8, 19.0, 2.6, 1.2, BEARD, 3.2, amp=1.0, lvlfn=_beard_lvl)        # el bigoti
     fg.ell(hx - 5.0, 17.0, 1.9, 1.6, S, 3.2, amp=1.4)                              # el nas, que surt
     ex = hx - 3.0                                                                  # les ulleres, una anella
-    for a in range(0, 360, 20):
-        r = math.radians(a)
-        fg.px(ex + math.cos(r) * 1.6, 14.2 + math.sin(r) * 2.0, GLASS_F, 1.6 if a < 180 else 2.4)
     fg.px(ex, 14.2, GLASS_L, 2.2); fg.px(ex - 0.8, 14.2, GLASS_L, 2.2)
+    _anella(fg, ex, 14.2, 1.6, 2.0)
     if closed:
         fg.px(ex, 14.4, MOUTH, 0)
     else:
@@ -1218,7 +1226,7 @@ def _espora_side(fg, S, talk, closed, walk=None):
 
 
 def espora_respira(img, k):
-    return aclareix(img, (9, 21, 26, 30), k)
+    return aclareix(img, tuple(round(FK.f(v)) for v in (9, 21, 26, 30)), k)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
