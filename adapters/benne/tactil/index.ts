@@ -13,6 +13,8 @@
  *   guis/            → src/game/guis/ (els scripts del HUD `verbs`, del menú `accions` i de la targeta `controls`)
  *   opcionsTactils   → el menú d'opcions: «clic esquerre per fer» (girar els botons) i el botó «Controls»
  *   menuDialeg       → la GUI `menu-dialeg`: el botó del menú, a sobre del panell de les opcions d'una conversa
+ *   dialegTauler     → el panell de les opcions d'una conversa: opcions més baixes, i la GUI `fons-dialeg` (el fons del
+ *                      panell mentre algú parla, al tauler)
  *   controls.py      → per al hud.py de cada joc: l'art i el .gui.json de la targeta «Com es juga»
  *   GLOBAL_SCRIPT    → al bloc generat de globalScript.ts (l'encaminador dels clics)
  *   configuraTactil  → game-config.json (resolució adaptable, els verbs `toca` i `accions`, el perfil d'entrada)
@@ -214,3 +216,74 @@ onUpdate(() => {
 `);
 }
 
+
+// ─── Les converses al tauler ──────────────────────────────────────────────
+
+/** L'alçada de cada opció d'una conversa (com a Suma Zero): en els 86 px del panell n'hi caben 4, no 3 (tasca 220). */
+const OPCIO_H = 20;
+
+/**
+ * El panell de les opcions d'una conversa (GUI `dialog`, l'art i el .gui.json els fa el gui_rest.py de cada joc):
+ *
+ *  - Opcions de {@link OPCIO_H} px com a molt (a 25 només n'hi cabien 3, i la de sortir quedava sola a la pàgina
+ *    següent).
+ *  - La GUI `fons-dialeg`: només el fons del panell (el mateix control i la mateixa art, es copia el full de
+ *    `dialog`), sota del panell. Mentre algú parla dins d'una conversa, el motor amaga les opcions i el HUD, i la
+ *    franja de sota l'escena quedava negra a cada pregunta (tasca 241). Al tauler, el fons s'hi queda: el panell
+ *    es veu buit mentre es parla, i les opcions hi tornen a sortir a sobre, sense pampallugues.
+ *
+ * Es pot tornar a executar.
+ */
+export function dialegTauler(gameDir: string) {
+  const path = join(gameDir, 'guis/dialog/dialog.gui.json');
+  if (!existsSync(path)) return;
+  const dialeg = JSON.parse(readFileSync(path, 'utf8')) as Json;
+  const controls = (dialeg.controls as Control[]) ?? [];
+  let canviat = false;
+  for (const c of controls) {
+    if ((c.id === 'Dialog-Option' || c.id === 'Option-Grid') && Number(c.height) > OPCIO_H) {
+      c.height = OPCIO_H;
+      canviat = true;
+    }
+  }
+  if (canviat) writeFileSync(path, JSON.stringify(dialeg, null, 2) + '\n');
+
+  const fons = controls.find((c) => c.id === 'DialogBG');
+  if (!fons) return;
+  for (const ext of ['png', 'json']) {
+    const de = join(gameDir, `assets/images/guis/dialog/dialog.${ext}`);
+    if (!existsSync(de)) return;
+    mkdirSync(join(gameDir, 'assets/images/guis/fons-dialeg'), { recursive: true });
+    const a = join(gameDir, `assets/images/guis/fons-dialeg/fons-dialeg.${ext}`);
+    if (ext === 'png') copyFileSync(de, a);
+    else writeFileSync(a, readFileSync(de, 'utf8').replace(/dialog\.png/g, 'fons-dialeg.png'));
+  }
+  const dir = join(gameDir, 'guis/fons-dialeg');
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, 'fons-dialeg.gui.json'), JSON.stringify({
+    id: 'fons-dialeg', name: 'Fons (conversa)',
+    description: "El fons del panell d'una conversa mentre algú parla, al tauler (adapters/benne/tactil/index.ts, dialegTauler).",
+    // (per sota del panell `dialog`, que és a 0: amb el mateix zIndex, l'ordre seria per l'id)
+    visible: false, display: { aseprite: true }, anchorY: dialeg.anchorY ?? 'bottom', zIndex: -1,
+    controls: [{ ...structuredClone(fons), id: 'Fons', clickable: false }],
+  }, null, 2) + '\n');
+  writeFileSync(join(dir, 'fons-dialeg.gui.ts'), `// Creat per adapters/benne/tactil/index.ts (dialegTauler). No l'editis aquí.
+// El fons del panell d'una conversa, al tauler: mentre algú parla, el motor amaga les opcions i el HUD, i la franja de
+// sota l'escena quedaria negra. Es veu quan el HUD no hi és en una sala jugable (una conversa); a sobre, el panell.
+import { onUpdate } from '@benne/script'
+import { guis } from '@game'
+import { gui } from './fons-dialeg.ids'
+import { modeTauler } from '../verbs/hud'
+import { narrative } from '../../narrative/narrative'
+
+onUpdate(() => {
+  const sala = narrative.world.currentRoom()
+  const jugable = !!sala && sala !== narrative.content.manifest.cover && !narrative.content.rooms[sala]?.cutscene
+  const on = jugable && modeTauler() && !guis.verbs.visible
+  if (gui.visible !== on) {
+    if (on) gui.show()
+    else gui.hide()
+  }
+})
+`);
+}
