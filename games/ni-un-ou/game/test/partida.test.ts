@@ -312,6 +312,25 @@ describe('Pistes (revisió)', () => {
     expect(n.activeHints()[0]).toBe('usb_safata');
   });
 
+  it("Escena 7: si l'USB s'ha quedat a la safata de la cuina, en enviar la Mostra 7 torna a l'Iri", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p);
+    n.apply([{ takeItem: 'usb', who: 'iri' }, { setVar: 'munta_cuina', value: 'usb' }]);
+    amb(p, 'vet');
+    anar(p, 'cuina');
+    p.talk('tomas', 'clau7', 'entrepa7');
+    p.use('clau_tomas', 'munta');
+    amb(p, 'iri', 'rebost');
+    p.do('pickUp', 'safata');
+    p.do('look', 'registre');
+    p.use('clau_tomas', 'registre');
+    p.do('open', 'filtre');
+    anar(p, 'rebost');
+    expect(keys(p.use('mostra7', 'munta'))).toContain('munta.retorna.usb');
+    expect(p.world.items('iri')).toContain('usb');
+    expect(n.getVar('munta_cuina')).toBe('mostra7');
+  });
+
   it("Escena 5: qui envia el seu paper pel muntacàrregues diu «la meva nota» o «la resposta»", () => {
     const { p } = partida();
     escena1(p); escena2(p); escena3(p); escena4(p);

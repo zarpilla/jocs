@@ -5,7 +5,8 @@
  * - «Usar objecte amb el muntacàrregues» (acció `munta.enviar`) el posa a la safata d'una altra parada: del
  *   rebost i del pont, sempre a la cuina; de la cuina, al pont si l'altra protagonista hi és, i si no, al rebost.
  * - La safata de cada parada és una variable (`munta_<parada>`: l'objecte que hi ha, o buit). La que el rep
- *   l'agafa (acció `munta.recollir`).
+ *   l'agafa (acció `munta.recollir`). Si encara hi havia alguna cosa quan se n'hi envia una altra, la primera torna
+ *   a qui envia.
  *
  * Què hi cap és una propietat de cada objecte (`items.json`): `munta: true`. Sense la marca, no hi cap.
  * `no_munta: "<clau>"`: no s'hi posa mai, i aquesta és la raó (el walkie, el quadern).
@@ -63,12 +64,19 @@ export function enviar(n: Narrative, item: string, altraSala: string | null): Ac
   if (typeof props.no_munta === 'string') return { lines: [player(props.no_munta)] };
   if (props.munta !== true) return { lines: [player('munta.no_hi_cap')] };
   const cap = desti(des, altraSala);
-  if (String(n.getVar(safata(cap)) ?? '')) return { lines: [player('munta.ple', { parada: n.t(`munta.cap.${cap}`) })] };
+  // Si a l'altra banda encara hi ha alguna cosa (l'USB que la Vet no ha recollit...), primer torna a qui envia: no
+  // es pot quedar oblidat a la safata, ni encallar el que s'ha d'enviar després (tasca 256).
+  const abans = String(n.getVar(safata(cap)) ?? '');
+  const torna: NonNullable<ActionResult['lines']> = [];
+  if (abans) {
+    n.apply([{ setVar: safata(cap), value: '' }, { giveItem: abans }]);
+    torna.push(player(perObjecte(n, 'munta.retorna', abans)));
+  }
 
   n.apply([{ takeItem: item }, { setVar: safata(cap), value: item }]);
   // En acabar la frase, la porta del muntacàrregues baixa un moment (el decorat `munta_tancat`): se'n va.
   const marxa = [{ prop: 'munta_tancat', visible: true, hold: 1.4 }, { prop: 'munta_tancat', visible: false }];
-  return { lines: [{ ...player(perObjecte(n, 'munta.envia', item, cap)), sound: 'muntacarregues', stageAfter: marxa }, ...extra(n, `munta.${item}.envia`)] };
+  return { lines: [...torna, { ...player(perObjecte(n, 'munta.envia', item, cap)), sound: 'muntacarregues', stageAfter: marxa }, ...extra(n, `munta.${item}.envia`)] };
 }
 
 export function recollir(n: Narrative): ActionResult {
