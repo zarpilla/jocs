@@ -165,8 +165,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 424,
-        "y": 133
+        "x": 440,
+        "y": 150
       },
       "lookAtPoint": {
         "x": 445,
@@ -230,8 +230,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 422,
-        "y": 132
+        "x": 440,
+        "y": 150
       },
       "lookAtPoint": {
         "x": 449,
@@ -620,7 +620,7 @@
         "y": 31,
         "radius": 170,
         "color": "#ff3c28",
-        "intensity": 1,
+        "intensity": 1.0,
         "whenPropVisible": "alarma_encesa"
       }
     ]

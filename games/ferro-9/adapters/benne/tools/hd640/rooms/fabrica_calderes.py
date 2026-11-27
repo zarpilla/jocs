@@ -579,10 +579,11 @@ _TAULER = (265, 375, _y(43), _y(117))
 GEOMETRIA = {
     'things': {
         'porta_magatzem': {'rect': _rect_mon((_DOOR_M[0], _DOOR_M[2], ZW), (_DOOR_M[1], 0, ZW)), 'walk': _p(44, 270)},
-        'porta_cambra': {'rect': _rect_mon((XC, _DOOR_C[2], _DOOR_C[0]), (XC, 0, _DOOR_C[1])),
-                         'walk': _p(462, (_DOOR_C[0] + _DOOR_C[1]) / 2)},
+        # (tasca 260) davant de la porta i a la dreta de l'escriptori: a la cantonada del darrere, qui entrava de la
+        # cambra quedava tapat per l'escriptori d'en Tul
+        'porta_cambra': {'rect': _rect_mon((XC, _DOOR_C[2], _DOOR_C[0]), (XC, 0, _DOOR_C[1])), 'walk': (440, 150)},
         'tauler': {'rect': _rect_mon((_TAULER[0], _TAULER[2], ZW), (_TAULER[1], _TAULER[3], ZW)), 'walk': _p(320, 262)},
-        'alarma': {'rect': _rect_mon((XC, _y(52), _wz(578)), (XC, _y(88), _wz(616))), 'walk': _p(462, _wz(590))},
+        'alarma': {'rect': _rect_mon((XC, _y(52), _wz(578)), (XC, _y(88), _wz(616))), 'walk': (440, 150)},
         'segell': {'rect': _rect_mon(*[(SEGELL[0] + dx, y, SEGELL[1] + dz) for dx in (-12, 20) for dz in (-8, 8)
                                        for y in (0, 34)]),
                    'walk': _p(SEGELL[0] - 26, SEGELL[1] - 12)},
