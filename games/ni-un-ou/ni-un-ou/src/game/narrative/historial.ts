@@ -58,6 +58,8 @@ const LINIA = Number(fontXml.match(/lineHeight="(\d+)"/)?.[1] ?? 12);
 const HISTORIAL_AMPLE = AMPLADA - Math.round(28 * K);
 const HISTORIAL_FILES = Math.floor((ALT - Math.round((15 + 4 + 24) * K)) / LINIA);
 let historialEnrere = 0;
+/** Quant avancen la roda i les fletxes: mitja pàgina (PageUp/PageDown, una de sencera). */
+const MITJA = Math.max(1, Math.floor(HISTORIAL_FILES / 2));
 
 /** Omple la GUI de l'historial: les últimes línies a baix; `historialEnrere` files més amunt. */
 function renderHistory() {
@@ -95,8 +97,8 @@ if (typeof window !== 'undefined') {
   window.addEventListener('keydown', (ev) => {
     if (historyOpen()) {
       if (ev.key === 'h' || ev.key === 'H' || ev.key === 'Escape') hideHistory();
-      else if (ev.key === 'ArrowUp' || ev.key === 'PageUp') { historialEnrere += ev.key === 'PageUp' ? HISTORIAL_FILES - 1 : 1; renderHistory(); }
-      else if (ev.key === 'ArrowDown' || ev.key === 'PageDown') { historialEnrere -= ev.key === 'PageDown' ? HISTORIAL_FILES - 1 : 1; renderHistory(); }
+      else if (ev.key === 'ArrowUp' || ev.key === 'PageUp') { historialEnrere += ev.key === 'PageUp' ? HISTORIAL_FILES - 1 : MITJA; renderHistory(); }
+      else if (ev.key === 'ArrowDown' || ev.key === 'PageDown') { historialEnrere -= ev.key === 'PageDown' ? HISTORIAL_FILES - 1 : MITJA; renderHistory(); }
       return;
     }
     // Esc tanca el menú del joc, com el botó Continua.
@@ -111,7 +113,7 @@ if (typeof window !== 'undefined') {
   });
   window.addEventListener('wheel', (ev) => {
     if (!historyOpen()) return;
-    historialEnrere += ev.deltaY < 0 ? 2 : -2;
+    historialEnrere += ev.deltaY < 0 ? MITJA : -MITJA;
     renderHistory();
   });
 }

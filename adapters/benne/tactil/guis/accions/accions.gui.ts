@@ -27,6 +27,13 @@ fons.onClick(() => {
   closeMenu()
 })
 
+// Escape tanca el menú sense fer res més (tasca 102).
+if (typeof window !== 'undefined') {
+  window.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape' && gui.visible) closeMenu()
+  })
+}
+
 function layout() {
   const m = openMenu()
   if (!m) return
