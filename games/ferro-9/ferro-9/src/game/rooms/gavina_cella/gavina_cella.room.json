@@ -646,6 +646,46 @@
           "frameDuration": 90
         }
       }
+    },
+    {
+      "id": "clau_panell",
+      "tag": "clau_panell",
+      "animations": {
+        "clau_panell": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 352,
+            "y": 69
+          },
+          {
+            "x": 369,
+            "y": 69
+          },
+          {
+            "x": 369,
+            "y": 111
+          },
+          {
+            "x": 352,
+            "y": 111
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 333,
+        "y": 170
+      },
+      "lookAtPoint": {
+        "x": 360,
+        "y": 111
+      },
+      "description": "clau anglesa"
     }
   ],
   "characters": [

@@ -383,6 +383,9 @@ PROPS = {
     'esquerda': _de_paret(PL.p_esquerda),
     'fullet': _decorat('fullet'),
     'molla': _decorat('molla'),
+    # la clau anglesa encaixada al panell, que es pot agafar: la dibuixa el decorat `panell_reparat`; aquest prop
+    # només n'és la zona clicable (transparent)
+    'clau_panell': lambda cv: None,
 }
 
 
@@ -553,6 +556,7 @@ GEOMETRIA = {
     'things': {
         'porta': {'rect': _rect_mon((0, _y(65), _wz(10)), (0, 0, _wz(88))), 'walk': _p(30, _wz(52))},
         'panell': {'rect': _wall(319, 105, 379, 168), 'walk': _p(_w(349), 236)},
+        'clau_panell': {'rect': _wall(355, 79, 381, 138), 'walk': _p(_w(349), 236)},
         'altaveu': {'rect': _wall(210, 17, 260, 61), 'walk': _p(_w(235), 236)},
         'llitera': {'rect': _llitera_rect(), 'walk': _p(*_bunk_mon(_L / 2 - 8, -_D / 2 - 24))},
         'fullet': {'rect': _sprite_rect('fullet', _bp(_L / 2 - 38, TIERS[0], -6), escala_img=0.9),
