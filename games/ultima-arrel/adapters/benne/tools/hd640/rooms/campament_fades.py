@@ -704,7 +704,7 @@ def _geometria():
     things = {
         'escala_corda': {'rect': (ea - 8, round(c_e - r_e * 0.5), eb + 8, BOTTOM), 'walk': (eb + 14, round(c_e - 4))},
         'tenda': {'rect': (x0, yb - 56, x1, yb + 2), 'walk': ((x0 + x1) // 2, yb + 10)},
-        'catapulta': {'rect': (cat_x - 24, cat_y - 40, cat_x + 56, cat_y + 2), 'walk': (cat_x + 10, cat_y + 12)},
+        'catapulta': {'rect': (cat_x - 24, cat_y - 40, cat_x + 56, cat_y + 2), 'walk': (cat_x - 34, cat_y + 12)},   # a l'esquerra: davant, la tapava (242)
         'diana': {'rect': (cx - r - 3, cy - r - 3, cx + r + 3, cy + r + 3), 'walk': (cx, round(branca(cx)[0]))},
         'grafits': {'rect': (4, 58, 112, 140), 'walk': (150, round(branca(150)[0] - 8))},
         'gronxador': {'rect': (xs - 16, ys - 64, xs + 16, ys + 8), 'walk': (448, round(branca(448)[0] - 3))},

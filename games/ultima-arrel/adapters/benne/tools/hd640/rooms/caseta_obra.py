@@ -549,11 +549,11 @@ GEOMETRIA = {
     'things': {
         'porta': {'rect': _rect((DOOR[0], DOOR[2], ZW), (DOOR[1], 0, ZW)), 'walk': _p(62, 270)},
         'cartell': {'rect': _rect((POSTER[0], HW - POSTER[2], ZW), (POSTER[1], HW - POSTER[3], ZW)), 'walk': _p(170, 236)},
-        'arbre_wifi': {'rect': _rect((ARBRE[0] - 26, 104, ARBRE[1]), (ARBRE[0] + 26, 0, ARBRE[1])), 'walk': _p(400, 250)},
+        'arbre_wifi': {'rect': _rect((ARBRE[0] - 26, 104, ARBRE[1]), (ARBRE[0] + 26, 0, ARBRE[1])), 'walk': _p(356, 250)},   # al costat, no davant: s'ha de veure com s'apaga (242)
         'escriptori': {'rect': _caixa_rect(*ESCRIPTORI), 'walk': _p(196, 120)},
         'maqueta': {'rect': _caixa_rect(*MAQUETA), 'walk': _p(250, 60)},
         'altaveu': {'rect': _caixa_rect(ALTAVEU[0], ALTAVEU[1], ALTAVEU[2], ALTAVEU[3], ALTAVEU[4] + CAIXA[4], CAIXA[5]),
-                    'walk': _p(390, 100)},
+                    'walk': (420, 176)},   # (242) a la dreta de l'arbre Wi-Fi, per darrere la maqueta (l'únic accés): sota la copa no
     },
     'spawns': {'vet': (250, 228), 'pla': _p(318, 232)},  # la Vet, davant de l'escriptori (a l'entrada la taparien les caixes)
     'walkable': _WALK,

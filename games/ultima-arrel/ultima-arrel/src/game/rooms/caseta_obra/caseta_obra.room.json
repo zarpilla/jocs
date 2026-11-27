@@ -142,8 +142,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 423,
-        "y": 204
+        "x": 420,
+        "y": 176
       },
       "lookAtPoint": {
         "x": 432,
@@ -174,8 +174,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 372,
-        "y": 163
+        "x": 340,
+        "y": 165
       },
       "lookAtPoint": {
         "x": 386,
@@ -318,7 +318,7 @@
       "active": true,
       "scaleEnabled": true,
       "scaleWalkSpeed": true,
-      "scaleTop": 1,
+      "scaleTop": 1.0,
       "scaleBottom": 1.769,
       "points": [
         {

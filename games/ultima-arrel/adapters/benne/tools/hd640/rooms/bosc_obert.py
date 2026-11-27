@@ -63,8 +63,9 @@ FRONT = [
 
 # El terra on es camina (al món): el de l'escena 1, però ara arriba fins on hi havia la tanca, i més enllà, a la
 # clariana; sense la taula (un forat: s'hi fa la volta).
-WALK = [(0, 238), (104, 240), (140, 251), (300, 251), (340, 248), (364, 251), (500, 251), (504, 232), (560, 230),
-        (620, 244), (630, 256), (600, 264), (560, 272), (540, 281), (0, 281)]
+# (tasca 242) Sense la falguera del primer pla de l'esquerra: qui s'hi ficava hi quedava a dins.
+WALK = [(112, 240), (140, 251), (300, 251), (340, 248), (364, 251), (500, 251), (504, 232), (560, 230),
+        (620, 244), (630, 256), (600, 264), (560, 272), (540, 281), (112, 281)]
 
 
 def _el(cx, cy, rx, ry, n=12):
@@ -83,7 +84,7 @@ GEOMETRIA = {
         'forats': {'rect': _r(484, 214, 632, 266), 'walk': _p(560, 262)},
     },
     'spawns': {
-        'vet': _p(110, 268),
+        'vet': _p(118, 268),                     # (242) fora de la falguera del primer pla
         'iri': _p(400, 268),                     # a la taula, a la dreta
         'avia': _p(304, 268),                    # a la taula, a l'esquerra
         'espora': _p(356, 254),                  # darrere la taula (la soca li tapa les cames)

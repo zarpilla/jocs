@@ -161,7 +161,7 @@ GEOMETRIA = {
         'campaneta': {'rect': _r(184, 188, 201, 214), 'walk': _p(196, 256)},
         'bustia': {'rect': _r(265, 208, 288, 244), 'walk': _p(282, 256)},
         'llum_vermell': {'rect': _r(244, 186, 262, 207), 'walk': _p(256, 256)},
-        'estaca': {'rect': _r(238, 219, 263, 252), 'walk': _p(252, 258)},
+        'estaca': {'rect': _r(238, 219, 263, 252), 'walk': _p(230, 258)},   # al costat, no davant (242)
         'cargol': {'rect': _r(496, 220, 528, 246), 'walk': _p(506, 248)},
         'cartell': {'rect': _r(484, 63, 622, 142), 'walk': _p(520, 248)},
         'tanca': {'rect': _r(532, 146, 639, 276), 'walk': _p(552, 250)},
