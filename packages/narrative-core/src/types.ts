@@ -237,7 +237,8 @@ export interface DecorDef {
 
 /**
  * `player` = el protagonista, `narrator` = text de narració, `title` = pantalla de títol (p. ex. el
- * canvi d'acte): la pantalla es fon a negre, s'hi mostra el text i torna la imatge.
+ * canvi d'acte): la pantalla es fon a negre, s'hi mostra el text i torna la imatge. Una línia del narrador amb el
+ * text buit (`""`) és un silenci: només les indicacions d'escena i el so, sense caixa.
  */
 export type SpeakerId = Id | 'player' | 'narrator' | 'title';
 
