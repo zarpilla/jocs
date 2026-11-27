@@ -331,6 +331,20 @@ describe('Pistes (revisió)', () => {
     expect(n.getVar('munta_cuina')).toBe('mostra7');
   });
 
+  it("Escena 6: obrir l'escotilla de proa (no només mirar-la) fa sentir els cops de dins", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p);
+    amb(p, 'iri', 'taller');
+    p.do('pickUp', 'cisalla');
+    anar(p, 'pallol');
+    p.do('look', 'inventari');
+    p.talk('marcel', 'gat', 'guardar');
+    anar(p, 'coberta_proa');
+    expect(keys(p.do('open', 'escotilla'))).toContain('sala.coberta_proa.escotilla.2');
+    expect(n.flag('cops_sentits')).toBe(true);
+    expect(keys(p.do('open', 'escotilla'))).toEqual(['sala.coberta_proa.escotilla.15']);
+  });
+
   it("Escena 5: qui envia el seu paper pel muntacàrregues diu «la meva nota» o «la resposta»", () => {
     const { p } = partida();
     escena1(p); escena2(p); escena3(p); escena4(p);
