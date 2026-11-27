@@ -769,6 +769,61 @@
       "forat"
     ]
   },
+  "v_serra_aqui": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "hasItem": "serra",
+          "who": "iri"
+        },
+        {
+          "any": [
+            {
+              "all": [
+                {
+                  "inRoom": "mur_avet"
+                },
+                {
+                  "inRoom": "mur_avet",
+                  "who": "iri"
+                }
+              ]
+            },
+            {
+              "all": [
+                {
+                  "inRoom": "placa_sant_pol"
+                },
+                {
+                  "inRoom": "placa_sant_pol",
+                  "who": "iri"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "serra",
+        "who": "iri"
+      }
+    },
+    "levels": [
+      "pista.v_serra_aqui.1",
+      "pista.v_serra_aqui.2"
+    ]
+  },
   "v_serra": {
     "priority": 6,
     "when": {
@@ -784,6 +839,15 @@
         {
           "hasItem": "serra",
           "who": "iri"
+        },
+        {
+          "inRoom": "mur_avet",
+          "who": "iri"
+        },
+        {
+          "not": {
+            "inRoom": "mur_avet"
+          }
         }
       ]
     },
@@ -796,6 +860,116 @@
     "levels": [
       "pista.v_serra.1",
       "pista.v_serra.2"
+    ]
+  },
+  "v_serra_placa": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "hasItem": "serra",
+          "who": "iri"
+        },
+        {
+          "inRoom": "placa_sant_pol",
+          "who": "iri"
+        },
+        {
+          "not": {
+            "inRoom": "placa_sant_pol"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "serra",
+        "who": "iri"
+      }
+    },
+    "levels": [
+      "pista.v_serra_placa.1",
+      "pista.v_serra_placa.2"
+    ]
+  },
+  "v_serra_pont": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "hasItem": "serra",
+          "who": "iri"
+        },
+        {
+          "inRoom": "pont_ter",
+          "who": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "serra",
+        "who": "iri"
+      }
+    },
+    "levels": [
+      "pista.v_serra_pont.1",
+      "pista.v_serra_pont.2"
+    ]
+  },
+  "v_serra_lluny": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "fase",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "hasItem": "serra",
+          "who": "iri"
+        },
+        {
+          "not": {
+            "inRoom": [
+              "mur_avet",
+              "placa_sant_pol",
+              "pont_ter"
+            ],
+            "who": "iri"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "serra",
+        "who": "iri"
+      }
+    },
+    "levels": [
+      "pista.v_serra_lluny.1",
+      "pista.v_serra_lluny.2"
     ]
   },
   "v_arxiu": {
