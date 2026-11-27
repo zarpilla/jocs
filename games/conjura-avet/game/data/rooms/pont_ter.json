@@ -690,6 +690,30 @@
       "name": "sala.pont_ter.rec.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "salabre",
+          "if": {
+            "flag": "aigua_baixa",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.rec.salabre_alta"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "salabre",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont_ter.rec.salabre_baixa"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "if": {
             "flag": "serra_treta",

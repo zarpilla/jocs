@@ -3114,6 +3114,16 @@
               "flag": "foc_ences"
             }
           },
+          "vapor": {
+            "visibleIf": {
+              "flag": "foc_ences"
+            }
+          },
+          "llenya_fogo": {
+            "visibleIf": {
+              "flag": "llenya_fogo"
+            }
+          },
           "tina_negra": {
             "visibleIf": {
               "all": [
@@ -9218,6 +9228,30 @@
           "rec": {
             "name": "sala.pont_ter.rec.nom",
             "interactions": [
+              {
+                "verb": "use",
+                "item": "salabre",
+                "if": {
+                  "flag": "aigua_baixa",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pont_ter.rec.salabre_alta"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "salabre",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pont_ter.rec.salabre_baixa"
+                  }
+                ]
+              },
               {
                 "verb": "look",
                 "if": {
@@ -15510,7 +15544,13 @@
             "lines": [
               {
                 "who": "iri",
-                "text": "dlg.ponc.3"
+                "text": "dlg.ponc.3",
+                "stage": [
+                  {
+                    "who": "vet",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "ponc",
@@ -15606,7 +15646,22 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.ponc.10"
+                "text": "dlg.ponc.10",
+                "stage": [
+                  {
+                    "who": "vet",
+                    "at": "carrer",
+                    "face": "R",
+                    "visible": true
+                  },
+                  {
+                    "who": "vet",
+                    "walk": {
+                      "x": 64,
+                      "y": 238
+                    }
+                  }
+                ]
               },
               {
                 "who": "iri",
@@ -16522,9 +16577,9 @@
       "dlg.bonfill.3": "Al celler del batlle. Hi està bé: té vi i ombra.",
       "dlg.bonfill.4": "Alto. Sant i senya.",
       "dlg.bonfill.5": "L'Iri mira la Vet. La Vet mira el sostre.",
-      "dlg.bonfill.6": "Això ho diu tothom. Sant i senya?",
-      "dlg.bonfill.7": "I amb el vostre esperit. Sant i senya?",
-      "dlg.bonfill.8": "Visca. Sant i senya?",
+      "dlg.bonfill.6": "Això ho diu tothom, i el sant i senya no és cosa de monjos: aquesta setmana l'ha triat el jutge. Sant i senya?",
+      "dlg.bonfill.7": "I amb el vostre esperit. Però això és de missa, i el sant i senya el dona el jutge. Sant i senya?",
+      "dlg.bonfill.8": "Visca. Però el jutge no ha triat pas això, eh. Sant i senya?",
       "dlg.bonfill.9": "Correcte. Molt bé, germans.",
       "dlg.bonfill.opt.adeu": "Res.",
       "dlg.bonfill.opt.assenyala": "(Assenyala la Vet)",
@@ -16618,7 +16673,7 @@
       "dlg.ingilberga.opt.monges": "Nosaltres no som monges. Si ens enxampen, no és cosa del monestir.",
       "dlg.ingilberga.opt.ordre": "L'ordre del jutge diu que l'avet ha caigut. I és d'ahir.",
       "dlg.ingilberga.opt.pare": "És pel pare.",
-      "dlg.ingilberga.opt.signe": "I aquest signe? (la tauleta)",
+      "dlg.ingilberga.opt.signe": "(Ensenya-li la tauleta) I aquest signe?",
       "dlg.joanet.1": "Bon dia. O no. Depèn de les anguiles.",
       "dlg.joanet.10": "Ho diré al jutge. Ja que m'heu despertat.",
       "dlg.joanet.11": "Ja hi aniré, ja. Quan toqui la campana.",
@@ -16819,7 +16874,7 @@
       "ui.defecte.look.iri": "Res d'especial. Ni fusta, ni ferro, ni res que es pugui tallar.",
       "ui.defecte.look.iri.2": "Ho miro bé. És el que sembla.",
       "ui.defecte.look.iri.3": "Res. I mira que tinc ull.",
-      "ui.defecte.look.vet": "Res d'especial. Ho apunto: «res».",
+      "ui.defecte.look.vet": "Res d'especial. No val la tinta.",
       "ui.defecte.look.vet.2": "Ho miro de prop. No hi diu res, i jo ho llegeixo tot.",
       "ui.defecte.look.vet.3": "Res. Ni una lletra.",
       "ui.defecte.open": "No s'obre.",
@@ -16861,7 +16916,7 @@
       "ui.defecte.use.iri": "No veig com. I si no ho veig jo, és que no hi és.",
       "ui.defecte.use.iri.2": "Res. Ni amb força.",
       "ui.defecte.use.iri.3": "No serveix. I m'agradaria que servís.",
-      "ui.defecte.use.vet": "No funciona. Ho apunto: «no».",
+      "ui.defecte.use.vet": "No funciona. Ho apunto amb les altres provatures.",
       "ui.defecte.use.vet.2": "Res. La teoria era bona.",
       "ui.defecte.use.vet.3": "No. I tinc arguments.",
       "ui.desar.instruccions": "Tria una posició i desa. El nom, si vols, el pots canviar.",
@@ -18003,6 +18058,8 @@
       "sala.pont_ter.nom": "El Pont Vell",
       "sala.pont_ter.pont.nom": "Pont Vell",
       "sala.pont_ter.rec.nom": "rec del molí",
+      "sala.pont_ter.rec.salabre_alta": "Al rec no hi ha res: és sec. El que hi ha encallat és a la comporta, però allà l'aigua bull tant que no se'n veu el fons. Primer l'he de fer baixar.",
+      "sala.pont_ter.rec.salabre_baixa": "Al rec no. El que hi ha encallat és a la comporta, i ara que l'aigua ha baixat, des de la barca hi arribo.",
       "sala.pont_ter.resclosa.nom": "resclosa",
       "sala.pont_ter.riu.nom": "riu",
       "sala.pont_ter.salze.nom": "salze",
