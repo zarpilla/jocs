@@ -418,8 +418,6 @@ def title(cv, phase=0.0):
     # el text petit de les franges: el lema de Verne i el preu
     s1 = 'PERQUÈ LA SET NO ESPERA'
     text(cv, s1, (x0 + x1 - text_width(s1)) // 2, y1 - 7, None, 0, flat=(230, 240, 255))
-    s2 = 'AIGUA DE DIPOSIT ORBITAL  ·  1 L'
-    text(cv, s2, (x0 + x1 - text_width(s2)) // 2, y0 + 2, None, 0, flat=(230, 240, 255))
     # les lletres grosses, de vidre, mig plenes d'aigua
     lines = ('AIGUA', 'VERNE')
     ly = (y0 + 22, y0 + 22 + 7 * S + 10)
@@ -482,6 +480,8 @@ def title(cv, phase=0.0):
         else:
             px, py = x1 - int(hr(k, 74) * 5), y0 + int(hr(k, 73) * (y1 - y0))
         r = 1 + hr(k, 75) * 3
+        if side == 0 and abs(px - (x0 + x1) // 2) < 80:             # cap taca damunt el text de dalt (la Ò)
+            continue
         cv.disc(px, py, r, r * 0.8, RUST, lambda nx, ny: 2.6 + nx * 0.6 + (hr(int(nx * 4), int(ny * 4), k) - 0.5),
                 lit=0)
     for j in range(46):                                                 # el regalim
@@ -491,6 +491,10 @@ def title(cv, phase=0.0):
         px, py = x0 + 8 + int(hr(k, 77) * (x1 - x0 - 16)), y0 + 16 + int(hr(k, 78) * (y1 - y0 - 32))
         for j in range(4 + int(hr(k, 79) * 6)):
             cv.flat(px + j, py + int(math.sin(j + k) * 1.2), mix(cv.get(px + j, py), (120, 100, 80), 0.5))
+    # el text de la franja de dalt, després del rovell (perquè cap taca no se'l mengi), i dos píxels més avall
+    # perquè l'accent de la Ò quedi dins l'etiqueta
+    s2 = 'AIGUA DE DIPÒSIT ORBITAL  ·  1 L'
+    text(cv, s2, (x0 + x1 - text_width(s2)) // 2, y0 + 4, None, 0, flat=(230, 240, 255))
     # el cantó de baix a l'esquerra, esquinçat i doblegat
     for j in range(12):
         for i in range(12 - j):
