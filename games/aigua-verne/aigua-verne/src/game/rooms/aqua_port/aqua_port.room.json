@@ -227,7 +227,7 @@
     {
       "id": "rampa",
       "active": true,
-      "description": "Cantimplora",
+      "description": "la Cantimplora",
       "zIndex": 0,
       "points": [
         {
@@ -260,7 +260,7 @@
     {
       "id": "cistella",
       "active": true,
-      "description": "cistella",
+      "description": "la cistella",
       "zIndex": 1,
       "points": [
         {
@@ -293,7 +293,7 @@
     {
       "id": "escala_port",
       "active": true,
-      "description": "escala del port",
+      "description": "l'escala del port",
       "zIndex": 2,
       "points": [
         {
@@ -325,7 +325,7 @@
     {
       "id": "grua",
       "active": true,
-      "description": "grua",
+      "description": "la grua",
       "zIndex": 3,
       "points": [
         {
@@ -357,7 +357,7 @@
     {
       "id": "vaixells",
       "active": true,
-      "description": "vaixells encallats",
+      "description": "els vaixells encallats",
       "zIndex": 4,
       "points": [
         {
@@ -389,7 +389,7 @@
     {
       "id": "panell_preu",
       "active": true,
-      "description": "panell del preu",
+      "description": "el panell del preu",
       "zIndex": 5,
       "points": [
         {
@@ -421,7 +421,7 @@
     {
       "id": "canonada",
       "active": true,
-      "description": "Canonada",
+      "description": "la Canonada",
       "zIndex": 6,
       "points": [
         {

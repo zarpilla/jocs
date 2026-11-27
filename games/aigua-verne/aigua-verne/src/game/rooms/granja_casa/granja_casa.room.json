@@ -89,7 +89,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "pati",
+      "description": "el pati",
       "zIndex": 0,
       "points": [
         {
@@ -122,7 +122,7 @@
     {
       "id": "calaix",
       "active": true,
-      "description": "calaixos",
+      "description": "els calaixos",
       "zIndex": 1,
       "points": [
         {
@@ -154,7 +154,7 @@
     {
       "id": "videotelefon",
       "active": true,
-      "description": "videotelèfon",
+      "description": "el videotelèfon",
       "zIndex": 2,
       "points": [
         {
@@ -186,7 +186,7 @@
     {
       "id": "bol",
       "active": true,
-      "description": "bol del gos",
+      "description": "el bol del gos",
       "zIndex": 3,
       "points": [
         {
@@ -218,7 +218,7 @@
     {
       "id": "pots",
       "active": true,
-      "description": "pots",
+      "description": "els pots",
       "zIndex": 4,
       "points": [
         {
@@ -250,7 +250,7 @@
     {
       "id": "pica",
       "active": true,
-      "description": "pica",
+      "description": "la pica",
       "zIndex": 5,
       "points": [
         {
@@ -358,7 +358,7 @@
         "x": 374,
         "y": 132
       },
-      "description": "quadre de la mare"
+      "description": "el quadre de la mare"
     },
     {
       "id": "caixa_forta",
@@ -398,7 +398,7 @@
         "x": 374,
         "y": 121
       },
-      "description": "caixa forta"
+      "description": "la caixa forta"
     },
     {
       "id": "pols",

@@ -365,7 +365,7 @@
     {
       "id": "rampa",
       "active": true,
-      "description": "Cantimplora",
+      "description": "la Cantimplora",
       "zIndex": 0,
       "points": [
         {
@@ -398,7 +398,7 @@
     {
       "id": "porta_sindicat",
       "active": true,
-      "description": "sindicat",
+      "description": "el sindicat",
       "zIndex": 1,
       "points": [
         {
@@ -431,7 +431,7 @@
     {
       "id": "porta_fosa",
       "active": true,
-      "description": "foneria",
+      "description": "la foneria",
       "zIndex": 2,
       "points": [
         {
@@ -464,7 +464,7 @@
     {
       "id": "font",
       "active": true,
-      "description": "font de Verne",
+      "description": "la font de Verne",
       "zIndex": 3,
       "points": [
         {
@@ -496,7 +496,7 @@
     {
       "id": "condensador",
       "active": true,
-      "description": "condensador",
+      "description": "el condensador",
       "zIndex": 4,
       "points": [
         {
@@ -528,7 +528,7 @@
     {
       "id": "piquet",
       "active": true,
-      "description": "piquet",
+      "description": "el piquet",
       "zIndex": 5,
       "points": [
         {
@@ -560,7 +560,7 @@
     {
       "id": "comptadors",
       "active": true,
-      "description": "comptadors",
+      "description": "els comptadors",
       "zIndex": 6,
       "points": [
         {
@@ -592,7 +592,7 @@
     {
       "id": "panell_preu",
       "active": true,
-      "description": "panell del preu",
+      "description": "el panell del preu",
       "zIndex": 7,
       "points": [
         {
@@ -624,7 +624,7 @@
     {
       "id": "canonada",
       "active": true,
-      "description": "Canonada",
+      "description": "la Canonada",
       "zIndex": 8,
       "points": [
         {

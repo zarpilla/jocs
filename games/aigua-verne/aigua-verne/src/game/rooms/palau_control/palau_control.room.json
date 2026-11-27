@@ -109,7 +109,7 @@
     {
       "id": "ascensor",
       "active": true,
-      "description": "ascensor",
+      "description": "l'ascensor",
       "zIndex": 0,
       "points": [
         {
@@ -142,7 +142,7 @@
     {
       "id": "pany_t2",
       "active": true,
-      "description": "pany T2",
+      "description": "el pany T2",
       "zIndex": 1,
       "points": [
         {
@@ -174,7 +174,7 @@
     {
       "id": "pany_aqua",
       "active": true,
-      "description": "pany AQUA",
+      "description": "el pany AQUA",
       "zIndex": 2,
       "points": [
         {
@@ -206,7 +206,7 @@
     {
       "id": "pany_ferrum",
       "active": true,
-      "description": "pany FERRUM",
+      "description": "el pany FERRUM",
       "zIndex": 3,
       "points": [
         {
@@ -238,7 +238,7 @@
     {
       "id": "palanca",
       "active": true,
-      "description": "palanca de la reserva",
+      "description": "la palanca de la reserva",
       "zIndex": 4,
       "points": [
         {
@@ -270,7 +270,7 @@
     {
       "id": "interfon",
       "active": true,
-      "description": "interfon",
+      "description": "l'interfon",
       "zIndex": 5,
       "points": [
         {
@@ -302,7 +302,7 @@
     {
       "id": "camera",
       "active": true,
-      "description": "càmera",
+      "description": "la càmera",
       "zIndex": 6,
       "points": [
         {

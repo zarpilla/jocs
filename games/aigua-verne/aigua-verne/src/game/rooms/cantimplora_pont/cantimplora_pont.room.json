@@ -85,7 +85,7 @@
     {
       "id": "escala",
       "active": true,
-      "description": "bodega",
+      "description": "la bodega",
       "zIndex": 0,
       "points": [
         {
@@ -118,7 +118,7 @@
     {
       "id": "mapa",
       "active": true,
-      "description": "mapa de navegació",
+      "description": "el mapa de navegació",
       "zIndex": 1,
       "points": [
         {
@@ -150,7 +150,7 @@
     {
       "id": "radio",
       "active": true,
-      "description": "ràdio",
+      "description": "la ràdio",
       "zIndex": 2,
       "points": [
         {
@@ -182,7 +182,7 @@
     {
       "id": "pantalla",
       "active": true,
-      "description": "pantalla",
+      "description": "la pantalla",
       "zIndex": 3,
       "points": [
         {
@@ -214,7 +214,7 @@
     {
       "id": "finestral",
       "active": true,
-      "description": "finestral",
+      "description": "el finestral",
       "zIndex": 4,
       "points": [
         {
@@ -246,7 +246,7 @@
     {
       "id": "seient",
       "active": true,
-      "description": "seient de la Capitana",
+      "description": "el seient de la Capitana",
       "zIndex": 5,
       "points": [
         {

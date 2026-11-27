@@ -269,7 +269,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "sortida",
+      "description": "la sortida",
       "zIndex": 0,
       "points": [
         {
@@ -302,7 +302,7 @@
     {
       "id": "mapes",
       "active": true,
-      "description": "mapes",
+      "description": "els mapes",
       "zIndex": 1,
       "points": [
         {
@@ -334,7 +334,7 @@
     {
       "id": "llibres",
       "active": true,
-      "description": "llibres",
+      "description": "els llibres",
       "zIndex": 2,
       "points": [
         {
@@ -366,7 +366,7 @@
     {
       "id": "aquari",
       "active": true,
-      "description": "aquari",
+      "description": "l'aquari",
       "zIndex": 3,
       "points": [
         {
@@ -398,7 +398,7 @@
     {
       "id": "finestra",
       "active": true,
-      "description": "finestra",
+      "description": "la finestra",
       "zIndex": 4,
       "points": [
         {

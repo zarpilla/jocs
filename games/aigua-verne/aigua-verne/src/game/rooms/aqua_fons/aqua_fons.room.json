@@ -271,7 +271,7 @@
     {
       "id": "cistella",
       "active": true,
-      "description": "cistella",
+      "description": "la cistella",
       "zIndex": 0,
       "points": [
         {
@@ -304,7 +304,7 @@
     {
       "id": "porta_juana",
       "active": true,
-      "description": "casa de la Juana",
+      "description": "la casa de la Juana",
       "zIndex": 1,
       "points": [
         {
@@ -337,7 +337,7 @@
     {
       "id": "nanses",
       "active": true,
-      "description": "nanses",
+      "description": "les nanses",
       "zIndex": 2,
       "points": [
         {
@@ -369,7 +369,7 @@
     {
       "id": "boies",
       "active": true,
-      "description": "boies",
+      "description": "les boies",
       "zIndex": 3,
       "points": [
         {
@@ -401,7 +401,7 @@
     {
       "id": "bassal",
       "active": true,
-      "description": "bassal",
+      "description": "el bassal",
       "zIndex": 4,
       "points": [
         {
@@ -433,7 +433,7 @@
     {
       "id": "sorra",
       "active": true,
-      "description": "sorra fina",
+      "description": "la sorra fina",
       "zIndex": 5,
       "points": [
         {
@@ -465,7 +465,7 @@
     {
       "id": "ossos",
       "active": true,
-      "description": "espina",
+      "description": "l'espina",
       "zIndex": 6,
       "points": [
         {
@@ -647,7 +647,7 @@
         "x": 398,
         "y": 245
       },
-      "description": "bassal"
+      "description": "el bassal"
     },
     {
       "id": "davant_boia1",

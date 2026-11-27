@@ -143,7 +143,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "jardí",
+      "description": "el jardí",
       "zIndex": 0,
       "points": [
         {
@@ -176,7 +176,7 @@
     {
       "id": "tomaquera",
       "active": true,
-      "description": "tomaquera",
+      "description": "la tomaquera",
       "zIndex": 1,
       "points": [
         {
@@ -208,7 +208,7 @@
     {
       "id": "sacs",
       "active": true,
-      "description": "sacs d'adob",
+      "description": "els sacs d'adob",
       "zIndex": 2,
       "points": [
         {
@@ -240,7 +240,7 @@
     {
       "id": "eines",
       "active": true,
-      "description": "eines",
+      "description": "les eines",
       "zIndex": 3,
       "points": [
         {
@@ -348,7 +348,7 @@
         "x": 217,
         "y": 185
       },
-      "description": "galleda"
+      "description": "la galleda"
     },
     {
       "id": "reg_muntat",

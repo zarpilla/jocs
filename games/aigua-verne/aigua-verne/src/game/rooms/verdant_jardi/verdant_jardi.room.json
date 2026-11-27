@@ -295,7 +295,7 @@
     {
       "id": "rampa",
       "active": true,
-      "description": "Cantimplora",
+      "description": "la Cantimplora",
       "zIndex": 0,
       "points": [
         {
@@ -328,7 +328,7 @@
     {
       "id": "porta_residencia",
       "active": true,
-      "description": "residència",
+      "description": "la residència",
       "zIndex": 1,
       "points": [
         {
@@ -361,7 +361,7 @@
     {
       "id": "porta_cobert",
       "active": true,
-      "description": "cobert",
+      "description": "el cobert",
       "zIndex": 2,
       "points": [
         {
@@ -394,7 +394,7 @@
     {
       "id": "flors",
       "active": true,
-      "description": "flors",
+      "description": "les flors",
       "zIndex": 3,
       "points": [
         {
@@ -426,7 +426,7 @@
     {
       "id": "aspersors",
       "active": true,
-      "description": "aspersors",
+      "description": "els aspersors",
       "zIndex": 4,
       "points": [
         {
@@ -458,7 +458,7 @@
     {
       "id": "reixa",
       "active": true,
-      "description": "reixa",
+      "description": "la reixa",
       "zIndex": 5,
       "points": [
         {
@@ -490,7 +490,7 @@
     {
       "id": "llancadora",
       "active": true,
-      "description": "llançadora",
+      "description": "la llançadora",
       "zIndex": 6,
       "points": [
         {
@@ -522,7 +522,7 @@
     {
       "id": "panell_preu",
       "active": true,
-      "description": "panell del preu",
+      "description": "el panell del preu",
       "zIndex": 7,
       "points": [
         {

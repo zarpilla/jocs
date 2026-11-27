@@ -375,7 +375,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "carrer",
+      "description": "el carrer",
       "zIndex": 0,
       "points": [
         {
@@ -408,7 +408,7 @@
     {
       "id": "pas",
       "active": true,
-      "description": "colada",
+      "description": "la colada",
       "zIndex": 1,
       "points": [
         {
@@ -441,7 +441,7 @@
     {
       "id": "manxa",
       "active": true,
-      "description": "manxa",
+      "description": "la manxa",
       "zIndex": 2,
       "points": [
         {
@@ -473,7 +473,7 @@
     {
       "id": "metall",
       "active": true,
-      "description": "comptadors per fondre",
+      "description": "els comptadors per fondre",
       "zIndex": 3,
       "points": [
         {
@@ -505,7 +505,7 @@
     {
       "id": "rascle",
       "active": true,
-      "description": "rascle",
+      "description": "el rascle",
       "zIndex": 4,
       "points": [
         {
@@ -537,7 +537,7 @@
     {
       "id": "forn",
       "active": true,
-      "description": "forn",
+      "description": "el forn",
       "zIndex": 5,
       "points": [
         {
@@ -569,7 +569,7 @@
     {
       "id": "termometre",
       "active": true,
-      "description": "termòmetre",
+      "description": "el termòmetre",
       "zIndex": 6,
       "points": [
         {
@@ -601,7 +601,7 @@
     {
       "id": "piquera",
       "active": true,
-      "description": "piquera",
+      "description": "la piquera",
       "zIndex": 6,
       "points": [
         {
@@ -633,7 +633,7 @@
     {
       "id": "tenalles",
       "active": true,
-      "description": "tenalles",
+      "description": "les tenalles",
       "zIndex": 4,
       "points": [
         {

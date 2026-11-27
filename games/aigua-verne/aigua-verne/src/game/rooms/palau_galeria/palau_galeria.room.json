@@ -121,7 +121,7 @@
     {
       "id": "porta_salo",
       "active": true,
-      "description": "saló",
+      "description": "el saló",
       "zIndex": 0,
       "points": [
         {
@@ -154,7 +154,7 @@
     {
       "id": "piscines",
       "active": true,
-      "description": "piscines",
+      "description": "les piscines",
       "zIndex": 1,
       "points": [
         {
@@ -186,7 +186,7 @@
     {
       "id": "aquari",
       "active": true,
-      "description": "aquari",
+      "description": "l'aquari",
       "zIndex": 2,
       "points": [
         {
@@ -218,7 +218,7 @@
     {
       "id": "finestral",
       "active": true,
-      "description": "finestral",
+      "description": "el finestral",
       "zIndex": 3,
       "points": [
         {
@@ -250,7 +250,7 @@
     {
       "id": "escales",
       "active": true,
-      "description": "escales cromades",
+      "description": "les escales cromades",
       "zIndex": 4,
       "points": [
         {

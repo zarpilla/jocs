@@ -179,7 +179,7 @@
     {
       "id": "cami_granja",
       "active": true,
-      "description": "camí de la granja",
+      "description": "el camí de la granja",
       "zIndex": 0,
       "points": [
         {
@@ -212,7 +212,7 @@
     {
       "id": "rampa",
       "active": true,
-      "description": "Cantimplora",
+      "description": "la Cantimplora",
       "zIndex": 1,
       "points": [
         {
@@ -245,7 +245,7 @@
     {
       "id": "tauler",
       "active": true,
-      "description": "tauler d'anuncis",
+      "description": "el tauler d'anuncis",
       "zIndex": 2,
       "points": [
         {
@@ -277,7 +277,7 @@
     {
       "id": "panell_preu",
       "active": true,
-      "description": "panell del preu",
+      "description": "el panell del preu",
       "zIndex": 3,
       "points": [
         {
@@ -309,7 +309,7 @@
     {
       "id": "canonada",
       "active": true,
-      "description": "Canonada",
+      "description": "la Canonada",
       "zIndex": 4,
       "points": [
         {

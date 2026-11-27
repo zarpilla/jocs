@@ -133,7 +133,7 @@
     {
       "id": "porta_galeria",
       "active": true,
-      "description": "galeria",
+      "description": "la galeria",
       "zIndex": 0,
       "points": [
         {
@@ -166,7 +166,7 @@
     {
       "id": "escenari",
       "active": true,
-      "description": "escenari",
+      "description": "l'escenari",
       "zIndex": 1,
       "points": [
         {
@@ -198,7 +198,7 @@
     {
       "id": "pantalla",
       "active": true,
-      "description": "pantalla",
+      "description": "la pantalla",
       "zIndex": 2,
       "points": [
         {
@@ -230,7 +230,7 @@
     {
       "id": "safata",
       "active": true,
-      "description": "safata de les copes",
+      "description": "la safata de les copes",
       "zIndex": 3,
       "points": [
         {
@@ -262,7 +262,7 @@
     {
       "id": "cava",
       "active": true,
-      "description": "cava",
+      "description": "la cava",
       "zIndex": 4,
       "points": [
         {
@@ -294,7 +294,7 @@
     {
       "id": "martell",
       "active": true,
-      "description": "martell",
+      "description": "el martell",
       "zIndex": 5,
       "points": [
         {

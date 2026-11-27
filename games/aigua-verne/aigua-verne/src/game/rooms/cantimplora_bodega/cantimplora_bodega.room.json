@@ -77,7 +77,7 @@
     {
       "id": "rampa",
       "active": true,
-      "description": "rampa",
+      "description": "la rampa",
       "zIndex": 0,
       "points": [
         {
@@ -110,7 +110,7 @@
     {
       "id": "escala",
       "active": true,
-      "description": "pont",
+      "description": "el pont",
       "zIndex": 1,
       "points": [
         {
@@ -143,7 +143,7 @@
     {
       "id": "calaix",
       "active": true,
-      "description": "calaix de la Vet",
+      "description": "el calaix de la Vet",
       "zIndex": 2,
       "points": [
         {
@@ -175,7 +175,7 @@
     {
       "id": "cafetera",
       "active": true,
-      "description": "cafetera",
+      "description": "la cafetera",
       "zIndex": 3,
       "points": [
         {
@@ -207,7 +207,7 @@
     {
       "id": "nevera",
       "active": true,
-      "description": "nevera",
+      "description": "la nevera",
       "zIndex": 4,
       "points": [
         {
@@ -239,7 +239,7 @@
     {
       "id": "tauler",
       "active": true,
-      "description": "tauler de la cuina",
+      "description": "el tauler de la cuina",
       "zIndex": 5,
       "points": [
         {
@@ -271,7 +271,7 @@
     {
       "id": "carmanyola",
       "active": true,
-      "description": "carmanyola d'en Tomàs",
+      "description": "la carmanyola d'en Tomàs",
       "zIndex": 6,
       "points": [
         {
@@ -303,7 +303,7 @@
     {
       "id": "motor",
       "active": true,
-      "description": "motor",
+      "description": "el motor",
       "zIndex": 7,
       "points": [
         {
@@ -335,7 +335,7 @@
     {
       "id": "fusibles",
       "active": true,
-      "description": "quadre de fusibles",
+      "description": "el quadre de fusibles",
       "zIndex": 8,
       "points": [
         {
@@ -367,7 +367,7 @@
     {
       "id": "diposit",
       "active": true,
-      "description": "dipòsit",
+      "description": "el dipòsit",
       "zIndex": 9,
       "points": [
         {
@@ -399,7 +399,7 @@
     {
       "id": "carrega",
       "active": true,
-      "description": "espai de càrrega",
+      "description": "l'espai de càrrega",
       "zIndex": 0,
       "points": [
         {
@@ -703,7 +703,7 @@
         "x": 403,
         "y": 148
       },
-      "description": "llauna d'oli"
+      "description": "la llauna d'oli"
     }
   ],
   "characters": [

@@ -331,7 +331,7 @@
     {
       "id": "pas",
       "active": true,
-      "description": "forn",
+      "description": "el forn",
       "zIndex": 0,
       "points": [
         {
@@ -364,7 +364,7 @@
     {
       "id": "gresol",
       "active": true,
-      "description": "gresol",
+      "description": "el gresol",
       "zIndex": 1,
       "points": [
         {
@@ -396,7 +396,7 @@
     {
       "id": "gresol_c",
       "active": true,
-      "description": "gresol",
+      "description": "el gresol",
       "zIndex": 1,
       "points": [
         {
@@ -428,7 +428,7 @@
     {
       "id": "grua_pont",
       "active": true,
-      "description": "comandaments de la grua",
+      "description": "els comandaments de la grua",
       "zIndex": 2,
       "points": [
         {
@@ -460,7 +460,7 @@
     {
       "id": "llit",
       "active": true,
-      "description": "llit de colada",
+      "description": "el llit de colada",
       "zIndex": 3,
       "points": [
         {
@@ -492,7 +492,7 @@
     {
       "id": "sorra_pedra",
       "active": true,
-      "description": "sacs de sorra",
+      "description": "els sacs de sorra",
       "zIndex": 4,
       "points": [
         {
@@ -524,7 +524,7 @@
     {
       "id": "canal",
       "active": true,
-      "description": "canal",
+      "description": "la canal",
       "zIndex": 1,
       "points": [
         {
@@ -556,7 +556,7 @@
     {
       "id": "termometre",
       "active": true,
-      "description": "termòmetre del forn",
+      "description": "el termòmetre del forn",
       "zIndex": 5,
       "points": [
         {
