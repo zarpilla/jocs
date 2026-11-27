@@ -30,6 +30,8 @@ export interface PasSincronia {
   /** Què passa a cada torn. Torna cert si s'ha de tornar a començar el pas. */
   torn(n: Narrative): boolean;
   avisos: { var: string; linies: Record<string, Linia> };
+  /** Converses on una opció que no fa res (un moviment de la grua que no es pot fer) no gasta torn. */
+  refusLliure?: string[];
   reinici: { linies: Linia[]; efectes: Effect[] };
 }
 
@@ -49,6 +51,7 @@ export const PASSOS: Record<string, PasSincronia> = {
       return num(n, 'temperatura') <= 0 && !n.flag('claus_fetes');
     },
     avisos: { var: 'temperatura', linies: TX.colada!.avisos },
+    refusLliure: ['grua'],
     reinici: {
       linies: TX.colada!.reinici,
       efectes: [{ setVar: 'temperatura', value: 8 }, ...off(['manxa_oberta', 'metall_carregat', 'escoria_treta', 'colat', 'gresol_ple', 'gresol_brut']),
@@ -103,7 +106,15 @@ function gastaTorn(n: Narrative, pas: PasSincronia, action: PlayerAction) {
     const thing = n.content.rooms[action.room]?.hotspots[action.target.id];
     return !thing?.interactions?.some((i) => i.goTo && !i.item);
   }
+  if (pas.refusLliure?.includes(action.dialogue) && senseEfecte(n, action.dialogue, action.choice)) return false;
   return !DIALEGS_LLIURES.has(action.dialogue) && action.choice !== 'adeu';
+}
+
+/** L'opció no canvia res: ni efectes ni acaba la conversa (la grua diu «Primer, amunt» i prou). */
+function senseEfecte(n: Narrative, dialogue: string, choice: string) {
+  const nodes = Object.values(n.content.dialogues[dialogue]?.nodes ?? {});
+  const c = nodes.flatMap((nd) => nd.choices ?? []).find((x) => x.id === choice);
+  return !!c && !c.effects?.length && !c.end;
 }
 
 /**

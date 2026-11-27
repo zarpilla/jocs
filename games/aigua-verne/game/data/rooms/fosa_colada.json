@@ -512,6 +512,20 @@
           ]
         }
       ]
+    },
+    "termometre": {
+      "name": "sala.fosa_colada.termometre.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fosa_colada.termometre.1"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {
@@ -761,6 +775,147 @@
             "var": "gresol",
             "op": "==",
             "value": "canal"
+          }
+        ]
+      }
+    },
+    "termo_0": {
+      "visibleIf": {
+        "any": [
+          {
+            "flag": "sync_colada",
+            "is": false
+          },
+          {
+            "var": "temperatura",
+            "op": "<=",
+            "value": 0
+          }
+        ]
+      }
+    },
+    "termo_1": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "sync_colada"
+          },
+          {
+            "var": "temperatura",
+            "op": "==",
+            "value": 1
+          }
+        ]
+      }
+    },
+    "termo_2": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "sync_colada"
+          },
+          {
+            "var": "temperatura",
+            "op": "==",
+            "value": 2
+          }
+        ]
+      }
+    },
+    "termo_3": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "sync_colada"
+          },
+          {
+            "var": "temperatura",
+            "op": "==",
+            "value": 3
+          }
+        ]
+      }
+    },
+    "termo_4": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "sync_colada"
+          },
+          {
+            "var": "temperatura",
+            "op": "==",
+            "value": 4
+          }
+        ]
+      }
+    },
+    "termo_5": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "sync_colada"
+          },
+          {
+            "var": "temperatura",
+            "op": "==",
+            "value": 5
+          }
+        ]
+      }
+    },
+    "termo_6": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "sync_colada"
+          },
+          {
+            "var": "temperatura",
+            "op": "==",
+            "value": 6
+          }
+        ]
+      }
+    },
+    "termo_7": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "sync_colada"
+          },
+          {
+            "var": "temperatura",
+            "op": "==",
+            "value": 7
+          }
+        ]
+      }
+    },
+    "termo_8": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "sync_colada"
+          },
+          {
+            "var": "temperatura",
+            "op": "==",
+            "value": 8
+          }
+        ]
+      }
+    },
+    "termo_9": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "sync_colada"
+          },
+          {
+            "var": "temperatura",
+            "op": "==",
+            "value": 9
           }
         ]
       }

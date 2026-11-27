@@ -23,7 +23,7 @@
     },
     "fosa_colada 1.aseprite": {
       "frame": {
-        "x": 1844,
+        "x": 2469,
         "y": 1658,
         "w": 83,
         "h": 31
@@ -44,7 +44,7 @@
     },
     "fosa_colada 2.aseprite": {
       "frame": {
-        "x": 1927,
+        "x": 2552,
         "y": 1658,
         "w": 83,
         "h": 31
@@ -86,8 +86,8 @@
     },
     "fosa_colada 4.aseprite": {
       "frame": {
-        "x": 3602,
-        "y": 1658,
+        "x": 152,
+        "y": 1707,
         "w": 51,
         "h": 7
       },
@@ -212,8 +212,218 @@
     },
     "fosa_colada 10.aseprite": {
       "frame": {
-        "x": 3653,
+        "x": 3759,
+        "y": 1556,
+        "w": 67,
+        "h": 49
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 139,
+        "y": 44,
+        "w": 67,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 11.aseprite": {
+      "frame": {
+        "x": 3826,
+        "y": 1556,
+        "w": 67,
+        "h": 49
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 139,
+        "y": 44,
+        "w": 67,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 12.aseprite": {
+      "frame": {
+        "x": 3893,
+        "y": 1556,
+        "w": 67,
+        "h": 49
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 139,
+        "y": 44,
+        "w": 67,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 13.aseprite": {
+      "frame": {
+        "x": 3960,
+        "y": 1556,
+        "w": 67,
+        "h": 49
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 139,
+        "y": 44,
+        "w": 67,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 14.aseprite": {
+      "frame": {
+        "x": 4027,
+        "y": 1556,
+        "w": 67,
+        "h": 49
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 139,
+        "y": 44,
+        "w": 67,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 15.aseprite": {
+      "frame": {
+        "x": 0,
         "y": 1658,
+        "w": 67,
+        "h": 49
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 139,
+        "y": 44,
+        "w": 67,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 16.aseprite": {
+      "frame": {
+        "x": 67,
+        "y": 1658,
+        "w": 67,
+        "h": 49
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 139,
+        "y": 44,
+        "w": 67,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 17.aseprite": {
+      "frame": {
+        "x": 134,
+        "y": 1658,
+        "w": 67,
+        "h": 49
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 139,
+        "y": 44,
+        "w": 67,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 18.aseprite": {
+      "frame": {
+        "x": 201,
+        "y": 1658,
+        "w": 67,
+        "h": 49
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 139,
+        "y": 44,
+        "w": 67,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 19.aseprite": {
+      "frame": {
+        "x": 268,
+        "y": 1658,
+        "w": 67,
+        "h": 49
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 139,
+        "y": 44,
+        "w": 67,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 20.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -231,9 +441,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 11.aseprite": {
+    "fosa_colada 21.aseprite": {
       "frame": {
-        "x": 2010,
+        "x": 2635,
         "y": 1658,
         "w": 46,
         "h": 31
@@ -252,9 +462,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 12.aseprite": {
+    "fosa_colada 22.aseprite": {
       "frame": {
-        "x": 2056,
+        "x": 2681,
         "y": 1658,
         "w": 47,
         "h": 31
@@ -273,9 +483,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 13.aseprite": {
+    "fosa_colada 23.aseprite": {
       "frame": {
-        "x": 2103,
+        "x": 2728,
         "y": 1658,
         "w": 47,
         "h": 31
@@ -294,9 +504,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 14.aseprite": {
+    "fosa_colada 24.aseprite": {
       "frame": {
-        "x": 709,
+        "x": 1334,
         "y": 1658,
         "w": 47,
         "h": 43
@@ -315,9 +525,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 15.aseprite": {
+    "fosa_colada 25.aseprite": {
       "frame": {
-        "x": 902,
+        "x": 1527,
         "y": 1658,
         "w": 45,
         "h": 42
@@ -336,9 +546,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 16.aseprite": {
+    "fosa_colada 26.aseprite": {
       "frame": {
-        "x": 1179,
+        "x": 1804,
         "y": 1658,
         "w": 71,
         "h": 39
@@ -357,9 +567,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 17.aseprite": {
+    "fosa_colada 27.aseprite": {
       "frame": {
-        "x": 1330,
+        "x": 1955,
         "y": 1658,
         "w": 74,
         "h": 38
@@ -378,9 +588,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 18.aseprite": {
+    "fosa_colada 28.aseprite": {
       "frame": {
-        "x": 2150,
+        "x": 2775,
         "y": 1658,
         "w": 64,
         "h": 31
@@ -399,9 +609,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 19.aseprite": {
+    "fosa_colada 29.aseprite": {
       "frame": {
-        "x": 1544,
+        "x": 2169,
         "y": 1658,
         "w": 71,
         "h": 36
@@ -420,9 +630,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 20.aseprite": {
+    "fosa_colada 30.aseprite": {
       "frame": {
-        "x": 756,
+        "x": 1381,
         "y": 1658,
         "w": 72,
         "h": 43
@@ -441,9 +651,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 21.aseprite": {
+    "fosa_colada 31.aseprite": {
       "frame": {
-        "x": 1690,
+        "x": 2315,
         "y": 1658,
         "w": 79,
         "h": 33
@@ -462,219 +672,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 22.aseprite": {
-      "frame": {
-        "x": 248,
-        "y": 1658,
-        "w": 74,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 347,
-        "y": 144,
-        "w": 74,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 23.aseprite": {
-      "frame": {
-        "x": 3688,
-        "y": 1556,
-        "w": 71,
-        "h": 53
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 347,
-        "y": 136,
-        "w": 71,
-        "h": 53
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 24.aseprite": {
-      "frame": {
-        "x": 1404,
-        "y": 1658,
-        "w": 67,
-        "h": 37
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 345,
-        "y": 152,
-        "w": 67,
-        "h": 37
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 25.aseprite": {
-      "frame": {
-        "x": 322,
-        "y": 1658,
-        "w": 79,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 342,
-        "y": 144,
-        "w": 79,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 26.aseprite": {
-      "frame": {
-        "x": 79,
-        "y": 1658,
-        "w": 81,
-        "h": 47
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 340,
-        "y": 142,
-        "w": 81,
-        "h": 47
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 27.aseprite": {
-      "frame": {
-        "x": 1250,
-        "y": 1658,
-        "w": 80,
-        "h": 39
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 341,
-        "y": 150,
-        "w": 80,
-        "h": 39
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 28.aseprite": {
-      "frame": {
-        "x": 1471,
-        "y": 1658,
-        "w": 73,
-        "h": 37
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 344,
-        "y": 152,
-        "w": 73,
-        "h": 37
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 29.aseprite": {
-      "frame": {
-        "x": 634,
-        "y": 1658,
-        "w": 75,
-        "h": 44
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 344,
-        "y": 146,
-        "w": 75,
-        "h": 44
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 30.aseprite": {
-      "frame": {
-        "x": 828,
-        "y": 1658,
-        "w": 74,
-        "h": 43
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 348,
-        "y": 146,
-        "w": 74,
-        "h": 43
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 31.aseprite": {
-      "frame": {
-        "x": 1100,
-        "y": 1658,
-        "w": 79,
-        "h": 41
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 344,
-        "y": 148,
-        "w": 79,
-        "h": 41
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "fosa_colada 32.aseprite": {
       "frame": {
-        "x": 401,
+        "x": 873,
         "y": 1658,
         "w": 74,
         "h": 45
@@ -695,7 +695,217 @@
     },
     "fosa_colada 33.aseprite": {
       "frame": {
-        "x": 475,
+        "x": 3688,
+        "y": 1556,
+        "w": 71,
+        "h": 53
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 347,
+        "y": 136,
+        "w": 71,
+        "h": 53
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 34.aseprite": {
+      "frame": {
+        "x": 2029,
+        "y": 1658,
+        "w": 67,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 345,
+        "y": 152,
+        "w": 67,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 35.aseprite": {
+      "frame": {
+        "x": 947,
+        "y": 1658,
+        "w": 79,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 342,
+        "y": 144,
+        "w": 79,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 36.aseprite": {
+      "frame": {
+        "x": 704,
+        "y": 1658,
+        "w": 81,
+        "h": 47
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 340,
+        "y": 142,
+        "w": 81,
+        "h": 47
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 37.aseprite": {
+      "frame": {
+        "x": 1875,
+        "y": 1658,
+        "w": 80,
+        "h": 39
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 341,
+        "y": 150,
+        "w": 80,
+        "h": 39
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 38.aseprite": {
+      "frame": {
+        "x": 2096,
+        "y": 1658,
+        "w": 73,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 344,
+        "y": 152,
+        "w": 73,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 39.aseprite": {
+      "frame": {
+        "x": 1259,
+        "y": 1658,
+        "w": 75,
+        "h": 44
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 344,
+        "y": 146,
+        "w": 75,
+        "h": 44
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 40.aseprite": {
+      "frame": {
+        "x": 1453,
+        "y": 1658,
+        "w": 74,
+        "h": 43
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 348,
+        "y": 146,
+        "w": 74,
+        "h": 43
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 41.aseprite": {
+      "frame": {
+        "x": 1725,
+        "y": 1658,
+        "w": 79,
+        "h": 41
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 344,
+        "y": 148,
+        "w": 79,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 42.aseprite": {
+      "frame": {
+        "x": 1026,
+        "y": 1658,
+        "w": 74,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 347,
+        "y": 144,
+        "w": 74,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 43.aseprite": {
+      "frame": {
+        "x": 1100,
         "y": 1658,
         "w": 71,
         "h": 45
@@ -714,9 +924,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 34.aseprite": {
+    "fosa_colada 44.aseprite": {
       "frame": {
-        "x": 2214,
+        "x": 2839,
         "y": 1658,
         "w": 68,
         "h": 31
@@ -735,9 +945,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 35.aseprite": {
+    "fosa_colada 45.aseprite": {
       "frame": {
-        "x": 1615,
+        "x": 2240,
         "y": 1658,
         "w": 75,
         "h": 35
@@ -756,9 +966,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 36.aseprite": {
+    "fosa_colada 46.aseprite": {
       "frame": {
-        "x": 1769,
+        "x": 2394,
         "y": 1658,
         "w": 75,
         "h": 33
@@ -777,9 +987,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 37.aseprite": {
+    "fosa_colada 47.aseprite": {
       "frame": {
-        "x": 2444,
+        "x": 3069,
         "y": 1658,
         "w": 74,
         "h": 28
@@ -798,9 +1008,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 38.aseprite": {
+    "fosa_colada 48.aseprite": {
       "frame": {
-        "x": 2342,
+        "x": 2967,
         "y": 1658,
         "w": 64,
         "h": 29
@@ -819,9 +1029,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 39.aseprite": {
+    "fosa_colada 49.aseprite": {
       "frame": {
-        "x": 2518,
+        "x": 3143,
         "y": 1658,
         "w": 67,
         "h": 27
@@ -840,9 +1050,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 40.aseprite": {
+    "fosa_colada 50.aseprite": {
       "frame": {
-        "x": 2585,
+        "x": 3210,
         "y": 1658,
         "w": 68,
         "h": 26
@@ -861,7 +1071,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 41.aseprite": {
+    "fosa_colada 51.aseprite": {
       "frame": {
         "x": 670,
         "y": 949,
@@ -882,7 +1092,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 42.aseprite": {
+    "fosa_colada 52.aseprite": {
       "frame": {
         "x": 3444,
         "y": 791,
@@ -903,7 +1113,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 43.aseprite": {
+    "fosa_colada 53.aseprite": {
       "frame": {
         "x": 1290,
         "y": 949,
@@ -924,7 +1134,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 44.aseprite": {
+    "fosa_colada 54.aseprite": {
       "frame": {
         "x": 2894,
         "y": 791,
@@ -945,7 +1155,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 45.aseprite": {
+    "fosa_colada 55.aseprite": {
       "frame": {
         "x": 2505,
         "y": 791,
@@ -966,7 +1176,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 46.aseprite": {
+    "fosa_colada 56.aseprite": {
       "frame": {
         "x": 1521,
         "y": 1207,
@@ -987,7 +1197,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 47.aseprite": {
+    "fosa_colada 57.aseprite": {
       "frame": {
         "x": 2791,
         "y": 949,
@@ -1008,7 +1218,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 48.aseprite": {
+    "fosa_colada 58.aseprite": {
       "frame": {
         "x": 3187,
         "y": 1556,
@@ -1029,7 +1239,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 49.aseprite": {
+    "fosa_colada 59.aseprite": {
       "frame": {
         "x": 1226,
         "y": 1556,
@@ -1050,7 +1260,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 50.aseprite": {
+    "fosa_colada 60.aseprite": {
       "frame": {
         "x": 2003,
         "y": 1556,
@@ -1071,7 +1281,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 51.aseprite": {
+    "fosa_colada 61.aseprite": {
       "frame": {
         "x": 424,
         "y": 1556,
@@ -1092,7 +1302,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 52.aseprite": {
+    "fosa_colada 62.aseprite": {
       "frame": {
         "x": 1700,
         "y": 949,
@@ -1113,7 +1323,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 53.aseprite": {
+    "fosa_colada 63.aseprite": {
       "frame": {
         "x": 1892,
         "y": 1207,
@@ -1134,7 +1344,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 54.aseprite": {
+    "fosa_colada 64.aseprite": {
       "frame": {
         "x": 2800,
         "y": 1556,
@@ -1155,7 +1365,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 55.aseprite": {
+    "fosa_colada 65.aseprite": {
       "frame": {
         "x": 2994,
         "y": 1207,
@@ -1176,7 +1386,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 56.aseprite": {
+    "fosa_colada 66.aseprite": {
       "frame": {
         "x": 2382,
         "y": 949,
@@ -1197,7 +1407,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 57.aseprite": {
+    "fosa_colada 67.aseprite": {
       "frame": {
         "x": 1597,
         "y": 1556,
@@ -1218,7 +1428,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 58.aseprite": {
+    "fosa_colada 68.aseprite": {
       "frame": {
         "x": 823,
         "y": 1556,
@@ -1239,7 +1449,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 59.aseprite": {
+    "fosa_colada 69.aseprite": {
       "frame": {
         "x": 978,
         "y": 1443,
@@ -1260,7 +1470,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 60.aseprite": {
+    "fosa_colada 70.aseprite": {
       "frame": {
         "x": 79,
         "y": 1443,
@@ -1281,7 +1491,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 61.aseprite": {
+    "fosa_colada 71.aseprite": {
       "frame": {
         "x": 1799,
         "y": 1443,
@@ -1302,7 +1512,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 62.aseprite": {
+    "fosa_colada 72.aseprite": {
       "frame": {
         "x": 2204,
         "y": 1443,
@@ -1323,7 +1533,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 63.aseprite": {
+    "fosa_colada 73.aseprite": {
       "frame": {
         "x": 3026,
         "y": 1443,
@@ -1344,7 +1554,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 64.aseprite": {
+    "fosa_colada 74.aseprite": {
       "frame": {
         "x": 3449,
         "y": 1443,
@@ -1365,7 +1575,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 65.aseprite": {
+    "fosa_colada 75.aseprite": {
       "frame": {
         "x": 2630,
         "y": 1443,
@@ -1386,7 +1596,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 66.aseprite": {
+    "fosa_colada 76.aseprite": {
       "frame": {
         "x": 2393,
         "y": 1556,
@@ -1407,7 +1617,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 67.aseprite": {
+    "fosa_colada 77.aseprite": {
       "frame": {
         "x": 0,
         "y": 1556,
@@ -1428,7 +1638,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 68.aseprite": {
+    "fosa_colada 78.aseprite": {
       "frame": {
         "x": 1182,
         "y": 791,
@@ -1449,7 +1659,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 69.aseprite": {
+    "fosa_colada 79.aseprite": {
       "frame": {
         "x": 0,
         "y": 949,
@@ -1470,7 +1680,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 70.aseprite": {
+    "fosa_colada 80.aseprite": {
       "frame": {
         "x": 1379,
         "y": 1443,
@@ -1491,7 +1701,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 71.aseprite": {
+    "fosa_colada 81.aseprite": {
       "frame": {
         "x": 598,
         "y": 1207,
@@ -1512,7 +1722,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 72.aseprite": {
+    "fosa_colada 82.aseprite": {
       "frame": {
         "x": 561,
         "y": 1443,
@@ -1533,229 +1743,19 @@
       },
       "duration": 100
     },
-    "fosa_colada 73.aseprite": {
-      "frame": {
-        "x": 3202,
-        "y": 1658,
-        "w": 17,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 84,
-        "y": 20,
-        "w": 17,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 74.aseprite": {
-      "frame": {
-        "x": 3219,
-        "y": 1658,
-        "w": 17,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 86,
-        "y": 20,
-        "w": 17,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 75.aseprite": {
-      "frame": {
-        "x": 3236,
-        "y": 1658,
-        "w": 19,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 88,
-        "y": 20,
-        "w": 19,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 76.aseprite": {
-      "frame": {
-        "x": 3255,
-        "y": 1658,
-        "w": 21,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 88,
-        "y": 20,
-        "w": 21,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 77.aseprite": {
-      "frame": {
-        "x": 3276,
-        "y": 1658,
-        "w": 21,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 88,
-        "y": 20,
-        "w": 21,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 78.aseprite": {
-      "frame": {
-        "x": 3297,
-        "y": 1658,
-        "w": 21,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 88,
-        "y": 20,
-        "w": 21,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 79.aseprite": {
-      "frame": {
-        "x": 3318,
-        "y": 1658,
-        "w": 21,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 88,
-        "y": 20,
-        "w": 21,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 80.aseprite": {
-      "frame": {
-        "x": 3339,
-        "y": 1658,
-        "w": 21,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 88,
-        "y": 20,
-        "w": 21,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 81.aseprite": {
-      "frame": {
-        "x": 3360,
-        "y": 1658,
-        "w": 19,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 86,
-        "y": 20,
-        "w": 19,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 82.aseprite": {
-      "frame": {
-        "x": 3056,
-        "y": 1658,
-        "w": 21,
-        "h": 17
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 84,
-        "y": 19,
-        "w": 21,
-        "h": 17
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "fosa_colada 83.aseprite": {
       "frame": {
-        "x": 3379,
+        "x": 3827,
         "y": 1658,
-        "w": 25,
+        "w": 17,
         "h": 16
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 80,
+        "x": 84,
         "y": 20,
-        "w": 25,
+        "w": 17,
         "h": 16
       },
       "sourceSize": {
@@ -1766,7 +1766,217 @@
     },
     "fosa_colada 84.aseprite": {
       "frame": {
-        "x": 3404,
+        "x": 3844,
+        "y": 1658,
+        "w": 17,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 86,
+        "y": 20,
+        "w": 17,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 85.aseprite": {
+      "frame": {
+        "x": 3861,
+        "y": 1658,
+        "w": 19,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 88,
+        "y": 20,
+        "w": 19,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 86.aseprite": {
+      "frame": {
+        "x": 3880,
+        "y": 1658,
+        "w": 21,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 88,
+        "y": 20,
+        "w": 21,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 87.aseprite": {
+      "frame": {
+        "x": 3901,
+        "y": 1658,
+        "w": 21,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 88,
+        "y": 20,
+        "w": 21,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 88.aseprite": {
+      "frame": {
+        "x": 3922,
+        "y": 1658,
+        "w": 21,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 88,
+        "y": 20,
+        "w": 21,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 89.aseprite": {
+      "frame": {
+        "x": 3943,
+        "y": 1658,
+        "w": 21,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 88,
+        "y": 20,
+        "w": 21,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 90.aseprite": {
+      "frame": {
+        "x": 3964,
+        "y": 1658,
+        "w": 21,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 88,
+        "y": 20,
+        "w": 21,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 91.aseprite": {
+      "frame": {
+        "x": 3985,
+        "y": 1658,
+        "w": 19,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 86,
+        "y": 20,
+        "w": 19,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 92.aseprite": {
+      "frame": {
+        "x": 3681,
+        "y": 1658,
+        "w": 21,
+        "h": 17
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 84,
+        "y": 19,
+        "w": 21,
+        "h": 17
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 93.aseprite": {
+      "frame": {
+        "x": 4004,
+        "y": 1658,
+        "w": 25,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 80,
+        "y": 20,
+        "w": 25,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 94.aseprite": {
+      "frame": {
+        "x": 4029,
         "y": 1658,
         "w": 23,
         "h": 16
@@ -1785,9 +1995,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 85.aseprite": {
+    "fosa_colada 95.aseprite": {
       "frame": {
-        "x": 3077,
+        "x": 3702,
         "y": 1658,
         "w": 25,
         "h": 17
@@ -1806,9 +2016,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 86.aseprite": {
+    "fosa_colada 96.aseprite": {
       "frame": {
-        "x": 3427,
+        "x": 4052,
         "y": 1658,
         "w": 23,
         "h": 16
@@ -1827,230 +2037,20 @@
       },
       "duration": 100
     },
-    "fosa_colada 87.aseprite": {
-      "frame": {
-        "x": 3450,
-        "y": 1658,
-        "w": 25,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 76,
-        "y": 20,
-        "w": 25,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 88.aseprite": {
-      "frame": {
-        "x": 3102,
-        "y": 1658,
-        "w": 25,
-        "h": 17
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 76,
-        "y": 19,
-        "w": 25,
-        "h": 17
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 89.aseprite": {
-      "frame": {
-        "x": 3127,
-        "y": 1658,
-        "w": 25,
-        "h": 17
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 76,
-        "y": 19,
-        "w": 25,
-        "h": 17
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 90.aseprite": {
-      "frame": {
-        "x": 3152,
-        "y": 1658,
-        "w": 25,
-        "h": 17
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 76,
-        "y": 19,
-        "w": 25,
-        "h": 17
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 91.aseprite": {
-      "frame": {
-        "x": 3177,
-        "y": 1658,
-        "w": 25,
-        "h": 17
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 76,
-        "y": 19,
-        "w": 25,
-        "h": 17
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 92.aseprite": {
-      "frame": {
-        "x": 3475,
-        "y": 1658,
-        "w": 25,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 76,
-        "y": 20,
-        "w": 25,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 93.aseprite": {
-      "frame": {
-        "x": 3500,
-        "y": 1658,
-        "w": 19,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 84,
-        "y": 20,
-        "w": 19,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 94.aseprite": {
-      "frame": {
-        "x": 3519,
-        "y": 1658,
-        "w": 17,
-        "h": 16
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 84,
-        "y": 19,
-        "w": 17,
-        "h": 16
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 95.aseprite": {
-      "frame": {
-        "x": 3536,
-        "y": 1658,
-        "w": 19,
-        "h": 15
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 82,
-        "y": 20,
-        "w": 19,
-        "h": 15
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 96.aseprite": {
-      "frame": {
-        "x": 3555,
-        "y": 1658,
-        "w": 23,
-        "h": 15
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 82,
-        "y": 20,
-        "w": 23,
-        "h": 15
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "fosa_colada 97.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
+        "x": 0,
+        "y": 1707,
+        "w": 25,
+        "h": 16
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 76,
+        "y": 20,
+        "w": 25,
+        "h": 16
       },
       "sourceSize": {
         "w": 640,
@@ -2060,18 +2060,18 @@
     },
     "fosa_colada 98.aseprite": {
       "frame": {
-        "x": 3653,
+        "x": 3727,
         "y": 1658,
-        "w": 1,
-        "h": 1
+        "w": 25,
+        "h": 17
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 76,
+        "y": 19,
+        "w": 25,
+        "h": 17
       },
       "sourceSize": {
         "w": 640,
@@ -2081,18 +2081,18 @@
     },
     "fosa_colada 99.aseprite": {
       "frame": {
-        "x": 3653,
+        "x": 3752,
         "y": 1658,
-        "w": 1,
-        "h": 1
+        "w": 25,
+        "h": 17
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 76,
+        "y": 19,
+        "w": 25,
+        "h": 17
       },
       "sourceSize": {
         "w": 640,
@@ -2102,18 +2102,18 @@
     },
     "fosa_colada 100.aseprite": {
       "frame": {
-        "x": 3653,
+        "x": 3777,
         "y": 1658,
-        "w": 1,
-        "h": 1
+        "w": 25,
+        "h": 17
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 76,
+        "y": 19,
+        "w": 25,
+        "h": 17
       },
       "sourceSize": {
         "w": 640,
@@ -2123,18 +2123,18 @@
     },
     "fosa_colada 101.aseprite": {
       "frame": {
-        "x": 3653,
+        "x": 3802,
         "y": 1658,
-        "w": 1,
-        "h": 1
+        "w": 25,
+        "h": 17
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 76,
+        "y": 19,
+        "w": 25,
+        "h": 17
       },
       "sourceSize": {
         "w": 640,
@@ -2144,18 +2144,18 @@
     },
     "fosa_colada 102.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
+        "x": 25,
+        "y": 1707,
+        "w": 25,
+        "h": 16
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 76,
+        "y": 20,
+        "w": 25,
+        "h": 16
       },
       "sourceSize": {
         "w": 640,
@@ -2165,18 +2165,18 @@
     },
     "fosa_colada 103.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
+        "x": 50,
+        "y": 1707,
+        "w": 19,
+        "h": 16
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 84,
+        "y": 20,
+        "w": 19,
+        "h": 16
       },
       "sourceSize": {
         "w": 640,
@@ -2186,18 +2186,18 @@
     },
     "fosa_colada 104.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
+        "x": 69,
+        "y": 1707,
+        "w": 17,
+        "h": 16
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 84,
+        "y": 19,
+        "w": 17,
+        "h": 16
       },
       "sourceSize": {
         "w": 640,
@@ -2207,18 +2207,18 @@
     },
     "fosa_colada 105.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
+        "x": 86,
+        "y": 1707,
+        "w": 19,
+        "h": 15
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 82,
+        "y": 20,
+        "w": 19,
+        "h": 15
       },
       "sourceSize": {
         "w": 640,
@@ -2228,18 +2228,18 @@
     },
     "fosa_colada 106.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
+        "x": 105,
+        "y": 1707,
+        "w": 23,
+        "h": 15
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 82,
+        "y": 20,
+        "w": 23,
+        "h": 15
       },
       "sourceSize": {
         "w": 640,
@@ -2249,8 +2249,8 @@
     },
     "fosa_colada 107.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2270,8 +2270,8 @@
     },
     "fosa_colada 108.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2291,8 +2291,8 @@
     },
     "fosa_colada 109.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2312,8 +2312,8 @@
     },
     "fosa_colada 110.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2333,8 +2333,8 @@
     },
     "fosa_colada 111.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2354,8 +2354,8 @@
     },
     "fosa_colada 112.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2375,8 +2375,8 @@
     },
     "fosa_colada 113.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2396,8 +2396,8 @@
     },
     "fosa_colada 114.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2417,8 +2417,8 @@
     },
     "fosa_colada 115.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2438,8 +2438,8 @@
     },
     "fosa_colada 116.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2459,8 +2459,8 @@
     },
     "fosa_colada 117.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2480,8 +2480,8 @@
     },
     "fosa_colada 118.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2501,8 +2501,8 @@
     },
     "fosa_colada 119.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2522,8 +2522,8 @@
     },
     "fosa_colada 120.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2543,8 +2543,8 @@
     },
     "fosa_colada 121.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2564,8 +2564,8 @@
     },
     "fosa_colada 122.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2585,8 +2585,8 @@
     },
     "fosa_colada 123.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2606,8 +2606,8 @@
     },
     "fosa_colada 124.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2627,8 +2627,8 @@
     },
     "fosa_colada 125.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2648,8 +2648,8 @@
     },
     "fosa_colada 126.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2669,8 +2669,8 @@
     },
     "fosa_colada 127.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2690,8 +2690,8 @@
     },
     "fosa_colada 128.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2711,8 +2711,8 @@
     },
     "fosa_colada 129.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2732,8 +2732,8 @@
     },
     "fosa_colada 130.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2753,18 +2753,18 @@
     },
     "fosa_colada 131.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 0,
-        "w": 362,
-        "h": 260
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 278,
+        "x": 0,
         "y": 0,
-        "w": 362,
-        "h": 260
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -2774,8 +2774,8 @@
     },
     "fosa_colada 132.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2795,18 +2795,18 @@
     },
     "fosa_colada 133.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 0,
-        "w": 362,
-        "h": 260
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 278,
+        "x": 0,
         "y": 0,
-        "w": 362,
-        "h": 260
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -2816,18 +2816,18 @@
     },
     "fosa_colada 134.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 0,
-        "w": 362,
-        "h": 260
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 278,
+        "x": 0,
         "y": 0,
-        "w": 362,
-        "h": 260
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -2837,8 +2837,8 @@
     },
     "fosa_colada 135.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2858,8 +2858,8 @@
     },
     "fosa_colada 136.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2879,8 +2879,8 @@
     },
     "fosa_colada 137.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2900,8 +2900,8 @@
     },
     "fosa_colada 138.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2921,8 +2921,8 @@
     },
     "fosa_colada 139.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2942,8 +2942,8 @@
     },
     "fosa_colada 140.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -2962,762 +2962,6 @@
       "duration": 100
     },
     "fosa_colada 141.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 142.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 143.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 144.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 145.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 146.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 147.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 148.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 149.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 150.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 151.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 152.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 153.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 154.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 155.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 156.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 157.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 158.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 159.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 160.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 161.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 162.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 163.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 164.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 165.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 166.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 167.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 168.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 169.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 170.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 171.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 172.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 173.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 174.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 175.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 176.aseprite": {
-      "frame": {
-        "x": 3653,
-        "y": 1658,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 177.aseprite": {
       "frame": {
         "x": 2560,
         "y": 0,
@@ -3738,10 +2982,766 @@
       },
       "duration": 100
     },
+    "fosa_colada 142.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 143.aseprite": {
+      "frame": {
+        "x": 2560,
+        "y": 0,
+        "w": 362,
+        "h": 260
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 278,
+        "y": 0,
+        "w": 362,
+        "h": 260
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 144.aseprite": {
+      "frame": {
+        "x": 2560,
+        "y": 0,
+        "w": 362,
+        "h": 260
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 278,
+        "y": 0,
+        "w": 362,
+        "h": 260
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 145.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 146.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 147.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 148.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 149.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 150.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 151.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 152.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 153.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 154.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 155.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 156.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 157.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 158.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 159.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 160.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 161.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 162.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 163.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 164.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 165.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 166.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 167.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 168.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 169.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 170.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 171.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 172.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 173.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 174.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 175.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 176.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 177.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
     "fosa_colada 178.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -3760,6 +3760,216 @@
       "duration": 100
     },
     "fosa_colada 179.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 180.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 181.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 182.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 183.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 184.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 185.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 186.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 187.aseprite": {
+      "frame": {
+        "x": 2560,
+        "y": 0,
+        "w": 362,
+        "h": 260
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 278,
+        "y": 0,
+        "w": 362,
+        "h": 260
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 188.aseprite": {
+      "frame": {
+        "x": 203,
+        "y": 1707,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 189.aseprite": {
       "frame": {
         "x": 424,
         "y": 791,
@@ -3780,7 +3990,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 180.aseprite": {
+    "fosa_colada 190.aseprite": {
       "frame": {
         "x": 449,
         "y": 791,
@@ -3801,7 +4011,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 181.aseprite": {
+    "fosa_colada 191.aseprite": {
       "frame": {
         "x": 473,
         "y": 791,
@@ -3822,7 +4032,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 182.aseprite": {
+    "fosa_colada 192.aseprite": {
       "frame": {
         "x": 496,
         "y": 791,
@@ -3843,7 +4053,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 183.aseprite": {
+    "fosa_colada 193.aseprite": {
       "frame": {
         "x": 518,
         "y": 791,
@@ -3864,7 +4074,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 184.aseprite": {
+    "fosa_colada 194.aseprite": {
       "frame": {
         "x": 539,
         "y": 791,
@@ -3885,7 +4095,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 185.aseprite": {
+    "fosa_colada 195.aseprite": {
       "frame": {
         "x": 560,
         "y": 791,
@@ -3906,7 +4116,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 186.aseprite": {
+    "fosa_colada 196.aseprite": {
       "frame": {
         "x": 580,
         "y": 791,
@@ -3927,7 +4137,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 187.aseprite": {
+    "fosa_colada 197.aseprite": {
       "frame": {
         "x": 599,
         "y": 791,
@@ -3948,7 +4158,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 188.aseprite": {
+    "fosa_colada 198.aseprite": {
       "frame": {
         "x": 618,
         "y": 791,
@@ -3969,7 +4179,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 189.aseprite": {
+    "fosa_colada 199.aseprite": {
       "frame": {
         "x": 636,
         "y": 791,
@@ -3990,7 +4200,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 190.aseprite": {
+    "fosa_colada 200.aseprite": {
       "frame": {
         "x": 654,
         "y": 791,
@@ -4011,7 +4221,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 191.aseprite": {
+    "fosa_colada 201.aseprite": {
       "frame": {
         "x": 673,
         "y": 791,
@@ -4032,7 +4242,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 192.aseprite": {
+    "fosa_colada 202.aseprite": {
       "frame": {
         "x": 692,
         "y": 791,
@@ -4053,7 +4263,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 193.aseprite": {
+    "fosa_colada 203.aseprite": {
       "frame": {
         "x": 711,
         "y": 791,
@@ -4074,7 +4284,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 194.aseprite": {
+    "fosa_colada 204.aseprite": {
       "frame": {
         "x": 731,
         "y": 791,
@@ -4095,7 +4305,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 195.aseprite": {
+    "fosa_colada 205.aseprite": {
       "frame": {
         "x": 752,
         "y": 791,
@@ -4116,7 +4326,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 196.aseprite": {
+    "fosa_colada 206.aseprite": {
       "frame": {
         "x": 774,
         "y": 791,
@@ -4137,7 +4347,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 197.aseprite": {
+    "fosa_colada 207.aseprite": {
       "frame": {
         "x": 797,
         "y": 791,
@@ -4158,7 +4368,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 198.aseprite": {
+    "fosa_colada 208.aseprite": {
       "frame": {
         "x": 821,
         "y": 791,
@@ -4179,7 +4389,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 199.aseprite": {
+    "fosa_colada 209.aseprite": {
       "frame": {
         "x": 845,
         "y": 791,
@@ -4200,7 +4410,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 200.aseprite": {
+    "fosa_colada 210.aseprite": {
       "frame": {
         "x": 870,
         "y": 791,
@@ -4221,7 +4431,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 201.aseprite": {
+    "fosa_colada 211.aseprite": {
       "frame": {
         "x": 895,
         "y": 791,
@@ -4242,7 +4452,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 202.aseprite": {
+    "fosa_colada 212.aseprite": {
       "frame": {
         "x": 920,
         "y": 791,
@@ -4263,7 +4473,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 203.aseprite": {
+    "fosa_colada 213.aseprite": {
       "frame": {
         "x": 1111,
         "y": 1328,
@@ -4284,7 +4494,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 204.aseprite": {
+    "fosa_colada 214.aseprite": {
       "frame": {
         "x": 1191,
         "y": 1328,
@@ -4305,7 +4515,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 205.aseprite": {
+    "fosa_colada 215.aseprite": {
       "frame": {
         "x": 1271,
         "y": 1328,
@@ -4326,7 +4536,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 206.aseprite": {
+    "fosa_colada 216.aseprite": {
       "frame": {
         "x": 1351,
         "y": 1328,
@@ -4347,7 +4557,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 207.aseprite": {
+    "fosa_colada 217.aseprite": {
       "frame": {
         "x": 1431,
         "y": 1328,
@@ -4368,7 +4578,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 208.aseprite": {
+    "fosa_colada 218.aseprite": {
       "frame": {
         "x": 1511,
         "y": 1328,
@@ -4389,7 +4599,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 209.aseprite": {
+    "fosa_colada 219.aseprite": {
       "frame": {
         "x": 1591,
         "y": 1328,
@@ -4410,7 +4620,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 210.aseprite": {
+    "fosa_colada 220.aseprite": {
       "frame": {
         "x": 1671,
         "y": 1328,
@@ -4431,7 +4641,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 211.aseprite": {
+    "fosa_colada 221.aseprite": {
       "frame": {
         "x": 1751,
         "y": 1328,
@@ -4452,7 +4662,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 212.aseprite": {
+    "fosa_colada 222.aseprite": {
       "frame": {
         "x": 1831,
         "y": 1328,
@@ -4473,7 +4683,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 213.aseprite": {
+    "fosa_colada 223.aseprite": {
       "frame": {
         "x": 1911,
         "y": 1328,
@@ -4494,7 +4704,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 214.aseprite": {
+    "fosa_colada 224.aseprite": {
       "frame": {
         "x": 1991,
         "y": 1328,
@@ -4515,7 +4725,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 215.aseprite": {
+    "fosa_colada 225.aseprite": {
       "frame": {
         "x": 1859,
         "y": 620,
@@ -4536,7 +4746,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 216.aseprite": {
+    "fosa_colada 226.aseprite": {
       "frame": {
         "x": 1938,
         "y": 620,
@@ -4557,7 +4767,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 217.aseprite": {
+    "fosa_colada 227.aseprite": {
       "frame": {
         "x": 2017,
         "y": 620,
@@ -4578,7 +4788,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 218.aseprite": {
+    "fosa_colada 228.aseprite": {
       "frame": {
         "x": 2096,
         "y": 620,
@@ -4599,7 +4809,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 219.aseprite": {
+    "fosa_colada 229.aseprite": {
       "frame": {
         "x": 2175,
         "y": 620,
@@ -4620,7 +4830,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 220.aseprite": {
+    "fosa_colada 230.aseprite": {
       "frame": {
         "x": 2254,
         "y": 620,
@@ -4641,7 +4851,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 221.aseprite": {
+    "fosa_colada 231.aseprite": {
       "frame": {
         "x": 2333,
         "y": 620,
@@ -4662,7 +4872,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 222.aseprite": {
+    "fosa_colada 232.aseprite": {
       "frame": {
         "x": 2412,
         "y": 620,
@@ -4683,7 +4893,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 223.aseprite": {
+    "fosa_colada 233.aseprite": {
       "frame": {
         "x": 2491,
         "y": 620,
@@ -4704,7 +4914,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 224.aseprite": {
+    "fosa_colada 234.aseprite": {
       "frame": {
         "x": 2570,
         "y": 620,
@@ -4725,7 +4935,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 225.aseprite": {
+    "fosa_colada 235.aseprite": {
       "frame": {
         "x": 2649,
         "y": 620,
@@ -4746,7 +4956,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 226.aseprite": {
+    "fosa_colada 236.aseprite": {
       "frame": {
         "x": 2728,
         "y": 620,
@@ -4767,7 +4977,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 227.aseprite": {
+    "fosa_colada 237.aseprite": {
       "frame": {
         "x": 3897,
         "y": 949,
@@ -4788,7 +4998,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 228.aseprite": {
+    "fosa_colada 238.aseprite": {
       "frame": {
         "x": 3985,
         "y": 949,
@@ -4809,7 +5019,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 229.aseprite": {
+    "fosa_colada 239.aseprite": {
       "frame": {
         "x": 0,
         "y": 1084,
@@ -4830,7 +5040,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 230.aseprite": {
+    "fosa_colada 240.aseprite": {
       "frame": {
         "x": 88,
         "y": 1084,
@@ -4851,7 +5061,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 231.aseprite": {
+    "fosa_colada 241.aseprite": {
       "frame": {
         "x": 176,
         "y": 1084,
@@ -4872,7 +5082,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 232.aseprite": {
+    "fosa_colada 242.aseprite": {
       "frame": {
         "x": 264,
         "y": 1084,
@@ -4893,7 +5103,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 233.aseprite": {
+    "fosa_colada 243.aseprite": {
       "frame": {
         "x": 352,
         "y": 1084,
@@ -4914,7 +5124,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 234.aseprite": {
+    "fosa_colada 244.aseprite": {
       "frame": {
         "x": 440,
         "y": 1084,
@@ -4935,7 +5145,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 235.aseprite": {
+    "fosa_colada 245.aseprite": {
       "frame": {
         "x": 528,
         "y": 1084,
@@ -4956,7 +5166,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 236.aseprite": {
+    "fosa_colada 246.aseprite": {
       "frame": {
         "x": 616,
         "y": 1084,
@@ -4977,7 +5187,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 237.aseprite": {
+    "fosa_colada 247.aseprite": {
       "frame": {
         "x": 704,
         "y": 1084,
@@ -4998,7 +5208,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 238.aseprite": {
+    "fosa_colada 248.aseprite": {
       "frame": {
         "x": 792,
         "y": 1084,
@@ -5019,7 +5229,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 239.aseprite": {
+    "fosa_colada 249.aseprite": {
       "frame": {
         "x": 2059,
         "y": 360,
@@ -5040,7 +5250,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 240.aseprite": {
+    "fosa_colada 250.aseprite": {
       "frame": {
         "x": 2148,
         "y": 360,
@@ -5061,7 +5271,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 241.aseprite": {
+    "fosa_colada 251.aseprite": {
       "frame": {
         "x": 2237,
         "y": 360,
@@ -5082,7 +5292,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 242.aseprite": {
+    "fosa_colada 252.aseprite": {
       "frame": {
         "x": 2326,
         "y": 360,
@@ -5103,7 +5313,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 243.aseprite": {
+    "fosa_colada 253.aseprite": {
       "frame": {
         "x": 2415,
         "y": 360,
@@ -5124,7 +5334,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 244.aseprite": {
+    "fosa_colada 254.aseprite": {
       "frame": {
         "x": 2504,
         "y": 360,
@@ -5145,7 +5355,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 245.aseprite": {
+    "fosa_colada 255.aseprite": {
       "frame": {
         "x": 2593,
         "y": 360,
@@ -5166,7 +5376,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 246.aseprite": {
+    "fosa_colada 256.aseprite": {
       "frame": {
         "x": 2682,
         "y": 360,
@@ -5187,7 +5397,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 247.aseprite": {
+    "fosa_colada 257.aseprite": {
       "frame": {
         "x": 2771,
         "y": 360,
@@ -5208,7 +5418,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 248.aseprite": {
+    "fosa_colada 258.aseprite": {
       "frame": {
         "x": 2860,
         "y": 360,
@@ -5229,7 +5439,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 249.aseprite": {
+    "fosa_colada 259.aseprite": {
       "frame": {
         "x": 2949,
         "y": 360,
@@ -5250,7 +5460,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 250.aseprite": {
+    "fosa_colada 260.aseprite": {
       "frame": {
         "x": 3038,
         "y": 360,
@@ -5271,10 +5481,10 @@
       },
       "duration": 100
     },
-    "fosa_colada 251.aseprite": {
+    "fosa_colada 261.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -5292,7 +5502,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 252.aseprite": {
+    "fosa_colada 262.aseprite": {
       "frame": {
         "x": 2071,
         "y": 1328,
@@ -5313,7 +5523,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 253.aseprite": {
+    "fosa_colada 263.aseprite": {
       "frame": {
         "x": 0,
         "y": 1328,
@@ -5334,7 +5544,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 254.aseprite": {
+    "fosa_colada 264.aseprite": {
       "frame": {
         "x": 79,
         "y": 1328,
@@ -5355,7 +5565,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 255.aseprite": {
+    "fosa_colada 265.aseprite": {
       "frame": {
         "x": 3379,
         "y": 1207,
@@ -5376,7 +5586,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 256.aseprite": {
+    "fosa_colada 266.aseprite": {
       "frame": {
         "x": 3458,
         "y": 1207,
@@ -5397,7 +5607,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 257.aseprite": {
+    "fosa_colada 267.aseprite": {
       "frame": {
         "x": 2263,
         "y": 1207,
@@ -5418,7 +5628,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 258.aseprite": {
+    "fosa_colada 268.aseprite": {
       "frame": {
         "x": 1023,
         "y": 1207,
@@ -5439,7 +5649,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 259.aseprite": {
+    "fosa_colada 269.aseprite": {
       "frame": {
         "x": 1104,
         "y": 1207,
@@ -5460,7 +5670,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 260.aseprite": {
+    "fosa_colada 270.aseprite": {
       "frame": {
         "x": 3950,
         "y": 1084,
@@ -5481,7 +5691,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 261.aseprite": {
+    "fosa_colada 271.aseprite": {
       "frame": {
         "x": 0,
         "y": 1207,
@@ -5502,7 +5712,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 262.aseprite": {
+    "fosa_colada 272.aseprite": {
       "frame": {
         "x": 2712,
         "y": 1084,
@@ -5523,7 +5733,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 263.aseprite": {
+    "fosa_colada 273.aseprite": {
       "frame": {
         "x": 2799,
         "y": 1084,
@@ -5544,7 +5754,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 264.aseprite": {
+    "fosa_colada 274.aseprite": {
       "frame": {
         "x": 2887,
         "y": 1084,
@@ -5565,7 +5775,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 265.aseprite": {
+    "fosa_colada 275.aseprite": {
       "frame": {
         "x": 3809,
         "y": 949,
@@ -5586,7 +5796,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 266.aseprite": {
+    "fosa_colada 276.aseprite": {
       "frame": {
         "x": 880,
         "y": 1084,
@@ -5607,7 +5817,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 267.aseprite": {
+    "fosa_colada 277.aseprite": {
       "frame": {
         "x": 969,
         "y": 1084,
@@ -5628,7 +5838,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 268.aseprite": {
+    "fosa_colada 278.aseprite": {
       "frame": {
         "x": 1058,
         "y": 1084,
@@ -5649,7 +5859,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 269.aseprite": {
+    "fosa_colada 279.aseprite": {
       "frame": {
         "x": 1145,
         "y": 1084,
@@ -5670,7 +5880,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 270.aseprite": {
+    "fosa_colada 280.aseprite": {
       "frame": {
         "x": 1234,
         "y": 1084,
@@ -5691,7 +5901,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 271.aseprite": {
+    "fosa_colada 281.aseprite": {
       "frame": {
         "x": 3809,
         "y": 949,
@@ -5712,7 +5922,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 272.aseprite": {
+    "fosa_colada 282.aseprite": {
       "frame": {
         "x": 2149,
         "y": 1328,
@@ -5733,7 +5943,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 273.aseprite": {
+    "fosa_colada 283.aseprite": {
       "frame": {
         "x": 159,
         "y": 1328,
@@ -5754,7 +5964,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 274.aseprite": {
+    "fosa_colada 284.aseprite": {
       "frame": {
         "x": 238,
         "y": 1328,
@@ -5775,7 +5985,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 275.aseprite": {
+    "fosa_colada 285.aseprite": {
       "frame": {
         "x": 3537,
         "y": 1207,
@@ -5796,7 +6006,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 276.aseprite": {
+    "fosa_colada 286.aseprite": {
       "frame": {
         "x": 3616,
         "y": 1207,
@@ -5817,7 +6027,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 277.aseprite": {
+    "fosa_colada 287.aseprite": {
       "frame": {
         "x": 2343,
         "y": 1207,
@@ -5838,7 +6048,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 278.aseprite": {
+    "fosa_colada 288.aseprite": {
       "frame": {
         "x": 1186,
         "y": 1207,
@@ -5859,7 +6069,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 279.aseprite": {
+    "fosa_colada 289.aseprite": {
       "frame": {
         "x": 1267,
         "y": 1207,
@@ -5880,7 +6090,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 280.aseprite": {
+    "fosa_colada 290.aseprite": {
       "frame": {
         "x": 84,
         "y": 1207,
@@ -5901,7 +6111,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 281.aseprite": {
+    "fosa_colada 291.aseprite": {
       "frame": {
         "x": 168,
         "y": 1207,
@@ -5922,7 +6132,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 282.aseprite": {
+    "fosa_colada 292.aseprite": {
       "frame": {
         "x": 2975,
         "y": 1084,
@@ -5943,7 +6153,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 283.aseprite": {
+    "fosa_colada 293.aseprite": {
       "frame": {
         "x": 3062,
         "y": 1084,
@@ -5964,7 +6174,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 284.aseprite": {
+    "fosa_colada 294.aseprite": {
       "frame": {
         "x": 3150,
         "y": 1084,
@@ -5985,7 +6195,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 285.aseprite": {
+    "fosa_colada 295.aseprite": {
       "frame": {
         "x": 1323,
         "y": 1084,
@@ -6006,7 +6216,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 286.aseprite": {
+    "fosa_colada 296.aseprite": {
       "frame": {
         "x": 1411,
         "y": 1084,
@@ -6027,7 +6237,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 287.aseprite": {
+    "fosa_colada 297.aseprite": {
       "frame": {
         "x": 1500,
         "y": 1084,
@@ -6048,7 +6258,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 288.aseprite": {
+    "fosa_colada 298.aseprite": {
       "frame": {
         "x": 1589,
         "y": 1084,
@@ -6069,7 +6279,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 289.aseprite": {
+    "fosa_colada 299.aseprite": {
       "frame": {
         "x": 1676,
         "y": 1084,
@@ -6090,7 +6300,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 290.aseprite": {
+    "fosa_colada 300.aseprite": {
       "frame": {
         "x": 1765,
         "y": 1084,
@@ -6111,7 +6321,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 291.aseprite": {
+    "fosa_colada 301.aseprite": {
       "frame": {
         "x": 1854,
         "y": 1084,
@@ -6132,7 +6342,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 292.aseprite": {
+    "fosa_colada 302.aseprite": {
       "frame": {
         "x": 3238,
         "y": 1084,
@@ -6153,7 +6363,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 293.aseprite": {
+    "fosa_colada 303.aseprite": {
       "frame": {
         "x": 3328,
         "y": 1084,
@@ -6174,7 +6384,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 294.aseprite": {
+    "fosa_colada 304.aseprite": {
       "frame": {
         "x": 3417,
         "y": 1084,
@@ -6195,7 +6405,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 295.aseprite": {
+    "fosa_colada 305.aseprite": {
       "frame": {
         "x": 252,
         "y": 1207,
@@ -6216,7 +6426,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 296.aseprite": {
+    "fosa_colada 306.aseprite": {
       "frame": {
         "x": 339,
         "y": 1207,
@@ -6237,7 +6447,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 297.aseprite": {
+    "fosa_colada 307.aseprite": {
       "frame": {
         "x": 1349,
         "y": 1207,
@@ -6258,7 +6468,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 298.aseprite": {
+    "fosa_colada 308.aseprite": {
       "frame": {
         "x": 2423,
         "y": 1207,
@@ -6279,7 +6489,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 299.aseprite": {
+    "fosa_colada 309.aseprite": {
       "frame": {
         "x": 2508,
         "y": 1207,
@@ -6300,7 +6510,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 300.aseprite": {
+    "fosa_colada 310.aseprite": {
       "frame": {
         "x": 3695,
         "y": 1207,
@@ -6321,7 +6531,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 301.aseprite": {
+    "fosa_colada 311.aseprite": {
       "frame": {
         "x": 3777,
         "y": 1207,
@@ -6342,7 +6552,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 302.aseprite": {
+    "fosa_colada 312.aseprite": {
       "frame": {
         "x": 318,
         "y": 1328,
@@ -6363,7 +6573,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 303.aseprite": {
+    "fosa_colada 313.aseprite": {
       "frame": {
         "x": 399,
         "y": 1328,
@@ -6384,7 +6594,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 304.aseprite": {
+    "fosa_colada 314.aseprite": {
       "frame": {
         "x": 2227,
         "y": 1328,
@@ -6405,7 +6615,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 305.aseprite": {
+    "fosa_colada 315.aseprite": {
       "frame": {
         "x": 1031,
         "y": 1328,
@@ -6426,7 +6636,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 306.aseprite": {
+    "fosa_colada 316.aseprite": {
       "frame": {
         "x": 2306,
         "y": 1328,
@@ -6447,7 +6657,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 307.aseprite": {
+    "fosa_colada 317.aseprite": {
       "frame": {
         "x": 2385,
         "y": 1328,
@@ -6468,7 +6678,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 308.aseprite": {
+    "fosa_colada 318.aseprite": {
       "frame": {
         "x": 2463,
         "y": 1328,
@@ -6489,7 +6699,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 309.aseprite": {
+    "fosa_colada 319.aseprite": {
       "frame": {
         "x": 2543,
         "y": 1328,
@@ -6510,7 +6720,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 310.aseprite": {
+    "fosa_colada 320.aseprite": {
       "frame": {
         "x": 2621,
         "y": 1328,
@@ -6531,7 +6741,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 311.aseprite": {
+    "fosa_colada 321.aseprite": {
       "frame": {
         "x": 1031,
         "y": 1328,
@@ -6552,7 +6762,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 312.aseprite": {
+    "fosa_colada 322.aseprite": {
       "frame": {
         "x": 3506,
         "y": 1084,
@@ -6573,7 +6783,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 313.aseprite": {
+    "fosa_colada 323.aseprite": {
       "frame": {
         "x": 3596,
         "y": 1084,
@@ -6594,7 +6804,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 314.aseprite": {
+    "fosa_colada 324.aseprite": {
       "frame": {
         "x": 3685,
         "y": 1084,
@@ -6615,7 +6825,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 315.aseprite": {
+    "fosa_colada 325.aseprite": {
       "frame": {
         "x": 425,
         "y": 1207,
@@ -6636,7 +6846,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 316.aseprite": {
+    "fosa_colada 326.aseprite": {
       "frame": {
         "x": 512,
         "y": 1207,
@@ -6657,7 +6867,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 317.aseprite": {
+    "fosa_colada 327.aseprite": {
       "frame": {
         "x": 1435,
         "y": 1207,
@@ -6678,7 +6888,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 318.aseprite": {
+    "fosa_colada 328.aseprite": {
       "frame": {
         "x": 2590,
         "y": 1207,
@@ -6699,7 +6909,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 319.aseprite": {
+    "fosa_colada 329.aseprite": {
       "frame": {
         "x": 2675,
         "y": 1207,
@@ -6720,7 +6930,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 320.aseprite": {
+    "fosa_colada 330.aseprite": {
       "frame": {
         "x": 3857,
         "y": 1207,
@@ -6741,7 +6951,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 321.aseprite": {
+    "fosa_colada 331.aseprite": {
       "frame": {
         "x": 3939,
         "y": 1207,
@@ -6762,7 +6972,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 322.aseprite": {
+    "fosa_colada 332.aseprite": {
       "frame": {
         "x": 477,
         "y": 1328,
@@ -6783,7 +6993,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 323.aseprite": {
+    "fosa_colada 333.aseprite": {
       "frame": {
         "x": 558,
         "y": 1328,
@@ -6804,7 +7014,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 324.aseprite": {
+    "fosa_colada 334.aseprite": {
       "frame": {
         "x": 2701,
         "y": 1328,
@@ -6825,7 +7035,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 325.aseprite": {
+    "fosa_colada 335.aseprite": {
       "frame": {
         "x": 2780,
         "y": 1328,
@@ -6846,7 +7056,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 326.aseprite": {
+    "fosa_colada 336.aseprite": {
       "frame": {
         "x": 2860,
         "y": 1328,
@@ -6867,7 +7077,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 327.aseprite": {
+    "fosa_colada 337.aseprite": {
       "frame": {
         "x": 2939,
         "y": 1328,
@@ -6888,7 +7098,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 328.aseprite": {
+    "fosa_colada 338.aseprite": {
       "frame": {
         "x": 3017,
         "y": 1328,
@@ -6909,7 +7119,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 329.aseprite": {
+    "fosa_colada 339.aseprite": {
       "frame": {
         "x": 3097,
         "y": 1328,
@@ -6930,7 +7140,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 330.aseprite": {
+    "fosa_colada 340.aseprite": {
       "frame": {
         "x": 3175,
         "y": 1328,
@@ -6951,7 +7161,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 331.aseprite": {
+    "fosa_colada 341.aseprite": {
       "frame": {
         "x": 3255,
         "y": 1328,
@@ -6972,7 +7182,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 332.aseprite": {
+    "fosa_colada 342.aseprite": {
       "frame": {
         "x": 636,
         "y": 1328,
@@ -6993,7 +7203,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 333.aseprite": {
+    "fosa_colada 343.aseprite": {
       "frame": {
         "x": 2757,
         "y": 1207,
@@ -7014,7 +7224,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 334.aseprite": {
+    "fosa_colada 344.aseprite": {
       "frame": {
         "x": 1942,
         "y": 1084,
@@ -7035,7 +7245,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 335.aseprite": {
+    "fosa_colada 345.aseprite": {
       "frame": {
         "x": 1056,
         "y": 949,
@@ -7056,7 +7266,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 336.aseprite": {
+    "fosa_colada 346.aseprite": {
       "frame": {
         "x": 3284,
         "y": 791,
@@ -7077,7 +7287,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 337.aseprite": {
+    "fosa_colada 347.aseprite": {
       "frame": {
         "x": 2001,
         "y": 791,
@@ -7098,7 +7308,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 338.aseprite": {
+    "fosa_colada 348.aseprite": {
       "frame": {
         "x": 1589,
         "y": 791,
@@ -7119,7 +7329,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 339.aseprite": {
+    "fosa_colada 349.aseprite": {
       "frame": {
         "x": 945,
         "y": 791,
@@ -7140,7 +7350,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 340.aseprite": {
+    "fosa_colada 350.aseprite": {
       "frame": {
         "x": 3671,
         "y": 620,
@@ -7161,7 +7371,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 341.aseprite": {
+    "fosa_colada 351.aseprite": {
       "frame": {
         "x": 1780,
         "y": 620,
@@ -7182,7 +7392,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 342.aseprite": {
+    "fosa_colada 352.aseprite": {
       "frame": {
         "x": 3749,
         "y": 620,
@@ -7203,7 +7413,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 343.aseprite": {
+    "fosa_colada 353.aseprite": {
       "frame": {
         "x": 1395,
         "y": 620,
@@ -7224,7 +7434,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 344.aseprite": {
+    "fosa_colada 354.aseprite": {
       "frame": {
         "x": 3827,
         "y": 620,
@@ -7245,7 +7455,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 345.aseprite": {
+    "fosa_colada 355.aseprite": {
       "frame": {
         "x": 2807,
         "y": 620,
@@ -7266,7 +7476,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 346.aseprite": {
+    "fosa_colada 356.aseprite": {
       "frame": {
         "x": 2886,
         "y": 620,
@@ -7287,219 +7497,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 347.aseprite": {
-      "frame": {
-        "x": 1780,
-        "y": 620,
-        "w": 79,
-        "h": 159
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 159
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 348.aseprite": {
-      "frame": {
-        "x": 715,
-        "y": 1328,
-        "w": 79,
-        "h": 115
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 115
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 349.aseprite": {
-      "frame": {
-        "x": 2836,
-        "y": 1207,
-        "w": 79,
-        "h": 118
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 118
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 350.aseprite": {
-      "frame": {
-        "x": 2020,
-        "y": 1084,
-        "w": 78,
-        "h": 123
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 123
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 351.aseprite": {
-      "frame": {
-        "x": 1134,
-        "y": 949,
-        "w": 78,
-        "h": 130
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 130
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 352.aseprite": {
-      "frame": {
-        "x": 3364,
-        "y": 791,
-        "w": 80,
-        "h": 136
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 80,
-        "h": 136
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 353.aseprite": {
-      "frame": {
-        "x": 2079,
-        "y": 791,
-        "w": 78,
-        "h": 143
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 143
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 354.aseprite": {
-      "frame": {
-        "x": 1667,
-        "y": 791,
-        "w": 78,
-        "h": 149
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 149
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 355.aseprite": {
-      "frame": {
-        "x": 1024,
-        "y": 791,
-        "w": 79,
-        "h": 154
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 154
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 356.aseprite": {
-      "frame": {
-        "x": 3906,
-        "y": 620,
-        "w": 78,
-        "h": 158
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 158
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "fosa_colada 357.aseprite": {
       "frame": {
-        "x": 2964,
+        "x": 1780,
         "y": 620,
         "w": 79,
         "h": 159
@@ -7520,18 +7520,18 @@
     },
     "fosa_colada 358.aseprite": {
       "frame": {
-        "x": 3984,
-        "y": 620,
-        "w": 78,
-        "h": 158
+        "x": 715,
+        "y": 1328,
+        "w": 79,
+        "h": 115
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 326,
         "y": 21,
-        "w": 78,
-        "h": 158
+        "w": 79,
+        "h": 115
       },
       "sourceSize": {
         "w": 640,
@@ -7541,259 +7541,7 @@
     },
     "fosa_colada 359.aseprite": {
       "frame": {
-        "x": 1473,
-        "y": 620,
-        "w": 78,
-        "h": 160
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 160
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 360.aseprite": {
-      "frame": {
-        "x": 0,
-        "y": 791,
-        "w": 79,
-        "h": 158
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 158
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 361.aseprite": {
-      "frame": {
-        "x": 3043,
-        "y": 620,
-        "w": 79,
-        "h": 159
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 159
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 362.aseprite": {
-      "frame": {
-        "x": 3122,
-        "y": 620,
-        "w": 78,
-        "h": 159
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 159
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 363.aseprite": {
-      "frame": {
-        "x": 3200,
-        "y": 620,
-        "w": 79,
-        "h": 159
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 159
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 364.aseprite": {
-      "frame": {
-        "x": 3671,
-        "y": 620,
-        "w": 78,
-        "h": 158
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 158
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 365.aseprite": {
-      "frame": {
-        "x": 945,
-        "y": 791,
-        "w": 79,
-        "h": 154
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 154
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 366.aseprite": {
-      "frame": {
-        "x": 1589,
-        "y": 791,
-        "w": 78,
-        "h": 149
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 149
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 367.aseprite": {
-      "frame": {
-        "x": 2001,
-        "y": 791,
-        "w": 78,
-        "h": 143
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 143
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 368.aseprite": {
-      "frame": {
-        "x": 3284,
-        "y": 791,
-        "w": 80,
-        "h": 136
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 80,
-        "h": 136
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 369.aseprite": {
-      "frame": {
-        "x": 1056,
-        "y": 949,
-        "w": 78,
-        "h": 130
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 130
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 370.aseprite": {
-      "frame": {
-        "x": 1942,
-        "y": 1084,
-        "w": 78,
-        "h": 123
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 123
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 371.aseprite": {
-      "frame": {
-        "x": 2757,
+        "x": 2836,
         "y": 1207,
         "w": 79,
         "h": 118
@@ -7812,180 +7560,12 @@
       },
       "duration": 100
     },
-    "fosa_colada 372.aseprite": {
+    "fosa_colada 360.aseprite": {
       "frame": {
-        "x": 636,
-        "y": 1328,
-        "w": 79,
-        "h": 115
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 115
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 373.aseprite": {
-      "frame": {
-        "x": 1031,
-        "y": 1328,
-        "w": 80,
-        "h": 114
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 80,
-        "h": 114
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 374.aseprite": {
-      "frame": {
-        "x": 794,
-        "y": 1328,
-        "w": 79,
-        "h": 115
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 115
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 375.aseprite": {
-      "frame": {
-        "x": 3813,
-        "y": 1328,
-        "w": 80,
-        "h": 113
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 80,
-        "h": 113
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 376.aseprite": {
-      "frame": {
-        "x": 3335,
-        "y": 1328,
-        "w": 79,
-        "h": 114
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 114
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 377.aseprite": {
-      "frame": {
-        "x": 3893,
-        "y": 1328,
-        "w": 79,
-        "h": 113
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 113
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 378.aseprite": {
-      "frame": {
-        "x": 3414,
-        "y": 1328,
-        "w": 80,
-        "h": 114
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 80,
-        "h": 114
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 379.aseprite": {
-      "frame": {
-        "x": 1031,
-        "y": 1328,
-        "w": 80,
-        "h": 114
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 80,
-        "h": 114
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 380.aseprite": {
-      "frame": {
-        "x": 79,
-        "y": 791,
+        "x": 2020,
+        "y": 1084,
         "w": 78,
-        "h": 158
+        "h": 123
       },
       "rotated": false,
       "trimmed": true,
@@ -7993,7 +7573,7 @@
         "x": 326,
         "y": 21,
         "w": 78,
-        "h": 158
+        "h": 123
       },
       "sourceSize": {
         "w": 640,
@@ -8001,33 +7581,12 @@
       },
       "duration": 100
     },
-    "fosa_colada 381.aseprite": {
+    "fosa_colada 361.aseprite": {
       "frame": {
-        "x": 1103,
-        "y": 791,
-        "w": 79,
-        "h": 154
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 79,
-        "h": 154
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 382.aseprite": {
-      "frame": {
-        "x": 1745,
-        "y": 791,
+        "x": 1134,
+        "y": 949,
         "w": 78,
-        "h": 149
+        "h": 130
       },
       "rotated": false,
       "trimmed": true,
@@ -8035,7 +7594,7 @@
         "x": 326,
         "y": 21,
         "w": 78,
-        "h": 149
+        "h": 130
       },
       "sourceSize": {
         "w": 640,
@@ -8043,28 +7602,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 383.aseprite": {
-      "frame": {
-        "x": 2157,
-        "y": 791,
-        "w": 78,
-        "h": 143
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 326,
-        "y": 21,
-        "w": 78,
-        "h": 143
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 384.aseprite": {
+    "fosa_colada 362.aseprite": {
       "frame": {
         "x": 3364,
         "y": 791,
@@ -8085,9 +7623,345 @@
       },
       "duration": 100
     },
-    "fosa_colada 385.aseprite": {
+    "fosa_colada 363.aseprite": {
       "frame": {
-        "x": 1212,
+        "x": 2079,
+        "y": 791,
+        "w": 78,
+        "h": 143
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 143
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 364.aseprite": {
+      "frame": {
+        "x": 1667,
+        "y": 791,
+        "w": 78,
+        "h": 149
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 149
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 365.aseprite": {
+      "frame": {
+        "x": 1024,
+        "y": 791,
+        "w": 79,
+        "h": 154
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 79,
+        "h": 154
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 366.aseprite": {
+      "frame": {
+        "x": 3906,
+        "y": 620,
+        "w": 78,
+        "h": 158
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 158
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 367.aseprite": {
+      "frame": {
+        "x": 2964,
+        "y": 620,
+        "w": 79,
+        "h": 159
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 79,
+        "h": 159
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 368.aseprite": {
+      "frame": {
+        "x": 3984,
+        "y": 620,
+        "w": 78,
+        "h": 158
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 158
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 369.aseprite": {
+      "frame": {
+        "x": 1473,
+        "y": 620,
+        "w": 78,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 370.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 791,
+        "w": 79,
+        "h": 158
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 79,
+        "h": 158
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 371.aseprite": {
+      "frame": {
+        "x": 3043,
+        "y": 620,
+        "w": 79,
+        "h": 159
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 79,
+        "h": 159
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 372.aseprite": {
+      "frame": {
+        "x": 3122,
+        "y": 620,
+        "w": 78,
+        "h": 159
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 159
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 373.aseprite": {
+      "frame": {
+        "x": 3200,
+        "y": 620,
+        "w": 79,
+        "h": 159
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 79,
+        "h": 159
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 374.aseprite": {
+      "frame": {
+        "x": 3671,
+        "y": 620,
+        "w": 78,
+        "h": 158
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 158
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 375.aseprite": {
+      "frame": {
+        "x": 945,
+        "y": 791,
+        "w": 79,
+        "h": 154
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 79,
+        "h": 154
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 376.aseprite": {
+      "frame": {
+        "x": 1589,
+        "y": 791,
+        "w": 78,
+        "h": 149
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 149
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 377.aseprite": {
+      "frame": {
+        "x": 2001,
+        "y": 791,
+        "w": 78,
+        "h": 143
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 143
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 378.aseprite": {
+      "frame": {
+        "x": 3284,
+        "y": 791,
+        "w": 80,
+        "h": 136
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 80,
+        "h": 136
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 379.aseprite": {
+      "frame": {
+        "x": 1056,
         "y": 949,
         "w": 78,
         "h": 130
@@ -8106,9 +7980,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 386.aseprite": {
+    "fosa_colada 380.aseprite": {
       "frame": {
-        "x": 2098,
+        "x": 1942,
         "y": 1084,
         "w": 78,
         "h": 123
@@ -8127,9 +8001,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 387.aseprite": {
+    "fosa_colada 381.aseprite": {
       "frame": {
-        "x": 2915,
+        "x": 2757,
         "y": 1207,
         "w": 79,
         "h": 118
@@ -8148,9 +8022,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 388.aseprite": {
+    "fosa_colada 382.aseprite": {
       "frame": {
-        "x": 873,
+        "x": 636,
         "y": 1328,
         "w": 79,
         "h": 115
@@ -8169,9 +8043,135 @@
       },
       "duration": 100
     },
+    "fosa_colada 383.aseprite": {
+      "frame": {
+        "x": 1031,
+        "y": 1328,
+        "w": 80,
+        "h": 114
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 80,
+        "h": 114
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 384.aseprite": {
+      "frame": {
+        "x": 794,
+        "y": 1328,
+        "w": 79,
+        "h": 115
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 79,
+        "h": 115
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 385.aseprite": {
+      "frame": {
+        "x": 3813,
+        "y": 1328,
+        "w": 80,
+        "h": 113
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 80,
+        "h": 113
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 386.aseprite": {
+      "frame": {
+        "x": 3335,
+        "y": 1328,
+        "w": 79,
+        "h": 114
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 79,
+        "h": 114
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 387.aseprite": {
+      "frame": {
+        "x": 3893,
+        "y": 1328,
+        "w": 79,
+        "h": 113
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 79,
+        "h": 113
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 388.aseprite": {
+      "frame": {
+        "x": 3414,
+        "y": 1328,
+        "w": 80,
+        "h": 114
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 80,
+        "h": 114
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
     "fosa_colada 389.aseprite": {
       "frame": {
-        "x": 3494,
+        "x": 1031,
         "y": 1328,
         "w": 80,
         "h": 114
@@ -8192,6 +8192,216 @@
     },
     "fosa_colada 390.aseprite": {
       "frame": {
+        "x": 79,
+        "y": 791,
+        "w": 78,
+        "h": 158
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 158
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 391.aseprite": {
+      "frame": {
+        "x": 1103,
+        "y": 791,
+        "w": 79,
+        "h": 154
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 79,
+        "h": 154
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 392.aseprite": {
+      "frame": {
+        "x": 1745,
+        "y": 791,
+        "w": 78,
+        "h": 149
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 149
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 393.aseprite": {
+      "frame": {
+        "x": 2157,
+        "y": 791,
+        "w": 78,
+        "h": 143
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 143
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 394.aseprite": {
+      "frame": {
+        "x": 3364,
+        "y": 791,
+        "w": 80,
+        "h": 136
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 80,
+        "h": 136
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 395.aseprite": {
+      "frame": {
+        "x": 1212,
+        "y": 949,
+        "w": 78,
+        "h": 130
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 130
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 396.aseprite": {
+      "frame": {
+        "x": 2098,
+        "y": 1084,
+        "w": 78,
+        "h": 123
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 78,
+        "h": 123
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 397.aseprite": {
+      "frame": {
+        "x": 2915,
+        "y": 1207,
+        "w": 79,
+        "h": 118
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 79,
+        "h": 118
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 398.aseprite": {
+      "frame": {
+        "x": 873,
+        "y": 1328,
+        "w": 79,
+        "h": 115
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 79,
+        "h": 115
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 399.aseprite": {
+      "frame": {
+        "x": 3494,
+        "y": 1328,
+        "w": 80,
+        "h": 114
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 21,
+        "w": 80,
+        "h": 114
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 400.aseprite": {
+      "frame": {
         "x": 952,
         "y": 1328,
         "w": 79,
@@ -8211,7 +8421,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 391.aseprite": {
+    "fosa_colada 401.aseprite": {
       "frame": {
         "x": 3972,
         "y": 1328,
@@ -8232,7 +8442,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 392.aseprite": {
+    "fosa_colada 402.aseprite": {
       "frame": {
         "x": 3574,
         "y": 1328,
@@ -8253,7 +8463,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 393.aseprite": {
+    "fosa_colada 403.aseprite": {
       "frame": {
         "x": 0,
         "y": 1443,
@@ -8274,7 +8484,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 394.aseprite": {
+    "fosa_colada 404.aseprite": {
       "frame": {
         "x": 3653,
         "y": 1328,
@@ -8295,7 +8505,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 395.aseprite": {
+    "fosa_colada 405.aseprite": {
       "frame": {
         "x": 3733,
         "y": 1328,
@@ -8316,7 +8526,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 396.aseprite": {
+    "fosa_colada 406.aseprite": {
       "frame": {
         "x": 3182,
         "y": 949,
@@ -8337,7 +8547,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 397.aseprite": {
+    "fosa_colada 407.aseprite": {
       "frame": {
         "x": 2112,
         "y": 949,
@@ -8358,7 +8568,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 398.aseprite": {
+    "fosa_colada 408.aseprite": {
       "frame": {
         "x": 406,
         "y": 949,
@@ -8379,7 +8589,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 399.aseprite": {
+    "fosa_colada 409.aseprite": {
       "frame": {
         "x": 2235,
         "y": 791,
@@ -8400,7 +8610,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 400.aseprite": {
+    "fosa_colada 410.aseprite": {
       "frame": {
         "x": 1823,
         "y": 791,
@@ -8421,7 +8631,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 401.aseprite": {
+    "fosa_colada 411.aseprite": {
       "frame": {
         "x": 157,
         "y": 791,
@@ -8442,7 +8652,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 402.aseprite": {
+    "fosa_colada 412.aseprite": {
       "frame": {
         "x": 1052,
         "y": 620,
@@ -8463,7 +8673,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 403.aseprite": {
+    "fosa_colada 413.aseprite": {
       "frame": {
         "x": 785,
         "y": 620,
@@ -8484,7 +8694,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 404.aseprite": {
+    "fosa_colada 414.aseprite": {
       "frame": {
         "x": 3922,
         "y": 360,
@@ -8505,7 +8715,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 405.aseprite": {
+    "fosa_colada 415.aseprite": {
       "frame": {
         "x": 1970,
         "y": 360,
@@ -8526,7 +8736,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 406.aseprite": {
+    "fosa_colada 416.aseprite": {
       "frame": {
         "x": 0,
         "y": 620,
@@ -8547,7 +8757,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 407.aseprite": {
+    "fosa_colada 417.aseprite": {
       "frame": {
         "x": 1096,
         "y": 360,
@@ -8568,7 +8778,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 408.aseprite": {
+    "fosa_colada 418.aseprite": {
       "frame": {
         "x": 89,
         "y": 620,
@@ -8589,7 +8799,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 409.aseprite": {
+    "fosa_colada 419.aseprite": {
       "frame": {
         "x": 3127,
         "y": 360,
@@ -8610,7 +8820,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 410.aseprite": {
+    "fosa_colada 420.aseprite": {
       "frame": {
         "x": 3216,
         "y": 360,
@@ -8631,7 +8841,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 411.aseprite": {
+    "fosa_colada 421.aseprite": {
       "frame": {
         "x": 1970,
         "y": 360,
@@ -8652,7 +8862,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 412.aseprite": {
+    "fosa_colada 422.aseprite": {
       "frame": {
         "x": 3271,
         "y": 949,
@@ -8673,7 +8883,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 413.aseprite": {
+    "fosa_colada 423.aseprite": {
       "frame": {
         "x": 2202,
         "y": 949,
@@ -8694,7 +8904,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 414.aseprite": {
+    "fosa_colada 424.aseprite": {
       "frame": {
         "x": 494,
         "y": 949,
@@ -8715,7 +8925,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 415.aseprite": {
+    "fosa_colada 425.aseprite": {
       "frame": {
         "x": 2325,
         "y": 791,
@@ -8736,7 +8946,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 416.aseprite": {
+    "fosa_colada 426.aseprite": {
       "frame": {
         "x": 1912,
         "y": 791,
@@ -8757,7 +8967,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 417.aseprite": {
+    "fosa_colada 427.aseprite": {
       "frame": {
         "x": 246,
         "y": 791,
@@ -8778,7 +8988,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 418.aseprite": {
+    "fosa_colada 428.aseprite": {
       "frame": {
         "x": 1141,
         "y": 620,
@@ -8799,7 +9009,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 419.aseprite": {
+    "fosa_colada 429.aseprite": {
       "frame": {
         "x": 874,
         "y": 620,
@@ -8820,7 +9030,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 420.aseprite": {
+    "fosa_colada 430.aseprite": {
       "frame": {
         "x": 178,
         "y": 620,
@@ -8841,7 +9051,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 421.aseprite": {
+    "fosa_colada 431.aseprite": {
       "frame": {
         "x": 3305,
         "y": 360,
@@ -8862,7 +9072,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 422.aseprite": {
+    "fosa_colada 432.aseprite": {
       "frame": {
         "x": 267,
         "y": 620,
@@ -8883,7 +9093,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 423.aseprite": {
+    "fosa_colada 433.aseprite": {
       "frame": {
         "x": 1185,
         "y": 360,
@@ -8904,7 +9114,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 424.aseprite": {
+    "fosa_colada 434.aseprite": {
       "frame": {
         "x": 356,
         "y": 620,
@@ -8925,7 +9135,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 425.aseprite": {
+    "fosa_colada 435.aseprite": {
       "frame": {
         "x": 3394,
         "y": 360,
@@ -8946,7 +9156,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 426.aseprite": {
+    "fosa_colada 436.aseprite": {
       "frame": {
         "x": 3483,
         "y": 360,
@@ -8967,7 +9177,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 427.aseprite": {
+    "fosa_colada 437.aseprite": {
       "frame": {
         "x": 3572,
         "y": 360,
@@ -8988,7 +9198,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 428.aseprite": {
+    "fosa_colada 438.aseprite": {
       "frame": {
         "x": 3922,
         "y": 360,
@@ -9009,7 +9219,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 429.aseprite": {
+    "fosa_colada 439.aseprite": {
       "frame": {
         "x": 785,
         "y": 620,
@@ -9030,7 +9240,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 430.aseprite": {
+    "fosa_colada 440.aseprite": {
       "frame": {
         "x": 1052,
         "y": 620,
@@ -9051,7 +9261,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 431.aseprite": {
+    "fosa_colada 441.aseprite": {
       "frame": {
         "x": 157,
         "y": 791,
@@ -9072,7 +9282,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 432.aseprite": {
+    "fosa_colada 442.aseprite": {
       "frame": {
         "x": 1823,
         "y": 791,
@@ -9093,7 +9303,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 433.aseprite": {
+    "fosa_colada 443.aseprite": {
       "frame": {
         "x": 2235,
         "y": 791,
@@ -9114,7 +9324,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 434.aseprite": {
+    "fosa_colada 444.aseprite": {
       "frame": {
         "x": 406,
         "y": 949,
@@ -9135,7 +9345,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 435.aseprite": {
+    "fosa_colada 445.aseprite": {
       "frame": {
         "x": 2112,
         "y": 949,
@@ -9156,7 +9366,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 436.aseprite": {
+    "fosa_colada 446.aseprite": {
       "frame": {
         "x": 3182,
         "y": 949,
@@ -9177,7 +9387,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 437.aseprite": {
+    "fosa_colada 447.aseprite": {
       "frame": {
         "x": 3809,
         "y": 949,
@@ -9198,7 +9408,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 438.aseprite": {
+    "fosa_colada 448.aseprite": {
       "frame": {
         "x": 3360,
         "y": 949,
@@ -9219,7 +9429,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 439.aseprite": {
+    "fosa_colada 449.aseprite": {
       "frame": {
         "x": 3774,
         "y": 1084,
@@ -9240,7 +9450,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 440.aseprite": {
+    "fosa_colada 450.aseprite": {
       "frame": {
         "x": 3627,
         "y": 949,
@@ -9261,7 +9471,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 441.aseprite": {
+    "fosa_colada 451.aseprite": {
       "frame": {
         "x": 2176,
         "y": 1084,
@@ -9282,7 +9492,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 442.aseprite": {
+    "fosa_colada 452.aseprite": {
       "frame": {
         "x": 2267,
         "y": 1084,
@@ -9303,7 +9513,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 443.aseprite": {
+    "fosa_colada 453.aseprite": {
       "frame": {
         "x": 3809,
         "y": 949,
@@ -9324,7 +9534,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 444.aseprite": {
+    "fosa_colada 454.aseprite": {
       "frame": {
         "x": 445,
         "y": 620,
@@ -9345,7 +9555,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 445.aseprite": {
+    "fosa_colada 455.aseprite": {
       "frame": {
         "x": 963,
         "y": 620,
@@ -9366,7 +9576,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 446.aseprite": {
+    "fosa_colada 456.aseprite": {
       "frame": {
         "x": 1230,
         "y": 620,
@@ -9387,7 +9597,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 447.aseprite": {
+    "fosa_colada 457.aseprite": {
       "frame": {
         "x": 335,
         "y": 791,
@@ -9408,7 +9618,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 448.aseprite": {
+    "fosa_colada 458.aseprite": {
       "frame": {
         "x": 1912,
         "y": 791,
@@ -9429,7 +9639,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 449.aseprite": {
+    "fosa_colada 459.aseprite": {
       "frame": {
         "x": 2415,
         "y": 791,
@@ -9450,7 +9660,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 450.aseprite": {
+    "fosa_colada 460.aseprite": {
       "frame": {
         "x": 582,
         "y": 949,
@@ -9471,7 +9681,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 451.aseprite": {
+    "fosa_colada 461.aseprite": {
       "frame": {
         "x": 2292,
         "y": 949,
@@ -9492,7 +9702,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 452.aseprite": {
+    "fosa_colada 462.aseprite": {
       "frame": {
         "x": 3449,
         "y": 949,
@@ -9513,7 +9723,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 453.aseprite": {
+    "fosa_colada 463.aseprite": {
       "frame": {
         "x": 2356,
         "y": 1084,
@@ -9534,7 +9744,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 454.aseprite": {
+    "fosa_colada 464.aseprite": {
       "frame": {
         "x": 3538,
         "y": 949,
@@ -9555,7 +9765,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 455.aseprite": {
+    "fosa_colada 465.aseprite": {
       "frame": {
         "x": 3862,
         "y": 1084,
@@ -9576,7 +9786,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 456.aseprite": {
+    "fosa_colada 466.aseprite": {
       "frame": {
         "x": 3718,
         "y": 949,
@@ -9597,7 +9807,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 457.aseprite": {
+    "fosa_colada 467.aseprite": {
       "frame": {
         "x": 2444,
         "y": 1084,
@@ -9618,7 +9828,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 458.aseprite": {
+    "fosa_colada 468.aseprite": {
       "frame": {
         "x": 2535,
         "y": 1084,
@@ -9639,7 +9849,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 459.aseprite": {
+    "fosa_colada 469.aseprite": {
       "frame": {
         "x": 2624,
         "y": 1084,
@@ -9660,7 +9870,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 460.aseprite": {
+    "fosa_colada 470.aseprite": {
       "frame": {
         "x": 3279,
         "y": 620,
@@ -9681,7 +9891,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 461.aseprite": {
+    "fosa_colada 471.aseprite": {
       "frame": {
         "x": 3358,
         "y": 620,
@@ -9702,7 +9912,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 462.aseprite": {
+    "fosa_colada 472.aseprite": {
       "frame": {
         "x": 1551,
         "y": 620,
@@ -9723,7 +9933,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 463.aseprite": {
+    "fosa_colada 473.aseprite": {
       "frame": {
         "x": 1319,
         "y": 620,
@@ -9744,7 +9954,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 464.aseprite": {
+    "fosa_colada 474.aseprite": {
       "frame": {
         "x": 534,
         "y": 620,
@@ -9765,7 +9975,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 465.aseprite": {
+    "fosa_colada 475.aseprite": {
       "frame": {
         "x": 614,
         "y": 620,
@@ -9786,7 +9996,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 466.aseprite": {
+    "fosa_colada 476.aseprite": {
       "frame": {
         "x": 3661,
         "y": 360,
@@ -9807,7 +10017,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 467.aseprite": {
+    "fosa_colada 477.aseprite": {
       "frame": {
         "x": 1274,
         "y": 360,
@@ -9828,7 +10038,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 468.aseprite": {
+    "fosa_colada 478.aseprite": {
       "frame": {
         "x": 3750,
         "y": 360,
@@ -9849,7 +10059,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 469.aseprite": {
+    "fosa_colada 479.aseprite": {
       "frame": {
         "x": 1364,
         "y": 360,
@@ -9870,7 +10080,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 470.aseprite": {
+    "fosa_colada 480.aseprite": {
       "frame": {
         "x": 849,
         "y": 360,
@@ -9891,7 +10101,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 471.aseprite": {
+    "fosa_colada 481.aseprite": {
       "frame": {
         "x": 3838,
         "y": 360,
@@ -9912,7 +10122,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 472.aseprite": {
+    "fosa_colada 482.aseprite": {
       "frame": {
         "x": 931,
         "y": 360,
@@ -9933,7 +10143,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 473.aseprite": {
+    "fosa_colada 483.aseprite": {
       "frame": {
         "x": 1453,
         "y": 360,
@@ -9954,7 +10164,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 474.aseprite": {
+    "fosa_colada 484.aseprite": {
       "frame": {
         "x": 1541,
         "y": 360,
@@ -9975,7 +10185,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 475.aseprite": {
+    "fosa_colada 485.aseprite": {
       "frame": {
         "x": 1629,
         "y": 360,
@@ -9996,7 +10206,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 476.aseprite": {
+    "fosa_colada 486.aseprite": {
       "frame": {
         "x": 1714,
         "y": 360,
@@ -10017,7 +10227,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 477.aseprite": {
+    "fosa_colada 487.aseprite": {
       "frame": {
         "x": 1017,
         "y": 360,
@@ -10038,7 +10248,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 478.aseprite": {
+    "fosa_colada 488.aseprite": {
       "frame": {
         "x": 1801,
         "y": 360,
@@ -10059,7 +10269,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 479.aseprite": {
+    "fosa_colada 489.aseprite": {
       "frame": {
         "x": 766,
         "y": 360,
@@ -10080,7 +10290,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 480.aseprite": {
+    "fosa_colada 490.aseprite": {
       "frame": {
         "x": 1882,
         "y": 360,
@@ -10101,7 +10311,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 481.aseprite": {
+    "fosa_colada 491.aseprite": {
       "frame": {
         "x": 709,
         "y": 620,
@@ -10122,7 +10332,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 482.aseprite": {
+    "fosa_colada 492.aseprite": {
       "frame": {
         "x": 3438,
         "y": 620,
@@ -10143,7 +10353,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 483.aseprite": {
+    "fosa_colada 493.aseprite": {
       "frame": {
         "x": 1630,
         "y": 620,
@@ -10164,7 +10374,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 484.aseprite": {
+    "fosa_colada 494.aseprite": {
       "frame": {
         "x": 1702,
         "y": 620,
@@ -10185,7 +10395,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 485.aseprite": {
+    "fosa_colada 495.aseprite": {
       "frame": {
         "x": 3512,
         "y": 620,
@@ -10206,7 +10416,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 486.aseprite": {
+    "fosa_colada 496.aseprite": {
       "frame": {
         "x": 3591,
         "y": 620,
@@ -10227,7 +10437,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 487.aseprite": {
+    "fosa_colada 497.aseprite": {
       "frame": {
         "x": 1780,
         "y": 620,
@@ -10248,7 +10458,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 488.aseprite": {
+    "fosa_colada 498.aseprite": {
       "frame": {
         "x": 1780,
         "y": 620,
@@ -10269,7 +10479,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 489.aseprite": {
+    "fosa_colada 499.aseprite": {
       "frame": {
         "x": 3578,
         "y": 1556,
@@ -10290,10 +10500,10 @@
       },
       "duration": 100
     },
-    "fosa_colada 490.aseprite": {
+    "fosa_colada 500.aseprite": {
       "frame": {
-        "x": 3578,
-        "y": 1658,
+        "x": 128,
+        "y": 1707,
         "w": 12,
         "h": 14
       },
@@ -10311,10 +10521,10 @@
       },
       "duration": 100
     },
-    "fosa_colada 491.aseprite": {
+    "fosa_colada 501.aseprite": {
       "frame": {
-        "x": 3590,
-        "y": 1658,
+        "x": 140,
+        "y": 1707,
         "w": 12,
         "h": 14
       },
@@ -10332,51 +10542,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 492.aseprite": {
+    "fosa_colada 502.aseprite": {
       "frame": {
-        "x": 3891,
-        "y": 1556,
-        "w": 79,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 167,
-        "y": 129,
-        "w": 79,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 493.aseprite": {
-      "frame": {
-        "x": 3970,
-        "y": 1556,
-        "w": 79,
-        "h": 48
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 167,
-        "y": 129,
-        "w": 79,
-        "h": 48
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fosa_colada 494.aseprite": {
-      "frame": {
-        "x": 0,
+        "x": 467,
         "y": 1658,
         "w": 79,
         "h": 48
@@ -10395,7 +10563,49 @@
       },
       "duration": 100
     },
-    "fosa_colada 495.aseprite": {
+    "fosa_colada 503.aseprite": {
+      "frame": {
+        "x": 546,
+        "y": 1658,
+        "w": 79,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 167,
+        "y": 129,
+        "w": 79,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 504.aseprite": {
+      "frame": {
+        "x": 625,
+        "y": 1658,
+        "w": 79,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 167,
+        "y": 129,
+        "w": 79,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fosa_colada 505.aseprite": {
       "frame": {
         "x": 473,
         "y": 1443,
@@ -10416,9 +10626,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 496.aseprite": {
+    "fosa_colada 506.aseprite": {
       "frame": {
-        "x": 546,
+        "x": 1171,
         "y": 1658,
         "w": 88,
         "h": 45
@@ -10437,9 +10647,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 497.aseprite": {
+    "fosa_colada 507.aseprite": {
       "frame": {
-        "x": 160,
+        "x": 785,
         "y": 1658,
         "w": 88,
         "h": 46
@@ -10458,9 +10668,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 498.aseprite": {
+    "fosa_colada 508.aseprite": {
       "frame": {
-        "x": 947,
+        "x": 1572,
         "y": 1658,
         "w": 51,
         "h": 42
@@ -10479,9 +10689,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 499.aseprite": {
+    "fosa_colada 509.aseprite": {
       "frame": {
-        "x": 998,
+        "x": 1623,
         "y": 1658,
         "w": 51,
         "h": 42
@@ -10500,9 +10710,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 500.aseprite": {
+    "fosa_colada 510.aseprite": {
       "frame": {
-        "x": 1049,
+        "x": 1674,
         "y": 1658,
         "w": 51,
         "h": 42
@@ -10521,7 +10731,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 501.aseprite": {
+    "fosa_colada 511.aseprite": {
       "frame": {
         "x": 804,
         "y": 1556,
@@ -10542,9 +10752,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 502.aseprite": {
+    "fosa_colada 512.aseprite": {
       "frame": {
-        "x": 2406,
+        "x": 3031,
         "y": 1658,
         "w": 19,
         "h": 29
@@ -10563,9 +10773,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 503.aseprite": {
+    "fosa_colada 513.aseprite": {
       "frame": {
-        "x": 2425,
+        "x": 3050,
         "y": 1658,
         "w": 19,
         "h": 29
@@ -10584,9 +10794,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 504.aseprite": {
+    "fosa_colada 514.aseprite": {
       "frame": {
-        "x": 2282,
+        "x": 2907,
         "y": 1658,
         "w": 60,
         "h": 30
@@ -10605,9 +10815,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 505.aseprite": {
+    "fosa_colada 515.aseprite": {
       "frame": {
-        "x": 2653,
+        "x": 3278,
         "y": 1658,
         "w": 56,
         "h": 26
@@ -10626,9 +10836,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 506.aseprite": {
+    "fosa_colada 516.aseprite": {
       "frame": {
-        "x": 2709,
+        "x": 3334,
         "y": 1658,
         "w": 56,
         "h": 26
@@ -10647,10 +10857,10 @@
       },
       "duration": 100
     },
-    "fosa_colada 507.aseprite": {
+    "fosa_colada 517.aseprite": {
       "frame": {
-        "x": 3653,
-        "y": 1658,
+        "x": 203,
+        "y": 1707,
         "w": 1,
         "h": 1
       },
@@ -10668,7 +10878,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 508.aseprite": {
+    "fosa_colada 518.aseprite": {
       "frame": {
         "x": 640,
         "y": 360,
@@ -10689,7 +10899,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 509.aseprite": {
+    "fosa_colada 519.aseprite": {
       "frame": {
         "x": 682,
         "y": 360,
@@ -10710,7 +10920,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 510.aseprite": {
+    "fosa_colada 520.aseprite": {
       "frame": {
         "x": 724,
         "y": 360,
@@ -10731,9 +10941,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 511.aseprite": {
+    "fosa_colada 521.aseprite": {
       "frame": {
-        "x": 2765,
+        "x": 3390,
         "y": 1658,
         "w": 97,
         "h": 25
@@ -10752,9 +10962,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 512.aseprite": {
+    "fosa_colada 522.aseprite": {
       "frame": {
-        "x": 2862,
+        "x": 3487,
         "y": 1658,
         "w": 97,
         "h": 25
@@ -10773,9 +10983,9 @@
       },
       "duration": 100
     },
-    "fosa_colada 513.aseprite": {
+    "fosa_colada 523.aseprite": {
       "frame": {
-        "x": 2959,
+        "x": 3584,
         "y": 1658,
         "w": 97,
         "h": 25
@@ -10794,10 +11004,10 @@
       },
       "duration": 100
     },
-    "fosa_colada 514.aseprite": {
+    "fosa_colada 524.aseprite": {
       "frame": {
-        "x": 3759,
-        "y": 1556,
+        "x": 335,
+        "y": 1658,
         "w": 44,
         "h": 49
       },
@@ -10815,10 +11025,10 @@
       },
       "duration": 100
     },
-    "fosa_colada 515.aseprite": {
+    "fosa_colada 525.aseprite": {
       "frame": {
-        "x": 3803,
-        "y": 1556,
+        "x": 379,
+        "y": 1658,
         "w": 44,
         "h": 49
       },
@@ -10836,10 +11046,10 @@
       },
       "duration": 100
     },
-    "fosa_colada 516.aseprite": {
+    "fosa_colada 526.aseprite": {
       "frame": {
-        "x": 3847,
-        "y": 1556,
+        "x": 423,
+        "y": 1658,
         "w": 44,
         "h": 49
       },
@@ -10857,7 +11067,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 517.aseprite": {
+    "fosa_colada 527.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -10878,7 +11088,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 518.aseprite": {
+    "fosa_colada 528.aseprite": {
       "frame": {
         "x": 2922,
         "y": 0,
@@ -10899,7 +11109,7 @@
       },
       "duration": 100
     },
-    "fosa_colada 519.aseprite": {
+    "fosa_colada 529.aseprite": {
       "frame": {
         "x": 0,
         "y": 360,
@@ -10927,8 +11137,8 @@
     "image": "fosa_colada.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4073,
-      "h": 1706
+      "w": 4094,
+      "h": 1723
     },
     "scale": "1",
     "frameTags": [
@@ -11003,387 +11213,457 @@
         "color": "#000000ff"
       },
       {
-        "name": "colada_accio",
+        "name": "termo_0",
         "from": 10,
         "to": 10,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "vapor_motlle",
+        "name": "termo_1",
         "from": 11,
-        "to": 40,
+        "to": 11,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "termo_2",
+        "from": 12,
+        "to": 12,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "termo_3",
+        "from": 13,
+        "to": 13,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "termo_4",
+        "from": 14,
+        "to": 14,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "termo_5",
+        "from": 15,
+        "to": 15,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "termo_6",
+        "from": 16,
+        "to": 16,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "termo_7",
+        "from": 17,
+        "to": 17,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "termo_8",
+        "from": 18,
+        "to": 18,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "termo_9",
+        "from": 19,
+        "to": 19,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "colada_accio",
+        "from": 20,
+        "to": 20,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "vapor_motlle",
+        "from": 21,
+        "to": 50,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "pols",
-        "from": 41,
-        "to": 72,
+        "from": 51,
+        "to": 82,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "fum_pas",
-        "from": 73,
-        "to": 96,
+        "from": 83,
+        "to": 106,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "llum_taller",
-        "from": 97,
-        "to": 178,
+        "from": 107,
+        "to": 188,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "cadenes",
-        "from": 179,
-        "to": 202,
+        "from": 189,
+        "to": 212,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "gresol_llit_dalt_ple",
-        "from": 203,
-        "to": 214,
+        "from": 213,
+        "to": 224,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "gresol_llit_baix_ple",
-        "from": 215,
-        "to": 226,
+        "from": 225,
+        "to": 236,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "gresol_canal_dalt_ple",
-        "from": 227,
-        "to": 238,
+        "from": 237,
+        "to": 248,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "gresol_canal_baix_ple",
-        "from": 239,
-        "to": 250,
+        "from": 249,
+        "to": 260,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "gresol_mou",
-        "from": 251,
-        "to": 251,
+        "from": 261,
+        "to": 261,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "mou_llit_canal",
-        "from": 252,
-        "to": 271,
+        "from": 262,
+        "to": 281,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "mou_llit_canal_ple",
-        "from": 272,
-        "to": 291,
+        "from": 282,
+        "to": 301,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "mou_canal_llit",
-        "from": 292,
-        "to": 311,
+        "from": 302,
+        "to": 321,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "mou_canal_llit_ple",
-        "from": 312,
-        "to": 331,
+        "from": 322,
+        "to": 341,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "baixa_llit",
-        "from": 332,
-        "to": 347,
+        "from": 342,
+        "to": 357,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "baixa_llit_ple",
-        "from": 348,
-        "to": 363,
+        "from": 358,
+        "to": 373,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "puja_llit",
-        "from": 364,
-        "to": 379,
+        "from": 374,
+        "to": 389,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "puja_llit_ple",
-        "from": 380,
-        "to": 395,
+        "from": 390,
+        "to": 405,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "baixa_canal",
-        "from": 396,
-        "to": 411,
+        "from": 406,
+        "to": 421,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "baixa_canal_ple",
-        "from": 412,
-        "to": 427,
+        "from": 422,
+        "to": 437,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "puja_canal",
-        "from": 428,
-        "to": 443,
+        "from": 438,
+        "to": 453,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "puja_canal_ple",
-        "from": 444,
-        "to": 459,
+        "from": 454,
+        "to": 469,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "bolca",
-        "from": 460,
-        "to": 488,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_sorra",
-        "from": 489,
-        "to": 489,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "gresol_ple__davant_sorra",
-        "from": 490,
-        "to": 490,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "gresol_ple_canal__davant_sorra",
-        "from": 491,
-        "to": 491,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_banc",
-        "from": 492,
-        "to": 492,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "gresol_ple__davant_banc",
-        "from": 493,
-        "to": 493,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "gresol_ple_canal__davant_banc",
-        "from": 494,
-        "to": 494,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_canal",
-        "from": 495,
-        "to": 495,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "gresol_ple__davant_canal",
-        "from": 496,
-        "to": 496,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "gresol_ple_canal__davant_canal",
-        "from": 497,
-        "to": 497,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_caixes",
-        "from": 498,
+        "from": 470,
         "to": 498,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple__davant_caixes",
+        "name": "davant_sorra",
         "from": 499,
         "to": 499,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple_canal__davant_caixes",
+        "name": "gresol_ple__davant_sorra",
         "from": 500,
         "to": 500,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_botonera",
+        "name": "gresol_ple_canal__davant_sorra",
         "from": 501,
         "to": 501,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple__davant_botonera",
+        "name": "davant_banc",
         "from": 502,
         "to": 502,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple_canal__davant_botonera",
+        "name": "gresol_ple__davant_banc",
         "from": 503,
         "to": 503,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_carreto",
+        "name": "gresol_ple_canal__davant_banc",
         "from": 504,
         "to": 504,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple__davant_carreto",
+        "name": "davant_canal",
         "from": 505,
         "to": 505,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple_canal__davant_carreto",
+        "name": "gresol_ple__davant_canal",
         "from": 506,
         "to": 506,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_gresol",
+        "name": "gresol_ple_canal__davant_canal",
         "from": 507,
         "to": 507,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_columna",
+        "name": "davant_caixes",
         "from": 508,
         "to": 508,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple__davant_columna",
+        "name": "gresol_ple__davant_caixes",
         "from": 509,
         "to": 509,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple_canal__davant_columna",
+        "name": "gresol_ple_canal__davant_caixes",
         "from": 510,
         "to": 510,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_lingoteres",
+        "name": "davant_botonera",
         "from": 511,
         "to": 511,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple__davant_lingoteres",
+        "name": "gresol_ple__davant_botonera",
         "from": 512,
         "to": 512,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple_canal__davant_lingoteres",
+        "name": "gresol_ple_canal__davant_botonera",
         "from": 513,
         "to": 513,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_lingots",
+        "name": "davant_carreto",
         "from": 514,
         "to": 514,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple__davant_lingots",
+        "name": "gresol_ple__davant_carreto",
         "from": 515,
         "to": 515,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple_canal__davant_lingots",
+        "name": "gresol_ple_canal__davant_carreto",
         "from": 516,
         "to": 516,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_gresol",
         "from": 517,
         "to": 517,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple__davant",
+        "name": "davant_columna",
         "from": 518,
         "to": 518,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "gresol_ple_canal__davant",
+        "name": "gresol_ple__davant_columna",
         "from": 519,
         "to": 519,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "gresol_ple_canal__davant_columna",
+        "from": 520,
+        "to": 520,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_lingoteres",
+        "from": 521,
+        "to": 521,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "gresol_ple__davant_lingoteres",
+        "from": 522,
+        "to": 522,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "gresol_ple_canal__davant_lingoteres",
+        "from": 523,
+        "to": 523,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_lingots",
+        "from": 524,
+        "to": 524,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "gresol_ple__davant_lingots",
+        "from": 525,
+        "to": 525,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "gresol_ple_canal__davant_lingots",
+        "from": 526,
+        "to": 526,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 527,
+        "to": 527,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "gresol_ple__davant",
+        "from": 528,
+        "to": 528,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "gresol_ple_canal__davant",
+        "from": 529,
+        "to": 529,
         "direction": "forward",
         "color": "#000000ff"
       }

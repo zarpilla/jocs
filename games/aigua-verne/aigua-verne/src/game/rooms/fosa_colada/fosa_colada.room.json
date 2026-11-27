@@ -552,6 +552,38 @@
         "x": 153,
         "y": 125
       }
+    },
+    {
+      "id": "termometre",
+      "active": true,
+      "description": "termòmetre del forn",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 166,
+          "y": 45
+        },
+        {
+          "x": 204,
+          "y": 45
+        },
+        {
+          "x": 204,
+          "y": 84
+        },
+        {
+          "x": 166,
+          "y": 84
+        }
+      ],
+      "walkToPoint": {
+        "x": 184,
+        "y": 170
+      },
+      "lookAtPoint": {
+        "x": 185,
+        "y": 84
+      }
     }
   ],
   "points": [],
@@ -1269,6 +1301,116 @@
       },
       "zIndex": 41,
       "baseline": 999
+    },
+    {
+      "id": "termo_0",
+      "tag": "termo_0",
+      "animations": {
+        "termo_0": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "termo_1",
+      "tag": "termo_1",
+      "animations": {
+        "termo_1": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "termo_2",
+      "tag": "termo_2",
+      "animations": {
+        "termo_2": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "termo_3",
+      "tag": "termo_3",
+      "animations": {
+        "termo_3": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "termo_4",
+      "tag": "termo_4",
+      "animations": {
+        "termo_4": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "termo_5",
+      "tag": "termo_5",
+      "animations": {
+        "termo_5": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "termo_6",
+      "tag": "termo_6",
+      "animations": {
+        "termo_6": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "termo_7",
+      "tag": "termo_7",
+      "animations": {
+        "termo_7": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "termo_8",
+      "tag": "termo_8",
+      "animations": {
+        "termo_8": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "termo_9",
+      "tag": "termo_9",
+      "animations": {
+        "termo_9": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

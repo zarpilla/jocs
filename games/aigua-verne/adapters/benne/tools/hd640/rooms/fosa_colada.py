@@ -47,7 +47,7 @@ from hd.rooms.exterior import fbm
 from hd640.rooms import fosa_colada_pla_comu as PL
 from hd640.rooms.ferrum_comu import (RH, SLAGF, SOOT, MORTAR, COB, COAL, IRONF, PLANKF, RUSTF, nave_wall, crane_rail)
 from hd640.rooms.fosa_forn import (_brick, _terra, _local, _peu, cilindre, columna, tronc, lingots, lingoteres,
-                                   carretilla, tenalles, escoria)
+                                   carretilla, tenalles, escoria, _dial)
 from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 BOTTOM = RH - 1
@@ -854,9 +854,26 @@ def _frames_bolca():
     return out
 
 
+REP = (470.0, 178.0, ZB - 2)                        # el repetidor del termòmetre: a la paret del fons, a la dreta del pas
+REP_K = 2.0                                         # (la mida del dial: unitats del món per píxel del dibuix pla)
+
+
+def _repetidor(temp):
+    """El repetidor del termòmetre del forn, a la paret del fons, a la dreta del pas (el capil·lar hi arriba del forn
+    resseguint la paret): l'agulla a `temp`. Una capa per grau (`termo_<t>`, de 0 a 9), perquè des d'aquí, on es mou la
+    grua, es vegi com es refreda el forn. (No a la columna: la capa del davant de la columna el tapa.)"""
+    def draw(e):
+        x, y, z = REP
+        e.cable('capil_rep', [(PAS[1] + 4, y - 4, z), (x - 30, y - 4, z)], IRONF, 2.6, gruix=1.4)
+        img, peu = _dial(0, 0.0, temp)
+        e.sprite('repetidor', img, peu, (x, y, z), escala_img=REP_K)
+    return draw
+
+
 PROPS = {'motlle_posat': _prop(_motlle_buit), 'motlle_preparat': _prop(_motlle_ple),
          'gresol_ple': _llum_fos('llit'), 'gresol_ple_canal': _llum_fos('canal'), 'claus_fetes': _prop(_claus_roents),
-         **{f'gresol_{x}_{y}': _quiet(x, y) for x, y in POSICIONS}}
+         **{f'gresol_{x}_{y}': _quiet(x, y) for x, y in POSICIONS},
+         **{f'termo_{t}': _prop(_repetidor(t)) for t in range(10)}}
 
 
 # ─── L'ambient: la pols dels feixos, el fum del pas, les cadenes i el llum de taller ───
@@ -1118,6 +1135,9 @@ GEOMETRIA = {
                       'walk': _p(PENDANT[0] - 6, PENDANT[1] - 92)},
         'llit': {'rect': _rect_mon(*[(x, 0, z) for x, z in _LP], *[(x, 16, z) for x, z in _LP]),
                  'walk': _p(BED[0] - 30, BED[1] - BED[3] / 2 - 40)},
+        'termometre': {'rect': (lambda c, r: (round(c[0] - r), round(c[1] - r), round(c[0] + r), round(c[1] + r)))(
+            CAM.projecta(REP), 17 * REP_K * CAM.escala(REP)),
+            'walk': _p(REP[0], ZB - 60)},
         'sorra_pedra': {'rect': _rect_mon((SORRA[0] - 140, 110, SORRA[1] - 50), (XW, 0, SORRA[1] - 50)),
                         'walk': _p(SORRA[0] - 120, SORRA[1] - 110)},
     },

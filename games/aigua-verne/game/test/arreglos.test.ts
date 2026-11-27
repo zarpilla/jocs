@@ -5,7 +5,7 @@
  */
 import { describe, expect, it } from 'vitest';
 import type { ResolvedLine } from '@aventura/narrative-core';
-import { amb, anar, partida } from './partida.js';
+import { amb, anar, partida, viatjar } from './partida.js';
 import { acte1, acte2 } from './cami.js';
 
 const vet = { kind: 'character' as const, id: 'vet' };
@@ -119,5 +119,34 @@ describe('Aigua Verne: arreglos de la passada tàctil', () => {
     p.talk('teclat', 'tecleja', ...lletres('TITUS'), 'accepta');
     expect(n.flag('caixa_oberta')).toBe(true);
     expect(p.inventory('iri')).toContain('escriptura');
+  });
+  it('donar o fer servir la carta de la Juana amb en Bru obre la conversa (tasca 114)', () => {
+    const { n, p, world } = partida();
+    acte1(p, n);
+    viatjar(p, n, 'ferrum');
+    anar(p, n, 'ferrum_sindicat');
+    const bru = { kind: 'character' as const, id: 'bru' };
+    for (const verb of ['give', 'use']) {
+      expect(n.peek({ verb, target: bru, item: 'carta_juana', room: world.room! })?.dialogue).toBe('bru');
+    }
+  });
+
+  it('la colada: un moviment de la grua que no es pot fer no refreda el forn (tasca 110)', () => {
+    const { n, p } = partida();
+    n.apply([{ setFlag: 'sync_colada' }, { setVar: 'temperatura', value: 8 }, { setVar: 'gresol', value: 'llit' }]);
+    amb(p, 'iri');
+    p.goTo('fosa_colada');
+    p.talk('grua', 'amunt_ja', 'dreta_final');
+    expect(n.getVar('temperatura')).toBe(8);
+    p.talk('grua', 'esquerra');
+    expect(n.getVar('temperatura')).toBe(7);
+  });
+  it('subhasta a 31: la pista i la Vet apunten a la reserva (tasca 140)', () => {
+    const { n, p } = partida();
+    n.apply([{ setFlag: 'sync_subhasta' }, { setVar: 'valvules', value: 3 }, { setVar: 'preu_aigua', value: 31 }]);
+    amb(p, 'vet');
+    p.goTo('palau_control');
+    expect(n.activeHints()).toContain('reserva_vet');
+    expect(textos(p.do('look', 'palanca'))).toMatch(/no baixa de trenta/);
   });
 });
