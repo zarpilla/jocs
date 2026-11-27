@@ -64,7 +64,16 @@
             {
               "who": "player",
               "text": "sala.passadis_baix.porta_maquines.6",
-              "sound": "cops"
+              "sound": "cops",
+              "stage": [
+                {
+                  "who": "player",
+                  "face": "U"
+                },
+                {
+                  "shake": 0.5
+                }
+              ]
             },
             {
               "who": "player",

@@ -402,6 +402,15 @@ def sense_travesser(cv):
         cv.put(tx, y, DARK, 0.4, lit=0)
     cv.put(tx, LL_RAIL + 2, STEEL, 6.2)
     cv.put(tx, LL_RAIL - 1, STEEL, 6.6)
+    # sense el travesser, la malla cedeix: penja per sota del bastidor, amb la seva ombra
+    for x in range(tx - 9, tx + 10):
+        sag = int(round(4 * (1 - ((x - tx) / 9.5) ** 2)))
+        for y in range(LL_BOT, LL_BOT + sag + 1):
+            if (x + y) % 3 == 0:
+                cv.put(x, y, STEEL, 3.6 - (y - LL_BOT) * 0.3)
+            else:
+                cv.put(x, y, PAD, 2.0 - (y - LL_BOT) * 0.25)
+        cv.put(x, LL_BOT + sag + 1, DARK, 0.5, lit=0)
 
 
 def mantes(cv):

@@ -12,7 +12,20 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.bastida1.arriba.2"
+          "text": "dlg.bastida1.arriba.2",
+          "stage": [
+            {
+              "who": "bastida",
+              "walk": {
+                "x": 186,
+                "y": 222
+              }
+            },
+            {
+              "who": "bastida",
+              "face": "R"
+            }
+          ]
         },
         {
           "who": "bastida",
@@ -20,7 +33,13 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.bastida1.arriba.4"
+          "text": "dlg.bastida1.arriba.4",
+          "stage": [
+            {
+              "who": "bastida",
+              "face": "R"
+            }
+          ]
         },
         {
           "who": "bastida",
@@ -60,7 +79,17 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.bastida1.arriba.14"
+          "text": "dlg.bastida1.arriba.14",
+          "stage": [
+            {
+              "who": "iri",
+              "walk": "sensor"
+            },
+            {
+              "who": "iri",
+              "face": "U"
+            }
+          ]
         },
         {
           "who": "title",

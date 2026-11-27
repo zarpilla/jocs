@@ -448,11 +448,23 @@
             },
             {
               "who": "player",
-              "text": "sala.coberta_popa.plataforma.1"
+              "text": "sala.coberta_popa.plataforma.1",
+              "stage": [
+                {
+                  "who": "bastida",
+                  "face": "U"
+                }
+              ]
             },
             {
               "who": "narrator",
-              "text": "sala.coberta_popa.plataforma.2"
+              "text": "sala.coberta_popa.plataforma.2",
+              "stage": [
+                {
+                  "who": "bastida",
+                  "face": "D"
+                }
+              ]
             }
           ],
           "effects": [
