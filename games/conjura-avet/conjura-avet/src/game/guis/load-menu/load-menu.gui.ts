@@ -7,26 +7,33 @@ import { narrative } from '../../narrative/narrative';
 const SLOTS = 5
 let selected = 0
 
-function firstUsedSlot(): number {
+/** La partida desada més recent (o la posició 0 si no n'hi ha cap): la que es tria en obrir el menú (tasca 251). */
+function latestSlot(): number {
+  let best = 0
+  let when = -Infinity
   for (let i = 0; i < SLOTS; i++) {
-    if (saves.get(i)) return i
+    const t = saves.get(i)?.timestamp
+    if (t !== undefined && t > when) {
+      best = i
+      when = t
+    }
   }
-  return 0
+  return best
 }
 
-/** Repaints the rows. `autoSelect` picks the first used slot (or 0 if none). */
+/** Repaints the rows. `autoSelect` picks the most recent save (or 0 if none). */
 function refresh(autoSelect: boolean) {
   for (let i = 0; i < SLOTS; i++) {
     loadList.setRowText(i, saves.get(i)?.name ?? `(Posició ${i + 1}: buida)`)
   }
-  if (autoSelect) selected = firstUsedSlot()
+  if (autoSelect) selected = latestSlot()
   loadList.selectedIndex = selected
   loadBtn.enabled = saves.get(selected) != null
 }
 
-// Built once per room; the saves can change in between, so re-read them whenever it opens.
+// Built once per room; the saves can change in between, so re-read them whenever it opens (and pick the latest).
 gui.onBuilt(() => refresh(true))
-gui.onShow(() => refresh(false))
+gui.onShow(() => refresh(true))
 
 loadList.onSelect((i) => {
   selected = i

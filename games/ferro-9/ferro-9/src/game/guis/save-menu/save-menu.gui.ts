@@ -1,6 +1,6 @@
-import { saves } from '@benne/script';
+import { onUpdate, saves } from '@benne/script';
 import { guis } from '@game';
-import { gui, backBtn, saveBtn, saveName, savedList } from './save-menu.ids';
+import { gui, backBtn, instructions, saveBtn, saveName, savedList } from './save-menu.ids';
 import { narrative } from '../../narrative/narrative';
 
 /** Five fixed slots (0–4). */
@@ -39,8 +39,12 @@ let nomEscrit = false
 let proposat = ''
 
 // Saving is refused while a scene or a conversation is running (`saves.canSaveNow`). No cal escriure cap nom.
+// Aleshores les instruccions diuen per què (tasca 229): el joc està aturat darrere el menú, i la línia no acabarà.
 function syncSaveButton() {
-  saveBtn.enabled = saves.canSaveNow
+  const pot = saves.canSaveNow
+  if (saveBtn.enabled !== pot) saveBtn.enabled = pot
+  const text = narrative.t(pot ? 'ui.desar.instruccions' : 'ui.desar.espera')
+  if (instructions.text !== text) instructions.text = text
 }
 
 /**
@@ -66,6 +70,9 @@ function refresh(autoSelect: boolean) {
 
 gui.onBuilt(() => refresh(true))
 gui.onShow(() => refresh(false))
+onUpdate(() => {
+  if (gui.visible) syncSaveButton()
+})
 
 savedList.onSelect((i) => {
   selected = i
