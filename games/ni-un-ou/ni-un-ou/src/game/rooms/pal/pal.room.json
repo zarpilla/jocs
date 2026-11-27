@@ -203,8 +203,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 361,
-        "y": 249
+        "x": 304,
+        "y": 227
       },
       "lookAtPoint": {
         "x": 352,
@@ -424,6 +424,52 @@
       },
       "zIndex": 25,
       "baseline": 999
+    },
+    {
+      "id": "antena_lliure__davant_antena",
+      "tag": "antena_lliure__davant_antena",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "antena_lliure__davant_antena": {}
+      },
+      "zIndex": 21,
+      "baseline": 228
+    },
+    {
+      "id": "antena_ok__davant_antena",
+      "tag": "antena_ok__davant_antena",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "antena_ok__davant_antena": {}
+      },
+      "zIndex": 21,
+      "baseline": 228
+    },
+    {
+      "id": "antena_lliure",
+      "tag": "antena_lliure",
+      "animations": {
+        "antena_lliure": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "antena_ok",
+      "tag": "antena_ok",
+      "animations": {
+        "antena_ok": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

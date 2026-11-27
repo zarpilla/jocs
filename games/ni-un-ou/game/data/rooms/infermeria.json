@@ -168,7 +168,14 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "sala.infermeria.28"
+          "text": "sala.infermeria.28",
+          "stage": [
+            {
+              "who": "vet",
+              "walk": "llitera",
+              "wait": false
+            }
+          ]
         },
         {
           "who": "juana",
@@ -176,7 +183,17 @@
         },
         {
           "who": "vet",
-          "text": "sala.infermeria.30"
+          "text": "sala.infermeria.30",
+          "stage": [
+            {
+              "who": "vet",
+              "walk": "llitera"
+            },
+            {
+              "who": "vet",
+              "face": "U"
+            }
+          ]
         }
       ],
       "dialogue": "juana"

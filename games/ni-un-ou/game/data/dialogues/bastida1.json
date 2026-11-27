@@ -68,10 +68,19 @@
         {
           "who": "bastida",
           "text": "dlg.bastida1.arriba.11"
-        },
+        }
+      ],
+      "goto": "cisalla"
+    },
+    "cisalla": {
+      "lines": [
         {
           "who": "bastida",
           "text": "dlg.bastida1.arriba.13"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bastida1.arriba.15"
         },
         {
           "who": "narrator",

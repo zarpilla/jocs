@@ -427,7 +427,7 @@
             "room": "coberta_popa",
             "path": [
               {
-                "x": 170,
+                "x": 250,
                 "y": 226,
                 "face": "U"
               },
@@ -437,7 +437,7 @@
                 "face": "U"
               }
             ],
-            "pause": 2.5
+            "pause": 6
           }
         ],
         "place": [
@@ -4366,7 +4366,14 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "sala.infermeria.28"
+                "text": "sala.infermeria.28",
+                "stage": [
+                  {
+                    "who": "vet",
+                    "walk": "llitera",
+                    "wait": false
+                  }
+                ]
               },
               {
                 "who": "juana",
@@ -4374,7 +4381,17 @@
               },
               {
                 "who": "vet",
-                "text": "sala.infermeria.30"
+                "text": "sala.infermeria.30",
+                "stage": [
+                  {
+                    "who": "vet",
+                    "walk": "llitera"
+                  },
+                  {
+                    "who": "vet",
+                    "face": "U"
+                  }
+                ]
               }
             ],
             "dialogue": "juana"
@@ -6722,6 +6739,24 @@
           }
         },
         "decor": {
+          "antena_lliure": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "antena_desbloquejada"
+                },
+                {
+                  "flag": "antena_ok",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "antena_ok": {
+            "visibleIf": {
+              "flag": "antena_ok"
+            }
+          },
           "fosc": {
             "visibleIf": {
               "all": [
@@ -11791,6 +11826,14 @@
                     "sound": "bomba",
                     "stage": [
                       {
+                        "prop": "terra_sec",
+                        "visible": true,
+                        "fade": 4
+                      },
+                      {
+                        "shake": 0.6
+                      },
+                      {
                         "who": "bastida",
                         "visible": false
                       }
@@ -11800,6 +11843,14 @@
                     "who": "narrator",
                     "text": "sala.sala_maquines.quadre.16",
                     "stage": [
+                      {
+                        "prop": "aigua",
+                        "visible": false
+                      },
+                      {
+                        "prop": "terra_sec",
+                        "visible": false
+                      },
                       {
                         "who": "bastida",
                         "at": {
@@ -12441,6 +12492,13 @@
                   "is": false
                 }
               ]
+            }
+          },
+          "terra_sec": {
+            "visibleIf": {
+              "var": "escena",
+              "op": "==",
+              "value": -1
             }
           },
           "valvula_tancada": {
@@ -17170,7 +17228,17 @@
           {
             "who": "narrator",
             "text": "final.1",
-            "room": "final_galway"
+            "room": "final_galway",
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              },
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -17564,19 +17632,57 @@
               {
                 "setFlag": "tele_apagada"
               }
+            ],
+            "stage": [
+              {
+                "who": "diu",
+                "face": "L"
+              },
+              {
+                "prop": "tele_apagada",
+                "visible": true
+              }
+            ],
+            "stageAfter": [
+              {
+                "who": "diu",
+                "visible": false
+              }
             ]
           },
           {
             "who": "iri",
-            "text": "final.53"
+            "text": "final.53",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "vet",
-            "text": "final.54"
+            "text": "final.54",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "narrator",
-            "text": "final.55"
+            "text": "final.55",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "U"
+              },
+              {
+                "who": "vet",
+                "face": "U"
+              }
+            ]
           }
         ],
         "credits": [
@@ -17668,7 +17774,17 @@
           {
             "who": "narrator",
             "text": "final.1",
-            "room": "final_galway"
+            "room": "final_galway",
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              },
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -18062,19 +18178,57 @@
               {
                 "setFlag": "tele_apagada"
               }
+            ],
+            "stage": [
+              {
+                "who": "diu",
+                "face": "L"
+              },
+              {
+                "prop": "tele_apagada",
+                "visible": true
+              }
+            ],
+            "stageAfter": [
+              {
+                "who": "diu",
+                "visible": false
+              }
             ]
           },
           {
             "who": "iri",
-            "text": "final.53"
+            "text": "final.53",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "vet",
-            "text": "final.54"
+            "text": "final.54",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "narrator",
-            "text": "final.55"
+            "text": "final.55",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "U"
+              },
+              {
+                "who": "vet",
+                "face": "U"
+              }
+            ]
           }
         ],
         "credits": [
@@ -18170,7 +18324,17 @@
           {
             "who": "narrator",
             "text": "final.1",
-            "room": "final_galway"
+            "room": "final_galway",
+            "stage": [
+              {
+                "who": "vet",
+                "face": "L"
+              },
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -18564,19 +18728,57 @@
               {
                 "setFlag": "tele_apagada"
               }
+            ],
+            "stage": [
+              {
+                "who": "diu",
+                "face": "L"
+              },
+              {
+                "prop": "tele_apagada",
+                "visible": true
+              }
+            ],
+            "stageAfter": [
+              {
+                "who": "diu",
+                "visible": false
+              }
             ]
           },
           {
             "who": "iri",
-            "text": "final.53"
+            "text": "final.53",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "L"
+              }
+            ]
           },
           {
             "who": "vet",
-            "text": "final.54"
+            "text": "final.54",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "R"
+              }
+            ]
           },
           {
             "who": "narrator",
-            "text": "final.55"
+            "text": "final.55",
+            "stage": [
+              {
+                "who": "iri",
+                "face": "U"
+              },
+              {
+                "who": "vet",
+                "face": "U"
+              }
+            ]
           }
         ],
         "credits": [
@@ -19020,7 +19222,28 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.bastida.nus.2"
+                "text": "dlg.bastida.nus.2",
+                "stage": [
+                  {
+                    "who": "bastida",
+                    "walk": "grua"
+                  },
+                  {
+                    "who": "bastida",
+                    "face": "L"
+                  },
+                  {
+                    "who": "vet",
+                    "walk": {
+                      "x": 172,
+                      "y": 222
+                    }
+                  },
+                  {
+                    "who": "vet",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "bastida",
@@ -19500,10 +19723,19 @@
               {
                 "who": "bastida",
                 "text": "dlg.bastida1.arriba.11"
-              },
+              }
+            ],
+            "goto": "cisalla"
+          },
+          "cisalla": {
+            "lines": [
               {
                 "who": "bastida",
                 "text": "dlg.bastida1.arriba.13"
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.bastida1.arriba.15"
               },
               {
                 "who": "narrator",
@@ -21018,7 +21250,13 @@
             "lines": [
               {
                 "who": "marcel",
-                "text": "dlg.marcel.revisio.1"
+                "text": "dlg.marcel.revisio.1",
+                "stage": [
+                  {
+                    "who": "marcel",
+                    "face": "L"
+                  }
+                ]
               }
             ],
             "goto": "revisio_menu"
@@ -22598,11 +22836,43 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.reunio.inici.2"
+                "text": "dlg.reunio.inici.2",
+                "stage": [
+                  {
+                    "who": "capitana",
+                    "face": "L"
+                  },
+                  {
+                    "who": "bastida",
+                    "face": "L"
+                  },
+                  {
+                    "who": "marcel",
+                    "face": "L"
+                  },
+                  {
+                    "who": "tomas",
+                    "face": "L"
+                  },
+                  {
+                    "who": "juana",
+                    "face": "L"
+                  },
+                  {
+                    "who": "nadia",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "narrator",
-                "text": "dlg.reunio.inici.3"
+                "text": "dlg.reunio.inici.3",
+                "stage": [
+                  {
+                    "who": "tomas",
+                    "face": "D"
+                  }
+                ]
               }
             ],
             "goto": "qui"
@@ -22664,18 +22934,36 @@
             "lines": [
               {
                 "who": "marcel",
-                "text": "dlg.reunio.marcel.1"
+                "text": "dlg.reunio.marcel.1",
+                "stage": [
+                  {
+                    "who": "marcel",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "narrator",
                 "text": "dlg.reunio.marcel.2",
                 "if": {
                   "flag": "aliat_marcel"
-                }
+                },
+                "stage": [
+                  {
+                    "who": "marcel",
+                    "face": "R"
+                  }
+                ]
               },
               {
                 "who": "vet",
-                "text": "dlg.reunio.marcel.3"
+                "text": "dlg.reunio.marcel.3",
+                "stage": [
+                  {
+                    "who": "marcel",
+                    "face": "D"
+                  }
+                ]
               }
             ],
             "goto": "qui"
@@ -22684,11 +22972,23 @@
             "lines": [
               {
                 "who": "nadia",
-                "text": "dlg.reunio.nadia.1"
+                "text": "dlg.reunio.nadia.1",
+                "stage": [
+                  {
+                    "who": "nadia",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "vet",
-                "text": "dlg.reunio.nadia.2"
+                "text": "dlg.reunio.nadia.2",
+                "stage": [
+                  {
+                    "who": "nadia",
+                    "face": "D"
+                  }
+                ]
               }
             ],
             "goto": "qui"
@@ -22697,15 +22997,33 @@
             "lines": [
               {
                 "who": "tomas",
-                "text": "dlg.reunio.tomas.1"
+                "text": "dlg.reunio.tomas.1",
+                "stage": [
+                  {
+                    "who": "tomas",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "narrator",
-                "text": "dlg.reunio.tomas.2"
+                "text": "dlg.reunio.tomas.2",
+                "stage": [
+                  {
+                    "who": "tomas",
+                    "face": "R"
+                  }
+                ]
               },
               {
                 "who": "vet",
-                "text": "dlg.reunio.tomas.3"
+                "text": "dlg.reunio.tomas.3",
+                "stage": [
+                  {
+                    "who": "tomas",
+                    "face": "D"
+                  }
+                ]
               }
             ],
             "goto": "qui"
@@ -22714,11 +23032,23 @@
             "lines": [
               {
                 "who": "capitana",
-                "text": "dlg.reunio.capitana.1"
+                "text": "dlg.reunio.capitana.1",
+                "stage": [
+                  {
+                    "who": "capitana",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "vet",
-                "text": "dlg.reunio.capitana.2"
+                "text": "dlg.reunio.capitana.2",
+                "stage": [
+                  {
+                    "who": "capitana",
+                    "face": "D"
+                  }
+                ]
               }
             ],
             "goto": "qui"
@@ -22727,7 +23057,13 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "dlg.reunio.bastida.1"
+                "text": "dlg.reunio.bastida.1",
+                "stage": [
+                  {
+                    "who": "bastida",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "bastida",
@@ -23047,7 +23383,33 @@
                   "var": "proves",
                   "op": ">=",
                   "value": 3
-                }
+                },
+                "stage": [
+                  {
+                    "who": "capitana",
+                    "face": "R"
+                  },
+                  {
+                    "who": "bastida",
+                    "face": "R"
+                  },
+                  {
+                    "who": "marcel",
+                    "face": "R"
+                  },
+                  {
+                    "who": "tomas",
+                    "face": "R"
+                  },
+                  {
+                    "who": "juana",
+                    "face": "R"
+                  },
+                  {
+                    "who": "nadia",
+                    "face": "R"
+                  }
+                ]
               }
             ],
             "choices": [
@@ -26259,7 +26621,7 @@
       "dlg.capitana.pont3.2": "I fes via, Iri. Vull avisar l'oficina.",
       "dlg.capitana.esc6.1": "La Juana sempre torna, doctora. Sempre.",
       "dlg.capitana.registre.1": "La Vet posa la pàgina del registre al costat del contracte de Blau Net.",
-      "dlg.capitana.registre.2": "La Capitana les mira molta estona. S'asseu. No diu res.",
+      "dlg.capitana.registre.2": "La Capitana les mira molta estona. Es recolza a l'escriptori. No diu res.",
       "dlg.capitana.registre.3": "Una periodista que ven el que sent, i una fundació que la hi va posar. Doctora, he estat molt burra.",
       "dlg.capitana.registre.4": "Blau Net. «Per un mar més net, junts». Junts.",
       "dlg.capitana.registre.5": "Galway. I que el guardacostes ens vingui a buscar nedant.",
@@ -26420,7 +26782,7 @@
       "dlg.juana.valvula.1": "El metge d'abans va plegar de cop. Tu vas arribar de cop.",
       "dlg.juana.valvula.2": "I per això soc l'única que no sap res. Ni on és la proa.",
       "dlg.juana.valvula.3": "Ets a la proa.",
-      "dlg.juana.valvula.4": "La Juana tanca el llibre. S'ho pensa.",
+      "dlg.juana.valvula.4": "La Juana s'ho pensa.",
       "dlg.juana.valvula.5": "Aquesta nit he baixat al Punt 7, amb la zòdiac. Al costat hi ha una plataforma que no surt a cap mapa.",
       "dlg.juana.valvula.6": "Al fang hi ha el marcador químic que Skarn posa als seus residus. Els de la mina que diuen que tracten a terra.",
       "dlg.juana.valvula.7": "N'he agafat una mostra. L'he etiquetada Mostra 7. I l'he posada on ningú no la buscarà.",
@@ -26704,6 +27066,7 @@
       "dlg.bastida1.arriba.11": "Demà en parlem amb la Capitana. Ves a dormir.",
       "dlg.bastida1.arriba.12": "En Diu, assegut damunt d'un tub calent, mira en Bastida molta estona.",
       "dlg.bastida1.arriba.13": "I la cisalla, al taller. Que no és teva.",
+      "dlg.bastida1.arriba.15": "L'Iri li dona la cisalla.",
       "aliat.capitana": "La Capitana està amb vosaltres. Aliats: {aliats} de 4.",
       "aliat.nadia": "La Nadia està amb vosaltres. Aliats: {aliats} de 4.",
       "aliat.marcel": "El Marcel està amb vosaltres. Aliats: {aliats} de 4.",
@@ -26850,10 +27213,10 @@
       "final.49": "I que el cap de màquines es jubila. Que la plaça és meva.",
       "final.50": "Felicitats, cap.",
       "final.51": "I tindreu metgessa.",
-      "final.52": "En Diu salta damunt la taula i mossega el cable de la tele. La pantalla s'apaga a mitja notícia.",
+      "final.52": "En Diu salta de la taula al pal del tendal i mossega el cable de la tele. La pantalla s'apaga a mitja notícia.",
       "final.53": "Diu!",
       "final.54": "Deixa'l. Ja hem vist prou notícies.",
-      "final.55": "Les dues es queden mirant la badia, sense dir res. El sol surt per darrere seu, per damunt de la ciutat, i encén primer el pal de l'Arenga i després l'aigua.",
+      "final.55": "Les dues es giren cap a la badia, i s'hi queden mirant, sense dir res. El sol, que acaba de sortir per darrere el far, encén el pal de l'Arenga i l'aigua.",
       "final.56": "Una aventura gràfica feta amb males herbes · malaherbasoft.cat",
       "final.credits.1": "Amb la col·laboració del motor de l'Arenga, molt expressiu.",
       "final.credits.2": "Cap gat no va obrir cap vàlvula durant la producció d'aquest joc. No té polzes.",
@@ -27847,7 +28210,7 @@
       "sala.infermeria.8": "En Tomàs. Farina fins a les orelles. Res que no quadri.",
       "sala.infermeria.9": "En Bastida, recolzat a la llitera. Mira la porta més que a mi.",
       "sala.infermeria.10": "La Juana, amb dues mantes. Ja no tremola.",
-      "sala.infermeria.12": "A la infermeria, la Vet s'incorpora, amb els ulls plens de son.",
+      "sala.infermeria.12": "A la infermeria, la Vet es frega els ulls, plens de son.",
       "sala.infermeria.13": "Una barra de metall. D'un pam i mig. A les quatre de la matinada.",
       "sala.infermeria.14": "On és la proa, aquí? Bé. És igual.",
       "sala.infermeria.15": "Vet. Vull veure el cable de la ràdio abans que l'Ernest l'arregli.",
@@ -28067,7 +28430,7 @@
       "sala.coberta_popa.7": "L'Arenga té quaranta anys, Iri. Les vàlvules velles fan coses.",
       "sala.coberta_popa.8": "Si l'Ernest diu que és vella, és vella. Port Hallen.",
       "sala.coberta_popa.9": "L'Iri baixa a màquines sense acabar-se el cafè.",
-      "sala.coberta_popa.10": "En Bastida s'aixeca a trincar la zòdiac de la nit, que encara penja de la grua. Hi fa el nus Bastida, a poc a poc.",
+      "sala.coberta_popa.10": "En Bastida va a trincar la zòdiac de la nit, que encara penja de la grua. Hi fa el nus Bastida, a poc a poc.",
       "sala.coberta_popa.11": "Aquest és el famós nus Bastida?",
       "sala.coberta_popa.12": "El sap fer tothom. Ens el va ensenyar a tots.",
       "sala.coberta_popa.13": "Ernest, hi has fet una volta de més. L'he comptada. Soc metgessa: compto coses.",

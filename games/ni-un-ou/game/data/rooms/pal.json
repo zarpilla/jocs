@@ -263,6 +263,24 @@
     }
   },
   "decor": {
+    "antena_lliure": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "antena_desbloquejada"
+          },
+          {
+            "flag": "antena_ok",
+            "is": false
+          }
+        ]
+      }
+    },
+    "antena_ok": {
+      "visibleIf": {
+        "flag": "antena_ok"
+      }
+    },
     "fosc": {
       "visibleIf": {
         "all": [

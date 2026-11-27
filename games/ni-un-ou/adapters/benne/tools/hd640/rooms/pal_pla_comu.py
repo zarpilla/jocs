@@ -249,7 +249,9 @@ def flag(cv, t=0):
 
 # ─── L'antena del satèl·lit ────────────────────────────────────────────────
 
-def antenna(cv):
+def antenna(cv, ok=False, gir=0):
+    """L'antena. `ok`: orientada (el pilot, verd); `gir`: quants píxels ha girat la cúpula (l'adhesiu i la fletxa de
+    proa es desplacen: s'ha girat cap al satèl·lit)."""
     cx = ANT_X
     vpipe(cv, cx, 139, FLOOR_Y + 3, 7, MASTW, 4.4)                  # el pedestal
     for y in (168, FLOOR_Y - 3):
@@ -259,9 +261,10 @@ def antenna(cv):
             bolt(cv, bx, y + 2, MASTW, 4.6)
     # la caixa del motor que l'orienta, amb el pilot ambre (desorientada) i la reixeta
     box(cv, cx - 16, 147, cx + 16, 165, MASTW, 4.2, grad=0.8)
-    cv.flat(cx + 9, 152, (255, 120, 40))
-    cv.flat(cx + 10, 152, (230, 100, 30))
-    glow(cv, cx + 9, 152, 5, (255, 140, 60), 0.5)
+    pilot = ((60, 255, 110), (40, 220, 90), (90, 255, 140)) if ok else ((255, 120, 40), (230, 100, 30), (255, 140, 60))
+    cv.flat(cx + 9, 152, pilot[0])
+    cv.flat(cx + 10, 152, pilot[1])
+    glow(cv, cx + 9, 152, 5, pilot[2], 0.5)
     for x in range(cx - 12, cx + 5, 3):
         cv.vline(x, 155, 161, MASTW, 2.6)
     box(cv, cx - 14, 149, cx - 8, 152, WHITEP, 4.4, edge=False)     # l'etiqueta
@@ -293,10 +296,12 @@ def antenna(cv):
         cv.put(bx, dy - 4, DOME, 5.6, lit=0.5)
     for x, y in ((cx - 19, dy - 40), (cx - 17, dy - 41), (cx - 21, dy - 38), (cx - 16, dy - 42)):
         cv.flat(x, y, (240, 238, 228))                               # reflex de la lluna
-    box(cv, cx - 8, dy - 27, cx + 8, dy - 21, DOME, 6.4, edge=False) # l'adhesiu del fabricant
-    cv.hline(cx - 6, cx + 6, dy - 25, DOME, 4.0)
-    cv.hline(cx - 5, cx + 3, dy - 23, DOME, 4.6)
-    cv.poly([(cx, dy - 5), (cx - 4, dy - 1), (cx + 4, dy - 1)], YELL, 3.6)   # la fletxa de proa
+    sx = cx + gir
+    w = 8 - abs(gir) // 4                                           # (de biaix, més estret)
+    box(cv, sx - w, dy - 27, sx + w, dy - 21, DOME, 6.4, edge=False) # l'adhesiu del fabricant
+    cv.hline(sx - w + 2, sx + w - 2, dy - 25, DOME, 4.0)
+    cv.hline(sx - w + 3, sx + w - 5, dy - 23, DOME, 4.6)
+    cv.poly([(sx, dy - 5), (sx - 4, dy - 1), (sx + 4, dy - 1)], YELL, 3.6)   # la fletxa de proa
 
 
 def knot(cv):

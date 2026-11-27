@@ -75,10 +75,13 @@ BUOY_BOX = (595 - 14, 148, 595 + 15, 176)                            # el salvav
 
 
 @functools.lru_cache(maxsize=None)
-def _textures():
+def _textures(ant=''):
+    """`ant`: l'estat de l'antena: '' (lligada amb el nus, desorientada), 'lliure' (sense el nus) o 'ok' (girada cap
+    al satèl·lit, amb el pilot verd)."""
     def antena(cv):
-        PL.antenna(cv)
-        PL.knot(cv)
+        PL.antenna(cv, ok=ant == 'ok', gir=14 if ant == 'ok' else 0)
+        if not ant:
+            PL.knot(cv)
     return {
         'antena': _pla(antena),
         'pal': _pla(lambda cv: PL.mast(cv)),
@@ -255,13 +258,14 @@ def pal(e, tex, llums=True):
     e.sprite('pal', tex['pal'].crop(sb), ((sb[2] - sb[0]) / 2, sb[3] - sb[1]), (mx + 12, 100, mz - MAST_R - 1), escala_img=K)
 
 
-def antena(e, tex):
+def antena(e, tex, nus=True):
     ax, az = ANT
     _ombra(e, ax, az, 40, 18, 0.5, dx=-18, dz=-10)
     b = ANT_BOX
     e.sprite('antena', tex['antena'].crop(b), (PL.ANT_X - b[0], PL.FLOOR_Y + 3 - b[1]), (ax, 0, az), escala_img=K)
     # el cap del nus, tens fins a la barana del fons
-    e.cable('antena', [(ax + 32, (PL.FLOOR_Y - 139) * K, az - 4), (ax + 120, RAIL_H * 0.8, ZB)], ROPE, 3.4, gruix=1.4)
+    if nus:
+        e.cable('antena', [(ax + 32, (PL.FLOOR_Y - 139) * K, az - 4), (ax + 120, RAIL_H * 0.8, ZB)], ROPE, 3.4, gruix=1.4)
 
 
 def escala(e, llums=True):
@@ -311,8 +315,8 @@ def boia(e, tex):
 
 # ─── Composició ─────────────────────────────────────────────────────────────
 
-def escena(cv, llums=True, flag_t=0.0, bandera_on=True):
-    tex = _textures()
+def escena(cv, llums=True, flag_t=0.0, bandera_on=True, ant=''):
+    tex = _textures(ant)
     _cel(cv)
     avall(cv, 0.0, llums)
     e = Escena(cv, CAM, _llums(llums), ambient=-0.3 if llums else -0.9)
@@ -327,16 +331,16 @@ def escena(cv, llums=True, flag_t=0.0, bandera_on=True):
         e.tub('asta', (ASTA[0], 0, ASTA[1]), (ASTA[0], FLAG_TOP_Y + 14, ASTA[1]), 1.8, MASTW, 4.6, llum_dir=(-0.3, 1.0))
     baranes(e)
     boia(e, tex)
-    antena(e, tex)
+    antena(e, tex, nus=not ant)
     escala(e, llums)
     pal(e, tex, llums)
     obenc(e)
     return e
 
 
-def _render(llums=True, flag_t=0.0, bandera_on=True):
+def _render(llums=True, flag_t=0.0, bandera_on=True, ant=''):
     cv = Canvas(light=LIGHT)
-    e = escena(cv, llums, flag_t, bandera_on)
+    e = escena(cv, llums, flag_t, bandera_on, ant)
     cv.rect(0, BOTTOM + 1, W - 1, H - 1, [(0, 0, 0)], 0, lit=0)
     return cv.img, e
 
@@ -415,6 +419,20 @@ ANIMS = {'vent': {'frames': _frames_vent, 'frameDuration': 110},
 
 # ─── El generador parat (Escena 9) ─────────────────────────────────────────
 
+def _zona_antena():
+    """El requadre de pantalla on els decorats de l'antena canvien alguna cosa (la cúpula, el pilot, el nus i el cap)."""
+    base, _ = _base()
+    xs, ys = [], []
+    for ant in ('lliure', 'ok'):
+        bb = _diff(_render(ant=ant)[0], base).getbbox()
+        if bb:
+            xs += [bb[0], bb[2]]
+            ys += [bb[1], bb[3]]
+    return (min(xs), min(ys), max(xs), max(ys)) if xs else (0, 0, -1, -1)
+
+
+
+
 def fosc(cv):
     """Decorat `fosc`: el focus i els llums d'allà baix, apagats. On hi ha animacions (la bandera, el mar d'allà baix)
     és una capa negra semitransparent, perquè es continuïn movent; la resta, el dibuix a les fosques."""
@@ -424,9 +442,11 @@ def fosc(cv):
     anim = set(_punts_avall())
     x0, y0 = CAM.projecta((ASTA[0] - 120, FLAG_TOP_Y + 30, ASTA[1]))[:2]
     x1, y1 = CAM.projecta((ASTA[0] + 20, FLAG_TOP_Y - 60, ASTA[1]))[:2]
+    ax0, ay0, ax1, ay1 = _zona_antena()
     for y in range(BOTTOM):
         for x in range(W):
-            if (x, y) in anim or (x0 - 10 <= x <= x1 + 10 and y0 - 10 <= y <= y1 + 10 and e.amo[y * W + x] == 0):
+            if ((x, y) in anim or (x0 - 10 <= x <= x1 + 10 and y0 - 10 <= y <= y1 + 10 and e.amo[y * W + x] == 0)
+                    or (ax0 <= x <= ax1 and ay0 <= y <= ay1)):
                 lb = sum(pb[x, y][:3]) + 1
                 a = max(0.0, min(1.0, 1 - sum(pd[x, y][:3]) / lb))
                 if a > 0.02:
@@ -435,7 +455,16 @@ def fosc(cv):
                 o[x, y] = pd[x, y]
 
 
-PROPS = {'fosc': fosc}
+def _antena_decorat(ant):
+    """L'antena en un altre estat (sense el nus, o girada cap al satèl·lit): la diferència amb el fons."""
+    def draw(cv):
+        img, _ = _render(ant=ant)
+        cv.img.alpha_composite(_diff(img, _base()[0]))
+        cv.P = cv.img.load()
+    return draw
+
+
+PROPS = {'fosc': fosc, 'antena_lliure': _antena_decorat('lliure'), 'antena_ok': _antena_decorat('ok')}
 
 
 # ─── Geometria ───────────────────────────────────────────────────────────────
@@ -466,7 +495,8 @@ def _escala_a(v):
 
 FRONT = [
     {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20, 'variants': ('fosc',)},
-    {'id': 'davant_antena', 'mask': _amo({'antena'}), 'baseline': _p(ANT[0], ANT[1] - 14)[1], 'zIndex': 20, 'variants': ('fosc',)},
+    {'id': 'davant_antena', 'mask': _amo({'antena'}), 'baseline': _p(ANT[0], ANT[1] - 14)[1], 'zIndex': 20,
+     'variants': ('antena_lliure', 'antena_ok', 'fosc')},
     {'id': 'davant_pal', 'mask': _amo({'pal'}), 'baseline': _p(MAST[0], MAST[1] - MAST_R)[1], 'zIndex': 20, 'variants': ('fosc',)},
 ]
 
@@ -493,7 +523,7 @@ GEOMETRIA = {
                    'walk': _p(x0_ - 20, z0_ - 14)},
         'antena': {'rect': _rect_mon((ANT[0] - 50, 0, ANT[1]), (ANT[0] + 50, 0, ANT[1]),
                                      (ANT[0] - 50, (PL.FLOOR_Y - 80) * K, ANT[1])),
-                   'walk': _p(ANT[0] + 30, ANT[1] - 70)},
+                   'walk': _p(ANT[0] - 50, ANT[1] - 30)},   # (a l'esquerra del pedestal: davant, tapava el fre i el nus)
         'mar': {'rect': (0, HOR + 6, _p(XL, ZB, RAIL_H)[0] - 6, BOTTOM - 40), 'walk': _p(XL + 40, 470)},
     },
     'spawns': {'iri': _p(240, 450), 'vet': _p(140, 470), 'marcel': _p(490, ZB - 34)},

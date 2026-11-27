@@ -58,7 +58,13 @@
       "lines": [
         {
           "who": "marcel",
-          "text": "dlg.marcel.revisio.1"
+          "text": "dlg.marcel.revisio.1",
+          "stage": [
+            {
+              "who": "marcel",
+              "face": "L"
+            }
+          ]
         }
       ],
       "goto": "revisio_menu"

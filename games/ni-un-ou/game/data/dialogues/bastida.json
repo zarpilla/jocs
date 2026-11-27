@@ -377,7 +377,28 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.bastida.nus.2"
+          "text": "dlg.bastida.nus.2",
+          "stage": [
+            {
+              "who": "bastida",
+              "walk": "grua"
+            },
+            {
+              "who": "bastida",
+              "face": "L"
+            },
+            {
+              "who": "vet",
+              "walk": {
+                "x": 172,
+                "y": 222
+              }
+            },
+            {
+              "who": "vet",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "bastida",

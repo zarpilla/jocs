@@ -25,11 +25,43 @@
         },
         {
           "who": "vet",
-          "text": "dlg.reunio.inici.2"
+          "text": "dlg.reunio.inici.2",
+          "stage": [
+            {
+              "who": "capitana",
+              "face": "L"
+            },
+            {
+              "who": "bastida",
+              "face": "L"
+            },
+            {
+              "who": "marcel",
+              "face": "L"
+            },
+            {
+              "who": "tomas",
+              "face": "L"
+            },
+            {
+              "who": "juana",
+              "face": "L"
+            },
+            {
+              "who": "nadia",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "narrator",
-          "text": "dlg.reunio.inici.3"
+          "text": "dlg.reunio.inici.3",
+          "stage": [
+            {
+              "who": "tomas",
+              "face": "D"
+            }
+          ]
         }
       ],
       "goto": "qui"
@@ -91,18 +123,36 @@
       "lines": [
         {
           "who": "marcel",
-          "text": "dlg.reunio.marcel.1"
+          "text": "dlg.reunio.marcel.1",
+          "stage": [
+            {
+              "who": "marcel",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "narrator",
           "text": "dlg.reunio.marcel.2",
           "if": {
             "flag": "aliat_marcel"
-          }
+          },
+          "stage": [
+            {
+              "who": "marcel",
+              "face": "R"
+            }
+          ]
         },
         {
           "who": "vet",
-          "text": "dlg.reunio.marcel.3"
+          "text": "dlg.reunio.marcel.3",
+          "stage": [
+            {
+              "who": "marcel",
+              "face": "D"
+            }
+          ]
         }
       ],
       "goto": "qui"
@@ -111,11 +161,23 @@
       "lines": [
         {
           "who": "nadia",
-          "text": "dlg.reunio.nadia.1"
+          "text": "dlg.reunio.nadia.1",
+          "stage": [
+            {
+              "who": "nadia",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "vet",
-          "text": "dlg.reunio.nadia.2"
+          "text": "dlg.reunio.nadia.2",
+          "stage": [
+            {
+              "who": "nadia",
+              "face": "D"
+            }
+          ]
         }
       ],
       "goto": "qui"
@@ -124,15 +186,33 @@
       "lines": [
         {
           "who": "tomas",
-          "text": "dlg.reunio.tomas.1"
+          "text": "dlg.reunio.tomas.1",
+          "stage": [
+            {
+              "who": "tomas",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "narrator",
-          "text": "dlg.reunio.tomas.2"
+          "text": "dlg.reunio.tomas.2",
+          "stage": [
+            {
+              "who": "tomas",
+              "face": "R"
+            }
+          ]
         },
         {
           "who": "vet",
-          "text": "dlg.reunio.tomas.3"
+          "text": "dlg.reunio.tomas.3",
+          "stage": [
+            {
+              "who": "tomas",
+              "face": "D"
+            }
+          ]
         }
       ],
       "goto": "qui"
@@ -141,11 +221,23 @@
       "lines": [
         {
           "who": "capitana",
-          "text": "dlg.reunio.capitana.1"
+          "text": "dlg.reunio.capitana.1",
+          "stage": [
+            {
+              "who": "capitana",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "vet",
-          "text": "dlg.reunio.capitana.2"
+          "text": "dlg.reunio.capitana.2",
+          "stage": [
+            {
+              "who": "capitana",
+              "face": "D"
+            }
+          ]
         }
       ],
       "goto": "qui"
@@ -154,7 +246,13 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "dlg.reunio.bastida.1"
+          "text": "dlg.reunio.bastida.1",
+          "stage": [
+            {
+              "who": "bastida",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "bastida",
@@ -474,7 +572,33 @@
             "var": "proves",
             "op": ">=",
             "value": 3
-          }
+          },
+          "stage": [
+            {
+              "who": "capitana",
+              "face": "R"
+            },
+            {
+              "who": "bastida",
+              "face": "R"
+            },
+            {
+              "who": "marcel",
+              "face": "R"
+            },
+            {
+              "who": "tomas",
+              "face": "R"
+            },
+            {
+              "who": "juana",
+              "face": "R"
+            },
+            {
+              "who": "nadia",
+              "face": "R"
+            }
+          ]
         }
       ],
       "choices": [

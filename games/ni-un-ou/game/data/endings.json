@@ -7,7 +7,17 @@
       {
         "who": "narrator",
         "text": "final.1",
-        "room": "final_galway"
+        "room": "final_galway",
+        "stage": [
+          {
+            "who": "vet",
+            "face": "L"
+          },
+          {
+            "who": "iri",
+            "face": "R"
+          }
+        ]
       },
       {
         "who": "narrator",
@@ -401,19 +411,57 @@
           {
             "setFlag": "tele_apagada"
           }
+        ],
+        "stage": [
+          {
+            "who": "diu",
+            "face": "L"
+          },
+          {
+            "prop": "tele_apagada",
+            "visible": true
+          }
+        ],
+        "stageAfter": [
+          {
+            "who": "diu",
+            "visible": false
+          }
         ]
       },
       {
         "who": "iri",
-        "text": "final.53"
+        "text": "final.53",
+        "stage": [
+          {
+            "who": "iri",
+            "face": "L"
+          }
+        ]
       },
       {
         "who": "vet",
-        "text": "final.54"
+        "text": "final.54",
+        "stage": [
+          {
+            "who": "iri",
+            "face": "R"
+          }
+        ]
       },
       {
         "who": "narrator",
-        "text": "final.55"
+        "text": "final.55",
+        "stage": [
+          {
+            "who": "iri",
+            "face": "U"
+          },
+          {
+            "who": "vet",
+            "face": "U"
+          }
+        ]
       }
     ],
     "credits": [
@@ -505,7 +553,17 @@
       {
         "who": "narrator",
         "text": "final.1",
-        "room": "final_galway"
+        "room": "final_galway",
+        "stage": [
+          {
+            "who": "vet",
+            "face": "L"
+          },
+          {
+            "who": "iri",
+            "face": "R"
+          }
+        ]
       },
       {
         "who": "narrator",
@@ -899,19 +957,57 @@
           {
             "setFlag": "tele_apagada"
           }
+        ],
+        "stage": [
+          {
+            "who": "diu",
+            "face": "L"
+          },
+          {
+            "prop": "tele_apagada",
+            "visible": true
+          }
+        ],
+        "stageAfter": [
+          {
+            "who": "diu",
+            "visible": false
+          }
         ]
       },
       {
         "who": "iri",
-        "text": "final.53"
+        "text": "final.53",
+        "stage": [
+          {
+            "who": "iri",
+            "face": "L"
+          }
+        ]
       },
       {
         "who": "vet",
-        "text": "final.54"
+        "text": "final.54",
+        "stage": [
+          {
+            "who": "iri",
+            "face": "R"
+          }
+        ]
       },
       {
         "who": "narrator",
-        "text": "final.55"
+        "text": "final.55",
+        "stage": [
+          {
+            "who": "iri",
+            "face": "U"
+          },
+          {
+            "who": "vet",
+            "face": "U"
+          }
+        ]
       }
     ],
     "credits": [
@@ -1007,7 +1103,17 @@
       {
         "who": "narrator",
         "text": "final.1",
-        "room": "final_galway"
+        "room": "final_galway",
+        "stage": [
+          {
+            "who": "vet",
+            "face": "L"
+          },
+          {
+            "who": "iri",
+            "face": "R"
+          }
+        ]
       },
       {
         "who": "narrator",
@@ -1401,19 +1507,57 @@
           {
             "setFlag": "tele_apagada"
           }
+        ],
+        "stage": [
+          {
+            "who": "diu",
+            "face": "L"
+          },
+          {
+            "prop": "tele_apagada",
+            "visible": true
+          }
+        ],
+        "stageAfter": [
+          {
+            "who": "diu",
+            "visible": false
+          }
         ]
       },
       {
         "who": "iri",
-        "text": "final.53"
+        "text": "final.53",
+        "stage": [
+          {
+            "who": "iri",
+            "face": "L"
+          }
+        ]
       },
       {
         "who": "vet",
-        "text": "final.54"
+        "text": "final.54",
+        "stage": [
+          {
+            "who": "iri",
+            "face": "R"
+          }
+        ]
       },
       {
         "who": "narrator",
-        "text": "final.55"
+        "text": "final.55",
+        "stage": [
+          {
+            "who": "iri",
+            "face": "U"
+          },
+          {
+            "who": "vet",
+            "face": "U"
+          }
+        ]
       }
     ],
     "credits": [
