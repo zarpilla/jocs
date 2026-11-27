@@ -331,6 +331,21 @@ describe('Pistes (revisió)', () => {
     expect(n.getVar('munta_cuina')).toBe('mostra7');
   });
 
+  it("Escena 1: sense haver mirat la vàlvula, el walkie i la pista no envien a trucar", () => {
+    const { n, p } = partida();
+    p.do('pickUp', 'maceta');
+    anar(p, 'passadis_baix');
+    p.use('maceta', 'porta_maquines');
+    anar(p, 'taller');
+    p.do('look', 'tauler');
+    expect(n.flag('silueta_vista')).toBe(true);
+    expect(n.activeHints()).not.toContain('iri_trucada');
+    anar(p, 'sala_maquines');
+    expect(keys(p.do('talkTo', item('walkie')))).toEqual(['dlg.walkie.sala_maquines_aqui.1']);
+    p.do('look', 'valvula');
+    expect(n.activeHints()[0]).toBe('iri_trucada');
+  });
+
   it("Escena 6: obrir l'escotilla de proa (no només mirar-la) fa sentir els cops de dins", () => {
     const { n, p } = partida();
     escena1(p); escena2(p); escena3(p); escena4(p); escena5(p);

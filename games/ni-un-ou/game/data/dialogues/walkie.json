@@ -67,6 +67,31 @@
           },
           {
             "flag": "silueta_vista"
+          },
+          {
+            "inRoom": "sala_maquines"
+          }
+        ]
+      },
+      "node": "sala_maquines_aqui"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 1
+          },
+          {
+            "protagonist": "iri"
+          },
+          {
+            "flag": "vet_desperta",
+            "is": false
+          },
+          {
+            "flag": "silueta_vista"
           }
         ]
       },
@@ -331,6 +356,14 @@
         {
           "who": "player",
           "text": "dlg.walkie.sala_maquines.1"
+        }
+      ]
+    },
+    "sala_maquines_aqui": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.sala_maquines_aqui.1"
         }
       ]
     },
