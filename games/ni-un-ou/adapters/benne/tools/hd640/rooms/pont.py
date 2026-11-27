@@ -700,8 +700,8 @@ GEOMETRIA = {
         'vidre': {'rect': _wall(*PL.WIN), 'walk': _p(_w(320), 246)},
         'timo': {'rect': _WHEEL, 'walk': _p(WHEEL[0] + 4, WHEEL[1] - 26)},
         'terminal': {'rect': (min(_TERM[0], _SAI[0]), _TERM[1], max(_TERM[2], _SAI[2]), _SAI[3]),
-                     'walk': _p(_cx(368), 246)},
-        'impressora': {'rect': _PRINT, 'walk': _p(_cx(436), 246)},
+                     'walk': _p(_cx(326), 246)},          # (al costat: davant, el cos tapava la pantalla)
+        'impressora': {'rect': _PRINT, 'walk': _p(_cx(490), 246)},   # (a la dreta de la cadira, no davant)
         'munta': {'rect': _wall(496, 80, 552, 147), 'walk': _p(_w(524), 276)},
         'safata': {'rect': _wall(501, 128, 547, 143), 'walk': _p(_w(524), 276)},
         'boca': {'rect': _wall(557, 104, 579, 139), 'walk': _p(_w(568), 276)},
