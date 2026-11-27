@@ -357,10 +357,11 @@ def cel(v, e):
         nub = np.array((238, 240, 240)) - (1 - smooth(0.6, 0.8, fbm(X / 30, (Y + 3) / 8, 3)))[..., None] * 30
         rgb = rgb * (1 - k[..., None]) + nub * k[..., None]
     elif e.llum == 'llamp':
-        c0, c1 = np.array((150, 160, 196)), np.array((206, 212, 232))
+        # els núvols de tempesta encesos per dins: blau de pissarra, no el cel de dia
+        c0, c1 = np.array((70, 76, 112)), np.array((132, 140, 176))
         rgb = c0 + (c1 - c0) * t[..., None]
         n = fbm(X / 70, Y / 20, 7, 4)
-        rgb = rgb - (n[..., None] - 0.5) * 90
+        rgb = rgb - (n[..., None] - 0.5) * 110
     elif 'lluna' in e.extres:   # nit clara de primavera
         c0, c1 = np.array((8, 12, 30)), np.array((40, 52, 86))
         rgb = c0 + (c1 - c0) * t[..., None] ** 1.4
@@ -1441,27 +1442,42 @@ def _barra(v, e, p0, p1, g, ramp, lvl, sid):
         v.own[sub][m] = v.idx(sid)
 
 
+# El tros de segell: una gota de cera aixafada de 7×4 píxels, amb la vora de baix fosca (l'ombra al fang) i una
+# lluentor a dalt, perquè es llegeixi com una cosa i no com un punt de soroll. Els dígits són l'índex de la rampa.
+_CERA_DIBUIX = ("  455  ",
+                " 34543 ",
+                "2344432",
+                " 01110 ")
+# On era: el fang remenat i la marca dels dits, de la mateixa mida.
+_CERA_AGAFADA = (" 2 3 2 ",
+                 "1032301",
+                 " 01210 ")
+
+
+def _taca(v, cam, dibuix, ramp, z, sid):
+    """Pinta un dibuix petit (`dibuix`, files de dígits) centrat al punt de la cera."""
+    u, vv, zc = cam.projecta(tuple(CERA_P))
+    h, w = len(dibuix), len(dibuix[0])
+    for fy, fila in enumerate(dibuix):
+        for fx, c in enumerate(fila):
+            if c == ' ':
+                continue
+            X, Y = int(u) + fx - w // 2, int(vv) + fy - (h - 2)
+            if 0 <= X < v.w and 0 <= Y < v.h:
+                v.col[Y, X] = ramp[int(c)]
+                if z:
+                    v.z[Y, X] = zc - 2
+                v.own[Y, X] = v.idx(sid)
+
+
 def cera(v, e, sid='cera'):
-    """El tros de cera vermella al fang del fons del forat: un punt que l'ull ha de trobar."""
-    cam = v.cam
-    u, vv, z = cam.projecta(tuple(CERA_P))
-    for (dx, dy, c) in ((0, 0, 3), (1, 0, 4), (-1, 0, 2), (0, -1, 4), (1, -1, 5), (0, 1, 1), (2, 0, 3), (-1, -1, 3)):
-        X, Y = int(u) + dx, int(vv) + dy
-        if 0 <= X < v.w and 0 <= Y < v.h:
-            v.col[Y, X] = CERA[c]
-            v.z[Y, X] = z - 2
-            v.own[Y, X] = v.idx(sid)
+    """El tros de cera vermella al fang del fons del forat: petit, però que l'ull el trobi."""
+    _taca(v, v.cam, _CERA_DIBUIX, CERA, True, sid)
 
 
 def cera_agafada(v, e, sid='cera_agafada'):
     """On era la cera: el fang remenat (la marca dels dits)."""
-    cam = v.cam
-    u, vv, z = cam.projecta(tuple(CERA_P))
-    for (dx, dy, c) in ((0, 0, 0), (1, 0, 1), (-1, 0, 0), (2, 0, 3), (-2, 0, 2), (0, -1, 3), (1, -1, 4)):
-        X, Y = int(u) + dx, int(vv) + dy
-        if 0 <= X < v.w and 0 <= Y < v.h:
-            v.col[Y, X] = FANG[c]
-            v.own[Y, X] = v.idx(sid)
+    _taca(v, v.cam, _CERA_AGAFADA, FANG, False, sid)
 
 
 # ─── L'abeurador i el primer pla ────────────────────────────────────────────

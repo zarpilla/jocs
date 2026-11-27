@@ -83,15 +83,24 @@ def _llamp_ratlla(img, seed=4, x0=520, x1=470):
 
 @functools.lru_cache(maxsize=None)
 def _flaix(e_nit, e_llamp, protegeix=frozenset(ARBRE)):
-    """El que canvia quan fa llamp (el cel, l'absis, el carrer), sense tocar l'avet (que queda en silueta)."""
+    """El que canvia quan fa llamp (el cel, l'absis, el carrer), sense tocar l'avet (que queda en silueta).
+
+    No és l'escena encesa sencera (semblaria que s'ha fet de dia): és la nit amb una llum blanca i blava al damunt, a
+    `FLAIX` de l'escena encesa, i les finestres continuen enceses."""
     base, v = render(e_nit)
     ll, _ = render(e_llamp)
-    a, b = np.asarray(ll).copy(), np.asarray(base)
-    prot = v.mascara(protegeix)
+    b = np.asarray(base)
+    a = b.astype(np.float64)
+    a[..., :3] += (np.asarray(ll)[..., :3] - a[..., :3]) * FLAIX
+    a = np.clip(np.round(a), 0, 255).astype(np.uint8)
     full = np.zeros((H, W), bool)
-    full[:v.h] = prot
+    full[:v.h] = v.mascara(protegeix) | v.emissiu
     a[full] = b[full]
     return diff(Image.fromarray(a, 'RGBA'), base)
+
+
+# Quant s'acosta el flaix a l'escena encesa pel llamp (1: tota).
+FLAIX = 0.7
 
 
 def llamps(e_nit, e_llamp, n=44, seed=4):

@@ -44,17 +44,17 @@
     },
     "mur_avet 2.aseprite": {
       "frame": {
-        "x": 3660,
+        "x": 3666,
         "y": 360,
-        "w": 4,
+        "w": 6,
         "h": 2
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 100,
+        "x": 99,
         "y": 210,
-        "w": 4,
+        "w": 6,
         "h": 2
       },
       "sourceSize": {
@@ -128,18 +128,18 @@
     },
     "mur_avet 6.aseprite": {
       "frame": {
-        "x": 3664,
+        "x": 3660,
         "y": 360,
-        "w": 4,
-        "h": 2
+        "w": 6,
+        "h": 3
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 101,
-        "y": 210,
-        "w": 4,
-        "h": 2
+        "x": 99,
+        "y": 209,
+        "w": 6,
+        "h": 3
       },
       "sourceSize": {
         "w": 640,
