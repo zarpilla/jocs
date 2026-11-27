@@ -671,3 +671,13 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 259): rectangles de pantalla i el punt on s'hi va.
+GEOMETRIA['things'].update({
+    'consola': {'rect': (175, 93, 250, 138), 'walk': (212, 150)},
+    'pissarra': {'rect': (525, 40, 552, 120), 'walk': (535, 175)},
+    'manometre': {'rect': (511, 66, 524, 82), 'walk': (518, 175)},
+    'galleda': {'rect': (582, 147, 601, 187), 'walk': (575, 195)},
+    'retol': {'rect': (434, 68, 476, 93), 'walk': (440, 172)},
+    'caixes': {'rect': (448, 152, 510, 200), 'walk': (430, 205)},
+})

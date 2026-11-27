@@ -576,6 +576,63 @@
         },
         {
           "verb": [
+            "open",
+            "pull"
+          ],
+          "if": {
+            "flag": "panell_vet_trencat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.panell.obrir_mans"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pull"
+          ],
+          "if": {
+            "flag": "panell_vet_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.panell.obrir_eina"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pull"
+          ],
+          "if": {
+            "flag": "panell_vet_reparat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.panell.obrir_ja"
+            }
+          ]
+        },
+        {
+          "verb": "pull",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.panell.estirar"
+            }
+          ]
+        },
+        {
+          "verb": [
             "pickUp",
             "open"
           ],

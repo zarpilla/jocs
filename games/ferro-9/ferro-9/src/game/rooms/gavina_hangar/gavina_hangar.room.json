@@ -310,6 +310,166 @@
         "y": 222
       },
       "defaultVerb": "open"
+    },
+    {
+      "id": "manega",
+      "active": true,
+      "description": "la mànega contra incendis",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 95,
+          "y": 102
+        },
+        {
+          "x": 124,
+          "y": 102
+        },
+        {
+          "x": 124,
+          "y": 148
+        },
+        {
+          "x": 95,
+          "y": 148
+        }
+      ],
+      "walkToPoint": {
+        "x": 140,
+        "y": 205
+      },
+      "lookAtPoint": {
+        "x": 109,
+        "y": 148
+      }
+    },
+    {
+      "id": "extintor",
+      "active": true,
+      "description": "l'extintor",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 48,
+          "y": 139
+        },
+        {
+          "x": 64,
+          "y": 139
+        },
+        {
+          "x": 64,
+          "y": 196
+        },
+        {
+          "x": 48,
+          "y": 196
+        }
+      ],
+      "walkToPoint": {
+        "x": 110,
+        "y": 225
+      },
+      "lookAtPoint": {
+        "x": 56,
+        "y": 196
+      }
+    },
+    {
+      "id": "cartell_somriu",
+      "active": true,
+      "description": "el cartell del somriure",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 189,
+          "y": 63
+        },
+        {
+          "x": 214,
+          "y": 63
+        },
+        {
+          "x": 214,
+          "y": 96
+        },
+        {
+          "x": 189,
+          "y": 96
+        }
+      ],
+      "walkToPoint": {
+        "x": 205,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 201,
+        "y": 96
+      }
+    },
+    {
+      "id": "reixa_desguas",
+      "active": true,
+      "description": "la reixa de desguàs",
+      "zIndex": 10,
+      "points": [
+        {
+          "x": 370,
+          "y": 188
+        },
+        {
+          "x": 440,
+          "y": 188
+        },
+        {
+          "x": 440,
+          "y": 205
+        },
+        {
+          "x": 370,
+          "y": 205
+        }
+      ],
+      "walkToPoint": {
+        "x": 405,
+        "y": 212
+      },
+      "lookAtPoint": {
+        "x": 405,
+        "y": 205
+      }
+    },
+    {
+      "id": "reixa_desguas2",
+      "active": true,
+      "description": "la reixa de desguàs",
+      "zIndex": 11,
+      "points": [
+        {
+          "x": 424,
+          "y": 243
+        },
+        {
+          "x": 500,
+          "y": 243
+        },
+        {
+          "x": 500,
+          "y": 259
+        },
+        {
+          "x": 424,
+          "y": 259
+        }
+      ],
+      "walkToPoint": {
+        "x": 462,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 462,
+        "y": 259
+      }
     }
   ],
   "points": [],

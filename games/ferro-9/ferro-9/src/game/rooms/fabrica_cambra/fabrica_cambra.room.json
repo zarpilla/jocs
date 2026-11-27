@@ -260,6 +260,198 @@
         "x": 451,
         "y": 151
       }
+    },
+    {
+      "id": "consola",
+      "active": true,
+      "description": "la consola",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 175,
+          "y": 93
+        },
+        {
+          "x": 250,
+          "y": 93
+        },
+        {
+          "x": 250,
+          "y": 138
+        },
+        {
+          "x": 175,
+          "y": 138
+        }
+      ],
+      "walkToPoint": {
+        "x": 212,
+        "y": 150
+      },
+      "lookAtPoint": {
+        "x": 212,
+        "y": 138
+      }
+    },
+    {
+      "id": "pissarra",
+      "active": true,
+      "description": "la pissarra",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 525,
+          "y": 40
+        },
+        {
+          "x": 552,
+          "y": 40
+        },
+        {
+          "x": 552,
+          "y": 120
+        },
+        {
+          "x": 525,
+          "y": 120
+        }
+      ],
+      "walkToPoint": {
+        "x": 535,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 538,
+        "y": 120
+      }
+    },
+    {
+      "id": "manometre",
+      "active": true,
+      "description": "el manòmetre",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 511,
+          "y": 66
+        },
+        {
+          "x": 524,
+          "y": 66
+        },
+        {
+          "x": 524,
+          "y": 82
+        },
+        {
+          "x": 511,
+          "y": 82
+        }
+      ],
+      "walkToPoint": {
+        "x": 518,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 517,
+        "y": 82
+      }
+    },
+    {
+      "id": "galleda",
+      "active": true,
+      "description": "la galleda de sorra",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 582,
+          "y": 147
+        },
+        {
+          "x": 601,
+          "y": 147
+        },
+        {
+          "x": 601,
+          "y": 187
+        },
+        {
+          "x": 582,
+          "y": 187
+        }
+      ],
+      "walkToPoint": {
+        "x": 575,
+        "y": 195
+      },
+      "lookAtPoint": {
+        "x": 591,
+        "y": 187
+      }
+    },
+    {
+      "id": "retol",
+      "active": true,
+      "description": "el rètol de perill",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 434,
+          "y": 68
+        },
+        {
+          "x": 476,
+          "y": 68
+        },
+        {
+          "x": 476,
+          "y": 93
+        },
+        {
+          "x": 434,
+          "y": 93
+        }
+      ],
+      "walkToPoint": {
+        "x": 440,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 455,
+        "y": 93
+      }
+    },
+    {
+      "id": "caixes",
+      "active": true,
+      "description": "les caixes de recanvis",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 448,
+          "y": 152
+        },
+        {
+          "x": 510,
+          "y": 152
+        },
+        {
+          "x": 510,
+          "y": 200
+        },
+        {
+          "x": 448,
+          "y": 200
+        }
+      ],
+      "walkToPoint": {
+        "x": 430,
+        "y": 205
+      },
+      "lookAtPoint": {
+        "x": 479,
+        "y": 200
+      }
     }
   ],
   "points": [],

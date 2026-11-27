@@ -356,6 +356,38 @@
         "x": 401,
         "y": 117
       }
+    },
+    {
+      "id": "caixes",
+      "active": true,
+      "description": "les caixes",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 0,
+          "y": 112
+        },
+        {
+          "x": 110,
+          "y": 112
+        },
+        {
+          "x": 110,
+          "y": 245
+        },
+        {
+          "x": 0,
+          "y": 245
+        }
+      ],
+      "walkToPoint": {
+        "x": 100,
+        "y": 212
+      },
+      "lookAtPoint": {
+        "x": 55,
+        "y": 245
+      }
     }
   ],
   "points": [],
@@ -676,7 +708,7 @@
         "y": 104,
         "radius": 200,
         "color": "#ff8a3c",
-        "intensity": 1
+        "intensity": 1.0
       },
       {
         "x": 513,

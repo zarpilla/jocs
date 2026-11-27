@@ -627,6 +627,147 @@
           ]
         }
       ]
+    },
+    "consola": {
+      "name": "sala.fabrica_cambra.consola.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "alarma_apagada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.consola.look_alarma"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.consola.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "alarma_apagada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.consola.tocar_alarma"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.consola.tocar"
+            }
+          ]
+        }
+      ]
+    },
+    "pissarra": {
+      "name": "sala.fabrica_cambra.pissarra.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.pissarra.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.pissarra.esborrar"
+            }
+          ]
+        }
+      ]
+    },
+    "manometre": {
+      "name": "sala.fabrica_cambra.manometre.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.manometre.look"
+            }
+          ]
+        }
+      ]
+    },
+    "galleda": {
+      "name": "sala.fabrica_cambra.galleda.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.galleda.look"
+            }
+          ]
+        }
+      ]
+    },
+    "retol": {
+      "name": "sala.fabrica_cambra.retol.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.retol.look"
+            }
+          ]
+        }
+      ]
+    },
+    "caixes": {
+      "name": "sala.fabrica_cambra.caixes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.caixes.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "onEnter": [

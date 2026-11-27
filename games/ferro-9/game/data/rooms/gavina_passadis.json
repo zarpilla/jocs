@@ -254,6 +254,72 @@
           ]
         }
       ]
+    },
+    "contenidor": {
+      "name": "sala.gavina_passadis.contenidor.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.contenidor.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.contenidor.obrir"
+            }
+          ]
+        }
+      ]
+    },
+    "caixa_eines": {
+      "name": "sala.gavina_passadis.caixa_eines.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.caixa_eines.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.caixa_eines.obrir"
+            }
+          ]
+        }
+      ]
+    },
+    "avis_paret": {
+      "name": "sala.gavina_passadis.avis_paret.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.avis_paret.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "onEnter": [

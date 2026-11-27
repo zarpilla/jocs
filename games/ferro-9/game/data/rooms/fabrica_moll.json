@@ -370,6 +370,29 @@
           ]
         },
         {
+          "verb": "use",
+          "item": "serra",
+          "if": {
+            "flag": "iri_sap_mida"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_ferro9.serra_mida"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "serra",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_ferro9.serra"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
@@ -1066,6 +1089,20 @@
             {
               "who": "player",
               "text": "sala.fabrica_moll.pilar.look"
+            }
+          ]
+        }
+      ]
+    },
+    "caixes": {
+      "name": "sala.fabrica_moll.caixes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.caixes.look"
             }
           ]
         }

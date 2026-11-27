@@ -1538,6 +1538,102 @@
           ]
         }
       ]
+    },
+    "manega": {
+      "name": "sala.gavina_hangar.manega.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.manega.look"
+            }
+          ]
+        }
+      ]
+    },
+    "extintor": {
+      "name": "sala.gavina_hangar.extintor.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.extintor.look"
+            }
+          ]
+        }
+      ]
+    },
+    "cartell_somriu": {
+      "name": "sala.gavina_hangar.cartell_somriu.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.cartell_somriu.look"
+            }
+          ]
+        }
+      ]
+    },
+    "reixa_desguas": {
+      "name": "sala.gavina_hangar.reixa_desguas.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.reixa_desguas.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.reixa_desguas.obrir"
+            }
+          ]
+        }
+      ]
+    },
+    "reixa_desguas2": {
+      "name": "sala.gavina_hangar.reixa_desguas2.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.reixa_desguas2.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.reixa_desguas2.obrir"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

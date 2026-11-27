@@ -244,6 +244,102 @@
         "y": 175
       },
       "defaultVerb": "open"
+    },
+    {
+      "id": "contenidor",
+      "active": true,
+      "description": "el contenidor de reciclatge",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 467,
+          "y": 154
+        },
+        {
+          "x": 542,
+          "y": 154
+        },
+        {
+          "x": 542,
+          "y": 230
+        },
+        {
+          "x": 467,
+          "y": 230
+        }
+      ],
+      "walkToPoint": {
+        "x": 445,
+        "y": 225
+      },
+      "lookAtPoint": {
+        "x": 504,
+        "y": 230
+      }
+    },
+    {
+      "id": "caixa_eines",
+      "active": true,
+      "description": "la caixa d'eines",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 349,
+          "y": 159
+        },
+        {
+          "x": 379,
+          "y": 159
+        },
+        {
+          "x": 379,
+          "y": 179
+        },
+        {
+          "x": 349,
+          "y": 179
+        }
+      ],
+      "walkToPoint": {
+        "x": 365,
+        "y": 190
+      },
+      "lookAtPoint": {
+        "x": 364,
+        "y": 179
+      }
+    },
+    {
+      "id": "avis_paret",
+      "active": true,
+      "description": "l'avís de la paret",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 472,
+          "y": 89
+        },
+        {
+          "x": 504,
+          "y": 89
+        },
+        {
+          "x": 504,
+          "y": 117
+        },
+        {
+          "x": 472,
+          "y": 117
+        }
+      ],
+      "walkToPoint": {
+        "x": 488,
+        "y": 200
+      },
+      "lookAtPoint": {
+        "x": 488,
+        "y": 117
+      }
     }
   ],
   "points": [],
