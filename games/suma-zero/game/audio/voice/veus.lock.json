@@ -969,6 +969,11 @@
   "key": "sala.pis_estudi.router.sense",
   "who": "iri"
  },
+ "iri17045802": {
+  "hash": "4c68bd7e0563aa59",
+  "key": "dlg.aturada.pes2",
+  "who": "iri"
+ },
  "iri1708723827": {
   "hash": "b4febd0118921456",
   "key": "sala.bcmu_escombraries.bosses.look",
@@ -982,6 +987,11 @@
  "iri1728136289": {
   "hash": "b71452cb68398c2b",
   "key": "sala.bcmu_escombraries.conducte.look",
+  "who": "iri"
+ },
+ "iri1731468816": {
+  "hash": "7a53e75dc4441bdf",
+  "key": "dlg.llibre.opt.rockefeller_any",
   "who": "iri"
  },
  "iri1771099106": {
@@ -1089,6 +1099,11 @@
   "key": "sala.bcmu_escombraries.intro3",
   "who": "iri"
  },
+ "iri2011979307": {
+  "hash": "e204e8c0dbe026ea",
+  "key": "dlg.llibre.mal_any2",
+  "who": "iri"
+ },
  "iri20188921": {
   "hash": "d3846c1693f29469",
   "key": "ui.defecte",
@@ -1142,6 +1157,11 @@
  "iri2043789416": {
   "hash": "02f7d2d6b3eebfc8",
   "key": "sala.pis_estudi.mossega.alimentacio",
+  "who": "iri"
+ },
+ "iri2048086261": {
+  "hash": "d3d1f832f8d2ca12",
+  "key": "obj.factura.look",
   "who": "iri"
  },
  "iri2057736403": {
@@ -1754,6 +1774,11 @@
   "key": "sala.pis_estudi.mossega.xarxa",
   "who": "iri"
  },
+ "iri3161297579": {
+  "hash": "8b7af7b562c8d7af",
+  "key": "dlg.llibre.pista_tot",
+  "who": "iri"
+ },
  "iri316151946": {
   "hash": "f783322d8db52203",
   "key": "sala.bcmu_escombraries.llibre.codi1_altra",
@@ -2240,7 +2265,7 @@
   "who": "iri"
  },
  "iri4173455699": {
-  "hash": "fe6996a28f541c00",
+  "hash": "28f5eec7d89ec0eb",
   "key": "dlg.llibre.pista_no",
   "who": "iri"
  },
@@ -2255,7 +2280,7 @@
   "who": "iri"
  },
  "iri4190136783": {
-  "hash": "11d97a1d46245f15",
+  "hash": "4e7564e3df8f66b2",
   "key": "sala.bcmu_moll.maquina.look",
   "who": "iri"
  },
@@ -2270,7 +2295,7 @@
   "who": "iri"
  },
  "iri4203906628": {
-  "hash": "c60caa2b263e5e86",
+  "hash": "854a47d8fac753b6",
   "key": "dlg.llibre.pista_si",
   "who": "iri"
  },
@@ -2547,6 +2572,11 @@
  "iri827253464": {
   "hash": "0c7218d1a3bda21b",
   "key": "sala.bcmu_escombraries.llibre.clau_ja",
+  "who": "iri"
+ },
+ "iri868435529": {
+  "hash": "79ef9aa9c53b49d5",
+  "key": "dlg.rius.sense_xarxa1",
   "who": "iri"
  },
  "iri872224571": {
@@ -4420,7 +4450,7 @@
   "who": "vet"
  },
  "vet1798522958": {
-  "hash": "67d9794979130919",
+  "hash": "fc3f8b64d84e787c",
   "key": "sala.aeroport_terminal.maleti.look",
   "who": "vet"
  },
@@ -4482,6 +4512,11 @@
  "vet1863392011": {
   "hash": "6aaf469793e79715",
   "key": "sala.bcmu_contenidor.contenidor.look",
+  "who": "vet"
+ },
+ "vet186677135": {
+  "hash": "c237139d83378627",
+  "key": "dlg.empleat.opt.agenda",
   "who": "vet"
  },
  "vet1879528738": {
@@ -4554,6 +4589,11 @@
   "key": "sala.bcmu_escombraries.virus2",
   "who": "vet"
  },
+ "vet2048086261": {
+  "hash": "86993a3e338436da",
+  "key": "obj.factura.look",
+  "who": "vet"
+ },
  "vet2050232011": {
   "hash": "c381af207a429cf2",
   "key": "sala.pis_estudi.rev3b",
@@ -4582,6 +4622,11 @@
  "vet2086456884": {
   "hash": "69647359f9f753de",
   "key": "sala.bar_sala.tomas.look",
+  "who": "vet"
+ },
+ "vet2114987698": {
+  "hash": "8fcad0160ab17dfa",
+  "key": "sala.bcmu_seguretat.monitors.carta",
   "who": "vet"
  },
  "vet2124563085": {
@@ -4939,6 +4984,11 @@
   "key": "sala.bcmu_vestibul.plantes.retallada",
   "who": "vet"
  },
+ "vet268183": {
+  "hash": "b28ece962277750e",
+  "key": "dlg.aturada.pes1",
+  "who": "vet"
+ },
  "vet2684891119": {
   "hash": "1693c1a8e3d92732",
   "key": "sala.bar_sala.porta.propines2",
@@ -5190,7 +5240,7 @@
   "who": "vet"
  },
  "vet3110701708": {
-  "hash": "85d479e030199ba2",
+  "hash": "b6f3d0b483fb8e24",
   "key": "dlg.pons.escoltar1",
   "who": "vet"
  },
@@ -5320,7 +5370,7 @@
   "who": "vet"
  },
  "vet3351982063": {
-  "hash": "837de192960d1fa4",
+  "hash": "bb4b60cdec5724fb",
   "key": "sala.bcmu_despatx.bol.look",
   "who": "vet"
  },
@@ -5590,7 +5640,7 @@
   "who": "vet"
  },
  "vet381446595": {
-  "hash": "13f34c0c5ab804df",
+  "hash": "82c243d3f58abcfc",
   "key": "sala.bcmu_avantdespatx.factura.agafa",
   "who": "vet"
  },
@@ -5665,7 +5715,7 @@
   "who": "vet"
  },
  "vet4032656716": {
-  "hash": "267be62f365fd52d",
+  "hash": "6ca4e431aa71ed4f",
   "key": "sala.bar_sala.retol.contrasenya2",
   "who": "vet"
  },
@@ -5990,7 +6040,7 @@
   "who": "vet"
  },
  "vet583311684": {
-  "hash": "6a0dcbf32e915134",
+  "hash": "257e54575f435222",
   "key": "dlg.ballester.opt.veritat",
   "who": "vet"
  },
