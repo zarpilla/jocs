@@ -1310,7 +1310,7 @@
   "who": "iri"
  },
  "iri1725789962": {
-  "hash": "858715f1c227325a",
+  "hash": "81196364400772f2",
   "key": "sala.claustre.9",
   "who": "iri"
  },
@@ -2084,6 +2084,11 @@
   "key": "dlg.ermessenda.opt.adeu",
   "who": "iri"
  },
+ "iri303253077": {
+  "hash": "3edf0257b4b58dbd",
+  "key": "sala.mur_avet.abeurador.look",
+  "who": "iri"
+ },
  "iri3046400539": {
   "hash": "b3b91c2627973519",
   "key": "dlg.gueraula.opt.falta",
@@ -2727,6 +2732,11 @@
  "iri3868693194": {
   "hash": "1157a0397c051557",
   "key": "dlg.gueraula.opt.dormir",
+  "who": "iri"
+ },
+ "iri3915860615": {
+  "hash": "6cb34ea15d3638b0",
+  "key": "sala.mur_avet.abeurador.cera",
   "who": "iri"
  },
  "iri3918712272": {
@@ -4740,7 +4750,7 @@
   "who": "vet"
  },
  "vet1725789962": {
-  "hash": "0d678bc876925a04",
+  "hash": "dd62798d2de80c85",
   "key": "sala.claustre.9",
   "who": "vet"
  },
@@ -4867,6 +4877,11 @@
  "vet1874156084": {
   "hash": "3ae5a14c614f9d5f",
   "key": "sala.moli.23",
+  "who": "vet"
+ },
+ "vet1896450074": {
+  "hash": "c69444a544d08c52",
+  "key": "dlg.gueraula.4b",
   "who": "vet"
  },
  "vet1907711322": {
@@ -5659,6 +5674,11 @@
   "key": "dlg.ermessenda.opt.adeu",
   "who": "vet"
  },
+ "vet303253077": {
+  "hash": "0e0d53c776720eef",
+  "key": "sala.mur_avet.abeurador.look",
+  "who": "vet"
+ },
  "vet3036989043": {
   "hash": "4c837e31d0d0afdf",
   "key": "sala.apotecaria.22",
@@ -6282,6 +6302,11 @@
  "vet3868693194": {
   "hash": "129aa7fad65e37d3",
   "key": "dlg.gueraula.opt.dormir",
+  "who": "vet"
+ },
+ "vet3915860615": {
+  "hash": "af082e0dd67bd351",
+  "key": "sala.mur_avet.abeurador.cera",
   "who": "vet"
  },
  "vet3918712272": {
