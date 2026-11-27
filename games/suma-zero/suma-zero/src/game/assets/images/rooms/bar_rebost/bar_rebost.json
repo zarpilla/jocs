@@ -65,10 +65,10 @@
     },
     "bar_rebost 3.aseprite": {
       "frame": {
-        "x": 1736,
+        "x": 1574,
         "y": 0,
         "w": 160,
-        "h": 141
+        "h": 145
       },
       "rotated": false,
       "trimmed": true,
@@ -76,7 +76,7 @@
         "x": 207,
         "y": 1,
         "w": 160,
-        "h": 141
+        "h": 145
       },
       "sourceSize": {
         "w": 640,
@@ -86,18 +86,18 @@
     },
     "bar_rebost 4.aseprite": {
       "frame": {
-        "x": 2829,
+        "x": 2520,
         "y": 0,
-        "w": 132,
-        "h": 131
+        "w": 136,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 230,
+        "x": 226,
         "y": 11,
-        "w": 132,
-        "h": 131
+        "w": 136,
+        "h": 135
       },
       "sourceSize": {
         "w": 640,
@@ -107,10 +107,10 @@
     },
     "bar_rebost 5.aseprite": {
       "frame": {
-        "x": 1583,
+        "x": 1251,
         "y": 0,
         "w": 153,
-        "h": 144
+        "h": 146
       },
       "rotated": false,
       "trimmed": true,
@@ -118,7 +118,7 @@
         "x": 210,
         "y": 3,
         "w": 153,
-        "h": 144
+        "h": 146
       },
       "sourceSize": {
         "w": 640,
@@ -128,10 +128,10 @@
     },
     "bar_rebost 6.aseprite": {
       "frame": {
-        "x": 2685,
+        "x": 2376,
         "y": 0,
         "w": 144,
-        "h": 135
+        "h": 142
       },
       "rotated": false,
       "trimmed": true,
@@ -139,7 +139,7 @@
         "x": 218,
         "y": 7,
         "w": 144,
-        "h": 135
+        "h": 142
       },
       "sourceSize": {
         "w": 640,
@@ -149,10 +149,10 @@
     },
     "bar_rebost 7.aseprite": {
       "frame": {
-        "x": 1896,
+        "x": 1734,
         "y": 0,
         "w": 166,
-        "h": 141
+        "h": 145
       },
       "rotated": false,
       "trimmed": true,
@@ -160,7 +160,7 @@
         "x": 194,
         "y": 1,
         "w": 166,
-        "h": 141
+        "h": 145
       },
       "sourceSize": {
         "w": 640,
@@ -170,10 +170,10 @@
     },
     "bar_rebost 8.aseprite": {
       "frame": {
-        "x": 2351,
+        "x": 2807,
         "y": 0,
         "w": 158,
-        "h": 139
+        "h": 121
       },
       "rotated": false,
       "trimmed": true,
@@ -181,7 +181,7 @@
         "x": 194,
         "y": 3,
         "w": 158,
-        "h": 139
+        "h": 121
       },
       "sourceSize": {
         "w": 640,
@@ -233,10 +233,10 @@
     },
     "bar_rebost 11.aseprite": {
       "frame": {
-        "x": 2062,
+        "x": 1900,
         "y": 0,
         "w": 138,
-        "h": 141
+        "h": 145
       },
       "rotated": false,
       "trimmed": true,
@@ -244,7 +244,7 @@
         "x": 194,
         "y": 1,
         "w": 138,
-        "h": 141
+        "h": 145
       },
       "sourceSize": {
         "w": 640,
@@ -254,10 +254,10 @@
     },
     "bar_rebost 12.aseprite": {
       "frame": {
-        "x": 1421,
+        "x": 2038,
         "y": 0,
         "w": 162,
-        "h": 150
+        "h": 143
       },
       "rotated": false,
       "trimmed": true,
@@ -265,7 +265,7 @@
         "x": 184,
         "y": 3,
         "w": 162,
-        "h": 150
+        "h": 143
       },
       "sourceSize": {
         "w": 640,
@@ -275,10 +275,10 @@
     },
     "bar_rebost 13.aseprite": {
       "frame": {
-        "x": 1251,
+        "x": 1404,
         "y": 0,
         "w": 170,
-        "h": 151
+        "h": 146
       },
       "rotated": false,
       "trimmed": true,
@@ -286,7 +286,7 @@
         "x": 184,
         "y": 3,
         "w": 170,
-        "h": 151
+        "h": 146
       },
       "sourceSize": {
         "w": 640,
@@ -296,10 +296,10 @@
     },
     "bar_rebost 14.aseprite": {
       "frame": {
-        "x": 2509,
+        "x": 2200,
         "y": 0,
         "w": 176,
-        "h": 139
+        "h": 143
       },
       "rotated": false,
       "trimmed": true,
@@ -307,7 +307,7 @@
         "x": 184,
         "y": 3,
         "w": 176,
-        "h": 139
+        "h": 143
       },
       "sourceSize": {
         "w": 640,
@@ -317,10 +317,10 @@
     },
     "bar_rebost 15.aseprite": {
       "frame": {
-        "x": 1896,
+        "x": 1734,
         "y": 0,
         "w": 166,
-        "h": 141
+        "h": 145
       },
       "rotated": false,
       "trimmed": true,
@@ -328,7 +328,7 @@
         "x": 194,
         "y": 1,
         "w": 166,
-        "h": 141
+        "h": 145
       },
       "sourceSize": {
         "w": 640,
@@ -338,10 +338,10 @@
     },
     "bar_rebost 16.aseprite": {
       "frame": {
-        "x": 2200,
+        "x": 2656,
         "y": 0,
         "w": 151,
-        "h": 141
+        "h": 129
       },
       "rotated": false,
       "trimmed": true,
@@ -349,7 +349,7 @@
         "x": 212,
         "y": 1,
         "w": 151,
-        "h": 141
+        "h": 129
       },
       "sourceSize": {
         "w": 640,
@@ -464,7 +464,7 @@
     },
     "bar_rebost 22.aseprite": {
       "frame": {
-        "x": 3444,
+        "x": 3448,
         "y": 0,
         "w": 62,
         "h": 79
@@ -485,7 +485,7 @@
     },
     "bar_rebost 23.aseprite": {
       "frame": {
-        "x": 3444,
+        "x": 3448,
         "y": 0,
         "w": 62,
         "h": 79
@@ -506,7 +506,7 @@
     },
     "bar_rebost 24.aseprite": {
       "frame": {
-        "x": 3444,
+        "x": 3448,
         "y": 0,
         "w": 62,
         "h": 79
@@ -527,7 +527,7 @@
     },
     "bar_rebost 25.aseprite": {
       "frame": {
-        "x": 3444,
+        "x": 3448,
         "y": 0,
         "w": 62,
         "h": 79
@@ -548,7 +548,7 @@
     },
     "bar_rebost 26.aseprite": {
       "frame": {
-        "x": 3506,
+        "x": 3510,
         "y": 0,
         "w": 62,
         "h": 79
@@ -569,7 +569,7 @@
     },
     "bar_rebost 27.aseprite": {
       "frame": {
-        "x": 3506,
+        "x": 3510,
         "y": 0,
         "w": 62,
         "h": 79
@@ -590,7 +590,7 @@
     },
     "bar_rebost 28.aseprite": {
       "frame": {
-        "x": 3506,
+        "x": 3510,
         "y": 0,
         "w": 62,
         "h": 79
@@ -611,7 +611,7 @@
     },
     "bar_rebost 29.aseprite": {
       "frame": {
-        "x": 3568,
+        "x": 3572,
         "y": 0,
         "w": 62,
         "h": 79
@@ -632,7 +632,7 @@
     },
     "bar_rebost 30.aseprite": {
       "frame": {
-        "x": 3568,
+        "x": 3572,
         "y": 0,
         "w": 62,
         "h": 79
@@ -653,7 +653,7 @@
     },
     "bar_rebost 31.aseprite": {
       "frame": {
-        "x": 3630,
+        "x": 3634,
         "y": 0,
         "w": 62,
         "h": 79
@@ -674,7 +674,7 @@
     },
     "bar_rebost 32.aseprite": {
       "frame": {
-        "x": 3692,
+        "x": 3696,
         "y": 0,
         "w": 62,
         "h": 79
@@ -695,7 +695,7 @@
     },
     "bar_rebost 33.aseprite": {
       "frame": {
-        "x": 3227,
+        "x": 3231,
         "y": 0,
         "w": 77,
         "h": 101
@@ -716,7 +716,7 @@
     },
     "bar_rebost 34.aseprite": {
       "frame": {
-        "x": 3754,
+        "x": 3758,
         "y": 0,
         "w": 63,
         "h": 79
@@ -737,7 +737,7 @@
     },
     "bar_rebost 35.aseprite": {
       "frame": {
-        "x": 3304,
+        "x": 3308,
         "y": 0,
         "w": 86,
         "h": 101
@@ -758,7 +758,7 @@
     },
     "bar_rebost 36.aseprite": {
       "frame": {
-        "x": 2961,
+        "x": 2965,
         "y": 0,
         "w": 76,
         "h": 109
@@ -779,7 +779,7 @@
     },
     "bar_rebost 37.aseprite": {
       "frame": {
-        "x": 3817,
+        "x": 3878,
         "y": 0,
         "w": 64,
         "h": 57
@@ -800,7 +800,7 @@
     },
     "bar_rebost 38.aseprite": {
       "frame": {
-        "x": 3390,
+        "x": 3394,
         "y": 0,
         "w": 54,
         "h": 85
@@ -863,7 +863,7 @@
     },
     "bar_rebost 41.aseprite": {
       "frame": {
-        "x": 3894,
+        "x": 3955,
         "y": 0,
         "w": 6,
         "h": 55
@@ -884,7 +884,7 @@
     },
     "bar_rebost 42.aseprite": {
       "frame": {
-        "x": 3900,
+        "x": 3961,
         "y": 0,
         "w": 9,
         "h": 55
@@ -905,7 +905,7 @@
     },
     "bar_rebost 43.aseprite": {
       "frame": {
-        "x": 3881,
+        "x": 3942,
         "y": 0,
         "w": 13,
         "h": 56
@@ -1241,18 +1241,18 @@
     },
     "bar_rebost 59.aseprite": {
       "frame": {
-        "x": 3909,
+        "x": 3821,
         "y": 0,
         "w": 57,
-        "h": 54
+        "h": 70
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 136,
-        "y": 119,
+        "y": 103,
         "w": 57,
-        "h": 54
+        "h": 70
       },
       "sourceSize": {
         "w": 640,
@@ -1598,7 +1598,7 @@
     },
     "bar_rebost 76.aseprite": {
       "frame": {
-        "x": 3966,
+        "x": 3970,
         "y": 0,
         "w": 40,
         "h": 49
@@ -1619,7 +1619,7 @@
     },
     "bar_rebost 77.aseprite": {
       "frame": {
-        "x": 3037,
+        "x": 3041,
         "y": 0,
         "w": 190,
         "h": 106
@@ -1640,7 +1640,7 @@
     },
     "bar_rebost 78.aseprite": {
       "frame": {
-        "x": 4006,
+        "x": 4010,
         "y": 0,
         "w": 36,
         "h": 46
@@ -1687,7 +1687,7 @@
     "image": "bar_rebost.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4042,
+      "w": 4046,
       "h": 403
     },
     "scale": "1",

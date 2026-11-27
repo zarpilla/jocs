@@ -268,11 +268,12 @@ def drawer(cv, open_=False):
     for x in range(263, 335):
         if hr(x, y0, 21) > 0.9:
             cv.put(x, y0 + 8 + int(hr(x, 22) * 8), WOOD, 2.2)               # rascades
-    # el pany: plàstic blanc lluent, molt més nou que tot el que l'envolta
+    # el pany: plàstic blanc lluent, molt més nou que tot el que l'envolta (però no tan blanc com un paper: amb el
+    # calaix obert semblava la servilleta de la recepta, tasca 235), amb el pom fosc al mig, que es vegi que és un pany
     lx0, ly0 = 291, y0 + 3
-    obox(cv, lx0, ly0, lx0 + 16, ly0 + 15, WHITEP, 4.0, top=1.2)
-    cv.disc(lx0 + 8, ly0 + 8, 3.2, 3.2, WHITEP, lambda nx, ny: 2.8 - ny)
-    cv.disc(lx0 + 8, ly0 + 8, 1.4, 1.4, WHITEP, 1.6)                     # el bombí, de pega
+    obox(cv, lx0, ly0, lx0 + 16, ly0 + 15, WHITEP, 3.0, top=1.2)
+    cv.disc(lx0 + 8, ly0 + 8, 3.6, 3.6, SLATE, lambda nx, ny: 3.4 - ny)
+    cv.disc(lx0 + 8, ly0 + 8, 1.6, 1.6, WHITEP, 2.0)                     # el bombí, de pega
     led = (60, 230, 100) if open_ else (240, 40, 40)
     cv.flat(lx0 + 13, ly0 + 3, led)
     cv.flat(lx0 + 14, ly0 + 3, led)
