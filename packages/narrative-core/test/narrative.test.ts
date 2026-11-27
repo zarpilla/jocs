@@ -113,6 +113,20 @@ describe('diàlegs i memòria', () => {
     expect(bye.ended).toBe(true);
     expect(() => n.choose('pescador', 'adeu')).toThrow(/no està en curs/);
   });
+
+  it('una opció amb "nova" és nova mentre es compleix la condició, fins que es tria amb la condició complerta', () => {
+    const c = structuredClone(content);
+    const adeu = c.dialogues.pescador!.nodes.menu!.choices!.find((x) => x.id === 'adeu')!;
+    adeu.nova = { flag: 'far_ences' };
+    const { n } = setup(c);
+    const nova = (choices: { id: string; nova?: boolean }[]) => choices.find((x) => x.id === 'adeu')?.nova ?? false;
+    expect(nova(n.startDialogue('pescador').choices)).toBe(false);
+    n.choose('pescador', 'adeu');
+    n.apply([{ setFlag: 'far_ences' }]);
+    expect(nova(n.startDialogue('pescador').choices)).toBe(true);
+    n.choose('pescador', 'adeu');
+    expect(nova(n.startDialogue('pescador').choices)).toBe(false);
+  });
 });
 
 describe('missions, objectes condicionals, pistes i finals', () => {

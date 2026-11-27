@@ -1,12 +1,13 @@
 import { evaluate, type ConditionContext } from './conditions.js';
-import { DialogueSessions, type DialogueStep, type ResolvedChoice, type ResolvedLine } from './dialogue.js';
+import { DialogueSessions, type DialogueStep, type LineItem, type ResolvedChoice, type ResolvedLine } from './dialogue.js';
 import { applyEffects, finishQuest, type EffectContext } from './effects.js';
 import { Localizer, type TextParams } from './i18n.js';
 import type { NarrativeEvent, NarrativeListener, WorldPort } from './ports.js';
-import { chosenKey, createInitialState, migrateState, seenKey, type NarrativeState } from './state.js';
+import { chosenKey, createInitialState, migrateState, novaKey, seenKey, type NarrativeState } from './state.js';
 import type {
   Condition,
   DialogueChoiceDef,
+  DialogueLineDef,
   DialogueDef,
   Effect,
   EndingLineDef,
@@ -306,6 +307,8 @@ export class Narrative {
     return this.batch(() => {
       const key = chosenKey(dialogueId, node, choiceId);
       this._state.dialogue.chosen[key] = (this._state.dialogue.chosen[key] ?? 0) + 1;
+      // Triada amb la novetat (`nova`): a partir d'ara ja és una opció dita.
+      if (choice.nova && this.check(choice.nova)) this._state.dialogue.chosen[novaKey(key)] = 1;
       const lines: ResolvedLine[] = choice.silent
         ? []
         : [{ who: 'player', key: choice.text, text: this.t(choice.text) }];
@@ -672,7 +675,7 @@ export class Narrative {
     for (const line of i.lines ?? []) {
       if (!this.check(line.if)) continue;
       applyEffects(line.effects, this.effectCtx());
-      lines.push({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound && { sound: line.sound }), ...(line.stage && { stage: line.stage }), ...(line.stageAfter && { stageAfter: line.stageAfter }) });
+      lines.push({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound && { sound: line.sound }), ...(line.stage && { stage: line.stage }), ...(line.stageAfter && { stageAfter: line.stageAfter }), ...lineItems(line) });
     }
     applyEffects(i.effects, this.effectCtx());
     // Les variables del so es posen al final: «estira la molla» ha de sonar amb la tensió nova.
@@ -717,7 +720,7 @@ export class Narrative {
     for (const line of node.lines ?? []) {
       if (!this.check(line.if)) continue;
       applyEffects(line.effects, this.effectCtx());
-      lines.push({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound && { sound: this.soundName(line.sound) }), ...(line.stage && { stage: line.stage }), ...(line.stageAfter && { stageAfter: line.stageAfter }) });
+      lines.push({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound && { sound: this.soundName(line.sound) }), ...(line.stage && { stage: line.stage }), ...(line.stageAfter && { stageAfter: line.stageAfter }), ...lineItems(line) });
     }
 
     // Es marca després de les línies: dins el node, `seen` vol dir "en una visita anterior".
@@ -744,7 +747,11 @@ export class Narrative {
   private availableChoices(def: DialogueDef, nodeId: Id): ResolvedChoice[] {
     return (def.nodes[nodeId]?.choices ?? [])
       .filter((c) => this.isChoiceAvailable(def.id, nodeId, c))
-      .map((c) => ({ id: c.id, node: nodeId, key: c.text, text: this.t(c.text) }));
+      .map((c) => {
+        const choice: ResolvedChoice = { id: c.id, node: nodeId, key: c.text, text: this.t(c.text) };
+        if (c.nova && !this._state.dialogue.chosen[novaKey(chosenKey(def.id, nodeId, c.id))] && this.check(c.nova)) choice.nova = true;
+        return choice;
+      });
   }
 
   private isChoiceAvailable(dialogue: Id, node: Id, c: DialogueChoiceDef) {
@@ -819,4 +826,15 @@ export class Narrative {
   private notify() {
     this.emit({ type: 'stateChanged' });
   }
+}
+
+/** Els objectes que una línia amb `itemsNow` dona o treu, per al motor (vegeu `DialogueLineDef.itemsNow`). */
+function lineItems(line: DialogueLineDef): { items?: LineItem[] } {
+  if (!line.itemsNow) return {};
+  const items: LineItem[] = [];
+  for (const e of line.effects ?? []) {
+    if ('giveItem' in e) items.push({ give: e.giveItem, ...(e.who && { who: e.who }) });
+    else if ('takeItem' in e) items.push({ take: e.takeItem, ...(e.who && { who: e.who }) });
+  }
+  return items.length ? { items } : {};
 }

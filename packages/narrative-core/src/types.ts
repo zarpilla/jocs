@@ -260,6 +260,12 @@ export interface DialogueLineDef {
   stage?: StageCue[];
   /** Moviment en acabar de dir la línia (p. ex. qui diu «me'n vaig» i després marxa), com `stage`. */
   stageAfter?: StageCue[];
+  /**
+   * Els objectes que donen o treuen els `effects` d'aquesta línia (`giveItem`, `takeItem`) entren o surten de
+   * l'inventari quan es diu la línia (després del seu `stage`), no en acabar-les totes (p. ex. «La Urtica agafa el
+   * pot»). Per a l'estat, com sempre: tots els efectes s'apliquen abans de les línies.
+   */
+  itemsNow?: boolean;
 }
 
 /**
@@ -323,6 +329,11 @@ export interface DialogueChoiceDef {
   once?: boolean;
   /** El jugador no repeteix el text en veu alta (p. ex. "(Marxar)"). */
   silent?: boolean;
+  /**
+   * L'opció té una resposta nova mentre es compleixi aquesta condició (p. ex. ara que es porta el formulari segellat):
+   * encara que ja s'hagi triat abans, no surt com a ja dita fins que es torni a triar amb la condició complerta.
+   */
+  nova?: Condition;
   effects?: Effect[];
   /** Node següent. Sense `next`, es torna al mateix node. */
   next?: Id;

@@ -84,3 +84,5 @@ export function migrateState(content: GameContent, saved: unknown): NarrativeSta
 
 export const seenKey = (dialogue: Id, node: Id) => `${dialogue}/${node}`;
 export const chosenKey = (dialogue: Id, node: Id, choice: Id) => `${dialogue}/${node}/${choice}`;
+/** Una opció amb `nova` triada mentre la condició es complia (vegeu `DialogueChoiceDef.nova`). */
+export const novaKey = (chosen: string) => `${chosen}!nova`;

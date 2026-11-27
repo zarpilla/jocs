@@ -14,7 +14,7 @@ import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue 
 import {
   AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, resetStageAnims, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom, doorPoint,
   musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, flushPendingGives, leavesRoom, targetFromBenne, voiced, preloadLineVoices,
-  actionFootprint, wantsActionGesture, GEST_ACCIO, GEST_ACCIO_S,
+  actionFootprint, wantsActionGesture, GEST_ACCIO, GEST_ACCIO_S, faceIntoRoom, faceEachOther, offstageLine, endOffstageLine, applyLineItems,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
 
@@ -61,10 +61,18 @@ function playStage(cues: StageCue[]) {
   }
 }
 
+/** Si una indicació d'escena gira, mou o anima algú (llavors no s'ha de girar sol cap a qui parla: `faceEachOther`). */
+const movesSomeone = (c: StageCue) => c.who !== undefined && (c.face !== undefined || c.anim !== undefined || c.gest !== undefined || c.walk !== undefined || c.at !== undefined)
+
 function sayLines(lines: ResolvedLine[], around: Around) {
+  // Qui les indicacions d'escena d'aquestes línies ja han girat o mogut.
+  const staged = new Set<string>()
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]!
+    for (const c of [...(line.stage ?? []), ...(line.stageAfter ?? [])]) if (movesSomeone(c)) staged.add(c.who!)
     if (line.stage) playStage(line.stage)
+    // Els objectes que dona o treu aquesta línia (`itemsNow`), ara i no en acabar.
+    if (line.items) applyLineItems(line.items)
     // Una línia del narrador amb el text buit és un silenci: les indicacions d'escena i el so, sense caixa.
     const silenci = line.who === 'narrator' && !line.text.trim()
     if (!silenci) recordLine(line.who, line.text)
@@ -93,7 +101,11 @@ function sayLines(lines: ResolvedLine[], around: Around) {
       const speaker = benneCharacter(line.who)
       if (speaker) {
         showSpeaker(line.who)
-        speaker.say(voiced(speaker.id, line.key, line.text))
+        faceEachOther(line.who, staged)
+        const text = voiced(speaker.id, line.key, line.text)
+        const fora = offstageLine(line.who, text)
+        speaker.say(fora ?? text)
+        if (fora !== null) endOffstageLine(line.who)
       } else display(line.text)
     }
     if (line.stageAfter) playStage(line.stageAfter)
@@ -232,12 +244,18 @@ export function routeInteraction(verb: string, target: FallbackTarget, item?: st
 
 /** Fa la interacció del JSON: hi va caminant, s'hi gira, i el nucli la resol. */
 export function performInteraction(verb: string, target: FallbackTarget, item?: string) {
+  // L'objecte que es fa servir o es dona deixa d'anar a la mà ja (tots els jocs tenen `dropWhenInventoryUsed`): si no,
+  // el cursor continuaria sent la seva icona, quieta al costat del destí, tota la interacció (tasca 230).
+  if (item !== undefined && pointer.item) pointer.item = null
   // Primer hi va caminant (al `walkToPoint` de la cosa o del personatge) i s'hi gira, com a les
   // aventures clàssiques. Ha de ser el primer pas: així, si el jugador clica una altra cosa pel camí,
   // el motor atura aquesta acció i fa la nova. (`walkToClicked` no serveix: als fallbacks no hi ha clic.)
   // A una cinemàtica amb coses per tocar (la carta de navegació) no hi ha ningú que hi vagi.
   if (target.kind !== 'item' && !isClickableCutscene(narrative.world.currentRoom())) {
+    // Qui fa ronda s'atura mentre la protagonista hi va (vegeu `patrol`).
+    approaching = target.kind === 'character' ? { id: fromBenne('characters', target.id), until: Date.now() + APROPANT_MAX_MS } : null
     player.walkTo(target.id)
+    approaching = null
     const facing = facingToward(target.kind, target.id)
     if (facing) player.face(facing)
     // Si li parla o li dona alguna cosa, el personatge també es gira cap a ella.
@@ -324,7 +342,11 @@ export function onRoomEntered() {
     // Qui entra per una porta apareix davant de la porta (vegeu `doorPoint`).
     const from = protagonistRoom(who)
     const porta = from && from !== room ? doorPoint(room, from) : null
-    if (porta) player.moveTo(porta)
+    if (porta) {
+      player.moveTo(porta)
+      // De cara a la sala, no a la porta per on ha sortit de l'altra.
+      faceIntoRoom(room, porta)
+    }
     rememberProtagonistRoom(who, room)
   }
   resetStageAnims(room)
@@ -605,11 +627,14 @@ function refreshOptions(dialog: DialogHandle, choices: ResolvedChoice[]) {
     if (available.has(name)) option.on();
     else option.off();
   }
+  // Una opció ja dita que ara té una resposta nova (`nova`) no surt en gris: és justament la que cal triar.
+  for (const c of choices) if (c.nova) unmarkUsed(dialog, optionName(c.node, c.id))
 }
 
 /**
  * Una opció `silent` és una ordre (els comandaments de la grua d'Aigua Verne, «Marxar»), no una frase: no es posa en
- * gris com les ja dites, que es poden haver de tornar a triar. Benne la marca en clicar-la; aquí es desmarca.
+ * gris com les ja dites, que es poden haver de tornar a triar. Benne la marca en clicar-la; aquí es desmarca. També
+ * les opcions amb una resposta nova (`nova`, vegeu `refreshOptions`).
  */
 function unmarkUsed(dialog: DialogHandle, name: string) {
   const key = `dialog:${dialog.id}:option:${dialog.options[name]?.id ?? name}:used`
@@ -635,8 +660,24 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
   const echo = silent ? 0 : 1
   const step = primeStage(narrative.choose(id, choice, { node }), echo)
   refreshOptions(dialog, step.choices)
-  playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
+  const lines = echo ? senseAcotacioEco(step.lines) : step.lines
+  playLines(lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
   if (step.ended) endDialog(dialog)
+}
+
+/**
+ * L'opció dita en veu alta (la primera línia) sense l'acotació del davant: «(Ensenya-li la tauleta) I aquest signe?»
+ * es diu «I aquest signe?». L'acotació és per a la jugadora, a la llista d'opcions. Si l'opció només és una acotació
+ * («(Tus)»), no es diu res (tasca 270). La veu (tools/veus.py) ja la treu.
+ */
+function senseAcotacioEco(lines: ResolvedLine[]): ResolvedLine[] {
+  const [eco, ...resta] = lines
+  if (!eco) return lines
+  const text = eco.text.replace(/^\s*\([^)]*\)\s*/, '')
+  if (text === eco.text) return lines
+  if (/[\p{L}\d]/u.test(text)) return [{ ...eco, text }, ...resta]
+  // (si la línia mou alguna cosa de l'escena, es diu igualment: no es pot perdre)
+  return eco.stage || eco.stageAfter ? lines : resta
 }
 
 /** Una pista demanada enmig d'una conversa, que es dirà quan acabi. */
@@ -832,6 +873,14 @@ function startPatrols() {
   }
 }
 
+/**
+ * El personatge cap a qui camina ara la protagonista per fer-hi alguna cosa (`performInteraction`): la ronda s'hi
+ * atura, com amb el ratolí a sobre; si no, amb el dit no s'atura mai i costa d'encertar. Si la jugadora clica una
+ * altra cosa pel camí, l'acció s'atura sense arribar a esborrar-ho: per això també caduca.
+ */
+let approaching: { id: string; until: number } | null = null
+const APROPANT_MAX_MS = 8000
+
 /** Si el ratolí és damunt d'un personatge. */
 function hovered(id: string): boolean {
   const h = pointer.hover
@@ -854,7 +903,8 @@ function patrol(id: string, room: string) {
   while (narrative.world.currentRoom() === room) {
     const route = narrative.patrolOf(id, room)
     // (també s'atura mentre el ratolí hi és a sobre: si no, un robot que va i ve costa d'encertar)
-    if (!route || !actor.visible || game.isBusy || narrative.world.activeProtagonist() === id || hovered(id)) {
+    const apropant = approaching?.id === id && Date.now() < approaching.until
+    if (!route || !actor.visible || game.isBusy || narrative.world.activeProtagonist() === id || hovered(id) || apropant) {
       if (walking) actor.stopWalking()
       walking = false
       wait(0.25)

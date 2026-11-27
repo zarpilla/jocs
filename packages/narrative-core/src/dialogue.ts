@@ -11,6 +11,15 @@ export interface ResolvedLine {
   stage?: StageCue[];
   /** Moviment en acabar de dir-la (vegeu `DialogueLineDef.stageAfter`). */
   stageAfter?: StageCue[];
+  /** Objectes que entren o surten de l'inventari quan es diu (vegeu `DialogueLineDef.itemsNow`). */
+  items?: LineItem[];
+}
+
+/** Un objecte que una línia dona (`give`) o treu de l'inventari de `who` (sense, la protagonista que juga). */
+export interface LineItem {
+  give?: Id;
+  take?: Id;
+  who?: Id;
 }
 
 export interface ResolvedChoice {
@@ -19,6 +28,8 @@ export interface ResolvedChoice {
   node: Id;
   key: TextKey;
   text: string;
+  /** Té una resposta nova que encara no s'ha sentit (`nova` a l'opció): no s'ha de mostrar com a ja dita. */
+  nova?: boolean;
 }
 
 /** El que el motor ha de fer després d'un pas de conversa. */

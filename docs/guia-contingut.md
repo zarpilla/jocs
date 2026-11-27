@@ -319,8 +319,12 @@ respondre).
   `if` (només es diuen si es compleix) i `effects`. Una línia `title` és una pantalla de títol (p. ex.
   «Acte 2 · Els costos»): la pantalla es fon a negre, s'hi mostra el text i torna la imatge. Les
   línies `title` seguides es mostren juntes sobre el mateix negre.
+  Amb `"itemsNow": true`, els objectes que donen o treuen els `effects` de la línia entren o surten de l'inventari
+  quan es diu (p. ex. «La Urtica agafa el pot»), no en acabar totes les línies.
 - **Opcions**: `if` (només surt si...), `once` (desapareix un cop triada), `silent` (el protagonista
-  no la diu en veu alta), `effects`, `next` (a quin node va), `end` (acaba la conversa).
+  no la diu en veu alta), `nova` (una condició: mentre es compleixi, l'opció té una resposta nova i no surt en gris
+  com les ja dites, fins que es torna a triar; p. ex. «Necessito la clau» quan ja es porta el formulari segellat),
+  `effects`, `next` (a quin node va), `end` (acaba la conversa).
 - `goto`: quan un node no té opcions, salta a un altre (típicament, tornar al `menu`).
 - Una opció sense `next` torna al mateix node.
 - Si els efectes d'un diàleg canvien de protagonista (`protagonista`), de sala (`anar`) o acaben el joc (`final`),

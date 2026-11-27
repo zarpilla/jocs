@@ -6,7 +6,7 @@
  */
 import { HotspotHandle, PropHandle, ambient, camera, defineVars, events, game, inventory, player, setOutfit, shade, type FallbackTarget, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
-import { Narrative, type StageCue, type Condition, type Effect, type GameContent, type InteractionResult, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
+import { Narrative, type StageCue, type Condition, type Effect, type GameContent, type InteractionResult, type InteractionTarget, type LineItem, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
 import bundle from './content.generated.json';
 import mapping from './mapping.generated.json';
@@ -142,7 +142,7 @@ const isPendingGive = (who: string | undefined, item: string) => {
  * a segellat): per a l'estat ja no hi són, però es queden a la seva casella fins que hi entra el nou, perquè la jugadora
  * el trobi on tenia l'altre i la resta no canviï de lloc.
  */
-const pendingTakes: { owner: string; item: string; paired: boolean }[] = [];
+const pendingTakes: { owner: string; item: string; paired: boolean; held?: boolean }[] = [];
 const isPendingTake = (who: string | undefined, item: string) => {
   const owner = ownerOf(who);
   return pendingTakes.some((t) => t.owner === owner && t.item === item);
@@ -157,7 +157,8 @@ function resolvePendingTakes() {
     if (g) {
       g.replaces = t.item;
       t.paired = true;
-    } else {
+    } else if (!t.held) {
+      // (si una línia el treu, `itemsNow`, s'hi queda fins aleshores: `applyLineItems`)
       pendingTakes.splice(i, 1);
       bagOf(t.owner).remove(itemRef(t.item));
     }
@@ -190,6 +191,36 @@ export function flushPendingGives() {
     const t = pendingTakes.findIndex((t) => t.owner === g.owner && t.item === g.replaces);
     if (t >= 0) pendingTakes.splice(t, 1);
     replaceInBag(bagOf(g.owner), g.replaces, g.item);
+  }
+  // Els que havia de treure una línia que no s'ha arribat a dir.
+  for (const t of pendingTakes.splice(0)) bagOf(t.owner).remove(itemRef(t.item));
+}
+
+/**
+ * Els objectes d'una línia amb `itemsNow` (vegeu `DialogueLineDef.itemsNow`), quan es diu: el que esperava a la cua
+ * (`pendingGives`, `pendingTakes`) entra o surt ara, i no en acabar les línies. Si un objecte tret s'havia aparellat
+ * amb un de donat (per ocupar la seva casella), l'altre ja entrarà al final de la bossa.
+ */
+export function applyLineItems(items: readonly LineItem[] | undefined) {
+  for (const it of items ?? []) {
+    const owner = ownerOf(it.who);
+    if (it.take !== undefined) {
+      const t = pendingTakes.findIndex((p) => p.owner === owner && p.item === it.take);
+      if (t < 0) continue;
+      pendingTakes.splice(t, 1);
+      for (const g of pendingGives) if (g.owner === owner && g.replaces === it.take) g.replaces = undefined;
+      bagOf(owner).remove(itemRef(it.take));
+    } else if (it.give !== undefined) {
+      const i = isPendingGive(it.who, it.give);
+      if (i < 0) continue;
+      const [g] = pendingGives.splice(i, 1);
+      if (g!.replaces === undefined) bagOf(owner).add(itemRef(g!.item));
+      else {
+        const t = pendingTakes.findIndex((p) => p.owner === owner && p.item === g!.replaces);
+        if (t >= 0) pendingTakes.splice(t, 1);
+        replaceInBag(bagOf(owner), g!.replaces, g!.item);
+      }
+    }
   }
 }
 
@@ -565,7 +596,7 @@ export function targetFromBenne(kind: 'prop' | 'hotspot' | 'character' | 'item',
 
 type Point = { x: number; y: number };
 type RoomThing = { id: string; lookAtPoint?: Point; walkToPoint?: Point; points?: Point[]; collider?: { points: Point[] } };
-type RoomFile = { id: string; hotspots: RoomThing[]; props: RoomThing[] };
+type RoomFile = { id: string; size?: { width: number; height: number }; hotspots: RoomThing[]; props: RoomThing[]; characters?: { definition: string }[] };
 const roomFiles = Object.values(import.meta.glob<RoomFile>('../rooms/*/*.room.json', { eager: true, import: 'default' }));
 
 const centre = (pts: Point[]) => ({ x: pts.reduce((a, p) => a + p.x, 0) / pts.length, y: pts.reduce((a, p) => a + p.y, 0) / pts.length });
@@ -627,6 +658,86 @@ export function npcFacingPlayer(benneId: string): 'L' | 'R' | 'DL' | 'DR' | null
   const dx = player.position.x - at.x;
   return Math.abs(dx) < 2 ? null : sideFacing(benneId, dx);
 }
+
+/**
+ * Cap on mira qui acaba d'entrar a `room` per una porta a `at`: cap a la sala. Si no, es quedava d'esquena, mirant la
+ * porta del fons per on havia sortit de l'altra sala, fins que es clicava alguna cosa. Cap al mig, de cara (en 3/4 si la
+ * porta és a un costat).
+ */
+export function faceIntoRoom(room: string, at: Point) {
+  const width = roomFiles.find((r) => r.id === toBenne('rooms', room))?.size?.width ?? AMPLADA;
+  const dx = width / 2 - at.x;
+  const d = Math.abs(dx) < width * 0.15 ? 'D' : sideFacing(player.id, dx);
+  (player.face.now as (d: string) => unknown)(d);
+}
+
+/** Una animació de les normals (quieta, parlant, caminant, parpellejant, mirant): ningú no l'ha posat a propòsit. */
+const PLAIN_ANIM = /(Idle|Talk|Walk|Blink|Look)(U|D|L|R|UL|UR|DL|DR)?$/;
+const plainAnim = (tag: string | undefined) => !tag || PLAIN_ANIM.test(tag);
+
+/**
+ * Quan un personatge de la sala diu una línia, la protagonista que juga es gira cap a ell, i ell cap a ella (si es pot
+ * girar: vegeu `npcFacingPlayer`; l'altra protagonista, sempre que tingui animacions de costat). Així, en una conversa
+ * que no ha obert un clic seu (l'`onEnter` d'una sala) o amb algú que no es gira (la Juana, asseguda), es miren.
+ * No a les cinemàtiques, ni amb qui fa una animació posada a propòsit (assegut, un gest), ni amb qui les indicacions
+ * d'escena d'aquestes línies ja han girat o mogut (`staged`).
+ */
+export function faceEachOther(who: string, staged: ReadonlySet<string>) {
+  const room = world.currentRoom();
+  if (!room || content.rooms[room]?.cutscene || who === world.activeProtagonist()) return;
+  const speaker = benneCharacter(who) as unknown as Actor | undefined;
+  const me = player as unknown as Actor;
+  if (!speaker?.visible || !me.visible) return;
+  const dx = speaker.position.x - me.position.x;
+  const dy = speaker.position.y - me.position.y;
+  if (Math.abs(dx) < 2 || Math.abs(dx) < Math.abs(dy)) return;
+  const turn = (a: Actor, d: string) => (a.face.now as (d: string) => unknown)(d);
+  if (!staged.has('player') && plainAnim(me.animation)) turn(me, sideFacing(player.id, dx));
+  if (staged.has(who) || !plainAnim(speaker.animation)) return;
+  const id = toBenne('characters', who);
+  const other = content.rooms[room]?.protagonists?.includes(who);
+  const anims = characterFiles.find((c) => c.id === id)?.animations;
+  const d = other ? (anims?.IdleL ? sideFacing(id, -dx) : null) : npcFacingPlayer(id);
+  if (d) turn(speaker, d);
+}
+
+// ─── Qui parla sense ser a la pantalla ───────────────────────────────────────
+
+type Speaking = { position: Point; visible: boolean; speechPosition: Point | null };
+
+/**
+ * Si qui diu una línia no es veu a la sala (la germana pel walkie, algú que és fora, una veu amagada al seu punt
+ * d'inici): llavors Benne posaria el text on és el seu actor invisible (damunt d'un altre personatge) o, si no és a la
+ * sala, al marge esquerre, i semblaria d'un altre. Es diu des d'un lloc neutre, a dalt i al mig de la pantalla, amb
+ * el color de qui parla i el seu nom davant. Torna el text que s'ha de dir, o `null`
+ * si qui parla és a la vista (llavors, com sempre). En acabar la línia, `endOffstageLine`.
+ */
+export function offstageLine(who: string, text: string): string | null {
+  const room = world.currentRoom();
+  const handle = benneCharacter(who) as unknown as Speaking | undefined;
+  if (!room || !handle) return null;
+  const id = toBenne('characters', who);
+  const file = roomFiles.find((r) => r.id === toBenne('rooms', room));
+  const inRoom = (file?.characters ?? []).some((c) => c.definition.split('/')[0] === id);
+  if (inRoom && handle.visible) return null;
+  const width = file?.size?.width ?? AMPLADA;
+  const height = file?.size?.height ?? AMPLADA * 9 / 16;
+  // Al mig de la pantalla; a una sala més ampla que la pantalla, la càmera segueix qui juga: al mig, més o menys, ella.
+  const x = width <= AMPLADA ? width / 2 : Math.min(width - AMPLADA / 2, Math.max(AMPLADA / 2, player.position.x));
+  handle.speechPosition = { x: Math.round(x), y: Math.round(height * OFFSTAGE_Y) };
+  // La marca de veu (`|n| `), si n'hi ha, ha de quedar davant de tot.
+  const m = /^(\|\d+\| )?([\s\S]*)$/.exec(text)!;
+  return `${m[1] ?? ''}${narrative.characterName(who)}: ${m[2]}`;
+}
+
+/** Després d'una línia d'`offstageLine`: qui parla torna a parlar des d'on és. */
+export function endOffstageLine(who: string) {
+  const handle = benneCharacter(who) as unknown as Speaking | undefined;
+  if (handle?.speechPosition) handle.speechPosition = null;
+}
+
+/** A quina alçada de la sala surten les línies de qui no es veu (la part de baix del text). */
+const OFFSTAGE_Y = 0.24;
 
 /** Les capes de l'art lligades a la cosa `id` d'una sala (props `<id>__<capa>`): es mostren i s'amaguen amb ella. */
 function linkedLayers(room: string, id: string): PropHandle[] {
@@ -691,7 +802,16 @@ export function stagePoint(to: string | Point): Point | null {
  * `stage` (la pantalla del Magnat, que s'apaga quan el narrador ho diu), es torna a mostrar i s'aguanta fins a
  * aquella línia. Tot passa en la mateixa crida, abans de dibuixar: no parpelleja.
  */
-export function primeStage<T extends { lines: readonly { stage?: StageCue[] }[] } | null | undefined>(resolved: T, skip = 0): T {
+export function primeStage<T extends { lines: readonly { stage?: StageCue[]; items?: LineItem[] }[] } | null | undefined>(resolved: T, skip = 0): T {
+  // Els objectes que treu una línia amb `itemsNow` es queden a la bossa fins que es diu (vegeu `applyLineItems`).
+  for (const line of resolved?.lines ?? []) {
+    for (const it of line.items ?? []) {
+      if (it.take === undefined) continue;
+      const owner = ownerOf(it.who);
+      const t = pendingTakes.find((p) => p.owner === owner && p.item === it.take);
+      if (t) t.held = true;
+    }
+  }
   for (const cue of resolved?.lines[skip]?.stage ?? []) {
     if (cue.prop !== undefined && cue.visible === false) applyStageNow({ prop: cue.prop, visible: false });
   }
