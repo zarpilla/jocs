@@ -286,6 +286,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
         report.created.push(`rooms/${id}: ${String(c.definition).split('/')[0]}`);
       }
       writeJson(path, benneRoom);
+      for (const w of coveredProps(benneRoom)) console.warn(`⚠ rooms/${id}: ${w}`);
       // Art encara provisional: es redibuixa (els dissenys poden haver canviat).
       if (existsSync(join(gameDir, 'assets/images/rooms', id, '.provisional'))) report.needsArt.push(`rooms/${id}`);
     }
@@ -414,6 +415,34 @@ gui.onShow(() => syncContinua())
 // ─── Disposició automàtica d'una sala nova ──────────────────────────────────
 
 /** Un decorat (`decor` a la sala): un prop que es veu o no segons l'estat, però no es pot clicar. */
+/**
+ * Props clicables que no es poden clicar: el motor dona el clic a la cosa de zIndex més alt, i un punt (hotspot) més
+ * amunt que tapi del tot el collider d'un prop se'l queda sempre (la cera del forat, a La Conjura de l'Avet).
+ */
+export function coveredProps(room: Json): string[] {
+  type Box = [number, number, number, number];
+  const box = (pts: Json[] | undefined): Box | null => {
+    if (!pts?.length) return null;
+    const xs = pts.map((p) => Number(p.x)), ys = pts.map((p) => Number(p.y));
+    return [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
+  };
+  const hotspots = ((room.hotspots as Json[]) ?? []).filter((h) => h.active !== false)
+    .map((h) => ({ id: String(h.id), z: Number(h.zIndex ?? 0), b: box(h.points as Json[]) }));
+  const props = ((room.props as Json[]) ?? []).filter((p) => p.clickable)
+    .map((p) => ({ id: String(p.id), z: Number(p.zIndex ?? 0), b: box((p.collider as Json | undefined)?.points as Json[]) }));
+  const out: string[] = [];
+  for (const p of props) {
+    if (!p.b) continue;
+    for (const h of hotspots) {
+      if (!h.b || h.z < p.z) continue; // amb el mateix zIndex també guanya el punt
+      if (h.b[0] <= p.b[0] && h.b[1] <= p.b[1] && h.b[2] >= p.b[2] && h.b[3] >= p.b[3]) {
+        out.push(`el prop «${p.id}» (zIndex ${p.z}) queda tapat pel punt «${h.id}» (zIndex ${h.z}): no es pot clicar. Puja el zIndex del prop o baixa el del punt.`);
+      }
+    }
+  }
+  return out;
+}
+
 // Per sobre dels props clicables (zIndex 3): un decorat pot canviar l'aspecte d'un prop. No es pot clicar.
 // Amb `sota`, per sota (zIndex 2): fa de fons d'altres coses clicables.
 const decorZ = (sota?: boolean) => (sota ? 2 : 4);
