@@ -12,7 +12,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
-  AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, resetStageAnims, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, resetStageAnims, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom, doorPoint,
   musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne, voiced, preloadLineVoices,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -159,10 +159,36 @@ function followUp(goTo?: string) {
     goToProtagonist(who)
     return
   }
+  if (anar && anar === narrative.world.currentRoom()) {
+    reenterRoom(anar)
+    return
+  }
   if (anar) {
     const room = benneRoom(anar)
     if (room) room.goTo()
   }
+}
+
+/**
+ * `anar` a la sala on ja s'és (p. ex. l'Escena 3 de Ni un ou, que comença a la infermeria, si la darrera revisió s'hi
+ * acaba): Benne no hi torna a entrar (`goTo` a la mateixa sala no fa res), i el títol que hi havia just abans s'ha
+ * quedat a negre esperant la sala nova. Es fa l'entrada a mà: la sala al dia sota el negre, el fos i l'`onEnter`.
+ */
+function reenterRoom(room: string) {
+  resetStageAnims(room)
+  applyHotspotVisibility()
+  applyAppearances()
+  applyPlaces(false)
+  narrative.worldChanged()
+  const result = primeStage(narrative.enterRoom(room))
+  // Si l'onEnter comença amb un títol, es queda a negre: el títol ja farà el seu fos.
+  if (result?.lines[0]?.who !== 'title') {
+    for (const cue of result?.lines[0]?.stage ?? []) applyStageNow(cue)
+    showDueCharacters()
+    fadeIn(1)
+  }
+  if (!untouchedNewGame) saves.autosave(AUTOSAVE)
+  if (result) playResult(result)
 }
 
 /**
@@ -262,6 +288,10 @@ export function onRoomEntered() {
       const character = benneCharacter(who)
       if (character) player.switchTo(character)
     }
+    // Qui entra per una porta apareix davant de la porta (vegeu `doorPoint`).
+    const from = protagonistRoom(who)
+    const porta = from && from !== room ? doorPoint(room, from) : null
+    if (porta) player.moveTo(porta)
     rememberProtagonistRoom(who, room)
   }
   resetStageAnims(room)

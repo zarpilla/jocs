@@ -563,6 +563,21 @@ export function stageActor(who: string): Actor | undefined {
   return (who === 'player' ? player : benneCharacter(who)) as unknown as Actor | undefined;
 }
 
+/**
+ * On apareix qui entra a `room` venint de `from`: el punt d'arribada de la porta (la cosa que hi torna). Benne desa la
+ * posició de cada personatge a cada sala; si n'havia sortit sense passar per la porta (l'altra protagonista se l'ha
+ * enduta amb `situar`), en tornar-hi apareixeria on l'havia deixada. `null` si no hi ha cap porta que hi torni.
+ */
+export function doorPoint(room: string, from: string): Point | null {
+  const def = content.rooms[room];
+  if (!def || def.cutscene) return null;
+  const porta = Object.entries(def.hotspots ?? {}).find(([, h]) => (h.interactions ?? []).some((i) => i.goTo === from && !i.item));
+  if (!porta) return null;
+  const file = roomFiles.find((r) => r.id === toBenne('rooms', room));
+  const id = toBenne('hotspots', porta[0]);
+  return file?.hotspots.find((t) => t.id === id)?.walkToPoint ?? null;
+}
+
 /** On és un lloc d'una indicació: un punt, o el punt d'arribada d'una cosa de la sala (o on és un personatge). */
 export function stagePoint(to: string | Point): Point | null {
   if (typeof to === 'object') return to;
