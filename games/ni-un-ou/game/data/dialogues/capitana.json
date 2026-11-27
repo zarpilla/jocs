@@ -223,7 +223,17 @@
       "lines": [
         {
           "who": "capitana",
-          "text": "dlg.capitana.fi.1"
+          "text": "dlg.capitana.fi.1",
+          "stageAfter": [
+            {
+              "who": "capitana",
+              "walk": "porta"
+            },
+            {
+              "who": "capitana",
+              "visible": false
+            }
+          ]
         }
       ],
       "effects": [

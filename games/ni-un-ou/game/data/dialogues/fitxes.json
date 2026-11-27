@@ -73,11 +73,43 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "dlg.fitxes.capitana.1"
+          "text": "dlg.fitxes.capitana.1",
+          "stage": [
+            {
+              "who": "capitana",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "narrator",
-          "text": "dlg.fitxes.capitana.2"
+          "text": "dlg.fitxes.capitana.2",
+          "stage": [
+            {
+              "who": "capitana",
+              "at": "porta",
+              "anim": null,
+              "face": "R",
+              "visible": true
+            },
+            {
+              "who": "vet",
+              "face": "L"
+            }
+          ],
+          "stageAfter": [
+            {
+              "who": "capitana",
+              "walk": {
+                "x": 407,
+                "y": 218
+              }
+            },
+            {
+              "who": "vet",
+              "face": "R"
+            }
+          ]
         }
       ],
       "effects": [
@@ -91,11 +123,43 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "dlg.fitxes.tomas.1"
+          "text": "dlg.fitxes.tomas.1",
+          "stage": [
+            {
+              "who": "tomas",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "narrator",
-          "text": "dlg.fitxes.tomas.2"
+          "text": "dlg.fitxes.tomas.2",
+          "stage": [
+            {
+              "who": "tomas",
+              "at": "porta",
+              "anim": null,
+              "face": "R",
+              "visible": true
+            },
+            {
+              "who": "vet",
+              "face": "L"
+            }
+          ],
+          "stageAfter": [
+            {
+              "who": "tomas",
+              "walk": {
+                "x": 407,
+                "y": 218
+              }
+            },
+            {
+              "who": "vet",
+              "face": "R"
+            }
+          ]
         }
       ],
       "effects": [
@@ -109,11 +173,43 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "dlg.fitxes.nadia.1"
+          "text": "dlg.fitxes.nadia.1",
+          "stage": [
+            {
+              "who": "nadia",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "narrator",
-          "text": "dlg.fitxes.nadia.2"
+          "text": "dlg.fitxes.nadia.2",
+          "stage": [
+            {
+              "who": "nadia",
+              "at": "porta",
+              "anim": null,
+              "face": "R",
+              "visible": true
+            },
+            {
+              "who": "vet",
+              "face": "L"
+            }
+          ],
+          "stageAfter": [
+            {
+              "who": "nadia",
+              "walk": {
+                "x": 407,
+                "y": 218
+              }
+            },
+            {
+              "who": "vet",
+              "face": "R"
+            }
+          ]
         }
       ],
       "effects": [
@@ -127,11 +223,43 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "dlg.fitxes.marcel.1"
+          "text": "dlg.fitxes.marcel.1",
+          "stage": [
+            {
+              "who": "marcel",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "narrator",
-          "text": "dlg.fitxes.marcel.2"
+          "text": "dlg.fitxes.marcel.2",
+          "stage": [
+            {
+              "who": "marcel",
+              "at": "porta",
+              "anim": null,
+              "face": "R",
+              "visible": true
+            },
+            {
+              "who": "vet",
+              "face": "L"
+            }
+          ],
+          "stageAfter": [
+            {
+              "who": "marcel",
+              "walk": {
+                "x": 407,
+                "y": 218
+              }
+            },
+            {
+              "who": "vet",
+              "face": "R"
+            }
+          ]
         }
       ],
       "effects": [

@@ -162,7 +162,17 @@
       "lines": [
         {
           "who": "nadia",
-          "text": "dlg.nadia.fi.1"
+          "text": "dlg.nadia.fi.1",
+          "stageAfter": [
+            {
+              "who": "nadia",
+              "walk": "porta"
+            },
+            {
+              "who": "nadia",
+              "visible": false
+            }
+          ]
         }
       ],
       "effects": [

@@ -118,7 +118,17 @@
       "lines": [
         {
           "who": "marcel",
-          "text": "dlg.marcel.fi.1"
+          "text": "dlg.marcel.fi.1",
+          "stageAfter": [
+            {
+              "who": "marcel",
+              "walk": "porta"
+            },
+            {
+              "who": "marcel",
+              "visible": false
+            }
+          ]
         }
       ],
       "effects": [

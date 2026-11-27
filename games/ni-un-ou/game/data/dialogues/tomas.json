@@ -195,7 +195,17 @@
       "lines": [
         {
           "who": "tomas",
-          "text": "dlg.tomas.fi.1"
+          "text": "dlg.tomas.fi.1",
+          "stageAfter": [
+            {
+              "who": "tomas",
+              "walk": "porta"
+            },
+            {
+              "who": "tomas",
+              "visible": false
+            }
+          ]
         }
       ],
       "effects": [

@@ -646,11 +646,42 @@
             {
               "who": "narrator",
               "text": "sala.sala_maquines.quadre.15",
-              "sound": "bomba"
+              "sound": "bomba",
+              "stage": [
+                {
+                  "who": "bastida",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "narrator",
-              "text": "sala.sala_maquines.quadre.16"
+              "text": "sala.sala_maquines.quadre.16",
+              "stage": [
+                {
+                  "who": "bastida",
+                  "at": {
+                    "x": 70,
+                    "y": 160
+                  },
+                  "face": "R",
+                  "visible": true
+                },
+                {
+                  "who": "bastida",
+                  "walk": {
+                    "x": 104,
+                    "y": 200
+                  }
+                },
+                {
+                  "who": "bastida",
+                  "walk": {
+                    "x": 150,
+                    "y": 212
+                  }
+                }
+              ]
             }
           ],
           "effects": [
