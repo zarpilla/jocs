@@ -299,6 +299,14 @@
                 },
                 {
                   "flag": "ulleres_posades"
+                },
+                {
+                  "not": {
+                    "inRoom": [
+                      "bar_sala"
+                    ],
+                    "who": "vet"
+                  }
                 }
               ]
             },
@@ -306,13 +314,37 @@
           },
           {
             "if": {
-              "flag": "bar_fet"
+              "all": [
+                {
+                  "flag": "bar_fet"
+                },
+                {
+                  "not": {
+                    "inRoom": [
+                      "bar_sala"
+                    ],
+                    "who": "vet"
+                  }
+                }
+              ]
             },
             "name": "Bomber"
           },
           {
             "if": {
-              "flag": "vet_marxa"
+              "all": [
+                {
+                  "flag": "vet_marxa"
+                },
+                {
+                  "not": {
+                    "inRoom": [
+                      "pis_cuina"
+                    ],
+                    "who": "vet"
+                  }
+                }
+              ]
             },
             "name": "Franela"
           }
@@ -10371,7 +10403,9 @@
                 ]
               },
               {
+                "id": "router_mirar",
                 "verb": "look",
+                "once": true,
                 "lines": [
                   {
                     "who": "player",
@@ -10521,6 +10555,157 @@
                     "text": "sala.pis_estudi.router.on.diu_distret",
                     "if": {
                       "flag": "diu_distret"
+                    }
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.falta.fxa",
+                    "if": {
+                      "all": [
+                        {
+                          "flag": "fibra_connectada",
+                          "is": false
+                        },
+                        {
+                          "flag": "xarxa_connectada",
+                          "is": false
+                        },
+                        {
+                          "flag": "alimentacio_connectada",
+                          "is": false
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.falta.fx",
+                    "if": {
+                      "all": [
+                        {
+                          "flag": "fibra_connectada",
+                          "is": false
+                        },
+                        {
+                          "flag": "xarxa_connectada",
+                          "is": false
+                        },
+                        {
+                          "flag": "alimentacio_connectada"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.falta.fa",
+                    "if": {
+                      "all": [
+                        {
+                          "flag": "fibra_connectada",
+                          "is": false
+                        },
+                        {
+                          "flag": "xarxa_connectada"
+                        },
+                        {
+                          "flag": "alimentacio_connectada",
+                          "is": false
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.falta.xa",
+                    "if": {
+                      "all": [
+                        {
+                          "flag": "fibra_connectada"
+                        },
+                        {
+                          "flag": "xarxa_connectada",
+                          "is": false
+                        },
+                        {
+                          "flag": "alimentacio_connectada",
+                          "is": false
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.falta.f",
+                    "if": {
+                      "all": [
+                        {
+                          "flag": "fibra_connectada",
+                          "is": false
+                        },
+                        {
+                          "flag": "xarxa_connectada"
+                        },
+                        {
+                          "flag": "alimentacio_connectada"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.falta.x",
+                    "if": {
+                      "all": [
+                        {
+                          "flag": "fibra_connectada"
+                        },
+                        {
+                          "flag": "xarxa_connectada",
+                          "is": false
+                        },
+                        {
+                          "flag": "alimentacio_connectada"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.falta.a",
+                    "if": {
+                      "all": [
+                        {
+                          "flag": "fibra_connectada"
+                        },
+                        {
+                          "flag": "xarxa_connectada"
+                        },
+                        {
+                          "flag": "alimentacio_connectada",
+                          "is": false
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.falta.diu",
+                    "if": {
+                      "all": [
+                        {
+                          "flag": "diu_ha_mossegat"
+                        },
+                        {
+                          "flag": "diu_distret",
+                          "is": false
+                        }
+                      ]
                     }
                   }
                 ]
@@ -10850,6 +11035,18 @@
                   {
                     "who": "player",
                     "text": "sala.pis_estudi.fibra.look_ok"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "diu_distret"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.fibra.look_distret"
                   }
                 ]
               },
@@ -11471,11 +11668,13 @@
             }
           },
           "passaplats_obert": {
+            "sota": true,
             "visibleIf": {
               "flag": "passaplats_obert"
             }
           },
           "vet_passaplats": {
+            "sota": true,
             "visibleIf": {
               "all": [
                 {
@@ -26953,7 +27152,7 @@
       "ui.defecte.pickUp.vet.3": "Si m'ho enduc, ho hauré d'explicar. I no tinc cap mentida a punt.",
       "ui.defecte.use.iri": "No hi veig cap protocol compatible.",
       "ui.defecte.use.iri.2": "No. I no és culpa meva: és un error de disseny.",
-      "ui.defecte.use.iri.3": "Ho he provat amb carinyo i amb força bruta. Res.",
+      "ui.defecte.use.iri.3": "Ho he provat per les bones i amb força bruta. Res.",
       "ui.defecte.use.vet": "Ni amb paciència ni amb cara dura.",
       "ui.defecte.use.vet.2": "No. Li he dit que era urgent i no s'ho ha cregut.",
       "ui.defecte.use.vet.3": "No. I això que la cafetera del bar la faig anar a cops.",
@@ -27747,6 +27946,7 @@
       "sala.pis_estudi.fibra.connecta": "La fibra, al router. Amb cura: és llum.",
       "sala.pis_estudi.fibra.ja": "Ja està connectada. Llum dins d'un fil.",
       "sala.pis_estudi.fibra.look": "La presa de la fibra, amb el cable enrotllat. En Diu se'l mira com si fos un sopar.",
+      "sala.pis_estudi.fibra.look_distret": "La presa de la fibra, amb el cable enrotllat. En Diu, ara, té coses millors a fer.",
       "sala.pis_estudi.fibra.look_ok": "La fibra, connectada. En Diu la mira amb nostàlgia.",
       "sala.pis_estudi.fibra.nom": "la presa de la fibra",
       "sala.pis_estudi.fibra.rev1": "Llums verdes. Internet de debò.",
@@ -27802,6 +28002,14 @@
       "sala.pis_estudi.router.alimentacio": "El cable de la cafetera, al router. Que el cafè ens perdoni.",
       "sala.pis_estudi.router.altre": "Això no s'endolla enlloc. Ho he comprovat.",
       "sala.pis_estudi.router.ja": "Funciona. No el toquis. No el miris gaire.",
+      "sala.pis_estudi.router.falta.fxa": "Encara en falten tres: la fibra, el cable de xarxa i l'alimentació.",
+      "sala.pis_estudi.router.falta.fx": "Falten la fibra i el cable de xarxa.",
+      "sala.pis_estudi.router.falta.fa": "Falten la fibra i l'alimentació.",
+      "sala.pis_estudi.router.falta.xa": "Falten el cable de xarxa i l'alimentació.",
+      "sala.pis_estudi.router.falta.f": "Només falta la fibra.",
+      "sala.pis_estudi.router.falta.x": "Només falta el cable de xarxa.",
+      "sala.pis_estudi.router.falta.a": "Només falta l'alimentació.",
+      "sala.pis_estudi.router.falta.diu": "I abans, distreure en Diu.",
       "sala.pis_estudi.router.look0": "El router nou. Sense internet no hi ha pla, i sense tres cables no hi ha internet. Ara mateix en té zero.",
       "sala.pis_estudi.router.on.fibra": "La fibra: penja de la paret, aquí mateix. Només cal endollar-la al router.",
       "sala.pis_estudi.router.on.xarxa_caixa": "El cable de xarxa: és dins la caixa del router. Primer l'he de treure.",

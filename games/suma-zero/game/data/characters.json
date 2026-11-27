@@ -108,6 +108,14 @@
             },
             {
               "flag": "ulleres_posades"
+            },
+            {
+              "not": {
+                "inRoom": [
+                  "bar_sala"
+                ],
+                "who": "vet"
+              }
             }
           ]
         },
@@ -115,13 +123,37 @@
       },
       {
         "if": {
-          "flag": "bar_fet"
+          "all": [
+            {
+              "flag": "bar_fet"
+            },
+            {
+              "not": {
+                "inRoom": [
+                  "bar_sala"
+                ],
+                "who": "vet"
+              }
+            }
+          ]
         },
         "name": "Bomber"
       },
       {
         "if": {
-          "flag": "vet_marxa"
+          "all": [
+            {
+              "flag": "vet_marxa"
+            },
+            {
+              "not": {
+                "inRoom": [
+                  "pis_cuina"
+                ],
+                "who": "vet"
+              }
+            }
+          ]
         },
         "name": "Franela"
       }
