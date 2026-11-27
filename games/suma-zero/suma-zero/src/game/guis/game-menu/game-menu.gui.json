@@ -332,5 +332,6 @@
   ],
   "modal": true,
   "zIndex": 100,
-  "anchorY": "center"
+  "anchorY": "center",
+  "pauseGame": true
 }
