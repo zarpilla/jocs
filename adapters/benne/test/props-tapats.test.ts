@@ -12,7 +12,6 @@ const GAMES = join(__dirname, '../../../games');
 
 // Pendents, amb la tasca que les arregla.
 const PENDENTS: Record<string, string> = {
-  'ni-un-ou/pont': 'tasca 168',
 };
 
 describe('props clicables tapats per un punt', () => {
