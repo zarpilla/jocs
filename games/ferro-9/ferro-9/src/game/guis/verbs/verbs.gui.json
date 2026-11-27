@@ -88,7 +88,8 @@
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#f2c66d"
+        "hover": "#f2c66d",
+        "pressed": "#ffffff"
       },
       "textOutline": {
         "enabled": true,
@@ -113,7 +114,8 @@
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#f2c66d"
+        "hover": "#f2c66d",
+        "pressed": "#ffffff"
       },
       "textOutline": {
         "enabled": true,
@@ -138,7 +140,8 @@
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#f2c66d"
+        "hover": "#f2c66d",
+        "pressed": "#ffffff"
       },
       "textOutline": {
         "enabled": true,
@@ -163,7 +166,8 @@
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#f2c66d"
+        "hover": "#f2c66d",
+        "pressed": "#ffffff"
       },
       "textOutline": {
         "enabled": true,
@@ -188,7 +192,8 @@
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#f2c66d"
+        "hover": "#f2c66d",
+        "pressed": "#ffffff"
       },
       "textOutline": {
         "enabled": true,
@@ -213,7 +218,8 @@
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#f2c66d"
+        "hover": "#f2c66d",
+        "pressed": "#ffffff"
       },
       "textOutline": {
         "enabled": true,
@@ -238,7 +244,8 @@
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#f2c66d"
+        "hover": "#f2c66d",
+        "pressed": "#ffffff"
       },
       "textOutline": {
         "enabled": true,
@@ -263,7 +270,8 @@
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#f2c66d"
+        "hover": "#f2c66d",
+        "pressed": "#ffffff"
       },
       "textOutline": {
         "enabled": true,
@@ -288,7 +296,8 @@
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#f2c66d"
+        "hover": "#f2c66d",
+        "pressed": "#ffffff"
       },
       "textOutline": {
         "enabled": true,
@@ -324,7 +333,8 @@
       "textOffsetY": 0,
       "backgroundTag": "CanviaBtn",
       "textColorStates": {
-        "hover": "#f2c66d"
+        "hover": "#f2c66d",
+        "pressed": "#ffffff"
       },
       "textOutline": {
         "enabled": true,

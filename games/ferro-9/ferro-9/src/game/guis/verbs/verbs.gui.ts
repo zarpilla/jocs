@@ -22,12 +22,14 @@ for (const [verb, button] of buttons) button.onClick(() => verb.select())
 
 menuBtn.onClick(() => guis.gameMenu.show())
 
-// The verb line ("Use Knife with Bread"), and the hovered thing's default verb lit up.
+// The verb line ("Use Knife with Bread"), the chosen verb pressed (white) and the hovered thing's default verb
+// lit up (gold), so the two don't look the same (tasca 068).
 function refresh() {
   verbLineText.text = pointer.sentence
+  const armed = pointer.verb
   const highlighted = pointer.hover?.defaultVerb
   for (const [verb, button] of buttons) {
-    button.visualState = verb === highlighted ? 'hover' : 'normal'
+    button.visualState = verb === armed ? 'pressed' : verb === highlighted ? 'hover' : 'normal'
   }
 }
 
