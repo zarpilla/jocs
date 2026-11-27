@@ -7,13 +7,13 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { MusicHandle, SfxHandle, ambient, background, cutscene, display, fadeIn, fadeOut, game, player, pointer, saves, stayBlackOnEnter, wait } from '@benne/script';
+import { MusicHandle, SfxHandle, ambient, background, cutscene, defineVars, display, fadeIn, fadeOut, game, player, pointer, saves, stayBlackOnEnter, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
   AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, resetStageAnims, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom, doorPoint,
-  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne, voiced, preloadLineVoices,
+  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, flushPendingGives, leavesRoom, targetFromBenne, voiced, preloadLineVoices,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
 
@@ -147,12 +147,15 @@ function senseOpcions(id: string): boolean {
 
 /** Després d'una interacció o d'un diàleg: el final, el canvi de protagonista o la sala nova que s'hagin demanat. */
 function followUp(goTo?: string) {
+  // Els objectes donats entren a l'inventari abans de desar, de canviar de protagonista o de sala.
+  flushPendingGives()
   if (takePendingEnding()) {
     takePendingSwitch()
     takePendingGoTo()
     playEnding()
     return
   }
+  autosaveHere()
   const who = takePendingSwitch()
   const anar = takePendingGoTo() ?? goTo
   if (who) {
@@ -371,6 +374,17 @@ function playerActed() {
   saves.autosave(AUTOSAVE)
 }
 
+/**
+ * Desa la partida en acabar una interacció o un diàleg (`saves.autosave` espera que s'acabin), perquè «Continua» no
+ * perdi el que s'ha fet dins d'una sala (les revisions de la infermeria de Ni un ou). Mai a la portada, a una
+ * cinemàtica, al final ni en una partida nova on encara no s'ha fet res.
+ */
+function autosaveHere() {
+  const room = narrative.world.currentRoom()
+  if (untouchedNewGame || room === narrative.content.manifest.cover || narrative.content.rooms[room]?.cutscene || finale.length) return
+  saves.autosave(AUTOSAVE)
+}
+
 /** Qui vol saber que s'ha clicat «Comença» (la targeta «Com es juga», als jocs tàctils: vegeu controls.ts). */
 const enComencar: Array<() => void> = []
 
@@ -545,6 +559,15 @@ function refreshOptions(dialog: DialogHandle, choices: ResolvedChoice[]) {
   }
 }
 
+/**
+ * Una opció `silent` és una ordre (els comandaments de la grua d'Aigua Verne, «Marxar»), no una frase: no es posa en
+ * gris com les ja dites, que es poden haver de tornar a triar. Benne la marca en clicar-la; aquí es desmarca.
+ */
+function unmarkUsed(dialog: DialogHandle, name: string) {
+  const key = `dialog:${dialog.id}:option:${dialog.options[name]?.id ?? name}:used`
+  defineVars({ [key]: false })[key] = false
+}
+
 /** Des de `dialog.onStart` (generat). */
 export function startNarrativeDialog(id: string, dialog: DialogHandle) {
   adoptLoadedState()
@@ -559,12 +582,17 @@ export function startNarrativeDialog(id: string, dialog: DialogHandle) {
 export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: string, choice: string) {
   adoptLoadedState()
   // La primera línia és l'opció dita en veu alta (si no és `silent`): el decorat de l'escena és a la següent.
-  const echo = narrative.content.dialogues[id]?.nodes[node]?.choices?.find((c) => c.id === choice)?.silent ? 0 : 1
+  const silent = narrative.content.dialogues[id]?.nodes[node]?.choices?.find((c) => c.id === choice)?.silent
+  if (silent) unmarkUsed(dialog, optionName(node, choice))
+  const echo = silent ? 0 : 1
   const step = primeStage(narrative.choose(id, choice, { node }), echo)
   refreshOptions(dialog, step.choices)
   playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
   if (step.ended) endDialog(dialog)
 }
+
+/** Una pista demanada enmig d'una conversa, que es dirà quan acabi. */
+let hintWaiting = false
 
 /**
  * Botó o verb de "pista": cada vegada una mica més explícita. Si la pista apunta a coses de la sala (`targets`), hi
@@ -572,6 +600,21 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
  * walkie), la diu ella.
  */
 export function sayHint() {
+  // Enmig d'una línia o d'una conversa, la pista espera que acabi: dita alhora, s'hi barrejava i l'encallava.
+  if (game.isBusy) {
+    if (!hintWaiting) {
+      hintWaiting = true
+      const tick = () => {
+        if (game.isBusy) window.setTimeout(tick, 250)
+        else {
+          hintWaiting = false
+          sayHint()
+        }
+      }
+      window.setTimeout(tick, 250)
+    }
+    return
+  }
   const hint = narrative.requestHint()
   const text = hint ? hint.text : narrative.noHintText()
   const key = hint ? hint.key : narrative.noHintKey()
@@ -599,13 +642,20 @@ export function switchProtagonist() {
 }
 
 /** Una línia d'un final: els personatges ja no hi són, i el que diuen surt amb el nom al davant. */
-type EndingLine = { who: string; key?: string; text: string; sound?: string; effects?: Effect[] }
+type EndingLine = { who: string; key?: string; text: string; sound?: string; effects?: Effect[]; stage?: StageCue[]; stageAfter?: StageCue[] }
 
 /**
  * Una línia d'un final. Damunt d'una sala (`enSala`), qui hi és i es veu la diu amb bafarada, com a la resta del
  * joc, i els `effects` de la línia s'apliquen abans (algú que es mou, una cosa que s'apaga). Si no, és text.
  */
 function displayEndingLine(line: EndingLine, enSala = false) {
+  // Damunt d'una sala, el moviment de la línia (`stage`, `stageAfter`), com a les interaccions: qui serveix, qui es gira.
+  if (enSala && line.stage) playStage(line.stage)
+  sayEndingLine(line, enSala)
+  if (enSala && line.stageAfter) playStage(line.stageAfter)
+}
+
+function sayEndingLine(line: EndingLine, enSala: boolean) {
   recordLine(line.who, line.text)
   if (line.sound) new SfxHandle(line.sound).play()
   if (enSala && line.effects?.length) {
@@ -672,16 +722,23 @@ export function playEnding(id?: string) {
   sala.goTo()
 }
 
+/** Quan s'ha premut Esc per última vegada (per saltar un final, vegeu `playFinaleRoom`). */
+let escPremutA = 0
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') escPremutA = Date.now()
+}, true)
+
 /** En entrar a una sala d'un final: les seves línies, i després la sala següent o el «Fi». */
 function playFinaleRoom() {
   const tros = finale.shift()!
+  const inici = Date.now()
   let saltat = false
   for (const line of tros.lines) {
     displayEndingLine(line, true)
-    // Amb Esc, `wait` acaba a l'instant: llavors anem directament al «Fi».
-    const inici = Date.now()
     wait(0.1)
-    if (Date.now() - inici < 50) {
+    // Amb Esc (salta l'escena), directament al «Fi». Un clic només passa la línia: abans es mirava si `wait`
+    // havia acabat a l'instant, i un clic que hi queia també ho feia.
+    if (escPremutA >= inici) {
       saltat = true
       break
     }

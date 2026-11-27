@@ -1998,7 +1998,21 @@
               },
               {
                 "who": "player",
-                "text": "obj.nota_pressio.iri1"
+                "text": "obj.nota_pressio.iri1",
+                "if": {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "oberta"
+                }
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_pressio.iri1_fet",
+                "if": {
+                  "var": "valvula",
+                  "op": "!=",
+                  "value": "oberta"
+                }
               },
               {
                 "who": "player",
@@ -2050,7 +2064,21 @@
               },
               {
                 "who": "player",
-                "text": "obj.nota_massa.iri2"
+                "text": "obj.nota_massa.iri2",
+                "if": {
+                  "var": "valvula",
+                  "op": "!=",
+                  "value": "mig"
+                }
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_massa.iri2_fet",
+                "if": {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "mig"
+                }
               }
             ],
             "effects": [
@@ -6058,7 +6086,13 @@
                   {
                     "who": "player",
                     "text": "sala.fabrica_moll.llancadora.fugir1",
-                    "sound": "motor"
+                    "sound": "motor",
+                    "stageAfter": [
+                      {
+                        "who": "player",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -6067,7 +6101,12 @@
                   {
                     "who": "player",
                     "text": "sala.fabrica_moll.llancadora.fugir3",
-                    "sound": "motor"
+                    "sound": "motor",
+                    "stage": [
+                      {
+                        "shake": 0.8
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -6112,7 +6151,13 @@
                   {
                     "who": "player",
                     "text": "sala.fabrica_moll.llancadora.fugir1",
-                    "sound": "motor"
+                    "sound": "motor",
+                    "stageAfter": [
+                      {
+                        "who": "player",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -6121,7 +6166,12 @@
                   {
                     "who": "player",
                     "text": "sala.fabrica_moll.llancadora.fugir3",
-                    "sound": "motor"
+                    "sound": "motor",
+                    "stage": [
+                      {
+                        "shake": 0.8
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -9389,12 +9439,26 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_hangar.llancadora.fugir1",
-                    "sound": "motor"
+                    "sound": "motor",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "visible": false
+                      },
+                      {
+                        "shake": 0.8
+                      }
+                    ]
                   },
                   {
                     "who": "player",
                     "text": "sala.gavina_hangar.llancadora.fugir2",
-                    "sound": "comporta"
+                    "sound": "comporta",
+                    "stage": [
+                      {
+                        "shake": 1.2
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -9433,12 +9497,26 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_hangar.llancadora.fugir1",
-                    "sound": "motor"
+                    "sound": "motor",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "visible": false
+                      },
+                      {
+                        "shake": 0.8
+                      }
+                    ]
                   },
                   {
                     "who": "player",
                     "text": "sala.gavina_hangar.llancadora.fugir2",
-                    "sound": "comporta"
+                    "sound": "comporta",
+                    "stage": [
+                      {
+                        "shake": 1.2
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -12117,30 +12195,14 @@
               "protagonist": "iri"
             },
             {
-              "any": [
+              "all": [
                 {
-                  "all": [
-                    {
-                      "hasItem": "nota_vet",
-                      "who": "iri"
-                    },
-                    {
-                      "flag": "nota_vet_llegida",
-                      "is": false
-                    }
-                  ]
+                  "hasItem": "nota_vet",
+                  "who": "iri"
                 },
                 {
-                  "all": [
-                    {
-                      "hasItem": "nota_pany",
-                      "who": "iri"
-                    },
-                    {
-                      "flag": "iri_sap_pany",
-                      "is": false
-                    }
-                  ]
+                  "flag": "nota_vet_llegida",
+                  "is": false
                 }
               ]
             }
@@ -12148,30 +12210,14 @@
         },
         "doneWhen": {
           "not": {
-            "any": [
+            "all": [
               {
-                "all": [
-                  {
-                    "hasItem": "nota_vet",
-                    "who": "iri"
-                  },
-                  {
-                    "flag": "nota_vet_llegida",
-                    "is": false
-                  }
-                ]
+                "hasItem": "nota_vet",
+                "who": "iri"
               },
               {
-                "all": [
-                  {
-                    "hasItem": "nota_pany",
-                    "who": "iri"
-                  },
-                  {
-                    "flag": "iri_sap_pany",
-                    "is": false
-                  }
-                ]
+                "flag": "nota_vet_llegida",
+                "is": false
               }
             ]
           }
@@ -12179,6 +12225,46 @@
         "levels": [
           "pista.iri_llegir.1",
           "pista.iri_llegir.2"
+        ]
+      },
+      "iri_llegir_pany": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "all": [
+                {
+                  "hasItem": "nota_pany",
+                  "who": "iri"
+                },
+                {
+                  "flag": "iri_sap_pany",
+                  "is": false
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "all": [
+              {
+                "hasItem": "nota_pany",
+                "who": "iri"
+              },
+              {
+                "flag": "iri_sap_pany",
+                "is": false
+              }
+            ]
+          }
+        },
+        "levels": [
+          "pista.iri_llegir_pany.1",
+          "pista.iri_llegir_pany.2"
         ]
       },
       "iri_respondre": {
@@ -12687,30 +12773,14 @@
               "protagonist": "iri"
             },
             {
-              "any": [
+              "all": [
                 {
-                  "all": [
-                    {
-                      "hasItem": "nota_mida",
-                      "who": "iri"
-                    },
-                    {
-                      "flag": "iri_sap_mida",
-                      "is": false
-                    }
-                  ]
+                  "hasItem": "nota_mida",
+                  "who": "iri"
                 },
                 {
-                  "all": [
-                    {
-                      "hasItem": "pols_rovell",
-                      "who": "iri"
-                    },
-                    {
-                      "flag": "iri_sap_rovell",
-                      "is": false
-                    }
-                  ]
+                  "flag": "iri_sap_mida",
+                  "is": false
                 }
               ]
             }
@@ -12718,30 +12788,14 @@
         },
         "doneWhen": {
           "not": {
-            "any": [
+            "all": [
               {
-                "all": [
-                  {
-                    "hasItem": "nota_mida",
-                    "who": "iri"
-                  },
-                  {
-                    "flag": "iri_sap_mida",
-                    "is": false
-                  }
-                ]
+                "hasItem": "nota_mida",
+                "who": "iri"
               },
               {
-                "all": [
-                  {
-                    "hasItem": "pols_rovell",
-                    "who": "iri"
-                  },
-                  {
-                    "flag": "iri_sap_rovell",
-                    "is": false
-                  }
-                ]
+                "flag": "iri_sap_mida",
+                "is": false
               }
             ]
           }
@@ -12749,6 +12803,46 @@
         "levels": [
           "pista.iri_llegir_a2.1",
           "pista.iri_llegir_a2.2"
+        ]
+      },
+      "iri_llegir_rovell": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "all": [
+                {
+                  "hasItem": "pols_rovell",
+                  "who": "iri"
+                },
+                {
+                  "flag": "iri_sap_rovell",
+                  "is": false
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "all": [
+              {
+                "hasItem": "pols_rovell",
+                "who": "iri"
+              },
+              {
+                "flag": "iri_sap_rovell",
+                "is": false
+              }
+            ]
+          }
+        },
+        "levels": [
+          "pista.iri_llegir_rovell.1",
+          "pista.iri_llegir_rovell.2"
         ]
       },
       "iri_biga": {
@@ -13675,38 +13769,27 @@
               "protagonist": "iri"
             },
             {
-              "any": [
+              "all": [
                 {
-                  "all": [
-                    {
-                      "hasItem": "nota_pressio",
-                      "who": "iri"
-                    },
-                    {
-                      "flag": "iri_sap_pressio",
-                      "is": false
-                    }
-                  ]
+                  "hasItem": "nota_pressio",
+                  "who": "iri"
                 },
                 {
-                  "all": [
-                    {
-                      "hasItem": "nota_massa",
-                      "who": "iri"
-                    },
-                    {
-                      "flag": "iri_sap_massa",
-                      "is": false
-                    }
-                  ]
+                  "flag": "iri_sap_pressio",
+                  "is": false
                 }
               ]
+            },
+            {
+              "var": "valvula",
+              "op": "==",
+              "value": "oberta"
             }
           ]
         },
         "doneWhen": {
           "not": {
-            "any": [
+            "all": [
               {
                 "all": [
                   {
@@ -13720,6 +13803,48 @@
                 ]
               },
               {
+                "var": "valvula",
+                "op": "==",
+                "value": "oberta"
+              }
+            ]
+          }
+        },
+        "levels": [
+          "pista.iri_llegir_pressio.1",
+          "pista.iri_llegir_pressio.2"
+        ]
+      },
+      "iri_llegir_massa": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "all": [
+                {
+                  "hasItem": "nota_massa",
+                  "who": "iri"
+                },
+                {
+                  "flag": "iri_sap_massa",
+                  "is": false
+                }
+              ]
+            },
+            {
+              "var": "valvula",
+              "op": "!=",
+              "value": "mig"
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "all": [
+              {
                 "all": [
                   {
                     "hasItem": "nota_massa",
@@ -13730,13 +13855,18 @@
                     "is": false
                   }
                 ]
+              },
+              {
+                "var": "valvula",
+                "op": "!=",
+                "value": "mig"
               }
             ]
           }
         },
         "levels": [
-          "pista.iri_llegir_pressio.1",
-          "pista.iri_llegir_pressio.2"
+          "pista.iri_llegir_massa.1",
+          "pista.iri_llegir_massa.2"
         ]
       },
       "iri_valvula": {
@@ -19845,11 +19975,13 @@
       "obj.diapaso_espatllat.desc": "Un diapasó de ferro-9 llimat de més. Xiula com una tetera.",
       "obj.nota_pressio.text": "«I.: la llançadora engega amb pressió, i li arriba per un conducte vell de la fàbrica, el que passa per la paret del moll. Està buit. Pots fer-hi alguna cosa, des d'allà? Ja et dec dos filtres. —V.»",
       "obj.nota_pressio.iri1": "El conducte de pressió del moll. Si el tapo ara, cent vint anys de pressió s'hi aniran acumulant...",
+      "obj.nota_pressio.iri1_fet": "El conducte de pressió del moll. Aquest ja l'he tocat.",
       "obj.nota_pressio.nom": "nota de la pressió",
       "obj.nota_pressio.desc": "Un tros de cartell, escrit amb llapis d'ulls.",
       "obj.nota_massa.text": "«MASSA!!! El conducte ha rebentat i el nivell de sota és una piscina. AFLUIXA. Gens zero-g. —V.»",
       "obj.nota_massa.iri1": "Massa pressió. Cent vint anys és molt de temps.",
       "obj.nota_massa.iri2": "L'he d'obrir una mica. Només una mica.",
+      "obj.nota_massa.iri2_fet": "Ja l'he deixada una mica oberta. Espero que hagi arribat a temps.",
       "obj.nota_massa.nom": "nota «MASSA»",
       "obj.nota_massa.desc": "Un tros de cartell, escrit amb llapis d'ulls.",
       "obj.fitxa_mira.text_acusada": "«Corporació Aldaia · Ferro-9 · Fitxa de personal. Mira d'Orís, ajudant de torn de nit. Observacions: acusada del robatori de material inventariat. Acomiadada.»",
@@ -20053,13 +20185,15 @@
       "pista.iri_rebre_ritual.1": "La consola parpelleja. Hi ha algú a l'altra banda?",
       "pista.iri_rebre_ritual.2": "Ves a la cambra i prem el botó de sincronia.",
       "pista.iri_llegir.1": "Hauria de llegir el que m'ha arribat.",
-      "pista.iri_llegir.2": "Mira la nota de l'inventari.",
+      "pista.iri_llegir.2": "Mira la nota de la cel·la 9, a l'inventari.",
+      "pista.iri_llegir_pany.1": "La V. m'ha enviat un dibuix.",
+      "pista.iri_llegir_pany.2": "Mira el dibuix del pany, a l'inventari.",
       "pista.iri_respondre.1": "Algú m'ha escrit. Li podria respondre.",
       "pista.iri_respondre.2": "Fes servir el llapis amb la llibreta de torn.",
       "pista.iri_enviar.1": "Si les coses que hi poso desapareixen... arriben a algun lloc.",
       "pista.iri_enviar.2": "Posa-ho dins la cambra.",
       "pista.vet_llegir.1": "M'han contestat!",
-      "pista.vet_llegir.2": "Mira la nota de l'inventari.",
+      "pista.vet_llegir.2": "Mira la nota d'I., a l'inventari.",
       "pista.vet_pany.1": "Si la I. és en una fàbrica, potser coneix el pany de la meva porta.",
       "pista.vet_pany.2": "Mira bé el pany, i després dibuixa'l en algun paper.",
       "pista.vet_pany.3": "Hi ha un fullet sota el coixí. I el llapis d'ulls encara pinta.",
@@ -20086,8 +20220,10 @@
       "pista.vet_enviar_mida.2": "Fes servir la nota de la mida amb el panell de la cel·la.",
       "pista.vet_enviar_rovell.1": "Aquesta pols l'ha de veure la I. Pel mateix camí de sempre.",
       "pista.vet_enviar_rovell.2": "Fes servir la pols de rovell amb el panell de la cel·la.",
-      "pista.iri_llegir_a2.1": "M'ha arribat alguna cosa de la V.",
-      "pista.iri_llegir_a2.2": "Mira-ho a l'inventari.",
+      "pista.iri_llegir_a2.1": "M'ha arribat una nota de la V. Amb mides.",
+      "pista.iri_llegir_a2.2": "Mira la nota de la mida, a l'inventari.",
+      "pista.iri_llegir_rovell.1": "M'ha arribat pols de rovell.",
+      "pista.iri_llegir_rovell.2": "Mira la pols de rovell de l'inventari.",
       "pista.iri_biga.1": "Dos metres de biga per una finestra on no hi passa res de més de dos quilos...",
       "pista.iri_biga.2": "Al moll de càrrega hi ha bigues. Puc serrar-ne una a trossos, o amagar-la perquè la V. la trobi d'aquí a cent vint anys.",
       "pista.iri_biga.3": "Agafa la serra del moll i fes-la servir amb la biga d'acer. O amaga una biga sota la reixa del costat del pilar 7.",
@@ -20149,7 +20285,9 @@
       "pista.vet_enviar_pressio.1": "Això ho ha de llegir la I.",
       "pista.vet_enviar_pressio.2": "Fes servir la nota amb el panell de la cel·la.",
       "pista.iri_llegir_pressio.1": "La V. m'ha escrit.",
-      "pista.iri_llegir_pressio.2": "Mira la nota de l'inventari.",
+      "pista.iri_llegir_pressio.2": "Mira la nota de la pressió, a l'inventari.",
+      "pista.iri_llegir_massa.1": "La V. m'ha tornat a escriure. En majúscules.",
+      "pista.iri_llegir_massa.2": "Mira la nota «MASSA», a l'inventari.",
       "pista.iri_valvula.1": "Si tapo el conducte ara, la pressió s'hi anirà acumulant durant cent vint anys.",
       "pista.iri_valvula.2": "El conducte del moll té una vàlvula.",
       "pista.iri_valvula.3": "Tanca la vàlvula del conducte del moll.",
@@ -20186,20 +20324,20 @@
       "pista.vet_enviar_nom.1": "La nota ha d'arribar a la I.",
       "pista.vet_enviar_nom.2": "Fes servir la nota amb el panell de la cel·la.",
       "pista.iri_llegir_nom.1": "La V. m'ha escrit. Amb el seu nom.",
-      "pista.iri_llegir_nom.2": "Mira la nota de l'inventari.",
+      "pista.iri_llegir_nom.2": "Mira la nota de la Vet, a l'inventari.",
       "pista.iri_respondre_nom.1": "Li he de contestar. Amb el meu nom.",
       "pista.iri_respondre_nom.2": "El llapis i la llibreta.",
       "pista.iri_enviar_nom.1": "La nota ha d'arribar a la Vet.",
       "pista.iri_enviar_nom.2": "Posa-la dins la cambra.",
       "pista.vet_llegir_nom.1": "La I. m'ha contestat.",
-      "pista.vet_llegir_nom.2": "Mira la nota de l'inventari.",
-      "pista.iri_planols.1": "El despatx del director és al costat del magatzem. Què hi deu guardar?",
+      "pista.vet_llegir_nom.2": "Mira la nota de l'Iri, a l'inventari.",
+      "pista.iri_planols.1": "El despatx del director és al magatzem, la porta de DIRECCIÓ. Què hi deu guardar?",
       "pista.iri_planols.2": "El calaix del despatx té un pany M-3: s'obre amb un imant de ferro-9.",
       "pista.iri_planols.3": "Demana un altre imant al Cargol (amb un formulari per triplicat) i obre el calaix del despatx.",
       "pista.iri_calaix.1": "Ja tens l'imant. El calaix del despatx té un pany M-3.",
       "pista.iri_calaix.2": "Fes servir l'imant amb el calaix del despatx.",
       "pista.iri_expedient.1": "Massa robatoris. Què deu haver apuntat el Sic?",
-      "pista.iri_expedient.2": "Mira l'expedient del despatx del director.",
+      "pista.iri_expedient.2": "Mira l'expedient del despatx del director: la porta de DIRECCIÓ, al magatzem, al costat de la de calderes.",
       "pista.iri_mira.1": "La Mira pagarà per mi. No pot ser.",
       "pista.iri_mira.2": "Puc falsificar l'inventari, culpar el capatàs o confessar.",
       "pista.iri_mira.3": "Fes servir el segell amb el llibre d'inventari, o el llapis amb l'expedient del Sic.",

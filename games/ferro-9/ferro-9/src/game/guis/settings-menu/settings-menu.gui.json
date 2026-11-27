@@ -343,5 +343,6 @@
     }
   ],
   "modal": true,
-  "zIndex": 101
+  "zIndex": 101,
+  "pauseGame": true
 }

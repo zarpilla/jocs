@@ -365,5 +365,6 @@
     }
   ],
   "modal": true,
-  "zIndex": 100
+  "zIndex": 100,
+  "pauseGame": true
 }
