@@ -349,6 +349,11 @@
       "visibleIf": {
         "flag": "quadre_apartat"
       }
+    },
+    "caixa_oberta": {
+      "visibleIf": {
+        "flag": "caixa_oberta"
+      }
     }
   }
 }

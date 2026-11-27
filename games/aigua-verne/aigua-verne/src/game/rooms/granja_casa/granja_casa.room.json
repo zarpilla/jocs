@@ -471,6 +471,17 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "caixa_oberta",
+      "tag": "caixa_oberta",
+      "animations": {
+        "caixa_oberta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

@@ -67,11 +67,47 @@
         {
           "who": "narrator",
           "text": "dlg.teclat.titus.1",
-          "sound": "caixa_forta"
+          "sound": "caixa_forta",
+          "stage": [
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "prop": "caixa_oberta",
+              "visible": false
+            },
+            {
+              "who": "player",
+              "gest": "Fa",
+              "hold": 0.5
+            },
+            {
+              "who": "player",
+              "gest": null
+            },
+            {
+              "prop": "caixa_oberta",
+              "visible": true
+            }
+          ]
         },
         {
           "who": "player",
-          "text": "dlg.teclat.titus.2"
+          "text": "dlg.teclat.titus.2",
+          "stage": [
+            {
+              "who": "player",
+              "gest": "Agafa",
+              "hold": 0.5
+            }
+          ],
+          "stageAfter": [
+            {
+              "who": "player",
+              "gest": null
+            }
+          ]
         },
         {
           "who": "player",
