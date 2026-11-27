@@ -126,7 +126,7 @@
             {
               "who": "iri",
               "at": {
-                "x": 4,
+                "x": -24,
                 "y": 246
               },
               "visible": true
@@ -136,7 +136,8 @@
               "walk": {
                 "x": 214,
                 "y": 246
-              }
+              },
+              "wait": false
             }
           ],
           "effects": [
