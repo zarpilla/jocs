@@ -185,16 +185,16 @@ def room(cv, parts=PARTS):
         cv.vline(GX0 - 1, GY0 - 1, GY1 + 1, WALNUT, 1.2)
         cv.hline(GX0 - 1, GX1 + 1, GY1 + 1, WALNUT, 3.4)
         cv.vline(GX1 + 1, GY0 - 1, GY1 + 1, WALNUT, 3.0)
-        # «DIRECCIÓ» en lletres daurades al vidre (de pal sec, amb l'ombra a sota)
-        for x in range(103, 131):
-            if (x - 103) % 4 != 3:
-                cv.put(x, 105, GOLD, 4.2, 0.2)
-                cv.put(x, 106, GOLD, 3.4 if hr(x, 5) > 0.3 else 2.6, 0.2)
-                if hr(x, 6) > 0.6:
-                    cv.put(x, 107, GOLD, 2.4, 0.2)
-        for x in range(108, 126, 3):
-            cv.put(x, 112, GOLD, 3.0, 0.2)
-            cv.put(x + 1, 112, GOLD, 2.4, 0.2)
+        # «DIRECCIÓ»: una placa d'esmalt damunt la porta, com la de CALDERES (al vidre no hi cabia, i en escorç les
+        # ratlles daurades no es llegien)
+        s = 'DIRECCIO'
+        w = text_w(s) * 3 // 2                                             # a 1,5 d'ample (_Ample), com les normes
+        sx = 116 - w // 2
+        cv.rect(sx - 3, 69, sx + w + 2, 78, ENAMEL, lambda x, y: 3.8 if sx - 3 < x < sx + w + 2 and 69 < y < 78 else 1.6, 0.6)
+        ample = _Ample(cv, sx)
+        ox = text(ample, sx, 71, s, IRON, 1.0, 0) - 5                      # on comença la O (en coordenades estretes)
+        ample.put(ox + 2, 70, IRON, 1.0, 0)                                # l'accent de la Ó
+        ample.put(ox + 3, 69, IRON, 1.0, 0)
         cv.glow(116, 123, 32, (240, 200, 120), 0.2)
         # pom de llautó amb l'escut
         cv.rect(LX1 - 8, 149, LX1 - 4, 163, GOLD, lambda x, y: 2.8 - (x - LX1 + 8) * 0.3 + (0.6 if y == 149 else 0))
