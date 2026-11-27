@@ -564,7 +564,8 @@ GEOMETRIA = {
         'collaret': {'rect': _rect_sobre(COLLARET), 'walk': _sobre_walk(COLLARET[1])},
         'radio': {'rect': _rect_pla(517, 108, 547, 160), 'walk': _p(RADIO_C[0] - 4, ZW - 40)},
     },
-    'spawns': {'vet': _p(120, 150), 'ballester': _p(DESK[1] + 40, 250)},
+    # En Ballester, a la punta de la taula: qui li parla s'hi posa a la dreta, i més enllà l'arxivador la tapava.
+    'spawns': {'vet': _p(120, 150), 'ballester': _p(DESK[1] - 10, DESK[2] - 32)},
     'walkable': _WALK,
     'floorSquash': 0.45,
     # L'ombra de contacte: la llum dominant és la paret de monitors (el punt del terra sota el centre); cap avall.
