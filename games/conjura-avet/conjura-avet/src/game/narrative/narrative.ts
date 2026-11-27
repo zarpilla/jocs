@@ -687,13 +687,32 @@ export function stagePoint(to: string | Point): Point | null {
  * del roure). Les línies que el volen mostrar més tard l'amaguen al `stage` de la primera; aquí, aquestes capes
  * s'amaguen ja, abans fins i tot de l'opció que diu la protagonista. Només la primera línia (`skip`: la de l'opció, que
  * no en porta mai, se salta), i només amagar: el que es mostra o canvia més endavant espera la seva línia.
+ *
+ * I al revés: un decorat amb `visibleIf` que els efectes acaben d'amagar, però que una línia posterior amaga al seu
+ * `stage` (la pantalla del Magnat, que s'apaga quan el narrador ho diu), es torna a mostrar i s'aguanta fins a
+ * aquella línia. Tot passa en la mateixa crida, abans de dibuixar: no parpelleja.
  */
 export function primeStage<T extends { lines: readonly { stage?: StageCue[] }[] } | null | undefined>(resolved: T, skip = 0): T {
   for (const cue of resolved?.lines[skip]?.stage ?? []) {
     if (cue.prop !== undefined && cue.visible === false) applyStageNow({ prop: cue.prop, visible: false });
   }
+  const room = world.currentRoom();
+  for (const line of resolved?.lines.slice(skip + 1) ?? []) {
+    for (const cue of line.stage ?? []) {
+      if (!room || cue.prop === undefined || cue.visible !== false || !justHidden.has(cue.prop)) continue;
+      new PropHandle(toBenne('rooms', room), toBenne('hotspots', cue.prop)).visible = true;
+      for (const layer of linkedLayers(room, cue.prop)) layer.visible = true;
+      heldProps.add(cue.prop);
+    }
+  }
+  justHidden.clear();
   return resolved;
 }
+
+/** Decorats que una línia que encara s'ha de dir amagarà (`primeStage`); fins aleshores, l'estat no els toca. */
+const heldProps = new Set<string>();
+/** Decorats que l'últim canvi d'estat ha amagat enmig d'unes línies. */
+const justHidden = new Set<string>();
 
 /** El que una indicació fa de cop (tot menys caminar i esperar). */
 export function applyStageNow(cue: StageCue) {
@@ -704,6 +723,7 @@ export function applyStageNow(cue: StageCue) {
     const room = world.currentRoom();
     if (!room) return;
     const prop = new PropHandle(toBenne('rooms', room), cue.prop);
+    if (cue.visible === false) heldProps.delete(cue.prop);
     if (cue.visible === true && cue.fade) {
       prop.alpha = 0;
       prop.visible = true;
@@ -858,14 +878,23 @@ export function applySwitchButton() {
 export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
   const room = world.currentRoom();
   if (!room) return;
+  // Fora d'unes línies (en acabar-les, en entrar a una sala), ja no s'aguanta res: tot com diu l'estat.
+  if (!keepSpeakers) {
+    heldProps.clear();
+    justHidden.clear();
+  }
   for (const { id, visible } of narrative.hotspotsIn(room)) {
     // Un personatge amb `visibleIf` (p. ex. la Directora a la cel·la a l'Acte 3) s'amaga o es mostra sencer.
     const character = content.characters[id] ? (benneCharacter(id) as Showable | undefined) : undefined;
     if (keepSpeakers && character) continue;
+    // Un decorat que una línia d'ara amagarà al seu `stage` es queda fins aleshores (vegeu `primeStage`).
+    if (keepSpeakers && heldProps.has(id)) continue;
     const zone = zones[room]?.includes(id) ? new HotspotHandle(toBenne('rooms', room), toBenne('hotspots', id)) : undefined;
     const handle = boundHotspots[id] ?? character ?? zone ?? new PropHandle(toBenne('rooms', room), toBenne('hotspots', id));
-    if ('visible' in handle) handle.visible = visible;
-    else handle.active = visible;
+    if ('visible' in handle) {
+      if (keepSpeakers && !character && handle.visible && !visible) justHidden.add(id);
+      handle.visible = visible;
+    } else handle.active = visible;
     // Les capes de l'art que l'acompanyen (`<id>__<capa>`): la versió d'una capa del davant amb aquell decorat (p. ex.
     // el timó de dia, `dia__davant_timo`). La capa del davant és un retall del fons i, si no, el taparia.
     for (const layer of linkedLayers(room, id)) layer.visible = visible;
