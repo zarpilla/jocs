@@ -18510,6 +18510,28 @@
           },
           {
             "who": "verne",
+            "text": "final.plou.2.si",
+            "if": {
+              "chosen": {
+                "dialogue": "trucada",
+                "node": "inici",
+                "choice": "si"
+              }
+            }
+          },
+          {
+            "who": "holm",
+            "text": "final.plou.2.si.holm",
+            "if": {
+              "chosen": {
+                "dialogue": "trucada",
+                "node": "inici",
+                "choice": "si"
+              }
+            }
+          },
+          {
+            "who": "verne",
             "text": "final.plou.3"
           },
           {
@@ -18901,7 +18923,26 @@
           },
           {
             "who": "narrator",
-            "text": "final.plou.41"
+            "text": "final.plou.41",
+            "if": {
+              "chosen": {
+                "dialogue": "trucada",
+                "node": "inici",
+                "choice": "si"
+              },
+              "is": false
+            }
+          },
+          {
+            "who": "narrator",
+            "text": "final.plou.41.si",
+            "if": {
+              "chosen": {
+                "dialogue": "trucada",
+                "node": "inici",
+                "choice": "si"
+              }
+            }
           },
           {
             "who": "narrator",
@@ -19748,6 +19789,72 @@
               {
                 "who": "capitana",
                 "text": "dlg.capitana.nit.1"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.nit.si",
+                "if": {
+                  "all": [
+                    {
+                      "seen": {
+                        "dialogue": "capitana",
+                        "node": "nit"
+                      },
+                      "is": false
+                    },
+                    {
+                      "chosen": {
+                        "dialogue": "trucada",
+                        "node": "inici",
+                        "choice": "si"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.nit.no",
+                "if": {
+                  "all": [
+                    {
+                      "seen": {
+                        "dialogue": "capitana",
+                        "node": "nit"
+                      },
+                      "is": false
+                    },
+                    {
+                      "chosen": {
+                        "dialogue": "trucada",
+                        "node": "inici",
+                        "choice": "no"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.nit.pou",
+                "if": {
+                  "all": [
+                    {
+                      "seen": {
+                        "dialogue": "capitana",
+                        "node": "nit"
+                      },
+                      "is": false
+                    },
+                    {
+                      "chosen": {
+                        "dialogue": "trucada",
+                        "node": "inici",
+                        "choice": "pou"
+                      }
+                    }
+                  ]
+                }
               }
             ],
             "goto": "menu"
@@ -29496,7 +29603,7 @@
               {
                 "id": "pou",
                 "text": "dlg.trucada.opt.pou",
-                "next": "no"
+                "next": "pou"
               }
             ]
           },
@@ -29512,7 +29619,44 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.trucada.si.3"
+                "text": "dlg.trucada.si.3",
+                "stage": [
+                  {
+                    "prop": "pantalla_verne",
+                    "visible": false
+                  }
+                ]
+              },
+              {
+                "who": "iri",
+                "text": "dlg.trucada.si.4"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.trucada.si.5"
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.trucada.si.6",
+                "stage": [
+                  {
+                    "prop": "pantalla_verne",
+                    "visible": true
+                  }
+                ]
+              }
+            ],
+            "goto": "no"
+          },
+          "pou": {
+            "lines": [
+              {
+                "who": "verne",
+                "text": "dlg.trucada.pou.1"
+              },
+              {
+                "who": "verne",
+                "text": "dlg.trucada.pou.2"
               }
             ],
             "goto": "no"
@@ -29535,7 +29679,13 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.trucada.no.3"
+                "text": "dlg.trucada.no.3",
+                "stage": [
+                  {
+                    "prop": "pantalla_verne",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "narrator",
@@ -29563,6 +29713,17 @@
                 "text": "dlg.trucada.no.7.tractor",
                 "if": {
                   "flag": "fidel_tractor"
+                }
+              },
+              {
+                "who": "iri",
+                "text": "dlg.trucada.no.7.mecanic",
+                "if": {
+                  "chosen": {
+                    "dialogue": "trucada",
+                    "node": "inici",
+                    "choice": "si"
+                  }
                 }
               },
               {
@@ -30182,7 +30343,7 @@
       "dlg.trucada.inici.9": "No, senyora. Mirar la gent és feina del servei.",
       "dlg.trucada.si.1": "Excel·lent. Envieu les claus amb el vostre mecànic.",
       "dlg.trucada.si.2": "No.",
-      "dlg.trucada.si.3": "La Vet talla la comunicació. La pantalla s'encén tota sola: el Magnat no ha acabat.",
+      "dlg.trucada.si.3": "La Vet talla la comunicació.",
       "dlg.trucada.no.1": "La residència Bon Repòs beu aigua Verne. Des d'avui, mig got per cap.",
       "dlg.trucada.no.2": "Ho sento. És el mercat.",
       "dlg.trucada.no.3": "La pantalla s'apaga. Al panell del pont, el preu salta: 97.",
@@ -30456,6 +30617,15 @@
       "dlg.teclat.lletra.s": "S",
       "dlg.teclat.opt.accepta": "Premo «D'acord».",
       "dlg.teclat.opt.esborra": "Ho esborro.",
+      "dlg.trucada.si.4": "Era per guanyar temps.",
+      "dlg.trucada.si.5": "No ho era.",
+      "dlg.trucada.si.6": "La pantalla s'encén tota sola: el Magnat no ha acabat.",
+      "dlg.trucada.pou.1": "El pou és vostre, senyora. L'aigua, no.",
+      "dlg.trucada.pou.2": "Llegiu el contracte 7.788. La lletra petita és meva.",
+      "dlg.trucada.no.7.mecanic": "I ha dit «el vostre mecànic». Com sap que tenim mecànic?",
+      "dlg.capitana.nit.si": "Heu dit que sí. Per un moment, jo també.",
+      "dlg.capitana.nit.no": "Heu dit que no molt de pressa. Jo m'hi hauria pensat.",
+      "dlg.capitana.nit.pou": "«El pou ja és nostre.» Jo també ho deia, de la nau.",
       "final.plou.titol": "Plou",
       "final.text": "L'aigua no s'havia acabat. Estava guardada.",
       "final.plou.1": "A la pantalla del saló: 29. Per sota de la ratlla vermella.",
@@ -30517,6 +30687,9 @@
       "final.plou.57": "Ara és del Banc, amb tots els drets del Magnat. La bomba del pou l'he desconnectada, i l'he tornada a tancar amb cargols de cap de flor.",
       "final.plou.58": "Que no obre cap tornavís del món.",
       "final.plou.59": "Excepte el meu. Fins que el Banc se'n compri un.",
+      "final.plou.2.si": "Les germanes van dir que sí. Ho tinc gravat.",
+      "final.plou.2.si.holm": "Verbal. No executat. No consta.",
+      "final.plou.41.si": "La Capitana paga el deute amb l'aigua a quatre crèdits. Ratlla la casella de l'ànima. A l'Iri li diu que, a la trucada, ella també hauria dit que sí. Una vegada.",
       "acte.1": "Acte 1 · L'aigua que no hi és",
       "acte.2": "Acte 2 · Qui no treballa no beu",
       "acte.3": "Acte 3 · Vint-i-tres piscines",
