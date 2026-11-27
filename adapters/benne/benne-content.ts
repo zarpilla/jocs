@@ -144,6 +144,8 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   // ── GUI ─────────────────────────────────────────────────────────────────
   joc.guis?.(gameDir);
   pausaMenus(gameDir);
+  narradorDalt(gameDir, config);
+  targetaTitol(gameDir, config);
   if (joc.tactil) opcionsTactils(gameDir);
   filaVolumVeus(gameDir);  // després d'opcionsTactils, que esborra el que hi ha sota la seva marca
   if (addSwitchButton(gameDir)) report.needsArt.push('guis/verbs');
@@ -319,6 +321,79 @@ function pausaMenus(gameDir: string) {
     def.pauseGame = true;
     writeJson(path, def);
   }
+}
+
+// ─── El narrador, a dalt ────────────────────────────────────────────────────
+
+/**
+ * La caixa del narrador (`display-text`) va sempre al mateix lloc: a dalt, al mig, on gairebé mai no hi ha acció
+ * (cel, sostre) i on no hi ha el HUD (el retrat i el menú són a les cantonades). La línia de dalt del text és fixa:
+ * amb més línies, la caixa creix cap avall (el motor hi ajusta el fons). Val per a totes les línies del narrador,
+ * als pròlegs i a les sales.
+ */
+function narradorDalt(gameDir: string, config: Json) {
+  const path = join(gameDir, 'guis', 'display-text', 'display-text.gui.json');
+  if (!existsSync(path)) return;
+  const def = readJson(path);
+  const controls = (def.controls as Json[] | undefined) ?? [];
+  const text = controls.find((c) => c.id === 'text');
+  const bg = controls.find((c) => c.id === 'displayTextBg');
+  if (!text || !bg) return;
+  const width = (config.resolution as { width?: number } | undefined)?.width ?? W;
+  const top = Math.round(14 * width / 640);
+  const offset = Number(bg.y ?? 0) - Number(text.y ?? 0);
+  text.y = top;
+  bg.y = top + offset;
+  delete text.anchorY;
+  delete bg.anchorY;
+  def.anchorY = 'top';
+  writeJson(path, def);
+}
+
+// ─── Targeta de títol ───────────────────────────────────────────────────────
+
+/**
+ * La GUI `titol`: una pantalla negra amb el títol al mig, en gran, amb la lletra negreta del joc. El runtime
+ * (`showTitleCard`, narrative.script.ts) hi posa les línies `title` (el nom del joc, «Acte 1 · …»), el títol dels
+ * finals i el «Fi». Dos textos: `gran` (×3, per als títols curts, com el nom del joc) i `text` (×2, la resta).
+ */
+function targetaTitol(gameDir: string, config: Json) {
+  const display = join(gameDir, 'guis', 'display-text', 'display-text.gui.json');
+  if (!existsSync(display)) return;
+  const regular = String(((readJson(display).controls as Json[] | undefined) ?? []).find((c) => c.id === 'text')?.font ?? '');
+  const negreta = regular.replace(/-regular$/, '-negreta');
+  const fonts = join(gameDir, 'assets', 'fonts');
+  const font = existsSync(join(fonts, `${negreta}.xml`)) ? negreta : regular;
+  if (!font || !existsSync(join(fonts, `${font}.xml`))) return;
+  // La mida nativa de la lletra (`size` al .xml; negativa vol dir en píxels), per escalar-la a múltiples sencers.
+  const xml = readFileSync(join(fonts, `${font}.xml`), 'utf8');
+  const native = Math.abs(Number(xml.match(/<info[^>]*\ssize="(-?\d+)"/)?.[1] ?? 8)) || 8;
+  const res = config.resolution as { width?: number; height?: number; minHeight?: number } | undefined;
+  const width = res?.width ?? W;
+  const height = res?.minHeight ?? res?.height ?? H;
+  const color = '#ffffff';
+  const line = (id: string, scale: number): Json => ({
+    type: 'text', id, x: Math.round(width / 2), y: Math.round(height / 2 - native * scale / 2), text: '',
+    font, fontSize: native * scale, color, align: 'center', wordWrapWidth: Math.round(width * 0.85), zIndex: 2,
+  });
+  writeJson(join(gameDir, 'guis', 'titol', 'titol.gui.json'), {
+    id: 'titol',
+    name: 'Títol',
+    description: 'Targeta de títol (adapters/benne/benne-content.ts).',
+    visible: false,
+    display: { aseprite: false },
+    zIndex: 105,
+    anchorY: 'center',
+    controls: [
+      {
+        type: 'button', id: 'fons', x: 0, y: 0, width, height, anchorY: 'stretch', backgroundAnchor: 'top-left',
+        text: '', font, fontSize: native, textColor: color, backgroundTag: '', backgroundColor: '#000000',
+        backgroundColorStates: { hover: '#000000', pressed: '#000000', disabled: '#000000' }, zIndex: 1,
+      },
+      line('gran', 3),
+      line('text', 2),
+    ],
+  });
 }
 
 // ─── Botó «Canvia» a la barra de verbs ──────────────────────────────────────

@@ -7,7 +7,7 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { MusicHandle, SfxHandle, ambient, background, cutscene, defineVars, display, fadeIn, fadeOut, game, player, pointer, saves, stayBlackOnEnter, wait } from '@benne/script';
+import { MusicHandle, SfxHandle, ambient, background, cutscene, defineVars, display, fadeIn, fadeOut, game, player, pointer, saves, stayBlackOnEnter, wait, waitForClick } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
@@ -72,7 +72,7 @@ function sayLines(lines: ResolvedLine[], around: Around) {
       const before = i === 0 ? around.before : lines[i - 1]!.who
       const after = i === lines.length - 1 ? around.after : lines[i + 1]!.who
       if (before !== 'title') fadeOut(1)
-      display(line.text)
+      showTitleCard(line.text, true)
       if (after !== 'title' && after !== 'negre') {
         showDueCharacters()
         fadeIn(1)
@@ -100,6 +100,24 @@ function sayLines(lines: ResolvedLine[], around: Around) {
   if (around.more || around.after === 'negre') return
   applyHotspotVisibility()
   applyPlaces(true)
+}
+
+/**
+ * Targeta de títol (GUI `titol`, la fa benne-content.ts): el text en gran, amb la lletra del joc, sobre negre. Els
+ * títols curts (el nom del joc) van més grans. Amb `negre` (la pantalla ja és negra: s'hi ha fos), la targeta apareix
+ * i se'n va amb un fos, i en acabar la pantalla torna a quedar negra; si no, surt de cop damunt de la sala.
+ * Passa amb un clic, o sola al cap d'una estona.
+ */
+function showTitleCard(text: string, negre: boolean) {
+  const card = guis.titol
+  const gran = text.length <= 16 && !text.includes('·')
+  card.controls.gran.text = gran ? text : ''
+  card.controls.text.text = gran ? '' : text
+  card.show()
+  if (negre) fadeIn(0.6)
+  waitForClick({ timeout: Math.max(3, 1.5 + text.length * 0.06) })
+  if (negre) fadeOut(0.6)
+  card.hide()
 }
 
 /**
@@ -381,8 +399,23 @@ function playerActed() {
  */
 function autosaveHere() {
   const room = narrative.world.currentRoom()
-  if (untouchedNewGame || room === narrative.content.manifest.cover || narrative.content.rooms[room]?.cutscene || finale.length) return
+  if (!room || untouchedNewGame || room === narrative.content.manifest.cover || narrative.content.rooms[room]?.cutscene || finale.length) return
   saves.autosave(AUTOSAVE)
+}
+
+/**
+ * «Surt» del menú: desa on és la partida i després crida `leave` (tancar l'app o anar a l'arrel del web), perquè
+ * «Continua» hi torni. Si una interacció encara no ha acabat, el desament espera que acabi: s'hi dona fins a 2 s.
+ */
+export function quitAfterSaving(leave: () => void) {
+  const before = saves.get(AUTOSAVE)?.timestamp ?? 0
+  autosaveHere()
+  const start = Date.now()
+  const tick = () => {
+    if ((saves.get(AUTOSAVE)?.timestamp ?? 0) !== before || Date.now() - start > 2000 || untouchedNewGame) leave()
+    else window.setTimeout(tick, 100)
+  }
+  tick()
 }
 
 /** Qui vol saber que s'ha clicat «Comença» (la targeta «Com es juga», als jocs tàctils: vegeu controls.ts). */
@@ -507,13 +540,16 @@ export function enterNarrativeRoom() {
   const final = takePendingEnding()
   const negre = result.goTo || final ? 'negre' : undefined
   let saltada = false
+  const inici = Date.now()
   for (let k = 0; k < result.lines.length; k++) {
     const more = k < result.lines.length - 1
     playLines([result.lines[k]!], { before: result.lines[k - 1]?.who, after: result.lines[k + 1]?.who ?? negre, more })
-    // Mentre se salta una cinemàtica, `wait` acaba a l'instant: així sabem si han premut Esc.
-    const inici = Date.now()
+    // Mentre se salta una cinemàtica, `wait` acaba a l'instant. Però només compta si s'ha premut Esc: després d'un
+    // fotograma llarg (un clic que passa la línia i n'engega l'animació) també pot acabar de seguida, i el pròleg
+    // d'Aigua Verne se saltava sencer amb clics (tasca 200). I Esc tot sol pot haver tancat l'historial.
+    const abans = Date.now()
     wait(0.1)
-    if (Date.now() - inici < 50) {
+    if (escPremutA >= inici && Date.now() - abans < 50) {
       saltada = true
       break
     }
@@ -669,7 +705,11 @@ function sayEndingLine(line: EndingLine, enSala: boolean) {
     display(voiced('narrator', line.key, line.text))
     return
   }
-  if (line.who === 'title' || line.who === 'player') {
+  if (line.who === 'title') {
+    showTitleCard(line.text, !enSala)
+    return
+  }
+  if (line.who === 'player') {
     display(line.text)
     return
   }
@@ -710,7 +750,7 @@ export function playEnding(id?: string) {
   }
 
   fadeOut(1.5)
-  display(ending.title)
+  showTitleCard(ending.title, true)
   for (const line of negre) displayEndingLine(line)
   const primer = trossos[0]
   const sala = primer ? benneRoom(primer.room) : undefined
@@ -759,7 +799,7 @@ function playFinaleRoom() {
  * acabada no quedi a mitges en memòria; «Continua» hi torna des de la darrera sala desada.
  */
 function showTheEnd() {
-  display(narrative.t('ui.fi'))
+  showTitleCard(narrative.t('ui.fi'), true)
   wait(0.5)
   location.reload()
 }

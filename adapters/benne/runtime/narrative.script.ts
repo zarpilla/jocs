@@ -6,7 +6,7 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { MusicHandle, SfxHandle, ambient, background, cutscene, defineVars, display, fadeIn, fadeOut, game, player, pointer, saves, stayBlackOnEnter, wait } from '@benne/script';
+import { MusicHandle, SfxHandle, ambient, background, cutscene, defineVars, display, fadeIn, fadeOut, game, player, pointer, saves, stayBlackOnEnter, wait, waitForClick } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
@@ -71,7 +71,7 @@ function sayLines(lines: ResolvedLine[], around: Around) {
       const before = i === 0 ? around.before : lines[i - 1]!.who
       const after = i === lines.length - 1 ? around.after : lines[i + 1]!.who
       if (before !== 'title') fadeOut(1)
-      display(line.text)
+      showTitleCard(line.text, true)
       if (after !== 'title' && after !== 'negre') {
         showDueCharacters()
         fadeIn(1)
@@ -99,6 +99,24 @@ function sayLines(lines: ResolvedLine[], around: Around) {
   if (around.more || around.after === 'negre') return
   applyHotspotVisibility()
   applyPlaces(true)
+}
+
+/**
+ * Targeta de títol (GUI `titol`, la fa benne-content.ts): el text en gran, amb la lletra del joc, sobre negre. Els
+ * títols curts (el nom del joc) van més grans. Amb `negre` (la pantalla ja és negra: s'hi ha fos), la targeta apareix
+ * i se'n va amb un fos, i en acabar la pantalla torna a quedar negra; si no, surt de cop damunt de la sala.
+ * Passa amb un clic, o sola al cap d'una estona.
+ */
+function showTitleCard(text: string, negre: boolean) {
+  const card = guis.titol
+  const gran = text.length <= 16 && !text.includes('·')
+  card.controls.gran.text = gran ? text : ''
+  card.controls.text.text = gran ? '' : text
+  card.show()
+  if (negre) fadeIn(0.6)
+  waitForClick({ timeout: Math.max(3, 1.5 + text.length * 0.06) })
+  if (negre) fadeOut(0.6)
+  card.hide()
 }
 
 /**
@@ -686,7 +704,11 @@ function sayEndingLine(line: EndingLine, enSala: boolean) {
     display(voiced('narrator', line.key, line.text))
     return
   }
-  if (line.who === 'title' || line.who === 'player') {
+  if (line.who === 'title') {
+    showTitleCard(line.text, !enSala)
+    return
+  }
+  if (line.who === 'player') {
     display(line.text)
     return
   }
@@ -727,7 +749,7 @@ export function playEnding(id?: string) {
   }
 
   fadeOut(1.5)
-  display(ending.title)
+  showTitleCard(ending.title, true)
   for (const line of negre) displayEndingLine(line)
   const primer = trossos[0]
   const sala = primer ? benneRoom(primer.room) : undefined
@@ -776,7 +798,7 @@ function playFinaleRoom() {
  * acabada no quedi a mitges en memòria; «Continua» hi torna des de la darrera sala desada.
  */
 function showTheEnd() {
-  display(narrative.t('ui.fi'))
+  showTitleCard(narrative.t('ui.fi'), true)
   wait(0.5)
   location.reload()
 }

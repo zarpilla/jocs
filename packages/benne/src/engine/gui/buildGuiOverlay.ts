@@ -47,6 +47,7 @@ import type {
 } from '../../types/gui';
 import {
   addGuiNineSliceImage,
+  BENNE_GUI_NINE_SLICE_SHIFT_Y_FN_KEY,
   estimateNineSliceSizeForGridAlign,
   tryResizeGuiNineSlicePanel,
 } from './guiNineSliceImage.js';
@@ -2043,6 +2044,8 @@ function wireDisplayTextOverlayLayout(
   // every side. Deriving bottom padding from the placeholder's bottom is unreliable — if the
   // placeholder is short it inflates the gap, and if it overflows the panel it collapses to 0.
   const authoredPadBottom = authoredPadTop;
+  // (Own change) How far the panel has been moved from its authored place to sit under the text.
+  let bgShiftY = 0;
 
   return (text: string): void => {
     syncOutlinedGuiBitmapTextAll(textLine, text);
@@ -2053,11 +2056,13 @@ function wireDisplayTextOverlayLayout(
 
     tryResizeGuiNineSlicePanel(bgRt, newBgW, newBgH);
 
-    const bgAfter = bgRt.getBounds();
-    const textAfter = textLine.getBounds();
-    const padTopNow = textAfter.top - bgAfter.top;
-    textLine.setY(textLine.y + Math.round(authoredPadTop - padTopNow));
-    syncOutlinedGuiBitmapTextPositions(textLine);
+    // (Own change) The text stays where it was authored and the panel follows it, so the box's top edge never
+    // moves: with more lines it grows downwards. Before, the panel kept its centre and the text followed it, so
+    // the narration box jumped up and down with the number of lines.
+    const textTop = textLine.getBounds().top;
+    const bgTop = bgRt.getBounds().top;
+    bgShiftY += textTop - authoredPadTop - bgTop;
+    bgRt.getData(BENNE_GUI_NINE_SLICE_SHIFT_Y_FN_KEY)?.(bgShiftY);
   };
 }
 
