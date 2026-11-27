@@ -97,6 +97,9 @@ def _cobert(fx, fy, out=0.0):
     return (P[0], (CY1 - fy) * CK, P[2])
 
 
+# El cantó de l'esquerra del cobert dibuixat: on arrenca la paret que fuig. No és la vora del retall (`CX0`), que té
+# un marge transparent: entre la façana i la paret s'hi veia el fons (tasca 104).
+LCW = _cobert(PL.SX0, CY1)
 COBERT_PORTA = _cobert((PL.SDOOR[0] + PL.SDOOR[2]) / 2, CY1)
 
 # La Cantimplora (el model canònic, cantimplora_comu): a l'esquerra, la popa a prop (tallada per la vora) i la proa
@@ -262,9 +265,12 @@ def residencia(e, tex):
             if wx < s < wx + 40 and 30 < y < 110:
                 return 1.8 + (1.4 if (s - wx + (110 - y) * 0.6) % 34 < 5 else 0)
         return v
-    e.quad('residencia', _up(R, hw), _up(_add(R, BK), hw), _add(R, BK), R, ramp=WHITEV, lvl=paret)
-    e.quad('residencia', _up(R, (208 - 44) * FK), _up(_add(R, BK), (208 - 44) * FK), _up(_add(R, BK), (208 - 49) * FK),
-           _up(R, (208 - 49) * FK), ramp=GOLDV, lvl=lambda s, t, P: 3.6 - t * 0.2)
+    # (arrenca al cantó de la casa dibuixada, no a la vora del retall: el marge del retall és transparent i, entre la
+    # façana i la paret, s'hi veia el fons: tasca 104)
+    RW = _add(R, TF, -(FX1 - PL.RX1) * FK)
+    e.quad('residencia', _up(RW, hw), _up(_add(RW, BK), hw), _add(RW, BK), RW, ramp=WHITEV, lvl=paret)
+    e.quad('residencia', _up(RW, (208 - 44) * FK), _up(_add(RW, BK), (208 - 44) * FK), _up(_add(RW, BK), (208 - 49) * FK),
+           _up(RW, (208 - 49) * FK), ramp=GOLDV, lvl=lambda s, t, P: 3.6 - t * 0.2)
     # la façana: el dibuix pla
     e.quad('residencia', _up(LC, (FY1 - FY0) * FK), _up(R, (FY1 - FY0) * FK), R, LC,
            tex=(tex['facana'], (FX0, FY0, FX1, FY1)))
@@ -274,8 +280,8 @@ def cobert(e, tex):
     h_ra = (CY1 - 130) * CK                        # l'alçada del ràfec
     A = _cobert(PL.SAPEX[0], PL.SAPEX[1])
     Ee = _cobert(PL.SX0 - 8, 130)
-    # la paret de l'esquerra, que fuig: taulons verds amb la pintura saltada
-    LB = _add(LCC, BKC)
+    # la paret de l'esquerra, que fuig: taulons verds amb la pintura saltada (des de LCW, el cantó de debò)
+    LB = _add(LCW, BKC)
 
     def taulons(s, t, P):
         y = P[1]
@@ -283,7 +289,7 @@ def cobert(e, tex):
         if peel > 0.66:
             return 2.4 + (peel - 0.66) * 4 - (1.4 if s % 9 < 1 else 0)
         return 2.8 - (1.6 if s % 9 < 1 else 0) + (fbm(s / 5, y / 30, 81) - 0.5) * 0.9 - (1.2 if y < 5 else 0)
-    e.quad('cobert', _up(LB, h_ra), _up(LCC, h_ra), LCC, LB, ramp=SHEDG, lvl=taulons)
+    e.quad('cobert', _up(LB, h_ra), _up(LCW, h_ra), LCW, LB, ramp=SHEDG, lvl=taulons)
     # el vessant de l'esquerra de la teulada, de xapa ondulada rovellada
     e.quad('cobert', _up(_add(A, BKC), 0), A, Ee, _add(Ee, BKC), ramp=ZINC, dues_cares=True,
            lvl=lambda s, t, P: 3.2 + (0.8 if int(t / 3) % 2 else -0.4) + (1.0 if fbm(s / 20, t / 8, 85) > 0.62 else 0))
@@ -303,9 +309,9 @@ def ombra_cobert(e):
         return (P[0] - Ls[0] * t, P[2] - Ls[2] * t)
     h_ra = (CY1 - 130) * CK
     A = _cobert(PL.SAPEX[0], PL.SAPEX[1])
-    peu = [LCC, _cobert(CX1, CY1), _add(_cobert(CX1, CY1), BKC), _add(LCC, BKC)]
+    peu = [LCW, _cobert(CX1, CY1), _add(_cobert(CX1, CY1), BKC), _add(LCW, BKC)]
     alt = [_up(P, h_ra) for P in peu] + [A, _add(A, BKC)]
-    eix = (LCC, _cobert(CX1, CY1))
+    eix = (LCW, _cobert(CX1, CY1))
     NAU.cam = e.cam                                # (el polígon fosc de la nau, abans que es dibuixi)
     NAU._fosc_poligon(e, _convex([aterra(P) for P in peu + alt]), 0.55, None, eix)
     marge = [_add(_add(P, NFC, d1), TFC, d2) for P, d1, d2 in
