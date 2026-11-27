@@ -15,11 +15,11 @@ EN ENTRAR
 
 DECORAT lot9 — es veu si lot9
 
-CISTELLA «cistella»
+CISTELLA «la cistella»
     • walkTo/use/open — SEMPRE
         ⇒ → aqua_port
 
-PORTA_JUANA «casa de la Juana»
+PORTA_JUANA «la casa de la Juana»
     • look — SEMPRE
         JUGADORA: Una caseta feta amb un vaixell bolcat. Té llum a dins.
     • walkTo/use/open (una vegada) — SEMPRE
@@ -30,7 +30,7 @@ PORTA_JUANA «casa de la Juana»
     • walkTo/use/open — SEMPRE
         ⇒ → casa_juana
 
-NANSES «nanses»
+NANSES «les nanses»
     • look — SEMPRE
         JUGADORA: Nanses. Trampes de peixos. Esperant peixos des de fa anys. Com nosaltres l'aigua.
     • pickUp/use — si trampa_trepitjada
@@ -38,7 +38,7 @@ NANSES «nanses»
     • pickUp/use — SEMPRE
         JUGADORA: Millor no tocar-les. Fan cara de mossegar.
 
-BOIES «boies»
+BOIES «les boies»
     • look — si lot9_vist i NO sorra_agafada
         JUGADORA: La boia més baixa, la del 32, dimarts tocava l'aigua. Ara és en sec, i el bassal s'ha retirat uns quants dits.
         JUGADORA: El lot 9 arriba fins a la línia de l'aigua de dimarts. I l'aigua, des de dimarts, no s'ha estat quieta.
@@ -47,13 +47,13 @@ BOIES «boies»
         JUGADORA: Boies de mesurar, clavades a la sorra, amb números pintats: 40, 38, 36, 34... Cada una, més avall que l'anterior.
         JUGADORA: Algú mesura com baixa el mar. Dos metres cada vegada.
 
-BASSAL «bassal»
+BASSAL «el bassal»
     • look — SEMPRE
         JUGADORA: L'última aigua del mar d'Aqua. Hi cap una gavina. Si s'aprima.
     • use/pickUp — SEMPRE
         JUGADORA: No. És l'última. Que es quedi on és.
 
-SORRA «sorra fina»
+SORRA «la sorra fina»
     • look — si lot9 i NO sorra_agafada
         JUGADORA: Sorra de fons, fina com farina. Però ara està plena d'estaques, amb una cinta de Verne.
         JUGADORA: Un cartell: «MAR D'AQUA · LOT 9. De la línia de l'aigua, amidada dimarts, cap amunt. Prohibit endur-se'n res.»
@@ -82,7 +82,7 @@ SORRA «sorra fina»
         JUGADORA: Per què voldria sorra? En porto mig quilo a les botes.
         ⇒ +sorra_refusada
 
-OSSOS «espina»
+OSSOS «l'espina»
     • look — SEMPRE
         JUGADORA: L'espina d'un peix gros com una escala. Quan hi havia mar, hi havia peixos així.
 
@@ -98,20 +98,21 @@ EN ENTRAR
         VET: A baix. Molt a baix. ⟨si iri a aqua_port i vet a aqua_port⟩
         JUGADORA: On és el mar? ⟨si no (iri a aqua_port i vet a aqua_port)⟩
         JUGADORA: ...Ah. A baix. Molt a baix. ⟨si no (iri a aqua_port i vet a aqua_port)⟩
+        ⇒ −enlairant
 
 DECORAT grua_arreglada — es veu si grua_arreglada
 
-RAMPA «Cantimplora»
+RAMPA «la Cantimplora»
     • walkTo/use/open — SEMPRE
         ⇒ → cantimplora_bodega
 
-ESCALA_PORT «escala del port»
+ESCALA_PORT «l'escala del port»
     • look — SEMPRE
         JUGADORA: L'escala del port. Baixa, baixa... i s'acaba a l'aire, quaranta metres per sobre del fons.
     • walkTo/use/open — SEMPRE
         JUGADORA: No. Els últims quaranta esglaons són d'aire. L'aire, de moment, encara no el ven ningú.
 
-GRUA «grua»
+GRUA «la grua»
     • use + fusible_apanyat — si juga vet i NO grua_arreglada
         [SO: grua] JUGADORA: Fusible de trenta, al seu lloc...
         JUGADORA: Llum verd! La grua funciona.
@@ -121,6 +122,10 @@ GRUA «grua»
         JUGADORA: Això ho ha de muntar la Vet. Si ho faig jo, la grua acabarà a l'òrbita.
     • use + fusible — si NO grua_arreglada
         JUGADORA: És de deu. La grua en demana un de trenta. Petaria abans de dir «grua».
+    • look — si juga vet i NO grua_arreglada i té fusible_apanyat
+        JUGADORA: La grua de descarregar peix. Funcionaria, si tingués el fusible. Li falta. De trenta ampers.
+        JUGADORA: I el de deu embolicat amb paper de plata, el porto a la butxaca. Només cal posar-l'hi.
+        ⇒ +grua_vista
     • look — si juga vet i NO grua_arreglada
         JUGADORA: La grua de descarregar peix. Funcionaria, si tingués el fusible. Li falta. De trenta ampers.
         JUGADORA: A la nau en tenim de recanvi. De deu, però. Embolicat amb alguna cosa que condueixi, un de deu aguantaria. Paper de plata, per exemple.
@@ -136,7 +141,7 @@ GRUA «grua»
     • use — SEMPRE
         JUGADORA: Funciona. Per baixar, a la cistella.
 
-CISTELLA «cistella»
+CISTELLA «la cistella»
     • look — SEMPRE
         JUGADORA: La cistella de la grua. Hi cabem una persona i un peix. Ara, sense peix.
     • walkTo/use/open — si NO grua_arreglada
@@ -154,11 +159,11 @@ CISTELLA «cistella»
         [SO: grua] IRI: Pujo a la cistella...
         ⇒ → aqua_fons
 
-VAIXELLS «vaixells encallats»
+VAIXELLS «els vaixells encallats»
     • look — SEMPRE
         JUGADORA: Vaixells de pesca encallats a la sorra. Un es diu «Sempre Plena». Un altre, «Ja Tornarà».
 
-PANELL_PREU «panell del preu»
+PANELL_PREU «el panell del preu»
     • look — SEMPRE
         JUGADORA: AIGUA VERNE. Un litre: 48 crèdits. I la fletxa, cap amunt. ⟨si preu_aigua = 48⟩
         JUGADORA: AIGUA VERNE. Un litre: 64 crèdits. I la fletxa, cap amunt. ⟨si preu_aigua = 64⟩
@@ -169,7 +174,7 @@ PANELL_PREU «panell del preu»
     • use/push/pull/pickUp — SEMPRE
         JUGADORA: A Aqua, el panell és l'única cosa que encara puja.
 
-CANONADA «Canonada»
+CANONADA «la Canonada»
     • look — SEMPRE
         JUGADORA: La Canonada d'Aqua. Xucla el mar. Literalment.
 
@@ -190,7 +195,7 @@ DECORAT motor_obert — es veu si escena = 2 i NO injector_posat
 DECORAT sacs_carregats — es veu si sacs_carregats i NO juana_coneguda
 DECORAT diu_carmanyola — es veu si escena = 6 i NO diu_aparta
 
-RAMPA «rampa»
+RAMPA «la rampa»
     • look — SEMPRE
         JUGADORA: La rampa. Fora hi ha el planeta on som.
     • walkTo/use/open — si planeta = "terra2"
@@ -202,8 +207,9 @@ RAMPA «rampa»
     • walkTo/use/open — si planeta = "verdant"
         ⇒ → verdant_jardi
 
-ESCALA «pont»
+ESCALA «el pont»
     • walkTo/use/open — SEMPRE
+        NARRADOR: 
         ⇒ → cantimplora_pont
 
 BARRIL «l'últim barril» — hi és si NO barril_donat
@@ -218,7 +224,7 @@ BARRIL «l'últim barril» — hi és si NO barril_donat
     • push/pull/use/pickUp — SEMPRE
         JUGADORA: Pesa cent quilos. I la Vet em mataria.
 
-CALAIX «calaix de la Vet»
+CALAIX «el calaix de la Vet»
     • open/look/use/pull/pickUp — si juga vet i NO mosca_activa i té tornavis_flor
         JUGADORA: El meu calaix. Cargols, cinta, dues piles, fil de pescar, una agulla de cosir grossa... i la Mosca.
         JUGADORA: La Mosca: el dron que vaig fer amb un aspirador. Li faltava un cargol de cap de flor. Ara tinc el tornavís.
@@ -237,13 +243,13 @@ CALAIX «calaix de la Vet»
     • look — SEMPRE
         JUGADORA: El calaix de la Vet. Cargols, cinta, fil de pescar, dues piles... «Per si de cas.» No el toco: la Vet sap on és cada cosa.
 
-CAFETERA «cafetera»
+CAFETERA «la cafetera»
     • look — SEMPRE
         JUGADORA: La cafetera. Fa el millor cafè de Vesper i el pitjor soroll.
     • pickUp/open/use — SEMPRE
         JUGADORA: Sense cafetera, la Capitana s'amotina. I és la capitana.
 
-NEVERA «nevera»
+NEVERA «la nevera»
     • open/pickUp — si escena = 6 i diu_carmanyola_vist i NO pernil_agafat
         JUGADORA: Llenties, una ampolla d'aigua de la mida d'un dit... i el pernil d'en Tomàs. Per a una bona causa.
         ⇒ +pernil_agafat, rep pernil
@@ -252,11 +258,11 @@ NEVERA «nevera»
     • look — SEMPRE
         JUGADORA: Llenties, el pernil d'en Tomàs i una ampolla d'aigua de la mida d'un dit. No la toquem.
 
-TAULER «tauler de la cuina»
+TAULER «el tauler de la cuina»
     • look — SEMPRE
         ⇒ diàleg tauler
 
-CARMANYOLA «carmanyola d'en Tomàs»
+CARMANYOLA «la carmanyola d'en Tomàs»
     • use + pernil — si escena = 6 i NO diu_aparta
         JUGADORA: Ensumo... en Diu ensuma... I salta a buscar el pernil. Se l'endú al dipòsit.
         [SO: gat] NARRADOR: La carmanyola queda lliure.
@@ -288,14 +294,14 @@ CARMANYOLA «carmanyola d'en Tomàs»
     • open/use — SEMPRE
         JUGADORA: No remeno les coses dels altres. Encara.
 
-LLAUNA «llauna d'oli» — hi és si NO oli_agafat
+LLAUNA «la llauna d'oli» — hi és si NO oli_agafat
     • look — SEMPRE
         JUGADORA: Una llauna d'oli de motor, mig plena. Fa olor de taller d'avi.
     • pickUp — si NO oli_agafat
         JUGADORA: Una llauna d'oli de motor. Per al motor, per al tractor, i per a la Capitana quan fa mal temps.
         ⇒ +oli_agafat, rep oli
 
-MOTOR «motor»
+MOTOR «el motor»
     • use + injector — si juga vet i NO injector_posat
         [SO: cargols] JUGADORA: Injector de l'avi al seu lloc... Rosca bona, broquet net.
         JUGADORA: La Cantimplora tornarà a volar.
@@ -315,7 +321,7 @@ MOTOR «motor»
         JUGADORA: El motor de la Cantimplora. Ronca, però vola.
         JUGADORA: I a terra, al costat, la llauna d'oli de motor. ⟨si NO oli_agafat⟩
 
-FUSIBLES «quadre de fusibles»
+FUSIBLES «el quadre de fusibles»
     • look — SEMPRE
         JUGADORA: El quadre de fusibles. Sobren fusibles de deu. De trenta, cap.
     • pickUp/open/use — si grua_vista i NO fusible_agafat
@@ -324,11 +330,11 @@ FUSIBLES «quadre de fusibles»
     • pickUp/open/use — SEMPRE
         JUGADORA: Si en trec un sense motiu, s'apaga la cafetera. I la Capitana.
 
-DIPOSIT «dipòsit»
+DIPOSIT «el dipòsit»
     • look — SEMPRE
         JUGADORA: Un dipòsit buit. És el dormitori d'en Diu. La Capitana no ho sap. Fa veure que no ho sap.
 
-CARREGA «espai de càrrega»
+CARREGA «l'espai de càrrega»
     • use + sacs_llavors — SEMPRE
         JUGADORA: Tres sacs de llavors, a la bodega. La càrrega més lleugera que ha portat mai la Cantimplora.
         ⇒ +sacs_carregats, perd sacs_llavors
@@ -368,6 +374,11 @@ TERRA2 «Navega a Terra-2» — hi és si no (planeta = "terra2")
         ⇒ → port_terra2
 
 AQUA «Navega a Aqua» — hi és si no (planeta = "aqua") i aqua_oberta
+    • walkTo/use — si planeta = "terra2" i NO primer_vol
+        NARRADOR: Rumb a Aqua · nou hores
+        NARRADOR: La Vet ja és a bord: puja sempre abans d'enlairar-se. ⟨si no (vet a cantimplora_pont o vet a cantimplora_bodega)⟩
+          ⇒ esdeveniment situar
+        ⇒ +enlairant, → port_terra2
     • walkTo/use — SEMPRE
         NARRADOR: Rumb a Aqua · nou hores
         [SO: motor_nau] NARRADOR: La Cantimplora tus, tremola, s'enlaira... ⟨si planeta = "terra2"⟩
@@ -437,6 +448,10 @@ EN ENTRAR
         IRI: Hi hem d'anar per una altra via: la llançadora d'en Nil. La invitació ja la tenim; el que em falta és un vestit de gala. ⟨si no (té vestit_arreglat (iri))⟩
         IRI: Hi hem d'anar per una altra via: la llançadora d'en Nil. Invitació i vestit, ja els tinc. Abans, però, cal deixar la Cantimplora en ordre. ⟨si té vestit_arreglat (iri)⟩
         ⇒ −palau_tancat
+    • * (una vegada) — si juga iri i escena ≤ 6
+        CAPITANA OR: Les mans on les vegi, pilot. Al meu pont no es desmunta res.
+        IRI: Encara em cobres el carburador?
+        CAPITANA OR: Amb interessos. Digues què vols, i després fora del meu seient.
 
 DECORAT vista_terra2 — es veu si planeta = "terra2"
 DECORAT vista_aqua — es veu si planeta = "aqua"
@@ -444,11 +459,11 @@ DECORAT vista_ferrum — es veu si planeta = "ferrum"
 DECORAT vista_verdant — es veu si planeta = "verdant"
 DECORAT pantalla_verne — es veu si trucada_activa
 
-ESCALA «bodega»
+ESCALA «la bodega»
     • walkTo/use/open — SEMPRE
         ⇒ → cantimplora_bodega
 
-MAPA «mapa de navegació»
+MAPA «el mapa de navegació»
     • look — SEMPRE
         JUGADORA: El mapa de navegació: una taula de vidre amb Vesper i els seus planetes. Hi brillen els que podem visitar.
     • use — si juga vet
@@ -458,7 +473,7 @@ MAPA «mapa de navegació»
     • use — SEMPRE
         ⇒ → cantimplora_mapa
 
-RADIO «ràdio»
+RADIO «la ràdio»
     • look — SEMPRE
         JUGADORA: La ràdio de banda vella. La Capitana hi té apuntades freqüències amb retolador, al marc.
     • use/talkTo/push — si juga vet i cap_condicions i NO albara_fet
@@ -470,7 +485,7 @@ RADIO «ràdio»
         [SO: radio] NARRADOR: Estàtica.
         NARRADOR: «...Aigua Verne. Perquè la set no espera...»
 
-PANTALLA «pantalla»
+PANTALLA «la pantalla»
     • look — si trucada_feta
         JUGADORA: Apagada. Encara hi veig el somriure.
     • look — SEMPRE
@@ -478,7 +493,7 @@ PANTALLA «pantalla»
     • use — SEMPRE
         JUGADORA: No l'encenc. Avui ja hem vist prou anuncis.
 
-FINESTRAL «finestral»
+FINESTRAL «el finestral»
     • look — si planeta = "terra2"
         JUGADORA: Pel finestral, el port de Terra-2 i la Canonada al fons. Pols.
     • look — si planeta = "aqua"
@@ -488,7 +503,7 @@ FINESTRAL «finestral»
     • look — si planeta = "verdant"
         JUGADORA: Pel finestral, Verdant. Tot és tan verd que fa mal als ulls.
 
-SEIENT «seient de la Capitana»
+SEIENT «el seient de la Capitana»
     • look — SEMPRE
         JUGADORA: El seient de la Capitana. Té la forma de la Capitana.
     • use — SEMPRE
@@ -501,23 +516,23 @@ CAPITANA «—» — hi és si escena ≤ 6
 ## Sala Casa de la Juana · `casa_juana` (iri, vet)
 
 ```
-PORTA «sortida»
+PORTA «la sortida»
     • walkTo/use/open — SEMPRE
         ⇒ → aqua_fons
 
-MAPES «mapes»
+MAPES «els mapes»
     • look — SEMPRE
         JUGADORA: Mapes del mar d'Aqua amb les línies de nivell. Cada any, més avall. L'últim és gairebé un punt.
 
-LLIBRES «llibres»
+LLIBRES «els llibres»
     • look — SEMPRE
         JUGADORA: «Oceanografia», «Oceanografia II», «Com sobreviure amb un got d'aigua al dia». Aquest, molt subratllat.
 
-AQUARI «aquari»
+AQUARI «l'aquari»
     • look — SEMPRE
         JUGADORA: Un aquari buit, net i amb el llum encès. Un rètol: «PER QUAN TORNIN».
 
-FINESTRA «finestra»
+FINESTRA «la finestra»
     • look — SEMPRE
         JUGADORA: Per la finestra rodona es veu la paret del moll, a dalt, i la cistella penjada.
 
@@ -547,11 +562,11 @@ DECORAT condensador_arreglat — es veu si condensador_arreglat
 DECORAT pantalla_mosca — es veu si mosca_contractada
 DECORAT goteig — es veu si condensador_arreglat
 
-RAMPA «Cantimplora»
+RAMPA «la Cantimplora»
     • walkTo/use/open — SEMPRE
         ⇒ → cantimplora_bodega
 
-PORTA_SINDICAT «sindicat»
+PORTA_SINDICAT «el sindicat»
     • look — SEMPRE
         JUGADORA: El local del sindicat. A la porta: «VAGA. AQUÍ NO ES VEN RES.»
     • walkTo/use/open — si juga vet
@@ -559,7 +574,7 @@ PORTA_SINDICAT «sindicat»
     • walkTo/use/open — SEMPRE
         ⇒ → ferrum_sindicat
 
-PORTA_FOSA «foneria»
+PORTA_FOSA «la foneria»
     • look — SEMPRE
         JUGADORA: La foneria de Ferrum. Aturada des de la vaga.
     • walkTo/use/open — si NO promesa_lia
@@ -569,7 +584,7 @@ PORTA_FOSA «foneria»
     • walkTo/use/open — SEMPRE
         ⇒ → fosa_forn
 
-FONT «font de Verne»
+FONT «la font de Verne»
     • look — SEMPRE
         JUGADORA: Una font de Verne. Només raja amb «targeta de treballador actiu». Els vaguistes no en tenen.
         JUGADORA: A sota, una pantalla encesa: «VERNE S.A. CONTRACTA». És l'única cosa de la font que funciona. ⟨si NO mosca_contractada⟩
@@ -591,7 +606,7 @@ FONT «font de Verne»
     • use/push/open/pull — SEMPRE
         ⇒ diàleg contractacio
 
-CONDENSADOR «condensador»
+CONDENSADOR «el condensador»
     • look — si condensador_arreglat
         JUGADORA: El condensador, en marxa, amb la targeta de la Mosca al lector. Fa poca aigua, però en fa cada dia. I l'aire encara no té amo.
     • look — si juga vet
@@ -607,26 +622,32 @@ CONDENSADOR «condensador»
         NARRADOR: La canalla del piquet hi fa cua amb gots.
         JUGADORA: La targeta, que s'hi quedi. La Mosca no la necessita: no beu.
         ⇒ +condensador_arreglat, +canalla_beu, perd targeta_verne
+    • use + tornavis — si NO condensador_arreglat
+        JUGADORA: Els cargols són de puntes rares, i el meu tornavís hi entra. Però el lector porta el precinte de Verne: si el trec, és sabotatge, i la multa la pagaria el piquet. Millor que el lector cregui que som de la casa.
+    • use + tornavis_flor — si NO condensador_arreglat
+        JUGADORA: Els cargols són de puntes rares, i el meu tornavís hi entra. Però el lector porta el precinte de Verne: si el trec, és sabotatge, i la multa la pagaria el piquet. Millor que el lector cregui que som de la casa.
+    • use + clau_anglesa — si NO condensador_arreglat
+        JUGADORA: D'una estirada, el lector sortiria. I l'engegada del condensador, amb ell: hi és soldat. Sense lector, aquí no arrenca ningú.
     • use + qualsevol objecte — si NO condensador_arreglat
         JUGADORA: El lector només vol targetes de treballador actiu de Verne. Això no ho és.
     • use — si NO condensador_arreglat
         JUGADORA: No arrenca. El lector vol una targeta de treballador actiu de Verne.
         ⇒ +cal_targeta
 
-PIQUET «piquet»
+PIQUET «el piquet»
     • look — si NO canalla_beu
         JUGADORA: El piquet. Canalla, mantes, un bidó amb foc i pancartes. «QUI NO TREBALLA NO BEU», ratllat. A sota: «QUI NO BEU NO TREBALLA».
         JUGADORA: Tenen tres garrafes per a quaranta persones.
     • look — SEMPRE
         JUGADORA: La canalla beu. Un nen fa una competició de qui fa més soroll amb el got.
 
-COMPTADORS «comptadors»
+COMPTADORS «els comptadors»
     • look — SEMPRE
         JUGADORA: Comptadors d'aigua de Verne, arrencats de les cases. Una muntanya.
     • pickUp — SEMPRE
         JUGADORA: Pesen. I no són meus: ara són de tothom.
 
-PANELL_PREU «panell del preu»
+PANELL_PREU «el panell del preu»
     • look — SEMPRE
         JUGADORA: AIGUA VERNE. Un litre: 48 crèdits. I la fletxa, cap amunt. ⟨si preu_aigua = 48⟩
         JUGADORA: AIGUA VERNE. Un litre: 64 crèdits. I la fletxa, cap amunt. ⟨si preu_aigua = 64⟩
@@ -637,7 +658,7 @@ PANELL_PREU «panell del preu»
     • use/push/pull/pickUp — SEMPRE
         JUGADORA: Té més cops de pedra que llums. El piquet ja hi ha dit la seva.
 
-CANONADA «Canonada»
+CANONADA «la Canonada»
     • look — SEMPRE
         JUGADORA: La Canonada de Ferrum. Xucla l'aigua de sota les mines. I els miners, sense.
 
@@ -650,11 +671,11 @@ ROSA «—» — hi és si escena ≥ 4
 ```
 DECORAT vestit — es veu si NO vestit_agafat
 
-PORTA «carrer»
+PORTA «el carrer»
     • walkTo/use/open — SEMPRE
         ⇒ → ferrum_carrer
 
-BAGUL «bagul»
+BAGUL «el bagul»
     • look — si vestit_agafat
         JUGADORA: El bagul de la colla de teatre de la Festa Major. Ja no hi ha el vestit de reina.
     • look — SEMPRE
@@ -679,17 +700,17 @@ BAGUL «bagul»
         JUGADORA: És de la Rosa, la minera del piquet. Li ho he de demanar.
         ⇒ +vestit_volgut
 
-PISSARRA «pissarra»
+PISSARRA «la pissarra»
     • look — SEMPRE
         JUGADORA: Torns de vaga i torns d'aigua. Hi ha més torns que aigua.
 
-MOTLLES «motlles»
+MOTLLES «els motlles»
     • look — SEMPRE
         JUGADORA: Motlles de fosa, en una prestatgeria. En Bru no deixa tocar-los a ningú.
     • pickUp — SEMPRE
         JUGADORA: En Bru em mira. No.
 
-CARTELLS «cartells»
+CARTELLS «els cartells»
     • look — SEMPRE
         JUGADORA: Cartells de vagues antigues. «1998: QUI FA EL FERRO, FA EL PREU.» No els va sortir bé.
 
@@ -700,6 +721,12 @@ BRU «—»
 ## Sala El palau, al final · `final_palau` — cinemàtica
 
 ```
+DECORAT plena_piscines0 — es veu si final_piscines
+DECORAT plena_piscines1 — es veu si final_piscines
+DECORAT plena_piscines2 — es veu si final_piscines
+DECORAT plena_piscina_central — es veu si final_piscines
+DECORAT aigua — es veu si final_piscines
+
 IRI «—»
 
 VERNE «—»
@@ -708,19 +735,24 @@ DIVIDEND «—»
 
 HOLM «—»
 
+LIA «—» — hi és si final_surten
+
+VET «—» — hi és si final_surten
+
 ```
 
 ## Sala La granja, sota la pluja · `final_pluja` — cinemàtica
 
 ```
-DECORAT barril_pou — es veu si NO barril_donat
+DECORAT barril_pou — es veu si NO barril_donat i final_barril
 DECORAT caixa_ferrum — es veu si barril_donat
+DECORAT peix — es veu si final_diu
 
 IRI «—»
 
 VET «—»
 
-DIU «—»
+DIU «—» — hi és si final_diu
 
 QUIM «—»
 
@@ -760,27 +792,27 @@ DECORAT termo_7 — es veu si sync_colada i temperatura = 7
 DECORAT termo_8 — es veu si sync_colada i temperatura = 8
 DECORAT termo_9 — es veu si sync_colada i temperatura = 9
 
-PAS «forn»
+PAS «el forn»
     • walkTo/use/open — SEMPRE
         ⇒ → fosa_forn
 
-CANAL «canal»
+CANAL «la canal»
     • look — SEMPRE
         JUGADORA: El canal de colada. El metall fos baixa del forn per aquí i raja on hi hagi el gresol. O a terra.
 
-GRESOL «gresol» — hi és si gresol = "llit"
+GRESOL «el gresol» — hi és si gresol = "llit"
     • look — SEMPRE
         JUGADORA: El gresol, penjat del pont grua. Es mou amb els comandaments.
     • use/push/pull/pickUp — SEMPRE
         JUGADORA: A pes, no el moc ni un dit. Per això hi ha la grua.
 
-GRESOL_C «gresol» — hi és si gresol = "canal"
+GRESOL_C «el gresol» — hi és si gresol = "canal"
     • look — SEMPRE
         JUGADORA: El gresol, penjat del pont grua. Es mou amb els comandaments.
     • use/push/pull/pickUp — SEMPRE
         JUGADORA: A pes, no el moc ni un dit. Per això hi ha la grua.
 
-GRUA_PONT «comandaments de la grua»
+GRUA_PONT «els comandaments de la grua»
     • look — SEMPRE
         JUGADORA: Els comandaments del pont grua. Mouen el gresol del forn al motlle.
     • use/push/pull — si claus_fetes
@@ -792,7 +824,7 @@ GRUA_PONT «comandaments de la grua»
     • use/push/pull — SEMPRE
         JUGADORA: Ara no hi ha res a moure.
 
-LLIT «llit de colada»
+LLIT «el llit de colada»
     • look — si motlle_preparat
         JUGADORA: El llit de colada, amb el motlle preparat.
     • look — si motlle_posat
@@ -830,13 +862,13 @@ LLIT «llit de colada»
     • use — si sync_colada
         JUGADORA: Ara, tapar-lo: la sorra, al llit.
 
-SORRA_PEDRA «sacs de sorra»
+SORRA_PEDRA «els sacs de sorra»
     • look — SEMPRE
         JUGADORA: Sacs de sorra de Ferrum. Pedra picada. Per a un motlle de precisió, no serveix.
     • pickUp — SEMPRE
         JUGADORA: Aquesta no serveix: és pedra picada.
 
-TERMOMETRE «termòmetre del forn»
+TERMOMETRE «el termòmetre del forn»
     • look — SEMPRE
         JUGADORA: El repetidor del termòmetre del forn. Si l'agulla arriba a la franja vermella, el metall s'endureix al gresol.
 
@@ -877,19 +909,19 @@ DECORAT termo_7 — es veu si sync_colada i manxa_oberta i temperatura = 7
 DECORAT termo_8 — es veu si sync_colada i manxa_oberta i temperatura = 8
 DECORAT termo_9 — es veu si sync_colada i manxa_oberta i temperatura = 9
 
-PORTA «carrer»
+PORTA «el carrer»
     • walkTo/use/open — si sync_colada
         JUGADORA: Ara no em puc moure d'aquí: el forn es refreda.
     • walkTo/use/open — SEMPRE
         ⇒ → ferrum_carrer
 
-PAS «colada»
+PAS «la colada»
     • walkTo/use/open — si juga vet
         VET: Jo no em moc del forn. Si baixa la temperatura, adéu claus.
     • walkTo/use/open — SEMPRE
         ⇒ → fosa_colada
 
-MANXA «manxa»
+MANXA «la manxa»
     • look — SEMPRE
         JUGADORA: La manxa del forn: una palanca grossa que fa bufar el foc.
     • push/pull/use — si sync_colada i NO manxa_oberta
@@ -907,7 +939,7 @@ MANXA «manxa»
     • push/pull/use — SEMPRE
         JUGADORA: Ja tenim les claus. Deixem descansar el forn.
 
-METALL «comptadors per fondre»
+METALL «els comptadors per fondre»
     • look — SEMPRE
         JUGADORA: Una pila de comptadors de Verne, per fondre. Que serveixin per a alguna cosa.
     • pickUp/use/push — si sync_colada i NO manxa_oberta
@@ -923,7 +955,13 @@ METALL «comptadors per fondre»
     • pickUp/use/push — SEMPRE
         JUGADORA: Ja hem fet les claus.
 
-RASCLE «rascle»
+TENALLES «les tenalles»
+    • look — SEMPRE
+        JUGADORA: Unes tenalles de colada, llargues com un rem, al costat de l'escòria vella. Per treure-la del forn, però, hi ha el rascle de la columna.
+    • use/pickUp — SEMPRE
+        JUGADORA: Són per agafar els motlles calents, no per escumar. L'escòria es treu amb el rascle, el que és recolzat a la columna.
+
+RASCLE «el rascle»
     • look — SEMPRE
         JUGADORA: Un rascle de ferro llarg per treure l'escòria del metall fos.
     • use — si sync_colada i gresol_ple i NO escoria_treta
@@ -939,7 +977,7 @@ RASCLE «rascle»
     • use — SEMPRE
         JUGADORA: Ara no cal.
 
-FORN «forn»
+FORN «el forn»
     • look — si sync_colada
         JUGADORA: El forn. Per la piquera, el metall fos baixa pel canal fins a la colada.
         NARRADOR: Termòmetre: {temperatura}
@@ -965,7 +1003,7 @@ FORN «forn»
         JUGADORA: No hi poso la mà. Ni la de l'Iri. ⟨si juga vet⟩
         JUGADORA: No hi poso la mà. Ni la de la Vet. ⟨si juga iri⟩
 
-PIQUERA «piquera»
+PIQUERA «la piquera»
     • look — si gresol_ple
         JUGADORA: La piquera, oberta. El metall baixa per la regata fins a la colada.
     • look — SEMPRE
@@ -988,7 +1026,7 @@ PIQUERA «piquera»
         JUGADORA: No hi poso la mà. Ni la de l'Iri. ⟨si juga vet⟩
         JUGADORA: No hi poso la mà. Ni la de la Vet. ⟨si juga iri⟩
 
-TERMOMETRE «termòmetre»
+TERMOMETRE «el termòmetre»
     • look — si sync_colada
         JUGADORA: El termòmetre del forn. El metall aguanta fos fins a zero.
         NARRADOR: Termòmetre: {temperatura}
@@ -1000,11 +1038,15 @@ TERMOMETRE «termòmetre»
 ## Sala Casa del pare · `granja_casa` (iri, vet)
 
 ```
-PORTA «pati»
+DECORAT pantalla_pare — es veu si trucant_pare
+DECORAT quadre_apartat — es veu si quadre_apartat
+DECORAT caixa_oberta — es veu si caixa_oberta
+
+PORTA «el pati»
     • walkTo/use/open — SEMPRE
         ⇒ → granja_pati
 
-CALAIX «calaixos»
+CALAIX «els calaixos»
     • open/look/use/pull — si NO oferta_vista
         JUGADORA: Cordill, claus de portes que ja no existeixen, factures de fa trenta anys, dotze llapis sense punta...
         JUGADORA: I una carta de Verne S.A.: «Oferim per la finca un crèdit. La terra no val res sense aigua. Signi aquí.»
@@ -1014,16 +1056,16 @@ CALAIX «calaixos»
     • look — SEMPRE
         JUGADORA: Res més que el pare no hagi guardat. L'escriptura, aquí no hi és.
 
-VIDEOTELEFON «videotelèfon»
+VIDEOTELEFON «el videotelèfon»
     • look — SEMPRE
         JUGADORA: El videotelèfon. El pare el contesta sempre a la tercera, perquè la primera «és de mala educació».
     • use/talkTo/push — si juga vet
         VET: Truca-li tu. A mi em fa repassar els noms de les vaques.
     • use/talkTo/push — SEMPRE
         [SO: videotelefon] IRI: Ring... ring... ring...
-        ⇒ diàleg pare
+        ⇒ +trucant_pare, diàleg pare
 
-QUADRE «quadre de la mare» — hi és si NO quadre_apartat
+QUADRE «el quadre de la mare» — hi és si NO quadre_apartat
     • look — SEMPRE
         JUGADORA: La mare. La va pintar el pare. Es nota: hi ha posat més cor que traça.
     • push/pull/pickUp/use/open — si pista_quadre
@@ -1032,7 +1074,7 @@ QUADRE «quadre de la mare» — hi és si NO quadre_apartat
     • push/pull/pickUp/use/open — SEMPRE
         JUGADORA: És el quadre de la mare. No el toco sense un bon motiu.
 
-CAIXA_FORTA «caixa forta» — hi és si quadre_apartat
+CAIXA_FORTA «la caixa forta» — hi és si quadre_apartat
     • look — si caixa_oberta
         JUGADORA: Buida. El pare no hi guardava res més. Sorprenent.
     • look — SEMPRE
@@ -1044,7 +1086,7 @@ CAIXA_FORTA «caixa forta» — hi és si quadre_apartat
     • open/use/push — SEMPRE
         ⇒ diàleg teclat
 
-BOL «bol del gos»
+BOL «el bol del gos»
     • look — SEMPRE
         JUGADORA: El bol del gos. Hi diu TITUS, gravat amb un clau.
         JUGADORA: En Titus. Ens esperava a la porta cada dia, quan tornàvem de l'escola. Fa quinze anys que no hi és, i el pare no n'ha llençat el bol.
@@ -1052,14 +1094,14 @@ BOL «bol del gos»
     • pickUp — SEMPRE
         JUGADORA: Que es quedi on és. Com tot, en aquesta casa.
 
-POTS «pots»
+POTS «els pots»
     • look — SEMPRE
         JUGADORA: Setanta pots de vidre buits. «Per si de cas.»
         VET: ...Jo en tinc trenta a la nau. No diguis res. ⟨si vet a granja_casa⟩
     • pickUp — SEMPRE
         JUGADORA: Si n'agafo un, el pare ho notarà des de la residència.
 
-PICA «pica»
+PICA «la pica»
     • look — SEMPRE
         JUGADORA: La pica. Seca.
     • use/open/push/pull — SEMPRE
@@ -1074,11 +1116,11 @@ DECORAT sacs_tres — es veu si NO sacs_agafats
 DECORAT sac_quart — es veu si NO sac4_agafat
 DECORAT tractor_obert — es veu si injector_tret
 
-PORTA «pati»
+PORTA «el pati»
     • walkTo/use/open — SEMPRE
         ⇒ → granja_pati
 
-TRACTOR «tractor de l'avi»
+TRACTOR «el tractor de l'avi»
     • look — si injector_tret
         JUGADORA: El tractor. Ja no té l'injector: és a la Cantimplora, fent volar una nau.
     • look — si juga vet i injector_vist
@@ -1097,6 +1139,12 @@ TRACTOR «tractor de l'avi»
         VET: El tractor que va costar un pou ens farà volar. ⟨si vet a granja_graner⟩
         IRI: Per fi l'avi va fer un bon negoci. ⟨si iri a granja_graner i vet a granja_graner⟩
         ⇒ +injector_tret, rep injector
+    • use + tornavis — si NO injector_tret
+        JUGADORA: Amb un tornavís no hi faig res. Aquí tot són cargols grossos i rovellats.
+    • use + tornavis_flor — si NO injector_tret
+        JUGADORA: Amb un tornavís no hi faig res. Aquí tot són cargols grossos i rovellats.
+    • use + qualsevol objecte — si injector_vist i NO injector_tret
+        JUGADORA: Això no farà girar el cargol de l'injector.
     • use/push/pull/open — si NO injector_vist
         JUGADORA: No arrenca. No ha arrencat mai. És un monument.
     • use/push/pull/open — si NO injector_tret
@@ -1104,7 +1152,7 @@ TRACTOR «tractor de l'avi»
     • use/push/pull/open — SEMPRE
         JUGADORA: Ja li hem pres el que volíem.
 
-LLAVORS «banc de llavors»
+LLAVORS «el banc de llavors»
     • look — SEMPRE
         JUGADORA: El banc de llavors del pare: blat de secà, cigrons, mongetes de l'avi, tomàquets de la mare... Tot etiquetat a mà. Per si de cas.
     • pickUp — si permis_pare i NO sacs_agafats
@@ -1125,7 +1173,7 @@ LLAVORS «banc de llavors»
     • pickUp — SEMPRE
         JUGADORA: Les llavors del pare no es toquen sense un bon motiu.
 
-REG «reg gota a gota» — hi és si NO reg_agafat
+REG «el reg gota a gota» — hi és si NO reg_agafat
     • look — SEMPRE
         JUGADORA: El reg gota a gota del pare, enrotllat a la paret. Un reg sense aigua. És un acte de fe.
     • pickUp — si permis_reg
@@ -1143,7 +1191,7 @@ REG «reg gota a gota» — hi és si NO reg_agafat
         JUGADORA: El pare sempre diu: «El reg no es toca, que encara serveix.» Ell sabrà per a què.
         ⇒ +reg_refusat
 
-CAIXA_EINES «caixa d'eines»
+CAIXA_EINES «la caixa d'eines»
     • open/pickUp/use — si NO tornavis_agafat
         JUGADORA: Un tornavís vell. Fa de tornavís.
         ⇒ +tornavis_agafat, rep tornavis
@@ -1169,19 +1217,20 @@ EN ENTRAR
         VET: Per vendre-la cal l'escriptura. Que és en algun racó de la casa del pare.
         IRI: Del pare, que ho guarda tot.
         VET: Tot.
-        NARRADOR: (Pots canviar de protagonista amb el botó «Canvia». Totes dues poden fer coses, i es poden donar el que porten.)
+        NARRADOR: (El retrat rodó, amb la cara de qui jugues, canvia de protagonista. Totes dues poden fer coses, i es poden donar el que porten.)
     • * (una vegada) — si escena ≥ 5 i NO graner_obert
         JUGADORA: A la porta del graner hi ha un paper groc. El pare no compraria mai res groc.
 
 DECORAT precinte — es veu si escena ≥ 5 i NO graner_obert
+DECORAT bomba_oberta — es veu si bomba_llegida
 
-PORTA_CASA «casa»
+PORTA_CASA «la casa»
     • look — SEMPRE
         JUGADORA: La porta de casa. El pare no la tancava mai: «Si algú vol entrar, que entri, que no hi ha res a robar.»
     • walkTo/use/open — SEMPRE
         ⇒ → granja_casa
 
-PORTA_GRANER «graner»
+PORTA_GRANER «el graner»
     • look — si escena ≥ 5 i NO graner_obert
         JUGADORA: A la porta del graner hi ha un cadenat de Verne, amb una ranura i un llum vermell. I un paper groc.
         JUGADORA: «PRECINTE PREVENTIU. La propietat de la finca 7.788 no ha respost a l'oferta de compra. Mentre no respongui, el graner queda tancat. Només hi pot entrar la propietat.»
@@ -1210,7 +1259,7 @@ PORTA_GRANER «graner»
     • walkTo/use/open — SEMPRE
         ⇒ → granja_graner
 
-CAMI_PORT «camí del port»
+CAMI_PORT «el camí del port»
     • look — SEMPRE
         JUGADORA: El camí del port. Allà hi ha la Cantimplora, aparcada i rovellant-se.
     • walkTo/use/open — si escena = 1
@@ -1218,11 +1267,16 @@ CAMI_PORT «camí del port»
     • walkTo/use/open — SEMPRE
         ⇒ → port_terra2
 
-SENYAL_PORT «pal del port»
+SENYAL_PORT «el pal del port»
     • look — SEMPRE
         JUGADORA: «PORT», cap a la dreta. El camí passa per davant del graner i baixa fins al moll.
+    • walkTo/use/open — si escena = 1
+        JUGADORA: Primer, l'escriptura. I potser entendre per què el pou està sec.
+    • walkTo/use/open — SEMPRE
+        NARRADOR: 
+        ⇒ → port_terra2
 
-POU «pou»
+POU «el pou»
     • look — si NO bomba_llegida
         JUGADORA: El pou. Sec. Hi baixa un tub blanc que no és del pare: el pare no compraria mai res blanc.
     • look — SEMPRE
@@ -1230,7 +1284,7 @@ POU «pou»
     • use/pull/pickUp — SEMPRE
         JUGADORA: La galleda puja buida. Fa sis anys que puja buida.
 
-BOMBA «bomba de Verne»
+BOMBA «la bomba de Verne»
     • use + tornavis_flor — si NO bomba_llegida
         [SO: cargols] JUGADORA: Fora cargols.
         JUGADORA: Hi ha una etiqueta: «Estació 7.788. Destinació: Canonada T2. Dipòsit orbital T2.»
@@ -1258,13 +1312,13 @@ BOMBA «bomba de Verne»
     • open/use/pull/push — SEMPRE
         JUGADORA: Si la paro, en vindran deu a engegar-la. I m'enviaran la factura.
 
-CANONADA «Canonada»
+CANONADA «la Canonada»
     • look — si NO bomba_llegida
         JUGADORA: La Canonada de Terra-2. Una columna blanca que puja fins que no es veu. Va aparèixer fa sis anys. Com la secada.
     • look — SEMPRE
         JUGADORA: La Canonada de Terra-2. Hi va a parar la nostra aigua, i d'allà, a un dipòsit, a dalt de tot.
 
-PANELL_PREU «panell del preu»
+PANELL_PREU «el panell del preu»
     • look — SEMPRE
         JUGADORA: AIGUA VERNE. Un litre: 48 crèdits. I la fletxa, cap amunt. ⟨si preu_aigua = 48⟩
         JUGADORA: AIGUA VERNE. Un litre: 64 crèdits. I la fletxa, cap amunt. ⟨si preu_aigua = 64⟩
@@ -1275,13 +1329,13 @@ PANELL_PREU «panell del preu»
     • use/push/pull/pickUp — SEMPRE
         JUGADORA: És de Verne. Si el toco, segur que algú em cobra el dit.
 
-ARBRE «olivera»
+ARBRE «l'olivera»
     • look — SEMPRE
         JUGADORA: L'olivera de l'avi. Va aguantar dues guerres i una plaga. La secada, no.
     • pickUp/pull/push — SEMPRE
         JUGADORA: La deixo estar. Ja ha patit prou.
 
-TANCA «tanca»
+TANCA «la tanca»
     • look — SEMPRE
         JUGADORA: La tanca. Ja no hi queda res a tancar.
 
@@ -1311,14 +1365,14 @@ DECORAT obert_ferrum — es veu si obert_ferrum
 DECORAT reserva_oberta — es veu si reserva_oberta
 DECORAT flors_camera — es veu si subhasta_comencada
 
-ASCENSOR «ascensor»
+ASCENSOR «l'ascensor»
     • walkTo/use/open — si sync_subhasta
         JUGADORA: No. Ara no em moc d'aquí.
     • walkTo/use/open — SEMPRE
         [SO: ascensor] NARRADOR: L'ascensor puja.
         ⇒ → palau_servei
 
-PANY_T2 «pany T2»
+PANY_T2 «el pany T2»
     • look — si obert_t2
         JUGADORA: Pany T2: el dipòsit de Terra-2. Obert. L'indicador del gel baixa cap a zero.
     • look — SEMPRE
@@ -1360,7 +1414,7 @@ PANY_T2 «pany T2»
     • open/push/pull/use — SEMPRE
         JUGADORA: Sense clau, no gira.
 
-PANY_AQUA «pany AQUA»
+PANY_AQUA «el pany AQUA»
     • look — si obert_aqua
         JUGADORA: Pany AQUA: el dipòsit d'Aqua. Obert. L'indicador del gel baixa cap a zero.
     • look — SEMPRE
@@ -1402,7 +1456,7 @@ PANY_AQUA «pany AQUA»
     • open/push/pull/use — SEMPRE
         JUGADORA: Sense clau, no gira.
 
-PANY_FERRUM «pany FERRUM»
+PANY_FERRUM «el pany FERRUM»
     • look — si obert_ferrum
         JUGADORA: Pany FERRUM: el dipòsit de Ferrum. Obert. L'indicador del gel baixa cap a zero.
     • look — SEMPRE
@@ -1444,7 +1498,7 @@ PANY_FERRUM «pany FERRUM»
     • open/push/pull/use — SEMPRE
         JUGADORA: Sense clau, no gira.
 
-PALANCA «palanca de la reserva»
+PALANCA «la palanca de la reserva»
     • look — si sync_subhasta i valvules ≥ 3
         JUGADORA: La reserva del Magnat, el seu últim barril. Per això no es pot tocar mai: mentre hi sigui, el preu no baixa de trenta.
     • look — si lia_reserva
@@ -1463,13 +1517,13 @@ PALANCA «palanca de la reserva»
     • pull/use — SEMPRE
         JUGADORA: No es pot tocar mai, diu la Lia. I encara no és l'hora.
 
-INTERFON «interfon»
+INTERFON «l'interfon»
     • look — SEMPRE
         JUGADORA: L'interfon. Hi truca el Magnat quan vol saber si tot va bé. La Lia contestarà.
     • use/talkTo — SEMPRE
         JUGADORA: Millor no dir res. La meva veu no és de servei.
 
-CAMERA «càmera»
+CAMERA «la càmera»
     • look — si subhasta_comencada
         JUGADORA: Una càmera. En Nil hi ha posat unes flors de plàstic al davant. «Feien pols.»
     • look — SEMPRE
@@ -1490,17 +1544,17 @@ EN ENTRAR
 
 DECORAT piscines_plenes — es veu si reserva_oberta
 
-PORTA_SALO «saló»
+PORTA_SALO «el saló»
     • walkTo/use/open — SEMPRE
         ⇒ → palau_salo
 
-PISCINES «piscines»
+PISCINES «les piscines»
     • look — SEMPRE
         JUGADORA: Vint-i-tres piscines. Netes, brillants, sense aigua. El palau més sec de Vesper.
     • use/walkTo — SEMPRE
         JUGADORA: No hi baixo. Si em trenco una cama en una piscina buida, el Magnat em cobrarà la rajola.
 
-AQUARI «aquari»
+AQUARI «l'aquari»
     • look — SEMPRE
         JUGADORA: Trenta-tres peixos d'Aqua. Un rètol: «Lot 12. Darrers exemplars. Preu de sortida: a la baixa d'exemplars.»
         JUGADORA: Com menys en quedin...
@@ -1508,11 +1562,11 @@ AQUARI «aquari»
     • open/use/pickUp — SEMPRE
         JUGADORA: Si l'obro aquí, davant de tothom, se m'acaba el vestit i la subhasta.
 
-FINESTRAL «finestral»
+FINESTRAL «el finestral»
     • look — SEMPRE
         JUGADORA: L'espai. Terra-2, petita. I un dipòsit blanc amb la gota blava, gros com una ciutat.
 
-ESCALES «escales cromades»
+ESCALES «les escales cromades»
     • look — SEMPRE
         JUGADORA: Escales cromades per baixar a les piscines. Ningú no les ha baixat mai.
 
@@ -1557,13 +1611,13 @@ DECORAT grafic_aqua_t2_ferrum_reserva — es veu si ordre_valvules = "aqua_t2_fe
 DECORAT grafic_aqua_ferrum_t2 — es veu si ordre_valvules = "aqua_ferrum_t2" i NO reserva_oberta
 DECORAT grafic_aqua_ferrum_t2_reserva — es veu si ordre_valvules = "aqua_ferrum_t2" i reserva_oberta
 
-PORTA_GALERIA «galeria»
+PORTA_GALERIA «la galeria»
     • walkTo/use/open — si sync_subhasta
         JUGADORA: No me'n vaig: si el saló es buida, la subhasta s'acaba abans.
     • walkTo/use/open — SEMPRE
         ⇒ → palau_galeria
 
-ESCENARI «escenari»
+ESCENARI «l'escenari»
     • look — si sync_subhasta
         JUGADORA: L'escenari: el faristol, el martell i el Magnat, somrient.
         NARRADOR: Al faristol, el lot {lot}.
@@ -1574,7 +1628,7 @@ ESCENARI «escenari»
     • use — SEMPRE
         JUGADORA: Encara no ha començat res.
 
-PANTALLA «pantalla»
+PANTALLA «la pantalla»
     • look — si reserva_oberta
         JUGADORA: Vint-i-nou. Sota la ratlla. Ningú no aplaudeix.
     • look — si sync_subhasta
@@ -1586,7 +1640,7 @@ PANTALLA «pantalla»
         NARRADOR: AIGUA VERNE · {preu_aigua} ₡
         JUGADORA: A sota, el catàleg. Lots 1 a 4: el subsòl de Terra-2. 5 a 8: la cartera de deutors. 9 a 11: el mar d'Aqua. 12: els peixos d'Aqua.
 
-SAFATA «safata de les copes»
+SAFATA «la safata de les copes»
     • look — SEMPRE
         JUGADORA: La safata de les copes. Els cambrers se l'enduen per l'ascensor de servei i la tornen plena.
     • use + qualsevol objecte — si NO holm_parlat
@@ -1594,7 +1648,7 @@ SAFATA «safata de les copes»
     • use + qualsevol objecte — SEMPRE
         ⇒ acció safata.posar
 
-CAVA «cava»
+CAVA «la cava»
     • look — SEMPRE
         JUGADORA: Cava de Verdant. De raïm de plàstic, segur.
     • pickUp — si NO copa
@@ -1602,7 +1656,7 @@ CAVA «cava»
     • pickUp — SEMPRE
         JUGADORA: Ja en tinc una.
 
-MARTELL «martell»
+MARTELL «el martell»
     • look — SEMPRE
         JUGADORA: El martell de la subhasta. Cada cop que pica, algú es queda sense aigua deu anys.
     • pickUp/use — SEMPRE
@@ -1625,7 +1679,7 @@ EN ENTRAR
         NIL: Jo vaig a treure la pols. Tu fes com si sabessis on vas.
         VET: Ho faig cada dia.
 
-ASCENSOR «ascensor de servei»
+ASCENSOR «l'ascensor de servei»
     • look — SEMPRE
         JUGADORA: L'ascensor de servei. Lector de targetes. Baixa a la sala de control, sota la piscina central.
     • walkTo/use/open — si no (té targeta)
@@ -1634,19 +1688,19 @@ ASCENSOR «ascensor de servei»
         [SO: ascensor] NARRADOR: L'ascensor baixa.
         ⇒ → palau_control
 
-SAFATES «safates»
+SAFATES «les safates»
     • look — SEMPRE
         JUGADORA: El passaplats on els cambrers deixen les safates del saló.
     • pickUp/use/open — SEMPRE
         ⇒ acció safata.recollir
 
-CARRO «carro de flors»
+CARRO «el carro de flors»
     • look — SEMPRE
         JUGADORA: El carro de flors de plàstic d'en Nil.
     • pickUp — SEMPRE
         JUGADORA: En Nil me les deixaria, però ja s'ocupa ell de les flors.
 
-CANONADES «canonades»
+CANONADES «les canonades»
     • look — SEMPRE
         JUGADORA: Canonades gruixudes que baixen cap a la sala de control. Aquí passa tota l'aigua del palau. És a dir, cap.
 
@@ -1660,28 +1714,35 @@ NIL «—»
 
 ```
 EN ENTRAR
+    • * — si enlairant
+        [SO: motor_nau] NARRADOR: La Cantimplora tus, tremola, s'enlaira...
+        NARRADOR: ...i aterra al port d'Aqua, entre una nuvolada de sal.
+          ⇒ planeta := "aqua", +primer_vol
+        ⇒ → aqua_port
     • * (una vegada) — SEMPRE
         NARRADOR: El port de Terra-2. Fa tres mesos que no surt cap nau de càrrega.
         JUGADORA: La Cantimplora és on la vam deixar: rovellant-se. La Capitana deu ser al pont.
 
-CAMI_GRANJA «camí de la granja»
+DECORAT enlairament — es veu si enlairant
+
+CAMI_GRANJA «el camí de la granja»
     • walkTo/use/open — SEMPRE
         ⇒ → granja_pati
 
-RAMPA «Cantimplora»
+RAMPA «la Cantimplora»
     • look — SEMPRE
         JUGADORA: La Cantimplora. Nou dipòsits buits, un motor tossut i la Capitana. Casa.
     • walkTo/use/open — SEMPRE
         ⇒ → cantimplora_bodega
 
-TAULER «tauler d'anuncis»
+TAULER «el tauler d'anuncis»
     • look — SEMPRE
         JUGADORA: Feines: «Transport d'aigua Verne. Requisit: no fer preguntes.» «Transport d'aigua Verne. Requisit: no tenir nau pròpia.»
         JUGADORA: I un de diferent: «Es busca nau... per desballestar.»
     • pickUp — SEMPRE
         JUGADORA: Cap d'aquestes feines ens porta on volem.
 
-PANELL_PREU «panell del preu»
+PANELL_PREU «el panell del preu»
     • look — SEMPRE
         JUGADORA: AIGUA VERNE. Un litre: 48 crèdits. I la fletxa, cap amunt. ⟨si preu_aigua = 48⟩
         JUGADORA: AIGUA VERNE. Un litre: 64 crèdits. I la fletxa, cap amunt. ⟨si preu_aigua = 64⟩
@@ -1692,7 +1753,7 @@ PANELL_PREU «panell del preu»
     • use/push/pull/pickUp — SEMPRE
         JUGADORA: El mateix panell que a la granja. Verne no gasta imaginació: gasta panells.
 
-CANONADA «Canonada»
+CANONADA «la Canonada»
     • look — SEMPRE
         JUGADORA: La Canonada, des del port. Fa l'efecte que el cel té un tub de reg.
 
@@ -1723,11 +1784,9 @@ EN ENTRAR
         MAGNAT VERNE: A Verne S.A. creiem que l'aigua és massa important per deixar-la en mans de la pluja.
         MAGNAT VERNE: Aigua Verne. Perquè la set no espera.
         NARRADOR: La llum s'apaga. El Magnat deixa de somriure com qui es treu un abric.
-          ⇒ +proleg_focus
         MAGNAT VERNE: Senyora Pell. És dilluns. Apugeu-la dos crèdits.
         SRA. PELL: A Ferrum diuen que si puja més, faran vaga.
         MAGNAT VERNE: Doncs que la facin. Qui no treballa no beu.
-          ⇒ +proleg_preu
         NARRADOR: Al costat de la piscina buida, en Dividend, amb banyador, gemega.
         MAGNAT VERNE: No, Dividend. Aquesta aigua no és per a tu.
         MAGNAT VERNE: No és per a ningú.
@@ -1769,11 +1828,11 @@ DECORAT reg_muntat — es veu si reg_muntat
 DECORAT galleda_penjada — es veu si tomaquera_regada
 DECORAT tomaquera_viva — es veu si tomaquera_regada
 
-PORTA «jardí»
+PORTA «el jardí»
     • walkTo/use/open — SEMPRE
         ⇒ → verdant_jardi
 
-TOMAQUERA «tomaquera»
+TOMAQUERA «la tomaquera»
     • look — si tomaquera_regada
         JUGADORA: La tomaquera, verda. Beu a poc a poc, com ha de ser.
     • look — SEMPRE
@@ -1799,18 +1858,18 @@ TOMAQUERA «tomaquera»
     • pickUp — SEMPRE
         JUGADORA: No és meva. I és la cosa més valuosa de Verdant.
 
-GALLEDA «galleda» — hi és si NO galleda_agafada
+GALLEDA «la galleda» — hi és si NO galleda_agafada
     • look — SEMPRE
         JUGADORA: Una galleda de zinc. Buida.
     • pickUp — SEMPRE
         JUGADORA: Me l'emporto. En Nil no la fa servir: no té res per omplir-la.
         ⇒ +galleda_agafada, rep galleda
 
-SACS «sacs d'adob»
+SACS «els sacs d'adob»
     • look — SEMPRE
         JUGADORA: Sacs d'adob per a plantes de plàstic. Ningú no sap què hi ha a dins. Ni per a què.
 
-EINES «eines»
+EINES «les eines»
     • look — SEMPRE
         JUGADORA: Eines de jardí, netes i gastades. Unes tisores de podar que no han podat res de viu en anys.
 
@@ -1827,11 +1886,11 @@ EN ENTRAR
         JUGADORA: A Verdant, ningú no saluda qui va amb roba de feina. La Vet hi farà molts amics. ⟨si juga iri i no (iri a verdant_jardi i vet a verdant_jardi)⟩
         JUGADORA: A Verdant, ningú no saluda qui va amb roba de feina. Doncs no saludaré. ⟨si juga vet i no (iri a verdant_jardi i vet a verdant_jardi)⟩
 
-RAMPA «Cantimplora»
+RAMPA «la Cantimplora»
     • walkTo/use/open — SEMPRE
         ⇒ → cantimplora_bodega
 
-PORTA_RESIDENCIA «residència»
+PORTA_RESIDENCIA «la residència»
     • look — SEMPRE
         JUGADORA: La residència d'estiu del Magnat. Una porta de vidre i, davant, un robot amb llacet.
     • walkTo/use/open — si juga vet
@@ -1842,27 +1901,27 @@ PORTA_RESIDENCIA «residència»
     • walkTo/use/open — SEMPRE
         ⇒ → verdant_residencia
 
-PORTA_COBERT «cobert»
+PORTA_COBERT «el cobert»
     • look — SEMPRE
         JUGADORA: El cobert del jardiner. L'única cosa de fusta de debò de tot Verdant.
     • walkTo/use/open — si juga iri
-        IRI: Avui faig d'inversora. En Nil no es fia de les jaquetes de vol.
+        IRI: En Nil no es fia de les jaquetes de vol. Amb ell, millor que hi parli la Vet.
     • walkTo/use/open — SEMPRE
         ⇒ → verdant_cobert
 
-FLORS «flors»
+FLORS «les flors»
     • look — SEMPRE
         JUGADORA: Flors de plàstic. No es moren. Per això el Magnat les estima.
     • pickUp — SEMPRE
         JUGADORA: Fan olor de cotxe nou.
 
-ASPERSORS «aspersors»
+ASPERSORS «els aspersors»
     • look — SEMPRE
         JUGADORA: Aspersors. No reguen: perfumen. Gasten aigua per fer olor d'aigua.
     • use — SEMPRE
         JUGADORA: Per més que hi faci, només en surt boira de perfum.
 
-REIXA «reixa»
+REIXA «la reixa»
     • look — SEMPRE
         JUGADORA: Una reixa a terra. Hi degota l'aire condicionat de la residència: aigua neta, que se'n va per l'aigüera.
     • use + galleda — SEMPRE
@@ -1872,7 +1931,7 @@ REIXA «reixa»
     • use/pickUp — SEMPRE
         JUGADORA: Aigua neta caient en una aigüera. Si tingués on posar-la...
 
-LLANCADORA «llançadora»
+LLANCADORA «la llançadora»
     • look — SEMPRE
         JUGADORA: La plataforma de la llançadora dels jardiners. Cada dijous puja al palau.
     • walkTo/use/open — si NO nil_ajuda
@@ -1880,7 +1939,7 @@ LLANCADORA «llançadora»
     • walkTo/use/open — SEMPRE
         JUGADORA: Dijous. Demà. En Nil ens hi esperarà.
 
-PANELL_PREU «panell del preu»
+PANELL_PREU «el panell del preu»
     • look — SEMPRE
         JUGADORA: AIGUA VERNE. Un litre: 48 crèdits. I la fletxa, cap amunt. ⟨si preu_aigua = 48⟩
         JUGADORA: AIGUA VERNE. Un litre: 64 crèdits. I la fletxa, cap amunt. ⟨si preu_aigua = 64⟩
@@ -1905,11 +1964,11 @@ EN ENTRAR
         FIDEL: Esperi aquí, senyora inversora. El senyor Verne no hi és: és al seu palau. Com sempre.
         JUGADORA: Esperaré. Molt quieta. Sense tocar res.
 
-PORTA «jardí»
+PORTA «el jardí»
     • walkTo/use/open — SEMPRE
         ⇒ → verdant_jardi
 
-CALAIXERA «calaixera»
+CALAIXERA «la calaixera»
     • open/look/pull/use — si NO carta_banc
         JUGADORA: Una carta del Banc de Vesper al senyor Verne...
         JUGADORA: «Garanties del préstec: el preu de l'aigua. Si el preu baixa de 30 crèdits el litre, el Banc executarà les garanties: dipòsits, palau i drets.»
@@ -1919,7 +1978,7 @@ CALAIXERA «calaixera»
     • look — SEMPRE
         JUGADORA: Bolígrafs d'or, paper amb la gota blava i la llista de la compra: «Aigua (reciclada). Pinso per a en Dividend (de luxe).»
 
-PAPERERA «paperera daurada»
+PAPERERA «la paperera daurada»
     • look/open/pickUp/use — si NO invitacio_agafada
         JUGADORA: Una invitació a la «Gran Subhasta de l'Aigua». Dijous al vespre, al palau orbital. El Magnat hi vendrà l'aigua dels pròxims deu anys, i amb els diners comprarà l'últim tros de mar d'Aqua.
         JUGADORA: Adreçada a la «Sra. Pruna, Verdant Holdings». Al dors, escrit a mà: «No hi aniré. Ja tinc set de debò.»
@@ -1928,7 +1987,7 @@ PAPERERA «paperera daurada»
     • look — SEMPRE
         JUGADORA: Una paperera daurada. Buida, ara. Fins i tot les escombraries, aquí, brillen.
 
-ARXIVADOR «arxivador»
+ARXIVADOR «l'arxivador»
     • open/look/pull/use — si NO contracte_agafat
         JUGADORA: Tres calaixos: DEUTORS, DRETS, PEIXOS.
         JUGADORA: DRETS: contractes com el del pou de l'avi. Milers.
@@ -1940,25 +1999,25 @@ ARXIVADOR «arxivador»
     • look — SEMPRE
         JUGADORA: DEUTORS, DRETS, PEIXOS. Ja he vist prou.
 
-QUADRE «retrat»
+QUADRE «el retrat»
     • look — SEMPRE
         JUGADORA: Un retrat enorme del Magnat amb en Dividend, el seu gos. Tots dos somriuen. Només un de debò.
 
-FINESTRAL «finestral»
+FINESTRAL «el finestral»
     • look — SEMPRE
         JUGADORA: El jardí de plàstic. Hi veig la Vet, parlant amb el jardiner. O amb les flors. ⟨si vet a verdant_jardi⟩
         JUGADORA: El jardí de plàstic. Des d'aquí sembla de debò. Només des d'aquí. ⟨si no (vet a verdant_jardi)⟩
 
 ```
 
-## Objecte comunicador · `comunicador`
+## Objecte el comunicador · `comunicador`
 
 ```
 • use/talkTo — SEMPRE
     ⇒ diàleg comunicador
 ```
 
-## Objecte Mosca · `mosca`
+## Objecte la Mosca · `mosca`
 
 ```
 • use + qualsevol objecte — SEMPRE
@@ -1967,7 +2026,7 @@ FINESTRAL «finestral»
     JUGADORA: Mosca: fes servir un objecte amb mi i el porto a l'altra.
 ```
 
-## Objecte punta de flor · `punta_flor`
+## Objecte la punta de flor · `punta_flor`
 
 ```
 • use + tornavis — SEMPRE
@@ -1975,67 +2034,67 @@ FINESTRAL «finestral»
     ⇒ perd punta_flor, perd tornavis, rep tornavis_flor
 ```
 
-## Objecte tornavís · `tornavis`
+## Objecte el tornavís · `tornavis`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte tornavís de flor · `tornavis_flor`
+## Objecte el tornavís de flor · `tornavis_flor`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte escriptura · `escriptura`
+## Objecte l'escriptura · `escriptura`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte contracte 7.788 · `contracte_7788`
+## Objecte el contracte 7.788 · `contracte_7788`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte sacs de llavors · `sacs_llavors`
+## Objecte els sacs de llavors · `sacs_llavors`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte sac de llavors · `sac_llavors`
+## Objecte el sac de llavors · `sac_llavors`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte albarà · `albara`
+## Objecte l'albarà · `albara`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte llauna d'oli · `oli`
+## Objecte la llauna d'oli · `oli`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte clau anglesa · `clau_anglesa`
+## Objecte la clau anglesa · `clau_anglesa`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte injector · `injector`
+## Objecte l'injector · `injector`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte fusible de deu · `fusible`
+## Objecte el fusible de deu · `fusible`
 
 ```
 • use + paper_plata — si juga vet
@@ -2045,37 +2104,37 @@ FINESTRAL «finestral»
     JUGADORA: Això ho sap fer la Vet. Jo hi posaria cinta i pregàries.
 ```
 
-## Objecte paper de plata · `paper_plata`
+## Objecte el paper de plata · `paper_plata`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte fusible apanyat · `fusible_apanyat`
+## Objecte el fusible apanyat · `fusible_apanyat`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte carta de la Juana · `carta_juana`
+## Objecte la carta de la Juana · `carta_juana`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte nota per a la Lia · `nota_lia`
+## Objecte la nota per a la Lia · `nota_lia`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte motlle · `motlle`
+## Objecte el motlle · `motlle`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte sac de sorra fina · `sorra`
+## Objecte el sac de sorra fina · `sorra`
 
 ```
 (sense interaccions: només el text per defecte)
@@ -2087,7 +2146,7 @@ FINESTRAL «finestral»
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte reg gota a gota · `reg`
+## Objecte el reg gota a gota · `reg`
 
 ```
 • use + agulla — si juga vet
@@ -2097,13 +2156,13 @@ FINESTRAL «finestral»
     JUGADORA: Els forats, els fa la Vet. Jo ho faria tot alhora i amb el dit.
 ```
 
-## Objecte reg foradat · `reg_foradat`
+## Objecte el reg foradat · `reg_foradat`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte agulla · `agulla`
+## Objecte l'agulla · `agulla`
 
 ```
 • look — si juga iri
@@ -2115,43 +2174,43 @@ FINESTRAL «finestral»
     JUGADORA: Si cuso jo, entraré al palau amb una màniga al cap.
 ```
 
-## Objecte galleda · `galleda`
+## Objecte la galleda · `galleda`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte galleda plena · `galleda_plena`
+## Objecte la galleda plena · `galleda_plena`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte carta del banc · `carta_banc`
+## Objecte la carta del banc · `carta_banc`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte invitació · `invitacio`
+## Objecte la invitació · `invitacio`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte contracte de la Capitana · `contracte_capitana`
+## Objecte el contracte de la Capitana · `contracte_capitana`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte pernil · `pernil`
+## Objecte el pernil · `pernil`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte vestit de reina · `vestit`
+## Objecte el vestit de reina · `vestit`
 
 ```
 • look — si juga iri
@@ -2161,20 +2220,20 @@ FINESTRAL «finestral»
     ⇒ perd vestit, rep vestit_arreglat
 ```
 
-## Objecte vestit arreglat · `vestit_arreglat`
+## Objecte el vestit arreglat · `vestit_arreglat`
 
 ```
 • look — si juga iri
     JUGADORA: El vestit de reina, a la meva mida. Horrible. Perfecte.
 ```
 
-## Objecte targeta de servei · `targeta`
+## Objecte la targeta de servei · `targeta`
 
 ```
 (sense interaccions: només el text per defecte)
 ```
 
-## Objecte targeta de la Mosca · `targeta_verne`
+## Objecte la targeta de la Mosca · `targeta_verne`
 
 ```
 (sense interaccions: només el text per defecte)
@@ -2307,9 +2366,9 @@ COMENÇA A: torna (si bru_set) · carta (si té carta_juana (iri) i iri a ferrum
 COMENÇA A: nit (si escena = 6 i trucada_feta i NO capitana_si) · torna (si ha vist capitana.primera) · primera
 
 [primera]
-    CAPITANA OR: Mira qui torna. La pilot que em va llogar el meu propi motor. ⟨si iri a cantimplora_pont⟩
-    IRI: Te'l vaig tornar. ⟨si iri a cantimplora_pont⟩
-    CAPITANA OR: Sense el carburador. ⟨si iri a cantimplora_pont⟩
+    CAPITANA OR: T'escolto. Però tinc el rellotge en marxa. ⟨si iri a cantimplora_pont⟩
+    IRI: Seré breu. ⟨si iri a cantimplora_pont⟩
+    CAPITANA OR: Això diuen tots els pilots. Abans d'una hora de xerrera. ⟨si iri a cantimplora_pont⟩
     VET: Hola, Capitana. ⟨si vet a cantimplora_pont⟩
     CAPITANA OR: Hola, Vet. Tu sí que pots pujar. ⟨si iri a cantimplora_pont i vet a cantimplora_pont⟩
     CAPITANA OR: Hola, Vet. Tu sí que pots pujar. La teva germana encara em deu un carburador. ⟨si no (iri a cantimplora_pont)⟩
@@ -2321,6 +2380,9 @@ COMENÇA A: nit (si escena = 6 i trucada_feta i NO capitana_si) · torna (si ha 
 
 [nit]
     CAPITANA OR: ...No tinc ganes de parlar, noia.
+    CAPITANA OR: Heu dit que sí. Per un moment, jo també. ⟨si no ha vist capitana.nit i ha triat trucada.inici.si⟩
+    CAPITANA OR: Heu dit que no molt de pressa. Jo m'hi hauria pensat. ⟨si no ha vist capitana.nit i ha triat trucada.inici.no⟩
+    CAPITANA OR: «El pou ja és nostre.» Jo també ho deia, de la nau. ⟨si no ha vist capitana.nit i ha triat trucada.inici.pou⟩
     ↪ menu
 
 [menu]
@@ -2460,22 +2522,22 @@ COMENÇA A: inici
     ▸ Res. Només volia sentir-te. → (es queda) · FI
 
 [fem]
-    VET: Trobar l'escriptura de la granja (el pare ho sap; el videotelèfon és a la casa). ⟨si juga iri i (escena = 1 i NO caixa_oberta)⟩
-    IRI: Trobar l'escriptura de la granja (el pare ho sap; el videotelèfon és a la casa). ⟨si juga vet i (escena = 1 i NO caixa_oberta)⟩
+    VET: Trobar l'escriptura de la granja. El pare sap on és, i el videotelèfon és a la casa. ⟨si juga iri i (escena = 1 i NO caixa_oberta)⟩
+    IRI: Trobar l'escriptura de la granja. El pare sap on és, i el videotelèfon és a la casa. ⟨si juga vet i (escena = 1 i NO caixa_oberta)⟩
     VET: Què fa una bomba de Verne al nostre pou? ⟨si juga iri i (escena = 1 i NO bomba_llegida)⟩
     IRI: Què fa una bomba de Verne al nostre pou? ⟨si juga vet i (escena = 1 i NO bomba_llegida)⟩
     VET: Parlar amb la Capitana, al pont. ⟨si juga iri i (escena = 2 i NO cap_condicions)⟩
     IRI: Parlar amb la Capitana, al pont. ⟨si juga vet i (escena = 2 i NO cap_condicions)⟩
-    VET: Un albarà: una feina de veritat per a Aqua (ràdio del pont: la Juana). ⟨si juga iri i (escena = 2 i cap_condicions i no (té albara) i NO capitana_accepta)⟩
-    IRI: Un albarà: una feina de veritat per a Aqua (ràdio del pont: la Juana). ⟨si juga vet i (escena = 2 i cap_condicions i no (té albara) i NO capitana_accepta)⟩
-    VET: Llavors per a la Juana: el banc del pare, al graner (demana-li permís pel videotelèfon). ⟨si juga iri i (escena = 2 i juana_llavors i NO sacs_carregats)⟩
-    IRI: Llavors per a la Juana: el banc del pare, al graner (li demano permís pel videotelèfon). ⟨si juga vet i (escena = 2 i juana_llavors i NO sacs_carregats)⟩
+    VET: Un albarà: una feina de veritat per a Aqua. La Juana parla per la ràdio del pont. ⟨si juga iri i (escena = 2 i cap_condicions i no (té albara) i NO capitana_accepta)⟩
+    IRI: Un albarà: una feina de veritat per a Aqua. La Juana parla per la ràdio del pont. ⟨si juga vet i (escena = 2 i cap_condicions i no (té albara) i NO capitana_accepta)⟩
+    VET: Llavors per a la Juana: al graner hi ha el banc del pare. Però abans, demana-li permís pel videotelèfon. ⟨si juga iri i (escena = 2 i juana_llavors i NO sacs_carregats)⟩
+    IRI: Llavors per a la Juana: al graner hi ha el banc del pare. Però abans li demano permís pel videotelèfon. ⟨si juga vet i (escena = 2 i juana_llavors i NO sacs_carregats)⟩
     VET: Llavors carregades: avisar la Juana per ràdio. ⟨si juga iri i (escena = 2 i sacs_carregats i NO albara_fet)⟩
     IRI: Llavors carregades: avisar la Juana per ràdio. ⟨si juga vet i (escena = 2 i sacs_carregats i NO albara_fet)⟩
-    VET: L'injector de la nau està esquerdat: l'he de mirar jo (el motor, a la bodega). ⟨si juga iri i (escena = 2 i cap_condicions i NO injector_vist)⟩
-    IRI: L'injector de la nau està esquerdat: que el miris tu (el motor, a la bodega). ⟨si juga vet i (escena = 2 i cap_condicions i NO injector_vist)⟩
-    VET: Un injector nou: el tractor de l'avi en té un d'igual (oli i una clau anglesa). ⟨si juga iri i (escena = 2 i injector_vist i NO injector_posat)⟩
-    IRI: Un injector nou: el tractor de l'avi en té un d'igual (oli i una clau anglesa). ⟨si juga vet i (escena = 2 i injector_vist i NO injector_posat)⟩
+    VET: L'injector de la nau està esquerdat. Ja el miro jo, el motor és a la bodega. ⟨si juga iri i (escena = 2 i cap_condicions i NO injector_vist)⟩
+    IRI: L'injector de la nau està esquerdat. Mira-te'l tu, que el motor és a la bodega. ⟨si juga vet i (escena = 2 i cap_condicions i NO injector_vist)⟩
+    VET: Un injector nou. El tractor de l'avi en té un d'igual: caldrà oli i una clau anglesa. ⟨si juga iri i (escena = 2 i injector_vist i NO injector_posat)⟩
+    IRI: Un injector nou. El tractor de l'avi en té un d'igual: caldrà oli i una clau anglesa. ⟨si juga vet i (escena = 2 i injector_vist i NO injector_posat)⟩
     VET: Albarà i injector: tornar a la Capitana. ⟨si juga iri i (escena = 2 i té albara i injector_posat i NO capitana_accepta)⟩
     IRI: Albarà i injector: tornar a la Capitana. ⟨si juga vet i (escena = 2 i té albara i injector_posat i NO capitana_accepta)⟩
     VET: Rumb a Aqua: el mapa del pont. ⟨si juga iri i (escena = 2 i capitana_accepta)⟩
@@ -2484,8 +2546,8 @@ COMENÇA A: inici
     IRI: Baixar al fons del mar d'Aqua: jo a la cistella i tu a la grua. ⟨si juga vet i (escena = 3 i NO baixada_feta)⟩
     VET: Parlar amb la Juana, al fons del mar. ⟨si juga iri i (escena = 3 i baixada_feta i NO juana_fet)⟩
     IRI: Parlar amb la Juana, al fons del mar. Hi baixo jo. ⟨si juga vet i (escena = 3 i baixada_feta i NO juana_fet)⟩
-    VET: Ferrum: trobar en Bru (el sindicat) i donar-li la carta de la Juana. ⟨si juga iri i (escena = 4 i NO bru_set)⟩
-    IRI: Ferrum: trobar en Bru (el sindicat) i donar-li la carta de la Juana. Les assemblees, per a mi. ⟨si juga vet i (escena = 4 i NO bru_set)⟩
+    VET: Ferrum: trobar en Bru, al sindicat, i donar-li la carta de la Juana. ⟨si juga iri i (escena = 4 i NO bru_set)⟩
+    IRI: Ferrum: trobar en Bru, al sindicat, i donar-li la carta de la Juana. Les assemblees, per a mi. ⟨si juga vet i (escena = 4 i NO bru_set)⟩
     VET: Aigua per a la canalla del piquet de Ferrum. ⟨si juga iri i (escena = 4 i bru_set i NO canalla_beu)⟩
     IRI: Aigua per a la canalla del piquet de Ferrum. ⟨si juga vet i (escena = 4 i bru_set i NO canalla_beu)⟩
     VET: El condensador del carrer s'engega amb una targeta de treballador actiu de Verne. ⟨si juga iri i (escena = 4 i cal_targeta i NO mosca_contractada i NO canalla_beu)⟩
@@ -2524,22 +2586,22 @@ COMENÇA A: inici
     IRI: Qui informa el Magnat? Algú de la nau. ⟨si juga vet i (escena = 6 i cal_espia i NO tomas_girat)⟩
     VET: Ensenyar el contracte a la Capitana. ⟨si juga iri i (escena = 6 i NO capitana_si)⟩
     IRI: Ensenyar el contracte a la Capitana. ⟨si juga vet i (escena = 6 i NO capitana_si)⟩
-    VET: Un vestit de gala per a tu (al sindicat de Ferrum n'hi havia un). ⟨si juga iri i (escena = 6 i cal_gala i no (té vestit_arreglat (iri)) i NO vestit_agafat i NO rosa_vol_tomas)⟩
-    IRI: Un vestit de gala per a mi (al sindicat de Ferrum n'hi havia un). ⟨si juga vet i (escena = 6 i cal_gala i no (té vestit_arreglat (iri)) i NO vestit_agafat i NO rosa_vol_tomas)⟩
+    VET: Un vestit de gala per a tu. Al sindicat de Ferrum n'hi havia un. ⟨si juga iri i (escena = 6 i cal_gala i no (té vestit_arreglat (iri)) i NO vestit_agafat i NO rosa_vol_tomas)⟩
+    IRI: Un vestit de gala per a mi. Al sindicat de Ferrum n'hi havia un. ⟨si juga vet i (escena = 6 i cal_gala i no (té vestit_arreglat (iri)) i NO vestit_agafat i NO rosa_vol_tomas)⟩
     VET: La Rosa ens deixa el vestit si en Tomàs baixa a buscar-lo. ⟨si juga iri i (escena = 6 i rosa_vol_tomas i NO tomas_baixa)⟩
     IRI: La Rosa ens deixa el vestit si en Tomàs baixa a buscar-lo. ⟨si juga vet i (escena = 6 i rosa_vol_tomas i NO tomas_baixa)⟩
     VET: El vestit de la Rosa et va gran: ho arreglo amb l'agulla del meu calaix. ⟨si juga iri i (escena = 6 i cal_gala i vestit_agafat i no (té vestit_arreglat (iri) o té vestit_arreglat (vet)))⟩
     IRI: El vestit de la Rosa em va gran: l'agulla del teu calaix. ⟨si juga vet i (escena = 6 i cal_gala i vestit_agafat i no (té vestit_arreglat (iri) o té vestit_arreglat (vet)))⟩
     VET: El vestit arreglat és per a tu: te'l dono o te l'envio amb la Mosca. ⟨si juga iri i (escena = 6 i té vestit_arreglat (vet))⟩
     IRI: El vestit arreglat és per a mi: dona-me'l o envia-me'l amb la Mosca. ⟨si juga vet i (escena = 6 i té vestit_arreglat (vet))⟩
-    VET: Palau: he de trobar la Lia (passadissos de servei). ⟨si juga iri i (escena = 7 i NO lia_avisada)⟩
-    IRI: Palau: has de trobar la Lia (passadissos de servei). ⟨si juga vet i (escena = 7 i NO lia_avisada)⟩
-    VET: Fer-me arribar les claus (la safata de les copes, al saló). ⟨si juga iri i (escena = 7 i no (té claus (vet)) i NO subhasta_comencada)⟩
-    IRI: Fer-te arribar les claus (la safata de les copes, al saló). ⟨si juga vet i (escena = 7 i no (té claus (vet)) i NO subhasta_comencada)⟩
+    VET: Palau: he de trobar la Lia. Deu anar pels passadissos de servei. ⟨si juga iri i (escena = 7 i NO lia_avisada)⟩
+    IRI: Palau: has de trobar la Lia. Busca-la pels passadissos de servei. ⟨si juga vet i (escena = 7 i NO lia_avisada)⟩
+    VET: Fer-me arribar les claus amb la safata de les copes, al saló. ⟨si juga iri i (escena = 7 i no (té claus (vet)) i NO subhasta_comencada)⟩
+    IRI: Fer-te arribar les claus amb la safata de les copes, al saló. ⟨si juga vet i (escena = 7 i no (té claus (vet)) i NO subhasta_comencada)⟩
     VET: Jo a la sala de control, tu al saló de la subhasta. ⟨si juga iri i (escena = 7 i NO subhasta_comencada)⟩
     IRI: Tu a la sala de control, jo al saló de la subhasta. ⟨si juga vet i (escena = 7 i NO subhasta_comencada)⟩
-    VET: Obrir les tres vàlvules (la clau al pany, i girar) abans que s'acabin els lots, sense espantar el Magnat. Tu pots parar el martell: cada objecció, al seu lot. ⟨si juga iri i (sync_subhasta i valvules < 3)⟩
-    IRI: Obrir les tres vàlvules (la clau al pany, i girar) abans que s'acabin els lots, sense espantar el Magnat. Jo puc parar el martell: cada objecció, al seu lot. ⟨si juga vet i (sync_subhasta i valvules < 3)⟩
+    VET: Obrir les tres vàlvules abans que s'acabin els lots: la clau al pany, i girar. Sense espantar el Magnat. Tu pots parar el martell: cada objecció, al seu lot. ⟨si juga iri i (sync_subhasta i valvules < 3)⟩
+    IRI: Obrir les tres vàlvules abans que s'acabin els lots: la clau al pany, i girar. Sense espantar el Magnat. Jo puc parar el martell: cada objecció, al seu lot. ⟨si juga vet i (sync_subhasta i valvules < 3)⟩
     VET: 31: el Magnat s'aguanta amb la seva reserva. La palanca vermella. ⟨si juga iri i (sync_subhasta i valvules ≥ 3)⟩
     IRI: 31: el Magnat s'aguanta amb la seva reserva. La palanca vermella. ⟨si juga vet i (sync_subhasta i valvules ≥ 3)⟩
     ↪ inici
@@ -3150,6 +3212,7 @@ COMENÇA A: torna (si ha vist pare.hola) · hola
 
 [adeu]
     PARE: Adeu, noies. Porteu-me aigua. O una cervesa. O totes dues.
+    ⇒ −trucant_pare
 
 ```
 
@@ -3382,7 +3445,6 @@ COMENÇA A: inici
         ⇒ teclat_1 := "B"
 
 [casella2]
-    NARRADOR: Pantalla: {teclat_1} {teclat_2} {teclat_3} {teclat_4} {teclat_5}
     ▸ A → casella3
         ⇒ teclat_2 := "A"
     ▸ E → casella3
@@ -3393,7 +3455,6 @@ COMENÇA A: inici
         ⇒ teclat_2 := "O"
 
 [casella3]
-    NARRADOR: Pantalla: {teclat_1} {teclat_2} {teclat_3} {teclat_4} {teclat_5}
     ▸ R → casella4
         ⇒ teclat_3 := "R"
     ▸ T → casella4
@@ -3404,7 +3465,6 @@ COMENÇA A: inici
         ⇒ teclat_3 := "L"
 
 [casella4]
-    NARRADOR: Pantalla: {teclat_1} {teclat_2} {teclat_3} {teclat_4} {teclat_5}
     ▸ I → casella5
         ⇒ teclat_4 := "I"
     ▸ N → casella5
@@ -3415,7 +3475,6 @@ COMENÇA A: inici
         ⇒ teclat_4 := "E"
 
 [casella5]
-    NARRADOR: Pantalla: {teclat_1} {teclat_2} {teclat_3} {teclat_4} {teclat_5}
     ▸ A → comprova
         ⇒ teclat_5 := "A"
     ▸ E → comprova
@@ -3426,7 +3485,6 @@ COMENÇA A: inici
         ⇒ teclat_5 := "O"
 
 [comprova]
-    NARRADOR: Pantalla: {teclat_1} {teclat_2} {teclat_3} {teclat_4} {teclat_5}
     ▸ Premo «D'acord». ⟨si teclat_1 = "T" i teclat_2 = "I" i teclat_3 = "T" i teclat_4 = "U" i teclat_5 = "S"⟩ → titus
     ▸ Premo «D'acord». ⟨si no (teclat_1 = "T" i teclat_2 = "I" i teclat_3 = "T" i teclat_4 = "U" i teclat_5 = "S")⟩ → malament
     ▸ Ho esborro. → casella1
@@ -3579,12 +3637,20 @@ COMENÇA A: inici
     NARRADOR: La Capitana no diu res. Es mira les mans.
     ▸ Acceptem. → si
     ▸ No. → no
-    ▸ El pou ja és nostre. → no
+    ▸ El pou ja és nostre. → pou
 
 [si]
     MAGNAT VERNE: Excel·lent. Envieu les claus amb el vostre mecànic.
     VET: No.
-    NARRADOR: La Vet talla la comunicació. La pantalla s'encén tota sola: el Magnat no ha acabat.
+    NARRADOR: La Vet talla la comunicació.
+    IRI: Era per guanyar temps.
+    VET: No ho era.
+    NARRADOR: La pantalla s'encén tota sola: el Magnat no ha acabat.
+    ↪ no
+
+[pou]
+    MAGNAT VERNE: El pou és vostre, senyora. L'aigua, no.
+    MAGNAT VERNE: Llegiu el contracte 7.788. La lletra petita és meva.
     ↪ no
 
 [no]
@@ -3597,6 +3663,7 @@ COMENÇA A: inici
     PARE: No sé què feu. Feu-ho bé.
     IRI: Com ho sabia? Les claus, el despatx, el sac de llavors... ⟨si NO fidel_tractor⟩
     IRI: Com ho sabia? Les claus, el despatx, el tractor... ⟨si fidel_tractor⟩
+    IRI: I ha dit «el vostre mecànic». Com sap que tenim mecànic? ⟨si ha triat trucada.inici.si⟩
     VET: Algú li ho explica. Algú de la nau.
     CAPITANA OR: A mi no em mireu.
     IRI: I la invitació diu «Etiqueta rigorosa». Jo només tinc aquesta jaqueta.
@@ -3708,10 +3775,21 @@ injector_vet — quan escena = 2 i cap_condicions i NO injector_vist i juga vet 
     1. La Cantimplora no vola: l'injector està esquerdat.
     2. El motor és a la bodega. I de motors, en sap la Vet.
     3. Mira el motor de la bodega.
-tractor — quan injector_vist i NO injector_tret · fins que injector_tret
+tractor — quan injector_vist i NO injector_tret i NO tractor_oliat i NO clau_donada · fins que injector_tret o tractor_oliat o clau_donada
     1. El tractor de l'avi té el mateix injector que la Cantimplora.
     2. El cargol està rovellat: cal oli (hi ha una llauna al motor de la bodega) i una clau anglesa grossa (la porta en Tomàs).
     3. Agafa l'oli del motor, demana la clau anglesa a en Tomàs, posa oli al tractor del graner i treu-ne l'injector amb la clau.
+tractor_clau — quan injector_vist i NO injector_tret i tractor_oliat i NO clau_donada · fins que injector_tret o clau_donada
+    1. L'oli ja s'amara al cargol. Ara cal una eina prou grossa per fer-lo girar.
+    2. Una clau anglesa grossa. En Tomàs, el mecànic de la Cantimplora, en porta una.
+    3. Demana la clau anglesa a en Tomàs, a la bodega, i fes-la servir amb el tractor del graner.
+tractor_oli — quan injector_vist i NO injector_tret i clau_donada i NO tractor_oliat · fins que injector_tret o tractor_oliat
+    1. La clau anglesa ja la tens, però el cargol està rovellat: si forces, el trenques.
+    2. Primer, oli. Al motor de la bodega de la Cantimplora n'hi ha una llauna.
+    3. Agafa la llauna d'oli del motor de la bodega, posa oli al tractor i després treu-ne l'injector amb la clau.
+tractor_treu — quan injector_vist i NO injector_tret i clau_donada i tractor_oliat · fins que injector_tret
+    1. Oli posat i clau anglesa a punt. Només falta fer força.
+    2. Fes servir la clau anglesa amb el tractor del graner.
 injector2 — quan injector_tret i NO injector_posat i juga iri · fins que injector_posat
     1. L'injector va al motor de la Cantimplora.
     2. El munta la Vet.
@@ -4072,11 +4150,15 @@ plou «Plou» — quan reserva_oberta
     NARRADOR: A la pantalla del saló: 29. Per sota de la ratlla vermella.
       ⇒ +al_final_lluny
     HOLM: Senyor Verne. Ni reserva ni garantia. Vint-i-nou. El Banc executa.
+    MAGNAT VERNE: Les germanes van dir que sí. Ho tinc gravat. ⟨si ha triat trucada.inici.si⟩
+    HOLM: Verbal. No executat. No consta. ⟨si ha triat trucada.inici.si⟩
     MAGNAT VERNE: Jo soc el Magnat Verne.
     HOLM: Era.
     NARRADOR: Les vint-i-tres piscines s'omplen, d'una en una, en cascada, davant de tots els inversors.
+      ⇒ +final_piscines
     NARRADOR: En Dividend s'hi tira. Neda. El Magnat el mira. I plora.
     MAGNAT VERNE: Era meva.
+      ⇒ +dividend_moll
     IRI: Ara és d'en Dividend.
     NARRADOR: La Lia, la Vet i l'Iri surten pel moll de càrrega, on les espera la Cantimplora.
     NARRADOR: Ningú no es fixa en en Diu, que passa per davant de l'aquari.
@@ -4096,6 +4178,7 @@ plou «Plou» — quan reserva_oberta
     IRI: Que no obre cap tornavís del món.
     VET: Excepte el meu. Fins que el Banc se'n compri un.
     NARRADOR: La Vet porta l'últim barril fins al pou. El mira. I l'hi buida. ⟨si NO barril_donat⟩
+      ⇒ +final_barril
     VET: Ja no cal per si de cas. ⟨si NO barril_donat⟩
     VET: Ni una paraula. ⟨si NO barril_donat⟩
     IRI: No he dit res. ⟨si NO barril_donat⟩
@@ -4108,6 +4191,7 @@ plou «Plou» — quan reserva_oberta
     IRI: Tu no tens vint-i-tres piscines buides.
     VET: No. Però l'entenc. I no m'agrada entendre'l.
     NARRADOR: En Diu entra al pati, xop, amb un peix platejat a la boca. El deixa als peus de l'Iri.
+      ⇒ +final_diu
     IRI: Diu. Això és un peix.
     VET: És un regal.
     IRI: D'on ha tret un peix? A Terra-2 no n'hi ha hagut mai.

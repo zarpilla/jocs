@@ -246,12 +246,7 @@
       ]
     },
     "casella2": {
-      "lines": [
-        {
-          "who": "narrator",
-          "text": "dlg.teclat.pantalla"
-        }
-      ],
+      "lines": [],
       "choices": [
         {
           "id": "c2_a",
@@ -304,12 +299,7 @@
       ]
     },
     "casella3": {
-      "lines": [
-        {
-          "who": "narrator",
-          "text": "dlg.teclat.pantalla"
-        }
-      ],
+      "lines": [],
       "choices": [
         {
           "id": "c3_r",
@@ -362,12 +352,7 @@
       ]
     },
     "casella4": {
-      "lines": [
-        {
-          "who": "narrator",
-          "text": "dlg.teclat.pantalla"
-        }
-      ],
+      "lines": [],
       "choices": [
         {
           "id": "c4_i",
@@ -420,12 +405,7 @@
       ]
     },
     "casella5": {
-      "lines": [
-        {
-          "who": "narrator",
-          "text": "dlg.teclat.pantalla"
-        }
-      ],
+      "lines": [],
       "choices": [
         {
           "id": "c5_a",
@@ -478,12 +458,7 @@
       ]
     },
     "comprova": {
-      "lines": [
-        {
-          "who": "narrator",
-          "text": "dlg.teclat.pantalla"
-        }
-      ],
+      "lines": [],
       "choices": [
         {
           "id": "accepta",
