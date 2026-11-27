@@ -142,7 +142,13 @@
       "lines": [
         {
           "who": "iri",
-          "text": "dlg.ponc.3"
+          "text": "dlg.ponc.3",
+          "stage": [
+            {
+              "who": "vet",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "ponc",
@@ -238,7 +244,22 @@
         },
         {
           "who": "vet",
-          "text": "dlg.ponc.10"
+          "text": "dlg.ponc.10",
+          "stage": [
+            {
+              "who": "vet",
+              "at": "carrer",
+              "face": "R",
+              "visible": true
+            },
+            {
+              "who": "vet",
+              "walk": {
+                "x": 64,
+                "y": 238
+              }
+            }
+          ]
         },
         {
           "who": "iri",
