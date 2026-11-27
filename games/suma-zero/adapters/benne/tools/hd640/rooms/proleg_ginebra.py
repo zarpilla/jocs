@@ -48,7 +48,10 @@ LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 # ─── La càmera i el món ─────────────────────────────────────────────────────
 
 F = 420
-CAM = Camera(pos=(0.0, 30.0, 0.0), yaw=0.10, pitch=-0.2, f=F, centre=(320, 200))
+# (el centre, més avall que el de la pantalla: tota la vista baixa, i les lletres del BCMU queden sota la caixa
+# del narrador, que va sempre a dalt al mig, també quan té dues línies; tasca 236)
+BAIXA = 42
+CAM = Camera(pos=(0.0, 30.0, 0.0), yaw=0.10, pitch=-0.2, f=F, centre=(320, 200 + BAIXA))
 HOR = round(CAM.projecta((0, 30, 1e7))[1])            # l'horitzó a la pantalla
 
 TX, TZ, TA = 300.0, 1450.0, 0.32          # la torre: el centre (x, z) i el gir
@@ -719,4 +722,4 @@ ANIMS = {
 
 # La veu del Director (personatge invisible): sota el mig de la pantalla, perquè el text li surti just a sobre (entre
 # el rètol BCMU i la pantalla): se sap que parla la pantalla, i no tapa ni la cara ni el rètol «EN DIRECTE» (tasca 008).
-GEOMETRIA = {'things': {}, 'spawns': {'bonfill': (388, 200)}, 'walkable': [(200, 253), (267, 253), (267, 261), (200, 261)]}
+GEOMETRIA = {'things': {}, 'spawns': {'bonfill': (388, 200 + BAIXA)}, 'walkable': [(200, 253), (267, 253), (267, 261), (200, 261)]}
