@@ -200,7 +200,7 @@
   "who": "card"
  },
  "card3151301837": {
-  "hash": "f52e9e297337393a",
+  "hash": "3d582cf20263c595",
   "key": "dlg.urtica.naturaplus.2",
   "who": "card"
  },
@@ -589,6 +589,11 @@
   "key": "sala.centraleta.radar.mira.ences",
   "who": "iri"
  },
+ "iri118934595": {
+  "hash": "add64e8f0ba0d38b",
+  "key": "pista.tele.1",
+  "who": "iri"
+ },
  "iri1193185118": {
   "hash": "cbca3855bd01bebd",
   "key": "sala.centraleta.arrel.mira.radar",
@@ -604,6 +609,11 @@
   "key": "sala.centraleta.tauler.mira",
   "who": "iri"
  },
+ "iri120772067": {
+  "hash": "7e5d90c206ebc1a0",
+  "key": "pista.radar.1",
+  "who": "iri"
+ },
  "iri1218591279": {
   "hash": "a930df80d98d61d1",
   "key": "obj.lupa.desc",
@@ -617,6 +627,11 @@
  "iri1271889475": {
   "hash": "5d76883bfc10cefa",
   "key": "dlg.walkie.e2.3",
+  "who": "iri"
+ },
+ "iri1277564565": {
+  "hash": "fc66676908abb4e8",
+  "key": "pista.entrar.1",
   "who": "iri"
  },
  "iri1278404592": {
@@ -679,9 +694,19 @@
   "key": "dlg.walkie.e3.4",
   "who": "iri"
  },
+ "iri135712214": {
+  "hash": "47b4e6124279f631",
+  "key": "pista.tele.2",
+  "who": "iri"
+ },
  "iri1371578680": {
   "hash": "86a9325ac7a6eaae",
   "key": "sala.toll_gripaus.comporta.dura",
+  "who": "iri"
+ },
+ "iri137549686": {
+  "hash": "4f8bc30bad389370",
+  "key": "pista.radar.2",
   "who": "iri"
  },
  "iri1380625975": {
@@ -769,6 +794,11 @@
   "key": "dlg.espora.opt.node",
   "who": "iri"
  },
+ "iri152489833": {
+  "hash": "8dda3be0a343e846",
+  "key": "pista.tele.3",
+  "who": "iri"
+ },
  "iri1530458567": {
   "hash": "c43b07712f301adf",
   "key": "sala.zona_mati.intro.5",
@@ -834,6 +864,11 @@
   "key": "sala.vora_bosc.bolets.agafa",
   "who": "iri"
  },
+ "iri1696488276": {
+  "hash": "bd62788aca72731d",
+  "key": "pista.canal.1",
+  "who": "iri"
+ },
  "iri1697517104": {
   "hash": "68aa8748ea09fec1",
   "key": "obj.fil_saba.desc",
@@ -849,9 +884,19 @@
   "key": "obj.pot_melmelada.desc",
   "who": "iri"
  },
+ "iri1730043514": {
+  "hash": "18ed915d40680719",
+  "key": "pista.canal.3",
+  "who": "iri"
+ },
  "iri1745738516": {
   "hash": "900afc76d899914e",
   "key": "obj.pila_llimona.desc",
+  "who": "iri"
+ },
+ "iri1746821133": {
+  "hash": "41fa90ad2c15f0f2",
+  "key": "pista.canal.2",
   "who": "iri"
  },
  "iri1749678086": {
@@ -884,6 +929,11 @@
   "key": "sala.vora_bosc.campaneta.mira",
   "who": "iri"
  },
+ "iri1809708268": {
+  "hash": "5ab90c91e1c7372a",
+  "key": "pista.flor.1",
+  "who": "iri"
+ },
  "iri1814033918": {
   "hash": "e3ae331b910de2a7",
   "key": "sala.zona_zero.intro.3",
@@ -904,9 +954,19 @@
   "key": "dlg.bufo.segell.13",
   "who": "iri"
  },
+ "iri1843263506": {
+  "hash": "43a013aa4919adce",
+  "key": "pista.flor.3",
+  "who": "iri"
+ },
  "iri1856722621": {
   "hash": "75e4e243cd38d1d4",
   "key": "obs.obs_gespa.1",
+  "who": "iri"
+ },
+ "iri1860041125": {
+  "hash": "caa1930b670c722c",
+  "key": "pista.flor.2",
   "who": "iri"
  },
  "iri1860812545": {
@@ -924,14 +984,29 @@
   "key": "dlg.walkie.e4.1",
   "who": "iri"
  },
+ "iri1896635776": {
+  "hash": "0ef2296ffffd38b0",
+  "key": "pista.fil.1",
+  "who": "iri"
+ },
  "iri1898853229": {
   "hash": "d93e03365cf66679",
   "key": "dlg.walkie.e4.3",
   "who": "iri"
  },
+ "iri1946968633": {
+  "hash": "166d096e27e1495f",
+  "key": "pista.fil.2",
+  "who": "iri"
+ },
  "iri1971088218": {
   "hash": "3b5faae29485a7c0",
   "key": "sala.zona_zero.escenari.mira",
+  "who": "iri"
+ },
+ "iri1978295731": {
+  "hash": "73753a2c32fcab1a",
+  "key": "pista.melmelada.1",
   "who": "iri"
  },
  "iri1978442780": {
@@ -944,9 +1019,19 @@
   "key": "sala.vora_bosc.cartell.toca",
   "who": "iri"
  },
+ "iri1995073350": {
+  "hash": "efbbe08e3a2957b7",
+  "key": "pista.melmelada.2",
+  "who": "iri"
+ },
  "iri2003507467": {
   "hash": "7c0d4e2f19d768ee",
   "key": "pj.vet.mira",
+  "who": "iri"
+ },
+ "iri2007352624": {
+  "hash": "af791d31ab44ff4e",
+  "key": "pista.tap.3",
   "who": "iri"
  },
  "iri2010826862": {
@@ -954,9 +1039,19 @@
   "key": "dlg.gripau.opt.adeu",
   "who": "iri"
  },
+ "iri2011850969": {
+  "hash": "d9b608d0ebf0b6f1",
+  "key": "pista.melmelada.3",
+  "who": "iri"
+ },
  "iri20188921": {
   "hash": "f2687ae7e2faf255",
   "key": "ui.defecte",
+  "who": "iri"
+ },
+ "iri2024130243": {
+  "hash": "729fe99163ce1f06",
+  "key": "pista.tap.2",
   "who": "iri"
  },
  "iri2025941173": {
@@ -967,6 +1062,11 @@
  "iri2033942661": {
   "hash": "1c754bad724e5659",
   "key": "obj.llimona.desc",
+  "who": "iri"
+ },
+ "iri2040907862": {
+  "hash": "cc19710aa9a85092",
+  "key": "pista.tap.1",
   "who": "iri"
  },
  "iri2049058065": {
@@ -999,14 +1099,29 @@
   "key": "obs.obs_ortiga.2",
   "who": "iri"
  },
+ "iri2089189375": {
+  "hash": "4eba5680e1c6262b",
+  "key": "pista.pila.1",
+  "who": "iri"
+ },
  "iri2101546083": {
   "hash": "da5c0c42078e57c3",
   "key": "obs.obs_cartell.2",
   "who": "iri"
  },
+ "iri2105966994": {
+  "hash": "f5dd4b787a9fff2f",
+  "key": "pista.pila.2",
+  "who": "iri"
+ },
  "iri2113490603": {
   "hash": "27c2dae7737b84aa",
   "key": "dlg.walkie.e7.2",
+  "who": "iri"
+ },
+ "iri2122744613": {
+  "hash": "388dcdf359cd489f",
+  "key": "pista.pila.3",
   "who": "iri"
  },
  "iri213071765": {
@@ -1039,6 +1154,11 @@
   "key": "obj.xiulet.mira.iri",
   "who": "iri"
  },
+ "iri2245730031": {
+  "hash": "2c4bfc95678e3805",
+  "key": "pista.comporta.2",
+  "who": "iri"
+ },
  "iri2246553377": {
   "hash": "e2314abf73338e67",
   "key": "sala.zona_mati.fi.2",
@@ -1062,6 +1182,11 @@
  "iri2258972379": {
   "hash": "649be33ef76de535",
   "key": "sala.zona_zero.escenari.puja",
+  "who": "iri"
+ },
+ "iri2262507650": {
+  "hash": "6c563d1b5f271bc0",
+  "key": "pista.comporta.1",
   "who": "iri"
  },
  "iri2263330996": {
@@ -1264,9 +1389,24 @@
   "key": "dlg.walkie.e1.3",
   "who": "iri"
  },
+ "iri2864638867": {
+  "hash": "5b54a789c52628ba",
+  "key": "pista.cargol.1",
+  "who": "iri"
+ },
  "iri2866660844": {
   "hash": "6ceb8d5000b55be4",
   "key": "obj.pila.feta",
+  "who": "iri"
+ },
+ "iri2881416486": {
+  "hash": "534f6d9402d6554d",
+  "key": "pista.cargol.2",
+  "who": "iri"
+ },
+ "iri2890938192": {
+  "hash": "2e43f9b4cdfcfaf0",
+  "key": "pista.amagatall.2",
   "who": "iri"
  },
  "iri2891575053": {
@@ -1274,9 +1414,19 @@
   "key": "sala.toll_gripaus.rierol.mira",
   "who": "iri"
  },
+ "iri2898194105": {
+  "hash": "229226d2bfa318b5",
+  "key": "pista.cargol.3",
+  "who": "iri"
+ },
  "iri2906873636": {
   "hash": "3d62dc7b98fcd48e",
   "key": "ui.defecte.use.iri.2",
+  "who": "iri"
+ },
+ "iri2907715811": {
+  "hash": "4a0020e0176f31bc",
+  "key": "pista.amagatall.3",
   "who": "iri"
  },
  "iri2923651255": {
@@ -1289,9 +1439,19 @@
   "key": "dlg.espora.opt.adeu",
   "who": "iri"
  },
+ "iri2941271049": {
+  "hash": "0587b590d59e0a36",
+  "key": "pista.amagatall.1",
+  "who": "iri"
+ },
  "iri2970220604": {
   "hash": "03c3c519e1b06b5f",
   "key": "ui.defecte.close.iri.3",
+  "who": "iri"
+ },
+ "iri2980126888": {
+  "hash": "4754e6286ce6d55e",
+  "key": "ui.pista.cap",
   "who": "iri"
  },
  "iri2986998223": {
@@ -1329,9 +1489,34 @@
   "key": "obj.llibreta.compte",
   "who": "iri"
  },
+ "iri3054545004": {
+  "hash": "4f56500925dfce89",
+  "key": "pista.gripau.2",
+  "who": "iri"
+ },
+ "iri3057939687": {
+  "hash": "b5d40b5b00c95d42",
+  "key": "pista.crit.1",
+  "who": "iri"
+ },
+ "iri3071322623": {
+  "hash": "2a700d326b031976",
+  "key": "pista.gripau.3",
+  "who": "iri"
+ },
+ "iri3074717306": {
+  "hash": "b428140b3ea83dcf",
+  "key": "pista.crit.2",
+  "who": "iri"
+ },
  "iri3076788918": {
   "hash": "f9a8796d660067dd",
   "key": "ui.defecte.pickUp.iri.3",
+  "who": "iri"
+ },
+ "iri3091494925": {
+  "hash": "b1dd4fc5b4b9a14b",
+  "key": "pista.crit.3",
   "who": "iri"
  },
  "iri3093566537": {
@@ -1364,6 +1549,11 @@
   "key": "obs.obs_maqueta.2",
   "who": "iri"
  },
+ "iri3104877861": {
+  "hash": "54cd7cd23f8fc7af",
+  "key": "pista.gripau.1",
+  "who": "iri"
+ },
  "iri3104946974": {
   "hash": "f2202dc5897c10ad",
   "key": "dlg.bufo.opt.adeu",
@@ -1374,6 +1564,16 @@
   "key": "sala.centraleta.escolta.5",
   "who": "iri"
  },
+ "iri3113878996": {
+  "hash": "090f6c1a77688034",
+  "key": "pista.cadastre.3",
+  "who": "iri"
+ },
+ "iri3130656615": {
+  "hash": "cfec733e42f7b5f4",
+  "key": "pista.cadastre.2",
+  "who": "iri"
+ },
  "iri3131157369": {
   "hash": "45197564e8630c69",
   "key": "sala.centraleta.corn.res",
@@ -1382,6 +1582,11 @@
  "iri3141811631": {
   "hash": "00e6f726a049e21b",
   "key": "sala.centraleta.escolta.3",
+  "who": "iri"
+ },
+ "iri3147434234": {
+  "hash": "30e103c93d1fac3b",
+  "key": "pista.cadastre.1",
   "who": "iri"
  },
  "iri3151566845": {
@@ -1409,9 +1614,19 @@
   "key": "pj.avia.mira.zz",
   "who": "iri"
  },
+ "iri3258052272": {
+  "hash": "1fae1cbf11cfe292",
+  "key": "pista.bufo.2",
+  "who": "iri"
+ },
  "iri3267791180": {
   "hash": "21e7b97a32cdfcd8",
   "key": "sala.vora_bosc.porta_roure.tancada",
+  "who": "iri"
+ },
+ "iri3308385129": {
+  "hash": "f0ec52a164e29178",
+  "key": "pista.bufo.1",
   "who": "iri"
  },
  "iri3313550696": {
@@ -1534,9 +1749,39 @@
   "key": "obj.llimona.centim",
   "who": "iri"
  },
+ "iri3694936236": {
+  "hash": "2ed2f65a79c9ed7c",
+  "key": "pista.xiulet.1",
+  "who": "iri"
+ },
  "iri3702235885": {
   "hash": "730a8c269ffcfd85",
   "key": "ui.defecte.push",
+  "who": "iri"
+ },
+ "iri3711885558": {
+  "hash": "a1749b3529a09b02",
+  "key": "pista.taula.1",
+  "who": "iri"
+ },
+ "iri3728491474": {
+  "hash": "6b38828ee3582bb5",
+  "key": "pista.xiulet.3",
+  "who": "iri"
+ },
+ "iri3741784720": {
+  "hash": "61180df452019413",
+  "key": "pista.corn.2",
+  "who": "iri"
+ },
+ "iri3745269093": {
+  "hash": "79938cb9438b1e98",
+  "key": "pista.xiulet.2",
+  "who": "iri"
+ },
+ "iri3758562339": {
+  "hash": "49c4d9c8fdd2e37c",
+  "key": "pista.corn.3",
   "who": "iri"
  },
  "iri3759538250": {
@@ -1554,9 +1799,24 @@
   "key": "ui.defecte.open.iri.2",
   "who": "iri"
  },
+ "iri3792117577": {
+  "hash": "30ccc8041ed147f8",
+  "key": "pista.corn.1",
+  "who": "iri"
+ },
+ "iri3794712711": {
+  "hash": "b76dde13a356cc66",
+  "key": "pista.segell.1",
+  "who": "iri"
+ },
  "iri3802218668": {
   "hash": "e859c37431138055",
   "key": "ui.defecte.give",
+  "who": "iri"
+ },
+ "iri3806354228": {
+  "hash": "e9229ac67683bb88",
+  "key": "pista.estaca.1",
   "who": "iri"
  },
  "iri3807948746": {
@@ -1569,14 +1829,29 @@
   "key": "sala.toll_gripaus.intro.2",
   "who": "iri"
  },
+ "iri3811490330": {
+  "hash": "090f6c1a77688034",
+  "key": "pista.segell.2",
+  "who": "iri"
+ },
  "iri3833012863": {
   "hash": "12bd7a2fcc991c79",
   "key": "obj.llibreta.compte",
   "who": "iri"
  },
+ "iri3839909466": {
+  "hash": "eb2852d9dbf5acdb",
+  "key": "pista.estaca.3",
+  "who": "iri"
+ },
  "iri3842710247": {
   "hash": "07ef0dfdbc30d27a",
   "key": "sala.toll_gripaus.intro.4",
+  "who": "iri"
+ },
+ "iri3856687085": {
+  "hash": "39dc46eeec7b283c",
+  "key": "pista.estaca.2",
   "who": "iri"
  },
  "iri3859487866": {
@@ -1674,14 +1949,29 @@
   "key": "sala.centraleta.arrel_morta.encesa",
   "who": "iri"
  },
+ "iri3979035108": {
+  "hash": "7e0a33703aed5c48",
+  "key": "pista.arrel.2",
+  "who": "iri"
+ },
  "iri399136561": {
   "hash": "b27e8bf703deda0d",
   "key": "dlg.espora.opt.melmelada",
   "who": "iri"
  },
+ "iri3995812727": {
+  "hash": "8495148437eb363c",
+  "key": "pista.arrel.3",
+  "who": "iri"
+ },
  "iri4018636764": {
   "hash": "035b5f6d7ecf15cc",
   "key": "dlg.gripau.opt.vaga",
+  "who": "iri"
+ },
+ "iri4029367965": {
+  "hash": "bdc9affaf7f5531a",
+  "key": "pista.arrel.1",
   "who": "iri"
  },
  "iri4041068240": {
@@ -1729,14 +2019,44 @@
   "key": "dlg.bufo.segell.4",
   "who": "iri"
  },
+ "iri4108812852": {
+  "hash": "7cd7690b87571a99",
+  "key": "pista.fora.2",
+  "who": "iri"
+ },
+ "iri4125590471": {
+  "hash": "229135c7c2adbea6",
+  "key": "pista.fora.3",
+  "who": "iri"
+ },
+ "iri4150097372": {
+  "hash": "f8bc71dafbff4c90",
+  "key": "pista.gravar.3",
+  "who": "iri"
+ },
+ "iri4159145709": {
+  "hash": "b1cf03d8869e0fa9",
+  "key": "pista.fora.1",
+  "who": "iri"
+ },
  "iri4161381548": {
   "hash": "0e0882770c48dc28",
   "key": "sala.toll_gripaus.cami.mira",
   "who": "iri"
  },
+ "iri4166874991": {
+  "hash": "2a5159d70cf5993d",
+  "key": "pista.gravar.2",
+  "who": "iri"
+ },
  "iri4178204814": {
   "hash": "4df008ef15176a0e",
   "key": "ui.defecte.push.iri.3",
+  "who": "iri"
+ },
+ "iri4183652610": {
+  "hash": "e2ef18f3ed7778fd",
+  "key": "pista.gravar.1",
   "who": "iri"
  },
  "iri418692100": {
@@ -1757,6 +2077,11 @@
  "iri4281672070": {
   "hash": "5133fc39c2d15a1f",
   "key": "obj.llibreta.compte",
+  "who": "iri"
+ },
+ "iri44458708": {
+  "hash": "6f066b35a80c029f",
+  "key": "pista.campaneta.2",
   "who": "iri"
  },
  "iri456803191": {
@@ -1797,6 +2122,11 @@
  "iri609016972": {
   "hash": "7517e00ac545c756",
   "key": "sala.bosc_obert.taula.7",
+  "who": "iri"
+ },
+ "iri61236327": {
+  "hash": "d8dcc69d398a78da",
+  "key": "pista.campaneta.3",
   "who": "iri"
  },
  "iri616477710": {
@@ -1964,9 +2294,24 @@
   "key": "obj.llibreta.mira.3",
   "who": "iri"
  },
+ "iri94791565": {
+  "hash": "4d43695d6864fdeb",
+  "key": "pista.campaneta.1",
+  "who": "iri"
+ },
+ "iri951666491": {
+  "hash": "09ac3b733cda8595",
+  "key": "pista.saluda.1",
+  "who": "iri"
+ },
  "iri953675151": {
   "hash": "9dec9dfd614e289f",
   "key": "sala.centraleta.xarxa.8",
+  "who": "iri"
+ },
+ "iri968444110": {
+  "hash": "6138feafb120f3bf",
+  "key": "pista.saluda.2",
   "who": "iri"
  },
  "iri975153618": {
@@ -2030,7 +2375,7 @@
   "who": "narrator"
  },
  "narrator1561353193": {
-  "hash": "b90af5f9bf284320",
+  "hash": "40fc8576b8c438ba",
   "key": "sala.campament_fades.empenta.baixa",
   "who": "narrator"
  },
@@ -2215,7 +2560,7 @@
   "who": "narrator"
  },
  "narrator3011353686": {
-  "hash": "19bd41cbbdb934bc",
+  "hash": "086b3d2ed12b7adf",
   "key": "sala.campament_fades.empenta.amb_pot",
   "who": "narrator"
  },
@@ -2300,7 +2645,7 @@
   "who": "narrator"
  },
  "narrator3652024089": {
-  "hash": "3fbe391dc390a53c",
+  "hash": "0673408c4cc1ec10",
   "key": "sala.campament_fades.empenta.1",
   "who": "narrator"
  },
@@ -2315,7 +2660,7 @@
   "who": "narrator"
  },
  "narrator3685579327": {
-  "hash": "8a510038a41c0e58",
+  "hash": "d2c65e2976ab8b7c",
   "key": "sala.campament_fades.empenta.7",
   "who": "narrator"
  },
@@ -3014,6 +3359,11 @@
   "key": "dlg.txell.canal7.3",
   "who": "vet"
  },
+ "vet1388654905": {
+  "hash": "ef9d9a81ce924a43",
+  "key": "sala.zona_mati.camera.parla",
+  "who": "vet"
+ },
  "vet1390224977": {
   "hash": "b42560606ab14f05",
   "key": "pj.espora.mira.vet",
@@ -3537,6 +3887,11 @@
  "vet2929153593": {
   "hash": "bfadc40bbc178a85",
   "key": "sala.campament_fades.flor.agafa",
+  "who": "vet"
+ },
+ "vet2980126888": {
+  "hash": "c365ba984c114985",
+  "key": "ui.pista.cap",
   "who": "vet"
  },
  "vet3025605044": {
