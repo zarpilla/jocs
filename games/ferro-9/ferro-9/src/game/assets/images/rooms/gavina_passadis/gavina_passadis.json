@@ -46,16 +46,16 @@
       "frame": {
         "x": 282,
         "y": 360,
-        "w": 18,
-        "h": 15
+        "w": 20,
+        "h": 14
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 350,
-        "y": 79,
-        "w": 18,
-        "h": 15
+        "y": 70,
+        "w": 20,
+        "h": 14
       },
       "sourceSize": {
         "w": 640,
@@ -65,7 +65,7 @@
     },
     "gavina_passadis 3.aseprite": {
       "frame": {
-        "x": 310,
+        "x": 312,
         "y": 360,
         "w": 1,
         "h": 1
@@ -128,7 +128,7 @@
     },
     "gavina_passadis 6.aseprite": {
       "frame": {
-        "x": 2606,
+        "x": 2440,
         "y": 0,
         "w": 180,
         "h": 64
@@ -149,7 +149,7 @@
     },
     "gavina_passadis 7.aseprite": {
       "frame": {
-        "x": 2786,
+        "x": 2620,
         "y": 0,
         "w": 180,
         "h": 64
@@ -170,7 +170,7 @@
     },
     "gavina_passadis 8.aseprite": {
       "frame": {
-        "x": 1970,
+        "x": 1804,
         "y": 0,
         "w": 318,
         "h": 68
@@ -191,7 +191,7 @@
     },
     "gavina_passadis 9.aseprite": {
       "frame": {
-        "x": 300,
+        "x": 302,
         "y": 360,
         "w": 10,
         "h": 9
@@ -254,7 +254,7 @@
     },
     "gavina_passadis 12.aseprite": {
       "frame": {
-        "x": 2966,
+        "x": 2800,
         "y": 0,
         "w": 180,
         "h": 64
@@ -275,7 +275,7 @@
     },
     "gavina_passadis 13.aseprite": {
       "frame": {
-        "x": 3146,
+        "x": 2980,
         "y": 0,
         "w": 180,
         "h": 64
@@ -296,7 +296,7 @@
     },
     "gavina_passadis 14.aseprite": {
       "frame": {
-        "x": 3326,
+        "x": 3160,
         "y": 0,
         "w": 180,
         "h": 64
@@ -317,7 +317,7 @@
     },
     "gavina_passadis 15.aseprite": {
       "frame": {
-        "x": 310,
+        "x": 312,
         "y": 360,
         "w": 1,
         "h": 1
@@ -338,7 +338,7 @@
     },
     "gavina_passadis 16.aseprite": {
       "frame": {
-        "x": 3686,
+        "x": 3671,
         "y": 0,
         "w": 190,
         "h": 47
@@ -359,7 +359,7 @@
     },
     "gavina_passadis 17.aseprite": {
       "frame": {
-        "x": 3876,
+        "x": 3861,
         "y": 0,
         "w": 190,
         "h": 47
@@ -380,7 +380,7 @@
     },
     "gavina_passadis 18.aseprite": {
       "frame": {
-        "x": 2606,
+        "x": 2440,
         "y": 0,
         "w": 180,
         "h": 64
@@ -401,7 +401,7 @@
     },
     "gavina_passadis 19.aseprite": {
       "frame": {
-        "x": 2786,
+        "x": 2620,
         "y": 0,
         "w": 180,
         "h": 64
@@ -422,7 +422,7 @@
     },
     "gavina_passadis 20.aseprite": {
       "frame": {
-        "x": 3506,
+        "x": 3340,
         "y": 0,
         "w": 180,
         "h": 64
@@ -443,7 +443,7 @@
     },
     "gavina_passadis 21.aseprite": {
       "frame": {
-        "x": 310,
+        "x": 312,
         "y": 360,
         "w": 1,
         "h": 1
@@ -464,18 +464,18 @@
     },
     "gavina_passadis 22.aseprite": {
       "frame": {
-        "x": 1804,
+        "x": 3520,
         "y": 0,
-        "w": 166,
-        "h": 76
+        "w": 151,
+        "h": 64
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 290,
         "y": 21,
-        "w": 166,
-        "h": 76
+        "w": 151,
+        "h": 64
       },
       "sourceSize": {
         "w": 640,
@@ -527,7 +527,7 @@
     },
     "gavina_passadis 25.aseprite": {
       "frame": {
-        "x": 2288,
+        "x": 2122,
         "y": 0,
         "w": 318,
         "h": 68
@@ -548,7 +548,7 @@
     },
     "gavina_passadis 26.aseprite": {
       "frame": {
-        "x": 3326,
+        "x": 3160,
         "y": 0,
         "w": 180,
         "h": 64
@@ -637,7 +637,7 @@
     "image": "gavina_passadis.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4066,
+      "w": 4051,
       "h": 403
     },
     "scale": "1",

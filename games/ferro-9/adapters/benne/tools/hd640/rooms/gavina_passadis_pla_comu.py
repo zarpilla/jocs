@@ -346,7 +346,7 @@ def corridor_light(x, y):
 
 LIGHT = CachedLight(vignette=(93, 45), floor_fade=(264, 45))
 LIGHT.point(139, 35, r=173, k=2.6, squash=0.9, down=True)            # aplic sobre la cel·la 9
-LIGHT.point(499, 40, r=160, k=2.3, squash=1.0, down=True)            # tira sobre el cartell
+LIGHT.point(499, 30, r=160, k=2.3, squash=1.0, down=True)            # tira sobre el cartell
 LIGHT.add(pool(139, 237, 147, 40, 2.4))
 LIGHT.add(pool(499, 237, 133, 37, 2.1))
 LIGHT.add(pool(333, 208, 85, 35, 1.2))                               # el passadís aboca llum al vestíbul
@@ -685,14 +685,15 @@ def bg(cv, t=0.0, arrencat=False):
 
     # ─── Paret dreta: cartell, càmera, porta de la Sala de la Memòria ─────
     # tira de llum sobre el cartell
-    cv.rect(461, 37, 536, 42, HULL, lambda x, y: 2.4 if y == 37 else 1.6)
-    cv.hline(464, 533, 41, LAMPW, 1.4 if strip_off else 3.8, 0)
-    cv.hline(464, 533, 42, LAMPW, 1.0 if strip_off else 2.6, 0)
+    cv.rect(461, 27, 536, 32, HULL, lambda x, y: 2.4 if y == 27 else 1.6)
+    cv.hline(464, 533, 31, LAMPW, 1.4 if strip_off else 3.8, 0)
+    cv.hline(464, 533, 32, LAMPW, 1.0 if strip_off else 2.6, 0)
     if not strip_off:
-        cv.glow(499, 44, 53, (200, 235, 255), 0.35)
+        cv.glow(499, 34, 53, (200, 235, 255), 0.35)
 
-    # Cartell del reciclatge (432..568 × 50..103): somriure, fletxa cap al fons
-    PX0, PY0, PX1, PY1 = 436, 52, 561, 99
+    # Cartell del reciclatge (432..547 × 36..88): somriure, fletxa cap al fons. Més amunt i més estret que abans, perquè
+    # el rètol de la Sala de la Memòria hi càpiga a sota amb marc propi i no toqui la càmera.
+    PX0, PY0, PX1, PY1 = 436, 38, 543, 85
     # Amb `arrencat` (decorat), la Vet n'ha arrencat un tros del marge: el cantó de baix a l'esquerra, amb l'esquinç
     # en ziga-zaga, i la cinta d'aquell cantó se n'ha anat amb el paper.
     def tros(x, y):
@@ -714,16 +715,16 @@ def bg(cv, t=0.0, arrencat=False):
             cv.put(x, y, SIGN, lvl, 0.4)
     cv.rect(PX0, PY0, PX1, PY0 + 10, CORPG, lambda x, y: 2.5 + (0.6 if y == PY0 else 0) - (0.5 if y == PY0 + 10 else 0), 0)
     text(cv, PX0 + 8, PY0 + 2, 'RECICLATGE', SIGN, 4.5, 0.0)
-    smile(cv, 475, 79, 13)
+    smile(cv, 470, 65, 13)
     # fletxa gran cap a l'esquerra (cap al passadís)
-    for y in range(73, 86):
-        k = abs(y - 79)
-        for x in range(499 + round(k * 1.7), 524):
-            cv.put(x, y, CORPG, 2.5 + (1 if y < 77 else 0) - (0.6 if y == 85 else 0), 0)
-    for y in range(75, 84):
-        for x in range(520, 552):
-            cv.put(x, y, CORPG, 2.5 + (1 if y < 78 else 0) - (0.6 if y == 83 else 0), 0)
-    text(cv, 507, 89, 'PER AQUÍ', HULL, 1.4, 0.2)
+    for y in range(59, 72):
+        k = abs(y - 65)
+        for x in range(491 + round(k * 1.7), 516):
+            cv.put(x, y, CORPG, 2.5 + (1 if y < 63 else 0) - (0.6 if y == 71 else 0), 0)
+    for y in range(61, 70):
+        for x in range(512, 536):
+            cv.put(x, y, CORPG, 2.5 + (1 if y < 64 else 0) - (0.6 if y == 69 else 0), 0)
+    text(cv, 496, 75, 'PER AQUÍ', HULL, 1.4, 0.2)
     # les puntes de cinta adhesiva
     for x, y in ((PX0 - 1, PY0 - 1), (PX1 - 3, PY0 - 1), (PX0 - 1, PY1 - 3), (PX1 - 3, PY1 - 3)):
         if tros(x + 2, y + 2):
@@ -773,7 +774,7 @@ def bg(cv, t=0.0, arrencat=False):
 
     # Porta de la Sala de la Memòria (472..539 × 101..205): porta enretirada amb rètol
     MX0, MX1, MT = 480, 529, 127
-    cv.rect(472, 103, 537, WALL_B, HULL, lambda x, y: 3.6 if x <= 475 else (1.2 if x >= 534 else 2.8))
+    cv.rect(472, 117, 537, WALL_B, HULL, lambda x, y: 3.6 if x <= 475 else (1.2 if x >= 534 else 2.8))
     cv.rect(476, 124, 533, WALL_B, HULL, 0.5, 0.4)                              # bruna de l'obertura
     for x in range(476, 480):                                                  # brancal il·luminat (perspectiva)
         cv.vline(x, 124, WALL_B, HULL, 2.6 - (x - 476) * 0.35)
@@ -793,13 +794,17 @@ def bg(cv, t=0.0, arrencat=False):
     for hx in (501, 510):                                                     # nanses empotrades
         cv.rect(hx, 170, hx + 1, 182, PANEL, 1.2, 0.6)
     # rètol lluminós «SALA DE LA MEMÒRIA» amb el somriure
-    cv.rect(475, 103, 535, 125, SIGN, 4.2, 0.2)
-    cv.hline(475, 535, 103, SIGN, 5.0, 0)
-    cv.hline(475, 535, 125, SIGN, 2.6, 0)
-    text(cv, 479, 105, 'SALA DE LA', CORPG, 1.6, 0.0)
-    text(cv, 479, 116, 'MEMÒRIA', CORPG, 1.6, 0.0)
-    smile(cv, 526, 119, 4, lit=0, lvl=3.8)
-    cv.glow(504, 114, 27, (220, 250, 240), 0.3)
+    # (caixa de llum pròpia, penjada a la paret per sobre del marc de la porta, amb dos suports)
+    for sx in (482, 527):
+        cv.rect(sx, 115, sx + 1, 117, HULL, 1.2)
+    cv.rect(473, 88, 537, 115, HULL, lambda x, y: 1.0 if y == 115 or x == 537 else 2.0)
+    cv.rect(475, 90, 535, 113, SIGN, 4.2, 0.2)
+    cv.hline(475, 535, 90, SIGN, 5.0, 0)
+    cv.hline(475, 535, 113, SIGN, 2.6, 0)
+    text(cv, 479, 92, 'SALA DE LA', CORPG, 1.6, 0.0)
+    text(cv, 479, 103, 'MEMÒRIA', CORPG, 1.6, 0.0)
+    smile(cv, 526, 107, 4, lit=0, lvl=3.8)
+    cv.glow(504, 102, 27, (220, 250, 240), 0.3)
     # control d'accés (tancat: vermell)
     cv.rect(541, 149, 549, 165, HULL, lambda x, y: 1.0 if x == 549 else (4.2 if x == 541 else 3.2))
     cv.rect(543, 153, 547, 157, ALARM, lambda x, y: 3.8 if y < 155 else 3.2, 0)
