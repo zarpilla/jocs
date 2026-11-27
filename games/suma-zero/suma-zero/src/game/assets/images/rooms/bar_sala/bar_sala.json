@@ -23,8 +23,8 @@
     },
     "bar_sala 1.aseprite": {
       "frame": {
-        "x": 2904,
-        "y": 574,
+        "x": 2730,
+        "y": 573,
         "w": 18,
         "h": 12
       },
@@ -44,8 +44,8 @@
     },
     "bar_sala 2.aseprite": {
       "frame": {
-        "x": 2922,
-        "y": 574,
+        "x": 2748,
+        "y": 573,
         "w": 20,
         "h": 5
       },
@@ -65,8 +65,8 @@
     },
     "bar_sala 3.aseprite": {
       "frame": {
-        "x": 2841,
-        "y": 574,
+        "x": 2667,
+        "y": 573,
         "w": 63,
         "h": 40
       },
@@ -86,8 +86,8 @@
     },
     "bar_sala 4.aseprite": {
       "frame": {
-        "x": 2463,
-        "y": 574,
+        "x": 2289,
+        "y": 573,
         "w": 68,
         "h": 98
       },
@@ -107,8 +107,8 @@
     },
     "bar_sala 5.aseprite": {
       "frame": {
-        "x": 1714,
-        "y": 574,
+        "x": 2277,
+        "y": 360,
         "w": 185,
         "h": 212
       },
@@ -128,18 +128,18 @@
     },
     "bar_sala 6.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 2749,
         "y": 0,
         "w": 575,
-        "h": 214
+        "h": 213
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 56,
-        "y": 0,
+        "y": 1,
         "w": 575,
-        "h": 214
+        "h": 213
       },
       "sourceSize": {
         "w": 640,
@@ -149,18 +149,18 @@
     },
     "bar_sala 7.aseprite": {
       "frame": {
-        "x": 1855,
+        "x": 3324,
         "y": 0,
         "w": 564,
-        "h": 214
+        "h": 213
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 67,
-        "y": 0,
+        "y": 1,
         "w": 564,
-        "h": 214
+        "h": 213
       },
       "sourceSize": {
         "w": 640,
@@ -170,18 +170,18 @@
     },
     "bar_sala 8.aseprite": {
       "frame": {
-        "x": 2419,
-        "y": 0,
+        "x": 2462,
+        "y": 360,
         "w": 575,
-        "h": 214
+        "h": 212
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 56,
-        "y": 0,
+        "y": 2,
         "w": 575,
-        "h": 214
+        "h": 212
       },
       "sourceSize": {
         "w": 640,
@@ -191,18 +191,18 @@
     },
     "bar_sala 9.aseprite": {
       "frame": {
-        "x": 2994,
-        "y": 0,
+        "x": 0,
+        "y": 360,
         "w": 575,
-        "h": 214
+        "h": 213
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 56,
-        "y": 0,
+        "y": 1,
         "w": 575,
-        "h": 214
+        "h": 213
       },
       "sourceSize": {
         "w": 640,
@@ -212,8 +212,8 @@
     },
     "bar_sala 10.aseprite": {
       "frame": {
-        "x": 1899,
-        "y": 574,
+        "x": 3037,
+        "y": 360,
         "w": 564,
         "h": 212
       },
@@ -233,8 +233,8 @@
     },
     "bar_sala 11.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 360,
+        "x": 1280,
+        "y": 0,
         "w": 564,
         "h": 214
       },
@@ -254,18 +254,18 @@
     },
     "bar_sala 12.aseprite": {
       "frame": {
-        "x": 564,
-        "y": 360,
+        "x": 0,
+        "y": 573,
         "w": 575,
-        "h": 214
+        "h": 212
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 56,
-        "y": 0,
+        "y": 2,
         "w": 575,
-        "h": 214
+        "h": 212
       },
       "sourceSize": {
         "w": 640,
@@ -275,18 +275,18 @@
     },
     "bar_sala 13.aseprite": {
       "frame": {
-        "x": 1139,
-        "y": 360,
+        "x": 575,
+        "y": 573,
         "w": 564,
-        "h": 214
+        "h": 212
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 67,
-        "y": 0,
+        "y": 2,
         "w": 564,
-        "h": 214
+        "h": 212
       },
       "sourceSize": {
         "w": 640,
@@ -296,18 +296,18 @@
     },
     "bar_sala 14.aseprite": {
       "frame": {
-        "x": 1703,
-        "y": 360,
+        "x": 1139,
+        "y": 573,
         "w": 575,
-        "h": 214
+        "h": 212
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 56,
-        "y": 0,
+        "y": 2,
         "w": 575,
-        "h": 214
+        "h": 212
       },
       "sourceSize": {
         "w": 640,
@@ -317,8 +317,8 @@
     },
     "bar_sala 15.aseprite": {
       "frame": {
-        "x": 2278,
-        "y": 360,
+        "x": 1844,
+        "y": 0,
         "w": 575,
         "h": 214
       },
@@ -338,18 +338,18 @@
     },
     "bar_sala 16.aseprite": {
       "frame": {
-        "x": 2853,
+        "x": 575,
         "y": 360,
         "w": 563,
-        "h": 214
+        "h": 213
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 68,
-        "y": 0,
+        "y": 1,
         "w": 563,
-        "h": 214
+        "h": 213
       },
       "sourceSize": {
         "w": 640,
@@ -359,17 +359,17 @@
     },
     "bar_sala 17.aseprite": {
       "frame": {
-        "x": 3416,
-        "y": 360,
-        "w": 332,
+        "x": 2419,
+        "y": 0,
+        "w": 330,
         "h": 214
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 299,
+        "x": 301,
         "y": 0,
-        "w": 332,
+        "w": 330,
         "h": 214
       },
       "sourceSize": {
@@ -380,18 +380,18 @@
     },
     "bar_sala 18.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 574,
+        "x": 1714,
+        "y": 573,
         "w": 575,
-        "h": 214
+        "h": 212
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 56,
-        "y": 0,
+        "y": 2,
         "w": 575,
-        "h": 214
+        "h": 212
       },
       "sourceSize": {
         "w": 640,
@@ -401,18 +401,18 @@
     },
     "bar_sala 19.aseprite": {
       "frame": {
-        "x": 575,
-        "y": 574,
+        "x": 1138,
+        "y": 360,
         "w": 564,
-        "h": 214
+        "h": 213
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 67,
-        "y": 0,
+        "y": 1,
         "w": 564,
-        "h": 214
+        "h": 213
       },
       "sourceSize": {
         "w": 640,
@@ -422,18 +422,18 @@
     },
     "bar_sala 20.aseprite": {
       "frame": {
-        "x": 1139,
-        "y": 574,
+        "x": 1702,
+        "y": 360,
         "w": 575,
-        "h": 214
+        "h": 213
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 56,
-        "y": 0,
+        "y": 1,
         "w": 575,
-        "h": 214
+        "h": 213
       },
       "sourceSize": {
         "w": 640,
@@ -443,8 +443,8 @@
     },
     "bar_sala 21.aseprite": {
       "frame": {
-        "x": 2626,
-        "y": 574,
+        "x": 2452,
+        "y": 573,
         "w": 47,
         "h": 81
       },
@@ -464,8 +464,8 @@
     },
     "bar_sala 22.aseprite": {
       "frame": {
-        "x": 2580,
-        "y": 574,
+        "x": 2406,
+        "y": 573,
         "w": 46,
         "h": 85
       },
@@ -485,8 +485,8 @@
     },
     "bar_sala 23.aseprite": {
       "frame": {
-        "x": 2531,
-        "y": 574,
+        "x": 2357,
+        "y": 573,
         "w": 49,
         "h": 96
       },
@@ -506,8 +506,8 @@
     },
     "bar_sala 24.aseprite": {
       "frame": {
-        "x": 2739,
-        "y": 574,
+        "x": 2565,
+        "y": 573,
         "w": 50,
         "h": 80
       },
@@ -527,8 +527,8 @@
     },
     "bar_sala 25.aseprite": {
       "frame": {
-        "x": 2789,
-        "y": 574,
+        "x": 2615,
+        "y": 573,
         "w": 52,
         "h": 77
       },
@@ -548,8 +548,8 @@
     },
     "bar_sala 26.aseprite": {
       "frame": {
-        "x": 2673,
-        "y": 574,
+        "x": 2499,
+        "y": 573,
         "w": 66,
         "h": 81
       },
@@ -595,8 +595,8 @@
     "image": "bar_sala.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3748,
-      "h": 788
+      "w": 3888,
+      "h": 785
     },
     "scale": "1",
     "frameTags": [

@@ -55,11 +55,19 @@ def fast_diff(frame, base, box=None):
     return out
 
 
+# Al rètol, a ×2, la V de la font petita (tres de punta) es confon amb una U: aquí la punta és més marcada.
+PAINT_GLYPHS = {'V': ['10001', '10001', '01010', '01010', '00100']}
+
+
+def _paint_glyph(ch):
+    return (PAINT_GLYPHS[ch], 0) if ch in PAINT_GLYPHS else _glyph(ch)
+
+
 def paint_text(cv, s, x, y, ramp, lvl, k=2, seed=0, lit=1.0):
     """La font petita, pintada amb pinzell a ×k: cada punt és un toc de k×k amb la vora una mica irregular."""
     cx = x
     for ch in s:
-        g, top = _glyph(ch)
+        g, top = _paint_glyph(ch)
         for j, row in enumerate(g, start=top):
             for i, bit in enumerate(row):
                 if bit != '1':
@@ -70,11 +78,11 @@ def paint_text(cv, s, x, y, ramp, lvl, k=2, seed=0, lit=1.0):
                             continue                           # on el pinzell no ha carregat prou
                         cv.put(cx + i * k + dx, y + j * k + dy, ramp, lvl + (0.5 if dy == 0 else 0), lit)
         cx += (len(g[0]) + 1) * k
-    return (text_width(s) + 1) * k - k
+    return paint_width(s, k)
 
 
 def paint_width(s, k=2):
-    return (text_width(s) + 1) * k - k
+    return (sum(len(_paint_glyph(ch)[0][0]) + 1 for ch in s) - 1 + 1) * k - k
 
 
 # ─── Paret i terra ──────────────────────────────────────────────────────────
@@ -206,13 +214,15 @@ def sign(cv):
         cv.put(x + 1, y + 2, WALLY, 0.6)                              # el rovell que regalima del clau
         cv.put(x + 1, y + 3, WALLY, 1.0)
     l1, l2 = 'AVUI NO ES FIA,', 'DEMÀ SÍ'
-    paint_text(cv, l1, (x0 + x1 - paint_width(l1)) // 2, y0 + 5, INKP, 2.6, seed=1)
+    paint_text(cv, l1, (x0 + x1 - paint_width(l1)) // 2, y0 + 3, INKP, 2.6, seed=1)
+    # Els accents de la segona línia (À, Í) queden ben separats de la primera: si no, el de l'À, just sota l'«ES»,
+    # feia llegir «ÉS FIA».
     l2x = (x0 + x1 - paint_width(l2)) // 2 + 8                        # una mica desplaçat: pintat a corre-cuita
-    paint_text(cv, l2, l2x, y0 + 23, INKP, 2.0, seed=2)
+    paint_text(cv, l2, l2x, y0 + 24, INKP, 2.0, seed=2)
     for t in range(2):                                                # subratllat amb ràbia (dues passades)
-        cv.line(l2x - 3, y0 + 34 + t, l2x + paint_width(l2) + 3, y0 + 33 - t, INKP, 2.4 - t * 0.6)
-    cv.put(l2x + paint_width(l2) + 6, y0 + 34, INKP, 2.0)            # una gota de pintura
-    cv.put(l2x + paint_width(l2) + 6, y0 + 35, INKP, 1.6)
+        cv.line(l2x - 3, y0 + 35 + t, l2x + paint_width(l2) + 3, y0 + 34 - t, INKP, 2.4 - t * 0.6)
+    cv.put(l2x + paint_width(l2) + 6, y0 + 35, INKP, 2.0)            # una gota de pintura
+    cv.put(l2x + paint_width(l2) + 6, y0 + 36, INKP, 1.6)
     # taques de rovell als cantons
     for (x, y) in ((x0 + 3, y1 - 3), (x1 - 4, y1 - 4), (x1 - 3, y0 + 1)):
         cv.disc(x, y, 2.6, 2, [(40, 20, 8), (90, 50, 20), (130, 80, 30)], lambda nx, ny: 1.0 + (nx * nx + ny * ny) * 1.4)
