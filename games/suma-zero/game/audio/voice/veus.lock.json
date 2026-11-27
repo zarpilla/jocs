@@ -199,6 +199,11 @@
   "key": "dlg.ballester.seguretat2",
   "who": "ballester"
  },
+ "ballester4142664449": {
+  "hash": "9898eefbaa723066",
+  "key": "sala.bcmu_avantdespatx.ballester.parla",
+  "who": "ballester"
+ },
  "ballester4177220220": {
   "hash": "b7c5bbb94976adcb",
   "key": "dlg.ballester.serie_sync",
@@ -514,13 +519,28 @@
   "key": "dlg.empleat.hola",
   "who": "empleat"
  },
+ "empleat1809896554": {
+  "hash": "51bf6e6e1fa72d95",
+  "key": "dlg.empleat.agenda",
+  "who": "empleat"
+ },
+ "empleat190556052": {
+  "hash": "2dc270ac01ca868e",
+  "key": "dlg.empleat.oblit",
+  "who": "empleat"
+ },
+ "empleat2588725581": {
+  "hash": "2414db8da232800b",
+  "key": "dlg.empleat.papers",
+  "who": "empleat"
+ },
  "empleat294232904": {
   "hash": "f76ace409b6047db",
   "key": "dlg.empleat.maleti",
   "who": "empleat"
  },
  "empleat310258295": {
-  "hash": "02c7f6cadcd07287",
+  "hash": "29186207b2db105b",
   "key": "dlg.empleat.llimona1",
   "who": "empleat"
  },
@@ -2834,6 +2854,11 @@
   "key": "dlg.llibre.ok1",
   "who": "narrator"
  },
+ "narrator1063081467": {
+  "hash": "96f7ca0dd4e72a98",
+  "key": "dlg.despatx.gos_bateria",
+  "who": "narrator"
+ },
  "narrator1085547038": {
   "hash": "95ed6111c61e74ed",
   "key": "sala.bcmu_moll.ascensor.puja",
@@ -3244,6 +3269,11 @@
   "key": "sala.bar_sala.intro1",
   "who": "narrator"
  },
+ "narrator2924769339": {
+  "hash": "e31c6fd135726699",
+  "key": "dlg.llibre.mal_any",
+  "who": "narrator"
+ },
  "narrator293055667": {
   "hash": "c8fdb307ab1dae9b",
   "key": "final.credits2",
@@ -3262,6 +3292,11 @@
  "narrator299622949": {
   "hash": "1129069e927ee20c",
   "key": "sala.bar_sala.fet3",
+  "who": "narrator"
+ },
+ "narrator3001912071": {
+  "hash": "7e97a691c0abe5bc",
+  "key": "dlg.aturada.silenci",
   "who": "narrator"
  },
  "narrator3032857729": {
@@ -3295,7 +3330,7 @@
   "who": "narrator"
  },
  "narrator3156120340": {
-  "hash": "9db758318b74d3ed",
+  "hash": "6b2ced6d51b0d831",
   "key": "dlg.rius.arreglar3",
   "who": "narrator"
  },
@@ -3435,7 +3470,7 @@
   "who": "narrator"
  },
  "narrator509021859": {
-  "hash": "be363efd08809ffe",
+  "hash": "d872beef8884cf2a",
   "key": "dlg.llibre.pista",
   "who": "narrator"
  },
@@ -3450,7 +3485,7 @@
   "who": "narrator"
  },
  "narrator564786669": {
-  "hash": "2364776076d1bcbe",
+  "hash": "715f3a07646dacce",
   "key": "sala.pis_estudi.mossega.narr",
   "who": "narrator"
  },
@@ -3885,7 +3920,7 @@
   "who": "rius"
  },
  "rius4046133462": {
-  "hash": "2826b9d8766cc1c4",
+  "hash": "b14d734e7fdece7e",
   "key": "dlg.rius.mobil2",
   "who": "rius"
  },
@@ -3897,6 +3932,11 @@
  "rius4282194254": {
   "hash": "4f026cf14d5e3ee4",
   "key": "final.rius",
+  "who": "rius"
+ },
+ "rius818102672": {
+  "hash": "466c2fbc6c2f5ad2",
+  "key": "dlg.rius.sense_xarxa2",
   "who": "rius"
  },
  "soler1077598466": {
@@ -3980,7 +4020,7 @@
   "who": "tomas"
  },
  "tomas1551749283": {
-  "hash": "a1737d4ce1522d30",
+  "hash": "c3364a630f2bf84d",
   "key": "dlg.tomas.wifi",
   "who": "tomas"
  },
@@ -5240,7 +5280,7 @@
   "who": "vet"
  },
  "vet3110701708": {
-  "hash": "b6f3d0b483fb8e24",
+  "hash": "85d479e030199ba2",
   "key": "dlg.pons.escoltar1",
   "who": "vet"
  },
