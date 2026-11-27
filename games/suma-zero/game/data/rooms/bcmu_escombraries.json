@@ -1049,12 +1049,44 @@
             {
               "who": "narrator",
               "text": "sala.bcmu_escombraries.conducte.neta1",
-              "sound": "robot_neteja"
+              "sound": "robot_neteja",
+              "stage": [
+                {
+                  "who": "neta",
+                  "at": "porta",
+                  "visible": true
+                },
+                {
+                  "who": "neta",
+                  "walk": "bosses"
+                },
+                {
+                  "who": "neta",
+                  "walk": {
+                    "x": 272,
+                    "y": 190
+                  }
+                },
+                {
+                  "who": "neta",
+                  "face": "L"
+                }
+              ]
             },
             {
               "who": "neta",
               "text": "sala.bcmu_escombraries.conducte.neta2",
-              "sound": "robot_atura"
+              "sound": "robot_atura",
+              "stageAfter": [
+                {
+                  "who": "neta",
+                  "walk": "porta"
+                },
+                {
+                  "who": "neta",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
