@@ -236,13 +236,14 @@ export function esSortida(narrative: Narrative, target: InteractionTarget, room?
 
 /**
  * Fer servir un objecte amb una cosa: si és un personatge i hi ha una interacció de donar-l'hi, donar; si no,
- * fer-lo servir. (Sense barra ja no es tria entre «Dona» i «Usa».)
+ * fer-lo servir. (Sense barra ja no es tria entre «Dona» i «Usa».) Si no hi ha res per a cap dels dos, a un
+ * personatge se li dona (la frase diu «Dona X a la Y» i respon el `ui.defecte.give`), i amb una cosa es fa servir.
  */
 export function verbAmbObjecte(narrative: Narrative, target: InteractionTarget, item: string, room?: string): string {
   if (target.kind === 'character' && narrative.peek({ verb: 'give', target, item, room })) return 'give';
   if (narrative.peek({ verb: 'use', target, item, room })) return 'use';
   if (narrative.peek({ verb: 'give', target, item, room })) return 'give';
-  return 'use';
+  return target.kind === 'character' ? 'give' : 'use';
 }
 
 /**

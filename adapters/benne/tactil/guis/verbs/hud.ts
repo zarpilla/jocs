@@ -18,9 +18,10 @@
 import { game, player, pointer } from '@benne/script';
 import { guis, verbs } from '@game';
 import {
-  botoEsPista, botoPistaMixt, clickablePrompt, isClickableCutscene, narrative, switchButtonWanted, targetFromBenne,
+  botoEsPista, botoPistaMixt, clickablePrompt, fromBenne, isClickableCutscene, narrative, switchButtonWanted,
+  targetFromBenne,
 } from '../../narrative/narrative';
-import { esSortida, queFaElToc } from '../../narrative/accions';
+import { esSortida, queFaElToc, verbAmbObjecte } from '../../narrative/accions';
 import { esDit, openMenu } from '../../narrative/tactil';
 import { esquerreMira } from '../../narrative/preferencies';
 import {
@@ -160,7 +161,31 @@ function contreuVerb(verb: string, nom: string): [string, string] {
 }
 
 /**
- * La frase: el nom de la cosa; amb un objecte a la mà, «Usa la clau amb la porta». A la carta de navegació, sense res a
+ * El nom d'un personatge amb l'article, per a la frase (`ui.amb_article.<personatge>` del joc: «la Vet», «en Tomàs»);
+ * si el joc no el té, el nom tal com és (`nom`).
+ */
+function ambArticle(id: string, nom: string): string {
+  const clau = `ui.amb_article.${id}`;
+  const i18n = narrative.i18n;
+  return i18n.has(clau) || i18n.has(clau, i18n.defaultLocale) ? narrative.t(clau) : nom;
+}
+
+/** Amb un objecte a la mà: «Usa la clau amb la porta», o, sobre un personatge, «Dona la clau a la Vet» (tasca 226). */
+function fraseObjecte(item: { id: string; name: string }, sobre: string): string {
+  const hover = pointer.hover;
+  let verb = verbs.use;
+  if (sobre && hover?.kind && hover.id && hover.kind !== 'item') {
+    const target = targetFromBenne(hover.kind, hover.id);
+    if (target.kind === 'character') {
+      sobre = ambArticle(target.id, sobre);
+      if (verbAmbObjecte(narrative, target, fromBenne('items', item.id)) === 'give') verb = verbs.give;
+    }
+  }
+  return contreu(`${verb.label} ${item.name} ${verb.preposition ?? ''} ${sobre}`.trim());
+}
+
+/**
+ * La frase: el nom de la cosa; amb un objecte a la mà, «Usa la clau amb la porta» (o «Dona la clau a la Vet»). A la carta de navegació, sense res a
  * sota, el text d'entrada («On anem?»).
  *
  * Si el clic (o el toc) fa una acció, la frase la diu abans del nom: «Obre el passaplats», amb el verb més apagat (és un
@@ -174,9 +199,11 @@ export function refreshLine() {
   // Amb el menú d'accions obert, el nom ja hi és (el títol del menú, que pot caure just a la línia de la frase).
   let text = openMenu() ? ''
     : item
-    ? contreu(`${verbs.use.label} ${item.name} ${verbs.use.preposition ?? ''} ${sobre}`.trim())
+    ? fraseObjecte(item, sobre)
     : sobre || (cartaOberta() ? clickablePrompt() : '');
   let verb = !item && sobre && text ? verbDelClic() : '';
+  // «Parla amb la Vet»: amb un verb, el personatge porta l'article (si el joc el té)
+  if (verb && hover?.kind === 'character' && hover.id) text = ambArticle(targetFromBenne('character', hover.id).id, text);
   if (verb) [verb, text] = contreuVerb(verb, text);
   if (verbLineText.text !== text) verbLineText.text = text;
   if (verbLineVerb.text !== verb) verbLineVerb.text = verb;
