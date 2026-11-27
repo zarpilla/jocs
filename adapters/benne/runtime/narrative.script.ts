@@ -588,12 +588,30 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
   if (step.ended) endDialog(dialog)
 }
 
+/** Una pista demanada enmig d'una conversa, que es dirà quan acabi. */
+let hintWaiting = false
+
 /**
  * Botó o verb de "pista": cada vegada una mica més explícita. Si la pista apunta a coses de la sala (`targets`), hi
  * surten uns filaments que hi porten (la lupa de L'Última Arrel); si la diu una altra (`who`, p. ex. la germana pel
  * walkie), la diu ella.
  */
 export function sayHint() {
+  // Enmig d'una línia o d'una conversa, la pista espera que acabi: dita alhora, s'hi barrejava i l'encallava.
+  if (game.isBusy) {
+    if (!hintWaiting) {
+      hintWaiting = true
+      const tick = () => {
+        if (game.isBusy) window.setTimeout(tick, 250)
+        else {
+          hintWaiting = false
+          sayHint()
+        }
+      }
+      window.setTimeout(tick, 250)
+    }
+    return
+  }
   const hint = narrative.requestHint()
   const text = hint ? hint.text : narrative.noHintText()
   const key = hint ? hint.key : narrative.noHintKey()

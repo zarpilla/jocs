@@ -143,6 +143,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
 
   // ── GUI ─────────────────────────────────────────────────────────────────
   joc.guis?.(gameDir);
+  pausaMenus(gameDir);
   if (joc.tactil) opcionsTactils(gameDir);
   filaVolumVeus(gameDir);  // després d'opcionsTactils, que esborra el que hi ha sota la seva marca
   if (addSwitchButton(gameDir)) report.needsArt.push('guis/verbs');
@@ -298,6 +299,26 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   writeJson(manifestPath, manifest);
 
   return report;
+}
+
+// ─── Menús que aturen el joc ────────────────────────────────────────────────
+
+/**
+ * El menú del joc i el que s'hi obre (desar, carregar, opcions, historial) aturen el joc mentre són oberts
+ * (`pauseGame`): la línia que s'estava dient espera, i el quadre de text no es pinta per sobre del menú.
+ */
+const MENUS_QUE_ATUREN = ['game-menu', 'save-menu', 'load-menu', 'settings-menu', 'historial'];
+
+function pausaMenus(gameDir: string) {
+  for (const gui of MENUS_QUE_ATUREN) {
+    const path = join(gameDir, 'guis', gui, `${gui}.gui.json`);
+    if (!existsSync(path)) continue;
+    const def = readJson(path);
+    if (def.modal === true && def.pauseGame === true) continue;
+    def.modal = true;
+    def.pauseGame = true;
+    writeJson(path, def);
+  }
 }
 
 // ─── Botó «Canvia» a la barra de verbs ──────────────────────────────────────
