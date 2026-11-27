@@ -14,9 +14,7 @@ const rect = (x0: number, y0: number, x1: number, y1: number) =>
   [{ x: x0, y: y0 }, { x: x1, y: y0 }, { x: x1, y: y1 }, { x: x0, y: y1 }];
 
 // Pendents, amb la tasca que les arregla.
-const PENDENTS: Record<string, string> = {
-  'ferro-9/gavina_hangar': 'tasca 208',
-};
+const PENDENTS: Record<string, string> = {};
 
 describe('props clicables tapats per un punt', () => {
   it('detecta un prop tapat', () => {
