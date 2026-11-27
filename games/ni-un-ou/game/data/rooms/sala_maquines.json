@@ -649,6 +649,14 @@
               "sound": "bomba",
               "stage": [
                 {
+                  "prop": "terra_sec",
+                  "visible": true,
+                  "fade": 4
+                },
+                {
+                  "shake": 0.6
+                },
+                {
                   "who": "bastida",
                   "visible": false
                 }
@@ -658,6 +666,14 @@
               "who": "narrator",
               "text": "sala.sala_maquines.quadre.16",
               "stage": [
+                {
+                  "prop": "aigua",
+                  "visible": false
+                },
+                {
+                  "prop": "terra_sec",
+                  "visible": false
+                },
                 {
                   "who": "bastida",
                   "at": {
@@ -1299,6 +1315,13 @@
             "is": false
           }
         ]
+      }
+    },
+    "terra_sec": {
+      "visibleIf": {
+        "var": "escena",
+        "op": "==",
+        "value": -1
       }
     },
     "valvula_tancada": {

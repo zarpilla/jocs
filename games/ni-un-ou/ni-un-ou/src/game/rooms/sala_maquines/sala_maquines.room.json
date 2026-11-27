@@ -885,6 +885,17 @@
       },
       "zIndex": 28,
       "baseline": 999
+    },
+    {
+      "id": "terra_sec",
+      "tag": "terra_sec",
+      "animations": {
+        "terra_sec": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

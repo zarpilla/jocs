@@ -770,7 +770,20 @@ def fosc(cv):
                 P[X, Y] = (255, 80 + int(60 * hr(X, Y)), 60, 255)
 
 
-PROPS = {'aigua': aigua, 'valvula_tancada': valvula_tancada, 'brida': brida, 'fosc': fosc,
+def terra_sec(cv):
+    """El terra sec, només on hi ha l'aigua: damunt de l'aigua, es fon de transparent a opac mentre la bomba la buida
+    (tasca 240), i llavors s'amaguen tots dos."""
+    img, e = _base()
+    terra = {i for i, sid in enumerate(e.ids) if sid in AIGUA}
+    src, P = img.load(), cv.img.load()
+    for Y in range(60, BOTTOM + 1):
+        for X in range(W):
+            if e.amo[Y * W + X] in terra:
+                P[X, Y] = src[X, Y][:3] + (255,)
+    cv.P = cv.img.load()
+
+
+PROPS = {'aigua': aigua, 'terra_sec': terra_sec, 'valvula_tancada': valvula_tancada, 'brida': brida, 'fosc': fosc,
          'sentina_oberta': _decorat('sentina_oberta')}
 
 
