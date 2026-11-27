@@ -438,6 +438,25 @@
             ],
             "pause": 2.5
           }
+        ],
+        "place": [
+          {
+            "if": {
+              "all": [
+                {
+                  "flag": "rele_posat"
+                },
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 9
+                }
+              ]
+            },
+            "room": "sala_maquines",
+            "x": 385,
+            "y": 184
+          }
         ]
       },
       "marcel": {
@@ -2726,7 +2745,25 @@
                         "inRoom": "coberta_proa",
                         "who": "vet"
                       }
-                    }
+                    },
+                    "stage": [
+                      {
+                        "who": "vet",
+                        "at": "porta",
+                        "visible": true
+                      },
+                      {
+                        "who": "vet",
+                        "walk": {
+                          "x": 352,
+                          "y": 226
+                        }
+                      },
+                      {
+                        "who": "vet",
+                        "face": "R"
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -3266,7 +3303,21 @@
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.cuina.armari.1"
+                    "text": "sala.cuina.armari.1",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "walk": "armari"
+                      },
+                      {
+                        "who": "player",
+                        "face": "U"
+                      },
+                      {
+                        "who": "player",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -3274,7 +3325,22 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.cuina.armari.3"
+                    "text": "sala.cuina.armari.3",
+                    "stage": [
+                      {
+                        "who": "nadia",
+                        "at": "porta",
+                        "visible": true
+                      },
+                      {
+                        "who": "nadia",
+                        "walk": "cambra_freda"
+                      },
+                      {
+                        "who": "nadia",
+                        "face": "U"
+                      }
+                    ]
                   },
                   {
                     "who": "nadia",
@@ -3282,7 +3348,21 @@
                   },
                   {
                     "who": "vet",
-                    "text": "sala.cuina.armari.4"
+                    "text": "sala.cuina.armari.4",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "visible": true
+                      },
+                      {
+                        "who": "player",
+                        "face": "L"
+                      },
+                      {
+                        "who": "nadia",
+                        "face": "R"
+                      }
+                    ]
                   },
                   {
                     "who": "nadia",
@@ -5841,6 +5921,11 @@
                   "value": 3
                 }
               ]
+            }
+          },
+          "telefon": {
+            "visibleIf": {
+              "any": []
             }
           }
         }
@@ -17893,6 +17978,16 @@
                   {
                     "setFlag": "rele_ara"
                   }
+                ],
+                "stage": [
+                  {
+                    "who": "bastida",
+                    "walk": "generador"
+                  },
+                  {
+                    "who": "bastida",
+                    "face": "U"
+                  }
                 ]
               },
               {
@@ -20429,7 +20524,18 @@
               {
                 "who": "narrator",
                 "text": "dlg.paperets.flam.1",
-                "sound": "muntacarregues"
+                "sound": "muntacarregues",
+                "stageAfter": [
+                  {
+                    "prop": "munta_tancat",
+                    "visible": true,
+                    "hold": 1.4
+                  },
+                  {
+                    "prop": "munta_tancat",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "narrator",
@@ -20443,7 +20549,18 @@
               {
                 "who": "narrator",
                 "text": "dlg.paperets.ernest.1",
-                "sound": "muntacarregues"
+                "sound": "muntacarregues",
+                "stageAfter": [
+                  {
+                    "prop": "munta_tancat",
+                    "visible": true,
+                    "hold": 1.4
+                  },
+                  {
+                    "prop": "munta_tancat",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "narrator",
@@ -20466,7 +20583,18 @@
               {
                 "who": "narrator",
                 "text": "dlg.paperets.postres.1",
-                "sound": "muntacarregues"
+                "sound": "muntacarregues",
+                "stageAfter": [
+                  {
+                    "prop": "munta_tancat",
+                    "visible": true,
+                    "hold": 1.4
+                  },
+                  {
+                    "prop": "munta_tancat",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "narrator",
@@ -21665,7 +21793,33 @@
               {
                 "who": "narrator",
                 "text": "dlg.reunio.confessio.23",
-                "sound": "telefon_satellit"
+                "sound": "telefon_satellit",
+                "stage": [
+                  {
+                    "who": "capitana",
+                    "face": "L"
+                  },
+                  {
+                    "who": "bastida",
+                    "face": "L"
+                  },
+                  {
+                    "who": "marcel",
+                    "face": "L"
+                  },
+                  {
+                    "who": "tomas",
+                    "face": "L"
+                  },
+                  {
+                    "who": "juana",
+                    "face": "L"
+                  },
+                  {
+                    "who": "nadia",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "narrator",
@@ -21684,7 +21838,17 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.reunio.confessio.26"
+                "text": "dlg.reunio.confessio.26",
+                "stage": [
+                  {
+                    "prop": "telefon",
+                    "visible": true
+                  },
+                  {
+                    "who": "capitana",
+                    "face": "D"
+                  }
+                ]
               },
               {
                 "who": "lind",
@@ -21712,7 +21876,37 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.reunio.confessio.33"
+                "text": "dlg.reunio.confessio.33",
+                "stageAfter": [
+                  {
+                    "prop": "telefon",
+                    "visible": false
+                  },
+                  {
+                    "who": "capitana",
+                    "face": "D"
+                  },
+                  {
+                    "who": "bastida",
+                    "face": "D"
+                  },
+                  {
+                    "who": "marcel",
+                    "face": "D"
+                  },
+                  {
+                    "who": "tomas",
+                    "face": "D"
+                  },
+                  {
+                    "who": "juana",
+                    "face": "D"
+                  },
+                  {
+                    "who": "nadia",
+                    "face": "D"
+                  }
+                ]
               },
               {
                 "who": "nadia",
@@ -21742,7 +21936,17 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.reunio.confessio.37"
+                "text": "dlg.reunio.confessio.37",
+                "stage": [
+                  {
+                    "who": "bastida",
+                    "walk": "porta_passadis"
+                  },
+                  {
+                    "who": "bastida",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "narrator",
@@ -25517,12 +25721,14 @@
       "ui.controls.titol": "Com es juga",
       "ui.controls.dit.0": "Toca una cosa: la primera vegada la mires; després hi fas l'acció (o tries, si n'hi ha més d'una).",
       "ui.controls.dit.1": "Mantén el dit premut sobre una cosa: tries què hi fas (mirar-la, agafar-la, obrir-la...).",
-      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones). Els punts ensenyen el que es pot tocar.",
+      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones).",
+      "ui.controls.dit.3": "Toca el botó dels punts: s'hi encén un moment tot el que es pot tocar.",
       "ui.controls.ratoli.esquerre": "Clic esquerre: hi vas o hi fas l'acció (si n'hi ha més d'una, tries). Mantingues-lo premut per triar.",
       "ui.controls.ratoli.dret": "Clic dret sobre una cosa: la mires.",
       "ui.controls.ratoli.esquerre.mira": "Clic esquerre sobre una cosa: la mires. Mantingues-lo premut per triar què hi fas.",
       "ui.controls.ratoli.dret.fa": "Clic dret: hi vas o hi fas l'acció (si n'hi ha més d'una, tries).",
-      "ui.controls.ratoli.punts": "Clica un objecte de l'inventari i després on el vols fer servir. Els punts ensenyen el que es pot clicar.",
+      "ui.controls.ratoli.inventari": "Clica un objecte de l'inventari i després on el vols fer servir (o a qui el dones).",
+      "ui.controls.ratoli.punts": "Clica el botó dels punts: s'hi encén un moment tot el que es pot clicar.",
       "ui.controls.pista": "Si no saps què fer, obre el menú i tria «Pista»: cada vegada que la demanis, serà una mica més clara.",
       "ui.controls.dacord": "D'acord",
       "ui.opcions.botons": "clic esquerre per fer",

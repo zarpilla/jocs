@@ -44,18 +44,18 @@
     },
     "menjador 2.aseprite": {
       "frame": {
-        "x": 1651,
-        "y": 0,
-        "w": 343,
-        "h": 157
+        "x": 3368,
+        "y": 1302,
+        "w": 26,
+        "h": 28
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 195,
-        "y": 13,
-        "w": 343,
-        "h": 157
+        "x": 217,
+        "y": 97,
+        "w": 26,
+        "h": 28
       },
       "sourceSize": {
         "w": 640,
@@ -65,7 +65,7 @@
     },
     "menjador 3.aseprite": {
       "frame": {
-        "x": 1994,
+        "x": 1651,
         "y": 0,
         "w": 343,
         "h": 157
@@ -86,7 +86,7 @@
     },
     "menjador 4.aseprite": {
       "frame": {
-        "x": 2337,
+        "x": 1994,
         "y": 0,
         "w": 343,
         "h": 157
@@ -107,7 +107,7 @@
     },
     "menjador 5.aseprite": {
       "frame": {
-        "x": 2680,
+        "x": 2337,
         "y": 0,
         "w": 343,
         "h": 157
@@ -128,7 +128,7 @@
     },
     "menjador 6.aseprite": {
       "frame": {
-        "x": 3023,
+        "x": 2680,
         "y": 0,
         "w": 343,
         "h": 157
@@ -149,7 +149,7 @@
     },
     "menjador 7.aseprite": {
       "frame": {
-        "x": 3366,
+        "x": 3023,
         "y": 0,
         "w": 343,
         "h": 157
@@ -170,7 +170,7 @@
     },
     "menjador 8.aseprite": {
       "frame": {
-        "x": 3709,
+        "x": 3366,
         "y": 0,
         "w": 343,
         "h": 157
@@ -191,8 +191,8 @@
     },
     "menjador 9.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 360,
+        "x": 3709,
+        "y": 0,
         "w": 343,
         "h": 157
       },
@@ -212,7 +212,7 @@
     },
     "menjador 10.aseprite": {
       "frame": {
-        "x": 343,
+        "x": 0,
         "y": 360,
         "w": 343,
         "h": 157
@@ -233,7 +233,7 @@
     },
     "menjador 11.aseprite": {
       "frame": {
-        "x": 686,
+        "x": 343,
         "y": 360,
         "w": 343,
         "h": 157
@@ -254,7 +254,7 @@
     },
     "menjador 12.aseprite": {
       "frame": {
-        "x": 1029,
+        "x": 686,
         "y": 360,
         "w": 343,
         "h": 157
@@ -275,7 +275,7 @@
     },
     "menjador 13.aseprite": {
       "frame": {
-        "x": 1372,
+        "x": 1029,
         "y": 360,
         "w": 343,
         "h": 157
@@ -296,7 +296,7 @@
     },
     "menjador 14.aseprite": {
       "frame": {
-        "x": 1715,
+        "x": 1372,
         "y": 360,
         "w": 343,
         "h": 157
@@ -317,7 +317,7 @@
     },
     "menjador 15.aseprite": {
       "frame": {
-        "x": 2058,
+        "x": 1715,
         "y": 360,
         "w": 343,
         "h": 157
@@ -338,7 +338,7 @@
     },
     "menjador 16.aseprite": {
       "frame": {
-        "x": 2401,
+        "x": 2058,
         "y": 360,
         "w": 343,
         "h": 157
@@ -359,7 +359,7 @@
     },
     "menjador 17.aseprite": {
       "frame": {
-        "x": 2744,
+        "x": 2401,
         "y": 360,
         "w": 343,
         "h": 157
@@ -380,7 +380,7 @@
     },
     "menjador 18.aseprite": {
       "frame": {
-        "x": 3087,
+        "x": 2744,
         "y": 360,
         "w": 343,
         "h": 157
@@ -401,7 +401,7 @@
     },
     "menjador 19.aseprite": {
       "frame": {
-        "x": 3430,
+        "x": 3087,
         "y": 360,
         "w": 343,
         "h": 157
@@ -422,8 +422,8 @@
     },
     "menjador 20.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 517,
+        "x": 3430,
+        "y": 360,
         "w": 343,
         "h": 157
       },
@@ -443,7 +443,7 @@
     },
     "menjador 21.aseprite": {
       "frame": {
-        "x": 343,
+        "x": 0,
         "y": 517,
         "w": 343,
         "h": 157
@@ -464,7 +464,7 @@
     },
     "menjador 22.aseprite": {
       "frame": {
-        "x": 686,
+        "x": 343,
         "y": 517,
         "w": 343,
         "h": 157
@@ -506,7 +506,7 @@
     },
     "menjador 24.aseprite": {
       "frame": {
-        "x": 1029,
+        "x": 686,
         "y": 517,
         "w": 343,
         "h": 157
@@ -527,7 +527,7 @@
     },
     "menjador 25.aseprite": {
       "frame": {
-        "x": 1372,
+        "x": 1029,
         "y": 517,
         "w": 343,
         "h": 157
@@ -548,7 +548,7 @@
     },
     "menjador 26.aseprite": {
       "frame": {
-        "x": 1715,
+        "x": 1372,
         "y": 517,
         "w": 343,
         "h": 157
@@ -569,7 +569,7 @@
     },
     "menjador 27.aseprite": {
       "frame": {
-        "x": 2058,
+        "x": 1715,
         "y": 517,
         "w": 343,
         "h": 157
@@ -590,7 +590,7 @@
     },
     "menjador 28.aseprite": {
       "frame": {
-        "x": 2401,
+        "x": 2058,
         "y": 517,
         "w": 343,
         "h": 157
@@ -611,7 +611,7 @@
     },
     "menjador 29.aseprite": {
       "frame": {
-        "x": 2744,
+        "x": 2401,
         "y": 517,
         "w": 343,
         "h": 157
@@ -632,7 +632,7 @@
     },
     "menjador 30.aseprite": {
       "frame": {
-        "x": 3087,
+        "x": 2744,
         "y": 517,
         "w": 343,
         "h": 157
@@ -653,7 +653,7 @@
     },
     "menjador 31.aseprite": {
       "frame": {
-        "x": 3430,
+        "x": 3087,
         "y": 517,
         "w": 343,
         "h": 157
@@ -674,8 +674,8 @@
     },
     "menjador 32.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 674,
+        "x": 3430,
+        "y": 517,
         "w": 343,
         "h": 157
       },
@@ -695,7 +695,7 @@
     },
     "menjador 33.aseprite": {
       "frame": {
-        "x": 343,
+        "x": 0,
         "y": 674,
         "w": 343,
         "h": 157
@@ -716,7 +716,7 @@
     },
     "menjador 34.aseprite": {
       "frame": {
-        "x": 686,
+        "x": 343,
         "y": 674,
         "w": 343,
         "h": 157
@@ -737,7 +737,7 @@
     },
     "menjador 35.aseprite": {
       "frame": {
-        "x": 1029,
+        "x": 686,
         "y": 674,
         "w": 343,
         "h": 157
@@ -758,7 +758,7 @@
     },
     "menjador 36.aseprite": {
       "frame": {
-        "x": 1372,
+        "x": 1029,
         "y": 674,
         "w": 343,
         "h": 157
@@ -779,7 +779,7 @@
     },
     "menjador 37.aseprite": {
       "frame": {
-        "x": 1715,
+        "x": 1372,
         "y": 674,
         "w": 343,
         "h": 157
@@ -800,7 +800,7 @@
     },
     "menjador 38.aseprite": {
       "frame": {
-        "x": 2058,
+        "x": 1715,
         "y": 674,
         "w": 343,
         "h": 157
@@ -821,7 +821,7 @@
     },
     "menjador 39.aseprite": {
       "frame": {
-        "x": 2401,
+        "x": 2058,
         "y": 674,
         "w": 343,
         "h": 157
@@ -842,7 +842,7 @@
     },
     "menjador 40.aseprite": {
       "frame": {
-        "x": 2744,
+        "x": 2401,
         "y": 674,
         "w": 343,
         "h": 157
@@ -884,7 +884,7 @@
     },
     "menjador 42.aseprite": {
       "frame": {
-        "x": 3087,
+        "x": 2744,
         "y": 674,
         "w": 343,
         "h": 157
@@ -905,7 +905,7 @@
     },
     "menjador 43.aseprite": {
       "frame": {
-        "x": 3430,
+        "x": 3087,
         "y": 674,
         "w": 343,
         "h": 157
@@ -926,8 +926,8 @@
     },
     "menjador 44.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 831,
+        "x": 3430,
+        "y": 674,
         "w": 343,
         "h": 157
       },
@@ -947,7 +947,7 @@
     },
     "menjador 45.aseprite": {
       "frame": {
-        "x": 343,
+        "x": 0,
         "y": 831,
         "w": 343,
         "h": 157
@@ -968,7 +968,7 @@
     },
     "menjador 46.aseprite": {
       "frame": {
-        "x": 686,
+        "x": 343,
         "y": 831,
         "w": 343,
         "h": 157
@@ -989,7 +989,7 @@
     },
     "menjador 47.aseprite": {
       "frame": {
-        "x": 1029,
+        "x": 686,
         "y": 831,
         "w": 343,
         "h": 157
@@ -1010,7 +1010,7 @@
     },
     "menjador 48.aseprite": {
       "frame": {
-        "x": 1372,
+        "x": 1029,
         "y": 831,
         "w": 343,
         "h": 157
@@ -1031,7 +1031,7 @@
     },
     "menjador 49.aseprite": {
       "frame": {
-        "x": 1715,
+        "x": 1372,
         "y": 831,
         "w": 343,
         "h": 157
@@ -1052,7 +1052,7 @@
     },
     "menjador 50.aseprite": {
       "frame": {
-        "x": 2058,
+        "x": 1715,
         "y": 831,
         "w": 343,
         "h": 157
@@ -1073,7 +1073,7 @@
     },
     "menjador 51.aseprite": {
       "frame": {
-        "x": 2401,
+        "x": 2058,
         "y": 831,
         "w": 343,
         "h": 157
@@ -1094,7 +1094,7 @@
     },
     "menjador 52.aseprite": {
       "frame": {
-        "x": 2744,
+        "x": 2401,
         "y": 831,
         "w": 343,
         "h": 157
@@ -1115,7 +1115,7 @@
     },
     "menjador 53.aseprite": {
       "frame": {
-        "x": 3087,
+        "x": 2744,
         "y": 831,
         "w": 343,
         "h": 157
@@ -1136,7 +1136,7 @@
     },
     "menjador 54.aseprite": {
       "frame": {
-        "x": 3430,
+        "x": 3087,
         "y": 831,
         "w": 343,
         "h": 157
@@ -1178,8 +1178,8 @@
     },
     "menjador 56.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 988,
+        "x": 3430,
+        "y": 831,
         "w": 343,
         "h": 157
       },
@@ -1199,7 +1199,7 @@
     },
     "menjador 57.aseprite": {
       "frame": {
-        "x": 343,
+        "x": 0,
         "y": 988,
         "w": 343,
         "h": 157
@@ -1220,7 +1220,7 @@
     },
     "menjador 58.aseprite": {
       "frame": {
-        "x": 686,
+        "x": 343,
         "y": 988,
         "w": 343,
         "h": 157
@@ -1241,7 +1241,7 @@
     },
     "menjador 59.aseprite": {
       "frame": {
-        "x": 1029,
+        "x": 686,
         "y": 988,
         "w": 343,
         "h": 157
@@ -1262,7 +1262,7 @@
     },
     "menjador 60.aseprite": {
       "frame": {
-        "x": 1372,
+        "x": 1029,
         "y": 988,
         "w": 343,
         "h": 157
@@ -1283,7 +1283,7 @@
     },
     "menjador 61.aseprite": {
       "frame": {
-        "x": 1715,
+        "x": 1372,
         "y": 988,
         "w": 343,
         "h": 157
@@ -1304,7 +1304,7 @@
     },
     "menjador 62.aseprite": {
       "frame": {
-        "x": 2058,
+        "x": 1715,
         "y": 988,
         "w": 343,
         "h": 157
@@ -1325,7 +1325,7 @@
     },
     "menjador 63.aseprite": {
       "frame": {
-        "x": 2401,
+        "x": 2058,
         "y": 988,
         "w": 343,
         "h": 157
@@ -1346,7 +1346,7 @@
     },
     "menjador 64.aseprite": {
       "frame": {
-        "x": 2744,
+        "x": 2401,
         "y": 988,
         "w": 343,
         "h": 157
@@ -1367,7 +1367,7 @@
     },
     "menjador 65.aseprite": {
       "frame": {
-        "x": 3087,
+        "x": 2744,
         "y": 988,
         "w": 343,
         "h": 157
@@ -1388,7 +1388,7 @@
     },
     "menjador 66.aseprite": {
       "frame": {
-        "x": 3430,
+        "x": 3087,
         "y": 988,
         "w": 343,
         "h": 157
@@ -1409,8 +1409,8 @@
     },
     "menjador 67.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1145,
+        "x": 3430,
+        "y": 988,
         "w": 343,
         "h": 157
       },
@@ -1430,7 +1430,7 @@
     },
     "menjador 68.aseprite": {
       "frame": {
-        "x": 343,
+        "x": 0,
         "y": 1145,
         "w": 343,
         "h": 157
@@ -1451,7 +1451,7 @@
     },
     "menjador 69.aseprite": {
       "frame": {
-        "x": 686,
+        "x": 343,
         "y": 1145,
         "w": 343,
         "h": 157
@@ -1472,7 +1472,7 @@
     },
     "menjador 70.aseprite": {
       "frame": {
-        "x": 1029,
+        "x": 686,
         "y": 1145,
         "w": 343,
         "h": 157
@@ -1493,7 +1493,7 @@
     },
     "menjador 71.aseprite": {
       "frame": {
-        "x": 1372,
+        "x": 1029,
         "y": 1145,
         "w": 343,
         "h": 157
@@ -1514,7 +1514,7 @@
     },
     "menjador 72.aseprite": {
       "frame": {
-        "x": 1715,
+        "x": 1372,
         "y": 1145,
         "w": 343,
         "h": 157
@@ -1535,7 +1535,7 @@
     },
     "menjador 73.aseprite": {
       "frame": {
-        "x": 2058,
+        "x": 1715,
         "y": 1145,
         "w": 343,
         "h": 157
@@ -1556,7 +1556,7 @@
     },
     "menjador 74.aseprite": {
       "frame": {
-        "x": 2401,
+        "x": 2058,
         "y": 1145,
         "w": 343,
         "h": 157
@@ -1577,7 +1577,7 @@
     },
     "menjador 75.aseprite": {
       "frame": {
-        "x": 2744,
+        "x": 2401,
         "y": 1145,
         "w": 343,
         "h": 157
@@ -1598,7 +1598,7 @@
     },
     "menjador 76.aseprite": {
       "frame": {
-        "x": 3087,
+        "x": 2744,
         "y": 1145,
         "w": 343,
         "h": 157
@@ -1619,7 +1619,7 @@
     },
     "menjador 77.aseprite": {
       "frame": {
-        "x": 3430,
+        "x": 3087,
         "y": 1145,
         "w": 343,
         "h": 157
@@ -1640,8 +1640,8 @@
     },
     "menjador 78.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1302,
+        "x": 3430,
+        "y": 1145,
         "w": 343,
         "h": 157
       },
@@ -1661,7 +1661,7 @@
     },
     "menjador 79.aseprite": {
       "frame": {
-        "x": 343,
+        "x": 0,
         "y": 1302,
         "w": 343,
         "h": 157
@@ -1682,7 +1682,7 @@
     },
     "menjador 80.aseprite": {
       "frame": {
-        "x": 686,
+        "x": 343,
         "y": 1302,
         "w": 343,
         "h": 157
@@ -1703,7 +1703,7 @@
     },
     "menjador 81.aseprite": {
       "frame": {
-        "x": 1029,
+        "x": 686,
         "y": 1302,
         "w": 343,
         "h": 157
@@ -1724,7 +1724,7 @@
     },
     "menjador 82.aseprite": {
       "frame": {
-        "x": 1372,
+        "x": 1029,
         "y": 1302,
         "w": 343,
         "h": 157
@@ -1745,7 +1745,7 @@
     },
     "menjador 83.aseprite": {
       "frame": {
-        "x": 1715,
+        "x": 1372,
         "y": 1302,
         "w": 343,
         "h": 157
@@ -1766,7 +1766,7 @@
     },
     "menjador 84.aseprite": {
       "frame": {
-        "x": 2058,
+        "x": 1715,
         "y": 1302,
         "w": 343,
         "h": 157
@@ -1787,7 +1787,7 @@
     },
     "menjador 85.aseprite": {
       "frame": {
-        "x": 2401,
+        "x": 2058,
         "y": 1302,
         "w": 343,
         "h": 157
@@ -1808,18 +1808,18 @@
     },
     "menjador 86.aseprite": {
       "frame": {
-        "x": 3596,
+        "x": 2401,
         "y": 1302,
-        "w": 57,
-        "h": 18
+        "w": 343,
+        "h": 157
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 331,
-        "y": 40,
-        "w": 57,
-        "h": 18
+        "x": 195,
+        "y": 13,
+        "w": 343,
+        "h": 157
       },
       "sourceSize": {
         "w": 640,
@@ -1829,7 +1829,7 @@
     },
     "menjador 87.aseprite": {
       "frame": {
-        "x": 3653,
+        "x": 3622,
         "y": 1302,
         "w": 57,
         "h": 18
@@ -1850,18 +1850,18 @@
     },
     "menjador 88.aseprite": {
       "frame": {
-        "x": 3368,
+        "x": 3679,
         "y": 1302,
         "w": 57,
-        "h": 19
+        "h": 18
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 331,
-        "y": 39,
+        "y": 40,
         "w": 57,
-        "h": 19
+        "h": 18
       },
       "sourceSize": {
         "w": 640,
@@ -1871,7 +1871,7 @@
     },
     "menjador 89.aseprite": {
       "frame": {
-        "x": 3425,
+        "x": 3394,
         "y": 1302,
         "w": 57,
         "h": 19
@@ -1892,7 +1892,7 @@
     },
     "menjador 90.aseprite": {
       "frame": {
-        "x": 3482,
+        "x": 3451,
         "y": 1302,
         "w": 57,
         "h": 19
@@ -1901,7 +1901,7 @@
       "trimmed": true,
       "spriteSourceSize": {
         "x": 331,
-        "y": 40,
+        "y": 39,
         "w": 57,
         "h": 19
       },
@@ -1913,10 +1913,10 @@
     },
     "menjador 91.aseprite": {
       "frame": {
-        "x": 3710,
+        "x": 3508,
         "y": 1302,
         "w": 57,
-        "h": 18
+        "h": 19
       },
       "rotated": false,
       "trimmed": true,
@@ -1924,7 +1924,7 @@
         "x": 331,
         "y": 40,
         "w": 57,
-        "h": 18
+        "h": 19
       },
       "sourceSize": {
         "w": 640,
@@ -1934,10 +1934,10 @@
     },
     "menjador 92.aseprite": {
       "frame": {
-        "x": 3995,
+        "x": 3736,
         "y": 1302,
         "w": 57,
-        "h": 17
+        "h": 18
       },
       "rotated": false,
       "trimmed": true,
@@ -1945,7 +1945,7 @@
         "x": 331,
         "y": 40,
         "w": 57,
-        "h": 17
+        "h": 18
       },
       "sourceSize": {
         "w": 640,
@@ -1955,10 +1955,10 @@
     },
     "menjador 93.aseprite": {
       "frame": {
-        "x": 3767,
+        "x": 4021,
         "y": 1302,
         "w": 57,
-        "h": 18
+        "h": 17
       },
       "rotated": false,
       "trimmed": true,
@@ -1966,7 +1966,7 @@
         "x": 331,
         "y": 40,
         "w": 57,
-        "h": 18
+        "h": 17
       },
       "sourceSize": {
         "w": 640,
@@ -1976,7 +1976,7 @@
     },
     "menjador 94.aseprite": {
       "frame": {
-        "x": 3824,
+        "x": 3793,
         "y": 1302,
         "w": 57,
         "h": 18
@@ -1997,7 +1997,7 @@
     },
     "menjador 95.aseprite": {
       "frame": {
-        "x": 3881,
+        "x": 3850,
         "y": 1302,
         "w": 57,
         "h": 18
@@ -2018,10 +2018,10 @@
     },
     "menjador 96.aseprite": {
       "frame": {
-        "x": 3539,
+        "x": 3907,
         "y": 1302,
         "w": 57,
-        "h": 19
+        "h": 18
       },
       "rotated": false,
       "trimmed": true,
@@ -2029,7 +2029,7 @@
         "x": 331,
         "y": 40,
         "w": 57,
-        "h": 19
+        "h": 18
       },
       "sourceSize": {
         "w": 640,
@@ -2039,7 +2039,28 @@
     },
     "menjador 97.aseprite": {
       "frame": {
-        "x": 3938,
+        "x": 3565,
+        "y": 1302,
+        "w": 57,
+        "h": 19
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 331,
+        "y": 40,
+        "w": 57,
+        "h": 19
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "menjador 98.aseprite": {
+      "frame": {
+        "x": 3964,
         "y": 1302,
         "w": 57,
         "h": 18
@@ -2058,7 +2079,7 @@
       },
       "duration": 100
     },
-    "menjador 98.aseprite": {
+    "menjador 99.aseprite": {
       "frame": {
         "x": 3092,
         "y": 1302,
@@ -2079,7 +2100,7 @@
       },
       "duration": 100
     },
-    "menjador 99.aseprite": {
+    "menjador 100.aseprite": {
       "frame": {
         "x": 3271,
         "y": 1302,
@@ -2100,7 +2121,7 @@
       },
       "duration": 100
     },
-    "menjador 100.aseprite": {
+    "menjador 101.aseprite": {
       "frame": {
         "x": 2744,
         "y": 1302,
@@ -2121,9 +2142,9 @@
       },
       "duration": 100
     },
-    "menjador 101.aseprite": {
+    "menjador 102.aseprite": {
       "frame": {
-        "x": 4052,
+        "x": 4078,
         "y": 1302,
         "w": 1,
         "h": 1
@@ -2142,7 +2163,7 @@
       },
       "duration": 100
     },
-    "menjador 102.aseprite": {
+    "menjador 103.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -2163,9 +2184,9 @@
       },
       "duration": 100
     },
-    "menjador 103.aseprite": {
+    "menjador 104.aseprite": {
       "frame": {
-        "x": 4052,
+        "x": 4078,
         "y": 1302,
         "w": 1,
         "h": 1
@@ -2191,7 +2212,7 @@
     "image": "menjador.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4053,
+      "w": 4079,
       "h": 1459
     },
     "scale": "1",
@@ -2211,65 +2232,72 @@
         "color": "#000000ff"
       },
       {
-        "name": "rellotge",
+        "name": "telefon",
         "from": 2,
-        "to": 61,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "rellotge",
+        "from": 3,
+        "to": 62,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "tasses",
-        "from": 62,
-        "to": 85,
+        "from": 63,
+        "to": 86,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "mar",
-        "from": 86,
-        "to": 97,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant",
-        "from": 98,
+        "from": 87,
         "to": 98,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "ulls_dia__davant",
+        "name": "davant",
         "from": 99,
         "to": 99,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_tamboret",
+        "name": "ulls_dia__davant",
         "from": 100,
         "to": 100,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "ulls_dia__davant_tamboret",
+        "name": "davant_tamboret",
         "from": 101,
         "to": 101,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_primer_pla",
+        "name": "ulls_dia__davant_tamboret",
         "from": 102,
         "to": 102,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "ulls_dia__davant_primer_pla",
+        "name": "davant_primer_pla",
         "from": 103,
         "to": 103,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "ulls_dia__davant_primer_pla",
+        "from": 104,
+        "to": 104,
         "direction": "forward",
         "color": "#000000ff"
       }

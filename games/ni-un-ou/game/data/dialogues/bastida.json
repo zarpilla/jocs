@@ -699,6 +699,16 @@
             {
               "setFlag": "rele_ara"
             }
+          ],
+          "stage": [
+            {
+              "who": "bastida",
+              "walk": "generador"
+            },
+            {
+              "who": "bastida",
+              "face": "U"
+            }
           ]
         },
         {

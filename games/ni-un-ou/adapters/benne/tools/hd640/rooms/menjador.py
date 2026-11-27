@@ -441,7 +441,39 @@ def ulls_dia(cv):
     cv.P = cv.img.load()
 
 
-PROPS = {'ulls_dia': ulls_dia}
+TELEFON = (229, 122)                               # a la pantalla: el peu del telèfon, damunt la taula (≈ (108, 50, 203))
+
+
+def telefon(cv):
+    """Acte 3, la reunió: el telèfon de satèl·lit de la Nadia, dret contra la tetera davant la Capitana, en
+    videotrucada: la pantalla encesa i, a dins, la Hedda Lind que somriu (cabell ros curt, jaqueta fosca).
+    Només es mostra amb indicacions d'escena (`{"prop": "telefon"}` al diàleg `reunio`)."""
+    from PIL import ImageDraw
+    d = ImageDraw.Draw(cv.img)
+    cx, y1 = TELEFON
+    x0, x1, y0 = cx - 11, cx + 11, y1 - 19
+    d.ellipse((x0 - 1, y1 - 1, x1 + 2, y1 + 2), fill=(20, 12, 8, 110))           # l'ombra a la taula
+    d.rectangle((x1 - 3, y0 - 6, x1 - 2, y0), fill=(30, 30, 32, 255))             # l'antena, curta i gruixuda
+    d.rectangle((x0, y0, x1, y1), fill=(34, 36, 38, 255))                         # la carcassa de goma
+    d.rectangle((x0, y1 - 1, x1, y1), fill=(22, 22, 24, 255))
+    sx0, sy0, sx1, sy1 = x0 + 2, y0 + 2, x1 - 2, y1 - 3                           # la pantalla
+    for y in range(sy0, sy1 + 1):                                                 # el fons: una oficina clara
+        k = (y - sy0) / max(1, sy1 - sy0)
+        d.line((sx0, y, sx1, y), fill=(round(150 - 40 * k), round(178 - 40 * k), round(196 - 30 * k), 255))
+    fx, fy = cx, sy0 + 6
+    d.polygon([(fx - 8, sy1), (fx + 8, sy1), (fx + 5, fy + 5), (fx - 5, fy + 5)], fill=(28, 30, 44, 255))  # jaqueta
+    d.polygon([(fx - 2, fy + 5), (fx + 2, fy + 5), (fx, fy + 9)], fill=(230, 230, 236, 255))              # camisa
+    d.rectangle((fx - 5, fy - 5, fx + 5, fy + 3), fill=(222, 196, 120, 255))      # el cabell ros, en melena curta
+    d.ellipse((fx - 3, fy - 3, fx + 3, fy + 5), fill=(238, 198, 172, 255))        # la cara
+    d.rectangle((fx - 4, fy - 5, fx + 4, fy - 3), fill=(222, 196, 120, 255))      # el serrell
+    d.point([(fx - 2, fy), (fx + 2, fy)], fill=(40, 30, 30, 255))                 # els ulls
+    d.line((fx - 1, fy + 3, fx + 1, fy + 3), fill=(186, 96, 92, 255))             # el somriure
+    d.point([(fx - 2, fy + 2), (fx + 2, fy + 2)], fill=(186, 96, 92, 255))
+    d.point([(sx0, sy0), (sx0 + 1, sy0)], fill=(235, 245, 255, 255))              # la lluentor del vidre
+    cv.P = cv.img.load()
+
+
+PROPS = {'ulls_dia': ulls_dia, 'telefon': telefon}
 
 
 # ─── Animacions ─────────────────────────────────────────────────────────────
@@ -525,7 +557,7 @@ def _p(x, z, y=0.0):
 # primer pla (sempre davant).
 FRONT = [
     {'id': 'davant', 'mask': _amo({'taula', 'coses'}), 'baseline': _p((TAULA[0] + TAULA[1]) / 2, TAULA[2])[1],
-     'zIndex': 20, 'variants': ('ulls_dia',)},
+     'zIndex': 20, 'variants': ('ulls_dia',), 'props': ('telefon',)},   # el telèfon, damunt la taula i davant dels qui seuen
     {'id': 'davant_tamboret', 'mask': _amo({'tamboret'}), 'baseline': _p(TAMB[0][0], TAMB[0][1])[1], 'zIndex': 20, 'variants': ('ulls_dia',)},
     {'id': 'davant_primer_pla', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20, 'variants': ('ulls_dia',)},
 ]
@@ -600,7 +632,8 @@ GEOMETRIA = {
                            'walk': _p((D_PASS[0] + D_PASS[1]) / 2, 288)},
     },
     'spawns': {'iri': _p(350, 140), 'vet': _p(40, 150),
-               **{c: _p(x, SEU_Z) for c, x in zip(('capitana', 'bastida', 'marcel', 'tomas', 'juana', 'nadia'), SEIENTS)}},
+               **{c: _p(x, SEU_Z) for c, x in zip(('capitana', 'bastida', 'marcel', 'tomas', 'juana', 'nadia'), SEIENTS)},
+               'lind': (TELEFON[0], TELEFON[1] + 12)},            # la veu de la Lind surt del telèfon (el text, just a sobre)
     'walkable': _WALK,
     'floorSquash': 0.4,
     # L'ombra de contacte: la llum dominant són els llums de damunt la taula; curta.

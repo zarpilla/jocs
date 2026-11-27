@@ -224,6 +224,25 @@
         ],
         "pause": 2.5
       }
+    ],
+    "place": [
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "rele_posat"
+            },
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            }
+          ]
+        },
+        "room": "sala_maquines",
+        "x": 385,
+        "y": 184
+      }
     ]
   },
   "marcel": {

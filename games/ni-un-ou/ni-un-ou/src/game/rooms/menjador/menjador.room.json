@@ -427,6 +427,18 @@
           "frameDuration": 240
         }
       }
+    },
+    {
+      "id": "telefon",
+      "tag": "telefon",
+      "animations": {
+        "telefon": {}
+      },
+      "zIndex": 21,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "baseline": 172
     }
   ],
   "characters": [
@@ -513,8 +525,8 @@
     {
       "instanceId": "lind-veu",
       "definition": "lind/lind.character.json",
-      "x": 73,
-      "y": 127,
+      "x": 229,
+      "y": 134,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,

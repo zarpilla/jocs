@@ -87,7 +87,18 @@
         {
           "who": "narrator",
           "text": "dlg.paperets.flam.1",
-          "sound": "muntacarregues"
+          "sound": "muntacarregues",
+          "stageAfter": [
+            {
+              "prop": "munta_tancat",
+              "visible": true,
+              "hold": 1.4
+            },
+            {
+              "prop": "munta_tancat",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "narrator",
@@ -101,7 +112,18 @@
         {
           "who": "narrator",
           "text": "dlg.paperets.ernest.1",
-          "sound": "muntacarregues"
+          "sound": "muntacarregues",
+          "stageAfter": [
+            {
+              "prop": "munta_tancat",
+              "visible": true,
+              "hold": 1.4
+            },
+            {
+              "prop": "munta_tancat",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "narrator",
@@ -124,7 +146,18 @@
         {
           "who": "narrator",
           "text": "dlg.paperets.postres.1",
-          "sound": "muntacarregues"
+          "sound": "muntacarregues",
+          "stageAfter": [
+            {
+              "prop": "munta_tancat",
+              "visible": true,
+              "hold": 1.4
+            },
+            {
+              "prop": "munta_tancat",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "narrator",

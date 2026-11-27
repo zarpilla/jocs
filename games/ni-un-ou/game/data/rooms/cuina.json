@@ -384,7 +384,21 @@
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.cuina.armari.1"
+              "text": "sala.cuina.armari.1",
+              "stage": [
+                {
+                  "who": "player",
+                  "walk": "armari"
+                },
+                {
+                  "who": "player",
+                  "face": "U"
+                },
+                {
+                  "who": "player",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "narrator",
@@ -392,7 +406,22 @@
             },
             {
               "who": "narrator",
-              "text": "sala.cuina.armari.3"
+              "text": "sala.cuina.armari.3",
+              "stage": [
+                {
+                  "who": "nadia",
+                  "at": "porta",
+                  "visible": true
+                },
+                {
+                  "who": "nadia",
+                  "walk": "cambra_freda"
+                },
+                {
+                  "who": "nadia",
+                  "face": "U"
+                }
+              ]
             },
             {
               "who": "nadia",
@@ -400,7 +429,21 @@
             },
             {
               "who": "vet",
-              "text": "sala.cuina.armari.4"
+              "text": "sala.cuina.armari.4",
+              "stage": [
+                {
+                  "who": "player",
+                  "visible": true
+                },
+                {
+                  "who": "player",
+                  "face": "L"
+                },
+                {
+                  "who": "nadia",
+                  "face": "R"
+                }
+              ]
             },
             {
               "who": "nadia",

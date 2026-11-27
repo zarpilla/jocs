@@ -316,7 +316,25 @@
                   "inRoom": "coberta_proa",
                   "who": "vet"
                 }
-              }
+              },
+              "stage": [
+                {
+                  "who": "vet",
+                  "at": "porta",
+                  "visible": true
+                },
+                {
+                  "who": "vet",
+                  "walk": {
+                    "x": 352,
+                    "y": 226
+                  }
+                },
+                {
+                  "who": "vet",
+                  "face": "R"
+                }
+              ]
             }
           ],
           "effects": [

@@ -610,7 +610,33 @@
         {
           "who": "narrator",
           "text": "dlg.reunio.confessio.23",
-          "sound": "telefon_satellit"
+          "sound": "telefon_satellit",
+          "stage": [
+            {
+              "who": "capitana",
+              "face": "L"
+            },
+            {
+              "who": "bastida",
+              "face": "L"
+            },
+            {
+              "who": "marcel",
+              "face": "L"
+            },
+            {
+              "who": "tomas",
+              "face": "L"
+            },
+            {
+              "who": "juana",
+              "face": "L"
+            },
+            {
+              "who": "nadia",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "narrator",
@@ -629,7 +655,17 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.reunio.confessio.26"
+          "text": "dlg.reunio.confessio.26",
+          "stage": [
+            {
+              "prop": "telefon",
+              "visible": true
+            },
+            {
+              "who": "capitana",
+              "face": "D"
+            }
+          ]
         },
         {
           "who": "lind",
@@ -657,7 +693,37 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.reunio.confessio.33"
+          "text": "dlg.reunio.confessio.33",
+          "stageAfter": [
+            {
+              "prop": "telefon",
+              "visible": false
+            },
+            {
+              "who": "capitana",
+              "face": "D"
+            },
+            {
+              "who": "bastida",
+              "face": "D"
+            },
+            {
+              "who": "marcel",
+              "face": "D"
+            },
+            {
+              "who": "tomas",
+              "face": "D"
+            },
+            {
+              "who": "juana",
+              "face": "D"
+            },
+            {
+              "who": "nadia",
+              "face": "D"
+            }
+          ]
         },
         {
           "who": "nadia",
@@ -687,7 +753,17 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.reunio.confessio.37"
+          "text": "dlg.reunio.confessio.37",
+          "stage": [
+            {
+              "who": "bastida",
+              "walk": "porta_passadis"
+            },
+            {
+              "who": "bastida",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "narrator",
