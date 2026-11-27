@@ -1641,13 +1641,25 @@ export class RoomScene extends Phaser.Scene {
 
     const up = rt.getControl('scrollUp');
     const down = rt.getControl('scrollDown');
-    if (!needScroll) {
-      up?.setVisible(false);
-      down?.setVisible(false);
-      return;
+    this.setDialogScrollArrow(up, needScroll && showUp);
+    this.setDialogScrollArrow(down, needScroll && showDown);
+  }
+
+  /**
+   * Shows or hides a dialog scroll arrow. A shown arrow pulses (its alpha breathes) so it is clear that there are
+   * more options out of view; a hidden one stops pulsing.
+   */
+  private setDialogScrollArrow(control: ReturnType<GuiRuntime['getControl']>, show: boolean): void {
+    if (!control) return;
+    control.setVisible(show);
+    const go = control.gameObject as Phaser.GameObjects.GameObject & { alpha?: number; setAlpha?: (a: number) => void };
+    const pulsing = this.tweens.getTweensOf(go).length > 0;
+    if (show && !pulsing) {
+      this.tweens.add({ targets: go, alpha: { from: 1, to: 0.35 }, duration: 600, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
+    } else if (!show && pulsing) {
+      this.tweens.killTweensOf(go);
+      go.setAlpha?.(1);
     }
-    up?.setVisible(showUp);
-    down?.setVisible(showDown);
   }
 
   /**
@@ -6156,7 +6168,7 @@ export class RoomScene extends Phaser.Scene {
    * props, the active hotspots and the clickable characters other than the player. Touch screens have
    * no hover, so this is how the player finds what is clickable. Calling it again restarts it.
    */
-  showClickableMarkers(durationMs = 1600): void {
+  showClickableMarkers(durationMs = 4000): void {
     this.clickableMarkers?.destroy();
     this.clickableMarkers = null;
     const centers: { x: number; y: number }[] = [];
@@ -6178,26 +6190,43 @@ export class RoomScene extends Phaser.Scene {
     if (centers.length === 0) return;
     const g = this.add.graphics();
     g.setDepth(1_000_000);
+    // A dark disc and a dark rim around the white ring, so the marker reads on light floors (sand, snow) too.
     for (const c of centers) {
-      g.fillStyle(0x000000, 0.45);
-      g.fillCircle(c.x, c.y, 7);
-      g.lineStyle(2, 0xffffff, 0.95);
+      g.fillStyle(0x000000, 0.55);
+      g.fillCircle(c.x, c.y, 8);
+      g.lineStyle(2, 0xffffff, 1);
       g.strokeCircle(c.x, c.y, 5);
-      g.fillStyle(0xffffff, 0.95);
+      g.lineStyle(1.5, 0x000000, 0.9);
+      g.strokeCircle(c.x, c.y, 8);
+      g.fillStyle(0xffffff, 1);
       g.fillCircle(c.x, c.y, 1.5);
     }
     this.clickableMarkers = g;
     g.setAlpha(0);
     this.tweens.add({ targets: g, alpha: 1, duration: 150 });
-    this.tweens.add({
-      targets: g,
-      alpha: 0,
-      delay: Math.max(0, durationMs - 300),
-      duration: 300,
-      onComplete: () => {
-        if (this.clickableMarkers === g) this.clickableMarkers = null;
-        g.destroy();
-      },
+    let fading = false;
+    const fadeOut = (delay: number): void => {
+      if (fading || this.clickableMarkers !== g) return;
+      fading = true;
+      this.tweens.add({
+        targets: g,
+        alpha: 0,
+        delay,
+        duration: 300,
+        onComplete: () => {
+          if (this.clickableMarkers === g) this.clickableMarkers = null;
+          g.destroy();
+        },
+      });
+    };
+    // They stay until the time is up, or until the next tap (not the one that asked for them).
+    const timer = this.time.delayedCall(Math.max(0, durationMs - 300), () => fadeOut(0));
+    this.time.delayedCall(250, () => {
+      if (this.clickableMarkers !== g) return;
+      this.input.once('pointerdown', () => {
+        timer.remove(false);
+        fadeOut(0);
+      });
     });
   }
 

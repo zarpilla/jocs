@@ -88,7 +88,7 @@ export const game = {
     return { width, height };
   },
 
-  showClickables(seconds = 1.6): void {
+  showClickables(seconds = 4): void {
     liveRoomScene()?.showClickableMarkers(Math.round(seconds * 1000));
   },
 
