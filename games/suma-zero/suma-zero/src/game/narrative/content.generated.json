@@ -2898,12 +2898,12 @@
                     "stage": [
                       {
                         "who": "tomas",
-                        "at": "porta_rebost",
+                        "at": {
+                          "x": 315,
+                          "y": 167
+                        },
+                        "face": "D",
                         "visible": true
-                      },
-                      {
-                        "who": "tomas",
-                        "walk": "comandament_barra"
                       }
                     ],
                     "effects": [
