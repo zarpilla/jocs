@@ -119,7 +119,7 @@
     {
       "id": "porta_ala",
       "active": true,
-      "description": "porta de l'ala dels canonges",
+      "description": "la porta de l'ala dels canonges",
       "zIndex": 0,
       "points": [
         {
@@ -151,7 +151,7 @@
     {
       "id": "banc",
       "active": true,
-      "description": "banc",
+      "description": "el banc",
       "zIndex": 1,
       "points": [
         {
@@ -183,7 +183,7 @@
     {
       "id": "columna",
       "active": true,
-      "description": "columna",
+      "description": "la columna",
       "zIndex": 2,
       "points": [
         {
@@ -215,7 +215,7 @@
     {
       "id": "torxes",
       "active": true,
-      "description": "torxes",
+      "description": "les torxes",
       "zIndex": 3,
       "points": [
         {
@@ -247,7 +247,7 @@
     {
       "id": "llibre_entrades",
       "active": true,
-      "description": "llibre de les entrades",
+      "description": "el llibre de les entrades",
       "zIndex": 4,
       "points": [
         {

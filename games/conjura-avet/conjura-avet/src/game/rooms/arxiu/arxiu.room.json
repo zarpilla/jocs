@@ -77,7 +77,7 @@
     {
       "id": "trapa",
       "active": true,
-      "description": "trapa del rec",
+      "description": "la trapa del rec",
       "zIndex": 0,
       "points": [
         {
@@ -110,7 +110,7 @@
     {
       "id": "baguls",
       "active": true,
-      "description": "baguls",
+      "description": "els baguls",
       "zIndex": 1,
       "points": [
         {
@@ -142,7 +142,7 @@
     {
       "id": "bagul_delmes",
       "active": true,
-      "description": "bagul",
+      "description": "el bagul",
       "zIndex": 2,
       "points": [
         {
@@ -174,7 +174,7 @@
     {
       "id": "bagul_butlles",
       "active": true,
-      "description": "bagul",
+      "description": "el bagul",
       "zIndex": 3,
       "points": [
         {
@@ -206,7 +206,7 @@
     {
       "id": "bagul_sunifred",
       "active": true,
-      "description": "bagul del segell",
+      "description": "el bagul del segell",
       "zIndex": 2,
       "points": [
         {
@@ -238,7 +238,7 @@
     {
       "id": "cordill",
       "active": true,
-      "description": "cordill",
+      "description": "el cordill",
       "zIndex": 5,
       "points": [
         {
@@ -270,7 +270,7 @@
     {
       "id": "tapis",
       "active": true,
-      "description": "tapís",
+      "description": "el tapís",
       "zIndex": 2,
       "points": [
         {
@@ -302,7 +302,7 @@
     {
       "id": "estendard",
       "active": true,
-      "description": "estendard",
+      "description": "l'estendard",
       "zIndex": 7,
       "points": [
         {
@@ -334,7 +334,7 @@
     {
       "id": "bancs",
       "active": true,
-      "description": "bancs de pedra",
+      "description": "els bancs de pedra",
       "zIndex": 8,
       "points": [
         {
@@ -366,7 +366,7 @@
     {
       "id": "banc_fons",
       "active": true,
-      "description": "banc del fons",
+      "description": "el banc del fons",
       "zIndex": 9,
       "points": [
         {
@@ -398,7 +398,7 @@
     {
       "id": "finestra",
       "active": true,
-      "description": "finestra",
+      "description": "la finestra",
       "zIndex": 10,
       "points": [
         {
@@ -430,7 +430,7 @@
     {
       "id": "porta_capitular",
       "active": true,
-      "description": "sortida a l'scriptorium",
+      "description": "la sortida a l'scriptorium",
       "zIndex": 11,
       "points": [
         {
@@ -538,7 +538,7 @@
         "x": 452,
         "y": 66
       },
-      "description": "contrapès"
+      "description": "el contrapès"
     },
     {
       "id": "cofre",
@@ -578,7 +578,7 @@
         "x": 311,
         "y": 174
       },
-      "description": "cofre de l'Emma"
+      "description": "el cofre de l'Emma"
     },
     {
       "id": "bagul_obert",

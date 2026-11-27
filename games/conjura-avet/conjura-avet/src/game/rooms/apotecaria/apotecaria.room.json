@@ -125,7 +125,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "sortida al claustre",
+      "description": "la sortida al claustre",
       "zIndex": 0,
       "points": [
         {
@@ -158,7 +158,7 @@
     {
       "id": "prestatges",
       "active": true,
-      "description": "prestatges",
+      "description": "els prestatges",
       "zIndex": 1,
       "points": [
         {
@@ -190,7 +190,7 @@
     {
       "id": "flasco_menta",
       "active": true,
-      "description": "flascó",
+      "description": "el flascó",
       "zIndex": 2,
       "points": [
         {
@@ -222,7 +222,7 @@
     {
       "id": "flasco_ruda",
       "active": true,
-      "description": "flascó",
+      "description": "el flascó",
       "zIndex": 3,
       "points": [
         {
@@ -254,7 +254,7 @@
     {
       "id": "flasco_salvia",
       "active": true,
-      "description": "flascó",
+      "description": "el flascó",
       "zIndex": 4,
       "points": [
         {
@@ -286,7 +286,7 @@
     {
       "id": "flasco_sense_nom",
       "active": true,
-      "description": "flascó",
+      "description": "el flascó",
       "zIndex": 5,
       "points": [
         {
@@ -318,7 +318,7 @@
     {
       "id": "atramentum",
       "active": true,
-      "description": "pot amb etiqueta",
+      "description": "el pot amb etiqueta",
       "zIndex": 6,
       "points": [
         {
@@ -350,7 +350,7 @@
     {
       "id": "manats",
       "active": true,
-      "description": "manats d'herbes",
+      "description": "els manats d'herbes",
       "zIndex": 7,
       "points": [
         {
@@ -382,7 +382,7 @@
     {
       "id": "pell_ovella",
       "active": true,
-      "description": "pell d'ovella",
+      "description": "la pell d'ovella",
       "zIndex": 8,
       "points": [
         {
@@ -414,7 +414,7 @@
     {
       "id": "llar",
       "active": true,
-      "description": "llar",
+      "description": "la llar",
       "zIndex": 9,
       "points": [
         {
@@ -446,7 +446,7 @@
     {
       "id": "morter",
       "active": true,
-      "description": "morter",
+      "description": "el morter",
       "zIndex": 10,
       "points": [
         {
@@ -478,7 +478,7 @@
     {
       "id": "taula",
       "active": true,
-      "description": "taula",
+      "description": "la taula",
       "zIndex": 11,
       "points": [
         {
@@ -586,7 +586,7 @@
         "x": 256,
         "y": 80
       },
-      "description": "cardó"
+      "description": "el cardó"
     },
     {
       "id": "mel",
@@ -626,7 +626,7 @@
         "x": 389,
         "y": 151
       },
-      "description": "gerra de mel",
+      "description": "la gerra de mel",
       "baseline": 209
     },
     {

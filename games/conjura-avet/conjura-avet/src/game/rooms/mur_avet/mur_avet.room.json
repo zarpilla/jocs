@@ -97,7 +97,7 @@
     {
       "id": "avet",
       "active": true,
-      "description": "avet",
+      "description": "l'avet",
       "zIndex": 0,
       "points": [
         {
@@ -129,7 +129,7 @@
     {
       "id": "arrels",
       "active": true,
-      "description": "arrels",
+      "description": "les arrels",
       "zIndex": 1,
       "points": [
         {
@@ -194,7 +194,7 @@
     {
       "id": "cami_riu",
       "active": true,
-      "description": "camí del riu",
+      "description": "el camí del riu",
       "zIndex": 1,
       "points": [
         {
@@ -227,7 +227,7 @@
     {
       "id": "porta_monestir",
       "active": true,
-      "description": "porta del monestir",
+      "description": "la porta del monestir",
       "zIndex": 2,
       "points": [
         {
@@ -260,7 +260,7 @@
     {
       "id": "absis",
       "active": true,
-      "description": "absis",
+      "description": "l'absis",
       "zIndex": 3,
       "points": [
         {
@@ -292,7 +292,7 @@
     {
       "id": "mur",
       "active": true,
-      "description": "mur",
+      "description": "el mur",
       "zIndex": 4,
       "points": [
         {
@@ -324,7 +324,7 @@
     {
       "id": "branques",
       "active": true,
-      "description": "branques",
+      "description": "les branques",
       "zIndex": 6,
       "points": [
         {
@@ -356,7 +356,7 @@
     {
       "id": "forat",
       "active": true,
-      "description": "forat",
+      "description": "el forat",
       "zIndex": 8,
       "points": [
         {
@@ -508,7 +508,7 @@
         "x": 244,
         "y": 214
       },
-      "description": "branca trencada"
+      "description": "la branca trencada"
     },
     {
       "id": "cera",
@@ -548,7 +548,7 @@
         "x": 102,
         "y": 215
       },
-      "description": "cosa vermella"
+      "description": "la cosa vermella"
     },
     {
       "id": "faristol",
@@ -588,7 +588,7 @@
         "x": 360,
         "y": 228
       },
-      "description": "faristol del jutge"
+      "description": "el faristol del jutge"
     },
     {
       "id": "ordre",
@@ -628,7 +628,7 @@
         "x": 360,
         "y": 183
       },
-      "description": "ordre del jutge"
+      "description": "l'ordre del jutge"
     },
     {
       "id": "pluja",

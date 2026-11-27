@@ -158,7 +158,7 @@
     {
       "id": "llinda",
       "active": true,
-      "description": "llinda",
+      "description": "la llinda",
       "zIndex": 1,
       "points": [
         {
@@ -190,7 +190,7 @@
     {
       "id": "porta_sant_pol",
       "active": true,
-      "description": "porta de Sant Pol",
+      "description": "la porta de Sant Pol",
       "zIndex": 2,
       "points": [
         {
@@ -222,7 +222,7 @@
     {
       "id": "campanar",
       "active": true,
-      "description": "campanar",
+      "description": "el campanar",
       "zIndex": 3,
       "points": [
         {
@@ -254,7 +254,7 @@
     {
       "id": "campana",
       "active": true,
-      "description": "campana",
+      "description": "la campana",
       "zIndex": 4,
       "points": [
         {
@@ -286,7 +286,7 @@
     {
       "id": "nau",
       "active": true,
-      "description": "nau sense parets",
+      "description": "la nau sense parets",
       "zIndex": 2,
       "points": [
         {
@@ -318,7 +318,7 @@
     {
       "id": "reixa",
       "active": true,
-      "description": "reixa del celler",
+      "description": "la reixa del celler",
       "zIndex": 6,
       "points": [
         {
@@ -350,7 +350,7 @@
     {
       "id": "casa_batlle",
       "active": true,
-      "description": "casa del batlle",
+      "description": "la casa del batlle",
       "zIndex": 7,
       "points": [
         {
@@ -458,7 +458,7 @@
         "x": 188,
         "y": 182
       },
-      "description": "queixa"
+      "description": "la queixa"
     },
     {
       "id": "dones",
@@ -501,7 +501,7 @@
         "x": 494,
         "y": 162
       },
-      "description": "dones"
+      "description": "les dones"
     },
     {
       "id": "corda_campana",

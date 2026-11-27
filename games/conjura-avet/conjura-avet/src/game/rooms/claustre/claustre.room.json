@@ -58,7 +58,7 @@
     {
       "id": "porta_monestir",
       "active": true,
-      "description": "sortida",
+      "description": "la sortida",
       "zIndex": 0,
       "points": [
         {
@@ -91,7 +91,7 @@
     {
       "id": "porta_bugaderia",
       "active": true,
-      "description": "bugaderia",
+      "description": "la bugaderia",
       "zIndex": 1,
       "points": [
         {
@@ -124,7 +124,7 @@
     {
       "id": "porta_apotecaria",
       "active": true,
-      "description": "apotecaria",
+      "description": "l'apotecaria",
       "zIndex": 2,
       "points": [
         {
@@ -157,7 +157,7 @@
     {
       "id": "galeria",
       "active": true,
-      "description": "galeria",
+      "description": "la galeria",
       "zIndex": 3,
       "points": [
         {
@@ -189,7 +189,7 @@
     {
       "id": "pica",
       "active": true,
-      "description": "pica",
+      "description": "la pica",
       "zIndex": 4,
       "points": [
         {
@@ -221,7 +221,7 @@
     {
       "id": "gespa",
       "active": true,
-      "description": "gespa",
+      "description": "la gespa",
       "zIndex": 5,
       "points": [
         {
@@ -253,7 +253,7 @@
     {
       "id": "campanar",
       "active": true,
-      "description": "campanar",
+      "description": "el campanar",
       "zIndex": 6,
       "points": [
         {
@@ -285,7 +285,7 @@
     {
       "id": "banc",
       "active": true,
-      "description": "banc de pedra",
+      "description": "el banc de pedra",
       "zIndex": 7,
       "points": [
         {
@@ -317,7 +317,7 @@
     {
       "id": "porta_capitular",
       "active": true,
-      "description": "porta de la sala capitular",
+      "description": "la porta de la sala capitular",
       "zIndex": 8,
       "points": [
         {
@@ -425,7 +425,7 @@
         "x": 529,
         "y": 181
       },
-      "description": "morter"
+      "description": "el morter"
     },
     {
       "id": "llum_capvespre",

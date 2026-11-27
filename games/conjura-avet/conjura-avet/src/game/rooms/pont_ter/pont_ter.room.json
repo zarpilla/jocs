@@ -111,7 +111,7 @@
     {
       "id": "pont",
       "active": true,
-      "description": "Pont Vell",
+      "description": "el Pont Vell",
       "zIndex": 1,
       "points": [
         {
@@ -143,7 +143,7 @@
     {
       "id": "riu",
       "active": true,
-      "description": "riu",
+      "description": "el riu",
       "zIndex": 2,
       "points": [
         {
@@ -175,7 +175,7 @@
     {
       "id": "resclosa",
       "active": true,
-      "description": "resclosa",
+      "description": "la resclosa",
       "zIndex": 3,
       "points": [
         {
@@ -207,7 +207,7 @@
     {
       "id": "sobreeixidor",
       "active": true,
-      "description": "sobreeixidor",
+      "description": "el sobreeixidor",
       "zIndex": 4,
       "points": [
         {
@@ -239,7 +239,7 @@
     {
       "id": "comporta",
       "active": true,
-      "description": "comporta del rec",
+      "description": "la comporta del rec",
       "zIndex": 5,
       "points": [
         {
@@ -271,7 +271,7 @@
     {
       "id": "barca",
       "active": true,
-      "description": "barca d'en Joanet",
+      "description": "la barca d'en Joanet",
       "zIndex": 6,
       "points": [
         {
@@ -303,7 +303,7 @@
     {
       "id": "rec",
       "active": true,
-      "description": "rec del molí",
+      "description": "el rec del molí",
       "zIndex": 7,
       "points": [
         {
@@ -335,7 +335,7 @@
     {
       "id": "horts",
       "active": true,
-      "description": "horts",
+      "description": "els horts",
       "zIndex": 8,
       "points": [
         {
@@ -367,7 +367,7 @@
     {
       "id": "salze",
       "active": true,
-      "description": "salze",
+      "description": "el salze",
       "zIndex": 9,
       "points": [
         {
@@ -399,7 +399,7 @@
     {
       "id": "moli_lluny",
       "active": true,
-      "description": "molí",
+      "description": "el molí",
       "zIndex": 10,
       "points": [
         {

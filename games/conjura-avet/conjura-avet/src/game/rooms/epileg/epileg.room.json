@@ -97,7 +97,7 @@
     {
       "id": "absis",
       "active": true,
-      "description": "absis",
+      "description": "l'absis",
       "zIndex": 0,
       "points": [
         {
@@ -129,7 +129,7 @@
     {
       "id": "rodanxes",
       "active": true,
-      "description": "rodanxes",
+      "description": "les rodanxes",
       "zIndex": 1,
       "points": [
         {
@@ -161,7 +161,7 @@
     {
       "id": "arrels",
       "active": true,
-      "description": "arrels",
+      "description": "les arrels",
       "zIndex": 2,
       "points": [
         {
@@ -193,7 +193,7 @@
     {
       "id": "carretilla",
       "active": true,
-      "description": "civera",
+      "description": "la civera",
       "zIndex": 3,
       "points": [
         {
@@ -225,7 +225,7 @@
     {
       "id": "forat_nou",
       "active": true,
-      "description": "forat",
+      "description": "el forat",
       "zIndex": 4,
       "points": [
         {
@@ -333,7 +333,7 @@
         "x": 242,
         "y": 209
       },
-      "description": "tros de fusta"
+      "description": "el tros de fusta"
     },
     {
       "id": "forat_gran",

@@ -151,7 +151,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "sortida al claustre",
+      "description": "la sortida al claustre",
       "zIndex": 0,
       "points": [
         {
@@ -184,7 +184,7 @@
     {
       "id": "bagul",
       "active": true,
-      "description": "bagul de roba vella",
+      "description": "el bagul de roba vella",
       "zIndex": 1,
       "points": [
         {
@@ -216,7 +216,7 @@
     {
       "id": "tina",
       "active": true,
-      "description": "tina gran",
+      "description": "la tina gran",
       "zIndex": 2,
       "points": [
         {
@@ -248,7 +248,7 @@
     {
       "id": "fogo",
       "active": true,
-      "description": "fogó",
+      "description": "el fogó",
       "zIndex": 3,
       "points": [
         {
@@ -280,7 +280,7 @@
     {
       "id": "llenya_pi",
       "active": true,
-      "description": "llenya de pi",
+      "description": "la llenya de pi",
       "zIndex": 4,
       "points": [
         {
@@ -312,7 +312,7 @@
     {
       "id": "llenya_pollancre",
       "active": true,
-      "description": "llenya de pollancre",
+      "description": "la llenya de pollancre",
       "zIndex": 5,
       "points": [
         {
@@ -344,7 +344,7 @@
     {
       "id": "llenya_alzina",
       "active": true,
-      "description": "llenya d'alzina",
+      "description": "la llenya d'alzina",
       "zIndex": 6,
       "points": [
         {
@@ -376,7 +376,7 @@
     {
       "id": "robes",
       "active": true,
-      "description": "robes esteses",
+      "description": "les robes esteses",
       "zIndex": 7,
       "points": [
         {
@@ -484,7 +484,7 @@
         "x": 499,
         "y": 116
       },
-      "description": "tisores"
+      "description": "les tisores"
     },
     {
       "id": "bagul_obert",
