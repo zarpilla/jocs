@@ -1115,3 +1115,7 @@ GEOMETRIA = {
                     'whenPropVisible': 'llum_mati'}],
     },
 }
+# El rec comença on acaba la comporta: si no, la seva zona (més amunt de profunditat) es menja la meitat dreta de la
+# comporta i el rètol hi diu «el rec del molí».
+_rc, _rr = GEOMETRIA['things']['comporta']['rect'], GEOMETRIA['things']['rec']['rect']
+GEOMETRIA['things']['rec']['rect'] = (max(_rr[0], _rc[2] + 1),) + tuple(_rr[1:])
