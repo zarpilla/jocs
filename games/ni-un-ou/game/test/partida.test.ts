@@ -121,6 +121,28 @@ describe('Coherència (segona repassada)', () => {
     expect(n.getVar('escena')).toBe(3);
   });
 
+  it("Escena 2 → 3 a la infermeria: si l'última revisió és allà, s'hi torna a entrar amb l'Escena 3 (tasca 097)", () => {
+    const { n, p } = partida();
+    escena1(p);
+    p.talk('bastida', 'mar', 'adeu');
+    anar(p, 'coberta_proa');
+    p.talk('juana', 'valvula');
+    anar(p, 'infermeria');
+    p.talk('fitxes', 'capitana');
+    p.talk('capitana', 'gasoil', 'fi');
+    p.talk('fitxes', 'nadia');
+    p.talk('nadia', 'fi');
+    p.talk('fitxes', 'tomas');
+    p.talk('tomas', 'fi');
+    p.talk('fitxes', 'marcel');
+    const lines = p.talk('marcel', 'fi');
+    expect(n.getVar('escena')).toBe(3);
+    expect(p.room).toBe('infermeria');
+    // El títol de l'hora i, tot seguit, l'onEnter de l'Escena 3 a la infermeria.
+    expect(keys(lines)).toContain('esc.onze');
+    expect(keys(lines)).toContain('sala.infermeria.15');
+  });
+
   it("Escena 7: si l'Iri no ha passat pel pallol, el secret del Marcel encara hi és", () => {
     const { n, p } = partida();
     escena1(p); escena2(p); escena3(p); escena4(p); escena5(p);
