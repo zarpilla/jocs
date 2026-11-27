@@ -107,10 +107,11 @@ def _paret(t=0.0):
 
 
 @functools.lru_cache(maxsize=None)
-def _mobles():
-    """L'escriptori, el faristol i la prestatgeria, plans sobre transparent (en surten els retalls)."""
+def _mobles(obert=False):
+    """L'escriptori, el faristol i la prestatgeria, plans sobre transparent (en surten els retalls). `obert`: amb el
+    calaix del pany estirat."""
     cv = Canvas(light=_tex_light(), transparent=True)
-    PL.desk(cv)
+    PL.desk(cv, obert)
     PL.lectern(cv)
     PL.shelves(cv)
     img = cv.img
@@ -212,11 +213,11 @@ def _rug_pt(lx, y, lz):
     return (cx + lx * c - lz * s, y, cz + lx * s + lz * c)
 
 
-def escena(cv, tex=None):
-    """Tota la sala, de lluny a prop. → l'Escena (qui ha pintat què)."""
+def escena(cv, tex=None, obert=False):
+    """Tota la sala, de lluny a prop. → l'Escena (qui ha pintat què). `obert`: el calaix del pany, estirat."""
     e = Escena(cv, CAM, LLUMS, ambient=-0.45)
     zn = CAM.pos[2] + 60
-    paret, mob = tex or _paret(), _mobles()
+    paret, mob = tex or _paret(), _mobles(obert)
     # el sostre, fosc
     e.quad('sostre', (0, HW, zn), (XR, HW, zn), (XR, HW, ZW), (0, HW, ZW), ramp=WALNUT, lvl=0.6, dues_cares=True)
     # la paret de la finestra (x = 0): de prop, paper pintat; cap a la cantonada, el dibuix pla (x 0..240)
@@ -280,6 +281,8 @@ def escena(cv, tex=None):
                           'dreta': {'ramp': WALNUT, 'lvl': lambda s, t, P: 1.6 + (0.8 if t < 6 else 0)},
                           'dalt': {'ramp': LAMPG, 'lvl': lambda s, t, P: 3.6 if (s < 5 or s > w - 5 or t < 4 or t > d - 4)
                                    else (2.6 if (s < 6 or s > w - 6 or t < 5 or t > d - 5) else 1.5 + (hr(int(s) // 2, int(t), 5) - 0.5) * 0.3)}})
+    if obert:
+        _calaix_obert(e)
     # (la vora del tauler, de noguera, i el filet daurat de la pell)
     for (s0, s1, t0, t1, rp, lv) in ((0, w, 0, 4, WALNUT, 3.6), (0, w, d - 4, d, WALNUT, 3.0), (0, 5, 0, d, WALNUT, 3.4),
                                      (w - 5, w, 0, d, WALNUT, 3.2)):
@@ -321,16 +324,52 @@ def escena(cv, tex=None):
     return e
 
 
+def _calaix_obert(e):
+    """El calaix del pany M-3, estirat: surt del forat (380..457 × 175..196 al dibuix pla), buit, amb el pany al
+    davant. És un calaix baix (una safata): des de la càmera, alta, se'n veu el fons, de fusta clara."""
+    cx, cz, w, d, h, a = DESK
+    x0, x1 = _desk_fx(382), _desk_fx(455)
+    yb = h - (195 - 161) * h / 44                      # (el davant de l'escriptori: 161..205 al dibuix pla)
+    hc = 9                                             # l'alçada del calaix
+    fons, surt = 30, 26                                # el calaix fa 30 de fons; en surten 26
+    lz0 = -d / 2 - surt
+    cw = x1 - x0
+
+    def box(lx, lz, ww, dd, hh, lvl, y0, cares=None):
+        X, _, Z = _desk_pt(lx, 0, lz)
+        e.caixa_girada('calaix', X, Z, ww, dd, hh, a, WALNUT, lvl, y0=y0, cares=cares)
+
+    # el fons, de fusta clara (buit: els plànols ja són a l'inventari)
+    box((x0 + x1) / 2, lz0 + fons / 2, cw, fons, 1, 3.0, yb,
+        cares={'dalt': {'ramp': WALNUT, 'lvl': lambda s, t, P: 3.6 + (hr(int(s) // 3, int(t) // 2, 9) - 0.5) * 0.4
+                        - max(0.0, t - fons + 10) * 0.15}})
+    # els costats i el darrere (prims, amb el cantell clar)
+    for lx in (x0 + 1, x1 - 1):
+        box(lx, lz0 + fons / 2, 2, fons, hc, 2.4, yb, cares={'dalt': {'ramp': WALNUT, 'lvl': 4.4}})
+    box((x0 + x1) / 2, lz0 + fons - 1, cw, 2, hc, 1.6, yb, cares={'dalt': {'ramp': WALNUT, 'lvl': 4.0}})
+    # el davant, amb el pany
+    box((x0 + x1) / 2, lz0 + 1.5, cw + 2, 3, hc + 3, 2.9, yb - 1,
+        cares={'dalt': {'ramp': WALNUT, 'lvl': 4.6},
+               'davant': {'ramp': WALNUT, 'lvl': lambda s, t, P: 2.9 + (hr(int(s) // 2, 3) - 0.5) * 0.3}})
+    pcx = _desk_fx(418.5)
+    for (dx, y0_, y1_, lvl) in ((4, yb + 2, yb + 10, 3.4), (1.5, yb + 4, yb + 7, 0.4)):
+        e.quad('calaix', _desk_pt(pcx - dx, y1_, lz0 - 0.3), _desk_pt(pcx + dx, y1_, lz0 - 0.3), _desk_pt(pcx + dx, y0_, lz0 - 0.3),
+               _desk_pt(pcx - dx, y0_, lz0 - 0.3), ramp=IRON, lvl=lvl, dues_cares=True)
+    # l'ombra del calaix al terra
+    e.foscor('calaix', _desk_pt(x0 - 2, 0.7, lz0 - 5), _desk_pt(x1 + 5, 0.7, lz0 - 5), _desk_pt(x1 + 5, 0.7, -d / 2),
+             _desk_pt(x0 - 2, 0.7, -d / 2), lambda s, t: 0.35)
+
+
 def fbm_pel(s, t):
     return hr(int(s) // 2, int(t) // 2, 17)
 
 
 # ─── Composició ─────────────────────────────────────────────────────────────
 
-def _render(tex=None):
+def _render(tex=None, obert=False):
     cv = Canvas(light=LIGHT)
     cv.S = 1                                                       # (tres_d: un píxel de sala per píxel real)
-    e = escena(cv, tex)
+    e = escena(cv, tex, obert)
     cv.rect(0, BOTTOM + 1, W - 1, H - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
     return cv.img, e
 
@@ -345,7 +384,14 @@ def bg(cv, t=0.0):
     cv.P = cv.img.load()
 
 
-PROPS = {}
+def _calaix_prop(cv):
+    """El calaix obert (decorat `calaix_obert`): la sala amb el calaix estirat, menys la de sempre."""
+    img, _ = _render(obert=True)
+    cv.img.alpha_composite(frame_diff(img, _base()[0]))
+    cv.P = cv.img.load()
+
+
+PROPS = {'calaix_obert': _calaix_prop}
 
 
 # ─── Animació: el fum, les estrelles, els forns i la pols al raig de la lluna ─

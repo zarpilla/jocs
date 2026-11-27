@@ -600,6 +600,21 @@
       },
       "zIndex": 26,
       "baseline": 999
+    },
+    {
+      "id": "nau_fora",
+      "tag": "nau_fora",
+      "animations": {
+        "nau_fora": {},
+        "surt": {
+          "loop": false,
+          "frameDuration": 140
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [
@@ -629,7 +644,7 @@
         "y": 104,
         "radius": 200,
         "color": "#ff8a3c",
-        "intensity": 1
+        "intensity": 1.0
       },
       {
         "x": 513,

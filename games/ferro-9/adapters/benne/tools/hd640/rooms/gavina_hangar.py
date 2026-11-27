@@ -245,9 +245,11 @@ _PD0, _PD1 = math.asin(-23 / _FR), math.asin(25 / _FR)
 _UPANY, _UB = (77 + 8) * NAU_L / _FL, (40 * NAU_L / _FL, 126 * NAU_L / _FL)   # el pany; el bressol
 
 
-def _nau():
-    d = (-math.cos(NAU_ANG), 0.0, -math.sin(NAU_ANG))              # de la cua cap al morro
-    nose = (SHUTTLE_X + d[0] * NAU_L / 2, NAU_Y, SHUTTLE_Z + d[2] * NAU_L / 2)
+def _nau(pose=None):
+    """La nau al seu bressol; amb `pose` = (x, alçada de l'eix, z, gir), on la deixa l'animació de sortir."""
+    cx, cy, cz, ang = pose or (SHUTTLE_X, NAU_Y, SHUTTLE_Z, NAU_ANG)
+    d = (-math.cos(ang), 0.0, -math.sin(ang))                      # de la cua cap al morro
+    nose = (cx + d[0] * NAU_L / 2, cy, cz + d[2] * NAU_L / 2)
     return FL.Nau(nose, d, 0.0, L=NAU_L, R=NAU_R, espill=True)
 
 
@@ -301,10 +303,26 @@ def _cap_a_camera(P, v):
     return sum(v[i] * (ull[i] - P[i]) for i in range(3)) > 0
 
 
-def _llancadora_3d(e, porta=False, sid='llancadora', M=28):
+def _bressol_3d(e, sid='llancadora'):
+    """El bressol: dues potes de ferro amb el seient i el peu (on seu la nau, quieta)."""
+    nv0 = _nau()
+    L, R = nv0.L, nv0.R
+    for ub in _UB:
+        q = nv0.p(ub, math.pi / 2, FL.radi(ub, L, R))
+        fx, fz, fy = q[0], q[2], q[1]
+        e.caixa_girada(sid, fx, fz, 22, 22, 4, NAU_ANG, IRON, 2.6,
+                       cares={'dalt': {'ramp': IRON, 'lvl': 3.4}, 'davant': {'ramp': IRON, 'lvl': 2.4}})
+        e.tub(sid, (fx, 4, fz), (fx, fy - 3, fz), 4.0, IRON, 2.4)
+        e.caixa_girada(sid, fx, fz, 9, R * 1.5, 6, NAU_ANG, IRON, 2.6, y0=fy - 4,
+                       cares={'dalt': {'ramp': IRON, 'lvl': 3.6}, 'davant': {'ramp': IRON, 'lvl': 2.8}})
+    return nv0
+
+
+def _llancadora_3d(e, porta=False, sid='llancadora', M=28, pose=None):
     """La llançadora vella a la badia, girada (es veu el flanc, el morro i el llom): el casc de facetes amb la
-    textura desplegada, el bressol de dues potes, la tobera, les tres aletes i, oberta, la fulla de la porta."""
-    nv = _nau()
+    textura desplegada, el bressol de dues potes, la tobera, les tres aletes i, oberta, la fulla de la porta. Amb
+    `pose`, la nau és on la deixa l'animació de sortir (el bressol es queda al seu lloc)."""
+    nv = _nau(pose)
     L, R = nv.L, nv.R
     d = nv.d
     c = nv.eix(L / 2)
@@ -343,15 +361,11 @@ def _llancadora_3d(e, porta=False, sid='llancadora', M=28):
         pa = -math.pi + j * dphi
         e.quad(sid, nv.eix(L), nv.eix(L), nv.p(L, pa + dphi, rc), nv.p(L, pa, rc), ramp=OLDHULL, lvl=1.4,
                dues_cares=True)
-    # el bressol: dues potes de ferro amb el seient i el peu
-    for ub in _UB:
-        q = nv.p(ub, math.pi / 2, FL.radi(ub, L, R))
-        fx, fz, fy = q[0], q[2], q[1]
-        e.caixa_girada(sid, fx, fz, 22, 22, 4, NAU_ANG, IRON, 2.6,
-                       cares={'dalt': {'ramp': IRON, 'lvl': 3.4}, 'davant': {'ramp': IRON, 'lvl': 2.4}})
-        e.tub(sid, (fx, 4, fz), (fx, fy - 3, fz), 4.0, IRON, 2.4)
-        e.caixa_girada(sid, fx, fz, 9, R * 1.5, 6, NAU_ANG, IRON, 2.6, y0=fy - 4,
-                       cares={'dalt': {'ramp': IRON, 'lvl': 3.6}, 'davant': {'ramp': IRON, 'lvl': 2.8}})
+    _bressol_3d(e, sid)
+    # la tobera encesa (sortint): un con de flama blava darrere la cua
+    if pose is not None:
+        for k_, (rr, lv) in enumerate(((7.0, 5.4), (4.5, 6.0))):
+            e.tub(sid, nv.eix(L + 12), nv.eix(L + 30 - k_ * 8), rr * R / FL.RAD, CYAN, lv, llum_dir=(0.0, 1.0))
     # el casc
     tex = _nau_tex(porta)
     us = [0.02, 0.6, 1.5, 3, 5, 8, 11.5, 15.5, 20, 25, 30, 36, 42] + \
@@ -383,8 +397,9 @@ def _llancadora_3d(e, porta=False, sid='llancadora', M=28):
 
 
 @functools.lru_cache(maxsize=None)
-def _badia_fons():
-    """El fons de la badia (x del pla = x del món − 100): la porta exterior amb la finestreta a l'espai."""
+def _badia_fons(obre=0.0):
+    """El fons de la badia (x del pla = x del món − 100): la porta exterior amb la finestreta a l'espai. `obre`
+    (0..1): les dues fulles s'amaguen dins la paret i deixen veure l'espai."""
     w = CX1 - CX0
     cv = Canvas(w, H, light=Light(ambient=0.3, vignette=None, floor_fade=None))
     for y in range(CTOP, FLOOR_Y):
@@ -408,7 +423,28 @@ def _badia_fons():
         for x in range(dx0 + 2, dx1 - 1):
             yel = ((x + y) // 7) % 2 == 0
             cv.put(x, y, WARN if yel else STEEL, (1.8 if yel else 0.4), 0)
+    if obre > 0:
+        g0, g1 = PORTA_FORAT(obre)
+        for y in range(dy0 + 2, FLOOR_Y):
+            for x in range(int(g0), int(g1) + 1):
+                cv.put(x, y, SPACE, 1.0 + (y - dy0) * 0.012, 0)
+        for k in range(40):                                        # les estrelles
+            x, y = dx0 + 2 + int(hr(k, 5) * (dx1 - dx0 - 4)), dy0 + 4 + int(hr(k, 6) * (FLOOR_Y - dy0 - 8))
+            if g0 + 1 < x < g1 - 1:
+                cv.flat(x, y, (230, 236, 255) if k % 3 else (150, 164, 220))
+        cv.vline(int(g0), dy0 + 2, FLOOR_Y - 1, STEEL, 3.0, 0)                  # els cantells de les fulles
+        cv.vline(int(g1), dy0 + 2, FLOOR_Y - 1, STEEL, 1.2, 0)
     return cv.img
+
+
+DOOR_DX = (150, 300, 70)                               # la porta exterior, al dibuix del fons: x0, x1, y de dalt
+
+
+def PORTA_FORAT(obre):
+    """On és el forat de la porta exterior (x0, x1 al dibuix del fons) quan s'ha obert `obre`."""
+    dx0, dx1, _ = DOOR_DX
+    mid, half = (dx0 + dx1) / 2, (dx1 - dx0) / 2 - 2
+    return mid - half * obre, mid + half * obre
 
 
 # ─── Les superfícies ────────────────────────────────────────────────────────
@@ -456,6 +492,9 @@ def escena(cv, tex, estat=frozenset()):
     'marca', 'nota'). → l'Escena."""
     # 'pujant:<k>' (amb 'oberta'): la comporta a mig pujar, k de 0 (tancada) a 1 (oberta del tot)
     pujada = next((float(x.split(':')[1]) for x in estat if x.startswith('pujant:')), 1.0)
+    # 'surt:<k>' (amb 'oberta'): la llançadora se'n va, k de 0 (al bressol) a 1 (fora, per la porta exterior)
+    surt = next((float(x.split(':')[1]) for x in estat if x.startswith('surt:')), None)
+    obre, pose = (_surt_pose(surt) if surt is not None else (0.0, None))
     llums = LLUMS + ([Llum(((_w(CX0) + _w(CX1)) / 2, 120, 420), 260, 0.6 * pujada)] if 'oberta' in estat else [])
     e = Escena(cv, CAM, llums, ambient=-0.2)
     zn = CAM.pos[2] + 60
@@ -463,8 +502,9 @@ def escena(cv, tex, estat=frozenset()):
     bx0, bx1, by = _w(CX0), _w(CX1), _y(CTOP)
     # ── la badia (darrere la comporta oberta) ──
     if 'oberta' in estat:
+        fons = _badia_fons(obre) if obre else tex['badia']
         e.quad('badia', (bx0, by, BAY_Z), (bx1, by, BAY_Z), (bx1, 0, BAY_Z), (bx0, 0, BAY_Z),
-               tex=(tex['badia'], (0, CTOP, CX1 - CX0, FLOOR_Y)))
+               tex=(fons, (0, CTOP, CX1 - CX0, FLOOR_Y)))
         panells = lambda s, t, P: 0.9 + (0.5 if int(P[2]) % 53 < 2 else 0) + (hr(int(P[2]) // 53, int(t) // 44) - 0.5) * 0.3  # noqa: E731
         e.quad('badia', (bx0, by, ZW), (bx0, by, BAY_Z), (bx0, 0, BAY_Z), (bx0, 0, ZW), ramp=STEEL, lvl=panells)
         e.quad('badia', (bx1, by, BAY_Z), (bx1, by, ZW), (bx1, 0, ZW), (bx1, 0, BAY_Z), ramp=STEEL, lvl=panells)
@@ -478,10 +518,25 @@ def escena(cv, tex, estat=frozenset()):
         for gx in (bx0 + 26, bx1 - 26):
             e.caixa('badia', gx - 3, gx + 3, 0, by - 8, BAY_Z - 70, BAY_Z - 64, STEEL, 2.4)
         e.caixa('badia', bx0 + 20, bx1 - 20, by - 14, by - 8, BAY_Z - 70, BAY_Z - 64, STEEL, 2.8)
-        nv = _llancadora_3d(e, 'porta' in estat)
-        q = nv.p(150 * NAU_L / _FL, 0.75)                          # (la mànega entra al flanc, a popa)
-        e.cable('badia', [(bx0 + 4, 6, ZW - 6), (bx0 + 40, 1, ZW + 30), (q[0] - 50, 1, q[2] - 30),
-                          (q[0] - 4, q[1] - 14, q[2] - 4), q], RUST, 2.6, gruix=3.0)
+        if pose != 'fora':
+            nv = _llancadora_3d(e, 'porta' in estat, pose=pose)
+        else:                                                     # (se n'ha anat: el bressol, buit)
+            nv = _bressol_3d(e)
+        q = _nau().p(150 * NAU_L / _FL, 0.75)                     # (la mànega entra al flanc, a popa)
+        if pose is None:
+            e.cable('badia', [(bx0 + 4, 6, ZW - 6), (bx0 + 40, 1, ZW + 30), (q[0] - 50, 1, q[2] - 30),
+                              (q[0] - 4, q[1] - 14, q[2] - 4), q], RUST, 2.6, gruix=3.0)
+        else:                                                     # (deslligada: cau a terra)
+            e.cable('badia', [(bx0 + 4, 6, ZW - 6), (bx0 + 40, 1, ZW + 30), (q[0] - 50, 1, q[2] - 30),
+                              (q[0] - 10, 1, q[2] - 6)], RUST, 2.6, gruix=3.0)
+        if pose not in (None, 'fora') and pose[2] > BAY_Z - NAU_L / 2:
+            # la nau passa la porta exterior: el que en queda més enllà de la paret del fons, el torna a tapar la
+            # paret (al voltant del forat)
+            g0, g1 = PORTA_FORAT(obre)
+            dy0 = DOOR_DX[2] - CTOP
+            e.quad('badia', (bx0, by, BAY_Z), (bx1, by, BAY_Z), (bx1, 0, BAY_Z), (bx0, 0, BAY_Z),
+                   tex=(fons, (0, CTOP, CX1 - CX0, FLOOR_Y)),
+                   forma=lambda s_, t_: not (g0 < s_ < g1 and t_ > dy0))
         for k in range(40):                                       # pols a l'aire, a la llum
             P = (bx0 + 20 + hr(k, 1) * (bx1 - bx0 - 40), 20 + hr(k, 2) * 120, ZW + 20 + hr(k, 3) * 200)
             u, v, _ = CAM.projecta(P)
@@ -704,6 +759,36 @@ def _ambient_frames(n=24):
     return out
 
 
+def _ease(x):
+    x = max(0.0, min(1.0, x))
+    return x * x * (3 - 2 * x)
+
+
+def _surt_pose(k):
+    """L'animació de sortir, al moment k (0..1) → (obertura de la porta exterior, pose de la nau): la porta s'obre,
+    la nau s'enlaira del bressol, gira el morro cap a la porta i hi entra."""
+    obre = _ease(k / 0.3)
+    alca = _ease(k / 0.35) * 22
+    gir = _ease((k - 0.2) / 0.4)
+    va = _ease((k - 0.5) / 0.5) ** 1.6
+    dx0, dx1, _ = DOOR_DX
+    porta_x = _w(CX0) + (dx0 + dx1) / 2                             # (el dibuix del fons comença a la x de la comporta)
+    ang = NAU_ANG + (-math.pi / 2 - NAU_ANG) * gir
+    if k >= 1:
+        return obre, 'fora'
+    # primer s'enlaira i gira al seu lloc; després se'n va pel raig de la càmera que passa pel mig de la porta (així,
+    # a l'espai, es veu sempre dins el forat, cada cop més petita)
+    S0 = (SHUTTLE_X, NAU_Y + alca, SHUTTLE_Z)
+    by = _y(CTOP)
+    D = (porta_x, (by - (DOOR_DX[2] - CTOP)) * 0.45, BAY_Z)
+    C = CAM.pos
+    lam = 1 + 9 * va ** 1.5
+    T = tuple(C[i] + (D[i] - C[i]) * lam for i in range(3))
+    b = _ease(va / 0.25)
+    P = tuple(S0[i] + (T[i] - S0[i]) * b for i in range(3))
+    return obre, (P[0], P[1], P[2], ang)
+
+
 # La comporta puja (la Vet hi encaixa la biga de ferro-9 i empeny): una altra etiqueta del prop `llancadora` (la badia
 # oberta), que una indicació d'escena hi posa; es queda a l'últim fotograma, que és el mateix decorat obert.
 PUJA = (0.0, 0.03, 0.08, 0.15, 0.24, 0.34, 0.46, 0.58, 0.7, 0.81, 0.91, 0.97, 1.0)
@@ -714,9 +799,20 @@ def _frames_puja():
     return [diff(_estat('oberta', f'pujant:{k}')[0], base) for k in PUJA]
 
 
+# La llançadora se'n va (la fugida de la Vet): una altra etiqueta del prop `llancadora`; l'últim fotograma és la
+# badia buida, amb la porta exterior oberta a l'espai.
+SURT = tuple(i / 23 for i in range(24))
+
+
+def _frames_surt():
+    base = _base()[0]
+    return [diff(_estat('oberta', f'surt:{k}')[0], base) for k in SURT]
+
+
 ANIMS = {
     'ambient': {'frames': _ambient_frames, 'frameDuration': 120},
     'puja': {'frames': _frames_puja, 'frameDuration': 160, 'loop': False, 'prop': 'llancadora'},
+    'surt': {'frames': _frames_surt, 'frameDuration': 140, 'loop': False, 'prop': 'llancadora'},
 }
 
 

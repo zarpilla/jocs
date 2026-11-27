@@ -647,8 +647,9 @@ def blueprint(cv):
         cv.put(x, y + 1, GOLD, 1.6)
 
 
-def desk(cv):
-    """L'escriptori, amb el calaix del pany M-3, l'expedient del Sic, el tinter i la làmpada de banquer."""
+def desk(cv, obert=False):
+    """L'escriptori, amb el calaix del pany M-3, l'expedient del Sic, el tinter i la làmpada de banquer. `obert`: el
+    calaix central estirat (al seu lloc, el forat fosc; el calaix, amb volum, el posa fabrica_despatx.py)."""
     DX0, DX1 = 355, 491
     TOP_BACK, TOP_FRONT = 151, 161
     # ombra al terra
@@ -679,15 +680,23 @@ def desk(cv):
         drawer(360, y0, 375, y1)
         drawer(463, y0, 485, y1)
     # calaix central amb el pany M-3
-    drawer(380, 175, 457, 196, handle=False)
-    cv.rect(413, 180, 424, 191, IRON, lambda x, y: 3.0 - (x - 413) * 0.15 - (y - 180) * 0.12)
-    cv.hline(413, 424, 180, IRON, 4.0)
-    for px, py in ((414, 181), (423, 181), (414, 190), (423, 190)):
-        cv.put(px, py, IRON, 4.6)
-    cv.disc(418.5, 185.5, 3.5, 3.5, CYAN, lambda nx, ny: 3.4 - nx - ny, 0)
-    cv.put(417, 184, CYAN, 5, 0)
-    cv.put(418, 184, CYAN, 4.4, 0)
-    cv.glow(418.5, 185.5, 19, (100, 200, 255), 0.55)
+    if obert:
+        # el forat: fosc, amb la vora de dalt il·luminada i les guies als costats
+        cv.rect(380, 175, 457, 196, WALNUT, lambda x, y: 0.15 + max(0.0, (y - 186) / 10) * 0.35)
+        cv.hline(380, 457, 175, WALNUT, 3.6)
+        cv.vline(381, 176, 196, WALNUT, 1.0)
+        cv.vline(456, 176, 196, WALNUT, 0.8)
+    else:
+        drawer(380, 175, 457, 196, handle=False)
+    if not obert:                                               # (el pany va amb el calaix)
+        cv.rect(413, 180, 424, 191, IRON, lambda x, y: 3.0 - (x - 413) * 0.15 - (y - 180) * 0.12)
+        cv.hline(413, 424, 180, IRON, 4.0)
+        for px, py in ((414, 181), (423, 181), (414, 190), (423, 190)):
+            cv.put(px, py, IRON, 4.6)
+        cv.disc(418.5, 185.5, 3.5, 3.5, CYAN, lambda nx, ny: 3.4 - nx - ny, 0)
+        cv.put(417, 184, CYAN, 5, 0)
+        cv.put(418, 184, CYAN, 4.4, 0)
+        cv.glow(418.5, 185.5, 19, (100, 200, 255), 0.55)
     # tauler: gruix frontal i superfície amb pell verda
     cv.rect(DX0, 161, DX1, 167, WALNUT, lambda x, y: [4.8, 4.4, 4.0, 3.4, 3.0, 2.2, 1.0][y - 161])
     for y in range(TOP_BACK, TOP_FRONT):

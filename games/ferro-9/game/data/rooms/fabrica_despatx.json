@@ -332,5 +332,12 @@
         }
       ]
     }
+  },
+  "decor": {
+    "calaix_obert": {
+      "visibleIf": {
+        "flag": "planols_robats"
+      }
+    }
   }
 }

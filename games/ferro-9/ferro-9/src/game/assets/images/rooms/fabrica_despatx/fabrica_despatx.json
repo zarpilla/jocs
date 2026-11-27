@@ -23,6 +23,27 @@
     },
     "fabrica_despatx 1.aseprite": {
       "frame": {
+        "x": 2094,
+        "y": 360,
+        "w": 67,
+        "h": 41
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 247,
+        "y": 125,
+        "w": 67,
+        "h": 41
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_despatx 2.aseprite": {
+      "frame": {
         "x": 1807,
         "y": 360,
         "w": 112,
@@ -42,7 +63,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 2.aseprite": {
+    "fabrica_despatx 3.aseprite": {
       "frame": {
         "x": 1682,
         "y": 0,
@@ -63,7 +84,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 3.aseprite": {
+    "fabrica_despatx 4.aseprite": {
       "frame": {
         "x": 1884,
         "y": 0,
@@ -84,7 +105,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 4.aseprite": {
+    "fabrica_despatx 5.aseprite": {
       "frame": {
         "x": 2086,
         "y": 0,
@@ -105,7 +126,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 5.aseprite": {
+    "fabrica_despatx 6.aseprite": {
       "frame": {
         "x": 2288,
         "y": 0,
@@ -126,7 +147,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 6.aseprite": {
+    "fabrica_despatx 7.aseprite": {
       "frame": {
         "x": 2477,
         "y": 0,
@@ -147,7 +168,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 7.aseprite": {
+    "fabrica_despatx 8.aseprite": {
       "frame": {
         "x": 2675,
         "y": 0,
@@ -168,7 +189,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 8.aseprite": {
+    "fabrica_despatx 9.aseprite": {
       "frame": {
         "x": 2873,
         "y": 0,
@@ -189,7 +210,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 9.aseprite": {
+    "fabrica_despatx 10.aseprite": {
       "frame": {
         "x": 3071,
         "y": 0,
@@ -210,7 +231,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 10.aseprite": {
+    "fabrica_despatx 11.aseprite": {
       "frame": {
         "x": 3269,
         "y": 0,
@@ -231,7 +252,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 11.aseprite": {
+    "fabrica_despatx 12.aseprite": {
       "frame": {
         "x": 3467,
         "y": 0,
@@ -252,7 +273,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 12.aseprite": {
+    "fabrica_despatx 13.aseprite": {
       "frame": {
         "x": 3665,
         "y": 0,
@@ -273,7 +294,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 13.aseprite": {
+    "fabrica_despatx 14.aseprite": {
       "frame": {
         "x": 3864,
         "y": 0,
@@ -294,7 +315,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 14.aseprite": {
+    "fabrica_despatx 15.aseprite": {
       "frame": {
         "x": 0,
         "y": 360,
@@ -315,7 +336,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 15.aseprite": {
+    "fabrica_despatx 16.aseprite": {
       "frame": {
         "x": 199,
         "y": 360,
@@ -336,7 +357,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 16.aseprite": {
+    "fabrica_despatx 17.aseprite": {
       "frame": {
         "x": 399,
         "y": 360,
@@ -357,7 +378,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 17.aseprite": {
+    "fabrica_despatx 18.aseprite": {
       "frame": {
         "x": 599,
         "y": 360,
@@ -378,7 +399,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 18.aseprite": {
+    "fabrica_despatx 19.aseprite": {
       "frame": {
         "x": 799,
         "y": 360,
@@ -399,7 +420,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 19.aseprite": {
+    "fabrica_despatx 20.aseprite": {
       "frame": {
         "x": 1481,
         "y": 0,
@@ -420,7 +441,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 20.aseprite": {
+    "fabrica_despatx 21.aseprite": {
       "frame": {
         "x": 1280,
         "y": 0,
@@ -441,7 +462,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 21.aseprite": {
+    "fabrica_despatx 22.aseprite": {
       "frame": {
         "x": 1000,
         "y": 360,
@@ -462,7 +483,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 22.aseprite": {
+    "fabrica_despatx 23.aseprite": {
       "frame": {
         "x": 1201,
         "y": 360,
@@ -483,7 +504,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 23.aseprite": {
+    "fabrica_despatx 24.aseprite": {
       "frame": {
         "x": 1403,
         "y": 360,
@@ -504,7 +525,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 24.aseprite": {
+    "fabrica_despatx 25.aseprite": {
       "frame": {
         "x": 1605,
         "y": 360,
@@ -525,7 +546,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 25.aseprite": {
+    "fabrica_despatx 26.aseprite": {
       "frame": {
         "x": 1919,
         "y": 360,
@@ -546,7 +567,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 26.aseprite": {
+    "fabrica_despatx 27.aseprite": {
       "frame": {
         "x": 2027,
         "y": 360,
@@ -567,7 +588,7 @@
       },
       "duration": 100
     },
-    "fabrica_despatx 27.aseprite": {
+    "fabrica_despatx 28.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -608,30 +629,37 @@
         "color": "#000000ff"
       },
       {
-        "name": "ambient",
+        "name": "calaix_obert",
         "from": 1,
-        "to": 24,
+        "to": 1,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_taula",
-        "from": 25,
+        "name": "ambient",
+        "from": 2,
         "to": 25,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_faristol",
+        "name": "davant_taula",
         "from": 26,
         "to": 26,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_faristol",
         "from": 27,
         "to": 27,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 28,
+        "to": 28,
         "direction": "forward",
         "color": "#000000ff"
       }

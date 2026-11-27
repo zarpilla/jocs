@@ -296,9 +296,37 @@ def escena(cv, tex, estat=frozenset()):
     zn = CAM.pos[2] + 60
     paret = tex['paret']
     gx0, gx1 = BX0 + 7, BX1 - 7
-    # ── la badia: la comporta al fons, les parets, el sostre i el terra ──
-    e.quad('comporta', (BX0, _y(12), ZB), (BX1, _y(12), ZB), (BX1, 0, ZB), (BX0, 0, ZB),
-           tex=(paret, (469, 12, 617, 189)))
+    # 'surt:<k>': la llançadora se'n va (la fugida de l'Iri), k de 0 (al bressol) a 1 (fora)
+    surt = next((float(x.split(':')[1]) for x in estat if x.startswith('surt:')), None)
+    obre, nau = _surt_moll(surt) if surt is not None else (0.0, (0.0, ZS))
+    hc = _y(12)                                                         # l'alçada de la comporta
+    sx0, sy0, sx1, sy1 = SHUT_BOX
+
+    def llancadora():
+        dy, zs = nau[0], nau[1]
+        dx = nau[2] if len(nau) > 2 else 0.0
+        if dy is None:
+            return
+        e.quad('llancadora', (_w(sx0) + dx, 207 - sy0 + dy, zs), (_w(sx1) + dx, 207 - sy0 + dy, zs),
+               (_w(sx1) + dx, 207 - sy1 + dy, zs), (_w(sx0) + dx, 207 - sy1 + dy, zs),
+               tex=(tex['llancadora'], (0, 0, sx1 - sx0, sy1 - sy0)))
+        if surt is not None and dy > 0:                                 # la tobera encesa, a popa (a la dreta)
+            tx, ty = _w(sx1) - 6 + dx, 207 - (sy0 + sy1) / 2 + dy - 4
+            e.tub('llancadora', (tx, ty, zs - 2), (tx + 26, ty, zs - 2), 7.0, NIT, 9.0, llum_dir=(0.0, 1.0))
+            e.tub('llancadora', (tx, ty, zs - 3), (tx + 16, ty, zs - 3), 4.0, NIT, 10.0, llum_dir=(0.0, 1.0))
+    # ── la badia: la comporta al fons (pujant, i la nit a fora), les parets, el sostre i el terra ──
+    if obre > 0:
+        e.quad('comporta', (BX0 - 60, hc + 60, ZB + 60), (BX1 + 60, hc + 60, ZB + 60), (BX1 + 60, -30, ZB + 60),
+               (BX0 - 60, -30, ZB + 60), tex=(_nit(), (0, 0, 400, 300)))
+        if nau[1] > ZB:
+            llancadora()
+        r0 = 12 + (189 - 12) * obre                                     # la fulla puja: se'n veu el tros de baix
+        if r0 < 188:
+            e.quad('comporta', (BX0, hc, ZB), (BX1, hc, ZB), (BX1, hc * obre, ZB), (BX0, hc * obre, ZB),
+                   tex=(paret, (469, r0, 617, 189)))
+    else:
+        e.quad('comporta', (BX0, _y(12), ZB), (BX1, _y(12), ZB), (BX1, 0, ZB), (BX0, 0, ZB),
+               tex=(paret, (469, 12, 617, 189)))
     e.quad('badia', (BX0, _y(12), ZW), (BX0, _y(12), ZB), (BX0, 0, ZB), (BX0, 0, ZW), ramp=BRICK,
            lvl=_mao(1.2, seed=8, beam=False))
     e.quad('badia', (BX1, _y(12), ZB), (BX1, _y(12), ZW), (BX1, 0, ZW), (BX1, 0, ZB), ramp=BRICK,
@@ -315,11 +343,12 @@ def escena(cv, tex, estat=frozenset()):
     e.foscor('badia_racons', (BX0, 0.6, ZB), (BX1, 0.6, ZB), (BX1, 0.6, ZW), (BX0, 0.6, ZW),
              lambda s, t: max(0.5 * max(0.0, 1 - s / 22), 0.5 * max(0.0, 1 - (BX1 - BX0 - s) / 22)))
     # la llançadora, nova de trinca, damunt el bressol (el dibuix pla, al seu pla)
-    sx0, sy0, sx1, sy1 = SHUT_BOX
-    e.foscor('badia_ombra', (_w(sx0) + 10, 0.7, ZS + 22), (_w(sx1) - 10, 0.7, ZS + 22), (_w(sx1) - 10, 0.7, ZS - 26),
-             (_w(sx0) + 10, 0.7, ZS - 26), lambda s, t: 0.55 * max(0.0, 1 - abs(t - 24) / 24))
-    e.quad('llancadora', (_w(sx0), 207 - sy0, ZS), (_w(sx1), 207 - sy0, ZS), (_w(sx1), 207 - sy1, ZS),
-           (_w(sx0), 207 - sy1, ZS), tex=(tex['llancadora'], (0, 0, sx1 - sx0, sy1 - sy0)))
+    if nau[0] is not None and nau[1] <= ZS + 1:
+        k_om = max(0.0, 1 - nau[0] / 30)
+        e.foscor('badia_ombra', (_w(sx0) + 10, 0.7, ZS + 22), (_w(sx1) - 10, 0.7, ZS + 22), (_w(sx1) - 10, 0.7, ZS - 26),
+                 (_w(sx0) + 10, 0.7, ZS - 26), lambda s, t: 0.55 * k_om * max(0.0, 1 - abs(t - 24) / 24))
+    if nau[1] <= ZB:
+        llancadora()
     # ── la paret del fons (z = 300): el dibuix pla fins a la badia, la llinda, el muntant i més maó ──
     e.quad('paret_fons', (0, HW, ZW), (_w(FB0), HW, ZW), (_w(FB0), 0, ZW), (0, 0, ZW), tex=(paret, (XL, 0, FB0, HW)))
     e.quad('paret_fons', (BX0, HW, ZW), (BX1, HW, ZW), (BX1, _y(12), ZW), (BX0, _y(12), ZW),
@@ -435,6 +464,62 @@ def _post(img):
     bx, by = _proj(((BX0 + BX1) / 2 + 40, 186, ZS - 30))
     cv.glow(bx, by, 30, (255, 220, 160), 0.3)
     return img
+
+
+NIT = [(4, 8, 22), (10, 18, 44), (22, 36, 80), (44, 66, 120), (90, 120, 180), (160, 200, 240), (220, 240, 255),
+       (255, 255, 255), (255, 255, 255), (255, 255, 255), (255, 255, 255)]   # la nit; i, de dalt, la flama blanca
+
+
+@functools.lru_cache(maxsize=None)
+def _nit():
+    """El que es veu per la comporta oberta: el cel de nit, amb estrelles i la lluna, i la ciutat-fàbrica lluny."""
+    w, h = 400, 300
+    img = Image.new('RGBA', (w, h))
+    P = img.load()
+    for y in range(h):
+        for x in range(w):
+            k = y / h
+            P[x, y] = (int(8 + 18 * k), int(12 + 26 * k), int(30 + 46 * k), 255)
+    rnd = random.Random(4)
+    for _ in range(90):
+        x, y = rnd.randrange(w), rnd.randrange(int(h * 0.75))
+        c = rnd.choice(((230, 236, 255), (170, 182, 230), (255, 240, 200)))
+        P[x, y] = c + (255,)
+    for y in range(40, 76):                                            # la lluna
+        for x in range(250, 290):
+            d = math.hypot(x - 270, y - 58)
+            if d < 16:
+                P[x, y] = (226, 232, 240, 255) if d < 15 else (160, 170, 200, 255)
+    for x in range(w):                                                 # la ciutat-fàbrica, lluny, amb llums
+        top = int(h * 0.8 - 18 * hr(x // 14, 3) - (30 if hr(x // 40, 4) > 0.8 and x % 40 < 6 else 0))
+        for y in range(top, h):
+            lit = (x % 5 == 2 and y % 6 == 3 and hr(x, y, 7) > 0.7)
+            P[x, y] = (255, 196, 110, 255) if lit else (10, 12, 20, 255)
+    return img
+
+
+def _ease(x):
+    x = max(0.0, min(1.0, x))
+    return x * x * (3 - 2 * x)
+
+
+def _surt_moll(k):
+    """L'animació de sortir del moll, al moment k → (obertura de la comporta, (alçada de la nau, z de la nau)): la
+    comporta puja, la nau s'enlaira del bressol i se'n va per la comporta, cap a la nit, fent-se petita."""
+    obre = _ease(k / 0.35)
+    if k >= 1:
+        return obre, (None, ZS)
+    dy = _ease((k - 0.15) / 0.3) * 26
+    va = _ease((k - 0.4) / 0.6)
+    sx0, sy0, sx1, sy1 = SHUT_BOX
+    c0 = ((_w(sx0) + _w(sx1)) / 2, 207 - (sy0 + sy1) / 2 + dy, ZS)
+    D = ((BX0 + BX1) / 2, _y(12) * 0.5, ZB)                             # el mig del forat de la comporta
+    C = CAM.pos
+    lam = 1 + 9 * va ** 1.5
+    T = tuple(C[i] + (D[i] - C[i]) * lam for i in range(3))
+    b = _ease(va / 0.3)
+    P = tuple(c0[i] + (T[i] - c0[i]) * b for i in range(3))
+    return obre, (P[1] - (207 - (sy0 + sy1) / 2), P[2], P[0] - (_w(sx0) + _w(sx1)) / 2)
 
 
 def _render(estat=frozenset(), tex=None):
@@ -583,7 +668,26 @@ def _ambient_frames():
     return out
 
 
-ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 130}}
+# La llançadora se'n va (la fugida de l'Iri): el decorat `nau_fora` (la badia buida, amb la comporta oberta a la nit),
+# amb l'etiqueta `surt`, que una indicació d'escena hi posa; s'acaba al mateix decorat.
+SURT = tuple(i / 23 for i in range(24))
+
+
+def _surt_fotograma(k):
+    img, _ = _render(frozenset({f'surt:{k}'}))
+    return _diff(_post(img), _base_llum())
+
+
+def _nau_fora(cv):
+    cv.img.alpha_composite(_surt_fotograma(1.0))
+    cv.P = cv.img.load()
+
+
+PROPS['nau_fora'] = _nau_fora
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 130},
+         'surt': {'frames': lambda: [_surt_fotograma(k) for k in SURT], 'frameDuration': 140, 'loop': False,
+                  'prop': 'nau_fora'}}
 
 
 # ─── Capes del davant ───────────────────────────────────────────────────────

@@ -360,6 +360,10 @@
         "puja": {
           "loop": false,
           "frameDuration": 160
+        },
+        "surt": {
+          "loop": false,
+          "frameDuration": 140
         }
       },
       "zIndex": 3,

@@ -5072,6 +5072,13 @@
               }
             ]
           }
+        },
+        "decor": {
+          "calaix_obert": {
+            "visibleIf": {
+              "flag": "planols_robats"
+            }
+          }
         }
       },
       "fabrica_magatzem": {
@@ -6092,6 +6099,12 @@
                         "who": "player",
                         "visible": false
                       }
+                    ],
+                    "stage": [
+                      {
+                        "prop": "nau_fora",
+                        "visible": false
+                      }
                     ]
                   },
                   {
@@ -6105,6 +6118,15 @@
                     "stage": [
                       {
                         "shake": 0.8
+                      },
+                      {
+                        "prop": "nau_fora",
+                        "visible": true
+                      },
+                      {
+                        "prop": "nau_fora",
+                        "anim": "surt",
+                        "hold": 1.2
                       }
                     ]
                   }
@@ -6157,6 +6179,12 @@
                         "who": "player",
                         "visible": false
                       }
+                    ],
+                    "stage": [
+                      {
+                        "prop": "nau_fora",
+                        "visible": false
+                      }
                     ]
                   },
                   {
@@ -6170,6 +6198,15 @@
                     "stage": [
                       {
                         "shake": 0.8
+                      },
+                      {
+                        "prop": "nau_fora",
+                        "visible": true
+                      },
+                      {
+                        "prop": "nau_fora",
+                        "anim": "surt",
+                        "hold": 1.2
                       }
                     ]
                   },
@@ -6557,6 +6594,11 @@
           "marca_pilar": {
             "visibleIf": {
               "flag": "marca_pilar"
+            }
+          },
+          "nau_fora": {
+            "visibleIf": {
+              "flag": "iri_fugida"
             }
           }
         }
@@ -9456,7 +9498,20 @@
                     "sound": "comporta",
                     "stage": [
                       {
-                        "shake": 1.2
+                        "prop": "porta_llancadora",
+                        "visible": false
+                      },
+                      {
+                        "shake": 0.6
+                      },
+                      {
+                        "prop": "llancadora",
+                        "anim": "surt"
+                      },
+                      {
+                        "prop": "llancadora",
+                        "visible": true,
+                        "hold": 1.2
                       }
                     ]
                   },
@@ -9514,7 +9569,20 @@
                     "sound": "comporta",
                     "stage": [
                       {
-                        "shake": 1.2
+                        "prop": "porta_llancadora",
+                        "visible": false
+                      },
+                      {
+                        "shake": 0.6
+                      },
+                      {
+                        "prop": "llancadora",
+                        "anim": "surt"
+                      },
+                      {
+                        "prop": "llancadora",
+                        "visible": true,
+                        "hold": 1.2
                       }
                     ]
                   },

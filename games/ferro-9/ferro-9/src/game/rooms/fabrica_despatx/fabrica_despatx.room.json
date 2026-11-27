@@ -341,6 +341,18 @@
       },
       "zIndex": 24,
       "baseline": 999
+    },
+    {
+      "id": "calaix_obert",
+      "tag": "calaix_obert",
+      "animations": {
+        "calaix_obert": {}
+      },
+      "zIndex": 21,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "baseline": 165
     }
   ],
   "characters": [

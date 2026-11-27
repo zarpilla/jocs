@@ -381,7 +381,7 @@ function playerActed() {
  */
 function autosaveHere() {
   const room = narrative.world.currentRoom()
-  if (untouchedNewGame || room === narrative.content.manifest.cover || narrative.content.rooms[room]?.cutscene || finale.length) return
+  if (!room || untouchedNewGame || room === narrative.content.manifest.cover || narrative.content.rooms[room]?.cutscene || finale.length) return
   saves.autosave(AUTOSAVE)
 }
 

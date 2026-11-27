@@ -652,7 +652,20 @@
               "sound": "comporta",
               "stage": [
                 {
-                  "shake": 1.2
+                  "prop": "porta_llancadora",
+                  "visible": false
+                },
+                {
+                  "shake": 0.6
+                },
+                {
+                  "prop": "llancadora",
+                  "anim": "surt"
+                },
+                {
+                  "prop": "llancadora",
+                  "visible": true,
+                  "hold": 1.2
                 }
               ]
             },
@@ -710,7 +723,20 @@
               "sound": "comporta",
               "stage": [
                 {
-                  "shake": 1.2
+                  "prop": "porta_llancadora",
+                  "visible": false
+                },
+                {
+                  "shake": 0.6
+                },
+                {
+                  "prop": "llancadora",
+                  "anim": "surt"
+                },
+                {
+                  "prop": "llancadora",
+                  "visible": true,
+                  "hold": 1.2
                 }
               ]
             },

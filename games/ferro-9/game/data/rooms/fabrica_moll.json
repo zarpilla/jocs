@@ -507,6 +507,12 @@
                   "who": "player",
                   "visible": false
                 }
+              ],
+              "stage": [
+                {
+                  "prop": "nau_fora",
+                  "visible": false
+                }
               ]
             },
             {
@@ -520,6 +526,15 @@
               "stage": [
                 {
                   "shake": 0.8
+                },
+                {
+                  "prop": "nau_fora",
+                  "visible": true
+                },
+                {
+                  "prop": "nau_fora",
+                  "anim": "surt",
+                  "hold": 1.2
                 }
               ]
             }
@@ -572,6 +587,12 @@
                   "who": "player",
                   "visible": false
                 }
+              ],
+              "stage": [
+                {
+                  "prop": "nau_fora",
+                  "visible": false
+                }
               ]
             },
             {
@@ -585,6 +606,15 @@
               "stage": [
                 {
                   "shake": 0.8
+                },
+                {
+                  "prop": "nau_fora",
+                  "visible": true
+                },
+                {
+                  "prop": "nau_fora",
+                  "anim": "surt",
+                  "hold": 1.2
                 }
               ]
             },
@@ -972,6 +1002,11 @@
     "marca_pilar": {
       "visibleIf": {
         "flag": "marca_pilar"
+      }
+    },
+    "nau_fora": {
+      "visibleIf": {
+        "flag": "iri_fugida"
       }
     }
   }
