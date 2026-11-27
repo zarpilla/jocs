@@ -939,6 +939,11 @@
   "key": "dlg.juana.opt.vendre",
   "who": "iri"
  },
+ "iri1253963943": {
+  "hash": "3c5ec1a0565f7e20",
+  "key": "sala.ferrum_carrer.condensador.tornavis",
+  "who": "iri"
+ },
  "iri1256464341": {
   "hash": "c96325dc79bb8e59",
   "key": "sala.aqua_port.grua.11",
@@ -4374,6 +4379,11 @@
   "key": "mosca.arriba.fusible",
   "who": "iri"
  },
+ "iri588864180": {
+  "hash": "725ab96222a93fa9",
+  "key": "sala.ferrum_carrer.condensador.clau",
+  "who": "iri"
+ },
  "iri593268409": {
   "hash": "858302a9f1403012",
   "key": "sala.granja_casa.calaix.1",
@@ -7227,6 +7237,11 @@
  "vet1239686722": {
   "hash": "67df8911164cbba0",
   "key": "sala.aqua_port.grua.10",
+  "who": "vet"
+ },
+ "vet1253963943": {
+  "hash": "7192b00c435d39cf",
+  "key": "sala.ferrum_carrer.condensador.tornavis",
   "who": "vet"
  },
  "vet1256146455": {
@@ -10167,6 +10182,11 @@
  "vet586079996": {
   "hash": "66a168f9a4c573e0",
   "key": "sala.palau_control.pany_t2.4",
+  "who": "vet"
+ },
+ "vet588864180": {
+  "hash": "012e47ac847a133c",
+  "key": "sala.ferrum_carrer.condensador.clau",
   "who": "vet"
  },
  "vet593268409": {
