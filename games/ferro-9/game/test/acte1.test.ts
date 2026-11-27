@@ -306,6 +306,9 @@ describe('Ferro-9 · Acte 1', () => {
     expect(estatFinestra(n).enceses).toBe(abans - 2);
 
     // ── I amb l'altra a la cambra, passa de seguida ──
+    // (Entrar al passadís ha tancat l'Acte 1, i les notes de l'Acte 1 ja s'han llençat: logic/gastats.ts.)
+    expect(p.inventory()).not.toContain('nota_pany');
+    n.apply({ giveItem: 'nota_pany', who: 'vet' });
     expect(keys(p.use('nota_pany', 'panell'))).toEqual(['finestra.enviat.nota_pany', 'finestra.mentrestant.iri']);
     expect(p.active).toBe('iri');
     expect(p.inventory()).toContain('nota_pany');

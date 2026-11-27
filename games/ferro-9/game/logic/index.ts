@@ -5,10 +5,12 @@
 import type { GameContent, Narrative } from '@aventura/narrative-core';
 import { installConducte } from './conducte.js';
 import { FINESTRA_TEXTS, installFinestra } from './finestra.js';
+import { installGastats } from './gastats.js';
 import { installMarca, MARCA_TEXTS } from './marca.js';
 
 export * from './conducte.js';
 export * from './finestra.js';
+export * from './gastats.js';
 export * from './marca.js';
 
 /** Totes les accions que el contingut pot fer servir (`"action": { "name": ... }`). */
@@ -26,4 +28,5 @@ export function installGameLogic(n: Narrative) {
   installFinestra(n);
   installConducte(n);
   installMarca(n);
+  installGastats(n);
 }
