@@ -314,6 +314,38 @@
         "x": 270,
         "y": 222
       }
+    },
+    {
+      "id": "camera",
+      "active": true,
+      "description": "el càmera de TV Comarca",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 594,
+          "y": 156
+        },
+        {
+          "x": 639,
+          "y": 156
+        },
+        {
+          "x": 639,
+          "y": 246
+        },
+        {
+          "x": 594,
+          "y": 246
+        }
+      ],
+      "walkToPoint": {
+        "x": 560,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 616,
+        "y": 246
+      }
     }
   ],
   "points": [],

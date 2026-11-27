@@ -370,6 +370,51 @@
         }
       ]
     },
+    "camera": {
+      "name": "sala.zona_mati.camera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "tele_espatlla"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.txell.mira2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.txell.mira"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "canal7_tele"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.camera.parla"
+            }
+          ]
+        }
+      ]
+    },
     "avia": {
       "interactions": [
         {

@@ -134,6 +134,8 @@ FRONT = [{'id': 'davant', 'mask': lambda x, y: mascara(_render()[1])(x, y), 'bas
 _things = {k: v for k, v in Z.GEOMETRIA['things'].items() if k != 'public'}
 _things['bastida'] = {'rect': (382, 112, 402, 180), 'walk': (392, 220)}
 _things['parada'] = {'rect': (66, 160, 126, 204), 'walk': (100, 240)}
+# el càmera de la TV i el trípode (amb el rètol «TV7»), a la dreta de la Txell
+_things['camera'] = {'rect': (594, 156, 639, 246), 'walk': (560, 240)}
 
 GEOMETRIA = {
     **Z.GEOMETRIA,

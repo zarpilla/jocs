@@ -57,6 +57,7 @@ DEEP = [mix(c, (60, 96, 92), 0.55) for c in GREEN]     # el bosc de sota, molt a
 OAKH = [mix(c, HAZE, 0.55) for c in OAK]
 FLOR = [(60, 6, 8), (120, 12, 14), (186, 24, 22), (228, 52, 38), (250, 100, 70), (255, 170, 140)]
 POLLEN = [(120, 80, 10), (200, 150, 20), (246, 206, 50), (255, 240, 130), (255, 252, 210)]
+GLASS = [(70, 96, 104), (110, 140, 146), (156, 186, 188), (196, 220, 218), (226, 242, 238), (248, 255, 252)]
 TAPE_W = [(150, 150, 146), (200, 200, 196), (236, 236, 230), (252, 252, 248)]
 TAPE_R = [(90, 10, 10), (150, 20, 18), (206, 36, 30), (236, 70, 52)]
 
@@ -75,10 +76,11 @@ def branca(x):
 
 
 BR_END = 490                                       # on s'acaba la branca grossa (i en surt la prima)
-THIN = ((486, 210), (556, 202), (604, 158))        # la branca prima (bezier)
-FLOR_XY = (608, 150)
+THIN = ((486, 210), (560, 200), (584, 130))        # la branca prima (bezier): puja fins on arriba el gronxador
+FLOR_XY = (588, 122)                               # la flor: a la punta de la gronxada, el pot de la Vet hi toca
 DALT = ((60, 52), (340, 16), (660, 10))            # la branca de dalt (bezier), d'on pengen la diana i el gronxador
 SWING = (478, 172, 34)                             # el gronxador: x d'on penja, y del seient quiet, amplada del vaivé (°)
+POT_MA = (20, 12)                                  # el pot a la mà de la Vet: endavant al llarg del seient, amunt
 DIANA = (352, 96, 24)                              # la diana: centre i radi (prou a l'esquerra perquè el gronxador no hi topi)
 TENDA = (196, 278, 197)                            # la tenda: x0, x1, y de la base
 CATA = (318, 196)                                  # la catapulta: x, y de la base
@@ -378,7 +380,32 @@ def _vet_asseguda():
     return img, (12, 66)
 
 
-def gronxador(cv, theta=0.0, vet=False):
+def _pot_ma(theta):
+    """On és el pot que la Vet allarga, amb el gronxador decantat `theta` graus: davant dels genolls, a l'altura
+    de les mans (és el que ha de passar a tocar de la flor a la punta de la gronxada)."""
+    sx, sy = _seient(theta)
+    a = math.radians(theta)
+    ux, uy = math.cos(a), -math.sin(a)                                                # al llarg del seient
+    dx, dy = math.sin(a), math.cos(a)                                                 # avall, al llarg de les cintes
+    return sx + ux * POT_MA[0] - dx * POT_MA[1], sy + uy * POT_MA[0] - dy * POT_MA[1]
+
+
+def pot_obert(cv, x, y):
+    """El pot de vidre buit, obert (sense la tapa de roba), a la mà de la Vet: (x, y) és el mig del cul."""
+    x, y = round(x), round(y)
+    for yy in range(y - 8, y + 1):                                                    # el vidre
+        for xx in range(x - 3, x + 4):
+            vora = xx in (x - 3, x + 3) or yy == y
+            cv.put(xx, yy, GLASS, (4.6 if vora else 3.4) - (xx - x) * 0.15, lit=0.4)
+    for xx in range(x - 3, x + 4):                                                    # el broc, obert
+        cv.put(xx, y - 9, GLASS, 5.2, lit=0.4)
+    for yy in range(y - 7, y - 1):                                                    # el reflex
+        cv.flat(x - 2, yy, GLASS[-1])
+    for xx in range(x - 2, x + 3):                                                    # el que queda de melmelada
+        cv.put(xx, y - 1, FLOR, 1.4, lit=0.3)
+
+
+def gronxador(cv, theta=0.0, vet=False, pot=False):
     """El gronxador, de perfil (es gronxa de costat, cap a la flor): les dues cintes rosa fluor que pengen de la branca
     de dalt (la de darrere una mica més fosca) i el seient, un tap blanc d'ampolla d'«Aire Pur», de cantó. Amb `vet`,
     la Vet hi seu, entre les dues cintes."""
@@ -413,6 +440,8 @@ def gronxador(cv, theta=0.0, vet=False):
         pad = pad.rotate(theta, resample=Image.NEAREST, center=(ax + m, ay + m))
         cv.img.alpha_composite(pad, (round(sx - ax - m), round(sy - ay - m)))
         cv.P = cv.img.load()
+        if pot:
+            pot_obert(cv, *_pot_ma(theta))
     cinta(-1.0, 4.0, gruix=1 if vet else 2)                                            # la del davant (amb la Vet, prima: no la tapi)                                                                   # la del davant
 
 
@@ -521,9 +550,9 @@ def _render(estat=frozenset()):
     if 'sense_catapulta' not in estat:
         catapulta(cv)
     diana(cv)
-    gir = next((e for e in estat if isinstance(e, tuple) and e[0] == 'gronxant'), None)
+    gir = next((e for e in estat if isinstance(e, tuple) and e[0] in ('gronxant', 'gronxant_pot')), None)
     if gir:
-        gronxador(cv, gir[1], vet=True)
+        gronxador(cv, gir[1], vet=True, pot=gir[0] == 'gronxant_pot')
     elif 'sense_gronxador' not in estat:
         gronxador(cv)
     escala_corda(cv)
@@ -602,7 +631,7 @@ def _frames_fulles():
 GRONXA_N = 20                                       # fotogrames d'una gronxada sencera (anar i tornar)
 
 
-def _frames_gronxant():
+def _frames_gronxant(que='gronxant'):
     """La Vet al gronxador, que va i ve cap a la flor (un pèndol: més lent als extrems). Cada fotograma porta el fons
     sense el gronxador quiet (l'esborra) i el gronxador decantat amb la Vet. És el decorat `gronxant`, amagat: les
     línies del gronxador el mostren mentre la Urtica l'empeny."""
@@ -610,14 +639,16 @@ def _frames_gronxant():
     out = []
     for i in range(GRONXA_N):
         theta = SWING[2] * math.sin(2 * math.pi * i / GRONXA_N)
-        img = _render(frozenset({('gronxant', round(theta, 2))}))
+        img = _render(frozenset({(que, round(theta, 2))}))
         out.append(sense(_diff(img, base), _davant()))
     return out
 
 
 ANIMS = {'llum': {'frames': _frames_llum, 'frameDuration': 120},
          'fulles': {'frames': _frames_fulles, 'frameDuration': 110},
-         'gronxant': {'frames': _frames_gronxant, 'frameDuration': 110, 'zIndex': 4}}
+         'gronxant': {'frames': _frames_gronxant, 'frameDuration': 110, 'zIndex': 4},
+         # el mateix, amb el pot obert a la mà (per collir el pol·len): a la punta de la gronxada, el pot toca la flor
+         'gronxant_pot': {'frames': lambda: _frames_gronxant('gronxant_pot'), 'frameDuration': 110, 'zIndex': 4}}
 
 
 # ─── Capes del davant ─────────────────────────────────────────────────────

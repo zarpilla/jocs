@@ -554,7 +554,7 @@
                   "visible": false
                 },
                 {
-                  "prop": "gronxant",
+                  "prop": "gronxant_pot",
                   "visible": true
                 }
               ]
@@ -574,6 +574,10 @@
                 {
                   "prop": "flor_buida",
                   "visible": true
+                },
+                {
+                  "prop": "flor",
+                  "visible": false
                 }
               ]
             },
@@ -587,7 +591,7 @@
               "text": "sala.campament_fades.empenta.7",
               "stage": [
                 {
-                  "prop": "gronxant",
+                  "prop": "gronxant_pot",
                   "visible": false
                 },
                 {
@@ -598,6 +602,17 @@
                   },
                   "visible": true,
                   "face": "R"
+                },
+                {
+                  "who": "player",
+                  "walk": {
+                    "x": 404,
+                    "y": 202
+                  }
+                },
+                {
+                  "who": "player",
+                  "face": "L"
                 }
               ]
             },
@@ -993,6 +1008,11 @@
       }
     },
     "gronxant": {
+      "visibleIf": {
+        "flag": "vet_gronxant"
+      }
+    },
+    "gronxant_pot": {
       "visibleIf": {
         "flag": "vet_gronxant"
       }

@@ -2405,7 +2405,7 @@
                         "visible": false
                       },
                       {
-                        "prop": "gronxant",
+                        "prop": "gronxant_pot",
                         "visible": true
                       }
                     ]
@@ -2425,6 +2425,10 @@
                       {
                         "prop": "flor_buida",
                         "visible": true
+                      },
+                      {
+                        "prop": "flor",
+                        "visible": false
                       }
                     ]
                   },
@@ -2438,7 +2442,7 @@
                     "text": "sala.campament_fades.empenta.7",
                     "stage": [
                       {
-                        "prop": "gronxant",
+                        "prop": "gronxant_pot",
                         "visible": false
                       },
                       {
@@ -2449,6 +2453,17 @@
                         },
                         "visible": true,
                         "face": "R"
+                      },
+                      {
+                        "who": "player",
+                        "walk": {
+                          "x": 404,
+                          "y": 202
+                        }
+                      },
+                      {
+                        "who": "player",
+                        "face": "L"
                       }
                     ]
                   },
@@ -2844,6 +2859,11 @@
             }
           },
           "gronxant": {
+            "visibleIf": {
+              "flag": "vet_gronxant"
+            }
+          },
+          "gronxant_pot": {
             "visibleIf": {
               "flag": "vet_gronxant"
             }
@@ -3689,6 +3709,37 @@
           "tauler": {
             "name": "sala.centraleta.tauler.nom",
             "interactions": [
+              {
+                "verb": "use",
+                "item": "pila_llimona",
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.centraleta.pila.1",
+                    "sound": "radar"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.centraleta.pila.2"
+                  },
+                  {
+                    "who": "espora",
+                    "text": "sala.centraleta.pila.3"
+                  },
+                  {
+                    "who": "espora",
+                    "text": "sala.centraleta.pila.4"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "pila_llimona"
+                  },
+                  {
+                    "setFlag": "radar_ences"
+                  }
+                ]
+              },
               {
                 "verb": "look",
                 "lines": [
@@ -6454,6 +6505,51 @@
               }
             ]
           },
+          "camera": {
+            "name": "sala.zona_mati.camera.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "tele_espatlla"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.txell.mira2"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.txell.mira"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "canal7_tele"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "talkTo",
+                  "use",
+                  "push",
+                  "pull"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.camera.parla"
+                  }
+                ]
+              }
+            ]
+          },
           "avia": {
             "interactions": [
               {
@@ -6758,12 +6854,20 @@
                     "sound": "xiulet",
                     "stage": [
                       {
+                        "prop": "sensors_vermells",
+                        "visible": false
+                      },
+                      {
                         "prop": "fades_sensors",
                         "visible": false
                       },
                       {
                         "who": "urtica",
                         "visible": true
+                      },
+                      {
+                        "who": "player",
+                        "face": "D"
                       }
                     ]
                   },
@@ -6791,7 +6895,13 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.zona_zero.xiulet.4"
+                    "text": "sala.zona_zero.xiulet.4",
+                    "stage": [
+                      {
+                        "prop": "sensors_vermells",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "pica",
@@ -6880,7 +6990,13 @@
                 "lines": [
                   {
                     "who": "pla",
-                    "text": "sala.zona_zero.crit.1"
+                    "text": "sala.zona_zero.crit.1",
+                    "stage": [
+                      {
+                        "prop": "pantalla_crit",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -6896,16 +7012,8 @@
                         "shake": 0.8
                       },
                       {
-                        "prop": "pantalla_crit",
-                        "visible": true
-                      },
-                      {
                         "who": "pla",
                         "face": "R"
-                      },
-                      {
-                        "who": "txell",
-                        "face": "L"
                       },
                       {
                         "who": "vet",
@@ -6921,6 +7029,14 @@
                     "who": "narrator",
                     "text": "sala.zona_zero.crit.gent",
                     "stage": [
+                      {
+                        "prop": "pantalla_crit",
+                        "visible": true
+                      },
+                      {
+                        "who": "txell",
+                        "face": "L"
+                      },
                       {
                         "who": "txell",
                         "walk": {
@@ -7195,12 +7311,20 @@
                     "sound": "xiulet",
                     "stage": [
                       {
+                        "prop": "sensors_vermells",
+                        "visible": false
+                      },
+                      {
                         "prop": "fades_sensors",
                         "visible": false
                       },
                       {
                         "who": "urtica",
                         "visible": true
+                      },
+                      {
+                        "who": "player",
+                        "face": "D"
                       }
                     ]
                   },
@@ -7228,7 +7352,13 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.zona_zero.xiulet.4"
+                    "text": "sala.zona_zero.xiulet.4",
+                    "stage": [
+                      {
+                        "prop": "sensors_vermells",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "pica",
@@ -8360,7 +8490,8 @@
           "pista.tele.3"
         ],
         "targets": [
-          "txell"
+          "txell",
+          "camera"
         ],
         "who": "iri"
       }
@@ -9280,7 +9411,7 @@
                   {
                     "who": "iri",
                     "at": {
-                      "x": 4,
+                      "x": -24,
                       "y": 246
                     },
                     "visible": true
@@ -9290,7 +9421,8 @@
                     "walk": {
                       "x": 214,
                       "y": 246
-                    }
+                    },
+                    "wait": false
                   }
                 ],
                 "effects": [
@@ -10186,7 +10318,7 @@
       "dlg.urtica.flor.2": "Amb el gronxador! Si algú t'empeny fort, hi arribes. Brutal!",
       "dlg.urtica.hola.1": "Treballes per a la del vestit blanc?",
       "dlg.urtica.naturaplus.1": "Ens han tallat la casa d'estiu. I hi han posat un arbre de plàstic que fa pip.",
-      "dlg.urtica.naturaplus.2": "I el gronxador és de cinta seva. Bé, l'hem robada nosaltres. Però era seva.",
+      "dlg.urtica.naturaplus.2": "I el gronxador és fet amb la seva cinta. Bé, la vam robar nosaltres. Però era seva!",
       "dlg.urtica.opt.adeu": "Ja parlarem.",
       "dlg.urtica.opt.adeu2": "Ara torno.",
       "dlg.urtica.opt.apunteu": "Per què m'apunteu?",
@@ -10663,7 +10795,7 @@
       "sala.campament_fades.catapulta.nom": "la catapulta d'aglans",
       "sala.campament_fades.diana.mira": "Una diana amb el logotip de NaturaPlus. Té més forats al mig que als costats.",
       "sala.campament_fades.diana.nom": "la diana",
-      "sala.campament_fades.empenta.1": "La Vet seu al gronxador. La Urtica agafa embranzida i l'empeny amb tota la força d'una fada.",
+      "sala.campament_fades.empenta.1": "La Vet seu al gronxador. La Urtica tensa la catapulta i dispara una gla contra el seient. Nyiiic! El gronxador surt volant.",
       "sala.campament_fades.empenta.10": "I si no hi soc? Dilluns he d'ajudar l'àvia a la parada de melmelada.",
       "sala.campament_fades.empenta.11": "Doncs que xiuli qui hi sigui. Però que xiuli.",
       "sala.campament_fades.empenta.12": "(al walkie) Iri. Tinc un xiulet de fada. No et diré com. Canvi i fora.",
@@ -10672,13 +10804,13 @@
       "sala.campament_fades.empenta.4": "(estirant el braç) Ai, com pica! Pica pica pica! Amb les mans, no!",
       "sala.campament_fades.empenta.5": "A la gronxada següent, hi recull el pol·len i tanca el pot de pressa.",
       "sala.campament_fades.empenta.6": "(de lluny) Atxím! Brutal.",
-      "sala.campament_fades.empenta.7": "La Urtica agafa el pot com si fos un tresor.",
+      "sala.campament_fades.empenta.7": "La Vet baixa del gronxador i li porta el pot. La Urtica l'agafa com si fos un tresor.",
       "sala.campament_fades.empenta.8": "Dilluns. Quan la del vestit blanc digui «aire pur», ens xiules.",
       "sala.campament_fades.empenta.9": "La Urtica li dona un xiulet d'ortiga: una fulla doblegada que xiula molt agut.",
       "sala.campament_fades.empenta.altre": "(estirant el braç) Ai! Un altre cop! Amb les mans no hi ha manera.",
-      "sala.campament_fades.empenta.amb_pot": "La Vet seu al gronxador amb el pot obert a la mà. La Urtica agafa embranzida i l'empeny.",
+      "sala.campament_fades.empenta.amb_pot": "La Vet seu al gronxador amb el pot obert a la mà. La Urtica dispara una gla amb la catapulta, i el gronxador surt volant.",
       "sala.campament_fades.empenta.ara": "(allargant el pot) Ara! Sense tocar-la...",
-      "sala.campament_fades.empenta.baixa": "La Urtica atura el gronxador. La Vet en baixa bufant-se els dits.",
+      "sala.campament_fades.empenta.baixa": "El gronxador s'atura a poc a poc. La Vet en baixa bufant-se els dits.",
       "sala.campament_fades.empenta.cal": "Necessito alguna cosa per collir el pol·len sense tocar-lo. Una cosa amb tapa...",
       "sala.campament_fades.empenta.pot": "Si hi arribés amb el pot obert, el pol·len hi cauria sol.",
       "sala.campament_fades.escala_corda.mira": "L'escala de corda per on he pujat. A baix, molt a baix, hi ha el terra.",
@@ -10994,6 +11126,8 @@
       "sala.zona_mati.parada.nom": "la parada de melmelada",
       "sala.zona_mati.sensors.mira": "Tres columnes blanques: «AIRE: PUR 100%». De moment.",
       "sala.zona_mati.soques.mira": "Soques. La setmana passada eren arbres.",
+      "sala.zona_mati.camera.nom": "el càmera de TV Comarca",
+      "sala.zona_mati.camera.parla": "El càmera només mira pel visor. Les preguntes, diu, a la Txell.",
       "sala.zona_mati.txell.mira": "La Txell, de TV Comarca. El càmera ho filma tot des d'un trípode, a l'altura de la senyora Pla. A la càmera hi posa «TV7».",
       "sala.zona_mati.txell.mira2": "La Txell. El càmera ja té la càmera a l'espatlla.",
       "sala.zona_mati.urtica.1": "La Urtica baixa en picat i s'amaga darrere la Vet.",
