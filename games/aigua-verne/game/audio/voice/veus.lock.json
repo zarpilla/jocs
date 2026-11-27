@@ -30,7 +30,7 @@
   "who": "bru"
  },
  "bru1755489307": {
-  "hash": "b38f59525607e7a2",
+  "hash": "e67f41011b2a8e85",
   "key": "dlg.bru.promesa.7",
   "who": "bru"
  },
@@ -204,6 +204,16 @@
   "key": "dlg.capitana.magnat.1",
   "who": "capitana"
  },
+ "capitana1315863134": {
+  "hash": "4265af5f4d065bdd",
+  "key": "dlg.capitana.nit.si",
+  "who": "capitana"
+ },
+ "capitana1348579729": {
+  "hash": "e935a7d5bd1a5bed",
+  "key": "dlg.capitana.nit.no",
+  "who": "capitana"
+ },
  "capitana1490676884": {
   "hash": "51f8700773f1a4e1",
   "key": "esc.acte3_iri.1",
@@ -287,6 +297,11 @@
  "capitana2544397485": {
   "hash": "322e840b09bbdd55",
   "key": "dlg.capitana.portar.2",
+  "who": "capitana"
+ },
+ "capitana264683530": {
+  "hash": "c723a5ab1d1c77f5",
+  "key": "dlg.capitana.nit.pou",
   "who": "capitana"
  },
  "capitana2662116585": {
@@ -532,6 +547,11 @@
  "holm112629168": {
   "hash": "8d1089507377c759",
   "key": "dlg.holm.torna.2",
+  "who": "holm"
+ },
+ "holm1179854581": {
+  "hash": "a96dffbe015be9bc",
+  "key": "final.plou.2.si.holm",
   "who": "holm"
  },
  "holm1318892203": {
@@ -882,6 +902,11 @@
  "iri1198348668": {
   "hash": "c99435f57e57d0e0",
   "key": "ui.defecte.give.iri",
+  "who": "iri"
+ },
+ "iri1201434822": {
+  "hash": "d9f969c72f9ddc84",
+  "key": "dlg.trucada.si.4",
   "who": "iri"
  },
  "iri1204085330": {
@@ -4154,6 +4179,11 @@
   "key": "ui.defecte.push.iri.3",
   "who": "iri"
  },
+ "iri4182356270": {
+  "hash": "4a976b0be7b6d0df",
+  "key": "dlg.trucada.no.7.mecanic",
+  "who": "iri"
+ },
  "iri4182599818": {
   "hash": "8c3d1fc23c1ccfb1",
   "key": "sala.palau_salo.safata.1",
@@ -5269,6 +5299,11 @@
   "key": "esc.acte3_vet.3",
   "who": "narrator"
  },
+ "narrator1057774234": {
+  "hash": "a04d12f49fe90dde",
+  "key": "final.plou.41.si",
+  "who": "narrator"
+ },
  "narrator1079735522": {
   "hash": "5c642d4b59494fc4",
   "key": "sala.ferrum_carrer.font.mosca.3",
@@ -5292,6 +5327,11 @@
  "narrator1132234445": {
   "hash": "b536e9d05a3c49ae",
   "key": "sala.fosa_forn.manxa.3",
+  "who": "narrator"
+ },
+ "narrator1167879584": {
+  "hash": "a1552d1f296366dc",
+  "key": "dlg.trucada.si.6",
   "who": "narrator"
  },
  "narrator1179086544": {
@@ -5320,7 +5360,7 @@
   "who": "narrator"
  },
  "narrator1251767679": {
-  "hash": "d34f5cc3fee4a245",
+  "hash": "24096ba63fd372cc",
   "key": "dlg.trucada.si.3",
   "who": "narrator"
  },
@@ -6809,6 +6849,11 @@
   "key": "sala.palau_control.pany_ferrum.9",
   "who": "verne"
  },
+ "verne2293941463": {
+  "hash": "63a4f15765921d7e",
+  "key": "final.plou.2.si",
+  "who": "verne"
+ },
  "verne2353478915": {
   "hash": "b08e16de6b019bb5",
   "key": "dlg.verne_galeria.piscines.1",
@@ -6882,6 +6927,16 @@
  "verne3952315066": {
   "hash": "088ba0b268590aa7",
   "key": "dlg.verne_galeria.gos.1",
+  "who": "verne"
+ },
+ "verne4007365020": {
+  "hash": "83e5d867a89bb4ce",
+  "key": "dlg.trucada.pou.2",
+  "who": "verne"
+ },
+ "verne4057697877": {
+  "hash": "4894b2a6f30791bc",
+  "key": "dlg.trucada.pou.1",
   "who": "verne"
  },
  "verne4062546024": {
@@ -7207,6 +7262,11 @@
  "vet1212641782": {
   "hash": "e35f207c3e9b6217",
   "key": "sala.ferrum_carrer.entra.3",
+  "who": "vet"
+ },
+ "vet1218212441": {
+  "hash": "a105f2da9eb24c7a",
+  "key": "dlg.trucada.si.5",
   "who": "vet"
  },
  "vet1221913724": {
