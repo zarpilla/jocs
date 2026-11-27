@@ -142,6 +142,9 @@ const DEBUG_GUI_INVENTORY_SLOT_STROKE = 0x66ccff;
 /** Cell stroke for `grid` controls when `debug.showGuiOutlines` is true. */
 const DEBUG_GUI_GRID_CELL_STROKE = 0xffcc66;
 
+/** Scroll offset of each scrollable inventory panel, by `guiId#controlIndex#owner`; outlives overlay rebuilds. */
+const inventoryScrollOffsets = new Map<string, number>();
+
 const manifest = gameFontsManifest as GameFontsManifest;
 
 /** Renders above the room stack (`RoomScene` assigns sequential depths from `ROOM_STACK_DEPTH_BASE`). */
@@ -2263,6 +2266,25 @@ export function buildGuiOverlay(
       }
       const scrollSt = invScrollStateByControlIndex.get(i);
       const offsetState = scrollSt ?? { offset: 0 };
+      const boundCharacterId =
+        c.characterId?.trim() && c.characterId.trim().length > 0
+          ? c.characterId.trim()
+          : null;
+      const panelOwnerId = (): string | null => {
+        if (boundCharacterId != null) {
+          return boundCharacterId;
+        }
+        try {
+          return resolveGameStateManager(scene.game).getActivePlayerCharacterId();
+        } catch {
+          return null;
+        }
+      };
+      /** The scroll position survives room changes (the overlay is rebuilt) and is kept per bag owner. */
+      const scrollKey = (owner: string | null): string => `${gui.id}#${i}#${owner ?? ''}`;
+      if (scrollSt) {
+        offsetState.offset = inventoryScrollOffsets.get(scrollKey(panelOwnerId())) ?? 0;
+      }
       const refreshInventoryPanel = (): void => {
         fillInventoryPanelContent(
           panel,
@@ -2275,14 +2297,40 @@ export function buildGuiOverlay(
           panelAnchorInRoot,
           isBehindVisibleModal,
         );
+        if (scrollSt) {
+          inventoryScrollOffsets.set(scrollKey(panelOwnerId()), offsetState.offset);
+        }
       };
       if (scrollSt) {
         scrollSt.refresh = refreshInventoryPanel;
       }
-      const boundCharacterId =
-        c.characterId?.trim() && c.characterId.trim().length > 0
-          ? c.characterId.trim()
-          : null;
+      /** When an item is added out of view, scroll so the new item is visible. */
+      const scrollToAddedItem = (p: GameStateInventoryChangedPayload): void => {
+        if (!scrollSt || p.reason !== 'add' || !p.itemId) {
+          return;
+        }
+        let items: ReadonlyArray<{ id: string }> = [];
+        try {
+          items = resolveGameStateManager(scene.game).getInventoryItems(p.characterId);
+        } catch {
+          return;
+        }
+        const index = items.findIndex((it) => it.id === p.itemId);
+        const capacity = Math.max(0, c.rows * c.cols);
+        if (index < 0 || capacity === 0) {
+          return;
+        }
+        if (index >= offsetState.offset && index < offsetState.offset + capacity) {
+          return;
+        }
+        if (c.scrollDirection === 'horizontal') {
+          offsetState.offset = index < offsetState.offset ? index : index - capacity + 1;
+        } else {
+          const row = Math.floor(index / Math.max(1, c.cols));
+          const topRow = index < offsetState.offset ? row : row - c.rows + 1;
+          offsetState.offset = Math.max(0, topRow) * c.cols;
+        }
+      };
       const shouldRefreshForCharacterBag = (changedCharacterId: string): boolean => {
         if (boundCharacterId != null) {
           return changedCharacterId === boundCharacterId;
@@ -2298,6 +2346,7 @@ export function buildGuiOverlay(
         if (typeof p.characterId === 'string' && !shouldRefreshForCharacterBag(p.characterId)) {
           return;
         }
+        scrollToAddedItem(p);
         refreshInventoryPanel();
       };
       const onInventoryAnimationVariable = (payload: unknown): void => {
@@ -2308,6 +2357,9 @@ export function buildGuiOverlay(
       };
       const onActivePlayerChanged = (): void => {
         if (boundCharacterId == null) {
+          if (scrollSt) {
+            offsetState.offset = inventoryScrollOffsets.get(scrollKey(panelOwnerId())) ?? 0;
+          }
           refreshInventoryPanel();
         }
       };
