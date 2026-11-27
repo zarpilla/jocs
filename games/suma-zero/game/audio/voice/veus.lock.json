@@ -599,6 +599,11 @@
   "key": "sala.bcmu_moll.rius.look_aliada",
   "who": "iri"
  },
+ "iri1053205579": {
+  "hash": "eb56abe5282aac34",
+  "key": "sala.pis_estudi.router.falta.xa",
+  "who": "iri"
+ },
  "iri1054937707": {
   "hash": "bd5a797912b718d7",
   "key": "obj.cable_xarxa.look",
@@ -660,7 +665,7 @@
   "who": "iri"
  },
  "iri1194713922": {
-  "hash": "621d1fa40221b4f9",
+  "hash": "7f9b4c77ef3d1afb",
   "key": "sala.pis_estudi.pany1",
   "who": "iri"
  },
@@ -707,6 +712,11 @@
  "iri123470776": {
   "hash": "7417a13b83e0eb46",
   "key": "sala.bcmu_passadis.camera2.look",
+  "who": "iri"
+ },
+ "iri1234802174": {
+  "hash": "1e8ba7877117bf83",
+  "key": "sala.pis_estudi.router.falta.fx",
   "who": "iri"
  },
  "iri1236577611": {
@@ -849,9 +859,19 @@
   "key": "sala.pis_estudi.router.on.diu_mossega2",
   "who": "iri"
  },
+ "iri1385800745": {
+  "hash": "ff7c27a9e409f5c6",
+  "key": "sala.pis_estudi.router.falta.fa",
+  "who": "iri"
+ },
  "iri1393095021": {
   "hash": "e33618d071542b71",
   "key": "sala.aeroport_oficina.porta.no",
+  "who": "iri"
+ },
+ "iri1402814675": {
+  "hash": "285f5df325932494",
+  "key": "sala.pis_estudi.router.falta.a",
   "who": "iri"
  },
  "iri1402903599": {
@@ -897,6 +917,11 @@
  "iri1476851307": {
   "hash": "84b58294605845e3",
   "key": "tub.entrepa_suis.rep",
+  "who": "iri"
+ },
+ "iri1486702770": {
+  "hash": "0bb79a18198c4f7d",
+  "key": "sala.pis_estudi.router.falta.f",
   "who": "iri"
  },
  "iri1486785217": {
@@ -1022,6 +1047,11 @@
  "iri1787876725": {
   "hash": "c254ad7ae6c7653c",
   "key": "dlg.trucada.resum7",
+  "who": "iri"
+ },
+ "iri1788699912": {
+  "hash": "e0cb89d54b96a5fb",
+  "key": "sala.pis_estudi.router.falta.x",
   "who": "iri"
  },
  "iri1794046492": {
@@ -1204,6 +1234,11 @@
   "key": "sala.bcmu_escombraries.virus4",
   "who": "iri"
  },
+ "iri2076608845": {
+  "hash": "fd4dd3ee601a2f2e",
+  "key": "sala.pis_estudi.router.falta.fxa",
+  "who": "iri"
+ },
  "iri207847614": {
   "hash": "84323d37c7f34d1c",
   "key": "sala.bcmu_passadis.extintor.look",
@@ -1314,6 +1349,11 @@
   "key": "dlg.auricular.8",
   "who": "iri"
  },
+ "iri2269580784": {
+  "hash": "b85e6fd56b20459b",
+  "key": "sala.pis_estudi.fibra.look_distret",
+  "who": "iri"
+ },
  "iri2272570977": {
   "hash": "fe96ebafd904eec9",
   "key": "dlg.neta.hores2",
@@ -1417,6 +1457,11 @@
  "iri2392053690": {
   "hash": "3c82f709c41c89cc",
   "key": "dlg.auricular.15",
+  "who": "iri"
+ },
+ "iri2392462526": {
+  "hash": "8464cf0f547d4372",
+  "key": "sala.pis_estudi.router.falta.diu",
   "who": "iri"
  },
  "iri2408831309": {
@@ -1680,7 +1725,7 @@
   "who": "iri"
  },
  "iri2923651255": {
-  "hash": "68de800d8fe418e6",
+  "hash": "da03e225cb8a4307",
   "key": "ui.defecte.use.iri.3",
   "who": "iri"
  },
@@ -4020,7 +4065,7 @@
   "who": "tomas"
  },
  "tomas1551749283": {
-  "hash": "c3364a630f2bf84d",
+  "hash": "a1185f727a811d83",
   "key": "dlg.tomas.wifi",
   "who": "tomas"
  },
@@ -4500,7 +4545,7 @@
   "who": "vet"
  },
  "vet1808490492": {
-  "hash": "d4aa95b5ccf1466b",
+  "hash": "e08866405cfd94cb",
   "key": "dlg.trucada.opt.contrasenya",
   "who": "vet"
  },
@@ -5755,7 +5800,7 @@
   "who": "vet"
  },
  "vet4032656716": {
-  "hash": "6ca4e431aa71ed4f",
+  "hash": "f62b13a2bad1ba44",
   "key": "sala.bar_sala.retol.contrasenya2",
   "who": "vet"
  },
@@ -5800,7 +5845,7 @@
   "who": "vet"
  },
  "vet4082989573": {
-  "hash": "283e3835f77b884a",
+  "hash": "5326f9140e540065",
   "key": "sala.bar_sala.retol.contrasenya1",
   "who": "vet"
  },
