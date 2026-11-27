@@ -23,7 +23,7 @@
     },
     "verdant_cobert 1.aseprite": {
       "frame": {
-        "x": 3121,
+        "x": 3135,
         "y": 0,
         "w": 32,
         "h": 26
@@ -46,7 +46,7 @@
       "frame": {
         "x": 2485,
         "y": 0,
-        "w": 31,
+        "w": 24,
         "h": 127
       },
       "rotated": false,
@@ -54,7 +54,7 @@
       "spriteSourceSize": {
         "x": 500,
         "y": 36,
-        "w": 31,
+        "w": 24,
         "h": 127
       },
       "sourceSize": {
@@ -65,7 +65,7 @@
     },
     "verdant_cobert 3.aseprite": {
       "frame": {
-        "x": 2932,
+        "x": 2925,
         "y": 0,
         "w": 51,
         "h": 104
@@ -86,6 +86,27 @@
     },
     "verdant_cobert 4.aseprite": {
       "frame": {
+        "x": 3088,
+        "y": 0,
+        "w": 21,
+        "h": 29
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 510,
+        "y": 36,
+        "w": 21,
+        "h": 29
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 5.aseprite": {
+      "frame": {
         "x": 1656,
         "y": 0,
         "w": 111,
@@ -105,7 +126,7 @@
       },
       "duration": 100
     },
-    "verdant_cobert 5.aseprite": {
+    "verdant_cobert 6.aseprite": {
       "frame": {
         "x": 2064,
         "y": 0,
@@ -126,7 +147,7 @@
       },
       "duration": 100
     },
-    "verdant_cobert 6.aseprite": {
+    "verdant_cobert 7.aseprite": {
       "frame": {
         "x": 2176,
         "y": 0,
@@ -147,7 +168,7 @@
       },
       "duration": 100
     },
-    "verdant_cobert 7.aseprite": {
+    "verdant_cobert 8.aseprite": {
       "frame": {
         "x": 2288,
         "y": 0,
@@ -168,7 +189,7 @@
       },
       "duration": 100
     },
-    "verdant_cobert 8.aseprite": {
+    "verdant_cobert 9.aseprite": {
       "frame": {
         "x": 1280,
         "y": 0,
@@ -189,7 +210,7 @@
       },
       "duration": 100
     },
-    "verdant_cobert 9.aseprite": {
+    "verdant_cobert 10.aseprite": {
       "frame": {
         "x": 1767,
         "y": 0,
@@ -210,7 +231,7 @@
       },
       "duration": 100
     },
-    "verdant_cobert 10.aseprite": {
+    "verdant_cobert 11.aseprite": {
       "frame": {
         "x": 1530,
         "y": 0,
@@ -231,7 +252,7 @@
       },
       "duration": 100
     },
-    "verdant_cobert 11.aseprite": {
+    "verdant_cobert 12.aseprite": {
       "frame": {
         "x": 1400,
         "y": 0,
@@ -252,7 +273,7 @@
       },
       "duration": 100
     },
-    "verdant_cobert 12.aseprite": {
+    "verdant_cobert 13.aseprite": {
       "frame": {
         "x": 1890,
         "y": 0,
@@ -273,7 +294,7 @@
       },
       "duration": 100
     },
-    "verdant_cobert 13.aseprite": {
+    "verdant_cobert 14.aseprite": {
       "frame": {
         "x": 1977,
         "y": 0,
@@ -294,9 +315,9 @@
       },
       "duration": 100
     },
-    "verdant_cobert 14.aseprite": {
+    "verdant_cobert 15.aseprite": {
       "frame": {
-        "x": 2687,
+        "x": 2680,
         "y": 0,
         "w": 87,
         "h": 122
@@ -315,9 +336,9 @@
       },
       "duration": 100
     },
-    "verdant_cobert 15.aseprite": {
+    "verdant_cobert 16.aseprite": {
       "frame": {
-        "x": 2774,
+        "x": 2767,
         "y": 0,
         "w": 86,
         "h": 122
@@ -336,9 +357,9 @@
       },
       "duration": 100
     },
-    "verdant_cobert 16.aseprite": {
+    "verdant_cobert 17.aseprite": {
       "frame": {
-        "x": 2601,
+        "x": 2594,
         "y": 0,
         "w": 86,
         "h": 125
@@ -357,9 +378,9 @@
       },
       "duration": 100
     },
-    "verdant_cobert 17.aseprite": {
+    "verdant_cobert 18.aseprite": {
       "frame": {
-        "x": 2516,
+        "x": 2509,
         "y": 0,
         "w": 85,
         "h": 127
@@ -378,7 +399,7 @@
       },
       "duration": 100
     },
-    "verdant_cobert 18.aseprite": {
+    "verdant_cobert 19.aseprite": {
       "frame": {
         "x": 2400,
         "y": 0,
@@ -399,9 +420,9 @@
       },
       "duration": 100
     },
-    "verdant_cobert 19.aseprite": {
+    "verdant_cobert 20.aseprite": {
       "frame": {
-        "x": 2860,
+        "x": 2853,
         "y": 0,
         "w": 72,
         "h": 119
@@ -420,9 +441,9 @@
       },
       "duration": 100
     },
-    "verdant_cobert 20.aseprite": {
+    "verdant_cobert 21.aseprite": {
       "frame": {
-        "x": 3095,
+        "x": 3109,
         "y": 0,
         "w": 26,
         "h": 29
@@ -441,9 +462,9 @@
       },
       "duration": 100
     },
-    "verdant_cobert 21.aseprite": {
+    "verdant_cobert 22.aseprite": {
       "frame": {
-        "x": 2983,
+        "x": 2976,
         "y": 0,
         "w": 112,
         "h": 77
@@ -462,7 +483,7 @@
       },
       "duration": 100
     },
-    "verdant_cobert 22.aseprite": {
+    "verdant_cobert 23.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -490,7 +511,7 @@
     "image": "verdant_cobert.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3153,
+      "w": 3167,
       "h": 360
     },
     "scale": "1",
@@ -524,30 +545,37 @@
         "color": "#000000ff"
       },
       {
-        "name": "pols",
+        "name": "galleda_penjada",
         "from": 4,
-        "to": 19,
+        "to": 4,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_tamboret",
-        "from": 20,
+        "name": "pols",
+        "from": 5,
         "to": 20,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_sacs",
+        "name": "davant_tamboret",
         "from": 21,
         "to": 21,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_sacs",
         "from": 22,
         "to": 22,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 23,
+        "to": 23,
         "direction": "forward",
         "color": "#000000ff"
       }

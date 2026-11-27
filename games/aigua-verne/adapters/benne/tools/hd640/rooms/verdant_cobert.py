@@ -13,8 +13,9 @@ Primer pla: el pal de la quadra a la dreta, una caixa de testos a baix a l'esque
 El detall ve del cobert pla de sempre (verdant_cobert_pla_comu.py), dibuixat de cara i projectat: la paret, la porta,
 les eines, el prestatge, el calendari, la finestra, els sacs, la ràdio, el tamboret i la tomaquera.
 
-Props: `galleda` (la galleda de zinc d'en Nil, a terra: fins que s'agafa). Decorats: `reg_muntat` (la galleda penjada
-a la paret del fons i el reg gota a gota del pare fins al test) i `tomaquera_viva` (verda i amb tomàquets).
+Props: `galleda` (la galleda de zinc d'en Nil, a terra: fins que s'agafa). Decorats: `reg_muntat` (el reg gota a gota del pare, del clau
+de la paret del fons fins al test), `galleda_penjada` (la galleda plena, penjada del clau quan s'hi posa) i
+`tomaquera_viva` (verda i amb tomàquets).
 ANIMS: `pols` (la pols que balla al raig de llum).
 
 El món: x a la dreta (0 = la paret de la porta), y amunt (0 = el terra), z cap al fons (300 = la paret de les eines);
@@ -453,19 +454,22 @@ def p_galleda(cv):
     cv.img.alpha_composite(out)
 
 
+def _galleda_penjada_pos():
+    tx, _ = TOMA
+    return tx + 14, 120
+
+
 def reg_muntat(cv):
-    """El reg gota a gota del pare, muntat: la galleda penjada d'un clau a la paret del fons, damunt la tomaquera, i el
-    tub negre que baixa per la paret i va fins al test, on hi fa la volta amb tres goters verds."""
+    """El reg gota a gota del pare, muntat: el tub negre que puja per la paret del fons, damunt la tomaquera, fins al
+    clau on es penjarà la galleda (el cap del tub, a punt per a l'aigua), i que baixa fins al test, on hi fa la volta
+    amb tres goters verds. La galleda penjada és un altre decorat (`galleda_penjada`): no hi és fins que s'hi posa."""
     tx, tz = TOMA
     c2 = Canvas(light=LIGHT, transparent=True)
     e2 = Escena(c2, CAM, LLUMS, ambient=AMBIENT)
-    gx, gy = tx + 14, 120
-    e2.linia((gx, gy + 34, ZW - 1), (gx - 11, gy + 22, ZW - 1), ZINC, 3.0)
-    e2.linia((gx, gy + 34, ZW - 1), (gx + 11, gy + 22, ZW - 1), ZINC, 3.0)
-    img, pi = _retall('galleda_penjada')
-    e2.sprite('reg', img, pi, (gx, gy, ZW - 4))
-    e2.cable('reg', [(gx, gy - 2, ZW - 3), (gx + 2, 70, ZW - 2), (gx + 3, 2, ZW - 2), (gx - 2, 1.5, ZW - 14),
-                     (tx + 14, 1.5, tz + 14), (tx + 8, 26, tz + 4)], HOSE, 2.6, gruix=1.8)
+    gx, gy = _galleda_penjada_pos()
+    e2.linia((gx - 1, gy + 34, ZW - 1), (gx + 1, gy + 34, ZW - 1), ZINC, 3.0)          # el clau
+    e2.cable('reg', [(gx + 1, gy + 32, ZW - 2), (gx, gy + 14, ZW - 3), (gx, gy - 2, ZW - 3), (gx + 2, 70, ZW - 2), (gx + 3, 2, ZW - 2),
+                     (gx - 2, 1.5, ZW - 14), (tx + 14, 1.5, tz + 14), (tx + 8, 26, tz + 4)], HOSE, 2.6, gruix=1.8)
     for a in range(0, 360, 8):                                     # la volta damunt la terra del test
         ra = math.radians(a)
         e2.cable('reg', [(tx + math.cos(ra) * 12, 26, tz + math.sin(ra) * 12),
@@ -480,9 +484,23 @@ def reg_muntat(cv):
     cv.img.alpha_composite(c2.img)
 
 
+def galleda_penjada(cv):
+    """La galleda plena, penjada del clau per la nansa, amb el tub del reg que en surt per sota."""
+    c2 = Canvas(light=LIGHT, transparent=True)
+    e2 = Escena(c2, CAM, LLUMS, ambient=AMBIENT)
+    gx, gy = _galleda_penjada_pos()
+    e2.linia((gx, gy + 34, ZW - 1), (gx - 11, gy + 22, ZW - 1), ZINC, 3.0)
+    e2.linia((gx, gy + 34, ZW - 1), (gx + 11, gy + 22, ZW - 1), ZINC, 3.0)
+    img, pi = _retall('galleda_penjada')
+    e2.sprite('reg', img, pi, (gx, gy, ZW - 4))
+    _davant_de(e2, {'primer_pla'})
+    cv.img.alpha_composite(c2.img)
+
+
 PROPS = {
     'galleda': p_galleda,
     'reg_muntat': reg_muntat,
+    'galleda_penjada': galleda_penjada,
     'tomaquera_viva': _sprite_sol('tomaquera_viva', (TOMA[0], 0, TOMA[1])),
 }
 

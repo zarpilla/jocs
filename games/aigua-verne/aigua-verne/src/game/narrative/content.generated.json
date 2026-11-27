@@ -422,6 +422,45 @@
             ]
           },
           {
+            "verb": [
+              "give",
+              "use"
+            ],
+            "item": "pernil",
+            "if": {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 6
+                },
+                {
+                  "flag": "diu_aparta",
+                  "is": false
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.cantimplora_bodega.carmanyola.1"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.cantimplora_bodega.carmanyola.2",
+                "sound": "gat"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "diu_aparta"
+              },
+              {
+                "takeItem": "pernil"
+              }
+            ]
+          },
+          {
             "verb": "give",
             "item": "*",
             "lines": [
@@ -720,6 +759,14 @@
                 "text": "pj.bru.1"
               }
             ]
+          },
+          {
+            "verb": [
+              "give",
+              "use"
+            ],
+            "item": "carta_juana",
+            "dialogue": "bru"
           },
           {
             "verb": "talkTo",
@@ -6618,6 +6665,20 @@
                 ]
               }
             ]
+          },
+          "termometre": {
+            "name": "sala.fosa_colada.termometre.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_colada.termometre.1"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -6867,6 +6928,147 @@
                   "var": "gresol",
                   "op": "==",
                   "value": "canal"
+                }
+              ]
+            }
+          },
+          "termo_0": {
+            "visibleIf": {
+              "any": [
+                {
+                  "flag": "sync_colada",
+                  "is": false
+                },
+                {
+                  "var": "temperatura",
+                  "op": "<=",
+                  "value": 0
+                }
+              ]
+            }
+          },
+          "termo_1": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 1
+                }
+              ]
+            }
+          },
+          "termo_2": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 2
+                }
+              ]
+            }
+          },
+          "termo_3": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 3
+                }
+              ]
+            }
+          },
+          "termo_4": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 4
+                }
+              ]
+            }
+          },
+          "termo_5": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 5
+                }
+              ]
+            }
+          },
+          "termo_6": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 6
+                }
+              ]
+            }
+          },
+          "termo_7": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 7
+                }
+              ]
+            }
+          },
+          "termo_8": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 8
+                }
+              ]
+            }
+          },
+          "termo_9": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_colada"
+                },
+                {
+                  "var": "temperatura",
+                  "op": "==",
+                  "value": 9
                 }
               ]
             }
@@ -9787,6 +9989,10 @@
                   {
                     "who": "player",
                     "text": "sala.granja_pati.porta_graner.precinte.5"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.granja_pati.porta_graner.precinte.11"
                   }
                 ],
                 "effects": [
@@ -10869,6 +11075,15 @@
                       "op": "==",
                       "value": 3
                     }
+                  },
+                  {
+                    "who": "vet",
+                    "text": "sala.palau_control.valvula.vet_reserva",
+                    "if": {
+                      "var": "valvules",
+                      "op": "==",
+                      "value": 3
+                    }
                   }
                 ]
               },
@@ -11197,6 +11412,15 @@
                   {
                     "who": "verne",
                     "text": "sala.palau_control.valvula.reserva",
+                    "if": {
+                      "var": "valvules",
+                      "op": "==",
+                      "value": 3
+                    }
+                  },
+                  {
+                    "who": "vet",
+                    "text": "sala.palau_control.valvula.vet_reserva",
                     "if": {
                       "var": "valvules",
                       "op": "==",
@@ -11535,6 +11759,15 @@
                       "op": "==",
                       "value": 3
                     }
+                  },
+                  {
+                    "who": "vet",
+                    "text": "sala.palau_control.valvula.vet_reserva",
+                    "if": {
+                      "var": "valvules",
+                      "op": "==",
+                      "value": 3
+                    }
                   }
                 ]
               },
@@ -11574,6 +11807,27 @@
           "palanca": {
             "name": "sala.palau_control.palanca.nom",
             "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "sync_subhasta"
+                    },
+                    {
+                      "var": "valvules",
+                      "op": ">=",
+                      "value": 3
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.palau_control.palanca.10"
+                  }
+                ]
+              },
               {
                 "verb": "look",
                 "if": {
@@ -13325,6 +13579,11 @@
           "reg_muntat": {
             "visibleIf": {
               "flag": "reg_muntat"
+            }
+          },
+          "galleda_penjada": {
+            "visibleIf": {
+              "flag": "tomaquera_regada"
             }
           },
           "tomaquera_viva": {
@@ -29852,7 +30111,7 @@
       "sync.colada.1": "El forn es refreda: el metall s'endureix per les vores.",
       "sync.colada.2": "El termòmetre baixa de pressa. Més manxa!",
       "sync.colada.3": "Gairebé fred!",
-      "sync.colada.4": "El metall s'ha endurit al gresol.",
+      "sync.colada.4": "El forn s'ha refredat del tot: el metall s'ha endurit al gresol.",
       "sync.colada.5": "(des de la porta) Refoneu-ho tot. I ara, sense badar.",
       "sync.colada.6": "El forn torna a estar a vuit.",
       "sync.subhasta.1": "Lots cinc a vuit: la cartera de deutors. Préstecs lligats al preu de l'aigua: dues-centes famílies, tres cooperatives i una nau cisterna.",
@@ -30762,6 +31021,7 @@
       "sala.fosa_colada.grua_pont.nom": "comandaments de la grua",
       "sala.fosa_colada.llit.nom": "llit de colada",
       "sala.fosa_colada.sorra_pedra.nom": "sacs de sorra",
+      "sala.fosa_colada.termometre.nom": "termòmetre del forn",
       "sala.verdant_jardi.nom": "Jardí de la residència",
       "sala.verdant_jardi.rampa.nom": "Cantimplora",
       "sala.verdant_jardi.porta_residencia.nom": "residència",
@@ -31117,6 +31377,7 @@
       "sala.fosa_colada.llit.11": "Al llit hi va el motlle, preparat amb sorra fina.",
       "sala.fosa_colada.llit.12": "El motlle espera el metall. Primer, el gresol ple, i la grua el porta fins aquí.",
       "sala.fosa_colada.llit.13": "Ara, tapar-lo: la sorra, al llit.",
+      "sala.fosa_colada.termometre.1": "El repetidor del termòmetre del forn. Si l'agulla arriba a la franja vermella, el metall s'endureix al gresol.",
       "sala.fosa_colada.sorra_pedra.1": "Sacs de sorra de Ferrum. Pedra picada. Per a un motlle de precisió, no serveix.",
       "sala.fosa_colada.sorra_pedra.2": "Aquesta no serveix: és pedra picada.",
       "sala.verdant_jardi.entra.1": "Verdant. On viuen els que poden pagar l'aigua. La gespa és de plàstic, les flors són de plàstic, i l'olor de gespa és d'esprai.",
@@ -31276,6 +31537,7 @@
       "sala.palau_control.valvula.error": "Holm. Holm, és un error tècnic. Demà torna a pujar.",
       "sala.palau_control.valvula.holm": "Trenta-un, senyor Verne. Per sobre de trenta. Per poc.",
       "sala.palau_control.valvula.reserva": "I tinc la meva reserva. Garantia pròpia. Senyors: el preu de l'aigua no baixa mai de trenta mentre jo tingui una gota guardada.",
+      "sala.palau_control.valvula.vet_reserva": "(mirant de reüll la palanca vermella) Una gota guardada... RESERVA. «No es pot tocar mai.»",
       "sala.palau_control.palanca.1": "RESERVA. La reserva personal del Magnat: el seu últim barril. Ple. Sota la piscina central.",
       "sala.palau_control.palanca.2": "Una palanca vermella: RESERVA. Diu la Lia que no es pot tocar mai.",
       "sala.palau_control.palanca.3": "L'últim barril.",
@@ -31285,6 +31547,7 @@
       "sala.palau_control.palanca.7": "Sobre el seu cap, la piscina central s'omple. I la del costat. I la del costat...",
       "sala.palau_control.palanca.8": "La reserva, l'última. Primer, els tres dipòsits: que el Magnat s'hi aferri.",
       "sala.palau_control.palanca.9": "No es pot tocar mai, diu la Lia. I encara no és l'hora.",
+      "sala.palau_control.palanca.10": "La reserva del Magnat, el seu últim barril. Per això no es pot tocar mai: mentre hi sigui, el preu no baixa de trenta.",
       "sala.palau_control.interfon.1": "L'interfon. Hi truca el Magnat quan vol saber si tot va bé. La Lia contestarà.",
       "sala.palau_control.interfon.2": "Millor no dir res. La meva veu no és de servei.",
       "sala.palau_control.camera.1": "Una càmera. En Nil hi ha posat unes flors de plàstic al davant. «Feien pols.»",
@@ -31328,6 +31591,7 @@
       "sala.granja_pati.porta_graner.precinte.7": "El cadenat va amb cargols de cap de flor. Verne els fa servir perquè no els pugui obrir ningú.",
       "sala.granja_pati.porta_graner.precinte.8": "Ningú, excepte jo. ...Cadenat a la caixa d'eines. Ja l'inventariaran.",
       "sala.granja_pati.porta_graner.precinte.9": "El cadenat ho mira amb el llum vermell. No.",
+      "sala.granja_pati.porta_graner.precinte.11": "Clic. El cadenat s'obre i la porta del graner queda lliure.",
       "sala.granja_pati.porta_graner.precinte.10": "Tancat. Un cadenat de Verne, amb una ranura i un llum vermell.",
       "sala.granja_pati.entra.precinte": "A la porta del graner hi ha un paper groc. El pare no compraria mai res groc.",
       "sala.granja_graner.reg.cas.2": "«Encara serveix», diu el pare. Doncs que serveixi. Me l'emporto.",

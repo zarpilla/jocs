@@ -421,6 +421,17 @@
       },
       "zIndex": 24,
       "baseline": 999
+    },
+    {
+      "id": "galleda_penjada",
+      "tag": "galleda_penjada",
+      "animations": {
+        "galleda_penjada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

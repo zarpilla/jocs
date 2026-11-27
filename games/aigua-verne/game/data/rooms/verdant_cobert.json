@@ -227,6 +227,11 @@
         "flag": "reg_muntat"
       }
     },
+    "galleda_penjada": {
+      "visibleIf": {
+        "flag": "tomaquera_regada"
+      }
+    },
     "tomaquera_viva": {
       "visibleIf": {
         "flag": "tomaquera_regada"
