@@ -14,7 +14,7 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from
 import { dirname, join } from 'node:path';
 import type { DialogueLineDef, GameContent, InteractionDef, LocaleTable, RoomDef } from '@aventura/narrative-core';
 import { jocAdapterDir, type JocBenne } from './joc-benne.js';
-import { configuraTactil, FES, opcionsTactils, TACTIL_TEXTOS } from './tactil/index.js';
+import { configuraTactil, FES, menuDialeg, opcionsTactils, TACTIL_TEXTOS } from './tactil/index.js';
 import { objecteSol } from './tactil/runtime/accions.js';
 import { filaVolumVeus } from './volum-veus.js';
 
@@ -147,6 +147,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   narradorDalt(gameDir, config);
   targetaTitol(gameDir, config);
   if (joc.tactil) opcionsTactils(gameDir);
+  if (joc.tactil) menuDialeg(gameDir);
   filaVolumVeus(gameDir);  // després d'opcionsTactils, que esborra el que hi ha sota la seva marca
   if (addSwitchButton(gameDir)) report.needsArt.push('guis/verbs');
   if (content.manifest.cover && addCoverGui(gameDir, joc)) report.needsArt.push('guis/portada');

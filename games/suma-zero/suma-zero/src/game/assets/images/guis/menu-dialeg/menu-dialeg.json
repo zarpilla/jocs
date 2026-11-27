@@ -1,0 +1,579 @@
+{
+ "frames": {
+  "verbs 0.aseprite": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 57,
+    "h": 52
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 57,
+    "h": 52
+   },
+   "sourceSize": {
+    "w": 57,
+    "h": 52
+   },
+   "duration": 100
+  },
+  "verbs 1.aseprite": {
+   "frame": {
+    "x": 57,
+    "y": 0,
+    "w": 57,
+    "h": 52
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 57,
+    "h": 52
+   },
+   "sourceSize": {
+    "w": 57,
+    "h": 52
+   },
+   "duration": 100
+  },
+  "verbs 2.aseprite": {
+   "frame": {
+    "x": 114,
+    "y": 0,
+    "w": 25,
+    "h": 25
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 25,
+    "h": 25
+   },
+   "sourceSize": {
+    "w": 25,
+    "h": 25
+   },
+   "duration": 100
+  },
+  "verbs 3.aseprite": {
+   "frame": {
+    "x": 139,
+    "y": 0,
+    "w": 32,
+    "h": 32
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 32,
+    "h": 32
+   },
+   "sourceSize": {
+    "w": 32,
+    "h": 32
+   },
+   "duration": 100
+  },
+  "verbs 4.aseprite": {
+   "frame": {
+    "x": 171,
+    "y": 0,
+    "w": 32,
+    "h": 32
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 32,
+    "h": 32
+   },
+   "sourceSize": {
+    "w": 32,
+    "h": 32
+   },
+   "duration": 100
+  },
+  "verbs 5.aseprite": {
+   "frame": {
+    "x": 203,
+    "y": 0,
+    "w": 32,
+    "h": 32
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 32,
+    "h": 32
+   },
+   "sourceSize": {
+    "w": 32,
+    "h": 32
+   },
+   "duration": 100
+  },
+  "verbs 6.aseprite": {
+   "frame": {
+    "x": 235,
+    "y": 0,
+    "w": 32,
+    "h": 32
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 32,
+    "h": 32
+   },
+   "sourceSize": {
+    "w": 32,
+    "h": 32
+   },
+   "duration": 100
+  },
+  "verbs 7.aseprite": {
+   "frame": {
+    "x": 267,
+    "y": 0,
+    "w": 32,
+    "h": 32
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 32,
+    "h": 32
+   },
+   "sourceSize": {
+    "w": 32,
+    "h": 32
+   },
+   "duration": 100
+  },
+  "verbs 8.aseprite": {
+   "frame": {
+    "x": 299,
+    "y": 0,
+    "w": 25,
+    "h": 25
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 25,
+    "h": 25
+   },
+   "sourceSize": {
+    "w": 25,
+    "h": 25
+   },
+   "duration": 100
+  },
+  "verbs 9.aseprite": {
+   "frame": {
+    "x": 324,
+    "y": 0,
+    "w": 25,
+    "h": 25
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 25,
+    "h": 25
+   },
+   "sourceSize": {
+    "w": 25,
+    "h": 25
+   },
+   "duration": 100
+  },
+  "verbs 10.aseprite": {
+   "frame": {
+    "x": 349,
+    "y": 0,
+    "w": 532,
+    "h": 44
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 532,
+    "h": 44
+   },
+   "sourceSize": {
+    "w": 532,
+    "h": 44
+   },
+   "duration": 100
+  },
+  "verbs 11.aseprite": {
+   "frame": {
+    "x": 881,
+    "y": 0,
+    "w": 13,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 13,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 13,
+    "h": 36
+   },
+   "duration": 100
+  },
+  "verbs 12.aseprite": {
+   "frame": {
+    "x": 894,
+    "y": 0,
+    "w": 13,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 13,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 13,
+    "h": 36
+   },
+   "duration": 100
+  },
+  "verbs 13.aseprite": {
+   "frame": {
+    "x": 907,
+    "y": 0,
+    "w": 13,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 13,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 13,
+    "h": 36
+   },
+   "duration": 100
+  },
+  "verbs 14.aseprite": {
+   "frame": {
+    "x": 920,
+    "y": 0,
+    "w": 13,
+    "h": 36
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 13,
+    "h": 36
+   },
+   "sourceSize": {
+    "w": 13,
+    "h": 36
+   },
+   "duration": 100
+  },
+  "verbs 15.aseprite": {
+   "frame": {
+    "x": 933,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "sourceSize": {
+    "w": 1,
+    "h": 1
+   },
+   "duration": 100
+  },
+  "verbs 16.aseprite": {
+   "frame": {
+    "x": 934,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1,
+    "h": 1
+   },
+   "sourceSize": {
+    "w": 1,
+    "h": 1
+   },
+   "duration": 100
+  },
+  "verbs 17.aseprite": {
+   "frame": {
+    "x": 935,
+    "y": 0,
+    "w": 640,
+    "h": 100
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 640,
+    "h": 100
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 100
+   },
+   "duration": 100
+  },
+  "verbs 18.aseprite": {
+   "frame": {
+    "x": 0,
+    "y": 100,
+    "w": 520,
+    "h": 82
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 520,
+    "h": 82
+   },
+   "sourceSize": {
+    "w": 520,
+    "h": 82
+   },
+   "duration": 100
+  },
+  "verbs 19.aseprite": {
+   "frame": {
+    "x": 520,
+    "y": 100,
+    "w": 529,
+    "h": 44
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 529,
+    "h": 44
+   },
+   "sourceSize": {
+    "w": 529,
+    "h": 44
+   },
+   "duration": 100
+  }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "hd640/gui_rest.py",
+  "image": "menu-dialeg.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 1575,
+   "h": 182
+  },
+  "scale": "1",
+  "frameTags": [
+   {
+    "name": "CanviaBtn",
+    "from": 0,
+    "to": 0,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "CanviaBtn-hover",
+    "from": 1,
+    "to": 1,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "MenuBtn",
+    "from": 2,
+    "to": 2,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "BossaBtn",
+    "from": 3,
+    "to": 3,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "BossaBtn-hover",
+    "from": 4,
+    "to": 4,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "BossaBtn-on",
+    "from": 5,
+    "to": 5,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "PuntsBtn",
+    "from": 6,
+    "to": 6,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "PuntsBtn-hover",
+    "from": 7,
+    "to": 7,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "PuntsPetitBtn",
+    "from": 8,
+    "to": 8,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "PuntsPetitBtn-hover",
+    "from": 9,
+    "to": 9,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "Safata",
+    "from": 10,
+    "to": 10,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "UpBtn",
+    "from": 11,
+    "to": 11,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "UpBtn-hover",
+    "from": 12,
+    "to": 12,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "DownBtn",
+    "from": 13,
+    "to": 13,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "DownBtn-hover",
+    "from": 14,
+    "to": 14,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "CaraIri",
+    "from": 15,
+    "to": 15,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "CaraVet",
+    "from": 16,
+    "to": 16,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "Tauler",
+    "from": 17,
+    "to": 17,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "Safata2",
+    "from": 18,
+    "to": 18,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "Safata3",
+    "from": 19,
+    "to": 19,
+    "direction": "forward",
+    "color": "#000000ff"
+   }
+  ],
+  "layers": [],
+  "slices": []
+ }
+}

@@ -12,6 +12,7 @@
  *   runtime/         → src/game/narrative/ (al costat del pont; el runtime propi del joc encara el pot substituir)
  *   guis/            → src/game/guis/ (els scripts del HUD `verbs`, del menú `accions` i de la targeta `controls`)
  *   opcionsTactils   → el menú d'opcions: «clic esquerre per fer» (girar els botons) i el botó «Controls»
+ *   menuDialeg       → la GUI `menu-dialeg`: el botó del menú, a sobre del panell de les opcions d'una conversa
  *   controls.py      → per al hud.py de cada joc: l'art i el .gui.json de la targeta «Com es juga»
  *   GLOBAL_SCRIPT    → al bloc generat de globalScript.ts (l'encaminador dels clics)
  *   configuraTactil  → game-config.json (resolució adaptable, els verbs `toca` i `accions`, el perfil d'entrada)
@@ -22,7 +23,7 @@
  * (`tools/hd640/pantalla.py`), i els textos `ui.accio.*`, `ui.verb.toca`/`accions`/`fes`, `ui.controls.*` i
  * `ui.opcions.*` a game/locales.
  */
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -154,3 +155,62 @@ controls.onClick(() => {
 })
 `);
 }
+
+// ─── El botó del menú durant una conversa ─────────────────────────────────
+
+/**
+ * La GUI `menu-dialeg` (tasca 198): durant una conversa, el motor amaga el HUD, i el panell de les opcions tapa el lloc
+ * del botó del menú; sense teclat (la tecla H), no es podia obrir l'historial per repassar què s'havia dit abans de
+ * triar. Aquesta GUI és només el botó del menú del HUD (el mateix control i la mateixa art: es copia el full de
+ * `verbs`), a la dreta, just a sobre del panell de les opcions, i es veu només mentre les opcions són a la vista.
+ * Ancorada a baix, com el panell (`dialog`), perquè hi quedi enganxada a qualsevol alçada de pantalla. Es pot tornar a
+ * executar.
+ */
+export function menuDialeg(gameDir: string) {
+  const llegeix = (rel: string) => (existsSync(join(gameDir, rel)) ? JSON.parse(readFileSync(join(gameDir, rel), 'utf8')) as Json : null);
+  const verbs = llegeix('guis/verbs/verbs.gui.json');
+  const dialeg = llegeix('guis/dialog/dialog.gui.json');
+  const boto = ((verbs?.controls as Control[]) ?? []).find((c) => c.id === 'MenuBtn');
+  if (!verbs || !dialeg || !boto) return;
+  // la vora de dalt del panell: el primer control de les opcions (les fletxes i la graella), a l'alçada de disseny
+  const dalt = Math.min(...((dialeg.controls as Control[]) ?? []).map((c) => Number(c.y)).filter((y) => y > 0)) - 4;
+  const res = (llegeix('game-config.json')?.resolution ?? {}) as { width?: number };
+  const W = res.width ?? 640;
+  const mida = Number(boto.width ?? 25);
+  for (const ext of ['png', 'json']) {
+    const de = join(gameDir, `assets/images/guis/verbs/verbs.${ext}`);
+    if (!existsSync(de)) return;
+    mkdirSync(join(gameDir, 'assets/images/guis/menu-dialeg'), { recursive: true });
+    const a = join(gameDir, `assets/images/guis/menu-dialeg/menu-dialeg.${ext}`);
+    if (ext === 'png') copyFileSync(de, a);
+    else writeFileSync(a, readFileSync(de, 'utf8').replace(/verbs\.png/g, 'menu-dialeg.png'));
+  }
+  const dir = join(gameDir, 'guis/menu-dialeg');
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, 'menu-dialeg.gui.json'), JSON.stringify({
+    id: 'menu-dialeg', name: 'Menú (conversa)',
+    description: "El botó del menú a sobre de les opcions d'una conversa (adapters/benne/tactil/index.ts, menuDialeg).",
+    visible: false, display: { aseprite: true }, anchorY: 'bottom', zIndex: 95,
+    controls: [{ ...structuredClone(boto), id: 'MenuBtn', x: W - 4 - mida, y: dalt - 4 - Number(boto.height ?? mida) }],
+  }, null, 2) + '\n');
+  writeFileSync(join(dir, 'menu-dialeg.gui.ts'), `// Creat per adapters/benne/tactil/index.ts (menuDialeg). No l'editis aquí.
+// El botó del menú durant una conversa: es veu només amb les opcions a la vista (el motor amaga el HUD).
+import { onUpdate } from '@benne/script'
+import { guis } from '@game'
+import { gui, menuBtn } from './menu-dialeg.ids'
+
+menuBtn.onClick(() => {
+  gui.hide()
+  guis.gameMenu.show()
+})
+
+onUpdate(() => {
+  const on = guis.dialog.visible && !guis.gameMenu.visible
+  if (gui.visible !== on) {
+    if (on) gui.show()
+    else gui.hide()
+  }
+})
+`);
+}
+
