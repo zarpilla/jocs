@@ -148,6 +148,26 @@
       "loop": true,
       "frameDuration": 170
     },
+    "AgafaL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaD": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaU": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaDL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaUL": {
+      "loop": false,
+      "frameDuration": 100
+    },
     "LlunyIdleL": {
       "loop": true,
       "frameDuration": 650
@@ -247,6 +267,26 @@
     "LlunyFaUL": {
       "loop": true,
       "frameDuration": 170
+    },
+    "LlunyAgafaL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "LlunyAgafaD": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "LlunyAgafaU": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "LlunyAgafaDL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "LlunyAgafaUL": {
+      "loop": false,
+      "frameDuration": 100
     },
     "GalaIdleL": {
       "loop": true,
@@ -348,6 +388,26 @@
       "loop": true,
       "frameDuration": 170
     },
+    "GalaAgafaL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "GalaAgafaD": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "GalaAgafaU": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "GalaAgafaDL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "GalaAgafaUL": {
+      "loop": false,
+      "frameDuration": 100
+    },
     "LlunyGalaIdleL": {
       "loop": true,
       "frameDuration": 650
@@ -447,6 +507,26 @@
     "LlunyGalaFaUL": {
       "loop": true,
       "frameDuration": 170
+    },
+    "LlunyGalaAgafaL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "LlunyGalaAgafaD": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "LlunyGalaAgafaU": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "LlunyGalaAgafaDL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "LlunyGalaAgafaUL": {
+      "loop": false,
+      "frameDuration": 100
     }
   },
   "defaultVerb": "look",

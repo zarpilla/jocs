@@ -510,7 +510,20 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.granja_graner.caixa_eines.1"
+              "text": "sala.granja_graner.caixa_eines.1",
+              "stage": [
+                {
+                  "who": "player",
+                  "gest": "Agafa",
+                  "hold": 0.5
+                }
+              ],
+              "stageAfter": [
+                {
+                  "who": "player",
+                  "gest": null
+                }
+              ]
             }
           ],
           "effects": [

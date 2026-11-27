@@ -81,7 +81,35 @@
             "use",
             "open"
           ],
-          "goTo": "cantimplora_pont"
+          "goTo": "cantimplora_pont",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.cantimplora_bodega.escala.puja",
+              "stage": [
+                {
+                  "who": "player",
+                  "walk": {
+                    "x": 84,
+                    "y": 184
+                  }
+                },
+                {
+                  "who": "player",
+                  "face": "U"
+                },
+                {
+                  "who": "player",
+                  "gest": "Fa",
+                  "hold": 0.7
+                },
+                {
+                  "who": "player",
+                  "gest": null
+                }
+              ]
+            }
+          ]
         }
       ]
     },

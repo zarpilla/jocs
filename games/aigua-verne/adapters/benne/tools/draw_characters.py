@@ -94,6 +94,8 @@ def durations(tags, walk=(90, 90), talk=140, idle=None, extra=None):
         base = t.replace('Lluny', '', 1) if t.startswith('Lluny') else t
         if 'Blink' in base or 'Look' in base or 'Consola' in base:   # micro-accions: un sol cop i torna a l'Idle
             a = {'loop': False, 'frameDuration': 75 if 'Blink' in base else 260}
+        elif re.search(r'Agafa(L|D|U|DL|UL)$', base):                 # el gest d'acció: un sol cop (el runtime el treu)
+            a = {'loop': False, 'frameDuration': AGAFA_MS}
         elif 'Walk' in base:
             a['frameDuration'] = walk[0] if base.endswith('L') else walk[1]
         elif 'Talk' in base:
@@ -174,9 +176,10 @@ def respira(img, k):
     return out
 
 
-def person_tags(spec_of, dirs=DIRS, consola=False):
+def person_tags(spec_of, dirs=DIRS, consola=False, agafa=False):
     """Idle (4: respira), Walk (6) i Talk (2) en L, D i U (i DL i UL, el 3/4, si `dirs` les porta). `spec_of()` torna
-    l'especificació (es crida dins la mida). `consola`: la micro-acció de girar-se d'esquena a tocar botons."""
+    l'especificació (es crida dins la mida). `consola`: la micro-acció de girar-se d'esquena a tocar botons. `agafa`:
+    el gest `Agafa` (les protagonistes)."""
     dirs = [dirs[i:i + 2] if dirs[i:i + 2] in ('DL', 'UL') else dirs[i] for i in range(len(dirs))] if isinstance(dirs, str) else dirs
 
     def make():
@@ -211,8 +214,48 @@ def person_tags(spec_of, dirs=DIRS, consola=False):
         for f in dirs:
             out.append((f'Fa{f}', [lambda f=f, k=k: person({**spec_of(), 'pose': lambda p, k=k: fa(p, k)}, f)
                                    for k in range(4)]))
+        # el gest d'acció (agafar, fer servir, donar una cosa de la sala): el fa sol el runtime comú
+        if agafa:
+            for f in dirs:
+                out.append((f'Agafa{f}', [lambda f=f, t=t: person({**spec_of(), 'pose': agafa_pose(t)}, f) for t in AGAFA]))
         return out
     return make
+
+
+# El gest `Agafa` (tasca 223; el mateix que a Suma Zero): allarga el braç cap a la cosa i el torna a recollir. El fa
+# sol el runtime comú (adapters/benne/runtime, `GEST_ACCIO`) quan la protagonista agafa, fa servir o dona alguna cosa de
+# la sala i l'acció fa alguna cosa; les indicacions d'escena també el poden demanar (`"gest": "Agafa"`). Quant
+# s'estira el braç a cada fotograma (0: penjant, 1: estirat del tot).
+AGAFA = (0.45, 0.85, 1.0, 1.0, 0.5)
+AGAFA_MS = 100
+
+
+def _cap(a, b, t):
+    return (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
+
+
+def agafa_pose(t):
+    """La postura del gest `Agafa`, estirat `t`: de perfil, el braç del davant endavant, gairebé horitzontal, amb la mà a
+    l'alçada de la cintura; de cara (i en 3/4), la mà de la dreta de la imatge ve endavant, davant del cos; d'esquena, el
+    braç puja endavant cap a la cosa."""
+    def pose(p):
+        if p.f == 'L':
+            sx, sy = p.shoulder
+            a0, b0 = 3, 8                                   # el braç quiet (Pose._side)
+            a, bend = a0 + (62 - a0) * t, b0 + (14 - b0) * t
+            ra, rb = math.radians(a), math.radians(a + bend)
+            el = (sx - math.sin(ra) * 10.5, sy + math.cos(ra) * 10.5)
+            wr = (el[0] - math.sin(rb) * 9.5, el[1] + math.cos(rb) * 9.5)
+            p.arms[0] = ((sx, sy), el, wr)
+            return
+        sx, sy = p.sh[1]
+        if p.f == 'U':
+            p.elbow[1] = _cap(p.elbow[1], (sx + 3.0, sy + 4), t)
+            p.wrist[1] = _cap(p.wrist[1], (sx + 1.5, sy - 6), t)
+        else:
+            p.elbow[1] = _cap(p.elbow[1], (sx + 2.2, sy + 8.5), t)
+            p.wrist[1] = _cap(p.wrist[1], (sx - 3.5, sy + 12.5), t)
+    return pose
 
 
 def fa(p, k):
@@ -263,12 +306,12 @@ def person_extra(walk_speed, verb, anims, seu=False, consola=False):
 AMB_CONSOLA = {'capitana'}
 
 
-def persona(cid, robes, walk_speed, verb, seu=None, walk=(90, 90), dirs=('L', 'D', 'U')):
+def persona(cid, robes, walk_speed, verb, seu=None, walk=(90, 90), dirs=('L', 'D', 'U'), agafa=False):
     """`robes`: {prefix: spec}. `seu`: una funció (talk) → la figura asseguda (etiquetes Seu i LlunySeu). `dirs`: les
     direccions del full (amb 'DL' i 'UL', el 3/4; R, DR i UR són el mirall)."""
     tags = []
     for o, spec in robes.items():
-        tags += tags_both(PERSONA, person_tags(lambda spec=spec: spec, list(dirs), consola=cid in AMB_CONSOLA), o)
+        tags += tags_both(PERSONA, person_tags(lambda spec=spec: spec, list(dirs), consola=cid in AMB_CONSOLA, agafa=agafa), o)
     if seu:
         tags += tags_both(PERSONA, lambda: [('Seu', [seu, seu, seu, lambda: seu(True)])])
     anims = durations(tags, walk=walk, idle=IDLE_MS, extra={'Seu': 500})
@@ -341,8 +384,9 @@ def robot():
 def repartiment():
     """{id: funció que escriu el full}."""
     out = {
-        'iri': lambda: persona('iri', P.IRI_ROBA, 132, 'look', walk=(90, 100), dirs=('L', 'D', 'U', 'DL', 'UL')),
-        'vet': lambda: persona('vet', {'': P.VET}, 132, 'look', walk=(90, 100), dirs=('L', 'D', 'U', 'DL', 'UL')),
+        'iri': lambda: persona('iri', P.IRI_ROBA, 132, 'look', walk=(90, 100), dirs=('L', 'D', 'U', 'DL', 'UL'), agafa=True),
+        'vet': lambda: persona('vet', {'': P.VET}, 132, 'look', walk=(90, 100), dirs=('L', 'D', 'U', 'DL', 'UL'),
+                              agafa=True),
         'diu': gat,
     }
     for cid in P.NPCS:

@@ -148,6 +148,26 @@
       "loop": true,
       "frameDuration": 170
     },
+    "AgafaL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaD": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaU": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaDL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaUL": {
+      "loop": false,
+      "frameDuration": 100
+    },
     "LlunyIdleL": {
       "loop": true,
       "frameDuration": 650
@@ -247,6 +267,26 @@
     "LlunyFaUL": {
       "loop": true,
       "frameDuration": 170
+    },
+    "LlunyAgafaL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "LlunyAgafaD": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "LlunyAgafaU": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "LlunyAgafaDL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "LlunyAgafaUL": {
+      "loop": false,
+      "frameDuration": 100
     }
   },
   "defaultVerb": "look",

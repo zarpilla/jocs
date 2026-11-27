@@ -295,6 +295,14 @@
               ],
               "stageAfter": [
                 {
+                  "who": "vet",
+                  "face": "U"
+                },
+                {
+                  "who": "vet",
+                  "gest": "Fa"
+                },
+                {
                   "prop": "cistella_grua",
                   "anim": "cistella_baixa",
                   "hold": 1.5
@@ -302,6 +310,15 @@
                 {
                   "who": "player",
                   "visible": false
+                },
+                {
+                  "who": "player",
+                  "face": "L"
+                },
+                {
+                  "who": "player",
+                  "gest": "Agafa",
+                  "hold": 0.5
                 },
                 {
                   "prop": "cistella_grua",
@@ -363,6 +380,10 @@
                   "face": "L"
                 },
                 {
+                  "who": "player",
+                  "gest": null
+                },
+                {
                   "prop": "cistella_grua",
                   "anim": "cistella_baixa"
                 }
@@ -386,6 +407,12 @@
                   "prop": "cistella_grua",
                   "anim": "cistella_avall",
                   "hold": 3.5
+                }
+              ],
+              "stageAfter": [
+                {
+                  "who": "vet",
+                  "gest": null
                 }
               ]
             }
