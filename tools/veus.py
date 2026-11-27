@@ -329,6 +329,10 @@ def main():
     variables = cfg.get("variables", {})
     etiqueta = cfg.get("etiqueta", {})   # veu → etiqueta davant de cada línia (p. ex. per fixar l'accent)
     tempo = cfg.get("tempo", {})     # veu → factor d'atempo (el v3 no fa cas de `speed`)
+    # Una veu esborrada del compte es pot gravar amb un clon fet de les seves mostres: `clons` (a veus.json, o a la
+    # variable VEUS_CLONS, en JSON, per a un clon temporal) diu quin voice_id s'envia en lloc de l'original. L'empremta
+    # es queda amb l'original, i així les línies que ja hi havia no es tornen a generar.
+    clons = {**cfg.get("clons", {}), **json.loads(os.environ.get("VEUS_CLONS", "{}"))}
 
     def veu_narrador(key):
         """El personatge amb la veu del qual es diu una línia del narrador (`veu` de veus.json), o el narrador."""
@@ -438,7 +442,7 @@ def main():
     for i, (stem, sp, key, text, vid, print_) in enumerate(todo, 1):
         body = json.dumps({"text": text, "model_id": model, "language_code": language}).encode()
         req = urllib.request.Request(
-            f"https://api.elevenlabs.io/v1/text-to-speech/{vid}?output_format={fmt}",
+            f"https://api.elevenlabs.io/v1/text-to-speech/{clons.get(vid, vid)}?output_format={fmt}",
             data=body, headers={"xi-api-key": k, "Content-Type": "application/json"})
         try:
             with urllib.request.urlopen(req, timeout=120) as r:
