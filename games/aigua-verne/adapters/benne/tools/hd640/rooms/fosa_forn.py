@@ -427,15 +427,16 @@ def termometre(e, fire):
 
 def rascle(e):
     x, z = COL2
-    foot, top = (x - 34, 2, z - 24), (x - 6, 168, z - 10)
-    e.cable('rascle', [foot, top], IRONF, 3.8, gruix=2.4)
-    e.cable('rascle', [(top[0], top[1] - 2, top[2]), (top[0] + 1, top[1] + 12, top[2] + 1)], PLANKF, 4.0, gruix=3.4)
+    foot, top = (x - 56, 2, z - 30), (x - 6, 168, z - 10)
+    # (més clar que la columna: de fosc sobre fosc no es veia, i les tenalles de terra hi robaven l'ull)
+    e.cable('rascle', [foot, top], IRONF, 6.0, gruix=3.6)
+    e.cable('rascle', [(top[0], top[1] - 2, top[2]), (top[0] + 1, top[1] + 24, top[2] + 1)], PLANKF, 6.4, gruix=4.4)
     a = 0.5
     e.quad('rascle', (foot[0] - 15 * math.cos(a), 12, foot[2] + 15 * math.sin(a)),
            (foot[0] + 15 * math.cos(a), 12, foot[2] - 15 * math.sin(a)),
            (foot[0] + 15 * math.cos(a), 0.6, foot[2] - 15 * math.sin(a)),
            (foot[0] - 15 * math.cos(a), 0.6, foot[2] + 15 * math.sin(a)), ramp=IRONF, dues_cares=True,
-           lvl=lambda s, t, P: 3.0 - t * 0.08 + (fbm(s / 4, t / 4, 5) - 0.5))
+           lvl=lambda s, t, P: 5.4 - t * 0.08 + (fbm(s / 4, t / 4, 5) - 0.5))
 
 
 def metall(e):
@@ -1207,7 +1208,7 @@ FRONT = [
      'baseline': _vfront((COL1[0], COL1[1] - 13)), 'zIndex': 20, 'variants': _FOC,
      'props': [*TERMO]},
     {'id': 'davant_columna_dreta', 'mask': _amo({'columna_dreta', 'rascle'}),
-     'baseline': _vfront((COL2[0], COL2[1] - 13), (COL2[0] - 34, COL2[1] - 24)), 'zIndex': 20, 'variants': _FOC,
+     'baseline': _vfront((COL2[0], COL2[1] - 13), (COL2[0] - 56, COL2[1] - 30)), 'zIndex': 20, 'variants': _FOC,
      'props': ['rascle_fora']},
     {'id': 'davant_metall', 'mask': _amo({'metall'}),
      'baseline': _vfront((METALL[0], METALL[1] - 10), (CARRET[0] + 30, CARRET[1] - 30)), 'zIndex': 20, 'variants': _FOC},
@@ -1216,6 +1217,8 @@ FRONT = [
 
 _DIAL = CAM.projecta((COL1[0], DIAL_Y, COL1[1] - 12))
 _DR = 15 * 1.4 * CAM.escala((COL1[0], DIAL_Y, COL1[1] - 12))
+
+_TEN = _local((ESCORIA[0] - 46, ESCORIA[1] - 30), 0.5)    # les tenalles de `brossa`
 
 GEOMETRIA = {
     'things': {
@@ -1232,7 +1235,10 @@ GEOMETRIA = {
                   'walk': _p(*_local(MANXA[:2], MANXA[2])(MANXA[3] + 40, 0, -40)[::2])},
         'metall': {'rect': _rect_mon((METALL[0] - 70, 60, METALL[1]), (CARRET[0] + 40, 0, CARRET[1] - 40)),
                    'walk': _p(METALL[0] + 60, METALL[1] - 70)},
-        'rascle': {'rect': _rect_mon((COL2[0] - 50, 180, COL2[1] - 24), (COL2[0] + 2, 0, COL2[1] - 24)),
+        # Les tenalles estirades a terra, al costat de l'escòria (es veuen més que el rascle: que diguin alguna cosa).
+        'tenalles': {'rect': _rect_mon(_TEN(-52, 0, -6), _TEN(52, 0, 6), _TEN(-52, 10, -6), _TEN(52, 10, 6)),
+                     'walk': _p(*_TEN(-10, 0, -40)[::2])},
+        'rascle': {'rect': _rect_mon((COL2[0] - 72, 196, COL2[1] - 30), (COL2[0] + 2, 0, COL2[1] - 30)),
                    'walk': _p(COL2[0] - 40, COL2[1] - 70)},
         'termometre': {'rect': (round(_DIAL[0] - _DR - 2), round(_DIAL[1] - _DR - 2), round(_DIAL[0] + _DR + 2),
                                 round(_DIAL[1] + _DR + 2)),

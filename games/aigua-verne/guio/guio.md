@@ -565,8 +565,8 @@ entra ningú que no sigui ric o que no treballi per a ell. Busqueu en Nil, el ja
 `verdant_cobert` (el cobert d'en Nil, amb la tomaquera amagada), `verdant_residencia` (el vestíbul amb en Fidel, el
 despatx del Magnat). La Vet i l'Iri hi baixen per separat (els veïns de Verdant no saluden la gent amb granota).
 
-**Trencaclosques 5.1 — En Nil (Vet).** Amb en Nil hi parla la Vet, i al cobert hi entra ella. IRI: «Avui faig
-d'inversora. En Nil no es fia de les jaquetes de vol.» En Nil parla amb les flors. «Aquestes no necessiten aigua. Són de plàstic.
+**Trencaclosques 5.1 — En Nil (Vet).** Amb en Nil hi parla la Vet, i al cobert hi entra ella. IRI: «En Nil no es
+fia de les jaquetes de vol. Amb ell, millor que hi parli la Vet.» En Nil parla amb les flors. «Aquestes no necessiten aigua. Són de plàstic.
 Per això duren.» Cada dijous puja al palau amb la llançadora dels jardiners i hi pot portar dos ajudants. «El Magnat fa
 totes les festes en dijous. Vol la pols acabada de treure.» (Així la subhasta cau en dijous, i no és casualitat.) No
 s'hi juga la feina per dues desconegudes.

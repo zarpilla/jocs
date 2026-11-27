@@ -600,6 +600,32 @@
         }
       ]
     },
+    "tenalles": {
+      "name": "sala.fosa_forn.tenalles.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fosa_forn.tenalles.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fosa_forn.tenalles.2"
+            }
+          ]
+        }
+      ]
+    },
     "rascle": {
       "name": "sala.fosa_forn.rascle.nom",
       "interactions": [

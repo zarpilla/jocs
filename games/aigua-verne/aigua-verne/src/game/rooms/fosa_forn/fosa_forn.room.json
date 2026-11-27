@@ -509,20 +509,20 @@
       "zIndex": 4,
       "points": [
         {
-          "x": 578,
-          "y": 66
+          "x": 557,
+          "y": 49
         },
         {
-          "x": 622,
-          "y": 66
+          "x": 625,
+          "y": 49
         },
         {
-          "x": 622,
-          "y": 246
+          "x": 625,
+          "y": 248
         },
         {
-          "x": 578,
-          "y": 246
+          "x": 557,
+          "y": 248
         }
       ],
       "walkToPoint": {
@@ -530,8 +530,8 @@
         "y": 264
       },
       "lookAtPoint": {
-        "x": 600,
-        "y": 246
+        "x": 591,
+        "y": 248
       }
     },
     {
@@ -628,6 +628,38 @@
       "lookAtPoint": {
         "x": 369,
         "y": 186
+      }
+    },
+    {
+      "id": "tenalles",
+      "active": true,
+      "description": "tenalles",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 414,
+          "y": 205
+        },
+        {
+          "x": 484,
+          "y": 205
+        },
+        {
+          "x": 484,
+          "y": 227
+        },
+        {
+          "x": 414,
+          "y": 227
+        }
+      ],
+      "walkToPoint": {
+        "x": 465,
+        "y": 234
+      },
+      "lookAtPoint": {
+        "x": 449,
+        "y": 227
       }
     }
   ],
@@ -781,7 +813,7 @@
         "davant_columna_dreta": {}
       },
       "zIndex": 32,
-      "baseline": 243
+      "baseline": 244
     },
     {
       "id": "davant",
@@ -985,7 +1017,7 @@
         "forn_ences__davant_columna_dreta": {}
       },
       "zIndex": 33,
-      "baseline": 243
+      "baseline": 244
     },
     {
       "id": "forn_fort__davant_columna_dreta",
@@ -997,7 +1029,7 @@
         "forn_fort__davant_columna_dreta": {}
       },
       "zIndex": 33,
-      "baseline": 243
+      "baseline": 244
     },
     {
       "id": "forn_ences__davant",
@@ -1131,7 +1163,7 @@
           "frameDuration": 1000
         }
       },
-      "baseline": 243
+      "baseline": 244
     },
     {
       "id": "termo_fred_1",
@@ -1484,7 +1516,7 @@
         "y": 150,
         "radius": 594,
         "color": "#ffa040",
-        "intensity": 1,
+        "intensity": 1.0,
         "whenPropVisible": "forn_fort"
       }
     ]

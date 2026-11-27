@@ -7844,6 +7844,32 @@
               }
             ]
           },
+          "tenalles": {
+            "name": "sala.fosa_forn.tenalles.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.tenalles.1"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "pickUp"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.tenalles.2"
+                  }
+                ]
+              }
+            ]
+          },
           "rascle": {
             "name": "sala.fosa_forn.rascle.nom",
             "interactions": [
@@ -30076,22 +30102,22 @@
       "dlg.comunicador.opt.fem": "Què hem de fer, ara?",
       "dlg.comunicador.opt.preu": "A quant és l'aigua?",
       "dlg.comunicador.opt.adeu": "Res. Només volia sentir-te.",
-      "dlg.comunicador.fem.1": "Trobar l'escriptura de la granja (el pare ho sap; el videotelèfon és a la casa).",
-      "dlg.comunicador.fem.2": "Trobar l'escriptura de la granja (el pare ho sap; el videotelèfon és a la casa).",
+      "dlg.comunicador.fem.1": "Trobar l'escriptura de la granja. El pare sap on és, i el videotelèfon és a la casa.",
+      "dlg.comunicador.fem.2": "Trobar l'escriptura de la granja. El pare sap on és, i el videotelèfon és a la casa.",
       "dlg.comunicador.fem.3": "Què fa una bomba de Verne al nostre pou?",
       "dlg.comunicador.fem.4": "Què fa una bomba de Verne al nostre pou?",
       "dlg.comunicador.fem.5": "Parlar amb la Capitana, al pont.",
       "dlg.comunicador.fem.6": "Parlar amb la Capitana, al pont.",
-      "dlg.comunicador.fem.7": "Un albarà: una feina de veritat per a Aqua (ràdio del pont: la Juana).",
-      "dlg.comunicador.fem.8": "Un albarà: una feina de veritat per a Aqua (ràdio del pont: la Juana).",
-      "dlg.comunicador.fem.9": "Llavors per a la Juana: el banc del pare, al graner (demana-li permís pel videotelèfon).",
-      "dlg.comunicador.fem.10": "Llavors per a la Juana: el banc del pare, al graner (li demano permís pel videotelèfon).",
+      "dlg.comunicador.fem.7": "Un albarà: una feina de veritat per a Aqua. La Juana parla per la ràdio del pont.",
+      "dlg.comunicador.fem.8": "Un albarà: una feina de veritat per a Aqua. La Juana parla per la ràdio del pont.",
+      "dlg.comunicador.fem.9": "Llavors per a la Juana: al graner hi ha el banc del pare. Però abans, demana-li permís pel videotelèfon.",
+      "dlg.comunicador.fem.10": "Llavors per a la Juana: al graner hi ha el banc del pare. Però abans li demano permís pel videotelèfon.",
       "dlg.comunicador.fem.11": "Llavors carregades: avisar la Juana per ràdio.",
       "dlg.comunicador.fem.12": "Llavors carregades: avisar la Juana per ràdio.",
-      "dlg.comunicador.fem.13": "L'injector de la nau està esquerdat: l'he de mirar jo (el motor, a la bodega).",
-      "dlg.comunicador.fem.14": "L'injector de la nau està esquerdat: que el miris tu (el motor, a la bodega).",
-      "dlg.comunicador.fem.15": "Un injector nou: el tractor de l'avi en té un d'igual (oli i una clau anglesa).",
-      "dlg.comunicador.fem.16": "Un injector nou: el tractor de l'avi en té un d'igual (oli i una clau anglesa).",
+      "dlg.comunicador.fem.13": "L'injector de la nau està esquerdat. Ja el miro jo, el motor és a la bodega.",
+      "dlg.comunicador.fem.14": "L'injector de la nau està esquerdat. Mira-te'l tu, que el motor és a la bodega.",
+      "dlg.comunicador.fem.15": "Un injector nou. El tractor de l'avi en té un d'igual: caldrà oli i una clau anglesa.",
+      "dlg.comunicador.fem.16": "Un injector nou. El tractor de l'avi en té un d'igual: caldrà oli i una clau anglesa.",
       "dlg.comunicador.fem.17": "Albarà i injector: tornar a la Capitana.",
       "dlg.comunicador.fem.18": "Albarà i injector: tornar a la Capitana.",
       "dlg.comunicador.fem.19": "Rumb a Aqua: el mapa del pont.",
@@ -30100,8 +30126,8 @@
       "dlg.comunicador.fem.22": "Baixar al fons del mar d'Aqua: jo a la cistella i tu a la grua.",
       "dlg.comunicador.fem.23": "Parlar amb la Juana, al fons del mar.",
       "dlg.comunicador.fem.24": "Parlar amb la Juana, al fons del mar. Hi baixo jo.",
-      "dlg.comunicador.fem.25": "Ferrum: trobar en Bru (el sindicat) i donar-li la carta de la Juana.",
-      "dlg.comunicador.fem.26": "Ferrum: trobar en Bru (el sindicat) i donar-li la carta de la Juana. Les assemblees, per a mi.",
+      "dlg.comunicador.fem.25": "Ferrum: trobar en Bru, al sindicat, i donar-li la carta de la Juana.",
+      "dlg.comunicador.fem.26": "Ferrum: trobar en Bru, al sindicat, i donar-li la carta de la Juana. Les assemblees, per a mi.",
       "dlg.comunicador.fem.27": "Aigua per a la canalla del piquet de Ferrum.",
       "dlg.comunicador.fem.28": "Aigua per a la canalla del piquet de Ferrum.",
       "dlg.comunicador.fem.29": "Tornar a parlar amb en Bru.",
@@ -30126,16 +30152,16 @@
       "dlg.comunicador.fem.48": "Qui informa el Magnat? Algú de la nau.",
       "dlg.comunicador.fem.49": "Ensenyar el contracte a la Capitana.",
       "dlg.comunicador.fem.50": "Ensenyar el contracte a la Capitana.",
-      "dlg.comunicador.fem.51": "Un vestit de gala per a tu (al sindicat de Ferrum n'hi havia un).",
-      "dlg.comunicador.fem.52": "Un vestit de gala per a mi (al sindicat de Ferrum n'hi havia un).",
-      "dlg.comunicador.fem.53": "Palau: he de trobar la Lia (passadissos de servei).",
-      "dlg.comunicador.fem.54": "Palau: has de trobar la Lia (passadissos de servei).",
-      "dlg.comunicador.fem.55": "Fer-me arribar les claus (la safata de les copes, al saló).",
-      "dlg.comunicador.fem.56": "Fer-te arribar les claus (la safata de les copes, al saló).",
+      "dlg.comunicador.fem.51": "Un vestit de gala per a tu. Al sindicat de Ferrum n'hi havia un.",
+      "dlg.comunicador.fem.52": "Un vestit de gala per a mi. Al sindicat de Ferrum n'hi havia un.",
+      "dlg.comunicador.fem.53": "Palau: he de trobar la Lia. Deu anar pels passadissos de servei.",
+      "dlg.comunicador.fem.54": "Palau: has de trobar la Lia. Busca-la pels passadissos de servei.",
+      "dlg.comunicador.fem.55": "Fer-me arribar les claus amb la safata de les copes, al saló.",
+      "dlg.comunicador.fem.56": "Fer-te arribar les claus amb la safata de les copes, al saló.",
       "dlg.comunicador.fem.57": "Jo a la sala de control, tu al saló de la subhasta.",
       "dlg.comunicador.fem.58": "Tu a la sala de control, jo al saló de la subhasta.",
-      "dlg.comunicador.fem.59": "Obrir les tres vàlvules (la clau al pany, i girar) abans que s'acabin els lots, sense espantar el Magnat. Tu pots parar el martell: cada objecció, al seu lot.",
-      "dlg.comunicador.fem.60": "Obrir les tres vàlvules (la clau al pany, i girar) abans que s'acabin els lots, sense espantar el Magnat. Jo puc parar el martell: cada objecció, al seu lot.",
+      "dlg.comunicador.fem.59": "Obrir les tres vàlvules abans que s'acabin els lots: la clau al pany, i girar. Sense espantar el Magnat. Tu pots parar el martell: cada objecció, al seu lot.",
+      "dlg.comunicador.fem.60": "Obrir les tres vàlvules abans que s'acabin els lots: la clau al pany, i girar. Sense espantar el Magnat. Jo puc parar el martell: cada objecció, al seu lot.",
       "dlg.comunicador.fem.61": "31: el Magnat s'aguanta amb la seva reserva. La palanca vermella.",
       "dlg.comunicador.fem.62": "31: el Magnat s'aguanta amb la seva reserva. La palanca vermella.",
       "dlg.juana.opt.lot9": "Juana, a la platja hi ha estaques de Verne.",
@@ -31252,6 +31278,7 @@
       "sala.fosa_forn.manxa.nom": "manxa",
       "sala.fosa_forn.metall.nom": "comptadors per fondre",
       "sala.fosa_forn.rascle.nom": "rascle",
+      "sala.fosa_forn.tenalles.nom": "tenalles",
       "sala.fosa_forn.forn.nom": "forn",
       "sala.fosa_forn.termometre.nom": "termòmetre",
       "sala.fosa_colada.nom": "Foneria: la colada",
@@ -31582,6 +31609,8 @@
       "sala.fosa_forn.metall.6": "Encara no. Primer, el motlle preparat al llit de colada.",
       "sala.fosa_forn.metall.7": "Ja hem fet les claus.",
       "sala.fosa_forn.rascle.1": "Un rascle de ferro llarg per treure l'escòria del metall fos.",
+      "sala.fosa_forn.tenalles.1": "Unes tenalles de colada, llargues com un rem, al costat de l'escòria vella. Per treure-la del forn, però, hi ha el rascle de la columna.",
+      "sala.fosa_forn.tenalles.2": "Són per agafar els motlles calents, no per escumar. L'escòria es treu amb el rascle, el que és recolzat a la columna.",
       "sala.fosa_forn.rascle.2": "Fora l'escòria.",
       "sala.fosa_forn.rascle.3": "El metall queda net i brillant com un sol petit.",
       "sala.fosa_forn.rascle.4": "Encara no hi ha res a escumar.",
@@ -31632,7 +31661,7 @@
       "sala.verdant_jardi.porta_residencia.2": "En Fidel em mira la roba de feina. «El servei, pel darrere.» La casa no té darrere.",
       "sala.verdant_jardi.porta_residencia.3": "El robot es posa al mig de la porta. Molt educadament. Molt al mig.",
       "sala.verdant_jardi.porta_cobert.1": "El cobert del jardiner. L'única cosa de fusta de debò de tot Verdant.",
-      "sala.verdant_jardi.porta_cobert.iri": "Avui faig d'inversora. En Nil no es fia de les jaquetes de vol.",
+      "sala.verdant_jardi.porta_cobert.iri": "En Nil no es fia de les jaquetes de vol. Amb ell, millor que hi parli la Vet.",
       "sala.verdant_jardi.flors.1": "Flors de plàstic. No es moren. Per això el Magnat les estima.",
       "sala.verdant_jardi.flors.2": "Fan olor de cotxe nou.",
       "sala.verdant_jardi.aspersors.1": "Aspersors. No reguen: perfumen. Gasten aigua per fer olor d'aigua.",
