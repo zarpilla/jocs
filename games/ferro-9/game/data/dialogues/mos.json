@@ -86,6 +86,7 @@
           "id": "llapis_demanar",
           "text": "dlg.mos.opt.llapis_demanar",
           "next": "llapis_que",
+          "nova": { "remembers": { "who": "mos", "fact": "perdonat" } },
           "if": {
             "all": [
               {

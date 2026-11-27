@@ -41,6 +41,7 @@
           "id": "clau",
           "text": "dlg.cargol.opt.clau",
           "next": "clau",
+          "nova": { "any": [{ "hasItem": "formulari_segellat" }, { "hasItem": "formulari_triplicat" }] },
           "if": {
             "all": [
               {
@@ -58,6 +59,7 @@
           "id": "imant",
           "text": "dlg.cargol.opt.imant",
           "next": "imant",
+          "nova": { "any": [{ "hasItem": "carnet_exemplar" }, { "hasItem": "formulari_triplicat" }] },
           "if": {
             "all": [
               {
@@ -89,6 +91,7 @@
           "id": "diapaso",
           "text": "dlg.cargol.opt.diapaso",
           "next": "diapaso",
+          "nova": { "any": [{ "hasItem": "carnet_exemplar" }, { "hasItem": "formulari_triplicat" }] },
           "if": {
             "all": [
               {
@@ -115,6 +118,7 @@
           "id": "imant2",
           "text": "dlg.cargol.opt.imant2",
           "next": "imant2",
+          "nova": { "any": [{ "hasItem": "carnet_exemplar" }, { "hasItem": "formulari_triplicat" }] },
           "if": {
             "all": [
               {

@@ -504,7 +504,7 @@
           "const": "title"
         }
       ],
-      "description": "`player` = el protagonista, `narrator` = text de narració, `title` = pantalla de títol (p. ex. el canvi d'acte): la pantalla es fon a negre, s'hi mostra el text i torna la imatge."
+      "description": "`player` = el protagonista, `narrator` = text de narració, `title` = pantalla de títol (p. ex. el canvi d'acte): la pantalla es fon a negre, s'hi mostra el text i torna la imatge. Una línia del narrador amb el text buit (`\"\"`) és un silenci: només les indicacions d'escena i el so, sense caixa."
     },
     "TextKey": {
       "type": "string",
@@ -883,6 +883,10 @@
         "silent": {
           "type": "boolean",
           "description": "El jugador no repeteix el text en veu alta (p. ex. \"(Marxar)\")."
+        },
+        "nova": {
+          "$ref": "#/definitions/Condition",
+          "description": "L'opció té una resposta nova mentre es compleixi aquesta condició (p. ex. ara que es porta el formulari segellat): encara que ja s'hagi triat abans, no surt com a ja dita fins que es torni a triar amb la condició complerta."
         },
         "effects": {
           "type": "array",

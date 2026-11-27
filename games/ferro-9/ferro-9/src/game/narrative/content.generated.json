@@ -16710,6 +16710,16 @@
                 "id": "clau",
                 "text": "dlg.cargol.opt.clau",
                 "next": "clau",
+                "nova": {
+                  "any": [
+                    {
+                      "hasItem": "formulari_segellat"
+                    },
+                    {
+                      "hasItem": "formulari_triplicat"
+                    }
+                  ]
+                },
                 "if": {
                   "all": [
                     {
@@ -16727,6 +16737,16 @@
                 "id": "imant",
                 "text": "dlg.cargol.opt.imant",
                 "next": "imant",
+                "nova": {
+                  "any": [
+                    {
+                      "hasItem": "carnet_exemplar"
+                    },
+                    {
+                      "hasItem": "formulari_triplicat"
+                    }
+                  ]
+                },
                 "if": {
                   "all": [
                     {
@@ -16758,6 +16778,16 @@
                 "id": "diapaso",
                 "text": "dlg.cargol.opt.diapaso",
                 "next": "diapaso",
+                "nova": {
+                  "any": [
+                    {
+                      "hasItem": "carnet_exemplar"
+                    },
+                    {
+                      "hasItem": "formulari_triplicat"
+                    }
+                  ]
+                },
                 "if": {
                   "all": [
                     {
@@ -16784,6 +16814,16 @@
                 "id": "imant2",
                 "text": "dlg.cargol.opt.imant2",
                 "next": "imant2",
+                "nova": {
+                  "any": [
+                    {
+                      "hasItem": "carnet_exemplar"
+                    },
+                    {
+                      "hasItem": "formulari_triplicat"
+                    }
+                  ]
+                },
                 "if": {
                   "all": [
                     {
@@ -18777,6 +18817,12 @@
                 "id": "llapis_demanar",
                 "text": "dlg.mos.opt.llapis_demanar",
                 "next": "llapis_que",
+                "nova": {
+                  "remembers": {
+                    "who": "mos",
+                    "fact": "perdonat"
+                  }
+                },
                 "if": {
                   "all": [
                     {
@@ -20361,6 +20407,7 @@
       "ui.carregar.instruccions": "Tria una partida per carregar.",
       "ui.desar.instruccions": "Tria una posició i desa. El nom, si vols, el pots canviar.",
       "ui.desar.fet": "Desat.",
+      "ui.desar.espera": "No es pot desar mentre algú parla: torna al joc i espera que acabi.",
       "ui.opcions.clic_salta": "clic per saltar el diàleg",
       "ui.opcions.volum_efectes": "volum dels efectes",
       "ui.opcions.volum_musica": "volum de la música",
