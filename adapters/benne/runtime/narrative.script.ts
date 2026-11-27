@@ -634,8 +634,24 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
   const echo = silent ? 0 : 1
   const step = primeStage(narrative.choose(id, choice, { node }), echo)
   refreshOptions(dialog, step.choices)
-  playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
+  const lines = echo ? senseAcotacioEco(step.lines) : step.lines
+  playLines(lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
   if (step.ended) endDialog(dialog)
+}
+
+/**
+ * L'opció dita en veu alta (la primera línia) sense l'acotació del davant: «(Ensenya-li la tauleta) I aquest signe?»
+ * es diu «I aquest signe?». L'acotació és per a la jugadora, a la llista d'opcions. Si l'opció només és una acotació
+ * («(Tus)»), no es diu res (tasca 270). La veu (tools/veus.py) ja la treu.
+ */
+function senseAcotacioEco(lines: ResolvedLine[]): ResolvedLine[] {
+  const [eco, ...resta] = lines
+  if (!eco) return lines
+  const text = eco.text.replace(/^\s*\([^)]*\)\s*/, '')
+  if (text === eco.text) return lines
+  if (/[\p{L}\d]/u.test(text)) return [{ ...eco, text }, ...resta]
+  // (si la línia mou alguna cosa de l'escena, es diu igualment: no es pot perdre)
+  return eco.stage || eco.stageAfter ? lines : resta
 }
 
 /** Una pista demanada enmig d'una conversa, que es dirà quan acabi. */
