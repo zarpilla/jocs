@@ -501,7 +501,13 @@
             {
               "who": "player",
               "text": "sala.fabrica_moll.llancadora.fugir1",
-              "sound": "motor"
+              "sound": "motor",
+              "stageAfter": [
+                {
+                  "who": "player",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
@@ -510,7 +516,12 @@
             {
               "who": "player",
               "text": "sala.fabrica_moll.llancadora.fugir3",
-              "sound": "motor"
+              "sound": "motor",
+              "stage": [
+                {
+                  "shake": 0.8
+                }
+              ]
             }
           ],
           "effects": [
@@ -555,7 +566,13 @@
             {
               "who": "player",
               "text": "sala.fabrica_moll.llancadora.fugir1",
-              "sound": "motor"
+              "sound": "motor",
+              "stageAfter": [
+                {
+                  "who": "player",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
@@ -564,7 +581,12 @@
             {
               "who": "player",
               "text": "sala.fabrica_moll.llancadora.fugir3",
-              "sound": "motor"
+              "sound": "motor",
+              "stage": [
+                {
+                  "shake": 0.8
+                }
+              ]
             },
             {
               "who": "narrator",
