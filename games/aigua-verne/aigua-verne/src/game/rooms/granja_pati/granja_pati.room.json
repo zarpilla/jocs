@@ -345,7 +345,7 @@
       "id": "bomba",
       "active": true,
       "description": "la bomba de Verne",
-      "zIndex": 10,
+      "zIndex": 9,
       "points": [
         {
           "x": 399,
@@ -505,7 +505,7 @@
       "id": "senyal_port",
       "active": true,
       "description": "el pal del port",
-      "zIndex": 11,
+      "zIndex": 9,
       "points": [
         {
           "x": 577,

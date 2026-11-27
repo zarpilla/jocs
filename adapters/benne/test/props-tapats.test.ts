@@ -7,7 +7,7 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { coveredProps } from '../benne-content';
+import { coveredProps, puntsSobreCapes } from '../benne-content';
 
 const GAMES = join(__dirname, '../../../games');
 const rect = (x0: number, y0: number, x1: number, y1: number) =>
@@ -54,4 +54,16 @@ describe('props clicables tapats per un punt', () => {
       });
     }
   }
+});
+
+describe('punts per sobre dels personatges en una sala amb capes del davant (tasca 280)', () => {
+  const punts = [{ id: 'baix', zIndex: 9 }, { id: 'alt', zIndex: 10 }];
+  it('avisa dels punts de zIndex 10 o més si hi ha capes del davant', () => {
+    const w = puntsSobreCapes({ hotspots: punts, props: [{ id: 'davant', zIndex: 20, baseline: 200 }] });
+    expect(w).toHaveLength(1);
+    expect(w[0]).toContain('alt');
+  });
+  it('no en diu res sense capes del davant', () => {
+    expect(puntsSobreCapes({ hotspots: punts, props: [{ id: 'BG', zIndex: 0 }] })).toEqual([]);
+  });
 });

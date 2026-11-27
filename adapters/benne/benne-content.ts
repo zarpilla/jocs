@@ -291,6 +291,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
       }
       writeJson(path, benneRoom);
       for (const w of coveredProps(benneRoom)) console.warn(`⚠ rooms/${id}: ${w}`);
+      for (const w of puntsSobreCapes(benneRoom)) console.warn(`⚠ rooms/${id}: ${w}`);
       // Art encara provisional: es redibuixa (els dissenys poden haver canviat).
       if (existsSync(join(gameDir, 'assets/images/rooms', id, '.provisional'))) report.needsArt.push(`rooms/${id}`);
     }
@@ -574,6 +575,22 @@ export function coveredProps(room: Json, ambPunts = false): string[] {
 }
 
 /** Un decorat (`decor` a la sala): un prop que es veu o no segons l'estat, però no es pot clicar. */
+/** El zIndex més alt d'un punt: el dels personatges que no juguen (les protagonistes són a 10). */
+const PUNT_Z_MAX = 9;
+
+/**
+ * Punts amb zIndex per sobre de {@link PUNT_Z_MAX} en una sala amb capes del davant (props amb `baseline`): el motor
+ * no pot complir les línies base i deixa els personatges darrere de totes les capes (tasca 237 de Ni un ou).
+ */
+export function puntsSobreCapes(room: Json): string[] {
+  const capes = ((room.props as Json[]) ?? []).some((p) => p.baseline !== undefined);
+  if (!capes) return [];
+  return ((room.hotspots as Json[]) ?? [])
+    .filter((h) => Number(h.zIndex ?? 0) > PUNT_Z_MAX)
+    .map((h) => `el punt «${String(h.id)}» té zIndex ${String(h.zIndex)} en una sala amb capes del davant: els personatges ` +
+      `hi quedaran darrere de tot. Baixa'l a ${PUNT_Z_MAX} o menys.`);
+}
+
 // Per sobre dels props clicables (zIndex 3): un decorat pot canviar l'aspecte d'un prop. No es pot clicar.
 // Amb `sota`, per sota (zIndex 2): fa de fons d'altres coses clicables.
 const decorZ = (sota?: boolean) => (sota ? 2 : 4);
@@ -639,8 +656,10 @@ function layoutRoom(id: string, room: RoomDef, content: GameContent, t: (k?: str
   });
 
   const walkTo = (b: Box) => ({ x: Math.round(b.x + b.w / 2), y: s(b.kind === 'exit' ? 132 : 126) });
+  // zIndex = posició, però mai per sobre dels personatges (9): en una sala amb capes del davant (props amb `baseline`),
+  // un punt de zIndex 10 o més no deixa complir les línies base i els personatges queden darrere de tot (tasca 280).
   const hotspots = boxes.filter((b) => b.kind !== 'prop').map((b, n) => ({
-    id: b.id, active: true, description: b.label, zIndex: n, points: rect(b), walkToPoint: walkTo(b),
+    id: b.id, active: true, description: b.label, zIndex: Math.min(n, PUNT_Z_MAX), points: rect(b), walkToPoint: walkTo(b),
     lookAtPoint: { x: Math.round(b.x + b.w / 2), y: b.y + b.h }, ...(b.kind === 'exit' ? { defaultVerb: 'open' } : {}),
   }));
   const props = [
