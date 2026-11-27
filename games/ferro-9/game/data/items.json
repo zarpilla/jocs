@@ -1735,7 +1735,21 @@
           },
           {
             "who": "player",
-            "text": "obj.nota_pressio.iri1"
+            "text": "obj.nota_pressio.iri1",
+            "if": {
+              "var": "valvula",
+              "op": "==",
+              "value": "oberta"
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_pressio.iri1_fet",
+            "if": {
+              "var": "valvula",
+              "op": "!=",
+              "value": "oberta"
+            }
           },
           {
             "who": "player",
@@ -1787,7 +1801,21 @@
           },
           {
             "who": "player",
-            "text": "obj.nota_massa.iri2"
+            "text": "obj.nota_massa.iri2",
+            "if": {
+              "var": "valvula",
+              "op": "!=",
+              "value": "mig"
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_massa.iri2_fet",
+            "if": {
+              "var": "valvula",
+              "op": "==",
+              "value": "mig"
+            }
           }
         ],
         "effects": [

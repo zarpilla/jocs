@@ -369,30 +369,14 @@
           "protagonist": "iri"
         },
         {
-          "any": [
+          "all": [
             {
-              "all": [
-                {
-                  "hasItem": "nota_vet",
-                  "who": "iri"
-                },
-                {
-                  "flag": "nota_vet_llegida",
-                  "is": false
-                }
-              ]
+              "hasItem": "nota_vet",
+              "who": "iri"
             },
             {
-              "all": [
-                {
-                  "hasItem": "nota_pany",
-                  "who": "iri"
-                },
-                {
-                  "flag": "iri_sap_pany",
-                  "is": false
-                }
-              ]
+              "flag": "nota_vet_llegida",
+              "is": false
             }
           ]
         }
@@ -400,30 +384,14 @@
     },
     "doneWhen": {
       "not": {
-        "any": [
+        "all": [
           {
-            "all": [
-              {
-                "hasItem": "nota_vet",
-                "who": "iri"
-              },
-              {
-                "flag": "nota_vet_llegida",
-                "is": false
-              }
-            ]
+            "hasItem": "nota_vet",
+            "who": "iri"
           },
           {
-            "all": [
-              {
-                "hasItem": "nota_pany",
-                "who": "iri"
-              },
-              {
-                "flag": "iri_sap_pany",
-                "is": false
-              }
-            ]
+            "flag": "nota_vet_llegida",
+            "is": false
           }
         ]
       }
@@ -431,6 +399,46 @@
     "levels": [
       "pista.iri_llegir.1",
       "pista.iri_llegir.2"
+    ]
+  },
+  "iri_llegir_pany": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "all": [
+            {
+              "hasItem": "nota_pany",
+              "who": "iri"
+            },
+            {
+              "flag": "iri_sap_pany",
+              "is": false
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "all": [
+          {
+            "hasItem": "nota_pany",
+            "who": "iri"
+          },
+          {
+            "flag": "iri_sap_pany",
+            "is": false
+          }
+        ]
+      }
+    },
+    "levels": [
+      "pista.iri_llegir_pany.1",
+      "pista.iri_llegir_pany.2"
     ]
   },
   "iri_respondre": {
@@ -939,30 +947,14 @@
           "protagonist": "iri"
         },
         {
-          "any": [
+          "all": [
             {
-              "all": [
-                {
-                  "hasItem": "nota_mida",
-                  "who": "iri"
-                },
-                {
-                  "flag": "iri_sap_mida",
-                  "is": false
-                }
-              ]
+              "hasItem": "nota_mida",
+              "who": "iri"
             },
             {
-              "all": [
-                {
-                  "hasItem": "pols_rovell",
-                  "who": "iri"
-                },
-                {
-                  "flag": "iri_sap_rovell",
-                  "is": false
-                }
-              ]
+              "flag": "iri_sap_mida",
+              "is": false
             }
           ]
         }
@@ -970,30 +962,14 @@
     },
     "doneWhen": {
       "not": {
-        "any": [
+        "all": [
           {
-            "all": [
-              {
-                "hasItem": "nota_mida",
-                "who": "iri"
-              },
-              {
-                "flag": "iri_sap_mida",
-                "is": false
-              }
-            ]
+            "hasItem": "nota_mida",
+            "who": "iri"
           },
           {
-            "all": [
-              {
-                "hasItem": "pols_rovell",
-                "who": "iri"
-              },
-              {
-                "flag": "iri_sap_rovell",
-                "is": false
-              }
-            ]
+            "flag": "iri_sap_mida",
+            "is": false
           }
         ]
       }
@@ -1001,6 +977,46 @@
     "levels": [
       "pista.iri_llegir_a2.1",
       "pista.iri_llegir_a2.2"
+    ]
+  },
+  "iri_llegir_rovell": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "all": [
+            {
+              "hasItem": "pols_rovell",
+              "who": "iri"
+            },
+            {
+              "flag": "iri_sap_rovell",
+              "is": false
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "all": [
+          {
+            "hasItem": "pols_rovell",
+            "who": "iri"
+          },
+          {
+            "flag": "iri_sap_rovell",
+            "is": false
+          }
+        ]
+      }
+    },
+    "levels": [
+      "pista.iri_llegir_rovell.1",
+      "pista.iri_llegir_rovell.2"
     ]
   },
   "iri_biga": {
@@ -1927,38 +1943,27 @@
           "protagonist": "iri"
         },
         {
-          "any": [
+          "all": [
             {
-              "all": [
-                {
-                  "hasItem": "nota_pressio",
-                  "who": "iri"
-                },
-                {
-                  "flag": "iri_sap_pressio",
-                  "is": false
-                }
-              ]
+              "hasItem": "nota_pressio",
+              "who": "iri"
             },
             {
-              "all": [
-                {
-                  "hasItem": "nota_massa",
-                  "who": "iri"
-                },
-                {
-                  "flag": "iri_sap_massa",
-                  "is": false
-                }
-              ]
+              "flag": "iri_sap_pressio",
+              "is": false
             }
           ]
+        },
+        {
+          "var": "valvula",
+          "op": "==",
+          "value": "oberta"
         }
       ]
     },
     "doneWhen": {
       "not": {
-        "any": [
+        "all": [
           {
             "all": [
               {
@@ -1972,6 +1977,48 @@
             ]
           },
           {
+            "var": "valvula",
+            "op": "==",
+            "value": "oberta"
+          }
+        ]
+      }
+    },
+    "levels": [
+      "pista.iri_llegir_pressio.1",
+      "pista.iri_llegir_pressio.2"
+    ]
+  },
+  "iri_llegir_massa": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "all": [
+            {
+              "hasItem": "nota_massa",
+              "who": "iri"
+            },
+            {
+              "flag": "iri_sap_massa",
+              "is": false
+            }
+          ]
+        },
+        {
+          "var": "valvula",
+          "op": "!=",
+          "value": "mig"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "all": [
+          {
             "all": [
               {
                 "hasItem": "nota_massa",
@@ -1982,13 +2029,18 @@
                 "is": false
               }
             ]
+          },
+          {
+            "var": "valvula",
+            "op": "!=",
+            "value": "mig"
           }
         ]
       }
     },
     "levels": [
-      "pista.iri_llegir_pressio.1",
-      "pista.iri_llegir_pressio.2"
+      "pista.iri_llegir_massa.1",
+      "pista.iri_llegir_massa.2"
     ]
   },
   "iri_valvula": {
