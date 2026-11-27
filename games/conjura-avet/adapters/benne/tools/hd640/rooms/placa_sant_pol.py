@@ -734,7 +734,7 @@ def _corda(e):
     peu = (m[0] + n[0] * 22 + 6, 0.0, m[2] + n[2] * 22)
     pts = [top, (top[0] + n[0] * 4, 140, top[2] + n[2] * 4), (top[0] + n[0] * 8 + 2, 50, top[2] + n[2] * 8),
            (peu[0] - 3, 6, peu[2] - 2), peu]
-    e.cable("corda", pts, CANEM, 3.4, gruix=3.2)
+    e.cable("corda", pts, CANEM, 2.6, gruix=7.0)          # gruixuda i fosca: que es vegi de lluny, contra la pedra
     # el rotlle que sobra, a terra
     for i in range(3):
         e.cable('corda', [(peu[0] + 2 * i, 1 + i, peu[2] - 6), (peu[0] + 10 + 2 * i, 1 + i, peu[2] + 2),

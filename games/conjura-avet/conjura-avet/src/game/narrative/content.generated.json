@@ -4236,7 +4236,23 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.claustre.9"
+                    "text": "sala.claustre.9",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "L"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -8464,8 +8480,23 @@
                       {
                         "prop": "corda_campana",
                         "visible": false
+                      },
+                      {
+                        "who": "player",
+                        "walk": {
+                          "x": 366,
+                          "y": 214
+                        }
+                      },
+                      {
+                        "who": "player",
+                        "face": "U"
                       }
-                    ],
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.placa_sant_pol.22",
                     "stageAfter": [
                       {
                         "who": "player",
@@ -8475,17 +8506,15 @@
                       {
                         "prop": "corda_campana",
                         "visible": true,
-                        "hold": 0.6
+                        "fade": 0.4,
+                        "hold": 0.8
                       },
                       {
                         "who": "player",
-                        "visible": true
+                        "visible": true,
+                        "face": "D"
                       }
                     ]
-                  },
-                  {
-                    "who": "player",
-                    "text": "sala.placa_sant_pol.22"
                   }
                 ],
                 "effects": [
@@ -8828,6 +8857,7 @@
           {
             "id": "pont_intro",
             "once": true,
+            "walkIn": "left",
             "verb": "*",
             "if": {
               "var": "fase",
@@ -11540,6 +11570,61 @@
           "forat"
         ]
       },
+      "v_serra_aqui": {
+        "priority": 7,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 1
+            },
+            {
+              "hasItem": "serra",
+              "who": "iri"
+            },
+            {
+              "any": [
+                {
+                  "all": [
+                    {
+                      "inRoom": "mur_avet"
+                    },
+                    {
+                      "inRoom": "mur_avet",
+                      "who": "iri"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "inRoom": "placa_sant_pol"
+                    },
+                    {
+                      "inRoom": "placa_sant_pol",
+                      "who": "iri"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "hasItem": "serra",
+            "who": "iri"
+          }
+        },
+        "levels": [
+          "pista.v_serra_aqui.1",
+          "pista.v_serra_aqui.2"
+        ]
+      },
       "v_serra": {
         "priority": 6,
         "when": {
@@ -11555,6 +11640,15 @@
             {
               "hasItem": "serra",
               "who": "iri"
+            },
+            {
+              "inRoom": "mur_avet",
+              "who": "iri"
+            },
+            {
+              "not": {
+                "inRoom": "mur_avet"
+              }
             }
           ]
         },
@@ -11567,6 +11661,116 @@
         "levels": [
           "pista.v_serra.1",
           "pista.v_serra.2"
+        ]
+      },
+      "v_serra_placa": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 1
+            },
+            {
+              "hasItem": "serra",
+              "who": "iri"
+            },
+            {
+              "inRoom": "placa_sant_pol",
+              "who": "iri"
+            },
+            {
+              "not": {
+                "inRoom": "placa_sant_pol"
+              }
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "hasItem": "serra",
+            "who": "iri"
+          }
+        },
+        "levels": [
+          "pista.v_serra_placa.1",
+          "pista.v_serra_placa.2"
+        ]
+      },
+      "v_serra_pont": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 1
+            },
+            {
+              "hasItem": "serra",
+              "who": "iri"
+            },
+            {
+              "inRoom": "pont_ter",
+              "who": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "hasItem": "serra",
+            "who": "iri"
+          }
+        },
+        "levels": [
+          "pista.v_serra_pont.1",
+          "pista.v_serra_pont.2"
+        ]
+      },
+      "v_serra_lluny": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 1
+            },
+            {
+              "hasItem": "serra",
+              "who": "iri"
+            },
+            {
+              "not": {
+                "inRoom": [
+                  "mur_avet",
+                  "placa_sant_pol",
+                  "pont_ter"
+                ],
+                "who": "iri"
+              }
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "hasItem": "serra",
+            "who": "iri"
+          }
+        },
+        "levels": [
+          "pista.v_serra_lluny.1",
+          "pista.v_serra_lluny.2"
         ]
       },
       "v_arxiu": {
@@ -17774,10 +17978,18 @@
       "pista.v_convencer.3": "Digues-li que vosaltres no sou monges.",
       "pista.v_corranda.1": "La Gueraula canta una cançó que parla de l'avet.",
       "pista.v_corranda.2": "Pregunta-li què canta, i demana-li que la canti sencera.",
-      "pista.v_arrels_paper.1": "«Té les arrels de paper.» La cançó parla de les arrels de l'avet.",
+      "pista.v_arrels_paper.1": "«Té les arrels de paper.» Les arrels de l'avet eren on ara hi ha el forat.",
       "pista.v_arrels_paper.2": "Torna a l'avet i mira el forat de les arrels amb la Vet.",
       "pista.v_serra.1": "La serra la porta l'Iri, i a ella no la deixen entrar al monestir. Surto a buscar-la a l'avet caigut.",
       "pista.v_serra.2": "Ves a l'avet caigut, canvia a l'Iri i que et doni la serra (totes dues al mateix lloc).",
+      "pista.v_serra_aqui.1": "La serra la porta l'Iri, i és aquí mateix, amb mi. Que me la doni.",
+      "pista.v_serra_aqui.2": "Canvia a l'Iri i dona la serra a la Vet: sou al mateix lloc.",
+      "pista.v_serra_placa.1": "La serra la porta l'Iri, i a ella no la deixen entrar al monestir. És a la plaça de Sant Pol: hi surto.",
+      "pista.v_serra_placa.2": "Ves a la plaça de Sant Pol, canvia a l'Iri i que et doni la serra (totes dues al mateix lloc).",
+      "pista.v_serra_pont.1": "La serra la porta l'Iri, i a ella no la deixen entrar al monestir. És avall, al pont: que pugi a l'avet caigut.",
+      "pista.v_serra_pont.2": "Canvia a l'Iri, porta-la a l'avet caigut i ves-hi també amb la Vet: que et doni la serra.",
+      "pista.v_serra_lluny.1": "La serra la porta l'Iri, i a ella no la deixen entrar al monestir. Ens hem de trobar a fora.",
+      "pista.v_serra_lluny.2": "Porta totes dues a l'avet caigut (canviant de germana) i que l'Iri doni la serra a la Vet.",
       "pista.v_distraccio.1": "Tapa la copa amb la mà. Cal que es giri.",
       "pista.v_distraccio.2": "L'Iri és a la llar, al costat de la pila d'olles. Un senyal...",
       "pista.v_distraccio.3": "Fes servir el mocador amb la pila d'olles: l'Iri entendrà.",
@@ -18050,7 +18262,7 @@
       "sala.claustre.6": "Bon dia, germans. Ja sé que no sou germans. Ningú més ho sap.",
       "sala.claustre.7": "La galeria del claustre. Columnes primes com fus, i un sostre de fusta que cruix quan plou.",
       "sala.claustre.8": "La pica de pedra, plena d'aigua de pluja.",
-      "sala.claustre.9": "Salto l'ampit fins a la pica i hi rento el tros de cera. Surt el fang...",
+      "sala.claustre.9": "A la pica no hi arribo des d'aquí, però l'aigua que regalima de la teulada també renta. Hi passo el tros de cera i surt el fang...",
       "sala.claustre.banc.nom": "el banc de pedra",
       "sala.claustre.campanar.nom": "el campanar",
       "sala.claustre.galeria.nom": "la galeria",

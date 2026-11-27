@@ -130,7 +130,23 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.claustre.9"
+              "text": "sala.claustre.9",
+              "stage": [
+                {
+                  "who": "player",
+                  "face": "L"
+                },
+                {
+                  "who": "player",
+                  "gest": "Fa"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "who": "player",
+                  "gest": null
+                }
+              ]
             },
             {
               "who": "player",

@@ -304,8 +304,23 @@
                 {
                   "prop": "corda_campana",
                   "visible": false
+                },
+                {
+                  "who": "player",
+                  "walk": {
+                    "x": 366,
+                    "y": 214
+                  }
+                },
+                {
+                  "who": "player",
+                  "face": "U"
                 }
-              ],
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.placa_sant_pol.22",
               "stageAfter": [
                 {
                   "who": "player",
@@ -315,17 +330,15 @@
                 {
                   "prop": "corda_campana",
                   "visible": true,
-                  "hold": 0.6
+                  "fade": 0.4,
+                  "hold": 0.8
                 },
                 {
                   "who": "player",
-                  "visible": true
+                  "visible": true,
+                  "face": "D"
                 }
               ]
-            },
-            {
-              "who": "player",
-              "text": "sala.placa_sant_pol.22"
             }
           ],
           "effects": [
