@@ -44,7 +44,28 @@
     },
     "gavina_passadis 2.aseprite": {
       "frame": {
-        "x": 292,
+        "x": 282,
+        "y": 360,
+        "w": 18,
+        "h": 15
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 350,
+        "y": 79,
+        "w": 18,
+        "h": 15
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_passadis 3.aseprite": {
+      "frame": {
+        "x": 310,
         "y": 360,
         "w": 1,
         "h": 1
@@ -63,30 +84,9 @@
       },
       "duration": 100
     },
-    "gavina_passadis 3.aseprite": {
-      "frame": {
-        "x": 0,
-        "y": 360,
-        "w": 52,
-        "h": 43
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 290,
-        "y": 38,
-        "w": 52,
-        "h": 43
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "gavina_passadis 4.aseprite": {
       "frame": {
-        "x": 52,
+        "x": 0,
         "y": 360,
         "w": 52,
         "h": 43
@@ -107,18 +107,18 @@
     },
     "gavina_passadis 5.aseprite": {
       "frame": {
-        "x": 2606,
-        "y": 0,
-        "w": 180,
-        "h": 64
+        "x": 52,
+        "y": 360,
+        "w": 52,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 162,
+        "x": 290,
         "y": 38,
-        "w": 180,
-        "h": 64
+        "w": 52,
+        "h": 43
       },
       "sourceSize": {
         "w": 640,
@@ -128,7 +128,7 @@
     },
     "gavina_passadis 6.aseprite": {
       "frame": {
-        "x": 2786,
+        "x": 2606,
         "y": 0,
         "w": 180,
         "h": 64
@@ -149,6 +149,27 @@
     },
     "gavina_passadis 7.aseprite": {
       "frame": {
+        "x": 2786,
+        "y": 0,
+        "w": 180,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 162,
+        "y": 38,
+        "w": 180,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_passadis 8.aseprite": {
+      "frame": {
         "x": 1970,
         "y": 0,
         "w": 318,
@@ -168,9 +189,9 @@
       },
       "duration": 100
     },
-    "gavina_passadis 8.aseprite": {
+    "gavina_passadis 9.aseprite": {
       "frame": {
-        "x": 282,
+        "x": 300,
         "y": 360,
         "w": 10,
         "h": 9
@@ -189,7 +210,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 9.aseprite": {
+    "gavina_passadis 10.aseprite": {
       "frame": {
         "x": 104,
         "y": 360,
@@ -210,7 +231,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 10.aseprite": {
+    "gavina_passadis 11.aseprite": {
       "frame": {
         "x": 156,
         "y": 360,
@@ -231,7 +252,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 11.aseprite": {
+    "gavina_passadis 12.aseprite": {
       "frame": {
         "x": 2966,
         "y": 0,
@@ -252,7 +273,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 12.aseprite": {
+    "gavina_passadis 13.aseprite": {
       "frame": {
         "x": 3146,
         "y": 0,
@@ -273,7 +294,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 13.aseprite": {
+    "gavina_passadis 14.aseprite": {
       "frame": {
         "x": 3326,
         "y": 0,
@@ -294,9 +315,9 @@
       },
       "duration": 100
     },
-    "gavina_passadis 14.aseprite": {
+    "gavina_passadis 15.aseprite": {
       "frame": {
-        "x": 292,
+        "x": 310,
         "y": 360,
         "w": 1,
         "h": 1
@@ -315,7 +336,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 15.aseprite": {
+    "gavina_passadis 16.aseprite": {
       "frame": {
         "x": 3686,
         "y": 0,
@@ -336,7 +357,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 16.aseprite": {
+    "gavina_passadis 17.aseprite": {
       "frame": {
         "x": 3876,
         "y": 0,
@@ -357,7 +378,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 17.aseprite": {
+    "gavina_passadis 18.aseprite": {
       "frame": {
         "x": 2606,
         "y": 0,
@@ -378,7 +399,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 18.aseprite": {
+    "gavina_passadis 19.aseprite": {
       "frame": {
         "x": 2786,
         "y": 0,
@@ -399,7 +420,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 19.aseprite": {
+    "gavina_passadis 20.aseprite": {
       "frame": {
         "x": 3506,
         "y": 0,
@@ -420,9 +441,9 @@
       },
       "duration": 100
     },
-    "gavina_passadis 20.aseprite": {
+    "gavina_passadis 21.aseprite": {
       "frame": {
-        "x": 292,
+        "x": 310,
         "y": 360,
         "w": 1,
         "h": 1
@@ -441,7 +462,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 21.aseprite": {
+    "gavina_passadis 22.aseprite": {
       "frame": {
         "x": 1804,
         "y": 0,
@@ -462,7 +483,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 22.aseprite": {
+    "gavina_passadis 23.aseprite": {
       "frame": {
         "x": 156,
         "y": 360,
@@ -483,7 +504,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 23.aseprite": {
+    "gavina_passadis 24.aseprite": {
       "frame": {
         "x": 1412,
         "y": 0,
@@ -504,7 +525,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 24.aseprite": {
+    "gavina_passadis 25.aseprite": {
       "frame": {
         "x": 2288,
         "y": 0,
@@ -525,7 +546,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 25.aseprite": {
+    "gavina_passadis 26.aseprite": {
       "frame": {
         "x": 3326,
         "y": 0,
@@ -546,7 +567,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 26.aseprite": {
+    "gavina_passadis 27.aseprite": {
       "frame": {
         "x": 1227,
         "y": 0,
@@ -567,7 +588,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 27.aseprite": {
+    "gavina_passadis 28.aseprite": {
       "frame": {
         "x": 1730,
         "y": 0,
@@ -588,7 +609,7 @@
       },
       "duration": 100
     },
-    "gavina_passadis 28.aseprite": {
+    "gavina_passadis 29.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -636,30 +657,37 @@
         "color": "#000000ff"
       },
       {
-        "name": "ambient",
+        "name": "cartell_arrencat",
         "from": 2,
-        "to": 25,
+        "to": 2,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_boca",
-        "from": 26,
+        "name": "ambient",
+        "from": 3,
         "to": 26,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_contenidor",
+        "name": "davant_boca",
         "from": 27,
         "to": 27,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_contenidor",
         "from": 28,
         "to": 28,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 29,
+        "to": 29,
         "direction": "forward",
         "color": "#000000ff"
       }

@@ -180,12 +180,46 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.obrir1"
+              "text": "sala.gavina_hangar.comporta.obrir1",
+              "stage": [
+                {
+                  "prop": "llancadora",
+                  "visible": false
+                },
+                {
+                  "who": "player",
+                  "face": "U"
+                },
+                {
+                  "who": "player",
+                  "gest": "Fa"
+                }
+              ]
             },
             {
               "who": "narrator",
               "text": "sala.gavina_hangar.comporta.obrir2",
-              "sound": "comporta"
+              "sound": "comporta",
+              "stage": [
+                {
+                  "shake": 0.6
+                },
+                {
+                  "prop": "llancadora",
+                  "anim": "puja"
+                },
+                {
+                  "prop": "llancadora",
+                  "visible": true,
+                  "hold": 1.6
+                }
+              ],
+              "stageAfter": [
+                {
+                  "who": "player",
+                  "gest": null
+                }
+              ]
             },
             {
               "who": "player",
@@ -215,12 +249,46 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.obrir1"
+              "text": "sala.gavina_hangar.comporta.obrir1",
+              "stage": [
+                {
+                  "prop": "llancadora",
+                  "visible": false
+                },
+                {
+                  "who": "player",
+                  "face": "U"
+                },
+                {
+                  "who": "player",
+                  "gest": "Fa"
+                }
+              ]
             },
             {
               "who": "narrator",
               "text": "sala.gavina_hangar.comporta.obrir2",
-              "sound": "comporta"
+              "sound": "comporta",
+              "stage": [
+                {
+                  "shake": 0.6
+                },
+                {
+                  "prop": "llancadora",
+                  "anim": "puja"
+                },
+                {
+                  "prop": "llancadora",
+                  "visible": true,
+                  "hold": 1.6
+                }
+              ],
+              "stageAfter": [
+                {
+                  "who": "player",
+                  "gest": null
+                }
+              ]
             },
             {
               "who": "player",

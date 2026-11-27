@@ -38,7 +38,7 @@ function finsMida(checkHints = true, fins?: string) {
   // ── Vet: ho envia (un sol pas) i l'Iri ho llegeix ──
   p.do('open', 'porta_passadis');
   p.do('open', 'porta_cella');
-  expect(keys(p.use('nota_mida', 'panell'))).toEqual(['finestra.enviat.nota_mida']);
+  expect(keys(p.use('nota_mida', 'panell'))).toEqual(['finestra.enviat.nota_mida', 'finestra.mentrestant.iri']);
   expect(p.active).toBe('iri');
   expect(texts(p.do('look', item('nota_mida')))).toContain('dos metres');
   expect(n.state.quests.acte2!.objectives.mida).toBe(true);

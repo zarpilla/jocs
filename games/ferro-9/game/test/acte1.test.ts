@@ -171,7 +171,7 @@ describe('Ferro-9 · Acte 1', () => {
     expect(texts(p.do('look', { kind: 'item', id: 'nota_vet' }))).toContain('brutal-plus');
     p.use('llapis', { kind: 'item', id: 'llibreta_torn' });
     // Des d'ara, posar-ho a la cambra ho fa tot: s'envia i canviem a l'altra banda.
-    expect(keys(p.use('nota_iri', 'cambra'))).toEqual(['finestra.enviat.nota_iri']);
+    expect(keys(p.use('nota_iri', 'cambra'))).toEqual(['finestra.enviat.nota_iri', 'finestra.mentrestant.vet']);
 
     // ── Vet: entén que són en temps diferents ──
     expect(p.active).toBe('vet');
@@ -243,7 +243,7 @@ describe('Ferro-9 · Acte 1', () => {
     expect(estatFinestra(n).enceses).toBe(abans);
     expect(p.inventory()).toContain('avis_reciclatge');
     n.apply({ giveItem: 'nota_vet', who: 'vet' });
-    expect(keys(p.use('nota_vet', 'panell'))).toEqual(['finestra.enviat.nota_vet']);
+    expect(keys(p.use('nota_vet', 'panell'))).toEqual(['finestra.enviat.nota_vet', 'finestra.mentrestant.iri']);
     expect(estatFinestra(n).armada).toBe('');
     expect(estatFinestra(n).enceses).toBe(abans - 1);
     // Canvi automàtic a l'altra banda, amb l'objecte a l'inventari.
@@ -306,7 +306,7 @@ describe('Ferro-9 · Acte 1', () => {
     expect(estatFinestra(n).enceses).toBe(abans - 2);
 
     // ── I amb l'altra a la cambra, passa de seguida ──
-    expect(keys(p.use('nota_pany', 'panell'))).toEqual(['finestra.enviat.nota_pany']);
+    expect(keys(p.use('nota_pany', 'panell'))).toEqual(['finestra.enviat.nota_pany', 'finestra.mentrestant.iri']);
     expect(p.active).toBe('iri');
     expect(p.inventory()).toContain('nota_pany');
   });

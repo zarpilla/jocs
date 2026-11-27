@@ -356,7 +356,11 @@
       "id": "llancadora",
       "tag": "llancadora",
       "animations": {
-        "llancadora": {}
+        "llancadora": {},
+        "puja": {
+          "loop": false,
+          "frameDuration": 160
+        }
       },
       "zIndex": 3,
       "visible": true,

@@ -2,6 +2,13 @@
   "$schema": "../../schemas/room.schema.json",
   "name": "sala.gavina_passadis.nom",
   "protagonist": "vet",
+  "decor": {
+    "cartell_arrencat": {
+      "visibleIf": {
+        "flag": "tros_cartell_agafat"
+      }
+    }
+  },
   "hotspots": {
     "cartell": {
       "name": "sala.gavina_passadis.cartell.nom",
@@ -282,16 +289,16 @@
           "text": "sala.gavina_passadis.fi2b"
         },
         {
-          "who": "narrator",
-          "text": "sala.gavina_passadis.fi3"
-        },
-        {
-          "who": "narrator",
-          "text": "sala.gavina_passadis.fi4"
+          "who": "title",
+          "text": "acte.fi1"
         },
         {
           "who": "title",
-          "text": "acte.fi1"
+          "text": "sala.gavina_passadis.fi3"
+        },
+        {
+          "who": "title",
+          "text": "sala.gavina_passadis.fi4"
         },
         {
           "who": "title",

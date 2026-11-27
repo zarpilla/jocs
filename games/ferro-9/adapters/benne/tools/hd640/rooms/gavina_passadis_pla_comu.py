@@ -369,7 +369,7 @@ def red_alarm(x, y):
     return max(0.0, 1 - d / 93) ** 2
 
 
-def bg(cv, t=0.0):
+def bg(cv, t=0.0, arrencat=False):
     """`t` (0..1): moment del cicle de l'animació de fons (t = 0 és el fons quiet)."""
     tt = t                                   # (dins la funció, `t` es fa servir per a altres coses)
     ph = 2 * math.pi * tt
@@ -693,9 +693,21 @@ def bg(cv, t=0.0):
 
     # Cartell del reciclatge (432..568 × 50..103): somriure, fletxa cap al fons
     PX0, PY0, PX1, PY1 = 436, 52, 561, 99
-    cv.rect(PX0 + 3, PY0 + 3, PX1 + 3, PY1 + 3, HULL, 0.6)                   # ombra
+    # Amb `arrencat` (decorat), la Vet n'ha arrencat un tros del marge: el cantó de baix a l'esquerra, amb l'esquinç
+    # en ziga-zaga, i la cinta d'aquell cantó se n'ha anat amb el paper.
+    def tros(x, y):
+        return arrencat and (x - PX0) + (PY1 - y) * 1.5 + (hr(y, 41) - 0.5) * 3 + (2 if (x + y) % 5 == 0 else 0) < 21
+    for y in range(PY0 + 3, PY1 + 4):                                         # ombra
+        for x in range(PX0 + 3, PX1 + 4):
+            if not tros(x - 3, y - 3):
+                cv.put(x, y, HULL, 0.6)
     for y in range(PY0, PY1 + 1):
         for x in range(PX0, PX1 + 1):
+            if tros(x, y):
+                continue
+            if tros(x - 1, y) or tros(x, y + 1):
+                cv.put(x, y, SIGN, 4.4, 0.4)                                   # la vora esquinçada, més blanca
+                continue
             lvl = 3.4 + (hr(x // 2, y // 3, 5) - 0.5) * 0.2 + (hr(x // 9, y // 7, 15) - 0.5) * 0.12
             if y >= PY1 - 1 or x >= PX1 - 1:
                 lvl -= 0.6
@@ -714,6 +726,8 @@ def bg(cv, t=0.0):
     text(cv, 507, 89, 'PER AQUÍ', HULL, 1.4, 0.2)
     # les puntes de cinta adhesiva
     for x, y in ((PX0 - 1, PY0 - 1), (PX1 - 3, PY0 - 1), (PX0 - 1, PY1 - 3), (PX1 - 3, PY1 - 3)):
+        if tros(x + 2, y + 2):
+            continue
         cv.rect(x, y, x + 4, y + 4, SIGN, lambda xx, yy: 3.5 + (0.4 if (xx + yy) % 3 == 0 else 0), 0.3)
     # canto superior dret una mica despenjat
     cv.put(PX1, PY0, HULL, 2.0)

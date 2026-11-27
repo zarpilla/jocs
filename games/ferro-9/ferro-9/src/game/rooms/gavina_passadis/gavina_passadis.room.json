@@ -375,6 +375,18 @@
       },
       "zIndex": 24,
       "baseline": 999
+    },
+    {
+      "id": "cartell_arrencat",
+      "tag": "cartell_arrencat",
+      "animations": {
+        "cartell_arrencat": {}
+      },
+      "zIndex": 21,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "baseline": 168
     }
   ],
   "characters": [

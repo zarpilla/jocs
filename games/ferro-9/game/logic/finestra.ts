@@ -27,7 +27,7 @@ export const TRANSFERENCIES_RITUAL = 2;
 /** Textos que fa servir aquest mòdul (el validador comprova que existeixin). */
 export const FINESTRA_TEXTS = [
   'finestra.posat', 'finestra.ple', 'finestra.ja_armat', 'finestra.tancada', 'finestra.buida', 'finestra.tret',
-  'finestra.armat', 'finestra.armat_buit', 'finestra.esgotada', 'finestra.rebut', 'finestra.rebut_res',
+  'finestra.armat', 'finestra.armat_buit', 'finestra.armat_espera.iri', 'finestra.armat_espera.vet', 'finestra.mentrestant.iri', 'finestra.mentrestant.vet', 'finestra.esgotada', 'finestra.rebut', 'finestra.rebut_res',
   'finestra.enviat', 'finestra.automatica', 'finestra.rebuig.massa_pesat', 'finestra.rebuig.viu', 'finestra.rebuig.liquid', 'finestra.rebuig.no_hi_cap',
   'finestra.rebuig.no_cal_iri', 'finestra.rebuig.no_cal_vet', 'finestra.rebuig.no_cal_vet_abans', 'finestra.rebuig.no_cal_iri_abans', 'finestra.rebuig.no_cal_iri_res', 'finestra.espera.iri', 'finestra.espera.vet', 'finestra.boto_automatic',
   ...frasesPerObjecte(),
@@ -156,7 +156,13 @@ export function installFinestra(n: Narrative) {
         { event: 'finestra.transferencia', args: { de: costat, a: altra, objecte: item } },
         { event: 'protagonista', args: { id: altra } },
       ]);
-      return { lines: [line(perObjecte(n, 'finestra.enviat', item), undefined, SONS_FINESTRA.fase)] };
+      // El salt a l'altra protagonista, sobre negre i amb la targeta de l'època (no de cop).
+      return {
+        lines: [
+          line(perObjecte(n, 'finestra.enviat', item), undefined, SONS_FINESTRA.fase),
+          { who: 'title', text: `finestra.mentrestant.${altra}` },
+        ],
+      };
     }
     n.apply([{ takeItem: item, who: costat }, { setVar: v.objecte(costat), value: item }]);
     return { lines: [line(perObjecte(n, 'finestra.posat', item), undefined, SONS_FINESTRA.posar)] };
@@ -188,7 +194,10 @@ export function installFinestra(n: Narrative) {
       if (n.flag(v.automatica)) return { lines: [line('finestra.boto_automatic')] };
       if (estat.enceses <= 0) return { lines: [line('finestra.esgotada')] };
       n.apply({ setVar: v.armada, value: costat });
-      return { lines: [line(estat.objecte(costat) ? 'finestra.armat' : 'finestra.armat_buit', undefined, SONS_FINESTRA.armar)] };
+      const lines: NonNullable<ActionResult['lines']> = [line(estat.objecte(costat) ? 'finestra.armat' : 'finestra.armat_buit', undefined, SONS_FINESTRA.armar)];
+      // Amb alguna cosa a dins, ara li toca a l'altra: que es noti que l'acció continua a l'altra banda del temps.
+      if (estat.objecte(costat)) lines.push({ who: 'narrator', text: `finestra.armat_espera.${costat}` });
+      return { lines };
     }
 
     // Sincronia: l'objecte de la cambra de qui ha armat arriba aquí.

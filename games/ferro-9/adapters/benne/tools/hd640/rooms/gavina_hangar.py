@@ -454,7 +454,9 @@ FOSC = [(4, 5, 8), (8, 10, 14), (13, 15, 20), (19, 22, 28), (27, 30, 38), (37, 4
 def escena(cv, tex, estat=frozenset()):
     """Tot el moll, de lluny a prop. `estat`: els decorats que hi són ('oberta', 'porta', 'aigua', 'caixa',
     'marca', 'nota'). → l'Escena."""
-    llums = LLUMS + ([Llum(((_w(CX0) + _w(CX1)) / 2, 120, 420), 260, 0.6)] if 'oberta' in estat else [])
+    # 'pujant:<k>' (amb 'oberta'): la comporta a mig pujar, k de 0 (tancada) a 1 (oberta del tot)
+    pujada = next((float(x.split(':')[1]) for x in estat if x.startswith('pujant:')), 1.0)
+    llums = LLUMS + ([Llum(((_w(CX0) + _w(CX1)) / 2, 120, 420), 260, 0.6 * pujada)] if 'oberta' in estat else [])
     e = Escena(cv, CAM, llums, ambient=-0.2)
     zn = CAM.pos[2] + 60
     paret, nua = tex['paret'], tex['nua']
@@ -500,6 +502,11 @@ def escena(cv, tex, estat=frozenset()):
     e.quad('llinda', (bx0, HW, ZW), (bx1, HW, ZW), (bx1, by, ZW), (bx0, by, ZW), tex=(paret, (CX0, 0, CX1, CTOP)))
     if 'oberta' not in estat:
         e.quad('comporta', (bx0, by, ZW), (bx1, by, ZW), (bx1, 0, ZW), (bx0, 0, ZW), tex=(paret, (CX0, CTOP, CX1, HW)))
+    elif pujada < 1:
+        # la comporta, pujant: la fulla s'enfila dins la llinda i en queda a la vista el tros de baix
+        d = by * pujada
+        e.quad('comporta', (bx0, by, ZW), (bx1, by, ZW), (bx1, d, ZW), (bx0, d, ZW),
+               tex=(paret, (CX0, CTOP + round(d), CX1, HW)))
     e.quad('paret_fons', (bx1, HW, ZW), (_w(W), HW, ZW), (_w(W), 0, ZW), (bx1, 0, ZW), tex=(paret, (CX1, 0, W, HW)))
     e.quad('paret_fons_lluny', (_w(W), HW, ZW), (XR, HW, ZW), (XR, 0, ZW), (_w(W), 0, ZW),
            tex=(nua, (0, 0, XR - _w(W), HW)))
@@ -697,7 +704,20 @@ def _ambient_frames(n=24):
     return out
 
 
-ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 120}}
+# La comporta puja (la Vet hi encaixa la biga de ferro-9 i empeny): una altra etiqueta del prop `llancadora` (la badia
+# oberta), que una indicació d'escena hi posa; es queda a l'últim fotograma, que és el mateix decorat obert.
+PUJA = (0.0, 0.03, 0.08, 0.15, 0.24, 0.34, 0.46, 0.58, 0.7, 0.81, 0.91, 0.97, 1.0)
+
+
+def _frames_puja():
+    base = _base()[0]
+    return [diff(_estat('oberta', f'pujant:{k}')[0], base) for k in PUJA]
+
+
+ANIMS = {
+    'ambient': {'frames': _ambient_frames, 'frameDuration': 120},
+    'puja': {'frames': _frames_puja, 'frameDuration': 160, 'loop': False, 'prop': 'llancadora'},
+}
 
 
 # ─── Capes del davant ───────────────────────────────────────────────────────

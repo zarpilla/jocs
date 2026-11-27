@@ -85,11 +85,11 @@ def _llum_pla():
 
 
 @functools.lru_cache(maxsize=None)
-def _paret(t=0.0):
+def _paret(t=0.0, arrencat=False):
     """Les parets del vestíbul, de cara: la cel·la 9, l'intèrfon, la mànega, la llinda, el cartell, la càmera i la
     porta de la Sala de la Memòria (el passadís pla del mig no es fa servir)."""
     cv = Canvas(light=_llum_pla())
-    PL.bg(cv, t)
+    PL.bg(cv, t, arrencat=arrencat)
     return cv.img
 
 
@@ -389,8 +389,8 @@ def escena(cv, tex, estat=frozenset()):
 
 # ─── Composició ─────────────────────────────────────────────────────────────
 
-def _tex(t=0.0):
-    return {'paret': _paret(t), 'nua': _nua(), 'esq': _passadis_esq(), 'dre': _passadis_dre(), 'fons': _fons(t),
+def _tex(t=0.0, estat=frozenset()):
+    return {'paret': _paret(t, arrencat='cartell_arrencat' in estat), 'nua': _nua(), 'esq': _passadis_esq(), 'dre': _passadis_dre(), 'fons': _fons(t),
             'contenidor': _contenidor()}
 
 
@@ -400,7 +400,7 @@ class _Canvas(Canvas):
 
 def _render(estat=frozenset()):
     cv = _Canvas(light=LIGHT)
-    e = escena(cv, _tex(), estat)
+    e = escena(cv, _tex(estat=estat), estat)
     cv.rect(0, BOTTOM + 1, W - 1, H - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
     return cv.img, e
 
@@ -424,7 +424,7 @@ def _decorat(*estat):
     return draw
 
 
-PROPS = {'rajola': _decorat('rajola')}
+PROPS = {'rajola': _decorat('rajola'), 'cartell_arrencat': _decorat('cartell_arrencat')}
 
 
 # ─── Animació de fons ───────────────────────────────────────────────────────
@@ -484,8 +484,9 @@ def _p(x, z, y=0.0):
 FRONT = [
     {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
     {'id': 'davant_contenidor', 'mask': _amo({'contenidor'}), 'baseline': _p(BIN[0], BIN[1] - 6)[1], 'zIndex': 20},
+    # (el cartell arrencat és en aquesta paret: el decorat va just a sobre de la capa, o la capa el taparia)
     {'id': 'davant_boca', 'mask': _amo({'paret_fons_dreta', 'trastos'}), 'baseline': _p(OX1, ZW + 4)[1],
-     'zIndex': 20},
+     'zIndex': 20, 'props': ('cartell_arrencat',)},
 ]
 
 

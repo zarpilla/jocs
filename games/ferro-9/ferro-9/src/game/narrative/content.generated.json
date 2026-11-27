@@ -2871,16 +2871,50 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fabrica_calderes.capatas.plomall1"
+                    "text": "sala.fabrica_calderes.capatas.plomall1",
+                    "stage": [
+                      {
+                        "prop": "segell",
+                        "visible": false
+                      },
+                      {
+                        "who": "capatas",
+                        "anim": "IdleD"
+                      },
+                      {
+                        "who": "player",
+                        "face": "R"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      }
+                    ]
                   },
                   {
                     "who": "capatas",
                     "text": "sala.fabrica_calderes.capatas.plomall2",
-                    "sound": "segell"
+                    "sound": "segell",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
                   },
                   {
                     "who": "player",
-                    "text": "sala.fabrica_calderes.capatas.plomall3"
+                    "text": "sala.fabrica_calderes.capatas.plomall3",
+                    "stage": [
+                      {
+                        "prop": "segell",
+                        "visible": true
+                      },
+                      {
+                        "who": "capatas",
+                        "anim": "DormSenseSegell"
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -7434,6 +7468,82 @@
               }
             ]
           },
+          "clau_panell": {
+            "name": "sala.gavina_cella.clau_panell.nom",
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "panell_vet_reparat"
+                },
+                {
+                  "flag": "clau_recuperada",
+                  "is": false
+                }
+              ]
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.clau_panell.look"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "pull"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "sincronia_automatica"
+                    },
+                    {
+                      "flag": "panell_vet_reparat"
+                    },
+                    {
+                      "flag": "clau_recuperada",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.recuperar1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.recuperar2",
+                    "sound": "eina"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "clau_recuperada"
+                  },
+                  {
+                    "giveItem": "clau_anglesa"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "pull"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.clau_panell.encara"
+                  }
+                ]
+              }
+            ]
+          },
           "altaveu": {
             "name": "sala.gavina_cella.altaveu.nom",
             "interactions": [
@@ -8824,12 +8934,46 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.obrir1"
+                    "text": "sala.gavina_hangar.comporta.obrir1",
+                    "stage": [
+                      {
+                        "prop": "llancadora",
+                        "visible": false
+                      },
+                      {
+                        "who": "player",
+                        "face": "U"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
                     "text": "sala.gavina_hangar.comporta.obrir2",
-                    "sound": "comporta"
+                    "sound": "comporta",
+                    "stage": [
+                      {
+                        "shake": 0.6
+                      },
+                      {
+                        "prop": "llancadora",
+                        "anim": "puja"
+                      },
+                      {
+                        "prop": "llancadora",
+                        "visible": true,
+                        "hold": 1.6
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -8859,12 +9003,46 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.obrir1"
+                    "text": "sala.gavina_hangar.comporta.obrir1",
+                    "stage": [
+                      {
+                        "prop": "llancadora",
+                        "visible": false
+                      },
+                      {
+                        "who": "player",
+                        "face": "U"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
                     "text": "sala.gavina_hangar.comporta.obrir2",
-                    "sound": "comporta"
+                    "sound": "comporta",
+                    "stage": [
+                      {
+                        "shake": 0.6
+                      },
+                      {
+                        "prop": "llancadora",
+                        "anim": "puja"
+                      },
+                      {
+                        "prop": "llancadora",
+                        "visible": true,
+                        "hold": 1.6
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -10738,6 +10916,13 @@
       "gavina_passadis": {
         "name": "sala.gavina_passadis.nom",
         "protagonist": "vet",
+        "decor": {
+          "cartell_arrencat": {
+            "visibleIf": {
+              "flag": "tros_cartell_agafat"
+            }
+          }
+        },
         "hotspots": {
           "cartell": {
             "name": "sala.gavina_passadis.cartell.nom",
@@ -11018,16 +11203,16 @@
                 "text": "sala.gavina_passadis.fi2b"
               },
               {
-                "who": "narrator",
-                "text": "sala.gavina_passadis.fi3"
-              },
-              {
-                "who": "narrator",
-                "text": "sala.gavina_passadis.fi4"
+                "who": "title",
+                "text": "acte.fi1"
               },
               {
                 "who": "title",
-                "text": "acte.fi1"
+                "text": "sala.gavina_passadis.fi3"
+              },
+              {
+                "who": "title",
+                "text": "sala.gavina_passadis.fi4"
               },
               {
                 "who": "title",
@@ -16017,7 +16202,23 @@
                       "hasItem": "formulari_triplicat"
                     }
                   ]
-                }
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "R"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
               },
               {
                 "who": "cargol",
@@ -16047,6 +16248,22 @@
                       "who": "cargol",
                       "change": 1
                     }
+                  }
+                ],
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "R"
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "who": "player",
+                    "gest": null
                   }
                 ]
               },
@@ -19311,6 +19528,10 @@
       "finestra.tret": "Ho trec de la cambra.",
       "finestra.armat": "Un brunzit greu. El camp està armat.",
       "finestra.armat_buit": "Un brunzit greu. El camp està armat... però la cambra està buida.",
+      "finestra.armat_espera.vet": "Cent vint anys abans, a la fàbrica, la cambra bessona comença a brunzir. Només cal que algú hi sigui.",
+      "finestra.armat_espera.iri": "Cent vint anys després, a la cel·la 9, el panell rovellat comença a vibrar. Només cal que algú hi sigui.",
+      "finestra.mentrestant.vet": "Mentrestant, cent vint anys després...",
+      "finestra.mentrestant.iri": "Mentrestant, cent vint anys abans...",
       "finestra.esgotada": "No passa res. La cambra està esgotada.",
       "marca.reajust1": "Ai... Mal de cap. Com si m'haguessin donat la volta.",
       "marca.reajust2": "Alguna cosa ha canviat, però aquí no. Li vaig dir a la I. que era al costat del pilar 7...",
@@ -20289,6 +20510,9 @@
       "sala.gavina_passadis.cartell.prou": "Ja en tinc un tros. Primer l'he de fer servir.",
       "sala.gavina_cella.panell.recuperar1": "Ara les coses de la I. arriben soles, sense que jo toqui res. Ja no cal la palanca.",
       "sala.gavina_cella.panell.recuperar2": "Recupero la clau anglesa.",
+      "sala.gavina_cella.clau_panell.nom": "clau anglesa",
+      "sala.gavina_cella.clau_panell.look": "La clau anglesa, encaixada a la consola fent de palanca.",
+      "sala.gavina_cella.clau_panell.encara": "Si la trec, la consola es queda sense palanca i no arriba res. De moment, s'hi queda.",
       "sala.gavina_hangar.llancadora.obrir1": "Toco el diapasó i l'acosto al pany...",
       "sala.gavina_hangar.llancadora.obrir2": "El pany respon amb la mateixa nota. Clac!",
       "sala.gavina_hangar.llancadora.obrir3": "La porta de la llançadora s'obre per primera vegada en cent vint anys.",
