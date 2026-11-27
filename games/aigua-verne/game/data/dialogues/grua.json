@@ -32,35 +32,6 @@
           ]
         },
         {
-          "id": "esquerra_baix",
-          "text": "dlg.grua.opt.esquerra",
-          "if": {
-            "all": [
-              {
-                "var": "gresol",
-                "op": "==",
-                "value": "llit"
-              },
-              {
-                "flag": "gresol_baix"
-              }
-            ]
-          },
-          "silent": true,
-          "next": "no_baix"
-        },
-        {
-          "id": "esquerra_final",
-          "text": "dlg.grua.opt.esquerra",
-          "if": {
-            "var": "gresol",
-            "op": "==",
-            "value": "canal"
-          },
-          "silent": true,
-          "next": "final"
-        },
-        {
           "id": "dreta",
           "text": "dlg.grua.opt.dreta",
           "if": {
@@ -84,35 +55,6 @@
               "value": "llit"
             }
           ]
-        },
-        {
-          "id": "dreta_baix",
-          "text": "dlg.grua.opt.dreta",
-          "if": {
-            "all": [
-              {
-                "var": "gresol",
-                "op": "==",
-                "value": "canal"
-              },
-              {
-                "flag": "gresol_baix"
-              }
-            ]
-          },
-          "silent": true,
-          "next": "no_baix"
-        },
-        {
-          "id": "dreta_final",
-          "text": "dlg.grua.opt.dreta",
-          "if": {
-            "var": "gresol",
-            "op": "==",
-            "value": "llit"
-          },
-          "silent": true,
-          "next": "final"
         },
         {
           "id": "amunt",
@@ -163,16 +105,6 @@
           ]
         },
         {
-          "id": "amunt_ja",
-          "text": "dlg.grua.opt.amunt",
-          "if": {
-            "flag": "gresol_baix",
-            "is": false
-          },
-          "silent": true,
-          "next": "ja_amunt"
-        },
-        {
           "id": "avall",
           "text": "dlg.grua.opt.avall",
           "if": {
@@ -221,20 +153,18 @@
           ]
         },
         {
-          "id": "avall_ja",
-          "text": "dlg.grua.opt.avall",
-          "if": {
-            "flag": "gresol_baix"
-          },
-          "silent": true,
-          "next": "ja_avall"
-        },
-        {
           "id": "bolca_buit",
           "text": "dlg.grua.opt.bolca",
           "if": {
-            "flag": "gresol_ple",
-            "is": false
+            "all": [
+              {
+                "flag": "gresol_ple",
+                "is": false
+              },
+              {
+                "flag": "gresol_baix"
+              }
+            ]
           },
           "silent": true,
           "next": "bolca_buit"
@@ -251,33 +181,14 @@
                 "var": "gresol",
                 "op": "==",
                 "value": "canal"
+              },
+              {
+                "flag": "gresol_baix"
               }
             ]
           },
           "silent": true,
           "next": "bolca_canal"
-        },
-        {
-          "id": "bolca_dalt",
-          "text": "dlg.grua.opt.bolca",
-          "if": {
-            "all": [
-              {
-                "flag": "gresol_ple"
-              },
-              {
-                "var": "gresol",
-                "op": "==",
-                "value": "llit"
-              },
-              {
-                "flag": "gresol_baix",
-                "is": false
-              }
-            ]
-          },
-          "silent": true,
-          "next": "bolca_dalt"
         },
         {
           "id": "bolca_brut",
@@ -1285,42 +1196,6 @@
       ],
       "goto": "menu"
     },
-    "no_baix": {
-      "lines": [
-        {
-          "who": "iri",
-          "text": "dlg.grua.no_baix"
-        }
-      ],
-      "goto": "menu"
-    },
-    "final": {
-      "lines": [
-        {
-          "who": "iri",
-          "text": "dlg.grua.final"
-        }
-      ],
-      "goto": "menu"
-    },
-    "ja_avall": {
-      "lines": [
-        {
-          "who": "iri",
-          "text": "dlg.grua.ja_avall"
-        }
-      ],
-      "goto": "menu"
-    },
-    "ja_amunt": {
-      "lines": [
-        {
-          "who": "iri",
-          "text": "dlg.grua.ja_amunt"
-        }
-      ],
-      "goto": "menu"
-    },
     "bolca_buit": {
       "lines": [
         {
@@ -1335,15 +1210,6 @@
         {
           "who": "iri",
           "text": "dlg.grua.bolca_canal"
-        }
-      ],
-      "goto": "menu"
-    },
-    "bolca_dalt": {
-      "lines": [
-        {
-          "who": "iri",
-          "text": "dlg.grua.bolca_dalt"
         }
       ],
       "goto": "menu"

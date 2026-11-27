@@ -131,14 +131,14 @@ describe('Aigua Verne: arreglos de la passada tàctil', () => {
     }
   });
 
-  it('la colada: un moviment de la grua que no es pot fer no refreda el forn (tasca 110)', () => {
+  it('la colada: la grua només ofereix els moviments que es poden fer, i hi caben tots (tasques 110 i 111)', () => {
     const { n, p } = partida();
     n.apply([{ setFlag: 'sync_colada' }, { setVar: 'temperatura', value: 8 }, { setVar: 'gresol', value: 'llit' }]);
     amb(p, 'iri');
     p.goTo('fosa_colada');
-    p.talk('grua', 'amunt_ja', 'dreta_final');
-    expect(n.getVar('temperatura')).toBe(8);
-    p.talk('grua', 'esquerra');
+    expect(n.startDialogue('grua').choices.map((c) => c.id)).toEqual(['esquerra', 'avall', 'adeu']);
+    n.choose('grua', 'avall', { node: 'menu' });
+    expect(n.startDialogue('grua').choices.map((c) => c.id)).toEqual(['amunt', 'bolca_buit', 'adeu']);
     expect(n.getVar('temperatura')).toBe(7);
   });
   it('subhasta a 31: la pista i la Vet apunten a la reserva (tasca 140)', () => {

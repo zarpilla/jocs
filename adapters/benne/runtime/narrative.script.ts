@@ -6,7 +6,7 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { MusicHandle, SfxHandle, ambient, background, cutscene, display, fadeIn, fadeOut, game, player, pointer, saves, stayBlackOnEnter, wait } from '@benne/script';
+import { MusicHandle, SfxHandle, ambient, background, cutscene, defineVars, display, fadeIn, fadeOut, game, player, pointer, saves, stayBlackOnEnter, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
@@ -556,6 +556,15 @@ function refreshOptions(dialog: DialogHandle, choices: ResolvedChoice[]) {
   }
 }
 
+/**
+ * Una opció `silent` és una ordre (els comandaments de la grua d'Aigua Verne, «Marxar»), no una frase: no es posa en
+ * gris com les ja dites, que es poden haver de tornar a triar. Benne la marca en clicar-la; aquí es desmarca.
+ */
+function unmarkUsed(dialog: DialogHandle, name: string) {
+  const key = `dialog:${dialog.id}:option:${dialog.options[name]?.id ?? name}:used`
+  defineVars({ [key]: false })[key] = false
+}
+
 /** Des de `dialog.onStart` (generat). */
 export function startNarrativeDialog(id: string, dialog: DialogHandle) {
   adoptLoadedState()
@@ -570,7 +579,9 @@ export function startNarrativeDialog(id: string, dialog: DialogHandle) {
 export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: string, choice: string) {
   adoptLoadedState()
   // La primera línia és l'opció dita en veu alta (si no és `silent`): el decorat de l'escena és a la següent.
-  const echo = narrative.content.dialogues[id]?.nodes[node]?.choices?.find((c) => c.id === choice)?.silent ? 0 : 1
+  const silent = narrative.content.dialogues[id]?.nodes[node]?.choices?.find((c) => c.id === choice)?.silent
+  if (silent) unmarkUsed(dialog, optionName(node, choice))
+  const echo = silent ? 0 : 1
   const step = primeStage(narrative.choose(id, choice, { node }), echo)
   refreshOptions(dialog, step.choices)
   playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
