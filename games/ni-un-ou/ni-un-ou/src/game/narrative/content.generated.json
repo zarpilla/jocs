@@ -17156,6 +17156,19 @@
           },
           {
             "who": "narrator",
+            "text": "final.recompte.pista_tots",
+            "if": {
+              "var": "aliats",
+              "op": "<",
+              "value": 4
+            }
+          },
+          {
+            "who": "narrator",
+            "text": "final.recompte.continua"
+          },
+          {
+            "who": "narrator",
             "text": "final.58",
             "room": "postcredits"
           },
@@ -17661,6 +17674,10 @@
           },
           {
             "who": "narrator",
+            "text": "final.recompte.continua"
+          },
+          {
+            "who": "narrator",
             "text": "final.58",
             "room": "postcredits"
           },
@@ -18140,6 +18157,10 @@
           {
             "who": "narrator",
             "text": "final.recompte.pista"
+          },
+          {
+            "who": "narrator",
+            "text": "final.recompte.continua"
           },
           {
             "who": "narrator",
@@ -26362,6 +26383,8 @@
       "final.recompte.3": "Final 3 de 3 · Aliats: {aliats} de 4",
       "final.recompte.pista": "Amb més gent al costat, potser hauria acabat d'una altra manera.",
       "final.recompte.pista_nadia": "Teníeu gent al costat. Però faltava qui ho expliqués amb la seva firma.",
+      "final.recompte.pista_tots": "Tot i així, encara hi havia algú a bord disposat a ajudar.",
+      "final.recompte.continua": "«Continua», a la portada, et torna al pont just abans d'enviar el paquet: per provar-ho d'una altra manera.",
       "joc.titol": "Ni un ou",
       "esc.vuit": "Vuit del matí.",
       "esc.deu": "Deu del vespre.",
