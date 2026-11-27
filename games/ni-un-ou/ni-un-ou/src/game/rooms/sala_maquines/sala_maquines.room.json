@@ -567,7 +567,7 @@
       "id": "calendari",
       "active": true,
       "description": "el calendari",
-      "zIndex": 12,
+      "zIndex": 9,
       "points": [
         {
           "x": 152,
@@ -599,7 +599,7 @@
       "id": "bidons",
       "active": true,
       "description": "els bidons d'oli",
-      "zIndex": 13,
+      "zIndex": 9,
       "points": [
         {
           "x": 542,

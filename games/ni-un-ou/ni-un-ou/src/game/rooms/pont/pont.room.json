@@ -433,7 +433,7 @@
       "id": "taula_cartes",
       "active": true,
       "description": "la taula de cartes",
-      "zIndex": 10,
+      "zIndex": 9,
       "points": [
         {
           "x": 528,
@@ -465,7 +465,7 @@
       "id": "rellotges",
       "active": true,
       "description": "els rellotges",
-      "zIndex": 11,
+      "zIndex": 9,
       "points": [
         {
           "x": 118,

@@ -407,7 +407,7 @@
       "id": "extintor",
       "active": true,
       "description": "l'extintor",
-      "zIndex": 10,
+      "zIndex": 9,
       "points": [
         {
           "x": 122,
@@ -439,7 +439,7 @@
       "id": "estora",
       "active": true,
       "description": "l'estora",
-      "zIndex": 11,
+      "zIndex": 9,
       "points": [
         {
           "x": 68,
@@ -471,7 +471,7 @@
       "id": "paperera",
       "active": true,
       "description": "la paperera",
-      "zIndex": 12,
+      "zIndex": 9,
       "points": [
         {
           "x": 122,
@@ -503,7 +503,7 @@
       "id": "caixa",
       "active": true,
       "description": "la caixa",
-      "zIndex": 13,
+      "zIndex": 9,
       "points": [
         {
           "x": 530,
