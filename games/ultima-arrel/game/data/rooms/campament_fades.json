@@ -425,7 +425,13 @@
                   "visible": true,
                   "face": "R"
                 }
-              ]
+              ],
+              "effects": [
+                {
+                  "takeItem": "pot_buit"
+                }
+              ],
+              "itemsNow": true
             },
             {
               "who": "urtica",
@@ -433,7 +439,13 @@
             },
             {
               "who": "narrator",
-              "text": "sala.campament_fades.empenta.9"
+              "text": "sala.campament_fades.empenta.9",
+              "effects": [
+                {
+                  "giveItem": "xiulet"
+                }
+              ],
+              "itemsNow": true
             },
             {
               "who": "player",
@@ -450,12 +462,6 @@
             }
           ],
           "effects": [
-            {
-              "takeItem": "pot_buit"
-            },
-            {
-              "giveItem": "xiulet"
-            },
             {
               "setFlag": "pol_len_collit"
             },
@@ -614,7 +620,13 @@
                   "who": "player",
                   "face": "L"
                 }
-              ]
+              ],
+              "effects": [
+                {
+                  "takeItem": "pot_buit"
+                }
+              ],
+              "itemsNow": true
             },
             {
               "who": "urtica",
@@ -622,7 +634,13 @@
             },
             {
               "who": "narrator",
-              "text": "sala.campament_fades.empenta.9"
+              "text": "sala.campament_fades.empenta.9",
+              "effects": [
+                {
+                  "giveItem": "xiulet"
+                }
+              ],
+              "itemsNow": true
             },
             {
               "who": "player",
@@ -639,12 +657,6 @@
             }
           ],
           "effects": [
-            {
-              "takeItem": "pot_buit"
-            },
-            {
-              "giveItem": "xiulet"
-            },
             {
               "setFlag": "pol_len_collit"
             },

@@ -2276,7 +2276,13 @@
                         "visible": true,
                         "face": "R"
                       }
-                    ]
+                    ],
+                    "effects": [
+                      {
+                        "takeItem": "pot_buit"
+                      }
+                    ],
+                    "itemsNow": true
                   },
                   {
                     "who": "urtica",
@@ -2284,7 +2290,13 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.campament_fades.empenta.9"
+                    "text": "sala.campament_fades.empenta.9",
+                    "effects": [
+                      {
+                        "giveItem": "xiulet"
+                      }
+                    ],
+                    "itemsNow": true
                   },
                   {
                     "who": "player",
@@ -2301,12 +2313,6 @@
                   }
                 ],
                 "effects": [
-                  {
-                    "takeItem": "pot_buit"
-                  },
-                  {
-                    "giveItem": "xiulet"
-                  },
                   {
                     "setFlag": "pol_len_collit"
                   },
@@ -2465,7 +2471,13 @@
                         "who": "player",
                         "face": "L"
                       }
-                    ]
+                    ],
+                    "effects": [
+                      {
+                        "takeItem": "pot_buit"
+                      }
+                    ],
+                    "itemsNow": true
                   },
                   {
                     "who": "urtica",
@@ -2473,7 +2485,13 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.campament_fades.empenta.9"
+                    "text": "sala.campament_fades.empenta.9",
+                    "effects": [
+                      {
+                        "giveItem": "xiulet"
+                      }
+                    ],
+                    "itemsNow": true
                   },
                   {
                     "who": "player",
@@ -2490,12 +2508,6 @@
                   }
                 ],
                 "effects": [
-                  {
-                    "takeItem": "pot_buit"
-                  },
-                  {
-                    "giveItem": "xiulet"
-                  },
                   {
                     "setFlag": "pol_len_collit"
                   },
@@ -10400,6 +10412,7 @@
       "ui.carregar.instruccions": "Tria una partida per carregar.",
       "ui.desar.instruccions": "Tria una posició i desa. El nom, si vols, el pots canviar.",
       "ui.desar.fet": "Desat.",
+      "ui.desar.espera": "No es pot desar mentre algú parla: torna al joc i espera que acabi.",
       "ui.opcions.clic_salta": "clic per saltar el diàleg",
       "ui.opcions.volum_efectes": "volum dels efectes",
       "ui.opcions.volum_musica": "volum de la música",
