@@ -644,6 +644,17 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "munta_tancat",
+      "tag": "munta_tancat",
+      "animations": {
+        "munta_tancat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

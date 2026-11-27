@@ -44,7 +44,7 @@
     },
     "rebost 2.aseprite": {
       "frame": {
-        "x": 3232,
+        "x": 3455,
         "y": 607,
         "w": 27,
         "h": 7
@@ -65,7 +65,7 @@
     },
     "rebost 3.aseprite": {
       "frame": {
-        "x": 3003,
+        "x": 3226,
         "y": 607,
         "w": 114,
         "h": 73
@@ -275,7 +275,28 @@
     },
     "rebost 13.aseprite": {
       "frame": {
-        "x": 2268,
+        "x": 284,
+        "y": 360,
+        "w": 284,
+        "h": 138
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 161,
+        "y": 27,
+        "w": 284,
+        "h": 138
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "rebost 14.aseprite": {
+      "frame": {
+        "x": 2497,
         "y": 498,
         "w": 214,
         "h": 100
@@ -294,9 +315,9 @@
       },
       "duration": 100
     },
-    "rebost 14.aseprite": {
+    "rebost 15.aseprite": {
       "frame": {
-        "x": 2482,
+        "x": 2711,
         "y": 498,
         "w": 217,
         "h": 100
@@ -315,9 +336,9 @@
       },
       "duration": 100
     },
-    "rebost 15.aseprite": {
+    "rebost 16.aseprite": {
       "frame": {
-        "x": 1817,
+        "x": 2046,
         "y": 498,
         "w": 222,
         "h": 101
@@ -336,9 +357,9 @@
       },
       "duration": 100
     },
-    "rebost 16.aseprite": {
+    "rebost 17.aseprite": {
       "frame": {
-        "x": 1363,
+        "x": 1592,
         "y": 498,
         "w": 227,
         "h": 102
@@ -357,9 +378,9 @@
       },
       "duration": 100
     },
-    "rebost 17.aseprite": {
+    "rebost 18.aseprite": {
       "frame": {
-        "x": 686,
+        "x": 915,
         "y": 498,
         "w": 230,
         "h": 104
@@ -378,9 +399,9 @@
       },
       "duration": 100
     },
-    "rebost 18.aseprite": {
+    "rebost 19.aseprite": {
       "frame": {
-        "x": 228,
+        "x": 457,
         "y": 498,
         "w": 233,
         "h": 106
@@ -399,9 +420,9 @@
       },
       "duration": 100
     },
-    "rebost 19.aseprite": {
+    "rebost 20.aseprite": {
       "frame": {
-        "x": 3457,
+        "x": 3741,
         "y": 360,
         "w": 234,
         "h": 109
@@ -420,9 +441,9 @@
       },
       "duration": 100
     },
-    "rebost 20.aseprite": {
+    "rebost 21.aseprite": {
       "frame": {
-        "x": 2297,
+        "x": 2581,
         "y": 360,
         "w": 233,
         "h": 113
@@ -441,9 +462,9 @@
       },
       "duration": 100
     },
-    "rebost 21.aseprite": {
+    "rebost 22.aseprite": {
       "frame": {
-        "x": 1833,
+        "x": 2117,
         "y": 360,
         "w": 231,
         "h": 115
@@ -462,9 +483,9 @@
       },
       "duration": 100
     },
-    "rebost 22.aseprite": {
+    "rebost 23.aseprite": {
       "frame": {
-        "x": 1375,
+        "x": 1659,
         "y": 360,
         "w": 228,
         "h": 118
@@ -483,9 +504,9 @@
       },
       "duration": 100
     },
-    "rebost 23.aseprite": {
+    "rebost 24.aseprite": {
       "frame": {
-        "x": 1152,
+        "x": 1436,
         "y": 360,
         "w": 223,
         "h": 120
@@ -504,41 +525,20 @@
       },
       "duration": 100
     },
-    "rebost 24.aseprite": {
-      "frame": {
-        "x": 933,
-        "y": 360,
-        "w": 219,
-        "h": 121
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 317,
-        "y": 33,
-        "w": 219,
-        "h": 121
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "rebost 25.aseprite": {
       "frame": {
-        "x": 716,
+        "x": 1217,
         "y": 360,
-        "w": 217,
-        "h": 123
+        "w": 219,
+        "h": 121
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 317,
         "y": 33,
-        "w": 217,
-        "h": 123
+        "w": 219,
+        "h": 121
       },
       "sourceSize": {
         "w": 640,
@@ -548,7 +548,28 @@
     },
     "rebost 26.aseprite": {
       "frame": {
-        "x": 284,
+        "x": 1000,
+        "y": 360,
+        "w": 217,
+        "h": 123
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 317,
+        "y": 33,
+        "w": 217,
+        "h": 123
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "rebost 27.aseprite": {
+      "frame": {
+        "x": 568,
         "y": 360,
         "w": 216,
         "h": 124
@@ -567,9 +588,9 @@
       },
       "duration": 100
     },
-    "rebost 27.aseprite": {
+    "rebost 28.aseprite": {
       "frame": {
-        "x": 500,
+        "x": 784,
         "y": 360,
         "w": 216,
         "h": 124
@@ -588,9 +609,9 @@
       },
       "duration": 100
     },
-    "rebost 28.aseprite": {
+    "rebost 29.aseprite": {
       "frame": {
-        "x": 436,
+        "x": 659,
         "y": 607,
         "w": 214,
         "h": 98
@@ -609,9 +630,9 @@
       },
       "duration": 100
     },
-    "rebost 29.aseprite": {
+    "rebost 30.aseprite": {
       "frame": {
-        "x": 1309,
+        "x": 1532,
         "y": 607,
         "w": 213,
         "h": 97
@@ -630,9 +651,9 @@
       },
       "duration": 100
     },
-    "rebost 30.aseprite": {
+    "rebost 31.aseprite": {
       "frame": {
-        "x": 1948,
+        "x": 2171,
         "y": 607,
         "w": 211,
         "h": 96
@@ -651,9 +672,9 @@
       },
       "duration": 100
     },
-    "rebost 31.aseprite": {
+    "rebost 32.aseprite": {
       "frame": {
-        "x": 2371,
+        "x": 2594,
         "y": 607,
         "w": 209,
         "h": 95
@@ -672,9 +693,9 @@
       },
       "duration": 100
     },
-    "rebost 32.aseprite": {
+    "rebost 33.aseprite": {
       "frame": {
-        "x": 2792,
+        "x": 3015,
         "y": 607,
         "w": 211,
         "h": 93
@@ -693,9 +714,9 @@
       },
       "duration": 100
     },
-    "rebost 33.aseprite": {
+    "rebost 34.aseprite": {
       "frame": {
-        "x": 2580,
+        "x": 2803,
         "y": 607,
         "w": 212,
         "h": 95
@@ -714,9 +735,9 @@
       },
       "duration": 100
     },
-    "rebost 34.aseprite": {
+    "rebost 35.aseprite": {
       "frame": {
-        "x": 2159,
+        "x": 2382,
         "y": 607,
         "w": 212,
         "h": 96
@@ -735,9 +756,9 @@
       },
       "duration": 100
     },
-    "rebost 35.aseprite": {
+    "rebost 36.aseprite": {
       "frame": {
-        "x": 1522,
+        "x": 1745,
         "y": 607,
         "w": 212,
         "h": 97
@@ -756,9 +777,9 @@
       },
       "duration": 100
     },
-    "rebost 36.aseprite": {
+    "rebost 37.aseprite": {
       "frame": {
-        "x": 1734,
+        "x": 1957,
         "y": 607,
         "w": 214,
         "h": 97
@@ -777,9 +798,9 @@
       },
       "duration": 100
     },
-    "rebost 37.aseprite": {
+    "rebost 38.aseprite": {
       "frame": {
-        "x": 650,
+        "x": 873,
         "y": 607,
         "w": 218,
         "h": 98
@@ -798,9 +819,9 @@
       },
       "duration": 100
     },
-    "rebost 38.aseprite": {
+    "rebost 39.aseprite": {
       "frame": {
-        "x": 868,
+        "x": 1091,
         "y": 607,
         "w": 219,
         "h": 98
@@ -819,9 +840,9 @@
       },
       "duration": 100
     },
-    "rebost 39.aseprite": {
+    "rebost 40.aseprite": {
       "frame": {
-        "x": 1087,
+        "x": 1310,
         "y": 607,
         "w": 222,
         "h": 98
@@ -840,9 +861,9 @@
       },
       "duration": 100
     },
-    "rebost 40.aseprite": {
+    "rebost 41.aseprite": {
       "frame": {
-        "x": 3158,
+        "x": 3387,
         "y": 498,
         "w": 227,
         "h": 99
@@ -861,9 +882,9 @@
       },
       "duration": 100
     },
-    "rebost 41.aseprite": {
+    "rebost 42.aseprite": {
       "frame": {
-        "x": 1603,
+        "x": 1887,
         "y": 360,
         "w": 230,
         "h": 116
@@ -882,9 +903,9 @@
       },
       "duration": 100
     },
-    "rebost 42.aseprite": {
+    "rebost 43.aseprite": {
       "frame": {
-        "x": 2064,
+        "x": 2348,
         "y": 360,
         "w": 233,
         "h": 115
@@ -903,9 +924,9 @@
       },
       "duration": 100
     },
-    "rebost 43.aseprite": {
+    "rebost 44.aseprite": {
       "frame": {
-        "x": 2530,
+        "x": 2814,
         "y": 360,
         "w": 234,
         "h": 113
@@ -924,9 +945,9 @@
       },
       "duration": 100
     },
-    "rebost 44.aseprite": {
+    "rebost 45.aseprite": {
       "frame": {
-        "x": 2764,
+        "x": 3048,
         "y": 360,
         "w": 234,
         "h": 112
@@ -945,9 +966,9 @@
       },
       "duration": 100
     },
-    "rebost 45.aseprite": {
+    "rebost 46.aseprite": {
       "frame": {
-        "x": 2998,
+        "x": 3282,
         "y": 360,
         "w": 232,
         "h": 111
@@ -959,27 +980,6 @@
         "y": 32,
         "w": 232,
         "h": 111
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "rebost 46.aseprite": {
-      "frame": {
-        "x": 3691,
-        "y": 360,
-        "w": 229,
-        "h": 109
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 312,
-        "y": 32,
-        "w": 229,
-        "h": 109
       },
       "sourceSize": {
         "w": 640,
@@ -991,6 +991,27 @@
       "frame": {
         "x": 0,
         "y": 498,
+        "w": 229,
+        "h": 109
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 312,
+        "y": 32,
+        "w": 229,
+        "h": 109
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "rebost 48.aseprite": {
+      "frame": {
+        "x": 229,
+        "y": 498,
         "w": 228,
         "h": 109
       },
@@ -1008,9 +1029,9 @@
       },
       "duration": 100
     },
-    "rebost 48.aseprite": {
+    "rebost 49.aseprite": {
       "frame": {
-        "x": 3230,
+        "x": 3514,
         "y": 360,
         "w": 227,
         "h": 110
@@ -1029,41 +1050,20 @@
       },
       "duration": 100
     },
-    "rebost 49.aseprite": {
-      "frame": {
-        "x": 461,
-        "y": 498,
-        "w": 225,
-        "h": 106
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 309,
-        "y": 30,
-        "w": 225,
-        "h": 106
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "rebost 50.aseprite": {
       "frame": {
-        "x": 916,
+        "x": 690,
         "y": 498,
-        "w": 222,
-        "h": 104
+        "w": 225,
+        "h": 106
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 309,
         "y": 30,
-        "w": 222,
-        "h": 104
+        "w": 225,
+        "h": 106
       },
       "sourceSize": {
         "w": 640,
@@ -1073,18 +1073,18 @@
     },
     "rebost 51.aseprite": {
       "frame": {
-        "x": 1138,
+        "x": 1145,
         "y": 498,
-        "w": 225,
-        "h": 103
+        "w": 222,
+        "h": 104
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 309,
         "y": 30,
-        "w": 225,
-        "h": 103
+        "w": 222,
+        "h": 104
       },
       "sourceSize": {
         "w": 640,
@@ -1094,18 +1094,18 @@
     },
     "rebost 52.aseprite": {
       "frame": {
-        "x": 1590,
+        "x": 1367,
         "y": 498,
-        "w": 227,
-        "h": 102
+        "w": 225,
+        "h": 103
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 309,
         "y": 30,
-        "w": 227,
-        "h": 102
+        "w": 225,
+        "h": 103
       },
       "sourceSize": {
         "w": 640,
@@ -1115,18 +1115,18 @@
     },
     "rebost 53.aseprite": {
       "frame": {
-        "x": 2039,
+        "x": 1819,
         "y": 498,
-        "w": 229,
-        "h": 101
+        "w": 227,
+        "h": 102
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 309,
         "y": 30,
-        "w": 229,
-        "h": 101
+        "w": 227,
+        "h": 102
       },
       "sourceSize": {
         "w": 640,
@@ -1136,7 +1136,28 @@
     },
     "rebost 54.aseprite": {
       "frame": {
-        "x": 2699,
+        "x": 2268,
+        "y": 498,
+        "w": 229,
+        "h": 101
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 309,
+        "y": 30,
+        "w": 229,
+        "h": 101
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "rebost 55.aseprite": {
+      "frame": {
+        "x": 2928,
         "y": 498,
         "w": 230,
         "h": 100
@@ -1155,9 +1176,9 @@
       },
       "duration": 100
     },
-    "rebost 55.aseprite": {
+    "rebost 56.aseprite": {
       "frame": {
-        "x": 2929,
+        "x": 3158,
         "y": 498,
         "w": 229,
         "h": 100
@@ -1176,9 +1197,9 @@
       },
       "duration": 100
     },
-    "rebost 56.aseprite": {
+    "rebost 57.aseprite": {
       "frame": {
-        "x": 3385,
+        "x": 3614,
         "y": 498,
         "w": 228,
         "h": 99
@@ -1197,9 +1218,9 @@
       },
       "duration": 100
     },
-    "rebost 57.aseprite": {
+    "rebost 58.aseprite": {
       "frame": {
-        "x": 3613,
+        "x": 3842,
         "y": 498,
         "w": 226,
         "h": 99
@@ -1218,10 +1239,10 @@
       },
       "duration": 100
     },
-    "rebost 58.aseprite": {
+    "rebost 59.aseprite": {
       "frame": {
-        "x": 3839,
-        "y": 498,
+        "x": 0,
+        "y": 607,
         "w": 223,
         "h": 99
       },
@@ -1239,9 +1260,9 @@
       },
       "duration": 100
     },
-    "rebost 59.aseprite": {
+    "rebost 60.aseprite": {
       "frame": {
-        "x": 0,
+        "x": 223,
         "y": 607,
         "w": 220,
         "h": 99
@@ -1260,9 +1281,9 @@
       },
       "duration": 100
     },
-    "rebost 60.aseprite": {
+    "rebost 61.aseprite": {
       "frame": {
-        "x": 220,
+        "x": 443,
         "y": 607,
         "w": 216,
         "h": 99
@@ -1281,30 +1302,9 @@
       },
       "duration": 100
     },
-    "rebost 61.aseprite": {
-      "frame": {
-        "x": 3259,
-        "y": 607,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "rebost 62.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1325,7 +1325,7 @@
     },
     "rebost 63.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1346,7 +1346,7 @@
     },
     "rebost 64.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1367,7 +1367,7 @@
     },
     "rebost 65.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1388,7 +1388,7 @@
     },
     "rebost 66.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1409,7 +1409,7 @@
     },
     "rebost 67.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1430,7 +1430,7 @@
     },
     "rebost 68.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1451,7 +1451,7 @@
     },
     "rebost 69.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1472,7 +1472,7 @@
     },
     "rebost 70.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1493,7 +1493,7 @@
     },
     "rebost 71.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1514,7 +1514,7 @@
     },
     "rebost 72.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1535,7 +1535,7 @@
     },
     "rebost 73.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1556,7 +1556,7 @@
     },
     "rebost 74.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1577,7 +1577,7 @@
     },
     "rebost 75.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1598,7 +1598,7 @@
     },
     "rebost 76.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1619,7 +1619,7 @@
     },
     "rebost 77.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1640,7 +1640,7 @@
     },
     "rebost 78.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1661,7 +1661,7 @@
     },
     "rebost 79.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1682,7 +1682,7 @@
     },
     "rebost 80.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1703,7 +1703,7 @@
     },
     "rebost 81.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1724,7 +1724,7 @@
     },
     "rebost 82.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1745,7 +1745,7 @@
     },
     "rebost 83.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1766,7 +1766,7 @@
     },
     "rebost 84.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1787,7 +1787,7 @@
     },
     "rebost 85.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1808,7 +1808,7 @@
     },
     "rebost 86.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1829,7 +1829,7 @@
     },
     "rebost 87.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1850,7 +1850,7 @@
     },
     "rebost 88.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1871,7 +1871,7 @@
     },
     "rebost 89.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1892,7 +1892,7 @@
     },
     "rebost 90.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1913,7 +1913,7 @@
     },
     "rebost 91.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1934,7 +1934,7 @@
     },
     "rebost 92.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1955,7 +1955,7 @@
     },
     "rebost 93.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1976,7 +1976,7 @@
     },
     "rebost 94.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -1997,7 +1997,7 @@
     },
     "rebost 95.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2018,7 +2018,7 @@
     },
     "rebost 96.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2039,7 +2039,7 @@
     },
     "rebost 97.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2060,7 +2060,7 @@
     },
     "rebost 98.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2081,7 +2081,7 @@
     },
     "rebost 99.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2102,7 +2102,7 @@
     },
     "rebost 100.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2123,7 +2123,7 @@
     },
     "rebost 101.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2144,7 +2144,7 @@
     },
     "rebost 102.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2165,7 +2165,7 @@
     },
     "rebost 103.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2186,7 +2186,7 @@
     },
     "rebost 104.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2207,7 +2207,7 @@
     },
     "rebost 105.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2228,7 +2228,7 @@
     },
     "rebost 106.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2249,7 +2249,7 @@
     },
     "rebost 107.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2270,7 +2270,7 @@
     },
     "rebost 108.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2291,7 +2291,7 @@
     },
     "rebost 109.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2312,7 +2312,7 @@
     },
     "rebost 110.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2333,7 +2333,7 @@
     },
     "rebost 111.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2354,7 +2354,7 @@
     },
     "rebost 112.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2375,7 +2375,7 @@
     },
     "rebost 113.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2396,7 +2396,7 @@
     },
     "rebost 114.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2417,7 +2417,7 @@
     },
     "rebost 115.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2438,7 +2438,7 @@
     },
     "rebost 116.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2459,7 +2459,7 @@
     },
     "rebost 117.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2480,7 +2480,7 @@
     },
     "rebost 118.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2501,7 +2501,28 @@
     },
     "rebost 119.aseprite": {
       "frame": {
-        "x": 3117,
+        "x": 3482,
+        "y": 607,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "rebost 120.aseprite": {
+      "frame": {
+        "x": 3340,
         "y": 607,
         "w": 87,
         "h": 56
@@ -2520,9 +2541,9 @@
       },
       "duration": 100
     },
-    "rebost 120.aseprite": {
+    "rebost 121.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2541,9 +2562,9 @@
       },
       "duration": 100
     },
-    "rebost 121.aseprite": {
+    "rebost 122.aseprite": {
       "frame": {
-        "x": 3204,
+        "x": 3427,
         "y": 607,
         "w": 28,
         "h": 45
@@ -2562,9 +2583,9 @@
       },
       "duration": 100
     },
-    "rebost 122.aseprite": {
+    "rebost 123.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2583,7 +2604,7 @@
       },
       "duration": 100
     },
-    "rebost 123.aseprite": {
+    "rebost 124.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -2604,9 +2625,9 @@
       },
       "duration": 100
     },
-    "rebost 124.aseprite": {
+    "rebost 125.aseprite": {
       "frame": {
-        "x": 3259,
+        "x": 3482,
         "y": 607,
         "w": 1,
         "h": 1
@@ -2632,7 +2653,7 @@
     "image": "rebost.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4062,
+      "w": 4068,
       "h": 706
     },
     "scale": "1",
@@ -2729,58 +2750,65 @@
         "color": "#000000ff"
       },
       {
-        "name": "pols",
+        "name": "munta_tancat",
         "from": 13,
-        "to": 60,
+        "to": 13,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "pols",
+        "from": 14,
+        "to": 61,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "ratoli",
-        "from": 61,
-        "to": 118,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_congelador",
-        "from": 119,
+        "from": 62,
         "to": 119,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "registre_obert__davant_congelador",
+        "name": "davant_congelador",
         "from": 120,
         "to": 120,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_tamboret",
+        "name": "registre_obert__davant_congelador",
         "from": 121,
         "to": 121,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "registre_obert__davant_tamboret",
+        "name": "davant_tamboret",
         "from": 122,
         "to": 122,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_primer_pla",
+        "name": "registre_obert__davant_tamboret",
         "from": 123,
         "to": 123,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "registre_obert__davant_primer_pla",
+        "name": "davant_primer_pla",
         "from": 124,
         "to": 124,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "registre_obert__davant_primer_pla",
+        "from": 125,
+        "to": 125,
         "direction": "forward",
         "color": "#000000ff"
       }

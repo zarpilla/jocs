@@ -601,6 +601,16 @@ def safata(cv):
     cv.hline(501, 547, 141, CAB, 2.0)
 
 
+def porta_tancada(cv):
+    """La porteta baixada (el muntacàrregues en marxa): tapa l'obertura, amb la nansa de llautó a baix."""
+    x0, y0, x1, y1 = 496, 80, 552, 147
+    box(cv, x0 + 5, y0 + 19, x1 - 5, y1 - 5, CAB, 3.6)
+    for y in range(y0 + 23, y1 - 9, 4):
+        cv.hline(x0 + 7, x1 - 7, y, CAB, 2.4)
+    box(cv, (x0 + x1) // 2 - 5, y1 - 9, (x0 + x1) // 2 + 5, y1 - 6, BRASS, 3.4)
+    box(cv, x0 + 5, y0 + 5, x1 - 5, y0 + 16, DARK, 1.2)           # on era la porteta, el pou
+
+
 def objecte(cv, item):
     """L'objecte que ha arribat, damunt la safata."""
     from hd640.safata import posa

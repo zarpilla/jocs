@@ -265,7 +265,7 @@ def _sac(cv):
 
 # ─── Les textures: el dibuix pla de sempre ───────────────────────────────────
 
-def _paret(dia=False, safata=False, item=None):
+def _paret(dia=False, safata=False, item=None, tancat=False):
     """Les dues parets planes, de cara (sense els fogons, l'armari, el forn ni el marbre, que són en 3D)."""
     cv = Canvas(light=TEX_LIGHT)
     PL.wall(cv)
@@ -276,6 +276,8 @@ def _paret(dia=False, safata=False, item=None):
         PL.tray(cv)
     if item:
         PL.objecte(cv, item)
+    if tancat:
+        PL.porta_tancada(cv)
     PL.hatch(cv)
     PL.voice_tube(cv, 211, 101)
     _fogons_paret(cv)
@@ -608,7 +610,14 @@ def _safata_amb(item):
     return prop
 
 
-PROPS = {'safata': safata, 'armari_obert': armari_obert, 'ulls_dia': ulls_dia,
+def munta_tancat(cv):
+    """El muntacàrregues en marxa: la porta de guillotina baixada (es mostra un moment en enviar-hi una cosa)."""
+    _, e = _base()
+    cv.img.alpha_composite(_fotograma([e.capa(_paret(tancat=True), {'paret_esq'})]))
+    cv.P = cv.img.load()
+
+
+PROPS = {'safata': safata, 'armari_obert': armari_obert, 'ulls_dia': ulls_dia, 'munta_tancat': munta_tancat,
          **{f'safata_{item}': _safata_amb(item) for item in OBJECTES_SAFATA}}
 
 

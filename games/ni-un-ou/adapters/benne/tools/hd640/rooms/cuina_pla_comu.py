@@ -206,6 +206,21 @@ def dumbwaiter(cv):
     text(cv, s, sx0 + 1 + ((sx1 - sx0 - 1) - text_width(s)) // 2, y0 - 9, None, 0, flat=(30, 34, 40))
 
 
+def porta_tancada(cv):
+    """La porta de guillotina baixada (el muntacàrregues en marxa): tapa la cabina, amb els nervis i la nansa a baix."""
+    cx0, cy0, cx1, cy1 = CAB_IN
+    gx0, gy0, gx1, gy1 = cx0 - 1, cy0 - 3, cx1 + 1, cy1
+    box(cv, gx0, gy0, gx1, gy1, STEEL, 4.6)
+    for y in range(gy0 + 5, gy1 - 8, 6):
+        cv.hline(gx0 + 2, gx1 - 2, y, STEEL, 3.4)
+        cv.hline(gx0 + 2, gx1 - 2, y + 1, STEEL, 5.6)
+    box(cv, (gx0 + gx1) // 2 - 8, gy1 - 6, (gx0 + gx1) // 2 + 8, gy1 - 3, STEEL, 6.0)  # la nansa
+    # el pilot, en ambre: hi ha una càrrega pel camí
+    for dx in (-1, 0, 1):
+        cv.flat(142 + dx, 110, (255, 190, 80))
+    glow(cv, 142, 110, 9, (255, 170, 60), 0.7)
+
+
 def tray(cv):
     """La safata, a la cabina del muntacàrregues (el que hi ha a sobre, a `objecte`), i el pilot verd encès."""
     cx0, cy0, cx1, cy1 = CAB_IN

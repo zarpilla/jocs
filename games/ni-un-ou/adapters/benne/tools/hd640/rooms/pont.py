@@ -550,7 +550,14 @@ def _safata_amb(item):
     return prop
 
 
-PROPS = {'dia': dia, 'safata': safata, 'guardacostes': guardacostes, 'fosc': fosc,
+def munta_tancat(cv):
+    """El muntacàrregues en marxa: la porteta baixada (es mostra un moment en enviar-hi una cosa)."""
+    _, e = _base()
+    cv.img.alpha_composite(e.capa(_flat(PL.porta_tancada), {'paret_fons'}))
+    cv.P = cv.img.load()
+
+
+PROPS = {'dia': dia, 'safata': safata, 'munta_tancat': munta_tancat, 'guardacostes': guardacostes, 'fosc': fosc,
          **{f'safata_{item}': _safata_amb(item) for item in OBJECTES_SAFATA}}
 
 

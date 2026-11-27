@@ -104,7 +104,7 @@ def _sala(cv):
     cv.disc(88, 116, 1.5, 1.5, CAB, 4.4)
 
 
-def _paret(safata=False, item=None):
+def _paret(safata=False, item=None, tancat=False):
     """La paret plana, de cara: la porta, el tub, el calendari i el muntacàrregues (el congelador, en 3D)."""
     cv = Canvas(light=TEX_LIGHT)
     _sala(cv)
@@ -118,6 +118,8 @@ def _paret(safata=False, item=None):
         PL.safata(cv)
     if item:
         PL.objecte(cv, item)
+    if tancat:
+        PL.porta_tancada(cv)
     return cv.img
 
 
@@ -362,7 +364,14 @@ def _safata_amb(item):
     return prop
 
 
-PROPS = {'safata': safata, 'rascades': rascades, 'registre_obert': registre_obert,
+def munta_tancat(cv):
+    """El muntacàrregues en marxa: la portella baixada (es mostra un moment en enviar-hi una cosa)."""
+    _, e = _base()
+    cv.img.alpha_composite(_fotograma([e.capa(_paret(tancat=True), {'paret_fons'})]))
+    cv.P = cv.img.load()
+
+
+PROPS = {'safata': safata, 'munta_tancat': munta_tancat, 'rascades': rascades, 'registre_obert': registre_obert,
          **{f'safata_{item}': _safata_amb(item) for item in OBJECTES_SAFATA}}
 
 

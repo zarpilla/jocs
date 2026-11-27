@@ -609,6 +609,11 @@
         "op": "==",
         "value": "registre"
       }
+    },
+    "munta_tancat": {
+      "visibleIf": {
+        "any": []
+      }
     }
   }
 }

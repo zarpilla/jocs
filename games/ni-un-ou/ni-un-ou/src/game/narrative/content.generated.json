@@ -2113,11 +2113,23 @@
                   },
                   {
                     "who": "player",
-                    "text": "sala.coberta_popa.plataforma.1"
+                    "text": "sala.coberta_popa.plataforma.1",
+                    "stage": [
+                      {
+                        "who": "bastida",
+                        "face": "U"
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.coberta_popa.plataforma.2"
+                    "text": "sala.coberta_popa.plataforma.2",
+                    "stage": [
+                      {
+                        "who": "bastida",
+                        "face": "D"
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -3542,6 +3554,11 @@
               "var": "munta_cuina",
               "op": "==",
               "value": "registre"
+            }
+          },
+          "munta_tancat": {
+            "visibleIf": {
+              "any": []
             }
           }
         }
@@ -7408,7 +7425,16 @@
                   {
                     "who": "player",
                     "text": "sala.passadis_baix.porta_maquines.6",
-                    "sound": "cops"
+                    "sound": "cops",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "U"
+                      },
+                      {
+                        "shake": 0.5
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -9111,6 +9137,11 @@
               "op": "==",
               "value": "registre"
             }
+          },
+          "munta_tancat": {
+            "visibleIf": {
+              "any": []
+            }
           }
         }
       },
@@ -9847,6 +9878,11 @@
               "var": "munta_rebost",
               "op": "==",
               "value": "registre"
+            }
+          },
+          "munta_tancat": {
+            "visibleIf": {
+              "any": []
             }
           }
         }
@@ -10709,11 +10745,42 @@
                   {
                     "who": "narrator",
                     "text": "sala.sala_maquines.quadre.15",
-                    "sound": "bomba"
+                    "sound": "bomba",
+                    "stage": [
+                      {
+                        "who": "bastida",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.sala_maquines.quadre.16"
+                    "text": "sala.sala_maquines.quadre.16",
+                    "stage": [
+                      {
+                        "who": "bastida",
+                        "at": {
+                          "x": 70,
+                          "y": 160
+                        },
+                        "face": "R",
+                        "visible": true
+                      },
+                      {
+                        "who": "bastida",
+                        "walk": {
+                          "x": 104,
+                          "y": 200
+                        }
+                      },
+                      {
+                        "who": "bastida",
+                        "walk": {
+                          "x": 150,
+                          "y": 212
+                        }
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -17918,7 +17985,20 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.bastida1.arriba.2"
+                "text": "dlg.bastida1.arriba.2",
+                "stage": [
+                  {
+                    "who": "bastida",
+                    "walk": {
+                      "x": 186,
+                      "y": 222
+                    }
+                  },
+                  {
+                    "who": "bastida",
+                    "face": "R"
+                  }
+                ]
               },
               {
                 "who": "bastida",
@@ -17926,7 +18006,13 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.bastida1.arriba.4"
+                "text": "dlg.bastida1.arriba.4",
+                "stage": [
+                  {
+                    "who": "bastida",
+                    "face": "R"
+                  }
+                ]
               },
               {
                 "who": "bastida",
@@ -17966,7 +18052,17 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.bastida1.arriba.14"
+                "text": "dlg.bastida1.arriba.14",
+                "stage": [
+                  {
+                    "who": "iri",
+                    "walk": "sensor"
+                  },
+                  {
+                    "who": "iri",
+                    "face": "U"
+                  }
+                ]
               },
               {
                 "who": "title",
@@ -18234,7 +18330,17 @@
             "lines": [
               {
                 "who": "capitana",
-                "text": "dlg.capitana.fi.1"
+                "text": "dlg.capitana.fi.1",
+                "stageAfter": [
+                  {
+                    "who": "capitana",
+                    "walk": "porta"
+                  },
+                  {
+                    "who": "capitana",
+                    "visible": false
+                  }
+                ]
               }
             ],
             "effects": [
@@ -18602,11 +18708,43 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "dlg.fitxes.capitana.1"
+                "text": "dlg.fitxes.capitana.1",
+                "stage": [
+                  {
+                    "who": "capitana",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "narrator",
-                "text": "dlg.fitxes.capitana.2"
+                "text": "dlg.fitxes.capitana.2",
+                "stage": [
+                  {
+                    "who": "capitana",
+                    "at": "porta",
+                    "anim": null,
+                    "face": "R",
+                    "visible": true
+                  },
+                  {
+                    "who": "vet",
+                    "face": "L"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "who": "capitana",
+                    "walk": {
+                      "x": 407,
+                      "y": 218
+                    }
+                  },
+                  {
+                    "who": "vet",
+                    "face": "R"
+                  }
+                ]
               }
             ],
             "effects": [
@@ -18620,11 +18758,43 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "dlg.fitxes.tomas.1"
+                "text": "dlg.fitxes.tomas.1",
+                "stage": [
+                  {
+                    "who": "tomas",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "narrator",
-                "text": "dlg.fitxes.tomas.2"
+                "text": "dlg.fitxes.tomas.2",
+                "stage": [
+                  {
+                    "who": "tomas",
+                    "at": "porta",
+                    "anim": null,
+                    "face": "R",
+                    "visible": true
+                  },
+                  {
+                    "who": "vet",
+                    "face": "L"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "who": "tomas",
+                    "walk": {
+                      "x": 407,
+                      "y": 218
+                    }
+                  },
+                  {
+                    "who": "vet",
+                    "face": "R"
+                  }
+                ]
               }
             ],
             "effects": [
@@ -18638,11 +18808,43 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "dlg.fitxes.nadia.1"
+                "text": "dlg.fitxes.nadia.1",
+                "stage": [
+                  {
+                    "who": "nadia",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "narrator",
-                "text": "dlg.fitxes.nadia.2"
+                "text": "dlg.fitxes.nadia.2",
+                "stage": [
+                  {
+                    "who": "nadia",
+                    "at": "porta",
+                    "anim": null,
+                    "face": "R",
+                    "visible": true
+                  },
+                  {
+                    "who": "vet",
+                    "face": "L"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "who": "nadia",
+                    "walk": {
+                      "x": 407,
+                      "y": 218
+                    }
+                  },
+                  {
+                    "who": "vet",
+                    "face": "R"
+                  }
+                ]
               }
             ],
             "effects": [
@@ -18656,11 +18858,43 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "dlg.fitxes.marcel.1"
+                "text": "dlg.fitxes.marcel.1",
+                "stage": [
+                  {
+                    "who": "marcel",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "narrator",
-                "text": "dlg.fitxes.marcel.2"
+                "text": "dlg.fitxes.marcel.2",
+                "stage": [
+                  {
+                    "who": "marcel",
+                    "at": "porta",
+                    "anim": null,
+                    "face": "R",
+                    "visible": true
+                  },
+                  {
+                    "who": "vet",
+                    "face": "L"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "who": "marcel",
+                    "walk": {
+                      "x": 407,
+                      "y": 218
+                    }
+                  },
+                  {
+                    "who": "vet",
+                    "face": "R"
+                  }
+                ]
               }
             ],
             "effects": [
@@ -19359,7 +19593,17 @@
             "lines": [
               {
                 "who": "marcel",
-                "text": "dlg.marcel.fi.1"
+                "text": "dlg.marcel.fi.1",
+                "stageAfter": [
+                  {
+                    "who": "marcel",
+                    "walk": "porta"
+                  },
+                  {
+                    "who": "marcel",
+                    "visible": false
+                  }
+                ]
               }
             ],
             "effects": [
@@ -19778,7 +20022,17 @@
             "lines": [
               {
                 "who": "nadia",
-                "text": "dlg.nadia.fi.1"
+                "text": "dlg.nadia.fi.1",
+                "stageAfter": [
+                  {
+                    "who": "nadia",
+                    "walk": "porta"
+                  },
+                  {
+                    "who": "nadia",
+                    "visible": false
+                  }
+                ]
               }
             ],
             "effects": [
@@ -21770,7 +22024,17 @@
             "lines": [
               {
                 "who": "tomas",
-                "text": "dlg.tomas.fi.1"
+                "text": "dlg.tomas.fi.1",
+                "stageAfter": [
+                  {
+                    "who": "tomas",
+                    "walk": "porta"
+                  },
+                  {
+                    "who": "tomas",
+                    "visible": false
+                  }
+                ]
               }
             ],
             "effects": [
@@ -24225,7 +24489,7 @@
       "dlg.walkie.trucada.5": "Necessito una barra de metall. D'un pam i mig, com a mínim.",
       "dlg.walkie.trucada.6": "I no ho diguis pel 6. Si ho sent la Capitana, vindrà a veure-ho, i hi ha coses que no ha de veure.",
       "dlg.walkie.trucada.7": "Quines coses?",
-      "dlg.walkie.trucada.8": "En Diu passa entre les cames de l'Iri.",
+      "dlg.walkie.trucada.8": "Damunt del col·lector, en Diu obre un ull i el torna a tancar.",
       "dlg.walkie.trucada.9": "Coses.",
       "dlg.walkie.trucada.10": "A la cuina hi ha un muntacàrregues. Posa-hi la barra i que baixi al rebost.",
       "dlg.walkie.trucada.11": "La cuina. I la proa és la punxeguda, oi?",
@@ -25893,7 +26157,7 @@
       "sala.cuina.forn.1": "El forn. Fa olor de pa.",
       "sala.cuina.forn.2": "El forn. Encara està tebi.",
       "sala.cuina.forn.nom": "forn",
-      "sala.cuina.1": "La cuina, buida i fosca a aquesta hora. El muntacàrregues és a la paret del fons.",
+      "sala.cuina.1": "La cuina, buida a aquesta hora. Només hi treballa el forn, amb el pa de l'esmorzar. El muntacàrregues és a la paret del fons.",
       "sala.cuina.nom": "Cuina",
       "sala.infermeria.porta.1": "Encara no sé ni on soc.",
       "sala.infermeria.porta.2": "Primer acabo la revisió.",
@@ -26302,7 +26566,7 @@
       "sala.passadis_baix.porta_maquines.4": "Per això tinc una maceta penjada al camarot.",
       "sala.passadis_baix.porta_maquines.5": "La falca de baix, encallada. Com sempre. Un cop de maceta i va.",
       "sala.passadis_baix.porta_maquines.6": "Un cop. Dos. Tres. La falca salta.",
-      "sala.passadis_baix.porta_maquines.7": "La maceta, la deixo penjada aquí. Tornarà a fer falta.",
+      "sala.passadis_baix.porta_maquines.7": "La maceta, ja la tornaré al camarot. Tornarà a fer falta.",
       "sala.passadis_baix.repetidor.nom": "repetidor d'alarmes",
       "sala.passadis_baix.repetidor.1": "El repetidor d'alarmes de la sala de màquines: sentina, incendi, gasoil, temperatura. Tot verd.",
       "sala.passadis_baix.repetidor.2": "Tot verd, i el vaixell assegut de popa. Un dels dos menteix, i el vaixell no sap mentir.",

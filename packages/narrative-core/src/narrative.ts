@@ -18,6 +18,7 @@ import type {
   QuestDef,
   Scalar,
   SpeakerId,
+  StageCue,
   TextKey,
 } from './types.js';
 
@@ -56,7 +57,8 @@ export interface ActionContext {
 
 /** El que torna una acció de joc: línies per dir (claus de text). */
 export interface ActionResult {
-  lines?: { who: SpeakerId; text: TextKey; params?: TextParams; sound?: string }[];
+  /** Com les línies del JSON: també poden moure l'escena (`stage`, `stageAfter`). */
+  lines?: { who: SpeakerId; text: TextKey; params?: TextParams; sound?: string; stage?: StageCue[]; stageAfter?: StageCue[] }[];
 }
 
 export type GameAction = (ctx: ActionContext) => ActionResult | void;
@@ -122,6 +124,7 @@ export interface EndingView {
   /**
    * L'escena, ja filtrada per les condicions de cada línia. `room`: sala de fons des d'aquesta línia.
    * `effects`: el que canvia en dir-la (p. ex. algú que es mou o una cosa que s'apaga); l'aplica l'adaptador.
+   * `stage`/`stageAfter`: el moviment de la línia, com a les interaccions (només en una línia amb sala de fons).
    */
   scene: (ResolvedLine & { room?: Id; effects?: Effect[] })[];
   text: string;
@@ -450,6 +453,7 @@ export class Narrative {
       .map((line) => ({
         who: line.who, key: line.text, text: this.t(line.text), ...(line.sound ? { sound: line.sound } : {}), ...(line.room ? { room: line.room } : {}),
         ...(line.effects?.length ? { effects: line.effects } : {}),
+        ...(line.stage ? { stage: line.stage } : {}), ...(line.stageAfter ? { stageAfter: line.stageAfter } : {}),
       }));
     return {
       id, title: this.t(def.title), scene: lines(def.scene), text: this.t(def.text),
@@ -686,7 +690,10 @@ export class Narrative {
     const action = this.actions.get(name);
     if (!action) throw new Error(`Acció de joc no registrada: ${name}`);
     const result = action({ narrative: this, args, request }) ?? {};
-    return (result.lines ?? []).map((l) => ({ who: l.who, key: l.text, text: this.t(l.text, l.params), ...(l.sound && { sound: l.sound }) }));
+    return (result.lines ?? []).map((l) => ({
+      who: l.who, key: l.text, text: this.t(l.text, l.params), ...(l.sound && { sound: l.sound }),
+      ...(l.stage && { stage: l.stage }), ...(l.stageAfter && { stageAfter: l.stageAfter }),
+    }));
   }
 
   /** `"molla_{molla_tensio}"` → `"molla_3"`, amb les variables d'ara. */

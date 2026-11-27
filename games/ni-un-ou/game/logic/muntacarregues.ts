@@ -66,7 +66,9 @@ export function enviar(n: Narrative, item: string, altraSala: string | null): Ac
   if (String(n.getVar(safata(cap)) ?? '')) return { lines: [player('munta.ple', { parada: n.t(`munta.cap.${cap}`) })] };
 
   n.apply([{ takeItem: item }, { setVar: safata(cap), value: item }]);
-  return { lines: [{ ...player(perObjecte(n, 'munta.envia', item, cap)), sound: 'muntacarregues' }, ...extra(n, `munta.${item}.envia`)] };
+  // En acabar la frase, la porta del muntacàrregues baixa un moment (el decorat `munta_tancat`): se'n va.
+  const marxa = [{ prop: 'munta_tancat', visible: true, hold: 1.4 }, { prop: 'munta_tancat', visible: false }];
+  return { lines: [{ ...player(perObjecte(n, 'munta.envia', item, cap)), sound: 'muntacarregues', stageAfter: marxa }, ...extra(n, `munta.${item}.envia`)] };
 }
 
 export function recollir(n: Narrative): ActionResult {
