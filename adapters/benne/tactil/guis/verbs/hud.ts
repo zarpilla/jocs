@@ -21,7 +21,7 @@ import {
   botoEsPista, botoPistaMixt, clickablePrompt, isClickableCutscene, narrative, switchButtonWanted, targetFromBenne,
 } from '../../narrative/narrative';
 import { esSortida, queFaElToc } from '../../narrative/accions';
-import { esDit } from '../../narrative/tactil';
+import { esDit, openMenu } from '../../narrative/tactil';
 import { esquerreMira } from '../../narrative/preferencies';
 import {
   bossaBtn, canviaBtn, caraIri, caraVet, downBtn, downBtn2, downBtn3, inventoryPanel, inventoryPanel2, inventoryPanel3,
@@ -149,10 +149,12 @@ export function refreshLine() {
   const item = pointer.item;
   const hover = pointer.hover;
   const sobre = hover && !(item && hover.kind === 'item' && hover.id === item.id) ? (hover.description ?? '') : '';
-  const text = item
+  // Amb el menú d'accions obert, el nom ja hi és (el títol del menú, que pot caure just a la línia de la frase).
+  const text = openMenu() ? ''
+    : item
     ? `${verbs.use.label} ${item.name} ${verbs.use.preposition ?? ''} ${sobre}`.trim()
     : sobre || (cartaOberta() ? clickablePrompt() : '');
-  const verb = !item && sobre ? verbDelClic() : '';
+  const verb = !item && sobre && text ? verbDelClic() : '';
   if (verbLineText.text !== text) verbLineText.text = text;
   if (verbLineVerb.text !== verb) verbLineVerb.text = verb;
   // el verb i el nom, junts al mig
