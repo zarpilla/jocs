@@ -448,6 +448,19 @@
       },
       {
         "who": "narrator",
+        "text": "final.recompte.pista_tots",
+        "if": {
+          "var": "aliats",
+          "op": "<",
+          "value": 4
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.recompte.continua"
+      },
+      {
+        "who": "narrator",
         "text": "final.58",
         "room": "postcredits"
       },
@@ -953,6 +966,10 @@
       },
       {
         "who": "narrator",
+        "text": "final.recompte.continua"
+      },
+      {
+        "who": "narrator",
         "text": "final.58",
         "room": "postcredits"
       },
@@ -1432,6 +1449,10 @@
       {
         "who": "narrator",
         "text": "final.recompte.pista"
+      },
+      {
+        "who": "narrator",
+        "text": "final.recompte.continua"
       },
       {
         "who": "narrator",
