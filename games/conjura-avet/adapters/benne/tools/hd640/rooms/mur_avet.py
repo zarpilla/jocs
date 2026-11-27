@@ -190,7 +190,8 @@ GEOMETRIA = {
         'branques': {'rect': (24, 176, 232, 214), 'walk': (110, 223)},
         'branca_trencada': {'rect': _rect([_BT0, _BT1], 10), 'walk': _p(-90, 596)},
         'arrels': {'rect': _rect(_ARRELS)[:3] + (190,), 'walk': (124, 222)},
-        'forat': {'rect': _rect(_FORAT), 'walk': (92, 223)},
+        # (el forat arriba a la vora esquerra, però allà la vora és el carrer: comença on s'acaba el carrer)
+        'forat': {'rect': (max(23, _rect(_FORAT)[0]),) + _rect(_FORAT)[1:], 'walk': (92, 223)},
         'cera': {'rect': (round(_CERA_UV[0]) - 7, round(_CERA_UV[1]) - 5, round(_CERA_UV[0]) + 7, round(_CERA_UV[1]) + 4),
                  'walk': (100, 223)},
         'faristol': {'rect': _rect([_FAR + (-26, 0, 0), _FAR + (26, 80, 0)]), 'walk': _p(100, 485)},
