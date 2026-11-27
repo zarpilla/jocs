@@ -492,8 +492,9 @@ def _davant_casa():
 _C = _davant_casa()
 WALK_MON = ([(-640, 475)] + [(round(x), round(z)) for x, z in _C] +
             [(round(_C[2][0]) + 6, 800), (round(POU[0]) - 40, 800), (round(TANCA0[0]) - 20, 782),
-             (-120, 830), (88, 853), (726, 1288), (750, 1252), (112, 817), (300, 735), (720, 735),
+             (-120, 830), (88, 853), (726, 1288), (750, 1252), (720, 735),
              (770, 610), (606, 475), (56, 475), (56, 548), (-142, 548), (-142, 475)])
+# (del graner, el camí va recte cap al port, en diagonal: abans tornava enrere fins a davant de la tanca, tasca 221)
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 
@@ -504,7 +505,8 @@ GEOMETRIA = {
         # tot el graner (de lluny, la porta sola és massa petita per encertar-la)
         'porta_graner': {'rect': _rect((GRANER_X - 140, 120, GRANER_Z), (GRANER_X + 84, 0, GRANER_Z)),
                          'walk': _p(GRANER_X, 1272)},
-        'cami_port': {'rect': (1240, 196, ROOM_W - 1, 258), 'walk': _p(760, 640)},
+        # el rètol PORT i el tros del camí de terra que hi arriba (tasca 221: el rètol sol era massa petit)
+        'cami_port': {'rect': (1190, 180, ROOM_W - 1, 258), 'walk': _p(760, 640)},
         'senyal_port': {'rect': _rect((SENYAL_PORT[0] - 22, 40, SENYAL_PORT[2]), (SENYAL_PORT[0] + 22, 0, SENYAL_PORT[2])),
                         'walk': _p(SENYAL_PORT[0] - 10, SENYAL_PORT[2] + 40)},
         'pou': {'rect': _rect((POU[0] - 28, 80, POU[1] - 26), (POU[0] + 28, 0, POU[1] - 26)),

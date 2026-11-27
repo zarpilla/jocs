@@ -630,12 +630,18 @@ def _rect_mon(*Ps):
 
 
 # El terra on es camina (al món): davant el banc de llavors, fins al llindar del portal, al voltant de les bales i del
-# banc de treball, i per darrere del tractor (que és un forat).
-WALK_MON = [(44, 40), (520, 40), (590, 120), (578, 214), (580, 222), (520, 316), (232, 316), (232, 284),
-            (160, 284), (150, 326), (44, 326)]
+# banc de treball. El tractor és un entrant de la paret del fons: per darrere seu no s'hi passa (el tractor és del fons
+# de la sala, i qui hi passés es dibuixaria davant seu; tasca 225): de la porta al banc de treball, el camí l'envolta
+# per davant.
+def _T2(lx, lz):
+    return tuple(round(v) for v in _T(lx, 0, lz)[::2])
+
+
+WALK_MON = [(44, 40), (520, 40), (590, 120), (578, 214), (580, 222), (520, 316),
+            _T2(96, -40), _T2(-96, -34), _T2(-92, 34), (_T2(-92, 34)[0] - 10, 316),
+            (232, 316), (232, 284), (160, 284), (150, 326), (44, 326)]
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
-_TRAC_FORAT = [_p(*_T(lx, 0, lz)[::2]) for lx, lz in ((-96, -34), (96, -40), (100, 46), (-92, 34))]
 
 
 def _escala_a(v):
@@ -659,7 +665,8 @@ GEOMETRIA = {
         'tractor': {'rect': _rect_mon(*[_T(lx, y, lz) for lx in (-100, 104) for y in (0, 120) for lz in (-40, 40)]),
                     'walk': _p(*_T(-10, 0, -78)[::2])},
         'llavors': {'rect': _rect_mon((SHELF[0], SHELF_H + 4, SHELF[1] + 40), (SHELF[0], 0, SHELF[2])),
-                    'walk': _p(70, 160)},
+                    # (davant dels sacs de terra, a la dreta: abans, damunt seu; tasca 225)
+                    'walk': (150, 224)},
         'reg': {'rect': _rect_mon((_REG[0][0], _REG[0][1], ZW), (_REG[1][0], _REG[1][1], ZW)),
                 'walk': _p(176, 270)},
         'caixa_eines': {'rect': _rect_mon((588, BANC[4] + 26, 252), (632, BANC[4], 272)),
@@ -667,7 +674,6 @@ GEOMETRIA = {
     },
     'spawns': {'iri': _p(180, 140), 'vet': _p(290, 110)},
     'walkable': _WALK,
-    'forats': [_TRAC_FORAT],
     # (la càmera, a 1,65 m, poc picada: a ≈430 de fons on es camina, 165 / 430)
     'floorSquash': 0.38,
     # L'ombra de contacte: la llum dominant és el portal (el punt del terra al llindar); l'ombra cau cap endavant i

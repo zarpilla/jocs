@@ -645,7 +645,9 @@ def _x_u(u, z):
 # del costat de la nau (sense la rampa ni les potes) i, per sota del morro, una franja per darrere de la proa.
 _ZP = _z_v(256)                                                      # la vora de baix
 _ZF = 1000.0                                                         # el fons
-WALK_MON = ([(_x_u(1, _ZP) + 70, _ZP), (_x_u(1, 560), 560), (_x_u(1, 700), 700), (_x_u(1, _ZF), _ZF),
+# (les dues roques del primer pla, a l'esquerra, fora: abans s'hi podia pujar, i s'hi arribava des de la granja; tasca 225)
+_ROQUES = [(104, 256), (100, 234), (62, 224), (58, 206), (1, 203)]
+WALK_MON = ([(_x_u(u, _z_v(v)), _z_v(v)) for u, v in _ROQUES] + [(_x_u(1, _ZF), _ZF),
              (-170, _ZF), (-110, 1070), (120, 1075), (60, 1035), nau_terra(NL + 24, 50), nau_terra(NL - 20, 112), nau_terra(240, NR + 36), nau_terra(PORTA_L[1] + 8, NR + 36),
              nau_terra(PORTA_L[1] + 8, RAMPA_OUT + 8), nau_terra(PORTA_L[0] - 8, RAMPA_OUT + 8),
              nau_terra(PORTA_L[0] - 8, NR + 36), nau_terra(0, NR + 24), nau_terra(-70, 60)]
@@ -658,7 +660,8 @@ _RAMPA = NAU.rampa_cantons()
 
 GEOMETRIA = {
     'things': {
-        'cami_granja': {'rect': (0, _p(*CAMI[1])[1] - 30, 46, 258), 'walk': _p(_x_u(14, 620), 620)},
+        # (s'hi arriba al camí, a la dreta de la roca gran: no damunt seu)
+        'cami_granja': {'rect': (0, _p(*CAMI[1])[1] - 30, 46, 258), 'walk': _p(_x_u(66, _z_v(212)), _z_v(212))},
         'rampa': {'rect': _rect(NAU.buc(PORTA_L[0] - 6, PORTA_T[1] + 0.06), NAU.buc(PORTA_L[1] + 6, PORTA_T[1] + 0.06),
                                 *_RAMPA),
                   'walk': _p(*nau_terra(_SL, RAMPA_OUT + 24))},

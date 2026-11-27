@@ -307,6 +307,44 @@
               "text": "sala.granja_pati.senyal_port.mira"
             }
           ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "var": "escena",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_pati.cami_port.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.granja_pati.senyal_port.va",
+              "stage": [
+                {
+                  "who": "player",
+                  "walk": "cami_port"
+                }
+              ]
+            }
+          ],
+          "goTo": "port_terra2"
         }
       ]
     },

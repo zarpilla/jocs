@@ -663,6 +663,48 @@
             ]
           },
           {
+            "verb": [
+              "give",
+              "use"
+            ],
+            "item": "clau_anglesa",
+            "if": {
+              "flag": "injector_tret"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "pj.tomas.clau.torna"
+              },
+              {
+                "who": "tomas",
+                "text": "pj.tomas.clau.torna.2"
+              }
+            ],
+            "effects": [
+              {
+                "takeItem": "clau_anglesa"
+              }
+            ]
+          },
+          {
+            "verb": [
+              "give",
+              "use"
+            ],
+            "item": "clau_anglesa",
+            "lines": [
+              {
+                "who": "player",
+                "text": "pj.tomas.clau.encara"
+              },
+              {
+                "who": "tomas",
+                "text": "pj.tomas.clau.encara.2"
+              }
+            ]
+          },
+          {
             "verb": "talkTo",
             "dialogue": "tomas"
           }
@@ -2465,6 +2507,38 @@
                     {
                       "flag": "grua_arreglada",
                       "is": false
+                    },
+                    {
+                      "hasItem": "fusible_apanyat"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.aqua_port.grua.6"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.aqua_port.grua.7.apanyat"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "grua_vista"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "grua_arreglada",
+                      "is": false
                     }
                   ]
                 },
@@ -2635,13 +2709,34 @@
                     ],
                     "stageAfter": [
                       {
+                        "who": "vet",
+                        "face": "U"
+                      },
+                      {
+                        "who": "vet",
+                        "gest": "Fa"
+                      },
+                      {
                         "prop": "cistella_grua",
                         "anim": "cistella_baixa",
                         "hold": 1.5
                       },
                       {
                         "who": "player",
+                        "face": "L"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Agafa",
+                        "hold": 0.5
+                      },
+                      {
+                        "who": "player",
                         "visible": false
+                      },
+                      {
+                        "who": "player",
+                        "gest": null
                       },
                       {
                         "prop": "cistella_grua",
@@ -2658,6 +2753,12 @@
                       {
                         "prop": "cistella_grua",
                         "anim": "cistella_avall"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "vet",
+                        "gest": null
                       }
                     ]
                   }
@@ -3056,7 +3157,35 @@
                   "use",
                   "open"
                 ],
-                "goTo": "cantimplora_pont"
+                "goTo": "cantimplora_pont",
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.cantimplora_bodega.escala.puja",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "walk": {
+                          "x": 84,
+                          "y": 184
+                        }
+                      },
+                      {
+                        "who": "player",
+                        "face": "U"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa",
+                        "hold": 0.7
+                      },
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
@@ -9576,6 +9705,11 @@
             "visibleIf": {
               "flag": "quadre_apartat"
             }
+          },
+          "caixa_oberta": {
+            "visibleIf": {
+              "flag": "caixa_oberta"
+            }
           }
         }
       },
@@ -9742,6 +9876,55 @@
                   },
                   {
                     "giveItem": "injector"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "tornavis",
+                "if": {
+                  "flag": "injector_tret",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.granja_graner.tractor.tornavis"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "tornavis_flor",
+                "if": {
+                  "flag": "injector_tret",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.granja_graner.tractor.tornavis"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "*",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "injector_vist"
+                    },
+                    {
+                      "flag": "injector_tret",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.granja_graner.tractor.altra"
                   }
                 ]
               },
@@ -10090,7 +10273,20 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.granja_graner.caixa_eines.1"
+                    "text": "sala.granja_graner.caixa_eines.1",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "gest": "Agafa",
+                        "hold": 0.5
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -10465,6 +10661,44 @@
                     "text": "sala.granja_pati.senyal_port.mira"
                   }
                 ]
+              },
+              {
+                "verb": [
+                  "walkTo",
+                  "use",
+                  "open"
+                ],
+                "if": {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 1
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.granja_pati.cami_port.2"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "walkTo",
+                  "use",
+                  "open"
+                ],
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.granja_pati.senyal_port.va",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "walk": "cami_port"
+                      }
+                    ]
+                  }
+                ],
+                "goTo": "port_terra2"
               }
             ]
           },
@@ -15205,6 +15439,124 @@
             {
               "flag": "injector_tret",
               "is": false
+            },
+            {
+              "flag": "tractor_oliat",
+              "is": false
+            },
+            {
+              "flag": "clau_donada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "injector_tret"
+            },
+            {
+              "flag": "tractor_oliat"
+            },
+            {
+              "flag": "clau_donada"
+            }
+          ]
+        },
+        "levels": [
+          "pista.tractor.1",
+          "pista.tractor.2",
+          "pista.tractor.3"
+        ]
+      },
+      "tractor_clau": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "injector_vist"
+            },
+            {
+              "flag": "injector_tret",
+              "is": false
+            },
+            {
+              "flag": "tractor_oliat"
+            },
+            {
+              "flag": "clau_donada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "injector_tret"
+            },
+            {
+              "flag": "clau_donada"
+            }
+          ]
+        },
+        "levels": [
+          "pista.tractor_clau.1",
+          "pista.tractor_clau.2",
+          "pista.tractor_clau.3"
+        ]
+      },
+      "tractor_oli": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "injector_vist"
+            },
+            {
+              "flag": "injector_tret",
+              "is": false
+            },
+            {
+              "flag": "clau_donada"
+            },
+            {
+              "flag": "tractor_oliat",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "injector_tret"
+            },
+            {
+              "flag": "tractor_oliat"
+            }
+          ]
+        },
+        "levels": [
+          "pista.tractor_oli.1",
+          "pista.tractor_oli.2",
+          "pista.tractor_oli.3"
+        ]
+      },
+      "tractor_treu": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "injector_vist"
+            },
+            {
+              "flag": "injector_tret",
+              "is": false
+            },
+            {
+              "flag": "clau_donada"
+            },
+            {
+              "flag": "tractor_oliat"
             }
           ]
         },
@@ -15212,9 +15564,8 @@
           "flag": "injector_tret"
         },
         "levels": [
-          "pista.tractor.1",
-          "pista.tractor.2",
-          "pista.tractor.3"
+          "pista.tractor_treu.1",
+          "pista.tractor_treu.2"
         ]
       },
       "injector2": {
@@ -28263,11 +28614,47 @@
               {
                 "who": "narrator",
                 "text": "dlg.teclat.titus.1",
-                "sound": "caixa_forta"
+                "sound": "caixa_forta",
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "prop": "caixa_oberta",
+                    "visible": false
+                  },
+                  {
+                    "who": "player",
+                    "gest": "Fa",
+                    "hold": 0.5
+                  },
+                  {
+                    "who": "player",
+                    "gest": null
+                  },
+                  {
+                    "prop": "caixa_oberta",
+                    "visible": true
+                  }
+                ]
               },
               {
                 "who": "player",
-                "text": "dlg.teclat.titus.2"
+                "text": "dlg.teclat.titus.2",
+                "stage": [
+                  {
+                    "who": "player",
+                    "gest": "Agafa",
+                    "hold": 0.5
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "who": "player",
+                    "gest": null
+                  }
+                ]
               },
               {
                 "who": "player",
@@ -30050,9 +30437,9 @@
       "dlg.mapa.palau.1": "Amb invitació o sense, el palau no deixa atracar ni un mosquit. I la Cantimplora és un mosquit molt gros.",
       "dlg.mapa.palau.2": "Hi hem d'anar per una altra via: la llançadora d'en Nil. La invitació ja la tenim; el que em falta és un vestit de gala.",
       "dlg.mapa.palau.3": "Hi hem d'anar per una altra via: la llançadora d'en Nil. Invitació i vestit, ja els tinc. Abans, però, cal deixar la Cantimplora en ordre.",
-      "dlg.capitana.primera.1": "Mira qui torna. La pilot que em va llogar el meu propi motor.",
-      "dlg.capitana.primera.2": "Te'l vaig tornar.",
-      "dlg.capitana.primera.3": "Sense el carburador.",
+      "dlg.capitana.primera.1": "T'escolto. Però tinc el rellotge en marxa.",
+      "dlg.capitana.primera.2": "Seré breu.",
+      "dlg.capitana.primera.3": "Això diuen tots els pilots. Abans d'una hora de xerrera.",
       "dlg.capitana.primera.4": "Hola, Capitana.",
       "dlg.capitana.primera.5": "Hola, Vet. Tu sí que pots pujar.",
       "dlg.capitana.primera.5.vet": "Hola, Vet. Tu sí que pots pujar. La teva germana encara em deu un carburador.",
@@ -31228,6 +31615,10 @@
       "pj.diu.6": "No ho vol. Ell vol pernil.",
       "pj.capitana.1": "La Capitana Or. Seixanta anys, un pegat a l'ull i un humor de ferro.",
       "pj.tomas.1": "En Tomàs, el mecànic nou. Té una carmanyola a tot arreu.",
+      "pj.tomas.clau.torna": "La teva clau anglesa. Gràcies.",
+      "pj.tomas.clau.torna.2": "Me l'has tornat! Ningú no em torna mai res. Ni les carmanyoles.",
+      "pj.tomas.clau.encara": "Encara la necessito una mica. Te la tornaré.",
+      "pj.tomas.clau.encara.2": "Això també ho va dir l'última que se la va endur.",
       "pj.juana.1": "La Juana. Científica. Viu al fons d'un mar que no hi és.",
       "pj.bru.1": "En Bru. Fonedor, cap de la vaga i braços com columnes.",
       "pj.rosa.1": "Una minera amb casc. Té el nas d'en Tomàs.",
@@ -31286,6 +31677,14 @@
       "pista.tractor.1": "El tractor de l'avi té el mateix injector que la Cantimplora.",
       "pista.tractor.2": "El cargol està rovellat: cal oli (hi ha una llauna al motor de la bodega) i una clau anglesa grossa (la porta en Tomàs).",
       "pista.tractor.3": "Agafa l'oli del motor, demana la clau anglesa a en Tomàs, posa oli al tractor del graner i treu-ne l'injector amb la clau.",
+      "pista.tractor_clau.1": "L'oli ja s'amara al cargol. Ara cal una eina prou grossa per fer-lo girar.",
+      "pista.tractor_clau.2": "Una clau anglesa grossa. En Tomàs, el mecànic de la Cantimplora, en porta una.",
+      "pista.tractor_clau.3": "Demana la clau anglesa a en Tomàs, a la bodega, i fes-la servir amb el tractor del graner.",
+      "pista.tractor_oli.1": "La clau anglesa ja la tens, però el cargol està rovellat: si forces, el trenques.",
+      "pista.tractor_oli.2": "Primer, oli. Al motor de la bodega de la Cantimplora n'hi ha una llauna.",
+      "pista.tractor_oli.3": "Agafa la llauna d'oli del motor de la bodega, posa oli al tractor i després treu-ne l'injector amb la clau.",
+      "pista.tractor_treu.1": "Oli posat i clau anglesa a punt. Només falta fer força.",
+      "pista.tractor_treu.2": "Fes servir la clau anglesa amb el tractor del graner.",
       "pista.injector2.1": "L'injector va al motor de la Cantimplora.",
       "pista.injector2.2": "El munta la Vet.",
       "pista.injector2.3": "La Vet ha de fer servir l'injector amb el motor de la bodega (si el porta l'Iri, que l'hi doni o l'hi enviï amb la Mosca).",
@@ -31592,6 +31991,7 @@
       "sala.cantimplora_bodega.nom": "Bodega de la Cantimplora",
       "sala.cantimplora_bodega.rampa.nom": "la rampa",
       "sala.cantimplora_bodega.escala.nom": "el pont",
+      "sala.cantimplora_bodega.escala.puja": "",
       "sala.cantimplora_bodega.barril.nom": "l'últim barril",
       "sala.cantimplora_bodega.calaix.nom": "el calaix de la Vet",
       "sala.cantimplora_bodega.cafetera.nom": "la cafetera",
@@ -31699,7 +32099,7 @@
       "sala.granja_pati.entra.7": "Per vendre-la cal l'escriptura. Que és en algun racó de la casa del pare.",
       "sala.granja_pati.entra.8": "Del pare, que ho guarda tot.",
       "sala.granja_pati.entra.9": "Tot.",
-      "sala.granja_pati.entra.10": "(Pots canviar de protagonista amb el botó «Canvia». Totes dues poden fer coses, i es poden donar el que porten.)",
+      "sala.granja_pati.entra.10": "(El retrat rodó, amb la cara de qui jugues, canvia de protagonista. Totes dues poden fer coses, i es poden donar el que porten.)",
       "sala.granja_pati.porta_casa.1": "La porta de casa. El pare no la tancava mai: «Si algú vol entrar, que entri, que no hi ha res a robar.»",
       "sala.granja_pati.porta_graner.1": "El graner. Hi dormen el tractor de l'avi i les llavors del pare.",
       "sala.granja_pati.cami_port.1": "El camí del port. Allà hi ha la Cantimplora, aparcada i rovellant-se.",
@@ -31763,6 +32163,8 @@
       "sala.granja_graner.tractor.10": "No arrenca. No ha arrencat mai. És un monument.",
       "sala.granja_graner.tractor.11": "L'injector va cargolat al capó. Per treure'l cal una clau anglesa grossa. I oli, perquè està rovellat.",
       "sala.granja_graner.tractor.12": "Ja li hem pres el que volíem.",
+      "sala.granja_graner.tractor.tornavis": "Amb un tornavís no hi faig res. Aquí tot són cargols grossos i rovellats.",
+      "sala.granja_graner.tractor.altra": "Això no farà girar el cargol de l'injector.",
       "sala.granja_graner.llavors.1": "El banc de llavors del pare: blat de secà, cigrons, mongetes de l'avi, tomàquets de la mare... Tot etiquetat a mà. Per si de cas.",
       "sala.granja_graner.llavors.2": "Tres sacs per a la Juana: secà, cigrons i tomàquet. El quart es queda aquí, que ho ha dit el pare.",
       "sala.granja_graner.llavors.3": "Són del pare. No me'n vaig a endur ni un sac sense demanar-l'hi.",
@@ -31799,6 +32201,7 @@
       "sala.aqua_port.grua.5": "És de deu. La grua en demana un de trenta. Petaria abans de dir «grua».",
       "sala.aqua_port.grua.6": "La grua de descarregar peix. Funcionaria, si tingués el fusible. Li falta. De trenta ampers.",
       "sala.aqua_port.grua.7": "A la nau en tenim de recanvi. De deu, però. Embolicat amb alguna cosa que condueixi, un de deu aguantaria. Paper de plata, per exemple.",
+      "sala.aqua_port.grua.7.apanyat": "I el de deu embolicat amb paper de plata, el porto a la butxaca. Només cal posar-l'hi.",
       "sala.aqua_port.grua.8": "Una grua de port amb una cistella penjada. La cabina té un forat on hi faltaria alguna peça. La Vet sabrà què és.",
       "sala.aqua_port.grua.9": "La grua, amb el llum verd. Va.",
       "sala.aqua_port.grua.10": "No arrenca. Hi falta una peça a la cabina.",
@@ -32266,7 +32669,8 @@
       "sala.cantimplora_bodega.llauna.mira": "Una llauna d'oli de motor, mig plena. Fa olor de taller d'avi.",
       "sala.cantimplora_bodega.motor.oli": "I a terra, al costat, la llauna d'oli de motor.",
       "sala.granja_pati.senyal_port.nom": "el pal del port",
-      "sala.granja_pati.senyal_port.mira": "«PORT», cap a la dreta. El camí passa per davant del graner i baixa fins al moll."
+      "sala.granja_pati.senyal_port.mira": "«PORT», cap a la dreta. El camí passa per davant del graner i baixa fins al moll.",
+      "sala.granja_pati.senyal_port.va": ""
     }
   },
   "locale": "ca",
