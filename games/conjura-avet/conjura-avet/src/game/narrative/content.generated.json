@@ -8622,6 +8622,11 @@
             "visibleIf": {
               "flag": "joanet_despert"
             }
+          },
+          "pesca": {
+            "visibleIf": {
+              "flag": "aigua_baixa"
+            }
           }
         },
         "hotspots": {
@@ -8859,11 +8864,36 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.pont_ter.21"
+                    "text": "sala.pont_ter.21",
+                    "stage": [
+                      {
+                        "prop": "rec_ple",
+                        "visible": false
+                      },
+                      {
+                        "who": "player",
+                        "face": "R"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      },
+                      {
+                        "prop": "pesca",
+                        "anim": "salabre",
+                        "hold": 1.6
+                      }
+                    ]
                   },
                   {
                     "who": "player",
-                    "text": "sala.pont_ter.22"
+                    "text": "sala.pont_ter.22",
+                    "stageAfter": [
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -8887,7 +8917,14 @@
                   {
                     "who": "ermessenda",
                     "text": "sala.pont_ter.27",
-                    "sound": "aigua"
+                    "sound": "aigua",
+                    "stage": [
+                      {
+                        "prop": "rec_ple",
+                        "visible": true,
+                        "fade": 2
+                      }
+                    ]
                   },
                   {
                     "who": "ermessenda",
@@ -16752,14 +16789,16 @@
       "ui.controls.dacord": "D'acord",
       "ui.controls.dit.0": "Toca una cosa: la primera vegada la mires; després hi fas l'acció (o tries, si n'hi ha més d'una).",
       "ui.controls.dit.1": "Mantén el dit premut sobre una cosa: tries què hi fas (mirar-la, agafar-la, obrir-la...).",
-      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones). Els punts ensenyen el que es pot tocar.",
+      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones).",
+      "ui.controls.dit.3": "Toca el botó dels punts: s'hi encén un moment tot el que es pot tocar.",
       "ui.controls.intercanvia": "Clic esquerre per fer (i dret per mirar)",
       "ui.controls.pista": "Si no saps què fer, demana una pista (també és al menú): cada vegada que la demanis, una mica més clara.",
       "ui.controls.ratoli.dret": "Clic dret sobre una cosa: la mires.",
       "ui.controls.ratoli.dret.fa": "Clic dret: hi vas o hi fas l'acció (si n'hi ha més d'una, tries).",
       "ui.controls.ratoli.esquerre": "Clic esquerre: hi vas o hi fas l'acció (si n'hi ha més d'una, tries). Mantingues-lo premut per triar.",
       "ui.controls.ratoli.esquerre.mira": "Clic esquerre sobre una cosa: la mires. Mantingues-lo premut per triar què hi fas.",
-      "ui.controls.ratoli.punts": "Clica un objecte de l'inventari i després on el vols fer servir. Els punts ensenyen el que es pot clicar.",
+      "ui.controls.ratoli.inventari": "Clica un objecte de l'inventari i després on el vols fer servir (o a qui el dones).",
+      "ui.controls.ratoli.punts": "Clica el botó dels punts: s'hi encén un moment tot el que es pot clicar.",
       "ui.controls.titol": "Com es juga",
       "ui.defecte": "Això no funciona.",
       "ui.defecte.close": "No cal tancar-ho.",

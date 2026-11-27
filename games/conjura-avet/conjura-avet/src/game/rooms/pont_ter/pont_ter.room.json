@@ -560,6 +560,21 @@
       },
       "zIndex": 20,
       "baseline": 999
+    },
+    {
+      "id": "pesca",
+      "tag": "pesca",
+      "animations": {
+        "pesca": {},
+        "salabre": {
+          "loop": false,
+          "frameDuration": 120
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

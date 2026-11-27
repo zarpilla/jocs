@@ -847,7 +847,81 @@ def _escuma_frames():
     return out
 
 
-ANIMS = {'escuma': {'frames': _escuma_frames, 'frameDuration': 120}}
+# La pesca de la serra (l'Iri, a la riba, davant la comporta, mirant a la dreta amb el braç estirat: el gest `Fa`): el salabre surt
+# de la mà, baixa a la boca de la comporta, s'enfonsa i en surt amb la serra, que regalima, i torna cap a la mà.
+# El prop `pesca` és buit; l'etiqueta `salabre`, la hi posa una indicació d'escena (game/data/rooms/pont_ter.json).
+MA = (324, 147)                                    # la mà de l'Iri (als peus a (305, 197), mirant a la dreta)
+BOCA = (337, 131)                                  # la boca de la comporta, on és la serra (a l'aigua)
+PAL, ANELLA, XARXA = (112, 78, 40), (184, 146, 74), (214, 204, 172)
+FERRO_S, BOIX, ESQUITX = (104, 110, 118), (196, 160, 96), (226, 240, 236)
+
+
+def _pesca_buit(pc):
+    pass
+
+
+def _salabre(dr, ma, cap, enfonsat=0.0, serra=False, gotes=0, seed=0):
+    """Un fotograma: el pal de la mà al cap, l'anella i la xarxa (que penja); dins l'aigua, la meitat de sota no es
+    veu; amb la serra, la fulla dentada i el mànec de boix sobresurten de la xarxa."""
+    import random as _r
+    (mx, my), (cx, cy) = ma, cap
+    dr.line([(mx, my), (cx, cy)], fill=PAL + (255,), width=2)
+    dr.line([(mx, my - 1), (cx, cy - 1)], fill=(150, 108, 60, 255), width=1)
+    rx, ry = 6, 2.5
+    top = cy - 1
+    vis = 1.0 - enfonsat
+    if vis > 0:
+        h = int(7 * vis)
+        for i in range(h):                                     # la bossa de la xarxa
+            w = rx - i * 0.6
+            for x in range(int(cx - w), int(cx + w) + 1):
+                if (x + i) % 2 == 0:
+                    dr.point((x, top + 2 + i), fill=XARXA + (200,))
+        dr.ellipse([cx - rx, top - ry, cx + rx, top + ry], outline=ANELLA + (255,))
+    if enfonsat > 0:                                           # l'aigua al voltant del pal: un anell d'escuma
+        dr.ellipse([cx - 7, cy - 1, cx + 7, cy + 2], outline=ESQUITX + (230,))
+    if serra:
+        dr.line([(cx - 9, top - 1), (cx + 5, top + 2)], fill=FERRO_S + (255,), width=2)          # la fulla
+        for k in range(5):
+            dr.point((cx - 8 + k * 3, top + 1 + k * 0.6), fill=(170, 176, 184, 255))           # les dents
+        dr.line([(cx + 5, top + 2), (cx + 10, top + 3)], fill=BOIX + (255,), width=2)           # el mànec de boix
+        dr.point((cx - 3, top - 2), fill=(232, 222, 196, 255))                                 # el pergamí
+        dr.point((cx - 2, top - 2), fill=(232, 222, 196, 255))
+    rnd = _r.Random(seed)
+    for _ in range(gotes):                                     # gotes que cauen
+        gx, gy = cx + rnd.randint(-6, 6), top + 6 + rnd.randint(0, 9)
+        dr.point((gx, gy), fill=ESQUITX + (220,))
+
+
+def _pesca_frames():
+    from PIL import ImageDraw
+
+    def lerp(a, b, t):
+        return (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
+    amunt = (BOCA[0], BOCA[1] - 10)
+    seq = []
+    for t in (0.0, 0.3, 0.6, 1.0):                             # el salabre s'allarga cap a la comporta
+        seq.append(dict(cap=lerp((MA[0] + 4, MA[1] - 2), amunt, t)))
+    for e_ in (0.3, 0.7, 1.0, 1.0):                            # baixa i s'enfonsa
+        seq.append(dict(cap=lerp(amunt, BOCA, min(1.0, e_ * 1.4)), enfonsat=e_))
+    for k, t in enumerate((0.0, 0.35, 0.7, 1.0)):               # en surt amb la serra
+        seq.append(dict(cap=lerp(BOCA, amunt, t), enfonsat=max(0.0, 0.8 - t * 1.4), serra=True, gotes=6 - k, seed=k))
+    for k, t in enumerate((0.3, 0.6, 0.85)):                    # torna cap a la mà
+        seq.append(dict(cap=lerp(amunt, (MA[0] + 5, MA[1] - 3), t), serra=True, gotes=2, seed=10 + k))
+    out = []
+    for f in seq:
+        img = Image.new('RGBA', (W, 360), (0, 0, 0, 0))
+        _salabre(ImageDraw.Draw(img), MA, f['cap'], f.get('enfonsat', 0.0), f.get('serra', False),
+                 f.get('gotes', 0), f.get('seed', 0))
+        out.append(img)
+    out.append(Image.new('RGBA', (W, 360), (0, 0, 0, 0)))           # (la serra, ja a l'inventari)
+    return out
+
+
+PROPS['pesca'] = _pesca_buit
+
+ANIMS = {'escuma': {'frames': _escuma_frames, 'frameDuration': 120},
+         'salabre': {'frames': _pesca_frames, 'frameDuration': 120, 'loop': False, 'prop': 'pesca'}}
 
 
 # ─── Capes del davant ────────────────────────────────────────────────────────

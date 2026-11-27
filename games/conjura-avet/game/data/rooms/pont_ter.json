@@ -93,6 +93,11 @@
       "visibleIf": {
         "flag": "joanet_despert"
       }
+    },
+    "pesca": {
+      "visibleIf": {
+        "flag": "aigua_baixa"
+      }
     }
   },
   "hotspots": {
@@ -330,11 +335,36 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.pont_ter.21"
+              "text": "sala.pont_ter.21",
+              "stage": [
+                {
+                  "prop": "rec_ple",
+                  "visible": false
+                },
+                {
+                  "who": "player",
+                  "face": "R"
+                },
+                {
+                  "who": "player",
+                  "gest": "Fa"
+                },
+                {
+                  "prop": "pesca",
+                  "anim": "salabre",
+                  "hold": 1.6
+                }
+              ]
             },
             {
               "who": "player",
-              "text": "sala.pont_ter.22"
+              "text": "sala.pont_ter.22",
+              "stageAfter": [
+                {
+                  "who": "player",
+                  "gest": null
+                }
+              ]
             },
             {
               "who": "player",
@@ -358,7 +388,14 @@
             {
               "who": "ermessenda",
               "text": "sala.pont_ter.27",
-              "sound": "aigua"
+              "sound": "aigua",
+              "stage": [
+                {
+                  "prop": "rec_ple",
+                  "visible": true,
+                  "fade": 2
+                }
+              ]
             },
             {
               "who": "ermessenda",

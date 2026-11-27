@@ -8,41 +8,41 @@
   },
   "walkSpeed": 112,
   "walkToPoint": {
-    "x": 42,
+    "x": 45,
     "y": 81
   },
   "talkPoint": {
-    "x": 20,
+    "x": 23,
     "y": -2
   },
   "feet": {
-    "x": 20,
+    "x": 23,
     "y": 81
   },
   "collider": {
     "points": [
       {
-        "x": 14,
+        "x": 17,
         "y": 6
       },
       {
-        "x": 26,
+        "x": 29,
         "y": 6
       },
       {
-        "x": 28,
+        "x": 31,
         "y": 44
       },
       {
-        "x": 26,
+        "x": 29,
         "y": 81
       },
       {
-        "x": 14,
+        "x": 17,
         "y": 81
       },
       {
-        "x": 12,
+        "x": 15,
         "y": 44
       }
     ]
@@ -128,6 +128,10 @@
       "loop": false,
       "frameDuration": 260
     },
+    "FaL": {
+      "loop": false,
+      "frameDuration": 90
+    },
     "MonjoIdleL": {
       "loop": true,
       "frameDuration": 650
@@ -207,6 +211,10 @@
     "MonjoLookDL": {
       "loop": false,
       "frameDuration": 260
+    },
+    "MonjoFaL": {
+      "loop": false,
+      "frameDuration": 90
     }
   },
   "defaultVerb": "look",

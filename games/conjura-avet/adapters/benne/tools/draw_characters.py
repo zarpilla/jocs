@@ -54,6 +54,8 @@ def durations(tags, walk=(90, 100), talk=140, idle=IDLE_MS):
         a = {'loop': True}
         if 'Blink' in t or 'Look' in t:                 # micro-accions: un sol cop i torna a l'Idle
             a = {'loop': False, 'frameDuration': 75 if 'Blink' in t else 260}
+        elif 'Fa' in t and 'Fa' == t[t.index('Fa'):t.index('Fa') + 2] and t.endswith(('L', 'D', 'U')) and 'Walk' not in t:
+            a = {'loop': False, 'frameDuration': 90}       # el gest: un sol cop i s'hi queda (l'últim fotograma)
         elif 'Walk' in t:
             a['frameDuration'] = walk[0] if t.endswith('L') else walk[1]
         elif 'Talk' in t:
@@ -203,11 +205,38 @@ def person_tags(spec, dirs=DIRS, prefix='', camina=True):
     return [(prefix + n, imgs) for n, imgs in out]
 
 
+# El gest `Fa` (de perfil): el braç del davant s'estira endavant i una mica avall (fer anar el salabre, donar, agafar)
+# i s'hi queda fins que la indicació d'escena el treu (`"gest": null`) o s'acaben les línies.
+GEST_FA = (0.35, 0.7, 1.0, 1.0)
+AMB_GEST = ('iri', 'vet')
+
+
+def _estira(k, abans=None):
+    """La postura del gest: el braç del davant (k de 0 a 1), gairebé horitzontal, amb el colze poc doblegat."""
+    import math
+
+    def pose(p):
+        if abans:
+            abans(p)
+        if p.f != 'L' or not p.arms:
+            return
+        a = 3 + (70 - 3) * k
+        bend = 8 + (4 - 8) * k
+        ra, rb = math.radians(a), math.radians(a + bend)
+        sx, sy = p.arms[0][0]
+        el = (sx - math.sin(ra) * 10.5, sy + math.cos(ra) * 10.5)
+        wr = (el[0] - math.sin(rb) * 9.5, el[1] + math.cos(rb) * 9.5)
+        p.arms[0] = ((sx, sy), el, wr)
+    return pose
+
+
 def persona(cid, walk_speed, verb, walk=(90, 100), camina=True):
     """Totes les robes de `cid` (hd/conjura.PERSONES) al mateix full, cadascuna amb el seu prefix."""
     tags = []
     for prefix, spec in K.PERSONES[cid].items():
         tags += person_tags(spec, prefix=prefix, camina=camina)
+        if cid in AMB_GEST:
+            tags.append((f'{prefix}FaL', [K.figura({**spec, 'pose': _estira(k, spec.get('pose'))}, 'L') for k in GEST_FA]))
     tags += [(n, [fn(k) for k in range(len(K.DORM))]) for n, fn in ALTRES.get(cid, {}).items()]
     anims = durations(tags, walk=walk)
     for n in ALTRES.get(cid, {}):
