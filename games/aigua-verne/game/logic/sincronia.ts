@@ -32,6 +32,11 @@ export interface PasSincronia {
   avisos: { var: string; linies: Record<string, Linia> };
   /** Converses on una opció que no fa res (un moviment de la grua que no es pot fer) no gasta torn. */
   refusLliure?: string[];
+  /**
+   * Opcions que només gasten torn si encerten: l'opció (`<diàleg>.<opció>`) i el flag que posa quan toca. Una objecció
+   * de l'Iri al lot que no és el del faristol («els peixos són més tard») no fa avançar la subhasta.
+   */
+  encerts?: Record<string, string>;
   reinici: { linies: Linia[]; efectes: Effect[] };
 }
 
@@ -73,6 +78,7 @@ export const PASSOS: Record<string, PasSincronia> = {
       return lots <= 0 && !n.flag('reserva_oberta');
     },
     avisos: { var: 'lots', linies: TX.subhasta!.avisos },
+    encerts: { 'subhasta.c7788': 'objeccio_7788', 'subhasta.anima': 'objeccio_anima', 'subhasta.peixos': 'objeccio_peixos' },
     reinici: {
       linies: TX.subhasta!.reinici,
       efectes: [{ setVar: 'lots', value: LOTS }, { setVar: 'lot', value: 1 }, { setVar: 'pausa', value: 0 },
@@ -107,6 +113,8 @@ function gastaTorn(n: Narrative, pas: PasSincronia, action: PlayerAction) {
     return !thing?.interactions?.some((i) => i.goTo && !i.item);
   }
   if (pas.refusLliure?.includes(action.dialogue) && senseEfecte(n, action.dialogue, action.choice)) return false;
+  const encert = pas.encerts?.[`${action.dialogue}.${action.choice}`];
+  if (encert) return n.flag(encert);
   return !DIALEGS_LLIURES.has(action.dialogue) && action.choice !== 'adeu';
 }
 

@@ -51,13 +51,13 @@ describe('Aigua Verne: arreglos de la passada tàctil', () => {
     // Obrir el menú i esperar no gasta res.
     iri('adeu');
     expect(n.getVar('lots')).toBe(12);
-    // Una objecció fora del seu lot no para el martell: gasta el torn, i l'opció hi continua.
+    // Una objecció fora del seu lot no para el martell, però tampoc no gasta el torn (tasca 141), i l'opció hi continua.
     expect(iri('peixos')).toMatch(/més tard/);
     expect(n.flag('objeccio_peixos')).toBe(false);
-    expect([n.getVar('lots'), n.getVar('lot'), n.getVar('pausa')]).toEqual([11, 2, 0]);
+    expect([n.getVar('lots'), n.getVar('lot'), n.getVar('pausa')]).toEqual([12, 1, 0]);
     // Al seu lot, sí: el martell s'atura tres torns (el de l'objecció, inclòs).
     expect(iri('c7788')).toMatch(/tractor/);
-    expect([n.getVar('lots'), n.getVar('lot'), n.getVar('pausa')]).toEqual([11, 2, 2]);
+    expect([n.getVar('lots'), n.getVar('lot'), n.getVar('pausa')]).toEqual([12, 1, 2]);
 
     // Aqua primer: el preu baixa de cop per sota de 60 i el Magnat corre de debò a cada vàlvula. Ni amb les tres
     // objeccions al seu lot no s'hi arriba. Els moments de la història hi són igualment (la Lia, seguretat, en Tomàs).
@@ -66,7 +66,7 @@ describe('Aigua Verne: arreglos de la passada tàctil', () => {
     expect(n.getVar('ordre_valvules')).toBe('aqua');
     expect(dit).toMatch(/quatre lots/);
     expect(dit).toMatch(/Tot en ordre/);
-    expect([n.getVar('lots'), n.getVar('lot')]).toEqual([7, 6]);
+    expect([n.getVar('lots'), n.getVar('lot')]).toEqual([8, 5]);
     p.use('claus', 'pany_t2');
     expect(iri('anima')).toMatch(/Ànima/);
     dit = valvula('t2');
@@ -74,7 +74,7 @@ describe('Aigua Verne: arreglos de la passada tàctil', () => {
     // (el gràfic del saló dibuixa el camí: 112 → 57 → 47, no 112 → 102 → 47)
     expect(n.getVar('ordre_valvules')).toBe('aqua_t2');
     expect(dit).toMatch(/Seguretat és al moll/);
-    expect(n.getVar('lot')).toBe(10);
+    expect(n.getVar('lot')).toBe(9);
     expect(iri('peixos')).toMatch(/compta els peixos/);
     dit = valvula('ferrum');
     expect(dit).toMatch(/Aquí el mecànic/);
