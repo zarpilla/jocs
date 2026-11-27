@@ -233,6 +233,37 @@
       "name": "sala.centraleta.tauler.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "pila_llimona",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.centraleta.pila.1",
+              "sound": "radar"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.pila.2"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.pila.3"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.pila.4"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "pila_llimona"
+            },
+            {
+              "setFlag": "radar_ences"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
