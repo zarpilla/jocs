@@ -9959,13 +9959,13 @@
                   {
                     "prop": "zodiac",
                     "anim": "z_travessa",
-                    "hold": 18
+                    "hold": 8.5
                   },
                   {
                     "who": "juana",
                     "at": {
-                      "x": 468,
-                      "y": 186
+                      "x": 488,
+                      "y": 318
                     }
                   }
                 ]
@@ -10000,7 +10000,13 @@
               },
               {
                 "who": "narrator",
-                "text": "proleg.9"
+                "text": "proleg.9",
+                "stage": [
+                  {
+                    "prop": "logo",
+                    "anim": "logo_on"
+                  }
+                ]
               },
               {
                 "who": "narrator",
@@ -26362,7 +26368,7 @@
       "acte.2": "Acte 2 · Algú escolta",
       "esc.nou": "Nou del vespre.",
       "esc.una": "Una de la matinada.",
-      "proleg.1": "Atlàntic Nord. Punt 7. Febrer. Tres de la matinada.",
+      "proleg.1": "Una nit de febrer, a les tres de la matinada, a l'Atlàntic Nord: el Punt 7.",
       "proleg.2": "A popa de l'Arenga, en Bastida baixa una zòdiac amb la grua. A dins, la Juana.",
       "proleg.3": "Deu minuts, Ernest.",
       "proleg.4": "Deu. I tornes.",
@@ -26370,7 +26376,7 @@
       "proleg.6": "Ni un ou.",
       "proleg.7": "Hi escriu amb retolador.",
       "proleg.8": "Mostra 7.",
-      "proleg.9": "Mira la plataforma. Té el logotip tapat amb cinta americana.",
+      "proleg.9": "La Juana enfoca la plataforma amb la llanterna. Té el logotip tapat amb cinta americana.",
       "proleg.10": "Bona nit a tu també.",
       "proleg.11": "Als llums de la plataforma, una silueta la mira amb uns prismàtics.",
       "proleg.12": "A bord, algú més la mira. Quan la Juana aixeca el pot, en algun lloc del vaixell s'encén una pantalla petita. Una mà hi escriu.",

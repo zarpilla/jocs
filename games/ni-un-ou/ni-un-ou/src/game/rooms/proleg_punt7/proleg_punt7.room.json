@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 200,
-            "y": 253
+            "x": 180,
+            "y": 300
           },
           {
-            "x": 267,
-            "y": 253
+            "x": 500,
+            "y": 300
           },
           {
-            "x": 267,
-            "y": 261
+            "x": 500,
+            "y": 350
           },
           {
-            "x": 200,
-            "y": 261
+            "x": 180,
+            "y": 350
           }
         ],
         "holes": []
@@ -145,14 +145,32 @@
           "frameDuration": 300
         }
       }
+    },
+    {
+      "id": "logo",
+      "tag": "logo",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "logo": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "logo_on": {
+          "loop": false,
+          "frameDuration": 120
+        }
+      }
     }
   ],
   "characters": [
     {
       "instanceId": "juana-veu",
       "definition": "juana/juana.character.json",
-      "x": 195,
-      "y": 222,
+      "x": 196,
+      "y": 345,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,
@@ -162,8 +180,8 @@
     {
       "instanceId": "bastida-veu",
       "definition": "bastida/bastida.character.json",
-      "x": 192,
-      "y": 200,
+      "x": 193,
+      "y": 308,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,

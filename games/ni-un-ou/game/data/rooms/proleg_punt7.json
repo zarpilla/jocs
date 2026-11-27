@@ -33,13 +33,13 @@
             {
               "prop": "zodiac",
               "anim": "z_travessa",
-              "hold": 18
+              "hold": 8.5
             },
             {
               "who": "juana",
               "at": {
-                "x": 468,
-                "y": 186
+                "x": 488,
+                "y": 318
               }
             }
           ]
@@ -74,7 +74,13 @@
         },
         {
           "who": "narrator",
-          "text": "proleg.9"
+          "text": "proleg.9",
+          "stage": [
+            {
+              "prop": "logo",
+              "anim": "logo_on"
+            }
+          ]
         },
         {
           "who": "narrator",

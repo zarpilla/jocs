@@ -287,7 +287,7 @@ Cinemàtica, sala `proleg_punt7`.
 > *(La zòdiac. Una llanterna. La Juana treu un pot de fang gris de l'aigua i el mira a contrallum. No s'hi mou
 > res.)*
 > JUANA: Ni un ou. *(Hi escriu amb retolador.)*
-> JUANA: Mostra 7. *(Mira la plataforma, que té el logotip tapat amb cinta americana. Als llums de la plataforma,
+> JUANA: Mostra 7. *(Enfoca la plataforma amb la llanterna: té el logotip tapat amb cinta americana. Als llums de la plataforma,
 > una silueta la mira amb uns prismàtics.)* Bona nit a tu també.
 > *(A bord, algú més la mira. Quan la Juana aixeca el pot, en algun lloc del vaixell s'encén una pantalla petita.
 > Una mà hi escriu. No es veu de qui és: hi ha vuit persones a bord.)*

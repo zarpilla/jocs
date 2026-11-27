@@ -32,11 +32,17 @@ ANIMS = {
     'pantalla_on': portada.PANTALLA_ON,
     'vigia': portada.VIGIA,
     'vigia_on': portada.VIGIA_ON,
+    'logo': portada.LOGO,
+    'logo_on': portada.LOGO_ON,
 }
 
-# Les veus (personatges invisibles): en Bastida a la borda de popa, la Juana a la zòdiac penjada (quan arriba a la
-# plataforma, el guió la mou a (468, 186): la zòdiac s'atura a (474, 199)).
+# Les veus (personatges invisibles): el text d'una veu surt uns 120 px per sobre del seu punt, i els punts són a sota
+# de qui parla perquè el text li quedi just a sobre (tasca 055): en Bastida a la borda de popa (té el cap a (193, 197)),
+# la Juana a la zòdiac, ja a l'aigua sota la grua (195, 246). Quan arriba a la plataforma, el guió la mou a (488, 318):
+# la zòdiac s'atura a (488, 213).
+# El terra (ningú no hi camina): hi han de caber els punts de les veus, o el motor les hi enganxaria.
 GEOMETRIA = {
     'things': {},
-    'spawns': {'bastida': (192, 200), 'juana': (195, 222)},
+    'spawns': {'bastida': (193, 308), 'juana': (196, 345)},
+    'walkable': [(180, 300), (500, 300), (500, 350), (180, 350)],
 }

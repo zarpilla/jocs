@@ -773,9 +773,11 @@ def _pantalla(i):
     px, py = PLA.p(T(m, w, y))
     x, y = round(px), round(py)
     bright = SCREEN if i % 3 else (220, 245, 255)           # el text que hi va sortint
-    lc.flat(x, y, bright)
-    lc.flat(x, y + 1, (60, 110, 140))
-    _aglow(lc, px, py, 6, (120, 210, 255), 0.6 if i % 2 else 0.45)
+    # (una mica més gran del que tocaria, perquè es vegi que s'encén: tasca 055)
+    lc.rect(x, y, x + 1, y + 1, [bright], 0, lit=0)
+    lc.flat(x, y + 2, (60, 110, 140))
+    lc.flat(x + 1, y + 2, (60, 110, 140))
+    _aglow(lc, px, py, 10, (120, 210, 255), 0.7 if i % 2 else 0.5)
     return lc.img
 
 
@@ -796,20 +798,23 @@ Z_LOWER = (0.3, 5.3)
 Z_TOUCH = 5.3
 Z_HOOK = (5.8, 7.3)
 Z_MOTOR = 10.0
-Z_MOVE = (10.5, 27.5)
-Z_LANTERN = 28.8
-Z_DIP = (29.3, 30.5)
-Z_SCOOP = (30.5, 31.1)
-Z_RAISE = (31.1, 32.6)
-Z_WRITE = (40.0, 40.5, 42.2)              # abaixa el pot fins al pit, hi escriu, i el deixa allà
-CLIPS = {'z_baixa': (0.0, 10.0), 'z_travessa': (10.0, 28.5), 'z_mostra': (28.5, 40.0), 'z_escriu': (40.0, 43.0)}
+# La travessa, curta (tasca 055: eren 17 s sense cap text): 7 s.
+Z_MOVE = (10.5, 17.5)
+Z_LANTERN = 18.8
+Z_DIP = (19.3, 20.5)
+Z_SCOOP = (20.5, 21.1)
+Z_RAISE = (21.1, 22.6)
+Z_WRITE = (30.0, 30.5, 32.2)              # abaixa el pot fins al pit, hi escriu, i el deixa allà
+CLIPS = {'z_baixa': (0.0, 10.0), 'z_travessa': (10.0, 18.5), 'z_mostra': (18.5, 30.0), 'z_escriu': (30.0, 33.0)}
 
 WIRE = [(6, 8, 12), (20, 24, 30), (42, 48, 56), (78, 84, 90)]
 FOAMC = (110, 130, 145)
 LAMPC = (255, 236, 180)
 JARC = (206, 200, 172)
 Z_HANG = 2.2                              # l'altura de la zòdiac penjada (la quilla, sobre el mar)
-Z_END = (36.0, 98.0)                      # on s'atura: davant de la plataforma (al món)
+# On s'atura: davant de la plataforma (al món), però més a prop de la càmera que la plataforma, perquè la Juana i el
+# que fa (el pot, el retolador, la llanterna) es llegeixin (tasca 055: a (36, 98) feia uns 4 px per metre; aquí, 6).
+Z_END = (28.0, 72.0)
 
 
 def _ease(t):
@@ -917,13 +922,20 @@ def _sample(cv, t, jx, top, wl, k):
             kk = _seg(t, Z_WRITE[:2])
             hand = (jx + 3, round(top - 5 + 4 * kk))
         cv.line(jx + 1, top + 1, hand[0], hand[1], [(40, 46, 40), (62, 70, 62)], 1.0, lit=0)
-        if t >= Z_SCOOP[1] and hand[1] < wl:                                 # el pot, pàl·lid, amb el fang
-            cv.flat(hand[0], hand[1] - 1, JARC)
-            cv.flat(hand[0], hand[1] - 2, JARC)
-            cv.flat(hand[0] + 1, hand[1] - 1, (110, 106, 88))
-            cv.flat(hand[0] + 1, hand[1] - 2, JARC)
-        if Z_WRITE[1] <= t < Z_WRITE[2]:                                      # el retolador, que va i ve
-            cv.flat(hand[0] - 1 + int(t / ZT) % 2, hand[1] - 3, (20, 20, 24))
+        cv.line(jx + 1, top + 2, hand[0], hand[1] + 1, [(40, 46, 40), (62, 70, 62)], 1.0, lit=0)
+        if t >= Z_SCOOP[1] and hand[1] < wl:
+            # el pot: més gros del que tocaria (3×4 px), perquè es llegeixi a la distància: vidre pàl·lid, la tapa fosca
+            # i el fang gris a sota
+            hx, hy = hand[0], hand[1]
+            for dx in range(-1, 2):
+                for dy in range(1, 5):
+                    cv.flat(hx + dx, hy - dy, (120, 116, 96) if dy <= 2 else JARC)
+                cv.flat(hx + dx, hy - 5, (60, 60, 64))
+        if Z_WRITE[1] <= t < Z_WRITE[2]:                                      # el retolador, que va i ve pel pot
+            mx = hand[0] - 2 + int(t / ZT) % 3
+            cv.flat(mx, hand[1] - 3, (16, 16, 20))
+            cv.flat(mx + 1, hand[1] - 4, (16, 16, 20))
+            cv.flat(mx + 2, hand[1] - 5, (230, 230, 236))                    # la punta blanca del retolador
     if on:
         cv.flat(lx, ly, LAMPC)
         _aglow(cv, lx, ly, 6, LAMPC, 0.5)
@@ -1039,6 +1051,67 @@ def _watcher_frames():
 VIGIA = {'frames': lambda: [Canvas(light=LIGHT, transparent=True).img], 'frameDuration': 1000, 'loop': False,
          'zIndex': 2}
 VIGIA_ON = {'frames': _watcher_frames, 'frameDuration': 90, 'loop': False, 'prop': 'vigia'}
+
+
+# ─── El logotip tapat ───────────────────────────────────────────────────────
+# Al pròleg, quan la Juana mira la plataforma (proleg.9), l'enfoca amb la llanterna: un feix de llum va de la zòdiac al
+# mòdul, i s'hi veu el logotip de la companyia tapat amb dues tires de cinta americana en creu («logo_on»; tasca 055).
+# A la distància de la plataforma el mòdul fa 25 px: el rètol es dibuixa més gros (14×9), com la silueta, perquè es
+# llegeixi. Fins llavors, la capa és buida («logo»).
+
+LOGO_C = (-8.0, 14.6, -9.4)               # el mig del rètol, al davant del mòdul (a l'esquerra de la silueta)
+LOGO_W, LOGO_H = 14, 9
+
+
+def _llanterna():
+    """On és la llanterna de la Juana quan la zòdiac ja s'ha aturat (en píxels)."""
+    x, y, z, head, _, _ = _zstate(CLIPS['z_escriu'][1], 0)
+    s, c = math.sin(head), math.cos(head)
+    u, v = PLA.p((x - 1.1 * s + 0.1 * c, y + 1.38, z - 1.1 * c - 0.1 * s))
+    return round(u) - 1, round(v) - 1
+
+
+def _logo_layer(k):
+    """El feix de la llanterna i el rètol il·luminat; `k` (0–1): quanta llum (el parpelleig)."""
+    pla = PLA
+    cv = Canvas(light=LIGHT, transparent=True)
+    lx, ly = _llanterna()
+    cx, cy = (round(q) for q in pla.p(plat_T(pla)(*LOGO_C)))
+    x0, y0 = cx - LOGO_W // 2, cy - LOGO_H // 2
+    x1, y1 = x0 + LOGO_W - 1, y0 + LOGO_H - 1
+    # el rètol: la planxa clara, il·luminada, i el logotip (una gota taronja dins un cercle)
+    plate = mix((150, 146, 132), (255, 236, 180), 0.3 * k)
+    cv.rect(x0, y0, x1, y1, [plate], 0, lit=0)
+    cv.rect(x0, y0, x1, y0, [mix(plate, (255, 255, 255), 0.25)], 0, lit=0)
+    cv.disc(cx, cy, 3.2, 3.2, [(196, 80, 26)], 0, lit=0)
+    cv.disc(cx, cy + 0.5, 1.6, 1.8, [(240, 150, 60)], 0, lit=0)
+    # la cinta americana: dues tires grises en creu, d'un racó a l'altre
+    for (ax, ay, bx, by) in ((x0, y0 + 1, x1, y1 - 1), (x0, y1 - 1, x1, y0 + 1)):
+        cv.line(ax, ay, bx, by, [(184, 186, 190)], 0, lit=0)
+        cv.line(ax, ay + 1, bx, by + 1, [(150, 152, 158)], 0, lit=0)
+    # el feix: un triangle de llum de la llanterna fins als dos costats del rètol, més fluix com més lluny
+    P = cv.img.load()
+    cv.P = P
+    ax, ay, bx, by = x0 - 1, y0 - 1, x0 - 1, y1 + 1
+    def costat(px, py, qx, qy, rx, ry):
+        return (qx - px) * (ry - py) - (qy - py) * (rx - px)
+    for yy in range(min(ly, ay) - 1, max(ly, by) + 2):
+        for xx in range(min(lx, ax), max(lx, x1) + 1):
+            d1, d2, d3 = costat(lx, ly, ax, ay, xx, yy), costat(ax, ay, x1 + 1, y0 - 1, xx, yy), costat(x1 + 1, y1 + 1, lx, ly, xx, yy)
+            if (d1 >= 0 and d2 >= 0 and d3 >= 0) or (d1 <= 0 and d2 <= 0 and d3 <= 0):
+                f = math.hypot(xx - lx, yy - ly) / max(1.0, math.hypot(cx - lx, cy - ly))
+                _aput(cv, xx, yy, (255, 226, 160), (0.32 - 0.18 * f) * k)
+    _aglow(cv, lx, ly, 5, LAMPC, 0.55 * k)
+    return cv.img
+
+
+def _logo_frames():
+    return [_logo_layer(k) for k in (0.4, 1.0, 0.7, 1.0, 1.0, 0.85, 1.0, 1.0)]
+
+
+LOGO = {'frames': lambda: [Canvas(light=LIGHT, transparent=True).img], 'frameDuration': 1000, 'loop': False,
+        'zIndex': 2}
+LOGO_ON = {'frames': _logo_frames, 'frameDuration': 120, 'loop': False, 'prop': 'logo'}
 
 
 ANIMS = {
