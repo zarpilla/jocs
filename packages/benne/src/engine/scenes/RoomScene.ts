@@ -4578,7 +4578,25 @@ export class RoomScene extends Phaser.Scene {
     if (!isPointInWalkableArea(feet.x, feet.y, polys) && !isPointInWalkableArea(stand.x, stand.y, polys)) {
       for (let dy = 2; feet.y + dy < (this.roomData.size?.height ?? 2000); dy += 2) {
         if (isPointInWalkableArea(feet.x, feet.y + dy, polys)) {
-          return { x: feet.x, y: feet.y + dy + 4 };
+          const below = { x: feet.x, y: feet.y + dy + 4 };
+          // Own change: straight below, the walker covers a small figure up there (a fairy on top of her tent), or
+          // stands behind what it is on. First a spot to one side, on the walker's side, if there is floor.
+          const tall = (this.player?.getData('character') as CharacterData | undefined)?.feet
+            ? this.figureHeight(this.player!)
+            : 0;
+          if (tall > 0 && below.y - tall < feet.y) {
+            const gap = TALK_GAP_OF_HEIGHT * tall;
+            const first = walkerFeet.x < feet.x ? -1 : 1;
+            for (const side of [first, -first]) {
+              for (let ddy = 0; ddy <= tall * 0.3; ddy += 2) {
+                const p = { x: feet.x + side * gap, y: below.y + ddy };
+                if (isPointInWalkableArea(p.x, p.y, polys)) {
+                  return p;
+                }
+              }
+            }
+          }
+          return below;
         }
       }
       return stand;
