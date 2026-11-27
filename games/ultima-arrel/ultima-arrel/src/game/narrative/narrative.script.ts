@@ -65,9 +65,13 @@ function sayLines(lines: ResolvedLine[], around: Around) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]!
     if (line.stage) playStage(line.stage)
-    recordLine(line.who, line.text)
+    // Una línia del narrador amb el text buit és un silenci: les indicacions d'escena i el so, sense caixa.
+    const silenci = line.who === 'narrator' && !line.text.trim()
+    if (!silenci) recordLine(line.who, line.text)
     if (line.sound) new SfxHandle(line.sound).play()
-    if (line.who === 'title') {
+    if (silenci) {
+      // (res a dir)
+    } else if (line.who === 'title') {
       // Pantalla de títol: les línies `title` seguides es mostren juntes sobre negre. Si després es canvia
       // de sala (o ve un final), no es torna a la sala d'ara: la següent ja entrarà des del negre.
       const before = i === 0 ? around.before : lines[i - 1]!.who
