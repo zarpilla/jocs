@@ -274,6 +274,16 @@
               "var": "fase",
               "op": "==",
               "value": 1
+            },
+            {
+              "any": [
+                {
+                  "flag": "signe_copiat"
+                },
+                {
+                  "flag": "serra_treta"
+                }
+              ]
             }
           ]
         },
@@ -281,6 +291,27 @@
           {
             "who": "vet",
             "text": "pj.vet.parla.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "var": "fase",
+              "op": "==",
+              "value": 1
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.vet.parla.1b"
           }
         ]
       },

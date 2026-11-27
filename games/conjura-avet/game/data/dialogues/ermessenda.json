@@ -85,7 +85,18 @@
       "lines": [
         {
           "who": "ermessenda",
-          "text": "dlg.ermessenda.2"
+          "text": "dlg.ermessenda.2",
+          "if": {
+            "flag": "barca_calafatada",
+            "is": false
+          }
+        },
+        {
+          "who": "ermessenda",
+          "text": "dlg.ermessenda.2b",
+          "if": {
+            "flag": "barca_calafatada"
+          }
         }
       ],
       "goto": "m"
