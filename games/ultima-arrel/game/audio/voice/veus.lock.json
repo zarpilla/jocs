@@ -2029,6 +2029,11 @@
   "key": "sala.bosc_obert.taula.11",
   "who": "narrator"
  },
+ "narrator1561353193": {
+  "hash": "b90af5f9bf284320",
+  "key": "sala.campament_fades.empenta.baixa",
+  "who": "narrator"
+ },
  "narrator158465912": {
   "hash": "da545472ccb22d5f",
   "key": "sala.campament_fades.intro.2",
@@ -2207,6 +2212,11 @@
  "narrator30025725": {
   "hash": "1b578796c490be57",
   "key": "final.taula.1",
+  "who": "narrator"
+ },
+ "narrator3011353686": {
+  "hash": "19bd41cbbdb934bc",
+  "key": "sala.campament_fades.empenta.amb_pot",
   "who": "narrator"
  },
  "narrator3036271670": {
@@ -2439,6 +2449,11 @@
   "key": "sala.bosc_obert.taula.4",
   "who": "narrator"
  },
+ "narrator705619899": {
+  "hash": "f0f6e8a84cb6a11b",
+  "key": "sala.zona_zero.crit.gent",
+  "who": "narrator"
+ },
  "narrator709682686": {
   "hash": "1e7e392a66745b07",
   "key": "sala.bosc_obert.taula.9",
@@ -2620,7 +2635,7 @@
   "who": "pla"
  },
  "pla3513455034": {
-  "hash": "44e0066d690616f5",
+  "hash": "173e7afc46bc41d8",
   "key": "sala.zona_zero.repeteix.3",
   "who": "pla"
  },
