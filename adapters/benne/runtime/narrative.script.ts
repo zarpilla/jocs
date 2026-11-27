@@ -152,6 +152,7 @@ function followUp(goTo?: string) {
     playEnding()
     return
   }
+  autosaveHere()
   const who = takePendingSwitch()
   const anar = takePendingGoTo() ?? goTo
   if (who) {
@@ -367,6 +368,17 @@ let untouchedNewGame = false
 function playerActed() {
   if (!untouchedNewGame) return
   untouchedNewGame = false
+  saves.autosave(AUTOSAVE)
+}
+
+/**
+ * Desa la partida en acabar una interacció o un diàleg (`saves.autosave` espera que s'acabin), perquè «Continua» no
+ * perdi el que s'ha fet dins d'una sala (les revisions de la infermeria de Ni un ou). Mai a la portada, a una
+ * cinemàtica, al final ni en una partida nova on encara no s'ha fet res.
+ */
+function autosaveHere() {
+  const room = narrative.world.currentRoom()
+  if (untouchedNewGame || room === narrative.content.manifest.cover || narrative.content.rooms[room]?.cutscene || finale.length) return
   saves.autosave(AUTOSAVE)
 }
 
