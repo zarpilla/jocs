@@ -180,8 +180,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 514,
-        "y": 201
+        "x": 581,
+        "y": 202
       },
       "lookAtPoint": {
         "x": 515,
@@ -529,7 +529,7 @@
         ]
       },
       "walkToPoint": {
-        "x": 552,
+        "x": 581,
         "y": 202
       },
       "lookAtPoint": {
@@ -628,6 +628,24 @@
       },
       "zIndex": 22,
       "baseline": 999
+    },
+    {
+      "id": "fase_panell",
+      "tag": "fase_panell",
+      "zIndex": 4,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fase_panell": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "espetec": {
+          "loop": false,
+          "frameDuration": 90
+        }
+      }
     }
   ],
   "characters": [
@@ -644,8 +662,8 @@
     {
       "instanceId": "mos-1",
       "definition": "mos/mos.character.json",
-      "x": 536,
-      "y": 203,
+      "x": 486,
+      "y": 202,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

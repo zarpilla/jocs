@@ -398,7 +398,60 @@ def _ambient_frames(n=24):
     return out
 
 
-ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 125}}
+# ─── La finestra de fase, a aquesta banda: el cop de puny al panell ──────────
+#
+# Quan la Vet rep el que l'Iri ha enviat (el primer cop, la clau anglesa), el panell fa un espetec: una llum blanca,
+# espurnes, i la clau que surt del panell i cau a terra, on brilla un moment i s'apaga (se l'emporta la Vet: l'objecte
+# va a l'inventari). Un prop buit (`fase_panell`) i l'animació que s'hi posa (`espetec`).
+
+def _llum(d, u, v, r, col, a):
+    """Un halo rodó (cercles concèntrics, transparents), damunt d'una capa buida."""
+    for k in range(6, 0, -1):
+        rr = r * k / 6
+        d.ellipse((u - rr, v - rr * 0.9, u + rr, v + rr * 0.9), fill=col + (round(a * (1 - k / 7) ** 1.3),))
+
+
+def _frames_espetec():
+    from PIL import ImageDraw
+    from hd640 import items as IT
+    pu, pv, _ = CAM.projecta((_w(349), _y(136), ZW - 1))
+    tu, tv, _ = CAM.projecta((_w(349) + 44, 0, ZW - 20))          # on cau la clau: a terra, al costat del panell
+    ic = IT.render('clau_anglesa')
+    k = CAM.escala((_w(349) + 44, 0, ZW - 20)) * 0.62
+    ic = ic.resize((max(1, round(ic.width * k)), max(1, round(ic.height * k))), Image.NEAREST)
+    out = []
+    n = 16
+    for i in range(n):
+        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(img)
+        if i < 4:                                                  # l'espetec: la llum i les espurnes
+            _llum(d, pu, pv, 46 - i * 6, (210, 235, 255), 255 - i * 45)
+            for j in range(9):
+                ang = j * 2 * math.pi / 9 + i * 0.35
+                r0, r1 = 8 + i * 7, 16 + i * 11
+                d.line([(pu + r0 * math.cos(ang), pv + r0 * math.sin(ang)),
+                        (pu + r1 * math.cos(ang), pv + r1 * math.sin(ang) + i * 2)],
+                       fill=(255, 250, 200, 255 - i * 40), width=1)
+        if 2 <= i < 6:                                             # la clau surt del panell i cau
+            f = (i - 2) / 3
+            u, v = pu + (tu - pu) * f, pv + (tv - pv) * f ** 2
+            img.alpha_composite(ic, (round(u - ic.width / 2), round(v - ic.height / 2)))
+        elif i >= 6:                                               # a terra, brilla i s'apaga
+            a = max(0.0, 1 - (i - 6) / (n - 8))
+            if a > 0:
+                _llum(d, tu, tv - 2, 20, (120, 220, 255), round(170 * a))
+                img.alpha_composite(ic, (round(tu - ic.width / 2), round(tv - ic.height + 3)))
+        out.append(img)
+    out.append(Image.new('RGBA', (W, H), (0, 0, 0, 0)))
+    return out
+
+
+ANIMS = {
+    'ambient': {'frames': _ambient_frames, 'frameDuration': 125},
+    'fase_panell': {'frames': lambda: [Image.new('RGBA', (W, H), (0, 0, 0, 0))], 'frameDuration': 1000, 'loop': False,
+                    'zIndex': 4},
+    'espetec': {'frames': _frames_espetec, 'frameDuration': 90, 'loop': False, 'prop': 'fase_panell'},
+}
 
 
 def _amo(ids):
@@ -501,9 +554,9 @@ GEOMETRIA = {
         'porta': {'rect': _rect_mon((0, _y(65), _wz(10)), (0, 0, _wz(88))), 'walk': _p(30, _wz(52))},
         'panell': {'rect': _wall(319, 105, 379, 168), 'walk': _p(_w(349), 236)},
         'altaveu': {'rect': _wall(210, 17, 260, 61), 'walk': _p(_w(235), 236)},
-        'llitera': {'rect': _llitera_rect(), 'walk': _p(*_bunk_mon(-10, -_D / 2 - 24))},
+        'llitera': {'rect': _llitera_rect(), 'walk': _p(*_bunk_mon(_L / 2 - 8, -_D / 2 - 24))},
         'fullet': {'rect': _sprite_rect('fullet', _bp(_L / 2 - 38, TIERS[0], -6), escala_img=0.9),
-                   'walk': _p(*_bunk_mon(_L / 2 - 38, -_D / 2 - 24))},
+                   'walk': _p(*_bunk_mon(_L / 2 - 8, -_D / 2 - 24))},
         'molla': {'rect': _sprite_rect('molla', _bp(-14, TIERS[0] - 16, -_D / 2 + 1), (548 - _MOX, 185 - _MOY)),
                   'walk': _p(*_bunk_mon(-14, -_D / 2 - 24))},
         'finestreta': {'rect': _wall(412, 31, 484, 103), 'walk': _p(_w(448), 236)},
@@ -514,7 +567,7 @@ GEOMETRIA = {
         'reixa': {'rect': _wall(112, 152, 184, 201), 'walk': _p(_w(148), 262)},
         'esquerda': {'rect': _wall(268, 116, 299, 157), 'walk': _p(_w(284), 250)},
     },
-    'spawns': {'vet': _p(250, 150), 'mos': _p(*_bunk_mon(10, -_D / 2 - 30)), 'mare': _HEART,
+    'spawns': {'vet': _p(250, 150), 'mos': _p(*_bunk_mon(-_L / 2 + 26, -_D / 2 - 30)), 'mare': _HEART,
                'directora': _p(150, 120)},
     'walkable': _WALK,
     'floorSquash': 0.4,                            # (la càmera, picada: el terra es veu aixafat)

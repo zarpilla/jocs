@@ -288,12 +288,34 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_cambra.boto.accident1"
+              "text": "sala.fabrica_cambra.boto.accident1",
+              "stage": [
+                {
+                  "prop": "vidre_baixat",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
               "text": "sala.fabrica_cambra.boto.accident2",
-              "sound": "cambra_arma"
+              "sound": "cambra_arma",
+              "stage": [
+                {
+                  "prop": "fase_cambra",
+                  "anim": "vidre_baixa"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "vidre_baixat",
+                  "visible": true
+                },
+                {
+                  "prop": "fase_cambra",
+                  "anim": "fase_cambra"
+                }
+              ]
             },
             {
               "who": "player",
@@ -762,6 +784,20 @@
     "palanca_baixada": {
       "visibleIf": {
         "flag": "alarma_apagada"
+      }
+    },
+    "vidre_baixat": {
+      "visibleIf": {
+        "var": "finestra_armada",
+        "op": "==",
+        "value": "iri"
+      }
+    },
+    "clau_cambra": {
+      "visibleIf": {
+        "var": "finestra_objecte_iri",
+        "op": "==",
+        "value": "clau_anglesa"
       }
     }
   }

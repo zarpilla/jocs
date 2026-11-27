@@ -333,13 +333,29 @@
               "text": "sala.gavina_cella.panell.cop1"
             },
             {
-              "who": "narrator",
+              "who": "player",
               "text": "sala.gavina_cella.panell.cop2",
-              "sound": "cop"
+              "sound": "cop",
+              "stage": [
+                {
+                  "who": "player",
+                  "face": "U"
+                },
+                {
+                  "shake": 0.3
+                }
+              ]
             },
             {
               "who": "player",
-              "text": "sala.gavina_cella.panell.cop3"
+              "text": "sala.gavina_cella.panell.cop3",
+              "stageAfter": [
+                {
+                  "prop": "fase_panell",
+                  "anim": "espetec",
+                  "hold": 1.5
+                }
+              ]
             }
           ],
           "effects": [

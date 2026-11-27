@@ -475,6 +475,46 @@
       },
       "zIndex": 32,
       "baseline": 999
+    },
+    {
+      "id": "vidre_baixat",
+      "tag": "vidre_baixat",
+      "animations": {
+        "vidre_baixat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "clau_cambra",
+      "tag": "clau_cambra",
+      "animations": {
+        "clau_cambra": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "fase_cambra",
+      "tag": "fase_cambra",
+      "zIndex": 4,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fase_cambra": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "vidre_baixa": {
+          "loop": false,
+          "frameDuration": 70
+        }
+      }
     }
   ],
   "characters": [

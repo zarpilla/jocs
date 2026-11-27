@@ -23,8 +23,8 @@
     },
     "fabrica_cambra 1.aseprite": {
       "frame": {
-        "x": 3765,
-        "y": 360,
+        "x": 816,
+        "y": 470,
         "w": 24,
         "h": 14
       },
@@ -44,8 +44,8 @@
     },
     "fabrica_cambra 2.aseprite": {
       "frame": {
-        "x": 3637,
-        "y": 360,
+        "x": 413,
+        "y": 470,
         "w": 64,
         "h": 39
       },
@@ -65,8 +65,8 @@
     },
     "fabrica_cambra 3.aseprite": {
       "frame": {
-        "x": 3701,
-        "y": 360,
+        "x": 477,
+        "y": 470,
         "w": 12,
         "h": 36
       },
@@ -86,8 +86,8 @@
     },
     "fabrica_cambra 4.aseprite": {
       "frame": {
-        "x": 3742,
-        "y": 360,
+        "x": 640,
+        "y": 470,
         "w": 23,
         "h": 20
       },
@@ -107,8 +107,50 @@
     },
     "fabrica_cambra 5.aseprite": {
       "frame": {
-        "x": 3789,
-        "y": 360,
+        "x": 640,
+        "y": 0,
+        "w": 120,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 280,
+        "y": 14,
+        "w": 120,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 6.aseprite": {
+      "frame": {
+        "x": 786,
+        "y": 470,
+        "w": 30,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 120,
+        "w": 30,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 7.aseprite": {
+      "frame": {
+        "x": 963,
+        "y": 470,
         "w": 1,
         "h": 1
       },
@@ -126,9 +168,9 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 6.aseprite": {
+    "fabrica_cambra 8.aseprite": {
       "frame": {
-        "x": 2547,
+        "x": 2953,
         "y": 360,
         "w": 285,
         "h": 107
@@ -147,9 +189,9 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 7.aseprite": {
+    "fabrica_cambra 9.aseprite": {
       "frame": {
-        "x": 715,
+        "x": 1195,
         "y": 0,
         "w": 285,
         "h": 110
@@ -168,51 +210,9 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 8.aseprite": {
-      "frame": {
-        "x": 1000,
-        "y": 0,
-        "w": 286,
-        "h": 110
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 77,
-        "y": 29,
-        "w": 286,
-        "h": 110
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_cambra 9.aseprite": {
-      "frame": {
-        "x": 1286,
-        "y": 0,
-        "w": 286,
-        "h": 110
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 77,
-        "y": 29,
-        "w": 286,
-        "h": 110
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "fabrica_cambra 10.aseprite": {
       "frame": {
-        "x": 1572,
+        "x": 1480,
         "y": 0,
         "w": 286,
         "h": 110
@@ -233,7 +233,7 @@
     },
     "fabrica_cambra 11.aseprite": {
       "frame": {
-        "x": 1858,
+        "x": 1766,
         "y": 0,
         "w": 286,
         "h": 110
@@ -254,10 +254,10 @@
     },
     "fabrica_cambra 12.aseprite": {
       "frame": {
-        "x": 1125,
-        "y": 360,
+        "x": 2052,
+        "y": 0,
         "w": 286,
-        "h": 108
+        "h": 110
       },
       "rotated": false,
       "trimmed": true,
@@ -265,7 +265,7 @@
         "x": 77,
         "y": 29,
         "w": 286,
-        "h": 108
+        "h": 110
       },
       "sourceSize": {
         "w": 640,
@@ -275,18 +275,18 @@
     },
     "fabrica_cambra 13.aseprite": {
       "frame": {
-        "x": 2832,
-        "y": 360,
+        "x": 2338,
+        "y": 0,
         "w": 286,
-        "h": 107
+        "h": 110
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 77,
-        "y": 30,
+        "y": 29,
         "w": 286,
-        "h": 107
+        "h": 110
       },
       "sourceSize": {
         "w": 640,
@@ -296,7 +296,7 @@
     },
     "fabrica_cambra 14.aseprite": {
       "frame": {
-        "x": 1411,
+        "x": 1531,
         "y": 360,
         "w": 286,
         "h": 108
@@ -317,7 +317,49 @@
     },
     "fabrica_cambra 15.aseprite": {
       "frame": {
-        "x": 2144,
+        "x": 3238,
+        "y": 360,
+        "w": 286,
+        "h": 107
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 77,
+        "y": 30,
+        "w": 286,
+        "h": 107
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 16.aseprite": {
+      "frame": {
+        "x": 1817,
+        "y": 360,
+        "w": 286,
+        "h": 108
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 77,
+        "y": 29,
+        "w": 286,
+        "h": 108
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 17.aseprite": {
+      "frame": {
+        "x": 2624,
         "y": 0,
         "w": 277,
         "h": 110
@@ -336,9 +378,9 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 16.aseprite": {
+    "fabrica_cambra 18.aseprite": {
       "frame": {
-        "x": 2421,
+        "x": 2901,
         "y": 0,
         "w": 278,
         "h": 110
@@ -357,9 +399,9 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 17.aseprite": {
+    "fabrica_cambra 19.aseprite": {
       "frame": {
-        "x": 286,
+        "x": 692,
         "y": 360,
         "w": 267,
         "h": 109
@@ -378,9 +420,9 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 18.aseprite": {
+    "fabrica_cambra 20.aseprite": {
       "frame": {
-        "x": 553,
+        "x": 959,
         "y": 360,
         "w": 286,
         "h": 109
@@ -399,9 +441,9 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 19.aseprite": {
+    "fabrica_cambra 21.aseprite": {
       "frame": {
-        "x": 2699,
+        "x": 3179,
         "y": 0,
         "w": 286,
         "h": 110
@@ -420,61 +462,19 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 20.aseprite": {
-      "frame": {
-        "x": 1697,
-        "y": 360,
-        "w": 286,
-        "h": 108
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 77,
-        "y": 29,
-        "w": 286,
-        "h": 108
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_cambra 21.aseprite": {
-      "frame": {
-        "x": 3118,
-        "y": 360,
-        "w": 286,
-        "h": 106
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 77,
-        "y": 29,
-        "w": 286,
-        "h": 106
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "fabrica_cambra 22.aseprite": {
       "frame": {
-        "x": 1983,
+        "x": 2103,
         "y": 360,
-        "w": 285,
+        "w": 286,
         "h": 108
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 78,
+        "x": 77,
         "y": 29,
-        "w": 285,
+        "w": 286,
         "h": 108
       },
       "sourceSize": {
@@ -485,18 +485,18 @@
     },
     "fabrica_cambra 23.aseprite": {
       "frame": {
-        "x": 2985,
-        "y": 0,
-        "w": 285,
-        "h": 110
+        "x": 3524,
+        "y": 360,
+        "w": 286,
+        "h": 106
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 78,
+        "x": 77,
         "y": 29,
-        "w": 285,
-        "h": 110
+        "w": 286,
+        "h": 106
       },
       "sourceSize": {
         "w": 640,
@@ -506,7 +506,28 @@
     },
     "fabrica_cambra 24.aseprite": {
       "frame": {
-        "x": 3270,
+        "x": 2389,
+        "y": 360,
+        "w": 285,
+        "h": 108
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 78,
+        "y": 29,
+        "w": 285,
+        "h": 108
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 25.aseprite": {
+      "frame": {
+        "x": 3465,
         "y": 0,
         "w": 285,
         "h": 110
@@ -525,9 +546,30 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 25.aseprite": {
+    "fabrica_cambra 26.aseprite": {
       "frame": {
-        "x": 839,
+        "x": 3750,
+        "y": 0,
+        "w": 285,
+        "h": 110
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 78,
+        "y": 29,
+        "w": 285,
+        "h": 110
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 27.aseprite": {
+      "frame": {
+        "x": 1245,
         "y": 360,
         "w": 286,
         "h": 109
@@ -546,28 +588,7 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 26.aseprite": {
-      "frame": {
-        "x": 3555,
-        "y": 0,
-        "w": 286,
-        "h": 110
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 77,
-        "y": 29,
-        "w": 286,
-        "h": 110
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_cambra 27.aseprite": {
+    "fabrica_cambra 28.aseprite": {
       "frame": {
         "x": 0,
         "y": 360,
@@ -588,9 +609,30 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 28.aseprite": {
+    "fabrica_cambra 29.aseprite": {
       "frame": {
-        "x": 2268,
+        "x": 286,
+        "y": 360,
+        "w": 286,
+        "h": 110
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 77,
+        "y": 29,
+        "w": 286,
+        "h": 110
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 30.aseprite": {
+      "frame": {
+        "x": 2674,
         "y": 360,
         "w": 279,
         "h": 108
@@ -609,9 +651,282 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 29.aseprite": {
+    "fabrica_cambra 31.aseprite": {
       "frame": {
-        "x": 3404,
+        "x": 963,
+        "y": 470,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 32.aseprite": {
+      "frame": {
+        "x": 840,
+        "y": 470,
+        "w": 123,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 278,
+        "y": 14,
+        "w": 123,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 33.aseprite": {
+      "frame": {
+        "x": 663,
+        "y": 470,
+        "w": 123,
+        "h": 18
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 278,
+        "y": 14,
+        "w": 123,
+        "h": 18
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 34.aseprite": {
+      "frame": {
+        "x": 518,
+        "y": 470,
+        "w": 122,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 279,
+        "y": 14,
+        "w": 122,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 35.aseprite": {
+      "frame": {
+        "x": 292,
+        "y": 470,
+        "w": 121,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 279,
+        "y": 14,
+        "w": 121,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 36.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 470,
+        "w": 121,
+        "h": 67
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 279,
+        "y": 14,
+        "w": 121,
+        "h": 67
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 37.aseprite": {
+      "frame": {
+        "x": 3810,
+        "y": 360,
+        "w": 120,
+        "h": 88
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 280,
+        "y": 14,
+        "w": 120,
+        "h": 88
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 38.aseprite": {
+      "frame": {
+        "x": 572,
+        "y": 360,
+        "w": 120,
+        "h": 110
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 280,
+        "y": 14,
+        "w": 120,
+        "h": 110
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 39.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 120,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 280,
+        "y": 14,
+        "w": 120,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 40.aseprite": {
+      "frame": {
+        "x": 760,
+        "y": 0,
+        "w": 120,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 280,
+        "y": 14,
+        "w": 120,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 41.aseprite": {
+      "frame": {
+        "x": 880,
+        "y": 0,
+        "w": 120,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 280,
+        "y": 14,
+        "w": 120,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 42.aseprite": {
+      "frame": {
+        "x": 1000,
+        "y": 0,
+        "w": 120,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 280,
+        "y": 14,
+        "w": 120,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 43.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 120,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 280,
+        "y": 14,
+        "w": 120,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 44.aseprite": {
+      "frame": {
+        "x": 3930,
         "y": 360,
         "w": 29,
         "h": 77
@@ -630,10 +945,10 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 30.aseprite": {
+    "fabrica_cambra 45.aseprite": {
       "frame": {
-        "x": 3466,
-        "y": 360,
+        "x": 121,
+        "y": 470,
         "w": 32,
         "h": 67
       },
@@ -651,10 +966,10 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 31.aseprite": {
+    "fabrica_cambra 46.aseprite": {
       "frame": {
-        "x": 3498,
-        "y": 360,
+        "x": 153,
+        "y": 470,
         "w": 26,
         "h": 67
       },
@@ -672,10 +987,10 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 32.aseprite": {
+    "fabrica_cambra 47.aseprite": {
       "frame": {
-        "x": 3524,
-        "y": 360,
+        "x": 179,
+        "y": 470,
         "w": 113,
         "h": 65
       },
@@ -693,9 +1008,9 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 33.aseprite": {
+    "fabrica_cambra 48.aseprite": {
       "frame": {
-        "x": 3433,
+        "x": 3959,
         "y": 360,
         "w": 33,
         "h": 68
@@ -714,10 +1029,10 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 34.aseprite": {
+    "fabrica_cambra 49.aseprite": {
       "frame": {
-        "x": 3713,
-        "y": 360,
+        "x": 489,
+        "y": 470,
         "w": 29,
         "h": 36
       },
@@ -735,9 +1050,9 @@
       },
       "duration": 100
     },
-    "fabrica_cambra 35.aseprite": {
+    "fabrica_cambra 50.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1120,
         "y": 0,
         "w": 75,
         "h": 111
@@ -763,8 +1078,8 @@
     "image": "fabrica_cambra.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3841,
-      "h": 470
+      "w": 4035,
+      "h": 537
     },
     "scale": "1",
     "frameTags": [
@@ -804,58 +1119,86 @@
         "color": "#000000ff"
       },
       {
-        "name": "ambient",
+        "name": "vidre_baixat",
         "from": 5,
-        "to": 28,
+        "to": 5,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_consola_1",
-        "from": 29,
-        "to": 29,
+        "name": "clau_cambra",
+        "from": 6,
+        "to": 6,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_consola_2",
-        "from": 30,
+        "name": "ambient",
+        "from": 7,
         "to": 30,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_consola_3",
+        "name": "fase_cambra",
         "from": 31,
         "to": 31,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_caixes_1",
+        "name": "vidre_baixa",
         "from": 32,
-        "to": 32,
+        "to": 43,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_consola_1",
+        "from": 44,
+        "to": 44,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_consola_2",
+        "from": 45,
+        "to": 45,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_consola_3",
+        "from": 46,
+        "to": 46,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_caixes_1",
+        "from": 47,
+        "to": 47,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant_caixes_2",
-        "from": 33,
-        "to": 33,
+        "from": 48,
+        "to": 48,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant_caixes_3",
-        "from": 34,
-        "to": 34,
+        "from": 49,
+        "to": 49,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant",
-        "from": 35,
-        "to": 35,
+        "from": 50,
+        "to": 50,
         "direction": "forward",
         "color": "#000000ff"
       }

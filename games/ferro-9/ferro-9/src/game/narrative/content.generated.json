@@ -3628,12 +3628,34 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fabrica_cambra.boto.accident1"
+                    "text": "sala.fabrica_cambra.boto.accident1",
+                    "stage": [
+                      {
+                        "prop": "vidre_baixat",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
                     "text": "sala.fabrica_cambra.boto.accident2",
-                    "sound": "cambra_arma"
+                    "sound": "cambra_arma",
+                    "stage": [
+                      {
+                        "prop": "fase_cambra",
+                        "anim": "vidre_baixa"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "vidre_baixat",
+                        "visible": true
+                      },
+                      {
+                        "prop": "fase_cambra",
+                        "anim": "fase_cambra"
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -4102,6 +4124,20 @@
           "palanca_baixada": {
             "visibleIf": {
               "flag": "alarma_apagada"
+            }
+          },
+          "vidre_baixat": {
+            "visibleIf": {
+              "var": "finestra_armada",
+              "op": "==",
+              "value": "iri"
+            }
+          },
+          "clau_cambra": {
+            "visibleIf": {
+              "var": "finestra_objecte_iri",
+              "op": "==",
+              "value": "clau_anglesa"
             }
           }
         }
@@ -7098,13 +7134,29 @@
                     "text": "sala.gavina_cella.panell.cop1"
                   },
                   {
-                    "who": "narrator",
+                    "who": "player",
                     "text": "sala.gavina_cella.panell.cop2",
-                    "sound": "cop"
+                    "sound": "cop",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "U"
+                      },
+                      {
+                        "shake": 0.3
+                      }
+                    ]
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.cop3"
+                    "text": "sala.gavina_cella.panell.cop3",
+                    "stageAfter": [
+                      {
+                        "prop": "fase_panell",
+                        "anim": "espetec",
+                        "hold": 1.5
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -20106,7 +20158,7 @@
       "sala.fabrica_cambra.nom": "Cambra de ressonància",
       "sala.gavina_cella.panell.vibra": "Un panell rovellat a la paret. Vibra. Com si tingués son. O ganes de molestar.",
       "sala.gavina_cella.panell.cop1": "Prou de vibrar!",
-      "sala.gavina_cella.panell.cop2": "La Vet clava un cop de puny al panell.",
+      "sala.gavina_cella.panell.cop2": "Té! Un cop de puny, i a callar.",
       "sala.gavina_cella.panell.cop3": "Au, au, au!",
       "sala.gavina_cella.panell.paret_guanya": "Au. La paret guanya. Com sempre.",
       "sala.gavina_cella.panell.obrir1": "Desmunto la tapa amb la clau anglesa...",

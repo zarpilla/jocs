@@ -429,7 +429,85 @@ def _decorat(*estat, tex=None):
     return draw
 
 
+# ─── La finestra de fase: el vidre que baixa i el que hi ha a dins ───────────
+#
+# El vidre de davant de la cambra és un vidre de guillotina: quan l'Iri arma el camp, baixa de dalt de tot fins a la
+# plataforma (l'animació `vidre_baixa`, a la línia de l'accident) i s'hi queda (el decorat `vidre_baixat`, mentre el
+# camp és armat per ella). A dins, damunt la plataforma, el que hi ha posat (`clau_cambra`: la clau anglesa).
+
+_GZ0 = CHAMBER[2] + 8                               # la cara de davant de la caixa de vidre (z)
+_GY0, _GY1 = 17, 17 + (188 - 27)                    # de la plataforma a la caixa de dalt (y)
+
+
+def _quad_pantalla(x0, x1, y0, y1, z):
+    return [tuple(round(c) for c in CAM.projecta(P)[:2]) for P in ((x0, y1, z), (x1, y1, z), (x1, y0, z), (x0, y0, z))]
+
+
+def _vidre(cv, frac=1.0, flash=0.0):
+    """El vidre de guillotina, baixat fins a `frac` (0: tot amunt, amagat a la caixa de dalt; 1: a baix de tot).
+    `flash`: la llum del camp que s'encén en tancar-se."""
+    from PIL import Image, ImageDraw
+    if frac <= 0:
+        return
+    cx0, cx1 = CHAMBER[0] + 3, CHAMBER[1] - 3
+    yb = _GY1 - (_GY1 - _GY0) * frac                # la vora de baix del vidre
+    capa = Image.new('RGBA', cv.img.size, (0, 0, 0, 0))
+    d = ImageDraw.Draw(capa)
+    d.polygon(_quad_pantalla(cx0, cx1, yb, _GY1, _GZ0 - 1), fill=(170, 205, 255, 70 + round(90 * flash)))
+    for k in range(4):                              # reflexos en diagonal
+        a = cx0 + (cx1 - cx0) * (0.12 + 0.24 * k)
+        y_a, y_b = _GY1 - 6, max(yb + 4, _GY1 - 6 - 70)
+        if y_b >= y_a:
+            continue
+        p0 = CAM.projecta((a, y_a, _GZ0 - 1.5))[:2]
+        p1 = CAM.projecta((a + 26, y_b, _GZ0 - 1.5))[:2]
+        d.line([tuple(map(round, p0)), tuple(map(round, p1))], fill=(235, 245, 255, 110), width=2 if k % 2 else 1)
+    # el travesser de baix del vidre (acer), que és el que es veu baixar
+    d.polygon(_quad_pantalla(cx0 - 2, cx1 + 2, yb, yb + 5, _GZ0 - 2), fill=(62, 68, 84, 255))
+    d.line([tuple(map(round, CAM.projecta((cx0 - 2, yb + 5, _GZ0 - 2))[:2])),
+            tuple(map(round, CAM.projecta((cx1 + 2, yb + 5, _GZ0 - 2))[:2]))], fill=(150, 160, 182, 255), width=1)
+    cv.img.alpha_composite(capa)
+    if flash:
+        u, v = _proj(CORE)
+        cv.glow(u, v, 90, (200, 170, 255), 0.5 * flash)
+    cv.P = cv.img.load()
+
+
+def _clau_dins(cv):
+    """La clau anglesa, estirada damunt la plataforma de la cambra (la icona de l'inventari, a mida de sala)."""
+    from PIL import Image
+    from hd640 import items as IT
+    ic = IT.render('clau_anglesa')
+    k = CAM.escala(((CHAMBER[0] + CHAMBER[1]) / 2, _GY0, (_GZ0 + CHAMBER[3]) / 2)) * 0.7
+    ic = ic.resize((max(1, round(ic.width * k)), max(1, round(ic.height * k))), Image.NEAREST)
+    u, v, _ = CAM.projecta(((CHAMBER[0] + CHAMBER[1]) / 2, _GY0, (_GZ0 + CHAMBER[3]) / 2))
+    cv.img.alpha_composite(ic, (round(u - ic.width / 2), round(v - ic.height + 2)))
+    cv.P = cv.img.load()
+
+
+def _buit():
+    from PIL import Image
+    return [Image.new('RGBA', (W, H), (0, 0, 0, 0))]
+
+
+def _frames_vidre_baixa(n=8):
+    """El vidre que baixa de cop (s'accelera), un cop sec a baix i la llum del camp que s'hi encén."""
+    from PIL import Image
+    out = []
+    for i in range(1, n + 1):
+        cv = Canvas(light=LIGHT, img=Image.new('RGBA', (W, H), (0, 0, 0, 0)))
+        _vidre(cv, (i / n) ** 1.6)
+        out.append(cv.img)
+    for f in (1.0, 0.6, 0.3, 0.0):
+        cv = Canvas(light=LIGHT, img=Image.new('RGBA', (W, H), (0, 0, 0, 0)))
+        _vidre(cv, 1.0, flash=f)
+        out.append(cv.img)
+    return out
+
+
 PROPS = {
+    'vidre_baixat': _vidre,
+    'clau_cambra': _clau_dins,
     'boto': _decorat(tex=lambda: {**_textures(), 'consola': _consola(boto=True)}),
     'reixa_llimada': _decorat(tex=lambda: {**_textures(), 'paret': _paret(llimada=True)}),
     'palanca_alcada': _decorat('palanca_alcada'),
@@ -458,7 +536,12 @@ def _frames(n=24):
     return out
 
 
-ANIMS = {'ambient': {'frames': _frames, 'frameDuration': 120}}
+ANIMS = {
+    'ambient': {'frames': _frames, 'frameDuration': 120},
+    # la finestra de fase (vegeu `_vidre`): un prop buit, i l'animació que s'hi posa a la línia de l'accident
+    'fase_cambra': {'frames': _buit, 'frameDuration': 1000, 'loop': False, 'zIndex': 4},
+    'vidre_baixa': {'frames': _frames_vidre_baixa, 'frameDuration': 70, 'loop': False, 'prop': 'fase_cambra'},
+}
 
 
 def _amo(ids):

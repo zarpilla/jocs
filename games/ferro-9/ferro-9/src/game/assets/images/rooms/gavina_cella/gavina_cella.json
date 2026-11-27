@@ -23,7 +23,7 @@
     },
     "gavina_cella 1.aseprite": {
       "frame": {
-        "x": 670,
+        "x": 1214,
         "y": 360,
         "w": 25,
         "h": 16
@@ -44,7 +44,7 @@
     },
     "gavina_cella 2.aseprite": {
       "frame": {
-        "x": 695,
+        "x": 1289,
         "y": 360,
         "w": 21,
         "h": 9
@@ -65,7 +65,7 @@
     },
     "gavina_cella 3.aseprite": {
       "frame": {
-        "x": 619,
+        "x": 1163,
         "y": 360,
         "w": 43,
         "h": 24
@@ -86,7 +86,7 @@
     },
     "gavina_cella 4.aseprite": {
       "frame": {
-        "x": 3652,
+        "x": 3997,
         "y": 0,
         "w": 35,
         "h": 41
@@ -107,7 +107,7 @@
     },
     "gavina_cella 5.aseprite": {
       "frame": {
-        "x": 1493,
+        "x": 1757,
         "y": 0,
         "w": 80,
         "h": 74
@@ -128,7 +128,7 @@
     },
     "gavina_cella 6.aseprite": {
       "frame": {
-        "x": 1413,
+        "x": 1509,
         "y": 0,
         "w": 80,
         "h": 93
@@ -149,7 +149,7 @@
     },
     "gavina_cella 7.aseprite": {
       "frame": {
-        "x": 3157,
+        "x": 3502,
         "y": 0,
         "w": 74,
         "h": 47
@@ -170,7 +170,7 @@
     },
     "gavina_cella 8.aseprite": {
       "frame": {
-        "x": 735,
+        "x": 1329,
         "y": 360,
         "w": 6,
         "h": 7
@@ -191,7 +191,7 @@
     },
     "gavina_cella 9.aseprite": {
       "frame": {
-        "x": 716,
+        "x": 1310,
         "y": 360,
         "w": 19,
         "h": 9
@@ -212,7 +212,7 @@
     },
     "gavina_cella 10.aseprite": {
       "frame": {
-        "x": 1573,
+        "x": 1837,
         "y": 0,
         "w": 83,
         "h": 74
@@ -233,7 +233,7 @@
     },
     "gavina_cella 11.aseprite": {
       "frame": {
-        "x": 662,
+        "x": 1206,
         "y": 360,
         "w": 8,
         "h": 18
@@ -254,7 +254,7 @@
     },
     "gavina_cella 12.aseprite": {
       "frame": {
-        "x": 767,
+        "x": 1361,
         "y": 360,
         "w": 1,
         "h": 1
@@ -275,7 +275,7 @@
     },
     "gavina_cella 13.aseprite": {
       "frame": {
-        "x": 767,
+        "x": 1361,
         "y": 360,
         "w": 1,
         "h": 1
@@ -296,7 +296,7 @@
     },
     "gavina_cella 14.aseprite": {
       "frame": {
-        "x": 741,
+        "x": 1335,
         "y": 360,
         "w": 23,
         "h": 5
@@ -317,7 +317,7 @@
     },
     "gavina_cella 15.aseprite": {
       "frame": {
-        "x": 292,
+        "x": 836,
         "y": 360,
         "w": 28,
         "h": 27
@@ -338,7 +338,7 @@
     },
     "gavina_cella 16.aseprite": {
       "frame": {
-        "x": 1826,
+        "x": 2171,
         "y": 0,
         "w": 181,
         "h": 58
@@ -359,7 +359,7 @@
     },
     "gavina_cella 17.aseprite": {
       "frame": {
-        "x": 2007,
+        "x": 2352,
         "y": 0,
         "w": 216,
         "h": 58
@@ -380,7 +380,7 @@
     },
     "gavina_cella 18.aseprite": {
       "frame": {
-        "x": 2223,
+        "x": 2568,
         "y": 0,
         "w": 216,
         "h": 58
@@ -401,7 +401,7 @@
     },
     "gavina_cella 19.aseprite": {
       "frame": {
-        "x": 2439,
+        "x": 2784,
         "y": 0,
         "w": 203,
         "h": 58
@@ -422,7 +422,7 @@
     },
     "gavina_cella 20.aseprite": {
       "frame": {
-        "x": 216,
+        "x": 760,
         "y": 360,
         "w": 22,
         "h": 31
@@ -443,7 +443,7 @@
     },
     "gavina_cella 21.aseprite": {
       "frame": {
-        "x": 238,
+        "x": 782,
         "y": 360,
         "w": 20,
         "h": 31
@@ -464,7 +464,7 @@
     },
     "gavina_cella 22.aseprite": {
       "frame": {
-        "x": 320,
+        "x": 864,
         "y": 360,
         "w": 21,
         "h": 27
@@ -485,7 +485,7 @@
     },
     "gavina_cella 23.aseprite": {
       "frame": {
-        "x": 341,
+        "x": 885,
         "y": 360,
         "w": 28,
         "h": 27
@@ -506,7 +506,7 @@
     },
     "gavina_cella 24.aseprite": {
       "frame": {
-        "x": 369,
+        "x": 913,
         "y": 360,
         "w": 34,
         "h": 27
@@ -527,8 +527,8 @@
     },
     "gavina_cella 25.aseprite": {
       "frame": {
-        "x": 3687,
-        "y": 0,
+        "x": 0,
+        "y": 360,
         "w": 216,
         "h": 38
       },
@@ -548,7 +548,7 @@
     },
     "gavina_cella 26.aseprite": {
       "frame": {
-        "x": 0,
+        "x": 216,
         "y": 360,
         "w": 216,
         "h": 38
@@ -569,7 +569,7 @@
     },
     "gavina_cella 27.aseprite": {
       "frame": {
-        "x": 3231,
+        "x": 3576,
         "y": 0,
         "w": 205,
         "h": 42
@@ -590,7 +590,7 @@
     },
     "gavina_cella 28.aseprite": {
       "frame": {
-        "x": 2642,
+        "x": 2987,
         "y": 0,
         "w": 170,
         "h": 58
@@ -611,7 +611,7 @@
     },
     "gavina_cella 29.aseprite": {
       "frame": {
-        "x": 1656,
+        "x": 2001,
         "y": 0,
         "w": 170,
         "h": 62
@@ -632,7 +632,7 @@
     },
     "gavina_cella 30.aseprite": {
       "frame": {
-        "x": 2812,
+        "x": 3157,
         "y": 0,
         "w": 170,
         "h": 58
@@ -653,7 +653,7 @@
     },
     "gavina_cella 31.aseprite": {
       "frame": {
-        "x": 2982,
+        "x": 3327,
         "y": 0,
         "w": 175,
         "h": 58
@@ -674,7 +674,7 @@
     },
     "gavina_cella 32.aseprite": {
       "frame": {
-        "x": 258,
+        "x": 802,
         "y": 360,
         "w": 34,
         "h": 29
@@ -695,7 +695,7 @@
     },
     "gavina_cella 33.aseprite": {
       "frame": {
-        "x": 3436,
+        "x": 3781,
         "y": 0,
         "w": 216,
         "h": 42
@@ -716,7 +716,7 @@
     },
     "gavina_cella 34.aseprite": {
       "frame": {
-        "x": 403,
+        "x": 947,
         "y": 360,
         "w": 216,
         "h": 26
@@ -737,7 +737,7 @@
     },
     "gavina_cella 35.aseprite": {
       "frame": {
-        "x": 764,
+        "x": 1358,
         "y": 360,
         "w": 3,
         "h": 5
@@ -758,6 +758,384 @@
     },
     "gavina_cella 36.aseprite": {
       "frame": {
+        "x": 1361,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 37.aseprite": {
+      "frame": {
+        "x": 1589,
+        "y": 0,
+        "w": 93,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 301,
+        "y": 66,
+        "w": 93,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 38.aseprite": {
+      "frame": {
+        "x": 1920,
+        "y": 0,
+        "w": 81,
+        "h": 73
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 307,
+        "y": 72,
+        "w": 81,
+        "h": 73
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 39.aseprite": {
+      "frame": {
+        "x": 1682,
+        "y": 0,
+        "w": 75,
+        "h": 76
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 311,
+        "y": 74,
+        "w": 75,
+        "h": 76
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 40.aseprite": {
+      "frame": {
+        "x": 1413,
+        "y": 0,
+        "w": 96,
+        "h": 98
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 298,
+        "y": 65,
+        "w": 96,
+        "h": 98
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 41.aseprite": {
+      "frame": {
+        "x": 1239,
+        "y": 360,
+        "w": 25,
+        "h": 14
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 352,
+        "y": 126,
+        "w": 25,
+        "h": 14
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 42.aseprite": {
+      "frame": {
+        "x": 1264,
+        "y": 360,
+        "w": 25,
+        "h": 14
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 360,
+        "y": 158,
+        "w": 25,
+        "h": 14
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 43.aseprite": {
+      "frame": {
+        "x": 432,
+        "y": 360,
+        "w": 41,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 352,
+        "y": 144,
+        "w": 41,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 44.aseprite": {
+      "frame": {
+        "x": 473,
+        "y": 360,
+        "w": 41,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 352,
+        "y": 144,
+        "w": 41,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 45.aseprite": {
+      "frame": {
+        "x": 514,
+        "y": 360,
+        "w": 41,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 352,
+        "y": 144,
+        "w": 41,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 46.aseprite": {
+      "frame": {
+        "x": 555,
+        "y": 360,
+        "w": 41,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 352,
+        "y": 144,
+        "w": 41,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 47.aseprite": {
+      "frame": {
+        "x": 596,
+        "y": 360,
+        "w": 41,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 352,
+        "y": 144,
+        "w": 41,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 48.aseprite": {
+      "frame": {
+        "x": 637,
+        "y": 360,
+        "w": 41,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 352,
+        "y": 144,
+        "w": 41,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 49.aseprite": {
+      "frame": {
+        "x": 678,
+        "y": 360,
+        "w": 41,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 352,
+        "y": 144,
+        "w": 41,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 50.aseprite": {
+      "frame": {
+        "x": 719,
+        "y": 360,
+        "w": 41,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 352,
+        "y": 144,
+        "w": 41,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 51.aseprite": {
+      "frame": {
+        "x": 1361,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 52.aseprite": {
+      "frame": {
+        "x": 1361,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 53.aseprite": {
+      "frame": {
+        "x": 1361,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "gavina_cella 54.aseprite": {
+      "frame": {
         "x": 1274,
         "y": 0,
         "w": 139,
@@ -777,7 +1155,7 @@
       },
       "duration": 100
     },
-    "gavina_cella 37.aseprite": {
+    "gavina_cella 55.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -805,7 +1183,7 @@
     "image": "gavina_cella.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3903,
+      "w": 4032,
       "h": 398
     },
     "scale": "1",
@@ -902,16 +1280,30 @@
         "color": "#000000ff"
       },
       {
-        "name": "davant_llitera",
+        "name": "fase_panell",
         "from": 36,
         "to": 36,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "espetec",
         "from": 37,
-        "to": 37,
+        "to": 53,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_llitera",
+        "from": 54,
+        "to": 54,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 55,
+        "to": 55,
         "direction": "forward",
         "color": "#000000ff"
       }
