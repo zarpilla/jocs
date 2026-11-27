@@ -668,12 +668,14 @@ GEOMETRIA = {
                      'walk': _p(PL.POT[0] - OFF, 256)},
         'nevera': {'rect': _caixa_mon(FRI[0], FRI[1], 0, FRI[2], FRI[3], FRI[3]),
                    'walk': _p((FRI[0] + FRI[1]) / 2, 256)},
-        'carmanyola': {'rect': _rect_mon((BENCH[0] - 14 * math.cos(BENCH[2]) - 12, 40, BENCH[1] - 14 * math.sin(BENCH[2])),
+        # (fins a dalt d'en Diu, que hi dorm al damunt: clicar el gat és clicar la carmanyola)
+        'carmanyola': {'rect': _rect_mon((BENCH[0] - 14 * math.cos(BENCH[2]) - 12, 58, BENCH[1] - 14 * math.sin(BENCH[2])),
                                          (BENCH[0] - 14 * math.cos(BENCH[2]) + 12, 24,
                                           BENCH[1] - 14 * math.sin(BENCH[2]))),
                        'walk': _p(BENCH[0] - 40, BENCH[1] - 34)},
     },
-    'spawns': {'tomas': _p(BENCH[0] + 12, BENCH[1] - 40), 'diu': (round(_DIU_UV[0]), round(_DIU_UV[1])),
+    # En Tomàs, a l'esquerra del banc: ni davant de la nevera ni de la carmanyola (es quedaria els clics).
+    'spawns': {'tomas': _p(BENCH[0] - 70, BENCH[1] - 16), 'diu': (round(_DIU_UV[0]), round(_DIU_UV[1])),
                'iri': _p(250, 170), 'vet': _p(380, 150)},
     'walkable': _WALK,
     'forats': [[_p(x, z) for x, z in _banc_peus()]],

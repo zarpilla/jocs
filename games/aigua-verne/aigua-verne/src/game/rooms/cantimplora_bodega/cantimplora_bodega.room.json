@@ -275,19 +275,19 @@
       "zIndex": 6,
       "points": [
         {
-          "x": 498,
-          "y": 147
+          "x": 499,
+          "y": 131
         },
         {
           "x": 521,
-          "y": 147
+          "y": 131
         },
         {
           "x": 521,
           "y": 163
         },
         {
-          "x": 498,
+          "x": 499,
           "y": 163
         }
       ],
@@ -296,7 +296,7 @@
         "y": 194
       },
       "lookAtPoint": {
-        "x": 509,
+        "x": 510,
         "y": 163
       }
     },
@@ -730,8 +730,8 @@
     {
       "instanceId": "tomas-1",
       "definition": "tomas/tomas.character.json",
-      "x": 546,
-      "y": 202,
+      "x": 453,
+      "y": 183,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

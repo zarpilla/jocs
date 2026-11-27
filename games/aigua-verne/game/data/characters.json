@@ -229,6 +229,45 @@
         ]
       },
       {
+        "verb": [
+          "give",
+          "use"
+        ],
+        "item": "pernil",
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 6
+            },
+            {
+              "flag": "diu_aparta",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "sala.cantimplora_bodega.carmanyola.1"
+          },
+          {
+            "who": "narrator",
+            "text": "sala.cantimplora_bodega.carmanyola.2",
+            "sound": "gat"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "diu_aparta"
+          },
+          {
+            "takeItem": "pernil"
+          }
+        ]
+      },
+      {
         "verb": "give",
         "item": "*",
         "lines": [
