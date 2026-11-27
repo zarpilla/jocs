@@ -4456,7 +4456,12 @@ export class RoomScene extends Phaser.Scene {
     const oldFeet = getCharacterWorldFeet(sprite);
     const raw = this.resolveMovementTarget(target, oldFeet);
     const polys = withNonWalkableRegionsAsHoles(this.roomData.walkable.polygons, this.roomData.regions);
-    const clamped = clampWalkDestinationTowardClick(oldFeet.x, oldFeet.y, raw.x, raw.y, polys);
+    // Own change: back to the spot where the room places this character (a barman behind his counter, off the floor),
+    // as it is: clamping it to the floor would leave him on the customers' side.
+    const home = (this.roomData.characters ?? []).some(
+      (c) => c.definition.split('/')[0] === definitionId && Math.abs(c.x - raw.x) < 1 && Math.abs(c.y - raw.y) < 1,
+    );
+    const clamped = home ? null : clampWalkDestinationTowardClick(oldFeet.x, oldFeet.y, raw.x, raw.y, polys);
     const feetWorld = clamped ?? raw;
     const data = sprite.getData('character') as CharacterData | undefined;
     const feetLocal = data
