@@ -14,6 +14,9 @@ function firstEmptySlot(): number {
   return SLOTS - 1
 }
 
+/** El `maxLength` del camp del nom (save-menu.gui.json). */
+const NAME_MAX = 26
+
 /** El nom per defecte (si no se n'escriu cap): la sala i l'hora, «Pati de la granja · 18:40». */
 function defaultName(): string {
   const room = narrative.world.currentRoom()
@@ -21,7 +24,11 @@ function defaultName(): string {
   const sala = key ? narrative.t(key) : ''
   const ara = new Date()
   const hora = `${ara.getHours()}:${String(ara.getMinutes()).padStart(2, '0')}`
-  return sala ? `${sala} · ${hora}` : hora
+  if (!sala) return hora
+  // El camp del nom té `maxLength`: si no hi cap, es retalla la sala, mai l'hora.
+  const lloc = NAME_MAX - ` · ${hora}`.length
+  const curt = sala.length > lloc ? `${sala.slice(0, lloc - 1).trimEnd()}…` : sala
+  return `${curt} · ${hora}`
 }
 
 // Saving is refused while a scene or a conversation is running (`saves.canSaveNow`). No cal escriure cap nom.
