@@ -1307,6 +1307,29 @@ diff -ruN src/engine/gameState/GameStateManager.ts src/engine/gameState/GameStat
          }
          this.writeSaveManifest({ version: 1, saves: this.sortManifestEntries(updated) });
        }
+diff -ruN src/engine/gui/GuiRuntime.ts src/engine/gui/GuiRuntime.ts
+--- src/engine/gui/GuiRuntime.ts
++++ src/engine/gui/GuiRuntime.ts
+@@ -48,7 +48,7 @@
+   type BenneGuiListBoxSetRowTextFn,
+   type BenneGuiListBoxSetSelectedIndexFn,
+ } from './guiListBoxRuntime.js';
+-import { syncOutlinedGuiBitmapTextAll, syncOutlinedGuiBitmapTextPositions } from './guiTextOutline.js';
++import { setOutlinedGuiBitmapTextVisible, syncOutlinedGuiBitmapTextAll, syncOutlinedGuiBitmapTextPositions } from './guiTextOutline.js';
+ 
+ /**
+  * One GUI control's live Phaser object, with the operations scripts use on it. Every operation is
+@@ -108,6 +108,10 @@
+     } else {
+       go.visible = visible;
+     }
++    // Own change: an outlined text's outline copies follow it (hidden, they stayed drawn as a dark "ghost").
++    if (this.gameObject instanceof Phaser.GameObjects.BitmapText) {
++      setOutlinedGuiBitmapTextVisible(this.gameObject, visible);
++    }
+   }
+ 
+   setAlpha(alpha: number): void {
 diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
 --- src/engine/gui/buildGuiOverlay.ts
 +++ src/engine/gui/buildGuiOverlay.ts
@@ -1744,6 +1767,27 @@ diff -ruN src/engine/gui/buildGuiSlider.ts src/engine/gui/buildGuiSlider.ts
      const next = localXToValue(local.x, range, minX, maxX);
      setValueInternal(next, true);
    };
+diff -ruN src/engine/gui/guiTextOutline.ts src/engine/gui/guiTextOutline.ts
+--- src/engine/gui/guiTextOutline.ts
++++ src/engine/gui/guiTextOutline.ts
+@@ -173,6 +173,17 @@
+   }
+ }
+ 
++/** Shows or hides an outlined text's outline copies with it (own change). */
++export function setOutlinedGuiBitmapTextVisible(main: Phaser.GameObjects.BitmapText, visible: boolean): void {
++  const outs = main.getData(BENNE_GUI_BITMAP_TEXT_OUTLINE_KEY) as Phaser.GameObjects.BitmapText[] | undefined;
++  if (!Array.isArray(outs)) {
++    return;
++  }
++  for (const o of outs) {
++    o.setVisible(visible);
++  }
++}
++
+ export function syncOutlinedGuiBitmapTextAll(main: Phaser.GameObjects.BitmapText, text: string): void {
+   main.setText(text);
+   const mainFill = main.getData(BENNE_GUI_BITMAP_TEXT_FILL_TINT_KEY);
 diff -ruN src/engine/idleActions.ts src/engine/idleActions.ts
 --- src/engine/idleActions.ts
 +++ src/engine/idleActions.ts

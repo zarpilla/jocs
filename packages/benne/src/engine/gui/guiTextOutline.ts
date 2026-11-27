@@ -173,6 +173,17 @@ export function syncOutlinedGuiBitmapTextPositions(main: Phaser.GameObjects.Bitm
   }
 }
 
+/** Shows or hides an outlined text's outline copies with it (own change). */
+export function setOutlinedGuiBitmapTextVisible(main: Phaser.GameObjects.BitmapText, visible: boolean): void {
+  const outs = main.getData(BENNE_GUI_BITMAP_TEXT_OUTLINE_KEY) as Phaser.GameObjects.BitmapText[] | undefined;
+  if (!Array.isArray(outs)) {
+    return;
+  }
+  for (const o of outs) {
+    o.setVisible(visible);
+  }
+}
+
 export function syncOutlinedGuiBitmapTextAll(main: Phaser.GameObjects.BitmapText, text: string): void {
   main.setText(text);
   const mainFill = main.getData(BENNE_GUI_BITMAP_TEXT_FILL_TINT_KEY);

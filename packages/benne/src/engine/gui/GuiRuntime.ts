@@ -48,7 +48,7 @@ import {
   type BenneGuiListBoxSetRowTextFn,
   type BenneGuiListBoxSetSelectedIndexFn,
 } from './guiListBoxRuntime.js';
-import { syncOutlinedGuiBitmapTextAll, syncOutlinedGuiBitmapTextPositions } from './guiTextOutline.js';
+import { setOutlinedGuiBitmapTextVisible, syncOutlinedGuiBitmapTextAll, syncOutlinedGuiBitmapTextPositions } from './guiTextOutline.js';
 
 /**
  * One GUI control's live Phaser object, with the operations scripts use on it. Every operation is
@@ -107,6 +107,10 @@ export class ControlFacade {
       go.setVisible(visible);
     } else {
       go.visible = visible;
+    }
+    // Own change: an outlined text's outline copies follow it (hidden, they stayed drawn as a dark "ghost").
+    if (this.gameObject instanceof Phaser.GameObjects.BitmapText) {
+      setOutlinedGuiBitmapTextVisible(this.gameObject, visible);
     }
   }
 
