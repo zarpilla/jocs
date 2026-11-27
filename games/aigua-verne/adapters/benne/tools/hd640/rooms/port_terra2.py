@@ -55,7 +55,8 @@ STERN = (250.0, 650.0)                             # la popa (x, z), arran de te
 NAU_B = math.radians(35)
 SEGS = (0, 80, 160, 240, 320, 400)                 # els trams del buc (cada un, una capa del davant)
 NAU = Cantimplora(popa=STERN, rumb=math.pi / 2 + NAU_B, porta='babord', trams=SEGS)
-NAU_A = NAU.ang                                    # (el gir de les peces alineades amb l'eix)
+NAU_T = Cantimplora(popa=STERN, rumb=math.pi / 2 + NAU_B, porta='babord', sid='naut')   # la de l'enlairament
+NAU_A = NAU.ang                                  # (el gir de les peces alineades amb l'eix)
 NR, NL = NAU.NR, NAU.NL
 PORTA_L, PORTA_T, RAMPA_OUT = NAU.PORTA_L, NAU.PORTA_T, NAU.RAMPA_OUT
 SOL = (0.55, 1.0, -0.1)                            # cap al sol (a dalt a la dreta): les ombres, cap a l'esquerra
@@ -204,7 +205,14 @@ def ombra(e, cx, cz, rx, rz, k=0.55, ang=0.0):
              lambda s, t: k * min(1.0, 1.8 * max(0.0, 1 - ((s - rx) / rx) ** 2 - ((t - rz) / rz) ** 2)))
 
 
-def nau(e, tex):
+def nau(e, tex, mode='oberta'):
+    """`mode`: 'oberta' (la de sempre: la porta oberta, la rampa baixada i la mànega), 'tancada' (a punt d'enlairar-se:
+    la porta tancada, sense rampa ni mànega; amb un model a part, perquè el de sempre és el de les capes) o None."""
+    if mode is None:
+        return
+    if mode in ('tancada', 'sola'):
+        NAU_T.dibuixa(e, porta_oberta=False, ombra={'sol': SOL, 'k': 0.55})
+        return
     NAU.dibuixa(e, ombra={'sol': SOL, 'k': 0.55})
     # la mànega de combustible: del ventre de la nau al sortidor
     e.cable('sortidor', [NAU.buc(-6, -1.2), (nau_terra(-10, 90)[0], 6, nau_terra(-10, 90)[1]),
@@ -361,7 +369,7 @@ def roques(e):
 
 # ─── Composició ─────────────────────────────────────────────────────────────
 
-def escena(cv, tex):
+def escena(cv, tex, nau_mode='oberta'):
     e = Escena(cv, CAM, LLUMS, ambient=AMBIENT)
     e.amo = array('H', bytes(2 * cv.w * cv.h))         # (més de 255 superfícies: l'amo de cada píxel, en 16 bits)
     fons(cv)
@@ -377,17 +385,18 @@ def escena(cv, tex):
     panell(e, tex)
     bidons(e)
     tauler(e, tex)
-    nau(e, tex)
-    pal(e, tex)
-    sortidor(e)
-    roques(e)
+    nau(e, tex, nau_mode)
+    if nau_mode != 'sola':
+        pal(e, tex)
+        sortidor(e)
+        roques(e)
     return e
 
 
 @functools.lru_cache(maxsize=None)
-def _base():
+def _base(nau_mode='oberta'):
     cv = Canvas(light=LIGHT)
-    e = escena(cv, _textures())
+    e = escena(cv, _textures(), nau_mode)
     cv.tint(0, 0, W - 1, RH - 1, (240, 200, 140), 0.05)                   # la calitja de pols
     for y in range(RH, H):                                                # sota la sala: negre
         for x in range(W):
@@ -401,7 +410,131 @@ def bg(cv):
     cv.P = cv.img.load()
 
 
-PROPS = {}
+# ─── L'enlairament (tasca 086) ──────────────────────────────────────────────
+# El primer vol, amb tothom a bord: la porta tancada, la nau tus (sacsejades i bufades de fum negre dels motors) i
+# s'enlaira fins a sortir per dalt, amb la pols del terra que s'aixeca. Un decorat que tapa tota la sala (`enlairament`,
+# a la capa de més davant) amb dues animacions: `tus` (en bucle) i `enlaira` (es queda a l'últim fotograma).
+# Es compon a partir de tres renders: el port sense nau (`buit`), la nau tancada amb el port (`tancada`, per a la
+# claror i l'ombra) i la nau tancada sense res al davant (`sola`, per retallar-la sencera); el pal, el sortidor i el
+# primer pla del port buit es tornen a posar al davant de la nau que puja.
+
+_DAVANT_IDS = {'pal', 'sortidor', 'primer_pla'}
+
+
+@functools.lru_cache(maxsize=None)
+def _peces_vol():
+    buit, eb = _base(None)
+    tanc, _ = _base('tancada')
+    sola, es = _base('sola')
+    W_ = es.cv.w
+    zb = NAU_T.zb                                                         # (l'últim dibuix de la nau: el de `sola`)
+    nau = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    pn, ps = nau.load(), sola.load()
+    for i, z in enumerate(zb):
+        if z < 1e9:
+            x, y = i % W_, i // W_
+            if y < RH:
+                pn[x, y] = ps[x, y][:3] + (255,)
+    davant = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    pd, pb = davant.load(), buit.load()
+    for i, idx in enumerate(eb.amo):
+        if eb.ids[idx] in _DAVANT_IDS:
+            x, y = i % W_, i // W_
+            if y < RH:
+                pd[x, y] = pb[x, y][:3] + (255,)
+    return buit.convert('RGBA'), tanc.convert('RGBA'), nau, davant
+
+
+def _fum(img, x, y, r, col, a, seed):
+    """Una bufada de fum: un núvol tou de cercles, amb la vora desfeta."""
+    p = img.load()
+    for j in range(7):
+        cx = x + (hr(seed, j) - 0.5) * r * 1.4
+        cy = y + (hr(seed + 1, j) - 0.5) * r * 0.9
+        rr = r * (0.45 + 0.5 * hr(seed + 2, j))
+        for yy in range(int(cy - rr), int(cy + rr) + 1):
+            for xx in range(int(cx - rr), int(cx + rr) + 1):
+                if 0 <= xx < W and 0 <= yy < RH:
+                    d = ((xx - cx) ** 2 + (yy - cy) ** 2) / (rr * rr)
+                    if d < 1 and hr(xx * 7 + yy, seed) > d * 0.6:
+                        o = p[xx, yy]
+                        k = a * (1 - d * 0.5)
+                        p[xx, yy] = (int(o[0] + (col[0] - o[0]) * k), int(o[1] + (col[1] - o[1]) * k),
+                                     int(o[2] + (col[2] - o[2]) * k), 255)
+
+
+def _fotograma(dx, dy, ombra, fums=(), flama=0.0, pols=0.0):
+    buit, tanc, nau, davant = _peces_vol()
+    if ombra >= 1:
+        img = tanc.copy()
+    else:
+        img = Image.blend(buit, tanc, ombra) if ombra > 0 else buit.copy()
+        # on hi havia la nau, el port buit (la mescla hi deixaria un fantasma)
+        img.paste(buit, (0, 0), nau)
+    img.alpha_composite(nau, (dx, dy))
+    if flama > 0:                                                         # la flama dels broquets, quan empenyen
+        for P in NAU_T.TOVERES:
+            u, v = NAU_T.xy(CAM, P)
+            _fum(img, u + dx, v + dy + 6, 5 + 4 * flama, (255, 190, 90), 0.9, 71)
+            _fum(img, u + dx, v + dy + 3, 3 + 2 * flama, (255, 245, 200), 0.9, 72)
+    for (x, y, r, col, a, s) in fums:
+        _fum(img, x, y, r, col, a, s)
+    if pols > 0:                                                          # la pols del terra, sota la nau
+        cx, cz = nau_terra(NL / 2, 0)
+        u, v = _p(cx, cz)
+        for j in range(9):
+            _fum(img, u + (j - 4) * (22 + 18 * pols), v + 4 - hr(5, j) * 8, 10 + 16 * pols, (214, 186, 140),
+                 0.55 * min(1.0, pols * 1.5), 90 + j)
+    img.alpha_composite(davant)
+    return img
+
+
+def enlairament(cv):
+    """El decorat fix: la nau, ja tancada, abans d'engegar (el primer fotograma de `tus`)."""
+    cv.img.paste(_fotograma(0, 0, 1.0))
+    cv.P = cv.img.load()
+
+
+def _broquets():
+    return [NAU_T.xy(CAM, P) for P in NAU_T.TOVERES]
+
+
+def _frames_tus():
+    """Tus: tremola i escup bufades de fum negre pels motors (en bucle mentre es diu la línia)."""
+    frames = []
+    sac = [(0, 0), (1, 0), (-1, 1), (0, -1), (2, 0), (0, 0), (-1, 0), (1, 1), (0, 0), (-2, 0), (1, -1), (0, 0)]
+    for i, (dx, dy) in enumerate(sac):
+        fums = []
+        for k, (u, v) in enumerate(_broquets()):
+            t = (i + 4 * k) % 12                                          # una bufada cada 12 fotogrames, per motor
+            if t < 6:
+                fums.append((u + dx + 5 * t, v + dy - 3 * t, 6 + 4 * t, (34, 30, 28), 0.95 - 0.13 * t, 30 + k))
+        frames.append(_fotograma(dx, dy, 1.0, fums))
+    return frames
+
+
+def _frames_enlaira():
+    """S'enlaira: s'aixeca a poc a poc, amb flama i pols, i després accelera fins que surt per dalt."""
+    frames = []
+    n = 34
+    for i in range(n):
+        t = i / (n - 1)
+        dy = -round(300 * t ** 2.2)
+        dx = (-1) ** i if t < 0.35 else 0
+        ombra = max(0.0, 1 - t * 2.2)
+        fums = []
+        if t < 0.5:
+            for k, (u, v) in enumerate(_broquets()):
+                fums.append((u - 6 - 10 * t, v + 8, 8 + 20 * t, (90, 80, 70), 0.5 * (1 - t), 40 + k))
+        frames.append(_fotograma(dx, dy, ombra, fums, flama=min(1.0, t * 3) if dy > -320 else 0,
+                                 pols=min(1.0, t * 2.5) * (1 - max(0.0, t - 0.7) / 0.3 * 0.6)))
+    # la pols que es posa, amb el port buit
+    for j in range(8):
+        frames.append(_fotograma(0, -400, 0.0, pols=0.4 * (1 - j / 8)))
+    return frames
+
+
+PROPS = {'enlairament': enlairament}
 
 
 # ─── Animacions ─────────────────────────────────────────────────────────────
@@ -439,7 +572,9 @@ def _frames_balisa():
 
 ANIMS = {'pols': {'frames': _frames_pols, 'frameDuration': 110},
          'llum_canonada': {'frames': _frames_llum, 'frameDuration': 220},
-         'balisa': {'frames': _frames_balisa, 'frameDuration': 120}}
+         'balisa': {'frames': _frames_balisa, 'frameDuration': 120},
+         'tus': {'frames': _frames_tus, 'frameDuration': 70, 'prop': 'enlairament'},
+         'enlaira': {'frames': _frames_enlaira, 'frameDuration': 80, 'prop': 'enlairament', 'loop': False}}
 
 
 # ─── Capes del davant ───────────────────────────────────────────────────────
@@ -471,7 +606,8 @@ FRONT = [
     {'id': 'davant_bidons', 'mask': _amo({'bidons'}), 'baseline': round(_v(BIDONS[1])), 'zIndex': 20},
     {'id': 'davant_pal', 'mask': _amo({'pal'}), 'baseline': round(_v(PAL[1])), 'zIndex': 20},
     {'id': 'davant_sortidor', 'mask': _amo({'sortidor'}), 'baseline': round(_v(SORTIDOR[1])), 'zIndex': 20},
-    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20,
+     'props': ('enlairament',)},                   # (l'enlairament tapa tota la sala: a la capa de més davant)
 ]
 
 

@@ -156,6 +156,64 @@
             "walkTo",
             "use"
           ],
+          "if": {
+            "all": [
+              {
+                "var": "planeta",
+                "op": "==",
+                "value": "terra2"
+              },
+              {
+                "flag": "primer_vol",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.aqua.1"
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.aqua.4",
+              "effects": [
+                {
+                  "event": "situar",
+                  "args": {
+                    "who": "vet",
+                    "room": "cantimplora_bodega"
+                  }
+                }
+              ],
+              "if": {
+                "not": {
+                  "any": [
+                    {
+                      "inRoom": "cantimplora_pont",
+                      "who": "vet"
+                    },
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "enlairant"
+            }
+          ],
+          "goTo": "port_terra2"
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
           "lines": [
             {
               "who": "narrator",

@@ -544,6 +544,12 @@
       "id": "arribada",
       "verb": "*",
       "once": true,
+      "effects": [
+        {
+          "setFlag": "enlairant",
+          "value": false
+        }
+      ],
       "lines": [
         {
           "who": "narrator",

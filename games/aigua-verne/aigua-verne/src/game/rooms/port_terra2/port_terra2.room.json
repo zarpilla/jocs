@@ -552,6 +552,26 @@
       },
       "zIndex": 40,
       "baseline": 999
+    },
+    {
+      "id": "enlairament",
+      "tag": "enlairament",
+      "animations": {
+        "enlairament": {},
+        "tus": {
+          "loop": true,
+          "frameDuration": 70
+        },
+        "enlaira": {
+          "loop": false,
+          "frameDuration": 80
+        }
+      },
+      "zIndex": 41,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "baseline": 999
     }
   ],
   "characters": [

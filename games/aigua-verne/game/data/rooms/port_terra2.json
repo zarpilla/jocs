@@ -199,7 +199,73 @@
       ]
     }
   },
+  "decor": {
+    "enlairament": {
+      "visibleIf": {
+        "flag": "enlairant"
+      }
+    }
+  },
   "onEnter": [
+    {
+      "id": "enlairament",
+      "verb": "*",
+      "if": {
+        "flag": "enlairant"
+      },
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.mapa.aqua.2",
+          "sound": "motor_nau",
+          "stage": [
+            {
+              "who": "player",
+              "visible": false
+            },
+            {
+              "prop": "enlairament",
+              "visible": true,
+              "anim": "tus",
+              "shake": 0.6
+            }
+          ],
+          "stageAfter": [
+            {
+              "who": "player",
+              "visible": false
+            },
+            {
+              "prop": "enlairament",
+              "visible": true,
+              "anim": "enlaira",
+              "shake": 1.2,
+              "hold": 3.4
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.mapa.aqua.3",
+          "stage": [
+            {
+              "who": "player",
+              "visible": false
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "planeta",
+              "value": "aqua"
+            },
+            {
+              "setFlag": "primer_vol"
+            }
+          ]
+        }
+      ],
+      "goTo": "aqua_port"
+    },
     {
       "id": "arribada",
       "verb": "*",

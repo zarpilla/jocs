@@ -142,4 +142,22 @@ describe('Aigua Verne: la lògica de Verne contra Verne', () => {
     // El Magnat ho sap per en Tomàs, i ho diu.
     expect(textos(p.talk('trucada', 'no'))).toMatch(/un tractor valorat en un milió[^]*el tractor\.\.\./);
   });
+  it('el primer vol: la Cantimplora tus i s\'enlaira al port de Terra-2, i després ja no', () => {
+    const { n, p } = partida();
+    n.apply([{ setFlag: 'aqua_oberta' }]);
+    p.goTo('cantimplora_mapa');
+    const vol = textos(p.do('use', 'aqua'));
+    expect(vol).toMatch(/tus, tremola, s'enlaira[^]*aterra al port d'Aqua/);
+    expect(p.room).toBe('aqua_port');
+    expect(n.flag('primer_vol')).toBe(true);
+    expect(n.flag('enlairant')).toBe(false);
+    expect(n.getVar('planeta')).toBe('aqua');
+    // la segona vegada, el vol de sempre, pel mapa
+    p.goTo('cantimplora_mapa');
+    p.do('use', 'terra2');
+    expect(p.room).toBe('port_terra2');
+    p.goTo('cantimplora_mapa');
+    p.do('use', 'aqua');
+    expect(p.room).toBe('aqua_port');
+  });
 });
