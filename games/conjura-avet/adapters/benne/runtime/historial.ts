@@ -6,21 +6,28 @@
  * No l'editis allà: edita `games/conjura-avet/adapters/benne/runtime/`.
  */
 import { guis } from '@game';
-import { narrative } from './narrative';
+import { narrative, toBenne } from './narrative';
 import mapping from './mapping.generated.json';
 import fontXml from '../assets/fonts/conjuraavet-regular.xml?raw';
 
 // ─── Historial: les últimes línies dites, per tornar-les a llegir ───────────
 
 /** Les línies dites des que s'ha obert el joc (no es desa: és per a les que t'acabes de perdre). */
-const historial: { name: string; text: string }[] = [];
+const historial: { name: string; color?: string; text: string }[] = [];
+
+/** El color de cada personatge (`speechColor` del seu .character.json): el nom surt del color del seu text. */
+const COLORS = new Map(
+  Object.values(import.meta.glob<{ id: string; speechColor?: string }>('../characters/*/*.character.json', { eager: true, import: 'default' }))
+    .map((c) => [c.id, c.speechColor] as const),
+);
 const HISTORIAL_MAX = 200;
 
 /** Apunta una línia a l'historial (es crida en començar-la). Els títols no hi van. */
 export function recordLine(who: string, text: string) {
   if (who === 'title' || !text) return;
   const id = who === 'player' ? narrative.world.activeProtagonist() : who;
-  historial.push({ name: who === 'narrator' ? '' : narrative.characterName(id), text });
+  if (who === 'narrator') historial.push({ name: '', text });
+  else historial.push({ name: narrative.characterName(id), color: COLORS.get(toBenne('characters', id)), text });
   if (historial.length > HISTORIAL_MAX) historial.splice(0, historial.length - HISTORIAL_MAX);
 }
 
@@ -62,9 +69,9 @@ const MITJA = Math.max(1, Math.floor(HISTORIAL_FILES / 2));
 
 /** Omple la GUI de l'historial: les últimes línies a baix; `historialEnrere` files més amunt. */
 function renderHistory() {
-  const files: { nom: string; text: string }[] = [];
+  const files: { nom: string; color?: string; text: string }[] = [];
   for (const e of historial) {
-    if (e.name) files.push({ nom: e.name, text: '' });
+    if (e.name) files.push({ nom: e.name, color: e.color, text: '' });
     for (const l of wrap(e.text, HISTORIAL_AMPLE)) files.push({ nom: '', text: l });
   }
   historialEnrere = Math.max(0, Math.min(historialEnrere, files.length - HISTORIAL_FILES));
@@ -74,6 +81,7 @@ function renderHistory() {
   c.titol.text = narrative.t('ui.historial.titol');
   c.peu.text = narrative.t('ui.historial.peu');
   c.noms.text = visibles.map((f) => f.nom).join('\n');
+  c.noms.setLineColors(visibles.map((f) => f.color));
   c.linies.text = files.length ? visibles.map((f) => f.text).join('\n') : narrative.t('ui.historial.buit');
 }
 

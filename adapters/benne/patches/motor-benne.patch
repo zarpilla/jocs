@@ -724,7 +724,22 @@ diff -ruN src/engine/bennescript/handles.ts src/engine/bennescript/handles.ts
      } else {
        warnOnce('goTo:no-orchestrator', `rooms.${this.id}.goTo(): no room transitions here (preview?) — ignored.`);
      }
-@@ -1272,6 +1276,12 @@
+@@ -1236,6 +1240,14 @@
+     }
+   }
+ 
++  /**
++   * Text controls: colours whole lines of the shown text (`colors[i]` is `#rrggbb` for line *i*, split on
++   * `\n`; `null` keeps the control's colour). Set `.text` first. Instant.
++   */
++  setLineColors(colors: readonly (string | null | undefined)[]): void {
++    this.control('setLineColors')?.setLineColors(colors);
++  }
++
+   /** Opacity, 0–1. Instant. */
+   get alpha(): number {
+     return (this.object?.alpha as number | undefined) ?? 1;
+@@ -1272,6 +1284,12 @@
      this.control('y')?.setY(value);
    }
  
@@ -737,7 +752,7 @@ diff -ruN src/engine/bennescript/handles.ts src/engine/bennescript/handles.ts
    /** Buttons, text inputs and checkboxes. A disabled control ignores the pointer and looks disabled. */
    get enabled(): boolean {
      return this.resolve()?.enabled ?? false;
-@@ -1607,6 +1617,26 @@
+@@ -1607,6 +1625,26 @@
  }
  
  /**
@@ -1416,6 +1431,36 @@ diff -ruN src/engine/gui/GuiRuntime.ts src/engine/gui/GuiRuntime.ts
    }
  
    setAlpha(alpha: number): void {
+@@ -161,6 +165,29 @@
+     }
+   }
+ 
++  /**
++   * **Bitmap `text` controls** — colours whole lines of the current text (split on `\n`): entry *i* is the
++   * `#rrggbb` fill of line *i*; `null`/`undefined` (or a missing entry) keeps the control's own colour.
++   * Call it after setting `.text` (a new text keeps the old per-character colours until this runs again).
++   * The outline copies are not tinted. No-op on non-bitmap text.
++   */
++  setLineColors(colors: readonly (string | null | undefined)[]): void {
++    const t = this.tryGetGuiTextSurface();
++    if (!(t instanceof Phaser.GameObjects.BitmapText) || t.text.length === 0) {
++      return;
++    }
++    t.setCharacterTint(0, -1, Phaser.TintModes.FILL, -1);
++    // The renderer indexes the per-character colours by glyph, and a `\n` is not a glyph: don't count it.
++    let start = 0;
++    t.text.split('\n').forEach((line, i) => {
++      const hex = colors[i];
++      if (hex && line.length > 0) {
++        t.setCharacterTint(start, line.length, Phaser.TintModes.FILL, Phaser.Display.Color.HexStringToColor(hex).color);
++      }
++      start += line.length;
++    });
++  }
++
+   private tryGetTextInputContainer(): Phaser.GameObjects.Container | null {
+     const go = this.gameObject;
+     if (!(go instanceof Phaser.GameObjects.Container)) {
 diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
 --- src/engine/gui/buildGuiOverlay.ts
 +++ src/engine/gui/buildGuiOverlay.ts

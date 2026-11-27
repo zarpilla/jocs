@@ -165,6 +165,29 @@ export class ControlFacade {
     }
   }
 
+  /**
+   * **Bitmap `text` controls** — colours whole lines of the current text (split on `\n`): entry *i* is the
+   * `#rrggbb` fill of line *i*; `null`/`undefined` (or a missing entry) keeps the control's own colour.
+   * Call it after setting `.text` (a new text keeps the old per-character colours until this runs again).
+   * The outline copies are not tinted. No-op on non-bitmap text.
+   */
+  setLineColors(colors: readonly (string | null | undefined)[]): void {
+    const t = this.tryGetGuiTextSurface();
+    if (!(t instanceof Phaser.GameObjects.BitmapText) || t.text.length === 0) {
+      return;
+    }
+    t.setCharacterTint(0, -1, Phaser.TintModes.FILL, -1);
+    // The renderer indexes the per-character colours by glyph, and a `\n` is not a glyph: don't count it.
+    let start = 0;
+    t.text.split('\n').forEach((line, i) => {
+      const hex = colors[i];
+      if (hex && line.length > 0) {
+        t.setCharacterTint(start, line.length, Phaser.TintModes.FILL, Phaser.Display.Color.HexStringToColor(hex).color);
+      }
+      start += line.length;
+    });
+  }
+
   private tryGetTextInputContainer(): Phaser.GameObjects.Container | null {
     const go = this.gameObject;
     if (!(go instanceof Phaser.GameObjects.Container)) {

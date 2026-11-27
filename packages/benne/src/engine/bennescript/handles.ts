@@ -1240,6 +1240,14 @@ export class GuiControlHandle {
     }
   }
 
+  /**
+   * Text controls: colours whole lines of the shown text (`colors[i]` is `#rrggbb` for line *i*, split on
+   * `\n`; `null` keeps the control's colour). Set `.text` first. Instant.
+   */
+  setLineColors(colors: readonly (string | null | undefined)[]): void {
+    this.control('setLineColors')?.setLineColors(colors);
+  }
+
   /** Opacity, 0–1. Instant. */
   get alpha(): number {
     return (this.object?.alpha as number | undefined) ?? 1;
