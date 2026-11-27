@@ -190,6 +190,70 @@
         "x": 523,
         "y": 216
       }
+    },
+    {
+      "id": "pots",
+      "active": true,
+      "description": "pots",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 415,
+          "y": 45
+        },
+        {
+          "x": 610,
+          "y": 45
+        },
+        {
+          "x": 610,
+          "y": 90
+        },
+        {
+          "x": 415,
+          "y": 90
+        }
+      ],
+      "walkToPoint": {
+        "x": 430,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 512,
+        "y": 90
+      }
+    },
+    {
+      "id": "bido",
+      "active": true,
+      "description": "bidó",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 295,
+          "y": 148
+        },
+        {
+          "x": 330,
+          "y": 148
+        },
+        {
+          "x": 330,
+          "y": 197
+        },
+        {
+          "x": 295,
+          "y": 197
+        }
+      ],
+      "walkToPoint": {
+        "x": 312,
+        "y": 208
+      },
+      "lookAtPoint": {
+        "x": 312,
+        "y": 197
+      }
     }
   ],
   "points": [],

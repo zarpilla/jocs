@@ -623,6 +623,76 @@
           "dialogue": "nadia"
         }
       ]
+    },
+    "cafetera": {
+      "name": "sala.menjador.cafetera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.cafetera.look"
+            }
+          ]
+        }
+      ]
+    },
+    "rellotges": {
+      "name": "sala.menjador.rellotges.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.rellotges.look"
+            }
+          ]
+        }
+      ]
+    },
+    "ulls_bou": {
+      "name": "sala.menjador.ulls_bou.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.ulls_bou.look"
+            }
+          ]
+        }
+      ]
+    },
+    "prestatge": {
+      "name": "sala.menjador.prestatge.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.prestatge.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tamboret": {
+      "name": "sala.menjador.tamboret.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.tamboret.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

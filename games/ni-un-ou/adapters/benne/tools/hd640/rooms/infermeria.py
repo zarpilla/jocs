@@ -645,3 +645,13 @@ GEOMETRIA = {
                     'intensity': 0.6} for lx, lz in LAMPS],
     },
 }
+
+# Coses per mirar (tasca 061), en píxels de pantalla.
+GEOMETRIA['things'].update({
+    'cartell': {'rect': (462, 52, 498, 95), 'walk': (476, 178)},
+    'llum': {'rect': (415, 40, 448, 80), 'walk': (416, 174)},
+    'monitor': {'rect': (528, 60, 562, 112), 'walk': (504, 180)},
+    'cortina': {'rect': (0, 20, 62, 215), 'walk': (54, 232)},
+    'paperera': {'rect': (52, 222, 102, 260), 'walk': (76, 232)},
+    'ull_bou': {'rect': (272, 40, 296, 66), 'walk': (254, 160)},
+})

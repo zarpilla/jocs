@@ -245,6 +245,134 @@
         "x": 270,
         "y": 178
       }
+    },
+    {
+      "id": "galleda",
+      "active": true,
+      "description": "galleda",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 210,
+          "y": 182
+        },
+        {
+          "x": 222,
+          "y": 182
+        },
+        {
+          "x": 222,
+          "y": 196
+        },
+        {
+          "x": 210,
+          "y": 196
+        }
+      ],
+      "walkToPoint": {
+        "x": 216,
+        "y": 208
+      },
+      "lookAtPoint": {
+        "x": 216,
+        "y": 196
+      }
+    },
+    {
+      "id": "caixa",
+      "active": true,
+      "description": "caixa de fusta",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 234,
+          "y": 165
+        },
+        {
+          "x": 278,
+          "y": 165
+        },
+        {
+          "x": 278,
+          "y": 193
+        },
+        {
+          "x": 234,
+          "y": 193
+        }
+      ],
+      "walkToPoint": {
+        "x": 296,
+        "y": 204
+      },
+      "lookAtPoint": {
+        "x": 256,
+        "y": 193
+      }
+    },
+    {
+      "id": "bido",
+      "active": true,
+      "description": "bidó",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 0,
+          "y": 160
+        },
+        {
+          "x": 64,
+          "y": 160
+        },
+        {
+          "x": 64,
+          "y": 260
+        },
+        {
+          "x": 0,
+          "y": 260
+        }
+      ],
+      "walkToPoint": {
+        "x": 40,
+        "y": 252
+      },
+      "lookAtPoint": {
+        "x": 32,
+        "y": 260
+      }
+    },
+    {
+      "id": "salvavides",
+      "active": true,
+      "description": "salvavides",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 434,
+          "y": 108
+        },
+        {
+          "x": 448,
+          "y": 108
+        },
+        {
+          "x": 448,
+          "y": 128
+        },
+        {
+          "x": 434,
+          "y": 128
+        }
+      ],
+      "walkToPoint": {
+        "x": 450,
+        "y": 182
+      },
+      "lookAtPoint": {
+        "x": 441,
+        "y": 128
+      }
     }
   ],
   "points": [],

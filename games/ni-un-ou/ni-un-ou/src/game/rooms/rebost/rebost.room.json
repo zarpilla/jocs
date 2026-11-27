@@ -203,6 +203,134 @@
         "x": 463,
         "y": 171
       }
+    },
+    {
+      "id": "congelador",
+      "active": true,
+      "description": "congelador",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 290,
+          "y": 112
+        },
+        {
+          "x": 375,
+          "y": 112
+        },
+        {
+          "x": 375,
+          "y": 168
+        },
+        {
+          "x": 290,
+          "y": 168
+        }
+      ],
+      "walkToPoint": {
+        "x": 394,
+        "y": 182
+      },
+      "lookAtPoint": {
+        "x": 332,
+        "y": 168
+      }
+    },
+    {
+      "id": "tamboret",
+      "active": true,
+      "description": "tamboret",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 263,
+          "y": 125
+        },
+        {
+          "x": 292,
+          "y": 125
+        },
+        {
+          "x": 292,
+          "y": 168
+        },
+        {
+          "x": 263,
+          "y": 168
+        }
+      ],
+      "walkToPoint": {
+        "x": 250,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 277,
+        "y": 168
+      }
+    },
+    {
+      "id": "calendari",
+      "active": true,
+      "description": "calendari",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 303,
+          "y": 55
+        },
+        {
+          "x": 338,
+          "y": 55
+        },
+        {
+          "x": 338,
+          "y": 105
+        },
+        {
+          "x": 303,
+          "y": 105
+        }
+      ],
+      "walkToPoint": {
+        "x": 370,
+        "y": 152
+      },
+      "lookAtPoint": {
+        "x": 320,
+        "y": 105
+      }
+    },
+    {
+      "id": "valvula",
+      "active": true,
+      "description": "vàlvula",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 234,
+          "y": 78
+        },
+        {
+          "x": 250,
+          "y": 78
+        },
+        {
+          "x": 250,
+          "y": 94
+        },
+        {
+          "x": 234,
+          "y": 94
+        }
+      ],
+      "walkToPoint": {
+        "x": 248,
+        "y": 164
+      },
+      "lookAtPoint": {
+        "x": 242,
+        "y": 94
+      }
     }
   ],
   "points": [],

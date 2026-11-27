@@ -736,3 +736,10 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 061), en píxels de pantalla.
+GEOMETRIA['things'].update({
+    'pantalla_radar': {'rect': (197, 70, 248, 100), 'walk': (178, 160)},
+    'taula_cartes': {'rect': (528, 155, 590, 185), 'walk': (558, 196)},
+    'rellotges': {'rect': (118, 30, 148, 46), 'walk': (170, 156)},
+})

@@ -814,6 +814,90 @@
           ]
         }
       ]
+    },
+    "suro": {
+      "name": "sala.sala_radio.suro.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.suro.look"
+            }
+          ]
+        }
+      ]
+    },
+    "rellotge": {
+      "name": "sala.sala_radio.rellotge.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.rellotge.look"
+            }
+          ]
+        }
+      ]
+    },
+    "caixa": {
+      "name": "sala.sala_radio.caixa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.caixa.look"
+            }
+          ]
+        }
+      ]
+    },
+    "ull_bou": {
+      "name": "sala.sala_radio.ull_bou.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.ull_bou.look"
+            }
+          ]
+        }
+      ]
+    },
+    "llibres": {
+      "name": "sala.sala_radio.llibres.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.llibres.look"
+            }
+          ]
+        }
+      ]
+    },
+    "extintor": {
+      "name": "sala.sala_radio.extintor.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.extintor.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

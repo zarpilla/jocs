@@ -1230,6 +1230,48 @@
           ]
         }
       ]
+    },
+    "pantalla_radar": {
+      "name": "sala.pont.pantalla_radar.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont.pantalla_radar.look"
+            }
+          ]
+        }
+      ]
+    },
+    "taula_cartes": {
+      "name": "sala.pont.taula_cartes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont.taula_cartes.look"
+            }
+          ]
+        }
+      ]
+    },
+    "rellotges": {
+      "name": "sala.pont.rellotges.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont.rellotges.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

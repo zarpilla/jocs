@@ -617,6 +617,62 @@
           "dialogue": "nadia"
         }
       ]
+    },
+    "taula": {
+      "name": "sala.cuina.taula.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.taula.look"
+            }
+          ]
+        }
+      ]
+    },
+    "olles": {
+      "name": "sala.cuina.olles.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.olles.look"
+            }
+          ]
+        }
+      ]
+    },
+    "farina": {
+      "name": "sala.cuina.farina.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.farina.look"
+            }
+          ]
+        }
+      ]
+    },
+    "especies": {
+      "name": "sala.cuina.especies.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.especies.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

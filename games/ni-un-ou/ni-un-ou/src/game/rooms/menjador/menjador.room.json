@@ -261,6 +261,166 @@
         "x": 285,
         "y": 183
       }
+    },
+    {
+      "id": "cafetera",
+      "active": true,
+      "description": "cafetera",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 408,
+          "y": 100
+        },
+        {
+          "x": 426,
+          "y": 100
+        },
+        {
+          "x": 426,
+          "y": 128
+        },
+        {
+          "x": 408,
+          "y": 128
+        }
+      ],
+      "walkToPoint": {
+        "x": 442,
+        "y": 178
+      },
+      "lookAtPoint": {
+        "x": 417,
+        "y": 128
+      }
+    },
+    {
+      "id": "rellotges",
+      "active": true,
+      "description": "rellotges",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 219,
+          "y": 30
+        },
+        {
+          "x": 250,
+          "y": 30
+        },
+        {
+          "x": 250,
+          "y": 50
+        },
+        {
+          "x": 219,
+          "y": 50
+        }
+      ],
+      "walkToPoint": {
+        "x": 210,
+        "y": 146
+      },
+      "lookAtPoint": {
+        "x": 234,
+        "y": 50
+      }
+    },
+    {
+      "id": "ulls_bou",
+      "active": true,
+      "description": "ulls de bou",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 328,
+          "y": 36
+        },
+        {
+          "x": 392,
+          "y": 36
+        },
+        {
+          "x": 392,
+          "y": 62
+        },
+        {
+          "x": 328,
+          "y": 62
+        }
+      ],
+      "walkToPoint": {
+        "x": 396,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 360,
+        "y": 62
+      }
+    },
+    {
+      "id": "prestatge",
+      "active": true,
+      "description": "prestatge",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 408,
+          "y": 55
+        },
+        {
+          "x": 470,
+          "y": 55
+        },
+        {
+          "x": 470,
+          "y": 95
+        },
+        {
+          "x": 408,
+          "y": 95
+        }
+      ],
+      "walkToPoint": {
+        "x": 466,
+        "y": 170
+      },
+      "lookAtPoint": {
+        "x": 439,
+        "y": 95
+      }
+    },
+    {
+      "id": "tamboret",
+      "active": true,
+      "description": "tamboret",
+      "zIndex": 10,
+      "points": [
+        {
+          "x": 75,
+          "y": 195
+        },
+        {
+          "x": 125,
+          "y": 195
+        },
+        {
+          "x": 125,
+          "y": 255
+        },
+        {
+          "x": 75,
+          "y": 255
+        }
+      ],
+      "walkToPoint": {
+        "x": 100,
+        "y": 216
+      },
+      "lookAtPoint": {
+        "x": 100,
+        "y": 255
+      }
     }
   ],
   "points": [],

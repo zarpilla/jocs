@@ -515,3 +515,14 @@ GEOMETRIA = {
                     'intensity': 0.9} for lx, lz in LAMPS],
     },
 }
+
+# Coses per mirar (tasca 061), en píxels de pantalla.
+GEOMETRIA['things'].update({
+    'cadenats': {'rect': (337, 75, 383, 125), 'walk': (300, 194)},
+    'defenses_penjades': {'rect': (395, 55, 442, 142), 'walk': (416, 190)},
+    'salvavides': {'rect': (475, 85, 528, 145), 'walk': (500, 198)},
+    'corda': {'rect': (310, 182, 388, 226), 'walk': (348, 238)},
+    'caixa': {'rect': (450, 168, 506, 226), 'walk': (478, 238)},
+    'escombra': {'rect': (540, 92, 562, 202), 'walk': (550, 214)},
+    'bombona': {'rect': (562, 145, 578, 202), 'walk': (570, 214)},
+})

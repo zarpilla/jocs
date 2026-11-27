@@ -742,3 +742,11 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 061), en píxels de pantalla.
+GEOMETRIA['things'].update({
+    'galleda': {'rect': (210, 182, 222, 196), 'walk': (216, 208)},
+    'caixa': {'rect': (234, 165, 278, 193), 'walk': (296, 204)},
+    'bido': {'rect': (0, 160, 64, 260), 'walk': (40, 252)},
+    'salvavides': {'rect': (434, 108, 448, 128), 'walk': (450, 182)},
+})

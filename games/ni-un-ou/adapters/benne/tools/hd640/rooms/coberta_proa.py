@@ -643,3 +643,6 @@ GEOMETRIA['things'].update({
     'campana': {'rect': (474, 74, 496, 104), 'walk': (470, 200)},
     'extintor': {'rect': (142, 158, 154, 195), 'walk': (186, 236)},
 })
+
+# La balsa salvavides és el contenidor gris de dalt («BALSA»), no només el bastiment de sota (tasca 061).
+GEOMETRIA['things']['balsa'] = {**GEOMETRIA['things']['balsa'], 'rect': (505, 98, 618, 204)}

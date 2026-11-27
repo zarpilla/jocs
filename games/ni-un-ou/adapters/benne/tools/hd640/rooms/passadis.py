@@ -454,3 +454,13 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 061), en píxels de pantalla.
+GEOMETRIA['things'].update({
+    'carreto': {'rect': (238, 152, 288, 200), 'walk': (262, 212)},
+    'rellotge_paret': {'rect': (272, 96, 289, 111), 'walk': (302, 174)},
+    'extintor': {'rect': (122, 128, 138, 162), 'walk': (130, 196)},
+    'estora': {'rect': (68, 228, 116, 248), 'walk': (92, 230)},
+    'paperera': {'rect': (122, 180, 145, 204), 'walk': (132, 216)},
+    'caixa': {'rect': (530, 133, 607, 185), 'walk': (512, 178)},
+})

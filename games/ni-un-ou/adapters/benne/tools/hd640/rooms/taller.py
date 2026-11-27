@@ -532,3 +532,9 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 061), en píxels de pantalla.
+GEOMETRIA['things'].update({
+    'pots': {'rect': (415, 45, 610, 90), 'walk': (430, 188)},
+    'bido': {'rect': (295, 148, 330, 197), 'walk': (312, 208)},
+})

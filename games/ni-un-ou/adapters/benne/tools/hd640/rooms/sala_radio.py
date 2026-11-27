@@ -634,3 +634,13 @@ GEOMETRIA = {
         ],
     },
 }
+
+# Coses per mirar (tasca 061), en píxels de pantalla.
+GEOMETRIA['things'].update({
+    'suro': {'rect': (38, 65, 110, 116), 'walk': (86, 186)},
+    'rellotge': {'rect': (70, 30, 106, 62), 'walk': (114, 184)},
+    'caixa': {'rect': (422, 153, 471, 198), 'walk': (446, 210)},
+    'ull_bou': {'rect': (418, 33, 443, 58), 'walk': (430, 148)},
+    'llibres': {'rect': (400, 66, 456, 84), 'walk': (428, 148)},
+    'extintor': {'rect': (432, 105, 443, 140), 'walk': (436, 152)},
+})

@@ -321,6 +321,34 @@
           ]
         }
       ]
+    },
+    "pots": {
+      "name": "sala.taller.pots.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.pots.look"
+            }
+          ]
+        }
+      ]
+    },
+    "bido": {
+      "name": "sala.taller.bido.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.bido.look"
+            }
+          ]
+        }
+      ]
     }
   }
 }

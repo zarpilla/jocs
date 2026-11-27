@@ -2460,6 +2460,62 @@
                 ]
               }
             ]
+          },
+          "galleda": {
+            "name": "sala.coberta_popa.galleda.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.coberta_popa.galleda.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "caixa": {
+            "name": "sala.coberta_popa.caixa.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.coberta_popa.caixa.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "bido": {
+            "name": "sala.coberta_popa.bido.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.coberta_popa.bido.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "salvavides": {
+            "name": "sala.coberta_popa.salvavides.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.coberta_popa.salvavides.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -3662,6 +3718,62 @@
                 "dialogue": "nadia"
               }
             ]
+          },
+          "taula": {
+            "name": "sala.cuina.taula.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.cuina.taula.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "olles": {
+            "name": "sala.cuina.olles.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.cuina.olles.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "farina": {
+            "name": "sala.cuina.farina.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.cuina.farina.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "especies": {
+            "name": "sala.cuina.especies.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.cuina.especies.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -4860,6 +4972,90 @@
                 "dialogue": "juana"
               }
             ]
+          },
+          "cartell": {
+            "name": "sala.infermeria.cartell.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.infermeria.cartell.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "llum": {
+            "name": "sala.infermeria.llum.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.infermeria.llum.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "monitor": {
+            "name": "sala.infermeria.monitor.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.infermeria.monitor.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "cortina": {
+            "name": "sala.infermeria.cortina.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.infermeria.cortina.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "paperera": {
+            "name": "sala.infermeria.paperera.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.infermeria.paperera.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "ull_bou": {
+            "name": "sala.infermeria.ull_bou.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.infermeria.ull_bou.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -6030,6 +6226,76 @@
                 "dialogue": "nadia"
               }
             ]
+          },
+          "cafetera": {
+            "name": "sala.menjador.cafetera.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.menjador.cafetera.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "rellotges": {
+            "name": "sala.menjador.rellotges.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.menjador.rellotges.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "ulls_bou": {
+            "name": "sala.menjador.ulls_bou.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.menjador.ulls_bou.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "prestatge": {
+            "name": "sala.menjador.prestatge.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.menjador.prestatge.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "tamboret": {
+            "name": "sala.menjador.tamboret.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.menjador.tamboret.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -6546,6 +6812,118 @@
               ]
             },
             "interactions": []
+          },
+          "cadenats": {
+            "name": "sala.pallol.cadenats.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "var": "escena",
+                  "op": ">=",
+                  "value": 4
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pallol.cadenats.look_falta"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pallol.cadenats.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "defenses_penjades": {
+            "name": "sala.pallol.defenses_penjades.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pallol.defenses_penjades.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "salvavides": {
+            "name": "sala.pallol.salvavides.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pallol.salvavides.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "corda": {
+            "name": "sala.pallol.corda.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pallol.corda.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "caixa": {
+            "name": "sala.pallol.caixa.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pallol.caixa.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "escombra": {
+            "name": "sala.pallol.escombra.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pallol.escombra.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "bombona": {
+            "name": "sala.pallol.bombona.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pallol.bombona.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -7470,6 +7848,90 @@
                   {
                     "who": "player",
                     "text": "sala.passadis.planol.9"
+                  }
+                ]
+              }
+            ]
+          },
+          "carreto": {
+            "name": "sala.passadis.carreto.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.carreto.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "rellotge_paret": {
+            "name": "sala.passadis.rellotge_paret.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.rellotge_paret.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "extintor": {
+            "name": "sala.passadis.extintor.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.extintor.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "estora": {
+            "name": "sala.passadis.estora.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.estora.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "paperera": {
+            "name": "sala.passadis.paperera.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.paperera.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "caixa": {
+            "name": "sala.passadis.caixa.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.caixa.look"
                   }
                 ]
               }
@@ -9292,6 +9754,48 @@
                 ]
               }
             ]
+          },
+          "pantalla_radar": {
+            "name": "sala.pont.pantalla_radar.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pont.pantalla_radar.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "taula_cartes": {
+            "name": "sala.pont.taula_cartes.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pont.taula_cartes.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "rellotges": {
+            "name": "sala.pont.rellotges.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pont.rellotges.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -10067,6 +10571,62 @@
                   "flag": "registre_obert",
                   "is": false
                 }
+              }
+            ]
+          },
+          "congelador": {
+            "name": "sala.rebost.congelador.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.rebost.congelador.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "tamboret": {
+            "name": "sala.rebost.tamboret.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.rebost.tamboret.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "calendari": {
+            "name": "sala.rebost.calendari.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.rebost.calendari.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "valvula": {
+            "name": "sala.rebost.valvula.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.rebost.valvula.look"
+                  }
+                ]
               }
             ]
           }
@@ -12555,6 +13115,90 @@
                 ]
               }
             ]
+          },
+          "suro": {
+            "name": "sala.sala_radio.suro.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_radio.suro.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "rellotge": {
+            "name": "sala.sala_radio.rellotge.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_radio.rellotge.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "caixa": {
+            "name": "sala.sala_radio.caixa.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_radio.caixa.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "ull_bou": {
+            "name": "sala.sala_radio.ull_bou.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_radio.ull_bou.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "llibres": {
+            "name": "sala.sala_radio.llibres.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_radio.llibres.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "extintor": {
+            "name": "sala.sala_radio.extintor.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_radio.extintor.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -12931,6 +13575,34 @@
                   {
                     "who": "player",
                     "text": "sala.taller.banc.1"
+                  }
+                ]
+              }
+            ]
+          },
+          "pots": {
+            "name": "sala.taller.pots.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.taller.pots.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "bido": {
+            "name": "sala.taller.bido.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.taller.bido.look"
                   }
                 ]
               }
@@ -26509,6 +27181,21 @@
       "sala.pallol.inventari.nom": "inventari",
       "sala.pallol.marcel.1": "El Marcel, recolzat a les caixes. I en Diu, als seus peus, menjant sardines.",
       "sala.pallol.nom": "Pallol",
+      "sala.pallol.cadenats.nom": "cadenats",
+      "sala.pallol.cadenats.look": "El tauler dels cadenats, cadascun al seu clau.",
+      "sala.pallol.cadenats.look_falta": "El tauler dels cadenats. Hi ha un clau buit. Quants n'hi hauria d'haver?",
+      "sala.pallol.defenses_penjades.nom": "defenses",
+      "sala.pallol.defenses_penjades.look": "Les defenses, per quan atraquem. Aquí al Punt 7 fan de decorat.",
+      "sala.pallol.salvavides.nom": "salvavides",
+      "sala.pallol.salvavides.look": "Un salvavides de recanvi: «Arenga». Si cal, no ens en faltaran.",
+      "sala.pallol.corda.nom": "corda",
+      "sala.pallol.corda.look": "Un rotllo de corda gruixuda, a terra. És fàcil ensopegar-hi, i algú hi ensopega cada setmana.",
+      "sala.pallol.caixa.nom": "caixa",
+      "sala.pallol.caixa.look": "Una caixa de fusta, tancada. A la tapa, amb guix: «PER A PORT».",
+      "sala.pallol.escombra.nom": "escombra",
+      "sala.pallol.escombra.look": "Una escombra. Aquí, l'únic que s'escombra és la sal.",
+      "sala.pallol.bombona.nom": "bombona",
+      "sala.pallol.bombona.look": "Una bombona d'oxigen per al bufador. Ben lligada a la paret.",
       "sala.sala_bombes.escotilla.1": "L'escotilla, cap al passadís.",
       "sala.sala_bombes.escotilla.nom": "escotilla",
       "sala.sala_bombes.llibre.1": "El llibre de la Juana, a terra. I la llanterna, encesa.",
@@ -26962,10 +27649,26 @@
       "sala.sala_radio.bastida.2": "Tu acaba, noia. Tanca-ho, que no hi entri humitat.",
       "sala.taller.cisalla.7": "La cisalla. Per a una brida, sobra.",
       "sala.taller.cisalla.9": "La cisalla.",
+      "sala.taller.pots.nom": "pots",
+      "sala.taller.pots.look": "Pots de pintura antioxidant, de massilla i de greix. Cada un amb l'etiqueta escrita a mà per en Bastida.",
+      "sala.taller.bido.nom": "bidó",
+      "sala.taller.bido.look": "Un bidó de dissolvent. Fa una olor que t'enganxa el nas a la paret.",
       "sala.cabina_capitana.contracte.5": "És de la Capitana. No el toco.",
       "sala.coberta_popa.horitzo.2": "Els llums de popa, l'estela blanca i, a l'horitzó, cap a on anem, res.",
       "sala.sala_radio.aliats.1": "Doncs soles no en sortirem. Ens cal gent de bord al nostre costat: com més en siguin, més lluny arribarà la història.",
       "sala.sala_radio.aliats.2": "Gent de bord. Que no tingui una cisalla.",
+      "sala.sala_radio.suro.nom": "tauler de suro",
+      "sala.sala_radio.suro.look": "Freqüències, la foto d'un port i un pòsit groc: «La VHF també és per escoltar».",
+      "sala.sala_radio.rellotge.nom": "rellotge",
+      "sala.sala_radio.rellotge.look": "El rellotge de la ràdio, amb les franges de silenci pintades en vermell. Ara ningú no les respecta.",
+      "sala.sala_radio.caixa.nom": "caixa",
+      "sala.sala_radio.caixa.look": "Una caixa de fusta plena de recanvis: vàlvules, fusibles i cables enrotllats.",
+      "sala.sala_radio.ull_bou.nom": "ull de bou",
+      "sala.sala_radio.ull_bou.look": "L'ull de bou. Fora, el pal amb l'antena, tot just visible.",
+      "sala.sala_radio.llibres.nom": "llibres",
+      "sala.sala_radio.llibres.look": "Manuals de ràdio i un diccionari de codis. Tot amb les puntes doblegades.",
+      "sala.sala_radio.extintor.nom": "extintor",
+      "sala.sala_radio.extintor.look": "L'extintor de la ràdio, de diòxid de carboni. L'aigua i els aparells no es porten bé.",
       "sala.passadis.planol.nom": "plànol d'emergència",
       "sala.passadis.planol.1": "El plànol d'emergència. Me'l sé de memòria: tres campanyes.",
       "sala.passadis.planol.2": "A sota hi ha còpies plastificades, per a qui no se'l sap.",
@@ -27035,6 +27738,18 @@
       "sala.infermeria.fitxes.2_2": "Les fitxes mèdiques. Dues revisions fetes.",
       "sala.infermeria.fitxes.2_3": "Les fitxes mèdiques. Tres revisions fetes.",
       "sala.infermeria.fitxes.2_4": "Les fitxes mèdiques. Quatre revisions fetes.",
+      "sala.infermeria.cartell.nom": "cartell",
+      "sala.infermeria.cartell.look": "Com fer un embenat, en sis dibuixos. Els dibuixos fan més por que les ferides.",
+      "sala.infermeria.llum.nom": "llum articulat",
+      "sala.infermeria.llum.look": "El llum de cures, plegat contra la paret com un ocell adormit.",
+      "sala.infermeria.monitor.nom": "monitor",
+      "sala.infermeria.monitor.look": "La pantalla de la telemedicina. Si passa res greu, un metge de terra ho mira des d'aquí.",
+      "sala.infermeria.cortina.nom": "cortina",
+      "sala.infermeria.cortina.look": "La cortina per separar la llitera. Aquí dins, la intimitat és una tela de plàstic.",
+      "sala.infermeria.paperera.nom": "paperera",
+      "sala.infermeria.paperera.look": "La paperera de residus sanitaris. Millor no fer-hi cap ullada.",
+      "sala.infermeria.ull_bou.nom": "ull de bou",
+      "sala.infermeria.ull_bou.look": "Un ull de bou rodó i negre. A l'Atlàntic Nord, de nit, és com mirar dins d'un pou.",
       "sala.pont.terminal.1_xifres": "«SENYAL: {senyal}» · SAI: {sai} torns",
       "sala.pont.terminal.27_xifres": "SAI: {sai} torns",
       "sala.passadis.escala_amunt.8": "El pont és de l'Iri i de la Capitana. Jo allà dalt només faria nosa.",
@@ -27049,14 +27764,40 @@
       "sala.coberta_popa.marcel.mira": "El Marcel, amb la boca plena de croissant. Té cara de no haver dormit.",
       "sala.coberta_popa.nadia.mira": "La Nadia, amb el mòbil a la mà. Fa fotos del mar. O d'alguna cosa que hi ha al mar.",
       "sala.coberta_popa.tomas.mira": "En Tomàs reparteix croissants com qui reparteix medalles.",
+      "sala.coberta_popa.galleda.nom": "galleda",
+      "sala.coberta_popa.galleda.look": "Una galleda blava amb una corda lligada a la nansa. Per treure aigua de mar i rentar la coberta.",
+      "sala.coberta_popa.caixa.nom": "caixa de fusta",
+      "sala.coberta_popa.caixa.look": "Una caixa de fusta amb xarxes velles a dins. Fa olor de peix de fa tres campanyes.",
+      "sala.coberta_popa.bido.nom": "bidó",
+      "sala.coberta_popa.bido.look": "Un bidó de residus, ben lligat. Res no es llença per la borda en aquest vaixell.",
+      "sala.coberta_popa.salvavides.nom": "salvavides",
+      "sala.coberta_popa.salvavides.look": "Un salvavides penjat a la caseta, amb el nom del vaixell. Arenga.",
       "sala.cuina.tomas.mira": "En Tomàs. Farina fins als colzes, i un davantal amb les taques de tota una vida.",
       "sala.cuina.nadia.mira": "La Nadia, amb la cambra freda oberta i el mòbil a punt. Enxampada.",
+      "sala.cuina.taula.nom": "taula",
+      "sala.cuina.taula.look": "La taula de treball, d'acer, amb una post de tallar i un ganivet que talla més del que voldries.",
+      "sala.cuina.olles.nom": "paelles",
+      "sala.cuina.olles.look": "Paelles i olles penjades, ben netes. A la cuina, l'ordre és cosa d'en Tomàs.",
+      "sala.cuina.farina.nom": "farina",
+      "sala.cuina.farina.look": "Un sac de farina. A bord hi ha pa fresc cada dia: més del que hi ha a molts pisos de terra.",
+      "sala.cuina.especies.nom": "espècies",
+      "sala.cuina.especies.look": "Pebre, pebre vermell, comí, llorer... En Tomàs diu que el mar només té gust de sal.",
       "sala.menjador.capitana.mira": "La Capitana, dreta al cap de la taula. No ha tocat el te.",
       "sala.menjador.bastida.mira": "En Bastida. La pipa apagada, i les mans quietes damunt la taula. Massa quietes.",
       "sala.menjador.marcel.mira": "El Marcel, encongit a la cadira, com si l'acusat fos ell.",
       "sala.menjador.tomas.mira": "En Tomàs ha portat te i galetes. Ningú no en menja.",
       "sala.menjador.juana.mira": "La Juana, amb dues mantes i la bossa a la falda. No la deixarà anar.",
       "sala.menjador.nadia.mira": "La Nadia, amb el mòbil a la mà. Ara treballa per a nosaltres. Crec.",
+      "sala.menjador.cafetera.nom": "cafetera",
+      "sala.menjador.cafetera.look": "La cafetera gran, sempre engegada. Aquí el cafè no és una beguda: és combustible.",
+      "sala.menjador.rellotges.nom": "rellotges",
+      "sala.menjador.rellotges.look": "Dos rellotges: l'hora del vaixell i l'hora de casa. Cap dels dos no passa més de pressa.",
+      "sala.menjador.ulls_bou.nom": "ulls de bou",
+      "sala.menjador.ulls_bou.look": "Dos ulls de bou. Fora, només mar i més mar.",
+      "sala.menjador.prestatge.nom": "prestatge",
+      "sala.menjador.prestatge.look": "Llibres inflats d'humitat i les tasses de cadascú, penjades pel seu nom.",
+      "sala.menjador.tamboret.nom": "tamboret",
+      "sala.menjador.tamboret.look": "Un tamboret cargolat al terra. Aquí, si no està cargolat, acaba a l'altra punta.",
       "munta.mira": "A la safata hi ha alguna cosa.",
       "munta.mira.travesser": "A la safata hi ha el travesser de la llitera.",
       "munta.mira.tram": "A la safata hi ha el tram de cable tallat.",
@@ -27070,12 +27811,38 @@
       "munta.mira.mapa": "A la safata hi ha el plànol.",
       "sala.pal.antena.cisalla": "Amb la cisalla, no. Aquí dalt, si rellisca, l'antena acaba al mar. El nus es desfà amb els dits.",
       "sala.rebost.registre.cisalla": "És un pany, no un cadenat. Aquí la cisalla no hi mossega.",
+      "sala.rebost.congelador.nom": "congelador",
+      "sala.rebost.congelador.look": "El congelador del peix. Zumzeja com si es queixés de la feina.",
+      "sala.rebost.tamboret.nom": "tamboret",
+      "sala.rebost.tamboret.look": "Un tamboret amb un plat blau a sobre. Algú hi berena d'amagat, entre caixes de patates.",
+      "sala.rebost.calendari.nom": "calendari",
+      "sala.rebost.calendari.look": "El calendari d'una llotja, amb un lluç a la foto. Els dies de descàrrega, marcats en vermell.",
+      "sala.rebost.valvula.nom": "vàlvula",
+      "sala.rebost.valvula.look": "La vàlvula de pas de l'aigua del rebost. Vermella, perquè no la toqui qui no sap què fa.",
       "sala.sala_maquines.boca.parla": "Hola? ...Res. Des que hi ha walkies, aquí dins no hi parla ningú.",
       "sala.pont.boca.parla": "Hola? ...Res. A l'altra banda deu haver-hi un pam de pols.",
       "sala.pont.capitana.tram.1": "Tallat, trencat... Me l'arregles igual, Iri. Vull avisar l'oficina.",
       "sala.pont.capitana.tram.2": "A bord, ningú no vol veure res.",
+      "sala.pont.pantalla_radar.nom": "radar",
+      "sala.pont.pantalla_radar.look": "El radar. Ara mateix només hi ha mar: ni un vaixell en milles a la rodona.",
+      "sala.pont.taula_cartes.nom": "taula de cartes",
+      "sala.pont.taula_cartes.look": "La taula de cartes, amb la carta nàutica del Punt 7 i el rumb marcat a llapis.",
+      "sala.pont.rellotges.nom": "rellotges",
+      "sala.pont.rellotges.look": "El rellotge del pont i el baròmetre. El baròmetre baixa i baixa.",
       "sala.passadis.porta_menjador.5": "Al menjador, ara, no hi tinc res a fer. I com menys em vegin voltar pel vaixell, millor.",
       "sala.passadis.porta_capitana.6": "Si pico a la cabina, la Capitana voldrà saber què hi faig, fora de màquines.",
+      "sala.passadis.carreto.nom": "carretó",
+      "sala.passadis.carreto.look": "El carretó del menjar dels malalts, amb una safata i un termo. Ningú no l'ha tornat a la cuina.",
+      "sala.passadis.rellotge_paret.nom": "rellotge",
+      "sala.passadis.rellotge_paret.look": "El rellotge del passadís. Va cinc minuts avançat, perquè ningú no faci tard a la guàrdia.",
+      "sala.passadis.extintor.nom": "extintor",
+      "sala.passadis.extintor.look": "L'extintor del passadís de dalt, amb la seva fitxa de revisió. Tot en ordre.",
+      "sala.passadis.estora.nom": "estora",
+      "sala.passadis.estora.look": "Una estora d'espart, xopa de sal. Per eixugar-se les botes abans d'entrar al menjador.",
+      "sala.passadis.paperera.nom": "paperera",
+      "sala.passadis.paperera.look": "Una paperera blava, mig plena de llaunes de refresc.",
+      "sala.passadis.caixa.nom": "caixa",
+      "sala.passadis.caixa.look": "Una caixa de pintura antilliscant, amb ratlles de perill. Esperant el dia que faci bo.",
       "sala.camarot_iri.cadira.nom": "cadira",
       "sala.camarot_iri.cadira.look": "La cadira plegable. Fa més de penjador que de cadira: la roba d'ahir encara hi és.",
       "sala.passadis_baix.suro.nom": "tauler de suro",

@@ -915,6 +915,90 @@
           ]
         }
       ]
+    },
+    "carreto": {
+      "name": "sala.passadis.carreto.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.carreto.look"
+            }
+          ]
+        }
+      ]
+    },
+    "rellotge_paret": {
+      "name": "sala.passadis.rellotge_paret.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.rellotge_paret.look"
+            }
+          ]
+        }
+      ]
+    },
+    "extintor": {
+      "name": "sala.passadis.extintor.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.extintor.look"
+            }
+          ]
+        }
+      ]
+    },
+    "estora": {
+      "name": "sala.passadis.estora.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.estora.look"
+            }
+          ]
+        }
+      ]
+    },
+    "paperera": {
+      "name": "sala.passadis.paperera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.paperera.look"
+            }
+          ]
+        }
+      ]
+    },
+    "caixa": {
+      "name": "sala.passadis.caixa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.caixa.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

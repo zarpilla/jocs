@@ -278,6 +278,198 @@
         "x": 176,
         "y": 105
       }
+    },
+    {
+      "id": "cartell",
+      "active": true,
+      "description": "cartell",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 462,
+          "y": 52
+        },
+        {
+          "x": 498,
+          "y": 52
+        },
+        {
+          "x": 498,
+          "y": 95
+        },
+        {
+          "x": 462,
+          "y": 95
+        }
+      ],
+      "walkToPoint": {
+        "x": 476,
+        "y": 178
+      },
+      "lookAtPoint": {
+        "x": 480,
+        "y": 95
+      }
+    },
+    {
+      "id": "llum",
+      "active": true,
+      "description": "llum articulat",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 415,
+          "y": 40
+        },
+        {
+          "x": 448,
+          "y": 40
+        },
+        {
+          "x": 448,
+          "y": 80
+        },
+        {
+          "x": 415,
+          "y": 80
+        }
+      ],
+      "walkToPoint": {
+        "x": 416,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 431,
+        "y": 80
+      }
+    },
+    {
+      "id": "monitor",
+      "active": true,
+      "description": "monitor",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 528,
+          "y": 60
+        },
+        {
+          "x": 562,
+          "y": 60
+        },
+        {
+          "x": 562,
+          "y": 112
+        },
+        {
+          "x": 528,
+          "y": 112
+        }
+      ],
+      "walkToPoint": {
+        "x": 504,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 545,
+        "y": 112
+      }
+    },
+    {
+      "id": "cortina",
+      "active": true,
+      "description": "cortina",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 0,
+          "y": 20
+        },
+        {
+          "x": 62,
+          "y": 20
+        },
+        {
+          "x": 62,
+          "y": 215
+        },
+        {
+          "x": 0,
+          "y": 215
+        }
+      ],
+      "walkToPoint": {
+        "x": 54,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 31,
+        "y": 215
+      }
+    },
+    {
+      "id": "paperera",
+      "active": true,
+      "description": "paperera",
+      "zIndex": 10,
+      "points": [
+        {
+          "x": 52,
+          "y": 222
+        },
+        {
+          "x": 102,
+          "y": 222
+        },
+        {
+          "x": 102,
+          "y": 260
+        },
+        {
+          "x": 52,
+          "y": 260
+        }
+      ],
+      "walkToPoint": {
+        "x": 76,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 77,
+        "y": 260
+      }
+    },
+    {
+      "id": "ull_bou",
+      "active": true,
+      "description": "ull de bou",
+      "zIndex": 11,
+      "points": [
+        {
+          "x": 272,
+          "y": 40
+        },
+        {
+          "x": 296,
+          "y": 40
+        },
+        {
+          "x": 296,
+          "y": 66
+        },
+        {
+          "x": 272,
+          "y": 66
+        }
+      ],
+      "walkToPoint": {
+        "x": 254,
+        "y": 160
+      },
+      "lookAtPoint": {
+        "x": 284,
+        "y": 66
+      }
     }
   ],
   "points": [],

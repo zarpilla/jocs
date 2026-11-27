@@ -526,3 +526,11 @@ GEOMETRIA = {
                     'intensity': 0.8} for x, z in LAMPS],
     },
 }
+
+# Coses per mirar (tasca 061), en píxels de pantalla.
+GEOMETRIA['things'].update({
+    'congelador': {'rect': (290, 112, 375, 168), 'walk': (394, 182)},
+    'tamboret': {'rect': (263, 125, 292, 168), 'walk': (250, 184)},
+    'calendari': {'rect': (303, 55, 338, 105), 'walk': (370, 152)},
+    'valvula': {'rect': (234, 78, 250, 94), 'walk': (248, 164)},
+})

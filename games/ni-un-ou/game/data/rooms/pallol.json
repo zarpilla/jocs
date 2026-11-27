@@ -208,6 +208,118 @@
         ]
       },
       "interactions": []
+    },
+    "cadenats": {
+      "name": "sala.pallol.cadenats.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "var": "escena",
+            "op": ">=",
+            "value": 4
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.cadenats.look_falta"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.cadenats.look"
+            }
+          ]
+        }
+      ]
+    },
+    "defenses_penjades": {
+      "name": "sala.pallol.defenses_penjades.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.defenses_penjades.look"
+            }
+          ]
+        }
+      ]
+    },
+    "salvavides": {
+      "name": "sala.pallol.salvavides.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.salvavides.look"
+            }
+          ]
+        }
+      ]
+    },
+    "corda": {
+      "name": "sala.pallol.corda.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.corda.look"
+            }
+          ]
+        }
+      ]
+    },
+    "caixa": {
+      "name": "sala.pallol.caixa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.caixa.look"
+            }
+          ]
+        }
+      ]
+    },
+    "escombra": {
+      "name": "sala.pallol.escombra.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.escombra.look"
+            }
+          ]
+        }
+      ]
+    },
+    "bombona": {
+      "name": "sala.pallol.bombona.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.bombona.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

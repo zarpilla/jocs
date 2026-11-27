@@ -370,6 +370,198 @@
         "x": 418,
         "y": 110
       }
+    },
+    {
+      "id": "carreto",
+      "active": true,
+      "description": "carretó",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 238,
+          "y": 152
+        },
+        {
+          "x": 288,
+          "y": 152
+        },
+        {
+          "x": 288,
+          "y": 200
+        },
+        {
+          "x": 238,
+          "y": 200
+        }
+      ],
+      "walkToPoint": {
+        "x": 262,
+        "y": 212
+      },
+      "lookAtPoint": {
+        "x": 263,
+        "y": 200
+      }
+    },
+    {
+      "id": "extintor",
+      "active": true,
+      "description": "extintor",
+      "zIndex": 10,
+      "points": [
+        {
+          "x": 122,
+          "y": 128
+        },
+        {
+          "x": 138,
+          "y": 128
+        },
+        {
+          "x": 138,
+          "y": 162
+        },
+        {
+          "x": 122,
+          "y": 162
+        }
+      ],
+      "walkToPoint": {
+        "x": 130,
+        "y": 196
+      },
+      "lookAtPoint": {
+        "x": 130,
+        "y": 162
+      }
+    },
+    {
+      "id": "estora",
+      "active": true,
+      "description": "estora",
+      "zIndex": 11,
+      "points": [
+        {
+          "x": 68,
+          "y": 228
+        },
+        {
+          "x": 116,
+          "y": 228
+        },
+        {
+          "x": 116,
+          "y": 248
+        },
+        {
+          "x": 68,
+          "y": 248
+        }
+      ],
+      "walkToPoint": {
+        "x": 92,
+        "y": 230
+      },
+      "lookAtPoint": {
+        "x": 92,
+        "y": 248
+      }
+    },
+    {
+      "id": "paperera",
+      "active": true,
+      "description": "paperera",
+      "zIndex": 12,
+      "points": [
+        {
+          "x": 122,
+          "y": 180
+        },
+        {
+          "x": 145,
+          "y": 180
+        },
+        {
+          "x": 145,
+          "y": 204
+        },
+        {
+          "x": 122,
+          "y": 204
+        }
+      ],
+      "walkToPoint": {
+        "x": 132,
+        "y": 216
+      },
+      "lookAtPoint": {
+        "x": 133,
+        "y": 204
+      }
+    },
+    {
+      "id": "caixa",
+      "active": true,
+      "description": "caixa",
+      "zIndex": 13,
+      "points": [
+        {
+          "x": 530,
+          "y": 133
+        },
+        {
+          "x": 607,
+          "y": 133
+        },
+        {
+          "x": 607,
+          "y": 185
+        },
+        {
+          "x": 530,
+          "y": 185
+        }
+      ],
+      "walkToPoint": {
+        "x": 512,
+        "y": 178
+      },
+      "lookAtPoint": {
+        "x": 568,
+        "y": 185
+      }
+    },
+    {
+      "id": "rellotge_paret",
+      "active": true,
+      "description": "rellotge",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 272,
+          "y": 96
+        },
+        {
+          "x": 289,
+          "y": 96
+        },
+        {
+          "x": 289,
+          "y": 111
+        },
+        {
+          "x": 272,
+          "y": 111
+        }
+      ],
+      "walkToPoint": {
+        "x": 302,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 280,
+        "y": 111
+      }
     }
   ],
   "points": [],

@@ -236,6 +236,230 @@
         "x": 64,
         "y": 81
       }
+    },
+    {
+      "id": "cadenats",
+      "active": true,
+      "description": "cadenats",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 337,
+          "y": 75
+        },
+        {
+          "x": 383,
+          "y": 75
+        },
+        {
+          "x": 383,
+          "y": 125
+        },
+        {
+          "x": 337,
+          "y": 125
+        }
+      ],
+      "walkToPoint": {
+        "x": 300,
+        "y": 194
+      },
+      "lookAtPoint": {
+        "x": 360,
+        "y": 125
+      }
+    },
+    {
+      "id": "salvavides",
+      "active": true,
+      "description": "salvavides",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 475,
+          "y": 85
+        },
+        {
+          "x": 528,
+          "y": 85
+        },
+        {
+          "x": 528,
+          "y": 145
+        },
+        {
+          "x": 475,
+          "y": 145
+        }
+      ],
+      "walkToPoint": {
+        "x": 500,
+        "y": 198
+      },
+      "lookAtPoint": {
+        "x": 501,
+        "y": 145
+      }
+    },
+    {
+      "id": "corda",
+      "active": true,
+      "description": "corda",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 310,
+          "y": 182
+        },
+        {
+          "x": 388,
+          "y": 182
+        },
+        {
+          "x": 388,
+          "y": 226
+        },
+        {
+          "x": 310,
+          "y": 226
+        }
+      ],
+      "walkToPoint": {
+        "x": 348,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 349,
+        "y": 226
+      }
+    },
+    {
+      "id": "caixa",
+      "active": true,
+      "description": "caixa",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 450,
+          "y": 168
+        },
+        {
+          "x": 506,
+          "y": 168
+        },
+        {
+          "x": 506,
+          "y": 226
+        },
+        {
+          "x": 450,
+          "y": 226
+        }
+      ],
+      "walkToPoint": {
+        "x": 478,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 478,
+        "y": 226
+      }
+    },
+    {
+      "id": "escombra",
+      "active": true,
+      "description": "escombra",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 540,
+          "y": 92
+        },
+        {
+          "x": 562,
+          "y": 92
+        },
+        {
+          "x": 562,
+          "y": 202
+        },
+        {
+          "x": 540,
+          "y": 202
+        }
+      ],
+      "walkToPoint": {
+        "x": 550,
+        "y": 214
+      },
+      "lookAtPoint": {
+        "x": 551,
+        "y": 202
+      }
+    },
+    {
+      "id": "bombona",
+      "active": true,
+      "description": "bombona",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 562,
+          "y": 145
+        },
+        {
+          "x": 578,
+          "y": 145
+        },
+        {
+          "x": 578,
+          "y": 202
+        },
+        {
+          "x": 562,
+          "y": 202
+        }
+      ],
+      "walkToPoint": {
+        "x": 570,
+        "y": 214
+      },
+      "lookAtPoint": {
+        "x": 570,
+        "y": 202
+      }
+    },
+    {
+      "id": "defenses_penjades",
+      "active": true,
+      "description": "defenses",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 395,
+          "y": 55
+        },
+        {
+          "x": 442,
+          "y": 55
+        },
+        {
+          "x": 442,
+          "y": 142
+        },
+        {
+          "x": 395,
+          "y": 142
+        }
+      ],
+      "walkToPoint": {
+        "x": 416,
+        "y": 190
+      },
+      "lookAtPoint": {
+        "x": 418,
+        "y": 142
+      }
     }
   ],
   "points": [],

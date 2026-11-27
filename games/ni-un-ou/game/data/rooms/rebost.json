@@ -532,6 +532,62 @@
           }
         }
       ]
+    },
+    "congelador": {
+      "name": "sala.rebost.congelador.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.rebost.congelador.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tamboret": {
+      "name": "sala.rebost.tamboret.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.rebost.tamboret.look"
+            }
+          ]
+        }
+      ]
+    },
+    "calendari": {
+      "name": "sala.rebost.calendari.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.rebost.calendari.look"
+            }
+          ]
+        }
+      ]
+    },
+    "valvula": {
+      "name": "sala.rebost.valvula.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.rebost.valvula.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

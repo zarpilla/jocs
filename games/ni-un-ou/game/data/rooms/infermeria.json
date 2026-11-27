@@ -910,6 +910,90 @@
           "dialogue": "juana"
         }
       ]
+    },
+    "cartell": {
+      "name": "sala.infermeria.cartell.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.cartell.look"
+            }
+          ]
+        }
+      ]
+    },
+    "llum": {
+      "name": "sala.infermeria.llum.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.llum.look"
+            }
+          ]
+        }
+      ]
+    },
+    "monitor": {
+      "name": "sala.infermeria.monitor.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.monitor.look"
+            }
+          ]
+        }
+      ]
+    },
+    "cortina": {
+      "name": "sala.infermeria.cortina.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.cortina.look"
+            }
+          ]
+        }
+      ]
+    },
+    "paperera": {
+      "name": "sala.infermeria.paperera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.paperera.look"
+            }
+          ]
+        }
+      ]
+    },
+    "ull_bou": {
+      "name": "sala.infermeria.ull_bou.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.ull_bou.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

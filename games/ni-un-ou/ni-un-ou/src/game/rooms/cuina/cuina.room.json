@@ -298,6 +298,134 @@
         "x": 404,
         "y": 171
       }
+    },
+    {
+      "id": "taula",
+      "active": true,
+      "description": "taula",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 222,
+          "y": 130
+        },
+        {
+          "x": 330,
+          "y": 130
+        },
+        {
+          "x": 330,
+          "y": 200
+        },
+        {
+          "x": 222,
+          "y": 200
+        }
+      ],
+      "walkToPoint": {
+        "x": 276,
+        "y": 212
+      },
+      "lookAtPoint": {
+        "x": 276,
+        "y": 200
+      }
+    },
+    {
+      "id": "olles",
+      "active": true,
+      "description": "paelles",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 200,
+          "y": 55
+        },
+        {
+          "x": 262,
+          "y": 55
+        },
+        {
+          "x": 262,
+          "y": 100
+        },
+        {
+          "x": 200,
+          "y": 100
+        }
+      ],
+      "walkToPoint": {
+        "x": 204,
+        "y": 140
+      },
+      "lookAtPoint": {
+        "x": 231,
+        "y": 100
+      }
+    },
+    {
+      "id": "farina",
+      "active": true,
+      "description": "farina",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 480,
+          "y": 150
+        },
+        {
+          "x": 505,
+          "y": 150
+        },
+        {
+          "x": 505,
+          "y": 182
+        },
+        {
+          "x": 480,
+          "y": 182
+        }
+      ],
+      "walkToPoint": {
+        "x": 492,
+        "y": 194
+      },
+      "lookAtPoint": {
+        "x": 492,
+        "y": 182
+      }
+    },
+    {
+      "id": "especies",
+      "active": true,
+      "description": "espècies",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 455,
+          "y": 32
+        },
+        {
+          "x": 525,
+          "y": 32
+        },
+        {
+          "x": 525,
+          "y": 46
+        },
+        {
+          "x": 455,
+          "y": 46
+        }
+      ],
+      "walkToPoint": {
+        "x": 458,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 490,
+        "y": 46
+      }
     }
   ],
   "points": [],

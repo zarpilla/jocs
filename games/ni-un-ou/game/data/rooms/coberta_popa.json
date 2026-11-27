@@ -705,6 +705,62 @@
           ]
         }
       ]
+    },
+    "galleda": {
+      "name": "sala.coberta_popa.galleda.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.coberta_popa.galleda.look"
+            }
+          ]
+        }
+      ]
+    },
+    "caixa": {
+      "name": "sala.coberta_popa.caixa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.coberta_popa.caixa.look"
+            }
+          ]
+        }
+      ]
+    },
+    "bido": {
+      "name": "sala.coberta_popa.bido.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.coberta_popa.bido.look"
+            }
+          ]
+        }
+      ]
+    },
+    "salvavides": {
+      "name": "sala.coberta_popa.salvavides.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.coberta_popa.salvavides.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

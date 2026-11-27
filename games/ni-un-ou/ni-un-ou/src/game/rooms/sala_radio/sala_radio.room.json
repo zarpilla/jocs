@@ -212,6 +212,198 @@
         "x": 354,
         "y": 116
       }
+    },
+    {
+      "id": "suro",
+      "active": true,
+      "description": "tauler de suro",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 38,
+          "y": 65
+        },
+        {
+          "x": 110,
+          "y": 65
+        },
+        {
+          "x": 110,
+          "y": 116
+        },
+        {
+          "x": 38,
+          "y": 116
+        }
+      ],
+      "walkToPoint": {
+        "x": 86,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 74,
+        "y": 116
+      }
+    },
+    {
+      "id": "rellotge",
+      "active": true,
+      "description": "rellotge",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 70,
+          "y": 30
+        },
+        {
+          "x": 106,
+          "y": 30
+        },
+        {
+          "x": 106,
+          "y": 62
+        },
+        {
+          "x": 70,
+          "y": 62
+        }
+      ],
+      "walkToPoint": {
+        "x": 114,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 88,
+        "y": 62
+      }
+    },
+    {
+      "id": "caixa",
+      "active": true,
+      "description": "caixa",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 422,
+          "y": 153
+        },
+        {
+          "x": 471,
+          "y": 153
+        },
+        {
+          "x": 471,
+          "y": 198
+        },
+        {
+          "x": 422,
+          "y": 198
+        }
+      ],
+      "walkToPoint": {
+        "x": 446,
+        "y": 210
+      },
+      "lookAtPoint": {
+        "x": 446,
+        "y": 198
+      }
+    },
+    {
+      "id": "ull_bou",
+      "active": true,
+      "description": "ull de bou",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 418,
+          "y": 33
+        },
+        {
+          "x": 443,
+          "y": 33
+        },
+        {
+          "x": 443,
+          "y": 58
+        },
+        {
+          "x": 418,
+          "y": 58
+        }
+      ],
+      "walkToPoint": {
+        "x": 430,
+        "y": 148
+      },
+      "lookAtPoint": {
+        "x": 430,
+        "y": 58
+      }
+    },
+    {
+      "id": "llibres",
+      "active": true,
+      "description": "llibres",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 400,
+          "y": 66
+        },
+        {
+          "x": 456,
+          "y": 66
+        },
+        {
+          "x": 456,
+          "y": 84
+        },
+        {
+          "x": 400,
+          "y": 84
+        }
+      ],
+      "walkToPoint": {
+        "x": 428,
+        "y": 148
+      },
+      "lookAtPoint": {
+        "x": 428,
+        "y": 84
+      }
+    },
+    {
+      "id": "extintor",
+      "active": true,
+      "description": "extintor",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 432,
+          "y": 105
+        },
+        {
+          "x": 443,
+          "y": 105
+        },
+        {
+          "x": 443,
+          "y": 140
+        },
+        {
+          "x": 432,
+          "y": 140
+        }
+      ],
+      "walkToPoint": {
+        "x": 436,
+        "y": 152
+      },
+      "lookAtPoint": {
+        "x": 437,
+        "y": 140
+      }
     }
   ],
   "points": [],
