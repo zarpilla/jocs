@@ -7,7 +7,7 @@
  */
 import { HotspotHandle, PropHandle, ambient, camera, defineVars, events, game, inventory, player, setOutfit, shade, type FallbackTarget, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
-import { Narrative, type StageCue, type Condition, type Effect, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
+import { Narrative, type StageCue, type Condition, type Effect, type GameContent, type InteractionResult, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
 import bundle from './content.generated.json';
 import mapping from './mapping.generated.json';
@@ -730,6 +730,41 @@ export function applyStageNow(cue: StageCue) {
     const tag = `${id ? narrative.outfitOf(id) : ''}${cue.gest}${dir}`;
     if (actor.animation !== tag) actor.animation = tag;
   }
+}
+
+// ─── El gest d'acció: agafar, fer servir, donar ──────────────────────────────
+
+/**
+ * El gest que fa sola la protagonista quan agafa, fa servir o dona alguna cosa de la sala (tasca 005 de Suma Zero):
+ * l'animació `<roba>Agafa<direcció>` del seu full, si n'hi ha per a la roba que porta (els jocs que no la dibuixen, o
+ * les robes que no la tenen, no fan res). Només si l'acció ha fet alguna cosa (ha canviat l'estat o l'inventari: un
+ * «no el puc agafar» no estira el braç), si no obre una conversa i si les indicacions d'escena de la primera línia no
+ * ja mouen la protagonista.
+ */
+export const GEST_ACCIO = 'Agafa';
+/** Quant dura (el full el dibuixa en 5 fotogrames de 100 ms). */
+export const GEST_ACCIO_S = 0.5;
+const VERBS_AMB_GEST = new Set(['pickUp', 'use', 'give']);
+
+/** Una empremta del que una acció pot canviar (l'estat i l'inventari de qui juga): si canvia, l'acció ha fet alguna cosa. */
+export function actionFootprint(): string {
+  const s = narrative.state;
+  const who = world.activeProtagonist() ?? undefined;
+  const items = Object.keys(content.items).filter((i) => world.hasItem(i, who));
+  return JSON.stringify([s.flags, s.vars, s.interactions, s.quests, items]);
+}
+
+/** Si la protagonista ha de fer el gest d'acció després de resoldre `verb` sobre una cosa de tipus `kind`. */
+export function wantsActionGesture(verb: string, kind: string, before: string, result: InteractionResult | null): boolean {
+  if (!result || result.dialogue || kind === 'item' || !VERBS_AMB_GEST.has(verb)) return false;
+  if (result.lines[0]?.stage?.some((c) => c.who === 'player' && (c.gest !== undefined || c.anim !== undefined || c.walk !== undefined))) return false;
+  const id = world.activeProtagonist();
+  const anims = characterFiles.find((c) => c.id === player.id)?.animations;
+  if (!id || !anims) return false;
+  const facing = (player as unknown as { facing: string }).facing;
+  const dir = ({ R: 'L', UR: 'UL', DR: 'DL' } as Record<string, string>)[facing] ?? facing;
+  if (!anims[`${narrative.outfitOf(id)}${GEST_ACCIO}${dir}`]) return false;
+  return actionFootprint() !== before;
 }
 
 /**
