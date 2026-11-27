@@ -80,6 +80,38 @@
     "BlinkL": {
       "loop": false,
       "frameDuration": 75
+    },
+    "LliureIdleL": {
+      "loop": true,
+      "frameDuration": 380
+    },
+    "LliureIdleD": {
+      "loop": true,
+      "frameDuration": 380
+    },
+    "LliureIdleU": {
+      "loop": true,
+      "frameDuration": 380
+    },
+    "LliureTalkL": {
+      "loop": true,
+      "frameDuration": 170
+    },
+    "LliureTalkD": {
+      "loop": true,
+      "frameDuration": 170
+    },
+    "LliureTalkU": {
+      "loop": true,
+      "frameDuration": 170
+    },
+    "LliureBlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LliureBlinkL": {
+      "loop": false,
+      "frameDuration": 75
     }
   },
   "idleActions": [

@@ -271,19 +271,21 @@ def persona(cid, spec, walk_speed, verb, walk=(90, 100)):
 # ─── Criatures ──────────────────────────────────────────────────────────────
 
 def criatura(cid, draw, feet, idle, talk, idle_ms, talk_ms, verb, davant, walk_speed=60, camina=False,
-             walk_ms=(110, 120)):
+             walk_ms=(110, 120), roba=None):
     """`draw(facing, talk=, closed=, k=)` → imatge. `idle`: els k de l'Idle; `talk`: [(talk, k)] de la Talk.
-    `camina`: també WalkL/D/U, de sis fotogrames (`draw(facing, walk=0..5)`)."""
+    `camina`: també WalkL/D/U, de sis fotogrames (`draw(facing, walk=0..5)`). `roba`: {nom: draw} → les mateixes
+    etiquetes amb el prefix `nom` (la roba que es tria a game/data/characters.json, `outfit`)."""
     tags = []
-    for f in 'LDU':
-        tags.append((f'Idle{f}', [draw(f, k=k) for k in idle]))
-    if camina:
+    for prefix, dr in [('', draw)] + list((roba or {}).items()):
         for f in 'LDU':
-            tags.append((f'Walk{f}', [draw(f, walk=w) for w in range(6)]))
-    for f in 'LDU':
-        tags.append((f'Talk{f}', [draw(f, talk=t and f != 'U', k=k) for t, k in talk]))
-    for f in 'DL':
-        tags.append((f'Blink{f}', [draw(f, closed=True, k=idle[0])] * 2))
+            tags.append((f'{prefix}Idle{f}', [dr(f, k=k) for k in idle]))
+        if camina:
+            for f in 'LDU':
+                tags.append((f'{prefix}Walk{f}', [dr(f, walk=w) for w in range(6)]))
+        for f in 'LDU':
+            tags.append((f'{prefix}Talk{f}', [dr(f, talk=t and f != 'U', k=k) for t, k in talk]))
+        for f in 'DL':
+            tags.append((f'{prefix}Blink{f}', [dr(f, closed=True, k=idle[0])] * 2))
     return write(cid, tags, feet, {
         'walkSpeed': walk_speed, 'davant': davant, 'defaultVerb': verb,
         'animations': durations(tags, walk=walk_ms, talk=talk_ms, idle=idle_ms),
@@ -331,7 +333,8 @@ def repartiment():
         'bufo': lambda: criatura('bufo', gripau_draw('bufo'), A.GRIPAU_FEET, (0, 1, 2, 1), [(False, 0), (True, 0)],
                                  420, 180, 'talkTo', 26),
         'gripau': lambda: criatura('gripau', gripau_draw('gripau'), A.GRIPAU_FEET, (0, 1, 2, 1),
-                                   [(False, 0), (True, 0)], 380, 170, 'talkTo', 26),
+                                   [(False, 0), (True, 0)], 380, 170, 'talkTo', 26,
+                                   roba={'Lliure': gripau_draw('gripau_lliure')}),
     }
 
 

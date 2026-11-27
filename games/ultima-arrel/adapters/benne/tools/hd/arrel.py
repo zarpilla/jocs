@@ -1486,6 +1486,8 @@ GRIPAUS = {
     'bufo': {'skin': TOAD_B, 'belly': BELLY_B, 'vest': VEST_R, 'visor': VISOR_G, 'segell': True, 'cadena': True},
     'gripau': {'skin': TOAD_G, 'belly': BELLY_G, 'vest': VEST_Y, 'visor': VISOR_N, 'pancarta': True},
 }
+# el vaguista quan s'acaba la vaga: ha abaixat la pancarta (la roba `Lliure`)
+GRIPAUS['gripau_lliure'] = {**GRIPAUS['gripau'], 'pancarta': False}
 
 
 def _warts(fg, mat, cx, cy, rx, ry, seed):

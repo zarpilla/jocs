@@ -574,6 +574,14 @@
         "verb": "talkTo",
         "dialogue": "gripau"
       }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "flag": "aigua_tornada"
+        },
+        "name": "Lliure"
+      }
     ]
   },
   "pla": {

@@ -25,15 +25,15 @@
       "frame": {
         "x": 640,
         "y": 0,
-        "w": 231,
+        "w": 368,
         "h": 169
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 345,
+        "x": 208,
         "y": 70,
-        "w": 231,
+        "w": 368,
         "h": 169
       },
       "sourceSize": {
@@ -44,7 +44,7 @@
     },
     "toll_gripaus 2.aseprite": {
       "frame": {
-        "x": 423,
+        "x": 623,
         "y": 360,
         "w": 43,
         "h": 25
@@ -65,7 +65,7 @@
     },
     "toll_gripaus 3.aseprite": {
       "frame": {
-        "x": 2423,
+        "x": 2623,
         "y": 360,
         "w": 141,
         "h": 10
@@ -86,7 +86,7 @@
     },
     "toll_gripaus 4.aseprite": {
       "frame": {
-        "x": 2091,
+        "x": 2291,
         "y": 360,
         "w": 140,
         "h": 12
@@ -107,7 +107,7 @@
     },
     "toll_gripaus 5.aseprite": {
       "frame": {
-        "x": 2231,
+        "x": 2431,
         "y": 360,
         "w": 138,
         "h": 12
@@ -128,7 +128,7 @@
     },
     "toll_gripaus 6.aseprite": {
       "frame": {
-        "x": 1754,
+        "x": 1954,
         "y": 360,
         "w": 134,
         "h": 16
@@ -149,7 +149,7 @@
     },
     "toll_gripaus 7.aseprite": {
       "frame": {
-        "x": 720,
+        "x": 920,
         "y": 360,
         "w": 128,
         "h": 24
@@ -170,7 +170,7 @@
     },
     "toll_gripaus 8.aseprite": {
       "frame": {
-        "x": 466,
+        "x": 666,
         "y": 360,
         "w": 122,
         "h": 25
@@ -191,7 +191,7 @@
     },
     "toll_gripaus 9.aseprite": {
       "frame": {
-        "x": 1110,
+        "x": 1310,
         "y": 360,
         "w": 114,
         "h": 23
@@ -212,7 +212,7 @@
     },
     "toll_gripaus 10.aseprite": {
       "frame": {
-        "x": 2679,
+        "x": 2816,
         "y": 0,
         "w": 106,
         "h": 32
@@ -233,7 +233,7 @@
     },
     "toll_gripaus 11.aseprite": {
       "frame": {
-        "x": 1979,
+        "x": 2116,
         "y": 0,
         "w": 99,
         "h": 33
@@ -254,7 +254,7 @@
     },
     "toll_gripaus 12.aseprite": {
       "frame": {
-        "x": 0,
+        "x": 200,
         "y": 360,
         "w": 94,
         "h": 28
@@ -275,7 +275,7 @@
     },
     "toll_gripaus 13.aseprite": {
       "frame": {
-        "x": 94,
+        "x": 294,
         "y": 360,
         "w": 87,
         "h": 28
@@ -296,8 +296,8 @@
     },
     "toll_gripaus 14.aseprite": {
       "frame": {
-        "x": 3975,
-        "y": 0,
+        "x": 122,
+        "y": 360,
         "w": 78,
         "h": 29
       },
@@ -317,7 +317,7 @@
     },
     "toll_gripaus 15.aseprite": {
       "frame": {
-        "x": 1316,
+        "x": 1516,
         "y": 360,
         "w": 68,
         "h": 22
@@ -338,7 +338,7 @@
     },
     "toll_gripaus 16.aseprite": {
       "frame": {
-        "x": 1463,
+        "x": 1663,
         "y": 360,
         "w": 61,
         "h": 20
@@ -359,7 +359,7 @@
     },
     "toll_gripaus 17.aseprite": {
       "frame": {
-        "x": 1524,
+        "x": 1724,
         "y": 360,
         "w": 57,
         "h": 20
@@ -380,7 +380,7 @@
     },
     "toll_gripaus 18.aseprite": {
       "frame": {
-        "x": 2369,
+        "x": 2569,
         "y": 360,
         "w": 54,
         "h": 12
@@ -401,7 +401,7 @@
     },
     "toll_gripaus 19.aseprite": {
       "frame": {
-        "x": 2564,
+        "x": 2764,
         "y": 360,
         "w": 53,
         "h": 7
@@ -422,7 +422,7 @@
     },
     "toll_gripaus 20.aseprite": {
       "frame": {
-        "x": 2757,
+        "x": 2957,
         "y": 360,
         "w": 54,
         "h": 6
@@ -443,7 +443,7 @@
     },
     "toll_gripaus 21.aseprite": {
       "frame": {
-        "x": 2025,
+        "x": 2225,
         "y": 360,
         "w": 66,
         "h": 13
@@ -464,7 +464,7 @@
     },
     "toll_gripaus 22.aseprite": {
       "frame": {
-        "x": 1384,
+        "x": 1584,
         "y": 360,
         "w": 79,
         "h": 22
@@ -485,7 +485,7 @@
     },
     "toll_gripaus 23.aseprite": {
       "frame": {
-        "x": 1224,
+        "x": 1424,
         "y": 360,
         "w": 92,
         "h": 23
@@ -506,7 +506,7 @@
     },
     "toll_gripaus 24.aseprite": {
       "frame": {
-        "x": 1581,
+        "x": 1781,
         "y": 360,
         "w": 104,
         "h": 20
@@ -527,7 +527,7 @@
     },
     "toll_gripaus 25.aseprite": {
       "frame": {
-        "x": 181,
+        "x": 381,
         "y": 360,
         "w": 114,
         "h": 28
@@ -548,8 +548,8 @@
     },
     "toll_gripaus 26.aseprite": {
       "frame": {
-        "x": 3853,
-        "y": 0,
+        "x": 0,
+        "y": 360,
         "w": 122,
         "h": 30
       },
@@ -569,7 +569,7 @@
     },
     "toll_gripaus 27.aseprite": {
       "frame": {
-        "x": 295,
+        "x": 495,
         "y": 360,
         "w": 128,
         "h": 28
@@ -590,7 +590,7 @@
     },
     "toll_gripaus 28.aseprite": {
       "frame": {
-        "x": 3019,
+        "x": 3156,
         "y": 0,
         "w": 132,
         "h": 31
@@ -611,7 +611,7 @@
     },
     "toll_gripaus 29.aseprite": {
       "frame": {
-        "x": 2078,
+        "x": 2215,
         "y": 0,
         "w": 133,
         "h": 33
@@ -632,7 +632,7 @@
     },
     "toll_gripaus 30.aseprite": {
       "frame": {
-        "x": 588,
+        "x": 788,
         "y": 360,
         "w": 132,
         "h": 25
@@ -653,7 +653,7 @@
     },
     "toll_gripaus 31.aseprite": {
       "frame": {
-        "x": 848,
+        "x": 1048,
         "y": 360,
         "w": 129,
         "h": 24
@@ -674,7 +674,7 @@
     },
     "toll_gripaus 32.aseprite": {
       "frame": {
-        "x": 977,
+        "x": 1177,
         "y": 360,
         "w": 133,
         "h": 24
@@ -695,7 +695,7 @@
     },
     "toll_gripaus 33.aseprite": {
       "frame": {
-        "x": 1888,
+        "x": 2088,
         "y": 360,
         "w": 137,
         "h": 15
@@ -716,7 +716,7 @@
     },
     "toll_gripaus 34.aseprite": {
       "frame": {
-        "x": 2617,
+        "x": 2817,
         "y": 360,
         "w": 140,
         "h": 7
@@ -737,7 +737,7 @@
     },
     "toll_gripaus 35.aseprite": {
       "frame": {
-        "x": 3151,
+        "x": 3288,
         "y": 0,
         "w": 234,
         "h": 31
@@ -758,7 +758,7 @@
     },
     "toll_gripaus 36.aseprite": {
       "frame": {
-        "x": 2211,
+        "x": 2348,
         "y": 0,
         "w": 234,
         "h": 33
@@ -779,7 +779,7 @@
     },
     "toll_gripaus 37.aseprite": {
       "frame": {
-        "x": 3385,
+        "x": 3522,
         "y": 0,
         "w": 234,
         "h": 31
@@ -800,7 +800,7 @@
     },
     "toll_gripaus 38.aseprite": {
       "frame": {
-        "x": 1511,
+        "x": 1648,
         "y": 0,
         "w": 234,
         "h": 34
@@ -821,7 +821,7 @@
     },
     "toll_gripaus 39.aseprite": {
       "frame": {
-        "x": 1745,
+        "x": 1882,
         "y": 0,
         "w": 234,
         "h": 34
@@ -842,7 +842,7 @@
     },
     "toll_gripaus 40.aseprite": {
       "frame": {
-        "x": 3619,
+        "x": 3756,
         "y": 0,
         "w": 234,
         "h": 31
@@ -863,7 +863,7 @@
     },
     "toll_gripaus 41.aseprite": {
       "frame": {
-        "x": 2785,
+        "x": 2922,
         "y": 0,
         "w": 234,
         "h": 32
@@ -884,7 +884,7 @@
     },
     "toll_gripaus 42.aseprite": {
       "frame": {
-        "x": 2445,
+        "x": 2582,
         "y": 0,
         "w": 234,
         "h": 33
@@ -905,7 +905,7 @@
     },
     "toll_gripaus 43.aseprite": {
       "frame": {
-        "x": 1685,
+        "x": 1885,
         "y": 360,
         "w": 39,
         "h": 18
@@ -926,7 +926,7 @@
     },
     "toll_gripaus 44.aseprite": {
       "frame": {
-        "x": 1724,
+        "x": 1924,
         "y": 360,
         "w": 30,
         "h": 18
@@ -947,7 +947,7 @@
     },
     "toll_gripaus 45.aseprite": {
       "frame": {
-        "x": 871,
+        "x": 1008,
         "y": 0,
         "w": 640,
         "h": 65
@@ -973,8 +973,8 @@
     "image": "toll_gripaus.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4053,
-      "h": 388
+      "w": 3990,
+      "h": 390
     },
     "scale": "1",
     "frameTags": [

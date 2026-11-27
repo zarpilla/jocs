@@ -22,7 +22,8 @@ verticals, verticals), amb l'horitzó a y = 110: el terra fuig cap al fons i les
   - Primer pla (FRONT): a les cantonades de baix, molt a prop i a l'ombra, falgueres, joncs i boga en silueta, el
     tronc caigut i una pedra: emmarquen el quadre.
 
-Decorat `aigua` (sota els personatges): el toll ple, el rierol que corre fins al toll i els joncs redreçats.
+Decorat `aigua` (sota els personatges): el toll ple, el rierol que corre fins al toll i els joncs redreçats; i, com que
+la vaga s'ha acabat, sense el cartellet «VAGA» de la finestreta ni la pancarta del gripau de fons.
 ANIMS: `libellules` (tres libèl·lules que volen sobre el toll) i `calor` (l'aire que tremola a l'horitzó).
 """
 import functools
@@ -305,7 +306,7 @@ def _soca_top(x):
         + abs(x - cx) * 0.12
 
 
-def arxiu(cv):
+def arxiu(cv, vaga=True):
     cx, base, hw = SOCA
     # l'ombra curta, sota (el sol és alt)
     ombra(cv, cx + 10, base + 2, hw + 20, 6, k=0.9)
@@ -341,7 +342,8 @@ def arxiu(cv):
     _embolcalla(cv, fac)
     rafec(cv)
     x0, y0, x1, _ = FINESTRA
-    cartellet(cv, round(_a_pantalla((x0 + x1) // 2 + 2, y0)), y0)
+    if vaga:
+        cartellet(cv, round(_a_pantalla((x0 + x1) // 2 + 2, y0)), y0)
     pla = Canvas(W, H, light=LIGHT, transparent=True)
     retols(pla)
     _tomba(cv, pla, SOCA[0] + 4, round(_a_pantalla(SOCA[0] + 4, 140)), 0.07)
@@ -514,7 +516,8 @@ TOAD = [(20, 26, 10), (40, 50, 18), (66, 76, 28), (96, 104, 40), (130, 132, 58),
 
 
 def gripau_fons(cv, x, y, text_, seed=1):
-    """Un gripau vaguista de fons (sense id): assegut, amb un pal i una pancarta."""
+    """Un gripau vaguista de fons (sense id): assegut, amb un pal i una pancarta (sense `text_`, sense pancarta: la
+    vaga s'ha acabat)."""
     cv.disc(x, y - 6, 9, 6.5, TOAD, lambda nx, ny: 3.2 - ny * 1.4 - nx * 0.6 + (0.8 if fbm(nx * 4, ny * 4, seed) > 0.6 else 0),
             lit=0.4)
     cv.disc(x - 4, y - 12, 2.4, 2.2, TOAD, lambda nx, ny: 3.8 - ny, lit=0.4)               # els ulls
@@ -525,6 +528,8 @@ def gripau_fons(cv, x, y, text_, seed=1):
     cv.disc(x - 8, y - 1, 4, 2, TOAD, 2.0, lit=0.4)                                        # les potes
     cv.disc(x + 8, y - 1, 4, 2, TOAD, 2.0, lit=0.4)
     ombra(cv, x + 2, y + 1, 11, 2)
+    if not text_:
+        return
     # la pancarta
     px = x + 9
     cv.rect(px, y - 34, px + 1, y - 3, PLANK, 4.0, lit=0.3)
@@ -644,9 +649,10 @@ GRIPAU = (322, 216)
 
 
 @functools.lru_cache(maxsize=None)
-def _base(sense_mata=None):
+def _base(sense_mata=None, vaga=True):
     """→ (la sala, el primer pla). `sense_mata`: l'índex d'una mata de JONCS que no es pinta (per a la màscara de la
-    seva capa del davant: el que canvia sense ella)."""
+    seva capa del davant: el que canvia sense ella). `vaga=False`: sense els cartells de la vaga (el decorat `aigua`
+    hi torna a pintar el que hi ha sota)."""
     cv = Canvas(W, H, light=LIGHT)
     cel(cv)
     bosc_fons(cv)
@@ -663,8 +669,8 @@ def _base(sense_mata=None):
     joncs_davant(cv)
     tub(cv)
     comporta(cv)
-    arxiu(cv)
-    gripau_fons(cv, 352, 206, 'VAGA!', 3)
+    arxiu(cv, vaga)
+    gripau_fons(cv, 352, 206, 'VAGA!' if vaga else None, 3)
     # sota la sala, negre
     for y in range(RH, H):
         for x in range(W):
@@ -688,7 +694,13 @@ def bg(cv):
 # ─── Props i decorats ────────────────────────────────────────────────────────
 
 def _aigua(cv):
-    """El toll ple (amb el cel reflectit), el rierol que corre fins al toll i els joncs redreçats i verds."""
+    """El toll ple (amb el cel reflectit), el rierol que corre fins al toll i els joncs redreçats i verds. I la vaga
+    s'ha acabat: sense el cartellet «VAGA» de la finestreta ni la pancarta del gripau de fons."""
+    amb, sense = _base()[0].load(), _base(vaga=False)[0].load()
+    for y in range(RH):
+        for x in range(W):
+            if amb[x, y] != sense[x, y]:
+                cv.P[x, y] = sense[x, y]
     cx, cy, rx, ry = TOLL
     for v in range(int(cy - ry - 2), int(cy + ry + 3)):
         for u in range(int(cx - rx - 2), int(cx + rx + 3)):
