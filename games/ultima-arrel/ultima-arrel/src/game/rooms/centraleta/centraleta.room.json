@@ -109,7 +109,7 @@
     {
       "id": "escala",
       "active": true,
-      "description": "escala de sortida",
+      "description": "l'escala de sortida",
       "zIndex": 0,
       "points": [
         {
@@ -142,7 +142,7 @@
     {
       "id": "tauler",
       "active": true,
-      "description": "tauler",
+      "description": "el tauler",
       "zIndex": 1,
       "points": [
         {
@@ -174,7 +174,7 @@
     {
       "id": "radar",
       "active": true,
-      "description": "radar d'arrels",
+      "description": "el radar d'arrels",
       "zIndex": 2,
       "points": [
         {
@@ -206,7 +206,7 @@
     {
       "id": "corn",
       "active": true,
-      "description": "corn de fusta",
+      "description": "el corn de fusta",
       "zIndex": 3,
       "points": [
         {
@@ -238,7 +238,7 @@
     {
       "id": "arrel_1",
       "active": true,
-      "description": "arrel esquerra",
+      "description": "l'arrel esquerra",
       "zIndex": 3,
       "points": [
         {
@@ -270,7 +270,7 @@
     {
       "id": "arrel_2",
       "active": true,
-      "description": "arrel del mig",
+      "description": "l'arrel del mig",
       "zIndex": 4,
       "points": [
         {
@@ -302,7 +302,7 @@
     {
       "id": "arrel_3",
       "active": true,
-      "description": "arrel dreta",
+      "description": "l'arrel dreta",
       "zIndex": 5,
       "points": [
         {
@@ -334,7 +334,7 @@
     {
       "id": "fils_paret",
       "active": true,
-      "description": "fils de la paret",
+      "description": "els fils de la paret",
       "zIndex": 7,
       "points": [
         {
@@ -464,7 +464,7 @@
         "x": 464,
         "y": 185
       },
-      "description": "fil de saba"
+      "description": "el fil de saba"
     },
     {
       "id": "pols",

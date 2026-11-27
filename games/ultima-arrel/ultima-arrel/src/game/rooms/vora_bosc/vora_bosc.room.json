@@ -82,7 +82,7 @@
     {
       "id": "porta_roure",
       "active": true,
-      "description": "porta del roure",
+      "description": "la porta del roure",
       "zIndex": 0,
       "points": [
         {
@@ -115,7 +115,7 @@
     {
       "id": "cartell",
       "active": true,
-      "description": "cartell",
+      "description": "el cartell",
       "zIndex": 1,
       "points": [
         {
@@ -147,7 +147,7 @@
     {
       "id": "tanca",
       "active": true,
-      "description": "tanca",
+      "description": "la tanca",
       "zIndex": 2,
       "points": [
         {
@@ -179,7 +179,7 @@
     {
       "id": "excavadora",
       "active": true,
-      "description": "excavadora",
+      "description": "l'excavadora",
       "zIndex": 3,
       "points": [
         {
@@ -211,7 +211,7 @@
     {
       "id": "campaneta",
       "active": true,
-      "description": "campaneta",
+      "description": "la campaneta",
       "zIndex": 1,
       "points": [
         {
@@ -244,7 +244,7 @@
     {
       "id": "bustia",
       "active": true,
-      "description": "bústia",
+      "description": "la bústia",
       "zIndex": 3,
       "points": [
         {
@@ -276,7 +276,7 @@
     {
       "id": "llum_vermell",
       "active": true,
-      "description": "llum vermell",
+      "description": "el llum vermell",
       "zIndex": 4,
       "points": [
         {
@@ -308,7 +308,7 @@
     {
       "id": "gespa",
       "active": true,
-      "description": "gespa artificial",
+      "description": "la gespa artificial",
       "zIndex": 7,
       "points": [
         {
@@ -340,7 +340,7 @@
     {
       "id": "bolets",
       "active": true,
-      "description": "bolets",
+      "description": "els bolets",
       "zIndex": 8,
       "points": [
         {
@@ -372,7 +372,7 @@
     {
       "id": "cami",
       "active": true,
-      "description": "camí del poble",
+      "description": "el camí del poble",
       "zIndex": 8,
       "points": [
         {
@@ -491,7 +491,7 @@
         "x": 512,
         "y": 218
       },
-      "description": "cargol"
+      "description": "el cargol"
     },
     {
       "id": "estaca",
@@ -532,7 +532,7 @@
         "x": 250,
         "y": 224
       },
-      "description": "estaca",
+      "description": "l'estaca",
       "defaultVerb": "open"
     },
     {

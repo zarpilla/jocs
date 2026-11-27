@@ -141,7 +141,7 @@
     {
       "id": "taula",
       "active": true,
-      "description": "taula",
+      "description": "la taula",
       "zIndex": 0,
       "points": [
         {
@@ -173,7 +173,7 @@
     {
       "id": "porta_oberta",
       "active": true,
-      "description": "porta del roure",
+      "description": "la porta del roure",
       "zIndex": 1,
       "points": [
         {
@@ -205,7 +205,7 @@
     {
       "id": "bolets",
       "active": true,
-      "description": "bolets",
+      "description": "els bolets",
       "zIndex": 2,
       "points": [
         {
@@ -237,7 +237,7 @@
     {
       "id": "forats",
       "active": true,
-      "description": "forats",
+      "description": "els forats",
       "zIndex": 4,
       "points": [
         {

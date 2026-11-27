@@ -62,7 +62,7 @@
     {
       "id": "bastida",
       "active": true,
-      "description": "bastida",
+      "description": "la bastida",
       "zIndex": 0,
       "points": [
         {
@@ -94,7 +94,7 @@
     {
       "id": "parada",
       "active": true,
-      "description": "parada de melmelada",
+      "description": "la parada de melmelada",
       "zIndex": 1,
       "points": [
         {
@@ -126,7 +126,7 @@
     {
       "id": "pantalla",
       "active": true,
-      "description": "pantalla",
+      "description": "la pantalla",
       "zIndex": 2,
       "points": [
         {
@@ -158,7 +158,7 @@
     {
       "id": "sensors",
       "active": true,
-      "description": "sensors",
+      "description": "els sensors",
       "zIndex": 3,
       "points": [
         {
@@ -190,7 +190,7 @@
     {
       "id": "escenari",
       "active": true,
-      "description": "escenari",
+      "description": "l'escenari",
       "zIndex": 4,
       "points": [
         {
@@ -222,7 +222,7 @@
     {
       "id": "altaveu",
       "active": true,
-      "description": "altaveu",
+      "description": "l'altaveu",
       "zIndex": 5,
       "points": [
         {
@@ -254,7 +254,7 @@
     {
       "id": "formigonera",
       "active": true,
-      "description": "formigonera",
+      "description": "la formigonera",
       "zIndex": 6,
       "points": [
         {
@@ -286,7 +286,7 @@
     {
       "id": "soques",
       "active": true,
-      "description": "soques",
+      "description": "les soques",
       "zIndex": 7,
       "points": [
         {
@@ -470,7 +470,7 @@
         "x": 213,
         "y": 118
       },
-      "description": "formigonera"
+      "description": "la formigonera"
     },
     {
       "id": "davant",
