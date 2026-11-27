@@ -18,6 +18,7 @@ from PIL import Image, ImageDraw
 W, H = 640, 288                 # l'alçada mínima (la GUI va centrada si la pantalla és més alta)
 PANELL = (120, 6, 400, 276)     # x, y, amplada, alçada
 FILES = 5                       # tocar, mantenir premut, l'inventari, els punts, la pista
+# (i una sisena, el canvi de protagonista, si el joc passa la cara: `canvia`)
 ICONA = 32
 KEY = (91, 27)
 
@@ -82,6 +83,25 @@ def icona_inventari(ink, accent, shadow):
     return im
 
 
+def icona_retrat(cara, ink, accent, shadow):
+    """El retrat rodó del botó «Canvia»: la cara (la que el joc hi posa, retallada en rodó) dins d'una anella."""
+    im = Image.new('RGBA', (ICONA, ICONA), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.ellipse((0, 0, ICONA - 1, ICONA - 1), fill=shadow)
+    d.ellipse((1, 1, ICONA - 2, ICONA - 2), fill=accent)
+    d.ellipse((3, 3, ICONA - 4, ICONA - 4), fill=shadow)
+    cara = cara.copy()
+    if cara.width > ICONA - 8 or cara.height > ICONA - 8:
+        cara.thumbnail((ICONA - 8, ICONA - 8), Image.NEAREST)
+    # només dins del cercle de dins
+    mascara = Image.new('L', (ICONA, ICONA), 0)
+    ImageDraw.Draw(mascara).ellipse((4, 4, ICONA - 5, ICONA - 5), fill=255)
+    capa = Image.new('RGBA', (ICONA, ICONA), (0, 0, 0, 0))
+    capa.paste(cara, ((ICONA - cara.width) // 2, (ICONA - cara.height) // 2), cara)
+    im.paste(capa, (0, 0), Image.composite(capa, Image.new('RGBA', (ICONA, ICONA), (0, 0, 0, 0)), mascara))
+    return im
+
+
 def _centrada(im):
     """La icona, centrada en un quadrat de 32×32 (com les altres)."""
     out = Image.new('RGBA', (ICONA, ICONA), (0, 0, 0, 0))
@@ -92,14 +112,17 @@ def _centrada(im):
 # ─── La GUI ──────────────────────────────────────────────────────────────────
 
 def build_controls(game, *, write_sheet, nine_slice, nine_slices, checkbox, key_image, punts, pista,
-                   font, bold, text, title, outline, hover, ink, accent, shadow):
+                   font, bold, text, title, outline, hover, ink, accent, shadow, canvia=None):
     """Escriu guis/controls/controls.gui.json i assets/images/guis/controls/ al projecte Benne `game`.
 
     - write_sheet, nine_slice, nine_slices, checkbox, key_image: les de hd640/gui_rest.py del joc;
     - punts: la icona dels punts del HUD (32×32);
     - pista: la icona de l'última fila, on es demana una pista (fins a 32×32; va centrada);
     - font, bold: les fonts; text, title, outline, hover: colors del text (com a les opcions);
-    - ink, accent, shadow: colors RGB(A) de les icones.
+    - ink, accent, shadow: colors RGB(A) de les icones;
+    - canvia: la cara del botó «Canvia» (als jocs on es canvia de protagonista): hi afegeix una sisena fila, la del
+      canvi, amb la cara en una anella. El script la mostra si el joc té el text `ui.controls.canvia`. Amb sis files,
+      la casella del ratolí va a la fila del botó «D'acord».
     """
     pad = Image.new('RGBA', (93, 27), (0, 0, 0, 0))
     pad.paste(nine_slice(), (0, 0))
@@ -115,6 +138,8 @@ def build_controls(game, *, write_sheet, nine_slice, nine_slices, checkbox, key_
         'ratoli0': icona_ratoli('esq', ink, accent, shadow), 'ratoli1': icona_ratoli('dret', ink, accent, shadow),
         'inventari': icona_inventari(ink, accent, shadow), 'punts': punts, 'pista': _centrada(pista),
     }
+    if canvia is not None:
+        icones['canvia'] = icona_retrat(canvia, ink, accent, shadow)
     for tag, im in icones.items():
         items.append((im, tag, (0, 0), im.size))
     out = Path(game)
@@ -134,13 +159,14 @@ def build_controls(game, *, write_sheet, nine_slice, nine_slices, checkbox, key_
         {'type': 'text', 'id': 'titol', 'x': W // 2, 'y': py + 12, 'text': '', 'font': bold, 'fontSize': 8,
          'color': title, 'align': 'center', 'zIndex': 3},
     ]
-    y0, pas = py + 36, 34
-    for i in range(FILES):
+    files = FILES + (1 if canvia is not None else 0)
+    y0, pas = (py + 36, 34) if files == FILES else (py + 32, 32)
+    for i in range(files):
         y = y0 + i * pas
-        # les icones de les dues maneres (el script mostra les d'ara); la tercera (l'inventari), la quarta (els punts)
-        # i la cinquena (la pista) són de totes dues
+        # les icones de les dues maneres (el script mostra les d'ara); la tercera (l'inventari), la quarta (els punts),
+        # la cinquena (la pista) i la sisena (el canvi de protagonista) són de totes dues
         for manera in ('dit', 'ratoli'):
-            tag = {2: 'inventari', 3: 'punts', 4: 'pista'}.get(i, f'{manera}{i}')
+            tag = {2: 'inventari', 3: 'punts', 4: 'pista', 5: 'canvia'}.get(i, f'{manera}{i}')
             controls.append({'type': 'image', 'id': f'{manera}{i}', 'x': px + 22, 'y': y - 4, 'tag': tag,
                              'backgroundAnchor': 'top-left', 'clickable': False, 'visible': False, 'zIndex': 3})
         controls.append({'type': 'text', 'id': f'text{i}', 'x': px + 66, 'y': y, 'text': '', 'font': font,
@@ -148,7 +174,7 @@ def build_controls(game, *, write_sheet, nine_slice, nine_slices, checkbox, key_
                          'textOutline': {'enabled': True, 'color': outline, 'sides': 'bottomRight'}})
     yb = py + ph - 40
     # amb el ratolí: girar els botons ara mateix (el script només ho mostra amb el ratolí), en una fila sencera
-    yi = yb - 30
+    yi = yb - 30 if files == FILES else yb - 2
     controls += [
         {'type': 'checkbox', 'id': 'intercanvia', 'x': px + 22, 'y': yi + 4, 'width': 21, 'height': 21,
          'backgroundAnchor': 'top-left', 'tag': 'checkbox',

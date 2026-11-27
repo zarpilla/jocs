@@ -6,7 +6,9 @@
  *    de les converses i línies de l'entrada (`vigilaControls`, cada fotograma). En tancar-la, es juga.
  *  - També s'obre des de les opcions («Controls»), i aleshores en tancar-la es torna a les opcions.
  *  - Amb el ratolí, s'hi pot triar què fa cada botó (per defecte, l'esquerre mira i el dret fa), i els textos ho diuen a l'acte.
- *  - L'última fila diu on es demana una pista (`ui.controls.pista`, de cada joc: al menú o al botó de la pista).
+ *  - La cinquena fila diu on es demana una pista (`ui.controls.pista`, de cada joc: al menú o al botó de la pista).
+ *  - Als jocs on es canvia de protagonista, una sisena fila diu que el retrat rodó canvia de protagonista
+ *    (`ui.controls.canvia`, de cada joc), si el joc té la fila (la cara a controls.py) i el text.
  *  - Ensenya el dit o el ratolí segons l'aparell: el de l'última pulsació, o, si encara no se n'ha fet cap, si la
  *    pantalla és tàctil.
  *
@@ -14,7 +16,7 @@
  */
 import { guis } from '@game';
 import { game } from '@benne/script';
-import { narrative } from './narrative';
+import { botoPista, narrative } from './narrative';
 import { onNewGame } from './narrative.script';
 import { esDit, haPremut } from './tactil';
 import { esquerreMira } from './preferencies';
@@ -87,13 +89,22 @@ export function ambElDit(): boolean {
   }
 }
 
+/** El text de la fila del canvi de protagonista, o '' si el joc no en té (no es canvia mai, o no hi ha el text). */
+export function filaCanvia(): string {
+  if (botoPista || narrative.content.manifest.protagonists.length < 2) return '';
+  const clau = 'ui.controls.canvia';
+  const i18n = narrative.i18n;
+  return i18n.has(clau) || i18n.has(clau, i18n.defaultLocale) ? narrative.t(clau) : '';
+}
+
 /**
  * Els textos de les cinc files (`ui.controls.*`), per a l'aparell d'ara: tocar o clicar, mantenir premut o l'altre
  * botó, l'inventari, els punts i la pista (aquesta, igual per a tots dos). Cada fila diu una sola cosa: la de la icona.
  */
 export function filesControls(): string[] {
   const pista = narrative.t('ui.controls.pista');
-  if (ambElDit()) return [...[0, 1, 2, 3].map((i) => narrative.t(`ui.controls.dit.${i}`)), pista];
+  const canvia = filaCanvia();
+  if (ambElDit()) return [...[0, 1, 2, 3].map((i) => narrative.t(`ui.controls.dit.${i}`)), pista, canvia];
   const mira = esquerreMira();
   return [
     narrative.t(mira ? 'ui.controls.ratoli.esquerre.mira' : 'ui.controls.ratoli.esquerre'),
@@ -101,5 +112,6 @@ export function filesControls(): string[] {
     narrative.t('ui.controls.ratoli.inventari'),
     narrative.t('ui.controls.ratoli.punts'),
     pista,
+    canvia,
   ];
 }

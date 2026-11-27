@@ -407,7 +407,8 @@ def build_targeta():
                    checkbox=gr.checkbox, key_image=gr.key_image, punts=boto(punts_icon),
                    pista=crop_bar(vg.menu_button, *vg.MENU, vg.MENU[2]), font=FONT, bold=BOLD,
                    text=gr.LABEL, title=gr.TITLE, outline=TEXT_OUTLINE, hover=TEXT_HOVER,
-                   ink=gr.LABEL, accent=TEXT_HOVER, shadow=TEXT_OUTLINE)
+                   ink=gr.LABEL, accent=TEXT_HOVER, shadow=TEXT_OUTLINE,
+                   canvia=vg.face('vet'))       # la sisena fila: el retrat rodó canvia de protagonista
 
 
 if __name__ == '__main__':
