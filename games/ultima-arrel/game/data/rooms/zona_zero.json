@@ -100,12 +100,34 @@
             {
               "who": "narrator",
               "text": "sala.zona_zero.xiulet.1",
-              "sound": "xiulet"
+              "sound": "xiulet",
+              "stage": [
+                {
+                  "prop": "fades_sensors",
+                  "visible": false
+                },
+                {
+                  "who": "urtica",
+                  "visible": true
+                }
+              ]
             },
             {
               "who": "narrator",
               "text": "sala.zona_zero.xiulet.2",
-              "sound": "fades_vol"
+              "sound": "fades_vol",
+              "stage": [
+                {
+                  "who": "urtica",
+                  "visible": false
+                },
+                {
+                  "prop": "fades_sensors",
+                  "visible": true,
+                  "anim": "fades_vol",
+                  "hold": 1.6
+                }
+              ]
             },
             {
               "who": "narrator",
@@ -430,6 +452,11 @@
       ]
     },
     "urtica": {
+      "visibleIf": {
+        "var": "discurs",
+        "op": "<",
+        "value": 2
+      },
       "interactions": [
         {
           "verb": "use",
@@ -443,12 +470,34 @@
             {
               "who": "narrator",
               "text": "sala.zona_zero.xiulet.1",
-              "sound": "xiulet"
+              "sound": "xiulet",
+              "stage": [
+                {
+                  "prop": "fades_sensors",
+                  "visible": false
+                },
+                {
+                  "who": "urtica",
+                  "visible": true
+                }
+              ]
             },
             {
               "who": "narrator",
               "text": "sala.zona_zero.xiulet.2",
-              "sound": "fades_vol"
+              "sound": "fades_vol",
+              "stage": [
+                {
+                  "who": "urtica",
+                  "visible": false
+                },
+                {
+                  "prop": "fades_sensors",
+                  "visible": true,
+                  "anim": "fades_vol",
+                  "hold": 1.6
+                }
+              ]
             },
             {
               "who": "narrator",
@@ -686,6 +735,13 @@
   },
   "decor": {
     "sensors_vermells": {
+      "visibleIf": {
+        "var": "discurs",
+        "op": ">=",
+        "value": 2
+      }
+    },
+    "fades_sensors": {
       "visibleIf": {
         "var": "discurs",
         "op": ">=",

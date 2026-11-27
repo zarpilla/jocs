@@ -452,6 +452,21 @@
       },
       "zIndex": 24,
       "baseline": 999
+    },
+    {
+      "id": "fades_sensors",
+      "tag": "fades_sensors",
+      "animations": {
+        "fades_sensors": {},
+        "fades_vol": {
+          "loop": false,
+          "frameDuration": 110
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

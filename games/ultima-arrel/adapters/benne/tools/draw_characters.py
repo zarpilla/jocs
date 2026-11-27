@@ -312,6 +312,26 @@ def gripau_draw(qui):
     return lambda f, talk=False, closed=False, k=0: A.gripau(qui, f, talk=talk, closed=closed, k=k)
 
 
+SALT_MARGE = 8                                      # el lloc de dalt per al salt (la pancarta arriba al capdamunt)
+SALT = (0, 2, 5, 7, 5, 2)                           # quant s'enlaira a cada fotograma de la Walk
+
+
+def gripau_salta(qui):
+    """El gripau que camina a salts (tasca 049: va a la roda de la comporta): la mateixa figura de l'Idle, enlairada
+    `SALT` píxels, i a terra (fotograma 0) una mica aixafada. Tots els fotogrames, amb `SALT_MARGE` de més a dalt."""
+    def dr(f, talk=False, closed=False, k=0, walk=None):
+        img = A.gripau(qui, f, talk=talk, closed=closed, k=k if walk is None else 0)
+        out = Image.new('RGBA', (img.width, img.height + SALT_MARGE), CLEAR)
+        dy = SALT[walk] if walk is not None else 0
+        if walk == 0:                                   # aterra: aixafat dos píxels, i més ample
+            img = img.resize((img.width + 2, img.height - 2), Image.NEAREST).crop((1, 0, img.width + 1, img.height - 2))
+            out.paste(img, (0, SALT_MARGE + 2), img)
+        else:
+            out.paste(img, (0, SALT_MARGE - dy), img)
+        return out
+    return dr
+
+
 # ─── Tot el repartiment ─────────────────────────────────────────────────────
 
 def repartiment():
@@ -332,9 +352,9 @@ def repartiment():
                                  [(True, 0), (False, 1), (True, 2), (False, 3)], 115, 110, 'look', 22),
         'bufo': lambda: criatura('bufo', gripau_draw('bufo'), A.GRIPAU_FEET, (0, 1, 2, 1), [(False, 0), (True, 0)],
                                  420, 180, 'talkTo', 26),
-        'gripau': lambda: criatura('gripau', gripau_draw('gripau'), A.GRIPAU_FEET, (0, 1, 2, 1),
-                                   [(False, 0), (True, 0)], 380, 170, 'talkTo', 26,
-                                   roba={'Lliure': gripau_draw('gripau_lliure')}),
+        'gripau': lambda: criatura('gripau', gripau_salta('gripau'), (A.GRIPAU_FEET[0], A.GRIPAU_FEET[1] + SALT_MARGE),
+                                   (0, 1, 2, 1), [(False, 0), (True, 0)], 380, 170, 'talkTo', 26, walk_speed=40,
+                                   camina=True, walk_ms=(90, 100), roba={'Lliure': gripau_salta('gripau_lliure')}),
     }
 
 

@@ -4353,7 +4353,8 @@
                     "stage": [
                       {
                         "prop": "aigua",
-                        "visible": true
+                        "visible": true,
+                        "fade": 2
                       }
                     ]
                   },
@@ -4420,7 +4421,8 @@
                     "stage": [
                       {
                         "prop": "aigua",
-                        "visible": true
+                        "visible": true,
+                        "fade": 2
                       }
                     ]
                   },
@@ -6363,12 +6365,34 @@
                   {
                     "who": "narrator",
                     "text": "sala.zona_zero.xiulet.1",
-                    "sound": "xiulet"
+                    "sound": "xiulet",
+                    "stage": [
+                      {
+                        "prop": "fades_sensors",
+                        "visible": false
+                      },
+                      {
+                        "who": "urtica",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
                     "text": "sala.zona_zero.xiulet.2",
-                    "sound": "fades_vol"
+                    "sound": "fades_vol",
+                    "stage": [
+                      {
+                        "who": "urtica",
+                        "visible": false
+                      },
+                      {
+                        "prop": "fades_sensors",
+                        "visible": true,
+                        "anim": "fades_vol",
+                        "hold": 1.6
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -6693,6 +6717,11 @@
             ]
           },
           "urtica": {
+            "visibleIf": {
+              "var": "discurs",
+              "op": "<",
+              "value": 2
+            },
             "interactions": [
               {
                 "verb": "use",
@@ -6706,12 +6735,34 @@
                   {
                     "who": "narrator",
                     "text": "sala.zona_zero.xiulet.1",
-                    "sound": "xiulet"
+                    "sound": "xiulet",
+                    "stage": [
+                      {
+                        "prop": "fades_sensors",
+                        "visible": false
+                      },
+                      {
+                        "who": "urtica",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
                     "text": "sala.zona_zero.xiulet.2",
-                    "sound": "fades_vol"
+                    "sound": "fades_vol",
+                    "stage": [
+                      {
+                        "who": "urtica",
+                        "visible": false
+                      },
+                      {
+                        "prop": "fades_sensors",
+                        "visible": true,
+                        "anim": "fades_vol",
+                        "hold": 1.6
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -6949,6 +7000,13 @@
         },
         "decor": {
           "sensors_vermells": {
+            "visibleIf": {
+              "var": "discurs",
+              "op": ">=",
+              "value": 2
+            }
+          },
+          "fades_sensors": {
             "visibleIf": {
               "var": "discurs",
               "op": ">=",
@@ -8360,7 +8418,35 @@
               {
                 "who": "narrator",
                 "text": "dlg.gripau.ajuda.4",
-                "sound": "roda"
+                "sound": "roda",
+                "stage": [
+                  {
+                    "who": "gripau",
+                    "walk": {
+                      "x": 584,
+                      "y": 217
+                    },
+                    "wait": false
+                  },
+                  {
+                    "who": "player",
+                    "walk": {
+                      "x": 608,
+                      "y": 230
+                    }
+                  },
+                  {
+                    "who": "gripau",
+                    "face": "R"
+                  },
+                  {
+                    "who": "player",
+                    "face": "U"
+                  },
+                  {
+                    "shake": 0.4
+                  }
+                ]
               },
               {
                 "who": "narrator",
@@ -8377,7 +8463,8 @@
                 "stage": [
                   {
                     "prop": "aigua",
-                    "visible": true
+                    "visible": true,
+                    "fade": 2
                   }
                 ]
               },
@@ -9671,12 +9758,14 @@
       "ui.controls.titol": "Com es juga",
       "ui.controls.dit.0": "Toca una cosa: la primera vegada la mires; després hi fas l'acció (o tries, si n'hi ha més d'una).",
       "ui.controls.dit.1": "Mantén el dit premut sobre una cosa: tries què hi fas (mirar-la, agafar-la, obrir-la...).",
-      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones). Els punts ensenyen el que es pot tocar.",
+      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones).",
+      "ui.controls.dit.3": "Toca el botó dels punts: s'hi encén un moment tot el que es pot tocar.",
       "ui.controls.ratoli.esquerre": "Clic esquerre: hi vas o hi fas l'acció (si n'hi ha més d'una, tries). Mantingues-lo premut per triar.",
       "ui.controls.ratoli.dret": "Clic dret sobre una cosa: la mires.",
       "ui.controls.ratoli.esquerre.mira": "Clic esquerre sobre una cosa: la mires. Mantingues-lo premut per triar què hi fas.",
       "ui.controls.ratoli.dret.fa": "Clic dret: hi vas o hi fas l'acció (si n'hi ha més d'una, tries).",
-      "ui.controls.ratoli.punts": "Clica un objecte de l'inventari i després on el vols fer servir. Els punts ensenyen el que es pot clicar.",
+      "ui.controls.ratoli.inventari": "Clica un objecte de l'inventari i després on el vols fer servir (o a qui el dones).",
+      "ui.controls.ratoli.punts": "Clica el botó dels punts: s'hi encén un moment tot el que es pot clicar.",
       "ui.controls.pista": "Si no saps què fer, la lupa et dona una pista (també és al menú): cada vegada que la demanis, una mica més clara.",
       "ui.controls.dacord": "D'acord",
       "ui.opcions.botons": "clic esquerre per fer",
@@ -10107,7 +10196,7 @@
       "sala.centraleta.corn.nom": "corn de fusta",
       "sala.centraleta.corn.res": "Hi poso l'orella. Res. Silenci de fong.",
       "sala.centraleta.escala.mira": "Una escala de mà que puja fins a la porta del roure. Per on he entrat.",
-      "sala.centraleta.escala.nom": "escala",
+      "sala.centraleta.escala.nom": "escala de sortida",
       "sala.centraleta.escala.surt": "Surto un moment.",
       "sala.centraleta.escolta.1": "L'Iri hi posa l'orella. Pel corn surt un so greu i llarg, fort i trist. Com una cançó que demana ajuda.",
       "sala.centraleta.escolta.2": "Quan tallen un arbre, avisa. Tots els del costat tanquen les fulles i fan l'escorça més amarga.",

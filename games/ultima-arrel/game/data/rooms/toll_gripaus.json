@@ -133,7 +133,8 @@
               "stage": [
                 {
                   "prop": "aigua",
-                  "visible": true
+                  "visible": true,
+                  "fade": 2
                 }
               ]
             },
@@ -200,7 +201,8 @@
               "stage": [
                 {
                   "prop": "aigua",
-                  "visible": true
+                  "visible": true,
+                  "fade": 2
                 }
               ]
             },

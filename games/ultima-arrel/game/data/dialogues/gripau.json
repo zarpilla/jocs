@@ -102,7 +102,35 @@
         {
           "who": "narrator",
           "text": "dlg.gripau.ajuda.4",
-          "sound": "roda"
+          "sound": "roda",
+          "stage": [
+            {
+              "who": "gripau",
+              "walk": {
+                "x": 584,
+                "y": 217
+              },
+              "wait": false
+            },
+            {
+              "who": "player",
+              "walk": {
+                "x": 608,
+                "y": 230
+              }
+            },
+            {
+              "who": "gripau",
+              "face": "R"
+            },
+            {
+              "who": "player",
+              "face": "U"
+            },
+            {
+              "shake": 0.4
+            }
+          ]
         },
         {
           "who": "narrator",
@@ -119,7 +147,8 @@
           "stage": [
             {
               "prop": "aigua",
-              "visible": true
+              "visible": true,
+              "fade": 2
             }
           ]
         },

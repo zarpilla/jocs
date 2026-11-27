@@ -517,7 +517,53 @@ def bg(cv):
     cv.P = cv.img.load()
 
 
-PROPS = {'sensors_vermells': sensors_vermells}
+# ─── Les fades (tasca 049): surten de la caseta i van a buidar el pol·len damunt dels sensors ─────────────
+
+_FADES_DE = {'urtica': (532, 22), 'pica': (544, 22), 'card': (556, 22)}       # els peus, a la caseta (la Urtica hi és)
+_FADES_A = {'urtica': (SENSORS[0], SENS_TOP - 2), 'pica': (SENSORS[1], SENS_TOP - 2), 'card': (SENSORS[2], SENS_TOP - 2)}
+_FADES_ARC = {'urtica': -10, 'pica': 8, 'card': 22}                           # cadascuna fa la seva corba
+_FADES_N = 14                                                                # fotogrames del vol
+
+
+def _fada(qui, facing, k, escala):
+    """La fada de draw_characters (hd/arrel.py) a l'escala de la sala, mirant a la dreta si `facing` és 'R'."""
+    from hd import arrel as A
+    img = A.fada(qui, 'L' if facing == 'R' else facing, k=k)
+    if facing == 'R':
+        img = img.transpose(Image.FLIP_LEFT_RIGHT)
+    w, h = max(1, round(img.width * escala)), max(1, round(img.height * escala))
+    fx, fy = A.FADA_FEET
+    return img.resize((w, h), Image.NEAREST), (round(fx * escala), round(fy * escala))
+
+
+def _fades(img, t, i=0):
+    """Les tres fades al moment t (0, a la caseta; 1, damunt dels sensors), amb el batec de les ales `i`."""
+    for n, qui in enumerate(('urtica', 'pica', 'card')):
+        (x0, y0), (x1, y1) = _FADES_DE[qui], _FADES_A[qui]
+        tt = max(0.0, min(1.0, t * 1.15 - n * 0.07))                         # surten una darrere l'altra
+        x = x0 + (x1 - x0) * tt + _FADES_ARC[qui] * math.sin(math.pi * tt)
+        y = y0 + (y1 - y0) * (tt * tt * (3 - 2 * tt))
+        facing = 'D' if tt in (0.0, 1.0) else ('R' if x1 + _FADES_ARC[qui] * 0.3 > x0 else 'L')
+        f, (fx, fy) = _fada(qui, facing, (i + n) % 4, 0.45 + 0.12 * tt)
+        img.alpha_composite(f, (round(x - fx), round(y - fy)))
+
+
+def fades_sensors(cv):
+    """Les tres fades, ja damunt dels sensors (el decorat que queda després del vol)."""
+    _fades(cv.img, 1.0)
+    cv.P = cv.img.load()
+
+
+def _frames_fades_vol():
+    out = []
+    for i in range(_FADES_N):
+        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        _fades(img, i / (_FADES_N - 1), i)
+        out.append(img)
+    return out
+
+
+PROPS = {'sensors_vermells': sensors_vermells, 'fades_sensors': fades_sensors}
 
 
 # ─── Animacions ──────────────────────────────────────────────────────────────
@@ -539,7 +585,9 @@ def _frames_formigonera():
     return out
 
 
-ANIMS = {'formigonera': {'frames': _frames_formigonera, 'frameDuration': 110}}
+ANIMS = {'formigonera': {'frames': _frames_formigonera, 'frameDuration': 110},
+         # el vol de les fades: una altra etiqueta del decorat `fades_sensors`, que una indicació d'escena hi posa
+         'fades_vol': {'frames': _frames_fades_vol, 'frameDuration': 110, 'loop': False, 'prop': 'fades_sensors'}}
 
 FRONT = [
     # la fila de davant del públic: la Vet i l'àvia (a y ≈ 213) hi queden darrere; l'Iri hi passa per davant
