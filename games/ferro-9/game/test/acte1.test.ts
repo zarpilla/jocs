@@ -191,7 +191,10 @@ describe('Ferro-9 · Acte 1', () => {
     expect(p.inventory()).toContain('fullet_reeducacio');
     expect(() => p.do('look', 'fullet')).toThrow('no és visible');
     // Abans de mirar el pany no sap què dibuixar-hi; en mirar-lo, hi veu la fàbrica de la I.
-    expect(texts(p.use('llapis_ulls', { kind: 'item', id: 'fullet_reeducacio' }))).not.toContain('Dibuixo el pany');
+    // (Però ja sap que li ha d'escriure, i s'adona que el que ha de mirar és la porta.)
+    const sensePany = texts(p.use('llapis_ulls', { kind: 'item', id: 'fullet_reeducacio' }));
+    expect(sensePany).not.toContain('Dibuixo el pany');
+    expect(sensePany).toContain('La porta!');
     expect(texts(p.do('look', 'porta'))).toContain('Com la fàbrica de la I.');
     p.use('llapis_ulls', { kind: 'item', id: 'fullet_reeducacio' });
     p.use('nota_pany', 'panell');

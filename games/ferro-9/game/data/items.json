@@ -829,6 +829,19 @@
       {
         "verb": "use",
         "item": "fullet_reeducacio",
+        "if": {
+          "flag": "sap_que_es_temps"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.fullet_porta"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "fullet_reeducacio",
         "lines": [
           {
             "who": "player",
