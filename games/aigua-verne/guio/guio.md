@@ -649,7 +649,17 @@ Aquella nit, la pantalla del pont s'encén sola. El Magnat, per primer cop en di
 El panell del pont: **97 ₡ ▲**.
 
 Es pot dir que sí (una opció de l'arbre): VERNE: «Excel·lent. Envieu les claus amb el vostre mecànic.» I la Vet
-talla la comunicació: «No.» No passa res més: el joc no castiga, però el Magnat ja ha dit qui és el seu home.
+talla la comunicació: «No.» El joc no castiga, però el Magnat ja ha dit qui és el seu home, i la tria es recorda
+(tasca 143):
+
+- **«Acceptem».** IRI: «Era per guanyar temps.» VET: «No ho era.» Després, quan pregunten com ho sabia: IRI: «I ha
+  dit "el vostre mecànic". Com sap que tenim mecànic?» (una pista més per al 6.1). La Capitana, aquella nit: «Heu
+  dit que sí. Per un moment, jo també.» Al palau, davant d'en Holm, VERNE: «Les germanes van dir que sí. Ho tinc
+  gravat.» HOLM: «Verbal. No executat. No consta.» I als crèdits, la Capitana li diu a l'Iri que, a la trucada, ella
+  també hauria dit que sí. Una vegada.
+- **«El pou ja és nostre».** VERNE: «El pou és vostre, senyora. L'aigua, no. Llegiu el contracte 7.788. La lletra
+  petita és meva.» La Capitana: «"El pou ja és nostre." Jo també ho deia, de la nau.»
+- **«No».** La Capitana: «Heu dit que no molt de pressa. Jo m'hi hauria pensat.»
 
 (El Magnat no els ha vist mai la cara: ho sap tot per en Tomàs, que escriu, no fa fotos. I no sap que la invitació de
 la Sra. Pruna ha sortit del seu despatx: era a la paperera, amb un «No hi aniré» al dors. Per això a l'Escena 7 no la

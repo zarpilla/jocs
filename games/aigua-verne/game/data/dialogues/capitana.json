@@ -113,6 +113,72 @@
         {
           "who": "capitana",
           "text": "dlg.capitana.nit.1"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.nit.si",
+          "if": {
+            "all": [
+              {
+                "seen": {
+                  "dialogue": "capitana",
+                  "node": "nit"
+                },
+                "is": false
+              },
+              {
+                "chosen": {
+                  "dialogue": "trucada",
+                  "node": "inici",
+                  "choice": "si"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.nit.no",
+          "if": {
+            "all": [
+              {
+                "seen": {
+                  "dialogue": "capitana",
+                  "node": "nit"
+                },
+                "is": false
+              },
+              {
+                "chosen": {
+                  "dialogue": "trucada",
+                  "node": "inici",
+                  "choice": "no"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.nit.pou",
+          "if": {
+            "all": [
+              {
+                "seen": {
+                  "dialogue": "capitana",
+                  "node": "nit"
+                },
+                "is": false
+              },
+              {
+                "chosen": {
+                  "dialogue": "trucada",
+                  "node": "inici",
+                  "choice": "pou"
+                }
+              }
+            ]
+          }
         }
       ],
       "goto": "menu"

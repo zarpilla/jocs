@@ -68,7 +68,7 @@
         {
           "id": "pou",
           "text": "dlg.trucada.opt.pou",
-          "next": "no"
+          "next": "pou"
         }
       ]
     },
@@ -85,6 +85,31 @@
         {
           "who": "narrator",
           "text": "dlg.trucada.si.3"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.trucada.si.4"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.trucada.si.5"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.trucada.si.6"
+        }
+      ],
+      "goto": "no"
+    },
+    "pou": {
+      "lines": [
+        {
+          "who": "verne",
+          "text": "dlg.trucada.pou.1"
+        },
+        {
+          "who": "verne",
+          "text": "dlg.trucada.pou.2"
         }
       ],
       "goto": "no"
@@ -135,6 +160,17 @@
           "text": "dlg.trucada.no.7.tractor",
           "if": {
             "flag": "fidel_tractor"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.trucada.no.7.mecanic",
+          "if": {
+            "chosen": {
+              "dialogue": "trucada",
+              "node": "inici",
+              "choice": "si"
+            }
           }
         },
         {

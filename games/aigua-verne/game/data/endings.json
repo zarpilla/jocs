@@ -20,6 +20,28 @@
       },
       {
         "who": "verne",
+        "text": "final.plou.2.si",
+        "if": {
+          "chosen": {
+            "dialogue": "trucada",
+            "node": "inici",
+            "choice": "si"
+          }
+        }
+      },
+      {
+        "who": "holm",
+        "text": "final.plou.2.si.holm",
+        "if": {
+          "chosen": {
+            "dialogue": "trucada",
+            "node": "inici",
+            "choice": "si"
+          }
+        }
+      },
+      {
+        "who": "verne",
         "text": "final.plou.3"
       },
       {
@@ -411,7 +433,26 @@
       },
       {
         "who": "narrator",
-        "text": "final.plou.41"
+        "text": "final.plou.41",
+        "if": {
+          "chosen": {
+            "dialogue": "trucada",
+            "node": "inici",
+            "choice": "si"
+          },
+          "is": false
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.41.si",
+        "if": {
+          "chosen": {
+            "dialogue": "trucada",
+            "node": "inici",
+            "choice": "si"
+          }
+        }
       },
       {
         "who": "narrator",
