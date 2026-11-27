@@ -1037,6 +1037,17 @@
       },
       "zIndex": 98,
       "baseline": 282
+    },
+    {
+      "id": "llenya_fogo",
+      "tag": "llenya_fogo",
+      "animations": {
+        "llenya_fogo": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

@@ -26,6 +26,16 @@
         "flag": "foc_ences"
       }
     },
+    "vapor": {
+      "visibleIf": {
+        "flag": "foc_ences"
+      }
+    },
+    "llenya_fogo": {
+      "visibleIf": {
+        "flag": "llenya_fogo"
+      }
+    },
     "tina_negra": {
       "visibleIf": {
         "all": [

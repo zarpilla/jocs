@@ -14,7 +14,8 @@ cantonada de davant a l'esquerra i mira cap a la cantonada del fons a la dreta, 
     talla en franges, cadascuna amb la línia base del terra que hi ha sota la corda).
 
 Decorats: `bagul_obert`, `foc_ences` (animat), `tina_negra`, `habits_estesos` (els dos hàbits negres penjats a la
-perxa del costat del fogó, fumejant) i `tisores_agafades` (el clau buit i la marca a la paret).
+perxa del costat del fogó, fumejant), `tisores_agafades` (el clau buit i la marca a la paret) i `llenya_fogo` (la llenya
+d'alzina a la boca del fogó). El vapor (`vapor`) només surt amb el foc encès.
 
 El món: x a la dreta (0 = la paret de l'esquerra), y amunt, z cap al fons (280 = la paret del fons).
 """
@@ -251,7 +252,7 @@ def _textures():
 
 
 def escena(cv, foc=False, bagul_obert=False, tina_negra=False, habits=False, tisores=False, robes=True,
-           marca_tisores=False):
+           marca_tisores=False, llenya=False):
     fons, dreta = _textures()
     e = Escena(cv, CAM, _llums(foc), ambient=-0.1 if not foc else 0.2)
     e.quad('sostre', (-200, HW, -300), (XW, HW, -300), (XW, HW, ZW), (-200, HW, ZW), ramp=FUSTA, lvl=_sostre_fn,
@@ -303,6 +304,11 @@ def escena(cv, foc=False, bagul_obert=False, tina_negra=False, habits=False, tis
     e.caixa('fogo', f0, f1, 0, fh, ZW - fd, ZW, PEDRA, 3.4,
             cares={'davant': {'ramp': PEDRA, 'lvl': boca}, 'dalt': {'ramp': PEDRA, 'lvl': 3.6},
                    'esquerra': {'ramp': PEDRA, 'lvl': 2.8}})
+    # la llenya d'alzina a la boca del fogó (decorat `llenya_fogo`): les dues files de baix d'un munt, de cara
+    if llenya:
+        pila = _pila_img('llenya_alzina')
+        pila = pila.crop((0, pila.height - 20, pila.width, pila.height))
+        e.sprite('llenya_fogo', pila, (pila.width / 2, pila.height), ((f0 + f1) / 2, 0.5, ZW - fd - 0.8))
     # la tina de coure: un cilindre de discs, amb la vora gruixuda
     tx, tz, tr, th = TINA
     _cilindre(e, 'tina', tx, tz, tr, fh, fh + th, COURE, 3.4)
@@ -519,6 +525,7 @@ PROPS = {
     'tina_negra': _decorat(tina_negra=True),
     'habits_estesos': _decorat(habits=True),
     'tisores_agafades': _decorat(marca_tisores=True),
+    'llenya_fogo': _decorat(llenya=True),
 }
 
 
