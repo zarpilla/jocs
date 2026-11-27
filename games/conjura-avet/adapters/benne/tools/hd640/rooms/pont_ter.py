@@ -1093,7 +1093,8 @@ GEOMETRIA = {
         'salze': {'rect': (_p(*SALZE_P)[0] - 30, 0, W - 1, _p(*SALZE_P)[1]), 'walk': _p(560, 90)},
         'moli_lluny': {'rect': _rect_mon((MOLI[0], 150, MOLI[1]), (MOLI[0] + 140, 0, MOLI[1])),
                        'walk': _p(442, 156)},
-        'cami': {'rect': (0, _p(-200, 150)[1] - 10, 30, BOTTOM - 12), 'walk': (3, _p(-170, 100)[1])},
+        # el punt d'arribada pel camí, prou endins perquè qui hi arriba es vegi sencera (no mig fora del quadre)
+        'cami': {'rect': (0, _p(-200, 150)[1] - 10, 30, BOTTOM - 12), 'walk': (26, _p(-170, 100)[1])},
     },
     # l'Iri arriba pel camí (de l'esquerra); en Joanet, a la vora, al costat de la barca; l'Ermessenda, a la vora del
     # rec, a la dreta

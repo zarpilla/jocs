@@ -6,6 +6,7 @@
     {
       "id": "pont_intro",
       "once": true,
+      "walkIn": "left",
       "verb": "*",
       "if": {
         "var": "fase",
