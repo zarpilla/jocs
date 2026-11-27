@@ -521,13 +521,16 @@ export function enterNarrativeRoom() {
   const final = takePendingEnding()
   const negre = result.goTo || final ? 'negre' : undefined
   let saltada = false
+  const inici = Date.now()
   for (let k = 0; k < result.lines.length; k++) {
     const more = k < result.lines.length - 1
     playLines([result.lines[k]!], { before: result.lines[k - 1]?.who, after: result.lines[k + 1]?.who ?? negre, more })
-    // Mentre se salta una cinemàtica, `wait` acaba a l'instant: així sabem si han premut Esc.
-    const inici = Date.now()
+    // Mentre se salta una cinemàtica, `wait` acaba a l'instant. Però només compta si s'ha premut Esc: després d'un
+    // fotograma llarg (un clic que passa la línia i n'engega l'animació) també pot acabar de seguida, i el pròleg
+    // d'Aigua Verne se saltava sencer amb clics (tasca 200). I Esc tot sol pot haver tancat l'historial.
+    const abans = Date.now()
     wait(0.1)
-    if (Date.now() - inici < 50) {
+    if (escPremutA >= inici && Date.now() - abans < 50) {
       saltada = true
       break
     }
