@@ -610,8 +610,9 @@ def _glows(cv):
     cv.glow(u, v, 28, WARM, 0.45)
     u, v, _ = CAM.projecta((1, _y(79), _wz(45)))
     cv.glow(u, v, 30, RED_GLOW, 0.5)
-    u, v, _ = CAM.projecta((_w(599), _y(60), ZW - 1))
-    cv.glow(u, v, 20, RED_GLOW, 0.4)
+    for lx, ly in ((599, 60), (396, 64)):                       # el taller i el rebost
+        u, v, _ = CAM.projecta((_w(lx), _y(ly), ZW - 1))
+        cv.glow(u, v, 20, RED_GLOW, 0.4)
 
 
 @functools.lru_cache(maxsize=None)
@@ -755,7 +756,7 @@ def brida(cv):
 def fosc(cv):
     """El generador parat: tot a les fosques, menys els llums d'emergència vermells."""
     lights = [CAM.projecta(P)[:2] for P in ((1, _y(79), _wz(45)), (_w(599), _y(60), ZW - 1),
-                                              (_w(461), MEZZ_H - 10, ZW - 22))]
+                                              (_w(396), _y(64), ZW - 1), (_w(461), MEZZ_H - 10, ZW - 22))]
     P = cv.img.load()
     for X, Y, x, y in cv.pixels():
         r = min(math.hypot(x - lx, (y - ly) * 1.1) for lx, ly in lights)

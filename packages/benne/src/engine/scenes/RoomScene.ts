@@ -4465,11 +4465,22 @@ export class RoomScene extends Phaser.Scene {
     stand: Point2,
     walkerFeet: Point2,
   ): Point2 {
+    const feet = getCharacterWorldFeet(sprite);
+    const polys = withNonWalkableRegionsAsHoles(this.roomData.walkable.polygons, this.roomData.regions);
+    // A character off the floor (a cat on top of a machine): its stand spot is off the floor too, and the walk would
+    // end at the nearest floor, maybe behind the machine. Stand on the floor straight in front of it instead.
+    if (!isPointInWalkableArea(feet.x, feet.y, polys) && !isPointInWalkableArea(stand.x, stand.y, polys)) {
+      for (let dy = 2; feet.y + dy < (this.roomData.size?.height ?? 2000); dy += 2) {
+        if (isPointInWalkableArea(feet.x, feet.y + dy, polys)) {
+          return { x: feet.x, y: feet.y + dy + 4 };
+        }
+      }
+      return stand;
+    }
     const offset = data.feet ? { x: data.walkToPoint!.x - data.feet.x, y: data.walkToPoint!.y - data.feet.y } : null;
     if (!offset || offset.x <= 0 || offset.y !== 0) {
       return stand;
     }
-    const feet = getCharacterWorldFeet(sprite);
     const height = (s: Phaser.GameObjects.Sprite | null): number => {
       const d = s?.getData('character') as CharacterData | undefined;
       return d?.feet ? d.feet.y * Math.abs(s!.scaleY) : 0;
@@ -4479,7 +4490,6 @@ export class RoomScene extends Phaser.Scene {
     const step = TALK_STEP_OF_HEIGHT * tallest;
     const fromLeft = walkerFeet.x < feet.x - 2;
     const sides = fromLeft ? [-1, 1] : [1, -1];
-    const polys = withNonWalkableRegionsAsHoles(this.roomData.walkable.polygons, this.roomData.regions);
     for (const side of sides) {
       for (const dy of [step, 0, -step]) {
         const p = { x: feet.x + side * gap, y: feet.y + dy };

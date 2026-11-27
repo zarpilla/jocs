@@ -236,6 +236,8 @@ def door_rebost(cv):
             if hr(x, y, 5) > 0.84:
                 cv.put(x, y, ENG, 4.4)
     _label(cv, 'REBOST', (x0 + x1) // 2, 74)
+    box(cv, 388, 60, 404, 67, CAB, 2.6)                               # llum d'emergència (com les altres portes)
+    cv.disc(396, 64, 7, 3, REDP, 3.0, lit=0)
 
 
 def door_taller(cv):
