@@ -5,6 +5,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { readJson, writeJson, type Json } from '../../../../adapters/benne/benne-content.js';
 import type { JocBenne } from '../../../../adapters/benne/joc-benne.js';
+import { PASSOS } from '../../game/logic/sincronia.js';
 
 export default {
   nom: 'Suma Zero',
@@ -31,6 +32,7 @@ export default {
   guis(gameDir) {
     addGameMenuButtons(gameDir);
     addHistoryGui(gameDir);
+    addIndicadorGui(gameDir);
   },
 } satisfies JocBenne;
 
@@ -139,3 +141,55 @@ function addHistoryGui(gameDir: string) {
 /** On comencen les línies de l'historial (y), i quantes n'hi caben: ho fa servir el runtime. */
 const HISTORIAL_TOP = 24; // ha de coincidir amb runtime/narrative.ts (HISTORIAL_FILES)
 
+
+// ─── L'indicador de les sincronies ──────────────────────────────────────────
+
+/**
+ * La GUI `indicador` (tasca 016): la placa de dalt a la dreta que diu quants torns queden en una sincronia (o la
+ * sospita d'en Ballester, al collaret), amb l'estil de la barra «SOSPITA» del vestíbul. Rectangles de color, sense
+ * art: la placa (vora daurada, fons fosc), l'etiqueta i, per a cada mida de pas (els torns o el límit de cada pas de
+ * game/logic/sincronia.ts), una tira de segments en quatre colors. Tot a x = 0: el runtime (runtime/indicador.ts)
+ * posa la placa a lloc i diu quins segments es veuen. Els rectangles són botons sense res a fer (un
+ * botó desactivat el motor el pinta mig transparent).
+ */
+function addIndicadorGui(gameDir: string) {
+  const dir = join(gameDir, 'guis/indicador');
+  mkdirSync(dir, { recursive: true });
+  // ha de coincidir amb runtime/indicador.ts
+  const W = 156, H = 15, Y = 4;
+  const TRACK = { x: 66, y: Y + 4, w: W - 66 - 5, h: 7 };
+  const COLORS: Record<string, string> = { Buit: '#28243a', Groc: '#fad23c', Taronja: '#f69628', Vermell: '#e63228' };
+  const rect = (id: string, x: number, y: number, width: number, height: number, color: string, zIndex: number) => ({
+    type: 'button', id, x, y, width, height, backgroundAnchor: 'top-left', text: '', font: 'suma-regular', fontSize: 8,
+    textColor: '#ffffff', backgroundTag: '', backgroundColor: color,
+    backgroundColorStates: { hover: color, pressed: color, disabled: color }, zIndex,
+  });
+  const controls: Json[] = [
+    rect('vora', 0, Y, W, H, '#f0c85a', 1),
+    rect('vora2', 1, Y + 1, W - 2, H - 2, '#463a28', 2),
+    rect('fons', 2, Y + 2, W - 4, H - 4, '#0e0c16', 3),
+    { type: 'text', id: 'etiqueta', x: 7, y: Y, text: '', font: BOLD_FONT, fontSize: 8, color: '#f0dc8c', align: 'left', zIndex: 4 },
+    rect('guia', TRACK.x - 1, TRACK.y - 1, TRACK.w + 2, TRACK.h + 2, '#786e82', 4),
+  ];
+  const mides = [...new Set(Object.values(PASSOS).map((p) => p.rellotge ? p.torns ?? 0 : p.limit?.max ?? 0).filter((m) => m > 0))];
+  for (const n of mides) {
+    const w = Math.floor((TRACK.w - (n - 1)) / n);
+    const x0 = TRACK.x + Math.floor((TRACK.w - (w * n + n - 1)) / 2);
+    for (let i = 0; i < n; i++) {
+      for (const [nom, color] of Object.entries(COLORS)) controls.push(rect(`t${n}s${i}${nom}`, x0 + i * (w + 1), TRACK.y, w, TRACK.h, color, 5));
+    }
+  }
+  writeJson(join(dir, 'indicador.gui.json'), {
+    id: 'indicador', name: 'Indicador', description: "Els torns que queden en una sincronia (games/suma-zero/adapters/benne/joc.ts).",
+    visible: false, display: { aseprite: false }, zIndex: 20, controls,
+  });
+  writeFileSync(join(dir, 'indicador.gui.ts'), `// Creat per games/suma-zero/adapters/benne/joc.ts: l'indicador de les sincronies. No l'editis aquí.
+// La lògica és a narrative/indicador.ts (games/suma-zero/adapters/benne/runtime/).
+import { onUpdate } from '@benne/script';
+import { actualitzaIndicador } from '../../narrative/indicador';
+
+onUpdate(() => actualitzaIndicador())
+`);
+}
+
+const BOLD_FONT = 'suma-negreta';
