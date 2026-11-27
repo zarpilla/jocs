@@ -24,8 +24,19 @@ menuBtn.onClick(() => guis.gameMenu.show())
 
 // The verb line ("Use Knife with Bread"), the chosen verb pressed (white) and the hovered thing's default verb
 // lit up (gold), so the two don't look the same (tasca 068).
+// The names carry their article («la porta», «el passadís»), so the line contracts the prepositions:
+// «Ves a el passadís» → «Ves al passadís», «Ves a cap a la reixa» → «Ves cap a la reixa» (tasca 164).
+const CONTRETS: Record<string, string> = {
+  'a el': 'al', 'a els': 'als', 'de el': 'del', 'de els': 'dels', 'per el': 'pel', 'per els': 'pels',
+}
+function contreu(frase: string): string {
+  return frase
+    .replace(/(^|\s)(a|de|per) (els?) /g, (_, s: string, p: string, el: string) => `${s}${CONTRETS[`${p} ${el}`]} `)
+    .replace(/(^|\s)a (cap a )/g, '$1$2')
+}
+
 function refresh() {
-  verbLineText.text = pointer.sentence
+  verbLineText.text = contreu(pointer.sentence)
   const armed = pointer.verb
   const highlighted = pointer.hover?.defaultVerb
   for (const [verb, button] of buttons) {

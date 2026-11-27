@@ -138,10 +138,32 @@ export function layoutHud() {
 }
 
 /**
+ * Els noms de les coses porten l'article («la porta», «el passadís», «l'escala»), i la frase els posa darrere el verb.
+ * Les preposicions s'hi contrauen: «Ves a el passadís» → «Ves al passadís», «Ves a cap a la plaça» → «Ves cap a la
+ * plaça», «de el» → «del», «per el» → «pel» (tasca 164).
+ */
+const CONTRETS: Record<string, string> = {
+  'a el': 'al', 'a els': 'als', 'de el': 'del', 'de els': 'dels', 'per el': 'pel', 'per els': 'pels',
+};
+function contreu(frase: string): string {
+  return frase
+    .replace(/(^|\s)(a|de|per) (els?) /g, (_, s: string, p: string, el: string) => `${s}${CONTRETS[`${p} ${el}`]} `)
+    .replace(/(^|\s)a (cap a )/g, '$1$2');
+}
+/** El mateix, amb el verb i el nom en dos textos: «Ves a» + «el passadís» → «Ves al» + «passadís». */
+function contreuVerb(verb: string, nom: string): [string, string] {
+  const p = verb.match(/^(.*\s)(a|de|per)$/);
+  if (!p) return [verb, nom];
+  if (p[2] === 'a' && nom.startsWith('cap a ')) return [p[1]!.trimEnd(), nom];
+  const el = nom.match(/^(els?) (.*)$/);
+  return el ? [`${p[1]}${CONTRETS[`${p[2]} ${el[1]}`]}`, el[2]!] : [verb, nom];
+}
+
+/**
  * La frase: el nom de la cosa; amb un objecte a la mà, «Usa la clau amb la porta». A la carta de navegació, sense res a
  * sota, el text d'entrada («On anem?»).
  *
- * Si el clic (o el toc) fa una acció, la frase la diu abans del nom: «Obre passaplats», amb el verb més apagat (és un
+ * Si el clic (o el toc) fa una acció, la frase la diu abans del nom: «Obre el passaplats», amb el verb més apagat (és un
  * altre text, `verbLineVerb`, a l'esquerra del nom; tots dos junts, centrats). Si el clic mira, o obre el menú perquè
  * n'hi ha més d'una, només el nom.
  */
@@ -150,11 +172,12 @@ export function refreshLine() {
   const hover = pointer.hover;
   const sobre = hover && !(item && hover.kind === 'item' && hover.id === item.id) ? (hover.description ?? '') : '';
   // Amb el menú d'accions obert, el nom ja hi és (el títol del menú, que pot caure just a la línia de la frase).
-  const text = openMenu() ? ''
+  let text = openMenu() ? ''
     : item
-    ? `${verbs.use.label} ${item.name} ${verbs.use.preposition ?? ''} ${sobre}`.trim()
+    ? contreu(`${verbs.use.label} ${item.name} ${verbs.use.preposition ?? ''} ${sobre}`.trim())
     : sobre || (cartaOberta() ? clickablePrompt() : '');
-  const verb = !item && sobre && text ? verbDelClic() : '';
+  let verb = !item && sobre && text ? verbDelClic() : '';
+  if (verb) [verb, text] = contreuVerb(verb, text);
   if (verbLineText.text !== text) verbLineText.text = text;
   if (verbLineVerb.text !== verb) verbLineVerb.text = verb;
   // el verb i el nom, junts al mig
