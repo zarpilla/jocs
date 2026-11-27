@@ -32,7 +32,7 @@ PIC = (464, 74, 512, 134)         # el quadre de la mare
 SAFE = (474, 88, 502, 120)        # la caixa forta (a la paret, darrere el quadre)
 HEARTH = (20, 144)                # la campana del foc a terra (x0, x1 de baix)
 MANTEL_Y = 96
-SINK = (156, 232)
+SINK = (194, 238)
 SUN = (255, 214, 150)
 
 BRASSY = [(40, 28, 10), (80, 58, 20), (130, 98, 36), (180, 142, 60), (220, 186, 96), (246, 222, 150)]
@@ -123,7 +123,7 @@ def floor(cv):
 
 def hearth_boca(cv, x0, x1):
     """El fons de la boca del foc (per a la llar de foc en volum de granja_casa.py): la pedra negra de sutge, la
-    cremallera amb l'olla i la cendra amb els tions i unes brases que encara fan caliu, entre x0 i x1."""
+    cremallera amb l'olla, entre x0 i x1. El foc és apagat: ni brases ni claror."""
     def soot(x, y):
         row = y // 6
         joint = y % 6 == 0 or (x + (row % 2) * 5) % 11 == 0
@@ -140,8 +140,6 @@ def hearth_boca(cv, x0, x1):
     cv.rect(cx - 14, 160, cx + 14, 162, BLACKT, 2.8)
     cv.line(cx - 12, 160, cx, 152, IRONR, 2.6)
     cv.line(cx, 152, cx + 12, 160, IRONR, 2.6)
-    # la claror de les brases, a baix, sobre la pedra i la panxa de l'olla
-    cv.glow(cx, FLOOR_Y - 4, 30, (255, 120, 40), 0.35)
 
 
 def hearth_lleixa(cv, x0, x1):
