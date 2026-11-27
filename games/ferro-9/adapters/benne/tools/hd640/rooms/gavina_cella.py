@@ -512,6 +512,22 @@ def _bunk_mon(lx, lz):
     return P[0], P[2]
 
 
+def _talla_x(poly, x0, x1):
+    """El polígon de pantalla retallat entre les x `x0` i `x1`: el personatge no surt tallat per les vores (tasca 109)."""
+    for dins, tall in ((lambda p: p[0] >= x0, x0), (lambda p: p[0] <= x1, x1)):
+        out = []
+        for a, b in zip(poly, poly[1:] + poly[:1]):
+            if dins(a):
+                out.append(a)
+            if dins(a) != dins(b):
+                out.append((tall, round(a[1] + (b[1] - a[1]) * (tall - a[0]) / (b[0] - a[0]))))
+        poly = out
+    return poly
+
+
+MARGE_X = 22                                       # la meitat d'una figura de prop, i una mica més
+
+
 # El terra on es camina (al món): de la porta a la llitera, arran de la paret del fons; per davant de la llitera
 # (i una mica pel seu costat esquerre, per darrere del cap). El vàter i la canonada del primer pla hi passen per
 # davant (capa `davant`).
@@ -519,7 +535,10 @@ _L, _D = BUNK[2], BUNK[3]
 WALK_MON = [(16, 286), (_bunk_mon(-_L / 2 - 8, _D / 2)[0], 286), _bunk_mon(-_L / 2 - 10, _D / 2 - 4),
             _bunk_mon(-_L / 2 - 10, -_D / 2 - 14), _bunk_mon(_L / 2 + 6, -_D / 2 - 14), (600, 170), (PIPE[0] - 14, -40),
             (16, -40)]
-_WALK = _talla([_p(x, z) for x, z in WALK_MON], V_MAX)
+# a la dreta, fins al pilar de primer pla (x ≈ 589..624): més enllà, la Vet hi quedava amagada al darrere o tallada per
+# la vora (tasca 109); el punt de la llitera (x 581) hi queda a dins
+PILAR_X0 = 582
+_WALK = _talla_x(_talla([_p(x, z) for x, z in WALK_MON], V_MAX), MARGE_X, PILAR_X0)
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 
 
@@ -568,7 +587,8 @@ GEOMETRIA = {
         'escarabat': {'rect': _sprite_rect('escarabat', (ESCARABAT[0], 0, ESCARABAT[1])),
                       'walk': _p(ESCARABAT[0] + 24, ESCARABAT[1] - 10)},
         'safata': {'rect': _sprite_rect('safata', (SAFATA[0], 0, SAFATA[1])), 'walk': _p(SAFATA[0] - 34, SAFATA[1])},
-        'reixa': {'rect': _wall(112, 152, 184, 201), 'walk': _p(_w(148), 262)},
+        # a la dreta de la reixa: al davant, la Directora (Acte 3) tapava la Vet (tasca 176)
+        'reixa': {'rect': _wall(112, 152, 184, 201), 'walk': _p(_w(220), 262)},
         'esquerda': {'rect': _wall(268, 116, 299, 157), 'walk': _p(_w(284), 250)},
     },
     'spawns': {'vet': _p(250, 150), 'mos': _p(*_bunk_mon(-_L / 2 + 26, -_D / 2 - 30)), 'mare': _HEART,

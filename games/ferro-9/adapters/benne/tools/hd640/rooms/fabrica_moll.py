@@ -702,7 +702,9 @@ def _things():
 
 GEOMETRIA = {
     'things': _things(),
-    'spawns': {'iri': _p(40, 206)},
+    # Sense porta (de la cambra, pel conducte), l'Iri surt al peu del conducte: el punt d'abans, al fons a l'esquerra,
+    # queia darrere els cavallets i semblava dreta damunt del banc (tasca 176).
+    'spawns': {'iri': _p(_w(306), 272)},
     'walkable': _WALK,
     'forats': [_forat_cavallets(), _cercle(PILAR[0], PILAR[1], 18, 14)],
     'floorSquash': 0.4,                            # (la càmera, picada: el terra es veu aixafat)

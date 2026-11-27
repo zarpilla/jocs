@@ -538,12 +538,31 @@ def _escala_a(v):
     return CAM.escala((200, 0, (lo + hi) / 2))
 
 
+def _talla_x(poly, x0, x1):
+    """El polígon de pantalla retallat entre les x `x0` i `x1`: el personatge no surt tallat per les vores (tasca 109)."""
+    for dins, tall in ((lambda p: p[0] >= x0, x0), (lambda p: p[0] <= x1, x1)):
+        out = []
+        for a, b in zip(poly, poly[1:] + poly[:1]):
+            if dins(a):
+                out.append(a)
+            if dins(a) != dins(b):
+                out.append((tall, round(a[1] + (b[1] - a[1]) * (tall - a[0]) / (b[0] - a[0]))))
+        poly = out
+    return poly
+
+
+MARGE_X = 22                                       # la meitat d'una figura de prop, i una mica més
+
+
 _VP = min(_v_escala(1.2), BOTTOM - 4)               # el límit de prop: escala 1,2
 # El terra on es camina (al món): el vestíbul (sense el contenidor ni els trastos) i el passadís fins a ZC; per
 # davant, fins on el personatge fa 1,2.
 WALK_MON = [(16, _z_a(16, _VP)), (16, ZC), (OX1 - 14, ZC), (OX1 - 12, 288), (OX1 + 10, 266), (OX1 + 60, 266),
             (OX1 + 66, 286), (520, 286), (520, _z_a(520, _VP))]
-_WALK = [_p(x, z) for x, z in WALK_MON]
+# a la dreta, fins a la paret fosca de primer pla (x ≈ 590): més enllà, la Vet hi quedava amagada al darrere o
+# tallada per la vora (tasca 109)
+PARET_X0 = 576
+_WALK = _talla_x([_p(x, z) for x, z in WALK_MON], MARGE_X, PARET_X0)
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 
 
