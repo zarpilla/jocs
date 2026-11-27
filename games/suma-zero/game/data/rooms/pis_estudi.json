@@ -740,7 +740,9 @@
           ]
         },
         {
+          "id": "router_mirar",
           "verb": "look",
+          "once": true,
           "lines": [
             {
               "who": "player",
@@ -890,6 +892,157 @@
               "text": "sala.pis_estudi.router.on.diu_distret",
               "if": {
                 "flag": "diu_distret"
+              }
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.falta.fxa",
+              "if": {
+                "all": [
+                  {
+                    "flag": "fibra_connectada",
+                    "is": false
+                  },
+                  {
+                    "flag": "xarxa_connectada",
+                    "is": false
+                  },
+                  {
+                    "flag": "alimentacio_connectada",
+                    "is": false
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.falta.fx",
+              "if": {
+                "all": [
+                  {
+                    "flag": "fibra_connectada",
+                    "is": false
+                  },
+                  {
+                    "flag": "xarxa_connectada",
+                    "is": false
+                  },
+                  {
+                    "flag": "alimentacio_connectada"
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.falta.fa",
+              "if": {
+                "all": [
+                  {
+                    "flag": "fibra_connectada",
+                    "is": false
+                  },
+                  {
+                    "flag": "xarxa_connectada"
+                  },
+                  {
+                    "flag": "alimentacio_connectada",
+                    "is": false
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.falta.xa",
+              "if": {
+                "all": [
+                  {
+                    "flag": "fibra_connectada"
+                  },
+                  {
+                    "flag": "xarxa_connectada",
+                    "is": false
+                  },
+                  {
+                    "flag": "alimentacio_connectada",
+                    "is": false
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.falta.f",
+              "if": {
+                "all": [
+                  {
+                    "flag": "fibra_connectada",
+                    "is": false
+                  },
+                  {
+                    "flag": "xarxa_connectada"
+                  },
+                  {
+                    "flag": "alimentacio_connectada"
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.falta.x",
+              "if": {
+                "all": [
+                  {
+                    "flag": "fibra_connectada"
+                  },
+                  {
+                    "flag": "xarxa_connectada",
+                    "is": false
+                  },
+                  {
+                    "flag": "alimentacio_connectada"
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.falta.a",
+              "if": {
+                "all": [
+                  {
+                    "flag": "fibra_connectada"
+                  },
+                  {
+                    "flag": "xarxa_connectada"
+                  },
+                  {
+                    "flag": "alimentacio_connectada",
+                    "is": false
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.falta.diu",
+              "if": {
+                "all": [
+                  {
+                    "flag": "diu_ha_mossegat"
+                  },
+                  {
+                    "flag": "diu_distret",
+                    "is": false
+                  }
+                ]
               }
             }
           ]
@@ -1219,6 +1372,18 @@
             {
               "who": "player",
               "text": "sala.pis_estudi.fibra.look_ok"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "diu_distret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.fibra.look_distret"
             }
           ]
         },
@@ -1840,11 +2005,13 @@
       }
     },
     "passaplats_obert": {
+      "sota": true,
       "visibleIf": {
         "flag": "passaplats_obert"
       }
     },
     "vet_passaplats": {
+      "sota": true,
       "visibleIf": {
         "all": [
           {
