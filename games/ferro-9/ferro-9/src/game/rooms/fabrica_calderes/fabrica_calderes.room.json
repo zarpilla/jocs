@@ -111,7 +111,7 @@
     {
       "id": "porta_magatzem",
       "active": true,
-      "description": "magatzem",
+      "description": "el magatzem",
       "zIndex": 0,
       "points": [
         {
@@ -144,7 +144,7 @@
     {
       "id": "porta_cambra",
       "active": true,
-      "description": "porta de la cambra",
+      "description": "la porta de la cambra",
       "zIndex": 1,
       "points": [
         {
@@ -177,7 +177,7 @@
     {
       "id": "tauler",
       "active": true,
-      "description": "tauler d'anuncis",
+      "description": "el tauler d'anuncis",
       "zIndex": 2,
       "points": [
         {
@@ -209,7 +209,7 @@
     {
       "id": "alarma",
       "active": true,
-      "description": "llum d'alarma",
+      "description": "la llum d'alarma",
       "zIndex": 3,
       "points": [
         {
@@ -241,7 +241,7 @@
     {
       "id": "porta_moll",
       "active": true,
-      "description": "moll de càrrega",
+      "description": "el moll de càrrega",
       "zIndex": 2,
       "points": [
         {
@@ -274,7 +274,7 @@
     {
       "id": "caldera",
       "active": true,
-      "description": "caldera",
+      "description": "la caldera",
       "zIndex": 5,
       "points": [
         {
@@ -306,7 +306,7 @@
     {
       "id": "foc",
       "active": true,
-      "description": "foc",
+      "description": "el foc",
       "zIndex": 6,
       "points": [
         {
@@ -338,7 +338,7 @@
     {
       "id": "vagoneta",
       "active": true,
-      "description": "vagoneta de carbó",
+      "description": "la vagoneta de carbó",
       "zIndex": 7,
       "points": [
         {
@@ -370,7 +370,7 @@
     {
       "id": "rellotge",
       "active": true,
-      "description": "rellotge",
+      "description": "el rellotge",
       "zIndex": 8,
       "points": [
         {
@@ -478,7 +478,7 @@
         "x": 406,
         "y": 226
       },
-      "description": "segell oficial"
+      "description": "el segell oficial"
     },
     {
       "id": "alarma_encesa",

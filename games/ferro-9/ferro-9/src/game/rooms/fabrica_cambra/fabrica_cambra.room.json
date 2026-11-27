@@ -135,7 +135,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "sala de calderes",
+      "description": "la sala de calderes",
       "zIndex": 0,
       "points": [
         {
@@ -168,7 +168,7 @@
     {
       "id": "palanca",
       "active": true,
-      "description": "palanca",
+      "description": "la palanca",
       "zIndex": 1,
       "points": [
         {
@@ -200,7 +200,7 @@
     {
       "id": "cambra",
       "active": true,
-      "description": "cambra",
+      "description": "la cambra",
       "zIndex": 2,
       "points": [
         {
@@ -232,7 +232,7 @@
     {
       "id": "reixa",
       "active": true,
-      "description": "reixa",
+      "description": "la reixa",
       "zIndex": 3,
       "points": [
         {
@@ -340,7 +340,7 @@
         "x": 205,
         "y": 92
       },
-      "description": "botó de sincronia",
+      "description": "el botó de sincronia",
       "baseline": 130
     },
     {

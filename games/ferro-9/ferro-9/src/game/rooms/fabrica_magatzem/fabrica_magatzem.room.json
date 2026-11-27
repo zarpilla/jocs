@@ -127,7 +127,7 @@
     {
       "id": "porta_calderes",
       "active": true,
-      "description": "sala de calderes",
+      "description": "la sala de calderes",
       "zIndex": 0,
       "points": [
         {
@@ -160,7 +160,7 @@
     {
       "id": "prestatges",
       "active": true,
-      "description": "prestatges",
+      "description": "els prestatges",
       "zIndex": 1,
       "points": [
         {
@@ -192,7 +192,7 @@
     {
       "id": "porta_despatx",
       "active": true,
-      "description": "despatx del director",
+      "description": "el despatx del director",
       "zIndex": 1,
       "points": [
         {
@@ -225,7 +225,7 @@
     {
       "id": "taquilla",
       "active": true,
-      "description": "taquilla",
+      "description": "la taquilla",
       "zIndex": 3,
       "points": [
         {
@@ -257,7 +257,7 @@
     {
       "id": "tauler_inventari",
       "active": true,
-      "description": "tauler de l'inventari",
+      "description": "el tauler de l'inventari",
       "zIndex": 4,
       "points": [
         {
@@ -289,7 +289,7 @@
     {
       "id": "banc",
       "active": true,
-      "description": "banc de treball",
+      "description": "el banc de treball",
       "zIndex": 5,
       "points": [
         {
@@ -321,7 +321,7 @@
     {
       "id": "retol",
       "active": true,
-      "description": "rètol",
+      "description": "el rètol",
       "zIndex": 6,
       "points": [
         {
@@ -429,7 +429,7 @@
         "x": 168,
         "y": 133
       },
-      "description": "plomall"
+      "description": "el plomall"
     },
     {
       "id": "caixa_eines",
@@ -469,7 +469,7 @@
         "x": 325,
         "y": 204
       },
-      "description": "caixa d'eines",
+      "description": "la caixa d'eines",
       "baseline": 171
     },
     {

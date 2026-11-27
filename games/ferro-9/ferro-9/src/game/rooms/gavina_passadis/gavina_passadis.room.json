@@ -85,7 +85,7 @@
     {
       "id": "porta_cella",
       "active": true,
-      "description": "cel·la 9",
+      "description": "la cel·la 9",
       "zIndex": 0,
       "points": [
         {
@@ -118,7 +118,7 @@
     {
       "id": "cartell",
       "active": true,
-      "description": "cartell",
+      "description": "el cartell",
       "zIndex": 1,
       "points": [
         {
@@ -150,7 +150,7 @@
     {
       "id": "camera_vigilancia",
       "active": true,
-      "description": "càmera",
+      "description": "la càmera",
       "zIndex": 2,
       "points": [
         {
@@ -182,7 +182,7 @@
     {
       "id": "porta_hangar",
       "active": true,
-      "description": "porta del fons",
+      "description": "la porta del fons",
       "zIndex": 1,
       "points": [
         {
@@ -215,7 +215,7 @@
     {
       "id": "porta_memoria",
       "active": true,
-      "description": "Sala de la Memòria",
+      "description": "la Sala de la Memòria",
       "zIndex": 2,
       "points": [
         {
@@ -324,7 +324,7 @@
         "x": 250,
         "y": 218
       },
-      "description": "rajola solta"
+      "description": "la rajola solta"
     },
     {
       "id": "ambient",

@@ -135,7 +135,7 @@
     {
       "id": "porta_calderes",
       "active": true,
-      "description": "sala de calderes",
+      "description": "la sala de calderes",
       "zIndex": 0,
       "points": [
         {
@@ -168,7 +168,7 @@
     {
       "id": "trapa",
       "active": true,
-      "description": "reixa del terra",
+      "description": "la reixa del terra",
       "zIndex": 1,
       "points": [
         {
@@ -200,7 +200,7 @@
     {
       "id": "llancadora",
       "active": true,
-      "description": "llançadora",
+      "description": "la llançadora",
       "zIndex": 2,
       "points": [
         {
@@ -232,7 +232,7 @@
     {
       "id": "comporta",
       "active": true,
-      "description": "comporta",
+      "description": "la comporta",
       "zIndex": 3,
       "points": [
         {
@@ -264,7 +264,7 @@
     {
       "id": "conducte",
       "active": true,
-      "description": "conducte",
+      "description": "el conducte",
       "zIndex": 4,
       "points": [
         {
@@ -296,7 +296,7 @@
     {
       "id": "pilar",
       "active": true,
-      "description": "pilar",
+      "description": "el pilar",
       "zIndex": 5,
       "points": [
         {
@@ -328,7 +328,7 @@
     {
       "id": "tauler",
       "active": true,
-      "description": "tauler d'eines",
+      "description": "el tauler d'eines",
       "zIndex": 1,
       "points": [
         {
@@ -436,7 +436,7 @@
         "x": 239,
         "y": 145
       },
-      "description": "biga d'acer",
+      "description": "la biga d'acer",
       "baseline": 172
     },
     {
@@ -477,7 +477,7 @@
         "x": 251,
         "y": 79
       },
-      "description": "biga de ferro-9"
+      "description": "la biga de ferro-9"
     },
     {
       "id": "serra",
@@ -517,7 +517,7 @@
         "x": 409,
         "y": 70
       },
-      "description": "serra"
+      "description": "la serra"
     },
     {
       "id": "llima",
@@ -557,7 +557,7 @@
         "x": 418,
         "y": 112
       },
-      "description": "llima"
+      "description": "la llima"
     },
     {
       "id": "marca_pilar",

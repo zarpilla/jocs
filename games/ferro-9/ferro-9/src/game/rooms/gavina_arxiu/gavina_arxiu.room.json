@@ -103,7 +103,7 @@
     {
       "id": "escala_hangar",
       "active": true,
-      "description": "moll de l'hangar",
+      "description": "el moll de l'hangar",
       "zIndex": 0,
       "points": [
         {
@@ -136,7 +136,7 @@
     {
       "id": "expedient_iri",
       "active": true,
-      "description": "expedients",
+      "description": "els expedients",
       "zIndex": 1,
       "points": [
         {
@@ -168,7 +168,7 @@
     {
       "id": "arxivador",
       "active": true,
-      "description": "arxivador",
+      "description": "l'arxivador",
       "zIndex": 2,
       "points": [
         {
@@ -200,7 +200,7 @@
     {
       "id": "planols",
       "active": true,
-      "description": "plànols",
+      "description": "els plànols",
       "zIndex": 3,
       "points": [
         {
@@ -308,7 +308,7 @@
         "x": 266,
         "y": 165
       },
-      "description": "carpeta caiguda"
+      "description": "la carpeta caiguda"
     },
     {
       "id": "ambient",

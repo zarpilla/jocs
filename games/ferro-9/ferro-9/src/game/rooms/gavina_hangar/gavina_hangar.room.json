@@ -87,7 +87,7 @@
     {
       "id": "porta_passadis",
       "active": true,
-      "description": "passadís",
+      "description": "el passadís",
       "zIndex": 0,
       "points": [
         {
@@ -120,7 +120,7 @@
     {
       "id": "comporta",
       "active": true,
-      "description": "comporta",
+      "description": "la comporta",
       "zIndex": 1,
       "points": [
         {
@@ -152,7 +152,7 @@
     {
       "id": "pilar",
       "active": true,
-      "description": "pilar",
+      "description": "el pilar",
       "zIndex": 2,
       "points": [
         {
@@ -184,7 +184,7 @@
     {
       "id": "placa_terra",
       "active": true,
-      "description": "reixa del terra",
+      "description": "la reixa del terra",
       "zIndex": 3,
       "points": [
         {
@@ -216,7 +216,7 @@
     {
       "id": "conducte",
       "active": true,
-      "description": "conducte",
+      "description": "el conducte",
       "zIndex": 4,
       "points": [
         {
@@ -248,7 +248,7 @@
     {
       "id": "escala",
       "active": true,
-      "description": "escala",
+      "description": "l'escala",
       "zIndex": 5,
       "points": [
         {
@@ -281,7 +281,7 @@
     {
       "id": "sortida_conducte",
       "active": true,
-      "description": "sortida del conducte",
+      "description": "la sortida del conducte",
       "zIndex": 2,
       "points": [
         {
@@ -398,7 +398,7 @@
         "x": 458,
         "y": 158
       },
-      "description": "llançadora"
+      "description": "la llançadora"
     },
     {
       "id": "porta_llancadora",
@@ -460,7 +460,7 @@
         "x": 200,
         "y": 172
       },
-      "description": "caixa que sura"
+      "description": "la caixa que sura"
     },
     {
       "id": "pany",
@@ -500,7 +500,7 @@
         "x": 459,
         "y": 125
       },
-      "description": "pany sònic"
+      "description": "el pany sònic"
     },
     {
       "id": "marca_pilar",
@@ -552,7 +552,7 @@
         "x": 553,
         "y": 253
       },
-      "description": "caixa de recanvis",
+      "description": "la caixa de recanvis",
       "baseline": 240
     },
     {

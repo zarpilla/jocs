@@ -125,7 +125,7 @@
     {
       "id": "esquerra",
       "active": true,
-      "description": "passadís de l'esquerra",
+      "description": "el passadís de l'esquerra",
       "zIndex": 0,
       "points": [
         {
@@ -158,7 +158,7 @@
     {
       "id": "recte",
       "active": true,
-      "description": "passadís del fons",
+      "description": "el passadís del fons",
       "zIndex": 1,
       "points": [
         {
@@ -191,7 +191,7 @@
     {
       "id": "dreta",
       "active": true,
-      "description": "passadís de la dreta",
+      "description": "el passadís de la dreta",
       "zIndex": 2,
       "points": [
         {
@@ -333,7 +333,7 @@
         "x": 336,
         "y": 116
       },
-      "description": "cartell"
+      "description": "el cartell"
     },
     {
       "id": "guant",
@@ -373,7 +373,7 @@
         "x": 444,
         "y": 206
       },
-      "description": "guant"
+      "description": "el guant"
     },
     {
       "id": "aixeta",
@@ -416,7 +416,7 @@
         "x": 471,
         "y": 178
       },
-      "description": "aixeta"
+      "description": "l'aixeta"
     },
     {
       "id": "tassa",
@@ -456,7 +456,7 @@
         "x": 327,
         "y": 189
       },
-      "description": "tassa"
+      "description": "la tassa"
     },
     {
       "id": "formulari",
@@ -496,7 +496,7 @@
         "x": 462,
         "y": 142
       },
-      "description": "formulari"
+      "description": "el formulari"
     },
     {
       "id": "ambient",

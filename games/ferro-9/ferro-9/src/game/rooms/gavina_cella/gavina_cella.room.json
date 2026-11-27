@@ -62,7 +62,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "porta de la cel·la",
+      "description": "la porta de la cel·la",
       "zIndex": 0,
       "points": [
         {
@@ -95,7 +95,7 @@
     {
       "id": "panell",
       "active": true,
-      "description": "panell rovellat",
+      "description": "el panell rovellat",
       "zIndex": 1,
       "points": [
         {
@@ -127,7 +127,7 @@
     {
       "id": "altaveu",
       "active": true,
-      "description": "altaveu de la MARE",
+      "description": "l'altaveu de la MARE",
       "zIndex": 2,
       "points": [
         {
@@ -159,7 +159,7 @@
     {
       "id": "llitera",
       "active": true,
-      "description": "llitera",
+      "description": "la llitera",
       "zIndex": 3,
       "points": [
         {
@@ -191,7 +191,7 @@
     {
       "id": "finestreta",
       "active": true,
-      "description": "finestreta",
+      "description": "la finestreta",
       "zIndex": 4,
       "points": [
         {
@@ -223,7 +223,7 @@
     {
       "id": "reixa",
       "active": true,
-      "description": "reixa",
+      "description": "la reixa",
       "zIndex": 1,
       "points": [
         {
@@ -332,7 +332,7 @@
         "x": 201,
         "y": 159
       },
-      "description": "avís"
+      "description": "l'avís"
     },
     {
       "id": "escarabat",
@@ -372,7 +372,7 @@
         "x": 260,
         "y": 158
       },
-      "description": "Senyor Bigotis"
+      "description": "el Senyor Bigotis"
     },
     {
       "id": "safata",
@@ -412,7 +412,7 @@
         "x": 376,
         "y": 188
       },
-      "description": "safata de sopar"
+      "description": "la safata de sopar"
     },
     {
       "id": "panell_afluixat",
@@ -496,7 +496,7 @@
         "x": 305,
         "y": 120
       },
-      "description": "esquerda"
+      "description": "l'esquerda"
     },
     {
       "id": "fullet",
@@ -536,7 +536,7 @@
         "x": 537,
         "y": 157
       },
-      "description": "fullet de reeducació",
+      "description": "el fullet de reeducació",
       "baseline": 192
     },
     {
@@ -602,7 +602,7 @@
         "x": 504,
         "y": 192
       },
-      "description": "molla",
+      "description": "la molla",
       "baseline": 192
     },
     {
@@ -685,7 +685,7 @@
         "x": 360,
         "y": 111
       },
-      "description": "clau anglesa"
+      "description": "la clau anglesa"
     }
   ],
   "characters": [

@@ -109,7 +109,7 @@
     {
       "id": "porta_passadis",
       "active": true,
-      "description": "passadís",
+      "description": "el passadís",
       "zIndex": 0,
       "points": [
         {
@@ -142,7 +142,7 @@
     {
       "id": "holograma",
       "active": true,
-      "description": "holograma del Director",
+      "description": "l'holograma del Director",
       "zIndex": 1,
       "points": [
         {
@@ -174,7 +174,7 @@
     {
       "id": "foto",
       "active": true,
-      "description": "foto del torn de nit",
+      "description": "la foto del torn de nit",
       "zIndex": 2,
       "points": [
         {
@@ -206,7 +206,7 @@
     {
       "id": "vitrina",
       "active": true,
-      "description": "vitrina",
+      "description": "la vitrina",
       "zIndex": 3,
       "points": [
         {
@@ -238,7 +238,7 @@
     {
       "id": "mapa",
       "active": true,
-      "description": "mapa de La Gavina",
+      "description": "el mapa de La Gavina",
       "zIndex": 4,
       "points": [
         {
@@ -270,7 +270,7 @@
     {
       "id": "fullets",
       "active": true,
-      "description": "fullets",
+      "description": "els fullets",
       "zIndex": 5,
       "points": [
         {
@@ -378,7 +378,7 @@
         "x": 392,
         "y": 204
       },
-      "description": "sòcol de l'holograma",
+      "description": "el sòcol de l'holograma",
       "baseline": 207
     },
     {
