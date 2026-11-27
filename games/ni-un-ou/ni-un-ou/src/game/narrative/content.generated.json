@@ -2757,6 +2757,72 @@
                 ]
               },
               {
+                "verb": [
+                  "open",
+                  "use",
+                  "pull"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 6
+                    },
+                    {
+                      "flag": "cops_sentits",
+                      "is": false
+                    },
+                    {
+                      "flag": "cadenat_tallat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.coberta_proa.escotilla.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.coberta_proa.escotilla.2",
+                    "sound": "cops"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.coberta_proa.escotilla.19"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.coberta_proa.escotilla.20"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.coberta_proa.escotilla.21",
+                    "if": {
+                      "hasItem": "cisalla",
+                      "is": false
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.coberta_proa.escotilla.22",
+                    "if": {
+                      "hasItem": "cisalla"
+                    }
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "cops_sentits"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
@@ -3235,6 +3301,76 @@
                     "text": "sala.cuina.munta.2"
                   }
                 ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "open",
+                  "use"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "var": "munta_cuina",
+                      "op": "!=",
+                      "value": ""
+                    },
+                    {
+                      "var": "munta_cuina",
+                      "op": "==",
+                      "value": "nota_iri"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.cuina.nota1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.cuina.nota2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.cuina.nota3"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.cuina.nota4"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setVar": "munta_cuina",
+                    "value": ""
+                  },
+                  {
+                    "setFlag": "nota_llegida"
+                  }
+                ],
+                "action": {
+                  "name": "munta.nota",
+                  "args": {
+                    "item": "nota_vet",
+                    "parada": "rebost"
+                  }
+                }
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "open",
+                  "use"
+                ],
+                "action": {
+                  "name": "munta.recollir"
+                },
+                "if": {
+                  "var": "munta_cuina",
+                  "op": "!=",
+                  "value": ""
+                }
               },
               {
                 "verb": "use",
@@ -9509,6 +9645,21 @@
                 ]
               },
               {
+                "verb": [
+                  "pickUp",
+                  "open",
+                  "use"
+                ],
+                "action": {
+                  "name": "munta.recollir"
+                },
+                "if": {
+                  "var": "munta_pont",
+                  "op": "!=",
+                  "value": ""
+                }
+              },
+              {
                 "verb": "use",
                 "item": "*",
                 "action": {
@@ -10101,6 +10252,65 @@
                     "text": "sala.rebost.munta.2"
                   }
                 ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "open",
+                  "use"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "var": "munta_rebost",
+                      "op": "!=",
+                      "value": ""
+                    },
+                    {
+                      "var": "munta_rebost",
+                      "op": "==",
+                      "value": "nota_vet"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.rebost.nota1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.rebost.nota2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.rebost.nota3"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setVar": "munta_rebost",
+                    "value": ""
+                  },
+                  {
+                    "setFlag": "pla_fet"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "open",
+                  "use"
+                ],
+                "action": {
+                  "name": "munta.recollir"
+                },
+                "if": {
+                  "var": "munta_rebost",
+                  "op": "!=",
+                  "value": ""
+                }
               },
               {
                 "verb": "use",
@@ -12613,6 +12823,10 @@
                     "sound": "panell"
                   },
                   {
+                    "who": "narrator",
+                    "text": "sala.sala_radio.panell.32"
+                  },
+                  {
                     "who": "bastida",
                     "text": "sala.sala_radio.panell.8"
                   },
@@ -13088,6 +13302,171 @@
               }
             ]
           },
+          "xapa": {
+            "name": "sala.sala_radio.xapa.nom",
+            "visibleIf": {
+              "flag": "panell_obert"
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_radio.xapa.1"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "close",
+                  "use",
+                  "pickUp",
+                  "push"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 3
+                    },
+                    {
+                      "flag": "radio_feta"
+                    },
+                    {
+                      "flag": "rut_parlat"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_radio.panell.21",
+                    "sound": "panell"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.sala_radio.panell.22"
+                  },
+                  {
+                    "who": "bastida",
+                    "text": "sala.sala_radio.panell.23"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.sala_radio.panell.24"
+                  },
+                  {
+                    "who": "bastida",
+                    "text": "sala.sala_radio.panell.25"
+                  },
+                  {
+                    "who": "iri",
+                    "text": "sala.sala_radio.panell.26"
+                  },
+                  {
+                    "who": "bastida",
+                    "text": "sala.sala_radio.panell.27"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.sala_radio.panell.28",
+                    "stage": [
+                      {
+                        "who": "bastida",
+                        "walk": "porta"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "bastida",
+                    "text": "sala.sala_radio.panell.29",
+                    "stageAfter": [
+                      {
+                        "who": "bastida",
+                        "visible": false
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.sala_radio.panell.30"
+                  },
+                  {
+                    "who": "vet",
+                    "text": "sala.sala_radio.aliats.1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.sala_radio.aliats.2"
+                  },
+                  {
+                    "who": "title",
+                    "text": "esc.falten10"
+                  },
+                  {
+                    "who": "title",
+                    "text": "acte.2"
+                  },
+                  {
+                    "who": "title",
+                    "text": "esc.nou"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "panell_obert",
+                    "value": false
+                  },
+                  {
+                    "setVar": "escena",
+                    "value": 4
+                  },
+                  {
+                    "setVar": "hores",
+                    "value": 10
+                  },
+                  {
+                    "setFlag": "bastida_passa"
+                  },
+                  {
+                    "takeItem": "tram"
+                  },
+                  {
+                    "event": "situar",
+                    "args": {
+                      "who": "vet",
+                      "room": "infermeria"
+                    }
+                  },
+                  {
+                    "event": "anar",
+                    "args": {
+                      "room": "laboratori"
+                    }
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "close",
+                  "use",
+                  "pickUp",
+                  "push"
+                ],
+                "if": {
+                  "flag": "panell_obert"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_radio.panell.31"
+                  }
+                ]
+              }
+            ]
+          },
           "bastida": {
             "visibleIf": {
               "all": [
@@ -13245,6 +13624,20 @@
           "panell_obert": {
             "visibleIf": {
               "flag": "panell_obert"
+            }
+          },
+          "panell_pelat": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "panell_obert"
+                },
+                {
+                  "var": "empalmat",
+                  "op": "==",
+                  "value": 1
+                }
+              ]
             }
           },
           "panell_reparat": {
@@ -14148,6 +14541,9 @@
             {
               "flag": "vet_desperta",
               "is": false
+            },
+            {
+              "flag": "valvula_vista"
             }
           ]
         },
@@ -14625,6 +15021,65 @@
           "pista.vet_bastida.1",
           "pista.vet_bastida.2",
           "pista.vet_bastida.3"
+        ]
+      },
+      "iri_panell_ara": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 3
+                },
+                {
+                  "flag": "radio_feta",
+                  "is": false
+                }
+              ]
+            },
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "panell_obert",
+              "is": false
+            },
+            {
+              "any": [
+                {
+                  "var": "coberta",
+                  "op": ">",
+                  "value": 0
+                },
+                {
+                  "var": "coberta_nova",
+                  "op": ">",
+                  "value": 0
+                },
+                {
+                  "all": [
+                    {
+                      "flag": "eina_temporal"
+                    },
+                    {
+                      "flag": "eina_tensio"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "panell_obert"
+        },
+        "levels": [
+          "pista.iri_panell_ara.1",
+          "pista.iri_panell_ara.2",
+          "pista.iri_panell_ara.3"
         ]
       },
       "iri_panell": {
@@ -24187,6 +24642,31 @@
                 },
                 {
                   "flag": "silueta_vista"
+                },
+                {
+                  "inRoom": "sala_maquines"
+                }
+              ]
+            },
+            "node": "sala_maquines_aqui"
+          },
+          {
+            "if": {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 1
+                },
+                {
+                  "protagonist": "iri"
+                },
+                {
+                  "flag": "vet_desperta",
+                  "is": false
+                },
+                {
+                  "flag": "silueta_vista"
                 }
               ]
             },
@@ -24451,6 +24931,14 @@
               {
                 "who": "player",
                 "text": "dlg.walkie.sala_maquines.1"
+              }
+            ]
+          },
+          "sala_maquines_aqui": {
+            "lines": [
+              {
+                "who": "player",
+                "text": "dlg.walkie.sala_maquines_aqui.1"
               }
             ]
           },
@@ -25636,6 +26124,7 @@
       "dlg.walkie.aviat.1": "A qui truco, i per demanar què? Primer, mirar com està la sala de màquines.",
       "dlg.walkie.taller.1": "Abans de despertar ningú, miro bé el tauler d'eines. Hi hauria de ser la clau de vàlvules.",
       "dlg.walkie.sala_maquines.1": "Falta la clau de vàlvules. Abans de trucar, vaig a la sala de màquines a veure per a què la volien.",
+      "dlg.walkie.sala_maquines_aqui.1": "Falta la clau de vàlvules. Abans de trucar, vull veure d'on surt tanta aigua.",
       "dlg.walkie.esc1_vet.1": "Iri? On era la cuina?",
       "dlg.walkie.esc1_vet.2": "Al fons del menjador. Surt al passadís, primera porta.",
       "dlg.walkie.esc1_vet.3": "Iri? Ja l'he enviada avall. T'ha arribat?",
@@ -26839,8 +27328,11 @@
       "pista.vet_bastida.2": "Parla amb en Bastida: el temporal el distreu tres torns; la tensió, dos.",
       "pista.vet_bastida.3": "Fes-li explicar el temporal. Quan l'Iri hagi d'empalmar, pren-li la tensió.",
       "pista.iri_panell.1": "Què em diries tu, ràdio? Ensenya'm el cable.",
-      "pista.iri_panell.2": "Obre el panell. Fa soroll: millor si la Vet té en Bastida distret.",
+      "pista.iri_panell.2": "Obre el panell. Fa soroll: millor si abans la Vet distreu en Bastida.",
       "pista.iri_panell.3": "Quan en Bastida estigui distret (amb la Vet), obre el panell.",
+      "pista.iri_panell_ara.1": "Ara: la Vet té en Bastida entretingut a l'infermeria.",
+      "pista.iri_panell_ara.2": "Obre el panell, ara que en Bastida està distret.",
+      "pista.iri_panell_ara.3": "Obre el panell de la paret, a la dreta de la ràdio.",
       "pista.iri_tram.1": "El tram tallat, fora.",
       "pista.iri_tram.2": "Agafa el cable tallat del panell.",
       "pista.iri_tram.3": "Agafa el cable tallat del panell.",
@@ -26860,8 +27352,8 @@
       "pista.iri_provar.2": "Prova la ràdio.",
       "pista.iri_provar.3": "Fes servir la ràdio.",
       "pista.iri_tancar.1": "Com si no hagués passat res.",
-      "pista.iri_tancar.2": "Tanca la tapa del panell de la ràdio, a la paret, a la dreta de la ràdio.",
-      "pista.iri_tancar.3": "Toca la tapa del panell d'ANTENA / PERILL, a la paret a la dreta de la ràdio, fins que la tanquis.",
+      "pista.iri_tancar.2": "Torna a posar la tapa al panell de la ràdio.",
+      "pista.iri_tancar.3": "Tanca el panell: toca la tapa d'ANTENA / PERILL, recolzada a la paret, o el forat del panell.",
       "pista.iri_postal.1": "La Juana va dir a la Vet que la contrasenya és el nom de la seva mare. Què hi ha al laboratori que en parli?",
       "pista.iri_postal.2": "Els llibres de la Juana. Algú hi guarda records.",
       "pista.iri_postal.3": "Mira el llibre de peixos del laboratori.",
@@ -27512,6 +28004,7 @@
       "sala.sala_radio.panell.29": "Massa bona.",
       "sala.sala_radio.panell.30": "La vàlvula, la ràdio... Ho ha fet algú de bord. Algú que té una cisalla mellada.",
       "sala.sala_radio.panell.31": "Encara no.",
+      "sala.sala_radio.panell.32": "Per terra, de l'infermeria de sota, pugen les veus d'en Bastida i de la Vet.",
       "sala.sala_radio.panell.nom": "el panell",
       "sala.sala_radio.cable.1": "El cable de l'antena. Tallat. Hi ha un tram que s'ha de treure.",
       "sala.sala_radio.cable.2": "Fora el tram tallat.",
@@ -27520,6 +28013,8 @@
       "sala.sala_radio.cable.5": "Aquest cable porta malla d'acer. Mella qualsevol cisalla.",
       "sala.sala_radio.cable.6": "...Això no ho ha fet en Diu.",
       "sala.sala_radio.cable.nom": "el cable tallat",
+      "sala.sala_radio.xapa.1": "La tapa del panell, recolzada a la paret. ANTENA, PERILL.",
+      "sala.sala_radio.xapa.nom": "la tapa del panell",
       "sala.sala_radio.nom": "Sala de ràdio",
       "sala.pal.escala.1": "Avall. A poc a poc.",
       "sala.pal.escala.nom": "l'escala",
@@ -27896,5 +28391,9 @@
     }
   },
   "locale": "ca",
-  "zones": {}
+  "zones": {
+    "sala_radio": [
+      "xapa"
+    ]
+  }
 }

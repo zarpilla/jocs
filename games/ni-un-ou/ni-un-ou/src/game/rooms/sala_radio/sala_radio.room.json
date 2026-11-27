@@ -189,12 +189,44 @@
         }
       ],
       "walkToPoint": {
-        "x": 358,
-        "y": 151
+        "x": 321,
+        "y": 153
       },
       "lookAtPoint": {
         "x": 354,
         "y": 116
+      }
+    },
+    {
+      "id": "xapa",
+      "active": false,
+      "description": "la tapa del panell",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 385,
+          "y": 85
+        },
+        {
+          "x": 441,
+          "y": 85
+        },
+        {
+          "x": 441,
+          "y": 144
+        },
+        {
+          "x": 385,
+          "y": 144
+        }
+      ],
+      "walkToPoint": {
+        "x": 377,
+        "y": 151
+      },
+      "lookAtPoint": {
+        "x": 413,
+        "y": 144
       }
     },
     {
@@ -461,8 +493,8 @@
         ]
       },
       "walkToPoint": {
-        "x": 358,
-        "y": 151
+        "x": 321,
+        "y": 153
       },
       "lookAtPoint": {
         "x": 354,
@@ -616,6 +648,17 @@
           "frameDuration": 150
         }
       }
+    },
+    {
+      "id": "panell_pelat",
+      "tag": "panell_pelat",
+      "animations": {
+        "panell_pelat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [
@@ -713,7 +756,7 @@
         "radius": 400,
         "color": "#e8eef4",
         "intensity": 0.45,
-        "power": 1,
+        "power": 1.0,
         "whenPropVisible": "dia"
       },
       {
@@ -722,7 +765,7 @@
         "radius": 380,
         "color": "#e8eef4",
         "intensity": 0.4,
-        "power": 1,
+        "power": 1.0,
         "whenPropVisible": "dia"
       }
     ]

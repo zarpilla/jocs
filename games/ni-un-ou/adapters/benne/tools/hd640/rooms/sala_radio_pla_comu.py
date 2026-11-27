@@ -630,6 +630,22 @@ def panell_reparat(cv):
     _virolla(cv, CX, 131, 139)
 
 
+def panell_pelat(cv):
+    """Decorat `panell_pelat` (el cable nou posat i pelat, encara sense connector): el tram nou al forat del tallat,
+    i a cada empalmament la malla d'acer esfilagarsada, que brilla, i el fil de coure del mig."""
+    _cable(cv, CX, 104, 137)
+    for y in range(107, 135):                                         # funda nova: una lluentor que la deixa veure
+        cv.put(CX - 1, y, CABLE, 4.4, lit=0.5)
+    for ya, yb in ((101, 104), (137, 140)):                           # els dos empalmaments, pelats
+        for y in range(ya, yb + 1):
+            for x in range(CX - 3, CX + 4):
+                if (x + y) % 2 == 0 or abs(x - CX) <= 1:
+                    cv.put(x, y, MESH, 4.6 if (x + y) % 3 == 0 else 3.4, lit=0.5)
+        cv.put(CX, (ya + yb) // 2, [(80, 40, 20), (200, 120, 60)], 1.4)          # el coure
+    for dx, dy in ((-4, 102), (4, 103), (-4, 139), (5, 138)):         # filets de malla que s'escapen
+        cv.put(CX + dx, dy, MESH, 4.0, lit=0.5)
+
+
 def _virolla(cv, cx, y0, y1):
     """Virolla de metall (9 px d'ample) crimpada: un cilindre lluent amb les marques de la crimpadora."""
     for y in range(y0, y1 + 1):
@@ -656,7 +672,8 @@ def dia(cv):
     cv.img.paste(day.img)
 
 
-PROPS = {'dia': dia, 'panell_obert': panell_obert, 'cable': cable, 'panell_reparat': panell_reparat}
+PROPS = {'dia': dia, 'panell_obert': panell_obert, 'cable': cable, 'panell_pelat': panell_pelat,
+         'panell_reparat': panell_reparat}
 
 
 # ─── Animacions ────────────────────────────────────────────────────────────

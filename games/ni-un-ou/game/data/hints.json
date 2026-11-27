@@ -750,6 +750,65 @@
       "pista.vet_bastida.3"
     ]
   },
+  "iri_panell_ara": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 3
+            },
+            {
+              "flag": "radio_feta",
+              "is": false
+            }
+          ]
+        },
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "panell_obert",
+          "is": false
+        },
+        {
+          "any": [
+            {
+              "var": "coberta",
+              "op": ">",
+              "value": 0
+            },
+            {
+              "var": "coberta_nova",
+              "op": ">",
+              "value": 0
+            },
+            {
+              "all": [
+                {
+                  "flag": "eina_temporal"
+                },
+                {
+                  "flag": "eina_tensio"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "panell_obert"
+    },
+    "levels": [
+      "pista.iri_panell_ara.1",
+      "pista.iri_panell_ara.2",
+      "pista.iri_panell_ara.3"
+    ]
+  },
   "iri_panell": {
     "priority": 4,
     "when": {

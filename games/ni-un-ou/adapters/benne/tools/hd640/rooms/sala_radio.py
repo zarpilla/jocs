@@ -460,7 +460,8 @@ def dia(cv):
     cv.P = cv.img.load()
 
 
-PROPS = {'dia': dia, 'panell_obert': panell_obert, 'cable': _capa(PL.cable), 'panell_reparat': _capa(PL.panell_reparat)}
+PROPS = {'dia': dia, 'panell_obert': panell_obert, 'cable': _capa(PL.cable), 'panell_pelat': _capa(PL.panell_pelat),
+         'panell_reparat': _capa(PL.panell_reparat)}
 
 
 # ─── Animacions ────────────────────────────────────────────────────────────
@@ -602,8 +603,11 @@ GEOMETRIA = {
     'things': {
         'porta': {'rect': _rect_mon((XR, _y(85), _wz(12)), (XR, 0, _wz(72))), 'walk': _p(516, _wz(43))},
         'radio': {'rect': _RADIO, 'walk': _p((RADIO[0] + RADIO[1]) / 2, 232)},
-        'panell': {'rect': _wall(437, 77, 523, 163), 'walk': _p(_w(480), 278)},
-        'cable': {'rect': _wall(459, 99, 502, 142), 'walk': _p(_w(480), 278)},
+        # (l'Iri es posa a l'esquerra del panell, de cara: just al davant, el cos tapava el cable)
+        'panell': {'rect': _wall(437, 77, 523, 163), 'walk': _p(_w(430), 278)},
+        'cable': {'rect': _wall(459, 99, 502, 142), 'walk': _p(_w(430), 278)},
+        # la xapa del panell, a terra recolzada a la paret (decorat `panell_obert`): també tanca el panell
+        'xapa': {'rect': _rect_mon((_w(522), 84, ZW - 3), (_w(602), 0, ZW - 20)), 'walk': _p(_w(505), 272)},
     },
     'spawns': {'iri': _p(_w(480) - 20, 250), 'vet': _p(150, 200), 'bastida': _p(500, _wz(43) + 4)},
     'walkable': _WALK,

@@ -23,7 +23,7 @@
     },
     "sala_radio 1.aseprite": {
       "frame": {
-        "x": 3174,
+        "x": 3181,
         "y": 0,
         "w": 6,
         "h": 27
@@ -86,7 +86,7 @@
     },
     "sala_radio 4.aseprite": {
       "frame": {
-        "x": 3180,
+        "x": 3187,
         "y": 0,
         "w": 7,
         "h": 27
@@ -107,7 +107,28 @@
     },
     "sala_radio 5.aseprite": {
       "frame": {
-        "x": 3586,
+        "x": 3099,
+        "y": 0,
+        "w": 7,
+        "h": 29
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 351,
+        "y": 73,
+        "w": 7,
+        "h": 29
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 6.aseprite": {
+      "frame": {
+        "x": 3593,
         "y": 0,
         "w": 1,
         "h": 1
@@ -126,33 +147,12 @@
       },
       "duration": 100
     },
-    "sala_radio 6.aseprite": {
-      "frame": {
-        "x": 3362,
-        "y": 0,
-        "w": 25,
-        "h": 18
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 505,
-        "y": 97,
-        "w": 25,
-        "h": 18
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "sala_radio 7.aseprite": {
       "frame": {
-        "x": 3187,
+        "x": 3369,
         "y": 0,
         "w": 25,
-        "h": 20
+        "h": 18
       },
       "rotated": false,
       "trimmed": true,
@@ -160,7 +160,7 @@
         "x": 505,
         "y": 97,
         "w": 25,
-        "h": 20
+        "h": 18
       },
       "sourceSize": {
         "w": 640,
@@ -169,6 +169,27 @@
       "duration": 100
     },
     "sala_radio 8.aseprite": {
+      "frame": {
+        "x": 3194,
+        "y": 0,
+        "w": 25,
+        "h": 20
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 505,
+        "y": 97,
+        "w": 25,
+        "h": 20
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 9.aseprite": {
       "frame": {
         "x": 2874,
         "y": 0,
@@ -189,7 +210,7 @@
       },
       "duration": 100
     },
-    "sala_radio 9.aseprite": {
+    "sala_radio 10.aseprite": {
       "frame": {
         "x": 2899,
         "y": 0,
@@ -210,7 +231,7 @@
       },
       "duration": 100
     },
-    "sala_radio 10.aseprite": {
+    "sala_radio 11.aseprite": {
       "frame": {
         "x": 2924,
         "y": 0,
@@ -231,33 +252,12 @@
       },
       "duration": 100
     },
-    "sala_radio 11.aseprite": {
-      "frame": {
-        "x": 3212,
-        "y": 0,
-        "w": 25,
-        "h": 20
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 505,
-        "y": 97,
-        "w": 25,
-        "h": 20
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "sala_radio 12.aseprite": {
       "frame": {
-        "x": 3262,
+        "x": 3219,
         "y": 0,
         "w": 25,
-        "h": 19
+        "h": 20
       },
       "rotated": false,
       "trimmed": true,
@@ -265,7 +265,7 @@
         "x": 505,
         "y": 97,
         "w": 25,
-        "h": 19
+        "h": 20
       },
       "sourceSize": {
         "w": 640,
@@ -275,7 +275,28 @@
     },
     "sala_radio 13.aseprite": {
       "frame": {
-        "x": 3237,
+        "x": 3269,
+        "y": 0,
+        "w": 25,
+        "h": 19
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 505,
+        "y": 97,
+        "w": 25,
+        "h": 19
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 14.aseprite": {
+      "frame": {
+        "x": 3244,
         "y": 0,
         "w": 25,
         "h": 20
@@ -294,7 +315,7 @@
       },
       "duration": 100
     },
-    "sala_radio 14.aseprite": {
+    "sala_radio 15.aseprite": {
       "frame": {
         "x": 2949,
         "y": 0,
@@ -315,7 +336,7 @@
       },
       "duration": 100
     },
-    "sala_radio 15.aseprite": {
+    "sala_radio 16.aseprite": {
       "frame": {
         "x": 2974,
         "y": 0,
@@ -336,9 +357,9 @@
       },
       "duration": 100
     },
-    "sala_radio 16.aseprite": {
+    "sala_radio 17.aseprite": {
       "frame": {
-        "x": 3099,
+        "x": 3106,
         "y": 0,
         "w": 25,
         "h": 29
@@ -357,9 +378,9 @@
       },
       "duration": 100
     },
-    "sala_radio 17.aseprite": {
+    "sala_radio 18.aseprite": {
       "frame": {
-        "x": 3586,
+        "x": 3593,
         "y": 0,
         "w": 1,
         "h": 1
@@ -378,30 +399,9 @@
       },
       "duration": 100
     },
-    "sala_radio 18.aseprite": {
-      "frame": {
-        "x": 3437,
-        "y": 0,
-        "w": 29,
-        "h": 10
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 202,
-        "y": 29,
-        "w": 29,
-        "h": 10
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "sala_radio 19.aseprite": {
       "frame": {
-        "x": 3437,
+        "x": 3444,
         "y": 0,
         "w": 29,
         "h": 10
@@ -422,9 +422,9 @@
     },
     "sala_radio 20.aseprite": {
       "frame": {
-        "x": 3466,
+        "x": 3444,
         "y": 0,
-        "w": 30,
+        "w": 29,
         "h": 10
       },
       "rotated": false,
@@ -432,7 +432,7 @@
       "spriteSourceSize": {
         "x": 202,
         "y": 29,
-        "w": 30,
+        "w": 29,
         "h": 10
       },
       "sourceSize": {
@@ -443,7 +443,7 @@
     },
     "sala_radio 21.aseprite": {
       "frame": {
-        "x": 3466,
+        "x": 3473,
         "y": 0,
         "w": 30,
         "h": 10
@@ -464,7 +464,7 @@
     },
     "sala_radio 22.aseprite": {
       "frame": {
-        "x": 3466,
+        "x": 3473,
         "y": 0,
         "w": 30,
         "h": 10
@@ -485,9 +485,9 @@
     },
     "sala_radio 23.aseprite": {
       "frame": {
-        "x": 3437,
+        "x": 3473,
         "y": 0,
-        "w": 29,
+        "w": 30,
         "h": 10
       },
       "rotated": false,
@@ -495,7 +495,7 @@
       "spriteSourceSize": {
         "x": 202,
         "y": 29,
-        "w": 29,
+        "w": 30,
         "h": 10
       },
       "sourceSize": {
@@ -506,7 +506,7 @@
     },
     "sala_radio 24.aseprite": {
       "frame": {
-        "x": 3437,
+        "x": 3444,
         "y": 0,
         "w": 29,
         "h": 10
@@ -527,7 +527,28 @@
     },
     "sala_radio 25.aseprite": {
       "frame": {
-        "x": 3586,
+        "x": 3444,
+        "y": 0,
+        "w": 29,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 202,
+        "y": 29,
+        "w": 29,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 26.aseprite": {
+      "frame": {
+        "x": 3593,
         "y": 0,
         "w": 1,
         "h": 1
@@ -546,9 +567,9 @@
       },
       "duration": 100
     },
-    "sala_radio 26.aseprite": {
+    "sala_radio 27.aseprite": {
       "frame": {
-        "x": 3496,
+        "x": 3503,
         "y": 0,
         "w": 29,
         "h": 10
@@ -567,9 +588,9 @@
       },
       "duration": 100
     },
-    "sala_radio 27.aseprite": {
+    "sala_radio 28.aseprite": {
       "frame": {
-        "x": 3525,
+        "x": 3532,
         "y": 0,
         "w": 30,
         "h": 10
@@ -588,30 +609,9 @@
       },
       "duration": 100
     },
-    "sala_radio 28.aseprite": {
-      "frame": {
-        "x": 3555,
-        "y": 0,
-        "w": 31,
-        "h": 10
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 199,
-        "y": 29,
-        "w": 31,
-        "h": 10
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "sala_radio 29.aseprite": {
       "frame": {
-        "x": 3555,
+        "x": 3562,
         "y": 0,
         "w": 31,
         "h": 10
@@ -632,7 +632,7 @@
     },
     "sala_radio 30.aseprite": {
       "frame": {
-        "x": 3555,
+        "x": 3562,
         "y": 0,
         "w": 31,
         "h": 10
@@ -653,7 +653,28 @@
     },
     "sala_radio 31.aseprite": {
       "frame": {
-        "x": 3525,
+        "x": 3562,
+        "y": 0,
+        "w": 31,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 199,
+        "y": 29,
+        "w": 31,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 32.aseprite": {
+      "frame": {
+        "x": 3532,
         "y": 0,
         "w": 30,
         "h": 10
@@ -672,9 +693,9 @@
       },
       "duration": 100
     },
-    "sala_radio 32.aseprite": {
+    "sala_radio 33.aseprite": {
       "frame": {
-        "x": 3496,
+        "x": 3503,
         "y": 0,
         "w": 29,
         "h": 10
@@ -693,9 +714,9 @@
       },
       "duration": 100
     },
-    "sala_radio 33.aseprite": {
+    "sala_radio 34.aseprite": {
       "frame": {
-        "x": 3586,
+        "x": 3593,
         "y": 0,
         "w": 1,
         "h": 1
@@ -714,9 +735,9 @@
       },
       "duration": 100
     },
-    "sala_radio 34.aseprite": {
+    "sala_radio 35.aseprite": {
       "frame": {
-        "x": 3412,
+        "x": 3419,
         "y": 0,
         "w": 25,
         "h": 16
@@ -735,9 +756,9 @@
       },
       "duration": 100
     },
-    "sala_radio 35.aseprite": {
+    "sala_radio 36.aseprite": {
       "frame": {
-        "x": 3387,
+        "x": 3394,
         "y": 0,
         "w": 25,
         "h": 18
@@ -756,7 +777,7 @@
       },
       "duration": 100
     },
-    "sala_radio 36.aseprite": {
+    "sala_radio 37.aseprite": {
       "frame": {
         "x": 2999,
         "y": 0,
@@ -777,7 +798,7 @@
       },
       "duration": 100
     },
-    "sala_radio 37.aseprite": {
+    "sala_radio 38.aseprite": {
       "frame": {
         "x": 3024,
         "y": 0,
@@ -798,7 +819,7 @@
       },
       "duration": 100
     },
-    "sala_radio 38.aseprite": {
+    "sala_radio 39.aseprite": {
       "frame": {
         "x": 3049,
         "y": 0,
@@ -819,30 +840,9 @@
       },
       "duration": 100
     },
-    "sala_radio 39.aseprite": {
-      "frame": {
-        "x": 3287,
-        "y": 0,
-        "w": 25,
-        "h": 19
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 505,
-        "y": 98,
-        "w": 25,
-        "h": 19
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
     "sala_radio 40.aseprite": {
       "frame": {
-        "x": 3312,
+        "x": 3294,
         "y": 0,
         "w": 25,
         "h": 19
@@ -863,7 +863,7 @@
     },
     "sala_radio 41.aseprite": {
       "frame": {
-        "x": 3337,
+        "x": 3319,
         "y": 0,
         "w": 25,
         "h": 19
@@ -884,6 +884,27 @@
     },
     "sala_radio 42.aseprite": {
       "frame": {
+        "x": 3344,
+        "y": 0,
+        "w": 25,
+        "h": 19
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 505,
+        "y": 98,
+        "w": 25,
+        "h": 19
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 43.aseprite": {
+      "frame": {
         "x": 3074,
         "y": 0,
         "w": 25,
@@ -903,9 +924,9 @@
       },
       "duration": 100
     },
-    "sala_radio 43.aseprite": {
+    "sala_radio 44.aseprite": {
       "frame": {
-        "x": 3124,
+        "x": 3131,
         "y": 0,
         "w": 25,
         "h": 29
@@ -924,9 +945,9 @@
       },
       "duration": 100
     },
-    "sala_radio 44.aseprite": {
+    "sala_radio 45.aseprite": {
       "frame": {
-        "x": 3149,
+        "x": 3156,
         "y": 0,
         "w": 25,
         "h": 28
@@ -945,7 +966,7 @@
       },
       "duration": 100
     },
-    "sala_radio 45.aseprite": {
+    "sala_radio 46.aseprite": {
       "frame": {
         "x": 2778,
         "y": 0,
@@ -966,7 +987,7 @@
       },
       "duration": 100
     },
-    "sala_radio 46.aseprite": {
+    "sala_radio 47.aseprite": {
       "frame": {
         "x": 2826,
         "y": 0,
@@ -987,7 +1008,7 @@
       },
       "duration": 100
     },
-    "sala_radio 47.aseprite": {
+    "sala_radio 48.aseprite": {
       "frame": {
         "x": 2680,
         "y": 0,
@@ -1008,7 +1029,7 @@
       },
       "duration": 100
     },
-    "sala_radio 48.aseprite": {
+    "sala_radio 49.aseprite": {
       "frame": {
         "x": 2729,
         "y": 0,
@@ -1029,7 +1050,7 @@
       },
       "duration": 100
     },
-    "sala_radio 49.aseprite": {
+    "sala_radio 50.aseprite": {
       "frame": {
         "x": 1280,
         "y": 0,
@@ -1050,7 +1071,7 @@
       },
       "duration": 100
     },
-    "sala_radio 50.aseprite": {
+    "sala_radio 51.aseprite": {
       "frame": {
         "x": 1920,
         "y": 0,
@@ -1078,7 +1099,7 @@
     "image": "sala_radio.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3587,
+      "w": 3594,
       "h": 360
     },
     "scale": "1",
@@ -1119,65 +1140,72 @@
         "color": "#000000ff"
       },
       {
-        "name": "mar",
+        "name": "panell_pelat",
         "from": 5,
-        "to": 16,
+        "to": 5,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "mar",
+        "from": 6,
+        "to": 17,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "llum",
-        "from": 17,
-        "to": 32,
+        "from": 18,
+        "to": 33,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "dia_mar",
-        "from": 33,
-        "to": 44,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_tamboret",
-        "from": 45,
+        "from": 34,
         "to": 45,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "dia__davant_tamboret",
+        "name": "davant_tamboret",
         "from": 46,
         "to": 46,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_caixa",
+        "name": "dia__davant_tamboret",
         "from": 47,
         "to": 47,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "dia__davant_caixa",
+        "name": "davant_caixa",
         "from": 48,
         "to": 48,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "dia__davant_caixa",
         "from": 49,
         "to": 49,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "dia__davant",
+        "name": "davant",
         "from": 50,
         "to": 50,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "dia__davant",
+        "from": 51,
+        "to": 51,
         "direction": "forward",
         "color": "#000000ff"
       }
