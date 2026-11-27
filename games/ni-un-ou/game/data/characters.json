@@ -212,7 +212,7 @@
         "room": "coberta_popa",
         "path": [
           {
-            "x": 170,
+            "x": 250,
             "y": 226,
             "face": "U"
           },
@@ -222,7 +222,7 @@
             "face": "U"
           }
         ],
-        "pause": 2.5
+        "pause": 6
       }
     ],
     "place": [
