@@ -717,5 +717,6 @@ ANIMS = {
     **PIS,
 }
 
-# La veu del Director (personatge invisible): sota la pantalla, perquè el text li surti a sobre.
-GEOMETRIA = {'things': {}, 'spawns': {'bonfill': (320, 236)}, 'walkable': [(200, 253), (267, 253), (267, 261), (200, 261)]}
+# La veu del Director (personatge invisible): sota el mig de la pantalla, perquè el text li surti just a sobre (entre
+# el rètol BCMU i la pantalla): se sap que parla la pantalla, i no tapa ni la cara ni el rètol «EN DIRECTE» (tasca 008).
+GEOMETRIA = {'things': {}, 'spawns': {'bonfill': (388, 200)}, 'walkable': [(200, 253), (267, 253), (267, 261), (200, 261)]}
