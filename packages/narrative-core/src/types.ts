@@ -298,6 +298,11 @@ export interface StageCue {
    */
   gest?: string | null;
   visible?: boolean;
+  /**
+   * Amb `prop` i `visible: true`: la capa apareix fosa, de transparent a opaca en aquests segons (p. ex. l'aigua de la
+   * resclosa que baixa). No s'espera: amb `hold`, sí.
+   */
+  fade?: number;
 }
 
 export interface StagePoint {

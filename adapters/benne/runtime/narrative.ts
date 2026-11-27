@@ -641,7 +641,11 @@ export function applyStageNow(cue: StageCue) {
     const room = world.currentRoom();
     if (!room) return;
     const prop = new PropHandle(toBenne('rooms', room), cue.prop);
-    if (cue.visible !== undefined) prop.visible = cue.visible;
+    if (cue.visible === true && cue.fade) {
+      prop.alpha = 0;
+      prop.visible = true;
+      prop.fade.now(1, cue.fade);
+    } else if (cue.visible !== undefined) prop.visible = cue.visible;
     if (typeof cue.anim === 'string' && prop.animation !== cue.anim) prop.animation = cue.anim;
     return;
   }
