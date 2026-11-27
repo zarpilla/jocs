@@ -1,0 +1,61 @@
+{
+  "id": "titol",
+  "name": "Títol",
+  "description": "Targeta de títol (adapters/benne/benne-content.ts).",
+  "visible": false,
+  "display": {
+    "aseprite": false
+  },
+  "zIndex": 105,
+  "anchorY": "center",
+  "controls": [
+    {
+      "type": "button",
+      "id": "fons",
+      "x": 0,
+      "y": 0,
+      "width": 640,
+      "height": 288,
+      "anchorY": "stretch",
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "ultimaarrel-negreta",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "backgroundTag": "",
+      "backgroundColor": "#000000",
+      "backgroundColorStates": {
+        "hover": "#000000",
+        "pressed": "#000000",
+        "disabled": "#000000"
+      },
+      "zIndex": 1
+    },
+    {
+      "type": "text",
+      "id": "gran",
+      "x": 320,
+      "y": 132,
+      "text": "",
+      "font": "ultimaarrel-negreta",
+      "fontSize": 24,
+      "color": "#ffffff",
+      "align": "center",
+      "wordWrapWidth": 544,
+      "zIndex": 2
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "x": 320,
+      "y": 136,
+      "text": "",
+      "font": "ultimaarrel-negreta",
+      "fontSize": 16,
+      "color": "#ffffff",
+      "align": "center",
+      "wordWrapWidth": 544,
+      "zIndex": 2
+    }
+  ]
+}

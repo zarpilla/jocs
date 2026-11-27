@@ -7,13 +7,14 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { MusicHandle, SfxHandle, ambient, background, cutscene, display, fadeIn, fadeOut, game, player, pointer, saves, stayBlackOnEnter, wait } from '@benne/script';
+import { MusicHandle, SfxHandle, ambient, background, cutscene, defineVars, display, fadeIn, fadeOut, game, player, pointer, saves, stayBlackOnEnter, wait, waitForClick } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
-  AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, resetStageAnims, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne, voiced, preloadLineVoices,
+  AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, resetStageAnims, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom, doorPoint,
+  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, flushPendingGives, leavesRoom, targetFromBenne, voiced, preloadLineVoices,
+  actionFootprint, wantsActionGesture, GEST_ACCIO, GEST_ACCIO_S,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
 
@@ -72,7 +73,7 @@ function sayLines(lines: ResolvedLine[], around: Around) {
       const before = i === 0 ? around.before : lines[i - 1]!.who
       const after = i === lines.length - 1 ? around.after : lines[i + 1]!.who
       if (before !== 'title') fadeOut(1)
-      display(line.text)
+      showTitleCard(line.text, true)
       if (after !== 'title' && after !== 'negre') {
         showDueCharacters()
         fadeIn(1)
@@ -100,6 +101,24 @@ function sayLines(lines: ResolvedLine[], around: Around) {
   if (around.more || around.after === 'negre') return
   applyHotspotVisibility()
   applyPlaces(true)
+}
+
+/**
+ * Targeta de títol (GUI `titol`, la fa benne-content.ts): el text en gran, amb la lletra del joc, sobre negre. Els
+ * títols curts (el nom del joc) van més grans. Amb `negre` (la pantalla ja és negra: s'hi ha fos), la targeta apareix
+ * i se'n va amb un fos, i en acabar la pantalla torna a quedar negra; si no, surt de cop damunt de la sala.
+ * Passa amb un clic, o sola al cap d'una estona.
+ */
+function showTitleCard(text: string, negre: boolean) {
+  const card = guis.titol
+  const gran = text.length <= 16 && !text.includes('·')
+  card.controls.gran.text = gran ? text : ''
+  card.controls.text.text = gran ? '' : text
+  card.show()
+  if (negre) fadeIn(0.6)
+  waitForClick({ timeout: Math.max(3, 1.5 + text.length * 0.06) })
+  if (negre) fadeOut(0.6)
+  card.hide()
 }
 
 /**
@@ -147,22 +166,51 @@ function senseOpcions(id: string): boolean {
 
 /** Després d'una interacció o d'un diàleg: el final, el canvi de protagonista o la sala nova que s'hagin demanat. */
 function followUp(goTo?: string) {
+  // Els objectes donats entren a l'inventari abans de desar, de canviar de protagonista o de sala.
+  flushPendingGives()
   if (takePendingEnding()) {
     takePendingSwitch()
     takePendingGoTo()
     playEnding()
     return
   }
+  autosaveHere()
   const who = takePendingSwitch()
   const anar = takePendingGoTo() ?? goTo
   if (who) {
     goToProtagonist(who)
     return
   }
+  if (anar && anar === narrative.world.currentRoom()) {
+    reenterRoom(anar)
+    return
+  }
   if (anar) {
     const room = benneRoom(anar)
     if (room) room.goTo()
   }
+}
+
+/**
+ * `anar` a la sala on ja s'és (p. ex. l'Escena 3 de Ni un ou, que comença a la infermeria, si la darrera revisió s'hi
+ * acaba): Benne no hi torna a entrar (`goTo` a la mateixa sala no fa res), i el títol que hi havia just abans s'ha
+ * quedat a negre esperant la sala nova. Es fa l'entrada a mà: la sala al dia sota el negre, el fos i l'`onEnter`.
+ */
+function reenterRoom(room: string) {
+  resetStageAnims(room)
+  applyHotspotVisibility()
+  applyAppearances()
+  applyPlaces(false)
+  narrative.worldChanged()
+  const result = primeStage(narrative.enterRoom(room))
+  // Si l'onEnter comença amb un títol, es queda a negre: el títol ja farà el seu fos.
+  if (result?.lines[0]?.who !== 'title') {
+    for (const cue of result?.lines[0]?.stage ?? []) applyStageNow(cue)
+    showDueCharacters()
+    fadeIn(1)
+  }
+  if (!untouchedNewGame) saves.autosave(AUTOSAVE)
+  if (result) playResult(result)
 }
 
 /**
@@ -201,8 +249,15 @@ export function performInteraction(verb: string, target: FallbackTarget, item?: 
   if (isClickableCutscene(narrative.world.currentRoom())) setClickablePrompt('')
   const request = { verb, target: targetFromBenne(target.kind, target.id), item: item ? fromBenne('items', item) : undefined }
   const room = narrative.world.currentRoom()
+  const before = actionFootprint()
   const result = primeStage(narrative.interact(request))
   touchRouter()?.acted?.(verb, target, room)
+  // Agafa, fa servir o dona una cosa de la sala: estira el braç (si el full té el gest per a la roba que porta).
+  if (wantsActionGesture(verb, target.kind, before, result)) {
+    applyStageNow({ who: 'player', gest: GEST_ACCIO })
+    wait(GEST_ACCIO_S)
+    applyStageNow({ who: 'player', gest: null })
+  }
   // Una porta (o escotilla, o escala) que porta a una altra sala: el seu so sonarà en arribar-hi.
   setDoorSound(result?.goTo && !result.dialogue && target.kind !== 'item' ? narrative.world.currentRoom() : null, fromBenne('hotspots', target.id))
   if (result) playResult(result)
@@ -262,6 +317,10 @@ export function onRoomEntered() {
       const character = benneCharacter(who)
       if (character) player.switchTo(character)
     }
+    // Qui entra per una porta apareix davant de la porta (vegeu `doorPoint`).
+    const from = protagonistRoom(who)
+    const porta = from && from !== room ? doorPoint(room, from) : null
+    if (porta) player.moveTo(porta)
     rememberProtagonistRoom(who, room)
   }
   resetStageAnims(room)
@@ -339,6 +398,32 @@ function playerActed() {
   if (!untouchedNewGame) return
   untouchedNewGame = false
   saves.autosave(AUTOSAVE)
+}
+
+/**
+ * Desa la partida en acabar una interacció o un diàleg (`saves.autosave` espera que s'acabin), perquè «Continua» no
+ * perdi el que s'ha fet dins d'una sala (les revisions de la infermeria de Ni un ou). Mai a la portada, a una
+ * cinemàtica, al final ni en una partida nova on encara no s'ha fet res.
+ */
+function autosaveHere() {
+  const room = narrative.world.currentRoom()
+  if (!room || untouchedNewGame || room === narrative.content.manifest.cover || narrative.content.rooms[room]?.cutscene || finale.length) return
+  saves.autosave(AUTOSAVE)
+}
+
+/**
+ * «Surt» del menú: desa on és la partida i després crida `leave` (tancar l'app o anar a l'arrel del web), perquè
+ * «Continua» hi torni. Si una interacció encara no ha acabat, el desament espera que acabi: s'hi dona fins a 2 s.
+ */
+export function quitAfterSaving(leave: () => void) {
+  const before = saves.get(AUTOSAVE)?.timestamp ?? 0
+  autosaveHere()
+  const start = Date.now()
+  const tick = () => {
+    if ((saves.get(AUTOSAVE)?.timestamp ?? 0) !== before || Date.now() - start > 2000 || untouchedNewGame) leave()
+    else window.setTimeout(tick, 100)
+  }
+  tick()
 }
 
 /** Qui vol saber que s'ha clicat «Comença» (la targeta «Com es juga», als jocs tàctils: vegeu controls.ts). */
@@ -463,13 +548,16 @@ export function enterNarrativeRoom() {
   const final = takePendingEnding()
   const negre = result.goTo || final ? 'negre' : undefined
   let saltada = false
+  const inici = Date.now()
   for (let k = 0; k < result.lines.length; k++) {
     const more = k < result.lines.length - 1
     playLines([result.lines[k]!], { before: result.lines[k - 1]?.who, after: result.lines[k + 1]?.who ?? negre, more })
-    // Mentre se salta una cinemàtica, `wait` acaba a l'instant: així sabem si han premut Esc.
-    const inici = Date.now()
+    // Mentre se salta una cinemàtica, `wait` acaba a l'instant. Però només compta si s'ha premut Esc: després d'un
+    // fotograma llarg (un clic que passa la línia i n'engega l'animació) també pot acabar de seguida, i el pròleg
+    // d'Aigua Verne se saltava sencer amb clics (tasca 200). I Esc tot sol pot haver tancat l'historial.
+    const abans = Date.now()
     wait(0.1)
-    if (Date.now() - inici < 50) {
+    if (escPremutA >= inici && Date.now() - abans < 50) {
       saltada = true
       break
     }
@@ -515,6 +603,15 @@ function refreshOptions(dialog: DialogHandle, choices: ResolvedChoice[]) {
   }
 }
 
+/**
+ * Una opció `silent` és una ordre (els comandaments de la grua d'Aigua Verne, «Marxar»), no una frase: no es posa en
+ * gris com les ja dites, que es poden haver de tornar a triar. Benne la marca en clicar-la; aquí es desmarca.
+ */
+function unmarkUsed(dialog: DialogHandle, name: string) {
+  const key = `dialog:${dialog.id}:option:${dialog.options[name]?.id ?? name}:used`
+  defineVars({ [key]: false })[key] = false
+}
+
 /** Des de `dialog.onStart` (generat). */
 export function startNarrativeDialog(id: string, dialog: DialogHandle) {
   adoptLoadedState()
@@ -529,12 +626,17 @@ export function startNarrativeDialog(id: string, dialog: DialogHandle) {
 export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: string, choice: string) {
   adoptLoadedState()
   // La primera línia és l'opció dita en veu alta (si no és `silent`): el decorat de l'escena és a la següent.
-  const echo = narrative.content.dialogues[id]?.nodes[node]?.choices?.find((c) => c.id === choice)?.silent ? 0 : 1
+  const silent = narrative.content.dialogues[id]?.nodes[node]?.choices?.find((c) => c.id === choice)?.silent
+  if (silent) unmarkUsed(dialog, optionName(node, choice))
+  const echo = silent ? 0 : 1
   const step = primeStage(narrative.choose(id, choice, { node }), echo)
   refreshOptions(dialog, step.choices)
   playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
   if (step.ended) endDialog(dialog)
 }
+
+/** Una pista demanada enmig d'una conversa, que es dirà quan acabi. */
+let hintWaiting = false
 
 /**
  * Botó o verb de "pista": cada vegada una mica més explícita. Si la pista apunta a coses de la sala (`targets`), hi
@@ -542,6 +644,21 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
  * walkie), la diu ella.
  */
 export function sayHint() {
+  // Enmig d'una línia o d'una conversa, la pista espera que acabi: dita alhora, s'hi barrejava i l'encallava.
+  if (game.isBusy) {
+    if (!hintWaiting) {
+      hintWaiting = true
+      const tick = () => {
+        if (game.isBusy) window.setTimeout(tick, 250)
+        else {
+          hintWaiting = false
+          sayHint()
+        }
+      }
+      window.setTimeout(tick, 250)
+    }
+    return
+  }
   const hint = narrative.requestHint()
   const text = hint ? hint.text : narrative.noHintText()
   const key = hint ? hint.key : narrative.noHintKey()
@@ -569,13 +686,20 @@ export function switchProtagonist() {
 }
 
 /** Una línia d'un final: els personatges ja no hi són, i el que diuen surt amb el nom al davant. */
-type EndingLine = { who: string; key?: string; text: string; sound?: string; effects?: Effect[] }
+type EndingLine = { who: string; key?: string; text: string; sound?: string; effects?: Effect[]; stage?: StageCue[]; stageAfter?: StageCue[] }
 
 /**
  * Una línia d'un final. Damunt d'una sala (`enSala`), qui hi és i es veu la diu amb bafarada, com a la resta del
  * joc, i els `effects` de la línia s'apliquen abans (algú que es mou, una cosa que s'apaga). Si no, és text.
  */
 function displayEndingLine(line: EndingLine, enSala = false) {
+  // Damunt d'una sala, el moviment de la línia (`stage`, `stageAfter`), com a les interaccions: qui serveix, qui es gira.
+  if (enSala && line.stage) playStage(line.stage)
+  sayEndingLine(line, enSala)
+  if (enSala && line.stageAfter) playStage(line.stageAfter)
+}
+
+function sayEndingLine(line: EndingLine, enSala: boolean) {
   recordLine(line.who, line.text)
   if (line.sound) new SfxHandle(line.sound).play()
   if (enSala && line.effects?.length) {
@@ -589,7 +713,11 @@ function displayEndingLine(line: EndingLine, enSala = false) {
     display(voiced('narrator', line.key, line.text))
     return
   }
-  if (line.who === 'title' || line.who === 'player') {
+  if (line.who === 'title') {
+    showTitleCard(line.text, !enSala)
+    return
+  }
+  if (line.who === 'player') {
     display(line.text)
     return
   }
@@ -630,7 +758,7 @@ export function playEnding(id?: string) {
   }
 
   fadeOut(1.5)
-  display(ending.title)
+  showTitleCard(ending.title, true)
   for (const line of negre) displayEndingLine(line)
   const primer = trossos[0]
   const sala = primer ? benneRoom(primer.room) : undefined
@@ -642,16 +770,23 @@ export function playEnding(id?: string) {
   sala.goTo()
 }
 
+/** Quan s'ha premut Esc per última vegada (per saltar un final, vegeu `playFinaleRoom`). */
+let escPremutA = 0
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') escPremutA = Date.now()
+}, true)
+
 /** En entrar a una sala d'un final: les seves línies, i després la sala següent o el «Fi». */
 function playFinaleRoom() {
   const tros = finale.shift()!
+  const inici = Date.now()
   let saltat = false
   for (const line of tros.lines) {
     displayEndingLine(line, true)
-    // Amb Esc, `wait` acaba a l'instant: llavors anem directament al «Fi».
-    const inici = Date.now()
     wait(0.1)
-    if (Date.now() - inici < 50) {
+    // Amb Esc (salta l'escena), directament al «Fi». Un clic només passa la línia: abans es mirava si `wait`
+    // havia acabat a l'instant, i un clic que hi queia també ho feia.
+    if (escPremutA >= inici) {
       saltat = true
       break
     }
@@ -672,7 +807,7 @@ function playFinaleRoom() {
  * acabada no quedi a mitges en memòria; «Continua» hi torna des de la darrera sala desada.
  */
 function showTheEnd() {
-  display(narrative.t('ui.fi'))
+  showTitleCard(narrative.t('ui.fi'), true)
   wait(0.5)
   location.reload()
 }

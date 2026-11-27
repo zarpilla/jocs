@@ -42,7 +42,8 @@
       "scriptName": "menu__adeu",
       "text": "Adeu!",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

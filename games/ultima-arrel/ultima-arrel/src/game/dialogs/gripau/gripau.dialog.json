@@ -14,7 +14,8 @@
       "scriptName": "menu__ajuda",
       "text": "M'ajudes amb la roda del tub?",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "menu__pancarta",
@@ -28,7 +29,8 @@
       "scriptName": "menu__adeu",
       "text": "Bona vaga.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

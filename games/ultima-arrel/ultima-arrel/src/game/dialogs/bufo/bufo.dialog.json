@@ -35,7 +35,8 @@
       "scriptName": "menu__adeu",
       "text": "Tornaré.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

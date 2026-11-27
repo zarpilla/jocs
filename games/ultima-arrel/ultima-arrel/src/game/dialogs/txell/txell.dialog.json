@@ -21,14 +21,16 @@
       "scriptName": "menu__canal7",
       "text": "Jo soc la del canal 7.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "menu__adeu",
       "scriptName": "menu__adeu",
       "text": "Res, gràcies.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

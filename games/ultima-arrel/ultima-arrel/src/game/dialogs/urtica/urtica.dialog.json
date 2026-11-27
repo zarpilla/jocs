@@ -35,7 +35,8 @@
       "scriptName": "menu__adeu",
       "text": "Ja parlarem.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "menu2__pla",
@@ -56,14 +57,16 @@
       "scriptName": "menu2__empeny",
       "text": "M'empenys al gronxador?",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "menu2__adeu2",
       "scriptName": "menu2__adeu2",
       "text": "Ara torno.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }
