@@ -535,6 +535,7 @@ PROPS = {
     'caixa_forta': _paret_fons(PL.caixa_forta),
     'caixa_oberta': _paret_fons(PL.caixa_oberta),
     'quadre_apartat': quadre_apartat,
+    'pantalla_pare': _paret_fons(PL.pantalla_pare),
 }
 
 
@@ -620,7 +621,7 @@ GEOMETRIA = {
                   'walk': _p((PL.DOOR[0] + PL.DOOR[2]) / 2 - FX, ZW - 24)},
         'calaix': {'rect': _rect_mon(*[(x, TAULA[4] + 4, z) for x, z in _T], *[(x, 0, z) for x, z in _T]),
                    'walk': _p(TAULA[0] + 12, TAULA[1] - 58)},
-        'videotelefon': {'rect': _rect_fons(360, 92, 410, 150), 'walk': _p(238, ZW - 26)},
+        'videotelefon': {'rect': _rect_fons(360, 92, 410, 150), 'walk': _p(190, ZW - 26)},   # (al costat: no tapa la pantalla)
         'quadre': {'rect': _rect_fons(PL.PIC[0] - 2, PL.PIC[1] - 8, PL.PIC[2] + 2, PL.PIC[3] + 2),
                    'walk': _p(TAULA[0] - 20, TAULA[1] - 62)},
         'caixa_forta': {'rect': _rect_fons(PL.SAFE[0] - 2, PL.SAFE[1] - 2, PL.SAFE[2] + 2, PL.SAFE[3] + 2),
@@ -630,7 +631,8 @@ GEOMETRIA = {
         'pots': {'rect': _rect_fons(150, 36, 288, 125), 'walk': _p(112, ZW - 46)},
         'pica': {'rect': _rect_mon((PICA[0], PICA[2] + 24, ZW), (PICA[1], 0, PICA[3])), 'walk': _p((PICA[0] + PICA[1]) / 2, ZW - 50)},
     },
-    'spawns': {'iri': _p(176, 190), 'vet': _p(250, 160)},
+    'spawns': {'iri': _p(176, 190), 'vet': _p(250, 160),
+               'quim': (300, 165)},                               # la veu del pare surt del videotelèfon
     'walkable': _WALK,
     'forats': [[_p(x, z) for x, z in _cantons(*TAULA[:4], TAULA[5], marge=8)]],
     # La càmera és a 1,65 m i el terra on es camina, a ≈4 m: el terra es veu aixafat.

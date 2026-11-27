@@ -175,8 +175,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 302,
-        "y": 194
+        "x": 263,
+        "y": 196
       },
       "lookAtPoint": {
         "x": 297,
@@ -449,6 +449,17 @@
       },
       "zIndex": 24,
       "baseline": 999
+    },
+    {
+      "id": "pantalla_pare",
+      "tag": "pantalla_pare",
+      "animations": {
+        "pantalla_pare": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [
@@ -475,8 +486,8 @@
     {
       "instanceId": "quim-veu",
       "definition": "quim/quim.character.json",
-      "x": 73,
-      "y": 127,
+      "x": 300,
+      "y": 165,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,

@@ -161,7 +161,7 @@
       "animations": {
         "davant_camera": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 999
     }
   ],
@@ -189,8 +189,8 @@
     {
       "instanceId": "pell-veu",
       "definition": "pell/pell.character.json",
-      "x": 73,
-      "y": 127,
+      "x": 283,
+      "y": 211,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,

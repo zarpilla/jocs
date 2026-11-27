@@ -113,7 +113,12 @@
               "sound": "videotelefon"
             }
           ],
-          "dialogue": "pare"
+          "dialogue": "pare",
+          "effects": [
+            {
+              "setFlag": "trucant_pare"
+            }
+          ]
         }
       ]
     },
@@ -332,6 +337,13 @@
           ]
         }
       ]
+    }
+  },
+  "decor": {
+    "pantalla_pare": {
+      "visibleIf": {
+        "flag": "trucant_pare"
+      }
     }
   }
 }

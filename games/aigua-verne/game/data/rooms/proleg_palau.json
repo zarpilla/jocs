@@ -45,15 +45,26 @@
         {
           "who": "narrator",
           "text": "sala.proleg_palau.entra.4",
-          "effects": [
+          "stage": [
             {
-              "setFlag": "proleg_focus"
+              "prop": "focus_apagat",
+              "visible": true
             }
           ]
         },
         {
           "who": "verne",
-          "text": "sala.proleg_palau.entra.5"
+          "text": "sala.proleg_palau.entra.5",
+          "stageAfter": [
+            {
+              "prop": "preu46",
+              "visible": false
+            },
+            {
+              "prop": "preu48",
+              "visible": true
+            }
+          ]
         },
         {
           "who": "pell",
@@ -61,12 +72,7 @@
         },
         {
           "who": "verne",
-          "text": "sala.proleg_palau.entra.7",
-          "effects": [
-            {
-              "setFlag": "proleg_preu"
-            }
-          ]
+          "text": "sala.proleg_palau.entra.7"
         },
         {
           "who": "narrator",

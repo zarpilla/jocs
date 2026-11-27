@@ -345,6 +345,12 @@
           "who": "quim",
           "text": "dlg.pare.adeu.1"
         }
+      ],
+      "effects": [
+        {
+          "setFlag": "trucant_pare",
+          "value": false
+        }
       ]
     }
   }

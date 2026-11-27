@@ -374,6 +374,32 @@ def videotelefon(cv):
     cv.put(x0 + 2, y1 + 3, BLACKT, 2.0)
 
 
+
+SCRN = [(16, 34, 38), (30, 62, 66), (52, 98, 100), (88, 144, 140), (142, 196, 184), (204, 236, 220)]
+
+
+def pantalla_pare(cv):
+    """La pantalla del videotelèfon encesa, mentre s'hi parla amb el pare: la llum verdosa del tub i, a dins, en
+    Quim a la residència: el cap calb, amb dues bandes de cabell blanc, ulleres i la jaqueta de punt fosca."""
+    x0, y0, x1, y1 = 375, 101, 401, 119
+    cx = (x0 + x1) // 2
+    cv.rect(x0, y0, x1, y1, SCRN, lambda x, y: 2 if abs(x - cx) < 9 and y < y1 - 3 else 1)   # el fons de la residència
+    fx, fy = cx, y0 + 8
+    cv.poly([(fx - 11, y1 + 1), (fx + 11, y1 + 1), (fx + 7, fy + 6), (fx - 7, fy + 6)], SCRN, 0)   # la jaqueta
+    cv.rect(fx - 1, fy + 6, fx + 1, y1, SCRN, 3)                                # la camisa
+    cv.disc(fx, fy, 5, 6, SCRN, lambda nx, ny: 4 if nx > -0.4 else 3)            # la cara
+    for sx in (fx - 6, fx - 5, fx + 5, fx + 6):                                 # el cabell blanc dels costats
+        cv.rect(sx, fy - 3, sx, fy + 1, SCRN, 5)
+    cv.rect(fx - 4, fy - 1, fx - 1, fy - 1, SCRN, 0)                            # les ulleres
+    cv.rect(fx + 1, fy - 1, fx + 4, fy - 1, SCRN, 0)
+    cv.flat(fx - 2, fy, (14, 30, 30))
+    cv.flat(fx + 2, fy, (14, 30, 30))
+    cv.rect(fx - 1, fy + 3, fx + 1, fy + 3, SCRN, 1)                            # la boca
+    cv.put(x0 + 2, y0 + 2, SCRN, 5)                                             # la lluentor del vidre
+    cv.put(x0 + 3, y0 + 2, SCRN, 5)
+
+
+
 def desk(cv):
     """La taula del despatx, contra la paret: el tauler vist una mica des de dalt, dos peus de calaixos plens
     (un calaix que no tanca, amb papers que en surten) i, al damunt, diaris vells, cartes i el cabdell de cordill."""

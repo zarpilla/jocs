@@ -462,6 +462,8 @@ def _taula_front():
 # en Verne, darrere la taula; en Dividend, al costat del tros de vidre
 _VERNE = _p(CADIRA[0] - 6, CADIRA[1] - 30)
 _DIVIDEND = _p(POU[0] - 30, (POU[2] + POU[3]) / 2 - 10)
+# la Sra. Pell no es veu: parla per l'interfon de la taula, i el seu text surt d'allà (no de la vora de la pantalla)
+_PELL = _p(248, 246)
 
 FRONT = [
     {'id': 'davant', 'mask': _amo({'taula'}), 'baseline': round(_taula_front()), 'zIndex': 20},
@@ -474,7 +476,7 @@ _WALK = [(0, _V_FONS), (W - 1, _V_FONS), (W - 1, _V_PROP), (0, _V_PROP)]
 
 GEOMETRIA = {
     'things': {},                       # cinemàtica: res per clicar
-    'spawns': {'verne': _VERNE, 'dividend': _DIVIDEND},
+    'spawns': {'verne': _VERNE, 'dividend': _DIVIDEND, 'pell': _PELL},
     'walkable': _WALK,
     'floorSquash': 0.35,
     'characterShadow': {'enabled': True, 'color': '#3a3040', 'alpha': 0.35, 'squash': 0.35, 'core': 0.6,
