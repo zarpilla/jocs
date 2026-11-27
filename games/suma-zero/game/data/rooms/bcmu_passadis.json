@@ -739,7 +739,24 @@
             {
               "who": "narrator",
               "text": "sala.bcmu_passadis.escala.obre2",
-              "sound": "clau_gira"
+              "sound": "clau_gira",
+              "stage": [
+                {
+                  "prop": "escala_oberta",
+                  "visible": true
+                },
+                {
+                  "who": "player",
+                  "walk": {
+                    "x": 372,
+                    "y": 152
+                  }
+                },
+                {
+                  "who": "player",
+                  "face": "L"
+                }
+              ]
             },
             {
               "who": "player",
@@ -747,7 +764,13 @@
             },
             {
               "who": "narrator",
-              "text": "sala.bcmu_passadis.escala.obre4"
+              "text": "sala.bcmu_passadis.escala.obre4",
+              "stage": [
+                {
+                  "prop": "escala_oberta",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
@@ -788,7 +811,24 @@
             {
               "who": "narrator",
               "text": "sala.bcmu_passadis.escala.obre2",
-              "sound": "clau_gira"
+              "sound": "clau_gira",
+              "stage": [
+                {
+                  "prop": "escala_oberta",
+                  "visible": true
+                },
+                {
+                  "who": "player",
+                  "walk": {
+                    "x": 372,
+                    "y": 152
+                  }
+                },
+                {
+                  "who": "player",
+                  "face": "L"
+                }
+              ]
             },
             {
               "who": "player",
@@ -796,7 +836,13 @@
             },
             {
               "who": "narrator",
-              "text": "sala.bcmu_passadis.escala.obre4"
+              "text": "sala.bcmu_passadis.escala.obre4",
+              "stage": [
+                {
+                  "prop": "escala_oberta",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
@@ -972,6 +1018,11 @@
     "camera2_tapada": {
       "visibleIf": {
         "flag": "camera2_tapada"
+      }
+    },
+    "escala_oberta": {
+      "visibleIf": {
+        "flag": "escala_guardes"
       }
     }
   }

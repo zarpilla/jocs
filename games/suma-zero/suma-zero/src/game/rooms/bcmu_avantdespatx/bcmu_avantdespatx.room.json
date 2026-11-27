@@ -436,6 +436,16 @@
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 9
+    },
+    {
+      "instanceId": "ballester-1",
+      "definition": "ballester/ballester.character.json",
+      "x": 512,
+      "y": 236,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
     }
   ],
   "viewAnchorY": 0,

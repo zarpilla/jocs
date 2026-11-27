@@ -167,6 +167,34 @@ def porta_escala(cv):
     cv.darken(x1 + 6, y0, x1 + 10, y1, 0.35)
 
 
+def escala_oberta(cv):
+    """La porta de l'escala oberta (tasca 031): a dins, l'escala fosca que puja i tres guardes de seguretat que
+    pugen, amb gorra de plat i una llanterna. La fulla de la porta, girada cap endins, és la franja de l'esquerra."""
+    x0, y0, x1, y1 = 19, 67, 80, FLOOR_Y
+    for y in range(y0, y1 + 1):                                        # el buit de l'escala, fosc
+        for x in range(x0, x1 + 1):
+            cv.put(x, y, CONCB, 0.5 + (y - y0) / (y1 - y0) * 0.8 + (hr(x // 2, y // 2, 31) - 0.5) * 0.2)
+    for k in range(9):                                                 # els graons, que pugen cap a la dreta
+        gy = y1 - 6 - k * 14
+        cv.hline(x0 + 8, x1, gy, CONCB, 2.2)
+        cv.hline(x0 + 8, x1, gy + 1, CONCB, 1.0)
+    cv.line(x0 + 10, y1, x1, y0 + 20, CHROME, 1.8)                     # la barana
+    for (cx, top, k) in ((60, 92, 0.8), (36, 104, 0.9), (50, 122, 1.0)):   # els guardes, de lluny a prop
+        w = round(10 * k)
+        cv.rect(cx - w, top + round(14 * k), cx + w, y1, NAVYB, 2.6)          # l'uniforme
+        cv.vline(cx, top + round(16 * k), y1, NAVYB, 1.2)
+        cv.flat(cx - w + 3, top + round(20 * k), YEL[3])                     # la placa
+        cv.disc(cx, top + round(8 * k), 5 * k, 6 * k, [(60, 36, 24), (130, 86, 60), (196, 140, 104), (226, 180, 146)],
+                lambda nx, ny: 2.6 - nx * 0.6 - ny * 0.4)                     # la cara
+        cv.rect(cx - round(6 * k), top, cx + round(6 * k), top + round(3 * k), NAVYB, 1.6)   # la gorra de plat
+        cv.hline(cx - round(7 * k), cx + round(7 * k), top + round(4 * k), NAVYB, 0.6)       # la visera
+        cv.flat(cx, top + 1, YEL[3])
+    cv.glow(46, 150, 26, (255, 236, 170), 0.55)                        # la llanterna del de davant
+    cv.line(46, 150, 64, 168, YEL, 3.0)
+    cv.rect(x0 - 2, y0, x0 + 4, y1, OLDWOOD, 2.0)                      # la fulla, girada cap endins
+    cv.darken(x0 + 5, y0, x0 + 9, y1, 0.5)
+
+
 def porta_neteja(cv):
     """La porta de servei de la neteja: xapa grisa, una reixeta, el tancaportes i la barra antipànic."""
     x0, y0, x1, y1 = 200, 75, 267, FLOOR_Y

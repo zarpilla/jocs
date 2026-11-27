@@ -1061,6 +1061,10 @@
                   "walk": "bosses"
                 },
                 {
+                  "prop": "bosses_plenes",
+                  "visible": false
+                },
+                {
                   "who": "neta",
                   "walk": {
                     "x": 272,
@@ -1293,6 +1297,18 @@
           ]
         }
       ]
+    }
+  },
+  "decor": {
+    "bosses_plenes": {
+      "visibleIf": {
+        "not": {
+          "var": "coixi",
+          "op": "==",
+          "value": "bosses"
+        }
+      },
+      "sota": true
     }
   }
 }

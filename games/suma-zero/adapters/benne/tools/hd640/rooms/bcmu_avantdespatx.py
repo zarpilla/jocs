@@ -583,7 +583,7 @@ GEOMETRIA = {
         'porta': {'rect': _rect_mon((XC, _DOOR[2], _rz(_DOOR[0])), (XC, _DOOR[3], _rz(_DOOR[1]))),
                   'walk': _p(452, 236)},
     },
-    'spawns': {'pons': _p(*PONS), 'vet': _p(190, 130)},
+    'spawns': {'pons': _p(*PONS), 'vet': _p(190, 130), 'ballester': _p(100, 230)},   # (en Ballester, si acompanya la Vet)
     'walkable': _WALK,
     'floorSquash': 0.45,                           # (la càmera, picada: el terra es veu aixafat)
     # L'ombra de contacte: la llum dominant és la del sostre, al mig de la sala; curta i cap enfora.

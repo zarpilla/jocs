@@ -486,6 +486,7 @@ def _prop_paret(fn):
 
 
 PROPS = {'cartell': _prop_cartell, 'galleda': _prop_galleda, 'extintor': _prop_paret(PL.extintor),
+         'escala_oberta': _prop_paret(PL.escala_oberta),
          'camera1_tapada': _prop_paret(PL.camera1_tapada), 'camera2_tapada': _prop_paret(PL.camera2_tapada)}
 
 

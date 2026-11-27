@@ -534,6 +534,17 @@
       },
       "zIndex": 24,
       "baseline": 236
+    },
+    {
+      "id": "escala_oberta",
+      "tag": "escala_oberta",
+      "animations": {
+        "escala_oberta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

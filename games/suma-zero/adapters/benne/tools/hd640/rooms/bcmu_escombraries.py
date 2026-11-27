@@ -248,8 +248,9 @@ def escena(cv, tex, estat=frozenset()):
     # el cable gruixut del Llibre Major, de l'endoll de la paret al costat del moble
     e.cable('cables', [(_w(283), _y(156), ZW - 1), (_w(280), 6, ZW - 3), (_w(280) + 4, 0.8, ZW - 14),
                        _llibre(-60, 0.8, 30)], SLATE, 1.6, gruix=3.0)
-    # les bosses de paper triturat, a la cantonada
-    _bosses(e)
+    # les bosses de paper triturat, a la cantonada (un decorat: NETA-3 les llença pel conducte, tasca 031)
+    if 'sense_bosses' not in estat:
+        _bosses(e)
     # EL LLIBRE MAJOR: separat de la paret i girat; el frontal del dibuix pla, el costat amb reixetes, la tapa amb pols
     cx, cz, lw, ld, ang = LEDGER
     c, s_ = math.cos(ang), math.sin(ang)
@@ -369,14 +370,32 @@ def _base_llum():
     return _amb_llum(_base()[0])
 
 
+@functools.lru_cache(maxsize=None)
+def _sense_bosses():
+    """La sala sense les bosses (el fons de la sala: les bosses són un decorat). → (imatge crua, Escena)"""
+    return _render(frozenset({'sense_bosses'}))
+
+
+@functools.lru_cache(maxsize=None)
+def _sense_bosses_llum():
+    return _amb_llum(_sense_bosses()[0])
+
+
 def bg(cv):
-    cv.img.paste(_base_llum())
+    cv.img.paste(_sense_bosses_llum())
+    cv.P = cv.img.load()
+
+
+def _prop_bosses(cv):
+    """Les bosses: la sala de sempre (amb les bosses) on canvia respecte de la sala sense."""
+    cv.img.alpha_composite(_diff(_base_llum(), _sense_bosses_llum()))
     cv.P = cv.img.load()
 
 
 def _fotograma(capes=(), post=None):
-    """El fons amb unes capes damunt (i `post(cv)`, un retoc en pantalla), amb la llum, menys el fons amb la llum."""
-    img, _ = _base()
+    """El fons amb unes capes damunt (i `post(cv)`, un retoc en pantalla), amb la llum, menys el fons amb la llum.
+    El fons és el de la sala sense les bosses: si no, el fluorescent que fa figa les tornaria a pintar."""
+    img, _ = _sense_bosses()
     img = img.copy()
     for c in capes:
         img.alpha_composite(c)
@@ -384,10 +403,10 @@ def _fotograma(capes=(), post=None):
         cv = Canvas(light=LIGHT, img=img)
         post(cv)
         img = cv.img
-    return _diff(_amb_llum(img), _base_llum())
+    return _diff(_amb_llum(img), _sense_bosses_llum())
 
 
-PROPS = {}
+PROPS = {'bosses_plenes': _prop_bosses}
 
 
 # ─── Els llums del Llibre Major i el cursor ────────────────────────────────

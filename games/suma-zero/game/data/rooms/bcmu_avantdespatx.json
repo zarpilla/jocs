@@ -60,6 +60,32 @@
         }
       ]
     },
+    "ballester": {
+      "name": "sala.bcmu_avantdespatx.ballester.nom",
+      "visibleIf": {
+        "flag": "ballester_acompanya"
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "ballester",
+              "text": "sala.bcmu_avantdespatx.ballester.parla"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.ballester.look"
+            }
+          ]
+        }
+      ]
+    },
     "factura": {
       "name": "sala.bcmu_avantdespatx.factura.nom",
       "interactions": [
