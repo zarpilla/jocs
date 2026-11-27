@@ -88,14 +88,18 @@ export function ambElDit(): boolean {
   }
 }
 
-/** Els textos de les quatre files (`ui.controls.*`), per a l'aparell d'ara; l'última, la pista, és igual per a tots dos. */
+/**
+ * Els textos de les cinc files (`ui.controls.*`), per a l'aparell d'ara: tocar o clicar, mantenir premut o l'altre
+ * botó, l'inventari, els punts i la pista (aquesta, igual per a tots dos). Cada fila diu una sola cosa: la de la icona.
+ */
 export function filesControls(): string[] {
   const pista = narrative.t('ui.controls.pista');
-  if (ambElDit()) return [...[0, 1, 2].map((i) => narrative.t(`ui.controls.dit.${i}`)), pista];
+  if (ambElDit()) return [...[0, 1, 2, 3].map((i) => narrative.t(`ui.controls.dit.${i}`)), pista];
   const mira = esquerreMira();
   return [
     narrative.t(mira ? 'ui.controls.ratoli.esquerre.mira' : 'ui.controls.ratoli.esquerre'),
     narrative.t(mira ? 'ui.controls.ratoli.dret.fa' : 'ui.controls.ratoli.dret'),
+    narrative.t('ui.controls.ratoli.inventari'),
     narrative.t('ui.controls.ratoli.punts'),
     pista,
   ];

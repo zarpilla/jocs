@@ -293,6 +293,27 @@
     "h": 32
    },
    "duration": 100
+  },
+  "controls 14.aseprite": {
+   "frame": {
+    "x": 64,
+    "y": 86,
+    "w": 32,
+    "h": 32
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 32,
+    "h": 32
+   },
+   "sourceSize": {
+    "w": 32,
+    "h": 32
+   },
+   "duration": 100
   }
  },
  "meta": {
@@ -391,16 +412,23 @@
     "color": "#000000ff"
    },
    {
-    "name": "punts",
+    "name": "inventari",
     "from": 12,
     "to": 12,
     "direction": "forward",
     "color": "#000000ff"
    },
    {
-    "name": "pista",
+    "name": "punts",
     "from": 13,
     "to": 13,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "pista",
+    "from": 14,
+    "to": 14,
     "direction": "forward",
     "color": "#000000ff"
    }

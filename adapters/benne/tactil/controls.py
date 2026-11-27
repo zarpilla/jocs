@@ -16,8 +16,8 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 W, H = 640, 288                 # l'alçada mínima (la GUI va centrada si la pantalla és més alta)
-PANELL = (120, 12, 400, 264)    # x, y, amplada, alçada
-FILES = 4                       # tocar, mantenir premut, l'inventari i els punts, la pista
+PANELL = (120, 6, 400, 276)     # x, y, amplada, alçada
+FILES = 5                       # tocar, mantenir premut, l'inventari, els punts, la pista
 ICONA = 32
 KEY = (91, 27)
 
@@ -70,6 +70,18 @@ def icona_ratoli(boto, ink, accent, shadow):
     return im
 
 
+def icona_inventari(ink, accent, shadow):
+    """Un sarró (l'inventari): el cos, la tapa amb la sivella i la corretja."""
+    im = Image.new('RGBA', (ICONA, ICONA), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.arc((8, 1, 23, 16), 180, 360, fill=shadow, width=2)                       # la corretja
+    d.rounded_rectangle((4, 9, 27, 29), radius=4, fill=ink, outline=shadow)       # el cos
+    d.rounded_rectangle((4, 9, 27, 18), radius=4, fill=ink, outline=shadow)       # la tapa
+    d.line((5, 18, 26, 18), fill=shadow)
+    d.rectangle((14, 16, 17, 21), fill=accent, outline=shadow)                   # la sivella
+    return im
+
+
 def _centrada(im):
     """La icona, centrada en un quadrat de 32×32 (com les altres)."""
     out = Image.new('RGBA', (ICONA, ICONA), (0, 0, 0, 0))
@@ -85,7 +97,7 @@ def build_controls(game, *, write_sheet, nine_slice, nine_slices, checkbox, key_
 
     - write_sheet, nine_slice, nine_slices, checkbox, key_image: les de hd640/gui_rest.py del joc;
     - punts: la icona dels punts del HUD (32×32);
-    - pista: la icona de la quarta fila, on es demana una pista (fins a 32×32; va centrada);
+    - pista: la icona de l'última fila, on es demana una pista (fins a 32×32; va centrada);
     - font, bold: les fonts; text, title, outline, hover: colors del text (com a les opcions);
     - ink, accent, shadow: colors RGB(A) de les icones.
     """
@@ -101,7 +113,7 @@ def build_controls(game, *, write_sheet, nine_slice, nine_slices, checkbox, key_
     icones = {
         'dit0': icona_dit_toc(ink, accent, shadow), 'dit1': icona_dit_premut(ink, accent, shadow),
         'ratoli0': icona_ratoli('esq', ink, accent, shadow), 'ratoli1': icona_ratoli('dret', ink, accent, shadow),
-        'punts': punts, 'pista': _centrada(pista),
+        'inventari': icona_inventari(ink, accent, shadow), 'punts': punts, 'pista': _centrada(pista),
     }
     for tag, im in icones.items():
         items.append((im, tag, (0, 0), im.size))
@@ -122,13 +134,13 @@ def build_controls(game, *, write_sheet, nine_slice, nine_slices, checkbox, key_
         {'type': 'text', 'id': 'titol', 'x': W // 2, 'y': py + 12, 'text': '', 'font': bold, 'fontSize': 8,
          'color': title, 'align': 'center', 'zIndex': 3},
     ]
-    y0, pas = py + 36, 40
+    y0, pas = py + 36, 34
     for i in range(FILES):
         y = y0 + i * pas
-        # les icones de les dues maneres (el script mostra les d'ara); la tercera (els punts) i la quarta (la pista)
-        # són de totes dues
+        # les icones de les dues maneres (el script mostra les d'ara); la tercera (l'inventari), la quarta (els punts)
+        # i la cinquena (la pista) són de totes dues
         for manera in ('dit', 'ratoli'):
-            tag = {2: 'punts', 3: 'pista'}.get(i, f'{manera}{i}')
+            tag = {2: 'inventari', 3: 'punts', 4: 'pista'}.get(i, f'{manera}{i}')
             controls.append({'type': 'image', 'id': f'{manera}{i}', 'x': px + 22, 'y': y - 4, 'tag': tag,
                              'backgroundAnchor': 'top-left', 'clickable': False, 'visible': False, 'zIndex': 3})
         controls.append({'type': 'text', 'id': f'text{i}', 'x': px + 66, 'y': y, 'text': '', 'font': font,
