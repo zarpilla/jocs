@@ -35,8 +35,8 @@ En Marcel només parlarà si la Vet li porta tres coses d'en Tomàs.
 8. El tap: **Parla amb Tomàs**: «Un cafè amb llet per a en Marcel». Deixa el clauer a la barra. **Agafa clauer** i
    **Dona tap de la cervesera a Marcel**.
 9. La recepta: **Usa rebost** i **Mira calaix** (pany intel·ligent). Torna al bar. **Parla amb telèfon**: «Saps obrir
-   un pany intel·ligent?». **Mira rètol**: la contrasenya és «demasi». **Parla amb telèfon**: «La contrasenya és
-   «demasi»…». **Iri**: **Usa ordinadors**. **Vet**: al **rebost**, **Obre calaix** i **Dona recepta de la llimonada a
+   un pany intel·ligent?». **Mira rètol**: la contrasenya és «propina48», en un paper a la cantonada. **Parla amb telèfon**: «La contrasenya és
+   «propina48»…». **Iri**: **Usa ordinadors**. **Vet**: al **rebost**, **Obre calaix** i **Dona recepta de la llimonada a
    Marcel**.
 10. El comandament: **Parla amb Tomàs**: «Em deixes el comandament de la tele?» (només per una trucada de la seva dona).
     **Parla amb telèfon**: «Necessito que truquis al bar i facis de dona d'en Tomàs». **Iri**: **Usa ordinadors**.

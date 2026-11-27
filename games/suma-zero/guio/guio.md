@@ -365,7 +365,7 @@ agafa el tap. [SO: vaporitzador] Després: «Un altre cafè? En Marcel ja va pro
 és al calaix del rebost, tancat amb un **pany intel·ligent** de 19,99 €, «al núvol». La Vet el mira i ho diu
 per telèfon: «Un pany amb aplicació. D'aquests que obres tu des de casa.» L'Iri: «Necessito la contrasenya
 d'administrador. Que segur que és la mateixa que la de la wifi.» La contrasenya és al rètol: la Vet la llegeix
-(«demasi», tot junt i sense accents) [SO: pany_clic]. Cooperació a distància, sense rellotge: prepara la
+(«propina48», en un paper a la cantonada; en Tomàs la canvia cada dilluns) [SO: pany_clic]. Cooperació a distància, sense rellotge: prepara la
 sincronia.
 
 **Trencaclosques 2.3 — El comandament de la tele (Vet + Iri).** En Tomàs no deixa el comandament (hi ha partit).
@@ -1048,7 +1048,7 @@ perilloses són els `look` i les frases per defecte, que es poden dir en qualsev
 | Tomàs | `bar_sala` | a la barra · fent cafè · fora (rebost) · de tornada, «lliure» | Cafè; trucada | Quatre poses | Línies segons l'estat |
 | Tap de la cervesera | `bar_sala` | al cinturó · a la barra · agafat · tornat | Demanar el cafè; tornar-lo | Al Tomàs / a la barra | — |
 | Telèfon del bar | `bar_sala` | a la base · al rebost amb en Tomàs (trucada) | Trucada | Base a la paret i inalàmbric | «Ara la línia és d'una dona que no existeix» |
-| Rètol d'en Tomàs | `bar_sala` | sempre | — | — | «Avui no es fia, demà sí». Vet: «És la contrasenya de la wifi. Sempre ho ha estat» (només quan cal la contrasenya) |
+| Rètol d'en Tomàs | `bar_sala` | sempre | — | — | «Avui no es fia, demà sí». A la cantonada, un paper: «WIFI: propina48», amb les de setmanes passades ratllades; en Tomàs la canvia cada dilluns (la Vet el llegeix només quan cal la contrasenya) |
 | Porta del rebost | `bar_sala` | oberta · tancada (trucada) | Trucada | — | «Està discutint amb la seva dona inexistent» |
 | Calaix del rebost | `bar_rebost` | tancat · obert · buit | L'Iri obre el pany; la Vet agafa la recepta | Llum vermell / verd / obert | «Un pany amb aplicació» |
 | Comandament | `bar_sala` | a la mà d'en Tomàs · a la barra · agafat · tornat | Trucada; en tornar en Tomàs | — | — |
