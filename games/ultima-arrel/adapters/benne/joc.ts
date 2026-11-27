@@ -16,7 +16,7 @@ export default {
   paquet: 'ultima-arrel-benne',
   fonts: { regular: 'ultimaarrel-regular', negreta: 'ultimaarrel-negreta', script: 'tools/font/ultimaarrel_font.py' },
   colorsVeu: {
-    iri: '#f2a65c', vet: '#7fd8e6', avia: '#e8d8a8', espora: '#5ee0c8', urtica: '#a6e08a', pica: '#f090c0',
+    iri: '#f2a65c', vet: '#7fd8e6', avia: '#e8d8a8', espora: '#c8a4ff', urtica: '#a6e08a', pica: '#f090c0',
     card: '#c0d0f0', bufo: '#c8b070', gripau: '#a0c070', pla: '#ffffff', txell: '#f09080',
   },
   // La Vet parla pel walkie a les sales de l'Iri (i a l'inrevés).
