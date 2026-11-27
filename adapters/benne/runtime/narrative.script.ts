@@ -13,6 +13,7 @@ import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue 
 import {
   AMPLADA, AUTOSAVE, applyStageNow, primeStage, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, resetStageAnims, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom, doorPoint,
   musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, flushPendingGives, leavesRoom, targetFromBenne, voiced, preloadLineVoices,
+  actionFootprint, wantsActionGesture, GEST_ACCIO, GEST_ACCIO_S,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
 
@@ -247,8 +248,15 @@ export function performInteraction(verb: string, target: FallbackTarget, item?: 
   if (isClickableCutscene(narrative.world.currentRoom())) setClickablePrompt('')
   const request = { verb, target: targetFromBenne(target.kind, target.id), item: item ? fromBenne('items', item) : undefined }
   const room = narrative.world.currentRoom()
+  const before = actionFootprint()
   const result = primeStage(narrative.interact(request))
   touchRouter()?.acted?.(verb, target, room)
+  // Agafa, fa servir o dona una cosa de la sala: estira el braç (si el full té el gest per a la roba que porta).
+  if (wantsActionGesture(verb, target.kind, before, result)) {
+    applyStageNow({ who: 'player', gest: GEST_ACCIO })
+    wait(GEST_ACCIO_S)
+    applyStageNow({ who: 'player', gest: null })
+  }
   // Una porta (o escotilla, o escala) que porta a una altra sala: el seu so sonarà en arribar-hi.
   setDoorSound(result?.goTo && !result.dialogue && target.kind !== 'item' ? narrative.world.currentRoom() : null, fromBenne('hotspots', target.id))
   if (result) playResult(result)

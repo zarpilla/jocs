@@ -8,6 +8,7 @@ El dibuix és a hd/characters.py; aquí només es munten els fulls.
 Surt a adapters/benne/placeholder-art/<id>/. Ús: python3 draw_characters.py
 """
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -178,6 +179,8 @@ def durations(tags, walk=(90, 100), talk=140, extra=None):
         a = {'loop': True}
         if 'Blink' in t or 'Look' in t:                    # micro-accions: un sol cop i torna a l'Idle
             a = {'loop': False, 'frameDuration': 75 if 'Blink' in t else 260}
+        elif 'Agafa' in t:                                 # el gest: un sol cop (el runtime el treu en acabar)
+            a = {'loop': False, 'frameDuration': AGAFA_MS}
         elif 'Walk' in t:
             a['frameDuration'] = walk[0] if t.endswith('L') else walk[1]
         elif 'Talk' in t:
@@ -276,16 +279,59 @@ def standing(cid, p, thin=False):
 LLUNY = 0.66
 DE_LLUNY = None
 
+# El gest `Agafa` (tasca 005): allarga el braç cap a la cosa i el torna a recollir. El fa sol el runtime comú
+# (adapters/benne/runtime) quan la protagonista agafa, fa servir o dona alguna cosa, si el full en té per a la roba
+# que porta. Quant s'estira el braç a cada fotograma (0: penjant, 1: estirat del tot).
+AGAFA = (0.45, 0.85, 1.0, 1.0, 0.5)
+AGAFA_MS = 100
 
-def protagonist(cid, draw, feet=(25, 83), outfits=('',), lluny=()):
+
+def _cap(a, b, t):
+    return (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
+
+
+def agafa(t):
+    """La postura del gest `Agafa`, estirat `t` (vegeu AGAFA): de perfil, el braç del davant endavant, gairebé
+    horitzontal, amb la mà a l'alçada de la cintura; de cara, la mà de la dreta (de la imatge) ve endavant, davant del
+    cos; d'esquena, el braç puja endavant cap a la cosa."""
+    def pose(p):
+        if p.f == 'L':
+            sx, sy = p.shoulder
+            a0, b0 = 3, 8                                   # el braç quiet (Pose._side)
+            a, bend = a0 + (62 - a0) * t, b0 + (14 - b0) * t
+            ra, rb = math.radians(a), math.radians(a + bend)
+            el = (sx - math.sin(ra) * 10.5, sy + math.cos(ra) * 10.5)
+            wr = (el[0] - math.sin(rb) * 9.5, el[1] + math.cos(rb) * 9.5)
+            p.arms[0] = ((sx, sy), el, wr)
+            return
+        sx, sy = p.sh[1]
+        if p.f == 'U':
+            p.elbow[1] = _cap(p.elbow[1], (sx + 3.0, sy + 4), t)
+            p.wrist[1] = _cap(p.wrist[1], (sx + 1.5, sy - 6), t)
+        else:
+            p.elbow[1] = _cap(p.elbow[1], (sx + 2.2, sy + 8.5), t)
+            p.wrist[1] = _cap(p.wrist[1], (sx - 3.5, sy + 12.5), t)
+    return pose
+
+
+def agafa_tags(d, pre='', dirs=DIRS):
+    """El gest `Agafa` en totes les direccions del full, per a `d(f, walk=None, talk=False)`."""
+    _person_amb_extra()
+    return [(f'{pre}Agafa{f}', [_amb({'pose': agafa(t)}, lambda f=f: d(f)) for t in AGAFA]) for f in dirs]
+
+
+def protagonist(cid, draw, feet=(25, 83), outfits=('',), lluny=(), amb_agafa=None):
     """Protagonista de Suma Zero (hd/personatges.py): 49×87, peus a (25, 83), com a Ferro-9.
     `outfits`: les robes (prefix de les etiquetes: `BarIdleD`...); `draw(f, walk, talk, roba)` les dibuixa.
-    `lluny`: les robes que també es dibuixen de lluny (etiquetes `Lluny<roba>IdleD`...; vegeu LLUNY)."""
+    `lluny`: les robes que també es dibuixen de lluny (etiquetes `Lluny<roba>IdleD`...; vegeu LLUNY).
+    `amb_agafa`: les robes que tenen el gest `Agafa` (per defecte, totes)."""
     tags = []
     for o in outfits:
         d = (lambda f, walk=None, talk=False: draw(f, walk=walk, talk=talk)) if not o else \
             (lambda f, walk=None, talk=False, o=o: draw(f, walk=walk, talk=talk, roba=o))
         tags += quiet_tags(d, o)
+        if amb_agafa is None or o in amb_agafa:
+            tags += agafa_tags(d, o)
     for o in lluny if DE_LLUNY else ():
         # la respiració (respira) es fa a la figura petita: la clariana del pit és la seva
         d = (lambda f, walk=None, talk=False, o=o: DE_LLUNY(lambda: draw(f, walk=walk, talk=talk, roba=o)))
@@ -311,6 +357,10 @@ VET_OUTFITS = tuple(personatges.VET_ROBA) + tuple(f'{o}Ulleres' for o in persona
 # Les robes de la Vet de lluny (vegeu LLUNY): a bcmu_contenidor, la d'auditora (amb ulleres o sense) i, després de
 # l'escapada, la de casa (les regles `outfit` de game/data/characters.json).
 VET_LLUNY = ('', 'Auditora', 'AuditoraUlleres')
+# Les robes de la Vet amb el gest `Agafa` (tasca 005): les que surten més, la de casa (l'Acte 1 al pis) i la
+# d'auditora (els actes 2 i 3, al BCMU). La franel·la (el bar) i la bomber (l'aeroport) no en tenen: el runtime
+# s'hi salta el gest.
+VET_AGAFA = ('', 'Auditora', 'AuditoraUlleres')
 
 
 def secundari(cid):
@@ -420,7 +470,7 @@ def robot(cid='neta'):
 def main():
     """Els personatges de Suma Zero amb art definitiu (els altres surten amb la plantilla de Benne)."""
     protagonist('iri', personatges.iri, outfits=('', 'SenseAuriculars'))
-    protagonist('vet', vet, outfits=VET_OUTFITS, lluny=VET_LLUNY)
+    protagonist('vet', vet, outfits=VET_OUTFITS, lluny=VET_LLUNY, amb_agafa=VET_AGAFA)
     gat('diu')
     for cid in personatges.NPCS:
         secundari(cid)

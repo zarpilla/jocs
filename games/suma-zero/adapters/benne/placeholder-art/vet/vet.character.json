@@ -131,6 +131,26 @@
       "loop": false,
       "frameDuration": 260
     },
+    "AgafaL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaD": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaU": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaDL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaUL": {
+      "loop": false,
+      "frameDuration": 100
+    },
     "FranelaIdleL": {
       "loop": true,
       "frameDuration": 650
@@ -371,6 +391,26 @@
       "loop": false,
       "frameDuration": 260
     },
+    "AuditoraAgafaL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AuditoraAgafaD": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AuditoraAgafaU": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AuditoraAgafaDL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AuditoraAgafaUL": {
+      "loop": false,
+      "frameDuration": 100
+    },
     "CalaveraIdleL": {
       "loop": true,
       "frameDuration": 650
@@ -610,6 +650,26 @@
     "AuditoraUlleresLookDL": {
       "loop": false,
       "frameDuration": 260
+    },
+    "AuditoraUlleresAgafaL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AuditoraUlleresAgafaD": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AuditoraUlleresAgafaU": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AuditoraUlleresAgafaDL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AuditoraUlleresAgafaUL": {
+      "loop": false,
+      "frameDuration": 100
     },
     "LlunyIdleL": {
       "loop": true,
