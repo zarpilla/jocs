@@ -17,6 +17,13 @@
       "say": false
     },
     {
+      "id": "menu__mostra_ous",
+      "scriptName": "menu__mostra_ous",
+      "text": "I per què és tan important, aquesta mostra?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__adeu",
       "scriptName": "menu__adeu",
       "text": "Res. Continua descansant.",

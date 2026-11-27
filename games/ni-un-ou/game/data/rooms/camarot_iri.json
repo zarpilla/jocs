@@ -364,6 +364,62 @@
         }
       ]
     },
+    "poster": {
+      "name": "sala.camarot_iri.poster.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.poster.look"
+            }
+          ]
+        }
+      ]
+    },
+    "granota": {
+      "name": "sala.camarot_iri.granota.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.granota.look"
+            }
+          ]
+        }
+      ]
+    },
+    "protectors": {
+      "name": "sala.camarot_iri.protectors.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.protectors.look"
+            }
+          ]
+        }
+      ]
+    },
+    "llum": {
+      "name": "sala.camarot_iri.llum.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.llum.look"
+            }
+          ]
+        }
+      ]
+    },
     "diu": {
       "visibleIf": {
         "all": [

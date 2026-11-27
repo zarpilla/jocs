@@ -124,10 +124,26 @@
           "id": "valvula",
           "text": "dlg.juana.opt.valvula",
           "if": {
-            "flag": "juana_explica",
+            "flag": "juana_mostra",
             "is": false
           },
           "next": "valvula"
+        },
+        {
+          "id": "mostra_ous",
+          "text": "dlg.juana.opt.mostra_ous",
+          "if": {
+            "all": [
+              {
+                "flag": "juana_mostra"
+              },
+              {
+                "flag": "juana_explica",
+                "is": false
+              }
+            ]
+          },
+          "next": "mostra_ous"
         },
         {
           "id": "adeu",
@@ -177,7 +193,17 @@
         {
           "who": "juana",
           "text": "dlg.juana.valvula.7"
-        },
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "juana_mostra"
+        }
+      ],
+      "goto": "menu"
+    },
+    "mostra_ous": {
+      "lines": [
         {
           "who": "juana",
           "text": "dlg.juana.valvula.8"

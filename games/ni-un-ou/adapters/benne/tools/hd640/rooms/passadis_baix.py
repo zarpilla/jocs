@@ -536,8 +536,9 @@ GEOMETRIA = {
         'porta_camarot': {'rect': _porta(*PL.CAMAROT[:3]), 'walk': _p((PL.CAMAROT[0] + PL.CAMAROT[2]) / 2, ZW - 24)},
         'porta_maquines': {'rect': _porta(*PL.MAQUINES[:3]), 'walk': _p((PL.MAQUINES[0] + PL.MAQUINES[2]) / 2, ZW - 24)},
         'repetidor': {'rect': _rect_mon((99, _y(148), ZW), (141, _y(185), ZW)), 'walk': _p(120, ZW - 26)},
-        'petjades': {'rect': _rect_mon((64, 0, ZW - 20), (186, 0, ZW - 20), (64, 0, ZW - 56), (186, 0, ZW - 56)),
-                     'walk': _p(126, ZW - 70)},
+        # Només el tros de les petjades que es veu: la resta queda darrere els bidons (que si no, es quedaven el rètol).
+        'petjades': {'rect': _rect_mon((150, 0, ZW - 20), (186, 0, ZW - 20), (150, 0, ZW - 56), (186, 0, ZW - 56)),
+                     'walk': _p(150, ZW - 70)},
         'porta_pallol': {'rect': _porta(*PL.PALLOL[:3]), 'walk': _p((PL.PALLOL[0] + PL.PALLOL[2]) / 2, ZW - 24)},
         'escotilla': {'rect': _rect_mon((HATCH[0], 0, HATCH[2]), (HATCH[1], 0, HATCH[2]), (HATCH[0], 0, HATCH[3]),
                                         (HATCH[1], 0, HATCH[3])),

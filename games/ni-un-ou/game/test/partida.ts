@@ -149,7 +149,7 @@ export function escena2(p: Jugador, _o: Opcions = {}) {
   p.do('look', 'marcel');
   p.talk('marcel', 'fi');
   anar(p, 'coberta_proa');
-  p.talk('juana', 'valvula'); // l'Arenga salpa: Escena 3
+  p.talk('juana', 'valvula', 'mostra_ous'); // l'Arenga salpa: Escena 3
 }
 
 /** Escena 3: la ràdio (sincronia). */

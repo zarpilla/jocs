@@ -567,6 +567,12 @@ GEOMETRIA = {
                      'walk': _p(MOTX[0] - 40, MOTX[1] - 30)},
         'ull_de_bou': {'rect': _rect_mon((PORT[0] - 30, PORT[1] + 28, ZW), (PORT[0] + 30, PORT[1] - 30, ZW)),
                        'walk': _p(PORT[0], ZW - 40)},
+        # Coses per mirar de la paret (vegeu camarot_iri_pla_comu: poster, overalls) i el llum de lectura.
+        'poster': {'rect': _rect_mon((_w(285), _y(45), ZW), (_w(368), _y(131), ZW)), 'walk': _p(_w(326), ZW - 40)},
+        'granota': {'rect': _rect_mon((_w(447), _y(72), ZW), (_w(496), _y(190), ZW)), 'walk': _p(_w(472), ZW - 40)},
+        'protectors': {'rect': _rect_mon((_w(497), _y(74), ZW), (_w(526), _y(100), ZW)), 'walk': _p(_w(505), ZW - 40)},
+        'llum': {'rect': _rect_mon((LAMP[0], LAMP[1] - 12, LAMP[2] - 12), (LAMP[0] + 8, LAMP[1] + 8, LAMP[2] + 12)),
+                 'walk': _p(BD + 30, LAMP[2])},
     },
     'spawns': {'iri': _p(150, 120), 'vet': _p(300, 110), 'diu': _p(MOTX[0] + 40, MOTX[1] + 4)},
     'walkable': _WALK,

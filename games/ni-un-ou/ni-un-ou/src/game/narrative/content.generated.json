@@ -114,6 +114,7 @@
         "juana_entrepa": false,
         "juana_explica": false,
         "juana_laboratori": false,
+        "juana_mostra": false,
         "juana_no_contesta": false,
         "juana_parla": false,
         "juana_trobada": false,
@@ -1642,6 +1643,62 @@
                   {
                     "who": "player",
                     "text": "sala.camarot_iri.ull_de_bou.2"
+                  }
+                ]
+              }
+            ]
+          },
+          "poster": {
+            "name": "sala.camarot_iri.poster.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.poster.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "granota": {
+            "name": "sala.camarot_iri.granota.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.granota.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "protectors": {
+            "name": "sala.camarot_iri.protectors.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.protectors.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "llum": {
+            "name": "sala.camarot_iri.llum.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.llum.look"
                   }
                 ]
               }
@@ -19168,10 +19225,26 @@
                 "id": "valvula",
                 "text": "dlg.juana.opt.valvula",
                 "if": {
-                  "flag": "juana_explica",
+                  "flag": "juana_mostra",
                   "is": false
                 },
                 "next": "valvula"
+              },
+              {
+                "id": "mostra_ous",
+                "text": "dlg.juana.opt.mostra_ous",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "juana_mostra"
+                    },
+                    {
+                      "flag": "juana_explica",
+                      "is": false
+                    }
+                  ]
+                },
+                "next": "mostra_ous"
               },
               {
                 "id": "adeu",
@@ -19221,7 +19294,17 @@
               {
                 "who": "juana",
                 "text": "dlg.juana.valvula.7"
-              },
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "juana_mostra"
+              }
+            ],
+            "goto": "menu"
+          },
+          "mostra_ous": {
+            "lines": [
               {
                 "who": "juana",
                 "text": "dlg.juana.valvula.8"
@@ -24700,7 +24783,7 @@
       "dlg.walkie.trucada.12": "La cuina és al fons del menjador. Surt al passadís.",
       "dlg.walkie.aviat.1": "A qui truco, i per demanar què? Primer, mirar com està la sala de màquines.",
       "dlg.walkie.taller.1": "Abans de despertar ningú, miro bé el tauler d'eines. Hi hauria de ser la clau de vàlvules.",
-      "dlg.walkie.sala_maquines.1": "Falta la clau de vàlvules. Abans de trucar, vull saber per a què la volien: la sala de màquines.",
+      "dlg.walkie.sala_maquines.1": "Falta la clau de vàlvules. Abans de trucar, vaig a la sala de màquines a veure per a què la volien.",
       "dlg.walkie.esc1_vet.1": "Iri? On era la cuina?",
       "dlg.walkie.esc1_vet.2": "Al fons del menjador. Surt al passadís, primera porta.",
       "dlg.walkie.esc1_vet.3": "Iri? Ja l'he enviada avall. T'ha arribat?",
@@ -24990,6 +25073,7 @@
       "dlg.juana.trobada.4": "Bé, amb l'Ernest. Però l'Ernest no compta: només diu «deu minuts». Ha estat meravellós.",
       "dlg.juana.hola.1": "Encara aquí, doctora?",
       "dlg.juana.opt.valvula": "Aquesta nit algú ha obert una vàlvula. Ens volen portar a Port Hallen.",
+      "dlg.juana.opt.mostra_ous": "I per què és tan important, aquesta mostra?",
       "dlg.juana.opt.revisio": "Revisió mèdica. Cinc minuts.",
       "dlg.juana.opt.adeu": "Res. Continua descansant.",
       "dlg.juana.valvula.1": "El metge d'abans va plegar de cop. Tu vas arribar de cop.",
@@ -25767,7 +25851,7 @@
       "mis.entrepa.desc": "En Tomàs està ofès.",
       "obj.walkie.no": "El walkie no. Si no el porto, no ens sentim.",
       "obj.walkie.nom": "walkie",
-      "obj.walkie.desc": "El walkie. Canal 9: el de la infermeria, que no escolta ningú.",
+      "obj.walkie.desc": "El walkie. Canal 9, el de la infermeria: el fem servir per parlar entre nosaltres, que ningú més no l'escolta.",
       "obj.walkie.amb_article": "el walkie",
       "obj.quadern.no": "El quadern no surt de la butxaca. Hi ha tot el que sabem.",
       "obj.quadern.nom": "quadern",
@@ -26601,7 +26685,7 @@
       "sala.coberta_popa.borda.2": "La borda. A sota, el mar, quiet com una sopa freda.",
       "sala.coberta_popa.borda.nom": "borda",
       "sala.coberta_popa.plataforma.1": "L'aigua és d'un altre color, allà.",
-      "sala.coberta_popa.plataforma.2": "Ningú no li respon. A la borda, en Bastida es gira d'esquena a babord.",
+      "sala.coberta_popa.plataforma.2": "En Bastida, a la borda, fa com si no l'hagués sentit. Es gira d'esquena a babord.",
       "sala.coberta_popa.plataforma.3": "La plataforma que no surt als mapes. El logotip, tapat amb cinta americana. Al voltant, una taca d'aigua tèrbola.",
       "sala.coberta_popa.plataforma.4": "Les gavines hi passen per sobre i no s'hi posen.",
       "sala.coberta_popa.plataforma.nom": "plataforma",
@@ -26768,6 +26852,14 @@
       "sala.camarot_iri.maceta.nom": "maceta",
       "sala.camarot_iri.maceta.1": "La maceta de goma. La tinc aquí per la falca de baix de la porta de màquines, que s'encalla des de l'agost.",
       "sala.camarot_iri.maceta.3": "Per si la falca de baix ha tornat a fer de les seves. Sempre en fa.",
+      "sala.camarot_iri.poster.nom": "pòster",
+      "sala.camarot_iri.poster.look": "Un dièsel marí en tall, peça per peça. Al cantó, una foto meva amb en Bastida, tots dos negres de grassa fins als colzes.",
+      "sala.camarot_iri.granota.nom": "granota",
+      "sala.camarot_iri.granota.look": "La granota de recanvi, amb el nom brodat al pit. Fa olor de gasoil fins i tot acabada de rentar.",
+      "sala.camarot_iri.protectors.nom": "protectors d'orelles",
+      "sala.camarot_iri.protectors.look": "Els protectors d'orelles de la sala de màquines. Sense, al cap d'una guàrdia sents el motor fins i tot dormint.",
+      "sala.camarot_iri.llum.nom": "llum de lectura",
+      "sala.camarot_iri.llum.look": "El llum de lectura. L'únic del vaixell que no fa pampallugues.",
       "sala.passadis_baix.porta_maquines.3": "La falca de baix no es mou. S'encalla des de l'agost, i ningú no l'arregla perquè jo hi baixo cada dia.",
       "sala.passadis_baix.porta_maquines.4": "Per això tinc una maceta penjada al camarot.",
       "sala.passadis_baix.porta_maquines.5": "La falca de baix, encallada. Com sempre. Un cop de maceta i va.",
@@ -26785,7 +26877,7 @@
       "sala.rebost.registre.21": "Tancat amb clau. I encara aguanta per la frontissa de baix.",
       "sala.coberta_popa.24": "Onze de la nit. Els llums de popa, l'estela blanca i en Bastida, amb una llanterna, «ajudant a buscar».",
       "sala.passadis.escala_amunt.7": "No. Tinc una maquinista que s'enfonsa, i el travesser és per a ella.",
-      "sala.infermeria.fitxes.2_0": "Les fitxes mèdiques. Encara no he fet cap revisió.",
+      "sala.infermeria.fitxes.2_0": "Les fitxes mèdiques de la tripulació. Encara no n'he passat cap per la revisió.",
       "sala.infermeria.fitxes.2_1": "Les fitxes mèdiques. Una revisió feta.",
       "sala.infermeria.fitxes.2_2": "Les fitxes mèdiques. Dues revisions fetes.",
       "sala.infermeria.fitxes.2_3": "Les fitxes mèdiques. Tres revisions fetes.",

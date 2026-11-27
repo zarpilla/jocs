@@ -113,7 +113,7 @@ describe('Coherència (segona repassada)', () => {
     p.talk('fitxes', 'nadia');
     p.talk('nadia', 'fi');
     anar(p, 'coberta_proa');
-    p.talk('juana', 'valvula');
+    p.talk('juana', 'valvula', 'mostra_ous');
     expect(n.getVar('escena')).toBe(2);
     anar(p, 'infermeria');
     p.talk('fitxes', 'marcel');
@@ -126,7 +126,7 @@ describe('Coherència (segona repassada)', () => {
     escena1(p);
     p.talk('bastida', 'mar', 'adeu');
     anar(p, 'coberta_proa');
-    p.talk('juana', 'valvula');
+    p.talk('juana', 'valvula', 'mostra_ous');
     anar(p, 'infermeria');
     p.talk('fitxes', 'capitana');
     p.talk('capitana', 'gasoil', 'fi');

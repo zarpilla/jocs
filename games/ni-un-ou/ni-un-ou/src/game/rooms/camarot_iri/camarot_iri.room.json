@@ -282,6 +282,134 @@
         "x": 197,
         "y": 92
       }
+    },
+    {
+      "id": "poster",
+      "active": true,
+      "description": "pòster",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 270,
+          "y": 46
+        },
+        {
+          "x": 327,
+          "y": 46
+        },
+        {
+          "x": 327,
+          "y": 111
+        },
+        {
+          "x": 270,
+          "y": 111
+        }
+      ],
+      "walkToPoint": {
+        "x": 286,
+        "y": 170
+      },
+      "lookAtPoint": {
+        "x": 298,
+        "y": 111
+      }
+    },
+    {
+      "id": "granota",
+      "active": true,
+      "description": "granota",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 388,
+          "y": 67
+        },
+        {
+          "x": 425,
+          "y": 67
+        },
+        {
+          "x": 425,
+          "y": 164
+        },
+        {
+          "x": 388,
+          "y": 164
+        }
+      ],
+      "walkToPoint": {
+        "x": 400,
+        "y": 182
+      },
+      "lookAtPoint": {
+        "x": 406,
+        "y": 164
+      }
+    },
+    {
+      "id": "protectors",
+      "active": true,
+      "description": "protectors d'orelles",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 429,
+          "y": 70
+        },
+        {
+          "x": 454,
+          "y": 70
+        },
+        {
+          "x": 454,
+          "y": 92
+        },
+        {
+          "x": 429,
+          "y": 92
+        }
+      ],
+      "walkToPoint": {
+        "x": 429,
+        "y": 185
+      },
+      "lookAtPoint": {
+        "x": 441,
+        "y": 92
+      }
+    },
+    {
+      "id": "llum",
+      "active": true,
+      "description": "llum de lectura",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 119,
+          "y": 112
+        },
+        {
+          "x": 141,
+          "y": 112
+        },
+        {
+          "x": 141,
+          "y": 133
+        },
+        {
+          "x": 119,
+          "y": 133
+        }
+      ],
+      "walkToPoint": {
+        "x": 181,
+        "y": 193
+      },
+      "lookAtPoint": {
+        "x": 130,
+        "y": 133
+      }
     }
   ],
   "points": [],

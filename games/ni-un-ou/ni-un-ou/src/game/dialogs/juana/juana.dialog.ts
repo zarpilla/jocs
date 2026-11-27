@@ -14,6 +14,10 @@ options.menu__valvula.onChoose(() => {
   chooseNarrativeOption('juana', dialog, 'menu', 'valvula')
 })
 
+options.menu__mostra_ous.onChoose(() => {
+  chooseNarrativeOption('juana', dialog, 'menu', 'mostra_ous')
+})
+
 options.menu__adeu.onChoose(() => {
   chooseNarrativeOption('juana', dialog, 'menu', 'adeu')
 })
