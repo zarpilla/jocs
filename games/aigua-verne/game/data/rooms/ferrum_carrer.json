@@ -317,6 +317,48 @@
         },
         {
           "verb": "use",
+          "item": "tornavis",
+          "if": {
+            "flag": "condensador_arreglat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.tornavis"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tornavis_flor",
+          "if": {
+            "flag": "condensador_arreglat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.tornavis"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_anglesa",
+          "if": {
+            "flag": "condensador_arreglat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.clau"
+            }
+          ]
+        },
+        {
+          "verb": "use",
           "item": "*",
           "if": {
             "flag": "condensador_arreglat",
