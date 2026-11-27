@@ -290,8 +290,9 @@ def secundari(cid, draw=None, outfits=('',)):
         tags.append(('Seu', [seu(), seu(), seu(), seu(True)]))
     anims = durations(tags, walk=(90, 80), extra={'Seu': 500})
     # Els que seuen (`Seu`) surten de perfil, mirant a l'esquerra: qui hi parla se'ls posa al davant,
-    # a un metre i mig (≈73 px de disseny), i no pas a l'esquena.
-    walk_x = 25 - 73 if cid in SEUEN else 44
+    # a un metre i mig (≈73 px de disseny), i no pas a l'esquena. En Bastida no: a la coberta de popa és dret a la
+    # vora, i el punt de l'esquerra queda darrere el bidó (tasca 090); el de per defecte el motor el posa a parlar.
+    walk_x = 25 - 73 if cid in SEUEN and cid != 'bastida' else 44
     write(cid, tags, (49, 87), {
         'walkSpeed': 70, 'walkToPoint': {'x': walk_x, 'y': 83}, 'talkPoint': {'x': 25, 'y': -2}, 'feet': {'x': 25, 'y': 83},
         'collider': {'points': [{'x': 15, 'y': 2}, {'x': 35, 'y': 2}, {'x': 37, 'y': 50}, {'x': 33, 'y': 85}, {'x': 16, 'y': 85}, {'x': 12, 'y': 50}]},

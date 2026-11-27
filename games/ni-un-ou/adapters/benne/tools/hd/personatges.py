@@ -328,7 +328,7 @@ def bastida_hair(fg, p, spec):
     """Cabell blanc curt i barba blanca retallada; la pipa apagada a la boca."""
     hx, hy = p.head
     if p.f == 'L':
-        line = lambda x, y: (x >= hx - 2.0 or y <= hy - 4.8) and not (x < hx + 2.6 and y > hy - 1.2)
+        line = lambda x, y: (x >= hx - 0.4 or y <= hy - 6.0) and not (x < hx + 2.6 and y > hy - 1.2)
         fg.ell(hx + 1.4, hy - 1.4, 7.2, 7.2, HAIR_WHITE, 2.6, amp=1.6, clip=line)
         fg.poly([(hx + 2.6, hy + 1.0), (hx + 2.4, hy + 6.0), (hx - 1.0, hy + 9.0), (hx - 5.8, hy + 8.4),
                  (hx - 6.6, hy + 6.2), (hx - 3.0, hy + 5.4), (hx - 0.4, hy + 2.6)], HAIR_WHITE, 2.2,
@@ -339,15 +339,16 @@ def bastida_hair(fg, p, spec):
         fg.ell(hx - 10.4, hy + 5.0, 1.6, 2.2, PIPEW, 2.6, amp=1.2)
         fg.px(hx - 10.4, hy + 3.0, PIPEW, 0.4)
     elif p.f == 'D':
-        line = lambda x, y: y <= hy - 3.2 + ((x - hx) / 7) ** 2 * 4.0
-        fg.ell(hx, hy - 1.0, 7.4, 7.4, HAIR_WHITE, 2.6, amp=1.6, clip=line)
-        fg.ell(hx, hy + 6.0, 5.6, 3.6, HAIR_WHITE, 2.2, amp=1.2, clip=lambda x, y: y >= hy + 4.4)
+        # entrades: el front es veu (si no, cabell, celles i barba blancs fan del cap una bola)
+        line = lambda x, y: y <= hy - 5.6 + ((x - hx) / 5.2) ** 2 * 5.0
+        fg.ell(hx, hy - 1.6, 7.2, 6.8, HAIR_WHITE, 2.6, amp=1.6, clip=line)
+        fg.ell(hx, hy + 6.4, 5.2, 3.0, HAIR_WHITE, 1.8, amp=1.2, clip=lambda x, y: y >= hy + 5.0)
         fg.ell(hx - 2.0, hy + 3.8, 2.4, 1.0, HAIR_WHITE, 2.6, amp=1.0)
         fg.ell(hx + 2.0, hy + 3.8, 2.4, 1.0, HAIR_WHITE, 2.4, amp=1.0)
         fg.line(hx + 1.5, hy + 5.0, hx + 4.0, hy + 7.0, PIPEW, 1.0)
         fg.ell(hx + 4.6, hy + 7.0, 1.6, 2.0, PIPEW, 2.6, amp=1.2)
-    else:
-        fg.ell(hx, hy - 0.6, 7.4, 8.0, HAIR_WHITE, 2.6, amp=1.6)
+    else:                                        # d'esquena: el clatell i les orelles, que no sigui una bola
+        fg.ell(hx, hy - 1.0, 7.0, 7.4, HAIR_WHITE, 2.4, amp=1.6, clip=lambda x, y: y <= hy + 2.6)
 
 
 def bastida_over(fg, p, spec):
@@ -375,7 +376,7 @@ def bastida_over(fg, p, spec):
 
 
 BASTIDA = {
-    'skin': SKIN_OLD, 'legs': PYJAMA, 'top': JUMPER, 'shoes': BOOT, 'brow': (200, 196, 196), 'stoop': 2,
+    'skin': SKIN_OLD, 'legs': PYJAMA, 'top': JUMPER, 'shoes': BOOT, 'brow': (128, 120, 122), 'stoop': 2,
     'thin': -1,
     'hooks': {'hair': bastida_hair, 'over': bastida_over},
 }
