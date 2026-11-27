@@ -27,7 +27,7 @@ export default {
     // Temps de lectura: Benne talla les línies a 4,5 s, i les llargues (en Marcel) no es poden llegir.
     // Amb un clic se salten, de manera que val més que es quedin prou estona. Els primers 500 ms d'una
     // línia, però, un clic no la salta (un doble clic no se'n menja cap sense llegir).
-    config.speech = { ...(config.speech as Json), clickToSkip: true, minDurationMs: 2200, msPerCharacter: 75, maxDurationMs: 14000, clickProtectMs: 350 };
+    config.speech = { ...(config.speech as Json), clickToSkip: true, minDurationMs: 2500, msPerCharacter: 75, maxDurationMs: 14000, clickProtectMs: 350 };
     // «Walk to» de la línia de verbs (walkToLabel).
     config.walkToLabel = t('ui.verb.walkTo', String(config.walkToLabel ?? 'Walk to'));
   },
