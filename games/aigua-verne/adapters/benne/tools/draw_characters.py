@@ -92,7 +92,7 @@ def durations(tags, walk=(90, 90), talk=140, idle=None, extra=None):
     for t, _ in tags:
         a = {'loop': True}
         base = t.replace('Lluny', '', 1) if t.startswith('Lluny') else t
-        if 'Blink' in base or 'Look' in base:           # micro-accions: un sol cop i torna a l'Idle
+        if 'Blink' in base or 'Look' in base or 'Consola' in base:   # micro-accions: un sol cop i torna a l'Idle
             a = {'loop': False, 'frameDuration': 75 if 'Blink' in base else 260}
         elif 'Walk' in base:
             a['frameDuration'] = walk[0] if base.endswith('L') else walk[1]
@@ -174,9 +174,9 @@ def respira(img, k):
     return out
 
 
-def person_tags(spec_of, dirs=DIRS):
+def person_tags(spec_of, dirs=DIRS, consola=False):
     """Idle (4: respira), Walk (6) i Talk (2) en L, D i U (i DL i UL, el 3/4, si `dirs` les porta). `spec_of()` torna
-    l'especificació (es crida dins la mida)."""
+    l'especificació (es crida dins la mida). `consola`: la micro-acció de girar-se d'esquena a tocar botons."""
     dirs = [dirs[i:i + 2] if dirs[i:i + 2] in ('DL', 'UL') else dirs[i] for i in range(len(dirs))] if isinstance(dirs, str) else dirs
 
     def make():
@@ -195,6 +195,17 @@ def person_tags(spec_of, dirs=DIRS):
             if f in ('D', 'DL'):
                 costat = [lambda f=f, m=m: person({**spec_of(), 'mira': m}, f) for m in (-1, -1, -1, 0, 1, 1, 1, 0)]
                 out.append((f'Look{f}', costat))
+        # qui té feina on és (la capitana al pont): de tant en tant es gira d'esquena, toca uns botons i torna a mirar
+        # endavant (la micro-acció `Consola`, de cara o de tres quarts; el motor no la fa si està girada d'una altra
+        # manera)
+        if consola:
+            for f in dirs:
+                if f in ('D', 'DL'):
+                    gira = [lambda: person(spec_of(), 'DL'), lambda: person(spec_of(), 'UL')]
+                    botons = [lambda k=k: person({**spec_of(), 'pose': lambda p, k=k: fa(p, k)}, 'U') for k in range(4)]
+                    quiet = [lambda: person(spec_of(), 'U')]
+                    out.append((f'Consola{f}', gira + quiet * 3 + botons * 3 + quiet * 4 + botons * 2 + quiet * 2
+                                + gira[::-1]))
         # el gest de fer anar una cosa amb les mans (una palanca, uns botons, una pala): les indicacions d'escena
         # (`"gest": "Fa"`)
         for f in dirs:
@@ -233,7 +244,7 @@ def fa(p, k):
 DAVANT_SEU = -90
 
 
-def person_extra(walk_speed, verb, anims, seu=False):
+def person_extra(walk_speed, verb, anims, seu=False, consola=False):
     m = PERSONA
     fx, fy = m.feet
     poly = [(15, 2), (35, 2), (37, 50), (33, 85), (16, 85), (12, 50)]
@@ -243,8 +254,13 @@ def person_extra(walk_speed, verb, anims, seu=False):
         'feet': {'x': fx, 'y': fy}, 'collider': {'points': [m.pt(x, y) for x, y in poly]},
         'animations': anims, 'defaultVerb': verb,
         # quan és quiet, de tant en tant parpelleja i, si fa estona, mira al voltant (el motor salta la que no hi és)
-        'idleActions': [{'animation': 'Blink', 'every': [3, 8]}, {'animation': 'Look', 'every': [9, 18], 'after': 6}],
+        'idleActions': [{'animation': 'Blink', 'every': [3, 8]}, {'animation': 'Look', 'every': [9, 18], 'after': 6}]
+        + ([{'animation': 'Consola', 'every': [18, 36], 'after': 10}] if consola else []),
     }
+
+
+# Qui no s'està palplantat: de tant en tant es gira a la consola (vegeu `person_tags`).
+AMB_CONSOLA = {'capitana'}
 
 
 def persona(cid, robes, walk_speed, verb, seu=None, walk=(90, 90), dirs=('L', 'D', 'U')):
@@ -252,11 +268,11 @@ def persona(cid, robes, walk_speed, verb, seu=None, walk=(90, 90), dirs=('L', 'D
     direccions del full (amb 'DL' i 'UL', el 3/4; R, DR i UR són el mirall)."""
     tags = []
     for o, spec in robes.items():
-        tags += tags_both(PERSONA, person_tags(lambda spec=spec: spec, list(dirs)), o)
+        tags += tags_both(PERSONA, person_tags(lambda spec=spec: spec, list(dirs), consola=cid in AMB_CONSOLA), o)
     if seu:
         tags += tags_both(PERSONA, lambda: [('Seu', [seu, seu, seu, lambda: seu(True)])])
     anims = durations(tags, walk=walk, idle=IDLE_MS, extra={'Seu': 500})
-    return write(cid, tags, person_extra(walk_speed, verb, anims, seu=bool(seu)))
+    return write(cid, tags, person_extra(walk_speed, verb, anims, seu=bool(seu), consola=cid in AMB_CONSOLA))
 
 
 # ─── En Diu, en Dividend i en Fidel ──────────────────────────────────────────

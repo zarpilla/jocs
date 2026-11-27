@@ -128,6 +128,14 @@
       "loop": false,
       "frameDuration": 260
     },
+    "ConsolaD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "ConsolaDL": {
+      "loop": false,
+      "frameDuration": 260
+    },
     "FaL": {
       "loop": true,
       "frameDuration": 170
@@ -228,6 +236,14 @@
       "loop": false,
       "frameDuration": 260
     },
+    "LlunyConsolaD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LlunyConsolaDL": {
+      "loop": false,
+      "frameDuration": 260
+    },
     "LlunyFaL": {
       "loop": true,
       "frameDuration": 170
@@ -265,6 +281,14 @@
         18
       ],
       "after": 6
+    },
+    {
+      "animation": "Consola",
+      "every": [
+        18,
+        36
+      ],
+      "after": 10
     }
   ]
 }
