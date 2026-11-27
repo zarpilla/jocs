@@ -307,6 +307,8 @@ const TALK_GAP_OF_HEIGHT = 0.45;
 
 /** How far toward the camera the walker stands when talking, as a fraction of that height. */
 const TALK_STEP_OF_HEIGHT = 0.06;
+/** Own change: how far apart, side to side, two figures must stand not to overlap (of the taller one's height). */
+const STAND_CLEAR_OF_HEIGHT = 0.3;
 
 /**
  * Leader overlap slack for follow snap (see {@link updateCharacterFollowers} idle-leader handling).
@@ -4096,8 +4098,80 @@ export class RoomScene extends Phaser.Scene {
       return Promise.resolve();
     }
     const feet = getCharacterWorldFeet(sprite);
-    const dest = this.resolveMovementTarget(target, feet);
+    const raw = this.resolveMovementTarget(target, feet);
+    // Own change: a named target (a thing, a character) never leaves the player standing on someone else.
+    const dest = typeof target === 'string' ? this.standClearOfOthers(raw, feet) : raw;
     return this.walkPlayerToWorldPoint(dest.x, dest.y);
+  }
+
+  /**
+   * Own change: a stand spot that would put the player on top of (or right behind) another visible character moves
+   * sideways along the floor, to the nearest walkable spot clear of everyone, trying first the side the player comes
+   * from. The stand spots are fixed per thing, and did not know that someone was standing there (a sister at the
+   * pump, a fairy at her tent, the boss in front of the fuse box). If there is no clear spot nearby, it stays.
+   */
+  private standClearOfOthers(dest: Point2, walkerFeet: Point2): Point2 {
+    const clashes = this.standClashTest();
+    if (!clashes || !clashes(dest)) {
+      return dest;
+    }
+    const playerHeight = this.figureHeight(this.player!);
+    const polys = withNonWalkableRegionsAsHoles(this.roomData.walkable.polygons, this.roomData.regions);
+    const step = Math.max(2, Math.round(playerHeight * 0.05));
+    const reach = playerHeight * 1.2;
+    const first = walkerFeet.x < dest.x ? -1 : 1;
+    for (let d = step; d <= reach; d += step) {
+      for (const side of [first, -first]) {
+        const p = { x: dest.x + side * d, y: dest.y };
+        if (isPointInWalkableArea(p.x, p.y, polys) && !clashes(p)) {
+          return p;
+        }
+      }
+    }
+    return dest;
+  }
+
+  /** Own change: a figure's height in world px (feet offset times scale), 0 if unknown. */
+  private figureHeight(s: Phaser.GameObjects.Sprite | Phaser.GameObjects.Image): number {
+    const d = s.getData('character') as CharacterData | undefined;
+    return d?.feet ? d.feet.y * Math.abs(s.scaleY) : 0;
+  }
+
+  /**
+   * Own change: a test of whether the player standing at a point would overlap another visible character (see
+   * {@link standClearOfOthers}), or `null` when there is no one to overlap.
+   */
+  private standClashTest(): ((p: Point2) => boolean) | null {
+    const player = this.player as Phaser.GameObjects.Sprite | null;
+    if (!player) {
+      return null;
+    }
+    const height = (s: Phaser.GameObjects.Sprite | Phaser.GameObjects.Image): number => this.figureHeight(s);
+    const playerHeight = height(player);
+    if (playerHeight <= 0) {
+      return null;
+    }
+    const others: Array<{ feet: Point2; height: number }> = [];
+    for (const other of this.characterSpritesByDefId.values()) {
+      if (other === player || !other.visible || other.alpha <= 0.05 || !other.active) {
+        continue;
+      }
+      const h = height(other);
+      if (h > 0) {
+        others.push({ feet: getCharacterWorldFeet(other as Phaser.GameObjects.Sprite), height: h });
+      }
+    }
+    if (others.length === 0) {
+      return null;
+    }
+    // Two figures overlap when their feet are closer than about a body width side to side, and close enough in depth
+    // that one covers the other (a third of the taller one's height).
+    const clashes = (p: Point2): boolean =>
+      others.some((o) => {
+        const tallest = Math.max(o.height, playerHeight);
+        return Math.abs(p.x - o.feet.x) < STAND_CLEAR_OF_HEIGHT * tallest && Math.abs(p.y - o.feet.y) < tallest / 3;
+      });
+    return clashes;
   }
 
   private applyFeetWorldWithRegionScale(
@@ -4517,11 +4591,16 @@ export class RoomScene extends Phaser.Scene {
     const step = TALK_STEP_OF_HEIGHT * tallest;
     const fromLeft = walkerFeet.x < feet.x - 2;
     const sides = fromLeft ? [-1, 1] : [1, -1];
-    for (const side of sides) {
-      for (const dy of [step, 0, -step]) {
-        const p = { x: feet.x + side * gap, y: feet.y + dy };
-        if (isPointInWalkableArea(p.x, p.y, polys)) {
-          return p;
+    // Own change: first a spot clear of everyone else (not on the side where a third person already stands), then
+    // any walkable one.
+    const clashes = this.standClashTest();
+    for (const clear of clashes ? [true, false] : [false]) {
+      for (const side of sides) {
+        for (const dy of [step, 0, -step]) {
+          const p = { x: feet.x + side * gap, y: feet.y + dy };
+          if (isPointInWalkableArea(p.x, p.y, polys) && (!clear || !clashes!(p))) {
+            return p;
+          }
         }
       }
     }
