@@ -58,6 +58,7 @@
         "fades_amigues": false,
         "fil_agafat": false,
         "final_taula": false,
+        "flor_provada": false,
         "obs_aglans": false,
         "obs_ampolla": false,
         "obs_bolets": false,
@@ -709,6 +710,39 @@
             "verb": "talkTo",
             "dialogue": "pla"
           }
+        ],
+        "patrol": [
+          {
+            "if": {
+              "var": "discurs",
+              "op": "==",
+              "value": 3
+            },
+            "room": "zona_zero",
+            "path": [
+              {
+                "x": 424,
+                "y": 187,
+                "face": "D"
+              },
+              {
+                "x": 424,
+                "y": 187,
+                "face": "L"
+              },
+              {
+                "x": 424,
+                "y": 187,
+                "face": "D"
+              },
+              {
+                "x": 424,
+                "y": 187,
+                "face": "R"
+              }
+            ],
+            "pause": 1.8
+          }
         ]
       },
       "txell": {
@@ -1006,6 +1040,11 @@
                 "who": "player",
                 "text": "obj.llibreta.compte"
               }
+            ],
+            "effects": [
+              {
+                "event": "llibreta"
+              }
             ]
           },
           {
@@ -1029,6 +1068,11 @@
               {
                 "who": "player",
                 "text": "obj.llibreta.compte"
+              }
+            ],
+            "effects": [
+              {
+                "event": "llibreta"
               }
             ]
           },
@@ -1054,6 +1098,11 @@
                 "who": "player",
                 "text": "obj.llibreta.compte"
               }
+            ],
+            "effects": [
+              {
+                "event": "llibreta"
+              }
             ]
           },
           {
@@ -1078,6 +1127,11 @@
                 "who": "player",
                 "text": "obj.llibreta.compte"
               }
+            ],
+            "effects": [
+              {
+                "event": "llibreta"
+              }
             ]
           },
           {
@@ -1093,6 +1147,11 @@
               {
                 "who": "player",
                 "text": "obj.llibreta.compte"
+              }
+            ],
+            "effects": [
+              {
+                "event": "llibreta"
               }
             ]
           },
@@ -1110,6 +1169,11 @@
                 "who": "player",
                 "text": "obj.llibreta.compte"
               }
+            ],
+            "effects": [
+              {
+                "event": "llibreta"
+              }
             ]
           },
           {
@@ -1118,6 +1182,20 @@
               {
                 "who": "player",
                 "text": "obj.llibreta.compte"
+              }
+            ],
+            "effects": [
+              {
+                "event": "llibreta"
+              }
+            ]
+          },
+          {
+            "verb": "open",
+            "lines": [],
+            "effects": [
+              {
+                "event": "llibreta"
               }
             ]
           }
@@ -2131,72 +2209,13 @@
               {
                 "verb": "use",
                 "item": "pot_buit",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.campament_fades.flor.pot"
-                  }
-                ]
-              }
-            ]
-          },
-          "branca": {
-            "name": "sala.campament_fades.branca.nom",
-            "interactions": [
-              {
-                "verb": "look",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.campament_fades.branca.mira"
-                  }
-                ]
-              },
-              {
-                "verb": [
-                  "walkTo",
-                  "use",
-                  "push"
-                ],
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.campament_fades.branca.camina"
-                  },
-                  {
-                    "who": "iri",
-                    "text": "sala.campament_fades.branca.iri",
-                    "sound": "walkie"
-                  },
-                  {
-                    "who": "player",
-                    "text": "sala.campament_fades.branca.vet"
-                  },
-                  {
-                    "who": "iri",
-                    "text": "sala.campament_fades.branca.iri2"
-                  }
-                ]
-              }
-            ]
-          },
-          "gronxador": {
-            "name": "sala.campament_fades.gronxador.nom",
-            "interactions": [
-              {
-                "verb": [
-                  "use",
-                  "walkTo",
-                  "push",
-                  "pull"
-                ],
                 "if": {
                   "flag": "fades_amigues"
                 },
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.campament_fades.empenta.1",
+                    "text": "sala.campament_fades.empenta.amb_pot",
                     "sound": "gronxador",
                     "stage": [
                       {
@@ -2218,16 +2237,12 @@
                     ]
                   },
                   {
-                    "who": "player",
-                    "text": "sala.campament_fades.empenta.2"
-                  },
-                  {
                     "who": "narrator",
                     "text": "sala.campament_fades.empenta.3"
                   },
                   {
                     "who": "player",
-                    "text": "sala.campament_fades.empenta.4"
+                    "text": "sala.campament_fades.empenta.ara"
                   },
                   {
                     "who": "narrator",
@@ -2307,6 +2322,326 @@
                     "args": {
                       "id": "iri"
                     }
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "pot_buit",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.campament_fades.flor.pot"
+                  }
+                ]
+              }
+            ]
+          },
+          "branca": {
+            "name": "sala.campament_fades.branca.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.campament_fades.branca.mira"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "walkTo",
+                  "use",
+                  "push"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.campament_fades.branca.camina"
+                  },
+                  {
+                    "who": "iri",
+                    "text": "sala.campament_fades.branca.iri",
+                    "sound": "walkie"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.campament_fades.branca.vet"
+                  },
+                  {
+                    "who": "iri",
+                    "text": "sala.campament_fades.branca.iri2"
+                  }
+                ]
+              }
+            ]
+          },
+          "gronxador": {
+            "name": "sala.campament_fades.gronxador.nom",
+            "interactions": [
+              {
+                "verb": "use",
+                "item": "pot_buit",
+                "if": {
+                  "flag": "fades_amigues"
+                },
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.campament_fades.empenta.amb_pot",
+                    "sound": "gronxador",
+                    "stage": [
+                      {
+                        "prop": "flor_buida",
+                        "visible": false
+                      },
+                      {
+                        "who": "player",
+                        "at": {
+                          "x": 478,
+                          "y": 172
+                        },
+                        "visible": false
+                      },
+                      {
+                        "prop": "gronxant",
+                        "visible": true
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.campament_fades.empenta.3"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.campament_fades.empenta.ara"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.campament_fades.empenta.5",
+                    "stage": [
+                      {
+                        "prop": "flor_buida",
+                        "visible": true
+                      }
+                    ]
+                  },
+                  {
+                    "who": "pica",
+                    "text": "sala.campament_fades.empenta.6",
+                    "sound": "esternut_fada"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.campament_fades.empenta.7",
+                    "stage": [
+                      {
+                        "prop": "gronxant",
+                        "visible": false
+                      },
+                      {
+                        "who": "player",
+                        "at": {
+                          "x": 448,
+                          "y": 204
+                        },
+                        "visible": true,
+                        "face": "R"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "urtica",
+                    "text": "sala.campament_fades.empenta.8"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.campament_fades.empenta.9"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.campament_fades.empenta.10"
+                  },
+                  {
+                    "who": "urtica",
+                    "text": "sala.campament_fades.empenta.11"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.campament_fades.empenta.12",
+                    "sound": "walkie"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "pot_buit"
+                  },
+                  {
+                    "giveItem": "xiulet"
+                  },
+                  {
+                    "setFlag": "pol_len_collit"
+                  },
+                  {
+                    "event": "situar",
+                    "args": {
+                      "who": "iri",
+                      "room": "toll_gripaus"
+                    }
+                  },
+                  {
+                    "event": "protagonista",
+                    "args": {
+                      "id": "iri"
+                    }
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "walkTo",
+                  "push",
+                  "pull"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "fades_amigues"
+                    },
+                    {
+                      "flag": "flor_provada"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.campament_fades.empenta.1",
+                    "sound": "gronxador",
+                    "stage": [
+                      {
+                        "prop": "flor_buida",
+                        "visible": false
+                      },
+                      {
+                        "who": "player",
+                        "at": {
+                          "x": 478,
+                          "y": 172
+                        },
+                        "visible": false
+                      },
+                      {
+                        "prop": "gronxant",
+                        "visible": true
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.campament_fades.empenta.altre"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.campament_fades.empenta.baixa",
+                    "stage": [
+                      {
+                        "prop": "gronxant",
+                        "visible": false
+                      },
+                      {
+                        "who": "player",
+                        "at": {
+                          "x": 448,
+                          "y": 204
+                        },
+                        "visible": true,
+                        "face": "R"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.campament_fades.empenta.pot"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "walkTo",
+                  "push",
+                  "pull"
+                ],
+                "if": {
+                  "flag": "fades_amigues"
+                },
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.campament_fades.empenta.1",
+                    "sound": "gronxador",
+                    "stage": [
+                      {
+                        "prop": "flor_buida",
+                        "visible": false
+                      },
+                      {
+                        "who": "player",
+                        "at": {
+                          "x": 478,
+                          "y": 172
+                        },
+                        "visible": false
+                      },
+                      {
+                        "prop": "gronxant",
+                        "visible": true
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.campament_fades.empenta.2"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.campament_fades.empenta.3"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.campament_fades.empenta.4"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.campament_fades.empenta.baixa",
+                    "stage": [
+                      {
+                        "prop": "gronxant",
+                        "visible": false
+                      },
+                      {
+                        "who": "player",
+                        "at": {
+                          "x": 448,
+                          "y": 204
+                        },
+                        "visible": true,
+                        "face": "R"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.campament_fades.empenta.cal"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "flor_provada"
                   }
                 ]
               },
@@ -2713,6 +3048,52 @@
                 "item": "walkie",
                 "lines": [
                   {
+                    "who": "player",
+                    "text": "sala.caseta_obra.altaveu.walkie"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.caseta_obra.altaveu.walkie2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "walkie_mirat_canal"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "push",
+                  "pull"
+                ],
+                "if": {
+                  "flag": "pla_fora",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "pla",
+                    "text": "sala.caseta_obra.altaveu.no"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.caseta_obra.altaveu.no.b"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "push",
+                  "pull"
+                ],
+                "if": {
+                  "flag": "walkie_mirat_canal"
+                },
+                "lines": [
+                  {
                     "who": "narrator",
                     "text": "sala.caseta_obra.canal7.1",
                     "sound": "ruleta"
@@ -2758,37 +3139,9 @@
                   "pull"
                 ],
                 "if": {
-                  "flag": "pla_fora",
-                  "is": false
-                },
-                "lines": [
-                  {
-                    "who": "pla",
-                    "text": "sala.caseta_obra.altaveu.no"
-                  },
-                  {
-                    "who": "player",
-                    "text": "sala.caseta_obra.altaveu.no.b"
-                  }
-                ]
-              },
-              {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
-                "if": {
-                  "any": [
-                    {
-                      "var": "canals_provats",
-                      "op": ">=",
-                      "value": 2
-                    },
-                    {
-                      "flag": "walkie_mirat_canal"
-                    }
-                  ]
+                  "var": "canals_provats",
+                  "op": ">=",
+                  "value": 2
                 },
                 "lines": [
                   {
@@ -6537,7 +6890,46 @@
                   {
                     "who": "narrator",
                     "text": "sala.zona_zero.crit.3",
-                    "sound": "crit"
+                    "sound": "crit",
+                    "stage": [
+                      {
+                        "shake": 0.8
+                      },
+                      {
+                        "prop": "pantalla_crit",
+                        "visible": true
+                      },
+                      {
+                        "who": "pla",
+                        "face": "R"
+                      },
+                      {
+                        "who": "txell",
+                        "face": "L"
+                      },
+                      {
+                        "who": "vet",
+                        "face": "R"
+                      },
+                      {
+                        "who": "avia",
+                        "face": "R"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.zona_zero.crit.gent",
+                    "stage": [
+                      {
+                        "who": "txell",
+                        "walk": {
+                          "x": 560,
+                          "y": 240
+                        },
+                        "wait": false
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -7077,6 +7469,11 @@
               "op": ">=",
               "value": 2
             }
+          },
+          "pantalla_crit": {
+            "visibleIf": {
+              "flag": "presentacio_feta"
+            }
           }
         }
       }
@@ -7528,7 +7925,8 @@
           "pista.flor.3"
         ],
         "targets": [
-          "gronxador"
+          "gronxador",
+          "flor"
         ],
         "who": "iri"
       },
@@ -9174,77 +9572,151 @@
               {
                 "who": "narrator",
                 "text": "sala.campament_fades.empenta.1",
-                "sound": "gronxador"
+                "sound": "gronxador",
+                "stage": [
+                  {
+                    "prop": "flor_buida",
+                    "visible": false
+                  },
+                  {
+                    "who": "player",
+                    "at": {
+                      "x": 478,
+                      "y": 172
+                    },
+                    "visible": false
+                  },
+                  {
+                    "prop": "gronxant",
+                    "visible": true
+                  }
+                ],
+                "if": {
+                  "flag": "flor_provada",
+                  "is": false
+                }
               },
               {
                 "who": "player",
-                "text": "sala.campament_fades.empenta.2"
+                "text": "sala.campament_fades.empenta.2",
+                "if": {
+                  "flag": "flor_provada",
+                  "is": false
+                }
               },
               {
                 "who": "narrator",
-                "text": "sala.campament_fades.empenta.3"
+                "text": "sala.campament_fades.empenta.3",
+                "if": {
+                  "flag": "flor_provada",
+                  "is": false
+                }
               },
               {
                 "who": "player",
-                "text": "sala.campament_fades.empenta.4"
+                "text": "sala.campament_fades.empenta.4",
+                "if": {
+                  "flag": "flor_provada",
+                  "is": false
+                }
               },
               {
                 "who": "narrator",
-                "text": "sala.campament_fades.empenta.5"
-              },
-              {
-                "who": "pica",
-                "text": "sala.campament_fades.empenta.6",
-                "sound": "esternut_fada"
-              },
-              {
-                "who": "narrator",
-                "text": "sala.campament_fades.empenta.7"
-              },
-              {
-                "who": "urtica",
-                "text": "sala.campament_fades.empenta.8"
-              },
-              {
-                "who": "narrator",
-                "text": "sala.campament_fades.empenta.9"
+                "text": "sala.campament_fades.empenta.baixa",
+                "stage": [
+                  {
+                    "prop": "gronxant",
+                    "visible": false
+                  },
+                  {
+                    "who": "player",
+                    "at": {
+                      "x": 448,
+                      "y": 204
+                    },
+                    "visible": true,
+                    "face": "R"
+                  }
+                ],
+                "if": {
+                  "flag": "flor_provada",
+                  "is": false
+                }
               },
               {
                 "who": "player",
-                "text": "sala.campament_fades.empenta.10"
+                "text": "sala.campament_fades.empenta.cal",
+                "if": {
+                  "flag": "flor_provada",
+                  "is": false
+                }
               },
               {
-                "who": "urtica",
-                "text": "sala.campament_fades.empenta.11"
+                "who": "narrator",
+                "text": "sala.campament_fades.empenta.1",
+                "sound": "gronxador",
+                "stage": [
+                  {
+                    "prop": "flor_buida",
+                    "visible": false
+                  },
+                  {
+                    "who": "player",
+                    "at": {
+                      "x": 478,
+                      "y": 172
+                    },
+                    "visible": false
+                  },
+                  {
+                    "prop": "gronxant",
+                    "visible": true
+                  }
+                ],
+                "if": {
+                  "flag": "flor_provada"
+                }
               },
               {
                 "who": "player",
-                "text": "sala.campament_fades.empenta.12",
-                "sound": "walkie"
+                "text": "sala.campament_fades.empenta.altre",
+                "if": {
+                  "flag": "flor_provada"
+                }
+              },
+              {
+                "who": "narrator",
+                "text": "sala.campament_fades.empenta.baixa",
+                "stage": [
+                  {
+                    "prop": "gronxant",
+                    "visible": false
+                  },
+                  {
+                    "who": "player",
+                    "at": {
+                      "x": 448,
+                      "y": 204
+                    },
+                    "visible": true,
+                    "face": "R"
+                  }
+                ],
+                "if": {
+                  "flag": "flor_provada"
+                }
+              },
+              {
+                "who": "player",
+                "text": "sala.campament_fades.empenta.pot",
+                "if": {
+                  "flag": "flor_provada"
+                }
               }
             ],
             "effects": [
               {
-                "takeItem": "pot_buit"
-              },
-              {
-                "giveItem": "xiulet"
-              },
-              {
-                "setFlag": "pol_len_collit"
-              },
-              {
-                "event": "situar",
-                "args": {
-                  "who": "iri",
-                  "room": "toll_gripaus"
-                }
-              },
-              {
-                "event": "protagonista",
-                "args": {
-                  "id": "iri"
-                }
+                "setFlag": "flor_provada"
               }
             ]
           }
@@ -9908,6 +10380,30 @@
       "ui.defecte.give.vet": "No ho vol. S'ho perd.",
       "ui.defecte.give.vet.2": "Li ho ofereixo amb un somriure. Res.",
       "ui.defecte.give.vet.3": "No ho vol. Doncs per a mi!",
+      "ui.llibreta.titol": "La llibreta de camp",
+      "ui.llibreta.compte": "{n} de 12 observacions",
+      "ui.llibreta.compte_totes": "{n} de 12 en aquesta partida · {totes} de 12 en total",
+      "ui.llibreta.altra": "(d'una altra partida)",
+      "ui.llibreta.peu": "Toca la pàgina per tancar la llibreta",
+      "ui.llibreta.sala.vora_bosc": "La vora del bosc",
+      "ui.llibreta.sala.centraleta": "La centraleta",
+      "ui.llibreta.sala.campament_fades": "El campament de les fades",
+      "ui.llibreta.sala.toll_gripaus": "El toll dels gripaus",
+      "ui.llibreta.sala.caseta_obra": "La caseta d'obra",
+      "ui.llibreta.sala.zona_mati": "La Zona Zero, al matí",
+      "ui.llibreta.sala.zona_zero": "La presentació",
+      "ui.llibreta.obs_bolets": "Els bolets són la fruita del fong",
+      "ui.llibreta.obs_gespa": "La terra de bosc és plena de vida",
+      "ui.llibreta.obs_fils": "Els fongs i les arrels fan tractes",
+      "ui.llibreta.obs_corn": "El so corre per la fusta",
+      "ui.llibreta.obs_aglans": "Els esquirols planten roures",
+      "ui.llibreta.obs_ortiga": "Per què piquen les ortigues",
+      "ui.llibreta.obs_toll": "Els gripaus beuen per la panxa",
+      "ui.llibreta.obs_ampolla": "Una ampolla triga 400 anys",
+      "ui.llibreta.obs_maqueta": "En un roure hi viuen centenars de bestioles",
+      "ui.llibreta.obs_cartell": "Els arbres s'avisen amb olors",
+      "ui.llibreta.obs_sensors": "Les plantes fan l'oxigen",
+      "ui.llibreta.obs_soques": "Cada anell, un any",
       "mis.acte1.obj.crit": "Guardar el crit dels arbres.",
       "mis.acte1.obj.porta": "Entrar al roure de la porta petita.",
       "mis.acte1.obj.xarxa": "Tornar a encendre la Xarxa Miceli.",
@@ -10042,8 +10538,8 @@
       "pista.campaneta.2": "Si hi viu algú, potser respon si toco la campaneta.",
       "pista.campaneta.3": "Fes servir la campaneta de la porta del roure.",
       "pista.canal.1": "L'altaveu té ràdio, amb canals. I el walkie, quin canal té? Canvi.",
-      "pista.canal.2": "Posa l'altaveu al canal 7, el dels walkies. Canvi.",
-      "pista.canal.3": "Fes servir el walkie amb l'altaveu. Canvi.",
+      "pista.canal.2": "El walkie sempre és al canal 7. Gira la ruleta de l'altaveu fins al 7. Canvi.",
+      "pista.canal.3": "Fes servir l'altaveu: gira'n la ruleta fins al canal 7. Canvi.",
       "pista.cargol.1": "Per a la pila em falta un metall diferent del coure.",
       "pista.cargol.2": "A fora, al peu de la tanca, hi havia una cosa que brillava massa per ser del bosc.",
       "pista.cargol.3": "Surt per l'escala i agafa el cargol del fang, al peu de la tanca.",
@@ -10062,8 +10558,8 @@
       "pista.fil.1": "El radar ensenya un fil solt.",
       "pista.fil.2": "Agafa el fil de saba que penja del tauler.",
       "pista.flor.1": "Vet. La flor és massa lluny, i la branca massa prima. Què penja al costat? Canvi.",
-      "pista.flor.2": "El gronxador de les fades arriba fins a la flor. Canvi.",
-      "pista.flor.3": "Seu al gronxador: la Urtica t'empenyerà. Canvi.",
+      "pista.flor.2": "Al gronxador, la Urtica t'empeny fins a la flor. Però amb les mans, pica! Canvi.",
+      "pista.flor.3": "Fes servir el pot buit amb la flor: des del gronxador, hi arribaràs. Canvi.",
       "pista.fora.1": "Vet. Amb la senyora a dins, no podràs tocar l'altaveu. Canvi.",
       "pista.fora.2": "Si es quedés sense cobertura, sortiria a buscar-ne. Què fa pip, allà dins? Canvi.",
       "pista.fora.3": "Desendolla l'arbre Wi-Fi. Canvi.",
@@ -10173,12 +10669,18 @@
       "sala.campament_fades.empenta.12": "(al walkie) Iri. Tinc un xiulet de fada. No et diré com. Canvi i fora.",
       "sala.campament_fades.empenta.2": "Uaaaaaa!",
       "sala.campament_fades.empenta.3": "A la tercera gronxada, la Vet passa just pel costat de la Flor de Pebre.",
-      "sala.campament_fades.empenta.4": "(estirant el braç) Ai, com pica! Pica pica pica! Amb les mans no. Amb el pot!",
+      "sala.campament_fades.empenta.4": "(estirant el braç) Ai, com pica! Pica pica pica! Amb les mans, no!",
       "sala.campament_fades.empenta.5": "A la gronxada següent, hi recull el pol·len i tanca el pot de pressa.",
       "sala.campament_fades.empenta.6": "(de lluny) Atxím! Brutal.",
       "sala.campament_fades.empenta.7": "La Urtica agafa el pot com si fos un tresor.",
       "sala.campament_fades.empenta.8": "Dilluns. Quan la del vestit blanc digui «aire pur», ens xiules.",
       "sala.campament_fades.empenta.9": "La Urtica li dona un xiulet d'ortiga: una fulla doblegada que xiula molt agut.",
+      "sala.campament_fades.empenta.altre": "(estirant el braç) Ai! Un altre cop! Amb les mans no hi ha manera.",
+      "sala.campament_fades.empenta.amb_pot": "La Vet seu al gronxador amb el pot obert a la mà. La Urtica agafa embranzida i l'empeny.",
+      "sala.campament_fades.empenta.ara": "(allargant el pot) Ara! Sense tocar-la...",
+      "sala.campament_fades.empenta.baixa": "La Urtica atura el gronxador. La Vet en baixa bufant-se els dits.",
+      "sala.campament_fades.empenta.cal": "Necessito alguna cosa per collir el pol·len sense tocar-lo. Una cosa amb tapa...",
+      "sala.campament_fades.empenta.pot": "Si hi arribés amb el pot obert, el pol·len hi cauria sol.",
       "sala.campament_fades.escala_corda.mira": "L'escala de corda per on he pujat. A baix, molt a baix, hi ha el terra.",
       "sala.campament_fades.escala_corda.no": "Encara no baixo. He vingut a fer amigues. I a buscar una cosa que pica.",
       "sala.campament_fades.escala_corda.nom": "l'escala de corda",
@@ -10222,6 +10724,8 @@
       "sala.caseta_obra.altaveu.nom": "l'altaveu",
       "sala.caseta_obra.altaveu.quin": "Ui. Quin canal era el del walkie?",
       "sala.caseta_obra.altaveu.recorda": "Un moment. El walkie sempre és al canal 7. El número més valent!",
+      "sala.caseta_obra.altaveu.walkie": "Si l'altaveu no és al mateix canal que el walkie, no se sentirà res.",
+      "sala.caseta_obra.altaveu.walkie2": "(mirant el walkie) El walkie és al canal 7. Doncs ara, la ruleta de l'altaveu: al 7.",
       "sala.caseta_obra.arbre_wifi.fet": "Ja l'he desendollat. Pobre arbre. Bé, pobre plàstic.",
       "sala.caseta_obra.arbre_wifi.mira": "Un arbret de plàstic amb llumetes. Fa pip cada tres segons. Està endollat a la paret.",
       "sala.caseta_obra.arbre_wifi.mira2": "L'arbre Wi-Fi, desendollat. Ja no fa pip.",
@@ -10335,9 +10839,9 @@
       "sala.centraleta.xarxa.8": "Observació: el corn vibra.",
       "sala.credits.nom": "Crèdits",
       "sala.epileg_bolets.nom": "Epíleg: els bolets",
-      "sala.epileg_segells.nom": "Epíleg: els tres segells",
       "sala.epileg_gronxador.nom": "Epíleg: el gronxador",
       "sala.epileg_llibreta.nom": "Epíleg: la llibreta",
+      "sala.epileg_segells.nom": "Epíleg: els tres segells",
       "sala.portada.nom": "L'Última Arrel",
       "sala.proleg_roure.1": "Tres dies sense ni un missatge del nord.",
       "sala.proleg_roure.2": "«Bosc 2.0». Hmf. Ja en tenim, de xarxa.",
@@ -10526,6 +11030,7 @@
       "sala.zona_zero.crit.7": "(un silenci; somriure) Molt bé. Gràcies a tots per venir.",
       "sala.zona_zero.crit.8": "(a la tauleta, en veu baixa) Això no era a la presentació.",
       "sala.zona_zero.crit.9": "La Senyora Pla recull i, abans d'anar-se'n, li diu al conductor de la formigonera: «Avui no. Fins que ho miri el jurídic.» La formigonera fa marxa enrere. La gent aplaudeix, i ningú no sap ben bé a qui.",
+      "sala.zona_zero.crit.gent": "Al públic, tothom es gira cap a l'altaveu. La càmera de la Txell també: ja no enfoca la Senyora Pla. A la pantalla gegant, «BOSC 2.0» salta i hi surt l'ona del crit, en directe.",
       "sala.zona_zero.dhora.1": "L'Iri prem el walkie massa d'hora. Per l'altaveu surt la seva veu:",
       "sala.zona_zero.dhora.2": "(per l'altaveu) ...Ai.",
       "sala.zona_zero.dhora.3": "La gent riu. La Senyora Pla somriu més fort.",
@@ -10551,7 +11056,7 @@
       "sala.zona_zero.public.parla": "Ara no és moment de xerrar. És moment d'observar.",
       "sala.zona_zero.repeteix.1": "Ho repeteixo per als de darrere: l'aire, cent per cent pur!",
       "sala.zona_zero.repeteix.2": "Ho repeteixo per als de darrere: amb tota legalitat!",
-      "sala.zona_zero.repeteix.3": "Ho repeteixo per als de darrere: a la de tres! U... dos...",
+      "sala.zona_zero.repeteix.3": "(prement el botó de la tauleta) Un moment, que no em funciona el botó... A la de tres! U... dos...",
       "sala.zona_zero.sensors.mira": "Tres columnes blanques amb una lectura verda: «AIRE: PUR 100%».",
       "sala.zona_zero.sensors.mira2": "Ara diuen «AIRE: PICANT». Ho trobo més sincer.",
       "sala.zona_zero.sensors.nom": "els sensors",
@@ -10566,8 +11071,8 @@
       "sala.zona_zero.xiulet.6": "(a part) Calibratge vol dir que l'aparell està mal ajustat. O que diu la veritat.",
       "sala.zona_zero.xiulet.7": "Bé! Continuem. Aquests terrenys, NaturaPlus els ha adquirit amb tota legalitat!",
       "sala.zona_zero.xiulet.8": "A la vora del bassal, el Registrador Bufó s'aclareix la gola.",
-      "sala.zona_zero.xiulet.pica": "(des de dalt) Brutal!",
       "sala.zona_zero.xiulet.card": "(des de dalt) Una traïció... boníssima.",
+      "sala.zona_zero.xiulet.pica": "(des de dalt) Brutal!",
       "sala.zona_zero.xiulet.tard": "Les fades ja han fet la seva feina. I el gat de casa encara corre."
     }
   },

@@ -1,0 +1,116 @@
+{
+  "id": "llibreta",
+  "name": "Llibreta",
+  "description": "La llibreta de camp (games/ultima-arrel/adapters/benne/joc.ts).",
+  "visible": false,
+  "display": {
+    "aseprite": false
+  },
+  "modal": true,
+  "zIndex": 110,
+  "controls": [
+    {
+      "type": "button",
+      "id": "fons",
+      "x": 0,
+      "y": 0,
+      "width": 640,
+      "height": 288,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "backgroundTag": "",
+      "backgroundColor": "#140c06",
+      "backgroundColorStates": {
+        "hover": "#140c06",
+        "pressed": "#140c06",
+        "disabled": "#140c06"
+      },
+      "zIndex": 1,
+      "anchorY": "stretch"
+    },
+    {
+      "type": "button",
+      "id": "pagina",
+      "x": 36,
+      "y": 12,
+      "width": 568,
+      "height": 264,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "backgroundTag": "",
+      "backgroundColor": "#e9dcb8",
+      "backgroundColorStates": {
+        "hover": "#e9dcb8",
+        "pressed": "#e9dcb8",
+        "disabled": "#e9dcb8"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "text",
+      "id": "titol",
+      "x": 54,
+      "y": 22,
+      "text": "",
+      "font": "ultimaarrel-negreta",
+      "fontSize": 8,
+      "color": "#7a3216",
+      "align": "left",
+      "zIndex": 3
+    },
+    {
+      "type": "text",
+      "id": "compte",
+      "x": 586,
+      "y": 22,
+      "text": "",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "color": "#3a2814",
+      "align": "right",
+      "zIndex": 3
+    },
+    {
+      "type": "text",
+      "id": "sales",
+      "x": 54,
+      "y": 52,
+      "text": "",
+      "font": "ultimaarrel-negreta",
+      "fontSize": 8,
+      "color": "#5a3a1c",
+      "align": "left",
+      "zIndex": 3
+    },
+    {
+      "type": "text",
+      "id": "obs",
+      "x": 226,
+      "y": 52,
+      "text": "",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "color": "#3a2814",
+      "align": "left",
+      "zIndex": 3
+    },
+    {
+      "type": "text",
+      "id": "peu",
+      "x": 586,
+      "y": 252,
+      "text": "",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "color": "#8a7a64",
+      "align": "right",
+      "zIndex": 3
+    }
+  ]
+}

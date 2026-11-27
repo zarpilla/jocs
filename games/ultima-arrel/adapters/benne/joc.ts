@@ -41,8 +41,52 @@ export default {
   guis(gameDir) {
     addGameMenuButtons(gameDir);
     addHistoryGui(gameDir);
+    addLlibretaGui(gameDir);
   },
 } satisfies JocBenne;
+
+// ─── La llibreta de camp ────────────────────────────────────────────────────
+
+/**
+ * La GUI `llibreta` (tasca 051): una pàgina de paper que ocupa tota la pantalla (clicar-la la tanca), amb el títol,
+ * el recompte, dues columnes (les escenes i les observacions, una per línia) i el peu. L'omple
+ * runtime/llibreta.ts. Sense art: només colors.
+ */
+function addLlibretaGui(gameDir: string) {
+  const dir = join(gameDir, 'guis/llibreta');
+  mkdirSync(dir, { recursive: true });
+  const res = readJson(join(gameDir, 'game-config.json')).resolution as { width: number; height: number; minHeight?: number };
+  const W = res.width;
+  const H = res.minHeight ?? res.height;
+  const text = (id: string, x: number, y: number, font: string, color: string, align = 'left') =>
+    ({ type: 'text', id, x, y, text: '', font, fontSize: 8, color, align, zIndex: 3 });
+  const rect = (id: string, x: number, y: number, w: number, h: number, color: string, z: number, extra: Json = {}) => ({
+    type: 'button', id, x, y, width: w, height: h, backgroundAnchor: 'top-left', text: '', font: 'ultimaarrel-regular',
+    fontSize: 8, textColor: '#ffffff', backgroundTag: '', backgroundColor: color,
+    backgroundColorStates: { hover: color, pressed: color, disabled: color }, zIndex: z, ...extra,
+  });
+  const M = 36;            // el marge de la pàgina
+  writeJson(join(dir, 'llibreta.gui.json'), {
+    id: 'llibreta', name: 'Llibreta', description: 'La llibreta de camp (games/ultima-arrel/adapters/benne/joc.ts).',
+    visible: false, display: { aseprite: false }, modal: true, zIndex: 110,
+    controls: [
+      rect('fons', 0, 0, W, H, '#140c06', 1, { anchorY: 'stretch' }),
+      rect('pagina', M, 12, W - 2 * M, H - 24, '#e9dcb8', 2),
+      text('titol', M + 18, 22, 'ultimaarrel-negreta', '#7a3216'),
+      text('compte', W - M - 18, 22, 'ultimaarrel-regular', '#3a2814', 'right'),
+      text('sales', M + 18, 52, 'ultimaarrel-negreta', '#5a3a1c'),
+      text('obs', M + 190, 52, 'ultimaarrel-regular', '#3a2814'),
+      text('peu', W - M - 18, H - 36, 'ultimaarrel-regular', '#8a7a64', 'right'),
+    ],
+  });
+  writeFileSync(join(dir, 'llibreta.gui.ts'), `// Creat per games/ultima-arrel/adapters/benne/joc.ts: la llibreta de camp. No l'editis aquí.
+// La lògica és a narrative/llibreta.ts (games/ultima-arrel/adapters/benne/runtime/).
+import { onUpdate } from '@benne/script';
+import { actualitzaLlibreta } from '../../narrative/llibreta';
+
+onUpdate(() => actualitzaLlibreta())
+`);
+}
 
 // ─── Botons «Historial» i «Pista» al menú del joc ────────────────────────────
 

@@ -267,6 +267,11 @@
             "who": "player",
             "text": "obj.llibreta.compte"
           }
+        ],
+        "effects": [
+          {
+            "event": "llibreta"
+          }
         ]
       },
       {
@@ -290,6 +295,11 @@
           {
             "who": "player",
             "text": "obj.llibreta.compte"
+          }
+        ],
+        "effects": [
+          {
+            "event": "llibreta"
           }
         ]
       },
@@ -315,6 +325,11 @@
             "who": "player",
             "text": "obj.llibreta.compte"
           }
+        ],
+        "effects": [
+          {
+            "event": "llibreta"
+          }
         ]
       },
       {
@@ -339,6 +354,11 @@
             "who": "player",
             "text": "obj.llibreta.compte"
           }
+        ],
+        "effects": [
+          {
+            "event": "llibreta"
+          }
         ]
       },
       {
@@ -354,6 +374,11 @@
           {
             "who": "player",
             "text": "obj.llibreta.compte"
+          }
+        ],
+        "effects": [
+          {
+            "event": "llibreta"
           }
         ]
       },
@@ -371,6 +396,11 @@
             "who": "player",
             "text": "obj.llibreta.compte"
           }
+        ],
+        "effects": [
+          {
+            "event": "llibreta"
+          }
         ]
       },
       {
@@ -379,6 +409,20 @@
           {
             "who": "player",
             "text": "obj.llibreta.compte"
+          }
+        ],
+        "effects": [
+          {
+            "event": "llibreta"
+          }
+        ]
+      },
+      {
+        "verb": "open",
+        "lines": [],
+        "effects": [
+          {
+            "event": "llibreta"
           }
         ]
       }
