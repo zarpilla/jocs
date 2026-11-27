@@ -529,6 +529,14 @@
         ]
       },
       {
+        "verb": [
+          "give",
+          "use"
+        ],
+        "item": "carta_juana",
+        "dialogue": "bru"
+      },
+      {
         "verb": "talkTo",
         "dialogue": "bru"
       }
