@@ -124,8 +124,89 @@ const itemRef = (id: string) => ({ id: toBenne('items', id) });
 
 // ─── El món tal com el veu Benne ────────────────────────────────────────────
 
+/**
+ * Objectes que una interacció ha donat i que encara no són a l'inventari. Els efectes s'apliquen abans de dir les
+ * línies, i l'objecte sortia mentre la protagonista encara deia la línia d'abans de rebre'l (el salabre d'en Joanet):
+ * entren a l'inventari quan el joc deixa d'estar ocupat (s'acaben les línies, la conversa o l'escena). Per a l'estat,
+ * ja hi són (`hasItem`).
+ */
+/** De qui és una bossa: `bagOf` torna un objecte nou a cada crida, i sense `who` és la de qui juga ara. */
+const ownerOf = (who?: string) => who ?? fromBenne('characters', player.id);
+const pendingGives: { owner: string; item: string; replaces?: string }[] = [];
+const isPendingGive = (who: string | undefined, item: string) => {
+  const owner = ownerOf(who);
+  return pendingGives.findIndex((g) => g.owner === owner && g.item === item);
+};
+
+/**
+ * Objectes que una interacció ha tret i que un objecte donat a la mateixa interacció substituirà (el formulari que passa
+ * a segellat): per a l'estat ja no hi són, però es queden a la seva casella fins que hi entra el nou, perquè la jugadora
+ * el trobi on tenia l'altre i la resta no canviï de lloc.
+ */
+const pendingTakes: { owner: string; item: string; paired: boolean }[] = [];
+const isPendingTake = (who: string | undefined, item: string) => {
+  const owner = ownerOf(who);
+  return pendingTakes.some((t) => t.owner === owner && t.item === item);
+};
+
+/** Al final dels efectes d'una interacció: cada objecte tret s'aparella amb un de donat a la mateixa bossa, o surt. */
+function resolvePendingTakes() {
+  for (let i = pendingTakes.length - 1; i >= 0; i--) {
+    const t = pendingTakes[i];
+    if (t.paired) continue;
+    const g = pendingGives.find((g) => g.owner === t.owner && g.replaces === undefined);
+    if (g) {
+      g.replaces = t.item;
+      t.paired = true;
+    } else {
+      pendingTakes.splice(i, 1);
+      bagOf(t.owner).remove(itemRef(t.item));
+    }
+  }
+}
+
+/** Posa `item` a la bossa al lloc de `old` (si hi és), i deixa la resta d'objectes on eren. */
+function replaceInBag(bag: ReturnType<typeof bagOf>, old: string, item: string) {
+  const oldId = toBenne('items', old);
+  const slot = bag.items.findIndex((e) => e.item.id === oldId);
+  if (slot >= 0) bag.remove(itemRef(old));
+  bag.add(itemRef(item));
+  if (slot < 0) return;
+  const newId = toBenne('items', item);
+  // Benne només afegeix al final: els que anaven darrere de l'antic tornen a entrar darrere del nou.
+  for (const e of bag.items.slice(slot)) {
+    if (e.item.id === newId) continue;
+    bag.remove(e.item, e.quantity);
+    bag.add(e.item, e.quantity);
+  }
+}
+
+/** Posa a l'inventari els objectes donats que esperaven. */
+export function flushPendingGives() {
+  for (const g of pendingGives.splice(0)) {
+    if (g.replaces === undefined) {
+      bagOf(g.owner).add(itemRef(g.item));
+      continue;
+    }
+    const t = pendingTakes.findIndex((t) => t.owner === g.owner && t.item === g.replaces);
+    if (t >= 0) pendingTakes.splice(t, 1);
+    replaceInBag(bagOf(g.owner), g.replaces, g.item);
+  }
+}
+
+function giveWhenIdle() {
+  const tick = () => {
+    if (!pendingGives.length) return;
+    if (game.isBusy) window.setTimeout(tick, 150);
+    else flushPendingGives();
+  };
+  // Una mica més tard que de seguida: les línies de la interacció comencen just després dels efectes.
+  window.setTimeout(tick, 200);
+}
+
 const world: WorldPort = {
-  hasItem: (item, who) => bagOf(who).has(itemRef(item)),
+  hasItem: (item, who) =>
+    (bagOf(who).has(itemRef(item)) && !isPendingTake(who, item)) || isPendingGive(who, item) >= 0,
   hasVisited: (room) => benneRoom(room)?.hasVisited ?? false,
   currentRoom: () => {
     const id = game.currentRoom?.id;
@@ -226,6 +307,8 @@ export function adoptLoadedState() {
   if (json === persisted) return;
   console.info(`[${JOC}] Estat narratiu adoptat de la partida`, describeState(saved));
   persisted = json;
+  pendingGives.length = 0;
+  pendingTakes.length = 0;
   narrative.load(saved);
   resetHistory();
 }
@@ -251,11 +334,19 @@ narrative.on((e) => {
       applyAppearances();
       break;
     case 'giveItem':
-      bagOf(e.who).add(itemRef(e.item));
+      pendingGives.push({ owner: ownerOf(e.who), item: e.item });
+      if (pendingGives.length === 1) giveWhenIdle();
       break;
-    case 'takeItem':
-      bagOf(e.who).remove(itemRef(e.item));
+    case 'takeItem': {
+      const i = isPendingGive(e.who, e.item);
+      if (i >= 0) pendingGives.splice(i, 1);
+      else if (!isPendingTake(e.who, e.item)) {
+        // Encara no surt: si la mateixa interacció dona un altre objecte, aquest ocuparà la seva casella.
+        pendingTakes.push({ owner: ownerOf(e.who), item: e.item, paired: false });
+        queueMicrotask(resolvePendingTakes);
+      }
       break;
+    }
     case 'custom':
       if (e.name === SWITCH_EVENT) pendingSwitch = String(e.args.id);
       if (e.name === 'anar') pendingGoTo = String(e.args.room);
@@ -613,7 +704,11 @@ export function applyStageNow(cue: StageCue) {
     const room = world.currentRoom();
     if (!room) return;
     const prop = new PropHandle(toBenne('rooms', room), cue.prop);
-    if (cue.visible !== undefined) prop.visible = cue.visible;
+    if (cue.visible === true && cue.fade) {
+      prop.alpha = 0;
+      prop.visible = true;
+      prop.fade.now(1, cue.fade);
+    } else if (cue.visible !== undefined) prop.visible = cue.visible;
     if (typeof cue.anim === 'string' && prop.animation !== cue.anim) prop.animation = cue.anim;
     return;
   }
