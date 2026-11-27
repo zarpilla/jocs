@@ -874,7 +874,10 @@ def _rect_mon(*Ps):
 
 # El terra on es camina (al món): el camí i la riba, des de la vora de l'aigua fins als horts; a la dreta, la riba
 # que gira cap al rec (fins on hi ha l'Ermessenda) i el peu del salze.
-WALK_MON = [(-260, 66), (-260, 160), (-60, VORA_Z - 12), (BADIA[0] - 6, VORA_Z - 12), (470, 214), (500, 238),
+# La vora del riu és un marge de fang i pedra (de VORA_Z fins a RIBA_Z): no s'hi camina, que de lluny sembla que qui hi
+# és trepitgi l'aigua. Les coses del riu es miren des de dalt del marge, a l'herba.
+RIBA_Z = VORA_Z - 54
+WALK_MON = [(-260, 66), (-260, 160), (-60, RIBA_Z), (BADIA[0] - 6, RIBA_Z), (470, 214), (500, 238),
             (548, 228), (536, 190), (590, 130), (560, 70), (420, 54), (330, 44), (160, 66)]
 
 
@@ -911,24 +914,24 @@ _COMP = resc_pt(T_COMP, RESC_G / 2)
 GEOMETRIA = {
     'things': {
         'pont': {'rect': (60, 0, 600, 92), 'walk': _p(250, 150)},
-        'riu': {'rect': _rect_mon((-100, Y_AVALL, 900), (420, Y_AVALL, VORA_Z + 4)), 'walk': _p(60, VORA_Z - 16)},
+        'riu': {'rect': _rect_mon((-100, Y_AVALL, 900), (420, Y_AVALL, VORA_Z + 4)), 'walk': _p(60, RIBA_Z - 2)},
         'resclosa': {'rect': _rect_mon(_y(resc_pt(0.2), Y_CRESTA + 4), _y(resc_pt(0.38, RESC_G), Y_CRESTA - 30),
                                        _y(resc_pt(0.62), Y_CRESTA + 4), _y(resc_pt(0.95, RESC_G), Y_CRESTA - 30)),
-                     'walk': _p(260, VORA_Z - 14)},
+                     'walk': _p(260, RIBA_Z - 2)},
         'sobreeixidor': {'rect': _rect_mon(_y(resc_pt(T_SOBRE - 0.04), Y_CRESTA + 10),
                                            _y(resc_pt(T_SOBRE + 0.04, RESC_G), Y_CRESTA - 30)),
-                         'walk': _p(_SOBRE[0] - 10, VORA_Z - 12)},
+                         'walk': _p(_SOBRE[0] - 10, RIBA_Z - 2)},
         'comporta': {'rect': _rect_mon(_y(_add(_COMP, RU, -24), 60), _y(_add(_COMP, RU, 40), Y_CRESTA - 30)),
-                     'walk': _p(_COMP[0] - 40, VORA_Z - 12)},
+                     'walk': _p(_COMP[0] - 40, RIBA_Z - 2)},
         'barca': {'rect': _rect_mon((BARCA[0] - 70, 12, BARCA[1] - 20), (BARCA[0] + 70, Y_AVALL - 8, BARCA[1] + 20)),
-                  'walk': _p(BARCA[0] + 10, VORA_Z - 14)},
+                  'walk': _p(BARCA[0] + 30, RIBA_Z - 2)},
         'rec': {'rect': _rect_mon((REC[1][0] - 20, 10, REC[1][2] - 20), (REC[3][0] + 20, -4, REC[3][2] + 20),
                                   (REC[0][0], 10, REC[0][2])),
-                'walk': _p(506, 228)},
+                'walk': _p(442, 156)},                 # a l'esquerra de l'Ermessenda, no a sobre
         'horts': {'rect': _rect_mon((-420, 0, 64), (330, 0, -120)), 'walk': _p(40, 70)},
         'salze': {'rect': (_p(*SALZE_P)[0] - 30, 0, W - 1, _p(*SALZE_P)[1]), 'walk': _p(560, 90)},
         'moli_lluny': {'rect': _rect_mon((MOLI[0], 150, MOLI[1]), (MOLI[0] + 140, 0, MOLI[1])),
-                       'walk': _p(520, 230)},
+                       'walk': _p(442, 156)},
         'cami': {'rect': (0, _p(-200, 150)[1] - 10, 30, BOTTOM - 12), 'walk': (3, _p(-170, 100)[1])},
     },
     # l'Iri arriba pel camí (de l'esquerra); en Joanet, a la vora, al costat de la barca; l'Ermessenda, a la vora del
