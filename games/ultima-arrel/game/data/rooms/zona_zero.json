@@ -235,7 +235,46 @@
             {
               "who": "narrator",
               "text": "sala.zona_zero.crit.3",
-              "sound": "crit"
+              "sound": "crit",
+              "stage": [
+                {
+                  "shake": 0.8
+                },
+                {
+                  "prop": "pantalla_crit",
+                  "visible": true
+                },
+                {
+                  "who": "pla",
+                  "face": "R"
+                },
+                {
+                  "who": "txell",
+                  "face": "L"
+                },
+                {
+                  "who": "vet",
+                  "face": "R"
+                },
+                {
+                  "who": "avia",
+                  "face": "R"
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.crit.gent",
+              "stage": [
+                {
+                  "who": "txell",
+                  "walk": {
+                    "x": 560,
+                    "y": 240
+                  },
+                  "wait": false
+                }
+              ]
             },
             {
               "who": "narrator",
@@ -774,6 +813,11 @@
         "var": "discurs",
         "op": ">=",
         "value": 2
+      }
+    },
+    "pantalla_crit": {
+      "visibleIf": {
+        "flag": "presentacio_feta"
       }
     }
   }

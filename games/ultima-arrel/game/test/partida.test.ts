@@ -40,14 +40,14 @@ describe("L'Última Arrel: la partida", () => {
   it("a la caseta, la Vet no fa sortir la Pla fins que n'ha rebut el kit (el necessita a la 6a)", () => {
     const { n, p } = partida({ checkHints: true });
     acte1(p, n);
-    p.talk('urtica', 'naturaplus', 'adeu'); p.do('give', 'urtica', 'pot_melmelada'); p.do('use', 'gronxador');
+    p.talk('urtica', 'naturaplus', 'adeu'); p.do('give', 'urtica', 'pot_melmelada'); p.do('use', 'gronxador'); p.use('pot_buit', 'flor');
     p.talk('bufo', 'paper', 'adeu'); p.use('estaca', 'tap_plastics'); p.do('use', 'comporta'); p.talk('gripau', 'ajuda'); p.talk('bufo');
     expect(p.room).toBe('caseta_obra');
     p.do('pull', 'arbre_wifi');
     expect(n.flag('pla_fora')).toBe(false);
     p.talk('pla', 'adeu');
     p.do('pull', 'arbre_wifi');
-    p.use('walkie', 'altaveu');
+    p.use('walkie', 'altaveu'); p.do('use', 'altaveu');
     expect(p.room).toBe('zona_mati');
     p.do('talkTo', 'urtica');
     p.do('open', item('kit'));

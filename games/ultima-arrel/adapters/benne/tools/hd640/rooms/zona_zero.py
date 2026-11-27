@@ -563,7 +563,29 @@ def _frames_fades_vol():
     return out
 
 
-PROPS = {'sensors_vermells': sensors_vermells, 'fades_sensors': fades_sensors}
+def pantalla_crit(cv):
+    """La pantalla gegant quan sona el crit dels arbres (tasca 050): la imatge salta, «EN DIRECTE» en vermell i l'ona
+    del crit, ampla i lenta, de punta a punta. Tapa el «BOSC 2.0»."""
+    x0, x1, y0, y1 = 384, 560, 24, 112
+    for y in range(y0, y1 + 1):
+        for x in range(x0, x1 + 1):
+            lvl = 1.0 + (0.5 if (y // 2) % 2 else 0)                       # les ratlles d'una imatge que salta
+            if x % 3 == 0 or y % 3 == 0:
+                lvl -= 0.5
+            cv.put(x, y, [(6, 8, 10), (14, 18, 22), (26, 32, 36), (40, 48, 52)], lvl, lit=0)
+    lletres(cv, 'EN DIRECTE', x0 + 8, y0 + 6, (240, 70, 60))
+    cv.disc(x0 + 4, y0 + 9, 1.6, 1.6, REDL, 4.0, lit=0)
+    mid = (y0 + y1) // 2 + 6
+    for x in range(x0 + 6, x1 - 5):
+        u = (x - x0) / (x1 - x0)
+        a = 26 * math.sin(math.pi * u) * (0.55 + 0.45 * math.sin(u * 37))
+        yy = mid + a * math.sin(u * 23)
+        for k in range(-1, 2):
+            cv.flat(x, round(yy) + k, (200, 255, 170) if k == 0 else (90, 170, 90))
+    cv.glow((x0 + x1) // 2, mid, 80, (150, 255, 120), 0.2)
+
+
+PROPS = {'sensors_vermells': sensors_vermells, 'fades_sensors': fades_sensors, 'pantalla_crit': pantalla_crit}
 
 
 # ─── Animacions ──────────────────────────────────────────────────────────────

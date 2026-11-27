@@ -467,6 +467,17 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "pantalla_crit",
+      "tag": "pantalla_crit",
+      "animations": {
+        "pantalla_crit": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

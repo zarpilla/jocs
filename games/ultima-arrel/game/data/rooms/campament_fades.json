@@ -358,72 +358,13 @@
         {
           "verb": "use",
           "item": "pot_buit",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.campament_fades.flor.pot"
-            }
-          ]
-        }
-      ]
-    },
-    "branca": {
-      "name": "sala.campament_fades.branca.nom",
-      "interactions": [
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.campament_fades.branca.mira"
-            }
-          ]
-        },
-        {
-          "verb": [
-            "walkTo",
-            "use",
-            "push"
-          ],
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.campament_fades.branca.camina"
-            },
-            {
-              "who": "iri",
-              "text": "sala.campament_fades.branca.iri",
-              "sound": "walkie"
-            },
-            {
-              "who": "player",
-              "text": "sala.campament_fades.branca.vet"
-            },
-            {
-              "who": "iri",
-              "text": "sala.campament_fades.branca.iri2"
-            }
-          ]
-        }
-      ]
-    },
-    "gronxador": {
-      "name": "sala.campament_fades.gronxador.nom",
-      "interactions": [
-        {
-          "verb": [
-            "use",
-            "walkTo",
-            "push",
-            "pull"
-          ],
           "if": {
             "flag": "fades_amigues"
           },
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.campament_fades.empenta.1",
+              "text": "sala.campament_fades.empenta.amb_pot",
               "sound": "gronxador",
               "stage": [
                 {
@@ -445,16 +386,12 @@
               ]
             },
             {
-              "who": "player",
-              "text": "sala.campament_fades.empenta.2"
-            },
-            {
               "who": "narrator",
               "text": "sala.campament_fades.empenta.3"
             },
             {
               "who": "player",
-              "text": "sala.campament_fades.empenta.4"
+              "text": "sala.campament_fades.empenta.ara"
             },
             {
               "who": "narrator",
@@ -534,6 +471,326 @@
               "args": {
                 "id": "iri"
               }
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "pot_buit",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.flor.pot"
+            }
+          ]
+        }
+      ]
+    },
+    "branca": {
+      "name": "sala.campament_fades.branca.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.branca.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.branca.camina"
+            },
+            {
+              "who": "iri",
+              "text": "sala.campament_fades.branca.iri",
+              "sound": "walkie"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.branca.vet"
+            },
+            {
+              "who": "iri",
+              "text": "sala.campament_fades.branca.iri2"
+            }
+          ]
+        }
+      ]
+    },
+    "gronxador": {
+      "name": "sala.campament_fades.gronxador.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "pot_buit",
+          "if": {
+            "flag": "fades_amigues"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.amb_pot",
+              "sound": "gronxador",
+              "stage": [
+                {
+                  "prop": "flor_buida",
+                  "visible": false
+                },
+                {
+                  "who": "player",
+                  "at": {
+                    "x": 478,
+                    "y": 172
+                  },
+                  "visible": false
+                },
+                {
+                  "prop": "gronxant",
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.empenta.ara"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.5",
+              "stage": [
+                {
+                  "prop": "flor_buida",
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "who": "pica",
+              "text": "sala.campament_fades.empenta.6",
+              "sound": "esternut_fada"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.7",
+              "stage": [
+                {
+                  "prop": "gronxant",
+                  "visible": false
+                },
+                {
+                  "who": "player",
+                  "at": {
+                    "x": 448,
+                    "y": 204
+                  },
+                  "visible": true,
+                  "face": "R"
+                }
+              ]
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.empenta.8"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.9"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.empenta.10"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.empenta.11"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.empenta.12",
+              "sound": "walkie"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "pot_buit"
+            },
+            {
+              "giveItem": "xiulet"
+            },
+            {
+              "setFlag": "pol_len_collit"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "toll_gripaus"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "iri"
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "fades_amigues"
+              },
+              {
+                "flag": "flor_provada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.1",
+              "sound": "gronxador",
+              "stage": [
+                {
+                  "prop": "flor_buida",
+                  "visible": false
+                },
+                {
+                  "who": "player",
+                  "at": {
+                    "x": 478,
+                    "y": 172
+                  },
+                  "visible": false
+                },
+                {
+                  "prop": "gronxant",
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.empenta.altre"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.baixa",
+              "stage": [
+                {
+                  "prop": "gronxant",
+                  "visible": false
+                },
+                {
+                  "who": "player",
+                  "at": {
+                    "x": 448,
+                    "y": 204
+                  },
+                  "visible": true,
+                  "face": "R"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.empenta.pot"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "fades_amigues"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.1",
+              "sound": "gronxador",
+              "stage": [
+                {
+                  "prop": "flor_buida",
+                  "visible": false
+                },
+                {
+                  "who": "player",
+                  "at": {
+                    "x": 478,
+                    "y": 172
+                  },
+                  "visible": false
+                },
+                {
+                  "prop": "gronxant",
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.empenta.2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.empenta.4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.baixa",
+              "stage": [
+                {
+                  "prop": "gronxant",
+                  "visible": false
+                },
+                {
+                  "who": "player",
+                  "at": {
+                    "x": 448,
+                    "y": 204
+                  },
+                  "visible": true,
+                  "face": "R"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.empenta.cal"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "flor_provada"
             }
           ]
         },

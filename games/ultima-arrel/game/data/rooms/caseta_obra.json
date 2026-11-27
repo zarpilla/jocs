@@ -197,6 +197,52 @@
           "item": "walkie",
           "lines": [
             {
+              "who": "player",
+              "text": "sala.caseta_obra.altaveu.walkie"
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.altaveu.walkie2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "walkie_mirat_canal"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "pla_fora",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "pla",
+              "text": "sala.caseta_obra.altaveu.no"
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.altaveu.no.b"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "walkie_mirat_canal"
+          },
+          "lines": [
+            {
               "who": "narrator",
               "text": "sala.caseta_obra.canal7.1",
               "sound": "ruleta"
@@ -242,37 +288,9 @@
             "pull"
           ],
           "if": {
-            "flag": "pla_fora",
-            "is": false
-          },
-          "lines": [
-            {
-              "who": "pla",
-              "text": "sala.caseta_obra.altaveu.no"
-            },
-            {
-              "who": "player",
-              "text": "sala.caseta_obra.altaveu.no.b"
-            }
-          ]
-        },
-        {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
-          "if": {
-            "any": [
-              {
-                "var": "canals_provats",
-                "op": ">=",
-                "value": 2
-              },
-              {
-                "flag": "walkie_mirat_canal"
-              }
-            ]
+            "var": "canals_provats",
+            "op": ">=",
+            "value": 2
           },
           "lines": [
             {

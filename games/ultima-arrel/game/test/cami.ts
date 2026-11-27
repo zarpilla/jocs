@@ -40,6 +40,8 @@ export function acte2(p: Jugador, n: Narrative) {
   p.do('give', 'urtica', 'pot_melmelada');
   expect(n.flag('fades_amigues')).toBe(true);
   p.do('use', 'gronxador');
+  expect(n.flag('pol_len_collit')).toBe(false);
+  p.use('pot_buit', 'flor');
   expect(n.flag('pol_len_collit')).toBe(true);
   expect(p.active).toBe('iri');
   expect(p.inventory('vet')).toContain('xiulet');
@@ -60,6 +62,8 @@ export function acte2(p: Jugador, n: Narrative) {
   p.do('pull', 'arbre_wifi');
   expect(n.flag('pla_fora')).toBe(true);
   p.use('walkie', 'altaveu');
+  expect(n.flag('altaveu_canal7')).toBe(false);
+  p.do('use', 'altaveu');
   expect(n.flag('altaveu_canal7')).toBe(true);
   expect(p.active).toBe('vet');
 }

@@ -615,6 +615,39 @@
         "verb": "talkTo",
         "dialogue": "pla"
       }
+    ],
+    "patrol": [
+      {
+        "if": {
+          "var": "discurs",
+          "op": "==",
+          "value": 3
+        },
+        "room": "zona_zero",
+        "path": [
+          {
+            "x": 424,
+            "y": 187,
+            "face": "D"
+          },
+          {
+            "x": 424,
+            "y": 187,
+            "face": "L"
+          },
+          {
+            "x": 424,
+            "y": 187,
+            "face": "D"
+          },
+          {
+            "x": 424,
+            "y": 187,
+            "face": "R"
+          }
+        ],
+        "pause": 1.8
+      }
     ]
   },
   "txell": {
