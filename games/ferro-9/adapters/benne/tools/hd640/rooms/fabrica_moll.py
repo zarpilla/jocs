@@ -754,10 +754,12 @@ def _cercle(x, z, rx, rz, n=10):
 
 
 def _forat_cavallets():
+    """Els cavallets i tot el que tenen al darrere fins a la paret: amb la càmera tan picada, qui s'hi posa darrere
+    queda amb els peus amagats sota la biga i sembla enfilat al banc (tasca 260). S'hi passa per davant o pel costat."""
     cx, cz, ang = CAV
     P = _rot(cx, cz, ang)
-    return [_p(*P(lx, 0, lz)[::2]) for lx, lz in ((-CAV_L / 2 - 20, -10), (CAV_L / 2 + 20, -10), (CAV_L / 2 + 20, 10),
-                                                  (-CAV_L / 2 - 20, 10))]
+    return [_p(*P(lx, 0, lz)[::2]) for lx, lz in ((-CAV_L / 2 - 20, -10), (CAV_L / 2 + 20, -10), (CAV_L / 2 + 20, 150),
+                                                  (-CAV_L / 2 - 16, 150))]
 
 
 def _escala_a(v):
@@ -791,9 +793,10 @@ def _things():
     return {
         # el tauler d'eines sencer, el primer: les eines (capes, zIndex més alt) hi queden al damunt (tasca 132)
         'tauler': {'rect': _caixa_mon(_w(365), _w(443), _y(156), _y(57), ZW, ZW), 'walk': _p(_w(405), 270)},
-        'porta_calderes': {'rect': _caixa_mon(0, 2, 0, DOOR[3] + 8, DOOR[0] - 6, DOOR[1] + 6), 'walk': _p(30, 246)},
+        'porta_calderes': {'rect': _caixa_mon(0, 2, 0, DOOR[3] + 8, DOOR[0] - 6, DOOR[1] + 6), 'walk': _p(22, 236)},
         'biga_acer': {'rect': biga, 'walk': _p(*P(10, 0, -46)[::2])},
-        'biga_ferro9': {'rect': _caixa_mon(_w(105), _w(282), _y(116), _y(94), ZW, ZW), 'walk': _p(_w(193), 262)},
+        # (tasca 260) es mira i s'agafa des de davant del banc: darrere seu no s'hi pot estar
+        'biga_ferro9': {'rect': _caixa_mon(_w(105), _w(282), _y(116), _y(94), ZW, ZW), 'walk': _p(*P(-30, 0, -40)[::2])},
         # (tasca 132) zones més generoses que el dibuix: la serra amb el mànec, i la llima amb el seu tros de tauler
         'serra': {'rect': _caixa_mon(_w(384), _w(443), _y(96), _y(68), ZW, ZW), 'walk': _p(_w(410), 268)},
         'llima': {'rect': _caixa_mon(_w(417), _w(437), _y(150), _y(97), ZW, ZW), 'walk': _p(_w(426), 270)},
