@@ -197,12 +197,25 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.pont_ter.12"
+              "text": "sala.pont_ter.12",
+              "stage": [
+                {
+                  "prop": "aigua_baixa",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
               "text": "sala.pont_ter.13",
-              "sound": "post"
+              "sound": "post",
+              "stage": [
+                {
+                  "prop": "aigua_baixa",
+                  "visible": true,
+                  "fade": 2
+                }
+              ]
             },
             {
               "who": "player",
