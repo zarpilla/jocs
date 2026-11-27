@@ -388,6 +388,9 @@ function roomArtScale(room: { artScale?: number }): number {
   return typeof k === 'number' && Number.isFinite(k) && k > 0 ? k : 1;
 }
 
+/** How long after the dialog choices appear a click on them is ignored (own change). */
+const DIALOG_CHOICE_CLICK_PROTECT_MS = 400;
+
 export class RoomScene extends Phaser.Scene {
   private roomData!: RoomData;
 
@@ -742,6 +745,8 @@ export class RoomScene extends Phaser.Scene {
   private scriptedDialogClickToSkipArmedDuringDown: number | null = null;
   /** Shown GUIs with `pauseGame`: while any is, the room's timers and tweens are paused. */
   private readonly pausingGuiIds = new Set<string>();
+  /** `performance.now()` when the dialog choices were last shown (see {@link isDialogChoiceClickTooEarly}). */
+  private dialogChoicesShownAt = 0;
   /** `time.now` when the click-to-skip hook was armed: clicks before `speech.clickProtectMs` are swallowed. */
   private scriptedDialogClickToSkipArmedAt = 0;
 
@@ -1396,7 +1401,16 @@ export class RoomScene extends Phaser.Scene {
     }
     this.snapshotAndHideGenericGuisForDialog();
     entry.built.handle.setVisible(true);
+    this.dialogChoicesShownAt = performance.now();
     this.refreshDialogChoiceOverlay();
+  }
+
+  /**
+   * True for a moment after the choices appear: a click meant to skip the last line must not pick the option
+   * that has just appeared under the pointer. (Own change.)
+   */
+  isDialogChoiceClickTooEarly(): boolean {
+    return performance.now() - this.dialogChoicesShownAt < DIALOG_CHOICE_CLICK_PROTECT_MS;
   }
 
   /**
@@ -1703,6 +1717,7 @@ export class RoomScene extends Phaser.Scene {
       return;
     }
     entry.built.handle.setVisible(true);
+    this.dialogChoicesShownAt = performance.now();
     this.refreshDialogChoiceOverlay();
   }
 
@@ -6795,7 +6810,10 @@ export class RoomScene extends Phaser.Scene {
     const idleKey = cursorPhaserAnimationKey(idleAuthor);
     const activeKey = cursorPhaserAnimationKey(activeAuthor);
 
-    const created = this.anims.createFromAseprite(CURSOR_TEXTURE_KEY);
+    // The animation manager is global: the cursor's clips survive room changes. (Own change: re-creating them on
+    // every room warned «AnimationManager key already exists».)
+    const created =
+      this.anims.exists(idleKey) && this.anims.exists(activeKey) ? [] : this.anims.createFromAseprite(CURSOR_TEXTURE_KEY);
     const remappedCursorAnimations: CharacterAnimationsConfig | undefined = cfg.animations
       ? Object.fromEntries(
           Object.entries(cfg.animations).map(([k, v]) => [cursorPhaserAnimationKey(k), v]),

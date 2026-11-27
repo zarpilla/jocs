@@ -267,6 +267,8 @@ function attach(dialogId: string, guiId: string): void {
   for (const reg of regs) {
     const eventId = guiButtonClickEventId(guiId, dialogChoiceSyntheticButtonId(reg.optionId));
     const listener = () => {
+      // Own change: a click that was meant to skip the last line does not pick an option that has just appeared.
+      if (liveRoomScene()?.isDialogChoiceClickTooEarly()) return;
       void runChoice(dialogId, guiId, reg);
     };
     gameEvents.on(eventId, listener);
