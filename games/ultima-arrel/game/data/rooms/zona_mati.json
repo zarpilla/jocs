@@ -64,7 +64,13 @@
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.zona_mati.urtica.1"
+              "text": "sala.zona_mati.urtica.1",
+              "stage": [
+                {
+                  "who": "urtica",
+                  "walk": "vet"
+                }
+              ]
             },
             {
               "who": "urtica",

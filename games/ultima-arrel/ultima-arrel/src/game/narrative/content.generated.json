@@ -2602,7 +2602,13 @@
                   {
                     "who": "narrator",
                     "text": "sala.caseta_obra.wifi.1",
-                    "sound": "pip"
+                    "sound": "pip",
+                    "stage": [
+                      {
+                        "prop": "llumetes",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "pla",
@@ -4792,6 +4798,11 @@
               "flag": "aigua_tornada"
             },
             "sota": true
+          },
+          "roda": {
+            "visibleIf": {
+              "flag": "aigua_tornada"
+            }
           }
         }
       },
@@ -5764,7 +5775,13 @@
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.zona_mati.urtica.1"
+                    "text": "sala.zona_mati.urtica.1",
+                    "stage": [
+                      {
+                        "who": "urtica",
+                        "walk": "vet"
+                      }
+                    ]
                   },
                   {
                     "who": "urtica",
@@ -6504,7 +6521,13 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.zona_zero.crit.4"
+                    "text": "sala.zona_zero.crit.4",
+                    "stage": [
+                      {
+                        "prop": "formigonera",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "txell",
@@ -6524,7 +6547,23 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.zona_zero.crit.9"
+                    "text": "sala.zona_zero.crit.9",
+                    "stage": [
+                      {
+                        "who": "pla",
+                        "walk": {
+                          "x": 639,
+                          "y": 238
+                        },
+                        "wait": false
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "pla",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "vet",
@@ -6665,7 +6704,13 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.zona_zero.bufo.5"
+                    "text": "sala.zona_zero.bufo.5",
+                    "stage": [
+                      {
+                        "who": "bufo",
+                        "face": "R"
+                      }
+                    ]
                   },
                   {
                     "who": "txell",
@@ -8423,28 +8468,41 @@
                   {
                     "who": "gripau",
                     "walk": {
-                      "x": 584,
-                      "y": 217
+                      "x": 624,
+                      "y": 221
                     },
                     "wait": false
                   },
                   {
                     "who": "player",
                     "walk": {
-                      "x": 608,
+                      "x": 588,
                       "y": 230
                     }
                   },
                   {
                     "who": "gripau",
-                    "face": "R"
+                    "walk": {
+                      "x": 624,
+                      "y": 221
+                    }
+                  },
+                  {
+                    "who": "gripau",
+                    "face": "L"
                   },
                   {
                     "who": "player",
-                    "face": "U"
+                    "face": "R"
                   },
                   {
                     "shake": 0.4
+                  },
+                  {
+                    "prop": "roda",
+                    "visible": true,
+                    "anim": "roda_gira",
+                    "hold": 2.3
                   }
                 ]
               },

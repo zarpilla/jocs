@@ -65,6 +65,27 @@
     },
     "toll_gripaus 3.aseprite": {
       "frame": {
+        "x": 3167,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 4.aseprite": {
+      "frame": {
         "x": 2623,
         "y": 360,
         "w": 141,
@@ -84,7 +105,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 4.aseprite": {
+    "toll_gripaus 5.aseprite": {
       "frame": {
         "x": 2291,
         "y": 360,
@@ -105,7 +126,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 5.aseprite": {
+    "toll_gripaus 6.aseprite": {
       "frame": {
         "x": 2431,
         "y": 360,
@@ -126,7 +147,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 6.aseprite": {
+    "toll_gripaus 7.aseprite": {
       "frame": {
         "x": 1954,
         "y": 360,
@@ -147,7 +168,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 7.aseprite": {
+    "toll_gripaus 8.aseprite": {
       "frame": {
         "x": 920,
         "y": 360,
@@ -168,7 +189,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 8.aseprite": {
+    "toll_gripaus 9.aseprite": {
       "frame": {
         "x": 666,
         "y": 360,
@@ -189,7 +210,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 9.aseprite": {
+    "toll_gripaus 10.aseprite": {
       "frame": {
         "x": 1310,
         "y": 360,
@@ -210,7 +231,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 10.aseprite": {
+    "toll_gripaus 11.aseprite": {
       "frame": {
         "x": 2816,
         "y": 0,
@@ -231,7 +252,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 11.aseprite": {
+    "toll_gripaus 12.aseprite": {
       "frame": {
         "x": 2116,
         "y": 0,
@@ -252,7 +273,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 12.aseprite": {
+    "toll_gripaus 13.aseprite": {
       "frame": {
         "x": 200,
         "y": 360,
@@ -273,7 +294,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 13.aseprite": {
+    "toll_gripaus 14.aseprite": {
       "frame": {
         "x": 294,
         "y": 360,
@@ -294,7 +315,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 14.aseprite": {
+    "toll_gripaus 15.aseprite": {
       "frame": {
         "x": 122,
         "y": 360,
@@ -315,7 +336,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 15.aseprite": {
+    "toll_gripaus 16.aseprite": {
       "frame": {
         "x": 1516,
         "y": 360,
@@ -336,7 +357,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 16.aseprite": {
+    "toll_gripaus 17.aseprite": {
       "frame": {
         "x": 1663,
         "y": 360,
@@ -357,7 +378,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 17.aseprite": {
+    "toll_gripaus 18.aseprite": {
       "frame": {
         "x": 1724,
         "y": 360,
@@ -378,7 +399,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 18.aseprite": {
+    "toll_gripaus 19.aseprite": {
       "frame": {
         "x": 2569,
         "y": 360,
@@ -399,9 +420,9 @@
       },
       "duration": 100
     },
-    "toll_gripaus 19.aseprite": {
+    "toll_gripaus 20.aseprite": {
       "frame": {
-        "x": 2764,
+        "x": 2806,
         "y": 360,
         "w": 53,
         "h": 7
@@ -420,9 +441,9 @@
       },
       "duration": 100
     },
-    "toll_gripaus 20.aseprite": {
+    "toll_gripaus 21.aseprite": {
       "frame": {
-        "x": 2957,
+        "x": 3019,
         "y": 360,
         "w": 54,
         "h": 6
@@ -441,7 +462,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 21.aseprite": {
+    "toll_gripaus 22.aseprite": {
       "frame": {
         "x": 2225,
         "y": 360,
@@ -462,7 +483,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 22.aseprite": {
+    "toll_gripaus 23.aseprite": {
       "frame": {
         "x": 1584,
         "y": 360,
@@ -483,7 +504,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 23.aseprite": {
+    "toll_gripaus 24.aseprite": {
       "frame": {
         "x": 1424,
         "y": 360,
@@ -504,7 +525,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 24.aseprite": {
+    "toll_gripaus 25.aseprite": {
       "frame": {
         "x": 1781,
         "y": 360,
@@ -525,7 +546,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 25.aseprite": {
+    "toll_gripaus 26.aseprite": {
       "frame": {
         "x": 381,
         "y": 360,
@@ -546,7 +567,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 26.aseprite": {
+    "toll_gripaus 27.aseprite": {
       "frame": {
         "x": 0,
         "y": 360,
@@ -567,7 +588,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 27.aseprite": {
+    "toll_gripaus 28.aseprite": {
       "frame": {
         "x": 495,
         "y": 360,
@@ -588,7 +609,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 28.aseprite": {
+    "toll_gripaus 29.aseprite": {
       "frame": {
         "x": 3156,
         "y": 0,
@@ -609,7 +630,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 29.aseprite": {
+    "toll_gripaus 30.aseprite": {
       "frame": {
         "x": 2215,
         "y": 0,
@@ -630,7 +651,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 30.aseprite": {
+    "toll_gripaus 31.aseprite": {
       "frame": {
         "x": 788,
         "y": 360,
@@ -651,7 +672,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 31.aseprite": {
+    "toll_gripaus 32.aseprite": {
       "frame": {
         "x": 1048,
         "y": 360,
@@ -672,7 +693,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 32.aseprite": {
+    "toll_gripaus 33.aseprite": {
       "frame": {
         "x": 1177,
         "y": 360,
@@ -693,7 +714,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 33.aseprite": {
+    "toll_gripaus 34.aseprite": {
       "frame": {
         "x": 2088,
         "y": 360,
@@ -714,9 +735,9 @@
       },
       "duration": 100
     },
-    "toll_gripaus 34.aseprite": {
+    "toll_gripaus 35.aseprite": {
       "frame": {
-        "x": 2817,
+        "x": 2859,
         "y": 360,
         "w": 140,
         "h": 7
@@ -735,7 +756,532 @@
       },
       "duration": 100
     },
-    "toll_gripaus 35.aseprite": {
+    "toll_gripaus 36.aseprite": {
+      "frame": {
+        "x": 3167,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 37.aseprite": {
+      "frame": {
+        "x": 3073,
+        "y": 360,
+        "w": 16,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 599,
+        "y": 162,
+        "w": 16,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 38.aseprite": {
+      "frame": {
+        "x": 3140,
+        "y": 360,
+        "w": 10,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 605,
+        "y": 163,
+        "w": 10,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 39.aseprite": {
+      "frame": {
+        "x": 3089,
+        "y": 360,
+        "w": 16,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 599,
+        "y": 162,
+        "w": 16,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 40.aseprite": {
+      "frame": {
+        "x": 3150,
+        "y": 360,
+        "w": 17,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 598,
+        "y": 163,
+        "w": 17,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 41.aseprite": {
+      "frame": {
+        "x": 3105,
+        "y": 360,
+        "w": 18,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 597,
+        "y": 162,
+        "w": 18,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 42.aseprite": {
+      "frame": {
+        "x": 2999,
+        "y": 360,
+        "w": 17,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 598,
+        "y": 160,
+        "w": 17,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 43.aseprite": {
+      "frame": {
+        "x": 2764,
+        "y": 360,
+        "w": 16,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 599,
+        "y": 159,
+        "w": 16,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 44.aseprite": {
+      "frame": {
+        "x": 2796,
+        "y": 360,
+        "w": 10,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 605,
+        "y": 159,
+        "w": 10,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 45.aseprite": {
+      "frame": {
+        "x": 2780,
+        "y": 360,
+        "w": 16,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 599,
+        "y": 159,
+        "w": 16,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 46.aseprite": {
+      "frame": {
+        "x": 3016,
+        "y": 360,
+        "w": 3,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 612,
+        "y": 160,
+        "w": 3,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 47.aseprite": {
+      "frame": {
+        "x": 3123,
+        "y": 360,
+        "w": 17,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 599,
+        "y": 162,
+        "w": 17,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 48.aseprite": {
+      "frame": {
+        "x": 3167,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 49.aseprite": {
+      "frame": {
+        "x": 3073,
+        "y": 360,
+        "w": 16,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 599,
+        "y": 162,
+        "w": 16,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 50.aseprite": {
+      "frame": {
+        "x": 3140,
+        "y": 360,
+        "w": 10,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 605,
+        "y": 163,
+        "w": 10,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 51.aseprite": {
+      "frame": {
+        "x": 3089,
+        "y": 360,
+        "w": 16,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 599,
+        "y": 162,
+        "w": 16,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 52.aseprite": {
+      "frame": {
+        "x": 3150,
+        "y": 360,
+        "w": 17,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 598,
+        "y": 163,
+        "w": 17,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 53.aseprite": {
+      "frame": {
+        "x": 3105,
+        "y": 360,
+        "w": 18,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 597,
+        "y": 162,
+        "w": 18,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 54.aseprite": {
+      "frame": {
+        "x": 2999,
+        "y": 360,
+        "w": 17,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 598,
+        "y": 160,
+        "w": 17,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 55.aseprite": {
+      "frame": {
+        "x": 2764,
+        "y": 360,
+        "w": 16,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 599,
+        "y": 159,
+        "w": 16,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 56.aseprite": {
+      "frame": {
+        "x": 2796,
+        "y": 360,
+        "w": 10,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 605,
+        "y": 159,
+        "w": 10,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 57.aseprite": {
+      "frame": {
+        "x": 2780,
+        "y": 360,
+        "w": 16,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 599,
+        "y": 159,
+        "w": 16,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 58.aseprite": {
+      "frame": {
+        "x": 3016,
+        "y": 360,
+        "w": 3,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 612,
+        "y": 160,
+        "w": 3,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 59.aseprite": {
+      "frame": {
+        "x": 3123,
+        "y": 360,
+        "w": 17,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 599,
+        "y": 162,
+        "w": 17,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 60.aseprite": {
+      "frame": {
+        "x": 3167,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 61.aseprite": {
       "frame": {
         "x": 3288,
         "y": 0,
@@ -756,7 +1302,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 36.aseprite": {
+    "toll_gripaus 62.aseprite": {
       "frame": {
         "x": 2348,
         "y": 0,
@@ -777,7 +1323,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 37.aseprite": {
+    "toll_gripaus 63.aseprite": {
       "frame": {
         "x": 3522,
         "y": 0,
@@ -798,7 +1344,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 38.aseprite": {
+    "toll_gripaus 64.aseprite": {
       "frame": {
         "x": 1648,
         "y": 0,
@@ -819,7 +1365,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 39.aseprite": {
+    "toll_gripaus 65.aseprite": {
       "frame": {
         "x": 1882,
         "y": 0,
@@ -840,7 +1386,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 40.aseprite": {
+    "toll_gripaus 66.aseprite": {
       "frame": {
         "x": 3756,
         "y": 0,
@@ -861,7 +1407,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 41.aseprite": {
+    "toll_gripaus 67.aseprite": {
       "frame": {
         "x": 2922,
         "y": 0,
@@ -882,7 +1428,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 42.aseprite": {
+    "toll_gripaus 68.aseprite": {
       "frame": {
         "x": 2582,
         "y": 0,
@@ -903,7 +1449,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 43.aseprite": {
+    "toll_gripaus 69.aseprite": {
       "frame": {
         "x": 1885,
         "y": 360,
@@ -924,7 +1470,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 44.aseprite": {
+    "toll_gripaus 70.aseprite": {
       "frame": {
         "x": 1924,
         "y": 360,
@@ -945,7 +1491,7 @@
       },
       "duration": 100
     },
-    "toll_gripaus 45.aseprite": {
+    "toll_gripaus 71.aseprite": {
       "frame": {
         "x": 1008,
         "y": 0,
@@ -1000,37 +1546,51 @@
         "color": "#000000ff"
       },
       {
-        "name": "libellules",
+        "name": "roda",
         "from": 3,
-        "to": 34,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "libellules",
+        "from": 4,
+        "to": 35,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "roda_gira",
+        "from": 36,
+        "to": 60,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "calor",
-        "from": 35,
-        "to": 42,
+        "from": 61,
+        "to": 68,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant_joncs",
-        "from": 43,
-        "to": 43,
+        "from": 69,
+        "to": 69,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "aigua__davant_joncs",
-        "from": 44,
-        "to": 44,
+        "from": 70,
+        "to": 70,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant",
-        "from": 45,
-        "to": 45,
+        "from": 71,
+        "to": 71,
         "direction": "forward",
         "color": "#000000ff"
       }

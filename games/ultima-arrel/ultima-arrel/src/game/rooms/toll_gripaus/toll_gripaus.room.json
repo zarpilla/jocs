@@ -499,6 +499,21 @@
       },
       "zIndex": 21,
       "baseline": 218
+    },
+    {
+      "id": "roda",
+      "tag": "roda",
+      "animations": {
+        "roda": {},
+        "roda_gira": {
+          "loop": false,
+          "frameDuration": 90
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

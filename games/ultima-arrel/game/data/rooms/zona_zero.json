@@ -239,7 +239,13 @@
             },
             {
               "who": "narrator",
-              "text": "sala.zona_zero.crit.4"
+              "text": "sala.zona_zero.crit.4",
+              "stage": [
+                {
+                  "prop": "formigonera",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "txell",
@@ -259,7 +265,23 @@
             },
             {
               "who": "narrator",
-              "text": "sala.zona_zero.crit.9"
+              "text": "sala.zona_zero.crit.9",
+              "stage": [
+                {
+                  "who": "pla",
+                  "walk": {
+                    "x": 639,
+                    "y": 238
+                  },
+                  "wait": false
+                }
+              ],
+              "stageAfter": [
+                {
+                  "who": "pla",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "vet",
@@ -400,7 +422,13 @@
             },
             {
               "who": "narrator",
-              "text": "sala.zona_zero.bufo.5"
+              "text": "sala.zona_zero.bufo.5",
+              "stage": [
+                {
+                  "who": "bufo",
+                  "face": "R"
+                }
+              ]
             },
             {
               "who": "txell",

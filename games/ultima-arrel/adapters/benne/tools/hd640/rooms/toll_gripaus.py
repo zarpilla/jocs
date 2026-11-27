@@ -569,8 +569,8 @@ def tub(cv):
     cv.glow(x0 + w // 2, y0 + 8, 30, (220, 255, 230), 0.15)
 
 
-def comporta(cv):
-    """La comporta: una vàlvula de pas al tub, amb la roda vermella."""
+def comporta(cv, gir=0):
+    """La comporta: una vàlvula de pas al tub, amb la roda vermella. `gir`: l'angle dels radis (la roda que gira)."""
     x, y = RODA
     cv.rect(x - 4, y + 2, x + 4, y + 8, STEEL, lambda xx, yy: 4.6 - (xx - x) * 0.2, lit=0.2)   # el cos
     cv.rect(x - 1, y - 3, x + 1, y + 2, STEEL, 5.0, lit=0)                                    # l'eix
@@ -579,9 +579,12 @@ def comporta(cv):
         cv.put(x + math.cos(r) * 8, y - 4 + math.sin(r) * 3, REDL, 3.6 + math.sin(r) * 0.6, lit=0)
         cv.put(x + math.cos(r) * 8, y - 3 + math.sin(r) * 3, REDL, 2.4, lit=0)
     for a in (0, 60, 120):
-        r = math.radians(a)
+        r = math.radians(a + gir)
         cv.line(x - math.cos(r) * 8, y - 4 - math.sin(r) * 3, x + math.cos(r) * 8, y - 4 + math.sin(r) * 3, REDL, 3.2, lit=0)
     cv.disc(x, y - 4, 1.6, 1, STEEL, 5.4, lit=0)
+    r = math.radians(30 + gir)                                     # el mànec de la roda: es veu girar d'una ullada
+    hx, hy = x + math.cos(r) * 8, y - 4 + math.sin(r) * 3
+    cv.disc(hx, hy - 1, 1.2, 1.6, STEEL, 6.0 + math.sin(r) * 0.8, lit=0)
 
 
 def tap(cv):
@@ -649,7 +652,7 @@ GRIPAU = (322, 216)
 
 
 @functools.lru_cache(maxsize=None)
-def _base(sense_mata=None, vaga=True):
+def _base(sense_mata=None, vaga=True, gir=0):
     """→ (la sala, el primer pla). `sense_mata`: l'índex d'una mata de JONCS que no es pinta (per a la màscara de la
     seva capa del davant: el que canvia sense ella). `vaga=False`: sense els cartells de la vaga (el decorat `aigua`
     hi torna a pintar el que hi ha sota)."""
@@ -668,7 +671,7 @@ def _base(sense_mata=None, vaga=True):
             mata_joncs(cv, x, y, n, h, s, caiguts=True, escala=1.0, lvl=4.0)
     joncs_davant(cv)
     tub(cv)
-    comporta(cv)
+    comporta(cv, gir)
     arxiu(cv, vaga)
     gripau_fons(cv, 352, 206, 'VAGA!' if vaga else None, 3)
     # sota la sala, negre
@@ -734,7 +737,11 @@ def _tap(cv):
     tap(cv)
 
 
-PROPS = {'tap_plastics': _tap, 'aigua': _aigua}
+def _roda(cv):
+    """La roda de la comporta, quieta: és la del fons (el decorat només serveix per a l'animació `roda_gira`)."""
+
+
+PROPS = {'tap_plastics': _tap, 'aigua': _aigua, 'roda': _roda}
 
 
 # ─── Animacions ──────────────────────────────────────────────────────────────
@@ -783,7 +790,17 @@ def _frames_calor():
     return out
 
 
+def _frames_roda():
+    """La roda de la comporta que gira (el gripau i l'Iri l'empenyen): dues voltes. El mànec hi fa la volta sencera (els
+    radis, petits, gairebé no es veuen girar)."""
+    base, _ = _base()
+    pos = [diferencia(_base(gir=g)[0], base) for g in range(0, 360, 30)]
+    return pos * 2 + [pos[0]]
+
+
 ANIMS = {'libellules': {'frames': _frames_libellules, 'frameDuration': 70},
+         # la roda que gira: una etiqueta del decorat `roda`, que la indicació d'escena de «M'ajudes amb la roda?» hi posa
+         'roda_gira': {'frames': _frames_roda, 'frameDuration': 90, 'loop': False, 'prop': 'roda'},
          'calor': {'frames': _frames_calor, 'frameDuration': 140}}
 
 # La mata de joncs de l'esquerra del toll (JONCS[5]) és dins el terra on es camina: qui va pel darrere del toll hi

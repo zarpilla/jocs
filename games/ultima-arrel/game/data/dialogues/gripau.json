@@ -107,28 +107,41 @@
             {
               "who": "gripau",
               "walk": {
-                "x": 584,
-                "y": 217
+                "x": 624,
+                "y": 221
               },
               "wait": false
             },
             {
               "who": "player",
               "walk": {
-                "x": 608,
+                "x": 588,
                 "y": 230
               }
             },
             {
               "who": "gripau",
-              "face": "R"
+              "walk": {
+                "x": 624,
+                "y": 221
+              }
+            },
+            {
+              "who": "gripau",
+              "face": "L"
             },
             {
               "who": "player",
-              "face": "U"
+              "face": "R"
             },
             {
               "shake": 0.4
+            },
+            {
+              "prop": "roda",
+              "visible": true,
+              "anim": "roda_gira",
+              "hold": 2.3
             }
           ]
         },

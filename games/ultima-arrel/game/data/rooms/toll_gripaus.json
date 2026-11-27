@@ -572,6 +572,11 @@
         "flag": "aigua_tornada"
       },
       "sota": true
+    },
+    "roda": {
+      "visibleIf": {
+        "flag": "aigua_tornada"
+      }
     }
   }
 }

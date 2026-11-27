@@ -86,7 +86,13 @@
             {
               "who": "narrator",
               "text": "sala.caseta_obra.wifi.1",
-              "sound": "pip"
+              "sound": "pip",
+              "stage": [
+                {
+                  "prop": "llumetes",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "pla",
