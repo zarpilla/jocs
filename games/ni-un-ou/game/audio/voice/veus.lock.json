@@ -579,6 +579,11 @@
   "key": "dlg.capitana.registre.3",
   "who": "capitana"
  },
+ "iri1002293689": {
+  "hash": "48a47218b673f0f7",
+  "key": "sala.sala_maquines.calendari.look",
+  "who": "iri"
+ },
  "iri100759932": {
   "hash": "8ca04d6dff488911",
   "key": "obj.llibreta.desc",
@@ -622,6 +627,11 @@
  "iri1079723932": {
   "hash": "941d4f2b0610ccdb",
   "key": "dlg.walkie.mentida.1",
+  "who": "iri"
+ },
+ "iri108396647": {
+  "hash": "61151b39485467dd",
+  "key": "sala.rebost.calendari.look",
   "who": "iri"
  },
  "iri109181770": {
@@ -677,6 +687,21 @@
  "iri1209933743": {
   "hash": "389ab99fbb39a42e",
   "key": "sala.sala_maquines.porta_passadis.3",
+  "who": "iri"
+ },
+ "iri1215353295": {
+  "hash": "97470571895f9753",
+  "key": "sala.pallol.escombra.look",
+  "who": "iri"
+ },
+ "iri1224710280": {
+  "hash": "d1265a2d2bea4f0d",
+  "key": "sala.pont.pantalla_radar.look",
+  "who": "iri"
+ },
+ "iri1232221488": {
+  "hash": "8d0e158fedd33d28",
+  "key": "sala.passadis.extintor.look",
   "who": "iri"
  },
  "iri1234439935": {
@@ -739,6 +764,11 @@
   "key": "sala.sala_maquines.valvula.11",
   "who": "iri"
  },
+ "iri1389911263": {
+  "hash": "58db8020dcfeb6e9",
+  "key": "sala.camarot_iri.cadira.look",
+  "who": "iri"
+ },
  "iri1391452245": {
   "hash": "995ca59539ee16fe",
   "key": "sala.passadis.escala_amunt.6",
@@ -764,6 +794,11 @@
   "key": "ui.defecte.give.iri.2",
   "who": "iri"
  },
+ "iri1427138311": {
+  "hash": "77f195cc10fa2346",
+  "key": "sala.sala_radio.llibres.look",
+  "who": "iri"
+ },
  "iri1432165021": {
   "hash": "a8175e3418e2d900",
   "key": "sala.sala_maquines.valvula.12",
@@ -777,6 +812,11 @@
  "iri1443810879": {
   "hash": "81cbd9fec851752c",
   "key": "ui.defecte.give.iri.3",
+  "who": "iri"
+ },
+ "iri1450585219": {
+  "hash": "beed8c4e8ebef9c1",
+  "key": "sala.pallol.caixa.look",
   "who": "iri"
  },
  "iri1451512989": {
@@ -814,6 +854,11 @@
   "key": "ui.defecte.pull.iri.3",
   "who": "iri"
  },
+ "iri149640657": {
+  "hash": "9964e3fbe9fd3d4a",
+  "key": "sala.coberta_proa.campana.look",
+  "who": "iri"
+ },
  "iri1499418313": {
   "hash": "7ed8cffd93cf4f5b",
   "key": "sala.laboratori.nota.2",
@@ -832,6 +877,11 @@
  "iri1532973551": {
   "hash": "755776b0165f02ba",
   "key": "sala.laboratori.nota.4",
+  "who": "iri"
+ },
+ "iri1535803575": {
+  "hash": "ccbd0baaaba45907",
+  "key": "sala.passadis_baix.bidons.look",
   "who": "iri"
  },
  "iri1539727183": {
@@ -864,9 +914,19 @@
   "key": "dlg.juana.mostra.20",
   "who": "iri"
  },
+ "iri1573644230": {
+  "hash": "6419c7aeeb1d2b2d",
+  "key": "sala.rebost.tamboret.look",
+  "who": "iri"
+ },
  "iri1576606228": {
   "hash": "8b5180bc40430645",
   "key": "sala.laboratori.nevera.2",
+  "who": "iri"
+ },
+ "iri1577668282": {
+  "hash": "ae77cd4105f7caa7",
+  "key": "sala.rebost.congelador.look",
   "who": "iri"
  },
  "iri1592005876": {
@@ -984,6 +1044,11 @@
   "key": "sala.passadis_baix.porta_pallol.1",
   "who": "iri"
  },
+ "iri1779876417": {
+  "hash": "cb611f625f0b3f9d",
+  "key": "sala.passadis_baix.extintor.look",
+  "who": "iri"
+ },
  "iri1803868384": {
   "hash": "c5a036cf3c042d57",
   "key": "sala.sala_radio.panell.21",
@@ -1012,6 +1077,11 @@
  "iri1905799880": {
   "hash": "d11d79787e592fe9",
   "key": "sala.sala_radio.cable.2",
+  "who": "iri"
+ },
+ "iri1919476129": {
+  "hash": "72be6a8e43a74846",
+  "key": "sala.passadis_baix.caixes.look",
   "who": "iri"
  },
  "iri1921311717": {
@@ -1054,6 +1124,11 @@
   "key": "sala.pont.timo.3",
   "who": "iri"
  },
+ "iri1969980802": {
+  "hash": "7d53dc8ac7b41bbe",
+  "key": "sala.pallol.cadenats.look",
+  "who": "iri"
+ },
  "iri1970814579": {
   "hash": "3d3c3cfc548c5cc7",
   "key": "sala.sala_bombes.escotilla.1",
@@ -1072,6 +1147,11 @@
  "iri1980625344": {
   "hash": "83186b8d0e53c5ee",
   "key": "sala.pal.antena.6",
+  "who": "iri"
+ },
+ "iri1986496507": {
+  "hash": "e33fabb6b25da370",
+  "key": "sala.taller.bido.look",
   "who": "iri"
  },
  "iri1988410052": {
@@ -1294,6 +1374,11 @@
   "key": "munta.mira.tram",
   "who": "iri"
  },
+ "iri2163894099": {
+  "hash": "4f6928d305c31608",
+  "key": "sala.passadis.paperera.look",
+  "who": "iri"
+ },
  "iri2166062027": {
   "hash": "51362876cf4b63fd",
   "key": "dlg.tub.esc6.9",
@@ -1412,6 +1497,11 @@
  "iri2267130824": {
   "hash": "db668105a9febacb",
   "key": "obj.cisalla.3",
+  "who": "iri"
+ },
+ "iri226811087": {
+  "hash": "8f32ec3ade196f87",
+  "key": "sala.passadis.caixa.look",
   "who": "iri"
  },
  "iri2274379492": {
@@ -1835,7 +1925,7 @@
   "who": "iri"
  },
  "iri2638307202": {
-  "hash": "8b3c2bc34fd71986",
+  "hash": "625afbf599f4bc8d",
   "key": "sala.passadis_baix.porta_maquines.7",
   "who": "iri"
  },
@@ -1882,6 +1972,11 @@
  "iri2673343075": {
   "hash": "3ace945613be93e3",
   "key": "sala.pont.terminal.13",
+  "who": "iri"
+ },
+ "iri2682885125": {
+  "hash": "9defb323719cc37d",
+  "key": "sala.passadis.carreto.look",
   "who": "iri"
  },
  "iri2685044034": {
@@ -1959,6 +2054,11 @@
   "key": "dlg.nadia.ultima.8",
   "who": "iri"
  },
+ "iri276132045": {
+  "hash": "7735cb2323c52d4e",
+  "key": "sala.coberta_proa.pal.look",
+  "who": "iri"
+ },
  "iri2761763682": {
   "hash": "4f997574d7a04dcd",
   "key": "dlg.walkie.esc1_vet.10",
@@ -1974,6 +2074,11 @@
   "key": "munta.travesser.recull",
   "who": "iri"
  },
+ "iri2772923482": {
+  "hash": "ae36eaf6f0f6b7ba",
+  "key": "sala.camarot_iri.poster.look",
+  "who": "iri"
+ },
  "iri2783374963": {
   "hash": "5d84bfda3147f62f",
   "key": "ui.defecte.close.iri",
@@ -1987,6 +2092,11 @@
  "iri2804924051": {
   "hash": "54df1c6870fc5e1d",
   "key": "dlg.tub.esc6.12",
+  "who": "iri"
+ },
+ "iri2805530411": {
+  "hash": "e093b77ae14e1601",
+  "key": "sala.coberta_proa.extintor.look",
   "who": "iri"
  },
  "iri2811901820": {
@@ -2159,6 +2269,11 @@
   "key": "sala.caixa_cadenes.14",
   "who": "iri"
  },
+ "iri2959061448": {
+  "hash": "c23f471fdf2d44a1",
+  "key": "sala.camarot_iri.protectors.look",
+  "who": "iri"
+ },
  "iri2963641216": {
   "hash": "6cc6f2d1d5622f6a",
   "key": "sala.passadis_baix.porta_camarot.1",
@@ -2172,6 +2287,11 @@
  "iri2970220604": {
   "hash": "cd5137363710f85a",
   "key": "ui.defecte.close.iri.3",
+  "who": "iri"
+ },
+ "iri2980153418": {
+  "hash": "32ff57cd7bc6f13c",
+  "key": "sala.sala_radio.rellotge.look",
   "who": "iri"
  },
  "iri2986998223": {
@@ -2237,6 +2357,11 @@
  "iri304676233": {
   "hash": "27b9cd773ab4cd23",
   "key": "sala.laboratori.llibre.4",
+  "who": "iri"
+ },
+ "iri3057955007": {
+  "hash": "3e959137c9bfc1e1",
+  "key": "sala.pallol.defenses_penjades.look",
   "who": "iri"
  },
  "iri3062325567": {
@@ -2344,6 +2469,11 @@
   "key": "sala.rebost.registre.21",
   "who": "iri"
  },
+ "iri3187978440": {
+  "hash": "db25e626338a77da",
+  "key": "sala.sala_radio.ull_bou.look",
+  "who": "iri"
+ },
  "iri3225429155": {
   "hash": "9a631d88fccd3c0f",
   "key": "dlg.vies.borda.2",
@@ -2364,6 +2494,11 @@
   "key": "sala.pallol.inventari.3",
   "who": "iri"
  },
+ "iri3257213293": {
+  "hash": "4f7050b0382d01fe",
+  "key": "sala.camarot_iri.granota.look",
+  "who": "iri"
+ },
  "iri3280103857": {
   "hash": "b48d17b9bbe5930d",
   "key": "sala.pallol.inventari.1",
@@ -2382,6 +2517,11 @@
  "iri32850565": {
   "hash": "02ad6efc199c475f",
   "key": "dlg.walkie.escolten.3",
+  "who": "iri"
+ },
+ "iri3288521151": {
+  "hash": "3992379630df91b0",
+  "key": "sala.passadis.estora.look",
   "who": "iri"
  },
  "iri3296489721": {
@@ -2414,6 +2554,11 @@
   "key": "ui.defecte.talkTo.iri.3",
   "who": "iri"
  },
+ "iri3352259314": {
+  "hash": "cb405d09a9e53ac8",
+  "key": "sala.pallol.corda.look",
+  "who": "iri"
+ },
  "iri3353552495": {
   "hash": "d1219c4d351f74f6",
   "key": "pj.diu.dona",
@@ -2422,6 +2567,11 @@
  "iri3361297300": {
   "hash": "5d6459978149f930",
   "key": "sala.passadis.porta_laboratori.2",
+  "who": "iri"
+ },
+ "iri3363375685": {
+  "hash": "8597408f71335aaa",
+  "key": "sala.sala_maquines.bidons.look",
   "who": "iri"
  },
  "iri3365224735": {
@@ -2735,7 +2885,7 @@
   "who": "iri"
  },
  "iri377701899": {
-  "hash": "5d6c85326be9bab4",
+  "hash": "13ade00b6bd777a6",
   "key": "dlg.walkie.sala_maquines.1",
   "who": "iri"
  },
@@ -2787,6 +2937,11 @@
  "iri3820270470": {
   "hash": "2b06eec03d5ffbbb",
   "key": "dlg.tub.res.1",
+  "who": "iri"
+ },
+ "iri3826416003": {
+  "hash": "c4fc908adf86c7c2",
+  "key": "sala.pallol.salvavides.look",
   "who": "iri"
  },
  "iri3828086301": {
@@ -2944,6 +3099,11 @@
   "key": "sala.sala_radio.panell.2",
   "who": "iri"
  },
+ "iri3954340834": {
+  "hash": "ae9ce78ce2e17450",
+  "key": "sala.passadis.rellotge_paret.look",
+  "who": "iri"
+ },
  "iri3961185730": {
   "hash": "dc6529f0c2b976a8",
   "key": "sala.pont.terminal.1",
@@ -3044,6 +3204,11 @@
   "key": "dlg.quadern.llegir.10",
   "who": "iri"
  },
+ "iri4042994759": {
+  "hash": "23f06644f174b4bb",
+  "key": "sala.rebost.valvula.look",
+  "who": "iri"
+ },
  "iri4044184355": {
   "hash": "bc27a93740cd83c3",
   "key": "dlg.walkie.codi.1",
@@ -3065,7 +3230,7 @@
   "who": "iri"
  },
  "iri405469450": {
-  "hash": "10ebbfeb623d74a4",
+  "hash": "c5891d5031ae134d",
   "key": "obj.walkie.desc",
   "who": "iri"
  },
@@ -3159,6 +3324,11 @@
   "key": "sala.pont.escala.2",
   "who": "iri"
  },
+ "iri4135982041": {
+  "hash": "dd436a505d4a2125",
+  "key": "sala.sala_radio.suro.look",
+  "who": "iri"
+ },
  "iri4144850069": {
   "hash": "911dc4c301520cb1",
   "key": "dlg.walkie.codi.7",
@@ -3199,6 +3369,11 @@
   "key": "ui.defecte.push.iri.3",
   "who": "iri"
  },
+ "iri4179684023": {
+  "hash": "a3fcc4cecbb0e9a8",
+  "key": "sala.taller.pots.look",
+  "who": "iri"
+ },
  "iri4185963905": {
   "hash": "6f8cb002b5d00b56",
   "key": "sala.pont.escala.1",
@@ -3234,6 +3409,16 @@
   "key": "dlg.walkie.esc3.10",
   "who": "iri"
  },
+ "iri422186909": {
+  "hash": "898ad5a81d5fbbe7",
+  "key": "sala.pallol.cadenats.look_falta",
+  "who": "iri"
+ },
+ "iri4230255663": {
+  "hash": "e9dca466beaa1147",
+  "key": "sala.passadis_baix.suro.look",
+  "who": "iri"
+ },
  "iri4237079935": {
   "hash": "9c117defa474178b",
   "key": "dlg.walkie.esc3.11",
@@ -3262,6 +3447,11 @@
  "iri4268865267": {
   "hash": "f6961589100cd5ff",
   "key": "sala.sala_radio.radio.1",
+  "who": "iri"
+ },
+ "iri4271141143": {
+  "hash": "d7880453b89d9ab6",
+  "key": "sala.coberta_proa.campana.toca",
   "who": "iri"
  },
  "iri4278948234": {
@@ -3312,6 +3502,11 @@
  "iri454870181": {
   "hash": "bdcb53ade37f2498",
   "key": "sala.sala_maquines.valvula.9",
+  "who": "iri"
+ },
+ "iri459221163": {
+  "hash": "053e40e734bf5fd5",
+  "key": "sala.pont.rellotges.look",
   "who": "iri"
  },
  "iri462147879": {
@@ -3474,6 +3669,16 @@
   "key": "sala.taller.cisalla.5",
   "who": "iri"
  },
+ "iri665862603": {
+  "hash": "fce82b15a5bacd24",
+  "key": "sala.camarot_iri.llum.look",
+  "who": "iri"
+ },
+ "iri673498211": {
+  "hash": "34de18db98df3bb5",
+  "key": "sala.sala_radio.extintor.look",
+  "who": "iri"
+ },
  "iri677860018": {
   "hash": "7d25e4c4ae9c5831",
   "key": "dlg.walkie.esc1_vet.5",
@@ -3487,6 +3692,11 @@
  "iri679853795": {
   "hash": "78463a72ac710299",
   "key": "sala.taller.cisalla.4",
+  "who": "iri"
+ },
+ "iri681265832": {
+  "hash": "9b99d237d6112499",
+  "key": "sala.pont.taula_cartes.look",
   "who": "iri"
  },
  "iri687915302": {
@@ -3674,6 +3884,11 @@
   "key": "ui.defecte.look",
   "who": "iri"
  },
+ "iri815600883": {
+  "hash": "41849f53305c3f4f",
+  "key": "sala.pallol.bombona.look",
+  "who": "iri"
+ },
  "iri816739777": {
   "hash": "2d31517dface9737",
   "key": "sala.pont.boca.1",
@@ -3857,6 +4072,11 @@
  "iri984071272": {
   "hash": "bc5f5d890c68c284",
   "key": "separades.tub",
+  "who": "iri"
+ },
+ "iri989775246": {
+  "hash": "d071afa7257b5812",
+  "key": "sala.sala_radio.caixa.look",
   "who": "iri"
  },
  "juana1201691431": {
@@ -5565,7 +5785,7 @@
   "who": "vet"
  },
  "vet1115557522": {
-  "hash": "09ffd1fa63a0daf7",
+  "hash": "ab0b631273703ee4",
   "key": "sala.infermeria.fitxes.2_0",
   "who": "vet"
  },
@@ -5622,6 +5842,11 @@
  "vet1230803009": {
   "hash": "c0f5469974636997",
   "key": "dlg.reunio.opt.marcel",
+  "who": "vet"
+ },
+ "vet1232221488": {
+  "hash": "07705c3bb77ff4d7",
+  "key": "sala.passadis.extintor.look",
   "who": "vet"
  },
  "vet1237609171": {
@@ -5829,6 +6054,11 @@
   "key": "dlg.capitana.dormir.2",
   "who": "vet"
  },
+ "vet149640657": {
+  "hash": "28538c1b24fcd8b6",
+  "key": "sala.coberta_proa.campana.look",
+  "who": "vet"
+ },
  "vet1522949564": {
   "hash": "8ac773551e8f240b",
   "key": "dlg.juana.mostra.23",
@@ -6014,6 +6244,11 @@
   "key": "dlg.juana.esc7b.3",
   "who": "vet"
  },
+ "vet1667071042": {
+  "hash": "9c8cbebb15e5fe3a",
+  "key": "sala.coberta_popa.galleda.look",
+  "who": "vet"
+ },
  "vet1672856758": {
   "hash": "ff19ad1b58e62c83",
   "key": "dlg.nadia.pillada.6",
@@ -6052,6 +6287,11 @@
  "vet1711273984": {
   "hash": "61265302bbf1a480",
   "key": "munta.envia.usb.pont",
+  "who": "vet"
+ },
+ "vet1712909476": {
+  "hash": "a2213a9ad98edfaa",
+  "key": "sala.coberta_popa.bido.look",
   "who": "vet"
  },
  "vet172611713": {
@@ -6199,6 +6439,16 @@
   "key": "sala.laboratori.taulell.3",
   "who": "vet"
  },
+ "vet1990261891": {
+  "hash": "8f3b7a7c87bce4c3",
+  "key": "sala.infermeria.monitor.look",
+  "who": "vet"
+ },
+ "vet199028340": {
+  "hash": "bbd8620a2677688a",
+  "key": "sala.menjador.prestatge.look",
+  "who": "vet"
+ },
  "vet2000180803": {
   "hash": "73e3ce81cb72c8fe",
   "key": "munta.recull.usb",
@@ -6264,6 +6514,11 @@
   "key": "dlg.tub.esc6.6",
   "who": "vet"
  },
+ "vet2125639346": {
+  "hash": "ef415c601ac74a0d",
+  "key": "sala.cuina.olles.look",
+  "who": "vet"
+ },
  "vet2132506789": {
   "hash": "29230d066d15a07c",
   "key": "dlg.tub.esc6.7",
@@ -6322,6 +6577,11 @@
  "vet2161958520": {
   "hash": "b45209f09b910b51",
   "key": "dlg.walkie.esc5.3",
+  "who": "vet"
+ },
+ "vet2163894099": {
+  "hash": "c8fbef487e933fc3",
+  "key": "sala.passadis.paperera.look",
   "who": "vet"
  },
  "vet2166062027": {
@@ -6404,6 +6664,11 @@
   "key": "dlg.walkie.trucada.11",
   "who": "vet"
  },
+ "vet226811087": {
+  "hash": "1eee26d6ce813be3",
+  "key": "sala.passadis.caixa.look",
+  "who": "vet"
+ },
  "vet2269719649": {
   "hash": "0ec47c7187a68194",
   "key": "munta.envia.mostra7.rebost",
@@ -6452,6 +6717,21 @@
  "vet2324712349": {
   "hash": "a1dafe070874a8e0",
   "key": "dlg.quadern.llegir.20",
+  "who": "vet"
+ },
+ "vet2330119280": {
+  "hash": "fe31143c55ab2975",
+  "key": "sala.cuina.especies.look",
+  "who": "vet"
+ },
+ "vet2330907616": {
+  "hash": "a128d8ccce18fed7",
+  "key": "dlg.juana.opt.mostra_ous",
+  "who": "vet"
+ },
+ "vet2350218110": {
+  "hash": "f11b7334b020e100",
+  "key": "sala.coberta_popa.caixa.look",
   "who": "vet"
  },
  "vet2356507222": {
@@ -6574,6 +6854,11 @@
   "key": "dlg.nadia.ultima.5",
   "who": "vet"
  },
+ "vet2553966850": {
+  "hash": "7a58330ea8f9db4c",
+  "key": "sala.menjador.ulls_bou.look",
+  "who": "vet"
+ },
  "vet2565834002": {
   "hash": "35454a98f3e2c8ab",
   "key": "donar.dona.registre",
@@ -6674,6 +6959,11 @@
   "key": "dlg.tomas.menjar.3",
   "who": "vet"
  },
+ "vet2682885125": {
+  "hash": "8011123115be2a4f",
+  "key": "sala.passadis.carreto.look",
+  "who": "vet"
+ },
  "vet2685044034": {
   "hash": "897024f7af45149d",
   "key": "sala.coberta_proa.escotilla.16",
@@ -6734,6 +7024,11 @@
   "key": "dlg.tomas.cuina2.3",
   "who": "vet"
  },
+ "vet276132045": {
+  "hash": "3806a74219d3c583",
+  "key": "sala.coberta_proa.pal.look",
+  "who": "vet"
+ },
  "vet2761662811": {
   "hash": "47c17b8cf793dad4",
   "key": "sala.menjador.passaplats.1",
@@ -6772,6 +7067,11 @@
  "vet2804856279": {
   "hash": "9ea53c99f3df9429",
   "key": "munta.mira.clau_tomas",
+  "who": "vet"
+ },
+ "vet2805530411": {
+  "hash": "836e3fda5baa1ea1",
+  "key": "sala.coberta_proa.extintor.look",
   "who": "vet"
  },
  "vet2817801691": {
@@ -7059,6 +7359,11 @@
   "key": "dlg.capitana.opt.gasoil",
   "who": "vet"
  },
+ "vet3169192588": {
+  "hash": "9bedee86e99378a2",
+  "key": "sala.menjador.cafetera.look",
+  "who": "vet"
+ },
  "vet3203252066": {
   "hash": "210cba8205806d17",
   "key": "munta.envia.nota_vet.rebost",
@@ -7094,6 +7399,11 @@
   "key": "munta.envia.travesser.pont",
   "who": "vet"
  },
+ "vet3288521151": {
+  "hash": "84a945c9bd0c68c3",
+  "key": "sala.passadis.estora.look",
+  "who": "vet"
+ },
  "vet3296489721": {
   "hash": "936531d1a5356275",
   "key": "separades.iri",
@@ -7117,6 +7427,11 @@
  "vet3350980732": {
   "hash": "66d1bd1f5da77e41",
   "key": "dlg.bastida.opt.cafe",
+  "who": "vet"
+ },
+ "vet33529157": {
+  "hash": "03ab35f854dc8b72",
+  "key": "sala.infermeria.paperera.look",
   "who": "vet"
  },
  "vet3361297300": {
@@ -7292,6 +7607,11 @@
  "vet358993004": {
   "hash": "dba070480db46409",
   "key": "munta.envia.cable_nou.rebost",
+  "who": "vet"
+ },
+ "vet3593651695": {
+  "hash": "1aa6e316e2341978",
+  "key": "sala.infermeria.ull_bou.look",
   "who": "vet"
  },
  "vet3597592534": {
@@ -7614,9 +7934,19 @@
   "key": "final.6",
   "who": "vet"
  },
+ "vet3941492352": {
+  "hash": "4a55148ce23681b8",
+  "key": "sala.coberta_popa.salvavides.look",
+  "who": "vet"
+ },
  "vet395205": {
   "hash": "8e83a41881e2237b",
   "key": "sala.coberta_popa.grua.1",
+  "who": "vet"
+ },
+ "vet3954340834": {
+  "hash": "731526078872d78e",
+  "key": "sala.passadis.rellotge_paret.look",
   "who": "vet"
  },
  "vet3955822940": {
@@ -7720,7 +8050,7 @@
   "who": "vet"
  },
  "vet405469450": {
-  "hash": "f2da3e438b1bc816",
+  "hash": "063fbf61c353b867",
   "key": "obj.walkie.desc",
   "who": "vet"
  },
@@ -7899,6 +8229,16 @@
   "key": "dlg.walkie.escolten.5",
   "who": "vet"
  },
+ "vet4229768371": {
+  "hash": "76b0726c5c024b48",
+  "key": "sala.infermeria.cortina.look",
+  "who": "vet"
+ },
+ "vet4230598270": {
+  "hash": "4887e0aa7ceb1d74",
+  "key": "sala.cuina.taula.look",
+  "who": "vet"
+ },
  "vet4240267058": {
   "hash": "ae525233be9d15f3",
   "key": "ui.defecte.close.vet",
@@ -7939,6 +8279,16 @@
   "key": "sala.coberta_popa.plataforma.4",
   "who": "vet"
  },
+ "vet4264230130": {
+  "hash": "61b9236e5066ec6c",
+  "key": "sala.cuina.farina.look",
+  "who": "vet"
+ },
+ "vet4271141143": {
+  "hash": "d4bbd1d4ceffd43f",
+  "key": "sala.coberta_proa.campana.toca",
+  "who": "vet"
+ },
  "vet4272252370": {
   "hash": "1e21990975742312",
   "key": "dlg.reunio.p_ma.1",
@@ -7957,6 +8307,11 @@
  "vet434755627": {
   "hash": "a3223d1838752a84",
   "key": "sala.infermeria.1",
+  "who": "vet"
+ },
+ "vet441366960": {
+  "hash": "fad8d01f993cfab9",
+  "key": "sala.menjador.rellotges.look",
   "who": "vet"
  },
  "vet445370260": {
@@ -8024,6 +8379,11 @@
   "key": "ui.defecte.look.vet",
   "who": "vet"
  },
+ "vet527767878": {
+  "hash": "83b1291cd0191efc",
+  "key": "sala.infermeria.cartell.look",
+  "who": "vet"
+ },
  "vet532452514": {
   "hash": "a307b93065a7eb6f",
   "key": "dlg.reunio.opt.escaner",
@@ -8057,6 +8417,16 @@
  "vet610749542": {
   "hash": "77e62539dd1dd394",
   "key": "dlg.walkie.esc1_vet.1",
+  "who": "vet"
+ },
+ "vet611810625": {
+  "hash": "2dec0ce2f3cb82b8",
+  "key": "sala.menjador.tamboret.look",
+  "who": "vet"
+ },
+ "vet62590955": {
+  "hash": "129638da82bf3cf5",
+  "key": "sala.infermeria.llum.look",
   "who": "vet"
  },
  "vet633732216": {
