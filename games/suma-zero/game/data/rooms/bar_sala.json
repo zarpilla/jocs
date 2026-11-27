@@ -263,6 +263,17 @@
             {
               "who": "narrator",
               "text": "sala.bar_sala.comandament2",
+              "stage": [
+                {
+                  "who": "tomas",
+                  "at": "porta_rebost",
+                  "visible": true
+                },
+                {
+                  "who": "tomas",
+                  "walk": "comandament_barra"
+                }
+              ],
               "effects": [
                 {
                   "setFlag": "tomas_rebost",

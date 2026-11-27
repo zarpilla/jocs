@@ -200,7 +200,16 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.soler.busca2"
+          "text": "dlg.soler.busca2",
+          "stage": [
+            {
+              "who": "soler",
+              "walk": {
+                "x": 552,
+                "y": 188
+              }
+            }
+          ]
         },
         {
           "who": "title",

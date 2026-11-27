@@ -1158,6 +1158,11 @@
             {
               "who": "narrator",
               "text": "sala.bcmu_escombraries.conducte.extintor2",
+              "stage": [
+                {
+                  "shake": 0.5
+                }
+              ],
               "sound": "extintor"
             },
             {

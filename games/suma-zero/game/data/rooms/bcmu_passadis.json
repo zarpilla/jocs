@@ -342,7 +342,13 @@
             },
             {
               "who": "narrator",
-              "text": "sala.bcmu_passadis.camera1.desfa1"
+              "text": "sala.bcmu_passadis.camera1.desfa1",
+              "stage": [
+                {
+                  "who": "neta",
+                  "walk": "camera1"
+                }
+              ]
             },
             {
               "who": "neta",
@@ -465,7 +471,13 @@
             },
             {
               "who": "narrator",
-              "text": "sala.bcmu_passadis.camera2.desfa1"
+              "text": "sala.bcmu_passadis.camera2.desfa1",
+              "stage": [
+                {
+                  "who": "neta",
+                  "walk": "camera2"
+                }
+              ]
             },
             {
               "who": "neta",

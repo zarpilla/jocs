@@ -500,7 +500,13 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.ballester.veritat2"
+          "text": "dlg.ballester.veritat2",
+          "stage": [
+            {
+              "who": "ballester",
+              "anim": "SenseCollaret"
+            }
+          ]
         },
         {
           "who": "ballester",
@@ -528,7 +534,13 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.ballester.canvi1"
+          "text": "dlg.ballester.canvi1",
+          "stage": [
+            {
+              "who": "ballester",
+              "anim": "SenseCollaret"
+            }
+          ]
         },
         {
           "who": "ballester",
@@ -588,7 +600,13 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.ballester.canvi1"
+          "text": "dlg.ballester.canvi1",
+          "stage": [
+            {
+              "who": "ballester",
+              "anim": "SenseCollaret"
+            }
+          ]
         },
         {
           "who": "ballester",

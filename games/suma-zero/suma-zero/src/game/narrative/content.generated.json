@@ -2844,6 +2844,17 @@
                   {
                     "who": "narrator",
                     "text": "sala.bar_sala.comandament2",
+                    "stage": [
+                      {
+                        "who": "tomas",
+                        "at": "porta_rebost",
+                        "visible": true
+                      },
+                      {
+                        "who": "tomas",
+                        "walk": "comandament_barra"
+                      }
+                    ],
                     "effects": [
                       {
                         "setFlag": "tomas_rebost",
@@ -5796,6 +5807,11 @@
                   {
                     "who": "narrator",
                     "text": "sala.bcmu_escombraries.conducte.extintor2",
+                    "stage": [
+                      {
+                        "shake": 0.5
+                      }
+                    ],
                     "sound": "extintor"
                   },
                   {
@@ -6561,7 +6577,13 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.bcmu_passadis.camera1.desfa1"
+                    "text": "sala.bcmu_passadis.camera1.desfa1",
+                    "stage": [
+                      {
+                        "who": "neta",
+                        "walk": "camera1"
+                      }
+                    ]
                   },
                   {
                     "who": "neta",
@@ -6684,7 +6706,13 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.bcmu_passadis.camera2.desfa1"
+                    "text": "sala.bcmu_passadis.camera2.desfa1",
+                    "stage": [
+                      {
+                        "who": "neta",
+                        "walk": "camera2"
+                      }
+                    ]
                   },
                   {
                     "who": "neta",
@@ -21621,7 +21649,13 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.ballester.veritat2"
+                "text": "dlg.ballester.veritat2",
+                "stage": [
+                  {
+                    "who": "ballester",
+                    "anim": "SenseCollaret"
+                  }
+                ]
               },
               {
                 "who": "ballester",
@@ -21649,7 +21683,13 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.ballester.canvi1"
+                "text": "dlg.ballester.canvi1",
+                "stage": [
+                  {
+                    "who": "ballester",
+                    "anim": "SenseCollaret"
+                  }
+                ]
               },
               {
                 "who": "ballester",
@@ -21709,7 +21749,13 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.ballester.canvi1"
+                "text": "dlg.ballester.canvi1",
+                "stage": [
+                  {
+                    "who": "ballester",
+                    "anim": "SenseCollaret"
+                  }
+                ]
               },
               {
                 "who": "ballester",
@@ -23478,7 +23524,13 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.despatx.pons3"
+                "text": "dlg.despatx.pons3",
+                "stage": [
+                  {
+                    "who": "pons",
+                    "walk": "porta"
+                  }
+                ]
               },
               {
                 "who": "pons",
@@ -23561,7 +23613,13 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.despatx.ballester2"
+                "text": "dlg.despatx.ballester2",
+                "stage": [
+                  {
+                    "who": "ballester",
+                    "walk": "bonfill"
+                  }
+                ]
               },
               {
                 "who": "bonfill",
@@ -25241,7 +25299,20 @@
               {
                 "who": "narrator",
                 "text": "dlg.rius.cafe2",
-                "sound": "maquina_cafe"
+                "sound": "maquina_cafe",
+                "stage": [
+                  {
+                    "who": "rius",
+                    "walk": "maquina"
+                  },
+                  {
+                    "who": "rius",
+                    "face": "U"
+                  },
+                  {
+                    "shake": 0.3
+                  }
+                ]
               },
               {
                 "who": "narrator",
@@ -25249,7 +25320,13 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.rius.cafe4"
+                "text": "dlg.rius.cafe4",
+                "stage": [
+                  {
+                    "who": "player",
+                    "walk": "rius"
+                  }
+                ]
               },
               {
                 "who": "player",
@@ -25468,7 +25545,16 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.soler.busca2"
+                "text": "dlg.soler.busca2",
+                "stage": [
+                  {
+                    "who": "soler",
+                    "walk": {
+                      "x": 552,
+                      "y": 188
+                    }
+                  }
+                ]
               },
               {
                 "who": "title",

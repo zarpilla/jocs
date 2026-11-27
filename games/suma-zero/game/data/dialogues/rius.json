@@ -247,7 +247,20 @@
         {
           "who": "narrator",
           "text": "dlg.rius.cafe2",
-          "sound": "maquina_cafe"
+          "sound": "maquina_cafe",
+          "stage": [
+            {
+              "who": "rius",
+              "walk": "maquina"
+            },
+            {
+              "who": "rius",
+              "face": "U"
+            },
+            {
+              "shake": 0.3
+            }
+          ]
         },
         {
           "who": "narrator",
@@ -255,7 +268,13 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.rius.cafe4"
+          "text": "dlg.rius.cafe4",
+          "stage": [
+            {
+              "who": "player",
+              "walk": "rius"
+            }
+          ]
         },
         {
           "who": "player",

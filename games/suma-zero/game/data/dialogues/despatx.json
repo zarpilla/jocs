@@ -246,7 +246,13 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.despatx.pons3"
+          "text": "dlg.despatx.pons3",
+          "stage": [
+            {
+              "who": "pons",
+              "walk": "porta"
+            }
+          ]
         },
         {
           "who": "pons",
@@ -329,7 +335,13 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.despatx.ballester2"
+          "text": "dlg.despatx.ballester2",
+          "stage": [
+            {
+              "who": "ballester",
+              "walk": "bonfill"
+            }
+          ]
         },
         {
           "who": "bonfill",
