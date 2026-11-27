@@ -2239,6 +2239,11 @@
   "key": "dlg.paperets.proposta.1",
   "who": "iri"
  },
+ "iri2936143210": {
+  "hash": "331b2d7c284805e2",
+  "key": "sala.sala_radio.xapa.1",
+  "who": "iri"
+ },
  "iri293912435": {
   "hash": "06723da2f35ccc83",
   "key": "sala.passadis.escala_avall.3",
@@ -3754,6 +3759,11 @@
   "key": "sala.taller.cisalla.1",
   "who": "iri"
  },
+ "iri732796226": {
+  "hash": "d8ee67d4b583bc97",
+  "key": "dlg.walkie.sala_maquines_aqui.1",
+  "who": "iri"
+ },
  "iri734764206": {
   "hash": "c51e3a76fb04f2a0",
   "key": "dlg.walkie.esc3.7",
@@ -4705,7 +4715,7 @@
   "who": "narrator"
  },
  "narrator1107082778": {
-  "hash": "a71410b53f6a313b",
+  "hash": "30182ef676ae8f2d",
   "key": "sala.coberta_popa.10",
   "who": "narrator"
  },
@@ -4957,6 +4967,11 @@
  "narrator2500955309": {
   "hash": "7957551d3c30fbb2",
   "key": "proleg.1",
+  "who": "narrator"
+ },
+ "narrator2551063778": {
+  "hash": "ec2e13508eab7038",
+  "key": "dlg.bastida1.arriba.15",
   "who": "narrator"
  },
  "narrator2565876474": {
@@ -5220,7 +5235,7 @@
   "who": "narrator"
  },
  "narrator3827248987": {
-  "hash": "4d598d81e59f6bde",
+  "hash": "6e94e115ec835817",
   "key": "sala.infermeria.12",
   "who": "narrator"
  },
@@ -5355,7 +5370,7 @@
   "who": "narrator"
  },
  "narrator601382472": {
-  "hash": "439158fd67c79c61",
+  "hash": "55153ab93d9be028",
   "key": "dlg.juana.valvula.4",
   "who": "narrator"
  },
@@ -5389,6 +5404,11 @@
   "key": "final.60",
   "who": "narrator"
  },
+ "narrator75626532": {
+  "hash": "e49dd0b2260eb8e8",
+  "key": "sala.sala_radio.panell.32",
+  "who": "narrator"
+ },
  "narrator763623433": {
   "hash": "e900b9fd69803551",
   "key": "dlg.reunio.confessio.33",
@@ -5400,7 +5420,7 @@
   "who": "narrator"
  },
  "narrator772601672": {
-  "hash": "3fe7973e8c107a0e",
+  "hash": "cfb06bdcf84f775f",
   "key": "final.52",
   "who": "narrator"
  },
@@ -5420,7 +5440,7 @@
   "who": "narrator"
  },
  "narrator79777814": {
-  "hash": "52038c133f9ff666",
+  "hash": "dfd916c91b497d96",
   "key": "dlg.capitana.registre.2",
   "who": "narrator"
  },
@@ -5485,7 +5505,7 @@
   "who": "narrator"
  },
  "narrator890045005": {
-  "hash": "5a649fd761ff9b00",
+  "hash": "d167c383a151a431",
   "key": "final.55",
   "who": "narrator"
  },
@@ -8522,6 +8542,11 @@
  "vet730068195": {
   "hash": "c8947cf0707fbc18",
   "key": "dlg.reunio.confessio.31",
+  "who": "vet"
+ },
+ "vet732796226": {
+  "hash": "c5c4298bf4831448",
+  "key": "dlg.walkie.sala_maquines_aqui.1",
   "who": "vet"
  },
  "vet74007326": {
