@@ -435,35 +435,69 @@ gui.onShow(() => syncContinua())
 
 // ─── Disposició automàtica d'una sala nova ──────────────────────────────────
 
-/** Un decorat (`decor` a la sala): un prop que es veu o no segons l'estat, però no es pot clicar. */
 /**
- * Props clicables que no es poden clicar: el motor dona el clic a la cosa de zIndex més alt, i un punt (hotspot) més
- * amunt que tapi del tot el collider d'un prop se'l queda sempre (la cera del forat, a La Conjura de l'Avet).
+ * Props clicables que no es poden clicar bé: el motor dona el clic a la cosa de zIndex més alt (i, amb el mateix, al
+ * punt abans que al prop). Avisa quan un punt d'un zIndex igual o més alt tapa del tot el collider d'un prop (la cera
+ * del forat, a La Conjura de l'Avet) o en tapa el centre, que és on el botó de punts hi dibuixa el cercle: qui toca el
+ * cercle rep el punt (el rètol de l'epíleg, sota el forat nou).
+ *
+ * Amb `ambPunts`, també els punts que en tapa un altre de zIndex més alt. No es fa servir per defecte: molts són
+ * volguts (un punt que només és actiu en un estat, o un de gran, com el riu, amb punts petits a dins), i la sala no
+ * diu quins punts són actius alhora.
  */
-export function coveredProps(room: Json): string[] {
-  type Box = [number, number, number, number];
-  const box = (pts: Json[] | undefined): Box | null => {
-    if (!pts?.length) return null;
-    const xs = pts.map((p) => Number(p.x)), ys = pts.map((p) => Number(p.y));
-    return [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
+export function coveredProps(room: Json, ambPunts = false): string[] {
+  type Pt = { x: number; y: number };
+  const pts = (list: Json[] | undefined): Pt[] => (list ?? []).map((p) => ({ x: Number(p.x), y: Number(p.y) }));
+  const box = (ps: Pt[]) => {
+    const xs = ps.map((p) => p.x), ys = ps.map((p) => p.y);
+    return [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)] as const;
   };
+  // Dins del polígon (regla del raig, com Phaser.Geom.Polygon.Contains).
+  const inside = (ps: Pt[], x: number, y: number) => {
+    let c = false;
+    for (let i = 0, j = ps.length - 1; i < ps.length; j = i++) {
+      const a = ps[i]!, b = ps[j]!;
+      if ((a.y > y) !== (b.y > y) && x < ((b.x - a.x) * (y - a.y)) / (b.y - a.y) + a.x) c = !c;
+    }
+    return c;
+  };
+  // On el motor dibuixa el cercle (`clickableCenter`): el mig de la capsa, o el primer punt si el mig hi cau fora.
+  const centre = (ps: Pt[]): Pt => {
+    const [x0, y0, x1, y1] = box(ps);
+    const m = { x: (x0 + x1) / 2, y: (y0 + y1) / 2 };
+    return inside(ps, m.x, m.y) ? m : ps[0]!;
+  };
+  // El cercle fa uns quants píxels: si el punt de dalt en toca el mig amb aquest marge, qui hi clica pot fer-hi cap.
+  const MARGE = 3;
+  const toca = (ps: Pt[], c: Pt) =>
+    [[0, 0], [MARGE, 0], [-MARGE, 0], [0, MARGE], [0, -MARGE]].some(([dx, dy]) => inside(ps, c.x + dx!, c.y + dy!));
   const hotspots = ((room.hotspots as Json[]) ?? []).filter((h) => h.active !== false)
-    .map((h) => ({ id: String(h.id), z: Number(h.zIndex ?? 0), b: box(h.points as Json[]) }));
+    .map((h) => ({ id: String(h.id), z: Number(h.zIndex ?? 0), ps: pts(h.points as Json[]), punt: true }))
+    .filter((h) => h.ps.length >= 3);
   const props = ((room.props as Json[]) ?? []).filter((p) => p.clickable)
-    .map((p) => ({ id: String(p.id), z: Number(p.zIndex ?? 0), b: box((p.collider as Json | undefined)?.points as Json[]) }));
+    .map((p) => ({ id: String(p.id), z: Number(p.zIndex ?? 0), ps: pts((p.collider as Json | undefined)?.points as Json[]), punt: false }))
+    .filter((p) => p.ps.length >= 3);
   const out: string[] = [];
-  for (const p of props) {
-    if (!p.b) continue;
+  // Els props, i també els punts (un punt petit dins d'un de gran amb el zIndex més alt).
+  for (const p of ambPunts ? [...props, ...hotspots] : props) {
+    const [px0, py0, px1, py1] = box(p.ps);
+    const c = centre(p.ps);
     for (const h of hotspots) {
-      if (!h.b || h.z < p.z) continue; // amb el mateix zIndex també guanya el punt
-      if (h.b[0] <= p.b[0] && h.b[1] <= p.b[1] && h.b[2] >= p.b[2] && h.b[3] >= p.b[3]) {
-        out.push(`el prop «${p.id}» (zIndex ${p.z}) queda tapat pel punt «${h.id}» (zIndex ${h.z}): no es pot clicar. Puja el zIndex del prop o baixa el del punt.`);
-      }
+      if (h === p) continue;
+      // Contra un prop, amb el mateix zIndex guanya el punt; entre punts, només si és més amunt.
+      if (p.punt ? h.z <= p.z : h.z < p.z) continue;
+      const [hx0, hy0, hx1, hy1] = box(h.ps);
+      const tot = hx0 <= px0 && hy0 <= py0 && hx1 >= px1 && hy1 >= py1;
+      if (!tot && !toca(h.ps, c)) continue;
+      const que = p.punt ? 'el punt' : 'el prop';
+      out.push(`${que} «${p.id}» (zIndex ${p.z}) queda ${tot ? 'tapat' : 'tapat pel mig'} pel punt «${h.id}» (zIndex ${h.z}): ` +
+        `${tot ? 'no es pot clicar' : 'el cercle dels punts hi dona el punt'}. Puja el zIndex de «${p.id}» o baixa el de «${h.id}».`);
     }
   }
   return out;
 }
 
+/** Un decorat (`decor` a la sala): un prop que es veu o no segons l'estat, però no es pot clicar. */
 // Per sobre dels props clicables (zIndex 3): un decorat pot canviar l'aspecte d'un prop. No es pot clicar.
 // Amb `sota`, per sota (zIndex 2): fa de fons d'altres coses clicables.
 const decorZ = (sota?: boolean) => (sota ? 2 : 4);
