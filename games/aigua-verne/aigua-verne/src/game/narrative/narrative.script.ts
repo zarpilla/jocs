@@ -383,6 +383,21 @@ function autosaveHere() {
   saves.autosave(AUTOSAVE)
 }
 
+/**
+ * «Surt» del menú: desa on és la partida i després crida `leave` (tancar l'app o anar a l'arrel del web), perquè
+ * «Continua» hi torni. Si una interacció encara no ha acabat, el desament espera que acabi: s'hi dona fins a 2 s.
+ */
+export function quitAfterSaving(leave: () => void) {
+  const before = saves.get(AUTOSAVE)?.timestamp ?? 0
+  autosaveHere()
+  const start = Date.now()
+  const tick = () => {
+    if ((saves.get(AUTOSAVE)?.timestamp ?? 0) !== before || Date.now() - start > 2000 || untouchedNewGame) leave()
+    else window.setTimeout(tick, 100)
+  }
+  tick()
+}
+
 /** Qui vol saber que s'ha clicat «Comença» (la targeta «Com es juga», als jocs tàctils: vegeu controls.ts). */
 const enComencar: Array<() => void> = []
 

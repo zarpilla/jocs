@@ -1,7 +1,7 @@
 import { game } from '@benne/script';
 import { guis } from '@game';
 import { gui, load, resume, save, settingsBtn, canviar, pista, historial, quit } from './game-menu.ids';
-import { sayHint, switchProtagonist } from '../../narrative/narrative.script';
+import { sayHint, switchProtagonist, quitAfterSaving } from '../../narrative/narrative.script';
 
 resume.onClick(() => gui.hide())
 
@@ -39,6 +39,10 @@ historial.onClick(() => {
 
 // «Surt»: a l'escriptori tanca l'aplicació; al navegador torna a l'arrel del web (els jocs viuen a malaherbasoft.cat/<joc>/).
 quit.onClick(() => {
-  if (game.isDesktop) game.quit()
-  else window.location.href = '/'
+  // Abans de marxar, desa on és la partida: «Continua» hi torna (tasca 108). Amb el menú tancat, el joc no és aturat.
+  gui.hide()
+  quitAfterSaving(() => {
+    if (game.isDesktop) game.quit()
+    else window.location.href = '/'
+  })
 })
