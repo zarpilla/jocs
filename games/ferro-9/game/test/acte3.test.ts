@@ -47,6 +47,7 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     expect(mapa).toContain(ruta);
     p.do('pickUp', 'fullets');
     expect(p.inventory()).toContain('fullet_memoria');
+    expect(texts(p.use('fullet_memoria', 'mapa'))).toContain('Una cosa que pinti');
     expect(n.state.quests.acte3!.objectives.memoria).toBe(true);
     expect(n.state.quests.acte3!.objectives.ruta).toBe(true);
 
