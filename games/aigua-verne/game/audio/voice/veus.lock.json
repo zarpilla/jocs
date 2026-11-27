@@ -420,12 +420,12 @@
   "who": "capitana"
  },
  "capitana3939345036": {
-  "hash": "f866dde53d0be8e2",
+  "hash": "3f0bd94440163f1e",
   "key": "dlg.capitana.primera.1",
   "who": "capitana"
  },
  "capitana3972900274": {
-  "hash": "1916cbc62db52b46",
+  "hash": "87b5d528de47a23c",
   "key": "dlg.capitana.primera.3",
   "who": "capitana"
  },
@@ -887,6 +887,11 @@
  "iri1147452506": {
   "hash": "db34519f9fa57106",
   "key": "obj.agulla.2",
+  "who": "iri"
+ },
+ "iri1164278594": {
+  "hash": "889c0a8022649be8",
+  "key": "pj.tomas.clau.torna",
   "who": "iri"
  },
  "iri1184643193": {
@@ -1454,6 +1459,11 @@
   "key": "dlg.comunicador.fem.6",
   "who": "iri"
  },
+ "iri1624645324": {
+  "hash": "280ada21eb373879",
+  "key": "sala.granja_graner.tractor.altra",
+  "who": "iri"
+ },
  "iri1625682346": {
   "hash": "b4d1fe1fa5d3cde5",
   "key": "sala.aqua_fons.sorra.2",
@@ -1962,6 +1972,11 @@
  "iri209812237": {
   "hash": "7875ae1dd7c11232",
   "key": "sala.fosa_forn.piquera.mira",
+  "who": "iri"
+ },
+ "iri2098358616": {
+  "hash": "8aa5ddeb0801801a",
+  "key": "pj.tomas.clau.encara",
   "who": "iri"
  },
  "iri2100254906": {
@@ -3979,6 +3994,11 @@
   "key": "dlg.pare.opt.reg",
   "who": "iri"
  },
+ "iri3963599172": {
+  "hash": "ce407026fa6b09e7",
+  "key": "sala.granja_graner.tractor.tornavis",
+  "who": "iri"
+ },
  "iri396435898": {
   "hash": "b9c0b815e4fbf41a",
   "key": "dlg.comunicador.fem.8",
@@ -4005,7 +4025,7 @@
   "who": "iri"
  },
  "iri3989677893": {
-  "hash": "2f595586a42cac44",
+  "hash": "91251de6cc41319b",
   "key": "dlg.capitana.primera.2",
   "who": "iri"
  },
@@ -6659,6 +6679,11 @@
   "key": "dlg.tomas.contracte.1",
   "who": "tomas"
  },
+ "tomas2545665488": {
+  "hash": "545769a9a7fbb8cd",
+  "key": "pj.tomas.clau.encara.2",
+  "who": "tomas"
+ },
  "tomas2645097240": {
   "hash": "f40c4387827e2f7c",
   "key": "dlg.tomas.per_que.3",
@@ -6747,6 +6772,11 @@
  "tomas679629652": {
   "hash": "cd629a399ff96b73",
   "key": "dlg.tomas.pilot.2",
+  "who": "tomas"
+ },
+ "tomas71919106": {
+  "hash": "62807d3659e4846c",
+  "key": "pj.tomas.clau.torna.2",
   "who": "tomas"
  },
  "tomas729962509": {
@@ -7229,6 +7259,11 @@
   "key": "sala.palau_control.pany_aqua.6",
   "who": "vet"
  },
+ "vet1164278594": {
+  "hash": "60ecb1187b287912",
+  "key": "pj.tomas.clau.torna",
+  "who": "vet"
+ },
  "vet1171580867": {
   "hash": "7edde17f4aac8224",
   "key": "sala.palau_control.pany_aqua.7",
@@ -7704,6 +7739,11 @@
   "key": "safata.recull.paper_plata",
   "who": "vet"
  },
+ "vet1624645324": {
+  "hash": "f1ce8af6daa0d5da",
+  "key": "sala.granja_graner.tractor.altra",
+  "who": "vet"
+ },
  "vet1644509741": {
   "hash": "328633ced3a486d9",
   "key": "preu.comunicador",
@@ -8117,6 +8157,11 @@
  "vet209812237": {
   "hash": "5b418d200c0d50ba",
   "key": "sala.fosa_forn.piquera.mira",
+  "who": "vet"
+ },
+ "vet2098358616": {
+  "hash": "a3695039d4d917f8",
+  "key": "pj.tomas.clau.encara",
   "who": "vet"
  },
  "vet211882089": {
@@ -9439,6 +9484,11 @@
   "key": "mosca.envia.nota_lia.iri",
   "who": "vet"
  },
+ "vet3523820218": {
+  "hash": "4182fc684051fa8c",
+  "key": "sala.aqua_port.grua.7.apanyat",
+  "who": "vet"
+ },
  "vet352585652": {
   "hash": "97241eca3253c347",
   "key": "dlg.tomas.opt.capitana2",
@@ -9782,6 +9832,11 @@
  "vet3951504094": {
   "hash": "f3337ea8163521f4",
   "key": "mosca.envia.vestit.iri",
+  "who": "vet"
+ },
+ "vet3963599172": {
+  "hash": "797038900aec9257",
+  "key": "sala.granja_graner.tractor.tornavis",
   "who": "vet"
  },
  "vet3966069970": {
