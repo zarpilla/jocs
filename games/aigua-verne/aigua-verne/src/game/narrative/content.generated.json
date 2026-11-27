@@ -4196,7 +4196,7 @@
                     }
                   }
                 ],
-                "goTo": "cantimplora_pont"
+                "goTo": "port_terra2"
               }
             ]
           },
@@ -4334,7 +4334,7 @@
                     }
                   }
                 ],
-                "goTo": "cantimplora_pont"
+                "goTo": "aqua_port"
               }
             ]
           },
@@ -4472,7 +4472,7 @@
                     }
                   }
                 ],
-                "goTo": "cantimplora_pont"
+                "goTo": "ferrum_carrer"
               }
             ]
           },
@@ -4610,7 +4610,7 @@
                     }
                   }
                 ],
-                "goTo": "cantimplora_pont"
+                "goTo": "verdant_jardi"
               }
             ]
           },
@@ -23166,35 +23166,6 @@
                 ]
               },
               {
-                "id": "esquerra_baix",
-                "text": "dlg.grua.opt.esquerra",
-                "if": {
-                  "all": [
-                    {
-                      "var": "gresol",
-                      "op": "==",
-                      "value": "llit"
-                    },
-                    {
-                      "flag": "gresol_baix"
-                    }
-                  ]
-                },
-                "silent": true,
-                "next": "no_baix"
-              },
-              {
-                "id": "esquerra_final",
-                "text": "dlg.grua.opt.esquerra",
-                "if": {
-                  "var": "gresol",
-                  "op": "==",
-                  "value": "canal"
-                },
-                "silent": true,
-                "next": "final"
-              },
-              {
                 "id": "dreta",
                 "text": "dlg.grua.opt.dreta",
                 "if": {
@@ -23218,35 +23189,6 @@
                     "value": "llit"
                   }
                 ]
-              },
-              {
-                "id": "dreta_baix",
-                "text": "dlg.grua.opt.dreta",
-                "if": {
-                  "all": [
-                    {
-                      "var": "gresol",
-                      "op": "==",
-                      "value": "canal"
-                    },
-                    {
-                      "flag": "gresol_baix"
-                    }
-                  ]
-                },
-                "silent": true,
-                "next": "no_baix"
-              },
-              {
-                "id": "dreta_final",
-                "text": "dlg.grua.opt.dreta",
-                "if": {
-                  "var": "gresol",
-                  "op": "==",
-                  "value": "llit"
-                },
-                "silent": true,
-                "next": "final"
               },
               {
                 "id": "amunt",
@@ -23297,16 +23239,6 @@
                 ]
               },
               {
-                "id": "amunt_ja",
-                "text": "dlg.grua.opt.amunt",
-                "if": {
-                  "flag": "gresol_baix",
-                  "is": false
-                },
-                "silent": true,
-                "next": "ja_amunt"
-              },
-              {
                 "id": "avall",
                 "text": "dlg.grua.opt.avall",
                 "if": {
@@ -23355,20 +23287,18 @@
                 ]
               },
               {
-                "id": "avall_ja",
-                "text": "dlg.grua.opt.avall",
-                "if": {
-                  "flag": "gresol_baix"
-                },
-                "silent": true,
-                "next": "ja_avall"
-              },
-              {
                 "id": "bolca_buit",
                 "text": "dlg.grua.opt.bolca",
                 "if": {
-                  "flag": "gresol_ple",
-                  "is": false
+                  "all": [
+                    {
+                      "flag": "gresol_ple",
+                      "is": false
+                    },
+                    {
+                      "flag": "gresol_baix"
+                    }
+                  ]
                 },
                 "silent": true,
                 "next": "bolca_buit"
@@ -23385,33 +23315,14 @@
                       "var": "gresol",
                       "op": "==",
                       "value": "canal"
+                    },
+                    {
+                      "flag": "gresol_baix"
                     }
                   ]
                 },
                 "silent": true,
                 "next": "bolca_canal"
-              },
-              {
-                "id": "bolca_dalt",
-                "text": "dlg.grua.opt.bolca",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "gresol_ple"
-                    },
-                    {
-                      "var": "gresol",
-                      "op": "==",
-                      "value": "llit"
-                    },
-                    {
-                      "flag": "gresol_baix",
-                      "is": false
-                    }
-                  ]
-                },
-                "silent": true,
-                "next": "bolca_dalt"
               },
               {
                 "id": "bolca_brut",
@@ -24419,42 +24330,6 @@
             ],
             "goto": "menu"
           },
-          "no_baix": {
-            "lines": [
-              {
-                "who": "iri",
-                "text": "dlg.grua.no_baix"
-              }
-            ],
-            "goto": "menu"
-          },
-          "final": {
-            "lines": [
-              {
-                "who": "iri",
-                "text": "dlg.grua.final"
-              }
-            ],
-            "goto": "menu"
-          },
-          "ja_avall": {
-            "lines": [
-              {
-                "who": "iri",
-                "text": "dlg.grua.ja_avall"
-              }
-            ],
-            "goto": "menu"
-          },
-          "ja_amunt": {
-            "lines": [
-              {
-                "who": "iri",
-                "text": "dlg.grua.ja_amunt"
-              }
-            ],
-            "goto": "menu"
-          },
           "bolca_buit": {
             "lines": [
               {
@@ -24469,15 +24344,6 @@
               {
                 "who": "iri",
                 "text": "dlg.grua.bolca_canal"
-              }
-            ],
-            "goto": "menu"
-          },
-          "bolca_dalt": {
-            "lines": [
-              {
-                "who": "iri",
-                "text": "dlg.grua.bolca_dalt"
               }
             ],
             "goto": "menu"
@@ -24651,6 +24517,10 @@
               {
                 "who": "narrator",
                 "text": "sala.fosa_colada.gresol.8"
+              },
+              {
+                "who": "iri",
+                "text": "sala.fosa_colada.gresol.sorra"
               }
             ]
           }
@@ -29995,13 +29865,8 @@
       "dlg.grua.cap_llit": "Cap al llit.",
       "dlg.grua.avall": "Avall, a poc a poc.",
       "dlg.grua.amunt": "Amunt.",
-      "dlg.grua.no_baix": "Així de baix, s'enduria tot el que troba. Primer, amunt.",
-      "dlg.grua.final": "Més enllà no va: el carril s'acaba.",
-      "dlg.grua.ja_avall": "Més avall, no: tocaria a terra.",
-      "dlg.grua.ja_amunt": "Ja és amunt del tot.",
       "dlg.grua.bolca_buit": "Bolcar-lo buit? En cauria pols i prou.",
       "dlg.grua.bolca_canal": "Aquí no hi ha cap motlle. Ho tiraria tot a terra.",
-      "dlg.grua.bolca_dalt": "Des d'aquí dalt, esquitxaria fora del motlle. Més avall.",
       "dlg.capitana.recorda.3b": "Albarà: el porta la teva germana. Que me'l doni, o dona-me'l tu: tant me fa qui.",
       "dlg.teclat.opt.tecleja": "Teclejo una paraula.",
       "dlg.teclat.lletra.m": "M",
@@ -31361,6 +31226,7 @@
       "sala.fosa_colada.gresol.6": "Es refon tot i es torna a començar.",
       "sala.fosa_colada.gresol.7": "Abocant...",
       "sala.fosa_colada.gresol.8": "El metall cau al motlle com mel encesa. Tres claus, tres raigs de llum.",
+      "sala.fosa_colada.gresol.sorra": "Ara, la resta de la sorra a sobre, de pressa!",
       "sala.fosa_colada.gresol.10": "Sense el motlle preparat al llit, no.",
       "sala.fosa_colada.gresol.11": "Ja hem fet les claus.",
       "sala.fosa_colada.grua_pont.1": "Els comandaments del pont grua. Mouen el gresol del forn al motlle.",
@@ -31368,7 +31234,7 @@
       "sala.fosa_colada.llit.2": "El llit de colada. Aquí va el motlle, ben colgat de sorra.",
       "sala.fosa_colada.llit.3": "La sorra d'aquí és pedra picada. Les claus sortirien amb grava. Cal sorra fina de debò.",
       "sala.fosa_colada.llit.4": "...Al fons del mar d'Aqua n'hi havia una platja. Fina com farina.",
-      "sala.fosa_colada.llit.5": "El motlle al llit, ben colgat de sorra fina d'Aqua. Preparat.",
+      "sala.fosa_colada.llit.5": "El motlle al llit, ben colgat de sorra fina d'Aqua. La resta del sac, per tapar-lo quan hi hagi el metall.",
       "sala.fosa_colada.llit.6": "Ara, una al forn i l'altra aquí, a la colada.",
       "sala.fosa_colada.llit.7": "Primer, el motlle.",
       "sala.fosa_colada.llit.8": "Sorra a sobre. A refredar.",
@@ -31404,7 +31270,7 @@
       "sala.verdant_jardi.panell_preu.2": "Aquí ningú no el mira. A Verdant, el preu no es pregunta.",
       "sala.verdant_cobert.tomaquera.1": "La tomaquera, verda. Beu a poc a poc, com ha de ser.",
       "sala.verdant_cobert.tomaquera.2": "Una tomaquera. De debò. Mig seca, amagada darrere dels sacs.",
-      "sala.verdant_cobert.tomaquera.3": "Algú la rega a escondides. Poc. Massa poc.",
+      "sala.verdant_cobert.tomaquera.3": "Algú la rega d'amagat. Poc. Massa poc.",
       "sala.verdant_cobert.tomaquera.4": "Els goters del reg estan tapats de pols de sis anys. Si no els foradem, no regaran.",
       "sala.verdant_cobert.tomaquera.5": "Necessito alguna cosa per foradar-los. Una agulla. ...En tinc una al calaix de la nau.",
       "sala.verdant_cobert.tomaquera.6": "Tubs al test, goters a la terra, el cap del tub a punt per a l'aigua.",

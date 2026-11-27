@@ -141,6 +141,14 @@ describe('Aigua Verne: arreglos de la passada tàctil', () => {
     expect(n.startDialogue('grua').choices.map((c) => c.id)).toEqual(['amunt', 'bolca_buit', 'adeu']);
     expect(n.getVar('temperatura')).toBe(7);
   });
+  it('el mapa aterra directament al port del planeta, sense passar pel pont ni la bodega (tasca 126)', () => {
+    const { n, p, world } = partida();
+    acte1(p, n);
+    viatjar(p, n, 'terra2');
+    expect(world.room).toBe('port_terra2');
+    viatjar(p, n, 'aqua');
+    expect(world.room).toBe('aqua_port');
+  });
   it('subhasta a 31: la pista i la Vet apunten a la reserva (tasca 140)', () => {
     const { n, p } = partida();
     n.apply([{ setFlag: 'sync_subhasta' }, { setVar: 'valvules', value: 3 }, { setVar: 'preu_aigua', value: 31 }]);
