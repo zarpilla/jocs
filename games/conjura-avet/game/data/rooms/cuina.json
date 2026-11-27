@@ -357,6 +357,19 @@
         {
           "verb": "use",
           "item": "valeriana",
+          "if": {
+            "flag": "sunifred_girat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.copa_girat"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "valeriana",
           "lines": [
             {
               "who": "player",

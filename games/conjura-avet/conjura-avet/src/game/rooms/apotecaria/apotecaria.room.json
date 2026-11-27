@@ -318,33 +318,33 @@
     {
       "id": "atramentum",
       "active": true,
-      "description": "pot de pedra",
+      "description": "pot amb etiqueta",
       "zIndex": 6,
       "points": [
         {
-          "x": 378,
-          "y": 21
+          "x": 383,
+          "y": 102
         },
         {
-          "x": 399,
-          "y": 21
+          "x": 403,
+          "y": 102
         },
         {
-          "x": 399,
-          "y": 41
+          "x": 403,
+          "y": 121
         },
         {
-          "x": 378,
-          "y": 41
+          "x": 383,
+          "y": 121
         }
       ],
       "walkToPoint": {
-        "x": 382,
+        "x": 389,
         "y": 176
       },
       "lookAtPoint": {
-        "x": 388,
-        "y": 41
+        "x": 393,
+        "y": 121
       }
     },
     {

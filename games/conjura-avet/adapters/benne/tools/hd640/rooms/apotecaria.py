@@ -6,7 +6,7 @@ foscos. La càmera és a la cantonada de davant a la dreta i mira cap a la canto
 avall:
   - a la paret del fons, els **prestatges** fins al sostre plens de flascons, pots i capses; al prestatge de l'abast,
     els quatre flascons amb etiqueta (`flasco_menta`, `flasco_ruda`, `flasco_salvia`, `flasco_sense_nom`, aquest amb
-    l'etiqueta en blanc); a dalt de tot, el pot de pedra de l'**atramentum**; a la dreta, la **porta** del claustre;
+    l'etiqueta en blanc) i, al seu costat, el pot de pedra de l'**atramentum**; a la dreta, la **porta** del claustre;
   - a la paret de l'esquerra, la **llar** amb el carbó encès i la campana;
   - al mig, la **taula** girada (pergamins, el xarop verd, una espelma, la gerra de **mel**, un prop); damunt, a la
     biga, els **manats** d'herbes penjats, amb el **cardo** (un prop: un cap espinós i sec);
@@ -43,7 +43,7 @@ FLASCONS = {
     'flasco_salvia': (180, ((34, 42, 40), (60, 72, 66), (92, 108, 98), (130, 146, 132), (190, 204, 190)), 'SÀLVIA'),
     'flasco_sense_nom': (210, ((48, 26, 10), (86, 48, 16), (130, 78, 24), (176, 116, 40), (226, 176, 96)), ''),
 }
-ATRAMENTUM = (236, 150)                            # x del mig (textura), lleixa (la de dalt)
+ATRAMENTUM = (244, 58)                             # x del mig (món), lleixa (la de l'abast, al costat dels flascons)
 PORTA = (348, 404, 124)                            # x0, x1, alçada (paret del fons)
 LLAR = (70, 170, 54, 40)                           # z0, z1 (paret de l'esquerra), alçada de la boca, fondària
 TAULA = (196, 118, 138, 64, 50, 0.22)              # cx, cz, ample, fons, alçada, gir
@@ -117,7 +117,7 @@ def _prestatges():
         else:
             xs = list(range(5 + (i * 7) % 11, w - 6, 11 + i % 3))
         for k, x in enumerate(xs):
-            if y0 == 150 and abs(x + PREST[0] - ATRAMENTUM[0]) < 16:
+            if y0 == ATRAMENTUM[1] and abs(x + PREST[0] - ATRAMENTUM[0]) < 16:
                 continue
             hgt = min(base - top - 6, 10 + int(hr(k, i, 5) * 14))
             if hgt < 6:
@@ -129,7 +129,7 @@ def _prestatges():
             else:
                 _flasco(cv, x, base - 4, hgt, rams[kind], None, forma=kind % 3)
         # i alguna espelma consumida
-    # l'atramentum: un pot de pedra gros, a dalt de tot, amb l'etiqueta grossa
+    # l'atramentum: un pot de pedra gros, al costat dels quatre flascons, amb l'etiqueta grossa
     ax = ATRAMENTUM[0] - PREST[0]
     base = HW - ATRAMENTUM[1] - 4
     for y in range(base - 18, base + 1):
