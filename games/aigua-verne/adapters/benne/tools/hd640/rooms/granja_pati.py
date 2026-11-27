@@ -473,7 +473,8 @@ GEOMETRIA = {
     'things': {
         'porta_casa': {'rect': _rect(_facana(78, 104), _facana(128, 185)),
                        'walk': _p(_PORTA[0] + NF[0] * 26, _PORTA[2] + NF[2] * 26)},
-        'porta_graner': {'rect': _rect((GRANER_X - 42, 72, GRANER_Z), (GRANER_X + 42, 0, GRANER_Z)),
+        # tot el graner (de lluny, la porta sola és massa petita per encertar-la)
+        'porta_graner': {'rect': _rect((GRANER_X - 140, 120, GRANER_Z), (GRANER_X + 84, 0, GRANER_Z)),
                          'walk': _p(GRANER_X, 1272)},
         'cami_port': {'rect': (1240, 196, ROOM_W - 1, 258), 'walk': _p(760, 640)},
         'senyal_port': {'rect': _rect((SENYAL_PORT[0] - 22, 40, SENYAL_PORT[2]), (SENYAL_PORT[0] + 22, 0, SENYAL_PORT[2])),
