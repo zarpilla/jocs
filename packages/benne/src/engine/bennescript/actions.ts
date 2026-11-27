@@ -10,6 +10,7 @@ import {
   writeSavedCharacterSpeechPosition,
 } from '../benneAnimationRuntime.js';
 import { getCharacterWorldFeet } from '../characterFeet.js';
+import { computeSpeechLineDurationMs, getSpeechSettings } from '../ConfigManager.js';
 import { playDirectionalAnimation, resolveInitialIdleFacing } from '../directionalCharacterAnimation.js';
 import type { GameStateManager } from '../gameState/GameStateManager.js';
 import { tryGetActiveGameStateManager } from '../gameState/resolveGameStateManager.js';
@@ -277,7 +278,12 @@ export const NARRATOR_VOICE_PREFIX = 'narrator';
  * Narration in the display-text overlay. Waits until clicked away (or skipped).
  * Amb la marca de veu davant (`|<número>| text`, com a `say`), sona `narrator<número>` mentre es mostra, i es talla
  * en tancar-la.
+ * Own change: like a `say` line, it also goes away by itself, after the reading time of the speech settings (or the
+ * whole recording, when it has a voice): a narrator box that only a click closed looked like a hung game.
  */
+/** A breath after the narrator's recording, as after a `say` line's. */
+const DISPLAY_VOICE_TAIL_MS = 250;
+
 export const display = timed((rawText: string): Task => {
   const scene = roomFor('display');
   // A skipped cutscene shows no narration; the end state is simply "dismissed".
@@ -292,10 +298,21 @@ export const display = timed((rawText: string): Task => {
     const stem = `${NARRATOR_VOICE_PREFIX}${voiceNumber}`;
     void waitForVoice(scene, stem, VOICE_LOAD_WAIT_MS).then((ok) => {
       if (ok && !completed) {
-        voice = tryGetBenneSoundManager(scene.game)?.playVoice(stem) ?? null;
+        const playing = tryGetBenneSoundManager(scene.game)?.playVoice(stem) ?? null;
+        voice = playing;
+        // The box stays for the whole recording (plus a breath), not only the reading time.
+        if (playing?.durationMs != null) {
+          const minMs = getSpeechSettings(tryGetActiveGameStateManager()).minDurationMs;
+          holdFor(Math.max(minMs, playing.durationMs + DISPLAY_VOICE_TAIL_MS));
+        }
       }
     });
   }
+  let timer: Phaser.Time.TimerEvent | null = null;
+  const holdFor = (ms: number): void => {
+    timer?.remove(false);
+    timer = scene.time.delayedCall(ms, () => finish());
+  };
   let finish!: () => void;
   const shown = new Promise<void>((resolve) => {
     let unregisterSkip: (() => void) | null = null;
@@ -304,6 +321,8 @@ export const display = timed((rawText: string): Task => {
         return;
       }
       completed = true;
+      timer?.remove(false);
+      timer = null;
       unregisterSkip?.();
       voice?.stop();
       scene.clearScriptedDialogClickToSkip();
@@ -314,6 +333,7 @@ export const display = timed((rawText: string): Task => {
     scene.pushScriptedDialogInputSuppression();
     scene.setDisplayTextOverlay({ visible: true, text });
     scene.setScriptedDialogClickToSkip(finish);
+    if (!completed) holdFor(computeSpeechLineDurationMs(text, tryGetActiveGameStateManager()));
     unregisterSkip = scene.registerCutsceneSkipFinisher(finish);
   });
   return new Task(shown, { finishNow: finish, cancel: finish });
