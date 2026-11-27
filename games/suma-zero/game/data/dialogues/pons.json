@@ -77,7 +77,7 @@
           "if": {
             "all": [
               {
-                "flag": "factura_vista"
+                "hasItem": "factura"
               },
               {
                 "flag": "nomina_vista"
@@ -136,6 +136,9 @@
         {
           "addVar": "aliats",
           "amount": 1
+        },
+        {
+          "takeItem": "factura"
         }
       ]
     },

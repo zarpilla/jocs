@@ -110,9 +110,21 @@
               "who": "player",
               "text": "sala.bcmu_avantdespatx.factura.agafa"
             }
+          ],
+          "effects": [
+            {
+              "giveItem": "factura"
+            },
+            {
+              "setFlag": "factura_vista"
+            }
           ]
         }
-      ]
+      ],
+      "visibleIf": {
+        "hasItem": "factura",
+        "is": false
+      }
     },
     "nomina": {
       "name": "sala.bcmu_avantdespatx.nomina.nom",

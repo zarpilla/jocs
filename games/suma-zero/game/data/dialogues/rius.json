@@ -109,10 +109,33 @@
               {
                 "flag": "aliada_rius",
                 "is": false
+              },
+              {
+                "flag": "wifi_maquina"
               }
             ]
           },
           "next": "arreglar"
+        },
+        {
+          "id": "sense_xarxa",
+          "text": "dlg.rius.opt.arreglar",
+          "if": {
+            "all": [
+              {
+                "flag": "sap_app"
+              },
+              {
+                "flag": "aliada_rius",
+                "is": false
+              },
+              {
+                "flag": "wifi_maquina",
+                "is": false
+              }
+            ]
+          },
+          "next": "sense_xarxa"
         },
         {
           "id": "cafe",
@@ -216,6 +239,23 @@
           "text": "aliat.rius"
         }
       ]
+    },
+    "sense_xarxa": {
+      "lines": [
+        {
+          "who": "rius",
+          "text": "dlg.rius.arreglar1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.rius.sense_xarxa1"
+        },
+        {
+          "who": "rius",
+          "text": "dlg.rius.sense_xarxa2"
+        }
+      ],
+      "goto": "menu"
     },
     "targeta": {
       "lines": [

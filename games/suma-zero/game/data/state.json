@@ -67,6 +67,7 @@
     "llibre_trobat": false,
     "llista_feta": false,
     "maleti_vist": false,
+    "maleti_olor": false,
     "marcel_ballester": false,
     "marcel_clau": false,
     "marcel_comandament": false,
@@ -108,6 +109,7 @@
     "sap_pons": false,
     "sap_rius": false,
     "sap_rockefeller": false,
+    "sap_any_gos": false,
     "soler_distret": false,
     "sync_aeroport": false,
     "sync_collaret": false,
@@ -128,7 +130,10 @@
     "virus_aturat": false,
     "virus_executat": false,
     "xarxa_connectada": false,
-    "diu_cable": false
+    "diu_cable": false,
+    "wifi_maquina": false,
+    "hipoteca_vista": false,
+    "bateria_baixa": false
   },
   "vars": {
     "alarma": 0,

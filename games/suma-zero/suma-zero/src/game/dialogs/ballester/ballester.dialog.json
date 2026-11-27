@@ -91,7 +91,7 @@
     {
       "id": "clau_relaxat__veritat",
       "scriptName": "clau_relaxat__veritat",
-      "text": "Venim a robar el banc. Bé: a repartir-lo.",
+      "text": "Aquesta carta de la hipoteca... Venim a robar el banc. Bé: a repartir-lo.",
       "enabled": false,
       "say": false
     },
@@ -101,6 +101,14 @@
       "text": "Vingui amb nosaltres. A la UE paguem millor.",
       "enabled": false,
       "say": false
+    },
+    {
+      "id": "clau_relaxat__adeu",
+      "scriptName": "clau_relaxat__adeu",
+      "text": "No, res.",
+      "enabled": false,
+      "say": false,
+      "last": true
     },
     {
       "id": "clau_tens__or",

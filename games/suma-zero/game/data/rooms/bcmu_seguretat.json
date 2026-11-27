@@ -208,6 +208,15 @@
             {
               "who": "player",
               "text": "sala.bcmu_seguretat.monitors.look_tapats"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.monitors.carta"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "hipoteca_vista"
             }
           ]
         },
@@ -220,6 +229,15 @@
             {
               "who": "player",
               "text": "sala.bcmu_seguretat.monitors.look_iri"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.monitors.carta"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "hipoteca_vista"
             }
           ]
         },
@@ -229,6 +247,15 @@
             {
               "who": "player",
               "text": "sala.bcmu_seguretat.monitors.look"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.monitors.carta"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "hipoteca_vista"
             }
           ]
         }

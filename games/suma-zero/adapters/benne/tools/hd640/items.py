@@ -487,6 +487,21 @@ def compte_nomines(f):
     f.fill(f.P([(44, 4), (53, 6), (51, 13)]), PAP_C, 2.6, rim=(0.4, -1.0))
 
 
+def factura(f):
+    """La factura de la perruqueria canina: un full imprès, amb la capçalera daurada, les línies i el total en vermell."""
+    S = f.P([(14, 3), (50, 3), (50, 33), (14, 33)])
+    paper(f, S, PAP_W, 4.6, w=36, h=30)
+    for x in range(16, 49):                                              # la capçalera daurada
+        for y in range(5, 9):
+            f.px(x, y, GOLDK, 2.6 + 0.4 * (y == 5))
+    for y in (12, 15, 18, 21):                                           # les línies del detall
+        f.scrib(17, 40, y, INKG, 1.8, seed=y, dens=0.8, tall=0)
+        f.scrib(43, 47, y, INKG, 1.8, seed=y + 1, dens=1.0, tall=0)
+    for x in range(17, 48):
+        f.px(x, 24, RULE, 1.6)
+    f.text(30, 26, '4200', STAMP, 2.0)                                   # el total
+
+
 def galleda(f):
     """La galleda blava de fregar: un tronc de con amb nervadures, la nansa d'acer i l'escorredor groc."""
     S = f.P([(15, 11), (49, 11), (45, 33), (19, 33)])
@@ -603,6 +618,7 @@ ICONS = {fn.__name__: fn for fn in (
     caixa_cartro, cable_alimentacio, pizza, auricular, auriculars_boto, auricular_boto,
     cable_xarxa, entrepa, clau_casa, tap, recepta, comandament, maleti, ulleres, acreditacions, acreditacio,
     entrepa_suis, entrepa_ballester, targeta, compte_nomines, galleda, cartell, extintor, clau_llibre, clauer,
+    factura,
 )}
 ICONS['auriculars'] = auricular   # l'objecte de l'Iri es diu «auriculars»
 

@@ -154,7 +154,7 @@ export function jugarBar(p: Jugador, o: OpcionsActe1 = {}) {
 export function jugarAeroport(p: Jugador, o: OpcionsActe1 = {}) {
   if (o.preparacio) {
     p.do('look', 'maleti');
-    p.talk('empleat', 'maleti', 'llimona', 'adeu');
+    p.talk('empleat', 'maleti', 'agenda', 'maleti', 'llimona', 'adeu');
     p.do('pickUp', 'ulleres');
   }
   p.talk('soler', 'fill', 'nom_curt', 'edat_curt', 'roba_curt');
@@ -202,7 +202,10 @@ export function jugarVestibul(p: Jugador) {
 /** Les escenes 4b i 5: l'Iri puja amb la targeta, atura el robot, tapa les càmeres i arriba al Llibre Major. */
 export function jugarTercerPis(p: Jugador, o: OpcionsActe2 = {}) {
   if (p.active !== 'iri') p.switchTo('iri');
-  if (o.aliats) p.talk('rius', 'mobil', 'arreglar');
+  if (o.aliats) {
+    p.do('look', 'maquina');
+    p.talk('rius', 'mobil', 'arreglar');
+  }
   else p.talk('rius', 'cafe');
   p.do('use', 'ascensor');
   const robot = o.robot ?? (o.aliats ? 'codi' : 'entrepa');
@@ -244,6 +247,7 @@ export function jugarCollaret(p: Jugador, o: OpcionsActe2 = {}) {
     p.do('use', 'llibre');
     p.do('use', 'llibre');
     p.switchTo('vet');
+    p.do('look', 'monitors');
     p.talk('ballester', 'veritat');
     p.do('pickUp', 'collaret');
   } else {
@@ -282,7 +286,7 @@ export interface OpcionsActe3 {
 
 /** L'avantdespatx: la Vet mira la factura i la nòmina i les llegeix a la Pons (l'única manera de passar). */
 export function passarPons(p: Jugador) {
-  p.do('look', 'factura');
+  p.do('pickUp', 'factura');
   p.do('look', 'nomina');
   p.talk('pons', 'escoltar');
 }
@@ -293,8 +297,9 @@ export function jugarDespatx(p: Jugador, o: OpcionsActe3 = {}) {
   p.do('use', 'ascensor');
   passarPons(p);
   p.do('use', 'porta');
+  p.do('look', 'bol');
   p.switchTo('iri');
-  p.talk('llibre', 'rockefeller');
+  p.talk('llibre', 'rockefeller_any');
   const mobil = o.mobil ?? 'vet';
   p.switchTo('vet');
   if (mobil === 'vet') {
@@ -305,6 +310,7 @@ export function jugarDespatx(p: Jugador, o: OpcionsActe3 = {}) {
     p.do('pickUp', 'mobil'); // el llegeix
     p.talk('despatx', 'gos'); // tapa un torn més
   } else {
+    if (mobil === 'pons') p.talk('despatx', 'gos'); // les fotos del gos li buiden la bateria
     p.talk('despatx', mobil);
     p.switchTo('iri');
     p.do('use', 'llibre'); // el codi el llegeix qui té el mòbil

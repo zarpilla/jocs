@@ -434,7 +434,10 @@
         {
           "id": "veritat",
           "text": "dlg.ballester.opt.veritat",
-          "next": "veritat"
+          "next": "veritat",
+          "if": {
+            "flag": "hipoteca_vista"
+          }
         },
         {
           "id": "mentida",
@@ -450,6 +453,11 @@
             ]
           },
           "next": "mentida"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.ballester.opt.adeu_clau",
+          "end": true
         }
       ]
     },

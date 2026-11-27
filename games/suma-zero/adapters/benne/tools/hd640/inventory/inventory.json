@@ -503,6 +503,48 @@
         "h": 36
       },
       "duration": 100
+    },
+    "inventory 24.aseprite": {
+      "frame": {
+        "x": 1560,
+        "y": 0,
+        "w": 65,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 36
+      },
+      "duration": 100
+    },
+    "inventory 25.aseprite": {
+      "frame": {
+        "x": 1625,
+        "y": 0,
+        "w": 65,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 36
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -511,7 +553,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1560,
+      "w": 1690,
       "h": 36
     },
     "scale": "1",
@@ -650,37 +692,51 @@
         "color": "#000000ff"
       },
       {
-        "name": "galleda",
+        "name": "factura",
         "from": 19,
         "to": 19,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "cartell",
+        "name": "galleda",
         "from": 20,
         "to": 20,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "extintor",
+        "name": "cartell",
         "from": 21,
         "to": 21,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "clau_llibre",
+        "name": "extintor",
         "from": 22,
         "to": 22,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "clauer",
+        "name": "clau_llibre",
         "from": 23,
         "to": 23,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "clauer",
+        "from": 24,
+        "to": 24,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "auricular_boto",
+        "from": 25,
+        "to": 25,
         "direction": "forward",
         "color": "#000000ff"
       }

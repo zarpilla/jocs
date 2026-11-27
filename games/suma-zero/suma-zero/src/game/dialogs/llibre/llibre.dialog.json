@@ -24,6 +24,13 @@
       "say": false
     },
     {
+      "id": "menu__rockefeller_any",
+      "scriptName": "menu__rockefeller_any",
+      "text": "Rockefeller2016.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__sostenibilitat",
       "scriptName": "menu__sostenibilitat",
       "text": "Sostenibilitat.",

@@ -113,7 +113,7 @@ describe('Acte 3 · pistes', () => {
     expect(n.activeHints()[0]).toBe('iri_contrasenya_mirar');
     p.talk('llibre');
     expect(n.flag('pista_contrasenya')).toBe(true);
-    expect(n.activeHints()[0]).toBe(n.flag('sap_rockefeller') ? 'iri_contrasenya' : 'iri_gos');
+    expect(n.activeHints()[0]).toBe(!n.flag('sap_rockefeller') ? 'iri_gos' : n.flag('sap_any_gos') ? 'iri_contrasenya' : 'iri_any');
   });
 });
 
@@ -124,8 +124,9 @@ describe('Acte 3 · el mòbil del Director', () => {
     p.do('use', 'ascensor');
     passarPons(p);
     p.do('use', 'porta');
+    p.do('look', 'bol');
     p.switchTo('iri');
-    p.talk('llibre', 'rockefeller');
+    p.talk('llibre', 'rockefeller_any');
     const lines = texts(p.do('use', 'llibre'));
     expect(lines).toContain('Intent d\'aturada no autoritzat');
     expect(n.flag('codi_demanat')).toBe(false);
@@ -146,8 +147,9 @@ describe('Acte 3 · el mòbil del Director', () => {
     p.do('use', 'ascensor');
     passarPons(p);
     p.do('use', 'porta');
+    p.do('look', 'bol');
     p.switchTo('iri');
-    p.talk('llibre', 'rockefeller');
+    p.talk('llibre', 'rockefeller_any');
     p.switchTo('vet');
     p.talk('despatx', 'gos'); // un sol torn de marge
     p.switchTo('iri');
@@ -164,13 +166,34 @@ describe('Acte 3 · el mòbil del Director', () => {
     p.do('use', 'ascensor');
     passarPons(p);
     p.do('use', 'porta');
+    p.do('look', 'bol');
     p.switchTo('iri');
-    expect(() => p.talk('llibre', 'rockefeller')).toThrow();
+    expect(() => p.talk('llibre', 'rockefeller_any')).toThrow();
     expect(n.flag('pista_contrasenya')).toBe(true);
     p.switchTo('vet');
     expect(texts(p.do('look', 'foto'))).toContain('Rockefeller');
     p.switchTo('iri');
-    p.talk('llibre', 'bonfill', 'rockefeller');
+    p.talk('llibre', 'bonfill', 'rockefeller_any');
+    expect(n.flag('contrasenya_ok')).toBe(true);
+  });
+
+  it("el nom del gos sol no n'hi ha prou: cal l'any del bol (030)", () => {
+    const { n, p } = ambElVirus();
+    p.switchTo('vet');
+    p.do('use', 'ascensor');
+    passarPons(p);
+    p.do('use', 'porta');
+    p.switchTo('iri');
+    const pista = texts(p.talk('llibre', 'rockefeller', 'adeu'));
+    expect(pista).not.toContain('Rockefeller2016');
+    expect(pista).toContain('CONTRASENYA INCORRECTA. FORMAT REQUERIT: NOM I ANY, TOT JUNT. COM ELS ADULTS.');
+    expect(n.flag('contrasenya_ok')).toBe(false);
+    expect(n.activeHints()[0]).toBe('iri_any');
+    expect(() => p.talk('llibre', 'rockefeller_any')).toThrow();
+    p.switchTo('vet');
+    expect(texts(p.do('look', 'bol'))).toContain('2016');
+    p.switchTo('iri');
+    p.talk('llibre', 'rockefeller_any');
     expect(n.flag('contrasenya_ok')).toBe(true);
   });
 

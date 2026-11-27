@@ -102,6 +102,18 @@ describe("Acte 1 · la sincronia de l'aeroport", () => {
     return r;
   }
 
+  it("el maletí es reclama ajuntant dues pistes: l'agenda que es veu i l'olor que diu l'empleat (023)", () => {
+    const { n, p } = finsAeroport();
+    expect(() => p.talk('empleat', 'maleti', 'llimona')).toThrow();
+    p.do('look', 'maleti');
+    expect(texts(p.talk('empleat', 'maleti', 'oblit', 'adeu'))).toContain('Article u');
+    expect(() => p.talk('empleat', 'maleti', 'llimona')).toThrow();
+    expect(texts(p.talk('empleat', 'maleti', 'agenda', 'adeu'))).toContain('cítric');
+    p.talk('empleat', 'maleti', 'llimona', 'adeu');
+    expect(n.flag('maleti_olor')).toBe(true);
+    expect(texts(p.do('look', item('maleti')))).toContain('agenda de 2019');
+  });
+
   it("si la Vet no plora després del xiulet, es torna a començar el pas (i es pot tornar a fer)", () => {
     const { n, p } = finsAeroport();
     p.talk('soler', 'fill', 'nom_curt', 'edat_curt', 'roba_curt');

@@ -18,6 +18,10 @@ options.menu__rockefeller.onChoose(() => {
   chooseNarrativeOption('llibre', dialog, 'menu', 'rockefeller')
 })
 
+options.menu__rockefeller_any.onChoose(() => {
+  chooseNarrativeOption('llibre', dialog, 'menu', 'rockefeller_any')
+})
+
 options.menu__sostenibilitat.onChoose(() => {
   chooseNarrativeOption('llibre', dialog, 'menu', 'sostenibilitat')
 })

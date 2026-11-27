@@ -47,20 +47,35 @@
         {
           "id": "papers",
           "text": "dlg.empleat.opt.papers",
-          "next": "no"
+          "next": "papers"
+        },
+        {
+          "id": "agenda",
+          "text": "dlg.empleat.opt.agenda",
+          "if": {
+            "flag": "maleti_vist"
+          },
+          "next": "agenda"
         },
         {
           "id": "llimona",
           "text": "dlg.empleat.opt.llimona",
           "if": {
-            "flag": "maleti_vist"
+            "all": [
+              {
+                "flag": "maleti_vist"
+              },
+              {
+                "flag": "maleti_olor"
+              }
+            ]
           },
           "next": "llimona"
         },
         {
           "id": "oblit",
           "text": "dlg.empleat.opt.oblit",
-          "next": "no"
+          "next": "oblit"
         }
       ]
     },
@@ -82,11 +97,39 @@
       ],
       "goto": "menu"
     },
-    "no": {
+    "papers": {
       "lines": [
         {
           "who": "empleat",
-          "text": "dlg.empleat.no"
+          "text": "dlg.empleat.papers"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "maleti_olor"
+        }
+      ],
+      "goto": "menu"
+    },
+    "agenda": {
+      "lines": [
+        {
+          "who": "empleat",
+          "text": "dlg.empleat.agenda"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "maleti_olor"
+        }
+      ],
+      "goto": "menu"
+    },
+    "oblit": {
+      "lines": [
+        {
+          "who": "empleat",
+          "text": "dlg.empleat.oblit"
         }
       ],
       "goto": "menu"

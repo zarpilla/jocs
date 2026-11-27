@@ -18,6 +18,10 @@ options.maleti__papers.onChoose(() => {
   chooseNarrativeOption('empleat', dialog, 'maleti', 'papers')
 })
 
+options.maleti__agenda.onChoose(() => {
+  chooseNarrativeOption('empleat', dialog, 'maleti', 'agenda')
+})
+
 options.maleti__llimona.onChoose(() => {
   chooseNarrativeOption('empleat', dialog, 'maleti', 'llimona')
 })

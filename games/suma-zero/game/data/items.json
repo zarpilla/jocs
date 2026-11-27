@@ -509,6 +509,20 @@
       }
     ]
   },
+  "factura": {
+    "name": "obj.factura.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.factura.look"
+          }
+        ]
+      }
+    ]
+  },
   "galleda": {
     "name": "obj.galleda.nom",
     "interactions": [

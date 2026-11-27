@@ -143,6 +143,11 @@
               "who": "player",
               "text": "sala.bcmu_moll.maquina.look"
             }
+          ],
+          "effects": [
+            {
+              "setFlag": "wifi_maquina"
+            }
           ]
         }
       ]

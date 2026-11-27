@@ -18,6 +18,10 @@ options.menu__arreglar.onChoose(() => {
   chooseNarrativeOption('rius', dialog, 'menu', 'arreglar')
 })
 
+options.menu__sense_xarxa.onChoose(() => {
+  chooseNarrativeOption('rius', dialog, 'menu', 'sense_xarxa')
+})
+
 options.menu__cafe.onChoose(() => {
   chooseNarrativeOption('rius', dialog, 'menu', 'cafe')
 })

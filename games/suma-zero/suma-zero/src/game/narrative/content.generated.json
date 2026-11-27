@@ -98,6 +98,7 @@
         "llibre_trobat": false,
         "llista_feta": false,
         "maleti_vist": false,
+        "maleti_olor": false,
         "marcel_ballester": false,
         "marcel_clau": false,
         "marcel_comandament": false,
@@ -139,6 +140,7 @@
         "sap_pons": false,
         "sap_rius": false,
         "sap_rockefeller": false,
+        "sap_any_gos": false,
         "soler_distret": false,
         "sync_aeroport": false,
         "sync_collaret": false,
@@ -159,7 +161,10 @@
         "virus_aturat": false,
         "virus_executat": false,
         "xarxa_connectada": false,
-        "diu_cable": false
+        "diu_cable": false,
+        "wifi_maquina": false,
+        "hipoteca_vista": false,
+        "bateria_baixa": false
       },
       "vars": {
         "alarma": 0,
@@ -1109,6 +1114,20 @@
               {
                 "who": "player",
                 "text": "obj.compte_nomines.look.vet"
+              }
+            ]
+          }
+        ]
+      },
+      "factura": {
+        "name": "obj.factura.nom",
+        "interactions": [
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.factura.look"
               }
             ]
           }
@@ -3644,9 +3663,21 @@
                     "who": "player",
                     "text": "sala.bcmu_avantdespatx.factura.agafa"
                   }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "factura"
+                  },
+                  {
+                    "setFlag": "factura_vista"
+                  }
                 ]
               }
-            ]
+            ],
+            "visibleIf": {
+              "hasItem": "factura",
+              "is": false
+            }
           },
           "nomina": {
             "name": "sala.bcmu_avantdespatx.nomina.nom",
@@ -4541,7 +4572,7 @@
                 ],
                 "effects": [
                   {
-                    "setFlag": "sap_rockefeller"
+                    "setFlag": "sap_any_gos"
                   }
                 ]
               },
@@ -6110,6 +6141,11 @@
                     "who": "player",
                     "text": "sala.bcmu_moll.maquina.look"
                   }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "wifi_maquina"
+                  }
                 ]
               }
             ]
@@ -7483,6 +7519,15 @@
                   {
                     "who": "player",
                     "text": "sala.bcmu_seguretat.monitors.look_tapats"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.bcmu_seguretat.monitors.carta"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "hipoteca_vista"
                   }
                 ]
               },
@@ -7495,6 +7540,15 @@
                   {
                     "who": "player",
                     "text": "sala.bcmu_seguretat.monitors.look_iri"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.bcmu_seguretat.monitors.carta"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "hipoteca_vista"
                   }
                 ]
               },
@@ -7504,6 +7558,15 @@
                   {
                     "who": "player",
                     "text": "sala.bcmu_seguretat.monitors.look"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.bcmu_seguretat.monitors.carta"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "hipoteca_vista"
                   }
                 ]
               }
@@ -14458,6 +14521,38 @@
           "pista.vet_gos.3"
         ]
       },
+      "vet_any": {
+        "priority": 9,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "pista_contrasenya"
+            },
+            {
+              "flag": "contrasenya_ok",
+              "is": false
+            },
+            {
+              "flag": "sap_rockefeller"
+            },
+            {
+              "flag": "sap_any_gos",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "sap_any_gos"
+        },
+        "levels": [
+          "pista.vet_any.1",
+          "pista.vet_any.2",
+          "pista.vet_any.3"
+        ]
+      },
       "vet_contrasenya": {
         "priority": 8,
         "when": {
@@ -14479,7 +14574,14 @@
                   "is": false
                 },
                 {
-                  "flag": "sap_rockefeller"
+                  "all": [
+                    {
+                      "flag": "sap_rockefeller"
+                    },
+                    {
+                      "flag": "sap_any_gos"
+                    }
+                  ]
                 }
               ]
             }
@@ -14840,6 +14942,9 @@
             },
             {
               "flag": "sap_rockefeller"
+            },
+            {
+              "flag": "sap_any_gos"
             }
           ]
         },
@@ -14875,6 +14980,38 @@
           "pista.iri_gos.1",
           "pista.iri_gos.2",
           "pista.iri_gos.3"
+        ]
+      },
+      "iri_any": {
+        "priority": 9,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "pista_contrasenya"
+            },
+            {
+              "flag": "contrasenya_ok",
+              "is": false
+            },
+            {
+              "flag": "sap_rockefeller"
+            },
+            {
+              "flag": "sap_any_gos",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "sap_any_gos"
+        },
+        "levels": [
+          "pista.iri_any.1",
+          "pista.iri_any.2",
+          "pista.iri_any.3"
         ]
       },
       "iri_demanar": {
@@ -16605,6 +16742,64 @@
                     }
                   ]
                 }
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.aturada.silenci",
+                "if": {
+                  "any": [
+                    {
+                      "hasItem": "compte_nomines",
+                      "who": "iri"
+                    },
+                    {
+                      "flag": "ballester_compte"
+                    }
+                  ]
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "D",
+                    "hold": 1.5
+                  }
+                ]
+              },
+              {
+                "who": "vet",
+                "text": "dlg.aturada.pes1",
+                "if": {
+                  "any": [
+                    {
+                      "hasItem": "compte_nomines",
+                      "who": "iri"
+                    },
+                    {
+                      "flag": "ballester_compte"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.aturada.pes2",
+                "if": {
+                  "any": [
+                    {
+                      "hasItem": "compte_nomines",
+                      "who": "iri"
+                    },
+                    {
+                      "flag": "ballester_compte"
+                    }
+                  ]
+                },
+                "stage": [
+                  {
+                    "who": "player",
+                    "hold": 1.5
+                  }
+                ]
               }
             ],
             "goto": "tria"
@@ -21583,7 +21778,10 @@
               {
                 "id": "veritat",
                 "text": "dlg.ballester.opt.veritat",
-                "next": "veritat"
+                "next": "veritat",
+                "if": {
+                  "flag": "hipoteca_vista"
+                }
               },
               {
                 "id": "mentida",
@@ -21599,6 +21797,11 @@
                   ]
                 },
                 "next": "mentida"
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.ballester.opt.adeu_clau",
+                "end": true
               }
             ]
           },
@@ -23417,6 +23620,9 @@
                     {
                       "flag": "mobil_resolt",
                       "is": false
+                    },
+                    {
+                      "flag": "bateria_baixa"
                     }
                   ]
                 },
@@ -23497,6 +23703,10 @@
               {
                 "who": "bonfill",
                 "text": "dlg.despatx.gos2"
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.despatx.gos_bateria"
               }
             ],
             "effects": [
@@ -23509,6 +23719,9 @@
               {
                 "setVar": "coberta_mobil",
                 "value": 2
+              },
+              {
+                "setFlag": "bateria_baixa"
               }
             ]
           },
@@ -23856,20 +24069,35 @@
               {
                 "id": "papers",
                 "text": "dlg.empleat.opt.papers",
-                "next": "no"
+                "next": "papers"
+              },
+              {
+                "id": "agenda",
+                "text": "dlg.empleat.opt.agenda",
+                "if": {
+                  "flag": "maleti_vist"
+                },
+                "next": "agenda"
               },
               {
                 "id": "llimona",
                 "text": "dlg.empleat.opt.llimona",
                 "if": {
-                  "flag": "maleti_vist"
+                  "all": [
+                    {
+                      "flag": "maleti_vist"
+                    },
+                    {
+                      "flag": "maleti_olor"
+                    }
+                  ]
                 },
                 "next": "llimona"
               },
               {
                 "id": "oblit",
                 "text": "dlg.empleat.opt.oblit",
-                "next": "no"
+                "next": "oblit"
               }
             ]
           },
@@ -23891,11 +24119,39 @@
             ],
             "goto": "menu"
           },
-          "no": {
+          "papers": {
             "lines": [
               {
                 "who": "empleat",
-                "text": "dlg.empleat.no"
+                "text": "dlg.empleat.papers"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "maleti_olor"
+              }
+            ],
+            "goto": "menu"
+          },
+          "agenda": {
+            "lines": [
+              {
+                "who": "empleat",
+                "text": "dlg.empleat.agenda"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "maleti_olor"
+              }
+            ],
+            "goto": "menu"
+          },
+          "oblit": {
+            "lines": [
+              {
+                "who": "empleat",
+                "text": "dlg.empleat.oblit"
               }
             ],
             "goto": "menu"
@@ -23937,7 +24193,29 @@
                 "who": "player",
                 "text": "dlg.llibre.pista_si",
                 "if": {
-                  "flag": "sap_rockefeller"
+                  "all": [
+                    {
+                      "flag": "sap_rockefeller"
+                    },
+                    {
+                      "flag": "sap_any_gos",
+                      "is": false
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.llibre.pista_tot",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "sap_rockefeller"
+                    },
+                    {
+                      "flag": "sap_any_gos"
+                    }
+                  ]
                 }
               }
             ],
@@ -23966,6 +24244,21 @@
                 "if": {
                   "flag": "sap_rockefeller"
                 },
+                "next": "nomes_nom"
+              },
+              {
+                "id": "rockefeller_any",
+                "text": "dlg.llibre.opt.rockefeller_any",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "sap_rockefeller"
+                    },
+                    {
+                      "flag": "sap_any_gos"
+                    }
+                  ]
+                },
                 "next": "ok"
               },
               {
@@ -23986,6 +24279,23 @@
               {
                 "who": "narrator",
                 "text": "dlg.llibre.mal"
+              }
+            ],
+            "goto": "menu"
+          },
+          "nomes_nom": {
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "dlg.llibre.mal_any"
+              },
+              {
+                "who": "player",
+                "text": "dlg.llibre.mal_any2",
+                "if": {
+                  "flag": "sap_any_gos",
+                  "is": false
+                }
               }
             ],
             "goto": "menu"
@@ -24844,7 +25154,7 @@
                 "if": {
                   "all": [
                     {
-                      "flag": "factura_vista"
+                      "hasItem": "factura"
                     },
                     {
                       "flag": "nomina_vista"
@@ -24903,6 +25213,9 @@
               {
                 "addVar": "aliats",
                 "amount": 1
+              },
+              {
+                "takeItem": "factura"
               }
             ]
           },
@@ -25161,10 +25474,33 @@
                     {
                       "flag": "aliada_rius",
                       "is": false
+                    },
+                    {
+                      "flag": "wifi_maquina"
                     }
                   ]
                 },
                 "next": "arreglar"
+              },
+              {
+                "id": "sense_xarxa",
+                "text": "dlg.rius.opt.arreglar",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "sap_app"
+                    },
+                    {
+                      "flag": "aliada_rius",
+                      "is": false
+                    },
+                    {
+                      "flag": "wifi_maquina",
+                      "is": false
+                    }
+                  ]
+                },
+                "next": "sense_xarxa"
               },
               {
                 "id": "cafe",
@@ -25268,6 +25604,23 @@
                 "text": "aliat.rius"
               }
             ]
+          },
+          "sense_xarxa": {
+            "lines": [
+              {
+                "who": "rius",
+                "text": "dlg.rius.arreglar1"
+              },
+              {
+                "who": "player",
+                "text": "dlg.rius.sense_xarxa1"
+              },
+              {
+                "who": "rius",
+                "text": "dlg.rius.sense_xarxa2"
+              }
+            ],
+            "goto": "menu"
           },
           "targeta": {
             "lines": [
@@ -26060,12 +26413,15 @@
       "dlg.diu.opt.cables": "Diu, deixa els cables, sisplau.",
       "dlg.diu.opt.gracies": "Gràcies per deixar-me treballar.",
       "dlg.empleat.adeu": "Si perd alguna cosa, ja sap on soc.",
+      "dlg.empleat.agenda": "Una agenda. I què més? Perquè aquest maletí fa una olor de cítric que tomba d'esquena.",
       "dlg.empleat.hola": "Objectes perduts. Ha perdut alguna cosa? Tothom perd alguna cosa.",
-      "dlg.empleat.llimona1": "...Exacte. És seu. Signi aquí.",
+      "dlg.empleat.llimona1": "...Una agenda i una llimona. Exacte. És seu. Signi aquí.",
       "dlg.empleat.llimona2": "La Vet signa amb una lletra que no és la seva.",
       "dlg.empleat.maleti": "Ah, sí? Què hi ha a dins?",
-      "dlg.empleat.no": "No.",
+      "dlg.empleat.oblit": "Si no ho recorda, no és seu. Ho diu el reglament. Article u.",
+      "dlg.empleat.papers": "Papers. Tothom diu papers. Els papers no fan aquesta olor de cítric.",
       "dlg.empleat.opt.adeu": "Res, gràcies.",
+      "dlg.empleat.opt.agenda": "Una agenda de 2019.",
       "dlg.empleat.opt.llimona": "Una agenda de 2019 i una llimona.",
       "dlg.empleat.opt.maleti": "Aquell maletí és meu.",
       "dlg.empleat.opt.oblit": "Ara mateix no ho recordo.",
@@ -26137,7 +26493,7 @@
       "dlg.tomas.opt.cafe2": "Un altre cafè per a en Marcel?",
       "dlg.tomas.opt.comandament": "Em deixes el comandament de la tele?",
       "dlg.tomas.opt.wifi": "Quina és la contrasenya de la wifi?",
-      "dlg.tomas.wifi": "Està al rètol. Sempre ho ha estat. Llegeix, que per això el vaig penjar.",
+      "dlg.tomas.wifi": "La canvio cada dilluns: és el lema del rètol, tot junt. Llegeix, que per això el vaig penjar.",
       "dlg.soler.adeu": "Bon viatge.",
       "dlg.soler.busca1": "Samarreta vermella, set anys. El busco. No es mogui.",
       "dlg.soler.busca2": "El vigilant deixa la porta de personal i se'n va a buscar-lo per la terminal.",
@@ -26251,10 +26607,12 @@
       "dlg.rius.opt.cafe": "Rius, em convides a un cafè?",
       "dlg.rius.opt.adeu": "Res. Ja et deixo treballar.",
       "dlg.rius.mobil1": "L'aplicació de la subcontracta. Ens descompta els minuts que passem al lavabo.",
-      "dlg.rius.mobil2": "I avui s'ha penjat. Si no fitxem, no cobrem el dia. Tota la colla.",
+      "dlg.rius.mobil2": "I avui s'ha penjat: aquí baix no hi ha cobertura. Si no fitxem, no cobrem el dia. Tota la colla.",
       "dlg.rius.arreglar1": "Tu mateixa. Pitjor no el pots deixar.",
+      "dlg.rius.sense_xarxa1": "Sense xarxa, aquest mòbil no torna a la vida ni que li canti. Necessito una wifi.",
+      "dlg.rius.sense_xarxa2": "Aquí baix? Ni la de la màquina de cafè, que la té i tot.",
       "dlg.rius.arreglar2": "Tranquil. Respira. Ningú no et vol mal.",
-      "dlg.rius.arreglar3": "L'Iri parla al mòbil com qui calma un gat espantat. El mòbil, agraït, torna a funcionar.",
+      "dlg.rius.arreglar3": "L'Iri connecta el mòbil a la wifi de la màquina de cafè i li parla com qui calma un gat espantat. L'aplicació, agraïda, torna a funcionar.",
       "dlg.rius.arreglar4": "I el comptador del lavabo... s'ha esborrat. Quina llàstima.",
       "dlg.rius.arreglar5": "Ha fitxat. Tota la colla ha fitxat!",
       "dlg.rius.arreglar6": "Ja l'havies agafada, oi, la targeta? ...Bé. Ara te la deixo.",
@@ -26327,7 +26685,7 @@
       "dlg.ballester.hipoteca1": "Sap què? Jo soc el que més temps porta aquí. I el que menys guanya dels que porten corbata.",
       "dlg.ballester.hipoteca2": "I per què no se'n va?",
       "dlg.ballester.hipoteca3": "Perquè tinc una hipoteca. I el banc... és el meu cap.",
-      "dlg.ballester.opt.veritat": "Venim a robar el banc. Bé: a repartir-lo.",
+      "dlg.ballester.opt.veritat": "Aquesta carta de la hipoteca... Venim a robar el banc. Bé: a repartir-lo.",
       "dlg.ballester.opt.mentida": "Vingui amb nosaltres. A la UE paguem millor.",
       "dlg.ballester.tens": "Alguna cosa més, senyora?",
       "dlg.ballester.opt.or": "Quin collaret més bonic. És d'or?",
@@ -26349,7 +26707,7 @@
       "dlg.pons.hola1": "Pons. Secretària de Direcció. El Director no rep.",
       "dlg.pons.hola2": "Avui, menys.",
       "dlg.pons.altra": "Encara aquí? El Director continua sense rebre.",
-      "dlg.pons.opt.escoltar": "(Llegir en veu alta la factura i la nòmina.)",
+      "dlg.pons.opt.escoltar": "(Deixar la factura del gos al costat de la seva nòmina.)",
       "dlg.pons.opt.ue": "Soc auditora de la Unió Europea. Necessito veure el Director.",
       "dlg.pons.opt.per_que": "Què fa, el Director?",
       "dlg.pons.opt.adeu": "Ja tornaré.",
@@ -26380,6 +26738,7 @@
       "dlg.despatx.reunio2_1": "Ja n'hem parlat... però sí, sí. La sostenibilitat és com un gos: cal passejar-la cada dia.",
       "dlg.despatx.gos1": "Rockefeller! Té un tall nou. Quatre mil dos-cents euros de dignitat.",
       "dlg.despatx.gos2": "Quan em mira, sé que algú en aquest món em respecta. I no em demana res. Bé, el bany.",
+      "dlg.despatx.gos_bateria": "I li ensenya trenta fotos del gos al mòbil, una per una. Al mòbil del Director li queda un 3 % de bateria.",
       "dlg.pons.mobil1": "Senyor Director, li carrego el mòbil?",
       "dlg.despatx.pons2": "Sí... sí. Gràcies, Pons. Sempre pensa en tot.",
       "dlg.despatx.pons3": "La senyora Pons s'emporta el mòbil a l'avantdespatx, i el Director no el torna a veure.",
@@ -26397,15 +26756,19 @@
       "dlg.despatx.despres2": "I els diners tornen a ser on eren. Per què no m'alegro?",
       "dlg.despatx.despres2_repartit": "Tothom té el mateix que jo. Fins i tot la Pons. Per què no m'alegro?",
       "dlg.despatx.despres3": "Potser perquè avui, per primera vegada, ha vist com viu la seva secretària.",
-      "dlg.llibre.pista": "CONTRASENYA DEL DIRECTOR. PISTA: «EL MEU MILLOR AMIC».",
-      "dlg.llibre.pista_no": "El seu millor amic. Un home així només en té un: el gos. Però com es diu? Vet, ho pots esbrinar?",
-      "dlg.llibre.pista_si": "El seu millor amic: el gos. Es diu Rockefeller.",
+      "dlg.llibre.pista": "CONTRASENYA DEL DIRECTOR. PISTA: «EL MEU MILLOR AMIC» I «L'ANY QUE ENS VAM CONÈIXER».",
+      "dlg.llibre.pista_no": "El seu millor amic. Un home així només en té un: el gos. Però com es diu? I des de quan el té? Vet, ho pots esbrinar?",
+      "dlg.llibre.pista_si": "El seu millor amic: el gos. Però em falta l'any que es van conèixer. Vet, al despatx hi deu haver alguna cosa.",
+      "dlg.llibre.pista_tot": "El gos i l'any. Ja ho tinc tot.",
       "dlg.llibre.opt.rockefeller": "Rockefeller.",
+      "dlg.llibre.opt.rockefeller_any": "Rockefeller2016.",
       "dlg.llibre.opt.bonfill": "Bonfill.",
       "dlg.llibre.opt.diners": "Diners.",
       "dlg.llibre.opt.sostenibilitat": "Sostenibilitat.",
       "dlg.llibre.opt.adeu": "(Deixar-ho estar, de moment.)",
       "dlg.llibre.mal": "CONTRASENYA INCORRECTA. LI QUEDEN INFINITS INTENTS: EL LLIBRE MAJOR ÉS DE 1984.",
+      "dlg.llibre.mal_any": "CONTRASENYA INCORRECTA. FORMAT REQUERIT: NOM I ANY, TOT JUNT. COM ELS ADULTS.",
+      "dlg.llibre.mal_any2": "Nom i any. L'any que es van conèixer. Vet, on ho deu dir?",
       "dlg.llibre.ok1": "CONTRASENYA CORRECTA. PER ATURAR, CAL EL CODI DE CONFIRMACIÓ QUE ARRIBARÀ AL MÒBIL DEL DIRECTOR.",
       "dlg.llibre.ok2": "Vet: quan demani el codi, li arribarà al mòbil. Si el Director el mira, ho cancel·larà. Tingues-lo entretingut.",
       "dlg.llibre.ok3": "Entretenir un director. És el que faig millor, després de mentir.",
@@ -26413,6 +26776,9 @@
       "dlg.aturada.rius": "El compte de la Rius! El de les nòmines: no paga per rondes, ho paga tot d'un sol lot, a les dotze. Per aquí, arriba a tothom alhora.",
       "dlg.aturada.ballester": "El compte 0001, el que ha dit en Ballester. Les nòmines no van per rondes: surten totes d'un sol lot, a les dotze. Per aquí, arriba a tothom alhora.",
       "dlg.aturada.sense_compte": "Repartir-ho a tothom alhora? Em caldria un compte que arribi a tothom, i no en tinc cap. Doncs només queda una sortida.",
+      "dlg.aturada.silenci": "Silenci a l'auricular. Al despatx, la Vet ha deixat de parlar. Fins i tot el Director calla.",
+      "dlg.aturada.pes1": "Iri. Això no té marxa enrere. El que triïs ara, serà el final.",
+      "dlg.aturada.pes2": "Ho sé. Tots els diners del món, i un sol clic.",
       "dlg.aturada.opt.tornar": "Tornar-ho al banc. Als comptes d'origen.",
       "dlg.aturada.tornar1": "TRANSFERÈNCIA: COMPTE PONT → COMPTES D'ORIGEN. COMPLETADA.",
       "dlg.aturada.tornar2": "El que ja s'ha repartit, es queda repartit. Dotze euros per persona. Una cervesa a tot el món.",
@@ -26784,6 +27150,9 @@
       "obj.compte_nomines.look.iri": "El compte 0001, escrit a mà per la Rius: per aquí passen totes les nòmines. Sempre arriben tard.",
       "obj.compte_nomines.look.vet": "Un número de compte escrit a mà. Lletra d'algú que cobra tard.",
       "obj.compte_nomines.nom": "el compte de nòmines",
+      "obj.factura.amb_article": "la factura del gos",
+      "obj.factura.look": "«Perruqueria canina Le Caniche d'Or. Client: Rockefeller. Tall, bany i massatge: 4.200 €». Mensual. Més que la nòmina de la Pons.",
+      "obj.factura.nom": "la factura del gos",
       "obj.entrepa.amb_article": "l'entrepà",
       "obj.entrepa.look.iri": "L'entrepà de tonyina de la Vet. «Per si de cas.» Doncs era aquest cas.",
       "obj.entrepa.look.vet": "Un entrepà de tonyina. Per si de cas.",
@@ -26914,8 +27283,8 @@
       "pista.iri_porta_neteja.2": "La porta de neteja.",
       "pista.iri_porta_neteja.3": "Entro per la porta de neteja.",
       "pista.iri_rius.1": "L'ascensor de servei només puja amb targeta. I jo no en tinc.",
-      "pista.iri_rius.2": "La targeta la porta la Rius al cinturó. I la Rius té un problema amb el mòbil.",
-      "pista.iri_rius.3": "Parlo amb la Rius: li arreglo l'aplicació, o li demano un cafè.",
+      "pista.iri_rius.2": "La targeta la porta la Rius al cinturó. I la Rius té un problema amb el mòbil: aquí baix no hi ha cobertura.",
+      "pista.iri_rius.3": "Miro la màquina de cafè (té wifi) i després li arreglo l'aplicació a la Rius. O li demano un cafè.",
       "pista.iri_robot.1": "Primer el robot: si tapo una càmera, me la destapa. Què faries tu, robot? Netejar.",
       "pista.iri_robot.2": "Si li dono feina, potser s'atura. Molta feina. Molles, per exemple. Vet?",
       "pista.iri_robot.3": "Li dono un entrepà a NETA-3. Si no en tinc, la Vet me'n pot enviar un pel tub.",
@@ -27042,14 +27411,17 @@
       "pista.vet_planta_noble.2": "L'ascensor de seguretat puja a la planta noble.",
       "pista.vet_planta_noble.3": "Agafo l'ascensor cap a la planta noble.",
       "pista.vet_pons.1": "La senyora Pons no deixa passar ningú. Ni a mi, que és dir molt.",
-      "pista.vet_pons.2": "A la taula hi ha papers: una factura i una nòmina. Potser diuen més que ella.",
-      "pista.vet_pons.3": "Miro la factura i la nòmina, i les llegeixo en veu alta a la Pons.",
+      "pista.vet_pons.2": "A la taula hi ha papers: una factura i una nòmina. Potser diuen més que ella, posats l'un al costat de l'altre.",
+      "pista.vet_pons.3": "Miro la nòmina, agafo la factura del gos i parlo amb la Pons.",
       "pista.vet_entrar.1": "La senyora Pons ja em deixa passar.",
       "pista.vet_entrar.2": "El despatx del Director és darrere la porta de fusta.",
       "pista.vet_entrar.3": "Entro al despatx.",
       "pista.vet_gos.1": "«El meu millor amic». Un home així, el millor amic que té és el gos.",
-      "pista.vet_gos.2": "Al despatx hi ha una foto i un bol d'aigua. I el Director, que parla del gos amb poc que l'hi demanin.",
-      "pista.vet_gos.3": "Miro la foto o el bol del gos, o pregunto al Director pel gos.",
+      "pista.vet_gos.2": "Al despatx hi ha una foto del gos. I el Director, que en parla amb poc que l'hi demanin.",
+      "pista.vet_gos.3": "Miro la foto del gos, o pregunto al Director pel gos.",
+      "pista.vet_any.1": "L'Iri ja sap el nom del gos. Li falta l'any que el Director i el gos es van conèixer.",
+      "pista.vet_any.2": "Les coses de plata sempre porten alguna cosa gravada.",
+      "pista.vet_any.3": "Miro el bol de plata del gos.",
       "pista.vet_contrasenya.1": "Ja soc amb el Director. Ara, l'Iri.",
       "pista.vet_contrasenya.2": "Per aturar el virus, l'Iri ha de posar la contrasenya del Director al Llibre Major.",
       "pista.vet_contrasenya.3": "Canvio a l'Iri: que posi la contrasenya.",
@@ -27081,14 +27453,17 @@
       "pista.iri_virus_espera.2": "La Vet ha d'arribar al despatx del Director.",
       "pista.iri_virus_espera.3": "Canvio a la Vet: que pugi a la planta noble.",
       "pista.iri_contrasenya.1": "El Llibre Major demana la contrasenya del Director.",
-      "pista.iri_contrasenya.2": "La pista diu «el meu millor amic». Què faries tu, Llibre Major? Jo diria que és el gos.",
-      "pista.iri_contrasenya.3": "Escric el nom del gos al Llibre Major.",
+      "pista.iri_contrasenya.2": "La pista diu «el meu millor amic» i «l'any que ens vam conèixer». El gos i l'any.",
+      "pista.iri_contrasenya.3": "Escric el nom del gos i l'any, tot junt, al Llibre Major.",
       "pista.iri_contrasenya_mirar.1": "Només el Director el pot aturar, i la Vet ja és amb ell. Ara em toca a mi.",
       "pista.iri_contrasenya_mirar.2": "Què faries tu, Llibre Major? A veure què em demanes per aturar-te.",
       "pista.iri_contrasenya_mirar.3": "Em poso amb el Llibre Major, a veure què demana.",
       "pista.iri_gos.1": "El millor amic del Director deu ser el gos. Però no sé com es diu.",
       "pista.iri_gos.2": "La Vet és al despatx. Allà segur que hi ha alguna cosa del gos.",
       "pista.iri_gos.3": "Canvio a la Vet: que esbrini com es diu el gos.",
+      "pista.iri_any.1": "Ja sé com es diu el gos. Però la contrasenya també porta l'any que es van conèixer.",
+      "pista.iri_any.2": "La Vet és al despatx. Alguna cosa del gos hi deu portar l'any gravat.",
+      "pista.iri_any.3": "Canvio a la Vet: que miri el bol de plata del gos.",
       "pista.iri_demanar.1": "El codi arriba al mòbil del Director. Si el mira, ho cancel·la.",
       "pista.iri_demanar.2": "Primer, que la Vet l'entretingui. Després, demano el codi.",
       "pista.iri_demanar.3": "Canvio a la Vet: que distregui el Director abans que jo demani el codi.",
@@ -27118,7 +27493,7 @@
       "pista.iri_saltar.3": "Canvio a la Vet: que surti del banc i obri el contenidor.",
       "pista.vet_entretenir.1": "Si el Director gira el mòbil quan hi ha el codi, ho cancel·la tot.",
       "pista.vet_entretenir.2": "L'he de tenir entretingut abans que l'Iri demani el codi: la sostenibilitat, el gos... o algú que m'ajudi.",
-      "pista.vet_entretenir.3": "Parlo amb el Director: amb la sostenibilitat s'entreté una bona estona (la segona vegada, no tant); amb el gos, una mica. I si la senyora Pons o en Ballester són amb mi, ho resolen ells.",
+      "pista.vet_entretenir.3": "Parlo amb el Director: amb la sostenibilitat s'entreté una bona estona (la segona vegada, no tant); amb el gos, una mica, i li buido la bateria del mòbil. Llavors la senyora Pons l'hi pot endur a carregar. I si en Ballester és amb mi, ho resol ell.",
       "pista.vet_passar_cable.1": "Ja tinc el cable. Però no és per a mi: és per a l'Iri.",
       "pista.vet_passar_cable.2": "El passaplats va de la cuina a l'estudi.",
       "pista.vet_passar_cable.3": "Passo el cable a l'Iri pel passaplats (obert).",
@@ -27138,8 +27513,8 @@
       "pista.iri_acreditacions.2": "Les acreditacions són a la impressora, encara calentes.",
       "pista.iri_acreditacions.3": "Agafo les acreditacions de la impressora.",
       "pista.vet_clau_relaxat.1": "Ara la clau. La porta al coll.",
-      "pista.vet_clau_relaxat.2": "Des del capítol del violí, en Ballester està relaxat. Potser ara m'escoltaria.",
-      "pista.vet_clau_relaxat.3": "Parlo amb en Ballester i li dic la veritat. (O, si ho prefereixo, li canvio la clau per la de casa.)",
+      "pista.vet_clau_relaxat.2": "Des del capítol del violí, en Ballester està relaxat. I als monitors hi té enganxada una carta del banc.",
+      "pista.vet_clau_relaxat.3": "Miro els monitors (la carta de la hipoteca) i li dic la veritat a en Ballester. (O, si ho prefereixo, li canvio la clau per la de casa.)",
       "pista.vet_sortir.1": "Ara, sortir com he entrat: per la porta gran.",
       "pista.vet_sortir.2": "La porta gran és aquí mateix, al vestíbul.",
       "pista.vet_sortir.3": "Surto per la porta principal.",
@@ -27203,7 +27578,7 @@
       "sala.aeroport_terminal.intro3": "I el que pensi?",
       "sala.aeroport_terminal.intro4": "Això encara no. Jo vaig a la porta de personal. Tu fes que el guàrdia se'n vagi.",
       "sala.aeroport_terminal.intro5": "Un guàrdia que vigila una porta. Necessitarà un motiu per deixar-la.",
-      "sala.aeroport_terminal.maleti.look": "Un maletí de pell al prestatge d'objectes perduts. Té un adhesiu: «AGENDA 2019 — COMPTE, LLIMONA».",
+      "sala.aeroport_terminal.maleti.look": "Un maletí de pell al prestatge d'objectes perduts. Per la cremallera mig oberta treu el nas el cantó d'una agenda: «2019».",
       "sala.aeroport_terminal.maleti.no": "Darrere el taulell? Hauria de convèncer l'empleat que és meu.",
       "sala.aeroport_terminal.maleti.nom": "el maletí",
       "sala.aeroport_terminal.nen.encara": "Encara no: l'Iri no ha sortit.",
@@ -27287,7 +27662,7 @@
       "sala.bar_sala.rebost.tomas": "En Tomàs és a dins, divorciant-se d'una persona que no existeix. Millor no entrar.",
       "sala.bar_sala.recepta": "La recepta secreta... «1. Obrir el pot. 2. Abocar.» Vint anys guardant un secret de pot.",
       "sala.bar_sala.retol.contrasenya1": "«Avui no es fia, demà sí».",
-      "sala.bar_sala.retol.contrasenya2": "«Demasi». Tot junt, sense accents. És la contrasenya de la wifi. Sempre ho ha estat.",
+      "sala.bar_sala.retol.contrasenya2": "«Demasi». Tot junt, sense accents. En Tomàs canvia la contrasenya de la wifi cada dilluns pel lema del rètol. Aquesta setmana toca aquesta.",
       "sala.bar_sala.retol.look": "«Avui no es fia, demà sí». La filosofia d'en Tomàs. I la de la banca mundial.",
       "sala.bar_sala.retol.nom": "el rètol",
       "sala.bar_sala.tap": "El tap del clauer d'en Tomàs! Ni se n'ha adonat, oi?",
@@ -27518,7 +27893,7 @@
       "sala.bcmu_moll.maquina.nom": "la màquina de cafè",
       "sala.bcmu_moll.maquina.ja": "Ja tinc el que volia. I el cafè d'aquí fa por.",
       "sala.bcmu_moll.maquina.usa": "No porto monedes. I aquesta màquina té cara de mossegar-les.",
-      "sala.bcmu_moll.maquina.look": "Una màquina de cafè. Té un cop de puny marcat al costat. Algú hi té experiència.",
+      "sala.bcmu_moll.maquina.look": "Una màquina de cafè. Té un cop de puny marcat al costat i un adhesiu: «Wi-Fi CAFEMOLL · clau: ESPRESSO». Fins i tot la màquina té més cobertura que la Rius.",
       "sala.bcmu_moll.ascensor.nom": "l'ascensor de servei",
       "sala.bcmu_moll.ascensor.puja": "La targeta fa bip. L'ascensor de servei puja al tercer pis, rondinant.",
       "sala.bcmu_moll.ascensor.no": "Sense targeta, l'ascensor de servei només baixa al soterrani. I al soterrani hi ha feina.",
@@ -27666,6 +28041,7 @@
       "sala.bcmu_seguretat.monitors.look_tapats": "En un monitor, un cartell de «Neteja en curs». En un altre, una galleda. En Ballester no hi mira.",
       "sala.bcmu_seguretat.monitors.look_iri": "En un monitor hi surt una noia amb dessuadora. En Ballester no hi mira. Millor.",
       "sala.bcmu_seguretat.monitors.look": "Vint monitors i ningú que els miri. L'art contemporani de la seguretat.",
+      "sala.bcmu_seguretat.monitors.carta": "Enganxada al marc d'un monitor, una carta del banc: «Sr. Ballester: revisió de la seva hipoteca, +38 %». El banc li cobra la hipoteca i el sou alhora.",
       "sala.bcmu_seguretat.radio.nom": "la ràdio",
       "sala.bcmu_seguretat.radio.look_bips": "La ràdio d'en Ballester. Per aquí sent tots els bips del banc. Té l'oïda d'un ratpenat.",
       "sala.bcmu_seguretat.radio.look": "La ràdio d'en Ballester. Hi van a parar els micròfons de totes les sales tancades. Sempre encesa, sempre a prop de la seva mà.",
@@ -27793,7 +28169,7 @@
       "sala.bcmu_avantdespatx.ballester.look": "En Ballester, plantat a prop de la porta del Director. Mira els cavalls dels quadres com qui mira una factura.",
       "sala.bcmu_avantdespatx.factura.nom": "la factura",
       "sala.bcmu_avantdespatx.factura.look": "Una factura: «Perruqueria canina Le Caniche d'Or. Client: Rockefeller. Tall, bany i massatge: 4.200 €». Mensual.",
-      "sala.bcmu_avantdespatx.factura.agafa": "No és meva. Però ja me la sé de memòria.",
+      "sala.bcmu_avantdespatx.factura.agafa": "Me l'emporto. Aquesta factura i la nòmina de la Pons s'haurien de conèixer.",
       "sala.bcmu_avantdespatx.nomina.nom": "la nòmina",
       "sala.bcmu_avantdespatx.nomina.look": "Una nòmina: «Sra. Pons. Secretària de Direcció. Vint anys d'antiguitat. Net: 2.900 €».",
       "sala.bcmu_avantdespatx.nomina.agafa": "Les nòmines dels altres no es toquen. Només es llegeixen.",
@@ -27838,7 +28214,7 @@
       "sala.bcmu_despatx.foto.look": "Una foto del gos, amb un llaç. Al marc, gravat: «Rockefeller». Iri, el gos es diu Rockefeller.",
       "sala.bcmu_despatx.foto.agafa": "No. Aquest home ja ha perdut prou coses avui.",
       "sala.bcmu_despatx.bol.nom": "el bol",
-      "sala.bcmu_despatx.bol.look": "Un bol d'aigua de plata, a terra. Gravat: «ROCKEFELLER». El gos beu en plata. La Pons, de l'aixeta.",
+      "sala.bcmu_despatx.bol.look": "Un bol d'aigua de plata, a terra. Gravat a la vora: «R. — DES DEL 2016». Iri: el Director i el gos, junts des del 2016. La Pons beu de l'aixeta.",
       "sala.bcmu_despatx.bol.agafa": "No tinc set. I tampoc no tinc pedigrí.",
       "sala.bcmu_despatx.finestra.nom": "la finestra",
       "sala.bcmu_despatx.finestra.look": "El llac de Ginebra. Des d'aquí dalt, sembla que el món funciona.",
@@ -27924,6 +28300,9 @@
   },
   "locale": "ca",
   "zones": {
+    "bcmu_avantdespatx": [
+      "factura"
+    ],
     "bcmu_despatx": [
       "mobil"
     ],

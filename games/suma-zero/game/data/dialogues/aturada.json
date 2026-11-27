@@ -68,6 +68,64 @@
               }
             ]
           }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.aturada.silenci",
+          "if": {
+            "any": [
+              {
+                "hasItem": "compte_nomines",
+                "who": "iri"
+              },
+              {
+                "flag": "ballester_compte"
+              }
+            ]
+          },
+          "stage": [
+            {
+              "who": "player",
+              "face": "D",
+              "hold": 1.5
+            }
+          ]
+        },
+        {
+          "who": "vet",
+          "text": "dlg.aturada.pes1",
+          "if": {
+            "any": [
+              {
+                "hasItem": "compte_nomines",
+                "who": "iri"
+              },
+              {
+                "flag": "ballester_compte"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.aturada.pes2",
+          "if": {
+            "any": [
+              {
+                "hasItem": "compte_nomines",
+                "who": "iri"
+              },
+              {
+                "flag": "ballester_compte"
+              }
+            ]
+          },
+          "stage": [
+            {
+              "who": "player",
+              "hold": 1.5
+            }
+          ]
         }
       ],
       "goto": "tria"

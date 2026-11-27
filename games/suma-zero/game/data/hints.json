@@ -2701,6 +2701,38 @@
       "pista.vet_gos.3"
     ]
   },
+  "vet_any": {
+    "priority": 9,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "pista_contrasenya"
+        },
+        {
+          "flag": "contrasenya_ok",
+          "is": false
+        },
+        {
+          "flag": "sap_rockefeller"
+        },
+        {
+          "flag": "sap_any_gos",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "sap_any_gos"
+    },
+    "levels": [
+      "pista.vet_any.1",
+      "pista.vet_any.2",
+      "pista.vet_any.3"
+    ]
+  },
   "vet_contrasenya": {
     "priority": 8,
     "when": {
@@ -2722,7 +2754,14 @@
               "is": false
             },
             {
-              "flag": "sap_rockefeller"
+              "all": [
+                {
+                  "flag": "sap_rockefeller"
+                },
+                {
+                  "flag": "sap_any_gos"
+                }
+              ]
             }
           ]
         }
@@ -3083,6 +3122,9 @@
         },
         {
           "flag": "sap_rockefeller"
+        },
+        {
+          "flag": "sap_any_gos"
         }
       ]
     },
@@ -3118,6 +3160,38 @@
       "pista.iri_gos.1",
       "pista.iri_gos.2",
       "pista.iri_gos.3"
+    ]
+  },
+  "iri_any": {
+    "priority": 9,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "pista_contrasenya"
+        },
+        {
+          "flag": "contrasenya_ok",
+          "is": false
+        },
+        {
+          "flag": "sap_rockefeller"
+        },
+        {
+          "flag": "sap_any_gos",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "sap_any_gos"
+    },
+    "levels": [
+      "pista.iri_any.1",
+      "pista.iri_any.2",
+      "pista.iri_any.3"
     ]
   },
   "iri_demanar": {

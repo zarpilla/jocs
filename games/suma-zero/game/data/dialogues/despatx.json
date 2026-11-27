@@ -139,6 +139,9 @@
               {
                 "flag": "mobil_resolt",
                 "is": false
+              },
+              {
+                "flag": "bateria_baixa"
               }
             ]
           },
@@ -219,6 +222,10 @@
         {
           "who": "bonfill",
           "text": "dlg.despatx.gos2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.despatx.gos_bateria"
         }
       ],
       "effects": [
@@ -231,6 +238,9 @@
         {
           "setVar": "coberta_mobil",
           "value": 2
+        },
+        {
+          "setFlag": "bateria_baixa"
         }
       ]
     },

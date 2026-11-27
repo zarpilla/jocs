@@ -24,6 +24,13 @@
       "say": false
     },
     {
+      "id": "menu__sense_xarxa",
+      "scriptName": "menu__sense_xarxa",
+      "text": "Deixa'm el mòbil. Les màquines i jo ens entenem.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__cafe",
       "scriptName": "menu__cafe",
       "text": "Rius, em convides a un cafè?",

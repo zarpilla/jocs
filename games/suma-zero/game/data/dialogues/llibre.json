@@ -26,7 +26,29 @@
           "who": "player",
           "text": "dlg.llibre.pista_si",
           "if": {
-            "flag": "sap_rockefeller"
+            "all": [
+              {
+                "flag": "sap_rockefeller"
+              },
+              {
+                "flag": "sap_any_gos",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.llibre.pista_tot",
+          "if": {
+            "all": [
+              {
+                "flag": "sap_rockefeller"
+              },
+              {
+                "flag": "sap_any_gos"
+              }
+            ]
           }
         }
       ],
@@ -55,6 +77,21 @@
           "if": {
             "flag": "sap_rockefeller"
           },
+          "next": "nomes_nom"
+        },
+        {
+          "id": "rockefeller_any",
+          "text": "dlg.llibre.opt.rockefeller_any",
+          "if": {
+            "all": [
+              {
+                "flag": "sap_rockefeller"
+              },
+              {
+                "flag": "sap_any_gos"
+              }
+            ]
+          },
           "next": "ok"
         },
         {
@@ -75,6 +112,23 @@
         {
           "who": "narrator",
           "text": "dlg.llibre.mal"
+        }
+      ],
+      "goto": "menu"
+    },
+    "nomes_nom": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.llibre.mal_any"
+        },
+        {
+          "who": "player",
+          "text": "dlg.llibre.mal_any2",
+          "if": {
+            "flag": "sap_any_gos",
+            "is": false
+          }
         }
       ],
       "goto": "menu"

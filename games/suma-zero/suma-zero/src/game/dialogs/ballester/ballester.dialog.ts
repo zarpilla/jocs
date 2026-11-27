@@ -62,6 +62,10 @@ options.clau_relaxat__mentida.onChoose(() => {
   chooseNarrativeOption('ballester', dialog, 'clau_relaxat', 'mentida')
 })
 
+options.clau_relaxat__adeu.onChoose(() => {
+  chooseNarrativeOption('ballester', dialog, 'clau_relaxat', 'adeu')
+})
+
 options.clau_tens__or.onChoose(() => {
   chooseNarrativeOption('ballester', dialog, 'clau_tens', 'or')
 })

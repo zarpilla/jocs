@@ -197,6 +197,7 @@ describe('Acte 2 · el tercer pis', () => {
     const { n, p, world } = aGinebra();
     p.switchTo('iri');
     p.talk('rius', 'cafe');
+    p.do('look', 'maquina');
     const lines = texts(p.talk('rius', 'mobil', 'arreglar'));
     expect(lines).toContain("Ja l'havies agafada");
     expect(n.flag('aliada_rius')).toBe(true);
