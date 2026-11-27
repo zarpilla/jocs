@@ -582,8 +582,45 @@ def _obert(cv):
     _decorat('obert', tex=tex)(cv)
 
 
+def figura(who, tag='IdleD'):
+    """El primer fotograma d'una animació d'un personatge (el sprite del joc, a escala 1), per posar-lo en un decorat."""
+    import json
+    from pathlib import Path
+    from PIL import Image
+    d = Path(__file__).resolve().parents[1] / 'characters' / who
+    meta = json.loads((d / f'{who}.json').read_text())
+    n = next(t['from'] for t in meta['meta']['frameTags'] if t['name'] == tag)
+    frames = meta['frames']
+    f = (frames[n] if isinstance(frames, list) else frames[f'{who} {n}.aseprite'])['frame']
+    return Image.open(d / f'{who}.png').convert('RGBA').crop((f['x'], f['y'], f['x'] + f['w'], f['y'] + f['h']))
+
+
+@functools.lru_cache(maxsize=None)
+def _paret_vet():
+    """La paret amb el passaplats obert i, a l'altra banda, la Vet a la cuina (de mig cos en amunt: l'ampit la talla)."""
+    from PIL import Image
+    img = _paret_oberta().copy()
+    fig = figura('vet')
+    k = 0.62                                       # (és a la cuina, més lluny que la paret)
+    fig = fig.resize((round(fig.width * k), round(fig.height * k)), Image.Resampling.BOX)
+    x0, y0, x1, y1 = PL.HATCH
+    capa = Image.new('RGBA', img.size, (0, 0, 0, 0))
+    capa.paste(fig, (round((x0 + x1) / 2 - fig.width / 2 - 4), y0 + 9))
+    dins = Image.new('RGBA', img.size, (0, 0, 0, 0))
+    dins.paste(capa.crop((x0 + 3, y0 + 3, x1 - 2, y1 - 2)), (x0 + 3, y0 + 3))
+    img.alpha_composite(dins)
+    return img
+
+
+def _vet_passaplats(cv):
+    tex = {'paret': _paret_vet(), 'escriptori': _escriptori_base()}
+    _decorat('obert', tex=tex)(cv)
+
+
 PROPS = {
     'passaplats_obert': _obert,
+    'vet_passaplats': _vet_passaplats,
+    'pantalles_cerca': lambda cv: _pantalles_cerca(cv),
     'caixa': _decorat('caixa'),
     'router_connectat': _amb_router,
     'fibra_connectada': _decorat('fibra'),
@@ -624,6 +661,44 @@ def _fotograma(capes):
     for c in capes:
         img.alpha_composite(c)
     return _diff(_amb_llum(img), _base_llum())
+
+
+def _pantalles_cerca(cv):
+    """Les pantalles quan l'Iri troba en Marcel (tasca 010): a l'esquerra, la llista d'acomiadaments del BCMU; al
+    mig, la fitxa d'en Marcel ressaltada; a la dreta, les seves ressenyes de La Propina (amb estrelles)."""
+    from hd.rooms.comu import text
+    from PIL import Image
+    _, e = _base()
+    x0, x1, zf, zb, dh = DESK
+    fl = Canvas(light=PL.LIGHT, transparent=True)
+    PL.monitors(fl, 0)
+    ink, hi = (150, 255, 190), (255, 236, 140)
+    for n, (a, b, c, d) in enumerate(PL.MONITORS):
+        sx0, sy0, sx1, sy1 = a + 3, b + 3, c - 3, d - 4
+        fl.rect(sx0, sy0, sx1, sy1, SCREEN, 1.0, lit=0)
+        if n == 0:                                              # la llista: «REESTRUC.» i dos mil noms
+            text(fl, 'BCMU', sx0 + 2, sy0 + 2, [ink], 0, flat=ink)
+            for k, y in enumerate(range(sy0 + 11, sy1 - 1, 4)):
+                w = 10 + int(hr(k, 77) * (sx1 - sx0 - 16))
+                fl.hline(sx0 + 2, sx0 + 2 + w, y, [ink if k != 5 else hi], 0, lit=0)
+            fl.rect(sx0 + 1, sy0 + 30, sx1 - 1, sy0 + 32, [(40, 90, 60)], 0, lit=0)     # la línia triada
+        elif n == 1:                                            # la fitxa d'en Marcel
+            text(fl, 'MARCEL', (a + c) // 2 - 14, sy0 + 20, [hi], 0, flat=hi)
+            fl.rect((a + c) // 2 - 8, sy0 + 30, (a + c) // 2 + 8, sy0 + 50, [(60, 120, 90), (110, 200, 150)], 1.0, lit=0)
+            fl.disc((a + c) // 2, sy0 + 36, 4, 4, [(110, 200, 150), (180, 250, 210)], 1.0, lit=0)   # la foto
+            for y in range(sy0 + 30, sy0 + 50, 4):
+                fl.hline((a + c) // 2 + 12, sx1 - 4, y, [ink], 0, lit=0)
+        else:                                                   # les ressenyes: estrelles i ratlles
+            for k, y in enumerate(range(sy0 + 3, sy1 - 2, 9)):
+                for st in range(5):
+                    fl.flat(sx0 + 3 + st * 3, y, hi if st < 2 + k % 2 else (60, 90, 70))
+                fl.hline(sx0 + 3, sx1 - 4, y + 3, [ink], 0, lit=0)
+                fl.hline(sx0 + 3, sx0 + 3 + int(hr(k, 9) * (sx1 - sx0 - 8)), y + 5, [ink], 0, lit=0)
+    mon = fl.img.crop(MON_BOX)
+    capa = _sprite_capa(e, 'monitors', mon, ((MON_BOX[2] - MON_BOX[0]) / 2, MON_BOX[3] - MON_BOX[1] - 1),
+                        ((x0 + x1) / 2, dh, zb - 12))
+    cv.img.alpha_composite(_fotograma([capa]))
+    cv.P = cv.img.load()
 
 
 def _frames():
@@ -725,7 +800,7 @@ GEOMETRIA = {
         'fibra': {'rect': _rect_mon((SOCKET[0] - 2, SOCKET[3] + 2, ZW), (SOCKET[1] + 2, SOCKET[2] - 2, ZW)),
                   'walk': _p(SOCKET[0] + 6, 266)},
         'passaplats': {'rect': _rect_mon((HATCH[0], HATCH[3], ZW), (HATCH[1], HATCH[2], ZW)),
-                       'walk': _p((HATCH[0] + HATCH[1]) / 2, 266)},
+                       'walk': _p(HATCH[0] - 30, 266)},     # (al costat: davant, la taparia)
         'caixa': {'rect': _rect_mon(*[(BOX[0] + dx, y, BOX[1] + dz) for dx in (-24, 24) for dz in (-18, 18) for y in (0, BOX[4] + 14)]),
                   'walk': _p(BOX[0] - 10, BOX[1] - 40)},
     },

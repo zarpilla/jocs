@@ -282,7 +282,13 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.pis_estudi.router.xarxa"
+              "text": "sala.pis_estudi.router.xarxa",
+              "stage": [
+                {
+                  "prop": "pantalles_cerca",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
@@ -297,6 +303,12 @@
                 {
                   "setFlag": "router_connectat"
                 }
+              ],
+              "stage": [
+                {
+                  "prop": "pantalles_cerca",
+                  "visible": false
+                }
               ]
             },
             {
@@ -306,7 +318,20 @@
                 "var": "cables",
                 "op": "==",
                 "value": 2
-              }
+              },
+              "stage": [
+                {
+                  "who": "player",
+                  "walk": {
+                    "x": 250,
+                    "y": 160
+                  }
+                },
+                {
+                  "who": "player",
+                  "face": "U"
+                }
+              ]
             },
             {
               "who": "player",
@@ -351,7 +376,13 @@
                 "var": "cables",
                 "op": "==",
                 "value": 2
-              }
+              },
+              "stage": [
+                {
+                  "prop": "pantalles_cerca",
+                  "visible": true
+                }
+              ]
             },
             {
               "who": "player",
@@ -473,7 +504,13 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.pis_estudi.router.alimentacio"
+              "text": "sala.pis_estudi.router.alimentacio",
+              "stage": [
+                {
+                  "prop": "pantalles_cerca",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
@@ -488,6 +525,12 @@
                 {
                   "setFlag": "router_connectat"
                 }
+              ],
+              "stage": [
+                {
+                  "prop": "pantalles_cerca",
+                  "visible": false
+                }
               ]
             },
             {
@@ -497,7 +540,20 @@
                 "var": "cables",
                 "op": "==",
                 "value": 2
-              }
+              },
+              "stage": [
+                {
+                  "who": "player",
+                  "walk": {
+                    "x": 250,
+                    "y": 160
+                  }
+                },
+                {
+                  "who": "player",
+                  "face": "U"
+                }
+              ]
             },
             {
               "who": "player",
@@ -542,7 +598,13 @@
                 "var": "cables",
                 "op": "==",
                 "value": 2
-              }
+              },
+              "stage": [
+                {
+                  "prop": "pantalles_cerca",
+                  "visible": true
+                }
+              ]
             },
             {
               "who": "player",
@@ -935,7 +997,13 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.pis_estudi.fibra.connecta"
+              "text": "sala.pis_estudi.fibra.connecta",
+              "stage": [
+                {
+                  "prop": "pantalles_cerca",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
@@ -950,6 +1018,12 @@
                 {
                   "setFlag": "router_connectat"
                 }
+              ],
+              "stage": [
+                {
+                  "prop": "pantalles_cerca",
+                  "visible": false
+                }
               ]
             },
             {
@@ -959,7 +1033,20 @@
                 "var": "cables",
                 "op": "==",
                 "value": 2
-              }
+              },
+              "stage": [
+                {
+                  "who": "player",
+                  "walk": {
+                    "x": 250,
+                    "y": 160
+                  }
+                },
+                {
+                  "who": "player",
+                  "face": "U"
+                }
+              ]
             },
             {
               "who": "player",
@@ -1004,7 +1091,13 @@
                 "var": "cables",
                 "op": "==",
                 "value": 2
-              }
+              },
+              "stage": [
+                {
+                  "prop": "pantalles_cerca",
+                  "visible": true
+                }
+              ]
             },
             {
               "who": "player",
@@ -1749,6 +1842,24 @@
     "passaplats_obert": {
       "visibleIf": {
         "flag": "passaplats_obert"
+      }
+    },
+    "vet_passaplats": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "passaplats_obert"
+          },
+          {
+            "inRoom": "pis_cuina",
+            "who": "vet"
+          }
+        ]
+      }
+    },
+    "pantalles_cerca": {
+      "visibleIf": {
+        "flag": "llibre_trobat"
       }
     }
   }

@@ -232,8 +232,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 354,
-        "y": 158
+        "x": 394,
+        "y": 159
       },
       "lookAtPoint": {
         "x": 350,
@@ -296,8 +296,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 354,
-        "y": 158
+        "x": 394,
+        "y": 159
       },
       "lookAtPoint": {
         "x": 402,
@@ -587,6 +587,17 @@
       },
       "zIndex": 22,
       "baseline": 999
+    },
+    {
+      "id": "iri_passaplats",
+      "tag": "iri_passaplats",
+      "animations": {
+        "iri_passaplats": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

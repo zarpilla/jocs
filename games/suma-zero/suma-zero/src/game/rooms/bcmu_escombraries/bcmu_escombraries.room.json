@@ -443,6 +443,17 @@
       },
       "zIndex": 22,
       "baseline": 999
+    },
+    {
+      "id": "bosses_plenes",
+      "tag": "bosses_plenes",
+      "animations": {
+        "bosses_plenes": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

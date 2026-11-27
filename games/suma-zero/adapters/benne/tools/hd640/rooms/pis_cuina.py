@@ -595,8 +595,22 @@ def _dins_nevera(flat):
     return draw
 
 
+def _iri_passaplats(cv):
+    """A l'altra banda del passaplats obert, l'Iri a l'estudi (el sprite, on el forat deixa veure l'estudi)."""
+    from hd640.rooms.pis_estudi import figura, _sprite_capa
+    img, e = _estat('obert')
+    fig = figura('iri')
+    capa = _sprite_capa(e, 'estudi', fig, (fig.width / 2, fig.height - 1), (HATCH_C[0] + 4, 0, ZW + 120))
+    top = img.copy()
+    top.alpha_composite(capa)
+    st = frozenset({'obert'})
+    cv.img.alpha_composite(_diff(_amb_llum(top, st, bloom=False), _amb_llum(img, st, bloom=False)))
+    cv.P = cv.img.load()
+
+
 PROPS = {
     'passaplats_obert': _decorat('obert'),
+    'iri_passaplats': _iri_passaplats,
     'cable_cafetera': _decorat('cable'),
     'nevera_oberta': _decorat('nevera'),
     'pizza_nevera': _dins_nevera(_pizza),
@@ -726,7 +740,7 @@ GEOMETRIA = {
         'pizza_nevera': {'rect': _nevera_rect((304, 107, 355, 123)), 'walk': _p(_FR[0] + 10, _FR[1] - _FR[3] / 2 - 40)},
         'tonyina': {'rect': _nevera_rect((307, 133, 355, 153)), 'walk': _p(_FR[0] + 10, _FR[1] - _FR[3] / 2 - 40)},
         'passaplats': {'rect': _rect_mon((HATCH[0], HATCH[3], ZW), (HATCH[1], HATCH[2], ZW)),
-                       'walk': _p((HATCH[0] + HATCH[1]) / 2 + 6, 272)},
+                       'walk': _p(HATCH[1] + 30, 272)},     # (al costat: davant, la taparia)
         'porta': {'rect': _rect_mon((XR, DOOR[3], DOOR[0]), (XR, DOOR[2], DOOR[1]), (XR, DOOR[3], DOOR[1]),
                                     (XR, DOOR[2], DOOR[0])),
                   'walk': _p(XR - 34, (DOOR[0] + DOOR[1]) / 2)},

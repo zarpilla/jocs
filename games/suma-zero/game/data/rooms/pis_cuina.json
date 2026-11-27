@@ -648,6 +648,19 @@
       "visibleIf": {
         "flag": "passaplats_obert"
       }
+    },
+    "iri_passaplats": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "passaplats_obert"
+          },
+          {
+            "inRoom": "pis_estudi",
+            "who": "iri"
+          }
+        ]
+      }
     }
   }
 }

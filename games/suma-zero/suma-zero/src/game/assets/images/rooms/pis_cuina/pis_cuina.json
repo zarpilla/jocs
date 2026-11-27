@@ -23,7 +23,7 @@
     },
     "pis_cuina 1.aseprite": {
       "frame": {
-        "x": 3482,
+        "x": 3506,
         "y": 0,
         "w": 46,
         "h": 12
@@ -44,7 +44,7 @@
     },
     "pis_cuina 2.aseprite": {
       "frame": {
-        "x": 3438,
+        "x": 3462,
         "y": 0,
         "w": 44,
         "h": 16
@@ -65,7 +65,7 @@
     },
     "pis_cuina 3.aseprite": {
       "frame": {
-        "x": 3409,
+        "x": 3433,
         "y": 0,
         "w": 29,
         "h": 29
@@ -128,6 +128,27 @@
     },
     "pis_cuina 6.aseprite": {
       "frame": {
+        "x": 3409,
+        "y": 0,
+        "w": 24,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 341,
+        "y": 62,
+        "w": 24,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pis_cuina 7.aseprite": {
+      "frame": {
         "x": 1501,
         "y": 0,
         "w": 173,
@@ -147,7 +168,7 @@
       },
       "duration": 100
     },
-    "pis_cuina 7.aseprite": {
+    "pis_cuina 8.aseprite": {
       "frame": {
         "x": 1674,
         "y": 0,
@@ -168,7 +189,7 @@
       },
       "duration": 100
     },
-    "pis_cuina 8.aseprite": {
+    "pis_cuina 9.aseprite": {
       "frame": {
         "x": 1898,
         "y": 0,
@@ -189,7 +210,7 @@
       },
       "duration": 100
     },
-    "pis_cuina 9.aseprite": {
+    "pis_cuina 10.aseprite": {
       "frame": {
         "x": 2116,
         "y": 0,
@@ -210,7 +231,7 @@
       },
       "duration": 100
     },
-    "pis_cuina 10.aseprite": {
+    "pis_cuina 11.aseprite": {
       "frame": {
         "x": 2340,
         "y": 0,
@@ -231,7 +252,7 @@
       },
       "duration": 100
     },
-    "pis_cuina 11.aseprite": {
+    "pis_cuina 12.aseprite": {
       "frame": {
         "x": 2553,
         "y": 0,
@@ -252,7 +273,7 @@
       },
       "duration": 100
     },
-    "pis_cuina 12.aseprite": {
+    "pis_cuina 13.aseprite": {
       "frame": {
         "x": 2763,
         "y": 0,
@@ -265,27 +286,6 @@
         "x": 0,
         "y": 0,
         "w": 224,
-        "h": 233
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "pis_cuina 13.aseprite": {
-      "frame": {
-        "x": 1501,
-        "y": 0,
-        "w": 173,
-        "h": 233
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 173,
         "h": 233
       },
       "sourceSize": {
@@ -548,18 +548,18 @@
     },
     "pis_cuina 26.aseprite": {
       "frame": {
-        "x": 3528,
+        "x": 1501,
         "y": 0,
-        "w": 1,
-        "h": 1
+        "w": 173,
+        "h": 233
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1,
-        "h": 1
+        "w": 173,
+        "h": 233
       },
       "sourceSize": {
         "w": 640,
@@ -569,7 +569,7 @@
     },
     "pis_cuina 27.aseprite": {
       "frame": {
-        "x": 3528,
+        "x": 3552,
         "y": 0,
         "w": 1,
         "h": 1
@@ -590,6 +590,27 @@
     },
     "pis_cuina 28.aseprite": {
       "frame": {
+        "x": 3552,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pis_cuina 29.aseprite": {
+      "frame": {
         "x": 3263,
         "y": 0,
         "w": 146,
@@ -609,7 +630,7 @@
       },
       "duration": 100
     },
-    "pis_cuina 29.aseprite": {
+    "pis_cuina 30.aseprite": {
       "frame": {
         "x": 640,
         "y": 0,
@@ -637,7 +658,7 @@
     "image": "pis_cuina.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3529,
+      "w": 3553,
       "h": 360
     },
     "scale": "1",
@@ -685,37 +706,44 @@
         "color": "#000000ff"
       },
       {
-        "name": "pluja",
+        "name": "iri_passaplats",
         "from": 6,
-        "to": 13,
+        "to": 6,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "pluja",
+        "from": 7,
+        "to": 14,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "tele",
-        "from": 14,
-        "to": 25,
+        "from": 15,
+        "to": 26,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "rellotge",
-        "from": 26,
-        "to": 27,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_taula",
-        "from": 28,
+        "from": 27,
         "to": 28,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_taula",
         "from": 29,
         "to": 29,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 30,
+        "to": 30,
         "direction": "forward",
         "color": "#000000ff"
       }

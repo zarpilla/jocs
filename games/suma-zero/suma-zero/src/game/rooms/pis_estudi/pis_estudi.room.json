@@ -323,8 +323,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 493,
-        "y": 162
+        "x": 439,
+        "y": 155
       },
       "lookAtPoint": {
         "x": 500,
@@ -355,8 +355,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 493,
-        "y": 162
+        "x": 439,
+        "y": 155
       },
       "lookAtPoint": {
         "x": 592,
@@ -640,6 +640,28 @@
       },
       "zIndex": 24,
       "baseline": 999
+    },
+    {
+      "id": "vet_passaplats",
+      "tag": "vet_passaplats",
+      "animations": {
+        "vet_passaplats": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "pantalles_cerca",
+      "tag": "pantalles_cerca",
+      "animations": {
+        "pantalles_cerca": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

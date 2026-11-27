@@ -82,6 +82,7 @@
         "diu_ha_mossegat": false,
         "entrepa_b_agafat": false,
         "entrepa_comprat": false,
+        "escala_guardes": false,
         "escala_provada": false,
         "escapada": false,
         "factura_vista": false,
@@ -3516,6 +3517,32 @@
               }
             ]
           },
+          "ballester": {
+            "name": "sala.bcmu_avantdespatx.ballester.nom",
+            "visibleIf": {
+              "flag": "ballester_acompanya"
+            },
+            "interactions": [
+              {
+                "verb": "talkTo",
+                "lines": [
+                  {
+                    "who": "ballester",
+                    "text": "sala.bcmu_avantdespatx.ballester.parla"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.bcmu_avantdespatx.ballester.look"
+                  }
+                ]
+              }
+            ]
+          },
           "factura": {
             "name": "sala.bcmu_avantdespatx.factura.nom",
             "interactions": [
@@ -3783,7 +3810,24 @@
                       "var": "coixi",
                       "op": "==",
                       "value": "bosses"
-                    }
+                    },
+                    "stage": [
+                      {
+                        "who": "iri",
+                        "at": {
+                          "x": 384,
+                          "y": 196
+                        },
+                        "visible": true
+                      },
+                      {
+                        "who": "iri",
+                        "face": "D"
+                      },
+                      {
+                        "shake": 0.4
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -3792,7 +3836,24 @@
                       "var": "coixi",
                       "op": "==",
                       "value": "escuma"
-                    }
+                    },
+                    "stage": [
+                      {
+                        "who": "iri",
+                        "at": {
+                          "x": 384,
+                          "y": 196
+                        },
+                        "visible": true
+                      },
+                      {
+                        "who": "iri",
+                        "face": "D"
+                      },
+                      {
+                        "shake": 0.4
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -3835,7 +3896,24 @@
                       "var": "coixi",
                       "op": "==",
                       "value": "bosses"
-                    }
+                    },
+                    "stage": [
+                      {
+                        "who": "iri",
+                        "at": {
+                          "x": 384,
+                          "y": 196
+                        },
+                        "visible": true
+                      },
+                      {
+                        "who": "iri",
+                        "face": "D"
+                      },
+                      {
+                        "shake": 0.4
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -3844,7 +3922,24 @@
                       "var": "coixi",
                       "op": "==",
                       "value": "escuma"
-                    }
+                    },
+                    "stage": [
+                      {
+                        "who": "iri",
+                        "at": {
+                          "x": 384,
+                          "y": 196
+                        },
+                        "visible": true
+                      },
+                      {
+                        "who": "iri",
+                        "face": "D"
+                      },
+                      {
+                        "shake": 0.4
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -3882,7 +3977,24 @@
                       "var": "coixi",
                       "op": "==",
                       "value": "bosses"
-                    }
+                    },
+                    "stage": [
+                      {
+                        "who": "iri",
+                        "at": {
+                          "x": 384,
+                          "y": 196
+                        },
+                        "visible": true
+                      },
+                      {
+                        "who": "iri",
+                        "face": "D"
+                      },
+                      {
+                        "shake": 0.4
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",
@@ -3891,7 +4003,24 @@
                       "var": "coixi",
                       "op": "==",
                       "value": "escuma"
-                    }
+                    },
+                    "stage": [
+                      {
+                        "who": "iri",
+                        "at": {
+                          "x": 384,
+                          "y": 196
+                        },
+                        "visible": true
+                      },
+                      {
+                        "who": "iri",
+                        "face": "D"
+                      },
+                      {
+                        "shake": 0.4
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -5504,6 +5633,10 @@
                         "walk": "bosses"
                       },
                       {
+                        "prop": "bosses_plenes",
+                        "visible": false
+                      },
+                      {
                         "who": "neta",
                         "walk": {
                           "x": 272,
@@ -5736,6 +5869,18 @@
                 ]
               }
             ]
+          }
+        },
+        "decor": {
+          "bosses_plenes": {
+            "visibleIf": {
+              "not": {
+                "var": "coixi",
+                "op": "==",
+                "value": "bosses"
+              }
+            },
+            "sota": true
           }
         }
       },
@@ -6747,7 +6892,24 @@
                   {
                     "who": "narrator",
                     "text": "sala.bcmu_passadis.escala.obre2",
-                    "sound": "clau_gira"
+                    "sound": "clau_gira",
+                    "stage": [
+                      {
+                        "prop": "escala_oberta",
+                        "visible": true
+                      },
+                      {
+                        "who": "player",
+                        "walk": {
+                          "x": 372,
+                          "y": 152
+                        }
+                      },
+                      {
+                        "who": "player",
+                        "face": "L"
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -6755,7 +6917,13 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.bcmu_passadis.escala.obre4"
+                    "text": "sala.bcmu_passadis.escala.obre4",
+                    "stage": [
+                      {
+                        "prop": "escala_oberta",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -6796,7 +6964,24 @@
                   {
                     "who": "narrator",
                     "text": "sala.bcmu_passadis.escala.obre2",
-                    "sound": "clau_gira"
+                    "sound": "clau_gira",
+                    "stage": [
+                      {
+                        "prop": "escala_oberta",
+                        "visible": true
+                      },
+                      {
+                        "who": "player",
+                        "walk": {
+                          "x": 372,
+                          "y": 152
+                        }
+                      },
+                      {
+                        "who": "player",
+                        "face": "L"
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -6804,7 +6989,13 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.bcmu_passadis.escala.obre4"
+                    "text": "sala.bcmu_passadis.escala.obre4",
+                    "stage": [
+                      {
+                        "prop": "escala_oberta",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -6980,6 +7171,11 @@
           "camera2_tapada": {
             "visibleIf": {
               "flag": "camera2_tapada"
+            }
+          },
+          "escala_oberta": {
+            "visibleIf": {
+              "flag": "escala_guardes"
             }
           }
         }
@@ -9261,6 +9457,19 @@
             "visibleIf": {
               "flag": "passaplats_obert"
             }
+          },
+          "iri_passaplats": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "passaplats_obert"
+                },
+                {
+                  "inRoom": "pis_estudi",
+                  "who": "iri"
+                }
+              ]
+            }
           }
         }
       },
@@ -9547,7 +9756,13 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.pis_estudi.router.xarxa"
+                    "text": "sala.pis_estudi.router.xarxa",
+                    "stage": [
+                      {
+                        "prop": "pantalles_cerca",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -9562,6 +9777,12 @@
                       {
                         "setFlag": "router_connectat"
                       }
+                    ],
+                    "stage": [
+                      {
+                        "prop": "pantalles_cerca",
+                        "visible": false
+                      }
                     ]
                   },
                   {
@@ -9571,7 +9792,20 @@
                       "var": "cables",
                       "op": "==",
                       "value": 2
-                    }
+                    },
+                    "stage": [
+                      {
+                        "who": "player",
+                        "walk": {
+                          "x": 250,
+                          "y": 160
+                        }
+                      },
+                      {
+                        "who": "player",
+                        "face": "U"
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -9616,7 +9850,13 @@
                       "var": "cables",
                       "op": "==",
                       "value": 2
-                    }
+                    },
+                    "stage": [
+                      {
+                        "prop": "pantalles_cerca",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -9738,7 +9978,13 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.pis_estudi.router.alimentacio"
+                    "text": "sala.pis_estudi.router.alimentacio",
+                    "stage": [
+                      {
+                        "prop": "pantalles_cerca",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -9753,6 +9999,12 @@
                       {
                         "setFlag": "router_connectat"
                       }
+                    ],
+                    "stage": [
+                      {
+                        "prop": "pantalles_cerca",
+                        "visible": false
+                      }
                     ]
                   },
                   {
@@ -9762,7 +10014,20 @@
                       "var": "cables",
                       "op": "==",
                       "value": 2
-                    }
+                    },
+                    "stage": [
+                      {
+                        "who": "player",
+                        "walk": {
+                          "x": 250,
+                          "y": 160
+                        }
+                      },
+                      {
+                        "who": "player",
+                        "face": "U"
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -9807,7 +10072,13 @@
                       "var": "cables",
                       "op": "==",
                       "value": 2
-                    }
+                    },
+                    "stage": [
+                      {
+                        "prop": "pantalles_cerca",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -10200,7 +10471,13 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.pis_estudi.fibra.connecta"
+                    "text": "sala.pis_estudi.fibra.connecta",
+                    "stage": [
+                      {
+                        "prop": "pantalles_cerca",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -10215,6 +10492,12 @@
                       {
                         "setFlag": "router_connectat"
                       }
+                    ],
+                    "stage": [
+                      {
+                        "prop": "pantalles_cerca",
+                        "visible": false
+                      }
                     ]
                   },
                   {
@@ -10224,7 +10507,20 @@
                       "var": "cables",
                       "op": "==",
                       "value": 2
-                    }
+                    },
+                    "stage": [
+                      {
+                        "who": "player",
+                        "walk": {
+                          "x": 250,
+                          "y": 160
+                        }
+                      },
+                      {
+                        "who": "player",
+                        "face": "U"
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -10269,7 +10565,13 @@
                       "var": "cables",
                       "op": "==",
                       "value": 2
-                    }
+                    },
+                    "stage": [
+                      {
+                        "prop": "pantalles_cerca",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -11014,6 +11316,24 @@
           "passaplats_obert": {
             "visibleIf": {
               "flag": "passaplats_obert"
+            }
+          },
+          "vet_passaplats": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "passaplats_obert"
+                },
+                {
+                  "inRoom": "pis_cuina",
+                  "who": "vet"
+                }
+              ]
+            }
+          },
+          "pantalles_cerca": {
+            "visibleIf": {
+              "flag": "llibre_trobat"
             }
           }
         }
@@ -26230,12 +26550,14 @@
       "ui.controls.titol": "Com es juga",
       "ui.controls.dit.0": "Toca una cosa: la primera vegada la mires; després hi fas l'acció (o tries, si n'hi ha més d'una).",
       "ui.controls.dit.1": "Mantén el dit premut sobre una cosa: tries què hi fas (mirar-la, agafar-la, obrir-la...).",
-      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones). Els punts ensenyen el que es pot tocar.",
+      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones).",
+      "ui.controls.dit.3": "Toca el botó dels punts: s'hi encén un moment tot el que es pot tocar.",
       "ui.controls.ratoli.esquerre": "Clic esquerre: hi vas o hi fas l'acció (si n'hi ha més d'una, tries). Mantingues-lo premut per triar.",
       "ui.controls.ratoli.dret": "Clic dret sobre una cosa: la mires.",
       "ui.controls.ratoli.esquerre.mira": "Clic esquerre sobre una cosa: la mires. Mantingues-lo premut per triar què hi fas.",
       "ui.controls.ratoli.dret.fa": "Clic dret: hi vas o hi fas l'acció (si n'hi ha més d'una, tries).",
-      "ui.controls.ratoli.punts": "Clica un objecte de l'inventari i després on el vols fer servir. Els punts ensenyen el que es pot clicar.",
+      "ui.controls.ratoli.inventari": "Clica un objecte de l'inventari i després on el vols fer servir (o a qui el dones).",
+      "ui.controls.ratoli.punts": "Clica el botó dels punts: s'hi encén un moment tot el que es pot clicar.",
       "ui.controls.pista": "Si no saps què fer, obre el menú i tria «Pista»: cada vegada que la demanis, serà una mica més clara.",
       "ui.controls.dacord": "D'acord",
       "ui.opcions.botons": "clic esquerre per fer",
@@ -26889,9 +27211,9 @@
       "sala.pis_estudi.fibra.look_ok": "La fibra, connectada. En Diu la mira amb nostàlgia.",
       "sala.pis_estudi.fibra.nom": "presa de la fibra",
       "sala.pis_estudi.fibra.rev1": "Llums verdes. Internet de debò.",
-      "sala.pis_estudi.finestra.look": "Plou. La ciutat dorm. La pizzeria del davant, no.",
+      "sala.pis_estudi.finestra.look": "La ciutat dorm. La pizzeria del davant, no.",
       "sala.pis_estudi.finestra.nom": "finestra",
-      "sala.pis_estudi.finestra.obre": "Si l'obro, entra la pluja i surt la wifi del veí.",
+      "sala.pis_estudi.finestra.obre": "Si l'obro, entra el fred i surt la wifi del veí.",
       "sala.pis_estudi.intro1": "Ho tinc. Ho tinc ho tinc ho tinc. Amb un tres per cent de bateria, però ho tinc.",
       "sala.pis_estudi.intro2": "Vet? VET! Ho he trobat! Podem entrar a la banca mundial!",
       "sala.pis_estudi.intro3": "Jo també he trobat una cosa: que no has rentat els plats en nou dies.",
@@ -27302,6 +27624,9 @@
       "sala.bcmu_avantdespatx.pons.nom": "Pons",
       "sala.bcmu_avantdespatx.pons.look_aliada": "La senyora Pons. Ara em mira per sobre de les ulleres d'una altra manera.",
       "sala.bcmu_avantdespatx.pons.look": "Una secretària amb les ulleres a la punta del nas. A la taula, una placa: «Sra. Pons. Secretària de Direcció».",
+      "sala.bcmu_avantdespatx.ballester.nom": "Ballester",
+      "sala.bcmu_avantdespatx.ballester.parla": "Jo em quedo aquí, senyora. Si el Director truca a seguretat, la seguretat ja hi és.",
+      "sala.bcmu_avantdespatx.ballester.look": "En Ballester, plantat a prop de la porta del Director. Mira els cavalls dels quadres com qui mira una factura.",
       "sala.bcmu_avantdespatx.factura.nom": "factura",
       "sala.bcmu_avantdespatx.factura.look": "Una factura: «Perruqueria canina Le Caniche d'Or. Client: Rockefeller. Tall, bany i massatge: 4.200 €». Mensual.",
       "sala.bcmu_avantdespatx.factura.agafa": "No és meva. Però ja me la sé de memòria.",
