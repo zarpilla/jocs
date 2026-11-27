@@ -39,6 +39,16 @@
       "align": "center"
     },
     {
+      "type": "text",
+      "id": "name-label",
+      "x": 109,
+      "y": 214,
+      "text": "Nom de la partida:",
+      "font": "conjuraavet-regular",
+      "fontSize": 8,
+      "color": "#e6dcb6"
+    },
+    {
       "type": "textInput",
       "id": "save-name",
       "x": 109,
@@ -48,7 +58,7 @@
       "font": "conjuraavet-regular",
       "fontSize": 8,
       "text": "",
-      "maxLength": 26,
+      "maxLength": 34,
       "placeholder": "Nom de la partida...",
       "color": "#e6dcb6",
       "backgroundColor": "#120d0a",
@@ -62,7 +72,7 @@
       "type": "listBox",
       "id": "saved-list",
       "x": 109,
-      "y": 80,
+      "y": 64,
       "width": 287,
       "height": 145,
       "rowCount": 5,
@@ -80,7 +90,7 @@
       "type": "text",
       "id": "instructions",
       "x": 109,
-      "y": 51,
+      "y": 43,
       "text": "Tria una posició i desa. El nom, si vols, el pots canviar.",
       "font": "conjuraavet-regular",
       "fontSize": 8,
