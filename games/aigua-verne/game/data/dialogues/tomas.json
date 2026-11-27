@@ -547,7 +547,27 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.tomas.mare.3"
+          "text": "dlg.tomas.mare.3",
+          "stage": [
+            {
+              "who": "tomas",
+              "walk": {
+                "x": 293,
+                "y": 146
+              }
+            },
+            {
+              "who": "tomas",
+              "face": "U"
+            }
+          ],
+          "stageAfter": [
+            {
+              "who": "tomas",
+              "visible": false,
+              "hold": 0.6
+            }
+          ]
         },
         {
           "who": "narrator",
@@ -555,7 +575,28 @@
         },
         {
           "who": "narrator",
-          "text": "dlg.tomas.mare.5"
+          "text": "dlg.tomas.mare.5",
+          "stage": [
+            {
+              "who": "tomas",
+              "at": {
+                "x": 293,
+                "y": 146
+              },
+              "visible": true
+            },
+            {
+              "who": "tomas",
+              "walk": {
+                "x": 453,
+                "y": 183
+              }
+            },
+            {
+              "who": "tomas",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "tomas",

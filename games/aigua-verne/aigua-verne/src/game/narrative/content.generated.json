@@ -71,11 +71,16 @@
         "copa": false,
         "diu_aparta": false,
         "diu_carmanyola_vist": false,
+        "dividend_moll": false,
         "escoria_treta": false,
         "ferrum_oberta": false,
         "fidel_admet": false,
         "fidel_norma": false,
         "fidel_tractor": false,
+        "final_barril": false,
+        "final_diu": false,
+        "final_piscines": false,
+        "final_surten": false,
         "franja_vista": false,
         "fusible_agafat": false,
         "galleda_agafada": false,
@@ -129,7 +134,6 @@
         "precinte_vist": false,
         "proleg_focus": false,
         "proleg_preu": false,
-        "trucant_pare": false,
         "promesa_lia": false,
         "quadre_apartat": false,
         "reg_agafat": false,
@@ -166,6 +170,7 @@
         "trans_final": false,
         "trucada_activa": false,
         "trucada_feta": false,
+        "trucant_pare": false,
         "verdant_oberta": false,
         "verne_brut": false,
         "vestit_agafat": false,
@@ -1166,7 +1171,25 @@
             "if": {
               "all": [
                 {
-                  "flag": "reserva_oberta"
+                  "any": [
+                    {
+                      "flag": "dividend_moll"
+                    },
+                    {
+                      "all": [
+                        {
+                          "flag": "reserva_oberta"
+                        },
+                        {
+                          "not": {
+                            "inRoom": [
+                              "final_palau"
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "any": [
@@ -6127,7 +6150,44 @@
           "iri": {},
           "verne": {},
           "dividend": {},
-          "holm": {}
+          "holm": {},
+          "lia": {
+            "visibleIf": {
+              "flag": "final_surten"
+            }
+          },
+          "vet": {
+            "visibleIf": {
+              "flag": "final_surten"
+            }
+          }
+        },
+        "decor": {
+          "plena_piscines0": {
+            "visibleIf": {
+              "flag": "final_piscines"
+            }
+          },
+          "plena_piscines1": {
+            "visibleIf": {
+              "flag": "final_piscines"
+            }
+          },
+          "plena_piscines2": {
+            "visibleIf": {
+              "flag": "final_piscines"
+            }
+          },
+          "plena_piscina_central": {
+            "visibleIf": {
+              "flag": "final_piscines"
+            }
+          },
+          "aigua": {
+            "visibleIf": {
+              "flag": "final_piscines"
+            }
+          }
         }
       },
       "final_pluja": {
@@ -6136,19 +6196,35 @@
         "hotspots": {
           "iri": {},
           "vet": {},
-          "diu": {},
+          "diu": {
+            "visibleIf": {
+              "flag": "final_diu"
+            }
+          },
           "quim": {}
         },
         "decor": {
           "barril_pou": {
             "visibleIf": {
-              "flag": "barril_donat",
-              "is": false
+              "all": [
+                {
+                  "flag": "barril_donat",
+                  "is": false
+                },
+                {
+                  "flag": "final_barril"
+                }
+              ]
             }
           },
           "caixa_ferrum": {
             "visibleIf": {
               "flag": "barril_donat"
+            }
+          },
+          "peix": {
+            "visibleIf": {
+              "flag": "final_diu"
             }
           }
         }
@@ -18195,15 +18271,75 @@
           },
           {
             "who": "narrator",
-            "text": "final.plou.5"
+            "text": "final.plou.5",
+            "stage": [
+              {
+                "prop": "plena_piscines0",
+                "visible": true,
+                "fade": 1.2,
+                "hold": 0.7
+              },
+              {
+                "prop": "plena_piscines1",
+                "visible": true,
+                "fade": 1.2,
+                "hold": 0.7
+              },
+              {
+                "prop": "plena_piscines2",
+                "visible": true,
+                "fade": 1.2,
+                "hold": 0.7
+              },
+              {
+                "prop": "plena_piscina_central",
+                "visible": true,
+                "fade": 1.5
+              },
+              {
+                "prop": "aigua",
+                "visible": true,
+                "fade": 2.5
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "final_piscines"
+              }
+            ]
           },
           {
             "who": "narrator",
-            "text": "final.plou.6"
+            "text": "final.plou.6",
+            "stage": [
+              {
+                "who": "dividend",
+                "walk": {
+                  "x": 530,
+                  "y": 236
+                }
+              },
+              {
+                "who": "dividend",
+                "visible": false,
+                "hold": 0.8
+              }
+            ]
           },
           {
             "who": "verne",
-            "text": "final.plou.7"
+            "text": "final.plou.7",
+            "stage": [
+              {
+                "who": "dividend",
+                "visible": true
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "dividend_moll"
+              }
+            ]
           },
           {
             "who": "iri",
@@ -18211,7 +18347,70 @@
           },
           {
             "who": "narrator",
-            "text": "final.plou.9"
+            "text": "final.plou.9",
+            "stage": [
+              {
+                "who": "lia",
+                "at": {
+                  "x": 196,
+                  "y": 190
+                },
+                "visible": true
+              },
+              {
+                "who": "vet",
+                "at": {
+                  "x": 216,
+                  "y": 193
+                },
+                "visible": true
+              },
+              {
+                "who": "iri",
+                "walk": {
+                  "x": 238,
+                  "y": 200
+                }
+              },
+              {
+                "who": "lia",
+                "walk": {
+                  "x": 200,
+                  "y": 188
+                },
+                "wait": false
+              },
+              {
+                "who": "vet",
+                "walk": {
+                  "x": 206,
+                  "y": 189
+                },
+                "wait": false
+              },
+              {
+                "who": "iri",
+                "walk": {
+                  "x": 208,
+                  "y": 189
+                },
+                "wait": false
+              }
+            ],
+            "stageAfter": [
+              {
+                "who": "lia",
+                "visible": false
+              },
+              {
+                "who": "vet",
+                "visible": false
+              },
+              {
+                "who": "iri",
+                "visible": false
+              }
+            ]
           },
           {
             "who": "narrator",
@@ -18286,7 +18485,35 @@
             "if": {
               "flag": "barril_donat",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "walk": {
+                  "x": 308,
+                  "y": 226
+                }
+              },
+              {
+                "who": "vet",
+                "face": "L"
+              },
+              {
+                "prop": "barril_pou",
+                "visible": true,
+                "fade": 0.8,
+                "hold": 0.8
+              },
+              {
+                "who": "vet",
+                "gest": "Fa"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "final_barril"
+              }
+            ]
           },
           {
             "who": "vet",
@@ -18294,7 +18521,13 @@
             "if": {
               "flag": "barril_donat",
               "is": false
-            }
+            },
+            "stage": [
+              {
+                "who": "vet",
+                "gest": null
+              }
+            ]
           },
           {
             "who": "vet",
@@ -18356,7 +18589,33 @@
           },
           {
             "who": "narrator",
-            "text": "final.plou.32"
+            "text": "final.plou.32",
+            "stage": [
+              {
+                "who": "diu",
+                "at": {
+                  "x": 632,
+                  "y": 224
+                },
+                "visible": true
+              },
+              {
+                "who": "diu",
+                "walk": {
+                  "x": 426,
+                  "y": 232
+                }
+              },
+              {
+                "who": "diu",
+                "face": "L"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "final_diu"
+              }
+            ]
           },
           {
             "who": "iri",
@@ -28848,7 +29107,27 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.tomas.mare.3"
+                "text": "dlg.tomas.mare.3",
+                "stage": [
+                  {
+                    "who": "tomas",
+                    "walk": {
+                      "x": 293,
+                      "y": 146
+                    }
+                  },
+                  {
+                    "who": "tomas",
+                    "face": "U"
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "who": "tomas",
+                    "visible": false,
+                    "hold": 0.6
+                  }
+                ]
               },
               {
                 "who": "narrator",
@@ -28856,7 +29135,28 @@
               },
               {
                 "who": "narrator",
-                "text": "dlg.tomas.mare.5"
+                "text": "dlg.tomas.mare.5",
+                "stage": [
+                  {
+                    "who": "tomas",
+                    "at": {
+                      "x": 293,
+                      "y": 146
+                    },
+                    "visible": true
+                  },
+                  {
+                    "who": "tomas",
+                    "walk": {
+                      "x": 453,
+                      "y": 183
+                    }
+                  },
+                  {
+                    "who": "tomas",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "tomas",
@@ -30332,12 +30632,14 @@
       "ui.controls.titol": "Com es juga",
       "ui.controls.dit.0": "Toca una cosa: la primera vegada la mires; després hi fas l'acció (o tries, si n'hi ha més d'una).",
       "ui.controls.dit.1": "Mantén el dit premut sobre una cosa: tries què hi fas (mirar-la, agafar-la, obrir-la...).",
-      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones). Els punts ensenyen el que es pot tocar.",
+      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones).",
+      "ui.controls.dit.3": "Toca el botó dels punts: s'hi encén un moment tot el que es pot tocar.",
       "ui.controls.ratoli.esquerre": "Clic esquerre: hi vas o hi fas l'acció (si n'hi ha més d'una, tries). Mantingues-lo premut per triar.",
       "ui.controls.ratoli.dret": "Clic dret sobre una cosa: la mires.",
       "ui.controls.ratoli.esquerre.mira": "Clic esquerre sobre una cosa: la mires. Mantingues-lo premut per triar què hi fas.",
       "ui.controls.ratoli.dret.fa": "Clic dret: hi vas o hi fas l'acció (si n'hi ha més d'una, tries).",
-      "ui.controls.ratoli.punts": "Clica un objecte de l'inventari i després on el vols fer servir. Els punts ensenyen el que es pot clicar.",
+      "ui.controls.ratoli.inventari": "Clica un objecte de l'inventari i després on el vols fer servir (o a qui el dones).",
+      "ui.controls.ratoli.punts": "Clica el botó dels punts: s'hi encén un moment tot el que es pot clicar.",
       "ui.controls.pista": "Si no saps què fer, obre el menú i tria «Pista»: cada vegada que la demanis, serà una mica més clara.",
       "ui.controls.dacord": "D'acord",
       "ui.opcions.botons": "clic esquerre per fer",

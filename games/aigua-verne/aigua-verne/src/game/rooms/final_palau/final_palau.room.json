@@ -263,6 +263,50 @@
       "y": 0,
       "zIndex": 29,
       "baseline": 999
+    },
+    {
+      "id": "plena_piscines0",
+      "tag": "plena_piscines0",
+      "animations": {
+        "plena_piscines0": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "plena_piscines1",
+      "tag": "plena_piscines1",
+      "animations": {
+        "plena_piscines1": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "plena_piscines2",
+      "tag": "plena_piscines2",
+      "animations": {
+        "plena_piscines2": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "plena_piscina_central",
+      "tag": "plena_piscina_central",
+      "animations": {
+        "plena_piscina_central": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [
@@ -301,6 +345,26 @@
       "definition": "holm/holm.character.json",
       "x": 459,
       "y": 253,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "lia-1",
+      "definition": "lia/lia.character.json",
+      "x": 208,
+      "y": 189,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 224,
+      "y": 191,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

@@ -5,19 +5,35 @@
   "hotspots": {
     "iri": {},
     "vet": {},
-    "diu": {},
+    "diu": {
+      "visibleIf": {
+        "flag": "final_diu"
+      }
+    },
     "quim": {}
   },
   "decor": {
     "barril_pou": {
       "visibleIf": {
-        "flag": "barril_donat",
-        "is": false
+        "all": [
+          {
+            "flag": "barril_donat",
+            "is": false
+          },
+          {
+            "flag": "final_barril"
+          }
+        ]
       }
     },
     "caixa_ferrum": {
       "visibleIf": {
         "flag": "barril_donat"
+      }
+    },
+    "peix": {
+      "visibleIf": {
+        "flag": "final_diu"
       }
     }
   }

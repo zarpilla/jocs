@@ -6,6 +6,43 @@
     "iri": {},
     "verne": {},
     "dividend": {},
-    "holm": {}
+    "holm": {},
+    "lia": {
+      "visibleIf": {
+        "flag": "final_surten"
+      }
+    },
+    "vet": {
+      "visibleIf": {
+        "flag": "final_surten"
+      }
+    }
+  },
+  "decor": {
+    "plena_piscines0": {
+      "visibleIf": {
+        "flag": "final_piscines"
+      }
+    },
+    "plena_piscines1": {
+      "visibleIf": {
+        "flag": "final_piscines"
+      }
+    },
+    "plena_piscines2": {
+      "visibleIf": {
+        "flag": "final_piscines"
+      }
+    },
+    "plena_piscina_central": {
+      "visibleIf": {
+        "flag": "final_piscines"
+      }
+    },
+    "aigua": {
+      "visibleIf": {
+        "flag": "final_piscines"
+      }
+    }
   }
 }

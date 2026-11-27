@@ -23,18 +23,18 @@
     },
     "final_palau 1.aseprite": {
       "frame": {
-        "x": 1844,
-        "y": 360,
-        "w": 106,
-        "h": 92
+        "x": 2855,
+        "y": 512,
+        "w": 575,
+        "h": 67
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 582,
-        "y": 103,
-        "w": 106,
-        "h": 92
+        "x": 365,
+        "y": 128,
+        "w": 575,
+        "h": 67
       },
       "sourceSize": {
         "w": 960,
@@ -44,18 +44,18 @@
     },
     "final_palau 2.aseprite": {
       "frame": {
-        "x": 1950,
-        "y": 360,
-        "w": 106,
-        "h": 92
+        "x": 704,
+        "y": 604,
+        "w": 487,
+        "h": 44
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 582,
-        "y": 103,
-        "w": 106,
-        "h": 92
+        "x": 406,
+        "y": 102,
+        "w": 487,
+        "h": 44
       },
       "sourceSize": {
         "w": 960,
@@ -65,18 +65,18 @@
     },
     "final_palau 3.aseprite": {
       "frame": {
-        "x": 2056,
-        "y": 360,
-        "w": 106,
-        "h": 92
+        "x": 1346,
+        "y": 604,
+        "w": 452,
+        "h": 29
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 582,
-        "y": 103,
-        "w": 106,
-        "h": 92
+        "x": 405,
+        "y": 80,
+        "w": 452,
+        "h": 29
       },
       "sourceSize": {
         "w": 960,
@@ -86,18 +86,18 @@
     },
     "final_palau 4.aseprite": {
       "frame": {
-        "x": 2162,
-        "y": 360,
-        "w": 106,
-        "h": 92
+        "x": 1191,
+        "y": 604,
+        "w": 155,
+        "h": 44
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 582,
-        "y": 103,
-        "w": 106,
-        "h": 92
+        "x": 373,
+        "y": 188,
+        "w": 155,
+        "h": 44
       },
       "sourceSize": {
         "w": 960,
@@ -107,7 +107,7 @@
     },
     "final_palau 5.aseprite": {
       "frame": {
-        "x": 2268,
+        "x": 1844,
         "y": 360,
         "w": 106,
         "h": 92
@@ -128,7 +128,7 @@
     },
     "final_palau 6.aseprite": {
       "frame": {
-        "x": 2374,
+        "x": 1950,
         "y": 360,
         "w": 106,
         "h": 92
@@ -149,7 +149,7 @@
     },
     "final_palau 7.aseprite": {
       "frame": {
-        "x": 2480,
+        "x": 2056,
         "y": 360,
         "w": 106,
         "h": 92
@@ -170,7 +170,7 @@
     },
     "final_palau 8.aseprite": {
       "frame": {
-        "x": 2586,
+        "x": 2162,
         "y": 360,
         "w": 106,
         "h": 92
@@ -191,7 +191,7 @@
     },
     "final_palau 9.aseprite": {
       "frame": {
-        "x": 2692,
+        "x": 2268,
         "y": 360,
         "w": 106,
         "h": 92
@@ -212,7 +212,7 @@
     },
     "final_palau 10.aseprite": {
       "frame": {
-        "x": 2798,
+        "x": 2374,
         "y": 360,
         "w": 106,
         "h": 92
@@ -233,7 +233,7 @@
     },
     "final_palau 11.aseprite": {
       "frame": {
-        "x": 2904,
+        "x": 2480,
         "y": 360,
         "w": 106,
         "h": 92
@@ -254,7 +254,7 @@
     },
     "final_palau 12.aseprite": {
       "frame": {
-        "x": 3010,
+        "x": 2586,
         "y": 360,
         "w": 106,
         "h": 92
@@ -275,7 +275,7 @@
     },
     "final_palau 13.aseprite": {
       "frame": {
-        "x": 3116,
+        "x": 2692,
         "y": 360,
         "w": 106,
         "h": 92
@@ -296,7 +296,7 @@
     },
     "final_palau 14.aseprite": {
       "frame": {
-        "x": 3222,
+        "x": 2798,
         "y": 360,
         "w": 106,
         "h": 92
@@ -317,7 +317,7 @@
     },
     "final_palau 15.aseprite": {
       "frame": {
-        "x": 3328,
+        "x": 2904,
         "y": 360,
         "w": 106,
         "h": 92
@@ -338,7 +338,7 @@
     },
     "final_palau 16.aseprite": {
       "frame": {
-        "x": 3434,
+        "x": 3010,
         "y": 360,
         "w": 106,
         "h": 92
@@ -359,7 +359,7 @@
     },
     "final_palau 17.aseprite": {
       "frame": {
-        "x": 3540,
+        "x": 3116,
         "y": 360,
         "w": 106,
         "h": 92
@@ -380,7 +380,7 @@
     },
     "final_palau 18.aseprite": {
       "frame": {
-        "x": 3646,
+        "x": 3222,
         "y": 360,
         "w": 106,
         "h": 92
@@ -401,7 +401,7 @@
     },
     "final_palau 19.aseprite": {
       "frame": {
-        "x": 3752,
+        "x": 3328,
         "y": 360,
         "w": 106,
         "h": 92
@@ -422,7 +422,7 @@
     },
     "final_palau 20.aseprite": {
       "frame": {
-        "x": 3858,
+        "x": 3434,
         "y": 360,
         "w": 106,
         "h": 92
@@ -443,7 +443,7 @@
     },
     "final_palau 21.aseprite": {
       "frame": {
-        "x": 3964,
+        "x": 3540,
         "y": 360,
         "w": 106,
         "h": 92
@@ -464,6 +464,90 @@
     },
     "final_palau 22.aseprite": {
       "frame": {
+        "x": 3646,
+        "y": 360,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "final_palau 23.aseprite": {
+      "frame": {
+        "x": 3752,
+        "y": 360,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "final_palau 24.aseprite": {
+      "frame": {
+        "x": 3858,
+        "y": 360,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "final_palau 25.aseprite": {
+      "frame": {
+        "x": 3964,
+        "y": 360,
+        "w": 106,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 103,
+        "w": 106,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 960,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "final_palau 26.aseprite": {
+      "frame": {
         "x": 0,
         "y": 512,
         "w": 106,
@@ -483,7 +567,7 @@
       },
       "duration": 100
     },
-    "final_palau 23.aseprite": {
+    "final_palau 27.aseprite": {
       "frame": {
         "x": 106,
         "y": 512,
@@ -504,7 +588,7 @@
       },
       "duration": 100
     },
-    "final_palau 24.aseprite": {
+    "final_palau 28.aseprite": {
       "frame": {
         "x": 212,
         "y": 512,
@@ -525,7 +609,7 @@
       },
       "duration": 100
     },
-    "final_palau 25.aseprite": {
+    "final_palau 29.aseprite": {
       "frame": {
         "x": 1301,
         "y": 512,
@@ -546,7 +630,7 @@
       },
       "duration": 100
     },
-    "final_palau 26.aseprite": {
+    "final_palau 30.aseprite": {
       "frame": {
         "x": 487,
         "y": 512,
@@ -567,7 +651,7 @@
       },
       "duration": 100
     },
-    "final_palau 27.aseprite": {
+    "final_palau 31.aseprite": {
       "frame": {
         "x": 2166,
         "y": 512,
@@ -588,7 +672,7 @@
       },
       "duration": 100
     },
-    "final_palau 28.aseprite": {
+    "final_palau 32.aseprite": {
       "frame": {
         "x": 2497,
         "y": 512,
@@ -609,10 +693,10 @@
       },
       "duration": 100
     },
-    "final_palau 29.aseprite": {
+    "final_palau 33.aseprite": {
       "frame": {
-        "x": 3491,
-        "y": 512,
+        "x": 0,
+        "y": 604,
         "w": 414,
         "h": 52
       },
@@ -630,9 +714,9 @@
       },
       "duration": 100
     },
-    "final_palau 30.aseprite": {
+    "final_palau 34.aseprite": {
       "frame": {
-        "x": 0,
+        "x": 414,
         "y": 604,
         "w": 290,
         "h": 49
@@ -651,7 +735,7 @@
       },
       "duration": 100
     },
-    "final_palau 31.aseprite": {
+    "final_palau 35.aseprite": {
       "frame": {
         "x": 871,
         "y": 512,
@@ -672,7 +756,7 @@
       },
       "duration": 100
     },
-    "final_palau 32.aseprite": {
+    "final_palau 36.aseprite": {
       "frame": {
         "x": 1661,
         "y": 512,
@@ -693,9 +777,9 @@
       },
       "duration": 100
     },
-    "final_palau 33.aseprite": {
+    "final_palau 37.aseprite": {
       "frame": {
-        "x": 3212,
+        "x": 3787,
         "y": 512,
         "w": 279,
         "h": 61
@@ -714,9 +798,9 @@
       },
       "duration": 100
     },
-    "final_palau 34.aseprite": {
+    "final_palau 38.aseprite": {
       "frame": {
-        "x": 2855,
+        "x": 3430,
         "y": 512,
         "w": 357,
         "h": 63
@@ -735,7 +819,7 @@
       },
       "duration": 100
     },
-    "final_palau 35.aseprite": {
+    "final_palau 39.aseprite": {
       "frame": {
         "x": 1092,
         "y": 0,
@@ -756,7 +840,7 @@
       },
       "duration": 100
     },
-    "final_palau 36.aseprite": {
+    "final_palau 40.aseprite": {
       "frame": {
         "x": 1667,
         "y": 0,
@@ -777,7 +861,7 @@
       },
       "duration": 100
     },
-    "final_palau 37.aseprite": {
+    "final_palau 41.aseprite": {
       "frame": {
         "x": 2242,
         "y": 0,
@@ -798,7 +882,7 @@
       },
       "duration": 100
     },
-    "final_palau 38.aseprite": {
+    "final_palau 42.aseprite": {
       "frame": {
         "x": 2817,
         "y": 0,
@@ -819,7 +903,7 @@
       },
       "duration": 100
     },
-    "final_palau 39.aseprite": {
+    "final_palau 43.aseprite": {
       "frame": {
         "x": 3392,
         "y": 0,
@@ -840,7 +924,7 @@
       },
       "duration": 100
     },
-    "final_palau 40.aseprite": {
+    "final_palau 44.aseprite": {
       "frame": {
         "x": 0,
         "y": 360,
@@ -861,7 +945,7 @@
       },
       "duration": 100
     },
-    "final_palau 41.aseprite": {
+    "final_palau 45.aseprite": {
       "frame": {
         "x": 575,
         "y": 360,
@@ -882,7 +966,7 @@
       },
       "duration": 100
     },
-    "final_palau 42.aseprite": {
+    "final_palau 46.aseprite": {
       "frame": {
         "x": 1150,
         "y": 360,
@@ -903,7 +987,7 @@
       },
       "duration": 100
     },
-    "final_palau 43.aseprite": {
+    "final_palau 47.aseprite": {
       "frame": {
         "x": 2091,
         "y": 512,
@@ -924,7 +1008,7 @@
       },
       "duration": 100
     },
-    "final_palau 44.aseprite": {
+    "final_palau 48.aseprite": {
       "frame": {
         "x": 1725,
         "y": 360,
@@ -945,7 +1029,7 @@
       },
       "duration": 100
     },
-    "final_palau 45.aseprite": {
+    "final_palau 49.aseprite": {
       "frame": {
         "x": 787,
         "y": 512,
@@ -966,7 +1050,7 @@
       },
       "duration": 100
     },
-    "final_palau 46.aseprite": {
+    "final_palau 50.aseprite": {
       "frame": {
         "x": 318,
         "y": 512,
@@ -987,7 +1071,7 @@
       },
       "duration": 100
     },
-    "final_palau 47.aseprite": {
+    "final_palau 51.aseprite": {
       "frame": {
         "x": 960,
         "y": 0,
@@ -1016,7 +1100,7 @@
     "format": "RGBA8888",
     "size": {
       "w": 4070,
-      "h": 653
+      "h": 656
     },
     "scale": "1",
     "frameTags": [
@@ -1028,58 +1112,86 @@
         "color": "#000000ff"
       },
       {
-        "name": "peixos",
+        "name": "plena_piscines0",
         "from": 1,
-        "to": 24,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "plena_piscines1",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "plena_piscines2",
+        "from": 3,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "plena_piscina_central",
+        "from": 4,
+        "to": 4,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "peixos",
+        "from": 5,
+        "to": 28,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "estrelles",
-        "from": 25,
-        "to": 34,
+        "from": 29,
+        "to": 38,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "aigua",
-        "from": 35,
-        "to": 42,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_escaleta",
-        "from": 43,
-        "to": 43,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_aquari",
-        "from": 44,
-        "to": 44,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_gandula",
-        "from": 45,
-        "to": 45,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant",
-        "from": 46,
+        "from": 39,
         "to": 46,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_columna",
+        "name": "davant_escaleta",
         "from": 47,
         "to": 47,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_aquari",
+        "from": 48,
+        "to": 48,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_gandula",
+        "from": 49,
+        "to": 49,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 50,
+        "to": 50,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_columna",
+        "from": 51,
+        "to": 51,
         "direction": "forward",
         "color": "#000000ff"
       }

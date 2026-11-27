@@ -28,15 +28,75 @@
       },
       {
         "who": "narrator",
-        "text": "final.plou.5"
+        "text": "final.plou.5",
+        "stage": [
+          {
+            "prop": "plena_piscines0",
+            "visible": true,
+            "fade": 1.2,
+            "hold": 0.7
+          },
+          {
+            "prop": "plena_piscines1",
+            "visible": true,
+            "fade": 1.2,
+            "hold": 0.7
+          },
+          {
+            "prop": "plena_piscines2",
+            "visible": true,
+            "fade": 1.2,
+            "hold": 0.7
+          },
+          {
+            "prop": "plena_piscina_central",
+            "visible": true,
+            "fade": 1.5
+          },
+          {
+            "prop": "aigua",
+            "visible": true,
+            "fade": 2.5
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "final_piscines"
+          }
+        ]
       },
       {
         "who": "narrator",
-        "text": "final.plou.6"
+        "text": "final.plou.6",
+        "stage": [
+          {
+            "who": "dividend",
+            "walk": {
+              "x": 530,
+              "y": 236
+            }
+          },
+          {
+            "who": "dividend",
+            "visible": false,
+            "hold": 0.8
+          }
+        ]
       },
       {
         "who": "verne",
-        "text": "final.plou.7"
+        "text": "final.plou.7",
+        "stage": [
+          {
+            "who": "dividend",
+            "visible": true
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "dividend_moll"
+          }
+        ]
       },
       {
         "who": "iri",
@@ -44,7 +104,70 @@
       },
       {
         "who": "narrator",
-        "text": "final.plou.9"
+        "text": "final.plou.9",
+        "stage": [
+          {
+            "who": "lia",
+            "at": {
+              "x": 196,
+              "y": 190
+            },
+            "visible": true
+          },
+          {
+            "who": "vet",
+            "at": {
+              "x": 216,
+              "y": 193
+            },
+            "visible": true
+          },
+          {
+            "who": "iri",
+            "walk": {
+              "x": 238,
+              "y": 200
+            }
+          },
+          {
+            "who": "lia",
+            "walk": {
+              "x": 200,
+              "y": 188
+            },
+            "wait": false
+          },
+          {
+            "who": "vet",
+            "walk": {
+              "x": 206,
+              "y": 189
+            },
+            "wait": false
+          },
+          {
+            "who": "iri",
+            "walk": {
+              "x": 208,
+              "y": 189
+            },
+            "wait": false
+          }
+        ],
+        "stageAfter": [
+          {
+            "who": "lia",
+            "visible": false
+          },
+          {
+            "who": "vet",
+            "visible": false
+          },
+          {
+            "who": "iri",
+            "visible": false
+          }
+        ]
       },
       {
         "who": "narrator",
@@ -119,7 +242,35 @@
         "if": {
           "flag": "barril_donat",
           "is": false
-        }
+        },
+        "stage": [
+          {
+            "who": "vet",
+            "walk": {
+              "x": 308,
+              "y": 226
+            }
+          },
+          {
+            "who": "vet",
+            "face": "L"
+          },
+          {
+            "prop": "barril_pou",
+            "visible": true,
+            "fade": 0.8,
+            "hold": 0.8
+          },
+          {
+            "who": "vet",
+            "gest": "Fa"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "final_barril"
+          }
+        ]
       },
       {
         "who": "vet",
@@ -127,7 +278,13 @@
         "if": {
           "flag": "barril_donat",
           "is": false
-        }
+        },
+        "stage": [
+          {
+            "who": "vet",
+            "gest": null
+          }
+        ]
       },
       {
         "who": "vet",
@@ -189,7 +346,33 @@
       },
       {
         "who": "narrator",
-        "text": "final.plou.32"
+        "text": "final.plou.32",
+        "stage": [
+          {
+            "who": "diu",
+            "at": {
+              "x": 632,
+              "y": 224
+            },
+            "visible": true
+          },
+          {
+            "who": "diu",
+            "walk": {
+              "x": 426,
+              "y": 232
+            }
+          },
+          {
+            "who": "diu",
+            "face": "L"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "final_diu"
+          }
+        ]
       },
       {
         "who": "iri",

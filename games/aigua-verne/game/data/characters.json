@@ -972,7 +972,25 @@
         "if": {
           "all": [
             {
-              "flag": "reserva_oberta"
+              "any": [
+                {
+                  "flag": "dividend_moll"
+                },
+                {
+                  "all": [
+                    {
+                      "flag": "reserva_oberta"
+                    },
+                    {
+                      "not": {
+                        "inRoom": [
+                          "final_palau"
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
             },
             {
               "any": [

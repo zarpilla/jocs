@@ -65,18 +65,18 @@
     },
     "final_pluja 3.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 0,
-        "w": 640,
-        "h": 260
+        "x": 2272,
+        "y": 880,
+        "w": 13,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 260
+        "x": 412,
+        "y": 228,
+        "w": 13,
+        "h": 6
       },
       "sourceSize": {
         "w": 640,
@@ -86,7 +86,7 @@
     },
     "final_pluja 4.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 640,
         "y": 0,
         "w": 640,
         "h": 260
@@ -107,7 +107,7 @@
     },
     "final_pluja 5.aseprite": {
       "frame": {
-        "x": 1920,
+        "x": 1280,
         "y": 0,
         "w": 640,
         "h": 260
@@ -128,7 +128,7 @@
     },
     "final_pluja 6.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1920,
         "y": 0,
         "w": 640,
         "h": 260
@@ -149,7 +149,7 @@
     },
     "final_pluja 7.aseprite": {
       "frame": {
-        "x": 3200,
+        "x": 2560,
         "y": 0,
         "w": 640,
         "h": 260
@@ -170,8 +170,8 @@
     },
     "final_pluja 8.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 360,
+        "x": 3200,
+        "y": 0,
         "w": 640,
         "h": 260
       },
@@ -191,7 +191,7 @@
     },
     "final_pluja 9.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 0,
         "y": 360,
         "w": 640,
         "h": 260
@@ -212,7 +212,7 @@
     },
     "final_pluja 10.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 640,
         "y": 360,
         "w": 640,
         "h": 260
@@ -233,7 +233,7 @@
     },
     "final_pluja 11.aseprite": {
       "frame": {
-        "x": 1920,
+        "x": 1280,
         "y": 360,
         "w": 640,
         "h": 260
@@ -254,7 +254,7 @@
     },
     "final_pluja 12.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1920,
         "y": 360,
         "w": 640,
         "h": 260
@@ -275,7 +275,7 @@
     },
     "final_pluja 13.aseprite": {
       "frame": {
-        "x": 3200,
+        "x": 2560,
         "y": 360,
         "w": 640,
         "h": 260
@@ -296,8 +296,8 @@
     },
     "final_pluja 14.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 620,
+        "x": 3200,
+        "y": 360,
         "w": 640,
         "h": 260
       },
@@ -317,7 +317,7 @@
     },
     "final_pluja 15.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 0,
         "y": 620,
         "w": 640,
         "h": 260
@@ -338,7 +338,7 @@
     },
     "final_pluja 16.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 640,
         "y": 620,
         "w": 640,
         "h": 260
@@ -359,7 +359,7 @@
     },
     "final_pluja 17.aseprite": {
       "frame": {
-        "x": 1920,
+        "x": 1280,
         "y": 620,
         "w": 640,
         "h": 260
@@ -380,7 +380,7 @@
     },
     "final_pluja 18.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1920,
         "y": 620,
         "w": 640,
         "h": 260
@@ -401,7 +401,7 @@
     },
     "final_pluja 19.aseprite": {
       "frame": {
-        "x": 3200,
+        "x": 2560,
         "y": 620,
         "w": 640,
         "h": 260
@@ -422,8 +422,8 @@
     },
     "final_pluja 20.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 880,
+        "x": 3200,
+        "y": 620,
         "w": 640,
         "h": 260
       },
@@ -443,7 +443,7 @@
     },
     "final_pluja 21.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 0,
         "y": 880,
         "w": 640,
         "h": 260
@@ -464,7 +464,7 @@
     },
     "final_pluja 22.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 640,
         "y": 880,
         "w": 640,
         "h": 260
@@ -485,6 +485,27 @@
     },
     "final_pluja 23.aseprite": {
       "frame": {
+        "x": 1280,
+        "y": 880,
+        "w": 640,
+        "h": 260
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 260
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "final_pluja 24.aseprite": {
+      "frame": {
         "x": 2218,
         "y": 880,
         "w": 24,
@@ -504,9 +525,9 @@
       },
       "duration": 100
     },
-    "final_pluja 24.aseprite": {
+    "final_pluja 25.aseprite": {
       "frame": {
-        "x": 2272,
+        "x": 2285,
         "y": 880,
         "w": 14,
         "h": 6
@@ -525,7 +546,7 @@
       },
       "duration": 100
     },
-    "final_pluja 25.aseprite": {
+    "final_pluja 26.aseprite": {
       "frame": {
         "x": 1920,
         "y": 880,
@@ -546,9 +567,9 @@
       },
       "duration": 100
     },
-    "final_pluja 26.aseprite": {
+    "final_pluja 27.aseprite": {
       "frame": {
-        "x": 2294,
+        "x": 2307,
         "y": 880,
         "w": 28,
         "h": 4
@@ -567,9 +588,9 @@
       },
       "duration": 100
     },
-    "final_pluja 27.aseprite": {
+    "final_pluja 28.aseprite": {
       "frame": {
-        "x": 2286,
+        "x": 2299,
         "y": 880,
         "w": 8,
         "h": 6
@@ -588,9 +609,9 @@
       },
       "duration": 100
     },
-    "final_pluja 28.aseprite": {
+    "final_pluja 29.aseprite": {
       "frame": {
-        "x": 2322,
+        "x": 2335,
         "y": 880,
         "w": 1,
         "h": 1
@@ -609,7 +630,7 @@
       },
       "duration": 100
     },
-    "final_pluja 29.aseprite": {
+    "final_pluja 30.aseprite": {
       "frame": {
         "x": 1991,
         "y": 880,
@@ -630,7 +651,7 @@
       },
       "duration": 100
     },
-    "final_pluja 30.aseprite": {
+    "final_pluja 31.aseprite": {
       "frame": {
         "x": 2038,
         "y": 880,
@@ -685,65 +706,72 @@
         "color": "#000000ff"
       },
       {
-        "name": "pluja",
+        "name": "peix",
         "from": 3,
-        "to": 22,
+        "to": 3,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_bomba",
-        "from": 23,
+        "name": "pluja",
+        "from": 4,
         "to": 23,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_tub0",
+        "name": "davant_bomba",
         "from": 24,
         "to": 24,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_arbre",
+        "name": "davant_tub0",
         "from": 25,
         "to": 25,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_tub1",
+        "name": "davant_arbre",
         "from": 26,
         "to": 26,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_tub2",
+        "name": "davant_tub1",
         "from": 27,
         "to": 27,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_tub3",
+        "name": "davant_tub2",
         "from": 28,
         "to": 28,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant_pou",
+        "name": "davant_tub3",
         "from": 29,
         "to": 29,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_pou",
         "from": 30,
         "to": 30,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 31,
+        "to": 31,
         "direction": "forward",
         "color": "#000000ff"
       }

@@ -368,7 +368,33 @@ def caixa_ferrum(cv):
     cv.img.alpha_composite(_dret(_caixa_pla, (372, 194, 422, 232), (26, 34), (CAIXA[0], 0, CAIXA[1]), 22, 12))
 
 
-PROPS = {'barril_pou': barril_pou, 'caixa_ferrum': caixa_ferrum}
+def peix(cv):
+    """El peix platejat que en Diu deixa als peus de la Iri (tasca 142): petit, de costat a terra, xop, amb la cua
+    cap a la dreta i un ull fosc."""
+    out = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    o = out.load()
+    x0, y0, n = 412, 230, 11                                   # el musell, a l'esquerra dels peus de la Iri
+    for i in range(n):
+        t = i / (n - 1)
+        half = round(2.2 * math.sin(math.pi * min(1.0, t * 1.15)))   # el cos, més gruixut cap al cap
+        for dy in range(-half, half + 1):
+            top = dy < 0
+            c = (150, 160, 170) if top else (206, 214, 220)
+            if dy == 0 and 2 < i < n - 2:
+                c = (232, 238, 242)                                  # la llum de l'aigua al llom
+            o[x0 + i, y0 + dy] = c + (255,)
+    for dy in (-2, -1, 0, 1, 2):                                     # la cua
+        o[x0 + n, y0 + dy] = (128, 138, 150, 255)
+        if abs(dy) == 2:
+            o[x0 + n + 1, y0 + dy] = (128, 138, 150, 255)
+    o[x0 + 2, y0 - 1] = (20, 22, 26, 255)                           # l'ull
+    for i in range(1, n):                                            # l'ombra, a terra
+        if not o[x0 + i, y0 + 3][3]:
+            o[x0 + i, y0 + 3] = (12, 10, 10, 90)
+    cv.img.alpha_composite(out)
+
+
+PROPS = {'barril_pou': barril_pou, 'caixa_ferrum': caixa_ferrum, 'peix': peix}
 
 
 # ─── La pluja, en perspectiva ──────────────────────────────────────────────────

@@ -283,7 +283,7 @@
       "animations": {
         "davant_tub0": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 208
     },
     {
@@ -295,7 +295,7 @@
       "animations": {
         "davant_arbre": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 210
     },
     {
@@ -307,7 +307,7 @@
       "animations": {
         "davant_tub1": {}
       },
-      "zIndex": 23,
+      "zIndex": 26,
       "baseline": 211
     },
     {
@@ -319,7 +319,7 @@
       "animations": {
         "davant_tub2": {}
       },
-      "zIndex": 24,
+      "zIndex": 28,
       "baseline": 214
     },
     {
@@ -331,7 +331,7 @@
       "animations": {
         "davant_tub3": {}
       },
-      "zIndex": 25,
+      "zIndex": 30,
       "baseline": 215
     },
     {
@@ -343,7 +343,7 @@
       "animations": {
         "davant_pou": {}
       },
-      "zIndex": 26,
+      "zIndex": 32,
       "baseline": 218
     },
     {
@@ -355,8 +355,19 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 27,
+      "zIndex": 34,
       "baseline": 999
+    },
+    {
+      "id": "peix",
+      "tag": "peix",
+      "animations": {
+        "peix": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [
