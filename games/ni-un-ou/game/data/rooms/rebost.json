@@ -56,6 +56,65 @@
           ]
         },
         {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "munta_rebost",
+                "op": "!=",
+                "value": ""
+              },
+              {
+                "var": "munta_rebost",
+                "op": "==",
+                "value": "nota_vet"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.rebost.nota1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.rebost.nota2"
+            },
+            {
+              "who": "player",
+              "text": "sala.rebost.nota3"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "munta_rebost",
+              "value": ""
+            },
+            {
+              "setFlag": "pla_fet"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "action": {
+            "name": "munta.recollir"
+          },
+          "if": {
+            "var": "munta_rebost",
+            "op": "!=",
+            "value": ""
+          }
+        },
+        {
           "verb": "use",
           "item": "llibreta",
           "if": {

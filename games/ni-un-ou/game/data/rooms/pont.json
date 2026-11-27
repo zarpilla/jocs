@@ -985,6 +985,21 @@
           ]
         },
         {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "action": {
+            "name": "munta.recollir"
+          },
+          "if": {
+            "var": "munta_pont",
+            "op": "!=",
+            "value": ""
+          }
+        },
+        {
           "verb": "use",
           "item": "*",
           "action": {

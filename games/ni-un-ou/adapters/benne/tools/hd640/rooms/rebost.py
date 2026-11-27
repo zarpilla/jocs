@@ -500,15 +500,16 @@ GEOMETRIA = {
     'things': {
         'porta': {'rect': _rect_mon((D_MAQ[0] - 12, D_MAQ[2] + 6, ZW), (D_MAQ[1] + 4, 0, ZW)),
                   'walk': _p((D_MAQ[0] + D_MAQ[1]) / 2, WALL_Z - 4)},
+        # (l'Iri es posa a la dreta del muntacàrregues: just al davant, el cap li tapava la safata)
         'munta': {'rect': _rect_mon((MUNTA[0], MUNTA[3], ZW), (MUNTA[1], SAFATA[3] + 1, ZW)),
-                  'walk': _p((MUNTA[0] + MUNTA[1]) / 2, 266)},
+                  'walk': _p(MUNTA[1] + 10, 264)},
         'safata': {'rect': _rect_mon((SAFATA[0], SAFATA[3], ZW), (SAFATA[1], SAFATA[2], ZW)),
-                   'walk': _p((MUNTA[0] + MUNTA[1]) / 2, 266)},
+                   'walk': _p(MUNTA[1] + 10, 264)},
         'prestatges': {'rect': _rect_mon((XR - PR_D, _y(53), _wz(PREST[0])), (XR - PR_D, 0, _wz(PREST[0])),
                                          (XR - PR_D, _y(53), 150), (XR - PR_D, 0, 150)),
                        'walk': _p(XR - PR_D - 16, 200)},
         'registre': {'rect': _rect_mon((REGM[0], 0, REGM[2]), (REGM[1], 0, REGM[2]), (REGM[0], 0, REGM[3]),
-                                       (REGM[1], 0, REGM[3])), 'walk': _p(REGM[1] + 16, (REGM[2] + REGM[3]) / 2)},
+                                       (REGM[1], 0, REGM[3])), 'walk': _p(REGM[1] - 20, REGM[2] - 14)},   # (al cantó de davant, no al congelador)
     },
     'spawns': {'iri': _p(300, 170), 'vet': _p(360, 130)},
     'walkable': _WALK,

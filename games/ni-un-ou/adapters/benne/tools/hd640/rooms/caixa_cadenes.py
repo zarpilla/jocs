@@ -493,7 +493,7 @@ GEOMETRIA = {
     'things': {
         'escotilla': {'rect': _rect_mon((HATCH[0] - 6, HW + 20, ZW), (HATCH[1] + 6, HW, HATCH[2]), (RUNGS[0], 0, ZW),
                                         (RUNGS[1], 0, ZW)),
-                      'walk': _p((RUNGS[0] + RUNGS[1]) / 2, ZW - 18)},
+                      'walk': _p(RUNGS[1] + 30, ZW - 24)},     # (a la dreta de l'escala: davant, la tapava)
         'cadenes': {'rect': _rect_mon(*([(_PX + dx, 0, _PZ + dz) for dx in (-_PR, _PR) for dz in (-_PR * 0.85, _PR * 0.85)]
                                         + [(HAWSE[0], HW, HAWSE[1]), (_PX, _PH, _PZ)])),
                     'walk': _p(_PX + _PR + 30, _PZ - 30)},

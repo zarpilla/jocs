@@ -470,7 +470,7 @@ _FORATS = [[_p(FIL[0] + math.cos(a) * (FIL[2] + 12), FIL[1] + math.sin(a) * (FIL
 GEOMETRIA = {
     'things': {
         'registre': {'rect': _rect_mon((LAD[0] - 10, 0, LAD[2]), (LAD[1] + 10, HW, LAD[2]), (REG[0], HW, REG[1] - 30)),
-                     'walk': _p((LAD[0] + LAD[1]) / 2, LAD[2] - 22)},
+                     'walk': _p(LAD[1] + 34, LAD[2] - 22)},    # (a la dreta de l'escala: davant, la tapava)
         'filtre': {'rect': _rect_mon(*[(FIL[0] + dx, y, FIL[1] + dz) for dx in (-FIL[2] - 6, FIL[2] + 6)
                                        for dz in (-FIL[2] - 6, FIL[2] + 6) for y in (0, FIL_Y[1] + 14)]),
                    'walk': _p(FIL[0] - 50, FIL[1] - 40)},

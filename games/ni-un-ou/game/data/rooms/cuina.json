@@ -136,6 +136,76 @@
           ]
         },
         {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "munta_cuina",
+                "op": "!=",
+                "value": ""
+              },
+              {
+                "var": "munta_cuina",
+                "op": "==",
+                "value": "nota_iri"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.nota1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.cuina.nota2"
+            },
+            {
+              "who": "player",
+              "text": "sala.cuina.nota3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.cuina.nota4"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "munta_cuina",
+              "value": ""
+            },
+            {
+              "setFlag": "nota_llegida"
+            }
+          ],
+          "action": {
+            "name": "munta.nota",
+            "args": {
+              "item": "nota_vet",
+              "parada": "rebost"
+            }
+          }
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "action": {
+            "name": "munta.recollir"
+          },
+          "if": {
+            "var": "munta_cuina",
+            "op": "!=",
+            "value": ""
+          }
+        },
+        {
           "verb": "use",
           "item": "*",
           "action": {
