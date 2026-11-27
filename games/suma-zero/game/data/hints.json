@@ -1193,7 +1193,7 @@
               "is": false
             },
             {
-              "hasItem": "ulleres",
+              "flag": "ulleres_posades",
               "is": false
             }
           ]
@@ -1214,7 +1214,7 @@
               "hasItem": "maleti"
             },
             {
-              "hasItem": "ulleres"
+              "flag": "ulleres_posades"
             }
           ]
         }

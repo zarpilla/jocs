@@ -1721,6 +1721,76 @@
                 ]
               }
             ]
+          },
+          "extintor": {
+            "name": "sala.aeroport_personal.extintor.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.aeroport_personal.extintor.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "tauler": {
+            "name": "sala.aeroport_personal.tauler.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.aeroport_personal.tauler.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "taquilles": {
+            "name": "sala.aeroport_personal.taquilles.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.aeroport_personal.taquilles.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "carro": {
+            "name": "sala.aeroport_personal.carro.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.aeroport_personal.carro.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "con": {
+            "name": "sala.aeroport_personal.con.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.aeroport_personal.con.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -1752,7 +1822,7 @@
             "once": true,
             "lines": [
               {
-                "who": "narrator",
+                "who": "title",
                 "text": "sala.aeroport_terminal.intro1",
                 "sound": "megafonia",
                 "stage": [
@@ -1998,9 +2068,8 @@
           "ulleres": {
             "name": "sala.aeroport_terminal.ulleres.nom",
             "visibleIf": {
-              "hasItem": "ulleres",
-              "is": false,
-              "who": "vet"
+              "flag": "ulleres_posades",
+              "is": false
             },
             "interactions": [
               {
@@ -2024,9 +2093,6 @@
                   }
                 ],
                 "effects": [
-                  {
-                    "giveItem": "ulleres"
-                  },
                   {
                     "setFlag": "ulleres_posades"
                   }
@@ -12856,7 +12922,7 @@
                   "is": false
                 },
                 {
-                  "hasItem": "ulleres",
+                  "flag": "ulleres_posades",
                   "is": false
                 }
               ]
@@ -12877,7 +12943,7 @@
                   "hasItem": "maleti"
                 },
                 {
-                  "hasItem": "ulleres"
+                  "flag": "ulleres_posades"
                 }
               ]
             }
@@ -27031,6 +27097,16 @@
       "sala.aeroport_personal.teclat.soler": "El vigilant mira cap aquí. Ara no.",
       "sala.aeroport_personal.teclat.sort": "Provo sort: 1-2-3-4.",
       "sala.aeroport_personal.teclat.xiula": "La porta xiula.",
+      "sala.aeroport_personal.extintor.nom": "extintor",
+      "sala.aeroport_personal.extintor.look": "Un extintor. L'última revisió, fa tres anys. Com tot el que ens ha de protegir.",
+      "sala.aeroport_personal.tauler.nom": "tauler de torns",
+      "sala.aeroport_personal.tauler.look": "El quadrant de torns. Tothom fa nits menys un tal Ramis. El full rosa ho explica: Ramis, de vacances a Menorca.",
+      "sala.aeroport_personal.taquilles.nom": "taquilles",
+      "sala.aeroport_personal.taquilles.look": "Les taquilles del personal, amb cadenat. Si n'hi hagués una d'oberta, ja duria uniforme.",
+      "sala.aeroport_personal.carro.nom": "carro de la neteja",
+      "sala.aeroport_personal.carro.look": "El carro de la neteja: lleixiu, un esprai rosa i una fregona que n'ha vist de tots colors. Ningú no mira mai qui l'empeny.",
+      "sala.aeroport_personal.con.nom": "senyal de terra mullat",
+      "sala.aeroport_personal.con.look": "«Atenció: terra mullat.» El terra és sec. El senyal hi deu ser per tradició.",
       "sala.aeroport_terminal.empleat.look": "L'oficina d'objectes perduts. L'empleat té cara d'haver-ho perdut tot, també la il·lusió.",
       "sala.aeroport_terminal.empleat.nom": "objectes perduts",
       "sala.aeroport_terminal.empleat.sync": "Ara no: he perdut un fill.",

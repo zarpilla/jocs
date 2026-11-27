@@ -9,7 +9,7 @@
       "once": true,
       "lines": [
         {
-          "who": "narrator",
+          "who": "title",
           "text": "sala.aeroport_terminal.intro1",
           "sound": "megafonia",
           "stage": [
@@ -255,9 +255,8 @@
     "ulleres": {
       "name": "sala.aeroport_terminal.ulleres.nom",
       "visibleIf": {
-        "hasItem": "ulleres",
-        "is": false,
-        "who": "vet"
+        "flag": "ulleres_posades",
+        "is": false
       },
       "interactions": [
         {
@@ -281,9 +280,6 @@
             }
           ],
           "effects": [
-            {
-              "giveItem": "ulleres"
-            },
             {
               "setFlag": "ulleres_posades"
             }

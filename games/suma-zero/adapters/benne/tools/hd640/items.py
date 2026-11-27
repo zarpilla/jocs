@@ -339,9 +339,10 @@ def ulleres(f):
         S = f.E(cx, 18, 10.6, 8.6)
         f.drop(S)
         f.fill(S, DARK, 2.4, rim=(0.6, -0.4))
-        f.fill(f.E(cx, 18, 6.6, 4.8), CYAN, lambda x, y, cx=cx: 1.6 + (1.8 if (x - cx) + (y - 18) < -4 else 0), rim=None)
+        # Vidres sense graduació, transparents (no blaus: al sprite de la Vet són els mateixos, de vidre clar).
+        f.fill(f.E(cx, 18, 6.6, 4.8), CLEAR, lambda x, y, cx=cx: 1.4 + (1.2 if (x - cx) + (y - 18) < -4 else 0), rim=None)
         for i in range(4):                                               # el reflex, en diagonal
-            f.px(cx - 4 + i, 16 - i, CYAN, 4.4)
+            f.px(cx - 4 + i, 16 - i, CLEAR, 4.6)
     f.rect(30, 14, 34, 16, DARK, 2.4)
     f.rect(31, 14, 33, 14, DARK, 3.4)
     f.rect(2, 13, 9, 14, DARK, 2.0)

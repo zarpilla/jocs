@@ -24,7 +24,8 @@ describe('Acte 1 · camins', () => {
   it("amb l'entrepà, el tap tornat i la preparació d'auditora", () => {
     const { n, p, world } = partida({ checkHints: true });
     jugarActe1(p, { entrepa: true, tap: true, preparacio: true });
-    for (const i of ['entrepa', 'clau_casa', 'maleti', 'ulleres', 'recepta']) expect(world.items('vet')).toContain(i);
+    for (const i of ['entrepa', 'clau_casa', 'maleti', 'recepta']) expect(world.items('vet')).toContain(i);
+    expect(world.items('vet')).not.toContain('ulleres');   // se les posa: les porta a la cara, no a la bossa
     expect(world.items('vet')).not.toContain('tap');
     expect(n.flag('ulleres_posades')).toBe(true);
     expect(n.flag('iri_sap_neta')).toBe(true);    // a l'avió, el vestit surt d'objectes perduts «ja que hi era pel maletí»

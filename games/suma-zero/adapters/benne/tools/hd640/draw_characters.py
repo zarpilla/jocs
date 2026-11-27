@@ -342,6 +342,9 @@ def face_xy(fg, p):
     return fg.F(hx + fg.ox), round(fg.F(int(hy + 0.5)))
 
 
+GLASS_GLINT = (206, 224, 236)                            # el reflex d'un vidre transparent (les ulleres de pasta de la Vet)
+
+
 def front_eyes(fg, p):
     """(lx, rx, ey, nx): el píxel de l'esquerra de cada ull (3 px), la fila dels ulls i la columna del nas."""
     HX, ey = face_xy(fg, p)
@@ -610,7 +613,11 @@ def _ganxos(P):
                     fg.rpx(x0 + 3, y, FR, 1.4)
                 fg.rpx(x0 - 2, ey - 2, FR, 1.8)                                  # la pasta, que sobresurt als cantons
                 fg.rpx(x0 + 4, ey - 2, FR, 1.8)
-                fg.rpx(x0, ey - 1, FR, 3.0)                                      # el reflex
+                # El vidre és transparent: a sota de la pasta s'hi veu la pell (no la parpella fosca, que amb la vora
+                # feia unes ulleres de sol) i un reflex clar al cantó.
+                fg.rpx(x0, ey - 1, GLASS_GLINT, 0)
+                for x in (x0 + 1, x0 + 2):
+                    fg.rpx(x, ey - 1, spec['skin'], 3.0)
             for x in range(lx + 4, rx - 1):
                 fg.rpx(x, ey - 1, FR, 1.4)                                       # el pont
         elif p.f == 'L':
@@ -621,6 +628,9 @@ def _ganxos(P):
             for y in range(ey - 1, ey + 2):
                 fg.rpx(ex - 2, y, FR, 1.6)
                 fg.rpx(ex + 2, y, FR, 1.6)
+            fg.rpx(ex - 1, ey - 1, GLASS_GLINT, 0)                                # el vidre: pell i reflex (vegeu D)
+            for x in (ex, ex + 1):
+                fg.rpx(x, ey - 1, spec['skin'], 3.0)
             hx, hy = p.head
             fg.rline(ex + 3, ey - 1, rx_(fg, hx + 2.5), ey - 1, FR, 1.2)       # la patilla, fins a l'orella
 
