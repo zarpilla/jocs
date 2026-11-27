@@ -672,6 +672,19 @@
               ]
             },
             "anim": "DormD"
+          },
+          {
+            "if": {
+              "all": [
+                {
+                  "flag": "sunifred_girat"
+                },
+                {
+                  "inRoom": "cuina"
+                }
+              ]
+            },
+            "anim": "IdleL"
           }
         ]
       },
@@ -4767,16 +4780,38 @@
                 "lines": [
                   {
                     "who": "vet",
-                    "text": "sala.cuina.10"
+                    "text": "sala.cuina.10",
+                    "stage": [
+                      {
+                        "prop": "olles_caigudes",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "iri",
                     "text": "sala.cuina.11",
-                    "sound": "olles"
+                    "sound": "olles",
+                    "stage": [
+                      {
+                        "prop": "olles_caigudes",
+                        "visible": true,
+                        "fade": 0.25
+                      },
+                      {
+                        "shake": 0.4
+                      }
+                    ]
                   },
                   {
                     "who": "sunifred",
-                    "text": "sala.cuina.12"
+                    "text": "sala.cuina.12",
+                    "stage": [
+                      {
+                        "who": "sunifred",
+                        "face": "L"
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -4914,15 +4949,66 @@
                 "lines": [
                   {
                     "who": "vet",
-                    "text": "sala.cuina.22"
+                    "text": "sala.cuina.22",
+                    "stage": [
+                      {
+                        "prop": "sunifred_dorm",
+                        "visible": false
+                      },
+                      {
+                        "prop": "sunifred_dorm__davant_taula",
+                        "visible": false
+                      },
+                      {
+                        "who": "sunifred",
+                        "anim": null
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "sunifred",
+                        "anim": "BeuD",
+                        "hold": 1.5
+                      },
+                      {
+                        "who": "sunifred",
+                        "anim": null
+                      }
+                    ]
                   },
                   {
                     "who": "sunifred",
-                    "text": "sala.cuina.23"
-                  },
-                  {
-                    "who": "narrator",
-                    "text": "sala.cuina.24"
+                    "text": "sala.cuina.23",
+                    "stageAfter": [
+                      {
+                        "who": "sunifred",
+                        "anim": "BeuD",
+                        "hold": 1.5
+                      },
+                      {
+                        "who": "sunifred",
+                        "anim": "BadallaD",
+                        "hold": 1.3
+                      },
+                      {
+                        "who": "sunifred",
+                        "anim": "BeuD",
+                        "hold": 1.3
+                      },
+                      {
+                        "who": "sunifred",
+                        "anim": "DormD"
+                      },
+                      {
+                        "prop": "sunifred_dorm__davant_taula",
+                        "visible": true
+                      },
+                      {
+                        "prop": "sunifred_dorm",
+                        "visible": true,
+                        "hold": 0.8
+                      }
+                    ]
                   },
                   {
                     "who": "sunifred",
@@ -5085,8 +5171,28 @@
                 },
                 "lines": [
                   {
-                    "who": "narrator",
-                    "text": "sala.cuina.33"
+                    "who": "vet",
+                    "text": "sala.cuina.33",
+                    "stage": [
+                      {
+                        "who": "vet",
+                        "walk": "copa"
+                      },
+                      {
+                        "who": "vet",
+                        "face": "L"
+                      },
+                      {
+                        "who": "vet",
+                        "gest": "Fa"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "vet",
+                        "gest": null
+                      }
+                    ]
                   },
                   {
                     "who": "sunifred",
@@ -7992,11 +8098,6 @@
               "flag": "corda_posada"
             }
           },
-          "campana_toca": {
-            "visibleIf": {
-              "flag": "bonfill_campanar"
-            }
-          },
           "llum_mati": {
             "visibleIf": {
               "var": "fase",
@@ -8228,7 +8329,29 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.placa_sant_pol.21"
+                    "text": "sala.placa_sant_pol.21",
+                    "stage": [
+                      {
+                        "prop": "corda_campana",
+                        "visible": false
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "player",
+                        "visible": false,
+                        "hold": 1.4
+                      },
+                      {
+                        "prop": "corda_campana",
+                        "visible": true,
+                        "hold": 0.6
+                      },
+                      {
+                        "who": "player",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -8336,11 +8459,35 @@
                   {
                     "who": "player",
                     "text": "sala.placa_sant_pol.29",
-                    "sound": "campana"
+                    "sound": "campana",
+                    "stage": [
+                      {
+                        "who": "player",
+                        "face": "L"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Fa"
+                      },
+                      {
+                        "prop": "campana_toca",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "bonfill",
-                    "text": "sala.placa_sant_pol.30"
+                    "text": "sala.placa_sant_pol.30",
+                    "stageAfter": [
+                      {
+                        "who": "player",
+                        "gest": null
+                      },
+                      {
+                        "prop": "campana_toca",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -17701,7 +17848,6 @@
       "sala.cuina.21": "Molt bé.",
       "sala.cuina.22": "(Omple la copa de l'escrivà.)",
       "sala.cuina.23": "Ah, un vi amb caràcter. Una mica de... formatge?",
-      "sala.cuina.24": "En Sunifred beu. Badalla. Torna a beure. Es recolza a la taula...",
       "sala.cuina.25": "Un document... segellat... Zzz.",
       "sala.cuina.26": "(Omple la copa de l'escrivà.)",
       "sala.cuina.27": "Gràcies, germà. Que no s'acabi.",
@@ -17711,7 +17857,7 @@
       "sala.cuina.30": "No puc: la tapa amb la mà. Hi ha molt verí en aquest món, diu.",
       "sala.cuina.31": "La copa, no. La gerra.",
       "sala.cuina.32": "Un banc llarg, de roure. Fa trenta anys que hi seuen monges, i no s'ha queixat mai.",
-      "sala.cuina.33": "Li fa pessigolles al nas amb la ploma.",
+      "sala.cuina.33": "(Li fa pessigolles al nas amb la ploma.)",
       "sala.cuina.34": "(Es grata el nas amb la mà del cinyell.) Mmf...",
       "sala.cuina.35": "Les claus! Ja les tinc.",
       "sala.cuina.36": "Ha dit «s'arxiva». La carta de l'Emma no l'ha cremada.",

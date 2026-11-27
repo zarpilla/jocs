@@ -1175,6 +1175,111 @@
         "h": 84
       },
       "duration": 100
+    },
+    "sunifred 56.aseprite": {
+      "frame": {
+        "x": 1736,
+        "y": 0,
+        "w": 31,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 31,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 31,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "sunifred 57.aseprite": {
+      "frame": {
+        "x": 1767,
+        "y": 0,
+        "w": 31,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 31,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 31,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "sunifred 58.aseprite": {
+      "frame": {
+        "x": 1798,
+        "y": 0,
+        "w": 31,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 31,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 31,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "sunifred 59.aseprite": {
+      "frame": {
+        "x": 1829,
+        "y": 0,
+        "w": 31,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 31,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 31,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "sunifred 60.aseprite": {
+      "frame": {
+        "x": 1860,
+        "y": 0,
+        "w": 31,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 31,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 31,
+        "h": 84
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -1183,7 +1288,7 @@
     "image": "sunifred.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1736,
+      "w": 1891,
       "h": 84
     },
     "scale": "1",
@@ -1294,9 +1399,23 @@
         "color": "#000000ff"
       },
       {
-        "name": "DormD",
+        "name": "BeuD",
         "from": 52,
-        "to": 55,
+        "to": 54,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "BadallaD",
+        "from": 55,
+        "to": 56,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "DormD",
+        "from": 57,
+        "to": 60,
         "direction": "forward",
         "color": "#000000ff"
       }

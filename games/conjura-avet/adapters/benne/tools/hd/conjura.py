@@ -902,6 +902,44 @@ def sunifred_dorm(k=0):
     return fg.render()
 
 
+BEU = 3                                 # fotogrames de la BeuD: la copa al pit, a la boca, i a la boca amb els ulls closos
+
+
+def sunifred_beu(k=0):
+    """En Sunifred bevent, de cara (etiqueta `BeuD`, a la cuina, abans d'adormir-se): la mà dreta (la de la dreta de
+    la pantalla) puja la copa al pit (`k` 0), a la boca (1) i s'hi queda amb els ulls closos, assaborint-lo (2). La
+    mà i la copa es dibuixen damunt del cap (tapen la barbeta)."""
+    spec = SUNIFRED
+
+    def pose(p):
+        sx, _ = p.sh[1]
+        b = p.bob
+        if k == 0:
+            p.elbow[1] = (sx + 2.6, 39.0 + b)
+            p.wrist[1] = (sx - 3.0, 36.0 + b)
+        else:
+            p.elbow[1] = (sx + 3.4, 34.0 + b)
+            p.wrist[1] = (sx - 5.6, 25.0 + b)
+
+    def copa(fg, p, s):
+        wx, wy = p.wrist[1]
+        cx, cy = wx - 1.4, wy - (1.8 if k == 0 else 2.4)
+        fg.ell(cx, cy - 1.0, 1.8, 2.2, FERRO, 3.2, amp=0.8)                     # la copa (estany)
+        fg.ell(cx, cy - 2.6, 2.0, 0.6, GORRA, 1.8, amp=0.4)                      # el vi
+        fg.line(cx, cy + 1.0, cx, cy + 2.6, FERRO, 3.0)                          # el peu
+        fg.ell(wx, wy + 1.4, 2.1, 2.3, s['skin'], 2.8, amp=1.2)                  # la mà, que l'agafa
+
+    beu = {**spec, 'pose': pose, 'closed': k == 2,
+           'hooks': {**spec['hooks'], 'hair': hooks(spec['hooks']['hair'], copa)}}
+    return figura(beu, 'D')
+
+
+def sunifred_badalla(k=0):
+    """En Sunifred badallant, de cara (etiqueta `BadallaD`): els ulls closos i la boca oberta (`k` no hi canvia res:
+    un sol dibuix, que dura el que dura l'animació)."""
+    return figura({**SUNIFRED, 'closed': True}, 'D', talk=True)
+
+
 # ═══════════════════════════════════════════════════════════════════════════
 #  El saig Bonfill (~30 anys, curt de gambals)
 # ═══════════════════════════════════════════════════════════════════════════

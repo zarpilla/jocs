@@ -12,7 +12,8 @@ Animacions (L, D, U i el 3/4, DL i UL; Benne fa el mirall per a R, DR i UR):
     LookD/DL (les micro-accions de quan són quietes; `idleActions`). I tot això també amb la roba `Monjo` (el
     prefix davant: MonjoIdleD, MonjoWalkL...), que el joc tria amb `outfit` (game/data/characters.json).
   - **els secundaris**: el mateix sense Walk; els que caminen en alguna escena (`CAMINEN`: en Bonfill, en Ramon i els
-    canonges), també amb Walk. En Sunifred, a més, `DormD` (adormit a la taula de la cuina; `ALTRES`).
+    canonges), també amb Walk. En Sunifred, a més, `BeuD`, `BadallaD` i `DormD` (beu, badalla i s'adorm a la taula
+    de la cuina; `ALTRES`).
 Els fotogrames es retallen al que ocupa el personatge (tots els d'un full, la mateixa capsa), i els peus, el punt
 de parlar i el col·lisionador es calculen a partir del dibuix.
 
@@ -178,10 +179,15 @@ PERSONA_FEET = (25, 83 + A.PAD)
 # Els secundaris que caminen en alguna escena (`walk` d'un `stage`): també porten Walk.
 CAMINEN = {'bonfill', 'ramon', 'gombau', 'arnulf'}
 
-# Animacions soltes d'algun personatge: en Sunifred adormit a la taula de la cuina (`DormD`: 4 fotogrames lents, el
-# cos puja i baixa i ronca; hd/conjura.sunifred_dorm).
-ALTRES = {'sunifred': {'DormD': K.sunifred_dorm}}
+# Animacions soltes d'algun personatge (etiqueta: dibuix de cada fotograma, nombre de fotogrames, l'animació de
+# Benne): en Sunifred a la cuina, `BeuD` (beu de la copa: un sol cop, i s'hi queda), `BadallaD` (badalla) i `DormD`
+# (adormit a la taula: 4 fotogrames lents, el cos puja i baixa i ronca); hd/conjura.sunifred_*.
 DORM_MS = 700
+ALTRES = {'sunifred': {
+    'BeuD': (K.sunifred_beu, K.BEU, {'loop': False, 'frameDuration': 420}),
+    'BadallaD': (K.sunifred_badalla, 2, {'loop': False, 'frameDuration': 600}),
+    'DormD': (K.sunifred_dorm, len(K.DORM), {'loop': True, 'frameDuration': DORM_MS}),
+}}
 
 
 def person_tags(spec, dirs=DIRS, prefix='', camina=True):
@@ -237,10 +243,10 @@ def persona(cid, walk_speed, verb, walk=(90, 100), camina=True):
         tags += person_tags(spec, prefix=prefix, camina=camina)
         if cid in AMB_GEST:
             tags.append((f'{prefix}FaL', [K.figura({**spec, 'pose': _estira(k, spec.get('pose'))}, 'L') for k in GEST_FA]))
-    tags += [(n, [fn(k) for k in range(len(K.DORM))]) for n, fn in ALTRES.get(cid, {}).items()]
+    tags += [(n, [fn(k) for k in range(nf)]) for n, (fn, nf, _) in ALTRES.get(cid, {}).items()]
     anims = durations(tags, walk=walk)
-    for n in ALTRES.get(cid, {}):
-        anims[n] = {'loop': True, 'frameDuration': DORM_MS}
+    for n, (_, _, anim) in ALTRES.get(cid, {}).items():
+        anims[n] = dict(anim)
     extra = {
         'walkSpeed': walk_speed, 'animations': anims, 'defaultVerb': verb,
         # quan és quiet, de tant en tant parpelleja i, si fa estona, mira al voltant (el motor salta la que no hi és)

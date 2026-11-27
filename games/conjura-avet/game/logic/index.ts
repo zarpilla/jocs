@@ -29,11 +29,22 @@ export function donar(n: Narrative, item: string): ActionResult {
   if (typeof props.dona === 'string') {
     if (n.world.hasItem(props.dona, other)) return { lines: [{ who: 'player', text: 'donar.ja' }] };
     n.apply([{ giveItem: props.dona, who: other }]);
-    return { lines: [{ who: 'player', text: 'donar.dona' }] };
+    return { lines: [DONA] };
   }
   n.apply([{ takeItem: item }, { giveItem: item, who: other }]);
-  return { lines: [{ who: 'player', text: 'donar.dona' }] };
+  return { lines: [DONA] };
 }
+
+/**
+ * «Té.», amb el gest d'allargar el braç (`Fa`). Qui dona s'atura al punt d'arribada de l'altra, que és a la seva
+ * dreta: per això es gira a l'esquerra abans del gest.
+ */
+const DONA: NonNullable<ActionResult['lines']>[number] = {
+  who: 'player',
+  text: 'donar.dona',
+  stage: [{ who: 'player', face: 'L' }, { who: 'player', gest: 'Fa' }],
+  stageAfter: [{ who: 'player', gest: null }],
+};
 
 export function installGameLogic(n: Narrative): void {
   n.registerAction('donar', ({ args }) => donar(n, String(args.item ?? '')));

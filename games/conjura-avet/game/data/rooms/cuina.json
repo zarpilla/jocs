@@ -140,16 +140,38 @@
           "lines": [
             {
               "who": "vet",
-              "text": "sala.cuina.10"
+              "text": "sala.cuina.10",
+              "stage": [
+                {
+                  "prop": "olles_caigudes",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "iri",
               "text": "sala.cuina.11",
-              "sound": "olles"
+              "sound": "olles",
+              "stage": [
+                {
+                  "prop": "olles_caigudes",
+                  "visible": true,
+                  "fade": 0.25
+                },
+                {
+                  "shake": 0.4
+                }
+              ]
             },
             {
               "who": "sunifred",
-              "text": "sala.cuina.12"
+              "text": "sala.cuina.12",
+              "stage": [
+                {
+                  "who": "sunifred",
+                  "face": "L"
+                }
+              ]
             }
           ],
           "effects": [
@@ -287,15 +309,66 @@
           "lines": [
             {
               "who": "vet",
-              "text": "sala.cuina.22"
+              "text": "sala.cuina.22",
+              "stage": [
+                {
+                  "prop": "sunifred_dorm",
+                  "visible": false
+                },
+                {
+                  "prop": "sunifred_dorm__davant_taula",
+                  "visible": false
+                },
+                {
+                  "who": "sunifred",
+                  "anim": null
+                }
+              ],
+              "stageAfter": [
+                {
+                  "who": "sunifred",
+                  "anim": "BeuD",
+                  "hold": 1.5
+                },
+                {
+                  "who": "sunifred",
+                  "anim": null
+                }
+              ]
             },
             {
               "who": "sunifred",
-              "text": "sala.cuina.23"
-            },
-            {
-              "who": "narrator",
-              "text": "sala.cuina.24"
+              "text": "sala.cuina.23",
+              "stageAfter": [
+                {
+                  "who": "sunifred",
+                  "anim": "BeuD",
+                  "hold": 1.5
+                },
+                {
+                  "who": "sunifred",
+                  "anim": "BadallaD",
+                  "hold": 1.3
+                },
+                {
+                  "who": "sunifred",
+                  "anim": "BeuD",
+                  "hold": 1.3
+                },
+                {
+                  "who": "sunifred",
+                  "anim": "DormD"
+                },
+                {
+                  "prop": "sunifred_dorm__davant_taula",
+                  "visible": true
+                },
+                {
+                  "prop": "sunifred_dorm",
+                  "visible": true,
+                  "hold": 0.8
+                }
+              ]
             },
             {
               "who": "sunifred",
@@ -458,8 +531,28 @@
           },
           "lines": [
             {
-              "who": "narrator",
-              "text": "sala.cuina.33"
+              "who": "vet",
+              "text": "sala.cuina.33",
+              "stage": [
+                {
+                  "who": "vet",
+                  "walk": "copa"
+                },
+                {
+                  "who": "vet",
+                  "face": "L"
+                },
+                {
+                  "who": "vet",
+                  "gest": "Fa"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "who": "vet",
+                  "gest": null
+                }
+              ]
             },
             {
               "who": "sunifred",

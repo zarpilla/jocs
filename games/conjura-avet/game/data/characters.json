@@ -519,6 +519,19 @@
           ]
         },
         "anim": "DormD"
+      },
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "sunifred_girat"
+            },
+            {
+              "inRoom": "cuina"
+            }
+          ]
+        },
+        "anim": "IdleL"
       }
     ]
   },

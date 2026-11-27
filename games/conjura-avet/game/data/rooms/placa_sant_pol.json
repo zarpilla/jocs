@@ -64,11 +64,6 @@
         "flag": "corda_posada"
       }
     },
-    "campana_toca": {
-      "visibleIf": {
-        "flag": "bonfill_campanar"
-      }
-    },
     "llum_mati": {
       "visibleIf": {
         "var": "fase",
@@ -300,7 +295,29 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.placa_sant_pol.21"
+              "text": "sala.placa_sant_pol.21",
+              "stage": [
+                {
+                  "prop": "corda_campana",
+                  "visible": false
+                }
+              ],
+              "stageAfter": [
+                {
+                  "who": "player",
+                  "visible": false,
+                  "hold": 1.4
+                },
+                {
+                  "prop": "corda_campana",
+                  "visible": true,
+                  "hold": 0.6
+                },
+                {
+                  "who": "player",
+                  "visible": true
+                }
+              ]
             },
             {
               "who": "player",
@@ -408,11 +425,35 @@
             {
               "who": "player",
               "text": "sala.placa_sant_pol.29",
-              "sound": "campana"
+              "sound": "campana",
+              "stage": [
+                {
+                  "who": "player",
+                  "face": "L"
+                },
+                {
+                  "who": "player",
+                  "gest": "Fa"
+                },
+                {
+                  "prop": "campana_toca",
+                  "visible": true
+                }
+              ]
             },
             {
               "who": "bonfill",
-              "text": "sala.placa_sant_pol.30"
+              "text": "sala.placa_sant_pol.30",
+              "stageAfter": [
+                {
+                  "who": "player",
+                  "gest": null
+                },
+                {
+                  "prop": "campana_toca",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",

@@ -515,7 +515,8 @@ def _geometria():
         'olles': {'rect': olles_r, 'walk': _p((bx0 + bx1) / 2, ZB - 50)},
         'pila_olles': {'rect': pila_r, 'walk': _p(px + 44, pz - 40)},
         'taula': {'rect': taula_r, 'walk': _p(*[g(-30, -am / 2 - 70)[k] for k in (0, 2)])},
-        'gerra': {'rect': obj_r(58, 6, 12, 34), 'walk': _p(*[g(50, -am / 2 - 70)[k] for k in (0, 2)])},
+        # la gerra: la Vet s'hi atura més cap a l'esquerra, perquè no tapi en Sunifred (al cap de la taula)
+        'gerra': {'rect': obj_r(58, 6, 12, 34), 'walk': _p(*[g(14, -am / 2 - 70)[k] for k in (0, 2)])},
         'copa': {'rect': obj_r(96, -4, 9, 22), 'walk': _p(*[g(96, -am / 2 - 70)[k] for k in (0, 2)])},
         'banc': {'rect': banc_r, 'walk': _p(*[gb(-40, -ba / 2 - 30)[k] for k in (0, 2)])},
     }
