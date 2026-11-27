@@ -125,6 +125,38 @@
               {
                 "flag": "grua_arreglada",
                 "is": false
+              },
+              {
+                "hasItem": "fusible_apanyat"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aqua_port.grua.6"
+            },
+            {
+              "who": "player",
+              "text": "sala.aqua_port.grua.7.apanyat"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "grua_vista"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "grua_arreglada",
+                "is": false
               }
             ]
           },
@@ -309,16 +341,20 @@
                 },
                 {
                   "who": "player",
-                  "visible": false
-                },
-                {
-                  "who": "player",
                   "face": "L"
                 },
                 {
                   "who": "player",
                   "gest": "Agafa",
                   "hold": 0.5
+                },
+                {
+                  "who": "player",
+                  "visible": false
+                },
+                {
+                  "who": "player",
+                  "gest": null
                 },
                 {
                   "prop": "cistella_grua",
@@ -335,6 +371,12 @@
                 {
                   "prop": "cistella_grua",
                   "anim": "cistella_avall"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "who": "vet",
+                  "gest": null
                 }
               ]
             }
@@ -380,10 +422,6 @@
                   "face": "L"
                 },
                 {
-                  "who": "player",
-                  "gest": null
-                },
-                {
                   "prop": "cistella_grua",
                   "anim": "cistella_baixa"
                 }
@@ -407,12 +445,6 @@
                   "prop": "cistella_grua",
                   "anim": "cistella_avall",
                   "hold": 3.5
-                }
-              ],
-              "stageAfter": [
-                {
-                  "who": "vet",
-                  "gest": null
                 }
               ]
             }

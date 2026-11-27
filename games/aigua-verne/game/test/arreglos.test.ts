@@ -157,4 +157,42 @@ describe('Aigua Verne: arreglos de la passada tàctil', () => {
     expect(n.activeHints()).toContain('reserva_vet');
     expect(textos(p.do('look', 'palanca'))).toMatch(/no baixa de trenta/);
   });
+  it("la pista del tractor sap si ja hi ha oli o la clau, i la grua, si ja es té el fusible embolicat (tasca 224)", () => {
+    const { n, p } = partida();
+    n.apply([{ setFlag: 'injector_vist' }]);
+    expect(n.activeHints()).toContain('tractor');
+    n.apply([{ setFlag: 'tractor_oliat' }]);
+    expect(n.activeHints()).toContain('tractor_clau');
+    expect(n.activeHints()).not.toContain('tractor');
+    n.apply([{ setFlag: 'clau_donada' }]);
+    expect(n.activeHints()).toContain('tractor_treu');
+    expect(n.activeHints()).not.toContain('tractor_clau');
+    n.apply([{ setFlag: 'tractor_oliat', value: false }]);
+    expect(n.activeHints()).toContain('tractor_oli');
+
+    amb(p, 'vet');
+    p.goTo('aqua_port');
+    expect(textos(p.do('look', 'grua'))).toMatch(/Paper de plata, per exemple/);
+    n.apply({ giveItem: 'fusible_apanyat', who: 'vet' });
+    const dit = textos(p.do('look', 'grua'));
+    expect(dit).not.toMatch(/Paper de plata, per exemple/);
+    expect(dit).toMatch(/Només cal posar-l'hi/);
+  });
+  it('la clau anglesa es torna a en Tomàs, i el tornavís amb el tractor té resposta (tasca 226)', () => {
+    const { n, p } = partida();
+    const tomas = { kind: 'character' as const, id: 'tomas' };
+    n.apply([{ setVar: 'escena', value: 2 }, { giveItem: 'clau_anglesa', who: 'vet' }, { giveItem: 'tornavis', who: 'iri' }]);
+    amb(p, 'vet');
+    p.goTo('cantimplora_bodega');
+    expect(textos(p.do('give', tomas, 'clau_anglesa'))).toMatch(/Te la tornaré/);
+    expect(p.inventory('vet')).toContain('clau_anglesa');
+    n.apply([{ setFlag: 'injector_tret' }]);
+    expect(textos(p.do('give', tomas, 'clau_anglesa'))).toMatch(/Ningú no em torna mai res/);
+    expect(p.inventory('vet')).not.toContain('clau_anglesa');
+
+    n.apply([{ setFlag: 'injector_tret', value: false }]);
+    amb(p, 'iri');
+    p.goTo('granja_graner');
+    expect(textos(p.use('tornavis', 'tractor'))).toMatch(/Amb un tornavís no hi faig res/);
+  });
 });

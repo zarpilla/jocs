@@ -462,6 +462,48 @@
         ]
       },
       {
+        "verb": [
+          "give",
+          "use"
+        ],
+        "item": "clau_anglesa",
+        "if": {
+          "flag": "injector_tret"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.tomas.clau.torna"
+          },
+          {
+            "who": "tomas",
+            "text": "pj.tomas.clau.torna.2"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "clau_anglesa"
+          }
+        ]
+      },
+      {
+        "verb": [
+          "give",
+          "use"
+        ],
+        "item": "clau_anglesa",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.tomas.clau.encara"
+          },
+          {
+            "who": "tomas",
+            "text": "pj.tomas.clau.encara.2"
+          }
+        ]
+      },
+      {
         "verb": "talkTo",
         "dialogue": "tomas"
       }

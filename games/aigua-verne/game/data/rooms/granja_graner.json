@@ -166,6 +166,55 @@
           ]
         },
         {
+          "verb": "use",
+          "item": "tornavis",
+          "if": {
+            "flag": "injector_tret",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_graner.tractor.tornavis"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tornavis_flor",
+          "if": {
+            "flag": "injector_tret",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_graner.tractor.tornavis"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "all": [
+              {
+                "flag": "injector_vist"
+              },
+              {
+                "flag": "injector_tret",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_graner.tractor.altra"
+            }
+          ]
+        },
+        {
           "verb": [
             "use",
             "push",

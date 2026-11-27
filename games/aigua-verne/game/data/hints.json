@@ -387,6 +387,124 @@
         {
           "flag": "injector_tret",
           "is": false
+        },
+        {
+          "flag": "tractor_oliat",
+          "is": false
+        },
+        {
+          "flag": "clau_donada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "injector_tret"
+        },
+        {
+          "flag": "tractor_oliat"
+        },
+        {
+          "flag": "clau_donada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.tractor.1",
+      "pista.tractor.2",
+      "pista.tractor.3"
+    ]
+  },
+  "tractor_clau": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "injector_vist"
+        },
+        {
+          "flag": "injector_tret",
+          "is": false
+        },
+        {
+          "flag": "tractor_oliat"
+        },
+        {
+          "flag": "clau_donada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "injector_tret"
+        },
+        {
+          "flag": "clau_donada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.tractor_clau.1",
+      "pista.tractor_clau.2",
+      "pista.tractor_clau.3"
+    ]
+  },
+  "tractor_oli": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "injector_vist"
+        },
+        {
+          "flag": "injector_tret",
+          "is": false
+        },
+        {
+          "flag": "clau_donada"
+        },
+        {
+          "flag": "tractor_oliat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "injector_tret"
+        },
+        {
+          "flag": "tractor_oliat"
+        }
+      ]
+    },
+    "levels": [
+      "pista.tractor_oli.1",
+      "pista.tractor_oli.2",
+      "pista.tractor_oli.3"
+    ]
+  },
+  "tractor_treu": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "injector_vist"
+        },
+        {
+          "flag": "injector_tret",
+          "is": false
+        },
+        {
+          "flag": "clau_donada"
+        },
+        {
+          "flag": "tractor_oliat"
         }
       ]
     },
@@ -394,9 +512,8 @@
       "flag": "injector_tret"
     },
     "levels": [
-      "pista.tractor.1",
-      "pista.tractor.2",
-      "pista.tractor.3"
+      "pista.tractor_treu.1",
+      "pista.tractor_treu.2"
     ]
   },
   "injector2": {
