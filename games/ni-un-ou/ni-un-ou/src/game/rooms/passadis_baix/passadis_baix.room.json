@@ -69,7 +69,7 @@
     {
       "id": "porta_camarot",
       "active": true,
-      "description": "camarot de l'Iri",
+      "description": "el camarot de l'Iri",
       "zIndex": 0,
       "points": [
         {
@@ -102,7 +102,7 @@
     {
       "id": "porta_maquines",
       "active": true,
-      "description": "sala de màquines",
+      "description": "la sala de màquines",
       "zIndex": 1,
       "points": [
         {
@@ -135,7 +135,7 @@
     {
       "id": "porta_pallol",
       "active": true,
-      "description": "pallol",
+      "description": "el pallol",
       "zIndex": 2,
       "points": [
         {
@@ -168,7 +168,7 @@
     {
       "id": "escotilla",
       "active": true,
-      "description": "escotilla de la sala de bombes",
+      "description": "l'escotilla de la sala de bombes",
       "zIndex": 3,
       "points": [
         {
@@ -201,7 +201,7 @@
     {
       "id": "escala",
       "active": true,
-      "description": "escala",
+      "description": "l'escala",
       "zIndex": 4,
       "points": [
         {
@@ -234,7 +234,7 @@
     {
       "id": "repetidor",
       "active": true,
-      "description": "repetidor d'alarmes",
+      "description": "el repetidor d'alarmes",
       "zIndex": 5,
       "points": [
         {
@@ -266,7 +266,7 @@
     {
       "id": "suro",
       "active": true,
-      "description": "tauler de suro",
+      "description": "el tauler de suro",
       "zIndex": 6,
       "points": [
         {
@@ -298,7 +298,7 @@
     {
       "id": "extintor",
       "active": true,
-      "description": "extintor",
+      "description": "l'extintor",
       "zIndex": 7,
       "points": [
         {
@@ -330,7 +330,7 @@
     {
       "id": "bidons",
       "active": true,
-      "description": "bidons",
+      "description": "els bidons",
       "zIndex": 8,
       "points": [
         {
@@ -362,7 +362,7 @@
     {
       "id": "caixes",
       "active": true,
-      "description": "caixes vermelles",
+      "description": "les caixes vermelles",
       "zIndex": 9,
       "points": [
         {
@@ -498,7 +498,7 @@
         "x": 158,
         "y": 177
       },
-      "description": "petjades"
+      "description": "les petjades"
     },
     {
       "id": "davant_bidons",

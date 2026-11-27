@@ -109,7 +109,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "menjador",
+      "description": "el menjador",
       "zIndex": 0,
       "points": [
         {
@@ -142,7 +142,7 @@
     {
       "id": "munta",
       "active": true,
-      "description": "muntacàrregues",
+      "description": "el muntacàrregues",
       "zIndex": 1,
       "points": [
         {
@@ -174,7 +174,7 @@
     {
       "id": "boca",
       "active": true,
-      "description": "boca del tub de veu",
+      "description": "la boca del tub de veu",
       "zIndex": 2,
       "points": [
         {
@@ -206,7 +206,7 @@
     {
       "id": "cambra_freda",
       "active": true,
-      "description": "cambra freda",
+      "description": "la cambra freda",
       "zIndex": 3,
       "points": [
         {
@@ -238,7 +238,7 @@
     {
       "id": "armari",
       "active": true,
-      "description": "armari de les olles",
+      "description": "l'armari de les olles",
       "zIndex": 4,
       "points": [
         {
@@ -270,7 +270,7 @@
     {
       "id": "forn",
       "active": true,
-      "description": "forn",
+      "description": "el forn",
       "zIndex": 5,
       "points": [
         {
@@ -302,7 +302,7 @@
     {
       "id": "taula",
       "active": true,
-      "description": "taula",
+      "description": "la taula",
       "zIndex": 6,
       "points": [
         {
@@ -366,7 +366,7 @@
     {
       "id": "farina",
       "active": true,
-      "description": "farina",
+      "description": "la farina",
       "zIndex": 8,
       "points": [
         {
@@ -398,7 +398,7 @@
     {
       "id": "especies",
       "active": true,
-      "description": "espècies",
+      "description": "les espècies",
       "zIndex": 9,
       "points": [
         {
@@ -506,7 +506,7 @@
         "x": 140,
         "y": 124
       },
-      "description": "safata del muntacàrregues"
+      "description": "la safata del muntacàrregues"
     },
     {
       "id": "armari_obert",
@@ -586,7 +586,7 @@
         "x": 404,
         "y": 171
       },
-      "description": "forn"
+      "description": "el forn"
     },
     {
       "id": "fred",

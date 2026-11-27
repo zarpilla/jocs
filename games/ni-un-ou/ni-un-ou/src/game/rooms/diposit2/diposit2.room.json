@@ -125,7 +125,7 @@
     {
       "id": "registre",
       "active": true,
-      "description": "registre",
+      "description": "el registre",
       "zIndex": 0,
       "points": [
         {
@@ -158,7 +158,7 @@
     {
       "id": "filtre",
       "active": true,
-      "description": "carcassa del filtre",
+      "description": "la carcassa del filtre",
       "zIndex": 1,
       "points": [
         {
@@ -190,7 +190,7 @@
     {
       "id": "cartell",
       "active": true,
-      "description": "cartell",
+      "description": "el cartell",
       "zIndex": 2,
       "points": [
         {

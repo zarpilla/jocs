@@ -103,7 +103,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "pont",
+      "description": "el pont",
       "zIndex": 0,
       "points": [
         {
@@ -136,7 +136,7 @@
     {
       "id": "radio",
       "active": true,
-      "description": "ràdio de llarg abast",
+      "description": "la ràdio de llarg abast",
       "zIndex": 1,
       "points": [
         {
@@ -168,7 +168,7 @@
     {
       "id": "panell",
       "active": true,
-      "description": "panell",
+      "description": "el panell",
       "zIndex": 2,
       "points": [
         {
@@ -216,7 +216,7 @@
     {
       "id": "suro",
       "active": true,
-      "description": "tauler de suro",
+      "description": "el tauler de suro",
       "zIndex": 3,
       "points": [
         {
@@ -248,7 +248,7 @@
     {
       "id": "rellotge",
       "active": true,
-      "description": "rellotge",
+      "description": "el rellotge",
       "zIndex": 4,
       "points": [
         {
@@ -280,7 +280,7 @@
     {
       "id": "caixa",
       "active": true,
-      "description": "caixa",
+      "description": "la caixa",
       "zIndex": 5,
       "points": [
         {
@@ -312,7 +312,7 @@
     {
       "id": "ull_bou",
       "active": true,
-      "description": "ull de bou",
+      "description": "l'ull de bou",
       "zIndex": 6,
       "points": [
         {
@@ -344,7 +344,7 @@
     {
       "id": "llibres",
       "active": true,
-      "description": "llibres",
+      "description": "els llibres",
       "zIndex": 7,
       "points": [
         {
@@ -376,7 +376,7 @@
     {
       "id": "extintor",
       "active": true,
-      "description": "extintor",
+      "description": "l'extintor",
       "zIndex": 8,
       "points": [
         {
@@ -484,7 +484,7 @@
         "x": 354,
         "y": 102
       },
-      "description": "cable tallat"
+      "description": "el cable tallat"
     },
     {
       "id": "panell_obert",

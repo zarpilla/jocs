@@ -141,7 +141,7 @@
     {
       "id": "escala",
       "active": true,
-      "description": "escala",
+      "description": "l'escala",
       "zIndex": 0,
       "points": [
         {
@@ -174,7 +174,7 @@
     {
       "id": "porta_radio",
       "active": true,
-      "description": "sala de ràdio",
+      "description": "la sala de ràdio",
       "zIndex": 1,
       "points": [
         {
@@ -207,7 +207,7 @@
     {
       "id": "escala_pal",
       "active": true,
-      "description": "escala del pal",
+      "description": "l'escala del pal",
       "zIndex": 2,
       "points": [
         {
@@ -240,7 +240,7 @@
     {
       "id": "terminal",
       "active": true,
-      "description": "terminal de satèl·lit",
+      "description": "el terminal de satèl·lit",
       "zIndex": 3,
       "points": [
         {
@@ -272,7 +272,7 @@
     {
       "id": "impressora",
       "active": true,
-      "description": "impressora",
+      "description": "la impressora",
       "zIndex": 4,
       "points": [
         {
@@ -304,7 +304,7 @@
     {
       "id": "munta",
       "active": true,
-      "description": "muntacàrregues",
+      "description": "el muntacàrregues",
       "zIndex": 2,
       "points": [
         {
@@ -336,7 +336,7 @@
     {
       "id": "boca",
       "active": true,
-      "description": "boca del tub de veu",
+      "description": "la boca del tub de veu",
       "zIndex": 6,
       "points": [
         {
@@ -368,7 +368,7 @@
     {
       "id": "timo",
       "active": true,
-      "description": "timó",
+      "description": "el timó",
       "zIndex": 7,
       "points": [
         {
@@ -400,7 +400,7 @@
     {
       "id": "vidre",
       "active": true,
-      "description": "vidre",
+      "description": "el vidre",
       "zIndex": 8,
       "points": [
         {
@@ -432,7 +432,7 @@
     {
       "id": "taula_cartes",
       "active": true,
-      "description": "taula de cartes",
+      "description": "la taula de cartes",
       "zIndex": 10,
       "points": [
         {
@@ -464,7 +464,7 @@
     {
       "id": "rellotges",
       "active": true,
-      "description": "rellotges",
+      "description": "els rellotges",
       "zIndex": 11,
       "points": [
         {
@@ -496,7 +496,7 @@
     {
       "id": "pantalla_radar",
       "active": true,
-      "description": "radar",
+      "description": "el radar",
       "zIndex": 9,
       "points": [
         {
@@ -604,7 +604,7 @@
         "x": 451,
         "y": 112
       },
-      "description": "safata del muntacàrregues"
+      "description": "la safata del muntacàrregues"
     },
     {
       "id": "guardacostes",
@@ -684,7 +684,7 @@
         "x": 336,
         "y": 134
       },
-      "description": "terminal de satèl·lit"
+      "description": "el terminal de satèl·lit"
     },
     {
       "id": "mar",

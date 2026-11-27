@@ -143,7 +143,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "passadís",
+      "description": "el passadís",
       "zIndex": 0,
       "points": [
         {
@@ -176,7 +176,7 @@
     {
       "id": "prestatges",
       "active": true,
-      "description": "prestatges",
+      "description": "els prestatges",
       "zIndex": 1,
       "points": [
         {
@@ -208,7 +208,7 @@
     {
       "id": "inventari",
       "active": true,
-      "description": "inventari",
+      "description": "l'inventari",
       "zIndex": 2,
       "points": [
         {
@@ -240,7 +240,7 @@
     {
       "id": "cadenats",
       "active": true,
-      "description": "cadenats",
+      "description": "els cadenats",
       "zIndex": 3,
       "points": [
         {
@@ -272,7 +272,7 @@
     {
       "id": "salvavides",
       "active": true,
-      "description": "salvavides",
+      "description": "el salvavides",
       "zIndex": 5,
       "points": [
         {
@@ -304,7 +304,7 @@
     {
       "id": "corda",
       "active": true,
-      "description": "corda",
+      "description": "la corda",
       "zIndex": 6,
       "points": [
         {
@@ -336,7 +336,7 @@
     {
       "id": "caixa",
       "active": true,
-      "description": "caixa",
+      "description": "la caixa",
       "zIndex": 7,
       "points": [
         {
@@ -368,7 +368,7 @@
     {
       "id": "escombra",
       "active": true,
-      "description": "escombra",
+      "description": "l'escombra",
       "zIndex": 8,
       "points": [
         {
@@ -400,7 +400,7 @@
     {
       "id": "bombona",
       "active": true,
-      "description": "bombona",
+      "description": "la bombona",
       "zIndex": 9,
       "points": [
         {
@@ -432,7 +432,7 @@
     {
       "id": "defenses_penjades",
       "active": true,
-      "description": "defenses",
+      "description": "les defenses",
       "zIndex": 4,
       "points": [
         {

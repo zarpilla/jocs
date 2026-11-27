@@ -97,7 +97,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "sala de màquines",
+      "description": "la sala de màquines",
       "zIndex": 0,
       "points": [
         {
@@ -130,7 +130,7 @@
     {
       "id": "tauler",
       "active": true,
-      "description": "tauler d'eines",
+      "description": "el tauler d'eines",
       "zIndex": 1,
       "points": [
         {
@@ -162,7 +162,7 @@
     {
       "id": "banc",
       "active": true,
-      "description": "banc de treball",
+      "description": "el banc de treball",
       "zIndex": 2,
       "points": [
         {
@@ -194,7 +194,7 @@
     {
       "id": "pots",
       "active": true,
-      "description": "pots",
+      "description": "els pots",
       "zIndex": 3,
       "points": [
         {
@@ -226,7 +226,7 @@
     {
       "id": "bido",
       "active": true,
-      "description": "bidó",
+      "description": "el bidó",
       "zIndex": 4,
       "points": [
         {
@@ -334,7 +334,7 @@
         "x": 223,
         "y": 116
       },
-      "description": "cisalla"
+      "description": "la cisalla"
     },
     {
       "id": "clau_tubs",
@@ -374,7 +374,7 @@
         "x": 262,
         "y": 127
       },
-      "description": "clau de tubs"
+      "description": "la clau de tubs"
     },
     {
       "id": "fluorescent",

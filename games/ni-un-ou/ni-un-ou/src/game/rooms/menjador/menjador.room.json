@@ -70,7 +70,7 @@
     {
       "id": "porta_passadis",
       "active": true,
-      "description": "passadís",
+      "description": "el passadís",
       "zIndex": 0,
       "points": [
         {
@@ -103,7 +103,7 @@
     {
       "id": "porta_cuina",
       "active": true,
-      "description": "cuina",
+      "description": "la cuina",
       "zIndex": 1,
       "points": [
         {
@@ -136,7 +136,7 @@
     {
       "id": "porta_popa",
       "active": true,
-      "description": "coberta de popa",
+      "description": "la coberta de popa",
       "zIndex": 2,
       "points": [
         {
@@ -169,7 +169,7 @@
     {
       "id": "passaplats",
       "active": true,
-      "description": "passaplats",
+      "description": "el passaplats",
       "zIndex": 3,
       "points": [
         {
@@ -201,7 +201,7 @@
     {
       "id": "poster",
       "active": true,
-      "description": "pòster",
+      "description": "el pòster",
       "zIndex": 4,
       "points": [
         {
@@ -233,7 +233,7 @@
     {
       "id": "taula",
       "active": true,
-      "description": "taula",
+      "description": "la taula",
       "zIndex": 5,
       "points": [
         {
@@ -265,7 +265,7 @@
     {
       "id": "cafetera",
       "active": true,
-      "description": "cafetera",
+      "description": "la cafetera",
       "zIndex": 6,
       "points": [
         {
@@ -297,7 +297,7 @@
     {
       "id": "rellotges",
       "active": true,
-      "description": "rellotges",
+      "description": "els rellotges",
       "zIndex": 7,
       "points": [
         {
@@ -329,7 +329,7 @@
     {
       "id": "ulls_bou",
       "active": true,
-      "description": "ulls de bou",
+      "description": "els ulls de bou",
       "zIndex": 8,
       "points": [
         {
@@ -361,7 +361,7 @@
     {
       "id": "prestatge",
       "active": true,
-      "description": "prestatge",
+      "description": "el prestatge",
       "zIndex": 9,
       "points": [
         {
@@ -393,7 +393,7 @@
     {
       "id": "tamboret",
       "active": true,
-      "description": "tamboret",
+      "description": "el tamboret",
       "zIndex": 10,
       "points": [
         {

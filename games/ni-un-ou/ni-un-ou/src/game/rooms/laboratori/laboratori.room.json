@@ -81,7 +81,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "passadís",
+      "description": "el passadís",
       "zIndex": 0,
       "points": [
         {
@@ -114,7 +114,7 @@
     {
       "id": "llibre",
       "active": true,
-      "description": "llibre de peixos",
+      "description": "el llibre de peixos",
       "zIndex": 1,
       "points": [
         {
@@ -146,7 +146,7 @@
     {
       "id": "nevera",
       "active": true,
-      "description": "nevera de mostres",
+      "description": "la nevera de mostres",
       "zIndex": 2,
       "points": [
         {
@@ -178,7 +178,7 @@
     {
       "id": "taulell",
       "active": true,
-      "description": "taulell",
+      "description": "el taulell",
       "zIndex": 3,
       "points": [
         {
@@ -289,7 +289,7 @@
         "x": 311,
         "y": 122
       },
-      "description": "portàtil",
+      "description": "el portàtil",
       "baseline": 179
     },
     {
@@ -330,7 +330,7 @@
         "x": 349,
         "y": 123
       },
-      "description": "nota",
+      "description": "la nota",
       "baseline": 179
     },
     {
@@ -387,7 +387,7 @@
         "x": 486,
         "y": 174
       },
-      "description": "nevera de mostres"
+      "description": "la nevera de mostres"
     },
     {
       "id": "ulls_dia",

@@ -200,7 +200,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "passadís",
+      "description": "el passadís",
       "zIndex": 1,
       "points": [
         {
@@ -233,7 +233,7 @@
     {
       "id": "escotilla",
       "active": true,
-      "description": "escotilla de la caixa de cadenes",
+      "description": "l'escotilla de la caixa de cadenes",
       "zIndex": 2,
       "points": [
         {
@@ -266,7 +266,7 @@
     {
       "id": "balsa",
       "active": true,
-      "description": "balsa salvavides",
+      "description": "la balsa salvavides",
       "zIndex": 3,
       "points": [
         {
@@ -298,7 +298,7 @@
     {
       "id": "molinet",
       "active": true,
-      "description": "molinet de l'àncora",
+      "description": "el molinet de l'àncora",
       "zIndex": 4,
       "points": [
         {
@@ -330,7 +330,7 @@
     {
       "id": "campana",
       "active": true,
-      "description": "campana",
+      "description": "la campana",
       "zIndex": 8,
       "points": [
         {
@@ -362,7 +362,7 @@
     {
       "id": "pal",
       "active": true,
-      "description": "pal de proa",
+      "description": "el pal de proa",
       "zIndex": 6,
       "points": [
         {
@@ -394,7 +394,7 @@
     {
       "id": "extintor",
       "active": true,
-      "description": "extintor",
+      "description": "l'extintor",
       "zIndex": 7,
       "points": [
         {

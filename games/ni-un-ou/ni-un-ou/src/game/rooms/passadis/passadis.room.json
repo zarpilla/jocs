@@ -111,7 +111,7 @@
     {
       "id": "porta_menjador",
       "active": true,
-      "description": "menjador",
+      "description": "el menjador",
       "zIndex": 0,
       "points": [
         {
@@ -144,7 +144,7 @@
     {
       "id": "porta_infermeria",
       "active": true,
-      "description": "infermeria",
+      "description": "la infermeria",
       "zIndex": 1,
       "points": [
         {
@@ -177,7 +177,7 @@
     {
       "id": "porta_laboratori",
       "active": true,
-      "description": "laboratori",
+      "description": "el laboratori",
       "zIndex": 2,
       "points": [
         {
@@ -210,7 +210,7 @@
     {
       "id": "porta_capitana",
       "active": true,
-      "description": "cabina de la Capitana",
+      "description": "la cabina de la Capitana",
       "zIndex": 3,
       "points": [
         {
@@ -243,7 +243,7 @@
     {
       "id": "escala_amunt",
       "active": true,
-      "description": "escala del pont",
+      "description": "l'escala del pont",
       "zIndex": 4,
       "points": [
         {
@@ -276,7 +276,7 @@
     {
       "id": "escala_avall",
       "active": true,
-      "description": "escala de baix",
+      "description": "l'escala de baix",
       "zIndex": 5,
       "points": [
         {
@@ -309,7 +309,7 @@
     {
       "id": "porta_proa",
       "active": true,
-      "description": "porta de proa",
+      "description": "la porta de proa",
       "zIndex": 6,
       "points": [
         {
@@ -342,7 +342,7 @@
     {
       "id": "planol",
       "active": true,
-      "description": "plànol d'emergència",
+      "description": "el plànol d'emergència",
       "zIndex": 7,
       "points": [
         {
@@ -374,7 +374,7 @@
     {
       "id": "carreto",
       "active": true,
-      "description": "carretó",
+      "description": "el carretó",
       "zIndex": 8,
       "points": [
         {
@@ -406,7 +406,7 @@
     {
       "id": "extintor",
       "active": true,
-      "description": "extintor",
+      "description": "l'extintor",
       "zIndex": 10,
       "points": [
         {
@@ -438,7 +438,7 @@
     {
       "id": "estora",
       "active": true,
-      "description": "estora",
+      "description": "l'estora",
       "zIndex": 11,
       "points": [
         {
@@ -470,7 +470,7 @@
     {
       "id": "paperera",
       "active": true,
-      "description": "paperera",
+      "description": "la paperera",
       "zIndex": 12,
       "points": [
         {
@@ -502,7 +502,7 @@
     {
       "id": "caixa",
       "active": true,
-      "description": "caixa",
+      "description": "la caixa",
       "zIndex": 13,
       "points": [
         {
@@ -534,7 +534,7 @@
     {
       "id": "rellotge_paret",
       "active": true,
-      "description": "rellotge",
+      "description": "el rellotge",
       "zIndex": 9,
       "points": [
         {

@@ -179,7 +179,7 @@
     {
       "id": "porta_passadis",
       "active": true,
-      "description": "passadís",
+      "description": "el passadís",
       "zIndex": 0,
       "points": [
         {
@@ -212,7 +212,7 @@
     {
       "id": "porta_taller",
       "active": true,
-      "description": "taller",
+      "description": "el taller",
       "zIndex": 1,
       "points": [
         {
@@ -245,7 +245,7 @@
     {
       "id": "porta_rebost",
       "active": true,
-      "description": "rebost",
+      "description": "el rebost",
       "zIndex": 2,
       "points": [
         {
@@ -278,7 +278,7 @@
     {
       "id": "valvula",
       "active": true,
-      "description": "vàlvula de presa de mar",
+      "description": "la vàlvula de presa de mar",
       "zIndex": 3,
       "points": [
         {
@@ -310,7 +310,7 @@
     {
       "id": "quadre",
       "active": true,
-      "description": "quadre de la bomba",
+      "description": "el quadre de la bomba",
       "zIndex": 4,
       "points": [
         {
@@ -342,7 +342,7 @@
     {
       "id": "vies",
       "active": true,
-      "description": "vàlvula de tres vies",
+      "description": "la vàlvula de tres vies",
       "zIndex": 5,
       "points": [
         {
@@ -374,7 +374,7 @@
     {
       "id": "separador",
       "active": true,
-      "description": "separador d'aigües oleoses",
+      "description": "el separador d'aigües oleoses",
       "zIndex": 6,
       "points": [
         {
@@ -406,7 +406,7 @@
     {
       "id": "sensor",
       "active": true,
-      "description": "sensor de sentina",
+      "description": "el sensor de sentina",
       "zIndex": 7,
       "points": [
         {
@@ -438,7 +438,7 @@
     {
       "id": "motor",
       "active": true,
-      "description": "motor principal",
+      "description": "el motor principal",
       "zIndex": 8,
       "points": [
         {
@@ -470,7 +470,7 @@
     {
       "id": "boca",
       "active": true,
-      "description": "boca del tub de veu",
+      "description": "la boca del tub de veu",
       "zIndex": 9,
       "points": [
         {
@@ -502,7 +502,7 @@
     {
       "id": "generador",
       "active": true,
-      "description": "generador",
+      "description": "el generador",
       "zIndex": 9,
       "points": [
         {
@@ -534,7 +534,7 @@
     {
       "id": "sentina",
       "active": true,
-      "description": "registre de la sentina",
+      "description": "el registre de la sentina",
       "zIndex": 9,
       "points": [
         {
@@ -566,7 +566,7 @@
     {
       "id": "calendari",
       "active": true,
-      "description": "calendari",
+      "description": "el calendari",
       "zIndex": 12,
       "points": [
         {
@@ -598,7 +598,7 @@
     {
       "id": "bidons",
       "active": true,
-      "description": "bidons d'oli",
+      "description": "els bidons d'oli",
       "zIndex": 13,
       "points": [
         {
@@ -784,7 +784,7 @@
         "x": 433,
         "y": 181
       },
-      "description": "separador d'aigües oleoses"
+      "description": "el separador d'aigües oleoses"
     },
     {
       "id": "sentina_oberta",

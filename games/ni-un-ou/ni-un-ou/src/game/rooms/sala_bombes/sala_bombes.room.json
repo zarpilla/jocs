@@ -78,7 +78,7 @@
     {
       "id": "escotilla",
       "active": true,
-      "description": "escotilla",
+      "description": "l'escotilla",
       "zIndex": 0,
       "points": [
         {
@@ -111,7 +111,7 @@
     {
       "id": "bombes",
       "active": true,
-      "description": "bombes",
+      "description": "les bombes",
       "zIndex": 1,
       "points": [
         {
@@ -219,7 +219,7 @@
         "x": 203,
         "y": 228
       },
-      "description": "llibre"
+      "description": "el llibre"
     },
     {
       "id": "llanterna",
@@ -259,7 +259,7 @@
         "x": 282,
         "y": 213
       },
-      "description": "llanterna",
+      "description": "la llanterna",
       "baseline": 164
     },
     {

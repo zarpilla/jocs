@@ -119,7 +119,7 @@
     {
       "id": "porta",
       "active": true,
-      "description": "menjador",
+      "description": "el menjador",
       "zIndex": 0,
       "points": [
         {
@@ -185,7 +185,7 @@
     {
       "id": "grua",
       "active": true,
-      "description": "grua",
+      "description": "la grua",
       "zIndex": 2,
       "points": [
         {
@@ -217,7 +217,7 @@
     {
       "id": "borda",
       "active": true,
-      "description": "borda",
+      "description": "la borda",
       "zIndex": 3,
       "points": [
         {
@@ -249,7 +249,7 @@
     {
       "id": "galleda",
       "active": true,
-      "description": "galleda",
+      "description": "la galleda",
       "zIndex": 4,
       "points": [
         {
@@ -281,7 +281,7 @@
     {
       "id": "caixa",
       "active": true,
-      "description": "caixa de fusta",
+      "description": "la caixa de fusta",
       "zIndex": 5,
       "points": [
         {
@@ -313,7 +313,7 @@
     {
       "id": "bido",
       "active": true,
-      "description": "bidó",
+      "description": "el bidó",
       "zIndex": 6,
       "points": [
         {
@@ -345,7 +345,7 @@
     {
       "id": "salvavides",
       "active": true,
-      "description": "salvavides",
+      "description": "el salvavides",
       "zIndex": 7,
       "points": [
         {
@@ -456,7 +456,7 @@
         "x": 376,
         "y": 108
       },
-      "description": "plataforma"
+      "description": "la plataforma"
     },
     {
       "id": "taula",
@@ -496,7 +496,7 @@
         "x": 329,
         "y": 222
       },
-      "description": "esmorzar",
+      "description": "l'esmorzar",
       "baseline": 213
     },
     {
@@ -537,7 +537,7 @@
         "x": 332,
         "y": 152
       },
-      "description": "horitzó"
+      "description": "l'horitzó"
     },
     {
       "id": "dia",

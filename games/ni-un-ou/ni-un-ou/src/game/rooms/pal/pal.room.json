@@ -149,7 +149,7 @@
     {
       "id": "escala",
       "active": true,
-      "description": "escala",
+      "description": "l'escala",
       "zIndex": 0,
       "points": [
         {
@@ -182,7 +182,7 @@
     {
       "id": "antena",
       "active": true,
-      "description": "antena",
+      "description": "l'antena",
       "zIndex": 1,
       "points": [
         {
@@ -214,7 +214,7 @@
     {
       "id": "mar",
       "active": true,
-      "description": "mar",
+      "description": "la mar",
       "zIndex": 2,
       "points": [
         {
@@ -340,7 +340,7 @@
         "x": 116,
         "y": 219
       },
-      "description": "mar"
+      "description": "la mar"
     },
     {
       "id": "fosc",
