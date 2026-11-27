@@ -24,8 +24,8 @@ import {
 } from '../gui/guiGridLayout.js';
 import type { GameStateManager } from '../gameState/GameStateManager.js';
 import {
-  readEffectiveDialogOptionEnabled,
   readEffectiveDialogOptionUsed,
+  visibleDialogOptionsInOrder,
 } from './dialogOptionVariables.js';
 import { dialogChoiceSyntheticButtonId } from '../events/dialogEvents.js';
 import { applyGuiBitmapTextFillTint } from '../gui/guiTextOutline.js';
@@ -641,7 +641,7 @@ export class DialogChoiceDynamicRowState {
     }
 
     const controls = gui.controls;
-    const visibleOpts = definition.options.filter((o) => readEffectiveDialogOptionEnabled(manager, definition, o.id));
+    const visibleOpts = visibleDialogOptionsInOrder(manager, definition);
     if (visibleOpts.length === 0) {
       return 0;
     }

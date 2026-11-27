@@ -21,7 +21,8 @@
       "scriptName": "m1__adeu",
       "text": "Res, germana.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "m2__tint",
@@ -70,7 +71,8 @@
       "scriptName": "m2__adeu2",
       "text": "Res, germana.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

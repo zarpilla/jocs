@@ -21,7 +21,8 @@
       "scriptName": "menu__adeu",
       "text": "Fins després.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

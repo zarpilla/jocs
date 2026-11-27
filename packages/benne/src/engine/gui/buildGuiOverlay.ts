@@ -157,7 +157,7 @@ export const GUI_OVERLAY_DEPTH_STRIDE = 10_000;
  * Minimum gap between Speaking Text (primary line + outline clones) and the internal canvas edges when using
  * {@link GuiOverlayHandle.setPrimaryScreenPositionBottomCenter}.
  */
-const PRIMARY_LINE_SCREEN_EDGE_INSET = 2;
+const PRIMARY_LINE_SCREEN_EDGE_INSET = 6;
 
 function unionOutlinedBitmapTextScreenBounds(main: Phaser.GameObjects.BitmapText): {
   left: number;

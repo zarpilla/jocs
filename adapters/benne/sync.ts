@@ -91,6 +91,8 @@ function benneDialog(d: DialogueDef, text: LocaleTable, fallback: LocaleTable) {
       text: text[c.text] ?? fallback[c.text] ?? c.text,
       enabled: false,
       say: false, // la frase del jugador la diu el pont, en l'idioma actiu
+      // Les que acaben la conversa (adeu) es queden al final, sota les ja dites.
+      ...(c.end ? { last: true } : {}),
     })),
   );
   return { id: d.id, displayName: d.id, options };

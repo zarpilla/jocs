@@ -42,7 +42,8 @@
       "scriptName": "m1__adeu",
       "text": "Res, mare abadessa.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "ma__pare",
@@ -70,14 +71,16 @@
       "scriptName": "h2__adeu2",
       "text": "Sí, mare abadessa.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "h7__adeu7",
       "scriptName": "h7__adeu7",
       "text": "(Tus)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

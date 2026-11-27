@@ -42,7 +42,8 @@
       "scriptName": "qui__pensar",
       "text": "(Encara no ho tinc. Pensar-hi una mica més)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "proves__gat",
@@ -126,7 +127,8 @@
       "scriptName": "proves__enrere",
       "text": "(Pensar-hi una mica més)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "compta__iri",

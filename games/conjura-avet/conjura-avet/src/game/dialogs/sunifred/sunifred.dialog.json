@@ -21,7 +21,8 @@
       "scriptName": "m1__adeu",
       "text": "Res.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "mc__ofici",
@@ -42,14 +43,16 @@
       "scriptName": "mc__adeu_c",
       "text": "(Fa una reverència)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "s7__adeu7",
       "scriptName": "s7__adeu7",
       "text": "(Tus)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

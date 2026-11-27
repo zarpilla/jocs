@@ -63,7 +63,8 @@
       "scriptName": "esc8g__encara",
       "text": "Encara no.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "esc8__reunir",
@@ -77,7 +78,8 @@
       "scriptName": "esc8__encara",
       "text": "Encara no.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

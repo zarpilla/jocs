@@ -28,7 +28,8 @@
       "scriptName": "menu__adeu",
       "text": "Res. Passava per aquí.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "aval__escriptura",

@@ -70,7 +70,8 @@
       "scriptName": "menu__adeu",
       "text": "Adeu, Juana.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "q1__vendre",

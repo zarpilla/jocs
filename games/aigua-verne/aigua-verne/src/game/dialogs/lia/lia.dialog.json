@@ -28,7 +28,8 @@
       "scriptName": "menu__adeu",
       "text": "Res. Continua fregant.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "aliada__control",
@@ -42,7 +43,8 @@
       "scriptName": "aliada__adeu2",
       "text": "Fins ara, Lia.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

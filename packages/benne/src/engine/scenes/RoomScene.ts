@@ -205,7 +205,7 @@ import { sortGuisForOverlayStack } from '../gui/guiStackOrder';
 import { getRegisteredDialogChoiceGuiIds, getDialogDefinition } from '../dialog/dialogDefinitionRegistry';
 import {
   dialogOptionUsedVariableKey,
-  readEffectiveDialogOptionEnabled,
+  visibleDialogOptionsInOrder,
 } from '../dialog/dialogOptionVariables';
 import type { Dialog } from '../../types/dialogue';
 import {
@@ -1538,7 +1538,7 @@ export class RoomScene extends Phaser.Scene {
       return;
     }
     const manager = resolveGameStateManager(this.game);
-    const visibleOpts = def.options.filter((o) => readEffectiveDialogOptionEnabled(manager, def, o.id));
+    const visibleOpts = visibleDialogOptionsInOrder(manager, def);
     const maxViewportHeightPx = resolveDialogChoiceViewportHeightPx(
       entry.guiData,
       getDialogSettings(manager),
@@ -1633,7 +1633,7 @@ export class RoomScene extends Phaser.Scene {
     const buttonDef = guiData.controls?.find(
       (c): c is GuiButtonControl => c.type === 'button' && c.id === 'Dialog-Option',
     );
-    const visibleOpts = def.options.filter((o) => readEffectiveDialogOptionEnabled(manager, def, o.id));
+    const visibleOpts = visibleDialogOptionsInOrder(manager, def);
     const session = this.activeDialogChoiceSession;
     const scrollTopPx = session?.scrollTopPx ?? 0;
     const maxViewportHeightPx = resolveDialogChoiceViewportHeightPx(

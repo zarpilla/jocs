@@ -28,7 +28,8 @@
       "scriptName": "inici__adeu",
       "text": "(Esperar.)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

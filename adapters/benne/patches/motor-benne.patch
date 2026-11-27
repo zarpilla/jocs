@@ -1096,9 +1096,41 @@ diff -ruN src/engine/characterFeet.ts src/engine/characterFeet.ts
  }
  
  /** Top-left sprite position so world feet sit at `(worldFeetX, worldFeetY)` (accounts for `sprite.scale`). */
+diff -ruN src/engine/content/registerDialogDefinitions.ts src/engine/content/registerDialogDefinitions.ts
+--- src/engine/content/registerDialogDefinitions.ts
++++ src/engine/content/registerDialogDefinitions.ts
+@@ -28,6 +28,9 @@
+   if (o.say !== undefined && typeof o.say !== 'boolean') {
+     return false;
+   }
++  if (o.last !== undefined && typeof o.last !== 'boolean') {
++    return false;
++  }
+   return true;
+ }
+ 
 diff -ruN src/engine/dialog/dialogChoiceGuiRuntime.ts src/engine/dialog/dialogChoiceGuiRuntime.ts
 --- src/engine/dialog/dialogChoiceGuiRuntime.ts
 +++ src/engine/dialog/dialogChoiceGuiRuntime.ts
+@@ -24,8 +24,8 @@
+ } from '../gui/guiGridLayout.js';
+ import type { GameStateManager } from '../gameState/GameStateManager.js';
+ import {
+-  readEffectiveDialogOptionEnabled,
+   readEffectiveDialogOptionUsed,
++  visibleDialogOptionsInOrder,
+ } from './dialogOptionVariables.js';
+ import { dialogChoiceSyntheticButtonId } from '../events/dialogEvents.js';
+ import { applyGuiBitmapTextFillTint } from '../gui/guiTextOutline.js';
+@@ -641,7 +641,7 @@
+     }
+ 
+     const controls = gui.controls;
+-    const visibleOpts = definition.options.filter((o) => readEffectiveDialogOptionEnabled(manager, definition, o.id));
++    const visibleOpts = visibleDialogOptionsInOrder(manager, definition);
+     if (visibleOpts.length === 0) {
+       return 0;
+     }
 @@ -708,7 +708,11 @@
      viewportMask.fillRect(0, 0, viewportClipW, viewportAvailableHeightPx);
      viewportMask.setVisible(false);
@@ -1112,6 +1144,47 @@ diff -ruN src/engine/dialog/dialogChoiceGuiRuntime.ts src/engine/dialog/dialogCh
      gridContainer.add(viewportClip);
      this.viewportClipContainer = viewportClip;
  
+diff -ruN src/engine/dialog/dialogDefinitionRegistry.ts src/engine/dialog/dialogDefinitionRegistry.ts
+--- src/engine/dialog/dialogDefinitionRegistry.ts
++++ src/engine/dialog/dialogDefinitionRegistry.ts
+@@ -9,6 +9,7 @@
+     enabled: raw.enabled !== false,
+     used: raw.used === true,
+     say: raw.say !== false,
++    ...(raw.last === true ? { last: true } : {}),
+   };
+ }
+ 
+diff -ruN src/engine/dialog/dialogOptionVariables.ts src/engine/dialog/dialogOptionVariables.ts
+--- src/engine/dialog/dialogOptionVariables.ts
++++ src/engine/dialog/dialogOptionVariables.ts
+@@ -1,4 +1,4 @@
+-import type { Dialog } from '../../types/dialogue.js';
++import type { Dialog, DialogOption } from '../../types/dialogue.js';
+ import type { GameStateManager } from '../gameState/GameStateManager.js';
+ 
+ export function dialogOptionEnabledVariableKey(dialogId: string, optionId: string): string {
+@@ -40,3 +40,20 @@
+   const v = manager.getVariable(key);
+   return v === true;
+ }
++
++/**
++ * The options the list shows, in the order it shows them: the unused ones first, then the already-used ones, then the
++ * ones marked `last` (goodbyes), each group in definition order.
++ */
++export function visibleDialogOptionsInOrder(manager: GameStateManager, definition: Dialog): DialogOption[] {
++  const visible = definition.options.filter((o) => readEffectiveDialogOptionEnabled(manager, definition, o.id));
++  const fresh: DialogOption[] = [];
++  const used: DialogOption[] = [];
++  const last: DialogOption[] = [];
++  for (const o of visible) {
++    if (o.last === true) last.push(o);
++    else if (readEffectiveDialogOptionUsed(manager, definition, o.id)) used.push(o);
++    else fresh.push(o);
++  }
++  return [...fresh, ...used, ...last];
++}
 diff -ruN src/engine/directionalCharacterAnimation.ts src/engine/directionalCharacterAnimation.ts
 --- src/engine/directionalCharacterAnimation.ts
 +++ src/engine/directionalCharacterAnimation.ts
@@ -1381,6 +1454,15 @@ diff -ruN src/engine/gui/buildGuiOverlay.ts src/engine/gui/buildGuiOverlay.ts
  import { inventoryItemLabel } from '../verbs/targetLabel';
  import {
    getAsepriteSpriteSourceInset,
+@@ -154,7 +157,7 @@
+  * Minimum gap between Speaking Text (primary line + outline clones) and the internal canvas edges when using
+  * {@link GuiOverlayHandle.setPrimaryScreenPositionBottomCenter}.
+  */
+-const PRIMARY_LINE_SCREEN_EDGE_INSET = 2;
++const PRIMARY_LINE_SCREEN_EDGE_INSET = 6;
+ 
+ function unionOutlinedBitmapTextScreenBounds(main: Phaser.GameObjects.BitmapText): {
+   left: number;
 @@ -848,6 +851,9 @@
    const z = c.zIndex ?? 0;
    const d = baseDepth + z;
@@ -3044,6 +3126,15 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  import { runOnUpdateHandlers } from '../bennescript/onUpdateRegistry.js';
  import {
    buildGuiOverlay,
+@@ -189,7 +205,7 @@
+ import { getRegisteredDialogChoiceGuiIds, getDialogDefinition } from '../dialog/dialogDefinitionRegistry';
+ import {
+   dialogOptionUsedVariableKey,
+-  readEffectiveDialogOptionEnabled,
++  visibleDialogOptionsInOrder,
+ } from '../dialog/dialogOptionVariables';
+ import type { Dialog } from '../../types/dialogue';
+ import {
 @@ -230,9 +246,12 @@
    BENNE_SCREEN_FADE_DEFAULT_COLOR,
    BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC,
@@ -3298,6 +3389,24 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
     * Overlay-level visibility for dialog snapshot/restore ({@link GuiOverlayHandle.gameObjects}[0] is `guiContentRoot`).
     */
    private readGenericGuiOverlayVisibleHint(handle: GuiOverlayHandle): boolean {
+@@ -1424,7 +1538,7 @@
+       return;
+     }
+     const manager = resolveGameStateManager(this.game);
+-    const visibleOpts = def.options.filter((o) => readEffectiveDialogOptionEnabled(manager, def, o.id));
++    const visibleOpts = visibleDialogOptionsInOrder(manager, def);
+     const maxViewportHeightPx = resolveDialogChoiceViewportHeightPx(
+       entry.guiData,
+       getDialogSettings(manager),
+@@ -1519,7 +1633,7 @@
+     const buttonDef = guiData.controls?.find(
+       (c): c is GuiButtonControl => c.type === 'button' && c.id === 'Dialog-Option',
+     );
+-    const visibleOpts = def.options.filter((o) => readEffectiveDialogOptionEnabled(manager, def, o.id));
++    const visibleOpts = visibleDialogOptionsInOrder(manager, def);
+     const session = this.activeDialogChoiceSession;
+     const scrollTopPx = session?.scrollTopPx ?? 0;
+     const maxViewportHeightPx = resolveDialogChoiceViewportHeightPx(
 @@ -1541,13 +1655,25 @@
  
      const up = rt.getControl('scrollUp');
@@ -5273,6 +5382,21 @@ diff -ruN src/types/character.ts src/types/character.ts
     * Click hit area in **texture / frame pixel space** (same origin as `feet`). When omitted and the
     * character is clickable, the full sprite rectangle is used. Requires at least three vertices.
     */
+diff -ruN src/types/dialogue.ts src/types/dialogue.ts
+--- src/types/dialogue.ts
++++ src/types/dialogue.ts
+@@ -30,6 +30,11 @@
+    * Set to `false` to run the handler without an automatic player line.
+    */
+   say?: boolean;
++  /**
++   * When `true`, the option stays at the end of the list, below the already-used ones (a goodbye). Used options move
++   * after the unused ones, so the player sees first what is still new.
++   */
++  last?: boolean;
+ }
+ 
+ /**
 diff -ruN src/types/game.ts src/types/game.ts
 --- src/types/game.ts
 +++ src/types/game.ts

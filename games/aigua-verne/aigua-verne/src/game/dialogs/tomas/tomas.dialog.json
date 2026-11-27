@@ -35,14 +35,16 @@
       "scriptName": "menu__mare",
       "text": "Tomàs, la teva mare vol que baixis tu a buscar el vestit de reina.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "menu__adeu",
       "scriptName": "menu__adeu",
       "text": "Res, Tomàs.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "enxampat__venut",
@@ -77,7 +79,8 @@
       "scriptName": "enxampat__iri",
       "text": "(Això ho ha d'arreglar l'Iri. És amb ella que en Tomàs vol volar.)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "enxampat2__venut",
@@ -112,7 +115,8 @@
       "scriptName": "enxampat2__iri",
       "text": "(Això ho ha d'arreglar l'Iri. És amb ella que en Tomàs vol volar.)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "girat__informe",
@@ -126,14 +130,16 @@
       "scriptName": "girat__mare",
       "text": "Tomàs, la teva mare vol que baixis tu a buscar el vestit de reina.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "girat__adeu2",
       "scriptName": "girat__adeu2",
       "text": "Res, Tomàs.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

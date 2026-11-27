@@ -28,7 +28,8 @@
       "scriptName": "menu__adeu",
       "text": "Fins ara.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

@@ -28,7 +28,8 @@
       "scriptName": "menu__adeu",
       "text": "Res. Adéu, MARE.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

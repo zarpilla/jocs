@@ -42,7 +42,8 @@
       "scriptName": "menu__adeu",
       "text": "Res, ja et trucaré.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

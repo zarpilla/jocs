@@ -63,21 +63,24 @@
       "scriptName": "menu__bolca_brut",
       "text": "Bolcar el gresol.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "menu__bolca",
       "scriptName": "menu__bolca",
       "text": "Bolcar el gresol.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "menu__adeu",
       "scriptName": "menu__adeu",
       "text": "Deixar els comandaments.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

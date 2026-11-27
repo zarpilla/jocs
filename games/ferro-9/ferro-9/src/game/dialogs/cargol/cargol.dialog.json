@@ -84,7 +84,8 @@
       "scriptName": "menu__adeu",
       "text": "Fins després, Cargol.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

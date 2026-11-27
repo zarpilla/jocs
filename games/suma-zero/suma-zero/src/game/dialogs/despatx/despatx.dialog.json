@@ -14,7 +14,8 @@
       "scriptName": "menu__adeu",
       "text": "Res, res. Continuï comptant.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "eines__reunio",
@@ -63,7 +64,8 @@
       "scriptName": "eines__adeu",
       "text": "Res. Continuï.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

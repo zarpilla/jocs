@@ -28,7 +28,8 @@
       "scriptName": "menu__adeu",
       "text": "Continuï, continuï.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "eines__cantar",
@@ -84,7 +85,8 @@
       "scriptName": "eines__adeu",
       "text": "Res, res. Continuï.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "clau_relaxat__veritat",
@@ -112,7 +114,8 @@
       "scriptName": "clau_tens__adeu",
       "text": "No, res.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

@@ -14,7 +14,8 @@
       "scriptName": "menu__adeu",
       "text": "Res, gràcies.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "nom__nom_curt",

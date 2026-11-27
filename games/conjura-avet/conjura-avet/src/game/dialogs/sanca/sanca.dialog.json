@@ -14,7 +14,8 @@
       "scriptName": "mi__adeu_i",
       "text": "Res.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "mv__queixa",
@@ -49,7 +50,8 @@
       "scriptName": "mv__adeu",
       "text": "Gràcies, Sança.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "mm__creu",
@@ -63,7 +65,8 @@
       "scriptName": "mm__adeu_m",
       "text": "(Fa una reverència)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

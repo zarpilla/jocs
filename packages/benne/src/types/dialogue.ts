@@ -30,6 +30,11 @@ export interface DialogOption {
    * Set to `false` to run the handler without an automatic player line.
    */
   say?: boolean;
+  /**
+   * When `true`, the option stays at the end of the list, below the already-used ones (a goodbye). Used options move
+   * after the unused ones, so the player sees first what is still new.
+   */
+  last?: boolean;
 }
 
 /**

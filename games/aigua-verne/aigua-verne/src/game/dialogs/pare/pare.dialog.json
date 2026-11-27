@@ -56,7 +56,8 @@
       "scriptName": "menu__adeu",
       "text": "Adeu, papa.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

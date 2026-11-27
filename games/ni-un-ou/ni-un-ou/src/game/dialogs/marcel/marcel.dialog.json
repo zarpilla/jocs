@@ -49,7 +49,8 @@
       "scriptName": "esc6_menu__adeu",
       "text": "Res. Bona nit.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "secret__veritat",

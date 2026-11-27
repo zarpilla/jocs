@@ -14,14 +14,16 @@
       "scriptName": "inici__si",
       "text": "Sí.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "inici__deixa",
       "scriptName": "inici__deixa",
       "text": "(Deixar-ho estar.)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "p2__h24",
@@ -35,21 +37,24 @@
       "scriptName": "p2__h9",
       "text": "De nou a cinc.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "p3__aigua_si",
       "scriptName": "p3__aigua_si",
       "text": "Sí.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "p3__aigua_no",
       "scriptName": "p3__aigua_no",
       "text": "...No.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

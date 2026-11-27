@@ -35,7 +35,8 @@
       "scriptName": "esc2_menu__adeu",
       "text": "Res. Bon vent.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "esc3_menu__temporal",
@@ -63,7 +64,8 @@
       "scriptName": "esc3_menu__adeu",
       "text": "(Deixar-lo una estona)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "esc6__nus",
@@ -77,7 +79,8 @@
       "scriptName": "esc6__adeu",
       "text": "D'acord. Bona nit.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "dubte__veritat",
@@ -126,7 +129,8 @@
       "scriptName": "dubte__adeu",
       "text": "(Deixar-lo pensar)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

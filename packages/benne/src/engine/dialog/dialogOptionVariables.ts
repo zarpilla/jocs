@@ -1,4 +1,4 @@
-import type { Dialog } from '../../types/dialogue.js';
+import type { Dialog, DialogOption } from '../../types/dialogue.js';
 import type { GameStateManager } from '../gameState/GameStateManager.js';
 
 export function dialogOptionEnabledVariableKey(dialogId: string, optionId: string): string {
@@ -39,4 +39,21 @@ export function readEffectiveDialogOptionUsed(
   }
   const v = manager.getVariable(key);
   return v === true;
+}
+
+/**
+ * The options the list shows, in the order it shows them: the unused ones first, then the already-used ones, then the
+ * ones marked `last` (goodbyes), each group in definition order.
+ */
+export function visibleDialogOptionsInOrder(manager: GameStateManager, definition: Dialog): DialogOption[] {
+  const visible = definition.options.filter((o) => readEffectiveDialogOptionEnabled(manager, definition, o.id));
+  const fresh: DialogOption[] = [];
+  const used: DialogOption[] = [];
+  const last: DialogOption[] = [];
+  for (const o of visible) {
+    if (o.last === true) last.push(o);
+    else if (readEffectiveDialogOptionUsed(manager, definition, o.id)) used.push(o);
+    else fresh.push(o);
+  }
+  return [...fresh, ...used, ...last];
 }

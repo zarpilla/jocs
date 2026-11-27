@@ -14,7 +14,8 @@
       "scriptName": "m0__adeu0",
       "text": "Res, gràcies.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "mo__insistir",
@@ -42,7 +43,8 @@
       "scriptName": "mo__adeu_o",
       "text": "Ja tornaré.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "m1v__signe",
@@ -63,7 +65,8 @@
       "scriptName": "m1v__adeu1",
       "text": "Res, gràcies.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "m1i__pare_i",
@@ -77,14 +80,16 @@
       "scriptName": "m1i__adeu1i",
       "text": "Ja ho veurem.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "mati__adeu7",
       "scriptName": "mati__adeu7",
       "text": "Ara tornem.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     }
   ]
 }

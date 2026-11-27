@@ -21,7 +21,8 @@
       "scriptName": "mp__adeu",
       "text": "Res.",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "ss__ora",
@@ -56,7 +57,8 @@
       "scriptName": "ss__fuig",
       "text": "(Tus i fes un pas enrere)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "ms__dona",
@@ -70,7 +72,8 @@
       "scriptName": "ms__fuig2",
       "text": "(Tus i fes un pas enrere)",
       "enabled": false,
-      "say": false
+      "say": false,
+      "last": true
     },
     {
       "id": "mn__dir",
