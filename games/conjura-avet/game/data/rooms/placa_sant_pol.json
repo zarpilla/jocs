@@ -18,7 +18,17 @@
       "lines": [
         {
           "who": "bonfill",
-          "text": "sala.placa_sant_pol.1"
+          "text": "sala.placa_sant_pol.1",
+          "stage": [
+            {
+              "who": "player",
+              "walk": {
+                "x": 330,
+                "y": 232
+              },
+              "wait": false
+            }
+          ]
         },
         {
           "who": "sanca",
