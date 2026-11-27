@@ -26,6 +26,8 @@ un personatge fa la seva mida normal. Les façanes planes es posen a ×1,25 (al 
 import functools
 import math
 
+from PIL import Image
+
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 from hd.pix import Canvas, Light, W, H, hr
 from hd.rooms.comu import _diff
@@ -670,6 +672,21 @@ def condensador_arreglat(cv):
                 (tap[0] - 18, 0.4, tap[2] - 16), ramp=WATER, lvl=lambda s, t, P: 2.0 + (1.6 if (s + t) % 9 < 1.5 else 0),
                 forma=lambda s, t: ((s - 18) / 18) ** 2 + ((t - 11) / 11) ** 2 <= 1)
     cv.img.alpha_composite(_sobre(toll))
+    # i la canalla del piquet hi fa cua amb gots: dos criatures dretes, de cara a l'aixeta
+    kw = dict(cap=4.6, ample=0.085)
+
+    def dues(c):
+        PL.persona_c(c, 100, 120, h=66, facing=1, var=4, tipus='nen', light_from=1, hold='got', **kw)
+        PL.persona_c(c, 160, 120, h=62, facing=1, var=1, tipus='nena', light_from=1, hold='got', **kw)
+    criatures = _pla(dues)
+    for n, (fx, dx, dz) in enumerate(((100, -44, -4), (160, -66, 0))):
+        img = criatures.crop((fx - 20, 40, fx + 20, 124))
+        peu = (tap[0] + dx, 0, tap[2] + dz)
+
+        def cua(e2, img=img, peu=peu, n=n):
+            ombra(e2, peu[0], peu[2], 7, 10, 0.4)
+            e2.sprite(f'cua{n}', img, (20, 80), peu, escala_img=KP)
+        cv.img.alpha_composite(_sobre(cua))
 
 
 def pantalla_mosca(cv):
