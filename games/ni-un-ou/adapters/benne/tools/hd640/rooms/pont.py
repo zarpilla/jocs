@@ -33,6 +33,7 @@ from hd.rooms.exterior import fbm
 from hd.rooms.pont import BRI, FLOORB
 from hd640.rooms import pont_pla_comu as PL
 from hd640.tres_d import Camera, Escena, Llum
+from hd640.safata import OBJECTES as OBJECTES_SAFATA
 
 BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
 ZW = 300                                           # la paret dels vidres
@@ -541,7 +542,16 @@ def fosc(cv):
                     P[X, Y] = (255, 110 if abs(Y - ly) < 1 else 40, 30, 255)
 
 
-PROPS = {'dia': dia, 'safata': safata, 'guardacostes': guardacostes, 'fosc': fosc}
+def _safata_amb(item):
+    def prop(cv):
+        _, e = _base()
+        cv.img.alpha_composite(e.capa(_flat(lambda c: (PL.safata(c), PL.objecte(c, item))), {'paret_fons'}))
+        cv.P = cv.img.load()
+    return prop
+
+
+PROPS = {'dia': dia, 'safata': safata, 'guardacostes': guardacostes, 'fosc': fosc,
+         **{f'safata_{item}': _safata_amb(item) for item in OBJECTES_SAFATA}}
 
 
 # ─── Animacions ──────────────────────────────────────────────────────────────

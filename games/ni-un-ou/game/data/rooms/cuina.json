@@ -610,6 +610,69 @@
           }
         ]
       }
+    },
+    "safata_travesser": {
+      "visibleIf": {
+        "var": "munta_cuina",
+        "op": "==",
+        "value": "travesser"
+      }
+    },
+    "safata_tram": {
+      "visibleIf": {
+        "var": "munta_cuina",
+        "op": "==",
+        "value": "tram"
+      }
+    },
+    "safata_cable_nou": {
+      "visibleIf": {
+        "var": "munta_cuina",
+        "op": "==",
+        "value": "cable_nou"
+      }
+    },
+    "safata_usb": {
+      "visibleIf": {
+        "var": "munta_cuina",
+        "op": "==",
+        "value": "usb"
+      }
+    },
+    "safata_nota_iri": {
+      "visibleIf": {
+        "var": "munta_cuina",
+        "op": "==",
+        "value": "nota_iri"
+      }
+    },
+    "safata_nota_vet": {
+      "visibleIf": {
+        "var": "munta_cuina",
+        "op": "==",
+        "value": "nota_vet"
+      }
+    },
+    "safata_clau_tomas": {
+      "visibleIf": {
+        "var": "munta_cuina",
+        "op": "==",
+        "value": "clau_tomas"
+      }
+    },
+    "safata_mostra7": {
+      "visibleIf": {
+        "var": "munta_cuina",
+        "op": "==",
+        "value": "mostra7"
+      }
+    },
+    "safata_registre": {
+      "visibleIf": {
+        "var": "munta_cuina",
+        "op": "==",
+        "value": "registre"
+      }
     }
   }
 }

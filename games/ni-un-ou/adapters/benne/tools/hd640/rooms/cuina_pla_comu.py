@@ -207,28 +207,24 @@ def dumbwaiter(cv):
 
 
 def tray(cv):
-    """La safata, a la cabina del muntacàrregues, amb un paquet de paper d'estrassa lligat, i el pilot verd encès."""
+    """La safata, a la cabina del muntacàrregues (el que hi ha a sobre, a `objecte`), i el pilot verd encès."""
     cx0, cy0, cx1, cy1 = CAB_IN
     ty = cy1 - 5
     cv.poly([(cx0 + 5, ty - 4), (cx1 - 5, ty - 4), (cx1 - 2, ty), (cx0 + 2, ty)], STEEL, 5.0)
     cv.hline(cx0 + 2, cx1 - 2, ty + 1, STEEL, 3.0)
     cv.hline(cx0 + 5, cx1 - 5, ty - 5, STEEL, 6.2)
-    KRAFT = [(60, 44, 28), (110, 82, 48), (158, 126, 74), (198, 166, 102), (226, 198, 136)]
-    px0, px1 = cx0 + 11, cx1 - 13
-    box(cv, px0, ty - 15, px1, ty - 5, KRAFT, 3.0)
-    cv.hline(px0 + 1, px1 - 1, ty - 14, KRAFT, 4.2)
-    for i in range(6):                                                    # arrugues del paper
-        cv.put(px0 + 3 + int(hr(i, 51) * (px1 - px0 - 6)), ty - 12 + int(hr(i, 52) * 6), KRAFT, 1.8)
-    mid = (px0 + px1) // 2
-    cv.vline(mid, ty - 15, ty - 5, WHITEP, 3.8)
-    cv.hline(px0, px1, ty - 10, WHITEP, 3.8)
-    cv.disc(mid, ty - 16, 2, 1, WHITEP, 4.4)                              # el nus
-    cv.line(mid, ty - 16, mid + 4, ty - 19, WHITEP, 3.6)
     # el pilot: ha arribat alguna cosa
     for dx in (-1, 0, 1):
         cv.flat(142 + dx, 110, (120, 255, 150))
     cv.flat(142, 109, (200, 255, 210))
     glow(cv, 142, 110, 9, (90, 255, 120), 0.7)
+
+
+def objecte(cv, item):
+    """L'objecte que ha arribat, damunt la safata."""
+    from hd640.safata import posa
+    cx0, cy0, cx1, cy1 = CAB_IN
+    posa(cv, item, (cx0 + cx1) / 2, cy1 - 8, 32)
 
 
 def hatch(cv):

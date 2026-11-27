@@ -31,6 +31,7 @@ from hd640.rooms import rebost_pla_comu as PL
 from hd640.rooms.rebost_pla_comu import FLOOR_Y, LAMP, WOOD, BLUEP, REG
 from hd640.rooms.sala_maquines_pla_comu import ceiling
 from hd640.tres_d import Camera, Escena, Llum
+from hd640.safata import OBJECTES as OBJECTES_SAFATA
 
 BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
 CT = 27                                            # al dibuix pla, on comença la paret (a dalt, el sostre)
@@ -103,7 +104,7 @@ def _sala(cv):
     cv.disc(88, 116, 1.5, 1.5, CAB, 4.4)
 
 
-def _paret(safata=False):
+def _paret(safata=False, item=None):
     """La paret plana, de cara: la porta, el tub, el calendari i el muntacàrregues (el congelador, en 3D)."""
     cv = Canvas(light=TEX_LIGHT)
     _sala(cv)
@@ -115,6 +116,8 @@ def _paret(safata=False):
     cv.P = cv.img.load()
     if safata:
         PL.safata(cv)
+    if item:
+        PL.objecte(cv, item)
     return cv.img
 
 
@@ -351,7 +354,16 @@ def registre_obert(cv):
     cv.P = cv.img.load()
 
 
-PROPS = {'safata': safata, 'rascades': rascades, 'registre_obert': registre_obert}
+def _safata_amb(item):
+    def prop(cv):
+        _, e = _base()
+        cv.img.alpha_composite(_fotograma([e.capa(_paret(safata=True, item=item), {'paret_fons'})]))
+        cv.P = cv.img.load()
+    return prop
+
+
+PROPS = {'safata': safata, 'rascades': rascades, 'registre_obert': registre_obert,
+         **{f'safata_{item}': _safata_amb(item) for item in OBJECTES_SAFATA}}
 
 
 # ─── Animacions ─────────────────────────────────────────────────────────────

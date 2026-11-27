@@ -406,6 +406,105 @@
       },
       "zIndex": 25,
       "baseline": 999
+    },
+    {
+      "id": "safata_travesser",
+      "tag": "safata_travesser",
+      "animations": {
+        "safata_travesser": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "safata_tram",
+      "tag": "safata_tram",
+      "animations": {
+        "safata_tram": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "safata_cable_nou",
+      "tag": "safata_cable_nou",
+      "animations": {
+        "safata_cable_nou": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "safata_usb",
+      "tag": "safata_usb",
+      "animations": {
+        "safata_usb": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "safata_nota_iri",
+      "tag": "safata_nota_iri",
+      "animations": {
+        "safata_nota_iri": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "safata_nota_vet",
+      "tag": "safata_nota_vet",
+      "animations": {
+        "safata_nota_vet": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "safata_clau_tomas",
+      "tag": "safata_clau_tomas",
+      "animations": {
+        "safata_clau_tomas": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "safata_mostra7",
+      "tag": "safata_mostra7",
+      "animations": {
+        "safata_mostra7": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "safata_registre",
+      "tag": "safata_registre",
+      "animations": {
+        "safata_registre": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

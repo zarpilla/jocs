@@ -572,26 +572,20 @@ def bg(cv):
 
 
 def safata(cv):
-    """Una safata d'acer al replà del muntacàrregues, amb alguna cosa embolicada amb un drap de cuina."""
+    """Una safata d'acer al replà del muntacàrregues (el que hi ha a sobre, a `objecte`)."""
     x0, y0, x1, y1 = MUNTA
     cv.poly([(x0 + 3, y1 - 4), (x1 - 3, y1 - 4), (x1 + 1, y1), (x0 - 1, y1)], CAB, 4.4)
     cv.hline(x0 - 1, x1 + 1, y1, CAB, 2.2)
     cv.hline(x0 + 3, x1 - 3, y1 - 4, CAB, 5.4)
     for hx in (x0 + 1, x1 - 4):                                      # les nanses de la safata
         cv.hline(hx, hx + 3, y1 - 2, CAB, 1.6)
-    cx = (x0 + x1) // 2
-    for y in range(y1 - 16, y1 - 3):                                 # el drap de quadres, amb un bony a dins
-        for x in range(cx - 18, cx + 19):
-            nx, ny = (x - cx) / 18, (y - (y1 - 3)) / 13
-            if nx * nx + ny * ny <= 1:
-                chk = ((x // 4) + (y // 4)) % 2
-                cv.put(x, y, REDP if chk else WHITEP, (3.8 if chk else 4.2) - ny * 0.6 - nx * 0.8)
-    for x in range(cx - 18, cx + 19, 3):                             # el serrell
-        cv.put(x, y1 - 3, WHITEP, 3.0)
-    cv.poly([(cx + 11, y1 - 12), (cx + 21, y1 - 16), (cx + 19, y1 - 8)], WHITEP, 3.6)    # una punta del drap
-    cv.line(cx + 12, y1 - 12, cx + 19, y1 - 9, REDP, 3.0)
-    cv.poly([(x1 - 13, y1 - 5), (x1 - 4, y1 - 8), (x1 - 3, y1 - 4), (x1 - 12, y1 - 3)], WHITEP, 4.6)   # el paperet
-    cv.line(x1 - 11, y1 - 5, x1 - 6, y1 - 6, CAB, 2.0)
+
+
+def objecte(cv, item):
+    """L'objecte que ha arribat, damunt la safata."""
+    from hd640.safata import posa
+    x0, y0, x1, y1 = MUNTA
+    posa(cv, item, (x0 + x1) / 2, y1 - 2, 44)
 
 
 PROPS = {'safata': safata, 'rascades': rascades, 'registre_obert': registre_obert}

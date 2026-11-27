@@ -596,16 +596,15 @@ def bg(cv):
 # ─── Props ───────────────────────────────────────────────────────────────────
 
 def safata(cv):
-    """Una safata d'acer al replà del muntacàrregues, amb una tassa i un plat tapat."""
+    """Una safata d'acer al replà del muntacàrregues (el que hi ha a sobre, a `objecte`)."""
     cv.poly([(504, 137), (544, 137), (547, 141), (501, 141)], CAB, 4.0)
     cv.hline(501, 547, 141, CAB, 2.0)
-    cv.rect(513, 129, 521, 137, WHITEP, 3.6)
-    cv.hline(514, 520, 129, [(30, 20, 10), (70, 50, 30)], 1.0)
-    cv.vline(522, 131, 134, WHITEP, 3.0)
-    cv.vline(523, 132, 133, WHITEP, 2.4)
-    cv.disc(533, 135, 8, 3, WHITEP, lambda nx, ny: 4.0 - ny * 0.8)    # el plat, amb la campana
-    cv.disc(533, 132, 6, 4, WHITEP, lambda nx, ny: 4.4 - nx - ny)
-    cv.put(533, 128, WHITEP, 5.0)
+
+
+def objecte(cv, item):
+    """L'objecte que ha arribat, damunt la safata."""
+    from hd640.safata import posa
+    posa(cv, item, 524, 139, 34)
 
 
 def guardacostes(cv):

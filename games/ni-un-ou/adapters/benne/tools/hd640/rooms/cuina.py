@@ -33,6 +33,7 @@ from hd640.rooms import cuina_pla_comu as PL
 from hd640.rooms.cuina_pla_comu import tiles, STOVE, COUNTER_Y, FLOOR_Y, PORT
 from hd640.rooms.laboratori_pla_comu import lamp
 from hd640.tres_d import Camera, Escena, Llum
+from hd640.safata import OBJECTES as OBJECTES_SAFATA
 
 BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
 ZW = 300                                           # la paret del fons
@@ -264,7 +265,7 @@ def _sac(cv):
 
 # ─── Les textures: el dibuix pla de sempre ───────────────────────────────────
 
-def _paret(dia=False, safata=False):
+def _paret(dia=False, safata=False, item=None):
     """Les dues parets planes, de cara (sense els fogons, l'armari, el forn ni el marbre, que són en 3D)."""
     cv = Canvas(light=TEX_LIGHT)
     PL.wall(cv)
@@ -273,6 +274,8 @@ def _paret(dia=False, safata=False):
     PL.dumbwaiter(cv)
     if safata:
         PL.tray(cv)
+    if item:
+        PL.objecte(cv, item)
     PL.hatch(cv)
     PL.voice_tube(cv, 211, 101)
     _fogons_paret(cv)
@@ -597,7 +600,16 @@ def ulls_dia(cv):
     cv.P = cv.img.load()
 
 
-PROPS = {'safata': safata, 'armari_obert': armari_obert, 'ulls_dia': ulls_dia}
+def _safata_amb(item):
+    def prop(cv):
+        _, e = _base()
+        cv.img.alpha_composite(_fotograma([e.capa(_paret(safata=True, item=item), {'paret_esq'})]))
+        cv.P = cv.img.load()
+    return prop
+
+
+PROPS = {'safata': safata, 'armari_obert': armari_obert, 'ulls_dia': ulls_dia,
+         **{f'safata_{item}': _safata_amb(item) for item in OBJECTES_SAFATA}}
 
 
 # ─── Animacions ─────────────────────────────────────────────────────────────
