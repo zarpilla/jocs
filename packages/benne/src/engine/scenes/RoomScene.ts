@@ -308,7 +308,7 @@ const TALK_GAP_OF_HEIGHT = 0.45;
 /** How far toward the camera the walker stands when talking, as a fraction of that height. */
 const TALK_STEP_OF_HEIGHT = 0.06;
 /** Own change: how far apart, side to side, two figures must stand not to overlap (of the taller one's height). */
-const STAND_CLEAR_OF_HEIGHT = 0.3;
+const STAND_CLEAR_OF_HEIGHT = 0.4;
 
 /**
  * Leader overlap slack for follow snap (see {@link updateCharacterFollowers} idle-leader handling).
