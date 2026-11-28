@@ -370,7 +370,7 @@ DW, DH = 75, 38
 DIU_PAD = (24, 12)
 DIU_PEUS = (13 + DIU_PAD[0], 25 + DIU_PAD[1])     # (37, 37)
 # La caixa, a l'esquerra d'en Diu (l'Iri és a la dreta): hi salta, i en acabar en Diu queda on és la caixa.
-DIU_CAIXA_DX = -21
+DIU_CAIXA_DX = -14                                  # (tasca 284: la caixa gran hi ha de cabre, al fotograma)
 CABLES = {
     'xarxa': M((10, 30, 70), (24, 70, 150), (50, 120, 220), (110, 170, 250)),
     'alimentacio': M((8, 8, 10), (22, 22, 26), (44, 44, 50), (80, 80, 88)),
@@ -480,14 +480,54 @@ def diu_mossega(k, cable):
     return fg.render()
 
 
+# La caixa gran (tasca 284): la mateixa caixa del router que hi ha a terra de l'estudi, de cartró, oberta i en 3/4,
+# amb en Diu ficat a dins (només li surt el cap). Abans era una capseta plana més petita que el gat. Es dibuixa en dues
+# parts, al fotograma gran (DW×DH): el que va darrere del gat (la solapa del fons i l'interior) i el davant.
+CARTRO = M((40, 24, 14), (90, 60, 30), (146, 102, 58), (184, 136, 80), (216, 172, 108))
+CARTRO_FOSC = M((16, 10, 6), (34, 22, 12), (56, 38, 20), (80, 56, 32))
+CAIXA_BOCA = 20                                     # la y de la vora de davant de la boca (el que és per sota, és a dins)
+
+
+def caixa_gran(dx=0):
+    """(darrere, davant): les dues parts de la caixa gran, amb el mig a DIU_PEUS + `dx`."""
+    cx, y1 = DIU_PEUS[0] + dx, DIU_PEUS[1]
+    b, t = CAIXA_BOCA, CAIXA_BOCA - 5               # la vora de davant i la del fons de la boca
+    darrere, davant = Fig(DW, DH), Fig(DW, DH)
+    darrere.poly([(cx - 12, t), (cx + 22, t), (cx + 20, t - 8), (cx - 14, t - 8)], CARTRO, 3.0, cont=(0.2, 0.8))  # la solapa del fons, dreta
+    darrere.poly([(cx - 22, b), (cx + 12, b), (cx + 22, t), (cx - 12, t)], CARTRO_FOSC, 1.6)               # l'interior
+    davant.poly([(cx - 22, b), (cx + 12, b), (cx + 12, y1), (cx - 22, y1)], CARTRO, 2.6, cont=(0.2, 0.8))  # la cara de davant
+    davant.poly([(cx + 12, b), (cx + 22, t), (cx + 22, y1 - 5), (cx + 12, y1)], CARTRO, 1.7, cont=(0.2, 0.8))  # el costat
+    davant.poly([(cx - 22, b), (cx - 12, t), (cx - 15, t - 4), (cx - 23, b - 3)], CARTRO, 3.2, cont=(0.2, 0.8))  # la solapa de l'esquerra
+    davant.poly([(cx - 20, b + 6), (cx - 4, b + 6), (cx - 4, b + 8), (cx - 20, b + 8)], M((150, 140, 120), (200, 190, 170)), 2.0)  # la cinta
+    return darrere.render(), davant.render()
+
+
+def diu_caixa(cua=0, dorm=False, dx=0):
+    """En Diu dins la caixa gran, al fotograma gran: el cap i les orelles per sobre de la boca."""
+    gat = diu(cua=0 if dorm else cua, parpelleja=dorm)
+    darrere, davant = caixa_gran(dx)
+    alt = Image.new('RGBA', gat.size, (0, 0, 0, 0))   # assegut a dins: el cap i el coll, per sobre de la boca
+    alt.alpha_composite(gat, (0, -9))
+    if dorm:
+        alt = zzz(alt, cua)
+    out = Image.new('RGBA', darrere.size, (0, 0, 0, 0))
+    out.alpha_composite(darrere)
+    out.alpha_composite(diu_gran(alt, dx))
+    out.alpha_composite(davant)
+    return out
+
+
 def diu_salta(k):
     """Salta dins la caixa, que és a DIU_CAIXA_DX: s'aixeca, s'ajup, salta i s'hi fica de cap. k: 0-8; el
     darrer és el d'«Caixa» a la posició de la caixa (en acabar, en Diu es posa allà)."""
     dx = DIU_CAIXA_DX
-    caixa = diu_gran(caixa_sola(), dx)
+    darrere, davant = caixa_gran(dx)
+    caixa = Image.new('RGBA', darrere.size, (0, 0, 0, 0))
+    caixa.alpha_composite(darrere)
+    caixa.alpha_composite(davant)
     sentat = diu_gran(diu(cua=k % 4))
     if k == 8:
-        return diu_gran(diu_estat('caixa'), dx)
+        return diu_caixa(dx=dx)
     out = Image.new('RGBA', caixa.size, (0, 0, 0, 0))
     if k == 0:                                       # la caixa ja hi és; en Diu, assegut, la mira
         out.alpha_composite(caixa)
@@ -512,13 +552,14 @@ def diu_salta(k):
         out.alpha_composite(caixa)
         out.alpha_composite(gat)
     else:                                            # hi entra: el que és per sota de la boca de la caixa, ja és a dins
-        top = caixa.getbbox()[1] + 1
+        top = round(CAIXA_BOCA * caixa.height / DH) + 1
         P_ = gat.load()
         for yy in range(top, gat.height):
             for xx in range(gat.width):
                 P_[xx, yy] = (0, 0, 0, 0)
+        out.alpha_composite(darrere)                 # (la solapa del fons, darrere del gat; el davant, al davant)
         out.alpha_composite(gat)
-        out.alpha_composite(caixa)
+        out.alpha_composite(davant)
     return out
 
 

@@ -397,10 +397,13 @@ def gat(cid='diu'):
     for f in 'DLU':
         tags.append((f'Idle{f}', idle))
         tags.append((f'Talk{f}', talk))
-    for estat in ('caixa', 'auricular', 'pizza'):
+    # (dins la caixa, la caixa gran: la mateixa que hi ha a terra de l'estudi; tasca 284)
+    tags.append(('Caixa', [P_.diu_caixa(cua=k % 4) for k in range(4)]))
+    for estat in ('auricular', 'pizza'):
         tags.append((estat.capitalize(), [G(P_.diu_estat(estat, cua=k % 4)) for k in range(4)]))
     # Escena 2: dorm dins el que li han donat (l'auricular ja l'ha tornat)
-    for estat, tag in (('caixa', 'CaixaDorm'), ('pizza', 'PizzaDorm'), (None, 'Dorm')):
+    tags.append(('CaixaDorm', [P_.diu_caixa(cua=k, dorm=True) for k in range(4)]))
+    for estat, tag in (('pizza', 'PizzaDorm'), (None, 'Dorm')):
         tags.append((tag, [G(P_.diu_estat(estat, cua=k, dorm=True)) for k in range(4)]))
     tags.append(('WalkL', [P_.diu_camina(k) for k in range(6)]))
     for cable in P_.CABLES:
