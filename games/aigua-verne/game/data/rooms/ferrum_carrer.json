@@ -172,7 +172,13 @@
             },
             {
               "who": "narrator",
-              "text": "sala.ferrum_carrer.font.mosca.4"
+              "text": "sala.ferrum_carrer.font.mosca.4",
+              "effects": [
+                {
+                  "giveItem": "targeta_verne"
+                }
+              ],
+              "itemsNow": true
             },
             {
               "who": "player",
@@ -186,9 +192,6 @@
           "effects": [
             {
               "setFlag": "mosca_contractada"
-            },
-            {
-              "giveItem": "targeta_verne"
             }
           ]
         },
