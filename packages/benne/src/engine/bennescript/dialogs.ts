@@ -1,4 +1,8 @@
-import { dialogOptionEnabledVariableKey, readEffectiveDialogOptionEnabled } from '../dialog/dialogOptionVariables.js';
+import {
+  dialogOptionEnabledVariableKey,
+  dialogOptionTextVariableKey,
+  readEffectiveDialogOptionEnabled,
+} from '../dialog/dialogOptionVariables.js';
 import { getDialogDefinition } from '../dialog/dialogDefinitionRegistry.js';
 import { gameEvents } from '../events/EventBus.js';
 import {
@@ -182,6 +186,24 @@ export function setDialogOptionEnabled(dialogId: string, optionId: string, enabl
     devWarn(`dialogs.${dialogId}: unknown option "${optionId}".`);
   }
   manager.setVariable(dialogOptionEnabledVariableKey(dialogId, optionId), enabled);
+  const payload: DialogOptionEnabledChangedPayload = { dialogId, optionId, enabled };
+  gameEvents.emit(DIALOG_OPTION_ENABLED_CHANGED_EVENT, payload);
+}
+
+/**
+ * Own change: sets the text an option shows (or, with `null`, goes back to the one in the dialog's file). Saved.
+ */
+export function setDialogOptionText(dialogId: string, optionId: string, text: string | null): void {
+  const manager = tryGetActiveGameStateManager();
+  if (!manager) {
+    devWarn(`dialogs.${dialogId}.options: the game is not running — ignored.`);
+    return;
+  }
+  const key = dialogOptionTextVariableKey(dialogId, optionId);
+  if (text === null) manager.clearVariable(key);
+  else manager.setVariable(key, text);
+  const def = getDialogDefinition(dialogId);
+  const enabled = def ? readEffectiveDialogOptionEnabled(manager, def, optionId) : true;
   const payload: DialogOptionEnabledChangedPayload = { dialogId, optionId, enabled };
   gameEvents.emit(DIALOG_OPTION_ENABLED_CHANGED_EVENT, payload);
 }

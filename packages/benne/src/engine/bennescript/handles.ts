@@ -62,6 +62,7 @@ import {
 import {
   endDialog,
   isDialogOptionEnabled,
+  setDialogOptionText,
   registerChoiceHandler,
   registerDialogStartHandler,
   setDialogOptionEnabled,
@@ -1148,6 +1149,13 @@ export class DialogOptionHandle {
   /** True while the option is shown. */
   get enabled(): boolean {
     return isDialogOptionEnabled(this.dialogId, this.id);
+  }
+
+  /**
+   * Own change: shows `text` instead of the option's text in the dialog's file (`null` goes back to that one). Saved.
+   */
+  setText(text: string | null): void {
+    setDialogOptionText(this.dialogId, this.id, text);
   }
 
   /** Runs when the player chooses this option, after the player says its text. */
