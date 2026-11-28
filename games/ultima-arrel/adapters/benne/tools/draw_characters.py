@@ -53,6 +53,42 @@ SPRITE_FIELDS = ['walkSpeed', 'walkToPoint', 'talkPoint', 'feet', 'collider', 'a
 GRAN = 'Gran'
 AMB_GRAN = {'vet'}
 
+# El gest `Agafa` (tasca 312, com el 005 de Suma Zero): allarga el braç cap a la cosa i el torna a recollir. El fa sol
+# el runtime comú (adapters/benne/runtime) quan la protagonista agafa, fa servir o dona alguna cosa de la sala, si el
+# full el té. Quant s'estira el braç a cada fotograma (0: penjant, 1: estirat del tot).
+AMB_AGAFA = {'iri', 'vet'}
+AGAFA = (0.45, 0.85, 1.0, 1.0, 0.5)
+AGAFA_MS = 100
+
+
+def _cap(a, b, t):
+    return (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
+
+
+def agafa(t):
+    """La postura del gest `Agafa`, estirat `t`: de perfil, el braç del davant endavant, gairebé horitzontal, amb la
+    mà a l'alçada de la cintura; de cara, la mà de la dreta (de la imatge) ve endavant, davant del cos; d'esquena, el
+    braç puja endavant cap a la cosa. (Les mesures són les del disseny de 49×87, que la figura escala.)"""
+    def pose(p):
+        if p.f == 'L':
+            sx, sy = p.shoulder
+            a0, b0 = 3, 8                                   # el braç quiet (Pose._side)
+            a, bend = a0 + (62 - a0) * t, b0 + (14 - b0) * t
+            ra, rb = math.radians(a), math.radians(a + bend)
+            el = (sx - math.sin(ra) * 10.5, sy + math.cos(ra) * 10.5)
+            wr = (el[0] - math.sin(rb) * 9.5, el[1] + math.cos(rb) * 9.5)
+            p.arms[0] = ((sx, sy), el, wr)
+            return
+        sx, sy = p.sh[1]
+        if p.f == 'U':
+            p.elbow[1] = _cap(p.elbow[1], (sx + 3.0, sy + 4), t)
+            p.wrist[1] = _cap(p.wrist[1], (sx + 1.5, sy - 6), t)
+        else:
+            p.elbow[1] = _cap(p.elbow[1], (sx + 2.2, sy + 8.5), t)
+            p.wrist[1] = _cap(p.wrist[1], (sx - 3.5, sy + 12.5), t)
+    return pose
+
+
 # La respiració (Idle de quatre fotogrames): no es mou cap píxel de la silueta; només la clariana del pit puja i baixa
 # (+5 %, +10 %, +5 %). A 1×, moure el cos 1 px amunt o avall semblava arronsar les espatlles.
 RESPIRA = (0.0, 0.05, 0.10, 0.05)
@@ -67,6 +103,8 @@ def durations(tags, walk=(90, 100), talk=140, idle=IDLE_MS):
         a = {'loop': True}
         if 'Blink' in t or 'Look' in t:                 # micro-accions: un sol cop i torna a l'Idle
             a = {'loop': False, 'frameDuration': 75 if 'Blink' in t else 260}
+        elif 'Agafa' in t:                              # el gest: un sol cop (el runtime el treu en acabar)
+            a = {'loop': False, 'frameDuration': AGAFA_MS}
         elif 'Walk' in t:
             a['frameDuration'] = walk[0] if t.endswith('L') else walk[1]
         elif 'Talk' in t:
@@ -226,8 +264,9 @@ DIRS = ('L', 'D', 'U', 'DL', 'UL')
 PERSONA_FEET = (25, 83 + A.PAD)
 
 
-def person_tags(spec, dirs=DIRS, figura=A.figura, respira=A.respira, prefix=''):
-    """Les etiquetes d'una persona; amb `figura` i `respira` de hd/gran.py (i `prefix`), les de la mida gran."""
+def person_tags(spec, dirs=DIRS, figura=A.figura, respira=A.respira, prefix='', amb_agafa=False):
+    """Les etiquetes d'una persona; amb `figura` i `respira` de hd/gran.py (i `prefix`), les de la mida gran.
+    `amb_agafa`: també el gest `Agafa` (vegeu AGAFA)."""
     out = []
     for f in dirs:
         base = figura(spec, f)
@@ -243,20 +282,23 @@ def person_tags(spec, dirs=DIRS, figura=A.figura, respira=A.respira, prefix=''):
     for f in dirs:
         if f in ('D', 'DL'):
             out.append((f'Look{f}', [figura({**spec, 'mira': m}, f) for m in (-1, -1, -1, 0, 1, 1, 1, 0)]))
+    if amb_agafa:
+        for f in dirs:
+            out.append((f'Agafa{f}', [figura({**spec, 'pose': agafa(t)}, f) for t in AGAFA]))
     return [(prefix + n, imgs) for n, imgs in out]
 
 
-def gran_tags(spec):
+def gran_tags(spec, amb_agafa=False):
     """`gran(sub)` per a `write`: les mateixes etiquetes a ×1,5, amb el prefix `Gran`."""
     def make(sub):
         return person_tags(spec, figura=lambda s, f, **kw: G.figura(s, f, sub=sub, **kw),
-                           respira=lambda img, s, k: G.respira(img, s, k, sub=sub), prefix=GRAN)
+                           respira=lambda img, s, k: G.respira(img, s, k, sub=sub), prefix=GRAN, amb_agafa=amb_agafa)
     return make
 
 
 def persona(cid, spec, walk_speed, verb, walk=(90, 100)):
-    tags = person_tags(spec)
-    gran = gran_tags(spec) if cid in AMB_GRAN else None
+    tags = person_tags(spec, amb_agafa=cid in AMB_AGAFA)
+    gran = gran_tags(spec, amb_agafa=cid in AMB_AGAFA) if cid in AMB_GRAN else None
     names = tags + ([(GRAN + n, imgs) for n, imgs in tags] if gran else [])
     extra = {
         'walkSpeed': walk_speed, 'animations': durations(names, walk=walk), 'defaultVerb': verb,

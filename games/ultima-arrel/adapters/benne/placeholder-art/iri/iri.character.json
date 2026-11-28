@@ -8,41 +8,41 @@
   },
   "walkSpeed": 108,
   "walkToPoint": {
-    "x": 40,
+    "x": 42,
     "y": 67
   },
   "talkPoint": {
-    "x": 18,
+    "x": 20,
     "y": -2
   },
   "feet": {
-    "x": 18,
+    "x": 20,
     "y": 67
   },
   "collider": {
     "points": [
       {
-        "x": 11,
+        "x": 13,
         "y": 2
       },
       {
-        "x": 25,
+        "x": 27,
         "y": 2
       },
       {
-        "x": 26,
+        "x": 28,
         "y": 35
       },
       {
-        "x": 25,
+        "x": 27,
         "y": 67
       },
       {
-        "x": 11,
+        "x": 13,
         "y": 67
       },
       {
-        "x": 10,
+        "x": 12,
         "y": 35
       }
     ]
@@ -127,6 +127,26 @@
     "LookDL": {
       "loop": false,
       "frameDuration": 260
+    },
+    "AgafaL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaD": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaU": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaDL": {
+      "loop": false,
+      "frameDuration": 100
+    },
+    "AgafaUL": {
+      "loop": false,
+      "frameDuration": 100
     }
   },
   "defaultVerb": "look",

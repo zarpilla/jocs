@@ -6475,7 +6475,34 @@
                     "text": "sala.zona_mati.fi.4",
                     "if": {
                       "flag": "tele_espatlla"
-                    }
+                    },
+                    "stage": [
+                      {
+                        "who": "player",
+                        "walk": {
+                          "x": 250,
+                          "y": 246
+                        }
+                      },
+                      {
+                        "who": "iri",
+                        "face": "R"
+                      },
+                      {
+                        "who": "player",
+                        "face": "L"
+                      },
+                      {
+                        "who": "player",
+                        "gest": "Agafa"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "who": "player",
+                        "gest": null
+                      }
+                    ]
                   },
                   {
                     "who": "iri",
