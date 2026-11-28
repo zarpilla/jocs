@@ -51,6 +51,14 @@
           "additionalProperties": false,
           "description": "Sala de cinemàtica (p. ex. el pròleg): no hi ha cap protagonista, l'adaptador amaga la interfície, i l'`onEnter` es reprodueix sol fins al `goTo`. Si el jugador la salta, es va directament a `skipTo`. Si té `hotspots` (la carta de navegació d'Aigua Verne), en acabar l'`onEnter` s'hi queda i es poden tocar, sense que ningú hi camini."
         },
+        "narrador": {
+          "type": "string",
+          "enum": [
+            "esquerra",
+            "dreta"
+          ],
+          "description": "On surt la caixa del narrador en aquesta sala, si no és a dalt al mig (p. ex. `esquerra` a la presentació de L'Última Arrel, perquè no tapi la pantalla gegant mentre el text l'explica)."
+        },
         "$schema": {
           "type": "string"
         }

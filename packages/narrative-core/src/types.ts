@@ -222,6 +222,11 @@ export interface RoomDef {
    * sense que ningú hi camini.
    */
   cutscene?: { skipTo?: Id };
+  /**
+   * On surt la caixa del narrador en aquesta sala, si no és a dalt al mig (p. ex. `esquerra` a la presentació de
+   * L'Última Arrel, perquè no tapi la pantalla gegant mentre el text l'explica).
+   */
+  narrador?: 'esquerra' | 'dreta';
 }
 
 export interface DecorDef {
