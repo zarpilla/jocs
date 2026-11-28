@@ -381,6 +381,22 @@
             "push",
             "pull"
           ],
+          "if": {
+            "flag": "comporta_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.ja_oberta"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "push",
+            "pull"
+          ],
           "lines": [
             {
               "who": "player",

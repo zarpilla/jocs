@@ -914,7 +914,8 @@ def _rect_nau():
 
 def _rect_pany():
     nv = _nau()
-    return _rect_pts([nv.p(_UPANY + du, math.asin(dv / _FR)) for du in (-9, 9) for dv in (-10, 8)], 1)
+    # (tasca 335) més gran que el disc: era tan petit que, amb la Vet al costat, no hi havia manera d'apuntar-lo
+    return _rect_pts([nv.p(_UPANY + du, math.asin(dv / _FR)) for du in (-14, 14) for dv in (-14, 12)], 1)
 
 
 
@@ -933,8 +934,9 @@ GEOMETRIA = {
                                      for y in (0, _y(28))]),
                   'walk': _p(PILAR[0] + 40, PILAR[1] - 40)},
         'placa_terra': {'rect': _grate_rect(1), 'walk': _p((GRATES[1][0] + GRATES[1][1]) / 2, GRATES[1][2] - 16)},
-        'llancadora': {'rect': _rect_nau(), 'walk': _p(SHUTTLE_X - 40, 270)},
-        'pany': {'rect': _rect_pany(), 'walk': _p(SHUTTLE_X - 10, 270)},
+        # (335) a l'esquerra del pany, no davant: el tapava amb el cos
+        'llancadora': {'rect': _rect_nau(), 'walk': _p(SHUTTLE_X - 62, 270)},
+        'pany': {'rect': _rect_pany(), 'walk': _p(SHUTTLE_X - 52, 270)},
         'conducte': {'rect': _rect_mon((_w(PL.PIPE_X) - 2, _y(30), ZW), (_w(PL.PIPE_X + PL.PIPE_W) + 4, 0, ZW)),
                      'walk': _p(40, 262)},
         'escala': {'rect': _rect_mon((_w(101), _y(134), ZW), (_w(183), 0, ZW)), 'walk': _p(_w(142), 266)},

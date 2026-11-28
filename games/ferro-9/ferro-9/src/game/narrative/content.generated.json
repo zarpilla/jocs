@@ -9594,6 +9594,22 @@
                   "push",
                   "pull"
                 ],
+                "if": {
+                  "flag": "comporta_oberta"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.comporta.ja_oberta"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "open",
+                  "push",
+                  "pull"
+                ],
                 "lines": [
                   {
                     "who": "player",
@@ -20396,9 +20412,9 @@
       "finestra.enviat.tram_biga_2": "Poso el segon tram de biga dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
       "finestra.espera.iri.tram_biga_2": "Poso el segon tram de biga dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
       "finestra.rebut.tram_biga_2": "Un espetec, una llum... i apareix el segon tram de biga!",
-      "finestra.enviat.tram_biga_3": "Poso l'últim tram de biga dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
-      "finestra.espera.iri.tram_biga_3": "Poso l'últim tram de biga dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
-      "finestra.rebut.tram_biga_3": "Un espetec, una llum... i apareix l'últim tram de biga!",
+      "finestra.enviat.tram_biga_3": "Poso el tercer tram de biga dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.espera.iri.tram_biga_3": "Poso el tercer tram de biga dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.rebut.tram_biga_3": "Un espetec, una llum... i apareix el tercer tram de biga!",
       "finestra.enviat.nota_amagatall": "Poso la nota del moll dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
       "finestra.espera.iri.nota_amagatall": "Poso la nota del moll dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
       "finestra.rebut.nota_amagatall": "Un espetec, una llum... i apareix una nota de la I.!",
@@ -21319,7 +21335,7 @@
       "sala.fabrica_moll.comporta.nom": "la comporta",
       "sala.fabrica_moll.comporta.look": "La comporta del moll. S'obre amb una palanca de dos metres. Aquí, de palanques, en tenim de sobres.",
       "sala.gavina_hangar.nom": "Moll de l'hangar",
-      "sala.gavina_hangar.intro1": "Un moll de càrrega. I una comporta.",
+      "sala.gavina_hangar.intro1": "L'hangar. I la comporta de què parla la nota.",
       "sala.gavina_hangar.intro2": "Si darrere hi ha el que crec que hi ha, aquesta és la meva sortida.",
       "sala.gavina_hangar.comporta.obrir1": "Amunt... amunt... AMUNT!",
       "sala.gavina_hangar.comporta.obrir2": "La comporta puja amb un gemec de cent vint anys.",
@@ -21334,6 +21350,7 @@
       "sala.gavina_hangar.comporta.mesurar3": "La I. coneix aquesta clau. Era seva.",
       "sala.gavina_hangar.comporta.mesurada": "Sis claus i mitja. No ha canviat.",
       "sala.gavina_hangar.comporta.encallada": "No es mou ni un mil·límetre. Sense palanca, res.",
+      "sala.gavina_hangar.comporta.ja_oberta": "Ja és oberta. La biga l'aguanta amunt, encaixada sota el marc. Millor no tocar-la.",
       "sala.gavina_hangar.comporta.look": "Una comporta enorme, encallada. Té un encaix per a una palanca molt llarga, però la palanca fa anys que no hi és.",
       "sala.gavina_hangar.comporta.look_mesurar": "Si la I. m'ha de fer una palanca, li hauré de dir quina mida fa l'encaix. I mesurar-lo amb alguna cosa que ella també conegui, que aquí no hi ha cap cinta mètrica.",
       "sala.gavina_hangar.pilar.nom": "el pilar",
@@ -21349,7 +21366,7 @@
       "sala.gavina_hangar.placa.look_pilar": "La reixa del costat del pilar 7. La de la nota de la I.",
       "sala.gavina_hangar.placa.look": "Reixes de desguàs, encastades al terra. Totes iguals.",
       "sala.gavina_hangar.llancadora.nom": "la llançadora",
-      "sala.gavina_hangar.llancadora.look": "La llançadora de càrrega. Vella, coberta de pols. La porta té un pany estrany, sense forat per a cap clau.",
+      "sala.gavina_hangar.llancadora.look": "La llançadora de càrrega. Vella, coberta de pols. La porta té un pany sònic: el disc taronja del mig, sense forat per a cap clau.",
       "sala.fabrica_calderes.porta_moll.nom": "el moll de càrrega",
       "sala.gavina_passadis.porta_hangar.nom": "la porta del fons",
       "sala.gavina_passadis.cartell.agafar": "N'arrenco un tros del marge. Per darrere és blanc: paper de primera.",
@@ -21520,7 +21537,7 @@
       "sala.fabrica_calderes.sic.look": "L'Inspector Sic, plantat davant la porta de la cambra com un pilar més.",
       "sala.fabrica_calderes.porta_cambra.sic": "Ni un pas, operària.",
       "sala.fabrica.descoberta_cambra": "El Sic ja és aquí. M'acompanya a fora de la cambra, amb molta educació i cap mena de dubte.",
-      "sala.gavina_hangar.llancadora.porta_tancada": "La porta no té maneta. Només aquell pany rodó, sense forat per a cap clau.",
+      "sala.gavina_hangar.llancadora.porta_tancada": "La porta no té maneta. Només el pany sònic, el disc taronja del mig. És amb ell que m'he d'entendre.",
       "sala.gavina_hangar.pany.nom": "el pany sònic",
       "sala.gavina_hangar.pany.obert": "El pany sònic. Ara la porta està oberta.",
       "sala.gavina_hangar.pany.look": "Un pany rodó, com un ressonador. Sense forat per a cap clau.",
