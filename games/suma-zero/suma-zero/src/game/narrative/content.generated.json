@@ -226,22 +226,6 @@
             "if": {
               "all": [
                 {
-                  "flag": "escapada"
-                },
-                {
-                  "inRoom": [
-                    "bcmu_contenidor"
-                  ],
-                  "who": "vet"
-                }
-              ]
-            },
-            "name": "Lluny"
-          },
-          {
-            "if": {
-              "all": [
-                {
                   "flag": "aeroport_fet"
                 },
                 {
@@ -287,6 +271,14 @@
                 },
                 {
                   "flag": "ulleres_posades"
+                },
+                {
+                  "not": {
+                    "inRoom": [
+                      "aeroport_terminal"
+                    ],
+                    "who": "vet"
+                  }
                 }
               ]
             },
@@ -294,7 +286,19 @@
           },
           {
             "if": {
-              "flag": "aeroport_fet"
+              "all": [
+                {
+                  "flag": "aeroport_fet"
+                },
+                {
+                  "not": {
+                    "inRoom": [
+                      "aeroport_terminal"
+                    ],
+                    "who": "vet"
+                  }
+                }
+              ]
             },
             "name": "Auditora"
           },

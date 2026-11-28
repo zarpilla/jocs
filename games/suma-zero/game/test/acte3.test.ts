@@ -30,8 +30,9 @@ describe('Acte 3 · camins', () => {
     n.apply(mossegada.effects!);
     expect(n.placeOf('diu', 'final_bar')).toMatchObject({ x: 539 });
     expect(n.hotspotsIn('final_bar').find((h) => h.id === 'tele_apagada')?.visible).toBe(true);
-    // Acaba al contenidor, de lluny; al bar del final (el motor hi entra amb qui juga), sense roba.
-    expect(n.outfitOf('vet')).toBe('Lluny');
+    // Acaba al contenidor, de lluny i encara d'auditora (no es canvia enmig del carrer: tasca 233); al bar del final
+    // (el motor hi entra amb qui juga), amb la roba de casa.
+    expect(n.outfitOf('vet')).toMatch(/^LlunyAuditora/);
     world.enter('final_bar');
     expect(n.outfitOf('vet')).toBe('');
     const estat = Object.fromEntries(n.quests().map((q) => [q.id, q.status]));
