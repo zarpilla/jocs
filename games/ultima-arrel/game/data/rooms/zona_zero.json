@@ -1,6 +1,7 @@
 {
   "$schema": "../../schemas/room.schema.json",
   "name": "sala.zona_zero.nom",
+  "narrador": "esquerra",
   "protagonists": [
     "iri",
     "vet"

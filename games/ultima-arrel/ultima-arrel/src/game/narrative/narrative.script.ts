@@ -93,6 +93,7 @@ function sayLines(lines: ResolvedLine[], around: Around) {
     } else if (line.who === 'narrator') {
       // El narrador també pot tenir veu: `narrator<número>` (el motor la fa sonar des de `display`).
       const text = voiced('narrator', line.key, line.text)
+      placeNarrator()
       if (isClickableCutscene(narrative.world.currentRoom())) narrate(text)
       else display(text)
     } else if (line.who === 'player') {
@@ -135,6 +136,26 @@ function showTitleCard(text: string, negre: boolean) {
   waitForClick({ timeout: Math.max(3, 1.5 + text.length * 0.06) })
   if (negre) fadeOut(0.6)
   card.hide()
+}
+
+/** On és el text del narrador al .gui.json (a dalt al mig), per tornar-l'hi. */
+const caixaNarrador: { text?: number } = {}
+
+/**
+ * La caixa del narrador, on la vol la sala (`narrador`: a l'esquerra o a la dreta, arran de la vora; si no, a dalt al
+ * mig): a la presentació de L'Última Arrel, el text que explica la pantalla gegant no l'ha de tapar (tasca 317).
+ */
+function placeNarrator() {
+  const c = guis.displayText.controls as unknown as Record<string, { x: number; width?: number } | undefined>
+  const bg = c.displayTextBg
+  const text = c.text
+  if (!bg || !text) return
+  caixaNarrador.text ??= text.x
+  const on = narrative.content.rooms[narrative.world.currentRoom() ?? '']?.narrador
+  const lloc = AMPLADA / 2 - (bg.width ?? 364) / 2 - 4
+  const dx = on === 'esquerra' ? -lloc : on === 'dreta' ? lloc : 0
+  // (el fons segueix el text: el motor el centra a sota)
+  if (text.x !== caixaNarrador.text + dx) text.x = caixaNarrador.text + dx
 }
 
 /**
@@ -761,6 +782,7 @@ function sayEndingLine(line: EndingLine, enSala: boolean) {
   }
   if (line.who === 'narrator') {
     // Amb veu, com a la resta del joc (`narrator<número>`, que el motor fa sonar des de `display`).
+    placeNarrator()
     display(voiced('narrator', line.key, line.text))
     return
   }
