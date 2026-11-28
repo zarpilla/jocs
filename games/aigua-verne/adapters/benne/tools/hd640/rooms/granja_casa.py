@@ -591,6 +591,12 @@ WALK_MON = [(24, 154), (LLAR_D + 14, LLAR[0] - 10), (LLAR_D + 14, 268), (PICA[1]
             (XR - 16, 132), (round(_T2_DARRERE[0]) + 6, 152), (round(_T2_DARRERE[0]) - 14, 124), (300, 124)]
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
+# (tasca 294) Ni la boca de la llar de foc (a l'esquerra) ni la taula del primer pla (a la dreta) són terra: l'Iri
+# s'hi plantava a dins o damunt. El contorn de pantalla, retallat per totes dues bandes.
+_WALK = [{(92, 252): (128, 252), (136, 204): (146, 204)}.get(q, q) for q in _WALK
+         if q not in ((464, 227), (459, 242))]
+_WALK[_WALK.index((494, 235))] = (458, 198)
+_WALK.insert(_WALK.index((458, 198)) + 1, (452, 244))
 
 
 def _escala_a(v):

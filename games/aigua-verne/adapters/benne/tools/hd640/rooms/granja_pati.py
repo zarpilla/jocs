@@ -497,6 +497,10 @@ WALK_MON = ([(-640, 475)] + [(round(x), round(z)) for x, z in _C] +
 # (del graner, el camí va recte cap al port, en diagonal: abans tornava enrere fins a davant de la tanca, tasca 221)
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
+# (tasca 294) El pou, retallat del contorn del terra (abans era un forat): darrere seu quedava una franja de terra, i
+# clicant el cel per sobre del pou l'Iri hi anava a parar, dreta dins el pou entre els dos pals.
+_i = _WALK.index(_p(-496, 800))
+_WALK[_i:_i + 2] = [(304, 221), (312, 225), (329, 225), (348, 223), (363, 219), (371, 211), (376, 198)]
 
 GEOMETRIA = {
     'things': {
@@ -531,7 +535,7 @@ GEOMETRIA = {
     'floorSquash': 0.25,
     'characterShadow': {'enabled': True, 'color': '#2a1a10', 'alpha': 0.42, 'squash': 0.28, 'core': 0.6,
                         'light': {'x': -1, 'y': 0.12, 'direction': True, 'stretch': 0.7}},
-    'forats': [_cercle(POU[0], POU[1], POU_R + 8), _cercle(BOMBA[0], BOMBA[1], 20, 8), _cercle(ARBRE[0], ARBRE[1], 10, 6)],
+    'forats': [_cercle(BOMBA[0], BOMBA[1], 20, 8), _cercle(ARBRE[0], ARBRE[1], 10, 6)],
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round((_V_FONS - 2 - HOR) / CAM.pos[1], 3),
                  'scaleBottom': round((_V_PROP + 2 - HOR) / CAM.pos[1], 3),

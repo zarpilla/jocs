@@ -794,6 +794,10 @@ for u, v in _W:
     q = (min(639, max(0, round(u))), round(v))
     if not _WALK or _WALK[-1] != q:
         _WALK.append(q)
+# Les caixes de peix, retallades del contorn des de la vora del moll: el tros de darrere les caixes queda tan a prop
+# seu que l'Iri hi semblava enfilada a sobre.
+_i = _WALK.index((272, 192))
+_WALK[_i:_i + 2] = [(254, 220), (262, 232), (302, 233), (322, 226), (343, 220), (352, 206), (352, 183)]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 _SPAWN = _p(*NAU.terra(_SL, RAMPA_OUT + 22))
 _RAMPA = NAU.rampa_cantons()
@@ -810,7 +814,7 @@ GEOMETRIA = {
                                _cas(-CAS_W / 2, CAS_Y0, CAS_D / 2)),
                  'walk': _p(GRUA[0] + 30, GRUA[1] - 70)},
         'cistella': {'rect': _rect((TIP[0] - 22, CIST_Y + 4, TIP[2]), (TIP[0] + 22, CIST_Y - 52, TIP[2])),
-                     'walk': _p(TIP[0] - 10, ZE - 54)},
+                     'walk': _p(TIP[0] + 40, ZE - 54)},
         'vaixells': {'rect': _rect(_add(BARCA, ESC_D, -360), _add(_add(BARCA, ESC_D, 340), (0, 280, 0))),
                      'walk': _p(420, ZE - 54)},
         'panell_preu': {'rect': _rect(_add((PANELL[0], 70 + 24 * 1.35, PANELL[1]), (math.cos(PANELL_ANG), 0, math.sin(PANELL_ANG)), -34),
@@ -820,7 +824,7 @@ GEOMETRIA = {
     },
     'spawns': {'iri': _p(*NAU.terra(_SL - 40, RAMPA_OUT + 50)), 'vet': _p(*NAU.terra(_SL - 95, RAMPA_OUT + 40))},
     'walkable': _WALK,
-    'forats': [_cercle(GRUA[0], GRUA[1], PED_R + 22, 10), _cercle(CAIXES[0], CAIXES[1], 50, 8),
+    'forats': [_cercle(GRUA[0], GRUA[1], PED_R + 22, 10),
                _cercle(PANELL[0], PANELL[1], 22, 6), _cercle(RETOL[0], RETOL[1], 10, 6)],
     # (la càmera, a 140, mira el moll a ≈500-750 de fons: el terra es veu aixafat)
     'floorSquash': 0.25,
