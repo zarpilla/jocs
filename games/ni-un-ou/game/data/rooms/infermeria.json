@@ -172,7 +172,10 @@
           "stage": [
             {
               "who": "vet",
-              "walk": "llitera",
+              "walk": {
+                "x": 272,
+                "y": 214
+              },
               "wait": false
             }
           ]
@@ -187,11 +190,14 @@
           "stage": [
             {
               "who": "vet",
-              "walk": "llitera"
+              "walk": {
+                "x": 272,
+                "y": 214
+              }
             },
             {
               "who": "vet",
-              "face": "U"
+              "face": "R"
             }
           ]
         }
