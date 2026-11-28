@@ -387,8 +387,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 374,
-        "y": 216
+        "x": 352,
+        "y": 203
       },
       "lookAtPoint": {
         "x": 550,
@@ -455,6 +455,29 @@
           "y": 217
         }
       ]
+    },
+    {
+      "id": "sota_caixa",
+      "active": true,
+      "walkable": false,
+      "points": [
+        {
+          "x": 365,
+          "y": 196
+        },
+        {
+          "x": 409,
+          "y": 212
+        },
+        {
+          "x": 427,
+          "y": 197
+        },
+        {
+          "x": 385,
+          "y": 183
+        }
+      ]
     }
   ],
   "props": [
@@ -474,7 +497,7 @@
       "animations": {
         "caixa": {}
       },
-      "zIndex": 3,
+      "zIndex": 25,
       "visible": true,
       "alpha": 1,
       "clickable": true,
@@ -499,14 +522,15 @@
         ]
       },
       "walkToPoint": {
-        "x": 374,
-        "y": 216
+        "x": 352,
+        "y": 203
       },
       "lookAtPoint": {
         "x": 396,
         "y": 210
       },
-      "description": "la caixa"
+      "description": "la caixa",
+      "baseline": 200
     },
     {
       "id": "router_connectat",
@@ -638,7 +662,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 24,
+      "zIndex": 26,
       "baseline": 999
     },
     {
@@ -662,6 +686,18 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "davant_caixa",
+      "tag": "davant_caixa",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_caixa": {}
+      },
+      "zIndex": 24,
+      "baseline": 200
     }
   ],
   "characters": [

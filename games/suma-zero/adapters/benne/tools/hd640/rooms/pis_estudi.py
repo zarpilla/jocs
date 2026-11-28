@@ -753,6 +753,10 @@ FRONT = [
     {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
     {'id': 'davant_cadira', 'mask': _amo({'cadira'}), 'baseline': _p(CHAIR[0], CHAIR[1])[1], 'zIndex': 20},
     {'id': 'davant_pizzes', 'mask': _amo({'pizzes'}), 'baseline': _p(PIZZA[0], PIZZA[1] - 14)[1], 'zIndex': 20},
+    # la caixa del router (un decorat, no és al fons): una capa buida que només li dona la línia base, perquè qui hi
+    # passa per darrere hi quedi darrere i no sembli que s'hi enfila (tasca 285)
+    {'id': 'davant_caixa', 'mask': lambda x, y: False, 'baseline': _p(BOX[0], BOX[1] - BOX[3] / 2)[1] - 4, 'zIndex': 20,
+     'props': ('caixa',)},
 ]
 
 
@@ -802,7 +806,7 @@ GEOMETRIA = {
         'passaplats': {'rect': _rect_mon((HATCH[0], HATCH[3], ZW), (HATCH[1], HATCH[2], ZW)),
                        'walk': _p(HATCH[0] - 30, 266)},     # (al costat: davant, la taparia)
         'caixa': {'rect': _rect_mon(*[(BOX[0] + dx, y, BOX[1] + dz) for dx in (-24, 24) for dz in (-18, 18) for y in (0, BOX[4] + 14)]),
-                  'walk': _p(BOX[0] - 10, BOX[1] - 40)},
+                  'walk': (352, 203)},          # a l'esquerra de la caixa, al terra (la caixa no es trepitja: 285)
     },
     'spawns': {'iri': _p(200, 150), 'diu': _p(250, 196)},
     'walkable': _WALK,
@@ -827,6 +831,18 @@ GEOMETRIA = {
         ],
     },
 }
+
+# El terra de sota la caixa del router (tasca 285): no es trepitja mentre la caixa hi és (el runtime activa la regió
+# `sota_caixa` amb el decorat `caixa`; quan en Diu se l'endú, el terra torna a ser de tots).
+def _sota_caixa(marge=2):
+    bx, bz, bw, bd, _, ba = BOX
+    c, s_ = math.cos(ba), math.sin(ba)
+    return [_p(bx + lx * c - lz * s_, bz + lx * s_ + lz * c) for lx, lz in
+            ((-bw / 2 - marge, -bd / 2 - marge), (bw / 2 + marge, -bd / 2 - marge), (bw / 2 + marge, bd / 2 + marge),
+             (-bw / 2 - marge, bd / 2 + marge))]
+
+
+GEOMETRIA['regions'].append({'id': 'sota_caixa', 'active': True, 'walkable': False, 'points': _sota_caixa()})
 
 # Coses per mirar (tasca 012): rectangles de pantalla; s'hi va pel punt d'una cosa del costat.
 GEOMETRIA['things'].update({
