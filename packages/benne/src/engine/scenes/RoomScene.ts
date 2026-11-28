@@ -309,6 +309,11 @@ const TALK_GAP_OF_HEIGHT = 0.45;
 const TALK_STEP_OF_HEIGHT = 0.06;
 /** Own change: how far apart, side to side, two figures must stand not to overlap (of the taller one's height). */
 const STAND_CLEAR_OF_HEIGHT = 0.4;
+/**
+ * Own change: and how far apart in depth (of the taller one's height). A third was too little: one just behind the
+ * other, a bit up the floor, still had her head stacked on top of the other one's.
+ */
+const STAND_CLEAR_DEPTH_OF_HEIGHT = 0.6;
 
 /**
  * Leader overlap slack for follow snap (see {@link updateCharacterFollowers} idle-leader handling).
@@ -4165,11 +4170,14 @@ export class RoomScene extends Phaser.Scene {
       return null;
     }
     // Two figures overlap when their feet are closer than about a body width side to side, and close enough in depth
-    // that one covers the other (a third of the taller one's height).
+    // that one covers the other ({@link STAND_CLEAR_DEPTH_OF_HEIGHT}).
     const clashes = (p: Point2): boolean =>
       others.some((o) => {
         const tallest = Math.max(o.height, playerHeight);
-        return Math.abs(p.x - o.feet.x) < STAND_CLEAR_OF_HEIGHT * tallest && Math.abs(p.y - o.feet.y) < tallest / 3;
+        return (
+          Math.abs(p.x - o.feet.x) < STAND_CLEAR_OF_HEIGHT * tallest &&
+          Math.abs(p.y - o.feet.y) < STAND_CLEAR_DEPTH_OF_HEIGHT * tallest
+        );
       });
     return clashes;
   }
