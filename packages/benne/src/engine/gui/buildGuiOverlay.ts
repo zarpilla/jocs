@@ -2046,6 +2046,7 @@ function wireDisplayTextOverlayLayout(
   const authoredPadBottom = authoredPadTop;
   // (Own change) How far the panel has been moved from its authored place to sit under the text.
   let bgShiftY = 0;
+  let bgShiftX = 0;
 
   return (text: string): void => {
     syncOutlinedGuiBitmapTextAll(textLine, text);
@@ -2059,10 +2060,13 @@ function wireDisplayTextOverlayLayout(
     // (Own change) The text stays where it was authored and the panel follows it, so the box's top edge never
     // moves: with more lines it grows downwards. Before, the panel kept its centre and the text followed it, so
     // the narration box jumped up and down with the number of lines.
-    const textTop = textLine.getBounds().top;
-    const bgTop = bgRt.getBounds().top;
-    bgShiftY += textTop - authoredPadTop - bgTop;
-    bgRt.getData(BENNE_GUI_NINE_SLICE_SHIFT_Y_FN_KEY)?.(bgShiftY);
+    const tb = textLine.getBounds();
+    const bb = bgRt.getBounds();
+    bgShiftY += tb.top - authoredPadTop - bb.top;
+    // (Own change) And sideways: a script that moves the text (the narration box to one side of the room) takes the
+    // panel along, centred on it.
+    bgShiftX += tb.centerX - bb.centerX;
+    bgRt.getData(BENNE_GUI_NINE_SLICE_SHIFT_Y_FN_KEY)?.(bgShiftY, bgShiftX);
   };
 }
 

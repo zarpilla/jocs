@@ -22,8 +22,9 @@ type Rect = { x: number; y: number; w: number; h: number };
 export const BENNE_GUI_NINE_SLICE_RESIZE_FN_KEY = 'benneGuiNineSliceResizeFn';
 
 /**
- * (Own change) Registry key for a function that moves a nine-slice panel vertically by `dy` from its authored
- * place (absolute, not cumulative). The move survives later repositioning (resizes, frame updates).
+ * (Own change) Registry key for a function that moves a nine-slice panel vertically by `dy` (and, optionally,
+ * horizontally by `dx`) from its authored place (absolute, not cumulative). The move survives later repositioning
+ * (resizes, frame updates).
  */
 export const BENNE_GUI_NINE_SLICE_SHIFT_Y_FN_KEY = 'benneGuiNineSliceShiftYFn';
 
@@ -617,6 +618,7 @@ export function addGuiNineSliceImage(
 
   /** (Own change) Vertical move from the authored place ({@link BENNE_GUI_NINE_SLICE_SHIFT_Y_FN_KEY}). */
   let shiftY = 0;
+  let shiftX = 0;
   const positionPanel = (): void => {
     positionNineSlicePanel({
       go: ns,
@@ -626,7 +628,7 @@ export function addGuiNineSliceImage(
       ly,
       placementAnchorX: facadePlacementX,
       placementAnchorY: facadePlacementY,
-      bgOffX,
+      bgOffX: bgOffX + shiftX,
       bgOffY: bgOffY + shiftY,
       outW: panelW,
       outH: panelH,
@@ -677,8 +679,9 @@ export function addGuiNineSliceImage(
     positionPanel();
   };
   ns.setData(BENNE_GUI_NINE_SLICE_RESIZE_FN_KEY, applyNineSlicePanelSize);
-  ns.setData(BENNE_GUI_NINE_SLICE_SHIFT_Y_FN_KEY, (dy: number): void => {
+  ns.setData(BENNE_GUI_NINE_SLICE_SHIFT_Y_FN_KEY, (dy: number, dx = 0): void => {
     shiftY = Math.round(dy);
+    shiftX = Math.round(dx);
     positionPanel();
   });
 
