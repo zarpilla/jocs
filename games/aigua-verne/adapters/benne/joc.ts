@@ -12,9 +12,9 @@ export default {
   paquet: 'aigua-verne-benne',
   fonts: { regular: 'aiguaverne-regular', negreta: 'aiguaverne-negreta', script: 'tools/font/aiguaverne_font.py' },
   colorsVeu: {
-    iri: '#f2a65c', vet: '#7fd8e6', capitana: '#e4e4dc', tomas: '#f4c890', juana: '#a6e08a', bru: '#e0a070',
+    iri: '#f2a65c', vet: '#7fd8e6', capitana: '#e4e4dc', tomas: '#f0a0e0', juana: '#a6e08a', bru: '#f0e068',
     lia: '#c0d0f0', rosa: '#f09080', nil: '#b8e070', verne: '#ffffff', dividend: '#e0e0e0', fidel: '#a0f0f0',
-    holm: '#b0b8c8', kessel: '#d0a8f0', quim: '#e8d8a8', pell: '#c8c8c8', diu: '#e0e0e0',
+    holm: '#9cd4b4', kessel: '#d0a8f0', quim: '#e8d8a8', pell: '#e8b0d8', diu: '#e0e0e0',
   },
   veusProtagonistes: true,
   musicaSincronitzada: true,

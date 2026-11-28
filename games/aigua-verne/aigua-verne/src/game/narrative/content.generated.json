@@ -5661,7 +5661,13 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.ferrum_carrer.font.mosca.4"
+                    "text": "sala.ferrum_carrer.font.mosca.4",
+                    "effects": [
+                      {
+                        "giveItem": "targeta_verne"
+                      }
+                    ],
+                    "itemsNow": true
                   },
                   {
                     "who": "player",
@@ -5675,9 +5681,6 @@
                 "effects": [
                   {
                     "setFlag": "mosca_contractada"
-                  },
-                  {
-                    "giveItem": "targeta_verne"
                   }
                 ]
               },
@@ -10629,6 +10632,31 @@
                   "open"
                 ],
                 "if": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 1
+                    },
+                    {
+                      "flag": "caixa_oberta"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.granja_pati.cami_port.3"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "walkTo",
+                  "use",
+                  "open"
+                ],
+                "if": {
                   "var": "escena",
                   "op": "==",
                   "value": 1
@@ -10659,6 +10687,31 @@
                   {
                     "who": "player",
                     "text": "sala.granja_pati.senyal_port.mira"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "walkTo",
+                  "use",
+                  "open"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 1
+                    },
+                    {
+                      "flag": "caixa_oberta"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.granja_pati.cami_port.3"
                   }
                 ]
               },
@@ -15987,6 +16040,9 @@
               "flag": "cal_targeta"
             },
             {
+              "flag": "mosca_activa"
+            },
+            {
               "flag": "mosca_contractada",
               "is": false
             },
@@ -16023,6 +16079,9 @@
               "flag": "cal_targeta"
             },
             {
+              "flag": "mosca_activa"
+            },
+            {
               "flag": "mosca_contractada",
               "is": false
             },
@@ -16049,6 +16108,92 @@
           "pista.targeta_vet.1",
           "pista.targeta_vet.2",
           "pista.targeta_vet.3"
+        ]
+      },
+      "mosca_targeta": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "cal_targeta"
+            },
+            {
+              "flag": "mosca_activa",
+              "is": false
+            },
+            {
+              "flag": "mosca_contractada",
+              "is": false
+            },
+            {
+              "flag": "canalla_beu",
+              "is": false
+            },
+            {
+              "protagonist": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "mosca_activa"
+            },
+            {
+              "flag": "mosca_contractada"
+            },
+            {
+              "flag": "canalla_beu"
+            }
+          ]
+        },
+        "levels": [
+          "pista.mosca_targeta.1",
+          "pista.mosca_targeta.2",
+          "pista.mosca_targeta.3"
+        ]
+      },
+      "mosca_targeta_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "cal_targeta"
+            },
+            {
+              "flag": "mosca_activa",
+              "is": false
+            },
+            {
+              "flag": "mosca_contractada",
+              "is": false
+            },
+            {
+              "flag": "canalla_beu",
+              "is": false
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "mosca_activa"
+            },
+            {
+              "flag": "mosca_contractada"
+            },
+            {
+              "flag": "canalla_beu"
+            }
+          ]
+        },
+        "levels": [
+          "pista.mosca_targeta_vet.1",
+          "pista.mosca_targeta_vet.2",
+          "pista.mosca_targeta_vet.3"
         ]
       },
       "targeta2": {
@@ -19793,7 +19938,8 @@
               {
                 "id": "recorda",
                 "text": "dlg.bru.opt.recorda",
-                "next": "recorda"
+                "next": "recorda",
+                "nova": "resposta"
               },
               {
                 "id": "adeu",
@@ -20439,7 +20585,8 @@
                     }
                   ]
                 },
-                "next": "recorda"
+                "next": "recorda",
+                "nova": "resposta"
               },
               {
                 "id": "adeu",
@@ -21021,12 +21168,14 @@
               {
                 "id": "fem",
                 "text": "dlg.comunicador.opt.fem",
-                "next": "fem"
+                "next": "fem",
+                "nova": "resposta"
               },
               {
                 "id": "preu",
                 "text": "dlg.comunicador.opt.preu",
-                "next": "preu"
+                "next": "preu",
+                "nova": "resposta"
               },
               {
                 "id": "adeu",
@@ -31877,6 +32026,12 @@
       "pista.targeta_vet.1": "Símptoma: el condensador no arrenca. Causa: no és una peça, és un permís. Una targeta de treballador actiu de Verne. On en fan?",
       "pista.targeta_vet.2": "A la font de Verne hi ha una pantalla que contracta. Requisits: zero vagues, vint-i-quatre hores, zero aigua. Cap persona no els passa. Una màquina, potser.",
       "pista.targeta_vet.3": "Fes servir la Mosca amb la font: que s'hi presenti ella.",
+      "pista.mosca_targeta.1": "Qui treballa vint-i-quatre hores i no beu? Cap persona. Una màquina, potser... I la Vet en té una a mig fer.",
+      "pista.mosca_targeta.2": "Al calaix de la Vet, a la bodega de la Cantimplora, hi ha la Mosca, el seu dron. Li falta un cargol de cap de flor.",
+      "pista.mosca_targeta.3": "Que la Vet posi la punta de flor al tornavís i obri el seu calaix de la bodega: la Mosca es despertarà.",
+      "pista.mosca_targeta_vet.1": "Zero vagues, vint-i-quatre hores, zero aigua. Cap persona no ho passa. Una màquina, sí. I jo en tinc una al calaix.",
+      "pista.mosca_targeta_vet.2": "La Mosca, el meu dron, és al calaix de la bodega de la Cantimplora. Només li falta un cargol de cap de flor.",
+      "pista.mosca_targeta_vet.3": "Posa la punta de flor al tornavís i obre el calaix de la bodega amb el tornavís de flor.",
       "pista.targeta2.1": "La Mosca té feina, i targeta de treballador actiu.",
       "pista.targeta2.2": "Fes servir la targeta de la Mosca amb el condensador del carrer.",
       "pista.lot9.1": "Què tinc: un cartell que diu que la platja és de Verne. Què diu exactament? Fins on arriba, el lot 9?",
@@ -32097,6 +32252,7 @@
       "sala.granja_pati.porta_graner.1": "El graner. Hi dormen el tractor de l'avi i les llavors del pare.",
       "sala.granja_pati.cami_port.1": "El camí del port. Allà hi ha la Cantimplora, aparcada i rovellant-se.",
       "sala.granja_pati.cami_port.2": "Primer, l'escriptura. I potser entendre per què el pou està sec.",
+      "sala.granja_pati.cami_port.3": "L'escriptura ja la tinc. Però abans de vendre res, vull entendre per què el pou està sec.",
       "sala.granja_pati.pou.1": "El pou. Sec. Hi baixa un tub blanc que no és del pare: el pare no compraria mai res blanc.",
       "sala.granja_pati.pou.2": "El pou. Sec. El tub de Verne s'hi beu el que queda.",
       "sala.granja_pati.pou.3": "La galleda puja buida. Fa sis anys que puja buida.",
