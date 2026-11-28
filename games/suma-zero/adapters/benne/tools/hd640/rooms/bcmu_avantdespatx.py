@@ -524,7 +524,8 @@ def _rect_mon(*Ps):
 
 
 # El terra on es camina (al món): davant l'ascensor i el tub, entre la cadira i la taula, per davant de la taula i
-# per darrere (s'hi entra per la dreta), fins a la porta del Director.
+# fins a la porta del Director. Per darrere de la taula, no (tasca 286): per parlar amb la Pons, la Vet hi entrava
+# per la dreta i s'hi quedava, com si fos una altra secretària (la Pons, que no es mou, hi és fora del terra).
 def _z_a(x, v):
     """La z del terra que es veu a la y de pantalla `v`, a la x del món `x`."""
     lo, hi = -400.0, 400.0
@@ -536,7 +537,7 @@ def _z_a(x, v):
 
 V_PROP = 214                                       # el terra on es camina s'acaba aquí (escala ≈1,2)
 WALK_MON = [(20, 272), (122, 272), (130, 244), (194, 236), (204, 204), (400, 166), (428, 178), (432, 236),
-            (414, 250), (300, 270), (300, 292), (434, 292), (440, 266), (474, 260)]
+            (414, 250), (440, 266), (474, 260)]
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _A, _B = _WALK[-1], _p(WALK_MON[-1][0], _z_a(WALK_MON[-1][0], V_PROP))   # la vora de la paret de la dreta, fins a baix
 if _B[0] > 628:                                    # (tallada per la vora de la pantalla)

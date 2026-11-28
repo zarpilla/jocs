@@ -54,18 +54,6 @@
             "y": 130
           },
           {
-            "x": 345,
-            "y": 136
-          },
-          {
-            "x": 338,
-            "y": 130
-          },
-          {
-            "x": 428,
-            "y": 119
-          },
-          {
             "x": 443,
             "y": 124
           },
@@ -261,16 +249,16 @@
       "active": true,
       "scaleEnabled": true,
       "scaleWalkSpeed": true,
-      "scaleTop": 0.717,
+      "scaleTop": 0.731,
       "scaleBottom": 1.202,
       "points": [
         {
           "x": 0,
-          "y": 117
+          "y": 120
         },
         {
           "x": 639,
-          "y": 117
+          "y": 120
         },
         {
           "x": 639,
@@ -440,8 +428,8 @@
     {
       "instanceId": "ballester-1",
       "definition": "ballester/ballester.character.json",
-      "x": 512,
-      "y": 236,
+      "x": 180,
+      "y": 172,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
