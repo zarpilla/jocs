@@ -737,7 +737,16 @@
           "text": "dlg.bastida.rele.2",
           "if": {
             "flag": "rele_ara"
-          }
+          },
+          "stage": [
+            {
+              "fosc": true
+            },
+            {
+              "prop": "fosc",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "bastida",

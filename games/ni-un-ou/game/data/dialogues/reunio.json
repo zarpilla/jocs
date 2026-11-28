@@ -884,7 +884,12 @@
         {
           "who": "narrator",
           "text": "dlg.reunio.confessio.38",
-          "sound": "generador_para"
+          "sound": "generador_para",
+          "stage": [
+            {
+              "fosc": true
+            }
+          ]
         },
         {
           "who": "bastida",
