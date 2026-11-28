@@ -755,7 +755,7 @@
   "who": "iri"
  },
  "iri1201689597": {
-  "hash": "c9603dd379a28e9d",
+  "hash": "e0539e984e85a7e8",
   "key": "finestra.espera.iri.tram_biga_3",
   "who": "iri"
  },
@@ -1110,7 +1110,7 @@
   "who": "iri"
  },
  "iri1694454339": {
-  "hash": "216ff9f87298e1ac",
+  "hash": "7a84673f4540f487",
   "key": "obj.nota_pany.iri2",
   "who": "iri"
  },
@@ -2160,7 +2160,7 @@
   "who": "iri"
  },
  "iri3569424416": {
-  "hash": "7850462f90d71dd6",
+  "hash": "2495b7fc9db714c4",
   "key": "finestra.enviat.tram_biga_3",
   "who": "iri"
  },
@@ -2375,7 +2375,7 @@
   "who": "iri"
  },
  "iri3877043793": {
-  "hash": "493d51523f64967e",
+  "hash": "eee1aa141933aa6f",
   "key": "sala.fabrica_moll.biga_ferro9.serra",
   "who": "iri"
  },
@@ -3995,7 +3995,7 @@
   "who": "vet"
  },
  "vet1329484693": {
-  "hash": "cc9113b32b6ec725",
+  "hash": "94bb384a000bc221",
   "key": "finestra.rebut.tram_biga_3",
   "who": "vet"
  },
@@ -4330,7 +4330,7 @@
   "who": "vet"
  },
  "vet1943508268": {
-  "hash": "d294c7f7ad803c6f",
+  "hash": "d97c9cdfe71f76e1",
   "key": "sala.gavina_hangar.llancadora.porta_tancada",
   "who": "vet"
  },
@@ -4425,7 +4425,7 @@
   "who": "vet"
  },
  "vet2047010733": {
-  "hash": "6156ab275c6431eb",
+  "hash": "8ef782039a5d6eea",
   "key": "sala.gavina_hangar.intro1",
   "who": "vet"
  },
@@ -5349,6 +5349,11 @@
   "key": "finestra.rebut.imant_ferro9",
   "who": "vet"
  },
+ "vet3511906032": {
+  "hash": "c8ff71270fa0a020",
+  "key": "sala.gavina_hangar.comporta.ja_oberta",
+  "who": "vet"
+ },
  "vet3525551252": {
   "hash": "9257f7f6a1c9ca39",
   "key": "sala.gavina_arxiu.planols.vet2",
@@ -5675,7 +5680,7 @@
   "who": "vet"
  },
  "vet3913944880": {
-  "hash": "eaa55a41ff46e65e",
+  "hash": "84358de836de98e7",
   "key": "sala.gavina_hangar.llancadora.look",
   "who": "vet"
  },
