@@ -206,6 +206,10 @@
             {
               "flag": "bastida_baixa",
               "is": false
+            },
+            {
+              "flag": "nus_lico",
+              "is": false
             }
           ]
         },
@@ -242,6 +246,23 @@
         "room": "sala_maquines",
         "x": 385,
         "y": 184
+      },
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 6
+            },
+            {
+              "flag": "nus_lico"
+            }
+          ]
+        },
+        "room": "coberta_popa",
+        "x": 128,
+        "y": 218
       }
     ]
   },
