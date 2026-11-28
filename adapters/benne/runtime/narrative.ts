@@ -150,13 +150,26 @@ const isPendingTake = (who: string | undefined, item: string) => {
 
 /** Al final dels efectes d'una interacció: cada objecte tret s'aparella amb un de donat a la mateixa bossa, o surt. */
 function resolvePendingTakes() {
-  for (let i = pendingTakes.length - 1; i >= 0; i--) {
-    const t = pendingTakes[i];
-    if (t.paired) continue;
+  // Si se'n treuen dos per donar-ne un (la llimona i el cargol fan la pila), el nou va a la casella del de més a
+  // l'esquerra, i l'altre s'espera a sortir fins que el nou hi entra: si sortís ara, els de darrere pujarien una casella.
+  const slot = (t: (typeof pendingTakes)[number]) => {
+    const id = toBenne('items', t.item);
+    const i = bagOf(t.owner).items.findIndex((e) => e.item.id === id);
+    return i < 0 ? Infinity : i;
+  };
+  const unpaired = pendingTakes.filter((t) => !t.paired).sort((a, b) => slot(a) - slot(b));
+  for (const t of unpaired) {
     const g = pendingGives.find((g) => g.owner === t.owner && g.replaces === undefined);
     if (g) {
       g.replaces = t.item;
       t.paired = true;
+    }
+  }
+  for (let i = pendingTakes.length - 1; i >= 0; i--) {
+    const t = pendingTakes[i];
+    if (t.paired) continue;
+    if (pendingTakes.some((p) => p.paired && p.owner === t.owner)) {
+      t.held = true; // (surt amb els donats: `flushPendingGives`)
     } else if (!t.held) {
       // (si una línia el treu, `itemsNow`, s'hi queda fins aleshores: `applyLineItems`)
       pendingTakes.splice(i, 1);
