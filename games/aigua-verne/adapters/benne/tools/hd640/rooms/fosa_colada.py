@@ -20,7 +20,8 @@ contacte dels personatges en surten) i la claror càlida del pas. Amb el gresol 
 il·lumina la nau des de la boca del gresol: la mateixa escena il·luminada amb aquesta llum, i la diferència tenyida de
 taronja (cada cara segons com la mira), amb les ombres llargues pel terra. El motlle preparat (sempre al llit quan el
 gresol és ple) també s'encén: `gresol_ple` el porta pintat a dins, i al `.room.json` va per sobre de
-`motlle_preparat` (zIndex 5; `claus_fetes`, 5; `fum_gresol`, 6). Les capes del davant tenen la versió amb el metall
+`motlle_preparat` (zIndex 5; `claus_fetes`, 5; `fum_gresol`, 6), i per sota del repetidor del termòmetre (`termo_<t>`,
+7: si no, amb el gresol ple no es veia). Les capes del davant tenen la versió amb el metall
 fos (`variants`); la de davant del gresol no porta la boca, on bull el metall (`fum_gresol`).
 
 Decorats (PROPS): `motlle_posat` (la caixa del motlle, buida, al llit: hi queda quan ja s'han tret les claus,
@@ -854,12 +855,13 @@ def _frames_bolca():
     return out
 
 
-REP = (470.0, 178.0, ZB - 2)                        # el repetidor del termòmetre: a la paret del fons, a la dreta del pas
+REP = (950.0, 178.0, ZB - 2)                        # el repetidor del termòmetre: a la paret del fons, entre la finestra
+                                                    # i el llum (tasca 305: a la dreta del pas, el gresol hi passava pel davant)
 REP_K = 2.0                                         # (la mida del dial: unitats del món per píxel del dibuix pla)
 
 
 def _repetidor(temp):
-    """El repetidor del termòmetre del forn, a la paret del fons, a la dreta del pas (el capil·lar hi arriba del forn
+    """El repetidor del termòmetre del forn, a la paret del fons, a la dreta (el capil·lar hi arriba del forn
     resseguint la paret): l'agulla a `temp`. Una capa per grau (`termo_<t>`, de 0 a 9), perquè des d'aquí, on es mou la
     grua, es vegi com es refreda el forn. (No a la columna: la capa del davant de la columna el tapa.)"""
     def draw(e):

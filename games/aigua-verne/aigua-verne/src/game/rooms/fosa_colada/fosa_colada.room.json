@@ -560,29 +560,29 @@
       "zIndex": 5,
       "points": [
         {
-          "x": 166,
-          "y": 45
+          "x": 419,
+          "y": 47
         },
         {
-          "x": 204,
-          "y": 45
+          "x": 454,
+          "y": 47
         },
         {
-          "x": 204,
-          "y": 84
+          "x": 454,
+          "y": 81
         },
         {
-          "x": 166,
-          "y": 84
+          "x": 419,
+          "y": 81
         }
       ],
       "walkToPoint": {
-        "x": 184,
-        "y": 170
+        "x": 447,
+        "y": 159
       },
       "lookAtPoint": {
-        "x": 185,
-        "y": 84
+        "x": 436,
+        "y": 81
       }
     }
   ],
@@ -1308,7 +1308,7 @@
       "animations": {
         "termo_0": {}
       },
-      "zIndex": 4,
+      "zIndex": 7,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -1319,7 +1319,7 @@
       "animations": {
         "termo_1": {}
       },
-      "zIndex": 4,
+      "zIndex": 7,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -1330,7 +1330,7 @@
       "animations": {
         "termo_2": {}
       },
-      "zIndex": 4,
+      "zIndex": 7,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -1341,7 +1341,7 @@
       "animations": {
         "termo_3": {}
       },
-      "zIndex": 4,
+      "zIndex": 7,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -1352,7 +1352,7 @@
       "animations": {
         "termo_4": {}
       },
-      "zIndex": 4,
+      "zIndex": 7,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -1363,7 +1363,7 @@
       "animations": {
         "termo_5": {}
       },
-      "zIndex": 4,
+      "zIndex": 7,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -1374,7 +1374,7 @@
       "animations": {
         "termo_6": {}
       },
-      "zIndex": 4,
+      "zIndex": 7,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -1385,7 +1385,7 @@
       "animations": {
         "termo_7": {}
       },
-      "zIndex": 4,
+      "zIndex": 7,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -1396,7 +1396,7 @@
       "animations": {
         "termo_8": {}
       },
-      "zIndex": 4,
+      "zIndex": 7,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -1407,7 +1407,7 @@
       "animations": {
         "termo_9": {}
       },
-      "zIndex": 4,
+      "zIndex": 7,
       "visible": false,
       "alpha": 1,
       "clickable": false

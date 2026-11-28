@@ -7415,7 +7415,7 @@
                 },
                 {
                   "var": "temperatura",
-                  "op": "==",
+                  "op": ">=",
                   "value": 9
                 }
               ]
@@ -9137,7 +9137,7 @@
                 },
                 {
                   "var": "temperatura",
-                  "op": "==",
+                  "op": ">=",
                   "value": 9
                 }
               ]
@@ -9290,7 +9290,7 @@
                 },
                 {
                   "var": "temperatura",
-                  "op": "==",
+                  "op": ">=",
                   "value": 9
                 }
               ]
