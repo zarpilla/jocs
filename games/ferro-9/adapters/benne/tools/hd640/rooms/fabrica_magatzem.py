@@ -535,6 +535,10 @@ WALK_MON = [(14, 252), (14, 110), (70, 62), (200, 62), (262, 84), (330, 110), (4
             (500, 262), (406, 262), (406, 292), (246, 292), (246, 254)]
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
+# (tasca 322) Sense el passadís entre la prestatgeria i la pila de caixes (en pantalla, de la dreta de la pila a la
+# cantonada de l'esquerra): per parlar amb el Cargol, que hi és, l'Iri s'hi ficava i quedava darrere les caixes. Ara
+# el Cargol és fora del terra i el motor la posa davant de la pila, de cara a ell.
+_WALK = _WALK + [(292, 197), (192, 182), (180, 147)]
 # La pila de caixes del mig: no es trepitja, però s'hi pot fer la volta.
 _FORAT = [_p(x, z) for x, z in ((STACK[0] - 60, STACK[1] + 20), (STACK[0] + 58, STACK[1] + 22),
                                  (STACK[0] + 58, STACK[1] - 42), (STACK[0] - 60, STACK[1] - 46))]
@@ -558,7 +562,7 @@ GEOMETRIA = {
         'porta_despatx': {'rect': _rect_mon((0, _DOOR_D[3], _DOOR_D[0]), (0, _DOOR_D[2], _DOOR_D[1])), 'walk': _p(26, 230)},
         'plomall': {'rect': _rect_sprite(PLOM_PEU, PLOM_BOX, (164, 80)), 'walk': _p(30, 248)},
         'prestatges': {'rect': _rect_mon((SHELF[0], SHELF[4], SHELF[2]), (SHELF[1], 0, SHELF[2]), (SHELF[1], SHELF[4], SHELF[3])),
-                       'walk': _p(170, 244)},
+                       'walk': (300, 200)},          # (davant la pila: el passadís de darrere ja no és terra, 322)
         'caixa_eines': {'rect': _rect_mon(*[(x, y, z) for x, z in _cantons(*TOOLBOX[:4], TOOLBOX[5]) for y in (0, TOOLBOX[4] + 20)]),
                         'walk': _p(TOOLBOX[0] + 4, TOOLBOX[1] - 52)},
     },
