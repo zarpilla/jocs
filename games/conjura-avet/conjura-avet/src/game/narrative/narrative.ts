@@ -151,13 +151,26 @@ const isPendingTake = (who: string | undefined, item: string) => {
 
 /** Al final dels efectes d'una interacció: cada objecte tret s'aparella amb un de donat a la mateixa bossa, o surt. */
 function resolvePendingTakes() {
-  for (let i = pendingTakes.length - 1; i >= 0; i--) {
-    const t = pendingTakes[i];
-    if (t.paired) continue;
+  // Si se'n treuen dos per donar-ne un (la llimona i el cargol fan la pila), el nou va a la casella del de més a
+  // l'esquerra, i l'altre s'espera a sortir fins que el nou hi entra: si sortís ara, els de darrere pujarien una casella.
+  const slot = (t: (typeof pendingTakes)[number]) => {
+    const id = toBenne('items', t.item);
+    const i = bagOf(t.owner).items.findIndex((e) => e.item.id === id);
+    return i < 0 ? Infinity : i;
+  };
+  const unpaired = pendingTakes.filter((t) => !t.paired).sort((a, b) => slot(a) - slot(b));
+  for (const t of unpaired) {
     const g = pendingGives.find((g) => g.owner === t.owner && g.replaces === undefined);
     if (g) {
       g.replaces = t.item;
       t.paired = true;
+    }
+  }
+  for (let i = pendingTakes.length - 1; i >= 0; i--) {
+    const t = pendingTakes[i];
+    if (t.paired) continue;
+    if (pendingTakes.some((p) => p.paired && p.owner === t.owner)) {
+      t.held = true; // (surt amb els donats: `flushPendingGives`)
     } else if (!t.held) {
       // (si una línia el treu, `itemsNow`, s'hi queda fins aleshores: `applyLineItems`)
       pendingTakes.splice(i, 1);
@@ -522,13 +535,17 @@ export function applyAmbientSound() {
  */
 type ShadeCase = { rooms: string[]; if?: Condition; alpha: number; color?: string };
 const shades = (mapping as { fosc?: ShadeCase[] }).fosc ?? [];
+let shadeHeld = false;
+let shadeDirty = false;
 let shadeRoom: string | null = null;
 export function roomShade(room: string): { alpha: number; color: number } | null {
   const match = shades.find((c) => c.rooms.includes(room) && (!c.if || narrative.check(c.if)));
   return match ? { alpha: match.alpha, color: parseInt((match.color ?? '#000000').slice(1), 16) } : null;
 }
-export function applyRoomShade() {
+export function applyRoomShade({ force = false } = {}) {
   if (!shades.length) return;
+  // Una línia d'ara la posa al dia al seu `stage` (`fosc`); fins aleshores, la de sempre (vegeu `primeStage`).
+  if (shadeHeld && !force) return;
   const room = world.currentRoom();
   const now = room ? roomShade(room) : null;
   const seconds = room === shadeRoom ? 1.5 : 0;
@@ -836,6 +853,10 @@ export function primeStage<T extends { lines: readonly { stage?: StageCue[]; ite
     }
   }
   justHidden.clear();
+  // La foscor: si una línia la porta (`fosc`), l'estat no la toca fins que es diu.
+  if (resolved?.lines.some((l) => l.stage?.some((c) => c.fosc))) shadeHeld = true;
+  else if (shadeDirty) applyRoomShade();
+  shadeDirty = false;
   return resolved;
 }
 
@@ -848,6 +869,10 @@ const justHidden = new Set<string>();
 export function applyStageNow(cue: StageCue) {
   // Una sacsejada suau: ~2 píxels a 640 (la sala és tota la pantalla, i més es veurien les vores).
   if (cue.shake) camera.shake(0.004, cue.shake, true);
+  if (cue.fosc) {
+    shadeHeld = false;
+    applyRoomShade({ force: true });
+  }
   if (cue.prop !== undefined) {
     // Una capa del decorat (un prop de l'art, que el joc no coneix): es mostra o s'amaga i canvia d'animació.
     const room = world.currentRoom();
@@ -1012,6 +1037,7 @@ export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
   if (!keepSpeakers) {
     heldProps.clear();
     justHidden.clear();
+    shadeHeld = false;
   }
   for (const { id, visible } of narrative.hotspotsIn(room)) {
     // Un personatge amb `visibleIf` (p. ex. la Directora a la cel·la a l'Acte 3) s'amaga o es mostra sencer.
@@ -1036,8 +1062,9 @@ export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
   applyCharacterVisibility(room, keepSpeakers);
   // El so de fons també depèn de l'estat (p. ex. el generador parat).
   applyAmbientSound();
-  // I la llum.
-  applyRoomShade();
+  // I la llum: enmig d'unes línies, quan `primeStage` sàpiga si alguna la posa al dia (`fosc`).
+  if (keepSpeakers) shadeDirty = true;
+  else applyRoomShade();
 }
 
 /** Abans que parli un personatge que ha d'aparèixer però encara no es veu (vegeu `keepSpeakers`). */
