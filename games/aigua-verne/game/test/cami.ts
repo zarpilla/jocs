@@ -95,7 +95,8 @@ export function acte1(p: Jugador, n: Narrative, cami: Cami = {}) {
   expect(n.flag('capitana_accepta')).toBe(true);
   punt.f('e2');
   viatjar(p, n, 'aqua');
-  // Escena 3: Aqua
+  // Escena 3: Aqua. Ja en aterrar, sense cap acció: la pista ha de parlar de la grua (tasca 300).
+  expect(n.getVar('escena')).toBe(3);
   anar(p, n, 'aqua_port');
   p.do('look', 'grua');
   amb(p, 'vet');
