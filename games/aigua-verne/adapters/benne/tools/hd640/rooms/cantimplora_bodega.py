@@ -495,9 +495,11 @@ def diu_carmanyola(cv):
     cv.img.alpha_composite(_damunt(d))
 
 
-# La llauna d'oli (tasca 084): a terra, a l'esquerra del motor, de cara a la càmera. Vermella, amb el broc i una
-# etiqueta groga: es distingeix de l'oliva de la paret. Desapareix quan s'agafa (`oli_agafat`).
-LLAUNA = (PL.MOTOR[0] - OFF + 10, ZW - 14)          # x, z del món: davant del panell del motor
+# La llauna d'oli (tasca 084): damunt del barril, al costat del motor, de cara a la càmera (tasca 298: a terra era una
+# taqueta que tapava qui anava al motor). Vermella, amb el broc i una etiqueta groga: es distingeix de l'oliva de la
+# paret i del blau del barril. Desapareix quan s'agafa (`oli_agafat`).
+LLAUNA_Y = 67                                        # l'alçada de la tapa del barril
+LLAUNA_ESCALA = 2.0
 
 
 def _llauna_img():
@@ -528,14 +530,12 @@ def _llauna_img():
 
 
 def llauna(cv):
-    """La llauna d'oli de motor, a terra al costat del motor, amb la seva ombra."""
+    """La llauna d'oli de motor, damunt del barril del costat del motor."""
     img = _llauna_img()
     x, z = LLAUNA
 
     def d(e):
-        e.foscor('ombra_llauna', (x - 8, 0.6, z + 6), (x + 10, 0.6, z + 6), (x + 10, 0.6, z - 6), (x - 8, 0.6, z - 6),
-                 lambda s, t: 0.55 * max(0.0, 1 - ((s - 9) / 9) ** 2 - ((t - 6) / 6) ** 2))
-        e.sprite('llauna', img, (7, 17), (x, 0, z), escala_img=1.4)
+        e.sprite('llauna', img, (7, 17), (x, LLAUNA_Y, z), escala_img=LLAUNA_ESCALA)
     cv.img.alpha_composite(_damunt(d))
 
 
@@ -636,6 +636,7 @@ _DIU_UV = CAM.projecta(_DIU)
 _LX, _LZ = LADDER_Z
 _CX = (CAL[0], FRI[1])
 bx_, bz_ = BARREL
+LLAUNA = (bx_ + 4, bz_ - 10)                         # x, z del món: damunt del barril
 
 GEOMETRIA = {
     'things': {
@@ -648,8 +649,9 @@ GEOMETRIA = {
                     'walk': _p((CARGO[0] + CARGO[1]) / 2, CARGO[2] - 8)},
         'rampa': {'rect': _rect_mon((RAMP_X[0], RAMP_H, ZW), (RAMP_X[1], 0, ZW)),
                   'walk': _p((RAMP_X[0] + RAMP_X[1]) / 2, 260)},
-        'llauna': {'rect': _caixa_mon(LLAUNA[0] - 11, LLAUNA[0] + 11, 0, 28, LLAUNA[1] - 4, LLAUNA[1] + 4),
-                   'walk': _p(LLAUNA[0] + 6, LLAUNA[1] - 30)},
+        'llauna': {'rect': _caixa_mon(LLAUNA[0] - 16, LLAUNA[0] + 16, LLAUNA_Y - 2, LLAUNA_Y + 38,
+                                      LLAUNA[1] - 4, LLAUNA[1] + 4),
+                   'walk': _p(bx_, 246)},
         'barril': {'rect': _caixa_mon(bx_ - 24, bx_ + 24, 0, 74, bz_, bz_),
                    'walk': _p(bx_, 246)},
         'motor': {'rect': _rect_mon((PL.MOTOR[0] - OFF - 4, FY - PL.MOTOR[1] + 14, ZW),
@@ -702,7 +704,3 @@ GEOMETRIA = {
     },
 }
 
-# (el motor s'acaba on comença la llauna d'oli, que és a terra davant seu: si no, el clic a la llauna se'l quedava el
-# motor)
-_m = GEOMETRIA['things']['motor']['rect']
-GEOMETRIA['things']['motor']['rect'] = (_m[0], _m[1], _m[2], min(_m[3], GEOMETRIA['things']['llauna']['rect'][1] - 1))
