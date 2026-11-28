@@ -935,6 +935,9 @@
           "flag": "cal_targeta"
         },
         {
+          "flag": "mosca_activa"
+        },
+        {
           "flag": "mosca_contractada",
           "is": false
         },
@@ -971,6 +974,9 @@
           "flag": "cal_targeta"
         },
         {
+          "flag": "mosca_activa"
+        },
+        {
           "flag": "mosca_contractada",
           "is": false
         },
@@ -997,6 +1003,92 @@
       "pista.targeta_vet.1",
       "pista.targeta_vet.2",
       "pista.targeta_vet.3"
+    ]
+  },
+  "mosca_targeta": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_targeta"
+        },
+        {
+          "flag": "mosca_activa",
+          "is": false
+        },
+        {
+          "flag": "mosca_contractada",
+          "is": false
+        },
+        {
+          "flag": "canalla_beu",
+          "is": false
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "mosca_activa"
+        },
+        {
+          "flag": "mosca_contractada"
+        },
+        {
+          "flag": "canalla_beu"
+        }
+      ]
+    },
+    "levels": [
+      "pista.mosca_targeta.1",
+      "pista.mosca_targeta.2",
+      "pista.mosca_targeta.3"
+    ]
+  },
+  "mosca_targeta_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_targeta"
+        },
+        {
+          "flag": "mosca_activa",
+          "is": false
+        },
+        {
+          "flag": "mosca_contractada",
+          "is": false
+        },
+        {
+          "flag": "canalla_beu",
+          "is": false
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "mosca_activa"
+        },
+        {
+          "flag": "mosca_contractada"
+        },
+        {
+          "flag": "canalla_beu"
+        }
+      ]
+    },
+    "levels": [
+      "pista.mosca_targeta_vet.1",
+      "pista.mosca_targeta_vet.2",
+      "pista.mosca_targeta_vet.3"
     ]
   },
   "targeta2": {

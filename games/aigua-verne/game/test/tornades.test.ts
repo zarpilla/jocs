@@ -110,10 +110,14 @@ describe('Aigua Verne: tornar-hi', () => {
 describe('Aigua Verne: la lògica de Verne contra Verne', () => {
   it('cap persona no passa el formulari de la font; la Mosca, sí; i la seva targeta engega el condensador', () => {
     const { n, p } = partida();
-    n.apply([{ setVar: 'escena', value: 4 }, { setFlag: 'bru_set' }, { giveItem: 'mosca', who: 'vet' }]);
+    n.apply([{ setVar: 'escena', value: 4 }, { setFlag: 'bru_set' }]);
     amb(p, 'vet');
     p.goTo('ferrum_carrer');
     expect(textos(p.do('use', 'condensador'))).toMatch(/targeta de treballador actiu/);
+    // Sense haver despertat la Mosca, la pista porta al calaix de la Vet, no a la font.
+    expect(n.activeHints()).toContain('mosca_targeta_vet');
+    expect(n.activeHints()).not.toContain('targeta_vet');
+    n.apply([{ setFlag: 'mosca_activa' }, { giveItem: 'mosca', who: 'vet' }]);
     expect(textos(p.talk('contractacio', 'si'))).toMatch(/denegada/);
     expect(textos(p.talk('contractacio', 'no', 'h9'))).toMatch(/denegada/);
     expect(textos(p.talk('contractacio', 'no', 'h24', 'aigua_no'))).toMatch(/no li cal/);
