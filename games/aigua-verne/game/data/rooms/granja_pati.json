@@ -275,6 +275,31 @@
             "open"
           ],
           "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "flag": "caixa_oberta"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_pati.cami_port.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
             "var": "escena",
             "op": "==",
             "value": 1
@@ -305,6 +330,31 @@
             {
               "who": "player",
               "text": "sala.granja_pati.senyal_port.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "flag": "caixa_oberta"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_pati.cami_port.3"
             }
           ]
         },
