@@ -721,6 +721,9 @@ export function offstageLine(who: string, text: string): string | null {
   const file = roomFiles.find((r) => r.id === toBenne('rooms', room));
   const inRoom = (file?.characters ?? []).some((c) => c.definition.split('/')[0] === id);
   if (inRoom && handle.visible) return null;
+  // Si el joc ja diu on parla (la germana que es veu pel passaplats de Suma Zero, tasca 218), es veu: parla allà i
+  // sense el nom al davant. (La posició d'una línia d'aquí la treu `endOffstageLine` en acabar.)
+  if (handle.speechPosition) return null;
   const width = file?.size?.width ?? AMPLADA;
   const height = file?.size?.height ?? AMPLADA * 9 / 16;
   // Al mig de la pantalla; a una sala més ampla que la pantalla, la càmera segueix qui juga: al mig, més o menys, ella.
