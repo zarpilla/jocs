@@ -793,7 +793,7 @@ def _things():
     return {
         # el tauler d'eines sencer, el primer: les eines (capes, zIndex més alt) hi queden al damunt (tasca 132)
         'tauler': {'rect': _caixa_mon(_w(365), _w(443), _y(156), _y(57), ZW, ZW), 'walk': _p(_w(405), 270)},
-        'porta_calderes': {'rect': _caixa_mon(0, 2, 0, DOOR[3] + 8, DOOR[0] - 6, DOOR[1] + 6), 'walk': _p(22, 236)},
+        'porta_calderes': {'rect': _caixa_mon(0, 2, 0, DOOR[3] + 8, DOOR[0] - 6, DOOR[1] + 6), 'walk': (150, 166)},   # a l'esquerra del banc: el punt d'abans era darrere i, en entrar, el banc li tallava les cames (260)
         'biga_acer': {'rect': biga, 'walk': _p(*P(10, 0, -46)[::2])},
         # (tasca 260) es mira i s'agafa des de davant del banc: darrere seu no s'hi pot estar
         'biga_ferro9': {'rect': _caixa_mon(_w(105), _w(282), _y(116), _y(94), ZW, ZW), 'walk': _p(*P(-30, 0, -40)[::2])},
