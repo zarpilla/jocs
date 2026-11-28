@@ -2300,6 +2300,10 @@
         {
           "flag": "reunio_comencada",
           "is": false
+        },
+        {
+          "flag": "aliada_capitana",
+          "is": false
         }
       ]
     },
@@ -2310,6 +2314,36 @@
       "pista.reunio.1",
       "pista.reunio.2",
       "pista.reunio.3"
+    ]
+  },
+  "reunio_aliada": {
+    "priority": 2,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 8
+        },
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "reunio_comencada",
+          "is": false
+        },
+        {
+          "flag": "aliada_capitana"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "reunio_comencada"
+    },
+    "levels": [
+      "pista.reunio.1",
+      "pista.reunio.2",
+      "pista.reunio_aliada.3"
     ]
   },
   "imprimir": {
