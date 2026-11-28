@@ -1325,6 +1325,27 @@
     },
     "pis_estudi 63.aseprite": {
       "frame": {
+        "x": 1386,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "pis_estudi 64.aseprite": {
+      "frame": {
         "x": 640,
         "y": 0,
         "w": 640,
@@ -1455,9 +1476,16 @@
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_caixa",
         "from": 63,
         "to": 63,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 64,
+        "to": 64,
         "direction": "forward",
         "color": "#000000ff"
       }
