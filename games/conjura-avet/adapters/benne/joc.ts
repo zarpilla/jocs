@@ -16,8 +16,20 @@ export default {
   paquet: 'conjura-avet-benne',
   fonts: { regular: 'conjuraavet-regular', negreta: 'conjuraavet-negreta', script: 'tools/font/conjuraavet_font.py' },
   colorsVeu: {
-    // Els secundaris s'hi afegiran amb el guió (guio/guio.md).
     iri: '#e8a050', vet: '#8fc8e8',
+    // (tasca 337) Que no es confonguin amb l'Iri ni entre els que surten junts: en Joanet i la Gueraula (amb l'Iri al
+    // Pont Vell), en Ponç i l'Ingilberga (al judici), en Sunifred i en Gombau, l'Arnulf i en Bonfill.
+    joanet: '#70e0d0',
+    gueraula: '#ff8080',
+    ponc: '#a0b8ff',
+    ingilberga: '#ffffff',
+    gombau: '#c0a0ff',
+    bonfill: '#d8b890',
+    ramon: '#e8e070',
+    sunifred: '#ff90c8',
+    arnulf: '#90d890',
+    ermessenda: '#b8a8e0',
+    sanca: '#c8c8c8',
   },
   // Sense barra de verbs, pensat també per al mòbil (adapters/benne/tactil). L'art del HUD i del menú d'accions:
   // tools/hd640/hud.py; les sales i les GUI a l'alçada adaptable: tools/hd640/pantalla.py.
