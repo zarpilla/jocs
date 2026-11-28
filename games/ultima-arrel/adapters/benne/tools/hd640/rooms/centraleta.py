@@ -651,7 +651,8 @@ def _geometria():
     }
     for n, x in enumerate(ROOTS_X, start=1):
         b = round(base(x))
-        things[f'arrel_{n}'] = {'rect': (x - 13, 12, x + 13, b + 4), 'walk': (x + 2, b + 22)}
+        # (242) la de la dreta, des de l'esquerra: al davant hi ha l'Espora, i s'hi quedava enganxada
+        things[f'arrel_{n}'] = {'rect': (x - 13, 12, x + 13, b + 4), 'walk': (x + 2 if n < 3 else x - 34, b + 22)}
     # el terra on es camina: del fons fins a baix, sense el taulell ni el racó de l'esquerra
     fl_ = dpt(-w / 2 - 4, 0, -d / 2 - 4)
     fr_ = dpt(w / 2 + 2, 0, -d / 2 - 4)
