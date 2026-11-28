@@ -39,9 +39,12 @@ HW = FY - PL.CEIL_H                                # l'alçada de les parets: de
 XL = 150                                           # al dibuix pla, la cantonada: a l'esquerra, la paret de la porta
 XR = 640                                           # la paret de la dreta
 ZN = -260                                          # on s'acaben, cap a la càmera, el terra i les parets
-BENCH = (215, 190, 320, 48, 62, 0.06)              # el taulell: x, z del centre, ample, fons, alçada, gir
-FRIDGE = (395, 262, 104, 52, 142, -0.18)           # la nevera: x, z del centre, ample, fons, alçada, gir
-SINK = (445, 489, 266, 60)                         # el moble de la pica: x0, x1, z del davant, alçada
+PL_SINK_X0 = 595                                   # al dibuix pla, on comença la pica
+BENCH = (200, 190, 268, 48, 62, 0.06)              # el taulell (cinc calaixos): x, z del centre, ample, fons, alçada, gir
+BENCH_DX = 30                                      # el que hi ha damunt del taulell, corregut cap a l'esquerra (al pla)
+FRIDGE = (470, 262, 104, 52, 142, -0.18)           # la nevera, al racó: x, z del centre, ample, fons, alçada, gir
+SINK = (354, 398, 266, 60)                         # el moble de la pica, entre el taulell i la nevera: x0, x1, z, alçada
+SINK_DX = SINK[0] + XL - PL_SINK_X0               # la pica de la paret (l'aixeta, el paper), correguda com el moble
 LAMPS = ((150, 214), (392, 120))                   # els llums del sostre (x, z)
 
 
@@ -85,11 +88,20 @@ def _paret(dia=False, vidre=None):
     PL.lab_coat(cv)
     PL.sample_chart(cv)
     PL.shelf(cv)
-    PL.sink(cv)
+    cv.img.alpha_composite(_pica_pla(), (max(0, SINK_DX), 0), (max(0, -SINK_DX), 0))
+    cv.P = cv.img.load()
     if dia:
         day_porthole(cv, *PL.PORT)
     if vidre is not None:
         PL._glass(cv, vidre, dia)
+    return cv.img
+
+
+@functools.lru_cache(maxsize=None)
+def _pica_pla():
+    """La pica del dibuix pla (amb l'aixeta, el paper i el cartell) sobre transparent, al seu lloc del pla."""
+    cv = Canvas(light=PL.LIGHT, transparent=True)
+    PL.sink(cv)
     return cv.img
 
 
@@ -119,6 +131,19 @@ def _mobles():
     PL.jar_rack(cv)
     PL.fridge(cv)
     PL.sink(cv)
+    return cv.img
+
+
+@functools.lru_cache(maxsize=None)
+def _banc_pla():
+    """El davant del taulell, més curt que al dibuix pla (cinc calaixos en lloc de sis)."""
+    cv = Canvas(light=PL.LIGHT, transparent=True)
+    orig = PL.BENCH
+    PL.BENCH = BENCH_BOX[:1] + orig[1:2] + BENCH_BOX[2:3] + orig[3:]
+    try:
+        PL.bench(cv)
+    finally:
+        PL.BENCH = orig
     return cv.img
 
 
@@ -161,7 +186,7 @@ def _llum_pla():
     return cv.img
 
 
-BENCH_BOX = (139, 151, 459, 213)                   # el davant del taulell, al dibuix pla
+BENCH_BOX = (139, 151, 139 + BENCH[2], 213)        # el davant del taulell, al dibuix pla (_banc_pla)
 FRIDGE_BOX = PL.FRIDGE                             # la nevera
 SINK_BOX = (595, 149, 639, 209)                    # el moble de la pica
 MAG_BOX = (392, 92, 432, 149)                      # la lupa
@@ -207,7 +232,7 @@ def _bench_P(lx, y, lz):
 
 
 def _bench_fx(fx):
-    return fx - BENCH_BOX[0]
+    return fx - BENCH_BOX[0] - BENCH_DX
 
 
 def _caixa_banc(e, sid, lx0, lx1, lz0, lz1, y0, y1, ramp, lvl, cares=None):
@@ -271,7 +296,7 @@ def escena(cv, tex, estat=frozenset()):
     e.tub('canonades', (0, HW - 7, ZW - 6), (XR, HW - 7, ZW - 6), 4, REDP, 3.0, brides=120)
     # els cables pel terra: de la pica cap al taulell i un que travessa cap a la porta
     for ramp, lv, pts in (
-            (CAB, 2.4, [(440, 0.8, 290), (420, 0.8, 250), (360, 0.8, 236), (330, 0.8, 200)]),
+            (CAB, 2.4, [(SINK[0] - 5, 0.8, 290), (SINK[0] - 20, 0.8, 254), (320, 0.8, 236), (300, 0.8, 200)]),
             (YELL, 2.6, [(60, 0.8, 182), (40, 0.8, 160), (10, 0.8, 150), (6, 0.8, 120)])):
         e.cable('cables', pts, ramp, lv, gruix=2.2)
     # el moble de la pica, contra la paret del fons
@@ -299,7 +324,7 @@ def escena(cv, tex, estat=frozenset()):
                                                                       (-14, -12))],
              lambda s, t: 0.6 * min(1.0, min(s, t, bw + 28 - s, bd + 30 - t) / 14))
     e.caixa_girada('taulell', bx, bz, bw - 6, bd - 6, bh - 4, ba, SOCOL, 1.6,
-                   cares={'davant': {'tex': (mob, (BENCH_BOX[0] + 3, BENCH_BOX[1] + 4, BENCH_BOX[2] - 3, BENCH_BOX[3]))},
+                   cares={'davant': {'tex': (tex['banc'], (BENCH_BOX[0] + 3, BENCH_BOX[1] + 4, BENCH_BOX[2] - 3, BENCH_BOX[3]))},
                           'esquerra': {'ramp': CREAM, 'lvl': lambda s, t, P: 3.6 - (1.4 if t > bh - 10 else 0)
                                        - (0.8 if abs(s - (bd - 6) / 2) < 0.6 else 0)},
                           'dreta': {'ramp': CREAM, 'lvl': 2.8}})
@@ -371,8 +396,8 @@ def escena(cv, tex, estat=frozenset()):
 def _remenat(e, bh):
     """Calaixos mal tancats, papers girats per terra i pel taulell, un pot tombat i la porta de l'armari entreoberta."""
     bw = BENCH[2]
-    cw = (bw - 6) // 6
-    for i in (0, 2, 3, 5):
+    cw = (bw - 6) // 5
+    for i in (0, 2, 4):
         l0 = 3 + i * cw + 3
         out = 8 + (i % 2) * 5
         _caixa_banc(e, 'remenat', l0, l0 + cw - 6, -out, 6, bh - 22, bh - 10, CREAM, 4.0,
@@ -380,7 +405,7 @@ def _remenat(e, bh):
                            'davant': {'ramp': CREAM, 'lvl': lambda s, t, P: 4.6 + (1.4 if abs(s - (cw - 6) / 2) < 6 and 4 < t < 6 else 0)},
                            'esquerra': {'ramp': CREAM, 'lvl': 3.0}, 'dreta': {'ramp': CREAM, 'lvl': 2.6}})
     # la porta de l'armari de sota, entreoberta
-    l0 = 3 + 4 * cw + 3
+    l0 = 3 + 3 * cw + 3
     a = BENCH[5] - 0.9
     P0 = _bench_P(l0, 0, 2)
     c, s_ = math.cos(a), math.sin(a)
@@ -388,8 +413,8 @@ def _remenat(e, bh):
     e.quad('remenat', (P0[0], bh - 26, P0[2]), (P0[0] + L * c, bh - 26, P0[2] + L * s_), (P0[0] + L * c, 4, P0[2] + L * s_),
            (P0[0], 4, P0[2]), ramp=CREAM, lvl=4.4, dues_cares=True)
     # papers pel taulell i per terra, girats
-    papers = [(_bench_P(20, bh + 0.7, 18), 0.3), (_bench_P(110, bh + 0.7, 12), -0.4), (_bench_P(210, bh + 0.7, 30), 0.6),
-              (_bench_P(296, bh + 0.7, 14), -0.2),
+    papers = [(_bench_P(16, bh + 0.7, 18), 0.3), (_bench_P(92, bh + 0.7, 12), -0.4), (_bench_P(176, bh + 0.7, 30), 0.6),
+              (_bench_P(246, bh + 0.7, 14), -0.2),
               ((80, 0.7, 150), 0.5), ((150, 0.7, 128), -0.3), ((215, 0.7, 160), 0.9), ((290, 0.7, 138), 0.2),
               ((110, 0.7, 100), -0.7), ((330, 0.7, 120), 0.4)]
     for k, ((px, py, pz), ang) in enumerate(papers):
@@ -397,9 +422,9 @@ def _remenat(e, bh):
         pts = [(px + lx * c - lz * s_, py, pz + lx * s_ + lz * c) for lx, lz in ((-9, 6), (9, 6), (9, -6), (-9, -6))]
         e.quad('remenat', *pts, ramp=PAPERC, lvl=lambda s, t, P, k=k: 4.2 - (1.6 if k % 2 and int(t) % 3 == 0 and 3 < s < 15 else 0))
     # el pot tombat i el bassal verd
-    _caixa_banc(e, 'remenat', 236, 250, 20, 26, bh, bh + 6, GLASSB, 4.4)
-    e.quad('remenat', _bench_P(250, bh + 0.5, 30), _bench_P(268, bh + 0.5, 30), _bench_P(272, bh + 0.5, 14),
-           _bench_P(252, bh + 0.5, 14), ramp=[(30, 50, 40), (60, 90, 70), (100, 130, 110)], lvl=1.6)
+    _caixa_banc(e, 'remenat', 206, 220, 20, 26, bh, bh + 6, GLASSB, 4.4)
+    e.quad('remenat', _bench_P(220, bh + 0.5, 30), _bench_P(238, bh + 0.5, 30), _bench_P(242, bh + 0.5, 14),
+           _bench_P(222, bh + 0.5, 14), ramp=[(30, 50, 40), (60, 90, 70), (100, 130, 110)], lvl=1.6)
     e.quad('remenat', (300, 0.6, 140), (334, 0.6, 140), (338, 0.6, 122), (302, 0.6, 118),
            ramp=[(40, 60, 30), (70, 100, 50), (110, 140, 70), (150, 180, 100)],
            lvl=2.2, forma=lambda s, t: (s / 34 - 0.5) ** 2 + (t / 20 - 0.5) ** 2 < 0.22)
@@ -409,7 +434,7 @@ def _remenat(e, bh):
 
 @functools.lru_cache(maxsize=None)
 def _textures(dia=False):
-    return {'paret': _paret_base(dia), 'nua': _paret_nua(), 'mobles': _mobles(), 'portatil': _portatil_pla(),
+    return {'paret': _paret_base(dia), 'nua': _paret_nua(), 'mobles': _mobles(), 'portatil': _portatil_pla(), 'banc': _banc_pla(),
             'nota': _nota_pla()}
 
 
@@ -584,8 +609,9 @@ def _fridge_pts():
 
 # El terra on es camina (al món): de la porta a la pica, davant i darrere del taulell; el taulell és un forat.
 _FR = _fridge_pts()
-WALK_MON = [(12, ZW - 10), (_FR[3][0] - 8, ZW - 10), (_FR[0][0] - 10, _FR[0][1] - 8), (_FR[1][0] + 2, _FR[1][1] - 12),
-            (SINK[0] - 8, SINK[2] - 12), (XR - 40, SINK[2] - 12), (XR - 40, -100), (12, -100)]
+WALK_MON = [(12, ZW - 10), (SINK[0] - 8, ZW - 10), (SINK[0] - 8, SINK[2] - 12), (SINK[1] + 6, SINK[2] - 12),
+            (_FR[0][0] - 10, _FR[0][1] - 8), (_FR[1][0] + 2, _FR[1][1] - 12), (XR - 40, _FR[1][1] - 12), (XR - 40, -100),
+            (12, -100)]
 
 
 def _v_escala(k):
@@ -638,7 +664,7 @@ GEOMETRIA = {
         'llibre': {'rect': _rect_banc(_bfx(187), _bfx(235), 6, 36, _BH, _BH + 12), 'walk': _pb(_bfx(211), -30)},
         'portatil': {'rect': _rect_banc(_bfx(262), _bfx(320), 4, 34, _BH, _BH + 32), 'walk': _pb(_bfx(291), -30)},
         'nota': {'rect': _rect_banc(_bfx(321), _bfx(345), 2, 26, _BH, _BH + 6), 'walk': _pb(_bfx(331), -30)},
-        'taulell': {'rect': _rect_banc(0, BENCH[2], -2, -2, 0, _BH - 4), 'walk': _pb(_bfx(387), -30)},
+        'taulell': {'rect': _rect_banc(0, BENCH[2], -2, -2, 0, _BH - 4), 'walk': _pb(BENCH[2] - 40, -30)},
         'nevera': {'rect': _rect_mon(*[(x, y, z) for x, z in _FR for y in (0, FRIDGE[4])]),
                    'walk': _p(FRIDGE[0] - 30, FRIDGE[1] - 70)},
     },
