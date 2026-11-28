@@ -597,7 +597,7 @@ def _v_escala(k):
 # pantalla i per on un personatge passaria d'escala 1,2 (més a prop, el primer pla).
 WALK_MON = [(14, 284), (720, 284), (720, -100), (14, -100)]
 V_MAX = _v_escala(1.2)
-U_MIN = 60                                         # (més a l'esquerra, la columna de l'esquerra)
+U_MIN = 140                                        # (més a l'esquerra, el pilar del primer pla la tapava sencera: 288)
 U_MAX = ROOM_W - 70                                # (més a la dreta, la columna del primer pla la taparia sencera)
 _WALK = [_p(x, z) for x, z in WALK_MON]
 for _a, _b, _c in ((1, 0, -U_MIN), (-1, 0, U_MAX), (0, -1, V_MAX)):
