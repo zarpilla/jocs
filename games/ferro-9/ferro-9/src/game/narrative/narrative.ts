@@ -5,7 +5,7 @@
  * Aquest fitxer es copia a `src/game/narrative/` del projecte Benne amb
  * `npm run benne:sync`. No l'editis allà: edita `adapters/benne/runtime/`.
  */
-import { HotspotHandle, PropHandle, ambient, camera, defineVars, events, game, inventory, player, setOutfit, shade, type FallbackTarget, type VarValue } from '@benne/script';
+import { HotspotHandle, PropHandle, RegionHandle, ambient, camera, defineVars, events, game, inventory, player, setOutfit, shade, type FallbackTarget, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
 import { Narrative, type StageCue, type Condition, type Effect, type GameContent, type InteractionResult, type InteractionTarget, type LineItem, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
@@ -597,7 +597,7 @@ export function targetFromBenne(kind: 'prop' | 'hotspot' | 'character' | 'item',
 
 type Point = { x: number; y: number };
 type RoomThing = { id: string; lookAtPoint?: Point; walkToPoint?: Point; points?: Point[]; collider?: { points: Point[] } };
-type RoomFile = { id: string; size?: { width: number; height: number }; hotspots: RoomThing[]; props: RoomThing[]; characters?: { definition: string }[] };
+type RoomFile = { id: string; size?: { width: number; height: number }; hotspots: RoomThing[]; props: RoomThing[]; characters?: { definition: string }[]; regions?: { id: string }[] };
 const roomFiles = Object.values(import.meta.glob<RoomFile>('../rooms/*/*.room.json', { eager: true, import: 'default' }));
 
 const centre = (pts: Point[]) => ({ x: pts.reduce((a, p) => a + p.x, 0) / pts.length, y: pts.reduce((a, p) => a + p.y, 0) / pts.length });
@@ -721,6 +721,9 @@ export function offstageLine(who: string, text: string): string | null {
   const file = roomFiles.find((r) => r.id === toBenne('rooms', room));
   const inRoom = (file?.characters ?? []).some((c) => c.definition.split('/')[0] === id);
   if (inRoom && handle.visible) return null;
+  // Si el joc ja diu on parla (la germana que es veu pel passaplats de Suma Zero, tasca 218), es veu: parla allà i
+  // sense el nom al davant. (La posició d'una línia d'aquí la treu `endOffstageLine` en acabar.)
+  if (handle.speechPosition) return null;
   const width = file?.size?.width ?? AMPLADA;
   const height = file?.size?.height ?? AMPLADA * 9 / 16;
   // Al mig de la pantalla; a una sala més ampla que la pantalla, la càmera segueix qui juga: al mig, més o menys, ella.
@@ -745,6 +748,13 @@ function linkedLayers(room: string, id: string): PropHandle[] {
   const file = roomFiles.find((r) => r.id === toBenne('rooms', room));
   const prefix = `${toBenne('hotspots', id)}__`;
   return (file?.props ?? []).filter((p) => p.id.startsWith(prefix)).map((p) => new PropHandle(toBenne('rooms', room), p.id));
+}
+
+/** La regió `sota_<id>` d'una sala (el terra que un decorat ocupa i no es trepitja), si la sala la té. */
+function blockingRegion(room: string, id: string): RegionHandle | undefined {
+  const file = roomFiles.find((r) => r.id === toBenne('rooms', room));
+  const regio = `sota_${toBenne('hotspots', id)}`;
+  return file?.regions?.some((r) => r.id === regio) ? new RegionHandle(toBenne('rooms', room), regio) : undefined;
 }
 
 /** La capa `id` del decorat d'una sala (un prop de l'art, p. ex. el títol de la portada), si la sala la té. */
@@ -1018,6 +1028,10 @@ export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
     // Les capes de l'art que l'acompanyen (`<id>__<capa>`): la versió d'una capa del davant amb aquell decorat (p. ex.
     // el timó de dia, `dia__davant_timo`). La capa del davant és un retall del fons i, si no, el taparia.
     for (const layer of linkedLayers(room, id)) layer.visible = visible;
+    // El terra de sota (`sota_<id>`, una regió que no es trepitja): només mentre el decorat hi és (p. ex. la caixa del
+    // router a terra de l'estudi de Suma Zero, que se l'endú en Diu; tasca 285).
+    const sota = blockingRegion(room, id);
+    if (sota && sota.active !== visible) sota.active = visible;
   }
   applyCharacterVisibility(room, keepSpeakers);
   // El so de fons també depèn de l'estat (p. ex. el generador parat).
