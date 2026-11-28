@@ -268,7 +268,9 @@ export function validateContent(
         seen.add(c.id);
         text(cw, c.text);
         cond(`${cw}.if`, c.if);
-        cond(`${cw}.nova`, c.nova);
+        if (c.nova === 'resposta') {
+          if (!c.next) err(`${cw}.nova`, `"nova": "resposta" necessita "next".`);
+        } else cond(`${cw}.nova`, c.nova);
         effects(`${cw}.effects`, c.effects);
         if (c.next && !d.nodes[c.next]) err(`${cw}.next`, `Node "${c.next}" no existeix.`);
       });

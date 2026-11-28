@@ -540,6 +540,10 @@
             "$ref": "#/definitions/StageCue"
           },
           "description": "Moviment en acabar de dir la línia (p. ex. qui diu «me'n vaig» i després marxa), com `stage`."
+        },
+        "itemsNow": {
+          "type": "boolean",
+          "description": "Els objectes que donen o treuen els `effects` d'aquesta línia (`giveItem`, `takeItem`) entren o surten de l'inventari quan es diu la línia (després del seu `stage`), no en acabar-les totes (p. ex. «La Urtica agafa el pot»). Per a l'estat, com sempre: tots els efectes s'apliquen abans de les línies."
         }
       },
       "required": [

@@ -127,6 +127,25 @@ describe('diàlegs i memòria', () => {
     n.choose('pescador', 'adeu');
     expect(nova(n.startDialogue('pescador').choices)).toBe(false);
   });
+
+  it('una opció amb "nova": "resposta" és nova mentre el node digui alguna línia que encara no s\'ha sentit', () => {
+    const c = structuredClone(content);
+    c.dialogues.pescador!.nodes.menu!.choices!.push({ id: 'fem', text: 'p.opt.fem', next: 'fem', nova: 'resposta' });
+    c.dialogues.pescador!.nodes.fem = {
+      lines: [
+        { who: 'pescador', text: 'p.fem.1', if: { flag: 'far_ences', is: false } },
+        { who: 'pescador', text: 'p.fem.2', if: { flag: 'far_ences' } },
+      ],
+      goto: 'menu',
+    };
+    const { n } = setup(c);
+    const nova = (choices: { id: string; nova?: boolean }[]) => choices.find((x) => x.id === 'fem')?.nova ?? false;
+    expect(nova(n.startDialogue('pescador').choices)).toBe(true);
+    expect(nova(n.choose('pescador', 'fem').choices)).toBe(false);
+    n.apply([{ setFlag: 'far_ences' }]);
+    expect(nova(n.startDialogue('pescador').choices)).toBe(true);
+    expect(nova(n.choose('pescador', 'fem').choices)).toBe(false);
+  });
 });
 
 describe('missions, objectes condicionals, pistes i finals', () => {

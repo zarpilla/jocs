@@ -3,7 +3,7 @@ import { DialogueSessions, type DialogueStep, type LineItem, type ResolvedChoice
 import { applyEffects, finishQuest, type EffectContext } from './effects.js';
 import { Localizer, type TextParams } from './i18n.js';
 import type { NarrativeEvent, NarrativeListener, WorldPort } from './ports.js';
-import { chosenKey, createInitialState, migrateState, novaKey, seenKey, type NarrativeState } from './state.js';
+import { chosenKey, createInitialState, heardKey, migrateState, novaKey, seenKey, type NarrativeState } from './state.js';
 import type {
   Condition,
   DialogueChoiceDef,
@@ -308,7 +308,7 @@ export class Narrative {
       const key = chosenKey(dialogueId, node, choiceId);
       this._state.dialogue.chosen[key] = (this._state.dialogue.chosen[key] ?? 0) + 1;
       // Triada amb la novetat (`nova`): a partir d'ara ja és una opció dita.
-      if (choice.nova && this.check(choice.nova)) this._state.dialogue.chosen[novaKey(key)] = 1;
+      if (choice.nova && choice.nova !== 'resposta' && this.check(choice.nova)) this._state.dialogue.chosen[novaKey(key)] = 1;
       const lines: ResolvedLine[] = choice.silent
         ? []
         : [{ who: 'player', key: choice.text, text: this.t(choice.text) }];
@@ -720,6 +720,7 @@ export class Narrative {
     for (const line of node.lines ?? []) {
       if (!this.check(line.if)) continue;
       applyEffects(line.effects, this.effectCtx());
+      this._state.dialogue.seen[heardKey(def.id, nodeId, line.text)] = 1;
       lines.push({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound && { sound: this.soundName(line.sound) }), ...(line.stage && { stage: line.stage }), ...(line.stageAfter && { stageAfter: line.stageAfter }), ...lineItems(line) });
     }
 
@@ -749,9 +750,17 @@ export class Narrative {
       .filter((c) => this.isChoiceAvailable(def.id, nodeId, c))
       .map((c) => {
         const choice: ResolvedChoice = { id: c.id, node: nodeId, key: c.text, text: this.t(c.text) };
-        if (c.nova && !this._state.dialogue.chosen[novaKey(chosenKey(def.id, nodeId, c.id))] && this.check(c.nova)) choice.nova = true;
+        if (c.nova === 'resposta') {
+          if (c.next && this.hasUnheardLine(def, c.next)) choice.nova = true;
+        } else if (c.nova && !this._state.dialogue.chosen[novaKey(chosenKey(def.id, nodeId, c.id))] && this.check(c.nova)) choice.nova = true;
         return choice;
       });
+  }
+
+  /** El node diria ara alguna línia que encara no s'ha sentit mai (sense comptar les dels `goto`). */
+  private hasUnheardLine(def: DialogueDef, nodeId: Id): boolean {
+    const lines = def.nodes[nodeId]?.lines ?? [];
+    return lines.some((l) => this.check(l.if) && !this._state.dialogue.seen[heardKey(def.id, nodeId, l.text)]);
   }
 
   private isChoiceAvailable(dialogue: Id, node: Id, c: DialogueChoiceDef) {

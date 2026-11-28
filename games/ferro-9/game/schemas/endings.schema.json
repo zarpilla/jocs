@@ -82,6 +82,10 @@
           },
           "description": "Moviment en acabar de dir la línia (p. ex. qui diu «me'n vaig» i després marxa), com `stage`."
         },
+        "itemsNow": {
+          "type": "boolean",
+          "description": "Els objectes que donen o treuen els `effects` d'aquesta línia (`giveItem`, `takeItem`) entren o surten de l'inventari quan es diu la línia (després del seu `stage`), no en acabar-les totes (p. ex. «La Urtica agafa el pot»). Per a l'estat, com sempre: tots els efectes s'apliquen abans de les línies."
+        },
         "room": {
           "$ref": "#/definitions/Id",
           "description": "Sala de fons (una `cutscene` sense `onEnter`) des d'aquesta línia: com al pròleg, el text surt damunt la imatge. Sense cap `room`, el final es llegeix sobre negre."

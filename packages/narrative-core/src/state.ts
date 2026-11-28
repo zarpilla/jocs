@@ -86,3 +86,5 @@ export const seenKey = (dialogue: Id, node: Id) => `${dialogue}/${node}`;
 export const chosenKey = (dialogue: Id, node: Id, choice: Id) => `${dialogue}/${node}/${choice}`;
 /** Una opció amb `nova` triada mentre la condició es complia (vegeu `DialogueChoiceDef.nova`). */
 export const novaKey = (chosen: string) => `${chosen}!nova`;
+/** Una línia d'un node que ja s'ha dit (es desa a `dialogue.seen`; vegeu `nova: "resposta"`). */
+export const heardKey = (dialogue: Id, node: Id, text: string) => `${dialogue}/${node}#${text}`;

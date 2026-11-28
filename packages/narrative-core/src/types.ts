@@ -332,8 +332,10 @@ export interface DialogueChoiceDef {
   /**
    * L'opció té una resposta nova mentre es compleixi aquesta condició (p. ex. ara que es porta el formulari segellat):
    * encara que ja s'hagi triat abans, no surt com a ja dita fins que es torni a triar amb la condició complerta.
+   * Amb `"resposta"`, és nova sempre que el node `next` diria ara alguna línia que encara no s'ha sentit (per a
+   * opcions com «Què hem de fer, ara?», que responen una cosa diferent a cada pas).
    */
-  nova?: Condition;
+  nova?: Condition | 'resposta';
   effects?: Effect[];
   /** Node següent. Sense `next`, es torna al mateix node. */
   next?: Id;
