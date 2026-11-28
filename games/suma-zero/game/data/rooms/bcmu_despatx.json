@@ -370,6 +370,29 @@
         }
       ]
     },
+    "retrat": {
+      "name": "sala.bcmu_despatx.retrat.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.retrat.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.retrat.agafa"
+            }
+          ]
+        }
+      ]
+    },
     "bol": {
       "name": "sala.bcmu_despatx.bol.nom",
       "interactions": [

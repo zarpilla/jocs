@@ -558,6 +558,9 @@ GEOMETRIA = {
                   'walk': _p(*_DP(-26, 0, -DESK[3] / 2 - 26)[::2])},
         'bol': {'rect': _rect_mon(*[(BOWL[0] + dx, y, BOWL[1] + dz) for dx in (-16, 16) for dz in (-8, 8) for y in (0, 12)]),
                 'walk': _p(BOWL[0] - 10, BOWL[1] - 18)},
+        # el retrat a l'oli d'en Rockefeller, a la paret de la dreta, sobre el bol (tasca 290): és el primer que es
+        # clica buscant el gos (rectangle de pantalla)
+        'retrat': {'rect': (478, 24, 524, 92), 'walk': _p(BOWL[0] - 10, BOWL[1] - 18)},
     },
     'spawns': {'vet': _p(150, 170), 'bonfill': _p(156, 262), 'ballester': _p(40, 150)},
     'walkable': _WALK,

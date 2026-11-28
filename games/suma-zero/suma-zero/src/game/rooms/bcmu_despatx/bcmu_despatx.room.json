@@ -255,6 +255,38 @@
         "x": 257,
         "y": 96
       }
+    },
+    {
+      "id": "retrat",
+      "active": true,
+      "description": "el retrat del gos",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 478,
+          "y": 24
+        },
+        {
+          "x": 524,
+          "y": 24
+        },
+        {
+          "x": 524,
+          "y": 92
+        },
+        {
+          "x": 478,
+          "y": 92
+        }
+      ],
+      "walkToPoint": {
+        "x": 487,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 501,
+        "y": 92
+      }
     }
   ],
   "points": [],
@@ -332,7 +364,7 @@
       "animations": {
         "davant_taula": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 177
     },
     {
@@ -344,7 +376,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 999
     }
   ],
