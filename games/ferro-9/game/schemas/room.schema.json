@@ -912,6 +912,10 @@
         "fade": {
           "type": "number",
           "description": "Amb `prop` i `visible: true`: la capa apareix fosa, de transparent a opaca en aquests segons (p. ex. l'aigua de la resclosa que baixa). No s'espera: amb `hold`, sí."
+        },
+        "fosc": {
+          "type": "boolean",
+          "description": "La foscor de la sala (`fosc` al mapping de Benne) es posa al dia en aquesta línia, i no abans: els efectes s'apliquen abans de dir les línies, i sense això el generador s'aturaria (o tornaria la llum) a la primera."
         }
       },
       "additionalProperties": false,

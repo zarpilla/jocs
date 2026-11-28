@@ -534,13 +534,17 @@ export function applyAmbientSound() {
  */
 type ShadeCase = { rooms: string[]; if?: Condition; alpha: number; color?: string };
 const shades = (mapping as { fosc?: ShadeCase[] }).fosc ?? [];
+let shadeHeld = false;
+let shadeDirty = false;
 let shadeRoom: string | null = null;
 export function roomShade(room: string): { alpha: number; color: number } | null {
   const match = shades.find((c) => c.rooms.includes(room) && (!c.if || narrative.check(c.if)));
   return match ? { alpha: match.alpha, color: parseInt((match.color ?? '#000000').slice(1), 16) } : null;
 }
-export function applyRoomShade() {
+export function applyRoomShade({ force = false } = {}) {
   if (!shades.length) return;
+  // Una línia d'ara la posa al dia al seu `stage` (`fosc`); fins aleshores, la de sempre (vegeu `primeStage`).
+  if (shadeHeld && !force) return;
   const room = world.currentRoom();
   const now = room ? roomShade(room) : null;
   const seconds = room === shadeRoom ? 1.5 : 0;
@@ -848,6 +852,10 @@ export function primeStage<T extends { lines: readonly { stage?: StageCue[]; ite
     }
   }
   justHidden.clear();
+  // La foscor: si una línia la porta (`fosc`), l'estat no la toca fins que es diu.
+  if (resolved?.lines.some((l) => l.stage?.some((c) => c.fosc))) shadeHeld = true;
+  else if (shadeDirty) applyRoomShade();
+  shadeDirty = false;
   return resolved;
 }
 
@@ -860,6 +868,10 @@ const justHidden = new Set<string>();
 export function applyStageNow(cue: StageCue) {
   // Una sacsejada suau: ~2 píxels a 640 (la sala és tota la pantalla, i més es veurien les vores).
   if (cue.shake) camera.shake(0.004, cue.shake, true);
+  if (cue.fosc) {
+    shadeHeld = false;
+    applyRoomShade({ force: true });
+  }
   if (cue.prop !== undefined) {
     // Una capa del decorat (un prop de l'art, que el joc no coneix): es mostra o s'amaga i canvia d'animació.
     const room = world.currentRoom();
@@ -1024,6 +1036,7 @@ export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
   if (!keepSpeakers) {
     heldProps.clear();
     justHidden.clear();
+    shadeHeld = false;
   }
   for (const { id, visible } of narrative.hotspotsIn(room)) {
     // Un personatge amb `visibleIf` (p. ex. la Directora a la cel·la a l'Acte 3) s'amaga o es mostra sencer.
@@ -1048,8 +1061,9 @@ export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
   applyCharacterVisibility(room, keepSpeakers);
   // El so de fons també depèn de l'estat (p. ex. el generador parat).
   applyAmbientSound();
-  // I la llum.
-  applyRoomShade();
+  // I la llum: enmig d'unes línies, quan `primeStage` sàpiga si alguna la posa al dia (`fosc`).
+  if (keepSpeakers) shadeDirty = true;
+  else applyRoomShade();
 }
 
 /** Abans que parli un personatge que ha d'aparèixer però encara no es veu (vegeu `keepSpeakers`). */

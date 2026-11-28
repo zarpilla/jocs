@@ -315,6 +315,11 @@ export interface StageCue {
    * resclosa que baixa). No s'espera: amb `hold`, sí.
    */
   fade?: number;
+  /**
+   * La foscor de la sala (`fosc` al mapping de Benne) es posa al dia en aquesta línia, i no abans: els efectes
+   * s'apliquen abans de dir les línies, i sense això el generador s'aturaria (o tornaria la llum) a la primera.
+   */
+  fosc?: boolean;
 }
 
 export interface StagePoint {
