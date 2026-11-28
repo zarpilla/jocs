@@ -268,6 +268,11 @@ export interface GuiImageControl {
   y: number;
   zIndex?: number;
   visible?: boolean;
+  /**
+   * Own change: a click on the floor does not walk when it falls on this image (a HUD panel drawn over the bottom of the
+   * screen), without the image taking any input: buttons, and dialogs on top of it, work as usual.
+   */
+  blocksWalk?: boolean;
   /** Optional width/height for grid alignment when the sheet size should not drive the cell box. */
   width?: number;
   height?: number;

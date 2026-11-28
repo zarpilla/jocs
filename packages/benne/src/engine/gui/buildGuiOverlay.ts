@@ -1385,6 +1385,9 @@ export function addGuiImageSprite(
     });
   }
   sprite.setData('benneGuiControl', true);
+  if (c.blocksWalk) {
+    sprite.setData('benneGuiBlocksWalk', true);
+  }
   const cid = c.id?.trim();
   if (cid) {
     controlsById.set(cid, sprite);

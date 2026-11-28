@@ -5435,12 +5435,33 @@ export class RoomScene extends Phaser.Scene {
       return;
     }
 
+    if (this.isOverWalkBlockingGui(pointer)) {
+      return;
+    }
     if (!admitGameplayClick()) {
       return;
     }
     const { x: worldX, y: worldY } = this.cameras.main.getWorldPoint(pointer.x, pointer.y);
     this.movePlayerToward(worldX, worldY);
   };
+
+  /** Own change: true if the pointer is on a visible GUI image with `blocksWalk` (the HUD panel under the room). */
+  private isOverWalkBlockingGui(pointer: Phaser.Input.Pointer): boolean {
+    const { x, y } = (this.editorUiCamera ?? this.cameras.main).getWorldPoint(pointer.x, pointer.y);
+    const hit = (obj: Phaser.GameObjects.GameObject): boolean => {
+      if (!(obj as unknown as { visible?: boolean }).visible) {
+        return false;
+      }
+      const children = (obj as Phaser.GameObjects.Container).list as Phaser.GameObjects.GameObject[] | undefined;
+      if (Array.isArray(children) && children.some(hit)) {
+        return true;
+      }
+      return (
+        obj.getData('benneGuiBlocksWalk') === true && (obj as Phaser.GameObjects.Sprite).getBounds().contains(x, y)
+      );
+    };
+    return this.genericGuiOverlays.some((h) => h.gameObjects.some(hit));
+  }
 
   /**
    * Stops the current walk tween if any. When `emitStop` is true, emits {@link PLAYER_WALK_STOP}
