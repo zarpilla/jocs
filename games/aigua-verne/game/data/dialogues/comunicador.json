@@ -9,12 +9,14 @@
         {
           "id": "fem",
           "text": "dlg.comunicador.opt.fem",
-          "next": "fem"
+          "next": "fem",
+          "nova": "resposta"
         },
         {
           "id": "preu",
           "text": "dlg.comunicador.opt.preu",
-          "next": "preu"
+          "next": "preu",
+          "nova": "resposta"
         },
         {
           "id": "adeu",

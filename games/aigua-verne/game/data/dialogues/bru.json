@@ -193,7 +193,8 @@
         {
           "id": "recorda",
           "text": "dlg.bru.opt.recorda",
-          "next": "recorda"
+          "next": "recorda",
+          "nova": "resposta"
         },
         {
           "id": "adeu",
