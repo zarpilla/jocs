@@ -226,6 +226,26 @@ def sign(cv):
     # taques de rovell als cantons
     for (x, y) in ((x0 + 3, y1 - 3), (x1 - 4, y1 - 4), (x1 - 3, y0 + 1)):
         cv.disc(x, y, 2.6, 2, [(40, 20, 8), (90, 50, 20), (130, 80, 30)], lambda nx, ny: 1.0 + (nx * nx + ny * ny) * 1.4)
+    wifi_paper(cv)
+
+
+def wifi_paper(cv):
+    """El paper de la contrasenya de la wifi (tasca 232), enganxat amb cinta a la cantonada de baix a la dreta del
+    rètol: les de les setmanes passades, ratllades, i la d'aquesta setmana a sota."""
+    x0, y0, x1, y1 = SIGN
+    px0, py0, px1, py1 = x1 - 34, y1 - 12, x1 - 2, y1 + 14
+    cv.poly([(px0, py0 + 1), (px1, py0), (px1 + 1, py1), (px0 + 1, py1 + 1)], SHEET,
+            lambda x, y: 3.9 + (hr(x // 3, y // 3, 4) - 0.5) * 0.4)
+    for tx in (px0 + 1, px1 - 7):                                    # la cinta, als cantons de dalt
+        cv.rect(tx, py0 - 2, tx + 6, py0 + 1, [(120, 116, 100), (170, 166, 150), (210, 206, 190)], 2.6)
+    for i, w in enumerate((22, 18, 24)):                             # les velles, escrites i ratllades
+        y = py0 + 4 + i * 4
+        for x in range(px0 + 4, px0 + 4 + w, 2):
+            cv.put(x, y, [(30, 40, 90), (60, 70, 140)], 1.4 + hr(x, y, 3) * 0.6)
+        cv.line(px0 + 3, y + (1 if i % 2 else 0), px0 + 5 + w, y - (1 if i % 2 else 0), INKP, 2.2)
+    for x in range(px0 + 4, px1 - 4):                                # la d'aquesta setmana, més gruixuda
+        cv.put(x, py1 - 6, [(20, 26, 70), (50, 60, 130)], 1.8 if (x - px0) % 4 else 0.6)
+        cv.put(x, py1 - 5, [(20, 26, 70), (50, 60, 130)], 1.2 if (x - px0) % 3 else 0.4)
 
 
 def bottle(cv, x, base, h, w, r, label):
