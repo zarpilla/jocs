@@ -487,6 +487,10 @@ _WALK = _talla([_p(x, z) for x, z in WALK_MON], _v_escala(1.2))
 _FORAT = [_pd(fx, lz) for fx, lz in ((PL.DESK[0] - 6, DESK[3] + 6), (PL.DESK[2] + 6, DESK[3] + 6),
                                       (PL.DESK[2] + 6, -6), (PL.DESK[0] - 6, -6))]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
+# Darrere l'escriptori no s'hi camina (tasca 316): si no, per parlar amb la Capitana, la Vet s'hi posava al costat,
+# com si hagués travessat l'escriptori. El contorn s'atura al davant de l'escriptori. (La
+# perspectiva, amb el contorn sencer, de dalt.)
+_WALK = [(175, 152), (190, 166), (358, 170), (379, 165), (639, 188), (639, 223), (34, 223)]
 _DH = DESK[4]
 
 GEOMETRIA = {
@@ -503,7 +507,7 @@ GEOMETRIA = {
     },
     'spawns': {'iri': _p(120, 120), 'vet': _p(200, 100), 'capitana': _pd(330, DESK[3] + 26)},
     'walkable': _WALK,
-    'forats': [_FORAT],
+    'forats': [],
     'floorSquash': 0.42,
     'characterShadow': {'enabled': True, 'color': '#120806', 'alpha': 0.45, 'squash': 0.4, 'core': 0.6,
                         'light': {'x': _p(*LAMPS[1])[0], 'y': _p(*LAMPS[1])[1], 'stretch': 0.6, 'reach': 160}},

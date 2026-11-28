@@ -580,6 +580,10 @@ WALK_MON = [(-30, 120), (-30, 242), (DESK[1] + 8, 242), (DESK[1] + 8, 286), (530
 V_MAX = 238                                        # més a prop, el personatge passaria d'1,2: és per al primer pla
 _WALK = _talla([_p(x, z) for x, z in WALK_MON], V_MAX)
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
+# La caixa de fusta, retallada del contorn des de la paret del fons (tasca 316): amb un forat, el camí de la porta al
+# panell hi passava just per darrere i les cames li quedaven dins.
+_i = _WALK.index((451, 142))
+_WALK[_i:_i + 1] = [(414, 144), (414, 203), (477, 206), (479, 160)]
 
 
 def _escala_a(v):
@@ -602,7 +606,7 @@ _RADIO = _rect_mon(*[(x, y, z) for x in (RADIO[0], RADIO[1] + 18) for y in (DESK
 GEOMETRIA = {
     'things': {
         'porta': {'rect': _rect_mon((XR, _y(85), _wz(12)), (XR, 0, _wz(72))), 'walk': _p(516, _wz(43))},
-        'radio': {'rect': _RADIO, 'walk': _p((RADIO[0] + RADIO[1]) / 2, 232)},
+        'radio': {'rect': _RADIO, 'walk': (250, 182)},   # al costat del tamboret, no damunt (316)
         # (l'Iri es posa a l'esquerra del panell, de cara: just al davant, el cos tapava el cable)
         'panell': {'rect': _wall(437, 77, 523, 163), 'walk': _p(_w(430), 278)},
         'cable': {'rect': _wall(459, 99, 502, 142), 'walk': _p(_w(430), 278)},
@@ -612,9 +616,7 @@ GEOMETRIA = {
     'spawns': {'iri': _p(_w(480) - 20, 250), 'vet': _p(150, 200), 'bastida': _p(500, _wz(43) + 4)},
     'walkable': _WALK,
     'forats': [[_p(STOOL[0] + dx, STOOL[1] + dz) for dx, dz in ((-20, -14), (20, -14), (20, 14), (-20, 14))],
-               [_p(CRATE[0] + dx * math.cos(CRATE[5]) - dz * math.sin(CRATE[5]),
-                   CRATE[1] + dx * math.sin(CRATE[5]) + dz * math.cos(CRATE[5]))
-                for dx, dz in ((-27, -20), (27, -20), (27, 20), (-27, 20))]],
+               ],
     'floorSquash': 0.45,
     # L'ombra de contacte: el llum de damunt la taula (el punt del terra just a sota); curta, és llum de dalt.
     'characterShadow': {'enabled': True, 'color': '#06080e', 'alpha': 0.42, 'squash': 0.42, 'core': 0.6,
@@ -644,7 +646,7 @@ GEOMETRIA['things'].update({
     'suro': {'rect': (38, 65, 110, 116), 'walk': (86, 186)},
     'rellotge': {'rect': (70, 30, 106, 62), 'walk': (114, 184)},
     'caixa': {'rect': (422, 153, 471, 198), 'walk': (446, 210)},
-    'ull_bou': {'rect': (418, 33, 443, 58), 'walk': (430, 148)},
-    'llibres': {'rect': (400, 66, 456, 84), 'walk': (428, 148)},
-    'extintor': {'rect': (432, 105, 443, 140), 'walk': (436, 152)},
+    'ull_bou': {'rect': (418, 33, 443, 58), 'walk': (405, 150)},
+    'llibres': {'rect': (400, 66, 456, 84), 'walk': (405, 150)},
+    'extintor': {'rect': (432, 105, 443, 140), 'walk': (405, 150)},
 })
