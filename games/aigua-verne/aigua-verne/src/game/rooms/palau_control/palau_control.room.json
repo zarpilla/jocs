@@ -259,8 +259,8 @@
         }
       ],
       "walkToPoint": {
-        "x": 538,
-        "y": 207
+        "x": 598,
+        "y": 221
       },
       "lookAtPoint": {
         "x": 541,
@@ -411,10 +411,11 @@
       "animations": {
         "reserva_oberta": {}
       },
-      "zIndex": 4,
+      "zIndex": 21,
       "visible": false,
       "alpha": 1,
-      "clickable": false
+      "clickable": false,
+      "baseline": 166
     },
     {
       "id": "flors_camera",

@@ -12434,7 +12434,13 @@
                 "lines": [
                   {
                     "who": "vet",
-                    "text": "sala.palau_control.palanca.3"
+                    "text": "sala.palau_control.palanca.3",
+                    "stage": [
+                      {
+                        "prop": "reserva_oberta",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "iri",
@@ -12447,7 +12453,26 @@
                   {
                     "who": "narrator",
                     "text": "sala.palau_control.palanca.6",
-                    "sound": "palanca"
+                    "sound": "palanca",
+                    "stage": [
+                      {
+                        "who": "vet",
+                        "face": "L"
+                      },
+                      {
+                        "who": "vet",
+                        "gest": "Fa",
+                        "hold": 0.5
+                      },
+                      {
+                        "prop": "reserva_oberta",
+                        "visible": true
+                      },
+                      {
+                        "who": "vet",
+                        "gest": null
+                      }
+                    ]
                   },
                   {
                     "who": "narrator",

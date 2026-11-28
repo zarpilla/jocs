@@ -546,7 +546,7 @@ GEOMETRIA = {
         'pany_aqua': {'rect': _pany_rect('aqua'), 'walk': _pany_walk('aqua')},
         'pany_ferrum': {'rect': _pany_rect('ferrum'), 'walk': _pany_walk('ferrum')},
         'palanca': {'rect': _rect_mon((_LX - 24, 132, ARM[2]), (_LX + 24, 6, ARM[2])),
-                    'walk': _p(_LX, ARM[2] - 26)},
+                    'walk': _p(_LX + 48, ARM[2] - 32)},   # al costat: davant la tapava (tasca 304)
         'camera': {'rect': _rect_mon((TX - TR - 50, 188, TZ - 4), (TX - TR + 6, 158, TZ - 4)),
                    'walk': _p(TX - 60, TZ - 30)},
     },
