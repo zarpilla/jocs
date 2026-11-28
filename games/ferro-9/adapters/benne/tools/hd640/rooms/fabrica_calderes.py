@@ -576,6 +576,19 @@ _DOOR_C = (_wz(563), _wz(629), _y(88))              # la porta de la cambra: z0,
 _DOOR_L = (279, 364, _y(133))                       # la porta del moll
 _TAULER = (265, 375, _y(43), _y(117))
 
+# (tasca 327) L'escriptori i, davant, en Tul a la cadira, retallats del contorn del terra (no com a forat): entre tots
+# dos no s'hi passa (l'Iri s'hi enganxava, mig dins seu), ni per darrere de l'escriptori; el camí li passa pel davant.
+# (Un forat que surt per la vora del terra el camí el travessava per la vora.)
+def _walk_tul(walk):
+    out = []
+    for q in walk:
+        if q == (404, 111):
+            out += [(356, 117), (367, 216), (422, 216), (430, 128)]
+        else:
+            out.append(q)
+    return out
+
+
 GEOMETRIA = {
     'things': {
         'porta_magatzem': {'rect': _rect_mon((_DOOR_M[0], _DOOR_M[2], ZW), (_DOOR_M[1], 0, ZW)), 'walk': _p(44, 270)},
@@ -590,8 +603,8 @@ GEOMETRIA = {
         'porta_moll': {'rect': _rect_mon((_DOOR_L[0], _DOOR_L[2], ZW), (_DOOR_L[1], 0, ZW)), 'walk': _p(321, 276)},
     },
     'spawns': {'iri': _p(200, 90), 'capatas': _p(VAG[0] + 83, VAG[1] - 41), 'sic': _p(452, 214)},
-    'walkable': _WALK,
-    'forats': [_forat(*DESK[:4], DESK[5]), _forat(VAG[0], VAG[1], VAG[2], VAG[3], VAG[5], m=6)],
+    'walkable': _walk_tul(_WALK),
+    'forats': [_forat(VAG[0], VAG[1], VAG[2], VAG[3], VAG[5], m=6)],
     'floorSquash': 0.4,                            # (la càmera, picada: el terra es veu aixafat)
     # L'ombra de contacte: la llum dominant és el foc (el punt del terra davant la boca); llarga, cap enrere.
     'characterShadow': {'enabled': True, 'color': '#0c0608', 'alpha': 0.45, 'squash': 0.4, 'core': 0.6,

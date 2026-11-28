@@ -594,6 +594,8 @@ GEOMETRIA = {
     'spawns': {'vet': _p(250, 150), 'mos': _p(*_bunk_mon(-_L / 2 + 26, -_D / 2 - 30)), 'mare': _HEART,
                'directora': _p(150, 120)},
     'walkable': _WALK,
+    # (tasca 327) en Mos, dret davant la llitera i a tocar de la paret: no es travessa; el camí li passa pel davant
+    'forats': [[(470, 186), (504, 186), (504, 211), (470, 211)]],
     'floorSquash': 0.4,                            # (la càmera, picada: el terra es veu aixafat)
     # L'ombra de contacte: el fluorescent (el punt del terra just a sota); curta, és llum de dalt.
     'characterShadow': {'enabled': True, 'color': '#06080e', 'alpha': 0.42, 'squash': 0.4, 'core': 0.6,
