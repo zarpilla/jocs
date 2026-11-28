@@ -5265,6 +5265,11 @@ export class RoomScene extends Phaser.Scene {
     if (this.screenFadeRect) {
       this.editorUiGuiObjects.add(this.screenFadeRect);
     }
+    // Own change: the room shade is screen-fixed too. On the main camera (zoomed, origin at the centre) it was pushed
+    // up and left by half the screen and only covered the top-left quarter.
+    if (this.roomShadeRect) {
+      this.editorUiGuiObjects.add(this.roomShadeRect);
+    }
     if (this.customCursorSprite) {
       this.editorUiGuiObjects.add(this.customCursorSprite);
     }
