@@ -20,154 +20,154 @@
     {
       "id": "casella1__c1_m",
       "scriptName": "casella1__c1_m",
-      "text": "M",
+      "text": "M····",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella1__c1_v",
       "scriptName": "casella1__c1_v",
-      "text": "V",
+      "text": "V····",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella1__c1_t",
       "scriptName": "casella1__c1_t",
-      "text": "T",
+      "text": "T····",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella1__c1_b",
       "scriptName": "casella1__c1_b",
-      "text": "B",
+      "text": "B····",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella2__c2_a",
       "scriptName": "casella2__c2_a",
-      "text": "A",
+      "text": "{teclat_1}A···",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella2__c2_e",
       "scriptName": "casella2__c2_e",
-      "text": "E",
+      "text": "{teclat_1}E···",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella2__c2_i",
       "scriptName": "casella2__c2_i",
-      "text": "I",
+      "text": "{teclat_1}I···",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella2__c2_o",
       "scriptName": "casella2__c2_o",
-      "text": "O",
+      "text": "{teclat_1}O···",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella3__c3_r",
       "scriptName": "casella3__c3_r",
-      "text": "R",
+      "text": "{teclat_1}{teclat_2}R··",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella3__c3_t",
       "scriptName": "casella3__c3_t",
-      "text": "T",
+      "text": "{teclat_1}{teclat_2}T··",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella3__c3_n",
       "scriptName": "casella3__c3_n",
-      "text": "N",
+      "text": "{teclat_1}{teclat_2}N··",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella3__c3_l",
       "scriptName": "casella3__c3_l",
-      "text": "L",
+      "text": "{teclat_1}{teclat_2}L··",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella4__c4_i",
       "scriptName": "casella4__c4_i",
-      "text": "I",
+      "text": "{teclat_1}{teclat_2}{teclat_3}I·",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella4__c4_n",
       "scriptName": "casella4__c4_n",
-      "text": "N",
+      "text": "{teclat_1}{teclat_2}{teclat_3}N·",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella4__c4_u",
       "scriptName": "casella4__c4_u",
-      "text": "U",
+      "text": "{teclat_1}{teclat_2}{teclat_3}U·",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella4__c4_e",
       "scriptName": "casella4__c4_e",
-      "text": "E",
+      "text": "{teclat_1}{teclat_2}{teclat_3}E·",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella5__c5_a",
       "scriptName": "casella5__c5_a",
-      "text": "A",
+      "text": "{teclat_1}{teclat_2}{teclat_3}{teclat_4}A",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella5__c5_e",
       "scriptName": "casella5__c5_e",
-      "text": "E",
+      "text": "{teclat_1}{teclat_2}{teclat_3}{teclat_4}E",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella5__c5_s",
       "scriptName": "casella5__c5_s",
-      "text": "S",
+      "text": "{teclat_1}{teclat_2}{teclat_3}{teclat_4}S",
       "enabled": false,
       "say": false
     },
     {
       "id": "casella5__c5_o",
       "scriptName": "casella5__c5_o",
-      "text": "O",
+      "text": "{teclat_1}{teclat_2}{teclat_3}{teclat_4}O",
       "enabled": false,
       "say": false
     },
     {
       "id": "comprova__accepta",
       "scriptName": "comprova__accepta",
-      "text": "Premo «D'acord».",
+      "text": "Premo «D'acord»: {teclat_1}{teclat_2}{teclat_3}{teclat_4}{teclat_5}.",
       "enabled": false,
       "say": false
     },
     {
       "id": "comprova__accepta_no",
       "scriptName": "comprova__accepta_no",
-      "text": "Premo «D'acord».",
+      "text": "Premo «D'acord»: {teclat_1}{teclat_2}{teclat_3}{teclat_4}{teclat_5}.",
       "enabled": false,
       "say": false
     },
@@ -177,6 +177,14 @@
       "text": "Ho esborro.",
       "enabled": false,
       "say": false
+    },
+    {
+      "id": "comprova__deixa_comprova",
+      "scriptName": "comprova__deixa_comprova",
+      "text": "Ho deixo estar.",
+      "enabled": false,
+      "say": false,
+      "last": true
     }
   ]
 }

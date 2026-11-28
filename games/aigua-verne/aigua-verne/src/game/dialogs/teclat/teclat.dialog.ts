@@ -105,3 +105,7 @@ options.comprova__accepta_no.onChoose(() => {
 options.comprova__esborra.onChoose(() => {
   chooseNarrativeOption('teclat', dialog, 'comprova', 'esborra')
 })
+
+options.comprova__deixa_comprova.onChoose(() => {
+  chooseNarrativeOption('teclat', dialog, 'comprova', 'deixa_comprova')
+})

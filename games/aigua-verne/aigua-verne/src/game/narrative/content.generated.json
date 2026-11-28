@@ -28893,7 +28893,7 @@
             "choices": [
               {
                 "id": "c1_m",
-                "text": "dlg.teclat.lletra.m",
+                "text": "dlg.teclat.c1.m",
                 "silent": true,
                 "effects": [
                   {
@@ -28905,7 +28905,7 @@
               },
               {
                 "id": "c1_v",
-                "text": "dlg.teclat.lletra.v",
+                "text": "dlg.teclat.c1.v",
                 "silent": true,
                 "effects": [
                   {
@@ -28917,7 +28917,7 @@
               },
               {
                 "id": "c1_t",
-                "text": "dlg.teclat.lletra.t",
+                "text": "dlg.teclat.c1.t",
                 "silent": true,
                 "effects": [
                   {
@@ -28929,7 +28929,7 @@
               },
               {
                 "id": "c1_b",
-                "text": "dlg.teclat.lletra.b",
+                "text": "dlg.teclat.c1.b",
                 "silent": true,
                 "effects": [
                   {
@@ -28946,7 +28946,7 @@
             "choices": [
               {
                 "id": "c2_a",
-                "text": "dlg.teclat.lletra.a",
+                "text": "dlg.teclat.c2.a",
                 "silent": true,
                 "effects": [
                   {
@@ -28958,7 +28958,7 @@
               },
               {
                 "id": "c2_e",
-                "text": "dlg.teclat.lletra.e",
+                "text": "dlg.teclat.c2.e",
                 "silent": true,
                 "effects": [
                   {
@@ -28970,7 +28970,7 @@
               },
               {
                 "id": "c2_i",
-                "text": "dlg.teclat.lletra.i",
+                "text": "dlg.teclat.c2.i",
                 "silent": true,
                 "effects": [
                   {
@@ -28982,7 +28982,7 @@
               },
               {
                 "id": "c2_o",
-                "text": "dlg.teclat.lletra.o",
+                "text": "dlg.teclat.c2.o",
                 "silent": true,
                 "effects": [
                   {
@@ -28999,7 +28999,7 @@
             "choices": [
               {
                 "id": "c3_r",
-                "text": "dlg.teclat.lletra.r",
+                "text": "dlg.teclat.c3.r",
                 "silent": true,
                 "effects": [
                   {
@@ -29011,7 +29011,7 @@
               },
               {
                 "id": "c3_t",
-                "text": "dlg.teclat.lletra.t",
+                "text": "dlg.teclat.c3.t",
                 "silent": true,
                 "effects": [
                   {
@@ -29023,7 +29023,7 @@
               },
               {
                 "id": "c3_n",
-                "text": "dlg.teclat.lletra.n",
+                "text": "dlg.teclat.c3.n",
                 "silent": true,
                 "effects": [
                   {
@@ -29035,7 +29035,7 @@
               },
               {
                 "id": "c3_l",
-                "text": "dlg.teclat.lletra.l",
+                "text": "dlg.teclat.c3.l",
                 "silent": true,
                 "effects": [
                   {
@@ -29052,7 +29052,7 @@
             "choices": [
               {
                 "id": "c4_i",
-                "text": "dlg.teclat.lletra.i",
+                "text": "dlg.teclat.c4.i",
                 "silent": true,
                 "effects": [
                   {
@@ -29064,7 +29064,7 @@
               },
               {
                 "id": "c4_n",
-                "text": "dlg.teclat.lletra.n",
+                "text": "dlg.teclat.c4.n",
                 "silent": true,
                 "effects": [
                   {
@@ -29076,7 +29076,7 @@
               },
               {
                 "id": "c4_u",
-                "text": "dlg.teclat.lletra.u",
+                "text": "dlg.teclat.c4.u",
                 "silent": true,
                 "effects": [
                   {
@@ -29088,7 +29088,7 @@
               },
               {
                 "id": "c4_e",
-                "text": "dlg.teclat.lletra.e",
+                "text": "dlg.teclat.c4.e",
                 "silent": true,
                 "effects": [
                   {
@@ -29105,7 +29105,7 @@
             "choices": [
               {
                 "id": "c5_a",
-                "text": "dlg.teclat.lletra.a",
+                "text": "dlg.teclat.c5.a",
                 "silent": true,
                 "effects": [
                   {
@@ -29117,7 +29117,7 @@
               },
               {
                 "id": "c5_e",
-                "text": "dlg.teclat.lletra.e",
+                "text": "dlg.teclat.c5.e",
                 "silent": true,
                 "effects": [
                   {
@@ -29129,7 +29129,7 @@
               },
               {
                 "id": "c5_s",
-                "text": "dlg.teclat.lletra.s",
+                "text": "dlg.teclat.c5.s",
                 "silent": true,
                 "effects": [
                   {
@@ -29141,7 +29141,7 @@
               },
               {
                 "id": "c5_o",
-                "text": "dlg.teclat.lletra.o",
+                "text": "dlg.teclat.c5.o",
                 "silent": true,
                 "effects": [
                   {
@@ -29158,7 +29158,7 @@
             "choices": [
               {
                 "id": "accepta",
-                "text": "dlg.teclat.opt.accepta",
+                "text": "dlg.teclat.opt.accepta_paraula",
                 "silent": true,
                 "if": {
                   "all": [
@@ -29193,7 +29193,7 @@
               },
               {
                 "id": "accepta_no",
-                "text": "dlg.teclat.opt.accepta",
+                "text": "dlg.teclat.opt.accepta_paraula",
                 "silent": true,
                 "if": {
                   "not": {
@@ -29255,6 +29255,11 @@
                   }
                 ],
                 "next": "casella1"
+              },
+              {
+                "id": "deixa_comprova",
+                "text": "dlg.teclat.opt.deixa",
+                "end": true
               }
             ]
           },
@@ -31112,21 +31117,28 @@
       "dlg.grua.bolca_canal": "Aquí no hi ha cap motlle. Ho tiraria tot a terra.",
       "dlg.capitana.recorda.3b": "Albarà: el porta la teva germana. Que me'l doni, o dona-me'l tu: tant me fa qui.",
       "dlg.teclat.opt.tecleja": "Teclejo una paraula.",
-      "dlg.teclat.lletra.m": "M",
-      "dlg.teclat.lletra.v": "V",
-      "dlg.teclat.lletra.t": "T",
-      "dlg.teclat.lletra.b": "B",
-      "dlg.teclat.lletra.a": "A",
-      "dlg.teclat.lletra.e": "E",
-      "dlg.teclat.lletra.i": "I",
-      "dlg.teclat.lletra.o": "O",
-      "dlg.teclat.lletra.r": "R",
-      "dlg.teclat.lletra.n": "N",
-      "dlg.teclat.lletra.l": "L",
-      "dlg.teclat.lletra.u": "U",
-      "dlg.teclat.lletra.s": "S",
-      "dlg.teclat.opt.accepta": "Premo «D'acord».",
       "dlg.teclat.opt.esborra": "Ho esborro.",
+      "dlg.teclat.c1.m": "M····",
+      "dlg.teclat.c1.v": "V····",
+      "dlg.teclat.c1.t": "T····",
+      "dlg.teclat.c1.b": "B····",
+      "dlg.teclat.c2.a": "{teclat_1}A···",
+      "dlg.teclat.c2.e": "{teclat_1}E···",
+      "dlg.teclat.c2.i": "{teclat_1}I···",
+      "dlg.teclat.c2.o": "{teclat_1}O···",
+      "dlg.teclat.c3.r": "{teclat_1}{teclat_2}R··",
+      "dlg.teclat.c3.t": "{teclat_1}{teclat_2}T··",
+      "dlg.teclat.c3.n": "{teclat_1}{teclat_2}N··",
+      "dlg.teclat.c3.l": "{teclat_1}{teclat_2}L··",
+      "dlg.teclat.c4.i": "{teclat_1}{teclat_2}{teclat_3}I·",
+      "dlg.teclat.c4.n": "{teclat_1}{teclat_2}{teclat_3}N·",
+      "dlg.teclat.c4.u": "{teclat_1}{teclat_2}{teclat_3}U·",
+      "dlg.teclat.c4.e": "{teclat_1}{teclat_2}{teclat_3}E·",
+      "dlg.teclat.c5.a": "{teclat_1}{teclat_2}{teclat_3}{teclat_4}A",
+      "dlg.teclat.c5.e": "{teclat_1}{teclat_2}{teclat_3}{teclat_4}E",
+      "dlg.teclat.c5.s": "{teclat_1}{teclat_2}{teclat_3}{teclat_4}S",
+      "dlg.teclat.c5.o": "{teclat_1}{teclat_2}{teclat_3}{teclat_4}O",
+      "dlg.teclat.opt.accepta_paraula": "Premo «D'acord»: {teclat_1}{teclat_2}{teclat_3}{teclat_4}{teclat_5}.",
       "dlg.trucada.si.4": "Era per guanyar temps.",
       "dlg.trucada.si.5": "No ho era.",
       "dlg.trucada.si.6": "La pantalla s'encén tota sola: el Magnat no ha acabat.",
