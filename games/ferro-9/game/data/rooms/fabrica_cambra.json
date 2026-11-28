@@ -16,12 +16,32 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_cambra.palanca.clau1"
+              "text": "sala.fabrica_cambra.palanca.clau1",
+              "stage": [
+                {
+                  "prop": "clau_cambra",
+                  "visible": false
+                },
+                {
+                  "prop": "palanca_baixada",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
               "text": "sala.fabrica_cambra.palanca.clau2",
-              "sound": "palanca"
+              "sound": "palanca",
+              "stage": [
+                {
+                  "prop": "palanca_alcada",
+                  "visible": false
+                },
+                {
+                  "prop": "palanca_baixada",
+                  "visible": true
+                }
+              ]
             },
             {
               "who": "player",
@@ -30,15 +50,24 @@
             {
               "who": "player",
               "text": "sala.fabrica_cambra.palanca.clau4",
-              "sound": "cambra_posa"
+              "sound": "cambra_posa",
+              "stage": [
+                {
+                  "prop": "clau_cambra",
+                  "visible": true
+                }
+              ],
+              "effects": [
+                {
+                  "takeItem": "clau_anglesa"
+                }
+              ],
+              "itemsNow": true
             }
           ],
           "effects": [
             {
               "setFlag": "alarma_apagada"
-            },
-            {
-              "takeItem": "clau_anglesa"
             },
             {
               "setVar": "finestra_objecte_iri",

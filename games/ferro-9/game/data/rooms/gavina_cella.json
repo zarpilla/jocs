@@ -401,11 +401,27 @@
             {
               "who": "player",
               "text": "sala.gavina_cella.panell.obrir1",
-              "sound": "eina"
+              "sound": "eina",
+              "stage": [
+                {
+                  "prop": "panell_obert",
+                  "visible": false
+                }
+              ]
             },
             {
               "who": "player",
-              "text": "sala.gavina_cella.panell.obrir2"
+              "text": "sala.gavina_cella.panell.obrir2",
+              "stage": [
+                {
+                  "prop": "panell_afluixat",
+                  "visible": false
+                },
+                {
+                  "prop": "panell_obert",
+                  "visible": true
+                }
+              ]
             }
           ],
           "effects": [

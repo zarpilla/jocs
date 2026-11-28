@@ -3431,12 +3431,32 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fabrica_cambra.palanca.clau1"
+                    "text": "sala.fabrica_cambra.palanca.clau1",
+                    "stage": [
+                      {
+                        "prop": "clau_cambra",
+                        "visible": false
+                      },
+                      {
+                        "prop": "palanca_baixada",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
                     "text": "sala.fabrica_cambra.palanca.clau2",
-                    "sound": "palanca"
+                    "sound": "palanca",
+                    "stage": [
+                      {
+                        "prop": "palanca_alcada",
+                        "visible": false
+                      },
+                      {
+                        "prop": "palanca_baixada",
+                        "visible": true
+                      }
+                    ]
                   },
                   {
                     "who": "player",
@@ -3445,15 +3465,24 @@
                   {
                     "who": "player",
                     "text": "sala.fabrica_cambra.palanca.clau4",
-                    "sound": "cambra_posa"
+                    "sound": "cambra_posa",
+                    "stage": [
+                      {
+                        "prop": "clau_cambra",
+                        "visible": true
+                      }
+                    ],
+                    "effects": [
+                      {
+                        "takeItem": "clau_anglesa"
+                      }
+                    ],
+                    "itemsNow": true
                   }
                 ],
                 "effects": [
                   {
                     "setFlag": "alarma_apagada"
-                  },
-                  {
-                    "takeItem": "clau_anglesa"
                   },
                   {
                     "setVar": "finestra_objecte_iri",
@@ -7593,11 +7622,27 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_cella.panell.obrir1",
-                    "sound": "eina"
+                    "sound": "eina",
+                    "stage": [
+                      {
+                        "prop": "panell_obert",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.obrir2"
+                    "text": "sala.gavina_cella.panell.obrir2",
+                    "stage": [
+                      {
+                        "prop": "panell_afluixat",
+                        "visible": false
+                      },
+                      {
+                        "prop": "panell_obert",
+                        "visible": true
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -19991,12 +20036,12 @@
       "dlg.cargol.opt.alarma": "Per què es va construir la cambra?",
       "dlg.cargol.opt.adeu": "Fins després, Cargol.",
       "dlg.cargol.clau_ok1": "Formulari 27-B, degudament segellat. Procedint.",
-      "dlg.cargol.clau_ok2": "Aquí té la clau. Que tingui un torn productiu, senyora Iri!",
+      "dlg.cargol.clau_ok2": "Aquí té la clau. Arxivo una còpia del formulari; l'original, per a vostè, que mai se sap. Que tingui un torn productiu, senyora Iri!",
       "dlg.cargol.clau_sense_segell": "Aquest formulari no està segellat, senyora. Un formulari sense segell és només un paper trist.",
       "dlg.cargol.clau_sense_res": "Per lliurar material, necessito el formulari 27-B, degudament segellat. Són les normes. Les normes són boniques.",
       "dlg.cargol.imant_ok1": "Tres segells! Senyora Iri, se m'escalfen els circuits d'emoció.",
       "dlg.cargol.imant_ok2": "Un imant de ferro-9, lot 7. Arxivo el formulari. Que en faci bon ús!",
-      "dlg.cargol.imant_falta": "El material de ferro-9 requereix el formulari 27-B segellat per triplicat. Sense excepcions. Ni per a vostè.",
+      "dlg.cargol.imant_falta": "El material de ferro-9 requereix el formulari 27-B segellat per triplicat: tres segells, un per còpia. Sense excepcions. Ni per a vostè.",
       "dlg.cargol.dia1": "...",
       "dlg.cargol.dia2": "Ningú no m'ho havia preguntat mai.",
       "dlg.cargol.dia3": "Estic... funcional. Gràcies, senyora Iri. Ho registraré a la meva memòria permanent.",
@@ -20424,6 +20469,17 @@
       "ui.portada.continua": "Continua",
       "ui.portada.comenca": "Comença",
       "ui.portada.carrega": "Carrega una partida",
+      "ui.amb_article.iri": "l'Iri",
+      "ui.amb_article.vet": "la Vet",
+      "ui.amb_article.cargol": "el Cargol",
+      "ui.amb_article.capatas": "el capatàs Tul",
+      "ui.amb_article.mare": "la MARE",
+      "ui.amb_article.mos": "en Mos",
+      "ui.amb_article.directora": "la directora Aldaia",
+      "ui.amb_article.sic": "l'Inspector Sic",
+      "ui.amb_article.mira": "la Mira",
+      "ui.amb_article.guardia": "la guàrdia d'Orís",
+      "ui.amb_article.cargol_vell": "el conserge",
       "mis.acte1.titol": "Acte 1 · La descoberta",
       "mis.acte1.desc": "Una alarma al passat, una paret que vibra al futur.",
       "mis.acte1.obj.entrar_cambra": "Iri: entra a la cambra de ressonància",
@@ -20540,7 +20596,7 @@
       "obj.nota_iri.correspondencia.vet2": "Una enginyera de fa cent vint anys que em pot fer arribar coses. I a mi em queden tres dies.",
       "obj.nota_pany.text": "«I.: Necessito sortir de la cel·la. El pany és com el del dibuix, hi posa \"Aldaia M-3\". Si és de la teva fàbrica, saps obrir-lo? Et deuré un filtre. —V.»",
       "obj.nota_pany.iri1": "«V.» Ara ella també signa amb una lletra. I cent vint anys després, encara fan servir els nostres panys.",
-      "obj.nota_pany.iri2": "Però aquest dibuix... És un M-3! N'hi ha a tota la fàbrica. S'obren amb un imant de ferro-9.",
+      "obj.nota_pany.iri2": "Però aquest dibuix... És un M-3! N'hi ha a tota la fàbrica. S'obren amb un imant de ferro-9. I el Cargol en guarda, al magatzem.",
       "obj.avis_reciclatge.text": "«AVÍS: La interna de la cel·la 9 (motiu de l'internament: sostracció de 40 filtres d'aire, propietat de la Corporació Aldaia) serà reciclada d'aquí a 3 dies. El reciclatge és una oportunitat! Amb afecte, MARE.»",
       "obj.escarabat.look": "El Senyor Bigotis. No té bigotis. És un nom aspiracional.",
       "obj.escarabat.parlar": "Tranquil, Senyor Bigotis. A tu no et reciclaran. Ets massa petit.",
@@ -21717,7 +21773,7 @@
       "sala.gavina_cella.panell.obrir_ja": "Ja és obert. El que hi falta és la palanca.",
       "sala.gavina_cella.panell.estirar": "La consola no s'estira. La palanca, en tot cas, s'empeny.",
       "sala.fabrica_moll.biga_ferro9.serra_mida": "Serrar ferro-9 reservat? Cada tros duria el número d'inventari, i el Sic els comptaria un per un. Si n'he de fer trossos, millor la d'acer: aquesta no la vigila ningú.",
-      "sala.fabrica_moll.biga_ferro9.serra": "Serrar una biga de ferro-9 de la Caldera 4? Per a què? I el Sic em comptaria les serradures.",
+      "sala.fabrica_moll.biga_ferro9.serra": "Serrar una biga de ferro-9 de la Caldera 4? Per a què? I l'Inspector Sic em comptaria les serradures.",
       "sala.fabrica_moll.caixes.nom": "les caixes",
       "sala.fabrica_moll.caixes.look": "Comandes per embarcar, apilades fins al sostre. Totes amb el segell d'Aldaia, i totes amb retard.",
       "sala.fabrica_cambra.consola.nom": "la consola",
