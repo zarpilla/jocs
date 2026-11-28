@@ -662,8 +662,8 @@ GEOMETRIA = {
     'things': {
         'porta': {'rect': _rect_mon((0, DOOR[2] + 8, DOOR[0] - 8), (0, 0, DOOR[1] + 2)), 'walk': _p(40, (DOOR[0] + DOOR[1]) / 2)},
         'llibre': {'rect': _rect_banc(_bfx(187), _bfx(235), 6, 36, _BH, _BH + 12), 'walk': _pb(_bfx(211), -30)},
-        'portatil': {'rect': _rect_banc(_bfx(262), _bfx(320), 4, 34, _BH, _BH + 32), 'walk': _pb(_bfx(291), -30)},
-        'nota': {'rect': _rect_banc(_bfx(321), _bfx(345), 2, 26, _BH, _BH + 6), 'walk': _pb(_bfx(331), -30)},
+        'portatil': {'rect': _rect_banc(_bfx(262), _bfx(320), 4, 34, _BH, _BH + 32), 'walk': (250, 191)},   # al costat: davant el tapava (309)
+        'nota': {'rect': _rect_banc(_bfx(321), _bfx(345), 2, 26, _BH, _BH + 6), 'walk': (376, 195)},
         'taulell': {'rect': _rect_banc(0, BENCH[2], -2, -2, 0, _BH - 4), 'walk': _pb(BENCH[2] - 40, -30)},
         'nevera': {'rect': _rect_mon(*[(x, y, z) for x, z in _FR for y in (0, FRIDGE[4])]),
                    'walk': _p(FRIDGE[0] - 30, FRIDGE[1] - 70)},

@@ -612,7 +612,7 @@ GEOMETRIA = {
                     'walk': _p(MOL[0] + 70, MOL[1] - 60)},
         'escotilla': {'rect': _rect_mon(*[(ESCO[0] + dx, y, ESCO[1] + dz) for dx in (-50, 50) for dz in (-34, 34)
                                           for y in (0, 12)]),
-                      'walk': _p(ESCO[0], ESCO[1] - 66)},
+                      'walk': (340, 224)},   # al costat: damunt la tapava (309)
     },
     'spawns': {'iri': _p(60, 470), 'vet': _p(-60, 470), 'juana': _p(MANTA[0] - 30, MANTA[1] - 56)},
     'walkable': _WALK,

@@ -984,7 +984,7 @@ GEOMETRIA = {
         'porta_rebost': {'rect': _rect_mon((_w(373), _y(72), ZW), (_w(419), 0, ZW)), 'walk': _p(_w(396), ZW - 20)},
         'generador': {'rect': _rect_mon((_w(437), _y(37), ZW - 24), (_w(555), MEZZ_H, ZW - 24)),
                       'walk': _p(_w(490), ZW - 46)},
-        'quadre': {'rect': _caixa_mon(_w(429), _w(495), 0, _y(111), ZW - 26, ZW), 'walk': _p(_w(461), ZW - 44)},
+        'quadre': {'rect': _caixa_mon(_w(429), _w(495), 0, _y(111), ZW - 26, ZW), 'walk': (422, 193)},   # al costat: davant tapava la brida (309)
         'sensor': {'rect': _rect_mon((_w(493), _y(109), ZW), (_w(515), _y(200), ZW)), 'walk': _p(_w(504), ZW - 44)},
         'vies': {'rect': _rect_mon((_w(509), _y(176), ZW), (_w(528), _y(200), ZW)), 'walk': _p(_w(520), ZW - 44)},
         'separador': {'rect': _rect_mon((_w(526), _y(112), ZW - 20), (_w(567), 0, ZW - 20)), 'walk': _p(_w(548), ZW - 44)},
