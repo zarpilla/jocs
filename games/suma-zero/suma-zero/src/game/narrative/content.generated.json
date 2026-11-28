@@ -25,7 +25,14 @@
         }
       },
       "switchWhen": {
-        "flag": "cable_demanat"
+        "any": [
+          {
+            "flag": "cable_demanat"
+          },
+          {
+            "flag": "pizza_demanada"
+          }
+        ]
       },
       "cover": "portada",
       "intro": "proleg_ginebra"
@@ -12231,6 +12238,10 @@
             {
               "flag": "llibre_trobat",
               "is": false
+            },
+            {
+              "flag": "pizza_demanada",
+              "is": false
             }
           ]
         },
@@ -12241,6 +12252,9 @@
             },
             {
               "flag": "llibre_trobat"
+            },
+            {
+              "flag": "pizza_demanada"
             }
           ]
         },
@@ -15588,6 +15602,10 @@
               {
                 "who": "vet",
                 "face": "R"
+              },
+              {
+                "who": "iri",
+                "face": "R"
               }
             ]
           },
@@ -16033,6 +16051,10 @@
               },
               {
                 "who": "vet",
+                "face": "R"
+              },
+              {
+                "who": "iri",
                 "face": "R"
               }
             ]
@@ -16492,6 +16514,10 @@
               },
               {
                 "who": "vet",
+                "face": "R"
+              },
+              {
+                "who": "iri",
                 "face": "R"
               }
             ]
@@ -26969,7 +26995,7 @@
       "dlg.llibre.mal_any": "CONTRASENYA INCORRECTA. FORMAT REQUERIT: NOM I ANY, TOT JUNT. COM ELS ADULTS.",
       "dlg.llibre.mal_any2": "Nom i any. L'any que es van conèixer. Vet, on ho deu dir?",
       "dlg.llibre.ok1": "CONTRASENYA CORRECTA. PER ATURAR, CAL EL CODI DE CONFIRMACIÓ QUE ARRIBARÀ AL MÒBIL DEL DIRECTOR.",
-      "dlg.llibre.ok2": "Vet: quan demani el codi, li arribarà al mòbil. Si el Director el mira, ho cancel·larà. Tingues-lo entretingut.",
+      "dlg.llibre.ok2": "Vet, quan demani el codi, li arribarà al mòbil. Si el Director el mira, ho cancel·larà. Tingues-lo entretingut.",
       "dlg.llibre.ok3": "Entretenir un director. És el que faig millor, després de mentir.",
       "dlg.aturada.pregunta": "ROBIN HOOD 2.0: ATURAT. AL COMPTE PONT HI HA TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?",
       "dlg.aturada.rius": "El compte de la Rius! El de les nòmines: no paga per rondes, ho paga tot d'un sol lot, a les dotze. Per aquí, arriba a tothom alhora.",
@@ -27795,7 +27821,7 @@
       "sala.aeroport_terminal.soler.look_busca": "El vigilant busca un fill que no tinc. Amb molta dedicació.",
       "sala.aeroport_terminal.soler.nom": "el vigilant",
       "sala.aeroport_terminal.taulell.codi1": "Sota el taulell hi ha un pòsit enganxat. «Porta personal: 8426.»",
-      "sala.aeroport_terminal.taulell.codi2": "Iri: 8-4-2-6.",
+      "sala.aeroport_terminal.taulell.codi2": "Iri, 8-4-2-6.",
       "sala.aeroport_terminal.taulell.ja": "El pòsit: 8-4-2-6. L'Iri ja ho sap.",
       "sala.aeroport_terminal.taulell.look": "El taulell de facturació. Si hi remeno ara, el vigilant em veurà.",
       "sala.aeroport_terminal.taulell.nom": "el taulell",
@@ -28348,7 +28374,7 @@
       "sala.bcmu_escombraries.conducte.sense": "Tres pisos? No, gràcies. Primer, coixí.",
       "sala.bcmu_escombraries.conducte.extintor1": "Massa dramàtic. Perfecte.",
       "sala.bcmu_escombraries.conducte.extintor2": "L'extintor baixa pel conducte, rebota tres pisos i, a baix, esclata en un coixí d'escuma.",
-      "sala.bcmu_escombraries.conducte.extintor3": "Vet: coixí fet. Obre el contenidor i salto.",
+      "sala.bcmu_escombraries.conducte.extintor3": "Vet, coixí fet. Obre el contenidor i salto.",
       "sala.bcmu_escombraries.conducte.extintor_no": "L'extintor és el pla B. Encara no hi som, al pla B.",
       "sala.bcmu_escombraries.conducte.look_llesta": "Al fons, tres pisos avall, un coixí. Un tobogan de la vergonya.",
       "sala.bcmu_escombraries.bosses.coixi": "Per fer un coixí en caldrien cent bosses, i jo tinc dos braços. NETA-3 en té quatre.",
@@ -28414,9 +28440,9 @@
       "sala.bcmu_despatx.mobil.res": "Encara no ha arribat res.",
       "sala.bcmu_despatx.mobil.ja": "Ja l'he llegit. I l'he tornat a deixar cap per avall.",
       "sala.bcmu_despatx.mobil.veu": "Ara em veuria. Primer l'he de distreure.",
-      "sala.bcmu_despatx.mobil.llegeix1": "Iri: 4-1-9-7. I el torno a deixar cap per avall.",
-      "sala.bcmu_despatx.mobil.llegeix2": "Iri: 2-8-0-5. I el torno a deixar cap per avall.",
-      "sala.bcmu_despatx.mobil.llegeix3": "Iri: 6-6-3-1. I el torno a deixar cap per avall.",
+      "sala.bcmu_despatx.mobil.llegeix1": "Iri, 4-1-9-7. I el torno a deixar cap per avall.",
+      "sala.bcmu_despatx.mobil.llegeix2": "Iri, 2-8-0-5. I el torno a deixar cap per avall.",
+      "sala.bcmu_despatx.mobil.llegeix3": "Iri, 6-6-3-1. I el torno a deixar cap per avall.",
       "sala.bcmu_despatx.mobil.look_codi": "El mòbil del Director, cap per avall. Ha vibrat. Hi ha un codi, esperant que algú el miri.",
       "sala.bcmu_despatx.mobil.look": "El mòbil del Director, cap per avall. Ell el gira cada dos per tres, com qui mira si ha plogut.",
       "sala.bcmu_despatx.foto.nom": "la foto",
