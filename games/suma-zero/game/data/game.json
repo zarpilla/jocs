@@ -23,7 +23,14 @@
     }
   },
   "switchWhen": {
-    "flag": "cable_demanat"
+    "any": [
+      {
+        "flag": "cable_demanat"
+      },
+      {
+        "flag": "pizza_demanada"
+      }
+    ]
   },
   "cover": "portada",
   "intro": "proleg_ginebra"

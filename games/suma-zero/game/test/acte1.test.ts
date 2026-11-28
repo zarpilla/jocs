@@ -320,7 +320,10 @@ describe('Acte 1 · revisió de coherència', () => {
     expect(n.activeHints()[0]).toBe('iri_cable_cafetera'); // abans que en Diu: primer, els cables
     p.do('open', 'passaplats');
     p.talk('passaplats', 'pizza');
+    // Demanar la pizza també deixa passar a la Vet (si no, la promesa es quedaria penjada fins al cable).
+    expect(n.check(n.content.manifest.switchWhen)).toBe(true);
     p.switchTo('vet');
+    expect(n.activeHints()[0]).toBe('vet_pizza');
     p.do('open', 'nevera');
     p.do('pickUp', 'pizza_nevera');
     expect(n.activeHints()[0]).toBe('vet_passar_pizza'); // ja la té la Vet: ara, passar-la

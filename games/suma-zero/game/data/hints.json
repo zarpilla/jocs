@@ -212,6 +212,10 @@
         {
           "flag": "llibre_trobat",
           "is": false
+        },
+        {
+          "flag": "pizza_demanada",
+          "is": false
         }
       ]
     },
@@ -222,6 +226,9 @@
         },
         {
           "flag": "llibre_trobat"
+        },
+        {
+          "flag": "pizza_demanada"
         }
       ]
     },
