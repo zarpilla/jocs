@@ -846,7 +846,7 @@ GEOMETRIA = {
                         'walk': _p(COND[0] - 30, COND[1] - 60)},
         'piquet': {'rect': _rect_mon((PANC[0][0], 120, PANC[0][1]), (PANC[1][0], 120, PANC[1][1]),
                                      (NENS[0][0] - 20, 0, NENS[0][1]), (NENS[2][0] + 10, 0, NENS[2][1])),
-                   'walk': _p(BIDO[0] - 70, BIDO[1] - 36)},
+                   'walk': (560, 250)},   # a la dreta del foc: davant del bidó tapava la minaire asseguda
         'comptadors': {'rect': _rect_mon((COMPT[0] - 40, 34, COMPT[1]), (COMPT[0] + 40, 0, COMPT[1] + 6)),
                        'walk': _p(COMPT[0] - 10, COMPT[1] - 46)},
         'panell_preu': {'rect': _rect_mon(*_PANELL), 'walk': _p(_PANELL[0][0] + 30, ZR - 46)},
