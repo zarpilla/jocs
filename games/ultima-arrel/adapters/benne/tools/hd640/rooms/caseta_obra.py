@@ -524,8 +524,8 @@ _LLUM_TERRA = (240, 180)
 
 # El terra on es camina (en pantalla): de la porta (al fons a l'esquerra) i la cantonada de l'arbre fins a davant,
 # tallat on la Vet arriba a ≈1,25 (més a prop, el terra és del primer pla).
-_WALK = [(52, 184), (386, 156), (456, 192), (474, 214), (300, 236), (0, 238), (0, 226)]
-_VS = [v for _, v in _WALK]
+_WALK_SALA = [(52, 184), (386, 156), (456, 192), (474, 214), (300, 236), (0, 238), (0, 226)]
+_VS = [v for _, v in _WALK_SALA]
 
 
 # Els fulls dels personatges fan l'Iri de 68 px a escala 1 (la sala es va dibuixar pensant en 97): ×97/68. La Vet hi
@@ -545,10 +545,23 @@ def _escala_v(v):
             hi = z
     return round(CAM.escala((240, 0, (lo + hi) / 2)), 3)
 
+def _walk():
+    """El terra on es camina, amb l'escriptori retallat del contorn (tasca 311): era un forat, i entre el forat i la
+    paret del fons quedava una franja on la Vet es ficava darrere l'escriptori (només se li veia el cap)."""
+    a, b, c, d = _sota(*ESCRIPTORI[:4], ESCRIPTORI[5])     # davant-esquerra, davant-dreta, darrere-dreta, darrere-esquerra
+    x0, y0 = _WALK_SALA[0]
+    x1, y1 = _WALK_SALA[1]
+    paret = lambda x: round(y0 + (y1 - y0) * (x - x0) / (x1 - x0))
+    return [(x0, y0), d, a, b, c, (c[0] + 12, paret(c[0] + 12))] + _WALK_SALA[1:]
+
+
+_WALK = _walk()
+
+
 GEOMETRIA = {
     'things': {
         'porta': {'rect': _rect((DOOR[0], DOOR[2], ZW), (DOOR[1], 0, ZW)), 'walk': _p(62, 270)},
-        'cartell': {'rect': _rect((POSTER[0], HW - POSTER[2], ZW), (POSTER[1], HW - POSTER[3], ZW)), 'walk': _p(170, 236)},
+        'cartell': {'rect': _rect((POSTER[0], HW - POSTER[2], ZW), (POSTER[1], HW - POSTER[3], ZW)), 'walk': _p(170, 110)},   # davant l'escriptori: darrere, només se li veia el cap (311)
         'arbre_wifi': {'rect': _rect((ARBRE[0] - 26, 104, ARBRE[1]), (ARBRE[0] + 26, 0, ARBRE[1])), 'walk': _p(356, 250)},   # al costat, no davant: s'ha de veure com s'apaga (242)
         'escriptori': {'rect': _caixa_rect(*ESCRIPTORI), 'walk': _p(196, 120)},
         'maqueta': {'rect': _caixa_rect(*MAQUETA), 'walk': _p(250, 60)},
@@ -557,7 +570,7 @@ GEOMETRIA = {
     },
     'spawns': {'vet': (250, 228), 'pla': _p(318, 232)},  # la Vet, davant de l'escriptori (a l'entrada la taparien les caixes)
     'walkable': _WALK,
-    'forats': [_sota(*ESCRIPTORI[:4], ESCRIPTORI[5]), _sota(*MAQUETA[:4], MAQUETA[5]),
+    'forats': [_sota(*MAQUETA[:4], MAQUETA[5]),
                _sota(*CAIXA[:4], CAIXA[5], marge=6)],
     # La llum és de sostre (els fluorescents): l'ombra, rodona i suau, just a sota.
     'floorSquash': 0.35,
