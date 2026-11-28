@@ -72,6 +72,20 @@ def _pla(fn, amb=0.6):
 ANT_BOX = (PL.ANT_X - 46, 78, PL.ANT_X + 48, PL.FLOOR_Y + 4)       # l'antena: la cúpula, el collar, el nus, el peu
 SIGN_BOX = (PL.MAST_X - 15, 106, PL.MAST_X + 16, 125)               # el rètol «ARNÈS»
 BUOY_BOX = (595 - 14, 148, 595 + 15, 176)                            # el salvavides (i el cap)
+RETOL_BOX = (20, 20, 56, 40)                                         # el rètol «▼ PONT» de la tapa de l'escala
+
+
+def _retol_pont(cv):
+    """El rètol de la sortida, com els de les portes de baix («PASSADÍS», «PONT»): blanc, amb la franja blava i una
+    fletxa avall (tasca 334: sense, la boca de l'escala es llegia com una reixa més)."""
+    sx0, sy0, sx1, sy1 = RETOL_BOX[0] + 1, RETOL_BOX[1] + 1, RETOL_BOX[2] - 1, RETOL_BOX[3] - 1
+    PL.box(cv, sx0, sy0, sx1, sy1, PL.WHITEP, 3.8)
+    cv.rect(sx0 + 1, sy0 + 1, sx1 - 1, sy0 + 6, [(10, 30, 70), (20, 60, 130), (40, 90, 170)], 1.8)
+    cx = (sx0 + sx1) // 2
+    for i in range(4):                                               # la fletxa, avall, blanca a la franja
+        cv.hline(cx - 3 + i, cx + 3 - i, sy0 + 2 + i, PL.WHITEP, 4.2)
+    s_ = 'PONT'
+    PL.text(cv, s_, (sx0 + sx1 + 1 - PL.text_width(s_)) // 2, sy0 + 9, None, 0, flat=(24, 28, 34))
 
 
 @functools.lru_cache(maxsize=None)
@@ -86,6 +100,7 @@ def _textures(ant=''):
         'antena': _pla(antena),
         'pal': _pla(lambda cv: PL.mast(cv)),
         'boia': _pla(lambda cv: PL.lifebuoy(cv, 595, 163)),
+        'retol': _pla(_retol_pont),
     }
 
 
@@ -288,6 +303,10 @@ def escala(e, llums=True):
            (3.6 if (int(s + t) // 4) % 2 else 1.0))
     e.quad('escala', (x0 + 6, 46, z1 + 14), (x1 - 6, 46, z1 + 14), (x1 - 6, 40, z1 + 12.4), (x0 + 6, 40, z1 + 12.4),
            ramp=YELL, lvl=lambda s, t, P: 3.6 if (int(s) // 4) % 2 else 0.6, dues_cares=True)
+    # el rètol «▼ PONT», penjat a la vora de dalt de la tapa
+    rb = RETOL_BOX
+    e.sprite('escala', _textures()['retol'].crop(rb), ((rb[2] - rb[0]) / 2, rb[3] - rb[1]),
+             ((x0 + x1) / 2, 40, z1 + 11), escala_img=K)
     for hx in (x0 + 10, x1 - 10):                                    # els passamans
         e.cable('escala', [(hx, -10, z0 + 6), (hx, 34, z0 + 6), (hx + (4 if hx < x1 - 20 else -4), 40, z0 + 12),
                            (hx, 34, z0 + 18), (hx, 0, z0 + 18)], MASTW, 4.8, gruix=1.6)
