@@ -304,10 +304,6 @@
               "text": "sala.coberta_proa.escotilla.4"
             },
             {
-              "who": "narrator",
-              "text": "sala.coberta_proa.escotilla.5"
-            },
-            {
               "who": "player",
               "text": "sala.coberta_proa.escotilla.6"
             }
@@ -343,14 +339,6 @@
               }
             },
             {
-              "who": "narrator",
-              "text": "sala.coberta_proa.escotilla.9",
-              "if": {
-                "flag": "cisalla_mellada",
-                "is": false
-              }
-            },
-            {
               "who": "player",
               "text": "sala.coberta_proa.escotilla.10",
               "if": {
@@ -365,10 +353,6 @@
             {
               "who": "player",
               "text": "sala.coberta_proa.escotilla.12"
-            },
-            {
-              "who": "narrator",
-              "text": "sala.coberta_proa.escotilla.13"
             },
             {
               "who": "player",
