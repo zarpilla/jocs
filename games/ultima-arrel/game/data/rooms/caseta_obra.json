@@ -263,7 +263,18 @@
             },
             {
               "who": "pla",
-              "text": "sala.caseta_obra.canal7.5"
+              "text": "sala.caseta_obra.canal7.5",
+              "stage": [
+                {
+                  "who": "pla",
+                  "at": "porta",
+                  "visible": true,
+                  "walk": {
+                    "x": 130,
+                    "y": 225
+                  }
+                }
+              ]
             },
             {
               "who": "player",
@@ -271,7 +282,17 @@
             },
             {
               "who": "pla",
-              "text": "sala.caseta_obra.canal7.7"
+              "text": "sala.caseta_obra.canal7.7",
+              "stageAfter": [
+                {
+                  "who": "pla",
+                  "walk": "porta"
+                },
+                {
+                  "who": "pla",
+                  "visible": false
+                }
+              ]
             }
           ],
           "effects": [
@@ -318,7 +339,18 @@
             },
             {
               "who": "pla",
-              "text": "sala.caseta_obra.canal7.5"
+              "text": "sala.caseta_obra.canal7.5",
+              "stage": [
+                {
+                  "who": "pla",
+                  "at": "porta",
+                  "visible": true,
+                  "walk": {
+                    "x": 130,
+                    "y": 225
+                  }
+                }
+              ]
             },
             {
               "who": "player",
@@ -326,7 +358,17 @@
             },
             {
               "who": "pla",
-              "text": "sala.caseta_obra.canal7.7"
+              "text": "sala.caseta_obra.canal7.7",
+              "stageAfter": [
+                {
+                  "who": "pla",
+                  "walk": "porta"
+                },
+                {
+                  "who": "pla",
+                  "visible": false
+                }
+              ]
             }
           ],
           "effects": [

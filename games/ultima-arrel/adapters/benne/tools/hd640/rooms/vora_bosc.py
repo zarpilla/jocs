@@ -171,7 +171,8 @@ GEOMETRIA = {
         'cami': {'rect': _r(0, 236, 70, 281), 'walk': _p(4, 262)},
     },
     # l'àvia i l'Iri arriben pel camí, de l'esquerra
-    'spawns': {'iri': _p(124, 268), 'avia': _p(76, 262)},
+    'spawns': {'iri': _p(124, 268), 'avia': _p(76, 262),
+               'espora': _p(221, 243)},          # al llindar de la porta del roure, quan s'obre (313)
     'walkable': [_p(x, y) for x, y in WALK],
     # el sol es pon a l'esquerra, arran de terra: les ombres, llargues, cap a la dreta
     'characterShadow': {'enabled': True, 'color': '#1c0e14', 'alpha': 0.42, 'squash': 0.28, 'core': 0.6,

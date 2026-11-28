@@ -253,6 +253,21 @@
                 {
                   "prop": "porta_oberta",
                   "visible": true
+                },
+                {
+                  "who": "player",
+                  "walk": {
+                    "x": 258,
+                    "y": 230
+                  }
+                },
+                {
+                  "who": "espora",
+                  "visible": true
+                },
+                {
+                  "who": "espora",
+                  "face": "D"
                 }
               ]
             },
@@ -463,6 +478,21 @@
                 {
                   "prop": "porta_oberta",
                   "visible": true
+                },
+                {
+                  "who": "player",
+                  "walk": {
+                    "x": 258,
+                    "y": 230
+                  }
+                },
+                {
+                  "who": "espora",
+                  "visible": true
+                },
+                {
+                  "who": "espora",
+                  "face": "D"
                 }
               ]
             },
