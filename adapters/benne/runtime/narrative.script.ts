@@ -243,6 +243,12 @@ export function routeInteraction(verb: string, target: FallbackTarget, item?: st
 
 /** Fa la interacció del JSON: hi va caminant, s'hi gira, i el nucli la resol. */
 export function performInteraction(verb: string, target: FallbackTarget, item?: string) {
+  // Un objecte amb ell mateix («Usa el llapis amb el llapis») no és cap combinació: el deixa anar (tasca 326).
+  if (item !== undefined && target.kind === 'item' && target.id === item) {
+    pointer.item = null
+    pointer.verb = null
+    return
+  }
   // L'objecte que es fa servir o es dona deixa d'anar a la mà ja (tots els jocs tenen `dropWhenInventoryUsed`): si no,
   // el cursor continuaria sent la seva icona, quieta al costat del destí, tota la interacció (tasca 230).
   if (item !== undefined && pointer.item) pointer.item = null
