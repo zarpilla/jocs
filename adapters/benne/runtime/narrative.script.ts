@@ -653,6 +653,10 @@ function refreshOptions(dialog: DialogHandle, choices: ResolvedChoice[]) {
     if (available.has(name)) option.on();
     else option.off();
   }
+  // Una opció amb variables al text (el teclat de la caixa forta: «TI···») es mostra amb els valors d'ara.
+  for (const c of choices) {
+    if (narrative.i18n.t(c.key).includes('{')) dialog.options[optionName(c.node, c.id)]?.setText(c.text)
+  }
   // Una opció ja dita que ara té una resposta nova (`nova`) no surt en gris: és justament la que cal triar.
   for (const c of choices) if (c.nova) unmarkUsed(dialog, optionName(c.node, c.id))
 }
