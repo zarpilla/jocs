@@ -270,6 +270,40 @@
           ]
         }
       ]
+    },
+    "vigilant": {
+      "name": "sala.aeroport_personal.vigilant.nom",
+      "visibleIf": {
+        "flag": "soler_distret",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_personal.vigilant.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use",
+            "pickUp",
+            "push",
+            "pull",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_personal.vigilant.parla"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {

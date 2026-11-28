@@ -548,6 +548,8 @@ GEOMETRIA = {
                    'walk': _p((KEYPAD[0] + KEYPAD[1]) / 2, 262)},
         'porta': {'rect': _rect_mon((DOOR_W[0] - 4, DOOR_W[3] + 5, ZW), (DOOR_W[1] + 4, 0, ZW)),
                   'walk': _p(_DX, 270)},
+        # el vigilant, a l'altra banda del vidre (el decorat `soler_vidre`; tasca 289): rectangle de pantalla
+        'vigilant': {'rect': (100, 90, 126, 142), 'walk': _p((KEYPAD[0] + KEYPAD[1]) / 2, 262)},
         # Coses per mirar (mirar no gasta torn): l'extintor, el tauler de torns, les taquilles, el carro i el con.
         'extintor': {'rect': _rect_mon((_w(263), _y(130), ZW), (_w(276), _y(161), ZW)),
                      'walk': _p(_w(275), 255)},

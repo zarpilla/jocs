@@ -422,6 +422,46 @@
       },
       "zIndex": 24,
       "baseline": 999
+    },
+    {
+      "id": "vigilant",
+      "tag": "vigilant",
+      "animations": {
+        "vigilant": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 100,
+            "y": 90
+          },
+          {
+            "x": 126,
+            "y": 90
+          },
+          {
+            "x": 126,
+            "y": 142
+          },
+          {
+            "x": 100,
+            "y": 142
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 217,
+        "y": 152
+      },
+      "lookAtPoint": {
+        "x": 113,
+        "y": 142
+      },
+      "description": "el vigilant"
     }
   ],
   "characters": [
@@ -459,7 +499,7 @@
         "y": 100,
         "radius": 60,
         "color": "#ff4a3a",
-        "intensity": 1,
+        "intensity": 1.0,
         "whenPropVisible": "alarma"
       }
     ]
