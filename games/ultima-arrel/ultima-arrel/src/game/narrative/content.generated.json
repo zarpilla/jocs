@@ -6674,6 +6674,16 @@
                 ]
               },
               {
+                "verb": "use",
+                "item": "caseta_paper",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.zona_mati.sensors.caseta"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
@@ -10592,7 +10602,7 @@
       "obj.llimona_cargol.desc": "Una llimona amb un cargol de zinc clavat. Falta l'altre metall.",
       "obj.llimona_cargol.nom": "la llimona amb cargol",
       "obj.llimona_centim.desc": "Una llimona amb un cèntim de coure clavat. Falta l'altre metall.",
-      "obj.llimona_centim.nom": "la llimona amb cèntim",
+      "obj.llimona_centim.nom": "la llimona de coure",
       "obj.lupa.desc": "La lupa de rellotger de l'avi. Amb ella es veu el que no es veu.",
       "obj.lupa.nom": "la lupa",
       "obj.lupa.sola": "Per mirar una cosa amb la lupa, l'he de fer servir amb aquella cosa.",
@@ -10669,7 +10679,7 @@
       "pj.vet.parla.1": "Iri! L'àvia diu que si et poses nerviosa, parlis com un documental.",
       "pj.vet.parla.2": "Observació: no estic nerviosa. Hipòtesi: una mica.",
       "pista.amagatall.1": "Vet. Les fades tenen por de la gent. Pregunta-li a la Urtica què necessiten. Canvi.",
-      "pista.amagatall.2": "Un amagatall a sobre dels sensors... El teu kit porta un fullet. Un fullet doblegat és quasi una caseta. Canvi.",
+      "pista.amagatall.2": "Un amagatall a sobre dels sensors... El teu kit porta un fullet, i un fullet doblegat és quasi una caseta. Als sensors s'hi arriba per la bastida de la pantalla. Canvi.",
       "pista.amagatall.3": "Obre el kit i doblega'n el fullet: una caseta de paper. Després, fes-la servir amb la bastida de la pantalla. Canvi.",
       "pista.arrel.1": "Observació: el fil va a una arrel viva. Hipòtesi: a ull nu no es veu quina.",
       "pista.arrel.2": "Mira les arrels amb la lupa: fes servir la lupa amb cadascuna.",
@@ -11138,6 +11148,7 @@
       "sala.zona_mati.parada.mira": "La parada de l'àvia. Hi falta la melmelada de préssec: se la van menjar unes fades.",
       "sala.zona_mati.parada.nom": "la parada de melmelada",
       "sala.zona_mati.sensors.mira": "Tres columnes blanques: «AIRE: PUR 100%». De moment.",
+      "sala.zona_mati.sensors.caseta": "Als sensors no hi arribo: són massa amunt i massa llisos. Però per la bastida de la pantalla s'hi pot pujar.",
       "sala.zona_mati.soques.mira": "Soques. La setmana passada eren arbres.",
       "sala.zona_mati.camera.nom": "el càmera de TV Comarca",
       "sala.zona_mati.camera.parla": "El càmera només mira pel visor. Les preguntes, diu, a la Txell.",

@@ -527,6 +527,16 @@
           ]
         },
         {
+          "verb": "use",
+          "item": "caseta_paper",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_mati.sensors.caseta"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
