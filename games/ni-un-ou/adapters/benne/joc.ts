@@ -12,8 +12,8 @@ export default {
   paquet: 'ni-un-ou-benne',
   fonts: { regular: 'niunou-regular', negreta: 'niunou-negreta', script: 'tools/font/niunou_font.py' },
   colorsVeu: {
-    iri: '#f2b25c', vet: '#7fd8e6', bastida: '#96c8f0', capitana: '#e4e4dc', juana: '#a6e08a', nadia: '#f29ac4',
-    marcel: '#e8c070', tomas: '#f4dca8', lind: '#c4a6f2', rut: '#d0d0d0', tele: '#b4b4b4', diu: '#e0e0e0',
+    iri: '#f2b25c', vet: '#7fd8e6', bastida: '#6c9cff', capitana: '#e4e4dc', juana: '#a6e08a', nadia: '#f29ac4',
+    marcel: '#ff8c78', tomas: '#f0e868', lind: '#c4a6f2', rut: '#d8c8a0', tele: '#b4b4b4', diu: '#a8b0b8',
   },
   veusProtagonistes: true,
   musicaSincronitzada: true,
