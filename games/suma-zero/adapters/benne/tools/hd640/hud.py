@@ -297,7 +297,7 @@ def build_hud():
     controls = [
         # la consola de la franja (pantalla alta): a sota de tot
         {'type': 'image', 'id': 'Tauler', 'x': TAULER[0], 'y': TAULER[1], 'tag': 'Tauler', 'backgroundAnchor': 'top-left',
-         'visible': False, 'clickable': False},
+         'visible': False, 'clickable': False, 'blocksWalk': True},
         # la frase: el nom del que hi ha sota el dit o el ratolí, o «Usa X amb...»
         {'type': 'text', 'id': 'verbLineText', 'x': W // 2, 'y': FRANJA + 9, 'text': '', 'font': FONT, 'fontSize': 8,
          'color': VERB_LINE, 'align': 'center', 'textOutline': text_outline(), 'zIndex': 5},

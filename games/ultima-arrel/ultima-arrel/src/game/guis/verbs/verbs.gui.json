@@ -15,7 +15,8 @@
       "tag": "Tauler",
       "backgroundAnchor": "top-left",
       "visible": false,
-      "clickable": false
+      "clickable": false,
+      "blocksWalk": true
     },
     {
       "type": "text",
